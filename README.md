@@ -473,6 +473,7 @@ conductor.setPluginValidator((plugin) => {
 
 ## 📚 Additional Resources
 
+- [React SPA Integration Guide](tools/docs/react-spa-integration.md) - Complete guide for React single-page applications
 - [Architecture Guide](docs/architecture.md)
 - [Plugin Development Guide](docs/plugin-development.md)
 - [API Reference](docs/api-reference.md)
