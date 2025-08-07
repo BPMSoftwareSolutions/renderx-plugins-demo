@@ -12,7 +12,7 @@ import { PluginValidator } from "./PluginValidator";
 import { PluginManifestLoader } from "./PluginManifestLoader";
 
 // Import plugin types from MusicalConductor (temporary until we move them to a shared location)
-import type { SPAPlugin, PluginMountResult } from "../MusicalConductor";
+import type { SPAPlugin, PluginMountResult } from "./PluginInterfaceFacade";
 
 export class PluginManager {
   private eventBus: EventBus;
@@ -362,6 +362,16 @@ export class PluginManager {
       mountedPlugins: this.getMountedPluginIds(),
       pluginsRegistered: this.pluginsRegistered,
     };
+  }
+
+  /**
+   * Get total number of sequences from all mounted plugins
+   * @returns Total sequence count
+   */
+  getTotalSequences(): number {
+    return Array.from(this.mountedPlugins.values()).reduce((count, plugin) => {
+      return count + (plugin.sequence ? 1 : 0);
+    }, 0);
   }
 
   /**

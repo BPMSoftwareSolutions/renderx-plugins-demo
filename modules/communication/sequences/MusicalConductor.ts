@@ -41,25 +41,14 @@ import { EventSubscriptionManager } from "./core/EventSubscriptionManager";
 import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue";
 import { SequenceExecutor } from "./execution/SequenceExecutor";
 import { PluginManager } from "./plugins/PluginManager";
+import {
+  PluginInterfaceFacade,
+  type SPAPlugin,
+  type PluginMountResult,
+} from "./plugins/PluginInterfaceFacade";
 import { ResourceManager } from "./resources/ResourceManager";
 
-// CIA (Conductor Integration Architecture) interfaces for SPA plugin mounting
-export interface SPAPlugin {
-  sequence: MusicalSequence;
-  handlers: Record<string, Function>;
-  metadata?: {
-    id: string;
-    version: string;
-    author?: string;
-  };
-}
-
-export interface PluginMountResult {
-  success: boolean;
-  pluginId: string;
-  message: string;
-  warnings?: string[];
-}
+// CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
 // MCO/MSO Resource Ownership and Instance Management Interfaces
 export interface ResourceOwner {
@@ -102,6 +91,7 @@ export class MusicalConductor {
   private executionQueue: ExecutionQueue;
   private sequenceExecutor: SequenceExecutor;
   private pluginManager: PluginManager;
+  private pluginInterface: PluginInterfaceFacade;
   private resourceManager: ResourceManager;
 
   // Legacy properties removed - now handled by specialized components
@@ -173,6 +163,10 @@ export class MusicalConductor {
       eventBus,
       this.conductorCore.getSPAValidator(),
       this.sequenceRegistry
+    );
+    this.pluginInterface = new PluginInterfaceFacade(
+      this.pluginManager,
+      this.conductorCore.getSPAValidator()
     );
     this.resourceManager = new ResourceManager();
 
@@ -510,7 +504,7 @@ export class MusicalConductor {
    * Get all mounted plugin names
    */
   getMountedPlugins(): string[] {
-    return this.pluginManager.getMountedPlugins();
+    return this.pluginInterface.getMountedPlugins();
   }
 
   // ===== CIA (Conductor Integration Architecture) Methods =====
@@ -529,32 +523,13 @@ export class MusicalConductor {
     context: any = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): any {
-    try {
-      console.log(`🎼 MusicalConductor.play(): ${pluginId} -> ${sequenceName}`);
-
-      // SPA Validation: Register plugin (silent)
-      this.spaValidator.registerPlugin(pluginId);
-
-      // Validate plugin exists
-      const plugin = this.pluginManager.getPluginInfo(pluginId);
-      if (!plugin) {
-        console.warn(
-          `🧠 Plugin not found: ${pluginId}. Available plugins: [${this.pluginManager
-            .getMountedPluginIds()
-            .join(", ")}]`
-        );
-        return null;
-      }
-
-      // Start the sequence instead of calling handlers directly
-      return this.startSequence(sequenceName, context, priority);
-    } catch (error) {
-      console.error(
-        `🧠 MusicalConductor.play() failed for ${pluginId}.${sequenceName}:`,
-        (error as Error).message
-      );
-      return null;
-    }
+    return this.pluginInterface.play(
+      pluginId,
+      sequenceName,
+      context,
+      priority,
+      (seqName, data, prio) => this.startSequence(seqName, data, prio)
+    );
   }
 
   /**
@@ -624,7 +599,7 @@ export class MusicalConductor {
     pluginId?: string,
     metadata?: any
   ): Promise<PluginMountResult> {
-    return this.pluginManager.mount(sequence, handlers, pluginId, metadata);
+    return this.pluginInterface.mount(sequence, handlers, pluginId, metadata);
   }
 
   /**
@@ -632,7 +607,7 @@ export class MusicalConductor {
    * Loads and mounts all plugins from the plugins directory
    */
   async registerCIAPlugins(): Promise<void> {
-    return this.pluginManager.registerCIAPlugins();
+    return this.pluginInterface.registerCIAPlugins();
   }
 
   // Legacy loadPluginManifest method removed - now handled by PluginManifestLoader
@@ -653,36 +628,11 @@ export class MusicalConductor {
     movementName: string,
     data: any
   ): any {
-    try {
-      const handlers = this.pluginManager.getPluginHandlers(sequenceName);
-
-      if (!handlers) {
-        console.warn(`🧠 No handlers found for sequence: ${sequenceName}`);
-        return null;
-      }
-
-      if (!(movementName in handlers)) {
-        console.warn(`🧠 Missing handler for movement: ${movementName}`);
-        return null;
-      }
-
-      const handler = handlers[movementName];
-      if (typeof handler !== "function") {
-        console.error(`🧠 Handler for ${movementName} is not a function`);
-        return null;
-      }
-
-      console.log(
-        `🧠 MusicalConductor: Executing handler for movement: ${movementName}`
-      );
-      return handler(data);
-    } catch (error) {
-      console.error(
-        `🧠 MusicalConductor: Handler execution failed for ${movementName}:`,
-        error
-      );
-      return null;
-    }
+    return this.pluginInterface.executeMovementWithHandler(
+      sequenceName,
+      movementName,
+      data
+    );
   }
 
   // Legacy loadPluginModule method removed - now handled by PluginLoader
@@ -695,117 +645,17 @@ export class MusicalConductor {
    * @returns Plugin load result
    */
   async loadPlugin(pluginPath: string): Promise<PluginMountResult> {
-    try {
-      console.log(`🧠 MusicalConductor: Loading plugin from: ${pluginPath}`);
-
-      const plugin = await this.pluginManager.pluginLoader.loadPlugin(
-        pluginPath
-      );
-
-      if (!plugin) {
-        return {
-          success: false,
-          pluginId: "unknown",
-          message: `Failed to load plugin: ${pluginPath}`,
-        };
-      }
-
-      // Mount the plugin
-      return await this.mount(plugin.sequence, plugin.handlers);
-    } catch (error) {
-      console.warn(
-        `🧠 MusicalConductor: Failed to load plugin from ${pluginPath}:`,
-        (error as Error).message
-      );
-      return {
-        success: false,
-        pluginId: "unknown",
-        message: `Failed to load plugin from ${pluginPath}: ${
-          (error as Error).message
-        }`,
-      };
-    }
+    return this.pluginInterface.loadPlugin(pluginPath);
   }
 
-  /**
-   * Extract plugin code for SPA validation
-   * @param sequence - Plugin sequence
-   * @param handlers - Plugin handlers
-   * @returns String representation of plugin code
-   */
-  private extractPluginCode(sequence: any, handlers: any): string {
-    try {
-      // Convert sequence and handlers to string for analysis
-      const sequenceCode = JSON.stringify(sequence, null, 2);
-      const handlersCode = handlers
-        ? Object.keys(handlers)
-            .map((key) => {
-              const handler = handlers[key];
-              return typeof handler === "function" ? handler.toString() : "";
-            })
-            .join("\n")
-        : "";
-
-      return `${sequenceCode}\n${handlersCode}`;
-    } catch (error) {
-      console.warn("🎼 Failed to extract plugin code for validation:", error);
-      return "";
-    }
-  }
+  // Legacy extractPluginCode method removed - now handled by PluginInterfaceFacade
 
   /**
    * Validate plugin pre-compilation status
    * @param pluginId - Plugin identifier
    * @returns Validation result
    */
-  private async validatePluginPreCompilation(
-    pluginId: string
-  ): Promise<{ valid: boolean; issues: string[] }> {
-    try {
-      const issues: string[] = [];
-
-      // Check for bundled artifact
-      const bundlePath = `/plugins/${pluginId}/dist/plugin.js`;
-      try {
-        const response = await fetch(bundlePath);
-        if (!response.ok) {
-          issues.push(`Missing bundled artifact: ${bundlePath}`);
-        }
-      } catch (error) {
-        issues.push(`Cannot access bundled artifact: ${bundlePath}`);
-      }
-
-      // Check for required runtime files
-      const requiredFiles = ["index.js", "sequence.js", "manifest.json"];
-      for (const file of requiredFiles) {
-        const filePath = `/plugins/${pluginId}/${file}`;
-        try {
-          const response = await fetch(filePath);
-          if (!response.ok) {
-            issues.push(`Missing required file: ${file}`);
-          }
-        } catch (error) {
-          issues.push(`Cannot access required file: ${file}`);
-        }
-      }
-
-      return {
-        valid: issues.length === 0,
-        issues,
-      };
-    } catch (error) {
-      console.warn(
-        `🔨 Pre-compilation validation error for ${pluginId}:`,
-        error
-      );
-      return {
-        valid: false,
-        issues: [
-          `Pre-compilation validation error: ${(error as Error).message}`,
-        ],
-      };
-    }
-  }
+  // Legacy validatePluginPreCompilation method removed - now handled by PluginInterfaceFacade
 
   /**
    * Unmount a plugin (CIA-compliant)
@@ -813,7 +663,7 @@ export class MusicalConductor {
    * @returns Success status
    */
   unmountPlugin(pluginId: string): boolean {
-    return this.pluginManager.unmountPlugin(pluginId);
+    return this.pluginInterface.unmountPlugin(pluginId);
   }
 
   /**
@@ -822,7 +672,7 @@ export class MusicalConductor {
    * @returns Plugin information or undefined
    */
   getPluginInfo(pluginId: string): SPAPlugin | undefined {
-    return this.pluginManager.getPluginInfo(pluginId);
+    return this.pluginInterface.getPluginInfo(pluginId);
   }
 
   /**
@@ -830,7 +680,7 @@ export class MusicalConductor {
    * @returns Array of plugin IDs
    */
   getMountedPluginIds(): string[] {
-    return this.pluginManager.getMountedPluginIds();
+    return this.pluginInterface.getMountedPluginIds();
   }
 
   // ===== MCO/MSO Resource Ownership and Instance Management Methods =====
@@ -1213,7 +1063,7 @@ export class MusicalConductor {
   getStatistics(): ConductorStatistics & { mountedPlugins: number } {
     return {
       ...this.statistics,
-      mountedPlugins: this.pluginManager.getMountedPluginIds().length,
+      mountedPlugins: this.pluginInterface.getMountedPluginIds().length,
     };
   }
 
@@ -1231,7 +1081,7 @@ export class MusicalConductor {
       statistics: this.getStatistics(),
       eventBus: !!this.eventBus,
       sequences: this.sequenceRegistry.size(),
-      plugins: this.pluginManager.getMountedPluginIds().length,
+      plugins: this.pluginInterface.getMountedPluginIds().length,
     };
   }
 
