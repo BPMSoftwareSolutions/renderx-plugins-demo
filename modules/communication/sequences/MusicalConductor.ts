@@ -47,6 +47,9 @@ import {
   type PluginMountResult,
 } from "./plugins/PluginInterfaceFacade";
 import { ResourceManager } from "./resources/ResourceManager";
+import { StatisticsManager } from "./monitoring/StatisticsManager";
+import { PerformanceTracker } from "./monitoring/PerformanceTracker";
+import { DuplicationDetector } from "./monitoring/DuplicationDetector";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -94,6 +97,11 @@ export class MusicalConductor {
   private pluginInterface: PluginInterfaceFacade;
   private resourceManager: ResourceManager;
 
+  // Monitoring components
+  private statisticsManager: StatisticsManager;
+  private performanceTracker: PerformanceTracker;
+  private duplicationDetector: DuplicationDetector;
+
   // Legacy properties removed - now handled by specialized components
 
   // Getters for accessing core components
@@ -113,26 +121,7 @@ export class MusicalConductor {
 
   // Legacy resource properties removed - now handled by ResourceManager
 
-  // Phase 3: StrictMode Protection & Idempotency
-  private executedSequenceHashes: Set<string> = new Set(); // Track executed sequences to prevent duplicates
-  private recentExecutions: Map<string, number> = new Map(); // Track recent executions with timestamps
-  private idempotencyWindow: number = 5000; // 5 second window for duplicate detection
-
-  // Enhanced statistics for queue management
-  private statistics: ConductorStatistics = {
-    totalSequencesExecuted: 0,
-    totalBeatsExecuted: 0,
-    averageExecutionTime: 0,
-    errorCount: 0,
-    lastExecutionTime: null,
-    totalSequencesQueued: 0,
-    maxQueueLength: 0,
-    currentQueueLength: 0,
-    averageQueueWaitTime: 0,
-    sequenceCompletionRate: 0,
-    chainedSequences: 0,
-    successRate: 0,
-  };
+  // Legacy monitoring properties removed - now handled by monitoring components
 
   // SPA Validation - now accessed via getter
 
@@ -142,7 +131,6 @@ export class MusicalConductor {
 
   // Enhanced logging configuration
   private static readonly ENABLE_HIERARCHICAL_LOGGING: boolean = true;
-  private beatStartTimes: Map<string, number> = new Map(); // Track beat start times for duration calculation
 
   private constructor(eventBus: EventBus) {
     // Initialize core components
@@ -153,11 +141,16 @@ export class MusicalConductor {
       this.conductorCore.getSPAValidator()
     );
     this.executionQueue = new ExecutionQueue();
+    // Initialize monitoring components first
+    this.statisticsManager = new StatisticsManager();
+    this.performanceTracker = new PerformanceTracker();
+    this.duplicationDetector = new DuplicationDetector();
+
     this.sequenceExecutor = new SequenceExecutor(
       eventBus,
       this.conductorCore.getSPAValidator(),
       this.executionQueue,
-      this.statistics
+      this.statisticsManager.getStatistics()
     );
     this.pluginManager = new PluginManager(
       eventBus,
@@ -341,9 +334,8 @@ export class MusicalConductor {
    * @param data - Beat started event data
    */
   private logBeatStartedHierarchical(data: any): void {
-    const beatKey = `${data.sequenceName}-${data.beat}`;
-    const startTime = performance.now();
-    this.beatStartTimes.set(beatKey, startTime);
+    // Use PerformanceTracker to track beat timing
+    this.performanceTracker.startBeatTiming(data.sequenceName, data.beat);
 
     // Get movement information from active sequence
     const movementName = this.getMovementNameForBeat(
@@ -380,16 +372,17 @@ export class MusicalConductor {
    * @param data - Beat completed event data
    */
   private logBeatCompletedHierarchical(data: any): void {
-    const beatKey = `${data.sequenceName}-${data.beat}`;
-    const startTime = this.beatStartTimes.get(beatKey);
+    // Use PerformanceTracker to end beat timing
+    const duration = this.performanceTracker.endBeatTiming(
+      data.sequenceName,
+      data.beat
+    );
 
-    if (startTime) {
-      const duration = (performance.now() - startTime).toFixed(2);
+    if (duration !== null) {
       console.log(
-        `%c✅ Completed in ${duration}ms`,
+        `%c✅ Completed in ${duration.toFixed(2)}ms`,
         "color: #28A745; font-weight: bold;"
       );
-      this.beatStartTimes.delete(beatKey);
     } else {
       console.log(`%c✅ Completed`, "color: #28A745; font-weight: bold;");
     }
@@ -456,8 +449,10 @@ export class MusicalConductor {
       console.groupEnd(); // Close the beat group on error
 
       // Clean up timing data for failed beat
-      const beatKey = `${executionContext.sequenceName}-${beat.beat}`;
-      this.beatStartTimes.delete(beatKey);
+      this.performanceTracker.cleanupFailedBeat(
+        executionContext.sequenceName,
+        beat.beat
+      );
     }
   }
 
@@ -931,12 +926,7 @@ export class MusicalConductor {
       };
 
       // Update statistics
-      this.statistics.totalSequencesQueued++;
-      this.statistics.currentQueueLength++;
-      this.statistics.maxQueueLength = Math.max(
-        this.statistics.maxQueueLength,
-        this.statistics.currentQueueLength
-      );
+      this.statisticsManager.recordSequenceQueued();
 
       // Starting sequence - internal logging disabled for cleaner output
 
@@ -967,7 +957,7 @@ export class MusicalConductor {
         `🎼 MusicalConductor: Failed to start sequence: ${sequenceName}`,
         error
       );
-      this.statistics.errorCount++;
+      this.statisticsManager.recordError();
       throw error;
     }
   }
@@ -1051,20 +1041,16 @@ export class MusicalConductor {
    * @param waitTime - Wait time in milliseconds
    */
   private updateQueueWaitTimeStatistics(waitTime: number): void {
-    // Simple moving average calculation
-    const alpha = 0.1; // Smoothing factor
-    this.statistics.averageQueueWaitTime =
-      this.statistics.averageQueueWaitTime * (1 - alpha) + waitTime * alpha;
+    this.statisticsManager.updateQueueWaitTime(waitTime);
   }
 
   /**
    * Get current statistics (enhanced with CIA plugin information)
    */
   getStatistics(): ConductorStatistics & { mountedPlugins: number } {
-    return {
-      ...this.statistics,
-      mountedPlugins: this.pluginInterface.getMountedPluginIds().length,
-    };
+    return this.statisticsManager.getEnhancedStatistics(
+      this.pluginInterface.getMountedPluginIds().length
+    );
   }
 
   /**
@@ -1089,22 +1075,10 @@ export class MusicalConductor {
    * Reset statistics
    */
   resetStatistics(): void {
-    this.statistics = {
-      totalSequencesExecuted: 0,
-      totalBeatsExecuted: 0,
-      averageExecutionTime: 0,
-      errorCount: 0,
-      lastExecutionTime: null,
-      totalSequencesQueued: 0,
-      maxQueueLength: 0,
-      currentQueueLength: this.executionQueue.size(),
-      averageQueueWaitTime: 0,
-      sequenceCompletionRate: 0,
-      chainedSequences: 0,
-      successRate: 0,
-    };
-
-    console.log("🎼 MusicalConductor: Statistics reset");
+    this.statisticsManager.reset();
+    this.performanceTracker.reset();
+    this.duplicationDetector.reset();
+    console.log("🎼 MusicalConductor: All monitoring data reset");
   }
 
   /**
@@ -1403,25 +1377,14 @@ export class MusicalConductor {
    * @returns True if this is a duplicate request
    */
   private isDuplicateSequenceRequest(sequenceHash: string): boolean {
-    const now = performance.now();
-    const lastExecution = this.recentExecutions.get(sequenceHash);
+    const result =
+      this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
 
-    if (!lastExecution) {
-      return false; // Never executed
+    if (result.isDuplicate) {
+      console.warn(`🎼 MCO: ${result.reason} (hash: ${sequenceHash})`);
     }
 
-    const timeSinceLastExecution = now - lastExecution;
-    const isDuplicate = timeSinceLastExecution < this.idempotencyWindow;
-
-    if (isDuplicate) {
-      console.warn(
-        `🎼 MCO: Duplicate sequence request detected (hash: ${sequenceHash}, ${timeSinceLastExecution.toFixed(
-          2
-        )}ms ago)`
-      );
-    }
-
-    return isDuplicate;
+    return result.isDuplicate;
   }
 
   /**
@@ -1429,34 +1392,10 @@ export class MusicalConductor {
    * @param sequenceHash - Hash of the sequence request
    */
   private recordSequenceExecution(sequenceHash: string): void {
-    const now = performance.now();
-    this.recentExecutions.set(sequenceHash, now);
-    this.executedSequenceHashes.add(sequenceHash);
-
-    // Clean up old entries to prevent memory leaks
-    this.cleanupOldExecutionRecords();
+    this.duplicationDetector.recordSequenceExecution(sequenceHash);
   }
 
-  /**
-   * Clean up old execution records outside the idempotency window
-   */
-  private cleanupOldExecutionRecords(): void {
-    const now = performance.now();
-    const cutoffTime = now - this.idempotencyWindow;
-
-    for (const [hash, timestamp] of this.recentExecutions.entries()) {
-      if (timestamp < cutoffTime) {
-        this.recentExecutions.delete(hash);
-      }
-    }
-
-    // Limit the size of executedSequenceHashes to prevent unbounded growth
-    if (this.executedSequenceHashes.size > 1000) {
-      const hashArray = Array.from(this.executedSequenceHashes);
-      const toKeep = hashArray.slice(-500); // Keep the most recent 500
-      this.executedSequenceHashes = new Set(toKeep);
-    }
-  }
+  // Legacy cleanupOldExecutionRecords method removed - now handled by DuplicationDetector
 
   /**
    * Enhanced sequence deduplication for StrictMode protection
@@ -1481,14 +1420,11 @@ export class MusicalConductor {
       const isDuplicate = this.isDuplicateSequenceRequest(sequenceHash);
 
       if (isDuplicate) {
-        const now = performance.now();
-        const lastExecution = this.recentExecutions.get(sequenceHash);
-        const timeSinceLastExecution = lastExecution ? now - lastExecution : 0;
+        const result =
+          this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
 
         console.log(
-          `🎼 MCO: ElementLibrary Display duplicate check - last execution: ${timeSinceLastExecution.toFixed(
-            2
-          )}ms ago`
+          `🎼 MCO: ElementLibrary Display duplicate check - ${result.reason}`
         );
 
         // Always allow the first ElementLibrary Display sequence to execute
