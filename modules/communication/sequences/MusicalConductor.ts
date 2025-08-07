@@ -56,6 +56,7 @@ import { SequenceValidator } from "./validation/SequenceValidator";
 import { SequenceUtilities } from "./utilities/SequenceUtilities";
 import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator";
 import { EventOrchestrator } from "./orchestration/EventOrchestrator";
+import { ConductorAPI } from "./api/ConductorAPI";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -119,6 +120,9 @@ export class MusicalConductor {
   // Orchestration components
   private sequenceOrchestrator: SequenceOrchestrator;
   private eventOrchestrator: EventOrchestrator;
+
+  // API components
+  private conductorAPI: ConductorAPI;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -196,6 +200,17 @@ export class MusicalConductor {
       this.resourceDelegator
     );
     this.eventOrchestrator = new EventOrchestrator(eventBus);
+
+    // Initialize API components
+    this.conductorAPI = new ConductorAPI(
+      this.sequenceOrchestrator,
+      this.sequenceExecutor,
+      this.executionQueue,
+      this.statisticsManager,
+      this.pluginInterface,
+      this.sequenceRegistry,
+      eventBus
+    );
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -674,9 +689,7 @@ export class MusicalConductor {
    * Get current statistics (enhanced with CIA plugin information)
    */
   getStatistics(): ConductorStatistics & { mountedPlugins: number } {
-    return this.statisticsManager.getEnhancedStatistics(
-      this.pluginInterface.getMountedPluginIds().length
-    );
+    return this.conductorAPI.getStatistics();
   }
 
   /**
@@ -689,19 +702,14 @@ export class MusicalConductor {
     sequences: number;
     plugins: number;
   } {
-    return {
-      statistics: this.getStatistics(),
-      eventBus: !!this.eventBus,
-      sequences: this.sequenceRegistry.size(),
-      plugins: this.pluginInterface.getMountedPluginIds().length,
-    };
+    return this.conductorAPI.getStatus();
   }
 
   /**
    * Reset statistics
    */
   resetStatistics(): void {
-    this.statisticsManager.reset();
+    this.conductorAPI.resetStatistics();
     this.performanceTracker.reset();
     this.duplicationDetector.reset();
     console.log("🎼 MusicalConductor: All monitoring data reset");
@@ -766,8 +774,7 @@ export class MusicalConductor {
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): string {
-    // This is an alias for startSequence to satisfy validation requirements
-    return this.startSequence(sequenceName, data, priority);
+    return this.conductorAPI.queueSequence(sequenceName, data, priority);
   }
 
   /**
@@ -775,16 +782,7 @@ export class MusicalConductor {
    * @returns Success status
    */
   executeNextSequence(): boolean {
-    if (this.executionQueue.isEmpty()) {
-      return false;
-    }
-
-    if (this.sequenceExecutor.isSequenceRunning()) {
-      return false; // Already executing a sequence
-    }
-
-    this.processSequenceQueue();
-    return true;
+    return this.conductorAPI.executeNextSequence();
   }
 
   /**
@@ -793,7 +791,7 @@ export class MusicalConductor {
    * @returns True if a sequence is executing (or specific sequence if name provided)
    */
   isSequenceRunning(sequenceName?: string): boolean {
-    return this.sequenceExecutor.isSequenceRunning(sequenceName);
+    return this.conductorAPI.isSequenceRunning(sequenceName);
   }
 
   /**
@@ -801,7 +799,7 @@ export class MusicalConductor {
    * @returns Current sequence execution context or null
    */
   getCurrentSequence(): SequenceExecutionContext | null {
-    return this.sequenceExecutor.getCurrentSequence();
+    return this.conductorAPI.getCurrentSequence();
   }
 
   /**
@@ -811,25 +809,7 @@ export class MusicalConductor {
    * @returns Success status
    */
   updatePayload(payloadData: Record<string, any>): boolean {
-    const currentSequence = this.sequenceExecutor.getCurrentSequence();
-    if (!currentSequence) {
-      console.warn(
-        "🎽 MusicalConductor: Cannot update payload - no active sequence"
-      );
-      return false;
-    }
-
-    // Merge new payload data with existing payload
-    currentSequence.payload = {
-      ...currentSequence.payload,
-      ...payloadData,
-    };
-
-    console.log(
-      "🎽 MusicalConductor: Payload updated:",
-      currentSequence.payload
-    );
-    return true;
+    return this.conductorAPI.updateDataBaton(payloadData);
   }
 
   /**
@@ -837,16 +817,15 @@ export class MusicalConductor {
    * @returns Current payload or null if no active sequence
    */
   getPayload(): Record<string, any> | null {
-    const currentSequence = this.sequenceExecutor.getCurrentSequence();
-    return currentSequence?.payload || null;
+    return this.conductorAPI.getDataBaton();
   }
 
   /**
    * Get all queued sequences (validation compliance method)
    * @returns Array of queued sequence requests
    */
-  getQueuedSequences(): SequenceRequest[] {
-    return this.executionQueue.getQueuedRequests();
+  getQueuedSequences(): string[] {
+    return this.conductorAPI.getQueuedSequences();
   }
 
   /**
@@ -854,7 +833,7 @@ export class MusicalConductor {
    * @returns Number of sequences that were cleared
    */
   clearSequenceQueue(): number {
-    return this.executionQueue.clear();
+    return this.conductorAPI.clearSequenceQueue();
   }
 
   /**
