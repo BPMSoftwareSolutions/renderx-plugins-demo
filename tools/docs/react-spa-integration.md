@@ -2,6 +2,47 @@
 
 A comprehensive guide for integrating MusicalConductor into React single-page applications with plugin-based UI workflows.
 
+## 🚨 Critical Architecture Notes
+
+### ❌ DO NOT Import EventBus Directly
+
+**NEVER** import or use EventBus directly in your application:
+
+```typescript
+// ❌ WRONG - This will break your application
+import { EventBus } from "../modules/communication/EventBus";
+```
+
+**Why this is forbidden:**
+
+- MusicalConductor does **NOT** export EventBus as part of its public API
+- EventBus is an internal implementation detail
+- Direct EventBus usage bypasses all orchestration, monitoring, and validation
+- SPAValidator will detect and block direct EventBus usage
+
+### ✅ Use MusicalConductor's Public API Only
+
+```typescript
+// ✅ CORRECT - Use the public MusicalConductor API
+import { MusicalConductor } from "musical-conductor";
+
+const conductor = MusicalConductor.getInstance();
+conductor.play(pluginId, sequenceId, context); // Proper orchestration
+conductor.subscribe(eventName, callback); // Proper event subscription
+```
+
+### 📦 Package Installation
+
+MusicalConductor is distributed as an **npm package** that must be installed by client applications:
+
+```bash
+# Install MusicalConductor package
+npm install musical-conductor
+
+# Or with yarn
+yarn add musical-conductor
+```
+
 ## 🚀 Overview
 
 This guide demonstrates how to use MusicalConductor to orchestrate complex UI workflows in a React SPA with the following components:
@@ -56,17 +97,15 @@ Plugins follow the pattern: `[domain].[action]-symphony`
 
 ```typescript
 // src/services/ConductorService.ts
-import { MusicalConductor } from "../modules/communication/sequences/MusicalConductor";
-import { EventBus } from "../modules/communication/EventBus";
+import { MusicalConductor } from "musical-conductor";
 
 export class ConductorService {
   private static instance: ConductorService;
   private conductor: MusicalConductor;
-  private eventBus: EventBus;
 
   private constructor() {
-    this.eventBus = new EventBus();
-    this.conductor = MusicalConductor.getInstance(this.eventBus);
+    // MusicalConductor manages its own EventBus internally
+    this.conductor = MusicalConductor.getInstance();
   }
 
   public static getInstance(): ConductorService {
@@ -78,10 +117,6 @@ export class ConductorService {
 
   public getConductor(): MusicalConductor {
     return this.conductor;
-  }
-
-  public getEventBus(): EventBus {
-    return this.eventBus;
   }
 
   // Initialize all UI workflow plugins
@@ -851,11 +886,11 @@ export const handlers = {
       context.onThemeChange(theme);
     }
 
-    // Emit completion event
-    context.eventBus.emit("theme:change:complete", {
-      theme,
-      timestamp: new Date().toISOString(),
-    });
+    // ❌ DO NOT DO THIS - EventBus is not accessible in plugins
+    // context.eventBus.emit("theme:change:complete", { theme });
+
+    // ✅ CORRECT - Use conductor.play() to trigger completion sequence
+    // or rely on React callback for state updates
 
     console.log(`📢 Theme change notification sent: ${theme}`);
     return { notified: true, theme };
@@ -1025,12 +1060,11 @@ export const handlers = {
       context.onComponentsLoaded(preparedComponents);
     }
 
-    // Emit completion event
-    context.eventBus.emit("components:load:complete", {
-      components: preparedComponents,
-      count: preparedComponents.length,
-      timestamp: new Date().toISOString(),
-    });
+    // ❌ DO NOT DO THIS - EventBus is not accessible in plugins
+    // context.eventBus.emit("components:load:complete", { components });
+
+    // ✅ CORRECT - Use conductor.play() to trigger completion sequence
+    // or rely on React callback for state updates
 
     console.log(
       `📚 Component library loaded and notified: ${preparedComponents.length} components`
@@ -1286,34 +1320,61 @@ const executeComplexWorkflow = async () => {
 
 ## 🚀 Getting Started
 
-1. **Install Dependencies**
+1. **Install MusicalConductor Package**
 
    ```bash
-   npm install
+   # Install the MusicalConductor package
+   npm install musical-conductor
+
+   # Install React dependencies
+   npm install react react-dom
+   npm install -D @types/react @types/react-dom
    ```
 
-2. **Create Plugin Directory**
+2. **Create Plugin Directory Structure**
 
    ```bash
-   mkdir -p plugins
+   mkdir -p src/plugins
+   mkdir -p public/plugins
    ```
 
-3. **Add Plugin Files**
+3. **Create Plugin Manifest**
 
-   - Copy the plugin examples above into the `plugins/` directory
+   ```json
+   // public/plugins/plugin-manifest.json
+   {
+     "plugins": [
+       {
+         "id": "AppShell",
+         "name": "Application Shell Plugin",
+         "version": "1.0.0",
+         "file": "AppShell.theme-symphony.js",
+         "sequences": ["theme-symphony"]
+       }
+     ]
+   }
+   ```
+
+4. **Add Plugin Files**
+
+   - Copy the plugin examples above into the `src/plugins/` directory
    - Each plugin should export `sequence` and `handlers`
+   - Build plugins to `public/plugins/` for runtime loading
 
-4. **Initialize in Your App**
+5. **Initialize in Your App**
 
    ```typescript
-   const conductorService = ConductorService.getInstance();
-   await conductorService.initializePlugins();
+   import { MusicalConductor } from "musical-conductor";
+
+   const conductor = MusicalConductor.getInstance();
+   await conductor.registerCIAPlugins(); // Loads from plugin-manifest.json
    ```
 
-5. **Start Building**
+6. **Start Building**
    - Use the component examples as starting points
    - Create custom plugins for your specific workflows
-   - Subscribe to events to keep UI in sync
+   - Use `conductor.subscribe()` for event listening
+   - **Never import or use EventBus directly**
 
 ## 📚 Additional Resources
 
