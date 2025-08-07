@@ -40,6 +40,7 @@ import { SequenceRegistry } from "./core/SequenceRegistry";
 import { EventSubscriptionManager } from "./core/EventSubscriptionManager";
 import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue";
 import { SequenceExecutor } from "./execution/SequenceExecutor";
+import { PluginManager } from "./plugins/PluginManager";
 
 // CIA (Conductor Integration Architecture) interfaces for SPA plugin mounting
 export interface SPAPlugin {
@@ -99,6 +100,7 @@ export class MusicalConductor {
   private eventSubscriptionManager: EventSubscriptionManager;
   private executionQueue: ExecutionQueue;
   private sequenceExecutor: SequenceExecutor;
+  private pluginManager: PluginManager;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -115,10 +117,7 @@ export class MusicalConductor {
 
   // Legacy beat execution properties removed - now handled by BeatExecutor
 
-  // CIA (Conductor Integration Architecture) properties for SPA plugin mounting
-  private mountedPlugins: Map<string, SPAPlugin> = new Map();
-  private pluginHandlers: Map<string, Record<string, Function>> = new Map();
-  private pluginsRegistered: boolean = false; // Prevent React StrictMode double execution
+  // Legacy plugin properties removed - now handled by PluginManager
 
   // MCO/MSO Resource Ownership and Instance Management
   private resourceOwnership: Map<string, ResourceOwner> = new Map();
@@ -144,6 +143,7 @@ export class MusicalConductor {
     averageQueueWaitTime: 0,
     sequenceCompletionRate: 0,
     chainedSequences: 0,
+    successRate: 0,
   };
 
   // SPA Validation - now accessed via getter
@@ -170,6 +170,11 @@ export class MusicalConductor {
       this.conductorCore.getSPAValidator(),
       this.executionQueue,
       this.statistics
+    );
+    this.pluginManager = new PluginManager(
+      eventBus,
+      this.conductorCore.getSPAValidator(),
+      this.sequenceRegistry
     );
 
     console.log("🎼 MusicalConductor: Initialized with core components");
@@ -506,7 +511,7 @@ export class MusicalConductor {
    * Get all mounted plugin names
    */
   getMountedPlugins(): string[] {
-    return Array.from(this.mountedPlugins.keys());
+    return this.pluginManager.getMountedPlugins();
   }
 
   // ===== CIA (Conductor Integration Architecture) Methods =====
@@ -532,12 +537,12 @@ export class MusicalConductor {
       this.spaValidator.registerPlugin(pluginId);
 
       // Validate plugin exists
-      const plugin = this.mountedPlugins.get(pluginId);
+      const plugin = this.pluginManager.getPluginInfo(pluginId);
       if (!plugin) {
         console.warn(
-          `🧠 Plugin not found: ${pluginId}. Available plugins: [${Array.from(
-            this.mountedPlugins.keys()
-          ).join(", ")}]`
+          `🧠 Plugin not found: ${pluginId}. Available plugins: [${this.pluginManager
+            .getMountedPluginIds()
+            .join(", ")}]`
         );
         return null;
       }
@@ -620,136 +625,7 @@ export class MusicalConductor {
     pluginId?: string,
     metadata?: any
   ): Promise<PluginMountResult> {
-    const id = pluginId || sequence?.name || "unknown-plugin";
-    const warnings: string[] = [];
-
-    try {
-      console.log(`🧠 MusicalConductor: Attempting to mount plugin: ${id}`);
-
-      // SPA Validation: Check plugin compliance before mounting
-      const pluginCode = this.extractPluginCode(sequence, handlers);
-      const spaValidation = this.spaValidator.validatePluginMount(
-        id,
-        pluginCode
-      );
-
-      if (!spaValidation.valid) {
-        console.error(
-          `🎼 SPA Validation failed for plugin ${id}:`,
-          spaValidation.violations
-        );
-        return {
-          success: false,
-          pluginId: id,
-          message: `SPA validation failed: ${spaValidation.violations.join(
-            ", "
-          )}`,
-          warnings: spaValidation.violations,
-        };
-      }
-
-      // Pre-Compilation Validation: Check if plugin is properly compiled
-      const preCompilationValidation = await this.validatePluginPreCompilation(
-        id
-      );
-      if (!preCompilationValidation.valid) {
-        console.warn(
-          `🔨 Pre-compilation validation failed for plugin ${id}:`,
-          preCompilationValidation.issues
-        );
-        // Don't fail mounting for pre-compilation issues, but log warnings
-        warnings.push(...preCompilationValidation.issues);
-      }
-
-      // Validate sequence
-      if (!sequence) {
-        console.error("🧠 Mount failed: sequence is required");
-        return {
-          success: false,
-          pluginId: id,
-          message: "Mount failed: sequence is required",
-        };
-      }
-
-      if (!sequence.movements || !Array.isArray(sequence.movements)) {
-        console.error("🧠 Mount failed: sequence.movements must be an array");
-        return {
-          success: false,
-          pluginId: id,
-          message: "Mount failed: sequence.movements must be an array",
-        };
-      }
-
-      // Note: handlers are optional - plugins use event bus for beat execution
-      // Handlers are only needed for legacy direct movement calls
-
-      // Validate movement-to-handler mapping
-      for (const movement of sequence.movements) {
-        if (!movement.name) {
-          console.warn("🧠 Movement missing name, skipping validation");
-          warnings.push("Movement missing name, skipping validation");
-          continue;
-        }
-
-        // Only validate handlers if they are provided (optional for event-driven plugins)
-        if (handlers && typeof handlers === "object") {
-          if (!(movement.name in handlers)) {
-            console.warn(`🧠 Missing handler for movement: ${movement.name}`);
-            warnings.push(`Missing handler for movement: ${movement.name}`);
-          }
-
-          if (
-            handlers[movement.name] &&
-            typeof handlers[movement.name] !== "function"
-          ) {
-            console.error(`🧠 Handler for ${movement.name} is not a function`);
-            return {
-              success: false,
-              pluginId: id,
-              message: `Handler for ${movement.name} is not a function`,
-            };
-          }
-        }
-      }
-
-      // Create plugin object
-      const plugin: SPAPlugin = {
-        sequence,
-        handlers,
-        metadata: {
-          id,
-          version: sequence.metadata?.version || "1.0.0",
-          author: sequence.metadata?.author,
-        },
-      };
-
-      // Mount the plugin
-      this.mountedPlugins.set(id, plugin);
-
-      // Store handlers only if provided (optional for event-bus driven plugins)
-      if (handlers && typeof handlers === "object") {
-        this.pluginHandlers.set(id, handlers);
-      }
-
-      // Register the sequence with the existing conductor system
-      this.registerSequence(sequence);
-
-      console.log(`🧠 MusicalConductor: Successfully mounted plugin: ${id}`);
-
-      return {
-        success: true,
-        pluginId: id,
-        message: `Successfully mounted plugin: ${id}`,
-        warnings: warnings.length > 0 ? warnings : undefined,
-      };
-    } catch (error) {
-      console.error("🧠 MusicalConductor: Mount failed with error:", error);
-      return {
-        success: false,
-        pluginId: id,
-        message: `Mount failed with error: ${(error as Error).message}`,
-      };
-    }
+    return this.pluginManager.mount(sequence, handlers, pluginId, metadata);
   }
 
   /**
@@ -757,186 +633,14 @@ export class MusicalConductor {
    * Loads and mounts all plugins from the plugins directory
    */
   async registerCIAPlugins(): Promise<void> {
-    try {
-      // Prevent React StrictMode double execution
-      if (this.pluginsRegistered) {
-        console.log(
-          "⚠️ Plugins already registered, skipping duplicate registration"
-        );
-        return;
-      }
-
-      console.log("🧠 Registering CIA-compliant plugins...");
-
-      // Load plugin manifest - this is the ONLY source of truth
-      const pluginManifest = await this.loadPluginManifest();
-      console.log(
-        "📋 Plugin manifest loaded with",
-        pluginManifest.statistics.totalPlugins,
-        "plugins across",
-        pluginManifest.statistics.totalDomains,
-        "domains"
-      );
-
-      // Register plugins dynamically based on manifest data (data-driven approach)
-      await this.registerPluginsFromManifest(pluginManifest);
-
-      // Mark plugins as registered to prevent duplicate execution
-      this.pluginsRegistered = true;
-
-      console.log("✅ CIA-compliant plugins registered successfully");
-    } catch (error) {
-      console.error("❌ Failed to register CIA plugins:", error);
-      // Fallback to basic event handling if plugin loading fails
-      this.registerFallbackSequences();
-    }
+    return this.pluginManager.registerCIAPlugins();
   }
 
-  private async loadPluginManifest() {
-    try {
-      console.log("🎼 MusicalConductor: Loading plugin manifest...");
-      const response = await fetch("/plugins/plugin-manifest.json");
+  // Legacy loadPluginManifest method removed - now handled by PluginManifestLoader
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
+  // Legacy registerPluginsFromManifest method removed - now handled by PluginManager
 
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        const text = await response.text();
-        console.error(
-          "🎼 MusicalConductor: Expected JSON but got:",
-          contentType,
-          text.substring(0, 100)
-        );
-        throw new Error(`Expected JSON but got ${contentType}`);
-      }
-
-      const manifest = await response.json();
-
-      // Validate manifest structure
-      if (!manifest.domains || !manifest.plugins) {
-        throw new Error("Invalid plugin manifest structure");
-      }
-
-      console.log("✅ Plugin manifest loaded successfully");
-      return manifest;
-    } catch (error) {
-      console.error("❌ Failed to load plugin manifest:", error);
-      // Return default manifest structure
-      return {
-        domains: {},
-        plugins: [],
-        statistics: { totalPlugins: 0, totalDomains: 0 },
-      };
-    }
-  }
-
-  private async registerPluginsFromManifest(manifest: any) {
-    console.log("🎼 MusicalConductor: Registering plugins from manifest...");
-
-    console.log(
-      `🔌 Processing ${manifest.plugins.length} plugins from manifest`
-    );
-
-    // Iterate through plugins defined in manifest
-    for (const plugin of manifest.plugins) {
-      try {
-        if (plugin.autoMount) {
-          // Check if plugin is already mounted (prevents React StrictMode double execution)
-          if (this.mountedPlugins.has(plugin.name)) {
-            console.log(`⚠️ Plugin already mounted, skipping: ${plugin.name}`);
-            continue;
-          }
-
-          console.log(
-            `🔌 Loading plugin: ${plugin.name} (${plugin.domain} domain)`
-          );
-
-          // Dynamic plugin loading using pre-compiled JavaScript files
-          const pluginModule = await this.loadPluginModule(
-            `/plugins/${plugin.path}index.js`
-          );
-
-          // Validate plugin structure
-          if (!pluginModule.sequence || !pluginModule.handlers) {
-            console.error(
-              `❌ Plugin ${plugin.name} missing required exports (sequence, handlers)`
-            );
-            continue;
-          }
-
-          // Register the plugin using manifest metadata
-          await this.mount(
-            pluginModule.sequence,
-            pluginModule.handlers,
-            plugin.name,
-            {
-              domain: plugin.domain,
-              functionality: plugin.functionality,
-              priority: plugin.priority,
-              isCore: plugin.isCore,
-            }
-          );
-
-          // Call the plugin's CIA mount method if available
-          if (
-            pluginModule.CIAPlugin &&
-            typeof pluginModule.CIAPlugin.mount === "function"
-          ) {
-            try {
-              const mountResult = pluginModule.CIAPlugin.mount(
-                this,
-                this.eventBus
-              );
-              if (!mountResult) {
-                console.warn(
-                  `⚠️ Plugin ${plugin.name} mount method returned false`
-                );
-              }
-            } catch (error) {
-              console.error(
-                `❌ Plugin ${plugin.name} mount method failed:`,
-                error
-              );
-            }
-          }
-
-          console.log(`✅ Plugin registered: ${plugin.name}`);
-        } else {
-          console.log(`⏭️  Skipping plugin: ${plugin.name} (autoMount: false)`);
-        }
-      } catch (error) {
-        console.error(`❌ Failed to load plugin ${plugin.name}:`, error);
-        console.error(`❌ Plugin ${plugin.name} will not be available for use`);
-
-        // Continue with other plugins - don't fail entire registration
-      }
-    }
-
-    console.log("✅ Plugin registration from manifest completed");
-  }
-
-  private registerFallbackSequences() {
-    // Register basic event handlers for core functionality
-    console.log("🎼 MusicalConductor: Registering fallback sequences...");
-
-    // Basic drag and drop functionality
-    this.eventBus.subscribe("canvas:element:drag:start", (data: any) => {
-      console.log("🎼 Fallback: Canvas drag start", data);
-    });
-
-    this.eventBus.subscribe("canvas:element:drag:end", (data: any) => {
-      console.log("🎼 Fallback: Canvas drag end", data);
-    });
-
-    // Basic component loading
-    this.eventBus.subscribe("component:loading:start", (data: any) => {
-      console.log("🎼 Fallback: Component loading start", data);
-    });
-
-    console.log("✅ MusicalConductor: Fallback sequences registered");
-  }
+  // Legacy registerFallbackSequences method removed - now handled by PluginManager
 
   /**
    * Execute movement with handler validation (CIA-compliant)
@@ -951,7 +655,7 @@ export class MusicalConductor {
     data: any
   ): any {
     try {
-      const handlers = this.pluginHandlers.get(sequenceName);
+      const handlers = this.pluginManager.getPluginHandlers(sequenceName);
 
       if (!handlers) {
         console.warn(`🧠 No handlers found for sequence: ${sequenceName}`);
@@ -982,281 +686,9 @@ export class MusicalConductor {
     }
   }
 
-  /**
-   * Load plugin module - tries bundled ESM first, falls back to complex dependency resolution
-   * @param pluginPath - Path to the plugin module (e.g., "/plugins/App.app-shell-symphony/index.js")
-   * @returns Plugin module with exports
-   */
-  private async loadPluginModule(pluginPath: string): Promise<any> {
-    // Extract plugin directory from path
-    const pluginDir = pluginPath.substring(0, pluginPath.lastIndexOf("/"));
-    const bundledPath = `${pluginDir}/dist/plugin.js`;
+  // Legacy loadPluginModule method removed - now handled by PluginLoader
 
-    // Try to load bundled ESM version first
-    try {
-      console.log(`🔗 Attempting to load bundled plugin: ${bundledPath}`);
-
-      // Fetch the bundled ESM code
-      const response = await fetch(bundledPath);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      const bundledCode = await response.text();
-      console.log(
-        `📦 Bundled plugin code fetched (${bundledCode.length} chars)`
-      );
-
-      // Create a blob URL for the self-contained ESM code
-      const blob = new Blob([bundledCode], {
-        type: "application/javascript",
-      });
-      const blobUrl = URL.createObjectURL(blob);
-
-      try {
-        // Use dynamic import with the blob URL
-        const plugin = await import(/* @vite-ignore */ blobUrl);
-        console.log(`✅ Loaded bundled plugin:`, Object.keys(plugin));
-        return plugin;
-      } finally {
-        // Clean up the blob URL
-        URL.revokeObjectURL(blobUrl);
-      }
-    } catch (bundleError) {
-      console.log(
-        `⚠️ Bundled plugin not found, falling back to complex loading: ${
-          (bundleError as Error).message
-        }`
-      );
-      // Fall back to complex dependency resolution
-      return this.loadPluginModuleComplex(pluginPath);
-    }
-  }
-
-  /**
-   * Complex plugin loading with full dependency resolution (fallback method)
-   * @param pluginPath - Path to the plugin module
-   * @returns Plugin module with exports
-   */
-  private async loadPluginModuleComplex(pluginPath: string): Promise<any> {
-    try {
-      console.log(
-        `🔄 Loading plugin module with complex resolution: ${pluginPath}`
-      );
-
-      // Extract plugin directory from path
-      const pluginDir = pluginPath.substring(0, pluginPath.lastIndexOf("/"));
-      const moduleCache = new Map<string, any>();
-
-      // Helper function to load dependencies recursively
-      const loadDependency = async (relativePath: string): Promise<any> => {
-        const absolutePath = `${pluginDir}/${relativePath.replace("./", "")}`;
-        // Handle different file extensions:
-        // - .js files: use as-is
-        // - .ts/.tsx files: convert to .js
-        // - no extension: add .js
-        let fullPath: string;
-        if (absolutePath.endsWith(".js")) {
-          fullPath = absolutePath;
-        } else if (
-          absolutePath.endsWith(".ts") ||
-          absolutePath.endsWith(".tsx")
-        ) {
-          fullPath = absolutePath.replace(/\.tsx?$/, ".js");
-        } else {
-          fullPath = `${absolutePath}.js`;
-        }
-
-        if (moduleCache.has(fullPath)) {
-          return moduleCache.get(fullPath);
-        }
-
-        console.log(`📦 Loading dependency: ${relativePath} -> ${fullPath}`);
-
-        // Fetch dependency code
-        const depResponse = await fetch(fullPath);
-        if (!depResponse.ok) {
-          throw new Error(
-            `HTTP ${depResponse.status}: ${depResponse.statusText}`
-          );
-        }
-
-        const depCode = await depResponse.text();
-        console.log(`📦 Dependency code fetched (${depCode.length} chars)`);
-
-        // Create CommonJS environment for dependency
-        const depModuleExports: any = {};
-        const depModule = { exports: depModuleExports };
-
-        // Nested require function for dependencies
-        const nestedRequire = (nestedPath: string) => {
-          const resolvedPath = `${pluginDir}/${nestedPath.replace("./", "")}`;
-          // Handle different file extensions:
-          // - .js files: use as-is
-          // - .ts/.tsx files: convert to .js
-          // - no extension: add .js
-          let fullResolvedPath: string;
-          if (resolvedPath.endsWith(".js")) {
-            fullResolvedPath = resolvedPath;
-          } else if (
-            resolvedPath.endsWith(".ts") ||
-            resolvedPath.endsWith(".tsx")
-          ) {
-            fullResolvedPath = resolvedPath.replace(/\.tsx?$/, ".js");
-          } else {
-            fullResolvedPath = `${resolvedPath}.js`;
-          }
-
-          if (moduleCache.has(fullResolvedPath)) {
-            return moduleCache.get(fullResolvedPath);
-          }
-          console.warn(
-            `⚠️ Nested dependency not found in cache: ${nestedPath}`
-          );
-          return {};
-        };
-
-        // Execute dependency
-        const depWrappedCode = `
-          (function(exports, require, module, console) {
-            ${depCode}
-            return module.exports;
-          })
-        `;
-
-        const depModuleFactory = eval(depWrappedCode);
-        const depResult = depModuleFactory(
-          depModuleExports,
-          nestedRequire,
-          depModule,
-          console
-        );
-
-        // Cache result
-        moduleCache.set(fullPath, depResult);
-        console.log(
-          `✅ Dependency loaded: ${fullPath}`,
-          Object.keys(depResult)
-        );
-        return depResult;
-      };
-
-      // Load main plugin first to discover dependencies
-      const response = await fetch(pluginPath);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      const pluginCode = await response.text();
-      console.log(`📦 Plugin code fetched (${pluginCode.length} chars)`);
-
-      // Extract dependencies from the plugin code
-      const extractDependencies = (code: string): string[] => {
-        const requireRegex = /require\s*\(\s*["']([^"']+)["']\s*\)/g;
-        const dependencies: string[] = [];
-        let match;
-
-        while ((match = requireRegex.exec(code)) !== null) {
-          const dep = match[1];
-          if (dep.startsWith("./") || dep.startsWith("../")) {
-            dependencies.push(dep);
-          }
-        }
-
-        return [...new Set(dependencies)]; // Remove duplicates
-      };
-
-      const dependencies = extractDependencies(pluginCode);
-      console.log("🔍 Discovered dependencies:", dependencies);
-
-      // Pre-load all discovered dependencies
-      console.log("🔄 Pre-loading discovered dependencies...");
-      for (const dep of dependencies) {
-        try {
-          await loadDependency(dep);
-        } catch (e) {
-          console.log(`⚠️ Failed to load dependency ${dep}:`, e);
-        }
-      }
-
-      // Create synchronous require function using pre-loaded modules
-      const require = (relativePath: string) => {
-        const absolutePath = `${pluginDir}/${relativePath.replace("./", "")}`;
-        // Handle different file extensions:
-        // - .js files: use as-is
-        // - .ts/.tsx files: convert to .js
-        // - no extension: add .js
-        let fullPath: string;
-        if (absolutePath.endsWith(".js")) {
-          fullPath = absolutePath;
-        } else if (
-          absolutePath.endsWith(".ts") ||
-          absolutePath.endsWith(".tsx")
-        ) {
-          fullPath = absolutePath.replace(/\.tsx?$/, ".js");
-        } else {
-          fullPath = `${absolutePath}.js`;
-        }
-
-        if (moduleCache.has(fullPath)) {
-          console.log(`📋 Using cached module: ${relativePath}`);
-          return moduleCache.get(fullPath);
-        }
-
-        console.warn(`⚠️ Module not found in cache: ${relativePath}`);
-        return {};
-      };
-
-      // Plugin code already fetched above for dependency discovery
-
-      // Create CommonJS environment for main plugin
-      const moduleExports: any = {};
-      const module = { exports: moduleExports };
-
-      // Execute main plugin
-      const wrappedCode = `
-        (function(exports, require, module, console) {
-          ${pluginCode}
-          return module.exports;
-        })
-      `;
-
-      const moduleFactory = eval(wrappedCode);
-      const pluginModule = moduleFactory(
-        moduleExports,
-        require,
-        module,
-        console
-      );
-
-      console.log(`✅ Plugin module loaded:`, Object.keys(pluginModule));
-      return pluginModule;
-    } catch (error) {
-      console.error(`❌ Failed to load plugin module ${pluginPath}:`, error);
-
-      // Enhanced error handling with specific diagnostics
-      const errorMessage =
-        error instanceof Error ? error.message : "Unknown error";
-
-      if (errorMessage.includes("Cannot use import statement")) {
-        throw new Error(
-          `Plugin ${pluginPath} uses ES modules. Please recompile with CommonJS format.`
-        );
-      }
-
-      if (errorMessage.includes("is not a function")) {
-        throw new Error(
-          `Plugin ${pluginPath} has missing dependencies. Check require() calls.`
-        );
-      }
-
-      if (errorMessage.includes("HTTP 404")) {
-        throw new Error(`Plugin file not found: ${pluginPath}`);
-      }
-
-      throw error;
-    }
-  }
+  // Legacy loadPluginModuleComplex method removed - now handled by PluginLoader
 
   /**
    * Load plugin from dynamic import with error handling (CIA-compliant)
@@ -1267,28 +699,15 @@ export class MusicalConductor {
     try {
       console.log(`🧠 MusicalConductor: Loading plugin from: ${pluginPath}`);
 
-      const plugin = await this.loadPluginModule(pluginPath);
+      const plugin = await this.pluginManager.pluginLoader.loadPlugin(
+        pluginPath
+      );
 
-      // Validate plugin structure after import
-      if (!plugin || typeof plugin !== "object") {
-        console.warn(
-          `🧠 Failed to load plugin: invalid plugin structure at ${pluginPath}`
-        );
+      if (!plugin) {
         return {
           success: false,
           pluginId: "unknown",
-          message: `Failed to load plugin: invalid plugin structure at ${pluginPath}`,
-        };
-      }
-
-      if (!plugin.sequence || !plugin.handlers) {
-        console.warn(
-          `🧠 Plugin missing required exports (sequence, handlers): ${pluginPath}`
-        );
-        return {
-          success: false,
-          pluginId: plugin.sequence?.name || "unknown",
-          message: `Plugin missing required exports (sequence, handlers): ${pluginPath}`,
+          message: `Failed to load plugin: ${pluginPath}`,
         };
       }
 
@@ -1395,32 +814,7 @@ export class MusicalConductor {
    * @returns Success status
    */
   unmountPlugin(pluginId: string): boolean {
-    try {
-      if (!this.mountedPlugins.has(pluginId)) {
-        console.warn(`🧠 Plugin not found for unmounting: ${pluginId}`);
-        return false;
-      }
-
-      const plugin = this.mountedPlugins.get(pluginId)!;
-
-      // Unregister the sequence
-      this.unregisterSequence(plugin.sequence.name);
-
-      // Remove from mounted plugins
-      this.mountedPlugins.delete(pluginId);
-      this.pluginHandlers.delete(pluginId);
-
-      console.log(
-        `🧠 MusicalConductor: Successfully unmounted plugin: ${pluginId}`
-      );
-      return true;
-    } catch (error) {
-      console.error(
-        `🧠 MusicalConductor: Failed to unmount plugin ${pluginId}:`,
-        error
-      );
-      return false;
-    }
+    return this.pluginManager.unmountPlugin(pluginId);
   }
 
   /**
@@ -1429,7 +823,7 @@ export class MusicalConductor {
    * @returns Plugin information or undefined
    */
   getPluginInfo(pluginId: string): SPAPlugin | undefined {
-    return this.mountedPlugins.get(pluginId);
+    return this.pluginManager.getPluginInfo(pluginId);
   }
 
   /**
@@ -1437,7 +831,7 @@ export class MusicalConductor {
    * @returns Array of plugin IDs
    */
   getMountedPluginIds(): string[] {
-    return Array.from(this.mountedPlugins.keys());
+    return this.pluginManager.getMountedPluginIds();
   }
 
   // ===== MCO/MSO Resource Ownership and Instance Management Methods =====
@@ -1934,7 +1328,7 @@ export class MusicalConductor {
   getStatistics(): ConductorStatistics & { mountedPlugins: number } {
     return {
       ...this.statistics,
-      mountedPlugins: this.mountedPlugins.size,
+      mountedPlugins: this.pluginManager.getMountedPluginIds().length,
     };
   }
 
@@ -1952,7 +1346,7 @@ export class MusicalConductor {
       statistics: this.getStatistics(),
       eventBus: !!this.eventBus,
       sequences: this.sequenceRegistry.size(),
-      plugins: this.mountedPlugins.size,
+      plugins: this.pluginManager.getMountedPluginIds().length,
     };
   }
 
@@ -1972,6 +1366,7 @@ export class MusicalConductor {
       averageQueueWaitTime: 0,
       sequenceCompletionRate: 0,
       chainedSequences: 0,
+      successRate: 0,
     };
 
     console.log("🎼 MusicalConductor: Statistics reset");

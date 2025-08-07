@@ -96,7 +96,23 @@ describe("MusicalConductor - Simple TDD Tests", () => {
         tempo: 120,
         timeSignature: "4/4",
         category: SEQUENCE_CATEGORIES.COMPONENT_UI,
-        movements: [],
+        movements: [
+          {
+            name: "test-movement",
+            beats: [
+              {
+                beat: 1,
+                event: "test-event",
+                title: "Test Event",
+                description: "Test event for duplicate registration",
+                dynamics: MUSICAL_DYNAMICS.FORTE,
+                timing: MUSICAL_TIMING.IMMEDIATE,
+                errorHandling: "continue" as const,
+                data: {},
+              },
+            ],
+          },
+        ],
       };
 
       conductor.registerSequence(sequence);
@@ -111,9 +127,66 @@ describe("MusicalConductor - Simple TDD Tests", () => {
 
     it("should get all registered sequence names", () => {
       const sequences = [
-        { name: "Sequence 1", movements: [] },
-        { name: "Sequence 2", movements: [] },
-        { name: "Sequence 3", movements: [] },
+        {
+          name: "Sequence 1",
+          movements: [
+            {
+              name: "movement-1",
+              beats: [
+                {
+                  beat: 1,
+                  event: "test-event-1",
+                  title: "Test Event 1",
+                  description: "Test event 1",
+                  dynamics: MUSICAL_DYNAMICS.FORTE,
+                  timing: MUSICAL_TIMING.IMMEDIATE,
+                  errorHandling: "continue" as const,
+                  data: {},
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Sequence 2",
+          movements: [
+            {
+              name: "movement-2",
+              beats: [
+                {
+                  beat: 1,
+                  event: "test-event-2",
+                  title: "Test Event 2",
+                  description: "Test event 2",
+                  dynamics: MUSICAL_DYNAMICS.FORTE,
+                  timing: MUSICAL_TIMING.IMMEDIATE,
+                  errorHandling: "continue" as const,
+                  data: {},
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Sequence 3",
+          movements: [
+            {
+              name: "movement-3",
+              beats: [
+                {
+                  beat: 1,
+                  event: "test-event-3",
+                  title: "Test Event 3",
+                  description: "Test event 3",
+                  dynamics: MUSICAL_DYNAMICS.FORTE,
+                  timing: MUSICAL_TIMING.IMMEDIATE,
+                  errorHandling: "continue" as const,
+                  data: {},
+                },
+              ],
+            },
+          ],
+        },
       ];
 
       sequences.forEach((seq) => conductor.registerSequence(seq as any));
@@ -128,7 +201,23 @@ describe("MusicalConductor - Simple TDD Tests", () => {
     it("should unregister sequences", () => {
       const sequence = {
         name: "Unregister Test",
-        movements: [],
+        movements: [
+          {
+            name: "unregister-movement",
+            beats: [
+              {
+                beat: 1,
+                event: "unregister-event",
+                title: "Unregister Event",
+                description: "Test event for unregistration",
+                dynamics: MUSICAL_DYNAMICS.FORTE,
+                timing: MUSICAL_TIMING.IMMEDIATE,
+                errorHandling: "continue" as const,
+                data: {},
+              },
+            ],
+          },
+        ],
       };
 
       conductor.registerSequence(sequence as any);
@@ -190,10 +279,10 @@ describe("MusicalConductor - Simple TDD Tests", () => {
       expect(typeof sequenceId).toBe("string");
     });
 
-    it("should throw error for non-existent sequence", async () => {
-      await expect(
-        conductor.startSequence("Non-Existent Sequence")
-      ).rejects.toThrow();
+    it("should throw error for non-existent sequence", () => {
+      expect(() => {
+        conductor.startSequence("Non-Existent Sequence");
+      }).toThrow();
     });
 
     it("should handle sequence execution with data", async () => {

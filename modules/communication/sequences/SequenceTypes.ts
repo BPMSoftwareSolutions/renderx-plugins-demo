@@ -143,6 +143,7 @@ export interface ConductorStatistics {
   averageQueueWaitTime: number;
   sequenceCompletionRate: number;
   chainedSequences: number;
+  successRate: number;
 }
 
 /**
