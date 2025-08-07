@@ -4,7 +4,7 @@ A sophisticated sequence orchestration engine for managing complex workflows wit
 
 ## 🚀 Overview
 
-MusicalConductor is a lean, modular orchestration system that coordinates the execution of musical sequences (workflows) with advanced features like resource conflict resolution, React StrictMode handling, and comprehensive plugin management. Originally a 3,228-line monolith, it has been refactored into a clean 736-line coordinator with 20 specialized components.
+MusicalConductor is a lean, modular orchestration system that coordinates the execution of musical sequences (workflows) with advanced features like resource conflict resolution, React StrictMode handling, and comprehensive plugin management. Originally a 3,228-line monolith, it has been refactored into a clean ~600-line coordinator with 20 specialized components.
 
 ## ✨ Key Features
 
