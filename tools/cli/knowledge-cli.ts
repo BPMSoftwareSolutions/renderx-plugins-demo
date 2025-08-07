@@ -597,7 +597,104 @@ class KnowledgeCLI {
 
   private async handleQueue(options: any): Promise<void> {
     try {
-      if (options.status) {
+      if (options.consumed) {
+        // Handle consumed command
+        const transferId = options.consumed;
+        const agentId = this.getCurrentAgentId(options);
+
+        try {
+          const success = this.transferQueue.markAsConsumed(
+            transferId,
+            agentId
+          );
+          if (success) {
+            console.log(
+              `✅ Transfer ${transferId} marked as consumed by ${agentId}`
+            );
+          } else {
+            console.log(`❌ Failed to mark transfer ${transferId} as consumed`);
+            console.log(
+              `💡 Check that the transfer exists and you have permission to consume it`
+            );
+          }
+        } catch (error) {
+          console.log(
+            `❌ Error marking transfer as consumed: ${
+              error instanceof Error ? error.message : String(error)
+            }`
+          );
+        }
+      } else if (options.sent) {
+        // Handle sent command
+        const transferId = options.sent;
+        const agentId = this.getCurrentAgentId(options);
+
+        try {
+          const success = this.transferQueue.markAsSent(transferId, agentId);
+          if (success) {
+            console.log(
+              `✅ Transfer ${transferId} marked as sent by ${agentId}`
+            );
+          } else {
+            console.log(`❌ Failed to mark transfer ${transferId} as sent`);
+          }
+        } catch (error) {
+          console.log(
+            `❌ Error marking transfer as sent: ${
+              error instanceof Error ? error.message : String(error)
+            }`
+          );
+        }
+      } else if (options.received) {
+        // Handle received command
+        const transferId = options.received;
+        const agentId = this.getCurrentAgentId(options);
+
+        try {
+          const success = this.transferQueue.markAsReceived(
+            transferId,
+            agentId
+          );
+          if (success) {
+            console.log(
+              `✅ Transfer ${transferId} marked as received by ${agentId}`
+            );
+          } else {
+            console.log(`❌ Failed to mark transfer ${transferId} as received`);
+          }
+        } catch (error) {
+          console.log(
+            `❌ Error marking transfer as received: ${
+              error instanceof Error ? error.message : String(error)
+            }`
+          );
+        }
+      } else if (options.failed) {
+        // Handle failed command
+        const transferId = options.failed;
+        const agentId = this.getCurrentAgentId(options);
+
+        try {
+          const success = this.transferQueue.markAsFailed(
+            transferId,
+            agentId,
+            "Marked as failed via CLI"
+          );
+          if (success) {
+            console.log(
+              `✅ Transfer ${transferId} marked as failed by ${agentId}`
+            );
+          } else {
+            console.log(`❌ Failed to mark transfer ${transferId} as failed`);
+          }
+        } catch (error) {
+          console.log(
+            `❌ Error marking transfer as failed: ${
+              error instanceof Error ? error.message : String(error)
+            }`
+          );
+        }
+      } else if (options.status) {
         const status = this.transferQueue.getQueueStatus();
         const agents = this.transferQueue.getAllAgentStatuses();
 
@@ -745,6 +842,21 @@ class KnowledgeCLI {
     if (hours > 0) return `${hours}h ago`;
     if (minutes > 0) return `${minutes}m ago`;
     return "just now";
+  }
+
+  private getCurrentAgentId(options: any): string {
+    // Try to get agent ID from options first
+    if (options.agent) {
+      return options.agent;
+    }
+
+    // Try to get from environment variable
+    if (process.env.AGENT_ID) {
+      return process.env.AGENT_ID;
+    }
+
+    // Default fallback - could be improved with better agent detection
+    return "current-agent";
   }
 
   private showNextStepsForCurrentAgent(): void {

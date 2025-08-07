@@ -158,7 +158,7 @@
         "toAgentId": "cli-improvement-agent",
         "knowledgeFile": "queue-cli-improvement-knowledge.json",
         "priority": "high",
-        "state": "sent",
+        "state": "consumed",
         "metadata": {
           "title": "Knowledge Transfer Queue CLI Usability Issues",
           "description": "Identified usability issues and missing functionality in the knowledge transfer queue CLI system. Includes missing consumed command implementation, agent ID inference issues, and proposed solutions for better agent coordination.",
@@ -171,13 +171,13 @@
           ],
           "estimatedSize": 8651,
           "createdAt": 1754590237802,
-          "updatedAt": 1754590237804,
+          "updatedAt": 1754591097122,
           "expiresAt": 1754763037802
         },
         "progress": {
           "sent": true,
           "received": false,
-          "consumed": false,
+          "consumed": true,
           "validated": false
         },
         "history": [
@@ -192,6 +192,12 @@
             "state": "sent",
             "agentId": "event-types-refactoring-agent",
             "message": "Knowledge file sent"
+          },
+          {
+            "timestamp": 1754591097122,
+            "state": "consumed",
+            "agentId": "cli-improvement-agent",
+            "message": "Knowledge successfully imported and processed"
           }
         ]
       }
@@ -252,7 +258,18 @@
         "pendingConsumes": 0,
         "totalTransfers": 2
       }
+    ],
+    [
+      "cli-improvement-agent",
+      {
+        "agentId": "cli-improvement-agent",
+        "lastSeen": 1754591097122,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 1
+      }
     ]
   ],
-  "lastUpdated": 1754590237805
+  "lastUpdated": 1754591097123
 }
