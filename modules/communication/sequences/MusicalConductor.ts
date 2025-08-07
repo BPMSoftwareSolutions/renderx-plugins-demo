@@ -54,6 +54,7 @@ import { DuplicationDetector } from "./monitoring/DuplicationDetector";
 import { EventLogger } from "./monitoring/EventLogger";
 import { SequenceValidator } from "./validation/SequenceValidator";
 import { SequenceUtilities } from "./utilities/SequenceUtilities";
+import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -113,6 +114,9 @@ export class MusicalConductor {
 
   // Utility components
   private sequenceUtilities: SequenceUtilities;
+
+  // Orchestration components
+  private sequenceOrchestrator: SequenceOrchestrator;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -177,6 +181,18 @@ export class MusicalConductor {
     );
     this.resourceManager = new ResourceManager();
     this.resourceDelegator = new ResourceDelegator(this.resourceManager);
+
+    // Initialize orchestration components (after all dependencies are ready)
+    this.sequenceOrchestrator = new SequenceOrchestrator(
+      eventBus,
+      this.sequenceRegistry,
+      this.executionQueue,
+      this.sequenceExecutor,
+      this.statisticsManager,
+      this.sequenceValidator,
+      this.sequenceUtilities,
+      this.resourceDelegator
+    );
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -608,140 +624,20 @@ export class MusicalConductor {
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): string {
-    const requestId = `${sequenceName}-${Date.now()}-${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
+    const result = this.sequenceOrchestrator.startSequence(
+      sequenceName,
+      data,
+      priority
+    );
 
-    try {
-      const sequence = this.sequenceRegistry.get(sequenceName);
-      if (!sequence) {
-        console.error(
-          `❌ MusicalConductor: Sequence "${sequenceName}" not found!`
-        );
-        console.error(
-          `❌ This means the plugin for "${sequenceName}" is not loaded or registered.`
-        );
-        console.error(
-          `❌ Available sequences:`,
-          this.sequenceRegistry.getNames()
-        );
-        if (sequenceName === "ElementLibrary.library-drop-symphony") {
-          console.error(
-            `❌ CRITICAL: ElementLibrary.library-drop-symphony not available - drag-and-drop will not work!`
-          );
-          console.error(
-            `❌ Check plugin loading logs above for ElementLibrary.library-drop-symphony errors.`
-          );
-        }
-        throw new Error(`Sequence "${sequenceName}" not found`);
+    if (!result.success) {
+      if (result.isDuplicate) {
+        return result.requestId; // Return duplicate request ID for tracking
       }
-
-      // Phase 3: StrictMode Protection & Idempotency Check
-      const deduplicationResult =
-        this.sequenceValidator.deduplicateSequenceRequest(
-          sequenceName,
-          data,
-          priority
-        );
-
-      if (deduplicationResult.isDuplicate) {
-        console.warn(`🎼 MCO: ${deduplicationResult.reason}`);
-
-        // For StrictMode duplicates, return the original request ID pattern but don't execute
-        const duplicateRequestId = `${sequenceName}-duplicate-${Date.now()}-${Math.random()
-          .toString(36)
-          .substr(2, 9)}`;
-
-        // Emit a duplicate event for monitoring
-        this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_CANCELLED, {
-          sequenceName,
-          requestId: duplicateRequestId,
-          reason: "duplicate-request",
-          hash: deduplicationResult.hash,
-        });
-
-        return duplicateRequestId;
-      }
-
-      // Phase 3: Record sequence execution IMMEDIATELY to prevent race conditions
-      this.recordSequenceExecution(deduplicationResult.hash);
-
-      // MCO/MSO: Extract symphony and resource information
-      const symphonyName = this.extractSymphonyName(sequenceName);
-      const resourceId = this.extractResourceId(sequenceName, data);
-      const instanceId = this.createSequenceInstanceId(
-        sequenceName,
-        data.instanceId
-      );
-
-      // MCO/MSO: Check for resource conflicts
-      const conflictResult = this.checkResourceConflict(
-        resourceId,
-        symphonyName,
-        priority,
-        instanceId
-      );
-
-      if (conflictResult.resolution === "REJECT") {
-        console.warn(
-          `🎼 MCO: Sequence request rejected - ${conflictResult.message}`
-        );
-        throw new Error(`Resource conflict: ${conflictResult.message}`);
-      }
-
-      // Create sequence request with MCO/MSO metadata and idempotency hash
-      const sequenceRequest: SequenceRequest = {
-        sequenceName,
-        data: {
-          ...data,
-          // MCO/MSO: Add instance and resource tracking
-          instanceId,
-          symphonyName,
-          resourceId,
-          conflictResult,
-          // Phase 3: Add idempotency hash
-          sequenceHash: deduplicationResult.hash,
-        },
-        priority,
-        requestId,
-        queuedAt: performance.now(),
-      };
-
-      // Update statistics
-      this.statisticsManager.recordSequenceQueued();
-
-      // Starting sequence - internal logging disabled for cleaner output
-
-      console.log(
-        `🔍 DEBUG: ${sequenceName} - priority: ${priority}, activeSequence: ${
-          this.sequenceExecutor.getCurrentSequence()?.sequenceName || "none"
-        }`
-      );
-
-      // Add to execution queue
-      this.executionQueue.enqueue(sequenceRequest);
-
-      // Process queue if not currently executing
-      if (!this.sequenceExecutor.isSequenceRunning()) {
-        this.processSequenceQueue();
-      }
-
-      this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_QUEUED, {
-        sequenceName,
-        requestId,
-        priority,
-        queueLength: this.executionQueue.size(),
-      });
-
-      return requestId;
-    } catch (error) {
-      console.error(
-        `🎼 MusicalConductor: Failed to start sequence: ${sequenceName}`,
-        error
-      );
-      this.statisticsManager.recordError();
-      throw error;
+      throw new Error(result.reason || "Failed to start sequence");
     }
+
+    return result.requestId;
   }
 
   // Legacy executeSequenceImmediately method removed - now handled by SequenceExecutor
@@ -753,69 +649,14 @@ export class MusicalConductor {
   private createExecutionContext(
     sequenceRequest: SequenceRequest
   ): SequenceExecutionContext {
-    const sequence = this.sequenceRegistry.get(sequenceRequest.sequenceName)!;
-
-    // Determine execution type based on whether there was an active sequence when this was queued
-    const executionType = this.sequenceExecutor.isSequenceRunning()
-      ? "CONSECUTIVE"
-      : "IMMEDIATE";
-
-    return {
-      id: sequenceRequest.requestId,
-      sequenceName: sequenceRequest.sequenceName,
-      sequence,
-      data: sequenceRequest.data,
-      payload: {}, // 🎽 Initialize the data baton as empty object
-      startTime: performance.now(),
-      currentMovement: 0,
-      currentBeat: 0,
-      completedBeats: [],
-      errors: [],
-      priority: sequenceRequest.priority,
-      executionType,
-      queuedAt: sequenceRequest.queuedAt,
-    };
+    return this.sequenceOrchestrator.createExecutionContext(sequenceRequest);
   }
 
   /**
    * Process next sequence in queue
    */
   private async processSequenceQueue(): Promise<void> {
-    if (
-      !this.executionQueue.isEmpty() &&
-      !this.sequenceExecutor.isSequenceRunning()
-    ) {
-      const nextRequest = this.executionQueue.dequeue();
-      if (nextRequest) {
-        const waitTime = performance.now() - nextRequest.queuedAt;
-
-        // Update queue wait time statistics
-        this.updateQueueWaitTimeStatistics(waitTime);
-
-        // Get the sequence and execute it
-        const sequence = this.sequenceRegistry.get(nextRequest.sequenceName);
-        if (sequence) {
-          try {
-            await this.sequenceExecutor.executeSequence(nextRequest, sequence);
-            // Process next sequence in queue
-            this.processSequenceQueue();
-          } catch (error) {
-            console.error(
-              `❌ Failed to execute sequence ${nextRequest.sequenceName}:`,
-              error
-            );
-            // Continue processing queue even if one sequence fails
-            this.processSequenceQueue();
-          }
-        } else {
-          console.error(
-            `❌ Sequence ${nextRequest.sequenceName} not found in registry`
-          );
-          // Continue processing queue
-          this.processSequenceQueue();
-        }
-      }
-    }
+    await this.sequenceOrchestrator.processSequenceQueue();
   }
 
   /**
