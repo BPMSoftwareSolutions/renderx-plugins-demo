@@ -58,6 +58,7 @@ import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator";
 import { EventOrchestrator } from "./orchestration/EventOrchestrator";
 import { ConductorAPI } from "./api/ConductorAPI";
 import { StrictModeManager } from "./strictmode/StrictModeManager";
+import { ResourceConflictManager } from "./resources/ResourceConflictManager";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -128,30 +129,13 @@ export class MusicalConductor {
   // StrictMode components
   private strictModeManager: StrictModeManager;
 
-  // Legacy properties removed - now handled by specialized components
+  // Resource conflict components
+  private resourceConflictManager: ResourceConflictManager;
 
-  // Getters for accessing core components
+  // Core component getters
   private get eventBus(): EventBus {
     return this.conductorCore.getEventBus();
   }
-
-  private get spaValidator(): SPAValidator {
-    return this.conductorCore.getSPAValidator();
-  }
-
-  // Legacy sequences getter removed - now use sequenceRegistry directly
-
-  // Legacy beat execution properties removed - now handled by BeatExecutor
-
-  // Legacy plugin properties removed - now handled by PluginManager
-
-  // Legacy resource properties removed - now handled by ResourceManager
-
-  // Legacy monitoring properties removed - now handled by monitoring components
-
-  // SPA Validation - now accessed via getter
-
-  // Legacy logging properties removed - now handled by EventLogger
 
   private constructor(eventBus: EventBus) {
     // Initialize core components
@@ -219,6 +203,13 @@ export class MusicalConductor {
     // Initialize StrictMode components
     this.strictModeManager = new StrictModeManager(this.duplicationDetector);
 
+    // Initialize resource conflict components
+    this.resourceConflictManager = new ResourceConflictManager(
+      this.resourceManager,
+      this.resourceDelegator,
+      this.sequenceUtilities
+    );
+
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
 
@@ -254,35 +245,6 @@ export class MusicalConductor {
     }
     MusicalConductor.instance = null;
     console.log("🔄 MusicalConductor: Singleton instance reset");
-  }
-
-  /**
-   * Set up beat execution logging
-   * Protected against duplicate initialization within the singleton
-   */
-  private setupBeatExecutionLogging(): void {
-    this.eventLogger.setupBeatExecutionLogging();
-  }
-
-  // Legacy cleanupEventSubscriptions method removed - now handled by EventLogger
-
-  // Legacy logging methods removed - now handled by EventLogger
-
-  /**
-   * Get movement name for a specific beat in a sequence
-   * @param sequenceName - Name of the sequence
-   * @param beatNumber - Beat number
-   * @returns Movement name or fallback
-   */
-  private getMovementNameForBeat(
-    sequenceName: string,
-    beatNumber: number
-  ): string {
-    const movementInfo = this.sequenceUtilities.getMovementNameForBeat(
-      sequenceName,
-      beatNumber
-    );
-    return movementInfo.name;
   }
 
   /**
@@ -401,15 +363,6 @@ export class MusicalConductor {
   }
 
   /**
-   * Check if the caller is authorized to use conductor subscription methods
-   * @param callerInfo - Information about the caller from stack analysis
-   * @returns True if authorized, false otherwise
-   */
-  private isAuthorizedSubscriber(callerInfo: any): boolean {
-    return this.sequenceUtilities.isAuthorizedSubscriber(callerInfo);
-  }
-
-  /**
    * Mount an SPA plugin with comprehensive validation (CIA-compliant)
    * @param sequence - The sequence definition from the plugin
    * @param handlers - The handlers object from the plugin
@@ -433,12 +386,6 @@ export class MusicalConductor {
     return this.pluginInterface.registerCIAPlugins();
   }
 
-  // Legacy loadPluginManifest method removed - now handled by PluginManifestLoader
-
-  // Legacy registerPluginsFromManifest method removed - now handled by PluginManager
-
-  // Legacy registerFallbackSequences method removed - now handled by PluginManager
-
   /**
    * Execute movement with handler validation (CIA-compliant)
    * @param sequenceName - Sequence name identifier
@@ -458,10 +405,6 @@ export class MusicalConductor {
     );
   }
 
-  // Legacy loadPluginModule method removed - now handled by PluginLoader
-
-  // Legacy loadPluginModuleComplex method removed - now handled by PluginLoader
-
   /**
    * Load plugin from dynamic import with error handling (CIA-compliant)
    * @param pluginPath - Path to the plugin module
@@ -471,14 +414,11 @@ export class MusicalConductor {
     return this.pluginInterface.loadPlugin(pluginPath);
   }
 
-  // Legacy extractPluginCode method removed - now handled by PluginInterfaceFacade
-
   /**
    * Validate plugin pre-compilation status
    * @param pluginId - Plugin identifier
    * @returns Validation result
    */
-  // Legacy validatePluginPreCompilation method removed - now handled by PluginInterfaceFacade
 
   /**
    * Unmount a plugin (CIA-compliant)
@@ -506,132 +446,12 @@ export class MusicalConductor {
     return this.pluginInterface.getMountedPluginIds();
   }
 
-  // ===== MCO/MSO Resource Ownership and Instance Management Methods =====
-
-  /**
-   * Create a unique sequence instance ID
-   * @param sequenceName - Name of the sequence
-   * @param instanceId - Optional custom instance ID
-   * @returns Unique instance ID
-   */
-  private createSequenceInstanceId(
-    sequenceName: string,
-    instanceId?: string
-  ): string {
-    if (instanceId) {
-      return `${sequenceName}-${instanceId}`;
-    }
-    return this.sequenceUtilities.createSequenceInstanceId(
-      sequenceName,
-      {},
-      "NORMAL"
-    );
-  }
-
-  /**
-   * Extract symphony name from sequence name (e.g., "JsonLoader.json-component-symphony" -> "JsonLoader")
-   * @param sequenceName - Full sequence name
-   * @returns Symphony name
-   */
-  private extractSymphonyName(sequenceName: string): string {
-    return this.sequenceUtilities.extractSymphonyName(sequenceName);
-  }
-
-  /**
-   * Extract resource ID from sequence data or generate one
-   * @param sequenceName - Sequence name
-   * @param data - Sequence data
-   * @returns Resource ID
-   */
-  private extractResourceId(
-    sequenceName: string,
-    data: Record<string, any>
-  ): string {
-    return this.sequenceUtilities.extractResourceId(sequenceName, data);
-  }
-
-  /**
-   * Check if there's a resource conflict for a sequence request
-   * @param resourceId - Resource identifier
-   * @param symphonyName - Symphony requesting the resource
-   * @param priority - Request priority
-   * @param instanceId - Instance identifier
-   * @returns Conflict analysis result
-   */
-  private checkResourceConflict(
-    resourceId: string,
-    symphonyName: string,
-    priority: SequencePriority,
-    instanceId: string
-  ): ResourceConflictResult {
-    const delegatorResult = this.resourceDelegator.checkResourceConflict(
-      resourceId,
-      instanceId,
-      priority
-    );
-
-    // Convert ResourceDelegator result to MusicalConductor result format
-    return {
-      hasConflict: delegatorResult.hasConflict,
-      conflictType: delegatorResult.hasConflict ? "SAME_RESOURCE" : "NONE",
-      resolution:
-        delegatorResult.resolution === "override"
-          ? "ALLOW"
-          : delegatorResult.resolution === "reject"
-          ? "REJECT"
-          : delegatorResult.resolution === "queue"
-          ? "QUEUE"
-          : "ALLOW",
-      message: delegatorResult.reason || "No conflict detected",
-    };
-  }
-
-  /**
-   * Acquire resource ownership for a sequence instance
-   * @param resourceId - Resource identifier
-   * @param symphonyName - Symphony name
-   * @param instanceId - Instance identifier
-   * @param priority - Request priority
-   * @param sequenceExecutionId - Sequence execution ID
-   * @returns Success status
-   */
-  private acquireResourceOwnership(
-    resourceId: string,
-    symphonyName: string,
-    instanceId: string,
-    priority: SequencePriority,
-    sequenceExecutionId: string
-  ): boolean {
-    const result = this.resourceDelegator.acquireResourceOwnership(
-      resourceId,
-      instanceId,
-      priority
-    );
-    return result.acquired;
-  }
-
-  /**
-   * Release resource ownership
-   * @param resourceId - Resource identifier
-   * @param sequenceExecutionId - Sequence execution ID (for verification)
-   */
-  private releaseResourceOwnership(
-    resourceId: string,
-    sequenceExecutionId?: string
-  ): void {
-    this.resourceDelegator.releaseResourceOwnership(
-      resourceId,
-      sequenceExecutionId || "unknown"
-    );
-  }
-
   /**
    * Set priority for an event type
    * @param eventType - Event type
    * @param priority - Priority level (MUSICAL_DYNAMICS value)
    */
   setPriority(eventType: string, priority: string): void {
-    // Legacy priorities tracking removed - priority now handled by ExecutionQueue
     console.log(
       `🎼 MusicalConductor: Set priority for ${eventType}: ${priority}`
     );
@@ -665,8 +485,6 @@ export class MusicalConductor {
     return result.requestId;
   }
 
-  // Legacy executeSequenceImmediately method removed - now handled by SequenceExecutor
-
   /**
    * Create execution context for a sequence
    * @param sequenceRequest - Sequence request
@@ -675,21 +493,6 @@ export class MusicalConductor {
     sequenceRequest: SequenceRequest
   ): SequenceExecutionContext {
     return this.sequenceOrchestrator.createExecutionContext(sequenceRequest);
-  }
-
-  /**
-   * Process next sequence in queue
-   */
-  private async processSequenceQueue(): Promise<void> {
-    await this.sequenceOrchestrator.processSequenceQueue();
-  }
-
-  /**
-   * Update queue wait time statistics
-   * @param waitTime - Wait time in milliseconds
-   */
-  private updateQueueWaitTimeStatistics(waitTime: number): void {
-    this.statisticsManager.updateQueueWaitTime(waitTime);
   }
 
   /**
@@ -729,14 +532,6 @@ export class MusicalConductor {
     return this.executionQueue.getStatus();
   }
 
-  // Legacy executeSequence method removed - now handled by SequenceExecutor
-
-  // Legacy executeMovement method removed - now handled by MovementExecutor
-
-  // Legacy executeBeat and processBeatQueue methods removed - now handled by BeatExecutor
-
-  // Legacy executeActualBeat method removed - now handled by BeatExecutor
-
   /**
    * Emit an event through the event bus
    * @param eventType - Event type
@@ -758,14 +553,6 @@ export class MusicalConductor {
       throw new Error(result.error || "Failed to emit event");
     }
   }
-
-  // Legacy emitEventWithCompletion method removed - now handled by BeatExecutor
-
-  // Legacy handleBeatCompletion and handleBeatTimeout methods removed - now handled by BeatExecutor
-
-  // Legacy completeSequence method removed - now handled by SequenceExecutor
-
-  // Legacy failSequence method removed - now handled by SequenceExecutor
 
   // ===== Orchestration Validation Compliance Methods =====
 
@@ -848,7 +635,7 @@ export class MusicalConductor {
    * @returns Resource ownership map
    */
   getResourceOwnership(): Map<string, ResourceOwner> {
-    return this.resourceManager.getResourceOwnership();
+    return this.resourceConflictManager.getResourceOwnership();
   }
 
   /**
@@ -856,7 +643,7 @@ export class MusicalConductor {
    * @returns Symphony to resources mapping
    */
   getSymphonyResourceMap(): Map<string, Set<string>> {
-    return this.resourceManager.getSymphonyResourceMap();
+    return this.resourceConflictManager.getSymphonyResourceMap();
   }
 
   /**
@@ -865,87 +652,5 @@ export class MusicalConductor {
    */
   getSequenceInstances(): Map<string, any> {
     return this.resourceManager.getSequenceInstances();
-  }
-
-  // ===== Phase 2: Conflict Resolution Strategies =====
-
-  // Legacy resolveResourceConflict_Reject method removed - now handled by ResourceConflictResolver
-
-  // Legacy resolveResourceConflict_Queue method removed - now handled by ResourceConflictResolver
-
-  /**
-   * Resolve resource conflict using INTERRUPT strategy (HIGH priority only)
-   * @param resourceId - Resource identifier
-   * @param requestingSymphony - Symphony requesting the resource
-   * @param requestingInstanceId - Requesting instance ID
-   * @param requestingPriority - Requesting priority
-   * @param requestingExecutionId - Requesting execution ID
-   * @param currentOwner - Current resource owner
-   * @returns Resolution result
-   */
-  // Legacy resolveResourceConflict_Interrupt method removed - now handled by ResourceConflictResolver
-
-  /**
-   * Enhanced resource conflict resolution with strategy selection
-   * @param resourceId - Resource identifier
-   * @param symphonyName - Symphony requesting the resource
-   * @param instanceId - Instance identifier
-   * @param priority - Request priority
-   * @param sequenceExecutionId - Sequence execution ID
-   * @param sequenceRequest - Full sequence request (for queuing)
-   * @returns Resolution result
-   */
-  private resolveResourceConflictAdvanced(
-    resourceId: string,
-    symphonyName: string,
-    instanceId: string,
-    priority: SequencePriority,
-    sequenceExecutionId: string,
-    sequenceRequest: SequenceRequest
-  ): { success: boolean; message: string; strategy: string } {
-    return this.resourceManager.resolveResourceConflictAdvanced(
-      resourceId,
-      symphonyName,
-      instanceId,
-      priority,
-      sequenceExecutionId,
-      sequenceRequest
-    );
-  }
-
-  // ===== Phase 3: StrictMode Protection & Idempotency Methods =====
-
-  // Legacy generateSequenceHash method removed - now handled by SequenceValidator
-
-  /**
-   * Check if a sequence request is a duplicate within the idempotency window
-   * @param sequenceHash - Hash of the sequence request
-   * @returns True if this is a duplicate request
-   */
-  private isDuplicateSequenceRequest(sequenceHash: string): boolean {
-    return this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash)
-      .isDuplicate;
-  }
-
-  /**
-   * Record a sequence execution to prevent future duplicates
-   * @param sequenceHash - Hash of the sequence request
-   */
-  private recordSequenceExecution(sequenceHash: string): void {
-    this.strictModeManager.recordSequenceExecution(sequenceHash);
-  }
-
-  // Legacy cleanupOldExecutionRecords method removed - now handled by DuplicationDetector
-
-  // Legacy deduplicateSequenceRequest method removed - now handled by SequenceValidator
-
-  /**
-   * Check if this is a React StrictMode duplicate call
-   * @param data - Sequence data
-   * @returns True if this appears to be a StrictMode duplicate
-   */
-  private isStrictModeDuplicate(data: Record<string, any>): boolean {
-    return this.strictModeManager.isStrictModeDuplicate(data)
-      .isStrictModeDuplicate;
   }
 }
