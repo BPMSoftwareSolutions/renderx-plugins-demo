@@ -45,6 +45,156 @@
           }
         ]
       }
+    ],
+    [
+      "transfer-1754589920952-ot8hi9co5",
+      {
+        "transferId": "transfer-1754589920952-ot8hi9co5",
+        "fromAgentId": "agent-a-senior-dev",
+        "toAgentId": "agent-b-junior-dev",
+        "knowledgeFile": "demo-plugin-knowledge.json",
+        "priority": "high",
+        "state": "consumed",
+        "metadata": {
+          "title": "Plugin Development Best Practices",
+          "description": "Comprehensive plugin development knowledge including patterns and examples",
+          "knowledgeType": [
+            "plugins",
+            "best-practices",
+            "examples"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754589920952,
+          "updatedAt": 1754589920967,
+          "expiresAt": 1754676320952
+        },
+        "progress": {
+          "sent": true,
+          "received": true,
+          "consumed": true,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754589920952,
+            "state": "pending",
+            "agentId": "agent-a-senior-dev",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754589920959,
+            "state": "sent",
+            "agentId": "agent-a-senior-dev",
+            "message": "Knowledge file sent"
+          },
+          {
+            "timestamp": 1754589920961,
+            "state": "received",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge file received"
+          },
+          {
+            "timestamp": 1754589920967,
+            "state": "consumed",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge successfully imported and processed",
+            "details": {
+              "importedPlugins": 3,
+              "newBestPractices": 12,
+              "successfulImport": true
+            }
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754589920955-pjzw6u0s3",
+      {
+        "transferId": "transfer-1754589920955-pjzw6u0s3",
+        "fromAgentId": "agent-c-test-expert",
+        "toAgentId": "agent-a-senior-dev",
+        "knowledgeFile": "demo-testing-knowledge.json",
+        "priority": "normal",
+        "state": "sent",
+        "metadata": {
+          "title": "Advanced Testing Strategies",
+          "description": "Unit testing, integration testing, and test automation knowledge",
+          "knowledgeType": [
+            "testing",
+            "automation",
+            "strategies"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754589920955,
+          "updatedAt": 1754589920969
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754589920955,
+            "state": "pending",
+            "agentId": "agent-c-test-expert",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754589920969,
+            "state": "sent",
+            "agentId": "agent-c-test-expert",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754590237802-2lt8wy9l5",
+      {
+        "transferId": "transfer-1754590237802-2lt8wy9l5",
+        "fromAgentId": "event-types-refactoring-agent",
+        "toAgentId": "cli-improvement-agent",
+        "knowledgeFile": "queue-cli-improvement-knowledge.json",
+        "priority": "high",
+        "state": "sent",
+        "metadata": {
+          "title": "Knowledge Transfer Queue CLI Usability Issues",
+          "description": "Identified usability issues and missing functionality in the knowledge transfer queue CLI system. Includes missing consumed command implementation, agent ID inference issues, and proposed solutions for better agent coordination.",
+          "knowledgeType": [
+            "cli-improvement",
+            "usability",
+            "bug-fixes",
+            "missing-functionality",
+            "agent-coordination"
+          ],
+          "estimatedSize": 8651,
+          "createdAt": 1754590237802,
+          "updatedAt": 1754590237804,
+          "expiresAt": 1754763037802
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754590237802,
+            "state": "pending",
+            "agentId": "event-types-refactoring-agent",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754590237804,
+            "state": "sent",
+            "agentId": "event-types-refactoring-agent",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
     ]
   ],
   "agents": [
@@ -58,7 +208,51 @@
         "pendingConsumes": 0,
         "totalTransfers": 1
       }
+    ],
+    [
+      "agent-a-senior-dev",
+      {
+        "agentId": "agent-a-senior-dev",
+        "lastSeen": 1754589920959,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 2
+      }
+    ],
+    [
+      "agent-c-test-expert",
+      {
+        "agentId": "agent-c-test-expert",
+        "lastSeen": 1754589920969,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 1
+      }
+    ],
+    [
+      "agent-b-junior-dev",
+      {
+        "agentId": "agent-b-junior-dev",
+        "lastSeen": 1754589920967,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 1
+      }
+    ],
+    [
+      "event-types-refactoring-agent",
+      {
+        "agentId": "event-types-refactoring-agent",
+        "lastSeen": 1754590237804,
+        "isOnline": true,
+        "pendingReceives": 1,
+        "pendingConsumes": 0,
+        "totalTransfers": 2
+      }
     ]
   ],
-  "lastUpdated": 1754588505456
+  "lastUpdated": 1754590237805
 }

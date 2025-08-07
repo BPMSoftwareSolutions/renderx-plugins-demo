@@ -80,7 +80,7 @@ export class EventOrchestrator {
         `🎼 EventOrchestrator: Failed to emit event ${eventType}:`,
         error
       );
-      
+
       return {
         success: false,
         eventType,
@@ -117,7 +117,7 @@ export class EventOrchestrator {
         `🎼 EventOrchestrator: Failed to emit simple event ${eventType}:`,
         error
       );
-      
+
       return {
         success: false,
         eventType,
@@ -162,18 +162,6 @@ export class EventOrchestrator {
     eventType: string,
     contextualEventData: ContextualEventData
   ): void {
-    // Special debugging for canvas-element-created
-    if (eventType === "canvas-element-created") {
-      console.log(
-        "🔍 DEBUG: EventOrchestrator emitting canvas-element-created event"
-      );
-      console.log("🔍 DEBUG: Event data:", contextualEventData);
-      console.log(
-        "🔍 DEBUG: EventBus subscribers for canvas-element-created:",
-        this.eventBus.getSubscriberCount("canvas-element-created")
-      );
-    }
-
     // Special debugging for sequence events
     if (eventType.includes("sequence")) {
       if (this.debugMode) {
@@ -227,7 +215,9 @@ export class EventOrchestrator {
    */
   setDebugMode(enabled: boolean): void {
     this.debugMode = enabled;
-    console.log(`🎼 EventOrchestrator: Debug mode ${enabled ? "enabled" : "disabled"}`);
+    console.log(
+      `🎼 EventOrchestrator: Debug mode ${enabled ? "enabled" : "disabled"}`
+    );
   }
 
   /**
@@ -253,7 +243,11 @@ export class EventOrchestrator {
     const results: EventEmissionResult[] = [];
 
     for (const event of events) {
-      const result = this.emitEvent(event.eventType, event.data, executionContext);
+      const result = this.emitEvent(
+        event.eventType,
+        event.data,
+        executionContext
+      );
       results.push(result);
 
       // Stop on first failure if desired

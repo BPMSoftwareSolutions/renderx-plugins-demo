@@ -21,19 +21,11 @@ export {
   EVENT_TYPES,
   EVENT_CATEGORIES,
   CORE_EVENT_TYPES,
-  CANVAS_EVENT_TYPES,
-  CONTROL_PANEL_EVENT_TYPES,
-  LAYOUT_EVENT_TYPES,
-  ELEMENT_LIBRARY_EVENT_TYPES,
   getEventCategory,
   getEventsByCategory,
   type EventType,
   type EventCategory,
   type CoreEventType,
-  type CanvasEventType,
-  type ControlPanelEventType,
-  type LayoutEventType,
-  type ElementLibraryEventType,
 } from "./event-types";
 
 // Musical Conductor exports
