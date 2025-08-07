@@ -57,6 +57,7 @@ import { SequenceUtilities } from "./utilities/SequenceUtilities";
 import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator";
 import { EventOrchestrator } from "./orchestration/EventOrchestrator";
 import { ConductorAPI } from "./api/ConductorAPI";
+import { StrictModeManager } from "./strictmode/StrictModeManager";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -123,6 +124,9 @@ export class MusicalConductor {
 
   // API components
   private conductorAPI: ConductorAPI;
+
+  // StrictMode components
+  private strictModeManager: StrictModeManager;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -211,6 +215,9 @@ export class MusicalConductor {
       this.sequenceRegistry,
       eventBus
     );
+
+    // Initialize StrictMode components
+    this.strictModeManager = new StrictModeManager(this.duplicationDetector);
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -916,14 +923,8 @@ export class MusicalConductor {
    * @returns True if this is a duplicate request
    */
   private isDuplicateSequenceRequest(sequenceHash: string): boolean {
-    const result =
-      this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
-
-    if (result.isDuplicate) {
-      console.warn(`🎼 MCO: ${result.reason} (hash: ${sequenceHash})`);
-    }
-
-    return result.isDuplicate;
+    return this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash)
+      .isDuplicate;
   }
 
   /**
@@ -931,7 +932,7 @@ export class MusicalConductor {
    * @param sequenceHash - Hash of the sequence request
    */
   private recordSequenceExecution(sequenceHash: string): void {
-    this.duplicationDetector.recordSequenceExecution(sequenceHash);
+    this.strictModeManager.recordSequenceExecution(sequenceHash);
   }
 
   // Legacy cleanupOldExecutionRecords method removed - now handled by DuplicationDetector
@@ -944,26 +945,7 @@ export class MusicalConductor {
    * @returns True if this appears to be a StrictMode duplicate
    */
   private isStrictModeDuplicate(data: Record<string, any>): boolean {
-    // Check for common StrictMode patterns
-    if (data.source === "react-strict-mode" || data.strictMode === true) {
-      return true;
-    }
-
-    // Check for rapid successive calls (common in StrictMode)
-    const now = performance.now();
-    if (data.timestamp && typeof data.timestamp === "number") {
-      const timeDiff = now - data.timestamp;
-      if (timeDiff < 100) {
-        // Less than 100ms apart
-        console.warn(
-          `🎼 MCO: Potential StrictMode duplicate detected (${timeDiff.toFixed(
-            2
-          )}ms apart)`
-        );
-        return true;
-      }
-    }
-
-    return false;
+    return this.strictModeManager.isStrictModeDuplicate(data)
+      .isStrictModeDuplicate;
   }
 }
