@@ -311,6 +311,155 @@
           }
         ]
       }
+    ],
+    [
+      "transfer-1754586979060-f2u17yf3b",
+      {
+        "transferId": "transfer-1754586979060-f2u17yf3b",
+        "fromAgentId": "agent-a-senior-dev",
+        "toAgentId": "agent-b-junior-dev",
+        "knowledgeFile": "demo-plugin-knowledge.json",
+        "priority": "high",
+        "state": "consumed",
+        "metadata": {
+          "title": "Plugin Development Best Practices",
+          "description": "Comprehensive plugin development knowledge including patterns and examples",
+          "knowledgeType": [
+            "plugins",
+            "best-practices",
+            "examples"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586979060,
+          "updatedAt": 1754586979073,
+          "expiresAt": 1754673379060
+        },
+        "progress": {
+          "sent": true,
+          "received": true,
+          "consumed": true,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586979060,
+            "state": "pending",
+            "agentId": "agent-a-senior-dev",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586979068,
+            "state": "sent",
+            "agentId": "agent-a-senior-dev",
+            "message": "Knowledge file sent"
+          },
+          {
+            "timestamp": 1754586979069,
+            "state": "received",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge file received"
+          },
+          {
+            "timestamp": 1754586979073,
+            "state": "consumed",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge successfully imported and processed",
+            "details": {
+              "importedPlugins": 3,
+              "newBestPractices": 12,
+              "successfulImport": true
+            }
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754586979064-y1bx7qwfv",
+      {
+        "transferId": "transfer-1754586979064-y1bx7qwfv",
+        "fromAgentId": "agent-c-test-expert",
+        "toAgentId": "agent-a-senior-dev",
+        "knowledgeFile": "demo-testing-knowledge.json",
+        "priority": "normal",
+        "state": "sent",
+        "metadata": {
+          "title": "Advanced Testing Strategies",
+          "description": "Unit testing, integration testing, and test automation knowledge",
+          "knowledgeType": [
+            "testing",
+            "automation",
+            "strategies"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586979064,
+          "updatedAt": 1754586979074
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586979064,
+            "state": "pending",
+            "agentId": "agent-c-test-expert",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586979074,
+            "state": "sent",
+            "agentId": "agent-c-test-expert",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754587905672-rgx9737v4",
+      {
+        "transferId": "transfer-1754587905672-rgx9737v4",
+        "fromAgentId": "primary-development-agent",
+        "toAgentId": "typescript-build-fix-agent",
+        "knowledgeFile": "build-fix-knowledge-export.json",
+        "priority": "urgent",
+        "state": "sent",
+        "metadata": {
+          "title": "MusicalConductor TypeScript Build Fix",
+          "description": "Complete analysis and solution for 16 TypeScript compilation errors in sequences/index.ts",
+          "knowledgeType": [
+            "build-errors",
+            "typescript",
+            "debugging",
+            "architecture"
+          ],
+          "estimatedSize": 5935,
+          "createdAt": 1754587905672,
+          "updatedAt": 1754587905678,
+          "expiresAt": 1754595105672
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754587905672,
+            "state": "pending",
+            "agentId": "primary-development-agent",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754587905678,
+            "state": "sent",
+            "agentId": "primary-development-agent",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
     ]
   ],
   "agents": [
@@ -318,35 +467,46 @@
       "agent-a-senior-dev",
       {
         "agentId": "agent-a-senior-dev",
-        "lastSeen": 1754586510367,
+        "lastSeen": 1754586979068,
         "isOnline": true,
-        "pendingReceives": 2,
+        "pendingReceives": 3,
         "pendingConsumes": 0,
-        "totalTransfers": 6
+        "totalTransfers": 8
       }
     ],
     [
       "agent-c-test-expert",
       {
         "agentId": "agent-c-test-expert",
-        "lastSeen": 1754586510376,
+        "lastSeen": 1754586979074,
         "isOnline": true,
         "pendingReceives": 0,
         "pendingConsumes": 0,
-        "totalTransfers": 3
+        "totalTransfers": 4
       }
     ],
     [
       "agent-b-junior-dev",
       {
         "agentId": "agent-b-junior-dev",
-        "lastSeen": 1754586510373,
+        "lastSeen": 1754586979073,
         "isOnline": true,
         "pendingReceives": 0,
         "pendingConsumes": 0,
-        "totalTransfers": 3
+        "totalTransfers": 4
+      }
+    ],
+    [
+      "primary-development-agent",
+      {
+        "agentId": "primary-development-agent",
+        "lastSeen": 1754587905678,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 1
       }
     ]
   ],
-  "lastUpdated": 1754586510376
+  "lastUpdated": 1754587905679
 }

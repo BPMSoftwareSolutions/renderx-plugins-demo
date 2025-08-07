@@ -50,8 +50,8 @@ export class KnowledgeValidator {
   ): Promise<ValidationResult> {
     const result: ValidationResult = {
       isValid: true,
-      errors: [],
-      warnings: [],
+      errors: [] as string[],
+      warnings: [] as string[],
       score: 100,
       details: {
         metadata: this.createEmptyDetail(),
@@ -108,8 +108,8 @@ export class KnowledgeValidator {
   private createEmptyDetail(): ValidationDetail {
     return {
       isValid: true,
-      errors: [],
-      warnings: [],
+      errors: [] as string[],
+      warnings: [] as string[],
       score: 100,
     };
   }
@@ -398,7 +398,11 @@ export class KnowledgeValidator {
     warnings: string[];
     penalty: number;
   } {
-    const result = { errors: [], warnings: [], penalty: 0 };
+    const result = {
+      errors: [] as string[],
+      warnings: [] as string[],
+      penalty: 0,
+    };
 
     if (
       typeof stats.totalSequencesExecuted !== "number" ||
@@ -429,7 +433,11 @@ export class KnowledgeValidator {
     warnings: string[];
     penalty: number;
   } {
-    const result = { errors: [], warnings: [], penalty: 0 };
+    const result = {
+      errors: [] as string[],
+      warnings: [] as string[],
+      penalty: 0,
+    };
 
     if (!Array.isArray(queueState.queuedSequences)) {
       result.errors.push("Queue state queuedSequences should be an array");
@@ -449,7 +457,11 @@ export class KnowledgeValidator {
     warnings: string[];
     penalty: number;
   } {
-    const result = { errors: [], warnings: [], penalty: 0 };
+    const result = {
+      errors: [] as string[],
+      warnings: [] as string[],
+      penalty: 0,
+    };
 
     if (!metrics.timestamp || !this.isValidTimestamp(metrics.timestamp)) {
       result.warnings.push("Performance metrics missing or invalid timestamp");
@@ -464,7 +476,11 @@ export class KnowledgeValidator {
     warnings: string[];
     penalty: number;
   } {
-    const result = { errors: [], warnings: [], penalty: 0 };
+    const result = {
+      errors: [] as string[],
+      warnings: [] as string[],
+      penalty: 0,
+    };
 
     if (!sequence.id || !sequence.name) {
       result.errors.push(
@@ -494,7 +510,11 @@ export class KnowledgeValidator {
     warnings: string[];
     penalty: number;
   } {
-    const result = { errors: [], warnings: [], penalty: 0 };
+    const result = {
+      errors: [] as string[],
+      warnings: [] as string[],
+      penalty: 0,
+    };
 
     if (!plugin.id && !plugin.name) {
       result.errors.push("Mounted plugin missing identifier (id or name)");

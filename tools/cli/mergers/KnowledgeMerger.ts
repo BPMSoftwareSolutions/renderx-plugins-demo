@@ -92,9 +92,9 @@ export class KnowledgeMerger {
     knowledgeB: AgentKnowledge
   ): Promise<DiffResult> {
     const diff: DiffResult = {
-      added: [],
-      removed: [],
-      modified: [],
+      added: [] as any[],
+      removed: [] as any[],
+      modified: [] as any[],
       metadata: {},
     };
 
@@ -149,29 +149,34 @@ export class KnowledgeMerger {
         exportType: "full",
         description: `Merged knowledge from ${knowledgeFiles.length} agents using ${options.strategy} strategy`,
       },
-      systemState: {},
+      systemState: {
+        conductorStatistics: {},
+        performanceMetrics: {},
+        eventLogs: [],
+        queueState: {},
+      },
       pluginKnowledge: {
-        mountedPlugins: [],
-        pluginConfigurations: [],
-        pluginMetadata: [],
-        sequenceDefinitions: [],
+        mountedPlugins: [] as any[],
+        pluginConfigurations: [] as any[],
+        pluginMetadata: [] as any[],
+        sequenceDefinitions: [] as any[],
       },
       eventKnowledge: {
-        eventSubscriptions: [],
-        eventHistory: [],
-        eventPatterns: [],
-        domainEvents: [],
+        eventSubscriptions: [] as any[],
+        eventHistory: [] as any[],
+        eventPatterns: [] as any[],
+        domainEvents: [] as any[],
       },
       resourceKnowledge: {
-        resourceOwnership: [],
-        resourceConflicts: [],
-        resourceDelegations: [],
+        resourceOwnership: [] as any[],
+        resourceConflicts: [] as any[],
+        resourceDelegations: [] as any[],
       },
       learningData: {
-        successPatterns: [],
-        errorPatterns: [],
-        optimizationInsights: [],
-        bestPractices: [],
+        successPatterns: [] as any[],
+        errorPatterns: [] as any[],
+        optimizationInsights: [] as any[],
+        bestPractices: [] as string[],
       },
     };
   }
@@ -198,10 +203,10 @@ export class KnowledgeMerger {
     options: MergeOptions
   ): Promise<any> {
     const merged = {
-      mountedPlugins: [],
-      pluginConfigurations: [],
-      pluginMetadata: [],
-      sequenceDefinitions: [],
+      mountedPlugins: [] as any[],
+      pluginConfigurations: [] as any[],
+      pluginMetadata: [] as any[],
+      sequenceDefinitions: [] as any[],
     };
 
     const seenSequences = new Set<string>();
@@ -252,10 +257,10 @@ export class KnowledgeMerger {
     options: MergeOptions
   ): Promise<any> {
     const merged = {
-      eventSubscriptions: [],
-      eventHistory: [],
-      eventPatterns: [],
-      domainEvents: [],
+      eventSubscriptions: [] as any[],
+      eventHistory: [] as any[],
+      eventPatterns: [] as any[],
+      domainEvents: [] as any[],
     };
 
     const seenSubscriptions = new Set<string>();
@@ -309,9 +314,9 @@ export class KnowledgeMerger {
     options: MergeOptions
   ): Promise<any> {
     const merged = {
-      resourceOwnership: [],
-      resourceConflicts: [],
-      resourceDelegations: [],
+      resourceOwnership: [] as any[],
+      resourceConflicts: [] as any[],
+      resourceDelegations: [] as any[],
     };
 
     for (const knowledge of knowledgeFiles) {
@@ -347,10 +352,10 @@ export class KnowledgeMerger {
     options: MergeOptions
   ): Promise<any> {
     const merged = {
-      successPatterns: [],
-      errorPatterns: [],
-      optimizationInsights: [],
-      bestPractices: [],
+      successPatterns: [] as any[],
+      errorPatterns: [] as any[],
+      optimizationInsights: [] as any[],
+      bestPractices: [] as string[],
     };
 
     const seenPractices = new Set<string>();
@@ -419,7 +424,11 @@ export class KnowledgeMerger {
     pluginsA: any,
     pluginsB: any
   ): { added: any[]; removed: any[]; modified: any[] } {
-    const result = { added: [], removed: [], modified: [] };
+    const result = {
+      added: [] as any[],
+      removed: [] as any[],
+      modified: [] as any[],
+    };
 
     // Compare sequence definitions
     const sequencesA = pluginsA?.sequenceDefinitions || [];
@@ -453,7 +462,11 @@ export class KnowledgeMerger {
     eventsA: any,
     eventsB: any
   ): { added: any[]; removed: any[]; modified: any[] } {
-    const result = { added: [], removed: [], modified: [] };
+    const result = {
+      added: [] as any[],
+      removed: [] as any[],
+      modified: [] as any[],
+    };
 
     // Compare event patterns
     const patternsA = eventsA?.eventPatterns || [];
@@ -500,7 +513,11 @@ export class KnowledgeMerger {
     learningA: any,
     learningB: any
   ): { added: any[]; removed: any[]; modified: any[] } {
-    const result = { added: [], removed: [], modified: [] };
+    const result = {
+      added: [] as any[],
+      removed: [] as any[],
+      modified: [] as any[],
+    };
 
     // Compare best practices
     const practicesA = new Set(learningA?.bestPractices || []);
@@ -511,7 +528,7 @@ export class KnowledgeMerger {
       if (!practicesA.has(practice)) {
         result.added.push({
           type: "best-practice",
-          name: practice.substring(0, 50) + "...",
+          name: String(practice).substring(0, 50) + "...",
           data: practice,
         });
       }
@@ -522,7 +539,7 @@ export class KnowledgeMerger {
       if (!practicesB.has(practice)) {
         result.removed.push({
           type: "best-practice",
-          name: practice.substring(0, 50) + "...",
+          name: String(practice).substring(0, 50) + "...",
           data: practice,
         });
       }

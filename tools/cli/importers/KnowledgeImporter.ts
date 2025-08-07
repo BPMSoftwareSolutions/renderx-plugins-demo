@@ -138,7 +138,11 @@ export class KnowledgeImporter {
 
       result.success = result.errors.length === 0;
     } catch (error) {
-      result.errors.push(`Import failed: ${error.message}`);
+      result.errors.push(
+        `Import failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       result.success = false;
     }
 
@@ -211,7 +215,11 @@ export class KnowledgeImporter {
       result.warnings.push("System state import is not yet fully implemented");
       result.skipped = 1;
     } catch (error) {
-      result.errors.push(`System state import failed: ${error.message}`);
+      result.errors.push(
+        `System state import failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       result.success = false;
     }
 
@@ -253,7 +261,7 @@ export class KnowledgeImporter {
             result.errors.push(
               `Failed to import sequence ${
                 sequenceDef.name || sequenceDef.id
-              }: ${error.message}`
+              }: ${error instanceof Error ? error.message : String(error)}`
             );
           }
         }
@@ -270,7 +278,11 @@ export class KnowledgeImporter {
         result.skipped += pluginKnowledge.pluginConfigurations.length;
       }
     } catch (error) {
-      result.errors.push(`Plugin knowledge import failed: ${error.message}`);
+      result.errors.push(
+        `Plugin knowledge import failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       result.success = false;
     }
 
@@ -313,7 +325,11 @@ export class KnowledgeImporter {
         result.skipped += eventKnowledge.domainEvents.length;
       }
     } catch (error) {
-      result.errors.push(`Event knowledge import failed: ${error.message}`);
+      result.errors.push(
+        `Event knowledge import failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       result.success = false;
     }
 
@@ -356,7 +372,11 @@ export class KnowledgeImporter {
         result.skipped += resourceKnowledge.resourceConflicts.length;
       }
     } catch (error) {
-      result.errors.push(`Resource knowledge import failed: ${error.message}`);
+      result.errors.push(
+        `Resource knowledge import failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       result.success = false;
     }
 
@@ -422,7 +442,11 @@ export class KnowledgeImporter {
         result.skipped += learningData.errorPatterns.length;
       }
     } catch (error) {
-      result.errors.push(`Learning data import failed: ${error.message}`);
+      result.errors.push(
+        `Learning data import failed: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       result.success = false;
     }
 
@@ -431,7 +455,7 @@ export class KnowledgeImporter {
 
   // Analysis methods for preview functionality
   private async analyzeSystemStateChanges(systemState: any): Promise<any[]> {
-    const changes = [];
+    const changes: any[] = [];
 
     if (systemState.conductorStatistics) {
       changes.push({
@@ -453,7 +477,7 @@ export class KnowledgeImporter {
   }
 
   private async analyzePluginChanges(pluginKnowledge: any): Promise<any[]> {
-    const changes = [];
+    const changes: any[] = [];
 
     if (
       pluginKnowledge.sequenceDefinitions &&

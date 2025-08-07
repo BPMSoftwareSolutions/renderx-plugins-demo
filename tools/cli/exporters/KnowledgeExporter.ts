@@ -45,7 +45,12 @@ export class KnowledgeExporter {
         exportType: this.determineExportType(options),
         description: "AI Agent Knowledge Export from MusicalConductor System",
       },
-      systemState: {},
+      systemState: {
+        conductorStatistics: {},
+        performanceMetrics: {},
+        eventLogs: [],
+        queueState: {},
+      },
       pluginKnowledge: {
         mountedPlugins: [],
         pluginConfigurations: [],
@@ -141,8 +146,8 @@ export class KnowledgeExporter {
 
     if (this.eventBus) {
       try {
-        // Get event bus statistics
-        const eventStats = this.eventBus.getStatistics();
+        // Get event bus statistics (if available)
+        const eventStats = (this.eventBus as any).getStatistics?.() || {};
         status.events.subscriptions = eventStats.totalSubscriptions || 0;
         status.events.emitted = eventStats.totalEventsEmitted || 0;
       } catch (error) {
@@ -180,7 +185,8 @@ export class KnowledgeExporter {
         systemState.eventLogs = await this.exportEventLogs(options);
       } catch (error) {
         console.warn("⚠️ Could not export complete system state:", error);
-        systemState.error = error.message;
+        systemState.error =
+          error instanceof Error ? error.message : String(error);
       }
     }
 
@@ -226,17 +232,18 @@ export class KnowledgeExporter {
     options: KnowledgeTransferOptions
   ): Promise<any> {
     const eventKnowledge = {
-      eventSubscriptions: [],
-      eventHistory: [],
-      eventPatterns: [],
-      domainEvents: [],
+      eventSubscriptions: [] as any[],
+      eventHistory: [] as any[],
+      eventPatterns: [] as any[],
+      domainEvents: [] as any[],
     };
 
     if (this.eventBus) {
       try {
-        // Export current event subscriptions
-        const subscriptions = this.eventBus.getAllSubscriptions();
-        eventKnowledge.eventSubscriptions = subscriptions.map((sub) => ({
+        // Export current event subscriptions (if available)
+        const subscriptions =
+          (this.eventBus as any).getAllSubscriptions?.() || [];
+        eventKnowledge.eventSubscriptions = subscriptions.map((sub: any) => ({
           id: sub.id,
           eventName: sub.eventName,
           subscribedAt: sub.subscribedAt,
@@ -269,16 +276,16 @@ export class KnowledgeExporter {
     options: KnowledgeTransferOptions
   ): Promise<any> {
     const resourceKnowledge = {
-      resourceOwnership: [],
-      resourceConflicts: [],
-      resourceDelegations: [],
+      resourceOwnership: [] as any[],
+      resourceConflicts: [] as any[],
+      resourceDelegations: [] as any[],
     };
 
     if (this.conductor) {
       try {
         // Export resource ownership information
         const ownership = this.conductor.getResourceOwnership();
-        resourceKnowledge.resourceOwnership = ownership || [];
+        resourceKnowledge.resourceOwnership = Array.from(ownership || []);
 
         // Export resource conflicts (if available)
         // Note: This would need to be implemented in the conductor API
@@ -299,10 +306,10 @@ export class KnowledgeExporter {
     options: KnowledgeTransferOptions
   ): Promise<any> {
     const learningData = {
-      successPatterns: [],
-      errorPatterns: [],
-      optimizationInsights: [],
-      bestPractices: [],
+      successPatterns: [] as any[],
+      errorPatterns: [] as any[],
+      optimizationInsights: [] as any[],
+      bestPractices: [] as string[],
     };
 
     // This would be populated with AI learning insights

@@ -9,14 +9,15 @@
  */
 
 import { MusicalConductor } from "./MusicalConductor";
+import { MusicalSequence } from "./SequenceTypes";
 
 /**
  * All Musical Sequences Registry
  * Complete list of all sequences available in the system
  */
-export const ALL_SEQUENCES = [
+export const ALL_SEQUENCES: MusicalSequence[] = [
   // Canvas sequences now handled by dynamic symphony plugins
-] as const;
+];
 
 /**
  * Sequence Name Mapping
