@@ -887,54 +887,15 @@ export class MusicalConductor {
   }
 
   private async registerPluginsFromManifest(manifest: any) {
-    console.log(
-      "🎼 MusicalConductor: Registering plugins from manifest (data-driven)..."
-    );
+    console.log("🎼 MusicalConductor: Registering plugins from manifest...");
 
-    // Debug: Check if ElementLibrary.library-drop-symphony is in the manifest
-    const elementLibraryPlugin = manifest.plugins.find(
-      (p: any) => p.name === "ElementLibrary.library-drop-symphony"
-    );
-    if (elementLibraryPlugin) {
-      console.log(
-        "🔍 DEBUG: ElementLibrary.library-drop-symphony found in manifest:",
-        elementLibraryPlugin
-      );
-    } else {
-      console.error(
-        "🚨 DEBUG: ElementLibrary.library-drop-symphony NOT found in manifest!"
-      );
-      console.error(
-        "🚨 Available plugins:",
-        manifest.plugins.map((p: any) => p.name)
-      );
-    }
-
-    // Debug: Log all plugins being processed
     console.log(
-      "🔍 DEBUG: Starting plugin loop, total plugins:",
-      manifest.plugins.length
+      `🔌 Processing ${manifest.plugins.length} plugins from manifest`
     );
-    manifest.plugins.forEach((p: any, index: number) => {
-      console.log(
-        `🔍 DEBUG: Plugin ${index + 1}: ${p.name} (autoMount: ${p.autoMount})`
-      );
-    });
 
     // Iterate through plugins defined in manifest
     for (const plugin of manifest.plugins) {
       try {
-        console.log(`🔍 DEBUG: Processing plugin: ${plugin.name}`);
-
-        // Special debugging for ElementLibrary plugin
-        if (plugin.name === "ElementLibrary.library-drop-symphony") {
-          console.log(
-            "🔍 DEBUG: *** FOUND ElementLibrary.library-drop-symphony in loop! ***"
-          );
-          console.log("🔍 DEBUG: Plugin config:", plugin);
-          console.log("🔍 DEBUG: autoMount:", plugin.autoMount);
-        }
-
         if (plugin.autoMount) {
           // Check if plugin is already mounted (prevents React StrictMode double execution)
           if (this.mountedPlugins.has(plugin.name)) {
@@ -942,92 +903,22 @@ export class MusicalConductor {
             continue;
           }
 
-          // TEMPORARY: Skip problematic plugins that block ElementLibrary loading
-          if (plugin.name === "Component.element-selection-symphony") {
-            console.log(
-              `⏭️ TEMP SKIP: Skipping ${plugin.name} due to dependency issues`
-            );
-            continue;
-          }
-
-          // TEMPORARY: Skip visual-selection-tools to allow ElementLibrary.library-drop-symphony to load
-          if (plugin.name === "Component.visual-selection-tools-symphony") {
-            console.log(
-              `⏭️ TEMP SKIP: Skipping ${plugin.name} to allow ElementLibrary.library-drop-symphony to load`
-            );
-            continue;
-          }
-
           console.log(
             `🔌 Loading plugin: ${plugin.name} (${plugin.domain} domain)`
           );
-
-          // Special error handling for JsonLoader to prevent it from crashing the loop
-          if (plugin.name === "JsonLoader.json-component-symphony") {
-            console.log(
-              "🔍 DEBUG: JsonLoader.json-component-symphony - applying enhanced error handling"
-            );
-            try {
-              const pluginPath = `/plugins/./${plugin.path}/index.js`;
-              const pluginModule = await this.loadPluginModule(pluginPath);
-
-              // Validate plugin structure
-              if (!pluginModule.sequence || !pluginModule.handlers) {
-                console.error(
-                  `❌ JsonLoader missing required exports (sequence, handlers)`
-                );
-                continue;
-              }
-
-              // Mount using correct CIA format
-              await this.mount(
-                pluginModule.sequence,
-                pluginModule.handlers,
-                plugin.name,
-                {
-                  domain: plugin.domain,
-                  functionality: plugin.functionality,
-                  priority: plugin.priority,
-                  isCore: plugin.isCore,
-                }
-              );
-
-              // Call the plugin's CIA mount method if available
-              if (
-                pluginModule.CIAPlugin &&
-                typeof pluginModule.CIAPlugin.mount === "function"
-              ) {
-                console.log("🔍 DEBUG: Calling JsonLoader CIAPlugin.mount()");
-                pluginModule.CIAPlugin.mount(this);
-              }
-
-              console.log(`✅ Plugin registered: ${plugin.name}`);
-            } catch (error) {
-              console.error(
-                `❌ JsonLoader.json-component-symphony failed but continuing plugin loading:`,
-                error
-              );
-              console.error(
-                `❌ Components may not load in ElementLibrary, but other plugins will continue`
-              );
-              // Continue with next plugin instead of crashing
-              continue;
-            }
-            continue; // Skip the normal loading process since we handled it above
-          }
-
-          // Special debugging for ElementLibrary plugin
-          if (plugin.name === "ElementLibrary.library-drop-symphony") {
-            console.log(
-              "🔍 DEBUG: ElementLibrary.library-drop-symphony plugin loading started"
-            );
-            console.log("🔍 DEBUG: Plugin config:", plugin);
-          }
 
           // Dynamic plugin loading using pre-compiled JavaScript files
           const pluginModule = await this.loadPluginModule(
             `/plugins/${plugin.path}index.js`
           );
+
+          // Validate plugin structure
+          if (!pluginModule.sequence || !pluginModule.handlers) {
+            console.error(
+              `❌ Plugin ${plugin.name} missing required exports (sequence, handlers)`
+            );
+            continue;
+          }
 
           // Register the plugin using manifest metadata
           await this.mount(
@@ -1072,37 +963,12 @@ export class MusicalConductor {
       } catch (error) {
         console.error(`❌ Failed to load plugin ${plugin.name}:`, error);
         console.error(`❌ Plugin ${plugin.name} will not be available for use`);
-        console.error(
-          `❌ Error type: ${
-            error instanceof Error ? error.constructor.name : typeof error
-          }`
-        );
-        console.error(
-          `❌ Error message: ${
-            error instanceof Error ? error.message : String(error)
-          }`
-        );
-
-        // Special debugging for ElementLibrary plugin
-        if (plugin.name === "ElementLibrary.library-drop-symphony") {
-          console.error(
-            "🔍 CRITICAL: ElementLibrary.library-drop-symphony plugin loading FAILED"
-          );
-          console.error(
-            "🔍 This means drag-and-drop from library will not work!"
-          );
-          console.error("🔍 Error details:", error);
-          console.error(
-            "🔍 Error stack:",
-            error instanceof Error ? error.stack : "No stack"
-          );
-        }
 
         // Continue with other plugins - don't fail entire registration
       }
     }
 
-    console.log("✅ Data-driven plugin registration completed");
+    console.log("✅ Plugin registration from manifest completed");
   }
 
   private registerFallbackSequences() {
