@@ -100,11 +100,7 @@ export class MusicalConductor {
   private executionQueue: ExecutionQueue;
   private sequenceExecutor: SequenceExecutor;
 
-  // Legacy properties (to be refactored in later phases)
-  private activeSequence: SequenceExecutionContext | null = null;
-  private sequenceHistory: SequenceExecutionContext[] = [];
-  private sequenceQueue: SequenceRequest[] = []; // Legacy - will be removed in Phase 2
-  private priorities: Map<string, string> = new Map(); // Legacy - will be removed in Phase 2
+  // Legacy properties removed - now handled by specialized components
 
   // Getters for accessing core components
   private get eventBus(): EventBus {
@@ -115,35 +111,9 @@ export class MusicalConductor {
     return this.conductorCore.getSPAValidator();
   }
 
-  private get sequences(): Map<string, MusicalSequence> {
-    // Create a Map from the SequenceRegistry for backward compatibility
-    const map = new Map<string, MusicalSequence>();
-    this.sequenceRegistry.getAll().forEach((sequence) => {
-      map.set(sequence.name, sequence);
-    });
-    return map;
-  }
+  // Legacy sequences getter removed - now use sequenceRegistry directly
 
-  // Beat-level orchestration: Ensure no simultaneous beat execution
-  private isExecutingBeat: boolean = false;
-  private beatExecutionQueue: Array<{
-    executionContext: SequenceExecutionContext;
-    beat: SequenceBeat;
-    resolve: () => void;
-    reject: (error: Error) => void;
-  }> = [];
-
-  // Handler-Coordinated Beat Execution tracking
-  private processingBeats = new Map<
-    string,
-    {
-      sequenceName: string;
-      beatNumber: number;
-      startTime: number;
-      completeBeat: (data?: any) => void;
-      timeoutId?: NodeJS.Timeout;
-    }
-  >();
+  // Legacy beat execution properties removed - now handled by BeatExecutor
 
   // CIA (Conductor Integration Architecture) properties for SPA plugin mounting
   private mountedPlugins: Map<string, SPAPlugin> = new Map();
@@ -399,8 +369,9 @@ export class MusicalConductor {
     });
 
     // 🎽 Log the Data Baton - show payload contents at each beat
-    if (this.activeSequence?.payload) {
-      console.log(`🎽 Baton:`, this.activeSequence.payload);
+    const currentSequence = this.sequenceExecutor.getCurrentSequence();
+    if (currentSequence?.payload) {
+      console.log(`🎽 Baton:`, currentSequence.payload);
     } else {
       console.log(`🎽 Baton: (empty)`);
     }
@@ -438,7 +409,7 @@ export class MusicalConductor {
     sequenceName: string,
     beatNumber: number
   ): string {
-    const sequence = this.sequences.get(sequenceName);
+    const sequence = this.sequenceRegistry.get(sequenceName);
     if (!sequence) {
       return "Unknown Movement";
     }
@@ -1714,7 +1685,7 @@ export class MusicalConductor {
    * @param priority - Priority level (MUSICAL_DYNAMICS value)
    */
   setPriority(eventType: string, priority: string): void {
-    this.priorities.set(eventType, priority);
+    // Legacy priorities tracking removed - priority now handled by ExecutionQueue
     console.log(
       `🎼 MusicalConductor: Set priority for ${eventType}: ${priority}`
     );
@@ -1737,7 +1708,7 @@ export class MusicalConductor {
       .substr(2, 9)}`;
 
     try {
-      const sequence = this.sequences.get(sequenceName);
+      const sequence = this.sequenceRegistry.get(sequenceName);
       if (!sequence) {
         console.error(
           `❌ MusicalConductor: Sequence "${sequenceName}" not found!`
@@ -1747,7 +1718,7 @@ export class MusicalConductor {
         );
         console.error(
           `❌ Available sequences:`,
-          Array.from(this.sequences.keys())
+          this.sequenceRegistry.getNames()
         );
         if (sequenceName === "ElementLibrary.library-drop-symphony") {
           console.error(
@@ -1842,7 +1813,7 @@ export class MusicalConductor {
 
       console.log(
         `🔍 DEBUG: ${sequenceName} - priority: ${priority}, activeSequence: ${
-          this.activeSequence?.sequenceName || "none"
+          this.sequenceExecutor.getCurrentSequence()?.sequenceName || "none"
         }`
       );
 
@@ -1872,75 +1843,7 @@ export class MusicalConductor {
     }
   }
 
-  /**
-   * Execute sequence immediately (no queue) with Advanced Resource Conflict Resolution
-   * @param sequenceRequest - Sequence request object
-   */
-  private executeSequenceImmediately(sequenceRequest: SequenceRequest): void {
-    console.log(
-      `🔍 DEBUG: executeSequenceImmediately called for ${sequenceRequest.sequenceName}`
-    );
-
-    const executionContext = this.createExecutionContext(sequenceRequest);
-    console.log(
-      `🔍 DEBUG: Created execution context for ${sequenceRequest.sequenceName}`
-    );
-
-    // MCO/MSO: Use advanced resource conflict resolution
-    const { instanceId, symphonyName, resourceId } = sequenceRequest.data;
-    console.log(
-      `🔍 DEBUG: Resolving resource conflict for ${sequenceRequest.sequenceName} - resourceId: ${resourceId}`
-    );
-
-    const resolutionResult = this.resolveResourceConflictAdvanced(
-      resourceId,
-      symphonyName,
-      instanceId,
-      sequenceRequest.priority,
-      executionContext.id,
-      sequenceRequest
-    );
-
-    console.log(
-      `🔍 DEBUG: Resource conflict resolution result for ${sequenceRequest.sequenceName}:`,
-      resolutionResult
-    );
-
-    if (!resolutionResult.success) {
-      console.error(
-        `🎼 MCO: Resource conflict resolution failed (${resolutionResult.strategy}): ${resolutionResult.message}`
-      );
-
-      // If the strategy was QUEUE, don't fail the sequence - it's been queued
-      if (resolutionResult.strategy === "QUEUE") {
-        console.log(
-          `🎼 MCO: Sequence ${sequenceRequest.sequenceName} successfully queued for later execution`
-        );
-        return;
-      }
-
-      // For REJECT or other failures, fail the sequence
-      this.failSequence(
-        executionContext,
-        new Error(`Resource conflict: ${resolutionResult.message}`)
-      );
-      return;
-    }
-
-    console.log(
-      `🔍 DEBUG: Setting active sequence to ${sequenceRequest.sequenceName}`
-    );
-    this.activeSequence = executionContext;
-
-    console.log(
-      `🔍 DEBUG: About to call executeSequence for ${sequenceRequest.sequenceName}`
-    );
-    // Starting sequence immediately - internal logging disabled
-    this.executeSequence(executionContext);
-    console.log(
-      `🔍 DEBUG: executeSequence called for ${sequenceRequest.sequenceName}`
-    );
-  }
+  // Legacy executeSequenceImmediately method removed - now handled by SequenceExecutor
 
   /**
    * Create execution context for a sequence
@@ -1949,10 +1852,12 @@ export class MusicalConductor {
   private createExecutionContext(
     sequenceRequest: SequenceRequest
   ): SequenceExecutionContext {
-    const sequence = this.sequences.get(sequenceRequest.sequenceName)!;
+    const sequence = this.sequenceRegistry.get(sequenceRequest.sequenceName)!;
 
     // Determine execution type based on whether there was an active sequence when this was queued
-    const executionType = this.activeSequence ? "CONSECUTIVE" : "IMMEDIATE";
+    const executionType = this.sequenceExecutor.isSequenceRunning()
+      ? "CONSECUTIVE"
+      : "IMMEDIATE";
 
     return {
       id: sequenceRequest.requestId,
@@ -2046,7 +1951,7 @@ export class MusicalConductor {
     return {
       statistics: this.getStatistics(),
       eventBus: !!this.eventBus,
-      sequences: this.sequences.size,
+      sequences: this.sequenceRegistry.size(),
       plugins: this.mountedPlugins.size,
     };
   }
@@ -2063,7 +1968,7 @@ export class MusicalConductor {
       lastExecutionTime: null,
       totalSequencesQueued: 0,
       maxQueueLength: 0,
-      currentQueueLength: this.sequenceQueue.length,
+      currentQueueLength: this.executionQueue.size(),
       averageQueueWaitTime: 0,
       sequenceCompletionRate: 0,
       chainedSequences: 0,
@@ -2079,271 +1984,13 @@ export class MusicalConductor {
     return this.executionQueue.getStatus();
   }
 
-  /**
-   * Execute a musical sequence
-   * @param executionContext - Execution context
-   */
-  private async executeSequence(
-    executionContext: SequenceExecutionContext
-  ): Promise<void> {
-    console.log(
-      `🔍 DEBUG: executeSequence STARTED for ${executionContext.sequenceName}`
-    );
+  // Legacy executeSequence method removed - now handled by SequenceExecutor
 
-    try {
-      const { sequence, data } = executionContext;
-      console.log(
-        `🔍 DEBUG: About to emit SEQUENCE_STARTED event for ${executionContext.sequenceName}`
-      );
+  // Legacy executeMovement method removed - now handled by MovementExecutor
 
-      this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_STARTED, {
-        sequenceName: executionContext.sequenceName,
-        requestId: executionContext.id,
-        startTime: executionContext.startTime,
-      });
+  // Legacy executeBeat and processBeatQueue methods removed - now handled by BeatExecutor
 
-      console.log(
-        `🎼 Sequence Started: ${executionContext.sequenceName} (ID: ${executionContext.id})`
-      );
-
-      // Execute all movements
-      for (
-        let movementIndex = 0;
-        movementIndex < sequence.movements.length;
-        movementIndex++
-      ) {
-        const movement = sequence.movements[movementIndex];
-        executionContext.currentMovement = movementIndex;
-
-        console.log(
-          `🎼 MusicalConductor: Executing movement ${movementIndex}: ${movement.name}`
-        );
-
-        // Execute all beats in the movement
-        await this.executeMovement(executionContext, movement);
-      }
-
-      // Mark sequence as completed
-      this.completeSequence(executionContext);
-    } catch (error) {
-      console.error(`🎼 MusicalConductor: Sequence execution failed:`, error);
-      this.failSequence(executionContext, error as Error);
-    }
-  }
-
-  /**
-   * Execute a movement within a sequence
-   * @param executionContext - Execution context
-   * @param movement - Movement to execute
-   */
-  private async executeMovement(
-    executionContext: SequenceExecutionContext,
-    movement: SequenceMovement
-  ): Promise<void> {
-    // Sort beats by beat number to ensure proper order
-    const sortedBeats = [...movement.beats].sort((a, b) => a.beat - b.beat);
-
-    for (const beat of sortedBeats) {
-      executionContext.currentBeat = beat.beat;
-
-      try {
-        await this.executeBeat(executionContext, beat);
-        executionContext.completedBeats.push(beat.beat);
-        this.statistics.totalBeatsExecuted++;
-      } catch (error) {
-        console.error(
-          `🎼 MusicalConductor: Error executing beat ${beat.beat}:`,
-          error
-        );
-        executionContext.errors.push({
-          beat: beat.beat,
-          error: (error as Error).message,
-          timestamp: Date.now(),
-        });
-
-        // Decide whether to continue or abort based on error handling strategy
-        if (beat.errorHandling === "abort-sequence") {
-          throw error;
-        }
-        // For other strategies, log and continue
-      }
-    }
-  }
-
-  /**
-   * Execute a single beat with orchestration
-   * @param executionContext - Execution context
-   * @param beat - Beat to execute
-   */
-  private async executeBeat(
-    executionContext: SequenceExecutionContext,
-    beat: SequenceBeat
-  ): Promise<void> {
-    // Use beat-level orchestration to prevent simultaneous execution
-    return new Promise<void>((resolve, reject) => {
-      this.beatExecutionQueue.push({
-        executionContext,
-        beat,
-        resolve,
-        reject,
-      });
-
-      this.processBeatQueue();
-    });
-  }
-
-  /**
-   * Process beat execution queue to ensure serialized execution
-   */
-  private async processBeatQueue(): Promise<void> {
-    if (this.isExecutingBeat || this.beatExecutionQueue.length === 0) {
-      return;
-    }
-
-    this.isExecutingBeat = true;
-    const { executionContext, beat, resolve, reject } =
-      this.beatExecutionQueue.shift()!;
-
-    try {
-      await this.executeActualBeat(executionContext, beat);
-      resolve();
-    } catch (error) {
-      reject(error as Error);
-    } finally {
-      this.isExecutingBeat = false;
-      // Process next beat in queue
-      if (this.beatExecutionQueue.length > 0) {
-        this.processBeatQueue();
-      }
-    }
-  }
-
-  /**
-   * Execute the actual beat logic with Handler-Coordinated Beat Execution
-   * @param executionContext - Execution context
-   * @param beat - Beat to execute
-   */
-  private async executeActualBeat(
-    executionContext: SequenceExecutionContext,
-    beat: SequenceBeat
-  ): Promise<void> {
-    const { event, data = {}, timing = MUSICAL_TIMING.IMMEDIATE } = beat;
-
-    // Merge beat data with execution context data
-    const eventData = {
-      ...executionContext.data,
-      ...data,
-      beat: beat.beat,
-      movement: executionContext.currentMovement,
-      sequence: {
-        id: executionContext.id,
-        name: executionContext.sequenceName,
-      },
-    };
-
-    // Log beat start with Data Baton information
-    console.log(`🎵 Beat ${beat.beat} Started: ${beat.title} (${event})`);
-    console.log(
-      `🔸 Movement: ${
-        executionContext.sequence?.movements?.[
-          executionContext.currentMovement || 0
-        ]?.name || "Unknown"
-      }`
-    );
-    console.log(
-      `📥 Context: {sequence: '${executionContext.sequenceName}', event: '${event}', beat: ${beat.beat}, ...}`
-    );
-    console.log(
-      `🎽 Baton: ${
-        executionContext.payload &&
-        Object.keys(executionContext.payload).length > 0
-          ? JSON.stringify(executionContext.payload)
-          : "(empty)"
-      }`
-    );
-
-    this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_STARTED, {
-      sequenceName: executionContext.sequenceName,
-      beat: beat.beat,
-      event,
-      title: beat.title,
-      sequenceType: executionContext.executionType,
-      movement: executionContext.currentMovement,
-      timing: timing,
-      dynamics: beat.dynamics,
-    });
-
-    // Handler-Coordinated Beat Execution: Use completion callback system
-    return new Promise<void>((resolve, reject) => {
-      const completeBeat = (data?: any) => {
-        try {
-          // Log beat completion
-          console.log(
-            `🎯 Beat ${beat.beat} execution completed for sequence ${executionContext.sequenceName}`
-          );
-
-          // Emit beat completed event
-          this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_COMPLETED, {
-            sequenceName: executionContext.sequenceName,
-            beat: beat.beat,
-            event,
-            sequenceType: executionContext.executionType,
-            movement: executionContext.currentMovement,
-            success: true,
-            completionData: data,
-          });
-
-          resolve();
-        } catch (error) {
-          reject(error);
-        }
-      };
-
-      try {
-        // Handle timing for Handler-Coordinated Beat Execution
-        if (timing === MUSICAL_TIMING.IMMEDIATE) {
-          this.emitEventWithCompletion(
-            event,
-            eventData,
-            executionContext,
-            completeBeat
-          );
-        } else if (timing === MUSICAL_TIMING.SYNCHRONIZED) {
-          // Execute synchronized with other events - treat as immediate
-          this.emitEventWithCompletion(
-            event,
-            eventData,
-            executionContext,
-            completeBeat
-          );
-        } else if (timing === MUSICAL_TIMING.AFTER_BEAT) {
-          // Small delay to ensure proper sequencing
-          setTimeout(() => {
-            this.emitEventWithCompletion(
-              event,
-              eventData,
-              executionContext,
-              completeBeat
-            );
-          }, 10);
-        } else if (timing === MUSICAL_TIMING.DELAYED) {
-          // Longer delay for intentional timing
-          setTimeout(() => {
-            this.emitEventWithCompletion(
-              event,
-              eventData,
-              executionContext,
-              completeBeat
-            );
-          }, 100);
-        }
-      } catch (error) {
-        // Handle beat execution error
-        this.handleBeatError(executionContext, beat, error as Error);
-        reject(error);
-      }
-    });
-  }
+  // Legacy executeActualBeat method removed - now handled by BeatExecutor
 
   /**
    * Emit an event through the event bus
@@ -2399,239 +2046,13 @@ export class MusicalConductor {
     }
   }
 
-  /**
-   * Emit an event with Handler-Coordinated Beat Execution completion callback
-   * @param eventType - Event type
-   * @param eventData - Event data
-   * @param executionContext - Execution context
-   * @param completeBeat - Beat completion callback
-   */
-  private emitEventWithCompletion(
-    eventType: string,
-    eventData: Record<string, any>,
-    executionContext: SequenceExecutionContext,
-    completeBeat: (data?: any) => void
-  ): void {
-    try {
-      const beatKey = `${executionContext.id}-${executionContext.currentBeat}`;
+  // Legacy emitEventWithCompletion method removed - now handled by BeatExecutor
 
-      // Track this beat as processing
-      this.processingBeats.set(beatKey, {
-        sequenceName: executionContext.id,
-        beatNumber: executionContext.currentBeat || 0,
-        startTime: Date.now(),
-        completeBeat,
-        timeoutId: setTimeout(() => {
-          console.log(
-            `🎯 Beat ${executionContext.currentBeat} timeout after 30s`
-          );
-          this.handleBeatTimeout(beatKey);
-        }, 30000), // 30 second timeout
-      });
+  // Legacy handleBeatCompletion and handleBeatTimeout methods removed - now handled by BeatExecutor
 
-      // Add sequence context and completeBeat callback to event
-      const contextualEventData = {
-        ...eventData,
-        sequence: {
-          id: executionContext.id,
-          name: executionContext.sequenceName,
-          beat: executionContext.currentBeat,
-          movement: executionContext.currentMovement,
-        },
-        // 🎽 Include the data baton in the event context
-        context: {
-          payload: executionContext.payload,
-          executionId: executionContext.id,
-          sequenceName: executionContext.sequenceName,
-          eventBus: this.eventBus,
-          conductor: this,
-          // Handler-Coordinated Beat Execution callback
-          completeBeat: (data?: any) => {
-            this.handleBeatCompletion(beatKey, data);
-          },
-        },
-      };
+  // Legacy completeSequence method removed - now handled by SequenceExecutor
 
-      console.log(
-        `🎯 Event ${eventType} emitted for beat ${executionContext.currentBeat} with completion callback`
-      );
-
-      // Emit the event
-      this.eventBus.emit(eventType, contextualEventData);
-    } catch (error) {
-      console.error(
-        `🎼 MusicalConductor: Failed to emit event with completion ${eventType}:`,
-        error
-      );
-      throw error;
-    }
-  }
-
-  /**
-   * Handle beat completion from handlers
-   * @param beatKey - Beat tracking key
-   * @param data - Completion data from handler
-   */
-  private handleBeatCompletion(beatKey: string, data?: any): void {
-    const beatInfo = this.processingBeats.get(beatKey);
-
-    if (!beatInfo) {
-      console.log(
-        `🎯 Cannot complete beat - beat not in processing: ${beatKey
-          .split("-")
-          .pop()}`
-      );
-      return;
-    }
-
-    // Clear timeout
-    if (beatInfo.timeoutId) {
-      clearTimeout(beatInfo.timeoutId);
-    }
-
-    // Update payload if data provided
-    if (data && typeof data === "object") {
-      const executionContext = this.activeSequence;
-      if (executionContext) {
-        this.updatePayload(data);
-        console.log(`🎽 Beat ${beatInfo.beatNumber} updated payload:`, data);
-      }
-    }
-
-    // Remove from processing
-    this.processingBeats.delete(beatKey);
-
-    const completionTime = Date.now() - beatInfo.startTime;
-    console.log(
-      `🎯 Beat ${beatInfo.beatNumber} completed for sequence ${beatInfo.sequenceName}`
-    );
-    console.log(`✅ Completed in ${completionTime.toFixed(2)}ms`);
-
-    // Signal completion to the original caller
-    beatInfo.completeBeat(data);
-  }
-
-  /**
-   * Handle beat timeout
-   * @param beatKey - Beat tracking key
-   */
-  private handleBeatTimeout(beatKey: string): void {
-    const beatInfo = this.processingBeats.get(beatKey);
-
-    if (beatInfo) {
-      console.error(
-        `❌ Beat ${beatInfo.beatNumber} timed out after 30 seconds`
-      );
-      this.processingBeats.delete(beatKey);
-
-      // Complete with timeout error
-      beatInfo.completeBeat({
-        success: false,
-        error: "Beat execution timeout",
-        timeout: true,
-      });
-    }
-  }
-
-  /**
-   * Complete a sequence execution with Resource Release
-   * @param executionContext - Execution context
-   */
-  private completeSequence(executionContext: SequenceExecutionContext): void {
-    const executionTime = performance.now() - executionContext.startTime;
-
-    // MCO/MSO: Release resource ownership
-    const { resourceId } = executionContext.data;
-    if (resourceId) {
-      this.releaseResourceOwnership(resourceId, executionContext.id);
-    }
-
-    // Update statistics
-    this.statistics.totalSequencesExecuted++;
-    this.statistics.lastExecutionTime = executionTime;
-    this.statistics.currentQueueLength = Math.max(
-      0,
-      this.statistics.currentQueueLength - 1
-    );
-
-    // Update average execution time
-    const alpha = 0.1; // Smoothing factor
-    this.statistics.averageExecutionTime =
-      this.statistics.averageExecutionTime * (1 - alpha) +
-      executionTime * alpha;
-
-    // Calculate completion rate
-    this.statistics.sequenceCompletionRate =
-      this.statistics.totalSequencesExecuted /
-      this.statistics.totalSequencesQueued;
-
-    // Add to history
-    this.sequenceHistory.push(executionContext);
-
-    // Keep history manageable (last 100 sequences)
-    if (this.sequenceHistory.length > 100) {
-      this.sequenceHistory.shift();
-    }
-
-    // Sequence completed - internal logging disabled
-
-    this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_COMPLETED, {
-      sequenceName: executionContext.sequenceName,
-      requestId: executionContext.id,
-      executionTime,
-      beatsExecuted: executionContext.completedBeats.length,
-      errors: executionContext.errors.length,
-    });
-
-    // Clear active sequence and process queue
-    this.activeSequence = null;
-    this.processSequenceQueue();
-  }
-
-  /**
-   * Fail a sequence execution with Resource Release
-   * @param executionContext - Execution context
-   * @param error - Error that caused the failure
-   */
-  private failSequence(
-    executionContext: SequenceExecutionContext,
-    error: Error
-  ): void {
-    const executionTime = performance.now() - executionContext.startTime;
-
-    // MCO/MSO: Release resource ownership on failure
-    const { resourceId } = executionContext.data;
-    if (resourceId) {
-      this.releaseResourceOwnership(resourceId, executionContext.id);
-    }
-
-    // Update statistics
-    this.statistics.errorCount++;
-    this.statistics.currentQueueLength = Math.max(
-      0,
-      this.statistics.currentQueueLength - 1
-    );
-
-    console.error(
-      `🎼 MusicalConductor: Sequence failed - ${
-        executionContext.sequenceName
-      } (${executionTime.toFixed(2)}ms) [Resource: ${resourceId}]:`,
-      error
-    );
-
-    this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_FAILED, {
-      sequenceName: executionContext.sequenceName,
-      requestId: executionContext.id,
-      executionTime,
-      error: error.message,
-      beatsExecuted: executionContext.completedBeats.length,
-      totalErrors: executionContext.errors.length,
-    });
-
-    // Clear active sequence and process queue
-    this.activeSequence = null;
-    this.processSequenceQueue();
-  }
+  // Legacy failSequence method removed - now handled by SequenceExecutor
 
   // ===== Orchestration Validation Compliance Methods =====
 
@@ -2656,11 +2077,11 @@ export class MusicalConductor {
    * @returns Success status
    */
   executeNextSequence(): boolean {
-    if (this.sequenceQueue.length === 0) {
+    if (this.executionQueue.isEmpty()) {
       return false;
     }
 
-    if (this.activeSequence !== null) {
+    if (this.sequenceExecutor.isSequenceRunning()) {
       return false; // Already executing a sequence
     }
 
@@ -2692,7 +2113,8 @@ export class MusicalConductor {
    * @returns Success status
    */
   updatePayload(payloadData: Record<string, any>): boolean {
-    if (!this.activeSequence) {
+    const currentSequence = this.sequenceExecutor.getCurrentSequence();
+    if (!currentSequence) {
       console.warn(
         "🎽 MusicalConductor: Cannot update payload - no active sequence"
       );
@@ -2700,14 +2122,14 @@ export class MusicalConductor {
     }
 
     // Merge new payload data with existing payload
-    this.activeSequence.payload = {
-      ...this.activeSequence.payload,
+    currentSequence.payload = {
+      ...currentSequence.payload,
       ...payloadData,
     };
 
     console.log(
       "🎽 MusicalConductor: Payload updated:",
-      this.activeSequence.payload
+      currentSequence.payload
     );
     return true;
   }
@@ -2717,7 +2139,8 @@ export class MusicalConductor {
    * @returns Current payload or null if no active sequence
    */
   getPayload(): Record<string, any> | null {
-    return this.activeSequence?.payload || null;
+    const currentSequence = this.sequenceExecutor.getCurrentSequence();
+    return currentSequence?.payload || null;
   }
 
   /**
@@ -2807,7 +2230,7 @@ export class MusicalConductor {
       },
     };
 
-    this.sequenceQueue.push(queuedRequest);
+    this.executionQueue.enqueue(queuedRequest);
 
     console.log(
       `🎼 MCO: QUEUE - Sequence ${sequenceRequest.sequenceName} queued until resource ${resourceId} is released by ${currentOwner.symphonyName}`
@@ -2856,15 +2279,16 @@ export class MusicalConductor {
       `🎼 MCO: INTERRUPT - HIGH priority ${requestingSymphony} interrupting ${currentOwner.symphonyName} for resource ${resourceId}`
     );
 
-    // Find and fail the current sequence using the resource
+    // Find and stop the current sequence using the resource
+    const currentSequence = this.sequenceExecutor.getCurrentSequence();
     if (
-      this.activeSequence &&
-      this.activeSequence.id === currentOwner.sequenceExecutionId
+      currentSequence &&
+      currentSequence.id === currentOwner.sequenceExecutionId
     ) {
-      const interruptError = new Error(
-        `Interrupted by HIGH priority sequence: ${requestingSymphony}`
+      console.warn(
+        `🎼 MCO: Stopping current sequence due to HIGH priority interrupt: ${requestingSymphony}`
       );
-      this.failSequence(this.activeSequence, interruptError);
+      this.sequenceExecutor.stopExecution();
     }
 
     // Release the resource
