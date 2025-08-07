@@ -50,6 +50,8 @@ import { ResourceManager } from "./resources/ResourceManager";
 import { StatisticsManager } from "./monitoring/StatisticsManager";
 import { PerformanceTracker } from "./monitoring/PerformanceTracker";
 import { DuplicationDetector } from "./monitoring/DuplicationDetector";
+import { EventLogger } from "./monitoring/EventLogger";
+import { SequenceValidator } from "./validation/SequenceValidator";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -101,6 +103,10 @@ export class MusicalConductor {
   private statisticsManager: StatisticsManager;
   private performanceTracker: PerformanceTracker;
   private duplicationDetector: DuplicationDetector;
+  private eventLogger: EventLogger;
+
+  // Validation components
+  private sequenceValidator: SequenceValidator;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -125,12 +131,7 @@ export class MusicalConductor {
 
   // SPA Validation - now accessed via getter
 
-  // Beat execution logging state
-  private beatLoggingInitialized: boolean = false;
-  private eventSubscriptions: Array<() => void> = []; // Store unsubscribe functions
-
-  // Enhanced logging configuration
-  private static readonly ENABLE_HIERARCHICAL_LOGGING: boolean = true;
+  // Legacy logging properties removed - now handled by EventLogger
 
   private constructor(eventBus: EventBus) {
     // Initialize core components
@@ -145,6 +146,10 @@ export class MusicalConductor {
     this.statisticsManager = new StatisticsManager();
     this.performanceTracker = new PerformanceTracker();
     this.duplicationDetector = new DuplicationDetector();
+    this.eventLogger = new EventLogger(eventBus, this.performanceTracker);
+
+    // Initialize validation components
+    this.sequenceValidator = new SequenceValidator(this.duplicationDetector);
 
     this.sequenceExecutor = new SequenceExecutor(
       eventBus,
@@ -205,190 +210,12 @@ export class MusicalConductor {
    * Protected against duplicate initialization within the singleton
    */
   private setupBeatExecutionLogging(): void {
-    if (this.beatLoggingInitialized) {
-      console.log(
-        "🎼 Beat execution logging already initialized in conductor, skipping..."
-      );
-      return;
-    }
-
-    console.log("🎼 Setting up beat execution logging in conductor...");
-
-    // Check current subscriber count before adding
-    const beatStartedCount = this.eventBus.getSubscriberCount(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_STARTED
-    );
-    const sequenceStartedCount = this.eventBus.getSubscriberCount(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_STARTED
-    );
-    console.log(
-      `🔍 Current subscribers - BEAT_STARTED: ${beatStartedCount}, SEQUENCE_STARTED: ${sequenceStartedCount}`
-    );
-
-    // Clean up any existing subscriptions first (React StrictMode protection)
-    this.cleanupEventSubscriptions();
-
-    // Listen for beat started events
-    const beatStartedUnsubscribe = this.eventBus.subscribe(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_STARTED,
-      (data: any) => {
-        if (MusicalConductor.ENABLE_HIERARCHICAL_LOGGING) {
-          this.logBeatStartedHierarchical(data);
-        } else {
-          console.log(
-            `🎵 Beat ${data.beat} Started: ${data.title || "No title"} (${
-              data.event
-            }) - ${data.sequenceName}`
-          );
-        }
-      }
-    );
-    this.eventSubscriptions.push(beatStartedUnsubscribe);
-
-    // Listen for beat completed events
-    const beatCompletedUnsubscribe = this.eventBus.subscribe(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_COMPLETED,
-      (data: any) => {
-        if (MusicalConductor.ENABLE_HIERARCHICAL_LOGGING) {
-          this.logBeatCompletedHierarchical(data);
-        } else {
-          console.log(
-            `🎵 Beat ${data.beat} Completed: ${data.event} - ${data.sequenceName}`
-          );
-        }
-      }
-    );
-    this.eventSubscriptions.push(beatCompletedUnsubscribe);
-
-    // Listen for beat failed events
-    const beatFailedUnsubscribe = this.eventBus.subscribe(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_FAILED,
-      (data: any) => {
-        if (!MusicalConductor.ENABLE_HIERARCHICAL_LOGGING) {
-          console.error(
-            `🎵 Beat ${data.beat} Failed: ${data.event} - ${data.sequenceName} (${data.error})`
-          );
-        }
-        // Note: Hierarchical logging for errors is handled in handleBeatError method
-      }
-    );
-    this.eventSubscriptions.push(beatFailedUnsubscribe);
-
-    // Listen for sequence started events
-    const sequenceStartedUnsubscribe = this.eventBus.subscribe(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_STARTED,
-      (data: any) => {
-        console.log(
-          `🎼 Sequence Started: ${data.sequenceName} (ID: ${data.requestId})`
-        );
-      }
-    );
-    this.eventSubscriptions.push(sequenceStartedUnsubscribe);
-
-    // Listen for sequence completed events
-    const sequenceCompletedUnsubscribe = this.eventBus.subscribe(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_COMPLETED,
-      (data: any) => {
-        console.log(
-          `🎼 Sequence Completed: ${
-            data.sequenceName
-          } (${data.executionTime.toFixed(2)}ms, ${data.beatsExecuted} beats, ${
-            data.errors
-          } errors)`
-        );
-      }
-    );
-    this.eventSubscriptions.push(sequenceCompletedUnsubscribe);
-
-    this.beatLoggingInitialized = true;
-
-    // Check final subscriber counts
-    const finalBeatStartedCount = this.eventBus.getSubscriberCount(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_STARTED
-    );
-    const finalSequenceStartedCount = this.eventBus.getSubscriberCount(
-      MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_STARTED
-    );
-    console.log(
-      `🔍 Final subscribers - BEAT_STARTED: ${finalBeatStartedCount}, SEQUENCE_STARTED: ${finalSequenceStartedCount}`
-    );
-
-    console.log("✅ Beat execution logging set up successfully in conductor");
+    this.eventLogger.setupBeatExecutionLogging();
   }
 
-  /**
-   * Clean up event subscriptions (React StrictMode protection)
-   */
-  private cleanupEventSubscriptions(): void {
-    if (this.eventSubscriptions.length > 0) {
-      console.log(
-        `🧹 Cleaning up ${this.eventSubscriptions.length} event subscriptions`
-      );
-      this.eventSubscriptions.forEach((unsubscribe) => unsubscribe());
-      this.eventSubscriptions = [];
-    }
-  }
+  // Legacy cleanupEventSubscriptions method removed - now handled by EventLogger
 
-  /**
-   * Log beat started event with hierarchical format
-   * @param data - Beat started event data
-   */
-  private logBeatStartedHierarchical(data: any): void {
-    // Use PerformanceTracker to track beat timing
-    this.performanceTracker.startBeatTiming(data.sequenceName, data.beat);
-
-    // Get movement information from active sequence
-    const movementName = this.getMovementNameForBeat(
-      data.sequenceName,
-      data.beat
-    );
-
-    // Create hierarchical log group with enhanced styling
-    const groupLabel = `🎵 Beat ${data.beat} Started: ${
-      data.title || data.event
-    } (${data.event})`;
-    console.group(`%c${groupLabel}`, "color: #4A90E2; font-weight: bold;");
-    console.log(`🔸 Movement: ${movementName}`);
-    console.log(`📥 Context:`, {
-      sequence: data.sequenceName,
-      event: data.event,
-      beat: data.beat,
-      type: data.sequenceType || "UNKNOWN",
-      timing: data.timing || "immediate",
-      dynamics: data.dynamics || "mf",
-    });
-
-    // 🎽 Log the Data Baton - show payload contents at each beat
-    const currentSequence = this.sequenceExecutor.getCurrentSequence();
-    if (currentSequence?.payload) {
-      console.log(`🎽 Baton:`, currentSequence.payload);
-    } else {
-      console.log(`🎽 Baton: (empty)`);
-    }
-  }
-
-  /**
-   * Log beat completed event with hierarchical format
-   * @param data - Beat completed event data
-   */
-  private logBeatCompletedHierarchical(data: any): void {
-    // Use PerformanceTracker to end beat timing
-    const duration = this.performanceTracker.endBeatTiming(
-      data.sequenceName,
-      data.beat
-    );
-
-    if (duration !== null) {
-      console.log(
-        `%c✅ Completed in ${duration.toFixed(2)}ms`,
-        "color: #28A745; font-weight: bold;"
-      );
-    } else {
-      console.log(`%c✅ Completed`, "color: #28A745; font-weight: bold;");
-    }
-
-    console.groupEnd();
-  }
+  // Legacy logging methods removed - now handled by EventLogger
 
   /**
    * Get movement name for a specific beat in a sequence
@@ -429,31 +256,7 @@ export class MusicalConductor {
     beat: SequenceBeat,
     error: Error
   ): void {
-    // Emit beat failed event
-    this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_FAILED, {
-      sequenceName: executionContext.sequenceName,
-      beat: beat.beat,
-      event: beat.event,
-      sequenceType: executionContext.executionType,
-      movement: executionContext.currentMovement,
-      error: error.message,
-      success: false,
-    });
-
-    // Log error in hierarchical format if enabled
-    if (MusicalConductor.ENABLE_HIERARCHICAL_LOGGING) {
-      console.log(
-        `%c❌ Error: ${error.message}`,
-        "color: #DC3545; font-weight: bold;"
-      );
-      console.groupEnd(); // Close the beat group on error
-
-      // Clean up timing data for failed beat
-      this.performanceTracker.cleanupFailedBeat(
-        executionContext.sequenceName,
-        beat.beat
-      );
-    }
+    this.eventLogger.handleBeatError(executionContext, beat, error);
   }
 
   /**
@@ -856,14 +659,15 @@ export class MusicalConductor {
       }
 
       // Phase 3: StrictMode Protection & Idempotency Check
-      const deduplicationResult = this.deduplicateSequenceRequest(
-        sequenceName,
-        data,
-        priority
-      );
+      const deduplicationResult =
+        this.sequenceValidator.deduplicateSequenceRequest(
+          sequenceName,
+          data,
+          priority
+        );
 
       if (deduplicationResult.isDuplicate) {
-        console.warn(`🎼 MCO: ${deduplicationResult.message}`);
+        console.warn(`🎼 MCO: ${deduplicationResult.reason}`);
 
         // For StrictMode duplicates, return the original request ID pattern but don't execute
         const duplicateRequestId = `${sequenceName}-duplicate-${Date.now()}-${Math.random()
@@ -1335,41 +1139,7 @@ export class MusicalConductor {
 
   // ===== Phase 3: StrictMode Protection & Idempotency Methods =====
 
-  /**
-   * Generate a hash for sequence request to detect duplicates
-   * @param sequenceName - Name of the sequence
-   * @param data - Sequence data
-   * @param priority - Sequence priority
-   * @returns Hash string for duplicate detection
-   */
-  private generateSequenceHash(
-    sequenceName: string,
-    data: Record<string, any>,
-    priority: SequencePriority
-  ): string {
-    // Create a stable hash based on sequence characteristics
-    const hashData = {
-      sequenceName,
-      priority,
-      // Include relevant data fields but exclude timestamps and request IDs
-      resourceId: data.resourceId,
-      componentId: data.componentId,
-      elementId: data.elementId,
-      canvasId: data.canvasId,
-      symphonyName: data.symphonyName,
-      instanceId: data.instanceId,
-    };
-
-    // Simple hash generation (in production, use a proper hash function)
-    const hashString = JSON.stringify(hashData);
-    let hash = 0;
-    for (let i = 0; i < hashString.length; i++) {
-      const char = hashString.charCodeAt(i);
-      hash = (hash << 5) - hash + char;
-      hash = hash & hash; // Convert to 32-bit integer
-    }
-    return `seq_${Math.abs(hash).toString(36)}`;
-  }
+  // Legacy generateSequenceHash method removed - now handled by SequenceValidator
 
   /**
    * Check if a sequence request is a duplicate within the idempotency window
@@ -1397,74 +1167,7 @@ export class MusicalConductor {
 
   // Legacy cleanupOldExecutionRecords method removed - now handled by DuplicationDetector
 
-  /**
-   * Enhanced sequence deduplication for StrictMode protection
-   * @param sequenceName - Name of the sequence
-   * @param data - Sequence data
-   * @param priority - Sequence priority
-   * @returns Deduplication result
-   */
-  private deduplicateSequenceRequest(
-    sequenceName: string,
-    data: Record<string, any>,
-    priority: SequencePriority
-  ): { isDuplicate: boolean; hash: string; message: string } {
-    const sequenceHash = this.generateSequenceHash(
-      sequenceName,
-      data,
-      priority
-    );
-
-    // Special handling for ElementLibrary Display sequence - always allow first execution
-    if (sequenceName === "Element Library Display Symphony No. 12") {
-      const isDuplicate = this.isDuplicateSequenceRequest(sequenceHash);
-
-      if (isDuplicate) {
-        const result =
-          this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
-
-        console.log(
-          `🎼 MCO: ElementLibrary Display duplicate check - ${result.reason}`
-        );
-
-        // Always allow the first ElementLibrary Display sequence to execute
-        // This ensures the display sequence can run at least once
-        console.log(
-          `🎼 MCO: FORCING ElementLibrary Display sequence execution - bypassing duplicate detection`
-        );
-        return {
-          isDuplicate: false,
-          hash: sequenceHash,
-          message: `ElementLibrary Display sequence FORCED execution: ${sequenceName} (hash: ${sequenceHash})`,
-        };
-      } else {
-        console.log(
-          `🎼 MCO: ElementLibrary Display sequence - first execution, allowing`
-        );
-        return {
-          isDuplicate: false,
-          hash: sequenceHash,
-          message: `ElementLibrary Display sequence first execution: ${sequenceName} (hash: ${sequenceHash})`,
-        };
-      }
-    }
-
-    const isDuplicate = this.isDuplicateSequenceRequest(sequenceHash);
-
-    if (isDuplicate) {
-      return {
-        isDuplicate: true,
-        hash: sequenceHash,
-        message: `Duplicate sequence request blocked: ${sequenceName} (hash: ${sequenceHash})`,
-      };
-    }
-
-    return {
-      isDuplicate: false,
-      hash: sequenceHash,
-      message: `Sequence request approved: ${sequenceName} (hash: ${sequenceHash})`,
-    };
-  }
+  // Legacy deduplicateSequenceRequest method removed - now handled by SequenceValidator
 
   /**
    * Check if this is a React StrictMode duplicate call
