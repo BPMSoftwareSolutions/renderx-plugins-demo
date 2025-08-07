@@ -256,7 +256,7 @@ export { EVENT_TYPES };
  */
 export class ConductorEventBus extends EventBus {
   private externalConductor: any = null;
-  private sequences: Map<string, any> = new Map();
+  public sequences: Map<string, any> = new Map();
   private priorities: Map<string, string> = new Map();
   private dependencies: Map<string, string[]> = new Map();
   private currentSequences: Map<string, any> = new Map();
@@ -513,9 +513,9 @@ export class ConductorEventBus extends EventBus {
   }
 
   /**
-   * Get performance metrics
+   * Get basic performance metrics
    */
-  getMetrics() {
+  getBasicMetrics(): any {
     return { ...this.metrics };
   }
 
@@ -528,6 +528,78 @@ export class ConductorEventBus extends EventBus {
       sequencesExecuted: 0,
       averageLatency: 0,
       raceConditionsDetected: 0,
+    };
+  }
+
+  /**
+   * Set musical tempo (BPM)
+   */
+  setTempo(bpm: number): void {
+    this.tempo = bpm;
+  }
+
+  /**
+   * Get current musical tempo (BPM)
+   */
+  getTempo(): number {
+    return this.tempo;
+  }
+
+  /**
+   * Get beat duration in milliseconds based on current tempo
+   */
+  getBeatDuration(): number {
+    return (60 / this.tempo) * 1000;
+  }
+
+  /**
+   * Register a musical sequence
+   */
+  registerSequence(key: string, sequence: any): void {
+    this.sequences.set(key, sequence);
+  }
+
+  /**
+   * Get all sequence names
+   */
+  getSequenceNames(): string[] {
+    return Array.from(this.sequences.keys());
+  }
+
+  /**
+   * Play a sequence through the conductor
+   */
+  async play(sequenceName: string, data?: any): Promise<string | void> {
+    this.metrics.sequencesExecuted++;
+
+    if (this.externalConductor && this.externalConductor.startSequence) {
+      try {
+        return await this.externalConductor.startSequence(sequenceName, data);
+      } catch (error) {
+        console.error(
+          `🎼 EventBus: Error playing sequence ${sequenceName}:`,
+          error
+        );
+      }
+    } else {
+      // Fallback to event emission
+      this.emit("sequence-start", { sequenceName, data });
+    }
+  }
+
+  /**
+   * Get comprehensive metrics including conductor stats
+   */
+  getMetrics(): any {
+    const eventBusStats = this.getDebugInfo();
+    const conductorStats = this.externalConductor?.getStatistics?.() || {};
+
+    return {
+      sequenceCount: this.sequences.size,
+      sequenceExecutions: this.metrics.sequencesExecuted,
+      eventBusStats,
+      conductorStats,
+      ...this.metrics,
     };
   }
 }

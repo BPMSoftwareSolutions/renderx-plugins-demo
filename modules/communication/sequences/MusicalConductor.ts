@@ -572,7 +572,11 @@ export class MusicalConductor {
    * @param context - Optional context for the subscription
    * @returns Unsubscribe function
    */
-  subscribe(eventName: string, callback: EventCallback, context?: any): UnsubscribeFunction {
+  subscribe(
+    eventName: string,
+    callback: EventCallback,
+    context?: any
+  ): UnsubscribeFunction {
     // Validate caller is allowed to subscribe
     const stack = new Error().stack || "";
     const callerInfo = this.spaValidator.analyzeCallStack(stack);
@@ -588,7 +592,9 @@ export class MusicalConductor {
       this.spaValidator.handleViolation(violation);
 
       if (this.spaValidator.config.strictMode) {
-        throw new Error(`Unauthorized conductor.subscribe() call from ${callerInfo.source}`);
+        throw new Error(
+          `Unauthorized conductor.subscribe() call from ${callerInfo.source}`
+        );
       }
     }
 
@@ -596,7 +602,7 @@ export class MusicalConductor {
     return this.eventBus.subscribe(eventName, callback, {
       ...context,
       conductorManaged: true,
-      subscribedVia: 'conductor'
+      subscribedVia: "conductor",
     });
   }
 
@@ -621,7 +627,9 @@ export class MusicalConductor {
       this.spaValidator.handleViolation(violation);
 
       if (this.spaValidator.config.strictMode) {
-        throw new Error(`Unauthorized conductor.unsubscribe() call from ${callerInfo.source}`);
+        throw new Error(
+          `Unauthorized conductor.unsubscribe() call from ${callerInfo.source}`
+        );
       }
     }
 
@@ -646,7 +654,7 @@ export class MusicalConductor {
     }
 
     // Allow conductor internal usage
-    if (callerInfo.source === 'MusicalConductor') {
+    if (callerInfo.source === "MusicalConductor") {
       return true;
     }
 
@@ -885,7 +893,7 @@ export class MusicalConductor {
 
     // Debug: Check if ElementLibrary.library-drop-symphony is in the manifest
     const elementLibraryPlugin = manifest.plugins.find(
-      (p) => p.name === "ElementLibrary.library-drop-symphony"
+      (p: any) => p.name === "ElementLibrary.library-drop-symphony"
     );
     if (elementLibraryPlugin) {
       console.log(
@@ -898,7 +906,7 @@ export class MusicalConductor {
       );
       console.error(
         "🚨 Available plugins:",
-        manifest.plugins.map((p) => p.name)
+        manifest.plugins.map((p: any) => p.name)
       );
     }
 
@@ -907,7 +915,7 @@ export class MusicalConductor {
       "🔍 DEBUG: Starting plugin loop, total plugins:",
       manifest.plugins.length
     );
-    manifest.plugins.forEach((p, index) => {
+    manifest.plugins.forEach((p: any, index: number) => {
       console.log(
         `🔍 DEBUG: Plugin ${index + 1}: ${p.name} (autoMount: ${p.autoMount})`
       );
@@ -1204,7 +1212,9 @@ export class MusicalConductor {
       }
     } catch (bundleError) {
       console.log(
-        `⚠️ Bundled plugin not found, falling back to complex loading: ${bundleError.message}`
+        `⚠️ Bundled plugin not found, falling back to complex loading: ${
+          (bundleError as Error).message
+        }`
       );
       // Fall back to complex dependency resolution
       return this.loadPluginModuleComplex(pluginPath);
@@ -2189,12 +2199,17 @@ export class MusicalConductor {
    * Get conductor status including eventBus availability
    * @returns Conductor status object
    */
-  getStatus(): { statistics: ConductorStatistics & { mountedPlugins: number }; eventBus: boolean; sequences: number; plugins: number } {
+  getStatus(): {
+    statistics: ConductorStatistics & { mountedPlugins: number };
+    eventBus: boolean;
+    sequences: number;
+    plugins: number;
+  } {
     return {
       statistics: this.getStatistics(),
       eventBus: !!this.eventBus,
       sequences: this.sequences.size,
-      plugins: this.mountedPlugins.size
+      plugins: this.mountedPlugins.size,
     };
   }
 
@@ -2222,8 +2237,17 @@ export class MusicalConductor {
   /**
    * Get queue status
    */
-  getQueueStatus(): { length: number; activeSequence: string | null } {
+  getQueueStatus(): {
+    pending: number;
+    executing: number;
+    completed: number;
+    length: number;
+    activeSequence: string | null;
+  } {
     return {
+      pending: this.sequenceQueue.length,
+      executing: this.activeSequence ? 1 : 0,
+      completed: this.sequenceHistory.length,
       length: this.sequenceQueue.length,
       activeSequence: this.activeSequence?.sequenceName || null,
     };
@@ -2643,7 +2667,7 @@ export class MusicalConductor {
     if (data && typeof data === "object") {
       const executionContext = this.activeSequence;
       if (executionContext) {
-        this.updatePayload(executionContext, data);
+        this.updatePayload(data);
         console.log(`🎽 Beat ${beatInfo.beatNumber} updated payload:`, data);
       }
     }

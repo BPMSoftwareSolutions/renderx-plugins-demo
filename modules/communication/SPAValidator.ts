@@ -25,9 +25,9 @@ export interface SPAValidatorConfig {
 
 export class SPAValidator {
   private violations: SPAViolation[] = [];
-  private config: SPAValidatorConfig;
-  private originalEventBusEmit: Function;
-  private originalEventBusSubscribe: Function;
+  public config: SPAValidatorConfig;
+  private originalEventBusEmit: Function | null = null;
+  private originalEventBusSubscribe: Function | null = null;
   private registeredPlugins: Set<string> = new Set();
 
   constructor(config: Partial<SPAValidatorConfig> = {}) {
@@ -53,11 +53,11 @@ export class SPAValidator {
     this.originalEventBusEmit = EventBus.prototype.emit;
 
     // Override emit method with validation
-    EventBus.prototype.emit = this.createValidatedEmit();
+    (EventBus.prototype.emit as any) = this.createValidatedEmit();
 
     // Store original subscribe method and override it
     this.originalEventBusSubscribe = EventBus.prototype.subscribe;
-    EventBus.prototype.subscribe = this.createValidatedSubscribe();
+    (EventBus.prototype.subscribe as any) = this.createValidatedSubscribe();
 
     // Intercept global eventBus access
     this.interceptGlobalAccess();
@@ -106,7 +106,7 @@ export class SPAValidator {
       }
 
       // Call original emit method
-      return validator.originalEventBusEmit.call(
+      return validator.originalEventBusEmit!.call(
         this,
         eventName,
         data,
@@ -119,14 +119,24 @@ export class SPAValidator {
    * Create validated subscribe function that checks for React component violations
    */
   private createValidatedSubscribe(): Function {
-    return function(this: EventBus, eventName: string, callback: EventCallback, context?: any) {
+    return function (
+      this: EventBus,
+      eventName: string,
+      callback: EventCallback,
+      context?: any
+    ) {
       const validator = SPAValidator.getInstance();
       const stack = new Error().stack || "";
       const callerInfo = validator.analyzeCallStack(stack);
 
       // Allow MusicalConductor to subscribe directly for internal operations
       if (callerInfo.isMusicalConductor) {
-        return validator.originalEventBusSubscribe.call(this, eventName, callback, context);
+        return validator.originalEventBusSubscribe!.call(
+          this,
+          eventName,
+          callback,
+          context
+        );
       }
 
       // Check if React component is directly subscribing
@@ -141,7 +151,9 @@ export class SPAValidator {
         validator.handleViolation(violation);
 
         if (validator.config.strictMode) {
-          throw new Error(`React component violation: Use conductor.subscribe('${eventName}', callback) instead of eventBus.subscribe()`);
+          throw new Error(
+            `React component violation: Use conductor.subscribe('${eventName}', callback) instead of eventBus.subscribe()`
+          );
         }
       }
 
@@ -157,7 +169,12 @@ export class SPAValidator {
         validator.handleViolation(violation);
       }
 
-      return validator.originalEventBusSubscribe.call(this, eventName, callback, context);
+      return validator.originalEventBusSubscribe!.call(
+        this,
+        eventName,
+        callback,
+        context
+      );
     };
   }
 
@@ -165,14 +182,17 @@ export class SPAValidator {
    * Intercept global eventBus access through window.renderxCommunicationSystem
    */
   private interceptGlobalAccess(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     // Monitor access to window.renderxCommunicationSystem.eventBus
-    const originalDescriptor = Object.getOwnPropertyDescriptor(window, 'renderxCommunicationSystem');
+    const originalDescriptor = Object.getOwnPropertyDescriptor(
+      window,
+      "renderxCommunicationSystem"
+    );
 
     let communicationSystem: any = null;
 
-    Object.defineProperty(window, 'renderxCommunicationSystem', {
+    Object.defineProperty(window, "renderxCommunicationSystem", {
       get: () => {
         const stack = new Error().stack || "";
         const callerInfo = this.analyzeCallStack(stack);
@@ -187,7 +207,7 @@ export class SPAValidator {
       set: (value) => {
         communicationSystem = value;
       },
-      configurable: true
+      configurable: true,
     });
   }
 
@@ -196,12 +216,15 @@ export class SPAValidator {
    */
   private isViolatingGlobalAccess(callerInfo: any, stack: string): boolean {
     // Allow MusicalConductor and AppContent to set up the system
-    if (callerInfo.source === 'MusicalConductor' || stack.includes('AppContent')) {
+    if (
+      callerInfo.source === "MusicalConductor" ||
+      stack.includes("AppContent")
+    ) {
       return false;
     }
 
     // Check if accessing .eventBus specifically
-    if (stack.includes('.eventBus')) {
+    if (stack.includes(".eventBus")) {
       return true;
     }
 
@@ -225,7 +248,7 @@ export class SPAValidator {
   /**
    * Analyze call stack to identify plugin calls, React components, and mount methods
    */
-  private analyzeCallStack(stack: string): {
+  public analyzeCallStack(stack: string): {
     isPlugin: boolean;
     pluginId: string;
     fileName: string;
@@ -242,7 +265,10 @@ export class SPAValidator {
 
     for (const line of lines) {
       // Check for MusicalConductor internal operations first
-      if (line.includes('MusicalConductor') || line.includes('/sequences/MusicalConductor.ts')) {
+      if (
+        line.includes("MusicalConductor") ||
+        line.includes("/sequences/MusicalConductor.ts")
+      ) {
         isMusicalConductor = true;
         source = "MusicalConductor";
         // MusicalConductor is allowed to access eventBus directly for internal operations
@@ -265,7 +291,7 @@ export class SPAValidator {
       }
 
       // Look for mount method patterns
-      if (line.includes('.mount(') || line.includes('mount:')) {
+      if (line.includes(".mount(") || line.includes("mount:")) {
         isInMountMethod = true;
       }
 
@@ -298,8 +324,8 @@ export class SPAValidator {
       }
 
       // Look for MusicalConductor patterns
-      if (line.includes('MusicalConductor')) {
-        source = 'MusicalConductor';
+      if (line.includes("MusicalConductor")) {
+        source = "MusicalConductor";
       }
     }
 
@@ -341,7 +367,7 @@ export class SPAValidator {
   /**
    * Create violation record
    */
-  private createViolation(
+  public createViolation(
     type: string,
     pluginId: string,
     description: string,
@@ -361,7 +387,7 @@ export class SPAValidator {
   /**
    * Handle violation based on configuration
    */
-  private handleViolation(violation: SPAViolation): void {
+  public handleViolation(violation: SPAViolation): void {
     this.violations.push(violation);
 
     if (this.config.logViolations) {
@@ -521,7 +547,7 @@ export class SPAValidator {
    */
   public disableRuntimeChecks(): void {
     if (this.originalEventBusEmit) {
-      EventBus.prototype.emit = this.originalEventBusEmit;
+      (EventBus.prototype.emit as any) = this.originalEventBusEmit!;
       console.log("🎼 SPA Validator: Runtime checks disabled");
     }
   }
