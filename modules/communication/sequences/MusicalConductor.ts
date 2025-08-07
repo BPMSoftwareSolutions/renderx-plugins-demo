@@ -55,6 +55,7 @@ import { EventLogger } from "./monitoring/EventLogger";
 import { SequenceValidator } from "./validation/SequenceValidator";
 import { SequenceUtilities } from "./utilities/SequenceUtilities";
 import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator";
+import { EventOrchestrator } from "./orchestration/EventOrchestrator";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -117,6 +118,7 @@ export class MusicalConductor {
 
   // Orchestration components
   private sequenceOrchestrator: SequenceOrchestrator;
+  private eventOrchestrator: EventOrchestrator;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -193,6 +195,7 @@ export class MusicalConductor {
       this.sequenceUtilities,
       this.resourceDelegator
     );
+    this.eventOrchestrator = new EventOrchestrator(eventBus);
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -730,46 +733,14 @@ export class MusicalConductor {
     eventData: Record<string, any>,
     executionContext: SequenceExecutionContext
   ): void {
-    try {
-      // Add sequence context to event
-      const contextualEventData = {
-        ...eventData,
-        sequence: {
-          id: executionContext.id,
-          name: executionContext.sequenceName,
-          beat: executionContext.currentBeat,
-          movement: executionContext.currentMovement,
-        },
-        // 🎽 Include the data baton in the event context
-        context: {
-          payload: executionContext.payload,
-          executionId: executionContext.id,
-          sequenceName: executionContext.sequenceName,
-        },
-      };
+    const result = this.eventOrchestrator.emitEvent(
+      eventType,
+      eventData,
+      executionContext
+    );
 
-      // Special debugging for canvas-element-created
-      if (eventType === "canvas-element-created") {
-        console.log(
-          "🔍 DEBUG: Musical Conductor emitting canvas-element-created event"
-        );
-        console.log("🔍 DEBUG: Event data:", contextualEventData);
-        console.log(
-          "🔍 DEBUG: EventBus subscribers for canvas-element-created:",
-          this.eventBus.getSubscriberCount("canvas-element-created")
-        );
-      }
-
-      // Emit the event
-      this.eventBus.emit(eventType, contextualEventData);
-
-      // Event emitted - internal logging disabled
-    } catch (error) {
-      console.error(
-        `🎼 MusicalConductor: Failed to emit event ${eventType}:`,
-        error
-      );
-      throw error;
+    if (!result.success) {
+      throw new Error(result.error || "Failed to emit event");
     }
   }
 
