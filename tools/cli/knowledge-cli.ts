@@ -694,6 +694,40 @@ class KnowledgeCLI {
             }`
           );
         }
+      } else if (options.create) {
+        // Handle create command
+        console.log("🎼 Knowledge Transfer Creation Guide");
+        console.log("═══════════════════════════════════════");
+        console.log("\n📋 Steps to create a knowledge transfer:");
+        console.log("\n1. Create your knowledge file (JSON format):");
+        console.log("   cat > my-knowledge.json << 'EOF'");
+        console.log("   {");
+        console.log('     "knowledgeTransfer": {');
+        console.log('       "version": "1.0.0",');
+        console.log('       "fromAgent": "your-agent-id",');
+        console.log('       "toAgent": "target-agent-id",');
+        console.log('       "priority": "high"');
+        console.log("     },");
+        console.log('     "content": { /* your knowledge here */ }');
+        console.log("   }");
+        console.log("   EOF");
+        console.log("\n2. Create the transfer:");
+        console.log('   node -r ts-node/register -e "');
+        console.log(
+          "   const { KnowledgeTransferQueue } = require('./tools/cli/queue/KnowledgeTransferQueue.ts');"
+        );
+        console.log("   const queue = new KnowledgeTransferQueue();");
+        console.log("   const transferId = queue.createTransfer(");
+        console.log("     'from-agent', 'to-agent', 'my-knowledge.json',");
+        console.log(
+          "     { title: 'Title', description: 'Description', knowledgeType: ['type'] }"
+        );
+        console.log("   );");
+        console.log("   console.log('Transfer created:', transferId);");
+        console.log("   queue.markAsSent(transferId, 'from-agent');");
+        console.log('   "');
+        console.log("\n3. Verify creation:");
+        console.log("   npm run queue -- --status");
       } else if (options.status) {
         const status = this.transferQueue.getQueueStatus();
         const agents = this.transferQueue.getAllAgentStatuses();

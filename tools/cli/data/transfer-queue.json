@@ -201,6 +201,98 @@
           }
         ]
       }
+    ],
+    [
+      "transfer-1754592484272-alt3f03p0",
+      {
+        "transferId": "transfer-1754592484272-alt3f03p0",
+        "fromAgentId": "development-team",
+        "toAgentId": "e2e-testing-agent",
+        "knowledgeFile": "e2e-testing-knowledge.json",
+        "priority": "high",
+        "state": "sent",
+        "metadata": {
+          "title": "E2E Testing Setup for MusicalConductor React SPA Integration",
+          "description": "Complete knowledge transfer for setting up E2E testing using Playwright with headless browser capabilities, console logging, and musical-conductor npm package integration. Includes React SPA examples, plugin validation, and architectural boundary testing.",
+          "knowledgeType": [
+            "e2e-testing",
+            "playwright",
+            "react-spa",
+            "musical-conductor",
+            "console-logging",
+            "plugin-validation"
+          ],
+          "estimatedSize": 1755,
+          "createdAt": 1754592484272,
+          "updatedAt": 1754592484276
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754592484272,
+            "state": "pending",
+            "agentId": "development-team",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754592484276,
+            "state": "sent",
+            "agentId": "development-team",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754592556758-gsq64hnzn",
+      {
+        "transferId": "transfer-1754592556758-gsq64hnzn",
+        "fromAgentId": "development-team",
+        "toAgentId": "e2e-testing-agent",
+        "knowledgeFile": "e2e-testing-knowledge.json",
+        "priority": "high",
+        "state": "sent",
+        "metadata": {
+          "title": "E2E Testing Setup for MusicalConductor React SPA Integration",
+          "description": "Complete knowledge transfer for setting up E2E testing using Playwright with headless browser capabilities, console logging, and musical-conductor npm package integration. Includes React SPA examples, plugin validation, and architectural boundary testing.",
+          "knowledgeType": [
+            "e2e-testing",
+            "playwright",
+            "react-spa",
+            "musical-conductor",
+            "console-logging",
+            "plugin-validation"
+          ],
+          "estimatedSize": 1755,
+          "createdAt": 1754592556758,
+          "updatedAt": 1754592556763
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754592556758,
+            "state": "pending",
+            "agentId": "development-team",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754592556763,
+            "state": "sent",
+            "agentId": "development-team",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
     ]
   ],
   "agents": [
@@ -269,7 +361,18 @@
         "pendingConsumes": 0,
         "totalTransfers": 1
       }
+    ],
+    [
+      "development-team",
+      {
+        "agentId": "development-team",
+        "lastSeen": 1754592556763,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 2
+      }
     ]
   ],
-  "lastUpdated": 1754591097123
+  "lastUpdated": 1754592556763
 }
