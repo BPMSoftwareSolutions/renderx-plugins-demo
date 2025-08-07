@@ -47,11 +47,13 @@ import {
   type PluginMountResult,
 } from "./plugins/PluginInterfaceFacade";
 import { ResourceManager } from "./resources/ResourceManager";
+import { ResourceDelegator } from "./resources/ResourceDelegator";
 import { StatisticsManager } from "./monitoring/StatisticsManager";
 import { PerformanceTracker } from "./monitoring/PerformanceTracker";
 import { DuplicationDetector } from "./monitoring/DuplicationDetector";
 import { EventLogger } from "./monitoring/EventLogger";
 import { SequenceValidator } from "./validation/SequenceValidator";
+import { SequenceUtilities } from "./utilities/SequenceUtilities";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -98,6 +100,7 @@ export class MusicalConductor {
   private pluginManager: PluginManager;
   private pluginInterface: PluginInterfaceFacade;
   private resourceManager: ResourceManager;
+  private resourceDelegator: ResourceDelegator;
 
   // Monitoring components
   private statisticsManager: StatisticsManager;
@@ -107,6 +110,9 @@ export class MusicalConductor {
 
   // Validation components
   private sequenceValidator: SequenceValidator;
+
+  // Utility components
+  private sequenceUtilities: SequenceUtilities;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -151,6 +157,9 @@ export class MusicalConductor {
     // Initialize validation components
     this.sequenceValidator = new SequenceValidator(this.duplicationDetector);
 
+    // Initialize utility components
+    this.sequenceUtilities = new SequenceUtilities();
+
     this.sequenceExecutor = new SequenceExecutor(
       eventBus,
       this.conductorCore.getSPAValidator(),
@@ -167,6 +176,7 @@ export class MusicalConductor {
       this.conductorCore.getSPAValidator()
     );
     this.resourceManager = new ResourceManager();
+    this.resourceDelegator = new ResourceDelegator(this.resourceManager);
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -227,22 +237,11 @@ export class MusicalConductor {
     sequenceName: string,
     beatNumber: number
   ): string {
-    const sequence = this.sequenceRegistry.get(sequenceName);
-    if (!sequence) {
-      return "Unknown Movement";
-    }
-
-    // Find the movement that contains this beat
-    for (const movement of sequence.movements) {
-      const beatExists = movement.beats.some(
-        (beat) => beat.beat === beatNumber
-      );
-      if (beatExists) {
-        return movement.name;
-      }
-    }
-
-    return "Unknown Movement";
+    const movementInfo = this.sequenceUtilities.getMovementNameForBeat(
+      sequenceName,
+      beatNumber
+    );
+    return movementInfo.name;
   }
 
   /**
@@ -366,22 +365,7 @@ export class MusicalConductor {
    * @returns True if authorized, false otherwise
    */
   private isAuthorizedSubscriber(callerInfo: any): boolean {
-    // Allow React components to use conductor.subscribe()
-    if (callerInfo.isReactComponent) {
-      return true;
-    }
-
-    // Allow plugins to use conductor.subscribe() within mount method
-    if (callerInfo.isPlugin && callerInfo.isInMountMethod) {
-      return true;
-    }
-
-    // Allow conductor internal usage
-    if (callerInfo.source === "MusicalConductor") {
-      return true;
-    }
-
-    return false;
+    return this.sequenceUtilities.isAuthorizedSubscriber(callerInfo);
   }
 
   /**
@@ -496,10 +480,11 @@ export class MusicalConductor {
     if (instanceId) {
       return `${sequenceName}-${instanceId}`;
     }
-    // Use ResourceManager to create sequence instance
-    return this.resourceManager
-      .getResourceOwnershipTracker()
-      .createSequenceInstance(sequenceName, `${sequenceName}-${Date.now()}`);
+    return this.sequenceUtilities.createSequenceInstanceId(
+      sequenceName,
+      {},
+      "NORMAL"
+    );
   }
 
   /**
@@ -508,8 +493,7 @@ export class MusicalConductor {
    * @returns Symphony name
    */
   private extractSymphonyName(sequenceName: string): string {
-    const parts = sequenceName.split(".");
-    return parts[0] || sequenceName;
+    return this.sequenceUtilities.extractSymphonyName(sequenceName);
   }
 
   /**
@@ -522,26 +506,7 @@ export class MusicalConductor {
     sequenceName: string,
     data: Record<string, any>
   ): string {
-    // Check for explicit resource ID in data
-    if (data.resourceId) {
-      return data.resourceId;
-    }
-
-    // Check for component-related resources
-    if (data.componentId) {
-      return `component-${data.componentId}`;
-    }
-
-    if (data.elementId) {
-      return `element-${data.elementId}`;
-    }
-
-    if (data.canvasId) {
-      return `canvas-${data.canvasId}`;
-    }
-
-    // Default to sequence-based resource
-    return `sequence-${sequenceName}`;
+    return this.sequenceUtilities.extractResourceId(sequenceName, data);
   }
 
   /**
@@ -558,12 +523,26 @@ export class MusicalConductor {
     priority: SequencePriority,
     instanceId: string
   ): ResourceConflictResult {
-    return this.resourceManager.checkResourceConflict(
+    const delegatorResult = this.resourceDelegator.checkResourceConflict(
       resourceId,
-      symphonyName,
-      priority,
-      instanceId
+      instanceId,
+      priority
     );
+
+    // Convert ResourceDelegator result to MusicalConductor result format
+    return {
+      hasConflict: delegatorResult.hasConflict,
+      conflictType: delegatorResult.hasConflict ? "SAME_RESOURCE" : "NONE",
+      resolution:
+        delegatorResult.resolution === "override"
+          ? "ALLOW"
+          : delegatorResult.resolution === "reject"
+          ? "REJECT"
+          : delegatorResult.resolution === "queue"
+          ? "QUEUE"
+          : "ALLOW",
+      message: delegatorResult.reason || "No conflict detected",
+    };
   }
 
   /**
@@ -582,13 +561,12 @@ export class MusicalConductor {
     priority: SequencePriority,
     sequenceExecutionId: string
   ): boolean {
-    return this.resourceManager.acquireResourceOwnership(
+    const result = this.resourceDelegator.acquireResourceOwnership(
       resourceId,
-      symphonyName,
       instanceId,
-      priority,
-      sequenceExecutionId
+      priority
     );
+    return result.acquired;
   }
 
   /**
@@ -600,9 +578,9 @@ export class MusicalConductor {
     resourceId: string,
     sequenceExecutionId?: string
   ): void {
-    this.resourceManager.releaseResourceOwnership(
+    this.resourceDelegator.releaseResourceOwnership(
       resourceId,
-      sequenceExecutionId
+      sequenceExecutionId || "unknown"
     );
   }
 
