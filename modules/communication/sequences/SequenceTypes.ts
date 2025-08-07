@@ -74,6 +74,7 @@ export interface SequenceBeat {
  * Represents a movement (group of related beats) within a musical sequence
  */
 export interface SequenceMovement {
+  id: string; // Unique movement identifier
   name: string; // Movement name
   description?: string; // Movement description
   beats: SequenceBeat[]; // Array of beats in this movement
@@ -86,6 +87,7 @@ export interface SequenceMovement {
  * Complete definition of a musical sequence
  */
 export interface MusicalSequence {
+  id: string; // Unique sequence identifier
   name: string; // Unique sequence name
   description: string; // Purpose and behavior description
   key: string; // Musical key (organizational)
@@ -209,6 +211,7 @@ export type MusicalConductorEventType =
  * Template for creating new musical sequences
  */
 export const MUSICAL_SEQUENCE_TEMPLATE: MusicalSequence = {
+  id: "template-sequence",
   name: "Template Sequence",
   description: "Template for creating new musical sequences",
   key: "C Major",
@@ -217,6 +220,7 @@ export const MUSICAL_SEQUENCE_TEMPLATE: MusicalSequence = {
   category: SEQUENCE_CATEGORIES.COMPONENT_UI,
   movements: [
     {
+      id: "template-movement",
       name: "Template Movement",
       description: "Template movement with example beats",
       beats: [

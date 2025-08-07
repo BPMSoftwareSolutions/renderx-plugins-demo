@@ -56,6 +56,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
   describe("Sequence Registration", () => {
     it("should register a musical sequence", () => {
       const sequence = {
+        id: "test-sequence",
         name: "Test Sequence",
         description: "A test sequence",
         key: "C Major",
@@ -64,6 +65,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
         category: SEQUENCE_CATEGORIES.COMPONENT_UI,
         movements: [
           {
+            id: "test-movement",
             name: "Test Movement",
             description: "A test movement",
             beats: [
@@ -90,6 +92,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
 
     it("should handle duplicate sequence registration", () => {
       const sequence = {
+        id: "duplicate-test",
         name: "Duplicate Test",
         description: "A test sequence",
         key: "C Major",
@@ -98,6 +101,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
         category: SEQUENCE_CATEGORIES.COMPONENT_UI,
         movements: [
           {
+            id: "test-movement",
             name: "test-movement",
             beats: [
               {
@@ -200,9 +204,16 @@ describe("MusicalConductor - Simple TDD Tests", () => {
 
     it("should unregister sequences", () => {
       const sequence = {
+        id: "unregister-test",
         name: "Unregister Test",
+        description: "A test sequence for unregistration",
+        key: "C Major",
+        tempo: 120,
+        timeSignature: "4/4",
+        category: SEQUENCE_CATEGORIES.COMPONENT_UI,
         movements: [
           {
+            id: "unregister-movement",
             name: "unregister-movement",
             beats: [
               {
@@ -220,7 +231,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
         ],
       };
 
-      conductor.registerSequence(sequence as any);
+      conductor.registerSequence(sequence);
       expect(conductor.getSequenceNames()).toContain(sequence.name);
 
       conductor.unregisterSequence(sequence.name);
@@ -231,6 +242,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
   describe("Sequence Execution", () => {
     beforeEach(() => {
       const testSequence = {
+        id: "basic-test-sequence",
         name: "Basic Test Sequence",
         description: "Simple test sequence",
         key: "C Major",
@@ -239,6 +251,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
         category: SEQUENCE_CATEGORIES.COMPONENT_UI,
         movements: [
           {
+            id: "test-movement",
             name: "Test Movement",
             description: "Simple movement",
             beats: [
