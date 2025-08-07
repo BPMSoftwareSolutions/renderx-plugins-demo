@@ -34,6 +34,12 @@ import {
   SEQUENCE_PRIORITIES,
 } from "./SequenceTypes";
 
+// Import new core components
+import { ConductorCore } from "./core/ConductorCore";
+import { SequenceRegistry } from "./core/SequenceRegistry";
+import { EventSubscriptionManager } from "./core/EventSubscriptionManager";
+import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue";
+
 // CIA (Conductor Integration Architecture) interfaces for SPA plugin mounting
 export interface SPAPlugin {
   sequence: MusicalSequence;
@@ -86,14 +92,35 @@ export interface ResourceConflictResult {
 export class MusicalConductor {
   private static instance: MusicalConductor | null = null;
 
-  private eventBus: EventBus;
-  private sequences: Map<string, MusicalSequence> = new Map();
+  // Core components
+  private conductorCore: ConductorCore;
+  private sequenceRegistry: SequenceRegistry;
+  private eventSubscriptionManager: EventSubscriptionManager;
+  private executionQueue: ExecutionQueue;
 
-  // Sequential Orchestration: Replace concurrent execution with queue-based system
+  // Legacy properties (to be refactored in later phases)
   private activeSequence: SequenceExecutionContext | null = null;
-  private sequenceQueue: SequenceRequest[] = [];
   private sequenceHistory: SequenceExecutionContext[] = [];
-  private priorities: Map<string, string> = new Map();
+  private sequenceQueue: SequenceRequest[] = []; // Legacy - will be removed in Phase 2
+  private priorities: Map<string, string> = new Map(); // Legacy - will be removed in Phase 2
+
+  // Getters for accessing core components
+  private get eventBus(): EventBus {
+    return this.conductorCore.getEventBus();
+  }
+
+  private get spaValidator(): SPAValidator {
+    return this.conductorCore.getSPAValidator();
+  }
+
+  private get sequences(): Map<string, MusicalSequence> {
+    // Create a Map from the SequenceRegistry for backward compatibility
+    const map = new Map<string, MusicalSequence>();
+    this.sequenceRegistry.getAll().forEach((sequence) => {
+      map.set(sequence.name, sequence);
+    });
+    return map;
+  }
 
   // Beat-level orchestration: Ensure no simultaneous beat execution
   private isExecutingBeat: boolean = false;
@@ -147,8 +174,7 @@ export class MusicalConductor {
     chainedSequences: 0,
   };
 
-  // SPA Validation
-  private spaValidator: SPAValidator;
+  // SPA Validation - now accessed via getter
 
   // Beat execution logging state
   private beatLoggingInitialized: boolean = false;
@@ -159,17 +185,16 @@ export class MusicalConductor {
   private beatStartTimes: Map<string, number> = new Map(); // Track beat start times for duration calculation
 
   private constructor(eventBus: EventBus) {
-    this.eventBus = eventBus;
-    this.spaValidator = SPAValidator.getInstance();
-    console.log(
-      "🔍 MusicalConductor: Constructor called - setting up beat logging...",
-      "EventBus instance:",
-      eventBus.constructor.name
+    // Initialize core components
+    this.conductorCore = ConductorCore.getInstance(eventBus);
+    this.sequenceRegistry = new SequenceRegistry(eventBus);
+    this.eventSubscriptionManager = new EventSubscriptionManager(
+      eventBus,
+      this.conductorCore.getSPAValidator()
     );
-    this.setupBeatExecutionLogging();
-    console.log(
-      "🎼 MusicalConductor: CIA-compliant conductor with Sequential Orchestration and SPA validation initialized (Singleton)"
-    );
+    this.executionQueue = new ExecutionQueue();
+
+    console.log("🎼 MusicalConductor: Initialized with core components");
   }
 
   /**
@@ -199,7 +224,8 @@ export class MusicalConductor {
    */
   public static resetInstance(): void {
     if (MusicalConductor.instance) {
-      MusicalConductor.instance.cleanupEventSubscriptions();
+      // Reset core components
+      ConductorCore.resetInstance();
     }
     MusicalConductor.instance = null;
     console.log("🔄 MusicalConductor: Singleton instance reset");
@@ -463,13 +489,7 @@ export class MusicalConductor {
    * @param sequence - The sequence to register
    */
   registerSequence(sequence: MusicalSequence): void {
-    this.sequences.set(sequence.name, sequence);
-    console.log(`🎼 MusicalConductor: Registered sequence "${sequence.name}"`);
-
-    this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_REGISTERED, {
-      sequenceName: sequence.name,
-      category: sequence.category,
-    });
+    this.sequenceRegistry.register(sequence);
   }
 
   /**
@@ -477,16 +497,7 @@ export class MusicalConductor {
    * @param sequenceName - Name of the sequence to unregister
    */
   unregisterSequence(sequenceName: string): void {
-    if (this.sequences.has(sequenceName)) {
-      this.sequences.delete(sequenceName);
-      console.log(
-        `🎼 MusicalConductor: Unregistered sequence "${sequenceName}"`
-      );
-
-      this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED, {
-        sequenceName,
-      });
-    }
+    this.sequenceRegistry.unregister(sequenceName);
   }
 
   /**
@@ -494,14 +505,14 @@ export class MusicalConductor {
    * @param sequenceName - Name of the sequence
    */
   getSequence(sequenceName: string): MusicalSequence | undefined {
-    return this.sequences.get(sequenceName);
+    return this.sequenceRegistry.get(sequenceName);
   }
 
   /**
    * Get all registered sequence names
    */
   getSequenceNames(): string[] {
-    return Array.from(this.sequences.keys());
+    return this.sequenceRegistry.getNames();
   }
 
   /**
@@ -509,7 +520,7 @@ export class MusicalConductor {
    * @returns Array of registered sequences
    */
   getRegisteredSequences(): MusicalSequence[] {
-    return Array.from(this.sequences.values());
+    return this.sequenceRegistry.getAll();
   }
 
   /**
@@ -577,33 +588,11 @@ export class MusicalConductor {
     callback: EventCallback,
     context?: any
   ): UnsubscribeFunction {
-    // Validate caller is allowed to subscribe
-    const stack = new Error().stack || "";
-    const callerInfo = this.spaValidator.analyzeCallStack(stack);
-
-    if (!this.isAuthorizedSubscriber(callerInfo)) {
-      const violation = this.spaValidator.createViolation(
-        "UNAUTHORIZED_CONDUCTOR_SUBSCRIBE",
-        callerInfo.pluginId || "unknown",
-        `Unauthorized conductor.subscribe() call from ${callerInfo.source}`,
-        stack,
-        "error"
-      );
-      this.spaValidator.handleViolation(violation);
-
-      if (this.spaValidator.config.strictMode) {
-        throw new Error(
-          `Unauthorized conductor.subscribe() call from ${callerInfo.source}`
-        );
-      }
-    }
-
-    // Internal eventBus.subscribe() call with conductor context
-    return this.eventBus.subscribe(eventName, callback, {
-      ...context,
-      conductorManaged: true,
-      subscribedVia: "conductor",
-    });
+    return this.eventSubscriptionManager.subscribe(
+      eventName,
+      callback,
+      context
+    );
   }
 
   /**
@@ -612,29 +601,7 @@ export class MusicalConductor {
    * @param callback - The callback function to remove
    */
   unsubscribe(eventName: string, callback: EventCallback): void {
-    // Validate caller is allowed to unsubscribe
-    const stack = new Error().stack || "";
-    const callerInfo = this.spaValidator.analyzeCallStack(stack);
-
-    if (!this.isAuthorizedSubscriber(callerInfo)) {
-      const violation = this.spaValidator.createViolation(
-        "UNAUTHORIZED_CONDUCTOR_UNSUBSCRIBE",
-        callerInfo.pluginId || "unknown",
-        `Unauthorized conductor.unsubscribe() call from ${callerInfo.source}`,
-        stack,
-        "error"
-      );
-      this.spaValidator.handleViolation(violation);
-
-      if (this.spaValidator.config.strictMode) {
-        throw new Error(
-          `Unauthorized conductor.unsubscribe() call from ${callerInfo.source}`
-        );
-      }
-    }
-
-    // Internal eventBus.unsubscribe() call
-    this.eventBus.unsubscribe(eventName, callback);
+    this.eventSubscriptionManager.unsubscribe(eventName, callback);
   }
 
   /**
@@ -2103,20 +2070,8 @@ export class MusicalConductor {
   /**
    * Get queue status
    */
-  getQueueStatus(): {
-    pending: number;
-    executing: number;
-    completed: number;
-    length: number;
-    activeSequence: string | null;
-  } {
-    return {
-      pending: this.sequenceQueue.length,
-      executing: this.activeSequence ? 1 : 0,
-      completed: this.sequenceHistory.length,
-      length: this.sequenceQueue.length,
-      activeSequence: this.activeSequence?.sequenceName || null,
-    };
+  getQueueStatus(): QueueStatus {
+    return this.executionQueue.getStatus();
   }
 
   /**
@@ -2773,7 +2728,7 @@ export class MusicalConductor {
    * @returns Array of queued sequence requests
    */
   getQueuedSequences(): SequenceRequest[] {
-    return [...this.sequenceQueue];
+    return this.executionQueue.getQueuedRequests();
   }
 
   /**
@@ -2781,14 +2736,7 @@ export class MusicalConductor {
    * @returns Number of sequences that were cleared
    */
   clearSequenceQueue(): number {
-    const clearedCount = this.sequenceQueue.length;
-    this.sequenceQueue = [];
-    this.statistics.currentQueueLength = 0;
-
-    console.log(
-      `🎼 MusicalConductor: Cleared ${clearedCount} sequences from queue`
-    );
-    return clearedCount;
+    return this.executionQueue.clear();
   }
 
   /**
