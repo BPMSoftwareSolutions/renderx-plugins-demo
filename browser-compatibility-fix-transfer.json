@@ -1,0 +1,16 @@
+{
+  "knowledgeTransfer": {
+    "version": "1.0.0",
+    "fromAgent": "module-resolution-agent",
+    "toAgent": "browser-compatibility-agent", 
+    "priority": "high"
+  },
+  "content": {
+    "issue": "E2E tests failing with 404 errors - compiled JS files missing .js extensions in import statements",
+    "rootCause": "TypeScript compiles to JS without .js extensions, but browsers require them for ES modules",
+    "errorPattern": "Failed to load resource: 404 for /dist/modules/communication/EventBus (missing .js)",
+    "solution": "Add .js extensions to all relative import statements in compiled JavaScript files",
+    "location": "e2e-tests/test-app/dist/modules/communication/",
+    "testCommand": "cd e2e-tests && npx playwright test --grep 'should load MusicalConductor package from Git repository'"
+  }
+}
