@@ -17,7 +17,23 @@
     "lint": "eslint modules tests --ext .ts,.tsx",
     "lint:fix": "eslint modules tests --ext .ts,.tsx --fix",
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "knowledge": "node -r ts-node/register tools/cli/knowledge-cli.ts",
+    "knowledge:export": "npm run knowledge -- export",
+    "knowledge:import": "npm run knowledge -- import",
+    "knowledge:merge": "npm run knowledge -- merge",
+    "knowledge:validate": "npm run knowledge -- validate",
+    "knowledge:status": "npm run knowledge -- status",
+    "knowledge:diff": "npm run knowledge -- diff",
+    "knowledge:help": "npm run knowledge -- --help",
+    "demo": "node -r ts-node/register tools/cli/demo.ts",
+    "demo:export": "npm run demo -- export",
+    "demo:import": "npm run demo -- import",
+    "demo:status": "npm run demo -- status",
+    "demo:validate": "npm run demo -- validate",
+    "shortcut": "npm run knowledge -- shortcut",
+    "shortcuts": "npm run knowledge -- shortcuts",
+    "shortcut-demo": "node -r ts-node/register tools/cli/shortcut-demo.ts"
   },
   "keywords": [
     "event-bus",
@@ -38,6 +54,10 @@
     "jest-environment-jsdom": "^29.5.0",
     "jest-extended": "^4.0.2",
     "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.0"
   }
 }
