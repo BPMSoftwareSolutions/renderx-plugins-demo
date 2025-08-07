@@ -618,6 +618,9 @@ class KnowledgeCLI {
             );
           });
         }
+
+        // Show actionable next steps for current agent
+        this.showNextStepsForCurrentAgent();
       } else if (options.list) {
         const transfers = options.state
           ? this.transferQueue.getTransfersByState(options.state as any)
@@ -742,6 +745,71 @@ class KnowledgeCLI {
     if (hours > 0) return `${hours}h ago`;
     if (minutes > 0) return `${minutes}m ago`;
     return "just now";
+  }
+
+  private showNextStepsForCurrentAgent(): void {
+    // Get all transfers that might be relevant to any agent
+    const allTransfers = this.transferQueue.getAllTransfers();
+    const sentTransfers = allTransfers.filter((t) => t.state === "sent");
+    const receivedTransfers = allTransfers.filter(
+      (t) => t.state === "received"
+    );
+
+    if (sentTransfers.length === 0 && receivedTransfers.length === 0) {
+      return; // No actionable transfers
+    }
+
+    console.log(`\n🎯 Next Steps for Agent:`);
+    console.log(`══════════════════════════`);
+
+    // Show transfers waiting to be received
+    if (sentTransfers.length > 0) {
+      console.log(
+        `\n📥 Available Knowledge Transfers (${sentTransfers.length}):`
+      );
+      sentTransfers.slice(0, 3).forEach((transfer, index) => {
+        const timeRemaining =
+          (transfer.metadata.expiresAt || Date.now() + 3600000) - Date.now();
+        const hoursRemaining = Math.floor(timeRemaining / (1000 * 60 * 60));
+
+        console.log(`\n${index + 1}. 📤 ${transfer.metadata.title}`);
+        console.log(`   📝 ${transfer.metadata.description}`);
+        console.log(`   🏷️  ${transfer.metadata.knowledgeType.join(", ")}`);
+        console.log(`   ⏰ Expires in: ${hoursRemaining}h`);
+        console.log(`   📁 Knowledge file: ${transfer.knowledgeFile}`);
+        console.log(`
+   🚀 To receive this knowledge:`);
+        console.log(`      npm run queue -- --received ${transfer.transferId}`);
+      });
+    }
+
+    // Show transfers that have been received but not consumed
+    if (receivedTransfers.length > 0) {
+      console.log(
+        `\n📋 Received Transfers Ready for Action (${receivedTransfers.length}):`
+      );
+      receivedTransfers.slice(0, 3).forEach((transfer, index) => {
+        console.log(`\n${index + 1}. 📥 ${transfer.metadata.title}`);
+        console.log(`   📁 Knowledge file: ${transfer.knowledgeFile}`);
+        console.log(`
+   ✅ To mark as consumed after completing the work:`);
+        console.log(`      npm run queue -- --consumed ${transfer.transferId}`);
+      });
+    }
+
+    // Show general guidance
+    console.log(`\n💡 Quick Commands:`);
+    console.log(
+      `   cat ${
+        sentTransfers[0]?.knowledgeFile || "knowledge-file.json"
+      }                    # Read knowledge content`
+    );
+    console.log(
+      `   npm run queue -- --agent <your-agent-id>     # See your specific transfers`
+    );
+    console.log(
+      `   npm run queue -- --list                     # See all transfers`
+    );
   }
 
   // Helper methods
