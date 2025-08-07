@@ -171,10 +171,13 @@ export const AppShell: React.FC<AppShellProps> = ({
   }, [conductor, onThemeChange]);
 
   const handleThemeToggle = () => {
-    // Execute theme change symphony
+    const targetTheme = theme === "light" ? "dark" : "light";
+
+    // Execute theme change symphony with callback
     conductor.play("AppShell", "theme-symphony", {
       currentTheme: theme,
-      targetTheme: theme === "light" ? "dark" : "light",
+      targetTheme,
+      onThemeChange: onThemeChange, // Pass callback for React state update
     });
   };
 
@@ -226,10 +229,11 @@ export const ElementLibrary: React.FC = () => {
   }, [conductor]);
 
   const loadComponents = () => {
-    // Execute component loading symphony
+    // Execute component loading symphony with callback
     conductor.play("ElementLibrary", "load-components-symphony", {
       source: "component-definitions.json",
       category: "ui-components",
+      onComponentsLoaded: setComponents, // Pass callback for React state update
     });
   };
 
@@ -300,55 +304,19 @@ export const Canvas: React.FC<CanvasProps> = ({
   const conductor = ConductorService.getInstance().getConductor();
 
   useEffect(() => {
-    // Subscribe to canvas events
-    const unsubscribeElementAdded = conductor.subscribe(
-      "element-added",
+    // Subscribe to sequence completion events for monitoring
+    const unsubscribeSequenceCompleted = conductor.subscribe(
+      "sequence-completed",
       (event) => {
-        setElements((prev) => [...prev, event.element]);
-      }
-    );
-
-    const unsubscribeElementMoved = conductor.subscribe(
-      "element-moved",
-      (event) => {
-        setElements((prev) =>
-          prev.map((el) =>
-            el.id === event.elementId
-              ? { ...el, position: event.newPosition }
-              : el
-          )
-        );
-      }
-    );
-
-    const unsubscribeElementResized = conductor.subscribe(
-      "element-resized",
-      (event) => {
-        setElements((prev) =>
-          prev.map((el) =>
-            el.id === event.elementId ? { ...el, size: event.newSize } : el
-          )
-        );
-      }
-    );
-
-    const unsubscribeElementDeleted = conductor.subscribe(
-      "element-deleted",
-      (event) => {
-        setElements((prev) => prev.filter((el) => el.id !== event.elementId));
-        if (selectedElement?.id === event.elementId) {
-          onElementSelect(null);
-        }
+        console.log(`🎼 Canvas sequence completed: ${event.sequenceName}`);
+        // Optional: Handle sequence completion for monitoring/debugging
       }
     );
 
     return () => {
-      unsubscribeElementAdded();
-      unsubscribeElementMoved();
-      unsubscribeElementResized();
-      unsubscribeElementDeleted();
+      unsubscribeSequenceCompleted();
     };
-  }, [conductor, selectedElement, onElementSelect]);
+  }, [conductor]);
 
   const handleDragOver = (event: React.DragEvent) => {
     event.preventDefault();
@@ -364,11 +332,12 @@ export const Canvas: React.FC<CanvasProps> = ({
       y: event.clientY - rect.top,
     };
 
-    // Execute drop symphony
+    // Execute drop symphony with callback
     conductor.play("Canvas", "drop-symphony", {
       dropPosition,
       dragEvent: event,
       canvasRect: rect,
+      onElementAdded: (element) => setElements((prev) => [...prev, element]),
     });
   };
 
@@ -767,6 +736,16 @@ export const sequence: MusicalSequence = {
           data: {},
           errorHandling: "continue",
         },
+        {
+          beat: 4,
+          event: "theme-notify",
+          title: "Notify Theme Changed",
+          description: "Emit theme changed event through conductor",
+          dynamics: MUSICAL_DYNAMICS.MEZZO_FORTE,
+          timing: MUSICAL_TIMING.AFTER_BEAT,
+          data: {},
+          errorHandling: "continue",
+        },
       ],
     },
   ],
@@ -792,24 +771,45 @@ export const handlers = {
     document.documentElement.setAttribute("data-theme", targetTheme);
     document.body.className = `theme-${targetTheme}`;
 
-    // Emit theme changed event
-    context.eventBus.emit("theme-changed", { theme: targetTheme });
-
     console.log(`🎨 Theme applied: ${targetTheme}`);
+
+    // Trigger notification sequence through conductor.play()
+    context.conductor.play(
+      "AppShell",
+      "theme-notify-symphony",
+      {
+        theme: targetTheme,
+        source: "theme-apply",
+      },
+      "CHAINED"
+    );
+
     return { applied: true, theme: targetTheme };
   },
 
   "theme-persist": (data: any, context: any) => {
-    const { targetTheme } = context;
+    const { theme } = context.payload; // From previous beat via data baton
 
     try {
-      localStorage.setItem("app-theme", targetTheme);
-      console.log(`🎨 Theme persisted: ${targetTheme}`);
-      return { persisted: true };
+      localStorage.setItem("app-theme", theme);
+      console.log(`🎨 Theme persisted: ${theme}`);
+      return { persisted: true, theme };
     } catch (error) {
       console.warn("Failed to persist theme:", error);
-      return { persisted: false, error: error.message };
+      return { persisted: false, error: error.message, theme };
     }
+  },
+
+  "theme-notify": (data: any, context: any) => {
+    const { theme } = context.payload; // From data baton
+
+    // Update React components through callback mechanism
+    if (context.onThemeChange) {
+      context.onThemeChange(theme);
+    }
+
+    console.log(`📢 Theme change notification sent: ${theme}`);
+    return { notified: true, theme };
   },
 };
 ```
@@ -897,13 +897,12 @@ export const handlers = {
   "emit-loaded": (data: any, context: any) => {
     const { validComponents } = context.payload;
 
-    // Emit components loaded event
-    context.eventBus.emit("components-loaded", {
-      components: validComponents,
-      timestamp: new Date().toISOString(),
-    });
+    // Update React components through callback mechanism
+    if (context.onComponentsLoaded) {
+      context.onComponentsLoaded(validComponents);
+    }
 
-    console.log(`📚 Components loaded and emitted: ${validComponents.length}`);
+    console.log(`📚 Components loaded and notified: ${validComponents.length}`);
     return { emitted: true, count: validComponents.length };
   },
 };
@@ -1002,14 +1001,76 @@ export const handlers = {
   "emit-added": (data: any, context: any) => {
     const { element } = context.payload;
 
-    // Emit element added event
-    context.eventBus.emit("element-added", {
-      element,
-      timestamp: new Date().toISOString(),
-    });
+    // Update React components through callback mechanism
+    if (context.onElementAdded) {
+      context.onElementAdded(element);
+    }
 
     console.log(`✨ Element added to canvas: ${element.id}`);
     return { emitted: true, elementId: element.id };
+  },
+};
+```
+
+## 🏗️ Architectural Principles
+
+### ✅ Correct: Sequence-to-Sequence Communication
+
+MusicalConductor uses **sequence orchestration** for all inter-component communication. Plugins should never directly emit events or access the EventBus.
+
+```typescript
+// ✅ CORRECT: Use conductor.play() to trigger other sequences
+export const handlers = {
+  "theme-apply": (data: any, context: any) => {
+    // Apply theme changes
+    document.documentElement.setAttribute("data-theme", context.targetTheme);
+
+    // Trigger notification sequence through conductor.play()
+    context.conductor.play(
+      "AppShell",
+      "theme-notify-symphony",
+      {
+        theme: context.targetTheme,
+        source: "theme-apply",
+      },
+      "CHAINED"
+    );
+
+    return { applied: true };
+  },
+};
+```
+
+### ❌ Incorrect: Direct Event Emission
+
+```typescript
+// ❌ WRONG: Direct event emission bypasses orchestration
+context.eventBus.emit("theme-changed", { theme });
+context.conductor.emitEvent("theme-changed", { theme }); // This method doesn't exist
+```
+
+### 🔄 React State Updates
+
+Use **callback patterns** to update React state from within sequences:
+
+```typescript
+// In React component
+conductor.play("ElementLibrary", "load-components-symphony", {
+  source: "components.json",
+  onComponentsLoaded: setComponents, // Pass React state setter as callback
+});
+
+// In plugin handler
+export const handlers = {
+  "emit-loaded": (data: any, context: any) => {
+    const { validComponents } = context.payload;
+
+    // Update React state through callback
+    if (context.onComponentsLoaded) {
+      context.onComponentsLoaded(validComponents);
+    }
+
+    return { emitted: true };
   },
 };
 ```
