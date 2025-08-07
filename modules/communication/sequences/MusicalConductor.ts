@@ -41,6 +41,7 @@ import { EventSubscriptionManager } from "./core/EventSubscriptionManager";
 import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue";
 import { SequenceExecutor } from "./execution/SequenceExecutor";
 import { PluginManager } from "./plugins/PluginManager";
+import { ResourceManager } from "./resources/ResourceManager";
 
 // CIA (Conductor Integration Architecture) interfaces for SPA plugin mounting
 export interface SPAPlugin {
@@ -101,6 +102,7 @@ export class MusicalConductor {
   private executionQueue: ExecutionQueue;
   private sequenceExecutor: SequenceExecutor;
   private pluginManager: PluginManager;
+  private resourceManager: ResourceManager;
 
   // Legacy properties removed - now handled by specialized components
 
@@ -119,11 +121,7 @@ export class MusicalConductor {
 
   // Legacy plugin properties removed - now handled by PluginManager
 
-  // MCO/MSO Resource Ownership and Instance Management
-  private resourceOwnership: Map<string, ResourceOwner> = new Map();
-  private sequenceInstances: Map<string, SequenceInstance> = new Map();
-  private symphonyResourceMap: Map<string, Set<string>> = new Map(); // symphonyName -> resourceIds
-  private instanceCounter: number = 0;
+  // Legacy resource properties removed - now handled by ResourceManager
 
   // Phase 3: StrictMode Protection & Idempotency
   private executedSequenceHashes: Set<string> = new Set(); // Track executed sequences to prevent duplicates
@@ -176,6 +174,7 @@ export class MusicalConductor {
       this.conductorCore.getSPAValidator(),
       this.sequenceRegistry
     );
+    this.resourceManager = new ResourceManager();
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -849,8 +848,10 @@ export class MusicalConductor {
     if (instanceId) {
       return `${sequenceName}-${instanceId}`;
     }
-    this.instanceCounter++;
-    return `${sequenceName}-instance-${this.instanceCounter}-${Date.now()}`;
+    // Use ResourceManager to create sequence instance
+    return this.resourceManager
+      .getResourceOwnershipTracker()
+      .createSequenceInstance(sequenceName, `${sequenceName}-${Date.now()}`);
   }
 
   /**
@@ -909,63 +910,12 @@ export class MusicalConductor {
     priority: SequencePriority,
     instanceId: string
   ): ResourceConflictResult {
-    const currentOwner = this.resourceOwnership.get(resourceId);
-
-    if (!currentOwner) {
-      return {
-        hasConflict: false,
-        conflictType: "NONE",
-        resolution: "ALLOW",
-        message: `Resource ${resourceId} is available`,
-      };
-    }
-
-    // Same symphony, same instance - allow (idempotency)
-    if (
-      currentOwner.symphonyName === symphonyName &&
-      currentOwner.instanceId === instanceId
-    ) {
-      return {
-        hasConflict: false,
-        conflictType: "NONE",
-        resolution: "ALLOW",
-        message: `Same symphony instance ${instanceId} already owns resource ${resourceId}`,
-      };
-    }
-
-    // Same symphony, different instance - queue instead of reject
-    if (currentOwner.symphonyName === symphonyName) {
-      return {
-        hasConflict: true,
-        conflictType: "INSTANCE_CONFLICT",
-        currentOwner,
-        resolution: "QUEUE",
-        message: `Symphony ${symphonyName} already has another instance using resource ${resourceId}, request will be queued`,
-      };
-    }
-
-    // Different symphony - check priority
-    if (
-      priority === SEQUENCE_PRIORITIES.HIGH &&
-      currentOwner.priority !== SEQUENCE_PRIORITIES.HIGH
-    ) {
-      return {
-        hasConflict: true,
-        conflictType: "PRIORITY_CONFLICT",
-        currentOwner,
-        resolution: "INTERRUPT",
-        message: `HIGH priority request can interrupt current owner of resource ${resourceId}`,
-      };
-    }
-
-    // Different symphony, same or lower priority - queue
-    return {
-      hasConflict: true,
-      conflictType: "SAME_RESOURCE",
-      currentOwner,
-      resolution: "QUEUE",
-      message: `Resource ${resourceId} is owned by ${currentOwner.symphonyName}, request will be queued`,
-    };
+    return this.resourceManager.checkResourceConflict(
+      resourceId,
+      symphonyName,
+      priority,
+      instanceId
+    );
   }
 
   /**
@@ -984,50 +934,13 @@ export class MusicalConductor {
     priority: SequencePriority,
     sequenceExecutionId: string
   ): boolean {
-    const conflictResult = this.checkResourceConflict(
+    return this.resourceManager.acquireResourceOwnership(
       resourceId,
-      symphonyName,
-      priority,
-      instanceId
-    );
-
-    if (conflictResult.resolution === "REJECT") {
-      console.warn(
-        `🎼 MCO: Resource acquisition rejected - ${conflictResult.message}`
-      );
-      return false;
-    }
-
-    if (conflictResult.resolution === "INTERRUPT") {
-      console.log(
-        `🎼 MCO: Interrupting current owner for HIGH priority request - ${conflictResult.message}`
-      );
-      this.releaseResourceOwnership(
-        resourceId,
-        conflictResult.currentOwner!.sequenceExecutionId
-      );
-    }
-
-    // Acquire the resource
-    const resourceOwner: ResourceOwner = {
       symphonyName,
       instanceId,
-      resourceId,
-      acquiredAt: performance.now(),
       priority,
-      sequenceExecutionId,
-    };
-
-    this.resourceOwnership.set(resourceId, resourceOwner);
-
-    // Update symphony resource mapping
-    if (!this.symphonyResourceMap.has(symphonyName)) {
-      this.symphonyResourceMap.set(symphonyName, new Set());
-    }
-    this.symphonyResourceMap.get(symphonyName)!.add(resourceId);
-
-    // Resource acquired - internal logging disabled
-    return true;
+      sequenceExecutionId
+    );
   }
 
   /**
@@ -1039,38 +952,10 @@ export class MusicalConductor {
     resourceId: string,
     sequenceExecutionId?: string
   ): void {
-    const currentOwner = this.resourceOwnership.get(resourceId);
-
-    if (!currentOwner) {
-      return; // Resource not owned
-    }
-
-    // Verify ownership if execution ID provided
-    if (
-      sequenceExecutionId &&
-      currentOwner.sequenceExecutionId !== sequenceExecutionId
-    ) {
-      console.warn(
-        `🎼 MCO: Cannot release resource ${resourceId} - ownership mismatch`
-      );
-      return;
-    }
-
-    // Release the resource
-    this.resourceOwnership.delete(resourceId);
-
-    // Update symphony resource mapping
-    const symphonyResources = this.symphonyResourceMap.get(
-      currentOwner.symphonyName
+    this.resourceManager.releaseResourceOwnership(
+      resourceId,
+      sequenceExecutionId
     );
-    if (symphonyResources) {
-      symphonyResources.delete(resourceId);
-      if (symphonyResources.size === 0) {
-        this.symphonyResourceMap.delete(currentOwner.symphonyName);
-      }
-    }
-
-    // Resource released - internal logging disabled
   }
 
   /**
@@ -1559,7 +1444,7 @@ export class MusicalConductor {
    * @returns Resource ownership map
    */
   getResourceOwnership(): Map<string, ResourceOwner> {
-    return new Map(this.resourceOwnership);
+    return this.resourceManager.getResourceOwnership();
   }
 
   /**
@@ -1567,75 +1452,22 @@ export class MusicalConductor {
    * @returns Symphony to resources mapping
    */
   getSymphonyResourceMap(): Map<string, Set<string>> {
-    return new Map(this.symphonyResourceMap);
+    return this.resourceManager.getSymphonyResourceMap();
   }
 
   /**
    * Get sequence instances (MCO/MSO diagnostic method)
    * @returns Sequence instances map
    */
-  getSequenceInstances(): Map<string, SequenceInstance> {
-    return new Map(this.sequenceInstances);
+  getSequenceInstances(): Map<string, any> {
+    return this.resourceManager.getSequenceInstances();
   }
 
   // ===== Phase 2: Conflict Resolution Strategies =====
 
-  /**
-   * Resolve resource conflict using REJECT strategy
-   * @param resourceId - Resource identifier
-   * @param requestingSymphony - Symphony requesting the resource
-   * @param currentOwner - Current resource owner
-   * @returns Resolution result
-   */
-  private resolveResourceConflict_Reject(
-    resourceId: string,
-    requestingSymphony: string,
-    currentOwner: ResourceOwner
-  ): { success: boolean; message: string } {
-    console.warn(
-      `🎼 MCO: REJECT - Resource ${resourceId} is owned by ${currentOwner.symphonyName}, rejecting request from ${requestingSymphony}`
-    );
+  // Legacy resolveResourceConflict_Reject method removed - now handled by ResourceConflictResolver
 
-    return {
-      success: false,
-      message: `Resource ${resourceId} is currently owned by ${currentOwner.symphonyName}. Request rejected to prevent conflicts.`,
-    };
-  }
-
-  /**
-   * Resolve resource conflict using QUEUE strategy
-   * @param sequenceRequest - The sequence request to queue
-   * @param resourceId - Resource identifier
-   * @param currentOwner - Current resource owner
-   * @returns Resolution result
-   */
-  private resolveResourceConflict_Queue(
-    sequenceRequest: SequenceRequest,
-    resourceId: string,
-    currentOwner: ResourceOwner
-  ): { success: boolean; message: string } {
-    // Add to queue with resource dependency metadata
-    const queuedRequest = {
-      ...sequenceRequest,
-      data: {
-        ...sequenceRequest.data,
-        waitingForResource: resourceId,
-        blockedBy: currentOwner.symphonyName,
-        queuedForResource: true,
-      },
-    };
-
-    this.executionQueue.enqueue(queuedRequest);
-
-    console.log(
-      `🎼 MCO: QUEUE - Sequence ${sequenceRequest.sequenceName} queued until resource ${resourceId} is released by ${currentOwner.symphonyName}`
-    );
-
-    return {
-      success: true,
-      message: `Sequence queued until resource ${resourceId} is available. Currently owned by ${currentOwner.symphonyName}.`,
-    };
-  }
+  // Legacy resolveResourceConflict_Queue method removed - now handled by ResourceConflictResolver
 
   /**
    * Resolve resource conflict using INTERRUPT strategy (HIGH priority only)
@@ -1647,64 +1479,7 @@ export class MusicalConductor {
    * @param currentOwner - Current resource owner
    * @returns Resolution result
    */
-  private resolveResourceConflict_Interrupt(
-    resourceId: string,
-    requestingSymphony: string,
-    requestingInstanceId: string,
-    requestingPriority: SequencePriority,
-    requestingExecutionId: string,
-    currentOwner: ResourceOwner
-  ): { success: boolean; message: string } {
-    if (requestingPriority !== SEQUENCE_PRIORITIES.HIGH) {
-      return {
-        success: false,
-        message: `Only HIGH priority sequences can interrupt. Current priority: ${requestingPriority}`,
-      };
-    }
-
-    if (currentOwner.priority === SEQUENCE_PRIORITIES.HIGH) {
-      return {
-        success: false,
-        message: `Cannot interrupt HIGH priority sequence ${currentOwner.symphonyName}`,
-      };
-    }
-
-    // Force release the resource from current owner
-    console.warn(
-      `🎼 MCO: INTERRUPT - HIGH priority ${requestingSymphony} interrupting ${currentOwner.symphonyName} for resource ${resourceId}`
-    );
-
-    // Find and stop the current sequence using the resource
-    const currentSequence = this.sequenceExecutor.getCurrentSequence();
-    if (
-      currentSequence &&
-      currentSequence.id === currentOwner.sequenceExecutionId
-    ) {
-      console.warn(
-        `🎼 MCO: Stopping current sequence due to HIGH priority interrupt: ${requestingSymphony}`
-      );
-      this.sequenceExecutor.stopExecution();
-    }
-
-    // Release the resource
-    this.releaseResourceOwnership(resourceId, currentOwner.sequenceExecutionId);
-
-    // Acquire for the new requester
-    const acquired = this.acquireResourceOwnership(
-      resourceId,
-      requestingSymphony,
-      requestingInstanceId,
-      requestingPriority,
-      requestingExecutionId
-    );
-
-    return {
-      success: acquired,
-      message: acquired
-        ? `HIGH priority sequence ${requestingSymphony} successfully interrupted and acquired resource ${resourceId}`
-        : `Failed to acquire resource ${resourceId} after interruption`,
-    };
-  }
+  // Legacy resolveResourceConflict_Interrupt method removed - now handled by ResourceConflictResolver
 
   /**
    * Enhanced resource conflict resolution with strategy selection
@@ -1724,69 +1499,14 @@ export class MusicalConductor {
     sequenceExecutionId: string,
     sequenceRequest: SequenceRequest
   ): { success: boolean; message: string; strategy: string } {
-    const conflictResult = this.checkResourceConflict(
+    return this.resourceManager.resolveResourceConflictAdvanced(
       resourceId,
       symphonyName,
+      instanceId,
       priority,
-      instanceId
+      sequenceExecutionId,
+      sequenceRequest
     );
-
-    if (!conflictResult.hasConflict) {
-      // No conflict - proceed normally
-      const acquired = this.acquireResourceOwnership(
-        resourceId,
-        symphonyName,
-        instanceId,
-        priority,
-        sequenceExecutionId
-      );
-      return {
-        success: acquired,
-        message: acquired
-          ? `Resource ${resourceId} acquired successfully`
-          : `Failed to acquire resource ${resourceId}`,
-        strategy: "ALLOW",
-      };
-    }
-
-    const currentOwner = conflictResult.currentOwner!;
-
-    // Apply resolution strategy based on conflict analysis
-    switch (conflictResult.resolution) {
-      case "REJECT":
-        const rejectResult = this.resolveResourceConflict_Reject(
-          resourceId,
-          symphonyName,
-          currentOwner
-        );
-        return { ...rejectResult, strategy: "REJECT" };
-
-      case "QUEUE":
-        const queueResult = this.resolveResourceConflict_Queue(
-          sequenceRequest,
-          resourceId,
-          currentOwner
-        );
-        return { ...queueResult, strategy: "QUEUE" };
-
-      case "INTERRUPT":
-        const interruptResult = this.resolveResourceConflict_Interrupt(
-          resourceId,
-          symphonyName,
-          instanceId,
-          priority,
-          sequenceExecutionId,
-          currentOwner
-        );
-        return { ...interruptResult, strategy: "INTERRUPT" };
-
-      default:
-        return {
-          success: false,
-          message: `Unknown resolution strategy: ${conflictResult.resolution}`,
-          strategy: "UNKNOWN",
-        };
-    }
   }
 
   // ===== Phase 3: StrictMode Protection & Idempotency Methods =====
