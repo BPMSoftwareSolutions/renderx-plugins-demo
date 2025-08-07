@@ -28,6 +28,7 @@ import { KnowledgeMerger } from "./mergers/KnowledgeMerger";
 import { KnowledgeValidator } from "./validators/KnowledgeValidator";
 import { CLILogger } from "./utils/CLILogger";
 import { ShortcutManager } from "./shortcuts/ShortcutManager";
+import { KnowledgeTransferQueue } from "./queue/KnowledgeTransferQueue";
 
 // Knowledge transfer data structures
 export interface AgentKnowledge {
@@ -93,6 +94,7 @@ class KnowledgeCLI {
   private merger: KnowledgeMerger;
   private validator: KnowledgeValidator;
   private shortcutManager: ShortcutManager;
+  private transferQueue: KnowledgeTransferQueue;
 
   constructor() {
     this.program = new Command();
@@ -102,6 +104,7 @@ class KnowledgeCLI {
     this.merger = new KnowledgeMerger();
     this.validator = new KnowledgeValidator();
     this.shortcutManager = new ShortcutManager();
+    this.transferQueue = new KnowledgeTransferQueue();
 
     this.setupCommands();
   }
@@ -240,6 +243,21 @@ class KnowledgeCLI {
       .option("--add <file>", "Add shortcuts from JSON file")
       .option("--export <file>", "Export shortcuts to JSON file")
       .action(this.handleShortcuts.bind(this));
+
+    // Transfer queue commands
+    this.program
+      .command("queue")
+      .description("Manage knowledge transfer queue")
+      .option("--status", "Show queue status")
+      .option("--list", "List all transfers")
+      .option("--agent <agentId>", "Show transfers for specific agent")
+      .option("--state <state>", "Filter by transfer state")
+      .option("--create", "Create a new transfer request")
+      .option("--sent <transferId>", "Mark transfer as sent")
+      .option("--received <transferId>", "Mark transfer as received")
+      .option("--consumed <transferId>", "Mark transfer as consumed")
+      .option("--failed <transferId>", "Mark transfer as failed")
+      .action(this.handleQueue.bind(this));
   }
 
   private async handleExport(options: any): Promise<void> {
@@ -575,6 +593,155 @@ class KnowledgeCLI {
       this.logger.error("❌ Shortcuts command failed:", error);
       process.exit(1);
     }
+  }
+
+  private async handleQueue(options: any): Promise<void> {
+    try {
+      if (options.status) {
+        const status = this.transferQueue.getQueueStatus();
+        const agents = this.transferQueue.getAllAgentStatuses();
+
+        this.logger.header("Knowledge Transfer Queue Status");
+        console.log(`📊 Total transfers: ${status.totalTransfers}`);
+        console.log(`⏳ Pending: ${status.pendingTransfers}`);
+        console.log(`🔄 Active: ${status.activeTransfers}`);
+        console.log(`✅ Completed: ${status.completedTransfers}`);
+        console.log(`❌ Failed: ${status.failedTransfers}`);
+        console.log(`⏰ Expired: ${status.expiredTransfers}`);
+
+        if (agents.length > 0) {
+          console.log(`\n👥 Active Agents (${agents.length}):`);
+          agents.slice(0, 5).forEach((agent) => {
+            const onlineStatus = agent.isOnline ? "🟢" : "🔴";
+            console.log(
+              `   ${onlineStatus} ${agent.agentId} - ${agent.totalTransfers} transfers`
+            );
+          });
+        }
+      } else if (options.list) {
+        const transfers = options.state
+          ? this.transferQueue.getTransfersByState(options.state as any)
+          : this.transferQueue.getAllTransfers();
+
+        this.logger.header(`Transfer Queue (${transfers.length} transfers)`);
+
+        if (transfers.length === 0) {
+          console.log("📭 No transfers found");
+          return;
+        }
+
+        transfers.slice(0, 10).forEach((transfer, index) => {
+          const stateIcon = this.getTransferStateIcon(transfer.state);
+          const timeAgo = this.getTimeAgo(transfer.metadata.updatedAt);
+
+          console.log(`\n${index + 1}. ${stateIcon} ${transfer.transferId}`);
+          console.log(`   📝 ${transfer.metadata.title}`);
+          console.log(`   👤 ${transfer.fromAgentId} → ${transfer.toAgentId}`);
+          console.log(`   ⏰ ${timeAgo}`);
+          console.log(`   🏷️  ${transfer.metadata.knowledgeType.join(", ")}`);
+        });
+
+        if (transfers.length > 10) {
+          console.log(`\n... and ${transfers.length - 10} more transfers`);
+        }
+      } else if (options.agent) {
+        const transfers = this.transferQueue.getTransfersForAgent(
+          options.agent
+        );
+        const agentStatus = this.transferQueue.getAgentStatus(options.agent);
+
+        this.logger.header(`Transfers for Agent: ${options.agent}`);
+
+        if (agentStatus) {
+          const onlineStatus = agentStatus.isOnline
+            ? "🟢 Online"
+            : "🔴 Offline";
+          console.log(`📊 Status: ${onlineStatus}`);
+          console.log(`📥 Pending receives: ${agentStatus.pendingReceives}`);
+          console.log(`🔄 Pending consumes: ${agentStatus.pendingConsumes}`);
+          console.log(`📈 Total transfers: ${agentStatus.totalTransfers}`);
+        }
+
+        if (transfers.length > 0) {
+          console.log(`\n📋 Recent Transfers (${transfers.length}):`);
+          transfers.slice(0, 5).forEach((transfer, index) => {
+            const stateIcon = this.getTransferStateIcon(transfer.state);
+            const role =
+              transfer.fromAgentId === options.agent ? "sender" : "receiver";
+            const otherAgent =
+              transfer.fromAgentId === options.agent
+                ? transfer.toAgentId
+                : transfer.fromAgentId;
+
+            console.log(
+              `\n${index + 1}. ${stateIcon} ${transfer.transferId} (${role})`
+            );
+            console.log(`   📝 ${transfer.metadata.title}`);
+            console.log(`   👤 ${role === "sender" ? "→" : "←"} ${otherAgent}`);
+            console.log(
+              `   ⏰ ${this.getTimeAgo(transfer.metadata.updatedAt)}`
+            );
+          });
+        } else {
+          console.log("\n📭 No transfers found for this agent");
+        }
+      } else {
+        // Default: show summary
+        const status = this.transferQueue.getQueueStatus();
+
+        this.logger.header("Knowledge Transfer Queue");
+        console.log(
+          `📊 Queue Status: ${status.activeTransfers} active, ${status.pendingTransfers} pending`
+        );
+
+        console.log("\n📋 Quick Commands:");
+        console.log(
+          "   npm run knowledge -- queue --status           # Show detailed status"
+        );
+        console.log(
+          "   npm run knowledge -- queue --list             # List all transfers"
+        );
+        console.log(
+          "   npm run knowledge -- queue --agent <id>       # Show agent transfers"
+        );
+        console.log(
+          "   npm run knowledge -- queue --state pending    # Filter by state"
+        );
+
+        console.log("\n🔄 Transfer States:");
+        console.log("   pending → sent → received → consumed ✅");
+        console.log("   Any state can go to → failed ❌ or expired ⏰");
+      }
+    } catch (error) {
+      this.logger.error("❌ Queue command failed:", error);
+      process.exit(1);
+    }
+  }
+
+  private getTransferStateIcon(state: string): string {
+    const icons = {
+      pending: "⏳",
+      sent: "📤",
+      received: "📥",
+      consumed: "✅",
+      failed: "❌",
+      expired: "⏰",
+    };
+    return icons[state as keyof typeof icons] || "❓";
+  }
+
+  private getTimeAgo(timestamp: number): string {
+    const now = Date.now();
+    const diff = now - timestamp;
+
+    const minutes = Math.floor(diff / (1000 * 60));
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    if (days > 0) return `${days}d ago`;
+    if (hours > 0) return `${hours}h ago`;
+    if (minutes > 0) return `${minutes}m ago`;
+    return "just now";
   }
 
   // Helper methods

@@ -1,0 +1,352 @@
+{
+  "transfers": [
+    [
+      "transfer-1754586289983-aea8132m8",
+      {
+        "transferId": "transfer-1754586289983-aea8132m8",
+        "fromAgentId": "agent-a-senior-dev",
+        "toAgentId": "agent-b-junior-dev",
+        "knowledgeFile": "demo-plugin-knowledge.json",
+        "priority": "high",
+        "state": "consumed",
+        "metadata": {
+          "title": "Plugin Development Best Practices",
+          "description": "Comprehensive plugin development knowledge including patterns and examples",
+          "knowledgeType": [
+            "plugins",
+            "best-practices",
+            "examples"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586289983,
+          "updatedAt": 1754586289994,
+          "expiresAt": 1754672689983
+        },
+        "progress": {
+          "sent": true,
+          "received": true,
+          "consumed": true,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586289983,
+            "state": "pending",
+            "agentId": "agent-a-senior-dev",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586289989,
+            "state": "sent",
+            "agentId": "agent-a-senior-dev",
+            "message": "Knowledge file sent"
+          },
+          {
+            "timestamp": 1754586289991,
+            "state": "received",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge file received"
+          },
+          {
+            "timestamp": 1754586289994,
+            "state": "consumed",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge successfully imported and processed",
+            "details": {
+              "importedPlugins": 3,
+              "newBestPractices": 12,
+              "successfulImport": true
+            }
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754586289985-w11wolwgw",
+      {
+        "transferId": "transfer-1754586289985-w11wolwgw",
+        "fromAgentId": "agent-c-test-expert",
+        "toAgentId": "agent-a-senior-dev",
+        "knowledgeFile": "demo-testing-knowledge.json",
+        "priority": "normal",
+        "state": "sent",
+        "metadata": {
+          "title": "Advanced Testing Strategies",
+          "description": "Unit testing, integration testing, and test automation knowledge",
+          "knowledgeType": [
+            "testing",
+            "automation",
+            "strategies"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586289985,
+          "updatedAt": 1754586289995
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586289985,
+            "state": "pending",
+            "agentId": "agent-c-test-expert",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586289995,
+            "state": "sent",
+            "agentId": "agent-c-test-expert",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754586489131-5km4hwzk1",
+      {
+        "transferId": "transfer-1754586489131-5km4hwzk1",
+        "fromAgentId": "agent-a-senior-dev",
+        "toAgentId": "agent-b-junior-dev",
+        "knowledgeFile": "demo-plugin-knowledge.json",
+        "priority": "high",
+        "state": "consumed",
+        "metadata": {
+          "title": "Plugin Development Best Practices",
+          "description": "Comprehensive plugin development knowledge including patterns and examples",
+          "knowledgeType": [
+            "plugins",
+            "best-practices",
+            "examples"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586489131,
+          "updatedAt": 1754586489144,
+          "expiresAt": 1754672889131
+        },
+        "progress": {
+          "sent": true,
+          "received": true,
+          "consumed": true,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586489131,
+            "state": "pending",
+            "agentId": "agent-a-senior-dev",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586489138,
+            "state": "sent",
+            "agentId": "agent-a-senior-dev",
+            "message": "Knowledge file sent"
+          },
+          {
+            "timestamp": 1754586489140,
+            "state": "received",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge file received"
+          },
+          {
+            "timestamp": 1754586489144,
+            "state": "consumed",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge successfully imported and processed",
+            "details": {
+              "importedPlugins": 3,
+              "newBestPractices": 12,
+              "successfulImport": true
+            }
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754586489133-1kujsvhql",
+      {
+        "transferId": "transfer-1754586489133-1kujsvhql",
+        "fromAgentId": "agent-c-test-expert",
+        "toAgentId": "agent-a-senior-dev",
+        "knowledgeFile": "demo-testing-knowledge.json",
+        "priority": "normal",
+        "state": "sent",
+        "metadata": {
+          "title": "Advanced Testing Strategies",
+          "description": "Unit testing, integration testing, and test automation knowledge",
+          "knowledgeType": [
+            "testing",
+            "automation",
+            "strategies"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586489133,
+          "updatedAt": 1754586489145
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586489133,
+            "state": "pending",
+            "agentId": "agent-c-test-expert",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586489145,
+            "state": "sent",
+            "agentId": "agent-c-test-expert",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754586510358-mhhvy5l0n",
+      {
+        "transferId": "transfer-1754586510358-mhhvy5l0n",
+        "fromAgentId": "agent-a-senior-dev",
+        "toAgentId": "agent-b-junior-dev",
+        "knowledgeFile": "demo-plugin-knowledge.json",
+        "priority": "high",
+        "state": "consumed",
+        "metadata": {
+          "title": "Plugin Development Best Practices",
+          "description": "Comprehensive plugin development knowledge including patterns and examples",
+          "knowledgeType": [
+            "plugins",
+            "best-practices",
+            "examples"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586510358,
+          "updatedAt": 1754586510373,
+          "expiresAt": 1754672910358
+        },
+        "progress": {
+          "sent": true,
+          "received": true,
+          "consumed": true,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586510358,
+            "state": "pending",
+            "agentId": "agent-a-senior-dev",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586510367,
+            "state": "sent",
+            "agentId": "agent-a-senior-dev",
+            "message": "Knowledge file sent"
+          },
+          {
+            "timestamp": 1754586510369,
+            "state": "received",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge file received"
+          },
+          {
+            "timestamp": 1754586510373,
+            "state": "consumed",
+            "agentId": "agent-b-junior-dev",
+            "message": "Knowledge successfully imported and processed",
+            "details": {
+              "importedPlugins": 3,
+              "newBestPractices": 12,
+              "successfulImport": true
+            }
+          }
+        ]
+      }
+    ],
+    [
+      "transfer-1754586510362-vhhepgryw",
+      {
+        "transferId": "transfer-1754586510362-vhhepgryw",
+        "fromAgentId": "agent-c-test-expert",
+        "toAgentId": "agent-a-senior-dev",
+        "knowledgeFile": "demo-testing-knowledge.json",
+        "priority": "normal",
+        "state": "sent",
+        "metadata": {
+          "title": "Advanced Testing Strategies",
+          "description": "Unit testing, integration testing, and test automation knowledge",
+          "knowledgeType": [
+            "testing",
+            "automation",
+            "strategies"
+          ],
+          "estimatedSize": 0,
+          "createdAt": 1754586510362,
+          "updatedAt": 1754586510376
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754586510362,
+            "state": "pending",
+            "agentId": "agent-c-test-expert",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754586510376,
+            "state": "sent",
+            "agentId": "agent-c-test-expert",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
+    ]
+  ],
+  "agents": [
+    [
+      "agent-a-senior-dev",
+      {
+        "agentId": "agent-a-senior-dev",
+        "lastSeen": 1754586510367,
+        "isOnline": true,
+        "pendingReceives": 2,
+        "pendingConsumes": 0,
+        "totalTransfers": 6
+      }
+    ],
+    [
+      "agent-c-test-expert",
+      {
+        "agentId": "agent-c-test-expert",
+        "lastSeen": 1754586510376,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 3
+      }
+    ],
+    [
+      "agent-b-junior-dev",
+      {
+        "agentId": "agent-b-junior-dev",
+        "lastSeen": 1754586510373,
+        "isOnline": true,
+        "pendingReceives": 0,
+        "pendingConsumes": 0,
+        "totalTransfers": 3
+      }
+    ]
+  ],
+  "lastUpdated": 1754586510376
+}

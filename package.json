@@ -33,7 +33,9 @@
     "demo:validate": "npm run demo -- validate",
     "shortcut": "npm run knowledge -- shortcut",
     "shortcuts": "npm run knowledge -- shortcuts",
-    "shortcut-demo": "node -r ts-node/register tools/cli/shortcut-demo.ts"
+    "shortcut-demo": "node -r ts-node/register tools/cli/shortcut-demo.ts",
+    "queue": "npm run knowledge -- queue",
+    "queue-demo": "node -r ts-node/register tools/cli/queue-demo.ts"
   },
   "keywords": [
     "event-bus",

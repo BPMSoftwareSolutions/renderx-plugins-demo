@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": 1754585648974,
+  "lastUpdated": 1754586004297,
   "categories": [
     "testing",
     "architecture",
@@ -22,7 +22,7 @@
       ],
       "description": "Testing documentation and examples",
       "category": "testing",
-      "lastUpdated": 1754585648974,
+      "lastUpdated": 1754586004297,
       "resources": [
         {
           "type": "documentation",
@@ -72,7 +72,7 @@
       ],
       "description": "System architecture and design documentation",
       "category": "architecture",
-      "lastUpdated": 1754585648974,
+      "lastUpdated": 1754586004297,
       "resources": [
         {
           "type": "architecture",
@@ -126,7 +126,7 @@
       ],
       "description": "Musical sequence system documentation and examples",
       "category": "development",
-      "lastUpdated": 1754585648974,
+      "lastUpdated": 1754586004297,
       "resources": [
         {
           "type": "documentation",
@@ -191,7 +191,7 @@
       ],
       "description": "Plugin system documentation and development",
       "category": "development",
-      "lastUpdated": 1754585648974,
+      "lastUpdated": 1754586004297,
       "resources": [
         {
           "type": "documentation",
@@ -241,7 +241,7 @@
       ],
       "description": "Event system and communication documentation",
       "category": "architecture",
-      "lastUpdated": 1754585648974,
+      "lastUpdated": 1754586004297,
       "resources": [
         {
           "type": "architecture",
@@ -290,7 +290,7 @@
       ],
       "description": "CLI tools and knowledge management system",
       "category": "development",
-      "lastUpdated": 1754585648974,
+      "lastUpdated": 1754586004298,
       "resources": [
         {
           "type": "documentation",
@@ -314,6 +314,56 @@
             "cli",
             "implementation",
             "typescript"
+          ]
+        },
+        {
+          "type": "example",
+          "title": "CLI Demo",
+          "description": "Working demo of CLI functionality",
+          "filePath": "tools/cli/demo.ts",
+          "priority": 8,
+          "tags": [
+            "cli",
+            "demo",
+            "examples"
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "onboarding",
+      "aliases": [
+        "getting-started",
+        "quickstart",
+        "agent-guide",
+        "new-agent"
+      ],
+      "description": "Agent onboarding guide and getting started resources",
+      "category": "documentation",
+      "lastUpdated": 1754586004298,
+      "resources": [
+        {
+          "type": "guide",
+          "title": "Agent Onboarding Guide",
+          "description": "Complete step-by-step guide for new AI agents",
+          "filePath": "tools/cli/AGENT_ONBOARDING_GUIDE.md",
+          "priority": 10,
+          "tags": [
+            "onboarding",
+            "getting-started",
+            "guide"
+          ]
+        },
+        {
+          "type": "documentation",
+          "title": "CLI Documentation",
+          "description": "Complete CLI documentation and usage guide",
+          "filePath": "tools/cli/README.md",
+          "priority": 9,
+          "tags": [
+            "cli",
+            "documentation",
+            "reference"
           ]
         },
         {

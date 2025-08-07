@@ -312,6 +312,44 @@ export class ShortcutManager {
             },
           ],
         },
+        {
+          keyword: "onboarding",
+          aliases: [
+            "getting-started",
+            "quickstart",
+            "agent-guide",
+            "new-agent",
+          ],
+          description: "Agent onboarding guide and getting started resources",
+          category: "documentation",
+          lastUpdated: Date.now(),
+          resources: [
+            {
+              type: "guide",
+              title: "Agent Onboarding Guide",
+              description: "Complete step-by-step guide for new AI agents",
+              filePath: "tools/cli/AGENT_ONBOARDING_GUIDE.md",
+              priority: 10,
+              tags: ["onboarding", "getting-started", "guide"],
+            },
+            {
+              type: "documentation",
+              title: "CLI Documentation",
+              description: "Complete CLI documentation and usage guide",
+              filePath: "tools/cli/README.md",
+              priority: 9,
+              tags: ["cli", "documentation", "reference"],
+            },
+            {
+              type: "example",
+              title: "CLI Demo",
+              description: "Working demo of CLI functionality",
+              filePath: "tools/cli/demo.ts",
+              priority: 8,
+              tags: ["cli", "demo", "examples"],
+            },
+          ],
+        },
       ],
     };
   }

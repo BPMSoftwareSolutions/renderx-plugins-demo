@@ -11,6 +11,8 @@ This CLI enables AI agents to:
 - Merge knowledge from multiple agents with conflict resolution
 - Validate knowledge files for compatibility
 - Compare knowledge between different states
+- **Quick access to documentation and resources via keyword shortcuts**
+- **Data-driven knowledge management with searchable shortcuts**
 
 ## Architecture
 
@@ -19,6 +21,7 @@ The CLI is built with a modular architecture:
 ```
 tools/cli/
 ├── knowledge-cli.ts          # Main CLI entry point
+├── shortcut-demo.ts          # Standalone shortcut system demo
 ├── exporters/
 │   └── KnowledgeExporter.ts  # Export system knowledge
 ├── importers/
@@ -27,6 +30,10 @@ tools/cli/
 │   └── KnowledgeMerger.ts    # Merge multiple knowledge sources
 ├── validators/
 │   └── KnowledgeValidator.ts # Validate knowledge compatibility
+├── shortcuts/
+│   └── ShortcutManager.ts    # Data-driven shortcut system
+├── data/
+│   └── shortcuts.json        # Shortcut database (auto-generated)
 └── utils/
     └── CLILogger.ts          # Colored console logging
 ```
@@ -73,6 +80,15 @@ tools/cli/
 - **Knowledge Comparison**: Compare knowledge between files or current system
 - **Multiple Formats**: Text, JSON, or HTML diff output
 - **Change Detection**: Identify added, removed, and modified components
+
+### 🔗 Shortcut Commands (NEW)
+
+- **Keyword Access**: Quick access to documentation via keywords (e.g., `testing`, `architecture`)
+- **Smart Search**: Fuzzy search across shortcuts with relevance scoring
+- **Category Browsing**: Organize shortcuts by categories (testing, architecture, development, etc.)
+- **Resource Types**: Support for documentation, code, examples, tests, APIs, and guides
+- **Priority Ranking**: Resources ranked by importance and relevance
+- **Data-Driven**: Easy to add/update shortcuts via JSON configuration
 
 ## Usage Examples
 
@@ -140,6 +156,28 @@ npm run knowledge -- diff --file-a=before.json --file-b=after.json
 
 # Compare with current system
 npm run knowledge -- diff --file-a=exported.json --file-b=current --format=json
+```
+
+### Quick Documentation Access (NEW)
+
+```bash
+# Get all testing resources
+npm run shortcut-demo -- shortcut testing
+
+# Get architecture documentation
+npm run shortcut-demo -- shortcut architecture
+
+# Search for anything related to "sequence"
+npm run shortcut-demo -- shortcut sequence --search
+
+# Browse all shortcuts
+npm run shortcut-demo -- shortcuts --list
+
+# Browse by category
+npm run shortcut-demo -- shortcuts --category testing
+
+# List all categories
+npm run shortcut-demo -- shortcuts --list-categories
 ```
 
 ## Knowledge Data Structure
@@ -227,6 +265,11 @@ npm run knowledge:merge     # Merge multiple knowledge files
 npm run knowledge:validate  # Validate knowledge files
 npm run knowledge:status    # Show system status
 npm run knowledge:diff      # Compare knowledge files
+
+# NEW: Shortcut commands for quick documentation access
+npm run shortcut-demo -- shortcut <keyword>     # Get resources for keyword
+npm run shortcut-demo -- shortcuts --list       # List all shortcuts
+npm run shortcut-demo -- shortcuts --category <name>  # Browse by category
 ```
 
 ## Dependencies
