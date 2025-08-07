@@ -1,0 +1,67 @@
+{
+  "testName": "React SPA Integration",
+  "timestamp": "2025-08-07T19:25:30.486Z",
+  "totalLogs": 6,
+  "errorCount": 2,
+  "logs": [
+    {
+      "timestamp": "2025-08-07T19:24:31.503Z",
+      "type": "log",
+      "message": "ℹ️ [E2E-TEST] 🚀 E2E Test Application loaded and ready",
+      "args": [
+        "ℹ️ [E2E-TEST] 🚀 E2E Test Application loaded and ready"
+      ],
+      "location": "http://127.0.0.1:3000/app.js:35",
+      "testName": "React SPA Integration"
+    },
+    {
+      "timestamp": "2025-08-07T19:24:31.701Z",
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "args": [],
+      "location": "http://127.0.0.1:3000/favicon.ico:0",
+      "testName": "React SPA Integration"
+    },
+    {
+      "timestamp": "2025-08-07T19:24:32.211Z",
+      "type": "log",
+      "message": "ℹ️ [E2E-TEST] Loading MusicalConductor package...",
+      "args": [
+        "ℹ️ [E2E-TEST] Loading MusicalConductor package..."
+      ],
+      "location": "http://127.0.0.1:3000/app.js:35",
+      "testName": "React SPA Integration"
+    },
+    {
+      "timestamp": "2025-08-07T19:24:32.233Z",
+      "type": "log",
+      "message": "❌ [E2E-TEST] ❌ Failed to initialize MusicalConductor: Failed to resolve module specifier 'musical-conductor'",
+      "args": [
+        "❌ [E2E-TEST] ❌ Failed to initialize MusicalConductor: Failed to resolve module specifier 'musical-conductor'"
+      ],
+      "location": "http://127.0.0.1:3000/app.js:35",
+      "testName": "React SPA Integration"
+    },
+    {
+      "timestamp": "2025-08-07T19:24:32.234Z",
+      "type": "log",
+      "message": "❌ [E2E-TEST] Failed to initialize MusicalConductor",
+      "args": [
+        "❌ [E2E-TEST] Failed to initialize MusicalConductor"
+      ],
+      "location": "http://127.0.0.1:3000/app.js:35",
+      "testName": "React SPA Integration"
+    },
+    {
+      "timestamp": "2025-08-07T19:24:32.234Z",
+      "type": "error",
+      "message": "Initialization error: TypeError: Failed to resolve module specifier 'musical-conductor'\n    at HTMLButtonElement.initializeConductor (http://127.0.0.1:3000/app.js:70:13)",
+      "args": [
+        "Initialization error:",
+        "TypeError: Failed to resolve module specifier 'musical-conductor'\n    at HTMLButtonElement.initializeConductor (http://127.0.0.1:3000/app.js:70:13)"
+      ],
+      "location": "http://127.0.0.1:3000/app.js:95",
+      "testName": "React SPA Integration"
+    }
+  ]
+}

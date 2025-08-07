@@ -293,6 +293,51 @@
           }
         ]
       }
+    ],
+    [
+      "transfer-1754595130240-nnjc7mu6t",
+      {
+        "transferId": "transfer-1754595130240-nnjc7mu6t",
+        "fromAgentId": "e2e-testing-agent",
+        "toAgentId": "module-resolution-agent",
+        "knowledgeFile": "e2e-module-resolution-transfer.json",
+        "priority": "high",
+        "state": "sent",
+        "metadata": {
+          "title": "E2E Testing Module Resolution Issue - Browser ES Module Loading",
+          "description": "Complete E2E testing infrastructure working perfectly, needs module resolution fix for browser ES module loading of musical-conductor package",
+          "knowledgeType": [
+            "e2e-testing",
+            "module-resolution",
+            "playwright",
+            "browser-modules",
+            "es-modules"
+          ],
+          "estimatedSize": 8899,
+          "createdAt": 1754595130240,
+          "updatedAt": 1754595130244
+        },
+        "progress": {
+          "sent": true,
+          "received": false,
+          "consumed": false,
+          "validated": false
+        },
+        "history": [
+          {
+            "timestamp": 1754595130240,
+            "state": "pending",
+            "agentId": "e2e-testing-agent",
+            "message": "Transfer request created"
+          },
+          {
+            "timestamp": 1754595130244,
+            "state": "sent",
+            "agentId": "e2e-testing-agent",
+            "message": "Knowledge file sent"
+          }
+        ]
+      }
     ]
   ],
   "agents": [
@@ -372,7 +417,18 @@
         "pendingConsumes": 0,
         "totalTransfers": 2
       }
+    ],
+    [
+      "e2e-testing-agent",
+      {
+        "agentId": "e2e-testing-agent",
+        "lastSeen": 1754595130244,
+        "isOnline": true,
+        "pendingReceives": 2,
+        "pendingConsumes": 0,
+        "totalTransfers": 3
+      }
     ]
   ],
-  "lastUpdated": 1754592556763
+  "lastUpdated": 1754595130245
 }

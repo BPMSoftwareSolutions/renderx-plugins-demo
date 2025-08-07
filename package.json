@@ -2,7 +2,14 @@
   "name": "musical-conductor",
   "version": "1.0.0",
   "description": "MusicalConductor Communication System with Jest Testing",
-  "main": "modules/communication/index.ts",
+  "main": "dist/modules/communication/index.js",
+  "types": "dist/modules/communication/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "modules/**/*",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -17,6 +24,8 @@
     "lint": "eslint modules tests --ext .ts,.tsx",
     "lint:fix": "eslint modules tests --ext .ts,.tsx --fix",
     "build": "tsc",
+    "build:clean": "rimraf dist && npm run build",
+    "prepublishOnly": "npm run build:clean",
     "dev": "tsc --watch",
     "knowledge": "node -r ts-node/register tools/cli/knowledge-cli.ts",
     "knowledge:export": "npm run knowledge -- export",
@@ -57,7 +66,8 @@
     "jest-extended": "^4.0.2",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0"
   },
   "dependencies": {
     "commander": "^14.0.0"
