@@ -60,19 +60,19 @@ export class ConductorAPI {
 
   /**
    * Queue a sequence for execution (validation compliance method)
-   * @param sequenceName - Name of the sequence to queue
+   * @param sequenceId - ID of the sequence to queue
    * @param data - Data to pass to the sequence
    * @param priority - Priority level
    * @returns Request ID for tracking
    */
   queueSequence(
-    sequenceName: string,
+    sequenceId: string,
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): string {
     // This is an alias for startSequence to satisfy validation requirements
     const result = this.sequenceOrchestrator.startSequence(
-      sequenceName,
+      sequenceId,
       data,
       priority
     );
@@ -107,11 +107,11 @@ export class ConductorAPI {
 
   /**
    * Check if a sequence is currently running (validation compliance method)
-   * @param sequenceName - Optional sequence name to check for specific sequence
-   * @returns True if a sequence is executing (or specific sequence if name provided)
+   * @param sequenceId - Optional sequence ID to check for specific sequence
+   * @returns True if a sequence is executing (or specific sequence if ID provided)
    */
-  isSequenceRunning(sequenceName?: string): boolean {
-    return this.sequenceExecutor.isSequenceRunning(sequenceName);
+  isSequenceRunning(sequenceId?: string): boolean {
+    return this.sequenceExecutor.isSequenceRunning(sequenceId);
   }
 
   /**
@@ -266,11 +266,20 @@ export class ConductorAPI {
 
   /**
    * Check if a sequence is registered
+   * @param sequenceId - ID of the sequence to check
+   * @returns True if sequence is registered
+   */
+  isSequenceRegistered(sequenceId: string): boolean {
+    return this.sequenceRegistry.has(sequenceId);
+  }
+
+  /**
+   * Check if a sequence is registered by name (for backward compatibility)
    * @param sequenceName - Name of the sequence to check
    * @returns True if sequence is registered
    */
-  isSequenceRegistered(sequenceName: string): boolean {
-    return this.sequenceRegistry.has(sequenceName);
+  isSequenceRegisteredByName(sequenceName: string): boolean {
+    return this.sequenceRegistry.findByName(sequenceName) !== undefined;
   }
 
   /**

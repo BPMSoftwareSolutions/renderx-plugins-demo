@@ -9,9 +9,6 @@
  */
 
 import { MusicalConductor } from "./MusicalConductor";
-import { eventBus } from "../EventBus";
-
-// Canvas sequences are now handled by dynamic symphony plugins
 
 /**
  * All Musical Sequences Registry
@@ -222,6 +219,3 @@ export function initializeMusicalSequences(conductor: MusicalConductor): {
     validationResults,
   };
 }
-
-// Canvas sequences now handled by dynamic symphony plugins
-// No static sequence exports needed

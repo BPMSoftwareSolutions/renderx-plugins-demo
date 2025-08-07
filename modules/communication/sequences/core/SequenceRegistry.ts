@@ -24,6 +24,10 @@ export class SequenceRegistry {
       throw new Error("Sequence cannot be null or undefined");
     }
 
+    if (!sequence.id) {
+      throw new Error("Sequence must have an id");
+    }
+
     if (!sequence.name) {
       throw new Error("Sequence must have a name");
     }
@@ -31,52 +35,57 @@ export class SequenceRegistry {
     // Validate sequence structure
     this.validateSequence(sequence);
 
-    this.sequences.set(sequence.name, sequence);
-    console.log(`🎼 SequenceRegistry: Registered sequence "${sequence.name}"`);
+    this.sequences.set(sequence.id, sequence);
+    console.log(
+      `🎼 SequenceRegistry: Registered sequence "${sequence.name}" (id: ${sequence.id})`
+    );
 
     // Emit registration event
     this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_REGISTERED, {
+      sequenceId: sequence.id,
       sequenceName: sequence.name,
       category: sequence.category,
     });
   }
 
   /**
-   * Unregister a sequence by name
-   * @param sequenceName - Name of the sequence to unregister
+   * Unregister a sequence by id
+   * @param sequenceId - ID of the sequence to unregister
    */
-  unregister(sequenceName: string): void {
-    if (!sequenceName) {
-      throw new Error("Sequence name is required");
+  unregister(sequenceId: string): void {
+    if (!sequenceId) {
+      throw new Error("Sequence ID is required");
     }
 
-    if (this.sequences.has(sequenceName)) {
-      this.sequences.delete(sequenceName);
+    const sequence = this.sequences.get(sequenceId);
+    if (sequence) {
+      this.sequences.delete(sequenceId);
       console.log(
-        `🎼 SequenceRegistry: Unregistered sequence "${sequenceName}"`
+        `🎼 SequenceRegistry: Unregistered sequence "${sequence.name}" (id: ${sequenceId})`
       );
 
       // Emit unregistration event
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED, {
-        sequenceName,
+        sequenceId,
+        sequenceName: sequence.name,
       });
     } else {
       console.warn(
-        `🎼 SequenceRegistry: Sequence "${sequenceName}" not found for unregistration`
+        `🎼 SequenceRegistry: Sequence with ID "${sequenceId}" not found for unregistration`
       );
     }
   }
 
   /**
-   * Get a sequence by name
-   * @param sequenceName - Name of the sequence to retrieve
+   * Get a sequence by id
+   * @param sequenceId - ID of the sequence to retrieve
    * @returns The sequence or undefined if not found
    */
-  get(sequenceName: string): MusicalSequence | undefined {
-    if (!sequenceName) {
+  get(sequenceId: string): MusicalSequence | undefined {
+    if (!sequenceId) {
       return undefined;
     }
-    return this.sequences.get(sequenceName);
+    return this.sequences.get(sequenceId);
   }
 
   /**
@@ -88,23 +97,31 @@ export class SequenceRegistry {
   }
 
   /**
-   * Get all sequence names
-   * @returns Array of sequence names
+   * Get all sequence IDs
+   * @returns Array of sequence IDs
    */
-  getNames(): string[] {
+  getIds(): string[] {
     return Array.from(this.sequences.keys());
   }
 
   /**
+   * Get all sequence names
+   * @returns Array of sequence names
+   */
+  getNames(): string[] {
+    return Array.from(this.sequences.values()).map((seq) => seq.name);
+  }
+
+  /**
    * Check if a sequence is registered
-   * @param sequenceName - Name of the sequence to check
+   * @param sequenceId - ID of the sequence to check
    * @returns True if the sequence is registered
    */
-  has(sequenceName: string): boolean {
-    if (!sequenceName) {
+  has(sequenceId: string): boolean {
+    if (!sequenceId) {
       return false;
     }
-    return this.sequences.has(sequenceName);
+    return this.sequences.has(sequenceId);
   }
 
   /**
@@ -119,17 +136,16 @@ export class SequenceRegistry {
    * Clear all registered sequences
    */
   clear(): void {
-    const sequenceNames = this.getNames();
+    const sequences = this.getAll();
     this.sequences.clear();
 
-    console.log(
-      `🎼 SequenceRegistry: Cleared ${sequenceNames.length} sequences`
-    );
+    console.log(`🎼 SequenceRegistry: Cleared ${sequences.length} sequences`);
 
     // Emit individual unregistration events for each cleared sequence
-    sequenceNames.forEach((sequenceName) => {
+    sequences.forEach((sequence) => {
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED, {
-        sequenceName,
+        sequenceId: sequence.id,
+        sequenceName: sequence.name,
       });
     });
   }
@@ -148,6 +164,18 @@ export class SequenceRegistry {
   }
 
   /**
+   * Find a sequence by name (for backward compatibility)
+   * @param sequenceName - Name of the sequence to find
+   * @returns The sequence or undefined if not found
+   */
+  findByName(sequenceName: string): MusicalSequence | undefined {
+    if (!sequenceName) {
+      return undefined;
+    }
+    return this.getAll().find((sequence) => sequence.name === sequenceName);
+  }
+
+  /**
    * Validate sequence structure
    * @param sequence - The sequence to validate
    */
@@ -155,21 +183,27 @@ export class SequenceRegistry {
     // Basic structure validation
     if (!sequence.movements || !Array.isArray(sequence.movements)) {
       throw new Error(
-        `Sequence "${sequence.name}" must have a movements array`
+        `Sequence "${sequence.name}" (id: ${sequence.id}) must have a movements array`
       );
     }
 
     if (sequence.movements.length === 0) {
       throw new Error(
-        `Sequence "${sequence.name}" must have at least one movement`
+        `Sequence "${sequence.name}" (id: ${sequence.id}) must have at least one movement`
       );
     }
 
     // Validate each movement
     sequence.movements.forEach((movement, index) => {
+      if (!movement.id) {
+        throw new Error(
+          `Movement ${index} in sequence "${sequence.name}" (id: ${sequence.id}) must have an id`
+        );
+      }
+
       if (!movement.name) {
         throw new Error(
-          `Movement ${index} in sequence "${sequence.name}" must have a name`
+          `Movement ${index} in sequence "${sequence.name}" (id: ${sequence.id}) must have a name`
         );
       }
 

@@ -42,20 +42,26 @@ export class SequenceValidator {
     try {
       // Create a stable hash based on sequence name, data, and priority
       const normalizedData = this.normalizeDataForHashing(data);
-      const dataString = JSON.stringify(normalizedData, Object.keys(normalizedData).sort());
+      const dataString = JSON.stringify(
+        normalizedData,
+        Object.keys(normalizedData).sort()
+      );
       const combined = `${sequenceName}:${priority}:${dataString}`;
-      
+
       // Simple hash function (for production, consider using a proper hash library)
       let hash = 0;
       for (let i = 0; i < combined.length; i++) {
         const char = combined.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
+        hash = (hash << 5) - hash + char;
         hash = hash & hash; // Convert to 32-bit integer
       }
-      
+
       return hash.toString(36); // Convert to base36 for shorter string
     } catch (error) {
-      console.warn("🔍 SequenceValidator: Failed to generate hash, using fallback:", error);
+      console.warn(
+        "🔍 SequenceValidator: Failed to generate hash, using fallback:",
+        error
+      );
       return `${sequenceName}-${priority}-${Date.now()}-${Math.random()}`;
     }
   }
@@ -76,9 +82,9 @@ export class SequenceValidator {
     delete normalized._reactInternalFiber;
     delete normalized._reactInternalInstance;
     delete normalized.__reactInternalInstance;
-    
+
     // Sort arrays for consistent ordering
-    Object.keys(normalized).forEach(key => {
+    Object.keys(normalized).forEach((key) => {
       if (Array.isArray(normalized[key])) {
         normalized[key] = [...normalized[key]].sort();
       }
@@ -89,24 +95,32 @@ export class SequenceValidator {
 
   /**
    * Enhanced sequence deduplication for StrictMode protection
+   * @param sequenceId - ID of the sequence
    * @param sequenceName - Name of the sequence
    * @param data - Sequence data
    * @param priority - Sequence priority
    * @returns Deduplication result
    */
   deduplicateSequenceRequest(
+    sequenceId: string,
     sequenceName: string,
     data: any,
     priority: SequencePriority
   ): DeduplicationResult {
-    const sequenceHash = this.generateSequenceHash(sequenceName, data, priority);
+    const sequenceHash = this.generateSequenceHash(
+      sequenceName,
+      data,
+      priority
+    );
 
     // Special handling for ElementLibrary Display sequence - always allow first execution
     if (sequenceName === "Element Library Display Symphony No. 12") {
-      const isDuplicate = this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
+      const isDuplicate =
+        this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
 
       if (isDuplicate.isDuplicate) {
-        const result = this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
+        const result =
+          this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
 
         console.log(
           `🎼 SequenceValidator: ElementLibrary Display duplicate check - ${result.reason}`
@@ -134,7 +148,8 @@ export class SequenceValidator {
       };
     }
 
-    const isDuplicate = this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
+    const isDuplicate =
+      this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
 
     if (isDuplicate.isDuplicate) {
       return {
@@ -186,7 +201,11 @@ export class SequenceValidator {
 
     // Validate priority
     if (!Object.values(SEQUENCE_PRIORITIES).includes(priority)) {
-      errors.push(`Invalid priority: ${priority}. Must be one of: ${Object.values(SEQUENCE_PRIORITIES).join(", ")}`);
+      errors.push(
+        `Invalid priority: ${priority}. Must be one of: ${Object.values(
+          SEQUENCE_PRIORITIES
+        ).join(", ")}`
+      );
     }
 
     // Validate data structure
@@ -205,14 +224,19 @@ export class SequenceValidator {
 
       // Check for excessively large data
       const dataString = JSON.stringify(data);
-      if (dataString.length > 100000) { // 100KB limit
-        warnings.push("Sequence data is very large (>100KB), consider optimizing");
+      if (dataString.length > 100000) {
+        // 100KB limit
+        warnings.push(
+          "Sequence data is very large (>100KB), consider optimizing"
+        );
       }
     }
 
     // Validate sequence name format
     if (sequenceName && !this.isValidSequenceNameFormat(sequenceName)) {
-      warnings.push("Sequence name format may not follow recommended conventions");
+      warnings.push(
+        "Sequence name format may not follow recommended conventions"
+      );
     }
 
     return {
@@ -236,7 +260,7 @@ export class SequenceValidator {
       /^[A-Za-z0-9\s\-_.]+$/, // General alphanumeric with common separators
     ];
 
-    return patterns.some(pattern => pattern.test(sequenceName));
+    return patterns.some((pattern) => pattern.test(sequenceName));
   }
 
   /**
@@ -272,7 +296,9 @@ export class SequenceValidator {
    * @returns Debug validation information
    */
   getDebugInfo(): {
-    validationStatistics: ReturnType<SequenceValidator['getValidationStatistics']>;
+    validationStatistics: ReturnType<
+      SequenceValidator["getValidationStatistics"]
+    >;
     duplicationDetectorInfo: any;
   } {
     return {

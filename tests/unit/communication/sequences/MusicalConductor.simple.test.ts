@@ -87,7 +87,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
       conductor.registerSequence(sequence);
 
       expect(conductor.getSequenceNames()).toContain(sequence.name);
-      expect(conductor.getSequence(sequence.name)).toBe(sequence);
+      expect(conductor.getSequence(sequence.id)).toBe(sequence);
     });
 
     it("should handle duplicate sequence registration", () => {
@@ -132,9 +132,16 @@ describe("MusicalConductor - Simple TDD Tests", () => {
     it("should get all registered sequence names", () => {
       const sequences = [
         {
+          id: "sequence-1",
           name: "Sequence 1",
+          description: "Test sequence 1",
+          key: "C Major",
+          tempo: 120,
+          timeSignature: "4/4",
+          category: SEQUENCE_CATEGORIES.COMPONENT_UI,
           movements: [
             {
+              id: "movement-1",
               name: "movement-1",
               beats: [
                 {
@@ -152,9 +159,16 @@ describe("MusicalConductor - Simple TDD Tests", () => {
           ],
         },
         {
+          id: "sequence-2",
           name: "Sequence 2",
+          description: "Test sequence 2",
+          key: "C Major",
+          tempo: 120,
+          timeSignature: "4/4",
+          category: SEQUENCE_CATEGORIES.COMPONENT_UI,
           movements: [
             {
+              id: "movement-2",
               name: "movement-2",
               beats: [
                 {
@@ -172,9 +186,16 @@ describe("MusicalConductor - Simple TDD Tests", () => {
           ],
         },
         {
+          id: "sequence-3",
           name: "Sequence 3",
+          description: "Test sequence 3",
+          key: "C Major",
+          tempo: 120,
+          timeSignature: "4/4",
+          category: SEQUENCE_CATEGORIES.COMPONENT_UI,
           movements: [
             {
+              id: "movement-3",
               name: "movement-3",
               beats: [
                 {
@@ -234,7 +255,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
       conductor.registerSequence(sequence);
       expect(conductor.getSequenceNames()).toContain(sequence.name);
 
-      conductor.unregisterSequence(sequence.name);
+      conductor.unregisterSequence(sequence.id);
       expect(conductor.getSequenceNames()).not.toContain(sequence.name);
     });
   });
@@ -284,7 +305,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
     });
 
     it("should start a sequence and return execution ID", async () => {
-      const sequenceId = await conductor.startSequence("Basic Test Sequence", {
+      const sequenceId = await conductor.startSequence("basic-test-sequence", {
         test: true,
       });
 
@@ -302,7 +323,7 @@ describe("MusicalConductor - Simple TDD Tests", () => {
       const testData = { userId: 123, action: "test" };
 
       const sequenceId = await conductor.startSequence(
-        "Basic Test Sequence",
+        "basic-test-sequence",
         testData
       );
 

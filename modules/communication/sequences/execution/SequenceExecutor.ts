@@ -67,6 +67,7 @@ export class SequenceExecutor {
     // Create execution context
     const executionContext: SequenceExecutionContext = {
       id: executionId,
+      sequenceId: sequence.id,
       sequenceName: sequence.name,
       sequence: sequence,
       data: sequenceRequest.data || {},

@@ -74,36 +74,41 @@ export class SequenceOrchestrator {
 
   /**
    * Start a musical sequence with Sequential Orchestration and Resource Management
-   * @param sequenceName - Name of the sequence to start
+   * @param sequenceId - ID of the sequence to start
    * @param data - Data to pass to the sequence
    * @param priority - Priority level: 'HIGH', 'NORMAL', 'CHAINED'
    * @returns Sequence start result
    */
   startSequence(
-    sequenceName: string,
+    sequenceId: string,
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): SequenceStartResult {
-    const requestId = this.generateRequestId(sequenceName);
+    const requestId = this.generateRequestId(sequenceId);
 
     try {
       // Phase 1: Validate sequence exists
-      const sequence = this.sequenceRegistry.get(sequenceName);
+      const sequence = this.sequenceRegistry.get(sequenceId);
       if (!sequence) {
-        this.logSequenceNotFound(sequenceName);
-        throw new Error(`Sequence "${sequenceName}" not found`);
+        this.logSequenceNotFound(sequenceId);
+        throw new Error(`Sequence with ID "${sequenceId}" not found`);
       }
 
       // Phase 2: StrictMode Protection & Idempotency Check
       const deduplicationResult =
         this.sequenceValidator.deduplicateSequenceRequest(
-          sequenceName,
+          sequenceId,
+          sequence.name,
           data,
           priority
         );
 
       if (deduplicationResult.isDuplicate) {
-        return this.handleDuplicateSequence(sequenceName, deduplicationResult);
+        return this.handleDuplicateSequence(
+          sequenceId,
+          sequence.name,
+          deduplicationResult
+        );
       }
 
       // Phase 3: Record sequence execution IMMEDIATELY to prevent race conditions
@@ -111,7 +116,8 @@ export class SequenceOrchestrator {
 
       // Phase 4: Extract symphony and resource information
       const orchestrationMetadata = this.extractOrchestrationMetadata(
-        sequenceName,
+        sequenceId,
+        sequence.name,
         data
       );
 
@@ -130,7 +136,8 @@ export class SequenceOrchestrator {
 
       // Phase 6: Create and queue sequence request
       const sequenceRequest = this.createSequenceRequest(
-        sequenceName,
+        sequenceId,
+        sequence.name,
         data,
         priority,
         requestId,
@@ -147,10 +154,15 @@ export class SequenceOrchestrator {
       this.processQueueIfIdle();
 
       // Phase 9: Emit queued event
-      this.emitSequenceQueuedEvent(sequenceName, requestId, priority);
+      this.emitSequenceQueuedEvent(
+        sequenceId,
+        sequence.name,
+        requestId,
+        priority
+      );
 
       console.log(
-        `🎼 SequenceOrchestrator: Sequence ${sequenceName} queued successfully`
+        `🎼 SequenceOrchestrator: Sequence "${sequence.name}" (id: ${sequenceId}) queued successfully`
       );
 
       return {
@@ -159,7 +171,7 @@ export class SequenceOrchestrator {
       };
     } catch (error) {
       console.error(
-        `🎼 SequenceOrchestrator: Failed to start sequence: ${sequenceName}`,
+        `🎼 SequenceOrchestrator: Failed to start sequence: ${sequenceId}`,
         error
       );
       this.statisticsManager.recordError();
@@ -192,10 +204,10 @@ export class SequenceOrchestrator {
     const waitTime = performance.now() - nextRequest.queuedAt;
     this.statisticsManager.updateQueueWaitTime(waitTime);
 
-    const sequence = this.sequenceRegistry.get(nextRequest.sequenceName);
+    const sequence = this.sequenceRegistry.get(nextRequest.sequenceId);
     if (!sequence) {
       console.error(
-        `❌ SequenceOrchestrator: Sequence ${nextRequest.sequenceName} not found in registry`
+        `❌ SequenceOrchestrator: Sequence ${nextRequest.sequenceId} not found in registry`
       );
       // Continue processing queue
       this.processSequenceQueue();
@@ -246,9 +258,9 @@ export class SequenceOrchestrator {
       this.sequenceUtilities.createExecutionContext(sequenceRequest);
 
     // Get the actual sequence for the context
-    const sequence = this.sequenceRegistry.get(sequenceRequest.sequenceName);
+    const sequence = this.sequenceRegistry.get(sequenceRequest.sequenceId);
     if (!sequence) {
-      throw new Error(`Sequence ${sequenceRequest.sequenceName} not found`);
+      throw new Error(`Sequence ${sequenceRequest.sequenceId} not found`);
     }
 
     return {
@@ -262,29 +274,36 @@ export class SequenceOrchestrator {
 
   /**
    * Generate a unique request ID
-   * @param sequenceName - Name of the sequence
+   * @param sequenceId - ID of the sequence
    * @returns Unique request ID
    */
-  private generateRequestId(sequenceName: string): string {
-    return `${sequenceName}-${Date.now()}-${Math.random()
+  private generateRequestId(sequenceId: string): string {
+    return `${sequenceId}-${Date.now()}-${Math.random()
       .toString(36)
       .substr(2, 9)}`;
   }
 
   /**
    * Log sequence not found error with helpful information
-   * @param sequenceName - Name of the sequence that wasn't found
+   * @param sequenceId - ID of the sequence that wasn't found
+   * @param sequenceName - Name of the sequence (if available)
    */
-  private logSequenceNotFound(sequenceName: string): void {
+  private logSequenceNotFound(sequenceId: string, sequenceName?: string): void {
     console.error(
-      `❌ SequenceOrchestrator: Sequence "${sequenceName}" not found!`
+      `❌ SequenceOrchestrator: Sequence with ID "${sequenceId}" not found!`
     );
+    if (sequenceName) {
+      console.error(`❌ Sequence name: "${sequenceName}"`);
+    }
     console.error(
-      `❌ This means the plugin for "${sequenceName}" is not loaded or registered.`
+      `❌ This means the plugin for this sequence is not loaded or registered.`
     );
     console.error(`❌ Available sequences:`, this.sequenceRegistry.getNames());
 
-    if (sequenceName === "ElementLibrary.library-drop-symphony") {
+    if (
+      sequenceId === "ElementLibrary.library-drop-symphony" ||
+      sequenceName === "ElementLibrary.library-drop-symphony"
+    ) {
       console.error(
         `❌ CRITICAL: ElementLibrary.library-drop-symphony not available - drag-and-drop will not work!`
       );
@@ -296,23 +315,26 @@ export class SequenceOrchestrator {
 
   /**
    * Handle duplicate sequence detection
+   * @param sequenceId - ID of the sequence
    * @param sequenceName - Name of the sequence
    * @param deduplicationResult - Deduplication result
    * @returns Sequence start result for duplicate
    */
   private handleDuplicateSequence(
+    sequenceId: string,
     sequenceName: string,
     deduplicationResult: any
   ): SequenceStartResult {
     console.warn(`🎼 SequenceOrchestrator: ${deduplicationResult.reason}`);
 
     // For StrictMode duplicates, return a duplicate request ID but don't execute
-    const duplicateRequestId = `${sequenceName}-duplicate-${Date.now()}-${Math.random()
+    const duplicateRequestId = `${sequenceId}-duplicate-${Date.now()}-${Math.random()
       .toString(36)
       .substr(2, 9)}`;
 
     // Emit a duplicate event for monitoring
     this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_CANCELLED, {
+      sequenceId,
       sequenceName,
       requestId: duplicateRequestId,
       reason: "duplicate-request",
@@ -329,11 +351,13 @@ export class SequenceOrchestrator {
 
   /**
    * Extract orchestration metadata from sequence request
+   * @param sequenceId - ID of the sequence
    * @param sequenceName - Name of the sequence
    * @param data - Sequence data
    * @returns Orchestration metadata
    */
   private extractOrchestrationMetadata(
+    sequenceId: string,
     sequenceName: string,
     data: Record<string, any>
   ): {
@@ -386,6 +410,7 @@ export class SequenceOrchestrator {
 
   /**
    * Create a sequence request object
+   * @param sequenceId - ID of the sequence
    * @param sequenceName - Name of the sequence
    * @param data - Sequence data
    * @param priority - Sequence priority
@@ -396,6 +421,7 @@ export class SequenceOrchestrator {
    * @returns Sequence request
    */
   private createSequenceRequest(
+    sequenceId: string,
     sequenceName: string,
     data: Record<string, any>,
     priority: SequencePriority,
@@ -405,6 +431,7 @@ export class SequenceOrchestrator {
     sequenceHash: string
   ): SequenceRequest {
     return {
+      sequenceId,
       sequenceName,
       data: {
         ...data,
@@ -445,16 +472,19 @@ export class SequenceOrchestrator {
 
   /**
    * Emit sequence queued event
+   * @param sequenceId - ID of the sequence
    * @param sequenceName - Name of the sequence
    * @param requestId - Request ID
    * @param priority - Sequence priority
    */
   private emitSequenceQueuedEvent(
+    sequenceId: string,
     sequenceName: string,
     requestId: string,
     priority: SequencePriority
   ): void {
     this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_QUEUED, {
+      sequenceId,
       sequenceName,
       requestId,
       priority,

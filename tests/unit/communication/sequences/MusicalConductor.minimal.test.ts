@@ -162,7 +162,7 @@ describe("MusicalConductor - Minimal TDD Tests", () => {
     it("should handle startSequence with non-existent sequence", () => {
       expect(() => {
         conductor.startSequence("Non-Existent Sequence");
-      }).toThrow('Sequence "Non-Existent Sequence" not found');
+      }).toThrow('Sequence with ID "Non-Existent Sequence" not found');
     });
   });
 });

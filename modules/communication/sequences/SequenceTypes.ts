@@ -110,7 +110,8 @@ export interface MusicalSequence {
  */
 export interface SequenceExecutionContext {
   id: string; // Unique execution ID
-  sequenceName: string; // Name of the sequence being executed
+  sequenceId: string; // ID of the sequence being executed
+  sequenceName: string; // Name of the sequence being executed (for display/logging)
   sequence: MusicalSequence; // The sequence definition
   data: Record<string, any>; // Execution data
   payload: Record<string, any>; // 🎽 Data Baton - shared payload passed between beats
@@ -153,7 +154,8 @@ export interface ConductorStatistics {
  * Request object for starting a sequence
  */
 export interface SequenceRequest {
-  sequenceName: string;
+  sequenceId: string;
+  sequenceName: string; // For display/logging purposes
   data: Record<string, any>;
   priority: "HIGH" | "NORMAL" | "CHAINED";
   requestId: string;

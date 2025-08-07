@@ -178,6 +178,7 @@ export class SequenceUtilities {
 
     return {
       id: instanceInfo.instanceId,
+      sequenceId: sequenceRequest.sequenceId,
       sequenceName: sequenceRequest.sequenceName,
       sequence: {} as any, // Will be filled in by the caller
       data: sequenceRequest.data,

@@ -74,7 +74,8 @@ export interface ResourceOwner {
 
 export interface SequenceInstance {
   instanceId: string;
-  sequenceName: string;
+  sequenceId: string;
+  sequenceName: string; // For display/logging purposes
   symphonyName: string;
   createdAt: number;
   status: "PENDING" | "ACTIVE" | "COMPLETED" | "FAILED";
@@ -271,18 +272,26 @@ export class MusicalConductor {
 
   /**
    * Unregister a musical sequence
-   * @param sequenceName - Name of the sequence to unregister
+   * @param sequenceId - ID of the sequence to unregister
    */
-  unregisterSequence(sequenceName: string): void {
-    this.sequenceRegistry.unregister(sequenceName);
+  unregisterSequence(sequenceId: string): void {
+    this.sequenceRegistry.unregister(sequenceId);
   }
 
   /**
-   * Get a registered sequence
+   * Get a registered sequence by ID
+   * @param sequenceId - ID of the sequence
+   */
+  getSequence(sequenceId: string): MusicalSequence | undefined {
+    return this.sequenceRegistry.get(sequenceId);
+  }
+
+  /**
+   * Get a registered sequence by name (for backward compatibility)
    * @param sequenceName - Name of the sequence
    */
-  getSequence(sequenceName: string): MusicalSequence | undefined {
-    return this.sequenceRegistry.get(sequenceName);
+  getSequenceByName(sequenceName: string): MusicalSequence | undefined {
+    return this.sequenceRegistry.findByName(sequenceName);
   }
 
   /**
@@ -312,23 +321,23 @@ export class MusicalConductor {
   /**
    * Play a specific movement of a mounted SPA plugin (CIA-compliant)
    * @param pluginId - The plugin identifier
-   * @param sequenceName - The sequence name to execute (renamed from sequenceId for consistency)
+   * @param sequenceId - The sequence ID to execute
    * @param context - Context data to pass to the movement handler
    * @param priority - Sequence priority (NORMAL, HIGH, CHAINED)
    * @returns Execution result
    */
   play(
     pluginId: string,
-    sequenceName: string,
+    sequenceId: string,
     context: any = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): any {
     return this.pluginInterface.play(
       pluginId,
-      sequenceName,
+      sequenceId,
       context,
       priority,
-      (seqName, data, prio) => this.startSequence(seqName, data, prio)
+      (seqId, data, prio) => this.startSequence(seqId, data, prio)
     );
   }
 
@@ -388,18 +397,18 @@ export class MusicalConductor {
 
   /**
    * Execute movement with handler validation (CIA-compliant)
-   * @param sequenceName - Sequence name identifier
+   * @param sequenceId - Sequence ID identifier
    * @param movementName - Movement name
    * @param data - Data to pass to handler
    * @returns Handler execution result
    */
   executeMovementHandler(
-    sequenceName: string,
+    sequenceId: string,
     movementName: string,
     data: any
   ): any {
     return this.pluginInterface.executeMovementWithHandler(
-      sequenceName,
+      sequenceId,
       movementName,
       data
     );
@@ -459,18 +468,18 @@ export class MusicalConductor {
 
   /**
    * Start a musical sequence with Sequential Orchestration and Resource Management
-   * @param sequenceName - Name of the sequence to start
+   * @param sequenceId - ID of the sequence to start
    * @param data - Data to pass to the sequence
    * @param priority - Priority level: 'HIGH', 'NORMAL', 'CHAINED'
    * @returns Request ID for tracking
    */
   startSequence(
-    sequenceName: string,
+    sequenceId: string,
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): string {
     const result = this.sequenceOrchestrator.startSequence(
-      sequenceName,
+      sequenceId,
       data,
       priority
     );
@@ -558,17 +567,17 @@ export class MusicalConductor {
 
   /**
    * Queue a sequence for execution (validation compliance method)
-   * @param sequenceName - Name of the sequence to queue
+   * @param sequenceId - ID of the sequence to queue
    * @param data - Data to pass to the sequence
    * @param priority - Priority level
    * @returns Request ID for tracking
    */
   queueSequence(
-    sequenceName: string,
+    sequenceId: string,
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): string {
-    return this.conductorAPI.queueSequence(sequenceName, data, priority);
+    return this.conductorAPI.queueSequence(sequenceId, data, priority);
   }
 
   /**
@@ -581,11 +590,11 @@ export class MusicalConductor {
 
   /**
    * Check if a sequence is currently running (validation compliance method)
-   * @param sequenceName - Optional sequence name to check for specific sequence
-   * @returns True if a sequence is executing (or specific sequence if name provided)
+   * @param sequenceId - Optional sequence ID to check for specific sequence
+   * @returns True if a sequence is executing (or specific sequence if ID provided)
    */
-  isSequenceRunning(sequenceName?: string): boolean {
-    return this.conductorAPI.isSequenceRunning(sequenceName);
+  isSequenceRunning(sequenceId?: string): boolean {
+    return this.conductorAPI.isSequenceRunning(sequenceId);
   }
 
   /**
