@@ -9,6 +9,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Playwright test artifacts (anywhere in the repo)
+test-results/
+screenshots/
+playwright-report/
+
+# E2E test specific artifacts
+e2e-tests/test-results/
+e2e-tests/screenshots/
+e2e-tests/playwright-report/
+
 # Runtime data
 pids
 *.pid
