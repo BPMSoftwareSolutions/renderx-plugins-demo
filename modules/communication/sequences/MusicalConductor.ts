@@ -39,6 +39,7 @@ import { ConductorCore } from "./core/ConductorCore";
 import { SequenceRegistry } from "./core/SequenceRegistry";
 import { EventSubscriptionManager } from "./core/EventSubscriptionManager";
 import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue";
+import { SequenceExecutor } from "./execution/SequenceExecutor";
 
 // CIA (Conductor Integration Architecture) interfaces for SPA plugin mounting
 export interface SPAPlugin {
@@ -97,6 +98,7 @@ export class MusicalConductor {
   private sequenceRegistry: SequenceRegistry;
   private eventSubscriptionManager: EventSubscriptionManager;
   private executionQueue: ExecutionQueue;
+  private sequenceExecutor: SequenceExecutor;
 
   // Legacy properties (to be refactored in later phases)
   private activeSequence: SequenceExecutionContext | null = null;
@@ -193,6 +195,12 @@ export class MusicalConductor {
       this.conductorCore.getSPAValidator()
     );
     this.executionQueue = new ExecutionQueue();
+    this.sequenceExecutor = new SequenceExecutor(
+      eventBus,
+      this.conductorCore.getSPAValidator(),
+      this.executionQueue,
+      this.statistics
+    );
 
     console.log("🎼 MusicalConductor: Initialized with core components");
   }
@@ -1838,45 +1846,19 @@ export class MusicalConductor {
         }`
       );
 
-      if (priority === SEQUENCE_PRIORITIES.HIGH) {
-        // HIGH priority: Execute immediately, bypassing queue
-        console.log(
-          `🔍 DEBUG: ${sequenceName} - HIGH priority, executing immediately`
-        );
-        this.executeSequenceImmediately(sequenceRequest);
-      } else if (
-        priority === SEQUENCE_PRIORITIES.CHAINED &&
-        this.activeSequence
-      ) {
-        // CHAINED priority: Add to front of queue to execute after current sequence
-        console.log(
-          `🔍 DEBUG: ${sequenceName} - CHAINED sequence, adding to front of queue`
-        );
-        this.sequenceQueue.unshift(sequenceRequest);
-        this.statistics.chainedSequences++;
-      } else {
-        // NORMAL priority: Add to queue or execute immediately
-        if (this.activeSequence) {
-          // CONSECUTIVE sequence - adding to queue
-          console.log(
-            `🔍 DEBUG: ${sequenceName} - CONSECUTIVE sequence, adding to queue (activeSequence: ${this.activeSequence?.sequenceName})`
-          );
-          this.sequenceQueue.push(sequenceRequest);
-        } else {
-          // IMMEDIATE sequence - executing now
-          console.log(
-            `🔍 DEBUG: ${sequenceName} - IMMEDIATE sequence, executing now`
-          );
-          this.sequenceQueue.push(sequenceRequest);
-          this.processSequenceQueue();
-        }
+      // Add to execution queue
+      this.executionQueue.enqueue(sequenceRequest);
+
+      // Process queue if not currently executing
+      if (!this.sequenceExecutor.isSequenceRunning()) {
+        this.processSequenceQueue();
       }
 
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_QUEUED, {
         sequenceName,
         requestId,
         priority,
-        queueLength: this.sequenceQueue.length,
+        queueLength: this.executionQueue.size(),
       });
 
       return requestId;
@@ -1992,18 +1974,41 @@ export class MusicalConductor {
   /**
    * Process next sequence in queue
    */
-  private processSequenceQueue(): void {
-    if (this.sequenceQueue.length > 0 && this.activeSequence === null) {
-      const nextSequence = this.sequenceQueue.shift()!;
-      const waitTime = performance.now() - nextSequence.queuedAt;
+  private async processSequenceQueue(): Promise<void> {
+    if (
+      !this.executionQueue.isEmpty() &&
+      !this.sequenceExecutor.isSequenceRunning()
+    ) {
+      const nextRequest = this.executionQueue.dequeue();
+      if (nextRequest) {
+        const waitTime = performance.now() - nextRequest.queuedAt;
 
-      // Update queue wait time statistics
-      this.updateQueueWaitTimeStatistics(waitTime);
+        // Update queue wait time statistics
+        this.updateQueueWaitTimeStatistics(waitTime);
 
-      // Processing queued sequence - internal logging disabled
-      this.executeSequenceImmediately(nextSequence);
-    } else if (this.sequenceQueue.length === 0) {
-      // Queue is empty - conductor is idle
+        // Get the sequence and execute it
+        const sequence = this.sequenceRegistry.get(nextRequest.sequenceName);
+        if (sequence) {
+          try {
+            await this.sequenceExecutor.executeSequence(nextRequest, sequence);
+            // Process next sequence in queue
+            this.processSequenceQueue();
+          } catch (error) {
+            console.error(
+              `❌ Failed to execute sequence ${nextRequest.sequenceName}:`,
+              error
+            );
+            // Continue processing queue even if one sequence fails
+            this.processSequenceQueue();
+          }
+        } else {
+          console.error(
+            `❌ Sequence ${nextRequest.sequenceName} not found in registry`
+          );
+          // Continue processing queue
+          this.processSequenceQueue();
+        }
+      }
     }
   }
 
@@ -2669,15 +2674,7 @@ export class MusicalConductor {
    * @returns True if a sequence is executing (or specific sequence if name provided)
    */
   isSequenceRunning(sequenceName?: string): boolean {
-    if (!sequenceName) {
-      return this.activeSequence !== null;
-    }
-
-    // Check if the specific sequence is currently running
-    return (
-      this.activeSequence !== null &&
-      this.activeSequence.sequence.name === sequenceName
-    );
+    return this.sequenceExecutor.isSequenceRunning(sequenceName);
   }
 
   /**
@@ -2685,7 +2682,7 @@ export class MusicalConductor {
    * @returns Current sequence execution context or null
    */
   getCurrentSequence(): SequenceExecutionContext | null {
-    return this.activeSequence;
+    return this.sequenceExecutor.getCurrentSequence();
   }
 
   /**

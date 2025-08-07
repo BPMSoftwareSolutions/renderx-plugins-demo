@@ -186,6 +186,11 @@ export const MUSICAL_CONDUCTOR_EVENT_TYPES = {
   BEAT_COMPLETED: "beat-completed",
   BEAT_FAILED: "beat-failed",
 
+  // Movement Execution
+  MOVEMENT_STARTED: "movement-started",
+  MOVEMENT_COMPLETED: "movement-completed",
+  MOVEMENT_FAILED: "movement-failed",
+
   // Queue Management
   SEQUENCE_QUEUED: "sequence-queued",
   SEQUENCE_DEQUEUED: "sequence-dequeued",
@@ -216,7 +221,8 @@ export const MUSICAL_SEQUENCE_TEMPLATE: MusicalSequence = {
       beats: [
         {
           beat: 1,
-          event: "template-event", /* handlers listen/subscribe to events/beats via the conductor */
+          event:
+            "template-event" /* handlers listen/subscribe to events/beats via the conductor */,
           title: "Template Beat",
           description: "Example beat for template",
           dynamics: MUSICAL_DYNAMICS.MEZZO_FORTE,
