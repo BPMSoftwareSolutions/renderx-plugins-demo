@@ -174,6 +174,7 @@ export const AppShell: React.FC<AppShellProps> = ({
     const targetTheme = theme === "light" ? "dark" : "light";
 
     // Execute theme change symphony with callback
+    // pluginId comes from plugin-manifest.json, sequenceId from sequence definition
     conductor.play("AppShell", "theme-symphony", {
       currentTheme: theme,
       targetTheme,
@@ -230,6 +231,7 @@ export const ElementLibrary: React.FC = () => {
 
   const loadComponents = () => {
     // Execute component loading symphony with callback
+    // pluginId: "ElementLibrary" (from manifest), sequenceId: "load-components-symphony"
     conductor.play("ElementLibrary", "load-components-symphony", {
       source: "component-definitions.json",
       category: "ui-components",
@@ -684,111 +686,152 @@ export const DragPreview: React.FC = () => {
 
 ## 🔌 Plugin Examples
 
-### AppShell.theme-symphony Plugin
+### Understanding Plugin Structure
+
+**Important**: The `pluginId` used in `conductor.play(pluginId, sequenceId, ...)` comes from the plugin's entry in `plugin-manifest.json`, not from the sequence definition.
+
+**Plugin Manifest Example** (`plugin-manifest.json`):
+
+```json
+{
+  "plugins": [
+    {
+      "id": "AppShell",
+      "name": "Application Shell Plugin",
+      "version": "1.0.0",
+      "file": "AppShell.theme-symphony.js",
+      "sequences": ["theme-symphony"]
+    },
+    {
+      "id": "ElementLibrary",
+      "name": "Element Library Plugin",
+      "version": "1.0.0",
+      "file": "ElementLibrary.load-components-symphony.js",
+      "sequences": ["load-components-symphony"]
+    }
+  ]
+}
+```
+
+### AppShell Theme Symphony Plugin
 
 ```typescript
 // plugins/AppShell.theme-symphony.ts
-import {
-  MusicalSequence,
-  SEQUENCE_CATEGORIES,
-  MUSICAL_DYNAMICS,
-  MUSICAL_TIMING,
-} from "../modules/communication/sequences/SequenceTypes";
-
-export const sequence: MusicalSequence = {
-  name: "AppShell.theme-symphony",
-  description: "Orchestrates theme switching with smooth transitions",
+export const sequence = {
+  id: "theme-symphony",
+  name: "Theme Management Symphony No. 1",
+  description:
+    "Orchestrates theme switching with smooth transitions and persistence",
+  version: "1.0.0",
   key: "C Major",
   tempo: 120,
-  category: SEQUENCE_CATEGORIES.COMPONENT_UI,
+  timeSignature: "4/4",
+  category: "ui-operations",
   movements: [
     {
-      name: "theme-transition",
-      description: "Handle theme switching workflow",
+      id: "theme-transition",
+      name: "Theme Transition Allegro",
+      description:
+        "Handle theme switching workflow with validation and application",
       beats: [
         {
           beat: 1,
-          event: "theme-validate",
-          title: "Validate Theme",
-          description: "Validate the target theme",
-          dynamics: MUSICAL_DYNAMICS.FORTE,
-          timing: MUSICAL_TIMING.IMMEDIATE,
-          data: {},
-          errorHandling: "stop",
+          event: "theme:validation:start",
+          title: "Theme Validation",
+          description: "Validate the target theme against available options",
+          handler: "validateTheme",
+          dynamics: "forte",
+          timing: "immediate",
         },
         {
           beat: 2,
-          event: "theme-apply",
-          title: "Apply Theme",
-          description: "Apply the new theme to the application",
-          dynamics: MUSICAL_DYNAMICS.FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "continue",
+          event: "theme:application:start",
+          title: "Theme Application",
+          description: "Apply the new theme to the application DOM",
+          handler: "applyTheme",
+          dynamics: "forte",
+          timing: "synchronized",
         },
         {
           beat: 3,
-          event: "theme-persist",
-          title: "Persist Theme",
+          event: "theme:persistence:start",
+          title: "Theme Persistence",
           description: "Save theme preference to localStorage",
-          dynamics: MUSICAL_DYNAMICS.MEZZO_FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "continue",
+          handler: "persistTheme",
+          dynamics: "mezzo-forte",
+          timing: "delayed",
         },
         {
           beat: 4,
-          event: "theme-notify",
-          title: "Notify Theme Changed",
-          description: "Emit theme changed event through conductor",
-          dynamics: MUSICAL_DYNAMICS.MEZZO_FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "continue",
+          event: "theme:notification:start",
+          title: "Theme Notification",
+          description: "Notify React components of theme change",
+          handler: "notifyThemeChange",
+          dynamics: "mezzo-forte",
+          timing: "synchronized",
         },
       ],
     },
   ],
+  events: {
+    triggers: ["theme:change:request"],
+    emits: [
+      "theme:validation:start",
+      "theme:application:start",
+      "theme:persistence:start",
+      "theme:notification:start",
+      "theme:change:complete",
+    ],
+  },
+  configuration: {
+    availableThemes: ["light", "dark", "auto"],
+    transitionDuration: 300,
+    persistToStorage: true,
+    enableSystemTheme: true,
+  },
 };
 
 export const handlers = {
-  "theme-validate": (data: any, context: any) => {
+  validateTheme: (data: any, context: any) => {
     const { targetTheme } = context;
-    const validThemes = ["light", "dark", "auto"];
+    const { availableThemes } = context.sequence.configuration;
 
-    if (!validThemes.includes(targetTheme)) {
-      throw new Error(`Invalid theme: ${targetTheme}`);
+    if (!availableThemes.includes(targetTheme)) {
+      throw new Error(
+        `Invalid theme: ${targetTheme}. Available: ${availableThemes.join(
+          ", "
+        )}`
+      );
     }
 
     console.log(`🎨 Theme validation passed: ${targetTheme}`);
     return { validated: true, theme: targetTheme };
   },
 
-  "theme-apply": (data: any, context: any) => {
+  applyTheme: (data: any, context: any) => {
     const { targetTheme } = context;
+    const { transitionDuration } = context.sequence.configuration;
 
-    // Apply theme to document root
+    // Apply theme to document root with transition
     document.documentElement.setAttribute("data-theme", targetTheme);
     document.body.className = `theme-${targetTheme}`;
-
-    console.log(`🎨 Theme applied: ${targetTheme}`);
-
-    // Trigger notification sequence through conductor.play()
-    context.conductor.play(
-      "AppShell",
-      "theme-notify-symphony",
-      {
-        theme: targetTheme,
-        source: "theme-apply",
-      },
-      "CHAINED"
+    document.documentElement.style.setProperty(
+      "--theme-transition-duration",
+      `${transitionDuration}ms`
     );
 
+    console.log(`🎨 Theme applied: ${targetTheme}`);
     return { applied: true, theme: targetTheme };
   },
 
-  "theme-persist": (data: any, context: any) => {
+  persistTheme: (data: any, context: any) => {
     const { theme } = context.payload; // From previous beat via data baton
+    const { persistToStorage } = context.sequence.configuration;
+
+    if (!persistToStorage) {
+      console.log(`🎨 Theme persistence disabled`);
+      return { persisted: false, reason: "disabled", theme };
+    }
 
     try {
       localStorage.setItem("app-theme", theme);
@@ -800,7 +843,7 @@ export const handlers = {
     }
   },
 
-  "theme-notify": (data: any, context: any) => {
+  notifyThemeChange: (data: any, context: any) => {
     const { theme } = context.payload; // From data baton
 
     // Update React components through callback mechanism
@@ -808,154 +851,274 @@ export const handlers = {
       context.onThemeChange(theme);
     }
 
+    // Emit completion event
+    context.eventBus.emit("theme:change:complete", {
+      theme,
+      timestamp: new Date().toISOString(),
+    });
+
     console.log(`📢 Theme change notification sent: ${theme}`);
     return { notified: true, theme };
   },
 };
 ```
 
-### ElementLibrary.load-components-symphony Plugin
+### ElementLibrary Component Loading Symphony Plugin
 
 ```typescript
 // plugins/ElementLibrary.load-components-symphony.ts
-export const sequence: MusicalSequence = {
-  name: "ElementLibrary.load-components-symphony",
-  description: "Loads component definitions from JSON files",
+export const sequence = {
+  id: "load-components-symphony",
+  name: "Component Library Loading Symphony No. 2",
+  description:
+    "Orchestrates loading and validation of component definitions from JSON sources",
+  version: "1.0.0",
   key: "D Major",
   tempo: 140,
-  category: SEQUENCE_CATEGORIES.DATA_PROCESSING,
+  timeSignature: "4/4",
+  category: "data-operations",
   movements: [
     {
-      name: "component-loading",
-      description: "Load and validate component definitions",
+      id: "component-loading",
+      name: "Component Loading Moderato",
+      description: "Load, validate, and prepare component definitions",
       beats: [
         {
           beat: 1,
-          event: "fetch-definitions",
-          title: "Fetch Component Definitions",
-          description: "Load component definitions from JSON",
-          dynamics: MUSICAL_DYNAMICS.FORTE,
-          timing: MUSICAL_TIMING.IMMEDIATE,
-          data: {},
-          errorHandling: "stop",
+          event: "components:fetch:start",
+          title: "Component Fetch",
+          description: "Load component definitions from JSON source",
+          handler: "fetchComponentDefinitions",
+          dynamics: "forte",
+          timing: "immediate",
         },
         {
           beat: 2,
-          event: "validate-components",
-          title: "Validate Components",
-          description: "Validate component structure and properties",
-          dynamics: MUSICAL_DYNAMICS.MEZZO_FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "continue",
+          event: "components:validation:start",
+          title: "Component Validation",
+          description: "Validate component structure and required properties",
+          handler: "validateComponents",
+          dynamics: "mezzo-forte",
+          timing: "synchronized",
         },
         {
           beat: 3,
-          event: "emit-loaded",
-          title: "Emit Loaded Event",
-          description: "Notify components are ready",
-          dynamics: MUSICAL_DYNAMICS.FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "continue",
+          event: "components:preparation:start",
+          title: "Component Preparation",
+          description: "Prepare components for library display",
+          handler: "prepareComponents",
+          dynamics: "mezzo-forte",
+          timing: "synchronized",
+        },
+        {
+          beat: 4,
+          event: "components:notification:start",
+          title: "Component Notification",
+          description: "Notify React components that library is ready",
+          handler: "notifyComponentsLoaded",
+          dynamics: "forte",
+          timing: "delayed",
         },
       ],
     },
   ],
+  events: {
+    triggers: ["components:load:request"],
+    emits: [
+      "components:fetch:start",
+      "components:validation:start",
+      "components:preparation:start",
+      "components:notification:start",
+      "components:load:complete",
+    ],
+  },
+  configuration: {
+    requiredFields: ["id", "name", "type", "icon"],
+    maxComponents: 100,
+    enableValidation: true,
+    sortBy: "name",
+    filterCategories: ["ui-components", "layout", "forms"],
+  },
 };
 
 export const handlers = {
-  "fetch-definitions": async (data: any, context: any) => {
+  fetchComponentDefinitions: async (data: any, context: any) => {
     const { source } = context;
 
     try {
       const response = await fetch(`/api/components/${source}`);
-      const components = await response.json();
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
 
-      console.log(`📚 Loaded ${components.length} component definitions`);
-      return { components, loaded: true };
+      const components = await response.json();
+      console.log(
+        `📚 Fetched ${components.length} component definitions from ${source}`
+      );
+      return { components, loaded: true, source };
     } catch (error) {
-      console.error("Failed to load components:", error);
+      console.error("Failed to fetch components:", error);
       throw error;
     }
   },
 
-  "validate-components": (data: any, context: any) => {
+  validateComponents: (data: any, context: any) => {
     const { components } = context.payload;
-    const requiredFields = ["id", "name", "type", "icon"];
+    const { requiredFields, maxComponents, enableValidation } =
+      context.sequence.configuration;
 
-    const validComponents = components.filter((component: any) => {
-      return requiredFields.every((field) => component[field]);
-    });
+    if (!enableValidation) {
+      console.log(`📚 Component validation disabled`);
+      return {
+        validComponents: components,
+        validationPassed: true,
+        skipped: true,
+      };
+    }
+
+    const validComponents = components
+      .filter((component: any) => {
+        return requiredFields.every((field) => component[field]);
+      })
+      .slice(0, maxComponents); // Limit to maxComponents
 
     console.log(
       `✅ Validated ${validComponents.length}/${components.length} components`
     );
-    return { validComponents, validationPassed: true };
+    return {
+      validComponents,
+      validationPassed: true,
+      filtered: components.length - validComponents.length,
+    };
   },
 
-  "emit-loaded": (data: any, context: any) => {
+  prepareComponents: (data: any, context: any) => {
     const { validComponents } = context.payload;
+    const { sortBy, filterCategories } = context.sequence.configuration;
+
+    // Filter by categories if specified
+    let preparedComponents = validComponents;
+    if (filterCategories.length > 0) {
+      preparedComponents = validComponents.filter((component: any) =>
+        filterCategories.includes(component.category)
+      );
+    }
+
+    // Sort components
+    preparedComponents.sort((a: any, b: any) => {
+      if (sortBy === "name") return a.name.localeCompare(b.name);
+      if (sortBy === "type") return a.type.localeCompare(b.type);
+      return 0;
+    });
+
+    console.log(
+      `🎨 Prepared ${preparedComponents.length} components for display`
+    );
+    return { preparedComponents, prepared: true };
+  },
+
+  notifyComponentsLoaded: (data: any, context: any) => {
+    const { preparedComponents } = context.payload;
 
     // Update React components through callback mechanism
     if (context.onComponentsLoaded) {
-      context.onComponentsLoaded(validComponents);
+      context.onComponentsLoaded(preparedComponents);
     }
 
-    console.log(`📚 Components loaded and notified: ${validComponents.length}`);
-    return { emitted: true, count: validComponents.length };
+    // Emit completion event
+    context.eventBus.emit("components:load:complete", {
+      components: preparedComponents,
+      count: preparedComponents.length,
+      timestamp: new Date().toISOString(),
+    });
+
+    console.log(
+      `📚 Component library loaded and notified: ${preparedComponents.length} components`
+    );
+    return { notified: true, count: preparedComponents.length };
   },
 };
 ```
 
-### Canvas.drop-symphony Plugin
+### Canvas Drop Symphony Plugin
 
 ```typescript
 // plugins/Canvas.drop-symphony.ts
-export const sequence: MusicalSequence = {
-  name: "Canvas.drop-symphony",
-  description: "Handles component drops onto canvas with positioning",
+export const sequence = {
+  id: "drop-symphony",
+  name: "Canvas Drop Symphony No. 3",
+  description:
+    "Orchestrates component drops onto canvas with validation and positioning",
+  version: "1.0.0",
   key: "E Major",
   tempo: 160,
-  category: SEQUENCE_CATEGORIES.COMPONENT_UI,
+  timeSignature: "4/4",
+  category: "canvas-operations",
   movements: [
     {
-      name: "drop-handling",
-      description: "Process component drop and create canvas element",
+      id: "drop-handling",
+      name: "Drop Handling Vivace",
+      description:
+        "Process component drop with validation and element creation",
       beats: [
         {
           beat: 1,
-          event: "validate-drop",
-          title: "Validate Drop",
+          event: "canvas:drop:validation:start",
+          title: "Drop Validation",
           description: "Validate drop position and component data",
-          dynamics: MUSICAL_DYNAMICS.FORTE,
-          timing: MUSICAL_TIMING.IMMEDIATE,
-          data: {},
-          errorHandling: "stop",
+          handler: "validateDrop",
+          dynamics: "forte",
+          timing: "immediate",
         },
         {
           beat: 2,
-          event: "create-element",
-          title: "Create Canvas Element",
-          description: "Create new canvas element from component",
-          dynamics: MUSICAL_DYNAMICS.FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "stop",
+          event: "canvas:element:creation:start",
+          title: "Element Creation",
+          description: "Create new canvas element from dropped component",
+          handler: "createElement",
+          dynamics: "forte",
+          timing: "synchronized",
         },
         {
           beat: 3,
-          event: "emit-added",
-          title: "Emit Element Added",
-          description: "Notify that element was added to canvas",
-          dynamics: MUSICAL_DYNAMICS.MEZZO_FORTE,
-          timing: MUSICAL_TIMING.AFTER_BEAT,
-          data: {},
-          errorHandling: "continue",
+          event: "canvas:element:positioning:start",
+          title: "Element Positioning",
+          description: "Position element on canvas with snap-to-grid",
+          handler: "positionElement",
+          dynamics: "mezzo-forte",
+          timing: "synchronized",
+        },
+        {
+          beat: 4,
+          event: "canvas:element:notification:start",
+          title: "Element Notification",
+          description: "Notify React components of new canvas element",
+          handler: "notifyElementAdded",
+          dynamics: "mezzo-forte",
+          timing: "delayed",
         },
       ],
     },
   ],
+  events: {
+    triggers: ["canvas:drop:request"],
+    emits: [
+      "canvas:drop:validation:start",
+      "canvas:element:creation:start",
+      "canvas:element:positioning:start",
+      "canvas:element:notification:start",
+      "canvas:element:added:complete",
+    ],
+  },
+  configuration: {
+    snapToGrid: true,
+    gridSize: 10,
+    minElementSize: { width: 50, height: 30 },
+    maxElementSize: { width: 500, height: 400 },
+    defaultElementSize: { width: 100, height: 50 },
+    enableCollisionDetection: true,
+    canvasMargin: 20,
+  },
 };
 
 export const handlers = {
