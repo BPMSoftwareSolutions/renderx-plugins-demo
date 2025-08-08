@@ -10,13 +10,17 @@ module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
-  moduleNameMapping: {
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
+  moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/modules/$1",
     "^@communication/(.*)$": "<rootDir>/modules/communication/$1",
     "^@test-utils/(.*)$": "<rootDir>/tests/utils/$1",
     "^@fixtures/(.*)$": "<rootDir>/tests/fixtures/$1",
     "^@mocks/(.*)$": "<rootDir>/tests/mocks/$1",
+    // Map .js extensions to .ts files for ES module compatibility
+    "^(.*)\\.js$": "$1",
   },
+  resolver: "<rootDir>/jest.resolver.js",
   setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.ts"],
   collectCoverageFrom: [
     "modules/**/*.ts",
