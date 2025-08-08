@@ -13,7 +13,11 @@
     "test:install-deps": "playwright install-deps",
     "serve:test": "node server.js",
     "dev": "npm run test:headed",
-    "setup": "npm install && npm run test:install"
+    "setup": "npm install && npm run test:install",
+    "build:plugins": "node scripts/build-plugin-bundles.js",
+    "build:plugins:force": "node scripts/build-plugin-bundles.js --force",
+    "build:plugins:verbose": "node scripts/build-plugin-bundles.js --verbose",
+    "watch:plugins": "node scripts/watch-plugin-bundles.js"
   },
   "dependencies": {
     "musical-conductor": "git+https://github.com/BPMSoftwareSolutions/MusicalConductor.git#main"
