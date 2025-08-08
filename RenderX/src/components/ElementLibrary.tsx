@@ -3,7 +3,7 @@
  * Displays available JSON components for drag-and-drop
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import type { LoadedJsonComponent } from "../types/JsonComponent";
 import type { ElementLibraryProps } from "../types/AppTypes";
 import { jsonComponentLoader } from "../services/JsonComponentLoader";
@@ -17,6 +17,8 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [draggedComponent, setDraggedComponent] =
     useState<LoadedJsonComponent | null>(null);
+  const requestedRef = useRef(false);
+  const fallbackTimerRef = useRef<number | null>(null);
 
   // Component loading function - integrates with Musical Conductor symphony
   const loadComponentsAfterPlugins = async () => {
@@ -98,26 +100,30 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
 
         // Kick off plugin-driven component load (with callback)
         try {
-          console.log(
-            "🎼 ElementLibrary: Invoking plugin-driven component load via conductor.play()"
-          );
-          conductor.play(
-            "Component Library Plugin",
-            "load-components-symphony",
-            {
-              source: "json-components",
-              onComponentsLoaded: (items: any[]) => {
-                setComponents(items as any);
-                setLoading(false);
-                setError(null);
-              },
-            }
-          );
+          if (!requestedRef.current) {
+            requestedRef.current = true;
+            console.log(
+              "🎼 ElementLibrary: Invoking plugin-driven component load via conductor.play()"
+            );
+            conductor.play(
+              "Component Library Plugin",
+              "load-components-symphony",
+              {
+                source: "json-components",
+                onComponentsLoaded: (items: any[]) => {
+                  setComponents(items as any);
+                  setLoading(false);
+                  setError(null);
+                },
+              }
+            );
+          }
         } catch (e) {
           console.warn(
             "⚠️ ElementLibrary: Plugin-driven load failed, falling back to direct loader",
             e
           );
+          // Fallback if plugin call throws synchronously
           jsonComponentLoader
             .loadAllComponents()
             .then((res) => {
@@ -129,6 +135,28 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
               setError(err?.message || "Failed to load components");
               setLoading(false);
             });
+        }
+
+        // Safety: if callback never fires, use legacy loader after 2s
+        if (fallbackTimerRef.current == null) {
+          fallbackTimerRef.current = window.setTimeout(() => {
+            if (components.length === 0) {
+              console.warn(
+                "⏱️ ElementLibrary: Plugin callback timeout, using legacy loader"
+              );
+              jsonComponentLoader
+                .loadAllComponents()
+                .then((res) => {
+                  setComponents(res.success as any);
+                  setLoading(false);
+                  setError(null);
+                })
+                .catch((err) => {
+                  setError(err?.message || "Failed to load components");
+                  setLoading(false);
+                });
+            }
+          }, 2000);
         }
 
         // Cleanup function
@@ -283,7 +311,12 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
   return (
     <div className="element-library">
       <div className="element-library-header">
-        <h3>Element Library</h3>
+        <h3>
+          Element Library
+          <span className="component-count" title="Loaded components">
+            {components.length > 0 ? ` (${components.length})` : ""}
+          </span>
+        </h3>
         {loading && <div className="loading-indicator">Loading...</div>}
         {error && <div className="error-indicator">Error: {error}</div>}
       </div>
