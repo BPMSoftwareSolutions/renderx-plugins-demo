@@ -12,6 +12,7 @@
 import { chromium, FullConfig, Browser, Page } from "@playwright/test";
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
+import { request } from "http";
 
 // Global state for shared conductor
 let sharedBrowser: Browser | null = null;
@@ -61,6 +62,57 @@ async function globalSetup(config: FullConfig) {
 }
 
 /**
+ * Wait for server to be ready
+ */
+async function waitForServer(url: string, timeout: number): Promise<void> {
+  const startTime = Date.now();
+  const urlObj = new URL(url);
+
+  return new Promise((resolve, reject) => {
+    const checkServer = () => {
+      const req = request(
+        {
+          hostname: urlObj.hostname,
+          port: urlObj.port || 80,
+          path: urlObj.pathname,
+          method: "GET",
+          timeout: 5000,
+        },
+        (res) => {
+          if (res.statusCode === 200) {
+            console.log("✅ Test server is ready");
+            resolve();
+          } else {
+            retryOrFail();
+          }
+        }
+      );
+
+      req.on("error", () => {
+        retryOrFail();
+      });
+
+      req.on("timeout", () => {
+        req.destroy();
+        retryOrFail();
+      });
+
+      req.end();
+    };
+
+    const retryOrFail = () => {
+      if (Date.now() - startTime > timeout) {
+        reject(new Error(`Server at ${url} not ready after ${timeout}ms`));
+      } else {
+        setTimeout(checkServer, 1000);
+      }
+    };
+
+    checkServer();
+  });
+}
+
+/**
  * Initialize a shared MusicalConductor instance to avoid redundant loading
  * This dramatically improves test performance by:
  * - Loading modules only once instead of 30+ times per test
@@ -71,19 +123,39 @@ async function initializeSharedConductor() {
   try {
     console.log("🎼 Initializing shared MusicalConductor instance...");
 
+    // Wait for test server to be ready
+    console.log("⏳ Waiting for test server to be ready...");
+    await waitForServer("http://127.0.0.1:3000", 30000);
+
     // Launch browser for shared conductor
     sharedBrowser = await chromium.launch({ headless: true });
     const context = await sharedBrowser.newContext();
     sharedPage = await context.newPage();
 
+    // Enable console logging for debugging
+    sharedPage.on("console", (msg) => {
+      console.log(`[SHARED-BROWSER] ${msg.type()}: ${msg.text()}`);
+    });
+
     // Navigate to test app
+    console.log("🌐 Navigating to test app...");
     await sharedPage.goto("http://127.0.0.1:3000");
     await sharedPage.waitForLoadState("networkidle");
 
+    // Check if page loaded correctly
+    const title = await sharedPage.title();
+    console.log(`📄 Page title: ${title}`);
+
+    // Wait for the init button to be available
+    console.log("⏳ Waiting for init button...");
+    await sharedPage.waitForSelector("#init-conductor", { timeout: 10000 });
+
     // Initialize conductor
+    console.log("🎼 Clicking init conductor button...");
     await sharedPage.click("#init-conductor");
 
     // Wait for initialization to complete
+    console.log("⏳ Waiting for conductor initialization...");
     await sharedPage.waitForFunction(
       () => {
         return window.E2ETestApp && window.E2ETestApp.getConductor() !== null;
@@ -93,6 +165,8 @@ async function initializeSharedConductor() {
 
     // Verify initialization was successful
     const status = await sharedPage.textContent("#status");
+    console.log(`📊 Status text: "${status}"`);
+
     if (status?.includes("successfully")) {
       sharedConductorInitialized = true;
       console.log(
@@ -111,7 +185,9 @@ async function initializeSharedConductor() {
         JSON.stringify(sharedState, null, 2)
       );
     } else {
-      throw new Error("Shared conductor initialization failed");
+      throw new Error(
+        `Shared conductor initialization failed. Status: "${status}"`
+      );
     }
   } catch (error) {
     console.error("❌ Failed to initialize shared conductor:", error);

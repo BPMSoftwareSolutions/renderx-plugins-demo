@@ -30,9 +30,13 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url);
   let pathname = parsedUrl.pathname;
 
-  // Default to index.html
+  // Route handling
   if (pathname === "/") {
     pathname = "/index.html";
+  } else if (pathname === "/cached") {
+    pathname = "/index-cached.html";
+  } else if (pathname === "/bundled") {
+    pathname = "/index-bundled.html";
   }
 
   // Resolve file path

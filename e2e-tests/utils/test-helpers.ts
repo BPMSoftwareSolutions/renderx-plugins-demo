@@ -29,6 +29,35 @@ export interface MusicalConductorTestResult {
   duration: number;
 }
 
+export interface OptimizedTestConfig {
+  useSharedConductor?: boolean;
+  useCachedModules?: boolean;
+  enablePerformanceTracking?: boolean;
+  timeout?: number;
+  retries?: number;
+  testUrl?: string;
+}
+
+export interface ConductorTestContext {
+  conductor: any;
+  eventBus: any;
+  communicationSystem: any;
+  isShared: boolean;
+  isCached: boolean;
+  performanceMetrics?: any;
+  cacheStats?: any;
+}
+
+// Default optimized test configuration
+const OPTIMIZED_CONFIG: OptimizedTestConfig = {
+  useSharedConductor: true,
+  useCachedModules: true,
+  enablePerformanceTracking: true,
+  timeout: 30000,
+  retries: 3,
+  testUrl: "http://127.0.0.1:3000",
+};
+
 /**
  * Initialize MusicalConductor in the test page
  * Uses shared conductor instance for performance optimization
@@ -456,4 +485,195 @@ export function createTestContext(page: Page, testName: string): TestContext {
     logger,
     testName,
   };
+}
+
+/**
+ * Initialize MusicalConductor with optimized performance settings
+ * Supports shared conductors, module caching, and performance tracking
+ */
+export async function initializeOptimizedMusicalConductor(
+  context: TestContext,
+  config: OptimizedTestConfig = {}
+): Promise<ConductorTestContext> {
+  const { page, logger } = context;
+  const finalConfig = { ...OPTIMIZED_CONFIG, ...config };
+  const startTime = Date.now();
+
+  try {
+    // Determine the best URL to use based on configuration
+    let testUrl = finalConfig.testUrl!;
+    if (finalConfig.useCachedModules) {
+      testUrl += "/cached";
+      logger.log("🚀 Using cached module version for optimal performance");
+    }
+
+    // Check if shared conductor is available and requested
+    if (finalConfig.useSharedConductor && isSharedConductorAvailable()) {
+      logger.log("🚀 Attempting to use shared MusicalConductor instance");
+      const sharedPage = getSharedConductorPage();
+      if (sharedPage) {
+        // Copy shared conductor state to current page
+        const sharedState = await sharedPage.evaluate(() => {
+          return {
+            conductor: window.E2ETestApp?.getConductor(),
+            eventBus: window.E2ETestApp?.getEventBus(),
+            metrics: window.E2ETestApp?.getMetrics(),
+            cacheStats: window.MusicalConductorCache?.getStats(),
+          };
+        });
+
+        if (sharedState.conductor) {
+          logger.log("✅ Shared conductor state retrieved successfully");
+          return {
+            conductor: sharedState.conductor,
+            eventBus: sharedState.eventBus,
+            communicationSystem: null, // Not available in shared context
+            isShared: true,
+            isCached: finalConfig.useCachedModules || false,
+            performanceMetrics: sharedState.metrics,
+            cacheStats: sharedState.cacheStats,
+          };
+        }
+      }
+    }
+
+    // Fall back to individual initialization with optimizations
+    logger.log(
+      "⚠️ Shared conductor not available, initializing individual instance"
+    );
+    logger.log(`🌐 Navigating to: ${testUrl}`);
+
+    // Navigate to the optimized test app
+    await page.goto(testUrl);
+    await page.waitForLoadState("networkidle");
+
+    // Track performance if enabled
+    if (finalConfig.enablePerformanceTracking) {
+      await page.evaluate(() => {
+        if (window.performanceMetrics) {
+          window.performanceMetrics.testStartTime = performance.now();
+        }
+      });
+    }
+
+    // Initialize conductor
+    await page.click("#init-conductor");
+
+    // Wait for initialization to complete with timeout
+    await page.waitForFunction(
+      () => {
+        return window.E2ETestApp && window.E2ETestApp.getConductor() !== null;
+      },
+      { timeout: finalConfig.timeout }
+    );
+
+    // Get conductor instances and metrics
+    const context = await page.evaluate(() => {
+      const conductor = window.E2ETestApp?.getConductor();
+      const eventBus = window.E2ETestApp?.getEventBus();
+      const metrics = window.E2ETestApp?.getMetrics();
+      const perfMetrics = window.performanceMetrics;
+      const cacheStats = window.MusicalConductorCache?.getStats();
+
+      return {
+        conductor: conductor !== null,
+        eventBus: eventBus !== null,
+        metrics,
+        perfMetrics,
+        cacheStats,
+      };
+    });
+
+    if (!context.conductor || !context.eventBus) {
+      throw new Error("Failed to initialize conductor or eventBus");
+    }
+
+    const duration = Date.now() - startTime;
+    logger.log(
+      `✅ Individual MusicalConductor instance initialized in ${duration}ms`
+    );
+
+    // Log performance metrics if available
+    if (context.cacheStats) {
+      logger.log(
+        `📊 Cache Performance: ${context.cacheStats.cacheHitRatio?.toFixed(
+          1
+        )}% hit ratio`
+      );
+      logger.log(`📊 HTTP Requests: ${context.cacheStats.httpRequests}`);
+    }
+
+    return {
+      conductor: context.conductor,
+      eventBus: context.eventBus,
+      communicationSystem: null, // Would need to be extracted from page context
+      isShared: false,
+      isCached: finalConfig.useCachedModules || false,
+      performanceMetrics: context.metrics,
+      cacheStats: context.cacheStats,
+    };
+  } catch (error) {
+    logger.error(
+      `❌ Failed to initialize optimized MusicalConductor: ${error.message}`
+    );
+    throw error;
+  }
+}
+
+/**
+ * Test conductor reuse across multiple test scenarios
+ * This function demonstrates how to reuse a conductor instance efficiently
+ */
+export async function testConductorReuse(
+  context: TestContext,
+  conductorContext: ConductorTestContext
+): Promise<boolean> {
+  const { page, logger } = context;
+
+  try {
+    logger.log("🔄 Testing conductor reuse capabilities...");
+
+    // Test 1: EventBus functionality
+    await page.click("#test-eventbus");
+    await page.waitForTimeout(1000);
+
+    // Test 2: Sequence execution
+    await page.click("#test-sequences");
+    await page.waitForTimeout(1000);
+
+    // Test 3: Plugin system
+    await page.click("#test-plugins");
+    await page.waitForTimeout(1000);
+
+    // Get final metrics
+    const finalMetrics = await page.evaluate(() => {
+      return window.E2ETestApp?.getMetrics() || {};
+    });
+
+    // Verify conductor is still functional
+    const isStillFunctional =
+      finalMetrics.eventCount > 0 &&
+      finalMetrics.sequenceCount > 0 &&
+      finalMetrics.pluginCount > 0;
+
+    if (isStillFunctional) {
+      logger.log("✅ Conductor reuse test passed - all functionality working");
+
+      // Log performance benefits if using cached version
+      if (conductorContext.isCached && conductorContext.cacheStats) {
+        logger.log(
+          `📊 Cache benefits: ${conductorContext.cacheStats.cacheHitRatio?.toFixed(
+            1
+          )}% hit ratio`
+        );
+      }
+    } else {
+      logger.error("❌ Conductor reuse test failed - functionality degraded");
+    }
+
+    return isStillFunctional;
+  } catch (error) {
+    logger.error(`❌ Conductor reuse test failed: ${error.message}`);
+    return false;
+  }
 }

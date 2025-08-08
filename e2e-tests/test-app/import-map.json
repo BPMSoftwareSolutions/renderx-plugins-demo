@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "musical-conductor": "./bundles/musical-conductor.bundle.js",
+    "musical-conductor/core": "./bundles/musical-conductor-core.bundle.js"
+  }
+}
