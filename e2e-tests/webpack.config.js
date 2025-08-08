@@ -22,16 +22,18 @@ module.exports = {
     "musical-conductor": "./test-app/dist/modules/communication/index.js",
   },
 
+  experiments: {
+    outputModule: true,
+  },
+
   output: {
     path: path.resolve(__dirname, "test-app/bundles"),
     filename: "[name].bundle.js",
     library: {
-      name: "[name]",
-      type: "umd",
-      export: "default",
+      type: "module",
     },
-    globalObject: "this",
     clean: true, // Clean output directory before each build
+    module: true,
   },
 
   resolve: {
@@ -91,35 +93,7 @@ module.exports = {
   },
 
   optimization: {
-    splitChunks: {
-      chunks: "all",
-      cacheGroups: {
-        // Core MusicalConductor modules
-        core: {
-          name: "musical-conductor-core",
-          test: /[\\/]dist[\\/]modules[\\/]communication[\\/]/,
-          priority: 20,
-          reuseExistingChunk: true,
-        },
-
-        // Plugin modules
-        plugins: {
-          name: "musical-conductor-plugins",
-          test: /[\\/]plugins[\\/]/,
-          priority: 10,
-          reuseExistingChunk: true,
-        },
-
-        // Vendor modules (if any)
-        vendor: {
-          name: "vendor",
-          test: /[\\/]node_modules[\\/]/,
-          priority: 5,
-          reuseExistingChunk: true,
-        },
-      },
-    },
-
+    splitChunks: false, // emit a single module bundle for importmap compatibility
     // Enable tree shaking to remove unused code
     usedExports: true,
     sideEffects: false,

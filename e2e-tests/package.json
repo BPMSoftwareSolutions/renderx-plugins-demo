@@ -4,7 +4,9 @@
   "description": "End-to-end tests for MusicalConductor using Playwright",
   "private": true,
   "scripts": {
+    "pretest": "npm run build:plugins && npm run build:bundles",
     "test": "playwright test",
+    "test:simple": "npm run build:plugins && npm run build:bundles && set E2E_SIMPLE=1 && playwright test tests/simple-startup.spec.ts",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
@@ -12,7 +14,7 @@
     "test:install": "playwright install",
     "test:install-deps": "playwright install-deps",
     "serve:test": "node server.js",
-    "dev": "npm run test:headed",
+    "dev": "npm run build:plugins && npm run build:bundles && node scripts/dev-open.js",
     "setup": "npm install && npm run test:install",
     "build:plugins": "node scripts/build-plugin-bundles.js",
     "build:plugins:force": "node scripts/build-plugin-bundles.js --force",

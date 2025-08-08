@@ -179,7 +179,8 @@
       </div>
 
       <div class="performance-banner">
-        🚀 Performance Optimized: Using bundled modules for 95% fewer HTTP requests!
+        🚀 Performance Optimized: Using bundled modules for 95% fewer HTTP
+        requests!
       </div>
 
       <div id="status" class="status info">
@@ -238,7 +239,8 @@
         <h3>Console Output</h3>
         <div id="log-container" class="log-container">
           <div class="log-entry info">
-            Waiting for MusicalConductor initialization with optimized bundles...
+            Waiting for MusicalConductor initialization with optimized
+            bundles...
           </div>
         </div>
       </div>
@@ -250,26 +252,32 @@
         startTime: performance.now(),
         bundleLoadStart: null,
         bundleLoadEnd: null,
-        httpRequests: 0
+        httpRequests: 0,
       };
 
       // Monitor HTTP requests
       const originalFetch = window.fetch;
-      window.fetch = function(...args) {
+      window.fetch = function (...args) {
         window.performanceMetrics.httpRequests++;
         return originalFetch.apply(this, args);
       };
 
       // Monitor XMLHttpRequest
       const originalXHROpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function(...args) {
+      XMLHttpRequest.prototype.open = function (...args) {
         window.performanceMetrics.httpRequests++;
         return originalXHROpen.apply(this, args);
       };
     </script>
 
-    <!-- Import map for bundled modules -->
-    <script type="importmap" src="./import-map.json"></script>
+    <!-- Import map for bundled modules (inline: Chrome does not support external import maps) -->
+    <script type="importmap">
+      {
+        "imports": {
+          "musical-conductor": "./bundles/musical-conductor.bundle.js"
+        }
+      }
+    </script>
 
     <!-- Load MusicalConductor from optimized bundle -->
     <script type="module" src="./app-bundled.js"></script>

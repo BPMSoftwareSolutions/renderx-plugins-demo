@@ -55,8 +55,12 @@ async function globalSetup(config: FullConfig) {
     );
   }
 
-  // Initialize shared conductor instance for performance optimization
-  await initializeSharedConductor();
+  // Initialize shared conductor instance for performance optimization (skip in simple mode)
+  if (!process.env.E2E_SIMPLE) {
+    await initializeSharedConductor();
+  } else {
+    console.log("⏭️  Skipping shared conductor init (E2E_SIMPLE=1)");
+  }
 
   console.log("🚀 E2E Test Environment setup complete");
 }
@@ -139,7 +143,7 @@ async function initializeSharedConductor() {
 
     // Navigate to test app
     console.log("🌐 Navigating to test app...");
-    await sharedPage.goto("http://127.0.0.1:3000");
+    await sharedPage.goto("http://127.0.0.1:3000/bundled");
     await sharedPage.waitForLoadState("networkidle");
 
     // Check if page loaded correctly

@@ -51,11 +51,11 @@ export interface ConductorTestContext {
 // Default optimized test configuration
 const OPTIMIZED_CONFIG: OptimizedTestConfig = {
   useSharedConductor: true,
-  useCachedModules: true,
+  useCachedModules: false,
   enablePerformanceTracking: true,
   timeout: 30000,
   retries: 3,
-  testUrl: "http://127.0.0.1:3000",
+  testUrl: "http://127.0.0.1:3000/bundled",
 };
 
 /**
