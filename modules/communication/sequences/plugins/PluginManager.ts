@@ -3,7 +3,7 @@
  * Handles CIA (Conductor Integration Architecture) plugin lifecycle
  */
 
-import { EventBus } from "../../EventBus.js";
+import { EventBus, UnsubscribeFunction } from "../../EventBus.js";
 import { SPAValidator } from "../../SPAValidator.js";
 import type { MusicalSequence } from "../SequenceTypes.js";
 import { SequenceRegistry } from "../core/SequenceRegistry.js";
@@ -25,6 +25,12 @@ export class PluginManager {
   // Plugin state
   private mountedPlugins: Map<string, SPAPlugin> = new Map();
   private pluginHandlers: Map<string, Record<string, Function>> = new Map();
+  // Beat handler subscriptions per plugin (for cleanup)
+  private pluginSubscriptions: Map<string, UnsubscribeFunction[]> = new Map();
+
+  // Per-request execution contexts to accumulate handler outputs
+  private requestContexts: Map<string, any> = new Map();
+
   private pluginsRegistered: boolean = false; // Prevent React StrictMode double execution
 
   constructor(
@@ -112,10 +118,113 @@ export class PluginManager {
       // Mount the plugin
       this.mountedPlugins.set(id, plugin);
 
+      // Wire beat handlers to event bus so plugin handlers run
+      try {
+        const unsubscribes: UnsubscribeFunction[] = [];
+        const movements = sequence?.movements || [];
+        for (const movement of movements) {
+          const beats = movement?.beats || [];
+          for (const beat of beats) {
+            const eventName = beat?.event;
+            const handlerName = beat?.handler;
+            if (!eventName || !handlerName) continue;
+            const handlerFn = handlers?.[handlerName];
+            if (typeof handlerFn !== "function") continue;
+
+            const unsubscribe = this.eventBus.subscribe(
+              eventName,
+              (data: any) => {
+                // Derive a stable request key (prefer conductor requestId)
+                const requestId =
+                  data?._musicalContext?.execution?.requestId ||
+                  `${id}::__global__`;
+
+                // Initialize or retrieve per-request context
+                let context = this.requestContexts.get(requestId);
+                if (!context) {
+                  context = {
+                    payload: {},
+                    onComponentsLoaded: data?.onComponentsLoaded,
+                    plugin: { id, metadata: plugin.metadata },
+                    sequence: plugin.sequence,
+                  } as any;
+                } else if (data?.onComponentsLoaded) {
+                  // Keep latest callback if provided
+                  context.onComponentsLoaded = data.onComponentsLoaded;
+                }
+
+                // Serialize handler execution per request via a promise chain
+                const run = async () => {
+                  try {
+                    const result = await handlerFn(data, context);
+                    if (result && typeof result === "object") {
+                      context.payload = { ...context.payload, ...result };
+                    }
+
+                    if (handlerName === "notifyComponentsLoaded") {
+                      const prepared =
+                        context.payload?.preparedComponents || [];
+                      if (typeof context.onComponentsLoaded === "function") {
+                        try {
+                          context.onComponentsLoaded(prepared);
+                        } catch {}
+                      }
+                      this.eventBus.emit("components:loaded", {
+                        components: prepared,
+                      });
+                    }
+                  } catch (err) {
+                    console.error(
+                      `🧠 PluginManager: Handler execution failed for ${id}.${handlerName}:`,
+                      err
+                    );
+                    this.eventBus.emit("components:error", {
+                      error: (err as Error)?.message || String(err),
+                    });
+                  }
+                };
+
+                context.chain = (context.chain || Promise.resolve())
+                  .then(run)
+                  .catch(() => {
+                    // Already reported via components:error
+                  });
+
+                // Persist updated context
+                this.requestContexts.set(requestId, context);
+              },
+              { pluginId: id }
+            );
+
+            unsubscribes.push(unsubscribe);
+          }
+        }
+        if (unsubscribes.length > 0) {
+          this.pluginSubscriptions.set(id, unsubscribes);
+        }
+      } catch (wireErr) {
+        console.warn(
+          `🧠 PluginManager: Failed wiring beat handlers for ${id}:`,
+          wireErr
+        );
+      }
+
       // Store handlers only if provided (optional for event-bus driven plugins)
       if (handlers && typeof handlers === "object") {
         this.pluginHandlers.set(id, handlers);
       }
+
+      // Cleanup request contexts after sequence completes
+      try {
+        this.eventBus.subscribe(
+          `${id}:sequence:completed`,
+          (data: any) => {
+            const requestId = data?._musicalContext?.execution?.requestId;
+            if (requestId) this.requestContexts.delete(requestId);
+          },
+          { pluginId: id }
+        );
+      } catch {}
 
       console.log(`✅ Plugin mounted successfully: ${id}`);
       console.log(`🎼 Sequence registered: ${sequence.name}`);
@@ -135,6 +244,25 @@ export class PluginManager {
         reason: "mount_error",
         warnings,
       };
+    }
+  }
+
+  /**
+   * Unmount a plugin and cleanup event subscriptions
+   */
+  async unmount(pluginId: string): Promise<void> {
+    try {
+      const subs = this.pluginSubscriptions.get(pluginId) || [];
+      for (const unsub of subs) {
+        try {
+          unsub?.();
+        } catch {}
+      }
+      this.pluginSubscriptions.delete(pluginId);
+      this.mountedPlugins.delete(pluginId);
+      this.pluginHandlers.delete(pluginId);
+    } catch (err) {
+      console.warn(`🧠 PluginManager: Failed to unmount ${pluginId}:`, err);
     }
   }
 

@@ -59,19 +59,11 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
             setLoading(false);
             setError(null);
 
-            // Optional: play completion symphony if available
-            try {
-              conductor.play(
-                "ElementLibrary.library-display-symphony",
-                "Element Library Display Symphony No. 12",
-                {
-                  components: data.components,
-                  count: data.components.length,
-                  source: "element-library",
-                  timestamp: Date.now(),
-                }
-              );
-            } catch {}
+            // Cancel the fallback timer if it's still pending
+            if (fallbackTimerRef.current != null) {
+              window.clearTimeout(fallbackTimerRef.current);
+              fallbackTimerRef.current = null;
+            }
           }
         };
 
@@ -80,12 +72,7 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
           setError(data.error || "Failed to load components");
           setLoading(false);
 
-          // Play library display error symphony
-          conductor.play("library-display-symphony", "onDisplayError", {
-            error: data.error || "Failed to load components",
-            source: "element-library",
-            timestamp: Date.now(),
-          });
+          // No display plugin yet; keep UI error state only
         };
 
         // Subscribe to MusicalConductor events via conductor (SPA-compliant)
@@ -140,6 +127,7 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
         // Safety: if callback never fires, use legacy loader after 2s
         if (fallbackTimerRef.current == null) {
           fallbackTimerRef.current = window.setTimeout(() => {
+            // Only run if nothing loaded yet
             if (components.length === 0) {
               console.warn(
                 "⏱️ ElementLibrary: Plugin callback timeout, using legacy loader"
@@ -154,6 +142,12 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
                 .catch((err) => {
                   setError(err?.message || "Failed to load components");
                   setLoading(false);
+                })
+                .finally(() => {
+                  if (fallbackTimerRef.current != null) {
+                    window.clearTimeout(fallbackTimerRef.current);
+                    fallbackTimerRef.current = null;
+                  }
                 });
             }
           }, 2000);
@@ -176,14 +170,21 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
       );
       // Kick off plugin-driven component load (with callback)
       try {
-        conductor.play("Component Library Plugin", "load-components-symphony", {
-          source: "json-components",
-          onComponentsLoaded: (items: any[]) => {
-            setComponents(items as any);
-            setLoading(false);
-            setError(null);
-          },
-        });
+        if (!requestedRef.current) {
+          requestedRef.current = true;
+          conductor.play(
+            "Component Library Plugin",
+            "load-components-symphony",
+            {
+              source: "json-components",
+              onComponentsLoaded: (items: any[]) => {
+                setComponents(items as any);
+                setLoading(false);
+                setError(null);
+              },
+            }
+          );
+        }
       } catch (e) {
         console.warn(
           "⚠️ ElementLibrary: Plugin-driven load failed, falling back to direct loader",
