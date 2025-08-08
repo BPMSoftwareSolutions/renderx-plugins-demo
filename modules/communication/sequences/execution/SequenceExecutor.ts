@@ -3,20 +3,20 @@
  * Handles the execution of musical sequences with proper timing and error handling
  */
 
-import { EventBus } from "../../EventBus";
-import { SPAValidator } from "../../SPAValidator";
+import { EventBus } from "../../EventBus.js";
+import { SPAValidator } from "../../SPAValidator.js";
 import type {
   MusicalSequence,
   SequenceExecutionContext,
   SequenceRequest,
   ConductorStatistics,
-} from "../SequenceTypes";
+} from "../SequenceTypes.js";
 import {
   MUSICAL_CONDUCTOR_EVENT_TYPES,
   SEQUENCE_PRIORITIES,
-} from "../SequenceTypes";
-import { ExecutionQueue } from "./ExecutionQueue";
-import { MovementExecutor } from "./MovementExecutor";
+} from "../SequenceTypes.js";
+import { ExecutionQueue } from "./ExecutionQueue.js";
+import { MovementExecutor } from "./MovementExecutor.js";
 
 export class SequenceExecutor {
   private eventBus: EventBus;

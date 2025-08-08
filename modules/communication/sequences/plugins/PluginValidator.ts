@@ -3,7 +3,11 @@
  * Validates plugin structure, sequences, and handlers for CIA compliance
  */
 
-import type { MusicalSequence, SequenceMovement, SequenceBeat } from "../SequenceTypes";
+import type {
+  MusicalSequence,
+  SequenceMovement,
+  SequenceBeat,
+} from "../SequenceTypes.js";
 
 export interface PluginValidationResult {
   isValid: boolean;
@@ -54,7 +58,11 @@ export class PluginValidator {
         warnings,
       };
     } catch (error) {
-      errors.push(`Validation error: ${error instanceof Error ? error.message : String(error)}`);
+      errors.push(
+        `Validation error: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
       return {
         isValid: false,
         errors,
@@ -105,7 +113,10 @@ export class PluginValidator {
       warnings.push("Sequence description should be a string");
     }
 
-    if (sequence.tempo && (typeof sequence.tempo !== "number" || sequence.tempo <= 0)) {
+    if (
+      sequence.tempo &&
+      (typeof sequence.tempo !== "number" || sequence.tempo <= 0)
+    ) {
       warnings.push("Sequence tempo should be a positive number");
     }
 
@@ -122,7 +133,10 @@ export class PluginValidator {
    * @param index - Movement index for error reporting
    * @returns Validation result
    */
-  private validateMovement(movement: any, index: number): PluginValidationResult {
+  private validateMovement(
+    movement: any,
+    index: number
+  ): PluginValidationResult {
     const errors: string[] = [];
     const warnings: string[] = [];
 
@@ -159,12 +173,18 @@ export class PluginValidator {
    * @param beatIndex - Beat index for error reporting
    * @returns Validation result
    */
-  private validateBeat(beat: any, movementIndex: number, beatIndex: number): PluginValidationResult {
+  private validateBeat(
+    beat: any,
+    movementIndex: number,
+    beatIndex: number
+  ): PluginValidationResult {
     const errors: string[] = [];
     const warnings: string[] = [];
 
     if (!beat || typeof beat !== "object") {
-      errors.push(`Movement ${movementIndex}, Beat ${beatIndex} must be an object`);
+      errors.push(
+        `Movement ${movementIndex}, Beat ${beatIndex} must be an object`
+      );
       return { isValid: false, errors, warnings };
     }
 
@@ -194,8 +214,12 @@ export class PluginValidator {
 
     if (!beat.errorHandling) {
       warnings.push(`${beatRef} missing errorHandling property`);
-    } else if (!["continue", "abort-sequence", "retry"].includes(beat.errorHandling)) {
-      warnings.push(`${beatRef} has invalid errorHandling value: ${beat.errorHandling}`);
+    } else if (
+      !["continue", "abort-sequence", "retry"].includes(beat.errorHandling)
+    ) {
+      warnings.push(
+        `${beatRef} has invalid errorHandling value: ${beat.errorHandling}`
+      );
     }
 
     return { isValid: errors.length === 0, errors, warnings };
@@ -240,7 +264,10 @@ export class PluginValidator {
    * @param handlers - Handlers to validate
    * @returns Validation result
    */
-  private validateCIACompliance(sequence: any, handlers: any): PluginValidationResult {
+  private validateCIACompliance(
+    sequence: any,
+    handlers: any
+  ): PluginValidationResult {
     const errors: string[] = [];
     const warnings: string[] = [];
 
@@ -280,7 +307,10 @@ export class PluginValidator {
       if (handlerNames.length > 0) {
         // Check for potential memory leaks
         handlerNames.forEach((eventName) => {
-          if (eventName.toLowerCase().includes("window") || eventName.toLowerCase().includes("document")) {
+          if (
+            eventName.toLowerCase().includes("window") ||
+            eventName.toLowerCase().includes("document")
+          ) {
             warnings.push(
               `CIA warning: Handler '${eventName}' may cause memory leaks in SPA environment`
             );

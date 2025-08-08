@@ -3,9 +3,9 @@
  * Handles sequence validation, hash generation, and deduplication logic
  */
 
-import type { SequencePriority } from "../SequenceTypes";
-import { SEQUENCE_PRIORITIES } from "../SequenceTypes";
-import type { DuplicationDetector } from "../monitoring/DuplicationDetector";
+import type { SequencePriority } from "../SequenceTypes.js";
+import { SEQUENCE_PRIORITIES } from "../SequenceTypes.js";
+import type { DuplicationDetector } from "../monitoring/DuplicationDetector.js";
 
 export interface DeduplicationResult {
   isDuplicate: boolean;

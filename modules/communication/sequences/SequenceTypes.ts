@@ -6,7 +6,7 @@
  */
 
 // Re-export EVENT_TYPES from the event-types module for convenience
-export { EVENT_TYPES, type EventType } from "../event-types";
+export { EVENT_TYPES, type EventType } from "../event-types/index.js";
 
 /**
  * Musical Dynamics - Volume/Intensity levels for sequence events

@@ -3,19 +3,19 @@
  * Handles validation compliance methods, statistics, and sequence management queries
  */
 
-import type { SequenceOrchestrator } from "../orchestration/SequenceOrchestrator";
-import type { SequenceExecutor } from "../execution/SequenceExecutor";
-import type { ExecutionQueue } from "../execution/ExecutionQueue";
-import type { StatisticsManager } from "../monitoring/StatisticsManager";
-import type { PluginInterfaceFacade } from "../plugins/PluginInterfaceFacade";
-import type { SequenceRegistry } from "../core/SequenceRegistry";
-import type { EventBus } from "../../EventBus";
+import type { SequenceOrchestrator } from "../orchestration/SequenceOrchestrator.js";
+import type { SequenceExecutor } from "../execution/SequenceExecutor.js";
+import type { ExecutionQueue } from "../execution/ExecutionQueue.js";
+import type { StatisticsManager } from "../monitoring/StatisticsManager.js";
+import type { PluginInterfaceFacade } from "../plugins/PluginInterfaceFacade.js";
+import type { SequenceRegistry } from "../core/SequenceRegistry.js";
+import type { EventBus } from "../../EventBus.js";
 import type {
   SequencePriority,
   SequenceExecutionContext,
   ConductorStatistics,
-} from "../SequenceTypes";
-import { SEQUENCE_PRIORITIES } from "../SequenceTypes";
+} from "../SequenceTypes.js";
+import { SEQUENCE_PRIORITIES } from "../SequenceTypes.js";
 
 export interface ConductorStatus {
   statistics: ConductorStatistics & { mountedPlugins: number };

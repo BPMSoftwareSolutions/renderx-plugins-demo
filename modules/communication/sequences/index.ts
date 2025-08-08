@@ -8,8 +8,8 @@
  * convenience functions following the established pattern.
  */
 
-import { MusicalConductor } from "./MusicalConductor";
-import { MusicalSequence } from "./SequenceTypes";
+import { MusicalConductor } from "./MusicalConductor.js";
+import { MusicalSequence } from "./SequenceTypes.js";
 
 /**
  * All Musical Sequences Registry

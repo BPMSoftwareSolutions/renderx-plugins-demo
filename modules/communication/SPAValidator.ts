@@ -4,7 +4,7 @@
  * Prevents plugins from directly accessing eventBus.emit() and enforces conductor.play() usage
  */
 
-import { EventBus, EventCallback } from "./EventBus";
+import { EventBus, EventCallback } from "./EventBus.js";
 
 export interface SPAViolation {
   type: string;

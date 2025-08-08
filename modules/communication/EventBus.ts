@@ -246,7 +246,7 @@ export class EventBus {
 }
 
 // Import EVENT_TYPES from the dedicated event-types module
-import { EVENT_TYPES, type EventType } from "./event-types";
+import { EVENT_TYPES, type EventType } from "./event-types/index.js";
 export { EVENT_TYPES };
 
 /**

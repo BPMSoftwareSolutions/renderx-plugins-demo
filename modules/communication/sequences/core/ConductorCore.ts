@@ -3,8 +3,8 @@
  * Handles the fundamental lifecycle of the MusicalConductor
  */
 
-import { EventBus } from "../../EventBus";
-import { SPAValidator } from "../../SPAValidator";
+import { EventBus } from "../../EventBus.js";
+import { SPAValidator } from "../../SPAValidator.js";
 
 export class ConductorCore {
   private static instance: ConductorCore | null = null;
@@ -123,13 +123,13 @@ export class ConductorCore {
    */
   private logBeatStartedHierarchical(data: any): void {
     const { sequenceName, movementName, beatNumber, eventType, timing } = data;
-    
+
     console.log(`🎼 ┌─ Beat ${beatNumber} Started`);
     console.log(`🎼 │  Sequence: ${sequenceName}`);
     console.log(`🎼 │  Movement: ${movementName}`);
     console.log(`🎼 │  Event: ${eventType}`);
     console.log(`🎼 │  Timing: ${timing}`);
-    
+
     // Log the Data Baton - show payload contents at each beat
     if (data.payload) {
       console.log(`🎽 │  Data Baton:`, data.payload);
@@ -141,7 +141,7 @@ export class ConductorCore {
    */
   private logBeatCompletedHierarchical(data: any): void {
     const { sequenceName, movementName, beatNumber, duration } = data;
-    
+
     console.log(`🎼 └─ Beat ${beatNumber} Completed`);
     console.log(`🎼    Duration: ${duration}ms`);
     console.log(`🎼    Sequence: ${sequenceName}`);
@@ -162,19 +162,19 @@ export class ConductorCore {
    */
   public cleanup(): void {
     console.log("🎼 ConductorCore: Cleaning up...");
-    
+
     // Unsubscribe from all events
-    this.eventSubscriptions.forEach(unsubscribe => {
+    this.eventSubscriptions.forEach((unsubscribe) => {
       try {
         unsubscribe();
       } catch (error) {
         console.warn("🎼 Error during event unsubscription:", error);
       }
     });
-    
+
     this.eventSubscriptions = [];
     this.beatLoggingInitialized = false;
-    
+
     console.log("✅ ConductorCore: Cleanup completed");
   }
 
@@ -182,6 +182,8 @@ export class ConductorCore {
    * Check if the core is properly initialized
    */
   public isInitialized(): boolean {
-    return this.beatLoggingInitialized && !!this.eventBus && !!this.spaValidator;
+    return (
+      this.beatLoggingInitialized && !!this.eventBus && !!this.spaValidator
+    );
   }
 }

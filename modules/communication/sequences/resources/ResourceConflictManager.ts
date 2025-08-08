@@ -3,11 +3,11 @@
  * Handles resource ownership, conflict resolution strategies, and diagnostic methods
  */
 
-import type { ResourceManager } from "./ResourceManager";
-import type { ResourceDelegator } from "./ResourceDelegator";
-import type { SequenceUtilities } from "../utilities/SequenceUtilities";
-import type { SequencePriority, SequenceRequest } from "../SequenceTypes";
-import type { ResourceOwner } from "../MusicalConductor";
+import type { ResourceManager } from "./ResourceManager.js";
+import type { ResourceDelegator } from "./ResourceDelegator.js";
+import type { SequenceUtilities } from "../utilities/SequenceUtilities.js";
+import type { SequencePriority, SequenceRequest } from "../SequenceTypes.js";
+import type { ResourceOwner } from "../MusicalConductor.js";
 
 export interface ResourceConflictResolution {
   success: boolean;

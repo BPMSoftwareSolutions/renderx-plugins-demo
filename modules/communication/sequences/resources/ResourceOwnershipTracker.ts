@@ -3,7 +3,7 @@
  * Tracks resource ownership, symphony mappings, and sequence instances
  */
 
-import type { ResourceOwner } from "../MusicalConductor";
+import type { ResourceOwner } from "../MusicalConductor.js";
 
 export interface SequenceInstance {
   instanceId: string;
@@ -35,7 +35,11 @@ export class ResourceOwnershipTracker {
    * @param symphonyName - Symphony name
    * @returns Success status
    */
-  setResourceOwner(resourceId: string, owner: ResourceOwner, symphonyName: string): boolean {
+  setResourceOwner(
+    resourceId: string,
+    owner: ResourceOwner,
+    symphonyName: string
+  ): boolean {
     try {
       this.resourceOwnership.set(resourceId, owner);
 
@@ -87,9 +91,13 @@ export class ResourceOwnershipTracker {
    * @param sequenceExecutionId - Sequence execution ID
    * @returns Instance ID
    */
-  createSequenceInstance(symphonyName: string, sequenceExecutionId: string): string {
-    const instanceId = `${symphonyName}-${++this.instanceCounter}-${Date.now()}`;
-    
+  createSequenceInstance(
+    symphonyName: string,
+    sequenceExecutionId: string
+  ): string {
+    const instanceId = `${symphonyName}-${++this
+      .instanceCounter}-${Date.now()}`;
+
     const instance: SequenceInstance = {
       instanceId,
       symphonyName,
@@ -127,7 +135,7 @@ export class ResourceOwnershipTracker {
     const instance = this.sequenceInstances.get(instanceId);
     if (instance) {
       // Release all resources owned by this instance
-      instance.resourcesOwned.forEach(resourceId => {
+      instance.resourcesOwned.forEach((resourceId) => {
         this.releaseResource(resourceId, instance.symphonyName);
       });
 
@@ -178,7 +186,7 @@ export class ResourceOwnershipTracker {
    */
   getActiveInstancesForSymphony(symphonyName: string): SequenceInstance[] {
     return Array.from(this.sequenceInstances.values()).filter(
-      instance => instance.symphonyName === symphonyName
+      (instance) => instance.symphonyName === symphonyName
     );
   }
 
@@ -214,17 +222,18 @@ export class ResourceOwnershipTracker {
   } {
     const ownedResources = this.resourceOwnership.size;
     const symphoniesWithResources = this.symphonyResourceMap.size;
-    
+
     // Calculate average ownership duration
     let totalDuration = 0;
     let resourceCount = 0;
-    
+
     for (const owner of this.resourceOwnership.values()) {
       totalDuration += Date.now() - owner.acquiredAt;
       resourceCount++;
     }
-    
-    const averageOwnershipDuration = resourceCount > 0 ? totalDuration / resourceCount : 0;
+
+    const averageOwnershipDuration =
+      resourceCount > 0 ? totalDuration / resourceCount : 0;
 
     return {
       totalResources: ownedResources, // In a real system, this would be total available resources
@@ -240,7 +249,8 @@ export class ResourceOwnershipTracker {
    * @param maxAge - Maximum age in milliseconds
    * @returns Number of cleaned up instances
    */
-  cleanupExpiredInstances(maxAge: number = 300000): number { // 5 minutes default
+  cleanupExpiredInstances(maxAge: number = 300000): number {
+    // 5 minutes default
     const now = Date.now();
     let cleanedUp = 0;
 

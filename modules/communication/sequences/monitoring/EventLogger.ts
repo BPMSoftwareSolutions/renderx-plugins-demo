@@ -3,14 +3,14 @@
  * Handles all event emission, beat logging, and hierarchical console output
  */
 
-import type { EventBus } from "../../EventBus";
+import type { EventBus } from "../../EventBus.js";
 import type {
   SequenceExecutionContext,
   SequenceBeat,
   SequenceMovement,
-} from "../SequenceTypes";
-import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "../SequenceTypes";
-import type { PerformanceTracker } from "./PerformanceTracker";
+} from "../SequenceTypes.js";
+import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "../SequenceTypes.js";
+import type { PerformanceTracker } from "./PerformanceTracker.js";
 
 export interface LoggingConfig {
   enableHierarchicalLogging: boolean;

@@ -3,8 +3,12 @@
  * Handles authorized event subscriptions and prevents direct EventBus access violations
  */
 
-import { EventBus, EventCallback, UnsubscribeFunction } from "../../EventBus";
-import { SPAValidator } from "../../SPAValidator";
+import {
+  EventBus,
+  EventCallback,
+  UnsubscribeFunction,
+} from "../../EventBus.js";
+import { SPAValidator } from "../../SPAValidator.js";
 
 export class EventSubscriptionManager {
   private eventBus: EventBus;
@@ -111,9 +115,11 @@ export class EventSubscriptionManager {
     }
 
     // Allow conductor core components
-    if (callerInfo.source?.includes("ConductorCore") || 
-        callerInfo.source?.includes("SequenceExecutor") ||
-        callerInfo.source?.includes("PluginManager")) {
+    if (
+      callerInfo.source?.includes("ConductorCore") ||
+      callerInfo.source?.includes("SequenceExecutor") ||
+      callerInfo.source?.includes("PluginManager")
+    ) {
       return true;
     }
 
@@ -134,13 +140,18 @@ export class EventSubscriptionManager {
     subscriberId: string,
     context?: any
   ): UnsubscribeFunction {
-    console.log(`🎼 EventSubscriptionManager: Creating managed subscription for ${subscriberId} -> ${eventName}`);
+    console.log(
+      `🎼 EventSubscriptionManager: Creating managed subscription for ${subscriberId} -> ${eventName}`
+    );
 
     const enhancedCallback = (data: any) => {
       try {
         callback(data);
       } catch (error) {
-        console.error(`🎼 EventSubscriptionManager: Error in subscription callback for ${eventName}:`, error);
+        console.error(
+          `🎼 EventSubscriptionManager: Error in subscription callback for ${eventName}:`,
+          error
+        );
         console.error(`🎼 Subscriber: ${subscriberId}`);
       }
     };
@@ -161,7 +172,9 @@ export class EventSubscriptionManager {
    */
   emit(eventName: string, data?: any, emitterId?: string): void {
     if (emitterId) {
-      console.log(`🎼 EventSubscriptionManager: ${emitterId} emitting ${eventName}`);
+      console.log(
+        `🎼 EventSubscriptionManager: ${emitterId} emitting ${eventName}`
+      );
     }
 
     this.eventBus.emit(eventName, data);
@@ -188,7 +201,10 @@ export class EventSubscriptionManager {
    * @param callerInfo - Information about the caller
    * @returns Validation result
    */
-  validateSubscription(eventName: string, callerInfo: any): {
+  validateSubscription(
+    eventName: string,
+    callerInfo: any
+  ): {
     isValid: boolean;
     reason?: string;
     recommendation?: string;
@@ -198,7 +214,8 @@ export class EventSubscriptionManager {
       return {
         isValid: false,
         reason: "Direct EventBus access detected",
-        recommendation: "Use conductor.subscribe() instead of eventBus.subscribe()",
+        recommendation:
+          "Use conductor.subscribe() instead of eventBus.subscribe()",
       };
     }
 

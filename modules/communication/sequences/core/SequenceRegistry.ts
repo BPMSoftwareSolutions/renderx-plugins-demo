@@ -3,16 +3,28 @@
  * Provides a centralized registry for all musical sequences
  */
 
-import { EventBus } from "../../EventBus";
-import type { MusicalSequence } from "../SequenceTypes";
-import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "../SequenceTypes";
+import { EventBus } from "../../EventBus.js";
+import type { MusicalSequence } from "../SequenceTypes.js";
+import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "../SequenceTypes.js";
+import { EventSubscriptionManager } from "./EventSubscriptionManager.js";
 
 export class SequenceRegistry {
   private sequences: Map<string, MusicalSequence> = new Map();
   private eventBus: EventBus;
+  private eventSubscriptionManager: EventSubscriptionManager | null = null;
 
   constructor(eventBus: EventBus) {
     this.eventBus = eventBus;
+  }
+
+  /**
+   * Set the EventSubscriptionManager for SPA-compliant event emission
+   * @param eventSubscriptionManager - The EventSubscriptionManager instance
+   */
+  setEventSubscriptionManager(
+    eventSubscriptionManager: EventSubscriptionManager
+  ): void {
+    this.eventSubscriptionManager = eventSubscriptionManager;
   }
 
   /**
@@ -40,12 +52,29 @@ export class SequenceRegistry {
       `🎼 SequenceRegistry: Registered sequence "${sequence.name}" (id: ${sequence.id})`
     );
 
-    // Emit registration event
-    this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_REGISTERED, {
-      sequenceId: sequence.id,
-      sequenceName: sequence.name,
-      category: sequence.category,
-    });
+    // Emit registration event using EventSubscriptionManager for SPA compliance
+    if (this.eventSubscriptionManager) {
+      this.eventSubscriptionManager.emit(
+        MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_REGISTERED,
+        {
+          sequenceId: sequence.id,
+          sequenceName: sequence.name,
+          category: sequence.category,
+        },
+        "SequenceRegistry"
+      );
+    } else {
+      // Fallback to direct eventBus.emit() for backward compatibility
+      // This should only happen during initialization before EventSubscriptionManager is set
+      console.warn(
+        "🎼 SequenceRegistry: EventSubscriptionManager not set, using direct eventBus.emit()"
+      );
+      this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_REGISTERED, {
+        sequenceId: sequence.id,
+        sequenceName: sequence.name,
+        category: sequence.category,
+      });
+    }
   }
 
   /**
@@ -64,11 +93,29 @@ export class SequenceRegistry {
         `🎼 SequenceRegistry: Unregistered sequence "${sequence.name}" (id: ${sequenceId})`
       );
 
-      // Emit unregistration event
-      this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED, {
-        sequenceId,
-        sequenceName: sequence.name,
-      });
+      // Emit unregistration event using EventSubscriptionManager for SPA compliance
+      if (this.eventSubscriptionManager) {
+        this.eventSubscriptionManager.emit(
+          MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED,
+          {
+            sequenceId,
+            sequenceName: sequence.name,
+          },
+          "SequenceRegistry"
+        );
+      } else {
+        // Fallback to direct eventBus.emit() for backward compatibility
+        console.warn(
+          "🎼 SequenceRegistry: EventSubscriptionManager not set, using direct eventBus.emit()"
+        );
+        this.eventBus.emit(
+          MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED,
+          {
+            sequenceId,
+            sequenceName: sequence.name,
+          }
+        );
+      }
     } else {
       console.warn(
         `🎼 SequenceRegistry: Sequence with ID "${sequenceId}" not found for unregistration`
@@ -141,12 +188,30 @@ export class SequenceRegistry {
 
     console.log(`🎼 SequenceRegistry: Cleared ${sequences.length} sequences`);
 
-    // Emit individual unregistration events for each cleared sequence
+    // Emit individual unregistration events for each cleared sequence using EventSubscriptionManager for SPA compliance
     sequences.forEach((sequence) => {
-      this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED, {
-        sequenceId: sequence.id,
-        sequenceName: sequence.name,
-      });
+      if (this.eventSubscriptionManager) {
+        this.eventSubscriptionManager.emit(
+          MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED,
+          {
+            sequenceId: sequence.id,
+            sequenceName: sequence.name,
+          },
+          "SequenceRegistry"
+        );
+      } else {
+        // Fallback to direct eventBus.emit() for backward compatibility
+        console.warn(
+          "🎼 SequenceRegistry: EventSubscriptionManager not set, using direct eventBus.emit()"
+        );
+        this.eventBus.emit(
+          MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_UNREGISTERED,
+          {
+            sequenceId: sequence.id,
+            sequenceName: sequence.name,
+          }
+        );
+      }
     });
   }
 

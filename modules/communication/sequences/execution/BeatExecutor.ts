@@ -3,19 +3,19 @@
  * Handles beat-level event emission and error handling
  */
 
-import { EventBus } from "../../EventBus";
-import { SPAValidator } from "../../SPAValidator";
+import { EventBus } from "../../EventBus.js";
+import { SPAValidator } from "../../SPAValidator.js";
 import type {
   SequenceBeat,
   SequenceExecutionContext,
   MusicalSequence,
   SequenceMovement,
-} from "../SequenceTypes";
+} from "../SequenceTypes.js";
 import {
   MUSICAL_CONDUCTOR_EVENT_TYPES,
   MUSICAL_DYNAMICS,
   MUSICAL_TIMING,
-} from "../SequenceTypes";
+} from "../SequenceTypes.js";
 
 export class BeatExecutor {
   private eventBus: EventBus;

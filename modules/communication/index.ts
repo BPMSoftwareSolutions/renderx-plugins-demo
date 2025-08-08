@@ -14,7 +14,7 @@ export {
   type UnsubscribeFunction,
   type EventSubscription,
   type EventDebugInfo,
-} from "./EventBus";
+} from "./EventBus.js";
 
 // Event Types exports
 export {
@@ -26,15 +26,15 @@ export {
   type EventType,
   type EventCategory,
   type CoreEventType,
-} from "./event-types";
+} from "./event-types/index.js";
 
 // Musical Conductor exports
-export { MusicalConductor } from "./sequences/MusicalConductor";
+export { MusicalConductor } from "./sequences/MusicalConductor.js";
 
 // Import MusicalConductor and sequences for internal use
-import { MusicalConductor } from "./sequences/MusicalConductor";
-import { initializeMusicalSequences } from "./sequences";
-import { eventBus as internalEventBus, ConductorEventBus } from "./EventBus";
+import { MusicalConductor } from "./sequences/MusicalConductor.js";
+import { initializeMusicalSequences } from "./sequences/index.js";
+import { eventBus as internalEventBus, ConductorEventBus } from "./EventBus.js";
 
 // Musical Sequences exports
 export {
@@ -46,10 +46,10 @@ export {
   getSequenceByName,
   getSequencesByCategory,
   validateAllSequences,
-} from "./sequences";
+} from "./sequences/index.js";
 
 // Sequence Types imports for internal use
-import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "./sequences/SequenceTypes";
+import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "./sequences/SequenceTypes.js";
 
 // Sequence Types exports
 export {
@@ -70,7 +70,7 @@ export {
   type SequenceRequest,
   type SequencePriority,
   type MusicalConductorEventType,
-} from "./sequences/SequenceTypes";
+} from "./sequences/SequenceTypes.js";
 
 // Track if communication system has been initialized to prevent duplicate initialization
 let communicationSystemInitialized = false;

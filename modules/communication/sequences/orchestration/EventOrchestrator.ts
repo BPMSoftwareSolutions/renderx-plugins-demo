@@ -3,8 +3,8 @@
  * Handles event emission with contextual data, debugging, and special event handling
  */
 
-import type { EventBus } from "../../EventBus";
-import type { SequenceExecutionContext } from "../SequenceTypes";
+import type { EventBus } from "../../EventBus.js";
+import type { SequenceExecutionContext } from "../SequenceTypes.js";
 
 export interface EventEmissionResult {
   success: boolean;

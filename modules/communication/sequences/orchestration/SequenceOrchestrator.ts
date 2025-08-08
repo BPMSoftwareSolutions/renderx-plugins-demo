@@ -3,23 +3,23 @@
  * Handles sequence startup, queue processing, and execution coordination
  */
 
-import type { EventBus } from "../../EventBus";
-import type { SequenceRegistry } from "../core/SequenceRegistry";
-import type { ExecutionQueue } from "../execution/ExecutionQueue";
-import type { SequenceExecutor } from "../execution/SequenceExecutor";
-import type { StatisticsManager } from "../monitoring/StatisticsManager";
-import type { SequenceValidator } from "../validation/SequenceValidator";
-import type { SequenceUtilities } from "../utilities/SequenceUtilities";
-import type { ResourceDelegator } from "../resources/ResourceDelegator";
+import type { EventBus } from "../../EventBus.js";
+import type { SequenceRegistry } from "../core/SequenceRegistry.js";
+import type { ExecutionQueue } from "../execution/ExecutionQueue.js";
+import type { SequenceExecutor } from "../execution/SequenceExecutor.js";
+import type { StatisticsManager } from "../monitoring/StatisticsManager.js";
+import type { SequenceValidator } from "../validation/SequenceValidator.js";
+import type { SequenceUtilities } from "../utilities/SequenceUtilities.js";
+import type { ResourceDelegator } from "../resources/ResourceDelegator.js";
 import type {
   SequencePriority,
   SequenceRequest,
   SequenceExecutionContext,
-} from "../SequenceTypes";
+} from "../SequenceTypes.js";
 import {
   SEQUENCE_PRIORITIES,
   MUSICAL_CONDUCTOR_EVENT_TYPES,
-} from "../SequenceTypes";
+} from "../SequenceTypes.js";
 
 export interface ResourceConflictResult {
   hasConflict: boolean;

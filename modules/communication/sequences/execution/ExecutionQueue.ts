@@ -3,8 +3,8 @@
  * Provides priority-based queue management for sequence execution
  */
 
-import type { SequenceRequest, SequencePriority } from "../SequenceTypes";
-import { SEQUENCE_PRIORITIES } from "../SequenceTypes";
+import type { SequenceRequest, SequencePriority } from "../SequenceTypes.js";
+import { SEQUENCE_PRIORITIES } from "../SequenceTypes.js";
 
 export interface QueueStatus {
   pending: number;
@@ -38,7 +38,9 @@ export class ExecutionQueue {
     this.insertByPriority(request);
 
     console.log(
-      `🎼 ExecutionQueue: Enqueued "${request.sequenceName}" with priority ${request.priority || 'NORMAL'} (Queue size: ${this.queue.length})`
+      `🎼 ExecutionQueue: Enqueued "${request.sequenceName}" with priority ${
+        request.priority || "NORMAL"
+      } (Queue size: ${this.queue.length})`
     );
   }
 
@@ -53,7 +55,7 @@ export class ExecutionQueue {
 
     const request = this.queue.shift()!;
     console.log(`🎼 ExecutionQueue: Dequeued "${request.sequenceName}"`);
-    
+
     return request;
   }
 
@@ -73,8 +75,10 @@ export class ExecutionQueue {
     const clearedCount = this.queue.length;
     this.queue = [];
     this.priorities.clear();
-    
-    console.log(`🎼 ExecutionQueue: Cleared ${clearedCount} requests from queue`);
+
+    console.log(
+      `🎼 ExecutionQueue: Cleared ${clearedCount} requests from queue`
+    );
     return clearedCount;
   }
 
@@ -114,7 +118,7 @@ export class ExecutionQueue {
    */
   setCurrentlyExecuting(request: SequenceRequest | null): void {
     this.currentlyExecuting = request;
-    
+
     if (request) {
       console.log(`🎼 ExecutionQueue: Now executing "${request.sequenceName}"`);
     } else {
@@ -128,12 +132,14 @@ export class ExecutionQueue {
    */
   markCompleted(request: SequenceRequest): void {
     this.completedCount++;
-    
+
     if (this.currentlyExecuting?.requestId === request.requestId) {
       this.currentlyExecuting = null;
     }
-    
-    console.log(`🎼 ExecutionQueue: Marked "${request.sequenceName}" as completed (Total completed: ${this.completedCount})`);
+
+    console.log(
+      `🎼 ExecutionQueue: Marked "${request.sequenceName}" as completed (Total completed: ${this.completedCount})`
+    );
   }
 
   /**
@@ -159,7 +165,9 @@ export class ExecutionQueue {
    */
   setPriority(eventType: string, priority: SequencePriority): void {
     this.priorities.set(eventType, priority);
-    console.log(`🎼 ExecutionQueue: Set priority for "${eventType}" to ${priority}`);
+    console.log(
+      `🎼 ExecutionQueue: Set priority for "${eventType}" to ${priority}`
+    );
   }
 
   /**
@@ -213,14 +221,18 @@ export class ExecutionQueue {
     priorityDistribution: Record<string, number>;
   } {
     const priorityDistribution: Record<string, number> = {};
-    
-    this.queue.forEach(request => {
+
+    this.queue.forEach((request) => {
       const priority = request.priority || SEQUENCE_PRIORITIES.NORMAL;
-      priorityDistribution[priority] = (priorityDistribution[priority] || 0) + 1;
+      priorityDistribution[priority] =
+        (priorityDistribution[priority] || 0) + 1;
     });
 
     return {
-      totalEnqueued: this.completedCount + this.queue.length + (this.currentlyExecuting ? 1 : 0),
+      totalEnqueued:
+        this.completedCount +
+        this.queue.length +
+        (this.currentlyExecuting ? 1 : 0),
       totalCompleted: this.completedCount,
       currentQueueLength: this.queue.length,
       priorityDistribution,
@@ -233,7 +245,9 @@ export class ExecutionQueue {
    * @returns Array of matching requests
    */
   findBySequenceName(sequenceName: string): SequenceRequest[] {
-    return this.queue.filter(request => request.sequenceName === sequenceName);
+    return this.queue.filter(
+      (request) => request.sequenceName === sequenceName
+    );
   }
 
   /**
@@ -243,13 +257,17 @@ export class ExecutionQueue {
    */
   removeBySequenceName(sequenceName: string): number {
     const initialLength = this.queue.length;
-    this.queue = this.queue.filter(request => request.sequenceName !== sequenceName);
+    this.queue = this.queue.filter(
+      (request) => request.sequenceName !== sequenceName
+    );
     const removedCount = initialLength - this.queue.length;
-    
+
     if (removedCount > 0) {
-      console.log(`🎼 ExecutionQueue: Removed ${removedCount} requests for sequence "${sequenceName}"`);
+      console.log(
+        `🎼 ExecutionQueue: Removed ${removedCount} requests for sequence "${sequenceName}"`
+      );
     }
-    
+
     return removedCount;
   }
 }

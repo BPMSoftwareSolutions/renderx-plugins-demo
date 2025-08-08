@@ -16,8 +16,8 @@
  * - Movement-to-handler contract verification
  */
 
-import { EventBus, EventCallback, UnsubscribeFunction } from "../EventBus";
-import { SPAValidator } from "../SPAValidator";
+import { EventBus, EventCallback, UnsubscribeFunction } from "../EventBus.js";
+import { SPAValidator } from "../SPAValidator.js";
 import type {
   MusicalSequence,
   SequenceExecutionContext,
@@ -26,39 +26,39 @@ import type {
   SequencePriority,
   SequenceBeat,
   SequenceMovement,
-} from "./SequenceTypes";
+} from "./SequenceTypes.js";
 import {
   MUSICAL_TIMING,
   MUSICAL_DYNAMICS,
   MUSICAL_CONDUCTOR_EVENT_TYPES,
   SEQUENCE_PRIORITIES,
-} from "./SequenceTypes";
+} from "./SequenceTypes.js";
 
 // Import new core components
-import { ConductorCore } from "./core/ConductorCore";
-import { SequenceRegistry } from "./core/SequenceRegistry";
-import { EventSubscriptionManager } from "./core/EventSubscriptionManager";
-import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue";
-import { SequenceExecutor } from "./execution/SequenceExecutor";
-import { PluginManager } from "./plugins/PluginManager";
+import { ConductorCore } from "./core/ConductorCore.js";
+import { SequenceRegistry } from "./core/SequenceRegistry.js";
+import { EventSubscriptionManager } from "./core/EventSubscriptionManager.js";
+import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue.js";
+import { SequenceExecutor } from "./execution/SequenceExecutor.js";
+import { PluginManager } from "./plugins/PluginManager.js";
 import {
   PluginInterfaceFacade,
   type SPAPlugin,
   type PluginMountResult,
-} from "./plugins/PluginInterfaceFacade";
-import { ResourceManager } from "./resources/ResourceManager";
-import { ResourceDelegator } from "./resources/ResourceDelegator";
-import { StatisticsManager } from "./monitoring/StatisticsManager";
-import { PerformanceTracker } from "./monitoring/PerformanceTracker";
-import { DuplicationDetector } from "./monitoring/DuplicationDetector";
-import { EventLogger } from "./monitoring/EventLogger";
-import { SequenceValidator } from "./validation/SequenceValidator";
-import { SequenceUtilities } from "./utilities/SequenceUtilities";
-import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator";
-import { EventOrchestrator } from "./orchestration/EventOrchestrator";
-import { ConductorAPI } from "./api/ConductorAPI";
-import { StrictModeManager } from "./strictmode/StrictModeManager";
-import { ResourceConflictManager } from "./resources/ResourceConflictManager";
+} from "./plugins/PluginInterfaceFacade.js";
+import { ResourceManager } from "./resources/ResourceManager.js";
+import { ResourceDelegator } from "./resources/ResourceDelegator.js";
+import { StatisticsManager } from "./monitoring/StatisticsManager.js";
+import { PerformanceTracker } from "./monitoring/PerformanceTracker.js";
+import { DuplicationDetector } from "./monitoring/DuplicationDetector.js";
+import { EventLogger } from "./monitoring/EventLogger.js";
+import { SequenceValidator } from "./validation/SequenceValidator.js";
+import { SequenceUtilities } from "./utilities/SequenceUtilities.js";
+import { SequenceOrchestrator } from "./orchestration/SequenceOrchestrator.js";
+import { EventOrchestrator } from "./orchestration/EventOrchestrator.js";
+import { ConductorAPI } from "./api/ConductorAPI.js";
+import { StrictModeManager } from "./strictmode/StrictModeManager.js";
+import { ResourceConflictManager } from "./resources/ResourceConflictManager.js";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -145,6 +145,11 @@ export class MusicalConductor {
     this.eventSubscriptionManager = new EventSubscriptionManager(
       eventBus,
       this.conductorCore.getSPAValidator()
+    );
+
+    // Inject EventSubscriptionManager into SequenceRegistry for SPA compliance
+    this.sequenceRegistry.setEventSubscriptionManager(
+      this.eventSubscriptionManager
     );
     this.executionQueue = new ExecutionQueue();
     // Initialize monitoring components first

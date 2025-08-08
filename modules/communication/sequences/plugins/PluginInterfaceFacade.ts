@@ -4,10 +4,10 @@
  * Handles CIA (Conductor Integration Architecture) compliance
  */
 
-import type { MusicalSequence, SequencePriority } from "../SequenceTypes";
-import { SEQUENCE_PRIORITIES } from "../SequenceTypes";
-import type { PluginManager } from "./PluginManager";
-import type { SPAValidator } from "../../SPAValidator";
+import type { MusicalSequence, SequencePriority } from "../SequenceTypes.js";
+import { SEQUENCE_PRIORITIES } from "../SequenceTypes.js";
+import type { PluginManager } from "./PluginManager.js";
+import type { SPAValidator } from "../../SPAValidator.js";
 
 // CIA (Conductor Integration Architecture) interfaces for SPA plugin mounting
 export interface SPAPlugin {
@@ -25,6 +25,7 @@ export interface PluginMountResult {
   pluginId: string;
   message: string;
   warnings?: string[];
+  reason?: string; // Specific reason for failure (e.g., 'validation_failed', 'already_mounted', 'load_error')
 }
 
 export class PluginInterfaceFacade {
@@ -179,6 +180,7 @@ export class PluginInterfaceFacade {
           success: false,
           pluginId: "unknown",
           message: `Failed to load plugin: ${pluginPath}`,
+          reason: "load_failed",
         };
       }
 
@@ -195,6 +197,7 @@ export class PluginInterfaceFacade {
         message: `Failed to load plugin from ${pluginPath}: ${
           (error as Error).message
         }`,
+        reason: "load_error",
       };
     }
   }

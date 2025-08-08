@@ -7,13 +7,13 @@
  */
 
 // Import all event type modules
-import { CORE_EVENT_TYPES, type CoreEventType } from "./core.event-types";
+import { CORE_EVENT_TYPES, type CoreEventType } from "./core.event-types.js";
 
 // Import musical conductor event types from sequences
 import {
   MUSICAL_CONDUCTOR_EVENT_TYPES,
   type MusicalConductorEventType,
-} from "../sequences/SequenceTypes";
+} from "../sequences/SequenceTypes.js";
 
 /**
  * Consolidated EVENT_TYPES object

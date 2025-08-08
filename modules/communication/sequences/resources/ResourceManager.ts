@@ -3,15 +3,15 @@
  * Handles MCO/MSO resource ownership, conflicts, and resolution strategies
  */
 
-import type { SequencePriority, SequenceRequest } from "../SequenceTypes";
-import { ResourceConflictResolver } from "./ResourceConflictResolver";
-import { ResourceOwnershipTracker } from "./ResourceOwnershipTracker";
+import type { SequencePriority, SequenceRequest } from "../SequenceTypes.js";
+import { ResourceConflictResolver } from "./ResourceConflictResolver.js";
+import { ResourceOwnershipTracker } from "./ResourceOwnershipTracker.js";
 
 // Import resource types from MusicalConductor (temporary until we move them to a shared location)
 import type {
   ResourceOwner,
   ResourceConflictResult,
-} from "../MusicalConductor";
+} from "../MusicalConductor.js";
 
 export class ResourceManager {
   private conflictResolver: ResourceConflictResolver;

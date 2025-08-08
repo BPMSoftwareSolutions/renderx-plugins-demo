@@ -3,7 +3,7 @@
  * Handles all conductor statistics, performance metrics, and queue analytics
  */
 
-import type { ConductorStatistics } from "../SequenceTypes";
+import type { ConductorStatistics } from "../SequenceTypes.js";
 
 export class StatisticsManager {
   private statistics: ConductorStatistics;

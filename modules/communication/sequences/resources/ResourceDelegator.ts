@@ -3,7 +3,7 @@
  * Handles resource conflict checking, ownership management, and advanced conflict resolution
  */
 
-import type { ResourceManager } from "./ResourceManager";
+import type { ResourceManager } from "./ResourceManager.js";
 
 export interface ResourceConflictResult {
   hasConflict: boolean;

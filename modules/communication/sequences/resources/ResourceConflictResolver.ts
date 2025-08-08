@@ -3,10 +3,13 @@
  * Handles different strategies for resolving resource conflicts between symphonies
  */
 
-import type { SequencePriority, SequenceRequest } from "../SequenceTypes";
-import { SEQUENCE_PRIORITIES } from "../SequenceTypes";
-import type { ResourceOwner, ResourceConflictResult } from "../MusicalConductor";
-import type { ResourceOwnershipTracker } from "./ResourceOwnershipTracker";
+import type { SequencePriority, SequenceRequest } from "../SequenceTypes.js";
+import { SEQUENCE_PRIORITIES } from "../SequenceTypes.js";
+import type {
+  ResourceOwner,
+  ResourceConflictResult,
+} from "../MusicalConductor.js";
+import type { ResourceOwnershipTracker } from "./ResourceOwnershipTracker.js";
 
 export class ResourceConflictResolver {
   private ownershipTracker: ResourceOwnershipTracker;
@@ -150,7 +153,10 @@ export class ResourceConflictResolver {
     );
 
     // Release the resource
-    resourceManager.releaseResourceOwnership(resourceId, currentOwner.sequenceExecutionId);
+    resourceManager.releaseResourceOwnership(
+      resourceId,
+      currentOwner.sequenceExecutionId
+    );
 
     // Acquire for the new requester
     const acquired = resourceManager.acquireResourceOwnership(

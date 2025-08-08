@@ -3,7 +3,7 @@
  * Handles React StrictMode duplicate detection, pattern recognition, and execution recording
  */
 
-import type { DuplicationDetector } from "../monitoring/DuplicationDetector";
+import type { DuplicationDetector } from "../monitoring/DuplicationDetector.js";
 
 export interface StrictModeDetectionResult {
   isStrictModeDuplicate: boolean;
@@ -49,7 +49,8 @@ export class StrictModeManager {
     const hash = this.generateSequenceHash(sequenceName, data, priority);
 
     // Check if this is a duplicate request
-    const isDuplicate = this.duplicationDetector.isDuplicateSequenceRequest(hash);
+    const isDuplicate =
+      this.duplicationDetector.isDuplicateSequenceRequest(hash);
 
     if (!isDuplicate) {
       return {
@@ -65,7 +66,9 @@ export class StrictModeManager {
       isDuplicate: true,
       hash,
       reason: strictModeResult.isStrictModeDuplicate
-        ? `StrictMode duplicate detected: ${strictModeResult.patterns.join(", ")}`
+        ? `StrictMode duplicate detected: ${strictModeResult.patterns.join(
+            ", "
+          )}`
         : "Duplicate sequence request detected",
       isStrictMode: strictModeResult.isStrictModeDuplicate,
     };
@@ -77,7 +80,12 @@ export class StrictModeManager {
    */
   recordSequenceExecution(hash: string): void {
     this.duplicationDetector.recordSequenceExecution(hash);
-    console.log(`🎼 StrictModeManager: Recorded sequence execution: ${hash.substring(0, 8)}...`);
+    console.log(
+      `🎼 StrictModeManager: Recorded sequence execution: ${hash.substring(
+        0,
+        8
+      )}...`
+    );
   }
 
   /**
@@ -137,16 +145,18 @@ export class StrictModeManager {
   ): string {
     // Create a stable hash by sorting keys and stringifying
     const sortedData = this.sortObjectKeys(data);
-    const hashInput = `${sequenceName}:${JSON.stringify(sortedData)}:${priority}`;
-    
+    const hashInput = `${sequenceName}:${JSON.stringify(
+      sortedData
+    )}:${priority}`;
+
     // Simple hash function (in production, use a proper hash library)
     let hash = 0;
     for (let i = 0; i < hashInput.length; i++) {
       const char = hashInput.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
+      hash = (hash << 5) - hash + char;
       hash = hash & hash; // Convert to 32-bit integer
     }
-    
+
     return Math.abs(hash).toString(36);
   }
 
@@ -161,16 +171,16 @@ export class StrictModeManager {
     }
 
     if (Array.isArray(obj)) {
-      return obj.map(item => this.sortObjectKeys(item));
+      return obj.map((item) => this.sortObjectKeys(item));
     }
 
     const sortedObj: Record<string, any> = {};
     const keys = Object.keys(obj).sort();
-    
+
     for (const key of keys) {
       sortedObj[key] = this.sortObjectKeys(obj[key]);
     }
-    
+
     return sortedObj;
   }
 
@@ -189,7 +199,9 @@ export class StrictModeManager {
     ];
 
     const dataString = JSON.stringify(data);
-    return reactDevIndicators.some(indicator => dataString.includes(indicator));
+    return reactDevIndicators.some((indicator) =>
+      dataString.includes(indicator)
+    );
   }
 
   /**
@@ -225,8 +237,11 @@ export class StrictModeManager {
     }
 
     const now = Date.now();
-    const timestamp = typeof data.timestamp === "number" ? data.timestamp : parseInt(data.timestamp);
-    
+    const timestamp =
+      typeof data.timestamp === "number"
+        ? data.timestamp
+        : parseInt(data.timestamp);
+
     // If the timestamp is very recent (within 10ms), it might be a StrictMode duplicate
     const timeDiff = Math.abs(now - timestamp);
     return timeDiff < 10;
@@ -297,15 +312,19 @@ export class StrictModeManager {
         "duplicate-effect",
         "double-execution",
       ];
-      
+
       for (const pattern of defaultPatterns) {
         this.strictModePatterns.add(pattern);
       }
     } else {
       this.strictModePatterns.clear();
     }
-    
-    console.log(`🎼 StrictModeManager: StrictMode detection ${enabled ? "enabled" : "disabled"}`);
+
+    console.log(
+      `🎼 StrictModeManager: StrictMode detection ${
+        enabled ? "enabled" : "disabled"
+      }`
+    );
   }
 
   /**

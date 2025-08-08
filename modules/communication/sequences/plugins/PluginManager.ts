@@ -3,16 +3,16 @@
  * Handles CIA (Conductor Integration Architecture) plugin lifecycle
  */
 
-import { EventBus } from "../../EventBus";
-import { SPAValidator } from "../../SPAValidator";
-import type { MusicalSequence } from "../SequenceTypes";
-import { SequenceRegistry } from "../core/SequenceRegistry";
-import { PluginLoader } from "./PluginLoader";
-import { PluginValidator } from "./PluginValidator";
-import { PluginManifestLoader } from "./PluginManifestLoader";
+import { EventBus } from "../../EventBus.js";
+import { SPAValidator } from "../../SPAValidator.js";
+import type { MusicalSequence } from "../SequenceTypes.js";
+import { SequenceRegistry } from "../core/SequenceRegistry.js";
+import { PluginLoader } from "./PluginLoader.js";
+import { PluginValidator } from "./PluginValidator.js";
+import { PluginManifestLoader } from "./PluginManifestLoader.js";
 
 // Import plugin types from MusicalConductor (temporary until we move them to a shared location)
-import type { SPAPlugin, PluginMountResult } from "./PluginInterfaceFacade";
+import type { SPAPlugin, PluginMountResult } from "./PluginInterfaceFacade.js";
 
 export class PluginManager {
   private eventBus: EventBus;
@@ -73,6 +73,7 @@ export class PluginManager {
           message: `Plugin validation failed: ${validationResult.errors.join(
             ", "
           )}`,
+          reason: "validation_failed",
           warnings: validationResult.warnings,
         };
       }
@@ -89,6 +90,7 @@ export class PluginManager {
           success: false,
           pluginId: id,
           message: "Plugin already mounted",
+          reason: "already_mounted",
           warnings,
         };
       }
@@ -130,6 +132,7 @@ export class PluginManager {
         success: false,
         pluginId: id,
         message: error instanceof Error ? error.message : String(error),
+        reason: "mount_error",
         warnings,
       };
     }

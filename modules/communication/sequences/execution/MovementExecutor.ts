@@ -3,18 +3,18 @@
  * Handles movement-level orchestration and beat coordination
  */
 
-import { EventBus } from "../../EventBus";
-import { SPAValidator } from "../../SPAValidator";
+import { EventBus } from "../../EventBus.js";
+import { SPAValidator } from "../../SPAValidator.js";
 import type {
   SequenceMovement,
   SequenceExecutionContext,
   MusicalSequence,
-} from "../SequenceTypes";
+} from "../SequenceTypes.js";
 import {
   MUSICAL_CONDUCTOR_EVENT_TYPES,
   MUSICAL_TIMING,
-} from "../SequenceTypes";
-import { BeatExecutor } from "./BeatExecutor";
+} from "../SequenceTypes.js";
+import { BeatExecutor } from "./BeatExecutor.js";
 
 export class MovementExecutor {
   private eventBus: EventBus;
