@@ -265,9 +265,39 @@ export class SPAValidator {
 
     for (const line of lines) {
       // Check for MusicalConductor internal operations first
+      // Handle both full paths, URLs, and just filenames
       if (
         line.includes("MusicalConductor") ||
-        line.includes("/sequences/MusicalConductor.ts")
+        line.includes("/sequences/MusicalConductor.ts") ||
+        line.includes("/sequences/core/") ||
+        line.includes("/sequences/plugins/PluginManager") ||
+        line.includes("/sequences/plugins/PluginInterfaceFacade") ||
+        line.includes("/sequences/plugins/PluginLoader") ||
+        line.includes("/sequences/plugins/PluginValidator") ||
+        line.includes("/sequences/plugins/PluginManifestLoader") ||
+        line.includes("SequenceRegistry") ||
+        line.includes("EventSubscriptionManager") ||
+        line.includes("ConductorCore") ||
+        line.includes("EventOrchestrator") ||
+        line.includes("SequenceOrchestrator") ||
+        line.includes("/communication/EventBus") ||
+        line.includes("/communication/SPAValidator") ||
+        // Handle filename-only patterns (common in minified/bundled code)
+        line.includes("PluginManager.js") ||
+        line.includes("PluginInterfaceFacade.js") ||
+        line.includes("PluginLoader.js") ||
+        line.includes("PluginValidator.js") ||
+        line.includes("PluginManifestLoader.js") ||
+        line.includes("SequenceRegistry.js") ||
+        line.includes("EventSubscriptionManager.js") ||
+        line.includes("ConductorCore.js") ||
+        line.includes("EventOrchestrator.js") ||
+        line.includes("SequenceOrchestrator.js") ||
+        line.includes("EventBus.js") ||
+        line.includes("SPAValidator.js") ||
+        // Handle browser URL patterns for E2E testing
+        line.includes("/dist/modules/communication/") ||
+        line.includes("/dist/modules/sequences/")
       ) {
         isMusicalConductor = true;
         source = "MusicalConductor";
