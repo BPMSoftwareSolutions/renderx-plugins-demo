@@ -20,15 +20,8 @@ import {
 // ElementLibrary component is now imported directly and integrates with Musical Conductor
 // Removed plugin-loading logic - using original ElementLibrary.tsx with Musical Conductor integration
 
-import {
-  initializeCommunicationSystem,
-  MusicalConductor,
-  resetCommunicationSystem,
-} from "../communication";
-import {
-  initializeDomainEvents,
-  DomainEventSystem,
-} from "../communication/DomainEventSystem";
+import { MusicalConductor, resetCommunicationSystem } from "musical-conductor";
+import { ConductorService } from "../services/ConductorService";
 
 const AppContent: React.FC = () => {
   const [appState, setAppState] = useState<AppState>({
@@ -43,10 +36,6 @@ const AppContent: React.FC = () => {
   const [communicationSystem, setCommunicationSystem] = useState<{
     conductor: MusicalConductor;
   } | null>(null);
-
-  const [domainEvents, setDomainEvents] = useState<DomainEventSystem | null>(
-    null
-  );
 
   // Drag handlers for ElementLibrary domain events - THIN CLIENT APPROACH
   const handleDragStart = (
@@ -178,47 +167,27 @@ const AppContent: React.FC = () => {
   useEffect(() => {
     console.log("🚀 RenderX Evolution - Initializing Communication System...");
 
-    try {
-      const system = initializeCommunicationSystem();
-      setCommunicationSystem(system);
-
-      console.log("✅ Communication System initialized successfully");
-      console.log("🎼 Musical Conductor:", system.conductor.getStatistics());
-
-      // Register CIA-compliant plugins
-      system.conductor
-        .registerCIAPlugins()
-        .then(async () => {
-          console.log("🧠 CIA plugins registration completed");
-
-          // ElementLibrary plugin should be loaded automatically by Musical Conductor
-          console.log(
-            "🔍 DEBUG: Plugin registration completed, checking if ElementLibrary loaded..."
-          );
-
-          // Component loading is now handled by ElementLibrary component
-        })
-        .catch((error) => {
-          console.error("❌ CIA plugins registration failed:", error);
-        });
-
-      // Initialize domain event system
-      const domainEventSystem = initializeDomainEvents(system);
-      setDomainEvents(domainEventSystem);
-
-      // Expose only conductor globally for components to access (SPA-compliant)
-      // EventBus is kept private to enforce Musical Conductor Orchestration
-      (window as any).renderxCommunicationSystem = {
-        conductor: system.conductor,
-        domainEvents: domainEventSystem,
-        // eventBus is intentionally NOT exposed to prevent direct access violations
-      };
-    } catch (error) {
-      console.error("❌ Failed to initialize communication system:", error);
-    }
+    let cancelled = false;
+    const svc = ConductorService.getInstance();
+    svc
+      .initialize()
+      .then(() => {
+        const conductor = svc.getConductor();
+        if (cancelled) return;
+        setCommunicationSystem({ conductor });
+        console.log("✅ Communication System initialized successfully");
+        console.log("🎼 Musical Conductor:", conductor.getStatistics());
+        (window as any).renderxCommunicationSystem = { conductor };
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          console.error("❌ Failed to initialize communication system:", error);
+        }
+      });
 
     // Cleanup function for React StrictMode compatibility
     return () => {
+      cancelled = true;
       console.log("🧹 Cleaning up communication system...");
       resetCommunicationSystem();
     };

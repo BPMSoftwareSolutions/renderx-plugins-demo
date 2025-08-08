@@ -28,13 +28,15 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
       // Get the communication system from global scope
       const system = (window as any).renderxCommunicationSystem;
 
-      if (system && system.conductor && system.eventBus) {
-        const { conductor, eventBus } = system;
+      if (system && system.conductor) {
+        const { conductor } = system;
 
-        // Trigger JsonLoader plugin sequence using conductor.play()
-        console.log(
-          "🎼 ElementLibrary: Triggering JsonLoader sequence via conductor.play()"
-        );
+        // Connect legacy loader to conductor (for future sequence-based loading)
+        try {
+          jsonComponentLoader.connectToConductor(conductor);
+        } catch {}
+
+        // Debug available sequences/plugins
         console.log(
           "🔍 Available sequences:",
           conductor.getSequenceNames?.() || "getSequenceNames not available"
@@ -44,16 +46,10 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
           conductor.getMountedPlugins?.() || "getMountedPlugins not available"
         );
 
-        // Note: JsonLoader sequence is triggered by the ElementLibrary plugin during mount
-        // No need to trigger it again from the React component
-        console.log(
-          "🎼 ElementLibrary: JsonLoader sequence will be triggered by plugin mount"
-        );
-
-        // Listen for components:loaded event from JsonLoader
+        // Listen for components:loaded event from plugins
         const handleComponentsLoaded = (data: any) => {
           console.log(
-            "🎼 ElementLibrary: Received components from JsonLoader",
+            "🎼 ElementLibrary: Received components from plugin",
             data
           );
           if (data.components && Array.isArray(data.components)) {
@@ -61,20 +57,19 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
             setLoading(false);
             setError(null);
 
-            // Play library display completion symphony
-            console.log(
-              "🎼 ElementLibrary: Playing library display completion symphony"
-            );
-            conductor.play(
-              "ElementLibrary.library-display-symphony",
-              "Element Library Display Symphony No. 12",
-              {
-                components: data.components,
-                count: data.components.length,
-                source: "element-library",
-                timestamp: Date.now(),
-              }
-            );
+            // Optional: play completion symphony if available
+            try {
+              conductor.play(
+                "ElementLibrary.library-display-symphony",
+                "Element Library Display Symphony No. 12",
+                {
+                  components: data.components,
+                  count: data.components.length,
+                  source: "element-library",
+                  timestamp: Date.now(),
+                }
+              );
+            } catch {}
           }
         };
 
@@ -91,14 +86,55 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
           });
         };
 
-        // Subscribe to events
-        eventBus.subscribe("components:loaded", handleComponentsLoaded);
-        eventBus.subscribe("components:error", handleComponentsError);
+        // Subscribe to MusicalConductor events via conductor (SPA-compliant)
+        const unsubscribeLoaded = conductor.subscribe(
+          "components:loaded",
+          handleComponentsLoaded
+        );
+        const unsubscribeError = conductor.subscribe(
+          "components:error",
+          handleComponentsError
+        );
+
+        // Kick off plugin-driven component load (with callback)
+        try {
+          console.log(
+            "🎼 ElementLibrary: Invoking plugin-driven component load via conductor.play()"
+          );
+          conductor.play(
+            "Component Library Plugin",
+            "load-components-symphony",
+            {
+              source: "json-components",
+              onComponentsLoaded: (items: any[]) => {
+                setComponents(items as any);
+                setLoading(false);
+                setError(null);
+              },
+            }
+          );
+        } catch (e) {
+          console.warn(
+            "⚠️ ElementLibrary: Plugin-driven load failed, falling back to direct loader",
+            e
+          );
+          jsonComponentLoader
+            .loadAllComponents()
+            .then((res) => {
+              setComponents(res.success as any);
+              setLoading(false);
+              setError(null);
+            })
+            .catch((err) => {
+              setError(err?.message || "Failed to load components");
+              setLoading(false);
+            });
+        }
 
         // Cleanup function
         return () => {
-          eventBus.unsubscribe("components:loaded", handleComponentsLoaded);
-          eventBus.unsubscribe("components:error", handleComponentsError);
+          unsubscribeLoaded?.();
+          unsubscribeError?.();
         };
       } else {
         console.log("🔄 No conductor/eventBus available for component loading");
@@ -110,6 +146,35 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
       setError(
         err instanceof Error ? err.message : "Failed to load components"
       );
+      // Kick off plugin-driven component load (with callback)
+      try {
+        conductor.play("Component Library Plugin", "load-components-symphony", {
+          source: "json-components",
+          onComponentsLoaded: (items: any[]) => {
+            setComponents(items as any);
+            setLoading(false);
+            setError(null);
+          },
+        });
+      } catch (e) {
+        console.warn(
+          "⚠️ ElementLibrary: Plugin-driven load failed, falling back to direct loader",
+          e
+        );
+        // Fallback: direct JSON load
+        jsonComponentLoader
+          .loadAllComponents()
+          .then((res) => {
+            setComponents(res.success as any);
+            setLoading(false);
+            setError(null);
+          })
+          .catch((err) => {
+            setError(err?.message || "Failed to load components");
+            setLoading(false);
+          });
+      }
+
       setLoading(false);
     }
   };
@@ -127,7 +192,7 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
         );
         setTimeout(async () => {
           cleanup = await loadComponentsAfterPlugins();
-        }, 5000); // Wait 5 seconds for plugins to load
+        }, 300); // Small delay to allow plugins to mount
       } else {
         // Wait a bit and try again
         setTimeout(checkAndLoadComponents, 100);
