@@ -138,6 +138,14 @@ export class MusicalConductor {
     return this.conductorCore.getEventBus();
   }
 
+  /**
+   * Expose the sequence registry map early for EventBus integration
+   * Available immediately after construction (may be empty until registration)
+   */
+  public get sequences(): Map<string, MusicalSequence> {
+    return this.sequenceRegistry.getSequenceMap();
+  }
+
   private constructor(eventBus: EventBus) {
     // Initialize core components
     this.conductorCore = ConductorCore.getInstance(eventBus);

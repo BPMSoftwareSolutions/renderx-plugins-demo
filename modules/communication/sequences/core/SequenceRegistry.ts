@@ -124,6 +124,14 @@ export class SequenceRegistry {
   }
 
   /**
+   * Expose the underlying registry map for conductor integration
+   * Note: Returned map is live; mutations occur through register/unregister
+   */
+  public getSequenceMap(): Map<string, MusicalSequence> {
+    return this.sequences;
+  }
+
+  /**
    * Get a sequence by id
    * @param sequenceId - ID of the sequence to retrieve
    * @returns The sequence or undefined if not found
