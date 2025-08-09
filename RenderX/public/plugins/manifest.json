@@ -35,6 +35,27 @@
       "version": "1.0.0",
       "description": "Creates a new canvas component on drop",
       "autoMount": true
+    },
+    {
+      "name": "Canvas.component-select-symphony",
+      "path": "canvas-selection-plugin/",
+      "version": "1.0.0",
+      "description": "Select/deselect a canvas component with callback updates",
+      "autoMount": true
+    },
+    {
+      "name": "Canvas.component-drag-symphony",
+      "path": "canvas-drag-plugin/",
+      "version": "1.0.0",
+      "description": "Drag/move a canvas component with callback updates",
+      "autoMount": true
+    },
+    {
+      "name": "Canvas.component-resize-symphony",
+      "path": "canvas-resize-plugin/",
+      "version": "1.0.0",
+      "description": "Resize a canvas component with callback updates",
+      "autoMount": true
     }
   ]
 }

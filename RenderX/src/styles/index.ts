@@ -1,16 +1,17 @@
 /**
  * RenderX Evolution - Styles Index
- * 
+ *
  * Central export point for all styling utilities and theme management.
  * Provides TypeScript interfaces for theme variables and utility functions.
- * 
+ *
  * @version 1.0.0
  * @author RenderX Evolution Team
  * @date 2025-07-29
  */
 
 // Import global styles
-import './global.css';
+import "./global.css";
+import "./overlays.css";
 
 /**
  * Theme Variables Interface
@@ -104,9 +105,9 @@ export const ThemeUtils = {
    * Apply theme
    * @param theme - Theme name ('light' | 'dark')
    */
-  applyTheme: (theme: 'light' | 'dark'): void => {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.body.className = document.body.className.replace(/theme-\w+/g, '');
+  applyTheme: (theme: "light" | "dark"): void => {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.body.className = document.body.className.replace(/theme-\w+/g, "");
     document.body.classList.add(`theme-${theme}`);
   },
 
@@ -114,9 +115,9 @@ export const ThemeUtils = {
    * Get current theme
    * @returns Current theme name
    */
-  getCurrentTheme: (): 'light' | 'dark' => {
-    const theme = document.documentElement.getAttribute('data-theme');
-    return theme === 'dark' ? 'dark' : 'light';
+  getCurrentTheme: (): "light" | "dark" => {
+    const theme = document.documentElement.getAttribute("data-theme");
+    return theme === "dark" ? "dark" : "light";
   },
 
   /**
@@ -124,7 +125,7 @@ export const ThemeUtils = {
    */
   toggleTheme: (): void => {
     const currentTheme = ThemeUtils.getCurrentTheme();
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const newTheme = currentTheme === "light" ? "dark" : "light";
     ThemeUtils.applyTheme(newTheme);
   },
 
@@ -132,8 +133,10 @@ export const ThemeUtils = {
    * Detect system theme preference
    * @returns System theme preference
    */
-  getSystemTheme: (): 'light' | 'dark' => {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  getSystemTheme: (): "light" | "dark" => {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   },
 
   /**
@@ -142,7 +145,7 @@ export const ThemeUtils = {
   applySystemTheme: (): void => {
     const systemTheme = ThemeUtils.getSystemTheme();
     ThemeUtils.applyTheme(systemTheme);
-  }
+  },
 };
 
 /**
@@ -150,12 +153,12 @@ export const ThemeUtils = {
  * Direct access to legacy system variables for backward compatibility
  */
 export const LegacyVariables = {
-  bgColor: 'var(--bg-color)',
-  textColor: 'var(--text-color)',
-  border: 'var(--border)',
-  padding: 'var(--padding)',
-  borderRadius: 'var(--border-radius)',
-  fontSize: 'var(--font-size)'
+  bgColor: "var(--bg-color)",
+  textColor: "var(--text-color)",
+  border: "var(--border)",
+  padding: "var(--padding)",
+  borderRadius: "var(--border-radius)",
+  fontSize: "var(--font-size)",
 };
 
 /**
@@ -168,25 +171,27 @@ export const StyleGenerators = {
    * @param variant - Button variant
    * @returns CSS styles object
    */
-  generateButtonStyles: (variant: 'primary' | 'secondary' | 'default' = 'default') => ({
+  generateButtonStyles: (
+    variant: "primary" | "secondary" | "default" = "default"
+  ) => ({
     backgroundColor: LegacyVariables.bgColor,
     color: LegacyVariables.textColor,
     border: LegacyVariables.border,
     padding: LegacyVariables.padding,
     borderRadius: LegacyVariables.borderRadius,
     fontSize: LegacyVariables.fontSize,
-    cursor: 'pointer',
-    transition: 'var(--transition-normal)',
-    ...(variant === 'primary' && {
-      backgroundColor: 'var(--primary-color)',
-      color: '#ffffff',
-      border: '1px solid var(--primary-color)'
+    cursor: "pointer",
+    transition: "var(--transition-normal)",
+    ...(variant === "primary" && {
+      backgroundColor: "var(--primary-color)",
+      color: "#ffffff",
+      border: "1px solid var(--primary-color)",
     }),
-    ...(variant === 'secondary' && {
-      backgroundColor: 'transparent',
-      color: 'var(--primary-color)',
-      border: '1px solid var(--primary-color)'
-    })
+    ...(variant === "secondary" && {
+      backgroundColor: "transparent",
+      color: "var(--primary-color)",
+      border: "1px solid var(--primary-color)",
+    }),
   }),
 
   /**
@@ -200,7 +205,7 @@ export const StyleGenerators = {
     padding: LegacyVariables.padding,
     borderRadius: LegacyVariables.borderRadius,
     fontSize: LegacyVariables.fontSize,
-    transition: 'var(--transition-normal)'
+    transition: "var(--transition-normal)",
   }),
 
   /**
@@ -208,20 +213,20 @@ export const StyleGenerators = {
    * @returns CSS styles object
    */
   generateContainerStyles: () => ({
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     border: LegacyVariables.border,
     borderRadius: LegacyVariables.borderRadius,
-    padding: LegacyVariables.padding
-  })
+    padding: LegacyVariables.padding,
+  }),
 };
 
 /**
  * Export theme constants
  */
 export const THEME_CONSTANTS = {
-  LIGHT: 'light' as const,
-  DARK: 'dark' as const,
-  SYSTEM: 'system' as const
+  LIGHT: "light" as const,
+  DARK: "dark" as const,
+  SYSTEM: "system" as const,
 };
 
-export type ThemeType = typeof THEME_CONSTANTS[keyof typeof THEME_CONSTANTS];
+export type ThemeType = (typeof THEME_CONSTANTS)[keyof typeof THEME_CONSTANTS];

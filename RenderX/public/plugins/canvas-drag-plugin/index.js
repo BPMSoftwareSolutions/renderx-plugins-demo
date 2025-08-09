@@ -16,9 +16,33 @@ export const sequence = {
       id: "drag",
       name: "Drag",
       beats: [
-        { beat: 1, event: "canvas:element:drag:start", handler: "handleDragStart" },
-        { beat: 2, event: "canvas:element:moved", handler: "handleDragMove" },
-        { beat: 3, event: "canvas:element:drag:end", handler: "handleDragEnd" },
+        {
+          beat: 1,
+          event: "canvas:element:drag:start",
+          title: "Drag start",
+          dynamics: "mf",
+          timing: "immediate",
+          errorHandling: "continue",
+          handler: "handleDragStart",
+        },
+        {
+          beat: 2,
+          event: "canvas:element:moved",
+          title: "Element moved",
+          dynamics: "mf",
+          timing: "immediate",
+          errorHandling: "continue",
+          handler: "handleDragMove",
+        },
+        {
+          beat: 3,
+          event: "canvas:element:drag:end",
+          title: "Drag end",
+          dynamics: "mf",
+          timing: "immediate",
+          errorHandling: "continue",
+          handler: "handleDragEnd",
+        },
       ],
     },
   ],
@@ -37,13 +61,21 @@ export const sequence = {
 };
 
 export const handlers = {
-  handleDragStart: ({ elementId, origin }, ctx) => ({ drag: { elementId, origin } }),
+  handleDragStart: ({ elementId, origin }, ctx) => ({
+    drag: { elementId, origin },
+  }),
   handleDragMove: ({ elementId, delta, onDragUpdate }, ctx) => {
     const o = ctx.payload.drag?.origin || { x: 0, y: 0 };
     const position = { x: o.x + (delta?.dx || 0), y: o.y + (delta?.dy || 0) };
-    try { onDragUpdate?.({ elementId, position }); } catch {}
+    try {
+      onDragUpdate?.({ elementId, position });
+    } catch {}
     return { elementId, position };
   },
-  handleDragEnd: ({ onDragEnd }, ctx) => { try { onDragEnd?.(); } catch {} return {}; },
+  handleDragEnd: ({ onDragEnd }, ctx) => {
+    try {
+      onDragEnd?.();
+    } catch {}
+    return {};
+  },
 };
-

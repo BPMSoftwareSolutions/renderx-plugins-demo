@@ -1,12 +1,13 @@
 /**
  * RenderX Evolution - Main Application Component
  * Lightweight Visual Shell for Component-Based Development
- * 
+ *
  * Refactored into modular components for better maintainability
  */
 
 import React from "react";
 import "./App.css";
+import "./styles/overlays.css";
 
 // Import components
 import AppContent from "./components/AppContent";

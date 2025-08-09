@@ -17,8 +17,24 @@ export const sequence = {
       name: "Selection",
       description: "Select or clear selection",
       beats: [
-        { beat: 1, event: "canvas:selection:show", handler: "handleSelect" },
-        { beat: 2, event: "canvas:selection:hide", handler: "handleFinalize" },
+        {
+          beat: 1,
+          event: "canvas:selection:show",
+          title: "Show selection",
+          dynamics: "mf",
+          timing: "immediate",
+          errorHandling: "continue",
+          handler: "handleSelect",
+        },
+        {
+          beat: 2,
+          event: "canvas:selection:hide",
+          title: "Hide selection",
+          dynamics: "mf",
+          timing: "immediate",
+          errorHandling: "continue",
+          handler: "handleFinalize",
+        },
       ],
     },
   ],
@@ -30,12 +46,15 @@ export const sequence = {
 
 export const handlers = {
   handleSelect: ({ elementId, onSelectionChange }, ctx) => {
-    try { onSelectionChange?.(elementId); } catch {}
-    return { elementId };
+    try {
+      onSelectionChange?.(elementId);
+    } catch {}
+    return { elementId, selected: true };
   },
-  handleFinalize: ({ elementId, onSelectionChange }, ctx) => {
-    try { if (elementId == null) onSelectionChange?.(null); } catch {}
-    return { elementId: elementId ?? null };
+  handleFinalize: ({ elementId, clearSelection, onSelectionChange }, ctx) => {
+    try {
+      if (clearSelection === true) onSelectionChange?.(null);
+    } catch {}
+    return { elementId: elementId ?? null, cleared: clearSelection === true };
   },
 };
-

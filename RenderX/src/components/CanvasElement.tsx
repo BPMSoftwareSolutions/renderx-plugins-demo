@@ -33,34 +33,21 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
       if (communicationSystem && communicationSystem.conductor) {
         console.log("🎼 Triggering element selection via conductor...");
 
-        // Trigger the element selection sequence
-        const result = communicationSystem.conductor.play(
-          "Component.element-selection-symphony",
-          "Canvas Element Selection Symphony No. 37",
+        // Trigger the selection symphony (callback-first)
+        communicationSystem.conductor.play(
+          "Canvas.component-select-symphony",
+          "Canvas.component-select-symphony",
           {
-            element: {
-              id: elementId,
-              type: element.type,
-              elementId: elementId,
-              cssClass: cssClass,
-              metadata: element.metadata,
-              componentData: element.componentData,
+            elementId,
+            onSelectionChange: (id: string | null) => {
+              try {
+                const ev = new CustomEvent("renderx:selection:update", {
+                  detail: { id },
+                });
+                window.dispatchEvent(ev);
+              } catch {}
             },
-            selectionType: e.ctrlKey || e.metaKey ? "multi" : "single",
-            selectionContext: {
-              clickEvent: true,
-              timestamp: Date.now(),
-              coordinates: {
-                x: e.clientX,
-                y: e.clientY,
-              },
-            },
-            clearPrevious: !(e.ctrlKey || e.metaKey),
           }
-        );
-
-        console.log(
-          `🎼 Element selection triggered: ${result ? "SUCCESS" : "FAILED"}`
         );
       } else {
         console.warn("No communication system available for element selection");
@@ -132,11 +119,8 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
     rootElement.setAttribute("data-component-id", elementId);
     rootElement.setAttribute("draggable", "true");
 
-    // Apply absolute positioning inline to avoid extra wrapper
-    rootElement.setAttribute(
-      "style",
-      `position:absolute; left:${pos.x}px; top:${pos.y}px;`
-    );
+    // Positioning is handled by the Canvas wrapper; avoid double-positioning the root element
+    // Intentionally do not set left/top here to keep overlay alignment accurate
 
     // Add canvas classes while preserving component's original classes
     const existingClasses = rootElement.getAttribute("class") || "";

@@ -6,6 +6,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import CanvasElement from "./CanvasElement";
 import DragPreview from "./DragPreview";
+import VisualTools from "./VisualTools";
 import {
   generateAndInjectComponentCSS,
   injectSelectionStyles,
@@ -24,6 +25,7 @@ const Canvas: React.FC<CanvasProps> = ({
 }) => {
   const [canvasElements, setCanvasElements] = useState<any[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // State for real-time drag preview with click offset compensation
   const [dragPreview, setDragPreview] = useState({
@@ -33,6 +35,20 @@ const Canvas: React.FC<CanvasProps> = ({
     componentData: null,
     elementType: "component",
   });
+
+  // Selection state from custom event dispatched by CanvasElement
+  useEffect(() => {
+    const onSelection = (e: Event) => {
+      const detail = (e as CustomEvent).detail as { id: string | null };
+      setSelectedId(detail?.id ?? null);
+    };
+    window.addEventListener("renderx:selection:update", onSelection as any);
+    return () =>
+      window.removeEventListener(
+        "renderx:selection:update",
+        onSelection as any
+      );
+  }, []);
 
   // ✅ THIN CLIENT: Subscribe to plugin events for state updates via conductor
   useEffect(() => {
@@ -429,15 +445,137 @@ const Canvas: React.FC<CanvasProps> = ({
                   });
                 } catch {}
 
+                const isSelected =
+                  selectedId === elementId || selectedId === element.id;
+
                 return (
-                  <CanvasElement
+                  <div
                     key={element.id}
-                    element={{ ...element, position: pos }}
-                    elementId={elementId}
-                    cssClass={cssClass}
-                    onDragStart={onCanvasElementDragStart}
-                    onDragEnd={onCanvasElementDragEnd}
-                  />
+                    style={{
+                      position: "absolute",
+                      left: pos.x,
+                      top: pos.y,
+                      width:
+                        (element.style?.width as number | undefined) ??
+                        element.componentData?.integration?.canvasIntegration
+                          ?.defaultWidth ??
+                        0,
+                      height:
+                        (element.style?.height as number | undefined) ??
+                        element.componentData?.integration?.canvasIntegration
+                          ?.defaultHeight ??
+                        0,
+                    }}
+                    onPointerDown={(e) => {
+                      // Begin drag for this element via drag symphony
+                      const cs = (window as any).renderxCommunicationSystem;
+                      // Use current canvas position as origin so dx/dy apply correctly in canvas coordinates
+                      const origin = { x: pos.x, y: pos.y };
+                      cs?.conductor.play(
+                        "Canvas.component-drag-symphony",
+                        "Canvas.component-drag-symphony",
+                        {
+                          action: "start",
+                          elementId,
+                          origin,
+                          onDragUpdate: ({ elementId: id, position }) => {
+                            setCanvasElements((prev) =>
+                              prev.map((el) =>
+                                el.id === id ? { ...el, position } : el
+                              )
+                            );
+                          },
+                        }
+                      );
+                      const startX = e.clientX;
+                      const startY = e.clientY;
+                      const onMove = (ev: PointerEvent) => {
+                        const cs2 = (window as any).renderxCommunicationSystem;
+                        cs2?.conductor.play(
+                          "Canvas.component-drag-symphony",
+                          "Canvas.component-drag-symphony",
+                          {
+                            action: "move",
+                            elementId,
+                            delta: {
+                              dx: ev.clientX - startX,
+                              dy: ev.clientY - startY,
+                            },
+                            current: { x: ev.clientX, y: ev.clientY },
+                            onDragUpdate: ({ elementId: id, position }) => {
+                              setCanvasElements((prev) =>
+                                prev.map((el) =>
+                                  el.id === id ? { ...el, position } : el
+                                )
+                              );
+                            },
+                          }
+                        );
+                      };
+                      const onUp = () => {
+                        const cs3 = (window as any).renderxCommunicationSystem;
+                        cs3?.conductor.play(
+                          "Canvas.component-drag-symphony",
+                          "Canvas.component-drag-symphony",
+                          { action: "end", elementId }
+                        );
+                        window.removeEventListener("pointermove", onMove);
+                        window.removeEventListener("pointerup", onUp);
+                      };
+                      window.addEventListener("pointermove", onMove);
+                      window.addEventListener("pointerup", onUp, {
+                        once: true,
+                      });
+                    }}
+                  >
+                    <CanvasElement
+                      element={{ ...element, position: pos }}
+                      elementId={elementId}
+                      cssClass={cssClass}
+                      onDragStart={onCanvasElementDragStart}
+                      onDragEnd={onCanvasElementDragEnd}
+                    />
+                    {isSelected && (
+                      <VisualTools
+                        elementId={elementId}
+                        handles={
+                          element.componentData?.ui?.tools?.resize?.handles || [
+                            "nw",
+                            "n",
+                            "ne",
+                            "e",
+                            "se",
+                            "s",
+                            "sw",
+                            "w",
+                          ]
+                        }
+                        tools={element.componentData?.ui?.tools}
+                        startBox={{
+                          x: element.position?.x || 0,
+                          y: element.position?.y || 0,
+                          w: element.style?.width || 0,
+                          h: element.style?.height || 0,
+                        }}
+                        onResizeUpdate={({ elementId: id, box }) => {
+                          setCanvasElements((prev) =>
+                            prev.map((el) =>
+                              el.id === id
+                                ? {
+                                    ...el,
+                                    style: {
+                                      ...el.style,
+                                      width: box.w,
+                                      height: box.h,
+                                    },
+                                  }
+                                : el
+                            )
+                          );
+                        }}
+                      />
+                    )}
+                  </div>
                 );
               })}
             </>

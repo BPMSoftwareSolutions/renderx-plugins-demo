@@ -22,6 +22,14 @@
         "border-radius": "4px",
         "font-size": "14px"
       }
+    },
+    "tools": {
+      "drag": { "enabled": true },
+      "resize": {
+        "enabled": true,
+        "handles": ["e", "s", "se"],
+        "constraints": { "min": { "w": 40, "h": 24 } }
+      }
     }
   },
   "integration": {
