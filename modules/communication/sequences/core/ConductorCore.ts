@@ -67,10 +67,10 @@ export class ConductorCore {
     try {
       // Initialize logger only in development environments
       const isDev =
-        typeof process !== "undefined" &&
-        !!(process as any).env &&
-        (process as any).env.NODE_ENV === "development";
-
+          (typeof import.meta !== "undefined" &&
+              (import.meta as any).env &&
+              (import.meta as any).env.DEV) === true;
+      
       if (isDev) {
         const { ConductorLogger } = await import(
           "../monitoring/ConductorLogger.js"
