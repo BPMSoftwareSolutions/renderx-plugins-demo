@@ -85,11 +85,11 @@ dist
 public
 
 # Whitelist specific testdata folders
-!testdata/renderx/public/
-!testdata/renderx/public/plugins/
-!testdata/RenderX/public/
-!testdata/RenderX/public/plugins/
-!testdata/RenderX/public/json-components/
+!/renderx/public/
+!/renderx/public/plugins/
+!/RenderX/public/
+!/RenderX/public/plugins/
+!/RenderX/public/json-components/
 
 # Storybook build outputs
 .out

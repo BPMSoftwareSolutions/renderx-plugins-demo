@@ -38,7 +38,9 @@ const Canvas: React.FC<CanvasProps> = ({
   useEffect(() => {
     const communicationSystem = (window as any).renderxCommunicationSystem;
     if (communicationSystem?.conductor) {
-      console.log("🎼 [THIN CLIENT] Canvas: Subscribing to plugin events via conductor");
+      console.log(
+        "🎼 [THIN CLIENT] Canvas: Subscribing to plugin events via conductor"
+      );
 
       // Subscribe to canvas element updates from plugins
       const handleElementAdded = (data: any) => {
@@ -48,7 +50,10 @@ const Canvas: React.FC<CanvasProps> = ({
         const elementData = data?.context?.payload?.elementData || data.element;
 
         console.log("🎼 [THIN CLIENT] Canvas: Element data:", elementData);
-        console.log("🎽 [THIN CLIENT] Canvas: Baton payload:", data?.context?.payload);
+        console.log(
+          "🎽 [THIN CLIENT] Canvas: Baton payload:",
+          data?.context?.payload
+        );
 
         if (elementData) {
           console.log(
@@ -68,7 +73,7 @@ const Canvas: React.FC<CanvasProps> = ({
             {
               pluginEvent: data,
               payload: data?.context?.payload,
-              fallbackElement: data.element
+              fallbackElement: data.element,
             }
           );
         }
@@ -306,14 +311,32 @@ const Canvas: React.FC<CanvasProps> = ({
             "🎼 [THIN CLIENT] Library element drop - calling ElementLibrary.library-drop-symphony"
           );
           communicationSystem.conductor.play(
-            "ElementLibrary.library-drop-symphony",
-            "Canvas Library Drop Symphony No. 33",
+            "Library.component-drop-symphony",
+            "Library.component-drop-symphony",
             {
               event: e,
               coordinates,
               dragData,
               timestamp: Date.now(),
               source: "canvas-library-drop",
+              onComponentCreated: (payload) => {
+                try {
+                  console.log("🧩 Canvas.onComponentCreated", payload);
+                  setCanvasElements((prev) => [
+                    ...prev,
+                    {
+                      id: payload.id,
+                      type: payload.type,
+                      cssClass: payload.cssClass,
+                      position: payload.position,
+                      componentData: payload.component,
+                      metadata: payload.component?.metadata,
+                    },
+                  ]);
+                } catch (err) {
+                  console.warn("⚠️ Failed to handle onComponentCreated", err);
+                }
+              },
             }
           );
         }
@@ -321,8 +344,8 @@ const Canvas: React.FC<CanvasProps> = ({
         console.error("🎼 [THIN CLIENT] Failed to parse drag data:", error);
         // Fallback to library drop
         communicationSystem.conductor.play(
-          "ElementLibrary.library-drop-symphony",
-          "Canvas Library Drop Symphony No. 33",
+          "Library.component-drop-symphony",
+          "Library.component-drop-symphony",
           {
             event: e,
             coordinates,
@@ -387,25 +410,45 @@ const Canvas: React.FC<CanvasProps> = ({
                 // Generate stable element ID and CSS class (should be done once when element is created)
                 const elementId =
                   element.elementId ||
-                  `${element.type}-${element.id}-${Math.random()
-                    .toString(36)
-                    .substr(2, 9)}`;
+                  element.id ||
+                  `rx-${Math.random().toString(36).slice(2, 8)}`;
                 const cssClass =
                   element.cssClass ||
-                  `component-${element.type.toLowerCase()} rx-comp-${
-                    element.type
-                  }-${Math.random().toString(36).substr(2, 6)}`;
+                  `rx-comp-${(
+                    element.type || "comp"
+                  ).toLowerCase()}-${Math.random().toString(36).slice(2, 8)}`;
 
                 // Render component using data-driven approach
+                const pos = element.position || { x: 0, y: 0 };
+                const wrapperStyle: React.CSSProperties = {
+                  position: "absolute",
+                  left: pos.x,
+                  top: pos.y,
+                };
+                // Debug position rendering
+                try {
+                  console.log("[Canvas] render element position", {
+                    id: elementId,
+                    type: element.type,
+                    pos,
+                  });
+                } catch {}
+
                 return (
-                  <CanvasElement
+                  <div
                     key={element.id}
-                    element={element}
-                    elementId={elementId}
-                    cssClass={cssClass}
-                    onDragStart={onCanvasElementDragStart}
-                    onDragEnd={onCanvasElementDragEnd}
-                  />
+                    className="canvas-element-wrapper"
+                    data-element-id={elementId}
+                    style={wrapperStyle}
+                  >
+                    <CanvasElement
+                      element={element}
+                      elementId={elementId}
+                      cssClass={cssClass}
+                      onDragStart={onCanvasElementDragStart}
+                      onDragEnd={onCanvasElementDragEnd}
+                    />
+                  </div>
                 );
               })}
             </>

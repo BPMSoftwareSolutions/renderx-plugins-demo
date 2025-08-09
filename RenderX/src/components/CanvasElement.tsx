@@ -88,7 +88,34 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
   }
 
   // Render the actual component template from JSON definition as pure component
-  const template = componentData.ui.template;
+  // Sanitize/resolve common template tokens for Canvas rendering
+  let template = componentData.ui.template;
+
+  // Remove inline handlers to avoid React warnings and security issues
+  template = template.replace(/on\w+="[^"]*"/g, "");
+
+  // Replace common Handlebars-like placeholders with safe defaults
+  const compType = (
+    element?.type ||
+    componentData?.metadata?.type ||
+    ""
+  ).toLowerCase();
+  const variantDefault = compType === "button" ? "primary" : "default";
+  const contentDefault =
+    componentData?.metadata?.name || (compType === "button" ? "Button" : "");
+  template = template
+    .replace(/\{\{\s*variant\s*\}\}/g, variantDefault)
+    .replace(/\{\{\s*size\s*\}\}/g, "medium")
+    .replace(/\{\{\s*inputType\s*\}\}/g, "text")
+    .replace(/\{\{\s*placeholder\s*\}\}/g, "Enter text")
+    .replace(/\{\{\s*value\s*\}\}/g, "")
+    .replace(/\{\{\s*content\s*\}\}/g, contentDefault)
+    // Strip simple conditionals (common shapes)
+    .replace(/\{\{#if\s+disabled\}\}\s*disabled\s*\{\{\/if\}\}/g, "")
+    .replace(/\{\{#if\s+required\}\}\s*required\s*\{\{\/if\}\}/g, "");
+
+  // Final safety: strip any remaining mustache tokens so React doesn't see invalid attributes
+  template = template.replace(/\{\{[^}]+\}\}/g, "");
 
   // Parse the template to add canvas-specific attributes to the root element
   // This ensures the component remains pure while adding necessary canvas functionality
@@ -111,6 +138,65 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
     );
 
     const modifiedTemplate = rootElement.outerHTML;
+
+    // Inject scoped styles for this component instance on the canvas
+    React.useEffect(() => {
+      const css = componentData?.ui?.styles?.css;
+      if (!css) return;
+      const styleId = `style-${elementId}`;
+      const styleEl = document.getElementById(
+        styleId
+      ) as HTMLStyleElement | null;
+      // Scope all class selectors to this instance's cssClass
+      const selectorPrefix = `#${elementId}`;
+      const scoped = css.replace(
+        /(^|})\s*([^\{]+)\s*\{/g,
+        (match, brace, selector) => {
+          const sels = selector
+            .split(",")
+            .map((s) => s.trim())
+            .filter(Boolean);
+          const rewritten = sels
+            .flatMap((s) => {
+              const needsSpace = !(s.startsWith(".") || s.startsWith("#"));
+              const selfCombo = `${selectorPrefix}${needsSpace ? " " : ""}${s}`;
+              const descCombo = `${selectorPrefix} ${s}`;
+              return [descCombo, selfCombo];
+            })
+            .join(", ");
+          return `${brace} ${rewritten} {`;
+        }
+      );
+      const tag = styleEl || document.createElement("style");
+      tag.id = styleId;
+      tag.textContent = scoped;
+      if (!styleEl) document.head.appendChild(tag);
+      // Debug: log a sample and computed styles after paint
+      try {
+        console.log("[CanvasElement] injected styles", {
+          styleId,
+          bytes: scoped.length,
+          sample: scoped.slice(0, 120),
+        });
+        setTimeout(() => {
+          const el = document.getElementById(elementId) as HTMLElement | null;
+          if (el) {
+            const cs = getComputedStyle(el);
+            console.log("[CanvasElement] computed styles", {
+              id: elementId,
+              className: el.className,
+              color: cs.color,
+              backgroundColor: cs.backgroundColor,
+              borderTop: `${cs.borderTopWidth} ${cs.borderTopStyle} ${cs.borderTopColor}`,
+            });
+          }
+        }, 0);
+      } catch {}
+      return () => {
+        const s = document.getElementById(styleId);
+        if (s && s.parentNode) s.parentNode.removeChild(s);
+      };
+    }, [elementId, cssClass, componentData?.ui?.styles?.css]);
 
     // Use useEffect to handle events since we can't attach React event handlers to dangerouslySetInnerHTML
     React.useEffect(() => {

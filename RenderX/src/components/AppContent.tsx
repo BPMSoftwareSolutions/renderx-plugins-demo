@@ -63,8 +63,8 @@ const AppContent: React.FC = () => {
     // 🎼 THIN CLIENT: Call conductor.play() for plugin orchestration
     if (communicationSystem) {
       communicationSystem.conductor.play(
-        "ElementLibrary.library-drop-symphony",
-        "ElementLibrary Drag Symphony",
+        "Library.component-drag-symphony",
+        "Library.component-drag-symphony",
         {
           event: e,
           component,
@@ -86,8 +86,8 @@ const AppContent: React.FC = () => {
     // 🎼 THIN CLIENT: Only call conductor.play() - let plugin handle cleanup
     if (communicationSystem) {
       communicationSystem.conductor.play(
-        "ElementLibrary.library-drop-symphony",
-        "ElementLibrary Drag Symphony",
+        "Library.component-drag-symphony",
+        "Library.component-drag-symphony",
         {
           event: e,
           timestamp: Date.now(),

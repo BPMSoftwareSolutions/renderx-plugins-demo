@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "Theme Management Plugin",
+      "path": "theme-management-plugin/",
+      "version": "1.0.0",
+      "description": "Theme switching and management plugin for SPA integration",
+      "autoMount": true
+    },
+    {
+      "name": "Component Library Plugin",
+      "path": "component-library-plugin/",
+      "version": "1.0.0",
+      "description": "Component library loading and preparation plugin",
+      "autoMount": true
+    },
+    {
+      "name": "Library.component-drag-symphony",
+      "path": "library-drag-plugin/",
+      "version": "1.0.0",
+      "description": "Handles drag start/end from the Element Library",
+      "autoMount": true
+    },
+    {
+      "name": "Library.component-drop-symphony",
+      "path": "library-drop-plugin/",
+      "version": "1.0.0",
+      "description": "Handles library element drop onto the canvas and forwards create",
+      "autoMount": true
+    },
+    {
+      "name": "Canvas.component-create-symphony",
+      "path": "canvas-create-plugin/",
+      "version": "1.0.0",
+      "description": "Creates a new canvas component on drop",
+      "autoMount": true
+    }
+  ]
+}

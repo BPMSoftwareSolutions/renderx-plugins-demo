@@ -228,10 +228,28 @@ export class PluginManager {
                   // Baton snapshots pre/post for plugin handler
                   const prevSnap = DataBaton.snapshot(context.payload);
                   try {
-                    const result = await handlerFn(data, {
+                    // Build enriched handler context
+                    const handlerContext = {
                       ...context,
                       logger,
-                    });
+                      emit: (eventName: string, payload?: any) => {
+                        try {
+                          // Preserve musical context if available for chaining
+                          const enriched = {
+                            ...(payload || {}),
+                            _musicalContext: data?._musicalContext,
+                          };
+                          this.eventBus.emit(eventName, enriched);
+                        } catch (emitErr) {
+                          console.warn(
+                            `🧠 PluginManager: emit failed for ${id}.${handlerName} -> ${eventName}:`,
+                            emitErr
+                          );
+                        }
+                      },
+                    } as any;
+
+                    const result = await handlerFn(data, handlerContext);
                     if (result && typeof result === "object") {
                       context.payload = { ...context.payload, ...result };
                     }
