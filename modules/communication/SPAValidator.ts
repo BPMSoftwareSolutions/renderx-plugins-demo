@@ -21,6 +21,7 @@ export interface SPAValidatorConfig {
   logViolations: boolean;
   throwOnViolation: boolean;
   enableRuntimeChecks: boolean;
+  enforceConductorLogger: "off" | "warn" | "error";
 }
 
 export class SPAValidator {
@@ -37,8 +38,17 @@ export class SPAValidator {
       logViolations: true,
       throwOnViolation: false,
       enableRuntimeChecks: true,
+      enforceConductorLogger: "warn",
       ...config,
     };
+
+    // In strict mode, elevate logger enforcement to error
+    if (
+      this.config.strictMode &&
+      this.config.enforceConductorLogger !== "off"
+    ) {
+      this.config.enforceConductorLogger = "error";
+    }
 
     if (this.config.enableRuntimeChecks) {
       this.initializeRuntimeChecks();
@@ -452,6 +462,18 @@ export class SPAValidator {
   /**
    * Validate plugin compliance before mounting
    */
+  /**
+   * Detect direct console usage in a function's source
+   */
+  public detectDirectConsoleUsage(fn: Function): boolean {
+    try {
+      const src = Function.prototype.toString.call(fn);
+      return /(\b|\.)console\.(log|info|warn|error|debug)\b/.test(src);
+    } catch {
+      return false;
+    }
+  }
+
   public validatePluginMount(
     pluginId: string,
     pluginCode: string

@@ -16,7 +16,7 @@ export class ConductorCore {
   private constructor(eventBus: EventBus) {
     this.eventBus = eventBus;
     this.spaValidator = SPAValidator.getInstance();
-    this.initialize();
+    void this.initialize();
   }
 
   /**
@@ -61,8 +61,28 @@ export class ConductorCore {
   /**
    * Initialize core functionality
    */
-  private initialize(): void {
+  private async initialize(): Promise<void> {
     this.setupBeatExecutionLogging();
+    // Initialize nested logger in dev by default
+    try {
+      const isDev =
+        (typeof import.meta !== "undefined" &&
+          (import.meta as any).env &&
+          (import.meta as any).env.DEV) === true;
+      if (isDev) {
+        const { ConductorLogger } = await import(
+          "../monitoring/ConductorLogger.js"
+        );
+        const logger = new ConductorLogger(this.eventBus, true);
+        logger.init();
+      }
+    } catch (e) {
+      console.warn(
+        "⚠️ ConductorLogger initialization skipped:",
+        (e as Error)?.message || e
+      );
+    }
+
     console.log("🎼 ConductorCore: Initialized successfully");
   }
 

@@ -22,40 +22,69 @@ export class PluginLoader {
     const pluginDir = pluginPath.substring(0, pluginPath.lastIndexOf("/"));
     const bundledPath = `${pluginDir}/dist/plugin.js`;
 
-    // Try to load bundled ESM version first
-    try {
-      console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
-      const module = await import(bundledPath);
-      
-      // Cache the loaded module
-      this.moduleCache.set(pluginPath, module);
-      
-      console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
-      return module;
-    } catch (bundledError) {
-      console.log(
-        `⚠️ Bundled version not available (${bundledPath}), trying original path`
-      );
-    }
+    // Prefer original path in dev to avoid 500s for missing dist builds
+    const isDev =
+      (typeof import.meta !== "undefined" &&
+        (import.meta as any).env &&
+        (import.meta as any).env.DEV) === true;
 
-    // Try original path
-    try {
-      console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
-      const module = await import(pluginPath);
-      
-      // Cache the loaded module
-      this.moduleCache.set(pluginPath, module);
-      
-      console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
-      return module;
-    } catch (originalError) {
-      console.warn(
-        `⚠️ Failed to load plugin from original path: ${pluginPath}. Error: ${
-          originalError instanceof Error ? originalError.message : originalError
-        }`
-      );
-      // Fall back to complex dependency resolution
-      return this.loadPluginModuleComplex(pluginPath);
+    if (isDev) {
+      // Try original path first (dev)
+      try {
+        console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
+        const module = await import(pluginPath);
+        this.moduleCache.set(pluginPath, module);
+        console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
+        return module;
+      } catch (originalError) {
+        console.log(
+          `⚠️ Dev load failed (${pluginPath}), trying bundled path as fallback`
+        );
+        // Fall through to bundled attempt
+      }
+
+      try {
+        console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
+        const module = await import(bundledPath);
+        this.moduleCache.set(pluginPath, module);
+        console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
+        return module;
+      } catch (bundledError) {
+        console.warn(
+          `⚠️ Failed to load plugin from both dev and bundled paths for ${pluginPath}`
+        );
+      }
+    } else {
+      // Prod: try bundled first
+      try {
+        console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
+        const module = await import(bundledPath);
+        this.moduleCache.set(pluginPath, module);
+        console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
+        return module;
+      } catch (bundledError) {
+        console.log(
+          `⚠️ Bundled version not available (${bundledPath}), trying original path`
+        );
+      }
+
+      try {
+        console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
+        const module = await import(pluginPath);
+        this.moduleCache.set(pluginPath, module);
+        console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
+        return module;
+      } catch (originalError) {
+        console.warn(
+          `⚠️ Failed to load plugin from original path: ${pluginPath}. Error: ${
+            originalError instanceof Error
+              ? originalError.message
+              : originalError
+          }`
+        );
+        // Fall back to complex dependency resolution
+        return this.loadPluginModuleComplex(pluginPath);
+      }
     }
   }
 
@@ -91,16 +120,20 @@ export class PluginLoader {
         try {
           console.log(`🔄 Trying resolution strategy: ${strategy}`);
           const module = await import(strategy);
-          
+
           // Cache the loaded module
           this.moduleCache.set(pluginPath, module);
-          
-          console.log(`✅ Successfully loaded plugin with strategy: ${strategy}`);
+
+          console.log(
+            `✅ Successfully loaded plugin with strategy: ${strategy}`
+          );
           return module;
         } catch (strategyError) {
           console.log(
             `⚠️ Strategy failed: ${strategy} - ${
-              strategyError instanceof Error ? strategyError.message : strategyError
+              strategyError instanceof Error
+                ? strategyError.message
+                : strategyError
             }`
           );
         }
@@ -111,7 +144,10 @@ export class PluginLoader {
         `Failed to load plugin module: ${pluginPath}. All resolution strategies failed.`
       );
     } catch (error) {
-      console.error(`❌ Complex plugin loading failed for ${pluginPath}:`, error);
+      console.error(
+        `❌ Complex plugin loading failed for ${pluginPath}:`,
+        error
+      );
       throw error;
     }
   }
@@ -260,7 +296,9 @@ export class PluginLoader {
       if (pluginModule.default?.handlers) {
         warnings.push("Using handlers from default export");
       } else {
-        warnings.push("Missing 'handlers' export - plugin may be event-bus driven");
+        warnings.push(
+          "Missing 'handlers' export - plugin may be event-bus driven"
+        );
       }
     }
 

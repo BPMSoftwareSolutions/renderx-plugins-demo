@@ -102,6 +102,40 @@ export class PluginManager {
         };
       }
 
+      // Enforce conductor logger usage on handlers if configured
+      if (
+        handlers &&
+        typeof handlers === "object" &&
+        this.spaValidator.config.enforceConductorLogger !== "off"
+      ) {
+        for (const [name, fn] of Object.entries(handlers)) {
+          if (typeof fn === "function") {
+            const usesConsole = this.spaValidator.detectDirectConsoleUsage(
+              fn as Function
+            );
+            if (usesConsole) {
+              const stack = new Error().stack || "";
+              const violation = this.spaValidator.createViolation(
+                "PLUGIN_DIRECT_CONSOLE_USAGE",
+                id,
+                `Direct console usage detected in ${id}.${name}. Use context.logger.<level>(...) instead of console.<level>(...)`,
+                stack,
+                this.spaValidator.config.enforceConductorLogger === "error"
+                  ? "error"
+                  : "warning"
+              );
+              this.spaValidator.handleViolation(violation);
+              if (this.spaValidator.config.enforceConductorLogger === "error") {
+                warnings.push(
+                  `Handler ${name} disabled due to direct console usage`
+                );
+                delete (handlers as any)[name];
+              }
+            }
+          }
+        }
+      }
+
       // Register the sequence
       this.sequenceRegistry.register(sequence);
 
