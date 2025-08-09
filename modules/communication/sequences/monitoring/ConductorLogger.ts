@@ -5,6 +5,7 @@
 
 import { EventBus } from "../../EventBus.js";
 import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "../SequenceTypes.js";
+import { DataBaton } from "./DataBaton.js";
 
 interface Scope {
   type: "sequence" | "movement" | "beat" | "handler";
@@ -27,6 +28,9 @@ export class ConductorLogger {
   constructor(eventBus: EventBus, enabled = true) {
     this.eventBus = eventBus;
     this.enabled = enabled;
+    // Expose logger to DataBaton for indent computation
+    (this.eventBus as any).__conductorLogger = this;
+    DataBaton.eventBus = this.eventBus as any;
   }
 
   init(): void {
@@ -35,10 +39,11 @@ export class ConductorLogger {
     // Sequence scope
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_STARTED,
-      (data: any) => this.push(data.requestId, {
-        type: "sequence",
-        label: `🎼 ${data.sequenceName}`,
-      })
+      (data: any) =>
+        this.push(data.requestId, {
+          type: "sequence",
+          label: `🎼 ${data.sequenceName}`,
+        })
     );
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_COMPLETED,
@@ -48,10 +53,11 @@ export class ConductorLogger {
     // Movement scope
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_STARTED,
-      (data: any) => this.push(data.requestId, {
-        type: "movement",
-        label: `🎵 ${data.movementName}`,
-      })
+      (data: any) =>
+        this.push(data.requestId, {
+          type: "movement",
+          label: `🎵 ${data.movementName}`,
+        })
     );
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_COMPLETED,
@@ -61,10 +67,11 @@ export class ConductorLogger {
     // Beat scope
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_STARTED,
-      (data: any) => this.push(data.requestId, {
-        type: "beat",
-        label: `🥁 ${data.beat}: ${data.event}`,
-      })
+      (data: any) =>
+        this.push(data.requestId, {
+          type: "beat",
+          label: `🥁 ${data.beat}: ${data.event}`,
+        })
     );
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_COMPLETED,
@@ -130,10 +137,15 @@ export class ConductorLogger {
     this.stacks.set(key, stack);
   }
 
+  /** Expose current depth for a request so other loggers can align indent */
+  public getDepth(requestId?: string): number {
+    const key = requestId || "__global__";
+    return (this.stacks.get(key) || []).length;
+  }
+
   private getIndent(requestId?: string): string {
     const key = requestId || "__global__";
     const depth = (this.stacks.get(key) || []).length;
     return "  ".repeat(Math.max(0, depth));
   }
 }
-

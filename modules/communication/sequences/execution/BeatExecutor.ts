@@ -119,8 +119,12 @@ export class BeatExecutor {
         requestId: executionContext.id,
       });
 
+      const depth = ((this.eventBus as any).__conductorLogger?.getDepth?.(
+        executionContext.id
+      ) ?? 0) as number;
+      const indent = "  ".repeat(Math.max(0, depth));
       console.log(
-        `✅ BeatExecutor: Beat ${beat.beat} (${beat.event}) completed in ${executionTime}ms`
+        `${indent}✅ BeatExecutor: Beat ${beat.beat} (${beat.event}) completed in ${executionTime}ms`
       );
     } catch (error) {
       // Handle beat execution error

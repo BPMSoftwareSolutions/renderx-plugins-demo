@@ -3,6 +3,8 @@
  * Provides shallow snapshots, diffs, and concise console logging
  */
 
+import type { EventBus } from "../../EventBus.js";
+
 export type BatonSnapshot = Record<string, any>;
 
 export interface BatonDiff {
@@ -22,7 +24,24 @@ export interface BatonLogContext {
 }
 
 export class DataBaton {
-  static snapshot(baton: Record<string, any> | null | undefined): BatonSnapshot {
+  /** Optionally set by ConductorLogger to align with nested indent */
+  static eventBus: EventBus | null = null;
+  /** Compute indent using ConductorLogger’s scope depth when available */
+  private static computeIndent(requestId?: string): string {
+    try {
+      const bus = DataBaton.eventBus as any;
+      const logger = bus?.__conductorLogger as any;
+      if (!logger) return "";
+      const depth = logger.getDepth?.(requestId) ?? 0;
+      return "  ".repeat(Math.max(0, depth));
+    } catch {
+      return "";
+    }
+  }
+
+  static snapshot(
+    baton: Record<string, any> | null | undefined
+  ): BatonSnapshot {
     if (!baton || typeof baton !== "object") return {};
     // Shallow snapshot to keep logs light-weight
     const snap: BatonSnapshot = {};
@@ -54,14 +73,24 @@ export class DataBaton {
     return { added, removed, updated };
   }
 
-  static log(context: BatonLogContext, prev: BatonSnapshot, next: BatonSnapshot) {
+  static log(
+    context: BatonLogContext,
+    prev: BatonSnapshot,
+    next: BatonSnapshot
+  ) {
     const diff = DataBaton.diff(prev, next);
-    const hasChanges = diff.added.length || diff.removed.length || diff.updated.length;
+    const hasChanges =
+      diff.added.length || diff.removed.length || diff.updated.length;
     const prefix = "🎽 DataBaton";
 
     if (!hasChanges) {
+      const indent = DataBaton.computeIndent(context.requestId);
       console.log(
-        `${prefix}: No changes | seq=${context.sequenceName || "?"} beat=${context.beatNumber ?? "?"} event=${context.beatEvent || "?"} handler=${context.handlerName || "?"}`
+        `${indent}${prefix}: No changes | seq=${
+          context.sequenceName || "?"
+        } beat=${context.beatNumber ?? "?"} event=${
+          context.beatEvent || "?"
+        } handler=${context.handlerName || "?"}`
       );
       return;
     }
@@ -76,10 +105,20 @@ export class DataBaton {
     const previewObj: Record<string, any> = {};
     for (const k of previewKeys) previewObj[k] = (next as any)[k];
     let preview = "";
-    try { preview = JSON.stringify(previewObj).slice(0, 200); } catch {}
+    try {
+      preview = JSON.stringify(previewObj).slice(0, 200);
+    } catch {}
+
+    const indent = DataBaton.computeIndent(context.requestId);
 
     console.log(
-      `${prefix}: ${details.join(" ")} | seq=${context.sequenceName || "?"} beat=${context.beatNumber ?? "?"} event=${context.beatEvent || "?"} handler=${context.handlerName || "?"} plugin=${context.pluginId || "?"} req=${context.requestId || "?"} preview=${preview}`
+      `${indent}${prefix}: ${details.join(" ")} | seq=${
+        context.sequenceName || "?"
+      } beat=${context.beatNumber ?? "?"} event=${
+        context.beatEvent || "?"
+      } handler=${context.handlerName || "?"} plugin=${
+        context.pluginId || "?"
+      } req=${context.requestId || "?"} preview=${preview}`
     );
   }
 
@@ -96,4 +135,3 @@ export class DataBaton {
     return true;
   }
 }
-
