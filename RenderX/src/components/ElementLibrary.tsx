@@ -180,7 +180,8 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
       try {
         if (!requestedRef.current) {
           requestedRef.current = true;
-          conductor.play(
+          const system = (window as any).renderxCommunicationSystem;
+          system?.conductor.play(
             "Component Library Plugin",
             "load-components-symphony",
             {
