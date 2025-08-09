@@ -220,7 +220,12 @@ export class SequenceOrchestrator {
     }
 
     try {
+      // Update statistics: dequeued and execution started
+      this.statisticsManager.recordSequenceDequeued();
+      this.statisticsManager.recordSequenceExecution(0);
+
       await this.sequenceExecutor.executeSequence(nextRequest, sequence);
+
       // Process next sequence in queue
       this.processSequenceQueue();
 

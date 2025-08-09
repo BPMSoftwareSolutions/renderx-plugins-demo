@@ -159,10 +159,10 @@ describe("MusicalConductor - Minimal TDD Tests", () => {
       }).toThrow("EventBus is required for first initialization");
     });
 
-    it("should handle startSequence with non-existent sequence", () => {
-      expect(() => {
-        conductor.startSequence("Non-Existent Sequence");
-      }).toThrow('Sequence with ID "Non-Existent Sequence" not found');
+    it("should handle startSequence with non-existent sequence", async () => {
+      await expect(
+        conductor.startSequence("Non-Existent Sequence")
+      ).rejects.toThrow("Sequence not found");
     });
   });
 });

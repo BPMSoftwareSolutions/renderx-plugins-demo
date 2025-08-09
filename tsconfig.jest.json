@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["modules/*"],
+      "@communication/*": ["modules/communication/*"],
+      "@test-utils/*": ["tests/utils/*"],
+      "@fixtures/*": ["tests/fixtures/*"],
+      "@mocks/*": ["tests/mocks/*"]
+    }
+  },
+  "include": [
+    "modules/**/*",
+    "tests/**/*",
+    "tests/types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ]
+}
+

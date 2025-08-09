@@ -21,10 +21,18 @@ export class MovementExecutor {
   private spaValidator: SPAValidator;
   private beatExecutor: BeatExecutor;
 
-  constructor(eventBus: EventBus, spaValidator: SPAValidator) {
+  constructor(
+    eventBus: EventBus,
+    spaValidator: SPAValidator,
+    statisticsManager?: import("../monitoring/StatisticsManager.js").StatisticsManager
+  ) {
     this.eventBus = eventBus;
     this.spaValidator = spaValidator;
-    this.beatExecutor = new BeatExecutor(eventBus, spaValidator);
+    this.beatExecutor = new BeatExecutor(
+      eventBus,
+      spaValidator,
+      statisticsManager
+    );
   }
 
   /**
@@ -62,6 +70,9 @@ export class MovementExecutor {
           })`
         );
 
+        // Handle timing before executing beat based on its timing
+        await this.handleBeatTiming(beat, sequence);
+
         // Execute the beat
         await this.beatExecutor.executeBeat(
           beat,
@@ -72,9 +83,6 @@ export class MovementExecutor {
 
         // Update execution context
         executionContext.completedBeats.push(beat.beat);
-
-        // Handle timing between beats
-        await this.handleBeatTiming(beat, sequence);
       }
 
       // Emit movement completed event
@@ -123,7 +131,7 @@ export class MovementExecutor {
     beat: any,
     sequence: MusicalSequence
   ): Promise<void> {
-    // Skip timing for immediate beats
+    // Skip timing only for immediate beats
     if (beat.timing === MUSICAL_TIMING.IMMEDIATE) {
       return;
     }
@@ -136,6 +144,9 @@ export class MovementExecutor {
 
     switch (beat.timing) {
       case MUSICAL_TIMING.AFTER_BEAT:
+        delay = beatDuration;
+        break;
+      case MUSICAL_TIMING.ON_BEAT:
         delay = beatDuration;
         break;
       case MUSICAL_TIMING.DELAYED:

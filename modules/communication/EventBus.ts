@@ -139,29 +139,31 @@ export class EventBus {
    * @param eventName - Name of the event to emit
    * @param data - Data to pass to subscribers
    */
-  emit<T = any>(eventName: string, data?: T): void {
-    // Track event counts
+  emit<T = any>(eventName: string, data?: T): Promise<void> {
+    // Track event counts (total emissions)
     this.eventCounts[eventName] = (this.eventCounts[eventName] || 0) + 1;
 
-    // EventBus emission logging disabled for cleaner output
-    // if (this.debugMode) {
-    //   console.log(`📡 EventBus: Emitting "${eventName}"`, data);
-    // }
-
     if (!this.events[eventName]) {
-      // EventBus "no subscribers" logging disabled for cleaner output
-      // if (this.debugMode) {
-      //   console.log(`📡 EventBus: No subscribers for "${eventName}"`);
-      // }
-      return;
+      return Promise.resolve();
     }
 
-    // Create a copy of subscribers to prevent issues if callbacks modify the array
     const subscribers = [...this.events[eventName]];
 
     subscribers.forEach((subscription, index) => {
       try {
-        subscription.callback(data);
+        const result: any = (subscription.callback as any)(data);
+        // Swallow async rejections to prevent unhandled promise rejections in tests
+        if (result && typeof result.catch === "function") {
+          result.catch((error: any) => {
+            const pluginInfo = subscription.pluginId
+              ? ` (plugin: ${subscription.pluginId})`
+              : "";
+            console.error(
+              `📡 EventBus: Async error in subscriber ${index} for "${eventName}"${pluginInfo}:`,
+              error
+            );
+          });
+        }
       } catch (error) {
         const pluginInfo = subscription.pluginId
           ? ` (plugin: ${subscription.pluginId})`
@@ -170,9 +172,10 @@ export class EventBus {
           `📡 EventBus: Error in subscriber ${index} for "${eventName}"${pluginInfo}:`,
           error
         );
-        // Continue processing other subscribers even if one fails
       }
     });
+
+    return Promise.resolve();
   }
 
   /**
@@ -244,8 +247,13 @@ export class EventBus {
       totalSubscriptions += this.events[eventName].length;
     });
 
+    const totalEventsEmitted = Object.values(this.eventCounts).reduce(
+      (sum, count) => sum + count,
+      0
+    );
+
     return {
-      totalEvents: Object.keys(this.eventCounts).length,
+      totalEvents: totalEventsEmitted,
       totalSubscriptions,
       eventCounts: { ...this.eventCounts },
       subscriptionCounts,
@@ -330,12 +338,17 @@ export class ConductorEventBus extends EventBus {
    * @param data - Event data
    * @param options - Conductor options
    */
-  override emit<T = any>(eventName: string, data?: T, options: any = {}): void {
+  override emit<T = any>(
+    eventName: string,
+    data?: T,
+    options: any = {}
+  ): Promise<void> {
     const startTime = performance.now();
 
     // Check if this event is part of a sequence
     if (options.sequence) {
-      return this.emitInSequence(eventName, data, options);
+      this.emitInSequence(eventName, data, options);
+      return Promise.resolve();
     }
 
     // Apply priority-based processing
@@ -347,7 +360,8 @@ export class ConductorEventBus extends EventBus {
       dependencies.length > 0 &&
       !this.dependenciesMet(dependencies, options.context)
     ) {
-      return this.queueForDependencies(eventName, data, options, dependencies);
+      this.queueForDependencies(eventName, data, options, dependencies);
+      return Promise.resolve();
     }
 
     // Execute with timing control
@@ -355,6 +369,8 @@ export class ConductorEventBus extends EventBus {
 
     // Update metrics
     this.updateMetrics(eventName, startTime);
+
+    return Promise.resolve();
   }
 
   /**

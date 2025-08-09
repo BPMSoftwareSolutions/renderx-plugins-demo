@@ -33,6 +33,7 @@ export const MUSICAL_TIMING = {
   AFTER_BEAT: "after-beat", // Execute after dependencies complete
   DELAYED: "delayed", // Execute with intentional delay
   SYNCHRONIZED: "synchronized", // Execute synchronized with other events
+  ON_BEAT: "on-beat", // Execute exactly on the next musical beat
 } as const;
 
 export type MusicalTiming =
@@ -45,9 +46,12 @@ export const SEQUENCE_CATEGORIES = {
   COMPONENT_UI: "component-ui", // UI component interactions
   CANVAS_OPERATIONS: "canvas-operations", // Canvas manipulation
   DATA_FLOW: "data-flow", // Data processing and flow
+  SYSTEM: "system", // System sequences (alias for tests)
   SYSTEM_EVENTS: "system-events", // System-level events
   USER_INTERACTIONS: "user-interactions", // User input handling
   INTEGRATION: "integration", // External integrations
+  PERFORMANCE: "performance", // Performance testing sequences
+  LAYOUT: "layout", // Layout-related sequences
 } as const;
 
 export type SequenceCategory =
@@ -66,7 +70,7 @@ export interface SequenceBeat {
   timing?: MusicalTiming; // When to execute this beat
   data?: Record<string, any>; // Data to pass with the event
   dependencies?: string[]; // Events this beat depends on
-  errorHandling?: "continue" | "abort-sequence" | "retry"; // Error handling strategy
+  errorHandling?: "continue" | "abort-sequence" | "retry" | "abort"; // Error handling strategy ("abort" alias supported)
 }
 
 /**

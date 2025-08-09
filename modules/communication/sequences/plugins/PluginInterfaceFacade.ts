@@ -61,8 +61,8 @@ export class PluginInterfaceFacade {
       sequenceName: string,
       data: any,
       priority: SequencePriority
-    ) => string
-  ): any {
+    ) => Promise<string>
+  ): Promise<string | null> {
     try {
       console.log(
         `🎼 PluginInterfaceFacade.play(): ${pluginId} -> ${sequenceName}`
@@ -79,7 +79,7 @@ export class PluginInterfaceFacade {
             .getMountedPluginIds()
             .join(", ")}]`
         );
-        return null;
+        return Promise.resolve(null);
       }
 
       // Start the sequence instead of calling handlers directly
@@ -89,7 +89,7 @@ export class PluginInterfaceFacade {
         `🧠 PluginInterfaceFacade.play() failed for ${pluginId}.${sequenceName}:`,
         (error as Error).message
       );
-      return null;
+      return Promise.resolve(null);
     }
   }
 

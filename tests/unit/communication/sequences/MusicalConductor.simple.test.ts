@@ -313,10 +313,10 @@ describe("MusicalConductor - Simple TDD Tests", () => {
       expect(typeof sequenceId).toBe("string");
     });
 
-    it("should throw error for non-existent sequence", () => {
-      expect(() => {
-        conductor.startSequence("Non-Existent Sequence");
-      }).toThrow();
+    it("should throw error for non-existent sequence", async () => {
+      await expect(
+        conductor.startSequence("Non-Existent Sequence")
+      ).rejects.toThrow("Sequence not found");
     });
 
     it("should handle sequence execution with data", async () => {

@@ -9,7 +9,6 @@ import type {
   MusicalSequence,
   SequenceExecutionContext,
   SequenceRequest,
-  ConductorStatistics,
 } from "../SequenceTypes.js";
 import {
   MUSICAL_CONDUCTOR_EVENT_TYPES,
@@ -17,6 +16,7 @@ import {
 } from "../SequenceTypes.js";
 import { ExecutionQueue } from "./ExecutionQueue.js";
 import { MovementExecutor } from "./MovementExecutor.js";
+import type { StatisticsManager } from "../monitoring/StatisticsManager.js";
 
 export class SequenceExecutor {
   private eventBus: EventBus;
@@ -27,7 +27,7 @@ export class SequenceExecutor {
   // Current execution state
   private activeSequence: SequenceExecutionContext | null = null;
   private sequenceHistory: SequenceExecutionContext[] = [];
-  private statistics: ConductorStatistics;
+  private statisticsManager: StatisticsManager;
 
   // Beat-level orchestration: Ensure no simultaneous beat execution
   private isExecutingBeat: boolean = false;
@@ -42,13 +42,17 @@ export class SequenceExecutor {
     eventBus: EventBus,
     spaValidator: SPAValidator,
     executionQueue: ExecutionQueue,
-    statistics: ConductorStatistics
+    statisticsManager: StatisticsManager
   ) {
     this.eventBus = eventBus;
     this.spaValidator = spaValidator;
     this.executionQueue = executionQueue;
-    this.statistics = statistics;
-    this.movementExecutor = new MovementExecutor(eventBus, spaValidator);
+    this.statisticsManager = statisticsManager;
+    this.movementExecutor = new MovementExecutor(
+      eventBus,
+      spaValidator,
+      statisticsManager
+    );
   }
 
   /**
@@ -118,9 +122,6 @@ export class SequenceExecutor {
 
       // Mark sequence as completed
       const executionTime = Date.now() - startTime;
-
-      // Update statistics
-      this.updateStatistics(executionContext, executionTime);
 
       // Emit sequence completed event
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_COMPLETED, {
@@ -258,35 +259,7 @@ export class SequenceExecutor {
    * @param context - The completed execution context
    * @param executionTime - The execution time in milliseconds
    */
-  private updateStatistics(
-    context: SequenceExecutionContext,
-    executionTime: number
-  ): void {
-    this.statistics.totalSequencesExecuted++;
-    this.statistics.totalBeatsExecuted += context.completedBeats.length;
-
-    if (executionTime) {
-      // Update average execution time
-      const totalTime =
-        this.statistics.averageExecutionTime *
-        (this.statistics.totalSequencesExecuted - 1);
-      this.statistics.averageExecutionTime =
-        (totalTime + executionTime) / this.statistics.totalSequencesExecuted;
-    }
-
-    // Update completion rate (assume completed if no errors)
-    const completedSequences = this.sequenceHistory.filter(
-      (s) => s.errors.length === 0
-    ).length;
-    this.statistics.sequenceCompletionRate =
-      (completedSequences / this.statistics.totalSequencesExecuted) * 100;
-
-    console.log(
-      `📊 SequenceExecutor: Statistics updated - Total: ${
-        this.statistics.totalSequencesExecuted
-      }, Avg Time: ${this.statistics.averageExecutionTime.toFixed(2)}ms`
-    );
-  }
+  // Note: Statistics are now managed centrally in StatisticsManager
 
   /**
    * Get execution statistics
@@ -300,11 +273,12 @@ export class SequenceExecutor {
     currentlyExecuting: boolean;
     executionHistorySize: number;
   } {
+    const stats = this.statisticsManager.getStatistics();
     return {
-      totalSequencesExecuted: this.statistics.totalSequencesExecuted,
-      totalBeatsExecuted: this.statistics.totalBeatsExecuted,
-      averageExecutionTime: this.statistics.averageExecutionTime,
-      sequenceCompletionRate: this.statistics.sequenceCompletionRate,
+      totalSequencesExecuted: stats.totalSequencesExecuted,
+      totalBeatsExecuted: stats.totalBeatsExecuted,
+      averageExecutionTime: stats.averageExecutionTime,
+      sequenceCompletionRate: stats.sequenceCompletionRate,
       currentlyExecuting: !!this.activeSequence,
       executionHistorySize: this.sequenceHistory.length,
     };

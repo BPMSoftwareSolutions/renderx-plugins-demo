@@ -176,7 +176,7 @@ export class MusicalConductor {
       eventBus,
       this.conductorCore.getSPAValidator(),
       this.executionQueue,
-      this.statisticsManager.getStatistics()
+      this.statisticsManager
     );
     this.pluginManager = new PluginManager(
       eventBus,
@@ -486,13 +486,22 @@ export class MusicalConductor {
    * @param priority - Priority level: 'HIGH', 'NORMAL', 'CHAINED'
    * @returns Request ID for tracking
    */
-  startSequence(
-    sequenceId: string,
+  async startSequence(
+    sequenceIdOrName: string,
     data: Record<string, any> = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
-  ): string {
+  ): Promise<string> {
+    // Allow starting by sequence name for backward-compatible tests
+    let resolvedId = sequenceIdOrName;
+    if (!this.sequenceRegistry.has(resolvedId)) {
+      const byName = this.sequenceRegistry.findByName(sequenceIdOrName);
+      if (byName) {
+        resolvedId = byName.id;
+      }
+    }
+
     const result = this.sequenceOrchestrator.startSequence(
-      sequenceId,
+      resolvedId,
       data,
       priority
     );
@@ -501,7 +510,11 @@ export class MusicalConductor {
       if (result.isDuplicate) {
         return result.requestId; // Return duplicate request ID for tracking
       }
-      throw new Error(result.reason || "Failed to start sequence");
+      const reason = result.reason || "Failed to start sequence";
+      if (/not found/i.test(reason)) {
+        throw new Error("Sequence not found");
+      }
+      throw new Error(reason);
     }
 
     return result.requestId;

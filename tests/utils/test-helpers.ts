@@ -3,10 +3,13 @@
  * Reusable utility functions for MusicalConductor testing
  */
 
-import { EventBus, ConductorEventBus } from '@communication/EventBus';
-import { MusicalConductor } from '@communication/sequences/MusicalConductor';
-import { SPAValidator } from '@communication/SPAValidator';
-import type { MusicalSequence, SequenceBeat } from '@communication/sequences/SequenceTypes';
+import { EventBus, ConductorEventBus } from "@communication/EventBus";
+import { MusicalConductor } from "@communication/sequences/MusicalConductor";
+import { SPAValidator } from "@communication/SPAValidator";
+import type {
+  MusicalSequence,
+  SequenceBeat,
+} from "@communication/sequences/SequenceTypes";
 
 /**
  * Test Environment Setup Helpers
@@ -19,7 +22,7 @@ export class TestEnvironment {
    */
   static createEventBus(): EventBus {
     const eventBus = new EventBus();
-    this.instances.set('eventBus', eventBus);
+    this.instances.set("eventBus", eventBus);
     return eventBus;
   }
 
@@ -29,8 +32,10 @@ export class TestEnvironment {
   static createMusicalConductor(eventBus?: EventBus): MusicalConductor {
     // Reset singleton for testing
     MusicalConductor.resetInstance();
-    const conductor = MusicalConductor.getInstance(eventBus || this.createEventBus());
-    this.instances.set('conductor', conductor);
+    const conductor = MusicalConductor.getInstance(
+      eventBus || this.createEventBus()
+    );
+    this.instances.set("conductor", conductor);
     return conductor;
   }
 
@@ -43,9 +48,9 @@ export class TestEnvironment {
       logViolations: false,
       throwOnViolation: false,
       enableRuntimeChecks: true,
-      ...config
+      ...config,
     });
-    this.instances.set('validator', validator);
+    this.instances.set("validator", validator);
     return validator;
   }
 
@@ -55,16 +60,16 @@ export class TestEnvironment {
   static cleanup(): void {
     // Reset MusicalConductor singleton
     MusicalConductor.resetInstance();
-    
+
     // Disable SPA validator runtime checks
-    const validator = this.instances.get('validator');
+    const validator = this.instances.get("validator");
     if (validator) {
       validator.disableRuntimeChecks();
     }
-    
+
     // Clear all instances
     this.instances.clear();
-    
+
     // Clear all timers
     jest.clearAllTimers();
     jest.useRealTimers();
@@ -85,11 +90,17 @@ export class EventTestHelpers {
   /**
    * Wait for an event to be emitted
    */
-  static waitForEvent(eventBus: EventBus, eventName: string, timeout: number = 5000): Promise<any> {
+  static waitForEvent(
+    eventBus: EventBus,
+    eventName: string,
+    timeout: number = 5000
+  ): Promise<any> {
     return new Promise((resolve, reject) => {
       const timeoutId = setTimeout(() => {
         unsubscribe();
-        reject(new Error(`Event '${eventName}' was not emitted within ${timeout}ms`));
+        reject(
+          new Error(`Event '${eventName}' was not emitted within ${timeout}ms`)
+        );
       }, timeout);
 
       const unsubscribe = eventBus.subscribe(eventName, (data) => {
@@ -103,19 +114,22 @@ export class EventTestHelpers {
   /**
    * Collect all events emitted during a test operation
    */
-  static collectEvents(eventBus: EventBus, eventNames: string[]): {
+  static collectEvents(
+    eventBus: EventBus,
+    eventNames: string[]
+  ): {
     events: Array<{ name: string; data: any; timestamp: number }>;
     stop: () => void;
   } {
     const events: Array<{ name: string; data: any; timestamp: number }> = [];
     const unsubscribers: Array<() => void> = [];
 
-    eventNames.forEach(eventName => {
+    eventNames.forEach((eventName) => {
       const unsubscribe = eventBus.subscribe(eventName, (data) => {
         events.push({
           name: eventName,
           data,
-          timestamp: Date.now()
+          timestamp: Date.now(),
         });
       });
       unsubscribers.push(unsubscribe);
@@ -123,7 +137,7 @@ export class EventTestHelpers {
 
     return {
       events,
-      stop: () => unsubscribers.forEach(unsub => unsub())
+      stop: () => unsubscribers.forEach((unsub) => unsub()),
     };
   }
 
@@ -136,8 +150,8 @@ export class EventTestHelpers {
   ): void {
     const actualOrder = events
       .sort((a, b) => a.timestamp - b.timestamp)
-      .map(e => e.name);
-    
+      .map((e) => e.name);
+
     expect(actualOrder).toEqual(expectedOrder);
   }
 }
@@ -165,7 +179,10 @@ export class MusicalTimingHelpers {
       assertTiming: (tolerance: number = 50) => {
         for (let i = 1; i < timestamps.length; i++) {
           const actualDuration = timestamps[i] - timestamps[i - 1];
-          expect(actualDuration).toBeWithinMusicalTiming(beatDuration, tolerance);
+          expect(actualDuration).toBeWithinMusicalTiming(
+            beatDuration,
+            tolerance
+          );
         }
       },
       getBeatDurations: () => {
@@ -174,7 +191,7 @@ export class MusicalTimingHelpers {
           durations.push(timestamps[i] - timestamps[i - 1]);
         }
         return durations;
-      }
+      },
     };
   }
 
@@ -194,7 +211,7 @@ export class MusicalTimingHelpers {
       },
       restore: () => {
         jest.useRealTimers();
-      }
+      },
     };
   }
 }
@@ -212,12 +229,12 @@ export class AsyncTestHelpers {
     interval: number = 100
   ): Promise<void> {
     const startTime = Date.now();
-    
+
     while (!condition()) {
       if (Date.now() - startTime > timeout) {
         throw new Error(`Condition not met within ${timeout}ms`);
       }
-      await new Promise(resolve => setTimeout(resolve, interval));
+      await new Promise((resolve) => setTimeout(resolve, interval));
     }
   }
 
@@ -225,7 +242,14 @@ export class AsyncTestHelpers {
    * Wait for async operations to complete
    */
   static async flushPromises(): Promise<void> {
-    await new Promise(resolve => setImmediate(resolve));
+    await new Promise((resolve) => {
+      if (typeof setImmediate !== "undefined") {
+        setImmediate(resolve);
+      } else {
+        // Fallback for environments without setImmediate
+        setTimeout(resolve, 0);
+      }
+    });
   }
 
   /**
@@ -238,7 +262,7 @@ export class AsyncTestHelpers {
   } {
     let resolve: (value: T) => void;
     let reject: (error: any) => void;
-    
+
     const promise = new Promise<T>((res, rej) => {
       resolve = res;
       reject = rej;
@@ -255,7 +279,9 @@ export class PerformanceTestHelpers {
   /**
    * Measure execution time
    */
-  static async measureTime<T>(operation: () => Promise<T>): Promise<{ result: T; duration: number }> {
+  static async measureTime<T>(
+    operation: () => Promise<T>
+  ): Promise<{ result: T; duration: number }> {
     const start = performance.now();
     const result = await operation();
     const duration = performance.now() - start;
@@ -266,7 +292,7 @@ export class PerformanceTestHelpers {
    * Memory usage helper (Node.js only)
    */
   static getMemoryUsage(): NodeJS.MemoryUsage | null {
-    if (typeof process !== 'undefined' && process.memoryUsage) {
+    if (typeof process !== "undefined" && process.memoryUsage) {
       return process.memoryUsage();
     }
     return null;
@@ -275,7 +301,11 @@ export class PerformanceTestHelpers {
   /**
    * Assert performance within bounds
    */
-  static assertPerformance(duration: number, maxMs: number, operation: string): void {
+  static assertPerformance(
+    duration: number,
+    maxMs: number,
+    operation: string
+  ): void {
     if (duration > maxMs) {
       throw new Error(`${operation} took ${duration}ms, expected < ${maxMs}ms`);
     }

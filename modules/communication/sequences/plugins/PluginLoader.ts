@@ -24,9 +24,9 @@ export class PluginLoader {
 
     // Prefer original path in dev to avoid 500s for missing dist builds
     const isDev =
-      (typeof import.meta !== "undefined" &&
-        (import.meta as any).env &&
-        (import.meta as any).env.DEV) === true;
+      typeof process !== "undefined" &&
+      !!(process as any).env &&
+      (process as any).env.NODE_ENV === "development";
 
     if (isDev) {
       // Try original path first (dev)

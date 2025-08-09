@@ -65,10 +65,12 @@ export class ConductorCore {
     this.setupBeatExecutionLogging();
     // Initialize nested logger in dev by default
     try {
+      // Initialize logger only in development environments
       const isDev =
-        (typeof import.meta !== "undefined" &&
-          (import.meta as any).env &&
-          (import.meta as any).env.DEV) === true;
+        typeof process !== "undefined" &&
+        !!(process as any).env &&
+        (process as any).env.NODE_ENV === "development";
+
       if (isDev) {
         const { ConductorLogger } = await import(
           "../monitoring/ConductorLogger.js"

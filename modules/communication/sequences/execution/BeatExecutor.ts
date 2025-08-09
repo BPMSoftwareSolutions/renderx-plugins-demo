@@ -17,10 +17,12 @@ import {
   MUSICAL_TIMING,
 } from "../SequenceTypes.js";
 import { DataBaton } from "../monitoring/DataBaton.js";
+import type { StatisticsManager } from "../monitoring/StatisticsManager.js";
 
 export class BeatExecutor {
   private eventBus: EventBus;
   private spaValidator: SPAValidator;
+  private statisticsManager?: StatisticsManager;
 
   // Beat execution state
   private isExecutingBeat: boolean = false;
@@ -31,7 +33,11 @@ export class BeatExecutor {
     reject: (error: any) => void;
   }> = [];
 
-  constructor(eventBus: EventBus, spaValidator: SPAValidator) {
+  constructor(
+    eventBus: EventBus,
+    spaValidator: SPAValidator,
+    statisticsManager?: StatisticsManager
+  ) {
     this.eventBus = eventBus;
     this.spaValidator = spaValidator;
   }
@@ -109,6 +115,9 @@ export class BeatExecutor {
       // Handle beat completion
       const executionTime = Date.now() - startTime;
 
+      // Update statistics
+      this.statisticsManager?.recordBeatExecution();
+
       // Emit beat completed event
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.BEAT_COMPLETED, {
         sequenceName: sequence.name,
@@ -151,7 +160,10 @@ export class BeatExecutor {
       });
 
       // Handle error based on beat's error handling strategy
-      if (beat.errorHandling === "abort-sequence") {
+      if (
+        beat.errorHandling === "abort-sequence" ||
+        beat.errorHandling === ("abort" as any)
+      ) {
         throw error;
       } else if (beat.errorHandling === "continue") {
         console.log(
@@ -267,7 +279,9 @@ export class BeatExecutor {
 
       if (
         !beat.errorHandling ||
-        !["continue", "abort-sequence", "retry"].includes(beat.errorHandling)
+        !["continue", "abort-sequence", "retry", "abort"].includes(
+          beat.errorHandling as any
+        )
       ) {
         throw new Error("Beat must have valid error handling strategy");
       }
@@ -292,7 +306,7 @@ export class BeatExecutor {
     event: string;
     dynamics: string;
     timing: string;
-    errorHandling: "continue" | "abort-sequence" | "retry";
+    errorHandling: "continue" | "abort-sequence" | "retry" | "abort";
     hasData: boolean;
     dataKeys: string[];
   } {
