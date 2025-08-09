@@ -19,6 +19,10 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
     useState<LoadedJsonComponent | null>(null);
   const requestedRef = useRef(false);
   const fallbackTimerRef = useRef<number | null>(null);
+  const subscribedRef = useRef(false);
+  const unsubscribeRefs = useRef<{ loaded?: () => void; error?: () => void }>(
+    {}
+  );
 
   // Component loading function - integrates with Musical Conductor symphony
   const loadComponentsAfterPlugins = async () => {
@@ -76,14 +80,17 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
         };
 
         // Subscribe to MusicalConductor events via conductor (SPA-compliant)
-        const unsubscribeLoaded = conductor.subscribe(
-          "components:loaded",
-          handleComponentsLoaded
-        );
-        const unsubscribeError = conductor.subscribe(
-          "components:error",
-          handleComponentsError
-        );
+        if (!subscribedRef.current) {
+          subscribedRef.current = true;
+          unsubscribeRefs.current.loaded = conductor.subscribe(
+            "components:loaded",
+            handleComponentsLoaded
+          );
+          unsubscribeRefs.current.error = conductor.subscribe(
+            "components:error",
+            handleComponentsError
+          );
+        }
 
         // Kick off plugin-driven component load (with callback)
         try {
@@ -155,8 +162,9 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
 
         // Cleanup function
         return () => {
-          unsubscribeLoaded?.();
-          unsubscribeError?.();
+          unsubscribeRefs.current.loaded?.();
+          unsubscribeRefs.current.error?.();
+          subscribedRef.current = false;
         };
       } else {
         console.log("🔄 No conductor/eventBus available for component loading");
@@ -385,12 +393,22 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </h4>
                   <div className="element-list">
-                    {categoryComponents.map((component) => (
+                    {categoryComponents.map((component, idx) => (
                       <div
-                        key={component.id}
+                        key={
+                          component.id ||
+                          `${component.metadata?.type || "unknown"}:${
+                            component.metadata?.name || ""
+                          }:${idx}`
+                        }
                         className="element-item"
                         data-component={component.metadata.type.toLowerCase()}
-                        data-component-id={component.id}
+                        data-component-id={
+                          component.id ||
+                          `${component.metadata?.type || "unknown"}:${
+                            component.metadata?.name || ""
+                          }`
+                        }
                         draggable
                         onDragStart={
                           onDragStart
