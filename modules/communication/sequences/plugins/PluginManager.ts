@@ -6,6 +6,7 @@
 import { EventBus, UnsubscribeFunction } from "../../EventBus.js";
 import { SPAValidator } from "../../SPAValidator.js";
 import type { MusicalSequence } from "../SequenceTypes.js";
+import { DataBaton } from "../monitoring/DataBaton.js";
 import { SequenceRegistry } from "../core/SequenceRegistry.js";
 import { PluginLoader } from "./PluginLoader.js";
 import { PluginValidator } from "./PluginValidator.js";
@@ -155,11 +156,27 @@ export class PluginManager {
 
                 // Serialize handler execution per request via a promise chain
                 const run = async () => {
+                  // Baton snapshots pre/post for plugin handler
+                  const prevSnap = DataBaton.snapshot(context.payload);
                   try {
                     const result = await handlerFn(data, context);
                     if (result && typeof result === "object") {
                       context.payload = { ...context.payload, ...result };
                     }
+
+                    // Log baton delta for this handler
+                    const nextSnap = DataBaton.snapshot(context.payload);
+                    DataBaton.log(
+                      {
+                        sequenceName: context.sequence?.name,
+                        beatEvent: eventName,
+                        handlerName,
+                        pluginId: id,
+                        requestId,
+                      },
+                      prevSnap,
+                      nextSnap
+                    );
 
                     if (handlerName === "notifyComponentsLoaded") {
                       const prepared =

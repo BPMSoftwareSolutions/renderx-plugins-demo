@@ -16,6 +16,7 @@ import {
   MUSICAL_DYNAMICS,
   MUSICAL_TIMING,
 } from "../SequenceTypes.js";
+import { DataBaton } from "../monitoring/DataBaton.js";
 
 export class BeatExecutor {
   private eventBus: EventBus;
@@ -86,8 +87,29 @@ export class BeatExecutor {
         movement
       );
 
-      // Emit the actual beat event
-      this.eventBus.emit(beat.event, contextualEventData);
+      // Baton logging: before emitting beat event
+      try {
+        const prevSnap = DataBaton.snapshot(executionContext.payload);
+        // Attach a shallow copy to payload for handlers to mutate
+        contextualEventData._baton = executionContext.payload;
+        this.eventBus.emit(beat.event, contextualEventData);
+        // After emit, log diff if payload changed
+        const nextSnap = DataBaton.snapshot(executionContext.payload);
+        DataBaton.log(
+          {
+            sequenceName: sequence.name,
+            movementName: movement.name,
+            beatEvent: beat.event,
+            beatNumber: beat.beat,
+            requestId: executionContext.id,
+          },
+          prevSnap,
+          nextSnap
+        );
+      } catch (e) {
+        // Emit even if baton logging fails
+        this.eventBus.emit(beat.event, contextualEventData);
+      }
 
       // Handle beat completion
       const executionTime = Date.now() - startTime;
