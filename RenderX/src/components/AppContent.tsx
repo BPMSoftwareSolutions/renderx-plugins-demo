@@ -20,7 +20,10 @@ import {
 // ElementLibrary component is now imported directly and integrates with Musical Conductor
 // Removed plugin-loading logic - using original ElementLibrary.tsx with Musical Conductor integration
 
-import { MusicalConductor, resetCommunicationSystem } from "musical-conductor";
+import {
+  type ConductorClient,
+  resetCommunicationSystem,
+} from "musical-conductor";
 import { ConductorService } from "../services/ConductorService";
 
 const AppContent: React.FC = () => {
@@ -34,7 +37,7 @@ const AppContent: React.FC = () => {
   });
 
   const [communicationSystem, setCommunicationSystem] = useState<{
-    conductor: MusicalConductor;
+    conductor: ConductorClient;
   } | null>(null);
 
   // Drag handlers for ElementLibrary domain events - THIN CLIENT APPROACH

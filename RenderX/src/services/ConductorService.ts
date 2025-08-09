@@ -1,8 +1,13 @@
-import { initializeCommunicationSystem, MusicalConductor } from "musical-conductor";
+import {
+  initializeCommunicationSystem,
+  type ConductorClient,
+} from "musical-conductor";
 
 export class ConductorService {
   private static instance: ConductorService;
-  private communicationSystem: ReturnType<typeof initializeCommunicationSystem> | null = null;
+  private communicationSystem: ReturnType<
+    typeof initializeCommunicationSystem
+  > | null = null;
 
   private constructor() {}
 
@@ -30,14 +35,15 @@ export class ConductorService {
     }
   }
 
-  getConductor(): MusicalConductor {
+  getConductor(): ConductorClient {
     if (!this.communicationSystem) {
       // Lazy init for convenience
       const system = initializeCommunicationSystem();
       this.communicationSystem = system;
-      (window as any).renderxCommunicationSystem = { conductor: system.conductor };
+      (window as any).renderxCommunicationSystem = {
+        conductor: system.conductor,
+      };
     }
     return this.communicationSystem!.conductor;
   }
 }
-

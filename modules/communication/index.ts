@@ -30,9 +30,11 @@ export {
 
 // Musical Conductor exports
 export { MusicalConductor } from "./sequences/MusicalConductor.js";
+export type { ConductorClient } from "./sequences/api/ConductorClient.js";
 
 // Import MusicalConductor and sequences for internal use
 import { MusicalConductor } from "./sequences/MusicalConductor.js";
+import type { ConductorClient } from "./sequences/api/ConductorClient.js";
 import { initializeMusicalSequences } from "./sequences/index.js";
 import { eventBus as internalEventBus, ConductorEventBus } from "./EventBus.js";
 
@@ -76,7 +78,7 @@ export {
 let communicationSystemInitialized = false;
 let communicationSystemInstance: {
   eventBus: ConductorEventBus;
-  conductor: MusicalConductor;
+  conductor: ConductorClient;
   sequenceResults: ReturnType<typeof initializeMusicalSequences>;
 } | null = null;
 
@@ -98,7 +100,7 @@ export function resetCommunicationSystem(): void {
  */
 export function initializeCommunicationSystem(): {
   eventBus: ConductorEventBus;
-  conductor: MusicalConductor;
+  conductor: ConductorClient;
   sequenceResults: ReturnType<typeof initializeMusicalSequences>;
 } {
   // Return existing instance if already initialized (React StrictMode protection)
@@ -137,7 +139,7 @@ export function initializeCommunicationSystem(): {
   // Store instance and mark as initialized
   communicationSystemInstance = {
     eventBus: internalEventBus as ConductorEventBus,
-    conductor,
+    conductor: conductor as unknown as ConductorClient,
     sequenceResults,
   };
   communicationSystemInitialized = true;
