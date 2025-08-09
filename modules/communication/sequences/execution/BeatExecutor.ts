@@ -87,29 +87,24 @@ export class BeatExecutor {
         movement
       );
 
-      // Baton logging: before emitting beat event
-      try {
-        const prevSnap = DataBaton.snapshot(executionContext.payload);
-        // Attach a shallow copy to payload for handlers to mutate
-        contextualEventData._baton = executionContext.payload;
-        this.eventBus.emit(beat.event, contextualEventData);
-        // After emit, log diff if payload changed
-        const nextSnap = DataBaton.snapshot(executionContext.payload);
-        DataBaton.log(
-          {
-            sequenceName: sequence.name,
-            movementName: movement.name,
-            beatEvent: beat.event,
-            beatNumber: beat.beat,
-            requestId: executionContext.id,
-          },
-          prevSnap,
-          nextSnap
-        );
-      } catch (e) {
-        // Emit even if baton logging fails
-        this.eventBus.emit(beat.event, contextualEventData);
-      }
+      // Baton logging + async emission: await subscribers before marking completion
+      const prevSnap = DataBaton.snapshot(executionContext.payload);
+      // Attach a shallow copy to payload for handlers to mutate
+      (contextualEventData as any)._baton = executionContext.payload;
+      await (this.eventBus as any).emitAsync(beat.event, contextualEventData);
+      // After emit, log diff if payload changed
+      const nextSnap = DataBaton.snapshot(executionContext.payload);
+      DataBaton.log(
+        {
+          sequenceName: sequence.name,
+          movementName: movement.name,
+          beatEvent: beat.event,
+          beatNumber: beat.beat,
+          requestId: executionContext.id,
+        },
+        prevSnap,
+        nextSnap
+      );
 
       // Handle beat completion
       const executionTime = Date.now() - startTime;

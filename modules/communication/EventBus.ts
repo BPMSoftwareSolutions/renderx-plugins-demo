@@ -176,6 +176,39 @@ export class EventBus {
   }
 
   /**
+   * Emit an event and await all (possibly async) subscribers
+   * Resolves when all subscriber callbacks have settled
+   */
+  async emitAsync<T = any>(eventName: string, data?: T): Promise<void> {
+    // Track event counts
+    this.eventCounts[eventName] = (this.eventCounts[eventName] || 0) + 1;
+
+    if (!this.events[eventName]) {
+      return;
+    }
+
+    const subscribers = [...this.events[eventName]];
+    const tasks = subscribers.map((subscription, index) => {
+      try {
+        const ret = (subscription.callback as any)(data);
+        return Promise.resolve(ret);
+      } catch (error) {
+        const pluginInfo = subscription.pluginId
+          ? ` (plugin: ${subscription.pluginId})`
+          : "";
+        console.error(
+          `📡 EventBus: Error in subscriber ${index} for "${eventName}"${pluginInfo}:`,
+          error
+        );
+        return Promise.resolve();
+      }
+    });
+
+    // Await all, but do not throw on individual failures
+    await Promise.allSettled(tasks);
+  }
+
+  /**
    * Remove all subscribers for an event
    * @param eventName - Name of the event to clear
    */
