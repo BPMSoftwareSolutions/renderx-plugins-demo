@@ -420,11 +420,6 @@ const Canvas: React.FC<CanvasProps> = ({
 
                 // Render component using data-driven approach
                 const pos = element.position || { x: 0, y: 0 };
-                const wrapperStyle: React.CSSProperties = {
-                  position: "absolute",
-                  left: pos.x,
-                  top: pos.y,
-                };
                 // Debug position rendering
                 try {
                   console.log("[Canvas] render element position", {
@@ -435,20 +430,14 @@ const Canvas: React.FC<CanvasProps> = ({
                 } catch {}
 
                 return (
-                  <div
+                  <CanvasElement
                     key={element.id}
-                    className="canvas-element-wrapper"
-                    data-element-id={elementId}
-                    style={wrapperStyle}
-                  >
-                    <CanvasElement
-                      element={element}
-                      elementId={elementId}
-                      cssClass={cssClass}
-                      onDragStart={onCanvasElementDragStart}
-                      onDragEnd={onCanvasElementDragEnd}
-                    />
-                  </div>
+                    element={{ ...element, position: pos }}
+                    elementId={elementId}
+                    cssClass={cssClass}
+                    onDragStart={onCanvasElementDragStart}
+                    onDragEnd={onCanvasElementDragEnd}
+                  />
                 );
               })}
             </>

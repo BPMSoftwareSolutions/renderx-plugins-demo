@@ -124,10 +124,19 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
   const rootElement = doc.body.firstElementChild;
 
   if (rootElement) {
+    // Apply absolute positioning directly on the component root to avoid wrapper div
+    const pos = (element as any)?.position || { x: 0, y: 0 };
+
     // Add canvas-specific attributes to the component's root element
     rootElement.setAttribute("id", elementId);
     rootElement.setAttribute("data-component-id", elementId);
     rootElement.setAttribute("draggable", "true");
+
+    // Apply absolute positioning inline to avoid extra wrapper
+    rootElement.setAttribute(
+      "style",
+      `position:absolute; left:${pos.x}px; top:${pos.y}px;`
+    );
 
     // Add canvas classes while preserving component's original classes
     const existingClasses = rootElement.getAttribute("class") || "";
@@ -255,6 +264,25 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
       Array.from(componentElement.attributes).forEach((attr) => {
         if (attr.name === "class") {
           props.className = attr.value;
+        } else if (attr.name === "style") {
+          // Convert inline style string to React style object
+          const styleObj: Record<string, string> = {};
+          const toCamel = (s: string) =>
+            s
+              .trim()
+              .replace(/^-ms-/, "ms-")
+              .replace(/-([a-z])/g, (_, c) => (c ? c.toUpperCase() : ""));
+          attr.value
+            .split(";")
+            .map((pair) => pair.trim())
+            .filter(Boolean)
+            .forEach((pair) => {
+              const [key, ...rest] = pair.split(":");
+              if (!key || rest.length === 0) return;
+              const val = rest.join(":").trim();
+              styleObj[toCamel(key)] = val;
+            });
+          props.style = styleObj;
         } else if (attr.name === "onclick") {
           // Skip onclick for now - would need proper event handling
         } else if (attr.name === "onchange") {

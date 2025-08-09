@@ -440,11 +440,53 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
                         data-component={component.metadata.type.toLowerCase()}
                         data-component-id={getComponentId(component)}
                         draggable
-                        onDragStart={
-                          onDragStart
-                            ? (e) => onDragStart(e, component)
-                            : undefined
-                        }
+                        onDragStart={(e) => {
+                          try {
+                            // Build a drag image composed only of the component preview
+                            const container = document.createElement("div");
+                            container.style.position = "absolute";
+                            container.style.top = "-1000px";
+                            container.style.left = "-1000px";
+                            container.style.pointerEvents = "none";
+                            const preview = (
+                              e.currentTarget as HTMLElement
+                            ).querySelector(
+                              ".component-preview-container"
+                            ) as HTMLElement | null;
+                            if (preview) {
+                              const clone = preview.cloneNode(
+                                true
+                              ) as HTMLElement;
+                              clone.style.transform = "scale(1)";
+                              clone.style.padding = "0";
+                              clone.style.border = "none";
+                              // Wrap to match preview CSS scope
+                              const wrapper = document.createElement("div");
+                              wrapper.className = "element-item";
+                              wrapper.setAttribute(
+                                "data-component-id",
+                                getComponentId(component)
+                              );
+                              wrapper.appendChild(clone);
+                              container.appendChild(wrapper);
+                              document.body.appendChild(container);
+                              const rect = preview.getBoundingClientRect();
+                              const offsetX = rect.width / 2;
+                              const offsetY = rect.height / 2;
+                              e.dataTransfer?.setDragImage(
+                                container,
+                                offsetX,
+                                offsetY
+                              );
+                              // Cleanup in next tick
+                              setTimeout(() => {
+                                if (container.parentNode)
+                                  container.parentNode.removeChild(container);
+                              }, 0);
+                            }
+                          } catch {}
+                          if (onDragStart) onDragStart(e, component);
+                        }}
                         onDragEnd={onDragEnd}
                         title={`${component.metadata.description}\nVersion: ${component.metadata.version}\nAuthor: ${component.metadata.author}\nDrag to canvas to add`}
                       >
