@@ -156,10 +156,48 @@ export class PluginManager {
 
                 // Serialize handler execution per request via a promise chain
                 const run = async () => {
+                  // Provide a conductor-aware logger to plugin handlers
+                  const logger = {
+                    info: (...message: any[]) =>
+                      this.eventBus.emit("musical-conductor:log", {
+                        level: "info",
+                        message,
+                        requestId,
+                        pluginId: id,
+                        handlerName,
+                      }),
+                    warn: (...message: any[]) =>
+                      this.eventBus.emit("musical-conductor:log", {
+                        level: "warn",
+                        message,
+                        requestId,
+                        pluginId: id,
+                        handlerName,
+                      }),
+                    error: (...message: any[]) =>
+                      this.eventBus.emit("musical-conductor:log", {
+                        level: "error",
+                        message,
+                        requestId,
+                        pluginId: id,
+                        handlerName,
+                      }),
+                  } as const;
+
+                  // Emit handler start
+                  this.eventBus.emit("plugin:handler:start", {
+                    requestId,
+                    pluginId: id,
+                    handlerName,
+                  });
+
                   // Baton snapshots pre/post for plugin handler
                   const prevSnap = DataBaton.snapshot(context.payload);
                   try {
-                    const result = await handlerFn(data, context);
+                    const result = await handlerFn(data, {
+                      ...context,
+                      logger,
+                    });
                     if (result && typeof result === "object") {
                       context.payload = { ...context.payload, ...result };
                     }
@@ -195,8 +233,12 @@ export class PluginManager {
                       `🧠 PluginManager: Handler execution failed for ${id}.${handlerName}:`,
                       err
                     );
-                    this.eventBus.emit("components:error", {
-                      error: (err as Error)?.message || String(err),
+                  } finally {
+                    // Emit handler end
+                    this.eventBus.emit("plugin:handler:end", {
+                      requestId,
+                      pluginId: id,
+                      handlerName,
                     });
                   }
                 };
