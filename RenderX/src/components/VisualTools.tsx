@@ -35,6 +35,16 @@ export const VisualTools: React.FC<VisualToolsProps> = ({
         tools,
         startBox,
         onResizeUpdate,
+        debugBox: {
+          elementId,
+          startBox,
+          overlayRect: (() => {
+            const p = (e.target as HTMLElement)?.closest('.rx-resize-overlay') as HTMLElement | null;
+            if (!p) return null as any;
+            const r = p.getBoundingClientRect();
+            return { x: r.x, y: r.y, w: r.width, h: r.height };
+          })(),
+        },
       }
     );
     const sx = e.clientX;

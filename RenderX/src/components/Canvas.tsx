@@ -424,10 +424,9 @@ const Canvas: React.FC<CanvasProps> = ({
             <>
               {canvasElements.map((element) => {
                 // Generate stable element ID and CSS class (should be done once when element is created)
-                const elementId =
-                  element.elementId ||
-                  element.id ||
-                  `rx-${Math.random().toString(36).slice(2, 8)}`;
+                // Use a stable identifier for all interactions to avoid drag origin resets
+                // Prefer element.id (created by plugins). Fallback to element.elementId if present.
+                const elementId = element.id || element.elementId;
                 const cssClass =
                   element.cssClass ||
                   `rx-comp-${(
@@ -445,12 +444,42 @@ const Canvas: React.FC<CanvasProps> = ({
                   });
                 } catch {}
 
+
+                // If width/height are missing, measure the rendered component once and persist size
+                // This keeps the overlay aligned with actual DOM size
+                if ((element.style?.width == null || element.style?.height == null) && typeof window !== 'undefined') {
+                  requestAnimationFrame(() => {
+                    const el = document.getElementById(elementId);
+                    if (el) {
+                      const rect = el.getBoundingClientRect();
+                      const measuredW = Math.round(rect.width);
+                      const measuredH = Math.round(rect.height);
+                      if (measuredW > 0 && measuredH > 0) {
+                        setCanvasElements((prev) =>
+                          prev.map((p) =>
+                            p.id === element.id
+                              ? {
+                                  ...p,
+                                  style: {
+                                    ...p.style,
+                                    width: p.style?.width ?? measuredW,
+                                    height: p.style?.height ?? measuredH,
+                                  },
+                                }
+                              : p
+                          )
+                        );
+                      }
+                    }
+                  });
+                }
+
                 const isSelected =
                   selectedId === elementId || selectedId === element.id;
 
                 return (
                   <div
-                    key={element.id}
+                    key={elementId}
                     style={{
                       position: "absolute",
                       left: pos.x,
@@ -481,7 +510,9 @@ const Canvas: React.FC<CanvasProps> = ({
                           onDragUpdate: ({ elementId: id, position }) => {
                             setCanvasElements((prev) =>
                               prev.map((el) =>
-                                el.id === id ? { ...el, position } : el
+                                (el.id === id || (el as any).elementId === id)
+                                  ? { ...el, position }
+                                  : el
                               )
                             );
                           },
@@ -505,7 +536,9 @@ const Canvas: React.FC<CanvasProps> = ({
                             onDragUpdate: ({ elementId: id, position }) => {
                               setCanvasElements((prev) =>
                                 prev.map((el) =>
-                                  el.id === id ? { ...el, position } : el
+                                  (el.id === id || (el as any).elementId === id)
+                                    ? { ...el, position }
+                                    : el
                                 )
                               );
                             },
@@ -558,15 +591,23 @@ const Canvas: React.FC<CanvasProps> = ({
                           h: element.style?.height || 0,
                         }}
                         onResizeUpdate={({ elementId: id, box }) => {
+                          // Apply both size and position updates from resize plugin
+                          // Clamp width/height to minimum 1px to prevent handle collapse
+                          const minSize = 1;
                           setCanvasElements((prev) =>
                             prev.map((el) =>
-                              el.id === id
+                              (el.id === id || (el as any).elementId === id)
                                 ? {
                                     ...el,
+                                    position: {
+                                      ...(el.position || { x: 0, y: 0 }),
+                                      x: Math.round(box.x ?? (el.position?.x || 0)),
+                                      y: Math.round(box.y ?? (el.position?.y || 0)),
+                                    },
                                     style: {
                                       ...el.style,
-                                      width: box.w,
-                                      height: box.h,
+                                      width: Math.max(minSize, Math.round(box.w ?? (el.style?.width || 1))),
+                                      height: Math.max(minSize, Math.round(box.h ?? (el.style?.height || 1))),
                                     },
                                   }
                                 : el
