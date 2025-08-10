@@ -13,7 +13,8 @@
       "path": "component-library-plugin/",
       "version": "1.0.0",
       "description": "Component library loading and preparation plugin",
-      "autoMount": true
+      "autoMount": true,
+      "ui": { "slot": "left", "export": "LibraryPanel" }
     },
     {
       "name": "Library.component-drag-symphony",

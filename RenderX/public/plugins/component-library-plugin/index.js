@@ -179,14 +179,14 @@ export const handlers = {
 export function LibraryPanel(props = {}) {
   const React = (window && window.React) || null;
   if (!React) return null;
-  const { useState, useEffect, useMemo } = React;
+  const { useState, useEffect, useMemo, useRef } = React;
   const { onDragStart, onDragEnd } = props;
 
   const [components, setComponents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Kick off plugin-driven component load and subscriptions
+  // Kick off plugin-driven component load and subscriptions (StrictMode + mount-order safe)
   useEffect(() => {
     const system = (window && window.renderxCommunicationSystem) || null;
     if (!system || !system.conductor) {
@@ -210,20 +210,36 @@ export function LibraryPanel(props = {}) {
       setLoading(false);
     });
 
-    // Trigger the existing symphony (provides onComponentsLoaded callback too)
-    try {
-      conductor.play("Component Library Plugin", "load-components-symphony", {
-        source: "json-components",
-        onComponentsLoaded: (items) => {
-          setComponents(items || []);
-          setLoading(false);
-          setError(null);
-        },
-      });
-    } catch (e) {
-      setError(e && e.message ? e.message : "Failed to load components");
-      setLoading(false);
-    }
+    // Try to start the symphony only after the plugin is actually mounted
+    const tryStart = () => {
+      try {
+        if ((window && window.__rx_library_played__) === true) return;
+        const getIds =
+          conductor.getMountedPlugins && conductor.getMountedPlugins();
+        const ids = Array.isArray(getIds) ? getIds : [];
+        if (ids.includes && ids.includes("Component Library Plugin")) {
+          window.__rx_library_played__ = true;
+          conductor.play(
+            "Component Library Plugin",
+            "load-components-symphony",
+            {
+              source: "json-components",
+              onComponentsLoaded: (items) => {
+                setComponents(items || []);
+                setLoading(false);
+                setError(null);
+              },
+            }
+          );
+        } else {
+          setTimeout(tryStart, 100);
+        }
+      } catch (e) {
+        setTimeout(tryStart, 150);
+      }
+    };
+
+    tryStart();
 
     return () => {
       try {

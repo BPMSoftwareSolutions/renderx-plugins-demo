@@ -403,10 +403,7 @@ const AppContent: React.FC = () => {
                 id="component-library"
                 data-plugin-mounted="true"
               >
-                <ElementLibrary
-                  onDragStart={handleDragStart}
-                  onDragEnd={handleDragEnd}
-                />
+                <ElementLibrary />
               </aside>
             )}
 

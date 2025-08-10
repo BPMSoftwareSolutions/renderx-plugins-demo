@@ -7,6 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 import type { LoadedJsonComponent } from "../types/JsonComponent";
 import type { ElementLibraryProps } from "../types/AppTypes";
 import LegacyElementLibrary from "./LegacyElementLibrary";
+import { loadUiForSlot } from "../services/PluginUiLoader";
 
 const ElementLibrary: React.FC<ElementLibraryProps> = ({
   onDragStart,
@@ -23,20 +24,10 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
         const dev =
           (typeof import.meta !== "undefined" &&
             (import.meta as any).env?.DEV) === true;
-        if (!dev) {
-          return;
-        }
-        const spec = "/plugins/component-library-plugin/index.js";
-        // Dynamic spec avoids Vite static import analysis; runtime middleware serves it
-        const m: any = await import(/* @vite-ignore */ spec as any);
+        if (!dev) return;
+        const Comp = await loadUiForSlot("left");
         if (cancelled) return;
-        const Comp =
-          m?.LibraryPanel ||
-          (m?.default && (m.default.LibraryPanel || m.default)) ||
-          null;
-        if (typeof Comp === "function") {
-          setPluginUIPanel(() => Comp);
-        }
+        if (typeof Comp === "function") setPluginUIPanel(() => Comp);
       } catch (e) {
         // Silently ignore - we'll use fallback UI
       } finally {
@@ -48,11 +39,12 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
     };
   }, []);
 
-  const [components, setComponents] = useState<LoadedJsonComponent[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [draggedComponent, setDraggedComponent] =
-    useState<LoadedJsonComponent | null>(null);
+  // The adapter no longer handles legacy loading directly; it simply renders plugin UI or the legacy component
+  // Keeping minimal state here in case we need to surface error/loading later via Suspense/Boundary
+  const [components] = useState<LoadedJsonComponent[]>([]);
+  const [loading] = useState(true);
+  const [error] = useState<string | null>(null);
+  const [draggedComponent] = useState<LoadedJsonComponent | null>(null);
   const requestedRef = useRef(false);
   const fallbackTimerRef = useRef<number | null>(null);
   const subscribedRef = useRef(false);
@@ -253,18 +245,24 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
     }
   };
 
-  // Load components when ElementLibrary mounts and communication system is ready
+  // Load components only when plugin UI is unavailable (after plugin import attempt)
   useEffect(() => {
+    if (!pluginTried) return; // wait until plugin import attempt finished
+    if (PluginUIPanel) return; // plugin UI available; skip legacy loading
+
+    let cancelled = false;
     let cleanup: (() => void) | undefined;
 
     const checkAndLoadComponents = async () => {
+      if (cancelled) return;
       const system = (window as any).renderxCommunicationSystem;
       if (system) {
         // Wait for plugins to finish loading before triggering component loading
         console.log(
-          "🔍 ElementLibrary: Waiting for plugins to load before triggering component loading..."
+          "🔍 ElementLibrary(legacy): Waiting for plugins to load before triggering component loading..."
         );
         setTimeout(async () => {
+          if (cancelled) return;
           cleanup = await loadComponentsAfterPlugins();
         }, 300); // Small delay to allow plugins to mount
       } else {
@@ -275,13 +273,11 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
 
     checkAndLoadComponents();
 
-    // Return cleanup function
     return () => {
-      if (cleanup) {
-        cleanup();
-      }
+      cancelled = true;
+      if (cleanup) cleanup();
     };
-  }, []);
+  }, [pluginTried, PluginUIPanel]);
 
   const getComponentsByCategory = () => {
     const categories: Record<string, LoadedJsonComponent[]> = {};
@@ -394,7 +390,21 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
     return "";
   };
 
-  // Render plugin UI if present (keeps hook order stable)
+  // While plugin UI import has not finished, avoid mounting legacy to prevent double loads
+  if (!pluginTried) {
+    return (
+      <div className="element-library">
+        <div className="element-library-content">
+          <div className="element-library-loading">
+            <div className="loading-state">
+              <h4>Loading Library UI...</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Render plugin UI if present (keeps hook order stable)
   if (PluginUIPanel) {
     return <PluginUIPanel onDragStart={onDragStart} onDragEnd={onDragEnd} />;
