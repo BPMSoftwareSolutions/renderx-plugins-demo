@@ -23,17 +23,23 @@ export class PluginLoader {
     const bundledPath = `${pluginDir}/dist/plugin.js`;
 
     // Prefer original path in dev to avoid 500s for missing dist builds
-    let isDev = false;
-    try {
-      // Detect Vite-style dev without referencing import.meta in TS
-      // eslint-disable-next-line no-new-func
-      const checkImportMeta = (0, eval)('typeof import !== "undefined" && typeof import.meta !== "undefined" && import.meta.env && import.meta.env.DEV');
-      isDev = checkImportMeta === true;
-    } catch {}
-    if (!isDev) {
-      // Fallback for Node/Jest
-      isDev = typeof process !== 'undefined' && !!process.env && process.env.NODE_ENV !== 'production';
-    }
+    const isDev = (() => {
+      try {
+        // Access import.meta via eval to avoid TS restrictions under Jest
+        const im: any = (0, eval)("import.meta");
+        return !!(im && im.env && im.env.DEV);
+      } catch {
+        try {
+          return (
+            typeof process !== "undefined" &&
+            (process as any).env &&
+            (process as any).env.NODE_ENV === "development"
+          );
+        } catch {
+          return false;
+        }
+      }
+    })();
 
     if (isDev) {
       // Try original path first (dev)
