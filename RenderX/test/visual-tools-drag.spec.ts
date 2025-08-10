@@ -57,12 +57,16 @@ test('Drag component to canvas, show VisualTools, and move it', async ({ page })
   // Screenshot: selected element with VisualTools handles visible
   await page.screenshot({ path: path.join(process.cwd(), 'renderx-drag-selected.png'), fullPage: false });
 
-  // Perform a pointer-based move: mouse down on element center, move to new location
+  // Perform a pointer-based move: drag element center to bottom-left corner of canvas
   const startX = before.x + before.width / 2;
   const startY = before.y + before.height / 2;
   await page.mouse.move(startX, startY);
   await page.mouse.down();
-  await page.mouse.move(startX + 120, startY + 80, { steps: 12 });
+
+  // Compute target near bottom-left (with 10px padding)
+  const targetX = canvasBox.x + 10 + (before.width / 2);
+  const targetY = canvasBox.y + canvasBox.height - (before.height / 2) - 10;
+  await page.mouse.move(targetX, targetY, { steps: 30 });
   await page.mouse.up();
 
   // Verify the element moved (in any direction)
