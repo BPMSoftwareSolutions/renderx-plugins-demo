@@ -9,17 +9,10 @@ import App from "./App.tsx";
 
 // Set Musical Conductor environment for client app (RenderX)
 try {
-  const dev = ((): boolean => {
-    try {
-      // Vite provides import.meta.env in dev/build
-      const im: any = (0, eval)("import.meta");
-      if (im && im.env) {
-        if (im.env.DEV === true) return true;
-        if (im.env.MODE === "development") return true;
-      }
-    } catch {}
-    return false;
-  })();
+  const dev =
+    (typeof import.meta !== "undefined" &&
+      (import.meta as any).env &&
+      (import.meta as any).env.DEV) === true;
   (window as any).__CONDUCTOR_ENV__ = {
     ...(window as any).__CONDUCTOR_ENV__,
     dev,
