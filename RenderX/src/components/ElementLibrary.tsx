@@ -6,12 +6,48 @@
 import React, { useState, useEffect, useRef } from "react";
 import type { LoadedJsonComponent } from "../types/JsonComponent";
 import type { ElementLibraryProps } from "../types/AppTypes";
-import { jsonComponentLoader } from "../services/JsonComponentLoader";
+import LegacyElementLibrary from "./LegacyElementLibrary";
 
 const ElementLibrary: React.FC<ElementLibraryProps> = ({
   onDragStart,
   onDragEnd,
 }) => {
+  // Try to render plugin-provided UI first; fallback to built-in UI if unavailable
+  const [PluginUIPanel, setPluginUIPanel] = useState<any>(null);
+  const [pluginTried, setPluginTried] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        // Only attempt plugin UI in dev; production uses fallback UI
+        const dev =
+          (typeof import.meta !== "undefined" &&
+            (import.meta as any).env?.DEV) === true;
+        if (!dev) {
+          return;
+        }
+        const spec = "/plugins/component-library-plugin/index.js";
+        // Dynamic spec avoids Vite static import analysis; runtime middleware serves it
+        const m: any = await import(/* @vite-ignore */ spec as any);
+        if (cancelled) return;
+        const Comp =
+          m?.LibraryPanel ||
+          (m?.default && (m.default.LibraryPanel || m.default)) ||
+          null;
+        if (typeof Comp === "function") {
+          setPluginUIPanel(() => Comp);
+        }
+      } catch (e) {
+        // Silently ignore - we'll use fallback UI
+      } finally {
+        if (!cancelled) setPluginTried(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const [components, setComponents] = useState<LoadedJsonComponent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -358,166 +394,15 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
     return "";
   };
 
-  return (
-    <div className="element-library">
-      <div className="element-library-header">
-        <h3>
-          Element Library
-          <span className="component-count" title="Loaded components">
-            {components.length > 0 ? ` (${components.length})` : ""}
-          </span>
-        </h3>
-        {loading && <div className="loading-indicator">Loading...</div>}
-        {error && <div className="error-indicator">Error: {error}</div>}
-      </div>
-      <div className="element-library-content">
-        {loading ? (
-          <div className="element-library-loading">
-            <div className="loading-state">
-              <h4>Loading Components...</h4>
-              <p>Scanning json-components folder</p>
-            </div>
-          </div>
-        ) : error ? (
-          <div className="element-library-error">
-            <div className="error-state">
-              <h4>Failed to Load Components</h4>
-              <p>{error}</p>
-            </div>
-          </div>
-        ) : components.length === 0 ? (
-          <div className="element-library-empty">
-            <div className="empty-state">
-              <h4>No Components Found</h4>
-              <p>No JSON components found in public/json-components/</p>
-              <p>Add .json component files to see them here.</p>
-            </div>
-          </div>
-        ) : (
-          <>
-            {/* Inject component styles */}
-            <style>
-              {components
-                .map((component) => getComponentStyles(component))
-                .join("\n")}
-              {/* Additional preview styles */}
-              {`
-                .element-item .component-preview-container {
-                  margin: 4px 0;
-                  padding: 4px;
-                  border: 1px solid #e0e0e0;
-                  border-radius: 3px;
-                  background: #f9f9f9;
-                  min-height: 24px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: 12px;
-                  overflow: hidden;
-                }
-                .element-item .component-preview {
-                  transform: scale(0.8);
-                  transform-origin: center;
-                  pointer-events: none;
-                }
-                .element-item .component-preview-fallback {
-                  color: #666;
-                  font-style: italic;
-                }
-              `}
-            </style>
+  // Render plugin UI if present (keeps hook order stable)
+  // Render plugin UI if present (keeps hook order stable)
+  if (PluginUIPanel) {
+    return <PluginUIPanel onDragStart={onDragStart} onDragEnd={onDragEnd} />;
+  }
 
-            {Object.entries(getComponentsByCategory()).map(
-              ([category, categoryComponents]) => (
-                <div key={category} className="element-category">
-                  <h4>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                  </h4>
-                  <div className="element-list">
-                    {categoryComponents.map((component, idx) => (
-                      <div
-                        key={`${getComponentId(component)}:${idx}`}
-                        className="element-item"
-                        data-component={component.metadata.type.toLowerCase()}
-                        data-component-id={getComponentId(component)}
-                        draggable
-                        onDragStart={(e) => {
-                          try {
-                            // Build a drag image composed only of the component preview
-                            const container = document.createElement("div");
-                            container.style.position = "absolute";
-                            container.style.top = "-1000px";
-                            container.style.left = "-1000px";
-                            container.style.pointerEvents = "none";
-                            const preview = (
-                              e.currentTarget as HTMLElement
-                            ).querySelector(
-                              ".component-preview-container"
-                            ) as HTMLElement | null;
-                            if (preview) {
-                              const clone = preview.cloneNode(
-                                true
-                              ) as HTMLElement;
-                              clone.style.transform = "scale(1)";
-                              clone.style.padding = "0";
-                              clone.style.border = "none";
-                              // Wrap to match preview CSS scope
-                              const wrapper = document.createElement("div");
-                              wrapper.className = "element-item";
-                              wrapper.setAttribute(
-                                "data-component-id",
-                                getComponentId(component)
-                              );
-                              wrapper.appendChild(clone);
-                              container.appendChild(wrapper);
-                              document.body.appendChild(container);
-                              const rect = preview.getBoundingClientRect();
-                              const offsetX = rect.width / 2;
-                              const offsetY = rect.height / 2;
-                              e.dataTransfer?.setDragImage(
-                                container,
-                                offsetX,
-                                offsetY
-                              );
-                              // Cleanup in next tick
-                              setTimeout(() => {
-                                if (container.parentNode)
-                                  container.parentNode.removeChild(container);
-                              }, 0);
-                            }
-                          } catch {}
-                          if (onDragStart) onDragStart(e, component);
-                        }}
-                        onDragEnd={onDragEnd}
-                        title={`${component.metadata.description}\nVersion: ${component.metadata.version}\nAuthor: ${component.metadata.author}\nDrag to canvas to add`}
-                      >
-                        <div className="element-header">
-                          <span className="element-icon">
-                            {getComponentIcon(component)}
-                          </span>
-                          <span className="element-name">
-                            {component.metadata.name}
-                          </span>
-                          <span className="element-type">
-                            ({component.metadata.type})
-                          </span>
-                        </div>
-                        <div
-                          className="component-preview-container"
-                          dangerouslySetInnerHTML={{
-                            __html: createComponentPreview(component),
-                          }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            )}
-          </>
-        )}
-      </div>
-    </div>
+  // Fallback to legacy UI component
+  return (
+    <LegacyElementLibrary onDragStart={onDragStart} onDragEnd={onDragEnd} />
   );
 };
 

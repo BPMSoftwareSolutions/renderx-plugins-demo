@@ -173,3 +173,365 @@ export const handlers = {
     return { notified: true, count: (preparedComponents || []).length };
   },
 };
+
+// UI Component: LibraryPanel - renders the Element Library UI from the plugin
+// Note: Uses window.React to avoid build-time coupling; RenderX sets it in main.tsx
+export function LibraryPanel(props = {}) {
+  const React = (window && window.React) || null;
+  if (!React) return null;
+  const { useState, useEffect, useMemo } = React;
+  const { onDragStart, onDragEnd } = props;
+
+  const [components, setComponents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Kick off plugin-driven component load and subscriptions
+  useEffect(() => {
+    const system = (window && window.renderxCommunicationSystem) || null;
+    if (!system || !system.conductor) {
+      setError("Musical Conductor not available for component loading");
+      setLoading(false);
+      return;
+    }
+
+    const { conductor } = system;
+
+    const unsubLoaded = conductor.subscribe("components:loaded", (data) => {
+      if (data && Array.isArray(data.components)) {
+        setComponents(data.components);
+        setLoading(false);
+        setError(null);
+      }
+    });
+
+    const unsubError = conductor.subscribe("components:error", (data) => {
+      setError((data && data.error) || "Failed to load components");
+      setLoading(false);
+    });
+
+    // Trigger the existing symphony (provides onComponentsLoaded callback too)
+    try {
+      conductor.play("Component Library Plugin", "load-components-symphony", {
+        source: "json-components",
+        onComponentsLoaded: (items) => {
+          setComponents(items || []);
+          setLoading(false);
+          setError(null);
+        },
+      });
+    } catch (e) {
+      setError(e && e.message ? e.message : "Failed to load components");
+      setLoading(false);
+    }
+
+    return () => {
+      try {
+        unsubLoaded && unsubLoaded();
+      } catch {}
+      try {
+        unsubError && unsubError();
+      } catch {}
+    };
+  }, []);
+
+  // Helpers
+  const getComponentId = (c) =>
+    c.id ||
+    `${(c.metadata && c.metadata.type) || "unknown"}:${
+      (c.metadata && c.metadata.name) || ""
+    }`;
+
+  const createComponentPreviewHTML = (component) => {
+    const ui = component && component.ui;
+    const tpl = (ui && ui.template) || null;
+    if (!tpl)
+      return `<span class="component-preview-fallback">${
+        component?.metadata?.name || "Unnamed"
+      }</span>`;
+    let template = String(tpl);
+    // strip inline handlers
+    template = template.replace(/on\w+="[^"]*"/g, "");
+    // simple placeholder defaults
+    const compType = (component?.metadata?.type || "").toLowerCase();
+    const variantDefault = compType === "button" ? "primary" : "default";
+    const contentDefault =
+      component?.metadata?.name || (compType === "button" ? "Button" : "");
+    template = template
+      .replace(/\{\{\s*variant\s*\}\}/g, variantDefault)
+      .replace(/\{\{\s*size\s*\}\}/g, "medium")
+      .replace(/\{\{\s*inputType\s*\}\}/g, "text")
+      .replace(/\{\{\s*placeholder\s*\}\}/g, "Enter text")
+      .replace(/\{\{\s*value\s*\}\}/g, "")
+      .replace(/\{\{\s*content\s*\}\}/g, contentDefault)
+      .replace(/\{\{#if\s+disabled\}\}\s*disabled\s*\{\{\/if\}\}/g, "")
+      .replace(/\{\{#if\s+required\}\}\s*required\s*\{\{\/if\}\}/g, "");
+    return template;
+  };
+
+  const grouped = useMemo(() => {
+    const cat = {};
+    (components || []).forEach((c) => {
+      const k = (c.metadata && c.metadata.category) || "uncategorized";
+      if (!cat[k]) cat[k] = [];
+      cat[k].push(c);
+    });
+    return cat;
+  }, [components]);
+
+  const getComponentStyles = (component) => {
+    const ui = component && component.ui;
+    const css = ui && ui.styles && ui.styles.css;
+    if (!css) return "";
+    const componentId = getComponentId(component);
+    // Scope the styles to the preview container to avoid conflicts
+    try {
+      return css.replace(
+        /(\.[a-zA-Z-_][a-zA-Z0-9-_]*)/g,
+        `.element-item[data-component-id="${componentId}"] $1`
+      );
+    } catch {
+      return css;
+    }
+  };
+
+  const renderItem = (component, idx) => {
+    const id = getComponentId(component);
+    const onItemDragStart = (e) => {
+      try {
+        // Drag data expected by Canvas/Drop plugin
+        const dragData = {
+          type: "component",
+          componentType: component?.metadata?.type,
+          name: component?.metadata?.name,
+          metadata: component?.metadata,
+          componentData: component,
+          source: "element-library",
+        };
+        e.dataTransfer.setData("application/json", JSON.stringify(dragData));
+        e.dataTransfer.effectAllowed = "copy";
+
+        // Call drag start symphony
+        const cs = (window && window.renderxCommunicationSystem) || null;
+        cs &&
+          cs.conductor &&
+          cs.conductor.play(
+            "Library.component-drag-symphony",
+            "Library.component-drag-symphony",
+            {
+              event: e,
+              component,
+              dragData,
+              timestamp: Date.now(),
+              source: "element-library",
+            }
+          );
+
+        // Drag image: ONLY the component preview element (no wrapper)
+        const previewHTML = createComponentPreviewHTML(component);
+        const container = document.createElement("div");
+        container.style.position = "absolute";
+        container.style.top = "-10000px";
+        container.style.left = "-10000px";
+        container.style.pointerEvents = "none";
+        container.innerHTML = previewHTML;
+        const node = container.firstElementChild || container;
+        document.body.appendChild(container);
+        const rect = (node.getBoundingClientRect &&
+          node.getBoundingClientRect()) || { width: 32, height: 20 };
+        e.dataTransfer.setDragImage(
+          node,
+          Math.round(rect.width / 2),
+          Math.round(rect.height / 2)
+        );
+        setTimeout(() => {
+          if (container.parentNode) container.parentNode.removeChild(container);
+        }, 0);
+
+        if (typeof onDragStart === "function") onDragStart(e, component);
+      } catch {}
+    };
+
+    const onItemDragEnd = (e) => {
+      try {
+        const cs = (window && window.renderxCommunicationSystem) || null;
+        cs &&
+          cs.conductor &&
+          cs.conductor.play(
+            "Library.component-drag-symphony",
+            "Library.component-drag-symphony",
+            { event: e, timestamp: Date.now(), source: "element-library" }
+          );
+      } catch {}
+      if (typeof onDragEnd === "function") onDragEnd(e, component);
+    };
+
+    // Item element
+    return React.createElement(
+      "div",
+      {
+        key: id + ":" + idx,
+        className: "element-item",
+        draggable: true,
+        onDragStart: onItemDragStart,
+        onDragEnd: onItemDragEnd,
+        title: `${component?.metadata?.description || ""}`,
+        "data-component": (component?.metadata?.type || "").toLowerCase(),
+        "data-component-id": id,
+      },
+      React.createElement(
+        "div",
+        { className: "element-header" },
+        React.createElement("span", { className: "element-icon" }, "🧩"),
+        React.createElement(
+          "span",
+          { className: "element-name" },
+          component?.metadata?.name || "Unnamed"
+        ),
+        React.createElement(
+          "span",
+          { className: "element-type" },
+          `(${component?.metadata?.type || ""})`
+        )
+      ),
+      React.createElement("div", {
+        className: "component-preview-container",
+        dangerouslySetInnerHTML: {
+          __html: createComponentPreviewHTML(component),
+        },
+      })
+    );
+  };
+
+  // Render
+  return React.createElement(
+    "div",
+    { className: "element-library" },
+    React.createElement(
+      "div",
+      { className: "element-library-header" },
+      React.createElement(
+        "h3",
+        null,
+        "Element Library",
+        React.createElement(
+          "span",
+          { className: "component-count", title: "Loaded components" },
+          components && components.length > 0 ? ` (${components.length})` : ""
+        )
+      ),
+      loading &&
+        React.createElement(
+          "div",
+          { className: "loading-indicator" },
+          "Loading..."
+        ),
+      error &&
+        React.createElement(
+          "div",
+          { className: "error-indicator" },
+          `Error: ${error}`
+        )
+    ),
+    React.createElement(
+      "div",
+      { className: "element-library-content" },
+      loading
+        ? React.createElement(
+            "div",
+            { className: "element-library-loading" },
+            React.createElement(
+              "div",
+              { className: "loading-state" },
+              React.createElement("h4", null, "Loading Components..."),
+              React.createElement("p", null, "Scanning json-components folder")
+            )
+          )
+        : error
+        ? React.createElement(
+            "div",
+            { className: "element-library-error" },
+            React.createElement(
+              "div",
+              { className: "error-state" },
+              React.createElement("h4", null, "Failed to Load Components"),
+              React.createElement("p", null, String(error))
+            )
+          )
+        : !components || components.length === 0
+        ? React.createElement(
+            "div",
+            { className: "element-library-empty" },
+            React.createElement(
+              "div",
+              { className: "empty-state" },
+              React.createElement("h4", null, "No Components Found"),
+              React.createElement(
+                "p",
+                null,
+                "No JSON components found in public/json-components/"
+              ),
+              React.createElement(
+                "p",
+                null,
+                "Add .json component files to see them here."
+              )
+            )
+          )
+        : React.createElement(
+            React.Fragment,
+            null,
+            // Inject component styles for previews
+            React.createElement(
+              "style",
+              null,
+              [
+                (components || [])
+                  .map((component) => getComponentStyles(component))
+                  .join("\n"),
+                `
+                .element-item .component-preview-container {
+                  margin: 4px 0;
+                  padding: 4px;
+                  border: 1px solid #e0e0e0;
+                  border-radius: 3px;
+                  background: #f9f9f9;
+                  min-height: 24px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 12px;
+                  overflow: hidden;
+                }
+                .element-item .component-preview {
+                  transform: scale(0.8);
+                  transform-origin: center;
+                  pointer-events: none;
+                }
+                .element-item .component-preview-fallback {
+                  color: #666;
+                  font-style: italic;
+                }
+                `,
+              ].join("\n")
+            ),
+            Object.entries(grouped).map(([category, items]) =>
+              React.createElement(
+                "div",
+                { key: category, className: "element-category" },
+                React.createElement(
+                  "h4",
+                  null,
+                  category.charAt(0).toUpperCase() + category.slice(1)
+                ),
+                React.createElement(
+                  "div",
+                  { className: "element-list" },
+                  items.map((c, idx) => renderItem(c, idx))
+                )
+              )
+            )
+          )
+    )
+  );
+}

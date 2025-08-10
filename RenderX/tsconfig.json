@@ -24,6 +24,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "src/**/*.d.ts",
     "public/plugins/component-drag-symphony/**/*.ts",
     "public/plugins/library-drop-symphony/**/*.ts",
     "public/plugins/panel-toggle-symphony/**/*.ts",
