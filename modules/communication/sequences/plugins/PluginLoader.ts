@@ -24,21 +24,37 @@ export class PluginLoader {
 
     // Prefer original path in dev to avoid 500s for missing dist builds
     const isDev = (() => {
+      // 1) Vite-style flags via import.meta.env
       try {
-        // Access import.meta via eval to avoid TS restrictions under Jest
         const im: any = (0, eval)("import.meta");
-        return !!(im && im.env && im.env.DEV);
-      } catch {
-        try {
-          return (
-            typeof process !== "undefined" &&
-            (process as any).env &&
-            (process as any).env.NODE_ENV === "development"
-          );
-        } catch {
-          return false;
+        if (im && im.env) {
+          if (im.env.DEV === true) return true;
+          if (im.env.MODE === "development") return true;
         }
-      }
+      } catch {}
+      // 2) Node env vars set by scripts or shells
+      try {
+        const env =
+          (typeof process !== "undefined" && (process as any).env) || {};
+        if (
+          env.MC_DEV === "1" ||
+          env.MC_DEV === "true" ||
+          env.NODE_ENV === "development" ||
+          env.npm_lifecycle_event === "dev"
+        )
+          return true;
+      } catch {}
+      // 3) Global toggles (browser or node)
+      try {
+        const g: any =
+          typeof globalThis !== "undefined" ? (globalThis as any) : undefined;
+        if (g && (g.MC_DEV === true || g.MC_DEV === "1")) return true;
+      } catch {}
+      try {
+        if (typeof window !== "undefined" && (window as any).MC_DEV)
+          return true;
+      } catch {}
+      return false;
     })();
 
     if (isDev) {
