@@ -3,8 +3,7 @@
  * Displays available JSON components for drag-and-drop
  */
 
-import React, { useState, useEffect, useRef } from "react";
-import type { LoadedJsonComponent } from "../types/JsonComponent";
+import React, { useState, useEffect } from "react";
 import type { ElementLibraryProps } from "../types/AppTypes";
 import LegacyElementLibrary from "./LegacyElementLibrary";
 import { loadUiForSlot } from "../services/PluginUiLoader";
@@ -19,265 +18,25 @@ const ElementLibrary: React.FC<ElementLibraryProps> = ({
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      try {
-        // Only attempt plugin UI in dev; production uses fallback UI
-        const dev =
-          (typeof import.meta !== "undefined" &&
-            (import.meta as any).env?.DEV) === true;
-        if (!dev) return;
-        const Comp = await loadUiForSlot("left");
-        if (cancelled) return;
-        if (typeof Comp === "function") setPluginUIPanel(() => Comp);
-      } catch (e) {
-        // Silently ignore - we'll use fallback UI
-      } finally {
+      // Only attempt plugin UI in dev; production uses fallback UI
+      const dev =
+        (typeof import.meta !== "undefined" &&
+          (import.meta as any).env?.DEV) === true;
+      if (!dev) {
         if (!cancelled) setPluginTried(true);
+        return;
       }
+      try {
+        const Comp = await loadUiForSlot("left");
+        if (!cancelled && typeof Comp === "function")
+          setPluginUIPanel(() => Comp);
+      } catch {}
+      if (!cancelled) setPluginTried(true);
     })();
     return () => {
       cancelled = true;
     };
   }, []);
-
-  // The adapter no longer handles legacy loading directly; it simply renders plugin UI or the legacy component
-  // Keeping minimal state here in case we need to surface error/loading later via Suspense/Boundary
-  const [components] = useState<LoadedJsonComponent[]>([]);
-  const [loading] = useState(true);
-  const [error] = useState<string | null>(null);
-  const [draggedComponent] = useState<LoadedJsonComponent | null>(null);
-  const requestedRef = useRef(false);
-  const fallbackTimerRef = useRef<number | null>(null);
-  const subscribedRef = useRef(false);
-  const unsubscribeRefs = useRef<{ loaded?: () => void; error?: () => void }>(
-    {}
-  );
-
-  // Component loading function - integrates with Musical Conductor symphony
-  const loadComponentsAfterPlugins = async () => {
-    try {
-      console.log(
-        "🎼 ElementLibrary: Triggering JSON component loading symphony..."
-      );
-
-      // Get the communication system from global scope
-      const system = (window as any).renderxCommunicationSystem;
-
-      if (system && system.conductor) {
-        const { conductor } = system;
-
-        // Connect legacy loader to conductor (for future sequence-based loading)
-        try {
-          jsonComponentLoader.connectToConductor(conductor);
-        } catch {}
-
-        // Debug available sequences/plugins
-        console.log(
-          "🔍 Available sequences:",
-          conductor.getSequenceNames?.() || "getSequenceNames not available"
-        );
-        console.log(
-          "🔍 Available plugins:",
-          conductor.getMountedPlugins?.() || "getMountedPlugins not available"
-        );
-
-        // Listen for components:loaded event from plugins
-        const handleComponentsLoaded = (data: any) => {
-          console.log(
-            "🎼 ElementLibrary: Received components from plugin",
-            data
-          );
-          if (data.components && Array.isArray(data.components)) {
-            setComponents(data.components);
-            setLoading(false);
-            setError(null);
-
-            // Cancel the fallback timer if it's still pending
-            if (fallbackTimerRef.current != null) {
-              window.clearTimeout(fallbackTimerRef.current);
-              fallbackTimerRef.current = null;
-            }
-          }
-        };
-
-        const handleComponentsError = (data: any) => {
-          console.error("🎼 ElementLibrary: Error loading components", data);
-          setError(data.error || "Failed to load components");
-          setLoading(false);
-
-          // No display plugin yet; keep UI error state only
-        };
-
-        // Subscribe to MusicalConductor events via conductor (SPA-compliant)
-        if (!subscribedRef.current) {
-          subscribedRef.current = true;
-          unsubscribeRefs.current.loaded = conductor.subscribe(
-            "components:loaded",
-            handleComponentsLoaded
-          );
-          unsubscribeRefs.current.error = conductor.subscribe(
-            "components:error",
-            handleComponentsError
-          );
-        }
-
-        // Kick off plugin-driven component load (with callback)
-        try {
-          if (!requestedRef.current) {
-            requestedRef.current = true;
-            console.log(
-              "🎼 ElementLibrary: Invoking plugin-driven component load via conductor.play()"
-            );
-            conductor.play(
-              "Component Library Plugin",
-              "load-components-symphony",
-              {
-                source: "json-components",
-                onComponentsLoaded: (items: any[]) => {
-                  setComponents(items as any);
-                  setLoading(false);
-                  setError(null);
-                },
-              }
-            );
-          }
-        } catch (e) {
-          console.warn(
-            "⚠️ ElementLibrary: Plugin-driven load failed, falling back to direct loader",
-            e
-          );
-          // Fallback if plugin call throws synchronously
-          jsonComponentLoader
-            .loadAllComponents()
-            .then((res) => {
-              setComponents(res.success as any);
-              setLoading(false);
-              setError(null);
-            })
-            .catch((err) => {
-              setError(err?.message || "Failed to load components");
-              setLoading(false);
-            });
-        }
-
-        // Safety: if callback never fires, use legacy loader after 2s
-        if (fallbackTimerRef.current == null) {
-          fallbackTimerRef.current = window.setTimeout(() => {
-            // Only run if nothing loaded yet
-            if (components.length === 0) {
-              console.warn(
-                "⏱️ ElementLibrary: Plugin callback timeout, using legacy loader"
-              );
-              jsonComponentLoader
-                .loadAllComponents()
-                .then((res) => {
-                  setComponents(res.success as any);
-                  setLoading(false);
-                  setError(null);
-                })
-                .catch((err) => {
-                  setError(err?.message || "Failed to load components");
-                  setLoading(false);
-                })
-                .finally(() => {
-                  if (fallbackTimerRef.current != null) {
-                    window.clearTimeout(fallbackTimerRef.current);
-                    fallbackTimerRef.current = null;
-                  }
-                });
-            }
-          }, 2000);
-        }
-
-        // Cleanup function
-        return () => {
-          unsubscribeRefs.current.loaded?.();
-          unsubscribeRefs.current.error?.();
-          subscribedRef.current = false;
-        };
-      } else {
-        console.log("🔄 No conductor/eventBus available for component loading");
-        setError("Musical Conductor not available for component loading");
-        setLoading(false);
-      }
-    } catch (err) {
-      console.error("❌ Failed to load JSON components:", err);
-      setError(
-        err instanceof Error ? err.message : "Failed to load components"
-      );
-      // Kick off plugin-driven component load (with callback)
-      try {
-        if (!requestedRef.current) {
-          requestedRef.current = true;
-          const system = (window as any).renderxCommunicationSystem;
-          system?.conductor.play(
-            "Component Library Plugin",
-            "load-components-symphony",
-            {
-              source: "json-components",
-              onComponentsLoaded: (items: any[]) => {
-                setComponents(items as any);
-                setLoading(false);
-                setError(null);
-              },
-            }
-          );
-        }
-      } catch (e) {
-        console.warn(
-          "⚠️ ElementLibrary: Plugin-driven load failed, falling back to direct loader",
-          e
-        );
-        // Fallback: direct JSON load
-        jsonComponentLoader
-          .loadAllComponents()
-          .then((res) => {
-            setComponents(res.success as any);
-            setLoading(false);
-            setError(null);
-          })
-          .catch((err) => {
-            setError(err?.message || "Failed to load components");
-            setLoading(false);
-          });
-      }
-
-      setLoading(false);
-    }
-  };
-
-  // Load components only when plugin UI is unavailable (after plugin import attempt)
-  useEffect(() => {
-    if (!pluginTried) return; // wait until plugin import attempt finished
-    if (PluginUIPanel) return; // plugin UI available; skip legacy loading
-
-    let cancelled = false;
-    let cleanup: (() => void) | undefined;
-
-    const checkAndLoadComponents = async () => {
-      if (cancelled) return;
-      const system = (window as any).renderxCommunicationSystem;
-      if (system) {
-        // Wait for plugins to finish loading before triggering component loading
-        console.log(
-          "🔍 ElementLibrary(legacy): Waiting for plugins to load before triggering component loading..."
-        );
-        setTimeout(async () => {
-          if (cancelled) return;
-          cleanup = await loadComponentsAfterPlugins();
-        }, 300); // Small delay to allow plugins to mount
-      } else {
-        // Wait a bit and try again
-        setTimeout(checkAndLoadComponents, 100);
-      }
-    };
-
-    checkAndLoadComponents();
-
-    return () => {
-      cancelled = true;
-      if (cleanup) cleanup();
-    };
-  }, [pluginTried, PluginUIPanel]);
 
   const getComponentsByCategory = () => {
     const categories: Record<string, LoadedJsonComponent[]> = {};

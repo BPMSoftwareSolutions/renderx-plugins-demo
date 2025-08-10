@@ -14,8 +14,7 @@ export interface AppState {
 }
 
 export interface ElementLibraryProps {
-  onDragStart?: (e: React.DragEvent, component: LoadedJsonComponent) => void;
-  onDragEnd?: (e: React.DragEvent) => void;
+  // Adapter no longer wires drag callbacks; plugin or legacy handles them internally
 }
 
 export interface CanvasProps {
