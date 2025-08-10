@@ -3,6 +3,8 @@
  * Handles dynamic loading of plugin modules with fallback strategies
  */
 
+import { isDevEnv } from "../environment/ConductorEnv.js";
+
 export class PluginLoader {
   private moduleCache: Map<string, any> = new Map();
 
@@ -23,16 +25,9 @@ export class PluginLoader {
     const bundledPath = `${pluginDir}/dist/plugin.js`;
 
     // Prefer original path in dev to avoid 500s for missing dist builds
-    const isDev = (() => {
-      try {
-        const mod = await import("../environment/ConductorEnv.js");
-        return !!mod.isDevEnv();
-      } catch {
-        return false;
-      }
-    })();
+    const isDev = isDevEnv();
 
-    if (await isDev) {
+    if (isDev) {
       // Try original path first (dev)
       try {
         console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
