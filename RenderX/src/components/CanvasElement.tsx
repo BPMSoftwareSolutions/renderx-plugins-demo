@@ -283,6 +283,15 @@ const CanvasElement: React.FC<CanvasElementProps> = ({
         }
       });
 
+      // Ensure component root fills the wrapper exactly for overlay alignment
+      props.style = {
+        ...(props.style || {}),
+        width: '100%',
+        height: '100%',
+        boxSizing: 'border-box',
+        display: 'block',
+      };
+
       // Add drag event handler
       if (onDragStart) {
         props.onDragStart = (e: React.DragEvent) => onDragStart(e, element);

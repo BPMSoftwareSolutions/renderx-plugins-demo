@@ -27,7 +27,7 @@
       "drag": { "enabled": true },
       "resize": {
         "enabled": true,
-        "handles": ["e", "s", "se"],
+        "handles": ["nw", "n", "ne", "e", "se", "s", "sw", "w"],
         "constraints": { "min": { "w": 40, "h": 24 } }
       }
     }
