@@ -355,6 +355,33 @@ export function CanvasPage(props = {}) {
                       component: n.component || n.componentData,
                     })
                   : null;
+              // Ensure a stable key to satisfy React list rendering
+              let key = n.id || n.elementId || n.cssClass;
+              if (!key) {
+                try {
+                  console.warn(
+                    "CanvasPage: missing id/elementId/cssClass for node; skipping render."
+                  );
+                } catch {}
+                return null;
+              }
+              if (el && React && typeof React.cloneElement === "function") {
+                return React.cloneElement(el, { key });
+              }
+              if (el && React && typeof React.createElement === "function") {
+                const children =
+                  (el.props && el.props.children) || el.children || [];
+                const childArray = Array.isArray(children)
+                  ? children
+                  : children != null
+                  ? [children]
+                  : [];
+                return React.createElement(
+                  el.type,
+                  { ...(el.props || {}), key },
+                  ...childArray
+                );
+              }
               return el;
             })
           : React.createElement(
