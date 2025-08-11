@@ -7,9 +7,14 @@ import React from "react";
 import type { ElementLibraryProps } from "../types/AppTypes";
 import LegacyElementLibrary from "./LegacyElementLibrary";
 import PanelSlot from "./PanelSlot";
+import ErrorBoundary from "./ErrorBoundary";
 
 const ElementLibrary: React.FC<ElementLibraryProps> = () => {
-  return <PanelSlot slot="left" fallback={<LegacyElementLibrary />} />;
+  return (
+    <ErrorBoundary fallback={<LegacyElementLibrary />}>
+      <PanelSlot slot="left" fallback={<LegacyElementLibrary />} />
+    </ErrorBoundary>
+  );
 };
 
 export default ElementLibrary;
