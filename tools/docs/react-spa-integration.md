@@ -28,7 +28,7 @@ import { MusicalConductor } from "musical-conductor";
 
 const conductor = MusicalConductor.getInstance();
 conductor.play(pluginId, sequenceId, context); // Proper orchestration
-conductor.subscribe(eventName, callback); // Proper event subscription
+// UI subscriptions are generally discouraged; prefer callback-first via play()
 ```
 
 ### 📦 Package Installation
@@ -54,12 +54,193 @@ This guide demonstrates how to use MusicalConductor to orchestrate complex UI wo
 - **Canvas Element** - Dynamic components loaded from JSON definitions
 - **Drag Preview** - Visual feedback during drag operations
 
+## 🔄 Update (Aug 2025): Manifest‑Driven Panel Slot Plugin Architecture
+
+This SPA guide predates our new thin‑shell pattern. We now render panels by slot using plugin‑provided UIs, loaded from a manifest and isolated with Suspense + ErrorBoundary. See ADR‑0014 for full details: tools/docs/wiki/adr/0014-manifest-driven-panel-slot-plugins.md
+
+Key changes:
+
+- Thin shell with PanelSlot per area (left/center/right)
+- Plugin UI initiates workflows via conductor.play(..., { on… callbacks }), not broad UI subscriptions
+- Suspense for loading; ErrorBoundary for safe fallback to legacy panels during migration
+- Dev: dynamic import from /public/plugins; Prod: planned global export lookup
+
+Example: Element Library panel (shell)
+
+```tsx
+// src/components/ElementLibrary.tsx
+return (
+  <ErrorBoundary fallback={<LegacyElementLibrary />}>
+    <Suspense
+      fallback={
+        <div className="panel-slot-loading" data-slot="left">
+          Loading left UI...
+        </div>
+      }
+    >
+      <PanelSlot slot="left" fallback={<LegacyElementLibrary />} />
+    </Suspense>
+  </ErrorBoundary>
+);
+```
+
+Example: Control Panel (shell)
+
+```tsx
+// src/components/ControlPanel.tsx
+return (
+  <ErrorBoundary fallback={<LegacyControlPanel />}>
+    <Suspense
+      fallback={
+        <div className="panel-slot-loading" data-slot="right">
+          Loading right UI...
+        </div>
+      }
+    >
+      <PanelSlot slot="right" fallback={<LegacyControlPanel />} />
+    </Suspense>
+  </ErrorBoundary>
+);
+```
+
+Manifest entry for plugin UI
+
+```json
+// public/plugins/manifest.json (excerpt)
+{
+  "plugins": [
+    {
+      "name": "Component Library Plugin",
+      "path": "component-library-plugin/",
+      "autoMount": true,
+
+      "ui": { "slot": "left", "export": "LibraryPanel" }
+    }
+  ]
+}
+```
+
+Plugin UI notes
+
+- Access React via window.React and destructure used hooks explicitly:
+
+```js
+const React = (window && window.React) || null;
+if (!React) return null;
+const { useState, useEffect, useMemo } = React;
+```
+
+- Use conductor.play with callbacks instead of UI subscriptions:
+
+```js
+conductor.play("Component Library Plugin", "load-components-symphony", {
+  source: "json-components",
+  onComponentsLoaded: (items) => setComponents(items || []),
+});
+```
+
+- Guard duplicate plays in React 18 StrictMode (e.g., window.**rx_library_played**)
+
+The legacy sections below remain for reference; prefer the updated pattern above when building new panels/plugins.
+
 ## 🏗️ Application Architecture
 
-```
+````
 React SPA
 ├── AppShell (Theme management)
 ├── ElementLibrary (Component catalog)
+
+## 🔧 Thin Shell Setup and Initialization
+
+1) Install dependencies
+
+```bash
+npm install musical-conductor react react-dom
+````
+
+2. Initialize the communication system (singleton) in ConductorService
+
+```ts
+// src/services/ConductorService.ts (excerpt)
+import { MusicalConductor } from "musical-conductor";
+
+export class ConductorService {
+  private static instance: ConductorService;
+  private conductor = MusicalConductor.getInstance();
+  static getInstance() {
+    return this.instance ?? (this.instance = new ConductorService());
+  }
+
+  async initialize() {
+    // Registers sequences and mounts plugins from manifest
+    await this.conductor.registerCIAPlugins();
+    (window as any).renderxCommunicationSystem = { conductor: this.conductor };
+  }
+
+  getConductor() {
+    return this.conductor;
+  }
+}
+```
+
+3. Use PanelSlot in the shell for each panel with Suspense + ErrorBoundary
+
+```tsx
+// src/components/AppContent.tsx (excerpt)
+return (
+  <div className="app-layout">
+    <aside className="app-sidebar left">
+      <ElementLibrary />
+    </aside>
+    <section className="app-canvas">
+      <Canvas mode="editor" />
+    </section>
+    <aside className="app-sidebar right">
+      <ControlPanel />
+    </aside>
+  </div>
+);
+```
+
+- ElementLibrary:
+
+```tsx
+// Thin shell usage
+<ErrorBoundary fallback={<LegacyElementLibrary />}>
+  <Suspense
+    fallback={
+      <div className="panel-slot-loading" data-slot="left">
+        Loading left UI...
+      </div>
+    }
+  >
+    <PanelSlot slot="left" fallback={<LegacyElementLibrary />} />
+  </Suspense>
+</ErrorBoundary>
+```
+
+- ControlPanel:
+
+```tsx
+<ErrorBoundary fallback={<LegacyControlPanel />}>
+  <Suspense
+    fallback={
+      <div className="panel-slot-loading" data-slot="right">
+        Loading right UI...
+      </div>
+    }
+  >
+    <PanelSlot slot="right" fallback={<LegacyControlPanel />} />
+  </Suspense>
+</ErrorBoundary>
+```
+
+Guidelines
+
+- The shell never subscribes to domain events; initiate workflows via conductor.play from plugin UIs
+- Prefer callback‑first (on… props in play payload) to update React state
+- Keep legacy fallbacks until the corresponding plugin UI is ready
+
 ├── ControlPanel (Property editor)
 ├── Canvas (Layout container)
 ├── CanvasElement (Dynamic components)
@@ -75,7 +256,8 @@ MusicalConductor Plugins
 ├── Canvas.resize-symphony
 ├── Canvas.delete-symphony
 └── Canvas.select-symphony
-```
+
+````
 
 ## 🎯 Plugin Naming Convention
 
@@ -125,7 +307,7 @@ export class ConductorService {
     console.log("🎼 All UI workflow plugins loaded");
   }
 }
-```
+````
 
 ### 2. React App Integration
 
