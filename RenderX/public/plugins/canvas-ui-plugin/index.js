@@ -118,6 +118,100 @@ function injectInstanceCSS(node, width, height) {
     const tag = document.createElement("style");
     tag.id = id;
     tag.textContent = lines.join("\n");
+    // Helper: inject global CSS for overlay/handles (once)
+    function injectOverlayGlobalCSS() {
+      try {
+        const id = "overlay-css-global";
+        if (document.getElementById(id)) return;
+        const css = [
+          ".rx-resize-overlay{position:absolute;pointer-events:none;}",
+          ".rx-resize-handle{position:absolute;width:8px;height:8px;border:1px solid #09f;background:#fff;box-sizing:border-box;pointer-events:auto;}",
+          ".rx-nw{left:-4px;top:-4px;cursor:nwse-resize;}",
+          ".rx-n{left:50%;top:-4px;transform:translateX(-50%);cursor:ns-resize;}",
+          ".rx-ne{right:-4px;top:-4px;cursor:nesw-resize;}",
+          ".rx-e{right:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
+          ".rx-se{right:-4px;bottom:-4px;cursor:nwse-resize;}",
+          ".rx-s{left:50%;bottom:-4px;transform:translateX(-50%);cursor:ns-resize;}",
+          ".rx-sw{left:-4px;bottom:-4px;cursor:nesw-resize;}",
+          ".rx-w{left:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
+        ].join("\n");
+        const tag = document.createElement("style");
+        tag.id = id;
+        tag.textContent = css;
+        document.head.appendChild(tag);
+      } catch {}
+    }
+
+    // Helper: inject per-instance CSS for overlay box (no inline styles)
+    function injectOverlayInstanceCSS(node, width, height) {
+      try {
+        if (!node) return;
+        const id = "overlay-css-" + String(node.id || "");
+        if (document.getElementById(id)) return;
+        const left =
+          (node.position && node.position.x) != null ? node.position.x : 0;
+        const top =
+          (node.position && node.position.y) != null ? node.position.y : 0;
+        const w = typeof width === "number" ? width + "px" : width;
+        const h = typeof height === "number" ? height + "px" : height;
+        const cls = "rx-overlay-" + String(node.id || "");
+        const lines = [
+          `.${cls}{position:absolute;left:${left}px;top:${top}px;width:${w};height:${h};z-index:10;}`,
+        ];
+        const tag = document.createElement("style");
+        tag.id = id;
+        tag.textContent = lines.join("\n");
+        document.head.appendChild(tag);
+      } catch {}
+    }
+
+    document.head.appendChild(tag);
+  } catch {}
+}
+
+// Top-level: inject global CSS for overlay/handles (once)
+function overlayInjectGlobalCSS() {
+  try {
+    const id = "overlay-css-global";
+    if (document.getElementById(id)) return;
+    const css = [
+      ".rx-resize-overlay{position:absolute;pointer-events:none;}",
+      ".rx-resize-handle{position:absolute;width:8px;height:8px;border:1px solid #09f;background:#fff;box-sizing:border-box;pointer-events:auto;}",
+      ".rx-nw{left:-4px;top:-4px;cursor:nwse-resize;}",
+      ".rx-n{left:50%;top:-4px;transform:translateX(-50%);cursor:ns-resize;}",
+      ".rx-ne{right:-4px;top:-4px;cursor:nesw-resize;}",
+      ".rx-e{right:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
+      ".rx-se{right:-4px;bottom:-4px;cursor:nwse-resize;}",
+      ".rx-s{left:50%;bottom:-4px;transform:translateX(-50%);cursor:ns-resize;}",
+      ".rx-sw{left:-4px;bottom:-4px;cursor:nesw-resize;}",
+      ".rx-w{left:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
+    ].join("\n");
+    const tag = document.createElement("style");
+    tag.id = id;
+    tag.textContent = css;
+    document.head.appendChild(tag);
+  } catch {}
+}
+
+// Top-level: inject per-instance CSS for overlay box (no inline styles)
+function overlayInjectInstanceCSS(node, width, height) {
+  try {
+    if (!node) return;
+    const id = "overlay-css-" + String(node.id || "");
+    if (document.getElementById(id)) return;
+    const left =
+      (node.position && node.position.x) != null ? node.position.x : 0;
+    const top =
+      (node.position && node.position.y) != null ? node.position.y : 0;
+    const w = typeof width === "number" ? width + "px" : width;
+    const h = typeof height === "number" ? height + "px" : height;
+    const cls = "rx-overlay-" + String(node.id || "");
+    const lines = [
+      `.${cls}{position:absolute;left:${left}px;top:${top}px;width:${w};height:${h};z-index:10;}`,
+    ];
+    const tag = document.createElement("style");
+    tag.id = id;
+    tag.textContent = lines.join("\n");
     document.head.appendChild(tag);
   } catch {}
 }
@@ -174,6 +268,30 @@ export function renderCanvasNode(node) {
     className: classes,
     "data-component-id": node.id,
     draggable: true,
+    onClick: (e) => {
+      try {
+        e && e.stopPropagation && e.stopPropagation();
+        const system = (window && window.renderxCommunicationSystem) || null;
+        const conductor = system && system.conductor;
+        if (conductor && typeof conductor.play === "function") {
+          conductor.play(
+            "Canvas.component-select-symphony",
+            "Canvas.component-select-symphony",
+            {
+              elementId: node.id,
+              onSelectionChange: (id) => {
+                try {
+                  const evt = new CustomEvent("renderx:selection:update", {
+                    detail: { id },
+                  });
+                  window.dispatchEvent(evt);
+                } catch {}
+              },
+            }
+          );
+        }
+      } catch {}
+    },
   };
 
   // Content: replace {{content}} with metadata.name if present
@@ -210,6 +328,8 @@ export function renderCanvasNode(node) {
 // UI export: CanvasPage
 // Uses window.React to remain decoupled from app build
 export function CanvasPage(props = {}) {
+  const providedNodes = Array.isArray(props.nodes) ? props.nodes : null;
+  const providedSelected = props.selectedId ?? undefined;
   const React = (window && window.React) || null;
   if (!React) return null;
   const { useEffect, useState } = React;
@@ -248,8 +368,32 @@ export function CanvasPage(props = {}) {
   // Local state for created nodes (scaffold render)
   const [nodes, setNodes] =
     window.React && typeof window.React.useState === "function"
-      ? window.React.useState([])
-      : [[], function noop() {}];
+      ? window.React.useState(providedNodes || [])
+      : [providedNodes || [], function noop() {}];
+
+  // Selection state for overlay
+  const [selectedId, setSelectedId] =
+    window.React && typeof window.React.useState === "function"
+      ? window.React.useState(providedSelected ?? null)
+      : [providedSelected ?? null, function noop() {}];
+
+  // Listen for selection updates from renderCanvasNode onClick handler
+  useEffect(() => {
+    const onSel = (e) => {
+      try {
+        const id = e && e.detail && e.detail.id;
+        setSelectedId(id || null);
+      } catch {}
+    };
+    try {
+      window.addEventListener("renderx:selection:update", onSel);
+    } catch {}
+    return () => {
+      try {
+        window.removeEventListener("renderx:selection:update", onSel);
+      } catch {}
+    };
+  }, []);
 
   return React.createElement(
     "div",
@@ -365,24 +509,87 @@ export function CanvasPage(props = {}) {
                 } catch {}
                 return null;
               }
-              if (el && React && typeof React.cloneElement === "function") {
-                return React.cloneElement(el, { key });
-              }
-              if (el && React && typeof React.createElement === "function") {
-                const children =
-                  (el.props && el.props.children) || el.children || [];
-                const childArray = Array.isArray(children)
-                  ? children
-                  : children != null
-                  ? [children]
-                  : [];
-                return React.createElement(
-                  el.type,
-                  { ...(el.props || {}), key },
-                  ...childArray
+              const elementWithKey =
+                el && React && typeof React.cloneElement === "function"
+                  ? React.cloneElement(el, { key })
+                  : el && React && typeof React.createElement === "function"
+                  ? (function () {
+                      const rawChildren =
+                        (el.props && el.props.children) || el.children || [];
+                      const childArray = Array.isArray(rawChildren)
+                        ? rawChildren
+                        : rawChildren != null
+                        ? [rawChildren]
+                        : [];
+                      return React.createElement(
+                        el.type,
+                        { ...(el.props || {}), key },
+                        ...childArray
+                      );
+                    })()
+                  : el;
+
+              // If selected, render overlay sibling after the element
+              const children = [elementWithKey];
+              if (
+                selectedId &&
+                (n.id === selectedId || n.elementId === selectedId)
+              ) {
+                // inject overlay CSS (global + instance) on demand
+                try {
+                  overlayInjectGlobalCSS();
+                  const defaults =
+                    (n.component &&
+                      n.component.integration &&
+                      n.component.integration.canvasIntegration) ||
+                    {};
+                  overlayInjectInstanceCSS(
+                    { id: n.id, position: n.position },
+                    defaults.defaultWidth,
+                    defaults.defaultHeight
+                  );
+                } catch {}
+                // overlay with 8 handles; classes only, no inline styles
+                const overlayClass = `rx-resize-overlay rx-overlay-${
+                  n.id || n.elementId
+                }`;
+                children.push(
+                  React.createElement(
+                    "div",
+                    { key: `${key}__overlay`, className: overlayClass },
+                    ...["nw", "n", "ne", "e", "se", "s", "sw", "w"].map((h) =>
+                      React.createElement("div", {
+                        key: `${key}__${h}`,
+                        className: `rx-resize-handle rx-${h}`,
+                        onPointerDown: (e) => {
+                          try {
+                            e && e.stopPropagation && e.stopPropagation();
+                            const system =
+                              (window && window.renderxCommunicationSystem) ||
+                              null;
+                            const conductor = system && system.conductor;
+                            if (
+                              conductor &&
+                              typeof conductor.play === "function"
+                            ) {
+                              conductor.play(
+                                "Canvas.component-resize-symphony",
+                                "Canvas.component-resize-symphony",
+                                {
+                                  elementId: n.id || n.elementId,
+                                  handle: h,
+                                  start: { x: e.clientX, y: e.clientY },
+                                }
+                              );
+                            }
+                          } catch {}
+                        },
+                      })
+                    )
+                  )
                 );
               }
-              return el;
+              return children;
             })
           : React.createElement(
               "div",
