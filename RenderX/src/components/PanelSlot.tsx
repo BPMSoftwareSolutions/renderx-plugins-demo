@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { loadUiForSlot } from "../services/PluginUiLoader";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
 interface PanelSlotProps {
   slot: string;
@@ -18,7 +17,6 @@ const PanelSlot: React.FC<PanelSlotProps> = ({
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      // Only attempt plugin UI in dev; production uses fallback UI
       const dev =
         (typeof import.meta !== "undefined" &&
           (import.meta as any).env?.DEV) === true;
@@ -27,9 +25,28 @@ const PanelSlot: React.FC<PanelSlotProps> = ({
         return;
       }
       try {
-        const Comp = await loadUiForSlot(slot);
-        if (!cancelled && typeof Comp === "function")
-          setPluginComponent(() => Comp);
+        // Fetch manifest to locate the plugin UI for this slot
+        const res = await fetch("/plugins/manifest.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const manifest = await res.json();
+        const entry = (manifest?.plugins || []).find(
+          (p: any) => p.ui?.slot === slot
+        );
+        if (!entry) {
+          if (!cancelled) setAttempted(true);
+          return;
+        }
+
+        const exportName = entry.ui?.export || "default";
+        const modUrl = `/plugins/${entry.path}index.js`;
+
+        const LazyComp = lazy(async () => {
+          const mod: any = await import(/* @vite-ignore */ modUrl as any);
+          const exp =
+            exportName === "default" ? mod?.default : mod?.[exportName];
+          return { default: exp };
+        });
+        if (!cancelled) setPluginComponent(() => LazyComp);
       } catch {}
       if (!cancelled) setAttempted(true);
     })();
