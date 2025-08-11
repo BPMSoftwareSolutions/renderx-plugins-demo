@@ -57,6 +57,14 @@
       "version": "1.0.0",
       "description": "Resize a canvas component with callback updates",
       "autoMount": true
+    },
+    {
+      "name": "Control Panel UI Plugin",
+      "path": "control-panel-plugin/",
+      "version": "1.0.0",
+      "description": "Properties panel UI for the right slot",
+      "autoMount": true,
+      "ui": { "slot": "right", "export": "ControlPanelPanel" }
     }
   ]
 }

@@ -3,6 +3,7 @@ import React from "react";
 interface ErrorBoundaryProps {
   fallback: React.ReactNode;
   onError?: (error: any, info: any) => void;
+  children?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -33,4 +34,3 @@ export default class ErrorBoundary extends React.Component<
     return this.props.children as React.ReactElement;
   }
 }
-

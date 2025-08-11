@@ -3,24 +3,39 @@ import type { LoadedJsonComponent } from "../types/JsonComponent";
 import type { ElementLibraryProps } from "../types/AppTypes";
 import { jsonComponentLoader } from "../services/JsonComponentLoader";
 
-const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDragEnd }) => {
+const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({
+  onDragStart,
+  onDragEnd,
+}) => {
   const [components, setComponents] = useState<LoadedJsonComponent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const requestedRef = useRef(false);
   const fallbackTimerRef = useRef<number | null>(null);
   const subscribedRef = useRef(false);
-  const unsubscribeRefs = useRef<{ loaded?: () => void; error?: () => void }>({});
+  const unsubscribeRefs = useRef<{ loaded?: () => void; error?: () => void }>(
+    {}
+  );
 
   // Helpers copied from original for fallback only
   const getComponentId = (component: LoadedJsonComponent): string =>
-    component.id || `${component.metadata?.type || "unknown"}:${component.metadata?.name || ""}`;
+    component.id ||
+    `${component.metadata?.type || "unknown"}:${
+      component.metadata?.name || ""
+    }`;
 
   const getComponentIcon = (component: LoadedJsonComponent): string => {
     if (component.metadata.icon) return component.metadata.icon;
     const iconMap: Record<string, string> = {
-      button: "🔘", input: "📝", text: "📄", heading: "📰", image: "🖼️",
-      container: "📦", table: "📊", chart: "📈", div: "🔲",
+      button: "🔘",
+      input: "📝",
+      text: "📄",
+      heading: "📰",
+      image: "🖼️",
+      container: "📦",
+      table: "📊",
+      chart: "📈",
+      div: "🔲",
     };
     return iconMap[component.metadata.type.toLowerCase()] || "🧩";
   };
@@ -31,7 +46,8 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
       template = template.replace(/on\w+="[^"]*"/g, "");
       const compType = (component.metadata?.type || "").toLowerCase();
       const variantDefault = compType === "button" ? "primary" : "default";
-      const contentDefault = component.metadata?.name || (compType === "button" ? "Button" : "");
+      const contentDefault =
+        component.metadata?.name || (compType === "button" ? "Button" : "");
       template = template
         .replace(/\{\{\s*variant\s*\}\}/g, variantDefault)
         .replace(/\{\{\s*size\s*\}\}/g, "medium")
@@ -41,7 +57,10 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
         .replace(/\{\{\s*content\s*\}\}/g, contentDefault)
         .replace(/\{\{#if\s+disabled\}\}disabled\{\{\/if\}\}/g, "")
         .replace(/\{\{#if\s+required\}\}\s*required\s*\{\{\/if\}\}/g, "");
-      template = template.replace(/class="([^"]*)"/, 'class="$1 component-preview"');
+      template = template.replace(
+        /class="([^"]*)"/,
+        'class="$1 component-preview"'
+      );
       return template;
     }
     return `<span class="component-preview-fallback">${component.metadata.name}</span>`;
@@ -74,7 +93,9 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
       const system = (window as any).renderxCommunicationSystem;
       if (system && system.conductor) {
         const { conductor } = system;
-        try { jsonComponentLoader.connectToConductor(conductor); } catch {}
+        try {
+          jsonComponentLoader.connectToConductor(conductor);
+        } catch {}
         const handleComponentsLoaded = (data: any) => {
           if (data.components && Array.isArray(data.components)) {
             setComponents(data.components);
@@ -92,47 +113,64 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
         };
         if (!subscribedRef.current) {
           subscribedRef.current = true;
-          unsubscribeRefs.current.loaded = conductor.subscribe("components:loaded", handleComponentsLoaded);
-          unsubscribeRefs.current.error = conductor.subscribe("components:error", handleComponentsError);
+          unsubscribeRefs.current.loaded = conductor.subscribe(
+            "components:loaded",
+            handleComponentsLoaded
+          );
+          unsubscribeRefs.current.error = conductor.subscribe(
+            "components:error",
+            handleComponentsError
+          );
         }
         try {
           if (!requestedRef.current) {
             requestedRef.current = true;
-            conductor.play("Component Library Plugin", "load-components-symphony", {
-              source: "json-components",
-              onComponentsLoaded: (items: any[]) => {
-                setComponents(items as any);
-                setLoading(false);
-                setError(null);
-              },
-            });
+            conductor.play(
+              "Component Library Plugin",
+              "load-components-symphony",
+              {
+                source: "json-components",
+                onComponentsLoaded: (items: any[]) => {
+                  setComponents(items as any);
+                  setLoading(false);
+                  setError(null);
+                },
+              }
+            );
           }
         } catch (e) {
-          jsonComponentLoader.loadAllComponents().then((res) => {
-            setComponents(res.success as any);
-            setLoading(false);
-            setError(null);
-          }).catch((err) => {
-            setError(err?.message || "Failed to load components");
-            setLoading(false);
-          });
+          jsonComponentLoader
+            .loadAllComponents()
+            .then((res) => {
+              setComponents(res.success as any);
+              setLoading(false);
+              setError(null);
+            })
+            .catch((err) => {
+              setError(err?.message || "Failed to load components");
+              setLoading(false);
+            });
         }
         if (fallbackTimerRef.current == null) {
           fallbackTimerRef.current = window.setTimeout(() => {
             if (components.length === 0) {
-              jsonComponentLoader.loadAllComponents().then((res) => {
-                setComponents(res.success as any);
-                setLoading(false);
-                setError(null);
-              }).catch((err) => {
-                setError(err?.message || "Failed to load components");
-                setLoading(false);
-              }).finally(() => {
-                if (fallbackTimerRef.current != null) {
-                  window.clearTimeout(fallbackTimerRef.current);
-                  fallbackTimerRef.current = null;
-                }
-              });
+              jsonComponentLoader
+                .loadAllComponents()
+                .then((res) => {
+                  setComponents(res.success as any);
+                  setLoading(false);
+                  setError(null);
+                })
+                .catch((err) => {
+                  setError(err?.message || "Failed to load components");
+                  setLoading(false);
+                })
+                .finally(() => {
+                  if (fallbackTimerRef.current != null) {
+                    window.clearTimeout(fallbackTimerRef.current);
+                    fallbackTimerRef.current = null;
+                  }
+                });
             }
           }, 2000);
         }
@@ -146,7 +184,9 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
         setLoading(false);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load components");
+      setError(
+        err instanceof Error ? err.message : "Failed to load components"
+      );
       setLoading(false);
     }
   };
@@ -156,13 +196,17 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
     const check = async () => {
       const system = (window as any).renderxCommunicationSystem;
       if (system) {
-        setTimeout(async () => { cleanup = await loadComponentsAfterPlugins(); }, 300);
+        setTimeout(async () => {
+          cleanup = await loadComponentsAfterPlugins();
+        }, 300);
       } else {
         setTimeout(check, 100);
       }
     };
     check();
-    return () => { if (cleanup) cleanup(); };
+    return () => {
+      if (cleanup) cleanup();
+    };
   }, []);
 
   return (
@@ -210,57 +254,92 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
                 .element-item .component-preview-fallback { color: #666; font-style: italic; }
               `}
             </style>
-            {Object.entries(getComponentsByCategory()).map(([category, items]) => (
-              <div key={category} className="element-category">
-                <h4>{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
-                <div className="element-list">
-                  {items.map((component, idx) => (
-                    <div
-                      key={`${getComponentId(component)}:${idx}`}
-                      className="element-item"
-                      data-component={component.metadata.type.toLowerCase()}
-                      data-component-id={getComponentId(component)}
-                      draggable
-                      onDragStart={(e) => {
-                        try {
-                          const container = document.createElement("div");
-                          container.style.position = "absolute";
-                          container.style.top = "-1000px";
-                          container.style.left = "-1000px";
-                          container.style.pointerEvents = "none";
-                          const preview = (e.currentTarget as HTMLElement).querySelector(".component-preview-container") as HTMLElement | null;
-                          if (preview) {
-                            const clone = preview.cloneNode(true) as HTMLElement;
-                            clone.style.transform = "scale(1)";
-                            clone.style.padding = "0";
-                            clone.style.border = "none";
-                            const wrapper = document.createElement("div");
-                            wrapper.className = "element-item";
-                            wrapper.setAttribute("data-component-id", getComponentId(component));
-                            wrapper.appendChild(clone);
-                            container.appendChild(wrapper);
-                            document.body.appendChild(container);
-                            const rect = preview.getBoundingClientRect();
-                            e.dataTransfer?.setDragImage(container, rect.width / 2, rect.height / 2);
-                            setTimeout(() => { if (container.parentNode) container.parentNode.removeChild(container); }, 0);
-                          }
-                        } catch {}
-                        if (onDragStart) onDragStart(e, component);
-                      }}
-                      onDragEnd={onDragEnd}
-                      title={`${component.metadata.description}\nVersion: ${component.metadata.version}\nAuthor: ${component.metadata.author}\nDrag to canvas to add`}
-                    >
-                      <div className="element-header">
-                        <span className="element-icon">{getComponentIcon(component)}</span>
-                        <span className="element-name">{component.metadata.name}</span>
-                        <span className="element-type">({component.metadata.type})</span>
+            {Object.entries(getComponentsByCategory()).map(
+              ([category, items]) => (
+                <div key={category} className="element-category">
+                  <h4>
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </h4>
+                  <div className="element-list">
+                    {items.map((component, idx) => (
+                      <div
+                        key={`${getComponentId(component)}:${idx}`}
+                        className="element-item"
+                        data-component={component.metadata.type.toLowerCase()}
+                        data-component-id={getComponentId(component)}
+                        draggable
+                        onDragStart={(e) => {
+                          try {
+                            const container = document.createElement("div");
+                            container.style.position = "absolute";
+                            container.style.top = "-1000px";
+                            container.style.left = "-1000px";
+                            container.style.pointerEvents = "none";
+                            const preview = (
+                              e.currentTarget as HTMLElement
+                            ).querySelector(
+                              ".component-preview-container"
+                            ) as HTMLElement | null;
+                            if (preview) {
+                              const clone = preview.cloneNode(
+                                true
+                              ) as HTMLElement;
+                              clone.style.transform = "scale(1)";
+                              clone.style.padding = "0";
+                              clone.style.border = "none";
+                              const wrapper = document.createElement("div");
+                              wrapper.className = "element-item";
+                              wrapper.setAttribute(
+                                "data-component-id",
+                                getComponentId(component)
+                              );
+                              wrapper.appendChild(clone);
+                              container.appendChild(wrapper);
+                              document.body.appendChild(container);
+                              const rect = preview.getBoundingClientRect();
+                              e.dataTransfer?.setDragImage(
+                                container,
+                                rect.width / 2,
+                                rect.height / 2
+                              );
+                              setTimeout(() => {
+                                if (container.parentNode)
+                                  container.parentNode.removeChild(container);
+                              }, 0);
+                            }
+                          } catch {}
+                          if (onDragStart) onDragStart(e, component);
+                        }}
+                        onDragEnd={
+                          onDragEnd
+                            ? (e) => onDragEnd(e as any, component)
+                            : undefined
+                        }
+                        title={`${component.metadata.description}\nVersion: ${component.metadata.version}\nAuthor: ${component.metadata.author}\nDrag to canvas to add`}
+                      >
+                        <div className="element-header">
+                          <span className="element-icon">
+                            {getComponentIcon(component)}
+                          </span>
+                          <span className="element-name">
+                            {component.metadata.name}
+                          </span>
+                          <span className="element-type">
+                            ({component.metadata.type})
+                          </span>
+                        </div>
+                        <div
+                          className="component-preview-container"
+                          dangerouslySetInnerHTML={{
+                            __html: createComponentPreview(component),
+                          }}
+                        />
                       </div>
-                      <div className="component-preview-container" dangerouslySetInnerHTML={{ __html: createComponentPreview(component) }} />
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </>
         )}
       </div>
@@ -269,4 +348,3 @@ const LegacyElementLibrary: React.FC<ElementLibraryProps> = ({ onDragStart, onDr
 };
 
 export default LegacyElementLibrary;
-

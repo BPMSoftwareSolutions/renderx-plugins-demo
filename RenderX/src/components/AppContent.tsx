@@ -3,11 +3,13 @@
  * Main application logic and layout management
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 // ElementLibrary component with Musical Conductor integration
 import ElementLibrary from "./ElementLibrary";
 import ControlPanel from "./ControlPanel";
 import Canvas from "./Canvas";
+import PanelSlot from "./PanelSlot";
+import ErrorBoundary from "./ErrorBoundary";
 import { ThemeToggleButton } from "../providers/ThemeProvider";
 import type { AppState } from "../types/AppTypes";
 import type { LoadedJsonComponent } from "../types/JsonComponent";
@@ -413,11 +415,36 @@ const AppContent: React.FC = () => {
               id="canvas"
               data-plugin-mounted="true"
             >
-              <Canvas
-                mode="editor"
-                onCanvasElementDragStart={handleCanvasElementDragStart}
-                onCanvasElementDragEnd={handleCanvasElementDragEnd}
-              />
+              <ErrorBoundary
+                fallback={
+                  <div className="panel-slot-loading" data-slot="center">
+                    <div className="loading-state">
+                      <h4>Center UI failed; falling back…</h4>
+                    </div>
+                  </div>
+                }
+              >
+                <Suspense
+                  fallback={
+                    <div className="panel-slot-loading" data-slot="center">
+                      <div className="loading-state">
+                        <h4>Loading center UI…</h4>
+                      </div>
+                    </div>
+                  }
+                >
+                  <PanelSlot
+                    slot="center"
+                    fallback={
+                      <Canvas
+                        mode="editor"
+                        onCanvasElementDragStart={handleCanvasElementDragStart}
+                        onCanvasElementDragEnd={handleCanvasElementDragEnd}
+                      />
+                    }
+                  />
+                </Suspense>
+              </ErrorBoundary>
             </section>
 
             {/* Control Panel - Right Panel */}
