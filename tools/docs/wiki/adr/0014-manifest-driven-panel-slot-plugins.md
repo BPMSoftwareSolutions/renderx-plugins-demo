@@ -1,4 +1,4 @@
-# ADR-0001: Manifest‑Driven Panel Slot Plugins (Thin Shell + Orchestrated Panels)
+# ADR-0014: Manifest‑Driven Panel Slot Plugins (Thin Shell + Orchestrated Panels)
 
 Status: Accepted
 Date: 2025-08-11
