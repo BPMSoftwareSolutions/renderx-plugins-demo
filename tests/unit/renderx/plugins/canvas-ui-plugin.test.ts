@@ -1,34 +1,38 @@
-import { loadRenderXPlugin } from '../../../utils/renderx-plugin-loader';
+import { loadRenderXPlugin } from "../../../utils/renderx-plugin-loader";
 
-const pluginPath = 'RenderX/public/plugins/canvas-ui-plugin/index.js';
+const pluginPath = "RenderX/public/plugins/canvas-ui-plugin/index.js";
 
-describe('RenderX Canvas UI Plugin (canvas.ui-symphony)', () => {
+describe("RenderX Canvas UI Plugin (canvas.ui-symphony)", () => {
   let plugin: any;
 
   beforeAll(() => {
     plugin = loadRenderXPlugin(pluginPath);
   });
 
-  test('exports sequence and handlers', () => {
+  test("exports sequence and handlers", () => {
     expect(plugin.sequence).toBeTruthy();
     expect(plugin.handlers).toBeTruthy();
-    expect(typeof plugin.handlers.noop).toBe('function');
-    expect(plugin.sequence.id).toBe('Canvas.ui-symphony');
+    expect(typeof plugin.handlers.noop).toBe("function");
+    expect(plugin.sequence.id).toBe("Canvas.ui-symphony");
   });
 
-  test('sequence registers in SequenceRegistry', async () => {
-    const { SequenceRegistry } = await import('../../../../modules/communication/sequences/core/SequenceRegistry');
-    const { EventBus } = await import('../../../../modules/communication/EventBus');
+  test("sequence registers in SequenceRegistry", async () => {
+    const { SequenceRegistry } = await import(
+      "../../../../modules/communication/sequences/core/SequenceRegistry"
+    );
+    const { EventBus } = await import(
+      "../../../../modules/communication/EventBus"
+    );
     const registry = new SequenceRegistry(new EventBus());
     expect(() => registry.register(plugin.sequence)).not.toThrow();
   });
 
-  describe('UI export', () => {
-    test('CanvasPage is exported as a function', () => {
-      expect(typeof plugin.CanvasPage).toBe('function');
+  describe("UI export", () => {
+    test("CanvasPage is exported as a function", () => {
+      expect(typeof plugin.CanvasPage).toBe("function");
     });
 
-    test('CanvasPage returns null when window.React is not available', () => {
+    test("CanvasPage returns null when window.React is not available", () => {
       const original = (global as any).window?.React;
       try {
         (global as any).window.React = undefined;
@@ -41,3 +45,73 @@ describe('RenderX Canvas UI Plugin (canvas.ui-symphony)', () => {
   });
 });
 
+test("CanvasPage calls play(pluginName, sequenceId) after plugin is mounted", () => {
+  const originalWindow: any = (global as any).window;
+  const play = jest.fn();
+
+  const w: any = (global as any).window || {};
+  w.React = { useEffect: (fn: any) => fn(), createElement: () => ({}) };
+  w.renderxCommunicationSystem = {
+    conductor: {
+      getMountedPlugins: () => ["Canvas UI Plugin"],
+      play,
+    },
+  };
+  delete w.__rx_canvas_ui_played__;
+  (global as any).window = w;
+
+  try {
+    const pluginLocal = loadRenderXPlugin(pluginPath);
+    pluginLocal.CanvasPage({});
+    expect(play).toHaveBeenCalledWith(
+      "Canvas UI Plugin",
+      "Canvas.ui-symphony",
+      expect.any(Object)
+    );
+  } finally {
+    (global as any).window = originalWindow;
+  }
+});
+
+test("CanvasPage waits until plugin is mounted before calling play", () => {
+  jest.useFakeTimers();
+  const originalWindow: any = (global as any).window;
+  const play = jest.fn();
+
+  let mounted = false;
+  const getMountedPlugins = jest.fn(() =>
+    mounted ? ["Canvas UI Plugin"] : []
+  );
+
+  const w: any = (global as any).window || {};
+  w.React = { useEffect: (fn: any) => fn(), createElement: () => ({}) };
+  w.renderxCommunicationSystem = {
+    conductor: {
+      getMountedPlugins,
+      play,
+    },
+  };
+  delete w.__rx_canvas_ui_played__;
+  (global as any).window = w;
+
+  try {
+    const pluginLocal = loadRenderXPlugin(pluginPath);
+    pluginLocal.CanvasPage({});
+    // Initially not mounted, should schedule retry
+    expect(play).not.toHaveBeenCalled();
+    expect(getMountedPlugins).toHaveBeenCalled();
+
+    // Now simulate plugin becomes mounted
+    mounted = true;
+    jest.advanceTimersByTime(200);
+
+    expect(play).toHaveBeenCalledWith(
+      "Canvas UI Plugin",
+      "Canvas.ui-symphony",
+      expect.any(Object)
+    );
+  } finally {
+    jest.useRealTimers();
+    (global as any).window = originalWindow;
+  }
+});

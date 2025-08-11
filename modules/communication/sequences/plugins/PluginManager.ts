@@ -11,6 +11,7 @@ import { SequenceRegistry } from "../core/SequenceRegistry.js";
 import { PluginLoader } from "./PluginLoader.js";
 import { PluginValidator } from "./PluginValidator.js";
 import { PluginManifestLoader } from "./PluginManifestLoader.js";
+import { MusicalConductor } from "../MusicalConductor.js";
 
 // Import plugin types from MusicalConductor (temporary until we move them to a shared location)
 import type { SPAPlugin, PluginMountResult } from "./PluginInterfaceFacade.js";
@@ -232,21 +233,30 @@ export class PluginManager {
                     const handlerContext = {
                       ...context,
                       logger,
-                      emit: (eventName: string, payload?: any) => {
-                        try {
-                          // Preserve musical context if available for chaining
-                          const enriched = {
-                            ...(payload || {}),
-                            _musicalContext: data?._musicalContext,
-                          };
-                          this.eventBus.emit(eventName, enriched);
-                        } catch (emitErr) {
-                          console.warn(
-                            `🧠 PluginManager: emit failed for ${id}.${handlerName} -> ${eventName}:`,
-                            emitErr
-                          );
-                        }
+                      // CIA-compliant: expose minimal conductor with play() only
+                      conductor: {
+                        play: (
+                          pluginId: string,
+                          sequenceId: string,
+                          ctx: any,
+                          priority?: any
+                        ) => {
+                          try {
+                            const mc = MusicalConductor.getInstance(
+                              this.eventBus as any
+                            );
+                            return mc.play(pluginId, sequenceId, ctx, priority);
+                          } catch (err) {
+                            console.warn(
+                              `🧠 PluginManager: conductor.play unavailable in handler context for ${id}.${handlerName}:`,
+                              (err as any)?.message || err
+                            );
+                            return null;
+                          }
+                        },
                       },
+                      // Deprecated: emit removed per ADR-0002 (kept temporarily as no-op to avoid breaking plugins)
+                      emit: undefined,
                     } as any;
 
                     const result = await handlerFn(data, handlerContext);

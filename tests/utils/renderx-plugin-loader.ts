@@ -5,6 +5,8 @@ export function loadRenderXPlugin(relativePathFromRepoRoot: string): any {
   const abs = path.resolve(__dirname, "../../", relativePathFromRepoRoot);
   const code = fs.readFileSync(abs, "utf8");
   const transpiled = code
+    // strip simple ESM import lines to allow eval in tests
+    .replace(/^\s*import\s+[^;]+;?/gm, "")
     // export const X = ...
     .replace(/export const (\w+)\s*=\s*/g, "moduleExports.$1 = ")
     // export async function X(...) { ... }

@@ -87,18 +87,7 @@ export const handlers = {
       }
     );
 
-    // Option 1: emit an event that Canvas.component-create-symphony listens for
-    if (typeof context.emit === "function") {
-      context.emit("canvas:component:create", {
-        component,
-        position: coordinates,
-        source: "library-drop",
-        onComponentCreated,
-      });
-      return { forwarded: true, via: "eventBus" };
-    }
-
-    // Option 2: forward via conductor.play if available in handler context
+    // Preferred path: use conductor.play so callbacks are preserved
     try {
       if (context?.conductor?.play) {
         const result = await context.conductor.play(
