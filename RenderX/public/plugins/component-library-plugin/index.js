@@ -179,7 +179,7 @@ export const handlers = {
 export function LibraryPanel(props = {}) {
   const React = (window && window.React) || null;
   if (!React) return null;
-  const { useState, useEffect, useMemo, useRef } = React;
+  const { useState, useEffect, useMemo } = React;
   const { onDragStart, onDragEnd } = props;
 
   const [components, setComponents] = useState([]);
@@ -197,18 +197,7 @@ export function LibraryPanel(props = {}) {
 
     const { conductor } = system;
 
-    const unsubLoaded = conductor.subscribe("components:loaded", (data) => {
-      if (data && Array.isArray(data.components)) {
-        setComponents(data.components);
-        setLoading(false);
-        setError(null);
-      }
-    });
-
-    const unsubError = conductor.subscribe("components:error", (data) => {
-      setError((data && data.error) || "Failed to load components");
-      setLoading(false);
-    });
+    // Rely exclusively on play() onComponentsLoaded callback; no event subscriptions needed here
 
     // Try to start the symphony only after the plugin is actually mounted
     const tryStart = () => {
@@ -241,14 +230,8 @@ export function LibraryPanel(props = {}) {
 
     tryStart();
 
-    return () => {
-      try {
-        unsubLoaded && unsubLoaded();
-      } catch {}
-      try {
-        unsubError && unsubError();
-      } catch {}
-    };
+    // No subscriptions to clean up currently
+    return () => {};
   }, []);
 
   // Helpers
