@@ -28,7 +28,10 @@ module.exports = {
     "^(.*)\\.js$": "$1",
   },
   resolver: "<rootDir>/jest.resolver.js",
-  setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.ts"],
+  setupFilesAfterEnv: [
+    "<rootDir>/tests/setup/jest.setup.ts",
+    "<rootDir>/tests/setup/jest.cia-plugins.setup.ts",
+  ],
   collectCoverageFrom: [
     "modules/**/*.ts",
     "!modules/**/*.d.ts",

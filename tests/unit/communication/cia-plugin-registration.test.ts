@@ -36,8 +36,24 @@ describe("CIA plugin registration via manifest", () => {
       .mockImplementation(async (...args: any[]) => {
         const webPath = String(args[0]);
         const localFile = mapWebPathToLocalFile(webPath);
-        const fileUrl = pathToFileURL(localFile).href;
-        return await import(fileUrl);
+        // Transform ESM exports to a plain object for Jest/Node CJS
+        const code = fs.readFileSync(localFile, "utf-8");
+        const transpiled = code
+          .replace(/^\s*import\s+[^;]+;?/gm, "")
+          .replace(/export const (\w+)\s*=\s*/g, "moduleExports.$1 = ")
+          .replace(
+            /export\s+async\s+function\s+(\w+)\s*\(/g,
+            "moduleExports.$1 = async function $1("
+          )
+          .replace(
+            /export\s+function\s+(\w+)\s*\(/g,
+            "moduleExports.$1 = function $1("
+          )
+          .replace(/export default\s+/g, "moduleExports.default = ");
+        const moduleExports: any = {};
+        const evaluator = new Function("moduleExports", "fetch", transpiled);
+        evaluator(moduleExports, (global as any).fetch);
+        return moduleExports;
       });
   });
 

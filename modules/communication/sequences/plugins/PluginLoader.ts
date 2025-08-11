@@ -20,6 +20,84 @@ export class PluginLoader {
       return this.moduleCache.get(pluginPath);
     }
 
+    // Node/Jest-friendly import: map /plugins/... to local repo path when not in browser
+    try {
+      const isBrowser =
+        typeof window !== "undefined" &&
+        typeof (window as any).document !== "undefined";
+      if (!isBrowser && pluginPath.startsWith("/plugins/")) {
+        const path = await import("node:path");
+        const { pathToFileURL } = await import("node:url");
+        const localPath = path.resolve(
+          process.cwd(),
+          pluginPath.replace(/^\/?plugins\//, "RenderX/public/plugins/")
+        );
+        const fileUrl = pathToFileURL(localPath).href;
+        console.log(`🔄 [node] Importing plugin via file URL: ${fileUrl}`);
+        let module: any | null = null;
+        try {
+          module = await import(fileUrl);
+          // Unwrap default export if necessary
+          if (
+            module &&
+            module.default &&
+            !module.sequence &&
+            !module.handlers
+          ) {
+            const def = module.default;
+            if (def && (def.sequence || def.handlers)) module = def;
+          }
+        } catch (importErr) {
+          console.warn(
+            `⚠️ file:// import failed for ${fileUrl}. Trying transform fallback.`,
+            importErr
+          );
+        }
+        // If import did not work or did not expose named exports, try transform fallback
+        if (!module?.sequence && !module?.handlers) {
+          try {
+            const fs = await import("node:fs");
+            const src = fs.readFileSync(localPath, "utf-8");
+            const transformed = src
+              .replace(/^\s*import\s+[^;]+;?/gm, "")
+              .replace(/export const (\w+)\s*=\s*/g, "moduleExports.$1 = ")
+              .replace(
+                /export\s+async\s+function\s+(\w+)\s*\(/g,
+                "moduleExports.$1 = async function $1("
+              )
+              .replace(
+                /export\s+function\s+(\w+)\s*\(/g,
+                "moduleExports.$1 = function $1("
+              )
+              .replace(/export default\s+/g, "moduleExports.default = ");
+            const moduleExports: any = {};
+            const evaluator = new Function(
+              "moduleExports",
+              "fetch",
+              transformed
+            );
+            evaluator(moduleExports, (globalThis as any).fetch);
+            module = moduleExports;
+          } catch (fallbackErr) {
+            console.warn(
+              "⚠️ PluginLoader fallback transform failed:",
+              fallbackErr
+            );
+          }
+        }
+        if (!module) {
+          throw new Error(`Failed to load plugin module at ${fileUrl}`);
+        }
+        this.moduleCache.set(pluginPath, module);
+        return module;
+      }
+    } catch (nodeImportErr) {
+      console.warn(
+        "⚠️ Node/Jest import path mapping failed, falling back to web import:",
+        nodeImportErr
+      );
+    }
+
     // Extract plugin directory from path
     const pluginDir = pluginPath.substring(0, pluginPath.lastIndexOf("/"));
     const bundledPath = `${pluginDir}/dist/plugin.js`;
@@ -44,7 +122,11 @@ export class PluginLoader {
 
       try {
         console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
-        const module = await import(bundledPath);
+        let module: any = await import(bundledPath);
+        if (module && module.default && !module.sequence && !module.handlers) {
+          const def = module.default;
+          if (def && (def.sequence || def.handlers)) module = def;
+        }
         this.moduleCache.set(pluginPath, module);
         console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
         return module;
@@ -57,7 +139,11 @@ export class PluginLoader {
       // Prod: try bundled first
       try {
         console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
-        const module = await import(bundledPath);
+        let module: any = await import(bundledPath);
+        if (module && module.default && !module.sequence && !module.handlers) {
+          const def = module.default;
+          if (def && (def.sequence || def.handlers)) module = def;
+        }
         this.moduleCache.set(pluginPath, module);
         console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
         return module;
@@ -69,7 +155,11 @@ export class PluginLoader {
 
       try {
         console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
-        const module = await import(pluginPath);
+        let module: any = await import(pluginPath);
+        if (module && module.default && !module.sequence && !module.handlers) {
+          const def = module.default;
+          if (def && (def.sequence || def.handlers)) module = def;
+        }
         this.moduleCache.set(pluginPath, module);
         console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
         return module;
@@ -118,8 +208,16 @@ export class PluginLoader {
       for (const strategy of resolutionStrategies) {
         try {
           console.log(`🔄 Trying resolution strategy: ${strategy}`);
-          const module = await import(strategy);
-
+          let module: any = await import(strategy);
+          if (
+            module &&
+            module.default &&
+            !module.sequence &&
+            !module.handlers
+          ) {
+            const def = module.default;
+            if (def && (def.sequence || def.handlers)) module = def;
+          }
           // Cache the loaded module
           this.moduleCache.set(pluginPath, module);
 

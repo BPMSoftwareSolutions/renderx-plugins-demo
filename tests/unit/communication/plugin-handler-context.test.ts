@@ -19,6 +19,8 @@ describe("Plugin handler context integrity (ADR-0008)", () => {
               event: "context:test",
               title: "ctx",
               handler: "checkCtx",
+              dynamics: "forte",
+              timing: "immediate",
             },
           ],
         },
