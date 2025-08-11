@@ -1,27 +1,12 @@
-import path from "path";
-import fs from "fs";
+import { loadRenderXPlugin } from "../../../utils/renderx-plugin-loader";
 
-// Helper to load ESM-like plugin file by simple transform for unit testing
-function loadPluginFromFile(absPath: string): any {
-  const code = fs.readFileSync(absPath, "utf8");
-  const transpiled = code
-    .replace(/export const (\w+)\s*=\s*/g, "moduleExports.$1 = ")
-    .replace(/export default\s+/g, "moduleExports.default = ");
-  const moduleExports: any = {};
-  const fn = new Function("moduleExports", "fetch", transpiled);
-  fn(moduleExports, (global as any).fetch);
-  return moduleExports;
-}
+const pluginPath = "RenderX/public/plugins/component-library-plugin/index.js";
 
 describe("RenderX Component Library Plugin", () => {
   let plugin: any;
 
-  beforeAll(async () => {
-    const abs = path.resolve(
-      __dirname,
-      "../../../../RenderX/public/plugins/component-library-plugin/index.js"
-    );
-    plugin = loadPluginFromFile(abs);
+  beforeAll(() => {
+    plugin = loadRenderXPlugin(pluginPath);
   });
 
   test("exports sequence and handlers", () => {
@@ -41,31 +26,21 @@ describe("RenderX Component Library Plugin", () => {
     const { EventBus } = await import(
       "../../../../modules/communication/EventBus"
     );
-
-    const eventBus = new EventBus();
-    const registry = new SequenceRegistry(eventBus);
-    // The registry will throw if invalid; this should not throw
+    const registry = new SequenceRegistry(new EventBus());
     expect(() => registry.register(plugin.sequence)).not.toThrow();
   });
 
   describe("handlers", () => {
-    const makeContext = (overrides: any = {}) => {
-      return {
-        payload: {},
-        sequence: plugin.sequence,
-        logger: {
-          info: jest.fn(),
-          warn: jest.fn(),
-          error: jest.fn(),
-        },
-        onComponentsLoaded: jest.fn(),
-        ...overrides,
-      };
-    };
+    const makeContext = (overrides: any = {}) => ({
+      payload: {},
+      sequence: plugin.sequence,
+      logger: { info: jest.fn(), warn: jest.fn(), error: jest.fn() },
+      onComponentsLoaded: jest.fn(),
+      ...overrides,
+    });
 
     beforeEach(() => {
       jest.restoreAllMocks();
-      // Mock fetch for tests
       (global as any).fetch = jest.fn();
     });
 
@@ -96,7 +71,7 @@ describe("RenderX Component Library Plugin", () => {
           maxComponents: 1,
         },
       };
-      ctx.sequence = seq;
+      (ctx as any).sequence = seq;
 
       const res = plugin.handlers.validateComponents({}, ctx);
       expect(res.validationPassed).toBe(true);
@@ -113,7 +88,7 @@ describe("RenderX Component Library Plugin", () => {
           ],
         },
       });
-      ctx.sequence = {
+      (ctx as any).sequence = {
         ...plugin.sequence,
         configuration: { ...plugin.sequence.configuration, sortBy: "name" },
       };
@@ -129,9 +104,7 @@ describe("RenderX Component Library Plugin", () => {
       const onComponentsLoaded = jest.fn();
       const ctx = makeContext({
         onComponentsLoaded,
-        payload: {
-          preparedComponents: [{ id: 1 }, { id: 2 }],
-        },
+        payload: { preparedComponents: [{ id: 1 }, { id: 2 }] },
       });
 
       const res = plugin.handlers.notifyComponentsLoaded({}, ctx);
