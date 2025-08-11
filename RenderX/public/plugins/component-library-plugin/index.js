@@ -188,50 +188,64 @@ export function LibraryPanel(props = {}) {
 
   // Kick off plugin-driven component load and subscriptions (StrictMode + mount-order safe)
   useEffect(() => {
-    const system = (window && window.renderxCommunicationSystem) || null;
-    if (!system || !system.conductor) {
-      setError("Musical Conductor not available for component loading");
-      setLoading(false);
-      return;
-    }
+    let cancelled = false;
 
-    const { conductor } = system;
-
-    // Rely exclusively on play() onComponentsLoaded callback; no event subscriptions needed here
-
-    // Try to start the symphony only after the plugin is actually mounted
-    const tryStart = () => {
-      try {
-        if ((window && window.__rx_library_played__) === true) return;
-        const getIds =
-          conductor.getMountedPlugins && conductor.getMountedPlugins();
-        const ids = Array.isArray(getIds) ? getIds : [];
-        if (ids.includes && ids.includes("Component Library Plugin")) {
-          window.__rx_library_played__ = true;
-          conductor.play(
-            "Component Library Plugin",
-            "load-components-symphony",
-            {
-              source: "json-components",
-              onComponentsLoaded: (items) => {
-                setComponents(items || []);
-                setLoading(false);
-                setError(null);
-              },
-            }
-          );
-        } else {
-          setTimeout(tryStart, 100);
-        }
-      } catch (e) {
-        setTimeout(tryStart, 150);
+    const startWhenReady = () => {
+      const system = (window && window.renderxCommunicationSystem) || null;
+      if (!system || !system.conductor) {
+        // Conductor not ready yet — retry shortly without surfacing an error
+        if (!cancelled) setTimeout(startWhenReady, 100);
+        return;
       }
+
+      const { conductor } = system;
+
+      // Rely exclusively on play() onComponentsLoaded callback; no event subscriptions needed here
+      const tryStart = () => {
+        if (cancelled) return;
+        try {
+          if ((window && window.__rx_library_played__) === true) return;
+          const names = Array.isArray(conductor.getMountedPlugins?.())
+            ? conductor.getMountedPlugins()
+            : [];
+          const ids = Array.isArray(conductor.getMountedPluginIds?.())
+            ? conductor.getMountedPluginIds()
+            : [];
+          const pluginReady =
+            (names.includes && names.includes("Component Library Plugin")) ||
+            (ids.includes && ids.includes("load-components-symphony"));
+
+          if (pluginReady) {
+            window.__rx_library_played__ = true;
+            conductor.play(
+              "Component Library Plugin",
+              "load-components-symphony",
+              {
+                source: "json-components",
+                onComponentsLoaded: (items) => {
+                  if (cancelled) return;
+                  setComponents(items || []);
+                  setLoading(false);
+                  setError(null);
+                },
+              }
+            );
+          } else {
+            setTimeout(tryStart, 100);
+          }
+        } catch (e) {
+          setTimeout(tryStart, 150);
+        }
+      };
+
+      tryStart();
     };
 
-    tryStart();
+    startWhenReady();
 
-    // No subscriptions to clean up currently
-    return () => {};
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Helpers

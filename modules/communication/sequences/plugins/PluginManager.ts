@@ -432,6 +432,9 @@ export class PluginManager {
 
       console.log("🧠 Registering CIA-compliant plugins...");
 
+      // Track count before attempting registration
+      const beforeCount = this.getMountedPluginIds().length;
+
       // Load plugin manifest
       const pluginManifest = await this.manifestLoader.loadManifest(
         "/plugins/manifest.json"
@@ -440,10 +443,22 @@ export class PluginManager {
       // Register plugins dynamically based on manifest data (data-driven approach)
       await this.registerPluginsFromManifest(pluginManifest);
 
-      // Mark plugins as registered to prevent duplicate execution
-      this.pluginsRegistered = true;
-
-      console.log("✅ CIA-compliant plugins registered successfully");
+      // Determine if any new plugins were actually mounted
+      const afterCount = this.getMountedPluginIds().length;
+      if (afterCount > beforeCount) {
+        // Mark plugins as registered to prevent duplicate execution
+        this.pluginsRegistered = true;
+        console.log(
+          `✅ CIA-compliant plugins registered successfully (mounted: ${
+            afterCount - beforeCount
+          }, total: ${afterCount})`
+        );
+      } else {
+        // Nothing mounted (likely manifest load issue or all autoMount=false) — allow retry later
+        console.warn(
+          "⚠️ No CIA plugins were mounted. Leaving pluginsRegistered=false so a later retry can succeed."
+        );
+      }
     } catch (error) {
       console.error("❌ Failed to register CIA plugins:", error);
       // Fallback to basic event handling if plugin loading fails

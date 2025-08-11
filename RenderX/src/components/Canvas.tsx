@@ -173,6 +173,19 @@ const Canvas: React.FC<CanvasProps> = ({
     }
   }, []);
 
+  // Helper: check CIA readiness (mounted plugins > 0)
+  const isCIAReady = () => {
+    try {
+      const cs = (window as any).renderxCommunicationSystem;
+      const mounted = Array.isArray(cs?.conductor?.getMountedPluginIds?.())
+        ? cs.conductor.getMountedPluginIds().length
+        : 0;
+      return mounted > 0;
+    } catch {
+      return false;
+    }
+  };
+
   // Drop handlers - THIN CLIENT APPROACH
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -292,7 +305,7 @@ const Canvas: React.FC<CanvasProps> = ({
 
     // 🎼 THIN CLIENT: Only call conductor.play() - let plugins handle ALL drop logic
     const communicationSystem = (window as any).renderxCommunicationSystem;
-    if (communicationSystem) {
+    if (communicationSystem && isCIAReady()) {
       // Get basic drop coordinates for the plugin
       const canvasRect = e.currentTarget.getBoundingClientRect();
       const coordinates = {
@@ -372,7 +385,7 @@ const Canvas: React.FC<CanvasProps> = ({
       }
     } else {
       console.warn(
-        "🎼 [THIN CLIENT] Communication system not available for drop handling"
+        "🎼 [THIN CLIENT] Communication system or CIA plugins not ready for drop handling"
       );
     }
   };
@@ -444,10 +457,13 @@ const Canvas: React.FC<CanvasProps> = ({
                   });
                 } catch {}
 
-
                 // If width/height are missing, measure the rendered component once and persist size
                 // This keeps the overlay aligned with actual DOM size
-                if ((element.style?.width == null || element.style?.height == null) && typeof window !== 'undefined') {
+                if (
+                  (element.style?.width == null ||
+                    element.style?.height == null) &&
+                  typeof window !== "undefined"
+                ) {
                   requestAnimationFrame(() => {
                     const el = document.getElementById(elementId);
                     if (el) {
@@ -510,7 +526,7 @@ const Canvas: React.FC<CanvasProps> = ({
                           onDragUpdate: ({ elementId: id, position }) => {
                             setCanvasElements((prev) =>
                               prev.map((el) =>
-                                (el.id === id || (el as any).elementId === id)
+                                el.id === id || (el as any).elementId === id
                                   ? { ...el, position }
                                   : el
                               )
@@ -536,7 +552,7 @@ const Canvas: React.FC<CanvasProps> = ({
                             onDragUpdate: ({ elementId: id, position }) => {
                               setCanvasElements((prev) =>
                                 prev.map((el) =>
-                                  (el.id === id || (el as any).elementId === id)
+                                  el.id === id || (el as any).elementId === id
                                     ? { ...el, position }
                                     : el
                                 )
@@ -596,18 +612,32 @@ const Canvas: React.FC<CanvasProps> = ({
                           const minSize = 1;
                           setCanvasElements((prev) =>
                             prev.map((el) =>
-                              (el.id === id || (el as any).elementId === id)
+                              el.id === id || (el as any).elementId === id
                                 ? {
                                     ...el,
                                     position: {
                                       ...(el.position || { x: 0, y: 0 }),
-                                      x: Math.round(box.x ?? (el.position?.x || 0)),
-                                      y: Math.round(box.y ?? (el.position?.y || 0)),
+                                      x: Math.round(
+                                        box.x ?? (el.position?.x || 0)
+                                      ),
+                                      y: Math.round(
+                                        box.y ?? (el.position?.y || 0)
+                                      ),
                                     },
                                     style: {
                                       ...el.style,
-                                      width: Math.max(minSize, Math.round(box.w ?? (el.style?.width || 1))),
-                                      height: Math.max(minSize, Math.round(box.h ?? (el.style?.height || 1))),
+                                      width: Math.max(
+                                        minSize,
+                                        Math.round(
+                                          box.w ?? (el.style?.width || 1)
+                                        )
+                                      ),
+                                      height: Math.max(
+                                        minSize,
+                                        Math.round(
+                                          box.h ?? (el.style?.height || 1)
+                                        )
+                                      ),
                                     },
                                   }
                                 : el

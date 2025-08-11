@@ -194,7 +194,23 @@ const AppContent: React.FC = () => {
     return () => {
       cancelled = true;
       console.log("🧹 Cleaning up communication system...");
-      resetCommunicationSystem();
+      try {
+        const isDev =
+          typeof import.meta !== "undefined" &&
+          (import.meta as any).env &&
+          (import.meta as any).env.DEV === true;
+        if (!isDev) {
+          resetCommunicationSystem();
+        } else {
+          // Avoid full teardown in dev/StrictMode to prevent mid-flow blank conductor
+          // Keep the existing conductor instance for idempotent re-mounts
+          (window as any).renderxCommunicationSystem = (window as any)
+            .renderxCommunicationSystem || { conductor: undefined };
+        }
+      } catch {
+        // Fallback to safe reset if env detection fails
+        resetCommunicationSystem();
+      }
     };
   }, []);
 

@@ -5,14 +5,14 @@
 
 import React from "react";
 import type { ElementLibraryProps } from "../types/AppTypes";
-import LegacyElementLibrary from "./LegacyElementLibrary";
+import ElementLibraryFallback from "./ElementLibraryFallback";
 import PanelSlot from "./PanelSlot";
 import ErrorBoundary from "./ErrorBoundary";
 import { Suspense } from "react";
 
 const ElementLibrary: React.FC<ElementLibraryProps> = () => {
   return (
-    <ErrorBoundary fallback={<LegacyElementLibrary />}>
+    <ErrorBoundary fallback={<ElementLibraryFallback />}>
       <Suspense
         fallback={
           <div className="panel-slot-loading" data-slot="left">
@@ -22,7 +22,7 @@ const ElementLibrary: React.FC<ElementLibraryProps> = () => {
           </div>
         }
       >
-        <PanelSlot slot="left" fallback={<LegacyElementLibrary />} />
+        <PanelSlot slot="left" fallback={<ElementLibraryFallback />} />
       </Suspense>
     </ErrorBoundary>
   );
