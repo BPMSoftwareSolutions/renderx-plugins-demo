@@ -65,6 +65,14 @@
       "description": "Properties panel UI for the right slot",
       "autoMount": true,
       "ui": { "slot": "right", "export": "ControlPanelPanel" }
+    },
+    {
+      "name": "Canvas UI Plugin",
+      "path": "canvas-ui-plugin/",
+      "version": "0.1.0",
+      "description": "Canvas UI (center slot) - scaffold",
+      "autoMount": true,
+      "ui": { "slot": "center", "export": "CanvasPage" }
     }
   ]
 }
