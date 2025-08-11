@@ -46,6 +46,167 @@ export const handlers = {
   noop: () => ({}),
 };
 
+// Helper: inject raw CSS if present, de-duped by hash
+function injectRawCSS(css) {
+  try {
+    if (!css) return;
+    const id = "component-css-" + btoa(css).substring(0, 10);
+    if (document.getElementById(id)) return;
+    const tag = document.createElement("style");
+    tag.id = id;
+    tag.textContent = css;
+    document.head.appendChild(tag);
+  } catch {}
+}
+
+// Helper: best-effort parse of template to get tag and class list
+function parseTemplateShape(template) {
+  try {
+    const tagMatch = template && template.match(/<\s*([a-zA-Z0-9-]+)/);
+    const tag = (tagMatch ? tagMatch[1] : "div").toLowerCase();
+    // collect class names from first opening tag
+    const classMatch = template && template.match(/class\s*=\s*"([^"]*)"/);
+    const classes = classMatch
+      ? classMatch[1].split(/\s+/).filter(Boolean)
+      : [];
+    return { tag, classes };
+  } catch {
+    return { tag: "div", classes: [] };
+  }
+}
+// Helper: resolve {{tokens}} in strings using provided vars
+function resolveTemplateTokens(str, vars) {
+  try {
+    if (!str) return str;
+    return String(str).replace(
+      /\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g,
+      function (_m, key) {
+        return vars && vars[key] != null ? String(vars[key]) : "";
+      }
+    );
+  } catch {
+    return str;
+  }
+}
+
+// Helper: inject per-instance CSS (position/size) so no inline styles are needed
+function injectInstanceCSS(node, width, height) {
+  try {
+    if (!node) return;
+    const id =
+      "component-instance-css-" + String(node.id || node.cssClass || "");
+    if (document.getElementById(id)) return;
+    const cls = String(node.cssClass || node.id || "").trim();
+    if (!cls) return;
+    const left =
+      (node.position && node.position.x) != null ? node.position.x : 0;
+    const top =
+      (node.position && node.position.y) != null ? node.position.y : 0;
+    const lines = [
+      `.${cls}{position:absolute;left:${left}px;top:${top}px;box-sizing:border-box;display:block;}`,
+    ];
+    if (width != null)
+      lines.push(
+        `.${cls}{width:${typeof width === "number" ? width + "px" : width};}`
+      );
+    if (height != null)
+      lines.push(
+        `.${cls}{height:${
+          typeof height === "number" ? height + "px" : height
+        };}`
+      );
+    const tag = document.createElement("style");
+    tag.id = id;
+    tag.textContent = lines.join("\n");
+    document.head.appendChild(tag);
+  } catch {}
+}
+
+// New export: renderCanvasNode — produce a pure element for a created node
+export function renderCanvasNode(node) {
+  const React = (typeof window !== "undefined" && window.React) || null;
+  if (!React || !node) return null;
+
+  const component = node.component || node.componentData || {};
+  const template = (component.ui && component.ui.template) || "<div></div>";
+  const stylesCss =
+    component.ui && component.ui.styles && component.ui.styles.css;
+
+  // Inject CSS once
+  injectRawCSS(stylesCss);
+
+  // Determine tag and base classes from template
+  const shape = parseTemplateShape(template);
+  const tagName = shape.tag || node.type || "div";
+
+  // Compose className: instance cssClass + resolved template classes
+  const vars = {
+    variant:
+      (node && node.variant) ||
+      (component && component.metadata && component.metadata.variant) ||
+      "primary",
+    size:
+      (node && node.size) ||
+      (component && component.metadata && component.metadata.size) ||
+      "md",
+  };
+  const resolvedTemplateClasses = shape.classes.map((c) =>
+    resolveTemplateTokens(c, vars)
+  );
+  const classes = [
+    String(node.cssClass || node.id || ""),
+    ...resolvedTemplateClasses,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  // Dimensions from canvas integration
+  const defaults =
+    (component.integration && component.integration.canvasIntegration) || {};
+  const width = defaults.defaultWidth;
+  const height = defaults.defaultHeight;
+
+  // Inject per-instance CSS for layout (no inline styles)
+  injectInstanceCSS(node, width, height);
+
+  const props = {
+    id: node.id,
+    className: classes,
+    "data-component-id": node.id,
+    draggable: true,
+  };
+
+  // Content: replace {{content}} with metadata.name if present
+  const name =
+    (component.metadata &&
+      (component.metadata.name || component.metadata.type)) ||
+    "";
+  const text = String(template).includes("{{content}}")
+    ? String(name || "")
+    : undefined;
+
+  // Void tags cannot have children
+  const voidTags = new Set([
+    "input",
+    "img",
+    "br",
+    "hr",
+    "meta",
+    "link",
+    "area",
+    "base",
+    "col",
+    "embed",
+    "source",
+    "track",
+    "wbr",
+  ]);
+  if (voidTags.has(tagName)) {
+    return React.createElement(tagName, props);
+  }
+  return React.createElement(tagName, props, text);
+}
+
 // UI export: CanvasPage
 // Uses window.React to remain decoupled from app build
 export function CanvasPage(props = {}) {
@@ -179,35 +340,23 @@ export function CanvasPage(props = {}) {
         "div",
         { className: "canvas-content" },
         nodes && nodes.length > 0
-          ? nodes.map((n) =>
-              React.createElement(
-                "div",
-                {
-                  key:
-                    n.id ||
-                    n.elementId ||
-                    Math.random().toString(36).slice(2, 8),
-                  id: n.id || n.elementId,
-                  className:
-                    (n.cssClass || "") +
-                    " " +
-                    (n.type
-                      ? makeRxCompClass(String(n.type).toLowerCase())
-                      : ""),
-                  "data-component-id": n.id || n.elementId,
-                  style: {
-                    position: "absolute",
-                    left: (n.position && n.position.x) || 0,
-                    top: (n.position && n.position.y) || 0,
-                  },
-                },
-                React.createElement(
-                  "div",
-                  { className: "component-inner" },
-                  n.type || "Component"
-                )
-              )
-            )
+          ? nodes.map((n) => {
+              const el =
+                typeof renderCanvasNode === "function"
+                  ? renderCanvasNode({
+                      id: n.id || n.elementId,
+                      cssClass:
+                        n.cssClass ||
+                        (n.type
+                          ? makeRxCompClass(String(n.type).toLowerCase())
+                          : ""),
+                      type: n.type,
+                      position: n.position || { x: 0, y: 0 },
+                      component: n.component || n.componentData,
+                    })
+                  : null;
+              return el;
+            })
           : React.createElement(
               "div",
               { className: "canvas-placeholder" },
