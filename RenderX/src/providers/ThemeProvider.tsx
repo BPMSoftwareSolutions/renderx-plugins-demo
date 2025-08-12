@@ -1,38 +1,63 @@
-/**
- * Theme Provider Component
- * Handles dynamic theme loading from Theme.theme-management-symphony plugin
- */
+import React, { useEffect, useState } from "react";
+import { ConductorService } from "../services/ConductorService";
 
-import React from 'react';
+// Thin-shell ThemeProvider: delegates theme selection to the theme-symphony plugin
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const persisted =
+          (typeof localStorage !== "undefined" && localStorage.getItem("app-theme")) || "auto";
+        // Ensure plugins are registered before first play
+        await ConductorService.getInstance().initialize();
+        const conductor = ConductorService.getInstance().getConductor();
+        const tryApply = () => {
+          if (cancelled) return;
+          try {
+            const ids = (conductor.getMountedPluginIds && conductor.getMountedPluginIds()) || [];
+            if (Array.isArray(ids) && ids.includes("theme-symphony")) {
+              if ((window as any).__rx_theme_applied__ === true) return;
+              (window as any).__rx_theme_applied__ = true;
+              conductor.play("theme-symphony", "theme-symphony", { targetTheme: persisted });
+            } else {
+              setTimeout(tryApply, 120);
+            }
+          } catch {
+            setTimeout(tryApply, 150);
+          }
+        };
+        tryApply();
+      } catch {}
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  return <>{children}</>;
+};
 
-// Import ThemeProvider from Theme Management Symphony Plugin
-// Note: In production, this would be dynamically loaded by the plugin system
-// For now, we'll use a placeholder that gets replaced by the plugin
-let ThemeProvider = ({ children }: { children: React.ReactNode }) => (
-  <>{children}</>
-);
+// Toggle button that cycles light -> dark -> auto and delegates to plugin
+export const ThemeToggleButton: React.FC = () => {
+  const [theme, setTheme] = useState<string>(
+    () => (typeof localStorage !== "undefined" && localStorage.getItem("app-theme")) || "auto"
+  );
+  const next = (t: string) => (t === "light" ? "dark" : t === "dark" ? "auto" : "light");
 
-// This will be replaced by the plugin system when Theme.theme-management-symphony loads
-if (
-  typeof window !== "undefined" &&
-  (window as any).renderxPlugins?.["Theme.theme-management-symphony"]
-) {
-  ThemeProvider = (window as any).renderxPlugins[
-    "Theme.theme-management-symphony"
-  ].ThemeProvider;
-}
+  const onClick = async () => {
+    try {
+      const targetTheme = next(theme);
+      const conductor = ConductorService.getInstance().getConductor();
+      await conductor.play("theme-symphony", "theme-symphony", {
+        targetTheme,
+        onThemeChange: (t: string) => setTheme(t || targetTheme),
+      });
+    } catch {}
+  };
 
-// ThemeToggleButton now provided by Theme.theme-management-symphony plugin
-let ThemeToggleButton = () => <button>🎨</button>; // Fallback
-
-// This will be replaced by the plugin system when Theme.theme-management-symphony loads
-if (
-  typeof window !== "undefined" &&
-  (window as any).renderxPlugins?.["Theme.theme-management-symphony"]
-) {
-  ThemeToggleButton = (window as any).renderxPlugins[
-    "Theme.theme-management-symphony"
-  ].ThemeToggleButton;
-}
-
-export { ThemeProvider, ThemeToggleButton };
+  return (
+    <button onClick={onClick} title={`Theme: ${theme}`} className="theme-toggle-button">
+      🎨
+    </button>
+  );
+};

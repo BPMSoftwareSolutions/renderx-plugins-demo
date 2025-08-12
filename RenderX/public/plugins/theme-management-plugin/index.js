@@ -44,7 +44,7 @@ export const sequence = {
 
 export const handlers = {
   validateTheme: (data, context) => {
-    const { targetTheme } = context;
+    const targetTheme = (context && context.targetTheme) ?? (data && data.targetTheme) ?? "auto";
     const { availableThemes } = context.sequence.configuration;
     if (!availableThemes.includes(targetTheme)) {
       throw new Error(`Invalid theme: ${targetTheme}. Available: ${availableThemes.join(", ")}`);
