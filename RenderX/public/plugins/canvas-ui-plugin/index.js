@@ -7,8 +7,8 @@
  * Note: Not yet registered in manifest; enabling will replace legacy Canvas via PanelSlot(slot="center").
  */
 
-import { handleCanvasDrop } from "./handleDrop.js";
-import { makeRxCompClass } from "./idUtils.js";
+import { handleCanvasDrop } from "./handlers/drop.js";
+import { makeRxCompClass } from "./utils/idUtils.js";
 import { parseTemplateShape, resolveTemplateTokens } from "./utils/template.js";
 import {
   injectRawCSS,

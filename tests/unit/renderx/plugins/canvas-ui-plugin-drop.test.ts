@@ -1,6 +1,6 @@
 import { loadRenderXPlugin } from "../../../utils/renderx-plugin-loader";
 
-const uiPath = "RenderX/public/plugins/canvas-ui-plugin/handleDrop.js";
+const uiPath = "RenderX/public/plugins/canvas-ui-plugin/handlers/drop.js";
 
 describe("Canvas UI Plugin - drop integration via Library.component-drop-symphony", () => {
   let ui: any;

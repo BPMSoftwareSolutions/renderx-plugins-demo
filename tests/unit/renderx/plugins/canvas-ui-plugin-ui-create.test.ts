@@ -1,6 +1,6 @@
 import { loadRenderXPlugin } from "../../../utils/renderx-plugin-loader";
 
-const helperPath = "RenderX/public/plugins/canvas-ui-plugin/handleDrop.js";
+const helperPath = "RenderX/public/plugins/canvas-ui-plugin/handlers/drop.js";
 
 describe("Canvas UI Plugin - drop passes onComponentCreated to symphony payload", () => {
   test("handleCanvasDrop includes onComponentCreated in the payload", () => {
