@@ -36,6 +36,7 @@
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/tests/**/*",
-    "public/plugins/CanvasSequences.component-drag-symphony/**/*"
+    "public/plugins/CanvasSequences.component-drag-symphony/**/*",
+    "src/app.handlers/**/*"
   ]
 }

@@ -218,7 +218,7 @@ export function LibraryPanel(props = {}) {
           if (pluginReady) {
             window.__rx_library_played__ = true;
             conductor.play(
-              "Component Library Plugin",
+              "load-components-symphony",
               "load-components-symphony",
               {
                 source: "json-components",
