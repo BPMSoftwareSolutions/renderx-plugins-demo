@@ -86,12 +86,12 @@ export const handlers = {
         const res = await fetch(`/json-components/${filename}`);
         if (res.ok) components.push(await res.json());
       }
-      context.logger.info(
+      context.logger?.info?.(
         `📥 Component Library Plugin: fetched ${components.length} components from index.json`
       );
       return { components, loaded: true };
     } catch (e) {
-      context.logger.warn(
+      context.logger?.warn?.(
         "⚠️ Falling back to empty component set:",
         e?.message
       );
@@ -135,7 +135,7 @@ export const handlers = {
     const validComponents = (components || [])
       .filter((c) => requiredFields.every((f) => hasField(c, f)))
       .slice(0, maxComponents);
-    context.logger.info(
+    context.logger?.info?.(
       `🧪 Component Library Plugin: validation passed for ${
         validComponents.length
       }/${(components || []).length}`
@@ -157,7 +157,7 @@ export const handlers = {
       if (sortBy === "type") return pickType(a).localeCompare(pickType(b));
       return 0;
     });
-    context.logger.info(
+    context.logger?.info?.(
       `📦 Component Library Plugin: prepared ${preparedComponents.length} components`
     );
     return { preparedComponents, prepared: true };

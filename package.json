@@ -2,14 +2,25 @@
   "name": "musical-conductor",
   "version": "1.0.0",
   "description": "MusicalConductor Communication System with Jest Testing",
+  "type": "module",
   "main": "dist/modules/communication/index.js",
   "types": "dist/modules/communication/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/modules/communication/index.js",
+      "types": "./dist/modules/communication/index.d.ts"
+    }
+  },
   "files": [
     "dist/**/*",
     "modules/**/*",
     "README.md",
     "package.json"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

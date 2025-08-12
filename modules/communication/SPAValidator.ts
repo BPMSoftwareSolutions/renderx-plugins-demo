@@ -414,6 +414,46 @@ export class SPAValidator {
   }
 
   /**
+   * Best-effort extraction of file URL, line and column from a JS stack trace
+   */
+  private extractLocationFromStack(stack: string): {
+    fileUrl?: string;
+    lineNumber?: number;
+    columnNumber?: number;
+    stackLine?: string;
+  } {
+    if (!stack) return {};
+    const lines = stack.split("\n");
+    // Prefer the first line that is not from SPAValidator or EventBus internals
+    for (const raw of lines) {
+      const line = String(raw).trim();
+      if (!line) continue;
+      if (line.includes("SPAValidator") || line.includes("EventBus")) continue;
+      // Common patterns:
+      //   at func (http://host/path/file.js:123:45)
+      //   at http://host/path/file.js:123:45
+      //   file:///path/file.js:123:45
+      const match = line.match(/(https?:\/\/[^\s\)]+|file:\/\/[^\s\)]+|\/[\w\-\.\/]+):(\d+):(\d+)/);
+      if (match) {
+        const fileUrl = match[1];
+        const lineNumber = Number(match[2]);
+        const columnNumber = Number(match[3]);
+        return { fileUrl, lineNumber, columnNumber, stackLine: line };
+      }
+      // Vite style with parentheses
+      const parenMatch = line.match(/\(([^\s\)]+):(\d+):(\d+)\)/);
+      if (parenMatch) {
+        const fileUrl = parenMatch[1];
+        const lineNumber = Number(parenMatch[2]);
+        const columnNumber = Number(parenMatch[3]);
+        return { fileUrl, lineNumber, columnNumber, stackLine: line };
+      }
+    }
+    return { stackLine: lines[1] || lines[0] };
+  }
+
+
+  /**
    * Check if call is from a plugin
    */
   private isPluginCall(callerInfo: {
