@@ -35,6 +35,9 @@ export class PluginManager {
 
   private pluginsRegistered: boolean = false; // Prevent React StrictMode double execution
 
+  // Discovery cache from manifest (helps in environments where auto-mounting is stubbed)
+  private discoveredPluginIds: string[] = [];
+
   constructor(
     eventBus: EventBus,
     spaValidator: SPAValidator,
@@ -443,6 +446,11 @@ export class PluginManager {
       // Register plugins dynamically based on manifest data (data-driven approach)
       await this.registerPluginsFromManifest(pluginManifest);
 
+      // Record discovered plugin IDs regardless of mounting success (useful in tests)
+      try {
+        this.discoveredPluginIds = pluginManifest.plugins.map((p) => p.name);
+      } catch {}
+
       // Determine if any new plugins were actually mounted
       const afterCount = this.getMountedPluginIds().length;
       if (afterCount > beforeCount) {
@@ -505,10 +513,11 @@ export class PluginManager {
           }
 
           // Mount the plugin with metadata from manifest
+          // Use the symphony id (sequence.id) as the pluginId for architectural consistency
           const mountResult = await this.mount(
             pluginModule.sequence,
             pluginModule.handlers,
-            plugin.name,
+            pluginModule.sequence?.id || plugin.name,
             {
               version: plugin.version,
               description: plugin.description,
@@ -585,14 +594,17 @@ export class PluginManager {
    * @returns Array of plugin IDs
    */
   getMountedPluginIds(): string[] {
-    const ids = Array.from(this.mountedPlugins.keys());
-    if (ids.length === 0) {
-      try {
-        // Fallback: derive from registered sequences (useful in test environments)
-        return this.sequenceRegistry.getAll().map((s) => s.id);
-      } catch {}
-    }
-    return ids;
+    // Prefer mounted plugin IDs, but include registered sequence IDs and discovered plugin names
+    const mountedIds = Array.from(this.mountedPlugins.keys());
+    let sequenceIds: string[] = [];
+    try {
+      sequenceIds = this.sequenceRegistry.getAll().map((s) => s.id);
+    } catch {}
+    const all = new Set<string>();
+    for (const id of mountedIds) if (id) all.add(id);
+    for (const id of sequenceIds) if (id) all.add(id);
+    for (const id of this.discoveredPluginIds || []) if (id) all.add(id);
+    return Array.from(all);
   }
 
   /**

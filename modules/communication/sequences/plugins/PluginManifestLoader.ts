@@ -44,11 +44,46 @@ export class PluginManifestLoader {
     try {
       console.log(`🔄 Loading plugin manifest: ${manifestPath}`);
 
-      // Fetch the manifest file
+      // Node/Jest-friendly: if running in Node (no window), try local repo path first
+      const isBrowser =
+        typeof window !== "undefined" &&
+        typeof (window as any).document !== "undefined";
+      if (!isBrowser && manifestPath.startsWith("/plugins/")) {
+        try {
+          const path = await import("node:path");
+          const fs = await import("node:fs");
+          const localPath = path.resolve(
+            process.cwd(),
+            manifestPath.replace(/^\/?plugins\//, "RenderX/public/plugins/")
+          );
+          if (fs.existsSync(localPath)) {
+            const jsonText = fs.readFileSync(localPath, "utf-8");
+            const manifestData = JSON.parse(jsonText);
+            const validatedManifest = this.validateManifest(manifestData);
+            this.manifestCache.set(manifestPath, validatedManifest);
+            console.log(
+              `✅ Successfully loaded manifest from local file: ${localPath}`
+            );
+            console.log(
+              `📋 Found ${validatedManifest.plugins.length} plugins in manifest`
+            );
+            return validatedManifest;
+          }
+        } catch (nodeErr) {
+          console.warn(
+            "⚠️ Node local manifest load failed, falling back to fetch:",
+            nodeErr
+          );
+        }
+      }
+
+      // Fetch the manifest file (browser or as fallback)
       const response = await fetch(manifestPath);
-      
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch manifest: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Failed to fetch manifest: ${response.status} ${response.statusText}`
+        );
       }
 
       const manifestData = await response.json();
@@ -60,16 +95,18 @@ export class PluginManifestLoader {
       this.manifestCache.set(manifestPath, validatedManifest);
 
       console.log(`✅ Successfully loaded manifest: ${manifestPath}`);
-      console.log(`📋 Found ${validatedManifest.plugins.length} plugins in manifest`);
+      console.log(
+        `📋 Found ${validatedManifest.plugins.length} plugins in manifest`
+      );
 
       return validatedManifest;
     } catch (error) {
       console.error(`❌ Failed to load manifest from ${manifestPath}:`, error);
-      
+
       // Return fallback manifest
       const fallbackManifest = this.createFallbackManifest();
       console.log("🔄 Using fallback manifest");
-      
+
       return fallbackManifest;
     }
   }
@@ -96,7 +133,7 @@ export class PluginManifestLoader {
 
     // Validate each plugin entry
     const validatedPlugins: PluginManifestEntry[] = [];
-    
+
     manifestData.plugins.forEach((plugin: any, index: number) => {
       try {
         const validatedPlugin = this.validatePluginEntry(plugin, index);
@@ -150,7 +187,9 @@ export class PluginManifestLoader {
       version: plugin.version || "1.0.0",
       description: plugin.description || `Plugin: ${plugin.name}`,
       autoMount: plugin.autoMount !== false, // Default to true
-      dependencies: Array.isArray(plugin.dependencies) ? plugin.dependencies : [],
+      dependencies: Array.isArray(plugin.dependencies)
+        ? plugin.dependencies
+        : [],
       author: plugin.author || "Unknown",
       license: plugin.license || "MIT",
     };
@@ -191,7 +230,9 @@ export class PluginManifestLoader {
    * @param manifestPaths - Array of manifest paths to try
    * @returns First successfully loaded manifest
    */
-  async loadManifestWithFallback(manifestPaths: string[]): Promise<PluginManifest> {
+  async loadManifestWithFallback(
+    manifestPaths: string[]
+  ): Promise<PluginManifest> {
     for (const path of manifestPaths) {
       try {
         const manifest = await this.loadManifest(path);
@@ -217,7 +258,11 @@ export class PluginManifestLoader {
       return this.validateManifest(manifestData);
     } catch (error) {
       console.error("❌ Failed to parse manifest JSON:", error);
-      throw new Error(`Invalid manifest JSON: ${error instanceof Error ? error.message : String(error)}`);
+      throw new Error(
+        `Invalid manifest JSON: ${
+          error instanceof Error ? error.message : String(error)
+        }`
+      );
     }
   }
 
@@ -237,7 +282,10 @@ export class PluginManifestLoader {
     }
   ): PluginManifestEntry[] {
     return manifest.plugins.filter((plugin) => {
-      if (criteria.autoMount !== undefined && plugin.autoMount !== criteria.autoMount) {
+      if (
+        criteria.autoMount !== undefined &&
+        plugin.autoMount !== criteria.autoMount
+      ) {
         return false;
       }
       if (criteria.name && !plugin.name.includes(criteria.name)) {
@@ -265,9 +313,11 @@ export class PluginManifestLoader {
     uniqueAuthors: string[];
     versions: string[];
   } {
-    const autoMountPlugins = manifest.plugins.filter(p => p.autoMount).length;
-    const uniqueAuthors = [...new Set(manifest.plugins.map(p => p.author || "Unknown"))];
-    const versions = [...new Set(manifest.plugins.map(p => p.version))];
+    const autoMountPlugins = manifest.plugins.filter((p) => p.autoMount).length;
+    const uniqueAuthors = [
+      ...new Set(manifest.plugins.map((p) => p.author || "Unknown")),
+    ];
+    const versions = [...new Set(manifest.plugins.map((p) => p.version))];
 
     return {
       totalPlugins: manifest.plugins.length,
