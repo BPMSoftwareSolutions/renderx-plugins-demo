@@ -103,7 +103,42 @@ const AppContent: React.FC = () => {
   };
 
   // Canvas interactions are now fully handled by the Canvas UI plugin via conductor.play per ADR-0014.
-  // Legacy canvas drag handlers removed.
+
+  // Reusable center panel that mounts the center slot plugin UI with consistent fallback
+  const CenterPanel: React.FC = () => (
+    <section className="app-canvas" id="canvas" data-plugin-mounted="true">
+      <ErrorBoundary
+        fallback={
+          <div className="panel-slot-loading" data-slot="center">
+            <div className="loading-state">
+              <h4>Center UI failed; falling back…</h4>
+            </div>
+          </div>
+        }
+      >
+        <Suspense
+          fallback={
+            <div className="panel-slot-loading" data-slot="center">
+              <div className="loading-state">
+                <h4>Loading center UI…</h4>
+              </div>
+            </div>
+          }
+        >
+          <PanelSlot
+            slot="center"
+            fallback={
+              <div className="panel-slot-empty" data-slot="center">
+                <div className="empty-state">
+                  <h4>Center UI unavailable</h4>
+                </div>
+              </div>
+            }
+          />
+        </Suspense>
+      </ErrorBoundary>
+    </section>
+  );
 
   // Initialize communication system
   useEffect(() => {
@@ -298,38 +333,7 @@ const AppContent: React.FC = () => {
       case "preview":
         return (
           <div className="app-layout app-layout--preview">
-            <section className="app-canvas" id="canvas" data-plugin-mounted="true">
-              <ErrorBoundary
-                fallback={
-                  <div className="panel-slot-loading" data-slot="center">
-                    <div className="loading-state">
-                      <h4>Center UI failed; falling back…</h4>
-                    </div>
-                  </div>
-                }
-              >
-                <Suspense
-                  fallback={
-                    <div className="panel-slot-loading" data-slot="center">
-                      <div className="loading-state">
-                        <h4>Loading center UI…</h4>
-                      </div>
-                    </div>
-                  }
-                >
-                  <PanelSlot
-                    slot="center"
-                    fallback={
-                      <div className="panel-slot-empty" data-slot="center">
-                        <div className="empty-state">
-                          <h4>Center UI unavailable</h4>
-                        </div>
-                      </div>
-                    }
-                  />
-                </Suspense>
-              </ErrorBoundary>
-            </section>
+            <CenterPanel />
             <div className="preview-overlay">
               <button
                 className="preview-exit-button"
@@ -345,38 +349,7 @@ const AppContent: React.FC = () => {
       case "fullscreen-preview":
         return (
           <div className="app-layout app-layout--fullscreen-preview">
-            <section className="app-canvas" id="canvas" data-plugin-mounted="true">
-              <ErrorBoundary
-                fallback={
-                  <div className="panel-slot-loading" data-slot="center">
-                    <div className="loading-state">
-                      <h4>Center UI failed; falling back…</h4>
-                    </div>
-                  </div>
-                }
-              >
-                <Suspense
-                  fallback={
-                    <div className="panel-slot-loading" data-slot="center">
-                      <div className="loading-state">
-                        <h4>Loading center UI…</h4>
-                      </div>
-                    </div>
-                  }
-                >
-                  <PanelSlot
-                    slot="center"
-                    fallback={
-                      <div className="panel-slot-empty" data-slot="center">
-                        <div className="empty-state">
-                          <h4>Center UI unavailable</h4>
-                        </div>
-                      </div>
-                    }
-                  />
-                </Suspense>
-              </ErrorBoundary>
-            </section>
+            <CenterPanel />
             <div className="preview-overlay">
               <button
                 className="preview-exit-button"
@@ -417,42 +390,7 @@ const AppContent: React.FC = () => {
             )}
 
             {/* Canvas - Center */}
-            <section
-              className="app-canvas"
-              id="canvas"
-              data-plugin-mounted="true"
-            >
-              <ErrorBoundary
-                fallback={
-                  <div className="panel-slot-loading" data-slot="center">
-                    <div className="loading-state">
-                      <h4>Center UI failed; falling back…</h4>
-                    </div>
-                  </div>
-                }
-              >
-                <Suspense
-                  fallback={
-                    <div className="panel-slot-loading" data-slot="center">
-                      <div className="loading-state">
-                        <h4>Loading center UI…</h4>
-                      </div>
-                    </div>
-                  }
-                >
-                  <PanelSlot
-                    slot="center"
-                    fallback={
-                      <div className="panel-slot-empty" data-slot="center">
-                        <div className="empty-state">
-                          <h4>Center UI unavailable</h4>
-                        </div>
-                      </div>
-                    }
-                  />
-                </Suspense>
-              </ErrorBoundary>
-            </section>
+            <CenterPanel />
 
             {/* Control Panel - Right Panel */}
             {showControlPanel && (
