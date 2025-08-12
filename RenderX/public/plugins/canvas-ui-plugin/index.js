@@ -330,11 +330,11 @@ export function CanvasPage(props = {}) {
         // Avoid duplicate runs under StrictMode
         if ((window && window.__rx_canvas_ui_played__) === true) return;
         const getIds =
-          conductor.getMountedPlugins && conductor.getMountedPlugins();
+          conductor.getMountedPluginIds && conductor.getMountedPluginIds();
         const ids = Array.isArray(getIds) ? getIds : [];
-        if (ids.includes && ids.includes(pluginName)) {
+        if (ids.includes && ids.includes("Canvas.ui-symphony")) {
           window.__rx_canvas_ui_played__ = true;
-          conductor.play(pluginName, "Canvas.ui-symphony", {
+          conductor.play("Canvas.ui-symphony", "Canvas.ui-symphony", {
             source: "canvas-ui-plugin",
           });
         } else {

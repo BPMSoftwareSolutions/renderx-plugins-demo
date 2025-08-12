@@ -5,12 +5,12 @@
 
 import React from "react";
 import PanelSlot from "./PanelSlot";
-import LegacyControlPanel from "./LegacyControlPanel";
+import ControlPanelFallback from "./ControlPanelFallback";
 import ErrorBoundary from "./ErrorBoundary";
 import { Suspense } from "react";
 
 const ControlPanel: React.FC = () => (
-  <ErrorBoundary fallback={<LegacyControlPanel />}>
+  <ErrorBoundary fallback={<ControlPanelFallback />}>
     <Suspense
       fallback={
         <div className="panel-slot-loading" data-slot="right">
@@ -20,7 +20,7 @@ const ControlPanel: React.FC = () => (
         </div>
       }
     >
-      <PanelSlot slot="right" fallback={<LegacyControlPanel />} />
+      <PanelSlot slot="right" fallback={<ControlPanelFallback />} />
     </Suspense>
   </ErrorBoundary>
 );
