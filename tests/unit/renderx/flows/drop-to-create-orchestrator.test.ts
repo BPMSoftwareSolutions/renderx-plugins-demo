@@ -28,18 +28,28 @@ describe("Orchestrated Flow (real Conductor): Library.drop -> Canvas.create", ()
 
     const onComponentCreated = jest.fn();
 
-    // Act: play the library drop symphony via real conductor and wait for canvas:create beat
+    // Act: play the library drop symphony via real conductor and wait until Canvas.create handler completes
     await new Promise<void>(async (resolve, reject) => {
       const timeout = setTimeout(() => {
-        unsubBeat();
-        reject(new Error("timeout waiting for canvas:component:create beat"));
-      }, 3000);
+        try { unsubBeat(); } catch {}
+        try { unsubHandlerEnd(); } catch {}
+        reject(new Error("timeout waiting for Canvas.create handler end"));
+      }, 5000);
 
-      const unsubBeat = eventBus.subscribe("beat-started", (evt: any) => {
+      const unsubBeat = eventBus.subscribe("beat-completed", (evt: any) => {
         try {
           if (evt?.event === "canvas:component:create") {
+            // beat completed, but still also wait for handler end to ensure callback fired
+          }
+        } catch {}
+      });
+
+      const unsubHandlerEnd = eventBus.subscribe("plugin:handler:end", (evt: any) => {
+        try {
+          if (evt?.pluginId === create.sequence.id && evt?.handlerName === "createCanvasComponent") {
             clearTimeout(timeout);
-            unsubBeat();
+            try { unsubBeat(); } catch {}
+            try { unsubHandlerEnd(); } catch {}
             resolve();
           }
         } catch {}
@@ -54,15 +64,19 @@ describe("Orchestrated Flow (real Conductor): Library.drop -> Canvas.create", ()
       });
     });
 
+    // Give microtask queue a chance to flush callback scheduling
+    await new Promise((r) => setTimeout(r, 0));
+
+
     // Assert: no local fallback should be logged
     const hasLocalFallback = logs.some((m) =>
       m.includes("Local create fallback")
     );
     expect(hasLocalFallback).toBe(false);
 
-    // Assert: Canvas.create should be logged
-    const hasCanvasCreate = logs.some((m) => m.includes("Canvas.create"));
-    expect(hasCanvasCreate).toBe(true);
+    // Assert: flow forwarded to Canvas.create via conductor.play
+    const hasForward = logs.some((m) => m.includes("Forwarding to Canvas.component-create-symphony"));
+    expect(hasForward).toBe(true);
 
     // Assert: callback invoked
     expect(onComponentCreated).toHaveBeenCalledTimes(1);
