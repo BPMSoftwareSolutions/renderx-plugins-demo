@@ -13,6 +13,11 @@ export interface SPAViolation {
   stackTrace: string;
   timestamp: Date;
   severity: "critical" | "error" | "warning";
+  // Optional location and code snippet details for better diagnostics
+  fileUrl?: string;
+  lineNumber?: number;
+  columnNumber?: number;
+  codeSnippet?: string;
 }
 
 export interface SPAValidatorConfig {
@@ -93,12 +98,19 @@ export class SPAValidator {
 
       // Check if call is from a plugin
       if (validator.isPluginCall(callerInfo)) {
+        const loc = validator.extractLocationFromStack(stack);
         const violation = validator.createViolation(
           "RUNTIME_DIRECT_EVENTBUS_EMIT",
           callerInfo.pluginId,
           `Plugin '${callerInfo.pluginId}' directly called eventBus.emit('${eventName}')`,
           stack,
-          "critical"
+          "critical",
+          {
+            fileUrl: loc.fileUrl,
+            lineNumber: loc.lineNumber,
+            columnNumber: loc.columnNumber,
+            codeSnippet: loc.stackLine,
+          }
         );
 
         validator.handleViolation(violation);
@@ -151,12 +163,19 @@ export class SPAValidator {
 
       // Check if React component is directly subscribing
       if (callerInfo.isReactComponent) {
+        const loc = validator.extractLocationFromStack(stack);
         const violation = validator.createViolation(
           "RUNTIME_REACT_COMPONENT_EVENTBUS_SUBSCRIBE",
           "react-component",
           `React component directly called eventBus.subscribe('${eventName}') - should use conductor.subscribe()`,
           stack,
-          "critical"
+          "critical",
+          {
+            fileUrl: loc.fileUrl,
+            lineNumber: loc.lineNumber,
+            columnNumber: loc.columnNumber,
+            codeSnippet: loc.stackLine,
+          }
         );
         validator.handleViolation(violation);
 
@@ -169,12 +188,19 @@ export class SPAValidator {
 
       // Check if plugin is subscribing outside mount method
       if (callerInfo.isPlugin && !callerInfo.isInMountMethod) {
+        const loc = validator.extractLocationFromStack(stack);
         const violation = validator.createViolation(
           "RUNTIME_PLUGIN_EVENTBUS_SUBSCRIBE_OUTSIDE_MOUNT",
           callerInfo.pluginId,
           `Plugin '${callerInfo.pluginId}' called eventBus.subscribe() outside mount method`,
           stack,
-          "error"
+          "error",
+          {
+            fileUrl: loc.fileUrl,
+            lineNumber: loc.lineNumber,
+            columnNumber: loc.columnNumber,
+            codeSnippet: loc.stackLine,
+          }
         );
         validator.handleViolation(violation);
       }
@@ -245,12 +271,19 @@ export class SPAValidator {
    * Handle global access violations
    */
   private handleGlobalAccessViolation(callerInfo: any, stack: string): void {
+    const loc = this.extractLocationFromStack(stack);
     const violation = this.createViolation(
       "RUNTIME_GLOBAL_EVENTBUS_ACCESS",
       callerInfo.pluginId || callerInfo.source,
       `Global eventBus access detected - should use conductor methods instead`,
       stack,
-      "critical"
+      "critical",
+      {
+        fileUrl: loc.fileUrl,
+        lineNumber: loc.lineNumber,
+        columnNumber: loc.columnNumber,
+        codeSnippet: loc.stackLine,
+      }
     );
     this.handleViolation(violation);
   }
@@ -412,7 +445,8 @@ export class SPAValidator {
     pluginId: string,
     description: string,
     stackTrace: string,
-    severity: "critical" | "error" | "warning"
+    severity: "critical" | "error" | "warning",
+    extras: Partial<SPAViolation> = {}
   ): SPAViolation {
     return {
       type,
@@ -421,6 +455,7 @@ export class SPAValidator {
       stackTrace,
       timestamp: new Date(),
       severity,
+      ...extras,
     };
   }
 
@@ -438,7 +473,13 @@ export class SPAValidator {
       );
       console.error(`   Plugin: ${violation.pluginId}`);
       console.error(`   Time: ${violation.timestamp.toISOString()}`);
-
+      if (violation.fileUrl && typeof violation.lineNumber === "number") {
+        const col = typeof violation.columnNumber === "number" ? `:${violation.columnNumber}` : "";
+        console.error(`   Location: ${violation.fileUrl}:${violation.lineNumber}${col}`);
+      }
+      if (violation.codeSnippet) {
+        console.error(`   Code: ${violation.codeSnippet.trim()}`);
+      }
       if (violation.severity === "critical") {
         console.error(
           `   Stack: ${violation.stackTrace.split("\n").slice(0, 3).join("\n")}`
@@ -480,33 +521,40 @@ export class SPAValidator {
   ): { valid: boolean; violations: string[] } {
     const violations: string[] = [];
 
-    // Check for direct eventBus.emit calls in plugin code
-    const directEmitPattern = /eventBus\.emit\s*\(/g;
-    const matches = pluginCode.match(directEmitPattern);
+    const lines = pluginCode.split(/\r?\n/);
 
-    if (matches) {
-      violations.push(
-        `Plugin '${pluginId}' contains ${matches.length} direct eventBus.emit() call(s)`
-      );
+    // Direct eventBus.emit calls (line-aware, skip obvious strings/comments quickly)
+    const directEmitRegex = /(^|[^\.\w])eventBus\.emit\s*\(/;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = String(line).trim();
+      // Skip comment-only lines
+      if (/^\s*\/\//.test(trimmed) || /^\s*$/.test(trimmed)) continue;
+      if (directEmitRegex.test(line)) {
+        violations.push(
+          `eventBus.emit() at line ${i + 1}: ${trimmed}`
+        );
+      }
     }
 
-    // Check for global eventBus access
-    const globalEmitPattern = /window\..*eventBus\.emit\s*\(/g;
-    const globalMatches = pluginCode.match(globalEmitPattern);
-
-    if (globalMatches) {
-      violations.push(
-        `Plugin '${pluginId}' contains ${globalMatches.length} global eventBus access(es)`
-      );
+    // Global eventBus access
+    const globalEmitRegex = /window\..*eventBus\.emit\s*\(/;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = String(line).trim();
+      if (/^\s*\/\//.test(trimmed) || /^\s*$/.test(trimmed)) continue;
+      if (globalEmitRegex.test(line)) {
+        violations.push(
+          `global eventBus access at line ${i + 1}: ${trimmed}`
+        );
+      }
     }
 
-    // Check for proper conductor.play usage
-    const conductorPlayPattern = /conductor\.play\s*\(/g;
-    const conductorMatches = pluginCode.match(conductorPlayPattern);
-
-    if (!conductorMatches && (matches || globalMatches)) {
+    // Check for proper conductor.play usage if any emit usage found
+    const hasEmitFindings = violations.some(v => v.includes("eventBus"));
+    if (hasEmitFindings && !/conductor\.play\s*\(/.test(pluginCode)) {
       violations.push(
-        `Plugin '${pluginId}' uses eventBus.emit() but no conductor.play() - should migrate to SPA`
+        `Uses eventBus.emit() but no conductor.play() - migrate to SPA`
       );
     }
 
