@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Deprecated in this repository: E2E tests are moving to the RenderX shell repository per ADR‑0015. The minimal Chrome smoke and Playwright setup will live with the UI. See tools/docs/wiki/adr/0015-split-renderx-and-plugins.md.
+
 # MusicalConductor E2E Testing Suite
 
 This directory contains comprehensive End-to-End (E2E) tests for the MusicalConductor system using Playwright. The tests validate MusicalConductor integration with React SPAs in real browser environments, using the musical-conductor package from Git repository.

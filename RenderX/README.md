@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Deprecated in this repository: RenderX UI is moving to a new repo (renderx-shell). This copy will be removed from MusicalConductor per ADR‑0015. See tools/docs/wiki/adr/0015-split-renderx-and-plugins.md for migration details.
+
 # 🎨 RenderX Evolution - Visual Shell
 
 **Lightweight Visual Shell with CIA/SPA Architecture and TDA Enforcement**
@@ -9,11 +12,13 @@ RenderX Evolution is a modern visual component editor built with React, TypeScri
 ## 🚀 **Quick Start**
 
 ### **Prerequisites**
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 - Playwright (for E2E testing)
 
 ### **Installation**
+
 ```bash
 # Install dependencies
 npm install
@@ -32,6 +37,7 @@ The application will be available at `http://localhost:3000`
 ## 🧪 **Testing**
 
 ### **E2E Tests with Playwright**
+
 ```bash
 # Run all E2E tests
 npm test
@@ -50,6 +56,7 @@ npm run test:report
 ```
 
 ### **TDA Validation**
+
 ```bash
 # Run E2E validator (from project root)
 node ../../scripts/test-e2e-validator.cjs
@@ -63,18 +70,21 @@ node ../../scripts/validate-tda-implementation.cjs
 ## 🏗️ **Architecture**
 
 ### **CIA (Conductor Integration Architecture)**
+
 - **Musical Conductor**: Orchestrates component loading and interaction
 - **Sequence Execution**: Components load via musical sequences
 - **Runtime Safety**: Graceful error handling and plugin validation
 - **Event-Driven**: EventBus coordinates component communication
 
 ### **SPA (Symphonic Plugin Architecture)**
+
 - **Plugin System**: Components are dynamically loaded plugins
 - **Musical Metaphors**: Sequences, movements, beats, and tempo
 - **Modular Design**: Clean separation of concerns
 - **Lifecycle Management**: Proper mount/unmount handling
 
 ### **TDA (Test-Driven Architecture)**
+
 - **Validation-First**: E2E tests drive architectural decisions
 - **Continuous Validation**: Automated architectural compliance checking
 - **Quality Gates**: Tests must pass before deployment
@@ -85,18 +95,21 @@ node ../../scripts/validate-tda-implementation.cjs
 ## 🎯 **Core Features**
 
 ### **Visual Component Editor**
+
 - **Component Library**: Drag-and-drop component palette
 - **Canvas Workspace**: Visual design surface
 - **Control Panel**: Component properties and settings
 - **Real-time Preview**: Live component rendering
 
 ### **Component System**
+
 - **JSON-Driven**: Components defined in JSON format
 - **Dynamic Loading**: Components loaded at runtime
 - **Type Safety**: Full TypeScript support
 - **Extensible**: Easy to add new component types
 
 ### **Drag and Drop**
+
 - **Intuitive Interface**: Drag components from library to canvas
 - **Visual Feedback**: Drag states and drop zones
 - **Component Positioning**: Precise placement control
@@ -140,6 +153,7 @@ public/
 ### **Creating New Components**
 
 1. **Define JSON Component**
+
 ```json
 {
   "id": "my-component-001",
@@ -167,16 +181,17 @@ public/
 ```
 
 2. **Add to Component Library**
-Place the JSON file in `public/json-components/`
+   Place the JSON file in `public/json-components/`
 
 3. **Test Integration**
-Components automatically appear in the library and are testable via E2E tests
+   Components automatically appear in the library and are testable via E2E tests
 
 ---
 
 ## 🧪 **E2E Test Coverage**
 
 ### **Core Functionality**
+
 - ✅ Application loading and initialization
 - ✅ DOM element presence validation
 - ✅ Component library interactions
@@ -185,6 +200,7 @@ Components automatically appear in the library and are testable via E2E tests
 - ✅ Control panel functionality
 
 ### **Architecture Validation**
+
 - ✅ CIA conductor integration
 - ✅ SPA plugin mounting
 - ✅ Musical sequence execution
@@ -192,6 +208,7 @@ Components automatically appear in the library and are testable via E2E tests
 - ✅ Component lifecycle management
 
 ### **Error Scenarios**
+
 - ✅ Invalid drag targets
 - ✅ Component loading failures
 - ✅ Network interruptions
@@ -202,12 +219,14 @@ Components automatically appear in the library and are testable via E2E tests
 ## 🔧 **Configuration**
 
 ### **Vite Configuration**
+
 - **Port**: 3000 (required for E2E tests)
 - **Hot Reload**: Enabled for development
 - **TypeScript**: Full support with type checking
 - **React**: Fast refresh enabled
 
 ### **Playwright Configuration**
+
 - **Browsers**: Chrome, Firefox, Safari, Edge
 - **Mobile**: iOS and Android viewports
 - **Parallel**: Tests run in parallel
@@ -218,11 +237,13 @@ Components automatically appear in the library and are testable via E2E tests
 ## 📊 **Validation Status**
 
 ### **TDA Compliance: ✅ PASS**
+
 - E2E validator enforcement active
 - All architectural constraints satisfied
 - Continuous validation pipeline operational
 
 ### **Test Results: ✅ PASS**
+
 - All Playwright tests passing
 - DOM structure validated
 - Drag and drop functionality confirmed
@@ -233,21 +254,25 @@ Components automatically appear in the library and are testable via E2E tests
 ## 🚀 **Development Workflow**
 
 ### **1. Start Development**
+
 ```bash
 npm run dev
 ```
 
 ### **2. Run Tests During Development**
+
 ```bash
 npm run test:headed
 ```
 
 ### **3. Validate Architecture**
+
 ```bash
 node ../../scripts/validate-tda-implementation.cjs
 ```
 
 ### **4. Build for Production**
+
 ```bash
 npm run build
 ```
@@ -257,6 +282,7 @@ npm run build
 ## 🎯 **Next Steps**
 
 ### **Planned Features**
+
 - [ ] Component property editor
 - [ ] Layout templates
 - [ ] Export functionality
@@ -264,6 +290,7 @@ npm run build
 - [ ] Advanced animations
 
 ### **Architecture Improvements**
+
 - [ ] Additional SPA validators
 - [ ] Enhanced CIA error handling
 - [ ] Performance optimizations

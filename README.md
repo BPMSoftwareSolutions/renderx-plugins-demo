@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Deprecation notice: RenderX UI and E2E tests have been split out of this repository per ADR‑0014/ADR‑0015. This repo now focuses on the core orchestration library only. See tools/docs/wiki/adr/0015-split-renderx-and-plugins.md for details.
+
 # 🎼 MusicalConductor
 
 A sophisticated sequence orchestration engine for managing complex workflows with plugin-based architecture, resource management, and comprehensive monitoring.
