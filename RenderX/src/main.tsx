@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./styles/global.css";
 import "./index.css";
 import App from "./App.tsx";
+import { ConductorService } from "./services/ConductorService";
 
 // Make React available globally for plugins
 (window as any).React = React;
@@ -26,6 +27,13 @@ try {
     "⚠️ RenderX: Failed to set Conductor env:",
     (e as any)?.message || e
   );
+}
+
+// Initialize Musical Conductor once for the thin shell; plugins do the real work
+try {
+  ConductorService.getInstance().initialize();
+} catch (e) {
+  console.warn("⚠️ RenderX: Conductor initialization skipped", e);
 }
 
 createRoot(document.getElementById("root")!).render(
