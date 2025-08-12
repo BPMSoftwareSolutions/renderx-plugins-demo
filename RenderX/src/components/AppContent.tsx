@@ -3,17 +3,13 @@
  * Main application logic and layout management
  */
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 // ElementLibrary component with Musical Conductor integration
 import ElementLibrary from "./ElementLibrary";
 import ControlPanel from "./ControlPanel";
-// Canvas is now provided by the center slot plugin UI per ADR-0014
-// import Canvas from "./Canvas";
-import PanelSlot from "./PanelSlot";
-import ErrorBoundary from "./ErrorBoundary";
+import CenterPanel from "./CenterPanel";
 import { ThemeToggleButton } from "../providers/ThemeProvider";
 import type { AppState } from "../types/AppTypes";
-import type { LoadedJsonComponent } from "../types/JsonComponent";
 
 // ElementLibrary component is now imported directly and integrates with Musical Conductor
 // Removed plugin-loading logic - using original ElementLibrary.tsx with Musical Conductor integration
@@ -38,107 +34,9 @@ const AppContent: React.FC = () => {
     conductor: ConductorClient;
   } | null>(null);
 
-  // Drag handlers for ElementLibrary domain events - THIN CLIENT APPROACH
-  const handleDragStart = (
-    e: React.DragEvent,
-    component: LoadedJsonComponent
-  ) => {
-    console.log(
-      "🎼 [THIN CLIENT] Starting drag operation for component:",
-      component.metadata.name
-    );
-
-    // Set basic drag data for Canvas to detect library drops
-    const dragData = {
-      type: "component",
-      componentType: component.metadata.type,
-      name: component.metadata.name,
-      metadata: component.metadata,
-      componentData: component,
-      source: "element-library",
-    };
-
-    e.dataTransfer.setData("application/json", JSON.stringify(dragData));
-    e.dataTransfer.effectAllowed = "copy";
-
-    // 🎼 THIN CLIENT: Call conductor.play() for plugin orchestration
-    if (communicationSystem) {
-      communicationSystem.conductor.play(
-        "Library.component-drag-symphony",
-        "Library.component-drag-symphony",
-        {
-          event: e,
-          component,
-          dragData,
-          timestamp: Date.now(),
-          source: "element-library",
-        }
-      );
-    } else {
-      console.warn(
-        "🎼 [THIN CLIENT] Communication system not available for drag start"
-      );
-    }
-  };
-
-  const handleDragEnd = (e: React.DragEvent) => {
-    console.log("🎼 [THIN CLIENT] Ending drag operation");
-
-    // 🎼 THIN CLIENT: Only call conductor.play() - let plugin handle cleanup
-    if (communicationSystem) {
-      communicationSystem.conductor.play(
-        "Library.component-drag-symphony",
-        "Library.component-drag-symphony",
-        {
-          event: e,
-          timestamp: Date.now(),
-          source: "element-library",
-        }
-      );
-    } else {
-      console.warn(
-        "🎼 [THIN CLIENT] Communication system not available for drag end"
-      );
-    }
-  };
-
   // Canvas interactions are now fully handled by the Canvas UI plugin via conductor.play per ADR-0014.
 
-  // Reusable center panel that mounts the center slot plugin UI with consistent fallback
-  const CenterPanel: React.FC = () => (
-    <section className="app-canvas" id="canvas" data-plugin-mounted="true">
-      <ErrorBoundary
-        fallback={
-          <div className="panel-slot-loading" data-slot="center">
-            <div className="loading-state">
-              <h4>Center UI failed; falling back…</h4>
-            </div>
-          </div>
-        }
-      >
-        <Suspense
-          fallback={
-            <div className="panel-slot-loading" data-slot="center">
-              <div className="loading-state">
-                <h4>Loading center UI…</h4>
-              </div>
-            </div>
-          }
-        >
-          <PanelSlot
-            slot="center"
-            fallback={
-              <div className="panel-slot-empty" data-slot="center">
-                <div className="empty-state">
-                  <h4>Center UI unavailable</h4>
-                </div>
-              </div>
-            }
-          />
-        </Suspense>
-      </ErrorBoundary>
-    </section>
-  );
+
 
   // Initialize communication system
   useEffect(() => {
