@@ -33,7 +33,7 @@ export const sequence = {
           title: "Forward to Canvas Create",
           handler: "forwardToCanvasCreate",
           dynamics: "forte",
-          timing: "synchronized",
+          timing: "immediate",
         },
         {
           beat: 3,
@@ -41,7 +41,7 @@ export const sequence = {
           title: "Drop Complete",
           handler: "handleDropComplete",
           dynamics: "piano",
-          timing: "delayed",
+          timing: "immediate",
         },
       ],
     },
