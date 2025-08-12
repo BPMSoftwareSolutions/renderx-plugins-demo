@@ -53,7 +53,7 @@ test("CanvasPage calls play(pluginName, sequenceId) after plugin is mounted", ()
   w.React = { useEffect: (fn: any) => fn(), createElement: () => ({}) };
   w.renderxCommunicationSystem = {
     conductor: {
-      getMountedPlugins: () => ["Canvas UI Plugin"],
+      getMountedPluginIds: () => ["Canvas.ui-symphony"],
       play,
     },
   };
@@ -64,7 +64,7 @@ test("CanvasPage calls play(pluginName, sequenceId) after plugin is mounted", ()
     const pluginLocal = loadRenderXPlugin(pluginPath);
     pluginLocal.CanvasPage({});
     expect(play).toHaveBeenCalledWith(
-      "Canvas UI Plugin",
+      "Canvas.ui-symphony",
       "Canvas.ui-symphony",
       expect.any(Object)
     );
@@ -80,14 +80,14 @@ test("CanvasPage waits until plugin is mounted before calling play", () => {
 
   let mounted = false;
   const getMountedPlugins = jest.fn(() =>
-    mounted ? ["Canvas UI Plugin"] : []
+    mounted ? ["Canvas.ui-symphony"] : []
   );
 
   const w: any = (global as any).window || {};
   w.React = { useEffect: (fn: any) => fn(), createElement: () => ({}) };
   w.renderxCommunicationSystem = {
     conductor: {
-      getMountedPlugins,
+      getMountedPluginIds: getMountedPlugins,
       play,
     },
   };
@@ -104,9 +104,10 @@ test("CanvasPage waits until plugin is mounted before calling play", () => {
     // Now simulate plugin becomes mounted
     mounted = true;
     jest.advanceTimersByTime(200);
+    jest.runOnlyPendingTimers();
 
     expect(play).toHaveBeenCalledWith(
-      "Canvas UI Plugin",
+      "Canvas.ui-symphony",
       "Canvas.ui-symphony",
       expect.any(Object)
     );
