@@ -9,6 +9,153 @@
 
 import { handleCanvasDrop } from "./handleDrop.js";
 import { makeRxCompClass } from "./idUtils.js";
+import { parseTemplateShape, resolveTemplateTokens } from "./utils/template.js";
+import {
+  injectRawCSS,
+  injectInstanceCSS,
+  overlayInjectGlobalCSS,
+  overlayInjectInstanceCSS,
+} from "./utils/styles.js";
+import { onElementClick } from "./handlers/select.js";
+
+// Wrappers to support both browser ESM (imports available) and unit tests (imports stripped)
+const _injectRawCSS =
+  typeof injectRawCSS === "function"
+    ? injectRawCSS
+    : function (css) {
+        try {
+          if (!css) return;
+          const id = "component-css-" + btoa(css).substring(0, 10);
+          if (document.getElementById(id)) return;
+          const tag = document.createElement("style");
+          tag.id = id;
+          tag.textContent = css;
+          document.head.appendChild(tag);
+        } catch {}
+      };
+
+const _parseTemplateShape =
+  typeof parseTemplateShape === "function"
+    ? parseTemplateShape
+    : function (template) {
+        try {
+          const tagMatch = template && template.match(/<\s*([a-zA-Z0-9-]+)/);
+          const tag = (tagMatch ? tagMatch[1] : "div").toLowerCase();
+          const classMatch =
+            template && template.match(/class\s*=\s*"([^"]*)"/);
+          const classes = classMatch
+            ? classMatch[1].split(/\s+/).filter(Boolean)
+            : [];
+          return { tag, classes };
+        } catch {
+          return { tag: "div", classes: [] };
+        }
+      };
+
+const _resolveTemplateTokens =
+  typeof resolveTemplateTokens === "function"
+    ? resolveTemplateTokens
+    : function (str, vars) {
+        try {
+          if (!str) return str;
+          return String(str).replace(
+            /\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g,
+            function (_m, key) {
+              return vars && vars[key] != null ? String(vars[key]) : "";
+            }
+          );
+        } catch {
+          return str;
+        }
+      };
+
+const _injectInstanceCSS =
+  typeof injectInstanceCSS === "function"
+    ? injectInstanceCSS
+    : function (node, width, height) {
+        try {
+          if (!node) return;
+          const id =
+            "component-instance-css-" + String(node.id || node.cssClass || "");
+          if (document.getElementById(id)) return;
+          const cls = String(node.cssClass || node.id || "").trim();
+          if (!cls) return;
+          const left =
+            (node.position && node.position.x) != null ? node.position.x : 0;
+          const top =
+            (node.position && node.position.y) != null ? node.position.y : 0;
+          const lines = [
+            `.${cls}{position:absolute;left:${left}px;top:${top}px;box-sizing:border-box;display:block;}`,
+          ];
+          if (width != null)
+            lines.push(
+              `.${cls}{width:${
+                typeof width === "number" ? width + "px" : width
+              };}`
+            );
+          if (height != null)
+            lines.push(
+              `.${cls}{height:${
+                typeof height === "number" ? height + "px" : height
+              };}`
+            );
+          const tag = document.createElement("style");
+          tag.id = id;
+          tag.textContent = lines.join("\n");
+          document.head.appendChild(tag);
+        } catch {}
+      };
+
+const _overlayInjectGlobalCSS =
+  typeof overlayInjectGlobalCSS === "function"
+    ? overlayInjectGlobalCSS
+    : function () {
+        try {
+          const id = "overlay-css-global";
+          if (document.getElementById(id)) return;
+          const css = [
+            ".rx-resize-overlay{position:absolute;pointer-events:none;}",
+            ".rx-resize-handle{position:absolute;width:8px;height:8px;border:1px solid #09f;background:#fff;box-sizing:border-box;pointer-events:auto;}",
+            ".rx-nw{left:-4px;top:-4px;cursor:nwse-resize;}",
+            ".rx-n{left:50%;top:-4px;transform:translateX(-50%);cursor:ns-resize;}",
+            ".rx-ne{right:-4px;top:-4px;cursor:nesw-resize;}",
+            ".rx-e{right:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
+            ".rx-se{right:-4px;bottom:-4px;cursor:nwse-resize;}",
+            ".rx-s{left:50%;bottom:-4px;transform:translateX(-50%);cursor:ns-resize;}",
+            ".rx-sw{left:-4px;bottom:-4px;cursor:nesw-resize;}",
+            ".rx-w{left:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
+          ].join("\n");
+          const tag = document.createElement("style");
+          tag.id = id;
+          tag.textContent = css;
+          document.head.appendChild(tag);
+        } catch {}
+      };
+
+const _overlayInjectInstanceCSS =
+  typeof overlayInjectInstanceCSS === "function"
+    ? overlayInjectInstanceCSS
+    : function (node, width, height) {
+        try {
+          if (!node) return;
+          const id = "overlay-css-" + String(node.id || "");
+          if (document.getElementById(id)) return;
+          const left =
+            (node.position && node.position.x) != null ? node.position.x : 0;
+          const top =
+            (node.position && node.position.y) != null ? node.position.y : 0;
+          const w = typeof width === "number" ? width + "px" : width;
+          const h = typeof height === "number" ? height + "px" : height;
+          const cls = "rx-overlay-" + String(node.id || "");
+          const lines = [
+            `.${cls}{position:absolute;left:${left}px;top:${top}px;width:${w};height:${h};z-index:10;}`,
+          ];
+          const tag = document.createElement("style");
+          tag.id = id;
+          tag.textContent = lines.join("\n");
+          document.head.appendChild(tag);
+        } catch {}
+      };
 
 // Minimal sequence to satisfy plugin validator
 export const sequence = {
@@ -46,176 +193,6 @@ export const handlers = {
   noop: () => ({}),
 };
 
-// Helper: inject raw CSS if present, de-duped by hash
-function injectRawCSS(css) {
-  try {
-    if (!css) return;
-    const id = "component-css-" + btoa(css).substring(0, 10);
-    if (document.getElementById(id)) return;
-    const tag = document.createElement("style");
-    tag.id = id;
-    tag.textContent = css;
-    document.head.appendChild(tag);
-  } catch {}
-}
-
-// Helper: best-effort parse of template to get tag and class list
-function parseTemplateShape(template) {
-  try {
-    const tagMatch = template && template.match(/<\s*([a-zA-Z0-9-]+)/);
-    const tag = (tagMatch ? tagMatch[1] : "div").toLowerCase();
-    // collect class names from first opening tag
-    const classMatch = template && template.match(/class\s*=\s*"([^"]*)"/);
-    const classes = classMatch
-      ? classMatch[1].split(/\s+/).filter(Boolean)
-      : [];
-    return { tag, classes };
-  } catch {
-    return { tag: "div", classes: [] };
-  }
-}
-// Helper: resolve {{tokens}} in strings using provided vars
-function resolveTemplateTokens(str, vars) {
-  try {
-    if (!str) return str;
-    return String(str).replace(
-      /\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g,
-      function (_m, key) {
-        return vars && vars[key] != null ? String(vars[key]) : "";
-      }
-    );
-  } catch {
-    return str;
-  }
-}
-
-// Helper: inject per-instance CSS (position/size) so no inline styles are needed
-function injectInstanceCSS(node, width, height) {
-  try {
-    if (!node) return;
-    const id =
-      "component-instance-css-" + String(node.id || node.cssClass || "");
-    if (document.getElementById(id)) return;
-    const cls = String(node.cssClass || node.id || "").trim();
-    if (!cls) return;
-    const left =
-      (node.position && node.position.x) != null ? node.position.x : 0;
-    const top =
-      (node.position && node.position.y) != null ? node.position.y : 0;
-    const lines = [
-      `.${cls}{position:absolute;left:${left}px;top:${top}px;box-sizing:border-box;display:block;}`,
-    ];
-    if (width != null)
-      lines.push(
-        `.${cls}{width:${typeof width === "number" ? width + "px" : width};}`
-      );
-    if (height != null)
-      lines.push(
-        `.${cls}{height:${
-          typeof height === "number" ? height + "px" : height
-        };}`
-      );
-    const tag = document.createElement("style");
-    tag.id = id;
-    tag.textContent = lines.join("\n");
-    // Helper: inject global CSS for overlay/handles (once)
-    function injectOverlayGlobalCSS() {
-      try {
-        const id = "overlay-css-global";
-        if (document.getElementById(id)) return;
-        const css = [
-          ".rx-resize-overlay{position:absolute;pointer-events:none;}",
-          ".rx-resize-handle{position:absolute;width:8px;height:8px;border:1px solid #09f;background:#fff;box-sizing:border-box;pointer-events:auto;}",
-          ".rx-nw{left:-4px;top:-4px;cursor:nwse-resize;}",
-          ".rx-n{left:50%;top:-4px;transform:translateX(-50%);cursor:ns-resize;}",
-          ".rx-ne{right:-4px;top:-4px;cursor:nesw-resize;}",
-          ".rx-e{right:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
-          ".rx-se{right:-4px;bottom:-4px;cursor:nwse-resize;}",
-          ".rx-s{left:50%;bottom:-4px;transform:translateX(-50%);cursor:ns-resize;}",
-          ".rx-sw{left:-4px;bottom:-4px;cursor:nesw-resize;}",
-          ".rx-w{left:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
-        ].join("\n");
-        const tag = document.createElement("style");
-        tag.id = id;
-        tag.textContent = css;
-        document.head.appendChild(tag);
-      } catch {}
-    }
-
-    // Helper: inject per-instance CSS for overlay box (no inline styles)
-    function injectOverlayInstanceCSS(node, width, height) {
-      try {
-        if (!node) return;
-        const id = "overlay-css-" + String(node.id || "");
-        if (document.getElementById(id)) return;
-        const left =
-          (node.position && node.position.x) != null ? node.position.x : 0;
-        const top =
-          (node.position && node.position.y) != null ? node.position.y : 0;
-        const w = typeof width === "number" ? width + "px" : width;
-        const h = typeof height === "number" ? height + "px" : height;
-        const cls = "rx-overlay-" + String(node.id || "");
-        const lines = [
-          `.${cls}{position:absolute;left:${left}px;top:${top}px;width:${w};height:${h};z-index:10;}`,
-        ];
-        const tag = document.createElement("style");
-        tag.id = id;
-        tag.textContent = lines.join("\n");
-        document.head.appendChild(tag);
-      } catch {}
-    }
-
-    document.head.appendChild(tag);
-  } catch {}
-}
-
-// Top-level: inject global CSS for overlay/handles (once)
-function overlayInjectGlobalCSS() {
-  try {
-    const id = "overlay-css-global";
-    if (document.getElementById(id)) return;
-    const css = [
-      ".rx-resize-overlay{position:absolute;pointer-events:none;}",
-      ".rx-resize-handle{position:absolute;width:8px;height:8px;border:1px solid #09f;background:#fff;box-sizing:border-box;pointer-events:auto;}",
-      ".rx-nw{left:-4px;top:-4px;cursor:nwse-resize;}",
-      ".rx-n{left:50%;top:-4px;transform:translateX(-50%);cursor:ns-resize;}",
-      ".rx-ne{right:-4px;top:-4px;cursor:nesw-resize;}",
-      ".rx-e{right:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
-      ".rx-se{right:-4px;bottom:-4px;cursor:nwse-resize;}",
-      ".rx-s{left:50%;bottom:-4px;transform:translateX(-50%);cursor:ns-resize;}",
-      ".rx-sw{left:-4px;bottom:-4px;cursor:nesw-resize;}",
-      ".rx-w{left:-4px;top:50%;transform:translateY(-50%);cursor:ew-resize;}",
-    ].join("\n");
-    const tag = document.createElement("style");
-    tag.id = id;
-    tag.textContent = css;
-    document.head.appendChild(tag);
-  } catch {}
-}
-
-// Top-level: inject per-instance CSS for overlay box (no inline styles)
-function overlayInjectInstanceCSS(node, width, height) {
-  try {
-    if (!node) return;
-    const id = "overlay-css-" + String(node.id || "");
-    if (document.getElementById(id)) return;
-    const left =
-      (node.position && node.position.x) != null ? node.position.x : 0;
-    const top =
-      (node.position && node.position.y) != null ? node.position.y : 0;
-    const w = typeof width === "number" ? width + "px" : width;
-    const h = typeof height === "number" ? height + "px" : height;
-    const cls = "rx-overlay-" + String(node.id || "");
-    const lines = [
-      `.${cls}{position:absolute;left:${left}px;top:${top}px;width:${w};height:${h};z-index:10;}`,
-    ];
-    const tag = document.createElement("style");
-    tag.id = id;
-    tag.textContent = lines.join("\n");
-    document.head.appendChild(tag);
-  } catch {}
-}
-
 // New export: renderCanvasNode — produce a pure element for a created node
 export function renderCanvasNode(node) {
   const React = (typeof window !== "undefined" && window.React) || null;
@@ -227,10 +204,10 @@ export function renderCanvasNode(node) {
     component.ui && component.ui.styles && component.ui.styles.css;
 
   // Inject CSS once
-  injectRawCSS(stylesCss);
+  _injectRawCSS(stylesCss);
 
   // Determine tag and base classes from template
-  const shape = parseTemplateShape(template);
+  const shape = _parseTemplateShape(template);
   const tagName = shape.tag || node.type || "div";
 
   // Compose className: instance cssClass + resolved template classes
@@ -245,7 +222,7 @@ export function renderCanvasNode(node) {
       "md",
   };
   const resolvedTemplateClasses = shape.classes.map((c) =>
-    resolveTemplateTokens(c, vars)
+    _resolveTemplateTokens(c, vars)
   );
   const classes = [
     String(node.cssClass || node.id || ""),
@@ -261,37 +238,44 @@ export function renderCanvasNode(node) {
   const height = defaults.defaultHeight;
 
   // Inject per-instance CSS for layout (no inline styles)
-  injectInstanceCSS(node, width, height);
+  _injectInstanceCSS(node, width, height);
 
   const props = {
     id: node.id,
     className: classes,
     "data-component-id": node.id,
     draggable: true,
-    onClick: (e) => {
-      try {
-        e && e.stopPropagation && e.stopPropagation();
-        const system = (window && window.renderxCommunicationSystem) || null;
-        const conductor = system && system.conductor;
-        if (conductor && typeof conductor.play === "function") {
-          conductor.play(
-            "Canvas.component-select-symphony",
-            "Canvas.component-select-symphony",
-            {
-              elementId: node.id,
-              onSelectionChange: (id) => {
-                try {
-                  const evt = new CustomEvent("renderx:selection:update", {
-                    detail: { id },
-                  });
-                  window.dispatchEvent(evt);
-                } catch {}
-              },
-            }
-          );
-        }
-      } catch {}
-    },
+    onClick:
+      typeof onElementClick === "function"
+        ? onElementClick(node)
+        : function (e) {
+            try {
+              e && e.stopPropagation && e.stopPropagation();
+              const system =
+                (window && window.renderxCommunicationSystem) || null;
+              const conductor = system && system.conductor;
+              if (conductor && typeof conductor.play === "function") {
+                conductor.play(
+                  "Canvas.component-select-symphony",
+                  "Canvas.component-select-symphony",
+                  {
+                    elementId: node.id,
+                    onSelectionChange: (id) => {
+                      try {
+                        const evt = new CustomEvent(
+                          "renderx:selection:update",
+                          {
+                            detail: { id },
+                          }
+                        );
+                        window.dispatchEvent(evt);
+                      } catch {}
+                    },
+                  }
+                );
+              }
+            } catch {}
+          },
   };
 
   // Content: replace {{content}} with metadata.name if present
@@ -537,13 +521,13 @@ export function CanvasPage(props = {}) {
               ) {
                 // inject overlay CSS (global + instance) on demand
                 try {
-                  overlayInjectGlobalCSS();
+                  _overlayInjectGlobalCSS();
                   const defaults =
                     (n.component &&
                       n.component.integration &&
                       n.component.integration.canvasIntegration) ||
                     {};
-                  overlayInjectInstanceCSS(
+                  _overlayInjectInstanceCSS(
                     { id: n.id, position: n.position },
                     defaults.defaultWidth,
                     defaults.defaultHeight
