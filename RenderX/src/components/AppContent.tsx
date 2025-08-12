@@ -7,17 +7,13 @@ import React, { useState, useEffect, Suspense } from "react";
 // ElementLibrary component with Musical Conductor integration
 import ElementLibrary from "./ElementLibrary";
 import ControlPanel from "./ControlPanel";
-import Canvas from "./Canvas";
+// Canvas is now provided by the center slot plugin UI per ADR-0014
+// import Canvas from "./Canvas";
 import PanelSlot from "./PanelSlot";
 import ErrorBoundary from "./ErrorBoundary";
 import { ThemeToggleButton } from "../providers/ThemeProvider";
 import type { AppState } from "../types/AppTypes";
 import type { LoadedJsonComponent } from "../types/JsonComponent";
-import {
-  captureClickOffset,
-  storeDragDataGlobally,
-  clearGlobalDragData,
-} from "../utils/dragUtils";
 
 // ElementLibrary component is now imported directly and integrates with Musical Conductor
 // Removed plugin-loading logic - using original ElementLibrary.tsx with Musical Conductor integration
@@ -106,67 +102,8 @@ const AppContent: React.FC = () => {
     }
   };
 
-  // Canvas element drag start handler - THIN CLIENT APPROACH
-  const handleCanvasElementDragStart = (e: React.DragEvent, element: any) => {
-    console.log(
-      "🎼 [THIN CLIENT] Starting canvas element drag operation for:",
-      element.id
-    );
-
-    // 🎼 THIN CLIENT: Only call conductor.play() - let plugin handle everything
-    if (communicationSystem) {
-      communicationSystem.conductor.play(
-        "Component.drag-symphony",
-        "DRAG_START",
-        {
-          event: {
-            clientX: e.clientX,
-            clientY: e.clientY,
-            currentTarget: e.currentTarget,
-            dataTransfer: e.dataTransfer,
-          },
-          element,
-          timestamp: Date.now(),
-          source: "canvas-element-drag",
-        }
-      );
-    } else {
-      console.warn(
-        "🎼 [THIN CLIENT] Communication system not available for canvas drag start"
-      );
-    }
-  };
-
-  // Canvas element drag end handler - THIN CLIENT APPROACH
-  const handleCanvasElementDragEnd = (e: React.DragEvent, element: any) => {
-    console.log(
-      "🎼 [THIN CLIENT] Canvas element drag end for:",
-      element.id,
-      "dropEffect:",
-      e.dataTransfer.dropEffect
-    );
-
-    // 🎼 THIN CLIENT: Only call conductor.play() - let plugin handle cleanup
-    if (communicationSystem) {
-      communicationSystem.conductor.play(
-        "Component.drag-symphony",
-        "DRAG_END",
-        {
-          event: {
-            currentTarget: e.currentTarget,
-            dataTransfer: e.dataTransfer,
-          },
-          element,
-          timestamp: Date.now(),
-          source: "canvas-element-drag",
-        }
-      );
-    } else {
-      console.warn(
-        "🎼 [THIN CLIENT] Communication system not available for canvas drag end"
-      );
-    }
-  };
+  // Canvas interactions are now fully handled by the Canvas UI plugin via conductor.play per ADR-0014.
+  // Legacy canvas drag handlers removed.
 
   // Initialize communication system
   useEffect(() => {
@@ -361,11 +298,38 @@ const AppContent: React.FC = () => {
       case "preview":
         return (
           <div className="app-layout app-layout--preview">
-            <Canvas
-              mode="preview"
-              onCanvasElementDragStart={handleCanvasElementDragStart}
-              onCanvasElementDragEnd={handleCanvasElementDragEnd}
-            />
+            <section className="app-canvas" id="canvas" data-plugin-mounted="true">
+              <ErrorBoundary
+                fallback={
+                  <div className="panel-slot-loading" data-slot="center">
+                    <div className="loading-state">
+                      <h4>Center UI failed; falling back…</h4>
+                    </div>
+                  </div>
+                }
+              >
+                <Suspense
+                  fallback={
+                    <div className="panel-slot-loading" data-slot="center">
+                      <div className="loading-state">
+                        <h4>Loading center UI…</h4>
+                      </div>
+                    </div>
+                  }
+                >
+                  <PanelSlot
+                    slot="center"
+                    fallback={
+                      <div className="panel-slot-empty" data-slot="center">
+                        <div className="empty-state">
+                          <h4>Center UI unavailable</h4>
+                        </div>
+                      </div>
+                    }
+                  />
+                </Suspense>
+              </ErrorBoundary>
+            </section>
             <div className="preview-overlay">
               <button
                 className="preview-exit-button"
@@ -381,11 +345,38 @@ const AppContent: React.FC = () => {
       case "fullscreen-preview":
         return (
           <div className="app-layout app-layout--fullscreen-preview">
-            <Canvas
-              mode="fullscreen-preview"
-              onCanvasElementDragStart={handleCanvasElementDragStart}
-              onCanvasElementDragEnd={handleCanvasElementDragEnd}
-            />
+            <section className="app-canvas" id="canvas" data-plugin-mounted="true">
+              <ErrorBoundary
+                fallback={
+                  <div className="panel-slot-loading" data-slot="center">
+                    <div className="loading-state">
+                      <h4>Center UI failed; falling back…</h4>
+                    </div>
+                  </div>
+                }
+              >
+                <Suspense
+                  fallback={
+                    <div className="panel-slot-loading" data-slot="center">
+                      <div className="loading-state">
+                        <h4>Loading center UI…</h4>
+                      </div>
+                    </div>
+                  }
+                >
+                  <PanelSlot
+                    slot="center"
+                    fallback={
+                      <div className="panel-slot-empty" data-slot="center">
+                        <div className="empty-state">
+                          <h4>Center UI unavailable</h4>
+                        </div>
+                      </div>
+                    }
+                  />
+                </Suspense>
+              </ErrorBoundary>
+            </section>
             <div className="preview-overlay">
               <button
                 className="preview-exit-button"
@@ -452,11 +443,11 @@ const AppContent: React.FC = () => {
                   <PanelSlot
                     slot="center"
                     fallback={
-                      <Canvas
-                        mode="editor"
-                        onCanvasElementDragStart={handleCanvasElementDragStart}
-                        onCanvasElementDragEnd={handleCanvasElementDragEnd}
-                      />
+                      <div className="panel-slot-empty" data-slot="center">
+                        <div className="empty-state">
+                          <h4>Center UI unavailable</h4>
+                        </div>
+                      </div>
                     }
                   />
                 </Suspense>

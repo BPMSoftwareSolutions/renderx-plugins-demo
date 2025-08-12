@@ -19,16 +19,4 @@ export interface ElementLibraryProps {
   onDragEnd?: (e: React.DragEvent, component: LoadedJsonComponent) => void;
 }
 
-export interface CanvasProps {
-  mode: "editor" | "preview" | "fullscreen-preview";
-  onCanvasElementDragStart?: (element: any, dragData: any) => void;
-  onCanvasElementDragEnd?: (e: React.DragEvent, element: any) => void;
-}
-
-export interface CanvasElementProps {
-  id: string;
-  type: string;
-  content: string;
-  style: React.CSSProperties;
-  onDragStart?: (element: any, dragData: any) => void;
-}
+// Canvas types removed per ADR-0014; canvas UI is provided by plugin via PanelSlot
