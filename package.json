@@ -1,22 +1,44 @@
 {
   "name": "musical-conductor",
   "version": "1.0.0",
-  "description": "MusicalConductor Communication System with Jest Testing",
+  "description": "Event-driven communication system with musical sequence orchestration for modern web applications",
   "type": "module",
-  "main": "dist/modules/communication/index.js",
-  "types": "dist/modules/communication/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/modules/communication/index.js",
-      "types": "./dist/modules/communication/index.d.ts"
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./events": {
+      "import": "./dist/src/events/index.js",
+      "types": "./dist/src/events/index.d.ts"
+    },
+    "./sequences": {
+      "import": "./dist/src/sequences/index.js",
+      "types": "./dist/src/sequences/index.d.ts"
+    },
+    "./validation": {
+      "import": "./dist/src/validation/index.js",
+      "types": "./dist/src/validation/index.d.ts"
     }
   },
   "files": [
-    "dist/**/*",
-    "modules/**/*",
+    "dist/**",
     "README.md",
     "package.json"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BPMSoftwareSolutions/MusicalConductor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BPMSoftwareSolutions/MusicalConductor/issues"
+  },
+  "homepage": "https://github.com/BPMSoftwareSolutions/MusicalConductor#readme",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -72,16 +94,16 @@
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "commander": "^14.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.0.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-extended": "^4.0.2",
+    "rimraf": "^5.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.0.0",
-    "rimraf": "^5.0.0"
+    "typescript": "^5.0.0"
   },
-  "dependencies": {
-    "commander": "^14.0.0"
-  }
+  "dependencies": {}
 }
