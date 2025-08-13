@@ -92,6 +92,14 @@ export class SPAValidator {
     ) {
       const validator = SPAValidator.getInstance();
 
+      // Allow internal MC diagnostic/logging events without validation
+      if (
+        typeof eventName === "string" &&
+        (eventName.startsWith("musical-conductor:") || eventName.startsWith("conductor:"))
+      ) {
+        return validator.originalEventBusEmit!.call(this, eventName, data, options);
+      }
+
       // Get call stack to identify caller
       const stack = new Error().stack || "";
       const callerInfo = validator.analyzeCallStack(stack);
@@ -307,40 +315,58 @@ export class SPAValidator {
     let source = "unknown";
 
     for (const line of lines) {
-      // Check for MusicalConductor internal operations first
+      const normalized = String(line).replace(/\\\\/g, "/");
+
+      // Strong early detection: any reference within the musical-conductor package
+      if (
+        normalized.includes("/node_modules/musical-conductor/") ||
+        normalized.includes("/musical-conductor/dist/") ||
+        normalized.includes("/musical-conductor/") ||
+        normalized.includes("/dist/modules/communication/") ||
+        normalized.includes("/modules/communication/")
+      ) {
+        return {
+          isPlugin: false,
+          pluginId: "MusicalConductor",
+          fileName: line,
+          isReactComponent: false,
+          isInMountMethod: false,
+          source: "MusicalConductor",
+          isMusicalConductor: true,
+        };
+      }
+
+      // Check for MusicalConductor internal operations (additional heuristics)
       // Handle both full paths, URLs, and just filenames
       if (
-        line.includes("MusicalConductor") ||
-        line.includes("/sequences/MusicalConductor.ts") ||
-        line.includes("/sequences/core/") ||
-        line.includes("/sequences/plugins/PluginManager") ||
-        line.includes("/sequences/plugins/PluginInterfaceFacade") ||
-        line.includes("/sequences/plugins/PluginLoader") ||
-        line.includes("/sequences/plugins/PluginValidator") ||
-        line.includes("/sequences/plugins/PluginManifestLoader") ||
-        line.includes("SequenceRegistry") ||
-        line.includes("EventSubscriptionManager") ||
-        line.includes("ConductorCore") ||
-        line.includes("EventOrchestrator") ||
-        line.includes("SequenceOrchestrator") ||
-        line.includes("/communication/EventBus") ||
-        line.includes("/communication/SPAValidator") ||
+        normalized.includes("MusicalConductor") ||
+        normalized.includes("/sequences/MusicalConductor.ts") ||
+        normalized.includes("/sequences/core/") ||
+        normalized.includes("/sequences/plugins/PluginManager") ||
+        normalized.includes("/sequences/plugins/PluginInterfaceFacade") ||
+        normalized.includes("/sequences/plugins/PluginLoader") ||
+        normalized.includes("/sequences/plugins/PluginValidator") ||
+        normalized.includes("/sequences/plugins/PluginManifestLoader") ||
+        normalized.includes("SequenceRegistry") ||
+        normalized.includes("EventSubscriptionManager") ||
+        normalized.includes("ConductorCore") ||
+        normalized.includes("EventOrchestrator") ||
+        normalized.includes("SequenceOrchestrator") ||
+        normalized.includes("/communication/EventBus") ||
+        normalized.includes("/communication/SPAValidator") ||
         // Handle filename-only patterns (common in minified/bundled code)
-        line.includes("PluginManager.js") ||
-        line.includes("PluginInterfaceFacade.js") ||
-        line.includes("PluginLoader.js") ||
-        line.includes("PluginValidator.js") ||
-        line.includes("PluginManifestLoader.js") ||
-        line.includes("SequenceRegistry.js") ||
-        line.includes("EventSubscriptionManager.js") ||
-        line.includes("ConductorCore.js") ||
-        line.includes("EventOrchestrator.js") ||
-        line.includes("SequenceOrchestrator.js") ||
-        line.includes("EventBus.js") ||
-        line.includes("SPAValidator.js") ||
-        // Handle browser URL patterns for E2E testing
-        line.includes("/dist/modules/communication/") ||
-        line.includes("/dist/modules/sequences/")
+        normalized.includes("PluginManager.js") ||
+        normalized.includes("PluginInterfaceFacade.js") ||
+        normalized.includes("PluginLoader.js") ||
+        normalized.includes("PluginValidator.js") ||
+        normalized.includes("PluginManifestLoader.js") ||
+        normalized.includes("SequenceRegistry.js") ||
+        normalized.includes("EventSubscriptionManager.js") ||
+        normalized.includes("ConductorCore.js") ||
+        normalized.includes("EventOrchestrator.js") ||
+        normalized.includes("SequenceOrchestrator.js") ||
+        normalized.includes("EventBus.js") ||
+        normalized.includes("SPAValidator.js")
       ) {
         isMusicalConductor = true;
         source = "MusicalConductor";
@@ -357,7 +383,7 @@ export class SPAValidator {
       }
 
       // Look for React component patterns
-      const reactMatch = line.match(/\/components\/([^\/]+\.tsx?)/);
+      const reactMatch = normalized.match(/\/components\/([^\/]+\.tsx?)/);
       if (reactMatch) {
         isReactComponent = true;
         source = `React:${reactMatch[1]}`;
