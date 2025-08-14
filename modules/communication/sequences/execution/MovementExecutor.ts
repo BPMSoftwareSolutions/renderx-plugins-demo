@@ -15,6 +15,7 @@ import {
   MUSICAL_TIMING,
 } from "../SequenceTypes.js";
 import { BeatExecutor } from "./BeatExecutor.js";
+import { getConductorEnv } from "../environment/ConductorEnv.js";
 
 export class MovementExecutor {
   private eventBus: EventBus;
@@ -136,16 +137,20 @@ export class MovementExecutor {
       return;
     }
 
-    // Calculate delay based on sequence tempo
-    const tempo = sequence.tempo || 120; // Default 120 BPM
-    const beatDuration = (60 / tempo) * 1000; // Convert to milliseconds
+    // Calculate delay based on tempo. Prefer movement.tempo override when present.
+    const effectiveTempo =
+      typeof (beat as any)?.tempo === "number" && (beat as any).tempo > 0
+        ? (beat as any).tempo
+        : (typeof sequence.movements?.[sequence.movements.indexOf as any]
+            ?.tempo === "number"
+            ? (sequence as any).movements?.[0]?.tempo
+            : sequence.tempo) || 120;
+
+    const beatDuration = (60 / effectiveTempo) * 1000; // ms per beat
 
     let delay = 0;
-
     switch (beat.timing) {
       case MUSICAL_TIMING.AFTER_BEAT:
-        delay = beatDuration;
-        break;
       case MUSICAL_TIMING.ON_BEAT:
         delay = beatDuration;
         break;
@@ -159,6 +164,19 @@ export class MovementExecutor {
       default:
         delay = 0;
     }
+
+    // Optional global clamp via ConductorEnv flags: flags.timing?.maxDelayMs
+    try {
+      const ce = getConductorEnv?.();
+      const maxDelay = ce?.flags?.timing?.maxDelayMs;
+      if (typeof maxDelay === "number" && maxDelay >= 0) {
+        delay = Math.min(delay, maxDelay);
+      }
+      const scale = ce?.flags?.timing?.scale;
+      if (typeof scale === "number" && isFinite(scale) && scale > 0) {
+        delay = Math.round(delay * scale);
+      }
+    } catch {}
 
     if (delay > 0) {
       console.log(

@@ -24,15 +24,11 @@ module.exports = {
     "^@test-utils/(.*)$": "<rootDir>/tests/utils/$1",
     "^@fixtures/(.*)$": "<rootDir>/tests/fixtures/$1",
     "^@mocks/(.*)$": "<rootDir>/tests/mocks/$1",
-    // Allow importing RenderX app paths directly in tests (e.g., RenderX/src/...)
-    "^RenderX/(.*)$": "<rootDir>/RenderX/$1",
     // Map .js extensions to .ts files for ES module compatibility
     "^(.*)\\.js$": "$1",
   },
   resolver: "<rootDir>/jest.resolver.cjs",
-  setupFilesAfterEnv: [
-    // Plugin & RenderX-specific setups removed in core-only mode
-  ],
+  setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.ts"],
   collectCoverageFrom: [
     "modules/**/*.ts",
     "!modules/**/*.d.ts",
@@ -53,4 +49,3 @@ module.exports = {
   clearMocks: true,
   restoreMocks: true,
 };
-

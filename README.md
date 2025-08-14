@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Deprecation notice: RenderX UI and E2E tests have been split out of this repository per ADR‑0014/ADR‑0015. This repo now focuses on the core orchestration library only. See tools/docs/wiki/adr/0015-split-renderx-and-plugins.md for details.
+
 # 🎼 MusicalConductor
 
 A sophisticated sequence orchestration engine for managing complex workflows with plugin-based architecture, resource management, and comprehensive monitoring.
@@ -16,6 +19,21 @@ MusicalConductor is a lean, modular orchestration system that coordinates the ex
 - **🎽 Data Baton**: Payload passing between sequence beats for stateful workflows
 - **🔄 Queue Management**: Priority-based sequence execution with conflict resolution
 - **📈 Event System**: Contextual event emission with subscriber management
+
+## 🧪 Testing (Post‑split)
+
+This repository now contains only the MusicalConductor core. End‑to‑end (E2E) browser tests live in the RenderX shell repository.
+
+Core tests (here):
+
+- Run all unit tests: `npm test`
+- With coverage: `npm run test:coverage`
+- Filter by file/pattern: `npm test -- tests/unit/communication/`
+
+E2E tests (moved):
+
+- See the RenderX shell repo for Playwright setup and the minimal Chrome smoke test
+- Rationale and timeline: tools/docs/wiki/adr/0015-split-renderx-and-plugins.md
 
 ## 🏗️ Architecture
 
