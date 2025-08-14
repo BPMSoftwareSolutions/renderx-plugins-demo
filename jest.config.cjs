@@ -27,8 +27,8 @@ module.exports = {
     // Map .js extensions to .ts files for ES module compatibility
     "^(.*)\\.js$": "$1",
   },
-  resolver: "<rootDir>/jest.resolver.js",
-  setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.ts"],
+  resolver: "<rootDir>/jest.resolver.cjs",
+  setupFilesAfterEnv: [],
   collectCoverageFrom: [
     "modules/**/*.ts",
     "!modules/**/*.d.ts",
@@ -48,7 +48,4 @@ module.exports = {
   verbose: true,
   clearMocks: true,
   restoreMocks: true,
-  // Custom matchers for musical timing and event testing
-  globalSetup: "<rootDir>/tests/setup/global-setup.ts",
-  globalTeardown: "<rootDir>/tests/setup/global-teardown.ts",
 };

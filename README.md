@@ -79,18 +79,20 @@ MusicalConductor (736 lines) - Main orchestration coordinator
 ### Installation
 
 ```bash
-npm install
+npm install musical-conductor
 ```
 
 ### Basic Usage
 
 ```typescript
-import { MusicalConductor } from "./modules/communication/sequences/MusicalConductor";
-import { EventBus } from "./modules/communication/EventBus";
+import {
+  initializeCommunicationSystem,
+  MusicalConductor,
+  EventBus
+} from "musical-conductor";
 
-// Initialize
-const eventBus = new EventBus();
-const conductor = MusicalConductor.getInstance(eventBus);
+// Initialize the communication system
+const { eventBus, conductor } = initializeCommunicationSystem();
 
 // Register a sequence
 conductor.registerSequence(

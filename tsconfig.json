@@ -21,6 +21,6 @@
       "@communication/*": ["modules/communication/*"]
     }
   },
-  "include": ["modules/**/*"],
+  "include": ["modules/**/*", "src/**/*"],
   "exclude": ["node_modules", "dist", "tests", "coverage"]
 }
