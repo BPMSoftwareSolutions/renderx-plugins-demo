@@ -20,6 +20,21 @@ MusicalConductor is a lean, modular orchestration system that coordinates the ex
 - **🔄 Queue Management**: Priority-based sequence execution with conflict resolution
 - **📈 Event System**: Contextual event emission with subscriber management
 
+## 🧪 Testing (Post‑split)
+
+This repository now contains only the MusicalConductor core. End‑to‑end (E2E) browser tests live in the RenderX shell repository.
+
+Core tests (here):
+
+- Run all unit tests: `npm test`
+- With coverage: `npm run test:coverage`
+- Filter by file/pattern: `npm test -- tests/unit/communication/`
+
+E2E tests (moved):
+
+- See the RenderX shell repo for Playwright setup and the minimal Chrome smoke test
+- Rationale and timeline: tools/docs/wiki/adr/0015-split-renderx-and-plugins.md
+
 ## 🏗️ Architecture
 
 ### Core Components
