@@ -16,8 +16,13 @@ export const TEST_SEQUENCES: Record<string, MusicalSequence> = {
         description: "Testing movement",
         beats: [
           { beat: 1, event: "test-start", dynamics: "mf", timing: "immediate" },
-          { beat: 2, event: "test-process", dynamics: "mf", timing: "immediate" },
-          { beat: 3, event: "test-complete", dynamics: "mf", timing: "immediate" },
+          { beat: 2, event: "test-process", dynamics: "mf", timing: "on-beat" },
+          {
+            beat: 3,
+            event: "test-complete",
+            dynamics: "mf",
+            timing: "on-beat",
+          },
         ],
       },
     ],
@@ -35,7 +40,12 @@ export const TEST_SEQUENCES: Record<string, MusicalSequence> = {
         name: "Fast Movement",
         beats: [
           { beat: 1, event: "fast-start", dynamics: "mf", timing: "immediate" },
-          { beat: 2, event: "fast-complete", dynamics: "mf", timing: "immediate" },
+          {
+            beat: 2,
+            event: "fast-complete",
+            dynamics: "mf",
+            timing: "immediate",
+          },
         ],
       },
     ],
@@ -52,12 +62,26 @@ export const TEST_SEQUENCES: Record<string, MusicalSequence> = {
         id: "move-1",
         name: "Mixed Movement",
         beats: [
-          { beat: 1, event: "mixed-start", dynamics: "mf", timing: "immediate" },
-          { beat: 2, event: "mixed-after", dynamics: "mf", timing: "after-beat" },
-          { beat: 3, event: "mixed-complete", dynamics: "mf", timing: "immediate" },
+          {
+            beat: 1,
+            event: "mixed-start",
+            dynamics: "mf",
+            timing: "immediate",
+          },
+          {
+            beat: 2,
+            event: "mixed-after",
+            dynamics: "mf",
+            timing: "after-beat",
+          },
+          {
+            beat: 3,
+            event: "mixed-complete",
+            dynamics: "mf",
+            timing: "immediate",
+          },
         ],
       },
     ],
   },
 };
-
