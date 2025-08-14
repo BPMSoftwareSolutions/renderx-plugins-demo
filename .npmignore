@@ -17,7 +17,7 @@ yarn-error.log*
 test-results/
 screenshots/
 playwright-report/
-e2e-tests/
+
 tests/
 coverage/
 *.lcov

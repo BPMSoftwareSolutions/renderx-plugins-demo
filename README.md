@@ -88,7 +88,7 @@ npm install musical-conductor
 import {
   initializeCommunicationSystem,
   MusicalConductor,
-  EventBus
+  EventBus,
 } from "musical-conductor";
 
 // Initialize the communication system
@@ -205,7 +205,7 @@ const handlers = {
 
 ## 🧪 Testing
 
-```bash
+````bash
 # Run all tests
 npm test
 
@@ -215,39 +215,18 @@ npm test -- tests/unit/communication/sequences/MusicalConductor.simple.test.ts
 # Run with coverage
 npm run test:coverage
 
-# Run E2E tests (requires setup)
-npm run test:e2e
-```
-
-### E2E Testing with Playwright
-
-The project includes comprehensive E2E tests that validate MusicalConductor in real browser environments using the package from Git repository:
-
 ```bash
-# Navigate to E2E tests directory
-cd e2e-tests
+# Run all tests
+npm test
 
-# One-command setup and run
-npm run setup && npm test
+# Run specific test suite
+npm test -- tests/unit/communication/sequences/MusicalConductor.simple.test.ts
 
-# Or step by step
-npm install                 # Install dependencies
-npm run test:install       # Install Playwright browsers
-npm test                   # Run E2E tests
-npm run test:headed        # Run with visible browser
-npm run test:debug         # Run in debug mode
-```
+# Run with coverage
+npm run test:coverage
+````
 
-**E2E Test Coverage:**
-
-- ✅ Package installation from Git repository
-- ✅ React SPA integration in real browsers
-- ✅ Time-date stamped console logging
-- ✅ Plugin validation and SPA compliance
-- ✅ Architectural boundary enforcement
-- ✅ Cross-browser compatibility (Chrome, Firefox, Safari, Edge)
-
-See [e2e-tests/README.md](./e2e-tests/README.md) for detailed documentation and [e2e-tests/QUICK_START.md](./e2e-tests/QUICK_START.md) for a quick start guide.
+End‑to‑end (E2E) browser tests now live in the RenderX shell repository as per ADR‑0015. See tools/docs/wiki/adr/0015-split-renderx-and-plugins.md for rationale and links.
 
 ## 📈 Performance
 

@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "musical-conductor": "./bundles/musical-conductor.bundle.js"
-  }
-}
