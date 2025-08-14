@@ -59,6 +59,7 @@ import { EventOrchestrator } from "./orchestration/EventOrchestrator.js";
 import { ConductorAPI } from "./api/ConductorAPI.js";
 import { StrictModeManager } from "./strictmode/StrictModeManager.js";
 import { ResourceConflictManager } from "./resources/ResourceConflictManager.js";
+import { CallbackRegistry } from "./orchestration/CallbackRegistry.js";
 
 // CIA (Conductor Integration Architecture) interfaces moved to PluginInterfaceFacade
 
@@ -113,6 +114,11 @@ export class MusicalConductor {
   private performanceTracker: PerformanceTracker;
   private duplicationDetector: DuplicationDetector;
   private eventLogger: EventLogger;
+
+  // Callback/correlation tracking for explicit cleanup
+  private requestCorrelationMap: Map<string, string> = new Map();
+  private correlationActiveCounts: Map<string, number> = new Map();
+  private eventUnsubscribes: UnsubscribeFunction[] = [];
 
   // Validation components
   private sequenceValidator: SequenceValidator;
@@ -345,12 +351,47 @@ export class MusicalConductor {
     context: any = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): any {
+    try {
+      // Preserve function-valued fields and attach correlation id for transport across nested play()
+      const registry = CallbackRegistry.getInstance();
+      const { correlationId, count } = registry.preserveInPlace(context);
+      if (count > 0) {
+        console.log(
+          `🎼 MusicalConductor.play: preserved ${count} callback(s) for correlationId=${correlationId}`
+        );
+      }
+      // Map correlationId to requestId after play() returns a requestId (via startSequence)
+      // We'll capture this below in the startSequence callback wrapper
+    } catch (e) {
+      console.warn(
+        "⚠️ MusicalConductor.play: callback preservation skipped:",
+        (e as Error)?.message || e
+      );
+    }
+
     return this.pluginInterface.play(
       pluginId,
       sequenceId,
       context,
       priority,
-      (seqId, data, prio) => this.startSequence(seqId, data, prio)
+      async (seqId, data, prio) => {
+        // Wrap startSequence to record correlation id -> request id mapping
+        const requestId = await this.startSequence(seqId, data, prio);
+        try {
+          const key = (await import("./orchestration/CallbackRegistry.js")).__internal.CORRELATION_KEY as any;
+          const corr = (data as any)?.[key];
+          if (typeof corr === "string") {
+            this.requestCorrelationMap.set(requestId, corr);
+            const cur = this.correlationActiveCounts.get(corr) || 0;
+            this.correlationActiveCounts.set(corr, cur + 1);
+          }
+          // Ensure event listeners to cleanup on completion/failure are installed once
+          if (this.eventUnsubscribes.length === 0) {
+            this.installCorrelationCleanupListeners();
+          }
+        } catch {}
+        return requestId;
+      }
     );
   }
 
@@ -655,6 +696,38 @@ export class MusicalConductor {
    */
   getQueuedSequences(): string[] {
     return this.conductorAPI.getQueuedSequences();
+  }
+
+  /**
+   * Install listeners to cleanup callback registry entries when sequences complete or fail
+   */
+  private installCorrelationCleanupListeners(): void {
+    const bus = this.eventBus;
+    const registry = CallbackRegistry.getInstance();
+
+    const onDone = (evt: any) => {
+      try {
+        const requestId = evt?.requestId;
+        const corr = requestId ? this.requestCorrelationMap.get(requestId) : undefined;
+        if (typeof corr === "string") {
+          const remaining = (this.correlationActiveCounts.get(corr) || 1) - 1;
+          if (remaining <= 0) {
+            registry.cleanup(corr);
+            this.correlationActiveCounts.delete(corr);
+            console.log(`🎼 MusicalConductor: cleaned callbacks for correlationId=${corr}`);
+          } else {
+            this.correlationActiveCounts.set(corr, remaining);
+          }
+          this.requestCorrelationMap.delete(requestId);
+        }
+      } catch {}
+    };
+
+    this.eventUnsubscribes.push(
+      bus.subscribe("sequence-completed", onDone),
+      bus.subscribe("sequence-failed", onDone),
+      bus.subscribe("sequence-cancelled", onDone)
+    );
   }
 
   /**

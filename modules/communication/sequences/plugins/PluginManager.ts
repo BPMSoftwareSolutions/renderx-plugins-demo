@@ -12,6 +12,7 @@ import { PluginLoader } from "./PluginLoader.js";
 import { PluginValidator } from "./PluginValidator.js";
 import { PluginManifestLoader } from "./PluginManifestLoader.js";
 import { MusicalConductor } from "../MusicalConductor.js";
+import { CallbackRegistry, __internal as CBInternal } from "../orchestration/CallbackRegistry.js";
 
 // Import plugin types from MusicalConductor (temporary until we move them to a shared location)
 import type { SPAPlugin, PluginMountResult } from "./PluginInterfaceFacade.js";
@@ -173,6 +174,21 @@ export class PluginManager {
             const unsubscribe = this.eventBus.subscribe(
               eventName,
               (data: any) => {
+                // Rehydrate preserved callbacks using correlation id on data, if any
+                try {
+                  const restored = CallbackRegistry.getInstance().rehydrateInPlace(data);
+                  if (restored > 0) {
+                    console.log(
+                      `🎼 PluginManager: rehydrated ${restored} callback(s) for event ${eventName}`
+                    );
+                  }
+                } catch (e) {
+                  console.warn(
+                    "⚠️ PluginManager: callback rehydration skipped:",
+                    (e as Error)?.message || e
+                  );
+                }
+
                 // Derive a stable request key (prefer conductor requestId)
                 const requestId =
                   data?._musicalContext?.execution?.requestId ||
@@ -245,6 +261,13 @@ export class PluginManager {
                           priority?: any
                         ) => {
                           try {
+                            // Propagate correlation id from event data to nested ctx if missing
+                            try {
+                              const key = (CBInternal as any).CORRELATION_KEY;
+                              if (ctx && typeof ctx === "object" && key && !(key in ctx) && data && typeof (data as any)[key] === "string") {
+                                (ctx as any)[key] = (data as any)[key];
+                              }
+                            } catch {}
                             const mc = MusicalConductor.getInstance(
                               this.eventBus as any
                             );
