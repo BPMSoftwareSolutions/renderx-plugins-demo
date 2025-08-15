@@ -7,18 +7,28 @@ A sophisticated sequence orchestration engine for managing complex workflows wit
 
 ## 🚀 Overview
 
-MusicalConductor is a lean, modular orchestration system that coordinates the execution of musical sequences (workflows) with advanced features like resource conflict resolution, React StrictMode handling, and comprehensive plugin management. Originally a 3,228-line monolith, it has been refactored into a clean 736-line coordinator with 20 specialized components.
+MusicalConductor is an orchestration engine that makes harmony out of chaos. It turns drifting, competing subsystems into a single score—sequencing work into movements and beats with clear signatures, correlation, and telemetry. At scale, it keeps applications and platforms simple on the surface while coordinating complex flows underneath via a minimal client API (conductor.play) and a powerful runtime.
+
+Originally a 3,228-line monolith, the conductor has been refactored into a lean, modular core with specialized components for orchestration, plugin compliance, resource management, and monitoring.
 
 ## ✨ Key Features
 
-- **🎯 Sequence Orchestration**: Execute complex workflows with movement and beat coordination
-- **🔌 Plugin Architecture**: Dynamic plugin loading with CIA (Conductor Integration Architecture) compliance
-- **⚡ Resource Management**: Advanced resource conflict resolution and ownership tracking
-- **📊 Comprehensive Monitoring**: Real-time statistics, performance tracking, and event logging
-- **🛡️ StrictMode Protection**: React StrictMode duplicate detection and handling
-- **🎽 Data Baton**: Payload passing between sequence beats for stateful workflows
-- **🔄 Queue Management**: Priority-based sequence execution with conflict resolution
-- **📈 Event System**: Contextual event emission with subscriber management
+- Orchestrate via play(): a single, simple client API for complex work
+- CIA/SPA compliance: build-time CIA tests, runtime SPA validation and guardrails
+- Sequencing: movements and beats with timing, dynamics, and sequence signatures
+- Correlation-first: execution IDs threaded end-to-end for traceability
+- Data Baton: a shared, logged payload that flows between beats
+- Transaction frequency control: timing modes eliminate race conditions (immediate, after-beat, next-measure, delayed, wait-for-signal)
+- Resource management: priority, ownership, and conflict resolution
+
+## Why MusicalConductor
+
+- Make harmony: unify many subsystems under one score with clear movements and beats
+- Turn chaos into order: eliminate race conditions with timing controls and priorities
+- Scale simply: a tiny client surface (play, subscribe) fronts a powerful engine
+- Observe everything: correlation IDs, baton diffs, and structured logs for every step
+
+- Telemetry: status, statistics, and structured logs for every beat/sequence
 
 ## 🧪 Testing (Post‑split)
 
@@ -74,6 +84,56 @@ MusicalConductor (736 lines) - Main orchestration coordinator
 - `SequenceOrchestrator` - Core sequence execution engine
 - `EventOrchestrator` - Event management and emission
 
+
+## 🧩 CIA & SPA Architecture
+
+- CIA (Conductor Integration Architecture): defines how plugins are discovered, mounted, and orchestrated. Compliance is enforced at build/test time by unit tests that exercise plugin registration and handler contracts.
+- SPA (Symphonic Plugin Architecture): defines how plugins behave at runtime. SPAValidator enforces that plugins do not directly access the EventBus and only orchestrate via conductor.play().
+
+Compliance
+- Build-time: CIA unit tests validate sequence shape and handler contracts (see tests/unit/communication and ADR-0004, ADR-0008)
+- Runtime: SPAValidator intercepts eventBus.emit/subscribe and raises violations for direct access (ADR-0002)
+
+Handler context (what your handler receives):
+```ts
+function onSelect(data: any, context: any) {
+  // Correlation (request) and musical context travel with the event
+  const reqId = data._musicalContext?.execution?.requestId;
+
+  // Data Baton for cross-beat payload
+  context.payload.lastSelectedId = data.elementId;
+
+  // Minimal client surface
+  context.conductor.play("OtherPlugin", "other-symphony", { parent: reqId }, "CHAINED");
+}
+```
+
+### Beat Patterns & Sequence Signatures
+
+- Beats: discrete, ordered events with dynamics (priority) and timing (frequency)
+- Movements: related groups of beats; a sequence may have multiple movements
+- Signatures: give every sequence a clear identity (id, name, category, key, tempo)
+
+Example:
+```ts
+export const sequence = {
+  id: "toast-symphony",
+  name: "Toast Symphony",
+  key: "G Major",
+  tempo: 90,
+  category: "system",
+  movements: [
+    { id: "notify", name: "Notify", beats: [
+      { beat: 1, event: "notify:prepare", handler: "prepare", dynamics: "mp", timing: "after-beat" },
+      { beat: 2, event: "notify:show", handler: "show", dynamics: "f", timing: "immediate" },
+    ]},
+  ],
+};
+```
+
+Apps “discern” beat patterns by subscribing to conductor lifecycle events and by inspecting `_musicalContext` attached to event payloads during execution.
+
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -85,104 +145,107 @@ npm install musical-conductor
 ### Basic Usage
 
 ```typescript
-import {
-  initializeCommunicationSystem,
-  MusicalConductor,
-  EventBus,
-} from "musical-conductor";
+import { initializeCommunicationSystem, type ConductorClient } from "musical-conductor";
 
-// Initialize the communication system
-const { eventBus, conductor } = initializeCommunicationSystem();
+// Initialize the communication system (idempotent; StrictMode-safe)
+const { conductor } = initializeCommunicationSystem();
 
-// Register a sequence
-conductor.registerSequence(
+// Optionally load CIA plugins declared in your plugin manifest
+await conductor.registerCIAPlugins();
+
+// Orchestrate via CIA: play(pluginId, sequenceId, context?, priority?)
+conductor.play(
+  "MyPlugin",                  // pluginId
+  "component-select-symphony", // sequenceId (declared by the plugin)
   {
-    name: "my-sequence",
-    movements: [
-      {
-        name: "initialization",
-        beats: [
-          { name: "setup", handler: "setupHandler" },
-          { name: "validate", handler: "validateHandler" },
-        ],
-      },
-    ],
+    elementId: "rx-comp-123",
+    onSelectionChange: (id: string | null) => console.log("Selected:", id),
   },
-  {
-    setupHandler: (data, context) => {
-      console.log("Setting up...", data);
-      return { initialized: true };
-    },
-    validateHandler: (data, context) => {
-      console.log("Validating...", context.payload);
-      return { validated: true };
-    },
-  }
+  "HIGH"                        // optional priority: HIGH | NORMAL | CHAINED
 );
-
-// Execute sequence
-const executionId = conductor.startSequence("my-sequence", {
-  input: "data",
-});
 ```
 
 ### Plugin Development
 
 ```typescript
-// Create a plugin
-const myPlugin = {
-  sequence: {
-    name: "MyPlugin.my-symphony",
-    movements: [
-      {
-        name: "process",
-        beats: [{ name: "transform", handler: "transformHandler" }],
-      },
-    ],
-  },
-  handlers: {
-    transformHandler: (data, context) => {
-      // Transform data
-      return { transformed: data.input.toUpperCase() };
+// In your plugin module (e.g., /plugins/MyPlugin/index.ts)
+export const sequence = {
+  id: "component-select-symphony",
+  name: "Component Select Symphony",
+  key: "C Major",
+  tempo: 120,
+  category: "component-ui",
+  movements: [
+    {
+      id: "process",
+      name: "Process",
+      beats: [
+        { beat: 1, event: "component:select", handler: "onSelect", dynamics: "mf", timing: "immediate" },
+      ],
     },
-  },
+  ],
 };
 
-// Mount plugin
-conductor.mountPlugin(myPlugin.sequence, myPlugin.handlers, "MyPlugin");
+export const handlers = {
+  onSelect(data: any, context: any) {
+    // Data Baton: enrich payload for later beats
+    context.payload.lastSelectedId = data.elementId;
+
+    // Orchestrate other work via play()
+    context.conductor.play("NotificationPlugin", "toast-symphony", {
+      message: `Selected ${data.elementId}`,
+    }, "CHAINED");
+
+    return { selected: true };
+  },
+};
 ```
 
-## 📊 Monitoring & Statistics
+At runtime, the Conductor loads and mounts SPA plugins via CIA manifests:
 
 ```typescript
-// Get execution statistics
+import { initializeCommunicationSystem } from "musical-conductor";
+
+const { conductor } = initializeCommunicationSystem();
+await conductor.registerCIAPlugins(); // Loads /plugins/plugin-manifest.json
+
+// Later, simply play your plugin’s sequences
+conductor.play("MyPlugin", "component-select-symphony", { elementId: "rx-comp-123" });
+```
+
+## 📊 Telemetry & Monitoring
+
+```typescript
+// Read-only analytics
 const stats = conductor.getStatistics();
-console.log("Sequences executed:", stats.sequencesExecuted);
-console.log("Average execution time:", stats.averageExecutionTime);
+console.log("Total sequences executed:", stats.totalSequencesExecuted);
+console.log("Average execution time (ms):", stats.averageExecutionTime);
 
-// Get current status
+// Status snapshot with warnings and summaries
 const status = conductor.getStatus();
-console.log("Active sequences:", status.statistics.activeSequences);
-console.log("Queue size:", status.statistics.queueSize);
+console.log("Mounted plugins:", status.statistics.mountedPlugins);
+console.log("Queue length:", status.statistics.currentQueueLength);
 
-// Monitor events
-conductor.subscribe("sequence-completed", (event) => {
-  console.log("Sequence completed:", event.sequenceName);
+// Subscribe to lifecycle events
+conductor.subscribe("sequence-completed", (evt) => {
+  console.log("✅ Completed:", evt.sequenceName, "id=", evt.requestId);
 });
+
+// Data Baton diffs are logged automatically per beat/handler
+// You’ll see 🎽 DataBaton logs with added/removed/updated keys and previews.
 ```
 
 ## 🛡️ Resource Management
 
 ```typescript
-// Sequences automatically handle resource conflicts
-conductor.startSequence("resource-intensive-sequence", {
+// Acquire a shared resource by orchestrating the owning sequence
+conductor.play("MyPlugin", "resource-intensive-symphony", {
   resourceId: "shared-resource",
-  priority: "HIGH", // Will interrupt lower priority sequences
-});
+}, "HIGH"); // HIGH may interrupt a lower-priority owner
 
-// Check resource ownership
-const ownership = conductor.getResourceOwnership();
-console.log("Current resource owners:", ownership);
+// Conflicts are resolved by the engine; inspect queue/throughput via status
+const status = conductor.getStatus();
+console.log("Queue length:", status.statistics.currentQueueLength);
 ```
 
 ## 🎽 Data Baton (Payload Passing)
@@ -205,28 +268,21 @@ const handlers = {
 
 ## 🧪 Testing
 
-````bash
-# Run all tests
-npm test
-
-# Run specific test suite
-npm test -- tests/unit/communication/sequences/MusicalConductor.simple.test.ts
-
-# Run with coverage
-npm run test:coverage
-
 ```bash
-# Run all tests
+# Unit tests (TDD-friendly)
 npm test
 
-# Run specific test suite
-npm test -- tests/unit/communication/sequences/MusicalConductor.simple.test.ts
-
-# Run with coverage
+# With coverage
 npm run test:coverage
-````
 
-End‑to‑end (E2E) browser tests now live in the RenderX shell repository as per ADR‑0015. See tools/docs/wiki/adr/0015-split-renderx-and-plugins.md for rationale and links.
+# Focus a suite
+npm test -- tests/unit/communication/
+```
+
+- CIA compliance is enforced by unit tests (sequence/handler contracts)
+- SPA compliance is enforced at runtime by SPAValidator (no direct EventBus)
+- E2E tests live in the RenderX shell repo per ADR‑0015 (minimal Chrome smoke)
+
 
 ## 📈 Performance
 
@@ -239,30 +295,12 @@ End‑to‑end (E2E) browser tests now live in the RenderX shell repository as p
 
 ## 🔧 Configuration
 
-### Environment Variables
+No configuration is required to get started. The conductor initializes with sane defaults and is StrictMode-safe.
 
-```bash
-# Enable debug mode
-MUSICAL_CONDUCTOR_DEBUG=true
+- Plugins are discovered from a CIA manifest (default: `/plugins/plugin-manifest.json`)
+- Use `initializeCommunicationSystem()` to obtain a singleton conductor and event bus wiring
+- Use `registerCIAPlugins()` to load runtime plugins in your app shell
 
-# Set default sequence priority
-MUSICAL_CONDUCTOR_DEFAULT_PRIORITY=NORMAL
-
-# Configure plugin directory
-MUSICAL_CONDUCTOR_PLUGIN_DIR=./plugins
-```
-
-### Advanced Configuration
-
-```typescript
-// Configure conductor behavior
-const conductor = MusicalConductor.getInstance(eventBus, {
-  enableStrictModeDetection: true,
-  maxQueueSize: 100,
-  defaultTimeout: 30000,
-  enableResourceConflictResolution: true,
-});
-```
 
 ## 🤝 Contributing
 
@@ -282,21 +320,29 @@ const conductor = MusicalConductor.getInstance(eventBus, {
 
 ## 📝 API Reference
 
-### Core Methods
+### Client Surface (ConductorClient)
 
-- `startSequence(name, data, priority)` - Execute a sequence
-- `registerSequence(sequence, handlers, pluginId)` - Register a new sequence
-- `mountPlugin(sequence, handlers, pluginId)` - Mount a plugin
-- `getStatistics()` - Get execution statistics
-- `getStatus()` - Get current conductor status
+- `play(pluginId, sequenceId, context?, priority?)` → any
+- `subscribe(eventName, callback, context?)` → () => void
+- `unsubscribe(eventName, callback)` → void
+- `registerCIAPlugins()` → Promise<void>
+- `getStatistics()` → ConductorStatistics & { mountedPlugins: number }
+- `getStatus()` → { statistics, eventBus: boolean, sequences: number, plugins: number }
+- `getSequenceNames()` → string[]
+- `getMountedPlugins()` → string[]
+- `getMountedPluginIds()` → string[]
 
-### Event Types
+Notes:
+- Use `play()` for all orchestration; do not call internal `startSequence()` from apps
+- Subscribe via `conductor.subscribe()`; do not import or use EventBus directly
 
-- `sequence-started` - Sequence execution began
-- `sequence-completed` - Sequence finished successfully
-- `sequence-failed` - Sequence execution failed
-- `beat-executed` - Individual beat completed
-- `resource-conflict` - Resource conflict detected
+### Event Types (common)
+
+- `sequence-started` | `sequence-completed` | `sequence-failed`
+- `beat-started` | `beat-completed` | `beat-failed`
+- `musical-conductor:log` (structured logs)
+- Resource diagnostics available via internal APIs (for tests/tools)
+
 
 ## 🐛 Troubleshooting
 
@@ -454,41 +500,11 @@ If you're migrating from the original monolithic MusicalConductor:
 
 ## 🛠️ Advanced Usage
 
-### Custom Resource Strategies
+- Beat patterns and timing: design beats with `timing` (immediate, after-beat, delayed, wait-for-signal) to remove races
+- Sequence signatures: give each sequence a clear ID/name, category, and movement structure for traceability
+- Chained transactions: use `priority: "CHAINED"` when orchestrating follow-on work via play()
+- Diagnostics: use `getStatus()` and `getStatistics()` to monitor throughput and queueing
 
-```typescript
-// Implement custom resource conflict resolution
-conductor.setResourceStrategy("my-resource", {
-  onConflict: (current, requesting) => {
-    // Custom logic for handling conflicts
-    return requesting.priority > current.priority ? "INTERRUPT" : "QUEUE";
-  },
-});
-```
-
-### Event Filtering
-
-```typescript
-// Subscribe to filtered events
-conductor.subscribe(
-  "sequence-*",
-  (event) => {
-    console.log("Sequence event:", event);
-  },
-  {
-    filter: (event) => event.priority === "HIGH",
-  }
-);
-```
-
-### Plugin Validation
-
-```typescript
-// Custom plugin validation
-conductor.setPluginValidator((plugin) => {
-  return plugin.version >= "2.0.0" && plugin.security.verified;
-});
-```
 
 ## 🔐 Security Considerations
 
