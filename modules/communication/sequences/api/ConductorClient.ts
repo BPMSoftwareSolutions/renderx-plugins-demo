@@ -29,6 +29,14 @@ export interface ConductorClient {
   ): UnsubscribeFunction;
   unsubscribe(eventName: string, callback: EventCallback): void;
 
+  // Friendly aliases commonly used by client apps
+  on(
+    eventName: string,
+    callback: EventCallback,
+    context?: any
+  ): UnsubscribeFunction;
+  off(eventName: string, callback: EventCallback): void;
+
   // Bootstrap helpers
   registerCIAPlugins(): Promise<void>;
 
@@ -44,4 +52,3 @@ export interface ConductorClient {
   getMountedPlugins(): string[];
   getMountedPluginIds(): string[];
 }
-

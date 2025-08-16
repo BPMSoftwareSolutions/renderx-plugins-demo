@@ -378,7 +378,8 @@ export class MusicalConductor {
         // Wrap startSequence to record correlation id -> request id mapping
         const requestId = await this.startSequence(seqId, data, prio);
         try {
-          const key = (await import("./orchestration/CallbackRegistry.js")).__internal.CORRELATION_KEY as any;
+          const key = (await import("./orchestration/CallbackRegistry.js"))
+            .__internal.CORRELATION_KEY as any;
           const corr = (data as any)?.[key];
           if (typeof corr === "string") {
             this.requestCorrelationMap.set(requestId, corr);
@@ -417,12 +418,30 @@ export class MusicalConductor {
   }
 
   /**
+   * Friendly alias for subscribe() used by many client apps
+   */
+  on(
+    eventName: string,
+    callback: EventCallback,
+    context?: any
+  ): UnsubscribeFunction {
+    return this.subscribe(eventName, callback, context);
+  }
+
+  /**
    * Unsubscribe from events through the conductor (SPA-compliant)
    * @param eventName - The event name to unsubscribe from
    * @param callback - The callback function to remove
    */
   unsubscribe(eventName: string, callback: EventCallback): void {
     this.eventSubscriptionManager.unsubscribe(eventName, callback);
+  }
+
+  /**
+   * Friendly alias for unsubscribe() used by many client apps
+   */
+  off(eventName: string, callback: EventCallback): void {
+    this.unsubscribe(eventName, callback);
   }
 
   /**
@@ -708,13 +727,17 @@ export class MusicalConductor {
     const onDone = (evt: any) => {
       try {
         const requestId = evt?.requestId;
-        const corr = requestId ? this.requestCorrelationMap.get(requestId) : undefined;
+        const corr = requestId
+          ? this.requestCorrelationMap.get(requestId)
+          : undefined;
         if (typeof corr === "string") {
           const remaining = (this.correlationActiveCounts.get(corr) || 1) - 1;
           if (remaining <= 0) {
             registry.cleanup(corr);
             this.correlationActiveCounts.delete(corr);
-            console.log(`🎼 MusicalConductor: cleaned callbacks for correlationId=${corr}`);
+            console.log(
+              `🎼 MusicalConductor: cleaned callbacks for correlationId=${corr}`
+            );
           } else {
             this.correlationActiveCounts.set(corr, remaining);
           }

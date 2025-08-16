@@ -84,17 +84,18 @@ MusicalConductor (736 lines) - Main orchestration coordinator
 - `SequenceOrchestrator` - Core sequence execution engine
 - `EventOrchestrator` - Event management and emission
 
-
 ## 🧩 CIA & SPA Architecture
 
 - CIA (Conductor Integration Architecture): defines how plugins are discovered, mounted, and orchestrated. Compliance is enforced at build/test time by unit tests that exercise plugin registration and handler contracts.
 - SPA (Symphonic Plugin Architecture): defines how plugins behave at runtime. SPAValidator enforces that plugins do not directly access the EventBus and only orchestrate via conductor.play().
 
 Compliance
+
 - Build-time: CIA unit tests validate sequence shape and handler contracts (see tests/unit/communication and ADR-0004, ADR-0008)
 - Runtime: SPAValidator intercepts eventBus.emit/subscribe and raises violations for direct access (ADR-0002)
 
 Handler context (what your handler receives):
+
 ```ts
 function onSelect(data: any, context: any) {
   // Correlation (request) and musical context travel with the event
@@ -104,7 +105,12 @@ function onSelect(data: any, context: any) {
   context.payload.lastSelectedId = data.elementId;
 
   // Minimal client surface
-  context.conductor.play("OtherPlugin", "other-symphony", { parent: reqId }, "CHAINED");
+  context.conductor.play(
+    "OtherPlugin",
+    "other-symphony",
+    { parent: reqId },
+    "CHAINED"
+  );
 }
 ```
 
@@ -115,6 +121,7 @@ function onSelect(data: any, context: any) {
 - Signatures: give every sequence a clear identity (id, name, category, key, tempo)
 
 Example:
+
 ```ts
 export const sequence = {
   id: "toast-symphony",
@@ -123,16 +130,31 @@ export const sequence = {
   tempo: 90,
   category: "system",
   movements: [
-    { id: "notify", name: "Notify", beats: [
-      { beat: 1, event: "notify:prepare", handler: "prepare", dynamics: "mp", timing: "after-beat" },
-      { beat: 2, event: "notify:show", handler: "show", dynamics: "f", timing: "immediate" },
-    ]},
+    {
+      id: "notify",
+      name: "Notify",
+      beats: [
+        {
+          beat: 1,
+          event: "notify:prepare",
+          handler: "prepare",
+          dynamics: "mp",
+          timing: "after-beat",
+        },
+        {
+          beat: 2,
+          event: "notify:show",
+          handler: "show",
+          dynamics: "f",
+          timing: "immediate",
+        },
+      ],
+    },
   ],
 };
 ```
 
 Apps “discern” beat patterns by subscribing to conductor lifecycle events and by inspecting `_musicalContext` attached to event payloads during execution.
-
 
 ## 🚀 Quick Start
 
@@ -145,7 +167,10 @@ npm install musical-conductor
 ### Basic Usage
 
 ```typescript
-import { initializeCommunicationSystem, type ConductorClient } from "musical-conductor";
+import {
+  initializeCommunicationSystem,
+  type ConductorClient,
+} from "musical-conductor";
 
 // Initialize the communication system (idempotent; StrictMode-safe)
 const { conductor } = initializeCommunicationSystem();
@@ -155,13 +180,13 @@ await conductor.registerCIAPlugins();
 
 // Orchestrate via CIA: play(pluginId, sequenceId, context?, priority?)
 conductor.play(
-  "MyPlugin",                  // pluginId
+  "MyPlugin", // pluginId
   "component-select-symphony", // sequenceId (declared by the plugin)
   {
     elementId: "rx-comp-123",
     onSelectionChange: (id: string | null) => console.log("Selected:", id),
   },
-  "HIGH"                        // optional priority: HIGH | NORMAL | CHAINED
+  "HIGH" // optional priority: HIGH | NORMAL | CHAINED
 );
 ```
 
@@ -180,7 +205,13 @@ export const sequence = {
       id: "process",
       name: "Process",
       beats: [
-        { beat: 1, event: "component:select", handler: "onSelect", dynamics: "mf", timing: "immediate" },
+        {
+          beat: 1,
+          event: "component:select",
+          handler: "onSelect",
+          dynamics: "mf",
+          timing: "immediate",
+        },
       ],
     },
   ],
@@ -192,9 +223,14 @@ export const handlers = {
     context.payload.lastSelectedId = data.elementId;
 
     // Orchestrate other work via play()
-    context.conductor.play("NotificationPlugin", "toast-symphony", {
-      message: `Selected ${data.elementId}`,
-    }, "CHAINED");
+    context.conductor.play(
+      "NotificationPlugin",
+      "toast-symphony",
+      {
+        message: `Selected ${data.elementId}`,
+      },
+      "CHAINED"
+    );
 
     return { selected: true };
   },
@@ -210,7 +246,9 @@ const { conductor } = initializeCommunicationSystem();
 await conductor.registerCIAPlugins(); // Loads /plugins/plugin-manifest.json
 
 // Later, simply play your plugin’s sequences
-conductor.play("MyPlugin", "component-select-symphony", { elementId: "rx-comp-123" });
+conductor.play("MyPlugin", "component-select-symphony", {
+  elementId: "rx-comp-123",
+});
 ```
 
 ## 📊 Telemetry & Monitoring
@@ -239,9 +277,14 @@ conductor.subscribe("sequence-completed", (evt) => {
 
 ```typescript
 // Acquire a shared resource by orchestrating the owning sequence
-conductor.play("MyPlugin", "resource-intensive-symphony", {
-  resourceId: "shared-resource",
-}, "HIGH"); // HIGH may interrupt a lower-priority owner
+conductor.play(
+  "MyPlugin",
+  "resource-intensive-symphony",
+  {
+    resourceId: "shared-resource",
+  },
+  "HIGH"
+); // HIGH may interrupt a lower-priority owner
 
 // Conflicts are resolved by the engine; inspect queue/throughput via status
 const status = conductor.getStatus();
@@ -283,7 +326,6 @@ npm test -- tests/unit/communication/
 - SPA compliance is enforced at runtime by SPAValidator (no direct EventBus)
 - E2E tests live in the RenderX shell repo per ADR‑0015 (minimal Chrome smoke)
 
-
 ## 📈 Performance
 
 - **77% Size Reduction**: From 3,228 lines to 736 lines
@@ -300,7 +342,6 @@ No configuration is required to get started. The conductor initializes with sane
 - Plugins are discovered from a CIA manifest (default: `/plugins/plugin-manifest.json`)
 - Use `initializeCommunicationSystem()` to obtain a singleton conductor and event bus wiring
 - Use `registerCIAPlugins()` to load runtime plugins in your app shell
-
 
 ## 🤝 Contributing
 
@@ -325,6 +366,8 @@ No configuration is required to get started. The conductor initializes with sane
 - `play(pluginId, sequenceId, context?, priority?)` → any
 - `subscribe(eventName, callback, context?)` → () => void
 - `unsubscribe(eventName, callback)` → void
+- `on(eventName, callback, context?)` → () => void // alias of subscribe
+- `off(eventName, callback)` → void // alias of unsubscribe
 - `registerCIAPlugins()` → Promise<void>
 - `getStatistics()` → ConductorStatistics & { mountedPlugins: number }
 - `getStatus()` → { statistics, eventBus: boolean, sequences: number, plugins: number }
@@ -333,6 +376,7 @@ No configuration is required to get started. The conductor initializes with sane
 - `getMountedPluginIds()` → string[]
 
 Notes:
+
 - Use `play()` for all orchestration; do not call internal `startSequence()` from apps
 - Subscribe via `conductor.subscribe()`; do not import or use EventBus directly
 
@@ -342,7 +386,6 @@ Notes:
 - `beat-started` | `beat-completed` | `beat-failed`
 - `musical-conductor:log` (structured logs)
 - Resource diagnostics available via internal APIs (for tests/tools)
-
 
 ## 🐛 Troubleshooting
 
@@ -504,7 +547,6 @@ If you're migrating from the original monolithic MusicalConductor:
 - Sequence signatures: give each sequence a clear ID/name, category, and movement structure for traceability
 - Chained transactions: use `priority: "CHAINED"` when orchestrating follow-on work via play()
 - Diagnostics: use `getStatus()` and `getStatistics()` to monitor throughput and queueing
-
 
 ## 🔐 Security Considerations
 
