@@ -522,11 +522,11 @@ If you're migrating from the original monolithic MusicalConductor:
 ## 📚 Additional Resources
 
 - [React SPA Integration Guide](tools/docs/react-spa-integration.md) - Complete guide for React single-page applications
-- [Architecture Guide](docs/architecture.md)
-- [Plugin Development Guide](docs/plugin-development.md)
-- [API Reference](docs/api-reference.md)
-- [Performance Tuning](docs/performance.md)
-- [Troubleshooting Guide](docs/troubleshooting.md)
+- [Architecture Guide](tools/docs/architecture.md)
+- [Plugin Development Guide](tools/docs/plugin-development.md)
+- [API Reference](tools/docs/api-reference.md)
+- [Performance Tuning](tools/docs/performance.md)
+- [Troubleshooting Guide](tools/docs/troubleshooting.md)
 
 ---
 
