@@ -1,4 +1,6 @@
 import type { EventBus } from "../../EventBus.js";
+import { isDevEnv } from "../environment/ConductorEnv.js";
+import { StageDomGuard } from "./StageDomGuard.js";
 
 export type StageOp =
   | { op: "classes.add"; selector: string; value: string }
@@ -28,6 +30,7 @@ export interface StageCueLog {
 
 class BeatTxn {
   private ops: StageOp[] = [];
+  private batchRequested = false;
   constructor(
     private eventBus: EventBus,
     private pluginId: string,
@@ -85,72 +88,91 @@ class BeatTxn {
   private applyOpsToDom(): void {
     try {
       if (typeof document === "undefined") return;
-      for (const op of this.ops) {
-        switch (op.op) {
-          case "classes.add": {
-            const el = document.querySelector(
-              op.selector
-            ) as HTMLElement | null;
-            if (el) el.classList.add(op.value);
-            break;
-          }
-          case "classes.remove": {
-            const el = document.querySelector(
-              op.selector
-            ) as HTMLElement | null;
-            if (el) el.classList.remove(op.value);
-            break;
-          }
-          case "attr.set": {
-            const el = document.querySelector(
-              op.selector
-            ) as HTMLElement | null;
-            if (el) el.setAttribute(op.key, op.value);
-            break;
-          }
-          case "style.set": {
-            const el = document.querySelector(
-              op.selector
-            ) as HTMLElement | null;
-            if (el) (el.style as any)[op.key] = op.value;
-            break;
-          }
-          case "create": {
-            const parent = document.querySelector(
-              op.parent
-            ) as HTMLElement | null;
-            if (!parent) break;
-            const el = document.createElement(op.tag);
-            if (op.classes) for (const c of op.classes) el.classList.add(c);
-            if (op.attrs)
-              for (const [k, v] of Object.entries(op.attrs))
-                el.setAttribute(k, v);
-            parent.appendChild(el);
-            break;
-          }
-          case "remove": {
-            const el = document.querySelector(
-              op.selector
-            ) as HTMLElement | null;
-            if (el && el.parentElement) el.parentElement.removeChild(el);
-            break;
+      const apply = () => {
+        for (const op of this.ops) {
+          switch (op.op) {
+            case "classes.add": {
+              const el = document.querySelector(
+                op.selector
+              ) as HTMLElement | null;
+              if (el) el.classList.add(op.value);
+              break;
+            }
+            case "classes.remove": {
+              const el = document.querySelector(
+                op.selector
+              ) as HTMLElement | null;
+              if (el) el.classList.remove(op.value);
+              break;
+            }
+            case "attr.set": {
+              const el = document.querySelector(
+                op.selector
+              ) as HTMLElement | null;
+              if (el) el.setAttribute(op.key, op.value);
+              break;
+            }
+            case "style.set": {
+              const el = document.querySelector(
+                op.selector
+              ) as HTMLElement | null;
+              if (el) (el.style as any)[op.key] = op.value;
+              break;
+            }
+            case "create": {
+              const parent = document.querySelector(
+                op.parent
+              ) as HTMLElement | null;
+              if (!parent) break;
+              const el = document.createElement(op.tag);
+              if (op.classes) for (const c of op.classes) el.classList.add(c);
+              if (op.attrs)
+                for (const [k, v] of Object.entries(op.attrs))
+                  el.setAttribute(k, v);
+              parent.appendChild(el);
+              break;
+            }
+            case "remove": {
+              const el = document.querySelector(
+                op.selector
+              ) as HTMLElement | null;
+              if (el && el.parentElement) el.parentElement.removeChild(el);
+              break;
+            }
           }
         }
+      };
+      if (isDevEnv()) {
+        StageDomGuard.silence(apply);
+      } else {
+        apply();
       }
     } catch {}
   }
 
-  commit(): void {
+  commit(opts?: { batch?: boolean }): void {
     const cue: StageCueLog = {
       pluginId: this.pluginId,
       correlationId: this.correlationId,
       operations: [...this.ops],
       meta: this.meta,
     };
-    // Apply immediately in jsdom/browser for V1
-    this.applyOpsToDom();
-    // Emit synchronously for test observability; can switch to async/rAF later
-    (this.eventBus as any).emit("stage:cue", cue);
+
+    const fire = () => {
+      this.applyOpsToDom();
+      (this.eventBus as any).emit("stage:cue", cue);
+    };
+
+    // Schedule via rAF if requested and available, else immediate
+    const raf =
+      (typeof window !== "undefined" &&
+        (window as any).requestAnimationFrame) ||
+      null;
+    if (opts?.batch && raf) {
+      raf(() => fire());
+    } else {
+      fire();
+    }
   }
 }
 
