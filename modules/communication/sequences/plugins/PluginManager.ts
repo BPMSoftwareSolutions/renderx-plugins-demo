@@ -12,7 +12,10 @@ import { PluginLoader } from "./PluginLoader.js";
 import { PluginValidator } from "./PluginValidator.js";
 import { PluginManifestLoader } from "./PluginManifestLoader.js";
 import { MusicalConductor } from "../MusicalConductor.js";
-import { CallbackRegistry, __internal as CBInternal } from "../orchestration/CallbackRegistry.js";
+import {
+  CallbackRegistry,
+  __internal as CBInternal,
+} from "../orchestration/CallbackRegistry.js";
 
 // Import plugin types from MusicalConductor (temporary until we move them to a shared location)
 import type { SPAPlugin, PluginMountResult } from "./PluginInterfaceFacade.js";
@@ -176,7 +179,8 @@ export class PluginManager {
               (data: any) => {
                 // Rehydrate preserved callbacks using correlation id on data, if any
                 try {
-                  const restored = CallbackRegistry.getInstance().rehydrateInPlace(data);
+                  const restored =
+                    CallbackRegistry.getInstance().rehydrateInPlace(data);
                   if (restored > 0) {
                     console.log(
                       `🎼 PluginManager: rehydrated ${restored} callback(s) for event ${eventName}`
@@ -264,7 +268,14 @@ export class PluginManager {
                             // Propagate correlation id from event data to nested ctx if missing
                             try {
                               const key = (CBInternal as any).CORRELATION_KEY;
-                              if (ctx && typeof ctx === "object" && key && !(key in ctx) && data && typeof (data as any)[key] === "string") {
+                              if (
+                                ctx &&
+                                typeof ctx === "object" &&
+                                key &&
+                                !(key in ctx) &&
+                                data &&
+                                typeof (data as any)[key] === "string"
+                              ) {
                                 (ctx as any)[key] = (data as any)[key];
                               }
                             } catch {}
@@ -281,6 +292,24 @@ export class PluginManager {
                           }
                         },
                       },
+                      // StageCrew V1: expose per-plugin facade for DOM write cueing
+                      stageCrew: (() => {
+                        try {
+                          // Prefer correlation id from CallbackRegistry key on data if present
+                          const key = (CBInternal as any).CORRELATION_KEY;
+                          const corr =
+                            (data as any)?.[key] ||
+                            `mc-${Date.now()}-${Math.random()
+                              .toString(36)
+                              .slice(2, 6)}`;
+                          const {
+                            StageCrew,
+                          } = require("../stage/StageCrew.js");
+                          return new StageCrew(this.eventBus as any, id);
+                        } catch {
+                          return undefined;
+                        }
+                      })(),
                       // Deprecated: emit removed per ADR-0002 (kept temporarily as no-op to avoid breaking plugins)
                       emit: undefined,
                     } as any;
