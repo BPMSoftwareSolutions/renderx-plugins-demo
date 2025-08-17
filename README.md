@@ -251,6 +251,64 @@ conductor.play("MyPlugin", "component-select-symphony", {
 });
 ```
 
+## 🎭 Stage Crew (DOM Mutation Facade)
+
+Stage Crew provides a small, fluent API for DOM writes that are:
+
+- Observable: every commit emits a stage:cue with correlationId and operation list
+- Batched: optional commit({ batch: true }) defers changes to requestAnimationFrame
+- Guarded: dev-only guardrails warn on direct DOM writes outside Stage Crew
+
+Why use it
+
+- Consistent, testable DOM changes across plugins
+- Smoother frames during drag/resize interactions with rAF batching
+- Clean logs and cue sheets for debugging flows end-to-end
+
+Usage in a plugin handler
+
+```ts
+// inside your plugin handler: (data, ctx)
+const txn = ctx.stageCrew.beginBeat(correlationId, { handlerName: "dragMove" });
+
+// Update existing elements
+txn.update("#comp-1", {
+  classes: { add: ["dragging"], remove: ["idle"] },
+  attrs: { role: "button" },
+  style: { left: "10px", top: "20px" },
+});
+
+// Create and append
+txn
+  .create("div", { classes: ["resize-handle"], attrs: { id: "handle-n" } })
+  .appendTo("#parent");
+
+// Remove
+txn.remove("#old");
+
+// Commit immediately or batch to next frame
+txn.commit({ batch: true });
+```
+
+Observability
+
+- Event: stage:cue payload includes { pluginId, correlationId, operations, meta }
+- Logs (Node/test env): ./.logs/mc-stage-cues-YYYYMMDD.log with one JSON object per line (JSONL)
+
+Dev guardrails
+
+- In development, direct DOM writes (classList/attr/style/create/remove) log warnings
+- Stage Crew internally silences the guard during its own apply to avoid false positives
+
+Migration checklist
+
+- Replace direct DOM writes with txn.update/create/remove
+- Use commit({ batch: true }) for high-frequency interaction loops
+- Add/adjust unit tests to assert stage:cue operations
+- Ensure no dev warnings from direct DOM writes remain
+
+References: tools/docs/wiki/adr/0017-stage-crew-dom-mutation-facade.md
+
 ## 📊 Telemetry & Monitoring
 
 ```typescript
