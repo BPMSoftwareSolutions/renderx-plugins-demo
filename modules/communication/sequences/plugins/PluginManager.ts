@@ -216,6 +216,14 @@ export class PluginManager {
                 const run = async () => {
                   // Provide a conductor-aware logger to plugin handlers
                   const logger = {
+                    log: (...message: any[]) =>
+                      this.eventBus.emit("musical-conductor:log", {
+                        level: "log",
+                        message,
+                        requestId,
+                        pluginId: id,
+                        handlerName,
+                      }),
                     info: (...message: any[]) =>
                       this.eventBus.emit("musical-conductor:log", {
                         level: "info",
