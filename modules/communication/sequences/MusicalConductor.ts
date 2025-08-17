@@ -41,6 +41,11 @@ import { EventSubscriptionManager } from "./core/EventSubscriptionManager.js";
 import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue.js";
 import { SequenceExecutor } from "./execution/SequenceExecutor.js";
 import { PluginManager } from "./plugins/PluginManager.js";
+// Version import (ESM JSON import; supported in Node 18+/modern bundlers)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import pkg from "../../../package.json" assert { type: "json" };
+
 import {
   PluginInterfaceFacade,
   type SPAPlugin,
@@ -230,7 +235,14 @@ export class MusicalConductor {
       this.sequenceUtilities
     );
 
-    console.log("🎼 MusicalConductor: Initialized with core components");
+    try {
+      const v = (pkg as any)?.version || "unknown";
+      console.log(
+        `🎼 MusicalConductor v${v}: Initialized with core components`
+      );
+    } catch {
+      console.log("🎼 MusicalConductor: Initialized with core components");
+    }
   }
 
   /**
