@@ -155,7 +155,8 @@ class BeatTxn {
       pluginId: this.pluginId,
       correlationId: this.correlationId,
       operations: [...this.ops],
-      meta: this.meta,
+      // Mark as internal StageCrew emission so SPAValidator can allow-list this path
+      meta: { ...(this.meta || {}), __stageCrewInternal: true },
     };
 
     const fire = () => {

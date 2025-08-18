@@ -6,6 +6,9 @@
 
 import { EventBus, EventCallback } from "./EventBus.js";
 
+// Special-case allow-list for StageCrew stage:cue emissions
+interface StageCueLike { meta?: { __stageCrewInternal?: boolean }; }
+
 export interface SPAViolation {
   type: string;
   pluginId: string;
@@ -96,6 +99,14 @@ export class SPAValidator {
       if (
         typeof eventName === "string" &&
         (eventName.startsWith("musical-conductor:") || eventName.startsWith("conductor:"))
+      ) {
+        return validator.originalEventBusEmit!.call(this, eventName, data, options);
+      }
+
+      // Special-case: allow StageCrew stage:cue emissions marked as internal
+      if (
+        eventName === "stage:cue" &&
+        data && (data as StageCueLike).meta && (data as StageCueLike).meta!.__stageCrewInternal
       ) {
         return validator.originalEventBusEmit!.call(this, eventName, data, options);
       }
