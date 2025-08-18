@@ -113,6 +113,11 @@ export class ConductorLogger {
           console.log(line, ...evt.message);
       }
     });
+
+    // Stage crew commit logging
+    this.eventBus.subscribe("stage:cue", (cue: any) => {
+      this.logStageCue(cue);
+    });
   }
 
   private push(requestId: string | undefined, scope: Scope): void {
@@ -147,5 +152,54 @@ export class ConductorLogger {
     const key = requestId || "__global__";
     const depth = (this.stacks.get(key) || []).length;
     return "  ".repeat(Math.max(0, depth));
+  }
+
+  /**
+   * Log stage crew commits in debug mode
+   * @param cue - Stage cue data containing operations and metadata
+   */
+  private logStageCue(cue: any): void {
+    if (!cue || !cue.operations || cue.operations.length === 0) {
+      return;
+    }
+
+    const indent = this.getIndent();
+    const pluginPrefix = cue.pluginId ? `${cue.pluginId}` : "unknown";
+    const correlationId = cue.correlationId || "no-correlation";
+    const handlerName = cue.meta?.handlerName ? `.${cue.meta.handlerName}` : "";
+
+    console.log(`${indent}🎭 Stage Crew: ${pluginPrefix}${handlerName} (${correlationId})`);
+
+    // Log each operation with proper indentation
+    cue.operations.forEach((op: any, index: number) => {
+      const opIndent = `${indent}  `;
+      const isLast = index === cue.operations.length - 1;
+      const connector = isLast ? "└─" : "├─";
+
+      switch (op.op) {
+        case "classes.add":
+          console.log(`${opIndent}${connector} Add class "${op.value}" to ${op.selector}`);
+          break;
+        case "classes.remove":
+          console.log(`${opIndent}${connector} Remove class "${op.value}" from ${op.selector}`);
+          break;
+        case "attr.set":
+          console.log(`${opIndent}${connector} Set ${op.key}="${op.value}" on ${op.selector}`);
+          break;
+        case "style.set":
+          console.log(`${opIndent}${connector} Set style ${op.key}="${op.value}" on ${op.selector}`);
+          break;
+        case "create":
+          const classes = op.classes ? ` classes=[${op.classes.join(", ")}]` : "";
+          const attrs = op.attrs ? ` attrs=${JSON.stringify(op.attrs)}` : "";
+          console.log(`${opIndent}${connector} Create <${op.tag}>${classes}${attrs} in ${op.parent}`);
+          break;
+        case "remove":
+          console.log(`${opIndent}${connector} Remove ${op.selector}`);
+          break;
+        default:
+          console.log(`${opIndent}${connector} Unknown operation: ${JSON.stringify(op)}`);
+      }
+    });
   }
 }
