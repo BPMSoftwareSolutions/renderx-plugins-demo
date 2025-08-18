@@ -8,9 +8,9 @@ describe("StageCrew batching (rAF)", () => {
     document.body.innerHTML = `<div id="x"></div>`;
 
     // Provide a fake rAF we can control
-    let scheduled: FrameRequestCallback | null = null;
+    let scheduled: any = null;
     const origRAF = (window as any).requestAnimationFrame;
-    (window as any).requestAnimationFrame = (cb: FrameRequestCallback) => {
+    (window as any).requestAnimationFrame = (cb: (t: number) => void) => {
       scheduled = cb;
       return 1 as any;
     };
@@ -30,8 +30,11 @@ describe("StageCrew batching (rAF)", () => {
               {
                 beat: 1,
                 event: "go",
+                title: "Go",
                 handler: "h",
+                dynamics: "mf",
                 timing: "immediate",
+                errorHandling: "continue",
               },
             ],
           },
@@ -56,7 +59,7 @@ describe("StageCrew batching (rAF)", () => {
 
       // Fire rAF callback
       expect(scheduled).toBeTruthy();
-      scheduled && scheduled(performance.now());
+      scheduled && scheduled(0);
 
       await new Promise((r) => setTimeout(r, 0));
       expect(el.classList.contains("batched")).toBe(true);

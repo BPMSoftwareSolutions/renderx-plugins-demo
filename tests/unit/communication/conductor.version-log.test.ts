@@ -7,7 +7,7 @@ describe("MusicalConductor version logging", () => {
     const spy = jest.spyOn(console, "log").mockImplementation(() => {});
     const eventBus = TestEnvironment.createEventBus();
 
-    const { version } = await import("../../../package.json", { assert: { type: "json" } } as any);
+    const { version } = require("../../../package.json");
 
     // initialize
     TestEnvironment.createMusicalConductor(eventBus);

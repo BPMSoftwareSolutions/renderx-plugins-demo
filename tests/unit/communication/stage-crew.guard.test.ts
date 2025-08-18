@@ -1,10 +1,18 @@
 import { TestEnvironment } from "../../utils/test-helpers";
 import { StageDomGuard } from "../../../modules/communication/sequences/stage/StageDomGuard";
+import { setConductorEnv } from "../../../modules/communication/sequences/environment/ConductorEnv";
 
 describe("StageDomGuard (dev-mode)", () => {
+  beforeEach(() => {
+    // Ensure we're in dev mode for these tests
+    setConductorEnv({ dev: true, mode: 'development' });
+  });
+
   afterEach(() => {
     try { StageDomGuard.uninstall(); } catch {}
     TestEnvironment.cleanup();
+    // Reset environment
+    setConductorEnv({ dev: false });
   });
 
   test("warns on direct DOM writes, but is silenced during StageCrew.apply", async () => {

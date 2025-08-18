@@ -1,4 +1,4 @@
-import { TestEnvironment } from "../../utils/test-helpers";
+import { TestEnvironment } from "../../../utils/test-helpers";
 
 /**
  * Verifies ctx.logger.log routes through ConductorLogger with handler prefix
@@ -10,11 +10,16 @@ describe("Plugin ctx.logger.log exposure", () => {
     const bus = TestEnvironment.createEventBus();
     const conductor = TestEnvironment.createMusicalConductor(bus as any);
 
+    // Initialize ConductorLogger to ensure it's listening for log events
+    const { ConductorLogger } = await import("../../../../modules/communication/sequences/monitoring/ConductorLogger");
+    const logger = new ConductorLogger(bus as any, true);
+    logger.init();
+
     const seq: any = {
       id: "plug-logger",
       name: "plug-logger",
       movements: [
-        { name: "m1", beats: [{ beat: 1, event: "go", handler: "h", timing: "immediate" }] },
+        { id: "m1", name: "m1", beats: [{ beat: 1, event: "go", title: "Go", handler: "h", timing: "immediate", errorHandling: "continue", dynamics: "mf" }] },
       ],
       events: { triggers: ["go"], emits: ["go"] },
       category: "system",
@@ -31,10 +36,12 @@ describe("Plugin ctx.logger.log exposure", () => {
       },
     };
 
-    await conductor.mount(seq, handlers, seq.id);
+    // Mount via CIA-compliant API and then play
+    await (conductor as any).mount(seq, handlers, seq.id);
     await conductor.play(seq.id, seq.id, {});
 
     spy.mockRestore();
+
     const match = logs.some((l) => /🧩 plug-logger\.h/.test(l) && /hello/.test(l) && /42/.test(l));
     expect(match).toBe(true);
   });

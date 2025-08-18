@@ -18,34 +18,17 @@ describe("StageCueLogger", () => {
     const logger = new StageCueLogger(eventBus as any, filePath);
     logger.init();
 
-    const conductor = TestEnvironment.createMusicalConductor(eventBus as any);
+    // Create StageCrew directly and fire a stage:cue event
+    const { StageCrew } = await import("../../../modules/communication/sequences/stage/StageCrew");
+    const stageCrew = new StageCrew(eventBus as any, "test-plugin");
 
-    const sequence: any = {
-      id: "stage-logger",
-      name: "stage-logger",
-      movements: [
-        {
-          id: "m1",
-          name: "m1",
-          beats: [
-            { beat: 1, event: "go", handler: "h", timing: "immediate" },
-          ],
-        },
-      ],
-      events: { triggers: ["go"], emits: ["go"] },
-      category: "system",
-    };
+    // Create a transaction and commit it to trigger stage:cue
+    const txn = stageCrew.beginBeat("corr-log-1", { handlerName: "testHandler" });
+    txn.update("#not-present", { classes: { add: ["noop"] } });
+    txn.commit();
 
-    const handlers: any = {
-      h: (_d: any, ctx: any) => {
-        const txn = ctx.stageCrew.beginBeat("corr-log-1", {});
-        txn.update("#not-present", { classes: { add: ["noop"] } });
-        txn.commit();
-      },
-    };
-
-    await conductor.mount(sequence, handlers, sequence.id);
-    await conductor.play(sequence.id, sequence.id, {});
+    // Wait a bit for async file operations
+    await new Promise(resolve => setTimeout(resolve, 50));
 
     const content = fs.readFileSync(filePath, "utf8");
     const lines = content.trim().split(/\r?\n/);
@@ -54,6 +37,13 @@ describe("StageCueLogger", () => {
     const obj = JSON.parse(lines[0]);
     expect(obj.correlationId).toBe("corr-log-1");
     expect(Array.isArray(obj.operations)).toBe(true);
+    expect(obj.pluginId).toBe("test-plugin");
+    expect(obj.operations).toHaveLength(1);
+    expect(obj.operations[0]).toEqual({
+      op: "classes.add",
+      selector: "#not-present",
+      value: "noop"
+    });
   });
 });
 
