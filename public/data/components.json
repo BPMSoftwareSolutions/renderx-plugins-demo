@@ -1,0 +1,23 @@
+[
+  {
+    "id": "rx-button",
+    "name": "Button",
+    "template": {
+      "tag": "button",
+      "text": "Click Me",
+      "classes": ["rx-comp", "rx-button"],
+      "style": { "padding": "8px 12px", "borderRadius": "8px", "border": "1px solid #ccc" }
+    }
+  },
+  {
+    "id": "rx-card",
+    "name": "Card",
+    "template": {
+      "tag": "div",
+      "text": "Card",
+      "classes": ["rx-comp", "rx-card"],
+      "style": { "padding": "12px", "boxShadow": "0 2px 8px rgba(0,0,0,.1)", "borderRadius": "12px" }
+    }
+  }
+]
+
