@@ -1,8 +1,9 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { onDropForTest } from "../../plugins/canvas/ui/CanvasPage";
 
-// This ensures Canvas UI does not render nodes; StageCrew/DOM is responsible
+import { onDropForTest } from "../../plugins/canvas/ui/CanvasDrop";
+
+// This ensures Canvas UI does not render nodes; stage-crew/DOM handler is responsible
 
 describe("CanvasPage drop orchestration (no UI node rendering)", () => {
   beforeEach(() => {

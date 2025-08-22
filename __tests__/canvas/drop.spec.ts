@@ -1,11 +1,13 @@
+/* @vitest-environment jsdom */
 import { describe, it, expect, vi } from "vitest";
+
+// Import from CanvasDrop (no React, no conductor hook) to avoid SSR asserts
+import { onDropForTest } from "../../plugins/canvas/ui/CanvasDrop";
 
 // This test enforces that Canvas drop triggers the LibraryComponentPlugin drop symphony
 
 describe("canvas drop triggers library-component drop sequence", () => {
   it("calls conductor.play with LibraryComponentPlugin and library-component-drop-symphony", async () => {
-    const { onDropForTest } = await import("../../plugins/canvas/ui/CanvasPage.tsx");
-
     const calls: any[] = [];
     const conductor = {
       play: vi.fn((pluginId: string, seqId: string) => calls.push([pluginId, seqId])),
