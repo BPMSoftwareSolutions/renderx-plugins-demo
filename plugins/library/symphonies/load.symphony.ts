@@ -61,7 +61,7 @@ export const handlers = {
         const files: string[] = idx?.default?.components || idx?.components || [];
         const items: any[] = [];
         for (const f of files) {
-          const mod = await import(`../../../json-components/${f}`, { with: { type: "json" } } as any);
+          const mod = await import(/* @vite-ignore */ `../../../json-components/${f}`, { with: { type: "json" } } as any);
           const json = mod?.default || mod;
           items.push(mapJsonComponentToTemplate(json));
         }
