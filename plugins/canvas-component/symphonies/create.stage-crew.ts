@@ -79,6 +79,23 @@ export const createNode = (data: any, ctx: any) => {
   // Append to canvas
   canvas.appendChild(el);
 
+  // Attach selection listener to play select symphony via conductor if available
+  try {
+    (el as any).addEventListener?.("click", () => {
+      // Prefer ctx.conductor if injected; fall back to global bridge
+      const ctxConductor = (ctx as any)?.conductor;
+      if (ctxConductor?.play) {
+        ctxConductor.play("CanvasComponentSelectionPlugin", "canvas-component-select-symphony", { id });
+        return;
+      }
+      const anyWin = (window as any);
+      const conductor = anyWin?.RenderX?.conductor;
+      if (conductor?.play) {
+        conductor.play("CanvasComponentSelectionPlugin", "canvas-component-select-symphony", { id });
+      }
+    });
+  } catch {}
+
   ctx.payload.createdNode = {
     id,
     tag: tpl.tag,

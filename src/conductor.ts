@@ -6,6 +6,9 @@ export async function initConductor(): Promise<ConductorClient> {
   const { conductor } = initializeCommunicationSystem();
   // expose globally for UIs that import via hook alternative
   (window as any).renderxCommunicationSystem = { conductor };
+  // compatibility bridge for stage-crew handlers that may use window.RenderX.conductor
+  (window as any).RenderX = (window as any).RenderX || {};
+  (window as any).RenderX.conductor = conductor;
   return conductor as ConductorClient;
 }
 
