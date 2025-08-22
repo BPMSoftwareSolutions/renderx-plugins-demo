@@ -23,14 +23,30 @@ export const handlers = {
   createNode(data: any, ctx: any) {
     const tpl = ctx.payload.template;
     const nodeId = `rx-node-${Math.random().toString(36).slice(2, 8)}`;
+    const selector = `#${nodeId}`;
 
-    // StageCrew integration placeholder (handlers own side-effects):
-    // ctx.stageCrew?.injectRawCSS?.(serializeStyleToCSS(tpl.style));
-    // const txn = ctx.stageCrew?.beginBeat?.();
-    // txn?.create(`#${nodeId}`, { tag: tpl.tag, classes: tpl.classes, text: tpl.text });
-    // txn?.setPosition?.(nodeId, data.position);
-    // ctx.stageCrew?.injectInstanceCSS?.(nodeId, tpl.style);
-    // txn?.commit?.();
+    // StageCrew transaction: create element under #rx-canvas, set id/classes/style/attrs, then commit
+    const txn = ctx.stageCrew?.beginBeat?.(nodeId, { handlerName: "createNode" });
+    txn
+      ?.create(tpl.tag, { classes: tpl.classes || [], attrs: { id: nodeId } })
+      .appendTo("#rx-canvas");
+
+    const style: Record<string, string> = {};
+    const tplStyle = tpl.style || {};
+    for (const [k, v] of Object.entries(tplStyle)) style[k] = String(v);
+    if (data?.position) {
+      style.position = style.position || "absolute";
+      style.left = typeof data.position.x === "number" ? `${data.position.x}px` : String(data.position.x);
+      style.top = typeof data.position.y === "number" ? `${data.position.y}px` : String(data.position.y);
+    }
+
+    txn?.update(selector, {
+      classes: { add: (tpl.classes || []) as string[] },
+      attrs: { id: nodeId },
+      style,
+    });
+
+    txn?.commit?.({ batch: true });
 
     ctx.payload.createdNode = {
       id: nodeId,

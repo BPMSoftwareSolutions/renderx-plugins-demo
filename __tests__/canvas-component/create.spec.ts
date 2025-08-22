@@ -14,15 +14,31 @@ describe("canvas-component-create-symphony", () => {
     const calls: any[] = [];
     const stageCrew = withStageCrew
       ? {
-          injectRawCSS: (css: string) => calls.push(["injectRawCSS", css]),
-          injectInstanceCSS: (...args: any[]) => calls.push(["injectInstanceCSS", ...args]),
-          beginBeat: () => {
+          beginBeat: (correlationId: string, meta?: any) => {
             const ops: any[] = [];
             return {
-              create: (...a: any[]) => ops.push(["create", ...a]),
-              setPosition: (...a: any[]) => ops.push(["setPosition", ...a]),
-              commit: () => calls.push(["commit", ops]),
-            };
+              create: (tag: string, opts: { classes?: string[]; attrs?: Record<string, string> }) => {
+                ops.push(["create", tag, opts]);
+                return {
+                  appendTo: (parent: string) => {
+                    ops.push(["appendTo", parent]);
+                    return txn;
+                  },
+                } as any;
+              },
+              update: (selector: string, opts: any) => {
+                ops.push(["update", selector, opts]);
+                return txn;
+              },
+              remove: (selector: string) => {
+                ops.push(["remove", selector]);
+                return txn;
+              },
+              commit: (opts?: any) => {
+                calls.push(["commit", ops, opts]);
+              },
+            } as any;
+            function txn() { /* placeholder chainable */ }
           },
         }
       : undefined;
@@ -54,17 +70,21 @@ describe("canvas-component-create-symphony", () => {
     expect(received.classes).toContain("rx-button");
   });
 
-  describe.skip("StageCrew transaction path", () => {
-    it("injects CSS and commits a StageCrew transaction", () => {
+  describe("StageCrew transaction path", () => {
+    it("creates, updates and commits a StageCrew transaction", () => {
       const ctx: any = makeCtx(true);
       const template = makeTemplate();
 
       handlers.resolveTemplate({ component: { template } } as any, ctx as any);
       handlers.createNode({ position: { x: 10, y: 20 } } as any, ctx as any);
 
-      const names = ctx.calls.map((c: any[]) => c[0]);
-      expect(names).toContain("injectInstanceCSS");
-      expect(names).toContain("commit");
+      const commitCalls = ctx.calls.filter((c: any[]) => c[0] === "commit");
+      expect(commitCalls.length).toBe(1);
+      const ops = commitCalls[0][1];
+      const opNames = ops.map((o: any[]) => o[0]);
+      expect(opNames).toContain("create");
+      expect(opNames).toContain("appendTo");
+      expect(opNames).toContain("update");
     });
   });
 });
