@@ -14,7 +14,7 @@ describe("canvas-component drag beat (DOM-only)", () => {
 
   it("updates element position when dragging", () => {
     const ctx = makeCtx();
-    
+
     // Create a test element
     const canvas = document.getElementById("rx-canvas")!;
     const testElement = document.createElement("button");
@@ -25,25 +25,12 @@ describe("canvas-component drag beat (DOM-only)", () => {
     testElement.style.top = "20px";
     canvas.appendChild(testElement);
 
-    // Test drag start
-    const startData = {
-      event: "canvas:component:drag:start",
-      id: "rx-node-test123",
-      startPosition: { x: 10, y: 20 },
-      mousePosition: { x: 100, y: 150 }
-    };
-    
-    const startResult = handlers.onDragStart(startData);
-    expect(startResult.dragStarted).toBe(true);
-    expect(startResult.elementId).toBe("rx-node-test123");
-    expect(startResult.startPosition).toEqual({ x: 10, y: 20 });
-
-    // Test position update
+    // Test position update (the main functionality that remains in the symphony)
     const moveData = {
       event: "canvas:component:drag:move",
       id: "rx-node-test123",
       position: { x: 50, y: 80 },
-      delta: { x: 40, y: 60 }
+      delta: { x: 40, y: 60 },
     };
 
     const moveResult = handlers.updatePosition(moveData, ctx);
@@ -56,28 +43,15 @@ describe("canvas-component drag beat (DOM-only)", () => {
     expect(updatedElement.style.left).toBe("50px");
     expect(updatedElement.style.top).toBe("80px");
     expect(updatedElement.style.position).toBe("absolute");
-
-    // Test drag end
-    const endData = {
-      event: "canvas:component:drag:end",
-      id: "rx-node-test123",
-      finalPosition: { x: 50, y: 80 },
-      totalDelta: { x: 40, y: 60 }
-    };
-
-    const endResult = handlers.onDragEnd(endData);
-    expect(endResult.dragEnded).toBe(true);
-    expect(endResult.elementId).toBe("rx-node-test123");
-    expect(endResult.finalPosition).toEqual({ x: 50, y: 80 });
   });
 
   it("throws error when element not found", () => {
     const ctx = makeCtx();
-    
+
     const moveData = {
       event: "canvas:component:drag:move",
       id: "non-existent-element",
-      position: { x: 50, y: 80 }
+      position: { x: 50, y: 80 },
     };
 
     expect(() => {
@@ -87,7 +61,7 @@ describe("canvas-component drag beat (DOM-only)", () => {
 
   it("throws error when missing required data", () => {
     const ctx = makeCtx();
-    
+
     // Missing position
     expect(() => {
       handlers.updatePosition({ id: "test" }, ctx);
@@ -101,7 +75,7 @@ describe("canvas-component drag beat (DOM-only)", () => {
 
   it("handles string position values", () => {
     const ctx = makeCtx();
-    
+
     // Create a test element
     const canvas = document.getElementById("rx-canvas")!;
     const testElement = document.createElement("div");
@@ -110,7 +84,7 @@ describe("canvas-component drag beat (DOM-only)", () => {
 
     const moveData = {
       id: "rx-node-string-test",
-      position: { x: "100px", y: "200px" }
+      position: { x: "100px", y: "200px" },
     };
 
     const result = handlers.updatePosition(moveData, ctx);

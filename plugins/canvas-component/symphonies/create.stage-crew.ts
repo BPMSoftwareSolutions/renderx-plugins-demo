@@ -94,33 +94,21 @@ export const createNode = (data: any, ctx: any) => {
   // Append to canvas
   canvas.appendChild(el);
 
-  // Attach selection listener to play select symphony via conductor if available
+  // Attach selection functionality using callbacks instead of direct conductor calls
   try {
+    const { onSelected } = data || {};
+
     (el as any).addEventListener?.("click", () => {
-      // Prefer ctx.conductor if injected; fall back to global bridge
-      const ctxConductor = (ctx as any)?.conductor;
-      if (ctxConductor?.play) {
-        ctxConductor.play(
-          "CanvasComponentSelectionPlugin",
-          "canvas-component-select-symphony",
-          { id }
-        );
-        return;
-      }
-      const anyWin = window as any;
-      const conductor = anyWin?.RenderX?.conductor;
-      if (conductor?.play) {
-        conductor.play(
-          "CanvasComponentSelectionPlugin",
-          "canvas-component-select-symphony",
-          { id }
-        );
-      }
+      // Use callback for selection
+      onSelected?.({ id });
     });
   } catch {}
 
-  // Attach drag listeners for canvas component dragging
+  // Attach drag functionality using callbacks instead of direct conductor calls
   try {
+    // Extract drag callbacks from data
+    const { onDragStart, onDragMove, onDragEnd } = data || {};
+
     let isDragging = false;
     let startPos = { x: 0, y: 0 };
     let elementStartPos = { x: 0, y: 0 };
@@ -143,130 +131,61 @@ export const createNode = (data: any, ctx: any) => {
       // Prevent text selection during drag
       e.preventDefault();
 
+      // Global mouse move handler
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - startPos.x;
+        const deltaY = e.clientY - startPos.y;
+        const newPos = {
+          x: elementStartPos.x + deltaX,
+          y: elementStartPos.y + deltaY,
+        };
+
+        // Use callback for drag move
+        onDragMove?.({
+          id,
+          position: newPos,
+          delta: { x: deltaX, y: deltaY },
+        });
+      };
+
+      // Global mouse up handler
+      const handleMouseUp = (e: MouseEvent) => {
+        if (!isDragging) return;
+
+        isDragging = false;
+
+        const deltaX = e.clientX - startPos.x;
+        const deltaY = e.clientY - startPos.y;
+        const finalPos = {
+          x: elementStartPos.x + deltaX,
+          y: elementStartPos.y + deltaY,
+        };
+
+        // Use callback for drag end
+        onDragEnd?.({
+          id,
+          finalPosition: finalPos,
+          totalDelta: { x: deltaX, y: deltaY },
+        });
+
+        // Remove global listeners
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+
       // Add global listeners for drag
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
 
-      // Play drag start symphony
-      const ctxConductor = (ctx as any)?.conductor;
-      if (ctxConductor?.play) {
-        ctxConductor.play(
-          "CanvasComponentDragPlugin",
-          "canvas-component-drag-symphony",
-          {
-            event: "canvas:component:drag:start",
-            id,
-            startPosition: elementStartPos,
-            mousePosition: startPos,
-          }
-        );
-      } else {
-        const anyWin = window as any;
-        const conductor = anyWin?.RenderX?.conductor;
-        if (conductor?.play) {
-          conductor.play(
-            "CanvasComponentDragPlugin",
-            "canvas-component-drag-symphony",
-            {
-              event: "canvas:component:drag:start",
-              id,
-              startPosition: elementStartPos,
-              mousePosition: startPos,
-            }
-          );
-        }
-      }
+      // Use callback for drag start
+      onDragStart?.({
+        id,
+        startPosition: elementStartPos,
+        mousePosition: startPos,
+      });
     });
-
-    // Global mouse move handler
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return;
-
-      const deltaX = e.clientX - startPos.x;
-      const deltaY = e.clientY - startPos.y;
-      const newPos = {
-        x: elementStartPos.x + deltaX,
-        y: elementStartPos.y + deltaY,
-      };
-
-      // Play drag move symphony
-      const ctxConductor = (ctx as any)?.conductor;
-      if (ctxConductor?.play) {
-        ctxConductor.play(
-          "CanvasComponentDragPlugin",
-          "canvas-component-drag-symphony",
-          {
-            event: "canvas:component:drag:move",
-            id,
-            position: newPos,
-            delta: { x: deltaX, y: deltaY },
-          }
-        );
-      } else {
-        const anyWin = window as any;
-        const conductor = anyWin?.RenderX?.conductor;
-        if (conductor?.play) {
-          conductor.play(
-            "CanvasComponentDragPlugin",
-            "canvas-component-drag-symphony",
-            {
-              event: "canvas:component:drag:move",
-              id,
-              position: newPos,
-              delta: { x: deltaX, y: deltaY },
-            }
-          );
-        }
-      }
-    };
-
-    // Global mouse up handler
-    const handleMouseUp = (e: MouseEvent) => {
-      if (!isDragging) return;
-
-      isDragging = false;
-
-      const deltaX = e.clientX - startPos.x;
-      const deltaY = e.clientY - startPos.y;
-      const finalPos = {
-        x: elementStartPos.x + deltaX,
-        y: elementStartPos.y + deltaY,
-      };
-
-      // Play drag end symphony
-      const ctxConductor = (ctx as any)?.conductor;
-      if (ctxConductor?.play) {
-        ctxConductor.play(
-          "CanvasComponentDragPlugin",
-          "canvas-component-drag-symphony",
-          {
-            event: "canvas:component:drag:end",
-            id,
-            finalPosition: finalPos,
-            totalDelta: { x: deltaX, y: deltaY },
-          }
-        );
-      } else {
-        const anyWin = window as any;
-        const conductor = anyWin?.RenderX?.conductor;
-        if (conductor?.play) {
-          conductor.play(
-            "CanvasComponentDragPlugin",
-            "canvas-component-drag-symphony",
-            {
-              event: "canvas:component:drag:end",
-              id,
-              finalPosition: finalPos,
-              totalDelta: { x: deltaX, y: deltaY },
-            }
-          );
-        }
-      }
-
-      // Remove global listeners
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
   } catch {}
 
   ctx.payload.createdNode = {

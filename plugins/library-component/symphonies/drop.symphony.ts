@@ -6,7 +6,14 @@ export const sequence = {
       id: "drop",
       name: "Drop",
       beats: [
-        { beat: 1, event: "library:component:drop", title: "Forward to Canvas Create", dynamics: "mf", handler: "forwardToCanvasCreate", timing: "immediate" }
+        {
+          beat: 1,
+          event: "library:component:drop",
+          title: "Forward to Canvas Create",
+          dynamics: "mf",
+          handler: "forwardToCanvasCreate",
+          timing: "immediate",
+        },
       ],
     },
   ],
@@ -14,11 +21,18 @@ export const sequence = {
 
 export const handlers = {
   forwardToCanvasCreate(data: any, ctx: any) {
-    ctx.conductor?.play?.("CanvasComponentPlugin", "canvas-component-create-symphony", {
-      component: data.component,
-      position: data.position,
-      onComponentCreated: data.onComponentCreated,
-    });
+    ctx.conductor?.play?.(
+      "CanvasComponentPlugin",
+      "canvas-component-create-symphony",
+      {
+        component: data.component,
+        position: data.position,
+        onComponentCreated: data.onComponentCreated,
+        onDragStart: data.onDragStart,
+        onDragMove: data.onDragMove,
+        onDragEnd: data.onDragEnd,
+        onSelected: data.onSelected,
+      }
+    );
   },
 };
-
