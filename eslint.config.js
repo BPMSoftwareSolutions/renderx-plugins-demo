@@ -14,6 +14,7 @@ export default [
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
+  // UI code: forbid DOM & StageCrew/EventBus
   {
     files: ["plugins/**/ui/**/*.{ts,tsx,js,jsx}"],
     rules: {
@@ -33,6 +34,39 @@ export default [
         { selector: "MemberExpression[object.name='document']", message: "UI code may not access document.*" },
         { selector: "MemberExpression[object.name='window']", message: "UI code may not access window.*" },
         { selector: "CallExpression[callee.object.name='document']", message: "UI code may not call document APIs." },
+      ],
+    },
+  },
+  // Stage-crew handlers: allow DOM, forbid UI imports, forbid IO/API here
+  {
+    files: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
+    rules: {
+      // Explicitly allow DOM in stage-crew handlers by disabling the global restriction
+      "no-restricted-globals": "off",
+      // Keep stage-crew clean of UI/IO/API layers
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            "plugins/**/ui/**",
+            "**/*.io",
+            "**/*.api"
+          ],
+          message: "Stage-crew handlers must not import UI or IO/API modules.",
+        },
+      ],
+    },
+  },
+  // Non-stage-crew code: forbid direct DOM access
+  {
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    excludedFiles: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
+    rules: {
+      "no-restricted-globals": ["error", "document", "window"],
+      "no-restricted-syntax": [
+        "error",
+        { selector: "MemberExpression[object.name='document']", message: "DOM writes only allowed in *.stage-crew.ts" },
+        { selector: "CallExpression[callee.object.name='document']", message: "DOM writes only allowed in *.stage-crew.ts" },
       ],
     },
   },

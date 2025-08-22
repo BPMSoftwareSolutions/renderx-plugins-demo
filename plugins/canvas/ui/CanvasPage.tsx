@@ -19,10 +19,9 @@ export async function onDropForTest(e: any, conductor: any, onCreated?: (n: any)
 
 export function CanvasPage() {
   const conductor = useConductor();
-  const [nodes, setNodes] = React.useState<any[]>([]);
 
   const onDrop = (e: React.DragEvent) => {
-    onDropForTest(e, conductor, (node) => setNodes((prev) => [...prev, node]));
+    onDropForTest(e, conductor);
   };
 
   return (
@@ -33,25 +32,8 @@ export function CanvasPage() {
       style={{ position: "relative", height: "100%" }}
     >
       <h3 className="p-3">Canvas</h3>
-      <div id="rx-canvas" className="absolute inset-0" style={{ position: "absolute", inset: 0 }}>
-        {nodes.map((n) =>
-          React.createElement(
-            (n as any).tag || "div",
-            {
-              key: (n as any).id,
-              id: (n as any).id,
-              className: ((n as any).classes || []).join(" "),
-              style: {
-                position: "absolute",
-                left: (n as any).position.x,
-                top: (n as any).position.y,
-                ...((n as any).style || {}),
-              },
-            },
-            (n as any).text || null
-          )
-        )}
-      </div>
+      {/* StageCrew renders actual DOM inside #rx-canvas; UI stays dumb */}
+      <div id="rx-canvas" className="absolute inset-0" style={{ position: "absolute", inset: 0 }} />
     </div>
   );
 }
