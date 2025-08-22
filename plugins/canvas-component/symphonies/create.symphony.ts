@@ -4,10 +4,11 @@ export const sequence = {
   movements: [
     {
       id: "create",
+      name: "Create",
       beats: [
-        { beat: 1, event: "canvas:component:resolve-template", handler: "resolveTemplate", timing: "immediate" },
-        { beat: 2, event: "canvas:component:create", handler: "createNode", timing: "after-beat" },
-        { beat: 3, event: "canvas:component:notify-ui", handler: "notifyUi", timing: "after-beat" },
+        { beat: 1, event: "canvas:component:resolve-template", title: "Resolve Template", dynamics: "mf", handler: "resolveTemplate", timing: "immediate" },
+        { beat: 2, event: "canvas:component:create", title: "Create Node", dynamics: "mf", handler: "createNode", timing: "after-beat" },
+        { beat: 3, event: "canvas:component:notify-ui", title: "Notify UI", dynamics: "mf", handler: "notifyUi", timing: "after-beat" },
       ],
     },
   ],

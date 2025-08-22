@@ -4,7 +4,10 @@ export const sequence = {
   movements: [
     {
       id: "drag",
-      beats: [{ beat: 1, event: "library:component:drag:start", handler: "onDragStart" }],
+      name: "Drag",
+      beats: [
+        { beat: 1, event: "library:component:drag:start", title: "Start Drag", dynamics: "mf", handler: "onDragStart", timing: "immediate" }
+      ],
     },
   ],
 } as const;

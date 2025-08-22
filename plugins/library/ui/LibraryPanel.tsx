@@ -4,6 +4,7 @@ import { useConductor } from "../../../src/conductor";
 export function LibraryPanel() {
   const conductor = useConductor();
   const [items, setItems] = React.useState<any[]>([]);
+  const safeItems = Array.isArray(items) ? items : [];
 
   React.useEffect(() => {
     conductor?.play?.("LibraryPlugin", "library-load-symphony", {
@@ -15,7 +16,7 @@ export function LibraryPanel() {
     <div className="p-3 h-full" style={{ borderRight: "1px solid #eee", overflow: "auto" }}>
       <h3>Library</h3>
       <ul style={{ display: "grid", gap: 8 }}>
-        {items.map((c) => (
+        {safeItems.map((c) => (
           <li
             key={c.id}
             style={{ cursor: "grab" }}

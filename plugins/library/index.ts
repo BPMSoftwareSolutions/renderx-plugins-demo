@@ -2,6 +2,7 @@ import { sequence as loadSeq, handlers as loadHandlers } from "./symphonies/load
 export { LibraryPanel } from "./ui/LibraryPanel";
 
 export async function register(conductor: any) {
-  conductor?.registerSequence?.("LibraryPlugin", loadSeq, loadHandlers);
+  // CIA-compliant mount (sequence must have id/name/movements with named movement ids)
+  await conductor?.mount?.(loadSeq, loadHandlers, "LibraryPlugin");
 }
 

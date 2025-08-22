@@ -4,7 +4,10 @@ export const sequence = {
   movements: [
     {
       id: "drop",
-      beats: [{ beat: 1, event: "library:component:drop", handler: "forwardToCanvasCreate" }],
+      name: "Drop",
+      beats: [
+        { beat: 1, event: "library:component:drop", title: "Forward to Canvas Create", dynamics: "mf", handler: "forwardToCanvasCreate", timing: "immediate" }
+      ],
     },
   ],
 } as const;

@@ -10,14 +10,36 @@ export async function initConductor(): Promise<ConductorClient> {
 }
 
 export async function registerAllSequences(conductor: ConductorClient) {
-  const registrars = await Promise.all([
-    import("../plugins/library").then((m) => m.register),
-    import("../plugins/library-component").then((m) => m.register),
-    import("../plugins/canvas-component").then((m) => m.register),
-    import("../plugins/canvas").then((m) => m.register),
-    import("../plugins/control-panel").then((m) => m.register),
-  ]);
-  for (const reg of registrars) await reg?.(conductor);
+  // Import and register plugins sequentially for clearer errors and reliable ordering
+  const modules = [
+    await import("../plugins/library"),
+    await import("../plugins/library-component"),
+    await import("../plugins/canvas-component"),
+    await import("../plugins/canvas"),
+    await import("../plugins/control-panel"),
+  ];
+  for (const mod of modules) {
+    const reg = (mod as any).register;
+    const nameGuess = (mod as any).LibraryPanel
+      ? "LibraryPlugin"
+      : (mod as any).CanvasPage
+      ? "CanvasPlugin"
+      : (mod as any).ControlPanel
+      ? "ControlPanelPlugin"
+      : "(unknown)";
+    if (typeof reg === "function") {
+      try {
+        await reg(conductor);
+        console.log(`🔌 Registered plugin module: ${nameGuess}`);
+      } catch (e) {
+        console.error("❌ Failed to register plugin module", nameGuess, e);
+      }
+    }
+  }
+  try {
+    const ids = (conductor as any).getMountedPluginIds?.() || [];
+    console.log("🔎 Mounted plugin IDs after registration:", ids);
+  } catch {}
 }
 
 export function useConductor(): ConductorClient {
