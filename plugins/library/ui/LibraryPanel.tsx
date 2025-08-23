@@ -41,7 +41,10 @@ export function LibraryPreview({
       {model.cssTextLibrary ? <style>{model.cssTextLibrary}</style> : null}
       {React.createElement(
         ChildTag,
-        { className: model.classes.join(" ") },
+        {
+          className: model.classes.join(" "),
+          ...model.attributes,
+        },
         model.text || null
       )}
     </li>

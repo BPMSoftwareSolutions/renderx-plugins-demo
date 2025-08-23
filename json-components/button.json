@@ -24,12 +24,19 @@
       },
       "library": {
         "variables": {
-          "font-size": "12px",
-          "padding": "6px 12px",
-          "border-radius": "6px"
+          "font-size": "14px",
+          "padding": "8px 16px",
+          "border-radius": "8px",
+          "rx-icon-size": "14px",
+          "rx-icon-gap": "8px"
         },
-        "css": ".rx-lib .rx-button { transform: scale(0.95); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: relative; } .rx-lib .rx-button::before { content: '🔘'; position: absolute; left: -18px; top: 50%; transform: translateY(-50%); font-size: 10px; opacity: 0.6; } .rx-lib .rx-button:hover { transform: scale(0.98); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }"
+        "css": ".rx-lib .rx-button { position: relative; font-size: var(--font-size, 14px); padding: var(--padding, 8px 16px); border-radius: var(--border-radius, 8px); border: none; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease; box-shadow: 0 3px 6px rgba(0,0,0,0.15); display: inline-flex; align-items: center; } .rx-lib .rx-button[data-icon]::before { content: attr(data-icon); display: inline-block; font-size: var(--rx-icon-size, 14px); line-height: 1; margin-right: var(--rx-icon-gap, 8px); opacity: 0.9; } .rx-lib .rx-button[data-icon-pos='end'] { flex-direction: row-reverse; } .rx-lib .rx-button[data-icon-pos='end']::before { margin-right: 0; margin-left: var(--rx-icon-gap, 8px); } .rx-lib .rx-button:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 12px rgba(0,0,0,0.2); background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); } .rx-lib .rx-button:active { transform: scale(0.97); box-shadow: 0 2px 4px rgba(0,0,0,0.2) inset; } .rx-lib .rx-button:focus { outline: none; box-shadow: 0 0 0 3px rgba(72, 187, 255, 0.5); }"
       }
+    },
+    "icon": {
+      "mode": "emoji",
+      "value": "⭐",
+      "position": "start"
     },
     "tools": {
       "drag": { "enabled": true },

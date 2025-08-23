@@ -30,5 +30,31 @@ describe("computePreviewModel — library overrides (RED)", () => {
     // Expectation: model exposes library CSS text for UI injection
     expect(typeof model.cssTextLibrary).toBe("string"); // Fails (currently undefined)
   });
-});
 
+  it("passes through icon attributes from template", async () => {
+    const { computePreviewModel } = await import(
+      "../../plugins/library/ui/preview.model"
+    );
+
+    const component = {
+      id: "json-button",
+      template: {
+        tag: "button",
+        classes: ["rx-comp", "rx-button"],
+        text: "Click me",
+        attributes: {
+          "data-icon": "⭐",
+          "data-icon-pos": "start",
+        },
+      },
+    } as any;
+
+    const model: any = computePreviewModel(component);
+
+    // Expectation: attributes are passed through to the model
+    expect(model.attributes).toEqual({
+      "data-icon": "⭐",
+      "data-icon-pos": "start",
+    });
+  });
+});

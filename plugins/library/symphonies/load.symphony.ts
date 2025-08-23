@@ -4,6 +4,15 @@ function mapJsonComponentToTemplate(json: any) {
   const name = json?.metadata?.name || type;
   const classes = ["rx-comp", `rx-${type}`];
   const ci = json?.integration?.canvasIntegration || {};
+
+  // Handle icon data attributes
+  const icon = json?.ui?.icon || {};
+  const attrs: any = {};
+  if (icon?.mode === "emoji" && icon?.value) {
+    attrs["data-icon"] = String(icon.value);
+    if (icon.position) attrs["data-icon-pos"] = String(icon.position);
+  }
+
   return {
     id: `json-${type}`,
     name,
@@ -20,6 +29,8 @@ function mapJsonComponentToTemplate(json: any) {
       // Library-only style layer for preview (non-breaking optional fields)
       cssLibrary: json?.ui?.styles?.library?.css,
       cssVariablesLibrary: json?.ui?.styles?.library?.variables || {},
+      // Icon and other data attributes
+      attributes: attrs,
       // Default size used for initial inline dimensions
       dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
       // Inline style will be reserved for position only in create handler
