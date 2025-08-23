@@ -20,14 +20,25 @@ export async function onDropForTest(
 
   const onDragMove = (dragData: any) => {
     // Use conductor to update position
-    conductor?.play?.(
-      "CanvasComponentDragPlugin",
-      "canvas-component-drag-symphony",
-      {
+    try {
+      const {
+        resolveInteraction,
+      } = require("../../../src/interactionManifest");
+      const r = resolveInteraction("canvas.component.drag.move");
+      conductor?.play?.(r.pluginId, r.sequenceId, {
         event: "canvas:component:drag:move",
         ...dragData,
-      }
-    );
+      });
+    } catch {
+      conductor?.play?.(
+        "CanvasComponentDragPlugin",
+        "canvas-component-drag-symphony",
+        {
+          event: "canvas:component:drag:move",
+          ...dragData,
+        }
+      );
+    }
   };
 
   const onDragEnd = (dragData: any) => {
@@ -46,13 +57,27 @@ export async function onDropForTest(
     );
   };
 
-  conductor?.play?.(LIB_COMP_PLUGIN_ID, LIB_COMP_DROP_SEQ_ID, {
-    component: payload.component,
-    position,
-    onComponentCreated: onCreated,
-    onDragStart,
-    onDragMove,
-    onDragEnd,
-    onSelected,
-  });
+  try {
+    const { resolveInteraction } = require("../../../src/interactionManifest");
+    const r = resolveInteraction("library.component.drop");
+    conductor?.play?.(r.pluginId, r.sequenceId, {
+      component: payload.component,
+      position,
+      onComponentCreated: onCreated,
+      onDragStart,
+      onDragMove,
+      onDragEnd,
+      onSelected,
+    });
+  } catch {
+    conductor?.play?.(LIB_COMP_PLUGIN_ID, LIB_COMP_DROP_SEQ_ID, {
+      component: payload.component,
+      position,
+      onComponentCreated: onCreated,
+      onDragStart,
+      onDragMove,
+      onDragEnd,
+      onSelected,
+    });
+  }
 }

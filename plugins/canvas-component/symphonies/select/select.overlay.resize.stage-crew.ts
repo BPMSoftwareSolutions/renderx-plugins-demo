@@ -56,19 +56,23 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
         event === "move"
           ? { ...base, dx, dy, phase: "move" }
           : { ...base, phase: event };
-      const { seqId } =
+      const key =
         event === "start"
-          ? { seqId: "canvas-component-resize-start-symphony" }
+          ? "canvas.component.resize.start"
           : event === "end"
-          ? { seqId: "canvas-component-resize-end-symphony" }
-          : { seqId: "canvas-component-resize-move-symphony" };
+          ? "canvas.component.resize.end"
+          : "canvas.component.resize.move";
 
-      const pluginId =
-        event === "start"
-          ? "CanvasComponentResizeStartPlugin"
-          : event === "end"
-          ? "CanvasComponentResizeEndPlugin"
-          : "CanvasComponentResizeMovePlugin";
+      let pluginId = "";
+      let seqId = "";
+      try {
+        const {
+          resolveInteraction,
+        } = require("../../../../src/interactionManifest");
+        const r = resolveInteraction(key);
+        pluginId = r.pluginId;
+        seqId = r.sequenceId;
+      } catch {}
 
       if (typeof playFn === "function") {
         try {

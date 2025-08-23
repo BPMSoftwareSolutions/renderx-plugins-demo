@@ -55,9 +55,20 @@ export function LibraryPanel() {
   const safeItems = Array.isArray(items) ? items : [];
 
   React.useEffect(() => {
-    conductor?.play?.("LibraryPlugin", "library-load-symphony", {
-      onComponentsLoaded: (list: any[]) => setItems(list),
-    });
+    try {
+      const {
+        resolveInteraction,
+      } = require("../../../src/interactionManifest");
+      const r = resolveInteraction("library.load");
+      conductor?.play?.(r.pluginId, r.sequenceId, {
+        onComponentsLoaded: (list: any[]) => setItems(list),
+      });
+    } catch {
+      // Fallback to direct ids if resolver not ready (tests/dev)
+      conductor?.play?.("LibraryPlugin", "library-load-symphony", {
+        onComponentsLoaded: (list: any[]) => setItems(list),
+      });
+    }
   }, [conductor]);
 
   return (
