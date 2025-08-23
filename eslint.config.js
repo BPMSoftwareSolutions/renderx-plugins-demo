@@ -1,5 +1,6 @@
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
+import beatKindDomAccess from "./eslint-rules/beat-kind-dom-access.js";
 
 export default [
   {
@@ -9,8 +10,26 @@ export default [
       parser: tsparser,
       parserOptions: { ecmaVersion: "latest", sourceType: "module" },
     },
-    plugins: { "@typescript-eslint": tseslint },
+    plugins: {
+      "@typescript-eslint": tseslint
+    },
     rules: {
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+    },
+  },
+  // Symphony files: enforce DOM access only in stage-crew handlers
+  {
+    files: ["**/*.symphony.ts", "**/*.symphony.tsx"],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+    },
+    plugins: {
+      "@typescript-eslint": tseslint,
+      "beat-kind": beatKindDomAccess
+    },
+    rules: {
+      "beat-kind/beat-kind-dom-access": "error",
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
@@ -60,7 +79,7 @@ export default [
   // Non-stage-crew code: forbid direct DOM access
   {
     files: ["**/*.{ts,tsx,js,jsx}"],
-    excludedFiles: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
+    ignores: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
     rules: {
       "no-restricted-globals": ["error", "document", "window"],
       "no-restricted-syntax": [
