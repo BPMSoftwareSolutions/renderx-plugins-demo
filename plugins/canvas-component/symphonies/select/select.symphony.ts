@@ -1,35 +1,6 @@
 import { showSelectionOverlay } from "./select.stage-crew";
 
-export const sequence = {
-  id: "canvas-component-select-symphony",
-  name: "Canvas Component Select",
-  movements: [
-    {
-      id: "select",
-      name: "Select",
-      beats: [
-        {
-          beat: 1,
-          event: "canvas:component:select",
-          title: "Show Selection",
-          dynamics: "mf",
-          handler: "showSelectionOverlay",
-          timing: "immediate",
-          kind: "stage-crew",
-        },
-        {
-          beat: 2,
-          event: "canvas:component:select:notify",
-          title: "Notify UI",
-          dynamics: "mf",
-          handler: "notifyUi",
-          timing: "immediate",
-          kind: "pure",
-        },
-      ],
-    },
-  ],
-} as const;
+// NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
 export const handlers = {
   showSelectionOverlay,

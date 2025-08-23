@@ -1,26 +1,7 @@
 import { updateSize } from "./resize.stage-crew";
 
-export const sequence = {
-  id: "canvas-component-resize-move-symphony",
-  name: "Canvas Component Resize Move",
-  movements: [
-    {
-      id: "resize-move",
-      name: "Resize Move",
-      beats: [
-        {
-          beat: 1,
-          event: "canvas:component:resize:move",
-          title: "Resize Move",
-          dynamics: "mf",
-          handler: "updateSize",
-          timing: "immediate",
-          kind: "stage-crew",
-        },
-      ],
-    },
-  ],
-} as const;
+import { updateSize } from "./resize.stage-crew";
+
+// NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
 export const handlers = { updateSize };
-

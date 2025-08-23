@@ -1,24 +1,4 @@
-export const sequence = {
-  id: "library-component-drag-symphony",
-  name: "Library Component Drag",
-  movements: [
-    {
-      id: "drag",
-      name: "Drag",
-      beats: [
-        {
-          beat: 1,
-          event: "library:component:drag:start",
-          title: "Start Drag",
-          dynamics: "mf",
-          handler: "onDragStart",
-          timing: "immediate",
-        },
-      ],
-    },
-  ],
-} as const;
-
+// NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 import {
   ensurePayload,
   computeGhostSize,

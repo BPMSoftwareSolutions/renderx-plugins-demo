@@ -1,32 +1,4 @@
-export const sequence = {
-  id: "library-load-symphony",
-  name: "Library Load",
-  movements: [
-    {
-      id: "load",
-      name: "Load",
-      beats: [
-        {
-          beat: 1,
-          event: "library:components:load",
-          title: "Load Components",
-          dynamics: "mf",
-          handler: "loadComponents",
-          timing: "immediate",
-        },
-        {
-          beat: 2,
-          event: "library:components:notify-ui",
-          title: "Notify UI",
-          dynamics: "mf",
-          handler: "notifyUi",
-          timing: "immediate",
-        },
-      ],
-    },
-  ],
-} as const;
-
+// NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 function mapJsonComponentToTemplate(json: any) {
   const type = json?.metadata?.replaces || json?.metadata?.type || "div";
   const name = json?.metadata?.name || type;
