@@ -14,6 +14,13 @@ function varsToStyle(vars?: Record<string, string>): React.CSSProperties {
   return style;
 }
 
+function pickDataAttrs(attrs?: Record<string, string>) {
+  const out: Record<string, string> = {};
+  for (const [k, v] of Object.entries(attrs || {}))
+    if (k.startsWith("data-")) out[k] = v as string;
+  return out;
+}
+
 export function LibraryPreview({
   component,
   conductor,
@@ -23,85 +30,13 @@ export function LibraryPreview({
 }) {
   const model = computePreviewModel(component);
   const ChildTag: any = model.tag || "div";
-
-  // Special handling for input elements with icons
-  const isInputWithIcon =
-    model.tag === "input" && model.attributes?.["data-icon"];
-
-  const renderElement = () => {
-    if (isInputWithIcon) {
-      // Wrap input with icon in a container
-      return (
-        <div
-          className="rx-input-wrapper"
-          style={{ position: "relative", display: "inline-block" }}
-        >
-          {model.attributes?.["data-icon-pos"] !== "end" && (
-            <span
-              className="rx-input-icon rx-input-icon--start"
-              style={{
-                position: "absolute",
-                left: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                fontSize: "14px",
-                opacity: 0.6,
-                pointerEvents: "none",
-                zIndex: 1,
-              }}
-            >
-              {model.attributes["data-icon"]}
-            </span>
-          )}
-          {React.createElement(ChildTag, {
-            className: model.classes.join(" "),
-            ...model.attributes,
-            style: {
-              paddingLeft:
-                model.attributes?.["data-icon-pos"] !== "end"
-                  ? "36px"
-                  : undefined,
-              paddingRight:
-                model.attributes?.["data-icon-pos"] === "end"
-                  ? "36px"
-                  : undefined,
-            },
-          })}
-          {model.attributes?.["data-icon-pos"] === "end" && (
-            <span
-              className="rx-input-icon rx-input-icon--end"
-              style={{
-                position: "absolute",
-                right: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                fontSize: "14px",
-                opacity: 0.6,
-                pointerEvents: "none",
-                zIndex: 1,
-              }}
-            >
-              {model.attributes["data-icon"]}
-            </span>
-          )}
-        </div>
-      );
-    }
-
-    // Default rendering for non-input or input without icon
-    return React.createElement(
-      ChildTag,
-      {
-        className: model.classes.join(" "),
-        ...model.attributes,
-      },
-      model.text || null
-    );
-  };
+  const hostDataAttrs = pickDataAttrs(model.attributes);
 
   return (
     <li
+      className="rx-preview-host"
       style={{ cursor: "grab", ...varsToStyle(model.cssVars) }}
+      {...hostDataAttrs}
       draggable
       onDragStart={(e) => {
         const r = resolveInteraction("library.component.drag.start");
@@ -114,7 +49,11 @@ export function LibraryPreview({
     >
       {model.cssText ? <style>{model.cssText}</style> : null}
       {model.cssTextLibrary ? <style>{model.cssTextLibrary}</style> : null}
-      {renderElement()}
+      {React.createElement(
+        ChildTag,
+        { className: model.classes.join(" "), ...model.attributes },
+        model.text || null
+      )}
     </li>
   );
 }

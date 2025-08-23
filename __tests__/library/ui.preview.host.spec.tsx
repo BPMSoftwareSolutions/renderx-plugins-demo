@@ -22,10 +22,15 @@ describe("LibraryPreview — PreviewHost pattern", () => {
       template: {
         tag: "input",
         classes: ["rx-comp", "rx-input"],
-        attributes: { "data-icon": "📝", "data-icon-pos": "start", placeholder: "Search" },
+        attributes: {
+          "data-icon": "📝",
+          "data-icon-pos": "start",
+          placeholder: "Search",
+        },
         css: ".rx-input { padding: 10px 12px; }",
         cssVariables: { padding: "10px 12px" },
-        cssLibrary: ".rx-lib .rx-preview-host[data-icon] { position: relative; }",
+        cssLibrary:
+          ".rx-lib .rx-preview-host[data-icon] { position: relative; }",
       },
     } as any;
 
@@ -41,11 +46,12 @@ describe("LibraryPreview — PreviewHost pattern", () => {
     expect(host?.getAttribute("data-icon")).toBe("📝");
     expect(host?.getAttribute("data-icon-pos")).toBe("start");
 
-    // Host should contain exactly one child element (the rendered input)
-    const children = Array.from(host!.children);
-    expect(children.length).toBe(1); // Fails until wrapper/spans are removed
+    // Host should contain exactly one non-style child element (the rendered input)
+    const elementChildren = Array.from(host!.children).filter(
+      (el) => el.tagName.toLowerCase() !== "style"
+    );
+    expect(elementChildren.length).toBe(1);
     const input = host!.querySelector("input.rx-input");
     expect(input).toBeTruthy();
   });
 });
-
