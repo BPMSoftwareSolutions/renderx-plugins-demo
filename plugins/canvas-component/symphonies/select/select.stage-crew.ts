@@ -6,14 +6,22 @@ import {
   ensureLineOverlayFor,
 } from "./select.overlay.line-resize.stage-crew";
 
+function getOverlayKindFor(el: HTMLElement): "line" | "box" {
+  // Prefer data-overlay from template; fallback to class heuristic while we migrate
+  const ov = el.getAttribute("data-overlay");
+  if (ov === "line") return "line";
+  return el.classList.contains("rx-line") ? "line" : "box";
+}
+
 export function showSelectionOverlay(data: any, ctx?: any) {
   const { id } = data || {};
   if (!id) return;
   const el = document.getElementById(String(id)) as HTMLElement | null;
   if (!el) return;
 
-  // Branch: line components use a dedicated overlay with two endpoints
-  if (el.classList.contains("rx-line")) {
+  // Delegate by overlay kind rather than component internals
+  const kind = getOverlayKindFor(el);
+  if (kind === "line") {
     const lov = ensureLineOverlayFor(el);
     attachLineResizeHandlers(lov, ctx?.conductor);
     lov.dataset.targetId = String(id);
@@ -24,7 +32,6 @@ export function showSelectionOverlay(data: any, ctx?: any) {
   const ov = ensureOverlay();
   attachResizeHandlers(ov, ctx?.conductor);
   ov.dataset.targetId = String(id);
-  // Explicitly unhide before applying rect
   ov.style.display = "block";
   applyOverlayRectForEl(ov, el);
 }

@@ -1,45 +1,13 @@
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
-function mapJsonComponentToTemplate(json: any) {
+import { mapJsonComponentToTemplate } from "../../../src/jsonComponent.mapper";
+
+function mapJsonComponentToTemplateCompat(json: any) {
+  const tpl = mapJsonComponentToTemplate(json);
   const type = json?.metadata?.replaces || json?.metadata?.type || "div";
-  const name = json?.metadata?.name || type;
-  const classes = ["rx-comp", `rx-${type}`];
-  const ci = json?.integration?.canvasIntegration || {};
-
-  // Handle icon data attributes
-  const icon = json?.ui?.icon || {};
-  const attrs: any = {};
-  if (icon?.mode === "emoji" && icon?.value) {
-    attrs["data-icon"] = String(icon.value);
-    if (icon.position) attrs["data-icon-pos"] = String(icon.position);
-  }
-
-  // Normalize tag: render non-HTML types like "line" as a div with rx-line class
-  const tag =
-    type === "input" ? "input" : type === "line" ? "div" : type || "div";
-
   return {
     id: `json-${type}`,
-    name,
-    template: {
-      tag,
-      text:
-        type === "button"
-          ? json?.integration?.properties?.defaultValues?.content || "Click Me"
-          : undefined,
-      classes,
-      // Pass through base CSS and variable map so StageCrew can inject styles
-      css: json?.ui?.styles?.css,
-      cssVariables: json?.ui?.styles?.variables || {},
-      // Library-only style layer for preview (non-breaking optional fields)
-      cssLibrary: json?.ui?.styles?.library?.css,
-      cssVariablesLibrary: json?.ui?.styles?.library?.variables || {},
-      // Icon and other data attributes
-      attributes: attrs,
-      // Default size used for initial inline dimensions
-      dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
-      // Inline style will be reserved for position only in create handler
-      style: {},
-    },
+    name: json?.metadata?.name || type,
+    template: tpl,
   };
 }
 
@@ -58,7 +26,7 @@ export const handlers = {
           const res = await fetch(base + f);
           if (res.ok) {
             const json = await res.json();
-            items.push(mapJsonComponentToTemplate(json));
+            items.push(mapJsonComponentToTemplateCompat(json));
           }
         }
         list = items;

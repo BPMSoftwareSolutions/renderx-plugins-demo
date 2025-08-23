@@ -45,7 +45,8 @@
       "selectable": true,
       "defaultWidth": 120,
       "defaultHeight": 60,
-      "allowChildElements": false
+      "allowChildElements": false,
+      "overlayKind": "line"
     }
   },
   "interactions": {
