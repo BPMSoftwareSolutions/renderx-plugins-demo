@@ -31,8 +31,13 @@
           "padding": "6px 10px",
           "border-radius": "6px"
         },
-        "css": ".rx-lib .rx-input { width: auto; min-width: 140px; max-width: 180px; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.08); } .rx-lib .rx-input::before { content: '📝'; position: absolute; left: -20px; top: 50%; transform: translateY(-50%); font-size: 10px; opacity: 0.5; pointer-events: none; } .rx-lib .rx-input:focus { box-shadow: 0 2px 6px rgba(0,123,255,0.15); }"
+        "css": ".rx-lib .rx-input { width: auto; min-width: 140px; max-width: 180px; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.08); } .rx-lib .rx-input[data-icon]::before { content: attr(data-icon); position: absolute; left: -20px; top: 50%; transform: translateY(-50%); font-size: 10px; opacity: 0.5; pointer-events: none; } .rx-lib .rx-input:focus { box-shadow: 0 2px 6px rgba(0,123,255,0.15); }"
       }
+    },
+    "icon": {
+      "mode": "emoji",
+      "value": "📝",
+      "position": "start"
     }
   },
   "integration": {
