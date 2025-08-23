@@ -50,12 +50,73 @@ export default [
       ],
       "no-restricted-syntax": [
         "error",
-        { selector: "MemberExpression[object.name='document']", message: "UI code may not access document.*" },
-        { selector: "MemberExpression[object.name='window']", message: "UI code may not access window.*" },
-        { selector: "CallExpression[callee.object.name='document']", message: "UI code may not call document APIs." },
+        // Document access
+        { selector: "MemberExpression[object.name='document']", message: "UI code may not access document.* - use stage-crew handlers instead" },
+        { selector: "MemberExpression[object.name='window']", message: "UI code may not access window.* - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.object.name='document']", message: "UI code may not call document APIs - use stage-crew handlers instead" },
+
+        // DOM manipulation methods
+        { selector: "CallExpression[callee.property.name='appendChild']", message: "UI code may not call appendChild - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='removeChild']", message: "UI code may not call removeChild - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='replaceChild']", message: "UI code may not call replaceChild - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='insertBefore']", message: "UI code may not call insertBefore - use stage-crew handlers instead" },
+
+        // Style manipulation
+        { selector: "CallExpression[callee.object.property.name='style'][callee.property.name='setProperty']", message: "UI code may not call style.setProperty - use stage-crew handlers instead" },
+        { selector: "AssignmentExpression[left.object.property.name='style']", message: "UI code may not assign to element.style.* - use stage-crew handlers instead" },
+
+        // Class manipulation
+        { selector: "CallExpression[callee.object.property.name='classList']", message: "UI code may not call classList methods - use stage-crew handlers instead" },
+
+        // Attribute manipulation
+        { selector: "CallExpression[callee.property.name='setAttribute']", message: "UI code may not call setAttribute - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='removeAttribute']", message: "UI code may not call removeAttribute - use stage-crew handlers instead" },
+
+        // Content manipulation
+        { selector: "AssignmentExpression[left.property.name='innerHTML']", message: "UI code may not assign to innerHTML - use stage-crew handlers instead" },
+        { selector: "AssignmentExpression[left.property.name='textContent']", message: "UI code may not assign to textContent - use stage-crew handlers instead" },
+        { selector: "AssignmentExpression[left.property.name='innerText']", message: "UI code may not assign to innerText - use stage-crew handlers instead" },
       ],
     },
   },
+  // All plugin code: forbid DOM access outside of stage-crew files
+  {
+    files: ["plugins/**/*.{ts,tsx,js,jsx}"],
+    ignores: ["plugins/**/*.stage-crew.{ts,tsx}"],
+    rules: {
+      "no-restricted-globals": ["error", "document", "window", "navigator", "localStorage"],
+      "no-restricted-syntax": [
+        "error",
+        // Document access
+        { selector: "MemberExpression[object.name='document']", message: "Plugin code may not access document.* - use stage-crew handlers instead" },
+        { selector: "MemberExpression[object.name='window']", message: "Plugin code may not access window.* - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.object.name='document']", message: "Plugin code may not call document APIs - use stage-crew handlers instead" },
+
+        // DOM manipulation methods
+        { selector: "CallExpression[callee.property.name='appendChild']", message: "Plugin code may not call appendChild - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='removeChild']", message: "Plugin code may not call removeChild - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='replaceChild']", message: "Plugin code may not call replaceChild - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='insertBefore']", message: "Plugin code may not call insertBefore - use stage-crew handlers instead" },
+
+        // Style manipulation
+        { selector: "CallExpression[callee.object.property.name='style'][callee.property.name='setProperty']", message: "Plugin code may not call style.setProperty - use stage-crew handlers instead" },
+        { selector: "AssignmentExpression[left.object.property.name='style']", message: "Plugin code may not assign to element.style.* - use stage-crew handlers instead" },
+
+        // Class manipulation
+        { selector: "CallExpression[callee.object.property.name='classList']", message: "Plugin code may not call classList methods - use stage-crew handlers instead" },
+
+        // Attribute manipulation
+        { selector: "CallExpression[callee.property.name='setAttribute']", message: "Plugin code may not call setAttribute - use stage-crew handlers instead" },
+        { selector: "CallExpression[callee.property.name='removeAttribute']", message: "Plugin code may not call removeAttribute - use stage-crew handlers instead" },
+
+        // Content manipulation
+        { selector: "AssignmentExpression[left.property.name='innerHTML']", message: "Plugin code may not assign to innerHTML - use stage-crew handlers instead" },
+        { selector: "AssignmentExpression[left.property.name='textContent']", message: "Plugin code may not assign to textContent - use stage-crew handlers instead" },
+        { selector: "AssignmentExpression[left.property.name='innerText']", message: "Plugin code may not assign to innerText - use stage-crew handlers instead" },
+      ],
+    },
+  },
+
   // Stage-crew handlers: allow DOM, forbid UI imports, forbid IO/API here
   {
     files: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
@@ -76,18 +137,6 @@ export default [
       ],
     },
   },
-  // Non-stage-crew code: forbid direct DOM access
-  {
-    files: ["**/*.{ts,tsx,js,jsx}"],
-    ignores: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
-    rules: {
-      "no-restricted-globals": ["error", "document", "window"],
-      "no-restricted-syntax": [
-        "error",
-        { selector: "MemberExpression[object.name='document']", message: "DOM writes only allowed in *.stage-crew.ts" },
-        { selector: "CallExpression[callee.object.name='document']", message: "DOM writes only allowed in *.stage-crew.ts" },
-      ],
-    },
-  },
+
 ];
 
