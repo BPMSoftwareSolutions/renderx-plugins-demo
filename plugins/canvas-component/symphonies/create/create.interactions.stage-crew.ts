@@ -1,16 +1,42 @@
+import {
+  hideSelectionOverlay,
+  showSelectionOverlay,
+} from "../select/select.stage-crew";
+
 export type DragCallbacks = {
-  onDragStart?: (info: { id: string; startPosition: { x: number; y: number }; mousePosition: { x: number; y: number } }) => void;
-  onDragMove?: (info: { id: string; position: { x: number; y: number }; delta: { x: number; y: number } }) => void;
-  onDragEnd?: (info: { id: string; finalPosition: { x: number; y: number }; totalDelta: { x: number; y: number } }) => void;
+  onDragStart?: (info: {
+    id: string;
+    startPosition: { x: number; y: number };
+    mousePosition: { x: number; y: number };
+  }) => void;
+  onDragMove?: (info: {
+    id: string;
+    position: { x: number; y: number };
+    delta: { x: number; y: number };
+  }) => void;
+  onDragEnd?: (info: {
+    id: string;
+    finalPosition: { x: number; y: number };
+    totalDelta: { x: number; y: number };
+  }) => void;
 };
 
-export function attachSelection(el: HTMLElement, id: string, onSelected?: (info: { id: string }) => void) {
+export function attachSelection(
+  el: HTMLElement,
+  id: string,
+  onSelected?: (info: { id: string }) => void
+) {
   try {
     (el as any).addEventListener?.("click", () => onSelected?.({ id }));
   } catch {}
 }
 
-export function attachDrag(el: HTMLElement, canvas: HTMLElement, id: string, cbs: DragCallbacks) {
+export function attachDrag(
+  el: HTMLElement,
+  canvas: HTMLElement,
+  id: string,
+  cbs: DragCallbacks
+) {
   try {
     let isDragging = false;
     let startPos = { x: 0, y: 0 };
@@ -23,16 +49,31 @@ export function attachDrag(el: HTMLElement, canvas: HTMLElement, id: string, cbs
 
       const rect = el.getBoundingClientRect();
       const canvasRect = canvas.getBoundingClientRect();
-      elementStartPos = { x: rect.left - canvasRect.left, y: rect.top - canvasRect.top };
+      elementStartPos = {
+        x: rect.left - canvasRect.left,
+        y: rect.top - canvasRect.top,
+      };
 
       e.preventDefault();
+
+      // Hide selection overlay while dragging
+      try {
+        hideSelectionOverlay();
+      } catch {}
 
       const handleMouseMove = (e: MouseEvent) => {
         if (!isDragging) return;
         const deltaX = e.clientX - startPos.x;
         const deltaY = e.clientY - startPos.y;
-        const newPos = { x: elementStartPos.x + deltaX, y: elementStartPos.y + deltaY };
-        cbs.onDragMove?.({ id, position: newPos, delta: { x: deltaX, y: deltaY } });
+        const newPos = {
+          x: elementStartPos.x + deltaX,
+          y: elementStartPos.y + deltaY,
+        };
+        cbs.onDragMove?.({
+          id,
+          position: newPos,
+          delta: { x: deltaX, y: deltaY },
+        });
       };
 
       const handleMouseUp = (e: MouseEvent) => {
@@ -40,17 +81,31 @@ export function attachDrag(el: HTMLElement, canvas: HTMLElement, id: string, cbs
         isDragging = false;
         const deltaX = e.clientX - startPos.x;
         const deltaY = e.clientY - startPos.y;
-        const finalPos = { x: elementStartPos.x + deltaX, y: elementStartPos.y + deltaY };
-        cbs.onDragEnd?.({ id, finalPosition: finalPos, totalDelta: { x: deltaX, y: deltaY } });
+        const finalPos = {
+          x: elementStartPos.x + deltaX,
+          y: elementStartPos.y + deltaY,
+        };
+        cbs.onDragEnd?.({
+          id,
+          finalPosition: finalPos,
+          totalDelta: { x: deltaX, y: deltaY },
+        });
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
+        // Restore overlay visibility after drag ends
+        try {
+          showSelectionOverlay({ id });
+        } catch {}
       };
 
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
 
-      cbs.onDragStart?.({ id, startPosition: elementStartPos, mousePosition: startPos });
+      cbs.onDragStart?.({
+        id,
+        startPosition: elementStartPos,
+        mousePosition: startPos,
+      });
     });
   } catch {}
 }
-

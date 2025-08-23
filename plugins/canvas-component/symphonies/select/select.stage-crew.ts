@@ -10,6 +10,8 @@ export function showSelectionOverlay(data: any, ctx?: any) {
   const ov = ensureOverlay();
   attachResizeHandlers(ov, ctx?.conductor);
   ov.dataset.targetId = String(id);
+  // Explicitly unhide before applying rect
+  ov.style.display = "block";
   applyOverlayRectForEl(ov, el);
 }
 
@@ -19,4 +21,3 @@ export function hideSelectionOverlay() {
   ) as HTMLDivElement | null;
   if (ov) ov.style.display = "none";
 }
-

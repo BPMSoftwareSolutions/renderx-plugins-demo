@@ -41,12 +41,16 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
 
     const clamp = (v: number, min = 1) => (v < min ? min : v);
 
+    let useDomFallback = false;
+
     const call = (
       dx: number,
       dy: number,
       event: "start" | "move" | "end" = "move"
     ) => {
-      const play = conductor?.play || (window as any).RenderX?.conductor?.play;
+      const playFn = useDomFallback
+        ? undefined
+        : conductor?.play || (window as any).RenderX?.conductor?.play;
       const base = { id, dir, startLeft, startTop, startWidth, startHeight };
       const payload =
         event === "move"
@@ -58,34 +62,48 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
           : event === "end"
           ? { seqId: "canvas-component-resize-end-symphony" }
           : { seqId: "canvas-component-resize-move-symphony" };
-      if (typeof play === "function") {
-        play("CanvasComponentPlugin", seqId, payload);
-      } else {
-        if (event !== "move") return;
-        // Fallback direct style updates for environments without conductor
-        let left = startLeft;
-        let top = startTop;
-        let width = startWidth;
-        let height = startHeight;
-        if (dir.includes("e")) width = clamp(startWidth + dx);
-        if (dir.includes("s")) height = clamp(startHeight + dy);
-        if (dir.includes("w")) {
-          width = clamp(startWidth - dx);
-          left = startLeft + dx;
-          if (width <= 1) left = startLeft + (startWidth - 1);
+
+      const pluginId =
+        event === "start"
+          ? "CanvasComponentResizeStartPlugin"
+          : event === "end"
+          ? "CanvasComponentResizeEndPlugin"
+          : "CanvasComponentResizeMovePlugin";
+
+      if (typeof playFn === "function") {
+        try {
+          playFn(pluginId, seqId, payload);
+          return;
+        } catch (err) {
+          // Switch to DOM fallback for this drag session if conductor.play fails
+          useDomFallback = true;
         }
-        if (dir.includes("n")) {
-          height = clamp(startHeight - dy);
-          top = startTop + dy;
-          if (height <= 1) top = startTop + (startHeight - 1);
-        }
-        el.style.position = "absolute";
-        el.style.left = `${Math.round(left)}px`;
-        el.style.top = `${Math.round(top)}px`;
-        el.style.width = `${Math.round(width)}px`;
-        el.style.height = `${Math.round(height)}px`;
-        applyOverlayRectForEl(ov, el);
       }
+
+      if (event !== "move") return;
+      // Fallback direct style updates for environments without conductor or when play throws
+      let left = startLeft;
+      let top = startTop;
+      let width = startWidth;
+      let height = startHeight;
+      if (dir.includes("e")) width = clamp(startWidth + dx);
+      if (dir.includes("s")) height = clamp(startHeight + dy);
+      if (dir.includes("w")) {
+        width = clamp(startWidth - dx);
+        left = startLeft + dx;
+        if (width <= 1) left = startLeft + (startWidth - 1);
+      }
+      if (dir.includes("n")) {
+        height = clamp(startHeight - dy);
+        top = startTop + dy;
+        if (height <= 1) top = startTop + (startHeight - 1);
+      }
+      el.style.position = "absolute";
+      el.style.left = `${Math.round(left)}px`;
+      el.style.top = `${Math.round(top)}px`;
+      el.style.width = `${Math.round(width)}px`;
+      el.style.height = `${Math.round(height)}px`;
+      applyOverlayRectForEl(ov, el);
     };
 
     let raf = 0;
@@ -117,4 +135,3 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
 
   ov.addEventListener("mousedown", onMouseDown);
 }
-
