@@ -2,6 +2,7 @@ import {
   applyOverlayRectForEl,
   getCanvasRect,
 } from "./select.overlay.dom.stage-crew";
+import { resolveInteraction } from "../../../../src/interactionManifest";
 
 function readNumericPx(value: string): number | null {
   const n = parseFloat(value || "");
@@ -63,16 +64,9 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
           ? "canvas.component.resize.end"
           : "canvas.component.resize.move";
 
-      let pluginId = "";
-      let seqId = "";
-      try {
-        const {
-          resolveInteraction,
-        } = require("../../../../src/interactionManifest");
-        const r = resolveInteraction(key);
-        pluginId = r.pluginId;
-        seqId = r.sequenceId;
-      } catch {}
+      const r = resolveInteraction(key);
+      const pluginId = r.pluginId;
+      const seqId = r.sequenceId;
 
       if (typeof playFn === "function") {
         try {
