@@ -1,11 +1,14 @@
-import { applyOverlayRectForEl, getCanvasRect } from "./select.overlay.dom.stage-crew";
+import {
+  applyOverlayRectForEl,
+  getCanvasRect,
+} from "./select.overlay.dom.stage-crew";
 
 function readNumericPx(value: string): number | null {
   const n = parseFloat(value || "");
   return Number.isFinite(n) ? n : null;
 }
 
-export function attachResizeHandlers(ov: HTMLDivElement) {
+export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
   if ((ov as any)._rxResizeAttached) return;
   (ov as any)._rxResizeAttached = true;
 
@@ -38,34 +41,55 @@ export function attachResizeHandlers(ov: HTMLDivElement) {
 
     const clamp = (v: number, min = 1) => (v < min ? min : v);
 
+    const call = (dx: number, dy: number) => {
+      const play = conductor?.play || (window as any).RenderX?.conductor?.play;
+      const payload = {
+        id,
+        dir,
+        startLeft,
+        startTop,
+        startWidth,
+        startHeight,
+        dx,
+        dy,
+      };
+      if (typeof play === "function") {
+        play(
+          "CanvasComponentPlugin",
+          "canvas-component-resize-symphony",
+          payload
+        );
+      } else {
+        // Fallback direct style updates for environments without conductor
+        let left = startLeft;
+        let top = startTop;
+        let width = startWidth;
+        let height = startHeight;
+        if (dir.includes("e")) width = clamp(startWidth + dx);
+        if (dir.includes("s")) height = clamp(startHeight + dy);
+        if (dir.includes("w")) {
+          width = clamp(startWidth - dx);
+          left = startLeft + dx;
+          if (width <= 1) left = startLeft + (startWidth - 1);
+        }
+        if (dir.includes("n")) {
+          height = clamp(startHeight - dy);
+          top = startTop + dy;
+          if (height <= 1) top = startTop + (startHeight - 1);
+        }
+        el.style.position = "absolute";
+        el.style.left = `${Math.round(left)}px`;
+        el.style.top = `${Math.round(top)}px`;
+        el.style.width = `${Math.round(width)}px`;
+        el.style.height = `${Math.round(height)}px`;
+        applyOverlayRectForEl(ov, el);
+      }
+    };
+
     const onMove = (ev: MouseEvent) => {
       const dx = ev.clientX - startX;
       const dy = ev.clientY - startY;
-      let left = startLeft;
-      let top = startTop;
-      let width = startWidth;
-      let height = startHeight;
-
-      if (dir.includes("e")) width = clamp(startWidth + dx);
-      if (dir.includes("s")) height = clamp(startHeight + dy);
-      if (dir.includes("w")) {
-        width = clamp(startWidth - dx);
-        left = startLeft + dx;
-        if (width <= 1) left = startLeft + (startWidth - 1);
-      }
-      if (dir.includes("n")) {
-        height = clamp(startHeight - dy);
-        top = startTop + dy;
-        if (height <= 1) top = startTop + (startHeight - 1);
-      }
-
-      el.style.position = "absolute";
-      el.style.left = `${Math.round(left)}px`;
-      el.style.top = `${Math.round(top)}px`;
-      el.style.width = `${Math.round(width)}px`;
-      el.style.height = `${Math.round(height)}px`;
-
-      applyOverlayRectForEl(ov, el);
+      call(dx, dy);
     };
 
     const onUp = () => {
@@ -79,4 +103,3 @@ export function attachResizeHandlers(ov: HTMLDivElement) {
 
   ov.addEventListener("mousedown", onMouseDown);
 }
-

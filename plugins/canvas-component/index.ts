@@ -10,6 +10,10 @@ import {
   sequence as dragSeq,
   handlers as dragHandlers,
 } from "./symphonies/drag.symphony";
+import {
+  sequence as resizeSeq,
+  handlers as resizeHandlers,
+} from "./symphonies/resize.symphony";
 
 export async function register(conductor: any) {
   await conductor?.mount?.(createSeq, createHandlers, "CanvasComponentPlugin");
@@ -21,4 +25,10 @@ export async function register(conductor: any) {
   );
   // Mount drag as a separate plugin to avoid double-mount conflicts
   await conductor?.mount?.(dragSeq, dragHandlers, "CanvasComponentDragPlugin");
+  // Mount resize as a separate plugin to avoid double-mount conflicts
+  await conductor?.mount?.(
+    resizeSeq,
+    resizeHandlers,
+    "CanvasComponentResizePlugin"
+  );
 }
