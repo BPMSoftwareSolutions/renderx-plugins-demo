@@ -1,8 +1,8 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create.symphony";
-import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select.stage-crew";
-import { handlers as resizeHandlers } from "../../plugins/canvas-component/symphonies/resize.symphony";
+import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
+import { handlers as resizeHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.symphony";
 
 function makeTemplate() {
   return {
@@ -22,7 +22,8 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 
 describe("canvas-component resize via conductor.play", () => {
   beforeEach(() => {
-    document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
+    document.body.innerHTML =
+      '<div id="rx-canvas" style="position:relative"></div>';
   });
 
   it("should keep the resized width/height after mouseup (no snap back)", () => {
@@ -39,9 +40,15 @@ describe("canvas-component resize via conductor.play", () => {
     const conductor = {
       play: (_pluginId: string, _seqId: string, payload: any) => {
         // Intentionally run start, move, end in order for every call
-        try { (resizeHandlers as any).startResize?.(payload, {}); } catch {}
-        try { (resizeHandlers as any).updateSize?.(payload, {}); } catch {}
-        try { (resizeHandlers as any).endResize?.(payload, {}); } catch {}
+        try {
+          (resizeHandlers as any).startResize?.(payload, {});
+        } catch {}
+        try {
+          (resizeHandlers as any).updateSize?.(payload, {});
+        } catch {}
+        try {
+          (resizeHandlers as any).endResize?.(payload, {});
+        } catch {}
       },
     };
 
@@ -57,7 +64,9 @@ describe("canvas-component resize via conductor.play", () => {
 
     // Act: drag the SE handle by +20,+30
     dispatchMouse(se, "mousedown", { clientX: 200, clientY: 200, button: 0 });
-    document.dispatchEvent(new MouseEvent("mousemove", { clientX: 220, clientY: 230, bubbles: true }));
+    document.dispatchEvent(
+      new MouseEvent("mousemove", { clientX: 220, clientY: 230, bubbles: true })
+    );
 
     // After move, element should be resized
     expect(el.style.width).toBe("120px");
@@ -65,11 +74,12 @@ describe("canvas-component resize via conductor.play", () => {
 
     // Mouse up triggers another play() call — with this naive runner it will also run updateSize with dx/dy=0,
     // currently causing a snap back. This test asserts desired behavior: no snap back.
-    document.dispatchEvent(new MouseEvent("mouseup", { clientX: 220, clientY: 230, bubbles: true }));
+    document.dispatchEvent(
+      new MouseEvent("mouseup", { clientX: 220, clientY: 230, bubbles: true })
+    );
 
     // Expected: should remain at resized size (will FAIL with current bug)
     expect(el.style.width).toBe("120px");
     expect(el.style.height).toBe("80px");
   });
 });
-

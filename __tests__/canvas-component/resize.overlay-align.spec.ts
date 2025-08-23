@@ -1,10 +1,10 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create.symphony";
-import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select.stage-crew";
-import { handlers as resizeStartHandlers } from "../../plugins/canvas-component/symphonies/resize.start.symphony";
-import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize.move.symphony";
-import { handlers as resizeEndHandlers } from "../../plugins/canvas-component/symphonies/resize.end.symphony";
+import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
+import { handlers as resizeStartHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.start.symphony";
+import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
+import { handlers as resizeEndHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.end.symphony";
 
 function makeTemplate() {
   return {
@@ -24,7 +24,8 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 
 describe("selection overlay remains aligned with component after resize (conductor)", () => {
   beforeEach(() => {
-    document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
+    document.body.innerHTML =
+      '<div id="rx-canvas" style="position:relative"></div>';
   });
 
   it("keeps overlay aligned with element's width/height after dragging SE handle", () => {
@@ -50,13 +51,19 @@ describe("selection overlay remains aligned with component after resize (conduct
 
     showSelectionOverlay({ id }, { conductor });
 
-    const overlay = document.getElementById("rx-selection-overlay") as HTMLDivElement;
+    const overlay = document.getElementById(
+      "rx-selection-overlay"
+    ) as HTMLDivElement;
     const se = overlay.querySelector(".rx-handle.se")!;
 
     // drag to resize: +30 width, +20 height
     dispatchMouse(se, "mousedown", { clientX: 200, clientY: 200, button: 0 });
-    document.dispatchEvent(new MouseEvent("mousemove", { clientX: 230, clientY: 220, bubbles: true }));
-    document.dispatchEvent(new MouseEvent("mouseup", { clientX: 230, clientY: 220, bubbles: true }));
+    document.dispatchEvent(
+      new MouseEvent("mousemove", { clientX: 230, clientY: 220, bubbles: true })
+    );
+    document.dispatchEvent(
+      new MouseEvent("mouseup", { clientX: 230, clientY: 220, bubbles: true })
+    );
 
     // Failing expectation (current behavior in jsdom: overlay width/height derive from getBoundingClientRect: 0)
     // Desired: overlay style matches element style
@@ -66,4 +73,3 @@ describe("selection overlay remains aligned with component after resize (conduct
     expect(overlay.style.top).toBe(el.style.top);
   });
 });
-

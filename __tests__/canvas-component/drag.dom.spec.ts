@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/drag.symphony";
+import { handlers } from "../../plugins/canvas-component/symphonies/drag/drag.symphony";
 
 function makeCtx() {
   return { payload: {} } as any;

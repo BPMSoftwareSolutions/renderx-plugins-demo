@@ -1,9 +1,12 @@
-import { registerInstance } from "../../plugins/canvas-component/symphonies/create.io";
+import { registerInstance } from "../../plugins/canvas-component/symphonies/create/create.io";
 
 function makeCtx() {
   const ops: any[] = [];
   return {
-    payload: { nodeId: "rx-node-abc123", template: { tag: "button", classes: ["rx-button"], style: {} } },
+    payload: {
+      nodeId: "rx-node-abc123",
+      template: { tag: "button", classes: ["rx-button"], style: {} },
+    },
     io: {
       kv: { put: async (...a: any[]) => ops.push(["kv.put", ...a]) },
       cache: { put: async (...a: any[]) => ops.push(["cache.put", ...a]) },
@@ -21,8 +24,16 @@ describe("canvas-component create.io", () => {
   });
 
   it("throws when IO is accessed in a pure beat (guard example)", () => {
-    const ctx: any = { io: new Proxy({}, { get() { throw new Error("IO not available in this beat"); } }) };
+    const ctx: any = {
+      io: new Proxy(
+        {},
+        {
+          get() {
+            throw new Error("IO not available in this beat");
+          },
+        }
+      ),
+    };
     expect(() => (ctx as any).io.kv.put("k", "v")).toThrow();
   });
 });
-

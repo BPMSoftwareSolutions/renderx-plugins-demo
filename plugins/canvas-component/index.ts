@@ -1,27 +1,27 @@
 import {
   sequence as createSeq,
   handlers as createHandlers,
-} from "./symphonies/create.symphony";
+} from "./symphonies/create/create.symphony";
 import {
   sequence as selectSeq,
   handlers as selectHandlers,
-} from "./symphonies/select.symphony";
+} from "./symphonies/select/select.symphony";
 import {
   sequence as dragSeq,
   handlers as dragHandlers,
-} from "./symphonies/drag.symphony";
+} from "./symphonies/drag/drag.symphony";
 import {
   sequence as resizeStartSeq,
   handlers as resizeStartHandlers,
-} from "./symphonies/resize.start.symphony";
+} from "./symphonies/resize/resize.start.symphony";
 import {
   sequence as resizeMoveSeq,
   handlers as resizeMoveHandlers,
-} from "./symphonies/resize.move.symphony";
+} from "./symphonies/resize/resize.move.symphony";
 import {
   sequence as resizeEndSeq,
   handlers as resizeEndHandlers,
-} from "./symphonies/resize.end.symphony";
+} from "./symphonies/resize/resize.end.symphony";
 
 export async function register(conductor: any) {
   await conductor?.mount?.(createSeq, createHandlers, "CanvasComponentPlugin");

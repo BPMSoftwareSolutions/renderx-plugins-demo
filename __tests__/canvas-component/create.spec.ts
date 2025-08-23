@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/create.symphony";
+import { handlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
 
 describe("canvas-component-create-symphony", () => {
   function makeTemplate() {
@@ -31,7 +31,10 @@ describe("canvas-component-create-symphony", () => {
     handlers.createNode({ position: pos } as any, ctx as any);
 
     let received: any = null;
-    handlers.notifyUi({ onComponentCreated: (n: any) => (received = n) } as any, ctx as any);
+    handlers.notifyUi(
+      { onComponentCreated: (n: any) => (received = n) } as any,
+      ctx as any
+    );
 
     expect(received).toBeTruthy();
     expect(received.tag).toBe("button");
@@ -39,4 +42,3 @@ describe("canvas-component-create-symphony", () => {
     expect(received.classes).toContain("rx-button");
   });
 });
-

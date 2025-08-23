@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/create.symphony";
+import { handlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
 
 function makeTemplate() {
   return {
@@ -9,7 +9,7 @@ function makeTemplate() {
     classes: ["rx-comp", "rx-button"],
     css: ".rx-button { padding: 8px 16px; border: none; border-radius: 4px; font-size: 14px; background-color: var(--bg-color); color: var(--text-color); }",
     cssVariables: { "bg-color": "#007acc", "text-color": "#ffffff" },
-    dimensions: { width: 120, height: 40 }
+    dimensions: { width: 120, height: 40 },
   };
 }
 
@@ -30,7 +30,9 @@ describe("canvas-component create beat (DOM-only)", () => {
     handlers.resolveTemplate({ component: { template } } as any, ctx);
     handlers.createNode({ position: { x: 50, y: 80 } } as any, ctx);
 
-    const btn = document.querySelector("#rx-canvas button") as HTMLButtonElement | null;
+    const btn = document.querySelector(
+      "#rx-canvas button"
+    ) as HTMLButtonElement | null;
     expect(btn).toBeTruthy(); // should exist
     expect(btn!.id).toMatch(/^rx-node-/);
     expect(btn!.className).toContain("rx-button");
@@ -47,4 +49,3 @@ describe("canvas-component create beat (DOM-only)", () => {
     expect(styleTag).toBeTruthy();
   });
 });
-

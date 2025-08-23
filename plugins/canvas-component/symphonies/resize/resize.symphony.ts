@@ -41,3 +41,4 @@ export const sequence = {
 } as const;
 
 export const handlers = { startResize, updateSize, endResize };
+

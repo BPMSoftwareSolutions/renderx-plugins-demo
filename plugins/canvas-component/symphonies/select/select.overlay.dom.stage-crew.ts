@@ -71,3 +71,4 @@ export function applyOverlayRectForEl(ov: HTMLDivElement, el: HTMLElement) {
     display: "block",
   } as Partial<CSSStyleDeclaration>);
 }
+

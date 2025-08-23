@@ -25,3 +25,4 @@ export const sequence = {
 export const handlers = {
   updatePosition,
 };
+

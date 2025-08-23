@@ -19,3 +19,4 @@ export function hideSelectionOverlay() {
   ) as HTMLDivElement | null;
   if (ov) ov.style.display = "none";
 }
+

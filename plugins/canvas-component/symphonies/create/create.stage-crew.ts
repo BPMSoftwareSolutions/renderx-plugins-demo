@@ -71,3 +71,4 @@ export const createNode = (data: any, ctx: any) => {
     instanceClass,
   };
 };
+

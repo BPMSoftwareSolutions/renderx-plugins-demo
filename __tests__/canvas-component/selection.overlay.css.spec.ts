@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create.symphony";
-import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select.stage-crew";
+import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
 
 function makeTemplate() {
   return {
@@ -16,7 +16,8 @@ function makeTemplate() {
 
 describe("selection overlay CSS ensures box-sizing border-box for accurate alignment", () => {
   beforeEach(() => {
-    document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
+    document.body.innerHTML =
+      '<div id="rx-canvas" style="position:relative"></div>';
   });
 
   it("should set overlay to border-box so its border doesn't expand beyond element bounds", () => {
@@ -28,9 +29,10 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
     const id = ctx.payload.nodeId;
     showSelectionOverlay({ id });
 
-    const overlay = document.getElementById("rx-selection-overlay") as HTMLDivElement;
+    const overlay = document.getElementById(
+      "rx-selection-overlay"
+    ) as HTMLDivElement;
     // Failing expectation with current implementation
     expect(overlay.style.boxSizing).toBe("border-box");
   });
 });
-

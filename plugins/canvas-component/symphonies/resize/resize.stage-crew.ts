@@ -1,7 +1,7 @@
 import {
   applyOverlayRectForEl,
   getCanvasRect,
-} from "./select.overlay.dom.stage-crew";
+} from "../select/select.overlay.dom.stage-crew";
 
 function clamp(v: number, min = 1) {
   return v < min ? min : v;
@@ -128,3 +128,4 @@ export const endResize = (data: any) => {
     if (el && ov) applyOverlayRectForEl(ov, el);
   } catch {}
 };
+

@@ -117,3 +117,4 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
 
   ov.addEventListener("mousedown", onMouseDown);
 }
+
