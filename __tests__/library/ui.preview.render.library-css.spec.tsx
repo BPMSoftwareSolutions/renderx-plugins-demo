@@ -103,26 +103,34 @@ describe("Library preview — library CSS injection (RED)", () => {
       );
     });
 
-    // Verify library CSS is injected
+    // Verify library CSS is injected (data-driven from JSON)
     const styleTags = container.querySelectorAll("style");
     const libraryStyleTag = Array.from(styleTags).find((s) =>
       (s.textContent || "").includes(".rx-lib .rx-button")
     );
     expect(libraryStyleTag).toBeTruthy();
+    // Assert a known snippet from the JSON library CSS
     expect(libraryStyleTag!.textContent || "").toContain(
-      "transform: scale(0.95)"
+      ".rx-lib .rx-button:hover { transform: translateY(-2px) scale(1.02);"
     );
-    expect(libraryStyleTag!.textContent || "").toContain("🔘");
+    expect(libraryStyleTag!.textContent || "").toContain(
+      ".rx-lib .rx-button:active { transform: scale(0.97);"
+    );
 
     // Verify the button element exists and has expected classes
     const buttonEl = container.querySelector("button.rx-button");
     expect(buttonEl).toBeTruthy();
     expect(buttonEl?.textContent).toBe("Click me");
 
-    // Library variables should override base ones
+    // Library variables should override base ones (using JSON values)
     const previewLi = container.querySelector("li");
     const computedStyle = getComputedStyle(previewLi!);
-    expect(computedStyle.getPropertyValue("--font-size").trim()).toBe("12px");
-    expect(computedStyle.getPropertyValue("--padding").trim()).toBe("6px 12px");
+    const libVars = (buttonJson as any)?.ui?.styles?.library?.variables || {};
+    expect(computedStyle.getPropertyValue("--font-size").trim()).toBe(
+      libVars["font-size"]
+    );
+    expect(computedStyle.getPropertyValue("--padding").trim()).toBe(
+      libVars["padding"]
+    );
   });
 });
