@@ -1,5 +1,4 @@
-export const LIB_COMP_PLUGIN_ID = "LibraryComponentDropPlugin" as const;
-export const LIB_COMP_DROP_SEQ_ID = "library-component-drop-symphony" as const;
+import { resolveInteraction } from "../../../src/interactionManifest";
 
 export async function onDropForTest(
   e: any,
@@ -21,23 +20,14 @@ export async function onDropForTest(
   const onDragMove = (dragData: any) => {
     // Use conductor to update position
     try {
-      const {
-        resolveInteraction,
-      } = require("../../../src/interactionManifest");
       const r = resolveInteraction("canvas.component.drag.move");
       conductor?.play?.(r.pluginId, r.sequenceId, {
         event: "canvas:component:drag:move",
         ...dragData,
       });
     } catch {
-      conductor?.play?.(
-        "CanvasComponentDragPlugin",
-        "canvas-component-drag-symphony",
-        {
-          event: "canvas:component:drag:move",
-          ...dragData,
-        }
-      );
+      // If resolver throws (unknown key), surface the error instead of hard-coding
+      throw new Error("Unknown interaction key: canvas.component.drag.move");
     }
   };
 
@@ -48,13 +38,10 @@ export async function onDropForTest(
 
   const onSelected = (selectionData: any) => {
     // Use conductor to handle selection
-    conductor?.play?.(
-      "CanvasComponentSelectionPlugin",
-      "canvas-component-select-symphony",
-      {
-        ...selectionData,
-      }
-    );
+    const r = resolveInteraction("canvas.component.select");
+    conductor?.play?.(r.pluginId, r.sequenceId, {
+      ...selectionData,
+    });
   };
 
   try {
@@ -70,7 +57,8 @@ export async function onDropForTest(
       onSelected,
     });
   } catch {
-    conductor?.play?.(LIB_COMP_PLUGIN_ID, LIB_COMP_DROP_SEQ_ID, {
+    const r = resolveInteraction("library.component.drop");
+    conductor?.play?.(r.pluginId, r.sequenceId, {
       component: payload.component,
       position,
       onComponentCreated: onCreated,

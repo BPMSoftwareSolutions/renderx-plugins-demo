@@ -1,5 +1,6 @@
 import React from "react";
 import { useConductor } from "../../../src/conductor";
+import { resolveInteraction } from "../../../src/interactionManifest";
 
 import { computePreviewModel } from "./preview.model";
 
@@ -28,15 +29,12 @@ export function LibraryPreview({
       style={{ cursor: "grab", ...varsToStyle(model.cssVars) }}
       draggable
       onDragStart={(e) => {
-        conductor?.play?.(
-          "LibraryComponentPlugin",
-          "library-component-drag-symphony",
-          {
-            event: "library:component:drag:start",
-            domEvent: e,
-            component,
-          }
-        );
+        const r = resolveInteraction("library.component.drag.start");
+        conductor?.play?.(r.pluginId, r.sequenceId, {
+          event: "library:component:drag:start",
+          domEvent: e,
+          component,
+        });
       }}
     >
       {model.cssText ? <style>{model.cssText}</style> : null}
@@ -55,20 +53,10 @@ export function LibraryPanel() {
   const safeItems = Array.isArray(items) ? items : [];
 
   React.useEffect(() => {
-    try {
-      const {
-        resolveInteraction,
-      } = require("../../../src/interactionManifest");
-      const r = resolveInteraction("library.load");
-      conductor?.play?.(r.pluginId, r.sequenceId, {
-        onComponentsLoaded: (list: any[]) => setItems(list),
-      });
-    } catch {
-      // Fallback to direct ids if resolver not ready (tests/dev)
-      conductor?.play?.("LibraryPlugin", "library-load-symphony", {
-        onComponentsLoaded: (list: any[]) => setItems(list),
-      });
-    }
+    const r = resolveInteraction("library.load");
+    conductor?.play?.(r.pluginId, r.sequenceId, {
+      onComponentsLoaded: (list: any[]) => setItems(list),
+    });
   }, [conductor]);
 
   return (
