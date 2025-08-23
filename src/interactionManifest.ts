@@ -47,7 +47,8 @@ try {
   // @ts-ignore - Vite-specific API
   const files = (import.meta as any).glob("../interaction-manifest.json", {
     eager: true,
-    as: "raw",
+    query: "?raw",
+    import: "default",
   });
   const text: string | undefined = files?.["../interaction-manifest.json"];
   if (typeof text === "string") {

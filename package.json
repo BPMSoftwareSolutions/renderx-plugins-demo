@@ -9,9 +9,10 @@
   "version": "0.1.0",
   "private": "true",
   "scripts": {
-    "dev": "npm run sync:json-components && vite",
-    "build": "npm run sync:json-components && vite build",
+    "dev": "npm run pre:manifests && vite",
+    "build": "npm run pre:manifests && vite build",
     "preview": "vite preview",
+    "pre:manifests": "npm run sync:json-components && node scripts/generate-interaction-manifest.js",
     "sync:json-components": "node scripts/sync-json-components.js",
     "lint": "eslint .",
     "lint:ui": "eslint plugins/**/ui",
