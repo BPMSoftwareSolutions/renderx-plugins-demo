@@ -14,6 +14,13 @@ function varsToStyle(vars?: Record<string, string>): React.CSSProperties {
   return style;
 }
 
+function pickDataAttrs(attrs?: Record<string, string>) {
+  const out: Record<string, string> = {};
+  for (const [k, v] of Object.entries(attrs || {}))
+    if (k.startsWith("data-")) out[k] = v as string;
+  return out;
+}
+
 export function LibraryPreview({
   component,
   conductor,
@@ -23,10 +30,13 @@ export function LibraryPreview({
 }) {
   const model = computePreviewModel(component);
   const ChildTag: any = model.tag || "div";
+  const hostDataAttrs = pickDataAttrs(model.attributes);
 
   return (
     <li
+      className="rx-preview-host"
       style={{ cursor: "grab", ...varsToStyle(model.cssVars) }}
+      {...hostDataAttrs}
       draggable
       onDragStart={(e) => {
         const r = resolveInteraction("library.component.drag.start");
@@ -41,10 +51,7 @@ export function LibraryPreview({
       {model.cssTextLibrary ? <style>{model.cssTextLibrary}</style> : null}
       {React.createElement(
         ChildTag,
-        {
-          className: model.classes.join(" "),
-          ...model.attributes,
-        },
+        { className: model.classes.join(" "), ...model.attributes },
         model.text || null
       )}
     </li>
