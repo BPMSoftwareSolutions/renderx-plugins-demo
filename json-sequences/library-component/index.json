@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    { "file": "drag.json", "handlersPath": "/plugins/library-component/symphonies/drag.symphony.ts" },
+    { "file": "drop.json", "handlersPath": "/plugins/library-component/symphonies/drop.symphony.ts" }
+  ]
+}
+

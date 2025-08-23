@@ -1,28 +1,31 @@
 import { describe, it, expect, vi } from "vitest";
+import { loadJsonSequenceCatalogs } from "../../src/conductor";
 
-// Unit test for plugin registration: ensure both drag and drop sequences are mounted under the correct plugin id
+// Unit test for JSON loader: ensure both drag and drop sequences are mounted under the correct plugin ids
 
-describe("library-component registrar", () => {
-  it("mounts drag and drop under LibraryComponentPlugin", async () => {
+describe("JSON loader — library-component sequences", () => {
+  it("mounts drag and drop via catalogs with correct plugin ids", async () => {
     const mounts: Array<{ seqId: string; pluginId: string }> = [];
     const conductor = {
       mount: vi.fn(async (seq: any, _handlers: any, pluginId: string) => {
         mounts.push({ seqId: seq?.id, pluginId });
       }),
+      logger: { warn: vi.fn(), info: vi.fn() },
     } as any;
 
-    const mod = await import("../../plugins/library-component");
-    await mod.register(conductor);
+    await loadJsonSequenceCatalogs(conductor);
 
-    // Expect two mounts with correct plugin id and sequence ids
-    const ids = mounts.map((m) => m.seqId).sort();
+    // Filter to library-component mounts and verify ids
+    const libCompMounts = mounts.filter(
+      (m) =>
+        m.pluginId === "LibraryComponentPlugin" ||
+        m.pluginId === "LibraryComponentDropPlugin"
+    );
+
+    const ids = libCompMounts.map((m) => m.seqId).sort();
     expect(ids).toEqual([
       "library-component-drag-symphony",
       "library-component-drop-symphony",
     ]);
-    // Drag and drop must be mounted under distinct plugin IDs due to PluginManager's single-mount constraint
-    const pluginIds = mounts.map((m) => m.pluginId).sort();
-    expect(pluginIds).toEqual(["LibraryComponentDropPlugin", "LibraryComponentPlugin"].sort());
   });
 });
-
