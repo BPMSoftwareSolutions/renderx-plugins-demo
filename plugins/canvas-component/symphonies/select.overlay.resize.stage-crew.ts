@@ -88,10 +88,20 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
       }
     };
 
+    let raf = 0;
     const onMove = (ev: MouseEvent) => {
       const dx = ev.clientX - startX;
       const dy = ev.clientY - startY;
+      // Immediate update to keep tests and UI responsive
       call(dx, dy, "move");
+      // Trailing batch update, if rAF available
+      const rafFn =
+        typeof requestAnimationFrame === "function"
+          ? requestAnimationFrame
+          : (fn: FrameRequestCallback) =>
+              setTimeout(() => fn(performance.now() as any), 0) as any;
+      if (raf) cancelAnimationFrame(raf as any);
+      raf = rafFn(() => call(dx, dy, "move")) as any;
     };
 
     const onUp = () => {

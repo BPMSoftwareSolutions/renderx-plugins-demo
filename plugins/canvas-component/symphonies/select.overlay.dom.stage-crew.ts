@@ -19,6 +19,8 @@ export function ensureOverlay(): HTMLDivElement {
     ov = document.createElement("div");
     ov.id = "rx-selection-overlay";
     ov.className = "rx-selection-overlay";
+    // Ensure inline box-sizing so tests (which read inline style) and runtime both agree
+    (ov.style as CSSStyleDeclaration).boxSizing = "border-box";
     const positions = ["nw", "n", "ne", "e", "se", "s", "sw", "w"] as const;
     for (const p of positions) {
       const h = document.createElement("div");
