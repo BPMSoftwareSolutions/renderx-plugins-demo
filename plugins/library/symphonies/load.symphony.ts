@@ -13,11 +13,15 @@ function mapJsonComponentToTemplate(json: any) {
     if (icon.position) attrs["data-icon-pos"] = String(icon.position);
   }
 
+  // Normalize tag: render non-HTML types like "line" as a div with rx-line class
+  const tag =
+    type === "input" ? "input" : type === "line" ? "div" : type || "div";
+
   return {
     id: `json-${type}`,
     name,
     template: {
-      tag: type === "input" ? "input" : type || "div",
+      tag,
       text:
         type === "button"
           ? json?.integration?.properties?.defaultValues?.content || "Click Me"

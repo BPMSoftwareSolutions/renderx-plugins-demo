@@ -13,14 +13,14 @@
  *  - public/interaction-manifest.json  (served to browser)
  */
 
-import { promises as fs } from 'fs';
-import { readdir } from 'fs/promises';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { promises as fs } from "fs";
+import { readdir } from "fs/promises";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const rootDir = join(__dirname, '..');
+const rootDir = join(__dirname, "..");
 
 export function buildInteractionManifest(catalogs, componentOverrideMaps) {
   const routes = {};
@@ -32,12 +32,12 @@ export function buildInteractionManifest(catalogs, componentOverrideMaps) {
     const r = o || {};
     for (const [key, val] of Object.entries(r)) routes[key] = val;
   }
-  return { version: '1.0.0', routes };
+  return { version: "1.0.0", routes };
 }
 
 async function readJsonSafe(path) {
   try {
-    const txt = await fs.readFile(path, 'utf-8');
+    const txt = await fs.readFile(path, "utf-8");
     return JSON.parse(txt);
   } catch {
     return null;
@@ -45,9 +45,9 @@ async function readJsonSafe(path) {
 }
 
 async function readPluginCatalogs() {
-  const dir = join(rootDir, 'json-interactions');
+  const dir = join(rootDir, "json-interactions");
   try {
-    const files = (await readdir(dir)).filter(f => f.endsWith('.json'));
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
     const catalogs = [];
     for (const f of files) {
       const json = await readJsonSafe(join(dir, f));
@@ -69,9 +69,9 @@ function extractOverridesFromComponentJson(json) {
 }
 
 async function readComponentOverrides() {
-  const dir = join(rootDir, 'json-components');
+  const dir = join(rootDir, "json-components");
   try {
-    const files = (await readdir(dir)).filter(f => f.endsWith('.json'));
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
     const overrides = [];
     for (const f of files) {
       const json = await readJsonSafe(join(dir, f));
@@ -88,21 +88,27 @@ async function main() {
   const componentOverrides = await readComponentOverrides();
   const manifest = buildInteractionManifest(catalogs, componentOverrides);
 
-  const outRoot = join(rootDir, 'interaction-manifest.json');
-  const outPublic = join(rootDir, 'public', 'interaction-manifest.json');
+  const outRoot = join(rootDir, "interaction-manifest.json");
+  const outPublic = join(rootDir, "public", "interaction-manifest.json");
 
-  const jsonText = JSON.stringify(manifest, null, 2) + '\n';
-  await fs.writeFile(outRoot, jsonText, 'utf-8');
-  await fs.writeFile(outPublic, jsonText, 'utf-8');
+  const jsonText = JSON.stringify(manifest, null, 2) + "\n";
+  await fs.writeFile(outRoot, jsonText, "utf-8");
+  await fs.writeFile(outPublic, jsonText, "utf-8");
 
-  console.log('✅ interaction-manifest.json generated:', Object.keys(manifest.routes).length, 'routes');
+  console.log(
+    "✅ interaction-manifest.json generated:",
+    Object.keys(manifest.routes).length,
+    "routes"
+  );
 }
 
 // If executed as a script, run main(); when imported (tests), do nothing.
-if (import.meta.url === `file://${__filename}`) {
+// Use a cross-platform check that works on Windows and POSIX
+import { fileURLToPath as _fileURLToPath } from "url";
+const _isMain = _fileURLToPath(import.meta.url) === __filename;
+if (_isMain) {
   main().catch((err) => {
-    console.error('❌ Failed to generate interaction-manifest.json', err);
+    console.error("❌ Failed to generate interaction-manifest.json", err);
     process.exit(1);
   });
 }
-
