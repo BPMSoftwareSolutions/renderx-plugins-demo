@@ -1,4 +1,4 @@
-import { showSelectionOverlay, hideSelectionOverlay } from "./select.stage-crew";
+import { showSelectionOverlay } from "./select.stage-crew";
 
 export const sequence = {
   id: "canvas-component-select-symphony",
@@ -8,8 +8,24 @@ export const sequence = {
       id: "select",
       name: "Select",
       beats: [
-        { beat: 1, event: "canvas:component:select", title: "Show Selection", dynamics: "mf", handler: "showSelectionOverlay", timing: "immediate", kind: "stage-crew" },
-        { beat: 2, event: "canvas:component:select:notify", title: "Notify UI", dynamics: "mf", handler: "notifyUi", timing: "immediate", kind: "pure" },
+        {
+          beat: 1,
+          event: "canvas:component:select",
+          title: "Show Selection",
+          dynamics: "mf",
+          handler: "showSelectionOverlay",
+          timing: "immediate",
+          kind: "stage-crew",
+        },
+        {
+          beat: 2,
+          event: "canvas:component:select:notify",
+          title: "Notify UI",
+          dynamics: "mf",
+          handler: "notifyUi",
+          timing: "immediate",
+          kind: "pure",
+        },
       ],
     },
   ],
@@ -21,4 +37,3 @@ export const handlers = {
     data?.onSelected?.(data?.id);
   },
 };
-

@@ -216,7 +216,7 @@ export class StageCueLogger {
     try {
       const line = JSON.stringify(cue);
       this.fs.appendFileSync(this.filePath, line + "\n");
-    } catch (e) {
+    } catch {
       // swallow errors in tests
     }
   }
@@ -415,7 +415,7 @@ export class StageDomGuard {
     }
   }
 
-  private static maybeWarn(op: string, el: any): void {
+  private static maybeWarn(op: string, _el: any): void {
     try {
       if (this.silenced > 0) return;
       // In tests/CI, keep output concise

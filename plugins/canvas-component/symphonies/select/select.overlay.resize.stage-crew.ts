@@ -74,7 +74,7 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
         try {
           playFn(pluginId, seqId, payload);
           return;
-        } catch (err) {
+        } catch {
           // Switch to DOM fallback for this drag session if conductor.play fails
           useDomFallback = true;
         }

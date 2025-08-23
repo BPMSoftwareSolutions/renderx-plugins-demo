@@ -90,7 +90,7 @@ export const handlers = {
         }
         list = items;
       }
-    } catch (e) {
+    } catch {
       // fallback to legacy data list on error
       try {
         const mod = await import("../../../data/components.json", {
