@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
-    "test": "vitest",
+    "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "ci": "npm run lint && npm test"
