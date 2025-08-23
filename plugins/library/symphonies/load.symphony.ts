@@ -6,8 +6,22 @@ export const sequence = {
       id: "load",
       name: "Load",
       beats: [
-        { beat: 1, event: "library:components:load", title: "Load Components", dynamics: "mf", handler: "loadComponents", timing: "immediate" },
-        { beat: 2, event: "library:components:notify-ui", title: "Notify UI", dynamics: "mf", handler: "notifyUi", timing: "after-beat" },
+        {
+          beat: 1,
+          event: "library:components:load",
+          title: "Load Components",
+          dynamics: "mf",
+          handler: "loadComponents",
+          timing: "immediate",
+        },
+        {
+          beat: 2,
+          event: "library:components:notify-ui",
+          title: "Notify UI",
+          dynamics: "mf",
+          handler: "notifyUi",
+          timing: "immediate",
+        },
       ],
     },
   ],
@@ -22,8 +36,11 @@ function mapJsonComponentToTemplate(json: any) {
     id: `json-${type}`,
     name,
     template: {
-      tag: type === "input" ? "input" : (type || "div"),
-      text: type === "button" ? (json?.integration?.properties?.defaultValues?.content || "Click Me") : undefined,
+      tag: type === "input" ? "input" : type || "div",
+      text:
+        type === "button"
+          ? json?.integration?.properties?.defaultValues?.content || "Click Me"
+          : undefined,
       classes,
       // Pass through base CSS and variable map so StageCrew can inject styles
       css: json?.ui?.styles?.css,
@@ -40,7 +57,7 @@ export const handlers = {
   async loadComponents(_data: any, ctx: any) {
     let list: any[] = [];
     try {
-      if (typeof window !== "undefined" && typeof fetch === "function") {
+      if (typeof globalThis !== "undefined" && typeof fetch === "function") {
         // Browser/dev server path: serve from public/jsone-components using JSON index
         const idxRes = await fetch("/jsone-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
@@ -57,11 +74,17 @@ export const handlers = {
         list = items;
       } else {
         // Test/Node path: use repo json-components folder
-        const idx = await import("../../../json-components/index.json", { with: { type: "json" } } as any);
-        const files: string[] = idx?.default?.components || idx?.components || [];
+        const idx = await import("../../../json-components/index.json", {
+          with: { type: "json" },
+        } as any);
+        const files: string[] =
+          idx?.default?.components || idx?.components || [];
         const items: any[] = [];
         for (const f of files) {
-          const mod = await import(/* @vite-ignore */ `../../../json-components/${f}`, { with: { type: "json" } } as any);
+          const mod = await import(
+            /* @vite-ignore */ `../../../json-components/${f}`,
+            { with: { type: "json" } } as any
+          );
           const json = mod?.default || mod;
           items.push(mapJsonComponentToTemplate(json));
         }
@@ -70,7 +93,9 @@ export const handlers = {
     } catch (e) {
       // fallback to legacy data list on error
       try {
-        const mod = await import("../../../data/components.json", { with: { type: "json" } } as any);
+        const mod = await import("../../../data/components.json", {
+          with: { type: "json" },
+        } as any);
         list = mod?.default || [];
       } catch {}
     }
@@ -81,4 +106,3 @@ export const handlers = {
     data?.onComponentsLoaded?.(ctx.payload.components);
   },
 };
-

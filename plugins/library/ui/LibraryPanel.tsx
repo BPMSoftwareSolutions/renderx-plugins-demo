@@ -1,6 +1,58 @@
 import React from "react";
 import { useConductor } from "../../../src/conductor";
 
+function varsToStyle(vars?: Record<string, any>): React.CSSProperties {
+  const style: React.CSSProperties = {};
+  if (!vars || typeof vars !== "object") return style;
+  for (const [k, v] of Object.entries(vars)) {
+    const name = k.startsWith("--") ? k : `--${k}`;
+    // @ts-expect-error allow custom CSS var keys on style object
+    style[name] = String(v);
+  }
+  return style;
+}
+
+export function LibraryPreview({
+  component,
+  conductor,
+}: {
+  component: any;
+  conductor: any;
+}) {
+  const template = component?.template || {};
+  const classes: string[] = Array.isArray(template?.classes)
+    ? template.classes
+    : [];
+  const ChildTag: any = template?.tag || "div";
+
+  return (
+    <li
+      style={{ cursor: "grab", ...varsToStyle(template?.cssVariables) }}
+      draggable
+      onDragStart={(e) => {
+        conductor?.play?.(
+          "LibraryComponentPlugin",
+          "library-component-drag-symphony",
+          {
+            event: "library:component:drag:start",
+            domEvent: e,
+            component,
+          }
+        );
+      }}
+    >
+      {typeof template?.css === "string" && template.css.trim() ? (
+        <style>{template.css}</style>
+      ) : null}
+      {React.createElement(
+        ChildTag,
+        { className: classes.join(" ") },
+        typeof template?.text === "string" ? template.text : null
+      )}
+    </li>
+  );
+}
+
 export function LibraryPanel() {
   const conductor = useConductor();
   const [items, setItems] = React.useState<any[]>([]);
@@ -13,27 +65,24 @@ export function LibraryPanel() {
   }, [conductor]);
 
   return (
-    <div className="p-3 h-full" style={{ borderRight: "1px solid #eee", overflow: "auto" }}>
+    <div
+      className="p-3 h-full"
+      style={{ borderRight: "1px solid #eee", overflow: "auto" }}
+    >
       <h3>Library</h3>
-      <ul style={{ display: "grid", gap: 8 }}>
+      <ul
+        style={{
+          display: "grid",
+          gap: 8,
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+        }}
+      >
         {safeItems.map((c) => (
-          <li
-            key={c.id}
-            style={{ cursor: "grab" }}
-            draggable
-            onDragStart={(e) => {
-              conductor?.play?.("LibraryComponentPlugin", "library-component-drag-symphony", {
-                event: "library:component:drag:start",
-                domEvent: e,
-                component: c,
-              });
-            }}
-          >
-            {c.name}
-          </li>
+          <LibraryPreview key={c.id} component={c} conductor={conductor} />
         ))}
       </ul>
     </div>
   );
 }
-

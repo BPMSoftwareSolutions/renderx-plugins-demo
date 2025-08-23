@@ -37,7 +37,7 @@ export const handlers = {
     ensurePayload(dt, data?.component);
 
     try {
-      if (typeof document !== "undefined" && dt?.setDragImage) {
+      if (dt?.setDragImage) {
         const { width, height, targetEl } = computeGhostSize(
           e,
           data?.component
