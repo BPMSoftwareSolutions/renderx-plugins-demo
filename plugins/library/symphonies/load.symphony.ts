@@ -17,6 +17,9 @@ function mapJsonComponentToTemplate(json: any) {
       // Pass through base CSS and variable map so StageCrew can inject styles
       css: json?.ui?.styles?.css,
       cssVariables: json?.ui?.styles?.variables || {},
+      // Library-only style layer for preview (non-breaking optional fields)
+      cssLibrary: json?.ui?.styles?.library?.css,
+      cssVariablesLibrary: json?.ui?.styles?.library?.variables || {},
       // Default size used for initial inline dimensions
       dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
       // Inline style will be reserved for position only in create handler

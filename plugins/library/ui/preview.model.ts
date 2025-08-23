@@ -3,6 +3,7 @@ export type PreviewModel = {
   classes: string[];
   text?: string;
   cssText?: string;
+  cssTextLibrary?: string;
   cssVars: Record<string, string>;
 };
 
@@ -13,13 +14,26 @@ export function computePreviewModel(component: any): PreviewModel {
     ? tpl.classes.filter((c: any) => typeof c === "string")
     : [];
   const text = typeof tpl.text === "string" ? tpl.text : undefined;
-  const cssText = typeof tpl.css === "string" && tpl.css.trim() ? tpl.css : undefined;
-  const vars = tpl.cssVariables && typeof tpl.cssVariables === "object" ? tpl.cssVariables : {};
+  const cssText =
+    typeof tpl.css === "string" && tpl.css.trim() ? tpl.css : undefined;
+  const cssTextLibrary =
+    typeof tpl.cssLibrary === "string" && tpl.cssLibrary.trim()
+      ? tpl.cssLibrary
+      : undefined;
+  const baseVars =
+    tpl.cssVariables && typeof tpl.cssVariables === "object"
+      ? tpl.cssVariables
+      : {};
+  const libVars =
+    tpl.cssVariablesLibrary && typeof tpl.cssVariablesLibrary === "object"
+      ? tpl.cssVariablesLibrary
+      : {};
+  // Merge with library overrides winning
+  const merged: Record<string, string> = { ...baseVars, ...libVars } as any;
   const cssVars: Record<string, string> = {};
-  for (const [k, v] of Object.entries(vars)) {
+  for (const [k, v] of Object.entries(merged)) {
     const key = String(k).startsWith("--") ? String(k) : `--${k}`;
     cssVars[key] = String(v);
   }
-  return { tag, classes, text, cssText, cssVars };
+  return { tag, classes, text, cssText, cssTextLibrary, cssVars };
 }
-
