@@ -33,11 +33,11 @@ export const handlers = {
     let list: any[] = [];
     try {
       if (typeof globalThis !== "undefined" && typeof fetch === "function") {
-        // Browser/dev server path: serve from public/jsone-components using JSON index
-        const idxRes = await fetch("/jsone-components/index.json");
+        // Browser/dev server path: serve from public/json-components using JSON index
+        const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
         const files: string[] = idx?.components || [];
-        const base = "/jsone-components/";
+        const base = "/json-components/";
         const items: any[] = [];
         for (const f of files) {
           const res = await fetch(base + f);
