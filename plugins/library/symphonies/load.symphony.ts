@@ -4,6 +4,15 @@ function mapJsonComponentToTemplate(json: any) {
   const name = json?.metadata?.name || type;
   const classes = ["rx-comp", `rx-${type}`];
   const ci = json?.integration?.canvasIntegration || {};
+
+  // Handle icon data attributes
+  const icon = json?.ui?.icon || {};
+  const attrs: any = {};
+  if (icon?.mode === "emoji" && icon?.value) {
+    attrs["data-icon"] = String(icon.value);
+    if (icon.position) attrs["data-icon-pos"] = String(icon.position);
+  }
+
   return {
     id: `json-${type}`,
     name,
@@ -17,6 +26,11 @@ function mapJsonComponentToTemplate(json: any) {
       // Pass through base CSS and variable map so StageCrew can inject styles
       css: json?.ui?.styles?.css,
       cssVariables: json?.ui?.styles?.variables || {},
+      // Library-only style layer for preview (non-breaking optional fields)
+      cssLibrary: json?.ui?.styles?.library?.css,
+      cssVariablesLibrary: json?.ui?.styles?.library?.variables || {},
+      // Icon and other data attributes
+      attributes: attrs,
       // Default size used for initial inline dimensions
       dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
       // Inline style will be reserved for position only in create handler
@@ -30,11 +44,11 @@ export const handlers = {
     let list: any[] = [];
     try {
       if (typeof globalThis !== "undefined" && typeof fetch === "function") {
-        // Browser/dev server path: serve from public/jsone-components using JSON index
-        const idxRes = await fetch("/jsone-components/index.json");
+        // Browser/dev server path: serve from public/json-components using JSON index
+        const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
         const files: string[] = idx?.components || [];
-        const base = "/jsone-components/";
+        const base = "/json-components/";
         const items: any[] = [];
         for (const f of files) {
           const res = await fetch(base + f);

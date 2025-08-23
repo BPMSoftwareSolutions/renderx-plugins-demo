@@ -9,9 +9,10 @@
   "version": "0.1.0",
   "private": "true",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm run sync:json-components && vite",
+    "build": "npm run sync:json-components && vite build",
     "preview": "vite preview",
+    "sync:json-components": "node scripts/sync-json-components.js",
     "lint": "eslint .",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",

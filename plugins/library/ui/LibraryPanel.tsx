@@ -38,9 +38,13 @@ export function LibraryPreview({
       }}
     >
       {model.cssText ? <style>{model.cssText}</style> : null}
+      {model.cssTextLibrary ? <style>{model.cssTextLibrary}</style> : null}
       {React.createElement(
         ChildTag,
-        { className: model.classes.join(" ") },
+        {
+          className: model.classes.join(" "),
+          ...model.attributes,
+        },
         model.text || null
       )}
     </li>
@@ -61,7 +65,7 @@ export function LibraryPanel() {
 
   return (
     <div
-      className="p-3 h-full"
+      className="p-3 h-full rx-lib"
       style={{ borderRight: "1px solid #eee", overflow: "auto" }}
     >
       <h3>Library</h3>
