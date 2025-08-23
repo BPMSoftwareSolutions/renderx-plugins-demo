@@ -52,19 +52,14 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
         event === "move"
           ? { ...base, dx, dy, phase: "move" }
           : { ...base, phase: event };
-      const eventId =
+      const { seqId } =
         event === "start"
-          ? "canvas:component:resize:start"
+          ? { seqId: "canvas-component-resize-start-symphony" }
           : event === "end"
-          ? "canvas:component:resize:end"
-          : "canvas:component:resize:move";
+          ? { seqId: "canvas-component-resize-end-symphony" }
+          : { seqId: "canvas-component-resize-move-symphony" };
       if (typeof play === "function") {
-        play(
-          "CanvasComponentPlugin",
-          "canvas-component-resize-symphony",
-          payload,
-          { eventId }
-        );
+        play("CanvasComponentPlugin", seqId, payload);
       } else {
         if (event !== "move") return;
         // Fallback direct style updates for environments without conductor

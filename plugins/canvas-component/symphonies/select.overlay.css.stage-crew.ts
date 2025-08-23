@@ -8,7 +8,7 @@ export function ensureOverlayCss() {
     document.head.appendChild(el);
   }
   const css = `
-  .rx-selection-overlay { position:absolute; border: 1px solid #3b82f6; box-shadow: 0 0 0 1px #fff inset; pointer-events: none; z-index: 10; }
+  .rx-selection-overlay { position:absolute; border: 1px solid #3b82f6; box-shadow: 0 0 0 1px #fff inset; pointer-events: none; z-index: 10; box-sizing: border-box; }
   .rx-selection-overlay .rx-handle { position:absolute; width:8px; height:8px; background:#3b82f6; border:1px solid #fff; border-radius:50%; box-sizing:border-box; pointer-events: auto; }
   .rx-selection-overlay .rx-handle.nw { left:-4px; top:-4px; cursor: nwse-resize; }
   .rx-selection-overlay .rx-handle.n  { left:50%; top:-4px; transform: translateX(-50%); cursor: ns-resize; }
@@ -23,4 +23,3 @@ export function ensureOverlayCss() {
     el.appendChild(document.createTextNode(css));
   }
 }
-

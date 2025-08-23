@@ -1,7 +1,10 @@
 import { ensureOverlayCss } from "./select.overlay.css.stage-crew";
 
 export function getCanvasOrThrow(): HTMLElement {
-  const canvas = typeof document !== "undefined" ? document.getElementById("rx-canvas") : null;
+  const canvas =
+    typeof document !== "undefined"
+      ? document.getElementById("rx-canvas")
+      : null;
   if (!canvas) throw new Error("#rx-canvas not found");
   return canvas;
 }
@@ -9,12 +12,14 @@ export function getCanvasOrThrow(): HTMLElement {
 export function ensureOverlay(): HTMLDivElement {
   ensureOverlayCss();
   const canvas = getCanvasOrThrow();
-  let ov = document.getElementById("rx-selection-overlay") as HTMLDivElement | null;
+  let ov = document.getElementById(
+    "rx-selection-overlay"
+  ) as HTMLDivElement | null;
   if (!ov) {
     ov = document.createElement("div");
     ov.id = "rx-selection-overlay";
     ov.className = "rx-selection-overlay";
-    const positions = ["nw","n","ne","e","se","s","sw","w"] as const;
+    const positions = ["nw", "n", "ne", "e", "se", "s", "sw", "w"] as const;
     for (const p of positions) {
       const h = document.createElement("div");
       h.className = `rx-handle ${p}`;
@@ -31,6 +36,30 @@ export function getCanvasRect() {
 
 export function applyOverlayRectForEl(ov: HTMLDivElement, el: HTMLElement) {
   const canvasRect = getCanvasRect();
+
+  // Prefer inline styles when available for exact match
+  const styleLeft = parseFloat(el.style.left || "");
+  const styleTop = parseFloat(el.style.top || "");
+  const styleWidth = parseFloat(el.style.width || "");
+  const styleHeight = parseFloat(el.style.height || "");
+
+  if (
+    Number.isFinite(styleLeft) &&
+    Number.isFinite(styleTop) &&
+    Number.isFinite(styleWidth) &&
+    Number.isFinite(styleHeight)
+  ) {
+    Object.assign(ov.style, {
+      left: `${Math.round(styleLeft)}px`,
+      top: `${Math.round(styleTop)}px`,
+      width: `${Math.round(styleWidth)}px`,
+      height: `${Math.round(styleHeight)}px`,
+      display: "block",
+    } as Partial<CSSStyleDeclaration>);
+    return;
+  }
+
+  // Fallback to bounding client rect
   const r = el.getBoundingClientRect();
   Object.assign(ov.style, {
     left: `${Math.round(r.left - canvasRect.left)}px`,
@@ -40,4 +69,3 @@ export function applyOverlayRectForEl(ov: HTMLDivElement, el: HTMLElement) {
     display: "block",
   } as Partial<CSSStyleDeclaration>);
 }
-

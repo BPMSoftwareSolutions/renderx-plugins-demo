@@ -119,4 +119,12 @@ export const endResize = (data: any) => {
       onResizeEnd({ id });
     } catch {}
   }
+  // resync overlay to final inline styles
+  try {
+    const el = document.getElementById(String(id)) as HTMLElement | null;
+    const ov = document.getElementById(
+      "rx-selection-overlay"
+    ) as HTMLDivElement | null;
+    if (el && ov) applyOverlayRectForEl(ov, el);
+  } catch {}
 };
