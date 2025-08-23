@@ -41,25 +41,32 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
 
     const clamp = (v: number, min = 1) => (v < min ? min : v);
 
-    const call = (dx: number, dy: number) => {
+    const call = (
+      dx: number,
+      dy: number,
+      event: "start" | "move" | "end" = "move"
+    ) => {
       const play = conductor?.play || (window as any).RenderX?.conductor?.play;
-      const payload = {
-        id,
-        dir,
-        startLeft,
-        startTop,
-        startWidth,
-        startHeight,
-        dx,
-        dy,
-      };
+      const base = { id, dir, startLeft, startTop, startWidth, startHeight };
+      const payload =
+        event === "move"
+          ? { ...base, dx, dy, phase: "move" }
+          : { ...base, phase: event };
+      const eventId =
+        event === "start"
+          ? "canvas:component:resize:start"
+          : event === "end"
+          ? "canvas:component:resize:end"
+          : "canvas:component:resize:move";
       if (typeof play === "function") {
         play(
           "CanvasComponentPlugin",
           "canvas-component-resize-symphony",
-          payload
+          payload,
+          { eventId }
         );
       } else {
+        if (event !== "move") return;
         // Fallback direct style updates for environments without conductor
         let left = startLeft;
         let top = startTop;
@@ -89,14 +96,16 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     const onMove = (ev: MouseEvent) => {
       const dx = ev.clientX - startX;
       const dy = ev.clientY - startY;
-      call(dx, dy);
+      call(dx, dy, "move");
     };
 
     const onUp = () => {
+      call(0, 0, "end");
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseup", onUp);
     };
 
+    call(0, 0, "start");
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseup", onUp);
   };
