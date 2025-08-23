@@ -1,13 +1,14 @@
 import React from "react";
 import { useConductor } from "../../../src/conductor";
 
-function varsToStyle(vars?: Record<string, any>): React.CSSProperties {
+import { computePreviewModel } from "./preview.model";
+
+function varsToStyle(vars?: Record<string, string>): React.CSSProperties {
   const style: React.CSSProperties = {};
-  if (!vars || typeof vars !== "object") return style;
+  if (!vars) return style;
   for (const [k, v] of Object.entries(vars)) {
-    const name = k.startsWith("--") ? k : `--${k}`;
     // @ts-expect-error allow custom CSS var keys on style object
-    style[name] = String(v);
+    style[k] = v;
   }
   return style;
 }
@@ -19,15 +20,12 @@ export function LibraryPreview({
   component: any;
   conductor: any;
 }) {
-  const template = component?.template || {};
-  const classes: string[] = Array.isArray(template?.classes)
-    ? template.classes
-    : [];
-  const ChildTag: any = template?.tag || "div";
+  const model = computePreviewModel(component);
+  const ChildTag: any = model.tag || "div";
 
   return (
     <li
-      style={{ cursor: "grab", ...varsToStyle(template?.cssVariables) }}
+      style={{ cursor: "grab", ...varsToStyle(model.cssVars) }}
       draggable
       onDragStart={(e) => {
         conductor?.play?.(
@@ -41,13 +39,11 @@ export function LibraryPreview({
         );
       }}
     >
-      {typeof template?.css === "string" && template.css.trim() ? (
-        <style>{template.css}</style>
-      ) : null}
+      {model.cssText ? <style>{model.cssText}</style> : null}
       {React.createElement(
         ChildTag,
-        { className: classes.join(" ") },
-        typeof template?.text === "string" ? template.text : null
+        { className: model.classes.join(" ") },
+        model.text || null
       )}
     </li>
   );

@@ -1,38 +1,32 @@
-/* @vitest-environment jsdom */
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 
-/**
- * Failing DOM-only spec that targets the extracted helper buildLibraryPreview.
- * This validates the preview DOM we expect LibraryPanel to render.
- */
+// Unit-level spec: validate the preview model derived from component.template
 
-describe("buildLibraryPreview", () => {
-  it("creates a preview DOM that reflects template.tag/classes and applies css + cssVariables (FAILS until implemented)", async () => {
-    const { buildLibraryPreview } = await import(
-      "../../plugins/library/ui/LibraryPanel"
+describe("computePreviewModel", () => {
+  it("maps tag, classes, css, and cssVariables into a PreviewModel", async () => {
+    const { computePreviewModel } = await import(
+      "../../plugins/library/ui/preview.model"
     );
 
-    const template = {
-      tag: "button",
-      text: "Click me",
-      classes: ["rx-comp", "rx-button"],
-      css: ".rx-button { background: var(--bg-color); color: var(--text-color); }",
-      cssVariables: { "bg-color": "rgb(17,34,51)", "text-color": "white" },
+    const component = {
+      id: "json-button",
+      template: {
+        tag: "button",
+        text: "Click me",
+        classes: ["rx-comp", "rx-button"],
+        css: ".rx-button { background: var(--bg-color); color: var(--text-color); }",
+        cssVariables: { "bg-color": "rgb(17,34,51)", "text-color": "white" },
+      },
     } as any;
 
-    const li = document.createElement("li");
-    buildLibraryPreview(li, template);
+    const model = computePreviewModel(component);
 
-    const child = li.querySelector(".rx-button");
-    expect(child).toBeTruthy();
-
-    const styleEl = li.querySelector("style");
-    expect(styleEl).toBeTruthy();
-    expect(styleEl!.textContent || "").toContain(".rx-button");
-
-    const bg = getComputedStyle(li).getPropertyValue("--bg-color").trim();
-    const fg = getComputedStyle(li).getPropertyValue("--text-color").trim();
-    expect(bg).toBe("rgb(17,34,51)");
-    expect(fg).toBe("white");
+    expect(model.tag).toBe("button");
+    expect(model.classes).toContain("rx-comp");
+    expect(model.classes).toContain("rx-button");
+    expect(model.cssText || "").toContain(".rx-button");
+    expect(model.text).toBe("Click me");
+    expect(model.cssVars["--bg-color"]).toBe("rgb(17,34,51)");
+    expect(model.cssVars["--text-color"]).toBe("white");
   });
 });

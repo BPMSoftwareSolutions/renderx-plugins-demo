@@ -1,0 +1,25 @@
+export type PreviewModel = {
+  tag: string;
+  classes: string[];
+  text?: string;
+  cssText?: string;
+  cssVars: Record<string, string>;
+};
+
+export function computePreviewModel(component: any): PreviewModel {
+  const tpl = (component && component.template) || {};
+  const tag = typeof tpl.tag === "string" && tpl.tag ? tpl.tag : "div";
+  const classes: string[] = Array.isArray(tpl.classes)
+    ? tpl.classes.filter((c: any) => typeof c === "string")
+    : [];
+  const text = typeof tpl.text === "string" ? tpl.text : undefined;
+  const cssText = typeof tpl.css === "string" && tpl.css.trim() ? tpl.css : undefined;
+  const vars = tpl.cssVariables && typeof tpl.cssVariables === "object" ? tpl.cssVariables : {};
+  const cssVars: Record<string, string> = {};
+  for (const [k, v] of Object.entries(vars)) {
+    const key = String(k).startsWith("--") ? String(k) : `--${k}`;
+    cssVars[key] = String(v);
+  }
+  return { tag, classes, text, cssText, cssVars };
+}
+
