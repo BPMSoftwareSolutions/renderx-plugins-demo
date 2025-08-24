@@ -9,6 +9,18 @@ function readNumericPx(value: string): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+function getResizeConfig(el: HTMLElement) {
+  const enabled =
+    (el.getAttribute("data-resize-enabled") || "true") !== "false";
+  const minW = parseFloat(el.getAttribute("data-resize-min-w") || "1");
+  const minH = parseFloat(el.getAttribute("data-resize-min-h") || "1");
+  return {
+    enabled,
+    minW: Number.isFinite(minW) ? Math.max(1, minW) : 1,
+    minH: Number.isFinite(minH) ? Math.max(1, minH) : 1,
+  };
+}
+
 export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
   if ((ov as any)._rxResizeAttached) return;
   (ov as any)._rxResizeAttached = true;
@@ -26,6 +38,10 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     if (!dir || !id) return;
     const el = document.getElementById(id) as HTMLElement | null;
     if (!el) return;
+
+    // Respect per-element enable flag
+    const cfg = getResizeConfig(el);
+    if (!cfg.enabled) return;
 
     const canvasRect = getCanvasRect();
     const rect = el.getBoundingClientRect();
@@ -84,17 +100,17 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
       let top = startTop;
       let width = startWidth;
       let height = startHeight;
-      if (dir.includes("e")) width = clamp(startWidth + dx);
-      if (dir.includes("s")) height = clamp(startHeight + dy);
+      if (dir.includes("e")) width = clamp(startWidth + dx, cfg.minW);
+      if (dir.includes("s")) height = clamp(startHeight + dy, cfg.minH);
       if (dir.includes("w")) {
-        width = clamp(startWidth - dx);
+        width = clamp(startWidth - dx, cfg.minW);
         left = startLeft + dx;
-        if (width <= 1) left = startLeft + (startWidth - 1);
+        if (width <= cfg.minW) left = startLeft + (startWidth - cfg.minW);
       }
       if (dir.includes("n")) {
-        height = clamp(startHeight - dy);
+        height = clamp(startHeight - dy, cfg.minH);
         top = startTop + dy;
-        if (height <= 1) top = startTop + (startHeight - 1);
+        if (height <= cfg.minH) top = startTop + (startHeight - cfg.minH);
       }
       el.style.position = "absolute";
       el.style.left = `${Math.round(left)}px`;

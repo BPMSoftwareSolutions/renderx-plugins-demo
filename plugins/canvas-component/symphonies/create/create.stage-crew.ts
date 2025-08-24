@@ -48,6 +48,16 @@ export const createNode = (data: any, ctx: any) => {
   if (typeof tpl.text === "string" && tpl.text.length)
     el.textContent = String(tpl.text);
 
+  // 6.5) Apply arbitrary attributes from the template (data-* for tools, roles, etc.)
+  if (tpl?.attributes && typeof tpl.attributes === "object") {
+    for (const [k, v] of Object.entries(tpl.attributes)) {
+      try {
+        if (v == null) continue;
+        el.setAttribute(k, String(v));
+      } catch {}
+    }
+  }
+
   // Append to canvas or target container
   const targetParent =
     (data?.containerId && document.getElementById(String(data.containerId))) ||

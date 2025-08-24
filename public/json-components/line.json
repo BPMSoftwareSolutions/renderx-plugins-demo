@@ -12,7 +12,7 @@
   "ui": {
     "template": "<div class=\"rx-comp rx-line\"></div>",
     "styles": {
-      "css": ".rx-line { position:absolute; --x1: 0; --y1: 0; --x2: 100; --y2: 0; --stroke: #111827; --thickness: 2; width: 100px; height: 100px; } .rx-line::before { content: ''; position:absolute; left: calc(min(var(--x1), var(--x2)) * 1px); top: calc(var(--y1) * 1px); width: calc((max(var(--x1), var(--x2)) - min(var(--x1), var(--x2))) * 1px); height: 0; border-top: calc(var(--thickness) * 1px) solid var(--stroke); }",
+      "css": ".rx-line { border: none; border-top: 1px solid var(--line-color, #e5e7eb); margin: var(--line-margin, 8px 0); width: 100%; transition: border-color .2s ease; } .rx-line[data-orientation='vertical'] { border-top: none; border-left: 1px solid var(--line-color, #e5e7eb); height: 100%; width: auto; }",
       "variables": {
         "x1": 0,
         "y1": 0,
@@ -29,7 +29,20 @@
         "css": ".rx-lib .rx-line { opacity: 0.95; }"
       }
     },
-    "icon": { "mode": "emoji", "value": "📏", "position": "start" }
+    "icon": { "mode": "emoji", "value": "📏", "position": "start" },
+    "tools": {
+      "resize": {
+        "enabled": true,
+        "handles": [ "nw", "n", "ne", "e", "se", "s", "sw", "w" ],
+        "constraints": {
+          "min": {
+            "w": 50,
+            "h": 5
+          },
+          "max": { "h": 5 }
+        }
+      }
+    }
   },
   "integration": {
     "properties": {
@@ -40,13 +53,12 @@
       "defaultValues": { "stroke": "#111827", "thickness": 2 }
     },
     "canvasIntegration": {
-      "resizable": false,
+      "resizable": true,
       "draggable": true,
       "selectable": true,
       "defaultWidth": 120,
       "defaultHeight": 60,
-      "allowChildElements": false,
-      "overlayKind": "line"
+      "allowChildElements": false
     }
   },
   "interactions": {
@@ -62,17 +74,17 @@
       "pluginId": "CanvasComponentDragPlugin",
       "sequenceId": "canvas-component-drag-symphony"
     },
-    "canvas.component.resize.line.start": {
-      "pluginId": "CanvasLineResizeStartPlugin",
-      "sequenceId": "canvas-line-resize-start-symphony"
+    "canvas.component.resize.start": {
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony"
     },
-    "canvas.component.resize.line.move": {
-      "pluginId": "CanvasLineResizeMovePlugin",
-      "sequenceId": "canvas-line-resize-move-symphony"
+    "canvas.component.resize.move": {
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony"
     },
-    "canvas.component.resize.line.end": {
-      "pluginId": "CanvasLineResizeEndPlugin",
-      "sequenceId": "canvas-line-resize-end-symphony"
+    "canvas.component.resize.end": {
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony"
     }
   }
 }

@@ -7,6 +7,18 @@ function clamp(v: number, min = 1) {
   return v < min ? min : v;
 }
 
+function getResizeConfig(el: HTMLElement) {
+  const enabled =
+    (el.getAttribute("data-resize-enabled") || "true") !== "false";
+  const minW = parseFloat(el.getAttribute("data-resize-min-w") || "1");
+  const minH = parseFloat(el.getAttribute("data-resize-min-h") || "1");
+  return {
+    enabled,
+    minW: Number.isFinite(minW) ? Math.max(1, minW) : 1,
+    minH: Number.isFinite(minH) ? Math.max(1, minH) : 1,
+  };
+}
+
 export const startResize = (data: any) => {
   const { id, onResizeStart } = data || {};
   if (typeof onResizeStart === "function") {
@@ -35,6 +47,17 @@ export const updateSize = (data: any) => {
       ? (document.getElementById(String(id)) as HTMLElement | null)
       : null;
   if (!el) throw new Error(`Canvas component with id ${id} not found`);
+
+  const cfg = getResizeConfig(el);
+  if (!cfg.enabled) {
+    return {
+      id,
+      left: startLeft,
+      top: startTop,
+      width: startWidth,
+      height: startHeight,
+    };
+  }
 
   const canvasRect = getCanvasRect();
 
@@ -79,17 +102,17 @@ export const updateSize = (data: any) => {
     };
   }
 
-  if (String(dir).includes("e")) width = clamp(startWidth + _dx);
-  if (String(dir).includes("s")) height = clamp(startHeight + _dy);
+  if (String(dir).includes("e")) width = clamp(startWidth + _dx, cfg.minW);
+  if (String(dir).includes("s")) height = clamp(startHeight + _dy, cfg.minH);
   if (String(dir).includes("w")) {
-    width = clamp(startWidth - _dx);
+    width = clamp(startWidth - _dx, cfg.minW);
     left = startLeft + _dx;
-    if (width <= 1) left = startLeft + (startWidth - 1);
+    if (width <= cfg.minW) left = startLeft + (startWidth - cfg.minW);
   }
   if (String(dir).includes("n")) {
-    height = clamp(startHeight - _dy);
+    height = clamp(startHeight - _dy, cfg.minH);
     top = startTop + _dy;
-    if (height <= 1) top = startTop + (startHeight - 1);
+    if (height <= cfg.minH) top = startTop + (startHeight - cfg.minH);
   }
 
   el.style.position = "absolute";
@@ -128,4 +151,3 @@ export const endResize = (data: any) => {
     if (el && ov) applyOverlayRectForEl(ov, el);
   } catch {}
 };
-

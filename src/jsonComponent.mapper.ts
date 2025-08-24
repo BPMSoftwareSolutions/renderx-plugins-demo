@@ -46,6 +46,23 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
       ? "div"
       : type || "div";
 
+  // Map ui.tools.resize → data-* attributes so overlay/resize can be data-driven
+  const tools = json?.ui?.tools || {};
+  const resize = tools?.resize || {};
+  if (resize?.enabled === false) attrs["data-resize-enabled"] = "false";
+  const handles: string[] = Array.isArray(resize?.handles)
+    ? resize.handles.filter((h: any) => typeof h === "string")
+    : [];
+  if (handles.length) attrs["data-resize-handles"] = handles.join(",");
+  const minW =
+    resize?.constraints?.min?.w ??
+    json?.integration?.canvasIntegration?.minWidth;
+  const minH =
+    resize?.constraints?.min?.h ??
+    json?.integration?.canvasIntegration?.minHeight;
+  if (minW != null) attrs["data-resize-min-w"] = String(minW);
+  if (minH != null) attrs["data-resize-min-h"] = String(minH);
+
   return {
     tag,
     text:
