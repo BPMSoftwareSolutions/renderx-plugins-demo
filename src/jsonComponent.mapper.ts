@@ -15,7 +15,7 @@ export type RuntimeTemplate = {
 };
 
 export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
-  const type = json?.metadata?.replaces || json?.metadata?.type || "div";
+  const type = json?.metadata?.type || json?.metadata?.replaces || "div";
   const name = json?.metadata?.name || type;
   // Base classes are derived once here
   const classes = ["rx-comp", `rx-${type}`];
@@ -33,8 +33,18 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
   const overlayKind = json?.integration?.canvasIntegration?.overlayKind;
   if (overlayKind) attrs["data-overlay"] = String(overlayKind);
 
+  // Container role flag enables child appending and relative positioning host
+  const isContainer =
+    !!json?.integration?.canvasIntegration?.allowChildElements;
+  if (isContainer) attrs["data-role"] = "container";
+
   // Normalize to safe HTML tag for preview/canvas
-  const tag = type === "input" ? "input" : type === "line" ? "div" : type || "div";
+  const tag =
+    type === "input"
+      ? "input"
+      : type === "line" || type === "container"
+      ? "div"
+      : type || "div";
 
   return {
     tag,
@@ -52,4 +62,3 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
     style: {},
   } as RuntimeTemplate;
 }
-

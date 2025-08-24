@@ -16,6 +16,10 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "LibraryComponentDropPlugin",
     sequenceId: "library-component-drop-symphony",
   },
+  "library.container.drop": {
+    pluginId: "LibraryComponentDropPlugin",
+    sequenceId: "library-component-container-drop-symphony",
+  },
   "canvas.component.create": {
     pluginId: "CanvasComponentPlugin",
     sequenceId: "canvas-component-create-symphony",

@@ -1,0 +1,15 @@
+{
+  "pluginId": "LibraryComponentDropPlugin",
+  "id": "library-component-container-drop-symphony",
+  "name": "Library Component Container Drop",
+  "movements": [
+    {
+      "id": "drop",
+      "name": "Drop",
+      "beats": [
+        { "beat": 1, "event": "library:container:drop", "title": "Forward to Canvas Create (Container)", "dynamics": "mf", "handler": "forwardToCanvasCreate", "timing": "immediate", "kind": "pure" }
+      ]
+    }
+  ]
+}
+

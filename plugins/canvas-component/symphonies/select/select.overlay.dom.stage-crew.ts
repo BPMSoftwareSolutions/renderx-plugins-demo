@@ -51,9 +51,15 @@ export function applyOverlayRectForEl(ov: HTMLDivElement, el: HTMLElement) {
     Number.isFinite(styleWidth) &&
     Number.isFinite(styleHeight)
   ) {
+    // Compute absolute position relative to canvas even if element is inside a container
+    const parentRect = (
+      el.parentElement || getCanvasOrThrow()
+    ).getBoundingClientRect();
+    const absLeft = styleLeft + (parentRect.left - canvasRect.left);
+    const absTop = styleTop + (parentRect.top - canvasRect.top);
     Object.assign(ov.style, {
-      left: `${Math.round(styleLeft)}px`,
-      top: `${Math.round(styleTop)}px`,
+      left: `${Math.round(absLeft)}px`,
+      top: `${Math.round(absTop)}px`,
       width: `${Math.round(styleWidth)}px`,
       height: `${Math.round(styleHeight)}px`,
       display: "block",
@@ -71,4 +77,3 @@ export function applyOverlayRectForEl(ov: HTMLDivElement, el: HTMLElement) {
     display: "block",
   } as Partial<CSSStyleDeclaration>);
 }
-

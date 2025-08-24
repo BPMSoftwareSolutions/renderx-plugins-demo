@@ -1,10 +1,14 @@
 import { describe, it, expect, vi } from "vitest";
 import { loadJsonSequenceCatalogs } from "../../src/conductor";
 
-// Unit test for JSON loader: ensure both drag and drop sequences are mounted under the correct plugin ids
+// Unit test for JSON loader: ensure sequences are mounted under the correct plugin ids
+// NOTE: This test uses a mock conductor that accepts multiple mounts for the same plugin id.
+// In the real browser, the conductor rejects the second mount for LibraryComponentDropPlugin,
+// so only "library-component-drop-symphony" registers (not "library-component-container-drop-symphony").
+// This will be fixed when the musical-conductor engine allows additional sequences for already-mounted plugins.
 
 describe("JSON loader — library-component sequences", () => {
-  it("mounts drag and drop via catalogs with correct plugin ids", async () => {
+  it("mounts all sequences via catalogs with correct plugin ids (test environment)", async () => {
     const mounts: Array<{ seqId: string; pluginId: string }> = [];
     const conductor = {
       mount: vi.fn(async (seq: any, _handlers: any, pluginId: string) => {
@@ -23,7 +27,9 @@ describe("JSON loader — library-component sequences", () => {
     );
 
     const ids = libCompMounts.map((m) => m.seqId).sort();
+    // Test environment mounts all sequences (mock conductor accepts multiple mounts per plugin id)
     expect(ids).toEqual([
+      "library-component-container-drop-symphony",
       "library-component-drag-symphony",
       "library-component-drop-symphony",
     ]);
