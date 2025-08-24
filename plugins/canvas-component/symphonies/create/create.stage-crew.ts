@@ -17,7 +17,7 @@ export const createNode = (data: any, ctx: any) => {
   const tpl = ctx.payload.template;
   const id = ctx.payload.nodeId;
 
-  // 1) Create node via direct DOM and append to canvas
+  // 1) Create node via direct DOM and append to canvas or container
   const canvas = getCanvasOrThrow();
   const el = createElementWithId(tpl.tag, id);
 
@@ -48,8 +48,17 @@ export const createNode = (data: any, ctx: any) => {
   if (typeof tpl.text === "string" && tpl.text.length)
     el.textContent = String(tpl.text);
 
-  // Append to canvas
-  appendTo(canvas, el);
+  // Append to canvas or target container
+  const targetParent =
+    (data?.containerId && document.getElementById(String(data.containerId))) ||
+    canvas;
+  appendTo(targetParent as HTMLElement, el);
+
+  // If template indicates this element is a container, set role and host styles
+  if (tpl?.attributes?.["data-role"] === "container") {
+    (el as HTMLElement).dataset.role = "container";
+    (el.style as CSSStyleDeclaration).position = "relative";
+  }
 
   // Interactions: selection + drag via callbacks
   attachSelection(el, id, data?.onSelected);
@@ -71,4 +80,3 @@ export const createNode = (data: any, ctx: any) => {
     instanceClass,
   };
 };
-

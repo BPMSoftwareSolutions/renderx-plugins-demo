@@ -48,10 +48,10 @@ export function attachDrag(
       startPos = { x: e.clientX, y: e.clientY };
 
       const rect = el.getBoundingClientRect();
-      const canvasRect = canvas.getBoundingClientRect();
+      const parentRect = (el.parentElement || canvas).getBoundingClientRect();
       elementStartPos = {
-        x: rect.left - canvasRect.left,
-        y: rect.top - canvasRect.top,
+        x: rect.left - parentRect.left,
+        y: rect.top - parentRect.top,
       };
 
       e.preventDefault();
