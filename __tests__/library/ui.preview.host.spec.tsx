@@ -38,7 +38,7 @@ describe("LibraryPreview — JSON-driven attributes", () => {
       </div>
     );
 
-    const host = container.querySelector(".component-item") as HTMLElement | null;
+    const host = container.querySelector(".library-component-item") as HTMLElement | null;
     expect(host).toBeTruthy();
     // Host should mirror data-* attributes
     expect(host?.getAttribute("data-icon")).toBe("📝");
@@ -46,8 +46,8 @@ describe("LibraryPreview — JSON-driven attributes", () => {
     expect(host?.getAttribute("data-description")).toBe("Text input component");
 
     // JSON-driven text content present
-    const nameEl = container.querySelector(".component-name");
-    const descEl = container.querySelector(".component-description");
+    const nameEl = container.querySelector(".library-component-name");
+    const descEl = container.querySelector(".library-component-description");
     expect(nameEl?.textContent).toContain("Input");
     expect(descEl?.textContent).toContain("Text input component");
   });

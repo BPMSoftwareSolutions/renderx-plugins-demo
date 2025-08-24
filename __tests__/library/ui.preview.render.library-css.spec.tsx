@@ -47,13 +47,13 @@ describe("Library preview — JSON-driven fields (icon, name, description)", () 
     });
 
     // JSON-driven icon
-    const host = container.querySelector(".component-item");
+    const host = container.querySelector(".library-component-item");
     expect(host).toBeTruthy();
     expect(host?.getAttribute("data-icon")).toBe("📘");
 
     // JSON-driven name and description should be available via component/name and data-description
-    const nameEl = container.querySelector(".component-name");
-    const descEl = container.querySelector(".component-description");
+    const nameEl = container.querySelector(".library-component-name");
+    const descEl = container.querySelector(".library-component-description");
     expect(nameEl?.textContent).toContain("Button");
     expect(descEl?.textContent).toContain("Interactive button component");
   });
@@ -83,12 +83,12 @@ describe("Library preview — JSON-driven fields (icon, name, description)", () 
     });
 
     // Verify the preview uses JSON-driven fields only
-    const host = container.querySelector(".component-item");
+    const host = container.querySelector(".library-component-item");
     expect(host).toBeTruthy();
     expect(host?.getAttribute("data-icon")).toBe("📘");
 
-    const namePresent = container.querySelector(".component-name")?.textContent || "";
-    const descPresent = container.querySelector(".component-description")?.textContent || "";
+    const namePresent = container.querySelector(".library-component-name")?.textContent || "";
+    const descPresent = container.querySelector(".library-component-description")?.textContent || "";
     expect(namePresent).toContain("Button");
     expect(descPresent).toContain("Interactive button component");
   });
