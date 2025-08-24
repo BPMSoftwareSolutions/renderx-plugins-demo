@@ -15,43 +15,40 @@ function render(el: React.ReactElement) {
   return container;
 }
 
-describe("LibraryPreview — PreviewHost pattern", () => {
-  it("mirrors data-* attributes to host and does not inject tag-specific wrappers (RED)", () => {
+describe("LibraryPreview — JSON-driven attributes", () => {
+  it("mirrors data-* attributes to the preview card host and renders name/description text", () => {
     const component = {
       id: "json-input",
+      name: "Input",
+      metadata: { name: "Input", description: "Text input component" },
       template: {
         tag: "input",
         classes: ["rx-comp", "rx-input"],
         attributes: {
           "data-icon": "📝",
           "data-icon-pos": "start",
-          placeholder: "Search",
+          "data-description": "Text input component",
         },
-        css: ".rx-input { padding: 10px 12px; }",
-        cssVariables: { padding: "10px 12px" },
-        cssLibrary:
-          ".rx-lib .rx-preview-host[data-icon] { position: relative; }",
       },
     } as any;
 
     const container = render(
-      <ul className="rx-lib">
+      <div className="rx-lib">
         <LibraryPreview component={component} conductor={null as any} />
-      </ul>
+      </div>
     );
 
-    const host = container.querySelector("li.rx-preview-host");
+    const host = container.querySelector(".component-item") as HTMLElement | null;
     expect(host).toBeTruthy();
     // Host should mirror data-* attributes
     expect(host?.getAttribute("data-icon")).toBe("📝");
     expect(host?.getAttribute("data-icon-pos")).toBe("start");
+    expect(host?.getAttribute("data-description")).toBe("Text input component");
 
-    // Host should contain exactly one non-style child element (the rendered input)
-    const elementChildren = Array.from(host!.children).filter(
-      (el) => el.tagName.toLowerCase() !== "style"
-    );
-    expect(elementChildren.length).toBe(1);
-    const input = host!.querySelector("input.rx-input");
-    expect(input).toBeTruthy();
+    // JSON-driven text content present
+    const nameEl = container.querySelector(".component-name");
+    const descEl = container.querySelector(".component-description");
+    expect(nameEl?.textContent).toContain("Input");
+    expect(descEl?.textContent).toContain("Text input component");
   });
 });

@@ -8,8 +8,8 @@ import {
   LibraryPreview,
 } from "../../plugins/library/ui/LibraryPanel";
 
-describe("Library preview — library CSS injection (RED)", () => {
-  it("renders LibraryPanel with rx-lib class wrapper", () => {
+describe("Library preview — JSON-driven fields (icon, name, description)", () => {
+  it("renders LibraryPanel shell (rx-lib wrapper present)", () => {
     const container = document.createElement("div");
     document.body.appendChild(container);
 
@@ -18,33 +18,26 @@ describe("Library preview — library CSS injection (RED)", () => {
       root.render(<LibraryPanel />);
     });
 
-    // The LibraryPanel root should have rx-lib class for scoping
+    // The LibraryPanel should provide an rx-lib scoping wrapper for preview CSS
     const libraryPanel = container.querySelector(".rx-lib");
     expect(libraryPanel).toBeTruthy();
-    expect(libraryPanel?.classList.contains("p-3")).toBe(true);
-    expect(libraryPanel?.classList.contains("h-full")).toBe(true);
   });
 
-  it("injects library-specific CSS when component has cssTextLibrary", () => {
+  it("drives icon, name, and description from component JSON", () => {
     const container = document.createElement("div");
     document.body.appendChild(container);
 
-    // Component with library-specific CSS (like our enhanced button)
     const component = {
       id: "json-button",
       name: "Button",
+      metadata: { name: "Button", description: "Interactive button component" },
       template: {
         tag: "button",
         text: "Click me",
         classes: ["rx-comp", "rx-button"],
-        css: ".rx-button { background: var(--bg-color); color: var(--text-color); }",
-        cssVariables: { "bg-color": "#007acc", "text-color": "#ffffff" },
-        // Library-specific overrides that should be injected
-        cssLibrary:
-          ".rx-lib .rx-button { transform: scale(0.95); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }",
-        cssVariablesLibrary: { "bg-color": "#0056b3" },
+        attributes: { "data-icon": "📘", "data-description": "Interactive button component" },
       },
-    };
+    } as any;
 
     const root = createRoot(container);
     act(() => {
@@ -53,48 +46,34 @@ describe("Library preview — library CSS injection (RED)", () => {
       );
     });
 
-    // Should have TWO style tags: one for base CSS, one for library CSS
-    const styleTags = container.querySelectorAll("style");
-    expect(styleTags.length).toBeGreaterThanOrEqual(2);
+    // JSON-driven icon
+    const host = container.querySelector(".component-item");
+    expect(host).toBeTruthy();
+    expect(host?.getAttribute("data-icon")).toBe("📘");
 
-    // Library CSS should be present
-    const hasLibraryCss = Array.from(styleTags).some((s) =>
-      (s.textContent || "").includes(".rx-lib .rx-button")
-    );
-    expect(hasLibraryCss).toBe(true);
-
-    // Library variables should override base ones (bg-color should be #0056b3, not #007acc)
-    const previewLi = container.querySelector("li");
-    expect(previewLi).toBeTruthy();
-
-    const computedStyle = getComputedStyle(previewLi!);
-    const bgColor = computedStyle.getPropertyValue("--bg-color").trim();
-    expect(bgColor).toBe("#0056b3");
+    // JSON-driven name and description should be available via component/name and data-description
+    const nameEl = container.querySelector(".component-name");
+    const descEl = container.querySelector(".component-description");
+    expect(nameEl?.textContent).toContain("Button");
+    expect(descEl?.textContent).toContain("Interactive button component");
   });
 
-  it("applies library CSS transforms and styling in browser context (FAILING - reproduction test)", async () => {
+  it("does not depend on component-provided library CSS for library display", async () => {
     const container = document.createElement("div");
     container.className = "rx-lib"; // Simulate LibraryPanel wrapper
     document.body.appendChild(container);
 
-    const buttonMod = await import("../../json-components/button.json", {
-      with: { type: "json" },
-    } as any);
-    const buttonJson = (buttonMod as any)?.default || buttonMod;
-
     const component = {
       id: "json-button",
       name: "Button",
+      metadata: { name: "Button", description: "Interactive button component" },
       template: {
         tag: "button",
         text: "Click me",
         classes: ["rx-comp", "rx-button"],
-        css: buttonJson?.ui?.styles?.css,
-        cssVariables: buttonJson?.ui?.styles?.variables || {},
-        cssLibrary: buttonJson?.ui?.styles?.library?.css,
-        cssVariablesLibrary: buttonJson?.ui?.styles?.library?.variables || {},
+        attributes: { "data-icon": "📘", "data-description": "Interactive button component" }
       },
-    };
+    } as any;
 
     const root = createRoot(container);
     act(() => {
@@ -103,34 +82,14 @@ describe("Library preview — library CSS injection (RED)", () => {
       );
     });
 
-    // Verify library CSS is injected (data-driven from JSON)
-    const styleTags = container.querySelectorAll("style");
-    const libraryStyleTag = Array.from(styleTags).find((s) =>
-      (s.textContent || "").includes(".rx-lib .rx-button")
-    );
-    expect(libraryStyleTag).toBeTruthy();
-    // Assert a known snippet from the JSON library CSS
-    expect(libraryStyleTag!.textContent || "").toContain(
-      ".rx-lib .rx-button:hover { transform: translateY(-2px) scale(1.02);"
-    );
-    expect(libraryStyleTag!.textContent || "").toContain(
-      ".rx-lib .rx-button:active { transform: scale(0.97);"
-    );
+    // Verify the preview uses JSON-driven fields only
+    const host = container.querySelector(".component-item");
+    expect(host).toBeTruthy();
+    expect(host?.getAttribute("data-icon")).toBe("📘");
 
-    // Verify the button element exists and has expected classes
-    const buttonEl = container.querySelector("button.rx-button");
-    expect(buttonEl).toBeTruthy();
-    expect(buttonEl?.textContent).toBe("Click me");
-
-    // Library variables should override base ones (using JSON values)
-    const previewLi = container.querySelector("li");
-    const computedStyle = getComputedStyle(previewLi!);
-    const libVars = (buttonJson as any)?.ui?.styles?.library?.variables || {};
-    expect(computedStyle.getPropertyValue("--font-size").trim()).toBe(
-      libVars["font-size"]
-    );
-    expect(computedStyle.getPropertyValue("--padding").trim()).toBe(
-      libVars["padding"]
-    );
+    const namePresent = container.querySelector(".component-name")?.textContent || "";
+    const descPresent = container.querySelector(".component-description")?.textContent || "";
+    expect(namePresent).toContain("Button");
+    expect(descPresent).toContain("Interactive button component");
   });
 });

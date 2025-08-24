@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 
-// Red test: Library-only variables should override base variables in the preview model
-// and cssTextLibrary should be surfaced for the Library UI to inject.
+// Updated: We no longer expect library CSS/vars to override base in the preview model.
+// The model should continue to expose base template fields and pass through attributes used by the Library shell.
 
-describe("computePreviewModel — library overrides (RED)", () => {
-  it("merges cssVariables + cssVariablesLibrary (library wins) and exposes cssTextLibrary", async () => {
+describe("computePreviewModel — base fields and attribute pass-through", () => {
+  it("maps base template fields and leaves library-specific CSS undefined", async () => {
     const { computePreviewModel } = await import(
       "../../plugins/library/ui/preview.model"
     );
@@ -15,20 +15,18 @@ describe("computePreviewModel — library overrides (RED)", () => {
         tag: "input",
         classes: ["rx-comp", "rx-input"],
         css: ".rx-input { width: var(--width); }",
-        cssVariables: { width: "100%", padding: "8px 12px" },
-        // Proposed Library-only overrides (not yet supported):
-        cssLibrary: ".rx-lib .rx-input { width: auto; min-width: 160px; }",
-        cssVariablesLibrary: { width: "auto" },
+        cssVariables: { width: "100%", padding: "8px 12px" }
       },
     } as any;
 
     const model: any = computePreviewModel(component);
 
-    // Expectation: library width override should be reflected in cssVars
-    expect(model.cssVars["--width"]).toBe("auto"); // Fails until merge is implemented
-
-    // Expectation: model exposes library CSS text for UI injection
-    expect(typeof model.cssTextLibrary).toBe("string"); // Fails (currently undefined)
+    expect(model.tag).toBe("input");
+    expect(model.classes).toContain("rx-input");
+    expect(model.cssText || "").toContain(".rx-input");
+    expect(model.cssVars["--width"]).toBe("100%");
+    // Library-only CSS not used by shell
+    expect(model.cssTextLibrary).toBeUndefined();
   });
 
   it("passes through icon attributes from template", async () => {

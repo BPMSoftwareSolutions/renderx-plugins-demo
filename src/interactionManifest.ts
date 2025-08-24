@@ -84,7 +84,7 @@ async function loadManifest(): Promise<void> {
     const json = JSON.parse(text);
     routes = json?.routes || {};
     loaded = true;
-  } catch (_e) {
+  } catch {
     routes = {};
     loaded = true; // avoid retry storms; callers can handle missing keys
   }

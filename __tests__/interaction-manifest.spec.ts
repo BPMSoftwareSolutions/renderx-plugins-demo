@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildInteractionManifest } from '../scripts/generate-interaction-manifest.js';
+import { buildInteractionManifest } from '../scripts/generate-interaction-manifest';
 
 describe('interaction-manifest generation', () => {
   it('merges per-plugin catalogs and component overrides with override precedence', () => {
