@@ -8,6 +8,7 @@ function mapJsonComponentToTemplateCompat(json: any) {
     id: `json-${type}`,
     name: json?.metadata?.name || type,
     template: tpl,
+    metadata: json?.metadata || {},
   };
 }
 

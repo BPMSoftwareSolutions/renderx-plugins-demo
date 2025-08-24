@@ -29,6 +29,12 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
     if (icon.position) attrs["data-icon-pos"] = String(icon.position);
   }
 
+  // Add category and description for library display
+  const category = json?.metadata?.category || "basic";
+  const description = json?.metadata?.description || `${name} component`;
+  attrs["data-category"] = String(category);
+  attrs["data-description"] = String(description);
+
   // Overlay kind provided by component integration config (decouples selection overlay logic)
   const overlayKind = json?.integration?.canvasIntegration?.overlayKind;
   if (overlayKind) attrs["data-overlay"] = String(overlayKind);
