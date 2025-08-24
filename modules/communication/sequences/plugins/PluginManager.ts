@@ -98,16 +98,10 @@ export class PluginManager {
       // Register with SPA validator
       this.spaValidator.registerPlugin(id);
 
-      // Check if plugin already exists
+      // If plugin already exists, allow augmenting with additional sequences (issue #60)
       if (this.mountedPlugins.has(id)) {
-        console.warn(`🧠 Plugin already mounted: ${id}`);
-        return {
-          success: false,
-          pluginId: id,
-          message: "Plugin already mounted",
-          reason: "already_mounted",
-          warnings,
-        };
+        console.log(`🧠 Plugin already mounted: ${id} — augmenting with additional sequence`);
+        // proceed without early return; we'll register the new sequence and wire handlers
       }
 
       // Enforce conductor logger usage on handlers if configured
@@ -158,8 +152,24 @@ export class PluginManager {
         },
       };
 
-      // Mount the plugin
-      this.mountedPlugins.set(id, plugin);
+      // Mount the plugin (or update existing plugin with new sequence)
+      const existingPlugin = this.mountedPlugins.get(id);
+      if (existingPlugin) {
+        // Merge handlers from new sequence with existing plugin
+        const mergedHandlers = { ...existingPlugin.handlers, ...handlers };
+        const updatedPlugin: SPAPlugin = {
+          ...existingPlugin,
+          handlers: mergedHandlers,
+          metadata: {
+            id,
+            version: metadata?.version || existingPlugin.metadata?.version || "1.0.0",
+            author: metadata?.author || existingPlugin.metadata?.author,
+          },
+        };
+        this.mountedPlugins.set(id, updatedPlugin);
+      } else {
+        this.mountedPlugins.set(id, plugin);
+      }
 
       // Wire beat handlers to event bus so plugin handlers run
       try {
@@ -377,14 +387,16 @@ export class PluginManager {
                 // Persist updated context
                 this.requestContexts.set(requestId, context);
               },
-              { pluginId: id }
+              { pluginId: `${id}:${sequence.id}` }
             );
 
             unsubscribes.push(unsubscribe);
           }
         }
         if (unsubscribes.length > 0) {
-          this.pluginSubscriptions.set(id, unsubscribes);
+          // Merge with existing subscriptions if plugin already has some
+          const existingUnsubscribes = this.pluginSubscriptions.get(id) || [];
+          this.pluginSubscriptions.set(id, [...existingUnsubscribes, ...unsubscribes]);
         }
       } catch (wireErr) {
         console.warn(
@@ -395,7 +407,9 @@ export class PluginManager {
 
       // Store handlers only if provided (optional for event-bus driven plugins)
       if (handlers && typeof handlers === "object") {
-        this.pluginHandlers.set(id, handlers);
+        // Merge with existing handlers if plugin already has some
+        const existingHandlers = this.pluginHandlers.get(id) || {};
+        this.pluginHandlers.set(id, { ...existingHandlers, ...handlers });
       }
 
       // Cleanup request contexts after sequence completes
@@ -406,7 +420,7 @@ export class PluginManager {
             const requestId = data?._musicalContext?.execution?.requestId;
             if (requestId) this.requestContexts.delete(requestId);
           },
-          { pluginId: id }
+          { pluginId: `${id}:${sequence.id}:cleanup` }
         );
       } catch {}
 
