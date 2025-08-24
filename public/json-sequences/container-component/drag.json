@@ -1,0 +1,52 @@
+{
+  "pluginId": "ContainerComponentPlugin",
+  "id": "container-component-drag-symphony",
+  "name": "Container Component Drag",
+  "movements": [
+    {
+      "id": "start",
+      "name": "Start Drag",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "container:component:drag:start",
+          "title": "Start Container Drag",
+          "dynamics": "mf",
+          "handler": "startDrag",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    },
+    {
+      "id": "move",
+      "name": "Move Drag",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "container:component:drag:move",
+          "title": "Update Position in Container",
+          "dynamics": "mf",
+          "handler": "updatePosition",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "name": "End Drag",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "container:component:drag:end",
+          "title": "End Container Drag",
+          "dynamics": "mf",
+          "handler": "endDrag",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    }
+  ]
+}

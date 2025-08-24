@@ -1,0 +1,52 @@
+{
+  "pluginId": "ContainerComponentPlugin",
+  "id": "container-component-select-symphony",
+  "name": "Container Component Select",
+  "movements": [
+    {
+      "id": "select",
+      "name": "Select Component",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "container:component:select",
+          "title": "Select Component in Container",
+          "dynamics": "mf",
+          "handler": "selectComponent",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    },
+    {
+      "id": "clear",
+      "name": "Clear Selection",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "container:component:clear-selection",
+          "title": "Clear Container Selection",
+          "dynamics": "mf",
+          "handler": "clearSelection",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    },
+    {
+      "id": "update",
+      "name": "Update Selection Overlay",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "container:component:update-selection",
+          "title": "Update Selection Overlay",
+          "dynamics": "mf",
+          "handler": "updateSelectionOverlay",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    }
+  ]
+}

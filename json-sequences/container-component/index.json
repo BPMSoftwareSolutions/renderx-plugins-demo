@@ -1,7 +1,17 @@
 {
   "version": "1.0.0",
   "sequences": [
-    { "file": "create.json", "handlersPath": "/plugins/container-component/symphonies/create/create.symphony.ts" }
+    {
+      "file": "create.json",
+      "handlersPath": "/plugins/container-component/symphonies/create/create.symphony.ts"
+    },
+    {
+      "file": "drag.json",
+      "handlersPath": "/plugins/container-component/symphonies/drag/drag.symphony.ts"
+    },
+    {
+      "file": "select.json",
+      "handlersPath": "/plugins/container-component/symphonies/select/select.symphony.ts"
+    }
   ]
 }
-

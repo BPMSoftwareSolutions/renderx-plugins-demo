@@ -10,6 +10,10 @@ import {
   computeCssVarBlock,
   computeInlineStyle,
 } from "../../../canvas-component/symphonies/create/create.style.stage-crew";
+import {
+  attachContainerAwareDrag,
+  attachContainerAwareSelection,
+} from "../../utils/drag-attachers";
 
 function getContainerOrThrow(id?: string | null): HTMLElement {
   const el =
@@ -52,6 +56,20 @@ export const createNodeInContainer = (data: any, ctx: any) => {
     el.textContent = String(tpl.text);
 
   appendTo(container, el);
+
+  // Attach container-aware interactions
+  attachContainerAwareSelection(el, id, ctx.conductor, data?.onSelected);
+  attachContainerAwareDrag(
+    el,
+    container,
+    id,
+    {
+      onDragStart: data?.onDragStart,
+      onDragMove: data?.onDragMove,
+      onDragEnd: data?.onDragEnd,
+    },
+    ctx.conductor
+  );
 
   ctx.payload.createdNode = {
     id,

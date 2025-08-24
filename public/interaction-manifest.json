@@ -41,6 +41,30 @@
       "pluginId": "ContainerComponentPlugin",
       "sequenceId": "container-component-create-symphony"
     },
+    "container.component.drag.start": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-drag-symphony"
+    },
+    "container.component.drag.move": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-drag-symphony"
+    },
+    "container.component.drag.end": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-drag-symphony"
+    },
+    "container.component.select": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-select-symphony"
+    },
+    "container.component.clear-selection": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-select-symphony"
+    },
+    "container.component.update-selection": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-select-symphony"
+    },
     "library.component.drag.start": {
       "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-drag-symphony"
