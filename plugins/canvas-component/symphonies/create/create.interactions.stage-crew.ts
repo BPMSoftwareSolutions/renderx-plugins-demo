@@ -27,7 +27,12 @@ export function attachSelection(
   onSelected?: (info: { id: string }) => void
 ) {
   try {
-    (el as any).addEventListener?.("click", () => onSelected?.({ id }));
+    (el as any).addEventListener?.("click", (e: Event) => {
+      try {
+        e.stopPropagation?.();
+      } catch {}
+      onSelected?.({ id });
+    });
   } catch {}
 }
 
@@ -44,6 +49,9 @@ export function attachDrag(
 
     (el as any).addEventListener?.("mousedown", (e: MouseEvent) => {
       if (e.button !== 0) return;
+      try {
+        e.stopPropagation?.();
+      } catch {}
       isDragging = true;
       startPos = { x: e.clientX, y: e.clientY };
 
