@@ -26,6 +26,7 @@ describe("JSON loader — library-component sequences", () => {
     expect(ids).toEqual([
       "library-component-drag-symphony",
       "library-component-drop-symphony",
+      "library-container-drop-symphony",
     ]);
   });
 });

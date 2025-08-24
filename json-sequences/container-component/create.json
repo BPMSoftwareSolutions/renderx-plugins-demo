@@ -1,0 +1,17 @@
+{
+  "pluginId": "ContainerComponentPlugin",
+  "id": "container-component-create-symphony",
+  "name": "Container Component Create",
+  "movements": [
+    {
+      "id": "create",
+      "name": "Create",
+      "beats": [
+        { "beat": 1, "event": "container:component:resolve-template", "title": "Resolve Template", "dynamics": "mf", "handler": "resolveTemplate", "timing": "immediate", "kind": "pure" },
+        { "beat": 2, "event": "container:component:create", "title": "Create in Container", "dynamics": "mf", "handler": "createNodeInContainer", "timing": "immediate", "kind": "stage-crew" },
+        { "beat": 3, "event": "container:component:notify-ui", "title": "Notify UI", "dynamics": "mf", "handler": "notifyUi", "timing": "immediate", "kind": "pure" }
+      ]
+    }
+  ]
+}
+

@@ -15,3 +15,20 @@ export const handlers = {
     });
   },
 };
+
+export const containerHandlers = {
+  forwardToContainerCreate(data: any, ctx: any) {
+    // Route to container create with container-local position
+    const r = resolveInteraction("container.component.create");
+    ctx.conductor?.play?.(r.pluginId, r.sequenceId, {
+      component: data.component,
+      position: data.position,
+      containerId: data.containerId,
+      onComponentCreated: data.onComponentCreated,
+      onDragStart: data.onDragStart,
+      onDragMove: data.onDragMove,
+      onDragEnd: data.onDragEnd,
+      onSelected: data.onSelected,
+    });
+  },
+};

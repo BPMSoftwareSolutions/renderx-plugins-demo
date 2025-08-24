@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    { "file": "create.json", "handlersPath": "/plugins/container-component/symphonies/create/create.symphony.ts" }
+  ]
+}
+

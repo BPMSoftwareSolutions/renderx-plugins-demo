@@ -34,7 +34,12 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
   if (overlayKind) attrs["data-overlay"] = String(overlayKind);
 
   // Normalize to safe HTML tag for preview/canvas
-  const tag = type === "input" ? "input" : type === "line" ? "div" : type || "div";
+  const tag =
+    type === "input"
+      ? "input"
+      : type === "line" || type === "container"
+      ? "div"
+      : type || "div";
 
   return {
     tag,
@@ -52,4 +57,3 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
     style: {},
   } as RuntimeTemplate;
 }
-

@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "description": "Index of available JSON components for RenderX Evolution",
   "lastUpdated": "2025-08-23",
-  "components": ["button.json", "input.json", "line.json"],
+  "components": ["button.json", "input.json", "line.json", "container.json"],
   "metadata": {
     "totalComponents": 3,
     "categories": ["basic"],

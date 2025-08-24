@@ -44,7 +44,7 @@ export const handlers = {
             { with: { type: "json" } } as any
           );
           const json = mod?.default || mod;
-          items.push(mapJsonComponentToTemplate(json));
+          items.push(mapJsonComponentToTemplateCompat(json));
         }
         list = items;
       }

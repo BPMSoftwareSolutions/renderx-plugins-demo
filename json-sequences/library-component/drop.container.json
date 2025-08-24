@@ -1,0 +1,23 @@
+{
+  "pluginId": "LibraryComponentDropPlugin",
+  "id": "library-container-drop-symphony",
+  "name": "Library Container Drop",
+  "movements": [
+    {
+      "id": "drop",
+      "name": "Drop into Container",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "library:container:drop",
+          "title": "Forward to Container Create",
+          "dynamics": "mf",
+          "handler": "forwardToContainerCreate",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

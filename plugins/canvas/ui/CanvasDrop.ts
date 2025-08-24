@@ -8,8 +8,14 @@ export async function onDropForTest(
   e.preventDefault();
   const raw = e.dataTransfer.getData("application/rx-component");
   const payload = raw ? JSON.parse(raw) : {};
-  const rect = e.currentTarget.getBoundingClientRect();
-  const position = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  const targetEl: Element | null = (e.target as Element) || null;
+  const containerEl: Element | null =
+    targetEl?.closest?.('[data-role="container"]') || null;
+  const originRect = (containerEl || e.currentTarget).getBoundingClientRect();
+  const position = {
+    x: e.clientX - originRect.left,
+    y: e.clientY - originRect.top,
+  };
 
   // Define drag callbacks that use conductor.play
   const onDragStart = (dragData: any) => {
@@ -46,10 +52,14 @@ export async function onDropForTest(
 
   try {
     const { resolveInteraction } = require("../../../src/interactionManifest");
-    const r = resolveInteraction("library.component.drop");
+    const dropKey = containerEl
+      ? "library.container.drop"
+      : "library.component.drop";
+    const r = resolveInteraction(dropKey);
     conductor?.play?.(r.pluginId, r.sequenceId, {
       component: payload.component,
       position,
+      containerId: (containerEl as HTMLElement | null)?.id,
       onComponentCreated: onCreated,
       onDragStart,
       onDragMove,
@@ -57,10 +67,14 @@ export async function onDropForTest(
       onSelected,
     });
   } catch {
-    const r = resolveInteraction("library.component.drop");
+    const dropKey = containerEl
+      ? "library.container.drop"
+      : "library.component.drop";
+    const r = resolveInteraction(dropKey);
     conductor?.play?.(r.pluginId, r.sequenceId, {
       component: payload.component,
       position,
+      containerId: (containerEl as HTMLElement | null)?.id,
       onComponentCreated: onCreated,
       onDragStart,
       onDragMove,

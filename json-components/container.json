@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "type": "container",
+    "name": "Container",
+    "version": "1.0.0",
+    "author": "RenderX Team",
+    "description": "A scrollable container for nested components",
+    "category": "layout",
+    "tags": ["container", "layout", "scroll"]
+  },
+  "ui": {
+    "template": "<div class=\"rx-container\" data-role=\"container\"></div>",
+    "styles": {
+      "css": ".rx-container { position: relative; overflow: auto; min-width: 120px; min-height: 80px; border: 1px dashed #bbb; padding: var(--padding, 8px); }",
+      "variables": {
+        "padding": "8px"
+      }
+    }
+  },
+  "integration": {
+    "canvasIntegration": {
+      "defaultWidth": 240,
+      "defaultHeight": 160
+    }
+  },
+  "interactions": {
+    "canvas.component.create": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony"
+    },
+    "container.component.create": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-create-symphony"
+    }
+  }
+}

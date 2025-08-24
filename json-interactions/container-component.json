@@ -1,0 +1,10 @@
+{
+  "plugin": "ContainerComponentPlugin",
+  "routes": {
+    "container.component.create": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-create-symphony"
+    }
+  }
+}
+

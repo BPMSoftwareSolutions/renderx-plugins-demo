@@ -37,6 +37,10 @@
       "pluginId": "CanvasLineResizeEndPlugin",
       "sequenceId": "canvas-line-resize-end-symphony"
     },
+    "container.component.create": {
+      "pluginId": "ContainerComponentPlugin",
+      "sequenceId": "container-component-create-symphony"
+    },
     "library.component.drag.start": {
       "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-drag-symphony"
@@ -44,6 +48,10 @@
     "library.component.drop": {
       "pluginId": "LibraryComponentDropPlugin",
       "sequenceId": "library-component-drop-symphony"
+    },
+    "library.container.drop": {
+      "pluginId": "LibraryComponentDropPlugin",
+      "sequenceId": "library-container-drop-symphony"
     },
     "library.load": {
       "pluginId": "LibraryPlugin",
