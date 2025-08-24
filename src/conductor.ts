@@ -15,7 +15,7 @@ export async function initConductor(): Promise<ConductorClient> {
 // - Browser: fetch from /json-sequences/{plugin}/
 // - Node/test: import from json-sequences/{plugin}/ with JSON loader
 export async function loadJsonSequenceCatalogs(conductor: ConductorClient) {
-  const plugins = ["library", "library-component", "canvas-component"] as const;
+  const plugins = ["library", "library-component", "canvas-component", "control-panel"] as const;
   const isBrowser =
     typeof globalThis !== "undefined" &&
     typeof (globalThis as any).fetch === "function";

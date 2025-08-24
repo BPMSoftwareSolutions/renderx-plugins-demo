@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    {
+      "file": "selection.show.json",
+      "handlersPath": "/plugins/control-panel/symphonies/selection/selection.symphony.ts"
+    },
+    {
+      "file": "classes.add.json",
+      "handlersPath": "/plugins/control-panel/symphonies/classes/classes.symphony.ts"
+    },
+    {
+      "file": "classes.remove.json",
+      "handlersPath": "/plugins/control-panel/symphonies/classes/classes.symphony.ts"
+    }
+  ]
+}

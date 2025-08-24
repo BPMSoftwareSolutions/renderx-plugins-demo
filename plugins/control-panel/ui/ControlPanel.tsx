@@ -1,8 +1,64 @@
 import React from "react";
+import { useConductor } from "../../../src/conductor";
+import { resolveInteraction } from "../../../src/interactionManifest";
+import { setSelectionObserver, setClassesObserver } from "../state/observer.store";
 import "./ControlPanel.css";
 
 export function ControlPanel() {
+  const conductor = useConductor();
   const [selectedElement, setSelectedElement] = React.useState<any>(null);
+  const [currentClasses, setCurrentClasses] = React.useState<string[]>([]);
+
+  // Register observers on mount
+  React.useEffect(() => {
+    setSelectionObserver((selectionModel) => {
+      setSelectedElement(selectionModel);
+      // Initialize classes from selection model
+      setCurrentClasses(selectionModel?.classes || []);
+    });
+
+    setClassesObserver((classData) => {
+      if (classData?.classes) {
+        setCurrentClasses(classData.classes);
+      }
+    });
+
+    // Cleanup observers on unmount
+    return () => {
+      setSelectionObserver(null);
+      setClassesObserver(null);
+    };
+  }, []);
+
+  const handleAddClass = (className: string) => {
+    if (!selectedElement?.header?.id || !className.trim()) return;
+
+    try {
+      const route = resolveInteraction("control.panel.classes.add");
+      conductor?.play?.(route.pluginId, route.sequenceId, {
+        id: selectedElement.header.id,
+        className: className.trim()
+      });
+    } catch {
+      // Note: UI components don't have access to ctx.logger, so we'll silently fail
+      // The stage-crew handlers will log any actual errors
+    }
+  };
+
+  const handleRemoveClass = (className: string) => {
+    if (!selectedElement?.header?.id || !className) return;
+
+    try {
+      const route = resolveInteraction("control.panel.classes.remove");
+      conductor?.play?.(route.pluginId, route.sequenceId, {
+        id: selectedElement.header.id,
+        className
+      });
+    } catch {
+      // Note: UI components don't have access to ctx.logger, so we'll silently fail
+      // The stage-crew handlers will log any actual errors
+    }
+  };
 
   return (
     <div className="control-panel">
@@ -10,8 +66,8 @@ export function ControlPanel() {
         <h3>⚙️ Properties Panel</h3>
         {selectedElement && (
           <div className="element-info">
-            <span className="element-type">{selectedElement.type}</span>
-            <span className="element-id">#{selectedElement.id}</span>
+            <span className="element-type">{selectedElement.header.type}</span>
+            <span className="element-id">#{selectedElement.header.id}</span>
           </div>
         )}
       </div>
@@ -25,13 +81,180 @@ export function ControlPanel() {
           </div>
         ) : (
           <div className="property-sections">
-            {/* Properties will be rendered here when an element is selected */}
+            {/* Content Section */}
             <div className="property-section">
-              <div className="property-section-title">General</div>
+              <div className="property-section-title">📝 CONTENT</div>
               <div className="property-grid">
                 <div className="property-item">
-                  <label className="property-label">Name</label>
-                  <input className="property-input" type="text" value={selectedElement.name || ""} />
+                  <label className="property-label">Button Text</label>
+                  <input
+                    className="property-input"
+                    type="text"
+                    value={selectedElement.content?.content || ""}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Variant</label>
+                  <select className="property-input" value={selectedElement.content?.variant || "primary"} disabled>
+                    <option value="primary">Primary</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="danger">Danger</option>
+                  </select>
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Size</label>
+                  <select className="property-input" value={selectedElement.content?.size || "medium"} disabled>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+                <div className="property-item">
+                  <label className="property-label">
+                    <input
+                      type="checkbox"
+                      checked={selectedElement.content?.disabled || false}
+                      disabled
+                    />
+                    Disabled
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            {/* Layout Section */}
+            <div className="property-section">
+              <div className="property-section-title">📐 LAYOUT</div>
+              <div className="property-grid">
+                <div className="property-item">
+                  <label className="property-label">X Position</label>
+                  <input
+                    className="property-input"
+                    type="number"
+                    value={selectedElement.layout?.x || 0}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Y Position</label>
+                  <input
+                    className="property-input"
+                    type="number"
+                    value={selectedElement.layout?.y || 0}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Width</label>
+                  <input
+                    className="property-input"
+                    type="number"
+                    value={selectedElement.layout?.width || 0}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Height</label>
+                  <input
+                    className="property-input"
+                    type="number"
+                    value={selectedElement.layout?.height || 0}
+                    readOnly
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Styling Section */}
+            <div className="property-section">
+              <div className="property-section-title">🎨 STYLING</div>
+              <div className="property-grid">
+                <div className="property-item">
+                  <label className="property-label">Background Color</label>
+                  <input
+                    className="property-input"
+                    type="text"
+                    value={selectedElement.styling?.["bg-color"] || ""}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Text Color</label>
+                  <input
+                    className="property-input"
+                    type="text"
+                    value={selectedElement.styling?.["text-color"] || ""}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Border Radius</label>
+                  <input
+                    className="property-input"
+                    type="text"
+                    value={selectedElement.styling?.["border-radius"] || ""}
+                    readOnly
+                  />
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Font Size</label>
+                  <input
+                    className="property-input"
+                    type="text"
+                    value={selectedElement.styling?.["font-size"] || ""}
+                    readOnly
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Classes Section */}
+            <div className="property-section">
+              <div className="property-section-title">🏷️ CSS CLASSES</div>
+              <div className="property-grid">
+                <div className="property-item">
+                  <label className="property-label">Current Classes</label>
+                  <div className="class-list">
+                    {currentClasses.map((className, index) => (
+                      <span key={index} className="class-pill">
+                        {className}
+                        <button
+                          className="class-remove-btn"
+                          onClick={() => handleRemoveClass(className)}
+                          title="Remove class"
+                        >
+                          ×
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="property-item">
+                  <label className="property-label">Add Class</label>
+                  <div className="add-class-controls">
+                    <input
+                      className="property-input"
+                      type="text"
+                      placeholder="Enter class name..."
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          handleAddClass(e.currentTarget.value);
+                          e.currentTarget.value = '';
+                        }
+                      }}
+                    />
+                    <button
+                      className="add-class-btn"
+                      onClick={(e) => {
+                        const input = e.currentTarget.previousElementSibling as HTMLInputElement;
+                        handleAddClass(input.value);
+                        input.value = '';
+                      }}
+                    >
+                      Add
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

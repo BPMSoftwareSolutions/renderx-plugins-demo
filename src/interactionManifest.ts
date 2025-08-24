@@ -44,6 +44,18 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "CanvasComponentResizeEndPlugin",
     sequenceId: "canvas-component-resize-end-symphony",
   },
+  "control.panel.selection.show": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-selection-show-symphony",
+  },
+  "control.panel.classes.add": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-classes-add-symphony",
+  },
+  "control.panel.classes.remove": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-classes-remove-symphony",
+  },
 };
 
 // Try to eagerly preload routes in Vite/ Vitest environments (sync)

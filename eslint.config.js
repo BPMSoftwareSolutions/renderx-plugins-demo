@@ -2,6 +2,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import beatKindDomAccess from "./eslint-rules/beat-kind-dom-access.js";
 import playRouting from "./eslint-rules/no-hardcoded-play-ids.js";
+import noConsoleInSymphonies from "./eslint-rules/no-console-in-symphonies.js";
 
 export default [
   {
@@ -20,9 +21,11 @@ export default [
     plugins: {
       "@typescript-eslint": tseslint,
       "play-routing": playRouting,
+      "symphony-console": noConsoleInSymphonies,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
+      "symphony-console/no-console-in-symphonies": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
