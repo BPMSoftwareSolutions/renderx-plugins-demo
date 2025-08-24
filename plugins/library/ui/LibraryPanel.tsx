@@ -93,28 +93,6 @@ export function LibraryPreview({
           component,
         });
       }}
-      onMouseEnter={(e) => {
-        const target = e.currentTarget as HTMLElement;
-        target.style.borderColor = "#3b82f6";
-        target.style.transform = "translateY(-2px)";
-        target.style.boxShadow = "0 8px 25px rgba(59, 130, 246, 0.15)";
-      }}
-      onMouseLeave={(e) => {
-        const target = e.currentTarget as HTMLElement;
-        target.style.borderColor = "#e5e7eb";
-        target.style.transform = "translateY(0)";
-        target.style.boxShadow = "none";
-      }}
-      onMouseDown={(e) => {
-        const target = e.currentTarget as HTMLElement;
-        target.style.cursor = "grabbing";
-        target.style.transform = "scale(0.95)";
-      }}
-      onMouseUp={(e) => {
-        const target = e.currentTarget as HTMLElement;
-        target.style.cursor = "grab";
-        target.style.transform = "translateY(-2px)";
-      }}
     >
       {model.cssText ? <style>{model.cssText}</style> : null}
       {model.cssTextLibrary ? <style>{model.cssTextLibrary}</style> : null}
@@ -181,7 +159,7 @@ export function LibraryPanel() {
         display: "flex",
         flexDirection: "column",
         boxShadow: "2px 0 20px rgba(0, 0, 0, 0.1)",
-        height: "100%"
+        height: "100%",
       }}
     >
       {/* Header */}

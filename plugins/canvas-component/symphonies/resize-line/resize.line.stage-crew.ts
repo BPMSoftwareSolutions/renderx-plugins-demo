@@ -1,4 +1,3 @@
-import { getCanvasRect } from "../select/select.overlay.dom.stage-crew";
 
 export const startLineResize = (data: any) => {
   const { id, handle, onLineResizeStart } = data || {};
