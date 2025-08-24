@@ -6,4 +6,7 @@ export default defineConfig({
     globals: true,
     include: ["__tests__/**/*.spec.ts", "__tests__/**/*.spec.tsx"],
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+  }
 });

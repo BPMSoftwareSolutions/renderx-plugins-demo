@@ -22,7 +22,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
 
-export function buildInteractionManifest(catalogs, componentOverrideMaps) {
+// Inline the function here since Node.js can't import TypeScript directly
+function buildInteractionManifest(catalogs, componentOverrideMaps) {
   const routes = {};
   for (const cat of catalogs || []) {
     const r = cat?.routes || {};
@@ -34,6 +35,9 @@ export function buildInteractionManifest(catalogs, componentOverrideMaps) {
   }
   return { version: "1.0.0", routes };
 }
+
+// Re-export for backward compatibility
+export { buildInteractionManifest };
 
 async function readJsonSafe(path) {
   try {

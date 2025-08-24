@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { buildInteractionManifest } from '../scripts/generate-interaction-manifest';
+import { buildInteractionManifest } from '../src/buildInteractionManifest';
 
 describe('interaction-manifest generation', () => {
   it('merges per-plugin catalogs and component overrides with override precedence', () => {
+
     const catalogs = [
       { routes: { 'a': { pluginId: 'P1', sequenceId: 'S1' }, 'b': { pluginId: 'P1', sequenceId: 'S2' } } },
       { routes: { 'c': { pluginId: 'P2', sequenceId: 'S3' } } },
