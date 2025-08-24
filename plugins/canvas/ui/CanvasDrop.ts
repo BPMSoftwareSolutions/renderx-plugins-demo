@@ -9,8 +9,17 @@ export async function onDropForTest(
   const raw = e.dataTransfer.getData("application/rx-component");
   const payload = raw ? JSON.parse(raw) : {};
   const targetEl: Element | null = (e.target as Element) || null;
+  // If a selection overlay is the target, resolve its data-target-id to get the container
+  const overlayTargetId = (targetEl as HTMLElement | null)?.getAttribute?.(
+    "data-target-id"
+  );
+  const overlayTarget = overlayTargetId
+    ? document.getElementById(overlayTargetId)
+    : null;
   const containerEl: Element | null =
-    targetEl?.closest?.('[data-role="container"]') || null;
+    overlayTarget?.closest?.('[data-role="container"]') ||
+    targetEl?.closest?.('[data-role="container"]') ||
+    null;
   const originRect = (containerEl || e.currentTarget).getBoundingClientRect();
   const position = {
     x: e.clientX - originRect.left,
