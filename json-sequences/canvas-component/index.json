@@ -36,6 +36,10 @@
     {
       "file": "resize.line.end.json",
       "handlersPath": "/plugins/canvas-component/symphonies/resize-line/resize.line.end.symphony.ts"
+    },
+    {
+      "file": "update.json",
+      "handlersPath": "/plugins/canvas-component/symphonies/update/update.symphony.ts"
     }
   ]
 }

@@ -60,6 +60,22 @@ export function ControlPanel() {
     }
   };
 
+  const handleAttributeChange = (attribute: string, value: any) => {
+    if (!selectedElement?.header?.id) return;
+
+    try {
+      const route = resolveInteraction("canvas.component.update");
+      conductor?.play?.(route.pluginId, route.sequenceId, {
+        id: selectedElement.header.id,
+        attribute,
+        value
+      });
+    } catch {
+      // Note: UI components don't have access to ctx.logger, so we'll silently fail
+      // The stage-crew handlers will log any actual errors
+    }
+  };
+
   return (
     <div className="control-panel">
       <div className="control-panel-header">
@@ -91,12 +107,16 @@ export function ControlPanel() {
                     className="property-input"
                     type="text"
                     value={selectedElement.content?.content || ""}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("content", e.target.value)}
                   />
                 </div>
                 <div className="property-item">
                   <label className="property-label">Variant</label>
-                  <select className="property-input" value={selectedElement.content?.variant || "primary"} disabled>
+                  <select
+                    className="property-input"
+                    value={selectedElement.content?.variant || "primary"}
+                    onChange={(e) => handleAttributeChange("variant", e.target.value)}
+                  >
                     <option value="primary">Primary</option>
                     <option value="secondary">Secondary</option>
                     <option value="danger">Danger</option>
@@ -104,7 +124,11 @@ export function ControlPanel() {
                 </div>
                 <div className="property-item">
                   <label className="property-label">Size</label>
-                  <select className="property-input" value={selectedElement.content?.size || "medium"} disabled>
+                  <select
+                    className="property-input"
+                    value={selectedElement.content?.size || "medium"}
+                    onChange={(e) => handleAttributeChange("size", e.target.value)}
+                  >
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>
@@ -115,7 +139,7 @@ export function ControlPanel() {
                     <input
                       type="checkbox"
                       checked={selectedElement.content?.disabled || false}
-                      disabled
+                      onChange={(e) => handleAttributeChange("disabled", e.target.checked)}
                     />
                     Disabled
                   </label>
@@ -133,7 +157,7 @@ export function ControlPanel() {
                     className="property-input"
                     type="number"
                     value={selectedElement.layout?.x || 0}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("x", parseInt(e.target.value) || 0)}
                   />
                 </div>
                 <div className="property-item">
@@ -142,7 +166,7 @@ export function ControlPanel() {
                     className="property-input"
                     type="number"
                     value={selectedElement.layout?.y || 0}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("y", parseInt(e.target.value) || 0)}
                   />
                 </div>
                 <div className="property-item">
@@ -151,7 +175,7 @@ export function ControlPanel() {
                     className="property-input"
                     type="number"
                     value={selectedElement.layout?.width || 0}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("width", parseInt(e.target.value) || 0)}
                   />
                 </div>
                 <div className="property-item">
@@ -160,7 +184,7 @@ export function ControlPanel() {
                     className="property-input"
                     type="number"
                     value={selectedElement.layout?.height || 0}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("height", parseInt(e.target.value) || 0)}
                   />
                 </div>
               </div>
@@ -176,7 +200,8 @@ export function ControlPanel() {
                     className="property-input"
                     type="text"
                     value={selectedElement.styling?.["bg-color"] || ""}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("bg-color", e.target.value)}
+                    placeholder="#007acc"
                   />
                 </div>
                 <div className="property-item">
@@ -185,7 +210,8 @@ export function ControlPanel() {
                     className="property-input"
                     type="text"
                     value={selectedElement.styling?.["text-color"] || ""}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("text-color", e.target.value)}
+                    placeholder="#ffffff"
                   />
                 </div>
                 <div className="property-item">
@@ -194,7 +220,8 @@ export function ControlPanel() {
                     className="property-input"
                     type="text"
                     value={selectedElement.styling?.["border-radius"] || ""}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("border-radius", e.target.value)}
+                    placeholder="4px"
                   />
                 </div>
                 <div className="property-item">
@@ -203,7 +230,8 @@ export function ControlPanel() {
                     className="property-input"
                     type="text"
                     value={selectedElement.styling?.["font-size"] || ""}
-                    readOnly
+                    onChange={(e) => handleAttributeChange("font-size", e.target.value)}
+                    placeholder="14px"
                   />
                 </div>
               </div>

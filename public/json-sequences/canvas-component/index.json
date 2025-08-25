@@ -6,7 +6,8 @@
     { "file": "drag.json", "handlersPath": "/plugins/canvas-component/symphonies/drag/drag.symphony.ts" },
     { "file": "resize.start.json", "handlersPath": "/plugins/canvas-component/symphonies/resize/resize.start.symphony.ts" },
     { "file": "resize.move.json", "handlersPath": "/plugins/canvas-component/symphonies/resize/resize.move.symphony.ts" },
-    { "file": "resize.end.json", "handlersPath": "/plugins/canvas-component/symphonies/resize/resize.end.symphony.ts" }
+    { "file": "resize.end.json", "handlersPath": "/plugins/canvas-component/symphonies/resize/resize.end.symphony.ts" },
+    { "file": "update.json", "handlersPath": "/plugins/canvas-component/symphonies/update/update.symphony.ts" }
   ]
 }
 

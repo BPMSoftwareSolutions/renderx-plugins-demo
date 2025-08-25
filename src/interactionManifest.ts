@@ -60,6 +60,10 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "ControlPanelPlugin",
     sequenceId: "control-panel-update-symphony",
   },
+  "canvas.component.update": {
+    pluginId: "CanvasComponentPlugin",
+    sequenceId: "canvas-component-update-symphony",
+  },
 };
 
 // Try to eagerly preload routes in Vite/ Vitest environments (sync)
