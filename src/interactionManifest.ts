@@ -72,6 +72,30 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "ControlPanelPlugin",
     sequenceId: "control-panel-css-delete-symphony",
   },
+  "control.panel.ui.init": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-init-symphony",
+  },
+  "control.panel.ui.render": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-render-symphony",
+  },
+  "control.panel.ui.field.change": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-field-change-symphony",
+  },
+  "control.panel.ui.field.validate": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-field-validate-symphony",
+  },
+  "control.panel.ui.section.toggle": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-section-toggle-symphony",
+  },
+  "control.panel.ui.init.batched": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-init-batched-symphony",
+  },
   "canvas.component.update": {
     pluginId: "CanvasComponentPlugin",
     sequenceId: "canvas-component-update-symphony",

@@ -1,0 +1,59 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-init-symphony",
+  "name": "Control Panel UI Init",
+  "description": "Initialize Control Panel UI components and services",
+  "movements": [
+    {
+      "id": "initialization",
+      "name": "UI Initialization",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:config:load",
+          "title": "Load UI Configuration",
+          "dynamics": "mf",
+          "handler": "initConfig",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:resolver:init",
+          "title": "Initialize Schema Resolver",
+          "dynamics": "mf",
+          "handler": "initResolver",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "control:panel:ui:schemas:load",
+          "title": "Load Component Schemas",
+          "dynamics": "mf",
+          "handler": "loadSchemas",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 4,
+          "event": "control:panel:ui:observers:register",
+          "title": "Register UI Observers",
+          "dynamics": "mf",
+          "handler": "registerObservers",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 5,
+          "event": "control:panel:ui:ready:notify",
+          "title": "Notify UI Ready",
+          "dynamics": "f",
+          "handler": "notifyReady",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}

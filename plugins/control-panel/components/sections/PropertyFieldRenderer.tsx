@@ -1,6 +1,7 @@
 import React from 'react';
 import { getFieldRenderer } from '../field-renderers';
 import { getNestedValue } from '../../utils/field.utils';
+import { useControlPanelSequences } from '../../hooks/useControlPanelSequences';
 import type { PropertyField, SelectedElement } from '../../types/control-panel.types';
 
 interface PropertyFieldProps {
@@ -10,16 +11,22 @@ interface PropertyFieldProps {
   onValidate: (fieldKey: string, isValid: boolean, errors: string[]) => void;
 }
 
-export const PropertyFieldRenderer: React.FC<PropertyFieldProps> = ({ 
-  field, 
-  selectedElement, 
-  onChange, 
-  onValidate 
+export const PropertyFieldRenderer: React.FC<PropertyFieldProps> = ({
+  field,
+  selectedElement,
+  onChange,
+  onValidate
 }) => {
   const FieldComponent = getFieldRenderer(field.type);
   const value = getNestedValue(selectedElement, field.path) || field.defaultValue;
+  const sequences = useControlPanelSequences();
 
   const handleValidate = (isValid: boolean, errors: string[]) => {
+    // Use sequence-driven validation if available
+    if (sequences.isInitialized) {
+      sequences.handleFieldValidation(field, value);
+    }
+    // Always call the original validation handler for immediate UI feedback
     onValidate(field.key, isValid, errors);
   };
 
