@@ -48,6 +48,10 @@
     {
       "file": "ui.section.toggle.json",
       "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.init.batched.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
     }
   ]
 }

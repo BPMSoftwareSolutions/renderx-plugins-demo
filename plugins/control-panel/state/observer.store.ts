@@ -10,6 +10,7 @@ let classesObserver: ClassesObserver | null = null;
 let cssRegistryObserver: CssRegistryObserver | null = null;
 
 export function setSelectionObserver(observer: SelectionObserver | null) {
+  if (observer === selectionObserver) return; // idempotent
   selectionObserver = observer;
 }
 
@@ -18,6 +19,7 @@ export function getSelectionObserver(): SelectionObserver | null {
 }
 
 export function setClassesObserver(observer: ClassesObserver | null) {
+  if (observer === classesObserver) return; // idempotent
   classesObserver = observer;
 }
 
@@ -26,9 +28,17 @@ export function getClassesObserver(): ClassesObserver | null {
 }
 
 export function setCssRegistryObserver(observer: CssRegistryObserver | null) {
+  if (observer === cssRegistryObserver) return; // idempotent
   cssRegistryObserver = observer;
 }
 
 export function getCssRegistryObserver(): CssRegistryObserver | null {
   return cssRegistryObserver;
+}
+
+// Utilities for cleanup/testing
+export function clearAllObservers() {
+  selectionObserver = null;
+  classesObserver = null;
+  cssRegistryObserver = null;
 }

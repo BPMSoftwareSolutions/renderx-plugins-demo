@@ -1,0 +1,34 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-init-batched-symphony",
+  "name": "Control Panel UI Init (Batched)",
+  "description": "Initialize Control Panel UI using a single public beat and internal sub-beats (iterator)",
+  "movements": [
+    {
+      "id": "initialization",
+      "name": "UI Initialization (Batched)",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:init",
+          "title": "Initialize Control Panel UI (Batched)",
+          "dynamics": "mf",
+          "handler": "initMovement",
+          "timing": "immediate",
+          "kind": "stage-crew",
+          "meta": {
+            "batched": true,
+            "subBeats": [
+              { "event": "control:panel:ui:config:load", "handler": "initConfig" },
+              { "event": "control:panel:ui:resolver:init", "handler": "initResolver" },
+              { "event": "control:panel:ui:schemas:load", "handler": "loadSchemas" },
+              { "event": "control:panel:ui:observers:register", "handler": "registerObservers" },
+              { "event": "control:panel:ui:ready:notify", "handler": "notifyReady" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+

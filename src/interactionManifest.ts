@@ -92,6 +92,10 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "ControlPanelPlugin",
     sequenceId: "control-panel-ui-section-toggle-symphony",
   },
+  "control.panel.ui.init.batched": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-ui-init-batched-symphony",
+  },
   "canvas.component.update": {
     pluginId: "CanvasComponentPlugin",
     sequenceId: "canvas-component-update-symphony",

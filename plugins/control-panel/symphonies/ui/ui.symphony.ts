@@ -1,8 +1,8 @@
-import { 
-  initConfig, 
-  initResolver, 
-  loadSchemas, 
-  registerObservers, 
+import {
+  initConfig,
+  initResolver,
+  loadSchemas,
+  registerObservers,
   notifyReady,
   generateFields,
   generateSections,
@@ -14,7 +14,8 @@ import {
   validateField,
   mergeErrors,
   updateView,
-  toggleSection
+  toggleSection,
+  initMovement,
 } from "./ui.stage-crew";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
@@ -26,23 +27,24 @@ export const handlers = {
   loadSchemas,
   registerObservers,
   notifyReady,
-  
+  initMovement,
+
   // ui.render handlers
   generateFields,
   generateSections,
   renderView,
-  
+
   // ui.field.change handlers
   prepareField,
   dispatchField,
   setDirty,
   awaitRefresh,
-  
+
   // ui.field.validate handlers
   validateField,
   mergeErrors,
   updateView,
-  
+
   // ui.section.toggle handlers
-  toggleSection
+  toggleSection,
 };

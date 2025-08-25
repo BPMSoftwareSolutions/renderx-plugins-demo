@@ -1,16 +1,20 @@
-import type { 
-  ControlPanelConfig, 
-  PropertyField, 
-  SelectedElement, 
+import type {
+  ControlPanelConfig,
+  PropertyField,
+  SelectedElement,
   ComponentSchema,
-  SectionConfig 
-} from '../types/control-panel.types';
+  SectionConfig,
+} from "../types/control-panel.types";
 
 /**
  * SchemaResolverService - Converts component JSON schemas into control panel configurations
  * This is the key service that makes the control panel data-driven
  */
 export class SchemaResolverService {
+  private static schemaCache: Map<string, ComponentSchema> = new Map();
+  private static inflight: Map<string, Promise<ComponentSchema | undefined>> =
+    new Map();
+
   private config: ControlPanelConfig;
   private componentSchemas: Map<string, ComponentSchema> = new Map();
 
@@ -26,18 +30,60 @@ export class SchemaResolverService {
   }
 
   /**
-   * Load component schemas from JSON files
+   * Load component schemas from JSON files with cross-instance memoization
+   * - Dedupes concurrent loads via an in-flight map
+   * - Caches resolved schemas for subsequent instances
    */
   async loadComponentSchemas(componentTypes: string[]) {
     const promises = componentTypes.map(async (type) => {
       try {
-        const response = await fetch(`/json-components/${type}.json`);
-        if (response.ok) {
-          const schema: ComponentSchema = await response.json();
-          this.registerComponentSchema(type, schema);
+        // 1) If cached, reuse immediately
+        const cached = SchemaResolverService.schemaCache.get(type);
+        if (cached) {
+          this.registerComponentSchema(type, cached);
+          return;
         }
+
+        // 2) If a load is in-flight, await it and then register
+        const inflight = SchemaResolverService.inflight.get(type);
+        if (inflight) {
+          const result = await inflight;
+          if (result) {
+            SchemaResolverService.schemaCache.set(type, result);
+            this.registerComponentSchema(type, result);
+          }
+          return;
+        }
+
+        // 3) Start a new fetch and memoize the promise
+        const p = (async () => {
+          try {
+            const response = await fetch(`/json-components/${type}.json`);
+            if (response.ok) {
+              const schema: ComponentSchema = await response.json();
+              SchemaResolverService.schemaCache.set(type, schema);
+              return schema;
+            }
+            return undefined;
+          } catch (error) {
+            console.warn(
+              `Failed to load schema for component type: ${type}`,
+              error
+            );
+            return undefined;
+          }
+        })();
+        SchemaResolverService.inflight.set(type, p);
+
+        const schema = await p;
+        // Clear inflight once resolved
+        SchemaResolverService.inflight.delete(type);
+        if (schema) this.registerComponentSchema(type, schema);
       } catch (error) {
-        console.warn(`Failed to load schema for component type: ${type}`, error);
+        console.warn(
+          `Failed to load schema for component type: ${type}`,
+          error
+        );
       }
     });
 
@@ -61,17 +107,23 @@ export class SchemaResolverService {
         const field: PropertyField = {
           key,
           label: this.formatLabel(key),
-          type: this.mapSchemaTypeToFieldType(propSchema.type, propSchema.enum, key),
+          type: this.mapSchemaTypeToFieldType(
+            propSchema.type,
+            propSchema.enum,
+            key
+          ),
           path: this.inferPropertyPath(key, selectedElement),
           section: this.inferSection(key),
           required: propSchema.required || false,
           description: propSchema.description,
           defaultValue: propSchema.default,
           placeholder: this.generatePlaceholder(key, propSchema.type),
-          options: propSchema.enum ? propSchema.enum.map(value => ({
-            value,
-            label: this.formatLabel(value.toString())
-          })) : undefined
+          options: propSchema.enum
+            ? propSchema.enum.map((value) => ({
+                value,
+                label: this.formatLabel(value.toString()),
+              }))
+            : undefined,
         };
 
         if (propSchema.validation) {
@@ -91,7 +143,10 @@ export class SchemaResolverService {
     fields.push(...stylingFields);
 
     // 4. Add any additional fields from the actual element structure (for backwards compatibility)
-    const additionalFields = this.generateAdditionalFields(selectedElement, fields);
+    const additionalFields = this.generateAdditionalFields(
+      selectedElement,
+      fields
+    );
     fields.push(...additionalFields);
 
     return this.sortFieldsBySection(fields);
@@ -109,31 +164,33 @@ export class SchemaResolverService {
     }
 
     // Apply component-specific overrides
-    const sections = baseSections.map(section => {
+    const sections = baseSections.map((section) => {
       const sectionOverride = override.sections[section.id];
       if (sectionOverride) {
         return {
           ...section,
           title: sectionOverride.title || section.title,
-          order: sectionOverride.order || section.order
+          order: sectionOverride.order || section.order,
         };
       }
       return section;
     });
 
     // Add any new sections defined in the override
-    Object.entries(override.sections).forEach(([sectionId, sectionOverride]) => {
-      if (!sections.find(s => s.id === sectionId)) {
-        sections.push({
-          id: sectionId,
-          title: sectionOverride.title || this.formatLabel(sectionId),
-          icon: '📋',
-          order: sectionOverride.order || 999,
-          collapsible: true,
-          defaultExpanded: false
-        });
+    Object.entries(override.sections).forEach(
+      ([sectionId, sectionOverride]) => {
+        if (!sections.find((s) => s.id === sectionId)) {
+          sections.push({
+            id: sectionId,
+            title: sectionOverride.title || this.formatLabel(sectionId),
+            icon: "📋",
+            order: sectionOverride.order || 999,
+            collapsible: true,
+            defaultExpanded: false,
+          });
+        }
       }
-    });
+    );
 
     return sections.sort((a, b) => a.order - b.order);
   }
@@ -141,23 +198,29 @@ export class SchemaResolverService {
   /**
    * Validate a field value against its schema
    */
-  validateField(field: PropertyField, value: any): { isValid: boolean; errors: string[] } {
+  validateField(
+    field: PropertyField,
+    value: any
+  ): { isValid: boolean; errors: string[] } {
     const errors: string[] = [];
 
     // Required validation
-    if (field.required && (value === null || value === undefined || value === '')) {
+    if (
+      field.required &&
+      (value === null || value === undefined || value === "")
+    ) {
       errors.push(`${field.label} is required`);
     }
 
     // Type-specific validation
-    if (value !== null && value !== undefined && value !== '') {
+    if (value !== null && value !== undefined && value !== "") {
       switch (field.type) {
-        case 'number':
+        case "number":
           if (isNaN(Number(value))) {
             errors.push(`${field.label} must be a number`);
           }
           break;
-        case 'color':
+        case "color":
           if (!/^#[0-9A-F]{6}$/i.test(value)) {
             errors.push(`${field.label} must be a valid hex color`);
           }
@@ -167,8 +230,12 @@ export class SchemaResolverService {
 
     // Custom validation rules
     if (field.validation) {
-      field.validation.forEach(rule => {
-        const validationResult = this.applyValidationRule(rule, value, field.label);
+      field.validation.forEach((rule) => {
+        const validationResult = this.applyValidationRule(
+          rule,
+          value,
+          field.label
+        );
         if (!validationResult.isValid) {
           errors.push(...validationResult.errors);
         }
@@ -179,112 +246,119 @@ export class SchemaResolverService {
   }
 
   // Private helper methods
-  private generateUniversalLayoutFields(selectedElement: SelectedElement): PropertyField[] {
+  private generateUniversalLayoutFields(
+    selectedElement: SelectedElement
+  ): PropertyField[] {
     return [
       {
-        key: 'x',
-        label: 'X Position',
-        type: 'number',
-        path: 'layout.x',
-        section: 'layout',
-        description: 'Horizontal position in pixels'
+        key: "x",
+        label: "X Position",
+        type: "number",
+        path: "layout.x",
+        section: "layout",
+        description: "Horizontal position in pixels",
       },
       {
-        key: 'y',
-        label: 'Y Position',
-        type: 'number',
-        path: 'layout.y',
-        section: 'layout',
-        description: 'Vertical position in pixels'
+        key: "y",
+        label: "Y Position",
+        type: "number",
+        path: "layout.y",
+        section: "layout",
+        description: "Vertical position in pixels",
       },
       {
-        key: 'width',
-        label: 'Width',
-        type: 'number',
-        path: 'layout.width',
-        section: 'layout',
-        description: 'Width in pixels'
+        key: "width",
+        label: "Width",
+        type: "number",
+        path: "layout.width",
+        section: "layout",
+        description: "Width in pixels",
       },
       {
-        key: 'height',
-        label: 'Height',
-        type: 'number',
-        path: 'layout.height',
-        section: 'layout',
-        description: 'Height in pixels'
-      }
+        key: "height",
+        label: "Height",
+        type: "number",
+        path: "layout.height",
+        section: "layout",
+        description: "Height in pixels",
+      },
     ];
   }
 
-  private generateUniversalStylingFields(selectedElement: SelectedElement): PropertyField[] {
+  private generateUniversalStylingFields(
+    selectedElement: SelectedElement
+  ): PropertyField[] {
     return [
       {
-        key: 'bg-color',
-        label: 'Background Color',
-        type: 'color',
-        path: 'styling.bg-color',
-        section: 'styling',
-        placeholder: '#007acc',
-        description: 'Background color in hex format'
+        key: "bg-color",
+        label: "Background Color",
+        type: "color",
+        path: "styling.bg-color",
+        section: "styling",
+        placeholder: "#007acc",
+        description: "Background color in hex format",
       },
       {
-        key: 'text-color',
-        label: 'Text Color',
-        type: 'color',
-        path: 'styling.text-color',
-        section: 'styling',
-        placeholder: '#ffffff',
-        description: 'Text color in hex format'
+        key: "text-color",
+        label: "Text Color",
+        type: "color",
+        path: "styling.text-color",
+        section: "styling",
+        placeholder: "#ffffff",
+        description: "Text color in hex format",
       },
       {
-        key: 'border-radius',
-        label: 'Border Radius',
-        type: 'text',
-        path: 'styling.border-radius',
-        section: 'styling',
-        placeholder: '4px',
-        description: 'Border radius (e.g., 4px, 50%)'
+        key: "border-radius",
+        label: "Border Radius",
+        type: "text",
+        path: "styling.border-radius",
+        section: "styling",
+        placeholder: "4px",
+        description: "Border radius (e.g., 4px, 50%)",
       },
       {
-        key: 'font-size',
-        label: 'Font Size',
-        type: 'text',
-        path: 'styling.font-size',
-        section: 'styling',
-        placeholder: '14px',
-        description: 'Font size (e.g., 14px, 1.2em)'
-      }
+        key: "font-size",
+        label: "Font Size",
+        type: "text",
+        path: "styling.font-size",
+        section: "styling",
+        placeholder: "14px",
+        description: "Font size (e.g., 14px, 1.2em)",
+      },
     ];
   }
 
-  private generateAdditionalFields(selectedElement: SelectedElement, existingFields: PropertyField[]): PropertyField[] {
+  private generateAdditionalFields(
+    selectedElement: SelectedElement,
+    existingFields: PropertyField[]
+  ): PropertyField[] {
     const fields: PropertyField[] = [];
-    const existingKeys = new Set(existingFields.map(f => f.key));
+    const existingKeys = new Set(existingFields.map((f) => f.key));
 
     // Add any fields from the actual element structure that aren't already covered
     if (selectedElement.content) {
-      Object.keys(selectedElement.content).forEach(key => {
+      Object.keys(selectedElement.content).forEach((key) => {
         if (!existingKeys.has(key)) {
           fields.push({
             key,
             label: this.formatLabel(key),
             type: this.inferFieldType(selectedElement.content![key]),
             path: `content.${key}`,
-            section: 'content'
+            section: "content",
           });
         }
       });
     }
 
     if (selectedElement.styling) {
-      Object.keys(selectedElement.styling).forEach(key => {
+      Object.keys(selectedElement.styling).forEach((key) => {
         if (!existingKeys.has(key)) {
           fields.push({
             key,
             label: this.formatLabel(key),
-            type: key.includes('color') ? 'color' : 'text',
+            type: key.includes("color") ? "color" : "text",
             path: `styling.${key}`,
-            section: 'styling'
+            section: "styling",
           });
         }
       });
@@ -293,19 +367,21 @@ export class SchemaResolverService {
     return fields;
   }
 
-  private generateFallbackFields(selectedElement: SelectedElement): PropertyField[] {
+  private generateFallbackFields(
+    selectedElement: SelectedElement
+  ): PropertyField[] {
     // This method is now only used when no component schema is available at all
     const fields: PropertyField[] = [];
 
     // Generate basic fields from the current element structure
     if (selectedElement.content) {
-      Object.keys(selectedElement.content).forEach(key => {
+      Object.keys(selectedElement.content).forEach((key) => {
         fields.push({
           key,
           label: this.formatLabel(key),
           type: this.inferFieldType(selectedElement.content![key]),
           path: `content.${key}`,
-          section: 'content'
+          section: "content",
         });
       });
     }
@@ -317,66 +393,92 @@ export class SchemaResolverService {
     return fields;
   }
 
-  private mapSchemaTypeToFieldType(schemaType: string, enumValues?: string[], fieldKey?: string): string {
-    if (enumValues) return 'select';
+  private mapSchemaTypeToFieldType(
+    schemaType: string,
+    enumValues?: string[],
+    fieldKey?: string
+  ): string {
+    if (enumValues) return "select";
 
     // Smart type inference based on field key
-    if (fieldKey && fieldKey.includes('color')) return 'color';
+    if (fieldKey && fieldKey.includes("color")) return "color";
 
     switch (schemaType) {
-      case 'string': return 'text';
-      case 'number': return 'number';
-      case 'boolean': return 'checkbox';
-      default: return 'text';
+      case "string":
+        return "text";
+      case "number":
+        return "number";
+      case "boolean":
+        return "checkbox";
+      default:
+        return "text";
     }
   }
 
-  private inferPropertyPath(key: string, selectedElement: SelectedElement): string {
+  private inferPropertyPath(
+    key: string,
+    selectedElement: SelectedElement
+  ): string {
     // Smart path inference based on key patterns and element structure
-    if (selectedElement.content && key in selectedElement.content) return `content.${key}`;
-    if (selectedElement.layout && key in selectedElement.layout) return `layout.${key}`;
-    if (selectedElement.styling && key in selectedElement.styling) return `styling.${key}`;
-    
+    if (selectedElement.content && key in selectedElement.content)
+      return `content.${key}`;
+    if (selectedElement.layout && key in selectedElement.layout)
+      return `layout.${key}`;
+    if (selectedElement.styling && key in selectedElement.styling)
+      return `styling.${key}`;
+
     // Default inference based on key patterns
-    if (['x', 'y', 'width', 'height'].includes(key)) return `layout.${key}`;
-    if (key.includes('color') || key.includes('font') || key.includes('border')) return `styling.${key}`;
-    
+    if (["x", "y", "width", "height"].includes(key)) return `layout.${key}`;
+    if (key.includes("color") || key.includes("font") || key.includes("border"))
+      return `styling.${key}`;
+
     return `content.${key}`;
   }
 
   private inferSection(key: string): string {
-    if (['x', 'y', 'width', 'height', 'position'].includes(key)) return 'layout';
-    if (key.includes('color') || key.includes('font') || key.includes('border') || key.includes('shadow')) return 'styling';
-    if (key.includes('click') || key.includes('hover') || key.includes('event')) return 'behavior';
-    return 'content';
+    if (["x", "y", "width", "height", "position"].includes(key))
+      return "layout";
+    if (
+      key.includes("color") ||
+      key.includes("font") ||
+      key.includes("border") ||
+      key.includes("shadow")
+    )
+      return "styling";
+    if (key.includes("click") || key.includes("hover") || key.includes("event"))
+      return "behavior";
+    return "content";
   }
 
   private inferFieldType(value: any): string {
-    if (typeof value === 'boolean') return 'checkbox';
-    if (typeof value === 'number') return 'number';
-    return 'text';
+    if (typeof value === "boolean") return "checkbox";
+    if (typeof value === "number") return "number";
+    return "text";
   }
 
   private formatLabel(key: string): string {
     return key
-      .replace(/([A-Z])/g, ' $1')
-      .replace(/^./, str => str.toUpperCase())
-      .replace(/-/g, ' ')
-      .replace(/_/g, ' ');
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, (str) => str.toUpperCase())
+      .replace(/-/g, " ")
+      .replace(/_/g, " ");
   }
 
   private generatePlaceholder(key: string, type: string): string {
-    if (type === 'number') return '0';
-    if (key.includes('color')) return '#007acc';
-    if (key.includes('size') || key.includes('radius')) return '4px';
+    if (type === "number") return "0";
+    if (key.includes("color")) return "#007acc";
+    if (key.includes("size") || key.includes("radius")) return "4px";
     return `Enter ${key}...`;
   }
 
   private sortFieldsBySection(fields: PropertyField[]): PropertyField[] {
-    const sectionOrder = this.config.defaultSections.reduce((acc, section, index) => {
-      acc[section.id] = index;
-      return acc;
-    }, {} as Record<string, number>);
+    const sectionOrder = this.config.defaultSections.reduce(
+      (acc, section, index) => {
+        acc[section.id] = index;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     return fields.sort((a, b) => {
       const aOrder = sectionOrder[a.section] ?? 999;
@@ -385,23 +487,27 @@ export class SchemaResolverService {
     });
   }
 
-  private applyValidationRule(rule: any, value: any, fieldLabel: string): { isValid: boolean; errors: string[] } {
+  private applyValidationRule(
+    rule: any,
+    value: any,
+    fieldLabel: string
+  ): { isValid: boolean; errors: string[] } {
     // Implementation of custom validation rules
     const errors: string[] = [];
-    
+
     switch (rule.type) {
-      case 'min':
-        if (typeof value === 'number' && value < rule.value) {
+      case "min":
+        if (typeof value === "number" && value < rule.value) {
           errors.push(`${fieldLabel} must be at least ${rule.value}`);
         }
         break;
-      case 'max':
-        if (typeof value === 'number' && value > rule.value) {
+      case "max":
+        if (typeof value === "number" && value > rule.value) {
           errors.push(`${fieldLabel} must be at most ${rule.value}`);
         }
         break;
-      case 'pattern':
-        if (typeof value === 'string' && !new RegExp(rule.value).test(value)) {
+      case "pattern":
+        if (typeof value === "string" && !new RegExp(rule.value).test(value)) {
           errors.push(rule.message || `${fieldLabel} format is invalid`);
         }
         break;

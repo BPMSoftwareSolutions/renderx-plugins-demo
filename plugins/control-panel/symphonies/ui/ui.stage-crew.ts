@@ -1,21 +1,96 @@
 // Stage-crew handlers for Control Panel UI orchestration sequences
 // These handlers wrap existing UI logic to make it observable and sequence-driven
 
-import { SchemaResolverService } from '../../services/schema-resolver.service';
-import type { ControlPanelConfig } from '../../types/control-panel.types';
+import { SchemaResolverService } from "../../services/schema-resolver.service";
+import type { ControlPanelConfig } from "../../types/control-panel.types";
 
 // Global state for UI sequences - this will be managed by the sequences
 let uiState: {
   config?: ControlPanelConfig;
   resolver?: SchemaResolverService;
   isInitialized: boolean;
+  schemasLoaded?: boolean;
 } = {
-  isInitialized: false
+  isInitialized: false,
+  schemasLoaded: false,
 };
+
+// Fence to prevent duplicate init work when multiple callers enqueue init close together
+let uiInitInFlight = false;
+let uiInitDone = false;
 
 // ============================================================================
 // UI.INIT SEQUENCE HANDLERS
 // ============================================================================
+
+// Batched movement iterator for ui.init
+// Short-circuit duplicate inits: skip if in-flight or already done
+if (typeof uiInitInFlight !== "undefined" && (uiInitInFlight || uiInitDone)) {
+  // Note: ctx may not be available here; guard inside function as well
+}
+
+export async function initMovement(data: any, ctx: any) {
+  if (uiInitInFlight || uiInitDone) {
+    ctx.logger?.info?.("UI Init skipped (in-flight/done)");
+    return;
+  }
+  uiInitInFlight = true;
+
+  try {
+    const subBeats = [
+      { event: "control:panel:ui:config:load", handler: initConfig },
+      { event: "control:panel:ui:resolver:init", handler: initResolver },
+      { event: "control:panel:ui:schemas:load", handler: loadSchemas },
+      {
+        event: "control:panel:ui:observers:register",
+        handler: registerObservers,
+      },
+      { event: "control:panel:ui:ready:notify", handler: notifyReady },
+    ];
+
+    const telemetry: Array<{
+      event: string;
+      dur: number;
+      status: string;
+      error?: string;
+    }> = [];
+    for (const sb of subBeats) {
+      const t0 =
+        typeof performance !== "undefined" && performance.now
+          ? performance.now()
+          : Date.now();
+      try {
+        await Promise.resolve(sb.handler(data, ctx));
+        const t1 =
+          typeof performance !== "undefined" && performance.now
+            ? performance.now()
+            : Date.now();
+        telemetry.push({ event: sb.event, dur: t1 - t0, status: "ok" });
+      } catch (e: any) {
+        const t1 =
+          typeof performance !== "undefined" && performance.now
+            ? performance.now()
+            : Date.now();
+        telemetry.push({
+          event: sb.event,
+          dur: t1 - t0,
+          status: "error",
+          error: String(e),
+        });
+        throw e;
+      }
+    }
+    // Attach telemetry and log total duration
+    ctx.payload.uiInitTelemetry = { subBeats: telemetry };
+    const total = telemetry.reduce((s, b) => s + b.dur, 0);
+    ctx.logger?.info?.(`UI Init (batched) — ${Math.round(total)}ms`, {
+      subBeats: telemetry,
+    });
+  } finally {
+    uiInitInFlight = false;
+    uiInitDone = true;
+  }
+}
 
 export function initConfig(data: any, ctx: any) {
   try {
@@ -36,10 +111,10 @@ export function initResolver(data: any, ctx: any) {
     // This wraps the existing SchemaResolverService initialization
     const config = data.config || {}; // Would come from previous beat
     const resolver = new SchemaResolverService(config);
-    
+
     uiState.config = config;
     uiState.resolver = resolver;
-    
+
     ctx.payload.resolver = resolver;
     ctx.payload.resolverInitialized = true;
     ctx.logger?.info?.("Schema resolver initialized");
@@ -50,7 +125,7 @@ export function initResolver(data: any, ctx: any) {
   }
 }
 
-export function loadSchemas(data: any, ctx: any) {
+export async function loadSchemas(data: any, ctx: any) {
   try {
     const resolver = ctx.payload.resolver || uiState.resolver;
     if (!resolver) {
@@ -58,27 +133,30 @@ export function loadSchemas(data: any, ctx: any) {
     }
 
     // Load component schemas - this wraps the existing loadComponentSchemas call
-    const componentTypes = data.componentTypes || ['button', 'input', 'container', 'line'];
+    const componentTypes = data.componentTypes || [
+      "button",
+      "input",
+      "container",
+      "line",
+    ];
 
     // In test environment or when fetch is not available, just mark as loaded
-    if (typeof fetch === 'undefined' || typeof window === 'undefined') {
+    const isTest =
+      typeof process !== "undefined" &&
+      process.env &&
+      process.env.NODE_ENV === "test";
+    if (
+      typeof fetch === "undefined" ||
+      typeof window === "undefined" ||
+      isTest
+    ) {
       ctx.payload.schemasLoaded = true;
       ctx.logger?.info?.("Component schemas loaded");
       return;
     }
 
-    // Note: This is async, but we'll handle it synchronously for now
-    // In a real implementation, this might need to be handled differently
-    resolver.loadComponentSchemas(componentTypes).then(() => {
-      ctx.payload.schemasLoaded = true;
-      ctx.logger?.info?.("Component schemas loaded");
-    }).catch((error) => {
-      ctx.payload.schemasLoaded = false;
-      ctx.payload.error = String(error);
-      ctx.logger?.error?.("Failed to load schemas:", error);
-    });
-
-    // For now, mark as loaded immediately
+    // Await schema loading to ensure downstream handlers have data
+    await resolver.loadComponentSchemas(componentTypes);
     ctx.payload.schemasLoaded = true;
     ctx.logger?.info?.("Component schemas loaded");
   } catch (error) {
@@ -123,7 +201,7 @@ export function generateFields(data: any, ctx: any) {
   try {
     const { selectedElement } = data || {};
     const resolver = uiState.resolver;
-    
+
     if (!resolver || !selectedElement) {
       ctx.payload.fields = [];
       return;
@@ -146,7 +224,7 @@ export function generateSections(data: any, ctx: any) {
   try {
     const { selectedElement } = data || {};
     const resolver = uiState.resolver;
-    
+
     if (!resolver || !selectedElement) {
       ctx.payload.sections = [];
       return;
@@ -188,9 +266,11 @@ export function renderView(data: any, ctx: any) {
 export function prepareField(data: any, ctx: any) {
   try {
     const { fieldKey, value, selectedElement } = data || {};
-    
+
     if (!fieldKey || value === undefined || !selectedElement) {
-      throw new Error("Field change requires fieldKey, value, and selectedElement");
+      throw new Error(
+        "Field change requires fieldKey, value, and selectedElement"
+      );
     }
 
     ctx.payload.fieldKey = fieldKey;
@@ -221,7 +301,9 @@ export function dispatchField(data: any, ctx: any) {
         let sequenceId = "canvas-component-update-symphony";
 
         try {
-          const { resolveInteraction } = require("../../../../src/interactionManifest");
+          const {
+            resolveInteraction,
+          } = require("../../../../src/interactionManifest");
           const route = resolveInteraction("canvas.component.update");
           pluginId = route.pluginId;
           sequenceId = route.sequenceId;
@@ -232,10 +314,12 @@ export function dispatchField(data: any, ctx: any) {
         ctx.conductor.play(pluginId, sequenceId, {
           id: selectedElement.header.id,
           attribute: fieldKey,
-          value: value
+          value: value,
         });
         ctx.payload.fieldDispatched = true;
-        ctx.logger?.info?.(`Field change dispatched to canvas: ${fieldKey} = ${value}`);
+        ctx.logger?.info?.(
+          `Field change dispatched to canvas: ${fieldKey} = ${value}`
+        );
       } catch (routeError) {
         ctx.payload.fieldDispatched = false;
         ctx.payload.error = `Failed to dispatch to canvas: ${routeError}`;
@@ -285,7 +369,7 @@ export function validateField(data: any, ctx: any) {
   try {
     const { field, value } = data || {};
     const resolver = uiState.resolver;
-    
+
     if (!resolver || !field) {
       ctx.payload.isValid = true;
       ctx.payload.errors = [];
@@ -297,7 +381,11 @@ export function validateField(data: any, ctx: any) {
     ctx.payload.isValid = validation.isValid;
     ctx.payload.errors = validation.errors;
     ctx.payload.fieldKey = field.key;
-    ctx.logger?.info?.(`Field validation: ${field.key} - ${validation.isValid ? 'valid' : 'invalid'}`);
+    ctx.logger?.info?.(
+      `Field validation: ${field.key} - ${
+        validation.isValid ? "valid" : "invalid"
+      }`
+    );
   } catch (error) {
     ctx.payload.isValid = false;
     ctx.payload.errors = [String(error)];
@@ -342,7 +430,7 @@ export function updateView(data: any, ctx: any) {
 export function toggleSection(data: any, ctx: any) {
   try {
     const { sectionId } = data || {};
-    
+
     if (!sectionId) {
       throw new Error("Section toggle requires sectionId");
     }
