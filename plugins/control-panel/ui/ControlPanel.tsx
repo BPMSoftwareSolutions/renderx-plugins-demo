@@ -4,77 +4,107 @@ import { resolveInteraction } from "../../../src/interactionManifest";
 import { setSelectionObserver, setClassesObserver } from "../state/observer.store";
 import "./ControlPanel.css";
 
+// Property sections configuration
+const PROPERTY_SECTIONS = [
+  {
+    id: "content",
+    title: "📝 CONTENT",
+    fields: [
+      { key: "content", label: "Button Text", type: "text", path: "content.content" },
+      { key: "variant", label: "Variant", type: "select", path: "content.variant",
+        options: [{ value: "primary", label: "Primary" }, { value: "secondary", label: "Secondary" }, { value: "danger", label: "Danger" }] },
+      { key: "size", label: "Size", type: "select", path: "content.size",
+        options: [{ value: "small", label: "Small" }, { value: "medium", label: "Medium" }, { value: "large", label: "Large" }] },
+      { key: "disabled", label: "Disabled", type: "checkbox", path: "content.disabled" }
+    ]
+  },
+  {
+    id: "layout",
+    title: "📐 LAYOUT",
+    fields: [
+      { key: "x", label: "X Position", type: "number", path: "layout.x" },
+      { key: "y", label: "Y Position", type: "number", path: "layout.y" },
+      { key: "width", label: "Width", type: "number", path: "layout.width" },
+      { key: "height", label: "Height", type: "number", path: "layout.height" }
+    ]
+  },
+  {
+    id: "styling",
+    title: "🎨 STYLING",
+    fields: [
+      { key: "bg-color", label: "Background Color", type: "text", path: "styling.bg-color", placeholder: "#007acc" },
+      { key: "text-color", label: "Text Color", type: "text", path: "styling.text-color", placeholder: "#ffffff" },
+      { key: "border-radius", label: "Border Radius", type: "text", path: "styling.border-radius", placeholder: "4px" },
+      { key: "font-size", label: "Font Size", type: "text", path: "styling.font-size", placeholder: "14px" }
+    ]
+  }
+];
+
+function getNestedValue(obj: any, path: string) {
+  return path.split('.').reduce((current, key) => current?.[key], obj);
+}
+
+function PropertyField({ field, selectedElement, onChange }: any) {
+  const value = getNestedValue(selectedElement, field.path) || (field.type === "number" ? 0 : field.type === "checkbox" ? false : "");
+
+  if (field.type === "select") {
+    return (
+      <select className="property-input" value={value} onChange={(e) => onChange(field.key, e.target.value)}>
+        {field.options.map((opt: any) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+      </select>
+    );
+  }
+
+  if (field.type === "checkbox") {
+    return (
+      <label className="property-label">
+        <input type="checkbox" checked={value} onChange={(e) => onChange(field.key, e.target.checked)} />
+        {field.label}
+      </label>
+    );
+  }
+
+  return (
+    <input
+      className="property-input"
+      type={field.type}
+      value={value}
+      placeholder={field.placeholder}
+      onChange={(e) => onChange(field.key, field.type === "number" ? parseInt(e.target.value) || 0 : e.target.value)}
+    />
+  );
+}
+
 export function ControlPanel() {
   const conductor = useConductor();
   const [selectedElement, setSelectedElement] = React.useState<any>(null);
   const [currentClasses, setCurrentClasses] = React.useState<string[]>([]);
 
-  // Register observers on mount
   React.useEffect(() => {
     setSelectionObserver((selectionModel) => {
       setSelectedElement(selectionModel);
-      // Initialize classes from selection model
       setCurrentClasses(selectionModel?.classes || []);
     });
-
     setClassesObserver((classData) => {
-      if (classData?.classes) {
-        setCurrentClasses(classData.classes);
-      }
+      if (classData?.classes) setCurrentClasses(classData.classes);
     });
-
-    // Cleanup observers on unmount
     return () => {
       setSelectionObserver(null);
       setClassesObserver(null);
     };
   }, []);
 
-  const handleAddClass = (className: string) => {
-    if (!selectedElement?.header?.id || !className.trim()) return;
-
-    try {
-      const route = resolveInteraction("control.panel.classes.add");
-      conductor?.play?.(route.pluginId, route.sequenceId, {
-        id: selectedElement.header.id,
-        className: className.trim()
-      });
-    } catch {
-      // Note: UI components don't have access to ctx.logger, so we'll silently fail
-      // The stage-crew handlers will log any actual errors
-    }
-  };
-
-  const handleRemoveClass = (className: string) => {
-    if (!selectedElement?.header?.id || !className) return;
-
-    try {
-      const route = resolveInteraction("control.panel.classes.remove");
-      conductor?.play?.(route.pluginId, route.sequenceId, {
-        id: selectedElement.header.id,
-        className
-      });
-    } catch {
-      // Note: UI components don't have access to ctx.logger, so we'll silently fail
-      // The stage-crew handlers will log any actual errors
-    }
-  };
-
-  const handleAttributeChange = (attribute: string, value: any) => {
+  const handleAction = (interaction: string, data: any) => {
     if (!selectedElement?.header?.id) return;
-
     try {
-      const route = resolveInteraction("canvas.component.update");
-      conductor?.play?.(route.pluginId, route.sequenceId, {
-        id: selectedElement.header.id,
-        attribute,
-        value
-      });
-    } catch {
-      // Note: UI components don't have access to ctx.logger, so we'll silently fail
-      // The stage-crew handlers will log any actual errors
-    }
+      const route = resolveInteraction(interaction);
+      conductor?.play?.(route.pluginId, route.sequenceId, { id: selectedElement.header.id, ...data });
+    } catch {}
   };
+
+  const handleAttributeChange = (attribute: string, value: any) => handleAction("canvas.component.update", { attribute, value });
+  const handleAddClass = (className: string) => className.trim() && handleAction("control.panel.classes.add", { className: className.trim() });
+  const handleRemoveClass = (className: string) => handleAction("control.panel.classes.remove", { className });
 
   return (
     <div className="control-panel">
@@ -87,7 +117,6 @@ export function ControlPanel() {
           </div>
         )}
       </div>
-
       <div className="control-panel-content">
         {!selectedElement ? (
           <div className="no-selection">
@@ -97,147 +126,19 @@ export function ControlPanel() {
           </div>
         ) : (
           <div className="property-sections">
-            {/* Content Section */}
-            <div className="property-section">
-              <div className="property-section-title">📝 CONTENT</div>
-              <div className="property-grid">
-                <div className="property-item">
-                  <label className="property-label">Button Text</label>
-                  <input
-                    className="property-input"
-                    type="text"
-                    value={selectedElement.content?.content || ""}
-                    onChange={(e) => handleAttributeChange("content", e.target.value)}
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Variant</label>
-                  <select
-                    className="property-input"
-                    value={selectedElement.content?.variant || "primary"}
-                    onChange={(e) => handleAttributeChange("variant", e.target.value)}
-                  >
-                    <option value="primary">Primary</option>
-                    <option value="secondary">Secondary</option>
-                    <option value="danger">Danger</option>
-                  </select>
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Size</label>
-                  <select
-                    className="property-input"
-                    value={selectedElement.content?.size || "medium"}
-                    onChange={(e) => handleAttributeChange("size", e.target.value)}
-                  >
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                  </select>
-                </div>
-                <div className="property-item">
-                  <label className="property-label">
-                    <input
-                      type="checkbox"
-                      checked={selectedElement.content?.disabled || false}
-                      onChange={(e) => handleAttributeChange("disabled", e.target.checked)}
-                    />
-                    Disabled
-                  </label>
+            {PROPERTY_SECTIONS.map(section => (
+              <div key={section.id} className="property-section">
+                <div className="property-section-title">{section.title}</div>
+                <div className="property-grid">
+                  {section.fields.map(field => (
+                    <div key={field.key} className="property-item">
+                      {field.type !== "checkbox" && <label className="property-label">{field.label}</label>}
+                      <PropertyField field={field} selectedElement={selectedElement} onChange={handleAttributeChange} />
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            {/* Layout Section */}
-            <div className="property-section">
-              <div className="property-section-title">📐 LAYOUT</div>
-              <div className="property-grid">
-                <div className="property-item">
-                  <label className="property-label">X Position</label>
-                  <input
-                    className="property-input"
-                    type="number"
-                    value={selectedElement.layout?.x || 0}
-                    onChange={(e) => handleAttributeChange("x", parseInt(e.target.value) || 0)}
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Y Position</label>
-                  <input
-                    className="property-input"
-                    type="number"
-                    value={selectedElement.layout?.y || 0}
-                    onChange={(e) => handleAttributeChange("y", parseInt(e.target.value) || 0)}
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Width</label>
-                  <input
-                    className="property-input"
-                    type="number"
-                    value={selectedElement.layout?.width || 0}
-                    onChange={(e) => handleAttributeChange("width", parseInt(e.target.value) || 0)}
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Height</label>
-                  <input
-                    className="property-input"
-                    type="number"
-                    value={selectedElement.layout?.height || 0}
-                    onChange={(e) => handleAttributeChange("height", parseInt(e.target.value) || 0)}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Styling Section */}
-            <div className="property-section">
-              <div className="property-section-title">🎨 STYLING</div>
-              <div className="property-grid">
-                <div className="property-item">
-                  <label className="property-label">Background Color</label>
-                  <input
-                    className="property-input"
-                    type="text"
-                    value={selectedElement.styling?.["bg-color"] || ""}
-                    onChange={(e) => handleAttributeChange("bg-color", e.target.value)}
-                    placeholder="#007acc"
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Text Color</label>
-                  <input
-                    className="property-input"
-                    type="text"
-                    value={selectedElement.styling?.["text-color"] || ""}
-                    onChange={(e) => handleAttributeChange("text-color", e.target.value)}
-                    placeholder="#ffffff"
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Border Radius</label>
-                  <input
-                    className="property-input"
-                    type="text"
-                    value={selectedElement.styling?.["border-radius"] || ""}
-                    onChange={(e) => handleAttributeChange("border-radius", e.target.value)}
-                    placeholder="4px"
-                  />
-                </div>
-                <div className="property-item">
-                  <label className="property-label">Font Size</label>
-                  <input
-                    className="property-input"
-                    type="text"
-                    value={selectedElement.styling?.["font-size"] || ""}
-                    onChange={(e) => handleAttributeChange("font-size", e.target.value)}
-                    placeholder="14px"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Classes Section */}
+            ))}
             <div className="property-section">
               <div className="property-section-title">🏷️ CSS CLASSES</div>
               <div className="property-grid">
@@ -247,13 +148,7 @@ export function ControlPanel() {
                     {currentClasses.map((className, index) => (
                       <span key={index} className="class-pill">
                         {className}
-                        <button
-                          className="class-remove-btn"
-                          onClick={() => handleRemoveClass(className)}
-                          title="Remove class"
-                        >
-                          ×
-                        </button>
+                        <button className="class-remove-btn" onClick={() => handleRemoveClass(className)} title="Remove class">×</button>
                       </span>
                     ))}
                   </div>
