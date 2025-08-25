@@ -1,5 +1,10 @@
 // Stage-crew handler for updating Control Panel with current element state during live operations
 
+// Cache last known element size to avoid repeated width/height reads during drag
+let lastSizeById: Record<string, { width: number; height: number }> = {};
+// Cache type during drag bursts to avoid repeated classList scans
+let lastTypeById: Record<string, string> = {};
+
 export function updateFromElement(data: any, ctx: any) {
   const { id, source } = data || {};
   if (!id) {
@@ -13,24 +18,51 @@ export function updateFromElement(data: any, ctx: any) {
     return;
   }
 
-  // Extract type from rx-<type> class
-  const rxClasses = Array.from(element.classList).filter(
-    (cls) => cls.startsWith("rx-") && cls !== "rx-comp"
-  );
-  const typeClass = rxClasses[0]; // e.g., "rx-button"
-  const type = typeClass ? typeClass.replace("rx-", "") : "unknown";
+  // Extract type from rx-<type> class (memoized during drag)
+  let type: string | undefined;
+  const cachedType = lastTypeById[id as string];
+  if (cachedType && (source === "drag" || source === "resize")) {
+    type = cachedType;
+  } else {
+    const rxClasses = Array.from(element.classList).filter(
+      (cls) => cls.startsWith("rx-") && cls !== "rx-comp"
+    );
+    const typeClass = rxClasses[0]; // e.g., "rx-button"
+    type = typeClass ? typeClass.replace("rx-", "") : "unknown";
+    if (source === "drag" || source === "resize") {
+      lastTypeById[id as string] = type;
+    }
+  }
 
   // Get current position and dimensions from inline styles (preferred) or computed styles
   const style = element.style;
   const computed = getComputedStyle(element);
 
-  const x = parseFloat(style.left || computed.left || "0");
-  const y = parseFloat(style.top || computed.top || "0");
-  const width = parseFloat(style.width || computed.width || "0");
-  const height = parseFloat(style.height || computed.height || "0");
-
-  // During drag/resize, send a slim model (layout-only) to avoid heavy recompute
+  // During drag/resize, consume position from data if provided to avoid reflow-causing reads
   if (source === "drag" || source === "resize") {
+    const pos = (data && (data as any).position) as
+      | { x?: number; y?: number }
+      | undefined;
+    const x =
+      pos && typeof pos.x === "number"
+        ? pos.x
+        : parseFloat(style.left || computed.left || "0");
+    const y =
+      pos && typeof pos.y === "number"
+        ? pos.y
+        : parseFloat(style.top || computed.top || "0");
+    // width/height typically unchanged during drag; avoid reads per update
+    let width: number;
+    let height: number;
+    const cached = lastSizeById[id as string];
+    if (cached) {
+      ({ width, height } = cached);
+    } else {
+      width = parseFloat(style.width || computed.width || "0");
+      height = parseFloat(style.height || computed.height || "0");
+      lastSizeById[id as string] = { width, height };
+    }
+
     ctx.payload.selectionModel = {
       header: { type, id },
       layout: { x, y, width, height },
@@ -38,6 +70,11 @@ export function updateFromElement(data: any, ctx: any) {
     ctx.payload._source = source;
     return;
   }
+
+  const x = parseFloat(style.left || computed.left || "0");
+  const y = parseFloat(style.top || computed.top || "0");
+  const width = parseFloat(style.width || computed.width || "0");
+  const height = parseFloat(style.height || computed.height || "0");
 
   // Build full selection model with current DOM state for non-drag cases
   const selectionModel = {

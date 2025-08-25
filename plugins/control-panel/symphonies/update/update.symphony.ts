@@ -7,7 +7,7 @@ let lastLayoutById: Record<
   string,
   { x: number; y: number; width: number; height: number }
 > = {};
-const LAYOUT_EPS = 0.5; // sub-pixel noise threshold
+const LAYOUT_EPS = 1.0; // sub-pixel noise threshold (raised from 0.5)
 
 export const handlers = {
   updateFromElement,

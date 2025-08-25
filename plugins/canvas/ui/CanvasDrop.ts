@@ -1,5 +1,8 @@
 import { resolveInteraction } from "../../../src/interactionManifest";
 
+// Lazily cached route for drag move to avoid resolving on every pointer move
+let __dragMoveRoute: { pluginId: string; sequenceId: string } | null = null;
+
 export async function onDropForTest(
   e: any,
   conductor: any,
@@ -22,13 +25,32 @@ export async function onDropForTest(
   // Define drag callbacks that use conductor.play
   const onDragStart = (dragData: any) => {
     (window as any).__cpDragInProgress = true;
-    console.log("Drag started:", dragData);
+
+    // Debug logs gated for perf
+    if ((window as any).__cpPerf?.debug) {
+      console.log("Drag started:", dragData);
+    }
+
+    // Pre-warm caches and style hints for faster first-frame move
+    try {
+      const id: string | undefined = dragData?.id;
+      if (id) {
+        const el = document.getElementById(id) as HTMLElement | null;
+        if (el) {
+          if (!el.style.position) el.style.position = "absolute";
+          if (!el.style.willChange) el.style.willChange = "left, top";
+        }
+      }
+    } catch {}
   };
 
   const onDragMove = (dragData: any) => {
-    // Use conductor to update position
+    // Use conductor to update position (cache route to avoid repeated resolve calls)
     try {
-      const r = resolveInteraction("canvas.component.drag.move");
+      if (!__dragMoveRoute) {
+        __dragMoveRoute = resolveInteraction("canvas.component.drag.move");
+      }
+      const r = __dragMoveRoute;
       conductor?.play?.(r.pluginId, r.sequenceId, {
         event: "canvas:component:drag:move",
         ...dragData,
@@ -41,8 +63,27 @@ export async function onDropForTest(
 
   const onDragEnd = (dragData: any) => {
     (window as any).__cpDragInProgress = false;
-    // Optional: handle drag end (e.g., cleanup, save state)
-    console.log("Drag ended:", dragData);
+
+    // Debug logs gated for perf
+    if ((window as any).__cpPerf?.debug) {
+      console.log("Drag ended:", dragData);
+    }
+
+    // Optionally trigger a deferred Control Panel render after drag ends
+    const perf = (window as any).__cpPerf || {};
+    const deferMs =
+      typeof perf.postDragRenderDelayMs === "number"
+        ? perf.postDragRenderDelayMs
+        : 0;
+    if (deferMs > 0 && (window as any).__cpTriggerRender) {
+      setTimeout(() => {
+        try {
+          (window as any).__cpTriggerRender();
+        } catch (e) {
+          console.warn("Deferred post-drag render failed:", e);
+        }
+      }, deferMs);
+    }
   };
 
   const onSelected = (selectionData: any) => {

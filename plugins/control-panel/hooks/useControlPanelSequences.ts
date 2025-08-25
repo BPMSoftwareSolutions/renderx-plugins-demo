@@ -84,6 +84,18 @@ export function useControlPanelSequences() {
     [conductor, isInitialized]
   );
 
+  // Expose a globally callable trigger for optional deferred post-drag rendering
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    (window as any).__cpTriggerRender = () => triggerRender(null);
+    return () => {
+      try {
+        if ((window as any).__cpTriggerRender)
+          delete (window as any).__cpTriggerRender;
+      } catch {}
+    };
+  }, [triggerRender]);
+
   // Handle field changes via sequence
   const handleFieldChange = React.useCallback(
     (fieldKey: string, value: any, selectedElement: SelectedElement | null) => {
