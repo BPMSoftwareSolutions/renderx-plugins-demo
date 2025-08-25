@@ -1,6 +1,7 @@
 import { ensureOverlay } from "./select.overlay.dom.stage-crew";
 import { attachResizeHandlers } from "./select.overlay.resize.stage-crew";
 import { applyOverlayRectForEl } from "./select.overlay.dom.stage-crew";
+import { useConductor } from "../../../../src/conductor";
 
 function configureHandlesVisibility(ov: HTMLDivElement, targetEl: HTMLElement) {
   const handlesAttr = targetEl.getAttribute("data-resize-handles");
@@ -28,7 +29,9 @@ export function showSelectionOverlay(data: any, ctx?: any) {
 
   // Always use the standard selection overlay; behavior is data-driven via attributes
   const ov = ensureOverlay();
-  attachResizeHandlers(ov, ctx?.conductor);
+  // Use conductor from context if provided, otherwise get from global context
+  const conductor = ctx?.conductor || useConductor();
+  attachResizeHandlers(ov, conductor);
   ov.dataset.targetId = String(id);
   configureHandlesVisibility(ov, el);
   ov.style.display = "block";

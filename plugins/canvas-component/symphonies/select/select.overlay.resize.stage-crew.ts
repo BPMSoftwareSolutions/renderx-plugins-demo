@@ -58,16 +58,16 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
 
     const clamp = (v: number, min = 1) => (v < min ? min : v);
 
-    let useDomFallback = false;
-
     const call = (
       dx: number,
       dy: number,
       event: "start" | "move" | "end" = "move"
     ) => {
-      const playFn = useDomFallback
-        ? undefined
-        : conductor?.play || (window as any).RenderX?.conductor?.play;
+      // Conductor must always be available - no fallback
+      if (!conductor?.play) {
+        throw new Error("Conductor is required for resize operations but was not provided");
+      }
+
       const base = { id, dir, startLeft, startTop, startWidth, startHeight };
       const payload =
         event === "move"
@@ -81,43 +81,7 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
           : "canvas.component.resize.move";
 
       const r = resolveInteraction(key);
-      const pluginId = r.pluginId;
-      const seqId = r.sequenceId;
-
-      if (typeof playFn === "function") {
-        try {
-          playFn(pluginId, seqId, payload);
-          return;
-        } catch {
-          // Switch to DOM fallback for this drag session if conductor.play fails
-          useDomFallback = true;
-        }
-      }
-
-      if (event !== "move") return;
-      // Fallback direct style updates for environments without conductor or when play throws
-      let left = startLeft;
-      let top = startTop;
-      let width = startWidth;
-      let height = startHeight;
-      if (dir.includes("e")) width = clamp(startWidth + dx, cfg.minW);
-      if (dir.includes("s")) height = clamp(startHeight + dy, cfg.minH);
-      if (dir.includes("w")) {
-        width = clamp(startWidth - dx, cfg.minW);
-        left = startLeft + dx;
-        if (width <= cfg.minW) left = startLeft + (startWidth - cfg.minW);
-      }
-      if (dir.includes("n")) {
-        height = clamp(startHeight - dy, cfg.minH);
-        top = startTop + dy;
-        if (height <= cfg.minH) top = startTop + (startHeight - cfg.minH);
-      }
-      el.style.position = "absolute";
-      el.style.left = `${Math.round(left)}px`;
-      el.style.top = `${Math.round(top)}px`;
-      el.style.width = `${Math.round(width)}px`;
-      el.style.height = `${Math.round(height)}px`;
-      applyOverlayRectForEl(ov, el);
+      conductor.play(r.pluginId, r.sequenceId, payload);
     };
 
     let raf = 0;

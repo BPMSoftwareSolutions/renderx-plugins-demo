@@ -2,6 +2,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
 import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
+import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
 
 function makeTemplate() {
   return {
@@ -39,8 +40,18 @@ describe("canvas-component resize (DOM-only)", () => {
     const id = ctx.payload.nodeId;
     const el = document.getElementById(id)!;
 
+    // Mock conductor for resize operations
+    const conductor = {
+      play: (_pluginId: string, seqId: string, payload: any) => {
+        // For DOM-only test, we need the resize handlers to actually update the DOM
+        if (seqId === "canvas-component-resize-move-symphony") {
+          resizeMoveHandlers.updateSize?.(payload, {});
+        }
+      },
+    };
+
     // Show overlay (creates handles)
-    showSelectionOverlay({ id });
+    showSelectionOverlay({ id }, { conductor });
 
     const overlay = document.getElementById("rx-selection-overlay")!;
     const se = overlay.querySelector(".rx-handle.se")!;

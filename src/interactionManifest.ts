@@ -56,6 +56,10 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "ControlPanelPlugin",
     sequenceId: "control-panel-classes-remove-symphony",
   },
+  "control.panel.update": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-update-symphony",
+  },
 };
 
 // Try to eagerly preload routes in Vite/ Vitest environments (sync)

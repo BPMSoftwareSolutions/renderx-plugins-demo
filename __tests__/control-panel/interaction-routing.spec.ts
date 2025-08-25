@@ -19,4 +19,10 @@ describe("Control Panel interaction routing", () => {
     expect(route.pluginId).toBe("ControlPanelPlugin");
     expect(route.sequenceId).toBe("control-panel-classes-remove-symphony");
   });
+
+  it("resolves control.panel.update to ControlPanelPlugin", () => {
+    const route = resolveInteraction("control.panel.update");
+    expect(route.pluginId).toBe("ControlPanelPlugin");
+    expect(route.sequenceId).toBe("control-panel-update-symphony");
+  });
 });

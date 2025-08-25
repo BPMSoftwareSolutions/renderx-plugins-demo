@@ -12,6 +12,10 @@
     {
       "file": "classes.remove.json",
       "handlersPath": "/plugins/control-panel/symphonies/classes/classes.symphony.ts"
+    },
+    {
+      "file": "update.json",
+      "handlersPath": "/plugins/control-panel/symphonies/update/update.symphony.ts"
     }
   ]
 }
