@@ -21,7 +21,7 @@ export async function onDropForTest(
 
   // Define drag callbacks that use conductor.play
   const onDragStart = (dragData: any) => {
-    // Optional: handle drag start (e.g., show visual feedback)
+    (window as any).__cpDragInProgress = true;
     console.log("Drag started:", dragData);
   };
 
@@ -40,6 +40,7 @@ export async function onDropForTest(
   };
 
   const onDragEnd = (dragData: any) => {
+    (window as any).__cpDragInProgress = false;
     // Optional: handle drag end (e.g., cleanup, save state)
     console.log("Drag ended:", dragData);
   };

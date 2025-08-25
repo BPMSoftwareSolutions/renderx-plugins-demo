@@ -63,6 +63,11 @@ export function useControlPanelSequences() {
     (selectedElement: SelectedElement | null) => {
       if (!conductor) return;
 
+      // Skip render while dragging for performance
+      if (typeof window !== "undefined" && (window as any).__cpDragInProgress) {
+        return;
+      }
+
       // If init hasn't completed yet, queue a single pending render to run post-init
       if (!isInitialized || !cpInitialized || cpInitInFlight) {
         pendingRender.current = selectedElement;
