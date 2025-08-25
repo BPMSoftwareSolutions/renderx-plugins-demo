@@ -44,7 +44,8 @@ plugins/control-panel/
 ├── hooks/
 │   ├── useControlPanelState.ts            # State management hook
 │   ├── useSchemaResolver.ts               # Schema loading hook
-│   └── useControlPanelActions.ts          # Action handlers hook
+│   ├── useControlPanelActions.ts          # Action handlers hook
+│   └── useControlPanelSequences.ts       # UI sequence orchestration hook
 ├── components/
 │   ├── field-renderers/
 │   │   ├── index.ts                       # Field renderer registry
@@ -61,6 +62,22 @@ plugins/control-panel/
 │       ├── PropertySection.tsx            # Collapsible property section
 │       ├── PropertyFieldRenderer.tsx      # Individual field renderer
 │       └── ClassManager.tsx               # CSS class management
+├── symphonies/
+│   ├── selection/
+│   │   ├── selection.symphony.ts          # Selection event handlers
+│   │   └── selection.stage-crew.ts        # Selection logic
+│   ├── classes/
+│   │   ├── classes.symphony.ts            # CSS class handlers
+│   │   └── classes.stage-crew.ts          # Class management logic
+│   ├── css-management/
+│   │   ├── css-management.symphony.ts     # CSS management handlers
+│   │   └── css-management.stage-crew.ts   # CSS operations
+│   ├── update/
+│   │   ├── update.symphony.ts             # Update handlers
+│   │   └── update.stage-crew.ts           # Update logic
+│   └── ui/
+│       ├── ui.symphony.ts                 # UI sequence handlers
+│       └── ui.stage-crew.ts               # UI orchestration logic
 ├── utils/
 │   └── field.utils.ts                     # Field manipulation utilities
 └── ui/
@@ -74,18 +91,38 @@ plugins/control-panel/
 graph TD
     A[Component JSON Schema] --> B[SchemaResolverService]
     C[Control Panel Config] --> B
-    B --> D[Property Fields Generation]
-    B --> E[Section Configuration]
-    D --> F[Field Renderer Registry]
-    E --> G[PropertySection Components]
-    F --> H[Specific Field Components]
-    G --> I[ControlPanel UI]
-    H --> I
-    I --> J[Conductor Actions]
-    J --> K[Canvas Updates]
-    K --> L[Observer Notifications]
-    L --> I
+    B --> D[UI Sequences]
+    D --> E[ui.init: Initialize UI]
+    D --> F[ui.render: Generate Fields & Sections]
+    D --> G[ui.field.change: Handle Changes]
+    D --> H[ui.field.validate: Validate Fields]
+    D --> I[ui.section.toggle: Toggle Sections]
+    F --> J[Property Fields Generation]
+    F --> K[Section Configuration]
+    J --> L[Field Renderer Registry]
+    K --> M[PropertySection Components]
+    L --> N[Specific Field Components]
+    M --> O[ControlPanel UI]
+    N --> O
+    G --> P[Canvas Component Updates]
+    P --> Q[Observer Notifications]
+    Q --> F
 ```
+
+## 🎵 UI Sequence Orchestration
+
+**Purpose**: Orchestrate Control Panel UI behavior through explicit sequences for improved observability and testability.
+
+**Key Sequences**:
+- **ui.init**: Initialize UI components, load schemas, register observers
+- **ui.render**: Generate property fields and sections based on selected element
+- **ui.field.change**: Handle field value changes with forwarding to canvas updates
+- **ui.field.validate**: Validate field values using schema-based rules
+- **ui.section.toggle**: Handle section expand/collapse state changes
+
+**Integration Hook**: `useControlPanelSequences()` provides sequence orchestration capabilities to React components.
+
+**Fallback Strategy**: If sequences fail to initialize, components gracefully fall back to direct React-only flows.
 
 ## 🎛️ Key Components
 
