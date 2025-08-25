@@ -3,6 +3,7 @@ import tsparser from "@typescript-eslint/parser";
 import beatKindDomAccess from "./eslint-rules/beat-kind-dom-access.js";
 import playRouting from "./eslint-rules/no-hardcoded-play-ids.js";
 import noConsoleInSymphonies from "./eslint-rules/no-console-in-symphonies.js";
+import sequencesInJson from "./eslint-rules/sequences-in-json.js";
 
 export default [
   {
@@ -22,10 +23,12 @@ export default [
       "@typescript-eslint": tseslint,
       "play-routing": playRouting,
       "symphony-console": noConsoleInSymphonies,
+      "sequences-json": sequencesInJson,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
       "symphony-console/no-console-in-symphonies": "error",
+      "sequences-json/sequences-in-json": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
