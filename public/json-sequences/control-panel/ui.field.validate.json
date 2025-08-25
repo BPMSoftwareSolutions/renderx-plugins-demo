@@ -1,0 +1,41 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-field-validate-symphony",
+  "name": "Control Panel UI Field Validate",
+  "description": "Validate field values in the Control Panel UI",
+  "movements": [
+    {
+      "id": "field-validation",
+      "name": "Field Validation Processing",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:field:validate",
+          "title": "Validate Field Value",
+          "dynamics": "mf",
+          "handler": "validateField",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:errors:merge",
+          "title": "Merge Validation Errors",
+          "dynamics": "mf",
+          "handler": "mergeErrors",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "control:panel:ui:view:update",
+          "title": "Update UI View",
+          "dynamics": "f",
+          "handler": "updateView",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}

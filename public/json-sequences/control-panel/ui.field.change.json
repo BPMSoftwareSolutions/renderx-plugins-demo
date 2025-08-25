@@ -1,0 +1,50 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-field-change-symphony",
+  "name": "Control Panel UI Field Change",
+  "description": "Handle field value changes in the Control Panel UI",
+  "movements": [
+    {
+      "id": "field-change",
+      "name": "Field Change Processing",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:field:prepare",
+          "title": "Prepare Field Change",
+          "dynamics": "mf",
+          "handler": "prepareField",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:field:dispatch",
+          "title": "Dispatch to Canvas Update",
+          "dynamics": "mf",
+          "handler": "dispatchField",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "control:panel:ui:dirty:set",
+          "title": "Mark UI as Dirty",
+          "dynamics": "p",
+          "handler": "setDirty",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 4,
+          "event": "control:panel:ui:await:refresh",
+          "title": "Await UI Refresh",
+          "dynamics": "p",
+          "handler": "awaitRefresh",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}

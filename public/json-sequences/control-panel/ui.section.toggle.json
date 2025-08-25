@@ -1,0 +1,32 @@
+{
+  "pluginId": "ControlPanelPlugin",
+  "id": "control-panel-ui-section-toggle-symphony",
+  "name": "Control Panel UI Section Toggle",
+  "description": "Toggle section expand/collapse state in the Control Panel UI",
+  "movements": [
+    {
+      "id": "section-toggle",
+      "name": "Section Toggle Processing",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "control:panel:ui:section:toggle",
+          "title": "Toggle Section State",
+          "dynamics": "mf",
+          "handler": "toggleSection",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 2,
+          "event": "control:panel:ui:view:update",
+          "title": "Update UI View",
+          "dynamics": "f",
+          "handler": "updateView",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { useControlPanelState } from "../hooks/useControlPanelState";
 import { useSchemaResolver } from "../hooks/useSchemaResolver";
 import { useControlPanelActions } from "../hooks/useControlPanelActions";
+import { useControlPanelSequences } from "../hooks/useControlPanelSequences";
 import { PanelHeader } from "../components/layout/PanelHeader";
 import { EmptyState } from "../components/layout/EmptyState";
 import { LoadingState } from "../components/layout/LoadingState";
@@ -12,6 +13,7 @@ import "./ControlPanel.css";
 export function ControlPanel() {
   const { state, dispatch } = useControlPanelState();
   const { resolver, isLoading } = useSchemaResolver();
+  const sequences = useControlPanelSequences();
   const {
     handleAttributeChange,
     handleAddClass,
@@ -21,6 +23,13 @@ export function ControlPanel() {
     handleDeleteCssClass,
     toggleSection
   } = useControlPanelActions(state.selectedElement, dispatch);
+
+  // Trigger render sequence when selected element changes
+  React.useEffect(() => {
+    if (sequences.isInitialized) {
+      sequences.triggerRender(state.selectedElement);
+    }
+  }, [sequences, state.selectedElement]);
 
   // Generate dynamic fields and sections
   const { fields, sections } = React.useMemo(() => {
