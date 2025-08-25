@@ -1,0 +1,22 @@
+/* Global app-shell reset and layout helpers */
+
+/* Remove default body margin that causes white gutters on left/right */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Make sizing predictable throughout */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Avoid unexpected horizontal scrollbars */
+html, body {
+  overflow-x: hidden;
+}
+
