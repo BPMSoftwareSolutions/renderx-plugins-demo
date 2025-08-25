@@ -2,6 +2,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
 import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
+import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
 
 function dispatchMouse(el: Element, type: string, opts: any) {
   const ev = new MouseEvent(type, { bubbles: true, cancelable: true, ...opts });
@@ -68,7 +69,17 @@ describe("resize overlay driven by template tools config", () => {
     createHandlers.createNode({ position: { x: 10, y: 20 } } as any, ctx);
 
     const id = ctx.payload.nodeId;
-    showSelectionOverlay({ id });
+
+    // Mock conductor for resize operations
+    const conductor = {
+      play: (_pluginId: string, seqId: string, payload: any) => {
+        if (seqId === "canvas-component-resize-move-symphony") {
+          resizeMoveHandlers.updateSize?.(payload, {});
+        }
+      },
+    };
+
+    showSelectionOverlay({ id }, { conductor });
 
     const overlay = document.getElementById("rx-selection-overlay")! as HTMLDivElement;
     const nw = overlay.querySelector(".rx-handle.nw")! as HTMLDivElement;

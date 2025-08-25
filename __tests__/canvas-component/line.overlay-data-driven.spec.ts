@@ -2,6 +2,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
 import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
+import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
 
 function dispatchMouse(el: Element, type: string, opts: any) {
   const ev = new MouseEvent(type, { bubbles: true, cancelable: true, ...opts });
@@ -65,8 +66,17 @@ describe("line component overlay is data-driven and uses standard resize when co
     const id = ctx.payload.nodeId;
     const el = document.getElementById(id)! as HTMLElement;
 
+    // Mock conductor for resize operations
+    const conductor = {
+      play: (_pluginId: string, seqId: string, payload: any) => {
+        if (seqId === "canvas-component-resize-move-symphony") {
+          resizeMoveHandlers.updateSize?.(payload, {});
+        }
+      },
+    };
+
     // Show standard overlay
-    showSelectionOverlay({ id });
+    showSelectionOverlay({ id }, { conductor });
 
     const overlay = document.getElementById(
       "rx-selection-overlay"

@@ -1,5 +1,4 @@
 import {
-  applyOverlayRectForEl,
   getCanvasRect,
 } from "./select.overlay.dom.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
@@ -56,7 +55,7 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     const startX = e.clientX;
     const startY = e.clientY;
 
-    const clamp = (v: number, min = 1) => (v < min ? min : v);
+
 
     const call = (
       dx: number,
