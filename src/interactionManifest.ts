@@ -60,6 +60,18 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "ControlPanelPlugin",
     sequenceId: "control-panel-update-symphony",
   },
+  "control.panel.css.create": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-css-create-symphony",
+  },
+  "control.panel.css.edit": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-css-edit-symphony",
+  },
+  "control.panel.css.delete": {
+    pluginId: "ControlPanelPlugin",
+    sequenceId: "control-panel-css-delete-symphony",
+  },
   "canvas.component.update": {
     pluginId: "CanvasComponentPlugin",
     sequenceId: "canvas-component-update-symphony",

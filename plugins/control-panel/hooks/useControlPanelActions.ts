@@ -27,6 +27,12 @@ export function useControlPanelActions(
       className.trim() && handleAction("control.panel.classes.add", { className: className.trim() }),
     handleRemoveClass: (className: string) =>
       handleAction("control.panel.classes.remove", { className }),
+    handleCreateCssClass: (className: string, content: string) =>
+      handleAction("control.panel.css.create", { className, content }),
+    handleEditCssClass: (className: string, content: string) =>
+      handleAction("control.panel.css.edit", { className, content }),
+    handleDeleteCssClass: (className: string) =>
+      handleAction("control.panel.css.delete", { className }),
     toggleSection: (sectionId: string) =>
       dispatch({ type: 'TOGGLE_SECTION', payload: sectionId })
   };

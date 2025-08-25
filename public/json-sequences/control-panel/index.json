@@ -16,6 +16,18 @@
     {
       "file": "update.json",
       "handlersPath": "/plugins/control-panel/symphonies/update/update.symphony.ts"
+    },
+    {
+      "file": "css.create.json",
+      "handlersPath": "/plugins/control-panel/symphonies/css-management/css-management.symphony.ts"
+    },
+    {
+      "file": "css.edit.json",
+      "handlersPath": "/plugins/control-panel/symphonies/css-management/css-management.symphony.ts"
+    },
+    {
+      "file": "css.delete.json",
+      "handlersPath": "/plugins/control-panel/symphonies/css-management/css-management.symphony.ts"
     }
   ]
 }

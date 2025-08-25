@@ -191,6 +191,78 @@
   background: #2563eb;
 }
 
+/* CSS Classes Management Styles */
+.css-classes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.css-class-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.css-class-item:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.css-class-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  flex: 1;
+}
+
+.css-class-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.css-action-btn {
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+}
+
+.css-action-btn:hover {
+  background: #e2e8f0;
+}
+
+.css-action-btn.remove:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.create-btn {
+  background: #10b981;
+  color: white;
+  margin-left: 4px;
+}
+
+.create-btn:hover {
+  background: #059669;
+}
+
 .property-section-title {
   font-size: 12px;
   font-weight: 600;

@@ -12,8 +12,15 @@ import "./ControlPanel.css";
 export function ControlPanel() {
   const { state, dispatch } = useControlPanelState();
   const { resolver, isLoading } = useSchemaResolver();
-  const { handleAttributeChange, handleAddClass, handleRemoveClass, toggleSection } =
-    useControlPanelActions(state.selectedElement, dispatch);
+  const {
+    handleAttributeChange,
+    handleAddClass,
+    handleRemoveClass,
+    handleCreateCssClass,
+    handleEditCssClass,
+    handleDeleteCssClass,
+    toggleSection
+  } = useControlPanelActions(state.selectedElement, dispatch);
 
   // Generate dynamic fields and sections
   const { fields, sections } = React.useMemo(() => {
@@ -72,6 +79,9 @@ export function ControlPanel() {
               classes={state.currentClasses}
               onAdd={handleAddClass}
               onRemove={handleRemoveClass}
+              onEdit={handleEditCssClass}
+              onCreate={handleCreateCssClass}
+              onDeleteClass={handleDeleteCssClass}
             />
           </div>
         )}
