@@ -4,6 +4,7 @@ import beatKindDomAccess from "./eslint-rules/beat-kind-dom-access.js";
 import playRouting from "./eslint-rules/no-hardcoded-play-ids.js";
 import noConsoleInSymphonies from "./eslint-rules/no-console-in-symphonies.js";
 import sequencesInJson from "./eslint-rules/sequences-in-json.js";
+import featureFlags from "./eslint-rules/feature-flags.js";
 
 export default [
   {
@@ -24,11 +25,13 @@ export default [
       "play-routing": playRouting,
       "symphony-console": noConsoleInSymphonies,
       "sequences-json": sequencesInJson,
+      "feature-flags": featureFlags,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
       "symphony-console/no-console-in-symphonies": "error",
       "sequences-json/sequences-in-json": "error",
+      "feature-flags/enforce-flag-ids": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },

@@ -7,7 +7,10 @@ let lastLayoutById: Record<
   string,
   { x: number; y: number; width: number; height: number }
 > = {};
-const LAYOUT_EPS = 1.0; // sub-pixel noise threshold (raised from 0.5)
+let lastNotifyAt = 0;
+const DEFAULT_DEDUPE_WINDOW_MS = 150;
+
+const LAYOUT_EPS = 1.0; // flag-based tuning moved to runtime check below
 
 export const handlers = {
   updateFromElement,
@@ -23,14 +26,38 @@ export const handlers = {
     const layout = selectionModel?.layout;
     if (id && layout && (source === "drag" || source === "resize")) {
       const last = lastLayoutById[id];
+      // Allow raising EPS via flag for jitter suppression
+      let eps = LAYOUT_EPS;
+      try {
+        // Use global toggles for perf flags in UI layer to avoid async import cost/lint
+        const flags = (window as any).__cpPerf || {};
+        if (flags.layoutEps && Number.isFinite(Number(flags.layoutEps))) {
+          eps = Number(flags.layoutEps);
+        }
+      } catch {}
+
       const changed =
         !last ||
-        Math.abs(layout.x - last.x) > LAYOUT_EPS ||
-        Math.abs(layout.y - last.y) > LAYOUT_EPS ||
-        Math.abs(layout.width - last.width) > LAYOUT_EPS ||
-        Math.abs(layout.height - last.height) > LAYOUT_EPS;
+        Math.abs(layout.x - last.x) > eps ||
+        Math.abs(layout.y - last.y) > eps ||
+        Math.abs(layout.width - last.width) > eps ||
+        Math.abs(layout.height - last.height) > eps;
       if (!changed) return;
       lastLayoutById[id] = layout;
+
+      // Optional render dedupe window post-drag bursts
+      try {
+        const flags = (window as any).__cpPerf || {};
+        const dedupe = !!flags.renderDedupe;
+        const windowMs = Number.isFinite(Number(flags.renderDedupeWindowMs))
+          ? Number(flags.renderDedupeWindowMs)
+          : DEFAULT_DEDUPE_WINDOW_MS;
+        const now = Date.now();
+        if (dedupe && windowMs > 0 && now - lastNotifyAt < windowMs) {
+          return; // drop as duplicate
+        }
+        lastNotifyAt = now;
+      } catch {}
     }
 
     try {

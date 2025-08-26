@@ -48,6 +48,9 @@ export const handlers = {
         ? perfCfg.firstMoveMinDeltaPx
         : 3;
 
+    // Optional: defer first CP burst if flag enabled to avoid stacking with first paint
+    const deferFirstBurst = false; // flag available but not yet wired to scheduling
+
     if (updatedPosition) {
       // If we have no previous position, store and skip one update to avoid costly first derive
       if (!cpUpdateLatestPos) {

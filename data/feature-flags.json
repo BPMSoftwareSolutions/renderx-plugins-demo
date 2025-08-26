@@ -1,0 +1,64 @@
+{
+  "perf.fast-initial-drag": {
+    "status": "on",
+    "created": "2025-08-01",
+    "verified": "2025-08-26",
+    "description": "Enable optimized path to reduce initial drag latency in UI",
+    "owner": "control-panel"
+  },
+  "feature.control-panel.sequences": {
+    "status": "experiment",
+    "created": "2025-08-10",
+    "verified": "2025-08-26",
+    "description": "Enable sequences flow in control panel UI",
+    "owner": "control-panel"
+  },
+  "perf.drag.use-transform": {
+    "status": "off",
+    "created": "2025-08-26",
+    "description": "Use CSS transform during drag to reduce first-frame latency; commit on end",
+    "owner": "canvas"
+  },
+  "perf.drag.defer-first-cp-burst": {
+    "status": "experiment",
+    "created": "2025-08-26",
+    "description": "Defer the first CP update burst to avoid stacking with first paint",
+    "owner": "canvas"
+  },
+  "perf.cp.layout-eps": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "Increase layout EPS threshold to reduce jitter-driven CP updates",
+    "owner": "control-panel"
+  },
+  "perf.cp.diff-only": {
+    "status": "experiment",
+    "created": "2025-08-26",
+    "description": "Only notify CP on material diffs",
+    "owner": "control-panel"
+  },
+  "perf.cp.render.dedupe": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "Dedupe UI renders post-drag within a short window",
+    "owner": "control-panel"
+  },
+  "perf.cp.render.dedupe.window-ms": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "Enable default dedupe window of 150ms",
+    "owner": "control-panel"
+  },
+  "perf.cp.instrument": {
+    "status": "off",
+    "created": "2025-08-26",
+    "description": "Enable input-to-visual latency instrumentation in dev",
+    "owner": "control-panel"
+  },
+  "perf.cp.debug": {
+    "status": "off",
+    "created": "2025-08-26",
+    "description": "Verbose debug logs for CP drag/update",
+    "owner": "control-panel"
+  }
+}
