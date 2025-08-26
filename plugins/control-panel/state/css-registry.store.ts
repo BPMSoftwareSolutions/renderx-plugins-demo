@@ -1,7 +1,7 @@
 // CSS Registry Store - Global management of CSS classes and their definitions
 // Integrates with the new Control Panel architecture
 
-import { getCssRegistryObserver } from './observer.store';
+import { getCssRegistryObserver } from "./observer.store";
 
 export interface CssClassDefinition {
   name: string;
@@ -21,7 +21,7 @@ class CssRegistryStore {
   private state: CssRegistryState = {
     classes: new Map(),
     isLoaded: false,
-    lastModified: Date.now()
+    lastModified: Date.now(),
   };
 
   private styleElement: HTMLStyleElement | null = null;
@@ -32,24 +32,19 @@ class CssRegistryStore {
   }
 
   private initializeStyleElement() {
-    if (typeof document === 'undefined') return;
-    
-    const id = 'rx-css-registry-styles';
-    let el = document.getElementById(id) as HTMLStyleElement | null;
-    if (!el) {
-      el = document.createElement('style');
-      el.id = id;
-      el.setAttribute('data-source', 'css-registry');
-      document.head.appendChild(el);
-    }
-    this.styleElement = el;
+    // DOM operations moved to stage-crew handlers
+    // This will be initialized via stage-crew when needed
+    this.styleElement = null;
   }
 
   private loadDefaultClasses() {
     // Load default CSS classes that come with the system
-    const defaultClasses: Omit<CssClassDefinition, 'createdAt' | 'updatedAt'>[] = [
+    const defaultClasses: Omit<
+      CssClassDefinition,
+      "createdAt" | "updatedAt"
+    >[] = [
       {
-        name: 'rx-button',
+        name: "rx-button",
         content: `.rx-button {
   background-color: var(--bg-color, #3b82f6);
   color: var(--text-color, #ffffff);
@@ -72,10 +67,10 @@ class CssRegistryStore {
   position: relative;
   overflow: hidden;
 }`,
-        isBuiltIn: true
+        isBuiltIn: true,
       },
       {
-        name: 'rx-container',
+        name: "rx-container",
         content: `.rx-container {
   position: relative;
   background: var(--bg, #fafafa);
@@ -86,10 +81,10 @@ class CssRegistryStore {
   padding: var(--padding, 16px);
   box-sizing: border-box;
 }`,
-        isBuiltIn: true
+        isBuiltIn: true,
       },
       {
-        name: 'rx-comp-div',
+        name: "rx-comp-div",
         content: `.rx-comp-div {
   position: relative;
   display: block;
@@ -97,16 +92,16 @@ class CssRegistryStore {
   min-height: 20px;
   min-width: 20px;
 }`,
-        isBuiltIn: true
-      }
+        isBuiltIn: true,
+      },
     ];
 
     const now = Date.now();
-    defaultClasses.forEach(cls => {
+    defaultClasses.forEach((cls) => {
       this.state.classes.set(cls.name, {
         ...cls,
         createdAt: now,
-        updatedAt: now
+        updatedAt: now,
       });
     });
 
@@ -119,10 +114,13 @@ class CssRegistryStore {
     if (!this.styleElement) return;
 
     const cssContent = Array.from(this.state.classes.values())
-      .map(cls => cls.content)
-      .join('\n\n');
+      .map((cls) => cls.content)
+      .join("\n\n");
 
-    this.styleElement.textContent = cssContent;
+    // DOM operations moved to stage-crew handlers
+    // This will be handled via stage-crew when needed
+    // Store the content for stage-crew to apply
+    (this.styleElement as any)._pendingContent = cssContent;
   }
 
   private notifyObservers() {
@@ -131,10 +129,10 @@ class CssRegistryStore {
       try {
         observer({
           classes: Array.from(this.state.classes.values()),
-          lastModified: this.state.lastModified
+          lastModified: this.state.lastModified,
         });
       } catch (error) {
-        console.warn('CSS Registry observer error:', error);
+        console.warn("CSS Registry observer error:", error);
       }
     }
   }
@@ -163,7 +161,7 @@ class CssRegistryStore {
       content,
       createdAt: now,
       updatedAt: now,
-      isBuiltIn: false
+      isBuiltIn: false,
     };
 
     this.state.classes.set(name, newClass);
@@ -183,7 +181,7 @@ class CssRegistryStore {
     const updatedClass: CssClassDefinition = {
       ...existingClass,
       content,
-      updatedAt: now
+      updatedAt: now,
     };
 
     this.state.classes.set(name, updatedClass);

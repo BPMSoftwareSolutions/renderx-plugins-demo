@@ -14,7 +14,7 @@ describe("feature flags runtime registry", () => {
     const startLen = mod.getUsageLog().length;
     const on = mod.isFlagEnabled("perf.fast-initial-drag");
     const exp = mod.isFlagEnabled("feature.control-panel.sequences");
-    const off = mod.isFlagEnabled("unknown.flag.id");
+    const off = mod.isFlagEnabled("perf.cp.debug");
 
     expect(on).toBeTypeOf("boolean");
     expect(exp).toBeTypeOf("boolean");
@@ -27,8 +27,7 @@ describe("feature flags runtime registry", () => {
 
     // latest entry should be the last call
     const last = after[after.length - 1];
-    expect(last.id).toBe("unknown.flag.id");
+    expect(last.id).toBe("perf.cp.debug");
     expect(typeof last.when).toBe("number");
   });
 });
-

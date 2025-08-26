@@ -1,6 +1,6 @@
-import React from 'react';
-import { createPortal } from 'react-dom';
-import './CssEditorModal.css';
+import React from "react";
+import { createPortal } from "react-dom";
+import "./CssEditorModal.css";
 
 export interface CssEditorModalProps {
   isOpen: boolean;
@@ -15,7 +15,7 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
   className,
   cssContent,
   onSave,
-  onCancel
+  onCancel,
 }) => {
   const [content, setContent] = React.useState(cssContent);
   const [hasChanges, setHasChanges] = React.useState(false);
@@ -47,7 +47,9 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
 
   const handleCancel = () => {
     if (hasChanges) {
-      const confirmed = window.confirm('You have unsaved changes. Are you sure you want to cancel?');
+      const confirmed = globalThis.confirm?.(
+        "You have unsaved changes. Are you sure you want to cancel?"
+      );
       if (!confirmed) return;
     }
     setContent(cssContent);
@@ -57,25 +59,26 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     // Handle Ctrl+S to save
-    if (e.ctrlKey && e.key === 's') {
+    if (e.ctrlKey && e.key === "s") {
       e.preventDefault();
       handleSave();
     }
     // Handle Escape to cancel
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       e.preventDefault();
       handleCancel();
     }
     // Handle Tab for indentation
-    if (e.key === 'Tab') {
+    if (e.key === "Tab") {
       e.preventDefault();
       const textarea = e.target as HTMLTextAreaElement;
       const start = textarea.selectionStart;
       const end = textarea.selectionEnd;
-      const newContent = content.substring(0, start) + '  ' + content.substring(end);
+      const newContent =
+        content.substring(0, start) + "  " + content.substring(end);
       setContent(newContent);
       setHasChanges(true);
-      
+
       // Set cursor position after the inserted spaces
       setTimeout(() => {
         textarea.selectionStart = textarea.selectionEnd = start + 2;
@@ -84,7 +87,7 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
   };
 
   const generateLineNumbers = () => {
-    const lines = content.split('\n');
+    const lines = content.split("\n");
     return lines.map((_, index) => (
       <div key={index + 1} className="line-number">
         {index + 1}
@@ -103,24 +106,22 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
             <span className="css-editor-icon">✏️</span>
             Edit CSS Class
           </div>
-          <button 
-            className="css-editor-close" 
+          <button
+            className="css-editor-close"
             onClick={handleCancel}
             title="Close (Esc)"
           >
             ×
           </button>
         </div>
-        
+
         <div className="css-editor-class-name">
           <span className="css-class-selector">.{className}</span>
         </div>
-        
+
         <div className="css-editor-content">
           <div className="css-editor-container">
-            <div className="line-numbers">
-              {generateLineNumbers()}
-            </div>
+            <div className="line-numbers">{generateLineNumbers()}</div>
             <textarea
               ref={textareaRef}
               className="css-editor-textarea"
@@ -135,27 +136,25 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
             />
           </div>
         </div>
-        
+
         <div className="css-editor-footer">
           <div className="css-editor-info">
             <span className="css-editor-hint">
               💡 Use Ctrl+S to save, Esc to cancel
             </span>
             {hasChanges && (
-              <span className="css-editor-changes">
-                • Unsaved changes
-              </span>
+              <span className="css-editor-changes">• Unsaved changes</span>
             )}
           </div>
           <div className="css-editor-actions">
-            <button 
-              className="css-editor-btn css-editor-btn-cancel" 
+            <button
+              className="css-editor-btn css-editor-btn-cancel"
               onClick={handleCancel}
             >
               Cancel
             </button>
-            <button 
-              className="css-editor-btn css-editor-btn-save" 
+            <button
+              className="css-editor-btn css-editor-btn-save"
               onClick={handleSave}
               disabled={!hasChanges}
             >
@@ -165,6 +164,6 @@ export const CssEditorModal: React.FC<CssEditorModalProps> = ({
         </div>
       </div>
     </div>,
-    document.body
+    (globalThis as any).document?.body || null
   );
 };

@@ -23,7 +23,7 @@ export function useControlPanelSequences() {
     const initializeUI = async () => {
       cpInitInFlight = true;
       try {
-        const perf = (window as any).__cpPerf || {};
+        const perf = (globalThis as any).__cpPerf || {};
         const key = perf.batchedInit
           ? "control.panel.ui.init.batched"
           : "control.panel.ui.init";
@@ -64,7 +64,10 @@ export function useControlPanelSequences() {
       if (!conductor) return;
 
       // Skip render while dragging for performance
-      if (typeof window !== "undefined" && (window as any).__cpDragInProgress) {
+      if (
+        typeof globalThis !== "undefined" &&
+        (globalThis as any).__cpDragInProgress
+      ) {
         return;
       }
 
@@ -86,12 +89,12 @@ export function useControlPanelSequences() {
 
   // Expose a globally callable trigger for optional deferred post-drag rendering
   React.useEffect(() => {
-    if (typeof window === "undefined") return;
-    (window as any).__cpTriggerRender = () => triggerRender(null);
+    if (typeof globalThis === "undefined") return;
+    (globalThis as any).__cpTriggerRender = () => triggerRender(null);
     return () => {
       try {
-        if ((window as any).__cpTriggerRender)
-          delete (window as any).__cpTriggerRender;
+        if ((globalThis as any).__cpTriggerRender)
+          delete (globalThis as any).__cpTriggerRender;
       } catch {}
     };
   }, [triggerRender]);

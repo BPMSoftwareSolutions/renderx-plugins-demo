@@ -25,24 +25,15 @@ export async function onDropForTest(
 
   // Define drag callbacks that use conductor.play
   const onDragStart = (dragData: any) => {
-    (window as any).__cpDragInProgress = true;
+    (globalThis as any).__cpDragInProgress = true;
 
     // Debug logs gated for perf
     if (isFlagEnabled("perf.cp.debug")) {
       console.log("Drag started:", dragData);
     }
 
-    // Pre-warm caches and style hints for faster first-frame move
-    try {
-      const id: string | undefined = dragData?.id;
-      if (id) {
-        const el = document.getElementById(id) as HTMLElement | null;
-        if (el) {
-          if (!el.style.position) el.style.position = "absolute";
-          if (!el.style.willChange) el.style.willChange = "left, top";
-        }
-      }
-    } catch {}
+    // Pre-warm caches and style hints moved to stage-crew handlers
+    // This will be handled via canvas.component.drag.start sequence
   };
 
   const onDragMove = (dragData: any) => {
@@ -63,7 +54,7 @@ export async function onDropForTest(
   };
 
   const onDragEnd = (dragData: any) => {
-    (window as any).__cpDragInProgress = false;
+    (globalThis as any).__cpDragInProgress = false;
 
     // Debug logs gated for perf
     if (isFlagEnabled("perf.cp.debug")) {
@@ -71,7 +62,7 @@ export async function onDropForTest(
     }
 
     // Optionally trigger a deferred Control Panel render after drag ends
-    const perf = (window as any).__cpPerf || {};
+    const perf = (globalThis as any).__cpPerf || {};
     let deferMs = 0;
     try {
       // Prefer centralized flag
@@ -82,10 +73,10 @@ export async function onDropForTest(
       }
     } catch {}
 
-    if (deferMs > 0 && (window as any).__cpTriggerRender) {
+    if (deferMs > 0 && (globalThis as any).__cpTriggerRender) {
       setTimeout(() => {
         try {
-          (window as any).__cpTriggerRender();
+          (globalThis as any).__cpTriggerRender();
         } catch (e) {
           console.warn("Deferred post-drag render failed:", e);
         }

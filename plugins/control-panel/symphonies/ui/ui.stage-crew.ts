@@ -3,6 +3,7 @@
 
 import { SchemaResolverService } from "../../services/schema-resolver.service";
 import type { ControlPanelConfig } from "../../types/control-panel.types";
+import { resolveInteraction } from "../../../../src/interactionManifest";
 
 // Global state for UI sequences - this will be managed by the sequences
 let uiState: {
@@ -147,7 +148,7 @@ export async function loadSchemas(data: any, ctx: any) {
       process.env.NODE_ENV === "test";
     if (
       typeof fetch === "undefined" ||
-      typeof window === "undefined" ||
+      typeof globalThis === "undefined" ||
       isTest
     ) {
       ctx.payload.schemasLoaded = true;
@@ -296,22 +297,8 @@ export function dispatchField(data: any, ctx: any) {
     // Forward to the existing canvas.component.update sequence
     if (ctx?.conductor?.play) {
       try {
-        // Try to use resolveInteraction, fallback to hardcoded values for tests
-        let pluginId = "CanvasComponentPlugin";
-        let sequenceId = "canvas-component-update-symphony";
-
-        try {
-          const {
-            resolveInteraction,
-          } = require("../../../../src/interactionManifest");
-          const route = resolveInteraction("canvas.component.update");
-          pluginId = route.pluginId;
-          sequenceId = route.sequenceId;
-        } catch {
-          // Use fallback values for test environment
-        }
-
-        ctx.conductor.play(pluginId, sequenceId, {
+        const route = resolveInteraction("canvas.component.update");
+        ctx.conductor.play(route.pluginId, route.sequenceId, {
           id: selectedElement.header.id,
           attribute: fieldKey,
           value: value,

@@ -34,7 +34,7 @@ export const handlers = {
         const flagOn = isFlagEnabled("perf.cp.layout-eps");
         if (flagOn) {
           // Optional: support numeric override via global for quick A/B until JSON carries values
-          const flags = (window as any).__cpPerf || {};
+          const flags = (globalThis as any).__cpPerf || {};
           if (flags.layoutEps && Number.isFinite(Number(flags.layoutEps))) {
             eps = Number(flags.layoutEps);
           }
@@ -52,7 +52,7 @@ export const handlers = {
 
       // Optional render dedupe window post-drag bursts
       try {
-        const flags = (window as any).__cpPerf || {};
+        const flags = (globalThis as any).__cpPerf || {};
         const dedupe = !!flags.renderDedupe;
         const windowMs = Number.isFinite(Number(flags.renderDedupeWindowMs))
           ? Number(flags.renderDedupeWindowMs)

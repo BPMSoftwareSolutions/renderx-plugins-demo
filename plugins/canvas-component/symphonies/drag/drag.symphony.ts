@@ -42,14 +42,14 @@ export const handlers = {
 
     // Apply first-move gating: avoid first CP update until a minimal delta is reached
     const perfCfg =
-      (typeof window !== "undefined" && (window as any).__cpPerf) || {};
+      (typeof globalThis !== "undefined" && (globalThis as any).__cpPerf) || {};
     const minDelta =
       typeof perfCfg.firstMoveMinDeltaPx === "number"
         ? perfCfg.firstMoveMinDeltaPx
         : 3;
 
     // Optional: defer first CP burst if flag enabled to avoid stacking with first paint
-    const deferFirstBurst = false; // flag available but not yet wired to scheduling
+    const _deferFirstBurst = false; // flag available but not yet wired to scheduling
 
     if (updatedPosition) {
       // If we have no previous position, store and skip one update to avoid costly first derive
@@ -74,9 +74,10 @@ export const handlers = {
     cpUpdateScheduled = true;
 
     const raf =
-      typeof window !== "undefined" && (window as any).requestAnimationFrame
+      typeof globalThis !== "undefined" &&
+      (globalThis as any).requestAnimationFrame
         ? (cb: FrameRequestCallback) =>
-            (window as any).requestAnimationFrame(cb)
+            (globalThis as any).requestAnimationFrame(cb)
         : (cb: Function) => setTimeout(cb as any, 0);
 
     const flush = () => {
@@ -103,7 +104,7 @@ export const handlers = {
         cpUpdateLatestPos = null;
         if (rafHandle != null) {
           try {
-            (window as any).cancelAnimationFrame?.(rafHandle);
+            (globalThis as any).cancelAnimationFrame?.(rafHandle);
           } catch {}
           rafHandle = null;
         }
@@ -112,7 +113,7 @@ export const handlers = {
 
     // Prefer microtask for the very first burst to reduce initial latency, then rAF
     const perf =
-      (typeof window !== "undefined" && (window as any).__cpPerf) || {};
+      (typeof globalThis !== "undefined" && (globalThis as any).__cpPerf) || {};
     const useMicrotaskFirst =
       typeof process !== "undefined" && process.env?.NODE_ENV === "test"
         ? false

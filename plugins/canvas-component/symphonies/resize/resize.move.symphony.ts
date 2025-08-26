@@ -53,7 +53,7 @@ export const handlers = {
 
     // Apply first-delta gating to suppress jitter
     const perfCfg =
-      (typeof window !== "undefined" && (window as any).__cpPerf) || {};
+      (typeof globalThis !== "undefined" && (globalThis as any).__cpPerf) || {};
     const minDelta =
       typeof perfCfg.firstResizeMinDeltaPx === "number"
         ? perfCfg.firstResizeMinDeltaPx
@@ -81,9 +81,10 @@ export const handlers = {
     cpUpdateScheduled = true;
 
     const raf =
-      typeof window !== "undefined" && (window as any).requestAnimationFrame
+      typeof globalThis !== "undefined" &&
+      (globalThis as any).requestAnimationFrame
         ? (cb: FrameRequestCallback) =>
-            (window as any).requestAnimationFrame(cb)
+            (globalThis as any).requestAnimationFrame(cb)
         : (cb: Function) => setTimeout(cb as any, 0);
 
     const flush = () => {
@@ -120,7 +121,7 @@ export const handlers = {
         cpUpdateLatestLayout = null;
         if (rafHandle != null) {
           try {
-            (window as any).cancelAnimationFrame?.(rafHandle);
+            (globalThis as any).cancelAnimationFrame?.(rafHandle);
           } catch {}
           rafHandle = null;
         }
@@ -129,7 +130,7 @@ export const handlers = {
 
     // Prefer microtask for the very first burst to reduce initial latency, then rAF
     const perf =
-      (typeof window !== "undefined" && (window as any).__cpPerf) || {};
+      (typeof globalThis !== "undefined" && (globalThis as any).__cpPerf) || {};
     const useMicrotaskFirst =
       typeof process !== "undefined" && process.env?.NODE_ENV === "test"
         ? false

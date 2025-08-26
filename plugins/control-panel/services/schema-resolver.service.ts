@@ -247,7 +247,7 @@ export class SchemaResolverService {
 
   // Private helper methods
   private generateUniversalLayoutFields(
-    selectedElement: SelectedElement
+    _selectedElement: SelectedElement
   ): PropertyField[] {
     return [
       {
@@ -286,7 +286,7 @@ export class SchemaResolverService {
   }
 
   private generateUniversalStylingFields(
-    selectedElement: SelectedElement
+    _selectedElement: SelectedElement
   ): PropertyField[] {
     return [
       {

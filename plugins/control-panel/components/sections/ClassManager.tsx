@@ -1,7 +1,7 @@
-import React from 'react';
-import { CssEditorModal } from '../modals/CssEditorModal';
-import { cssRegistry } from '../../state/css-registry.store';
-import { setCssRegistryObserver } from '../../state/observer.store';
+import React from "react";
+import { CssEditorModal } from "../modals/CssEditorModal";
+import { cssRegistry } from "../../state/css-registry.store";
+import { setCssRegistryObserver } from "../../state/observer.store";
 
 interface ClassManagerProps {
   classes: string[];
@@ -18,18 +18,20 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
   onRemove,
   onEdit,
   onCreate,
-  onDeleteClass
+  onDeleteClass,
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isEditorOpen, setIsEditorOpen] = React.useState(false);
-  const [editingClass, setEditingClass] = React.useState<string>('');
-  const [editingContent, setEditingContent] = React.useState<string>('');
-  const [availableClasses, setAvailableClasses] = React.useState<string[]>([]);
+  const [editingClass, setEditingClass] = React.useState<string>("");
+  const [editingContent, setEditingContent] = React.useState<string>("");
+  const [_availableClasses, _setAvailableClasses] = React.useState<string[]>(
+    []
+  );
 
   // Load available CSS classes from registry
   React.useEffect(() => {
     const updateAvailableClasses = () => {
-      setAvailableClasses(cssRegistry.getClassNames());
+      _setAvailableClasses(cssRegistry.getClassNames());
     };
 
     updateAvailableClasses();
@@ -45,7 +47,7 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
   const handleSubmit = () => {
     if (inputRef.current?.value) {
       onAdd(inputRef.current.value);
-      inputRef.current.value = '';
+      inputRef.current.value = "";
     }
   };
 
@@ -73,7 +75,9 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
     if (!className) return;
 
     if (cssRegistry.hasClass(className)) {
-      alert(`CSS class "${className}" already exists. Use the edit button to modify it.`);
+      alert(
+        `CSS class "${className}" already exists. Use the edit button to modify it.`
+      );
       return;
     }
 
@@ -86,7 +90,7 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
     setEditingClass(className);
     setEditingContent(defaultContent);
     setIsEditorOpen(true);
-    inputRef.current.value = '';
+    inputRef.current.value = "";
   };
 
   const handleSaveClass = (content: string) => {
@@ -105,24 +109,24 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
     }
 
     setIsEditorOpen(false);
-    setEditingClass('');
-    setEditingContent('');
+    setEditingClass("");
+    setEditingContent("");
   };
 
   const handleCancelEdit = () => {
     setIsEditorOpen(false);
-    setEditingClass('');
-    setEditingContent('');
+    setEditingClass("");
+    setEditingContent("");
   };
 
-  const handleDeleteClass = (className: string) => {
+  const _handleDeleteClass = (className: string) => {
     const classDefinition = cssRegistry.getClass(className);
     if (classDefinition?.isBuiltIn) {
       alert(`Cannot delete built-in CSS class "${className}".`);
       return;
     }
 
-    const confirmed = window.confirm(
+    const confirmed = globalThis.confirm?.(
       `Are you sure you want to delete CSS class "${className}"? This will remove it from all components.`
     );
 
@@ -176,13 +180,15 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
                 type="text"
                 placeholder="Enter class name..."
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
+                  if (e.key === "Enter") {
                     e.preventDefault();
                     handleSubmit();
                   }
                 }}
               />
-              <button className="add-class-btn" onClick={handleSubmit}>Add</button>
+              <button className="add-class-btn" onClick={handleSubmit}>
+                Add
+              </button>
               <button
                 className="add-class-btn create-btn"
                 onClick={handleCreateNewClass}
