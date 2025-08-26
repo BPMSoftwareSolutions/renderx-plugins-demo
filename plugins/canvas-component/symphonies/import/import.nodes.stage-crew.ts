@@ -10,6 +10,72 @@ import {
 } from "../create/create.interactions.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
 
+// Helper function to apply content properties to DOM elements
+function applyContentProperties(
+  element: HTMLElement,
+  content: Record<string, any>,
+  type: string
+) {
+  // Apply type-specific content properties
+  switch (type) {
+    case "button":
+      // Set button text content
+      if (content.content !== undefined) {
+        element.textContent = String(content.content);
+      } else if (content.text !== undefined) {
+        element.textContent = String(content.text);
+      }
+      // Set disabled state
+      if (content.disabled === true) {
+        element.setAttribute("disabled", "");
+      } else if (content.disabled === false) {
+        element.removeAttribute("disabled");
+      }
+      break;
+
+    case "input":
+      const inputEl = element as HTMLInputElement;
+      // Set input-specific properties
+      if (content.placeholder !== undefined) {
+        inputEl.placeholder = String(content.placeholder);
+      }
+      if (content.value !== undefined) {
+        inputEl.value = String(content.value);
+      }
+      if (content.inputType !== undefined) {
+        inputEl.type = String(content.inputType);
+      }
+      if (content.disabled === true) {
+        inputEl.disabled = true;
+      } else if (content.disabled === false) {
+        inputEl.disabled = false;
+      }
+      if (content.required === true) {
+        inputEl.required = true;
+      } else if (content.required === false) {
+        inputEl.required = false;
+      }
+      break;
+
+    case "container":
+    case "div":
+      // For containers, set text content if provided
+      if (content.text !== undefined) {
+        element.textContent = String(content.text);
+      }
+      break;
+
+    default:
+      // For other elements, set text content if provided
+      if (content.text !== undefined) {
+        element.textContent = String(content.text);
+      } else if (content.content !== undefined) {
+        element.textContent = String(content.content);
+      }
+      break;
+  }
+}
+
 export function createOrUpdateNodes(_data: any, ctx: any) {
   const list: any[] = ctx.payload.importComponents || [];
   const canvas = getCanvasOrThrow();
@@ -63,6 +129,11 @@ export function createOrUpdateNodes(_data: any, ctx: any) {
     if (comp.layout?.height != null)
       layoutStyle.height = `${Math.round(comp.layout.height)}px`;
     applyInlineStyle(el, layoutStyle);
+
+    // Apply content properties if they exist
+    if (comp.content) {
+      applyContentProperties(el, comp.content, comp.type);
+    }
 
     if (!existing) appendTo(canvas, el);
   }

@@ -1,3 +1,68 @@
+// Helper function to extract content properties from DOM elements
+function extractElementContent(
+  element: HTMLElement,
+  type: string
+): Record<string, any> {
+  const content: Record<string, any> = {};
+
+  // Extract text content for elements that display text
+  const textContent = element.textContent?.trim();
+  if (textContent) {
+    content.text = textContent;
+  }
+
+  // Extract type-specific properties
+  switch (type) {
+    case "button":
+      // Button content is the text content
+      if (textContent) {
+        content.content = textContent;
+      }
+      // Check for disabled state
+      if (element.hasAttribute("disabled")) {
+        content.disabled = true;
+      }
+      break;
+
+    case "input":
+      const inputEl = element as HTMLInputElement;
+      // Extract input-specific properties
+      if (inputEl.placeholder) {
+        content.placeholder = inputEl.placeholder;
+      }
+      if (inputEl.value) {
+        content.value = inputEl.value;
+      }
+      if (inputEl.type) {
+        content.inputType = inputEl.type;
+      }
+      if (inputEl.hasAttribute("disabled")) {
+        content.disabled = true;
+      }
+      if (inputEl.hasAttribute("required")) {
+        content.required = true;
+      }
+      break;
+
+    case "container":
+    case "div":
+      // For containers, we might have text content or data attributes
+      if (textContent) {
+        content.text = textContent;
+      }
+      break;
+
+    default:
+      // For other elements, capture text content if present
+      if (textContent) {
+        content.text = textContent;
+      }
+      break;
+  }
+
+  return content;
+}
+
 export const collectLayoutData = (data: any, ctx: any) => {
   try {
     let components = ctx.payload.components || [];
@@ -65,11 +130,15 @@ export const collectLayoutData = (data: any, ctx: any) => {
               style[p] = v;
           }
 
+          // Extract content properties based on element type
+          const content = extractElementContent(htmlEl, type);
+
           found.push({
             id: htmlEl.id,
             type,
             classes,
             style,
+            content,
             createdAt: Date.now(),
           });
         }
@@ -133,6 +202,13 @@ export const collectLayoutData = (data: any, ctx: any) => {
           siblingIndex: 0,
         });
         continue;
+      }
+
+      // Extract content from DOM element and merge with component data
+      const domContent = extractElementContent(element, component.type);
+      if (Object.keys(domContent).length > 0) {
+        // Update the component with current DOM content
+        component.content = { ...component.content, ...domContent };
       }
 
       let x = 0,

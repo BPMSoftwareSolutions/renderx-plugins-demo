@@ -217,10 +217,10 @@ describe("canvas-component export integration", () => {
     // Set up DOM with components that exist visually but not in KV
     document.body.innerHTML = `
       <div id="rx-canvas" style="position: relative; width: 833px; height: 629px;">
-        <button id="rx-node-btn-1" class="rx-comp rx-button" style="position: absolute; left: 116px; top: 77px; width: 120px; height: 40px; padding: 8px 12px; border-radius: 8px; background: #0ea5e9; color: white;">Click me</button>
+        <button id="rx-node-btn-1" class="rx-comp rx-button" style="position: absolute; left: 116px; top: 77px; width: 120px; height: 40px; padding: 8px 12px; border-radius: 8px; background: #0ea5e9; color: white;">Save Document</button>
         <div id="rx-node-container-1" class="rx-comp rx-container" style="position: absolute; left: 168px; top: 270px; width: 354px; height: 237px; border: 2px dashed #3b82f6;">
           <button id="rx-node-btn-2" class="rx-comp rx-button" style="position: absolute; left: 197px; top: 298px; width: 120px; height: 40px; padding: 8px 12px; border-radius: 8px; background: #0ea5e9; color: white;">Click me</button>
-          <input id="rx-node-input-1" class="rx-comp rx-input" style="position: absolute; left: 199px; top: 362px; width: 220px; height: 32px; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;" placeholder="Enter text...">
+          <input id="rx-node-input-1" class="rx-comp rx-input" type="email" value="user@test.com" style="position: absolute; left: 199px; top: 362px; width: 220px; height: 32px; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;" placeholder="Enter your email address">
         </div>
       </div>
     `;
@@ -252,6 +252,21 @@ describe("canvas-component export integration", () => {
         height: 40,
       },
     });
+
+    // Verify content was captured
+    expect(buttonComponent.content).toBeDefined();
+    expect(buttonComponent.content.content).toBe("Save Document");
+    expect(buttonComponent.content.text).toBe("Save Document");
+
+    // Verify input content was captured
+    const inputComponent = ctx.payload.uiFileContent.components.find(
+      (c: any) => c.id === "rx-node-input-1"
+    );
+    expect(inputComponent).toBeDefined();
+    expect(inputComponent.content).toBeDefined();
+    expect(inputComponent.content.placeholder).toBe("Enter your email address");
+    expect(inputComponent.content.value).toBe("user@test.com");
+    expect(inputComponent.content.inputType).toBe("email");
   });
 });
 

@@ -39,7 +39,7 @@ export const buildUiFileContent = (data: any, ctx: any) => {
         siblingIndex: 0,
       };
 
-      return {
+      const uiComponent: any = {
         id: component.id,
         type: component.type,
         template: {
@@ -57,6 +57,13 @@ export const buildUiFileContent = (data: any, ctx: any) => {
         siblingIndex: layout.siblingIndex ?? 0,
         createdAt: component.createdAt,
       };
+
+      // Include content properties if they exist
+      if (component.content && Object.keys(component.content).length > 0) {
+        uiComponent.content = component.content;
+      }
+
+      return uiComponent;
     });
 
     // Build complete UI file content with CSS classes section

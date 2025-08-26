@@ -81,6 +81,11 @@ describe("canvas-component import.symphony", () => {
               padding: "8px 16px",
             },
           },
+          content: {
+            content: "Submit Form",
+            text: "Submit Form",
+            disabled: false,
+          },
           layout: { x: 30, y: 40, width: 120, height: 40 },
           parentId: "container-1",
           siblingIndex: 0,
@@ -131,11 +136,21 @@ describe("canvas-component import.symphony", () => {
     expect(btn?.style.color).toBe("rgb(255, 255, 255)");
     expect(btn?.style.padding).toBe("8px 16px");
 
+    // Content properties applied
+    expect(btn?.textContent).toBe("Submit Form");
+    expect((btn as HTMLButtonElement)?.disabled).toBe(false);
+
     // KV registered for both
     const puts = ctx._ops.filter((o: any[]) => o[0] === "kv.put");
     expect(puts.length).toBe(2);
     const ids = puts.map(([, id]) => id);
     expect(ids).toEqual(expect.arrayContaining(["container-1", "btn-1"]));
+
+    // Verify content was stored in KV
+    const btnKvCall = puts.find((call: any) => call[1] === "btn-1");
+    expect(btnKvCall).toBeDefined();
+    expect(btnKvCall[2].content).toBeDefined();
+    expect(btnKvCall[2].content.content).toBe("Submit Form");
   });
 
   it("orders siblings by siblingIndex when applying hierarchy", async () => {
