@@ -1,10 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import {
-  queryAllComponents,
-  downloadUiFile,
-  collectCssClasses,
-} from "../../plugins/canvas-component/symphonies/export/export.io";
+import { queryAllComponents } from "../../plugins/canvas-component/symphonies/export/export.io";
 
 function makeCtx() {
   const ops: any[] = [];
@@ -232,7 +228,7 @@ describe("canvas-component export.io", () => {
     });
 
     it("should handle missing uiFileContent", async () => {
-      const ctx = makeCtx();
+      const _ctx = makeCtx();
       // No uiFileContent in payload
 
       // downloadUiFile moved to stage-crew; IO no-op for browser download
@@ -240,8 +236,8 @@ describe("canvas-component export.io", () => {
     });
 
     it("should handle browser environment check", async () => {
-      const ctx = makeCtx();
-      ctx.payload.uiFileContent = { version: "1.0.0", components: [] };
+      const _ctx = makeCtx();
+      _ctx.payload.uiFileContent = { version: "1.0.0", components: [] };
 
       // Mock non-browser environment
       const originalDocument = global.document;

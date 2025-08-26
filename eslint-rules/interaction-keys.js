@@ -54,7 +54,6 @@ function suggestClosest(key, keys) {
 
   // First, look for keys that start with the same prefix
   const keyParts = key.split(".");
-  const prefixMatches = [];
 
   for (const k of keys) {
     const kParts = k.split(".");
@@ -109,6 +108,43 @@ function suggestClosest(key, keys) {
   return null;
 }
 
+function isStringLiteralLike(node) {
+  return (
+    (node.type === "Literal" && typeof node.value === "string") ||
+    (node.type === "TemplateLiteral" && node.expressions.length === 0)
+  );
+}
+
+function isAllowedStringExpr(node) {
+  if (!node) return false;
+  if (isStringLiteralLike(node)) return true;
+  if (node.type === "ConditionalExpression") {
+    return (
+      isAllowedStringExpr(node.consequent) &&
+      isAllowedStringExpr(node.alternate)
+    );
+  }
+  return false;
+}
+
+function resolveIdentifierInit(context, idName) {
+  try {
+    let scope = context.getScope();
+    while (scope) {
+      const variable = scope.set && scope.set.get(idName);
+      if (variable && variable.defs && variable.defs.length > 0) {
+        const def = variable.defs[0];
+        if (def.node && def.node.type === "VariableDeclarator") {
+          return def.node.init || null;
+        }
+        break;
+      }
+      scope = scope.upper;
+    }
+  } catch {}
+  return null;
+}
+
 const rule = {
   meta: {
     type: "problem",
@@ -145,18 +181,46 @@ const rule = {
             node.callee.property.name === "resolveInteraction"))
       ) {
         const arg = node.arguments && node.arguments[0];
-        if (!arg || arg.type !== "Literal" || typeof arg.value !== "string") {
-          context.report({ node: arg || node, messageId: "nonLiteralKey" });
+        if (!arg) return;
+
+        let ok = false;
+        let keyValue = null;
+
+        if (isAllowedStringExpr(arg)) {
+          ok = true;
+          if (arg.type === "Literal") keyValue = arg.value;
+          else if (arg.type === "TemplateLiteral")
+            keyValue = arg.quasis[0]?.value?.cooked || null;
+          else if (arg.type === "ConditionalExpression") {
+            // can't statically know branch; skip unknown-key check
+            keyValue = null;
+          }
+        } else if (arg.type === "Identifier") {
+          const init = resolveIdentifierInit(context, arg.name);
+          if (init && isAllowedStringExpr(init)) {
+            ok = true;
+            if (init.type === "Literal") keyValue = init.value;
+            else if (init.type === "TemplateLiteral")
+              keyValue = init.quasis[0]?.value?.cooked || null;
+            else keyValue = null;
+          }
+        }
+
+        if (!ok) {
+          // If the argument isn't a statically analyzable string, skip the check.
+          // This allows patterns like const key = cond ? 'a' : 'b'; resolveInteraction(key)
+          // and dynamic keys passed from callers. Unknown-key checks only run when the
+          // literal value can be determined at lint time.
           return;
         }
-        const key = arg.value;
-        if (!keys.has(key)) {
-          const suggestion = suggestClosest(key, keys);
+
+        if (typeof keyValue === "string" && !keys.has(keyValue)) {
+          const suggestion = suggestClosest(keyValue, keys);
           context.report({
             node: arg,
             messageId: "unknownKey",
             data: {
-              key,
+              key: keyValue,
               suggestion: suggestion ? ` Did you mean '${suggestion}'?` : "",
             },
           });

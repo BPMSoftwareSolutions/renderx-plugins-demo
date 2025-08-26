@@ -44,6 +44,10 @@
     "canvas.component.import": {
       "pluginId": "CanvasComponentImportPlugin",
       "sequenceId": "canvas-component-import-symphony"
+    },
+    "canvas.component.update": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-update-symphony"
     }
   }
 }
