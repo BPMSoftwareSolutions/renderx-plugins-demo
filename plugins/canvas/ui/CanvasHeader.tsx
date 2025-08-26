@@ -29,6 +29,15 @@ export function CanvasHeader() {
     }
   };
 
+  const handleImport = async () => {
+    try {
+      const route = resolveInteraction("canvas.component.import");
+      await conductor?.play?.(route.pluginId, route.sequenceId, {});
+    } catch (error) {
+      console.error("Failed to import canvas:", error);
+    }
+  };
+
   return (
     <div className="canvas-header">
       <div className="canvas-title">🎨 Design Canvas</div>
@@ -63,6 +72,13 @@ export function CanvasHeader() {
           title="Export Canvas"
         >
           <span>💾</span>
+        </div>
+        <div
+          className="canvas-control"
+          onClick={handleImport}
+          title="Import .ui"
+        >
+          <span>📂</span>
         </div>
         <div className="canvas-divider"></div>
         <div className="zoom-controls">

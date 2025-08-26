@@ -40,6 +40,10 @@
     "canvas.component.export": {
       "pluginId": "CanvasComponentExportPlugin",
       "sequenceId": "canvas-component-export-symphony"
+    },
+    "canvas.component.import": {
+      "pluginId": "CanvasComponentImportPlugin",
+      "sequenceId": "canvas-component-import-symphony"
     }
   }
 }
