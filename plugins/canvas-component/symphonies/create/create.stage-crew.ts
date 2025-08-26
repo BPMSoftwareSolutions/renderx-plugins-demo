@@ -58,6 +58,26 @@ export const createNode = (data: any, ctx: any) => {
     }
   }
 
+  // 6.6) If this is an SVG line, append a child <line> and set svg attributes
+  if (String(tpl?.tag).toLowerCase() === "svg") {
+    try {
+      const svg = el as unknown as SVGSVGElement;
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "100%");
+      svg.setAttribute("viewBox", "0 0 100 100");
+      svg.setAttribute("preserveAspectRatio", "none");
+      const ns = "http://www.w3.org/2000/svg";
+      const seg = document.createElementNS(ns, "line");
+      seg.setAttribute("class", "segment");
+      seg.setAttribute("x1", "0");
+      seg.setAttribute("y1", "50");
+      seg.setAttribute("x2", "100");
+      seg.setAttribute("y2", "50");
+      seg.setAttribute("vector-effect", "non-scaling-stroke");
+      svg.appendChild(seg);
+    } catch {}
+  }
+
   // Append to canvas or target container
   const targetParent =
     (data?.containerId && document.getElementById(String(data.containerId))) ||

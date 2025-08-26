@@ -48,8 +48,10 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
   const tag =
     type === "input"
       ? "input"
-      : type === "line" || type === "container"
+      : type === "container"
       ? "div"
+      : type === "line"
+      ? "svg"
       : type || "div";
 
   // Map ui.tools.resize → data-* attributes so overlay/resize can be data-driven

@@ -1,4 +1,8 @@
-export type GhostSize = { width: number; height: number; targetEl: HTMLElement | null };
+export type GhostSize = {
+  width: number;
+  height: number;
+  targetEl: HTMLElement | null;
+};
 
 export function ensurePayload(dt: DataTransfer | undefined, component: any) {
   dt?.setData("application/rx-component", JSON.stringify({ component }));
@@ -24,7 +28,10 @@ export function computeGhostSize(e: any, component: any): GhostSize {
   return { width, height, targetEl };
 }
 
-export function createGhostContainer(width: number, height: number): HTMLElement {
+export function createGhostContainer(
+  width: number,
+  height: number
+): HTMLElement {
   const ghost = document.createElement("div");
   ghost.style.width = `${width}px`;
   ghost.style.height = `${height}px`;
@@ -48,17 +55,39 @@ export function renderTemplatePreview(
   height: number
 ) {
   if (!template || typeof template !== "object") return;
-  const child = document.createElement(template?.tag || "div");
+  const tag = template?.tag || "div";
+  const isSvg = String(tag).toLowerCase() === "svg";
+  const child: any = isSvg
+    ? document.createElementNS("http://www.w3.org/2000/svg", "svg")
+    : document.createElement(tag);
   try {
     const classes: string[] = Array.isArray(template?.classes)
       ? (template.classes as string[])
       : [];
     classes.forEach((cls) => child.classList.add(cls));
   } catch {}
-  if (typeof template?.text === "string") child.textContent = template.text;
+  if (!isSvg && typeof template?.text === "string")
+    child.textContent = template.text;
+  // Size ghost visual
   child.style.width = `${width}px`;
   child.style.height = `${height}px`;
   child.style.display = "inline-block";
+  if (isSvg) {
+    // Ensure svg sizing and a visible line segment
+    child.setAttribute("width", "100%");
+    child.setAttribute("height", "100%");
+    child.setAttribute("viewBox", "0 0 100 100");
+    child.setAttribute("preserveAspectRatio", "none");
+    const ns = "http://www.w3.org/2000/svg";
+    const seg = document.createElementNS(ns, "line");
+    seg.setAttribute("class", "segment");
+    seg.setAttribute("x1", "0");
+    seg.setAttribute("y1", "50");
+    seg.setAttribute("x2", "100");
+    seg.setAttribute("y2", "50");
+    seg.setAttribute("vector-effect", "non-scaling-stroke");
+    child.appendChild(seg);
+  }
   ghost.appendChild(child);
 }
 
@@ -88,7 +117,11 @@ export function computeCursorOffsets(
 ): { offsetX: number; offsetY: number } {
   let offsetX = Math.round(width / 2);
   let offsetY = Math.round(height / 2);
-  if (targetEl && typeof e?.clientX === "number" && typeof e?.clientY === "number") {
+  if (
+    targetEl &&
+    typeof e?.clientX === "number" &&
+    typeof e?.clientY === "number"
+  ) {
     try {
       const rect = targetEl.getBoundingClientRect();
       offsetX = Math.max(0, Math.round(e.clientX - rect.left));
@@ -115,4 +148,3 @@ export function installDragImage(
     }
   }
 }
-

@@ -10,14 +10,10 @@
     "replaces": "line"
   },
   "ui": {
-    "template": "<div class=\"rx-comp rx-line\"></div>",
+    "template": "<svg class=\"rx-comp rx-line\"></svg>",
     "styles": {
-      "css": ".rx-line { border: none; border-top: 1px solid var(--line-color, #e5e7eb); margin: var(--line-margin, 8px 0); width: 100%; transition: border-color .2s ease; } .rx-line[data-orientation='vertical'] { border-top: none; border-left: 1px solid var(--line-color, #e5e7eb); height: 100%; width: auto; }",
+      "css": ".rx-line .segment { stroke: var(--stroke, #111827); stroke-width: var(--thickness, 2); }",
       "variables": {
-        "x1": 0,
-        "y1": 0,
-        "x2": 100,
-        "y2": 0,
         "stroke": "#111827",
         "thickness": 2
       },
@@ -33,7 +29,7 @@
     "tools": {
       "resize": {
         "enabled": true,
-        "handles": [ "nw", "n", "ne", "e", "se", "s", "sw", "w" ],
+        "handles": ["nw", "n", "ne", "e", "se", "s", "sw", "w"],
         "constraints": {
           "min": {
             "w": 50,
