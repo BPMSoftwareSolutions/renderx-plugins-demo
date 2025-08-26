@@ -37,8 +37,8 @@
         {
           "beat": 4,
           "event": "canvas:component:nodes:create",
-          "title": "Create/Update Nodes",
-          "handler": "createOrUpdateNodes",
+          "title": "Create Components Sequentially",
+          "handler": "createComponentsSequentially",
           "timing": "immediate",
           "dynamics": "mf",
           "kind": "stage-crew"
@@ -51,15 +51,6 @@
           "timing": "immediate",
           "dynamics": "mf",
           "kind": "stage-crew"
-        },
-        {
-          "beat": 6,
-          "event": "canvas:component:register",
-          "title": "Register Instances (IO)",
-          "handler": "registerInstances",
-          "timing": "immediate",
-          "dynamics": "mf",
-          "kind": "io"
         }
       ]
     }

@@ -84,5 +84,11 @@
     "created": "2025-08-26",
     "description": "Use microtask-first scheduling for first resize CP burst",
     "owner": "canvas"
+  },
+  "lint.sequence-handlers": {
+    "status": "off",
+    "created": "2025-08-26",
+    "description": "Enable ESLint rule that validates JSON sequence handlers against TS exports",
+    "owner": "tooling"
   }
 }

@@ -1,14 +1,56 @@
-import {
-  getCanvasOrThrow,
-  createElementWithId,
-  applyInlineStyle,
-  appendTo,
-} from "../create/create.dom.stage-crew";
-import {
-  attachSelection,
-  attachDrag,
-} from "../create/create.interactions.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
+
+/**
+ * Transform import component data to canvas.component.create format
+ */
+function transformImportDataToCreateFormat(importComponent: any): any {
+  const template: any = {
+    tag: importComponent.tag,
+    classes: importComponent.classRefs || [],
+    style: importComponent.style || {},
+    text: importComponent.content?.text || importComponent.content?.content,
+    // Map other content properties as needed
+    cssVariables: importComponent.cssVariables || {},
+    css: importComponent.css,
+  };
+
+  // Set container role if this is a container component
+  if (
+    importComponent.classRefs &&
+    importComponent.classRefs.includes("rx-container")
+  ) {
+    template.attributes = { "data-role": "container" };
+  }
+
+  // Include content properties if they exist
+  if (
+    importComponent.content &&
+    Object.keys(importComponent.content).length > 0
+  ) {
+    template.content = importComponent.content;
+  }
+
+  // Add dimensions to template if available
+  if (importComponent.layout?.width && importComponent.layout?.height) {
+    template.dimensions = {
+      width: importComponent.layout.width,
+      height: importComponent.layout.height,
+    };
+  }
+
+  return {
+    component: {
+      template,
+    },
+    position: {
+      x: importComponent.layout?.x || 0,
+      y: importComponent.layout?.y || 0,
+    },
+    containerId: importComponent.parentId || undefined,
+    // Override nodeId to preserve imported IDs
+    _overrideNodeId: importComponent.id,
+  };
+}
 
 // Helper function to apply content properties to DOM elements
 function applyContentProperties(
@@ -76,66 +118,65 @@ function applyContentProperties(
   }
 }
 
-export function createOrUpdateNodes(_data: any, ctx: any) {
-  const list: any[] = ctx.payload.importComponents || [];
-  const canvas = getCanvasOrThrow();
+/**
+ * NEW: Sequential component creation handler that uses canvas.component.create
+ * as the single source of truth for all component creation
+ */
+export async function createComponentsSequentially(_data: any, ctx: any) {
+  const components: any[] = ctx.payload.importComponents || [];
+  const r = resolveInteraction("canvas.component.create");
 
-  for (const comp of list) {
-    const existing = document.getElementById(comp.id) as HTMLElement | null;
-    const el = existing || createElementWithId(comp.tag, comp.id);
+  // Track created components for hierarchy application
+  ctx.payload.createdComponents = [];
 
-    // Ensure classes
-    const classes: string[] = Array.isArray(comp.classRefs)
-      ? comp.classRefs
-      : [];
-    // Attach selection/drag interactions like create flow
-    try {
-      attachSelection(el, comp.id, ({ id }) => {
-        try {
-          const r = resolveInteraction("canvas.component.select");
-          ctx?.conductor?.play?.(r.pluginId, r.sequenceId, { id });
-        } catch {}
-      });
-      attachDrag(el, canvas, comp.id, {
-        onDragStart: undefined,
-        onDragMove: undefined,
-        onDragEnd: undefined,
-      });
-    } catch {}
+  for (const comp of components) {
+    // Transform import data to canvas.component.create format
+    const createPayload = transformImportDataToCreateFormat(comp);
 
-    for (const c of classes) el.classList.add(c);
-
-    // If container, mark role and ensure positioning
-    if (classes.includes("rx-container")) {
-      (el as HTMLElement).dataset.role = "container";
-      if (!(el as HTMLElement).style.position) {
-        (el as HTMLElement).style.position = "relative";
-      }
-    }
-
-    // Apply template.style properties first (background, color, padding, etc.)
-    if (comp.style && typeof comp.style === "object") {
-      applyInlineStyle(el, comp.style);
-    }
-
-    // Apply layout to style (position and dimensions)
-    const layoutStyle: Record<string, string> = {
-      position: "absolute",
-      left: `${Math.round(comp.layout?.x || 0)}px`,
-      top: `${Math.round(comp.layout?.y || 0)}px`,
+    // Add interaction handlers (same as library drop flow)
+    createPayload.onDragStart = (info: any) => {
+      // Match CanvasDrop.ts behavior: mark drag in progress; no resolver call
+      try {
+        (globalThis as any).__cpDragInProgress = true;
+      } catch {}
     };
-    if (comp.layout?.width != null)
-      layoutStyle.width = `${Math.round(comp.layout.width)}px`;
-    if (comp.layout?.height != null)
-      layoutStyle.height = `${Math.round(comp.layout.height)}px`;
-    applyInlineStyle(el, layoutStyle);
 
-    // Apply content properties if they exist
-    if (comp.content) {
-      applyContentProperties(el, comp.content, comp.type);
-    }
+    createPayload.onDragMove = (info: any) => {
+      // Use the same resolver as CanvasDrop.ts
+      try {
+        const dragRoute = resolveInteraction("canvas.component.drag.move");
+        ctx.conductor?.play?.(dragRoute.pluginId, dragRoute.sequenceId, {
+          event: "canvas:component:drag:move",
+          ...info,
+        });
+      } catch {}
+    };
 
-    if (!existing) appendTo(canvas, el);
+    createPayload.onDragEnd = (info: any) => {
+      // Match CanvasDrop.ts behavior: clear flag; no resolver call
+      try {
+        (globalThis as any).__cpDragInProgress = false;
+      } catch {}
+    };
+
+    createPayload.onSelected = (info: any) => {
+      // Handle selection for imported components
+      try {
+        const selectRoute = resolveInteraction("canvas.component.select");
+        ctx.conductor?.play?.(selectRoute.pluginId, selectRoute.sequenceId, {
+          id: info.id,
+        });
+      } catch {}
+    };
+
+    // Call canvas.component.create for each component
+    await ctx.conductor?.play?.(r.pluginId, r.sequenceId, createPayload);
+
+    ctx.payload.createdComponents.push({
+      id: comp.id,
+      parentId: comp.parentId,
+      siblingIndex: comp.siblingIndex,
+    });
   }
 }
 

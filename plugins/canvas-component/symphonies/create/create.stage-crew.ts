@@ -13,6 +13,72 @@ import {
 } from "./create.style.stage-crew";
 import { attachSelection, attachDrag } from "./create.interactions.stage-crew";
 
+// Helper function to apply content properties to DOM elements
+function applyContentProperties(
+  element: HTMLElement,
+  content: Record<string, any>,
+  type: string
+) {
+  // Apply type-specific content properties
+  switch (type) {
+    case "button":
+      // Set button text content
+      if (content.content !== undefined) {
+        element.textContent = String(content.content);
+      } else if (content.text !== undefined) {
+        element.textContent = String(content.text);
+      }
+      // Set disabled state
+      if (content.disabled === true) {
+        element.setAttribute("disabled", "");
+      } else if (content.disabled === false) {
+        element.removeAttribute("disabled");
+      }
+      break;
+
+    case "input":
+      const inputEl = element as HTMLInputElement;
+      // Set input-specific properties
+      if (content.placeholder !== undefined) {
+        inputEl.placeholder = String(content.placeholder);
+      }
+      if (content.value !== undefined) {
+        inputEl.value = String(content.value);
+      }
+      if (content.inputType !== undefined) {
+        inputEl.type = String(content.inputType);
+      }
+      if (content.disabled === true) {
+        inputEl.disabled = true;
+      } else if (content.disabled === false) {
+        inputEl.disabled = false;
+      }
+      if (content.required === true) {
+        inputEl.required = true;
+      } else if (content.required === false) {
+        inputEl.required = false;
+      }
+      break;
+
+    case "container":
+    case "div":
+      // For containers, set text content if provided
+      if (content.text !== undefined) {
+        element.textContent = String(content.text);
+      }
+      break;
+
+    default:
+      // For other elements, set text content if provided
+      if (content.text !== undefined) {
+        element.textContent = String(content.text);
+      } else if (content.content !== undefined) {
+        element.textContent = String(content.content);
+      }
+      break;
+  }
+}
+
 export const createNode = (data: any, ctx: any) => {
   const tpl = ctx.payload.template;
   const id = ctx.payload.nodeId;
@@ -56,6 +122,11 @@ export const createNode = (data: any, ctx: any) => {
         el.setAttribute(k, String(v));
       } catch {}
     }
+  }
+
+  // 6.6) Apply content properties if they exist in the template
+  if (tpl?.content && typeof tpl.content === "object") {
+    applyContentProperties(el, tpl.content, tpl.tag);
   }
 
   // 6.6) If this is an SVG line, append a child <line> and set svg attributes

@@ -2,6 +2,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as exportHandlers } from "../../plugins/canvas-component/symphonies/export/export.symphony";
 import { handlers as importHandlers } from "../../plugins/canvas-component/symphonies/import/import.symphony";
+import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
 
 function setupCanvas() {
   const root = document.createElement("div");
@@ -52,6 +53,26 @@ function makeImportCtx() {
       warn: vi.fn(),
       error: vi.fn(),
     },
+    conductor: {
+      play: vi.fn(async (pluginId: string, sequenceId: string, data: any) => {
+        ops.push(["conductor.play", pluginId, sequenceId, data]);
+        // Mock the canvas.component.create behavior for testing
+        if (sequenceId === "canvas-component-create-symphony") {
+          const createCtx = {
+            payload: {},
+            io: {
+              kv: {
+                put: vi.fn(async (...a: any[]) => ops.push(["kv.put", ...a])),
+              },
+            },
+          };
+          await createHandlers.resolveTemplate(data, createCtx);
+          await createHandlers.registerInstance(data, createCtx);
+          await createHandlers.createNode(data, createCtx);
+          await createHandlers.notifyUi(data, createCtx);
+        }
+      }),
+    },
     _ops: ops,
   } as any;
 }
@@ -63,7 +84,7 @@ describe("canvas-component export/import content preservation", () => {
 
   it("should export and import button content correctly", async () => {
     const exportCtx = makeExportCtx();
-    
+
     // Create a button with custom text in the DOM
     document.body.innerHTML = `
       <div id="rx-canvas" style="position: relative; width: 1200px; height: 800px;">
@@ -81,7 +102,9 @@ describe("canvas-component export/import content preservation", () => {
     exportHandlers.buildUiFileContent({}, exportCtx);
 
     const uiFile = exportCtx.payload.uiFileContent;
-    const buttonComponent = uiFile.components.find((c: any) => c.id === "btn-1");
+    const buttonComponent = uiFile.components.find(
+      (c: any) => c.id === "btn-1"
+    );
 
     // Verify button content was captured
     expect(buttonComponent).toBeDefined();
@@ -99,12 +122,13 @@ describe("canvas-component export/import content preservation", () => {
     // Execute import flow
     await importHandlers.parseUiFile({}, importCtx);
     await importHandlers.injectCssClasses({}, importCtx);
-    await importHandlers.createOrUpdateNodes({}, importCtx);
+    await importHandlers.createComponentsSequentially({}, importCtx);
     await importHandlers.applyHierarchyAndOrder({}, importCtx);
-    await importHandlers.registerInstances({}, importCtx);
 
     // Verify button was recreated with correct content
-    const importedButton = document.getElementById("btn-1") as HTMLButtonElement;
+    const importedButton = document.getElementById(
+      "btn-1"
+    ) as HTMLButtonElement;
     expect(importedButton).toBeTruthy();
     expect(importedButton.textContent).toBe("Save Changes");
 
@@ -118,7 +142,7 @@ describe("canvas-component export/import content preservation", () => {
 
   it("should export and import input content correctly", async () => {
     const exportCtx = makeExportCtx();
-    
+
     // Create an input with custom placeholder and value in the DOM
     document.body.innerHTML = `
       <div id="rx-canvas" style="position: relative; width: 1200px; height: 800px;">
@@ -136,7 +160,9 @@ describe("canvas-component export/import content preservation", () => {
     exportHandlers.buildUiFileContent({}, exportCtx);
 
     const uiFile = exportCtx.payload.uiFileContent;
-    const inputComponent = uiFile.components.find((c: any) => c.id === "input-1");
+    const inputComponent = uiFile.components.find(
+      (c: any) => c.id === "input-1"
+    );
 
     // Verify input content was captured
     expect(inputComponent).toBeDefined();
@@ -155,12 +181,13 @@ describe("canvas-component export/import content preservation", () => {
     // Execute import flow
     await importHandlers.parseUiFile({}, importCtx);
     await importHandlers.injectCssClasses({}, importCtx);
-    await importHandlers.createOrUpdateNodes({}, importCtx);
+    await importHandlers.createComponentsSequentially({}, importCtx);
     await importHandlers.applyHierarchyAndOrder({}, importCtx);
-    await importHandlers.registerInstances({}, importCtx);
 
     // Verify input was recreated with correct content
-    const importedInput = document.getElementById("input-1") as HTMLInputElement;
+    const importedInput = document.getElementById(
+      "input-1"
+    ) as HTMLInputElement;
     expect(importedInput).toBeTruthy();
     expect(importedInput.placeholder).toBe("Enter your email address");
     expect(importedInput.value).toBe("user@example.com");
@@ -178,7 +205,7 @@ describe("canvas-component export/import content preservation", () => {
 
   it("should export and import disabled button state", async () => {
     const exportCtx = makeExportCtx();
-    
+
     // Create a disabled button in the DOM
     document.body.innerHTML = `
       <div id="rx-canvas" style="position: relative; width: 1200px; height: 800px;">
@@ -196,7 +223,9 @@ describe("canvas-component export/import content preservation", () => {
     exportHandlers.buildUiFileContent({}, exportCtx);
 
     const uiFile = exportCtx.payload.uiFileContent;
-    const buttonComponent = uiFile.components.find((c: any) => c.id === "btn-disabled");
+    const buttonComponent = uiFile.components.find(
+      (c: any) => c.id === "btn-disabled"
+    );
 
     // Verify disabled state was captured
     expect(buttonComponent).toBeDefined();
@@ -214,12 +243,13 @@ describe("canvas-component export/import content preservation", () => {
     // Execute import flow
     await importHandlers.parseUiFile({}, importCtx);
     await importHandlers.injectCssClasses({}, importCtx);
-    await importHandlers.createOrUpdateNodes({}, importCtx);
+    await importHandlers.createComponentsSequentially({}, importCtx);
     await importHandlers.applyHierarchyAndOrder({}, importCtx);
-    await importHandlers.registerInstances({}, importCtx);
 
     // Verify button was recreated with disabled state
-    const importedButton = document.getElementById("btn-disabled") as HTMLButtonElement;
+    const importedButton = document.getElementById(
+      "btn-disabled"
+    ) as HTMLButtonElement;
     expect(importedButton).toBeTruthy();
     expect(importedButton.disabled).toBe(true);
     expect(importedButton.textContent).toBe("Disabled Button");
@@ -227,7 +257,7 @@ describe("canvas-component export/import content preservation", () => {
 
   it("should export and import required input state", async () => {
     const exportCtx = makeExportCtx();
-    
+
     // Create a required input in the DOM
     document.body.innerHTML = `
       <div id="rx-canvas" style="position: relative; width: 1200px; height: 800px;">
@@ -245,7 +275,9 @@ describe("canvas-component export/import content preservation", () => {
     exportHandlers.buildUiFileContent({}, exportCtx);
 
     const uiFile = exportCtx.payload.uiFileContent;
-    const inputComponent = uiFile.components.find((c: any) => c.id === "input-required");
+    const inputComponent = uiFile.components.find(
+      (c: any) => c.id === "input-required"
+    );
 
     // Verify required state was captured
     expect(inputComponent).toBeDefined();
@@ -263,12 +295,13 @@ describe("canvas-component export/import content preservation", () => {
     // Execute import flow
     await importHandlers.parseUiFile({}, importCtx);
     await importHandlers.injectCssClasses({}, importCtx);
-    await importHandlers.createOrUpdateNodes({}, importCtx);
+    await importHandlers.createComponentsSequentially({}, importCtx);
     await importHandlers.applyHierarchyAndOrder({}, importCtx);
-    await importHandlers.registerInstances({}, importCtx);
 
     // Verify input was recreated with required state
-    const importedInput = document.getElementById("input-required") as HTMLInputElement;
+    const importedInput = document.getElementById(
+      "input-required"
+    ) as HTMLInputElement;
     expect(importedInput).toBeTruthy();
     expect(importedInput.required).toBe(true);
     expect(importedInput.placeholder).toBe("Required field");
