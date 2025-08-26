@@ -53,7 +53,11 @@ describe("Callback preservation across nested play()", () => {
       },
     };
 
-    await conductor.mount(canvasSequence as any, canvasHandlers, canvasSequence.id);
+    await conductor.mount(
+      canvasSequence as any,
+      canvasHandlers,
+      canvasSequence.id
+    );
 
     // Upstream (Library) symphony that forwards to Canvas via nested play()
     const libSequence: MusicalSequence = {
@@ -86,7 +90,12 @@ describe("Callback preservation across nested play()", () => {
     const libHandlers = {
       forwardToCanvas: async (data: any, ctx: any) => {
         // Simulate PR-preview/transport: inner payload is JSON cloned (functions stripped)
-        const cloned = JSON.parse(JSON.stringify(data));
+        // Extract only the user payload, not the entire event data structure
+        const userPayload = {
+          elementId: data.elementId,
+          onComponentCreated: data.onComponentCreated,
+        };
+        const cloned = JSON.parse(JSON.stringify(userPayload));
         await ctx.conductor.play(
           "Canvas.component-create-symphony",
           "Canvas.component-create-symphony",
@@ -116,7 +125,8 @@ describe("Callback preservation across nested play()", () => {
 
     // Expectation: Even though inner play cloned the payload, callback should be preserved
     expect(onCreated).toHaveBeenCalledTimes(1);
-    expect(onCreated).toHaveBeenCalledWith(expect.objectContaining({ id: "node-1" }));
+    expect(onCreated).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "node-1" })
+    );
   });
 });
-

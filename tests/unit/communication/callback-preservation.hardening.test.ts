@@ -50,13 +50,20 @@ describe("Callback preservation hardening", () => {
         if (typeof data?.onTop === "function") data.onTop("top");
         if (typeof data?.nested?.ui?.onInner === "function")
           data.nested.ui.onInner({ ok: true });
-        if (Array.isArray(data?.list) && typeof data.list[0]?.onItem === "function")
+        if (
+          Array.isArray(data?.list) &&
+          typeof data.list[0]?.onItem === "function"
+        )
           data.list[0].onItem(0);
         return { created: true };
       },
     };
 
-    await conductor.mount(canvasSequence as any, canvasHandlers, canvasSequence.id);
+    await conductor.mount(
+      canvasSequence as any,
+      canvasHandlers,
+      canvasSequence.id
+    );
 
     // Upstream Library sequence that forwards via nested play with JSON-cloned payload
     const libSequence: MusicalSequence = {
@@ -88,7 +95,13 @@ describe("Callback preservation hardening", () => {
 
     const libHandlers = {
       forward: async (data: any, ctx: any) => {
-        const cloned = JSON.parse(JSON.stringify(data));
+        // Extract only the user payload for JSON cloning
+        const userPayload = {
+          onTop: data.onTop,
+          nested: data.nested,
+          list: data.list,
+        };
+        const cloned = JSON.parse(JSON.stringify(userPayload));
         await ctx.conductor.play(
           "Canvas.multiple-create",
           "Canvas.multiple-create",
@@ -160,11 +173,16 @@ describe("Callback preservation hardening", () => {
     const onCreated = jest.fn();
     const canvasHandlers = {
       handleCreate: (data: any) => {
-        if (typeof data?.onCreated === "function") data.onCreated({ id: Math.random() });
+        if (typeof data?.onCreated === "function")
+          data.onCreated({ id: Math.random() });
         return {};
       },
     };
-    await conductor.mount(canvasSequence as any, canvasHandlers, canvasSequence.id);
+    await conductor.mount(
+      canvasSequence as any,
+      canvasHandlers,
+      canvasSequence.id
+    );
 
     // Upstream that triggers two nested plays
     const libSequence: MusicalSequence = {
@@ -196,23 +214,37 @@ describe("Callback preservation hardening", () => {
 
     const libHandlers = {
       forwardTwice: async (data: any, ctx: any) => {
-        const cloned = JSON.parse(JSON.stringify(data));
+        // Extract only the user payload for JSON cloning
+        const userPayload = {
+          onCreated: data.onCreated,
+        };
+        const cloned = JSON.parse(JSON.stringify(userPayload));
         // Start two sibling nested plays; they share correlation id propagated by PluginManager
-        await ctx.conductor.play("Canvas.double-create", "Canvas.double-create", cloned, "CHAINED");
-        await ctx.conductor.play("Canvas.double-create", "Canvas.double-create", cloned, "CHAINED");
+        await ctx.conductor.play(
+          "Canvas.double-create",
+          "Canvas.double-create",
+          cloned,
+          "CHAINED"
+        );
+        await ctx.conductor.play(
+          "Canvas.double-create",
+          "Canvas.double-create",
+          cloned,
+          "CHAINED"
+        );
         return {};
       },
     };
 
     await conductor.mount(libSequence as any, libHandlers, libSequence.id);
 
-    const logSpy = jest.spyOn(console, "log").mockImplementation(() => undefined);
+    const logSpy = jest
+      .spyOn(console, "log")
+      .mockImplementation(() => undefined);
 
-    await conductor.play(
-      "Library.double-forward",
-      "Library.double-forward",
-      { onCreated }
-    );
+    await conductor.play("Library.double-forward", "Library.double-forward", {
+      onCreated,
+    });
 
     await new Promise((r) => setTimeout(r, 0));
 
@@ -226,4 +258,3 @@ describe("Callback preservation hardening", () => {
     expect(cleanupLogs.length).toBe(1);
   });
 });
-
