@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initConductor, registerAllSequences } from "./conductor";
 import { initInteractionManifest } from "./interactionManifest";
+import "./global.css";
 
 (async () => {
   const conductor = await initConductor();
