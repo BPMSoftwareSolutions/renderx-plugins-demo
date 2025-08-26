@@ -36,6 +36,10 @@
     "canvas.component.resize.line.end": {
       "pluginId": "CanvasLineResizeEndPlugin",
       "sequenceId": "canvas-line-resize-end-symphony"
+    },
+    "canvas.component.export": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "sequenceId": "canvas-component-export-symphony"
     }
   }
 }

@@ -26,6 +26,10 @@
       "handlersPath": "/plugins/canvas-component/symphonies/resize/resize.end.symphony.ts"
     },
     {
+      "file": "export.json",
+      "handlersPath": "/plugins/canvas-component/symphonies/export/export.symphony.ts"
+    },
+    {
       "file": "resize.line.start.json",
       "handlersPath": "/plugins/canvas-component/symphonies/resize-line/resize.line.start.symphony.ts"
     },
