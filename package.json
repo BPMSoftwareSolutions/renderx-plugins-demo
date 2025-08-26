@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "musical-conductor": "^1.4.3",
+    "musical-conductor": "^1.4.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
