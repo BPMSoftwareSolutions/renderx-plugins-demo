@@ -28,7 +28,7 @@ export const startResize = (data: any) => {
   }
 };
 
-export const updateSize = (data: any) => {
+export const updateSize = (data: any, ctx?: any) => {
   const {
     id,
     dir,
@@ -50,13 +50,23 @@ export const updateSize = (data: any) => {
 
   const cfg = getResizeConfig(el);
   if (!cfg.enabled) {
-    return {
+    const result = {
       id,
       left: startLeft,
       top: startTop,
       width: startWidth,
       height: startHeight,
     };
+    if (ctx && ctx.payload) {
+      ctx.payload.updatedLayout = {
+        x: result.left,
+        y: result.top,
+        width: result.width,
+        height: result.height,
+      };
+      ctx.payload.elementId = id;
+    }
+    return result;
   }
 
   const canvasRect = getCanvasRect();
@@ -80,26 +90,46 @@ export const updateSize = (data: any) => {
 
   // Guard: if this invocation is not a move (e.g., start/end), don't recompute size
   if (phase && phase !== "move") {
-    return {
+    const result = {
       id,
       left: startLeft,
       top: startTop,
       width: startWidth,
       height: startHeight,
     };
+    if (ctx && ctx.payload) {
+      ctx.payload.updatedLayout = {
+        x: result.left,
+        y: result.top,
+        width: result.width,
+        height: result.height,
+      };
+      ctx.payload.elementId = id;
+    }
+    return result;
   }
 
   const _dx = Number(dx);
   const _dy = Number(dy);
   if (!Number.isFinite(_dx) || !Number.isFinite(_dy)) {
     // No deltas provided — ignore to avoid snap back
-    return {
+    const result = {
       id,
       left: startLeft,
       top: startTop,
       width: startWidth,
       height: startHeight,
     };
+    if (ctx && ctx.payload) {
+      ctx.payload.updatedLayout = {
+        x: result.left,
+        y: result.top,
+        width: result.width,
+        height: result.height,
+      };
+      ctx.payload.elementId = id;
+    }
+    return result;
   }
 
   if (String(dir).includes("e")) width = clamp(startWidth + _dx, cfg.minW);
@@ -130,6 +160,11 @@ export const updateSize = (data: any) => {
     try {
       onResize({ id, left, top, width, height });
     } catch {}
+  }
+
+  if (ctx && ctx.payload) {
+    ctx.payload.updatedLayout = { x: left, y: top, width, height };
+    ctx.payload.elementId = id;
   }
 
   return { id, left, top, width, height };

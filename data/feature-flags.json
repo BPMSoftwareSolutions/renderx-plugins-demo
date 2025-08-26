@@ -60,5 +60,29 @@
     "created": "2025-08-26",
     "description": "Verbose debug logs for CP drag/update",
     "owner": "control-panel"
+  },
+  "perf.resize.use-transform": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "Use transform-based resizing during active resize; commit on end",
+    "owner": "canvas"
+  },
+  "perf.resize.first-delta.min.px": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "Minimum delta in px before sending first/successive CP updates during resize",
+    "owner": "canvas"
+  },
+  "perf.cp.resize-layout-eps": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "EPS threshold for width/height jitter during resize",
+    "owner": "control-panel"
+  },
+  "perf.resize.microtask-first": {
+    "status": "on",
+    "created": "2025-08-26",
+    "description": "Use microtask-first scheduling for first resize CP burst",
+    "owner": "canvas"
   }
 }

@@ -38,10 +38,13 @@ export function updateFromElement(data: any, ctx: any) {
   const style = element.style;
   const computed = getComputedStyle(element);
 
-  // During drag/resize, consume position from data if provided to avoid reflow-causing reads
+  // During drag/resize, consume position/size from data if provided to avoid reflow-causing reads
   if (source === "drag" || source === "resize") {
     const pos = (data && (data as any).position) as
       | { x?: number; y?: number }
+      | undefined;
+    const size = (data && (data as any).size) as
+      | { width?: number; height?: number }
       | undefined;
     const x =
       pos && typeof pos.x === "number"
@@ -51,16 +54,39 @@ export function updateFromElement(data: any, ctx: any) {
       pos && typeof pos.y === "number"
         ? pos.y
         : parseFloat(style.top || computed.top || "0");
-    // width/height typically unchanged during drag; avoid reads per update
     let width: number;
     let height: number;
-    const cached = lastSizeById[id as string];
-    if (cached) {
-      ({ width, height } = cached);
+
+    if (source === "resize") {
+      // Prefer forwarded size during resize to avoid layout reads
+      if (
+        size &&
+        typeof size.width === "number" &&
+        typeof size.height === "number"
+      ) {
+        width = size.width;
+        height = size.height;
+        lastSizeById[id as string] = { width, height };
+      } else {
+        const cached = lastSizeById[id as string];
+        if (cached) {
+          ({ width, height } = cached);
+        } else {
+          width = parseFloat(style.width || computed.width || "0");
+          height = parseFloat(style.height || computed.height || "0");
+          lastSizeById[id as string] = { width, height };
+        }
+      }
     } else {
-      width = parseFloat(style.width || computed.width || "0");
-      height = parseFloat(style.height || computed.height || "0");
-      lastSizeById[id as string] = { width, height };
+      // drag: width/height typically unchanged, use cache then fallback
+      const cached = lastSizeById[id as string];
+      if (cached) {
+        ({ width, height } = cached);
+      } else {
+        width = parseFloat(style.width || computed.width || "0");
+        height = parseFloat(style.height || computed.height || "0");
+        lastSizeById[id as string] = { width, height };
+      }
     }
 
     ctx.payload.selectionModel = {

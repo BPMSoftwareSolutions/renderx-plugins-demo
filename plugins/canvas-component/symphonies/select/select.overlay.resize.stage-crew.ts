@@ -1,6 +1,4 @@
-import {
-  getCanvasRect,
-} from "./select.overlay.dom.stage-crew";
+import { getCanvasRect } from "./select.overlay.dom.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
 
 function readNumericPx(value: string): number | null {
@@ -55,8 +53,6 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     const startX = e.clientX;
     const startY = e.clientY;
 
-
-
     const call = (
       dx: number,
       dy: number,
@@ -64,7 +60,9 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     ) => {
       // Conductor must always be available - no fallback
       if (!conductor?.play) {
-        throw new Error("Conductor is required for resize operations but was not provided");
+        throw new Error(
+          "Conductor is required for resize operations but was not provided"
+        );
       }
 
       const base = { id, dir, startLeft, startTop, startWidth, startHeight };
@@ -100,6 +98,11 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     };
 
     const onUp = () => {
+      // cancel any pending trailing rAF move to avoid post-end calls
+      try {
+        if (raf) cancelAnimationFrame(raf as any);
+      } catch {}
+      raf = 0 as any;
       call(0, 0, "end");
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseup", onUp);
