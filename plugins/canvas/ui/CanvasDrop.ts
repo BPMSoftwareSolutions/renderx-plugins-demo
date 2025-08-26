@@ -1,4 +1,5 @@
 import { resolveInteraction } from "../../../src/interactionManifest";
+import { isFlagEnabled } from "../../../src/feature-flags/flags";
 
 // Lazily cached route for drag move to avoid resolving on every pointer move
 let __dragMoveRoute: { pluginId: string; sequenceId: string } | null = null;
@@ -27,7 +28,7 @@ export async function onDropForTest(
     (window as any).__cpDragInProgress = true;
 
     // Debug logs gated for perf
-    if ((window as any).__cpPerf?.debug) {
+    if (isFlagEnabled("perf.cp.debug")) {
       console.log("Drag started:", dragData);
     }
 
@@ -65,16 +66,22 @@ export async function onDropForTest(
     (window as any).__cpDragInProgress = false;
 
     // Debug logs gated for perf
-    if ((window as any).__cpPerf?.debug) {
+    if (isFlagEnabled("perf.cp.debug")) {
       console.log("Drag ended:", dragData);
     }
 
     // Optionally trigger a deferred Control Panel render after drag ends
     const perf = (window as any).__cpPerf || {};
-    const deferMs =
-      typeof perf.postDragRenderDelayMs === "number"
-        ? perf.postDragRenderDelayMs
-        : 0;
+    let deferMs = 0;
+    try {
+      // Prefer centralized flag
+      if (isFlagEnabled("perf.cp.render.dedupe")) {
+        // Still using global numeric until JSON carries values, to avoid schema change
+        const ms = Number(perf.postDragRenderDelayMs);
+        if (Number.isFinite(ms) && ms > 0) deferMs = ms;
+      }
+    } catch {}
+
     if (deferMs > 0 && (window as any).__cpTriggerRender) {
       setTimeout(() => {
         try {

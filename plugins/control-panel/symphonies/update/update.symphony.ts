@@ -1,5 +1,6 @@
 import { updateFromElement } from "./update.stage-crew";
 import { getSelectionObserver } from "../../state/observer.store";
+import { isFlagEnabled } from "../../../../src/feature-flags/flags";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
@@ -29,10 +30,14 @@ export const handlers = {
       // Allow raising EPS via flag for jitter suppression
       let eps = LAYOUT_EPS;
       try {
-        // Use global toggles for perf flags in UI layer to avoid async import cost/lint
-        const flags = (window as any).__cpPerf || {};
-        if (flags.layoutEps && Number.isFinite(Number(flags.layoutEps))) {
-          eps = Number(flags.layoutEps);
+        // Prefer centralized feature flags; fall back to global for legacy overrides
+        const flagOn = isFlagEnabled("perf.cp.layout-eps");
+        if (flagOn) {
+          // Optional: support numeric override via global for quick A/B until JSON carries values
+          const flags = (window as any).__cpPerf || {};
+          if (flags.layoutEps && Number.isFinite(Number(flags.layoutEps))) {
+            eps = Number(flags.layoutEps);
+          }
         }
       } catch {}
 
