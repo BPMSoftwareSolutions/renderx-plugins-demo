@@ -53,7 +53,7 @@ function transformImportDataToCreateFormat(importComponent: any): any {
 }
 
 // Helper function to apply content properties to DOM elements
-function applyContentProperties(
+function _applyContentProperties(
   element: HTMLElement,
   content: Record<string, any>,
   type: string
@@ -134,7 +134,7 @@ export async function createComponentsSequentially(_data: any, ctx: any) {
     const createPayload = transformImportDataToCreateFormat(comp);
 
     // Add interaction handlers (same as library drop flow)
-    createPayload.onDragStart = (info: any) => {
+    createPayload.onDragStart = (_info: any) => {
       // Match CanvasDrop.ts behavior: mark drag in progress; no resolver call
       try {
         (globalThis as any).__cpDragInProgress = true;
@@ -152,7 +152,7 @@ export async function createComponentsSequentially(_data: any, ctx: any) {
       } catch {}
     };
 
-    createPayload.onDragEnd = (info: any) => {
+    createPayload.onDragEnd = (_info: any) => {
       // Match CanvasDrop.ts behavior: clear flag; no resolver call
       try {
         (globalThis as any).__cpDragInProgress = false;
