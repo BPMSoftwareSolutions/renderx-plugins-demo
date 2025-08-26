@@ -78,6 +78,46 @@ export class EventLogger {
   }
 
   /**
+   * Setup movement execution logging with hierarchical format
+   */
+  setupMovementExecutionLogging(): void {
+    if (!this.config.enableHierarchicalLogging) {
+      console.log("🎼 EventLogger: Movement hierarchical logging disabled");
+      return;
+    }
+
+    // Subscribe to movement started events
+    const movementStartedUnsubscribe = this.eventBus.subscribe(
+      MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_STARTED,
+      (data: any) => this.logMovementStartedHierarchical(data),
+      this
+    );
+
+    // Subscribe to movement completed events
+    const movementCompletedUnsubscribe = this.eventBus.subscribe(
+      MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_COMPLETED,
+      (data: any) => this.logMovementCompletedHierarchical(data),
+      this
+    );
+
+    // Subscribe to movement failed events
+    const movementFailedUnsubscribe = this.eventBus.subscribe(
+      MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_FAILED,
+      (data: any) => this.logMovementFailedHierarchical(data),
+      this
+    );
+
+    // Store unsubscribe functions for cleanup
+    this.eventSubscriptions.push(
+      movementStartedUnsubscribe,
+      movementCompletedUnsubscribe,
+      movementFailedUnsubscribe
+    );
+
+    console.log("🎼 EventLogger: Hierarchical movement logging initialized");
+  }
+
+  /**
    * Log beat started event with hierarchical format
    * @param data - Beat started event data
    */
@@ -146,6 +186,67 @@ export class EventLogger {
     } else {
       console.log(`%c✅ Completed`, "color: #28A745; font-weight: bold;");
     }
+
+    console.groupEnd();
+  }
+
+  /**
+   * Log movement started event with hierarchical format
+   * @param data - Movement started event data
+   */
+  private logMovementStartedHierarchical(data: any): void {
+    // Create hierarchical log group with enhanced styling
+    const groupLabel = `🎵 Movement Started: ${data.movementName} (${data.beatsCount} beats)`;
+
+    console.group(groupLabel);
+    console.log(
+      `%c🎼 Sequence: ${data.sequenceName}`,
+      "color: #007BFF; font-weight: bold;"
+    );
+    console.log(
+      `%c🆔 Request ID: ${data.requestId}`,
+      "color: #6C757D; font-weight: normal;"
+    );
+    console.log(
+      `%c🥁 Beats Count: ${data.beatsCount}`,
+      "color: #17A2B8; font-weight: bold;"
+    );
+  }
+
+  /**
+   * Log movement completed event with hierarchical format
+   * @param data - Movement completed event data
+   */
+  private logMovementCompletedHierarchical(data: any): void {
+    if (data.duration !== null && data.duration !== undefined) {
+      console.log(
+        `%c✅ Movement completed in ${data.duration.toFixed(2)}ms`,
+        "color: #28A745; font-weight: bold;"
+      );
+    } else {
+      console.log(
+        `%c✅ Movement completed`,
+        "color: #28A745; font-weight: bold;"
+      );
+    }
+
+    console.log(
+      `%c🥁 Beats executed: ${data.beatsExecuted}`,
+      "color: #17A2B8; font-weight: normal;"
+    );
+
+    console.groupEnd();
+  }
+
+  /**
+   * Log movement failed event with hierarchical format
+   * @param data - Movement failed event data
+   */
+  private logMovementFailedHierarchical(data: any): void {
+    console.log(
+      `%c❌ Movement failed: ${data.error}`,
+      "color: #DC3545; font-weight: bold;"
+    );
 
     console.groupEnd();
   }

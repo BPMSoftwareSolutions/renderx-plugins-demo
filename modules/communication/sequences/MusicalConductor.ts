@@ -177,6 +177,10 @@ export class MusicalConductor {
     this.duplicationDetector = new DuplicationDetector();
     this.eventLogger = new EventLogger(eventBus, this.performanceTracker);
 
+    // Initialize EventLogger logging capabilities
+    this.eventLogger.setupBeatExecutionLogging();
+    this.eventLogger.setupMovementExecutionLogging();
+
     // Initialize validation components
     this.sequenceValidator = new SequenceValidator(this.duplicationDetector);
 
@@ -187,7 +191,8 @@ export class MusicalConductor {
       eventBus,
       this.conductorCore.getSPAValidator(),
       this.executionQueue,
-      this.statisticsManager
+      this.statisticsManager,
+      this.performanceTracker
     );
     this.pluginManager = new PluginManager(
       eventBus,

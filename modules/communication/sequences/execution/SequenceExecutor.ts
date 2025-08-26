@@ -17,6 +17,7 @@ import {
 import { ExecutionQueue } from "./ExecutionQueue.js";
 import { MovementExecutor } from "./MovementExecutor.js";
 import type { StatisticsManager } from "../monitoring/StatisticsManager.js";
+import type { PerformanceTracker } from "../monitoring/PerformanceTracker.js";
 
 export class SequenceExecutor {
   private eventBus: EventBus;
@@ -28,6 +29,7 @@ export class SequenceExecutor {
   private activeSequence: SequenceExecutionContext | null = null;
   private sequenceHistory: SequenceExecutionContext[] = [];
   private statisticsManager: StatisticsManager;
+  private performanceTracker?: PerformanceTracker;
 
   // Beat-level orchestration: Ensure no simultaneous beat execution
   private isExecutingBeat: boolean = false;
@@ -42,16 +44,19 @@ export class SequenceExecutor {
     eventBus: EventBus,
     spaValidator: SPAValidator,
     executionQueue: ExecutionQueue,
-    statisticsManager: StatisticsManager
+    statisticsManager: StatisticsManager,
+    performanceTracker?: PerformanceTracker
   ) {
     this.eventBus = eventBus;
     this.spaValidator = spaValidator;
     this.executionQueue = executionQueue;
     this.statisticsManager = statisticsManager;
+    this.performanceTracker = performanceTracker;
     this.movementExecutor = new MovementExecutor(
       eventBus,
       spaValidator,
-      statisticsManager
+      statisticsManager,
+      performanceTracker
     );
   }
 

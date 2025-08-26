@@ -16,19 +16,23 @@ import {
 } from "../SequenceTypes.js";
 import { BeatExecutor } from "./BeatExecutor.js";
 import { getConductorEnv } from "../environment/ConductorEnv.js";
+import { PerformanceTracker } from "../monitoring/PerformanceTracker.js";
 
 export class MovementExecutor {
   private eventBus: EventBus;
   private spaValidator: SPAValidator;
   private beatExecutor: BeatExecutor;
+  private performanceTracker?: PerformanceTracker;
 
   constructor(
     eventBus: EventBus,
     spaValidator: SPAValidator,
-    statisticsManager?: import("../monitoring/StatisticsManager.js").StatisticsManager
+    statisticsManager?: import("../monitoring/StatisticsManager.js").StatisticsManager,
+    performanceTracker?: PerformanceTracker
   ) {
     this.eventBus = eventBus;
     this.spaValidator = spaValidator;
+    this.performanceTracker = performanceTracker;
     this.beatExecutor = new BeatExecutor(
       eventBus,
       spaValidator,
@@ -50,6 +54,15 @@ export class MovementExecutor {
     console.log(
       `🎵 MovementExecutor: Starting movement "${movement.name}" with ${movement.beats.length} beats`
     );
+
+    // Start movement timing if PerformanceTracker is available
+    if (this.performanceTracker) {
+      this.performanceTracker.startMovementTiming(
+        sequence.name,
+        movement.name,
+        executionContext.id
+      );
+    }
 
     // Emit movement started event
     this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_STARTED, {
@@ -86,18 +99,39 @@ export class MovementExecutor {
         executionContext.completedBeats.push(beat.beat);
       }
 
-      // Emit movement completed event
+      // End movement timing if PerformanceTracker is available
+      let movementDuration: number | null = null;
+      if (this.performanceTracker) {
+        movementDuration = this.performanceTracker.endMovementTiming(
+          sequence.name,
+          movement.name,
+          executionContext.id,
+          movement.beats.length
+        );
+      }
+
+      // Emit movement completed event with timing data
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_COMPLETED, {
         sequenceName: sequence.name,
         movementName: movement.name,
         requestId: executionContext.id,
         beatsExecuted: movement.beats.length,
+        duration: movementDuration,
       });
 
       console.log(
         `✅ MovementExecutor: Movement "${movement.name}" completed successfully`
       );
     } catch (error) {
+      // Clean up failed movement timing if PerformanceTracker is available
+      if (this.performanceTracker) {
+        this.performanceTracker.cleanupFailedMovement(
+          sequence.name,
+          movement.name,
+          executionContext.id
+        );
+      }
+
       // Handle movement execution error
       console.error(
         `❌ MovementExecutor: Movement "${movement.name}" failed:`,
