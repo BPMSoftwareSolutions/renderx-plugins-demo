@@ -1,6 +1,7 @@
-import { queryAllComponents, downloadUiFile } from "./export.io";
+import { queryAllComponents } from "./export.io";
 import { collectLayoutData } from "./export.stage-crew";
 import { collectCssClasses } from "./export.css.stage-crew";
+import { downloadUiFile } from "./export.download.stage-crew";
 import { buildUiFileContent } from "./export.pure";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
@@ -10,5 +11,5 @@ export const handlers = {
   collectCssClasses, // stage-crew
   collectLayoutData,
   buildUiFileContent,
-  downloadUiFile,
+  downloadUiFile, // stage-crew
 };

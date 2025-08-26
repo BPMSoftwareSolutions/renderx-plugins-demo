@@ -50,7 +50,7 @@
           "dynamics": "mf",
           "handler": "downloadUiFile",
           "timing": "immediate",
-          "kind": "io"
+          "kind": "stage-crew"
         }
       ]
     }

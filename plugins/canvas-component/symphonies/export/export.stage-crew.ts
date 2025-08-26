@@ -1,7 +1,7 @@
 export const collectLayoutData = (data: any, ctx: any) => {
   try {
-    const components = ctx.payload.components || [];
-    const componentIds = new Set((components || []).map((c: any) => c.id));
+    let components = ctx.payload.components || [];
+    let componentIds = new Set((components || []).map((c: any) => c.id));
     const layoutData: any[] = [];
 
     // Find canvas container
@@ -25,13 +25,72 @@ export const collectLayoutData = (data: any, ctx: any) => {
       height: parseInt(canvasStyle.height) || canvasRect.height || 0,
     };
 
-    // Helper: find nearest parent container id
+    // If no components from KV, perform DOM discovery (stage-crew is allowed to use DOM)
+    if (!components || components.length === 0) {
+      const canvasEl = document.getElementById("rx-canvas");
+      if (canvasEl) {
+        const found: any[] = [];
+        const els = canvasEl.querySelectorAll(".rx-comp");
+        for (const el of Array.from(els)) {
+          const htmlEl = el as HTMLElement;
+          const classes = Array.from(htmlEl.classList);
+          const typeClass = classes.find(
+            (cls) => cls.startsWith("rx-") && cls !== "rx-comp"
+          );
+          const type = typeClass
+            ? typeClass.replace("rx-", "")
+            : htmlEl.tagName.toLowerCase();
+
+          // Extract some computed styles
+          const computed = window.getComputedStyle(htmlEl);
+          const style: Record<string, string> = {};
+          const props = [
+            "padding",
+            "margin",
+            "border",
+            "borderRadius",
+            "background",
+            "backgroundColor",
+            "color",
+            "fontSize",
+            "fontWeight",
+            "textAlign",
+            "boxShadow",
+            "width",
+            "height",
+          ];
+          for (const p of props) {
+            const v = computed.getPropertyValue(p);
+            if (v && v !== "initial" && v !== "normal" && v !== "auto")
+              style[p] = v;
+          }
+
+          found.push({
+            id: htmlEl.id,
+            type,
+            classes,
+            style,
+            createdAt: Date.now(),
+          });
+        }
+        ctx.payload.components = found;
+        components = found;
+        componentIds = new Set(found.map((c: any) => c.id));
+      }
+    }
+
+    // Refresh componentIds after potential DOM discovery
     const findParentContainerId = (el: HTMLElement | null): string | null => {
       let cur: HTMLElement | null = el?.parentElement || null;
       while (cur) {
         const id = cur.id || null;
         const isContainer = cur.classList?.contains("rx-container");
-        if (isContainer && id && componentIds.has(id)) return id;
+        if (
+          isContainer &&
+          id &&
+          (ctx.payload.components || []).some((c: any) => c.id === id)
+        )
+          return id;
         cur = cur.parentElement;
       }
       return null;
