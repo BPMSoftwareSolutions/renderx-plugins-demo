@@ -1,79 +1,14 @@
 // Helper function to extract content properties from DOM elements
+import { ComponentRuleEngine } from "../../../../src/component-mapper/rule-engine";
+
+const _ruleEngineForExport = new ComponentRuleEngine();
+
 function extractElementContent(
   element: HTMLElement,
   type: string
 ): Record<string, any> {
-  const content: Record<string, any> = {};
-
-  // Extract text content for elements that display text
-  const textContent = element.textContent?.trim();
-  if (textContent) {
-    content.text = textContent;
-  }
-
-  // Extract type-specific properties
-  switch (type) {
-    case "button":
-      // Button content is the text content
-      if (textContent) {
-        content.content = textContent;
-      }
-      // Check for disabled state
-      if (element.hasAttribute("disabled")) {
-        content.disabled = true;
-      }
-      break;
-
-    case "input":
-      const inputEl = element as HTMLInputElement;
-      // Extract input-specific properties
-      if (inputEl.placeholder) {
-        content.placeholder = inputEl.placeholder;
-      }
-      if (inputEl.value) {
-        content.value = inputEl.value;
-      }
-      if (inputEl.type) {
-        content.inputType = inputEl.type;
-      }
-      if (inputEl.hasAttribute("disabled")) {
-        content.disabled = true;
-      }
-      if (inputEl.hasAttribute("required")) {
-        content.required = true;
-      }
-      break;
-
-    case "container":
-    case "div":
-      // For containers, we might have text content or data attributes
-      if (textContent) {
-        content.text = textContent;
-      }
-      break;
-
-    case "img":
-    case "image":
-      // Extract image-specific properties
-      const src = element.getAttribute("src");
-      const alt = element.getAttribute("alt");
-      const loading = element.getAttribute("loading");
-      if (src) content.src = src;
-      if (alt) content.alt = alt;
-      if (loading) content.loading = loading;
-      const of = (element as HTMLElement).style.objectFit;
-      if (of) content.objectFit = of;
-      break;
-
-    default:
-      // For other elements, capture text content if present
-      if (textContent) {
-        content.text = textContent;
-      }
-      break;
-  }
-
-  return content;
+  // Delegate to rule engine based on type
+  return _ruleEngineForExport.extractContent(element, type);
 }
 
 export const collectLayoutData = (data: any, ctx: any) => {

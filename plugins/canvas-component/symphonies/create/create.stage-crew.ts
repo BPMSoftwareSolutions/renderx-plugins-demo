@@ -12,6 +12,9 @@ import {
   computeInlineStyle,
 } from "./create.style.stage-crew";
 import { attachSelection, attachDrag } from "./create.interactions.stage-crew";
+import { ComponentRuleEngine } from "../../../../src/component-mapper/rule-engine";
+
+const _ruleEngine = new ComponentRuleEngine();
 
 // Helper function to apply content properties to DOM elements
 function applyContentProperties(
@@ -19,82 +22,8 @@ function applyContentProperties(
   content: Record<string, any>,
   type: string
 ) {
-  // Apply type-specific content properties
-  switch (type) {
-    case "button":
-      // Set button text content
-      if (content.content !== undefined) {
-        element.textContent = String(content.content);
-      } else if (content.text !== undefined) {
-        element.textContent = String(content.text);
-      }
-      // Set disabled state
-      if (content.disabled === true) {
-        element.setAttribute("disabled", "");
-      } else if (content.disabled === false) {
-        element.removeAttribute("disabled");
-      }
-      break;
-
-    case "input":
-      const inputEl = element as HTMLInputElement;
-      // Set input-specific properties
-      if (content.placeholder !== undefined) {
-        inputEl.placeholder = String(content.placeholder);
-      }
-      if (content.value !== undefined) {
-        inputEl.value = String(content.value);
-      }
-      if (content.inputType !== undefined) {
-        inputEl.type = String(content.inputType);
-      }
-      if (content.disabled === true) {
-        inputEl.disabled = true;
-      } else if (content.disabled === false) {
-        inputEl.disabled = false;
-      }
-      if (content.required === true) {
-        inputEl.required = true;
-      } else if (content.required === false) {
-        inputEl.required = false;
-      }
-      break;
-
-    case "container":
-    case "div":
-      // For containers, set text content if provided
-      if (content.text !== undefined) {
-        element.textContent = String(content.text);
-      }
-      break;
-
-    case "img":
-    case "image":
-      // Set image-specific attributes
-      if (content.src !== undefined) {
-        element.setAttribute("src", String(content.src));
-      }
-      if (content.alt !== undefined) {
-        element.setAttribute("alt", String(content.alt));
-      }
-      if (content.loading !== undefined) {
-        element.setAttribute("loading", String(content.loading));
-      }
-      // objectFit is a style property
-      if (content.objectFit !== undefined) {
-        (element as HTMLElement).style.objectFit = String(content.objectFit);
-      }
-      break;
-
-    default:
-      // For other elements, set text content if provided
-      if (content.text !== undefined) {
-        element.textContent = String(content.text);
-      } else if (content.content !== undefined) {
-        element.textContent = String(content.content);
-      }
-      break;
-  }
+  // Apply via rule engine (JSON-driven)
+  _ruleEngine.applyContent(element, type, content);
 }
 
 export const createNode = (data: any, ctx: any) => {
