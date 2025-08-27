@@ -41,7 +41,14 @@ export type ExtractRule =
   | { get: "attr"; attr: string; as: string }
   | { get: "hasAttr"; attr: string; as: string }
   | { get: "prop"; prop: string; as: string }
-  | { get: "style"; prop: string; as: string };
+  | { get: "style"; prop: string; as: string }
+  | {
+      get: "classVariant";
+      prefix: string;
+      values: string[];
+      as: string;
+      fallback?: string;
+    };
 
 export type ExtractRulesConfig = {
   default: ExtractRule[];
@@ -334,7 +341,13 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
     div: [{ get: "textContent", as: "text" }],
     heading: [
       { get: "textContent", as: "content" },
-      { get: "prop", prop: "tagName", as: "level" },
+      {
+        get: "classVariant",
+        prefix: "rx-heading--level-",
+        values: ["h1", "h2", "h3", "h4", "h5", "h6"],
+        as: "level",
+        fallback: "tagName",
+      },
     ],
     line: [
       { get: "attr", attr: "stroke", as: "stroke" },
@@ -512,6 +525,35 @@ export class ComponentRuleEngine {
         case "style": {
           const v = (el.style as any)[(r as any).prop];
           if (v) out[(r as any).as] = v;
+          break;
+        }
+        case "classVariant": {
+          const rule = r as any;
+          const prefix = rule.prefix;
+          const values = rule.values;
+          const fallback = rule.fallback;
+
+          // Look for class with the specified prefix
+          const variantClass = Array.from(el.classList).find((cls) =>
+            cls.startsWith(prefix)
+          );
+          if (variantClass) {
+            const variant = variantClass.replace(prefix, "");
+            if (values.includes(variant)) {
+              out[rule.as] = variant;
+              break;
+            }
+          }
+
+          // Fallback logic
+          if (fallback === "tagName") {
+            const tagName = el.tagName?.toLowerCase();
+            if (tagName && values.includes(tagName)) {
+              out[rule.as] = tagName;
+            }
+          } else if (fallback) {
+            out[rule.as] = fallback;
+          }
           break;
         }
       }
