@@ -34,15 +34,15 @@ describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
           property: "variant",
           initialValue: "primary",
           updatedValue: "danger",
-          initialClasses: "rx-comp rx-button rx-button-primary",
-          expectedClasses: "rx-comp rx-button rx-button-danger",
+          initialClasses: "rx-comp rx-button rx-button--primary",
+          expectedClasses: "rx-comp rx-button rx-button--danger",
         },
         {
           property: "size",
           initialValue: "medium",
           updatedValue: "large",
-          initialClasses: "rx-comp rx-button rx-button-medium",
-          expectedClasses: "rx-comp rx-button rx-button-large",
+          initialClasses: "rx-comp rx-button rx-button--medium",
+          expectedClasses: "rx-comp rx-button rx-button--large",
         },
       ],
     },
@@ -67,10 +67,10 @@ describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
       testCases: [
         {
           property: "variant",
-          initialValue: "primary",
-          updatedValue: "secondary",
-          initialClasses: "rx-comp rx-image rx-image-primary",
-          expectedClasses: "rx-comp rx-image rx-image-secondary",
+          initialValue: "default",
+          updatedValue: "rounded",
+          initialClasses: "rx-comp rx-image rx-image--default",
+          expectedClasses: "rx-comp rx-image rx-image--rounded",
         },
       ],
     },
@@ -81,10 +81,10 @@ describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
       testCases: [
         {
           property: "variant",
-          initialValue: "primary",
-          updatedValue: "secondary",
-          initialClasses: "rx-comp rx-input rx-input-primary",
-          expectedClasses: "rx-comp rx-input rx-input-secondary",
+          initialValue: "default",
+          updatedValue: "success",
+          initialClasses: "rx-comp rx-input rx-input--default",
+          expectedClasses: "rx-comp rx-input rx-input--success",
         },
       ],
     },
@@ -95,10 +95,10 @@ describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
       testCases: [
         {
           property: "variant",
-          initialValue: "primary",
-          updatedValue: "secondary",
-          initialClasses: "rx-comp rx-paragraph rx-paragraph-primary",
-          expectedClasses: "rx-comp rx-paragraph rx-paragraph-secondary",
+          initialValue: "default",
+          updatedValue: "right",
+          initialClasses: "rx-comp rx-paragraph rx-paragraph--default",
+          expectedClasses: "rx-comp rx-paragraph rx-paragraph--right",
         },
       ],
     },
@@ -107,63 +107,78 @@ describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
   // Generate tests for each component and property
   testCases.forEach(({ componentType, tagName, testCases: propertyTests }) => {
     describe(`${componentType} component`, () => {
-      propertyTests.forEach(({ property, initialValue, updatedValue, initialClasses, expectedClasses }) => {
-        it(`should extract correct ${property} when selecting element`, () => {
-          // Arrange: Create element with initial value
-          const canvas = document.getElementById("rx-canvas")!;
-          const element = document.createElement(tagName);
-          element.id = `test-${componentType}`;
-          element.className = initialClasses;
-          element.textContent = `Test ${componentType}`;
-          if (tagName === "img") {
-            (element as HTMLImageElement).src = "test.jpg";
-            (element as HTMLImageElement).alt = "Test image";
-          }
-          canvas.appendChild(element);
+      propertyTests.forEach(
+        ({
+          property,
+          initialValue,
+          updatedValue,
+          initialClasses,
+          expectedClasses,
+        }) => {
+          it(`should extract correct ${property} when selecting element`, () => {
+            // Arrange: Create element with initial value
+            const canvas = document.getElementById("rx-canvas")!;
+            const element = document.createElement(tagName);
+            element.id = `test-${componentType}`;
+            element.className = initialClasses;
+            element.textContent = `Test ${componentType}`;
+            if (tagName === "img") {
+              (element as HTMLImageElement).src = "test.jpg";
+              (element as HTMLImageElement).alt = "Test image";
+            }
+            canvas.appendChild(element);
 
-          // Act: Derive selection model
-          selectionHandlers.deriveSelectionModel({ id: `test-${componentType}` }, mockCtx);
+            // Act: Derive selection model
+            selectionHandlers.deriveSelectionModel(
+              { id: `test-${componentType}` },
+              mockCtx
+            );
 
-          // Assert: Selection model should include correct initial value
-          const selectionModel = mockCtx.payload.selectionModel;
-          expect(selectionModel).toBeDefined();
-          expect(selectionModel.header.type).toBe(componentType);
-          expect(selectionModel.content[property]).toBe(initialValue);
-        });
+            // Assert: Selection model should include correct initial value
+            const selectionModel = mockCtx.payload.selectionModel;
+            expect(selectionModel).toBeDefined();
+            expect(selectionModel.header.type).toBe(componentType);
+            expect(selectionModel.content[property]).toBe(initialValue);
+          });
 
-        it(`should extract updated ${property} after rule engine changes`, () => {
-          // Arrange: Create element with initial value
-          const canvas = document.getElementById("rx-canvas")!;
-          const element = document.createElement(tagName);
-          element.id = `test-${componentType}`;
-          element.className = initialClasses;
-          element.textContent = `Test ${componentType}`;
-          if (tagName === "img") {
-            (element as HTMLImageElement).src = "test.jpg";
-            (element as HTMLImageElement).alt = "Test image";
-          }
-          canvas.appendChild(element);
+          it(`should extract updated ${property} after rule engine changes`, () => {
+            // Arrange: Create element with initial value
+            const canvas = document.getElementById("rx-canvas")!;
+            const element = document.createElement(tagName);
+            element.id = `test-${componentType}`;
+            element.className = initialClasses;
+            element.textContent = `Test ${componentType}`;
+            if (tagName === "img") {
+              (element as HTMLImageElement).src = "test.jpg";
+              (element as HTMLImageElement).alt = "Test image";
+            }
+            canvas.appendChild(element);
 
-          // Act 1: Apply property change via rule engine
-          const applied = ruleEngine.applyUpdate(element, property, updatedValue);
-          expect(applied).toBe(true);
+            // Act 1: Apply property change via rule engine
+            const applied = ruleEngine.applyUpdate(
+              element,
+              property,
+              updatedValue
+            );
+            expect(applied).toBe(true);
 
-          // Verify DOM was updated correctly
-          expect(element.className).toBe(expectedClasses);
+            // Verify DOM was updated correctly
+            expect(element.className).toBe(expectedClasses);
 
-          // Act 2: Update control panel from element
-          updateHandlers.updateFromElement(
-            { id: `test-${componentType}`, source: "attribute-update" },
-            mockCtx
-          );
+            // Act 2: Update control panel from element
+            updateHandlers.updateFromElement(
+              { id: `test-${componentType}`, source: "attribute-update" },
+              mockCtx
+            );
 
-          // Assert: Control panel model should reflect the new value
-          const selectionModel = mockCtx.payload.selectionModel;
-          expect(selectionModel).toBeDefined();
-          expect(selectionModel.header.type).toBe(componentType);
-          expect(selectionModel.content[property]).toBe(updatedValue);
-        });
-      });
+            // Assert: Control panel model should reflect the new value
+            const selectionModel = mockCtx.payload.selectionModel;
+            expect(selectionModel).toBeDefined();
+            expect(selectionModel.header.type).toBe(componentType);
+            expect(selectionModel.content[property]).toBe(updatedValue);
+          });
+        }
+      );
     });
   });
 
@@ -172,7 +187,7 @@ describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
     const canvas = document.getElementById("rx-canvas")!;
     const button = document.createElement("button");
     button.id = "test-button";
-    button.className = "rx-comp rx-button rx-button-primary";
+    button.className = "rx-comp rx-button rx-button--primary";
     button.textContent = "Test Button";
     button.style.left = "100px";
     button.style.top = "50px";

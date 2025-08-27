@@ -17,7 +17,8 @@ function makeButtonTemplate() {
 
 describe("Control Panel ↔ Canvas Component Integration", () => {
   beforeEach(() => {
-    document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
+    document.body.innerHTML =
+      '<div id="rx-canvas" style="position:relative"></div>';
     vi.clearAllMocks();
   });
 
@@ -25,10 +26,10 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
     // 1. Create a Canvas component
     const ctx: any = { payload: {} };
     const template = makeButtonTemplate();
-    
+
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 100, y: 50 } }, ctx);
-    
+
     const nodeId = ctx.payload.nodeId as string;
     const element = document.getElementById(nodeId)! as HTMLElement;
 
@@ -40,64 +41,85 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
 
     // 2. Simulate Control Panel attribute changes
     console.log("🎯 Testing content change...");
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "content",
-      value: "Updated Button Text"
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "content",
+        value: "Updated Button Text",
+      },
+      { payload: {} }
+    );
 
     expect(element.textContent).toBe("Updated Button Text");
 
     console.log("🎨 Testing styling changes...");
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "bg-color",
-      value: "#ff6b6b"
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "bg-color",
+        value: "#ff6b6b",
+      },
+      { payload: {} }
+    );
 
     expect(element.style.backgroundColor).toBe("rgb(255, 107, 107)");
 
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "text-color",
-      value: "#ffffff"
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "text-color",
+        value: "#ffffff",
+      },
+      { payload: {} }
+    );
 
     expect(element.style.color).toBe("rgb(255, 255, 255)");
 
     console.log("📐 Testing layout changes...");
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "x",
-      value: 200
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "x",
+        value: 200,
+      },
+      { payload: {} }
+    );
 
     expect(element.style.left).toBe("200px");
 
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "width",
-      value: 150
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "width",
+        value: 150,
+      },
+      { payload: {} }
+    );
 
     expect(element.style.width).toBe("150px");
 
     console.log("🔧 Testing variant changes...");
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "variant",
-      value: "danger"
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "variant",
+        value: "danger",
+      },
+      { payload: {} }
+    );
 
-    expect(element.classList.contains("rx-button-danger")).toBe(true);
-    expect(element.classList.contains("rx-button-primary")).toBe(false);
+    expect(element.classList.contains("rx-button--danger")).toBe(true);
+    expect(element.classList.contains("rx-button--primary")).toBe(false);
 
     console.log("✅ Testing disabled state...");
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "disabled",
-      value: true
-    }, { payload: {} });
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "disabled",
+        value: true,
+      },
+      { payload: {} }
+    );
 
     expect(element.hasAttribute("disabled")).toBe(true);
 
@@ -106,9 +128,9 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
     setSelectionObserver(observerMock);
 
     const playMock = vi.fn();
-    const refreshCtx = { 
+    const refreshCtx = {
       payload: { elementId: nodeId },
-      conductor: { play: playMock }
+      conductor: { play: playMock },
     };
 
     canvasUpdateHandlers.refreshControlPanel({}, refreshCtx);
@@ -129,10 +151,10 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
     // Create element
     const ctx: any = { payload: {} };
     const template = makeButtonTemplate();
-    
+
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 50, y: 30 } }, ctx);
-    
+
     const nodeId = ctx.payload.nodeId as string;
     const element = document.getElementById(nodeId)! as HTMLElement;
 
@@ -145,11 +167,14 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
       { attribute: "content", value: "Final Text" },
     ];
 
-    changes.forEach(change => {
-      canvasUpdateHandlers.updateAttribute({
-        id: nodeId,
-        ...change
-      }, { payload: {} });
+    changes.forEach((change) => {
+      canvasUpdateHandlers.updateAttribute(
+        {
+          id: nodeId,
+          ...change,
+        },
+        { payload: {} }
+      );
     });
 
     // Verify final state
@@ -162,28 +187,34 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
     // Create element
     const ctx: any = { payload: {} };
     const template = makeButtonTemplate();
-    
+
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 50, y: 30 } }, ctx);
-    
+
     const nodeId = ctx.payload.nodeId as string;
     const element = document.getElementById(nodeId)! as HTMLElement;
 
     // Test invalid updates (should not crash)
     expect(() => {
-      canvasUpdateHandlers.updateAttribute({
-        id: nodeId,
-        attribute: "invalid-attribute",
-        value: "some value"
-      }, { payload: {} });
+      canvasUpdateHandlers.updateAttribute(
+        {
+          id: nodeId,
+          attribute: "invalid-attribute",
+          value: "some value",
+        },
+        { payload: {} }
+      );
     }).not.toThrow();
 
     expect(() => {
-      canvasUpdateHandlers.updateAttribute({
-        id: "non-existent-id",
-        attribute: "content",
-        value: "test"
-      }, { payload: {} });
+      canvasUpdateHandlers.updateAttribute(
+        {
+          id: "non-existent-id",
+          attribute: "content",
+          value: "test",
+        },
+        { payload: {} }
+      );
     }).not.toThrow();
 
     // Element should remain unchanged

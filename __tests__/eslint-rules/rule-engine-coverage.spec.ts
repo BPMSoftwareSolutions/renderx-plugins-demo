@@ -60,8 +60,8 @@ describe("rule-engine-coverage ESLint rule", () => {
     expect(visitor).toEqual({}); // Should return empty visitor for non-rule-engine files
   });
 
-  it("should detect bidirectional consistency issues in real rule engine", () => {
-    // Test against the actual rule engine file to see if it catches button variant/size issues
+  it("should report no bidirectional consistency issues in real rule engine", () => {
+    // Validate the actual rule engine is bidirectionally consistent for covered components
     const context = {
       getFilename: () => "src/component-mapper/rule-engine.ts",
       getCwd: () => process.cwd(),
@@ -75,26 +75,14 @@ describe("rule-engine-coverage ESLint rule", () => {
       visitor.Program({} as any);
     }
 
-    // Check if the rule reported bidirectional consistency issues
+    // Collect rule reports
     const reportCalls = context.report.mock.calls;
 
+    // There should be no bidirectional mismatches now that extraction is implemented
     const bidirectionalIssues = reportCalls.filter(
-      (call: any) =>
-        call[0].messageId === "bidirectionalMismatch" &&
-        call[0].data.message.includes("can update") &&
-        call[0].data.message.includes("but cannot extract them")
+      (call: any) => call[0].messageId === "bidirectionalMismatch"
     );
 
-    // Should detect that button can update variant/size but not extract them
-    expect(bidirectionalIssues.length).toBeGreaterThan(0);
-
-    // Find the button-specific issue
-    const buttonIssue = bidirectionalIssues.find((call: any) =>
-      call[0].data.message.includes("button")
-    );
-
-    expect(buttonIssue).toBeDefined();
-    expect(buttonIssue[0].data.message).toContain("variant");
-    expect(buttonIssue[0].data.message).toContain("size");
+    expect(bidirectionalIssues.length).toBe(0);
   });
 });

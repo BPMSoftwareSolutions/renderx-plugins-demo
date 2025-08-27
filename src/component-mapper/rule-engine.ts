@@ -104,14 +104,14 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         whenAttr: "variant",
         action: "toggleClassVariant",
         base: "rx-button",
-        prefix: "rx-button-",
+        prefix: "rx-button--",
         values: ["primary", "secondary", "danger"],
       },
       {
         whenAttr: "size",
         action: "toggleClassVariant",
         base: "rx-button",
-        prefix: "rx-button-",
+        prefix: "rx-button--",
         values: ["small", "medium", "large"],
       },
       {
@@ -316,12 +316,33 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
   byType: {
     button: [
       { get: "textContent", as: "content" },
+      {
+        get: "classVariant",
+        prefix: "rx-button--",
+        values: ["primary", "secondary", "danger"],
+        as: "variant",
+        fallback: "primary",
+      },
+      {
+        get: "classVariant",
+        prefix: "rx-button--",
+        values: ["small", "medium", "large"],
+        as: "size",
+        fallback: "medium",
+      },
       { get: "hasAttr", attr: "disabled", as: "disabled" },
     ],
     input: [
       { get: "prop", prop: "placeholder", as: "placeholder" },
       { get: "prop", prop: "value", as: "value" },
       { get: "prop", prop: "type", as: "inputType" },
+      {
+        get: "classVariant",
+        prefix: "rx-input--",
+        values: ["default", "error", "success"],
+        as: "variant",
+        fallback: "default",
+      },
       { get: "hasAttr", attr: "disabled", as: "disabled" },
       { get: "hasAttr", attr: "required", as: "required" },
     ],
@@ -335,6 +356,21 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
       { get: "attr", attr: "src", as: "src" },
       { get: "attr", attr: "alt", as: "alt" },
       { get: "attr", attr: "loading", as: "loading" },
+      {
+        get: "classVariant",
+        prefix: "rx-image--",
+        values: [
+          "default",
+          "rounded",
+          "circle",
+          "bordered",
+          "shadow",
+          "zoom",
+          "lift",
+        ],
+        as: "variant",
+        fallback: "default",
+      },
       { get: "style", prop: "objectFit", as: "objectFit" },
     ],
     container: [{ get: "textContent", as: "text" }],
@@ -348,6 +384,15 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
         as: "level",
         fallback: "tagName",
       },
+      {
+        get: "classVariant",
+        prefix: "rx-heading--",
+        values: ["default", "center", "right"],
+        as: "variant",
+        fallback: "default",
+      },
+      { get: "style", prop: "color", as: "color" },
+      { get: "style", prop: "fontSize", as: "fontSize" },
     ],
     line: [
       { get: "attr", attr: "stroke", as: "stroke" },
@@ -355,6 +400,22 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
     ],
     paragraph: [
       { get: "textContent", as: "content" },
+      {
+        get: "classVariant",
+        prefix: "rx-paragraph--",
+        values: [
+          "default",
+          "center",
+          "right",
+          "justify",
+          "small",
+          "large",
+          "bold",
+          "light",
+        ],
+        as: "variant",
+        fallback: "default",
+      },
       { get: "style", prop: "color", as: "color" },
       { get: "style", prop: "fontSize", as: "fontSize" },
       { get: "style", prop: "lineHeight", as: "lineHeight" },
@@ -428,12 +489,18 @@ export class ComponentRuleEngine {
       }
       case "toggleClassVariant": {
         const { base, prefix } = rule as any;
-        const current = Array.from(el.classList).filter(
-          (c) => c === base || c.startsWith(prefix)
-        );
-        // Remove existing prefixed variants (preserve base class)
-        for (const c of current) {
-          if (c.startsWith(prefix)) el.classList.remove(c);
+        const classes = Array.from(el.classList);
+        // Build list of prefixes to clear (handle legacy single-dash vs double-dash)
+        const prefixesToClear: string[] = [prefix];
+        if (prefix.includes("--")) {
+          prefixesToClear.push(prefix.replace("--", "-"));
+        }
+        // Collect classes to remove: any that match the variant prefixes (but preserve base class exactly)
+        for (const c of classes) {
+          if (c === base) continue;
+          if (prefixesToClear.some((p) => c.startsWith(p))) {
+            el.classList.remove(c);
+          }
         }
         // Add new variant class
         const val = String(value);
