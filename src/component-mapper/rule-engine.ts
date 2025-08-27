@@ -6,6 +6,8 @@ export type UpdateRule =
   | { whenAttr: string; action: "style"; prop: string }
   | { whenAttr: string; action: "stylePx"; prop: string }
   | { whenAttr: string; action: "boolAttr"; attr: string }
+  | { whenAttr: string; action: "attr"; attr: string }
+  | { whenAttr: string; action: "prop"; prop: string }
   | {
       whenAttr: string;
       action: "toggleClassVariant";
@@ -105,6 +107,11 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         prefix: "rx-button-",
         values: ["small", "medium", "large"],
       },
+      {
+        whenAttr: "disabled",
+        action: "boolAttr",
+        attr: "disabled",
+      },
     ],
     heading: [
       {
@@ -113,6 +120,143 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         base: "rx-heading",
         prefix: "rx-heading--level-",
         values: ["h1", "h2", "h3", "h4", "h5", "h6"],
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-heading",
+        prefix: "rx-heading--",
+        values: ["default", "center", "right"],
+      },
+      {
+        whenAttr: "color",
+        action: "style",
+        prop: "color",
+      },
+      {
+        whenAttr: "fontSize",
+        action: "style",
+        prop: "fontSize",
+      },
+    ],
+    image: [
+      {
+        whenAttr: "src",
+        action: "attr",
+        attr: "src",
+      },
+      {
+        whenAttr: "alt",
+        action: "attr",
+        attr: "alt",
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-image",
+        prefix: "rx-image--",
+        values: [
+          "default",
+          "rounded",
+          "circle",
+          "bordered",
+          "shadow",
+          "zoom",
+          "lift",
+        ],
+      },
+      {
+        whenAttr: "loading",
+        action: "attr",
+        attr: "loading",
+      },
+      {
+        whenAttr: "objectFit",
+        action: "style",
+        prop: "objectFit",
+      },
+    ],
+    input: [
+      {
+        whenAttr: "placeholder",
+        action: "prop",
+        prop: "placeholder",
+      },
+      {
+        whenAttr: "inputType",
+        action: "prop",
+        prop: "type",
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-input",
+        prefix: "rx-input--",
+        values: ["default", "error", "success"],
+      },
+      {
+        whenAttr: "value",
+        action: "prop",
+        prop: "value",
+      },
+      {
+        whenAttr: "disabled",
+        action: "boolAttr",
+        attr: "disabled",
+      },
+      {
+        whenAttr: "required",
+        action: "boolAttr",
+        attr: "required",
+      },
+    ],
+    line: [
+      {
+        whenAttr: "stroke",
+        action: "attr",
+        attr: "stroke",
+      },
+      {
+        whenAttr: "thickness",
+        action: "attr",
+        attr: "data-thickness",
+      },
+    ],
+    paragraph: [
+      {
+        whenAttr: "content",
+        action: "textContent",
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-paragraph",
+        prefix: "rx-paragraph--",
+        values: [
+          "default",
+          "center",
+          "right",
+          "justify",
+          "small",
+          "large",
+          "bold",
+          "light",
+        ],
+      },
+      {
+        whenAttr: "color",
+        action: "style",
+        prop: "color",
+      },
+      {
+        whenAttr: "fontSize",
+        action: "stylePx",
+        prop: "fontSize",
+      },
+      {
+        whenAttr: "lineHeight",
+        action: "style",
+        prop: "lineHeight",
       },
     ],
   },
@@ -147,6 +291,16 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
     container: [{ action: "textFrom", from: "text" }],
     div: [{ action: "textFrom", from: "text" }],
     heading: [{ action: "textFrom", from: "content", fallback: "" }],
+    line: [
+      { action: "attr", attr: "stroke", from: "stroke" },
+      { action: "attr", attr: "data-thickness", from: "thickness" },
+    ],
+    paragraph: [
+      { action: "textFrom", from: "content" },
+      { action: "style", prop: "color", from: "color" },
+      { action: "style", prop: "fontSize", from: "fontSize" },
+      { action: "style", prop: "lineHeight", from: "lineHeight" },
+    ],
   },
 };
 
@@ -181,6 +335,16 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
     heading: [
       { get: "textContent", as: "content" },
       { get: "prop", prop: "tagName", as: "level" },
+    ],
+    line: [
+      { get: "attr", attr: "stroke", as: "stroke" },
+      { get: "attr", attr: "data-thickness", as: "thickness" },
+    ],
+    paragraph: [
+      { get: "textContent", as: "content" },
+      { get: "style", prop: "color", as: "color" },
+      { get: "style", prop: "fontSize", as: "fontSize" },
+      { get: "style", prop: "lineHeight", as: "lineHeight" },
     ],
   },
 };
@@ -237,6 +401,16 @@ export class ComponentRuleEngine {
         const attr = (rule as any).attr as string;
         if (value) el.setAttribute(attr, "true");
         else el.removeAttribute(attr);
+        return true;
+      }
+      case "attr": {
+        const attr = (rule as any).attr as string;
+        el.setAttribute(attr, String(value));
+        return true;
+      }
+      case "prop": {
+        const prop = (rule as any).prop as string;
+        (el as any)[prop] = value;
         return true;
       }
       case "toggleClassVariant": {

@@ -179,16 +179,35 @@ function hasSpecificUpdateRule(componentType, property, rules) {
 
     const content = fs.readFileSync(ruleEnginePath, "utf8");
 
-    // Look for the specific component's update rules
-    const componentRulePattern = new RegExp(
-      `${componentType}:\\s*\\[([^\\]]+(?:\\[[^\\]]*\\][^\\]]*)*?)\\]`,
-      "s"
-    );
+    // Find the DEFAULT_UPDATE_RULES section
+    const updateRulesStart = content.indexOf("const DEFAULT_UPDATE_RULES");
+    if (updateRulesStart === -1) return false;
 
-    const match = content.match(componentRulePattern);
-    if (!match) return false;
+    // Find the byType section within DEFAULT_UPDATE_RULES
+    const byTypeStart = content.indexOf("byType:", updateRulesStart);
+    if (byTypeStart === -1) return false;
 
-    const componentRules = match[1];
+    // Find the component section within byType
+    const componentPattern = new RegExp(`${componentType}:\\s*\\[`, "g");
+    componentPattern.lastIndex = byTypeStart;
+    const componentMatch = componentPattern.exec(content);
+    if (!componentMatch) return false;
+
+    // Find the end of this component's rules by counting brackets
+    let pos = componentMatch.index + componentMatch[0].length;
+    let bracketCount = 1;
+    let componentRules = "";
+
+    while (pos < content.length && bracketCount > 0) {
+      const char = content[pos];
+      if (char === "[") bracketCount++;
+      else if (char === "]") bracketCount--;
+
+      if (bracketCount > 0) {
+        componentRules += char;
+      }
+      pos++;
+    }
 
     // Check if this specific property has a whenAttr rule
     const propertyRulePattern = new RegExp(`whenAttr:\\s*["']${property}["']`);
