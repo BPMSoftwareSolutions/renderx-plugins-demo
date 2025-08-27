@@ -68,6 +68,24 @@ function applyContentProperties(
       }
       break;
 
+    case "img":
+    case "image":
+      // Set image-specific attributes
+      if (content.src !== undefined) {
+        element.setAttribute("src", String(content.src));
+      }
+      if (content.alt !== undefined) {
+        element.setAttribute("alt", String(content.alt));
+      }
+      if (content.loading !== undefined) {
+        element.setAttribute("loading", String(content.loading));
+      }
+      // objectFit is a style property
+      if (content.objectFit !== undefined) {
+        (element as HTMLElement).style.objectFit = String(content.objectFit);
+      }
+      break;
+
     default:
       // For other elements, set text content if provided
       if (content.text !== undefined) {
