@@ -78,7 +78,23 @@ function matchesWhen(json: any, when?: string): boolean {
   return false;
 }
 
+export function loadConfigFromWindow() {
+  try {
+    const g: any = (globalThis as any) || {};
+    const cfg = g?.RenderX?.componentMapperConfig;
+    if (cfg && typeof cfg === "object" && cfg.defaults?.tagRules) {
+      cachedConfig = cfg as MapperConfig;
+    }
+  } catch {}
+}
+
+export function setConfig(cfg: MapperConfig) {
+  cachedConfig = cfg;
+}
+
 export function getConfig(): MapperConfig {
+  // Allow global/window override when present; else use cached/default
+  if (!cachedConfig) loadConfigFromWindow();
   return cachedConfig || DEFAULT_CONFIG;
 }
 

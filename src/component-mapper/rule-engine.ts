@@ -6,6 +6,8 @@ export type UpdateRule =
   | { whenAttr: string; action: "style"; prop: string }
   | { whenAttr: string; action: "stylePx"; prop: string }
   | { whenAttr: string; action: "boolAttr"; attr: string }
+  | { whenAttr: string; action: "attr"; attr: string }
+  | { whenAttr: string; action: "prop"; prop: string }
   | {
       whenAttr: string;
       action: "toggleClassVariant";
@@ -39,12 +41,47 @@ export type ExtractRule =
   | { get: "attr"; attr: string; as: string }
   | { get: "hasAttr"; attr: string; as: string }
   | { get: "prop"; prop: string; as: string }
-  | { get: "style"; prop: string; as: string };
+  | { get: "style"; prop: string; as: string }
+  | {
+      get: "classVariant";
+      prefix: string;
+      values: string[];
+      as: string;
+      fallback?: string;
+    };
 
 export type ExtractRulesConfig = {
   default: ExtractRule[];
   byType?: Record<string, ExtractRule[]>;
 };
+
+// Combined config for optional global/window loading
+export type AllRulesConfig = {
+  update?: UpdateRulesConfig;
+  content?: ContentRulesConfig;
+  extract?: ExtractRulesConfig;
+};
+
+let cachedAllRules: AllRulesConfig | null = null;
+
+export function setAllRulesConfig(cfg: AllRulesConfig) {
+  cachedAllRules = cfg;
+}
+
+export function loadAllRulesFromWindow() {
+  try {
+    const g: any = (globalThis as any) || {};
+    const cfg = g?.RenderX?.componentRules;
+    if (cfg && typeof cfg === "object") {
+      cachedAllRules = cfg as AllRulesConfig;
+    }
+  } catch {}
+}
+
+export function getAllRulesConfig(): AllRulesConfig {
+  if (!cachedAllRules) loadAllRulesFromWindow();
+  return cachedAllRules || {};
+}
 
 // Default rules tuned to existing tests/behavior
 const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
@@ -76,6 +113,157 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         base: "rx-button",
         prefix: "rx-button-",
         values: ["small", "medium", "large"],
+      },
+      {
+        whenAttr: "disabled",
+        action: "boolAttr",
+        attr: "disabled",
+      },
+    ],
+    heading: [
+      {
+        whenAttr: "level",
+        action: "toggleClassVariant",
+        base: "rx-heading",
+        prefix: "rx-heading--level-",
+        values: ["h1", "h2", "h3", "h4", "h5", "h6"],
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-heading",
+        prefix: "rx-heading--",
+        values: ["default", "center", "right"],
+      },
+      {
+        whenAttr: "color",
+        action: "style",
+        prop: "color",
+      },
+      {
+        whenAttr: "fontSize",
+        action: "style",
+        prop: "fontSize",
+      },
+    ],
+    image: [
+      {
+        whenAttr: "src",
+        action: "attr",
+        attr: "src",
+      },
+      {
+        whenAttr: "alt",
+        action: "attr",
+        attr: "alt",
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-image",
+        prefix: "rx-image--",
+        values: [
+          "default",
+          "rounded",
+          "circle",
+          "bordered",
+          "shadow",
+          "zoom",
+          "lift",
+        ],
+      },
+      {
+        whenAttr: "loading",
+        action: "attr",
+        attr: "loading",
+      },
+      {
+        whenAttr: "objectFit",
+        action: "style",
+        prop: "objectFit",
+      },
+    ],
+    input: [
+      {
+        whenAttr: "placeholder",
+        action: "prop",
+        prop: "placeholder",
+      },
+      {
+        whenAttr: "inputType",
+        action: "prop",
+        prop: "type",
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-input",
+        prefix: "rx-input--",
+        values: ["default", "error", "success"],
+      },
+      {
+        whenAttr: "value",
+        action: "prop",
+        prop: "value",
+      },
+      {
+        whenAttr: "disabled",
+        action: "boolAttr",
+        attr: "disabled",
+      },
+      {
+        whenAttr: "required",
+        action: "boolAttr",
+        attr: "required",
+      },
+    ],
+    line: [
+      {
+        whenAttr: "stroke",
+        action: "attr",
+        attr: "stroke",
+      },
+      {
+        whenAttr: "thickness",
+        action: "attr",
+        attr: "data-thickness",
+      },
+    ],
+    paragraph: [
+      {
+        whenAttr: "content",
+        action: "textContent",
+      },
+      {
+        whenAttr: "variant",
+        action: "toggleClassVariant",
+        base: "rx-paragraph",
+        prefix: "rx-paragraph--",
+        values: [
+          "default",
+          "center",
+          "right",
+          "justify",
+          "small",
+          "large",
+          "bold",
+          "light",
+        ],
+      },
+      {
+        whenAttr: "color",
+        action: "style",
+        prop: "color",
+      },
+      {
+        whenAttr: "fontSize",
+        action: "stylePx",
+        prop: "fontSize",
+      },
+      {
+        whenAttr: "lineHeight",
+        action: "style",
+        prop: "lineHeight",
       },
     ],
   },
@@ -109,6 +297,17 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
     ],
     container: [{ action: "textFrom", from: "text" }],
     div: [{ action: "textFrom", from: "text" }],
+    heading: [{ action: "textFrom", from: "content", fallback: "" }],
+    line: [
+      { action: "attr", attr: "stroke", from: "stroke" },
+      { action: "attr", attr: "data-thickness", from: "thickness" },
+    ],
+    paragraph: [
+      { action: "textFrom", from: "content" },
+      { action: "style", prop: "color", from: "color" },
+      { action: "style", prop: "fontSize", from: "fontSize" },
+      { action: "style", prop: "lineHeight", from: "lineHeight" },
+    ],
   },
 };
 
@@ -140,6 +339,26 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
     ],
     container: [{ get: "textContent", as: "text" }],
     div: [{ get: "textContent", as: "text" }],
+    heading: [
+      { get: "textContent", as: "content" },
+      {
+        get: "classVariant",
+        prefix: "rx-heading--level-",
+        values: ["h1", "h2", "h3", "h4", "h5", "h6"],
+        as: "level",
+        fallback: "tagName",
+      },
+    ],
+    line: [
+      { get: "attr", attr: "stroke", as: "stroke" },
+      { get: "attr", attr: "data-thickness", as: "thickness" },
+    ],
+    paragraph: [
+      { get: "textContent", as: "content" },
+      { get: "style", prop: "color", as: "color" },
+      { get: "style", prop: "fontSize", as: "fontSize" },
+      { get: "style", prop: "lineHeight", as: "lineHeight" },
+    ],
   },
 };
 
@@ -160,9 +379,10 @@ export class ComponentRuleEngine {
     contentRules?: ContentRulesConfig,
     extractRules?: ExtractRulesConfig
   ) {
-    this.updateRules = updateRules || DEFAULT_UPDATE_RULES;
-    this.contentRules = contentRules || DEFAULT_CONTENT_RULES;
-    this.extractRules = extractRules || DEFAULT_EXTRACT_RULES;
+    const all = getAllRulesConfig();
+    this.updateRules = updateRules || all.update || DEFAULT_UPDATE_RULES;
+    this.contentRules = contentRules || all.content || DEFAULT_CONTENT_RULES;
+    this.extractRules = extractRules || all.extract || DEFAULT_EXTRACT_RULES;
   }
 
   // -------- Update --------
@@ -194,6 +414,16 @@ export class ComponentRuleEngine {
         const attr = (rule as any).attr as string;
         if (value) el.setAttribute(attr, "true");
         else el.removeAttribute(attr);
+        return true;
+      }
+      case "attr": {
+        const attr = (rule as any).attr as string;
+        el.setAttribute(attr, String(value));
+        return true;
+      }
+      case "prop": {
+        const prop = (rule as any).prop as string;
+        (el as any)[prop] = value;
         return true;
       }
       case "toggleClassVariant": {
@@ -284,13 +514,46 @@ export class ComponentRuleEngine {
           break;
         }
         case "prop": {
-          const v = (el as any)[(r as any).prop];
-          if (v != null && v !== "") out[(r as any).as] = v;
+          const prop = (r as any).prop;
+          let v = (el as any)[prop];
+          if (v != null && v !== "") {
+            if (prop === "tagName") v = String(v).toLowerCase();
+            out[(r as any).as] = v;
+          }
           break;
         }
         case "style": {
           const v = (el.style as any)[(r as any).prop];
           if (v) out[(r as any).as] = v;
+          break;
+        }
+        case "classVariant": {
+          const rule = r as any;
+          const prefix = rule.prefix;
+          const values = rule.values;
+          const fallback = rule.fallback;
+
+          // Look for class with the specified prefix
+          const variantClass = Array.from(el.classList).find((cls) =>
+            cls.startsWith(prefix)
+          );
+          if (variantClass) {
+            const variant = variantClass.replace(prefix, "");
+            if (values.includes(variant)) {
+              out[rule.as] = variant;
+              break;
+            }
+          }
+
+          // Fallback logic
+          if (fallback === "tagName") {
+            const tagName = el.tagName?.toLowerCase();
+            if (tagName && values.includes(tagName)) {
+              out[rule.as] = tagName;
+            }
+          } else if (fallback) {
+            out[rule.as] = fallback;
+          }
           break;
         }
       }

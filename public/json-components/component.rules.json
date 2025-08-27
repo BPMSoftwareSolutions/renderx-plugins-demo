@@ -1,0 +1,34 @@
+{
+  "update": {
+    "default": [
+      { "whenAttr": "content", "action": "textContent" },
+      { "whenAttr": "bg-color", "action": "style", "prop": "backgroundColor" }
+    ],
+    "byType": {
+      "button": [
+        { "whenAttr": "variant", "action": "toggleClassVariant", "base": "rx-button", "prefix": "rx-button-", "values": ["primary", "secondary", "danger"] }
+      ]
+    }
+  },
+  "content": {
+    "default": [ { "action": "textFrom", "from": "text" } ],
+    "byType": {
+      "button": [
+        { "action": "textFrom", "from": "content" },
+        { "action": "attr", "attr": "disabled", "from": "disabled", "boolAttr": true }
+      ],
+      "heading": [ { "action": "textFrom", "from": "content", "fallback": "" } ]
+    }
+  },
+  "extract": {
+    "default": [ { "get": "textContent", "as": "text" } ],
+    "byType": {
+      "button": [ { "get": "textContent", "as": "content" } ],
+      "heading": [
+        { "get": "textContent", "as": "content" },
+        { "get": "prop", "prop": "tagName", "as": "level" }
+      ]
+    }
+  }
+}
+

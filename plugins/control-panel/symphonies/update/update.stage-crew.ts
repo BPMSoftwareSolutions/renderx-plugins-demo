@@ -1,4 +1,7 @@
 // Stage-crew handler for updating Control Panel with current element state during live operations
+import { ComponentRuleEngine } from "../../../../src/component-mapper/rule-engine";
+
+const _ruleEngine = new ComponentRuleEngine();
 
 // Cache last known element size to avoid repeated width/height reads during drag
 let lastSizeById: Record<string, { width: number; height: number }> = {};
@@ -102,15 +105,13 @@ export function updateFromElement(data: any, ctx: any) {
   const width = parseFloat(style.width || computed.width || "0");
   const height = parseFloat(style.height || computed.height || "0");
 
+  // Extract content using rule engine for component-specific properties
+  const content = _ruleEngine.extractContent(element, type);
+
   // Build full selection model with current DOM state for non-drag cases
   const selectionModel = {
     header: { type, id },
-    content: {
-      content: element.textContent || "",
-      variant: "primary", // Default - could be enhanced with JSON data
-      size: "medium", // Default - could be enhanced with JSON data
-      disabled: element.hasAttribute("disabled"),
-    },
+    content,
     layout: { x, y, width, height },
     styling: {
       "bg-color": computed.backgroundColor || "#007acc",
