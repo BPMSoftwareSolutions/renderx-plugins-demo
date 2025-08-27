@@ -42,7 +42,7 @@ describe("import-css-injection-coverage ESLint rule", () => {
       expect(visitor.Program).toBeDefined();
     });
 
-    it("should detect missing CSS mapping for variant components in real codebase", () => {
+    it("should not detect missing CSS mapping after fix is implemented", () => {
       // Test against the actual import files in this repo
       mockContext.getFilename.mockReturnValue(
         "plugins/canvas-component/symphonies/import/import.parse.pure.ts"
@@ -53,15 +53,8 @@ describe("import-css-injection-coverage ESLint rule", () => {
 
       const reportCalls = mockContext.report.mock.calls;
 
-      // Should report issues for components with variant selectors
-      expect(reportCalls.length).toBeGreaterThan(0);
-
-      // Should specifically flag button component (has variant CSS)
-      const buttonIssue = reportCalls.find(
-        (call: any) => call[0].data?.component === "button"
-      );
-      expect(buttonIssue).toBeDefined();
-      expect(buttonIssue[0].messageId).toBe("missingCssMapping");
+      // Should NOT report issues since we've fixed the CSS mapping
+      expect(reportCalls.length).toBe(0);
     });
 
     it("should provide helpful error message", () => {
@@ -101,7 +94,7 @@ describe("import-css-injection-coverage ESLint rule", () => {
       expect(cannotAnalyzeCall).toBeDefined();
     });
 
-    it("should not report issues if no variant components exist", () => {
+    it("should not report issues after CSS mapping fix is implemented", () => {
       // This would require mocking the file system to return components without variants
       // For now, we test the real codebase which does have variant components
       mockContext.getFilename.mockReturnValue(
@@ -111,9 +104,9 @@ describe("import-css-injection-coverage ESLint rule", () => {
       const visitor = rule.rules["validate-import-css"].create(mockContext);
       visitor.Program?.({} as any);
 
-      // The real codebase has variant components, so this will report issues
-      // This test documents the current behavior
-      expect(mockContext.report).toHaveBeenCalled();
+      // The real codebase has variant components, but CSS mapping is now implemented
+      // So no issues should be reported
+      expect(mockContext.report).not.toHaveBeenCalled();
     });
   });
 

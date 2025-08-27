@@ -320,4 +320,160 @@ describe("canvas-component import.symphony", () => {
       siblingIndex: 0,
     });
   });
+
+  it("should populate css field from component templates for variant components", async () => {
+    const ctx = makeCtx();
+    setupCanvas();
+
+    // Mock UI file with button component (has variants)
+    const ui = {
+      version: "1.0.0",
+      metadata: { createdAt: "2023-01-01T00:00:00.000Z" },
+      cssClasses: {},
+      components: [
+        {
+          id: "test-button",
+          type: "button",
+          template: {
+            tag: "button",
+            classRefs: ["rx-button"],
+            style: {},
+          },
+          layout: { x: 100, y: 100, width: 120, height: 40 },
+          content: {
+            content: "Test Button",
+            variant: "primary",
+            size: "medium",
+          },
+        },
+      ],
+    } as any;
+
+    ctx.payload.uiFileContent = ui;
+
+    // Execute parseUiFile
+    await handlers.parseUiFile({}, ctx);
+
+    // Verify that the button component has CSS populated
+    const importComponents = ctx.payload.importComponents;
+    expect(importComponents).toHaveLength(1);
+
+    const buttonComponent = importComponents[0];
+    expect(buttonComponent.type).toBe("button");
+    expect(buttonComponent.css).toBeDefined();
+    expect(typeof buttonComponent.css).toBe("string");
+
+    // Verify CSS contains variant selectors
+    expect(buttonComponent.css).toContain(".rx-button");
+    expect(buttonComponent.css).toContain("rx-button--primary");
+    expect(buttonComponent.css).toContain("rx-button--secondary");
+    expect(buttonComponent.css).toContain("rx-button--danger");
+    expect(buttonComponent.css).toContain("rx-button--small");
+    expect(buttonComponent.css).toContain("rx-button--medium");
+    expect(buttonComponent.css).toContain("rx-button--large");
+  });
+
+  it("should handle missing component templates gracefully", async () => {
+    const ctx = makeCtx();
+    setupCanvas();
+
+    // Mock UI file with non-existent component type
+    const ui = {
+      version: "1.0.0",
+      metadata: { createdAt: "2023-01-01T00:00:00.000Z" },
+      cssClasses: {},
+      components: [
+        {
+          id: "test-unknown",
+          type: "unknown-component",
+          template: {
+            tag: "div",
+            classRefs: [],
+            style: {},
+          },
+          layout: { x: 100, y: 100, width: 100, height: 100 },
+        },
+      ],
+    } as any;
+
+    ctx.payload.uiFileContent = ui;
+
+    // Execute parseUiFile - should not throw
+    await handlers.parseUiFile({}, ctx);
+
+    // Verify component is still processed but without CSS
+    const importComponents = ctx.payload.importComponents;
+    expect(importComponents).toHaveLength(1);
+
+    const unknownComponent = importComponents[0];
+    expect(unknownComponent.type).toBe("unknown-component");
+    expect(unknownComponent.css).toBeUndefined();
+  });
+
+  it("should inject template CSS through full sequence flow with conductor", async () => {
+    const ctx = makeCtx();
+    setupCanvas();
+
+    // Mock UI file with button component (has variants)
+    const ui = {
+      version: "1.0.0",
+      metadata: { createdAt: "2023-01-01T00:00:00.000Z" },
+      cssClasses: {},
+      components: [
+        {
+          id: "test-button-sequence",
+          type: "button",
+          template: {
+            tag: "button",
+            classRefs: ["rx-button", "rx-button--primary"],
+            style: {},
+          },
+          layout: { x: 150, y: 150, width: 120, height: 40 },
+          content: {
+            content: "Sequence Test Button",
+            variant: "primary",
+            size: "medium",
+          },
+        },
+      ],
+    } as any;
+
+    ctx.payload.uiFileContent = ui;
+
+    // Execute full import sequence flow
+    await handlers.parseUiFile({}, ctx);
+    await handlers.injectCssClasses({}, ctx);
+    await handlers.createComponentsSequentially({}, ctx);
+    await handlers.applyHierarchyAndOrder({}, ctx);
+
+    // Verify conductor.play was called for canvas.component.create
+    const conductorCalls = ctx._ops.filter(
+      (o: any[]) =>
+        o[0] === "conductor.play" && o[2] === "canvas-component-create-symphony"
+    );
+    expect(conductorCalls.length).toBeGreaterThan(0);
+
+    // Verify the create payload includes CSS from template
+    const createCall = conductorCalls[0];
+    const createPayload = createCall[3];
+    expect(createPayload.component.template.css).toBeDefined();
+    expect(typeof createPayload.component.template.css).toBe("string");
+    expect(createPayload.component.template.css).toContain(".rx-button");
+    expect(createPayload.component.template.css).toContain(
+      "rx-button--primary"
+    );
+
+    // Verify the button element was created in DOM
+    const buttonElement = document.getElementById("test-button-sequence");
+    expect(buttonElement).toBeTruthy();
+    expect(buttonElement?.tagName.toLowerCase()).toBe("button");
+    expect(buttonElement?.textContent).toBe("Sequence Test Button");
+
+    // Verify CSS was injected into the page
+    const styleEl = document.getElementById("rx-components-styles");
+    expect(styleEl).toBeTruthy();
+    const cssText = styleEl?.textContent || "";
+    expect(cssText).toContain(".rx-button");
+    expect(cssText).toContain("rx-button--primary");
+  });
 });

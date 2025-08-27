@@ -1,3 +1,34 @@
+import fs from "node:fs";
+import path from "node:path";
+
+/**
+ * Load component JSON template and extract CSS
+ */
+function loadComponentTemplate(componentType: string): string | null {
+  try {
+    // Determine the path to the component JSON file
+    const componentPath = path.join(
+      process.cwd(),
+      "public",
+      "json-components",
+      `${componentType}.json`
+    );
+
+    if (!fs.existsSync(componentPath)) {
+      return null;
+    }
+
+    const content = fs.readFileSync(componentPath, "utf8");
+    const json = JSON.parse(content);
+
+    // Extract CSS from template.ui.styles.css
+    return json?.ui?.styles?.css || null;
+  } catch {
+    // Silently fail for missing or malformed component files
+    return null;
+  }
+}
+
 export function parseUiFile(_data: any, ctx: any) {
   try {
     const ui = ctx.payload.uiFileContent;
@@ -33,6 +64,12 @@ export function parseUiFile(_data: any, ctx: any) {
       // Include content properties if they exist
       if (c.content && typeof c.content === "object") {
         component.content = { ...c.content };
+      }
+
+      // Load template CSS for this component type
+      const templateCss = loadComponentTemplate(component.type);
+      if (templateCss) {
+        component.css = templateCss;
       }
 
       return component;
