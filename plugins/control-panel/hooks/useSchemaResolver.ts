@@ -18,8 +18,8 @@ export function useSchemaResolver() {
         const config = await configPromise;
         const schemaResolver = new SchemaResolverService(config);
 
-        // Load common component schemas
-        await schemaResolver.loadComponentSchemas(['button', 'input', 'container', 'line']);
+        // Load common component schemas (extended with heading/paragraph/image)
+        await schemaResolver.loadComponentSchemas(['button', 'input', 'container', 'line', 'heading', 'paragraph', 'image']);
 
         if (mounted) {
           setResolver(schemaResolver);

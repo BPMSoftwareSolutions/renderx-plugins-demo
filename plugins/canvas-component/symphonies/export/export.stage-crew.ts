@@ -52,6 +52,19 @@ function extractElementContent(
       }
       break;
 
+    case "img":
+    case "image":
+      // Extract image-specific properties
+      const src = element.getAttribute("src");
+      const alt = element.getAttribute("alt");
+      const loading = element.getAttribute("loading");
+      if (src) content.src = src;
+      if (alt) content.alt = alt;
+      if (loading) content.loading = loading;
+      const of = (element as HTMLElement).style.objectFit;
+      if (of) content.objectFit = of;
+      break;
+
     default:
       // For other elements, capture text content if present
       if (textContent) {

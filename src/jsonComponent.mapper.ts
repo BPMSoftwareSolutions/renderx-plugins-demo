@@ -45,6 +45,9 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
   if (isContainer) attrs["data-role"] = "container";
 
   // Normalize to safe HTML tag for preview/canvas
+  const defaults: any = json?.integration?.properties?.defaultValues || {};
+  const level = typeof defaults?.level === "string" ? defaults.level.toLowerCase() : "h2";
+  const safeHeadingTag = ["h1","h2","h3","h4","h5","h6"].includes(level) ? level : "h2";
   const tag =
     type === "input"
       ? "input"
@@ -52,6 +55,12 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
       ? "div"
       : type === "line"
       ? "svg"
+      : type === "heading"
+      ? safeHeadingTag
+      : type === "paragraph"
+      ? "p"
+      : type === "image"
+      ? "img"
       : type || "div";
 
   // Map ui.tools.resize → data-* attributes so overlay/resize can be data-driven
@@ -75,15 +84,32 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
     tag,
     text:
       type === "button"
-        ? json?.integration?.properties?.defaultValues?.content || "Click Me"
+        ? defaults?.content || "Click Me"
+        : type === "heading"
+        ? defaults?.content || "Heading Text"
+        : type === "paragraph"
+        ? defaults?.content || "This is a paragraph of text."
         : undefined,
     classes,
     css: json?.ui?.styles?.css,
     cssVariables: json?.ui?.styles?.variables || {},
     cssLibrary: json?.ui?.styles?.library?.css,
     cssVariablesLibrary: json?.ui?.styles?.library?.variables || {},
-    attributes: attrs,
+    attributes: {
+      ...attrs,
+      ...(type === "image"
+        ? {
+            src: String(defaults?.src || "https://via.placeholder.com/300x200?text=Image"),
+            alt: String(defaults?.alt || "Image description"),
+            ...(defaults?.loading ? { loading: String(defaults.loading) } : {}),
+          }
+        : {}),
+    },
     dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
-    style: {},
+    style: {
+      ...(type === "image" && defaults?.objectFit
+        ? { objectFit: String(defaults.objectFit) }
+        : {}),
+    },
   } as RuntimeTemplate;
 }
