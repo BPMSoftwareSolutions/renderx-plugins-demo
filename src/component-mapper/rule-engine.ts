@@ -106,6 +106,15 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         values: ["small", "medium", "large"],
       },
     ],
+    heading: [
+      {
+        whenAttr: "level",
+        action: "toggleClassVariant",
+        base: "rx-heading",
+        prefix: "rx-heading--level-",
+        values: ["h1", "h2", "h3", "h4", "h5", "h6"],
+      },
+    ],
   },
 };
 

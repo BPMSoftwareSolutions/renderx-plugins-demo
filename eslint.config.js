@@ -7,6 +7,7 @@ import sequencesInJson from "./eslint-rules/sequences-in-json.js";
 import featureFlags from "./eslint-rules/feature-flags.js";
 import validSequenceHandlers from "./eslint-rules/valid-sequence-handlers.js";
 import interactionKeys from "./eslint-rules/interaction-keys.js";
+import ruleEngineCoverage from "./eslint-rules/rule-engine-coverage.js";
 
 export default [
   {
@@ -30,6 +31,7 @@ export default [
       "feature-flags": featureFlags,
       "sequence-handlers": validSequenceHandlers,
       "interaction-keys": interactionKeys,
+      "rule-engine-coverage": ruleEngineCoverage,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -38,6 +40,7 @@ export default [
       "feature-flags/enforce-flag-ids": "error",
       "sequence-handlers/validate-handlers": "error",
       "interaction-keys/valid-keys": "error",
+      "rule-engine-coverage/validate-control-panel-rules": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },

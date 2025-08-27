@@ -25,4 +25,19 @@ describe("RuleEngine: heading content extract/apply", () => {
     engine.applyContent(h2 as any, "heading", { content: "New Heading" });
     expect(h2.textContent).toBe("New Heading");
   });
+
+  it("should handle level update rule for heading component", () => {
+    const h2 = document.createElement("h2");
+    h2.className = "rx-comp rx-heading rx-heading--level-h2";
+
+    // This should work since users can edit "level" in the control panel
+    const result = engine.applyUpdate(h2, "level", "h3");
+
+    // Should return true indicating the rule was applied
+    expect(result).toBe(true);
+
+    // Should toggle the level class variant
+    expect(h2.classList.contains("rx-heading--level-h2")).toBe(false);
+    expect(h2.classList.contains("rx-heading--level-h3")).toBe(true);
+  });
 });
