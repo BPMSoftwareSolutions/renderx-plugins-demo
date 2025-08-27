@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "defaults": {
+    "tagRules": [
+      { "when": "metadata.type == 'container'", "tag": "div" },
+      { "when": "metadata.type == 'input'", "tag": "input" },
+      { "when": "metadata.type == 'image'", "tag": "img" },
+      { "when": "metadata.type == 'line'", "tag": "svg" },
+      { "when": "metadata.type == 'paragraph'", "tag": "p" },
+      {
+        "when": "metadata.type == 'heading'",
+        "tagFrom": {
+          "path": "integration.properties.defaultValues.level",
+          "validateIn": ["h1", "h2", "h3", "h4", "h5", "h6"],
+          "fallback": "h2"
+        }
+      },
+      { "defaultTag": "div" }
+    ]
+  }
+}
+

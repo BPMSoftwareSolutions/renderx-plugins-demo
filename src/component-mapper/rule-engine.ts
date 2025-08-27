@@ -46,6 +46,34 @@ export type ExtractRulesConfig = {
   byType?: Record<string, ExtractRule[]>;
 };
 
+// Combined config for optional global/window loading
+export type AllRulesConfig = {
+  update?: UpdateRulesConfig;
+  content?: ContentRulesConfig;
+  extract?: ExtractRulesConfig;
+};
+
+let cachedAllRules: AllRulesConfig | null = null;
+
+export function setAllRulesConfig(cfg: AllRulesConfig) {
+  cachedAllRules = cfg;
+}
+
+export function loadAllRulesFromWindow() {
+  try {
+    const g: any = (globalThis as any) || {};
+    const cfg = g?.RenderX?.componentRules;
+    if (cfg && typeof cfg === "object") {
+      cachedAllRules = cfg as AllRulesConfig;
+    }
+  } catch {}
+}
+
+export function getAllRulesConfig(): AllRulesConfig {
+  if (!cachedAllRules) loadAllRulesFromWindow();
+  return cachedAllRules || {};
+}
+
 // Default rules tuned to existing tests/behavior
 const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
   default: [
@@ -109,6 +137,7 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
     ],
     container: [{ action: "textFrom", from: "text" }],
     div: [{ action: "textFrom", from: "text" }],
+    heading: [{ action: "textFrom", from: "content", fallback: "" }],
   },
 };
 
@@ -140,6 +169,10 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
     ],
     container: [{ get: "textContent", as: "text" }],
     div: [{ get: "textContent", as: "text" }],
+    heading: [
+      { get: "textContent", as: "content" },
+      { get: "prop", prop: "tagName", as: "level" },
+    ],
   },
 };
 
@@ -160,9 +193,10 @@ export class ComponentRuleEngine {
     contentRules?: ContentRulesConfig,
     extractRules?: ExtractRulesConfig
   ) {
-    this.updateRules = updateRules || DEFAULT_UPDATE_RULES;
-    this.contentRules = contentRules || DEFAULT_CONTENT_RULES;
-    this.extractRules = extractRules || DEFAULT_EXTRACT_RULES;
+    const all = getAllRulesConfig();
+    this.updateRules = updateRules || all.update || DEFAULT_UPDATE_RULES;
+    this.contentRules = contentRules || all.content || DEFAULT_CONTENT_RULES;
+    this.extractRules = extractRules || all.extract || DEFAULT_EXTRACT_RULES;
   }
 
   // -------- Update --------
@@ -284,8 +318,12 @@ export class ComponentRuleEngine {
           break;
         }
         case "prop": {
-          const v = (el as any)[(r as any).prop];
-          if (v != null && v !== "") out[(r as any).as] = v;
+          const prop = (r as any).prop;
+          let v = (el as any)[prop];
+          if (v != null && v !== "") {
+            if (prop === "tagName") v = String(v).toLowerCase();
+            out[(r as any).as] = v;
+          }
           break;
         }
         case "style": {
