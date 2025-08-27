@@ -11,7 +11,9 @@ const ruleTester = new RuleTester({
 });
 
 describe("rule-engine-coverage ESLint rule", () => {
-  const rule = (ruleEngineCoverage as any).rules["validate-control-panel-rules"];
+  const rule = (ruleEngineCoverage as any).rules[
+    "validate-control-panel-rules"
+  ];
 
   it("should be defined", () => {
     expect(rule).toBeDefined();
@@ -21,7 +23,9 @@ describe("rule-engine-coverage ESLint rule", () => {
 
   it("should have correct meta information", () => {
     expect(rule.meta.type).toBe("problem");
-    expect(rule.meta.docs.description).toContain("control panel schema properties");
+    expect(rule.meta.docs.description).toContain(
+      "control panel schema properties"
+    );
     expect(rule.meta.messages.missingUpdateRule).toBeDefined();
     expect(rule.meta.messages.noRulesForComponent).toBeDefined();
   });
@@ -54,5 +58,43 @@ describe("rule-engine-coverage ESLint rule", () => {
 
     const visitor = rule.create(context);
     expect(visitor).toEqual({}); // Should return empty visitor for non-rule-engine files
+  });
+
+  it("should detect bidirectional consistency issues in real rule engine", () => {
+    // Test against the actual rule engine file to see if it catches button variant/size issues
+    const context = {
+      getFilename: () => "src/component-mapper/rule-engine.ts",
+      getCwd: () => process.cwd(),
+      report: vi.fn(),
+    };
+
+    const visitor = rule.create(context);
+
+    // Simulate running the rule on a Program node
+    if (visitor.Program) {
+      visitor.Program({} as any);
+    }
+
+    // Check if the rule reported bidirectional consistency issues
+    const reportCalls = context.report.mock.calls;
+
+    const bidirectionalIssues = reportCalls.filter(
+      (call: any) =>
+        call[0].messageId === "bidirectionalMismatch" &&
+        call[0].data.message.includes("can update") &&
+        call[0].data.message.includes("but cannot extract them")
+    );
+
+    // Should detect that button can update variant/size but not extract them
+    expect(bidirectionalIssues.length).toBeGreaterThan(0);
+
+    // Find the button-specific issue
+    const buttonIssue = bidirectionalIssues.find((call: any) =>
+      call[0].data.message.includes("button")
+    );
+
+    expect(buttonIssue).toBeDefined();
+    expect(buttonIssue[0].data.message).toContain("variant");
+    expect(buttonIssue[0].data.message).toContain("size");
   });
 });

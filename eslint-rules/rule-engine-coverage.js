@@ -79,6 +79,65 @@ function loadRuleEngineRules(context) {
   }
 }
 
+function extractComponentRules(byTypeContent, componentType, startIndex) {
+  try {
+    // Find the start of the component's rule array
+    const componentStart = byTypeContent.indexOf(
+      `${componentType}:`,
+      startIndex
+    );
+    if (componentStart === -1) return [];
+
+    const arrayStart = byTypeContent.indexOf("[", componentStart);
+    if (arrayStart === -1) return [];
+
+    // Find the matching closing bracket
+    let pos = arrayStart + 1;
+    let bracketCount = 1;
+    let rulesContent = "";
+
+    while (pos < byTypeContent.length && bracketCount > 0) {
+      const char = byTypeContent[pos];
+      if (char === "[") bracketCount++;
+      else if (char === "]") bracketCount--;
+
+      if (bracketCount > 0) {
+        rulesContent += char;
+      }
+      pos++;
+    }
+
+    // Parse the rules content to extract whenAttr and as properties
+    const rules = [];
+
+    // For update rules, look for whenAttr properties
+    const whenAttrMatches = rulesContent.match(/whenAttr:\s*["']([^"']+)["']/g);
+    if (whenAttrMatches) {
+      whenAttrMatches.forEach((match) => {
+        const attrMatch = match.match(/whenAttr:\s*["']([^"']+)["']/);
+        if (attrMatch) {
+          rules.push({ whenAttr: attrMatch[1] });
+        }
+      });
+    }
+
+    // For extract rules, look for as properties
+    const asMatches = rulesContent.match(/as:\s*["']([^"']+)["']/g);
+    if (asMatches) {
+      asMatches.forEach((match) => {
+        const asMatch = match.match(/as:\s*["']([^"']+)["']/);
+        if (asMatch) {
+          rules.push({ as: asMatch[1] });
+        }
+      });
+    }
+
+    return rules;
+  } catch {
+    return [];
+  }
+}
+
 function parseRulesFromContent(content, ruleName) {
   const rules = { default: [], byType: {} };
 
@@ -135,7 +194,13 @@ function parseRulesFromContent(content, ruleName) {
           const componentType = typeMatch[1];
           // Skip common property names that aren't component types
           if (!["values", "default", "byType"].includes(componentType)) {
-            rules.byType[componentType] = true;
+            // Extract the actual rules for this component type
+            const componentRules = extractComponentRules(
+              byTypeContent,
+              componentType,
+              typeMatch.index
+            );
+            rules.byType[componentType] = componentRules;
           }
         }
       }
@@ -217,6 +282,65 @@ function hasSpecificUpdateRule(componentType, property, rules) {
   }
 }
 
+function checkBidirectionalConsistency(componentType, rules) {
+  const issues = [];
+
+  try {
+    const updateRules = rules.update.byType[componentType] || [];
+    const extractRules = rules.extract.byType[componentType] || [];
+
+    // Get attributes that can be updated
+    const updateAttrs = updateRules
+      .map((rule) => rule.whenAttr)
+      .filter(Boolean);
+
+    // Get attributes that can be extracted
+    const extractAttrs = extractRules.map((rule) => rule.as).filter(Boolean);
+
+    // Find attributes that can be updated but not extracted
+    const missingExtractions = updateAttrs.filter(
+      (attr) => !extractAttrs.includes(attr)
+    );
+
+    // Find attributes that can be extracted but not updated (less critical, but worth noting)
+    const missingUpdates = extractAttrs.filter(
+      (attr) => !updateAttrs.includes(attr)
+    );
+
+    if (missingExtractions.length > 0) {
+      issues.push({
+        type: "missingExtraction",
+        attributes: missingExtractions,
+        message: `Component '${componentType}' can update [${missingExtractions.join(
+          ", "
+        )}] but cannot extract them. This causes control panel to show stale values after updates.`,
+      });
+    }
+
+    if (missingUpdates.length > 0) {
+      // Filter out common read-only properties that don't need updates
+      const readOnlyProps = ["content", "text", "textContent"];
+      const criticalMissingUpdates = missingUpdates.filter(
+        (attr) => !readOnlyProps.includes(attr)
+      );
+
+      if (criticalMissingUpdates.length > 0) {
+        issues.push({
+          type: "missingUpdate",
+          attributes: criticalMissingUpdates,
+          message: `Component '${componentType}' can extract [${criticalMissingUpdates.join(
+            ", "
+          )}] but cannot update them. Consider adding update rules if these should be editable.`,
+        });
+      }
+    }
+
+    return issues;
+  } catch {
+    return [];
+  }
+}
+
 const validateControlPanelRulesRule = {
   meta: {
     type: "problem",
@@ -230,6 +354,7 @@ const validateControlPanelRulesRule = {
         "Control panel property '{{property}}' for component '{{component}}' has no corresponding update rule in rule-engine.ts. This causes silent degradation when users edit this property.",
       noRulesForComponent:
         "Component '{{component}}' has control panel properties but no rules defined in rule-engine.ts: {{properties}}",
+      bidirectionalMismatch: "{{message}}",
     },
   },
   create(context) {
@@ -317,6 +442,28 @@ const validateControlPanelRulesRule = {
                   },
                 });
               }
+            }
+          }
+
+          // Check bidirectional consistency for components that have both update and extract rules
+          const hasUpdateRulesForComponent = rules.update.byType[componentType];
+          const hasExtractRulesForComponent =
+            rules.extract.byType[componentType];
+
+          if (hasUpdateRulesForComponent || hasExtractRulesForComponent) {
+            const bidirectionalIssues = checkBidirectionalConsistency(
+              componentType,
+              rules
+            );
+
+            for (const issue of bidirectionalIssues) {
+              context.report({
+                node,
+                messageId: "bidirectionalMismatch",
+                data: {
+                  message: issue.message,
+                },
+              });
             }
           }
         }
