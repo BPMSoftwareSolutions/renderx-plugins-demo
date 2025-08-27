@@ -1,6 +1,8 @@
 // Centralized mapper from JSON component definition → runtime Template model
 // This isolates knowledge of component JSON structure away from symphonies.
 
+import { computeTagFromJson } from "./component-mapper/mapper";
+
 export type RuntimeTemplate = {
   tag: string;
   text?: string;
@@ -44,24 +46,8 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
     !!json?.integration?.canvasIntegration?.allowChildElements;
   if (isContainer) attrs["data-role"] = "container";
 
-  // Normalize to safe HTML tag for preview/canvas
-  const defaults: any = json?.integration?.properties?.defaultValues || {};
-  const level = typeof defaults?.level === "string" ? defaults.level.toLowerCase() : "h2";
-  const safeHeadingTag = ["h1","h2","h3","h4","h5","h6"].includes(level) ? level : "h2";
-  const tag =
-    type === "input"
-      ? "input"
-      : type === "container"
-      ? "div"
-      : type === "line"
-      ? "svg"
-      : type === "heading"
-      ? safeHeadingTag
-      : type === "paragraph"
-      ? "p"
-      : type === "image"
-      ? "img"
-      : type || "div";
+  // Normalize to safe HTML tag for preview/canvas via JSON-driven rules
+  const tag = computeTagFromJson(json) || String(type || "div");
 
   // Map ui.tools.resize → data-* attributes so overlay/resize can be data-driven
   const tools = json?.ui?.tools || {};
@@ -79,6 +65,9 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
     json?.integration?.canvasIntegration?.minHeight;
   if (minW != null) attrs["data-resize-min-w"] = String(minW);
   if (minH != null) attrs["data-resize-min-h"] = String(minH);
+
+  // Default text content remains type-specific for now; will move to content rules later
+  const defaults: any = json?.integration?.properties?.defaultValues || {};
 
   return {
     tag,
@@ -99,7 +88,9 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
       ...attrs,
       ...(type === "image"
         ? {
-            src: String(defaults?.src || "https://via.placeholder.com/300x200?text=Image"),
+            src: String(
+              defaults?.src || "https://via.placeholder.com/300x200?text=Image"
+            ),
             alt: String(defaults?.alt || "Image description"),
             ...(defaults?.loading ? { loading: String(defaults.loading) } : {}),
           }

@@ -1,10 +1,15 @@
 // Stage-crew handler for updating Canvas component attributes from Control Panel changes
+import { ComponentRuleEngine } from "../../../../src/component-mapper/rule-engine";
+
+const ruleEngine = new ComponentRuleEngine();
 
 export function updateAttribute(data: any, ctx: any) {
   const { id, attribute, value } = data || {};
-  
+
   if (!id || !attribute || value === undefined) {
-    ctx.logger?.warn?.("Canvas component update requires id, attribute, and value");
+    ctx.logger?.warn?.(
+      "Canvas component update requires id, attribute, and value"
+    );
     return;
   }
 
@@ -15,75 +20,15 @@ export function updateAttribute(data: any, ctx: any) {
   }
 
   try {
-    // Handle different attribute types
-    switch (attribute) {
-      case "content":
-        // Update text content
-        element.textContent = String(value);
-        break;
-        
-      case "bg-color":
-        element.style.backgroundColor = String(value);
-        break;
-        
-      case "text-color":
-        element.style.color = String(value);
-        break;
-        
-      case "border-radius":
-        element.style.borderRadius = String(value);
-        break;
-        
-      case "font-size":
-        element.style.fontSize = String(value);
-        break;
-        
-      case "width":
-        element.style.width = `${Number(value)}px`;
-        break;
-        
-      case "height":
-        element.style.height = `${Number(value)}px`;
-        break;
-        
-      case "x":
-        element.style.left = `${Number(value)}px`;
-        break;
-        
-      case "y":
-        element.style.top = `${Number(value)}px`;
-        break;
-        
-      case "variant":
-        // Handle button variant by updating classes
-        element.classList.remove("rx-button-primary", "rx-button-secondary", "rx-button-danger");
-        element.classList.add(`rx-button-${value}`);
-        break;
-        
-      case "size":
-        // Handle button size by updating classes
-        element.classList.remove("rx-button-small", "rx-button-medium", "rx-button-large");
-        element.classList.add(`rx-button-${value}`);
-        break;
-        
-      case "disabled":
-        // Handle disabled state
-        if (value) {
-          element.setAttribute("disabled", "true");
-        } else {
-          element.removeAttribute("disabled");
-        }
-        break;
-        
-      default:
-        ctx.logger?.warn?.(`Unknown attribute: ${attribute}`);
-        return;
+    const applied = ruleEngine.applyUpdate(element, String(attribute), value);
+    if (!applied) {
+      ctx.logger?.warn?.(`Unknown attribute: ${attribute}`);
+      return;
     }
 
     // Store the updated attribute info for potential use by other handlers
     ctx.payload.updatedAttribute = { id, attribute, value };
     ctx.payload.elementId = id;
-
   } catch (error) {
     ctx.logger?.warn?.(`Failed to update attribute ${attribute}:`, error);
   }
@@ -100,7 +45,9 @@ export function refreshControlPanel(data: any, ctx: any) {
       let sequenceId = "control-panel-update-symphony";
 
       try {
-        const { resolveInteraction } = require("../../../../src/interactionManifest");
+        const {
+          resolveInteraction,
+        } = require("../../../../src/interactionManifest");
         const route = resolveInteraction("control.panel.update");
         pluginId = route.pluginId;
         sequenceId = route.sequenceId;
@@ -111,10 +58,13 @@ export function refreshControlPanel(data: any, ctx: any) {
       // eslint-disable-next-line play-routing/no-hardcoded-play-ids
       ctx.conductor.play(pluginId, sequenceId, {
         id: elementId,
-        source: "attribute-update"
+        source: "attribute-update",
       });
     } catch (error) {
-      ctx.logger?.warn?.("Failed to refresh Control Panel after attribute update:", error);
+      ctx.logger?.warn?.(
+        "Failed to refresh Control Panel after attribute update:",
+        error
+      );
     }
   }
 }

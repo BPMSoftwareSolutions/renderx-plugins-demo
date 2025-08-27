@@ -1,3 +1,5 @@
+import { getTagForType } from "../../../../src/component-mapper/mapper";
+
 export const buildUiFileContent = (data: any, ctx: any) => {
   try {
     const components = ctx.payload.components || [];
@@ -14,20 +16,6 @@ export const buildUiFileContent = (data: any, ctx: any) => {
       layoutMap.set(layout.id, layout);
     }
 
-    // Map component type to HTML tag
-    const getTemplateTag = (type: string): string => {
-      switch (type) {
-        case "button":
-          return "button";
-        case "input":
-          return "input";
-        case "container":
-          return "div";
-        default:
-          return type;
-      }
-    };
-
     // Build UI file components with classRefs instead of classes
     const uiComponents = components.map((component: any) => {
       const layout = layoutMap.get(component.id) || {
@@ -43,7 +31,7 @@ export const buildUiFileContent = (data: any, ctx: any) => {
         id: component.id,
         type: component.type,
         template: {
-          tag: getTemplateTag(component.type),
+          tag: getTagForType(component.type),
           classRefs: component.classes || [], // Changed from 'classes' to 'classRefs'
           style: component.style || {},
         },
