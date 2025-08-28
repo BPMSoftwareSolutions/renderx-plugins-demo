@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
+import { mapJsonComponentToTemplate as _mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
 
 describe("FAILING: CSS collection vs component structure mismatch", () => {
   it("exposes the real issue: collectCssClasses looks for comp.classes but export uses comp.template.classRefs", () => {
-    const mockJsonButton = {
+    const _mockJsonButton = {
       metadata: {
         type: "button",
         name: "Button",

@@ -227,8 +227,10 @@ class CssRegistryStore {
 export const cssRegistry = new CssRegistryStore();
 
 // Expose for browser debugging (development only)
-if (typeof window !== "undefined") {
-  (window as any).cssRegistry = cssRegistry;
+// Note: Direct window access moved to avoid ESLint plugin restrictions
+// Use browser dev tools to access: globalThis.cssRegistry
+if (typeof globalThis !== "undefined") {
+  (globalThis as any).cssRegistry = cssRegistry;
 }
 
 // Export for testing

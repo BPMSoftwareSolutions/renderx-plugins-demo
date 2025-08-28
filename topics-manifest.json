@@ -1022,6 +1022,31 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Library load requested; routes to library load sequence."
+    },
+    "test.route": {
+      "routes": [
+        {
+          "pluginId": "P1",
+          "sequenceId": "S1"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "internal",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Test topic for routing tests"
+    },
+    "test.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "internal",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Test topic for notification-only tests"
     }
   }
 }

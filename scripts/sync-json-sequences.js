@@ -5,7 +5,13 @@
  * Ensures the dev server serves the latest sequence catalogs in the browser.
  */
 
-import { readdir, readFile, writeFile, mkdir, stat } from "fs/promises";
+import {
+  readdir,
+  readFile,
+  writeFile,
+  mkdir,
+  stat as _stat,
+} from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -39,7 +45,11 @@ async function copyTree(src, dst) {
       await copyTree(srcPath, dstPath);
     } else if (ent.isFile() && ent.name.endsWith(".json")) {
       await copyFile(srcPath, dstPath);
-      console.log(`  ✅ Copied ${srcPath.replace(sourceDir + "\\", "").replace(sourceDir + "/", "")}`);
+      console.log(
+        `  ✅ Copied ${srcPath
+          .replace(sourceDir + "\\", "")
+          .replace(sourceDir + "/", "")}`
+      );
     }
   }
 }
@@ -57,4 +67,3 @@ async function syncJsonSequences() {
 }
 
 syncJsonSequences();
-

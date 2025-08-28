@@ -32,6 +32,10 @@ function loadComponentJsonFiles(context) {
           components[componentType] = json;
         } catch (e) {
           // Skip malformed JSON files
+          console.warn(
+            `Failed to parse component JSON ${filePath}:`,
+            e.message
+          );
         }
       }
     }
@@ -228,7 +232,7 @@ function getControlPanelProperties(componentJson) {
   return properties;
 }
 
-function hasSpecificUpdateRule(componentType, property, rules) {
+function hasSpecificUpdateRule(componentType, property, _rules) {
   try {
     const cwd = process.cwd();
     const ruleEnginePath = path.join(

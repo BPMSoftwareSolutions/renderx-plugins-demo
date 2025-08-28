@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as libraryHandlers } from "../../plugins/library/symphonies/load.symphony";
+import { handlers as _libraryHandlers } from "../../plugins/library/symphonies/load.symphony";
 import { handlers as exportHandlers } from "../../plugins/canvas-component/symphonies/export/export.symphony";
 import { cssRegistry } from "../../plugins/control-panel/state/css-registry.store";
 

@@ -1,7 +1,10 @@
 import { describe, it, expect } from "vitest";
 
 // We will import the mapper utility once implemented
-import { getTagForType, computeTagFromJson } from "../../src/component-mapper/mapper";
+import {
+  getTagForType,
+  computeTagFromJson,
+} from "../../src/component-mapper/mapper";
 
 // Minimal JSON stubs to simulate component JSONs
 const makeHeadingJson = (level?: string) => ({
@@ -9,7 +12,7 @@ const makeHeadingJson = (level?: string) => ({
   integration: { properties: { defaultValues: { level } } },
 });
 
-const makeGenericJson = (type: string) => ({ metadata: { type } });
+const _makeGenericJson = (type: string) => ({ metadata: { type } });
 
 describe("Component mapper tag rules", () => {
   it("maps container → div", () => {
@@ -45,4 +48,3 @@ describe("Component mapper tag rules", () => {
     expect(computeTagFromJson(json as any)).toBe("section");
   });
 });
-

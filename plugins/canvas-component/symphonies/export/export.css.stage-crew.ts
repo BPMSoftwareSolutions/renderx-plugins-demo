@@ -4,9 +4,44 @@ import { cssRegistry } from "../../../control-panel/state/css-registry.store";
 // No IO fallbacks or browser stylesheet parsing; clean and deterministic.
 export function collectCssClasses(_data: any, ctx: any) {
   try {
-    const components = ctx?.payload?.components || [];
-    const unique = new Set<string>();
+    // Ensure we have components to derive classes from. If KV was empty, fall back to DOM discovery here.
+    let components = ctx?.payload?.components || [];
+    if (!components || components.length === 0) {
+      if (typeof document !== "undefined") {
+        const canvasEl = document.getElementById("rx-canvas");
+        if (canvasEl) {
+          const found: any[] = [];
+          const els = canvasEl.querySelectorAll(".rx-comp");
+          for (const el of Array.from(els)) {
+            const htmlEl = el as HTMLElement;
+            const classes = Array.from(htmlEl.classList);
+            const typeClass = classes.find(
+              (cls) => cls.startsWith("rx-") && cls !== "rx-comp"
+            );
+            const type = typeClass
+              ? typeClass.replace("rx-", "")
+              : htmlEl.tagName.toLowerCase();
 
+            found.push({
+              id: htmlEl.id,
+              type,
+              classes,
+              createdAt: Date.now(),
+            });
+          }
+          if (found.length > 0) {
+            components = found;
+            ctx.payload.components = found;
+            ctx.payload.source = "dom-discovery";
+            ctx.logger?.info?.(
+              `DOM discovery (CSS step) found ${found.length} components`
+            );
+          }
+        }
+      }
+    }
+
+    const unique = new Set<string>();
     for (const comp of components) {
       // Support both comp.classes (legacy) and comp.template.classRefs (current export format)
       const classes: string[] = Array.isArray(comp.classes)

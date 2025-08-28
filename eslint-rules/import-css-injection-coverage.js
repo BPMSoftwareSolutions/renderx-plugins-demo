@@ -25,8 +25,12 @@ function loadJsonComponents(cwd) {
           const content = fs.readFileSync(filePath, "utf8");
           const json = JSON.parse(content);
           components[componentType] = json;
-        } catch (_e) {
+        } catch (e) {
           // Skip malformed JSON files
+          console.warn(
+            `Failed to parse component JSON ${filePath}:`,
+            e.message
+          );
         }
       }
     }

@@ -19,38 +19,12 @@ export const queryAllComponents = async (data: any, ctx: any) => {
       ctx.logger?.info?.("KV store not available");
     }
 
-    // If KV store is empty, perform basic DOM discovery for CSS collection
+    // If KV store is empty, request DOM discovery via stage-crew handler
     if (!components || components.length === 0) {
-      ctx.logger?.info?.(
-        "KV store empty, performing basic DOM discovery for export"
-      );
-      if (typeof document !== "undefined") {
-        const canvasEl = document.getElementById("rx-canvas");
-        if (canvasEl) {
-          const found: any[] = [];
-          const els = canvasEl.querySelectorAll(".rx-comp");
-          for (const el of Array.from(els)) {
-            const htmlEl = el as HTMLElement;
-            const classes = Array.from(htmlEl.classList);
-            const typeClass = classes.find(
-              (cls) => cls.startsWith("rx-") && cls !== "rx-comp"
-            );
-            const type = typeClass
-              ? typeClass.replace("rx-", "")
-              : htmlEl.tagName.toLowerCase();
-
-            found.push({
-              id: htmlEl.id,
-              type,
-              classes, // This is what CSS collection needs
-              createdAt: Date.now(),
-            });
-          }
-          components = found;
-          ctx.payload.source = "dom-discovery";
-          ctx.logger?.info?.(`DOM discovery found ${found.length} components`);
-        }
-      }
+      ctx.logger?.info?.("KV store empty, requesting DOM discovery for export");
+      // This will be handled by the stage-crew handler in export.stage-crew.ts
+      // The handler will populate ctx.payload.discoveredComponents
+      components = ctx.payload.discoveredComponents || [];
     }
 
     ctx.payload.components = components || [];

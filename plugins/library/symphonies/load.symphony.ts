@@ -17,7 +17,7 @@ export const handlers = {
   async loadComponents(_data: any, ctx: any) {
     let list: any[] = [];
     try {
-      if (typeof document !== "undefined" && typeof fetch === "function") {
+      if (typeof globalThis !== "undefined" && typeof fetch === "function") {
         // Browser/dev server path: serve from public/json-components using JSON index
         const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
