@@ -488,20 +488,43 @@ export class ComponentRuleEngine {
         return true;
       }
       case "toggleClassVariant": {
-        const { base, prefix } = rule as any;
+        const { base, prefix, values } = rule as any;
         const classes = Array.from(el.classList);
-        // Build list of prefixes to clear (handle legacy single-dash vs double-dash)
-        const prefixesToClear: string[] = [prefix];
-        if (prefix.includes("--")) {
-          prefixesToClear.push(prefix.replace("--", "-"));
-        }
-        // Collect classes to remove: any that match the variant prefixes (but preserve base class exactly)
+
+        // If explicit values are provided, only clear those specific class variants.
+        // This prevents clobbering other dimensions (e.g., size vs variant) that share the same prefix.
+        const hasExplicitValues = Array.isArray(values) && values.length > 0;
+        const allowedTargets: string[] = hasExplicitValues
+          ? (values as string[]).flatMap((v) => {
+              const full = `${prefix}${v}`;
+              // Also include legacy single-dash form if applicable
+              if (prefix.includes("--")) {
+                const legacy = `${prefix.replace("--", "-")}${v}`;
+                return [full, legacy];
+              }
+              return [full];
+            })
+          : [];
+
+        // Build list of prefixes to clear (legacy behavior) only when no explicit values are supplied
+        const prefixesToClear: string[] = hasExplicitValues
+          ? []
+          : [
+              prefix,
+              ...(prefix.includes("--") ? [prefix.replace("--", "-")] : []),
+            ];
+
+        // Collect classes to remove: preserve base class exactly
         for (const c of classes) {
           if (c === base) continue;
-          if (prefixesToClear.some((p) => c.startsWith(p))) {
+          if (
+            (hasExplicitValues && allowedTargets.includes(c)) ||
+            (!hasExplicitValues && prefixesToClear.some((p) => c.startsWith(p)))
+          ) {
             el.classList.remove(c);
           }
         }
+
         // Add new variant class
         const val = String(value);
         if (val) el.classList.add(`${prefix}${val}`);
@@ -597,19 +620,20 @@ export class ComponentRuleEngine {
         case "classVariant": {
           const rule = r as any;
           const prefix = rule.prefix;
-          const values = rule.values;
+          const values: string[] = rule.values || [];
           const fallback = rule.fallback;
 
-          // Look for class with the specified prefix
-          const variantClass = Array.from(el.classList).find((cls) =>
-            cls.startsWith(prefix)
-          );
-          if (variantClass) {
-            const variant = variantClass.replace(prefix, "");
-            if (values.includes(variant)) {
-              out[rule.as] = variant;
-              break;
-            }
+          // Find any class matching the allowed values with the given prefix
+          const classes = Array.from(el.classList);
+          const match = classes.find((cls) => {
+            if (!cls.startsWith(prefix)) return false;
+            const variant = cls.slice(prefix.length);
+            return values.includes(variant);
+          });
+
+          if (match) {
+            out[rule.as] = match.slice(prefix.length);
+            break;
           }
 
           // Fallback logic
