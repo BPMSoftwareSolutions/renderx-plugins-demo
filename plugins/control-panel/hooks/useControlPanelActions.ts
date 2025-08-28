@@ -1,8 +1,12 @@
-import React from 'react';
-import { useConductor } from '../../../src/conductor';
-import { resolveInteraction } from '../../../src/interactionManifest';
-import { useControlPanelSequences } from './useControlPanelSequences';
-import type { SelectedElement, ControlPanelAction } from '../types/control-panel.types';
+import React from "react";
+import { useConductor } from "../../../src/conductor";
+import { resolveInteraction } from "../../../src/interactionManifest";
+import { EventRouter } from "../../../src/EventRouter";
+import { useControlPanelSequences } from "./useControlPanelSequences";
+import type {
+  SelectedElement,
+  ControlPanelAction,
+} from "../types/control-panel.types";
 
 export function useControlPanelActions(
   selectedElement: SelectedElement | null,
@@ -11,16 +15,35 @@ export function useControlPanelActions(
   const conductor = useConductor();
   const sequences = useControlPanelSequences();
 
-  const handleAction = React.useCallback((interaction: string, data: any) => {
-    if (!selectedElement?.header?.id) return;
-    try {
-      const route = resolveInteraction(interaction);
-      conductor?.play?.(route.pluginId, route.sequenceId, { id: selectedElement.header.id, ...data });
-      dispatch({ type: 'SET_DIRTY', payload: true });
-    } catch (error) {
-      console.warn('Failed to execute interaction:', interaction, error);
-    }
-  }, [conductor, selectedElement, dispatch]);
+  const handleAction = React.useCallback(
+    (interaction: string, data: any) => {
+      if (!selectedElement?.header?.id) return;
+      try {
+        // Try EventRouter first with .requested suffix
+        const topicKey = `${interaction}.requested`;
+        try {
+          EventRouter.publish(
+            topicKey,
+            { id: selectedElement.header.id, ...data },
+            conductor
+          );
+          dispatch({ type: "SET_DIRTY", payload: true });
+          return;
+        } catch {
+          // Fallback to direct interaction routing
+          const route = resolveInteraction(interaction);
+          conductor?.play?.(route.pluginId, route.sequenceId, {
+            id: selectedElement.header.id,
+            ...data,
+          });
+          dispatch({ type: "SET_DIRTY", payload: true });
+        }
+      } catch (error) {
+        console.warn("Failed to execute interaction:", interaction, error);
+      }
+    },
+    [conductor, selectedElement, dispatch]
+  );
 
   return {
     // Use sequence-driven field change for attribute updates
@@ -33,7 +56,10 @@ export function useControlPanelActions(
       }
     },
     handleAddClass: (className: string) =>
-      className.trim() && handleAction("control.panel.classes.add", { className: className.trim() }),
+      className.trim() &&
+      handleAction("control.panel.classes.add", {
+        className: className.trim(),
+      }),
     handleRemoveClass: (className: string) =>
       handleAction("control.panel.classes.remove", { className }),
     handleCreateCssClass: (className: string, content: string) =>
@@ -48,7 +74,7 @@ export function useControlPanelActions(
         sequences.handleSectionToggle(sectionId);
       }
       // Always update local state as well for immediate UI feedback
-      dispatch({ type: 'TOGGLE_SECTION', payload: sectionId });
-    }
+      dispatch({ type: "TOGGLE_SECTION", payload: sectionId });
+    },
   };
 }

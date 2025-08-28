@@ -1,5 +1,6 @@
 // Stage-crew handler for updating Canvas component attributes from Control Panel changes
 import { ComponentRuleEngine } from "../../../../src/component-mapper/rule-engine";
+import { EventRouter } from "../../../../src/EventRouter";
 
 const ruleEngine = new ComponentRuleEngine();
 
@@ -44,22 +45,34 @@ export function refreshControlPanel(data: any, ctx: any) {
       let pluginId = "ControlPanelPlugin";
       let sequenceId = "control-panel-update-symphony";
 
+      // Try EventRouter first, fallback to direct routing
       try {
-        const {
-          resolveInteraction,
-        } = require("../../../../src/interactionManifest");
-        const route = resolveInteraction("control.panel.update");
-        pluginId = route.pluginId;
-        sequenceId = route.sequenceId;
+        EventRouter.publish(
+          "control.panel.update.requested",
+          {
+            id: elementId,
+            source: "attribute-update",
+          },
+          ctx.conductor
+        );
       } catch {
-        // Fallback to hardcoded values for test environment
-      }
+        try {
+          const {
+            resolveInteraction,
+          } = require("../../../../src/interactionManifest");
+          const route = resolveInteraction("control.panel.update");
+          pluginId = route.pluginId;
+          sequenceId = route.sequenceId;
+        } catch {
+          // Fallback to hardcoded values for test environment
+        }
 
-      // eslint-disable-next-line play-routing/no-hardcoded-play-ids
-      ctx.conductor.play(pluginId, sequenceId, {
-        id: elementId,
-        source: "attribute-update",
-      });
+        // eslint-disable-next-line play-routing/no-hardcoded-play-ids
+        ctx.conductor.play(pluginId, sequenceId, {
+          id: elementId,
+          source: "attribute-update",
+        });
+      }
     } catch (error) {
       ctx.logger?.warn?.(
         "Failed to refresh Control Panel after attribute update:",
