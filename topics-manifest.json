@@ -341,6 +341,34 @@
       "perf": {},
       "notes": "Resize ended; routes to resize end sequence."
     },
+    "canvas.component.update.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "attribute": {
+            "type": "string"
+          },
+          "value": {}
+        },
+        "required": [
+          "id",
+          "attribute"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Canvas component update requested; routes to update sequence with throttling."
+    },
     "control.panel.update.requested": {
       "routes": [
         {
