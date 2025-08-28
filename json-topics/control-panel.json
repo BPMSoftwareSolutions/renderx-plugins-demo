@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "topics": {
+    "control.panel.update.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "source": { "type": "string" },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          },
+          "size": {
+            "type": "object",
+            "properties": {
+              "width": { "type": "number" },
+              "height": { "type": "number" }
+            }
+          }
+        },
+        "required": ["id"]
+      },
+      "visibility": "public",
+      "perfGuards": {
+        "throttle": { "intervalMs": 16 }
+      },
+      "notes": "Control panel update requested; routes to update sequence with throttling."
+    }
+  },
+  "definitions": {}
+}

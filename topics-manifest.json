@@ -212,6 +212,183 @@
       "perf": {},
       "notes": "Import completed; subscribers may hide progress and refresh views."
     },
+    "canvas.component.resize.start": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "dir": {
+            "type": "string"
+          },
+          "startLeft": {
+            "type": "number"
+          },
+          "startTop": {
+            "type": "number"
+          },
+          "startWidth": {
+            "type": "number"
+          },
+          "startHeight": {
+            "type": "number"
+          },
+          "phase": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Resize started; routes to resize start sequence."
+    },
+    "canvas.component.resize.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "dir": {
+            "type": "string"
+          },
+          "startLeft": {
+            "type": "number"
+          },
+          "startTop": {
+            "type": "number"
+          },
+          "startWidth": {
+            "type": "number"
+          },
+          "startHeight": {
+            "type": "number"
+          },
+          "dx": {
+            "type": "number"
+          },
+          "dy": {
+            "type": "number"
+          },
+          "phase": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Resize move; routes to resize move sequence with throttling for performance."
+    },
+    "canvas.component.resize.end": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "dir": {
+            "type": "string"
+          },
+          "startLeft": {
+            "type": "number"
+          },
+          "startTop": {
+            "type": "number"
+          },
+          "startWidth": {
+            "type": "number"
+          },
+          "startHeight": {
+            "type": "number"
+          },
+          "phase": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Resize ended; routes to resize end sequence."
+    },
+    "control.panel.update.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          },
+          "size": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Control panel update requested; routes to update sequence with throttling."
+    },
     "canvas.component.create.requested": {
       "routes": [
         {
