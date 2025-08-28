@@ -1,5 +1,6 @@
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 import { mapJsonComponentToTemplate } from "../../../src/jsonComponent.mapper";
+import { cssRegistry } from "../../control-panel/state/css-registry.store";
 
 function mapJsonComponentToTemplateCompat(json: any) {
   const tpl = mapJsonComponentToTemplate(json);
@@ -16,7 +17,7 @@ export const handlers = {
   async loadComponents(_data: any, ctx: any) {
     let list: any[] = [];
     try {
-      if (typeof globalThis !== "undefined" && typeof fetch === "function") {
+      if (typeof document !== "undefined" && typeof fetch === "function") {
         // Browser/dev server path: serve from public/json-components using JSON index
         const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
@@ -58,6 +59,40 @@ export const handlers = {
         list = mod?.default || [];
       } catch {}
     }
+
+    // Register JSON component CSS into CSS registry so exports include CSS
+    try {
+      const seen = new Set<string>();
+      for (const item of Array.isArray(list) ? list : []) {
+        // Support both shapes: { id, name, template, metadata } and plain template
+        const tpl = item?.template ?? item;
+        const css: string | undefined = tpl?.css;
+        if (typeof css === "string" && css.trim().length) {
+          // derive base class (exclude rx-comp)
+          const classes: string[] = Array.isArray(tpl?.classes)
+            ? tpl.classes
+            : [];
+          const base = classes.find(
+            (c) => c.startsWith("rx-") && c !== "rx-comp"
+          );
+          const metaType = item?.metadata?.replaces || item?.metadata?.type;
+          const name = base || (metaType ? `rx-${metaType}` : undefined);
+          if (name && !seen.has(name)) {
+            if (cssRegistry.hasClass(name)) cssRegistry.updateClass(name, css);
+            else cssRegistry.createClass(name, css);
+            seen.add(name);
+          }
+        }
+      }
+      const count = seen.size;
+      if (count)
+        ctx.logger?.info?.(
+          `Registered ${count} JSON component CSS classes into registry`
+        );
+    } catch (e) {
+      ctx.logger?.warn?.("Failed to register JSON component CSS:", e);
+    }
+
     ctx.payload.components = Array.isArray(list) ? list : [];
     return { count: ctx.payload.components.length };
   },

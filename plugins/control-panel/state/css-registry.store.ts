@@ -226,5 +226,10 @@ class CssRegistryStore {
 // Singleton instance
 export const cssRegistry = new CssRegistryStore();
 
+// Expose for browser debugging (development only)
+if (typeof window !== "undefined") {
+  (window as any).cssRegistry = cssRegistry;
+}
+
 // Export for testing
 export { CssRegistryStore };

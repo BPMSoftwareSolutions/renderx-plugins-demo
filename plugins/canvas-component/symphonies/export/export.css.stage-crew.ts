@@ -8,7 +8,12 @@ export function collectCssClasses(_data: any, ctx: any) {
     const unique = new Set<string>();
 
     for (const comp of components) {
-      const classes: string[] = Array.isArray(comp.classes) ? comp.classes : [];
+      // Support both comp.classes (legacy) and comp.template.classRefs (current export format)
+      const classes: string[] = Array.isArray(comp.classes)
+        ? comp.classes
+        : Array.isArray(comp.template?.classRefs)
+        ? comp.template.classRefs
+        : [];
       for (const c of classes) unique.add(c);
     }
 
@@ -30,4 +35,3 @@ export function collectCssClasses(_data: any, ctx: any) {
     ctx.payload.error = String(error);
   }
 }
-

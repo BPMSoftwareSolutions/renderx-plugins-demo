@@ -56,7 +56,7 @@ export const buildUiFileContent = (data: any, ctx: any) => {
 
     // Build complete UI file content with CSS classes section
     const uiFileContent = {
-      version: "1.0.0",
+      version: "1.0.1", // Bumped for CSS collection fix (classRefs support)
       metadata: {
         createdAt: new Date().toISOString(),
         canvasSize: {
@@ -79,7 +79,7 @@ export const buildUiFileContent = (data: any, ctx: any) => {
     ctx.logger?.error?.("Failed to build UI file content:", error);
     ctx.payload.error = String(error);
     ctx.payload.uiFileContent = {
-      version: "1.0.0",
+      version: "1.0.1", // Bumped for CSS collection fix (classRefs support)
       metadata: {
         createdAt: new Date().toISOString(),
         canvasSize: { width: 0, height: 0 },

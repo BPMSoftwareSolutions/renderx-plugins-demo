@@ -144,7 +144,7 @@ describe("canvas-component export integration", () => {
 
     // Validate structure
     expect(uiFile).toMatchObject({
-      version: "1.0.0",
+      version: "1.0.1",
       metadata: {
         createdAt: expect.any(String),
         canvasSize: { width: 1200, height: 800 },

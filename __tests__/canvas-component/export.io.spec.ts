@@ -78,7 +78,7 @@ describe("canvas-component export.io", () => {
       });
     });
 
-    it("should handle empty KV store gracefully (no DOM scan in IO)", async () => {
+    it("should handle empty KV store with DOM discovery fallback", async () => {
       const ctx = makeCtx();
       // Override to return empty array
       ctx.io.kv.getAll = async () => [];
@@ -87,10 +87,10 @@ describe("canvas-component export.io", () => {
 
       expect(ctx.payload.components).toEqual([]);
       expect(ctx.payload.componentCount).toBe(0);
-      expect(ctx.payload.source).toBe("kv-store"); // IO no longer scans DOM; stage-crew handles discovery
+      expect(ctx.payload.source).toBe("dom-discovery"); // Now performs DOM discovery when KV is empty
     });
 
-    it("should handle KV store errors (no DOM scan in IO)", async () => {
+    it("should handle KV store errors with DOM discovery fallback", async () => {
       const ctx = makeCtx();
       ctx.io.kv.getAll = async () => {
         throw new Error("KV store unavailable");
@@ -99,22 +99,22 @@ describe("canvas-component export.io", () => {
       await queryAllComponents({}, ctx);
 
       expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.source).toBe("kv-store"); // IO remains KV-only
+      expect(ctx.payload.source).toBe("dom-discovery"); // Falls back to DOM discovery
       expect(ctx.payload.componentCount).toBe(0);
     });
 
-    it("should return empty when KV store is empty (no DOM scan in IO)", async () => {
+    it("should return empty when KV store is empty and no DOM elements found", async () => {
       const ctx = makeCtx();
       ctx.io.kv.getAll = async () => [];
 
       await queryAllComponents({}, ctx);
 
       expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.source).toBe("kv-store");
+      expect(ctx.payload.source).toBe("dom-discovery"); // Attempts DOM discovery
       expect(ctx.payload.componentCount).toBe(0);
     });
 
-    it("should handle missing KV store gracefully (no DOM scan in IO)", async () => {
+    it("should handle missing KV store with DOM discovery fallback", async () => {
       const ctx = makeCtx();
       // Remove KV store entirely
       delete ctx.io.kv;
@@ -122,7 +122,7 @@ describe("canvas-component export.io", () => {
       await queryAllComponents({}, ctx);
 
       expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.source).toBe("kv-store");
+      expect(ctx.payload.source).toBe("dom-discovery"); // Falls back to DOM discovery
       expect(ctx.payload.componentCount).toBe(0);
     });
   });
