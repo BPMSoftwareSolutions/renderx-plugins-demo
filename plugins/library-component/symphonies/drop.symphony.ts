@@ -1,17 +1,19 @@
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
-import { resolveInteraction } from "../../../src/interactionManifest";
+import { EventRouter } from "../../../src/EventRouter";
 
 export const handlers = {
-  forwardToCanvasCreate(data: any, ctx: any) {
-    const r = resolveInteraction("canvas.component.create");
-    ctx.conductor?.play?.(r.pluginId, r.sequenceId, {
-      component: data.component,
-      position: data.position,
-      onComponentCreated: data.onComponentCreated,
-      onDragStart: data.onDragStart,
-      onDragMove: data.onDragMove,
-      onDragEnd: data.onDragEnd,
-      onSelected: data.onSelected,
-    });
+  async publishCreateRequested(data: any, ctx: any) {
+    const correlationId =
+      data?.correlationId || crypto.randomUUID?.() || String(Date.now());
+    await EventRouter.publish(
+      "canvas.component.create.requested",
+      {
+        component: data.component,
+        position: data.position,
+        containerId: data.containerId,
+        correlationId,
+      },
+      ctx.conductor
+    );
   },
 };

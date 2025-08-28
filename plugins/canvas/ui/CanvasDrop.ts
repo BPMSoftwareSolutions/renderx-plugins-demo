@@ -1,5 +1,6 @@
 import { resolveInteraction } from "../../../src/interactionManifest";
 import { isFlagEnabled } from "../../../src/feature-flags/flags";
+import { EventRouter } from "../../../src/EventRouter";
 
 // Lazily cached route for drag move to avoid resolving on every pointer move
 let __dragMoveRoute: { pluginId: string; sequenceId: string } | null = null;
@@ -19,13 +20,26 @@ export async function onDropForTest(
     targetEl && (targetEl as any).dataset?.role === "container"
   );
   const containerId = isContainer ? targetEl!.id : undefined;
-  const baseLeft = isContainer ? targetRect.left : canvasRect.left;
-  const baseTop = isContainer ? targetRect.top : canvasRect.top;
+  const baseLeft = isContainer
+    ? targetRect?.left || canvasRect.left
+    : canvasRect.left;
+  const baseTop = isContainer
+    ? targetRect?.top || canvasRect.top
+    : canvasRect.top;
   const position = { x: e.clientX - baseLeft, y: e.clientY - baseTop };
 
   // Define drag callbacks that use conductor.play
   const onDragStart = (dragData: any) => {
     (globalThis as any).__cpDragInProgress = true;
+
+    // Publish drag start notification (no routing; subscribers may listen)
+    try {
+      EventRouter.publish(
+        "canvas.component.drag.start",
+        { id: dragData?.id, correlationId: dragData?.correlationId },
+        conductor
+      );
+    } catch {}
 
     // Debug logs gated for perf
     if (isFlagEnabled("perf.cp.debug")) {
@@ -37,19 +51,30 @@ export async function onDropForTest(
   };
 
   const onDragMove = (dragData: any) => {
-    // Use conductor to update position (cache route to avoid repeated resolve calls)
+    // Publish drag move as a topic (throttled by EventRouter perf config)
     try {
-      if (!__dragMoveRoute) {
-        __dragMoveRoute = resolveInteraction("canvas.component.drag.move");
-      }
-      const r = __dragMoveRoute;
-      conductor?.play?.(r.pluginId, r.sequenceId, {
-        event: "canvas:component:drag:move",
-        ...dragData,
-      });
+      EventRouter.publish(
+        "canvas.component.drag.move",
+        {
+          event: "canvas:component:drag:move",
+          ...dragData,
+        },
+        conductor
+      );
     } catch {
-      // If resolver throws (unknown key), surface the error instead of hard-coding
-      throw new Error("Unknown interaction key: canvas.component.drag.move");
+      // Fallback to direct interaction routing if EventRouter is unavailable
+      try {
+        if (!__dragMoveRoute) {
+          __dragMoveRoute = resolveInteraction("canvas.component.drag.move");
+        }
+        const r = __dragMoveRoute;
+        conductor?.play?.(r.pluginId, r.sequenceId, {
+          event: "canvas:component:drag:move",
+          ...dragData,
+        });
+      } catch {
+        throw new Error("Unknown interaction key: canvas.component.drag.move");
+      }
     }
   };
 
@@ -60,6 +85,16 @@ export async function onDropForTest(
     if (isFlagEnabled("perf.cp.debug")) {
       console.log("Drag ended:", dragData);
     }
+
+    // Publish drag end notification (no routing; subscribers may react)
+    try {
+      const { id, position, correlationId } = dragData || {};
+      EventRouter.publish(
+        "canvas.component.drag.end",
+        { id, position, correlationId },
+        conductor
+      );
+    } catch {}
 
     // Optionally trigger a deferred Control Panel render after drag ends
     const perf = (globalThis as any).__cpPerf || {};
@@ -93,21 +128,42 @@ export async function onDropForTest(
   };
 
   try {
-    const { resolveInteraction } = require("../../../src/interactionManifest");
-    const routeKey = isContainer
-      ? "library.container.drop"
-      : "library.component.drop";
-    const r = resolveInteraction(routeKey);
-    conductor?.play?.(r.pluginId, r.sequenceId, {
-      component: payload.component,
-      position,
-      containerId,
-      onComponentCreated: onCreated,
-      onDragStart,
-      onDragMove,
-      onDragEnd,
-      onSelected,
-    });
+    const topicKey = isContainer
+      ? "library.container.drop.requested"
+      : "library.component.drop.requested";
+
+    try {
+      EventRouter.publish(
+        topicKey,
+        {
+          component: payload.component,
+          position,
+          containerId,
+          onComponentCreated: onCreated,
+          onDragStart,
+          onDragMove,
+          onDragEnd,
+          onSelected,
+        },
+        conductor
+      );
+    } catch {
+      // Fallback to direct interaction routing
+      const routeKey = isContainer
+        ? "library.container.drop"
+        : "library.component.drop";
+      const r = resolveInteraction(routeKey);
+      conductor?.play?.(r.pluginId, r.sequenceId, {
+        component: payload.component,
+        position,
+        containerId,
+        onComponentCreated: onCreated,
+        onDragStart,
+        onDragMove,
+        onDragEnd,
+        onSelected,
+      });
+    }
   } catch {
     const routeKey = isContainer
       ? "library.container.drop"

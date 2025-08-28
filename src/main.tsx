@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initConductor, registerAllSequences } from "./conductor";
 import { initInteractionManifest } from "./interactionManifest";
+import { initTopicsManifest } from "./topicsManifest";
+import { EventRouter } from "./EventRouter";
 import "./global.css";
 
 (async () => {
@@ -10,6 +12,8 @@ import "./global.css";
   await Promise.all([
     registerAllSequences(conductor),
     initInteractionManifest(),
+    initTopicsManifest(),
+    EventRouter.init(),
   ]);
 
   const rootEl = document.getElementById("root");

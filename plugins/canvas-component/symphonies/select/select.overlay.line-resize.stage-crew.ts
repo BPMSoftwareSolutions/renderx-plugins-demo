@@ -1,5 +1,6 @@
 import { getCanvasOrThrow } from "./select.overlay.dom.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
+import { EventRouter } from "../../../../src/EventRouter";
 
 function ensureLineCss() {
   if (typeof document === "undefined") return;
@@ -100,7 +101,6 @@ export function attachLineResizeHandlers(ov: HTMLDivElement, conductor?: any) {
           : phase === "end"
           ? "canvas.component.resize.line.end"
           : "canvas.component.resize.line.move";
-      const r = resolveInteraction(key);
       const payload: any = {
         id,
         handle: isA ? "a" : "b",
@@ -111,8 +111,19 @@ export function attachLineResizeHandlers(ov: HTMLDivElement, conductor?: any) {
       const play = conductor?.play || (window as any).RenderX?.conductor?.play;
       if (typeof play === "function") {
         try {
-          play(r.pluginId, r.sequenceId, payload);
-          return;
+          // Try EventRouter first, fallback to direct routing
+          try {
+            EventRouter.publish(
+              key,
+              payload,
+              conductor || (window as any).RenderX?.conductor
+            );
+            return;
+          } catch {
+            const r = resolveInteraction(key);
+            play(r.pluginId, r.sequenceId, payload);
+            return;
+          }
         } catch {}
       }
       // Fallback: directly update CSS vars on target

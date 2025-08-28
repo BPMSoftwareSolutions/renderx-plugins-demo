@@ -1,5 +1,6 @@
 import { getCanvasRect } from "./select.overlay.dom.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
+import { EventRouter } from "../../../../src/EventRouter";
 
 function readNumericPx(value: string): number | null {
   const n = parseFloat(value || "");
@@ -77,8 +78,13 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
           ? "canvas.component.resize.end"
           : "canvas.component.resize.move";
 
-      const r = resolveInteraction(key);
-      conductor.play(r.pluginId, r.sequenceId, payload);
+      try {
+        EventRouter.publish(key, payload, conductor);
+      } catch {
+        // Fallback to direct interaction routing if EventRouter fails
+        const r = resolveInteraction(key);
+        conductor.play(r.pluginId, r.sequenceId, payload);
+      }
     };
 
     let raf = 0;

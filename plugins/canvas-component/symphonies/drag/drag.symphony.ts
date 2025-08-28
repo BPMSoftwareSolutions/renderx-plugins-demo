@@ -1,5 +1,6 @@
 import { updatePosition } from "./drag.stage-crew";
 import { resolveInteraction } from "../../../../src/interactionManifest";
+import { EventRouter } from "../../../../src/EventRouter";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
@@ -26,11 +27,23 @@ export const handlers = {
       process.env.NODE_ENV === "test";
     if (isTest) {
       try {
-        const route = resolveInteraction("control.panel.update");
-        ctx.conductor.play(route.pluginId, route.sequenceId, {
-          id: elementId,
-          source: "drag",
-        });
+        // Try EventRouter first, fallback to direct routing
+        try {
+          EventRouter.publish(
+            "control.panel.update.requested",
+            {
+              id: elementId,
+              source: "drag",
+            },
+            ctx.conductor
+          );
+        } catch {
+          const route = resolveInteraction("control.panel.update");
+          ctx.conductor.play(route.pluginId, route.sequenceId, {
+            id: elementId,
+            source: "drag",
+          });
+        }
       } catch (e) {
         ctx.logger?.warn?.(
           "Failed to forward drag update to Control Panel:",
@@ -83,15 +96,28 @@ export const handlers = {
     const flush = () => {
       try {
         if (cpUpdateLatestId) {
-          if (!cpUpdateRouteCache) {
-            cpUpdateRouteCache = resolveInteraction("control.panel.update");
+          // Try EventRouter first, fallback to direct routing
+          try {
+            EventRouter.publish(
+              "control.panel.update.requested",
+              {
+                id: cpUpdateLatestId,
+                source: "drag",
+                position: cpUpdateLatestPos,
+              },
+              ctx.conductor
+            );
+          } catch {
+            if (!cpUpdateRouteCache) {
+              cpUpdateRouteCache = resolveInteraction("control.panel.update");
+            }
+            const route = cpUpdateRouteCache;
+            ctx.conductor.play(route.pluginId, route.sequenceId, {
+              id: cpUpdateLatestId,
+              source: "drag",
+              position: cpUpdateLatestPos,
+            });
           }
-          const route = cpUpdateRouteCache;
-          ctx.conductor.play(route.pluginId, route.sequenceId, {
-            id: cpUpdateLatestId,
-            source: "drag",
-            position: cpUpdateLatestPos,
-          });
         }
       } catch (e) {
         ctx.logger?.warn?.(

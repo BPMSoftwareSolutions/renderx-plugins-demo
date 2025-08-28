@@ -1,6 +1,7 @@
 import React from "react";
 import { useConductor } from "../../../src/conductor";
 import { resolveInteraction } from "../../../src/interactionManifest";
+import { EventRouter } from "../../../src/EventRouter";
 import type { SelectedElement } from "../types/control-panel.types";
 
 // Global guards to dedupe init across multiple hook instances/mounts
@@ -78,10 +79,19 @@ export function useControlPanelSequences() {
       }
 
       try {
-        const route = resolveInteraction("control.panel.ui.render");
-        conductor.play(route.pluginId, route.sequenceId, { selectedElement });
-      } catch (error) {
-        console.warn("Failed to trigger UI render sequence:", error);
+        EventRouter.publish(
+          "control.panel.ui.render.requested",
+          { selectedElement },
+          conductor
+        );
+      } catch {
+        // Fallback to direct interaction routing
+        try {
+          const route = resolveInteraction("control.panel.ui.render");
+          conductor.play(route.pluginId, route.sequenceId, { selectedElement });
+        } catch (error) {
+          console.warn("Failed to trigger UI render sequence:", error);
+        }
       }
     },
     [conductor, isInitialized]
@@ -105,14 +115,27 @@ export function useControlPanelSequences() {
       if (!conductor || !isInitialized || !selectedElement) return;
 
       try {
-        const route = resolveInteraction("control.panel.ui.field.change");
-        conductor.play(route.pluginId, route.sequenceId, {
-          fieldKey,
-          value,
-          selectedElement,
-        });
-      } catch (error) {
-        console.warn("Failed to handle field change via sequence:", error);
+        EventRouter.publish(
+          "control.panel.ui.field.change.requested",
+          {
+            fieldKey,
+            value,
+            selectedElement,
+          },
+          conductor
+        );
+      } catch {
+        // Fallback to direct interaction routing
+        try {
+          const route = resolveInteraction("control.panel.ui.field.change");
+          conductor.play(route.pluginId, route.sequenceId, {
+            fieldKey,
+            value,
+            selectedElement,
+          });
+        } catch (error) {
+          console.warn("Failed to handle field change via sequence:", error);
+        }
       }
     },
     [conductor, isInitialized]
@@ -124,10 +147,26 @@ export function useControlPanelSequences() {
       if (!conductor || !isInitialized) return;
 
       try {
-        const route = resolveInteraction("control.panel.ui.field.validate");
-        conductor.play(route.pluginId, route.sequenceId, { field, value });
-      } catch (error) {
-        console.warn("Failed to handle field validation via sequence:", error);
+        EventRouter.publish(
+          "control.panel.ui.field.validate.requested",
+          {
+            fieldKey: field?.key || field,
+            value,
+            selectedElement: field,
+          },
+          conductor
+        );
+      } catch {
+        // Fallback to direct interaction routing
+        try {
+          const route = resolveInteraction("control.panel.ui.field.validate");
+          conductor.play(route.pluginId, route.sequenceId, { field, value });
+        } catch (error) {
+          console.warn(
+            "Failed to handle field validation via sequence:",
+            error
+          );
+        }
       }
     },
     [conductor, isInitialized]
@@ -139,10 +178,19 @@ export function useControlPanelSequences() {
       if (!conductor || !isInitialized) return;
 
       try {
-        const route = resolveInteraction("control.panel.ui.section.toggle");
-        conductor.play(route.pluginId, route.sequenceId, { sectionId });
-      } catch (error) {
-        console.warn("Failed to handle section toggle via sequence:", error);
+        EventRouter.publish(
+          "control.panel.ui.section.toggle.requested",
+          { sectionId },
+          conductor
+        );
+      } catch {
+        // Fallback to direct interaction routing
+        try {
+          const route = resolveInteraction("control.panel.ui.section.toggle");
+          conductor.play(route.pluginId, route.sequenceId, { sectionId });
+        } catch (error) {
+          console.warn("Failed to handle section toggle via sequence:", error);
+        }
       }
     },
     [conductor, isInitialized]

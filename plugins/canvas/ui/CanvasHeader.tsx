@@ -1,6 +1,7 @@
 import React from "react";
 import { useConductor } from "../../../src/conductor";
 import { resolveInteraction } from "../../../src/interactionManifest";
+import { EventRouter } from "../../../src/EventRouter";
 import "./CanvasPage.css";
 
 export function CanvasHeader() {
@@ -31,8 +32,11 @@ export function CanvasHeader() {
 
   const handleImport = async () => {
     try {
-      const route = resolveInteraction("canvas.component.import");
-      await conductor?.play?.(route.pluginId, route.sequenceId, {});
+      await EventRouter.publish(
+        "canvas.component.import.requested",
+        {},
+        conductor
+      );
     } catch (error) {
       console.error("Failed to import canvas:", error);
     }

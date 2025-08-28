@@ -7,9 +7,16 @@
       "id": "drop",
       "name": "Drop",
       "beats": [
-        { "beat": 1, "event": "library:container:drop", "title": "Forward to Canvas Create (Container)", "dynamics": "mf", "handler": "forwardToCanvasCreate", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "library:container:drop",
+          "title": "Publish Create Requested (Container)",
+          "dynamics": "mf",
+          "handler": "publishCreateRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        }
       ]
     }
   ]
 }
-

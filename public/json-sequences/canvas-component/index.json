@@ -34,6 +34,18 @@
       "handlersPath": "/plugins/canvas-component/symphonies/export/export.symphony.ts"
     },
     {
+      "file": "resize.line.start.json",
+      "handlersPath": "/plugins/canvas-component/symphonies/resize-line/resize.line.start.symphony.ts"
+    },
+    {
+      "file": "resize.line.move.json",
+      "handlersPath": "/plugins/canvas-component/symphonies/resize-line/resize.line.move.symphony.ts"
+    },
+    {
+      "file": "resize.line.end.json",
+      "handlersPath": "/plugins/canvas-component/symphonies/resize-line/resize.line.end.symphony.ts"
+    },
+    {
       "file": "update.json",
       "handlersPath": "/plugins/canvas-component/symphonies/update/update.symphony.ts"
     }
