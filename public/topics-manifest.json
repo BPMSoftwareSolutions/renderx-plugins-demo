@@ -94,6 +94,60 @@
       },
       "notes": "Canvas component dragging movement updates; throttled to animation frame cadence."
     },
+    "canvas.component.drag.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          },
+          "correlationId": {
+            "type": "string"
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [
+        "correlationId"
+      ],
+      "perf": {},
+      "notes": "Drag ended; subscribers may trigger post-drag behavior (e.g., render)."
+    },
+    "canvas.component.selection.changed": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-show-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Selection changed; routes to control panel selection show."
+    },
     "canvas.component.create.requested": {
       "routes": [
         {

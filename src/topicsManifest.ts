@@ -69,3 +69,8 @@ export function getTopicDef(key: string): TopicDef | undefined {
   return topics[key];
 }
 
+// test-only: allow injection of topics for unit tests without I/O
+export function __setTopics(map: Record<string, TopicDef>) {
+  topics = map || {};
+  loaded = true;
+}

@@ -16,5 +16,18 @@ export const handlers = {
         ctx.logger?.warn?.("Control Panel selection observer error:", e);
       }
     }
+
+    // Publish selection changed topic to allow other subscribers (e.g., overlays)
+    try {
+      const { EventRouter } = require("../../../../src/EventRouter");
+      const id = selectionModel?.header?.id || data?.id;
+      if (id) {
+        EventRouter.publish(
+          "canvas.component.selection.changed",
+          { id },
+          ctx.conductor
+        );
+      }
+    } catch {}
   },
 };

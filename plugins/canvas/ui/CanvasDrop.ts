@@ -83,6 +83,17 @@ export async function onDropForTest(
       console.log("Drag ended:", dragData);
     }
 
+    // Publish drag end notification (no routing; subscribers may react)
+    try {
+      const { EventRouter } = require("../../../src/EventRouter");
+      const { id, position, correlationId } = dragData || {};
+      EventRouter.publish(
+        "canvas.component.drag.end",
+        { id, position, correlationId },
+        conductor
+      );
+    } catch {}
+
     // Optionally trigger a deferred Control Panel render after drag ends
     const perf = (globalThis as any).__cpPerf || {};
     let deferMs = 0;
