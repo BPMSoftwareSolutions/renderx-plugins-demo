@@ -9,6 +9,7 @@ import validSequenceHandlers from "./eslint-rules/valid-sequence-handlers.js";
 import interactionKeys from "./eslint-rules/interaction-keys.js";
 import ruleEngineCoverage from "./eslint-rules/rule-engine-coverage.js";
 import importCssInjectionCoverage from "./eslint-rules/import-css-injection-coverage.js";
+import topicsKeys from "./eslint-rules/topics-keys.js";
 
 export default [
   {
@@ -34,6 +35,7 @@ export default [
       "interaction-keys": interactionKeys,
       "rule-engine-coverage": ruleEngineCoverage,
       "import-css-injection-coverage": importCssInjectionCoverage,
+      "topics-keys": topicsKeys,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -42,6 +44,7 @@ export default [
       "feature-flags/enforce-flag-ids": "error",
       "sequence-handlers/validate-handlers": "error",
       "interaction-keys/valid-keys": "error",
+      "topics-keys/valid-topics": "error",
       "rule-engine-coverage/validate-control-panel-rules": "error",
       "import-css-injection-coverage/validate-import-css": "error",
       "@typescript-eslint/no-unused-vars": [

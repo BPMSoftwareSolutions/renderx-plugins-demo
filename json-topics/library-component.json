@@ -1,0 +1,27 @@
+{
+  "plugin": "LibraryComponentPlugin",
+  "topics": {
+    "canvas.component.create.requested": {
+      "route": { "pluginId": "CanvasComponentPlugin", "sequenceId": "canvas-component-create-symphony" },
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "component": { "type": "object" },
+          "position": {
+            "type": "object",
+            "properties": { "x": { "type": "number" }, "y": { "type": "number" } },
+            "required": ["x", "y"]
+          },
+          "containerId": { "type": "string" },
+          "correlationId": { "type": "string" }
+        },
+        "required": ["component", "position", "correlationId"]
+      },
+      "visibility": "public",
+      "correlationKeys": ["correlationId"],
+      "notes": "User requests creation of a component at a position (optionally inside container)."
+    }
+  },
+  "definitions": {}
+}
+

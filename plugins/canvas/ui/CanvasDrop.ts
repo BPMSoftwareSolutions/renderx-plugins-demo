@@ -27,6 +27,16 @@ export async function onDropForTest(
   const onDragStart = (dragData: any) => {
     (globalThis as any).__cpDragInProgress = true;
 
+    // Publish drag start notification (no routing; subscribers may listen)
+    try {
+      const { EventRouter } = require("../../../src/EventRouter");
+      EventRouter.publish(
+        "canvas.component.drag.start",
+        { id: dragData?.id, correlationId: dragData?.correlationId },
+        conductor
+      );
+    } catch {}
+
     // Debug logs gated for perf
     if (isFlagEnabled("perf.cp.debug")) {
       console.log("Drag started:", dragData);
@@ -37,19 +47,31 @@ export async function onDropForTest(
   };
 
   const onDragMove = (dragData: any) => {
-    // Use conductor to update position (cache route to avoid repeated resolve calls)
+    // Publish drag move as a topic (throttled by EventRouter perf config)
     try {
-      if (!__dragMoveRoute) {
-        __dragMoveRoute = resolveInteraction("canvas.component.drag.move");
-      }
-      const r = __dragMoveRoute;
-      conductor?.play?.(r.pluginId, r.sequenceId, {
-        event: "canvas:component:drag:move",
-        ...dragData,
-      });
+      const { EventRouter } = require("../../../src/EventRouter");
+      EventRouter.publish(
+        "canvas.component.drag.move",
+        {
+          event: "canvas:component:drag:move",
+          ...dragData,
+        },
+        conductor
+      );
     } catch {
-      // If resolver throws (unknown key), surface the error instead of hard-coding
-      throw new Error("Unknown interaction key: canvas.component.drag.move");
+      // Fallback to direct interaction routing if EventRouter is unavailable
+      try {
+        if (!__dragMoveRoute) {
+          __dragMoveRoute = resolveInteraction("canvas.component.drag.move");
+        }
+        const r = __dragMoveRoute;
+        conductor?.play?.(r.pluginId, r.sequenceId, {
+          event: "canvas:component:drag:move",
+          ...dragData,
+        });
+      } catch {
+        throw new Error("Unknown interaction key: canvas.component.drag.move");
+      }
     }
   };
 

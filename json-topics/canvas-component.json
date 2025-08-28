@@ -1,0 +1,62 @@
+{
+  "plugin": "CanvasComponentPlugin",
+  "topics": {
+    "canvas.component.created": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "correlationId": { "type": "string" }
+        },
+        "required": ["id", "correlationId"]
+      },
+      "visibility": "public",
+      "correlationKeys": ["correlationId"],
+      "notes": "Emitted when a canvas component has been created."
+    },
+    "canvas.component.drag.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "correlationId": { "type": "string" }
+        }
+      },
+      "visibility": "internal",
+      "correlationKeys": ["correlationId"],
+      "notes": "Drag start signal; useful for subscribers; no routing."
+    },
+    "canvas.component.drag.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            },
+            "required": ["x", "y"]
+          },
+          "event": { "type": "string" },
+          "correlationId": { "type": "string" }
+        },
+        "required": ["id", "position"]
+      },
+      "visibility": "public",
+      "correlationKeys": ["correlationId"],
+      "perf": { "throttleMs": 16 },
+      "notes": "Canvas component dragging movement updates; throttled to animation frame cadence."
+    }
+  },
+  "definitions": {}
+}

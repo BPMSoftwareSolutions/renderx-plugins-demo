@@ -28,6 +28,30 @@
     {
       "file": "css.delete.json",
       "handlersPath": "/plugins/control-panel/symphonies/css-management/css-management.symphony.ts"
+    },
+    {
+      "file": "ui.init.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.init.batched.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.render.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.field.change.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.field.validate.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.section.toggle.json",
+      "handlersPath": "/plugins/control-panel/symphonies/ui/ui.symphony.ts"
     }
   ]
 }
