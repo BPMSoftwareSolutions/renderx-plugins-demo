@@ -148,6 +148,70 @@
       "perf": {},
       "notes": "Selection changed; routes to control panel selection show."
     },
+    "canvas.component.import.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "User initiated canvas import; routes to import sequence."
+    },
+    "canvas.component.import.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "correlationId"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [
+        "correlationId"
+      ],
+      "perf": {},
+      "notes": "Import started; subscribers may show progress UI."
+    },
+    "canvas.component.import.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "components": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "correlationId"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [
+        "correlationId"
+      ],
+      "perf": {},
+      "notes": "Import completed; subscribers may hide progress and refresh views."
+    },
     "canvas.component.create.requested": {
       "routes": [
         {

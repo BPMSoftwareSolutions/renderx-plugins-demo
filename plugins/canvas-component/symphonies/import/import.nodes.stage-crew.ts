@@ -1,4 +1,5 @@
 import { resolveInteraction } from "../../../../src/interactionManifest";
+import { EventRouter } from "../../../../src/EventRouter";
 
 /**
  * Transform import component data to canvas.component.create format
@@ -68,38 +69,59 @@ export async function createComponentsSequentially(_data: any, ctx: any) {
     const createPayload = transformImportDataToCreateFormat(comp);
 
     // Add interaction handlers (same as library drop flow)
-    createPayload.onDragStart = (_info: any) => {
-      // Match CanvasDrop.ts behavior: mark drag in progress; no resolver call
+    createPayload.onDragStart = (info: any) => {
+      // Match CanvasDrop.ts behavior: mark drag in progress
       try {
         (globalThis as any).__cpDragInProgress = true;
+      } catch {}
+      // Publish drag.start for subscribers
+      try {
+        EventRouter.publish(
+          "canvas.component.drag.start",
+          { id: info?.id },
+          ctx.conductor
+        );
       } catch {}
     };
 
     createPayload.onDragMove = (info: any) => {
-      // Use the same resolver as CanvasDrop.ts
+      // Publish drag.move through EventRouter
       try {
-        const dragRoute = resolveInteraction("canvas.component.drag.move");
-        ctx.conductor?.play?.(dragRoute.pluginId, dragRoute.sequenceId, {
-          event: "canvas:component:drag:move",
-          ...info,
-        });
+        const { id, position } = info || {};
+        EventRouter.publish(
+          "canvas.component.drag.move",
+          { id, position, event: "canvas:component:drag:move" },
+          ctx.conductor
+        );
       } catch {}
     };
 
-    createPayload.onDragEnd = (_info: any) => {
-      // Match CanvasDrop.ts behavior: clear flag; no resolver call
+    createPayload.onDragEnd = (info: any) => {
+      // Match CanvasDrop.ts behavior: clear flag
       try {
         (globalThis as any).__cpDragInProgress = false;
+      } catch {}
+      // Publish drag.end for subscribers
+      try {
+        const { id, finalPosition, correlationId } = info || {};
+        // Map finalPosition to position for consistency with other drag handlers
+        const position = finalPosition || info?.position;
+        EventRouter.publish(
+          "canvas.component.drag.end",
+          { id, position, correlationId },
+          ctx.conductor
+        );
       } catch {}
     };
 
     createPayload.onSelected = (info: any) => {
-      // Handle selection for imported components
+      // Handle selection for imported components via topics routing
       try {
-        const selectRoute = resolveInteraction("canvas.component.select");
-        ctx.conductor?.play?.(selectRoute.pluginId, selectRoute.sequenceId, {
-          id: info.id,
-        });
+        EventRouter.publish(
+          "canvas.component.selection.changed",
+          { id: info?.id },
+          ctx.conductor
+        );
       } catch {}
     };
 
@@ -138,4 +160,17 @@ export function applyHierarchyAndOrder(_data: any, ctx: any) {
       container.appendChild(el); // appending in order enforces sibling order
     }
   }
+
+  // Notify import completed
+  try {
+    const correlationId = ctx.payload.importCorrelationId;
+    const components = Array.isArray(list) ? list.length : 0;
+    if (correlationId) {
+      EventRouter.publish(
+        "canvas.component.import.completed",
+        { correlationId, components },
+        ctx.conductor
+      );
+    }
+  } catch {}
 }

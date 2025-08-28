@@ -1,5 +1,6 @@
 import { resolveInteraction } from "../../../src/interactionManifest";
 import { isFlagEnabled } from "../../../src/feature-flags/flags";
+import { EventRouter } from "../../../src/EventRouter";
 
 // Lazily cached route for drag move to avoid resolving on every pointer move
 let __dragMoveRoute: { pluginId: string; sequenceId: string } | null = null;
@@ -29,7 +30,6 @@ export async function onDropForTest(
 
     // Publish drag start notification (no routing; subscribers may listen)
     try {
-      const { EventRouter } = require("../../../src/EventRouter");
       EventRouter.publish(
         "canvas.component.drag.start",
         { id: dragData?.id, correlationId: dragData?.correlationId },
@@ -49,7 +49,6 @@ export async function onDropForTest(
   const onDragMove = (dragData: any) => {
     // Publish drag move as a topic (throttled by EventRouter perf config)
     try {
-      const { EventRouter } = require("../../../src/EventRouter");
       EventRouter.publish(
         "canvas.component.drag.move",
         {
@@ -85,7 +84,6 @@ export async function onDropForTest(
 
     // Publish drag end notification (no routing; subscribers may react)
     try {
-      const { EventRouter } = require("../../../src/EventRouter");
       const { id, position, correlationId } = dragData || {};
       EventRouter.publish(
         "canvas.component.drag.end",
@@ -126,7 +124,6 @@ export async function onDropForTest(
   };
 
   try {
-    const { resolveInteraction } = require("../../../src/interactionManifest");
     const routeKey = isContainer
       ? "library.container.drop"
       : "library.component.drop";
