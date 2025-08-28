@@ -1,6 +1,39 @@
 {
-  "plugin": "CanvasComponentPlugin",
+  "version": "1.0.0",
   "topics": {
+    "canvas.component.create.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "component": { "type": "object" },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            },
+            "required": ["x", "y"]
+          },
+          "containerId": { "type": "string" },
+          "correlationId": { "type": "string" },
+          "onComponentCreated": { "type": "object" },
+          "onDragStart": { "type": "object" },
+          "onDragMove": { "type": "object" },
+          "onDragEnd": { "type": "object" },
+          "onSelected": { "type": "object" }
+        },
+        "required": ["component", "position"]
+      },
+      "visibility": "public",
+      "correlationKeys": ["correlationId"],
+      "notes": "Canvas component creation requested; routes to create sequence."
+    },
     "canvas.component.created": {
       "routes": [],
       "payloadSchema": {
@@ -229,6 +262,72 @@
         "throttle": { "intervalMs": 100 }
       },
       "notes": "Canvas component update requested; routes to update sequence with throttling."
+    },
+    "canvas.component.resize.line.start": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeStartPlugin",
+          "sequenceId": "canvas-line-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "handle": { "type": "string" },
+          "dx": { "type": "number" },
+          "dy": { "type": "number" },
+          "phase": { "type": "string" }
+        },
+        "required": ["id", "handle", "phase"]
+      },
+      "visibility": "public",
+      "notes": "Line resize started; routes to line resize start sequence."
+    },
+    "canvas.component.resize.line.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeMovePlugin",
+          "sequenceId": "canvas-line-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "handle": { "type": "string" },
+          "dx": { "type": "number" },
+          "dy": { "type": "number" },
+          "phase": { "type": "string" }
+        },
+        "required": ["id", "handle", "dx", "dy", "phase"]
+      },
+      "visibility": "public",
+      "perfGuards": {
+        "throttle": { "intervalMs": 16 }
+      },
+      "notes": "Line resize move; routes to line resize move sequence with throttling for performance."
+    },
+    "canvas.component.resize.line.end": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeEndPlugin",
+          "sequenceId": "canvas-line-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "handle": { "type": "string" },
+          "dx": { "type": "number" },
+          "dy": { "type": "number" },
+          "phase": { "type": "string" }
+        },
+        "required": ["id", "handle", "phase"]
+      },
+      "visibility": "public",
+      "notes": "Line resize ended; routes to line resize end sequence."
     }
   },
   "definitions": {}
