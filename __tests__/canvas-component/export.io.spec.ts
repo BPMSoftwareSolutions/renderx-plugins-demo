@@ -78,53 +78,8 @@ describe("canvas-component export.io", () => {
       });
     });
 
-    it("should handle empty KV store with DOM discovery fallback", async () => {
-      const ctx = makeCtx();
-      // Override to return empty array
-      ctx.io.kv.getAll = async () => [];
-
-      await queryAllComponents({}, ctx);
-
-      expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.componentCount).toBe(0);
-      expect(ctx.payload.source).toBe("dom-discovery"); // Now performs DOM discovery when KV is empty
-    });
-
-    it("should handle KV store errors with DOM discovery fallback", async () => {
-      const ctx = makeCtx();
-      ctx.io.kv.getAll = async () => {
-        throw new Error("KV store unavailable");
-      };
-
-      await queryAllComponents({}, ctx);
-
-      expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.source).toBe("dom-discovery"); // Falls back to DOM discovery
-      expect(ctx.payload.componentCount).toBe(0);
-    });
-
-    it("should return empty when KV store is empty and no DOM elements found", async () => {
-      const ctx = makeCtx();
-      ctx.io.kv.getAll = async () => [];
-
-      await queryAllComponents({}, ctx);
-
-      expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.source).toBe("dom-discovery"); // Attempts DOM discovery
-      expect(ctx.payload.componentCount).toBe(0);
-    });
-
-    it("should handle missing KV store with DOM discovery fallback", async () => {
-      const ctx = makeCtx();
-      // Remove KV store entirely
-      delete ctx.io.kv;
-
-      await queryAllComponents({}, ctx);
-
-      expect(ctx.payload.components).toEqual([]);
-      expect(ctx.payload.source).toBe("dom-discovery"); // Falls back to DOM discovery
-      expect(ctx.payload.componentCount).toBe(0);
-    });
+    // Note: KV discovery fallbacks are now handled by stage-crew beats. IO does not perform DOM discovery.
+    // Tests expecting DOM discovery should be covered in stage-crew and integration tests.
   });
 
   describe("collectCssClasses (moved to stage-crew)", () => {

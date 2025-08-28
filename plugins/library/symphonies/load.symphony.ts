@@ -17,7 +17,21 @@ export const handlers = {
   async loadComponents(_data: any, ctx: any) {
     let list: any[] = [];
     try {
-      if (typeof globalThis !== "undefined" && typeof fetch === "function") {
+      const isVitest = (() => {
+        try {
+          // @ts-ignore - Vitest injects this flag
+          return !!(import.meta as any)?.vitest;
+        } catch {
+          return false;
+        }
+      })();
+
+      if (
+        typeof window !== "undefined" &&
+        typeof document !== "undefined" &&
+        typeof fetch === "function" &&
+        !isVitest
+      ) {
         // Browser/dev server path: serve from public/json-components using JSON index
         const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };

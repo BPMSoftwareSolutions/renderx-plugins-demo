@@ -1,6 +1,29 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { EventRouter } from "../../src/EventRouter";
-import { buildTopicsManifest } from "../../scripts/generate-topics-manifest.js";
+// Inline minimal manifest builder for tests (avoid importing node script)
+function buildTopicsManifest(catalogs: any[]) {
+  const topics: Record<string, any> = {};
+  for (const cat of catalogs || []) {
+    const t = (cat as any)?.topics || {};
+    for (const [key, def] of Object.entries(t)) {
+      const routes: any[] = [];
+      if ((def as any)?.route) routes.push((def as any).route);
+      if (Array.isArray((def as any)?.routes))
+        routes.push(...(def as any).routes);
+      topics[key] = {
+        routes,
+        payloadSchema: (def as any)?.payloadSchema || null,
+        visibility: (def as any)?.visibility || "public",
+        correlationKeys: Array.isArray((def as any)?.correlationKeys)
+          ? (def as any).correlationKeys
+          : [],
+        perf: (def as any)?.perf || {},
+        notes: (def as any)?.notes || "",
+      };
+    }
+  }
+  return { version: "1.0.0", topics } as any;
+}
 
 // Minimal in-memory catalogs for tests (avoids file I/O)
 const catalogs = [
@@ -41,13 +64,13 @@ describe("EventRouter routing", () => {
 
   it("routes publish() to conductor.play for topics with routes", async () => {
     const conductor = makeConductorCapture();
-    await EventRouter.publish(
-      "test.route",
-      { foo: 1 },
-      conductor
-    );
+    await EventRouter.publish("test.route", { foo: 1 }, conductor);
     expect(conductor.calls.length).toBe(1);
-    expect(conductor.calls[0]).toEqual({ pid: "P1", sid: "S1", payload: { foo: 1 } });
+    expect(conductor.calls[0]).toEqual({
+      pid: "P1",
+      sid: "S1",
+      payload: { foo: 1 },
+    });
   });
 
   it("does not call conductor.play for notify-only topics, but notifies subscribers", async () => {
@@ -61,4 +84,3 @@ describe("EventRouter routing", () => {
     expect(observed).toEqual({ bar: 2 });
   });
 });
-

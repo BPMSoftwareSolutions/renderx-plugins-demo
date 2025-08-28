@@ -1,6 +1,7 @@
 import { queryAllComponents } from "./export.io";
 import { collectLayoutData } from "./export.stage-crew";
 import { collectCssClasses } from "./export.css.stage-crew";
+import { discoverComponentsFromDom } from "./export.discover.stage-crew";
 import { downloadUiFile } from "./export.download.stage-crew";
 import { buildUiFileContent } from "./export.pure";
 
@@ -8,6 +9,7 @@ import { buildUiFileContent } from "./export.pure";
 
 export const handlers = {
   queryAllComponents,
+  discoverComponentsFromDom, // stage-crew
   collectCssClasses, // stage-crew
   collectLayoutData,
   buildUiFileContent,

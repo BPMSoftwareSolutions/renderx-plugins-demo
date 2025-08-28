@@ -22,9 +22,8 @@ export const queryAllComponents = async (data: any, ctx: any) => {
     // If KV store is empty, request DOM discovery via stage-crew handler
     if (!components || components.length === 0) {
       ctx.logger?.info?.("KV store empty, requesting DOM discovery for export");
-      // This will be handled by the stage-crew handler in export.stage-crew.ts
-      // The handler will populate ctx.payload.discoveredComponents
-      components = ctx.payload.discoveredComponents || [];
+      // Stage-crew beats will populate ctx.payload.components via DOM discovery when KV is empty
+      components = ctx.payload.components || [];
     }
 
     ctx.payload.components = components || [];
