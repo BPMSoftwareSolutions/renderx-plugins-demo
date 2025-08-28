@@ -55,7 +55,9 @@ export const createNode = (data: any, ctx: any) => {
   const style = computeInlineStyle(data, tpl);
 
   // 6) Apply classes and inline style (position + size) and text
-  const classList = [...(tpl.classes || []), instanceClass];
+  const classList = Array.from(
+    new Set([...(tpl.classes || []), instanceClass])
+  );
   applyClasses(el, classList);
   applyInlineStyle(el, style);
   if (typeof tpl.text === "string" && tpl.text.length)
@@ -74,6 +76,20 @@ export const createNode = (data: any, ctx: any) => {
   // 6.6) Apply content properties if they exist in the template
   if (tpl?.content && typeof tpl.content === "object") {
     applyContentProperties(el, tpl.content, tpl.tag);
+
+    // 6.6.1) Apply variant/size (and other toggle rules) using the rule engine
+    try {
+      const rules = _ruleEngine.getUpdateRulesFor(el) || [];
+      for (const r of rules as any[]) {
+        if (r?.action === "toggleClassVariant") {
+          const attr = r.whenAttr;
+          const val = (tpl.content as any)[attr];
+          if (val !== undefined) {
+            _ruleEngine.applyUpdate(el, attr, val);
+          }
+        }
+      }
+    } catch {}
   }
 
   // 6.6) If this is an SVG line, append a child <line> and set svg attributes

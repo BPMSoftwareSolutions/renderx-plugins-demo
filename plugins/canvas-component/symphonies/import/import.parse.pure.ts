@@ -61,6 +61,15 @@ export function parseUiFile(_data: any, ctx: any) {
         createdAt: c.createdAt || Date.now(),
       };
 
+      // Normalize classRefs to always include base classes
+      const baseClasses = ["rx-comp", `rx-${component.type}`];
+      const existing = Array.isArray(component.classRefs)
+        ? component.classRefs.filter(
+            (x: any) => typeof x === "string" && x.length
+          )
+        : [];
+      component.classRefs = Array.from(new Set([...baseClasses, ...existing]));
+
       // Include content properties if they exist
       if (c.content && typeof c.content === "object") {
         component.content = { ...c.content };
