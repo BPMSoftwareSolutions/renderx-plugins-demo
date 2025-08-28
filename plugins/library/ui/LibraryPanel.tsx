@@ -1,10 +1,13 @@
 import React from "react";
 import { useConductor } from "../../../src/conductor";
 import { resolveInteraction } from "../../../src/interactionManifest";
-import { groupComponentsByCategory, getCategoryDisplayName } from "../utils/library.utils.js";
+import { EventRouter } from "../../../src/EventRouter";
+import {
+  groupComponentsByCategory,
+  getCategoryDisplayName,
+} from "../utils/library.utils.js";
 import { LibraryPreview } from "./LibraryPreview";
 import "./LibraryPanel.css";
-
 
 export function LibraryPanel() {
   const conductor = useConductor();
@@ -12,10 +15,21 @@ export function LibraryPanel() {
   const safeItems = Array.isArray(items) ? items : [];
 
   React.useEffect(() => {
-    const r = resolveInteraction("library.load");
-    conductor?.play?.(r.pluginId, r.sequenceId, {
-      onComponentsLoaded: (list: any[]) => setItems(list),
-    });
+    try {
+      EventRouter.publish(
+        "library.load.requested",
+        {
+          onComponentsLoaded: (list: any[]) => setItems(list),
+        },
+        conductor
+      );
+    } catch {
+      // Fallback to direct interaction routing
+      const r = resolveInteraction("library.load");
+      conductor?.play?.(r.pluginId, r.sequenceId, {
+        onComponentsLoaded: (list: any[]) => setItems(list),
+      });
+    }
   }, [conductor]);
 
   const groupedComponents = groupComponentsByCategory(safeItems);
@@ -24,16 +38,24 @@ export function LibraryPanel() {
     <div className="library-sidebar">
       <div className="library-sidebar-header">
         <h2 className="library-sidebar-title">🧩 Component Library</h2>
-        <p className="library-sidebar-subtitle">Drag components to the canvas</p>
+        <p className="library-sidebar-subtitle">
+          Drag components to the canvas
+        </p>
       </div>
 
       <div className="library-component-library rx-lib">
         {Object.entries(groupedComponents).map(([category, components]) => (
           <div key={category} className="library-component-category">
-            <div className="library-category-title">{getCategoryDisplayName(category)}</div>
+            <div className="library-category-title">
+              {getCategoryDisplayName(category)}
+            </div>
             <div className="library-component-grid">
               {components.map((component) => (
-                <LibraryPreview key={component.id} component={component} conductor={conductor} />
+                <LibraryPreview
+                  key={component.id}
+                  component={component}
+                  conductor={conductor}
+                />
               ))}
             </div>
           </div>

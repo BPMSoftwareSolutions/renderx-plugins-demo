@@ -682,11 +682,42 @@
       "perf": {},
       "notes": "Control panel selection show requested; routes to selection show sequence."
     },
-    "canvas.component.create.requested": {
+    "library.component.drag.start.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
-          "sequenceId": "canvas-component-create-symphony"
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string"
+          },
+          "domEvent": {
+            "type": "object"
+          },
+          "component": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "event",
+          "domEvent",
+          "component"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Library component drag start requested; routes to drag start sequence."
+    },
+    "library.component.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentDropPlugin",
+          "sequenceId": "library-component-drop-symphony"
         }
       ],
       "payloadSchema": {
@@ -713,22 +744,109 @@
           "containerId": {
             "type": "string"
           },
-          "correlationId": {
+          "onComponentCreated": {
+            "type": "object"
+          },
+          "onDragStart": {
+            "type": "object"
+          },
+          "onDragMove": {
+            "type": "object"
+          },
+          "onDragEnd": {
+            "type": "object"
+          },
+          "onSelected": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "component",
+          "position"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Library component drop requested; routes to drop sequence."
+    },
+    "library.container.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentDropPlugin",
+          "sequenceId": "library-component-container-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "component": {
+            "type": "object"
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ]
+          },
+          "containerId": {
             "type": "string"
+          },
+          "onComponentCreated": {
+            "type": "object"
+          },
+          "onDragStart": {
+            "type": "object"
+          },
+          "onDragMove": {
+            "type": "object"
+          },
+          "onDragEnd": {
+            "type": "object"
+          },
+          "onSelected": {
+            "type": "object"
           }
         },
         "required": [
           "component",
           "position",
-          "correlationId"
+          "containerId"
         ]
       },
       "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
+      "correlationKeys": [],
       "perf": {},
-      "notes": "User requests creation of a component at a position (optionally inside container)."
+      "notes": "Library container drop requested; routes to container drop sequence."
+    },
+    "library.load.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryPlugin",
+          "sequenceId": "library-load-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "onComponentsLoaded": {
+            "type": "object"
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Library load requested; routes to library load sequence."
     }
   }
 }

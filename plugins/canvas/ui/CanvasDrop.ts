@@ -20,8 +20,12 @@ export async function onDropForTest(
     targetEl && (targetEl as any).dataset?.role === "container"
   );
   const containerId = isContainer ? targetEl!.id : undefined;
-  const baseLeft = isContainer ? targetRect.left : canvasRect.left;
-  const baseTop = isContainer ? targetRect.top : canvasRect.top;
+  const baseLeft = isContainer
+    ? targetRect?.left || canvasRect.left
+    : canvasRect.left;
+  const baseTop = isContainer
+    ? targetRect?.top || canvasRect.top
+    : canvasRect.top;
   const position = { x: e.clientX - baseLeft, y: e.clientY - baseTop };
 
   // Define drag callbacks that use conductor.play
@@ -124,20 +128,42 @@ export async function onDropForTest(
   };
 
   try {
-    const routeKey = isContainer
-      ? "library.container.drop"
-      : "library.component.drop";
-    const r = resolveInteraction(routeKey);
-    conductor?.play?.(r.pluginId, r.sequenceId, {
-      component: payload.component,
-      position,
-      containerId,
-      onComponentCreated: onCreated,
-      onDragStart,
-      onDragMove,
-      onDragEnd,
-      onSelected,
-    });
+    const topicKey = isContainer
+      ? "library.container.drop.requested"
+      : "library.component.drop.requested";
+
+    try {
+      EventRouter.publish(
+        topicKey,
+        {
+          component: payload.component,
+          position,
+          containerId,
+          onComponentCreated: onCreated,
+          onDragStart,
+          onDragMove,
+          onDragEnd,
+          onSelected,
+        },
+        conductor
+      );
+    } catch {
+      // Fallback to direct interaction routing
+      const routeKey = isContainer
+        ? "library.container.drop"
+        : "library.component.drop";
+      const r = resolveInteraction(routeKey);
+      conductor?.play?.(r.pluginId, r.sequenceId, {
+        component: payload.component,
+        position,
+        containerId,
+        onComponentCreated: onCreated,
+        onDragStart,
+        onDragMove,
+        onDragEnd,
+        onSelected,
+      });
+    }
   } catch {
     const routeKey = isContainer
       ? "library.container.drop"
