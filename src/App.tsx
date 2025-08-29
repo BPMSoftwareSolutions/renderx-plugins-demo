@@ -1,7 +1,20 @@
 import React, { Suspense } from "react";
 import { PanelSlot } from "./components/PanelSlot";
+import { LayoutEngine } from "./layout/LayoutEngine";
+import { isFlagEnabled } from "./feature-flags/flags";
 
 export default function App() {
+  const useLayoutManifest = isFlagEnabled("ui.layout-manifest");
+
+  if (useLayoutManifest) {
+    return (
+      <Suspense fallback={<div className="p-3">Loading Layout…</div>}>
+        <LayoutEngine />
+      </Suspense>
+    );
+  }
+
+  // Legacy fallback layout
   return (
     <div style={{ display: "grid", gridTemplateColumns: "320px 1fr 360px", height: "100vh" }}>
       <Suspense fallback={<div className="p-3">Loading Library…</div>}>

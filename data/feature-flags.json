@@ -96,5 +96,11 @@
     "created": "2025-08-28",
     "description": "Enable runtime schema validation for EventRouter payloads in dev/test",
     "owner": "tooling"
+  },
+  "ui.layout-manifest": {
+    "status": "off",
+    "created": "2025-08-29",
+    "description": "Enable layout-manifest driven slot rendering (issue #61)",
+    "owner": "layout"
   }
 }
