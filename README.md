@@ -62,6 +62,11 @@ Check out these supporting projects for more detail on the underlying architectu
   - Create a plugin that registers into the conductor’s flow
   - Use `conductor.play()` to orchestrate actions across plugins
 
+## Layout and Slots
+
+- To add a new slot using the layout-manifest path, see:
+  - docs/layout/ADD-A-SLOT.md
+
 ## Host SDK Migration (for external plugin authors)
 
 See the canonical checklist and guidance here:
