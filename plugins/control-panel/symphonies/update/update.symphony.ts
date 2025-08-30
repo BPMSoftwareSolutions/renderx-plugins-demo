@@ -1,6 +1,6 @@
 import { updateFromElement } from "./update.stage-crew";
 import { getSelectionObserver } from "../../state/observer.store";
-import { isFlagEnabled } from "../../../../src/feature-flags/flags";
+import { isFlagEnabled } from "@renderx/host-sdk";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 

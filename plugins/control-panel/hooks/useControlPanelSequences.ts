@@ -1,7 +1,9 @@
 import React from "react";
-import { useConductor } from "../../../src/conductor";
-import { resolveInteraction } from "../../../src/interactionManifest";
-import { EventRouter } from "../../../src/EventRouter";
+import {
+  useConductor,
+  resolveInteraction,
+  EventRouter,
+} from "@renderx/host-sdk";
 import type { SelectedElement } from "../types/control-panel.types";
 
 // Global guards to dedupe init across multiple hook instances/mounts

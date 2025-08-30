@@ -15,6 +15,7 @@ import noHardcodedLayoutStyles from "./eslint-rules/no-hardcoded-layout-styles.j
 import requireSlotManifestRegistration from "./eslint-rules/require-slot-manifest-registration.js";
 import noLayoutLogicInComponents from "./eslint-rules/no-layout-logic-in-components.js";
 import requireManifestValidation from "./eslint-rules/require-manifest-validation.js";
+import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugins.js";
 
 export default [
   {
@@ -46,6 +47,7 @@ export default [
       "layout-slot-registration": requireSlotManifestRegistration,
       "layout-logic": noLayoutLogicInComponents,
       "layout-manifest-validation": requireManifestValidation,
+      "no-host-internals-in-plugins": noHostInternalsInPlugins,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -57,11 +59,11 @@ export default [
       "topics-keys/valid-topics": "error",
       "rule-engine-coverage/validate-control-panel-rules": "error",
       "import-css-injection-coverage/validate-import-css": "error",
-          "layout-slot-naming/no-hardcoded-slot-names": "error",
-          "layout-styles/no-hardcoded-layout-styles": "error",
-          "layout-slot-registration/require-slot-manifest-registration": "error",
-          "layout-logic/no-layout-logic-in-components": "error",
-          "layout-manifest-validation/require-manifest-validation": "error",
+      "layout-slot-naming/no-hardcoded-slot-names": "error",
+      "layout-styles/no-hardcoded-layout-styles": "error",
+      "layout-slot-registration/require-slot-manifest-registration": "error",
+      "layout-logic/no-layout-logic-in-components": "error",
+      "layout-manifest-validation/require-manifest-validation": "error",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",
@@ -217,7 +219,11 @@ export default [
   {
     files: ["plugins/**/*.{ts,tsx,js,jsx}"],
     ignores: ["plugins/**/*.stage-crew.{ts,tsx}"],
+    plugins: {
+      "no-host-internals-in-plugins": noHostInternalsInPlugins,
+    },
     rules: {
+      "no-host-internals-in-plugins/no-host-internals-in-plugins": "warn",
       "no-restricted-globals": [
         "error",
         "document",

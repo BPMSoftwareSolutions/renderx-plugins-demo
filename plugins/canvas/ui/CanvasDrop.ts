@@ -1,6 +1,8 @@
-import { resolveInteraction } from "../../../src/interactionManifest";
-import { isFlagEnabled } from "../../../src/feature-flags/flags";
-import { EventRouter } from "../../../src/EventRouter";
+import {
+  resolveInteraction,
+  isFlagEnabled,
+  EventRouter,
+} from "@renderx/host-sdk";
 
 // Lazily cached route for drag move to avoid resolving on every pointer move
 let __dragMoveRoute: { pluginId: string; sequenceId: string } | null = null;

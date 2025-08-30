@@ -1,6 +1,5 @@
 import React from "react";
-import { resolveInteraction } from "../../../src/interactionManifest";
-import { EventRouter } from "../../../src/EventRouter";
+import { resolveInteraction, EventRouter } from "@renderx/host-sdk";
 import { computePreviewModel } from "./preview.model";
 import { varsToStyle, pickDataAttrs } from "../utils/library.utils.js";
 import "./LibraryPanel.css";

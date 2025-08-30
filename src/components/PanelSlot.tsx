@@ -2,7 +2,10 @@ import React from "react";
 
 // Simple manifest-driven PanelSlot that lazy-loads a named export from plugin modules
 // Manifest format: { plugins: [ { id, ui: { slot, module, export } } ] }
-// module is a relative module path under /plugins/ or elsewhere (built-in to this repo)
+// ui.module may be one of:
+//   - path string (e.g., "/plugins/library/index.ts")
+//   - package specifier (e.g., "@org/canvas-plugin")
+//   - URL (e.g., "https://cdn.example.com/plugin.mjs")
 
 type Manifest = {
   plugins: Array<{
@@ -11,21 +14,42 @@ type Manifest = {
   }>;
 };
 
-const manifestPromise: Promise<Manifest> = (async () => {
+let manifestPromiseRef: Promise<Manifest> = (async () => {
   try {
-    const isBrowser = typeof window !== "undefined" && typeof (globalThis as any).fetch === "function";
+    const isBrowser =
+      typeof window !== "undefined" &&
+      typeof (globalThis as any).fetch === "function";
     if (isBrowser) {
       const res = await fetch("/plugins/plugin-manifest.json");
       if (res.ok) return (await res.json()) as Manifest;
     }
     // Node/tests fallback: import raw JSON from public
-    const mod = await import(/* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw");
-    const text: string = (mod as any)?.default || (mod as any) || "{\"plugins\":[]}";
+    const mod = await import(
+      /* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw"
+    );
+    const text: string =
+      (mod as any)?.default || (mod as any) || '{"plugins":[]}';
     return JSON.parse(text);
   } catch {
     return { plugins: [] } as Manifest;
   }
 })();
+
+// Test-only hook to override manifest during unit tests
+export function __setPanelSlotManifestForTests(m: Manifest) {
+  manifestPromiseRef = Promise.resolve(m);
+}
+
+function isUrl(spec: string) {
+  return spec.startsWith("http://") || spec.startsWith("https://");
+}
+
+function resolveModuleSpecifier(spec: string): string {
+  // For now, dynamic import can take package names, URLs, or paths directly.
+  // We keep the string unchanged for package/URL. Paths remain as-is.
+  if (isUrl(spec)) return spec;
+  return spec;
+}
 
 export function PanelSlot({ slot }: { slot: string }) {
   const [Comp, setComp] = React.useState<React.ComponentType | null>(null);
@@ -34,16 +58,28 @@ export function PanelSlot({ slot }: { slot: string }) {
     let alive = true;
     (async () => {
       try {
-        const manifest = await manifestPromise;
-        const entry = manifest.plugins.find(p => p.ui?.slot === slot);
-        if (!entry || !entry.ui) throw new Error(`No plugin UI found for slot ${slot}`);
-        const mod = await import(/* @vite-ignore */ entry.ui.module);
-        const Exported = mod[entry.ui.export] as React.ComponentType | undefined;
-        if (!Exported) throw new Error(`Export ${entry.ui.export} not found in ${entry.ui.module}`);
+        const manifest = await manifestPromiseRef;
+        const entry = manifest.plugins.find((p) => p.ui?.slot === slot);
+        if (!entry || !entry.ui)
+          throw new Error(`No plugin UI found for slot ${slot}`);
+        const target = resolveModuleSpecifier(entry.ui.module);
+        const mod = await import(/* @vite-ignore */ target);
+        const Exported = mod[entry.ui.export] as
+          | React.ComponentType
+          | undefined;
+        if (!Exported)
+          throw new Error(
+            `Export ${entry.ui.export} not found in ${entry.ui.module}`
+          );
         if (alive) setComp(() => Exported);
       } catch (err) {
         console.error(err);
-        if (alive) setComp(() => () => <div style={{ padding: 12 }}>Failed to load panel: {String(err)}</div>);
+        if (alive)
+          setComp(() => () => (
+            <div style={{ padding: 12 }}>
+              Failed to load panel: {String(err)}
+            </div>
+          ));
       }
     })();
     return () => {
@@ -54,4 +90,3 @@ export function PanelSlot({ slot }: { slot: string }) {
   if (!Comp) return null;
   return <Comp />;
 }
-

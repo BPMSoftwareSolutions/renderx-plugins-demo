@@ -1,13 +1,11 @@
 {
-  "dependencies": {
-    "musical-conductor": "^1.4.4",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "type": "module",
   "name": "renderx-plugins-demo",
   "version": "0.1.0",
-  "private": "true",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "npm run pre:manifests && vite",
     "build": "npm run pre:manifests && vite build",
@@ -21,6 +19,12 @@
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "ci": "npm run lint && npm test"
+  },
+  "dependencies": {
+    "musical-conductor": "^1.4.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "@renderx/host-sdk": "workspace:*"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.40.0",
