@@ -31,14 +31,23 @@ Example (excerpt):
   },
   "slots": [
     { "name": "library", "constraints": { "minWidth": 280 } },
-    { "name": "canvas", "constraints": { "minWidth": 480 }, "capabilities": { "droppable": true } },
+    {
+      "name": "canvas",
+      "constraints": { "minWidth": 480 },
+      "capabilities": { "droppable": true }
+    },
     { "name": "controlPanel", "constraints": { "minWidth": 320 } },
-    { "name": "inspector", "constraints": { "minWidth": 280 }, "capabilities": { "droppable": false } }
+    {
+      "name": "inspector",
+      "constraints": { "minWidth": 280 },
+      "capabilities": { "droppable": false }
+    }
   ]
 }
 ```
 
 Notes:
+
 - `layout.areas` is a matrix of slot names forming the grid; each unique name produces a wrapper cell
 - `slots[]` entries let the host read constraints and behaviors (e.g., `capabilities.droppable`)
 
@@ -81,3 +90,41 @@ If the manifest fails to load or the `ui.layout-manifest` flag is disabled, the 
 - Drag/drop doesn’t engage — confirm `capabilities.droppable` is set for that slot and that your plugin listens for drop events within its UI
 - Layout looks off — verify `columns`, `rows`, and `areas` have consistent dimensions and that wrappers are visible in DevTools via `[data-slot]`
 
+## Slots manifest schema (excerpt)
+
+The host reads slots and layout from `public/layout-manifest.json`. Below is a concise, illustrative schema:
+
+```json
+{
+  "version": "1.0.0",
+  "layout": {
+    "kind": "grid",
+    "columns": ["<css-size>", "<css-size>", "..."],
+    "rows": ["<css-size>", "..."],
+    "areas": [["<slotName>", "<slotName>", "..."], ["..."]],
+    "gap": { "column": "<css-size>", "row": "<css-size>" },
+    "responsive": [
+      {
+        "media": "(max-width: 1024px)",
+        "columns": ["..."],
+        "rows": ["..."]
+      }
+    ]
+  },
+  "slots": [
+    {
+      "name": "<slotName>",
+      "constraints": { "minWidth": 280 },
+      "capabilities": {
+        "droppable": true
+      }
+    }
+  ]
+}
+```
+
+Notes:
+
+- `areas` defines the grid; each cell is rendered as a distinct `[data-slot]` wrapper
+- `constraints` are host-hints (e.g., minWidth) that can be used by future responsive rules
+- `capabilities` control standardized behaviors provided by `SlotContainer` (currently `droppable`)
