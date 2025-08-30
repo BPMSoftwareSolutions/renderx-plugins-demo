@@ -48,6 +48,13 @@ Example (excerpt):
 
 Notes:
 
+### How to register a plugin UI to a slot
+
+- Internal plugins: follow the Host SDK guidelines to register a panel/widget targeting the exact slot name (e.g., "inspector"). See docs/host-sdk/USING_HOST_SDK.md.
+- External plugins: see docs/host-sdk/EXTERNAL_PLUGIN_MIGRATION_CHECKLIST.md for migration and slot registration steps.
+- Once registered, the host’s <PanelSlot> resolver will mount your plugin UI inside the SlotContainer for that slot.
+- If no plugin is registered for a given slot name, the host will render the slot shell but warn: "No plugin UI found for slot <name>".
+
 - `layout.areas` is a matrix of slot names forming the grid; each unique name produces a wrapper cell
 - `slots[]` entries let the host read constraints and behaviors (e.g., `capabilities.droppable`)
 
