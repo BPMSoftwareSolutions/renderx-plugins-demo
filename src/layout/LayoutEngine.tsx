@@ -1,6 +1,6 @@
 import React from "react";
-import { PanelSlot } from "../components/PanelSlot";
 import { loadLayoutManifest, validateLayoutManifest } from "./layoutManifest";
+import { SlotContainer } from "./SlotContainer";
 
 export function LayoutEngine() {
   const [manifest, setManifest] = React.useState<any | null>(null);
@@ -37,9 +37,15 @@ export function LayoutEngine() {
           height: "100vh",
         }}
       >
-        <PanelSlot slot="library" />
-        <PanelSlot slot="canvas" />
-        <PanelSlot slot="controlPanel" />
+        <div data-slot="library" style={{ position: "relative" }}>
+          <SlotContainer slot="library" />
+        </div>
+        <div data-slot="canvas" style={{ position: "relative" }}>
+          <SlotContainer slot="canvas" capabilities={{ droppable: true }} />
+        </div>
+        <div data-slot="controlPanel" style={{ position: "relative" }}>
+          <SlotContainer slot="controlPanel" />
+        </div>
       </div>
     );
   }
@@ -75,6 +81,18 @@ export function LayoutEngine() {
     height: "100vh", // Match legacy layout so grid cells fill viewport
   };
 
+  // Map capabilities by slot name from manifest
+  const capsBySlot: Record<string, { droppable?: boolean }> = {};
+  try {
+    const slots = Array.isArray(manifest.slots) ? manifest.slots : [];
+    for (const s of slots) {
+      const name = s?.name;
+      if (!name) continue;
+      const caps = s?.capabilities || {};
+      capsBySlot[name] = { droppable: !!caps.droppable };
+    }
+  } catch {}
+
   return (
     <div data-layout-container style={style}>
       {areas.flatMap((row, rIdx) =>
@@ -82,19 +100,16 @@ export function LayoutEngine() {
           <div
             key={`${rIdx}-${cIdx}`}
             data-slot={slotName}
-            style={{ gridRow: rIdx + 1, gridColumn: cIdx + 1 }}
-            onDragOverCapture={
-              slotName === "canvas"
-                ? (e) => {
-                    e.preventDefault();
-                    try {
-                      if (e.dataTransfer) e.dataTransfer.dropEffect = "copy";
-                    } catch {}
-                  }
-                : undefined
-            }
+            style={{
+              gridRow: rIdx + 1,
+              gridColumn: cIdx + 1,
+              position: "relative",
+            }}
           >
-            <PanelSlot slot={slotName} />
+            <SlotContainer
+              slot={slotName}
+              capabilities={capsBySlot[slotName]}
+            />
           </div>
         ))
       )}

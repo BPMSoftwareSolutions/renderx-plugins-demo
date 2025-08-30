@@ -9,8 +9,11 @@
   },
   "slots": [
     { "name": "library", "constraints": { "minWidth": 280 } },
-    { "name": "canvas", "constraints": { "minWidth": 480 } },
+    {
+      "name": "canvas",
+      "constraints": { "minWidth": 480 },
+      "capabilities": { "droppable": true }
+    },
     { "name": "controlPanel", "constraints": { "minWidth": 320 } }
   ]
 }
-
