@@ -1,4 +1,4 @@
-import { getTagForType } from "../../../../src/component-mapper/mapper";
+import { getTagForType } from "@renderx/host-sdk";
 
 export const buildUiFileContent = (data: any, ctx: any) => {
   try {

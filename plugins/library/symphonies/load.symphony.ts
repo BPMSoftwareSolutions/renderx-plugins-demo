@@ -1,5 +1,5 @@
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
-import { mapJsonComponentToTemplate } from "../../../src/jsonComponent.mapper";
+import { mapJsonComponentToTemplate } from "@renderx/host-sdk";
 import { cssRegistry } from "../../control-panel/state/css-registry.store";
 
 function mapJsonComponentToTemplateCompat(json: any) {
