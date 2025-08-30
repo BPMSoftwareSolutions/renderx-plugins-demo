@@ -30,7 +30,13 @@ export function LayoutEngine() {
   // If manifest failed to load, render legacy fallback internally
   if (failed) {
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "320px 1fr 360px", height: "100vh" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "320px 1fr 360px",
+          height: "100vh",
+        }}
+      >
         <PanelSlot slot="library" />
         <PanelSlot slot="canvas" />
         <PanelSlot slot="controlPanel" />
@@ -39,7 +45,8 @@ export function LayoutEngine() {
   }
 
   // If no manifest yet, render container only (satisfies responsive test container query)
-  if (!manifest) return <div data-layout-container style={{ display: "grid" }} />;
+  if (!manifest)
+    return <div data-layout-container style={{ display: "grid" }} />;
 
   // Grid-based layout (Option A)
   const layout = manifest.layout || {};
@@ -50,7 +57,11 @@ export function LayoutEngine() {
   // Apply first matching responsive override
   const resp = Array.isArray(layout.responsive) ? layout.responsive : [];
   for (const r of resp) {
-    if (typeof matchMedia === "function" && r.media && matchMedia(r.media).matches) {
+    if (
+      typeof matchMedia === "function" &&
+      r.media &&
+      matchMedia(r.media).matches
+    ) {
       cols = r.columns || cols;
       rows = r.rows || rows;
       break;
@@ -61,13 +72,28 @@ export function LayoutEngine() {
     display: "grid",
     gridTemplateColumns: cols.join(" "),
     gridTemplateRows: rows.join(" "),
+    height: "100vh", // Match legacy layout so grid cells fill viewport
   };
 
   return (
     <div data-layout-container style={style}>
       {areas.flatMap((row, rIdx) =>
         row.map((slotName, cIdx) => (
-          <div key={`${rIdx}-${cIdx}`} data-slot={slotName} style={{ gridArea: `${rIdx + 1} / ${cIdx + 1}` }}>
+          <div
+            key={`${rIdx}-${cIdx}`}
+            data-slot={slotName}
+            style={{ gridRow: rIdx + 1, gridColumn: cIdx + 1 }}
+            onDragOverCapture={
+              slotName === "canvas"
+                ? (e) => {
+                    e.preventDefault();
+                    try {
+                      if (e.dataTransfer) e.dataTransfer.dropEffect = "copy";
+                    } catch {}
+                  }
+                : undefined
+            }
+          >
             <PanelSlot slot={slotName} />
           </div>
         ))
@@ -75,4 +101,3 @@ export function LayoutEngine() {
     </div>
   );
 }
-
