@@ -1,7 +1,9 @@
 import React from "react";
-import { useConductor } from "../../../src/conductor";
-import { resolveInteraction } from "../../../src/interactionManifest";
-import { EventRouter } from "../../../src/EventRouter";
+import {
+  useConductor,
+  resolveInteraction,
+  EventRouter,
+} from "@renderx/host-sdk";
 import { useControlPanelSequences } from "./useControlPanelSequences";
 import type {
   SelectedElement,

@@ -1,5 +1,5 @@
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
-import { EventRouter } from "../../../src/EventRouter";
+import { EventRouter } from "@renderx/host-sdk";
 
 export const handlers = {
   async publishCreateRequested(data: any, ctx: any) {

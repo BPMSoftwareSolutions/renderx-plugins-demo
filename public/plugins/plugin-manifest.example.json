@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    { "id": "LibraryPlugin", "ui": { "slot": "library", "module": "/plugins/library/index.ts", "export": "LibraryPanel" } },
+    { "id": "CanvasPlugin",  "ui": { "slot": "canvas",  "module": "@org/canvas-plugin",       "export": "CanvasPage" } },
+    { "id": "UrlPlugin",     "ui": { "slot": "extras",  "module": "https://cdn.example.com/plugin.mjs", "export": "ExtrasPanel" } }
+  ]
+}
+

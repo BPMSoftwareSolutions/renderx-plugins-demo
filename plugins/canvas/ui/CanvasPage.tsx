@@ -1,5 +1,5 @@
 import React from "react";
-import { useConductor } from "../../../src/conductor";
+import { useConductor } from "@renderx/host-sdk";
 import { onDropForTest } from "./CanvasDrop";
 import { CanvasHeader } from "./CanvasHeader";
 import "./CanvasPage.css";
@@ -27,4 +27,3 @@ export function CanvasPage() {
     </div>
   );
 }
-
