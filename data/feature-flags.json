@@ -98,7 +98,7 @@
     "owner": "tooling"
   },
   "ui.layout-manifest": {
-    "status": "off",
+    "status": "on",
     "created": "2025-08-29",
     "description": "Enable layout-manifest driven slot rendering (issue #61)",
     "owner": "layout"
