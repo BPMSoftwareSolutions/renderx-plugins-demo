@@ -54,18 +54,24 @@ async function readJsonSafe(path) {
 }
 
 async function readTopicCatalogs() {
-  const dir = join(rootDir, "json-topics");
-  try {
-    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
-    const catalogs = [];
-    for (const f of files) {
-      const json = await readJsonSafe(join(dir, f));
-      if (json) catalogs.push(json);
+  // Prefer root json-topics/, but also support json-components/json-topics/ for compatibility
+  const dirs = [
+    join(rootDir, "json-topics"),
+    join(rootDir, "json-components", "json-topics"),
+  ];
+  const catalogs = [];
+  for (const dir of dirs) {
+    try {
+      const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+      for (const f of files) {
+        const json = await readJsonSafe(join(dir, f));
+        if (json) catalogs.push(json);
+      }
+    } catch {
+      // ignore missing directory
     }
-    return catalogs;
-  } catch {
-    return [];
   }
+  return catalogs;
 }
 
 async function main() {
@@ -96,4 +102,3 @@ if (_isMain) {
     process.exit(1);
   });
 }
-

@@ -11,9 +11,23 @@ type Manifest = {
   }>;
 };
 
-const manifestPromise: Promise<Manifest> = fetch("/plugins/plugin-manifest.json").then(r => r.json());
+const manifestPromise: Promise<Manifest> = (async () => {
+  try {
+    const isBrowser = typeof window !== "undefined" && typeof (globalThis as any).fetch === "function";
+    if (isBrowser) {
+      const res = await fetch("/plugins/plugin-manifest.json");
+      if (res.ok) return (await res.json()) as Manifest;
+    }
+    // Node/tests fallback: import raw JSON from public
+    const mod = await import(/* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw");
+    const text: string = (mod as any)?.default || (mod as any) || "{\"plugins\":[]}";
+    return JSON.parse(text);
+  } catch {
+    return { plugins: [] } as Manifest;
+  }
+})();
 
-export function PanelSlot({ slot }: { slot: "library" | "canvas" | "controlPanel" }) {
+export function PanelSlot({ slot }: { slot: string }) {
   const [Comp, setComp] = React.useState<React.ComponentType | null>(null);
 
   React.useEffect(() => {

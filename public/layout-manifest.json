@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "layout": {
+    "kind": "grid",
+    "columns": ["320px", "1fr", "360px"],
+    "rows": ["1fr"],
+    "areas": [["library", "canvas", "controlPanel"]],
+    "gap": { "column": "0", "row": "0" }
+  },
+  "slots": [
+    { "name": "library", "constraints": { "minWidth": 280 } },
+    { "name": "canvas", "constraints": { "minWidth": 480 } },
+    { "name": "controlPanel", "constraints": { "minWidth": 320 } }
+  ]
+}
+

@@ -10,6 +10,11 @@ import interactionKeys from "./eslint-rules/interaction-keys.js";
 import ruleEngineCoverage from "./eslint-rules/rule-engine-coverage.js";
 import importCssInjectionCoverage from "./eslint-rules/import-css-injection-coverage.js";
 import topicsKeys from "./eslint-rules/topics-keys.js";
+import noHardcodedSlotNames from "./eslint-rules/no-hardcoded-slot-names.js";
+import noHardcodedLayoutStyles from "./eslint-rules/no-hardcoded-layout-styles.js";
+import requireSlotManifestRegistration from "./eslint-rules/require-slot-manifest-registration.js";
+import noLayoutLogicInComponents from "./eslint-rules/no-layout-logic-in-components.js";
+import requireManifestValidation from "./eslint-rules/require-manifest-validation.js";
 
 export default [
   {
@@ -36,6 +41,11 @@ export default [
       "rule-engine-coverage": ruleEngineCoverage,
       "import-css-injection-coverage": importCssInjectionCoverage,
       "topics-keys": topicsKeys,
+      "layout-slot-naming": noHardcodedSlotNames,
+      "layout-styles": noHardcodedLayoutStyles,
+      "layout-slot-registration": requireSlotManifestRegistration,
+      "layout-logic": noLayoutLogicInComponents,
+      "layout-manifest-validation": requireManifestValidation,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -47,6 +57,12 @@ export default [
       "topics-keys/valid-topics": "error",
       "rule-engine-coverage/validate-control-panel-rules": "error",
       "import-css-injection-coverage/validate-import-css": "error",
+          "layout-slot-naming/no-hardcoded-slot-names": "error",
+          "layout-styles/no-hardcoded-layout-styles": "error",
+          "layout-slot-registration/require-slot-manifest-registration": "error",
+          "layout-logic/no-layout-logic-in-components": "error",
+          "layout-manifest-validation/require-manifest-validation": "error",
+
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
