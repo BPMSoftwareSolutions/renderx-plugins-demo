@@ -1,6 +1,5 @@
 import { updatePosition } from "./drag.stage-crew";
-import { resolveInteraction } from "../../../../src/interactionManifest";
-import { EventRouter } from "../../../../src/EventRouter";
+import { resolveInteraction, EventRouter } from "@renderx/host-sdk";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 

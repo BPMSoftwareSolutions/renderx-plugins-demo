@@ -223,7 +223,7 @@ export default [
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
     },
     rules: {
-      "no-host-internals-in-plugins/no-host-internals-in-plugins": "warn",
+      "no-host-internals-in-plugins/no-host-internals-in-plugins": "error",
       "no-restricted-globals": [
         "error",
         "document",

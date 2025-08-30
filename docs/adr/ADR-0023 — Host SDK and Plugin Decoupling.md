@@ -90,6 +90,8 @@ After:
 import { useConductor, EventRouter, resolveInteraction } from "@renderx/host-sdk";
 ```
 
+See also: docs/host-sdk/USING_HOST_SDK.md
+
 ## Manifest example (transition to package specifiers)
 
 Before:
