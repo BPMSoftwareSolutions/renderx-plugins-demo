@@ -101,6 +101,10 @@
       "pluginId": "ControlPanelPlugin",
       "sequenceId": "control-panel-ui-section-toggle-symphony"
     },
+    "app.ui.theme.toggle": {
+      "pluginId": "HeaderThemePlugin",
+      "sequenceId": "header-ui-theme-toggle-symphony"
+    },
     "library.component.drag.start": {
       "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-drag-symphony"

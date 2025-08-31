@@ -16,6 +16,7 @@ import requireSlotManifestRegistration from "./eslint-rules/require-slot-manifes
 import noLayoutLogicInComponents from "./eslint-rules/no-layout-logic-in-components.js";
 import requireManifestValidation from "./eslint-rules/require-manifest-validation.js";
 import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugins.js";
+import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
 
 export default [
   {
@@ -59,6 +60,7 @@ export default [
       "layout-logic": noLayoutLogicInComponents,
       "layout-manifest-validation": requireManifestValidation,
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
+      "deprecate-stagecrew-api": deprecateStageCrew,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -104,6 +106,10 @@ export default [
   // UI code: forbid DOM & StageCrew/EventBus
   {
     files: ["plugins/**/ui/**/*.{ts,tsx,js,jsx}"],
+    ignores: [
+      // Allow stage-crew handlers in symphonies to live under a ui/ folder
+      "plugins/**/ui/**/*.stage-crew.{ts,tsx}",
+    ],
     rules: {
       "no-restricted-globals": [
         "error",
@@ -338,9 +344,14 @@ export default [
   // Stage-crew handlers: allow DOM, forbid UI imports, forbid IO/API here
   {
     files: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
+    plugins: {
+      "deprecate-stagecrew-api": deprecateStageCrew,
+    },
     rules: {
       // Explicitly allow DOM in stage-crew handlers by disabling the global restriction
       "no-restricted-globals": "off",
+      // Enforce deprecation of conductor StageCrew API in stage-crew handlers
+      "deprecate-stagecrew-api/no-stagecrew-api-in-stage-crew": "error",
       // Keep stage-crew clean of UI/IO/API layers
       "no-restricted-imports": [
         "error",

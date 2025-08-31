@@ -2,12 +2,12 @@
 
 .library-sidebar {
   width: 320px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--panel-bg);
   backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid var(--panel-border);
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 20px var(--panel-shadow);
   height: 100%;
 }
 
