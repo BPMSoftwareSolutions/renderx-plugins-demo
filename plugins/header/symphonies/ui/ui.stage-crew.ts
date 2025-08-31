@@ -1,14 +1,20 @@
 export function toggleTheme(data: any, ctx: any) {
   try {
-    const htmlSelector = "html";
     const next = data?.theme || "light";
 
-    // Use stage-crew to set attribute; avoid direct DOM writes in UI layer
-    const txn = ctx.stageCrew?.beginBeat?.();
-    if (txn) {
-      txn.update(htmlSelector, { attrs: { "data-theme": next } });
-      txn.commit({ batch: true });
-    }
+    // Direct DOM manipulation in stage-crew handler (StageCrew API deprecated)
+    try {
+      if (typeof document !== "undefined") {
+        const el = document.documentElement;
+        const raf =
+          (typeof window !== "undefined" &&
+            (window as any).requestAnimationFrame) ||
+          null;
+        const apply = () => el.setAttribute("data-theme", next);
+        if (raf) raf(() => apply());
+        else apply();
+      }
+    } catch {}
 
     // Persist preference marker on ctx (no direct globals)
     try {
