@@ -10,6 +10,8 @@ function mapJsonComponentToTemplateCompat(json: any) {
     name: json?.metadata?.name || type,
     template: tpl,
     metadata: json?.metadata || {},
+    // Preserve original UI for CSS extraction in Node/test path
+    ui: json?.ui,
   };
 }
 
@@ -20,18 +22,15 @@ export const handlers = {
       const isVitest = (() => {
         try {
           // @ts-ignore - Vitest injects this flag
-          return !!(import.meta as any)?.vitest;
+          return (
+            !!(import.meta as any)?.vitest || process.env.NODE_ENV === "test"
+          );
         } catch {
-          return false;
+          return process.env.NODE_ENV === "test";
         }
       })();
 
-      if (
-        typeof window !== "undefined" &&
-        typeof document !== "undefined" &&
-        typeof fetch === "function" &&
-        !isVitest
-      ) {
+      if (typeof fetch === "function" && !isVitest) {
         // Browser/dev server path: serve from public/json-components using JSON index
         const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
@@ -60,7 +59,7 @@ export const handlers = {
             { with: { type: "json" } } as any
           );
           const json = mod?.default || mod;
-          items.push(mapJsonComponentToTemplate(json));
+          items.push(mapJsonComponentToTemplateCompat(json));
         }
         list = items;
       }
@@ -80,7 +79,13 @@ export const handlers = {
       for (const item of Array.isArray(list) ? list : []) {
         // Support both shapes: { id, name, template, metadata } and plain template
         const tpl = item?.template ?? item;
-        const css: string | undefined = tpl?.css;
+        let css: string | undefined = tpl?.css;
+
+        // Also check for CSS in the original JSON structure (ui.styles.css)
+        if (!css && item?.ui?.styles?.css) {
+          css = item.ui.styles.css;
+        }
+
         if (typeof css === "string" && css.trim().length) {
           // derive base class (exclude rx-comp)
           const classes: string[] = Array.isArray(tpl?.classes)

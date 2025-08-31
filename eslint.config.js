@@ -19,6 +19,16 @@ import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugin
 
 export default [
   {
+    ignores: [
+      "dist/**",
+      "build/**",
+      "node_modules/**",
+      ".vite/**",
+      "coverage/**",
+      "scripts/codemods/**",
+    ],
+  },
+  {
     files: ["**/*.{ts,tsx,js,jsx}"],
     ignores: [
       "dist/**",
@@ -26,6 +36,7 @@ export default [
       "node_modules/**",
       ".vite/**",
       "coverage/**",
+      "scripts/codemods/**",
     ],
     languageOptions: {
       parser: tsparser,
