@@ -1,6 +1,6 @@
-import { toggleTheme } from "./ui.stage-crew";
+import { getCurrentTheme, toggleTheme } from "./ui.stage-crew";
 
 export const handlers = {
+  getCurrentTheme,
   toggleTheme,
 };
-

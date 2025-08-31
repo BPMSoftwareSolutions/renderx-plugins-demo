@@ -1,0 +1,22 @@
+{
+  "pluginId": "HeaderThemePlugin",
+  "id": "header-ui-theme-get-symphony",
+  "name": "Header UI Theme Get",
+  "movements": [
+    {
+      "id": "get",
+      "name": "Get Current Theme",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "app:ui:theme:get",
+          "title": "Get Current Theme",
+          "dynamics": "mf",
+          "handler": "getCurrentTheme",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
+      ]
+    }
+  ]
+}

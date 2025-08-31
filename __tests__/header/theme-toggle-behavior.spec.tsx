@@ -8,16 +8,33 @@ import { act } from "react";
 vi.mock("@renderx/host-sdk", () => ({
   useConductor: () => ({
     play: vi.fn().mockImplementation(async (pluginId, sequenceId, data) => {
-      // Simulate the actual theme toggle behavior
-      const theme = data?.theme || "light";
-      document.documentElement.setAttribute("data-theme", theme);
+      // Handle different sequence types
+      if (sequenceId === "header-ui-theme-get-symphony") {
+        // Get current theme from DOM
+        const currentTheme =
+          document.documentElement.getAttribute("data-theme") || "light";
+        return { theme: currentTheme };
+      } else if (sequenceId === "header-ui-theme-toggle-symphony") {
+        // Simulate the actual theme toggle behavior
+        const theme = data?.theme || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+        return { theme };
+      }
       return {};
     }),
   }),
-  resolveInteraction: () => ({
-    pluginId: "HeaderThemePlugin",
-    sequenceId: "header-ui-theme-toggle-symphony",
-  }),
+  resolveInteraction: (interaction: string) => {
+    if (interaction === "app.ui.theme.get") {
+      return {
+        pluginId: "HeaderThemePlugin",
+        sequenceId: "header-ui-theme-get-symphony",
+      };
+    }
+    return {
+      pluginId: "HeaderThemePlugin",
+      sequenceId: "header-ui-theme-toggle-symphony",
+    };
+  },
 }));
 
 describe("HeaderThemeToggle Button Text and Icon Updates", () => {
@@ -116,6 +133,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
     act(() => {
       root.render(<HeaderThemeToggle />);
     });
+
+    // Wait for component to initialize theme state
+    await new Promise((resolve) => setTimeout(resolve, 10));
 
     const themeButton = container.querySelector(".header-theme-button");
     expect(themeButton).toBeTruthy();

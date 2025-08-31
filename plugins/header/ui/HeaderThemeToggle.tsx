@@ -4,45 +4,39 @@ import "./Header.css";
 
 export function HeaderThemeToggle() {
   const conductor = useConductor();
-  const [theme, setThemeState] = React.useState<"light" | "dark">(() => {
-    // Initialize based on current DOM theme
-    if (typeof document !== "undefined") {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      return currentTheme === "dark" ? "dark" : "light";
-    }
-    return "light";
-  });
+  const [theme, setThemeState] = React.useState<"light" | "dark">("light");
 
-  // Listen for theme changes on the DOM
+  // Get current theme on mount using stage-crew handler
   React.useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "data-theme"
-        ) {
-          const currentTheme =
-            document.documentElement.getAttribute("data-theme");
-          setThemeState(currentTheme === "dark" ? "dark" : "light");
-        }
-      });
-    });
+    const getCurrentTheme = async () => {
+      try {
+        const route = resolveInteraction("app.ui.theme.get");
+        const result = await conductor.play(
+          route.pluginId,
+          route.sequenceId,
+          {}
+        );
+        const currentTheme = result?.theme || "light";
+        setThemeState(currentTheme);
+      } catch (e) {
+        console.warn("Failed to get current theme:", e);
+        setThemeState("light");
+      }
+    };
 
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
+    getCurrentTheme();
+  }, [conductor]);
 
   const toggle = async () => {
     try {
       const next = theme === "light" ? "dark" : "light";
       const route = resolveInteraction("app.ui.theme.toggle");
-      await conductor.play(route.pluginId, route.sequenceId, { theme: next });
-      // Optimistically flip local label; actual DOM write happens in stage-crew handler
-      setThemeState(next);
+      const result = await conductor.play(route.pluginId, route.sequenceId, {
+        theme: next,
+      });
+      // Update local state based on the result from stage-crew handler
+      const updatedTheme = result?.theme || next;
+      setThemeState(updatedTheme);
     } catch (e) {
       console.warn("Theme toggle failed: ", e);
     }

@@ -1,3 +1,21 @@
+export function getCurrentTheme(data: any, ctx: any) {
+  try {
+    // Get current theme from DOM in stage-crew handler
+    let currentTheme = "light";
+    if (typeof document !== "undefined") {
+      const theme = document.documentElement.getAttribute("data-theme");
+      currentTheme = theme === "dark" ? "dark" : "light";
+    }
+
+    ctx.payload.currentTheme = currentTheme;
+    return { theme: currentTheme };
+  } catch (e) {
+    ctx.logger?.warn?.("getCurrentTheme failed", e);
+    ctx.payload.currentTheme = "light";
+    return { theme: "light" };
+  }
+}
+
 export function toggleTheme(data: any, ctx: any) {
   try {
     const next = data?.theme || "light";
