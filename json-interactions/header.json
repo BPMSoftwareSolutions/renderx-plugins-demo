@@ -1,0 +1,10 @@
+{
+  "plugin": "HeaderThemePlugin",
+  "routes": {
+    "app.ui.theme.toggle": {
+      "pluginId": "HeaderThemePlugin",
+      "sequenceId": "header-ui-theme-toggle-symphony"
+    }
+  }
+}
+

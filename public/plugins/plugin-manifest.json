@@ -1,8 +1,52 @@
 {
   "plugins": [
-    { "id": "LibraryPlugin",      "ui": { "slot": "library",      "module": "/plugins/library/index.ts",      "export": "LibraryPanel" } },
-    { "id": "CanvasPlugin",       "ui": { "slot": "canvas",       "module": "/plugins/canvas/index.ts",       "export": "CanvasPage" } },
-    { "id": "ControlPanelPlugin", "ui": { "slot": "controlPanel", "module": "/plugins/control-panel/index.ts", "export": "ControlPanel" } }
+    {
+      "id": "HeaderTitlePlugin",
+      "ui": {
+        "slot": "headerLeft",
+        "module": "/plugins/header/index.ts",
+        "export": "HeaderTitle"
+      }
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "ui": {
+        "slot": "headerCenter",
+        "module": "/plugins/header/index.ts",
+        "export": "HeaderControls"
+      }
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "ui": {
+        "slot": "headerRight",
+        "module": "/plugins/header/index.ts",
+        "export": "HeaderThemeToggle"
+      }
+    },
+    {
+      "id": "LibraryPlugin",
+      "ui": {
+        "slot": "library",
+        "module": "/plugins/library/index.ts",
+        "export": "LibraryPanel"
+      }
+    },
+    {
+      "id": "CanvasPlugin",
+      "ui": {
+        "slot": "canvas",
+        "module": "/plugins/canvas/index.ts",
+        "export": "CanvasPage"
+      }
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "ui": {
+        "slot": "controlPanel",
+        "module": "/plugins/control-panel/index.ts",
+        "export": "ControlPanel"
+      }
+    }
   ]
 }
-
