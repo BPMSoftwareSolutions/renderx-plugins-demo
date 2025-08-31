@@ -80,7 +80,13 @@ export const handlers = {
       for (const item of Array.isArray(list) ? list : []) {
         // Support both shapes: { id, name, template, metadata } and plain template
         const tpl = item?.template ?? item;
-        const css: string | undefined = tpl?.css;
+        let css: string | undefined = tpl?.css;
+
+        // Also check for CSS in the original JSON structure (ui.styles.css)
+        if (!css && item?.ui?.styles?.css) {
+          css = item.ui.styles.css;
+        }
+
         if (typeof css === "string" && css.trim().length) {
           // derive base class (exclude rx-comp)
           const classes: string[] = Array.isArray(tpl?.classes)
