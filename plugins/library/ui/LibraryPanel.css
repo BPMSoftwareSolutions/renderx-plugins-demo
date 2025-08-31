@@ -13,8 +13,8 @@
 
 .library-sidebar-header {
   padding: 20px;
-  background: linear-gradient(135deg, #4f46e5, #3b82f6);
-  color: white;
+  background: var(--panel-header-bg);
+  color: var(--panel-header-color);
   text-align: center;
 }
 
@@ -44,7 +44,7 @@
 .library-category-title {
   font-size: 14px;
   font-weight: 600;
-  color: #374151;
+  color: var(--muted-text);
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -58,8 +58,8 @@
 
 .library-component-item {
   cursor: grab;
-  background: white;
-  border: 2px solid #e5e7eb;
+  background: var(--panel-bg);
+  border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: 16px;
   transition: all 0.3s ease;
@@ -69,9 +69,9 @@
 }
 
 .library-component-item:hover {
-  border-color: #3b82f6;
+  border-color: var(--accent-border);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 4px 12px var(--panel-shadow);
 }
 
 .library-component-icon {
@@ -83,12 +83,12 @@
 .library-component-name {
   font-size: 12px;
   font-weight: 500;
-  color: #111827;
+  color: var(--text-color);
   margin-bottom: 4px;
 }
 
 .library-component-description {
   font-size: 10px;
-  color: #6b7280;
+  color: var(--muted-text);
   line-height: 1.3;
 }
