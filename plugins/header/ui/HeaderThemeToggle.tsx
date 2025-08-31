@@ -2,30 +2,40 @@ import React from "react";
 import { useConductor, resolveInteraction } from "@renderx/host-sdk";
 import "./Header.css";
 
+// Lazy-load the presentational view
+const HeaderThemeButtonView = React.lazy(
+  () => import("./HeaderThemeButtonView")
+);
+
 export function HeaderThemeToggle() {
   const conductor = useConductor();
-  const [theme, setThemeState] = React.useState<"light" | "dark">("dark"); // Default to dark per issue #80
+  const [theme, setThemeState] = React.useState<"light" | "dark" | null>(null);
+  const requestedRef = React.useRef(false);
 
-  // Get current theme on mount using stage-crew handler
-  React.useEffect(() => {
-    const getCurrentTheme = async () => {
+  const ensureTheme = React.useCallback(
+    (el: HTMLButtonElement | null) => {
+      if (!el || theme !== null || requestedRef.current) return;
+      requestedRef.current = true;
       try {
         const route = resolveInteraction("app.ui.theme.get");
-        const result = await conductor.play(
+        conductor.play(
           route.pluginId,
           route.sequenceId,
-          {}
+          {
+            onTheme: (t: "light" | "dark") => setThemeState(t),
+          },
+          (result: any) => {
+            const t = result?.theme;
+            if (t === "light" || t === "dark") setThemeState(t);
+          }
         );
-        const currentTheme = result?.theme || "dark";
-        setThemeState(currentTheme);
       } catch (e) {
         console.warn("Failed to get current theme:", e);
         setThemeState("dark");
       }
-    };
-
-    getCurrentTheme();
-  }, [conductor]);
+    },
+    [theme, conductor]
+  );
 
   const toggle = async () => {
     try {
@@ -34,7 +44,6 @@ export function HeaderThemeToggle() {
       const result = await conductor.play(route.pluginId, route.sequenceId, {
         theme: next,
       });
-      // Update local state based on the result from stage-crew handler
       const updatedTheme = result?.theme || next;
       setThemeState(updatedTheme);
     } catch (e) {
@@ -45,13 +54,24 @@ export function HeaderThemeToggle() {
   return (
     <div className="header-container">
       <div className="header-theme-toggle">
-        <button
-          onClick={toggle}
-          className="header-theme-button"
-          title="Toggle Theme"
+        <React.Suspense
+          fallback={
+            <button
+              ref={ensureTheme}
+              onClick={toggle}
+              className="header-theme-button"
+              title="Toggle Theme"
+            >
+              {theme === "light" ? "🌙 Dark" : "🌞 Light"}
+            </button>
+          }
         >
-          {theme === "light" ? "🌙 Dark" : "🌞 Light"}
-        </button>
+          <HeaderThemeButtonView
+            ref={ensureTheme}
+            theme={theme}
+            onToggle={toggle}
+          />
+        </React.Suspense>
       </div>
     </div>
   );

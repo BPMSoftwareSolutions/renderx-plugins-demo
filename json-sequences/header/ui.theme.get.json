@@ -15,9 +15,17 @@
           "handler": "getCurrentTheme",
           "timing": "immediate",
           "kind": "stage-crew"
+        },
+        {
+          "beat": 2,
+          "event": "app:ui:theme:notify",
+          "title": "Notify UI",
+          "dynamics": "mf",
+          "handler": "notifyUi",
+          "timing": "immediate",
+          "kind": "pure"
         }
       ]
     }
   ]
 }
-

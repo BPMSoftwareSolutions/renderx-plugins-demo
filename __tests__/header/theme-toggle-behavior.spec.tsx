@@ -7,21 +7,30 @@ import { act } from "react";
 // Mock the host SDK
 vi.mock("@renderx/host-sdk", () => ({
   useConductor: () => ({
-    play: vi.fn().mockImplementation(async (pluginId, sequenceId, data) => {
-      // Handle different sequence types
-      if (sequenceId === "header-ui-theme-get-symphony") {
-        // Get current theme from DOM
-        const currentTheme =
-          document.documentElement.getAttribute("data-theme") || "light";
-        return { theme: currentTheme };
-      } else if (sequenceId === "header-ui-theme-toggle-symphony") {
-        // Simulate the actual theme toggle behavior
-        const theme = data?.theme || "light";
-        document.documentElement.setAttribute("data-theme", theme);
-        return { theme };
-      }
-      return {};
-    }),
+    play: vi
+      .fn()
+      .mockImplementation(async (pluginId, sequenceId, data, callback) => {
+        let result = {};
+        // Handle different sequence types
+        if (sequenceId === "header-ui-theme-get-symphony") {
+          // Get current theme from DOM
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme") || "light";
+          result = { theme: currentTheme };
+        } else if (sequenceId === "header-ui-theme-toggle-symphony") {
+          // Simulate the actual theme toggle behavior
+          const theme = data?.theme || "light";
+          document.documentElement.setAttribute("data-theme", theme);
+          result = { theme };
+        }
+
+        // If callback provided, call it with the result
+        if (callback && typeof callback === "function") {
+          callback(result);
+        }
+
+        return result;
+      }),
   }),
   resolveInteraction: (interaction: string) => {
     if (interaction === "app.ui.theme.get") {
@@ -113,6 +122,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       root.render(<HeaderThemeToggle />);
     });
 
+    // Allow effect to fetch current theme and update state
+    await new Promise((r) => setTimeout(r, 50));
+
     const themeButton = container.querySelector(".header-theme-button");
     expect(themeButton).toBeTruthy();
 
@@ -158,6 +170,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       root.render(<HeaderThemeToggle />);
     });
 
+    // Allow effect to fetch current theme and update state
+    await new Promise((r) => setTimeout(r, 50));
+
     const themeButton = container.querySelector(
       ".header-theme-button"
     ) as HTMLButtonElement;
@@ -191,6 +206,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
     act(() => {
       root.render(<HeaderThemeToggle />);
     });
+
+    // Allow effect to fetch current theme and update state
+    await new Promise((r) => setTimeout(r, 50));
 
     const themeButton = container.querySelector(
       ".header-theme-button"
