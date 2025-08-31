@@ -20,7 +20,11 @@ export function toggleTheme(data: any, ctx: any) {
     try {
       ctx.payload.theme = next;
     } catch {}
+
+    // Return the updated theme for DataBaton tracking
+    return { theme: next };
   } catch (e) {
     ctx.logger?.warn?.("toggleTheme failed", e);
+    return { error: e };
   }
 }

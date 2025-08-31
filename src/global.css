@@ -1,7 +1,9 @@
 /* Global app-shell reset and layout helpers */
 
 /* Remove default body margin that causes white gutters on left/right */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -11,12 +13,61 @@ body {
 }
 
 /* Make sizing predictable throughout */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 /* Avoid unexpected horizontal scrollbars */
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
+/* Theme System - CSS Variables for Light/Dark Mode */
+:root,
+[data-theme="light"] {
+  /* Background colors */
+  --bg-color: #ffffff;
+  --bg: #fafafa;
+  --text-color: #333333;
+  --border-color: #d1d5db;
+  --hover-bg: #f3f4f6;
+
+  /* Component specific */
+  --btn-bg: linear-gradient(135deg, #4f46e5, #3b82f6);
+  --btn-color: #ffffff;
+  --btn-hover-bg: linear-gradient(135deg, #4338ca, #3730a3);
+
+  /* Panel backgrounds */
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --panel-border: rgba(0, 0, 0, 0.1);
+  --panel-shadow: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  /* Background colors */
+  --bg-color: #1f2937;
+  --bg: #111827;
+  --text-color: #f9fafb;
+  --border-color: #374151;
+  --hover-bg: #374151;
+
+  /* Component specific */
+  --btn-bg: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --btn-color: #ffffff;
+  --btn-hover-bg: linear-gradient(135deg, #5b21b6, #7c3aed);
+
+  /* Panel backgrounds */
+  --panel-bg: rgba(31, 41, 55, 0.95);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --panel-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme to body for global background */
+body {
+  background-color: var(--bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
