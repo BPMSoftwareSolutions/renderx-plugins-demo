@@ -5,7 +5,7 @@ import React from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { createRoot } from "react-dom/client";
 
-function renderSlot(slot: string) {
+function renderSlot(_slot: string) {
   const el = document.createElement("div");
   document.body.appendChild(el);
   const root = createRoot(el);

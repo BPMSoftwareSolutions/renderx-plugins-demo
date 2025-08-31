@@ -26,12 +26,7 @@ export const handlers = {
         }
       })();
 
-      if (
-        typeof window !== "undefined" &&
-        typeof document !== "undefined" &&
-        typeof fetch === "function" &&
-        !isVitest
-      ) {
+      if (typeof fetch === "function" && !isVitest) {
         // Browser/dev server path: serve from public/json-components using JSON index
         const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
