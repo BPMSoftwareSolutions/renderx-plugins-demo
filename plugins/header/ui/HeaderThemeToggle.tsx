@@ -1,5 +1,6 @@
 import React from "react";
 import { useConductor, resolveInteraction } from "@renderx/host-sdk";
+import "./Header.css";
 
 export function HeaderThemeToggle() {
   const conductor = useConductor();
@@ -18,22 +19,16 @@ export function HeaderThemeToggle() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-end",
-        height: "100%",
-        padding: "0 12px",
-      }}
-    >
-      <button
-        onClick={toggle}
-        style={{ padding: "6px 10px", fontSize: 12 }}
-        title="Toggle Theme"
-      >
-        {theme === "light" ? "🌞 Light" : "🌙 Dark"}
-      </button>
+    <div className="header-container">
+      <div className="header-theme-toggle">
+        <button
+          onClick={toggle}
+          className="header-theme-button"
+          title="Toggle Theme"
+        >
+          {theme === "light" ? "🌞 Light" : "🌙 Dark"}
+        </button>
+      </div>
     </div>
   );
 }
