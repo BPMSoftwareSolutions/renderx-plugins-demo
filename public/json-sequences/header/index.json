@@ -4,7 +4,10 @@
     {
       "file": "ui.theme.toggle.json",
       "handlersPath": "/plugins/header/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.theme.get.json",
+      "handlersPath": "/plugins/header/symphonies/ui/ui.symphony.ts"
     }
   ]
 }
-

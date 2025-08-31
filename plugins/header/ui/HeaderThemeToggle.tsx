@@ -4,7 +4,7 @@ import "./Header.css";
 
 export function HeaderThemeToggle() {
   const conductor = useConductor();
-  const [theme, setThemeState] = React.useState<"light" | "dark">("light");
+  const [theme, setThemeState] = React.useState<"light" | "dark">("dark"); // Default to dark per issue #80
 
   // Get current theme on mount using stage-crew handler
   React.useEffect(() => {
@@ -16,11 +16,11 @@ export function HeaderThemeToggle() {
           route.sequenceId,
           {}
         );
-        const currentTheme = result?.theme || "light";
+        const currentTheme = result?.theme || "dark";
         setThemeState(currentTheme);
       } catch (e) {
         console.warn("Failed to get current theme:", e);
-        setThemeState("light");
+        setThemeState("dark");
       }
     };
 

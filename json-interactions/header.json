@@ -4,7 +4,10 @@
     "app.ui.theme.toggle": {
       "pluginId": "HeaderThemePlugin",
       "sequenceId": "header-ui-theme-toggle-symphony"
+    },
+    "app.ui.theme.get": {
+      "pluginId": "HeaderThemePlugin",
+      "sequenceId": "header-ui-theme-get-symphony"
     }
   }
 }
-
