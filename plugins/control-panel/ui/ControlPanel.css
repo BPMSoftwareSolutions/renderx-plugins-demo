@@ -325,6 +325,8 @@
   border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 12px;
+  background: var(--bg-color);
+  color: var(--text-color);
   transition: all 0.2s;
 }
 
@@ -340,6 +342,7 @@
   border-radius: 6px;
   font-size: 12px;
   background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .property-checkbox {
@@ -355,7 +358,7 @@
 
 .property-checkbox label {
   font-size: 12px;
-  color: #374151;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -447,7 +450,7 @@
 
 .checkbox-text {
   font-size: 12px;
-  color: #374151;
+  color: var(--text-color);
 }
 
 /* Loading and collapsible styles */

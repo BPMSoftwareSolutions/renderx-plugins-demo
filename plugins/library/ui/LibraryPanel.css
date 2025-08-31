@@ -83,7 +83,7 @@
 .library-component-name {
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--panel-header-color);
   margin-bottom: 4px;
 }
 

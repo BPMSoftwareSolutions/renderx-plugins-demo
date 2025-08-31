@@ -33,7 +33,10 @@ describe("Library preview — JSON-driven fields (icon, name, description)", () 
         tag: "button",
         text: "Click me",
         classes: ["rx-comp", "rx-button"],
-        attributes: { "data-icon": "📘", "data-description": "Interactive button component" },
+        attributes: {
+          "data-icon": "📘",
+          "data-description": "Interactive button component",
+        },
       },
     } as any;
 
@@ -69,7 +72,10 @@ describe("Library preview — JSON-driven fields (icon, name, description)", () 
         tag: "button",
         text: "Click me",
         classes: ["rx-comp", "rx-button"],
-        attributes: { "data-icon": "📘", "data-description": "Interactive button component" }
+        attributes: {
+          "data-icon": "📘",
+          "data-description": "Interactive button component",
+        },
       },
     } as any;
 
@@ -85,9 +91,49 @@ describe("Library preview — JSON-driven fields (icon, name, description)", () 
     expect(host).toBeTruthy();
     expect(host?.getAttribute("data-icon")).toBe("📘");
 
-    const namePresent = container.querySelector(".library-component-name")?.textContent || "";
-    const descPresent = container.querySelector(".library-component-description")?.textContent || "";
+    const namePresent =
+      container.querySelector(".library-component-name")?.textContent || "";
+    const descPresent =
+      container.querySelector(".library-component-description")?.textContent ||
+      "";
     expect(namePresent).toContain("Button");
     expect(descPresent).toContain("Interactive button component");
+  });
+
+  it("library-component-name uses theme colors, not component cssVariables", () => {
+    const container = document.createElement("div");
+    container.className = "rx-lib";
+    document.body.appendChild(container);
+
+    // Component with --text-color cssVariable that should NOT override library label
+    const component = {
+      id: "json-button",
+      name: "Button",
+      template: {
+        tag: "button",
+        text: "Click me",
+        classes: ["rx-comp", "rx-button"],
+        cssVariables: { "text-color": "#ff0000" }, // Red color that should not affect library label
+      },
+    } as any;
+
+    const root = createRoot(container);
+    act(() => {
+      root.render(
+        <LibraryPreview component={component as any} conductor={null as any} />
+      );
+    });
+
+    // Verify the library-component-name element exists
+    const nameEl = container.querySelector(".library-component-name");
+    expect(nameEl).toBeTruthy();
+
+    // Verify the computed style uses theme color, not component cssVariable
+    const computedStyle = window.getComputedStyle(nameEl!);
+    const color = computedStyle.getPropertyValue("color");
+
+    // Should not be red (#ff0000 / rgb(255, 0, 0)) from component cssVariables
+    expect(color).not.toBe("rgb(255, 0, 0)");
+    expect(color).not.toBe("#ff0000");
   });
 });

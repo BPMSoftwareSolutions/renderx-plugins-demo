@@ -90,6 +90,7 @@ body {
   --panel-border: rgba(255, 255, 255, 0.1);
   --panel-shadow: rgba(0, 0, 0, 0.3);
   --panel-header-bg: linear-gradient(135deg, #1e1e2e, #2a2a3a);
+  --panel-header-color: #f8fafc;
 }
 
 /* Apply theme to body for global background */
