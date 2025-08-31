@@ -35,6 +35,18 @@ body {
   --border-color: #d1d5db;
   --hover-bg: #f3f4f6;
 
+  /* Control and UI surfaces */
+  --control-bg: #f3f4f6;
+  --control-hover-bg: #e5e7eb;
+  --muted-text: #6b7280;
+  --divider: #d1d5db;
+  --canvas-grid-dot: #e5e7eb;
+
+  /* Accent colors */
+  --accent-bg: #3b82f6;
+  --accent-border: #2563eb;
+  --accent-weak-bg: rgba(59, 130, 246, 0.1);
+
   /* Component specific */
   --btn-bg: linear-gradient(135deg, #4f46e5, #3b82f6);
   --btn-color: #ffffff;
@@ -44,15 +56,29 @@ body {
   --panel-bg: rgba(255, 255, 255, 0.95);
   --panel-border: rgba(0, 0, 0, 0.1);
   --panel-shadow: rgba(0, 0, 0, 0.05);
+  --panel-header-bg: linear-gradient(135deg, #4f46e5, #3b82f6);
+  --panel-header-color: #ffffff;
 }
 
 [data-theme="dark"] {
   /* Background colors */
   --bg-color: #1f2937;
-  --bg: #111827;
-  --text-color: #f9fafb;
-  --border-color: #374151;
-  --hover-bg: #374151;
+  --bg: #0a0a0b;
+  --text-color: #f8fafc;
+  --border-color: #333344;
+  --hover-bg: #1f2937;
+
+  /* Control and UI surfaces */
+  --control-bg: rgba(255, 255, 255, 0.05);
+  --control-hover-bg: rgba(255, 255, 255, 0.1);
+  --muted-text: #a9b1c4;
+  --divider: rgba(255, 255, 255, 0.15);
+  --canvas-grid-dot: rgba(255, 255, 255, 0.08);
+
+  /* Accent colors */
+  --accent-bg: #3b82f6;
+  --accent-border: #2563eb;
+  --accent-weak-bg: rgba(59, 130, 246, 0.12);
 
   /* Component specific */
   --btn-bg: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -60,9 +86,10 @@ body {
   --btn-hover-bg: linear-gradient(135deg, #5b21b6, #7c3aed);
 
   /* Panel backgrounds */
-  --panel-bg: rgba(31, 41, 55, 0.95);
+  --panel-bg: rgba(31, 41, 55, 0.7);
   --panel-border: rgba(255, 255, 255, 0.1);
   --panel-shadow: rgba(0, 0, 0, 0.3);
+  --panel-header-bg: linear-gradient(135deg, #1e1e2e, #2a2a3a);
 }
 
 /* Apply theme to body for global background */

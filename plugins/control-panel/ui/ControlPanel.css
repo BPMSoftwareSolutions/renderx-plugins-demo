@@ -13,8 +13,8 @@
 
 .control-panel-header {
   padding: 16px 20px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
+  background: var(--panel-header-bg);
+  color: var(--panel-header-color);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -59,7 +59,7 @@
   justify-content: center;
   height: 200px;
   text-align: center;
-  color: #6b7280;
+  color: var(--muted-text);
 }
 
 .no-selection-icon {
@@ -72,7 +72,7 @@
   font-size: 14px;
   font-weight: 500;
   margin: 0 0 8px 0;
-  color: #374151;
+  color: var(--text-color);
 }
 
 .no-selection p {
@@ -88,7 +88,7 @@
 .property-section-title {
   font-size: 11px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--muted-text);
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -109,21 +109,21 @@
 .property-label {
   font-size: 12px;
   font-weight: 500;
-  color: #374151;
+  color: var(--muted-text);
 }
 
 .property-input {
   padding: 6px 8px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 12px;
-  background: #ffffff;
+  background: var(--bg-color);
 }
 
 .property-input:disabled,
 .property-input[readonly] {
-  background: #f9fafb;
-  color: #6b7280;
+  background: var(--control-bg);
+  color: var(--muted-text);
 }
 
 .class-list {
@@ -132,9 +132,9 @@
   gap: 4px;
   min-height: 24px;
   padding: 4px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  background: #f9fafb;
+  background: var(--control-bg);
 }
 
 .class-pill {
@@ -142,17 +142,17 @@
   align-items: center;
   gap: 4px;
   padding: 2px 6px;
-  background: #e5e7eb;
+  background: var(--control-hover-bg);
   border-radius: 12px;
   font-size: 11px;
   font-weight: 500;
-  color: #374151;
+  color: var(--text-color);
 }
 
 .class-remove-btn {
   background: none;
   border: none;
-  color: #6b7280;
+  color: var(--muted-text);
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
@@ -166,7 +166,7 @@
 }
 
 .class-remove-btn:hover {
-  background: #f3f4f6;
+  background: var(--control-bg);
   color: #ef4444;
 }
 
@@ -177,8 +177,8 @@
 
 .add-class-btn {
   padding: 6px 12px;
-  background: #3b82f6;
-  color: white;
+  background: var(--accent-bg);
+  color: var(--btn-color);
   border: none;
   border-radius: 4px;
   font-size: 12px;
@@ -199,7 +199,7 @@
 }
 
 .add-class-btn:hover {
-  background: #2563eb;
+  background: var(--accent-border);
 }
 
 /* CSS Classes Management Styles */
@@ -214,22 +214,22 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--control-bg);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   transition: all 0.2s;
 }
 
 .css-class-item:hover {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
+  background: var(--control-hover-bg);
+  border-color: var(--border-color);
 }
 
 .css-class-name {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 12px;
   font-weight: 500;
-  color: #1e293b;
+  color: var(--text-color);
   cursor: pointer;
   flex: 1;
 }
@@ -277,7 +277,7 @@
 .property-section-title {
   font-size: 12px;
   font-weight: 600;
-  color: #374151;
+  color: var(--muted-text);
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -290,7 +290,7 @@
   content: "";
   flex: 1;
   height: 1px;
-  background: #e5e7eb;
+  background: var(--divider);
 }
 
 .property-grid {
@@ -316,13 +316,13 @@
 .property-label {
   font-size: 11px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--muted-text);
   margin-bottom: 4px;
 }
 
 .property-input {
   padding: 8px 10px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 12px;
   transition: all 0.2s;
@@ -330,16 +330,16 @@
 
 .property-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-weak-bg);
 }
 
 .property-select {
   padding: 8px 10px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 12px;
-  background: white;
+  background: var(--bg-color);
 }
 
 .property-checkbox {
@@ -368,7 +368,7 @@
 .color-swatch {
   width: 24px;
   height: 24px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;
 }
@@ -378,7 +378,7 @@
   gap: 8px;
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--divider);
 }
 
 /* New field renderer styles */
@@ -490,26 +490,26 @@
 .action-btn {
   flex: 1;
   padding: 8px 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  background: white;
+  background: var(--bg-color);
   font-size: 11px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .action-btn:hover {
-  background: #f3f4f6;
+  background: var(--control-hover-bg);
 }
 
 .action-btn.primary {
-  background: #3b82f6;
-  color: white;
-  border-color: #2563eb;
+  background: var(--accent-bg);
+  color: var(--btn-color);
+  border-color: var(--accent-border);
 }
 
 .action-btn.primary:hover {
-  background: #2563eb;
+  background: var(--accent-border);
 }
 
 .action-btn.danger {
