@@ -99,3 +99,25 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Header slot styling */
+[data-slot="headerLeft"] [data-slot-content],
+[data-slot="headerCenter"] [data-slot-content],
+[data-slot="headerRight"] [data-slot-content] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode header slot styling */
+[data-theme="dark"] [data-slot="headerLeft"] [data-slot-content],
+[data-theme="dark"] [data-slot="headerCenter"] [data-slot-content],
+[data-theme="dark"] [data-slot="headerRight"] [data-slot-content] {
+  background: linear-gradient(135deg, #1e1e2e, #2a2a3a);
+  border-bottom: 1px solid #333344;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}

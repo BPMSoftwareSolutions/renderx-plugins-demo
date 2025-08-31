@@ -4,7 +4,37 @@ import "./Header.css";
 
 export function HeaderThemeToggle() {
   const conductor = useConductor();
-  const [theme, setThemeState] = React.useState<"light" | "dark">("light");
+  const [theme, setThemeState] = React.useState<"light" | "dark">(() => {
+    // Initialize based on current DOM theme
+    if (typeof document !== "undefined") {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      return currentTheme === "dark" ? "dark" : "light";
+    }
+    return "light";
+  });
+
+  // Listen for theme changes on the DOM
+  React.useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-theme"
+        ) {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+          setThemeState(currentTheme === "dark" ? "dark" : "light");
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const toggle = async () => {
     try {
@@ -26,7 +56,7 @@ export function HeaderThemeToggle() {
           className="header-theme-button"
           title="Toggle Theme"
         >
-          {theme === "light" ? "🌞 Light" : "🌙 Dark"}
+          {theme === "light" ? "🌙 Dark" : "🌞 Light"}
         </button>
       </div>
     </div>
