@@ -46,7 +46,7 @@ export function CanvasHeader() {
 
   return (
     <div className="canvas-header">
-      <div className="canvas-title">🎨 Design Canvas</div>
+      <div className="canvas-title">🎯 Design Canvas</div>
       <div className="canvas-controls">
         <div
           className={`canvas-control ${
