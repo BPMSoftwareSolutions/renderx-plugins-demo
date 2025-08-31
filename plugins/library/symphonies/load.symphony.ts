@@ -10,6 +10,8 @@ function mapJsonComponentToTemplateCompat(json: any) {
     name: json?.metadata?.name || type,
     template: tpl,
     metadata: json?.metadata || {},
+    // Preserve original UI for CSS extraction in Node/test path
+    ui: json?.ui,
   };
 }
 
@@ -20,9 +22,11 @@ export const handlers = {
       const isVitest = (() => {
         try {
           // @ts-ignore - Vitest injects this flag
-          return !!(import.meta as any)?.vitest;
+          return (
+            !!(import.meta as any)?.vitest || process.env.NODE_ENV === "test"
+          );
         } catch {
-          return false;
+          return process.env.NODE_ENV === "test";
         }
       })();
 
@@ -55,7 +59,7 @@ export const handlers = {
             { with: { type: "json" } } as any
           );
           const json = mod?.default || mod;
-          items.push(mapJsonComponentToTemplate(json));
+          items.push(mapJsonComponentToTemplateCompat(json));
         }
         list = items;
       }
