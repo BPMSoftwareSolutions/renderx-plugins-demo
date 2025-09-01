@@ -137,53 +137,54 @@ I reframed the goal: every change should be traceable, and every flow should be 
 - Business rules live in pure functions that are easy to test.
 - DOM changes happen in a single, known layer.
 
-### After: New Order File Structure
+### After: New Order - Three Separate Codebases
 
+The real "New Order" isn't just organized folders—it's **three completely separate codebases** that work together:
+
+#### 1. Thin-Client Host (Simplicity)
 ```
-src/
-├── ui/
-│   ├── components/
-│   │   ├── UserDashboard/
-│   │   │   ├── UserDashboard.jsx      # Pure UI component
-│   │   │   ├── UserDashboard.test.js  # Component tests
-│   │   │   └── index.js               # Clean exports
-│   │   └── PostList/
-│   │       ├── PostList.jsx
-│   │       ├── PostList.test.js
-│   │       └── index.js
-│   └── hooks/
-│       ├── useUserDashboard.js        # Custom hook for state
-│       └── useTheme.js                # Theme logic separated
-├── domain/
-│   ├── user/
-│   │   ├── user.model.js              # User entity
-│   │   ├── user.rules.js              # Business rules
-│   │   └── user.test.js               # Domain tests
-│   └── post/
-│       ├── post.model.js
-│       ├── post.rules.js
-│       └── post.test.js
-├── services/
-│   ├── api/
-│   │   ├── userService.js             # User API calls
-│   │   ├── postService.js             # Post API calls
-│   │   └── httpClient.js              # Configured axios
-│   ├── storage/
-│   │   └── localStorage.js            # Storage abstraction
-│   └── dom/
-│       └── domService.js              # DOM manipulation
-├── infra/
-│   ├── conductor/
-│   │   ├── eventBus.js                # Event orchestration
-│   │   ├── topics.js                  # Event topic definitions
-│   │   └── conductor.test.js
-│   ├── config/
-│   │   ├── component.mapper.json      # Component configuration
-│   │   ├── theme.config.json          # Theme definitions
-│   │   └── api.config.json            # API endpoints
-│   └── logger/
-│       └── logger.js                  # Centralized logging
-└── App.js                             # Minimal bootstrap
+src/                                   # Minimal shell - just slots
+├── App.tsx                           # Three panel slots with Suspense
+├── conductor.ts                      # Initializes communication system
+├── components/
+│   └── PanelSlot.tsx                # Manifest-driven plugin loader
+├── layout/
+│   ├── LayoutEngine.tsx             # Data-driven layout
+│   └── SlotContainer.tsx            # Drop-capable slot wrapper
+└── main.tsx                         # Bootstrap conductor + mount
+```
+
+#### 2. Plugins (Scalability)
+```
+plugins/                              # Domain-oriented plugin structure
+├── library/                         # UI + load symphony
+│   ├── ui/LibraryPanel.tsx         # Pure view component
+│   └── symphonies/load.symphony.ts  # Data loading orchestration
+├── library-component/               # Drag/drop coordination
+│   └── symphonies/
+│       ├── drag.symphony.ts         # Drag initiation
+│       └── drop.symphony.ts         # Drop handling
+├── canvas/                          # Pure rendering
+│   └── ui/CanvasPage.tsx           # View-only canvas
+├── canvas-component/                # Side-effects and creation
+│   └── symphonies/create.symphony.ts # Component creation logic
+└── control-panel/                   # Configuration UI
+    ├── ui/ControlPanel.tsx         # Pure view
+    ├── config/component.mapper.json # JSON-driven fields
+    └── symphonies/update.symphony.ts # Property updates
+```
+
+#### 3. Musical Conductor (Reliability & Consistency)
+```
+musical-conductor/                    # External orchestration engine
+├── src/
+│   ├── ConductorClient.ts           # Main orchestration API
+│   ├── SequenceEngine.ts            # Symphony execution
+│   ├── EventBus.ts                  # Pub/sub coordination
+│   └── Logger.ts                    # Centralized logging
+└── types/
+    ├── Symphony.ts                  # Sequence definitions
+    └── Beat.ts                      # Execution units
 ```
 
 ![Separation of concerns reflected in the folder structure](img/wild-west-to-new-order/02-folder-structure.png)
@@ -195,168 +196,189 @@ src/
 - Example: component.mapper.json declares component types, control panel fields, and allowed CSS classes.
 - Benefits: self‑documentation, easier code reviews, safer AI‑assisted edits, and no hard‑coded mappings sprinkled through the code.
 
-### After: JSON-Driven Component Configuration
+### After: Manifest-Driven Plugin Loading
 
 ```json
-// infra/config/component.mapper.json
+// public/plugins/plugin-manifest.json - Single source of truth
+{
+  "plugins": [
+    {
+      "id": "LibraryPlugin",
+      "ui": {
+        "slot": "library",
+        "module": "/plugins/library/index.ts",
+        "export": "LibraryPanel"
+      }
+    },
+    {
+      "id": "CanvasPlugin",
+      "ui": {
+        "slot": "canvas",
+        "module": "/plugins/canvas/index.ts",
+        "export": "CanvasPage"
+      }
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "ui": {
+        "slot": "controlPanel",
+        "module": "/plugins/control-panel/index.ts",
+        "export": "ControlPanel"
+      }
+    }
+  ]
+}
+```
+
+```json
+// plugins/control-panel/config/component.mapper.json
 {
   "components": {
-    "UserDashboard": {
-      "type": "container",
+    "Button": {
       "controlPanel": {
         "fields": [
           {
-            "name": "theme",
+            "name": "text",
+            "type": "text",
+            "label": "Button Text",
+            "default": "Click me"
+          },
+          {
+            "name": "variant",
             "type": "select",
-            "options": ["light", "dark", "auto"],
-            "default": "light"
+            "options": ["primary", "secondary", "danger"],
+            "default": "primary"
           },
           {
-            "name": "postsPerPage",
-            "type": "number",
-            "min": 5,
-            "max": 50,
-            "default": 10
-          },
-          {
-            "name": "showUserAvatar",
+            "name": "disabled",
             "type": "boolean",
-            "default": true
+            "default": false
           }
         ],
         "cssClasses": {
           "allowed": [
-            "dashboard-compact",
-            "dashboard-wide",
-            "high-contrast",
-            "mobile-optimized"
-          ],
-          "default": ["dashboard-wide"]
+            "btn-large",
+            "btn-small",
+            "btn-rounded",
+            "btn-outline"
+          ]
         }
-      },
-      "events": {
-        "subscribes": ["user.loaded", "theme.changed"],
-        "publishes": ["dashboard.rendered", "posts.requested"]
-      }
-    },
-    "PostList": {
-      "type": "list",
-      "controlPanel": {
-        "fields": [
-          {
-            "name": "layout",
-            "type": "select",
-            "options": ["grid", "list", "cards"],
-            "default": "cards"
-          }
-        ],
-        "cssClasses": {
-          "allowed": ["post-grid", "post-list", "post-cards"],
-          "default": ["post-cards"]
-        }
-      },
-      "events": {
-        "subscribes": ["posts.loaded"],
-        "publishes": ["post.selected", "post.deleted"]
       }
     }
   }
 }
 ```
 
-### After: Clean Component Implementation
+### After: Thin-Client Host Implementation
 
-```jsx
-// ui/components/UserDashboard/UserDashboard.jsx
-import React from 'react';
-import { useUserDashboard } from '../../hooks/useUserDashboard';
-import { PostList } from '../PostList';
+```tsx
+// src/App.tsx - Minimal shell with three slots
+import React, { Suspense } from "react";
+import { SlotContainer } from "./layout/SlotContainer";
 
-const UserDashboard = ({ config, cssClasses = [] }) => {
-  const {
-    user,
-    posts,
-    loading,
-    theme,
-    handleDeletePost
-  } = useUserDashboard(config);
-
-  if (loading) return <div>Loading...</div>;
-
+export default function App() {
   return (
-    <div className={`dashboard ${theme} ${cssClasses.join(' ')}`}>
-      <h1>Welcome, {user?.name}</h1>
-      <PostList
-        posts={posts}
-        onDelete={handleDeletePost}
-        layout={config.layout || 'cards'}
-      />
+    <div className="legacy-grid">
+      <div data-slot="library" className="slot-wrapper">
+        <Suspense fallback={<div className="p-3">Loading Library…</div>}>
+          <SlotContainer slot="library" />
+        </Suspense>
+      </div>
+      <div data-slot="canvas" className="slot-wrapper">
+        <Suspense fallback={<div className="p-3">Loading Canvas…</div>}>
+          <SlotContainer slot="canvas" capabilities={{ droppable: true }} />
+        </Suspense>
+      </div>
+      <div data-slot="controlPanel" className="slot-wrapper">
+        <Suspense fallback={<div className="p-3">Loading Control Panel…</div>}>
+          <SlotContainer slot="controlPanel" />
+        </Suspense>
+      </div>
     </div>
   );
-};
-
-export default UserDashboard;
+}
 ```
 
-```js
-// ui/hooks/useUserDashboard.js
-import { useState, useEffect } from 'react';
-import { userService } from '../../services/api/userService';
-import { postService } from '../../services/api/postService';
-import { eventBus } from '../../infra/conductor/eventBus';
-import { applyThemeRules } from '../../domain/user/user.rules';
+```tsx
+// src/components/PanelSlot.tsx - Manifest-driven plugin loader
+export function PanelSlot({ slot }: { slot: string }) {
+  const [Comp, setComp] = React.useState<React.ComponentType | null>(null);
 
-export const useUserDashboard = (config) => {
-  const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [theme, setTheme] = useState(config.theme || 'light');
-
-  useEffect(() => {
-    const loadDashboard = async () => {
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
       try {
-        // Clean service calls
-        const userData = await userService.getCurrentUser();
-        const postsData = await postService.getUserPosts(userData.id);
+        const manifest = await manifestPromiseRef;
+        const entry = manifest.plugins.find((p) => p.ui?.slot === slot);
+        if (!entry || !entry.ui)
+          throw new Error(`No plugin UI found for slot ${slot}`);
 
-        setUser(userData);
-        setPosts(postsData);
+        const mod = await import(/* @vite-ignore */ entry.ui.module);
+        const Exported = mod[entry.ui.export] as React.ComponentType | undefined;
 
-        // Business rules applied cleanly
-        const newTheme = applyThemeRules(postsData, config);
-        setTheme(newTheme);
-
-        // Events published for other components
-        eventBus.publish('user.loaded', userData);
-        eventBus.publish('dashboard.rendered', { user: userData, posts: postsData });
-
-        setLoading(false);
-      } catch (error) {
-        eventBus.publish('error.occurred', { context: 'dashboard', error });
+        if (!Exported)
+          throw new Error(`Export ${entry.ui.export} not found in ${entry.ui.module}`);
+        if (alive) setComp(() => Exported);
+      } catch (err) {
+        console.error(err);
+        if (alive)
+          setComp(() => () => (
+            <div style={{ padding: 12 }}>
+              Failed to load panel: {String(err)}
+            </div>
+          ));
       }
-    };
+    })();
+    return () => { alive = false; };
+  }, [slot]);
 
-    loadDashboard();
-  }, [config]);
+  return Comp ? <Comp /> : <div>Loading {slot}...</div>;
+}
+```
 
-  const handleDeletePost = async (postId) => {
-    try {
-      await postService.deletePost(postId);
-      const updatedPosts = posts.filter(p => p.id !== postId);
-      setPosts(updatedPosts);
+### After: Plugin Implementation (Pure UI)
 
-      // Business rule: theme adjustment
-      const newTheme = applyThemeRules(updatedPosts, config);
-      setTheme(newTheme);
+```tsx
+// plugins/library/ui/LibraryPanel.tsx - Pure view component
+import React from 'react';
+import { useConductor } from '@renderx/host-sdk';
 
-      eventBus.publish('post.deleted', { postId, remainingCount: updatedPosts.length });
-    } catch (error) {
-      eventBus.publish('error.occurred', { context: 'post-deletion', error });
-    }
+export function LibraryPanel() {
+  const [components, setComponents] = React.useState([]);
+  const conductor = useConductor();
+
+  React.useEffect(() => {
+    // Orchestrated data loading via conductor
+    conductor.play('LibraryPlugin', 'load', {
+      onComponentsLoaded: (data) => setComponents(data.components)
+    });
+  }, [conductor]);
+
+  const handleDragStart = (e: React.DragEvent, component: any) => {
+    e.dataTransfer.setData('application/json', JSON.stringify(component));
+    // Notify other plugins via conductor
+    conductor.play('LibraryComponentPlugin', 'drag', {
+      component,
+      startPosition: { x: e.clientX, y: e.clientY }
+    });
   };
 
-  return { user, posts, loading, theme, handleDeletePost };
-};
+  return (
+    <div className="library-panel">
+      <h3>Component Library</h3>
+      {components.map(comp => (
+        <div
+          key={comp.id}
+          draggable
+          onDragStart={(e) => handleDragStart(e, comp)}
+          className="library-item"
+        >
+          {comp.name}
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
 ![JSON‑driven configuration: components, fields, and classes defined declaratively](img/wild-west-to-new-order/03-json-source-of-truth.png)
@@ -371,101 +393,109 @@ export const useUserDashboard = (config) => {
 - Clear topics, payload shapes, and who publishes/subscribes.
 - This reduces tight coupling and makes flows observable.
 
-### After: Event Bus Implementation
+### After: Symphony-Based Orchestration
 
-```js
-// infra/conductor/eventBus.js
-import { logger } from '../logger/logger';
-
-class EventBus {
-  constructor() {
-    this.subscribers = new Map();
-    this.correlationId = 0;
-  }
-
-  subscribe(topic, handler, context = 'unknown') {
-    if (!this.subscribers.has(topic)) {
-      this.subscribers.set(topic, []);
-    }
-
-    this.subscribers.get(topic).push({ handler, context });
-    logger.info(`Subscribed to ${topic}`, { context, topic });
-  }
-
-  publish(topic, payload = {}) {
-    const correlationId = ++this.correlationId;
-    const timestamp = new Date().toISOString();
-
-    logger.info(`Publishing ${topic}`, {
-      topic,
-      correlationId,
-      timestamp,
-      payload: JSON.stringify(payload).substring(0, 100)
-    });
-
-    if (this.subscribers.has(topic)) {
-      this.subscribers.get(topic).forEach(({ handler, context }) => {
-        try {
-          handler({ ...payload, correlationId, timestamp });
-          logger.debug(`Handler executed for ${topic}`, { context, correlationId });
-        } catch (error) {
-          logger.error(`Handler failed for ${topic}`, {
-            context,
-            correlationId,
-            error: error.message
-          });
+```ts
+// plugins/library/symphonies/load.symphony.ts - JSON sequence definition
+{
+  "id": "library.load",
+  "pluginId": "LibraryPlugin",
+  "movements": [
+    {
+      "id": "fetch-components",
+      "beats": [
+        {
+          "kind": "api-call",
+          "endpoint": "/api/components",
+          "method": "GET"
         }
-      });
+      ]
+    },
+    {
+      "id": "process-data",
+      "beats": [
+        {
+          "kind": "data-transform",
+          "handler": "processComponentData"
+        }
+      ]
+    },
+    {
+      "id": "notify-ui",
+      "beats": [
+        {
+          "kind": "callback",
+          "target": "onComponentsLoaded"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```ts
+// plugins/library-component/symphonies/drop.symphony.ts
+{
+  "id": "library-component.drop",
+  "pluginId": "LibraryComponentPlugin",
+  "movements": [
+    {
+      "id": "validate-drop",
+      "beats": [
+        {
+          "kind": "validation",
+          "handler": "validateDropTarget"
+        }
+      ]
+    },
+    {
+      "id": "forward-to-canvas",
+      "beats": [
+        {
+          "kind": "conductor-play",
+          "targetPlugin": "CanvasComponentPlugin",
+          "sequence": "create",
+          "payload": "dropData"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```ts
+// src/conductor.ts - Musical Conductor integration
+export async function initConductor(): Promise<ConductorClient> {
+  const { initializeCommunicationSystem } = await import("musical-conductor");
+  const { conductor } = initializeCommunicationSystem();
+
+  // Expose globally for plugins
+  (window as any).renderxCommunicationSystem = { conductor };
+  (window as any).RenderX = { conductor };
+
+  return conductor as ConductorClient;
+}
+
+export async function registerAllSequences(conductor: ConductorClient) {
+  // Load JSON sequence catalogs from each plugin
+  await loadJsonSequenceCatalogs(conductor);
+
+  // Register plugin UI modules (sequences already mounted via JSON)
+  const modules = [
+    await import("../plugins/library"),
+    await import("../plugins/library-component"),
+    await import("../plugins/canvas-component"),
+    await import("../plugins/canvas"),
+    await import("../plugins/control-panel"),
+  ];
+
+  for (const mod of modules) {
+    const reg = (mod as any).register;
+    if (typeof reg === "function") {
+      await reg(conductor);
     }
   }
 }
-
-export const eventBus = new EventBus();
-```
-
-```js
-// infra/conductor/topics.js - Self-documenting event contracts
-export const TOPICS = {
-  USER: {
-    LOADED: 'user.loaded',
-    UPDATED: 'user.updated',
-    LOGGED_OUT: 'user.logged_out'
-  },
-  POSTS: {
-    LOADED: 'posts.loaded',
-    CREATED: 'post.created',
-    DELETED: 'post.deleted',
-    SELECTED: 'post.selected'
-  },
-  UI: {
-    THEME_CHANGED: 'theme.changed',
-    DASHBOARD_RENDERED: 'dashboard.rendered',
-    MODAL_OPENED: 'modal.opened'
-  },
-  ERRORS: {
-    OCCURRED: 'error.occurred',
-    RESOLVED: 'error.resolved'
-  }
-};
-
-// Event payload schemas for documentation
-export const SCHEMAS = {
-  [TOPICS.USER.LOADED]: {
-    id: 'string',
-    name: 'string',
-    email: 'string',
-    preferences: 'object'
-  },
-  [TOPICS.POSTS.DELETED]: {
-    postId: 'string',
-    remainingCount: 'number'
-  },
-  [TOPICS.ERRORS.OCCURRED]: {
-    context: 'string',
-    error: 'Error',
-    correlationId: 'string'
-  }
-};
 ```
 
 ![Event bus: clear topics and payloads enable traceable flows](img/wild-west-to-new-order/05-event-bus-logs.png)
@@ -623,6 +653,28 @@ export const validateUserPreferences = (preferences) => {
 *Structured logs: trace behavior by component, event, and correlation id.*
 
 ## 4) What changed (results)
+
+### The Three-Codebase Architecture Delivers:
+
+**Conductor (Reliability & Consistency)**
+- Centralized orchestration prevents race conditions and ensures predictable flows
+- Symphony-based sequences provide self-documenting execution paths
+- Correlation IDs and structured logging make debugging traceable
+- Single communication protocol across all plugins
+
+**Plugins (Scalability)**
+- Domain-oriented structure: library vs library-component vs canvas vs canvas-component
+- Pure UI components separated from side-effect handlers (symphonies)
+- Plugins can be developed, tested, and deployed independently
+- Manifest-driven loading means no host code changes to add plugins
+
+**Thin-Client Panel Slots (Simplicity)**
+- Host shell is under 200 lines - just three slots with Suspense
+- No business logic in the host - it's purely a plugin loader
+- Layout is data-driven via manifest, not hard-coded
+- Zero coupling between host and plugin internals
+
+### Concrete Improvements:
 
 - Faster onboarding: new contributors can read the JSON and understand the system.
 - Fewer regressions: side effects are constrained and tested.
