@@ -44,6 +44,7 @@ export type ExtractRule =
   | { get: "hasAttr"; attr: string; as: string }
   | { get: "prop"; prop: string; as: string }
   | { get: "style"; prop: string; as: string }
+  | { get: "innerHtml"; as: string }
   | {
       get: "classVariant";
       prefix: string;
@@ -418,6 +419,11 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
       { get: "attr", attr: "stroke", as: "stroke" },
       { get: "attr", attr: "data-thickness", as: "thickness" },
     ],
+    svg: [
+      { get: "attr", attr: "viewBox", as: "viewBox" },
+      { get: "attr", attr: "preserveAspectRatio", as: "preserveAspectRatio" },
+      { get: "innerHtml", as: "svgMarkup" },
+    ],
     paragraph: [
       { get: "textContent", as: "content" },
       {
@@ -644,6 +650,11 @@ export class ComponentRuleEngine {
         case "style": {
           const v = (el.style as any)[(r as any).prop];
           if (v) out[(r as any).as] = v;
+          break;
+        }
+        case "innerHtml": {
+          const html = (el as any).innerHTML;
+          if (html && html.trim().length) out[(r as any).as] = html;
           break;
         }
         case "classVariant": {
