@@ -203,12 +203,12 @@ Three-Codebase Architecture:
 
 [ Thin-Client Host ]                     [ Plugins ]                               [ Musical Conductor ]
 ┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
-│ App.tsx  PanelSlot   │   mounts via    │ Library (ui)            │   play()      │ SequenceEngine         │
-│ SlotContainer        ├───────────────▶ │ LibraryComponent (sym)  ├──────────────▶│ EventBus / Logger      │
-│ initConductor()      │                 │ Canvas (ui)             │               │ Correlated logs (IDs)  │
+│ App.tsx  PanelSlot   │   mounts via    │ Library (ui)            │   play()      │ SequenceEngine        │
+│ SlotContainer        ├───────────────▶ │ LibraryComponent (sym)  ├──────────────▶│ EventBus / Logger     │
+│ initConductor()      │                 │ Canvas (ui)             │               │ Correlated logs (IDs) │
 └──────────────────────┘   manifest      │ CanvasComponent (sym)   │   callbacks   └───────────────────────┘
-          ▲                               │ ControlPanel (ui+cfg)  │◀──────────────┐
-          │                               └─────────────────────────┘   notify-ui()
+          ▲                              │ ControlPanel (ui+cfg)   │◀──────────────┐
+          │                              └─────────────────────────┘   notify-ui()
           └──────────── "slots" <───────────── UI renders; side-effects live in symphonies
 ```
 
@@ -409,7 +409,7 @@ Plugin Manifest → Dynamic Loading:
 │ plugin-manifest.json                                                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ { "id": "LibraryPlugin",                                                    │
-│   "ui": { "slot": "library", "module": "/plugins/library", "export": "..." │
+│   "ui": { "slot": "library", "module": "/plugins/library", "export": "..."  │
 │ }                                                                           │
 └─────────────────────────────────────────────────────────────────────────────┘
                                     ↓
@@ -417,16 +417,16 @@ Plugin Manifest → Dynamic Loading:
 │ PanelSlot.tsx                                                               │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ 1. Read manifest                                                            │
-│ 2. Find plugin for slot="library"                                          │
-│ 3. Dynamic import("/plugins/library/index.ts")                             │
-│ 4. Mount LibraryPanel component                                            │
+│ 2. Find plugin for slot="library"                                           │
+│ 3. Dynamic import("/plugins/library/index.ts")                              │
+│ 4. Mount LibraryPanel component                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
                                     ↓
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ Control Panel Fields (JSON-driven)                                         │
+│ Control Panel Fields (JSON-driven)                                          │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│ Button: [text: "Click me", variant: "primary", disabled: false]            │
-│ CSS Classes: ["btn-large", "btn-rounded"] ← allowed from JSON              │
+│ Button: [text: "Click me", variant: "primary", disabled: false]             │
+│ CSS Classes: ["btn-large", "btn-rounded"] ← allowed from JSON               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -549,16 +549,16 @@ Symphony Orchestration Flow:
 └─────────────────┘                        │ │ load.symphony.json          │ │
                                            │ │ ├─ fetch-components (API)   │ │
 ┌─────────────────┐    drop event          │ │ ├─ process-data (transform) │ │
-│ CanvasPage      ├──────────────────────▶ │ │ └─ notify-ui (callback)    │ │
+│ CanvasPage      ├──────────────────────▶ │ │ └─ notify-ui (callback)     │ │
 │ (UI Component)  │                        │ └─────────────────────────────┘ │
 └─────────────────┘                        └─────────────────────────────────┘
                                                            │
-                                           ┌───────────────▼─────────────────┐
-                                           │ Correlation ID: abc-123         │
-                                           │ [INFO] Publishing library.load  │
-                                           │ [DEBUG] Handler executed        │
+                                           ┌───────────────▼─────────────────────┐
+                                           │ Correlation ID: abc-123             │
+                                           │ [INFO] Publishing library.load      │
+                                           │ [DEBUG] Handler executed            │
                                            │ [INFO] Callback: onComponentsLoaded │
-                                           └─────────────────────────────────┘
+                                           └─────────────────────────────────────┘
 ```
 
 ### Guardrails: linting, tests, and CI
