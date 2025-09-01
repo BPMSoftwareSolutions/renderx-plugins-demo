@@ -8,6 +8,7 @@ export type UpdateRule =
   | { whenAttr: string; action: "boolAttr"; attr: string }
   | { whenAttr: string; action: "attr"; attr: string }
   | { whenAttr: string; action: "prop"; prop: string }
+  | { whenAttr: string; action: "innerHtml" }
   | {
       whenAttr: string;
       action: "toggleClassVariant";
@@ -28,7 +29,8 @@ export type ContentRule =
   | { action: "dupTextToContent" } // helper to set content=el.textContent for button
   | { action: "attr"; attr: string; from: string; boolAttr?: boolean }
   | { action: "prop"; prop: string; from: string }
-  | { action: "style"; prop: string; from: string };
+  | { action: "style"; prop: string; from: string }
+  | { action: "innerHtml"; from: string }; // generic innerHTML setter for markup payloads (e.g., svg)
 
 export type ContentRulesConfig = {
   default: ContentRule[];
@@ -42,6 +44,7 @@ export type ExtractRule =
   | { get: "hasAttr"; attr: string; as: string }
   | { get: "prop"; prop: string; as: string }
   | { get: "style"; prop: string; as: string }
+  | { get: "innerHtml"; as: string }
   | {
       get: "classVariant";
       prefix: string;
@@ -229,6 +232,15 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         attr: "data-thickness",
       },
     ],
+    svg: [
+      { whenAttr: "viewBox", action: "attr", attr: "viewBox" },
+      {
+        whenAttr: "preserveAspectRatio",
+        action: "attr",
+        attr: "preserveAspectRatio",
+      },
+      { whenAttr: "svgMarkup", action: "innerHtml" },
+    ],
     paragraph: [
       {
         whenAttr: "content",
@@ -301,6 +313,15 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
     line: [
       { action: "attr", attr: "stroke", from: "stroke" },
       { action: "attr", attr: "data-thickness", from: "thickness" },
+    ],
+    svg: [
+      { action: "attr", attr: "viewBox", from: "viewBox" },
+      {
+        action: "attr",
+        attr: "preserveAspectRatio",
+        from: "preserveAspectRatio",
+      },
+      { action: "innerHtml", from: "svgMarkup" },
     ],
     paragraph: [
       { action: "textFrom", from: "content" },
@@ -398,6 +419,11 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
       { get: "attr", attr: "stroke", as: "stroke" },
       { get: "attr", attr: "data-thickness", as: "thickness" },
     ],
+    svg: [
+      { get: "attr", attr: "viewBox", as: "viewBox" },
+      { get: "attr", attr: "preserveAspectRatio", as: "preserveAspectRatio" },
+      { get: "innerHtml", as: "svgMarkup" },
+    ],
     paragraph: [
       { get: "textContent", as: "content" },
       {
@@ -487,6 +513,10 @@ export class ComponentRuleEngine {
         (el as any)[prop] = value;
         return true;
       }
+      case "innerHtml": {
+        (el as any).innerHTML = String(value ?? "");
+        return true;
+      }
       case "toggleClassVariant": {
         const { base, prefix, values } = rule as any;
         const classes = Array.from(el.classList);
@@ -573,6 +603,11 @@ export class ComponentRuleEngine {
           if (v !== undefined) (el.style as any)[(r as any).prop] = String(v);
           break;
         }
+        case "innerHtml": {
+          const v = (content as any)[(r as any).from];
+          if (v !== undefined) (el as any).innerHTML = String(v);
+          break;
+        }
       }
     }
   }
@@ -615,6 +650,11 @@ export class ComponentRuleEngine {
         case "style": {
           const v = (el.style as any)[(r as any).prop];
           if (v) out[(r as any).as] = v;
+          break;
+        }
+        case "innerHtml": {
+          const html = (el as any).innerHTML;
+          if (html && html.trim().length) out[(r as any).as] = html;
           break;
         }
         case "classVariant": {
