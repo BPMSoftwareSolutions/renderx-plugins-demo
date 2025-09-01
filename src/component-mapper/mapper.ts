@@ -25,6 +25,7 @@ const DEFAULT_CONFIG: MapperConfig = {
       { when: "metadata.type == 'input'", tag: "input" },
       { when: "metadata.type == 'image'", tag: "img" },
       { when: "metadata.type == 'line'", tag: "svg" },
+      { when: "metadata.type == 'svg'", tag: "svg" },
       { when: "metadata.type == 'paragraph'", tag: "p" },
       {
         when: "metadata.type == 'heading'",

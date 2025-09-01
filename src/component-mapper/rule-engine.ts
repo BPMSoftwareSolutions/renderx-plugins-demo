@@ -28,7 +28,8 @@ export type ContentRule =
   | { action: "dupTextToContent" } // helper to set content=el.textContent for button
   | { action: "attr"; attr: string; from: string; boolAttr?: boolean }
   | { action: "prop"; prop: string; from: string }
-  | { action: "style"; prop: string; from: string };
+  | { action: "style"; prop: string; from: string }
+  | { action: "innerHtml"; from: string }; // generic innerHTML setter for markup payloads (e.g., svg)
 
 export type ContentRulesConfig = {
   default: ContentRule[];
@@ -302,6 +303,15 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
       { action: "attr", attr: "stroke", from: "stroke" },
       { action: "attr", attr: "data-thickness", from: "thickness" },
     ],
+    svg: [
+      { action: "attr", attr: "viewBox", from: "viewBox" },
+      {
+        action: "attr",
+        attr: "preserveAspectRatio",
+        from: "preserveAspectRatio",
+      },
+      { action: "innerHtml", from: "svgMarkup" },
+    ],
     paragraph: [
       { action: "textFrom", from: "content" },
       { action: "style", prop: "color", from: "color" },
@@ -571,6 +581,11 @@ export class ComponentRuleEngine {
         case "style": {
           const v = (content as any)[(r as any).from];
           if (v !== undefined) (el.style as any)[(r as any).prop] = String(v);
+          break;
+        }
+        case "innerHtml": {
+          const v = (content as any)[(r as any).from];
+          if (v !== undefined) (el as any).innerHTML = String(v);
           break;
         }
       }

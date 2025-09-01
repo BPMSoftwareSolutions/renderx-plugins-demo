@@ -1,13 +1,16 @@
-import React from 'react';
-import { SchemaResolverService } from '../services/schema-resolver.service';
-import type { ControlPanelConfig } from '../types/control-panel.types';
+import React from "react";
+import { SchemaResolverService } from "../services/schema-resolver.service";
+import type { ControlPanelConfig } from "../types/control-panel.types";
 
 // Load configuration
-const configPromise = fetch('/plugins/control-panel/config/control-panel.schema.json')
-  .then(r => r.json()) as Promise<ControlPanelConfig>;
+const configPromise = fetch(
+  "/plugins/control-panel/config/control-panel.schema.json"
+).then((r) => r.json()) as Promise<ControlPanelConfig>;
 
 export function useSchemaResolver() {
-  const [resolver, setResolver] = React.useState<SchemaResolverService | null>(null);
+  const [resolver, setResolver] = React.useState<SchemaResolverService | null>(
+    null
+  );
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -18,15 +21,24 @@ export function useSchemaResolver() {
         const config = await configPromise;
         const schemaResolver = new SchemaResolverService(config);
 
-        // Load common component schemas (extended with heading/paragraph/image)
-        await schemaResolver.loadComponentSchemas(['button', 'input', 'container', 'line', 'heading', 'paragraph', 'image']);
+        // Load common component schemas (extended with heading/paragraph/image/svg)
+        await schemaResolver.loadComponentSchemas([
+          "button",
+          "input",
+          "container",
+          "line",
+          "heading",
+          "paragraph",
+          "image",
+          "svg",
+        ]);
 
         if (mounted) {
           setResolver(schemaResolver);
           setIsLoading(false);
         }
       } catch (error) {
-        console.error('Failed to initialize schema resolver:', error);
+        console.error("Failed to initialize schema resolver:", error);
         if (mounted) {
           setIsLoading(false);
         }
@@ -34,7 +46,9 @@ export function useSchemaResolver() {
     };
 
     initResolver();
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return { resolver, isLoading };

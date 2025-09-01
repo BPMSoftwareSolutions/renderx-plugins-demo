@@ -96,6 +96,8 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
           }
         : {}),
     },
+    // Pass default property values as content for rule-engine-driven application
+    ...(defaults && Object.keys(defaults).length ? { content: defaults } : {}),
     dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
     style: {
       ...(type === "image" && defaults?.objectFit
