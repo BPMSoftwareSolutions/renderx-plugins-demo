@@ -8,6 +8,7 @@ export type UpdateRule =
   | { whenAttr: string; action: "boolAttr"; attr: string }
   | { whenAttr: string; action: "attr"; attr: string }
   | { whenAttr: string; action: "prop"; prop: string }
+  | { whenAttr: string; action: "innerHtml" }
   | {
       whenAttr: string;
       action: "toggleClassVariant";
@@ -229,6 +230,15 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         action: "attr",
         attr: "data-thickness",
       },
+    ],
+    svg: [
+      { whenAttr: "viewBox", action: "attr", attr: "viewBox" },
+      {
+        whenAttr: "preserveAspectRatio",
+        action: "attr",
+        attr: "preserveAspectRatio",
+      },
+      { whenAttr: "svgMarkup", action: "innerHtml" },
     ],
     paragraph: [
       {
@@ -495,6 +505,10 @@ export class ComponentRuleEngine {
       case "prop": {
         const prop = (rule as any).prop as string;
         (el as any)[prop] = value;
+        return true;
+      }
+      case "innerHtml": {
+        (el as any).innerHTML = String(value ?? "");
         return true;
       }
       case "toggleClassVariant": {
