@@ -75,6 +75,7 @@
       "perfGuards": {
         "throttle": { "intervalMs": 100 }
       },
+      "perf": { "debounceMs": 250 },
       "notes": "Control panel field change requested; routes to field change sequence with throttling."
     },
     "control.panel.ui.field.validate.requested": {

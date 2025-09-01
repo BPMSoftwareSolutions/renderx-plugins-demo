@@ -14,7 +14,7 @@ export interface SectionConfig {
   order: number;
   collapsible: boolean;
   defaultExpanded: boolean;
-  special?: 'classes' | 'events' | 'custom';
+  special?: "classes" | "events" | "custom";
 }
 
 export interface FieldTypeConfig {
@@ -47,6 +47,7 @@ export interface PropertyField {
   description?: string;
   defaultValue?: any;
   conditional?: ConditionalRule;
+  rendererProps?: Record<string, any>;
 }
 
 export interface FieldOption {
@@ -57,14 +58,14 @@ export interface FieldOption {
 }
 
 export interface ValidationRule {
-  type: 'required' | 'min' | 'max' | 'pattern' | 'custom';
+  type: "required" | "min" | "max" | "pattern" | "custom";
   value?: any;
   message?: string;
 }
 
 export interface ConditionalRule {
   field: string;
-  operator: 'equals' | 'not-equals' | 'contains' | 'greater-than' | 'less-than';
+  operator: "equals" | "not-equals" | "contains" | "greater-than" | "less-than";
   value: any;
 }
 
@@ -91,6 +92,7 @@ export interface PropertySchema {
   required?: boolean;
   enum?: string[];
   validation?: ValidationRule[];
+  ui?: { control?: string; [key: string]: any };
 }
 
 // Selection Model
@@ -120,6 +122,7 @@ export interface FieldRendererProps {
   onValidate?: (isValid: boolean, errors: string[]) => void;
   disabled?: boolean;
   className?: string;
+  selectedElement?: SelectedElement | null;
 }
 
 // Control Panel State
@@ -132,10 +135,10 @@ export interface ControlPanelState {
 }
 
 // Action Types
-export type ControlPanelAction = 
-  | { type: 'SET_SELECTED_ELEMENT'; payload: SelectedElement | null }
-  | { type: 'SET_CLASSES'; payload: string[] }
-  | { type: 'TOGGLE_SECTION'; payload: string }
-  | { type: 'SET_VALIDATION_ERRORS'; payload: Record<string, string[]> }
-  | { type: 'SET_DIRTY'; payload: boolean }
-  | { type: 'RESET_STATE' };
+export type ControlPanelAction =
+  | { type: "SET_SELECTED_ELEMENT"; payload: SelectedElement | null }
+  | { type: "SET_CLASSES"; payload: string[] }
+  | { type: "TOGGLE_SECTION"; payload: string }
+  | { type: "SET_VALIDATION_ERRORS"; payload: Record<string, string[]> }
+  | { type: "SET_DIRTY"; payload: boolean }
+  | { type: "RESET_STATE" };

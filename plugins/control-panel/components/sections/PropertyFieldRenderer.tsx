@@ -1,8 +1,11 @@
-import React from 'react';
-import { getFieldRenderer } from '../field-renderers';
-import { getNestedValue } from '../../utils/field.utils';
-import { useControlPanelSequences } from '../../hooks/useControlPanelSequences';
-import type { PropertyField, SelectedElement } from '../../types/control-panel.types';
+import React from "react";
+import { getFieldRenderer } from "../field-renderers";
+import { getNestedValue } from "../../utils/field.utils";
+import { useControlPanelSequences } from "../../hooks/useControlPanelSequences";
+import type {
+  PropertyField,
+  SelectedElement,
+} from "../../types/control-panel.types";
 
 interface PropertyFieldProps {
   field: PropertyField;
@@ -15,10 +18,11 @@ export const PropertyFieldRenderer: React.FC<PropertyFieldProps> = ({
   field,
   selectedElement,
   onChange,
-  onValidate
+  onValidate,
 }) => {
   const FieldComponent = getFieldRenderer(field.type);
-  const value = getNestedValue(selectedElement, field.path) || field.defaultValue;
+  const value =
+    getNestedValue(selectedElement, field.path) || field.defaultValue;
   const sequences = useControlPanelSequences();
 
   const handleValidate = (isValid: boolean, errors: string[]) => {
@@ -43,6 +47,7 @@ export const PropertyFieldRenderer: React.FC<PropertyFieldProps> = ({
         value={value}
         onChange={(newValue) => onChange(field.key, newValue)}
         onValidate={handleValidate}
+        selectedElement={selectedElement}
       />
       {field.description && field.type !== "checkbox" && (
         <div className="field-description">{field.description}</div>

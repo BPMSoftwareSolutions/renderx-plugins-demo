@@ -524,3 +524,25 @@
 .action-btn.danger:hover {
   background: #dc2626;
 }
+
+/* Code editor toolbar (svg markup) aligns with existing action-btn styles */
+.code-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.code-toolbar .action-btn {
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.code-toolbar .action-btn:hover {
+  background: var(--control-hover-bg);
+}
