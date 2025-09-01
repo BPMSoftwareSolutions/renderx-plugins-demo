@@ -121,8 +121,19 @@ src/
 └── App.js                         # More business logic here too
 ```
 
-![Before: logic and side‑effects scattered across a component](img/wild-west-to-new-order/01-before-component.png)
-*Before: logic and side‑effects scattered across a component.*
+```
+Wild West Component (150+ lines, does everything):
+┌─────────────────────────────────────────────────────────────┐
+│ UserDashboard.jsx                                           │
+├─────────────────────────────────────────────────────────────┤
+│ useEffect #1: fetch user + DOM manipulation + localStorage  │
+│ useEffect #2: fetch posts + business logic + theme change  │
+│ useEffect #3: direct DOM styling + sidebar manipulation    │
+│ handleDeletePost: API call + state + business rules + UX   │
+│ render: JSX mixed with inline logic                        │
+└─────────────────────────────────────────────────────────────┘
+    ↓ Problems: untestable, unpredictable, hard to maintain
+```
 
 ## 2) The turning point: traceability and flow
 
@@ -187,8 +198,19 @@ musical-conductor/                    # External orchestration engine
     └── Beat.ts                      # Execution units
 ```
 
-![Separation of concerns reflected in the folder structure](img/wild-west-to-new-order/02-folder-structure.png)
-*Separation of concerns reflected in the folder structure.*
+```
+Three-Codebase Architecture:
+
+[ Thin-Client Host ]                     [ Plugins ]                               [ Musical Conductor ]
+┌──────────────────────┐                 ┌─────────────────────────┐               ┌───────────────────────┐
+│ App.tsx  PanelSlot   │   mounts via    │ Library (ui)            │   play()      │ SequenceEngine         │
+│ SlotContainer        ├───────────────▶ │ LibraryComponent (sym)  ├──────────────▶│ EventBus / Logger      │
+│ initConductor()      │                 │ Canvas (ui)             │               │ Correlated logs (IDs)  │
+└──────────────────────┘   manifest      │ CanvasComponent (sym)   │   callbacks   └───────────────────────┘
+          ▲                               │ ControlPanel (ui+cfg)  │◀──────────────┐
+          │                               └─────────────────────────┘   notify-ui()
+          └──────────── "slots" <───────────── UI renders; side-effects live in symphonies
+```
 
 ### One source of truth: JSON‑driven configuration
 
@@ -381,11 +403,32 @@ export function LibraryPanel() {
 }
 ```
 
-![JSON‑driven configuration: components, fields, and classes defined declaratively](img/wild-west-to-new-order/03-json-source-of-truth.png)
-*JSON‑driven configuration: components, fields, and classes defined declaratively.*
-
-![Control Panel: fields and classes driven from JSON](img/wild-west-to-new-order/04-control-panel.png)
-*Control Panel: fields and classes driven from JSON.*
+```
+Plugin Manifest → Dynamic Loading:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ plugin-manifest.json                                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ { "id": "LibraryPlugin",                                                    │
+│   "ui": { "slot": "library", "module": "/plugins/library", "export": "..." │
+│ }                                                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    ↓
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ PanelSlot.tsx                                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 1. Read manifest                                                            │
+│ 2. Find plugin for slot="library"                                          │
+│ 3. Dynamic import("/plugins/library/index.ts")                             │
+│ 4. Mount LibraryPanel component                                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    ↓
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Control Panel Fields (JSON-driven)                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Button: [text: "Click me", variant: "primary", disabled: false]            │
+│ CSS Classes: ["btn-large", "btn-rounded"] ← allowed from JSON              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### Event orchestration
 
@@ -498,8 +541,25 @@ export async function registerAllSequences(conductor: ConductorClient) {
 }
 ```
 
-![Event bus: clear topics and payloads enable traceable flows](img/wild-west-to-new-order/05-event-bus-logs.png)
-*Event bus: clear topics and payloads enable traceable flows.*
+```
+Symphony Orchestration Flow:
+┌─────────────────┐    conductor.play()    ┌─────────────────────────────────┐
+│ LibraryPanel    ├──────────────────────▶ │ Musical Conductor               │
+│ (UI Component)  │                        │ ┌─────────────────────────────┐ │
+└─────────────────┘                        │ │ load.symphony.json          │ │
+                                           │ │ ├─ fetch-components (API)   │ │
+┌─────────────────┐    drop event          │ │ ├─ process-data (transform) │ │
+│ CanvasPage      ├──────────────────────▶ │ │ └─ notify-ui (callback)    │ │
+│ (UI Component)  │                        │ └─────────────────────────────┘ │
+└─────────────────┘                        └─────────────────────────────────┘
+                                                           │
+                                           ┌───────────────▼─────────────────┐
+                                           │ Correlation ID: abc-123         │
+                                           │ [INFO] Publishing library.load  │
+                                           │ [DEBUG] Handler executed        │
+                                           │ [INFO] Callback: onComponentsLoaded │
+                                           └─────────────────────────────────┘
+```
 
 ### Guardrails: linting, tests, and CI
 
@@ -632,25 +692,74 @@ export const validateUserPreferences = (preferences) => {
 };
 ```
 
-![ESLint guardrails preventing architecture violations](img/wild-west-to-new-order/06-eslint-guardrails.png)
-*ESLint guardrails preventing architecture violations.*
+```
+Architecture Guardrails:
 
-![Fast feedback: unit tests validate pure business logic](img/wild-west-to-new-order/07-unit-tests.png)
-*Fast feedback: unit tests validate pure business logic.*
+ESLint Rules Enforcement:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ❌ ERROR: UI cannot import services directly                                │
+│    plugins/library/ui/LibraryPanel.tsx                                     │
+│    import { userService } from '../../../services/api'  ← BLOCKED          │
+│                                                                             │
+│ ✅ ALLOWED: Use hooks or conductor                                          │
+│    const conductor = useConductor()                                        │
+│    conductor.play('LibraryPlugin', 'load', {...})                          │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-![End‑to‑end tests confirm behavior across boundaries](img/wild-west-to-new-order/08-e2e-tests.png)
-*End‑to‑end tests confirm behavior across boundaries.*
+Test Pyramid:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ E2E Tests (Playwright)                                                      │
+│ ├─ User drags component from library to canvas                             │
+│ ├─ Control panel updates component properties                              │
+│ └─ Full plugin orchestration flows                                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Integration Tests                                                           │
+│ ├─ Symphony execution with mock conductor                                  │
+│ ├─ Plugin loading via manifest                                             │
+│ └─ Event flow between plugins                                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Unit Tests (Fast)                                                          │
+│ ├─ Pure business logic (domain rules)                                      │
+│ ├─ Component rendering (UI only)                                           │
+│ └─ JSON schema validation                                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-![CI enforces quality and catches regressions before merge](img/wild-west-to-new-order/09-ci-pipeline.png)
-*CI enforces quality and catches regressions before merge.*
+CI Pipeline:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. ESLint → Architecture rules ✅                                          │
+│ 2. Unit Tests → Pure logic ✅                                              │
+│ 3. Integration → Plugin loading ✅                                         │
+│ 4. E2E → Full user flows ✅                                                │
+│ 5. Build → All plugins + host ✅                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### Observability: logs with context
 
 - Centralized logging through the conductor provides consistent context (component, event, correlation id).
 - When something breaks, we can follow the trail.
 
-![Structured logs: trace behavior by component, event, and correlation id](img/wild-west-to-new-order/10-observability-logs.png)
-*Structured logs: trace behavior by component, event, and correlation id.*
+```
+Observability & Traceability:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ /.logs/application.log                                                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ [2024-01-15T10:30:15.123Z] INFO  correlationId=abc-123                     │
+│   topic=library.load plugin=LibraryPlugin                                  │
+│   payload={"components": [...]} context=load-symphony                      │
+│                                                                             │
+│ [2024-01-15T10:30:15.145Z] DEBUG correlationId=abc-123                     │
+│   handler=processComponentData executed=success                            │
+│                                                                             │
+│ [2024-01-15T10:30:15.167Z] INFO  correlationId=abc-123                     │
+│   callback=onComponentsLoaded target=LibraryPanel                          │
+│                                                                             │
+│ [2024-01-15T10:30:20.234Z] INFO  correlationId=def-456                     │
+│   topic=canvas-component.create plugin=CanvasComponentPlugin               │
+│   payload={"componentId": "btn-1", "position": {"x": 100, "y": 50}}        │
+└─────────────────────────────────────────────────────────────────────────────┘
+    ↑ Every action traceable by correlation ID across plugins
+```
 
 ## 4) What changed (results)
 
@@ -681,11 +790,44 @@ export const validateUserPreferences = (preferences) => {
 - Safer iteration: changes in config don’t require risky cross‑cutting code edits.
 - Better AI collaboration: agents can follow the self‑documented flow.
 
-![Refactor with confidence: UI unchanged, internals improved](img/wild-west-to-new-order/11-before-after-ui.png)
-*Refactor with confidence: UI unchanged, internals improved.*
+```
+Before/After: Same UI, Better Architecture
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ User Experience (Identical)                                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ [Library Panel] │ [Canvas with Components] │ [Control Panel]               │
+│ - Button        │  ┌─────────┐             │ Text: "Click me"              │
+│ - Input         │  │ Button  │             │ Variant: Primary              │
+│ - Image         │  │         │             │ Classes: [btn-large]          │
+│                 │  └─────────┘             │                               │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-![Iterate safely: change behavior via JSON, not cross‑cutting edits](img/wild-west-to-new-order/12-json-driven-change.png)
-*Iterate safely: change behavior via JSON, not cross‑cutting edits.*
+Developer Experience (Transformed)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ BEFORE: Wild West                    │ AFTER: New Order                     │
+├──────────────────────────────────────┼──────────────────────────────────────┤
+│ • 150+ line monolithic components    │ • Pure UI components (20-30 lines)  │
+│ • Mixed responsibilities             │ • Clear separation: UI vs symphonies │
+│ • Hard-coded everything              │ • JSON-driven configuration         │
+│ • Untestable side effects           │ • Testable business logic           │
+│ • Tight coupling                    │ • Plugin independence               │
+│ • Manual coordination               │ • Conductor orchestration           │
+└──────────────────────────────────────┴──────────────────────────────────────┘
+
+JSON-Driven Changes (No Code Edits):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. Add new control panel field:                                            │
+│    component.mapper.json: { "name": "size", "type": "select", ... }        │
+│                                                                             │
+│ 2. Enable new CSS class:                                                   │
+│    "cssClasses": { "allowed": [..., "btn-xl"] }                            │
+│                                                                             │
+│ 3. Add plugin to new slot:                                                 │
+│    plugin-manifest.json: { "slot": "sidebar", "module": "..." }            │
+│                                                                             │
+│ → Changes take effect immediately, no host rebuild required                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ## 5) Lessons I didn’t expect
 
