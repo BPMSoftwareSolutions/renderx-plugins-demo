@@ -147,3 +147,5 @@ vite.config.ts.timestamp-*
 /.*
 /test-results
 /package-lock.json
+/public/interaction-manifest.json
+/public/topics-manifest.json
