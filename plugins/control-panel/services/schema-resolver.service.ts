@@ -104,14 +104,16 @@ export class SchemaResolverService {
       const properties = schema.integration.properties.schema;
 
       Object.entries(properties).forEach(([key, propSchema]) => {
+        const ui: any = (propSchema as any).ui || {};
+        const initialType = this.mapSchemaTypeToFieldType(
+          propSchema.type,
+          propSchema.enum,
+          key
+        );
         const field: PropertyField = {
           key,
           label: this.formatLabel(key),
-          type: this.mapSchemaTypeToFieldType(
-            propSchema.type,
-            propSchema.enum,
-            key
-          ),
+          type: ui.control === "code" ? "code" : initialType,
           path: this.inferPropertyPath(key, selectedElement),
           section: this.inferSection(key),
           required: propSchema.required || false,
@@ -124,6 +126,7 @@ export class SchemaResolverService {
                 label: this.formatLabel(value.toString()),
               }))
             : undefined,
+          rendererProps: ui && Object.keys(ui).length ? { ...ui } : undefined,
         };
 
         if (propSchema.validation) {
