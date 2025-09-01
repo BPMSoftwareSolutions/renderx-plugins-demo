@@ -28,7 +28,8 @@ export type ContentRule =
   | { action: "dupTextToContent" } // helper to set content=el.textContent for button
   | { action: "attr"; attr: string; from: string; boolAttr?: boolean }
   | { action: "prop"; prop: string; from: string }
-  | { action: "style"; prop: string; from: string };
+  | { action: "style"; prop: string; from: string }
+  | { action: "innerHtml"; from: string };
 
 export type ContentRulesConfig = {
   default: ContentRule[];
@@ -80,7 +81,18 @@ export function loadAllRulesFromWindow() {
 
 export function getAllRulesConfig(): AllRulesConfig {
   if (!cachedAllRules) loadAllRulesFromWindow();
-  return cachedAllRules || {};
+  const cfg = cachedAllRules || {};
+  // Lightweight augmentation: if contentRules missing svg innerHtml rule but global component.mapper JSON injected it via build, tests may not have it.
+  // We opportunistically merge a window-provided RenderX.componentMapper?.contentRules if present (used in tests without full bootstrap).
+  try {
+    const g: any = (globalThis as any) || {};
+    const extra = g?.RenderX?.componentMapper?.contentRules;
+    if (extra) {
+      cfg.content = cfg.content || { default: [], byType: {} };
+      cfg.content.byType = { ...(cfg.content.byType || {}), ...(extra.byType || {}) };
+    }
+  } catch {}
+  return cfg;
 }
 
 // Default rules tuned to existing tests/behavior
@@ -307,6 +319,11 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
       { action: "style", prop: "color", from: "color" },
       { action: "style", prop: "fontSize", from: "fontSize" },
       { action: "style", prop: "lineHeight", from: "lineHeight" },
+    ],
+    svg: [
+      { action: "attr", attr: "viewBox", from: "viewBox" },
+      { action: "attr", attr: "preserveAspectRatio", from: "preserveAspectRatio" },
+      { action: "innerHtml", from: "svgMarkup" },
     ],
   },
 };
@@ -571,6 +588,11 @@ export class ComponentRuleEngine {
         case "style": {
           const v = (content as any)[(r as any).from];
           if (v !== undefined) (el.style as any)[(r as any).prop] = String(v);
+          break;
+        }
+        case "innerHtml": {
+          const v = (content as any)[(r as any).from];
+          if (v !== undefined) el.innerHTML = String(v);
           break;
         }
       }

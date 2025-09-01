@@ -92,8 +92,8 @@ export const createNode = (data: any, ctx: any) => {
     } catch {}
   }
 
-  // 6.6) If this is an SVG line, append a child <line> and set svg attributes
-  if (String(tpl?.tag).toLowerCase() === "svg") {
+  // 6.6) If this is the legacy SVG line component, append a child <line> and set svg attributes
+  if (String(tpl?.tag).toLowerCase() === "svg" && tpl?.metadata?.type === "line") {
     try {
       const svg = el as unknown as SVGSVGElement;
       svg.setAttribute("width", "100%");
