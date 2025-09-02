@@ -233,6 +233,114 @@ describe("Export SVG to GIF", () => {
     expect(mockAnchor.click).toHaveBeenCalled();
   }, 10000);
 
+  it("should use CSS dimensions when element is clipped (off-screen positioning)", async () => {
+    // Setup: Add an SVG element that's positioned off-screen
+    const canvas = document.getElementById("rx-canvas")!;
+    const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgEl.id = "test-svg-clipped";
+    svgEl.setAttribute("viewBox", "0 0 900 500");
+    svgEl.style.width = "900px";
+    svgEl.style.height = "500px";
+    svgEl.style.position = "absolute";
+    svgEl.style.left = "-56px"; // Positioned off-screen like your example
+    svgEl.style.top = "135px";
+    canvas.appendChild(svgEl);
+
+    // Mock getBoundingClientRect to return clipped dimensions (what's visible)
+    vi.spyOn(svgEl, "getBoundingClientRect").mockReturnValue({
+      width: 844, // 900 - 56 = 844 (clipped width)
+      height: 500,
+      top: 135,
+      left: 0, // Browser clips negative left to 0
+      bottom: 635,
+      right: 844,
+      x: 0,
+      y: 135,
+      toJSON: () => ({}),
+    });
+
+    // Mock Image loading
+    const mockImage = {
+      onload: null as any,
+      onerror: null as any,
+      src: "",
+      width: 900,
+      height: 500,
+    };
+    vi.spyOn(window, "Image").mockImplementation(() => mockImage as any);
+
+    // Mock canvas context and elements
+    const mockContext = {
+      drawImage: vi.fn(),
+      fillStyle: "",
+      fillRect: vi.fn(),
+      getImageData: vi.fn(() => ({
+        data: new Uint8ClampedArray(900 * 500 * 4),
+      })),
+    };
+    const mockCanvas = {
+      width: 0,
+      height: 0,
+      getContext: vi.fn(() => mockContext),
+    };
+    const mockAnchor = { href: "", download: "", click: vi.fn() };
+
+    vi.spyOn(document, "createElement").mockImplementation((tagName) => {
+      if (tagName === "canvas") return mockCanvas as any;
+      if (tagName === "a") return mockAnchor as any;
+      return document.createElement(tagName);
+    });
+
+    // Mock gif.js
+    const GIF = await import("gif.js.optimized");
+    const mockGif = (GIF as any).__mockGif;
+
+    mockGif.on.mockImplementation((event: string, callback: Function) => {
+      if (event === "finished") {
+        callback(new Blob(["fake-gif"], { type: "image/gif" }));
+      }
+    });
+
+    // Import handler
+    const { handlers } = await import(
+      "../../plugins/canvas-component/symphonies/export/export.gif.symphony"
+    );
+    const exportGifHandler = handlers.exportSvgToGif;
+
+    // Test payload WITHOUT width/height options (should detect clipping)
+    const ctx = {
+      payload: {
+        targetId: "test-svg-clipped",
+        options: {}, // No width/height specified
+      },
+      logger: { info: vi.fn(), error: vi.fn() },
+    };
+
+    // Execute handler
+    const handlerPromise = exportGifHandler({}, ctx);
+
+    // Simulate image load
+    if (mockImage.onload) {
+      mockImage.onload();
+    }
+
+    await handlerPromise;
+
+    // Assertions: should use CSS dimensions (900x500) not bbox (844x500)
+    expect(mockCanvas.width).toBe(900); // Full CSS width, not clipped bbox
+    expect(mockCanvas.height).toBe(500);
+    expect(ctx.logger.info).toHaveBeenCalledWith(
+      expect.stringContaining(
+        "Using CSS dimensions (900x500) instead of bbox (844x500) due to clipping"
+      )
+    );
+    expect(mockGif.addFrame).toHaveBeenCalledWith(mockCanvas, {
+      delay: 100,
+      copy: true,
+    });
+    expect(mockAnchor.click).toHaveBeenCalled();
+  }, 10000);
+
   describe("Error handling", () => {
     it("should handle missing SVG element", async () => {
       const { handlers } = await import(

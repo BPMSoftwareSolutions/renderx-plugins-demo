@@ -52,9 +52,30 @@ export async function exportSvgToGif(data: any, ctx: any) {
     }
 
     // Determine output size
+    // For SVG components, prefer the intended dimensions over the visible bounding box
+    // since components can be positioned off-screen (negative x/y) causing clipping
     const bbox = svgEl.getBoundingClientRect();
-    const width = Math.round(options?.width ?? bbox.width);
-    const height = Math.round(options?.height ?? bbox.height);
+    let width = Math.round(options?.width ?? bbox.width);
+    let height = Math.round(options?.height ?? bbox.height);
+
+    // If the element appears to be clipped (very small bbox but has CSS dimensions),
+    // use the CSS dimensions instead
+    const cssWidth = parseFloat(svgEl.style.width) || 0;
+    const cssHeight = parseFloat(svgEl.style.height) || 0;
+
+    if (
+      cssWidth > 0 &&
+      cssHeight > 0 &&
+      (bbox.width < cssWidth * 0.95 || bbox.height < cssHeight * 0.95)
+    ) {
+      width = Math.round(options?.width ?? cssWidth);
+      height = Math.round(options?.height ?? cssHeight);
+      ctx.logger?.info?.(
+        `Using CSS dimensions (${width}x${height}) instead of bbox (${Math.round(
+          bbox.width
+        )}x${Math.round(bbox.height)}) due to clipping`
+      );
+    }
 
     if (width <= 0 || height <= 0) {
       ctx.payload.error = "Invalid dimensions for export";
