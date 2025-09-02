@@ -1,0 +1,190 @@
+import React from "react";
+import type { FieldRendererProps } from "../../types/control-panel.types";
+import { useConductor, EventRouter } from "@renderx/host-sdk";
+
+type TreeNodeModel = {
+  tag: string;
+  id?: string;
+  attrs?: Record<string, string>;
+  children: TreeNodeModel[];
+};
+
+function parseSvgToTree(svgMarkup: string): TreeNodeModel | null {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(
+      `<svg>${svgMarkup}</svg>`,
+      "image/svg+xml"
+    );
+    const svg = doc.querySelector("svg");
+    if (!svg) return null;
+    const walk = (el: Element): TreeNodeModel => {
+      const attrs: Record<string, string> = {};
+      try {
+        for (const a of Array.from(el.attributes || [])) {
+          attrs[a.name] = a.value;
+        }
+      } catch {}
+      return {
+        tag: el.tagName,
+        id: (el as HTMLElement).id || undefined,
+        attrs,
+        children: Array.from(el.children).map(walk),
+      };
+    };
+    return walk(svg);
+  } catch {
+    return null;
+  }
+}
+
+function TreeNode({
+  node,
+  path,
+  onSelect,
+  selectedPath,
+}: {
+  node: TreeNodeModel;
+  path: string;
+  onSelect: (path: string) => void;
+  selectedPath: string;
+}) {
+  const [expanded, setExpanded] = React.useState(true);
+  const label = React.useMemo(() => {
+    const attrs = node.attrs || {};
+    const keys = ["font-family", "font-weight"];
+    const parts = keys
+      .filter(
+        (k) =>
+          typeof (attrs as any)[k] === "string" &&
+          String((attrs as any)[k]).length > 0
+      )
+      .map((k) => `${k}="${(attrs as any)[k]}"`);
+    const attrStr = parts.length ? ` ${parts.join(" ")}` : "";
+    return `<${node.tag}${attrStr}>`;
+  }, [node]);
+  const hasChildren = (node.children || []).length > 0;
+  return (
+    <div style={{ marginLeft: 8, pointerEvents: "auto" }}>
+      <div
+        style={{
+          cursor: "pointer",
+          userSelect: "none",
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          background:
+            selectedPath === path || (!path && selectedPath === "")
+              ? "var(--control-hover-bg)"
+              : undefined,
+          borderRadius:
+            selectedPath === path || (!path && selectedPath === "")
+              ? 4
+              : undefined,
+        }}
+        title="Click to highlight on canvas; click triangle to toggle"
+        onMouseDown={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <span
+          role="button"
+          tabIndex={0}
+          onClick={() => setExpanded((e) => !e)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") setExpanded((x) => !x);
+          }}
+          style={{ width: 12, display: "inline-block" }}
+        >
+          {hasChildren ? (expanded ? "▾" : "▸") : "•"}
+        </span>
+        <span
+          role="button"
+          tabIndex={0}
+          onClick={() => onSelect(path)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") onSelect(path);
+          }}
+        >
+          {label}
+        </span>
+      </div>
+      {expanded && hasChildren && (
+        <div>
+          {node.children.map((child: TreeNodeModel, idx: number) => (
+            <TreeNode
+              key={idx}
+              node={child}
+              path={path ? `${path}/${idx}` : `${idx}`}
+              onSelect={onSelect}
+              selectedPath={selectedPath}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export const SvgTreeView: React.FC<FieldRendererProps> = ({
+  selectedElement,
+}) => {
+  const conductor = useConductor();
+  const svgMarkup = selectedElement?.content?.svgMarkup || "";
+  const id = selectedElement?.header?.id;
+  const root = React.useMemo(() => parseSvgToTree(svgMarkup), [svgMarkup]);
+  const [selectedPath, setSelectedPath] = React.useState<string>("");
+
+  // Sync selection when canvas confirms the sub-node selection
+  React.useEffect(() => {
+    const unsub = EventRouter.subscribe(
+      "canvas.component.select.svg-node.changed",
+      (p: any) => {
+        try {
+          const targetId = String(p?.id || "");
+          if (!targetId || targetId !== String(id || "")) return;
+          setSelectedPath(String(p?.path || ""));
+        } catch {}
+      }
+    );
+    return () => unsub?.();
+  }, [id]);
+
+  const handleSelect = async (path: string) => {
+    const cleanPath = String(path || "").replace(/^\//, "");
+    setSelectedPath(cleanPath);
+    if (!id || !conductor?.play) return;
+    try {
+      await EventRouter.publish(
+        "canvas.component.select.svg-node.requested",
+        { id, path: cleanPath },
+        conductor
+      );
+    } catch (e) {
+      console.warn("Failed to publish svg-node selection", e);
+    }
+  };
+
+  if (!id) return null;
+
+  return (
+    <div
+      className="svg-tree-view"
+      style={{
+        fontFamily: "ui-sans-serif, system-ui",
+        fontSize: 12,
+        pointerEvents: "auto",
+      }}
+    >
+      {!root ? (
+        <div style={{ opacity: 0.7 }}>No child nodes</div>
+      ) : (
+        <TreeNode
+          node={root}
+          path=""
+          onSelect={handleSelect}
+          selectedPath={selectedPath}
+        />
+      )}
+    </div>
+  );
+};

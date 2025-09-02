@@ -328,6 +328,37 @@
       },
       "visibility": "public",
       "notes": "Line resize ended; routes to line resize end sequence."
+    },
+    "canvas.component.select.svg-node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+          "sequenceId": "canvas-component-select-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" }
+        },
+        "required": ["id", "path"]
+      },
+      "visibility": "public",
+      "notes": "Control Panel SvgTreeView click → highlight sub-element in canvas"
+    },
+    "canvas.component.select.svg-node.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" }
+        },
+        "required": ["id", "path"]
+      },
+      "visibility": "public",
+      "notes": "Notify-only: emitted by canvas after applying sub-node selection so UI (control panel) can sync selection state"
     }
   },
   "definitions": {}

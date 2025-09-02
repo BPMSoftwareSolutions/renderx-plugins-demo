@@ -9,6 +9,10 @@
       "pluginId": "CanvasComponentSelectionPlugin",
       "sequenceId": "canvas-component-select-symphony"
     },
+    "canvas.component.select.svg-node": {
+      "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+      "sequenceId": "canvas-component-select-svg-node-symphony"
+    },
     "canvas.component.drag.move": {
       "pluginId": "CanvasComponentDragPlugin",
       "sequenceId": "canvas-component-drag-symphony"
