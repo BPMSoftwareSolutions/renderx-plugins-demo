@@ -544,6 +544,33 @@
       "perf": {},
       "notes": "Line resize ended; routes to line resize end sequence."
     },
+    "canvas.component.select.svg-node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+          "sequenceId": "canvas-component-select-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Control Panel SvgTreeView click → highlight sub-element in canvas"
+    },
     "control.panel.update.requested": {
       "routes": [
         {

@@ -1,6 +1,6 @@
 import React from "react";
 import type { FieldRendererProps } from "../../types/control-panel.types";
-import { useConductor, resolveInteraction } from "@renderx/host-sdk";
+import { useConductor, EventRouter } from "@renderx/host-sdk";
 
 type TreeNodeModel = { tag: string; id?: string; children: TreeNodeModel[] };
 
@@ -96,14 +96,17 @@ export const SvgTreeView: React.FC<FieldRendererProps> = ({
   const id = selectedElement?.header?.id;
   const root = React.useMemo(() => parseSvgToTree(svgMarkup), [svgMarkup]);
 
-  const handleSelect = (path: string) => {
+  const handleSelect = async (path: string) => {
     const cleanPath = String(path || "").replace(/^\//, "");
     if (!id || !conductor?.play) return;
     try {
-      const r = resolveInteraction("canvas.component.select.svg-node");
-      conductor.play(r.pluginId, r.sequenceId, { id, path: cleanPath });
+      await EventRouter.publish(
+        "canvas.component.select.svg-node.requested",
+        { id, path: cleanPath },
+        conductor
+      );
     } catch (e) {
-      console.warn("Failed to route svg-node selection", e);
+      console.warn("Failed to publish svg-node selection", e);
     }
   };
 
