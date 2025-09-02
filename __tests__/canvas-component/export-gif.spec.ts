@@ -58,20 +58,29 @@ describe("Export SVG to GIF", () => {
       canvas.appendChild(svgEl);
 
       // Mock Image loading
+      const imageSrcs: string[] = [];
       const mockImage = {
         onload: null as any,
         onerror: null as any,
-        src: "",
+        _src: "",
+        set src(v: string) {
+          imageSrcs.push(v);
+          Promise.resolve().then(() => this.onload && this.onload());
+        },
+        get src() {
+          return this._src;
+        },
         width: 100,
         height: 100,
-      };
-      vi.spyOn(window, "Image").mockImplementation(() => mockImage as any);
+      } as any;
+      vi.spyOn(window, "Image").mockImplementation(() => mockImage);
 
       // Mock canvas context
       const mockContext = {
         drawImage: vi.fn(),
         fillStyle: "",
         fillRect: vi.fn(),
+        clearRect: vi.fn(),
         getImageData: vi.fn(() => ({ data: new Uint8ClampedArray(400) })),
       };
       const mockCanvas = {
@@ -117,10 +126,7 @@ describe("Export SVG to GIF", () => {
       // Execute handler - this will trigger the image load
       const handlerPromise = exportGifHandler({}, ctx);
 
-      // Simulate image load immediately
-      if (mockImage.onload) {
-        mockImage.onload();
-      }
+      // onload auto-triggered by mock Image.src setter
 
       await handlerPromise;
 
@@ -157,20 +163,29 @@ describe("Export SVG to GIF", () => {
     });
 
     // Mock Image loading
+    const imageSrcs2: string[] = [];
     const mockImage = {
       onload: null as any,
       onerror: null as any,
-      src: "",
+      _src: "",
+      set src(v: string) {
+        imageSrcs2.push(v);
+        Promise.resolve().then(() => this.onload && this.onload());
+      },
+      get src() {
+        return this._src;
+      },
       width: 450,
       height: 250,
-    };
-    vi.spyOn(window, "Image").mockImplementation(() => mockImage as any);
+    } as any;
+    vi.spyOn(window, "Image").mockImplementation(() => mockImage);
 
     // Mock canvas context
     const mockContext = {
       drawImage: vi.fn(),
       fillStyle: "",
       fillRect: vi.fn(),
+      clearRect: vi.fn(),
       getImageData: vi.fn(() => ({
         data: new Uint8ClampedArray(450 * 250 * 4),
       })),
@@ -216,10 +231,7 @@ describe("Export SVG to GIF", () => {
     // Execute handler
     const handlerPromise = exportGifHandler({}, ctx);
 
-    // Simulate image load
-    if (mockImage.onload) {
-      mockImage.onload();
-    }
+    // onload auto-triggered by mock Image.src setter
 
     await handlerPromise;
 
@@ -260,20 +272,29 @@ describe("Export SVG to GIF", () => {
     });
 
     // Mock Image loading
+    const imageSrcs3: string[] = [];
     const mockImage = {
       onload: null as any,
       onerror: null as any,
-      src: "",
+      _src: "",
+      set src(v: string) {
+        imageSrcs3.push(v);
+        Promise.resolve().then(() => this.onload && this.onload());
+      },
+      get src() {
+        return this._src;
+      },
       width: 900,
       height: 500,
-    };
-    vi.spyOn(window, "Image").mockImplementation(() => mockImage as any);
+    } as any;
+    vi.spyOn(window, "Image").mockImplementation(() => mockImage);
 
     // Mock canvas context and elements
     const mockContext = {
       drawImage: vi.fn(),
       fillStyle: "",
       fillRect: vi.fn(),
+      clearRect: vi.fn(),
       getImageData: vi.fn(() => ({
         data: new Uint8ClampedArray(900 * 500 * 4),
       })),
@@ -319,10 +340,7 @@ describe("Export SVG to GIF", () => {
     // Execute handler
     const handlerPromise = exportGifHandler({}, ctx);
 
-    // Simulate image load
-    if (mockImage.onload) {
-      mockImage.onload();
-    }
+    // onload auto-triggered by mock Image.src setter
 
     await handlerPromise;
 
@@ -368,13 +386,24 @@ describe("Export SVG to GIF", () => {
     });
 
     // Mock Image load
-    const mockImage = { onload: null as any, onerror: null as any, src: "" };
-    vi.spyOn(window, "Image").mockImplementation(() => mockImage as any);
+    const mockImage = {
+      onload: null as any,
+      onerror: null as any,
+      _src: "",
+      set src(v: string) {
+        Promise.resolve().then(() => this.onload && this.onload());
+      },
+      get src() {
+        return this._src;
+      },
+    } as any;
+    vi.spyOn(window, "Image").mockImplementation(() => mockImage);
 
     // Mock canvas context and spy drawImage args
     const mockContext = {
       drawImage: vi.fn(),
       fillRect: vi.fn(),
+      clearRect: vi.fn(),
       fillStyle: "",
     };
     const mockCanvas = {
@@ -408,9 +437,7 @@ describe("Export SVG to GIF", () => {
       logger: { info: vi.fn(), error: vi.fn() },
     };
 
-    const p = exportGifHandler({}, ctx);
-    if (mockImage.onload) mockImage.onload();
-    await p;
+    await exportGifHandler({}, ctx);
 
     // Assert we drew at (0,0) regardless of element left/top offsets
     expect(mockContext.drawImage).toHaveBeenCalled();
@@ -421,6 +448,239 @@ describe("Export SVG to GIF", () => {
     expect(args[3]).toBe(300);
     expect(args[4]).toBe(200);
   }, 10000);
+
+  describe("Animation", () => {
+    it("exports animated GIF with explicit keyframes", async () => {
+      // SVG with elements to animate
+      const canvas = document.getElementById("rx-canvas")!;
+      const svgEl = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+      );
+      svgEl.id = "anim-svg";
+      svgEl.setAttribute("viewBox", "0 0 200 100");
+      svgEl.style.width = "200px";
+      svgEl.style.height = "100px";
+      svgEl.innerHTML = `
+        <rect id="box1" x="20" y="30" width="20" height="20" fill="#0bf" />
+        <rect id="box2" x="60" y="30" width="20" height="20" fill="#f50" />
+        <path id="line1" d="M 10 10 L 190 10" stroke="#333" stroke-width="2" />
+        <g id="group1" opacity="1"><circle cx="160" cy="50" r="8" fill="#090" /></g>
+      `;
+      canvas.appendChild(svgEl);
+
+      vi.spyOn(svgEl, "getBoundingClientRect").mockReturnValue({
+        width: 200,
+        height: 100,
+        top: 0,
+        left: 0,
+        bottom: 100,
+        right: 200,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      });
+
+      // Capture per-frame Image.src to ensure frames differ
+      const imageSrcs: string[] = [];
+      const mockImage = {
+        onload: null as any,
+        onerror: null as any,
+        _src: "",
+        set src(v: string) {
+          imageSrcs.push(v);
+          Promise.resolve().then(() => this.onload && this.onload());
+        },
+        get src() {
+          return this._src;
+        },
+      } as any;
+      vi.spyOn(window, "Image").mockImplementation(() => mockImage);
+
+      const mockContext = {
+        drawImage: vi.fn(),
+        fillRect: vi.fn(),
+        clearRect: vi.fn(),
+        fillStyle: "",
+      };
+      const mockCanvas = {
+        width: 0,
+        height: 0,
+        getContext: vi.fn(() => mockContext),
+      };
+      const mockAnchor = { href: "", download: "", click: vi.fn() };
+      vi.spyOn(document, "createElement").mockImplementation((tagName) => {
+        if (tagName === "canvas") return mockCanvas as any;
+        if (tagName === "a") return mockAnchor as any;
+        return document.createElement(tagName);
+      });
+
+      const GIF = await import("gif.js.optimized");
+      const mockGif = (GIF as any).__mockGif;
+      mockGif.on.mockImplementation((event: string, cb: Function) => {
+        if (event === "finished") cb(new Blob(["g"], { type: "image/gif" }));
+      });
+
+      const { handlers } = await import(
+        "../../plugins/canvas-component/symphonies/export/export.gif.symphony"
+      );
+      const exportGifHandler = handlers.exportSvgToGif;
+
+      const ctx = {
+        payload: {
+          targetId: "anim-svg",
+          options: {
+            fps: 10,
+            durationMs: 1000,
+            animation: {
+              keyframes: [
+                {
+                  selector: "#box1",
+                  attr: "transform",
+                  from: 0,
+                  to: 360,
+                  kind: "rotate",
+                },
+                {
+                  selector: "#box2",
+                  attr: "transform",
+                  from: 1.0,
+                  to: 1.5,
+                  kind: "scale",
+                },
+                { selector: "#group1", attr: "opacity", from: 1.0, to: 0.5 },
+              ],
+            },
+          },
+        },
+        logger: { info: vi.fn(), error: vi.fn() },
+      };
+      await exportGifHandler({}, ctx);
+
+      // Check for errors first
+      if (ctx.payload.error) {
+        console.error("Handler error:", ctx.payload.error);
+      }
+
+      expect(mockGif.addFrame).toHaveBeenCalled();
+      const calls = (mockGif.addFrame as any).mock.calls.length;
+      expect(calls).toBeGreaterThanOrEqual(10); // ~10 frames for 1s at 10fps
+      const distinct = new Set(imageSrcs);
+      expect(distinct.size).toBeGreaterThanOrEqual(5); // frames differ
+    });
+
+    it("encodes multiple frames using fps/duration and keyframes", async () => {
+      // Setup SVG with a rect we will animate
+      const canvas = document.getElementById("rx-canvas")!;
+      const svgEl = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+      );
+      svgEl.id = "anim-svg";
+      svgEl.setAttribute("viewBox", "0 0 100 50");
+      svgEl.style.width = "200px";
+      svgEl.style.height = "100px";
+      const ns = "http://www.w3.org/2000/svg";
+      const rect = document.createElementNS(ns, "rect");
+      rect.setAttribute("id", "box");
+      rect.setAttribute("x", "0");
+      rect.setAttribute("y", "10");
+      rect.setAttribute("width", "20");
+      rect.setAttribute("height", "20");
+      rect.setAttribute("fill", "#f00");
+      svgEl.appendChild(rect);
+      canvas.appendChild(svgEl);
+
+      // Mock bbox to match CSS size
+      vi.spyOn(svgEl, "getBoundingClientRect").mockReturnValue({
+        width: 200,
+        height: 100,
+        top: 0,
+        left: 0,
+        bottom: 100,
+        right: 200,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      });
+
+      // Capture per-frame serialized SVG by spying on Image.src assignments
+      const imageSrcs: string[] = [];
+      const mockImage = {
+        onload: null as any,
+        onerror: null as any,
+        _src: "",
+        set src(v: string) {
+          imageSrcs.push(v);
+          // call onload immediately for each frame
+          Promise.resolve().then(() => this.onload && this.onload());
+        },
+        get src() {
+          return this._src;
+        },
+      } as any;
+      vi.spyOn(window, "Image").mockImplementation(() => mockImage);
+
+      // Mock canvas context
+      const mockContext = {
+        drawImage: vi.fn(),
+        fillRect: vi.fn(),
+        clearRect: vi.fn(),
+        fillStyle: "",
+      };
+      const mockCanvas = {
+        width: 0,
+        height: 0,
+        getContext: vi.fn(() => mockContext),
+      };
+      const mockAnchor = { href: "", download: "", click: vi.fn() };
+      vi.spyOn(document, "createElement").mockImplementation((tagName) => {
+        if (tagName === "canvas") return mockCanvas as any;
+        if (tagName === "a") return mockAnchor as any;
+        return document.createElement(tagName);
+      });
+
+      // Mock gif.js
+      const GIF = await import("gif.js.optimized");
+      const mockGif = (GIF as any).__mockGif;
+      mockGif.on.mockImplementation((event: string, callback: Function) => {
+        if (event === "finished")
+          callback(new Blob(["fake-gif"], { type: "image/gif" }));
+      });
+
+      // Import handler
+      const { handlers } = await import(
+        "../../plugins/canvas-component/symphonies/export/export.gif.symphony"
+      );
+      const exportGifHandler = handlers.exportSvgToGif;
+
+      // fps=5, duration=1000ms => 5 frames minimal; expect N frames and varying serialized srcs
+      const ctx = {
+        payload: {
+          targetId: "anim-svg",
+          options: {
+            fps: 5,
+            durationMs: 1000,
+            animation: {
+              keyframes: [{ selector: "#box", attr: "x", from: 0, to: 80 }],
+            },
+          },
+        },
+        logger: { info: vi.fn(), error: vi.fn() },
+      };
+
+      await exportGifHandler({}, ctx);
+
+      // Expect addFrame called ~5 times
+      expect(mockGif.addFrame).toHaveBeenCalled();
+      const calls = (mockGif.addFrame as any).mock.calls.length;
+      expect(calls).toBeGreaterThanOrEqual(5);
+
+      // Expect multiple distinct serialized frames
+      const distinctSrcs = new Set(imageSrcs);
+      expect(distinctSrcs.size).toBeGreaterThanOrEqual(5);
+    });
+  });
 
   describe("Error handling", () => {
     it("should handle missing SVG element", async () => {

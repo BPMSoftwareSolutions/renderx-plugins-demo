@@ -86,18 +86,21 @@ export async function exportSvgToGif(data: any, ctx: any) {
       `Exporting SVG "${targetId}" to GIF (${width}x${height})`
     );
 
-    // Rasterize SVG to canvas (fast path for MVP)
-    // Clone and set explicit dimensions to ensure correct sizing
-    const svgClone = svgEl.cloneNode(true) as SVGElement;
-    svgClone.setAttribute("width", String(width));
-    svgClone.setAttribute("height", String(height));
-    // Preserve existing viewBox and preserveAspectRatio
+    // Debug: Log SVG element details
+    ctx.logger?.info?.(
+      `SVG element position: left=${svgEl.style.left}, top=${svgEl.style.top}`
+    );
+    ctx.logger?.info?.(`SVG viewBox: ${svgEl.getAttribute("viewBox")}`);
+    ctx.logger?.info?.(
+      `SVG bbox: ${Math.round(bbox.width)}x${Math.round(
+        bbox.height
+      )} at (${Math.round(bbox.left)}, ${Math.round(bbox.top)})`
+    );
+    ctx.logger?.info?.(
+      `SVG CSS size: ${svgEl.style.width} x ${svgEl.style.height}`
+    );
 
-    const serializer = new XMLSerializer();
-    const svgString = serializer.serializeToString(svgClone);
-    const dataUri =
-      "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
-
+    // Prepare canvas once
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
@@ -108,27 +111,6 @@ export async function exportSvgToGif(data: any, ctx: any) {
       return;
     }
 
-    // Load and draw SVG
-    await new Promise<void>((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => {
-        try {
-          // Optional background fill (transparent by default)
-          if (options?.backgroundColor) {
-            ctx2d.fillStyle = options.backgroundColor;
-            ctx2d.fillRect(0, 0, width, height);
-          }
-
-          ctx2d.drawImage(img, 0, 0, width, height);
-          resolve();
-        } catch (error) {
-          reject(error);
-        }
-      };
-      img.onerror = (error) => reject(error);
-      img.src = dataUri;
-    });
-
     // Encode GIF using gif.js
     const gif = makeGifEncoder(width, height, {
       workers: 2,
@@ -136,8 +118,180 @@ export async function exportSvgToGif(data: any, ctx: any) {
       repeat: 0,
     });
 
-    // Add single frame for static GIF
-    gif.addFrame(canvas, { delay: 100, copy: true });
+    // Export scope and optional subtree selection
+    const exportScope =
+      (options?.exportScope as "inner" | "wrapper") ?? "inner";
+    const contentSelector = options?.contentSelector as string | undefined;
+
+    // Animation parameters - purely data-driven
+    type KF = {
+      selector: string;
+      attr: string;
+      from: number;
+      to: number;
+      kind?: "rotate" | "scale";
+    };
+    const keyframes: KF[] = (options?.animation?.keyframes as KF[]) || [];
+    const fps = Math.max(1, Math.floor(options?.fps ?? 5));
+    const durationMs = Math.max(0, Math.floor(options?.durationMs ?? 0));
+    const totalFrames =
+      durationMs > 0 ? Math.max(2, Math.round((fps * durationMs) / 1000)) : 1;
+    const frameDelay =
+      totalFrames <= 1 ? 100 : Math.max(1, Math.round(1000 / fps));
+
+    function lerp(a: number, b: number, t: number) {
+      return a + (b - a) * t;
+    }
+
+    async function drawFrame(frameIndex: number) {
+      const t = totalFrames <= 1 ? 0 : frameIndex / (totalFrames - 1);
+
+      // Build the SVG serialization root based on export scope
+      let svgClone: SVGElement;
+      if (exportScope === "wrapper" && !contentSelector) {
+        svgClone = svgEl.cloneNode(true) as SVGElement;
+      } else {
+        svgClone = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        // Ensure namespace for proper decoding in Image
+        svgClone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svgClone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+        // Preserve viewBox if provided; otherwise synthesize from export size
+        const vb = svgEl.getAttribute("viewBox");
+        if (vb) svgClone.setAttribute("viewBox", vb);
+        else svgClone.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+        if (contentSelector) {
+          // Build content from a specific subtree plus defs/style
+          const selection = svgEl.querySelector(
+            contentSelector
+          ) as SVGGraphicsElement | null;
+          if (selection) {
+            // Copy defs/style to keep fills/filters
+            const frag = document.createDocumentFragment();
+            const defsAndStyles = svgEl.querySelectorAll("defs, style");
+            defsAndStyles.forEach((n) => frag.appendChild(n.cloneNode(true)));
+            svgClone.appendChild(frag);
+
+            // Clone the selection and crop to its bbox by translating to (0,0)
+            const cloned = selection.cloneNode(true) as SVGGraphicsElement;
+            let bx = 0,
+              by = 0,
+              bw = width,
+              bh = height;
+            try {
+              const bb = (selection as any).getBBox?.();
+              if (bb && bb.width > 0 && bb.height > 0) {
+                bx = bb.x;
+                by = bb.y;
+                bw = bb.width;
+                bh = bb.height;
+              }
+            } catch {}
+
+            // Wrap in a group that translates the selection so its top-left is at 0,0
+            const g = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "g"
+            );
+            g.setAttribute("transform", `translate(${-bx} ${-by})`);
+            g.appendChild(cloned);
+            svgClone.appendChild(g);
+
+            // Set viewBox to the cropped bounds for tighter framing
+            svgClone.setAttribute("viewBox", `${bx} ${by} ${bw} ${bh}`);
+          } else {
+            // Fallback to inner html
+            svgClone.innerHTML = svgEl.innerHTML;
+          }
+        } else {
+          // Export inner markup only
+          svgClone.innerHTML = svgEl.innerHTML;
+        }
+      }
+
+      // Set explicit output size
+      svgClone.setAttribute("width", String(width));
+      svgClone.setAttribute("height", String(height));
+
+      // Optionally remove unwanted elements (e.g., full-canvas backgrounds)
+      const excludeSelectors =
+        (options?.excludeSelectors as string[] | undefined) || [];
+      for (const sel of excludeSelectors) {
+        try {
+          svgClone
+            .querySelectorAll(sel)
+            .forEach((n) => n.parentNode?.removeChild(n));
+        } catch {}
+      }
+
+      // Apply animation keyframes (numeric attribute interpolation and simple transforms)
+      if (keyframes && Array.isArray(keyframes) && keyframes.length) {
+        for (const k of keyframes) {
+          const nodes = svgClone.querySelectorAll(k.selector);
+          const val = lerp(Number(k.from), Number(k.to), t);
+          nodes.forEach((node) => {
+            try {
+              const el = node as SVGGraphicsElement;
+              if (k.kind === "rotate") {
+                const bb = el.getBBox?.();
+                const cx = bb ? bb.x + bb.width / 2 : width / 2;
+                const cy = bb ? bb.y + bb.height / 2 : height / 2;
+                el.setAttribute("transform", `rotate(${val} ${cx} ${cy})`);
+              } else if (k.kind === "scale") {
+                const bb = el.getBBox?.();
+                const cx = bb ? bb.x + bb.width / 2 : width / 2;
+                const cy = bb ? bb.y + bb.height / 2 : height / 2;
+                el.setAttribute(
+                  "transform",
+                  `translate(${cx} ${cy}) scale(${val}) translate(${-cx} ${-cy})`
+                );
+              } else {
+                el.setAttribute(k.attr, String(val));
+              }
+            } catch {}
+          });
+        }
+      }
+
+      const serializer = new XMLSerializer();
+      const svgString = serializer.serializeToString(svgClone);
+      const dataUri =
+        "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
+
+      await new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          try {
+            // Optional background fill (transparent by default)
+            if (options?.backgroundColor) {
+              ctx2d.fillStyle = options.backgroundColor;
+              ctx2d.fillRect(0, 0, width, height);
+            } else {
+              // Clear previous frame
+              ctx2d.clearRect(0, 0, width, height);
+            }
+
+            ctx2d.drawImage(img, 0, 0, width, height);
+            resolve();
+          } catch (error) {
+            reject(error);
+          }
+        };
+        img.onerror = (error) => reject(error);
+        (img as any).src = dataUri;
+      });
+
+      gif.addFrame(canvas, { delay: frameDelay, copy: true });
+    }
+
+    // Draw frames sequentially
+    for (let i = 0; i < totalFrames; i++) {
+      // eslint-disable-next-line no-await-in-loop
+      await drawFrame(i);
+    }
 
     // Handle completion and trigger download
     gif.on("finished", (blob: Blob) => {
