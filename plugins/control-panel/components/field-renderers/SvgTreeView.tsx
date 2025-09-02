@@ -2,7 +2,12 @@ import React from "react";
 import type { FieldRendererProps } from "../../types/control-panel.types";
 import { useConductor, EventRouter } from "@renderx/host-sdk";
 
-type TreeNodeModel = { tag: string; id?: string; children: TreeNodeModel[] };
+type TreeNodeModel = {
+  tag: string;
+  id?: string;
+  attrs?: Record<string, string>;
+  children: TreeNodeModel[];
+};
 
 function parseSvgToTree(svgMarkup: string): TreeNodeModel | null {
   try {
@@ -13,11 +18,20 @@ function parseSvgToTree(svgMarkup: string): TreeNodeModel | null {
     );
     const svg = doc.querySelector("svg");
     if (!svg) return null;
-    const walk = (el: Element): TreeNodeModel => ({
-      tag: el.tagName,
-      id: (el as HTMLElement).id || undefined,
-      children: Array.from(el.children).map(walk),
-    });
+    const walk = (el: Element): TreeNodeModel => {
+      const attrs: Record<string, string> = {};
+      try {
+        for (const a of Array.from(el.attributes || [])) {
+          attrs[a.name] = a.value;
+        }
+      } catch {}
+      return {
+        tag: el.tagName,
+        id: (el as HTMLElement).id || undefined,
+        attrs,
+        children: Array.from(el.children).map(walk),
+      };
+    };
     return walk(svg);
   } catch {
     return null;
@@ -36,7 +50,19 @@ function TreeNode({
   selectedPath: string;
 }) {
   const [expanded, setExpanded] = React.useState(true);
-  const label = node.id ? `${node.tag}#${node.id}` : node.tag;
+  const label = React.useMemo(() => {
+    const attrs = node.attrs || {};
+    const keys = ["font-family", "font-weight"];
+    const parts = keys
+      .filter(
+        (k) =>
+          typeof (attrs as any)[k] === "string" &&
+          String((attrs as any)[k]).length > 0
+      )
+      .map((k) => `${k}="${(attrs as any)[k]}"`);
+    const attrStr = parts.length ? ` ${parts.join(" ")}` : "";
+    return `<${node.tag}${attrStr}>`;
+  }, [node]);
   const hasChildren = (node.children || []).length > 0;
   return (
     <div style={{ marginLeft: 8, pointerEvents: "auto" }}>
