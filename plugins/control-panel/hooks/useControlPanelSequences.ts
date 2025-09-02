@@ -36,8 +36,8 @@ export function useControlPanelSequences() {
         });
         cpInitialized = true;
         setIsInitialized(true);
-      } catch (error) {
-        console.warn("Failed to initialize Control Panel UI sequences:", error);
+      } catch {
+        // Silently handle initialization failures to avoid infinite retries
         cpInitialized = true; // avoid infinite retries
         setIsInitialized(true);
       } finally {
@@ -49,8 +49,8 @@ export function useControlPanelSequences() {
             conductor.play(route.pluginId, route.sequenceId, {
               selectedElement: pendingRender.current,
             });
-          } catch (e) {
-            console.warn("Deferred render failed:", e);
+          } catch {
+            // Silently ignore deferred render failures
           } finally {
             pendingRender.current = null;
           }
@@ -91,8 +91,8 @@ export function useControlPanelSequences() {
         try {
           const route = resolveInteraction("control.panel.ui.render");
           conductor.play(route.pluginId, route.sequenceId, { selectedElement });
-        } catch (error) {
-          console.warn("Failed to trigger UI render sequence:", error);
+        } catch {
+          // Silently ignore render sequence failures
         }
       }
     },
@@ -135,8 +135,8 @@ export function useControlPanelSequences() {
             value,
             selectedElement,
           });
-        } catch (error) {
-          console.warn("Failed to handle field change via sequence:", error);
+        } catch {
+          // Silently ignore field change sequence failures
         }
       }
     },
@@ -163,11 +163,8 @@ export function useControlPanelSequences() {
         try {
           const route = resolveInteraction("control.panel.ui.field.validate");
           conductor.play(route.pluginId, route.sequenceId, { field, value });
-        } catch (error) {
-          console.warn(
-            "Failed to handle field validation via sequence:",
-            error
-          );
+        } catch {
+          // Silently ignore field validation sequence failures
         }
       }
     },
@@ -190,8 +187,8 @@ export function useControlPanelSequences() {
         try {
           const route = resolveInteraction("control.panel.ui.section.toggle");
           conductor.play(route.pluginId, route.sequenceId, { sectionId });
-        } catch (error) {
-          console.warn("Failed to handle section toggle via sequence:", error);
+        } catch {
+          // Silently ignore section toggle sequence failures
         }
       }
     },

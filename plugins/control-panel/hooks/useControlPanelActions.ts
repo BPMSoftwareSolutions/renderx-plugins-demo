@@ -40,8 +40,8 @@ export function useControlPanelActions(
           });
           dispatch({ type: "SET_DIRTY", payload: true });
         }
-      } catch (error) {
-        console.warn("Failed to execute interaction:", interaction, error);
+      } catch {
+        // Silently ignore interaction execution failures
       }
     },
     [conductor, selectedElement, dispatch]

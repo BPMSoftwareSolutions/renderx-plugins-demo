@@ -194,8 +194,8 @@ export const SvgTreeView: React.FC<FieldRendererProps> = ({
         { id, path: cleanPath },
         conductor
       );
-    } catch (e) {
-      console.warn("Failed to publish svg-node selection", e);
+    } catch {
+      // Silently ignore selection publish failures
     }
   };
 
