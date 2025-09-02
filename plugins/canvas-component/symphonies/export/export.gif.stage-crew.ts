@@ -66,8 +66,14 @@ export async function exportSvgToGif(data: any, ctx: any) {
     );
 
     // Rasterize SVG to canvas (fast path for MVP)
+    // Clone and set explicit dimensions to ensure correct sizing
+    const svgClone = svgEl.cloneNode(true) as SVGElement;
+    svgClone.setAttribute("width", String(width));
+    svgClone.setAttribute("height", String(height));
+    // Preserve existing viewBox and preserveAspectRatio
+
     const serializer = new XMLSerializer();
-    const svgString = serializer.serializeToString(svgEl);
+    const svgString = serializer.serializeToString(svgClone);
     const dataUri =
       "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
 
