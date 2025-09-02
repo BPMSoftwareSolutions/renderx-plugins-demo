@@ -137,6 +137,19 @@ export class SchemaResolverService {
       });
     }
 
+    // 1.5 Add derived UI field(s) for specific components (no special-case logic in plugins proper)
+    if (componentType === "svg") {
+      // Provide a simple structure view for sub-node selection; rendered-only field
+      fields.push({
+        key: "structure",
+        label: "Structure",
+        type: "svgTree",
+        path: "content.svgMarkup",
+        section: "content",
+        description: "Explore children and click to highlight on canvas",
+      } as any);
+    }
+
     // 2. Always add universal layout fields
     const layoutFields = this.generateUniversalLayoutFields(selectedElement);
     fields.push(...layoutFields);
