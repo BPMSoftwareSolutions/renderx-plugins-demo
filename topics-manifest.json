@@ -571,6 +571,28 @@
       "perf": {},
       "notes": "Control Panel SvgTreeView click → highlight sub-element in canvas"
     },
+    "canvas.component.select.svg-node.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "path"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Notify-only: emitted by canvas after applying sub-node selection so UI (control panel) can sync selection state"
+    },
     "control.panel.update.requested": {
       "routes": [
         {

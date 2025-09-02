@@ -1,3 +1,4 @@
+import { EventRouter } from "@renderx/host-sdk";
 import {
   ensureOverlay,
   applyOverlayRectForEl,
@@ -10,7 +11,7 @@ import {
  *  - id: the Canvas component id (expected to be the <svg> element id)
  *  - path: slash-separated child indices (element-only), e.g. "0/1/0"
  */
-export function showSvgNodeOverlay(data: any, _ctx?: any) {
+export async function showSvgNodeOverlay(data: any, ctx?: any) {
   const { id, path } = data || {};
   if (!id) return;
 
@@ -126,5 +127,13 @@ export function showSvgNodeOverlay(data: any, _ctx?: any) {
       if (!w && rootWidth) ov.style.width = `${Math.round(rootWidth)}px`;
       if (!h && rootHeight) ov.style.height = `${Math.round(rootHeight)}px`;
     }
+
+    try {
+      await EventRouter.publish(
+        "canvas.component.select.svg-node.changed",
+        { id: String(id), path: String(path || "") },
+        ctx?.conductor
+      );
+    } catch {}
   }
 }

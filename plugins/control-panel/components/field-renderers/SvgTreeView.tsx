@@ -28,10 +28,12 @@ function TreeNode({
   node,
   path,
   onSelect,
+  selectedPath,
 }: {
   node: TreeNodeModel;
   path: string;
   onSelect: (path: string) => void;
+  selectedPath: string;
 }) {
   const [expanded, setExpanded] = React.useState(true);
   const label = node.id ? `${node.tag}#${node.id}` : node.tag;
@@ -45,6 +47,14 @@ function TreeNode({
           display: "flex",
           alignItems: "center",
           gap: 6,
+          background:
+            selectedPath === path || (!path && selectedPath === "")
+              ? "var(--control-hover-bg)"
+              : undefined,
+          borderRadius:
+            selectedPath === path || (!path && selectedPath === "")
+              ? 4
+              : undefined,
         }}
         title="Click to highlight on canvas; click triangle to toggle"
         onMouseDown={(e) => e.stopPropagation()}
@@ -80,6 +90,7 @@ function TreeNode({
               node={child}
               path={path ? `${path}/${idx}` : `${idx}`}
               onSelect={onSelect}
+              selectedPath={selectedPath}
             />
           ))}
         </div>
@@ -95,9 +106,26 @@ export const SvgTreeView: React.FC<FieldRendererProps> = ({
   const svgMarkup = selectedElement?.content?.svgMarkup || "";
   const id = selectedElement?.header?.id;
   const root = React.useMemo(() => parseSvgToTree(svgMarkup), [svgMarkup]);
+  const [selectedPath, setSelectedPath] = React.useState<string>("");
+
+  // Sync selection when canvas confirms the sub-node selection
+  React.useEffect(() => {
+    const unsub = EventRouter.subscribe(
+      "canvas.component.select.svg-node.changed",
+      (p: any) => {
+        try {
+          const targetId = String(p?.id || "");
+          if (!targetId || targetId !== String(id || "")) return;
+          setSelectedPath(String(p?.path || ""));
+        } catch {}
+      }
+    );
+    return () => unsub?.();
+  }, [id]);
 
   const handleSelect = async (path: string) => {
     const cleanPath = String(path || "").replace(/^\//, "");
+    setSelectedPath(cleanPath);
     if (!id || !conductor?.play) return;
     try {
       await EventRouter.publish(
@@ -124,7 +152,12 @@ export const SvgTreeView: React.FC<FieldRendererProps> = ({
       {!root ? (
         <div style={{ opacity: 0.7 }}>No child nodes</div>
       ) : (
-        <TreeNode node={root} path="" onSelect={handleSelect} />
+        <TreeNode
+          node={root}
+          path=""
+          onSelect={handleSelect}
+          selectedPath={selectedPath}
+        />
       )}
     </div>
   );
