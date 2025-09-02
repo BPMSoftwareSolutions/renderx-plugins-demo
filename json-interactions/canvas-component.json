@@ -45,6 +45,10 @@
       "pluginId": "CanvasComponentExportPlugin",
       "sequenceId": "canvas-component-export-symphony"
     },
+    "canvas.component.export.gif": {
+      "pluginId": "CanvasComponentExportGifPlugin",
+      "sequenceId": "canvas-component-export-gif-symphony"
+    },
     "canvas.component.import": {
       "pluginId": "CanvasComponentImportPlugin",
       "sequenceId": "canvas-component-import-symphony"
