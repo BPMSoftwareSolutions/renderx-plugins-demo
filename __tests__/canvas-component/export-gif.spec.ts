@@ -341,6 +341,87 @@ describe("Export SVG to GIF", () => {
     expect(mockAnchor.click).toHaveBeenCalled();
   }, 10000);
 
+  it("does not use left/top offsets when rendering (always draws at 0,0)", async () => {
+    // Setup: Add an SVG element with non-zero offsets
+    const canvas = document.getElementById("rx-canvas")!;
+    const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgEl.id = "test-svg-offsets";
+    svgEl.setAttribute("viewBox", "0 0 300 200");
+    svgEl.style.position = "absolute";
+    svgEl.style.left = "123px";
+    svgEl.style.top = "77px";
+    svgEl.style.width = "300px";
+    svgEl.style.height = "200px";
+    canvas.appendChild(svgEl);
+
+    // Mock bbox to match CSS size so clipping logic doesn't interfere
+    vi.spyOn(svgEl, "getBoundingClientRect").mockReturnValue({
+      width: 300,
+      height: 200,
+      top: 77,
+      left: 123,
+      bottom: 277,
+      right: 423,
+      x: 123,
+      y: 77,
+      toJSON: () => ({}),
+    });
+
+    // Mock Image load
+    const mockImage = { onload: null as any, onerror: null as any, src: "" };
+    vi.spyOn(window, "Image").mockImplementation(() => mockImage as any);
+
+    // Mock canvas context and spy drawImage args
+    const mockContext = {
+      drawImage: vi.fn(),
+      fillRect: vi.fn(),
+      fillStyle: "",
+    };
+    const mockCanvas = {
+      width: 0,
+      height: 0,
+      getContext: vi.fn(() => mockContext),
+    };
+    const mockAnchor = { href: "", download: "", click: vi.fn() };
+    vi.spyOn(document, "createElement").mockImplementation((tagName) => {
+      if (tagName === "canvas") return mockCanvas as any;
+      if (tagName === "a") return mockAnchor as any;
+      return document.createElement(tagName);
+    });
+
+    // Mock gif.js
+    const GIF = await import("gif.js.optimized");
+    const mockGif = (GIF as any).__mockGif;
+    mockGif.on.mockImplementation((event: string, callback: Function) => {
+      if (event === "finished")
+        callback(new Blob(["fake-gif"], { type: "image/gif" }));
+    });
+
+    // Import handler
+    const { handlers } = await import(
+      "../../plugins/canvas-component/symphonies/export/export.gif.symphony"
+    );
+    const exportGifHandler = handlers.exportSvgToGif;
+
+    const ctx = {
+      payload: { targetId: "test-svg-offsets", options: {} },
+      logger: { info: vi.fn(), error: vi.fn() },
+    };
+
+    const p = exportGifHandler({}, ctx);
+    if (mockImage.onload) mockImage.onload();
+    await p;
+
+    // Assert we drew at (0,0) regardless of element left/top offsets
+    expect(mockContext.drawImage).toHaveBeenCalled();
+    const args = (mockContext.drawImage as any).mock.calls[0];
+    // args: [img, dx, dy, dw, dh]
+    expect(args[1]).toBe(0);
+    expect(args[2]).toBe(0);
+    expect(args[3]).toBe(300);
+    expect(args[4]).toBe(200);
+  }, 10000);
+
   describe("Error handling", () => {
     it("should handle missing SVG element", async () => {
       const { handlers } = await import(
