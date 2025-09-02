@@ -51,15 +51,50 @@ function TreeNode({
 }) {
   const [expanded, setExpanded] = React.useState(true);
   const label = React.useMemo(() => {
-    const attrs = node.attrs || {};
-    const keys = ["font-family", "font-weight"];
-    const parts = keys
-      .filter(
-        (k) =>
-          typeof (attrs as any)[k] === "string" &&
-          String((attrs as any)[k]).length > 0
-      )
-      .map((k) => `${k}="${(attrs as any)[k]}"`);
+    const attrs = (node.attrs || {}) as Record<string, string>;
+
+    // Start with a curated, compact set
+    const primaryKeys = ["font-family", "font-weight"];
+    const parts: string[] = [];
+    const included = new Set<string>();
+
+    for (const k of primaryKeys) {
+      const v = attrs[k];
+      if (typeof v === "string" && v.length) {
+        parts.push(`${k}="${v}"`);
+        included.add(k);
+      }
+    }
+
+    // Ensure we show at least 15 chars of detail beyond the tag
+    const minExtra = 15;
+    const currentLen = parts.join(" ").length;
+    if (currentLen < minExtra) {
+      const fallbackKeys = [
+        "id",
+        "class",
+        "d", // path data is informative; trim to keep small
+        "fill",
+        "stroke",
+        "font-size",
+        "x",
+        "y",
+        "width",
+        "height",
+        "points",
+      ];
+      for (const k of fallbackKeys) {
+        if (included.has(k)) continue;
+        const v0 = attrs[k];
+        if (typeof v0 !== "string" || !v0.length) continue;
+        let v = v0;
+        if (k === "d" && v.length > 30) v = v.slice(0, 30) + "…";
+        parts.push(`${k}="${v}` + `"`);
+        included.add(k);
+        if (parts.join(" ").length >= minExtra) break;
+      }
+    }
+
     const attrStr = parts.length ? ` ${parts.join(" ")}` : "";
     return `<${node.tag}${attrStr}>`;
   }, [node]);
