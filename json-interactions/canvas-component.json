@@ -61,5 +61,9 @@
       "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-update-symphony"
     }
+    ,"canvas.component.update.svg-node": {
+      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+      "sequenceId": "canvas-component-update-svg-node-symphony"
+    }
   }
 }

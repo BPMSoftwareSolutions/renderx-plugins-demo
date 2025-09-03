@@ -127,13 +127,41 @@ export async function showSvgNodeOverlay(data: any, ctx?: any) {
       if (!w && rootWidth) ov.style.width = `${Math.round(rootWidth)}px`;
       if (!h && rootHeight) ov.style.height = `${Math.round(rootHeight)}px`;
     }
-
-    try {
-      await EventRouter.publish(
-        "canvas.component.select.svg-node.changed",
-        { id: String(id), path: String(path || "") },
-        ctx?.conductor
-      );
-    } catch {}
   }
+
+  // Always notify Control Panel of selection change so the inspector can sync
+  try {
+    const tag = (target?.tagName || "").toLowerCase();
+    const getAttr = (name: string) =>
+      (target as Element)?.getAttribute?.(name) || undefined;
+    const commonAttrs: Record<string, string | undefined> = {
+      fill: getAttr("fill"),
+      stroke: getAttr("stroke"),
+      "stroke-width": getAttr("stroke-width"),
+      opacity: getAttr("opacity"),
+    };
+    let attributes: Record<string, string | undefined> = { ...commonAttrs };
+    if (tag === "rect") {
+      attributes = {
+        ...attributes,
+        x: getAttr("x"),
+        y: getAttr("y"),
+        width: getAttr("width"),
+        height: getAttr("height"),
+      };
+    } else if (tag === "circle") {
+      attributes = {
+        ...attributes,
+        cx: getAttr("cx"),
+        cy: getAttr("cy"),
+        r: getAttr("r"),
+      };
+    }
+
+    await EventRouter.publish(
+      "canvas.component.select.svg-node.changed",
+      { id: String(id), path: String(path || ""), tag, attributes },
+      ctx?.conductor
+    );
+  } catch {}
 }

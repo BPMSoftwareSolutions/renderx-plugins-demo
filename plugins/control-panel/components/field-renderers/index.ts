@@ -6,6 +6,7 @@ export { CheckboxInput } from "./CheckboxInput";
 export { ColorInput } from "./ColorInput";
 export { CodeTextarea } from "./CodeTextarea";
 export { SvgTreeView } from "./SvgTreeView";
+export { SvgNodeInspector } from "./SvgNodeInspector";
 
 // Field Renderer Registry
 import type { FieldRendererProps } from "../../types/control-panel.types";
@@ -16,6 +17,7 @@ import { CheckboxInput } from "./CheckboxInput";
 import { ColorInput } from "./ColorInput";
 import { CodeTextarea } from "./CodeTextarea";
 import { SvgTreeView } from "./SvgTreeView";
+import { SvgNodeInspector } from "./SvgNodeInspector";
 
 export type FieldRenderer = React.ComponentType<FieldRendererProps>;
 
@@ -27,6 +29,7 @@ export const FIELD_RENDERERS: Record<string, FieldRenderer> = {
   ColorInput,
   CodeTextarea,
   SvgTreeView,
+  SvgNodeInspector,
 };
 
 /**
@@ -49,6 +52,7 @@ export function getFieldRenderer(type: string): FieldRenderer {
     color: "ColorInput",
     code: "CodeTextarea",
     svgTree: "SvgTreeView",
+    svgNodeInspector: "SvgNodeInspector",
   };
 
   const componentName = typeToComponent[type] || "TextInput";

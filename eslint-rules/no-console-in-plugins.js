@@ -4,7 +4,7 @@
  */
 
 // Helper function to check if console usage is gated by a feature flag
-function isConsoleGatedByFeatureFlag(node, context) {
+function isConsoleGatedByFeatureFlag(node, _context) {
   // Look for parent IfStatement with isFlagEnabled test
   let parent = node.parent;
   while (parent) {

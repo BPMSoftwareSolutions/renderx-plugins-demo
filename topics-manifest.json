@@ -593,6 +593,38 @@
       "perf": {},
       "notes": "Notify-only: emitted by canvas after applying sub-node selection so UI (control panel) can sync selection state"
     },
+    "canvas.component.update.svg-node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+          "sequenceId": "canvas-component-update-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "attribute": {
+            "type": "string"
+          },
+          "value": {}
+        },
+        "required": [
+          "id",
+          "path",
+          "attribute"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Update an attribute on an SVG sub-node within a canvas component; routes to SVG node update sequence."
+    },
     "control.panel.update.requested": {
       "routes": [
         {

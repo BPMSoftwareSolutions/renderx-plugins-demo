@@ -61,5 +61,9 @@
       "file": "update.json",
       "handlersPath": "/plugins/canvas-component/symphonies/update/update.symphony.ts"
     }
+    ,{
+      "file": "update.svg-node.json",
+      "handlersPath": "/plugins/canvas-component/symphonies/update/update.svg-node.symphony.ts"
+    }
   ]
 }

@@ -11,7 +11,11 @@ import {
   computeCssVarBlock,
   computeInlineStyle,
 } from "./create.style.stage-crew";
-import { attachSelection, attachDrag } from "./create.interactions.stage-crew";
+import {
+  attachSelection,
+  attachDrag,
+  attachSvgNodeClick,
+} from "./create.interactions.stage-crew";
 import { ComponentRuleEngine } from "../../../../src/component-mapper/rule-engine";
 
 const _ruleEngine = new ComponentRuleEngine();
@@ -134,6 +138,11 @@ export const createNode = (data: any, ctx: any) => {
     onDragMove: data?.onDragMove,
     onDragEnd: data?.onDragEnd,
   });
+
+  // For SVG components, also attach sub-node click-to-select functionality
+  if (tpl.tag === "svg" && el instanceof SVGSVGElement) {
+    attachSvgNodeClick(el, id, ctx?.conductor);
+  }
 
   ctx.payload.createdNode = {
     id,

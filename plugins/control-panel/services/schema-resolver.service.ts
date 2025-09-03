@@ -142,6 +142,17 @@ export class SchemaResolverService {
         section: "content",
         description: "Explore children and click to highlight on canvas",
       } as any);
+
+      // Provide an inspector to edit attributes of the currently selected sub-node
+      fields.push({
+        key: "nodeInspector",
+        label: "SVG Node Inspector",
+        type: "svgNodeInspector",
+        path: "content.svgMarkup",
+        section: "content",
+        description:
+          "Edit attributes (fill, stroke, size, position) of the selected SVG sub-node",
+      } as any);
     }
 
     // 2. Always add universal layout fields
