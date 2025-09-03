@@ -30,8 +30,8 @@ export function CanvasHeader() {
     try {
       const route = resolveInteraction("canvas.component.export");
       await conductor?.play?.(route.pluginId, route.sequenceId, {});
-    } catch (error) {
-      console.error("Failed to export canvas:", error);
+    } catch {
+      // TODO: Show user-facing error notification
     }
   };
 
@@ -42,8 +42,8 @@ export function CanvasHeader() {
         {},
         conductor
       );
-    } catch (error) {
-      console.error("Failed to import canvas:", error);
+    } catch {
+      // TODO: Show user-facing error notification
     }
   };
 
@@ -56,8 +56,26 @@ export function CanvasHeader() {
         targetId: selectedElementId,
         options: {}, // Default options for now
       });
-    } catch (error) {
-      console.error("Failed to export GIF:", error);
+    } catch {
+      // TODO: Show user-facing error notification
+    }
+  };
+
+  const handleExportMp4 = async () => {
+    if (!selectedElementId) return;
+
+    try {
+      const route = resolveInteraction("canvas.component.export.mp4");
+      await conductor?.play?.(route.pluginId, route.sequenceId, {
+        targetId: selectedElementId,
+        options: {
+          fps: 30,
+          durationMs: 3000,
+          bitrate: 2000000,
+        },
+      });
+    } catch {
+      // TODO: Show user-facing error notification
     }
   };
 
@@ -82,6 +100,7 @@ export function CanvasHeader() {
 
   // UI must not query the DOM; gate by selection presence only. Stage-crew validates SVG.
   const isGifExportEnabled = Boolean(selectedElementId);
+  const isMp4ExportEnabled = Boolean(selectedElementId);
 
   return (
     <div className="canvas-header">
@@ -125,6 +144,15 @@ export function CanvasHeader() {
             title="Export SVG to GIF"
           >
             <span>🎬</span>
+          </div>
+        )}
+        {isMp4ExportEnabled && (
+          <div
+            className="canvas-control"
+            onClick={handleExportMp4}
+            title="Export SVG to MP4"
+          >
+            <span>🎥</span>
           </div>
         )}
         <div

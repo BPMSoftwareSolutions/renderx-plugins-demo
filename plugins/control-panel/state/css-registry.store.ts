@@ -131,8 +131,8 @@ class CssRegistryStore {
           classes: Array.from(this.state.classes.values()),
           lastModified: this.state.lastModified,
         });
-      } catch (error) {
-        console.warn("CSS Registry observer error:", error);
+      } catch {
+        // Silently handle observer errors
       }
     }
   }
@@ -199,7 +199,7 @@ class CssRegistryStore {
 
     // Prevent removal of built-in classes
     if (existingClass.isBuiltIn) {
-      console.warn(`Cannot remove built-in CSS class: ${name}`);
+      // Silently prevent removal of built-in classes
       return false;
     }
 

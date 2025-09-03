@@ -65,11 +65,8 @@ export class SchemaResolverService {
               return schema;
             }
             return undefined;
-          } catch (error) {
-            console.warn(
-              `Failed to load schema for component type: ${type}`,
-              error
-            );
+          } catch {
+            // Silently handle schema loading failures
             return undefined;
           }
         })();
@@ -79,11 +76,8 @@ export class SchemaResolverService {
         // Clear inflight once resolved
         SchemaResolverService.inflight.delete(type);
         if (schema) this.registerComponentSchema(type, schema);
-      } catch (error) {
-        console.warn(
-          `Failed to load schema for component type: ${type}`,
-          error
-        );
+      } catch {
+        // Silently handle schema loading failures
       }
     });
 

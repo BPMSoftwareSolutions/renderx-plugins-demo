@@ -2,7 +2,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import beatKindDomAccess from "./eslint-rules/beat-kind-dom-access.js";
 import playRouting from "./eslint-rules/no-hardcoded-play-ids.js";
-import noConsoleInSymphonies from "./eslint-rules/no-console-in-symphonies.js";
+import noConsoleInPlugins from "./eslint-rules/no-console-in-plugins.js";
 import sequencesInJson from "./eslint-rules/sequences-in-json.js";
 import featureFlags from "./eslint-rules/feature-flags.js";
 import validSequenceHandlers from "./eslint-rules/valid-sequence-handlers.js";
@@ -46,7 +46,7 @@ export default [
     plugins: {
       "@typescript-eslint": tseslint,
       "play-routing": playRouting,
-      "symphony-console": noConsoleInSymphonies,
+      "plugin-console": noConsoleInPlugins,
       "sequences-json": sequencesInJson,
       "feature-flags": featureFlags,
       "sequence-handlers": validSequenceHandlers,
@@ -64,7 +64,7 @@ export default [
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
-      "symphony-console/no-console-in-symphonies": "error",
+      "plugin-console/no-console-in-plugins": "error",
       "sequences-json/sequences-in-json": "error",
       "feature-flags/enforce-flag-ids": "error",
       "sequence-handlers/validate-handlers": "error",

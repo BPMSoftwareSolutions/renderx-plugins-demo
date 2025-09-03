@@ -29,8 +29,8 @@ export function HeaderThemeToggle() {
             if (t === "light" || t === "dark") setThemeState(t);
           }
         );
-      } catch (e) {
-        console.warn("Failed to get current theme:", e);
+      } catch {
+        // Fallback to dark theme on error
         setThemeState("dark");
       }
     },
@@ -46,8 +46,8 @@ export function HeaderThemeToggle() {
       });
       const updatedTheme = result?.theme || next;
       setThemeState(updatedTheme);
-    } catch (e) {
-      console.warn("Theme toggle failed: ", e);
+    } catch {
+      // Silently handle theme toggle failures
     }
   };
 

@@ -114,8 +114,8 @@ export async function onDropForTest(
       setTimeout(() => {
         try {
           (globalThis as any).__cpTriggerRender();
-        } catch (e) {
-          console.warn("Deferred post-drag render failed:", e);
+        } catch {
+          // Silently ignore deferred render failures
         }
       }, deferMs);
     }

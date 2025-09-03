@@ -289,7 +289,6 @@ export async function exportSvgToGif(data: any, ctx: any) {
 
     // Draw frames sequentially
     for (let i = 0; i < totalFrames; i++) {
-      // eslint-disable-next-line no-await-in-loop
       await drawFrame(i);
     }
 

@@ -37,8 +37,8 @@ export function useSchemaResolver() {
           setResolver(schemaResolver);
           setIsLoading(false);
         }
-      } catch (error) {
-        console.error("Failed to initialize schema resolver:", error);
+      } catch {
+        // Silently handle schema resolver initialization failures
         if (mounted) {
           setIsLoading(false);
         }
