@@ -100,7 +100,71 @@ export async function exportSvgToGif(data: any, ctx: any) {
       `SVG CSS size: ${svgEl.style.width} x ${svgEl.style.height}`
     );
 
-    // Prepare canvas once
+    // Try server-side export via Python/Playwright/FFmpeg (Option A)
+    // Only use server export when explicitly enabled via window.EXPORT_SERVER_ENABLED or options.serverExport === true
+    const prefersServer =
+      (window as any).EXPORT_SERVER_ENABLED === true ||
+      (options as any)?.serverExport === true;
+    if (prefersServer) {
+      try {
+        const serializer = new XMLSerializer();
+        const svgClone = svgEl.cloneNode(true) as SVGElement;
+        svgClone.setAttribute("width", String(width));
+        svgClone.setAttribute("height", String(height));
+        const svgString = serializer.serializeToString(svgClone);
+
+        const payload = {
+          svg: svgString,
+          width,
+          height,
+          fps: Math.max(1, Math.floor((options as any)?.fps ?? 20)),
+          duration: Math.max(
+            0,
+            Math.floor(((options as any)?.durationMs ?? 10000) / 1000)
+          ),
+          maxColors: (options as any)?.maxColors ?? 256,
+          dither: (options as any)?.dither ?? "sierra2_4a",
+          loop: (options as any)?.loop ?? 0,
+          filename: `${targetId}-${Date.now()}.gif`,
+        } as any;
+
+        const port = (window as any).EXPORT_SERVER_PORT || 5055;
+        const resp = await fetch(`http://localhost:${port}/api/export/gif`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (!resp.ok) {
+          const info = await resp.json().catch(() => ({}));
+          ctx.logger?.error?.("Server export failed", info);
+          throw new Error(
+            (info as any)?.error ||
+              `Export server error: ${resp.status} ${resp.statusText}`
+          );
+        }
+
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = payload.filename;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        ctx.payload.downloadTriggered = true;
+        (ctx.payload as any).gifSize = (blob as any).size;
+        return;
+      } catch (e) {
+        ctx.logger?.warn?.(
+          "Server-side GIF export failed, falling back to in-browser encoding",
+          e
+        );
+        // fall through to client-side fallback
+      }
+    }
+
+    // Fallback: client-side gif.js
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
