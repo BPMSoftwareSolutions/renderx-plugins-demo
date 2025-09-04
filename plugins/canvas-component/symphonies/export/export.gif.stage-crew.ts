@@ -101,8 +101,10 @@ export async function exportSvgToGif(data: any, ctx: any) {
     );
 
     // Try server-side export via Python/Playwright/FFmpeg (Option A)
-    // Default to server export unless explicitly disabled with options.serverExport === false
-    const prefersServer = (options as any)?.serverExport !== false;
+    // Only use server export when explicitly enabled via window.EXPORT_SERVER_ENABLED or options.serverExport === true
+    const prefersServer =
+      (window as any).EXPORT_SERVER_ENABLED === true ||
+      (options as any)?.serverExport === true;
     if (prefersServer) {
       try {
         const serializer = new XMLSerializer();
