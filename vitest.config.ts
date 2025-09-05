@@ -7,6 +7,6 @@ export default defineConfig({
     include: ["__tests__/**/*.spec.ts", "__tests__/**/*.spec.tsx"],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-  }
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+  },
 });

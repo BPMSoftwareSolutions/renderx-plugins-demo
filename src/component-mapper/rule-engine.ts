@@ -1,5 +1,6 @@
 // Minimal rule engine for Phase 2: update/content/extract rules
 // Mirrors the acceptance criteria and current behavior to avoid regressions.
+import { sanitizeHtml } from "../sanitizeHtml";
 
 export type UpdateRule =
   | { whenAttr: string; action: "textContent"; valueFrom?: "value" }
@@ -278,6 +279,9 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         prop: "lineHeight",
       },
     ],
+    html: [
+      { whenAttr: "markup", action: "innerHtml" }
+    ],
   },
 };
 
@@ -328,6 +332,9 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
       { action: "style", prop: "color", from: "color" },
       { action: "style", prop: "fontSize", from: "fontSize" },
       { action: "style", prop: "lineHeight", from: "lineHeight" },
+    ],
+    html: [
+      { action: "innerHtml", from: "markup" }
     ],
   },
 };
@@ -446,6 +453,9 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
       { get: "style", prop: "fontSize", as: "fontSize" },
       { get: "style", prop: "lineHeight", as: "lineHeight" },
     ],
+    html: [
+      { get: "innerHtml", as: "markup" }
+    ],
   },
 };
 
@@ -514,7 +524,9 @@ export class ComponentRuleEngine {
         return true;
       }
       case "innerHtml": {
-        (el as any).innerHTML = String(value ?? "");
+        const raw = String(value ?? "");
+        const type = getComponentTypeFromClasses(el);
+        (el as any).innerHTML = type === "html" ? sanitizeHtml(raw) : raw;
         return true;
       }
       case "toggleClassVariant": {
@@ -605,9 +617,13 @@ export class ComponentRuleEngine {
         }
         case "innerHtml": {
           const v = (content as any)[(r as any).from];
-          if (v !== undefined) (el as any).innerHTML = String(v);
-          break;
-        }
+            if (v !== undefined) {
+              const raw = String(v);
+              (el as any).innerHTML =
+                typeKey === "html" ? sanitizeHtml(raw) : raw;
+            }
+            break;
+          }
       }
     }
   }

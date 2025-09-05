@@ -359,8 +359,8 @@
       },
       "visibility": "public",
       "notes": "Notify-only: emitted by canvas after applying sub-node selection so UI (control panel) can sync selection state"
-    }
-    ,"canvas.component.update.svg-node.requested": {
+    },
+    "canvas.component.update.svg-node.requested": {
       "routes": [
         {
           "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
