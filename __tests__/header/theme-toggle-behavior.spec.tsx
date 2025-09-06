@@ -48,6 +48,7 @@ vi.mock("@renderx/host-sdk", () => ({
 
 describe("HeaderThemeToggle Button Text and Icon Updates", () => {
   let container: HTMLDivElement;
+  let root: ReturnType<typeof createRoot> | null = null;
 
   beforeEach(() => {
     container = document.createElement("div");
@@ -97,6 +98,12 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
   });
 
   afterEach(() => {
+    if (root) {
+      act(() => {
+        root?.unmount();
+      });
+      root = null;
+    }
     document.body.removeChild(container);
     document.documentElement.removeAttribute("data-theme");
     // Clean up added styles
@@ -117,9 +124,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Allow effect to fetch current theme and update state
@@ -141,9 +148,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Wait for component to initialize theme state
@@ -165,9 +172,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Allow effect to fetch current theme and update state
@@ -202,9 +209,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Allow effect to fetch current theme and update state

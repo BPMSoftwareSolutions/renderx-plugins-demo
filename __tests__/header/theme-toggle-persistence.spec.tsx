@@ -45,6 +45,7 @@ vi.mock("@renderx/host-sdk", () => ({
 
 describe("HeaderThemeToggle persistence across sessions", () => {
   let container: HTMLDivElement;
+  let root: ReturnType<typeof createRoot> | null = null;
 
   beforeEach(() => {
     container = document.createElement("div");
@@ -54,6 +55,15 @@ describe("HeaderThemeToggle persistence across sessions", () => {
   });
 
   afterEach(() => {
+    // Ensure React tree is properly unmounted before DOM teardown to avoid
+    // async React work running against a removed container (was causing
+    // unhandled TypeError in react-dom commit phase).
+    if (root) {
+      act(() => {
+        root?.unmount();
+      });
+      root = null;
+    }
     document.body.removeChild(container);
     document.documentElement.removeAttribute("data-theme");
   });
@@ -71,9 +81,9 @@ describe("HeaderThemeToggle persistence across sessions", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Allow effect to fetch current theme and render
@@ -97,9 +107,9 @@ describe("HeaderThemeToggle persistence across sessions", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Allow effect to fetch current theme and render
@@ -119,9 +129,9 @@ describe("HeaderThemeToggle persistence across sessions", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // In test environment, callback executes synchronously
@@ -144,9 +154,9 @@ describe("HeaderThemeToggle persistence across sessions", () => {
       "../../plugins/header/ui/HeaderThemeToggle"
     );
 
-    const root = createRoot(container);
+    root = createRoot(container);
     act(() => {
-      root.render(<HeaderThemeToggle />);
+      root!.render(<HeaderThemeToggle />);
     });
 
     // Small delay for callback to execute

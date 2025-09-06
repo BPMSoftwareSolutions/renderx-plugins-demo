@@ -22,6 +22,10 @@ export function HeaderThemeToggle() {
   const [theme, setThemeState] = React.useState<"light" | "dark" | null>(null);
   const requestedRef = React.useRef(false);
   const aliveRef = React.useRef(true);
+  // Track if the user has interacted (clicked) to avoid stale async "get" overwriting
+  // an already toggled theme. Without this, a slow initial get could race and reset
+  // the button label back to the pre-toggle value causing test flakiness.
+  const userInteractedRef = React.useRef(false);
   React.useEffect(() => {
     return () => {
       aliveRef.current = false;
@@ -44,16 +48,19 @@ export function HeaderThemeToggle() {
           route.pluginId,
           route.sequenceId,
           {
-            onTheme: (t: "light" | "dark") => safeSetTheme(t),
+            onTheme: (t: "light" | "dark") => {
+              if (!userInteractedRef.current) safeSetTheme(t);
+            },
           },
           (result: any) => {
             const t = result?.theme;
-            if (t === "light" || t === "dark") safeSetTheme(t);
+            if (!userInteractedRef.current && (t === "light" || t === "dark"))
+              safeSetTheme(t);
           }
         );
       } catch {
         // Fallback to dark theme on error
-        safeSetTheme("dark");
+        if (!userInteractedRef.current) safeSetTheme("dark");
       }
     },
     [theme, conductor]
@@ -61,6 +68,7 @@ export function HeaderThemeToggle() {
 
   const toggle = async () => {
     try {
+  userInteractedRef.current = true;
       const next = theme === "light" ? "dark" : "light";
       // Optimistically update UI immediately for snappy feedback
       safeSetTheme(next);
