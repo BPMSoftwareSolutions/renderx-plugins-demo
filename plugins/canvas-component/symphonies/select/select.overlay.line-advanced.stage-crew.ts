@@ -192,6 +192,17 @@ export function attachAdvancedLineManipHandlers(
     const target = document.getElementById(id) as HTMLElement | null;
     if (!target) return;
 
+    // Engage fixed viewBox mode during drag to keep pixel mapping stable
+    try {
+      const svg = target as unknown as SVGSVGElement;
+      const currentVb = svg.getAttribute("viewBox") || "0 0 100 100";
+      (target as any).dataset.viewboxSaved = currentVb;
+      (target as any).dataset.viewbox = "fixed";
+      try {
+        recomputeLineSvg(svg);
+      } catch {}
+    } catch {}
+
     const start = { x: e.clientX, y: e.clientY };
 
     let last = { x: start.x, y: start.y };
@@ -310,6 +321,14 @@ export function attachAdvancedLineManipHandlers(
       void call("move", dx, dy);
     };
     const onUp = () => {
+      try {
+        delete (target as any).dataset.viewbox;
+        delete (target as any).dataset.viewboxSaved;
+        const svg = target as unknown as SVGSVGElement;
+        try {
+          recomputeLineSvg(svg);
+        } catch {}
+      } catch {}
       void call("end");
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseup", onUp);

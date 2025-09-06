@@ -123,53 +123,69 @@ export function recomputeLineSvg(svg: SVGSVGElement) {
     }
   };
 
-  // --- Dynamic viewBox autosize to prevent clipping when endpoints extend or rotate ---
-  const thickness = readCssNumber(host, "--thickness", 2);
-  const padX = ((thickness * 4) / (w || 1)) * 100; // generous padding in percent
-  const padY = ((thickness * 4) / (h || 1)) * 100;
+  // Decide whether to autosize viewBox or keep it fixed during manipulation
+  const fixedMode =
+    (host.dataset.viewbox || host.getAttribute("data-viewbox") || "")
+      .trim()
+      .toLowerCase() === "fixed";
+  const savedVb = (host.dataset.viewboxSaved || "").trim();
 
-  const rad = (angle * Math.PI) / 180;
-  const mx = (nx1 + nx2) / 2;
-  const my = (ny1 + ny2) / 2;
-  const rotatePoint = (x: number, y: number) => {
-    if (!rad) return { x, y };
-    const cos = Math.cos(rad);
-    const sin = Math.sin(rad);
-    const dx = x - mx;
-    const dy = y - my;
-    return { x: mx + dx * cos - dy * sin, y: my + dx * sin + dy * cos };
-  };
+  if (fixedMode) {
+    // Keep the viewBox constant to prevent visual zooming while dragging endpoints
+    const vb =
+      savedVb && /^(\s*-?\d+(?:\.\d+)?\s+){3}-?\d+(?:\.\d+)?\s*$/.test(savedVb)
+        ? savedVb
+        : "0 0 100 100";
+    svg.setAttribute("viewBox", vb);
+  } else {
+    // --- Dynamic viewBox autosize to prevent clipping when endpoints extend or rotate ---
+    const thickness = readCssNumber(host, "--thickness", 2);
+    const padX = ((thickness * 4) / (w || 1)) * 100; // generous padding in percent
+    const padY = ((thickness * 4) / (h || 1)) * 100;
 
-  const p1r = rotatePoint(nx1, ny1);
-  const p2r = rotatePoint(nx2, ny2);
-  // If curved, include control point as a rough bound
-  const cr = rotatePoint(ncx, ncy);
+    const rad = (angle * Math.PI) / 180;
+    const mx = (nx1 + nx2) / 2;
+    const my = (ny1 + ny2) / 2;
+    const rotatePoint = (x: number, y: number) => {
+      if (!rad) return { x, y };
+      const cos = Math.cos(rad);
+      const sin = Math.sin(rad);
+      const dx = x - mx;
+      const dy = y - my;
+      return { x: mx + dx * cos - dy * sin, y: my + dx * sin + dy * cos };
+    };
 
-  let minX = Math.min(nx1, nx2, p1r.x, p2r.x, curveOn ? cr.x : nx1);
-  let minY = Math.min(ny1, ny2, p1r.y, p2r.y, curveOn ? cr.y : ny1);
-  let maxX = Math.max(nx1, nx2, p1r.x, p2r.x, curveOn ? cr.x : nx2);
-  let maxY = Math.max(ny1, ny2, p1r.y, p2r.y, curveOn ? cr.y : ny2);
+    const p1r = rotatePoint(nx1, ny1);
+    const p2r = rotatePoint(nx2, ny2);
+    // If curved, include control point as a rough bound
+    const cr = rotatePoint(ncx, ncy);
 
-  minX -= padX;
-  minY -= padY;
-  maxX += padX;
-  maxY += padY;
+    let minX = Math.min(nx1, nx2, p1r.x, p2r.x, curveOn ? cr.x : nx1);
+    let minY = Math.min(ny1, ny2, p1r.y, p2r.y, curveOn ? cr.y : ny1);
+    let maxX = Math.max(nx1, nx2, p1r.x, p2r.x, curveOn ? cr.x : nx2);
+    let maxY = Math.max(ny1, ny2, p1r.y, p2r.y, curveOn ? cr.y : ny2);
 
-  const vbW = Math.max(1, maxX - minX);
-  const vbH = Math.max(1, maxY - minY);
-  svg.setAttribute(
-    "viewBox",
-    `${minX.toFixed(3).replace(/\.0+$/, "").replace(/\.$/, "")} ${minY
-      .toFixed(3)
-      .replace(/\.0+$/, "")
-      .replace(/\.$/, "")} ${vbW
-      .toFixed(3)
-      .replace(/\.0+$/, "")
-      .replace(/\.$/, "")} ${vbH
-      .toFixed(3)
-      .replace(/\.0+$/, "")
-      .replace(/\.$/, "")}`
-  );
+    minX -= padX;
+    minY -= padY;
+    maxX += padX;
+    maxY += padY;
+
+    const vbW = Math.max(1, maxX - minX);
+    const vbH = Math.max(1, maxY - minY);
+    svg.setAttribute(
+      "viewBox",
+      `${minX.toFixed(3).replace(/\.0+$/, "").replace(/\.$/, "")} ${minY
+        .toFixed(3)
+        .replace(/\.0+$/, "")
+        .replace(/\.$/, "")} ${vbW
+        .toFixed(3)
+        .replace(/\.0+$/, "")
+        .replace(/\.$/, "")} ${vbH
+        .toFixed(3)
+        .replace(/\.0+$/, "")
+        .replace(/\.$/, "")}`
+    );
+  }
 
   if (curveOn) {
     // Use quadratic Bezier through control point (cx, cy) in normalized coords
