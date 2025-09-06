@@ -15,34 +15,25 @@ import { promises as fs } from "fs";
 import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { buildTopicsManifest } from "../packages/manifest-tools/src/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
 
-export function buildTopicsManifest(catalogs) {
-  const topics = {};
-  for (const cat of catalogs || []) {
-    const t = cat?.topics || {};
-    for (const [key, def] of Object.entries(t)) {
-      // Normalize to routes[]
-      const routes = [];
-      if (def?.route) routes.push(def.route);
-      if (Array.isArray(def?.routes)) routes.push(...def.routes);
-      topics[key] = {
-        routes,
-        payloadSchema: def?.payloadSchema || null,
-        visibility: def?.visibility || "public",
-        correlationKeys: Array.isArray(def?.correlationKeys)
-          ? def.correlationKeys
-          : [],
-        perf: def?.perf || {},
-        notes: def?.notes || "",
-      };
-    }
-  }
-  return { version: "1.0.0", topics };
+// Args parsing
+const args = process.argv.slice(2);
+function getArg(name, def) {
+  const i = args.findIndex((a) => a === name || a.startsWith(name + '='));
+  if (i === -1) return def;
+  const eq = args[i].indexOf('=');
+  if (eq > -1) return args[i].slice(eq + 1);
+  const nxt = args[i + 1];
+  if (nxt && !nxt.startsWith('--')) return nxt;
+  return def;
 }
+const srcRoot = getArg('--srcRoot', rootDir);
+const outPublicDir = getArg('--outPublic', join(rootDir, 'public'));
 
 async function readJsonSafe(path) {
   try {
@@ -56,8 +47,8 @@ async function readJsonSafe(path) {
 async function readTopicCatalogs() {
   // Prefer root json-topics/, but also support json-components/json-topics/ for compatibility
   const dirs = [
-    join(rootDir, "json-topics"),
-    join(rootDir, "json-components", "json-topics"),
+    join(srcRoot, "json-topics"),
+    join(srcRoot, "json-components", "json-topics"),
   ];
   const catalogs = [];
   for (const dir of dirs) {
@@ -78,8 +69,9 @@ async function main() {
   const catalogs = await readTopicCatalogs();
   const manifest = buildTopicsManifest(catalogs);
 
-  const outRoot = join(rootDir, "topics-manifest.json");
-  const outPublic = join(rootDir, "public", "topics-manifest.json");
+  const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");
+  await fs.mkdir(outPublicDir, { recursive: true });
+  const outPublic = join(outPublicDir, "topics-manifest.json");
 
   const jsonText = JSON.stringify(manifest, null, 2) + "\n";
   await fs.writeFile(outRoot, jsonText, "utf-8");

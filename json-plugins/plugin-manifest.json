@@ -30,7 +30,8 @@
         "slot": "library",
         "module": "/plugins/library/index.ts",
         "export": "LibraryPanel"
-      }
+  },
+  "runtime": { "module": "/plugins/library/index.ts", "export": "register" }
     },
     {
       "id": "CanvasPlugin",
@@ -38,7 +39,8 @@
         "slot": "canvas",
         "module": "/plugins/canvas/index.ts",
         "export": "CanvasPage"
-      }
+  },
+  "runtime": { "module": "/plugins/canvas/index.ts", "export": "register" }
     },
     {
       "id": "ControlPanelPlugin",
@@ -46,7 +48,8 @@
         "slot": "controlPanel",
         "module": "/plugins/control-panel/index.ts",
         "export": "ControlPanel"
-      }
+  },
+  "runtime": { "module": "/plugins/control-panel/index.ts", "export": "register" }
     }
   ]
 }

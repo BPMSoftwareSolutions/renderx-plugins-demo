@@ -9,3 +9,7 @@ export {
   computeTagFromJson,
 } from "../../src/component-mapper/mapper";
 export { mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
+// Extended flag helpers (read-only + test-only mutators marked clearly)
+export { getAllFlags, getUsageLog, setFlagOverride, clearFlagOverrides } from "../../src/feature-flags/flags";
+// Plugin manifest helpers
+export { getPluginManifest, getCachedPluginManifest } from "./pluginManifest";

@@ -5,22 +5,28 @@
  * Ensures the dev server serves the latest sequence catalogs in the browser.
  */
 
-import {
-  readdir,
-  readFile,
-  writeFile,
-  mkdir,
-  stat as _stat,
-} from "fs/promises";
+import { readdir, readFile, writeFile, mkdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
+const args = process.argv.slice(2);
+function getArg(name, def) {
+  const i = args.findIndex(a => a === name || a.startsWith(name + '='));
+  if (i === -1) return def;
+  const eq = args[i].indexOf('=');
+  if (eq > -1) return args[i].slice(eq + 1);
+  const nxt = args[i + 1];
+  if (nxt && !nxt.startsWith('--')) return nxt;
+  return def;
+}
+const srcRoot = getArg('--srcRoot', rootDir);
+const outPublic = getArg('--outPublic', join(rootDir, 'public'));
 
-const sourceDir = join(rootDir, "json-sequences");
-const targetDir = join(rootDir, "public", "json-sequences");
+const sourceDir = join(srcRoot, "json-sequences");
+const targetDir = join(outPublic, "json-sequences");
 
 async function ensureDir(dir) {
   try {

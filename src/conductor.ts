@@ -138,38 +138,47 @@ export async function loadJsonSequenceCatalogs(conductor: ConductorClient) {
 }
 
 export async function registerAllSequences(conductor: ConductorClient) {
-  // First, mount sequences from JSON catalogs
+  // Mount sequences from JSON catalogs first (artifact or local mode)
   await loadJsonSequenceCatalogs(conductor);
 
-  // Import and register plugins sequentially (UI only; registrars should not mount sequences)
-  const modules = [
-    await import("../plugins/library"),
-    await import("../plugins/library-component"),
-    await import("../plugins/canvas-component"),
-    await import("../plugins/canvas"),
-    await import("../plugins/control-panel"),
-  ];
-  for (const mod of modules) {
-    const reg = (mod as any).register;
-    const nameGuess = (mod as any).LibraryPanel
-      ? "LibraryPlugin"
-      : (mod as any).CanvasPage
-      ? "CanvasPlugin"
-      : (mod as any).ControlPanel
-      ? "ControlPanelPlugin"
-      : "(unknown)";
-    if (typeof reg === "function") {
-      try {
+  // Discover runtime registration modules via plugin manifest (ui + optional runtime section)
+  let manifest: any = null;
+  try {
+    // Browser first
+    const isBrowser = typeof window !== 'undefined' && typeof (globalThis as any).fetch === 'function';
+    if (isBrowser) {
+      const res = await fetch('/plugins/plugin-manifest.json');
+      if (res.ok) manifest = await res.json();
+    }
+    if (!manifest) {
+  // @ts-ignore - raw JSON import handled by Vite
+  const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw'); // path relative to src/
+      const txt: string = (mod as any)?.default || (mod as any) || '{}';
+      manifest = JSON.parse(txt);
+    }
+  } catch {
+    manifest = { plugins: [] };
+  }
+  const plugins = Array.isArray(manifest.plugins) ? manifest.plugins : [];
+
+  for (const p of plugins) {
+    // optional runtime registration: { runtime: { module, export } }
+    const runtime = p.runtime;
+    if (!runtime || !runtime.module || !runtime.export) continue;
+    try {
+      const mod = await import(/* @vite-ignore */ runtime.module);
+      const reg = mod[runtime.export];
+      if (typeof reg === 'function') {
         await reg(conductor);
-        console.log(`🔌 Registered plugin module: ${nameGuess}`);
-      } catch (e) {
-        console.error("❌ Failed to register plugin module", nameGuess, e);
+        console.log('🔌 Registered plugin runtime:', p.id);
       }
+    } catch (e) {
+      console.warn('⚠️ Failed runtime register for', p.id, e);
     }
   }
   try {
     const ids = (conductor as any).getMountedPluginIds?.() || [];
-    console.log("🔎 Mounted plugin IDs after registration:", ids);
+    console.log('🔎 Mounted plugin IDs after registration:', ids);
   } catch {}
 }
 
