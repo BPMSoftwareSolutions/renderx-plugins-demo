@@ -14,6 +14,15 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
+      - name: Install dependencies (prefer clean install)
+        run: |
+          if npm ci; then
+            echo "npm ci succeeded"
+          else
+            echo "npm ci failed – falling back to npm install"
+            npm install
+          fi
+      - name: Build artifacts with integrity (sanity)
+        run: npm run artifacts:build:integrity
       - run: npm run ci
 

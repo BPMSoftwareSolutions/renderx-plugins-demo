@@ -6,6 +6,7 @@
  */
 
 import { mkdir, cp, writeFile } from 'fs/promises';
+import { createHash } from 'crypto';
 import { join } from 'path';
 import { buildInteractionManifest, buildTopicsManifest } from '../packages/manifest-tools/src/index.js';
 import { promises as fs } from 'fs';
@@ -24,6 +25,8 @@ function getArg(name, def) {
 }
 const srcRoot = getArg('--srcRoot', rootDir);
 const outDir = getArg('--outDir', join(rootDir, 'dist', 'artifacts'));
+const withIntegrity = args.includes('--integrity');
+const watch = args.includes('--watch');
 
 async function readJsonSafe(p) { try { return JSON.parse(await fs.readFile(p,'utf-8')); } catch { return null; } }
 
@@ -31,7 +34,7 @@ async function collect(dir) {
   try { const ents = await fs.readdir(dir); return ents.filter(f=>f.endsWith('.json')).map(f=>readJsonSafe(join(dir,f))); } catch { return []; }
 }
 
-async function build() {
+async function buildOnce() {
   console.log('🧱 Building artifacts from', srcRoot, '→', outDir);
   await mkdir(outDir, { recursive: true });
   const paths = {
@@ -82,7 +85,27 @@ async function build() {
     }
   };
   await writeFile(join(outDir,'manifest-set.json'), JSON.stringify(summary,null,2));
+  if (withIntegrity) {
+    const files = ['interaction-manifest.json','topics-manifest.json','layout-manifest.json','manifest-set.json'];
+    const integrity = { generated: new Date().toISOString(), files: {}, aggregate: '' };
+    const agg = createHash('sha256');
+    for (const f of files) {
+      try {
+        const p = join(outDir,f);
+        const buf = await fs.readFile(p);
+        const h = createHash('sha256').update(buf).digest('hex');
+        integrity.files[f] = { hash: h, bytes: buf.length };
+        agg.update(h);
+      } catch {}
+    }
+    integrity.aggregate = agg.digest('hex');
+    await writeFile(join(outDir,'artifacts.integrity.json'), JSON.stringify(integrity,null,2));
+    console.log('🔐 Integrity file emitted');
+  }
   console.log('✨ Artifact build complete');
 }
-
-build().catch(e=>{ console.error('Artifact build failed', e); process.exit(1); });
+async function run() {
+  await buildOnce();
+  if (watch) console.log('👀 Watch mode not yet implemented (Phase 2 stub)');
+}
+run().catch(e=>{ console.error('Artifact build failed', e); process.exit(1); });

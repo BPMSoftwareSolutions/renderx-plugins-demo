@@ -4,7 +4,7 @@ import App from "./App";
 import { initConductor, registerAllSequences } from "./conductor";
 import { initInteractionManifest, getInteractionManifestStats } from "./interactionManifest";
 import { initTopicsManifest, getTopicsManifestStats } from "./topicsManifest";
-import { getPluginManifestStats } from "./startupValidation";
+import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
 import { EventRouter } from "./EventRouter";
 import "./global.css";
 // minimal ambient typing for optional env flag without pulling full @types/node
@@ -32,6 +32,8 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     } catch (e) {
       console.warn("Startup validation failed", e);
     }
+    // Fire-and-forget integrity verification (dev only)
+    verifyArtifactsIntegrity(true);
   }
 
   const rootEl = document.getElementById("root");

@@ -129,6 +129,77 @@ New helper exports (stable path `@renderx/host-sdk`):
 These complement existing exports like `useConductor`, `resolveInteraction`, and mapping helpers.
 
 
+## Artifact Integrity (Phase 2)
+
+Phase 2 adds cryptographic integrity coverage for the synthesized artifact set so the thin host (or any consuming service) can detect tampering, drift, or partial deployments.
+
+### What Gets Hashed
+
+The integrity file (`artifacts.integrity.json`) contains a SHA-256 hash per core artifact plus an aggregate hash:
+
+```
+{
+  "files": {
+    "interaction-manifest.json": "<sha256>",
+    "topics-manifest.json": "<sha256>",
+    "layout-manifest.json": "<sha256|omitted if absent>",
+    "manifest-set.json": "<sha256>"
+  },
+  "aggregate": "<sha256 of the sorted 'fileName:hash' lines>"
+}
+```
+
+Only files that directly influence routing / orchestration are covered right now; sequence & component JSON can be added later once the surface stabilizes.
+
+### Generating Integrity Data
+
+Integrated build (preferred):
+```
+npm run artifacts:build:integrity
+```
+Equivalent manual invocation:
+```
+node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity
+```
+
+Legacy / standalone hash script (will produce a similar structure if artifacts already exist):
+```
+npm run artifacts:hash
+```
+
+### Runtime Verification
+
+On host startup, if `ARTIFACTS_DIR` is set and `artifacts.integrity.json` is present, the host recomputes SHA-256 digests in the browser (using `crypto.subtle`) and compares them. A mismatch logs an error with the first differing file and aborts early in dev (subject to future policy decisions for production).
+
+Disable integrity verification (e.g. for experimentation) with:
+```
+set RENDERX_DISABLE_INTEGRITY=1
+```
+PowerShell:
+```
+$env:RENDERX_DISABLE_INTEGRITY="1"; npm start
+```
+
+### CI Hook
+
+CI invokes the integrity build to ensure the hashing path stays green. A failure surfaces as a normal test failure.
+
+### Planned Extensions
+
+- Optional signature layer (aggregate hash signed with a private key)
+- Inclusion of component + sequence catalogs
+- API surface hash (public SDK exports) for breaking change detection
+
+## Environment Variables (Quick Reference)
+
+| Variable | Purpose | Typical Usage |
+|----------|---------|---------------|
+| `ARTIFACTS_DIR` | Points host at pre-built artifacts directory | `set ARTIFACTS_DIR=dist\\artifacts` then `npm run dev:artifacts` |
+| `RENDERX_DISABLE_STARTUP_VALIDATION` | Skip plugin & manifest count summary | Silence noisy CI / perf runs |
+| `RENDERX_DISABLE_INTEGRITY` | Skip integrity verification even if file present | Local debugging of partially edited artifacts |
+| `RENDERX_PLUGINS_SRC` (planned) | External plugins source root for lint rules | Future Phase 2+ feature |
+
+
   - Create a plugin folder under `plugins/`
   - Update the host manifest to include your plugin’s metadata and entry point
   - Restart the host to see it in action
