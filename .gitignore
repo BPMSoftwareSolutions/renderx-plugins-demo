@@ -151,3 +151,5 @@ vite.config.ts.timestamp-*
 /public/interaction-manifest.json
 /public/topics-manifest.json
 /docs/articles/article-0001/*.gif
+/docs/articles/article-0003
+/docs/articles/article-0004
