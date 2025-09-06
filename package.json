@@ -13,6 +13,7 @@
     "artifacts:build:integrity": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity",
     "artifacts:watch": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity --watch",
     "artifacts:hash": "node scripts/hash-artifacts.js dist/artifacts",
+  "validate:public-api": "node scripts/validate-public-api.js",
     "preview": "vite preview",
     "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/sync-plugins.js",
     "sync:json-components": "node scripts/sync-json-components.js",
