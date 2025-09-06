@@ -8,6 +8,7 @@
 import { mkdir, cp, writeFile } from 'fs/promises';
 import { createHash } from 'crypto';
 import { join } from 'path';
+// Lazy-load chokidar only if watch mode requested to avoid cost in CI
 import { buildInteractionManifest, buildTopicsManifest } from '../packages/manifest-tools/src/index.js';
 import { promises as fs } from 'fs';
 
@@ -106,6 +107,44 @@ async function buildOnce() {
 }
 async function run() {
   await buildOnce();
-  if (watch) console.log('👀 Watch mode not yet implemented (Phase 2 stub)');
+  if (watch) {
+    console.log('👀 Entering watch mode (rebuilt on JSON changes)');
+    const { default: chokidar } = await import('chokidar');
+    const watchDirs = [
+      'json-components',
+      'json-sequences',
+      'json-interactions',
+      'json-topics',
+      'json-plugins',
+      'json-layout'
+    ].map(d => join(srcRoot, d));
+    const watcher = chokidar.watch(watchDirs, {
+      ignoreInitial: true,
+      awaitWriteFinish: { stabilityThreshold: 100, pollInterval: 25 }
+    });
+    let pending = false;
+    async function rebuild() {
+      if (pending) return; // debounce burst changes
+      pending = true;
+      setTimeout(async () => {
+        try {
+          console.log('🔁 Change detected — rebuilding artifacts...');
+          await buildOnce();
+          console.log('✅ Rebuild complete. Watching...');
+        } catch (e) {
+          console.error('⚠️ Rebuild failed', e);
+        } finally {
+          pending = false;
+        }
+      }, 120);
+    }
+    watcher.on('add', rebuild).on('change', rebuild).on('unlink', rebuild).on('error', e => console.error('Watcher error', e));
+    const shutdown = () => {
+      console.log('\n🛑 Watch mode shutting down');
+      watcher.close().then(()=>process.exit(0));
+    };
+    process.on('SIGINT', shutdown);
+    process.on('SIGTERM', shutdown);
+  }
 }
 run().catch(e=>{ console.error('Artifact build failed', e); process.exit(1); });

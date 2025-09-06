@@ -11,6 +11,7 @@
   "build": "npm run pre:manifests && vite build",
   "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
   "artifacts:build:integrity": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity",
+  "artifacts:watch": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity --watch",
   "artifacts:hash": "node scripts/hash-artifacts.js dist/artifacts",
   "preview": "vite preview",
     "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/sync-plugins.js",
@@ -40,6 +41,7 @@
     "jsdom": "^26.1.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.3",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "chokidar": "^3.6.0"
   }
 }
