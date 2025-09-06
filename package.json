@@ -7,10 +7,11 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run pre:manifests && vite",
-    "build": "npm run pre:manifests && vite build",
+  "dev": "npm run pre:manifests && vite",
+  "build": "npm run pre:manifests && vite build",
   "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
-    "preview": "vite preview",
+  "artifacts:hash": "node scripts/hash-artifacts.js dist/artifacts",
+  "preview": "vite preview",
     "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/sync-plugins.js",
     "sync:json-components": "node scripts/sync-json-components.js",
     "export:gif": "node scripts/export-svg-to-gif.js",
