@@ -102,21 +102,7 @@ const DEFAULT_ROUTES: Record<string, Route> = {
   },
 };
 
-// Try to eagerly preload routes in Vite/ Vitest environments (sync)
-try {
-  // @ts-ignore - Vite-specific API
-  const files = (import.meta as any).glob("../interaction-manifest.json", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  });
-  const text: string | undefined = files?.["../interaction-manifest.json"];
-  if (typeof text === "string") {
-    const json = JSON.parse(text || "{}");
-    routes = json?.routes || {};
-    loaded = true;
-  }
-} catch {}
+// Removed static eager preload to avoid dual static+dynamic import warnings in Vite.
 
 async function loadManifest(): Promise<void> {
   try {
@@ -133,6 +119,7 @@ async function loadManifest(): Promise<void> {
       }
     }
     // Node/tests fallback: import raw JSON at repo root
+    // @ts-ignore - Vite raw JSON import
     const mod = await import(
       /* @vite-ignore */ "../interaction-manifest.json?raw"
     );
@@ -140,9 +127,20 @@ async function loadManifest(): Promise<void> {
     const json = JSON.parse(text);
     routes = json?.routes || {};
     loaded = true;
+    return;
+  } catch {}
+  try {
+    // Fallback: direct JSON module import for test environments
+    // @ts-ignore
+    const jsonMod = await import(/* @vite-ignore */ "../interaction-manifest.json");
+    const json = (jsonMod as any)?.default || (jsonMod as any) || {};
+    routes = json?.routes || {};
+    loaded = true;
+    return;
   } catch {
-    routes = {};
-    loaded = true; // avoid retry storms; callers can handle missing keys
+  console.warn('[interactionManifest] Failed to load interaction-manifest.json; using defaults only');
+  routes = {};
+  loaded = true; // avoid retry storms; callers can handle missing keys
   }
 }
 
@@ -164,4 +162,9 @@ export function resolveInteraction(key: string): Route {
   const r = routes[key] || DEFAULT_ROUTES[key];
   if (!r) throw new Error(`Unknown interaction: ${key}`);
   return r;
+}
+
+// Diagnostics for startup validation
+export function getInteractionManifestStats() {
+  return { loaded, routeCount: Object.keys(routes).length };
 }

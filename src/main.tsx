@@ -2,10 +2,13 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initConductor, registerAllSequences } from "./conductor";
-import { initInteractionManifest } from "./interactionManifest";
-import { initTopicsManifest } from "./topicsManifest";
+import { initInteractionManifest, getInteractionManifestStats } from "./interactionManifest";
+import { initTopicsManifest, getTopicsManifestStats } from "./topicsManifest";
+import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
 import { EventRouter } from "./EventRouter";
 import "./global.css";
+// minimal ambient typing for optional env flag without pulling full @types/node
+declare const process: { env?: Record<string, string | undefined> } | undefined;
 
 (async () => {
   const conductor = await initConductor();
@@ -15,6 +18,23 @@ import "./global.css";
     initTopicsManifest(),
     EventRouter.init(),
   ]);
+
+  if (!(typeof process !== 'undefined' && process.env?.RENDERX_DISABLE_STARTUP_VALIDATION === '1')) {
+    try {
+      const interactionStats = getInteractionManifestStats();
+      const topicsStats = getTopicsManifestStats();
+      const pluginStats = await getPluginManifestStats();
+      console.log("🧪 Startup validation:", {
+        routes: interactionStats.routeCount,
+        topics: topicsStats.topicCount,
+        plugins: pluginStats.pluginCount,
+      });
+    } catch (e) {
+      console.warn("Startup validation failed", e);
+    }
+    // Fire-and-forget integrity verification (dev only)
+    verifyArtifactsIntegrity(true);
+  }
 
   const rootEl = document.getElementById("root");
   if (!rootEl) {

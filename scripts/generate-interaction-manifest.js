@@ -17,27 +17,27 @@ import { promises as fs } from "fs";
 import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { buildInteractionManifest } from "../packages/manifest-tools/src/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
 
-// Inline the function here since Node.js can't import TypeScript directly
-function buildInteractionManifest(catalogs, componentOverrideMaps) {
-  const routes = {};
-  for (const cat of catalogs || []) {
-    const r = cat?.routes || {};
-    for (const [key, val] of Object.entries(r)) routes[key] = val;
-  }
-  for (const o of componentOverrideMaps || []) {
-    const r = o || {};
-    for (const [key, val] of Object.entries(r)) routes[key] = val;
-  }
-  return { version: "1.0.0", routes };
+// Allow overriding source root (where json-* live) and output public dir
+const args = process.argv.slice(2);
+function getArg(name, def) {
+  const i = args.findIndex((a) => a === name || a.startsWith(name + '='));
+  if (i === -1) return def;
+  const eq = args[i].indexOf('=');
+  if (eq > -1) return args[i].slice(eq + 1);
+  const nxt = args[i + 1];
+  if (nxt && !nxt.startsWith('--')) return nxt;
+  return def;
 }
+const srcRoot = getArg('--srcRoot', rootDir);
+const outPublicDir = getArg('--outPublic', join(rootDir, 'public'));
 
-// Re-export for backward compatibility
-export { buildInteractionManifest };
+// Using shared builder from manifest-tools
 
 async function readJsonSafe(path) {
   try {
@@ -49,7 +49,7 @@ async function readJsonSafe(path) {
 }
 
 async function readPluginCatalogs() {
-  const dir = join(rootDir, "json-interactions");
+  const dir = join(srcRoot, "json-interactions");
   try {
     const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
     const catalogs = [];
@@ -73,7 +73,7 @@ function extractOverridesFromComponentJson(json) {
 }
 
 async function readComponentOverrides() {
-  const dir = join(rootDir, "json-components");
+  const dir = join(srcRoot, "json-components");
   try {
     const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
     const overrides = [];
@@ -92,8 +92,9 @@ async function main() {
   const componentOverrides = await readComponentOverrides();
   const manifest = buildInteractionManifest(catalogs, componentOverrides);
 
-  const outRoot = join(rootDir, "interaction-manifest.json");
-  const outPublic = join(rootDir, "public", "interaction-manifest.json");
+  const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "interaction-manifest.json");
+  await fs.mkdir(outPublicDir, { recursive: true });
+  const outPublic = join(outPublicDir, "interaction-manifest.json");
 
   const jsonText = JSON.stringify(manifest, null, 2) + "\n";
   await fs.writeFile(outRoot, jsonText, "utf-8");
