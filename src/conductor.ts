@@ -14,14 +14,63 @@ export async function initConductor(): Promise<ConductorClient> {
 // Loads and mounts sequences from per-plugin JSON catalogs.
 // - Browser: fetch from /json-sequences/{plugin}/
 // - Node/test: import from json-sequences/{plugin}/ with JSON loader
-export async function loadJsonSequenceCatalogs(conductor: ConductorClient) {
-  const plugins = [
-    "library",
-    "library-component",
-    "canvas-component",
-    "control-panel",
-    "header",
-  ] as const;
+export async function loadJsonSequenceCatalogs(
+  conductor: ConductorClient,
+  pluginIds?: string[]
+) {
+  // Discover plugin ids dynamically if not provided (decoupling step #102)
+  let plugins: string[] = pluginIds || [];
+  if (!plugins.length) {
+    // Try plugin manifest first (browser fetch, then raw import)
+    let manifest: any = null;
+    try {
+      const isBrowser =
+        typeof window !== "undefined" &&
+        typeof (globalThis as any).fetch === "function";
+      if (isBrowser) {
+        const res = await fetch("/plugins/plugin-manifest.json");
+        if (res.ok) manifest = await res.json();
+      }
+      if (!manifest) {
+        // Attempt raw import relative to project root public folder during dev tests
+        try {
+          // @ts-ignore: Vite raw import for development; module path resolved at runtime
+          // @ts-ignore: raw JSON import via Vite during dev/test
+          const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw');
+          const txt: string = (mod as any)?.default || (mod as any) || "{}";
+          manifest = JSON.parse(txt);
+        } catch {}
+      }
+    } catch {
+      manifest = null;
+    }
+    if (manifest && Array.isArray(manifest.plugins)) {
+      plugins = Array.from(
+        new Set(
+          manifest.plugins
+            .map((p: any) => p?.id)
+            .filter((id: any) => typeof id === "string" && id.length)
+        )
+      );
+    }
+    // Always merge in actual json-sequences directory names (Node/test only) so we load catalogs by directory name
+    try {
+      const proc: any = (globalThis as any).process;
+      if (proc && typeof proc.cwd === "function") {
+        // @ts-ignore node types not present
+        const fs = await import("fs/promises");
+        // @ts-ignore node types not present
+        const path = await import("path");
+  const dir = path.join(proc.cwd(), "json-sequences");
+        const entries = await fs.readdir(dir).catch(() => [] as string[]);
+        const seqDirs = entries.filter((e: string) => !e.startsWith("."));
+        // Merge directory names; these are the catalog directory identifiers (legacy behavior)
+        plugins = Array.from(new Set([...(plugins || []), ...seqDirs]));
+      }
+    } catch {}
+  }
+  // Debug: expose discovered plugin directories for tests (optional)
+  ;(conductor as any)._discoveredPlugins = plugins;
   const isTestEnv =
     typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
   const isBrowser =
