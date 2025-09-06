@@ -153,12 +153,18 @@ export async function loadJsonSequenceCatalogs(
   };
 
   for (const plugin of plugins) {
+    // Map plugin IDs to catalog directory names when they differ (legacy naming)
+    const dir = plugin === 'CanvasComponentPlugin' ? 'canvas-component'
+      : plugin === 'LibraryPlugin' ? 'library'
+      : plugin === 'ControlPanelPlugin' ? 'control-panel'
+      : plugin === 'HeaderThemePlugin' || plugin === 'HeaderControlsPlugin' || plugin === 'HeaderTitlePlugin' ? 'header'
+      : plugin;
     try {
       // 1) Load catalog entries (browser first, then Node/test fallback)
       let entries: CatalogEntry[] = [];
       if (isBrowser) {
         try {
-          const idxRes = await fetch(`/json-sequences/${plugin}/index.json`);
+          const idxRes = await fetch(`/json-sequences/${dir}/index.json`);
           if (idxRes.ok) {
             const idxJson = await idxRes.json();
             entries = idxJson?.sequences || [];
@@ -167,7 +173,7 @@ export async function loadJsonSequenceCatalogs(
       }
       if (!entries.length) {
         const idxMod = await import(
-          /* @vite-ignore */ `../json-sequences/${plugin}/index.json?raw`
+          /* @vite-ignore */ `../json-sequences/${dir}/index.json?raw`
         );
         const idxText: string = (idxMod as any)?.default || (idxMod as any);
         const idxJson = JSON.parse(idxText || "{}");
@@ -181,14 +187,14 @@ export async function loadJsonSequenceCatalogs(
           try {
             const filePath = ent.file.startsWith("/")
               ? ent.file
-              : `/json-sequences/${plugin}/${ent.file}`;
+              : `/json-sequences/${dir}/${ent.file}`;
             const seqRes = await fetch(filePath);
             if (seqRes.ok) seqJson = await seqRes.json();
           } catch {}
         }
         if (!seqJson) {
           const seqMod = await import(
-            /* @vite-ignore */ `../json-sequences/${plugin}/${ent.file}?raw`
+            /* @vite-ignore */ `../json-sequences/${dir}/${ent.file}?raw`
           );
           const seqText: string = (seqMod as any)?.default || (seqMod as any);
           seqJson = JSON.parse(seqText || "{}");
