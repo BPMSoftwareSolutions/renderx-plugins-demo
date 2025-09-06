@@ -27,6 +27,7 @@ export default [
       ".vite/**",
       "coverage/**",
       "scripts/codemods/**",
+      "docs/**",
     ],
   },
   {
@@ -38,6 +39,7 @@ export default [
       ".vite/**",
       "coverage/**",
       "scripts/codemods/**",
+      "docs/**",
     ],
     languageOptions: {
       parser: tsparser,
