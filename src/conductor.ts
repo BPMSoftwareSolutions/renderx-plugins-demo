@@ -52,6 +52,24 @@ export async function loadJsonSequenceCatalogs(
             .filter((id: any) => typeof id === "string" && id.length)
         )
       );
+      // Derive probable sequence catalog directory names from ui.module paths (browser path form: /plugins/<dir>/index.ts)
+      try {
+        const catalogDirs = new Set<string>();
+        for (const p of manifest.plugins) {
+          const modPath = p?.ui?.module;
+          if (typeof modPath === 'string') {
+            const m = modPath.match(/^\/plugins\/([^\/]+)\//);
+            if (m) catalogDirs.add(m[1]);
+          }
+        }
+        // Add special known sequence-only directory if present via heuristic (library-component) by optimistic inclusion
+        catalogDirs.add('library-component');
+        if (catalogDirs.size) {
+          // Use these directory candidates for catalog loading in browser; Node path scan below will still merge actual dirs
+          (conductor as any)._sequenceCatalogDirsFromManifest = Array.from(catalogDirs);
+          plugins = Array.from(new Set([...(catalogDirs as any)]));
+        }
+      } catch {}
     }
     // Always merge in actual json-sequences directory names (Node/test only) so we load catalogs by directory name
     try {
