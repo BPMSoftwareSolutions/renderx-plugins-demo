@@ -19,6 +19,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, "..");
 
+// Args
+const args = process.argv.slice(2);
+function getArg(name, def) {
+  const i = args.findIndex((a) => a === name || a.startsWith(name + '='));
+  if (i === -1) return def;
+  const eq = args[i].indexOf('=');
+  if (eq > -1) return args[i].slice(eq + 1);
+  const nxt = args[i + 1];
+  if (nxt && !nxt.startsWith('--')) return nxt;
+  return def;
+}
+const srcRoot = getArg('--srcRoot', rootDir);
+const outPublicDir = getArg('--outPublic', join(rootDir, 'public'));
+
 async function readJsonSafe(path) {
   try {
     const txt = await fs.readFile(path, "utf-8");
@@ -29,7 +43,7 @@ async function readJsonSafe(path) {
 }
 
 async function main() {
-  const layoutPath = join(rootDir, "json-layout", "layout.json");
+  const layoutPath = join(srcRoot, "json-layout", "layout.json");
   const manifest = await readJsonSafe(layoutPath);
 
   if (!manifest) {
@@ -38,11 +52,11 @@ async function main() {
   }
 
   // Ensure public directory exists
-  const publicDir = join(rootDir, "public");
+  const publicDir = outPublicDir;
   await fs.mkdir(publicDir, { recursive: true });
 
-  const outRoot = join(rootDir, "layout-manifest.json");
-  const outPublic = join(rootDir, "public", "layout-manifest.json");
+  const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "layout-manifest.json");
+  const outPublic = join(publicDir, "layout-manifest.json");
 
   const jsonText = JSON.stringify(manifest, null, 2) + "\n";
   await fs.writeFile(outRoot, jsonText, "utf-8");

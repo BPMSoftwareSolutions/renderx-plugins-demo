@@ -12,5 +12,5 @@
     "baseUrl": ".",
     "paths": {}
   },
-  "include": ["plugins", "__tests__", "src", "data"]
+  "include": ["plugins", "__tests__", "src", "data", "packages"]
 }
