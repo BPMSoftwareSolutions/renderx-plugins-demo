@@ -2,7 +2,7 @@
   "metadata": {
     "type": "html",
     "name": "HTML",
-    "version": "1.0.0",
+  "version": "1.0.1",
     "author": "RenderX Team",
     "description": "Rich HTML component for sanitized pasted markup blocks.",
     "category": "basic",
@@ -32,7 +32,12 @@
           "type": "string",
             "default": "<p><strong>Edit me</strong>: Paste HTML here (sanitized).</p>",
           "description": "HTML markup content (sanitized)",
-          "required": true
+          "required": true,
+          "ui": {
+            "control": "code",
+            "rows": 8,
+            "placeholder": "Paste HTML (supports headings, tables, forms, SVG, etc.)"
+          }
         }
       },
       "defaultValues": {

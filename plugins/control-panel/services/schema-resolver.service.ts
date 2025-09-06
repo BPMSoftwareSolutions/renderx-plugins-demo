@@ -93,6 +93,19 @@ export class SchemaResolverService {
 
     const fields: PropertyField[] = [];
 
+    // Helper: gated debug logger (enable via globalThis.__RX_DEBUG_SCHEMA = true)
+    const debug = (...args: any[]) => {
+      try {
+        const g: any = globalThis as any;
+        if (g && g.__RX_DEBUG_SCHEMA) {
+          g.__RX_SCHEMA_LOG = g.__RX_SCHEMA_LOG || [];
+          g.__RX_SCHEMA_LOG.push([Date.now(), ...args]);
+        }
+      } catch {
+        /* ignore */
+      }
+    };
+
     // 1. Generate fields from component schema (if available)
     if (schema?.integration?.properties?.schema) {
       const properties = schema.integration.properties.schema;
@@ -123,11 +136,58 @@ export class SchemaResolverService {
           rendererProps: ui && Object.keys(ui).length ? { ...ui } : undefined,
         };
 
+        // Hard fallback: ensure html.markup always treated as code editor even if schema UI control missing (cache staleness / legacy instances)
+        if (componentType === "html" && key === "markup" && field.type !== "code") {
+          field.type = "code";
+          field.rendererProps = field.rendererProps || {};
+          if (field.rendererProps.rows == null) field.rendererProps.rows = 8;
+          if (!field.rendererProps.placeholder)
+            field.rendererProps.placeholder = "Paste HTML (sanitized)…";
+          debug("Applied fallback code editor mapping for html.markup");
+        }
+
+        // Dev diagnostics: capture how fields are mapped (helps verify markup=>code mapping)
+        try {
+          const g: any = globalThis as any;
+          if (g && (import.meta as any)?.env?.DEV) {
+            g.__RX_SCHEMA_DEBUG = g.__RX_SCHEMA_DEBUG || [];
+            g.__RX_SCHEMA_DEBUG.push({
+              component: componentType,
+              key,
+              uiControl: ui.control,
+              mappedType: field.type,
+              timestamp: Date.now(),
+            });
+          }
+        } catch {
+          // silent
+        }
+
         if (propSchema.validation) {
           field.validation = propSchema.validation;
         }
 
         fields.push(field);
+
+        // Targeted debug instrumentation for rich markup style fields
+        if (
+          componentType === "html" && key === "markup" && (field as any).type
+        ) {
+          debug(
+            `Mapped html.markup -> field.type='${field.type}' ui.control='${
+              (propSchema as any)?.ui?.control || "(inherit)"
+            }' rows=${field.rendererProps?.rows || "(n/a)"}`
+          );
+        }
+        if (
+          componentType === "svg" && key === "svgMarkup" && (field as any).type
+        ) {
+          debug(
+            `Mapped svg.svgMarkup -> field.type='${field.type}' ui.control='${
+              (propSchema as any)?.ui?.control || "(inherit)"
+            }' rows=${field.rendererProps?.rows || "(n/a)"}`
+          );
+        }
       });
     }
 

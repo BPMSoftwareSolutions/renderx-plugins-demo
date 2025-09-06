@@ -31,6 +31,7 @@ export function useSchemaResolver() {
           "paragraph",
           "image",
           "svg",
+          "html",
         ]);
 
         if (mounted) {
