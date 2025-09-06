@@ -62,8 +62,9 @@ export async function loadJsonSequenceCatalogs(
             if (m) catalogDirs.add(m[1]);
           }
         }
-        // Add special known sequence-only directory if present via heuristic (library-component) by optimistic inclusion
+        // Add special known sequence-only directories if present via heuristic (e.g., library-component, canvas-component) by optimistic inclusion
         catalogDirs.add('library-component');
+        catalogDirs.add('canvas-component');
         if (catalogDirs.size) {
           // Use these directory candidates for catalog loading in browser; Node path scan below will still merge actual dirs
           (conductor as any)._sequenceCatalogDirsFromManifest = Array.from(catalogDirs);
