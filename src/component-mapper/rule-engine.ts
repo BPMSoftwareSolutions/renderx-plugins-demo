@@ -279,9 +279,7 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         prop: "lineHeight",
       },
     ],
-    html: [
-      { whenAttr: "markup", action: "innerHtml" }
-    ],
+    html: [{ whenAttr: "markup", action: "innerHtml" }],
   },
 };
 
@@ -333,9 +331,7 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
       { action: "style", prop: "fontSize", from: "fontSize" },
       { action: "style", prop: "lineHeight", from: "lineHeight" },
     ],
-    html: [
-      { action: "innerHtml", from: "markup" }
-    ],
+    html: [{ action: "innerHtml", from: "markup" }],
   },
 };
 
@@ -453,9 +449,7 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
       { get: "style", prop: "fontSize", as: "fontSize" },
       { get: "style", prop: "lineHeight", as: "lineHeight" },
     ],
-    html: [
-      { get: "innerHtml", as: "markup" }
-    ],
+    html: [{ get: "innerHtml", as: "markup" }],
   },
 };
 
@@ -617,13 +611,13 @@ export class ComponentRuleEngine {
         }
         case "innerHtml": {
           const v = (content as any)[(r as any).from];
-            if (v !== undefined) {
-              const raw = String(v);
-              (el as any).innerHTML =
-                typeKey === "html" ? sanitizeHtml(raw) : raw;
-            }
-            break;
+          if (v !== undefined) {
+            const raw = String(v);
+            (el as any).innerHTML =
+              typeKey === "html" ? sanitizeHtml(raw) : raw;
           }
+          break;
+        }
       }
     }
   }

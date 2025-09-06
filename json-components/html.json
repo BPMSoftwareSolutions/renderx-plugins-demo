@@ -2,7 +2,7 @@
   "metadata": {
     "type": "html",
     "name": "HTML",
-  "version": "1.0.1",
+    "version": "1.0.1",
     "author": "RenderX Team",
     "description": "Rich HTML component for sanitized pasted markup blocks.",
     "category": "basic",
@@ -22,7 +22,11 @@
     "icon": { "mode": "emoji", "value": "🧩", "position": "start" },
     "tools": {
       "drag": { "enabled": true },
-      "resize": { "enabled": true, "handles": ["e", "s", "se"], "constraints": { "min": { "w": 120, "h": 40 } } }
+      "resize": {
+        "enabled": true,
+        "handles": ["e", "s", "se"],
+        "constraints": { "min": { "w": 120, "h": 40 } }
+      }
     }
   },
   "integration": {
@@ -30,7 +34,7 @@
       "schema": {
         "markup": {
           "type": "string",
-            "default": "<p><strong>Edit me</strong>: Paste HTML here (sanitized).</p>",
+          "default": "<p><strong>Edit me</strong>: Paste HTML here (sanitized).</p>",
           "description": "HTML markup content (sanitized)",
           "required": true,
           "ui": {

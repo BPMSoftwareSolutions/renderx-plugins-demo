@@ -93,7 +93,7 @@ export class SchemaResolverService {
 
     const fields: PropertyField[] = [];
 
-  // (Debug logger removed – schema now preloaded for html)
+    // (Debug logger removed – schema now preloaded for html)
 
     // 1. Generate fields from component schema (if available)
     if (schema?.integration?.properties?.schema) {
@@ -125,7 +125,7 @@ export class SchemaResolverService {
           rendererProps: ui && Object.keys(ui).length ? { ...ui } : undefined,
         };
 
-  // (Removed legacy fallback & diagnostics – html schema now loaded explicitly)
+        // (Removed legacy fallback & diagnostics – html schema now loaded explicitly)
 
         if (propSchema.validation) {
           field.validation = propSchema.validation;
@@ -133,7 +133,7 @@ export class SchemaResolverService {
 
         fields.push(field);
 
-  // (Removed debug instrumentation)
+        // (Removed debug instrumentation)
       });
     }
 

@@ -5,5 +5,8 @@
   <pre><code>&lt;div onclick="alert('x')"&gt;Hi&lt;script&gt;evil()&lt;/script&gt; <a href="javascript:alert(1)">Click</a>&lt;/div&gt;</code></pre>
   <p><strong>Result (after sanitization):</strong></p>
   <pre><code>&lt;div&gt;Hi <a href="#">Click</a>&lt;/div&gt;</code></pre>
-  <p>Event handlers, scripts, and dangerous URLs are removed. Safe text and structure remain.</p>
+  <p>
+    Event handlers, scripts, and dangerous URLs are removed. Safe text and
+    structure remain.
+  </p>
 </div>
