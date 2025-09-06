@@ -74,7 +74,10 @@ export function PanelSlot({ slot }: { slot: string }) {
         if (alive) setComp(() => Exported);
       } catch (err) {
         console.error(err);
-        if (alive)
+        // In non-browser test environments, jsdom teardown can happen before this catch.
+        // Guard setState to avoid post-teardown updates that would touch `window`.
+        const canUpdate = alive && typeof window !== "undefined";
+        if (canUpdate)
           setComp(() => () => (
             <div style={{ padding: 12 }}>
               Failed to load panel: {String(err)}
