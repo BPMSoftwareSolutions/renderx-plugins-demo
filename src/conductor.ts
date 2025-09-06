@@ -22,8 +22,13 @@ export async function loadJsonSequenceCatalogs(conductor: ConductorClient) {
     "control-panel",
     "header",
   ] as const;
+  const isTestEnv =
+    typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
   const isBrowser =
+    !isTestEnv &&
     typeof globalThis !== "undefined" &&
+    typeof (globalThis as any).window !== "undefined" &&
+    typeof (globalThis as any).document !== "undefined" &&
     typeof (globalThis as any).fetch === "function";
 
   type CatalogEntry = { file: string; handlersPath: string };
@@ -102,8 +107,8 @@ export async function loadJsonSequenceCatalogs(conductor: ConductorClient) {
         entries = idxJson?.sequences || [];
       }
 
-      // 2) For each entry, load sequence JSON (browser first, then Node/test fallback)
-      for (const ent of entries) {
+      // 2) For each entry, load sequence JSON (browser first, then Node/test fallback) in parallel
+      const tasks = entries.map(async (ent) => {
         let seqJson: SequenceJson | null = null;
         if (isBrowser) {
           try {
@@ -121,8 +126,9 @@ export async function loadJsonSequenceCatalogs(conductor: ConductorClient) {
           const seqText: string = (seqMod as any)?.default || (seqMod as any);
           seqJson = JSON.parse(seqText || "{}");
         }
-        await mountFrom(seqJson, ent.handlersPath);
-      }
+        await mountFrom(seqJson as SequenceJson, ent.handlersPath);
+      });
+      await Promise.all(tasks);
     } catch (e) {
       (conductor as any).logger?.warn?.(
         `Failed to load catalog for ${plugin}: ${e}`

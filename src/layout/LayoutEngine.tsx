@@ -7,6 +7,8 @@ export function LayoutEngine() {
   const [failed, setFailed] = React.useState(false);
 
   React.useEffect(() => {
+    // Guard for non-browser environments (SSR/tests)
+    if (typeof window === "undefined") return;
     let alive = true;
     loadLayoutManifest()
       .then((m) => {

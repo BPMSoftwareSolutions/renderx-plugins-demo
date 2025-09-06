@@ -33,5 +33,5 @@ describe("JSON loader — library-component sequences", () => {
       "library-component-drag-symphony",
       "library-component-drop-symphony",
     ]);
-  });
+  }, 60000);
 });

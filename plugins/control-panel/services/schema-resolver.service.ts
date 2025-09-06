@@ -131,6 +131,15 @@ export class SchemaResolverService {
           field.validation = propSchema.validation;
         }
 
+        // Legacy fallback for HTML markup: ensure code editor when ui.control is absent
+        if (componentType === "html" && key === "markup") {
+          field.type = "code";
+          field.rendererProps = {
+            rows: 8,
+            ...(field.rendererProps || {}),
+          } as any;
+        }
+
         fields.push(field);
 
         // (Removed debug instrumentation)
