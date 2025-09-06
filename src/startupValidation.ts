@@ -29,25 +29,73 @@ export async function verifyArtifactsIntegrity(devOnly = true) {
     if (devOnly && typeof process !== 'undefined' && process.env?.NODE_ENV === 'production') return null;
     // @ts-ignore
     if (typeof process !== 'undefined' && process.env?.RENDERX_DISABLE_INTEGRITY === '1') return null;
-    const res = await fetch('/artifacts.integrity.json');
-    if (!res.ok) return null;
-    const json = await res.json();
-    const entries = Object.entries(json.files || {});
-    const failed: string[] = [];
-    for (const [file, metaAny] of entries) {
+    let json: any = null;
+    let mode: 'browser' | 'node-fs' | 'none' = 'none';
+    try {
+      const res = await fetch('/artifacts.integrity.json');
+      if (res.ok) {
+        json = await res.json();
+        mode = 'browser';
+      }
+    } catch {}
+    // Node fallback: read from filesystem (dist/artifacts) so tests & CI can verify tampering
+    if (!json) {
       try {
-        const r = await fetch('/' + file);
-        if (!r.ok) continue;
-        const txt = await r.text();
-        const buf = new TextEncoder().encode(txt);
-        const digest = await crypto.subtle.digest('SHA-256', buf);
-        const hex = Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
-        const expected = (metaAny as any).hash;
-        if (hex !== expected) failed.push(file);
+        // Avoid static import so bundlers don't include fs in browser build
+  // @ts-ignore node type shims not installed in repo
+  const fs = await import('fs/promises');
+  // @ts-ignore
+  const path = await import('path');
+        // @ts-ignore
+        const cwd = typeof process !== 'undefined' && process.cwd ? process.cwd() : '';
+        const integrityFile = path.join(cwd, 'dist', 'artifacts', 'artifacts.integrity.json');
+        const rawTxt = await fs.readFile(integrityFile, 'utf-8').catch(()=>null as any);
+        if (rawTxt) {
+          json = JSON.parse(rawTxt);
+          mode = 'node-fs';
+        }
       } catch {}
     }
-    if (failed.length) console.warn('⚠️ Artifact integrity mismatch:', failed);
-    else if (entries.length) console.log('✅ Artifact integrity verified:', entries.length, 'files');
+    if (!json) return null; // nothing to verify
+    const entries = Object.entries(json.files || {});
+    if (!entries.length) return null;
+    const failed: string[] = [];
+    if (mode === 'browser') {
+      for (const [file, metaAny] of entries) {
+        try {
+          const r = await fetch('/' + file);
+          if (!r.ok) continue;
+          const txt = await r.text();
+          const buf = new TextEncoder().encode(txt);
+            const digest = await crypto.subtle.digest('SHA-256', buf);
+            const hex = Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+            const expected = (metaAny as any).hash;
+            if (hex !== expected) failed.push(file);
+        } catch {}
+      }
+    } else if (mode === 'node-fs') {
+      try {
+  // @ts-ignore
+  const fs = await import('fs/promises');
+  // @ts-ignore
+  const path = await import('path');
+        // @ts-ignore
+        const cwd = typeof process !== 'undefined' && process.cwd ? process.cwd() : '';
+        for (const [file, metaAny] of entries) {
+          try {
+            const filePath = path.join(cwd, 'dist', 'artifacts', file);
+            const txt = await fs.readFile(filePath, 'utf-8');
+            const buf = new TextEncoder().encode(txt);
+            const digest = await crypto.subtle.digest('SHA-256', buf);
+            const hex = Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+            const expected = (metaAny as any).hash;
+            if (hex !== expected) failed.push(file);
+          } catch {}
+        }
+      } catch {}
+    }
+    if (failed.length) console.warn('⚠️ Artifact integrity mismatch:', failed, '(mode:', mode, ')');
+    else console.log('✅ Artifact integrity verified:', entries.length, 'files', '(mode:', mode, ')');
   } catch {}
   return null;
 }

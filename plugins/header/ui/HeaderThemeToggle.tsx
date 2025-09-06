@@ -26,6 +26,10 @@ export function HeaderThemeToggle() {
   // an already toggled theme. Without this, a slow initial get could race and reset
   // the button label back to the pre-toggle value causing test flakiness.
   const userInteractedRef = React.useRef(false);
+  // Synchronous baseline theme detection to avoid an initial null->click race:
+  // If user clicks before async get resolves, we want a stable starting theme.
+  // Removed direct DOM/localStorage access to satisfy plugin lint restrictions.
+  // Initial theme now always discovered through async conductor play (get route).
   React.useEffect(() => {
     return () => {
       aliveRef.current = false;
