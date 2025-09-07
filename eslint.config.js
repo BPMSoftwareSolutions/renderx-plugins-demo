@@ -18,6 +18,33 @@ import requireManifestValidation from "./eslint-rules/require-manifest-validatio
 import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugins.js";
 import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
 
+// Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
+// Patterns are built dynamically so existing rule logic (file-based heuristics) can operate transparently.
+const externalPluginsRoot = process.env.RENDERX_PLUGINS_SRC
+  ? process.env.RENDERX_PLUGINS_SRC.replace(/\\/g, "/")
+  : null;
+
+const pluginCodeGlobs = externalPluginsRoot
+  ? [
+      "plugins/**/*.{ts,tsx,js,jsx}",
+      `${externalPluginsRoot}/**/*.{ts,tsx,js,jsx}`,
+    ]
+  : ["plugins/**/*.{ts,tsx,js,jsx}"];
+const pluginUiGlobs = externalPluginsRoot
+  ? [
+      "plugins/**/ui/**/*.{ts,tsx,js,jsx}",
+      `${externalPluginsRoot}/**/ui/**/*.{ts,tsx,js,jsx}`,
+    ]
+  : ["plugins/**/ui/**/*.{ts,tsx,js,jsx}"];
+const stageCrewGlobs = externalPluginsRoot
+  ? [
+      "plugins/**/*.{stage-crew}.ts",
+      "plugins/**/*.{stage-crew}.tsx",
+      `${externalPluginsRoot}/**/*.{stage-crew}.ts`,
+      `${externalPluginsRoot}/**/*.{stage-crew}.tsx`,
+    ]
+  : ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"];
+
 export default [
   {
     ignores: [
@@ -107,7 +134,7 @@ export default [
   },
   // UI code: forbid DOM & StageCrew/EventBus
   {
-    files: ["plugins/**/ui/**/*.{ts,tsx,js,jsx}"],
+    files: pluginUiGlobs,
     ignores: [
       // Allow stage-crew handlers in symphonies to live under a ui/ folder
       "plugins/**/ui/**/*.stage-crew.{ts,tsx}",
@@ -236,7 +263,7 @@ export default [
   },
   // All plugin code: forbid DOM access outside of stage-crew files
   {
-    files: ["plugins/**/*.{ts,tsx,js,jsx}"],
+    files: pluginCodeGlobs,
     ignores: ["plugins/**/*.stage-crew.{ts,tsx}"],
     plugins: {
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
@@ -345,7 +372,7 @@ export default [
 
   // Stage-crew handlers: allow DOM, forbid UI imports, forbid IO/API here
   {
-    files: ["plugins/**/*.{stage-crew}.ts", "plugins/**/*.{stage-crew}.tsx"],
+    files: stageCrewGlobs,
     plugins: {
       "deprecate-stagecrew-api": deprecateStageCrew,
     },

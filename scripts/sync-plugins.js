@@ -11,9 +11,21 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
+const args = process.argv.slice(2);
+function getArg(name, def) {
+  const i = args.findIndex(a => a === name || a.startsWith(name + '='));
+  if (i === -1) return def;
+  const eq = args[i].indexOf('=');
+  if (eq > -1) return args[i].slice(eq + 1);
+  const nxt = args[i + 1];
+  if (nxt && !nxt.startsWith('--')) return nxt;
+  return def;
+}
+const srcRoot = getArg('--srcRoot', rootDir);
+const outPublic = getArg('--outPublic', join(rootDir, 'public'));
 
-const sourceDir = join(rootDir, 'json-plugins');
-const targetDir = join(rootDir, 'public', 'plugins');
+const sourceDir = join(srcRoot, 'json-plugins');
+const targetDir = join(outPublic, 'plugins');
 
 async function ensureDir(dir) {
   try {

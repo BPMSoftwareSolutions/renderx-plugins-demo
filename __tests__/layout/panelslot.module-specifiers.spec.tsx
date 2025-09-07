@@ -39,6 +39,10 @@ describe("PanelSlot supports package and URL module specifiers (graceful fallbac
     await new Promise((r) => setTimeout(r, 0));
 
     expect(spyErr.mock.calls.length).toBeGreaterThanOrEqual(0);
+
+    // Avoid async state updates after test teardown
+    root.unmount();
+    await Promise.resolve();
   });
 
   it("attempts to import a URL specifier and renders error fallback on failure", async () => {
@@ -65,5 +69,9 @@ describe("PanelSlot supports package and URL module specifiers (graceful fallbac
     await new Promise((r) => setTimeout(r, 0));
 
     expect(spyErr.mock.calls.length).toBeGreaterThanOrEqual(0);
+
+    // Avoid async state updates after test teardown
+    root.unmount();
+    await Promise.resolve();
   });
 });

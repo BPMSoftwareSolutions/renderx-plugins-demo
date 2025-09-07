@@ -193,8 +193,8 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       themeButton.click();
     });
 
-    // Wait for MutationObserver to process the change
-    await new Promise((resolve) => setTimeout(resolve, 10));
+  // Wait a bit for async play() mock + state reconciliation
+  await new Promise((resolve) => setTimeout(resolve, 30));
 
     // After click, should show "Light" (because we're now in dark mode)
     expect(themeButton.textContent?.trim()).toBe("🌞 Light");

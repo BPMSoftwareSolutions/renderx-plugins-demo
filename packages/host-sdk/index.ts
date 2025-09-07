@@ -1,11 +1,2 @@
-// Thin façade re-exporting stable host APIs for plugins
-export { useConductor } from "../../src/conductor";
-export type { ConductorClient } from "musical-conductor"; // from external lib types
-export { EventRouter } from "../../src/EventRouter";
-export { resolveInteraction } from "../../src/interactionManifest";
-export { isFlagEnabled, getFlagMeta } from "../../src/feature-flags/flags";
-export {
-  getTagForType,
-  computeTagFromJson,
-} from "../../src/component-mapper/mapper";
-export { mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
+// Phase 2: public surface centralized in public-api.ts
+export * from './public-api';

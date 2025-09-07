@@ -52,6 +52,158 @@ Check out these supporting projects for more detail on the underlying architectu
 ## Development Workflow
 
 - To add a new plugin:
+### Artifact Mode (External Plugins Repo)
+
+Phase 1 introduces an artifact consumption mode so the thin host can run without plugin source code present.
+
+Artifacts directory expected structure:
+
+```
+interaction-manifest.json
+topics-manifest.json
+layout-manifest.json (optional)
+plugin-manifest.json (inside plugins/)
+json-components/*
+json-sequences/*
+json-interactions/* (optional if already merged)
+json-topics/*
+plugins/plugin-manifest.json
+```
+
+Generate locally:
+```
+node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts
+```
+
+Run host pointing at artifacts:
+```
+set ARTIFACTS_DIR=dist\artifacts
+npm run dev:artifacts
+```
+
+Or (PowerShell inline):
+```
+$env:ARTIFACTS_DIR="dist/artifacts"; npm run dev:artifacts
+```
+
+Script / CLI flags (all accept `--srcRoot` and `--outPublic` where applicable):
+
+| Script | Purpose | Key Flags |
+|--------|---------|----------|
+| `scripts/generate-interaction-manifest.js` | Builds interaction-manifest.json | `--srcRoot`, `--outPublic` |
+| `scripts/generate-topics-manifest.js` | Builds topics-manifest.json | `--srcRoot`, `--outPublic` |
+| `scripts/generate-layout-manifest.js` | Copies layout manifest | `--srcRoot`, `--outPublic` |
+| `scripts/sync-json-components.js` | Copies component JSON | `--srcRoot`, `--outPublic` |
+| `scripts/sync-json-sequences.js` | Copies sequence catalogs | `--srcRoot`, `--outPublic` |
+| `scripts/sync-plugins.js` | Copies plugin manifest(s) | `--srcRoot`, `--outPublic` |
+| `scripts/build-artifacts.js` | Full artifact bundle | `--srcRoot`, `--outDir` |
+| `scripts/copy-artifacts-to-public.js` | Consume existing artifacts | `ARTIFACTS_DIR` env or first arg path |
+
+On startup the host logs a summary like:
+```
+🧪 Startup validation: { routes: 35, topics: 36, plugins: 6 }
+```
+
+Disable this validation (e.g. noisy integration tests) with:
+```
+set RENDERX_DISABLE_STARTUP_VALIDATION=1
+```
+or PowerShell:
+```
+$env:RENDERX_DISABLE_STARTUP_VALIDATION="1"; npm start
+```
+
+### Host SDK Surface (additions)
+
+New helper exports (stable path `@renderx/host-sdk`):
+
+| Export | Purpose |
+|--------|---------|
+| `getPluginManifest()` | Async fetch + cache plugin manifest for discovery tooling |
+| `getCachedPluginManifest()` | Returns last fetched manifest or null |
+| `getAllFlags()` | Snapshot of all feature flags |
+| `getUsageLog()` | In-memory usage log (dev/test diagnostics) |
+| `setFlagOverride(id, enabled)` | Test-only override (do not use in prod code paths) |
+| `clearFlagOverrides()` | Clear all overrides |
+
+These complement existing exports like `useConductor`, `resolveInteraction`, and mapping helpers.
+
+
+## Artifact Integrity (Phase 2)
+
+Phase 2 adds cryptographic integrity coverage for the synthesized artifact set so the thin host (or any consuming service) can detect tampering, drift, or partial deployments.
+
+### What Gets Hashed
+
+The integrity file (`artifacts.integrity.json`) contains a SHA-256 hash per core artifact plus an aggregate hash:
+
+```
+{
+  "files": {
+    "interaction-manifest.json": "<sha256>",
+    "topics-manifest.json": "<sha256>",
+    "layout-manifest.json": "<sha256|omitted if absent>",
+    "manifest-set.json": "<sha256>"
+  },
+  "aggregate": "<sha256 of the sorted 'fileName:hash' lines>"
+}
+```
+
+Only files that directly influence routing / orchestration are covered right now; sequence & component JSON can be added later once the surface stabilizes.
+
+### Generating Integrity Data
+
+Integrated build (preferred):
+```
+npm run artifacts:build:integrity
+```
+Equivalent manual invocation:
+```
+node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity
+```
+
+Legacy / standalone hash script (will produce a similar structure if artifacts already exist):
+```
+npm run artifacts:hash
+```
+
+### Runtime Verification
+
+On host startup, if `ARTIFACTS_DIR` is set and `artifacts.integrity.json` is present, the host recomputes SHA-256 digests in the browser (using `crypto.subtle`) and compares them. A mismatch logs an error with the first differing file and aborts early in dev (subject to future policy decisions for production).
+
+Disable integrity verification (e.g. for experimentation) with:
+```
+set RENDERX_DISABLE_INTEGRITY=1
+```
+PowerShell:
+```
+$env:RENDERX_DISABLE_INTEGRITY="1"; npm start
+```
+
+### CI Hook
+
+CI invokes the integrity build to ensure the hashing path stays green. A failure surfaces as a normal test failure.
+
+### Planned Extensions
+
+| Planned | Description |
+|---------|-------------|
+| Signature layer | Aggregate hash signed with private key for provenance |
+| Expanded coverage | Include sequence & component JSON catalogs in integrity file |
+| Public API hash | Detect accidental breaking changes to `@renderx/host-sdk` |
+| External lint roots | Use `RENDERX_PLUGINS_SRC` so ESLint rules work with detached plugin repo |
+| Strict validator mode | CI flag to treat heuristic plugin coverage warnings as errors |
+
+## Environment Variables (Quick Reference)
+
+| Variable | Purpose | Typical Usage |
+|----------|---------|---------------|
+| `HOST_ARTIFACTS_DIR` | (Preferred) Points host at pre-built artifacts directory (supersedes ARTIFACTS_DIR) | `set HOST_ARTIFACTS_DIR=..\\renderx-artifacts` then `npm run dev` |
+| `ARTIFACTS_DIR` | Legacy alias for HOST_ARTIFACTS_DIR | `set ARTIFACTS_DIR=dist\\artifacts` then `npm run dev:artifacts` |
+| `RENDERX_DISABLE_STARTUP_VALIDATION` | Skip plugin & manifest count summary | Silence noisy CI / perf runs |
+| `RENDERX_DISABLE_INTEGRITY` | Skip integrity verification even if file present | Local debugging of partially edited artifacts |
+| `RENDERX_PLUGINS_SRC` (planned) | External plugins source root for lint rules | Future Phase 2+ feature |
+
 
   - Create a plugin folder under `plugins/`
   - Update the host manifest to include your plugin’s metadata and entry point

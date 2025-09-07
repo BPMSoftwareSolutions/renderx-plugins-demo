@@ -23,7 +23,20 @@ let manifestPromiseRef: Promise<Manifest> = (async () => {
       const res = await fetch("/plugins/plugin-manifest.json");
       if (res.ok) return (await res.json()) as Manifest;
     }
-    // Node/tests fallback: import raw JSON from public
+    // External artifacts directory (env) before bundled raw import
+    try {
+      const envMod = await import(/* @vite-ignore */ '../env');
+      const artifactsDir = envMod.getArtifactsDir?.();
+      if (artifactsDir) {
+        // @ts-ignore
+        const fs = await import('fs/promises');
+        // @ts-ignore
+        const path = await import('path');
+        const p = path.join(process.cwd(), artifactsDir, 'plugins', 'plugin-manifest.json');
+        const raw = await fs.readFile(p, 'utf-8').catch(()=>null as any);
+        if (raw) return JSON.parse(raw || '{"plugins":[]}');
+      }
+    } catch {}
     const mod = await import(
       /* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw"
     );
@@ -74,7 +87,10 @@ export function PanelSlot({ slot }: { slot: string }) {
         if (alive) setComp(() => Exported);
       } catch (err) {
         console.error(err);
-        if (alive)
+        // In non-browser test environments, jsdom teardown can happen before this catch.
+        // Guard setState to avoid post-teardown updates that would touch `window`.
+        const canUpdate = alive && typeof window !== "undefined";
+        if (canUpdate)
           setComp(() => () => (
             <div style={{ padding: 12 }}>
               Failed to load panel: {String(err)}
