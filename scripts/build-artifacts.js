@@ -64,20 +64,31 @@ async function buildOnce() {
   function extractOverrides(json) {
     return json?.integration?.routeOverrides || json?.routeOverrides || json?.integration?.interactions?.routeOverrides || {}; }
   const overrides = componentFiles.map(extractOverrides);
-  const interactionManifest = buildInteractionManifest(interactionCats.filter(Boolean), overrides);
+  const schemaVersion = '1.0.0';
+  const interactionManifest = {
+    schemaVersion,
+    ...buildInteractionManifest(interactionCats.filter(Boolean), overrides)
+  };
   await writeFile(join(outDir, 'interaction-manifest.json'), JSON.stringify(interactionManifest,null,2));
 
   // Topics
   const topicCats = await Promise.all(await collect(paths.topics));
-  const topicsManifest = buildTopicsManifest(topicCats.filter(Boolean));
+  const topicsManifest = {
+    schemaVersion,
+    ...buildTopicsManifest(topicCats.filter(Boolean))
+  };
   await writeFile(join(outDir, 'topics-manifest.json'), JSON.stringify(topicsManifest,null,2));
 
   // Layout (copy single file if present)
   const layout = await readJsonSafe(join(paths.layout,'layout.json'));
-  if (layout) await writeFile(join(outDir,'layout-manifest.json'), JSON.stringify(layout,null,2));
+  if (layout) {
+    const layoutOut = { schemaVersion, ...layout };
+    await writeFile(join(outDir,'layout-manifest.json'), JSON.stringify(layoutOut,null,2));
+  }
 
   // Summary file
   const summary = {
+    schemaVersion,
     version: '1.0.0',
     counts: {
       interactionRoutes: Object.keys(interactionManifest.routes).length,
