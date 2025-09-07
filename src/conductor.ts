@@ -28,6 +28,7 @@ export async function loadJsonSequenceCatalogs(
   if (!plugins.length) {
     // Try plugin manifest first (browser fetch, then raw import)
     let manifest: any = null;
+    let externalOnly = false;
     try {
       const isBrowser =
         typeof window !== "undefined" &&
@@ -39,6 +40,7 @@ export async function loadJsonSequenceCatalogs(
       if (!manifest) {
         // External artifacts dir first
         if (artifactsDir) {
+          externalOnly = true;
           try {
             // @ts-ignore
             const fs = await import('fs/promises');
@@ -51,14 +53,15 @@ export async function loadJsonSequenceCatalogs(
             if (raw) manifest = JSON.parse(raw || '{}');
           } catch {}
         }
-        // Attempt raw import relative to project root public folder during dev tests
-        try {
-          // @ts-ignore: Vite raw import for development; module path resolved at runtime
-          // @ts-ignore: raw JSON import via Vite during dev/test
-          const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw');
-          const txt: string = (mod as any)?.default || (mod as any) || "{}";
-          manifest = JSON.parse(txt);
-        } catch {}
+        // Only fallback to raw import if NO external artifacts directory active
+        if (!externalOnly) {
+          try {
+            // @ts-ignore: Vite raw import for development; module path resolved at runtime
+            const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw');
+            const txt: string = (mod as any)?.default || (mod as any) || "{}";
+            manifest = JSON.parse(txt);
+          } catch {}
+        }
       }
     } catch {
       manifest = null;
@@ -192,7 +195,7 @@ export async function loadJsonSequenceCatalogs(
         } catch {}
       }
       if (!entries.length) {
-        if (!isBrowser && artifactsDir) {
+  if (!isBrowser && artifactsDir) {
           try {
             // @ts-ignore
             const fs = await import('fs/promises');
@@ -208,7 +211,8 @@ export async function loadJsonSequenceCatalogs(
             }
           } catch {}
         }
-        if (!entries.length) {
+  // Only attempt raw project import if not using external artifacts
+  if (!entries.length && !artifactsDir) {
           const idxMod = await import(
             /* @vite-ignore */ `../json-sequences/${dir}/index.json?raw`
           );
@@ -243,7 +247,7 @@ export async function loadJsonSequenceCatalogs(
             if (raw) seqJson = JSON.parse(raw || '{}');
           } catch {}
         }
-        if (!seqJson) {
+  if (!seqJson && !artifactsDir) {
           const seqMod = await import(
             /* @vite-ignore */ `../json-sequences/${dir}/${ent.file}?raw`
           );
@@ -290,11 +294,14 @@ export async function registerAllSequences(conductor: ConductorClient) {
           if (raw) manifest = JSON.parse(raw || '{}');
         }
       } catch {}
+      // Only fallback when no external artifacts dir was used
       if (!manifest) {
-        // @ts-ignore - raw JSON import handled by Vite
-        const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw'); // path relative to src/
-        const txt: string = (mod as any)?.default || (mod as any) || '{}';
-        manifest = JSON.parse(txt);
+        try {
+          // @ts-ignore - raw JSON import handled by Vite
+          const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw'); // path relative to src/
+          const txt: string = (mod as any)?.default || (mod as any) || '{}';
+          manifest = JSON.parse(txt);
+        } catch {}
       }
     }
   } catch {
