@@ -59,4 +59,25 @@ if (strict && (globalThis.__artifactWarnings?.length || 0) > 0) {
   console.error(`RENDERX_VALIDATION_STRICT=1 escalating ${globalThis.__artifactWarnings.length} warnings to error.`);
   process.exit(1);
 }
+// Optional signature requirement
+if (process.env.RENDERX_REQUIRE_SIGNATURE === '1') {
+  try {
+    const { readFileSync } = await import('fs');
+    const { join } = await import('path');
+    const sigPath = join(artifactsDir, 'artifacts.signature.json');
+    const integPath = join(artifactsDir, 'artifacts.integrity.json');
+    const integBuf = readFileSync(integPath);
+    const sig = JSON.parse(readFileSync(sigPath, 'utf-8'));
+    const { verify } = await import('crypto');
+    const ok = verify(null, integBuf, sig.publicKey, Buffer.from(sig.signature,'base64'));
+    if (!ok) {
+      console.error('❌ Signature verification failed under RENDERX_REQUIRE_SIGNATURE=1');
+      process.exit(1);
+    }
+    console.log('🔏 Signature verified (enforced).');
+  } catch (e) {
+    console.error('❌ Required signature missing or unreadable:', e?.message || e);
+    process.exit(1);
+  }
+}
 process.exit(failed ? 1 : 0);
