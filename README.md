@@ -205,6 +205,7 @@ CI invokes the integrity build to ensure the hashing path stays green. A failure
 | `RENDERX_DISABLE_INTEGRITY` | Skip integrity verification even if file present | Local debugging of partially edited artifacts |
 | `RENDERX_PLUGINS_SRC` (planned) | External plugins source root for lint rules | Future Phase 2+ feature |
 | `RENDERX_VALIDATION_STRICT` | Escalate artifact validator warnings to errors | `set RENDERX_VALIDATION_STRICT=1 && npm run artifacts:validate` |
+| `RENDERX_SEQUENCE_COVERAGE_ALLOW` | Comma list of plugin IDs exempt from sequence coverage heuristic | `set RENDERX_SEQUENCE_COVERAGE_ALLOW=HeaderTitlePlugin,HeaderControlsPlugin` |
 | `PACK_VERSION` | Override version used by pack-artifacts | `set PACK_VERSION=0.2.0 && npm run artifacts:pack` |
 
 
