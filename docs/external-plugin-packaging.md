@@ -64,11 +64,19 @@ If both `HOST_ARTIFACTS_DIR` and `ARTIFACTS_DIR` are unset, the host falls back 
 
 ## CI Suggested Order
 
+Quick path:
+```
+npm run artifacts:ci
+```
+
+Expanded steps:
 1. `npm ci`
-2. `npm run artifacts:build:integrity`
-3. (optional) `RENDERX_SEQUENCE_COVERAGE_ALLOW=... npm run artifacts:validate:strict`
-4. `npm test`
-5. `npm run artifacts:pack`
+2. `npm run artifacts:build:signed`
+3. (optional) set `RENDERX_SEQUENCE_COVERAGE_ALLOW=...`
+4. `RENDERX_VALIDATION_STRICT=1 RENDERX_REQUIRE_SIGNATURE=1 npm run artifacts:validate`
+5. `npm run public-api:check`
+6. `npm test`
+7. `npm run artifacts:pack`
 
 ## Integrity Verification
 

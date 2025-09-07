@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "npm run pre:manifests && vite",
-    "build": "npm run pre:manifests && vite build",
+  "build": "npm run pre:manifests && node scripts/validate-plugin-entries.js && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
     "artifacts:build:integrity": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity",
   "artifacts:build:signed": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity --sign",
@@ -18,7 +18,12 @@
   "artifacts:pack": "node scripts/pack-artifacts.js --dir=dist/artifacts --out=dist/packages",
   "artifacts:validate:strict": "node -e \"process.env.RENDERX_VALIDATION_STRICT='1'; require('./scripts/validate-artifacts.js')\"",
   "artifacts:verify:signature": "node scripts/verify-artifact-signature.js",
+  "public-api:hash": "node scripts/hash-public-api.js",
+  "public-api:check": "node scripts/hash-public-api.js --check",
+  "artifacts:ci": "npm run artifacts:build:signed && npm run artifacts:validate:strict && npm run artifacts:verify:signature && npm run public-api:check && npm test && npm run artifacts:pack",
   "validate:public-api": "node scripts/validate-public-api.js",
+  "migration:stage": "node scripts/generate-migration-staging.js",
+  "migration:refresh": "node scripts/generate-migration-staging.js",
     "preview": "vite preview",
     "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/sync-plugins.js",
     "sync:json-components": "node scripts/sync-json-components.js",
@@ -31,7 +36,7 @@
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
-    "ci": "npm run lint && npm run pre:manifests && npm test"
+  "ci": "npm run lint && npm run pre:manifests && node scripts/validate-plugin-entries.js && npm test"
   },
   "dependencies": {
     "@renderx/host-sdk": "workspace:*",
@@ -50,6 +55,6 @@
     "jsdom": "^26.1.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.3",
-    "vitest": "^3.2.4"
+  "vitest": "^3.2.4"
   }
 }
