@@ -9,7 +9,8 @@ Artifacts are JSON manifests + integrity metadata produced by `scripts/build-art
 ## Build
 
 ```
-npm run artifacts:build:integrity
+npm run artifacts:build:integrity        # integrity only
+npm run artifacts:build:signed           # integrity + signature scaffold (ed25519)
 ```
 
 Outputs to `dist/artifacts`:
@@ -72,6 +73,35 @@ If both `HOST_ARTIFACTS_DIR` and `ARTIFACTS_DIR` are unset, the host falls back 
 ## Integrity Verification
 
 Runtime (browser or node) recomputes SHA-256 of covered files and compares with `artifacts.integrity.json`. Disable temporarily with:
+## Signature Scaffold
+
+`--sign` (or `artifacts:build:signed`) produces `artifacts.signature.json`:
+
+```
+{
+	"algorithm": "ed25519",
+	"signedAt": "2025-09-06T...Z",
+	"signature": "<base64>",
+	"publicKey": "-----BEGIN PUBLIC KEY-----..."
+}
+```
+
+Provide your own key pair in CI:
+
+```
+set RENDERX_SIGNING_PRIVATE_PEM=... (multi-line PEM, use CI secret manager)
+set RENDERX_SIGNING_PUBLIC_PEM=...
+npm run artifacts:build:signed
+```
+
+Verify locally:
+
+```
+npm run artifacts:verify:signature
+```
+
+If no key env vars are set, an ephemeral pair is generated (dev only) and recorded in `SIGNING_NOTE.txt`.
+
 
 ```
 set RENDERX_DISABLE_INTEGRITY=1

@@ -27,6 +27,7 @@ function getArg(name, def) {
 const srcRoot = getArg('--srcRoot', rootDir);
 const outDir = getArg('--outDir', join(rootDir, 'dist', 'artifacts'));
 const withIntegrity = args.includes('--integrity');
+const withSign = args.includes('--sign');
 const watch = args.includes('--watch');
 
 async function readJsonSafe(p) { try { return JSON.parse(await fs.readFile(p,'utf-8')); } catch { return null; } }
@@ -113,6 +114,28 @@ async function buildOnce() {
     integrity.aggregate = agg.digest('hex');
     await writeFile(join(outDir,'artifacts.integrity.json'), JSON.stringify(integrity,null,2));
     console.log('🔐 Integrity file emitted');
+
+    if (withSign) {
+      try {
+        // Simple ephemeral Ed25519 key pair (Node >= 19). In a real flow, the private key lives in CI secret storage.
+        const { generateKeyPairSync, sign } = await import('crypto');
+        let privPem = process.env.RENDERX_SIGNING_PRIVATE_PEM;
+        let pubPem = process.env.RENDERX_SIGNING_PUBLIC_PEM;
+        if (!privPem || !pubPem) {
+          const kp = generateKeyPairSync('ed25519');
+            privPem = kp.privateKey.export({ type: 'pkcs8', format: 'pem' }).toString();
+            pubPem = kp.publicKey.export({ type: 'spki', format: 'pem' }).toString();
+            await writeFile(join(outDir,'SIGNING_NOTE.txt'), 'Ephemeral key pair generated (dev mode). For production, inject RENDERX_SIGNING_PRIVATE_PEM / RENDERX_SIGNING_PUBLIC_PEM.');
+        }
+        const integrityBuf = await fs.readFile(join(outDir,'artifacts.integrity.json'));
+        const signature = sign(null, integrityBuf, privPem).toString('base64');
+        const sigObj = { algorithm: 'ed25519', signedAt: new Date().toISOString(), signature, publicKey: pubPem };
+        await writeFile(join(outDir,'artifacts.signature.json'), JSON.stringify(sigObj,null,2));
+        console.log('✍️  Signature scaffold emitted (artifacts.signature.json)');
+      } catch (e) {
+        console.warn('⚠️ Signature scaffold failed:', e?.message || e);
+      }
+    }
   }
   console.log('✨ Artifact build complete');
 }
