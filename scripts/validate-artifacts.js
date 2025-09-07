@@ -45,9 +45,18 @@ if (pluginManifest && Array.isArray(pluginManifest.plugins)) {
   for (const p of pluginManifest.plugins) runtimePluginIds.add(p.id);
 }
 // Report missing plugin sequence coverage
-const missingSequences = Array.from(runtimePluginIds).filter(id => !Array.from(sequencePluginIds).some(seqId => seqId.toLowerCase().includes(id.replace(/plugin$/i,'').toLowerCase().replace(/[-]/g,''))));
+// Allowlist (comma separated env) for plugins intentionally lacking sequences (e.g., pure UI header plugins)
+const allowlist = (process.env.RENDERX_SEQUENCE_COVERAGE_ALLOW || '').split(',').map(s=>s.trim()).filter(Boolean);
+const missingSequences = Array.from(runtimePluginIds).filter(id => !allowlist.includes(id) && !Array.from(sequencePluginIds).some(seqId => seqId.toLowerCase().includes(id.replace(/plugin$/i,'').toLowerCase().replace(/[-]/g,''))));
 if (missingSequences.length) {
   console.warn('⚠️ Plugins without obvious sequence coverage (heuristic):', missingSequences);
+  globalThis.__artifactWarnings = (globalThis.__artifactWarnings||[]).concat([{ type:'coverage', items: missingSequences }]);
 }
 if (!failed) console.log('✅ Artifacts validation passed (schemaVersion', schemaVersion, ')');
+// --- Strict Mode Escalation ---
+const strict = process.env.RENDERX_VALIDATION_STRICT === '1';
+if (strict && (globalThis.__artifactWarnings?.length || 0) > 0) {
+  console.error(`RENDERX_VALIDATION_STRICT=1 escalating ${globalThis.__artifactWarnings.length} warnings to error.`);
+  process.exit(1);
+}
 process.exit(failed ? 1 : 0);

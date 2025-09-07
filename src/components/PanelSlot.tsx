@@ -37,12 +37,22 @@ let manifestPromiseRef: Promise<Manifest> = (async () => {
         if (raw) return JSON.parse(raw || '{"plugins":[]}');
       }
     } catch {}
-    const mod = await import(
-      /* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw"
-    );
-    const text: string =
-      (mod as any)?.default || (mod as any) || '{"plugins":[]}';
-    return JSON.parse(text);
+    // Only fallback to bundled raw import if no external artifacts dir
+    try {
+      const envMod2 = await import(/* @vite-ignore */ '../env');
+      const dir2 = envMod2.getArtifactsDir?.();
+      if (dir2) return { plugins: [] }; // external dir was set but file missing → treat as empty
+    } catch {}
+    try {
+      const mod = await import(
+        /* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw"
+      );
+      const text: string =
+        (mod as any)?.default || (mod as any) || '{"plugins":[]}';
+      return JSON.parse(text);
+    } catch {
+      return { plugins: [] } as Manifest;
+    }
   } catch {
     return { plugins: [] } as Manifest;
   }
