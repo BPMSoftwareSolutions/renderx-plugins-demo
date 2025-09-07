@@ -9,10 +9,28 @@ export async function getPluginManifestStats() {
       if (res.ok) json = await res.json();
     }
     if (!json) {
-      // @ts-ignore
-      const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw');
-      const txt: string = (mod as any)?.default || (mod as any) || '{}';
-      json = JSON.parse(txt);
+      // External artifacts dir (env) first
+      try {
+        const envMod = await import(/* @vite-ignore */ './env');
+        const artifactsDir = envMod.getArtifactsDir?.();
+        if (artifactsDir) {
+          // @ts-ignore
+          const fs = await import('fs/promises');
+          // @ts-ignore
+          const path = await import('path');
+          const procAny: any = (globalThis as any).process;
+          const cwd = procAny && typeof procAny.cwd === 'function' ? procAny.cwd() : '';
+          const p = path.join(cwd, artifactsDir, 'plugins', 'plugin-manifest.json');
+          const raw = await fs.readFile(p, 'utf-8').catch(()=>null as any);
+          if (raw) json = JSON.parse(raw || '{}');
+        }
+      } catch {}
+      if (!json) {
+        // @ts-ignore
+        const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw');
+        const txt: string = (mod as any)?.default || (mod as any) || '{}';
+        json = JSON.parse(txt);
+      }
     }
     const plugins = Array.isArray(json.plugins) ? json.plugins : [];
     return { pluginCount: plugins.length };
@@ -42,13 +60,15 @@ export async function verifyArtifactsIntegrity(devOnly = true) {
     if (!json) {
       try {
         // Avoid static import so bundlers don't include fs in browser build
-  // @ts-ignore node type shims not installed in repo
-  const fs = await import('fs/promises');
-  // @ts-ignore
-  const path = await import('path');
+        // @ts-ignore node type shims not installed in repo
+        const fs = await import('fs/promises');
         // @ts-ignore
-        const cwd = typeof process !== 'undefined' && process.cwd ? process.cwd() : '';
-        const integrityFile = path.join(cwd, 'dist', 'artifacts', 'artifacts.integrity.json');
+        const path = await import('path');
+        let artifactsDir: string | null = null;
+        try { const envMod = await import(/* @vite-ignore */ './env'); artifactsDir = envMod.getArtifactsDir?.() || null; } catch {}
+        const procAny: any = (globalThis as any).process;
+        const cwd = procAny && typeof procAny.cwd === 'function' ? procAny.cwd() : '';
+        const integrityFile = artifactsDir ? path.join(cwd, artifactsDir, 'artifacts.integrity.json') : path.join(cwd, 'dist', 'artifacts', 'artifacts.integrity.json');
         const rawTxt = await fs.readFile(integrityFile, 'utf-8').catch(()=>null as any);
         if (rawTxt) {
           json = JSON.parse(rawTxt);
@@ -75,15 +95,18 @@ export async function verifyArtifactsIntegrity(devOnly = true) {
       }
     } else if (mode === 'node-fs') {
       try {
-  // @ts-ignore
-  const fs = await import('fs/promises');
-  // @ts-ignore
-  const path = await import('path');
         // @ts-ignore
-        const cwd = typeof process !== 'undefined' && process.cwd ? process.cwd() : '';
+        const fs = await import('fs/promises');
+        // @ts-ignore
+        const path = await import('path');
+        let artifactsDir: string | null = null;
+        try { const envMod = await import(/* @vite-ignore */ './env'); artifactsDir = envMod.getArtifactsDir?.() || null; } catch {}
+        const procAny: any = (globalThis as any).process;
+        const cwd = procAny && typeof procAny.cwd === 'function' ? procAny.cwd() : '';
+        const base = artifactsDir ? path.join(cwd, artifactsDir) : path.join(cwd, 'dist', 'artifacts');
         for (const [file, metaAny] of entries) {
           try {
-            const filePath = path.join(cwd, 'dist', 'artifacts', file);
+            const filePath = path.join(base, file);
             const txt = await fs.readFile(filePath, 'utf-8');
             const buf = new TextEncoder().encode(txt);
             const digest = await crypto.subtle.digest('SHA-256', buf);

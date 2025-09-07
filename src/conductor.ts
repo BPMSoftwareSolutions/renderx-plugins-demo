@@ -18,6 +18,11 @@ export async function loadJsonSequenceCatalogs(
   conductor: ConductorClient,
   pluginIds?: string[]
 ) {
+  let artifactsDir: string | null = null;
+  try {
+    const envMod = await import(/* @vite-ignore */ './env');
+    artifactsDir = envMod.getArtifactsDir?.() || null;
+  } catch {}
   // Discover plugin ids dynamically if not provided (decoupling step #102)
   let plugins: string[] = pluginIds || [];
   if (!plugins.length) {
@@ -32,6 +37,20 @@ export async function loadJsonSequenceCatalogs(
         if (res.ok) manifest = await res.json();
       }
       if (!manifest) {
+        // External artifacts dir first
+        if (artifactsDir) {
+          try {
+            // @ts-ignore
+            const fs = await import('fs/promises');
+            // @ts-ignore
+            const path = await import('path');
+            const procAny: any = (globalThis as any).process;
+            const cwd = procAny && typeof procAny.cwd === 'function' ? procAny.cwd() : '';
+            const p = path.join(cwd, artifactsDir, 'plugins', 'plugin-manifest.json');
+            const raw = await fs.readFile(p, 'utf-8').catch(()=>null as any);
+            if (raw) manifest = JSON.parse(raw || '{}');
+          } catch {}
+        }
         // Attempt raw import relative to project root public folder during dev tests
         try {
           // @ts-ignore: Vite raw import for development; module path resolved at runtime
@@ -80,8 +99,8 @@ export async function loadJsonSequenceCatalogs(
         const fs = await import("fs/promises");
         // @ts-ignore node types not present
         const path = await import("path");
-  const dir = path.join(proc.cwd(), "json-sequences");
-        const entries = await fs.readdir(dir).catch(() => [] as string[]);
+        const base = artifactsDir ? path.resolve(proc.cwd(), artifactsDir, 'json-sequences') : path.join(proc.cwd(), "json-sequences");
+        const entries = await fs.readdir(base).catch(() => [] as string[]);
         const seqDirs = entries.filter((e: string) => !e.startsWith("."));
         // Merge directory names; these are the catalog directory identifiers (legacy behavior)
         plugins = Array.from(new Set([...(plugins || []), ...seqDirs]));
@@ -173,12 +192,30 @@ export async function loadJsonSequenceCatalogs(
         } catch {}
       }
       if (!entries.length) {
-        const idxMod = await import(
-          /* @vite-ignore */ `../json-sequences/${dir}/index.json?raw`
-        );
-        const idxText: string = (idxMod as any)?.default || (idxMod as any);
-        const idxJson = JSON.parse(idxText || "{}");
-        entries = idxJson?.sequences || [];
+        if (!isBrowser && artifactsDir) {
+          try {
+            // @ts-ignore
+            const fs = await import('fs/promises');
+            // @ts-ignore
+            const path = await import('path');
+            const procAny2: any = (globalThis as any).process;
+            const cwd = procAny2 && typeof procAny2.cwd === 'function' ? procAny2.cwd() : '';
+            const idxPath = path.join(cwd, artifactsDir, 'json-sequences', dir, 'index.json');
+            const raw = await fs.readFile(idxPath, 'utf-8').catch(()=>null as any);
+            if (raw) {
+              const idxJson = JSON.parse(raw || '{}');
+              entries = idxJson?.sequences || [];
+            }
+          } catch {}
+        }
+        if (!entries.length) {
+          const idxMod = await import(
+            /* @vite-ignore */ `../json-sequences/${dir}/index.json?raw`
+          );
+          const idxText: string = (idxMod as any)?.default || (idxMod as any);
+          const idxJson = JSON.parse(idxText || "{}");
+          entries = idxJson?.sequences || [];
+        }
       }
 
       // 2) For each entry, load sequence JSON (browser first, then Node/test fallback) in parallel
@@ -191,6 +228,19 @@ export async function loadJsonSequenceCatalogs(
               : `/json-sequences/${dir}/${ent.file}`;
             const seqRes = await fetch(filePath);
             if (seqRes.ok) seqJson = await seqRes.json();
+          } catch {}
+        }
+        if (!seqJson && !isBrowser && artifactsDir) {
+          try {
+            // @ts-ignore
+            const fs = await import('fs/promises');
+            // @ts-ignore
+            const path = await import('path');
+            const procAny3: any = (globalThis as any).process;
+            const cwd = procAny3 && typeof procAny3.cwd === 'function' ? procAny3.cwd() : '';
+            const seqPath = path.join(cwd, artifactsDir, 'json-sequences', dir, ent.file);
+            const raw = await fs.readFile(seqPath, 'utf-8').catch(()=>null as any);
+            if (raw) seqJson = JSON.parse(raw || '{}');
           } catch {}
         }
         if (!seqJson) {
@@ -225,10 +275,27 @@ export async function registerAllSequences(conductor: ConductorClient) {
       if (res.ok) manifest = await res.json();
     }
     if (!manifest) {
-  // @ts-ignore - raw JSON import handled by Vite
-  const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw'); // path relative to src/
-      const txt: string = (mod as any)?.default || (mod as any) || '{}';
-      manifest = JSON.parse(txt);
+      try {
+        const envMod = await import(/* @vite-ignore */ './env');
+        const artifactsDir2 = envMod.getArtifactsDir?.();
+        if (artifactsDir2) {
+          // @ts-ignore
+          const fs = await import('fs/promises');
+          // @ts-ignore
+          const path = await import('path');
+          const procAny4: any = (globalThis as any).process;
+          const cwd = procAny4 && typeof procAny4.cwd === 'function' ? procAny4.cwd() : '';
+          const p = path.join(cwd, artifactsDir2, 'plugins', 'plugin-manifest.json');
+          const raw = await fs.readFile(p, 'utf-8').catch(()=>null as any);
+          if (raw) manifest = JSON.parse(raw || '{}');
+        }
+      } catch {}
+      if (!manifest) {
+        // @ts-ignore - raw JSON import handled by Vite
+        const mod = await import(/* @vite-ignore */ '../public/plugins/plugin-manifest.json?raw'); // path relative to src/
+        const txt: string = (mod as any)?.default || (mod as any) || '{}';
+        manifest = JSON.parse(txt);
+      }
     }
   } catch {
     manifest = { plugins: [] };

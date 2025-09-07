@@ -186,15 +186,20 @@ CI invokes the integrity build to ensure the hashing path stays green. A failure
 
 ### Planned Extensions
 
-- Optional signature layer (aggregate hash signed with a private key)
-- Inclusion of component + sequence catalogs
-- API surface hash (public SDK exports) for breaking change detection
+| Planned | Description |
+|---------|-------------|
+| Signature layer | Aggregate hash signed with private key for provenance |
+| Expanded coverage | Include sequence & component JSON catalogs in integrity file |
+| Public API hash | Detect accidental breaking changes to `@renderx/host-sdk` |
+| External lint roots | Use `RENDERX_PLUGINS_SRC` so ESLint rules work with detached plugin repo |
+| Strict validator mode | CI flag to treat heuristic plugin coverage warnings as errors |
 
 ## Environment Variables (Quick Reference)
 
 | Variable | Purpose | Typical Usage |
 |----------|---------|---------------|
-| `ARTIFACTS_DIR` | Points host at pre-built artifacts directory | `set ARTIFACTS_DIR=dist\\artifacts` then `npm run dev:artifacts` |
+| `HOST_ARTIFACTS_DIR` | (Preferred) Points host at pre-built artifacts directory (supersedes ARTIFACTS_DIR) | `set HOST_ARTIFACTS_DIR=..\\renderx-artifacts` then `npm run dev` |
+| `ARTIFACTS_DIR` | Legacy alias for HOST_ARTIFACTS_DIR | `set ARTIFACTS_DIR=dist\\artifacts` then `npm run dev:artifacts` |
 | `RENDERX_DISABLE_STARTUP_VALIDATION` | Skip plugin & manifest count summary | Silence noisy CI / perf runs |
 | `RENDERX_DISABLE_INTEGRITY` | Skip integrity verification even if file present | Local debugging of partially edited artifacts |
 | `RENDERX_PLUGINS_SRC` (planned) | External plugins source root for lint rules | Future Phase 2+ feature |
