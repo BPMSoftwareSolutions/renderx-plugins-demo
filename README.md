@@ -193,6 +193,7 @@ CI invokes the integrity build to ensure the hashing path stays green. A failure
 | Public API hash | Detect accidental breaking changes to `@renderx/host-sdk` |
 | External lint roots | Use `RENDERX_PLUGINS_SRC` so ESLint rules work with detached plugin repo |
 | Strict validator mode | CI flag to treat heuristic plugin coverage warnings as errors |
+| Artifact packaging | Tarball bundling of artifacts for external distribution (`artifacts:pack`) |
 
 ## Environment Variables (Quick Reference)
 
@@ -203,6 +204,8 @@ CI invokes the integrity build to ensure the hashing path stays green. A failure
 | `RENDERX_DISABLE_STARTUP_VALIDATION` | Skip plugin & manifest count summary | Silence noisy CI / perf runs |
 | `RENDERX_DISABLE_INTEGRITY` | Skip integrity verification even if file present | Local debugging of partially edited artifacts |
 | `RENDERX_PLUGINS_SRC` (planned) | External plugins source root for lint rules | Future Phase 2+ feature |
+| `RENDERX_VALIDATION_STRICT` | Escalate artifact validator warnings to errors | `set RENDERX_VALIDATION_STRICT=1 && npm run artifacts:validate` |
+| `PACK_VERSION` | Override version used by pack-artifacts | `set PACK_VERSION=0.2.0 && npm run artifacts:pack` |
 
 
   - Create a plugin folder under `plugins/`
