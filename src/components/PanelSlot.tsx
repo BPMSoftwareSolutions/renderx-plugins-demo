@@ -67,10 +67,22 @@ function isUrl(spec: string) {
   return spec.startsWith("http://") || spec.startsWith("https://");
 }
 
+function isBareSpecifier(spec: string): boolean {
+  if (!spec) return false;
+  if (isUrl(spec)) return false;
+  return !spec.startsWith('/') && !spec.startsWith('.');
+}
+
 function resolveModuleSpecifier(spec: string): string {
-  // For now, dynamic import can take package names, URLs, or paths directly.
-  // We keep the string unchanged for package/URL. Paths remain as-is.
-  if (isUrl(spec)) return spec;
+  // Browser: use import.meta.resolve to turn package specifiers (and other specs)
+  // into fully-qualified URLs that the browser can import dynamically.
+  try {
+    const resolver: any = (import.meta as any).resolve;
+    if (typeof resolver === 'function') {
+      return resolver(spec);
+    }
+  } catch {}
+  // Fallback: return as-is (works for URLs; bare specifiers may fail in native browser import)
   return spec;
 }
 
