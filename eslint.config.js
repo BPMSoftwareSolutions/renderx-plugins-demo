@@ -111,7 +111,7 @@ export default [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
-  "no-dynamic-import-ts-extension": require("./eslint-rules/no-dynamic-import-ts-extension.js"),
+    },
   },
   // Symphony files: enforce DOM access only in stage-crew handlers
   {
@@ -125,7 +125,6 @@ export default [
       "beat-kind": beatKindDomAccess,
     },
     rules: {
-      "no-dynamic-import-ts-extension/no-dynamic-import-ts-extension": "error",
       "beat-kind/beat-kind-dom-access": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",

@@ -8,7 +8,6 @@
 import { mkdir, cp, writeFile } from 'fs/promises';
 import { createHash } from 'crypto';
 import { join } from 'path';
-import { ARTIFACT_SCHEMA_VERSION } from '@renderx/schema-contract';
 // Lazy-load chokidar only if watch mode requested to avoid cost in CI
 import { buildInteractionManifest, buildTopicsManifest } from '../packages/manifest-tools/src/index.js';
 import { promises as fs } from 'fs';
@@ -66,7 +65,7 @@ async function buildOnce() {
   function extractOverrides(json) {
     return json?.integration?.routeOverrides || json?.routeOverrides || json?.integration?.interactions?.routeOverrides || {}; }
   const overrides = componentFiles.map(extractOverrides);
-  const schemaVersion = ARTIFACT_SCHEMA_VERSION;
+  const schemaVersion = '1.0.0';
   const interactionManifest = {
     schemaVersion,
     ...buildInteractionManifest(interactionCats.filter(Boolean), overrides)

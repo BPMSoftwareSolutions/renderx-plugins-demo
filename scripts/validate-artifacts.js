@@ -4,7 +4,6 @@
  */
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { ARTIFACT_SCHEMA_VERSION } from '@renderx/schema-contract';
 
 const root = process.cwd();
 const artifactsDir = join(root, 'dist', 'artifacts');
@@ -27,11 +26,6 @@ const schemaVersion = uniqueSchema[0];
 if (!schemaVersion) {
   console.error('❌ Missing schemaVersion in artifacts');
   failed = true;
-}
-// Compare with expected (non-fatal unless mismatch?)
-if (schemaVersion && schemaVersion !== ARTIFACT_SCHEMA_VERSION) {
-  console.warn('⚠️ Artifact schemaVersion', schemaVersion, 'differs from contract', ARTIFACT_SCHEMA_VERSION);
-  globalThis.__artifactWarnings = (globalThis.__artifactWarnings||[]).concat([{ type:'schema-mismatch', value: schemaVersion }]);
 }
 // Collect pluginIds from sequences (interaction manifest) and topics manifest (if they embed plugin metadata)
 const sequencePluginIds = new Set();

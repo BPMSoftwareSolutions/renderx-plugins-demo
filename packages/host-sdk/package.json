@@ -9,8 +9,5 @@
       "types": "./index.ts",
       "import": "./index.ts"
     }
-  },
-  "dependencies": {
-    "@renderx/schema-contract": "workspace:*"
   }
 }
