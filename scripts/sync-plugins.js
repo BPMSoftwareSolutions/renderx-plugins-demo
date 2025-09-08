@@ -40,6 +40,10 @@ async function copyFile(source, target) {
   await writeFile(target, content);
 }
 
+async function copyFileContent(target, content) {
+  await writeFile(target, content);
+}
+
 async function syncPlugins() {
   console.log('🔄 Syncing json-plugins/ to public/plugins/...');
   try {
@@ -49,8 +53,17 @@ async function syncPlugins() {
     const jsonFiles = files.filter(f => f.endsWith('.json'));
 
     for (const file of jsonFiles) {
-      const sourcePath = join(sourceDir, file);
       const targetPath = join(targetDir, file);
+      if (file === 'plugin-manifest.json') {
+        const generatedPath = join(sourceDir, '.generated', 'plugin-manifest.json');
+        try {
+          const content = await readFile(generatedPath);
+          await copyFileContent(targetPath, content);
+          console.log(`  ✅ Copied ${file} (generated)`);
+          continue;
+        } catch {}
+      }
+      const sourcePath = join(sourceDir, file);
       await copyFile(sourcePath, targetPath);
       console.log(`  ✅ Copied ${file}`);
     }

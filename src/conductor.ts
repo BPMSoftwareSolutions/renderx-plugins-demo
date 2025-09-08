@@ -1,3 +1,5 @@
+import { normalizeHandlersImportSpec } from './handlersPath';
+
 export type ConductorClient = any;
 
 export async function initConductor(): Promise<ConductorClient> {
@@ -150,15 +152,8 @@ export async function loadJsonSequenceCatalogs(
         );
         return;
       }
-      // Prefer absolute "/plugins/..." in browser; in Node/tests, convert to relative path
-      let spec = handlersPath;
-      if (isBrowser) {
-        spec = spec.startsWith("/") ? spec : "/" + spec.replace(/^\.\/?/, "");
-      } else {
-        spec = spec.startsWith("/")
-          ? `..${spec}`
-          : `../${spec.replace(/^\.\/?/, "")}`;
-      }
+      // Normalize handlers import spec to support URLs, bare specifiers, and paths
+      const spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
       const mod = await import(/* @vite-ignore */ spec as any);
       const handlers = (mod as any)?.handlers || mod?.default?.handlers;
       if (!handlers) {
