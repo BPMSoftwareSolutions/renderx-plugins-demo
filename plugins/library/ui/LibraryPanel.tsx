@@ -10,6 +10,7 @@ import {
 } from "../utils/library.utils.js";
 import { LibraryPreview } from "./LibraryPreview";
 import "./LibraryPanel.css";
+import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 
 export function LibraryPanel() {
   const conductor = useConductor();
@@ -26,15 +27,25 @@ export function LibraryPanel() {
           },
           conductor
         );
-        return;
       } catch {}
-      // Fallback to direct interaction routing when host router is missing
+      // Always attempt a direct routing fallback as well (ensures behavior when host router is missing)
       try {
         const r = resolveInteraction("library.load");
-        conductor?.play?.(r.pluginId, r.sequenceId, {
+        if (!r?.pluginId || !r?.sequenceId) {
+          throw new Error("Unknown interaction 'library.load'");
+        }
+        await conductor?.play?.(r.pluginId, r.sequenceId, {
           onComponentsLoaded: (list: any[]) => setItems(list),
         });
-      } catch {}
+      } catch (err) {
+        // Gate console usage by a feature flag per guardrails
+        if (isFlagEnabled("ui.layout-manifest")) {
+          console.warn(
+            "LibraryPanel: fallback routing unavailable (no host router and unknown interaction 'library.load').",
+            err
+          );
+        }
+      }
 
     };
     run();

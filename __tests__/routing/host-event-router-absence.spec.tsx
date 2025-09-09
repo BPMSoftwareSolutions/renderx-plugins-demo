@@ -4,6 +4,23 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react";
 
+// For this suite, ensure resolveInteraction behaves like a thin bridge to window.RenderX
+// so we can simulate resolver absence by deleting window.RenderX.resolveInteraction.
+vi.mock("@renderx-plugins/host-sdk", async () => {
+  const actual = (await vi.importActual<any>("@renderx-plugins/host-sdk"));
+  return {
+    ...actual,
+    // Ensure warnings are not suppressed in this suite
+    isFlagEnabled: () => true,
+    resolveInteraction: (key: string) => {
+      const g: any = globalThis as any;
+      const fn = g?.window?.RenderX?.resolveInteraction;
+      if (typeof fn !== "function") throw new Error("resolver missing");
+      return fn(key);
+    },
+  };
+});
+
 import { EventRouter } from "@renderx-plugins/host-sdk";
 import { LibraryPanel } from "../../plugins/library/ui/LibraryPanel";
 

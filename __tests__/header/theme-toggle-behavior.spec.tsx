@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { act } from "react";
 
 // Mock the host SDK
-vi.mock("@renderx/host-sdk", () => ({
+vi.mock("@renderx-plugins/host-sdk", () => ({
   useConductor: () => ({
     play: vi
       .fn()
