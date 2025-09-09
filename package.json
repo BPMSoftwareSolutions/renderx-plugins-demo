@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/host-sdk",
     "packages/manifest-tools"
   ],
   "scripts": {
@@ -40,8 +39,9 @@
     "ci": "npm run lint && npm run build:packages && npm run pre:manifests && npm test && npm run e2e"
   },
   "dependencies": {
-    "@renderx/host-sdk": "file:packages/host-sdk",
-    "@renderx-plugins/header": "^0.1.0",
+    "@renderx-plugins/header": "^0.1.1",
+    "@renderx-plugins/host-sdk": "^0.1.0",
+    "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
     "musical-conductor": "^1.4.4",
     "react": "^19.1.1",

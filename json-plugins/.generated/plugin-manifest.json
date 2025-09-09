@@ -6,6 +6,10 @@
         "slot": "headerLeft",
         "module": "@renderx-plugins/header",
         "export": "HeaderTitle"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/header",
+        "export": "register"
       }
     },
     {
@@ -14,6 +18,10 @@
         "slot": "headerCenter",
         "module": "@renderx-plugins/header",
         "export": "HeaderControls"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/header",
+        "export": "register"
       }
     },
     {
@@ -22,6 +30,10 @@
         "slot": "headerRight",
         "module": "@renderx-plugins/header",
         "export": "HeaderThemeToggle"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/header",
+        "export": "register"
       }
     },
     {

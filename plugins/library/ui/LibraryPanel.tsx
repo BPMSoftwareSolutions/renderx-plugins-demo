@@ -3,7 +3,7 @@ import {
   useConductor,
   resolveInteraction,
   EventRouter,
-} from "@renderx/host-sdk";
+} from "@renderx-plugins/host-sdk";
 import {
   groupComponentsByCategory,
   getCategoryDisplayName,
@@ -17,21 +17,33 @@ export function LibraryPanel() {
   const safeItems = Array.isArray(items) ? items : [];
 
   React.useEffect(() => {
-    try {
-      EventRouter.publish(
-        "library.load.requested",
-        {
-          onComponentsLoaded: (list: any[]) => setItems(list),
-        },
-        conductor
-      );
-    } catch {
-      // Fallback to direct interaction routing
-      const r = resolveInteraction("library.load");
-      conductor?.play?.(r.pluginId, r.sequenceId, {
-        onComponentsLoaded: (list: any[]) => setItems(list),
-      });
-    }
+    const run = async () => {
+      const hasHostRouter =
+        typeof window !== "undefined" && !!(window as any).RenderX?.EventRouter;
+      if (hasHostRouter) {
+        await EventRouter.publish(
+          "library.load.requested",
+          {
+            onComponentsLoaded: (list: any[]) => setItems(list),
+          },
+          conductor
+        );
+      } else {
+        // Fallback to direct interaction routing when host router is missing
+        try {
+          const r = resolveInteraction("library.load");
+          conductor?.play?.(r.pluginId, r.sequenceId, {
+            onComponentsLoaded: (list: any[]) => setItems(list),
+          });
+        } catch (err) {
+          console.warn(
+            "LibraryPanel: fallback routing unavailable (no host router and unknown interaction 'library.load').",
+            err
+          );
+        }
+      }
+    };
+    run();
   }, [conductor]);
 
   const groupedComponents = groupComponentsByCategory(safeItems);

@@ -1,4 +1,4 @@
-import { resolveInteraction, EventRouter } from "@renderx/host-sdk";
+import { resolveInteraction, EventRouter } from "@renderx-plugins/host-sdk";
 
 /**
  * Transform import component data to canvas.component.create format

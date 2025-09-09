@@ -1,5 +1,5 @@
 import React from "react";
-import { useConductor } from "@renderx/host-sdk";
+import { useConductor } from "@renderx-plugins/host-sdk";
 import { onDropForTest } from "./CanvasDrop";
 import { CanvasHeader } from "./CanvasHeader";
 import "./CanvasPage.css";

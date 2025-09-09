@@ -266,10 +266,7 @@ export async function loadJsonSequenceCatalogs(
 }
 
 export async function registerAllSequences(conductor: ConductorClient) {
-  // Mount sequences from JSON catalogs first (artifact or local mode)
-  await loadJsonSequenceCatalogs(conductor);
-
-  // Discover runtime registration modules via plugin manifest (ui + optional runtime section)
+  // 1) Discover runtime registration modules via plugin manifest (ui + optional runtime section)
   let manifest: any = null;
   try {
     // Browser first
@@ -309,8 +306,8 @@ export async function registerAllSequences(conductor: ConductorClient) {
   }
   const plugins = Array.isArray(manifest.plugins) ? manifest.plugins : [];
 
+  // 2) Register runtime modules BEFORE mounting JSON catalogs so plugin ids are known to the conductor
   for (const p of plugins) {
-    // optional runtime registration: { runtime: { module, export } }
     const runtime = p.runtime;
     if (!runtime || !runtime.module || !runtime.export) continue;
     try {
@@ -324,6 +321,11 @@ export async function registerAllSequences(conductor: ConductorClient) {
       console.warn('⚠️ Failed runtime register for', p.id, e);
     }
   }
+
+  // 3) Mount sequences from JSON catalogs (artifact or local mode)
+  await loadJsonSequenceCatalogs(conductor);
+
+  // 4) Debug
   try {
     const ids = (conductor as any).getMountedPluginIds?.() || [];
     console.log('🔎 Mounted plugin IDs after registration:', ids);

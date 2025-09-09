@@ -2,7 +2,7 @@ import {
   resolveInteraction,
   isFlagEnabled,
   EventRouter,
-} from "@renderx/host-sdk";
+} from "@renderx-plugins/host-sdk";
 
 // Lazily cached route for drag move to avoid resolving on every pointer move
 let __dragMoveRoute: { pluginId: string; sequenceId: string } | null = null;
