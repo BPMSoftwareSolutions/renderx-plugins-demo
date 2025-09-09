@@ -24,5 +24,7 @@ jobs:
           fi
       - name: Build artifacts with integrity (sanity)
         run: npm run artifacts:build:integrity
+      - name: Install Playwright browsers
+        uses: microsoft/playwright-github-action@v1
       - run: npm run ci
 
