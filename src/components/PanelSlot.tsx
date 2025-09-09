@@ -86,6 +86,12 @@ function resolveModuleSpecifier(spec: string): string {
   return spec;
 }
 
+// Statically known package loaders (ensures Vite can analyze and bundle)
+const packageLoaders: Record<string, () => Promise<any>> = {
+  '@renderx/plugin-header': () => import('@renderx/plugin-header'),
+};
+
+
 export function PanelSlot({ slot }: { slot: string }) {
   const [Comp, setComp] = React.useState<React.ComponentType | null>(null);
 
@@ -97,8 +103,11 @@ export function PanelSlot({ slot }: { slot: string }) {
         const entry = manifest.plugins.find((p) => p.ui?.slot === slot);
         if (!entry || !entry.ui)
           throw new Error(`No plugin UI found for slot ${slot}`);
-        const target = resolveModuleSpecifier(entry.ui.module);
-        const mod = await import(/* @vite-ignore */ target);
+        const requested = entry.ui.module;
+        const loader = packageLoaders[requested];
+        const mod = loader
+          ? await loader()
+          : await import(/* @vite-ignore */ resolveModuleSpecifier(requested));
         const Exported = mod[entry.ui.export] as
           | React.ComponentType
           | undefined;
