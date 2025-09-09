@@ -2,20 +2,6 @@ import React from "react";
 import { useConductor, resolveInteraction } from "@renderx-plugins/host-sdk";
 import "./Header.css";
 
-// Lazy-load the presentational view (disabled in tests to avoid async teardown issues)
-const isTestEnv =
-  typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
-type HeaderButtonViewProps = {
-  theme: "light" | "dark" | null;
-  onToggle: () => void;
-};
-const HeaderThemeButtonView = isTestEnv
-  ? null
-  : (React.lazy(
-      () => import("./HeaderThemeButtonView")
-    ) as unknown as React.ComponentType<
-      HeaderButtonViewProps & React.RefAttributes<HTMLButtonElement>
-    >);
 
 export function HeaderThemeToggle() {
   const conductor = useConductor();
@@ -89,35 +75,14 @@ export function HeaderThemeToggle() {
   return (
     <div className="header-container">
       <div className="header-theme-toggle">
-        {isTestEnv ? (
-          <button
-            ref={ensureTheme}
-            onClick={toggle}
-            className="header-theme-button"
-            title="Toggle Theme"
-          >
-            {theme === "light" ? "🌙 Dark" : "🌞 Light"}
-          </button>
-        ) : (
-          <React.Suspense
-            fallback={
-              <button
-                ref={ensureTheme}
-                onClick={toggle}
-                className="header-theme-button"
-                title="Toggle Theme"
-              >
-                {theme === "light" ? "🌙 Dark" : "🌞 Light"}
-              </button>
-            }
-          >
-            <HeaderThemeButtonView
-              ref={ensureTheme}
-              theme={theme}
-              onToggle={toggle}
-            />
-          </React.Suspense>
-        )}
+        <button
+          ref={ensureTheme}
+          onClick={toggle}
+          className="header-theme-button"
+          title="Toggle Theme"
+        >
+          {theme === "light" ? "🌙 Dark" : "🌞 Light"}
+        </button>
       </div>
     </div>
   );
