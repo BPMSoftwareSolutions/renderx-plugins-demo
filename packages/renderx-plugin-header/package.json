@@ -12,7 +12,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "tsup src/index.ts src/symphonies/ui/ui.symphony.ts src/symphonies/ui/ui.stage-crew.ts --format esm --sourcemap --injectStyle --external react,react-dom,@renderx/host-sdk --out-dir dist && node ./scripts/copy-css.cjs",
+    "build": "tsup src/index.ts src/symphonies/ui/ui.symphony.ts src/symphonies/ui/ui.stage-crew.ts --format esm --sourcemap --injectStyle --external react,react-dom,@renderx-plugins/host-sdk --out-dir dist && node ./scripts/copy-css.cjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "prepublishOnly": "npm run build"
   },
   "main": "./dist/index.js",
@@ -36,7 +38,7 @@
     "./dist/**/*.css"
   ],
   "peerDependencies": {
-    "@renderx/host-sdk": "*",
+    "@renderx-plugins/host-sdk": "*",
     "react": ">=18",
     "react-dom": ">=18"
   },
@@ -72,6 +74,13 @@
     ]
   },
   "devDependencies": {
-    "tsup": "^8.5.0"
+    "@renderx-plugins/host-sdk": "*",
+    "jsdom": "^25.0.0",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^0.29.3"
   }
 }

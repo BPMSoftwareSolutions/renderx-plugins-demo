@@ -1,5 +1,5 @@
 import React from "react";
-import { useConductor, resolveInteraction } from "@renderx/host-sdk";
+import { useConductor, resolveInteraction } from "@renderx-plugins/host-sdk";
 import "./Header.css";
 
 const isTestEnv = typeof import.meta !== "undefined" && !!(import.meta as any).vitest;

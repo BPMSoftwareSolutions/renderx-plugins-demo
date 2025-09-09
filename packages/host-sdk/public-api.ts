@@ -1,11 +1,9 @@
-// Explicit public surface for @renderx/host-sdk (Phase 2)
-export { useConductor } from "../../src/conductor";
-export type { ConductorClient } from "musical-conductor";
-export { EventRouter } from "../../src/EventRouter";
-export { resolveInteraction } from "../../src/interactionManifest";
-export { isFlagEnabled, getFlagMeta, getAllFlags, getUsageLog } from "../../src/feature-flags/flags";
-export { getTagForType, computeTagFromJson } from "../../src/component-mapper/mapper";
-export { mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
-export { getPluginManifest, getCachedPluginManifest } from "./pluginManifest";
-// Test-only / caution exports (subject to removal in stricter semver)
-export { setFlagOverride, clearFlagOverrides } from "../../src/feature-flags/flags";
+// Standalone public surface for @renderx/host-sdk
+export { useConductor } from "./conductor.js";
+export type { ConductorClient } from "./conductor.js";
+export { EventRouter } from "./EventRouter.js";
+export { resolveInteraction } from "./interactionManifest.js";
+export { isFlagEnabled, getFlagMeta, getAllFlags, getUsageLog, setFlagOverride, clearFlagOverrides } from "./feature-flags.js";
+export { getTagForType, computeTagFromJson } from "./component-mapper.js";
+export { mapJsonComponentToTemplate } from "./jsonComponent.mapper.js";
+export { getPluginManifest, getCachedPluginManifest } from "./pluginManifest.js";

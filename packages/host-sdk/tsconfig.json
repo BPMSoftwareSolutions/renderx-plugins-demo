@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "index.ts",
+    "public-api.ts",
+    "pluginManifest.ts",
+    "conductor.ts",
+    "EventRouter.ts",
+    "interactionManifest.ts",
+    "feature-flags.ts",
+    "component-mapper.ts",
+    "jsonComponent.mapper.ts",
+    "types.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

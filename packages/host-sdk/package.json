@@ -1,13 +1,46 @@
 {
-  "name": "@renderx/host-sdk",
+  "name": "@renderx-plugins/host-sdk",
   "version": "0.1.0",
   "type": "module",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "description": "Host SDK for RenderX plugins - provides conductor, event routing, and component mapping APIs",
+  "keywords": [
+    "renderx",
+    "plugin",
+    "sdk",
+    "host",
+    "conductor",
+    "component-mapping"
+  ],
+  "license": "MIT",
+  "author": "BPM Software Solutions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BPMSoftwareSolutions/renderx-plugins-demo",
+    "directory": "packages/host-sdk"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "private": false,
   "exports": {
     ".": {
-      "types": "./index.ts",
-      "import": "./index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "musical-conductor": "*",
+    "react": ">=18"
   }
 }

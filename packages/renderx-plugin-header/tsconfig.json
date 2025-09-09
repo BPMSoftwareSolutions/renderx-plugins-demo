@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
@@ -11,9 +10,14 @@
     "declarationMap": true,
     "emitDeclarationOnly": false,
     "sourceMap": true,
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@setup/*": ["tests/setup/*"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["dist", "**/*.spec.*", "**/__tests__/**"]
+  "include": ["src/**/*", "tests/**/*"],
+  "exclude": ["dist", "**/*.spec.*", "**/tests/**"]
 }
 
