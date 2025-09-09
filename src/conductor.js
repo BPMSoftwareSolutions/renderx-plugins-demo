@@ -1,4 +1,9 @@
 import { normalizeHandlersImportSpec } from './handlersPath';
+// Statically known runtime package loaders to ensure Vite can analyze and bundle
+const runtimePackageLoaders = {
+  '@renderx-plugins/header': () => import('@renderx-plugins/header'),
+};
+
 export async function initConductor() {
     const { initializeCommunicationSystem } = await import("musical-conductor");
     const { conductor } = initializeCommunicationSystem();
@@ -287,7 +292,8 @@ export async function registerAllSequences(conductor) {
         if (!runtime || !runtime.module || !runtime.export)
             continue;
         try {
-            const mod = await import(/* @vite-ignore */ runtime.module);
+            const loader = runtimePackageLoaders[runtime.module];
+            const mod = loader ? await loader() : await import(/* @vite-ignore */ runtime.module);
             const reg = mod[runtime.export];
             if (typeof reg === 'function') {
                 await reg(conductor);

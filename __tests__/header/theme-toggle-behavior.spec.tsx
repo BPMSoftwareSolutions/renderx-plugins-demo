@@ -57,7 +57,7 @@ async function waitForText(el: HTMLElement, expected: string, timeout = 300) {
 }
 
 
-describe("HeaderThemeToggle Button Text and Icon Updates", () => {
+describe.sequential("HeaderThemeToggle Button Text and Icon Updates", () => {
   let container: HTMLDivElement;
   let root: ReturnType<typeof createRoot> | null = null;
 

@@ -9,5 +9,9 @@ export default defineConfig({
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+    alias: {
+      // Map legacy package name used in tests to the actual dependency
+      "@renderx/host-sdk": "@renderx-plugins/host-sdk",
+    },
   },
 });

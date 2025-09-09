@@ -1,5 +1,5 @@
 import React from "react";
-import { useConductor, resolveInteraction } from "@renderx-plugins/host-sdk";
+import { useConductor, resolveInteraction } from "@renderx/host-sdk";
 import "./Header.css";
 
 // Lazy-load the presentational view (disabled in tests to avoid async teardown issues)

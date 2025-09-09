@@ -1,6 +1,24 @@
 import { normalizeHandlersImportSpec } from './handlersPath';
 
 
+
+// Resolve dynamic module specifiers (bare package names, paths, URLs) to importable URLs
+function resolveModuleSpecifier(spec: string): string {
+  try {
+    const resolver: any = (import.meta as any).resolve;
+    if (typeof resolver === 'function') {
+      return resolver(spec);
+    }
+  } catch {}
+  return spec; // Works for URLs and absolute/relative paths; bare specs may fail in native browser import
+}
+
+// Statically known runtime package loaders to ensure Vite can analyze and bundle
+const runtimePackageLoaders: Record<string, () => Promise<any>> = {
+  '@renderx-plugins/header': () => import('@renderx-plugins/header'),
+};
+
+
 export type ConductorClient = any;
 
 export async function initConductor(): Promise<ConductorClient> {
@@ -311,7 +329,10 @@ export async function registerAllSequences(conductor: ConductorClient) {
     const runtime = p.runtime;
     if (!runtime || !runtime.module || !runtime.export) continue;
     try {
-      const mod = await import(/* @vite-ignore */ runtime.module);
+      const loader = runtimePackageLoaders[runtime.module];
+      const mod = loader
+        ? await loader()
+        : await import(/* @vite-ignore */ resolveModuleSpecifier(runtime.module));
       const reg = mod[runtime.export];
       if (typeof reg === 'function') {
         await reg(conductor);

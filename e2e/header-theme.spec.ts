@@ -6,6 +6,15 @@ import { test, expect } from '@playwright/test';
 // - HeaderThemeToggle renders a button with title="Toggle Theme"
 
 test('header theme toggles end-to-end', async ({ page }) => {
+  // Capture console warnings/errors during startup
+  const consoleMessages: { type: string; text: string }[] = [];
+  page.on('console', (msg) => {
+    const t = msg.type();
+    if (t === 'warning' || t === 'error') {
+      consoleMessages.push({ type: t, text: msg.text() });
+    }
+  });
+
   await page.goto('/');
 
   const toggle = page.getByTitle('Toggle Theme');
@@ -16,6 +25,10 @@ test('header theme toggles end-to-end', async ({ page }) => {
     const v = document.documentElement.getAttribute('data-theme');
     return v === 'light' || v === 'dark';
   }, undefined, { timeout: 10_000 });
+
+  // Assert no module resolution errors for externalized header plugins
+  const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
+  expect(bad, 'No header plugin resolution/registration errors in console').toEqual([]);
 
   const themeBefore = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
   const labelBefore = await toggle.innerText();
