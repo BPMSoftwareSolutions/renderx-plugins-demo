@@ -3,9 +3,19 @@ import { useConductor, resolveInteraction } from "@renderx/host-sdk";
 import "./Header.css";
 
 const isTestEnv = typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
+
 type HeaderButtonViewProps = { theme: "light" | "dark" | null; onToggle: () => void };
+
+// Provide a valid JSX component type in test to satisfy TS/JSX checks
+const HeaderThemeButtonShim = React.forwardRef<HTMLButtonElement, HeaderButtonViewProps>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  (_props, _ref) => null
+);
+
 const HeaderThemeButtonView = isTestEnv
-  ? null
+  ? (HeaderThemeButtonShim as unknown as React.ComponentType<
+      HeaderButtonViewProps & React.RefAttributes<HTMLButtonElement>
+    >)
   : (React.lazy(() => import("./HeaderThemeButtonView")) as unknown as React.ComponentType<
       HeaderButtonViewProps & React.RefAttributes<HTMLButtonElement>
     >);
@@ -37,7 +47,7 @@ export function HeaderThemeToggle() {
   const toggle = async () => {
     try {
       userInteractedRef.current = true;
-      const next = theme === "light" ? "dark" : "light";
+      const next: "light" | "dark" = theme == null ? "dark" : theme === "light" ? "dark" : "light";
       safeSetTheme(next);
       const route = resolveInteraction("app.ui.theme.toggle");
       const result = await conductor.play(route.pluginId, route.sequenceId, { theme: next });

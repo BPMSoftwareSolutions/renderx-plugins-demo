@@ -72,16 +72,13 @@ export function HeaderThemeToggle() {
 
   const toggle = async () => {
     try {
-  userInteractedRef.current = true;
-      const next = theme === "light" ? "dark" : "light";
+      userInteractedRef.current = true;
+      const next: "light" | "dark" = theme == null ? "dark" : theme === "light" ? "dark" : "light";
       // Optimistically update UI immediately for snappy feedback
       safeSetTheme(next);
       const route = resolveInteraction("app.ui.theme.toggle");
-      const result = await conductor.play(route.pluginId, route.sequenceId, {
-        theme: next,
-      });
-      const updatedTheme =
-        (result?.theme as "light" | "dark" | undefined) || next;
+      const result = await conductor.play(route.pluginId, route.sequenceId, { theme: next });
+      const updatedTheme = (result?.theme as "light" | "dark" | undefined) || next;
       // Reconcile with authoritative result
       safeSetTheme(updatedTheme);
     } catch {
