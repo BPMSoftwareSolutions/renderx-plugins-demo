@@ -23,7 +23,7 @@
   "artifacts:ci": "npm run artifacts:build:signed && npm run artifacts:validate:strict && npm run artifacts:verify:signature && npm run public-api:check && npm test && npm run artifacts:pack",
   "validate:public-api": "node scripts/validate-public-api.js",
     "preview": "vite preview",
-    "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/sync-plugins.js",
+    "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js",
     "sync:json-components": "node scripts/sync-json-components.js",
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",
@@ -34,10 +34,12 @@
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
-    "ci": "npm run lint && npm run pre:manifests && npm test"
+    "e2e": "playwright test",
+    "ci": "npm run lint && npm run pre:manifests && npm test && npm run e2e"
   },
   "dependencies": {
-    "@renderx/host-sdk": "workspace:*",
+    "@renderx/host-sdk": "file:packages/host-sdk",
+    "@renderx/plugin-header": "file:packages/renderx-plugin-header",
     "gif.js.optimized": "^1.0.1",
     "musical-conductor": "^1.4.4",
     "react": "^19.1.1",

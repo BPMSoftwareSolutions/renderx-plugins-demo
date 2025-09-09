@@ -1,0 +1,47 @@
+{
+  "name": "@renderx/plugin-header",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "RenderX Header UI plugin (pilot externalized package)",
+  "keywords": ["renderx-plugin", "renderx", "plugin", "header"],
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./symphonies/ui/*": {
+      "import": "./src/symphonies/ui/*.ts"
+    }
+  },
+  "sideEffects": [
+    "./src/ui/Header.css"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "@renderx/host-sdk": "*"
+  },
+  "renderx": {
+    "plugins": [
+      {
+        "id": "HeaderTitlePlugin",
+        "ui": { "slot": "headerLeft", "module": "@renderx/plugin-header", "export": "HeaderTitle" }
+      },
+      {
+        "id": "HeaderControlsPlugin",
+        "ui": { "slot": "headerCenter", "module": "@renderx/plugin-header", "export": "HeaderControls" }
+      },
+      {
+        "id": "HeaderThemePlugin",
+        "ui": { "slot": "headerRight", "module": "@renderx/plugin-header", "export": "HeaderThemeToggle" }
+      }
+    ],
+    "sequences": [
+      "json-sequences"
+    ]
+  }
+}
+

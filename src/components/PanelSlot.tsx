@@ -67,12 +67,30 @@ function isUrl(spec: string) {
   return spec.startsWith("http://") || spec.startsWith("https://");
 }
 
+function isBareSpecifier(spec: string): boolean {
+  if (!spec) return false;
+  if (isUrl(spec)) return false;
+  return !spec.startsWith('/') && !spec.startsWith('.');
+}
+
 function resolveModuleSpecifier(spec: string): string {
-  // For now, dynamic import can take package names, URLs, or paths directly.
-  // We keep the string unchanged for package/URL. Paths remain as-is.
-  if (isUrl(spec)) return spec;
+  // Browser: use import.meta.resolve to turn package specifiers (and other specs)
+  // into fully-qualified URLs that the browser can import dynamically.
+  try {
+    const resolver: any = (import.meta as any).resolve;
+    if (typeof resolver === 'function') {
+      return resolver(spec);
+    }
+  } catch {}
+  // Fallback: return as-is (works for URLs; bare specifiers may fail in native browser import)
   return spec;
 }
+
+// Statically known package loaders (ensures Vite can analyze and bundle)
+const packageLoaders: Record<string, () => Promise<any>> = {
+  '@renderx/plugin-header': () => import('@renderx/plugin-header'),
+};
+
 
 export function PanelSlot({ slot }: { slot: string }) {
   const [Comp, setComp] = React.useState<React.ComponentType | null>(null);
@@ -85,8 +103,11 @@ export function PanelSlot({ slot }: { slot: string }) {
         const entry = manifest.plugins.find((p) => p.ui?.slot === slot);
         if (!entry || !entry.ui)
           throw new Error(`No plugin UI found for slot ${slot}`);
-        const target = resolveModuleSpecifier(entry.ui.module);
-        const mod = await import(/* @vite-ignore */ target);
+        const requested = entry.ui.module;
+        const loader = packageLoaders[requested];
+        const mod = loader
+          ? await loader()
+          : await import(/* @vite-ignore */ resolveModuleSpecifier(requested));
         const Exported = mod[entry.ui.export] as
           | React.ComponentType
           | undefined;

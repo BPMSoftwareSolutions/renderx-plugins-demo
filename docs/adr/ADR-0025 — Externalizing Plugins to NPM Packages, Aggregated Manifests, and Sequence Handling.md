@@ -2,7 +2,7 @@
 
 - Status: Proposed
 - Date: 2025-09-08
-- Issue: #NNN
+- Issue: #107
 - Related: ADR-0014, ADR-0023, ADR-0024
 
 ## Context
