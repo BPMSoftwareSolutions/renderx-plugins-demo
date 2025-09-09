@@ -7,8 +7,17 @@ export function normalizeHandlersImportSpec(isBrowser: boolean, handlersPath: st
   const looksProjectPath = raw.startsWith('plugins/') || raw.startsWith('json-sequences/') || raw.startsWith('public/');
   // Bare package specifier (initial support: scoped packages like @scope/pkg/...)
   const isBare = !raw.startsWith('/') && !raw.startsWith('.') && !looksProjectPath && raw.startsWith('@');
-  if (isBare) return raw;
-  // Path normalization
+  // In the browser, try to resolve bare specifiers to fully-qualified URLs so native import() works
+  if (isBrowser && isBare) {
+    try {
+      const resolver: any = (import.meta as any).resolve;
+      if (typeof resolver === 'function') {
+        return resolver(raw);
+      }
+    } catch {}
+    return raw; // fallback
+  }
+  // Path normalization for non-bare specs
   if (isBrowser) {
     return raw.startsWith('/') ? raw : '/' + raw.replace(/^\.\/?/, '');
   } else {
