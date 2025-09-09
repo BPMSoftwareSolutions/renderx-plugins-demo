@@ -5,7 +5,7 @@ import "./Header.css";
 
 export function HeaderThemeToggle() {
   const conductor = useConductor();
-  const [theme, setThemeState] = React.useState<"light" | "dark" | null>(null);
+  const [theme, setThemeState] = React.useState<"light" | "dark">("light");
   const requestedRef = React.useRef(false);
   const aliveRef = React.useRef(true);
   // Track if the user has interacted (clicked) to avoid stale async "get" overwriting
@@ -29,7 +29,7 @@ export function HeaderThemeToggle() {
 
   const ensureTheme = React.useCallback(
     (el: HTMLButtonElement | null) => {
-      if (!el || theme !== null || requestedRef.current || !aliveRef.current)
+      if (!el || requestedRef.current || !aliveRef.current)
         return;
       requestedRef.current = true;
       try {
@@ -59,7 +59,7 @@ export function HeaderThemeToggle() {
   const toggle = async () => {
     try {
       userInteractedRef.current = true;
-      const next: "light" | "dark" = theme == null ? "dark" : theme === "light" ? "dark" : "light";
+      const next: "light" | "dark" = theme === "light" ? "dark" : "light";
       // Optimistically update UI immediately for snappy feedback
       safeSetTheme(next);
       const route = resolveInteraction("app.ui.theme.toggle");
