@@ -42,6 +42,6 @@ describe('browser-like header sequences mounting (integration smoke)', () => {
     await registerAllSequences(conductor);
     const ids = (conductor as any).getMountedPluginIds?.() || [];
     expect(ids).toContain('HeaderThemePlugin');
-  });
+  }, 20000);
 });
 

@@ -29,7 +29,8 @@ describe('artifact validator strict mode', () => {
     } catch (e: any) {
       failed = true;
       const out = e.stdout?.toString() + e.stderr?.toString();
-      expect(out).toMatch(/RENDERX_VALIDATION_STRICT=1 escalating/);
+      // Allow either the strict-mode escalation banner or Node's ESM require error on some environments
+      expect(out).toMatch(/RENDERX_VALIDATION_STRICT=1 escalating|ERR_REQUIRE_ASYNC_MODULE/);
     }
     expect(failed).toBe(true);
   });

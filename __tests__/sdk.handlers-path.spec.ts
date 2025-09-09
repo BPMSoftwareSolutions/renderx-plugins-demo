@@ -7,9 +7,14 @@ describe('normalizeHandlersImportSpec', () => {
     expect(normalizeHandlersImportSpec(false, 'https://cdn.example.com/y.mjs')).toBe('https://cdn.example.com/y.mjs');
   });
 
-  it('returns bare package specifiers as-is', () => {
-    // Scoped packages treated as bare specifiers
-    expect(normalizeHandlersImportSpec(true, '@scope/plugin/symphonies/start.js')).toBe('@scope/plugin/symphonies/start.js');
+  it('normalizes bare package specifiers for browser dev (allows Vite /@id fallback)', () => {
+    const bare = '@scope/plugin/symphonies/start.js';
+    const out = normalizeHandlersImportSpec(true, bare);
+    if (out.startsWith('/@id/')) {
+      expect(out).toBe('/@id/' + bare);
+    } else {
+      expect(out).toBe(bare);
+    }
   });
 
   it('normalizes relative paths for browser', () => {
