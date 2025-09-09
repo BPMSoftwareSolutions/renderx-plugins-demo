@@ -63,15 +63,7 @@ export function __setPanelSlotManifestForTests(m: Manifest) {
   manifestPromiseRef = Promise.resolve(m);
 }
 
-function isUrl(spec: string) {
-  return spec.startsWith("http://") || spec.startsWith("https://");
-}
 
-function isBareSpecifier(spec: string): boolean {
-  if (!spec) return false;
-  if (isUrl(spec)) return false;
-  return !spec.startsWith('/') && !spec.startsWith('.');
-}
 
 function resolveModuleSpecifier(spec: string): string {
   // Browser: use import.meta.resolve to turn package specifiers (and other specs)

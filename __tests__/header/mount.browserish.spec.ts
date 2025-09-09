@@ -41,16 +41,13 @@ describe('browser-like header sequences mounting (integration smoke)', () => {
   it('mounts HeaderThemePlugin sequences so the plugin id is available to play()', async () => {
     // Sanity: ensure header catalog is readable via fetch stub
     const headerIdxTxt = await readPublic('json-sequences/header/index.json').catch(()=> '');
-    // eslint-disable-next-line no-console
     console.log('header index length:', headerIdxTxt?.length || 0);
 
     const conductor = await initConductor();
     await registerAllSequences(conductor);
     // Debug: inspect discovered plugin dirs/ids
-    // eslint-disable-next-line no-console
     console.log('Discovered plugins:', (conductor as any)._discoveredPlugins);
     const ids = (conductor as any).getMountedPluginIds?.() || [];
-    // eslint-disable-next-line no-console
     console.log('Mounted plugin IDs after registration:', ids);
 
     // Expect header plugins are discovered from plugin manifest

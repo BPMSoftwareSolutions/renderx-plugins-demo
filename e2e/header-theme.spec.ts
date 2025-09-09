@@ -30,7 +30,7 @@ test('header theme toggles end-to-end', async ({ page }) => {
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
   expect(bad, 'No header plugin resolution/registration errors in console').toEqual([]);
 
-  const themeBefore = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+  // themeBefore not used; rely on label changes to assert toggling
   const labelBefore = await toggle.innerText();
 
   await toggle.click();

@@ -18,9 +18,7 @@ export function LibraryPanel() {
 
   React.useEffect(() => {
     const run = async () => {
-      const hasHostRouter =
-        typeof window !== "undefined" && !!(window as any).RenderX?.EventRouter;
-      if (hasHostRouter) {
+      try {
         await EventRouter.publish(
           "library.load.requested",
           {
@@ -28,20 +26,16 @@ export function LibraryPanel() {
           },
           conductor
         );
-      } else {
-        // Fallback to direct interaction routing when host router is missing
-        try {
-          const r = resolveInteraction("library.load");
-          conductor?.play?.(r.pluginId, r.sequenceId, {
-            onComponentsLoaded: (list: any[]) => setItems(list),
-          });
-        } catch (err) {
-          console.warn(
-            "LibraryPanel: fallback routing unavailable (no host router and unknown interaction 'library.load').",
-            err
-          );
-        }
-      }
+        return;
+      } catch {}
+      // Fallback to direct interaction routing when host router is missing
+      try {
+        const r = resolveInteraction("library.load");
+        conductor?.play?.(r.pluginId, r.sequenceId, {
+          onComponentsLoaded: (list: any[]) => setItems(list),
+        });
+      } catch {}
+
     };
     run();
   }, [conductor]);

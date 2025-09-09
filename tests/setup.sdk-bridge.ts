@@ -28,7 +28,6 @@ if (!g.window.RenderX.EventRouter) {
 if (!g.window.renderxCommunicationSystem) {
   g.window.renderxCommunicationSystem = {
     conductor: {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       play: async (_pluginId: string, _sequenceId: string, _payload?: any) => ({}),
     },
   };
