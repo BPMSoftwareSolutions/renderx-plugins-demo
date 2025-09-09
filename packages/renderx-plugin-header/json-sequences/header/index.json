@@ -3,11 +3,11 @@
   "sequences": [
     {
       "file": "ui.theme.toggle.json",
-      "handlersPath": "@renderx/plugin-header"
+      "handlersPath": "@renderx-plugins/header"
     },
     {
       "file": "ui.theme.get.json",
-      "handlersPath": "@renderx/plugin-header"
+      "handlersPath": "@renderx-plugins/header"
     }
   ]
 }

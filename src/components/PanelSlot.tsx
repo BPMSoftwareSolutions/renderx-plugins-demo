@@ -88,7 +88,7 @@ function resolveModuleSpecifier(spec: string): string {
 
 // Statically known package loaders (ensures Vite can analyze and bundle)
 const packageLoaders: Record<string, () => Promise<any>> = {
-  '@renderx/plugin-header': () => import('@renderx/plugin-header'),
+  '@renderx-plugins/header': () => import('@renderx-plugins/header'),
 };
 
 

@@ -4,7 +4,7 @@
       "id": "HeaderTitlePlugin",
       "ui": {
         "slot": "headerLeft",
-        "module": "@renderx/plugin-header",
+        "module": "@renderx-plugins/header",
         "export": "HeaderTitle"
       }
     },
@@ -12,7 +12,7 @@
       "id": "HeaderControlsPlugin",
       "ui": {
         "slot": "headerCenter",
-        "module": "@renderx/plugin-header",
+        "module": "@renderx-plugins/header",
         "export": "HeaderControls"
       }
     },
@@ -20,7 +20,7 @@
       "id": "HeaderThemePlugin",
       "ui": {
         "slot": "headerRight",
-        "module": "@renderx/plugin-header",
+        "module": "@renderx-plugins/header",
         "export": "HeaderThemeToggle"
       }
     },

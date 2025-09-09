@@ -1,5 +1,5 @@
 {
-  "name": "@renderx/plugin-header",
+  "name": "@renderx-plugins/header",
   "version": "0.1.0",
   "private": false,
   "type": "module",
@@ -46,7 +46,7 @@
         "id": "HeaderTitlePlugin",
         "ui": {
           "slot": "headerLeft",
-          "module": "@renderx/plugin-header",
+          "module": "@renderx-plugins/header",
           "export": "HeaderTitle"
         }
       },
@@ -54,7 +54,7 @@
         "id": "HeaderControlsPlugin",
         "ui": {
           "slot": "headerCenter",
-          "module": "@renderx/plugin-header",
+          "module": "@renderx-plugins/header",
           "export": "HeaderControls"
         }
       },
@@ -62,7 +62,7 @@
         "id": "HeaderThemePlugin",
         "ui": {
           "slot": "headerRight",
-          "module": "@renderx/plugin-header",
+          "module": "@renderx-plugins/header",
           "export": "HeaderThemeToggle"
         }
       }

@@ -7,6 +7,23 @@ import { writeFileSync, mkdirSync, existsSync, rmSync } from 'fs';
 import { join } from 'path';
 
 describe('HOST_ARTIFACTS_DIR resolution', () => {
+  async function removeDirRobust(dir: string) {
+    let attempts = 0;
+    while (attempts < 5) {
+      try {
+        if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
+        return;
+      } catch (err: any) {
+        const code = err && (err.code as string);
+        if (code === 'ENOTEMPTY' || code === 'EBUSY' || code === 'EPERM') {
+          attempts++;
+          await new Promise((res) => setTimeout(res, 100 + attempts * 50));
+        } else {
+          throw err;
+        }
+      }
+    }
+  }
   // Access process via globalThis to avoid TS node type dependency
   // @ts-ignore
   const root = globalThis.process.cwd();
@@ -31,10 +48,10 @@ describe('HOST_ARTIFACTS_DIR resolution', () => {
   if (key && globalThis.require?.cache) delete globalThis.require.cache[key];
   });
 
-  afterAll(() => {
+  afterAll(async () => {
   // @ts-ignore
   delete globalThis.process.env.HOST_ARTIFACTS_DIR;
-    if (existsSync(tmpArtifacts)) rmSync(tmpArtifacts, { recursive: true, force: true });
+    await removeDirRobust(tmpArtifacts);
   });
 
   it('reads plugin manifest from external directory', async () => {

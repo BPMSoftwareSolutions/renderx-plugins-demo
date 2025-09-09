@@ -61,10 +61,10 @@ describe('browser-like header sequences mounting (integration smoke)', () => {
 
     // In Vitest/browser-like env, we expect the handlers import spec to remain a bare specifier
     // and be left to the bundler to resolve. Our normalization should therefore be a no-op here.
-    const spec = normalizeHandlersImportSpec(true, '@renderx/plugin-header');
+    const spec = normalizeHandlersImportSpec(true, '@renderx-plugins/header');
     // Accept either bare spec or Vite/Vitest /@id/ proxy path
     const normalized = spec.replace(/^\/@id\//, '');
-    expect(normalized).toBe('@renderx/plugin-header');
+    expect(normalized).toBe('@renderx-plugins/header');
   }, 20000);
 });
 
