@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { getCurrentTheme, toggleTheme } from "../../plugins/header/symphonies/ui/ui.stage-crew";
+import { getCurrentTheme, toggleTheme } from "../../packages/renderx-plugin-header/src/symphonies/ui/ui.stage-crew";
 
 // Minimal ctx mock with payload and logger
 const makeCtx = () => ({ payload: {} as any, logger: { warn: () => {} } });
