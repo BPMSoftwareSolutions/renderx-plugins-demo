@@ -70,18 +70,26 @@ test('theme toggle button is themed (background reflects current theme)', async 
 
   // Toggle and re-check style switches accordingly
   await toggle.click();
+
+  // Move mouse away to avoid :hover altering computed background color
+  await page.mouse.move(0, 0);
+
   await page.waitForFunction(() => {
     const v = document.documentElement.getAttribute('data-theme');
     return v === 'light' || v === 'dark';
   }, undefined, { timeout: 10_000 });
 
   const themeAfter = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
-  const bgAfter = await toggle.evaluate((el) => getComputedStyle(el as HTMLButtonElement).backgroundColor);
+  const expectedAfter = themeAfter === 'light' ? 'rgb(31, 41, 55)' : 'rgb(245, 158, 11)';
 
-  if (themeAfter === 'light') {
-    expect(bgAfter).toBe('rgb(31, 41, 55)');
-  } else {
-    expect(bgAfter).toBe('rgb(245, 158, 11)');
-  }
+  // Wait until computed style matches the expected color for the active theme
+  await page.waitForFunction((title) => {
+    const el = document.querySelector(`[title="${title}"]`) as HTMLButtonElement | null;
+    if (!el) return false;
+    return getComputedStyle(el).backgroundColor === (document.documentElement.getAttribute('data-theme') === 'light' ? 'rgb(31, 41, 55)' : 'rgb(245, 158, 11)');
+  }, 'Toggle Theme', { timeout: 10_000 });
+
+  const bgAfter = await toggle.evaluate((el) => getComputedStyle(el as HTMLButtonElement).backgroundColor);
+  expect(bgAfter).toBe(expectedAfter);
 });
 
