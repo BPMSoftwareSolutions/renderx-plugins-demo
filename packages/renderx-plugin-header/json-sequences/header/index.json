@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    {
+      "file": "ui.theme.toggle.json",
+      "handlersPath": "@renderx/plugin-header/symphonies/ui/ui.symphony.ts"
+    },
+    {
+      "file": "ui.theme.get.json",
+      "handlersPath": "@renderx/plugin-header/symphonies/ui/ui.symphony.ts"
+    }
+  ]
+}
+

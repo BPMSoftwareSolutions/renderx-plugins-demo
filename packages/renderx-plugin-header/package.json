@@ -11,6 +11,9 @@
   "exports": {
     ".": {
       "import": "./src/index.ts"
+    },
+    "./symphonies/ui/*": {
+      "import": "./src/symphonies/ui/*.ts"
     }
   },
   "sideEffects": [
@@ -35,6 +38,9 @@
         "id": "HeaderThemePlugin",
         "ui": { "slot": "headerRight", "module": "@renderx/plugin-header", "export": "HeaderThemeToggle" }
       }
+    ],
+    "sequences": [
+      "json-sequences"
     ]
   }
 }
