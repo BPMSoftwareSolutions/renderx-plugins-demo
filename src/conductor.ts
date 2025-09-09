@@ -1,10 +1,5 @@
-import { normalizeHandlersImportSpec, isBareSpecifier } from './handlersPath';
+import { normalizeHandlersImportSpec } from './handlersPath';
 
-// Static package handlers loaders to help bundlers pre-bundle known bare specifiers
-const handlersPackageLoaders: Record<string, () => Promise<any>> = {
-  // @ts-ignore - resolved by bundler via package exports
-  '@renderx/plugin-header/symphonies/ui/ui.symphony.ts': () => import(/* @vite-ignore */ '@renderx/plugin-header/symphonies/ui/ui.symphony.ts'),
-};
 
 export type ConductorClient = any;
 
@@ -163,16 +158,7 @@ export async function loadJsonSequenceCatalogs(
       // Normalize handlers import spec to support URLs, bare specifiers, and paths
       const spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
       let mod: any;
-      if (isBrowser && isBareSpecifier(handlersPath)) {
-        const loader = (handlersPackageLoaders as any)[handlersPath] || (handlersPackageLoaders as any)[spec];
-        if (loader) {
-          mod = await loader();
-        } else {
-          mod = await import(/* @vite-ignore */ spec as any);
-        }
-      } else {
-        mod = await import(/* @vite-ignore */ spec as any);
-      }
+      mod = await import(/* @vite-ignore */ spec as any);
       const handlers = (mod as any)?.handlers || mod?.default?.handlers;
       if (!handlers) {
         (conductor as any).logger?.warn?.(
