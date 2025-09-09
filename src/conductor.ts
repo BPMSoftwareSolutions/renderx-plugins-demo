@@ -92,7 +92,9 @@ export async function loadJsonSequenceCatalogs(
         if (catalogDirs.size) {
           // Use these directory candidates for catalog loading in browser; Node path scan below will still merge actual dirs
           (conductor as any)._sequenceCatalogDirsFromManifest = Array.from(catalogDirs);
-          plugins = Array.from(new Set([...(catalogDirs as any)]));
+          // Merge catalog directory hints with existing plugin IDs instead of replacing them
+          // so IDs like HeaderThemePlugin still map to 'header' and get mounted.
+          plugins = Array.from(new Set([...(plugins || []), ...Array.from(catalogDirs)]));
         }
       } catch {}
     }
