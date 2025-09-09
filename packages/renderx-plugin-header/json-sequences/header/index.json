@@ -3,11 +3,11 @@
   "sequences": [
     {
       "file": "ui.theme.toggle.json",
-      "handlersPath": "@renderx/plugin-header/symphonies/ui/ui.symphony.ts"
+      "handlersPath": "@renderx/plugin-header"
     },
     {
       "file": "ui.theme.get.json",
-      "handlersPath": "@renderx/plugin-header/symphonies/ui/ui.symphony.ts"
+      "handlersPath": "@renderx/plugin-header"
     }
   ]
 }

@@ -119,8 +119,9 @@ export async function loadJsonSequenceCatalogs(
   ;(conductor as any)._discoveredPlugins = plugins;
   const isTestEnv =
     typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
+  const forcedBrowser = typeof globalThis !== 'undefined' && (globalThis as any).__RENDERX_FORCE_BROWSER === true;
   const isBrowser =
-    !isTestEnv &&
+    (forcedBrowser || !isTestEnv) &&
     typeof globalThis !== "undefined" &&
     typeof (globalThis as any).window !== "undefined" &&
     typeof (globalThis as any).document !== "undefined" &&

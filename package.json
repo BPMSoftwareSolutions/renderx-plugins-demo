@@ -34,7 +34,8 @@
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
-    "ci": "npm run lint && npm run pre:manifests && npm test"
+    "e2e": "playwright test",
+    "ci": "npm run lint && npm run pre:manifests && npm test && npm run e2e"
   },
   "dependencies": {
     "@renderx/host-sdk": "file:packages/host-sdk",

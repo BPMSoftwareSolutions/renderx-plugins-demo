@@ -9,18 +9,30 @@ export function normalizeHandlersImportSpec(isBrowser: boolean, handlersPath: st
   const isBare = !raw.startsWith('/') && !raw.startsWith('.') && !looksProjectPath && raw.startsWith('@');
   // In the browser, try to resolve bare specifiers to fully-qualified URLs so native import() works
   if (isBrowser && isBare) {
+    // Preferred: Vite/modern resolver
     try {
       const resolver: any = (import.meta as any).resolve;
       if (typeof resolver === 'function') {
-        return resolver(raw);
+        const resolved = resolver(raw);
+        if (typeof resolved === 'string' && resolved) return resolved;
       }
     } catch {}
-    return raw; // fallback
+    // Dev fallback: Vite's /@id/<specifier> proxy
+    try {
+      const env: any = (import.meta as any).env;
+      if (env && env.DEV) {
+        return '/@id/' + raw;
+      }
+    } catch {}
+    // Last resort: return raw (lets bundlers handle it in non-browser contexts)
+    return raw;
   }
   // Path normalization for non-bare specs
   if (isBrowser) {
     return raw.startsWith('/') ? raw : '/' + raw.replace(/^\.\/?/, '');
   } else {
+    // Do not rewrite bare specifiers in Node/test; let the bundler/test resolver handle them
+    if (isBare) return raw;
     return raw.startsWith('/') ? `..${raw}` : `../${raw.replace(/^\.\/?/, '')}`;
   }
 }
