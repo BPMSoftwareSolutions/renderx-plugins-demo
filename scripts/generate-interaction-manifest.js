@@ -51,7 +51,7 @@ async function readJsonSafe(path) {
 async function readPluginCatalogs() {
   const dir = join(srcRoot, "json-interactions");
   try {
-    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
     const catalogs = [];
     for (const f of files) {
       const json = await readJsonSafe(join(dir, f));
@@ -75,7 +75,7 @@ function extractOverridesFromComponentJson(json) {
 async function readComponentOverrides() {
   const dir = join(srcRoot, "json-components");
   try {
-    const files = (await readdir(dir)).filter((f) => f.endsWith(".json"));
+    const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
     const overrides = [];
     for (const f of files) {
       const json = await readJsonSafe(join(dir, f));

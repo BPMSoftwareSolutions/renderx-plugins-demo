@@ -24,5 +24,7 @@ jobs:
           fi
       - name: Build artifacts with integrity (sanity)
         run: npm run artifacts:build:integrity
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
       - run: npm run ci
 

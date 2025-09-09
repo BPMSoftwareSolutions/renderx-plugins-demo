@@ -8,14 +8,19 @@ export function buildInteractionManifest(
   componentOverrideMaps: Array<Record<string, InteractionRoute>>
 ): InteractionManifest {
   const routes: Record<string, InteractionRoute> = {};
+  // Merge plugin catalogs first (later catalogs override earlier ones deterministically)
   for (const cat of catalogs || []) {
     const r = cat?.routes || {};
     for (const [k, v] of Object.entries(r)) routes[k] = v as InteractionRoute;
   }
+  // Then merge component-level overrides (these take precedence over plugin catalogs)
   for (const o of componentOverrideMaps || []) {
     for (const [k, v] of Object.entries(o || {})) routes[k] = v as InteractionRoute;
   }
-  return { version: '1.0.0', routes };
+  // Emit with sorted keys for deterministic JSON across platforms
+  const sortedRoutes: Record<string, InteractionRoute> = {};
+  for (const k of Object.keys(routes).sort()) sortedRoutes[k] = routes[k];
+  return { version: '1.0.0', routes: sortedRoutes };
 }
 
 export interface TopicRoute { pluginId: string; sequenceId: string }

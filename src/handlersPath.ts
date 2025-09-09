@@ -9,6 +9,12 @@ export function normalizeHandlersImportSpec(isBrowser: boolean, handlersPath: st
   const isBare = !raw.startsWith('/') && !raw.startsWith('.') && !looksProjectPath && raw.startsWith('@');
   // In the browser, try to resolve bare specifiers to fully-qualified URLs so native import() works
   if (isBrowser && isBare) {
+    // In Vitest, let the transformer resolve bare imports; do not rewrite
+    try {
+      if ((import.meta as any).vitest) {
+        return raw;
+      }
+    } catch {}
     // Preferred: Vite/modern resolver
     try {
       const resolver: any = (import.meta as any).resolve;

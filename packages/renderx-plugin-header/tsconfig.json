@@ -7,9 +7,13 @@
     "target": "ES2020",
     "jsx": "react-jsx",
     "skipLibCheck": true,
-    "declaration": false,
-    "emitDeclarationOnly": false
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "sourceMap": true,
+    "moduleResolution": "Bundler"
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+  "exclude": ["dist", "**/*.spec.*", "**/__tests__/**"]
 }
 

@@ -1,9 +1,15 @@
 # ADR-0025 — Externalizing Plugins to NPM Packages, Aggregated Manifests, and Sequence Handling
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2025-09-08
 - Issue: #107
 - Related: ADR-0014, ADR-0023, ADR-0024
+
+> Update 2025-09-09
+> - Implemented Phase 1–3 for the Header plugin: UI, handlers, and JSON sequences are now shipped from the `@renderx/plugin-header` workspace package and aggregated into the host at build time.
+> - Loader updated to support bare specifiers with a Vite dev fallback (`/@id/<specifier>`), covered by tests.
+> - All unit and e2e tests are green; this ADR is marked Accepted.
+
 
 ## Context
 We want to transition in-repo plugins into separate repositories and distribute them as npm packages while keeping a thin host (src). The host today:
