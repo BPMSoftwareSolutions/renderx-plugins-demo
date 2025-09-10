@@ -1,6 +1,6 @@
 # ADR-0026 — Library Decoupling: Host-owned Inventory and Externalized Library Plugin
 
-Status: Proposed
+Status: Accepted (Phase 1 implemented in-repo; externalization pending)
 Date: 2025-09-10
 Relates to: #115
 

@@ -1,22 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { handlers } from "../../plugins/library/symphonies/load.symphony";
-import { cssRegistry } from "../../plugins/control-panel/state/css-registry.store";
 
 describe("Debug CSS registration in browser scenario", () => {
-  it("verifies CSS registration works correctly", async () => {
-    // Start with clean registry state
-    const initialButtonClass = cssRegistry.getClass("rx-button");
-    const initialContent = initialButtonClass?.content || "";
-
-    console.log(
-      "Initial rx-button CSS:",
-      initialContent.substring(0, 100) + "..."
-    );
-    console.log(
-      "Initial has variants:",
-      initialContent.includes(".rx-button--primary")
-    );
-
+  it("exposes JSON CSS in payload; registry updates are handled by UI routing", async () => {
     // Mock the exact scenario from your browser debugging
     global.fetch = vi
       .fn()
@@ -51,26 +37,16 @@ describe("Debug CSS registration in browser scenario", () => {
 
     await handlers.loadComponents({}, ctx);
 
-    console.log("Components after load:", ctx.payload.components?.length);
-    console.log("Logger info calls:", ctx.logger.info.mock.calls);
-    console.log("Logger warn calls:", ctx.logger.warn.mock.calls);
-
-    // Check what happened to the CSS registry
-    const finalButtonClass = cssRegistry.getClass("rx-button");
-    const finalContent = finalButtonClass?.content || "";
-
-    console.log("Final rx-button CSS:", finalContent.substring(0, 100) + "...");
-    console.log(
-      "Final has variants:",
-      finalContent.includes(".rx-button--primary")
-    );
-
-    // This test should fail if CSS registration isn't working
-    expect(finalContent).toContain(".rx-button--primary");
-    expect(finalContent).toContain(".rx-button--secondary");
-    expect(finalContent).toContain(".rx-button--danger");
-    expect(finalContent).toContain(".rx-button--small");
-    expect(finalContent).toContain(".rx-button--medium");
-    expect(finalContent).toContain(".rx-button--large");
+    // Ensure payload populated and contains JSON CSS for UI to route downstream
+    expect(Array.isArray(ctx.payload.components)).toBe(true);
+    expect(ctx.payload.components.length).toBeGreaterThan(0);
+    const first = ctx.payload.components[0];
+    const css = first?.ui?.styles?.css || "";
+    expect(css).toContain(".rx-button--primary");
+    expect(css).toContain(".rx-button--secondary");
+    expect(css).toContain(".rx-button--danger");
+    expect(css).toContain(".rx-button--small");
+    expect(css).toContain(".rx-button--medium");
+    expect(css).toContain(".rx-button--large");
   });
 });

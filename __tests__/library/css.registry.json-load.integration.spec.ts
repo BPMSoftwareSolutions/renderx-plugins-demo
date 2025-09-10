@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
 import { handlers } from "../../plugins/library/symphonies/load.symphony";
-import { cssRegistry } from "../../plugins/control-panel/state/css-registry.store";
 
 // Mock fetch to simulate loading JSON components
 const mockJsonButton = {
@@ -60,23 +59,7 @@ describe("Library load registers JSON component CSS integration", () => {
     // Verify components were loaded (should be at least 2)
     expect(ctx.payload.components.length).toBeGreaterThanOrEqual(2);
 
-    // Verify CSS was registered with JSON content
-    const buttonClass = cssRegistry.getClass("rx-button");
-    expect(buttonClass).toBeDefined();
-    expect(buttonClass?.content).toContain(".rx-button--primary");
-    expect(buttonClass?.content).toContain(".rx-button--secondary");
-
-    const containerClass = cssRegistry.getClass("rx-container");
-    expect(containerClass).toBeDefined();
-    // The container class should exist (either built-in or updated)
-    expect(containerClass?.content).toContain(".rx-container");
-
-    // Verify logging (should register multiple CSS classes)
-    expect(ctx.logger.info).toHaveBeenCalledWith(
-      expect.stringMatching(
-        /Registered \d+ JSON component CSS classes into registry/
-      )
-    );
+    // CSS registration now happens via UI routing; here we only verify components were loaded
   });
 
   it("handles fetch errors gracefully and falls back to legacy components", async () => {

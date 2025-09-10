@@ -12,6 +12,40 @@ import { LibraryPreview } from "./LibraryPreview";
 import "./LibraryPanel.css";
 import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 
+// Exported for unit tests: registers JSON component CSS via Control Panel sequences
+export async function registerCssForComponents(items: any[], conductor: any) {
+  try {
+    const seen = new Set<string>();
+    for (const item of Array.isArray(items) ? items : []) {
+      const tpl = (item as any)?.template ?? item;
+      let css: string | undefined = tpl?.css;
+      if (!css && (item as any)?.ui?.styles?.css) css = (item as any).ui.styles.css;
+      if (typeof css !== "string" || !css.trim()) continue;
+      const classes: string[] = Array.isArray(tpl?.classes) ? tpl.classes : [];
+      const base = classes.find((c) => c.startsWith("rx-") && c !== "rx-comp");
+      const metaType = (item as any)?.metadata?.replaces || (item as any)?.metadata?.type;
+      const name = base || (metaType ? `rx-${metaType}` : undefined);
+      if (!name || seen.has(name)) continue;
+      seen.add(name);
+      // Update then create (idempotent across runs)
+      try {
+        await EventRouter.publish(
+          "control.panel.css.edit.requested",
+          { id: name, className: name, content: css },
+          conductor
+        );
+      } catch {}
+      try {
+        await EventRouter.publish(
+          "control.panel.css.create.requested",
+          { id: name, className: name, content: css },
+          conductor
+        );
+      } catch {}
+    }
+  } catch {}
+}
+
 export function LibraryPanel() {
   const conductor = useConductor();
   const [items, setItems] = React.useState<any[]>([]);
@@ -50,6 +84,12 @@ export function LibraryPanel() {
     };
     run();
   }, [conductor]);
+
+  // After components are loaded, register their CSS via Control Panel sequences
+  React.useEffect(() => {
+    if (!conductor || !safeItems?.length) return;
+    registerCssForComponents(safeItems, conductor);
+  }, [safeItems, conductor]);
 
   const groupedComponents = groupComponentsByCategory(safeItems);
 

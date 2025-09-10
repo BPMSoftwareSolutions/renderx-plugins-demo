@@ -16,6 +16,7 @@ import requireSlotManifestRegistration from "./eslint-rules/require-slot-manifes
 import noLayoutLogicInComponents from "./eslint-rules/no-layout-logic-in-components.js";
 import requireManifestValidation from "./eslint-rules/require-manifest-validation.js";
 import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugins.js";
+import crossPluginImports from "./eslint-rules/no-cross-plugin-imports.js";
 import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
 
 // Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
@@ -89,6 +90,7 @@ export default [
       "layout-logic": noLayoutLogicInComponents,
       "layout-manifest-validation": requireManifestValidation,
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
+      "cross-plugin-imports": crossPluginImports,
       "deprecate-stagecrew-api": deprecateStageCrew,
     },
     rules: {
@@ -267,9 +269,11 @@ export default [
     ignores: ["plugins/**/*.stage-crew.{ts,tsx}"],
     plugins: {
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
+      "cross-plugin-imports": crossPluginImports,
     },
     rules: {
       "no-host-internals-in-plugins/no-host-internals-in-plugins": "error",
+      "cross-plugin-imports/no-cross-plugin-imports": "error",
       "no-restricted-globals": [
         "error",
         "document",
