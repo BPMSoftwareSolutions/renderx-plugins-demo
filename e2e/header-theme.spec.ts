@@ -20,9 +20,11 @@ test('header theme toggles end-to-end', async ({ page }) => {
   const toggle = page.getByTitle('Toggle Theme');
   await toggle.waitFor();
 
-  // Note: We log plugin resolution warnings but do not fail on them in E2E to reduce flakiness in dev-server mode.
+  // Fail fast if the header plugins failed to load — this makes CI failures actionable instead of timing out.
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
-  if (bad.length) console.warn('header-plugin warnings:', bad);
+  if (bad.length) {
+    throw new Error('Header plugin(s) failed to load: ' + JSON.stringify(bad, null, 2));
+  }
 
   // Read current label and assert optimistic UI toggles regardless of backend sequence timing.
   const labelBefore = await toggle.innerText();
