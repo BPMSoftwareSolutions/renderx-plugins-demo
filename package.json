@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/manifest-tools"
+    "packages/manifest-tools",
+    "packages/renderx-plugin-library"
   ],
   "scripts": {
-    "build:packages": "echo skip-local-package-build",
+    "build:packages": "npm -w @renderx-plugins/library run build || echo lib-skip",
     "dev": "npm run build:packages && npm run pre:manifests && vite",
     "build": "npm run build:packages && npm run pre:manifests && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "@renderx-plugins/header": "^0.1.1",
+    "@renderx-plugins/library": "workspace:*",
     "@renderx-plugins/host-sdk": "^0.1.0",
     "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",

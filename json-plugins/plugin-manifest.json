@@ -28,10 +28,10 @@
       "id": "LibraryPlugin",
       "ui": {
         "slot": "library",
-        "module": "/plugins/library/index.ts",
+        "module": "@renderx-plugins/library",
         "export": "LibraryPanel"
-  },
-  "runtime": { "module": "/plugins/library/index.ts", "export": "register" }
+      },
+      "runtime": { "module": "@renderx-plugins/library", "export": "register" }
     },
     {
       "id": "CanvasPlugin",
