@@ -6,6 +6,10 @@ export default {
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
     },
   },
+  optimizeDeps: {
+    // Ensure dev server prebundles external header package so dynamic import works reliably in CI
+    include: ['@renderx-plugins/header'],
+  },
   build: {
     rollupOptions: {
       external: ['@renderx-plugins/host-sdk']
