@@ -30,16 +30,21 @@ test('header theme toggles end-to-end', async ({ page }) => {
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
   expect(bad, 'No header plugin resolution/registration errors in console').toEqual([]);
 
-  // themeBefore not used; rely on label changes to assert toggling
-  const labelBefore = await toggle.innerText();
+  // Read current theme from DOM and derive the expected label AFTER a toggle.
+  const themeBefore = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+  const expectedAfterLabel = themeBefore === 'light' ? '🌞 Light' : '🌙 Dark';
 
   await toggle.click();
-  // Prefer UI label change to avoid flakiness; verify label changes on each click
-  await expect(toggle).not.toHaveText(labelBefore, { timeout: 10_000 });
 
-  // Toggle back
-  const labelMid = await toggle.innerText();
+  // Wait until the DOM theme actually changes, then assert the label matches the new theme.
+  await page.waitForFunction((prev) => document.documentElement.getAttribute('data-theme') !== prev, themeBefore, { timeout: 10_000 });
+  await expect(toggle).toHaveText(expectedAfterLabel, { timeout: 10_000 });
+
+  // Toggle back and assert again using the DOM as source of truth.
+  const themeMid = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+  const expectedFinalLabel = themeMid === 'light' ? '🌞 Light' : '🌙 Dark';
   await toggle.click();
-  await expect(toggle).not.toHaveText(labelMid, { timeout: 10_000 });
+  await page.waitForFunction((prev) => document.documentElement.getAttribute('data-theme') !== prev, themeMid, { timeout: 10_000 });
+  await expect(toggle).toHaveText(expectedFinalLabel, { timeout: 10_000 });
 });
 
