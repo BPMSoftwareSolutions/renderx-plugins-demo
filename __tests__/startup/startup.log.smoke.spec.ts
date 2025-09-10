@@ -45,7 +45,8 @@ describe('Startup log smoke', () => {
     }
 
     // Smoke expectations (best-effort)
-    expect(content).not.toMatch(/Plugin not found: HeaderThemePlugin/);
+  expect(content).not.toMatch(/Plugin not found/);
+  expect(content).not.toMatch(/Plugin not found: HeaderThemePlugin/);
 
     const hasRegistered = /Sequence registered: Header UI Theme (Get|Toggle)/.test(content)
       || /Plugin mounted successfully: HeaderThemePlugin/.test(content);
