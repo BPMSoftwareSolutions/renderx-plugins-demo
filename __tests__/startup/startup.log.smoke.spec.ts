@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -55,5 +55,20 @@ describe('Startup log smoke', () => {
     expect(content).not.toMatch(/Failed runtime register for Header(Title|Controls|Theme)Plugin/);
     expect(content).not.toMatch(/Failed to resolve module specifier ['"]@renderx-plugins\/header['"]/);
   });
+
+  it("does NOT emit library resolution failures on startup", async () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    await import('../../src/main');
+    await new Promise((r) => setTimeout(r, 50));
+
+    const warnText = warnSpy.mock.calls.map((c) => String(c[0] ?? c.join(' '))).join('\n');
+    const errText = errSpy.mock.calls.map((c) => String(c[0] ?? c.join(' '))).join('\n');
+
+    expect(warnText).not.toContain('\u26a0\ufe0f Failed runtime register for LibraryPlugin');
+    expect(errText).not.toContain("Failed to resolve module specifier '@renderx-plugins/library'");
+  });
+
 });
 
