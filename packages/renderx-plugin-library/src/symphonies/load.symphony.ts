@@ -15,27 +15,19 @@ function mapJsonComponentToTemplateCompat(json: any) {
 }
 
 
-// Compile-time flag injected by tsup/esbuild via --define.IS_LIB_BUILD_FLAG=true
-declare const IS_LIB_BUILD_FLAG: boolean;
-const IS_LIB_BUILD = (typeof IS_LIB_BUILD_FLAG !== "undefined") && IS_LIB_BUILD_FLAG;
-
-
 
 export const handlers = {
   async loadComponents(_data: any, ctx: any) {
     let list: any[] = [];
     try {
-      const isVitest = (() => {
-        try {
-          // @ts-ignore - Vitest injects this flag
-          return !!(import.meta as any)?.vitest || process.env.NODE_ENV === "test";
-        } catch {
-          return process.env.NODE_ENV === "test";
-        }
-      })();
-
-      if (typeof fetch === "function" && !isVitest) {
-        // Browser/dev server path: serve from public/json-components using JSON index
+      // Prefer Host SDK inventory bridge if present (browser/dev and tests)
+      const g: any = (typeof globalThis !== "undefined" ? globalThis : (window as any));
+      const inv = g?.window?.RenderX?.inventory || g?.RenderX?.inventory;
+      if (inv && typeof inv.listComponents === "function") {
+        const items = await inv.listComponents();
+        list = (items || []).map(mapJsonComponentToTemplateCompat);
+      } else if (typeof fetch === "function") {
+        // Browser/dev fallback: serve from public/json-components using JSON index
         const idxRes = await fetch("/json-components/index.json");
         const idx = idxRes.ok ? await idxRes.json() : { components: [] };
         const files: string[] = idx?.components || [];
@@ -49,18 +41,8 @@ export const handlers = {
           }
         }
         list = items;
-      } else if (!IS_LIB_BUILD) {
-        // Node/test path: use manifest-tools to enumerate JSON components in the repo
-        try {
-          const mod: any = await import("@renderx-plugins/manifest-tools");
-          const fn = mod?.getJsonComponents;
-          const items = typeof fn === "function" ? await fn() : [];
-          list = (items || []).map(mapJsonComponentToTemplateCompat);
-        } catch {
-          list = [];
-        }
       } else {
-        // During package build, exclude Node/test-time logic from the published bundle
+        // No inventory available in this runtime
         list = [];
       }
     } catch {
