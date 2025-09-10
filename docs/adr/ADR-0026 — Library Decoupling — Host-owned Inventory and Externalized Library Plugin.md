@@ -29,9 +29,12 @@ Relates to: #115
 flowchart LR
   subgraph Host[Host App (Thin Shell)]
     PanelSlot[PanelSlot]
-    SDK[Host SDK (Facade)]
     Conductor[Conductor]
     Inv[Inventory Aggregator]
+  end
+
+  subgraph External[External Packages]
+    SDK[@renderx-plugins/host-sdk (Facade, npm)]
   end
 
   subgraph Plugins
@@ -44,9 +47,9 @@ flowchart LR
   PanelSlot -- manifest: UI module --> Head
 
   Lib -- listComponents()/getComponent() --> SDK
-  SDK --> Inv
-
   Lib -- cssRegistry.*() --> SDK
+
+  SDK --> Inv
   SDK -- facade --> CP
 
   Host -- manifest: runtime register --> Conductor
