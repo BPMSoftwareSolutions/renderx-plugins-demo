@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { handlers } from "packages/renderx-plugin-library/src/symphonies/load.symphony";
+import { handlers } from "@renderx-plugins/library";
 
 // Mock JSON component with CSS variants
 const mockJsonButton = {

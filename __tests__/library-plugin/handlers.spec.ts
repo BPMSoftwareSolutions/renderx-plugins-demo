@@ -1,8 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers } from "packages/renderx-plugin-library/src/symphonies/load.symphony";
+import { handlers } from "@renderx-plugins/library";
 
 declare global {
-  // eslint-disable-next-line no-var
   var window: any;
 }
 

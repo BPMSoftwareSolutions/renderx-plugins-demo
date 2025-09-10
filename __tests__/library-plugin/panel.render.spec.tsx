@@ -27,7 +27,7 @@ vi.mock("@renderx-plugins/host-sdk", () => {
   };
 });
 
-import { LibraryPanel } from "packages/renderx-plugin-library/src/ui/LibraryPanel";
+import { LibraryPanel } from "@renderx-plugins/library";
 
 function nextTick() {
   return new Promise((r) => setTimeout(r, 0));

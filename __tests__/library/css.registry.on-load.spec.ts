@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { handlers } from "packages/renderx-plugin-library/src/symphonies/load.symphony";
+import { handlers } from "@renderx-plugins/library";
 
 describe("library load populates components; CSS registration is handled by UI", () => {
   it("loads components and exposes raw JSON CSS in payload for downstream routing", async () => {

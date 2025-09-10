@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { handlers } from "packages/renderx-plugin-library/src/symphonies/load.symphony";
+import { handlers } from "@renderx-plugins/library";
 
 describe("Debug CSS registration in browser scenario", () => {
   it("exposes JSON CSS in payload; registry updates are handled by UI routing", async () => {

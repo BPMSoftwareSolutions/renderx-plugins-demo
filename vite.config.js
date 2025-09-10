@@ -7,8 +7,8 @@ export default {
     },
   },
   optimizeDeps: {
-    // Ensure dev server prebundles external packages used by header plugin
-    include: ['@renderx-plugins/header', '@renderx-plugins/host-sdk'],
+    // Ensure dev server prebundles external packages used by header & library plugins
+    include: ['@renderx-plugins/header', '@renderx-plugins/library', '@renderx-plugins/host-sdk'],
   },
   build: {
     rollupOptions: {

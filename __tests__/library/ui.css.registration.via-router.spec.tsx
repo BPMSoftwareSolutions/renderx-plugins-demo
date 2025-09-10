@@ -1,6 +1,9 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { registerCssForComponents } from "../../packages/renderx-plugin-library/src/ui/LibraryPanel";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { act } from "react";
+import { LibraryPanel } from "@renderx-plugins/library";
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
 // Minimal components with CSS content
@@ -25,33 +28,46 @@ describe("LibraryPanel CSS registration via router", () => {
     vi.restoreAllMocks();
   });
 
-  it("publishes Control Panel CSS events for discovered classes", async () => {
-    const publishSpy = vi.spyOn(EventRouter, "publish").mockResolvedValue(undefined as any);
-    const fakeConductor: any = { play: vi.fn().mockResolvedValue({}) };
+  it("publishes Control Panel CSS events for discovered classes when inventory loads", async () => {
+    const publishSpy = vi.spyOn(EventRouter, "publish").mockImplementation(async (topic: string, payload: any) => {
+      if (topic === "library.load.requested") {
+        payload?.onComponentsLoaded?.([mockJsonButton, mockJsonContainer]);
+      }
+      return undefined as any;
+    });
 
-    await registerCssForComponents([mockJsonButton, mockJsonContainer] as any, fakeConductor);
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(React.createElement(LibraryPanel));
+    });
 
     // Expect update then create for each class
     expect(publishSpy).toHaveBeenCalledWith(
       "control.panel.css.edit.requested",
       expect.objectContaining({ className: "rx-button", id: "rx-button" }),
-      fakeConductor
+      expect.anything()
     );
     expect(publishSpy).toHaveBeenCalledWith(
       "control.panel.css.create.requested",
       expect.objectContaining({ className: "rx-button", id: "rx-button" }),
-      fakeConductor
+      expect.anything()
     );
     expect(publishSpy).toHaveBeenCalledWith(
       "control.panel.css.edit.requested",
       expect.objectContaining({ className: "rx-container", id: "rx-container" }),
-      fakeConductor
+      expect.anything()
     );
     expect(publishSpy).toHaveBeenCalledWith(
       "control.panel.css.create.requested",
       expect.objectContaining({ className: "rx-container", id: "rx-container" }),
-      fakeConductor
+      expect.anything()
     );
+
+    root.unmount();
+    document.body.removeChild(container);
   });
 });
 
