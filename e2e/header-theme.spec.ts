@@ -17,14 +17,39 @@ test('header theme toggles end-to-end', async ({ page }) => {
 
   await page.goto('/');
 
-  const toggle = page.getByTitle('Toggle Theme');
-  await toggle.waitFor();
+  // Verify key runtime artifacts are reachable before we wait on UI
+  const manifestOk = await page.evaluate(async () => {
+    try {
+      const res = await fetch('/plugins/plugin-manifest.json', { cache: 'no-store' });
+      return res.ok;
+    } catch { return false; }
+  });
+  expect(manifestOk).toBeTruthy();
 
-  // Fail fast if the header plugins failed to load — this makes CI failures actionable instead of timing out.
+  // Wait for the header slot container to exist (even if empty initially)
+  await page.waitForSelector('[data-slot="headerRight"] [data-slot-content]', { timeout: 10_000 });
+
+  // Wait for conductor to initialize and expose itself (used for introspection below)
+  await page.waitForFunction(() => !!(window as any).renderxCommunicationSystem?.conductor, null, { timeout: 10_000 });
+
+  // If plugins failed to load at runtime, fail fast with details
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
   if (bad.length) {
     throw new Error('Header plugin(s) failed to load: ' + JSON.stringify(bad, null, 2));
   }
+
+  // Introspect conductor for diagnostics (mounted vs discovered)
+  const diag = await page.evaluate(() => {
+    const c: any = (window as any).renderxCommunicationSystem?.conductor;
+    const discovered = c?._discoveredPlugins ?? null;
+    const mounted = typeof c?.getMountedPluginIds === 'function' ? c.getMountedPluginIds() : null;
+    return { discovered, mounted };
+  });
+  console.log('Header E2E diagnostics:', JSON.stringify(diag));
+
+  // Now wait for the actual toggle button to become visible
+  const toggle = page.getByTitle('Toggle Theme');
+  await toggle.waitFor();
 
   // Read current label and assert optimistic UI toggles regardless of backend sequence timing.
   const labelBefore = await toggle.innerText();

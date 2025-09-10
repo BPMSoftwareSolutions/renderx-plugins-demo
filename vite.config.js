@@ -7,8 +7,8 @@ export default {
     },
   },
   optimizeDeps: {
-    // Ensure dev server prebundles external header package so dynamic import works reliably in CI
-    include: ['@renderx-plugins/header'],
+    // Ensure dev server prebundles external packages used by header plugin
+    include: ['@renderx-plugins/header', '@renderx-plugins/host-sdk'],
   },
   build: {
     rollupOptions: {
