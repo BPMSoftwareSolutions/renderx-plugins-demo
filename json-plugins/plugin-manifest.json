@@ -50,6 +50,10 @@
         "export": "ControlPanel"
   },
   "runtime": { "module": "/plugins/control-panel/index.ts", "export": "register" }
+    },
+    {
+      "id": "LibraryComponentPlugin",
+      "runtime": { "module": "@renderx-plugins/library-component", "export": "register" }
     }
   ]
 }
