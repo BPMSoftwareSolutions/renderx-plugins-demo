@@ -152,3 +152,7 @@ vite.config.ts.timestamp-*
 /docs/articles/article-0001/*.gif
 /docs/articles/article-0003
 /docs/articles/article-0004
+
+
+# Ignore generated plugin manifests
+json-plugins/.generated/
