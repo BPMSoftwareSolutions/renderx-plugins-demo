@@ -1,11 +1,6 @@
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file exports handlers for those sequences.
 import { mapJsonComponentToTemplate } from "@renderx-plugins/host-sdk";
 
-// Compile-time flag injected by tsup/esbuild via --define.IS_LIB_BUILD_FLAG=true
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-declare const IS_LIB_BUILD_FLAG: boolean;
-
-
 function mapJsonComponentToTemplateCompat(json: any) {
   const tpl = mapJsonComponentToTemplate(json);
   const type = json?.metadata?.replaces || json?.metadata?.type || "div";
@@ -19,26 +14,11 @@ function mapJsonComponentToTemplateCompat(json: any) {
   };
 }
 
+
+// Compile-time flag injected by tsup/esbuild via --define.IS_LIB_BUILD_FLAG=true
+declare const IS_LIB_BUILD_FLAG: boolean;
 const IS_LIB_BUILD = (typeof IS_LIB_BUILD_FLAG !== "undefined") && IS_LIB_BUILD_FLAG;
 
-let loadJsonComponentsInNode: undefined | (() => Promise<any[]>);
-if (!IS_LIB_BUILD) {
-  // Create the loader via Function() to hide import() specifiers from esbuild during package builds
-  loadJsonComponentsInNode = (new Function(
-    'mapFn',
-    `return async function load(){
-      const idx = await import("../../../json-components/index.json", { with: { type: "json" } });
-      const files = (idx?.default?.components || idx?.components || []);
-      const items = [];
-      for (const f of files) {
-        const mod = await import("../../../json-components/" + f, { with: { type: "json" } });
-        const json = mod?.default || mod;
-        items.push(mapFn(json));
-      }
-      return items;
-    }`
-  ) as any)(mapJsonComponentToTemplateCompat) as () => Promise<any[]>;
-}
 
 
 export const handlers = {
@@ -69,12 +49,19 @@ export const handlers = {
           }
         }
         list = items;
-      } else if (IS_LIB_BUILD) {
-        // During package build, exclude Node/test-time dynamic import path
-        list = [];
+      } else if (!IS_LIB_BUILD) {
+        // Node/test path: use manifest-tools to enumerate JSON components in the repo
+        try {
+          const mod: any = await import("@renderx-plugins/manifest-tools");
+          const fn = mod?.getJsonComponents;
+          const items = typeof fn === "function" ? await fn() : [];
+          list = (items || []).map(mapJsonComponentToTemplateCompat);
+        } catch {
+          list = [];
+        }
       } else {
-        // Test/Node path: use repo json-components folder
-        list = await (loadJsonComponentsInNode ? loadJsonComponentsInNode() : Promise.resolve([]));
+        // During package build, exclude Node/test-time logic from the published bundle
+        list = [];
       }
     } catch {
       // Leave list empty on error
