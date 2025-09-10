@@ -27,37 +27,37 @@ Relates to: #115
 ## Architecture (Mermaid)
 ```mermaid
 flowchart LR
-  subgraph Host[Host App (Thin Shell)]
-    PanelSlot[PanelSlot]
-    Conductor[Conductor]
-    Inv[Inventory Aggregator]
+  subgraph Host_App_Thin_Shell
+    PanelSlot
+    Conductor
+    Inv["Inventory Aggregator"]
   end
 
-  subgraph External[External Packages]
-    SDK[@renderx-plugins/host-sdk (Facade, npm)]
+  subgraph External_Packages
+    SDK["@renderx-plugins/host-sdk (Facade, npm)"]
   end
 
   subgraph Plugins
-    Lib[@renderx-plugins/library]
-    Head[@renderx-plugins/header]
-    CP[Control Panel]
+    Lib["@renderx-plugins/library"]
+    Head["@renderx-plugins/header"]
+    CP["Control Panel"]
   end
 
-  PanelSlot -- manifest: UI module --> Lib
-  PanelSlot -- manifest: UI module --> Head
+  PanelSlot -- "manifest: UI module" --> Lib
+  PanelSlot -- "manifest: UI module" --> Head
 
-  Lib -- listComponents()/getComponent() --> SDK
-  Lib -- cssRegistry.*() --> SDK
+  Lib -- "listComponents()/getComponent()" --> SDK
+  Lib -- "cssRegistry.*()" --> SDK
 
   SDK --> Inv
-  SDK -- facade --> CP
+  SDK -- "facade" --> CP
 
-  Host -- manifest: runtime register --> Conductor
-  Conductor -. calls .-> Lib
-  Conductor -. calls .-> Head
+  Host_App_Thin_Shell -- "manifest: runtime register" --> Conductor
+  Conductor -. "calls" .-> Lib
+  Conductor -. "calls" .-> Head
 
-  CP -. contributes (optional) .-> Inv
-  Lib -. contributes (optional) .-> Inv
+  CP -. "contributes (optional)" .-> Inv
+  Lib -. "contributes (optional)" .-> Inv
 ```
 
 ## Future Structures (ASCII)
