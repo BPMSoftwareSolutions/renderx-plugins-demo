@@ -53,8 +53,19 @@ export async function register(conductor: any) {
     ],
   } as any;
 
+  // Mark runtime-mounted sequence IDs to help conductor skip JSON-catalog duplicates
+  const mark = (id: string) => {
+    const key = '_runtimeMountedSeqIds';
+    const set: Set<string> = (conductor as any)[key] || new Set<string>();
+    set.add(id);
+    (conductor as any)[key] = set;
+  };
+
   await conductor.mount(dragSeq, dragHandlers, dragSeq.pluginId);
+  mark(dragSeq.id);
   await conductor.mount(dropSeq, dropHandlers, dropSeq.pluginId);
+  mark(dropSeq.id);
   await conductor.mount(containerDropSeq, containerDropHandlers, containerDropSeq.pluginId);
+  mark(containerDropSeq.id);
 }
 

@@ -16,18 +16,19 @@ function createFakeConductor() {
 }
 
 describe('@renderx-plugins/library-component runtime registration', () => {
-  it('registerAllSequences() loads runtime and mounts library-component sequences (even if JSON catalogs also mount)', async () => {
+  it('registerAllSequences() mounts library-component sequences exactly once (no duplicates from JSON catalogs)', async () => {
     const c = createFakeConductor();
     await registerAllSequences(c as any);
 
     const ids = c.mounted.map((m: any) => m.seq?.id);
-    expect(ids).toContain('library-component-drag-symphony');
-    expect(ids).toContain('library-component-drop-symphony');
-    expect(ids).toContain('library-component-container-drop-symphony');
+    const count = (id: string) => ids.filter((x: string) => x === id).length;
+
+    expect(count('library-component-drag-symphony')).toBe(1);
+    expect(count('library-component-drop-symphony')).toBe(1);
+    expect(count('library-component-container-drop-symphony')).toBe(1);
 
     const pluginIds = c.getMountedPluginIds();
     expect(pluginIds).toContain('LibraryComponentPlugin');
     expect(pluginIds).toContain('LibraryComponentDropPlugin');
   }, 60000);
 });
-

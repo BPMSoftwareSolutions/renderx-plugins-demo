@@ -177,9 +177,12 @@ export async function loadJsonSequenceCatalogs(
   };
 
   const seen = new Set<string>();
+  const runtimeMounted: Set<string> = (conductor as any)._runtimeMountedSeqIds instanceof Set
+    ? (conductor as any)._runtimeMountedSeqIds
+    : new Set<string>(Array.isArray((conductor as any)._runtimeMountedSeqIds) ? (conductor as any)._runtimeMountedSeqIds : []);
   const mountFrom = async (seq: SequenceJson, handlersPath: string) => {
     try {
-      if (seen.has(seq.id)) {
+      if (seen.has(seq.id) || runtimeMounted.has(seq.id)) {
         (conductor as any).logger?.warn?.(
           `Sequence ${seq.id} already mounted; skipping`
         );
