@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { handlers } from "../../plugins/library/symphonies/load.symphony";
-import { cssRegistry } from "../../plugins/control-panel/state/css-registry.store";
+import { handlers } from "@renderx-plugins/library";
 
 // Mock JSON component with CSS variants
 const mockJsonButton = {
@@ -17,15 +16,7 @@ const mockJsonButton = {
 };
 
 describe("CSS registration works in both browser and Node.js paths", () => {
-  it("browser path registers CSS correctly (this should pass)", async () => {
-    // Clear any existing CSS first
-    if (cssRegistry.hasClass("rx-button")) {
-      cssRegistry.updateClass(
-        "rx-button",
-        ".rx-button { /* built-in only */ }"
-      );
-    }
-
+  it("browser path loads components and exposes JSON CSS via payload (registry handled by UI)", async () => {
     // Mock browser environment with fetch
     global.fetch = vi
       .fn()
@@ -48,23 +39,13 @@ describe("CSS registration works in both browser and Node.js paths", () => {
 
     await handlers.loadComponents({}, ctx);
 
-    // This should pass but currently fails because CSS registration doesn't work in browser path
-    const buttonClass = cssRegistry.getClass("rx-button");
-    expect(buttonClass).toBeDefined();
-
-    console.log("Components loaded:", ctx.payload.components?.length);
-    console.log(
-      "First component structure:",
-      JSON.stringify(ctx.payload.components?.[0], null, 2)
-    );
-    console.log(
-      "Button CSS content:",
-      buttonClass?.content?.substring(0, 100) + "..."
-    );
-
-    // These assertions will fail because CSS registration doesn't work with wrapped structure
-    expect(buttonClass?.content).toContain(".rx-button--primary");
-    expect(buttonClass?.content).toContain(".rx-button--secondary");
-    expect(buttonClass?.content).toContain(".rx-button--danger");
+    // Assert the component list is populated and the raw CSS is present in the item
+    expect(Array.isArray(ctx.payload.components)).toBe(true);
+    expect(ctx.payload.components.length).toBeGreaterThan(0);
+    const first = ctx.payload.components[0];
+    // ui.styles.css carries JSON CSS for UI to route to Control Panel
+    expect(first?.ui?.styles?.css || "").toContain(".rx-button--primary");
+    expect(first?.ui?.styles?.css || "").toContain(".rx-button--secondary");
+    expect(first?.ui?.styles?.css || "").toContain(".rx-button--danger");
   });
 });

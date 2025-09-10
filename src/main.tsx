@@ -7,6 +7,8 @@ import { initTopicsManifest, getTopicsManifestStats } from "./topicsManifest";
 import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
 import { EventRouter } from "./EventRouter";
 import "./global.css";
+import { listComponents, getComponentById, onInventoryChanged } from "./inventory";
+import { cssRegistry } from "./cssRegistry/facade";
 // minimal ambient typing for optional env flag without pulling full @types/node
 declare const process: { env?: Record<string, string | undefined> } | undefined;
 
@@ -31,6 +33,18 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
       init: () => EventRouter.init(),
       getTopicsStats: () => ({}) as any,
     } as any;
+  }
+
+  // Expose inventory and cssRegistry facades for SDK delegation
+  if (!(window as any).RenderX.inventory) {
+    (window as any).RenderX.inventory = {
+      listComponents,
+      getComponentById,
+      onInventoryChanged,
+    } as any;
+  }
+  if (!(window as any).RenderX.cssRegistry) {
+    (window as any).RenderX.cssRegistry = cssRegistry as any;
   }
 
   if (!(typeof process !== 'undefined' && process.env?.RENDERX_DISABLE_STARTUP_VALIDATION === '1')) {

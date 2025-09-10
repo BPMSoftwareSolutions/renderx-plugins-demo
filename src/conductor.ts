@@ -1,4 +1,4 @@
-import { normalizeHandlersImportSpec } from './handlersPath';
+import { normalizeHandlersImportSpec, isBareSpecifier } from './handlersPath';
 
 
 
@@ -7,7 +7,15 @@ function resolveModuleSpecifier(spec: string): string {
   try {
     const resolver: any = (import.meta as any).resolve;
     if (typeof resolver === 'function') {
-      return resolver(spec);
+      const r = resolver(spec);
+      if (typeof r === 'string' && r) return r;
+    }
+  } catch {}
+  // Dev fallback: Vite's /@id proxy for bare specifiers so native import() works in browser
+  try {
+    const env: any = (import.meta as any).env;
+    if (env && env.DEV && isBareSpecifier(spec)) {
+      return '/@id/' + spec;
     }
   } catch {}
   return spec; // Works for URLs and absolute/relative paths; bare specs may fail in native browser import
@@ -16,6 +24,7 @@ function resolveModuleSpecifier(spec: string): string {
 // Statically known runtime package loaders to ensure Vite can analyze and bundle
 const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/header': () => import('@renderx-plugins/header'),
+  '@renderx-plugins/library': () => import('@renderx-plugins/library'),
 };
 
 
@@ -329,6 +338,13 @@ export async function registerAllSequences(conductor: ConductorClient) {
     const runtime = p.runtime;
     if (!runtime || !runtime.module || !runtime.export) continue;
     try {
+      // Test-only injection to simulate resolution failure for library plugin
+      const isTestEnv = typeof import.meta !== 'undefined' && !!(import.meta as any).vitest;
+      const forceLibraryResolutionError = isTestEnv && typeof globalThis !== 'undefined' && (globalThis as any).__RENDERX_FORCE_LIBRARY_RESOLUTION_ERROR === true;
+      if (forceLibraryResolutionError && runtime.module === '@renderx-plugins/library') {
+        throw new TypeError("Failed to resolve module specifier '@renderx-plugins/library'");
+      }
+
       const loader = runtimePackageLoaders[runtime.module];
       const mod = loader
         ? await loader()

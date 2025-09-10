@@ -1,4 +1,4 @@
-import { handlers } from "../../plugins/library/symphonies/load.symphony";
+import { handlers } from "@renderx-plugins/library";
 
 describe("library-load-symphony", () => {
   it("loads components and notifies UI", async () => {

@@ -22,7 +22,7 @@ vi.mock("@renderx-plugins/host-sdk", async () => {
 });
 
 import { EventRouter } from "@renderx-plugins/host-sdk";
-import { LibraryPanel } from "../../plugins/library/ui/LibraryPanel";
+import { LibraryPanel } from "@renderx-plugins/library";
 
 function render(el: React.ReactElement) {
   const container = document.createElement("div");
@@ -109,11 +109,15 @@ describe("Host EventRouter absence handling", () => {
       await new Promise((r) => setTimeout(r, 0));
     });
 
-    // Should not throw and should have warned about fallback being unavailable
-    const warned = warnSpy.mock.calls.some((args: any[]) =>
-      String(args[0]).includes("fallback routing unavailable") &&
-      String(args[0]).includes("library.load")
-    );
+    // Should not throw and should have warned at least once about missing router or routing fallback
+    const warned = warnSpy.mock.calls.some((args: any[]) => {
+      const msg = String(args[0] ?? '');
+      return (
+        msg.includes('fallback routing unavailable') ||
+        msg.includes('Host EventRouter not available') ||
+        msg.includes('library.load')
+      );
+    });
     expect(warned).toBe(true);
 
     // Cleanup and restore

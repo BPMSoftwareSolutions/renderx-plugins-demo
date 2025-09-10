@@ -1,6 +1,8 @@
 // Vitest global test setup to bridge SDK -> host resolver and provide a safe default conductor
 import { resolveInteraction as hostResolve } from "../src/interactionManifest";
 import { EventRouter as HostEventRouter } from "../src/EventRouter";
+import * as Inventory from "../src/inventory";
+import { cssRegistry as HostCssRegistry } from "../src/cssRegistry/facade";
 
 // Ensure a minimal window exists
 if (typeof (globalThis as any).window === "undefined") {
@@ -21,6 +23,18 @@ if (!g.window.RenderX.EventRouter) {
     init: () => HostEventRouter.init(),
     getTopicsStats: () => HostEventRouter.getTopicsStats?.(),
   };
+}
+
+// Bridge inventory + cssRegistry facades for SDK delegation during tests
+if (!g.window.RenderX.inventory) {
+  g.window.RenderX.inventory = {
+    listComponents: Inventory.listComponents,
+    getComponentById: Inventory.getComponentById,
+    onInventoryChanged: Inventory.onInventoryChanged,
+  };
+}
+if (!g.window.RenderX.cssRegistry) {
+  g.window.RenderX.cssRegistry = HostCssRegistry;
 }
 
 // Provide a harmless default conductor so SDK useConductor() never throws

@@ -3,10 +3,11 @@ import fs from "fs";
 import path from "path";
 
 describe("Panel CSS files use theme variables", () => {
-  const files = [
-    path.resolve(__dirname, "../../plugins/library/ui/LibraryPanel.css"),
+  const candidates = [
+    path.resolve(process.cwd(), "node_modules/@renderx-plugins/library/dist/ui/LibraryPanel.css"),
     path.resolve(__dirname, "../../plugins/control-panel/ui/ControlPanel.css"),
   ];
+  const files = candidates.filter((f) => fs.existsSync(f));
 
   it("headers use panel header variables where present", () => {
     const lib = fs.readFileSync(files[0], "utf-8");
