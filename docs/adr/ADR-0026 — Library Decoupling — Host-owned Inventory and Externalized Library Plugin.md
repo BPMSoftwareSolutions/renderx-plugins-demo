@@ -130,6 +130,28 @@ renderx-plugin-library/                  # separate repo; externalized Library p
 - Manifest/host compatibility: minimal harness or mock to simulate host loading the UI module via package specifier.
 - Linting: boundary rule active in the plugin repo (no host internals, no cross-plugin imports).
 
+## Migration Strategy (Incremental Externalization)
+1) Temporary in-repo package
+- Move Library into /packages/renderx-plugin-library (workspace package)
+- Wire workspace build/lint/tests; enable boundary lint rules
+- Update plugin manifest to reference the workspace package specifier for UI/runtime
+- Gate to next phase when CI is green and no cross-plugin imports remain
+
+2) Pre-release npm package
+- Publish 0.x prerelease (or use npm pack/verdaccio) and validate install/import
+- Run plugin repo tests; verify `dist/index.js` exports are correct (types/ESM) and `sideEffects` config is accurate
+- Gate to next phase when package consumers pass smoke tests
+
+3) Host switches to npm package
+- Change host manifest to use @renderx-plugins/library from npm (feature-flag if needed)
+- Ensure runtimePackageLoaders and dev prebundle (optimizeDeps) include the package
+- Soak/stabilize; remove any residual repo-path assumptions
+
+4) Split repo and remove temporary package
+- Create standalone repo for renderx-plugin-library and migrate history
+- Remove /packages/renderx-plugin-library from host repo
+- Keep semver discipline; stabilize CI in both repos
+
 ## References
 - Issue #115 — Decouple Library Plugin: Host-owned Inventory via SDK, Externalize @renderx-plugins/library, and Enforce Boundaries
 - ADR-0023 — Host SDK and Plugin Decoupling
