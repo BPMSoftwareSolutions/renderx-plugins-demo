@@ -67,14 +67,10 @@ renderx-plugins-demo/                    # host repo
 ├─ src/
 │  ├─ conductor.ts                       # runtimePackageLoaders includes @renderx-plugins/library
 │  └─ ...
-└─ packages/
-   └─ host-sdk/
-      └─ src/
-         ├─ inventory.ts                 # list/get/observe inventory
-         └─ cssRegistry.ts               # css class registry facade
 
-# External plugin repo
-renderx-plugin-library/
+# External packages/repos (consumed via npm)
+@renderx-plugins/host-sdk                # separate repo; exposes inventory + cssRegistry facades
+renderx-plugin-library/                  # separate repo; externalized Library plugin
 ├─ package.json (exports ./dist/index.js)
 ├─ src/
 │  ├─ index.ts                           # export LibraryPanel, export async function register(conductor)
@@ -96,8 +92,8 @@ renderx-plugin-library/
 - Add import-path tests ensuring Library references SDK for inventory and cssRegistry.
 
 2) SDK + Host Aggregator
-- Add inventory API to the Host SDK.
-- Add cssRegistry facade to the Host SDK.
+- Update external @renderx-plugins/host-sdk to add inventory APIs.
+- Update external @renderx-plugins/host-sdk to add cssRegistry facade.
 - Implement host-side aggregator (dev/test: read /json-components; support runtime contributions).
 
 3) Library Refactor
@@ -122,6 +118,14 @@ renderx-plugin-library/
 - Runtime loading issues for external package → Prebundle config and runtimePackageLoader entries; CI E2E smoke.
 - API creep in inventory → Start minimal (list/get/observe); iterate under semver.
 - Transitional complexity → Feature flag + dual-mode support temporarily.
+
+## External Library Repo — Tests (Minimum Suite)
+- Unit: LibraryPanel renders from SDK-provided inventory stubs; mirrors data-* attributes; basic event/prop wiring.
+- Runtime registration: `register(conductor)` registers sequences; plugin id available to `play()`; no cross-plugin imports.
+- SDK integration: exercises `cssRegistry.has/create/update` via the SDK facade; no direct Control Panel import.
+- Packaging: `dist/index.js` exports (types/ESM), `sideEffects` correctness, importable via package specifier.
+- Manifest/host compatibility: minimal harness or mock to simulate host loading the UI module via package specifier.
+- Linting: boundary rule active in the plugin repo (no host internals, no cross-plugin imports).
 
 ## References
 - Issue #115 — Decouple Library Plugin: Host-owned Inventory via SDK, Externalize @renderx-plugins/library, and Enforce Boundaries
