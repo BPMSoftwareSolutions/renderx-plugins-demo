@@ -3,7 +3,7 @@ import {
   useConductor,
   resolveInteraction,
   EventRouter,
-} from "@renderx/host-sdk";
+} from "@renderx-plugins/host-sdk";
 import { useControlPanelSequences } from "./useControlPanelSequences";
 import type {
   SelectedElement,

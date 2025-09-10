@@ -3,7 +3,7 @@ import {
   useConductor,
   resolveInteraction,
   EventRouter,
-} from "@renderx/host-sdk";
+} from "@renderx-plugins/host-sdk";
 import type { SelectedElement } from "../types/control-panel.types";
 
 // Global guards to dedupe init across multiple hook instances/mounts
@@ -80,13 +80,15 @@ export function useControlPanelSequences() {
         return;
       }
 
-      try {
+      const hasHostRouter =
+        typeof globalThis !== "undefined" && !!(globalThis as any).RenderX?.EventRouter;
+      if (hasHostRouter) {
         EventRouter.publish(
           "control.panel.ui.render.requested",
           { selectedElement },
           conductor
         );
-      } catch {
+      } else {
         // Fallback to direct interaction routing
         try {
           const route = resolveInteraction("control.panel.ui.render");
@@ -116,7 +118,9 @@ export function useControlPanelSequences() {
     (fieldKey: string, value: any, selectedElement: SelectedElement | null) => {
       if (!conductor || !isInitialized || !selectedElement) return;
 
-      try {
+      const hasHostRouter =
+        typeof globalThis !== "undefined" && !!(globalThis as any).RenderX?.EventRouter;
+      if (hasHostRouter) {
         EventRouter.publish(
           "control.panel.ui.field.change.requested",
           {
@@ -126,7 +130,7 @@ export function useControlPanelSequences() {
           },
           conductor
         );
-      } catch {
+      } else {
         // Fallback to direct interaction routing
         try {
           const route = resolveInteraction("control.panel.ui.field.change");
@@ -148,7 +152,9 @@ export function useControlPanelSequences() {
     (field: any, value: any) => {
       if (!conductor || !isInitialized) return;
 
-      try {
+      const hasHostRouter =
+        typeof globalThis !== "undefined" && !!(globalThis as any).RenderX?.EventRouter;
+      if (hasHostRouter) {
         EventRouter.publish(
           "control.panel.ui.field.validate.requested",
           {
@@ -158,7 +164,7 @@ export function useControlPanelSequences() {
           },
           conductor
         );
-      } catch {
+      } else {
         // Fallback to direct interaction routing
         try {
           const route = resolveInteraction("control.panel.ui.field.validate");
@@ -176,13 +182,15 @@ export function useControlPanelSequences() {
     (sectionId: string) => {
       if (!conductor || !isInitialized) return;
 
-      try {
+      const hasHostRouter =
+        typeof globalThis !== "undefined" && !!(globalThis as any).RenderX?.EventRouter;
+      if (hasHostRouter) {
         EventRouter.publish(
           "control.panel.ui.section.toggle.requested",
           { sectionId },
           conductor
         );
-      } catch {
+      } else {
         // Fallback to direct interaction routing
         try {
           const route = resolveInteraction("control.panel.ui.section.toggle");

@@ -1,4 +1,4 @@
-import { EventRouter } from "@renderx/host-sdk";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 import {
   ensureOverlay,
   applyOverlayRectForEl,

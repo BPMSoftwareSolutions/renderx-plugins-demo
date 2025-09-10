@@ -1,6 +1,6 @@
 import React from "react";
 import type { FieldRendererProps } from "../../types/control-panel.types";
-import { useConductor, EventRouter } from "@renderx/host-sdk";
+import { useConductor, EventRouter } from "@renderx-plugins/host-sdk";
 
 type TreeNodeModel = {
   tag: string;

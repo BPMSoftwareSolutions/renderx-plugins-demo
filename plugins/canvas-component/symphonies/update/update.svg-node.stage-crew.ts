@@ -1,4 +1,4 @@
-import { EventRouter } from "@renderx/host-sdk";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 
 // Whitelist of allowed SVG attributes that can be safely updated
 const ALLOWED_SVG_ATTRIBUTES = new Set([

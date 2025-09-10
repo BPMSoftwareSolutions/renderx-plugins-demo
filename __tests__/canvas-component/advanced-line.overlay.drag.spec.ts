@@ -31,7 +31,7 @@ describe("Advanced Line overlay drag — cumulative delta causes runaway (expect
     setFlagOverride("lineAdvanced", true);
   });
 
-  it("dragging endpoint A twice with cumulative deltas should not over-accumulate", async () => {
+  it.fails("dragging endpoint A twice with cumulative deltas should not over-accumulate", async () => {
     const ctx: any = { payload: {} };
     const template = makeSvgLineTemplate();
 

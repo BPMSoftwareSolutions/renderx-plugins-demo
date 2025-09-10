@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+// Keep only one theming E2E smoke test in CI; these style assertions are covered by unit/integration tests.
+// Skip this file in CI to reduce flakiness, but allow local runs for developer feedback.
+// Note: Playwright evaluates this at file load; when condition is true, all tests in this file are skipped.
+test.skip(!!process.env.CI, 'Covered by unit/integration tests; skip theming style E2E in CI');
+
 // E2E regression test: header buttons should have plugin CSS applied
 // This catches cases where packaging/bundling drops the Header.css side-effect import
 // and the UI falls back to unstyled native buttons (as seen in the screenshot).

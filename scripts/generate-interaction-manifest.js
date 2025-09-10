@@ -17,7 +17,7 @@ import { promises as fs } from "fs";
 import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { buildInteractionManifest } from "../packages/manifest-tools/src/index.js";
+import { buildInteractionManifest } from "@renderx-plugins/manifest-tools";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

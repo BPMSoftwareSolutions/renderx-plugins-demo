@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initConductor, registerAllSequences } from "./conductor";
-import { initInteractionManifest, getInteractionManifestStats } from "./interactionManifest";
+import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./interactionManifest";
 import { initTopicsManifest, getTopicsManifestStats } from "./topicsManifest";
 import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
 import { EventRouter } from "./EventRouter";
@@ -18,6 +18,20 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     initTopicsManifest(),
     EventRouter.init(),
   ]);
+
+  // Expose host resolvers/routers for externalized plugins via Host SDK delegation
+  (window as any).RenderX = (window as any).RenderX || {};
+  if (!(window as any).RenderX.resolveInteraction) {
+    (window as any).RenderX.resolveInteraction = resolveInteraction;
+  }
+  if (!(window as any).RenderX.EventRouter) {
+    (window as any).RenderX.EventRouter = {
+      publish: (topic: string, payload: any, c?: any) => EventRouter.publish(topic, payload, c || conductor),
+      subscribe: (topic: string, cb: (p: any) => void) => EventRouter.subscribe(topic, cb),
+      init: () => EventRouter.init(),
+      getTopicsStats: () => ({}) as any,
+    } as any;
+  }
 
   if (!(typeof process !== 'undefined' && process.env?.RENDERX_DISABLE_STARTUP_VALIDATION === '1')) {
     try {

@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/manifest-tools"
   ],
   "scripts": {
-    "build:packages": "npm run -w @renderx/plugin-header build",
+    "build:packages": "echo skip-local-package-build",
     "dev": "npm run build:packages && npm run pre:manifests && vite",
     "build": "npm run build:packages && npm run pre:manifests && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
@@ -39,8 +39,9 @@
     "ci": "npm run lint && npm run build:packages && npm run pre:manifests && npm test && npm run e2e"
   },
   "dependencies": {
-    "@renderx/host-sdk": "file:packages/host-sdk",
-    "@renderx/plugin-header": "file:packages/renderx-plugin-header",
+    "@renderx-plugins/header": "^0.1.1",
+    "@renderx-plugins/host-sdk": "^0.1.0",
+    "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
     "musical-conductor": "^1.4.4",
     "react": "^19.1.1",

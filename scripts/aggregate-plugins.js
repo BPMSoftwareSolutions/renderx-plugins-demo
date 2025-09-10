@@ -111,6 +111,22 @@ async function aggregate() {
   // Merge
   const merged = { plugins: uniqueById([...(base.plugins || []), ...external.flatMap(e=>e.fragment.plugins || [])]) };
 
+  // Ensure external UI-only plugins also declare a runtime registration stub by default
+  // Rationale: some conductors warn if sequences mount before the plugin id is known.
+  // If a plugin entry lacks `runtime`, and its ui.module looks like a package specifier (bare or scoped),
+  // inject a default runtime pointing to the same module's exported `register`.
+  try {
+    for (const p of merged.plugins) {
+      const ui = p && p.ui;
+      const hasRuntime = p && p.runtime && p.runtime.module && p.runtime.export;
+      const mod = ui && typeof ui.module === 'string' ? ui.module : '';
+      const isBare = !!mod && !mod.startsWith('/') && !mod.startsWith('.') && !mod.startsWith('http://') && !mod.startsWith('https://');
+      if (!hasRuntime && isBare) {
+        p.runtime = { module: mod, export: 'register' };
+      }
+    }
+  } catch {}
+
   await fs.writeFile(generatedOut, JSON.stringify(merged, null, 2));
   console.log(`🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`);
   console.log(`   → ${generatedOut}`);

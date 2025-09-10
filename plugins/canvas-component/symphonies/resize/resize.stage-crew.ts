@@ -52,11 +52,13 @@ export const startResize = (data: any) => {
         rect.height || parseFloat(el.style.height) || 0
       );
       // Read current endpoints/control as px (fallbacks mirror recompute defaults)
-      const baseW = parseFloat(el.dataset.lineBaseW || "0") || 0;
-      const baseH = parseFloat(el.dataset.lineBaseH || "0") || 0;
       const x1 = readCssNumber(el, "--x1", 0);
       const y1 = readCssNumber(el, "--y1", 0);
-      const x2 = readCssNumber(el, "--x2", baseW || x1);
+      const x2 = readCssNumber(
+        el,
+        "--x2",
+        (parseFloat(el.dataset.lineBaseW || "0") || x1)
+      );
       const y2 = readCssNumber(el, "--y2", y1);
       const cx = readCssNumber(el, "--cx", (x1 + x2) / 2);
       const cy = readCssNumber(el, "--cy", (y1 + y2) / 2);

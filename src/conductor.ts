@@ -1,6 +1,24 @@
 import { normalizeHandlersImportSpec } from './handlersPath';
 
 
+
+// Resolve dynamic module specifiers (bare package names, paths, URLs) to importable URLs
+function resolveModuleSpecifier(spec: string): string {
+  try {
+    const resolver: any = (import.meta as any).resolve;
+    if (typeof resolver === 'function') {
+      return resolver(spec);
+    }
+  } catch {}
+  return spec; // Works for URLs and absolute/relative paths; bare specs may fail in native browser import
+}
+
+// Statically known runtime package loaders to ensure Vite can analyze and bundle
+const runtimePackageLoaders: Record<string, () => Promise<any>> = {
+  '@renderx-plugins/header': () => import('@renderx-plugins/header'),
+};
+
+
 export type ConductorClient = any;
 
 export async function initConductor(): Promise<ConductorClient> {
@@ -266,10 +284,7 @@ export async function loadJsonSequenceCatalogs(
 }
 
 export async function registerAllSequences(conductor: ConductorClient) {
-  // Mount sequences from JSON catalogs first (artifact or local mode)
-  await loadJsonSequenceCatalogs(conductor);
-
-  // Discover runtime registration modules via plugin manifest (ui + optional runtime section)
+  // 1) Discover runtime registration modules via plugin manifest (ui + optional runtime section)
   let manifest: any = null;
   try {
     // Browser first
@@ -309,12 +324,15 @@ export async function registerAllSequences(conductor: ConductorClient) {
   }
   const plugins = Array.isArray(manifest.plugins) ? manifest.plugins : [];
 
+  // 2) Register runtime modules BEFORE mounting JSON catalogs so plugin ids are known to the conductor
   for (const p of plugins) {
-    // optional runtime registration: { runtime: { module, export } }
     const runtime = p.runtime;
     if (!runtime || !runtime.module || !runtime.export) continue;
     try {
-      const mod = await import(/* @vite-ignore */ runtime.module);
+      const loader = runtimePackageLoaders[runtime.module];
+      const mod = loader
+        ? await loader()
+        : await import(/* @vite-ignore */ resolveModuleSpecifier(runtime.module));
       const reg = mod[runtime.export];
       if (typeof reg === 'function') {
         await reg(conductor);
@@ -324,6 +342,11 @@ export async function registerAllSequences(conductor: ConductorClient) {
       console.warn('⚠️ Failed runtime register for', p.id, e);
     }
   }
+
+  // 3) Mount sequences from JSON catalogs (artifact or local mode)
+  await loadJsonSequenceCatalogs(conductor);
+
+  // 4) Debug
   try {
     const ids = (conductor as any).getMountedPluginIds?.() || [];
     console.log('🔎 Mounted plugin IDs after registration:', ids);

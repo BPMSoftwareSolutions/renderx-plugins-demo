@@ -2,7 +2,7 @@ import {
   hideSelectionOverlay,
   showSelectionOverlay,
 } from "../select/select.stage-crew";
-import { EventRouter } from "@renderx/host-sdk";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 
 export type DragCallbacks = {
   onDragStart?: (info: {

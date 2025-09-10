@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { act } from "react";
 
 // Mock the host SDK
-vi.mock("@renderx/host-sdk", () => ({
+vi.mock("@renderx-plugins/host-sdk", () => ({
   useConductor: () => ({
     play: vi
       .fn()
@@ -46,7 +46,18 @@ vi.mock("@renderx/host-sdk", () => ({
   },
 }));
 
-describe("HeaderThemeToggle Button Text and Icon Updates", () => {
+// Test helper: wait until an element's textContent matches expected (with small timeout)
+async function waitForText(el: HTMLElement, expected: string, timeout = 300) {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    if (el.textContent?.trim() === expected) return;
+    await new Promise((res) => setTimeout(res, 10));
+  }
+  expect(el.textContent?.trim()).toBe(expected);
+}
+
+
+describe.sequential("HeaderThemeToggle Button Text and Icon Updates", () => {
   let container: HTMLDivElement;
   let root: ReturnType<typeof createRoot> | null = null;
 
@@ -63,7 +74,7 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
         display: flex;
         align-items: center;
       }
-      
+
       .header-theme-toggle {
         display: flex;
         align-items: center;
@@ -71,7 +82,7 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
         height: 100%;
         width: 100%;
       }
-      
+
       .header-theme-button {
         padding: 8px 16px;
         font-size: 12px;
@@ -87,7 +98,7 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
         align-items: center;
         gap: 6px;
       }
-      
+
       [data-theme="dark"] .header-theme-button {
         background: #f59e0b;
         color: #1f2937;
@@ -193,12 +204,9 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
       themeButton.click();
     });
 
-  // Wait a bit for async play() mock + state reconciliation
-  await new Promise((resolve) => setTimeout(resolve, 30));
-
-    // After click, should show "Light" (because we're now in dark mode)
-    expect(themeButton.textContent?.trim()).toBe("🌞 Light");
-  });
+  // Wait for button text to update to reflect dark mode
+  await waitForText(themeButton, "🌞 Light");
+});
 
   it("toggles back and forth correctly", async () => {
     // Start in light mode
@@ -229,14 +237,12 @@ describe("HeaderThemeToggle Button Text and Icon Updates", () => {
     act(() => {
       themeButton.click();
     });
-    await new Promise((resolve) => setTimeout(resolve, 10));
-    expect(themeButton.textContent?.trim()).toBe("🌞 Light");
+    await waitForText(themeButton, "🌞 Light");
 
     // Second click: switch back to light mode, should show "Dark" button
     act(() => {
       themeButton.click();
     });
-    await new Promise((resolve) => setTimeout(resolve, 10));
-    expect(themeButton.textContent?.trim()).toBe("🌙 Dark");
+    await waitForText(themeButton, "🌙 Dark");
   });
 });

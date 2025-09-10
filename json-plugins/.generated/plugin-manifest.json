@@ -4,24 +4,36 @@
       "id": "HeaderTitlePlugin",
       "ui": {
         "slot": "headerLeft",
-        "module": "@renderx/plugin-header",
+        "module": "@renderx-plugins/header",
         "export": "HeaderTitle"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/header",
+        "export": "register"
       }
     },
     {
       "id": "HeaderControlsPlugin",
       "ui": {
         "slot": "headerCenter",
-        "module": "@renderx/plugin-header",
+        "module": "@renderx-plugins/header",
         "export": "HeaderControls"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/header",
+        "export": "register"
       }
     },
     {
       "id": "HeaderThemePlugin",
       "ui": {
         "slot": "headerRight",
-        "module": "@renderx/plugin-header",
+        "module": "@renderx-plugins/header",
         "export": "HeaderThemeToggle"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/header",
+        "export": "register"
       }
     },
     {

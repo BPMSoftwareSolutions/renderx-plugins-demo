@@ -3,13 +3,14 @@ import {
   useConductor,
   resolveInteraction,
   EventRouter,
-} from "@renderx/host-sdk";
+} from "@renderx-plugins/host-sdk";
 import {
   groupComponentsByCategory,
   getCategoryDisplayName,
 } from "../utils/library.utils.js";
 import { LibraryPreview } from "./LibraryPreview";
 import "./LibraryPanel.css";
+import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 
 export function LibraryPanel() {
   const conductor = useConductor();
@@ -17,21 +18,37 @@ export function LibraryPanel() {
   const safeItems = Array.isArray(items) ? items : [];
 
   React.useEffect(() => {
-    try {
-      EventRouter.publish(
-        "library.load.requested",
-        {
+    const run = async () => {
+      try {
+        await EventRouter.publish(
+          "library.load.requested",
+          {
+            onComponentsLoaded: (list: any[]) => setItems(list),
+          },
+          conductor
+        );
+      } catch {}
+      // Always attempt a direct routing fallback as well (ensures behavior when host router is missing)
+      try {
+        const r = resolveInteraction("library.load");
+        if (!r?.pluginId || !r?.sequenceId) {
+          throw new Error("Unknown interaction 'library.load'");
+        }
+        await conductor?.play?.(r.pluginId, r.sequenceId, {
           onComponentsLoaded: (list: any[]) => setItems(list),
-        },
-        conductor
-      );
-    } catch {
-      // Fallback to direct interaction routing
-      const r = resolveInteraction("library.load");
-      conductor?.play?.(r.pluginId, r.sequenceId, {
-        onComponentsLoaded: (list: any[]) => setItems(list),
-      });
-    }
+        });
+      } catch (err) {
+        // Gate console usage by a feature flag per guardrails
+        if (isFlagEnabled("ui.layout-manifest")) {
+          console.warn(
+            "LibraryPanel: fallback routing unavailable (no host router and unknown interaction 'library.load').",
+            err
+          );
+        }
+      }
+
+    };
+    run();
   }, [conductor]);
 
   const groupedComponents = groupComponentsByCategory(safeItems);

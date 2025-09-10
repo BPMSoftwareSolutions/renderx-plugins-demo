@@ -9,7 +9,15 @@ import { mkdir, cp, writeFile } from 'fs/promises';
 import { createHash } from 'crypto';
 import { join } from 'path';
 // Lazy-load chokidar only if watch mode requested to avoid cost in CI
-import { buildInteractionManifest, buildTopicsManifest } from '../packages/manifest-tools/src/index.js';
+// Try to import optional local helpers; fall back to minimal builders if missing
+let buildInteractionManifest, buildTopicsManifest;
+try {
+  ({ buildInteractionManifest, buildTopicsManifest } = await import('../packages/manifest-tools/src/index.js'));
+} catch {
+  console.warn('manifest-tools not found; using minimal manifest builders');
+  buildInteractionManifest = () => ({ routes: {} });
+  buildTopicsManifest = () => ({ topics: {} });
+}
 import { promises as fs } from 'fs';
 
 const __dirname = new URL('.', import.meta.url).pathname;

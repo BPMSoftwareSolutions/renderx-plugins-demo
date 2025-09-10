@@ -50,6 +50,10 @@ describe('Startup log smoke', () => {
     const hasRegistered = /Sequence registered: Header UI Theme (Get|Toggle)/.test(content)
       || /Plugin mounted successfully: HeaderThemePlugin/.test(content);
     expect(hasRegistered, 'Expected header sequences to register; check handlersPath resolution and conductor mounting').toBe(true);
+
+    // Ensure no runtime registration errors for header plugins or bare-spec resolution failures
+    expect(content).not.toMatch(/Failed runtime register for Header(Title|Controls|Theme)Plugin/);
+    expect(content).not.toMatch(/Failed to resolve module specifier ['"]@renderx-plugins\/header['"]/);
   });
 });
 
