@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
-import { LibraryPreview } from "../../plugins/library/ui/LibraryPreview";
+import { LibraryPreview } from "../../packages/renderx-plugin-library/src/ui/LibraryPreview";
 
 function render(el: React.ReactElement) {
   const container = document.createElement("div");

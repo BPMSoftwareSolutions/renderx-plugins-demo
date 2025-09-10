@@ -5,7 +5,7 @@ import { describe, it, expect } from "vitest";
 describe("computePreviewModel", () => {
   it("maps tag, classes, css, and cssVariables into a PreviewModel", async () => {
     const { computePreviewModel } = await import(
-      "../../plugins/library/ui/preview.model"
+      "../../packages/renderx-plugin-library/src/ui/preview.model"
     );
 
     const component = {

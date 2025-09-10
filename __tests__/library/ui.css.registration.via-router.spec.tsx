@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { registerCssForComponents } from "../../plugins/library/ui/LibraryPanel";
+import { registerCssForComponents } from "../../packages/renderx-plugin-library/src/ui/LibraryPanel";
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
 // Minimal components with CSS content

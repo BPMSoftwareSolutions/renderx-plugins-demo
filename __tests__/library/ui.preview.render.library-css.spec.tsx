@@ -3,8 +3,8 @@ import { describe, it, expect } from "vitest";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
-import { LibraryPanel } from "../../plugins/library/ui/LibraryPanel";
-import { LibraryPreview } from "../../plugins/library/ui/LibraryPreview";
+import { LibraryPanel } from "../../packages/renderx-plugin-library/src/ui/LibraryPanel";
+import { LibraryPreview } from "../../packages/renderx-plugin-library/src/ui/LibraryPreview";
 
 describe("Library preview — JSON-driven fields (icon, name, description)", () => {
   it("renders LibraryPanel shell (rx-lib wrapper present)", () => {

@@ -6,7 +6,7 @@ import { describe, it, expect } from "vitest";
 describe("computePreviewModel — base fields and attribute pass-through", () => {
   it("maps base template fields and leaves library-specific CSS undefined", async () => {
     const { computePreviewModel } = await import(
-      "../../plugins/library/ui/preview.model"
+      "../../packages/renderx-plugin-library/src/ui/preview.model"
     );
 
     const component = {
@@ -31,7 +31,7 @@ describe("computePreviewModel — base fields and attribute pass-through", () =>
 
   it("passes through icon attributes from template", async () => {
     const { computePreviewModel } = await import(
-      "../../plugins/library/ui/preview.model"
+      "../../packages/renderx-plugin-library/src/ui/preview.model"
     );
 
     const component = {
