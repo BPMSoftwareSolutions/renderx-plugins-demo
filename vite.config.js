@@ -1,4 +1,4 @@
-// Vite config to externalize @renderx-plugins/host-sdk for Rollup
+// Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
 export default {
   resolve: {
     alias: {
@@ -12,7 +12,8 @@ export default {
   },
   build: {
     rollupOptions: {
-      external: ['@renderx-plugins/host-sdk']
+      // Do NOT externalize host-sdk for this app; we need it bundled for preview/E2E
+      // external: ['@renderx-plugins/host-sdk']
     }
   }
 };

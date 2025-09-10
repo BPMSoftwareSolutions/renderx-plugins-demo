@@ -1,4 +1,4 @@
-import { normalizeHandlersImportSpec } from './handlersPath';
+import { normalizeHandlersImportSpec, isBareSpecifier } from './handlersPath';
 // Statically known runtime package loaders to ensure Vite can analyze and bundle
 const runtimePackageLoaders = {
   '@renderx-plugins/header': () => import('@renderx-plugins/header'),
@@ -136,7 +136,13 @@ export async function loadJsonSequenceCatalogs(conductor, pluginIds) {
             // Normalize handlers import spec to support URLs, bare specifiers, and paths
             const spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
             let mod;
-            mod = await import(/* @vite-ignore */ spec);
+            // In browsers, dynamic import of a bare spec won't resolve in preview/prod.
+            // Use our static loader map for known packages when handlersPath is bare.
+            if (isBareSpecifier(handlersPath) && runtimePackageLoaders[handlersPath]) {
+                mod = await runtimePackageLoaders[handlersPath]();
+            } else {
+                mod = await import(/* @vite-ignore */ spec);
+            }
             const handlers = mod?.handlers || mod?.default?.handlers;
             if (!handlers) {
                 conductor.logger?.warn?.(`No handlers export found at ${handlersPath} for ${seq.id}`);
