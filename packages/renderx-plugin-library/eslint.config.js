@@ -7,6 +7,7 @@ export default [
   {
     ignores: ["dist/**", "build/**", "node_modules/**"],
   },
+  // Source files (strict plugin guardrails)
   {
     files: ["src/**/*.{ts,tsx,js,jsx}"],
     languageOptions: {
@@ -57,6 +58,24 @@ export default [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
+    },
+  },
+  // Tests (use TS parser; relax plugin boundary & globals in tests)
+  {
+    files: ["__tests__/**/*.{ts,tsx,js,jsx}"],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+    },
+    plugins: {
+      "@typescript-eslint": tseslint,
+    },
+    rules: {
+      "no-host-internals-in-plugins/no-host-internals-in-plugins": "off",
+      "cross-plugin-imports/no-cross-plugin-imports": "off",
+      "no-restricted-globals": "off",
+      // Ensure // eslint-disable-next-line no-var in TS global decls is considered used
+      "no-var": "error",
     },
   },
   // Relax global restrictions for symphony files which may need to detect global/window

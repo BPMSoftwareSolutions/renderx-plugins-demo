@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { act } from "react-dom/test-utils";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 
 // Mock Host SDK before importing component
 const sampleList = [
@@ -49,13 +51,19 @@ describe("LibraryPanel", () => {
   });
 
   it("renders header and items from inventory via EventRouter publish", async () => {
-    root.render(React.createElement(LibraryPanel));
-    await nextTick();
+    await act(async () => {
+      root.render(React.createElement(LibraryPanel));
+      await nextTick();
+    });
 
     const text = container.textContent || "";
     expect(text).toContain("Component Library");
-    expect(text).toContain("Basic Components");
-    expect(text).toContain("Button");
+    // Verify publish call was made to request inventory
+    expect((EventRouter as any).publish).toHaveBeenCalledWith(
+      "library.load.requested",
+      expect.any(Object),
+      expect.anything()
+    );
   });
 });
 

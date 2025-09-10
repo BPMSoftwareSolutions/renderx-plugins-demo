@@ -8,12 +8,13 @@ describe("@renderx-plugins/library package manifest/exports", () => {
     const pkg = JSON.parse(await readFile(pkgPath, "utf8"));
 
     expect(pkg.name).toBe("@renderx-plugins/library");
-    expect(pkg.main).toBe("dist/index.js");
-    expect(pkg.module ?? pkg.main).toBe("dist/index.js");
+    expect(String(pkg.main)).toMatch(/\.?\/dist\/index\.js$/);
+    expect(String(pkg.module ?? pkg.main)).toMatch(/\.?\/dist\/index\.js$/);
 
     // Exports map
-    expect(pkg.exports["."].import).toMatch(/\.\/dist\/index\.js$/);
-    expect(pkg.exports["./symphonies/*"].import).toMatch(/\.\/dist\/symphonies\/*\.js$/);
+    expect(String(pkg.exports["."].import)).toMatch(/\.\/dist\/index\.js$/);
+    const symImport = String(pkg.exports["./symphonies/*"].import);
+    expect(symImport.replace(/^\.\//, "")).toBe("dist/symphonies/*.js");
   });
 });
 

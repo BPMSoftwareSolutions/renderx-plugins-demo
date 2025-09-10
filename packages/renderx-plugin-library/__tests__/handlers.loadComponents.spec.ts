@@ -4,7 +4,6 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers } from "../src/symphonies/load.symphony";
 
 declare global {
-  // eslint-disable-next-line no-var
   var window: any;
 }
 
