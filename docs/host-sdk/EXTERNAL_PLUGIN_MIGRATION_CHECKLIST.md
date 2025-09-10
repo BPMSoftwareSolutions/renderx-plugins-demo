@@ -1,4 +1,4 @@
-## External Plugin Migration Checklist → @renderx/host-sdk
+## External Plugin Migration Checklist → @renderx-plugins/host-sdk
 
 This is the canonical, copy-pasteable checklist for migrating plugin repositories away from host internals (src/**) to the stable Host SDK package.
 
@@ -13,17 +13,17 @@ Related: ADR-0023, Issue #67
 - External repo: add a dependency
 
 ```bash
-npm install -D @renderx/host-sdk
+npm install -D @renderx-plugins/host-sdk
 ```
 
 ### 2) Replace imports with SDK equivalents
 Replace any imports from src/** with the SDK facade. Common mappings:
 
-- useConductor → from "@renderx/host-sdk"
-- EventRouter → from "@renderx/host-sdk"
-- resolveInteraction → from "@renderx/host-sdk"
-- isFlagEnabled, getFlagMeta → from "@renderx/host-sdk"
-- getTagForType, computeTagFromJson, mapJsonComponentToTemplate → from "@renderx/host-sdk" (if used)
+- useConductor → from "@renderx-plugins/host-sdk"
+- EventRouter → from "@renderx-plugins/host-sdk"
+- resolveInteraction → from "@renderx-plugins/host-sdk"
+- isFlagEnabled, getFlagMeta → from "@renderx-plugins/host-sdk"
+- getTagForType, computeTagFromJson, mapJsonComponentToTemplate → from "@renderx-plugins/host-sdk" (if used)
 
 Before:
 ```ts
@@ -33,7 +33,7 @@ import { resolveInteraction } from "../../../src/interactionManifest";
 ```
 After:
 ```ts
-import { useConductor, EventRouter, resolveInteraction } from "@renderx/host-sdk";
+import { useConductor, EventRouter, resolveInteraction } from "@renderx-plugins/host-sdk";
 ```
 
 ### 3) Eventing and routing
@@ -42,7 +42,7 @@ import { useConductor, EventRouter, resolveInteraction } from "@renderx/host-sdk
 - Do not bypass sequencing; conductor.play() is the required flow primitive
 
 ```ts
-import { useConductor, EventRouter, resolveInteraction } from "@renderx/host-sdk";
+import { useConductor, EventRouter, resolveInteraction } from "@renderx-plugins/host-sdk";
 
 const conductor = useConductor();
 await EventRouter.publish("canvas.component.drag.move", { id, position }, conductor);
@@ -80,8 +80,8 @@ Add these to your plugin repo to enforce boundaries and flags via ESLint (flat c
 // eslint.config.js
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
-import noHostInternalsInPlugins from "@renderx/host-sdk/eslint/no-host-internals-in-plugins.js"; // or copy the rule into your repo
-import featureFlags from "@renderx/host-sdk/eslint/feature-flags.js"; // optional if not vendoring
+import noHostInternalsInPlugins from "@renderx-plugins/host-sdk/eslint/no-host-internals-in-plugins.js"; // or copy the rule into your repo
+import featureFlags from "@renderx-plugins/host-sdk/eslint/feature-flags.js"; // optional if not vendoring
 
 export default [
   {
@@ -126,7 +126,7 @@ jobs:
 
 ### 10) Copy‑pasteable task list
 - [ ] Prereqs: align versions; confirm ESM build support
-- [ ] Install: add dependency on @renderx/host-sdk
+- [ ] Install: add dependency on @renderx-plugins/host-sdk
 - [ ] Replace imports with SDK equivalents
   - [ ] useConductor
   - [ ] EventRouter
@@ -143,7 +143,7 @@ jobs:
 
 ### Optional: codemod/regex quick swap
 Simple regex you can run in your editor to catch common cases:
-- Find: `from\s+"\.{1,2}\/\.\.\/\.\.\/src\/([^"]+)"` → Replace: `from "@renderx/host-sdk"`
+- Find: `from\s+"\.{1,2}\/\.\.\/\.\.\/src\/([^"]+)"` → Replace: `from "@renderx-plugins/host-sdk"`
 - And explicitly import the right symbols in each file as needed
 
 For more detail, see: docs/host-sdk/USING_HOST_SDK.md and ADR-0023.
