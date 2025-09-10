@@ -70,5 +70,29 @@ describe('Startup log smoke', () => {
     expect(errText).not.toContain("Failed to resolve module specifier '@renderx-plugins/library'");
   });
 
+  // Note: This reproduction was used to lock in the original dev-console symptom.
+  // Now that resolution is hardened, we keep this skipped to avoid brittle coupling
+  // to vitest-specific injection. Re-enable only when investigating regressions.
+  it.skip("emits library runtime register failure (historical reproduction)", async () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    vi.resetModules();
+    (globalThis as any).__RENDERX_FORCE_LIBRARY_RESOLUTION_ERROR = true;
+
+    try {
+      await import('../../src/main');
+      await new Promise((r) => setTimeout(r, 250));
+
+      const warnText = warnSpy.mock.calls.map((c) => String(c[0] ?? c.join(' '))).join('\n');
+      const errText = errSpy.mock.calls.map((c) => String(c[0] ?? c.join(' '))).join('\n');
+
+      expect(warnText).toContain('\u26a0\ufe0f Failed runtime register for LibraryPlugin');
+      expect(errText).toContain("Failed to resolve module specifier '@renderx-plugins/library'");
+    } finally {
+      delete (globalThis as any).__RENDERX_FORCE_LIBRARY_RESOLUTION_ERROR;
+    }
+  });
+
 });
 

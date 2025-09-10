@@ -97,6 +97,17 @@ export function PanelSlot({ slot }: { slot: string }) {
         if (!entry || !entry.ui)
           throw new Error(`No plugin UI found for slot ${slot}`);
         const requested = entry.ui.module;
+
+        // Test-only injection to simulate resolution failure for library UI module
+        const isTestEnv = typeof import.meta !== 'undefined' && !!(import.meta as any).vitest;
+        const forceLibraryResolutionError = isTestEnv && typeof globalThis !== 'undefined' && (globalThis as any).__RENDERX_FORCE_LIBRARY_RESOLUTION_ERROR === true;
+        if (forceLibraryResolutionError && requested === '@renderx-plugins/library') {
+          const err = new TypeError("Failed to resolve module specifier '@renderx-plugins/library'");
+          // Also mirror the runtime registration warning to reproduce dev-console symptom
+          console.warn('⚠️ Failed runtime register for', 'LibraryPlugin', err);
+          throw err;
+        }
+
         const loader = packageLoaders[requested];
         const mod = loader
           ? await loader()
