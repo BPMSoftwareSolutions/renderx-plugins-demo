@@ -36,6 +36,7 @@
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "e2e": "playwright test",
+    "ci:precheck": "node scripts/ci-precheck.js",
     "ci": "npm run lint && npm run build:packages && npm run pre:manifests && npm test && npm run e2e"
   },
   "dependencies": {
