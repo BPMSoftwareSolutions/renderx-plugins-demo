@@ -6,6 +6,9 @@
   "exports": {
     ".": {
       "import": "./src/index.ts"
+    },
+    "./symphonies/*": {
+      "import": "./src/symphonies/*"
     }
   }
 }

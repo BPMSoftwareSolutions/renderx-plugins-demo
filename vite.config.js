@@ -6,9 +6,7 @@ export default {
     alias: {
       // Allow code to import '@renderx/host-sdk' while resolving to the installed package
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
-      // Temporary in-repo alias for externalized Canvas packages (Phase 1)
-      '@renderx-plugins/canvas': path.resolve(process.cwd(), 'plugins/canvas/index.ts'),
-      '@renderx-plugins/canvas-component': path.resolve(process.cwd(), 'plugins/canvas-component'),
+
     },
   },
   optimizeDeps: {
