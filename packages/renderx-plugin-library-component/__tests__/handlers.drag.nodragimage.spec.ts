@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { handlers } from '../../../plugins/library-component/symphonies/drag.symphony';
+import { handlers } from '../src/symphonies/drag.symphony';
 
 describe('library-component drag handlers (no drag image support, package)', () => {
   it('onDragStart sets payload and returns { started: true } even without setDragImage', () => {

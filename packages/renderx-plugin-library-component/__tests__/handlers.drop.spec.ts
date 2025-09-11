@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { handlers } from '../../../plugins/library-component/symphonies/drop.symphony';
+import { handlers } from '../src/symphonies/drop.symphony';
 import { EventRouter } from '@renderx-plugins/host-sdk';
 
 vi.mock('@renderx-plugins/host-sdk', () => {

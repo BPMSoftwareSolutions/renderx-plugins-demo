@@ -10,7 +10,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['dist/**'],
   rules: {
-    // Disallow importing from host repo internals (temporary override below)
+    // Disallow importing from host repo internals
     'no-restricted-imports': [
       'error',
       { patterns: ['**/plugins/**'] },
@@ -18,11 +18,10 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/index.ts', '__tests__/**/*.ts'],
+      files: ['src/**/*.ts'],
       rules: {
-        // Temporary allowance until handlers are internalized into package src/
-        // Also allow tests to reach into host repo handlers until we internalize them
-        'no-restricted-imports': 'off',
+        // Disable host-repo-only custom topic validation inside the externalized package
+        'topics-keys/valid-topics': 'off',
       },
     },
   ],

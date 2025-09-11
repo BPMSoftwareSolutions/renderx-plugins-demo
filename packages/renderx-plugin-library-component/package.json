@@ -1,11 +1,12 @@
 {
   "name": "@renderx-plugins/library-component",
-  "version": "0.0.0-dev",
-  "private": true,
-  "description": "Temporary in-repo runtime package for Library-Component; to be externalized and published.",
+  "version": "0.1.0-rc.0",
+  "private": false,
+  "description": "Runtime for Library-Component drag/drop sequences (externalized).",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js"
   },
@@ -19,6 +20,12 @@
     "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
     "lint": "eslint src __tests__",
     "test": "vitest run"
+  },
+  "peerDependencies": {
+    "@renderx-plugins/host-sdk": "^0.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "license": "UNLICENSED"
 }

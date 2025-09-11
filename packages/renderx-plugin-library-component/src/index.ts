@@ -1,9 +1,9 @@
 // Temporary in-repo runtime package for Library-Component until externalized
 // Registers drag.start, drop (component), and drop (container) sequences using existing handlers.
 
-import { handlers as dragHandlers } from '../../../plugins/library-component/symphonies/drag.symphony';
-import { handlers as dropHandlers } from '../../../plugins/library-component/symphonies/drop.symphony';
-import { handlers as containerDropHandlers } from '../../../plugins/library-component/symphonies/drop.container.symphony';
+import { handlers as dragHandlers } from './symphonies/drag.symphony';
+import { handlers as dropHandlers } from './symphonies/drop.symphony';
+import { handlers as containerDropHandlers } from './symphonies/drop.container.symphony';
 
 export async function register(conductor: any) {
   if (!conductor?.mount) return;

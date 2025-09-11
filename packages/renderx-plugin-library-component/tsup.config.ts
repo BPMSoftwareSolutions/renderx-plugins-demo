@@ -3,8 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   tsconfig: 'tsconfig.build.json',
   entry: ['src/index.ts'],
-  // TODO: enable dts once handlers are internalized into src/
-  dts: false,
+  dts: true,
   format: ['esm'],
   sourcemap: true,
   clean: true,
