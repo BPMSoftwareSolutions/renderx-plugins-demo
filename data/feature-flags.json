@@ -97,6 +97,13 @@
     "description": "Enable runtime schema validation for EventRouter payloads in dev/test",
     "owner": "tooling"
   },
+  "lint.topics.warn-direct-invocation": {
+    "status": "off",
+    "created": "2025-09-11",
+    "description": "Warn when direct conductor.play is used for sequences that have topic routes (prefer EventRouter.publish).",
+    "owner": "tooling"
+  },
+
   "ui.layout-manifest": {
     "status": "on",
     "created": "2025-08-29",

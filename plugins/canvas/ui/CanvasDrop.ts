@@ -30,6 +30,9 @@ export async function onDropForTest(
     : canvasRect.top;
   const position = { x: e.clientX - baseLeft, y: e.clientY - baseTop };
 
+  // Use the payload's component as-is; no drop-time rehydration
+  const component = payload?.component;
+
   // Define drag callbacks that use conductor.play
   const onDragStart = (dragData: any) => {
     (globalThis as any).__cpDragInProgress = true;
@@ -138,7 +141,7 @@ export async function onDropForTest(
       EventRouter.publish(
         topicKey,
         {
-          component: payload.component,
+          component,
           position,
           containerId,
           onComponentCreated: onCreated,
@@ -156,7 +159,7 @@ export async function onDropForTest(
         : "library.component.drop";
       const r = resolveInteraction(routeKey);
       conductor?.play?.(r.pluginId, r.sequenceId, {
-        component: payload.component,
+        component,
         position,
         containerId,
         onComponentCreated: onCreated,
@@ -172,7 +175,7 @@ export async function onDropForTest(
       : "library.component.drop";
     const r = resolveInteraction(routeKey);
     conductor?.play?.(r.pluginId, r.sequenceId, {
-      component: payload.component,
+      component,
       position,
       containerId,
       onComponentCreated: onCreated,
