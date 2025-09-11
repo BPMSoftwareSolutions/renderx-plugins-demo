@@ -18,6 +18,8 @@ function createFakeConductor() {
 describe('@renderx-plugins/library-component runtime registration', () => {
   it('registerAllSequences() mounts library-component sequences exactly once (no duplicates from JSON catalogs)', async () => {
     const c = createFakeConductor();
+    // Use artifacts from public/ so JSON catalogs are available in tests
+    (process as any).env = { ...(process as any).env, HOST_ARTIFACTS_DIR: 'public' };
     await registerAllSequences(c as any);
 
     const ids = c.mounted.map((m: any) => m.seq?.id);

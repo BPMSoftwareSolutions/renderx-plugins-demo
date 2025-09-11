@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { register } from '../../packages/renderx-plugin-library-component/src/index';
+import { register } from '@renderx-plugins/library-component';
 
 function createFakeConductor() {
   const mounted: any[] = [];

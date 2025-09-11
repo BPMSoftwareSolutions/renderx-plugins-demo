@@ -17,6 +17,8 @@ describe("JSON loader — library-component sequences", () => {
       logger: { warn: vi.fn(), info: vi.fn() },
     } as any;
 
+    // Point loader to built artifacts in public/ (pre:manifests syncs node_modules catalogs there)
+    (process as any).env = { ...(process as any).env, HOST_ARTIFACTS_DIR: 'public' };
     await loadJsonSequenceCatalogs(conductor);
 
     // Filter to library-component mounts and verify ids
