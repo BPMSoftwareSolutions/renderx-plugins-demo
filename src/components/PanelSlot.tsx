@@ -82,6 +82,9 @@ function resolveModuleSpecifier(spec: string): string {
 const packageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/header': () => import('@renderx-plugins/header'),
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
+  // Pre-bundled first-party plugin paths (Vite will include these in build)
+  '/plugins/canvas/index.ts': () => import('../../plugins/canvas/index'),
+  '/plugins/control-panel/index.ts': () => import('../../plugins/control-panel/index'),
 };
 
 

@@ -30,6 +30,9 @@ const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/header': () => import('@renderx-plugins/header'),
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
+  // Pre-bundled first-party runtime modules (ensure availability under preview)
+  '/plugins/canvas/index.ts': () => import('../plugins/canvas/index'),
+  '/plugins/control-panel/index.ts': () => import('../plugins/control-panel/index'),
 };
 
 
