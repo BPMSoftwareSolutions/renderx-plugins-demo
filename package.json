@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:packages": "echo Skipping workspace package build; using @renderx-plugins/library-component from npm",
+    "build:packages": "echo Skipping workspace package build using @renderx-plugins/library-component from npm",
     "dev": "npm run build:packages && npm run pre:manifests && vite",
     "build": "npm run build:packages && npm run pre:manifests && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",

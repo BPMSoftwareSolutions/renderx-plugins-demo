@@ -1,5 +1,3 @@
-/* eslint-disable topics-keys/valid-topics */
-
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
