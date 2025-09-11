@@ -1,6 +1,6 @@
 # ADR-0027 — Library-Component Externalization: Drag/Drop Runtime via Host SDK
 
-Status: Proposed
+Status: In Progress
 Date: 2025-09-10
 Relates to: #122
 
@@ -103,6 +103,19 @@ renderx-plugin-library-component/
 - Plugin id/route drift → Keep existing ids and topic names; assert in tests.
 - Test flakiness (drag preview) → Keep tests DOM-light and deterministic; avoid timing-sensitive logic.
 - History migration complexity → Use `git subtree`/`git filter-repo` where needed; backup and verify.
+
+
+## Status Update
+As of 2025-09-11 (relates to #122):
+- Phase 1 (workspace package in host repo) is implemented:
+  - Temporary package `/packages/renderx-plugin-library-component` created with `register(conductor)`.
+  - Host manifest loads runtime via package specifier.
+  - Unit tests added in host repo: registration and handlers (drag no-image, drop, container-drop).
+  - Duplicate-mount prevention added (runtime marks mounted ids; catalog loader skips duplicates).
+  - Generated plugin manifest is ignored and untracked.
+- Next (Phase 1 wrap-up):
+  - Add package-local build/lint/test scaffolding for the temp package (tsup/rollup, vitest, ESLint boundaries).
+- Phase 2 (pre-release) and Phase 3 (host switch to npm) follow per Plan above.
 
 ## References
 - #122 — Decouple Library-Component: Externalize @renderx-plugins/library-component and Enforce Boundaries
