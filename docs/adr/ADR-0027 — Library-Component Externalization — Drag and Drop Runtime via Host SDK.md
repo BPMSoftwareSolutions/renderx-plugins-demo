@@ -1,6 +1,6 @@
 # ADR-0027 — Library-Component Externalization: Drag/Drop Runtime via Host SDK
 
-Status: In Progress
+Status: Accepted
 Date: 2025-09-10
 Relates to: #122
 
@@ -104,6 +104,11 @@ renderx-plugin-library-component/
 - Test flakiness (drag preview) → Keep tests DOM-light and deterministic; avoid timing-sensitive logic.
 - History migration complexity → Use `git subtree`/`git filter-repo` where needed; backup and verify.
 
+
+## Post-implementation updates (2025-09-11)
+- External package now ships json-sequences; host auto-discovers them via package.json renderx.sequences and syncs to public/ during build.
+- Tests that load catalogs set HOST_ARTIFACTS_DIR=public to source synced catalogs without carrying duplicates in repo.
+- Added guardrail: sync script fails if json-sequences/library-component exists locally to preserve single source of truth.
 
 ## Status Update
 As of 2025-09-11 (relates to #122):

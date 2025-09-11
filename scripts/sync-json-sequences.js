@@ -107,6 +107,16 @@ async function syncJsonSequences() {
   console.log("🔄 Syncing json-sequences/ to public/json-sequences/...");
   try {
     await ensureDir(targetDir);
+    // Guardrail: prevent repo from carrying local library-component catalogs once externalized
+    try {
+      const localLibCompDir = join(sourceDir, 'library-component');
+      const s = await stat(localLibCompDir).catch(() => null);
+      if (s && s.isDirectory()) {
+        console.error('❌ Detected local json-sequences/library-component in the host repo. This plugin\'s catalogs must come from @renderx-plugins/library-component. Please remove json-sequences/library-component/.');
+        process.exit(1);
+      }
+    } catch {}
+
     // Copy repo-local sequences first
     await copyTreeWithBase(sourceDir, targetDir, sourceDir);
 
