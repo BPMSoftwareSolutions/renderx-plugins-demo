@@ -1,6 +1,6 @@
 # ADR-0027 — Library-Component Externalization: Drag/Drop Runtime via Host SDK
 
-Status: Proposed
+Status: In Progress
 Date: 2025-09-10
 Relates to: #122
 
@@ -103,6 +103,28 @@ renderx-plugin-library-component/
 - Plugin id/route drift → Keep existing ids and topic names; assert in tests.
 - Test flakiness (drag preview) → Keep tests DOM-light and deterministic; avoid timing-sensitive logic.
 - History migration complexity → Use `git subtree`/`git filter-repo` where needed; backup and verify.
+
+
+## Status Update
+As of 2025-09-11 (relates to #122):
+- Phase 1 — Completed:
+  - Temporary package `/packages/renderx-plugin-library-component` created with `register(conductor)`.
+  - Host manifest loads runtime via package specifier.
+  - Unit tests added in host repo: registration and handlers (drag no-image, drop, container-drop).
+  - Duplicate-mount prevention added (runtime marks mounted ids; catalog loader skips duplicates).
+  - Generated plugin manifest is ignored and untracked.
+  - Package-local build/lint/test scaffolding added (tsup, vitest, ESLint boundaries).
+- Phase 2 — Completed (prerelease pack verification):
+  - Built and packed the package via `npm pack` → `packages/renderx-plugin-library-component/renderx-plugins-library-component-0.0.0-dev.tgz`.
+  - Consumer verification succeeded: dynamic import of `@renderx-plugins/library-component` with `register` available and callable.
+  - `sideEffects: false` confirmed; ESM entry works as a consumer dependency.
+  - Types temporarily omitted from exports; will re-enable `.d.ts` once handlers are internalized and tsup dts is enabled.
+  - Full repo test suite green post-change.
+- Next — Phase 3 plan:
+  - Add a host smoke path to load the runtime from the tarball (or verdaccio) to simulate bare specifier install end-to-end.
+  - Verify/adjust runtime loader mapping and Vite `optimizeDeps` for bare specifier consumption.
+  - Start external repo skeleton (README, CI, publish workflow) and migration checklist.
+  - Re-enable dts generation and restore `types` export after handler internalization.
 
 ## References
 - #122 — Decouple Library-Component: Externalize @renderx-plugins/library-component and Enforce Boundaries
