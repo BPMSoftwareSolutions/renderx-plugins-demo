@@ -5,7 +5,7 @@
   "type": "module",
   "workspaces": ["packages/*"],
   "scripts": {
-    "build:packages": "echo Skipping workspace package build using @renderx-plugins/library-component from npm",
+    "build:packages": "npm -w @renderx-plugins/canvas run build && npm -w @renderx-plugins/canvas-component run build",
     "dev": "npm run build:packages && npm run pre:manifests && vite",
     "build": "npm run build:packages && npm run pre:manifests && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",

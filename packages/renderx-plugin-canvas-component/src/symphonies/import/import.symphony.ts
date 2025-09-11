@@ -1,1 +1,1 @@
-export * from '../../../../../plugins/canvas-component/symphonies/import/import.symphony.ts';
+export * from '../../../../../plugins/canvas-component/symphonies/import/import.symphony';

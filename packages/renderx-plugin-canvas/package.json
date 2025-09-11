@@ -3,10 +3,12 @@
   "version": "0.0.0-private",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --out-dir dist --clean"
+  },
   "exports": {
     ".": {
       "import": "./src/index.ts"
     }
   }
 }
-

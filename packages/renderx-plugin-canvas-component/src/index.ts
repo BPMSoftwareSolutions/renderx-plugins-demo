@@ -1,2 +1,2 @@
-export { register } from '../../../plugins/canvas-component/index.ts';
+export { register } from '../../../plugins/canvas-component/index';
 
