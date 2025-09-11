@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "workspaces": ["packages/*"],
   "scripts": {
     "build:packages": "echo Skipping workspace package build using @renderx-plugins/library-component from npm",
     "dev": "npm run build:packages && npm run pre:manifests && vite",
