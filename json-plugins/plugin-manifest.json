@@ -37,10 +37,10 @@
       "id": "CanvasPlugin",
       "ui": {
         "slot": "canvas",
-        "module": "/plugins/canvas/index.ts",
+        "module": "@renderx-plugins/canvas",
         "export": "CanvasPage"
   },
-  "runtime": { "module": "/plugins/canvas/index.ts", "export": "register" }
+  "runtime": { "module": "@renderx-plugins/canvas", "export": "register" }
     },
     {
       "id": "ControlPanelPlugin",

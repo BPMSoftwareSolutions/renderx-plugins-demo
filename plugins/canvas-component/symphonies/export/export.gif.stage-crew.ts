@@ -1,8 +1,7 @@
 // Stage-crew handler: Export SVG component to GIF
-import GIF from "gif.js.optimized";
-import workerUrl from "gif.js.optimized/dist/gif.worker.js?url";
+// NOTE: Avoid top-level importing of gif.js in Node test env; lazily import in browser-only path
 
-function makeGifEncoder(
+async function makeGifEncoder(
   width: number,
   height: number,
   opts?: Partial<{
@@ -11,9 +10,13 @@ function makeGifEncoder(
     workers: number;
   }>
 ) {
+  const { default: GIF } = await import("gif.js.optimized");
+  const { default: workerUrl } = await import(
+    "gif.js.optimized/dist/gif.worker.js?url"
+  );
   return new GIF({
     workers: opts?.workers ?? 2,
-    workerScript: workerUrl,
+    workerScript: workerUrl as any,
     quality: opts?.quality ?? 10, // lower = better quality, slower
     repeat: opts?.repeat ?? 0, // 0=infinite
     width,
@@ -175,8 +178,8 @@ export async function exportSvgToGif(data: any, ctx: any) {
       return;
     }
 
-    // Encode GIF using gif.js
-    const gif = makeGifEncoder(width, height, {
+    // Encode GIF using gif.js (lazy-loaded)
+    const gif = await makeGifEncoder(width, height, {
       workers: 2,
       quality: 10,
       repeat: 0,
