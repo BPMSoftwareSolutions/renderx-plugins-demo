@@ -17,8 +17,8 @@
   "scripts": {
     "build": "tsup --config tsup.config.ts",
     "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
-    "lint": "eslint .",
-    "test": "vitest run --dir __tests__"
+    "lint": "eslint src __tests__",
+    "test": "vitest run"
   },
   "license": "UNLICENSED"
 }
