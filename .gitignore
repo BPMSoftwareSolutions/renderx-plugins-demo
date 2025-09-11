@@ -156,3 +156,4 @@ vite.config.ts.timestamp-*
 
 # Ignore generated plugin manifests
 json-plugins/.generated/
+/tmp/pack-verify-library-component

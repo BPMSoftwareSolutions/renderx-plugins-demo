@@ -25,8 +25,7 @@ function resolveModuleSpecifier(spec: string): string {
 const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/header': () => import('@renderx-plugins/header'),
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
-  // Temporary in-repo mapping for runtime-only library-component until externalized
-  '@renderx-plugins/library-component': () => import('/packages/renderx-plugin-library-component/src/index.ts'),
+  '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
 };
 
 
