@@ -1,1 +1,1 @@
-export * from '../../../../../plugins/canvas-component/symphonies/drag/drag.symphony';
+export * from '@renderx-plugins/canvas-component/symphonies/drag/drag.symphony';

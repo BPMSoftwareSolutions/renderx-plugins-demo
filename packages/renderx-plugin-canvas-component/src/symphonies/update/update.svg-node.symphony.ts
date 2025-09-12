@@ -1,1 +1,1 @@
-export * from '../../../../../plugins/canvas-component/symphonies/update/update.svg-node.symphony';
+export * from '@renderx-plugins/canvas-component/symphonies/update/update.svg-node.symphony';

@@ -1,2 +1,2 @@
-export { CanvasPage, register } from '../../../plugins/canvas/index';
+export { CanvasPage, register } from '@renderx-plugins/canvas';
 
