@@ -39,8 +39,8 @@
         "slot": "canvas",
         "module": "@renderx-plugins/canvas",
         "export": "CanvasPage"
-  },
-  "runtime": { "module": "@renderx-plugins/canvas", "export": "register" }
+      },
+      "runtime": { "module": "@renderx-plugins/canvas", "export": "register" }
     },
     {
       "id": "ControlPanelPlugin",
@@ -48,13 +48,16 @@
         "slot": "controlPanel",
         "module": "/plugins/control-panel/index.ts",
         "export": "ControlPanel"
-  },
-  "runtime": { "module": "/plugins/control-panel/index.ts", "export": "register" }
+      },
+      "runtime": { "module": "/plugins/control-panel/index.ts", "export": "register" }
     },
     {
       "id": "LibraryComponentPlugin",
       "runtime": { "module": "@renderx-plugins/library-component", "export": "register" }
+    },
+    {
+      "id": "CanvasComponentPlugin",
+      "runtime": { "module": "@renderx-plugins/canvas-component", "export": "register" }
     }
   ]
 }
-
