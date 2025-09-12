@@ -1,9 +1,15 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
+import path from 'node:path';
+
 export default {
   resolve: {
     alias: {
-      // Allow code to import '@renderx/host-sdk' while resolving to the installed package
+      // Host SDK alias (legacy import name)
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
+      // Force Canvas packages to resolve to built artifacts in node_modules (avoid src re-exports)
+      '@renderx-plugins/canvas': path.resolve(process.cwd(), 'plugins/canvas/index.ts'),
+      '@renderx-plugins/canvas-component': path.resolve(process.cwd(), 'plugins/canvas-component/index.ts'),
+      '@renderx-plugins/canvas-component/symphonies': path.resolve(process.cwd(), 'plugins/canvas-component/symphonies'),
     },
   },
   optimizeDeps: {

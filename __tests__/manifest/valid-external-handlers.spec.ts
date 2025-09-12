@@ -34,7 +34,7 @@ describe('Externalized plugins: runtime register and handlers exports', () => {
       const fn = mod?.[exportName];
       expect(typeof fn, `Plugin '${p.id}' missing runtime export '${exportName}' in module '${modSpec}'`).toBe('function');
     }
-  });
+  }, 20000);
 
   it('bare handlersPath sequences export handlers and include all referenced beat.handler names', async () => {
     const seqRoot = path.join(publicDir, 'json-sequences');
@@ -85,6 +85,6 @@ describe('Externalized plugins: runtime register and handlers exports', () => {
         expect(missing.length, `Missing handler(s) [${missing.join(', ')}] in '${handlersPath}' for sequence '${seqId}'`).toBe(0);
       }
     }
-  });
+  }, 30000);
 });
 

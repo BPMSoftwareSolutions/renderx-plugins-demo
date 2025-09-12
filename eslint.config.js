@@ -50,6 +50,7 @@ export default [
   {
     ignores: [
       "dist/**",
+      "**/dist/**",
       "build/**",
       "node_modules/**",
       ".vite/**",
@@ -62,6 +63,7 @@ export default [
     files: ["**/*.{ts,tsx,js,jsx}"],
     ignores: [
       "dist/**",
+      "**/dist/**",
       "build/**",
       "node_modules/**",
       ".vite/**",
