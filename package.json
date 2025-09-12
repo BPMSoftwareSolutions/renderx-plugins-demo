@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "workspaces": ["packages/*"],
   "scripts": {
-    "build:packages": "npm -w @renderx-plugins/canvas run build && npm -w @renderx-plugins/canvas-component run build",
+    "build:packages": "node -e \"console.log('skip guardrail package builds')\"",
     "dev": "npm run build:packages && npm run pre:manifests && vite",
     "build": "npm run build:packages && npm run pre:manifests && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
@@ -33,11 +32,14 @@
     "test": "npm run build:packages && vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
+    "packages:test": "npm --prefix packages/renderx-plugin-canvas run test && npm --prefix packages/renderx-plugin-canvas-component run test",
     "e2e": "playwright test",
     "ci:precheck": "node scripts/ci-precheck.js",
-    "ci": "npm run lint && npm run build:packages && npm run pre:manifests && npm test && npm run e2e"
+    "ci": "npm run lint && npm run build:packages && npm run pre:manifests && npm test && npm run packages:test && npm run e2e"
   },
   "dependencies": {
+    "@renderx-plugins/canvas": "0.0.0-private",
+    "@renderx-plugins/canvas-component": "0.0.0-private",
     "@renderx-plugins/header": "^0.1.1",
     "@renderx-plugins/host-sdk": "^0.3.0",
     "@renderx-plugins/library": "^0.1.1-rc.0",

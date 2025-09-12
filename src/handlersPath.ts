@@ -37,8 +37,24 @@ export function normalizeHandlersImportSpec(isBrowser: boolean, handlersPath: st
   if (isBrowser) {
     return raw.startsWith('/') ? raw : '/' + raw.replace(/^\.\/?/, '');
   } else {
-    // Do not rewrite bare specifiers in Node/test; let the bundler/test resolver handle them
-    if (isBare) return raw;
+    // In Node/test, prefer local sources for Canvas packages until published packages ship proper dist/exports
+    if (isBare) {
+      // Compute a Vite-friendly absolute FS path when possible so imports work regardless of caller location
+      let cwd = '';
+      try {
+        const proc: any = (globalThis as any).process;
+        if (proc && typeof proc.cwd === 'function') cwd = proc.cwd();
+      } catch {}
+      const base = cwd ? `/@fs/${String(cwd).replace(/\\/g, '/')}` : '';
+      if (raw === '@renderx-plugins/canvas') return base ? `${base}/plugins/canvas/index.ts` : '../plugins/canvas/index.ts';
+      if (raw === '@renderx-plugins/canvas-component') return base ? `${base}/plugins/canvas-component/index.ts` : '../plugins/canvas-component/index.ts';
+      if (raw.startsWith('@renderx-plugins/canvas-component/symphonies')) {
+        const suffix = raw.slice('@renderx-plugins/canvas-component/symphonies'.length);
+        return base ? `${base}/plugins/canvas-component/symphonies${suffix}` : `../plugins/canvas-component/symphonies${suffix}`;
+      }
+      // Fallback: let resolver handle other bare packages
+      return raw;
+    }
     return raw.startsWith('/') ? `..${raw}` : `../${raw.replace(/^\.\/?/, '')}`;
   }
 }

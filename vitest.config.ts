@@ -14,7 +14,10 @@ export default defineConfig({
     alias: {
       // Map legacy package name used in tests to the actual dependency
       "@renderx/host-sdk": "@renderx-plugins/host-sdk",
-
+      // Force Canvas packages to resolve to local sources during tests to avoid broken published src re-exports
+      "@renderx-plugins/canvas": path.resolve(process.cwd(), "plugins/canvas/index.ts"),
+      "@renderx-plugins/canvas-component": path.resolve(process.cwd(), "plugins/canvas-component/index.ts"),
+      "@renderx-plugins/canvas-component/symphonies": path.resolve(process.cwd(), "plugins/canvas-component/symphonies"),
     },
   },
 });
