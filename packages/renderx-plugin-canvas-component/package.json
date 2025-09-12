@@ -1,7 +1,7 @@
 {
   "name": "@renderx-plugins/canvas-component",
   "version": "0.0.0-private",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "tsup src/index.ts src/symphonies/**/*.ts --format esm --splitting --out-dir dist --clean",

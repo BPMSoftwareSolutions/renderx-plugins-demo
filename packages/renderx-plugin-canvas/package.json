@@ -1,7 +1,7 @@
 {
   "name": "@renderx-plugins/canvas",
   "version": "0.0.0-private",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "tsup src/index.ts --format esm --out-dir dist --clean",
