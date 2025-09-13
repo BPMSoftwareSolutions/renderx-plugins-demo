@@ -10,6 +10,7 @@
   },
   "exports": {
     ".": { "import": "./dist/index.js" },
+    "./symphonies/*.ts": { "import": "./dist/symphonies/*.js" },
     "./symphonies/*": { "import": "./dist/symphonies/*" }
   },
   "renderx": {

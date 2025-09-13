@@ -68,7 +68,6 @@ export function refreshControlPanel(data: any, ctx: any) {
           // Fallback to hardcoded values for test environment
         }
 
-        // eslint-disable-next-line play-routing/no-hardcoded-play-ids
         ctx.conductor.play(pluginId, sequenceId, {
           id: elementId,
           source: "attribute-update",
