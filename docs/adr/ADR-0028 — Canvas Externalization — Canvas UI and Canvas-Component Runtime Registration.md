@@ -39,3 +39,11 @@ Other plugins (Header, Library, Library-Component) already follow this pattern. 
 - Publish @renderx-plugins/canvas-component independently and move re-exports to true external package entry points.
 - Extend guardrails to assert no duplicate JSON mounts when registerAllSequences runs multiple times.
 
+
+
+## Status update — 2025-09-13
+- Phase 1 kicked off under issue #129.
+- Packages exist in-repo: `@renderx-plugins/canvas` (UI) and `@renderx-plugins/canvas-component` (runtime).
+- Idempotent `register(conductor)` guards implemented; sequence mounting remains via JSON catalogs.
+- Package-local tests added (export surfaces, register idempotency) — green.
+- CI E2E stabilized and green; next is host-level tests validating manifest routing and PanelSlot loading by specifier.
