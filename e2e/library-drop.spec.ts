@@ -27,11 +27,8 @@ test('library drop creates a canvas element', async ({ page }) => {
     return w.RenderX?.sequencesReady === true || !!w.renderxCommunicationSystem?.conductor;
   }, { timeout: 20000 });
 
-  // Additionally wait for critical plugin runtimes to be mounted
-  await page.waitForFunction(() => {
-    const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
-    return ids.includes('CanvasComponentPlugin') && ids.includes('ControlPanelPlugin');
-  }, { timeout: 30000 });
+  // Do not hard-block on conductor-mounted list; rely on sequencesReady and DOM checks.
+  // Some preview builds keep getMountedPluginIds empty while UI still functions.
 
   // Snapshot initial child count
   const before = await canvas.evaluate((el) => el.childElementCount);
