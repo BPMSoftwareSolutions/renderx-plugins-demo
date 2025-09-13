@@ -42,11 +42,7 @@ export function refreshControlPanel(data: any, ctx: any) {
 
   if (elementId && ctx?.conductor?.play) {
     try {
-      // Try to use resolveInteraction, fallback to direct route for tests
-      let pluginId = "ControlPanelPlugin";
-      let sequenceId = "control-panel-update-symphony";
-
-      // Try EventRouter first, fallback to direct routing
+      // Prefer EventRouter; if unavailable, resolve route and play using resolved IDs
       try {
         EventRouter.publish(
           "control.panel.update.requested",
@@ -58,20 +54,16 @@ export function refreshControlPanel(data: any, ctx: any) {
         );
       } catch {
         try {
-          const {
-            resolveInteraction,
-          } = require("../../../../src/interactionManifest");
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          const { resolveInteraction } = require("../../../../src/interactionManifest");
           const route = resolveInteraction("control.panel.update");
-          pluginId = route.pluginId;
-          sequenceId = route.sequenceId;
+          ctx.conductor.play(route.pluginId, route.sequenceId, {
+            id: elementId,
+            source: "attribute-update",
+          });
         } catch {
-          // Fallback to hardcoded values for test environment
+          // If resolveInteraction is not available in this environment, skip
         }
-
-        ctx.conductor.play(pluginId, sequenceId, {
-          id: elementId,
-          source: "attribute-update",
-        });
       }
     } catch (error) {
       ctx.logger?.warn?.(
