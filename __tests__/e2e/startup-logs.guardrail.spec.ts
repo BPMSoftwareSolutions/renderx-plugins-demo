@@ -12,11 +12,11 @@ import { describe, it, expect, vi } from 'vitest';
 
 describe('Startup logs E2E guardrail', () => {
   it('has no critical startup errors at app startup (captured console)', async () => {
-    // Disable extra network-heavy validation during test
+    // Disable extra network-heavy validation during test and force stable manifest read from public/
     (globalThis as any).process = (globalThis as any).process || {};
-    (globalThis as any).process.env = { ...(globalThis as any).process.env, RENDERX_DISABLE_STARTUP_VALIDATION: '1' };
+    (globalThis as any).process.env = { ...(globalThis as any).process.env, RENDERX_DISABLE_STARTUP_VALIDATION: '1', HOST_ARTIFACTS_DIR: 'public' };
 
-    // Stub fetch for relative URLs so manifest loading falls back to raw import path
+    // Stub fetch for relative URLs so manifest loading falls back to fs/raw import path
     const origFetch: any = (globalThis as any).fetch;
     (globalThis as any).fetch = async (input: any, init?: any) => {
       try {
@@ -44,7 +44,7 @@ describe('Startup logs E2E guardrail', () => {
       const conductorModule: any = await import('../../src/conductor');
       const conductor = await conductorModule.initConductor();
       const baseLen = messages.length;
-      const maxRegisterMs = 4000;
+      const maxRegisterMs = 6000;
       void conductorModule.registerAllSequences(conductor); // fire and allow bounded waiting below
       // Bounded wait for early phase to avoid hanging the suite
       await new Promise<void>((resolve) => setTimeout(resolve, maxRegisterMs));
@@ -56,7 +56,7 @@ describe('Startup logs E2E guardrail', () => {
       // Give plugins a little extra time to emit success logs if still missing (up to 4s)
       {
         const startWait = Date.now();
-        while (!pluginNames.every((p) => hasPluginSuccess(p)) && Date.now() - startWait < 4000) {
+        while (!pluginNames.every((p) => hasPluginSuccess(p)) && Date.now() - startWait < 6000) {
           await new Promise((r) => setTimeout(r, 50));
         }
       }

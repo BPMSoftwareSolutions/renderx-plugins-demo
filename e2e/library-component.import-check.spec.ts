@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+
+const isPreview = !!(globalThis as any).process?.env?.CI;
+// Dev-only: Vite /@id/ proxy is not available under preview/prod builds
+// Skip in CI where we run `vite preview`
+test.skip(isPreview, 'Dev-only test: /@id/ proxy not available in preview (CI)');
+
 // In modern browsers, bare specifiers are not natively resolvable without import maps.
 // Vite dev server exposes a stable /@id/ proxy for bare packages; assert that works.
 

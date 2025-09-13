@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+
+const isPreview = !!(globalThis as any).process?.env?.CI;
+// This test imports handlers via Vite's dev-only /@id/ proxy — not available in preview/prod
+// Skip in CI where we run `vite preview`
+test.skip(isPreview, 'Dev-only test: /@id/ proxy not available in preview (CI)');
+
 // Guardrail: validate that library-component catalogs are reachable and handlers resolve in-browser.
 // We avoid asserting strict mounted plugin IDs because mounting can be implementation-dependent across envs.
 
