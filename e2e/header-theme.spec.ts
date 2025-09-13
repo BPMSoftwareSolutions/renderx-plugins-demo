@@ -32,6 +32,13 @@ test('header theme toggles end-to-end', async ({ page }) => {
   // Wait for conductor to initialize and expose itself (used for introspection below)
   await page.waitForFunction(() => !!(window as any).renderxCommunicationSystem?.conductor, null, { timeout: 10_000 });
 
+
+  // Wait until HeaderThemePlugin is mounted to make the toggle deterministic in preview/CI
+  await page.waitForFunction(() => {
+    const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
+    return ids.includes('HeaderThemePlugin');
+  }, { timeout: 15000 });
+
   // If plugins failed to load at runtime, fail fast with details
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
   if (bad.length) {

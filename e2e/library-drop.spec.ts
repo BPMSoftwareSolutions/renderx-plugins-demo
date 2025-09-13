@@ -23,6 +23,12 @@ test('library drop creates a canvas element', async ({ page }) => {
   // Ensure all sequences are mounted/registered by the host
   await page.waitForFunction(() => !!(window as any).RenderX?.sequencesReady, { timeout: 10000 });
 
+  // Additionally wait for critical plugin runtimes to be mounted
+  await page.waitForFunction(() => {
+    const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
+    return ids.includes('CanvasComponentPlugin') && ids.includes('ControlPanelPlugin');
+  }, { timeout: 15000 });
+
   // Snapshot initial child count
   const before = await canvas.evaluate((el) => el.childElementCount);
 
@@ -36,13 +42,8 @@ test('library drop creates a canvas element', async ({ page }) => {
       (window as any).__createdCount = ((window as any).__createdCount || 0) + 1;
     });
 
-    // SDK router
-    try {
-      const sdk: any = await import('/@id/@renderx-plugins/host-sdk');
-      sdk?.EventRouter?.subscribe?.('canvas.component.created', () => {
-        (window as any).__createdCount = ((window as any).__createdCount || 0) + 1;
-      });
-    } catch {}
+    // SDK router removed for preview/prod compatibility (dev-only /@id/ proxy not available)
+    // Rely on host EventRouter subscription above to count creation events
   });
 
   // Publish a canvas create using a library component selection (robust to DnD variability)
