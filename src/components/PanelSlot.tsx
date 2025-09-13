@@ -122,9 +122,15 @@ export function PanelSlot({ slot }: { slot: string }) {
         }
 
         const loader = packageLoaders[requested];
-        const mod = loader
-          ? await loader()
-          : await import(/* @vite-ignore */ resolveModuleSpecifier(requested));
+          const specifier = resolveModuleSpecifier(requested);
+          if (specifier.startsWith('https:')) {
+            throw new Error(
+              `Unsupported module specifier: ${specifier}. Remote https: imports are not allowed in Node.js/Esm environments.`
+            );
+          }
+          const mod = loader
+            ? await loader()
+            : await import(/* @vite-ignore */ specifier);
         const Exported = mod[entry.ui.export] as
           | React.ComponentType
           | undefined;
