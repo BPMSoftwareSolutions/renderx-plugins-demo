@@ -1,7 +1,8 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import { initConductor, registerAllSequences } from "./conductor";
+// Force TS source to avoid stale compiled JS shadowing in dev
+import { initConductor, registerAllSequences } from "./conductor.ts";
 import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./interactionManifest";
 import { initTopicsManifest, getTopicsManifestStats } from "./topicsManifest";
 import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
@@ -46,6 +47,9 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   if (!(window as any).RenderX.cssRegistry) {
     (window as any).RenderX.cssRegistry = cssRegistry as any;
   }
+  // Signal that runtime registration and catalog mounting have completed
+  (window as any).RenderX.sequencesReady = true;
+
 
   if (!(typeof process !== 'undefined' && process.env?.RENDERX_DISABLE_STARTUP_VALIDATION === '1')) {
     try {

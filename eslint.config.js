@@ -18,6 +18,7 @@ import requireManifestValidation from "./eslint-rules/require-manifest-validatio
 import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugins.js";
 import crossPluginImports from "./eslint-rules/no-cross-plugin-imports.js";
 import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
+import requirePluginManifestFragment from "./eslint-rules/require-plugin-manifest-fragment.js";
 
 // Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
 // Patterns are built dynamically so existing rule logic (file-based heuristics) can operate transparently.
@@ -50,6 +51,7 @@ export default [
   {
     ignores: [
       "dist/**",
+      "**/dist/**",
       "build/**",
       "node_modules/**",
       ".vite/**",
@@ -62,6 +64,7 @@ export default [
     files: ["**/*.{ts,tsx,js,jsx}"],
     ignores: [
       "dist/**",
+      "**/dist/**",
       "build/**",
       "node_modules/**",
       ".vite/**",
@@ -92,6 +95,7 @@ export default [
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
       "cross-plugin-imports": crossPluginImports,
       "deprecate-stagecrew-api": deprecateStageCrew,
+      "plugin-manifest-fragment": requirePluginManifestFragment,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -108,6 +112,7 @@ export default [
       "layout-slot-registration/require-slot-manifest-registration": "error",
       "layout-logic/no-layout-logic-in-components": "error",
       "layout-manifest-validation/require-manifest-validation": "error",
+      "plugin-manifest-fragment/require-plugin-manifest-fragment": "error",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",

@@ -1,4 +1,6 @@
 import { defineConfig } from "vitest/config";
+import path from 'node:path';
+
 
 export default defineConfig({
   test: {
@@ -12,6 +14,7 @@ export default defineConfig({
     alias: {
       // Map legacy package name used in tests to the actual dependency
       "@renderx/host-sdk": "@renderx-plugins/host-sdk",
+
     },
   },
 });

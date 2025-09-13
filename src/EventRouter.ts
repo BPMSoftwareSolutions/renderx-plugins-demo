@@ -74,9 +74,11 @@ export const EventRouter = {
 
     // Perf guards
     let deliver = async (p: any) => {
-      // Route to sequences via conductor
+      // Route to sequences via conductor (pure dispatcher)
       for (const r of def.routes as TopicRoute[]) {
-        await conductor?.play?.(r.pluginId, r.sequenceId, p);
+        try {
+          await conductor?.play?.(r.pluginId, r.sequenceId, p);
+        } catch {}
       }
       // Notify subscribers
       const set = subscribers.get(topic);

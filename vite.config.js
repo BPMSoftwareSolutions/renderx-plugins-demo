@@ -1,14 +1,26 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
+import path from 'node:path';
+
 export default {
   resolve: {
     alias: {
-      // Allow code to import '@renderx/host-sdk' while resolving to the installed package
+      // Host SDK alias (legacy import name)
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
+      // Force dev to use package sources to avoid stale dist and ensure single React instance
+      '@renderx-plugins/canvas': path.resolve(process.cwd(), 'packages/renderx-plugin-canvas/src/index.ts'),
+      '@renderx-plugins/canvas-component': path.resolve(process.cwd(), 'packages/renderx-plugin-canvas-component/src/index.ts'),
     },
+    // Ensure a single React instance across host and plugins
+    dedupe: ['react', 'react-dom'],
   },
   optimizeDeps: {
-    // Ensure dev server prebundles external packages used by header & library plugins
-    include: ['@renderx-plugins/header', '@renderx-plugins/library', '@renderx-plugins/host-sdk'],
+    // Ensure dev server prebundles core external packages; canvas packages load from source via alias
+    include: [
+      '@renderx-plugins/header',
+      '@renderx-plugins/library',
+      '@renderx-plugins/library-component',
+      '@renderx-plugins/host-sdk'
+    ],
   },
   build: {
     rollupOptions: {

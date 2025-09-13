@@ -37,8 +37,10 @@ export function normalizeHandlersImportSpec(isBrowser: boolean, handlersPath: st
   if (isBrowser) {
     return raw.startsWith('/') ? raw : '/' + raw.replace(/^\.\/?/, '');
   } else {
-    // Do not rewrite bare specifiers in Node/test; let the bundler/test resolver handle them
-    if (isBare) return raw;
+    // In Node/test, let the resolver handle bare packages normally
+    if (isBare) {
+      return raw;
+    }
     return raw.startsWith('/') ? `..${raw}` : `../${raw.replace(/^\.\/?/, '')}`;
   }
 }

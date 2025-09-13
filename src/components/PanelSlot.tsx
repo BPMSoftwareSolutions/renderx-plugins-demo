@@ -1,4 +1,5 @@
 import React from "react";
+import { isBareSpecifier } from "../handlersPath";
 
 // Simple manifest-driven PanelSlot that lazy-loads a named export from plugin modules
 // Manifest format: { plugins: [ { id, ui: { slot, module, export } } ] }
@@ -66,15 +67,22 @@ export function __setPanelSlotManifestForTests(m: Manifest) {
 
 
 function resolveModuleSpecifier(spec: string): string {
-  // Browser: use import.meta.resolve to turn package specifiers (and other specs)
-  // into fully-qualified URLs that the browser can import dynamically.
+  // Prefer modern resolver when available
   try {
     const resolver: any = (import.meta as any).resolve;
     if (typeof resolver === 'function') {
-      return resolver(spec);
+      const r = resolver(spec);
+      if (typeof r === 'string' && r) return r;
     }
   } catch {}
-  // Fallback: return as-is (works for URLs; bare specifiers may fail in native browser import)
+  // Dev fallback: Vite's /@id proxy enables native dynamic import() in browser for bare specs
+  try {
+    const env: any = (import.meta as any).env;
+    if (env && env.DEV && isBareSpecifier(spec)) {
+      return '/@id/' + spec;
+    }
+  } catch {}
+  // Last resort
   return spec;
 }
 
@@ -82,6 +90,8 @@ function resolveModuleSpecifier(spec: string): string {
 const packageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/header': () => import('@renderx-plugins/header'),
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
+  '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
+  '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
   // Pre-bundled first-party plugin paths (Vite will include these in build)
   '/plugins/canvas/index.ts': () => import('../../plugins/canvas/index'),
   '/plugins/control-panel/index.ts': () => import('../../plugins/control-panel/index'),
@@ -112,9 +122,15 @@ export function PanelSlot({ slot }: { slot: string }) {
         }
 
         const loader = packageLoaders[requested];
-        const mod = loader
-          ? await loader()
-          : await import(/* @vite-ignore */ resolveModuleSpecifier(requested));
+          const specifier = resolveModuleSpecifier(requested);
+          if (specifier.startsWith('https:')) {
+            throw new Error(
+              `Unsupported module specifier: ${specifier}. Remote https: imports are not allowed in Node.js/Esm environments.`
+            );
+          }
+          const mod = loader
+            ? await loader()
+            : await import(/* @vite-ignore */ specifier);
         const Exported = mod[entry.ui.export] as
           | React.ComponentType
           | undefined;
