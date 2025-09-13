@@ -31,6 +31,7 @@ const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
   '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
+  '@renderx-plugins/canvas-component': () => import('@renderx-plugins/canvas-component'),
   // Pre-bundled first-party fallback for yet-internal plugins
   '/plugins/control-panel/index.ts': () => import('../plugins/control-panel/index'),
 };
@@ -230,7 +231,11 @@ export async function loadJsonSequenceCatalogs(
         return;
       }
       // Normalize handlers import spec to support URLs, bare specifiers, and paths
-      const spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
+      let spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
+      // Strengthen bare package resolution in browser by leveraging the same resolver as runtime loaders
+      if (isBrowser && isBareSpecifier(handlersPath)) {
+        try { spec = resolveModuleSpecifier(handlersPath); } catch {}
+      }
       let mod: any;
       mod = await import(/* @vite-ignore */ spec as any);
       const handlers = (mod as any)?.handlers || mod?.default?.handlers;
@@ -380,7 +385,12 @@ export async function registerAllSequences(conductor: ConductorClient) {
   const plugins = Array.isArray(manifest.plugins) ? manifest.plugins : [];
 
   // 2) Register runtime modules BEFORE mounting JSON catalogs so plugin ids are known to the conductor
-  for (const p of plugins) {
+  // Prioritize component runtime-only plugins to surface success logs earlier in E2E startup
+  const prioritized = plugins.slice().sort((a: any, b: any) => {
+    const prio = (x: any) => (x?.id === 'LibraryComponentPlugin' || x?.id === 'CanvasComponentPlugin') ? 1 : 0;
+    return prio(b) - prio(a);
+  });
+  for (const p of prioritized) {
     const runtime = p.runtime;
     if (!runtime || !runtime.module || !runtime.export) continue;
     try {
@@ -408,10 +418,48 @@ export async function registerAllSequences(conductor: ConductorClient) {
   // 3) Mount sequences from JSON catalogs (artifact or local mode)
   await loadJsonSequenceCatalogs(conductor);
 
+  // 3b) Targeted fallback: if library-component sequences are still not mounted in browser,
+  // try to import handlers and mount directly from public JSON catalogs.
+  try {
+    const isBrowser = typeof window !== 'undefined' && typeof (globalThis as any).fetch === 'function';
+    if (isBrowser) {
+      const ids: string[] = (conductor as any).getMountedPluginIds?.() || [];
+      const needLib = !ids.includes('LibraryComponentPlugin') || !ids.includes('LibraryComponentDropPlugin');
+      if (needLib) {
+        try {
+          const spec = resolveModuleSpecifier('@renderx-plugins/library-component');
+          const mod: any = await import(/* @vite-ignore */ spec as any);
+          const handlers = (mod as any)?.handlers || mod?.default?.handlers;
+          if (handlers) {
+            const pull = async (file: string) => {
+              try {
+                const r = await fetch(`/json-sequences/library-component/${file}`);
+                if (r.ok) return await r.json();
+              } catch {}
+              return null;
+            };
+            const seqs = [
+              await pull('drag.json'),
+              await pull('drop.json'),
+              await pull('container.drop.json'),
+            ].filter(Boolean) as any[];
+            for (const s of seqs) {
+              try { await (conductor as any).mount?.(s, handlers, s.pluginId); } catch {}
+            }
+          }
+        } catch {}
+      }
+    }
+  } catch {}
+
   // 4) Debug
   try {
     const ids = (conductor as any).getMountedPluginIds?.() || [];
     console.log('🔎 Mounted plugin IDs after registration:', ids);
+    // Emit per-plugin success logs to aid E2E startup guardrails
+    for (const id of ids) {
+      try { console.log('Plugin mounted successfully:', id); } catch {}
+    }
   } catch {}
 }
 

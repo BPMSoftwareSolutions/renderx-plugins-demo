@@ -3,9 +3,17 @@ import { registerAllSequences } from '../../src/conductor';
 
 function createFakeConductor() {
   const mounted: any[] = [];
+  const warnings: any[] = [];
   return {
     mounted,
-    logger: { warn: vi.fn(), info: vi.fn() },
+    warnings,
+    logger: {
+      warn: vi.fn((msg: string) => {
+        console.log('⚠️ Conductor warning:', msg);
+        warnings.push(msg);
+      }),
+      info: vi.fn()
+    },
     async mount(seq: any, _handlers: any, pluginId: string) {
       mounted.push({ seq, pluginId });
     },

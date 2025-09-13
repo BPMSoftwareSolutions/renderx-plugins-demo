@@ -46,6 +46,18 @@ describe('Startup logs E2E guardrail', () => {
         await new Promise((r) => setTimeout(r, 100));
       }
 
+      // Additional wait for per-plugin runtime registration logs (up to 2s)
+      const pluginNames = ['LibraryPlugin', 'CanvasPlugin', 'LibraryComponentPlugin', 'CanvasComponentPlugin'];
+      const hasPluginSuccess = (plugin: string) =>
+        messages.some((m) => new RegExp(`(Registered plugin runtime:|Plugin mounted successfully:)\\s*${plugin}`, 'i').test(m));
+      {
+        const startPlugins = Date.now();
+        while (!pluginNames.every((p) => hasPluginSuccess(p)) && Date.now() - startPlugins < 2000) {
+          await new Promise((r) => setTimeout(r, 100));
+        }
+      }
+
+
       const patterns: { name: string; regex: RegExp; hint?: string }[] = [
         {
           name: 'SequencesSystemFailed',
@@ -56,6 +68,21 @@ describe('Startup logs E2E guardrail', () => {
           name: 'ModuleResolveFailed',
           regex: /Failed to resolve module specifier\s+'@renderx-plugins\//i,
           hint: 'Bare package resolution failed — verify vite/vitest aliases or package install',
+        },
+        {
+          name: 'RuntimeRegisterFailed',
+          regex: /Failed runtime register for\s+(LibraryPlugin|CanvasPlugin|LibraryComponentPlugin|CanvasComponentPlugin)\b/i,
+          hint: 'A plugin failed to register at runtime — likely due to missing package resolution',
+        },
+        {
+          name: 'InvalidHookCall',
+          regex: /Invalid hook call\b/i,
+          hint: 'React hook misuse detected — often triggered by failed module resolution or multiple Reacts',
+        },
+        {
+          name: 'ReactUseStateNull',
+          regex: /Cannot read properties of null \(reading 'useState'\)/i,
+          hint: 'React rendering error during startup — check component mounts and provider setup',
         },
         {
           name: 'PluginNotFound',
@@ -73,6 +100,17 @@ describe('Startup logs E2E guardrail', () => {
       for (const msg of messages) {
         for (const p of patterns) {
           if (p.regex.test(msg)) offenders.push({ name: p.name, text: msg, hint: p.hint });
+        }
+      }
+
+      // Require successful runtime registration for each externalized plugin
+      for (const plugin of pluginNames) {
+        if (!hasPluginSuccess(plugin)) {
+          offenders.push({
+            name: 'PluginRuntimeNotRegistered',
+            text: `Missing runtime registration success log for ${plugin}`,
+            hint: 'Ensure register(conductor) logs plugin runtime registration and package resolves correctly',
+          });
         }
       }
 
