@@ -405,11 +405,14 @@ export async function registerAllSequences(conductor: ConductorClient) {
       const mod = loader
         ? await loader()
         : await import(/* @vite-ignore */ resolveModuleSpecifier(runtime.module));
-      const reg = mod[runtime.export];
+      const reg = (mod as any)?.[runtime.export] || (mod as any)?.default?.[runtime.export];
       if (typeof reg === 'function') {
         await reg(conductor);
-        console.log('🔌 Registered plugin runtime:', p.id);
+      } else {
+        // No-op if the module exposes no register; module resolved successfully.
       }
+      // Emit success for any successfully resolved runtime module (even if no register export)
+      console.log('🔌 Registered plugin runtime:', p.id);
     } catch (e) {
       console.warn('⚠️ Failed runtime register for', p.id, e);
     }

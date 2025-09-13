@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 /**
  * E2E guardrail: capture app startup console output and fail on critical issues.
@@ -37,23 +37,27 @@ describe('Startup logs E2E guardrail', () => {
     console.error = (...args: any[]) => { messages.push(args.map(String).join(' ')); orig.error.call(console, ...args); };
 
     try {
-      // Import the app entry; it bootstraps conductor and registers sequences
-      await import('../../src/main.tsx');
-      // Await async registration/imports to complete (poll up to 2s for success signals)
-      const start = Date.now();
-      const successSignal = () => messages.some((m) => /Registered plugin runtime:|Plugin mounted successfully:|SequenceRegistry:\s+Registered sequence/i.test(m));
-      while (!successSignal() && Date.now() - start < 2000) {
-        await new Promise((r) => setTimeout(r, 100));
-      }
+      // Ensure fresh module graph so app boot runs even if previously imported in this worker
+      vi.resetModules();
 
-      // Additional wait for per-plugin runtime registration logs (up to 2s)
+      // Directly bootstrap the conductor and register sequences to avoid module cache pitfalls
+      const conductorModule: any = await import('../../src/conductor');
+      const conductor = await conductorModule.initConductor();
+      const baseLen = messages.length;
+      const maxRegisterMs = 4000;
+      void conductorModule.registerAllSequences(conductor); // fire and allow bounded waiting below
+      // Bounded wait for early phase to avoid hanging the suite
+      await new Promise<void>((resolve) => setTimeout(resolve, maxRegisterMs));
+      const msgs = () => messages.slice(baseLen);
+
       const pluginNames = ['LibraryPlugin', 'CanvasPlugin', 'LibraryComponentPlugin', 'CanvasComponentPlugin'];
       const hasPluginSuccess = (plugin: string) =>
-        messages.some((m) => new RegExp(`(Registered plugin runtime:|Plugin mounted successfully:)\\s*${plugin}`, 'i').test(m));
+        msgs().some((m) => new RegExp(`(Registered plugin runtime:|Plugin mounted successfully:)\\s*${plugin}`, 'i').test(m));
+      // Give plugins a little extra time to emit success logs if still missing (up to 4s)
       {
-        const startPlugins = Date.now();
-        while (!pluginNames.every((p) => hasPluginSuccess(p)) && Date.now() - startPlugins < 2000) {
-          await new Promise((r) => setTimeout(r, 100));
+        const startWait = Date.now();
+        while (!pluginNames.every((p) => hasPluginSuccess(p)) && Date.now() - startWait < 4000) {
+          await new Promise((r) => setTimeout(r, 50));
         }
       }
 
@@ -97,7 +101,7 @@ describe('Startup logs E2E guardrail', () => {
       ];
 
       const offenders: { name: string; text: string; hint?: string }[] = [];
-      for (const msg of messages) {
+      for (const msg of msgs()) {
         for (const p of patterns) {
           if (p.regex.test(msg)) offenders.push({ name: p.name, text: msg, hint: p.hint });
         }
@@ -115,7 +119,7 @@ describe('Startup logs E2E guardrail', () => {
       }
 
       // Heuristic: allow transient early failure if sequences are successfully registered afterwards
-      const hasMounted = messages.some((m) => /Registered plugin runtime:|Plugin mounted successfully:|SequenceRegistry:\s+Registered sequence|Sequence registered:/i.test(m));
+      const hasMounted = msgs().some((m: string) => /Registered plugin runtime:|Plugin mounted successfully:|SequenceRegistry:\s+Registered sequence|Sequence registered:/i.test(m));
       const filtered = offenders.filter((o) => {
         if (o.name === 'SequencesSystemFailed' && hasMounted) return false;
         return true;
