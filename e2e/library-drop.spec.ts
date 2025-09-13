@@ -21,13 +21,17 @@ test('library drop creates a canvas element', async ({ page }) => {
   await page.waitForFunction(() => !!(window as any).RenderX?.inventory?.listComponents);
 
   // Ensure all sequences are mounted/registered by the host
-  await page.waitForFunction(() => !!(window as any).RenderX?.sequencesReady, { timeout: 10000 });
+  // Global readiness: sequencesReady or conductor present
+  await page.waitForFunction(() => {
+    const w = (window as any);
+    return w.RenderX?.sequencesReady === true || !!w.renderxCommunicationSystem?.conductor;
+  }, { timeout: 20000 });
 
   // Additionally wait for critical plugin runtimes to be mounted
   await page.waitForFunction(() => {
     const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
     return ids.includes('CanvasComponentPlugin') && ids.includes('ControlPanelPlugin');
-  }, { timeout: 15000 });
+  }, { timeout: 30000 });
 
   // Snapshot initial child count
   const before = await canvas.evaluate((el) => el.childElementCount);

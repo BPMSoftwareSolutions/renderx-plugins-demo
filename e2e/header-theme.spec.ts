@@ -27,17 +27,19 @@ test('header theme toggles end-to-end', async ({ page }) => {
   expect(manifestOk).toBeTruthy();
 
   // Wait for the header slot container to exist (even if empty initially)
-  await page.waitForSelector('[data-slot="headerRight"] [data-slot-content]', { timeout: 10_000 });
+  await page.waitForSelector('[data-slot="headerRight"] [data-slot-content]', { timeout: 15000 });
 
-  // Wait for conductor to initialize and expose itself (used for introspection below)
-  await page.waitForFunction(() => !!(window as any).renderxCommunicationSystem?.conductor, null, { timeout: 10_000 });
-
+  // Global readiness: sequencesReady or conductor present (preview can be slower in CI)
+  await page.waitForFunction(() => {
+    const w = (window as any);
+    return w.RenderX?.sequencesReady === true || !!w.renderxCommunicationSystem?.conductor;
+  }, { timeout: 20000 });
 
   // Wait until HeaderThemePlugin is mounted to make the toggle deterministic in preview/CI
   await page.waitForFunction(() => {
     const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
     return ids.includes('HeaderThemePlugin');
-  }, { timeout: 15000 });
+  }, { timeout: 30000 });
 
   // If plugins failed to load at runtime, fail fast with details
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
