@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { collectLayoutData } from "../../plugins/canvas-component/symphonies/export/export.stage-crew";
+import { collectLayoutData } from "@renderx-plugins/canvas-component/symphonies/export/export.stage-crew.ts";
 
 function makeCtx() {
   return {
@@ -21,8 +21,7 @@ function makeCtx() {
 describe("canvas-component export.stage-crew", () => {
   beforeEach(() => {
     // Set up canvas container
-    document.body.innerHTML =
-      '<div id="rx-canvas" style="position: relative;"></div>';
+    document.body.innerHTML = '<div id="rx-canvas" style="position: relative;"></div>';
   });
 
   describe("collectLayoutData", () => {
@@ -118,7 +117,7 @@ describe("canvas-component export.stage-crew", () => {
     it("should collect canvas metadata", () => {
       const ctx = makeCtx();
 
-      const canvas = document.getElementById("rx-canvas")!;
+      const canvas = document.getElementById("rx-canvas")! as HTMLDivElement;
       canvas.style.width = "1200px";
       canvas.style.height = "800px";
 
@@ -167,3 +166,4 @@ describe("canvas-component export.stage-crew", () => {
     });
   });
 });
+

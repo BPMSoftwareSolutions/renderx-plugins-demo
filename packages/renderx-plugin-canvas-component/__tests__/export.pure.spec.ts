@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { buildUiFileContent } from "../../plugins/canvas-component/symphonies/export/export.pure";
+import { buildUiFileContent } from "@renderx-plugins/canvas-component/symphonies/export/export.pure.ts";
 
 function makeCtx() {
   return {
@@ -214,10 +214,9 @@ describe("canvas-component export.pure", () => {
       buildUiFileContent({}, ctx);
 
       const timestamp = ctx.payload.uiFileContent.metadata.createdAt;
-      expect(timestamp).toMatch(
-        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/
-      );
+      expect(timestamp).toMatch(/^^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$$/);
       expect(new Date(timestamp).getTime()).toBeGreaterThan(0);
     });
   });
 });
+

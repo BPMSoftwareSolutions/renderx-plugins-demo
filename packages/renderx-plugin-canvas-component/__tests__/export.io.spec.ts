@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { queryAllComponents } from "../../plugins/canvas-component/symphonies/export/export.io";
+import { queryAllComponents } from "@renderx-plugins/canvas-component/symphonies/export/export.io.ts";
 
 function makeCtx() {
   const ops: any[] = [];
@@ -205,3 +205,4 @@ describe("canvas-component export.io", () => {
     });
   });
 });
+
