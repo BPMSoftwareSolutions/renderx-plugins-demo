@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony";
+import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.stage-crew";
 
 function makeSvgLineTemplate() {
   return {
@@ -46,7 +46,7 @@ describe("SVG Line component", () => {
     expect(styleEl?.textContent || "").toContain(".rx-line .segment");
   });
 
-  it("resizes using standard overlay handlers and keeps element dimensions updated", () => {
+  it("resizes via stage-crew updateSize and keeps element dimensions updated", () => {
     const ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
@@ -60,7 +60,7 @@ describe("SVG Line component", () => {
     expect(el.style.width).toBe("120px");
     expect(el.style.height).toBe("60px");
 
-    // Simulate conductor-driven resize move (SE handle semantics are managed by overlay; here we just call updateSize)
+    // Simulate resize move (SE handle semantics are managed by overlay; here we just call updateSize)
     const payload = {
       id,
       dir: "se",
@@ -73,7 +73,7 @@ describe("SVG Line component", () => {
       phase: "move",
     } as any;
 
-    resizeMoveHandlers.updateSize?.(payload, {} as any);
+    resizeHandlers.updateSize?.(payload, {} as any);
 
     expect(el.style.width).toBe("150px");
     expect(el.style.height).toBe("70px");
