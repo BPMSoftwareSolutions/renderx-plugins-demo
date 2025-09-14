@@ -1,7 +1,8 @@
 {
   "name": "@renderx-plugins/canvas",
   "version": "0.1.0-rc.0",
-  "private": true,
+  "publishConfig": { "access": "public" },
+  "files": ["dist"],
   "type": "module",
   "keywords": ["renderx-plugin"],
   "scripts": {
