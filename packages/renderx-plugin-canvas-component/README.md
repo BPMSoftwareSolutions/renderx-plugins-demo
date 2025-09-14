@@ -99,3 +99,30 @@ Inherits root project license (clarify on extraction / publish).
 
 ---
 Purpose-built for performance, resilience, and incremental evolution—this interaction layer lets the Canvas stay visually simple while complex orchestration scales independently.
+
+
+## Test Harness: Host-like click→select
+Use the shared harness in tests to emulate host routing from DOM clicks to the canvas.component.select interaction.
+
+Example:
+
+```ts
+import { setupHostClickToSelect } from "./helpers/host-click-select";
+
+const conductor = { play: vi.fn() };
+const teardown = setupHostClickToSelect(() => conductor);
+
+document.getElementById("b1")!.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+expect(conductor.play).toHaveBeenCalledWith(
+  "CanvasComponentPlugin",
+  "canvas-component-select-symphony",
+  { id: "b1" }
+);
+
+teardown();
+```
+
+Notes:
+- Tests should mock @renderx-plugins/host-sdk where needed (resolveInteraction, useConductor, isFlagEnabled).
+- Prefer package subpath imports (e.g., @renderx-plugins/canvas-component/symphonies/*) over repo-relative paths.
+- Keep host-only integration/E2E tests in the host app.
