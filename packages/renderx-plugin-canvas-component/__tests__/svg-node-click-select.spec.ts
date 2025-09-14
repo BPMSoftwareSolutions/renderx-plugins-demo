@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 
 function makeSvgTemplateWithNestedChildren() {
   return {
@@ -85,3 +85,4 @@ describe("SVG sub-node click-to-select functionality", () => {
     expect(svg).toBeTruthy();
   });
 });
+

@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+const DIAG = process.env.RX_E2E_DIAG === '1' || process.env.RX_E2E_DIAG === 'true';
+
 
 // Smoke test: ensure the HeaderThemePlugin UI mounts and toggles the theme end-to-end
 // Assumptions:
@@ -52,7 +54,7 @@ test('header theme toggles end-to-end', async ({ page }) => {
     const mounted = typeof c?.getMountedPluginIds === 'function' ? c.getMountedPluginIds() : null;
     return { discovered, mounted };
   });
-  console.log('Header E2E diagnostics:', JSON.stringify(diag));
+  if (DIAG) console.log('Header E2E diagnostics:', JSON.stringify(diag));
 
   // Now wait for the actual toggle button to become visible
   const toggle = page.getByTitle('Toggle Theme');
@@ -88,7 +90,7 @@ test('header theme toggles end-to-end', async ({ page }) => {
 
   const outcome: any = await outcomeHandle.jsonValue();
   if (!outcome.changed) {
-    console.log('Header E2E: no plugins available in preview; treating as inconclusive pass.');
+    if (DIAG) console.log('Header E2E: no plugins available in preview; treating as inconclusive pass.');
     return; // preview without mounted plugins
   }
 
