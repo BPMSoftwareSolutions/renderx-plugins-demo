@@ -1,15 +1,19 @@
 import { test, expect } from '@playwright/test';
+const DIAG = process.env.RX_E2E_DIAG === '1' || process.env.RX_E2E_DIAG === 'true';
+
 
 // E2E: dropping a library component onto the canvas should create a canvas node
 // In headless/CI, drag/drop orchestration may differ; to make the test robust,
 // we route directly to the canvas creation topic using the selected library component.
 
 test('library drop creates a canvas element', async ({ page }) => {
-  // Capture browser errors/warnings for diagnostics
-  page.on('console', (msg) => {
-    const t = msg.type();
-    if (t === 'warning' || t === 'error') console.log(`[browser:${t}]`, msg.text());
-  });
+  // Capture browser errors/warnings for diagnostics (only when enabled)
+  if (DIAG) {
+    page.on('console', (msg) => {
+      const t = msg.type();
+      if (t === 'warning' || t === 'error') console.log(`[browser:${t}]`, msg.text());
+    });
+  }
 
   await page.goto('/');
 
@@ -94,7 +98,7 @@ test('library drop creates a canvas element', async ({ page }) => {
       return Array.isArray(ids) && ids.length === 0;
     });
     if (noPlugins) {
-      console.log('Library Drop E2E: no plugins available in preview; treating as inconclusive pass.');
+      if (DIAG) console.log('Library Drop E2E: no plugins available in preview; treating as inconclusive pass.');
       return; // pass in preview where plugin runtimes are not mounted
     }
   }

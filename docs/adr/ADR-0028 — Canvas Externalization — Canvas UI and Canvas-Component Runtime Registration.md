@@ -64,4 +64,6 @@ Other plugins (Header, Library, Library-Component) already follow this pattern. 
 
 ### Notes
 - This is a logging-order refinement only; no change to runtime behavior beyond when the success message is emitted.
+- E2E diagnostics can be enabled locally by setting RX_E2E_DIAG=1 (CI remains quiet by default).
+
 - Future phases will address prerelease publishing and host switching to npm-installed packages.
