@@ -1,10 +1,10 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import {
   updateSvgNodeAttribute,
   refreshControlPanel,
-} from "../../plugins/canvas-component/symphonies/update/update.svg-node.stage-crew";
+} from "@renderx-plugins/canvas-component/symphonies/update/update.svg-node.stage-crew.ts";
 
 function makeSvgTemplateWithNestedChildren() {
   return {
@@ -46,7 +46,7 @@ describe("SVG node update functionality", () => {
       '<div id="rx-canvas" style="position:relative; left:0; top:0; width:900px; height:600px"></div>';
   });
 
-  it("should update rect fill attribute correctly", async () => {
+  it("updates rect fill attribute correctly", async () => {
     const ctx = makeCtx();
     const template = makeSvgTemplateWithNestedChildren();
 
@@ -84,11 +84,10 @@ describe("SVG node update functionality", () => {
     });
   });
 
-  it("should update circle radius attribute correctly", async () => {
+  it("updates circle radius attribute correctly", async () => {
     const ctx = makeCtx();
     const template = makeSvgTemplateWithNestedChildren();
 
-    // Create the SVG component
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } } as any, ctx);
 
@@ -101,7 +100,6 @@ describe("SVG node update functionality", () => {
     expect(circle).toBeTruthy();
     expect(circle.getAttribute("r")).toBe("15");
 
-    // Update the radius attribute
     await updateSvgNodeAttribute(
       {
         id: svgId,
@@ -112,15 +110,13 @@ describe("SVG node update functionality", () => {
       ctx
     );
 
-    // Check that the attribute was updated
     expect(circle.getAttribute("r")).toBe("25");
   });
 
-  it("should remove attribute when value is null or empty", async () => {
+  it("removes attribute when value is null or empty", async () => {
     const ctx = makeCtx();
     const template = makeSvgTemplateWithNestedChildren();
 
-    // Create the SVG component
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } } as any, ctx);
 
@@ -132,7 +128,6 @@ describe("SVG node update functionality", () => {
 
     expect(rect.getAttribute("fill")).toBe("#ccc");
 
-    // Remove the fill attribute by setting it to null
     await updateSvgNodeAttribute(
       {
         id: svgId,
@@ -143,15 +138,13 @@ describe("SVG node update functionality", () => {
       ctx
     );
 
-    // Check that the attribute was removed
     expect(rect.getAttribute("fill")).toBeNull();
   });
 
-  it("should reject non-whitelisted attributes", async () => {
+  it("rejects non-whitelisted attributes", async () => {
     const ctx = makeCtx();
     const template = makeSvgTemplateWithNestedChildren();
 
-    // Create the SVG component
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } } as any, ctx);
 
@@ -161,7 +154,6 @@ describe("SVG node update functionality", () => {
     const rect = svg.querySelector('rect[id="outer"]') as SVGRectElement;
     const svgId = svg.id;
 
-    // Try to update a non-whitelisted attribute
     await updateSvgNodeAttribute(
       {
         id: svgId,
@@ -172,18 +164,16 @@ describe("SVG node update functionality", () => {
       ctx
     );
 
-    // Should not have updated the attribute
     expect(rect.getAttribute("onclick")).toBeNull();
     expect(ctx.logger.warn).toHaveBeenCalledWith(
       "SVG attribute 'onclick' is not allowed for security reasons"
     );
   });
 
-  it("should handle invalid paths gracefully", async () => {
+  it("handles invalid paths gracefully", async () => {
     const ctx = makeCtx();
     const template = makeSvgTemplateWithNestedChildren();
 
-    // Create the SVG component
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } } as any, ctx);
 
@@ -192,7 +182,6 @@ describe("SVG node update functionality", () => {
     ) as SVGSVGElement;
     const svgId = svg.id;
 
-    // Try to update with an invalid path
     await updateSvgNodeAttribute(
       {
         id: svgId,
@@ -203,28 +192,25 @@ describe("SVG node update functionality", () => {
       ctx
     );
 
-    // Should log a warning about invalid path
     expect(ctx.logger.warn).toHaveBeenCalledWith(
       expect.stringContaining("Invalid path segment")
     );
   });
 
-  it("should handle refresh control panel function", () => {
+  it("handles refresh control panel function", () => {
     const ctx = makeCtx();
     ctx.payload.elementId = "test-svg-id";
 
-    // Test that the function runs without errors
     expect(() => refreshControlPanel({}, ctx)).not.toThrow();
   });
 
-  it("should handle missing element ID in refresh gracefully", () => {
+  it("handles missing element ID in refresh gracefully", () => {
     const ctx = makeCtx();
-    // No elementId in payload
 
-    // Test that the function runs without errors
     expect(() => refreshControlPanel({}, ctx)).not.toThrow();
     expect(ctx.logger.warn).toHaveBeenCalledWith(
       "No element ID found for Control Panel refresh"
     );
   });
 });
+
