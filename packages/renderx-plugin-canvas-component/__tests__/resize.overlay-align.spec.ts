@@ -1,10 +1,8 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
-import { handlers as resizeStartHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.start.symphony";
-import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
-import { handlers as resizeEndHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.end.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
+import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.symphony.ts";
 
 function makeTemplate() {
   return {
@@ -40,11 +38,11 @@ describe("selection overlay remains aligned with component after resize (conduct
     const conductor = {
       play: (_pluginId: string, seqId: string, payload: any) => {
         if (seqId === "canvas-component-resize-start-symphony") {
-          resizeStartHandlers.startResize?.(payload, {});
+          resizeHandlers.startResize?.(payload, {});
         } else if (seqId === "canvas-component-resize-move-symphony") {
-          resizeMoveHandlers.updateSize?.(payload, {});
+          resizeHandlers.updateSize?.(payload, {});
         } else if (seqId === "canvas-component-resize-end-symphony") {
-          resizeEndHandlers.endResize?.(payload, {});
+          resizeHandlers.endResize?.(payload, {});
         }
       },
     };
@@ -65,7 +63,6 @@ describe("selection overlay remains aligned with component after resize (conduct
       new MouseEvent("mouseup", { clientX: 230, clientY: 220, bubbles: true })
     );
 
-    // Failing expectation (current behavior in jsdom: overlay width/height derive from getBoundingClientRect: 0)
     // Desired: overlay style matches element style
     expect(overlay.style.width).toBe(el.style.width);
     expect(overlay.style.height).toBe(el.style.height);
@@ -73,3 +70,4 @@ describe("selection overlay remains aligned with component after resize (conduct
     expect(overlay.style.top).toBe(el.style.top);
   });
 });
+

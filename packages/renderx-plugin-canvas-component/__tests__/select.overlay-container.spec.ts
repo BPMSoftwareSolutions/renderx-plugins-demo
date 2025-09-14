@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { showSelectionOverlay } from "../../plugins/canvas-component/symphonies/select/select.stage-crew";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
 
 describe("selection overlay positions correctly for children inside container", () => {
   beforeEach(() => {
@@ -45,8 +45,8 @@ describe("selection overlay positions correctly for children inside container", 
     const childId = ctx2.payload.nodeId as string;
     const childEl = document.getElementById(childId)! as HTMLElement;
 
-    // Show selection overlay for child
-    showSelectionOverlay({ id: childId });
+    // Show selection overlay for child (provide minimal conductor)
+    showSelectionOverlay({ id: childId }, { conductor: { play: () => {} } as any });
 
     const overlay = document.getElementById("rx-selection-overlay") as HTMLDivElement;
     expect(overlay).toBeTruthy();

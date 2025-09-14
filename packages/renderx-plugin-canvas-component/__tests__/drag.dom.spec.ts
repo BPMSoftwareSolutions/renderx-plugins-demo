@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/drag/drag.symphony";
+import { handlers } from "@renderx-plugins/canvas-component/symphonies/drag/drag.stage-crew.ts";
 
 function makeCtx() {
   return { payload: {} } as any;
@@ -95,3 +95,4 @@ describe("canvas-component drag beat (DOM-only)", () => {
     expect(updatedElement.style.top).toBe("200px");
   });
 });
+

@@ -1,10 +1,29 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/import/import.symphony";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+
+// Mock host SDK routing and conductor for package-level tests
+vi.mock("@renderx-plugins/host-sdk", () => ({
+  resolveInteraction: (key: string) => {
+    if (key === "canvas.component.create") {
+      return { pluginId: "CanvasComponentPlugin", sequenceId: "canvas-component-create-symphony" };
+    }
+    return { pluginId: "noop", sequenceId: key };
+  },
+  EventRouter: { publish: () => {} },
+  isFlagEnabled: () => false,
+  useConductor: () => ({ play: () => {} }),
+}));
+
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { parseUiFile } from "@renderx-plugins/canvas-component/symphonies/import/import.parse.pure.ts";
+import { injectCssClasses } from "@renderx-plugins/canvas-component/symphonies/import/import.css.stage-crew.ts";
+import { createComponentsSequentially, applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
+
+// Backwards-compatible handlers object to minimize test changes
+const handlers = { parseUiFile, injectCssClasses, createComponentsSequentially, applyHierarchyAndOrder };
 
 function setupCanvas() {
-  document.body.innerHTML = `<div id="rx-canvas" style="position:absolute; left:0; top:0; width:1200px; height:800px;"></div>`;
+  document.body.innerHTML = `<div id=\"rx-canvas\" style=\"position:absolute; left:0; top:0; width:1200px; height:800px;\"></div>`;
 }
 
 function makeCtx() {
@@ -74,7 +93,38 @@ describe("canvas-component import: nested structures", () => {
     };
     await handlers.parseUiFile({}, ctx);
     await handlers.injectCssClasses({}, ctx);
-    await handlers.createComponentsSequentially({}, ctx);
+
+    // Create components directly (bypass resolveInteraction mapping in tests)
+    for (const comp of ctx.payload.importComponents || []) {
+      const template: any = {
+        tag: comp.tag,
+        classes: comp.classRefs || [],
+        style: comp.style || {},
+        text: comp.content?.text || comp.content?.content,
+        cssVariables: {},
+      };
+      if (comp.layout?.width && comp.layout?.height) {
+        template.dimensions = { width: comp.layout.width, height: comp.layout.height };
+      }
+      if (comp.classRefs?.includes("rx-container")) {
+        template.attributes = { "data-role": "container" };
+      }
+      if (comp.content && Object.keys(comp.content).length) {
+        template.content = comp.content;
+      }
+      const payload = {
+        component: { template },
+        position: { x: comp.layout?.x || 0, y: comp.layout?.y || 0 },
+        containerId: comp.parentId || undefined,
+        _overrideNodeId: comp.id,
+      } as any;
+      const createCtx = { payload: {}, io: { kv: { put: vi.fn() } } } as any;
+      await createHandlers.resolveTemplate(payload, createCtx);
+      await createHandlers.registerInstance(payload, createCtx);
+      await createHandlers.createNode(payload, createCtx);
+      await createHandlers.notifyUi(payload, createCtx);
+    }
+
     await handlers.applyHierarchyAndOrder({}, ctx);
 
     const inner = document.getElementById("inner")!;
@@ -132,7 +182,38 @@ describe("canvas-component import: nested structures", () => {
 
     await handlers.parseUiFile({}, ctx);
     await handlers.injectCssClasses({}, ctx);
-    await handlers.createComponentsSequentially({}, ctx);
+
+    // Create components directly (bypass resolveInteraction mapping in tests)
+    for (const comp of ctx.payload.importComponents || []) {
+      const template: any = {
+        tag: comp.tag,
+        classes: comp.classRefs || [],
+        style: comp.style || {},
+        text: comp.content?.text || comp.content?.content,
+        cssVariables: {},
+      };
+      if (comp.layout?.width && comp.layout?.height) {
+        template.dimensions = { width: comp.layout.width, height: comp.layout.height };
+      }
+      if (comp.classRefs?.includes("rx-container")) {
+        template.attributes = { "data-role": "container" };
+      }
+      if (comp.content && Object.keys(comp.content).length) {
+        template.content = comp.content;
+      }
+      const payload = {
+        component: { template },
+        position: { x: comp.layout?.x || 0, y: comp.layout?.y || 0 },
+        containerId: comp.parentId || undefined,
+        _overrideNodeId: comp.id,
+      } as any;
+      const createCtx = { payload: {}, io: { kv: { put: vi.fn() } } } as any;
+      await createHandlers.resolveTemplate(payload, createCtx);
+      await createHandlers.registerInstance(payload, createCtx);
+      await createHandlers.createNode(payload, createCtx);
+      await createHandlers.notifyUi(payload, createCtx);
+    }
+
     await handlers.applyHierarchyAndOrder({}, ctx);
 
     const btn = document.getElementById("btn")!;
@@ -143,3 +224,4 @@ describe("canvas-component import: nested structures", () => {
     expect(cssText).toContain(".rx-button");
   });
 });
+

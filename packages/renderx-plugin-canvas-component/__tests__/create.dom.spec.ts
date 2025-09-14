@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { handlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 
 function makeTemplate() {
   return {
@@ -49,3 +49,4 @@ describe("canvas-component create beat (DOM-only)", () => {
     expect(styleTag).toBeTruthy();
   });
 });
+

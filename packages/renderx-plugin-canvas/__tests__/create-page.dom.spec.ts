@@ -1,7 +1,26 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
-import { onDropForTest } from "../../plugins/canvas/ui/CanvasDrop";
+// Mock host SDK to make this package-level test self-contained
+vi.mock("@renderx-plugins/host-sdk", () => {
+  return {
+    isFlagEnabled: () => false,
+    EventRouter: {
+      publish: () => {
+        throw new Error("no router");
+      },
+    },
+    resolveInteraction: (key: string) => {
+      if (key === "library.component.drop") {
+        return { pluginId: "LibraryComponentDropPlugin", sequenceId: "library-component-drop-symphony" };
+      }
+      if (key === "canvas.component.select") {
+        return { pluginId: "CanvasComponentPlugin", sequenceId: "canvas-component-select-symphony" };
+      }
+      throw new Error("Unknown interaction key: " + key);
+    },
+  } as any;
+});
 
 // This ensures Canvas UI does not render nodes; stage-crew/DOM handler is responsible
 
@@ -21,6 +40,7 @@ describe("CanvasPage drop orchestration (no UI node rendering)", () => {
       currentTarget: { getBoundingClientRect: () => ({ left: 0, top: 0 }) },
     };
 
+    const { onDropForTest } = await import("../src/ui/CanvasDrop");
     await onDropForTest(fakeEvent, conductor);
 
     const found = calls.find((c) => c[0] === "LibraryComponentDropPlugin" && c[1] === "library-component-drop-symphony");
