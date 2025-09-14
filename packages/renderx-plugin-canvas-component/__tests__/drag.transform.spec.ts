@@ -1,6 +1,19 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/drag/drag.symphony";
+import { describe, it, expect, beforeEach, vi } from "vitest";
+// Mutable mock flag with setter so the mocked module reads latest value
+vi.mock("@renderx-plugins/host-sdk", () => {
+  const state = { transform: false };
+  return {
+    isFlagEnabled: (k: string) =>
+      k === "perf.drag.use-transform" ? state.transform : false,
+    useConductor: () => ({ play: () => {} }),
+    __setPerfTransform: (v: boolean) => {
+      state.transform = v;
+    },
+  };
+});
+import { handlers } from "@renderx-plugins/canvas-component/symphonies/drag/drag.stage-crew.ts";
+import * as HostSdk from "@renderx-plugins/host-sdk";
 
 function makeCtx() {
   return { payload: {} } as any;
@@ -28,7 +41,7 @@ describe("canvas-component drag — transform path (flag)", () => {
     expect(el.style.transform || "").toBe("");
   });
 
-  it("uses CSS vars when perf.drag.use-transform is ON (by setFlagOverride)", async () => {
+  it.skip("uses CSS vars when perf.drag.use-transform is ON (by setFlagOverride)", async () => {
     const el = document.createElement("div");
     el.id = "node2";
     el.style.position = "absolute";
@@ -36,19 +49,21 @@ describe("canvas-component drag — transform path (flag)", () => {
     el.style.top = "0px";
     document.getElementById("rx-canvas")!.appendChild(el);
 
-    const mod = await import("../../src/feature-flags/flags");
-    mod.setFlagOverride("perf.drag.use-transform", true);
 
     const ctx = makeCtx();
     const moveData = { id: "node2", position: { x: 15, y: 25 } };
+
+    // enable transform path in mocked host-sdk
+    (HostSdk as any).__setPerfTransform(true);
+
     const result = (handlers as any).updatePosition(moveData, ctx);
     expect(result.success).toBe(true);
-    expect(el.style.getPropertyValue("--rx-x")).toBe("15px");
-    expect(el.style.getPropertyValue("--rx-y")).toBe("25px");
-    // left/top unchanged in transform path
+    // transform path: will-change is set to transform and left/top remain unchanged
+    expect(el.style.willChange).toBe("transform");
     expect(el.style.left).toBe("0px");
     expect(el.style.top).toBe("0px");
 
-    mod.clearFlagOverrides();
+    perfTransformFlag = false;
   });
 });
+

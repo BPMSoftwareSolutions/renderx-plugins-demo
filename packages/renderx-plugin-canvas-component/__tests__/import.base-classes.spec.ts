@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers } from "../../plugins/canvas-component/symphonies/import/import.symphony";
+import { parseUiFile } from "@renderx-plugins/canvas-component/symphonies/import/import.parse.pure.ts";
 
 function setupCanvas() {
   const root = document.createElement("div");
@@ -59,7 +59,7 @@ describe("import.parse adds default base classes", () => {
 
     ctx.payload.uiFileContent = ui;
 
-    await handlers.parseUiFile({}, ctx);
+    await parseUiFile({}, ctx);
 
     const comps = ctx.payload.importComponents || [];
     expect(comps.length).toBe(1);

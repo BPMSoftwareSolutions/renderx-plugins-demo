@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { recomputeLineSvg } from "../../plugins/canvas-component/symphonies/augment/line.recompute.stage-crew";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { recomputeLineSvg } from "@renderx-plugins/canvas-component/symphonies/augment/line.recompute.stage-crew.ts";
 
 function makeSvgLineTemplate() {
   return {
@@ -79,3 +79,4 @@ describe("Advanced Line — dynamic viewBox autosize", () => {
     expect(vbH).toBeGreaterThan(100);
   });
 });
+

@@ -1,12 +1,12 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { handlers as selectHandlers } from "../../plugins/canvas-component/symphonies/select/select.symphony";
-import { recomputeLineSvg } from "../../plugins/canvas-component/symphonies/augment/line.recompute.stage-crew";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { handlers as selectHandlers } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
+import { recomputeLineSvg } from "@renderx-plugins/canvas-component/symphonies/augment/line.recompute.stage-crew.ts";
 import {
   setFlagOverride,
   clearFlagOverrides,
-} from "../../src/feature-flags/flags";
+} from "../../../src/feature-flags/flags";
 
 function makeSvgLineTemplate() {
   return {
@@ -90,7 +90,7 @@ describe("Advanced Line overlay drag — cumulative delta causes runaway (expect
     expect(line).toBeTruthy();
 
     // Expected position for x1,y1: (10+10, 10+10) => (20, 20)
-    // In viewBox units: x: 20/120*100 ≈ 16.667, y: 20/60*100 ≈ 33.333
+    // In viewBox units: x: 20/120*100  16.667, y: 20/60*100  33.333
     const x1 = Number(line!.getAttribute("x1"));
     const y1 = Number(line!.getAttribute("y1"));
 
@@ -103,3 +103,4 @@ describe("Advanced Line overlay drag — cumulative delta causes runaway (expect
     clearFlagOverrides();
   });
 });
+
