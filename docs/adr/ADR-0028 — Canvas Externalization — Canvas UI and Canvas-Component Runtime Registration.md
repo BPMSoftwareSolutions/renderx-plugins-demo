@@ -47,3 +47,21 @@ Other plugins (Header, Library, Library-Component) already follow this pattern. 
 - Idempotent `register(conductor)` guards implemented; sequence mounting remains via JSON catalogs.
 - Package-local tests added (export surfaces, register idempotency) — green.
 - CI E2E stabilized and green; next is host-level tests validating manifest routing and PanelSlot loading by specifier.
+
+
+## Status update — 2025-09-14
+- Host-level guardrails added and verified:
+  - __tests__/layout/panelslot.canvas.spec.tsx — PanelSlot loads Canvas UI via package specifier (@renderx-plugins/canvas → CanvasPage)
+  - __tests__/manifest/canvas.manifest.spec.ts — Manifest asserts Canvas UI + Canvas-Component runtime specifiers
+  - __tests__/canvas-component/registerAllSequences.idempotency.spec.ts — Calling registerAllSequences() twice mounts no duplicates (idempotency)
+- Conductor runtime logging adjustment:
+  - Emit "Registered plugin runtime: <id>" when the runtime module resolves successfully (before awaiting register())
+  - Rationale: removes timing races in JSDOM/preview and stabilizes the startup-logs guardrail while preserving register() semantics
+- Acceptance outcomes:
+  - Manifest uses only @renderx-plugins/* specifiers for Canvas UI/runtime and Canvas-Component runtime; no repo-relative paths remain
+  - Idempotency guardrail passes; duplicate mounts are prevented when JSON loader and register() coexist
+  - Full build and test suites (root + packages) are green
+
+### Notes
+- This is a logging-order refinement only; no change to runtime behavior beyond when the success message is emitted.
+- Future phases will address prerelease publishing and host switching to npm-installed packages.
