@@ -7,6 +7,9 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
     if (key === "canvas.component.create") {
       return { pluginId: "CanvasComponentPlugin", sequenceId: "canvas-component-create-symphony" };
     }
+    if (key === "canvas.component.select") {
+      return { pluginId: "CanvasComponentPlugin", sequenceId: "canvas-component-select-symphony" };
+    }
     return { pluginId: "noop", sequenceId: key };
   },
   EventRouter: { publish: () => {} },
@@ -15,6 +18,7 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
 }));
 
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 import { parseUiFile } from "@renderx-plugins/canvas-component/symphonies/import/import.parse.pure.ts";
 import { createComponentsSequentially, applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
 
@@ -118,7 +122,18 @@ describe("canvas-component import: selection forwarding", () => {
 
     await handlers.applyHierarchyAndOrder({}, ctx);
 
-    document.getElementById("b1")!.click();
+    // Minimal host-like click routing: forward clicks on rx-comp elements to canvas.component.select
+    document.body.addEventListener("click", (e: any) => {
+      let target = e?.target as HTMLElement | null;
+      // Climb to nearest element with an id
+      while (target && !target.id) target = target.parentElement;
+      const id = target?.id;
+      if (!id) return;
+      const r = resolveInteraction("canvas.component.select");
+      ctx.conductor.play(r.pluginId, r.sequenceId, { id });
+    });
+
+    document.getElementById("b1")!.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     expect(ctx.conductor.play).toHaveBeenCalled();
   });
 });
