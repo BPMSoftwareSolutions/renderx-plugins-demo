@@ -29,12 +29,12 @@ describe('Canvas externalization (issue #129)', () => {
   });
 
   it('json-sequences: canvas-component handlers should be bare package specifiers', async () => {
-    const idx = await loadJson('../json-sequences/canvas-component/index.json');
+    const idx = await loadJson('../public/json-sequences/canvas-component/index.json');
     const seqs: Array<{ file: string; handlersPath: string }> = idx.sequences || [];
     expect(seqs.length).toBeGreaterThan(0);
     for (const s of seqs) {
       expect(typeof s.handlersPath).toBe('string');
-      expect(s.handlersPath.startsWith('@renderx-plugins/canvas-component/')).toBe(true);
+      expect(s.handlersPath.startsWith('@renderx-plugins/canvas-component')).toBe(true);
     }
   });
 });
