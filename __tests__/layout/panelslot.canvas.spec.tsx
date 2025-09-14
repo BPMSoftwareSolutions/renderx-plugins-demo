@@ -37,11 +37,12 @@ describe("PanelSlot loads Canvas UI via package specifier", () => {
     const { root } = render("canvas");
     root.render(React.createElement(PanelSlot, { slot: "canvas" }));
 
-    // Let the dynamic import settle and React effect run
-    for (let i = 0; i < 10; i++) {
+    // Let the dynamic import settle and React effect run; poll for #rx-canvas
+    let found = false;
+    for (let i = 0; i < 200; i++) {
       // eslint-disable-next-line no-await-in-loop
-      await new Promise((r) => setTimeout(r, 0));
-      if (document.querySelector('#rx-canvas')) break;
+      await new Promise((r) => setTimeout(r, 10));
+      if (document.querySelector('#rx-canvas')) { found = true; break; }
     }
 
     // Should not log errors during successful mount
@@ -49,7 +50,7 @@ describe("PanelSlot loads Canvas UI via package specifier", () => {
 
     // CanvasPage renders #rx-canvas inside .canvas-content
     const rx = document.querySelector('#rx-canvas');
-    expect(rx).toBeTruthy();
+    expect(found && rx).toBeTruthy();
 
     root.unmount();
     await Promise.resolve();

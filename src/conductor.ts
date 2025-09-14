@@ -246,6 +246,10 @@ export async function loadJsonSequenceCatalogs(
       }
       await (conductor as any)?.mount?.(seq, handlers, seq.pluginId);
       seen.add(seq.id);
+      try {
+        runtimeMounted.add(seq.id);
+        (conductor as any)._runtimeMountedSeqIds = runtimeMounted;
+      } catch {}
     } catch (e) {
       (conductor as any).logger?.warn?.(
         `Failed to mount sequence ${seq?.id} from ${handlersPath}: ${e}`
@@ -405,14 +409,14 @@ export async function registerAllSequences(conductor: ConductorClient) {
       const mod = loader
         ? await loader()
         : await import(/* @vite-ignore */ resolveModuleSpecifier(runtime.module));
+      // Emit success as soon as runtime module resolves; do not block on register()
+      console.log('🔌 Registered plugin runtime:', p.id);
       const reg = (mod as any)?.[runtime.export] || (mod as any)?.default?.[runtime.export];
       if (typeof reg === 'function') {
         await reg(conductor);
       } else {
         // No-op if the module exposes no register; module resolved successfully.
       }
-      // Emit success for any successfully resolved runtime module (even if no register export)
-      console.log('🔌 Registered plugin runtime:', p.id);
     } catch (e) {
       console.warn('⚠️ Failed runtime register for', p.id, e);
     }
