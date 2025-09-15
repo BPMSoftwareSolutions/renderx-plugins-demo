@@ -6,9 +6,6 @@ export default {
     alias: {
       // Host SDK alias (legacy import name)
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
-      // Force dev to use package sources to avoid stale dist and ensure single React instance
-      '@renderx-plugins/canvas': path.resolve(process.cwd(), 'packages/renderx-plugin-canvas/src/index.ts'),
-      '@renderx-plugins/canvas-component': path.resolve(process.cwd(), 'packages/renderx-plugin-canvas-component/src/index.ts'),
     },
     // Ensure a single React instance across host and plugins
     dedupe: ['react', 'react-dom'],
@@ -20,6 +17,11 @@ export default {
       '@renderx-plugins/library',
       '@renderx-plugins/library-component',
       '@renderx-plugins/host-sdk'
+    ],
+    // Avoid esbuild trying to load asset query imports like ?url in dependencies
+    exclude: [
+      '@renderx-plugins/canvas-component',
+      'gif.js.optimized'
     ],
   },
   build: {

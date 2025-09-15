@@ -29,7 +29,10 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   }
   if (!(window as any).RenderX.EventRouter) {
     (window as any).RenderX.EventRouter = {
-      publish: (topic: string, payload: any, c?: any) => EventRouter.publish(topic, payload, c || conductor),
+      publish: (topic: string, payload: any, c?: any) => {
+        try { console.log(`[sdk] publish '${topic}' (hasC=${!!c}, hasPlay=${!!(c && c.play)})`); } catch {}
+        return EventRouter.publish(topic, payload, c || conductor);
+      },
       subscribe: (topic: string, cb: (p: any) => void) => EventRouter.subscribe(topic, cb),
       init: () => EventRouter.init(),
       getTopicsStats: () => ({}) as any,

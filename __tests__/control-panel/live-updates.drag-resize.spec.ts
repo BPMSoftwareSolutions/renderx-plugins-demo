@@ -1,8 +1,8 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { handlers as dragHandlers } from "../../plugins/canvas-component/symphonies/drag/drag.symphony";
-import { handlers as resizeHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { handlers as dragHandlers } from "@renderx-plugins/canvas-component/symphonies/drag/drag.symphony.ts";
+import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.move.symphony.ts";
 import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
 
 import { handlers as controlPanelUpdateHandlers } from "../../plugins/control-panel/symphonies/update/update.symphony";
@@ -26,8 +26,6 @@ describe("Control Panel live updates during drag/resize", () => {
   });
 
   it("forwards drag position updates to Control Panel", () => {
-    const selectionObserver = vi.fn();
-    setSelectionObserver(selectionObserver);
 
     // Create element
     const ctx: any = { payload: {} };
@@ -38,23 +36,23 @@ describe("Control Panel live updates during drag/resize", () => {
 
     const nodeId = ctx.payload.nodeId as string;
 
-    // Mock conductor to capture Control Panel update calls
-    const playMock = vi.fn();
-    const dragCtx = {
-      payload: {},
-      conductor: { play: playMock },
-    };
+    // Derive model via Control Panel update handler and notify UI
+    const selectionObserver = vi.fn();
+    setSelectionObserver(selectionObserver);
+    const dragCtx = { payload: {} } as any;
 
-    // Act: simulate drag position update (both stage-crew and pure handlers)
+    // Act: simulate drag position update and derive model from DOM
     const dragData = { id: nodeId, position: { x: 100, y: 80 } };
     dragHandlers.updatePosition(dragData, dragCtx);
-    dragHandlers.forwardToControlPanel(dragData, dragCtx);
+    controlPanelUpdateHandlers.updateFromElement({ id: nodeId }, dragCtx);
+    controlPanelUpdateHandlers.notifyUi({}, dragCtx);
 
-    // Assert: should forward to Control Panel update
-    expect(playMock).toHaveBeenCalledWith(
-      "ControlPanelPlugin",
-      "control-panel-update-symphony",
-      { id: nodeId, source: "drag" }
+    // Assert: observer called with updated position
+    expect(selectionObserver).toHaveBeenCalledWith(
+      expect.objectContaining({
+        header: expect.objectContaining({ id: nodeId }),
+        layout: expect.objectContaining({ x: 100, y: 80 }),
+      })
     );
 
     // Cleanup
@@ -62,8 +60,6 @@ describe("Control Panel live updates during drag/resize", () => {
   });
 
   it("forwards resize updates to Control Panel with position and size", () => {
-    const selectionObserver = vi.fn();
-    setSelectionObserver(selectionObserver);
 
     // Create element
     const ctx: any = { payload: {} };
@@ -74,14 +70,11 @@ describe("Control Panel live updates during drag/resize", () => {
 
     const nodeId = ctx.payload.nodeId as string;
 
-    // Mock conductor to capture Control Panel update calls
-    const playMock = vi.fn();
-    const resizeCtx = {
-      payload: {},
-      conductor: { play: playMock },
-    };
+    // Derive model via Control Panel update handler and notify UI
+    const selectionObserver = vi.fn();
+    setSelectionObserver(selectionObserver);
+    const resizeCtx = { payload: {} } as any;
 
-    // Act: simulate resize update (both stage-crew and pure handlers)
     const resizeData = {
       id: nodeId,
       dir: "se",
@@ -94,19 +87,17 @@ describe("Control Panel live updates during drag/resize", () => {
     };
     // update DOM via stage-crew
     resizeHandlers.updateSize(resizeData, resizeCtx);
-    // forward to CP
-    resizeHandlers.forwardToControlPanel(resizeData, resizeCtx);
+    // derive model and notify UI
+    controlPanelUpdateHandlers.updateFromElement({ id: nodeId }, resizeCtx);
+    controlPanelUpdateHandlers.notifyUi({}, resizeCtx);
 
-    // Assert: should forward to Control Panel update including latest layout
-    const [, , payload] = playMock.mock.calls[0];
-    expect(playMock).toHaveBeenCalledWith(
-      "ControlPanelPlugin",
-      "control-panel-update-symphony",
-      expect.objectContaining({ id: nodeId, source: "resize" })
+    // Assert: observer called with updated size and position
+    expect(selectionObserver).toHaveBeenCalledWith(
+      expect.objectContaining({
+        header: expect.objectContaining({ id: nodeId }),
+        layout: expect.objectContaining({ x: 50, y: 30, width: 140, height: 50 }),
+      })
     );
-    // For SE handle, top-left stays fixed; width/height increase
-    expect(payload.position).toEqual({ x: 50, y: 30 });
-    expect(payload.size).toEqual({ width: 140, height: 50 }); // 120+20, 40+10
 
     // Cleanup
     setSelectionObserver(null);
@@ -130,7 +121,7 @@ describe("Control Panel live updates during drag/resize", () => {
     element.style.height = "50px";
 
     // Act: call Control Panel update handler
-    const updateCtx = { payload: {} };
+    const updateCtx: any = { payload: {} };
     controlPanelUpdateHandlers.updateFromElement({ id: nodeId }, updateCtx);
 
     // Assert: should derive current model from DOM with updated position/size

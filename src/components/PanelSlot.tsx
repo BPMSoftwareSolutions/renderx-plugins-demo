@@ -93,7 +93,6 @@ const packageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
   // Pre-bundled first-party plugin paths (Vite will include these in build)
-  '/plugins/canvas/index.ts': () => import('../../plugins/canvas/index'),
   '/plugins/control-panel/index.ts': () => import('../../plugins/control-panel/index'),
 };
 

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // App smoke: verify runtime bridges, theme toggle, and library inventory loads
 
-const getTheme = () => document.documentElement.getAttribute('data-theme') || '';
+
 
 test.describe('App smoke', () => {
   test.beforeEach(async ({ page }) => {
@@ -10,7 +10,7 @@ test.describe('App smoke', () => {
     page.on('console', (msg) => {
       const t = msg.type();
       if (t === 'error' || t === 'warning') {
-        // eslint-disable-next-line no-console
+
         console.log(`[browser:${t}]`, msg.text());
       }
     });

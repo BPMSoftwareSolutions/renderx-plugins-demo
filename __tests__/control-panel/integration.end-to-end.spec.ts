@@ -1,10 +1,19 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { handlers as selectHandlers } from "../../plugins/canvas-component/symphonies/select/select.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 import { handlers as controlPanelHandlers } from "../../plugins/control-panel/symphonies/selection/selection.symphony";
 import { handlers as classHandlers } from "../../plugins/control-panel/symphonies/classes/classes.symphony";
 import { setSelectionObserver, setClassesObserver } from "../../plugins/control-panel/state/observer.store";
+
+// Host-like selection forwarding harness for externalized select symphony
+const selectHandlers = {
+  notifyUi(data: any, ctx: any) {
+    const route = resolveInteraction("control.panel.selection.show");
+    ctx?.conductor?.play?.(route.pluginId, route.sequenceId, { id: data?.id });
+  },
+};
+
 
 function makeButtonTemplate() {
   return {
@@ -27,20 +36,20 @@ describe("Control Panel Integration - End to End", () => {
     // Mock observers
     const selectionObserver = vi.fn();
     const classesObserver = vi.fn();
-    
+
     setSelectionObserver(selectionObserver);
     setClassesObserver(classesObserver);
 
     // Step 1: Create a canvas element
     const createCtx: any = { payload: {} };
     const template = makeButtonTemplate();
-    
+
     createHandlers.resolveTemplate({ component: { template } }, createCtx);
     createHandlers.createNode({ position: { x: 50, y: 30 } }, createCtx);
-    
+
     const nodeId = createCtx.payload.nodeId as string;
     const element = document.getElementById(nodeId)!;
-    
+
     expect(element).toBeTruthy();
     expect(element.classList.contains("rx-button")).toBe(true);
 

@@ -5,7 +5,7 @@ import path from "path";
 // This test enforces that CanvasPage.css uses CSS variables for core colors
 // to support light/dark theming.
 describe("CanvasPage.css theming", () => {
-  const cssPath = path.resolve(__dirname, "../../plugins/canvas/ui/CanvasPage.css");
+  const cssPath = path.resolve(__dirname, "../../node_modules/@renderx-plugins/canvas/dist/index.css");
   const css = fs.readFileSync(cssPath, "utf-8");
 
   it("uses variables for background and header border", () => {

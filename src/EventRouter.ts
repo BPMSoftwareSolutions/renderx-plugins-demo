@@ -62,23 +62,36 @@ export const EventRouter = {
     try {
       if (isFlagEnabled("lint.topics.runtime-validate") && def.payloadSchema) {
         // Lazy import ajv if present; avoid adding dependency requirement
-        const Ajv = (await import("ajv")).default;
-        const ajv = new Ajv({ allErrors: true, strict: false });
-        const validate = ajv.compile(def.payloadSchema);
+        const AjvMod: any = await import("ajv");
+        const Ajv: any = AjvMod?.default || AjvMod;
+        const ajv: any = new Ajv({ allErrors: true });
+        const validate: any = ajv.compile(def.payloadSchema as any);
         if (!validate(payload)) {
-          const msg = (validate.errors || []).map((e) => `${e.instancePath} ${e.message}`).join("; ");
+          const errs: any[] = (validate.errors || []) as any[];
+          const msg = errs.map((e: any) => `${(e.instancePath || e.dataPath || "")} ${(e.message || "")}`.trim()).join("; ");
           throw new Error(`Payload validation failed for ${topic}: ${msg}`);
         }
       }
     } catch {}
+
+    // Resolve conductor: prefer provided; otherwise fall back to global
+    const resolvedConductor = (conductor && typeof conductor.play === 'function')
+      ? conductor
+      : (typeof window !== 'undefined'
+          ? ((window as any).RenderX?.conductor || (window as any).renderxCommunicationSystem?.conductor)
+          : undefined);
 
     // Perf guards
     let deliver = async (p: any) => {
       // Route to sequences via conductor (pure dispatcher)
       for (const r of def.routes as TopicRoute[]) {
         try {
-          await conductor?.play?.(r.pluginId, r.sequenceId, p);
-        } catch {}
+          const hasPlay = !!(resolvedConductor && typeof resolvedConductor.play === 'function');
+          try { console.log(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`); } catch {}
+          await resolvedConductor?.play?.(r.pluginId, r.sequenceId, p);
+        } catch (e) {
+          try { console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e); } catch {}
+        }
       }
       // Notify subscribers
       const set = subscribers.get(topic);

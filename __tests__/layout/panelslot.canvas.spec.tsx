@@ -5,7 +5,7 @@ import React from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { createRoot } from "react-dom/client";
 
-function render(slot: string) {
+function render(_slot?: string) {
   const el = document.createElement("div");
   document.body.appendChild(el);
   const root = createRoot(el);
@@ -40,7 +40,7 @@ describe("PanelSlot loads Canvas UI via package specifier", () => {
     // Let the dynamic import settle and React effect run; poll for #rx-canvas
     let found = false;
     for (let i = 0; i < 200; i++) {
-      // eslint-disable-next-line no-await-in-loop
+
       await new Promise((r) => setTimeout(r, 10));
       if (document.querySelector('#rx-canvas')) { found = true; break; }
     }
