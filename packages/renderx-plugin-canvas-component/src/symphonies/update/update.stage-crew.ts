@@ -36,7 +36,7 @@ export function updateAttribute(data: any, ctx: any) {
   }
 }
 
-export function refreshControlPanel(data: any, ctx: any) {
+export function refreshControlPanel(_data: any, ctx: any) {
   // After updating the Canvas component, refresh the Control Panel to show the changes
   const elementId = ctx.payload?.elementId;
 
@@ -54,7 +54,7 @@ export function refreshControlPanel(data: any, ctx: any) {
         );
       } catch {
         try {
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
+
           const { resolveInteraction } = require("../../../../src/interactionManifest");
           const route = resolveInteraction("control.panel.update");
           ctx.conductor.play(route.pluginId, route.sequenceId, {

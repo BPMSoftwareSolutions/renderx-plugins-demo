@@ -8,7 +8,8 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
         // Drive conductor directly in tests to avoid no-op host router
         if (conductor?.play) {
           try {
-            conductor.play("CanvasComponentResizeMovePlugin", "canvas-component-resize-move-symphony", payload);
+            const route = (actual as any).resolveInteraction?.(key) ?? { pluginId: "noop", sequenceId: key };
+            conductor.play(route.pluginId, route.sequenceId, payload);
           } catch {}
         }
       },

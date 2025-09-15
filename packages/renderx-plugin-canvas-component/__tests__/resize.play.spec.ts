@@ -6,7 +6,10 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
     EventRouter: {
       publish: (key: string, payload: any, conductor?: any) => {
         if (conductor?.play) {
-          try { conductor.play("CanvasComponentResizeMovePlugin", "canvas-component-resize-move-symphony", payload); } catch {}
+          try {
+            const route = (actual as any).resolveInteraction?.(key) ?? { pluginId: "noop", sequenceId: key };
+            conductor.play(route.pluginId, route.sequenceId, payload);
+          } catch {}
         }
       },
     },

@@ -34,7 +34,7 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
     const el = document.getElementById(id)! as HTMLElement;
 
     showSelectionOverlay({ id });
-    const overlay = document.getElementById("rx-selection-overlay") as HTMLDivElement;
+    const _overlay = document.getElementById("rx-selection-overlay") as HTMLDivElement;
 
     dispatchMouse(el, "mousedown", { clientX: 50, clientY: 50, button: 0 });
     dispatchMouse(document, "mousemove", { clientX: 80, clientY: 90 });

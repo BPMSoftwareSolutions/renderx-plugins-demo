@@ -11,6 +11,8 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
   isFlagEnabled: () => false,
   useConductor: () => ({ play: () => {} }),
 }));
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
+
 
 import { queryAllComponents } from "@renderx-plugins/canvas-component/symphonies/export/export.io.ts";
 import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/export/export.css.stage-crew.ts";
@@ -18,7 +20,7 @@ import { collectLayoutData } from "@renderx-plugins/canvas-component/symphonies/
 import { buildUiFileContent } from "@renderx-plugins/canvas-component/symphonies/export/export.pure.ts";
 import { parseUiFile } from "@renderx-plugins/canvas-component/symphonies/import/import.parse.pure.ts";
 import { injectCssClasses } from "@renderx-plugins/canvas-component/symphonies/import/import.css.stage-crew.ts";
-import { createComponentsSequentially, applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
+import { applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 async function createComponentsSequentiallyTest(_data: any, ctx: any) {
   const components: any[] = ctx.payload.importComponents || [];
@@ -47,11 +49,8 @@ async function createComponentsSequentiallyTest(_data: any, ctx: any) {
       position: { x: layout?.x ?? 0, y: layout?.y ?? 0 },
       containerId: comp.parentId || null,
     };
-    await ctx.conductor.play(
-      "CanvasComponentPlugin",
-      "canvas-component-create-symphony",
-      createPayload
-    );
+    const route = resolveInteraction("canvas.component.create");
+    await ctx.conductor.play(route.pluginId, route.sequenceId, createPayload);
   }
 }
 

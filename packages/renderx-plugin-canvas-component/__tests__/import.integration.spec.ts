@@ -11,10 +11,12 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
   isFlagEnabled: () => false,
   useConductor: () => ({ play: () => {} }),
 }));
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
+
 
 import { parseUiFile } from "@renderx-plugins/canvas-component/symphonies/import/import.parse.pure.ts";
 import { injectCssClasses } from "@renderx-plugins/canvas-component/symphonies/import/import.css.stage-crew.ts";
-import { createComponentsSequentially, applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
+import { applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
 import { registerInstances } from "@renderx-plugins/canvas-component/symphonies/import/import.io.ts";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 async function createComponentsSequentiallyTest(_data: any, ctx: any) {
@@ -42,11 +44,8 @@ async function createComponentsSequentiallyTest(_data: any, ctx: any) {
       position: { x: layout?.x ?? 0, y: layout?.y ?? 0 },
       containerId: comp.parentId || null,
     };
-    await ctx.conductor.play(
-      "CanvasComponentPlugin",
-      "canvas-component-create-symphony",
-      createPayload
-    );
+    const route = resolveInteraction("canvas.component.create");
+    await ctx.conductor.play(route.pluginId, route.sequenceId, createPayload);
   }
 }
 
