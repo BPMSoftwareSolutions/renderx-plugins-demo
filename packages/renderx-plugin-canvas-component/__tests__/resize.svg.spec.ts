@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
-import { handlers as resizeMoveHandlers } from "../../plugins/canvas-component/symphonies/resize/resize.move.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
+import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.stage-crew.ts";
 
 function makeSvgTemplate() {
   return {
@@ -17,8 +17,7 @@ function makeSvgTemplate() {
 
 describe("SVG component resize behavior", () => {
   beforeEach(() => {
-    document.body.innerHTML =
-      '<div id="rx-canvas" style="position:relative"></div>';
+    document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
   });
 
   it("resizes outer dimensions while content preserves stroke thickness via CSS", () => {
@@ -48,14 +47,15 @@ describe("SVG component resize behavior", () => {
       phase: "move",
     } as any;
 
-    resizeMoveHandlers.updateSize?.(payload, {} as any);
+    resizeHandlers.updateSize?.(payload, {} as any);
 
     expect(el.style.width).toBe("450px");
     expect(el.style.height).toBe("300px");
 
-    // Ensure the SVG element exists (the element itself is the <svg>) and attributes applied
+    // Ensure the SVG element exists and attributes applied
     expect(el.tagName.toLowerCase()).toBe("svg");
     const svg = el as unknown as SVGSVGElement;
     expect(svg.getAttribute("preserveAspectRatio")).toBe("xMidYMid meet");
   });
 });
+

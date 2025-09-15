@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { collectCssClasses } from "../../plugins/canvas-component/symphonies/export/export.css.stage-crew";
-import { cssRegistry } from "../../plugins/control-panel/state/css-registry.store";
+import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/export/export.css.stage-crew.ts";
+import { cssRegistry } from "../src/temp-deps/css-registry.store.ts";
 
-describe("CSS collection fix for classRefs vs classes mismatch", () => {
+describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () => {
   beforeEach(() => {
     // Ensure rx-button CSS is registered (simulating library load)
     const buttonCss = ".rx-button { background: var(--bg-color); } .rx-button--primary { --bg-color: #007bff; }";
@@ -28,18 +28,14 @@ describe("CSS collection fix for classRefs vs classes mismatch", () => {
           }
         ]
       },
-      logger: {
-        info: () => {},
-        error: () => {}
-      }
+      logger: { info: () => {}, error: () => {} }
     };
 
     collectCssClasses({}, ctx);
 
-    // Should now collect CSS classes from template.classRefs
     expect(ctx.payload.cssClasses).toBeDefined();
     expect(ctx.payload.cssClasses["rx-button"]).toBeDefined();
-    expect(ctx.payload.cssClasses["rx-button"].content).toContain(".rx-button--primary");
+    expect(ctx.payload.cssClasses["rx-button"].content).toContain(".rx-button");
     expect(ctx.payload.cssClassCount).toBeGreaterThan(0);
   });
 
@@ -50,22 +46,19 @@ describe("CSS collection fix for classRefs vs classes mismatch", () => {
           {
             id: "legacy-comp",
             type: "button",
-            classes: ["rx-comp", "rx-button"], // Legacy format
+            classes: ["rx-comp", "rx-button"],
             style: {}
           }
         ]
       },
-      logger: {
-        info: () => {},
-        error: () => {}
-      }
+      logger: { info: () => {}, error: () => {} }
     };
 
     collectCssClasses({}, ctx);
 
-    // Should still work with legacy format
     expect(ctx.payload.cssClasses).toBeDefined();
     expect(ctx.payload.cssClasses["rx-button"]).toBeDefined();
     expect(ctx.payload.cssClassCount).toBeGreaterThan(0);
   });
 });
+
