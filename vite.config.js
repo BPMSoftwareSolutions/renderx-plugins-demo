@@ -18,6 +18,11 @@ export default {
       '@renderx-plugins/library-component',
       '@renderx-plugins/host-sdk'
     ],
+    // Avoid esbuild trying to load asset query imports like ?url in dependencies
+    exclude: [
+      '@renderx-plugins/canvas-component',
+      'gif.js.optimized'
+    ],
   },
   build: {
     rollupOptions: {
