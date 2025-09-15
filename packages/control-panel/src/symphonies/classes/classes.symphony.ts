@@ -1,2 +1,1 @@
-export { handlers } from '../../../../plugins/control-panel/symphonies/classes/classes.symphony';
-
+export { handlers } from '../../../../../plugins/control-panel/symphonies/classes/classes.symphony';
