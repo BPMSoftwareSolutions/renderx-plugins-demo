@@ -10,7 +10,7 @@ export interface TopicDef {
 
 // Static JSON import ensures synchronous availability for tests and early runtime callers
 // @ts-ignore - JSON assertion supported by bundler / TS
-import topicsManifestJson from '../topics-manifest.json' assert { type: 'json' };
+import topicsManifestJson from '../topics-manifest.json' with { type: 'json' };
 
 let topics: Record<string, TopicDef> = (topicsManifestJson as any)?.topics || {};
 let loaded = true;

@@ -1,5 +1,4 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
-import path from 'node:path';
 
 export default {
   resolve: {

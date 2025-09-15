@@ -1,4 +1,4 @@
-import flagsJson from "../../data/feature-flags.json" assert { type: "json" };
+import flagsJson from "../../data/feature-flags.json" with { type: "json" };
 const FLAGS = flagsJson;
 // Optional test overrides for enablement decisions
 let enableOverrides = new Map();
