@@ -6,8 +6,8 @@
   "workspaces": [],
   "scripts": {
     "build:packages": "npm --prefix packages/renderx-plugin-canvas run -s build && npm --prefix packages/renderx-plugin-canvas-component run -s build",
-    "dev": "npm run build:packages && npm run pre:manifests && vite",
-    "build": "npm run build:packages && npm run pre:manifests && vite build",
+    "dev": "npm run pre:manifests && vite",
+    "build": "npm run pre:manifests && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
     "artifacts:build:integrity": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity",
     "artifacts:build:signed": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity --sign",
@@ -30,17 +30,17 @@
     "lint": "eslint .",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
-    "test": "npm run build:packages && vitest run",
+    "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "packages:test": "npm --prefix packages/renderx-plugin-canvas run test && npm --prefix packages/renderx-plugin-canvas-component run test",
     "e2e": "playwright test",
     "ci:precheck": "node scripts/ci-precheck.js",
-    "ci": "npm run lint && npm run build:packages && npm run pre:manifests && npm test && npm run packages:test && npm run e2e"
+    "ci": "npm run lint && npm run pre:manifests && npm test && npm run e2e"
   },
   "dependencies": {
-    "@renderx-plugins/canvas": "^0.1.0-rc.2",
-    "@renderx-plugins/canvas-component": "^0.1.0-rc.2",
+    "@renderx-plugins/canvas": "^0.1.0-rc.3",
+    "@renderx-plugins/canvas-component": "^0.1.0-rc.3",
     "@renderx-plugins/header": "^0.1.1",
     "@renderx-plugins/host-sdk": "^0.3.0",
     "@renderx-plugins/library": "^0.1.1-rc.0",
