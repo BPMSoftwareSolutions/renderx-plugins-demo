@@ -1,10 +1,10 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
 import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
 import { resolveInteraction } from "../../src/interactionManifest";
 
-import { handlers as canvasUpdateHandlers } from "../../plugins/canvas-component/symphonies/update/update.symphony";
+import { handlers as canvasUpdateHandlers } from "@renderx-plugins/canvas-component";
 
 function makeButtonTemplate() {
   return {

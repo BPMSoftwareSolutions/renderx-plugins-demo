@@ -81,7 +81,8 @@ function getComponentTypeFromJson(componentJson) {
 }
 
 function analyzeImportFlow(cwd) {
-  const parsePath = path.join(
+  // Prefer local source files (legacy, pre-externalization)
+  let parsePath = path.join(
     cwd,
     "plugins",
     "canvas-component",
@@ -89,7 +90,7 @@ function analyzeImportFlow(cwd) {
     "import",
     "import.parse.pure.ts"
   );
-  const nodesPath = path.join(
+  let nodesPath = path.join(
     cwd,
     "plugins",
     "canvas-component",
@@ -98,8 +99,30 @@ function analyzeImportFlow(cwd) {
     "import.nodes.stage-crew.ts"
   );
 
-  const parseExists = fs.existsSync(parsePath);
-  const nodesExists = fs.existsSync(nodesPath);
+  let parseExists = fs.existsSync(parsePath);
+  let nodesExists = fs.existsSync(nodesPath);
+
+  // Fallback to the externalized package in node_modules when local files are removed
+  if (!parseExists || !nodesExists) {
+    const externalDir = path.join(
+      cwd,
+      "node_modules",
+      "@renderx-plugins",
+      "canvas-component",
+      "dist",
+      "symphonies",
+      "import"
+    );
+    const externalParse = path.join(externalDir, "import.parse.pure.js");
+    const externalNodes = path.join(externalDir, "import.nodes.stage-crew.js");
+
+    if (fs.existsSync(externalParse) && fs.existsSync(externalNodes)) {
+      parsePath = externalParse;
+      nodesPath = externalNodes;
+      parseExists = true;
+      nodesExists = true;
+    }
+  }
 
   if (!parseExists || !nodesExists) {
     return { canAnalyze: false };

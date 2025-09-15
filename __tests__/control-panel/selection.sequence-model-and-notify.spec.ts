@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as createHandlers } from "../../plugins/canvas-component/symphonies/create/create.symphony";
+import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
 
 import { handlers as controlPanelHandlers } from "../../plugins/control-panel/symphonies/selection/selection.symphony";
 import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
