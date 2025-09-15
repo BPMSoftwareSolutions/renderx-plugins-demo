@@ -29,6 +29,16 @@ export default {
   },
   build: {
     rollupOptions: {
+      // Include a stable-named vendor entry that bundles the workspace Control Panel for preview/E2E
+      input: {
+        'vendor-control-panel': 'src/vendor/vendor-control-panel.ts'
+      },
+      output: {
+        entryFileNames: (chunkInfo) =>
+          chunkInfo.name === 'vendor-control-panel'
+            ? 'assets/vendor-control-panel.js'
+            : 'assets/[name]-[hash].js'
+      }
       // Do NOT externalize host-sdk for this app; we need it bundled for preview/E2E
       // external: ['@renderx-plugins/host-sdk']
     }
