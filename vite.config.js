@@ -31,6 +31,7 @@ export default {
     rollupOptions: {
       // Include a stable-named vendor entry that bundles the workspace Control Panel for preview/E2E
       input: {
+        main: 'index.html',
         'vendor-control-panel': 'src/vendor/vendor-control-panel.ts'
       },
       output: {
