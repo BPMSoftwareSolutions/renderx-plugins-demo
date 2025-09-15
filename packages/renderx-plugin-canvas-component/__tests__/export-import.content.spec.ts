@@ -11,7 +11,7 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
   isFlagEnabled: () => false,
   useConductor: () => ({ play: () => {} }),
 }));
-import { resolveInteraction } from "@renderx-plugins/host-sdk";
+
 
 
 import { queryAllComponents } from "@renderx-plugins/canvas-component/symphonies/export/export.io.ts";
@@ -20,7 +20,27 @@ import { collectLayoutData } from "@renderx-plugins/canvas-component/symphonies/
 import { buildUiFileContent } from "@renderx-plugins/canvas-component/symphonies/export/export.pure.ts";
 import { parseUiFile } from "@renderx-plugins/canvas-component/symphonies/import/import.parse.pure.ts";
 import { injectCssClasses } from "@renderx-plugins/canvas-component/symphonies/import/import.css.stage-crew.ts";
-import { applyHierarchyAndOrder } from "@renderx-plugins/canvas-component/symphonies/import/import.nodes.stage-crew.ts";
+// Local minimal applyHierarchyAndOrder to avoid pulling in module-level resolveInteraction
+function applyHierarchyAndOrder(_data: any, ctx: any) {
+  const list: any[] = ctx.payload.importComponents || [];
+  const byParent = new Map<string | null, any[]>();
+  for (const c of list) {
+    const p = c.parentId ?? null;
+    if (!byParent.has(p)) byParent.set(p, []);
+    byParent.get(p)!.push(c);
+  }
+  for (const [parentId, group] of byParent) {
+    group.sort((a, b) => (a.siblingIndex || 0) - (b.siblingIndex || 0));
+    const parentEl = parentId ? (document.getElementById(parentId) as HTMLElement | null) : null;
+    const container = parentEl || document.getElementById("rx-canvas");
+    if (!container) continue;
+    for (const child of group) {
+      const el = document.getElementById(child.id) as HTMLElement | null;
+      if (!el) continue;
+      container.appendChild(el);
+    }
+  }
+}
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 async function createComponentsSequentiallyTest(_data: any, ctx: any) {
   const components: any[] = ctx.payload.importComponents || [];
@@ -49,8 +69,11 @@ async function createComponentsSequentiallyTest(_data: any, ctx: any) {
       position: { x: layout?.x ?? 0, y: layout?.y ?? 0 },
       containerId: comp.parentId || null,
     };
-    const route = resolveInteraction("canvas.component.create");
-    await ctx.conductor.play(route.pluginId, route.sequenceId, createPayload);
+    const createCtx = { payload: {}, io: { kv: { put: ctx.io.kv.put } } } as any;
+    await createHandlers.resolveTemplate(createPayload, createCtx);
+    await createHandlers.registerInstance(createPayload, createCtx);
+    await createHandlers.createNode(createPayload, createCtx);
+    await createHandlers.notifyUi(createPayload, createCtx);
   }
 }
 

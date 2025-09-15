@@ -14,7 +14,7 @@ describe("@renderx-plugins/canvas-component: ESLint guardrails", () => {
 
   it("forbids repo-relative/cross-plugin imports (except temporary shims)", async () => {
     const eslint = new ESLint({ cwd });
-    const code = "import x from '../../../plugins/other/foo';\nexport const y = x;\n";
+    const code = "import x from '../../../outside/foo';\nexport const y = x;\n";
     const [{ errorCount, messages }] = await eslint.lintText(code, {
       filePath: path.join(cwd, "src", "guard.ts"),
     });

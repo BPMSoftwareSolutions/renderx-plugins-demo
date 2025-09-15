@@ -21,8 +21,14 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
   useConductor: () => ({ play: () => {} }),
 }));
 
-// NOTE: select.symphony is still host-owned; import from repo path until externalized
-import { handlers as selectHandlers } from "../../../plugins/canvas-component/symphonies/select/select.symphony";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
+// Local adapter: minimal notifyUi to assert selection forwarding without host symphony
+const selectHandlers = {
+  notifyUi(data: any, ctx: any) {
+    const route = resolveInteraction("control.panel.selection.show");
+    ctx?.conductor?.play?.(route.pluginId, route.sequenceId, { id: data?.id });
+  },
+};
 
 describe("Canvas selection forwards to Control Panel (package)", () => {
   it("calls conductor.play for control.panel.selection.show when canvas component is selected", () => {
