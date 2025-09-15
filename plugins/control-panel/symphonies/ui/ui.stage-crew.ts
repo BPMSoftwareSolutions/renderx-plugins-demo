@@ -3,7 +3,7 @@
 
 import { SchemaResolverService } from "../../services/schema-resolver.service";
 import type { ControlPanelConfig } from "../../types/control-panel.types";
-import { resolveInteraction } from "../../../../src/interactionManifest";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 
 // Global state for UI sequences - this will be managed by the sequences
 let uiState: {

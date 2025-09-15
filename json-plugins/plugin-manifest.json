@@ -46,10 +46,10 @@
       "id": "ControlPanelPlugin",
       "ui": {
         "slot": "controlPanel",
-        "module": "/plugins/control-panel/index.ts",
+        "module": "@renderx-plugins/control-panel",
         "export": "ControlPanel"
       },
-      "runtime": { "module": "/plugins/control-panel/index.ts", "export": "register" }
+      "runtime": { "module": "@renderx-plugins/control-panel", "export": "register" }
     },
     {
       "id": "LibraryComponentPlugin",

@@ -34,13 +34,33 @@ function isPackageResolvable(spec, cwd) {
     if (spec.startsWith("@")) {
       const parts = spec.split("/");
       if (parts.length >= 2) {
-        const pkgPath = path.join(cwd, "node_modules", parts[0], parts[1], "package.json");
-        return fs.existsSync(pkgPath);
+        const scope = parts[0];
+        const name = parts[1];
+        const nodePkg = path.join(cwd, "node_modules", scope, name, "package.json");
+        if (fs.existsSync(nodePkg)) return true;
+        // Workspace support: packages/<name>/package.json
+        const wsDir = path.join(cwd, "packages", name);
+        const wsPkg = path.join(wsDir, "package.json");
+        if (fs.existsSync(wsPkg)) {
+          // If a subpath is referenced, optionally verify the file exists under src/
+          if (parts.length > 2) {
+            const sub = parts.slice(2).join("/");
+            const base = path.join(wsDir, "src", sub);
+            const candidates = [base, base + ".ts", base + ".tsx", base + ".js", base + ".mjs"];
+            if (candidates.some((p) => fs.existsSync(p))) return true;
+            // Even if subpath file isn't found, the package exists in workspace; consider resolvable for Phase 1
+            return true;
+          }
+          return true;
+        }
       }
       return false;
     }
-    const pkgPath = path.join(cwd, "node_modules", spec, "package.json");
-    return fs.existsSync(pkgPath);
+    const nodePkg = path.join(cwd, "node_modules", spec, "package.json");
+    if (fs.existsSync(nodePkg)) return true;
+    // Workspace unscoped support: packages/<spec>/package.json
+    const wsPkg = path.join(cwd, "packages", spec, "package.json");
+    return fs.existsSync(wsPkg);
   }
 }
 

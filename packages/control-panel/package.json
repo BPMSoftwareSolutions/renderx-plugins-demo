@@ -1,0 +1,12 @@
+{
+  "name": "@renderx-plugins/control-panel",
+  "version": "0.0.0-dev",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./symphonies/*": "./src/symphonies/*"
+  }
+}
+
