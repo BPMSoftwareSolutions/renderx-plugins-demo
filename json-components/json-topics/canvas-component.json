@@ -110,6 +110,23 @@
       "correlationKeys": ["correlationId"],
       "notes": "Drag ended; subscribers may trigger post-drag behavior (e.g., render)."
     },
+    "canvas.component.select.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSelectionRequestPlugin",
+          "sequenceId": "canvas-component-select-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" }
+        },
+        "required": ["id"]
+      },
+      "visibility": "public",
+      "notes": "Topic-first selection request; routes to selection routing symphony."
+    },
     "canvas.component.selection.changed": {
       "routes": [
         {
