@@ -19,6 +19,10 @@ import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugin
 import crossPluginImports from "./eslint-rules/no-cross-plugin-imports.js";
 import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
 import requirePluginManifestFragment from "./eslint-rules/require-plugin-manifest-fragment.js";
+import validHandlersPath from "./eslint-rules/valid-handlers-path.js";
+import handlerExportExists from "./eslint-rules/handler-export-exists.js";
+import consistentJsonImportAttributes from "./eslint-rules/consistent-json-import-attributes.js";
+
 
 // Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
 // Patterns are built dynamically so existing rule logic (file-based heuristics) can operate transparently.
@@ -96,6 +100,9 @@ export default [
       "cross-plugin-imports": crossPluginImports,
       "deprecate-stagecrew-api": deprecateStageCrew,
       "plugin-manifest-fragment": requirePluginManifestFragment,
+      "handlers-path": validHandlersPath,
+      "handler-exports": handlerExportExists,
+      "json-import-attrs": consistentJsonImportAttributes,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -113,6 +120,9 @@ export default [
       "layout-logic/no-layout-logic-in-components": "error",
       "layout-manifest-validation/require-manifest-validation": "error",
       "plugin-manifest-fragment/require-plugin-manifest-fragment": "error",
+      "handlers-path/valid-handlers-path": "error",
+      "handler-exports/handler-export-exists": "error",
+      "json-import-attrs/consistent-json-import-attributes": "warn",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",

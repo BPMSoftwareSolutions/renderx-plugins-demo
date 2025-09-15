@@ -1,4 +1,4 @@
-import flagsJson from "../../data/feature-flags.json" assert { type: "json" };
+import flagsJson from "../../data/feature-flags.json" with { type: "json" };
 
 export type FlagStatus = "on" | "off" | "experiment";
 

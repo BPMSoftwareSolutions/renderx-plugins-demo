@@ -1,7 +1,7 @@
 import { normalizeHandlersImportSpec, isBareSpecifier } from './handlersPath';
 import { isFlagEnabled } from './feature-flags/flags';
 // @ts-ignore - JSON assertion supported by bundler / TS
-import topicsManifestJson from '../topics-manifest.json' assert { type: 'json' };
+import topicsManifestJson from '../topics-manifest.json' with { type: 'json' };
 
 
 
