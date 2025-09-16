@@ -15,7 +15,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./symphonies/*": "./src/symphonies/*"
+    "./symphonies/*": {
+      "import": "./dist/symphonies/*.js"
+    }
   },
   "scripts": {
     "build": "tsup --config tsup.config.ts"
