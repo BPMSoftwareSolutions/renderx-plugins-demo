@@ -1,10 +1,13 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
+import path from 'path';
 
 export default {
   resolve: {
     alias: {
       // Host SDK alias (legacy import name)
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
+      // Force workspace Control Panel package to resolve from local dist (fixes dev using published rc)
+      '@renderx-plugins/control-panel': path.resolve(__dirname, 'packages/control-panel/dist'),
     },
     // Ensure a single React instance across host and plugins
     dedupe: ['react', 'react-dom'],

@@ -10,7 +10,8 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   outDir: 'dist',
-  treeshake: true,
+  // IMPORTANT: Disable treeshake to avoid DCE of observer notifications inside handlers
+  treeshake: false,
   minify: false,
   target: 'es2022',
   skipNodeModulesBundle: true,
