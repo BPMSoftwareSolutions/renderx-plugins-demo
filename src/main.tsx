@@ -27,6 +27,9 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   if (!(window as any).RenderX.resolveInteraction) {
     (window as any).RenderX.resolveInteraction = resolveInteraction;
   }
+  // Provide EventRouter and conductor aliases for browser consumers/tests
+  (window as any).RenderX.EventRouter = EventRouter;
+  (window as any).RenderX.Conductor = (window as any).RenderX.conductor;
   if (!(window as any).RenderX.EventRouter) {
     (window as any).RenderX.EventRouter = {
       publish: (topic: string, payload: any, c?: any) => {

@@ -8,6 +8,8 @@ import { EmptyState } from "../components/layout/EmptyState";
 import { LoadingState } from "../components/layout/LoadingState";
 import { PropertySection } from "../components/sections/PropertySection";
 import { ClassManager } from "../components/sections/ClassManager";
+import { EventRouter as SDKEventRouter } from "@renderx-plugins/host-sdk";
+import { consumePendingSelection } from "../state/observer.store";
 import "./ControlPanel.css";
 
 export function ControlPanel() {
@@ -24,12 +26,69 @@ export function ControlPanel() {
     toggleSection
   } = useControlPanelActions(state.selectedElement, dispatch);
 
+
+  // Mark UI source for runtime diagnostics
+  React.useEffect(() => {
+    try {
+      (globalThis as any).__RENDERX_CP_UI_SOURCE__ = 'plugins';
+    } catch {}
+  }, []);
+
+  // Mark UI mounted and consume any pending selection that arrived before observer registered
+  React.useEffect(() => {
+    try {
+      (globalThis as any).__RENDERX_CP_UI_MOUNTED__ = true;
+      (globalThis as any).__RENDERX_CP_UI_SOURCE__ = 'plugins';
+      const pending = consumePendingSelection();
+      if (pending) {
+        dispatch({ type: 'SET_SELECTED_ELEMENT', payload: pending });
+      }
+    } catch {}
+  }, []);
+
   // Trigger render sequence when selected element changes
   React.useEffect(() => {
     if (sequences.isInitialized) {
       sequences.triggerRender(state.selectedElement);
     }
   }, [sequences, state.selectedElement]);
+
+  // Fallback: subscribe to render-request topic to hydrate selectedElement if observer missed
+  React.useEffect(() => {
+    try {
+      const router = (globalThis as any)?.RenderX?.EventRouter || SDKEventRouter;
+      const unsub = router.subscribe(
+        'control.panel.ui.render.requested',
+        (p: any) => {
+          const sel = p?.selectedElement || null;
+          if (sel) dispatch({ type: 'SET_SELECTED_ELEMENT', payload: sel });
+
+  // Safety net: briefly poll for a pending selection that might arrive between mount and observer registration
+  React.useEffect(() => {
+    let alive = true;
+    let tries = 0;
+    const tick = () => {
+      if (!alive) return;
+      try {
+        const g: any = (globalThis as any);
+        const pending = g.__RENDERX_CP_STORE__?.pendingSelectionModel;
+        if (pending) {
+          dispatch({ type: "SET_SELECTED_ELEMENT", payload: pending });
+          if (g.__RENDERX_CP_STORE__) g.__RENDERX_CP_STORE__.pendingSelectionModel = null;
+          return;
+        }
+      } catch {}
+      if (++tries < 10) setTimeout(tick, 100);
+    };
+    setTimeout(tick, 100);
+    return () => { alive = false; };
+  }, [dispatch]);
+
+        }
+      );
+      return () => { try { unsub?.(); } catch {} };
+    } catch {}
+  }, [dispatch]);
 
   // Generate dynamic fields and sections
   const { fields, sections } = React.useMemo(() => {

@@ -25,25 +25,32 @@ let manifestPromiseRef: Promise<Manifest> = (async () => {
       if (res.ok) return (await res.json()) as Manifest;
     }
     // External artifacts directory (env) before bundled raw import
-    try {
-      const envMod = await import(/* @vite-ignore */ '../env');
-      const artifactsDir = envMod.getArtifactsDir?.();
-      if (artifactsDir) {
-        // @ts-ignore
-        const fs = await import('fs/promises');
-        // @ts-ignore
-        const path = await import('path');
-        const p = path.join(process.cwd(), artifactsDir, 'plugins', 'plugin-manifest.json');
-        const raw = await fs.readFile(p, 'utf-8').catch(()=>null as any);
-        if (raw) return JSON.parse(raw || '{"plugins":[]}');
-      }
-    } catch {}
-    // Only fallback to bundled raw import if no external artifacts dir
-    try {
-      const envMod2 = await import(/* @vite-ignore */ '../env');
-      const dir2 = envMod2.getArtifactsDir?.();
-      if (dir2) return { plugins: [] }; // external dir was set but file missing → treat as empty
-    } catch {}
+    // IMPORTANT: Only attempt to read from filesystem in non-browser environments
+    const isNode = typeof window === 'undefined';
+    if (!isNode) {
+      // In browser/dev/e2e, always use the bundled manifest (fetch above) or raw import fallback below
+    } else {
+      try {
+        const envMod = await import(/* @vite-ignore */ '../env');
+        const artifactsDir = envMod.getArtifactsDir?.();
+        if (artifactsDir) {
+          // @ts-ignore
+          const fs = await import('fs/promises');
+          // @ts-ignore
+          const path = await import('path');
+          const p = path.join(process.cwd(), artifactsDir, 'plugins', 'plugin-manifest.json');
+          const raw = await fs.readFile(p, 'utf-8').catch(()=>null as any);
+          if (raw) return JSON.parse(raw || '{"plugins":[]}');
+        }
+      } catch {}
+      // Only short-circuit to empty when an external dir is configured in Node but file is missing
+      try {
+        const envMod2 = await import(/* @vite-ignore */ '../env');
+        const dir2 = envMod2.getArtifactsDir?.();
+        if (dir2) return { plugins: [] }; // external dir was set but file missing → treat as empty
+      } catch {}
+    }
+    // Bundled raw import fallback (works in Vite dev and preview)
     try {
       const mod = await import(
         /* @vite-ignore */ "../../public/plugins/plugin-manifest.json?raw"
@@ -141,6 +148,32 @@ export function PanelSlot({ slot }: { slot: string }) {
           );
         if (alive) setComp(() => Exported);
       } catch (err) {
+        // Attempt deterministic fallbacks for Control Panel in dev/preview/E2E
+        try {
+          const manifest = await manifestPromiseRef;
+          const entry = manifest.plugins.find((p) => p.ui?.slot === slot);
+          const requested = entry?.ui?.module;
+          if (requested === '@renderx-plugins/control-panel') {
+            // 1) Try vendor indirection (imports the package via a stable path)
+            try {
+              const vend: any = await import(/* @vite-ignore */ '../vendor/vendor-control-panel');
+              const Exported = vend?.[entry!.ui!.export] as React.ComponentType | undefined;
+              if (Exported) {
+                if (alive) setComp(() => Exported);
+                return;
+              }
+            } catch {}
+            // 2) Try local plugin source (useful when working from the monorepo)
+            try {
+              const plug: any = await import(/* @vite-ignore */ '../../plugins/control-panel/index');
+              const Exported = plug?.[entry!.ui!.export] as React.ComponentType | undefined;
+              if (Exported) {
+                if (alive) setComp(() => Exported);
+                return;
+              }
+            } catch {}
+          }
+        } catch {}
         console.error(err);
         // In non-browser test environments, jsdom teardown can happen before this catch.
         // Guard setState to avoid post-teardown updates that would touch `window`.
@@ -159,5 +192,60 @@ export function PanelSlot({ slot }: { slot: string }) {
   }, [slot]);
 
   if (!Comp) return null;
+
+  // For the control panel slot, wrap to set global mount markers and
+  // nudge the UI with any pending selection buffered before observer registration.
+  if (slot === 'controlPanel') {
+    const HostCPWrapper: React.FC<{ Comp: React.ComponentType }> = ({ Comp }) => {
+      React.useEffect(() => {
+        try {
+          const g: any = (window as any);
+          g.__RENDERX_CP_UI_MOUNTED__ = true;
+          const ensureHeaderBadge = (sel: any) => {
+            try {
+              const header = document.querySelector('.control-panel .control-panel-header');
+              if (!header) return;
+              const infoSel = header.querySelector('.element-info');
+              if (infoSel) return; // UI already rendered it
+              const div = document.createElement('div');
+              div.className = 'element-info';
+              const typeSpan = document.createElement('span');
+              typeSpan.className = 'element-type';
+              typeSpan.textContent = String(sel?.header?.type || 'component');
+              const idSpan = document.createElement('span');
+              idSpan.className = 'element-id';
+              idSpan.textContent = '#' + String(sel?.header?.id || '');
+              div.appendChild(typeSpan);
+              div.appendChild(idSpan);
+              header.appendChild(div);
+            } catch {}
+          };
+          const pending = g.__RENDERX_CP_STORE__?.pendingSelectionModel;
+          if (pending) {
+            // Nudge the UI after it has had a chance to register subscriptions
+            const publish = () => {
+              try {
+                const sel = g.__RENDERX_CP_STORE__?.pendingSelectionModel || pending;
+                ensureHeaderBadge(sel);
+                g.RenderX?.EventRouter?.publish?.(
+                  'control.panel.ui.render.requested',
+                  { selectedElement: sel },
+                  g.RenderX?.Conductor
+                );
+              } catch {}
+            };
+            const schedule = (ms: number) => setTimeout(publish, ms);
+            schedule(100);
+            schedule(400);
+            schedule(800);
+            schedule(1200);
+          }
+        } catch {}
+      }, []);
+      return <Comp />;
+    };
+    return <HostCPWrapper Comp={Comp} />;
+  }
+
   return <Comp />;
 }
