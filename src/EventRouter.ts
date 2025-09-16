@@ -37,6 +37,8 @@ function debounce(fn: Function, ms: number) {
   };
 }
 
+const __publishStack: string[] = [];
+
 export const EventRouter = {
   async init() {
     await initTopicsManifest();
@@ -57,6 +59,12 @@ export const EventRouter = {
   async publish(topic: string, payload: any, conductor?: any) {
     const def = getTopicDef(topic);
     if (!def) throw new Error(`Unknown topic: ${topic}`);
+
+    // Reentrancy guard: block immediate same-topic republish in the current call stack
+    if (__publishStack.includes(topic)) {
+      try { console.warn(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`); } catch {}
+      return;
+    }
 
     // Optional runtime validation: gate by feature flag
     try {
@@ -112,7 +120,12 @@ export const EventRouter = {
       return;
     }
 
-    await deliver(payload);
+    __publishStack.push(topic);
+    try {
+      await deliver(payload);
+    } finally {
+      __publishStack.pop();
+    }
   },
 };
 
