@@ -1,5 +1,7 @@
 import { deriveSelectionModel } from "./selection.stage-crew";
 import { getSelectionObserver } from "../../state/observer.store";
+import { EventRouter } from "@renderx-plugins/host-sdk";
+
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
@@ -19,7 +21,6 @@ export const handlers = {
 
     // Publish selection changed topic to allow other subscribers (e.g., overlays)
     try {
-      const { EventRouter } = require("../../../../src/EventRouter");
       const id = selectionModel?.header?.id || data?.id;
       if (id) {
         EventRouter.publish(
