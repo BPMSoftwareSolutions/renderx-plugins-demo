@@ -16,6 +16,8 @@ export default defineConfig({
   skipNodeModulesBundle: true,
   splitting: false,
   shims: false,
+  // Auto-inject CSS so consumers loading the package get styles applied at runtime
+  injectStyle: true,
   // Keep external deps unbundled
   external: [
     'react',
