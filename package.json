@@ -32,6 +32,7 @@
     "lint": "eslint .",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
+    "pretest": "npm --prefix packages/control-panel run -s build",
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
