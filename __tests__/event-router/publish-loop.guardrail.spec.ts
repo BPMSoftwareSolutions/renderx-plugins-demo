@@ -18,8 +18,8 @@ function buildTopicsManifest(catalogs: any[]) {
 const catalogs = [
   {
     topics: {
-      "loop.topic": { routes: [{ pluginId: "P1", sequenceId: "S1" }] },
-      "other.topic": { routes: [{ pluginId: "P2", sequenceId: "S2" }] },
+      "test.route": { routes: [{ pluginId: "P1", sequenceId: "S1" }] },
+      "test.notify": { routes: [] },
     },
   },
 ];
@@ -52,11 +52,11 @@ describe("EventRouter reentrancy guard (feedback loops)", () => {
 
   it("blocks immediate same-topic republish from within conductor.play (routes stage)", async () => {
     // Use a global to let nested publish reuse the same conductor
-    (globalThis as any).conductor = makeReentrantConductor("loop.topic");
+    (globalThis as any).conductor = makeReentrantConductor("test.route");
 
     // Without a guard, this would route twice (calls.length === 2)
     // With the guard, the inner publish should be no-op and we only route once.
-    await EventRouter.publish("loop.topic", { test: 1 }, (globalThis as any).conductor);
+    await EventRouter.publish("test.route", { test: 1 }, (globalThis as any).conductor);
 
     expect((globalThis as any).conductor.calls.length).toBe(1);
   });
@@ -65,15 +65,15 @@ describe("EventRouter reentrancy guard (feedback loops)", () => {
     const conductor = { play: async () => {} } as any;
     let republished = false;
     let observed = 0;
-    const unsub = EventRouter.subscribe("loop.topic", async () => {
+    const unsub = EventRouter.subscribe("test.notify", async () => {
       observed += 1;
       if (!republished) {
         republished = true;
-        await EventRouter.publish("loop.topic", { from: "subscriber" }, conductor);
+        await EventRouter.publish("test.notify", { from: "subscriber" }, conductor);
       }
     });
 
-    await EventRouter.publish("loop.topic", { test: 2 }, conductor);
+    await EventRouter.publish("test.notify", { test: 2 }, conductor);
     unsub();
 
     // First delivery happened, inner publish was blocked, so observed only once.
