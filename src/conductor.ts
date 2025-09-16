@@ -32,8 +32,8 @@ const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
   '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
   '@renderx-plugins/canvas-component': () => import('@renderx-plugins/canvas-component'),
-  // Phase 1/preview fallback: resolve Control Panel bare specifier to workspace source
-  '@renderx-plugins/control-panel': () => import('../packages/control-panel/src/index'),
+  // Resolve Control Panel via the same bare package spec as the UI so both share a single module instance (dist via Vite alias)
+  '@renderx-plugins/control-panel': () => import('@renderx-plugins/control-panel'),
   // Pre-bundled first-party fallback for yet-internal plugins
   '/plugins/control-panel/index.ts': () => import('../plugins/control-panel/index'),
 };
