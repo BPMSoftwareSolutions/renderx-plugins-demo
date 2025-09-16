@@ -16,8 +16,8 @@ export default defineConfig({
   skipNodeModulesBundle: true,
   splitting: false,
   shims: false,
-  // Auto-inject CSS so consumers loading the package get styles applied at runtime
-  injectStyle: true,
+  // Extract CSS and let the consumer bundler (Vite) handle the CSS import
+  injectStyle: false,
   // Keep external deps unbundled
   external: [
     'react',
