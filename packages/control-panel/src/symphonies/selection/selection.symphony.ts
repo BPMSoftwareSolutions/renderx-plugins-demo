@@ -1,13 +1,12 @@
 import { deriveSelectionModel } from "./selection.stage-crew";
 import { getSelectionObserver } from "../../state/observer.store";
-import { EventRouter } from "@renderx-plugins/host-sdk";
 
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
 export const handlers = {
   deriveSelectionModel,
-  notifyUi(data: any, ctx: any) {
+  notifyUi(_data: any, ctx: any) {
     const observer = getSelectionObserver();
     const selectionModel = ctx.payload?.selectionModel;
 
@@ -18,17 +17,7 @@ export const handlers = {
         ctx.logger?.warn?.("Control Panel selection observer error:", e);
       }
     }
-
-    // Publish selection changed topic to allow other subscribers (e.g., overlays)
-    try {
-      const id = selectionModel?.header?.id || data?.id;
-      if (id) {
-        EventRouter.publish(
-          "canvas.component.selection.changed",
-          { id },
-          ctx.conductor
-        );
-      }
-    } catch {}
+    // IMPORTANT: Do not republish the selection.changed topic here.
+    // This symphony is triggered BY that topic; republishing would cause a loop.
   },
 };
