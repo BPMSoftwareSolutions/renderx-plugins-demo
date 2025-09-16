@@ -37,7 +37,7 @@
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "packages:test": "npm --prefix packages/renderx-plugin-canvas run test && npm --prefix packages/renderx-plugin-canvas-component run test",
-    "e2e": "playwright test",
+    "e2e": "npm --prefix packages/control-panel run -s build && playwright test",
     "ci:precheck": "node scripts/ci-precheck.js",
     "ci": "npm run lint && npm run pre:manifests && npm test && npm run e2e"
   },

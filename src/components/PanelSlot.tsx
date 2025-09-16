@@ -92,8 +92,8 @@ const packageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
   '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
-  // Phase 1/preview fallback: resolve Control Panel bare specifier to workspace source
-  '@renderx-plugins/control-panel': () => import('../../packages/control-panel/src/index'),
+  // Resolve Control Panel via bare package so it aligns with symphonies (both go through Vite alias → dist)
+  '@renderx-plugins/control-panel': () => import('@renderx-plugins/control-panel'),
   // Pre-bundled first-party plugin paths (Vite will include these in build)
   '/plugins/control-panel/index.ts': () => import('../../plugins/control-panel/index'),
 };

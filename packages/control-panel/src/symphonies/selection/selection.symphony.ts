@@ -15,6 +15,19 @@ export const handlers = {
       } catch (e) {
         ctx.logger?.warn?.("Control Panel selection observer error:", e);
       }
+
+      // Dev-safe nudge: also publish a UI render request via host router if available.
+      // This ensures the UI render symphony runs even if the observer wiring misses in certain envs.
+      try {
+        const g: any = (globalThis as any);
+        const ER = g?.RenderX?.EventRouter;
+        const conductor = g?.RenderX?.Conductor;
+        ER?.publish?.(
+          "control.panel.ui.render.requested",
+          { selectedElement: selectionModel },
+          conductor
+        );
+      } catch {}
     }
     // IMPORTANT: Do not republish the 'canvas.component.selection.changed' topic here.
     // This symphony is triggered BY that topic; republishing would cause a loop.
