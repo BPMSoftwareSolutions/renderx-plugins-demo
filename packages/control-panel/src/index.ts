@@ -1,10 +1,8 @@
-// Temporary workspace package entry for Control Panel (Phase 1)
-// UI is re-exported from in-repo source; runtime register is a no-op because
-// sequences are mounted from JSON catalogs by the host loader.
+// Control Panel package entry
+// UI export and runtime register (no-op; sequences are JSON-mounted)
 
-export { ControlPanel } from '../../../plugins/control-panel/ui/ControlPanel';
+export { ControlPanel } from './ui/ControlPanel';
 
 export async function register(_conductor?: any) {
   // No-op: Control Panel sequences are mounted via json-sequences loader
 }
-

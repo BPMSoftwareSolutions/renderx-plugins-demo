@@ -5,9 +5,6 @@ export default {
     alias: {
       // Host SDK alias (legacy import name)
       '@renderx/host-sdk': '@renderx-plugins/host-sdk',
-      // Temporary workspace mapping for Control Panel during Phase 1
-      // Map to the src directory so subpath imports (e.g., /symphonies/...) resolve
-      '@renderx-plugins/control-panel': 'packages/control-panel/src',
     },
     // Ensure a single React instance across host and plugins
     dedupe: ['react', 'react-dom'],
