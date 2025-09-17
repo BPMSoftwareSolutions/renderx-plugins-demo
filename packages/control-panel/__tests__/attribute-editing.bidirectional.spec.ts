@@ -1,8 +1,8 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
-import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
-import { resolveInteraction } from "../../src/interactionManifest";
+import { setSelectionObserver } from "../src/state/observer.store";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 
 import { handlers as canvasUpdateHandlers } from "@renderx-plugins/canvas-component";
 
@@ -41,7 +41,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     const updateCtx = {
       payload: {},
       conductor: { play: playMock }
-    };
+    } as any;
 
     // Act: simulate Control Panel content change
     const contentChange = {
@@ -50,7 +50,6 @@ describe("Control Panel bidirectional attribute editing", () => {
       value: "Updated Button Text"
     };
 
-    // This will be implemented - should call canvas.component.update
     const route = resolveInteraction("canvas.component.update");
     updateCtx.conductor.play(route.pluginId, route.sequenceId, contentChange);
 
@@ -83,7 +82,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     const updateCtx = {
       payload: {},
       conductor: { play: playMock }
-    };
+    } as any;
 
     // Act: simulate Control Panel styling change
     const stylingChange = {
@@ -124,7 +123,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     const updateCtx = {
       payload: {},
       conductor: { play: playMock }
-    };
+    } as any;
 
     // Act: simulate Control Panel layout change
     const layoutChange = {
@@ -163,23 +162,29 @@ describe("Control Panel bidirectional attribute editing", () => {
     expect(element.style.backgroundColor).toBe("");
 
     // Act: call Canvas update handler with content change
-    const contentUpdateCtx = { payload: {} };
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "content",
-      value: "Updated Text"
-    }, contentUpdateCtx);
+    const contentUpdateCtx = { payload: {} } as any;
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "content",
+        value: "Updated Text"
+      },
+      contentUpdateCtx
+    );
 
     // Assert: DOM should be updated
     expect(element.textContent).toBe("Updated Text");
 
     // Act: call Canvas update handler with styling change
-    const styleUpdateCtx = { payload: {} };
-    canvasUpdateHandlers.updateAttribute({
-      id: nodeId,
-      attribute: "bg-color",
-      value: "#ff6b6b"
-    }, styleUpdateCtx);
+    const styleUpdateCtx = { payload: {} } as any;
+    canvasUpdateHandlers.updateAttribute(
+      {
+        id: nodeId,
+        attribute: "bg-color",
+        value: "#ff6b6b"
+      },
+      styleUpdateCtx
+    );
 
     // Assert: DOM should be updated
     expect(element.style.backgroundColor).toBe("rgb(255, 107, 107)"); // CSS converts hex to rgb
@@ -203,7 +208,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     const refreshCtx = {
       payload: { elementId: nodeId },
       conductor: { play: playMock }
-    };
+    } as any;
 
     // Act: call refresh handler
     canvasUpdateHandlers.refreshControlPanel({}, refreshCtx);
@@ -219,3 +224,4 @@ describe("Control Panel bidirectional attribute editing", () => {
     setSelectionObserver(null);
   });
 });
+

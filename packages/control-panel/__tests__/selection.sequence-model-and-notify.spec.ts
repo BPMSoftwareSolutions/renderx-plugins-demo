@@ -1,8 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
-
-import { handlers as controlPanelHandlers } from "../../plugins/control-panel/symphonies/selection/selection.symphony";
+import { handlers as controlPanelHandlers } from "../src/symphonies/selection/selection.symphony";
 
 function makeButtonTemplate() {
   return {
@@ -62,15 +61,15 @@ describe("Control Panel selection sequence builds data-driven model", () => {
       header: { type: "button", id: "rx-node-test" },
       content: { content: "Click me", variant: "primary", size: "medium", disabled: false },
       layout: { x: 50, y: 30, width: 120, height: 40 },
-      styling: { "bg-color": "#007acc", "text-color": "#ffffff" }
+      styling: { "bg-color": "#007acc", "text-color": "#ffffff" },
     };
 
     const ctx: any = {
       payload: { selectionModel },
-      logger: { 
+      logger: {
         info: vi.fn(),
-        warn: vi.fn() 
-      }
+        warn: vi.fn(),
+      },
     };
 
     // Act: notify UI
@@ -78,7 +77,7 @@ describe("Control Panel selection sequence builds data-driven model", () => {
 
     // Assert: EventRouter should publish with selection model
     expect(mockEventRouter.publish).toHaveBeenCalledWith(
-      'control.panel.selection.updated', 
+      'control.panel.selection.updated',
       selectionModel
     );
 
@@ -98,3 +97,4 @@ describe("Control Panel selection sequence builds data-driven model", () => {
     expect(ctx.payload.selectionModel).toBeNull();
   });
 });
+

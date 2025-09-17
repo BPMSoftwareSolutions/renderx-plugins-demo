@@ -3,9 +3,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { handlers as dragHandlers } from "@renderx-plugins/canvas-component/symphonies/drag/drag.symphony.ts";
 import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.move.symphony.ts";
-import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
-
-import { handlers as controlPanelUpdateHandlers } from "../../plugins/control-panel/symphonies/update/update.symphony";
+import { handlers as controlPanelUpdateHandlers } from "../src/symphonies/update/update.symphony";
 
 function makeButtonTemplate() {
   return {
@@ -26,7 +24,6 @@ describe("Control Panel live updates during drag/resize", () => {
   });
 
   it("forwards drag position updates to Control Panel", () => {
-
     // Create element
     const ctx: any = { payload: {} };
     const template = makeButtonTemplate();
@@ -37,18 +34,20 @@ describe("Control Panel live updates during drag/resize", () => {
     const nodeId = ctx.payload.nodeId as string;
 
     // Derive model via Control Panel update handler and notify UI
-    const selectionObserver = vi.fn();
-    setSelectionObserver(selectionObserver);
-    const dragCtx = { payload: {} } as any;
+    const originalRenderX = (globalThis as any).RenderX;
+    const publish = vi.fn();
+    ;(globalThis as any).RenderX = { EventRouter: { publish } } as any;
+    const dragCtx = { payload: {}, logger: { info: vi.fn(), warn: vi.fn() } } as any;
 
     // Act: simulate drag position update and derive model from DOM
     const dragData = { id: nodeId, position: { x: 100, y: 80 } };
     dragHandlers.updatePosition(dragData, dragCtx);
-    controlPanelUpdateHandlers.updateFromElement({ id: nodeId }, dragCtx);
+    controlPanelUpdateHandlers.updateFromElement({ id: nodeId, source: "drag" }, dragCtx);
     controlPanelUpdateHandlers.notifyUi({}, dragCtx);
 
-    // Assert: observer called with updated position
-    expect(selectionObserver).toHaveBeenCalledWith(
+    // Assert: EventRouter published selection update with new position
+    expect(publish).toHaveBeenCalledWith(
+      'control.panel.selection.updated',
       expect.objectContaining({
         header: expect.objectContaining({ id: nodeId }),
         layout: expect.objectContaining({ x: 100, y: 80 }),
@@ -56,11 +55,10 @@ describe("Control Panel live updates during drag/resize", () => {
     );
 
     // Cleanup
-    setSelectionObserver(null);
+    (globalThis as any).RenderX = originalRenderX;
   });
 
-  it("forwards resize updates to Control Panel with position and size", () => {
-
+  it("forwards resize updates to Control Panel with position and size", async () => {
     // Create element
     const ctx: any = { payload: {} };
     const template = makeButtonTemplate();
@@ -71,9 +69,10 @@ describe("Control Panel live updates during drag/resize", () => {
     const nodeId = ctx.payload.nodeId as string;
 
     // Derive model via Control Panel update handler and notify UI
-    const selectionObserver = vi.fn();
-    setSelectionObserver(selectionObserver);
-    const resizeCtx = { payload: {} } as any;
+    const originalRenderX = (globalThis as any).RenderX;
+    const publish = vi.fn();
+    ;(globalThis as any).RenderX = { EventRouter: { publish } } as any;
+    const resizeCtx = { payload: {}, logger: { info: vi.fn(), warn: vi.fn() } } as any;
 
     const resizeData = {
       id: nodeId,
@@ -88,11 +87,14 @@ describe("Control Panel live updates during drag/resize", () => {
     // update DOM via stage-crew
     resizeHandlers.updateSize(resizeData, resizeCtx);
     // derive model and notify UI
-    controlPanelUpdateHandlers.updateFromElement({ id: nodeId }, resizeCtx);
+    controlPanelUpdateHandlers.updateFromElement({ id: nodeId, source: "resize" }, resizeCtx);
+    // Allow dedupe window to pass before notifying
+    await new Promise((r) => setTimeout(r, 160));
     controlPanelUpdateHandlers.notifyUi({}, resizeCtx);
 
-    // Assert: observer called with updated size and position
-    expect(selectionObserver).toHaveBeenCalledWith(
+    // Assert: EventRouter published selection update with updated size and position
+    expect(publish).toHaveBeenCalledWith(
+      'control.panel.selection.updated',
       expect.objectContaining({
         header: expect.objectContaining({ id: nodeId }),
         layout: expect.objectContaining({ x: 50, y: 30, width: 140, height: 50 }),
@@ -100,7 +102,7 @@ describe("Control Panel live updates during drag/resize", () => {
     );
 
     // Cleanup
-    setSelectionObserver(null);
+    (globalThis as any).RenderX = originalRenderX;
   });
 
   it("Control Panel update sequence derives current position/size from DOM", () => {
@@ -135,9 +137,10 @@ describe("Control Panel live updates during drag/resize", () => {
     expect(model.layout.height).toBe(50); // Updated size
   });
 
-  it("notifies UI observer with updated model during live updates", () => {
-    const observerMock = vi.fn();
-    setSelectionObserver(observerMock);
+  it("notifies UI observer with updated model during live updates", async () => {
+    const originalRenderX = (globalThis as any).RenderX;
+    const publish = vi.fn();
+    ;(globalThis as any).RenderX = { EventRouter: { publish } } as any;
 
     const updatedModel = {
       header: { type: "button", id: "rx-node-test" },
@@ -153,15 +156,19 @@ describe("Control Panel live updates during drag/resize", () => {
 
     const ctx = {
       payload: { selectionModel: updatedModel },
-    };
+      logger: { info: vi.fn(), warn: vi.fn() }
+    } as any;
 
     // Act: notify UI of live update
+    // Allow dedupe window to pass
+    await new Promise((r) => setTimeout(r, 160));
     controlPanelUpdateHandlers.notifyUi({}, ctx);
 
-    // Assert: observer should be called with updated model
-    expect(observerMock).toHaveBeenCalledWith(updatedModel);
+    // Assert: EventRouter should publish with updated model
+    expect(publish).toHaveBeenCalledWith('control.panel.selection.updated', updatedModel);
 
     // Cleanup
-    setSelectionObserver(null);
+    (globalThis as any).RenderX = originalRenderX;
   });
 });
+
