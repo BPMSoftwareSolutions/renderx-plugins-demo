@@ -5,13 +5,15 @@ import path from "path";
 describe("Panel CSS files use theme variables", () => {
   const candidates = [
     path.resolve(process.cwd(), "node_modules/@renderx-plugins/library/dist/ui/LibraryPanel.css"),
-    path.resolve(__dirname, "../../plugins/control-panel/ui/ControlPanel.css"),
+    // Externalized Control Panel CSS (built by tsup as part of pretest)
+    path.resolve(process.cwd(), "packages/control-panel/dist/index.css"),
   ];
   const files = candidates.filter((f) => fs.existsSync(f));
 
   it("headers use panel header variables where present", () => {
-    const lib = fs.readFileSync(files[0], "utf-8");
-    expect(lib).toMatch(/background:\s*var\(--panel-header-bg\)/);
+    expect(files.length, "Expected at least one panel CSS file to exist").toBeGreaterThan(0);
+    const css = fs.readFileSync(files[0], "utf-8");
+    expect(css).toMatch(/background:\s*var\(--panel-header-bg\)/);
   });
 
   it("panels use panel background/border/shadow vars", () => {
