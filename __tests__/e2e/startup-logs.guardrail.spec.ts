@@ -14,7 +14,7 @@ describe('Startup logs E2E guardrail', () => {
   it('has no critical startup errors at app startup (captured console)', async () => {
     // Disable extra network-heavy validation during test and force stable manifest read from public/
     (globalThis as any).process = (globalThis as any).process || {};
-    (globalThis as any).process.env = { ...(globalThis as any).process.env, RENDERX_DISABLE_STARTUP_VALIDATION: '1', HOST_ARTIFACTS_DIR: 'public' };
+    (globalThis as any).process.env = { ...(globalThis as any).process.env, RENDERX_DISABLE_STARTUP_VALIDATION: '1' };
 
     // Stub fetch for relative URLs so manifest loading falls back to fs/raw import path
     const origFetch: any = (globalThis as any).fetch;
@@ -50,10 +50,10 @@ describe('Startup logs E2E guardrail', () => {
       await new Promise<void>((resolve) => setTimeout(resolve, maxRegisterMs));
       const msgs = () => messages.slice(baseLen);
 
-      const pluginNames = ['LibraryPlugin', 'CanvasPlugin', 'LibraryComponentPlugin', 'CanvasComponentPlugin'];
+      const pluginNames = ['LibraryPlugin', 'CanvasPlugin', 'LibraryComponentPlugin', 'CanvasComponentPlugin', 'ControlPanelPlugin'];
       const hasPluginSuccess = (plugin: string) =>
         msgs().some((m) => new RegExp(`(Registered plugin runtime:|Plugin mounted successfully:)\\s*${plugin}`, 'i').test(m));
-      // Give plugins a little extra time to emit success logs if still missing (up to 4s)
+      // Give plugins a little extra time to emit success logs if still missing (up to 6s)
       {
         const startWait = Date.now();
         while (!pluginNames.every((p) => hasPluginSuccess(p)) && Date.now() - startWait < 6000) {
@@ -69,13 +69,18 @@ describe('Startup logs E2E guardrail', () => {
           hint: 'Sequences failed to initialize — check registration/manifest wiring',
         },
         {
+          name: 'SequencesCountZero',
+          regex: /Registered\s+0\s+musical\s+sequences/i,
+          hint: 'No musical sequences registered — check manifest/catalog loading',
+        },
+        {
           name: 'ModuleResolveFailed',
           regex: /Failed to resolve module specifier\s+'@renderx-plugins\//i,
           hint: 'Bare package resolution failed — verify vite/vitest aliases or package install',
         },
         {
           name: 'RuntimeRegisterFailed',
-          regex: /Failed runtime register for\s+(LibraryPlugin|CanvasPlugin|LibraryComponentPlugin|CanvasComponentPlugin)\b/i,
+          regex: /Failed runtime register for\s+(LibraryPlugin|CanvasPlugin|LibraryComponentPlugin|CanvasComponentPlugin|ControlPanelPlugin)\b/i,
           hint: 'A plugin failed to register at runtime — likely due to missing package resolution',
         },
         {
@@ -118,10 +123,20 @@ describe('Startup logs E2E guardrail', () => {
         }
       }
 
+      // Require that at least one sequence was actually registered
+      const hasAnySequenceRegistered = msgs().some((m: string) => /SequenceRegistry:\s+Registered sequence|Sequence registered:/i.test(m));
+      if (!hasAnySequenceRegistered) {
+        offenders.push({
+          name: 'NoSequencesRegistered',
+          text: 'No sequence registration logs detected',
+          hint: 'Ensure at least one JSON sequence catalog is loaded and mounted during startup',
+        });
+      }
+
       // Heuristic: allow transient early failure if sequences are successfully registered afterwards
       const hasMounted = msgs().some((m: string) => /Registered plugin runtime:|Plugin mounted successfully:|SequenceRegistry:\s+Registered sequence|Sequence registered:/i.test(m));
       const filtered = offenders.filter((o) => {
-        if (o.name === 'SequencesSystemFailed' && hasMounted) return false;
+        if ((o.name === 'SequencesSystemFailed' || o.name === 'SequencesCountZero') && hasMounted) return false;
         return true;
       });
 
