@@ -151,8 +151,14 @@ class CssRegistryStore {
   }
 
   createClass(name: string, content: string): boolean {
-    if (this.state.classes.has(name)) {
-      return false; // Class already exists
+    const existing = this.state.classes.get(name);
+    if (existing) {
+      // Idempotent: if content is identical, treat as success no-op
+      if (existing.content === content) {
+        return true;
+      }
+      // If content differs, signal non-idempotent create; caller should use update
+      return false;
     }
 
     const now = Date.now();
@@ -173,8 +179,14 @@ class CssRegistryStore {
 
   updateClass(name: string, content: string): boolean {
     const existingClass = this.state.classes.get(name);
+    // Upsert: create when missing
     if (!existingClass) {
-      return false; // Class doesn't exist
+      return this.createClass(name, content);
+    }
+
+    // Idempotent: no-op when content is unchanged
+    if (existingClass.content === content) {
+      return true;
     }
 
     const now = Date.now();
