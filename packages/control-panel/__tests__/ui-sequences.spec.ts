@@ -1,19 +1,23 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { handlers as uiHandlers } from "../../plugins/control-panel/symphonies/ui/ui.symphony";
+import { handlers as uiHandlers } from "../src/symphonies/ui/ui.symphony";
 
-// Mock the resolveInteraction function
-vi.mock("../../src/interactionManifest", () => ({
-  resolveInteraction: vi.fn((key: string) => {
-    if (key === "canvas.component.update") {
-      return {
-        pluginId: "CanvasComponentPlugin",
-        sequenceId: "canvas-component-update-symphony",
-      };
-    }
-    return { pluginId: "unknown", sequenceId: "unknown" };
-  }),
-}));
+// Mock resolveInteraction via Host SDK to avoid host internals
+vi.mock("@renderx-plugins/host-sdk", async () => {
+  const actual = await vi.importActual<any>("@renderx-plugins/host-sdk");
+  return {
+    ...actual,
+    resolveInteraction: vi.fn((key: string) => {
+      if (key === "canvas.component.update") {
+        return {
+          pluginId: "CanvasComponentPlugin",
+          sequenceId: "canvas-component-update-symphony",
+        };
+      }
+      return { pluginId: "unknown", sequenceId: "unknown" };
+    }),
+  };
+});
 
 describe("Control Panel UI Sequences", () => {
   let mockCtx: any;
@@ -29,7 +33,7 @@ describe("Control Panel UI Sequences", () => {
       conductor: {
         play: vi.fn(),
       },
-    };
+    } as any;
   });
 
   describe("ui.init sequence handlers", () => {
@@ -175,7 +179,7 @@ describe("Control Panel UI Sequences", () => {
     });
 
     it("mergeErrors should mark errors as merged", () => {
-      mockCtx.payload = { fieldKey: "test", isValid: false, errors: ["Error"] };
+      mockCtx.payload = { fieldKey: "test", isValid: false, errors: ["Error"] } as any;
 
       uiHandlers.mergeErrors({}, mockCtx);
 
@@ -210,3 +214,4 @@ describe("Control Panel UI Sequences", () => {
     });
   });
 });
+

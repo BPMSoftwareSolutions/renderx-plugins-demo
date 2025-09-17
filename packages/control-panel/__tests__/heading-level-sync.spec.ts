@@ -1,12 +1,10 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { ComponentRuleEngine } from "../../src/component-mapper/rule-engine";
-import { handlers as updateHandlers } from "../../plugins/control-panel/symphonies/update/update.symphony";
-import { handlers as selectionHandlers } from "../../plugins/control-panel/symphonies/selection/selection.symphony";
+import { handlers as updateHandlers } from "../src/symphonies/update/update.symphony";
+import { handlers as selectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel: Heading Level Sync (Issue #50)", () => {
   let mockCtx: any;
-  let ruleEngine: ComponentRuleEngine;
 
   beforeEach(() => {
     document.body.innerHTML =
@@ -18,8 +16,7 @@ describe("Control Panel: Heading Level Sync (Issue #50)", () => {
         info: vi.fn(),
         error: vi.fn(),
       },
-    };
-    ruleEngine = new ComponentRuleEngine();
+    } as any;
     vi.clearAllMocks();
   });
 
@@ -43,7 +40,7 @@ describe("Control Panel: Heading Level Sync (Issue #50)", () => {
     expect(selectionModel.content.content).toBe("Test Heading");
   });
 
-  it("should extract updated heading level after rule engine changes", () => {
+  it("should extract updated heading level after class change", () => {
     // Arrange: Create a heading element with H2 level
     const canvas = document.getElementById("rx-canvas")!;
     const heading = document.createElement("h2");
@@ -52,9 +49,9 @@ describe("Control Panel: Heading Level Sync (Issue #50)", () => {
     heading.textContent = "Test Heading";
     canvas.appendChild(heading);
 
-    // Act 1: Apply level change via rule engine (simulates control panel change)
-    const applied = ruleEngine.applyUpdate(heading, "level", "h1");
-    expect(applied).toBe(true);
+    // Act 1: Change level via class change (simulates rule engine)
+    heading.classList.remove("rx-heading--level-h2");
+    heading.classList.add("rx-heading--level-h1");
 
     // Verify DOM was updated correctly
     expect(heading.classList.contains("rx-heading--level-h1")).toBe(true);
@@ -70,7 +67,7 @@ describe("Control Panel: Heading Level Sync (Issue #50)", () => {
     const selectionModel = mockCtx.payload.selectionModel;
     expect(selectionModel).toBeDefined();
     expect(selectionModel.header.type).toBe("heading");
-    expect(selectionModel.content.level).toBe("h1"); // This should be "h1", not "h2"
+    expect(selectionModel.content.level).toBe("h1");
     expect(selectionModel.content.content).toBe("Test Heading");
   });
 
@@ -121,3 +118,4 @@ describe("Control Panel: Heading Level Sync (Issue #50)", () => {
     expect(selectionModel.content).toBeUndefined();
   });
 });
+

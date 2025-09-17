@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { resolveInteraction } from "../../src/interactionManifest";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 
 describe("Control Panel interaction routing", () => {
   it("resolves control.panel.selection.show to ControlPanelPlugin", () => {
@@ -26,3 +26,4 @@ describe("Control Panel interaction routing", () => {
     expect(route.sequenceId).toBe("control-panel-update-symphony");
   });
 });
+

@@ -1,11 +1,11 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { handlers as uiHandlers } from "../../plugins/control-panel/symphonies/ui/ui.symphony";
+import { handlers as uiHandlers } from "../src/symphonies/ui/ui.symphony";
 
 function performanceNowShim() {
   if (
     typeof performance === "undefined" ||
-    typeof performance.now !== "function"
+    typeof (performance as any).now !== "function"
   ) {
     (globalThis as any).performance = { now: () => Date.now() } as any;
   }
@@ -38,3 +38,4 @@ describe("Control Panel UI Init — batched iterator", () => {
     expect(telemetry.every((t: any) => t.status === "ok")).toBe(true);
   });
 });
+

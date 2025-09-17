@@ -2,8 +2,8 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { resolveInteraction } from "@renderx-plugins/host-sdk";
-import { handlers as controlPanelHandlers } from "../../packages/control-panel/src/symphonies/selection/selection.symphony";
-import { handlers as classHandlers } from "../../packages/control-panel/src/symphonies/classes/classes.symphony";
+import { handlers as controlPanelHandlers } from "../src/symphonies/selection/selection.symphony";
+import { handlers as classHandlers } from "../src/symphonies/classes/classes.symphony";
 
 // Host-like selection forwarding harness for externalized select symphony
 const selectHandlers = {
@@ -12,7 +12,6 @@ const selectHandlers = {
     ctx?.conductor?.play?.(route.pluginId, route.sequenceId, { id: data?.id });
   },
 };
-
 
 function makeButtonTemplate() {
   return {
@@ -37,10 +36,10 @@ describe("Control Panel Integration - End to End", () => {
     mockEventRouter = {
       publish: vi.fn(),
     };
-    
+
     // Store original globalThis.RenderX
     originalRenderX = (globalThis as any).RenderX;
-    
+
     // Set up mock EventRouter on globalThis
     (globalThis as any).RenderX = {
       EventRouter: mockEventRouter,
@@ -48,7 +47,6 @@ describe("Control Panel Integration - End to End", () => {
   });
 
   it("complete flow: create element → select → control panel updates → add class → UI updates", () => {
-
     // Step 1: Create a canvas element
     const createCtx: any = { payload: {} };
     const template = makeButtonTemplate();
@@ -69,13 +67,13 @@ describe("Control Panel Integration - End to End", () => {
           // Mock the conductor.play call to Control Panel
           if (pluginId === "ControlPanelPlugin" && sequenceId === "control-panel-selection-show-symphony") {
             // Simulate the Control Panel selection sequence
-            const controlCtx = { payload: {} };
+            const controlCtx = { payload: {} } as any;
             controlPanelHandlers.deriveSelectionModel(data, controlCtx);
             controlPanelHandlers.notifyUi({}, controlCtx);
           }
         })
       }
-    };
+    } as any;
 
     selectHandlers.notifyUi({ id: nodeId }, selectCtx);
 
@@ -135,3 +133,4 @@ describe("Control Panel Integration - End to End", () => {
     (globalThis as any).RenderX = originalRenderX;
   });
 });
+

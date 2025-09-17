@@ -2,7 +2,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
 import { handlers as canvasUpdateHandlers } from "@renderx-plugins/canvas-component";
-import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
+import { setSelectionObserver } from "../src/state/observer.store";
 
 function makeButtonTemplate() {
   return {
@@ -47,7 +47,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "content",
         value: "Updated Button Text",
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.textContent).toBe("Updated Button Text");
@@ -59,7 +59,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "bg-color",
         value: "#ff6b6b",
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.style.backgroundColor).toBe("rgb(255, 107, 107)");
@@ -70,7 +70,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "text-color",
         value: "#ffffff",
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.style.color).toBe("rgb(255, 255, 255)");
@@ -82,7 +82,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "x",
         value: 200,
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.style.left).toBe("200px");
@@ -93,7 +93,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "width",
         value: 150,
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.style.width).toBe("150px");
@@ -105,7 +105,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "variant",
         value: "danger",
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.classList.contains("rx-button--danger")).toBe(true);
@@ -118,7 +118,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
         attribute: "disabled",
         value: true,
       },
-      { payload: {} }
+      { payload: {} } as any
     );
 
     expect(element.hasAttribute("disabled")).toBe(true);
@@ -131,7 +131,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
     const refreshCtx = {
       payload: { elementId: nodeId },
       conductor: { play: playMock },
-    };
+    } as any;
 
     canvasUpdateHandlers.refreshControlPanel({}, refreshCtx);
 
@@ -173,7 +173,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
           id: nodeId,
           ...change,
         },
-        { payload: {} }
+        { payload: {} } as any
       );
     });
 
@@ -202,7 +202,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
           attribute: "invalid-attribute",
           value: "some value",
         },
-        { payload: {} }
+        { payload: {} } as any
       );
     }).not.toThrow();
 
@@ -213,7 +213,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
           attribute: "content",
           value: "test",
         },
-        { payload: {} }
+        { payload: {} } as any
       );
     }).not.toThrow();
 
@@ -221,3 +221,4 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
     expect(element.textContent).toBe("Original Text");
   });
 });
+

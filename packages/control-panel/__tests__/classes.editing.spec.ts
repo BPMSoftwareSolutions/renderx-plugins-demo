@@ -2,8 +2,8 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
 
-import { handlers as controlPanelClassHandlers } from "../../plugins/control-panel/symphonies/classes/classes.symphony";
-import { setClassesObserver } from "../../plugins/control-panel/state/observer.store";
+import { handlers as controlPanelClassHandlers } from "../src/symphonies/classes/classes.symphony";
+import { setClassesObserver } from "../src/state/observer.store";
 
 function makeButtonTemplate() {
   return {
@@ -37,7 +37,7 @@ describe("Control Panel class editing sequences", () => {
     expect(element.classList.contains("rx-button--primary")).toBe(false);
 
     // Act: add class via control panel sequence
-    const classCtx = { payload: {} };
+    const classCtx = { payload: {} } as any;
     controlPanelClassHandlers.addClass(
       { id: nodeId, className: "rx-button--primary" },
       classCtx
@@ -65,7 +65,7 @@ describe("Control Panel class editing sequences", () => {
     expect(element.classList.contains("rx-button--primary")).toBe(true);
 
     // Act: remove class via control panel sequence
-    const classCtx = { payload: {} };
+    const classCtx = { payload: {} } as any;
     controlPanelClassHandlers.removeClass(
       { id: nodeId, className: "rx-button--primary" },
       classCtx
@@ -77,31 +77,31 @@ describe("Control Panel class editing sequences", () => {
     expect(classCtx.payload.updatedClasses).not.toContain("rx-button--primary");
   });
 
-  it("notifies UI after class changes", () => {
-    const observerMock = vi.fn();
-
-    // Set up observer
-    setClassesObserver(observerMock);
+  it("publishes class changes via EventRouter", () => {
+    const originalRenderX = (globalThis as any).RenderX;
+    const publish = vi.fn();
+    (globalThis as any).RenderX = { EventRouter: { publish } } as any;
 
     const ctx = {
-      payload: { id: "rx-node-test", updatedClasses: ["rx-comp", "rx-button", "rx-button--primary"] }
-    };
+      payload: { id: "rx-node-test", updatedClasses: ["rx-comp", "rx-button", "rx-button--primary"] },
+      logger: { info: vi.fn(), warn: vi.fn() }
+    } as any;
 
     // Act: notify UI of class changes
     controlPanelClassHandlers.notifyUi({}, ctx);
 
-    // Assert: observer was called with class data
-    expect(observerMock).toHaveBeenCalledWith({
+    // Assert: EventRouter was called with class data
+    expect(publish).toHaveBeenCalledWith('control.panel.classes.updated', {
       id: "rx-node-test",
       classes: ["rx-comp", "rx-button", "rx-button--primary"]
     });
 
     // Cleanup
-    setClassesObserver(null);
+    (globalThis as any).RenderX = originalRenderX;
   });
 
   it("handles missing element gracefully for class operations", () => {
-    const ctx = { payload: {} };
+    const ctx = { payload: {} } as any;
 
     // Act: try to add class to non-existent element
     expect(() => {
@@ -123,3 +123,4 @@ describe("Control Panel class editing sequences", () => {
     expect(ctx.payload.updatedClasses).toBeUndefined();
   });
 });
+

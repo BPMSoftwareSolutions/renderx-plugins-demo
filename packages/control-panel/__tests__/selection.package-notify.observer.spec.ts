@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { handlers as packageSelectionHandlers } from "../../packages/control-panel/src/symphonies/selection/selection.symphony";
+import { handlers as packageSelectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel (package) selection notify -> EventRouter", () => {
   let mockEventRouter: any;
@@ -11,10 +11,10 @@ describe("Control Panel (package) selection notify -> EventRouter", () => {
     mockEventRouter = {
       publish: vi.fn(),
     };
-    
+
     // Store original globalThis.RenderX
     originalRenderX = (globalThis as any).RenderX;
-    
+
     // Set up mock EventRouter on globalThis
     (globalThis as any).RenderX = {
       EventRouter: mockEventRouter,
@@ -35,19 +35,19 @@ describe("Control Panel (package) selection notify -> EventRouter", () => {
       classes: ["rx-comp", "rx-button"],
     };
 
-    const ctx: any = { 
-      payload: { selectionModel }, 
-      logger: { 
+    const ctx: any = {
+      payload: { selectionModel },
+      logger: {
         info: vi.fn(),
-        warn: vi.fn() 
-      } 
+        warn: vi.fn(),
+      },
     };
 
     packageSelectionHandlers.notifyUi({}, ctx);
 
     expect(mockEventRouter.publish).toHaveBeenCalledTimes(1);
     expect(mockEventRouter.publish).toHaveBeenCalledWith(
-      'control.panel.selection.updated', 
+      'control.panel.selection.updated',
       selectionModel
     );
   });
