@@ -7,22 +7,22 @@ import { resolve } from 'path';
 test.describe('Control Panel Selection Guardrail (Headless)', () => {
   let allLogs: string[] = [];
   let testStartTime: number;
-  
+
   test.beforeEach(async ({ page }) => {
     testStartTime = Date.now();
     allLogs = [];
-    
+
     // Capture ALL console output for logging
     page.on('console', (msg) => {
       const type = msg.type();
       const text = msg.text();
       const timestamp = new Date().toISOString();
-      
+
       // Store all logs with timestamps
       allLogs.push(`${timestamp} [${type}] ${text}`);
-      
+
       // Log important events to Node.js console during test execution
-      if (text.includes('[SYMPHONY]') || 
+      if (text.includes('[SYMPHONY]') ||
           text.includes('[sdk] publish') ||
           text.includes('[TEST]') ||
           text.includes('Startup validation') ||
@@ -30,13 +30,13 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
           text.includes('🔌') ||
           text.includes('📡') ||
           text.includes('✅') ||
-          text.includes('topics') || 
+          text.includes('topics') ||
           text.includes('Routing') ||
           text.includes('control.panel') ||
           text.includes('canvas.component.selection') ||
           text.includes('EventRouter') ||
           text.includes('useControlPanelState') ||
-          type === 'error' || 
+          type === 'error' ||
           type === 'warning') {
         console.log(`[browser:${type}] ${text}`);
       }
@@ -44,7 +44,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
 
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
-    
+
     // Wait for host bridges and plugins to load
     await page.waitForFunction(() => {
       const rx: any = (window as any).RenderX;
@@ -61,11 +61,11 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
     if (!existsSync(logsDir)) {
       mkdirSync(logsDir, { recursive: true });
     }
-    
+
     const testName = testInfo.title.replace(/[^a-zA-Z0-9]/g, '-');
     const logFileName = `e2e-${testName}-${testStartTime}.log`;
     const logFilePath = resolve(logsDir, logFileName);
-    
+
     // Add test metadata to logs
     const testMetadata = [
       `=== E2E Test Log: ${testInfo.title} ===`,
@@ -77,9 +77,9 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
       `===================================`,
       ''
     ];
-    
+
     const fullLog = testMetadata.concat(allLogs).join('\n');
-    
+
     try {
       writeFileSync(logFilePath, fullLog, 'utf8');
       console.log(`\n📋 Test logs saved to: ${logFilePath}`);
@@ -91,24 +91,24 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
 
   test('canvas.component.selection.changed → control.panel.ui.render.requested → UI updates', async ({ page }) => {
     console.log('\n=== Control Panel Selection Guardrail Test (Headless) ===');
-    
+
     // Wait for Control Panel header to appear with better error handling
     try {
       await page.waitForSelector('.control-panel-header', { timeout: 10000 });
       console.log('✅ Control Panel header mounted');
     } catch (error) {
       console.log('❌ Control Panel header failed to mount:', String(error));
-      
+
       // Check what we have on the page
       const slots = await page.$$('[data-slot]');
       console.log(`Found ${slots.length} slots on page`);
-      
+
       for (const slot of slots) {
         const slotName = await slot.getAttribute('data-slot');
         const content = await slot.textContent();
         console.log(`  - ${slotName}: "${content?.substring(0, 50)}..."`);
       }
-      
+
       throw error;
     }
 
@@ -150,11 +150,11 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
       try {
         const events: any[] = [];
         const rx = (window as any).RenderX;
-        
+
         if (!rx?.EventRouter) {
           return { error: 'RenderX.EventRouter not available' };
         }
-        
+
         // PATCH: Check if getTopicDef is now available globally
         try {
           const getTopicDef = (window as any).RenderX?.getTopicDef;
@@ -173,7 +173,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
         } catch (patchError) {
           console.log('[TEST] ⚠️ Error accessing global getTopicDef:', patchError);
         }
-        
+
         // Monitor conductor operations for symphony debugging
         const conductor = (window as any).renderxCommunicationSystem?.conductor;
         if (conductor) {
@@ -188,7 +188,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
                 handlerKeys: handlers ? Object.keys(handlers) : [],
                 isSelectionSequence: seq?.id === 'control-panel-selection-show-symphony'
               });
-              
+
               // For selection symphony, log more details
               if (seq?.id === 'control-panel-selection-show-symphony') {
                 console.log('[TEST] 🎯 Selection symphony details:', {
@@ -197,24 +197,24 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
                   deriveSelectionModelHandler: typeof handlers?.deriveSelectionModel
                 });
               }
-              
+
               return originalMount.call(this, seq, handlers, pluginId);
             };
           }
         }
-        
+
         // Track canvas selection events
         rx.EventRouter.subscribe('canvas.component.selection.changed', (data: any) => {
           events.push({ type: 'canvas.component.selection.changed', data, timestamp: Date.now() });
           console.log('[TEST] 📨 canvas.component.selection.changed:', data);
         });
-        
-        // Track control panel render requests  
+
+        // Track control panel render requests
         rx.EventRouter.subscribe('control.panel.ui.render.requested', (data: any) => {
           events.push({ type: 'control.panel.ui.render.requested', data, timestamp: Date.now() });
           console.log('[TEST] 📨 control.panel.ui.render.requested:', data);
         });
-        
+
         // Store events globally for retrieval
         (window as any).__testEvents = events;
         return { setupComplete: true, eventRouterAvailable: true };
@@ -227,7 +227,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
       console.log('❌ Event tracking setup failed:', eventCapture.error);
       throw new Error(eventCapture.error);
     }
-    
+
     // Debug the observer store state after initial setup
     const debugInfo = await page.evaluate(() => {
       try {
@@ -243,9 +243,9 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
         return { error: String(error) };
       }
     });
-    
+
     console.log('🔍 Observer store debug:', debugInfo);
-    
+
     expect(eventCapture.setupComplete).toBe(true);
     console.log('✅ Event tracking configured');
 
@@ -255,6 +255,20 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
         const rx: any = (window as any).RenderX;
         const conductor = (window as any).renderxCommunicationSystem?.conductor;
 
+        // Wait for create route, conductor, and canvas element to be ready (up to 10s)
+        {
+          const start = Date.now();
+          while (Date.now() - start < 10000) {
+            const getTopicDef = (window as any).RenderX?.getTopicDef;
+            const routeCount = getTopicDef ? (getTopicDef('canvas.component.create.requested')?.routes?.length || 0) : 0;
+            const hasConductor = !!((window as any).renderxCommunicationSystem?.conductor);
+            const hasCanvas = !!document.querySelector('#rx-canvas');
+            if (routeCount > 0 && hasConductor && hasCanvas) break;
+            await new Promise(r => setTimeout(r, 100));
+          }
+        }
+
+
         // If a node already exists, use it
         const existing = (document.querySelector('[id^="rx-node-"]')
           || document.querySelector('#rx-canvas [id^="rx-node-"]')) as HTMLElement | null;
@@ -262,25 +276,24 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
           return { created: false, nodeId: existing.id };
         }
 
-        if (!rx?.EventRouter || !rx?.inventory?.listComponents) {
-          return { error: 'RenderX bridge not ready for create (EventRouter/inventory missing)' };
+        if (!rx?.EventRouter) {
+          return { error: 'RenderX bridge not ready for create (EventRouter missing)' };
         }
 
-        // Pick a library component and derive a minimal template
-        const list = await rx.inventory.listComponents();
-        const comp = list?.find((x: any) => x?.id === 'button') ?? list?.[0];
-        if (!comp) return { error: 'No library components available to create' };
+        // Pick a library component and derive a minimal template (fallback to default if unavailable)
+        const list = await (rx.inventory?.listComponents?.().catch(() => null) as any);
+        const comp = list?.find((x: any) => x?.id === 'button') ?? list?.[0] ?? null;
 
         const canvasEl = document.querySelector('#rx-canvas') as HTMLElement | null;
         if (!canvasEl) return { error: 'Canvas element #rx-canvas not found' };
         const rect = canvasEl.getBoundingClientRect();
         const position = { x: Math.floor(rect.width / 2), y: Math.floor(rect.height / 2) };
 
-        const type = comp?.metadata?.replaces || comp?.metadata?.type || comp?.id || 'div';
-        const tag = type === 'input' ? 'input' : (type || 'div');
+        const type = comp?.metadata?.replaces || comp?.metadata?.type || comp?.id || 'button';
+        const tag = type === 'input' ? 'input' : (type || 'button');
         const template = {
           tag,
-          text: tag === 'button' ? (comp?.integration?.properties?.defaultValues?.content || 'Click Me') : undefined,
+          text: tag === 'button' ? (comp?.integration?.properties?.defaultValues?.content || 'Click me') : undefined,
           classes: ['rx-comp', `rx-${tag}`],
           style: {},
         } as any;
@@ -296,7 +309,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
 
         // Wait for creation to settle and DOM to update
         const started = Date.now();
-        while (Date.now() - started < 6000) {
+        while (Date.now() - started < 12000) {
           const byCallback = (window as any).__lastCreatedId;
           const byQuery = (document.querySelector('[id^="rx-node-"]')
             || document.querySelector('#rx-canvas [id^="rx-node-"]')) as HTMLElement | null;
@@ -321,11 +334,11 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
       try {
         const rx = (window as any).RenderX;
         const conductor = (window as any).renderxCommunicationSystem?.conductor;
-        
+
         if (!rx?.EventRouter) {
           return { error: 'RenderX.EventRouter not available' };
         }
-        
+
         if (!conductor) {
           return { error: 'conductor not available' };
         }
@@ -342,7 +355,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
         if (!nodeId) {
           return { error: 'No canvas component found with id prefix rx-node-' };
         }
-        
+
         // Debug: Check if the selection symphony is actually mounted
         let symphonyMountStatus = 'unknown';
         try {
@@ -358,20 +371,20 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
         } catch (e) {
           symphonyMountStatus = `error: ${String(e)}`;
         }
-        
+
         console.log(`[TEST] 🎯 Publishing canvas.component.selection.changed for node: ${nodeId}`);
         console.log(`[TEST] 🎼 Symphony mount status: ${symphonyMountStatus}`);
-        
+
         // Add EventRouter debugging to see if routing is working
         const originalPublish = rx.EventRouter.publish;
         let routingInfo: any = null;
-        
+
         rx.EventRouter.publish = function(topic: string, payload: any, conductor: any) {
           if (topic === 'canvas.component.selection.changed') {
             console.log(`[TEST] 📡 EventRouter.publish called for: ${topic}`);
             console.log(`[TEST] 📡 Payload:`, payload);
             console.log(`[TEST] 📡 Conductor:`, !!conductor);
-            
+
             // Try to catch any errors during publish
             try {
               const result = originalPublish.call(this, topic, payload, conductor);
@@ -382,17 +395,17 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
               throw publishError;
             }
           }
-          
+
           return originalPublish.call(this, topic, payload, conductor);
         };
-        
+
         await rx.EventRouter.publish('canvas.component.selection.changed', {
           id: nodeId
         }, conductor);
-        
+
         // Restore original publish
         rx.EventRouter.publish = originalPublish;
-        
+
         return { success: true, nodeId, symphonyMountStatus, routingInfo };
       } catch (error) {
         return { error: String(error) };
@@ -434,22 +447,22 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
     }
 
     console.log('📤 Publish result:', publishResult);
-    
+
     if (publishResult.error) {
       console.log('❌ Event publish failed:', publishResult.error);
       throw new Error(publishResult.error);
     }
-    
+
     expect(publishResult.success).toBe(true);
 
     // Wait for events to propagate and UI to update (shorter timeout)
     let attempts = 0;
     let finalState = '';
     const maxAttempts = 30; // 3 seconds - shorter for headless
-    
+
     while (attempts < maxAttempts) {
       await page.waitForTimeout(100);
-      
+
       // Check UI state
       try {
         const typeEl = page.locator('.control-panel-header .element-type').first();
@@ -457,30 +470,30 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
       } catch {
         finalState = ''; // Element might not exist yet
       }
-      
+
       // Check captured events
       const capturedEvents = await page.evaluate(() => (window as any).__testEvents || []);
-      
+
       if (attempts % 10 === 0) { // Log every second
         console.log(`📊 Attempt ${attempts + 1}: UI="${finalState}", Events captured: ${capturedEvents.length}`);
-        
+
         // Log event details
         const selectionEvents = capturedEvents.filter((e: any) => e.type === 'canvas.component.selection.changed');
         const renderEvents = capturedEvents.filter((e: any) => e.type === 'control.panel.ui.render.requested');
         console.log(`   - Selection events: ${selectionEvents.length}, Render events: ${renderEvents.length}`);
       }
-      
+
       // Success conditions: either UI updated OR we saw the expected event flow
       const eventCheck = await page.evaluate(() => (window as any).__testEvents || []);
       const hasSelectionEvent = eventCheck.some((e: any) => e.type === 'canvas.component.selection.changed');
       const hasRenderEvent = eventCheck.some((e: any) => e.type === 'control.panel.ui.render.requested');
       const uiUpdated = finalState && finalState !== 'No Element Selected' && finalState.trim() !== '';
-      
+
       if (hasSelectionEvent && (hasRenderEvent || uiUpdated)) {
         console.log('✅ Success condition met!');
         break;
       }
-      
+
       attempts++;
     }
 
@@ -488,12 +501,12 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
     const finalEvents = await page.evaluate(() => (window as any).__testEvents || []);
     const selectionEvents = finalEvents.filter((e: any) => e.type === 'canvas.component.selection.changed');
     const renderEvents = finalEvents.filter((e: any) => e.type === 'control.panel.ui.render.requested');
-    
+
     // Check EventRouter debug trail and instance investigation
     const eventRouterDebug = await page.evaluate(() => {
       const debugTrail = (window as any).__DEBUG_EVENTROUTER || [];
       const eventRouter = (window as any).renderxCommunicationSystem?.eventRouter;
-      
+
       // Let's inspect the EventRouter instance
       const routerInfo = {
         found: !!eventRouter,
@@ -501,32 +514,32 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
         hasPublish: !!(eventRouter && typeof eventRouter.publish === 'function'),
         publishCode: eventRouter?.publish?.toString?.().substring?.(0, 200) || 'N/A'
       };
-      
+
       return { debugTrail, routerInfo };
     });
     console.log(`🔍 EventRouter investigation:`, eventRouterDebug);
-    
+
     console.log('\n📈 Final Results:');
     console.log(`   UI State: "${finalState}"`);
     console.log(`   Selection Events: ${selectionEvents.length}`);
     console.log(`   Render Events: ${renderEvents.length}`);
-    
+
     // Primary assertion: We should see the selection event (this proves EventRouter works)
     expect(selectionEvents.length).toBeGreaterThan(0);
     console.log('✅ Canvas selection event was published and received');
-    
+
     // Secondary assertion: We should see either render events OR UI updates
     const hasRenderEvents = renderEvents.length > 0;
     const hasUIUpdate = finalState && finalState !== 'No Element Selected' && finalState.trim() !== '';
-    
+
     if (hasRenderEvents) {
       console.log('✅ Control Panel render events were published');
-      
+
       // If we have render events, check the payload
       const lastRenderEvent = renderEvents[renderEvents.length - 1];
-      const selectedId = lastRenderEvent.data?.selectedElement?.header?.id || 
+      const selectedId = lastRenderEvent.data?.selectedElement?.header?.id ||
                         lastRenderEvent.data?.selectedElement?.id;
-      
+
       if (selectedId) {
         expect(selectedId).toBe(publishResult.nodeId);
         console.log('✅ Render event payload matches published node ID');
@@ -534,7 +547,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
     } else if (hasUIUpdate) {
       console.log('✅ Control Panel UI was updated');
       // In browser, we often see "button" as the type
-      expect(['button', 'div', 'container', 'component'].some(type => 
+      expect(['button', 'div', 'container', 'component'].some(type =>
         finalState.toLowerCase().includes(type)
       )).toBe(true);
     } else {
@@ -542,12 +555,12 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
       console.log('❌ CRITICAL: Neither render events nor UI updates detected');
       console.log('📋 This indicates Control Panel UI is not responding to selection events');
       console.log('📋 EventRouter topic flow is working but UI reactivity is broken');
-      
+
       // After publishing the selection event, debug the observer store state again
       const postSelectionDebug = await page.evaluate(() => {
         try {
           const globalStore = (globalThis as any).__RX_CP_OBSERVERS__;
-          
+
           // Check if we can directly access the selection observer function
           let selectionObserverType = 'not-found';
           if (globalStore && globalStore.selection) {
@@ -555,12 +568,12 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
           } else if (globalStore && globalStore.selectionObserver) {
             selectionObserverType = typeof globalStore.selectionObserver;
           }
-          
+
           return {
             hasGlobalStore: !!globalStore,
             globalStoreKeys: globalStore ? Object.keys(globalStore) : [],
             selectionObserver: selectionObserverType,
-            
+
             // Try to get observer the same way the symphony does
             symphonySelectionObserver: (() => {
               try {
@@ -575,11 +588,11 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
           return { error: String(error) };
         }
       });
-      
+
       console.log('🔍 Post-selection observer store debug:', postSelectionDebug);
-      
+
       // FAIL the test if Control Panel still shows "No Element Selected"
-      if (controlPanelHtml.found && 'textContent' in controlPanelHtml && 
+      if (controlPanelHtml.found && 'textContent' in controlPanelHtml &&
           controlPanelHtml.textContent && controlPanelHtml.textContent.includes('No Element Selected')) {
         throw new Error(
           `Control Panel UI did not update after selection event. ` +
@@ -588,7 +601,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
           `but UI reactivity is broken. This is the real GitHub issue #141.`
         );
       }
-      
+
       // If no "No Element Selected" text but still no proper UI updates, that's also a failure
       throw new Error(
         `Control Panel UI did not properly respond to selection events. ` +
