@@ -7,7 +7,6 @@ import {
   applyCssClassToElement,
   removeCssClassFromElement
 } from "./css-management.stage-crew";
-import { getCssRegistryObserver } from "../../state/observer.store";
 
 // NOTE: Runtime sequences are mounted from JSON (see json-sequences/*). This file only exports handlers.
 
@@ -21,21 +20,29 @@ export const handlers = {
   removeCssClassFromElement,
   
   notifyUi(data: any, ctx: any) {
-    const observer = getCssRegistryObserver();
+    ctx.logger?.info?.('[SYMPHONY] css-management.symphony notifyUi called with data:', data, 'ctx:', ctx);
+    
     const { success, className, content, error } = ctx.payload || {};
-
-    if (observer) {
-      try {
-        observer({ 
+    
+    // Use EventRouter for cross-module communication
+    try {
+      // Access EventRouter via globalThis to avoid ESLint window warnings
+      const globalRouter = (globalThis as any).RenderX?.EventRouter || 
+                          (globalThis as any).renderxCommunicationSystem?.EventRouter;
+      
+      if (globalRouter) {
+        globalRouter.publish('control.panel.css.registry.updated', { 
           success, 
           className, 
           content, 
           error,
           timestamp: Date.now()
         });
-      } catch (e) {
-        ctx.logger?.warn?.("Control Panel CSS registry observer error:", e);
+      } else {
+        ctx.logger?.warn?.('EventRouter not available for CSS registry notification');
       }
+    } catch (e) {
+      ctx.logger?.warn?.("Control Panel CSS registry EventRouter error:", e);
     }
   },
 };

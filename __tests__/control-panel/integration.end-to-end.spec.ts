@@ -2,9 +2,8 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { resolveInteraction } from "@renderx-plugins/host-sdk";
-import { handlers as controlPanelHandlers } from "../../plugins/control-panel/symphonies/selection/selection.symphony";
-import { handlers as classHandlers } from "../../plugins/control-panel/symphonies/classes/classes.symphony";
-import { setSelectionObserver, setClassesObserver } from "../../plugins/control-panel/state/observer.store";
+import { handlers as controlPanelHandlers } from "../../packages/control-panel/src/symphonies/selection/selection.symphony";
+import { handlers as classHandlers } from "../../packages/control-panel/src/symphonies/classes/classes.symphony";
 
 // Host-like selection forwarding harness for externalized select symphony
 const selectHandlers = {
@@ -27,18 +26,28 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel Integration - End to End", () => {
+  let mockEventRouter: any;
+  let originalRenderX: any;
+
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
     vi.clearAllMocks();
+
+    // Setup EventRouter mock
+    mockEventRouter = {
+      publish: vi.fn(),
+    };
+    
+    // Store original globalThis.RenderX
+    originalRenderX = (globalThis as any).RenderX;
+    
+    // Set up mock EventRouter on globalThis
+    (globalThis as any).RenderX = {
+      EventRouter: mockEventRouter,
+    };
   });
 
   it("complete flow: create element → select → control panel updates → add class → UI updates", () => {
-    // Mock observers
-    const selectionObserver = vi.fn();
-    const classesObserver = vi.fn();
-
-    setSelectionObserver(selectionObserver);
-    setClassesObserver(classesObserver);
 
     // Step 1: Create a canvas element
     const createCtx: any = { payload: {} };
@@ -77,8 +86,9 @@ describe("Control Panel Integration - End to End", () => {
       { id: nodeId }
     );
 
-    // Verify Control Panel observer was called with selection model
-    expect(selectionObserver).toHaveBeenCalledWith(
+    // Verify Control Panel published selection update via EventRouter
+    expect(mockEventRouter.publish).toHaveBeenCalledWith(
+      'control.panel.selection.updated',
       expect.objectContaining({
         header: { type: "button", id: nodeId },
         content: expect.objectContaining({ content: "Click me" }),
@@ -88,35 +98,40 @@ describe("Control Panel Integration - End to End", () => {
     );
 
     // Step 3: Add a CSS class via Control Panel
-    const classCtx = { payload: {} };
+    const classCtx: any = { payload: {}, logger: { info: vi.fn(), warn: vi.fn() } };
     classHandlers.addClass({ id: nodeId, className: "rx-button--primary" }, classCtx);
     classHandlers.notifyUi({}, classCtx);
 
     // Verify class was added to DOM
     expect(element.classList.contains("rx-button--primary")).toBe(true);
 
-    // Verify classes observer was called
-    expect(classesObserver).toHaveBeenCalledWith({
-      id: nodeId,
-      classes: expect.arrayContaining(["rx-comp", "rx-button", "rx-button--primary"])
-    });
+    // Verify classes update was published via EventRouter
+    expect(mockEventRouter.publish).toHaveBeenCalledWith(
+      'control.panel.classes.updated',
+      {
+        id: nodeId,
+        classes: expect.arrayContaining(["rx-comp", "rx-button", "rx-button--primary"])
+      }
+    );
 
     // Step 4: Remove a CSS class via Control Panel
-    const removeClassCtx = { payload: {} };
+    const removeClassCtx: any = { payload: {}, logger: { info: vi.fn(), warn: vi.fn() } };
     classHandlers.removeClass({ id: nodeId, className: "rx-button--primary" }, removeClassCtx);
     classHandlers.notifyUi({}, removeClassCtx);
 
     // Verify class was removed from DOM
     expect(element.classList.contains("rx-button--primary")).toBe(false);
 
-    // Verify classes observer was called again
-    expect(classesObserver).toHaveBeenCalledWith({
-      id: nodeId,
-      classes: expect.not.arrayContaining(["rx-button--primary"])
-    });
+    // Verify classes update was published again via EventRouter
+    expect(mockEventRouter.publish).toHaveBeenCalledWith(
+      'control.panel.classes.updated', 
+      {
+        id: nodeId,
+        classes: expect.not.arrayContaining(["rx-button--primary"])
+      }
+    );
 
     // Cleanup
-    setSelectionObserver(null);
-    setClassesObserver(null);
+    (globalThis as any).RenderX = originalRenderX;
   });
 });

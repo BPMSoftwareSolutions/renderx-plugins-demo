@@ -7,9 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/renderx-plugin-canvas run -s build && npm --prefix packages/renderx-plugin-canvas-component run -s build",
-    "dev": "npm run pre:manifests && vite",
-    "build": "npm run pre:manifests && vite build",
+    "build:packages": "npm --prefix packages/control-panel run -s build && npm --prefix packages/renderx-plugin-canvas run -s build && npm --prefix packages/renderx-plugin-canvas-component run -s build",
+    "dev": "npm run pre:manifests && npm --prefix packages/control-panel run -s build && vite",
+    "build": "npm run pre:manifests && npm --prefix packages/control-panel run -s build && vite build",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
     "artifacts:build:integrity": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity",
     "artifacts:build:signed": "node scripts/build-artifacts.js --srcRoot=. --outDir=dist/artifacts --integrity --sign",
@@ -44,7 +44,7 @@
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.3",
     "@renderx-plugins/canvas-component": "^0.1.0-rc.14",
-    "@renderx-plugins/control-panel": "^0.0.0-dev",
+  "@renderx-plugins/control-panel": "workspace:*",
     "@renderx-plugins/header": "^0.1.1",
     "@renderx-plugins/host-sdk": "^0.3.0",
     "@renderx-plugins/library": "^0.1.1-rc.0",

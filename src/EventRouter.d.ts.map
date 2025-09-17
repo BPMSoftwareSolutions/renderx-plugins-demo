@@ -1,1 +1,0 @@
-{"version":3,"file":"EventRouter.d.ts","sourceRoot":"","sources":["EventRouter.ts"],"names":[],"mappings":"AAGA,MAAM,MAAM,WAAW,GAAG,MAAM,IAAI,CAAC;AACrC,MAAM,MAAM,YAAY,GAAG,CAAC,OAAO,EAAE,GAAG,KAAK,IAAI,CAAC;AAmClD,eAAO,MAAM,WAAW;;qBAKL,MAAM,WAAW,YAAY,GAAG,WAAW;mBAYvC,MAAM,WAAW,GAAG,cAAc,GAAG;CA6C3D,CAAC"}

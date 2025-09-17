@@ -1,6 +1,10 @@
-// Stable vendor entry used to bundle the workspace Control Panel into a single file for preview/E2E
-// This lets the runtime resolve the bare module specifier via an import map
-import * as CP from '../../packages/control-panel/src/index.ts';
+// Stable vendor entry used to bundle the Control Panel package into a single file for preview/E2E
+// Import via the workspace npm package to avoid internal path coupling
+import * as CP from '@renderx-plugins/control-panel';
+// Ensure Control Panel CSS is bundled/injected when using the vendor entry
+// tsup emits the CSS as a separate file and the dist JS doesn't import it,
+// so we import it explicitly here for Vite to pick it up.
+import '@renderx-plugins/control-panel/index.css';
 export const ControlPanel = CP.ControlPanel;
 export const register = CP.register;
 // Prevent full tree-shake: attach to window for preview builds

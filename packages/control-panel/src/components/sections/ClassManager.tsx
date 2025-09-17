@@ -1,7 +1,7 @@
 import React from "react";
 import { CssEditorModal } from "../modals/CssEditorModal";
 import { cssRegistry } from "../../state/css-registry.store";
-import { setCssRegistryObserver } from "../../state/observer.store";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 
 interface ClassManagerProps {
   classes: string[];
@@ -36,11 +36,11 @@ export const ClassManager: React.FC<ClassManagerProps> = ({
 
     updateAvailableClasses();
 
-    // Set up observer for CSS registry changes
-    setCssRegistryObserver(updateAvailableClasses);
+    // Subscribe to EventRouter topic for CSS registry changes
+    const unsubscribe = EventRouter.subscribe('control.panel.css.registry.updated', updateAvailableClasses);
 
     return () => {
-      setCssRegistryObserver(null);
+      unsubscribe();
     };
   }, []);
 

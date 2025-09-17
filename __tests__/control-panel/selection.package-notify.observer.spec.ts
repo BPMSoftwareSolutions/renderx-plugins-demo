@@ -1,21 +1,32 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { handlers as packageSelectionHandlers } from "../..//packages/control-panel/src/symphonies/selection/selection.symphony";
-import { setSelectionObserver } from "../../packages/control-panel/src/state/observer.store";
+import { handlers as packageSelectionHandlers } from "../../packages/control-panel/src/symphonies/selection/selection.symphony";
 
-describe("Control Panel (package) selection notify -> observer store", () => {
+describe("Control Panel (package) selection notify -> EventRouter", () => {
+  let mockEventRouter: any;
+  let originalRenderX: any;
+
   beforeEach(() => {
-    // ensure clean observer state
-    setSelectionObserver(null);
+    // Setup EventRouter mock
+    mockEventRouter = {
+      publish: vi.fn(),
+    };
+    
+    // Store original globalThis.RenderX
+    originalRenderX = (globalThis as any).RenderX;
+    
+    // Set up mock EventRouter on globalThis
+    (globalThis as any).RenderX = {
+      EventRouter: mockEventRouter,
+    };
   });
+
   afterEach(() => {
-    setSelectionObserver(null);
+    // Restore original globalThis.RenderX
+    (globalThis as any).RenderX = originalRenderX;
   });
 
-  it("calls the package observer store when notifyUi runs", () => {
-    const observer = vi.fn();
-    setSelectionObserver(observer);
-
+  it("publishes control.panel.selection.updated via EventRouter when notifyUi runs", () => {
     const selectionModel = {
       header: { type: "button", id: "rx-node-test" },
       content: { content: "Click me", variant: "primary", size: "medium", disabled: false },
@@ -24,12 +35,21 @@ describe("Control Panel (package) selection notify -> observer store", () => {
       classes: ["rx-comp", "rx-button"],
     };
 
-    const ctx: any = { payload: { selectionModel }, logger: { warn: vi.fn() } };
+    const ctx: any = { 
+      payload: { selectionModel }, 
+      logger: { 
+        info: vi.fn(),
+        warn: vi.fn() 
+      } 
+    };
 
     packageSelectionHandlers.notifyUi({}, ctx);
 
-    expect(observer).toHaveBeenCalledTimes(1);
-    expect(observer).toHaveBeenCalledWith(selectionModel);
+    expect(mockEventRouter.publish).toHaveBeenCalledTimes(1);
+    expect(mockEventRouter.publish).toHaveBeenCalledWith(
+      'control.panel.selection.updated', 
+      selectionModel
+    );
   });
 });
 

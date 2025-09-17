@@ -25,6 +25,17 @@
       }
     </script>
 
+    <!-- In Vite dev, ensure Control Panel CSS is injected even when using the vendor mapping -->
+    <script type="module">
+      // Vite replaces import.meta.env in dev
+      try {
+        if (import.meta.env && import.meta.env.DEV) {
+          // Load the package stylesheet so Vite injects it as <style> at runtime.
+          await import('@renderx-plugins/control-panel/index.css');
+        }
+      } catch {}
+    </script>
+
   </head>
   <body>
     <div id="root"></div>

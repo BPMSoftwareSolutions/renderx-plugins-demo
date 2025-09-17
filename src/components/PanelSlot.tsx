@@ -92,10 +92,16 @@ const packageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/library': () => import('@renderx-plugins/library'),
   '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
-  // Phase 1/preview fallback: resolve Control Panel bare specifier to workspace source
-  '@renderx-plugins/control-panel': () => import('../../packages/control-panel/src/index'),
-  // Pre-bundled first-party plugin paths (Vite will include these in build)
-  '/plugins/control-panel/index.ts': () => import('../../plugins/control-panel/index'),
+  // Use the npm workspace package for the Control Panel during migration
+  // Explicitly import the package CSS to ensure styles are injected in dev as well as build.
+  // Note: The package's dist JS may not import its CSS (tsup outputs separate CSS),
+  // so we import it here before loading the module.
+  '@renderx-plugins/control-panel': async () => {
+    try {
+      await import('@renderx-plugins/control-panel/index.css');
+    } catch {}
+    return import('@renderx-plugins/control-panel');
+  },
 };
 
 
