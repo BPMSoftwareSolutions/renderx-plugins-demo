@@ -35,7 +35,7 @@ const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   // Resolve Control Panel via workspace npm package during migration
   '@renderx-plugins/control-panel': () => import('@renderx-plugins/control-panel'),
   // Pre-bundled first-party fallback for yet-internal plugins
-  '/plugins/control-panel/index.ts': () => import('../plugins/control-panel/index'),
+
 };
 
 
