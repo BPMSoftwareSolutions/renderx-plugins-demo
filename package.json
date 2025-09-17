@@ -24,7 +24,7 @@
     "artifacts:ci": "npm run artifacts:build:signed && npm run artifacts:validate:strict && npm run artifacts:verify:signature && npm run public-api:check && npm test && npm run artifacts:pack",
     "validate:public-api": "node scripts/validate-public-api.js",
     "preview": "vite preview",
-    "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js",
+    "pre:manifests": "npm run sync:json-components && node scripts/sync-json-sequences.js && node scripts/generate-interaction-manifest.js && node scripts/generate-topics-manifest.js && node scripts/generate-layout-manifest.js && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js && node scripts/sync-control-panel-config.js",
     "sync:json-components": "node scripts/sync-json-components.js",
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",
