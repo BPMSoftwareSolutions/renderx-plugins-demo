@@ -9,7 +9,10 @@ const subscribers = new Map<string, Set<TopicHandler>>();
 const lastPayload = new Map<string, any>();
 // Minimal, targeted replay list to avoid broad behavior changes
 const REPLAY_TOPICS = new Set<string>([
+  // When UI mounts late, it should receive the last known selection model immediately
   "control.panel.selection.updated",
+  // Also cache the last raw canvas selection id so UIs can self-heal if the symphony didn't run yet
+  "canvas.component.selection.changed",
 ]);
 
 function throttle(fn: Function, ms: number) {

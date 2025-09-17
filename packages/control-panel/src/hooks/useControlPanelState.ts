@@ -48,8 +48,42 @@ export function useControlPanelState() {
             dispatch({ type: "SET_CLASSES", payload: classData.classes });
           }
         });
+        // Fallback: if selection.changed fired before the selection symphony ran (or plugin runtime mounted),
+        // hydrate a minimal selection model directly so the UI can render instead of staying in "No Element Selected".
+        // This relies on EventRouter replay (we added canvas.component.selection.changed to REPLAY_TOPICS) so late subscribers see the last id.
+        const u3 = router.subscribe('canvas.component.selection.changed', (data: any) => {
+          try {
+            const id = String(data?.id || '').trim();
+            if (!id) return;
+            const el = typeof document !== 'undefined' ? document.getElementById(id) as HTMLElement | null : null;
+            if (!el) return;
+            const classes = Array.from(el.classList || []);
+            const rxTypeClass = classes.find((c) => c.startsWith('rx-') && c !== 'rx-comp');
+            const type = rxTypeClass ? rxTypeClass.replace(/^rx-/, '') : 'unknown';
+            const rect = el.getBoundingClientRect?.() || { x: 0, y: 0, width: 0, height: 0 } as any;
+            const computed = typeof window !== 'undefined' && window.getComputedStyle ? window.getComputedStyle(el) : ({} as any);
+            const selectionModel = {
+              header: { type, id },
+              content: { content: el.textContent || '' },
+              layout: { x: rect.x || 0, y: rect.y || 0, width: rect.width || 0, height: rect.height || 0 },
+              styling: {
+                "bg-color": (computed as any).backgroundColor || '',
+                "text-color": (computed as any).color || '',
+                "border-radius": (computed as any).borderRadius || '',
+                "font-size": (computed as any).fontSize || '',
+              },
+              classes,
+            };
+            try { console.log(`[cp] useControlPanelState:${label} fallback from selection.changed`, { id, type }); } catch {}
+            dispatch({ type: 'SET_SELECTED_ELEMENT', payload: selectionModel });
+            dispatch({ type: 'SET_CLASSES', payload: classes });
+          } catch (err) {
+            try { console.warn(`[cp] useControlPanelState:${label} fallback selection.changed handler error`, err); } catch {}
+          }
+        });
         if (typeof u1 === 'function') unsubs.push(u1);
         if (typeof u2 === 'function') unsubs.push(u2);
+        if (typeof u3 === 'function') unsubs.push(u3);
       } catch (e) {
         try { console.warn(`[cp] useControlPanelState: failed to subscribe via ${label}:`, e); } catch {}
       }
