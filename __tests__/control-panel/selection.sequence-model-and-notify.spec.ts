@@ -3,7 +3,6 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
 
 import { handlers as controlPanelHandlers } from "../../plugins/control-panel/symphonies/selection/selection.symphony";
-import { setSelectionObserver } from "../../plugins/control-panel/state/observer.store";
 
 function makeButtonTemplate() {
   return {
@@ -33,7 +32,7 @@ describe("Control Panel selection sequence builds data-driven model", () => {
     const nodeId = ctx.payload.nodeId as string;
 
     // Act: call control panel selection model derivation
-    const selectionCtx = { payload: {} };
+    const selectionCtx: any = { payload: {} };
     controlPanelHandlers.deriveSelectionModel({ id: nodeId }, selectionCtx);
 
     // Assert: should derive model with expected structure
@@ -48,8 +47,17 @@ describe("Control Panel selection sequence builds data-driven model", () => {
     expect(model.layout.height).toBe(40);
   });
 
-  it("notifies UI observer with selection model", () => {
-    const observerMock = vi.fn();
+  it("publishes selection model via EventRouter", () => {
+    const mockEventRouter = {
+      publish: vi.fn(),
+    };
+
+    // Set up mock EventRouter on globalThis
+    const originalRenderX = (globalThis as any).RenderX;
+    (globalThis as any).RenderX = {
+      EventRouter: mockEventRouter,
+    };
+
     const selectionModel = {
       header: { type: "button", id: "rx-node-test" },
       content: { content: "Click me", variant: "primary", size: "medium", disabled: false },
@@ -57,25 +65,29 @@ describe("Control Panel selection sequence builds data-driven model", () => {
       styling: { "bg-color": "#007acc", "text-color": "#ffffff" }
     };
 
-    // Set up observer
-    setSelectionObserver(observerMock);
-
-    const ctx = {
-      payload: { selectionModel }
+    const ctx: any = {
+      payload: { selectionModel },
+      logger: { 
+        info: vi.fn(),
+        warn: vi.fn() 
+      }
     };
 
     // Act: notify UI
     controlPanelHandlers.notifyUi({}, ctx);
 
-    // Assert: observer should be called with model
-    expect(observerMock).toHaveBeenCalledWith(selectionModel);
+    // Assert: EventRouter should publish with selection model
+    expect(mockEventRouter.publish).toHaveBeenCalledWith(
+      'control.panel.selection.updated', 
+      selectionModel
+    );
 
     // Cleanup
-    setSelectionObserver(null);
+    (globalThis as any).RenderX = originalRenderX;
   });
 
   it("handles missing element gracefully", () => {
-    const ctx = { payload: {} };
+    const ctx: any = { payload: {} };
 
     // Act: try to derive model for non-existent element
     expect(() => {

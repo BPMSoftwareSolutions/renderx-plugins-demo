@@ -963,6 +963,94 @@
       "perf": {},
       "notes": "Control panel selection show requested; routes to selection show sequence."
     },
+    "control.panel.selection.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "layout": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Control panel selection model updated; published for UI consumption."
+    },
+    "control.panel.classes.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "classes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Control panel classes updated; published for UI consumption."
+    },
+    "control.panel.css.registry.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "className": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "number"
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Control panel CSS registry updated; published for UI consumption."
+    },
     "library.component.drag.start.requested": {
       "routes": [
         {

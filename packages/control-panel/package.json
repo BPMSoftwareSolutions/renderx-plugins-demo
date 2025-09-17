@@ -3,7 +3,9 @@
   "version": "0.1.0-rc.1",
   "private": false,
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist",
     "src"
@@ -15,7 +17,13 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./symphonies/*": "./src/symphonies/*"
+    "./observer.store": {
+      "types": "./dist/state/observer.store.d.ts",
+      "import": "./dist/state/observer.store.js"
+    },
+    "./index.css": "./dist/index.css",
+    "./symphonies/*": "./dist/symphonies/*",
+    "./symphonies/*.ts": "./dist/symphonies/*.js"
   },
   "scripts": {
     "build": "tsup --config tsup.config.ts"

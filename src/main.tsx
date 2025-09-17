@@ -4,7 +4,7 @@ import App from "./App";
 // Force TS source to avoid stale compiled JS shadowing in dev
 import { initConductor, registerAllSequences } from "./conductor.ts";
 import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./interactionManifest";
-import { initTopicsManifest, getTopicsManifestStats } from "./topicsManifest";
+import { initTopicsManifest, getTopicsManifestStats, getTopicDef } from "./topicsManifest";
 import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
 import { EventRouter } from "./EventRouter";
 import "./global.css";
@@ -26,6 +26,9 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   (window as any).RenderX = (window as any).RenderX || {};
   if (!(window as any).RenderX.resolveInteraction) {
     (window as any).RenderX.resolveInteraction = resolveInteraction;
+  }
+  if (!(window as any).RenderX.getTopicDef) {
+    (window as any).RenderX.getTopicDef = getTopicDef;
   }
   if (!(window as any).RenderX.EventRouter) {
     (window as any).RenderX.EventRouter = {
@@ -52,6 +55,23 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   }
   // Signal that runtime registration and catalog mounting have completed
   (window as any).RenderX.sequencesReady = true;
+
+  // Add debug function for manual testing
+  (window as any).testEventRouter = function() {
+    console.log('🧪 Testing EventRouter...');
+    const testPayload = { id: 'test-node-manual', type: 'button' };
+    console.log('📤 Publishing control.panel.selection.updated with:', testPayload);
+    (window as any).RenderX.EventRouter.publish('control.panel.selection.updated', testPayload);
+    console.log('✅ Publish complete');
+  };
+
+  (window as any).testCanvasSelection = function() {
+    console.log('🧪 Testing canvas selection event...');
+    const testPayload = { id: 'test-node-manual-canvas' };
+    console.log('📤 Publishing canvas.component.selection.changed with:', testPayload);
+    (window as any).RenderX.EventRouter.publish('canvas.component.selection.changed', testPayload);
+    console.log('✅ Canvas selection publish complete');
+  };
 
 
   if (!(typeof process !== 'undefined' && process.env?.RENDERX_DISABLE_STARTUP_VALIDATION === '1')) {

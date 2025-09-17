@@ -32,8 +32,8 @@ const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   '@renderx-plugins/library-component': () => import('@renderx-plugins/library-component'),
   '@renderx-plugins/canvas': () => import('@renderx-plugins/canvas'),
   '@renderx-plugins/canvas-component': () => import('@renderx-plugins/canvas-component'),
-  // Phase 1/preview fallback: resolve Control Panel bare specifier to workspace source
-  '@renderx-plugins/control-panel': () => import('../packages/control-panel/src/index'),
+  // Resolve Control Panel via workspace npm package during migration
+  '@renderx-plugins/control-panel': () => import('@renderx-plugins/control-panel'),
   // Pre-bundled first-party fallback for yet-internal plugins
   '/plugins/control-panel/index.ts': () => import('../plugins/control-panel/index'),
 };
@@ -44,8 +44,12 @@ export type ConductorClient = any;
 export async function initConductor(): Promise<ConductorClient> {
   const { initializeCommunicationSystem } = await import("musical-conductor");
   const { conductor } = initializeCommunicationSystem();
+  
+  // Import our EventRouter
+  const { EventRouter } = await import("./EventRouter");
+  
   // expose globally for UIs that import via hook alternative
-  (window as any).renderxCommunicationSystem = { conductor };
+  (window as any).renderxCommunicationSystem = { conductor, eventRouter: EventRouter };
   // compatibility bridge for stage-crew handlers that may use window.RenderX.conductor
   (window as any).RenderX = (window as any).RenderX || {};
   (window as any).RenderX.conductor = conductor;

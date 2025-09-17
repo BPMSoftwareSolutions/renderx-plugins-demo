@@ -16,12 +16,40 @@ export function deriveSelectionModel(data: any, ctx: any) {
     return;
   }
 
-  // Extract type from rx-<type> class
+  // Extract type from rx-<type> class with fallback strategies
   const rxClasses = Array.from(element.classList).filter(
     (cls) => cls.startsWith("rx-") && cls !== "rx-comp"
   );
-  const typeClass = rxClasses[0]; // e.g., "rx-button"
-  const type = typeClass ? typeClass.replace("rx-", "") : "unknown";
+  
+  let type = "unknown";
+  let typeClass = rxClasses[0]; // e.g., "rx-button"
+  
+  if (typeClass) {
+    type = typeClass.replace("rx-", "");
+  } else {
+    // Fallback 1: Try to infer type from HTML tag name
+    const tagName = element.tagName.toLowerCase();
+    if (tagName === "button") {
+      type = "button";
+    } else if (tagName === "input") {
+      type = "input";
+    } else if (tagName === "div") {
+      // Fallback 2: Check for common component patterns
+      if (element.querySelector("svg")) {
+        type = "line"; // SVG-based components are likely lines
+      } else {
+        type = "container"; // Generic div containers
+      }
+    } else if (tagName === "img") {
+      type = "image";
+    }
+    
+    // Log for debugging externalized plugin CSS class issues
+    ctx.logger?.warn?.(`[Control Panel] Element ${id} missing rx-<type> class, inferred type: ${type}`, {
+      tagName,
+      classList: Array.from(element.classList)
+    });
+  }
 
   // Get position and dimensions from inline styles (preferred) or computed styles
   const style = element.style;

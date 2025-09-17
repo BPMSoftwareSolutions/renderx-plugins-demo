@@ -5,6 +5,12 @@ export type Unsubscribe = () => void;
 export type TopicHandler = (payload: any) => void;
 
 const subscribers = new Map<string, Set<TopicHandler>>();
+// Store last payload for selected topics so late subscribers can be replayed once on subscribe
+const lastPayload = new Map<string, any>();
+// Minimal, targeted replay list to avoid broad behavior changes
+const REPLAY_TOPICS = new Set<string>([
+  "control.panel.selection.updated",
+]);
 
 function throttle(fn: Function, ms: number) {
   let last = 0;
@@ -48,6 +54,18 @@ export const EventRouter = {
     const set = subscribers.get(topic) || new Set<TopicHandler>();
     set.add(handler);
     subscribers.set(topic, set);
+
+    // If this topic is configured for replay and we have a last payload, deliver it immediately
+    try {
+      if (REPLAY_TOPICS.has(topic) && lastPayload.has(topic)) {
+        const payload = lastPayload.get(topic);
+        // Use microtask to avoid surprising synchronous reentrancy
+        Promise.resolve().then(() => {
+          try { handler(payload); } catch {}
+        });
+      }
+    } catch {}
+
     return () => {
       const s = subscribers.get(topic);
       if (!s) return;
@@ -57,8 +75,42 @@ export const EventRouter = {
   },
 
   async publish(topic: string, payload: any, conductor?: any) {
-    const def = getTopicDef(topic);
-    if (!def) throw new Error(`Unknown topic: ${topic}`);
+    // Force debugging - add to window for inspection
+    if (typeof window !== 'undefined') {
+      (window as any).__DEBUG_EVENTROUTER = (window as any).__DEBUG_EVENTROUTER || [];
+      (window as any).__DEBUG_EVENTROUTER.push(`publish(${topic})`);
+    }
+    
+    // Try the imported function first, fallback to global if import failed
+    let def = getTopicDef(topic);
+    if (!def && typeof window !== 'undefined') {
+      const globalGetTopicDef = (window as any).RenderX?.getTopicDef;
+      if (globalGetTopicDef) {
+        def = globalGetTopicDef(topic);
+        if (typeof window !== 'undefined') {
+          (window as any).__DEBUG_EVENTROUTER.push(`used_global_getTopicDef(${topic}): ${!!def}`);
+        }
+        try { console.log(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`); } catch {}
+      }
+    }
+    
+    if (!def) {
+      if (typeof window !== 'undefined') {
+        (window as any).__DEBUG_EVENTROUTER.push(`no_topic_def(${topic})`);
+      }
+      try { console.warn(`[EventRouter] No topic definition found for '${topic}'`); } catch {}
+      throw new Error(`Unknown topic: ${topic}`);
+    }
+
+    if (typeof window !== 'undefined') {
+      (window as any).__DEBUG_EVENTROUTER.push(`found_topic_def(${topic}): routes=${def.routes?.length || 0}`);
+    }
+
+    try { console.log(`[EventRouter] Topic '${topic}' definition:`, {
+      routes: def.routes?.length || 0,
+      hasThrottle: !!(def.perf?.throttleMs),
+      hasDebounce: !!(def.perf?.debounceMs)
+    }); } catch {}
 
     // Reentrancy guard: block immediate same-topic republish in the current call stack
     if (__publishStack.includes(topic)) {
@@ -91,16 +143,34 @@ export const EventRouter = {
 
     // Perf guards
     let deliver = async (p: any) => {
+      if (typeof window !== 'undefined') {
+        (window as any).__DEBUG_EVENTROUTER.push(`deliver_start(${topic}): routes=${def.routes?.length || 0}`);
+      }
+      try { console.log(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`); } catch {}
       // Route to sequences via conductor (pure dispatcher)
       for (const r of def.routes as TopicRoute[]) {
+        if (typeof window !== 'undefined') {
+          (window as any).__DEBUG_EVENTROUTER.push(`routing_to: ${r.pluginId}::${r.sequenceId}`);
+        }
         try {
           const hasPlay = !!(resolvedConductor && typeof resolvedConductor.play === 'function');
           try { console.log(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`); } catch {}
           await resolvedConductor?.play?.(r.pluginId, r.sequenceId, p);
+          if (typeof window !== 'undefined') {
+            (window as any).__DEBUG_EVENTROUTER.push(`routed_success: ${r.pluginId}::${r.sequenceId}`);
+          }
         } catch (e) {
+          if (typeof window !== 'undefined') {
+            (window as any).__DEBUG_EVENTROUTER.push(`route_error: ${r.pluginId}::${r.sequenceId} - ${e}`);
+          }
           try { console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e); } catch {}
         }
       }
+      // Cache last payload for replay-enabled topics
+      try {
+        if (REPLAY_TOPICS.has(topic)) lastPayload.set(topic, p);
+      } catch {}
+
       // Notify subscribers
       const set = subscribers.get(topic);
       if (set) for (const h of Array.from(set)) try { h(p); } catch {}
@@ -126,6 +196,15 @@ export const EventRouter = {
     } finally {
       __publishStack.pop();
     }
+  },
+
+  // Test-only utility: clear internal router state to avoid cross-test pollution
+  reset() {
+    try {
+      subscribers.clear();
+      lastPayload.clear();
+      __publishStack.length = 0;
+    } catch {}
   },
 };
 
