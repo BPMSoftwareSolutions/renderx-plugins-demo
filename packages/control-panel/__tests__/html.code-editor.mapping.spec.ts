@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { SchemaResolverService } from "../../plugins/control-panel/services/schema-resolver.service";
+import { SchemaResolverService } from "../src/services/schema-resolver.service";
 import type {
   ControlPanelConfig,
   SelectedElement,
-} from "../../plugins/control-panel/types/control-panel.types";
-import htmlSchema from "../../json-components/html.json";
+} from "../src/types/control-panel.types";
+import htmlSchema from "../../../json-components/html.json";
 
 const baseConfig: ControlPanelConfig = {
   version: "1.0.0-test",
@@ -46,7 +46,7 @@ describe("HTML component markup field", () => {
     resolver.registerComponentSchema("html", htmlSchema as any);
 
     const element: SelectedElement = {
-      header: { id: "1", type: "html", name: "HTML", version: "1.0.0" },
+      header: { id: "1", type: "html", name: "HTML", version: "1.0.0" } as any,
       content: { markup: "<p>Test</p>" },
       layout: { x: 0, y: 0, width: 300, height: 120 },
       styling: {},
@@ -59,3 +59,4 @@ describe("HTML component markup field", () => {
     expect(markupField?.rendererProps?.rows).toBe(8);
   });
 });
+

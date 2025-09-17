@@ -7,7 +7,7 @@ import {
   setCssRegistryObserver,
   getCssRegistryObserver,
   clearAllObservers,
-} from "../../plugins/control-panel/state/observer.store";
+} from "@renderx-plugins/control-panel/observer.store";
 
 describe("observer.store idempotency", () => {
   it("setters are idempotent and clearAll resets observers", () => {
