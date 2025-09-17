@@ -2,7 +2,8 @@ import { defineConfig } from 'tsup';
 
 // Disable DTS generation when running via `npm test` to speed up tests and avoid
 // intermittent type bundling races during pretest builds.
-const isTestLifecycle = process.env.npm_lifecycle_event === 'test' || !!process.env.VITEST || !!process.env.VITEST_WORKER_ID;
+const lifecycle = String(process.env.npm_lifecycle_event || '');
+const isTestLifecycle = lifecycle === 'test' || lifecycle === 'pretest' || !!process.env.VITEST || !!process.env.VITEST_WORKER_ID;
 
 export default defineConfig({
   entry: [
