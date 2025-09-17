@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { SchemaResolverService } from "../../plugins/control-panel/services/schema-resolver.service";
+import { SchemaResolverService } from "../src/services/schema-resolver.service";
 
 // Minimal config shape needed by constructor
 const config: any = {

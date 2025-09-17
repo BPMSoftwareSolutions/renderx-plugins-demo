@@ -217,3 +217,4 @@ describe("Control Panel Dark Mode Form Controls", () => {
     expect(checkboxText.classList.contains("checkbox-text")).toBe(true);
   });
 });
+

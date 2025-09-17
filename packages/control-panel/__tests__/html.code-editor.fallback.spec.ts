@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { SchemaResolverService } from "../../plugins/control-panel/services/schema-resolver.service";
+import { SchemaResolverService } from "../src/services/schema-resolver.service";
 import type {
   ControlPanelConfig,
   SelectedElement,
-} from "../../plugins/control-panel/types/control-panel.types";
-import htmlSchemaOriginal from "../../json-components/html.json";
+} from "../src/types/control-panel.types";
+import htmlSchemaOriginal from "../../../json-components/html.json";
 
 const baseConfig: ControlPanelConfig = {
   version: "1.0.0-test",
@@ -13,7 +13,7 @@ const baseConfig: ControlPanelConfig = {
     {
       id: "content",
       title: "Content",
-      icon: "🧩",
+      icon: "\ud83e\udde9",
       order: 1,
       collapsible: true,
       defaultExpanded: true,
@@ -21,7 +21,7 @@ const baseConfig: ControlPanelConfig = {
     {
       id: "layout",
       title: "Layout",
-      icon: "📐",
+      icon: "\ud83d\udcd0",
       order: 2,
       collapsible: true,
       defaultExpanded: true,
@@ -29,7 +29,7 @@ const baseConfig: ControlPanelConfig = {
     {
       id: "styling",
       title: "Styling",
-      icon: "🎨",
+      icon: "\ud83c\udfa8",
       order: 3,
       collapsible: true,
       defaultExpanded: false,
@@ -44,11 +44,11 @@ describe("HTML component markup field fallback", () => {
     const resolver = new SchemaResolverService(baseConfig);
     const stale = JSON.parse(JSON.stringify(htmlSchemaOriginal)) as any;
     // Simulate outdated schema without ui.control metadata
-    delete stale.integration.properties.schema.markup.ui;
+    delete (stale as any).integration.properties.schema.markup.ui;
     resolver.registerComponentSchema("html", stale);
 
     const element: SelectedElement = {
-      header: { id: "2", type: "html", name: "HTML", version: "1.0.1" },
+      header: { id: "2", type: "html", name: "HTML", version: "1.0.1" } as any,
       content: { markup: "<p>Test</p>" },
       layout: { x: 0, y: 0, width: 320, height: 120 },
       styling: {},
@@ -60,3 +60,4 @@ describe("HTML component markup field fallback", () => {
     expect(markupField?.rendererProps?.rows).toBe(8);
   });
 });
+

@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { SchemaResolverService } from "../../plugins/control-panel/services/schema-resolver.service";
-import type { ControlPanelConfig, SelectedElement, ComponentSchema } from "../../plugins/control-panel/types/control-panel.types";
+import { SchemaResolverService } from "../src/services/schema-resolver.service";
+import type { ControlPanelConfig, SelectedElement, ComponentSchema } from "../src/types/control-panel.types";
 
 function loadJson<T = any>(p: string): T {
   const txt = fs.readFileSync(p, "utf-8");
@@ -11,9 +11,12 @@ function loadJson<T = any>(p: string): T {
 
 describe("SVG schema → code editor mapping", () => {
   it("maps ui.control = code to field.type = 'code' and applies preserveAspectRatio enum presets", async () => {
-    const root = path.resolve(__dirname, "../../");
-    const config = loadJson<ControlPanelConfig>(path.join(root, "plugins/control-panel/config/control-panel.schema.json"));
-    const svgSchema = loadJson<ComponentSchema>(path.join(root, "json-components/svg.json"));
+    const configPath = path.join(__dirname, "..", "src", "config", "control-panel.schema.json");
+    const repoRoot = path.resolve(__dirname, "..", "..", "..");
+    const svgSchemaPath = path.join(repoRoot, "json-components", "svg.json");
+
+    const config = loadJson<ControlPanelConfig>(configPath);
+    const svgSchema = loadJson<ComponentSchema>(svgSchemaPath);
 
     const resolver = new SchemaResolverService(config);
     resolver.registerComponentSchema("svg", svgSchema);
