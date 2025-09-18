@@ -41,10 +41,16 @@ import { EventSubscriptionManager } from "./core/EventSubscriptionManager.js";
 import { ExecutionQueue, QueueStatus } from "./execution/ExecutionQueue.js";
 import { SequenceExecutor } from "./execution/SequenceExecutor.js";
 import { PluginManager } from "./plugins/PluginManager.js";
-// Version import (ESM JSON import; supported in Node 18+/modern bundlers)
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import pkg from "../../../package.json" assert { type: "json" };
+// Version import (avoid JSON import assertions for broader compatibility)
+// We use createRequire so this file stays ESM while loading JSON via CJS semantics
+// We avoid using import.meta.url here to maintain compatibility with ts-jest transpile settings.
+// Instead we rely on a relative require which remains stable after build (rootDir is repo root).
+let pkg: any = { version: "unknown" };
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // Using relative path from this file to root package.json (two levels up from modules/communication/sequences)
+  pkg = require("../../../package.json");
+} catch {}
 
 import {
   PluginInterfaceFacade,
