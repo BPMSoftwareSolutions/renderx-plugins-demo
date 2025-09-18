@@ -100,6 +100,14 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "CanvasComponentPlugin",
     sequenceId: "canvas-component-update-symphony",
   },
+  "canvas.component.deselect": {
+    pluginId: "CanvasComponentDeselectionPlugin",
+    sequenceId: "canvas-component-deselect-symphony",
+  },
+  "canvas.component.deselect.all": {
+    pluginId: "CanvasComponentDeselectionPlugin",
+    sequenceId: "canvas-component-deselect-all-symphony",
+  },
 };
 
 // Removed static eager preload to avoid dual static+dynamic import warnings in Vite.

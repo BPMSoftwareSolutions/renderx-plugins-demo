@@ -2,9 +2,55 @@ import React, { Suspense } from "react";
 import { LayoutEngine } from "./layout/LayoutEngine";
 import { isFlagEnabled } from "./feature-flags/flags";
 import { SlotContainer } from "./layout/SlotContainer";
+import { EventRouter } from "./EventRouter";
 import "./layout/legacyLayout.css";
 
 export default function App() {
+  React.useEffect(() => {
+    const wireCanvasDeselect = () => {
+      const canvas = document.querySelector("#rx-canvas") as HTMLElement;
+      if (!canvas) return false;
+      const conductor = (window as any).RenderX?.conductor;
+      if (!conductor) return false;
+
+      canvas.addEventListener(
+        "click",
+        async (e: Event) => {
+          const target = e.target as HTMLElement;
+          const isComp = target.closest?.(".rx-comp,[id^='rx-node-']");
+          if (!isComp)
+            await EventRouter.publish("canvas.component.deselect.requested", {}, conductor);
+        },
+        true
+      );
+      return true;
+    };
+
+    const wireEscapeDeselect = () => {
+      const conductor = (window as any).RenderX?.conductor;
+      if (!conductor) return false;
+
+      window.addEventListener("keydown", async (e) => {
+        if (e.key === "Escape") await EventRouter.publish("canvas.component.deselect.requested", {}, conductor);
+      });
+      return true;
+    };
+
+    // Try to wire immediately
+    if (wireCanvasDeselect() && wireEscapeDeselect()) return;
+
+    // If not ready, wait for canvas to mount
+    const observer = new MutationObserver(() => {
+      if (wireCanvasDeselect() && wireEscapeDeselect()) {
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Cleanup
+    return () => observer.disconnect();
+  }, []);
+
   const useLayoutManifest = isFlagEnabled("ui.layout-manifest");
 
   if (useLayoutManifest) {

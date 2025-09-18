@@ -127,6 +127,20 @@
       "visibility": "public",
       "notes": "Topic-first selection request; routes to selection routing symphony."
     },
+    "canvas.component.deselect.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDeselectionRequestPlugin",
+          "sequenceId": "canvas-component-deselect-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "visibility": "public",
+      "notes": "Topic-first deselection request; routes to deselection symphony."
+    },
     "canvas.component.selection.changed": {
       "routes": [
         {
