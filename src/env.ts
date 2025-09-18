@@ -1,22 +1,4 @@
-// Environment helpers for external artifacts consumption.
-// Prefer HOST_ARTIFACTS_DIR (new) then ARTIFACTS_DIR (legacy) then Vite env var.
-export function getArtifactsDir(): string | null {
-  try {
-    // @ts-ignore process may be undefined in browser
-    if (typeof process !== 'undefined' && (process as any)?.env) {
-      // @ts-ignore
-      const dir = (process as any).env.HOST_ARTIFACTS_DIR || (process as any).env.ARTIFACTS_DIR;
-      if (dir) return dir as string;
-    }
-  } catch {}
-  try {
-    // @ts-ignore
-    const viteVar = (import.meta as any)?.env?.VITE_ARTIFACTS_DIR;
-    if (viteVar) return viteVar;
-  } catch {}
-  return null;
-}
+// Phase C shim: re-export canonical env helpers
+// TODO: Remove after deprecation window once all imports are updated
+export * from "./core/environment/env";
 
-export function artifactsEnabled(): boolean {
-  return !!getArtifactsDir();
-}
