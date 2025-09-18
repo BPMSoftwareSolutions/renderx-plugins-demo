@@ -3,7 +3,7 @@ export default {
     "require-manifest-validation": {
       meta: {
         type: "problem",
-        docs: { description: "Require validateLayoutManifest to be called before using manifest in LayoutEngine" },
+        docs: { description: "Require validateLayoutManifest(manifest) to be called in concrete LayoutEngine implementation (domain or legacy)" },
         schema: [],
         messages: {
           required: "validateLayoutManifest(manifest) must be called in LayoutEngine before use (issue #61)."
@@ -11,12 +11,22 @@ export default {
       },
       create(context) {
         const filename = context.getFilename?.() || "";
-        if (!/\/src\/layout\/LayoutEngine\.(t|j)sx?$/.test(filename)) return {};
+        // Accept either legacy root location or new domain location
+        const isLayoutEngineFile = /\/src\/(layout|domain\/layout)\/LayoutEngine\.(t|j)sx?$/.test(filename);
+        if (!isLayoutEngineFile) return {};
+
+        const source = context.sourceCode.getText();
+        // Treat pure re-export shim (Phase B transitional) as exempt so we can relocate implementation first.
+        const isPureReExportShim = /export\s+\*\s+from\s+['"].+LayoutEngine['"];?\s*$/.test(source) && !/validateLayoutManifest/.test(source);
+        if (isPureReExportShim) return {};
+
         let sawValidateCall = false;
         return {
           CallExpression(node) {
-            const src = context.sourceCode.getText(node);
-            if (src.includes("validateLayoutManifest")) sawValidateCall = true;
+            // Cheaper than full resolver: look for identifier name validateLayoutManifest
+            if (node.callee && node.callee.type === 'Identifier' && node.callee.name === 'validateLayoutManifest') {
+              sawValidateCall = true;
+            }
           },
           'Program:exit'() {
             if (!sawValidateCall) {

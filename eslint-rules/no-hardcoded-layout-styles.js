@@ -10,15 +10,17 @@ export default {
         schema: [],
         messages: {
           hardcoded:
-            "Hardcoded layout style detected outside src/layout/** (issue #61).",
+            "Hardcoded layout style detected outside src/{layout,domain/layout}/** (issue #61).",
         },
       },
       create(context) {
         const filename = String(context.getFilename?.() || "");
-        // Treat files under src/layout/** and src/App.* as allowed to define layout styles
+        // Treat files under src/layout/**, src/domain/layout/** and src/App.* as allowed to define layout styles
         const isLayoutFile =
           filename.includes("/src/layout/") ||
-          filename.includes("\\src\\layout\\");
+          filename.includes("\\src\\layout\\") ||
+          filename.includes("/src/domain/layout/") ||
+          filename.includes("\\src\\domain\\layout\\");
         const isAppFallback =
           /([/\\])src\1App\.(t|j)sx?$/.test(filename) ||
           filename.endsWith("/src/App.tsx") ||
