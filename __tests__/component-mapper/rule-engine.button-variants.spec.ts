@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { ComponentRuleEngine } from "../../src/component-mapper/rule-engine";
+import { ComponentRuleEngine } from "../../src/domain/mapping/component-mapper/rule-engine";
 
 /**
  * Regression tests for Issue #57: variant/size clobbering on button

@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 import {
   getTagForType,
   computeTagFromJson,
-} from "../../src/component-mapper/mapper";
+} from "../../src/domain/mapping/component-mapper/mapper";
 
 // Minimal JSON stubs to simulate component JSONs
 const makeHeadingJson = (level?: string) => ({

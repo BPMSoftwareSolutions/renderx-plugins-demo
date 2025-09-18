@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { mapJsonComponentToTemplate as _mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
+import { mapJsonComponentToTemplate as _mapJsonComponentToTemplate } from "../../src/domain/components/json/jsonComponent.mapper";
 
 describe("FAILING: CSS collection vs component structure mismatch", () => {
   it("exposes the real issue: collectCssClasses looks for comp.classes but export uses comp.template.classRefs", () => {
@@ -33,7 +33,11 @@ describe("FAILING: CSS collection vs component structure mismatch", () => {
 
     for (const comp of components) {
       // THIS IS THE BUG: collectCssClasses looks for comp.classes
-      const classes: string[] = Array.isArray(comp.classes) ? comp.classes : [];
+      // Cast to any to intentionally show absence without TypeScript error
+      const maybe: any = comp as any;
+      const classes: string[] = Array.isArray(maybe.classes)
+        ? maybe.classes
+        : [];
       console.log("comp.classes found:", classes);
       for (const c of classes) unique.add(c);
     }

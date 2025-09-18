@@ -20,7 +20,7 @@ describe("PanelSlot loads Canvas UI via package specifier", () => {
 
   it("resolves '@renderx-plugins/canvas' and mounts CanvasPage without errors", async () => {
     const { PanelSlot, __setPanelSlotManifestForTests } = await import(
-      "../../src/components/PanelSlot"
+      "../../src/ui/shared/PanelSlot"
     );
 
     __setPanelSlotManifestForTests({

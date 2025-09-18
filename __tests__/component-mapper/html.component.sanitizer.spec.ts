@@ -1,6 +1,6 @@
 /** @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
-import { ComponentRuleEngine } from "../../src/component-mapper/rule-engine";
+import { ComponentRuleEngine } from "../../src/domain/mapping/component-mapper/rule-engine";
 import { sanitizeHtml } from "../../src/sanitizeHtml";
 
 describe("HTML component sanitizer + rule-engine integration", () => {
