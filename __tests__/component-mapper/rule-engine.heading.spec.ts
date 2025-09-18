@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { ComponentRuleEngine } from "../../src/component-mapper/rule-engine";
+import { ComponentRuleEngine } from "../../src/domain/mapping/component-mapper/rule-engine";
 
 describe("RuleEngine: heading content extract/apply", () => {
   let el: HTMLElement;

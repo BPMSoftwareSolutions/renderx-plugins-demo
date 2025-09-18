@@ -2,14 +2,15 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 // Force TS source to avoid stale compiled JS shadowing in dev
-import { initConductor, registerAllSequences } from "./conductor.ts";
+import { initConductor, registerAllSequences } from "./conductor";
 import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./interactionManifest";
 import { initTopicsManifest, getTopicsManifestStats, getTopicDef } from "./topicsManifest";
 import { getPluginManifestStats, verifyArtifactsIntegrity } from "./startupValidation";
 import { EventRouter } from "./EventRouter";
 import "./global.css";
 import { listComponents, getComponentById, onInventoryChanged } from "./inventory";
-import { cssRegistry } from "./cssRegistry/facade";
+// Updated import: cssRegistry now lives under domain/css
+import { cssRegistry } from "./domain/css/cssRegistry.facade";
 // minimal ambient typing for optional env flag without pulling full @types/node
 declare const process: { env?: Record<string, string | undefined> } | undefined;
 

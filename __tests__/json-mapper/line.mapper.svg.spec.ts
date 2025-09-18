@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
-import { mapJsonComponentToTemplate } from "../../src/jsonComponent.mapper";
+import { mapJsonComponentToTemplate } from "../../src/domain/components/json/jsonComponent.mapper";
 
 import lineJsonMod from "../../json-components/line.json" with { type: "json" };
 

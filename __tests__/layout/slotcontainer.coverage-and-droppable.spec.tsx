@@ -7,8 +7,8 @@ import {
   clearFlagOverrides,
 } from "../../src/feature-flags/flags";
 
-// Stub PanelSlot to avoid plugin-manifest dependency
-vi.mock("../../src/components/PanelSlot", () => ({
+// Stub PanelSlot to avoid plugin-manifest dependency (updated path)
+vi.mock("../../src/ui/shared/PanelSlot", () => ({
   PanelSlot: (props: any) =>
     React.createElement("div", { "data-panel-slot": props.slot }),
 }));

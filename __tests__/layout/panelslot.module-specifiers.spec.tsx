@@ -21,7 +21,7 @@ describe("PanelSlot supports package and URL module specifiers (graceful fallbac
   it("attempts to import a package specifier and renders error fallback on failure", async () => {
     // Mock manifest via test-only override instead of fetch
     const { PanelSlot, __setPanelSlotManifestForTests } = await import(
-      "../../src/components/PanelSlot"
+      "../../src/ui/shared/PanelSlot"
     );
     __setPanelSlotManifestForTests({
       plugins: [
@@ -47,7 +47,7 @@ describe("PanelSlot supports package and URL module specifiers (graceful fallbac
 
   it("attempts to import a URL specifier and renders error fallback on failure", async () => {
     const { PanelSlot, __setPanelSlotManifestForTests } = await import(
-      "../../src/components/PanelSlot"
+      "../../src/ui/shared/PanelSlot"
     );
     __setPanelSlotManifestForTests({
       plugins: [
