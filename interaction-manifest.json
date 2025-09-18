@@ -13,6 +13,14 @@
       "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-create-symphony"
     },
+    "canvas.component.deselect": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "sequenceId": "canvas-component-deselect-symphony"
+    },
+    "canvas.component.deselect.all": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "sequenceId": "canvas-component-deselect-all-symphony"
+    },
     "canvas.component.drag.move": {
       "pluginId": "CanvasComponentDragPlugin",
       "sequenceId": "canvas-component-drag-symphony"
