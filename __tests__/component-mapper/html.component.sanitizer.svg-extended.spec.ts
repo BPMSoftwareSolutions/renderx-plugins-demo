@@ -1,6 +1,6 @@
 /** @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
-import { sanitizeHtml } from "../../src/sanitizeHtml";
+import { sanitizeHtml } from "../../src/domain/css/sanitizeHtml";
 
 describe("sanitizeHtml extended SVG + dark mode", () => {
   it("preserves allowed extended SVG tags and attributes", () => {

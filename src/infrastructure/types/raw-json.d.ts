@@ -14,3 +14,4 @@ declare module '@renderx-plugins/canvas';
 declare module '@renderx-plugins/library-component';
 declare module '@renderx-plugins/control-panel';
 declare module '@renderx-plugins/control-panel/index.css';
+

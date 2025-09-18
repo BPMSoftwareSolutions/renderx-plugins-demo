@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeHandlersImportSpec } from '../src/handlersPath';
+import { normalizeHandlersImportSpec } from '../src/infrastructure/handlers/handlersPath';
 
 describe('normalizeHandlersImportSpec', () => {
   it('returns URLs as-is', () => {

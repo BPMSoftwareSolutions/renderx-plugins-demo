@@ -1,6 +1,6 @@
 // Runtime loaders & JSON sequence catalog mounting (migrated from src/conductor.ts)
 // Type declarations for plugin packages may be absent; dynamic imports are intentionally untyped.
-import { isBareSpecifier, normalizeHandlersImportSpec } from '../../handlersPath';
+import { isBareSpecifier, normalizeHandlersImportSpec } from '../../infrastructure/handlers/handlersPath';
 import { resolveModuleSpecifier } from './conductor';
 
 // Statically known runtime package loaders to ensure Vite can analyze and bundle

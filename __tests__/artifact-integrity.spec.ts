@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { verifyArtifactsIntegrity } from '../src/startupValidation';
+import { verifyArtifactsIntegrity } from '../src/core/startup/startupValidation';
 
 // Basic smoke tests; network fetch paths won't exist in node so function should no-op safely
 

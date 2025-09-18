@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import {
   setFlagOverride,
   clearFlagOverrides,
-} from "../../src/feature-flags/flags";
+} from "../../src/core/environment/feature-flags";
 
 // Stub PanelSlot to avoid plugin-manifest dependency (updated path)
 vi.mock("../../src/ui/shared/PanelSlot", () => ({
@@ -59,7 +59,7 @@ describe("SlotContainer coverage + droppable normalization", () => {
     document.body.appendChild(el);
     const root = createRoot(el);
 
-    const { LayoutEngine } = await import("../../src/layout/LayoutEngine");
+    const { LayoutEngine } = await import("../../src/domain/layout/LayoutEngine");
     root.render(React.createElement(LayoutEngine));
 
     // Poll until slots rendered
@@ -106,7 +106,7 @@ describe("SlotContainer coverage + droppable normalization", () => {
     document.body.appendChild(el);
     const root = createRoot(el);
 
-    const { LayoutEngine } = await import("../../src/layout/LayoutEngine");
+    const { LayoutEngine } = await import("../../src/domain/layout/LayoutEngine");
     root.render(React.createElement(LayoutEngine));
 
     for (

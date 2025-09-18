@@ -20,7 +20,7 @@ const ALLOW = [
   '../../src/EventRouter',
   '../../src/interactionManifest',
   '../../src/feature-flags/flags',
-  '../../src/component-mapper/mapper',
+  '../../src/domain/mapping/component-mapper/mapper',
   '../../src/jsonComponent.mapper',
   './pluginManifest'
 ];

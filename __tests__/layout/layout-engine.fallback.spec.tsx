@@ -2,7 +2,7 @@
 import React from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { createRoot } from "react-dom/client";
-import { setFlagOverride, clearFlagOverrides } from "../../src/feature-flags/flags";
+import { setFlagOverride, clearFlagOverrides } from "../../src/core/environment/feature-flags";
 
 describe("App falls back to legacy 3-column layout when layout-manifest missing (TDD)", () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe("App falls back to legacy 3-column layout when layout-manifest missing 
 
   it("renders legacy grid when /layout-manifest.json is 404 and flag enabled", async () => {
     // Import App after mocks to ensure PanelSlot uses mocked fetch
-    const App = (await import("../../src/App")).default;
+    const App = (await import("../../src/ui/App")).default;
 
     // Enable feature flag path while simulating missing manifest
     setFlagOverride("ui.layout-manifest", true);

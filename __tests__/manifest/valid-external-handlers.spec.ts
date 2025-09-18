@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import { normalizeHandlersImportSpec, isBareSpecifier } from '../../src/handlersPath';
+import { normalizeHandlersImportSpec, isBareSpecifier } from '../../src/infrastructure/handlers/handlersPath';
 
 /**
  * Guardrail tests for externalized plugins (issue #130)

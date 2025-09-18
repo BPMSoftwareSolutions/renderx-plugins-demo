@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import * as mod from "../../src/feature-flags/flags";
+import * as mod from "../../src/core/environment/feature-flags";
 
 describe("feature flags runtime registry", () => {
   beforeEach(() => {

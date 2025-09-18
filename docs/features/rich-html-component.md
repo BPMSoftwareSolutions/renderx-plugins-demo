@@ -17,7 +17,7 @@ The Rich HTML component lets authors paste sanitized HTML (including basic/anima
 | ------------------- | -------------------------------------------------------------- |
 | Component JSON      | `json-components/html.json`                                    |
 | Sanitizer           | `src/sanitizeHtml.ts`                                          |
-| Rule engine hooks   | `src/component-mapper/rule-engine.ts` (`innerHtml` branches)   |
+| Rule engine hooks   | `src/domain/mapping/component-mapper/rule-engine.ts` (`innerHtml` branches)   |
 | Feature flag source | `data/feature-flags.json`                                      |
 | Gallery samples     | `docs/samples/*`                                               |
 | Tests               | `__tests__/component-mapper/html.component.sanitizer*.spec.ts` |

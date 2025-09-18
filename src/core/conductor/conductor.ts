@@ -1,6 +1,6 @@
 // Physical move of original conductor implementation (was at src/conductor.ts)
 // Conductor core (migrated & split from src/conductor.ts)
-import { isBareSpecifier } from '../../handlersPath';
+import { isBareSpecifier } from '../../infrastructure/handlers/handlersPath';
 import { isFlagEnabled } from '../environment/feature-flags';
 // @ts-ignore - JSON assertion supported by bundler / TS
 import topicsManifestJson from '../../../topics-manifest.json' with { type: 'json' };
