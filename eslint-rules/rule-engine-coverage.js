@@ -49,35 +49,36 @@ function loadComponentJsonFiles(context) {
 function loadRuleEngineRules(context) {
   try {
     const cwd = context.getCwd?.() || process.cwd();
-    const ruleEnginePath = path.join(
+    const legacyPath = path.join(cwd, "src", "component-mapper", "rule-engine.ts");
+    const canonicalPath = path.join(
       cwd,
       "src",
+      "domain",
+      "mapping",
       "component-mapper",
       "rule-engine.ts"
     );
 
-    if (!fs.existsSync(ruleEnginePath)) {
-      return { update: {}, content: {}, extract: {} };
+    // Prefer legacy path if it contains the rule constants; otherwise fall back to canonical path
+    if (fs.existsSync(legacyPath)) {
+      const content = fs.readFileSync(legacyPath, "utf8");
+      if (content.includes("DEFAULT_UPDATE_RULES")) {
+        const updateRules = parseRulesFromContent(content, "DEFAULT_UPDATE_RULES");
+        const contentRules = parseRulesFromContent(content, "DEFAULT_CONTENT_RULES");
+        const extractRules = parseRulesFromContent(content, "DEFAULT_EXTRACT_RULES");
+        return { update: updateRules, content: contentRules, extract: extractRules };
+      }
     }
 
-    const content = fs.readFileSync(ruleEnginePath, "utf8");
+    if (fs.existsSync(canonicalPath)) {
+      const content = fs.readFileSync(canonicalPath, "utf8");
+      const updateRules = parseRulesFromContent(content, "DEFAULT_UPDATE_RULES");
+      const contentRules = parseRulesFromContent(content, "DEFAULT_CONTENT_RULES");
+      const extractRules = parseRulesFromContent(content, "DEFAULT_EXTRACT_RULES");
+      return { update: updateRules, content: contentRules, extract: extractRules };
+    }
 
-    // Parse update rules from DEFAULT_UPDATE_RULES
-    const updateRules = parseRulesFromContent(content, "DEFAULT_UPDATE_RULES");
-    const contentRules = parseRulesFromContent(
-      content,
-      "DEFAULT_CONTENT_RULES"
-    );
-    const extractRules = parseRulesFromContent(
-      content,
-      "DEFAULT_EXTRACT_RULES"
-    );
-
-    return {
-      update: updateRules,
-      content: contentRules,
-      extract: extractRules,
-    };
+    return { update: {}, content: {}, extract: {} };
   } catch {
     return { update: {}, content: {}, extract: {} };
   }
@@ -235,18 +236,23 @@ function getControlPanelProperties(componentJson) {
 function hasSpecificUpdateRule(componentType, property, _rules) {
   try {
     const cwd = process.cwd();
-    const ruleEnginePath = path.join(
-      cwd,
-      "src",
-      "component-mapper",
-      "rule-engine.ts"
-    );
+    const candidates = [
+      path.join(cwd, "src", "component-mapper", "rule-engine.ts"),
+      path.join(cwd, "src", "domain", "mapping", "component-mapper", "rule-engine.ts"),
+    ];
 
-    if (!fs.existsSync(ruleEnginePath)) {
-      return false;
+    let content = null;
+    for (const p of candidates) {
+      if (fs.existsSync(p)) {
+        const c = fs.readFileSync(p, "utf8");
+        if (c.includes("const DEFAULT_UPDATE_RULES")) {
+          content = c;
+          break;
+        }
+      }
     }
 
-    const content = fs.readFileSync(ruleEnginePath, "utf8");
+    if (!content) return false;
 
     // Find the DEFAULT_UPDATE_RULES section
     const updateRulesStart = content.indexOf("const DEFAULT_UPDATE_RULES");
