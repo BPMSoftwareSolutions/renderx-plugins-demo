@@ -234,3 +234,7 @@ See the canonical checklist and guidance here:
 ## License
 
 Specify your preferred license here (e.g., MIT).
+
+---
+### Source Layout Refactor (#171)
+The codebase was reorganized into layered folders (`core/`, `domain/`, `ui/`, `infrastructure/`, `vendor/`). See `NEW_STRUCTURE.md` for mapping and migration notes.
