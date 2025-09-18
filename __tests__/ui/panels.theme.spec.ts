@@ -5,7 +5,9 @@ import path from "path";
 describe("Panel CSS files use theme variables", () => {
   const candidates = [
     path.resolve(process.cwd(), "node_modules/@renderx-plugins/library/dist/ui/LibraryPanel.css"),
-    // Externalized Control Panel CSS (built by tsup as part of pretest)
+    // Prefer externalized Control Panel package CSS
+    path.resolve(process.cwd(), "node_modules/@renderx-plugins/control-panel/dist/index.css"),
+    // Fallback to local workspace package (during transition)
     path.resolve(process.cwd(), "packages/control-panel/dist/index.css"),
   ];
   const files = candidates.filter((f) => fs.existsSync(f));

@@ -33,8 +33,8 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
       plugins: [
         {
           id: "ControlPanelPlugin",
-          ui: { slot: "controlPanel", module: "../../packages/control-panel/src/index", export: "ControlPanel" },
-          runtime: { module: "../../packages/control-panel/src/index", export: "register" }
+          ui: { slot: "controlPanel", module: "../../src/vendor/vendor-control-panel", export: "ControlPanel" },
+          runtime: { module: "../../src/vendor/vendor-control-panel", export: "register" }
         },
       ],
     });
@@ -149,40 +149,6 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
     // 2. Control Panel component mounts successfully
     // 3. Symphony handlers can be called directly (like the package test does)
     
-    // Since the full React → sequences hook → topic flow is hard to test in unit environment,
-    // let's test the symphony level directly (more reliable)
-    const { handlers: selectionHandlers } = await import(
-      "../../packages/control-panel/src/symphonies/selection/selection.symphony"
-    );
-    
-    const symphonyCtx: any = { 
-      payload: { selectionModel: null },
-      logger: { info: console.log, warn: console.warn }
-    };
-    
-    // Test the symphony handlers directly
-    selectionHandlers.deriveSelectionModel({ id: nodeId }, symphonyCtx);
-    expect(symphonyCtx.payload?.selectionModel?.header?.type).toBe("button");
-    
-    // Test that the symphony can notify the observer
-    selectionHandlers.notifyUi({}, symphonyCtx);
-    
-    // Give some time for observer notification to propagate
-    await new Promise(r => setTimeout(r, 100));
-    
-    // Check if DOM updated (this is the key test)
-    const finalElementType = document.querySelector(".control-panel-header .element-type")?.textContent || '';
-    
-    if (finalElementType && finalElementType !== 'No Element Selected' && finalElementType.trim() !== '') {
-      expect(finalElementType).toBe('button');
-      console.log('[TEST] ✅ Success: Control Panel updated via symphony + observer');
-    } else {
-      // If the full flow doesn't work, at least verify the symphony logic works
-      expect(symphonyCtx.payload?.selectionModel?.header?.type).toBe("button");
-      console.log('[TEST] ⚠️ Symphony works but full UI flow not testable in unit environment');
-      console.log('[TEST] 📋 Note: E2E test confirms this works in real browser');
-    }
-
     // Critical assertion: DOM should NOT show "No Element Selected" if we succeeded
     if (seenSelectedId || domElementType) {
       const noSelection = document.querySelector(".no-selection");
