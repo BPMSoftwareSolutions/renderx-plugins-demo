@@ -38,7 +38,7 @@
     "packages:test": "npm --prefix packages/renderx-plugin-canvas run test && npm --prefix packages/renderx-plugin-canvas-component run test",
     "e2e": "playwright test",
     "ci:precheck": "node scripts/ci-precheck.js",
-    "ci": "npm run lint && npm run pre:manifests && npm test && npm run e2e"
+    "ci": "npm run pre:manifests && npm run lint && npm test && npm run e2e"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.3",
