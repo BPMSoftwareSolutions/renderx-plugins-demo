@@ -32,7 +32,6 @@
     "lint": "eslint .",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
-
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
@@ -51,7 +50,7 @@
     "@renderx-plugins/library-component": "^0.1.0-rc.3",
     "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
-    "musical-conductor": "^1.4.4",
+    "musical-conductor": "^1.4.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
