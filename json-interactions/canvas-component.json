@@ -64,6 +64,14 @@
     "canvas.component.update.svg-node": {
       "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
       "sequenceId": "canvas-component-update-svg-node-symphony"
+    },
+    "canvas.component.deselect": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "sequenceId": "canvas-component-deselect-symphony"
+    },
+    "canvas.component.deselect.all": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "sequenceId": "canvas-component-deselect-all-symphony"
     }
   }
 }
