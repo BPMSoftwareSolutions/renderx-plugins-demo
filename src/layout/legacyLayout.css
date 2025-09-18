@@ -1,11 +1,2 @@
-/* Legacy fallback 3-column grid layout */
-.legacy-grid {
-  display: grid;
-  grid-template-columns: 320px 1fr 360px;
-  height: 100vh;
-}
-
-.slot-wrapper {
-  position: relative;
-}
+@import '../domain/layout/legacyLayout.css';
 
