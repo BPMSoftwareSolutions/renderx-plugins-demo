@@ -1,18 +1,13 @@
 // EventRouter (migrated from src/EventRouter.ts)
 import { getTopicDef, initTopicsManifest, type TopicRoute } from '../manifests/topicsManifest';
 import { isFlagEnabled } from '../environment/feature-flags';
+import { REPLAY_TOPICS, lastPayload } from './topic-replay-cache';
+
 
 export type Unsubscribe = () => void;
 export type TopicHandler = (payload: any) => void;
 
 const subscribers = new Map<string, Set<TopicHandler>>();
-// Store last payload for selected topics so late subscribers can be replayed once on subscribe
-const lastPayload = new Map<string, any>();
-// Minimal, targeted replay list to avoid broad behavior changes
-const REPLAY_TOPICS = new Set<string>([
-	'control.panel.selection.updated',
-	'canvas.component.selection.changed',
-]);
 
 function throttle(fn: Function, ms: number) {
 	let last = 0; let pending: any = null;
