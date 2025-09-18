@@ -25,7 +25,7 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
 
   it("publishes canvas.selection.changed, sees control.panel.ui.render.requested, and header updates", async () => {
     const { PanelSlot, __setPanelSlotManifestForTests } = await import(
-      "../../src/components/PanelSlot"
+      "../../src/ui/shared/PanelSlot"
     );
 
     // Point manifest UI to the package source to match PanelSlot.tsx and avoid module instance divergence

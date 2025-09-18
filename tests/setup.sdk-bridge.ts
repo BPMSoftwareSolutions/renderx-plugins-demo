@@ -2,7 +2,8 @@
 import { resolveInteraction as hostResolve } from "../src/interactionManifest";
 import { EventRouter as HostEventRouter } from "../src/EventRouter";
 import * as Inventory from "../src/inventory";
-import { cssRegistry as HostCssRegistry } from "../src/cssRegistry/facade";
+// Updated path after inlining cssRegistry into domain layer
+import { cssRegistry as HostCssRegistry } from "../src/domain/css/cssRegistry.facade";
 
 // Ensure a minimal window exists
 if (typeof (globalThis as any).window === "undefined") {
@@ -21,7 +22,7 @@ if (!g.window.RenderX.EventRouter) {
     subscribe: (topic: string, cb: (payload: any) => void) =>
       HostEventRouter.subscribe(topic, cb),
     init: () => HostEventRouter.init(),
-    getTopicsStats: () => HostEventRouter.getTopicsStats?.(),
+  // getTopicsStats intentionally omitted; host EventRouter does not expose it in this context
   };
 }
 

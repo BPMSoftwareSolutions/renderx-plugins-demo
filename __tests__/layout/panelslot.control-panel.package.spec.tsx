@@ -20,7 +20,7 @@ describe("PanelSlot loads Control Panel UI from package and reacts to selection 
 
   it("selection → update notifies package UI observer and updates header", async () => {
     const { PanelSlot, __setPanelSlotManifestForTests } = await import(
-      "../../src/components/PanelSlot"
+      "../../src/ui/shared/PanelSlot"
     );
 
     // Point manifest UI to the package entry

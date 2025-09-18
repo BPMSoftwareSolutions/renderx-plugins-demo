@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { createRoot } from "react-dom/client";
 
 // Stub PanelSlot to avoid plugin-manifest dependency in this unit test
-vi.mock("../../src/components/PanelSlot", () => ({
+vi.mock("../../src/ui/shared/PanelSlot", () => ({
   PanelSlot: (props: any) =>
     React.createElement("div", { "data-panel-slot": props.slot }),
 }));
