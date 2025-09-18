@@ -1,6 +1,6 @@
 // Vitest global test setup to bridge SDK -> host resolver and provide a safe default conductor
 import { resolveInteraction as hostResolve } from "../src/interactionManifest";
-import { EventRouter as HostEventRouter } from "../src/EventRouter";
+import { EventRouter as HostEventRouter } from "../src/core/events/EventRouter";
 import * as Inventory from "../src/inventory";
 // Updated path after inlining cssRegistry into domain layer
 import { cssRegistry as HostCssRegistry } from "../src/domain/css/cssRegistry.facade";

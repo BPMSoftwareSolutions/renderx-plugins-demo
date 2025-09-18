@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { EventRouter } from "../../src/EventRouter";
+import { EventRouter } from "../../src/core/events/EventRouter";
 // Inline minimal manifest builder for tests (avoid importing node script)
 function buildTopicsManifest(catalogs: any[]) {
   const topics: Record<string, any> = {};

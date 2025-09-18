@@ -4,8 +4,8 @@
  * Note: This thin facade is for runtime bridging to plugins via SDK. It does not
  * directly synchronize with the Control Panel store; it publishes requests.
  */
-import { EventRouter } from "../EventRouter";
-import { initConductor } from "../conductor";
+import { EventRouter } from "../core/events/EventRouter";
+import { initConductor } from "../core/conductor";
 
 export type CssRegistryFacade = {
   hasClass: (className: string) => Promise<boolean>;
