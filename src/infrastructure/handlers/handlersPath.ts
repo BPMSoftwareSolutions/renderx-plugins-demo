@@ -1,1 +1,1 @@
-export * from '../../handlersPath';
+export * from '../../handlersPath'; // TEMP shim until legacy removal
