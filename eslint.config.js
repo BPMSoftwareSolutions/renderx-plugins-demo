@@ -18,6 +18,7 @@ import requireManifestValidation from "./eslint-rules/require-manifest-validatio
 import noHostInternalsInPlugins from "./eslint-rules/no-host-internals-in-plugins.js";
 import crossPluginImports from "./eslint-rules/no-cross-plugin-imports.js";
 import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
+import rootShimsOnly from "./eslint-rules/root-shims-only.js";
 import requirePluginManifestFragment from "./eslint-rules/require-plugin-manifest-fragment.js";
 import validHandlersPath from "./eslint-rules/valid-handlers-path.js";
 import handlerExportExists from "./eslint-rules/handler-export-exists.js";
@@ -98,6 +99,7 @@ export default [
       "layout-manifest-validation": requireManifestValidation,
       "no-host-internals-in-plugins": noHostInternalsInPlugins,
       "cross-plugin-imports": crossPluginImports,
+      "root-shims-only": rootShimsOnly,
       "deprecate-stagecrew-api": deprecateStageCrew,
       "plugin-manifest-fragment": requirePluginManifestFragment,
       "handlers-path": validHandlersPath,
@@ -119,6 +121,7 @@ export default [
       "layout-slot-registration/require-slot-manifest-registration": "error",
       "layout-logic/no-layout-logic-in-components": "error",
       "layout-manifest-validation/require-manifest-validation": "error",
+      "root-shims-only/require-root-shims-only": "error",
       "plugin-manifest-fragment/require-plugin-manifest-fragment": "error",
       "handlers-path/valid-handlers-path": "error",
       "handler-exports/handler-export-exists": "error",
