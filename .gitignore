@@ -164,6 +164,13 @@ json-components/
 json-sequences/
 /json-plugins/.generated
 
+# Generated manifests (should not be version controlled)
+# These are build artifacts generated from catalog/ sources
+interaction-manifest.json
+layout-manifest.json
+topics-manifest.json
+public-api.hash.json
+
 # Ignore generated plugin manifests in build outputs
 /dist/plugins/plugin-manifest.json
 /public/plugins/plugin-manifest.json
