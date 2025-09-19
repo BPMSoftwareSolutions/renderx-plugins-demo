@@ -51,10 +51,13 @@ export async function loadJsonSequenceCatalogs(
 				}
 				if (!externalOnly) {
 					try {
-						// @ts-ignore raw JSON import for dev fallback
-						const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
-						const txt: string = (mod as any)?.default || (mod as any) || '{}';
-						manifest = JSON.parse(txt);
+						const env = await import(/* @vite-ignore */ '../environment/env');
+						if ((env as any).allowFallbacks?.()) {
+							// @ts-ignore raw JSON import for test fallback
+							const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
+							const txt: string = (mod as any)?.default || (mod as any) || '{}';
+							manifest = JSON.parse(txt);
+						}
 					} catch {}
 				}
 			}
@@ -118,11 +121,16 @@ export async function loadJsonSequenceCatalogs(
 			if (!entries.length) {
 				if (!isBrowser && artifactsDir) { try { const fs = await import('fs/promises'); const path = await import('path'); const procAny2: any = (globalThis as any).process; const cwd = procAny2 && typeof procAny2.cwd === 'function' ? procAny2.cwd() : ''; const idxPath = path.join(cwd, artifactsDir, 'json-sequences', dir, 'index.json'); const raw = await fs.readFile(idxPath, 'utf-8').catch(()=>null as any); if (raw) { const idxJson = JSON.parse(raw || '{}'); entries = idxJson?.sequences || []; } } catch {} }
 						if (!entries.length && !artifactsDir) {
-							// @ts-ignore raw JSON import
-							const idxMod = await import(/* @vite-ignore */ `../../../json-sequences/${dir}/index.json?raw`);
-							const idxText: string = (idxMod as any)?.default || (idxMod as any);
-							const idxJson = JSON.parse(idxText || '{}');
-							entries = idxJson?.sequences || [];
+							try {
+								const env = await import(/* @vite-ignore */ '../environment/env');
+								if ((env as any).allowFallbacks?.()) {
+									// @ts-ignore raw JSON import (tests only)
+									const idxMod = await import(/* @vite-ignore */ `../../../json-sequences/${dir}/index.json?raw`);
+									const idxText: string = (idxMod as any)?.default || (idxMod as any);
+									const idxJson = JSON.parse(idxText || '{}');
+									entries = idxJson?.sequences || [];
+								}
+							} catch {}
 						}
 			}
 			const tasks = entries.map(async (ent) => {
@@ -130,10 +138,15 @@ export async function loadJsonSequenceCatalogs(
 				if (isBrowser) { try { const filePath = ent.file.startsWith('/') ? ent.file : `/json-sequences/${dir}/${ent.file}`; const seqRes = await fetch(filePath); if (seqRes.ok) seqJson = await seqRes.json(); } catch {} }
 				if (!seqJson && !isBrowser && artifactsDir) { try { const fs = await import('fs/promises'); const path = await import('path'); const procAny3: any = (globalThis as any).process; const cwd = procAny3 && typeof procAny3.cwd === 'function' ? procAny3.cwd() : ''; const seqPath = path.join(cwd, artifactsDir, 'json-sequences', dir, ent.file); const raw = await fs.readFile(seqPath, 'utf-8').catch(()=>null as any); if (raw) seqJson = JSON.parse(raw || '{}'); } catch {} }
 						if (!seqJson && !artifactsDir) {
-							// @ts-ignore raw JSON import
-							const seqMod = await import(/* @vite-ignore */ `../../../json-sequences/${dir}/${ent.file}?raw`);
-							const seqText: string = (seqMod as any)?.default || (seqMod as any);
-							seqJson = JSON.parse(seqText || '{}');
+							try {
+								const env = await import(/* @vite-ignore */ '../environment/env');
+								if ((env as any).allowFallbacks?.()) {
+									// @ts-ignore raw JSON import (tests only)
+									const seqMod = await import(/* @vite-ignore */ `../../../json-sequences/${dir}/${ent.file}?raw`);
+									const seqText: string = (seqMod as any)?.default || (seqMod as any);
+									seqJson = JSON.parse(seqText || '{}');
+								}
+							} catch {}
 						}
 				await mountFrom(seqJson as SequenceJson, ent.handlersPath);
 			});

@@ -14,6 +14,11 @@ New rules added for issue #142:
 - json-import-attrs/consistent-json-import-attributes (warn)
   - Requires with { type: 'json' } on all JSON imports inside src/
 
+- plugin-ids/validate-plugin-ids (error)
+  - Validates plugin IDs in catalog JSON files for naming conventions and cross-references
+  - Supports hierarchical plugin architecture (manifest plugins + logical extensions)
+  - Integrated into build pipeline via scripts/validate-plugin-ids.js
+
 Examples
 
 - Bad (public path):

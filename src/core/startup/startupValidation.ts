@@ -28,10 +28,15 @@ export async function getPluginManifestStats() {
 				}
 			} catch {}
 			if (!json) {
-				// @ts-ignore
-				const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
-				const txt: string = (mod as any)?.default || (mod as any) || '{}';
-				json = JSON.parse(txt);
+				try {
+					const env = await import(/* @vite-ignore */ '../environment/env');
+					if ((env as any).allowFallbacks?.()) {
+						// @ts-ignore
+						const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
+						const txt: string = (mod as any)?.default || (mod as any) || '{}';
+						json = JSON.parse(txt);
+					}
+				} catch {}
 			}
 		}
 		const plugins = Array.isArray(json.plugins) ? json.plugins : [];
