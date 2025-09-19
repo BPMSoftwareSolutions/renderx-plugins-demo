@@ -1,6 +1,8 @@
 // Sequence registration (migrated from src/conductor.ts)
 import { resolveModuleSpecifier } from "./conductor";
 import { getAggregatedPluginManifest } from "../manifests/pluginManifest";
+import { loadPluginModule } from "virtual:plugin-module-loaders";
+import { isBareSpecifier } from "../../infrastructure/handlers/handlersPath";
 
 export type ConductorClient = any; // local alias
 
@@ -30,9 +32,19 @@ export async function registerAllSequences(conductor: ConductorClient) {
           "Failed to resolve module specifier '@renderx-plugins/library'"
         );
       }
-      const mod = await import(
-        /* @vite-ignore */ resolveModuleSpecifier(runtime.module)
-      );
+      // Use Vite virtual module loaders in browser builds for bare specifiers; otherwise import relative
+      let mod: any;
+      if (typeof window === "undefined") {
+        mod = await import(
+          /* @vite-ignore */ resolveModuleSpecifier(runtime.module)
+        );
+      } else if (isBareSpecifier(runtime.module)) {
+        mod = await loadPluginModule(runtime.module);
+      } else {
+        mod = await import(
+          /* @vite-ignore */ resolveModuleSpecifier(runtime.module)
+        );
+      }
       const reg =
         (mod as any)?.[runtime.export] ||
         (mod as any)?.default?.[runtime.export];

@@ -1,5 +1,6 @@
 import React from "react";
 import { isBareSpecifier } from "../../infrastructure/handlers/handlersPath";
+import { loadPluginModule } from "virtual:plugin-module-loaders";
 
 // Simple manifest-driven PanelSlot that lazy-loads a named export from plugin modules
 // Manifest format: { plugins: [ { id, ui: { slot, module, export } } ] }
@@ -102,7 +103,15 @@ export function PanelSlot({ slot }: { slot: string }) {
             `Unsupported module specifier: ${specifier}. Remote https: imports are not allowed in Node.js/Esm environments.`
           );
         }
-        const mod = await import(/* @vite-ignore */ specifier);
+        let mod: any;
+        if (typeof window === "undefined") {
+          mod = await import(/* @vite-ignore */ specifier);
+        } else if (isBareSpecifier(requested)) {
+          mod = await loadPluginModule(requested);
+        } else {
+          // For relative/absolute paths in jsdom tests, import relative to this module
+          mod = await import(/* @vite-ignore */ specifier);
+        }
         const Exported = mod[entry.ui.export] as
           | React.ComponentType
           | undefined;

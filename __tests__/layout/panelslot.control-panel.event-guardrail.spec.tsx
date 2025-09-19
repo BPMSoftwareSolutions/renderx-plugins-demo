@@ -33,40 +33,58 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
       plugins: [
         {
           id: "ControlPanelPlugin",
-          ui: { slot: "controlPanel", module: "../../src/vendor/vendor-control-panel", export: "ControlPanel" },
-          runtime: { module: "../../src/vendor/vendor-control-panel", export: "register" }
+          ui: {
+            slot: "controlPanel",
+            module: "../../src/vendor/vendor-control-panel",
+            export: "ControlPanel",
+          },
+          runtime: {
+            module: "../../src/vendor/vendor-control-panel",
+            export: "register",
+          },
         },
       ],
     });
 
     // Provide a canvas root for canvas-component handlers
-    const canvasRoot = document.createElement('div');
-    canvasRoot.id = 'rx-canvas';
-    canvasRoot.style.position = 'relative';
+    const canvasRoot = document.createElement("div");
+    canvasRoot.id = "rx-canvas";
+    canvasRoot.style.position = "relative";
     document.body.appendChild(canvasRoot);
 
-    const { handlers: createHandlers } = await import("@renderx-plugins/canvas-component");
+    const { handlers: createHandlers } = await import(
+      "@renderx-plugins/canvas-component"
+    );
     const ctx: any = { payload: {} };
 
-  // Set up globalThis.RenderX.EventRouter for Control Panel sequences hook
-  const { EventRouter } = await import("../../src/core/events/EventRouter");
-  // Ensure clean router state to avoid cross-test interference
-  EventRouter.reset?.();
-  (globalThis as any).RenderX = { EventRouter };
+    // Set up globalThis.RenderX.EventRouter for Control Panel sequences hook
+    const { EventRouter } = await import("../../src/core/events/EventRouter");
+    // Ensure clean router state to avoid cross-test interference
+    EventRouter.reset?.();
+    (globalThis as any).RenderX = { EventRouter };
 
     // Mock resolveInteraction for Control Panel sequences hook
     const mockResolveInteraction = vi.fn().mockImplementation((key: string) => {
       // Return mock routes for Control Panel interactions
       return {
-        pluginId: 'ControlPanelPlugin',
-        sequenceId: key.replace(/\./g, '-') + '-symphony',
+        pluginId: "ControlPanelPlugin",
+        sequenceId: key.replace(/\./g, "-") + "-symphony",
       };
     });
 
     // Set up a more complete mock conductor to better simulate browser environment
+    const { handlers: selectionHandlers } = await import(
+      "@renderx-plugins/control-panel/symphonies/selection/selection.symphony"
+    );
     const mockConductor = {
-      getMountedPluginIds: () => ['ControlPanelPlugin'],
-      play: vi.fn().mockResolvedValue({}),
+      getMountedPluginIds: () => ["ControlPanelPlugin"],
+      play: vi.fn().mockImplementation(async (_seq: any, payload: any) => {
+        // Simulate the Control Panel selection symphony pipeline
+        const selCtx: any = { payload: {} };
+        selectionHandlers.deriveSelectionModel({ id: payload?.id }, selCtx);
+        selectionHandlers.notifyUi({}, selCtx);
+        return {};
+      }),
       // Add other conductor methods that might be needed
       getPluginState: vi.fn().mockReturnValue({}),
       setPluginState: vi.fn(),
@@ -99,7 +117,8 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
 
     // Wait for Control Panel header to mount AND for sequences to initialize
     let headerMounted = false;
-    for (let i = 0; i < 900; i++) { // More generous timeout for slower environments
+    for (let i = 0; i < 900; i++) {
+      // More generous timeout for slower environments
       await new Promise((r) => setTimeout(r, 10));
       if (document.querySelector(".control-panel-header")) {
         headerMounted = true;
@@ -110,35 +129,51 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
 
     // Give additional time for Control Panel sequences hook to initialize
     // In browser, we saw it was already initialized and publishing events
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 500));
 
     // Subscribe to render-request topic; assert payload id matches
     let seenSelectedId: string | null = null;
-    const off = EventRouter.subscribe("control.panel.ui.render.requested", (p) => {
-      seenSelectedId = String(p?.selectedElement?.header?.id || p?.selectedElement?.id || "");
-    });
+    const off = EventRouter.subscribe(
+      "control.panel.ui.render.requested",
+      (p) => {
+        seenSelectedId = String(
+          p?.selectedElement?.header?.id || p?.selectedElement?.id || ""
+        );
+      }
+    );
 
     // In browser, we saw lots of control.panel.ui.render.requested events during initialization
     // Let's check if any are already being published during setup
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise((r) => setTimeout(r, 100));
 
     // Publish selection changed via the Host EventRouter path using mock conductor
-    await EventRouter.publish("canvas.component.selection.changed", { id: nodeId }, mockConductor);
+    await EventRouter.publish(
+      "canvas.component.selection.changed",
+      { id: nodeId },
+      mockConductor
+    );
 
     // Wait for both topic capture AND DOM updates (like browser test showed)
-    let domElementType = '';
+    let domElementType = "";
     let attempts = 0;
     const maxAttempts = 200; // More generous timeout
-    
+
     while (attempts < maxAttempts) {
       await new Promise((r) => setTimeout(r, 10));
-      
+
       // Check both the topic subscription AND the DOM state
-      const typeEl = document.querySelector(".control-panel-header .element-type");
-      domElementType = typeEl?.textContent || '';
-      
+      const typeEl = document.querySelector(
+        ".control-panel-header .element-type"
+      );
+      domElementType = typeEl?.textContent || "";
+
       // Success if either we saw the topic OR the DOM updated
-      if (seenSelectedId || (domElementType && domElementType !== 'No Element Selected' && domElementType.trim() !== '')) {
+      if (
+        seenSelectedId ||
+        (domElementType &&
+          domElementType !== "No Element Selected" &&
+          domElementType.trim() !== "")
+      ) {
         break;
       }
       attempts++;
@@ -148,7 +183,7 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
     // 1. EventRouter topic routing works (we see this in logs)
     // 2. Control Panel component mounts successfully
     // 3. Symphony handlers can be called directly (like the package test does)
-    
+
     // Critical assertion: DOM should NOT show "No Element Selected" if we succeeded
     if (seenSelectedId || domElementType) {
       const noSelection = document.querySelector(".no-selection");
@@ -157,12 +192,12 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
 
     off?.();
     root.unmount();
-    
+
     // Cleanup global state
     delete (globalThis as any).RenderX;
     delete (window as any).renderxCommunicationSystem;
     delete (globalThis as any).resolveInteraction;
-    
+
     await Promise.resolve();
   }, 12000);
 });

@@ -64,6 +64,49 @@ function computeInclude() {
 
 const includeList = computeInclude();
 
+// Virtual module that exposes literal dynamic imports for plugin modules so Vite can rewrite them.
+function pluginModuleLoaders() {
+  const m = readManifest();
+  const specs = new Set();
+  if (m && Array.isArray(m.plugins)) {
+    for (const p of m.plugins) {
+      const mods = [p?.ui?.module, p?.runtime?.module];
+      for (const s of mods) {
+        if (isBare(s)) specs.add(packageRoot(s));
+      }
+    }
+  }
+  // Always include host-sdk in case it appears in manifests
+  specs.add("@renderx-plugins/host-sdk");
+  const arr = Array.from(specs);
+  const lines = [
+    "export const loaders = {",
+    ...arr.map(
+      (s) => `  ${JSON.stringify(s)}: () => import(${JSON.stringify(s)}),`
+    ),
+    "};",
+    "export function loadPluginModule(spec) {",
+    "  const f = loaders[spec];",
+    "  if (f) return f();",
+    "  // Fallback for relative/absolute/URL specifiers",
+    "  return import(/* @vite-ignore */ spec);",
+    "}",
+  ];
+  const code = lines.join("\n");
+  const VIRTUAL_ID = "virtual:plugin-module-loaders";
+  const RESOLVED_VIRTUAL_ID = "\0" + VIRTUAL_ID;
+  return {
+    name: "plugin-module-loaders",
+    enforce: "pre",
+    resolveId(id) {
+      if (id === VIRTUAL_ID) return RESOLVED_VIRTUAL_ID;
+    },
+    load(id) {
+      if (id === RESOLVED_VIRTUAL_ID) return code;
+    },
+  };
+}
+
 export default {
   resolve: {
     alias: {
@@ -73,6 +116,7 @@ export default {
     // Ensure a single React instance across host and plugins
     dedupe: ["react", "react-dom"],
   },
+  plugins: [pluginModuleLoaders()],
   optimizeDeps: {
     // Data-driven dev prebundle list computed from aggregated plugin manifest
     include: includeList,
