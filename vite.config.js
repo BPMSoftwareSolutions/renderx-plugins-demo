@@ -12,6 +12,12 @@ export default {
   optimizeDeps: {
     // Ensure dev server prebundles core external packages; canvas packages load from source via alias
     include: [
+      // React core + runtime must be prebundled so plugins importing jsx/jsxs get proper ESM named exports
+      "react",
+      "react-dom",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      // Workspace/host packages
       "@renderx-plugins/library-component",
       "@renderx-plugins/control-panel",
       "@renderx-plugins/host-sdk",

@@ -7,6 +7,8 @@
     "packages/*"
   ],
   "scripts": {
+    "repro:browser": "node scripts/repro-plugin-import.js",
+    "repro:node": "node scripts/repro-node-import.js",
     "build:packages": "npm --prefix packages/renderx-plugin-canvas run -s build && npm --prefix packages/renderx-plugin-canvas-component run -s build",
     "dev": "npm run pre:manifests && vite",
     "build": "npm run pre:manifests && vite build",
