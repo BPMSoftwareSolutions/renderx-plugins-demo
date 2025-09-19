@@ -1,5 +1,7 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, vi } from "vitest";
+import { EventRouter } from "../../src/core/events/EventRouter";
+import { setFlagOverride } from "../../src/core/environment/feature-flags";
 
 /**
  * E2E guardrail: capture app startup console output and fail on critical issues.
@@ -18,7 +20,6 @@ describe("Startup logs E2E guardrail", () => {
       ...(globalThis as any).process.env,
       RENDERX_DISABLE_STARTUP_VALIDATION: "1",
     };
-
     // Stub fetch for relative URLs so manifest loading falls back to fs/raw import path
     const origFetch: any = (globalThis as any).fetch;
     (globalThis as any).fetch = async (input: any, init?: any) => {
@@ -60,11 +61,24 @@ describe("Startup logs E2E guardrail", () => {
       // Ensure fresh module graph so app boot runs even if previously imported in this worker
       vi.resetModules();
 
+      // Enable JSON catalog fallback after module reset so override survives
+      setFlagOverride("dev.json-catalog-fallback", true);
+
       // Directly bootstrap the conductor and register sequences to avoid module cache pitfalls
       const conductorModule: any = await import("../../src/core/conductor");
       const conductor = await conductorModule.initConductor();
       const baseLen = messages.length;
       const maxRegisterMs = 6000;
+
+      // If nothing mounted yet, trigger JSON-catalog fallback explicitly for this guardrail
+      const idsNow = (conductor as any).getMountedPluginIds?.() || [];
+      if (!idsNow.length) {
+        const loaders = await import(
+          "../../src/core/conductor/runtime-loaders"
+        );
+        await loaders.loadJsonSequenceCatalogs(conductor);
+      }
+
       void conductorModule.registerAllSequences(conductor); // fire and allow bounded waiting below
       // Bounded wait for early phase to avoid hanging the suite
       await new Promise<void>((resolve) => setTimeout(resolve, maxRegisterMs));
@@ -94,6 +108,12 @@ describe("Startup logs E2E guardrail", () => {
           await new Promise((r) => setTimeout(r, 50));
         }
       }
+
+      // Provoke a couple of real routes to catch "Plugin not found" regressions in CI
+      await EventRouter.init();
+      await EventRouter.publish("library.load.requested", {});
+      await EventRouter.publish("control.panel.ui.render.requested", {});
+      await new Promise((r) => setTimeout(r, 50));
 
       const patterns: { name: string; regex: RegExp; hint?: string }[] = [
         {

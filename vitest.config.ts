@@ -92,6 +92,8 @@ export default defineConfig({
       // Map legacy package name used in tests to the actual dependency
       "@renderx/host-sdk": "@renderx-plugins/host-sdk",
     },
+    // Ensure singletons in test graph as well
+    dedupe: ["react", "react-dom", "musical-conductor"],
   },
   plugins: [pluginModuleLoaders()],
 });

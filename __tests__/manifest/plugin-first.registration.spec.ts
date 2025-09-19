@@ -22,10 +22,12 @@ describe("Plugin-first registration (no JSON-catalog fallback)", () => {
   beforeEach(() => {
     clearFlagOverrides();
     __setPluginManifestForTests({ plugins: [] });
+    (globalThis as any).__DISABLE_JSON_CATALOG_FALLBACK = true;
   });
   afterEach(() => {
     clearFlagOverrides();
     __setPluginManifestForTests({ plugins: [] });
+    delete (globalThis as any).__DISABLE_JSON_CATALOG_FALLBACK;
   });
 
   it("never mounts JSON catalogs (loader is not called)", async () => {

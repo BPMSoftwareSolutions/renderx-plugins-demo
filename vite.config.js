@@ -107,16 +107,63 @@ function pluginModuleLoaders() {
   };
 }
 
+// Dev-only static server for /json-sequences/* so browser fallback can fetch catalogs
+function jsonSequencesStatic() {
+  const knownPkgs = new Set(computeInclude());
+  return {
+    name: "json-sequences-static",
+    apply: "serve",
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        try {
+          const url = req.url || "";
+          if (!url.startsWith("/json-sequences/")) return next();
+          const rel = url.replace(/^\/json-sequences\//, "");
+          const fsPathLocal = path.join(process.cwd(), "json-sequences", rel);
+          if (fs.existsSync(fsPathLocal)) {
+            res.setHeader("Content-Type", "application/json");
+            res.end(fs.readFileSync(fsPathLocal));
+            return;
+          }
+          // Try to serve from node_modules packages
+          for (const pkg of knownPkgs) {
+            const parts = pkg.split("/");
+            // Only consider @renderx-plugins/* packages
+            if (parts[0] !== "@renderx-plugins") continue;
+            const nmPath = path.join(
+              process.cwd(),
+              "node_modules",
+              ...parts,
+              "json-sequences",
+              rel
+            );
+            if (fs.existsSync(nmPath)) {
+              res.setHeader("Content-Type", "application/json");
+              res.end(fs.readFileSync(nmPath));
+              return;
+            }
+          }
+          // Not found
+          res.statusCode = 404;
+          res.end("Not found");
+        } catch (e) {
+          return next();
+        }
+      });
+    },
+  };
+}
+
 export default {
   resolve: {
     alias: {
       // Host SDK alias (legacy import name)
       "@renderx/host-sdk": "@renderx-plugins/host-sdk",
     },
-    // Ensure a single React instance across host and plugins
-    dedupe: ["react", "react-dom"],
+    // Ensure single instances across host and plugins
+    dedupe: ["react", "react-dom", "musical-conductor"],
   },
-  plugins: [pluginModuleLoaders()],
+  plugins: [pluginModuleLoaders(), jsonSequencesStatic()],
   optimizeDeps: {
     // Data-driven dev prebundle list computed from aggregated plugin manifest
     include: includeList,

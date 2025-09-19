@@ -59,9 +59,32 @@ export async function registerAllSequences(conductor: ConductorClient) {
     }
   }
 
-  // 4) Debug logs
+  // 4) If nothing mounted, optionally fall back to JSON catalogs (dev/test safety net, flag-gated)
   try {
-    const ids = (conductor as any).getMountedPluginIds?.() || [];
+    let ids: string[] = (conductor as any).getMountedPluginIds?.() || [];
+    if (!ids.length) {
+      try {
+        const env: any = (import.meta as any).env || {};
+        const inDevOrTest = !!(
+          (env && env.DEV) ||
+          typeof (import.meta as any).vitest !== "undefined"
+        );
+        const disableFallback =
+          typeof globalThis !== "undefined" &&
+          (globalThis as any).__DISABLE_JSON_CATALOG_FALLBACK === true;
+        // In dev/test, automatically load JSON catalogs if nothing mounted (unless explicitly disabled for tests)
+        if (inDevOrTest && !disableFallback) {
+          console.warn(
+            "🟡 No plugins mounted via runtime register; loading JSON sequence catalogs (dev/test)"
+          );
+          const { loadJsonSequenceCatalogs } = await import(
+            "./runtime-loaders"
+          );
+          await loadJsonSequenceCatalogs(conductor);
+          ids = (conductor as any).getMountedPluginIds?.() || [];
+        }
+      } catch {}
+    }
     console.log("🔎 Mounted plugin IDs after registration:", ids);
     for (const id of ids) {
       try {
