@@ -14,8 +14,8 @@
  *    c) Fallback: ./dist/plugin-manifest.json if present
  *
  * Merge strategy:
- * - Start from existing json-plugins/plugin-manifest.json (if present)
- * - Append external entries; de-duplicate by plugin id, preferring existing
+ * - Discover plugins from npm packages with "renderx-plugin" keyword or "renderx" field
+ * - No base manifest needed - npm packages are the single source of truth
  */
 
 import { promises as fs } from "fs";
@@ -114,10 +114,8 @@ async function aggregate() {
   const generatedOut = join(generatedDir, "plugin-manifest.json");
   await fs.mkdir(generatedDir, { recursive: true }).catch(() => {});
 
-  // Start with existing repo-local manifest
-  const base = (await readJson(
-    join(srcPluginsDir, "plugin-manifest.json")
-  )) || { plugins: [] };
+  // Start with empty manifest - npm packages are the single source of truth
+  const base = { plugins: [] };
 
   // Discover external packages
   const nodeModulesDir = join(rootDir, "node_modules");
@@ -128,10 +126,9 @@ async function aggregate() {
     if (info) external.push(info);
   }
 
-  // Merge
+  // Merge: npm packages are the single source of truth
   const merged = {
     plugins: uniqueById([
-      ...(base.plugins || []),
       ...external.flatMap((e) => e.fragment.plugins || []),
     ]),
   };

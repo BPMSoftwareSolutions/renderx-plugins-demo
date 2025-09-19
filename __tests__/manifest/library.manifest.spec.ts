@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import manifest from "../../catalog/json-plugins/plugin-manifest.json";
+import manifest from "../../catalog/json-plugins/.generated/plugin-manifest.json";
 
 describe("Library plugin manifest uses workspace package specifier", () => {
   it("points UI and runtime to @renderx-plugins/library", () => {
