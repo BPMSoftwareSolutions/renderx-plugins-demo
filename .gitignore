@@ -154,8 +154,8 @@ vite.config.ts.timestamp-*
 /docs/articles/article-0004
 
 
-# Ignore generated plugin manifests
-json-plugins/.generated/
+# Ignore generated plugin manifests (optional: keep generated files ephemeral)
+# catalog/json-plugins/.generated/
 /tmp/pack-verify-library-component
 
 # Generated compatibility catalogs (root copies for Node tests/tools)
