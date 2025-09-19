@@ -22,3 +22,40 @@ export function getArtifactsDir(): string | null {
 export function artifactsEnabled(): boolean {
 	return !!getArtifactsDir();
 }
+
+// Environment gates for fallback behavior
+export function isTestEnv(): boolean {
+	try {
+		// Vitest exposes import.meta.vitest
+		if (typeof import.meta !== 'undefined' && (import.meta as any)?.vitest) return true;
+	} catch {}
+	try {
+		// Node test runner convention
+		// @ts-ignore
+		if (typeof process !== 'undefined' && process.env?.NODE_ENV === 'test') return true;
+	} catch {}
+	return false;
+}
+
+export function isDevEnv(): boolean {
+	try {
+		// @ts-ignore
+		const v = (import.meta as any)?.env?.DEV;
+		if (typeof v === 'boolean') return v;
+	} catch {}
+	try {
+		// @ts-ignore
+		if (typeof process !== 'undefined') return process.env?.NODE_ENV !== 'production' && process.env?.NODE_ENV !== 'test';
+	} catch {}
+	return false;
+}
+
+// Only allow fallbacks in tests by default. Dev must mirror production (no masking).
+export function allowFallbacks(): boolean {
+	try {
+		// Emergency override if ever needed in CI: RENDERX_ALLOW_FALLBACKS=1
+		// @ts-ignore
+		if (typeof process !== 'undefined' && process.env?.RENDERX_ALLOW_FALLBACKS === '1') return true;
+	} catch {}
+	return isTestEnv();
+}

@@ -47,27 +47,35 @@ async function loadManifest(): Promise<void> {
 				return;
 			}
 		}
-		// Node/tests fallback: import raw JSON at repo root
-		// @ts-ignore - Vite raw JSON import
-		const mod = await import(/* @vite-ignore */ '../../../interaction-manifest.json?raw');
-		const text: string = (mod as any)?.default || (mod as any) || '{}';
-		const json = JSON.parse(text);
-		routes = json?.routes || {};
-		loaded = true;
-		return;
+		// Node/tests fallback: import raw JSON at repo root (tests only)
+		try {
+			const env = await import(/* @vite-ignore */ '../environment/env');
+			if ((env as any).allowFallbacks?.()) {
+				// @ts-ignore - Vite raw JSON import
+				const mod = await import(/* @vite-ignore */ '../../../interaction-manifest.json?raw');
+				const text: string = (mod as any)?.default || (mod as any) || '{}';
+				const json = JSON.parse(text);
+				routes = json?.routes || {};
+				loaded = true;
+				return;
+			}
+		} catch {}
 	} catch {}
 	try {
 		// Fallback: direct JSON module import for test environments
-		// @ts-ignore
-		const jsonMod = await import(/* @vite-ignore */ '../../../interaction-manifest.json');
-		const json = (jsonMod as any)?.default || (jsonMod as any) || {};
-		routes = json?.routes || {};
-		loaded = true;
-		return;
+		const env = await import(/* @vite-ignore */ '../environment/env');
+		if ((env as any).allowFallbacks?.()) {
+			// @ts-ignore
+			const jsonMod = await import(/* @vite-ignore */ '../../../interaction-manifest.json');
+			const json = (jsonMod as any)?.default || (jsonMod as any) || {};
+			routes = json?.routes || {};
+			loaded = true;
+			return;
+		}
 	} catch {
-		console.warn('[interactionManifest] Failed to load interaction-manifest.json; using defaults only');
-		routes = {};
-		loaded = true; // avoid retry storms; callers can handle missing keys
+		// In non-test environments, fail fast to avoid masked routing
+		try { console.error('[interactionManifest] Failed to load interaction-manifest.json and fallbacks are disabled'); } catch {}
+		throw new Error('[interactionManifest] Missing interaction-manifest.json. Ensure it is generated and served at /interaction-manifest.json.');
 	}
 }
 
@@ -80,11 +88,15 @@ export function resolveInteraction(key: string): Route {
 		// Lazy trigger load; not awaited to keep call sites simple. Tests should init explicitly.
 		// @ts-ignore
 		loadManifest();
-		// Use defaults immediately to avoid empty ids in early calls (tests)
-		if (!loaded) {
-			routes = { ...DEFAULT_ROUTES };
-			loaded = true;
-		}
+		// If still not loaded, only permit defaults in test environments.
+		try {
+			// Lazy import in a non-async context is not allowed; rely on global vitest flag detection.
+			const isVitest = typeof import.meta !== 'undefined' && !!(import.meta as any).vitest;
+			if (isVitest && !loaded) {
+				routes = { ...DEFAULT_ROUTES };
+				loaded = true;
+			}
+		} catch {}
 	}
 	const r = routes[key] || DEFAULT_ROUTES[key];
 	if (!r) throw new Error(`Unknown interaction: ${key}`);

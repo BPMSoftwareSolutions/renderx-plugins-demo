@@ -20,14 +20,22 @@ export async function loadLayoutManifest(): Promise<any> {
 			cached = null;
 			return null;
 		}
-		// Node/tests fallback when not in a browser-like environment: raw import from public
-		const mod = await import(
-			/* @vite-ignore */ "../../../public/layout-manifest.json?raw"
-		);
-		const text: string = (mod as any)?.default || (mod as any) || "{}";
-		cached = JSON.parse(text);
+		// Node/tests fallback when not in a browser-like environment: raw import from public (tests only)
+		try {
+			const env = await import(/* @vite-ignore */ '../../core/environment/env');
+			if ((env as any).allowFallbacks?.()) {
+				const mod = await import(
+					/* @vite-ignore */ "../../../public/layout-manifest.json?raw"
+				);
+				const text: string = (mod as any)?.default || (mod as any) || "{}";
+				cached = JSON.parse(text);
+				loaded = true;
+				return cached;
+			}
+		} catch {}
 		loaded = true;
-		return cached;
+		cached = null;
+		return null;
 	} catch {
 		loaded = true;
 		cached = null;

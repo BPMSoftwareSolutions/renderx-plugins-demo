@@ -30,10 +30,13 @@ export async function registerAllSequences(conductor: ConductorClient) {
 			} catch {}
 			if (!manifest) {
 				try {
-					// @ts-ignore raw JSON import fallback
-					const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
-					const txt: string = (mod as any)?.default || (mod as any) || '{}';
-					manifest = JSON.parse(txt);
+					const env = await import(/* @vite-ignore */ '../environment/env');
+					if ((env as any).allowFallbacks?.()) {
+						// @ts-ignore raw JSON import fallback (tests only)
+						const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
+						const txt: string = (mod as any)?.default || (mod as any) || '{}';
+						manifest = JSON.parse(txt);
+					}
 				} catch {}
 			}
 		}
@@ -65,26 +68,8 @@ export async function registerAllSequences(conductor: ConductorClient) {
 	// 3) Mount sequences from JSON catalogs
 	await loadJsonSequenceCatalogs(conductor);
 
-	// 3b) Fallback for library-component in browser if sequences missing
-	try {
-		const isBrowser = typeof window !== 'undefined' && typeof (globalThis as any).fetch === 'function';
-		if (isBrowser) {
-			const ids: string[] = (conductor as any).getMountedPluginIds?.() || [];
-			const needLib = !ids.includes('LibraryComponentPlugin') || !ids.includes('LibraryComponentDropPlugin');
-			if (needLib) {
-				try {
-					const spec = resolveModuleSpecifier('@renderx-plugins/library-component');
-					const mod: any = await import(/* @vite-ignore */ spec as any);
-					const handlers = (mod as any)?.handlers || mod?.default?.handlers;
-					if (handlers) {
-						const pull = async (file: string) => { try { const r = await fetch(`/json-sequences/library-component/${file}`); if (r.ok) return await r.json(); } catch {}; return null; };
-						const seqs = [await pull('drag.json'), await pull('drop.json'), await pull('container.drop.json')].filter(Boolean) as any[];
-						for (const s of seqs) { try { await (conductor as any).mount?.(s, handlers, s.pluginId); } catch {} }
-					}
-				} catch {}
-			}
-		}
-	} catch {}
+	// 3b) Removed: do not auto-mount library-component sequences in dev/prod.
+	// Tests that need this behavior should explicitly mount sequences in their setup.
 
 	// 4) Debug logs
 	try {

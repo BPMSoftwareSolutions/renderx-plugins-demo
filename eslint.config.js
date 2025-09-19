@@ -23,6 +23,7 @@ import requirePluginManifestFragment from "./eslint-rules/require-plugin-manifes
 import validHandlersPath from "./eslint-rules/valid-handlers-path.js";
 import handlerExportExists from "./eslint-rules/handler-export-exists.js";
 import consistentJsonImportAttributes from "./eslint-rules/consistent-json-import-attributes.js";
+import validatePluginIds from "./eslint-rules/validate-plugin-ids.js";
 
 
 // Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
@@ -105,6 +106,7 @@ export default [
       "handlers-path": validHandlersPath,
       "handler-exports": handlerExportExists,
       "json-import-attrs": consistentJsonImportAttributes,
+      "plugin-ids": validatePluginIds,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -126,6 +128,7 @@ export default [
       "handlers-path/valid-handlers-path": "error",
       "handler-exports/handler-export-exists": "error",
       "json-import-attrs/consistent-json-import-attributes": "warn",
+      "plugin-ids/validate-plugin-ids": "error",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",
