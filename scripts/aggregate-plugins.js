@@ -157,6 +157,37 @@ async function aggregate() {
     }
   } catch {}
 
+  // If @renderx-plugins/control-panel is installed but not present in the manifest,
+  // synthesize a ControlPanelPlugin entry that points to the package (UI + runtime).
+  try {
+    const hasCP = (merged.plugins || []).some(
+      (p) => p && p.id === "ControlPanelPlugin"
+    );
+    if (!hasCP) {
+      const cpPkg = join(
+        rootDir,
+        "node_modules",
+        "@renderx-plugins",
+        "control-panel",
+        "package.json"
+      );
+      if (await fileExists(cpPkg)) {
+        merged.plugins.push({
+          id: "ControlPanelPlugin",
+          ui: {
+            slot: "controlPanel",
+            module: "@renderx-plugins/control-panel",
+            export: "ControlPanel",
+          },
+          runtime: {
+            module: "@renderx-plugins/control-panel",
+            export: "register",
+          },
+        });
+      }
+    }
+  } catch {}
+
   await fs.writeFile(generatedOut, JSON.stringify(merged, null, 2));
   console.log(
     `🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`
