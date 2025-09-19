@@ -23,6 +23,8 @@ export default {
       '@renderx-plugins/canvas-component',
       'gif.js.optimized'
     ],
+    // Force re-optimization on every start
+    force: true
   },
   build: {
     rollupOptions: {

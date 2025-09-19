@@ -25,6 +25,14 @@ import handlerExportExists from "./eslint-rules/handler-export-exists.js";
 import consistentJsonImportAttributes from "./eslint-rules/consistent-json-import-attributes.js";
 import validatePluginIds from "./eslint-rules/validate-plugin-ids.js";
 
+// Import the new component template preservation rule
+import componentTemplatePreservation from "./eslint-rules/component-template-preservation.js";
+
+// CommonJS import for validate-plugin-registration (needed for ESLint RuleTester compatibility)
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const validatePluginRegistration = require("./eslint-rules/validate-plugin-registration.cjs");
+
 
 // Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
 // Patterns are built dynamically so existing rule logic (file-based heuristics) can operate transparently.
@@ -107,6 +115,8 @@ export default [
       "handler-exports": handlerExportExists,
       "json-import-attrs": consistentJsonImportAttributes,
       "plugin-ids": validatePluginIds,
+      "plugin-registration": validatePluginRegistration,
+      "component-template-preservation": componentTemplatePreservation,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -129,6 +139,8 @@ export default [
       "handler-exports/handler-export-exists": "error",
       "json-import-attrs/consistent-json-import-attributes": "warn",
       "plugin-ids/validate-plugin-ids": "error",
+      "plugin-registration/validate-plugin-registration": "error",
+      "component-template-preservation/component-template-preservation": "error",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",
