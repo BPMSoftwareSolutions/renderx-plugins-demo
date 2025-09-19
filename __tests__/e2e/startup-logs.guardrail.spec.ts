@@ -159,15 +159,17 @@ describe("Startup logs E2E guardrail", () => {
         }
       }
 
-      // Require that at least one sequence was actually registered
+      // Require evidence of sequence registration (plugin-first or legacy JSON)
       const hasAnySequenceRegistered = msgs().some((m: string) =>
-        /SequenceRegistry:\s+Registered sequence|Sequence registered:/i.test(m)
+        /Registered plugin runtime:|Plugin mounted successfully:|SequenceRegistry:\s+Registered sequence|Sequence registered:/i.test(
+          m
+        )
       );
       if (!hasAnySequenceRegistered) {
         offenders.push({
           name: "NoSequencesRegistered",
           text: "No sequence registration logs detected",
-          hint: "Ensure at least one JSON sequence catalog is loaded and mounted during startup",
+          hint: "Ensure plugin runtimes register sequences during startup (plugin-first)",
         });
       }
 
