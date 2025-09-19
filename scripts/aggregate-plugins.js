@@ -18,18 +18,30 @@
  * - Append external entries; de-duplicate by plugin id, preferring existing
  */
 
-import { promises as fs } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { promises as fs } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const rootDir = join(__dirname, '..');
+const rootDir = join(__dirname, "..");
 
 async function readJson(p) {
-  try { const txt = await fs.readFile(p, 'utf-8'); return JSON.parse(txt); } catch { return null; }
+  try {
+    const txt = await fs.readFile(p, "utf-8");
+    return JSON.parse(txt);
+  } catch {
+    return null;
+  }
 }
-async function fileExists(p) { try { await fs.stat(p); return true; } catch { return false; } }
+async function fileExists(p) {
+  try {
+    await fs.stat(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 function uniqueById(items) {
   const seen = new Set();
@@ -46,21 +58,25 @@ function uniqueById(items) {
 async function discoverPackages(nodeModulesDir) {
   const out = [];
   let dirs = [];
-  try { dirs = await fs.readdir(nodeModulesDir); } catch {}
+  try {
+    dirs = await fs.readdir(nodeModulesDir);
+  } catch {}
   for (const scopeOrPkg of dirs) {
-    if (scopeOrPkg.startsWith('.')) continue;
+    if (scopeOrPkg.startsWith(".")) continue;
     const scopePath = join(nodeModulesDir, scopeOrPkg);
-    const stat = await fs.stat(scopePath).catch(()=>null);
+    const stat = await fs.stat(scopePath).catch(() => null);
     if (!stat) continue;
-    if (stat.isDirectory() && scopeOrPkg.startsWith('@')) {
+    if (stat.isDirectory() && scopeOrPkg.startsWith("@")) {
       let scoped = [];
-      try { scoped = await fs.readdir(scopePath); } catch {}
+      try {
+        scoped = await fs.readdir(scopePath);
+      } catch {}
       for (const name of scoped) {
-        const p = join(scopePath, name, 'package.json');
+        const p = join(scopePath, name, "package.json");
         if (await fileExists(p)) out.push(join(scopePath, name));
       }
     } else if (stat.isDirectory()) {
-      const p = join(scopePath, 'package.json');
+      const p = join(scopePath, "package.json");
       if (await fileExists(p)) out.push(scopePath);
     }
   }
@@ -68,10 +84,12 @@ async function discoverPackages(nodeModulesDir) {
 }
 
 async function loadPackageManifest(pkgDir) {
-  const pkgJson = await readJson(join(pkgDir, 'package.json'));
+  const pkgJson = await readJson(join(pkgDir, "package.json"));
   if (!pkgJson) return null;
-  const keywords = Array.isArray(pkgJson.keywords) ? pkgJson.keywords.map(String) : [];
-  const hasKeyword = keywords.includes('renderx-plugin');
+  const keywords = Array.isArray(pkgJson.keywords)
+    ? pkgJson.keywords.map(String)
+    : [];
+  const hasKeyword = keywords.includes("renderx-plugin");
   const rx = pkgJson.renderx || null;
   if (!hasKeyword && !rx) return null;
 
@@ -79,11 +97,11 @@ async function loadPackageManifest(pkgDir) {
   let fragment = null;
   if (rx && Array.isArray(rx.plugins)) {
     fragment = { plugins: rx.plugins };
-  } else if (rx && typeof rx.manifest === 'string') {
+  } else if (rx && typeof rx.manifest === "string") {
     fragment = await readJson(join(pkgDir, rx.manifest));
   } else {
     // fallback
-    fragment = await readJson(join(pkgDir, 'dist', 'plugin-manifest.json'));
+    fragment = await readJson(join(pkgDir, "dist", "plugin-manifest.json"));
   }
   if (!fragment || !Array.isArray(fragment.plugins)) return null;
 
@@ -91,25 +109,32 @@ async function loadPackageManifest(pkgDir) {
 }
 
 async function aggregate() {
-  const srcPluginsDir = join(rootDir, 'json-plugins');
-  const generatedDir = join(srcPluginsDir, '.generated');
-  const generatedOut = join(generatedDir, 'plugin-manifest.json');
-  await fs.mkdir(generatedDir, { recursive: true }).catch(()=>{});
+  const srcPluginsDir = join(rootDir, "catalog", "json-plugins");
+  const generatedDir = join(srcPluginsDir, ".generated");
+  const generatedOut = join(generatedDir, "plugin-manifest.json");
+  await fs.mkdir(generatedDir, { recursive: true }).catch(() => {});
 
   // Start with existing repo-local manifest
-  const base = (await readJson(join(srcPluginsDir, 'plugin-manifest.json'))) || { plugins: [] };
+  const base = (await readJson(
+    join(srcPluginsDir, "plugin-manifest.json")
+  )) || { plugins: [] };
 
   // Discover external packages
-  const nodeModulesDir = join(rootDir, 'node_modules');
+  const nodeModulesDir = join(rootDir, "node_modules");
   const candidates = await discoverPackages(nodeModulesDir);
   const external = [];
   for (const dir of candidates) {
-    const info = await loadPackageManifest(dir).catch(()=>null);
+    const info = await loadPackageManifest(dir).catch(() => null);
     if (info) external.push(info);
   }
 
   // Merge
-  const merged = { plugins: uniqueById([...(base.plugins || []), ...external.flatMap(e=>e.fragment.plugins || [])]) };
+  const merged = {
+    plugins: uniqueById([
+      ...(base.plugins || []),
+      ...external.flatMap((e) => e.fragment.plugins || []),
+    ]),
+  };
 
   // Ensure external UI-only plugins also declare a runtime registration stub by default
   // Rationale: some conductors warn if sequences mount before the plugin id is known.
@@ -119,18 +144,27 @@ async function aggregate() {
     for (const p of merged.plugins) {
       const ui = p && p.ui;
       const hasRuntime = p && p.runtime && p.runtime.module && p.runtime.export;
-      const mod = ui && typeof ui.module === 'string' ? ui.module : '';
-      const isBare = !!mod && !mod.startsWith('/') && !mod.startsWith('.') && !mod.startsWith('http://') && !mod.startsWith('https://');
+      const mod = ui && typeof ui.module === "string" ? ui.module : "";
+      const isBare =
+        !!mod &&
+        !mod.startsWith("/") &&
+        !mod.startsWith(".") &&
+        !mod.startsWith("http://") &&
+        !mod.startsWith("https://");
       if (!hasRuntime && isBare) {
-        p.runtime = { module: mod, export: 'register' };
+        p.runtime = { module: mod, export: "register" };
       }
     }
   } catch {}
 
   await fs.writeFile(generatedOut, JSON.stringify(merged, null, 2));
-  console.log(`🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`);
+  console.log(
+    `🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`
+  );
   console.log(`   → ${generatedOut}`);
 }
 
-aggregate().catch((e)=>{ console.error('Aggregation failed:', e); process.exit(1); });
-
+aggregate().catch((e) => {
+  console.error("Aggregation failed:", e);
+  process.exit(1);
+});
