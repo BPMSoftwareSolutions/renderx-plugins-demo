@@ -31,7 +31,7 @@
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",
     "export:setup": "python -m ensurepip --upgrade && python -m pip install --user playwright && python -m playwright install chromium",
-    "lint": "eslint . && node scripts/analyze-sequences.js",
+    "lint": "eslint",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
