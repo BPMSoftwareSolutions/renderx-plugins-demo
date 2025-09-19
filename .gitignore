@@ -162,3 +162,4 @@ vite.config.ts.timestamp-*
 # Source of truth lives under catalog/
 json-components/
 json-sequences/
+/json-plugins/.generated
