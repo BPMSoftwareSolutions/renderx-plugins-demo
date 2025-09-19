@@ -2,7 +2,10 @@
 import React from "react";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { createRoot } from "react-dom/client";
-import { setFlagOverride, clearFlagOverrides } from "../../src/core/environment/feature-flags";
+import {
+  setFlagOverride,
+  clearFlagOverrides,
+} from "../../src/core/environment/feature-flags";
 
 describe("App falls back to legacy 3-column layout when layout-manifest missing (TDD)", () => {
   beforeEach(() => {
@@ -22,7 +25,9 @@ describe("App falls back to legacy 3-column layout when layout-manifest missing 
     vi.spyOn(globalThis, "fetch").mockImplementation((input: any) => {
       const url = String(input || "");
       if (url.endsWith("/plugins/plugin-manifest.json")) {
-        return Promise.resolve(new Response(JSON.stringify({ plugins: [] }), { status: 200 })) as any;
+        return Promise.resolve(
+          new Response(JSON.stringify({ plugins: [] }), { status: 200 })
+        ) as any;
       }
       return Promise.resolve(new Response("not found", { status: 404 })) as any;
     });
@@ -45,6 +50,8 @@ describe("App falls back to legacy 3-column layout when layout-manifest missing 
     }
 
     expect(gtc).toContain("320px 1fr 360px");
+
+    // Ensure React roots and observers are cleaned up to avoid jsdom teardown errors
+    root.unmount();
   });
 });
-

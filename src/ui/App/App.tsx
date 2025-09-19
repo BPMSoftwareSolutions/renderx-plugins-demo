@@ -7,8 +7,12 @@ import "../../domain/layout/legacyLayout.css";
 
 export default function App() {
   React.useEffect(() => {
+    // In non-DOM environments, do nothing
+    if (typeof window === "undefined" || typeof document === "undefined")
+      return;
+
     const wireCanvasDeselect = () => {
-      const canvas = document.querySelector("#rx-canvas") as HTMLElement;
+      const canvas = document.querySelector("#rx-canvas") as HTMLElement | null;
       if (!canvas) return false;
       const conductor = (window as any).RenderX?.conductor;
       if (!conductor) return false;
@@ -19,7 +23,11 @@ export default function App() {
           const target = e.target as HTMLElement;
           const isComp = target.closest?.(".rx-comp,[id^='rx-node-']");
           if (!isComp)
-            await EventRouter.publish("canvas.component.deselect.requested", {}, conductor);
+            await EventRouter.publish(
+              "canvas.component.deselect.requested",
+              {},
+              conductor
+            );
         },
         true
       );
@@ -31,7 +39,12 @@ export default function App() {
       if (!conductor) return false;
 
       window.addEventListener("keydown", async (e) => {
-        if (e.key === "Escape") await EventRouter.publish("canvas.component.deselect.requested", {}, conductor);
+        if (e.key === "Escape")
+          await EventRouter.publish(
+            "canvas.component.deselect.requested",
+            {},
+            conductor
+          );
       });
       return true;
     };
@@ -39,6 +52,9 @@ export default function App() {
     if (wireCanvasDeselect() && wireEscapeDeselect()) return;
 
     const observer = new MutationObserver(() => {
+      // Guard against jsdom teardown between mutations
+      if (typeof window === "undefined" || typeof document === "undefined")
+        return;
       if (wireCanvasDeselect() && wireEscapeDeselect()) {
         observer.disconnect();
       }
