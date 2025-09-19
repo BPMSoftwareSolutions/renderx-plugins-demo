@@ -121,12 +121,5 @@
     "created": "2025-09-06",
     "description": "Enable Advanced Line augmentation & overlay (Issue #99)",
     "owner": "canvas"
-  },
-
-  "host.plugin-first.registration": {
-    "status": "off",
-    "created": "2025-09-19",
-    "description": "Disable host JSON-catalog mounting and rely solely on plugins' runtime register()",
-    "owner": "tooling"
   }
 }
