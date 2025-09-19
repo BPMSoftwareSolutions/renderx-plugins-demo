@@ -73,6 +73,18 @@
         "module": "@renderx-plugins/library-component",
         "export": "register"
       }
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "ui": {
+        "slot": "controlPanel",
+        "module": "@renderx-plugins/control-panel",
+        "export": "ControlPanel"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/control-panel",
+        "export": "register"
+      }
     }
   ]
 }

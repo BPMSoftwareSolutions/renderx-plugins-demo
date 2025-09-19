@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import manifest from '../../json-plugins/plugin-manifest.json';
+import manifest from '../../catalog/json-plugins/plugin-manifest.json';
 
 /**
  * TDD: Ensure host manifest references externalized Control Panel package
