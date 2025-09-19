@@ -25,7 +25,7 @@ describe("PanelSlot accepts string slot names (TDD)", () => {
     const spyErr = vi.spyOn(console, "error").mockImplementation(() => {});
 
     // Import after mocks so module top-level fetch uses mocked fetch
-    const { PanelSlot } = await import("../../src/components/PanelSlot");
+    const { PanelSlot } = await import("../../src/ui/shared/PanelSlot");
 
     const el = document.createElement("div");
     document.body.appendChild(el);

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { loadJsonSequenceCatalogs } from "../../src/conductor";
+import { loadJsonSequenceCatalogs } from "../../src/core/conductor";
 
 // Unit test for JSON loader: ensure sequences are mounted under the correct plugin ids
 // NOTE: This test uses a mock conductor that accepts multiple mounts for the same plugin id.

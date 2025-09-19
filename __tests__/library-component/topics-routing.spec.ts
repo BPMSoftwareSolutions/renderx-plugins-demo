@@ -1,6 +1,6 @@
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeAll } from "vitest";
-import { EventRouter } from "../../src/EventRouter";
+import { EventRouter } from "../../src/core/events/EventRouter";
 
 const LIBRARY_COMPONENT_DRAG_START_REQUESTED = "library.component.drag.start.requested" as const;
 const LIBRARY_COMPONENT_DROP_REQUESTED = "library.component.drop.requested" as const;

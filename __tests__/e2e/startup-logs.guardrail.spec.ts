@@ -61,7 +61,7 @@ describe("Startup logs E2E guardrail", () => {
       vi.resetModules();
 
       // Directly bootstrap the conductor and register sequences to avoid module cache pitfalls
-      const conductorModule: any = await import("../../src/conductor");
+      const conductorModule: any = await import("../../src/core/conductor");
       const conductor = await conductorModule.initConductor();
       const baseLen = messages.length;
       const maxRegisterMs = 6000;

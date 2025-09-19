@@ -31,7 +31,7 @@ describe('HOST_ARTIFACTS_DIR resolution', () => {
 
   let baselineCount = 0;
   beforeAll(async () => {
-    const baseMod = await import('../../src/startupValidation');
+    const baseMod = await import('../../src/core/startup/startupValidation');
     const baseStats = await baseMod.getPluginManifestStats();
     baselineCount = baseStats.pluginCount || 0;
     if (existsSync(tmpArtifacts)) rmSync(tmpArtifacts, { recursive: true, force: true });
@@ -56,7 +56,7 @@ describe('HOST_ARTIFACTS_DIR resolution', () => {
 
   it('reads plugin manifest from external directory', async () => {
   // Dynamically import without .ts extension for TS config compatibility
-  const mod = await import('../../src/startupValidation');
+  const mod = await import('../../src/core/startup/startupValidation');
     const stats = await mod.getPluginManifestStats();
   // In current implementation fallback raw import may still be used; ensure we can parse
   // and that when we reduce manifest to single plugin it is <= baseline.

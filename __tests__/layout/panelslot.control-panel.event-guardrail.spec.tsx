@@ -49,7 +49,7 @@ describe("PanelSlot + EventRouter guardrail: selection → routes → render-req
     const ctx: any = { payload: {} };
 
   // Set up globalThis.RenderX.EventRouter for Control Panel sequences hook
-  const { EventRouter } = await import("../../src/EventRouter");
+  const { EventRouter } = await import("../../src/core/events/EventRouter");
   // Ensure clean router state to avoid cross-test interference
   EventRouter.reset?.();
   (globalThis as any).RenderX = { EventRouter };

@@ -1,7 +1,7 @@
 /** @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
 import { ComponentRuleEngine } from "../../src/domain/mapping/component-mapper/rule-engine";
-import { sanitizeHtml } from "../../src/sanitizeHtml";
+import { sanitizeHtml } from "../../src/domain/css/sanitizeHtml";
 
 describe("HTML component sanitizer + rule-engine integration", () => {
   it("sanitizeHtml strips scripts and event handlers", () => {

@@ -2,7 +2,7 @@
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { verifyArtifactsIntegrity } from '../src/startupValidation';
+import { verifyArtifactsIntegrity } from '../src/core/startup/startupValidation';
 
 // Negative test: ensures tampering with an artifact triggers mismatch logging.
 // Current implementation only logs a warning and returns null, so we assert the warning occurs.

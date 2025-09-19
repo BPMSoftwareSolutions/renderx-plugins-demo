@@ -75,7 +75,7 @@ describe("LayoutEngine respects responsive overrides from layout-manifest (TDD)"
     document.body.appendChild(el);
     const root = createRoot(el);
 
-    const { LayoutEngine } = await import("../../src/layout/LayoutEngine");
+    const { LayoutEngine } = await import("../../src/domain/layout/LayoutEngine");
 
     root.render(React.createElement(LayoutEngine));
 

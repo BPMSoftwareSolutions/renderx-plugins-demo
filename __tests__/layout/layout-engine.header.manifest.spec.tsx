@@ -56,7 +56,7 @@ describe("LayoutEngine default manifest includes header row with three slots (TD
     document.body.appendChild(el);
     const root = createRoot(el);
 
-    const { LayoutEngine } = await import("../../src/layout/LayoutEngine");
+    const { LayoutEngine } = await import("../../src/domain/layout/LayoutEngine");
 
     // Act: render the engine
     root.render(React.createElement(LayoutEngine));

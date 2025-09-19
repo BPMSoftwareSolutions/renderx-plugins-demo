@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { EventRouter } from "../src/EventRouter";
+import { EventRouter } from "../src/core/events/EventRouter";
 import { cssRegistry } from "../src/domain/css/cssRegistry.facade";
 
 // Validate that the cssRegistry facade publishes expected topics

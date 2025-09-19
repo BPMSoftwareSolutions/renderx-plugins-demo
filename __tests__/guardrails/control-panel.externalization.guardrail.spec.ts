@@ -4,7 +4,7 @@ import path from 'path';
 
 describe('Control Panel externalization guardrails', () => {
   it('does not include host fallback to internal /plugins/control-panel/index.ts', () => {
-    const p = path.join(process.cwd(), 'src', 'conductor.ts');
+    const p = path.join(process.cwd(), 'src', 'core', 'conductor', 'conductor.ts');
     const txt = readFileSync(p, 'utf-8');
     expect(txt).not.toMatch(/\/plugins\/control-panel\/index\.ts/);
   });

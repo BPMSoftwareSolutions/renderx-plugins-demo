@@ -1,6 +1,6 @@
 /** @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
-import { sanitizeHtml } from "../../src/sanitizeHtml";
+import { sanitizeHtml } from "../../src/domain/css/sanitizeHtml";
 
 // Helper to simulate gallery ingestion; samples are small so sync import is fine.
 async function loadSample(path: string): Promise<string> {

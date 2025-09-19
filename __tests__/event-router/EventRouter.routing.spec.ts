@@ -56,7 +56,7 @@ describe("EventRouter routing", () => {
     // Inject topics for this test run
     const manifest = buildTopicsManifest(catalogs as any);
     // @ts-expect-error test-only injection
-    const mod = await import("../../src/topicsManifest");
+    const mod = await import("../../src/core/manifests/topicsManifest");
     // @ts-expect-error override internals for test
     mod.__setTopics?.(manifest.topics);
     await EventRouter.init();

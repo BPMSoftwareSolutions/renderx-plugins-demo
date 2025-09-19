@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { registerAllSequences } from '../../src/conductor';
+import { registerAllSequences } from '../../src/core/conductor';
 
 function createFakeConductor() {
   const mounted: any[] = [];

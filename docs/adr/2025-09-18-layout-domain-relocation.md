@@ -44,11 +44,15 @@ Adopt a phased deprecation strategy:
 | A3 | Expand lint allowlist to include domain | current | ✅ |
 | B1 | Refactor ESLint rules (path → pattern) | current | ✅ |
 | B2 | Move `LayoutEngine` to domain | current | ✅ |
-| C1 | Deprecation notice in CHANGELOG | future | ☐ |
-| C2 | Remove root shims | future | ☐ |
+| C1 | Deprecation notice in CHANGELOG | current | ✅ |
+| C2 | Remove root shims | current | ✅ |
 
-## Deprecation Notice (Draft)
-> The following layout shim files will be removed in a future minor release: `src/layout/layoutManifest.ts`, `src/layout/legacyLayout.css`, `src/layout/SlotContainer.tsx`. Update imports to `src/domain/layout/*` now to avoid breakage.
+## Deprecation Notice (Finalized)
+The following layout shim files were removed as part of Phase C. Update imports to `src/domain/layout/*` (already in the codebase) if you have private/experimental forks:
+- src/layout/layoutManifest.ts
+- src/layout/legacyLayout.css
+- src/layout/SlotContainer.tsx
+- src/layout/LayoutEngine.tsx (now a transient re-export and subsequently removed when all consumers migrated)
 
 ## Follow-ups
 - Implement Phase B rule adjustments (ticket TBD)

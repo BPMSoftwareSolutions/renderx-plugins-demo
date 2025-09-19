@@ -1,9 +1,8 @@
 // Physical move of original conductor implementation (was at src/conductor.ts)
 // Conductor core (migrated & split from src/conductor.ts)
-import { isBareSpecifier } from '../../handlersPath';
+import { isBareSpecifier } from '../../infrastructure/handlers/handlersPath';
 import { isFlagEnabled } from '../environment/feature-flags';
-// @ts-ignore - JSON assertion supported by bundler / TS
-import topicsManifestJson from '../../../topics-manifest.json' with { type: 'json' };
+import { getTopicsMap } from '../manifests/topicsManifest';
 
 // Resolve dynamic module specifiers (bare package names, paths, URLs) to importable URLs
 function resolveModuleSpecifier(spec: string): string {
@@ -22,7 +21,7 @@ export async function initConductor(): Promise<ConductorClient> {
 	(window as any).RenderX = (window as any).RenderX || {}; (window as any).RenderX.conductor = conductor;
 	try {
 		if (isFlagEnabled('lint.topics.warn-direct-invocation')) {
-			const topics: any = (topicsManifestJson as any)?.topics || {};
+			const topics: any = getTopicsMap();
 			const reverse = new Map<string, string[]>();
 			for (const [topic, def] of Object.entries(topics)) {
 				if (!topic.endsWith('.requested')) continue; const routes = (def as any)?.routes || [];
