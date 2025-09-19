@@ -29,3 +29,9 @@ export function __setTopics(map: Record<string, TopicDef>) {
 }
 
 export function getTopicsManifestStats() { return { loaded, topicCount: Object.keys(topics).length }; }
+
+// Expose full topics map for internal callers that need to analyze the manifest
+// (kept out of public API surface; prefer getTopicDef for most use cases)
+export function getTopicsMap(): Record<string, TopicDef> {
+	return topics;
+}
