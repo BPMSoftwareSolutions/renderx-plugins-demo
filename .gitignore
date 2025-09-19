@@ -157,3 +157,8 @@ vite.config.ts.timestamp-*
 # Ignore generated plugin manifests
 json-plugins/.generated/
 /tmp/pack-verify-library-component
+
+# Generated compatibility catalogs (root copies for Node tests/tools)
+# Source of truth lives under catalog/
+json-components/
+json-sequences/
