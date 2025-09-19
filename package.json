@@ -31,7 +31,7 @@
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",
     "export:setup": "python -m ensurepip --upgrade && python -m pip install --user playwright && python -m playwright install chromium",
-    "lint": "eslint .",
+    "lint": "eslint . && node scripts/analyze-sequences.js",
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
@@ -39,6 +39,9 @@
     "test:cov": "vitest run --coverage",
     "packages:test": "npm --prefix packages/renderx-plugin-canvas run test && npm --prefix packages/renderx-plugin-canvas-component run test",
     "e2e": "playwright test",
+    "console:logs": "node scripts/capture-console-logs.js",
+    "test:drag-drop": "node scripts/test-drag-drop.js",
+    "diagnostics": "node scripts/runtime-diagnostics.js",
     "ci:precheck": "node scripts/ci-precheck.js",
     "ci": "npm run pre:manifests && npm run lint && npm test && npm run e2e"
   },

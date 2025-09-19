@@ -61,8 +61,17 @@ export async function registerAllSequences(conductor: ConductorClient) {
 			const mod = loader ? await loader() : await import(/* @vite-ignore */ resolveModuleSpecifier(runtime.module));
 			console.log('🔌 Registered plugin runtime:', p.id);
 			const reg = (mod as any)?.[runtime.export] || (mod as any)?.default?.[runtime.export];
-			if (typeof reg === 'function') { await reg(conductor); }
-		} catch (e) { console.warn('⚠️ Failed runtime register for', p.id, e); }
+			if (typeof reg === 'function') {
+				console.log('🎯 Calling register function for:', p.id);
+				await reg(conductor);
+				console.log('✅ Register function completed for:', p.id);
+			} else {
+				console.warn('⚠️ No register function found for:', p.id, 'Available exports:', Object.keys(mod || {}));
+			}
+		} catch (e) {
+			console.error('❌ Failed runtime register for', p.id, e);
+			console.error('❌ Stack trace:', (e as Error)?.stack || 'No stack trace available');
+		}
 	}
 
 	// 3) Mount sequences from JSON catalogs

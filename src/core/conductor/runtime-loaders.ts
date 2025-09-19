@@ -26,6 +26,7 @@ export async function loadJsonSequenceCatalogs(
 	conductor: ConductorClient,
 	pluginIds?: string[]
 ) {
+	console.log('🎼 loadJsonSequenceCatalogs: Starting JSON sequence catalog loading...');
 	let artifactsDir: string | null = null;
 	try { const envMod = await import(/* @vite-ignore */ '../environment/env'); artifactsDir = (envMod as any).getArtifactsDir?.() || null; } catch {}
 	let plugins: string[] = pluginIds || [];
@@ -102,22 +103,70 @@ export async function loadJsonSequenceCatalogs(
 	const runtimeMounted: Set<string> = (conductor as any)._runtimeMountedSeqIds instanceof Set ? (conductor as any)._runtimeMountedSeqIds : new Set<string>(Array.isArray((conductor as any)._runtimeMountedSeqIds) ? (conductor as any)._runtimeMountedSeqIds : []);
 	const mountFrom = async (seq: SequenceJson, handlersPath: string) => {
 		try {
-			if (seen.has(seq.id) || runtimeMounted.has(seq.id)) { (conductor as any).logger?.warn?.(`Sequence ${seq.id} already mounted; skipping`); return; }
+			console.log(`🎼 loadJsonSequenceCatalogs: Attempting to mount sequence "${seq.name}" (${seq.id}) from ${handlersPath}`);
+			if (seen.has(seq.id) || runtimeMounted.has(seq.id)) {
+				console.log(`🎼 loadJsonSequenceCatalogs: Sequence ${seq.id} already mounted; skipping`);
+				(conductor as any).logger?.warn?.(`Sequence ${seq.id} already mounted; skipping`);
+				return;
+			}
 			let spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
-			if (isBrowser && isBareSpecifier(handlersPath)) { try { spec = resolveModuleSpecifier(handlersPath); } catch {} }
+			if (isBrowser && isBareSpecifier(handlersPath)) {
+				try {
+					spec = resolveModuleSpecifier(handlersPath);
+					console.log(`🎼 loadJsonSequenceCatalogs: Resolved module specifier: ${handlersPath} -> ${spec}`);
+				} catch (e) {
+					console.error(`🎼 loadJsonSequenceCatalogs: Failed to resolve module specifier ${handlersPath}:`, e);
+				}
+			}
+			console.log(`🎼 loadJsonSequenceCatalogs: Importing handlers from: ${spec}`);
 			let mod: any = await import(/* @vite-ignore */ spec as any);
+			console.log(`🎼 loadJsonSequenceCatalogs: Imported module:`, Object.keys(mod || {}));
 			const handlers = (mod as any)?.handlers || mod?.default?.handlers;
-			if (!handlers) { (conductor as any).logger?.warn?.(`No handlers export found at ${handlersPath} for ${seq.id}`); }
+			if (!handlers) {
+				console.error(`🎼 loadJsonSequenceCatalogs: No handlers export found at ${handlersPath} for ${seq.id}`);
+				(conductor as any).logger?.warn?.(`No handlers export found at ${handlersPath} for ${seq.id}`);
+			} else {
+				console.log(`🎼 loadJsonSequenceCatalogs: Found handlers:`, Object.keys(handlers || {}));
+			}
+			console.log(`🎼 loadJsonSequenceCatalogs: Calling conductor.mount for ${seq.id}`);
 			await (conductor as any)?.mount?.(seq, handlers, seq.pluginId);
+			console.log(`🎼 loadJsonSequenceCatalogs: Successfully mounted ${seq.id}`);
 			seen.add(seq.id); try { runtimeMounted.add(seq.id); (conductor as any)._runtimeMountedSeqIds = runtimeMounted; } catch {}
-		} catch (e) { (conductor as any).logger?.warn?.(`Failed to mount sequence ${seq?.id} from ${handlersPath}: ${e}`); }
+		} catch (e) {
+			console.error(`🎼 loadJsonSequenceCatalogs: Failed to mount sequence ${seq?.id} from ${handlersPath}:`, e);
+			(conductor as any).logger?.warn?.(`Failed to mount sequence ${seq?.id} from ${handlersPath}: ${e}`);
+		}
 	};
 
-	for (const plugin of plugins) {
-		const dir = plugin === 'CanvasComponentPlugin' ? 'canvas-component' : plugin === 'LibraryPlugin' ? 'library' : plugin === 'ControlPanelPlugin' ? 'control-panel' : (plugin === 'HeaderThemePlugin' || plugin === 'HeaderControlsPlugin' || plugin === 'HeaderTitlePlugin') ? 'header' : plugin;
-		try {
+	console.log('🎼 loadJsonSequenceCatalogs: Discovered plugins:', plugins);
+
+	let completedIterations = 0;
+	try {
+		for (let i = 0; i < plugins.length; i++) {
+			try {
+				const plugin = plugins[i];
+				console.log(`🎼 loadJsonSequenceCatalogs: Starting iteration ${i + 1}/${plugins.length} for plugin: "${plugin}"`);
+
+				const dir = plugin === 'CanvasComponentPlugin' ? 'canvas-component' : plugin === 'LibraryPlugin' ? 'library' : plugin === 'ControlPanelPlugin' ? 'control-panel' : (plugin === 'HeaderThemePlugin' || plugin === 'HeaderControlsPlugin' || plugin === 'HeaderTitlePlugin') ? 'header' : plugin;
+				console.log(`🎼 loadJsonSequenceCatalogs: Processing plugin ${i + 1}/${plugins.length}: "${plugin}" -> directory "${dir}"`);
+
+				try {
 			let entries: CatalogEntry[] = [];
-			if (isBrowser) { try { const idxRes = await fetch(`/json-sequences/${dir}/index.json`); if (idxRes.ok) { const idxJson = await idxRes.json(); entries = idxJson?.sequences || []; } } catch {} }
+			if (isBrowser) {
+				try {
+					console.log(`🎼 loadJsonSequenceCatalogs: Fetching /json-sequences/${dir}/index.json`);
+					const idxRes = await fetch(`/json-sequences/${dir}/index.json`);
+					if (idxRes.ok) {
+						const idxJson = await idxRes.json();
+						entries = idxJson?.sequences || [];
+						console.log(`🎼 loadJsonSequenceCatalogs: Found ${entries.length} entries for ${dir}:`, entries);
+					} else {
+						console.log(`🎼 loadJsonSequenceCatalogs: Failed to fetch index.json for ${dir}, status:`, idxRes.status);
+					}
+				} catch (e) {
+					console.error(`🎼 loadJsonSequenceCatalogs: Error fetching index.json for ${dir}:`, e);
+				}
+			}
 			if (!entries.length) {
 				if (!isBrowser && artifactsDir) { try { const fs = await import('fs/promises'); const path = await import('path'); const procAny2: any = (globalThis as any).process; const cwd = procAny2 && typeof procAny2.cwd === 'function' ? procAny2.cwd() : ''; const idxPath = path.join(cwd, artifactsDir, 'json-sequences', dir, 'index.json'); const raw = await fs.readFile(idxPath, 'utf-8').catch(()=>null as any); if (raw) { const idxJson = JSON.parse(raw || '{}'); entries = idxJson?.sequences || []; } } catch {} }
 						if (!entries.length && !artifactsDir) {
@@ -133,24 +182,47 @@ export async function loadJsonSequenceCatalogs(
 							} catch {}
 						}
 			}
-			const tasks = entries.map(async (ent) => {
-				let seqJson: SequenceJson | null = null;
-				if (isBrowser) { try { const filePath = ent.file.startsWith('/') ? ent.file : `/json-sequences/${dir}/${ent.file}`; const seqRes = await fetch(filePath); if (seqRes.ok) seqJson = await seqRes.json(); } catch {} }
-				if (!seqJson && !isBrowser && artifactsDir) { try { const fs = await import('fs/promises'); const path = await import('path'); const procAny3: any = (globalThis as any).process; const cwd = procAny3 && typeof procAny3.cwd === 'function' ? procAny3.cwd() : ''; const seqPath = path.join(cwd, artifactsDir, 'json-sequences', dir, ent.file); const raw = await fs.readFile(seqPath, 'utf-8').catch(()=>null as any); if (raw) seqJson = JSON.parse(raw || '{}'); } catch {} }
-						if (!seqJson && !artifactsDir) {
-							try {
-								const env = await import(/* @vite-ignore */ '../environment/env');
-								if ((env as any).allowFallbacks?.()) {
-									// @ts-ignore raw JSON import (tests only)
-									const seqMod = await import(/* @vite-ignore */ `../../../json-sequences/${dir}/${ent.file}?raw`);
-									const seqText: string = (seqMod as any)?.default || (seqMod as any);
-									seqJson = JSON.parse(seqText || '{}');
-								}
-							} catch {}
-						}
-				await mountFrom(seqJson as SequenceJson, ent.handlersPath);
+			console.log(`🎼 loadJsonSequenceCatalogs: About to process ${entries.length} sequences for ${plugin}`);
+		const tasks = entries.map(async (ent) => {
+				try {
+					let seqJson: SequenceJson | null = null;
+					if (isBrowser) { try { const filePath = ent.file.startsWith('/') ? ent.file : `/json-sequences/${dir}/${ent.file}`; const seqRes = await fetch(filePath); if (seqRes.ok) seqJson = await seqRes.json(); } catch {} }
+					if (!seqJson && !isBrowser && artifactsDir) { try { const fs = await import('fs/promises'); const path = await import('path'); const procAny3: any = (globalThis as any).process; const cwd = procAny3 && typeof procAny3.cwd === 'function' ? procAny3.cwd() : ''; const seqPath = path.join(cwd, artifactsDir, 'json-sequences', dir, ent.file); const raw = await fs.readFile(seqPath, 'utf-8').catch(()=>null as any); if (raw) seqJson = JSON.parse(raw || '{}'); } catch {} }
+							if (!seqJson && !artifactsDir) {
+								try {
+									const env = await import(/* @vite-ignore */ '../environment/env');
+									if ((env as any).allowFallbacks?.()) {
+										// @ts-ignore raw JSON import (tests only)
+										const seqMod = await import(/* @vite-ignore */ `../../../json-sequences/${dir}/${ent.file}?raw`);
+										const seqText: string = (seqMod as any)?.default || (seqMod as any);
+										seqJson = JSON.parse(seqText || '{}');
+									}
+								} catch {}
+							}
+					await mountFrom(seqJson as SequenceJson, ent.handlersPath);
+				} catch (e) {
+					console.error(`🎼 loadJsonSequenceCatalogs: Failed to process sequence ${ent.file} for ${plugin}:`, e);
+				}
 			});
-			await Promise.all(tasks);
-		} catch (e) { (conductor as any).logger?.warn?.(`Failed to load catalog for ${plugin}: ${e}`); }
+			console.log(`🎼 loadJsonSequenceCatalogs: About to await Promise.allSettled for ${tasks.length} tasks`);
+			await Promise.allSettled(tasks);
+			console.log(`🎼 loadJsonSequenceCatalogs: Promise.allSettled completed for ${plugin}`);
+		} catch (e) {
+			console.error(`🎼 loadJsonSequenceCatalogs: Failed to load catalog for ${plugin}:`, e);
+			(conductor as any).logger?.warn?.(`Failed to load catalog for ${plugin}: ${e}`);
+		}
+			console.log(`🎼 loadJsonSequenceCatalogs: Completed processing plugin "${plugin}"`);
+			console.log(`🎼 loadJsonSequenceCatalogs: About to continue to next plugin iteration...`);
+			completedIterations++;
+		} catch (e) {
+			console.error(`🎼 loadJsonSequenceCatalogs: ERROR processing plugin "${plugins[i]}":`, e);
+			completedIterations++;
+		}
 	}
+	console.log(`🎼 loadJsonSequenceCatalogs: Loop completed, processed ${completedIterations}/${plugins.length} plugins`);
+	console.log(`🎼 loadJsonSequenceCatalogs: Finished processing all ${plugins.length} plugins`);
+} catch (e) {
+	console.error(`🎼 loadJsonSequenceCatalogs: CRITICAL ERROR in main loop:`, e);
+	throw e;
+}
 }

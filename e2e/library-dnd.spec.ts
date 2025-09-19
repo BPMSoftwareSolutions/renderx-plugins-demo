@@ -80,4 +80,3 @@ test('Library drag → Canvas preserves template and creates node without errors
   expect(probe?.dropHasTpl ?? probe?.dragHasTpl).toBe(true);
   expect(errorBlob).not.toMatch(/Missing component template|reading 'tag'/);
 });
-

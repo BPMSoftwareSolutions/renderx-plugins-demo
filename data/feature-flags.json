@@ -86,13 +86,13 @@
     "owner": "canvas"
   },
   "lint.sequence-handlers": {
-    "status": "off",
+    "status": "on",
     "created": "2025-08-26",
     "description": "Enable ESLint rule that validates JSON sequence handlers against TS exports",
     "owner": "tooling"
   },
   "lint.topics.runtime-validate": {
-    "status": "off",
+    "status": "on",
     "created": "2025-08-28",
     "description": "Enable runtime schema validation for EventRouter payloads in dev/test",
     "owner": "tooling"

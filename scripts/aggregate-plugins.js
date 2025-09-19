@@ -185,6 +185,34 @@ async function aggregate() {
     }
   } catch {}
 
+  // If @renderx-plugins/library-component is installed but LibraryComponentDropPlugin is not present,
+  // synthesize a LibraryComponentDropPlugin entry that points to the same package.
+  // This is needed because the library-component register function registers sequences under both
+  // LibraryComponentPlugin and LibraryComponentDropPlugin, but the package manifest only declares one.
+  try {
+    const hasLCDP = (merged.plugins || []).some(
+      (p) => p && p.id === "LibraryComponentDropPlugin"
+    );
+    if (!hasLCDP) {
+      const lcPkg = join(
+        rootDir,
+        "node_modules",
+        "@renderx-plugins",
+        "library-component",
+        "package.json"
+      );
+      if (await fileExists(lcPkg)) {
+        merged.plugins.push({
+          id: "LibraryComponentDropPlugin",
+          runtime: {
+            module: "@renderx-plugins/library-component",
+            export: "register",
+          },
+        });
+      }
+    }
+  } catch {}
+
   await fs.writeFile(generatedOut, JSON.stringify(merged, null, 2));
   console.log(
     `🧩 Aggregated ${external.length} package(s); total plugins: ${merged.plugins.length}`
