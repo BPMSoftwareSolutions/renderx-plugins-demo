@@ -1,0 +1,292 @@
+/**
+ * ESLint rule to validate plugin ID consistency in external @renderx-plugins/* packages
+ * Ensures sequence files reference plugin IDs that exist in the package manifest
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
+
+const rule = {
+  meta: {
+    type: "problem",
+    docs: {
+      description: "Validate plugin ID consistency between manifests and sequence files in external @renderx-plugins/* packages",
+      category: "Possible Errors",
+      recommended: true,
+    },
+    schema: [
+      {
+        type: "object",
+        properties: {
+          packagePattern: {
+            type: "string",
+            default: "@renderx-plugins/*"
+          },
+          sequenceDirs: {
+            type: "array",
+            items: { type: "string" },
+            default: ["json-sequences"]
+          },
+          manifestPath: {
+            type: "string",
+            default: "package.json"
+          },
+          manifestKey: {
+            type: "string",
+            default: "renderx.plugins"
+          }
+        },
+        additionalProperties: false
+      }
+    ],
+    messages: {
+      pluginIdMismatch: "Plugin ID mismatch in {{packageName}}: Manifest defines '{{manifestId}}' but sequence file '{{filePath}}' references '{{sequenceId}}'",
+      missingManifest: "Missing or invalid manifest in {{packageName}}: {{manifestPath}} not found or missing {{manifestKey}}",
+      sequenceFileError: "Error reading sequence file {{filePath}} in {{packageName}}: {{error}}"
+    },
+  },
+
+  create(context) {
+    const _options = context.options[0] || {};
+    const packagePattern = _options.packagePattern || "@renderx-plugins/*";
+    const sequenceDirs = _options.sequenceDirs || ["json-sequences"];
+    const manifestPath = _options.manifestPath || "package.json";
+    const manifestKey = _options.manifestKey || "renderx.plugins";
+
+    // Only run this rule once per lint run, not per file
+    const _filename = context.getFilename();
+    const cwd = process.cwd();
+
+    // Use a global flag to ensure we only run validation once
+    if (!global.__renderxPluginValidationRun) {
+      global.__renderxPluginValidationRun = true;
+
+      try {
+        validateExternalPlugins(context, {
+          packagePattern,
+          sequenceDirs,
+          manifestPath,
+          manifestKey,
+          cwd
+        });
+      } catch (error) {
+        context.report({
+          loc: { line: 1, column: 0 },
+          message: `Error validating external plugins: ${error.message}`
+        });
+      }
+    }
+
+    return {};
+  },
+};
+
+function validateExternalPlugins(context, config) {
+  const { packagePattern, sequenceDirs, manifestPath, manifestKey, cwd } = config;
+
+  // Discover packages
+  const packages = discoverPackages(cwd, packagePattern);
+
+  for (const pkg of packages) {
+    try {
+      const manifestPlugins = parseManifest(pkg.path, manifestPath, manifestKey);
+      if (!manifestPlugins) {
+        context.report({
+          loc: { line: 1, column: 0 },
+          messageId: "missingManifest",
+          data: {
+            packageName: pkg.name,
+            manifestPath,
+            manifestKey
+          }
+        });
+        continue;
+      }
+
+      // Validate sequence files
+      const mismatches = validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context);
+
+      // Report mismatches
+      for (const mismatch of mismatches) {
+        context.report({
+          loc: { line: 1, column: 0 },
+          messageId: "pluginIdMismatch",
+          data: {
+            packageName: pkg.name,
+            manifestId: mismatch.manifestId,
+            filePath: mismatch.filePath,
+            sequenceId: mismatch.sequenceId
+          }
+        });
+      }
+    } catch (error) {
+      context.report({
+        loc: { line: 1, column: 0 },
+        message: `Error validating package ${pkg.name}: ${error.message}`
+      });
+    }
+  }
+}
+
+function discoverPackages(cwd, packagePattern) {
+  const nodeModulesPath = path.join(cwd, 'node_modules');
+  const pattern = path.join(packagePattern, 'package.json');
+
+  try {
+    const matches = glob.sync(pattern, { cwd: nodeModulesPath });
+
+    return matches.map(match => {
+      const packagePath = path.dirname(path.join(nodeModulesPath, match));
+      const packageJsonPath = path.join(packagePath, 'package.json');
+
+      if (fs.existsSync(packageJsonPath)) {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        return {
+          name: packageJson.name,
+          path: packagePath
+        };
+      }
+
+      return null;
+    }).filter(Boolean);
+  } catch {
+    // If glob fails (e.g., node_modules doesn't exist), return empty array
+    return [];
+  }
+}
+
+function parseManifest(packagePath, manifestPath, manifestKey) {
+  const manifestFilePath = path.join(packagePath, manifestPath);
+
+  if (!fs.existsSync(manifestFilePath)) {
+    return null;
+  }
+
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestFilePath, 'utf8'));
+    const plugins = getNestedProperty(manifest, manifestKey);
+
+    if (!Array.isArray(plugins)) {
+      return null;
+    }
+
+    return new Set(plugins.map(plugin => plugin.id).filter(id => id));
+  } catch {
+    return null;
+  }
+}
+
+function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
+  const mismatches = [];
+
+  for (const sequenceDir of sequenceDirs) {
+    const sequencesPath = path.join(pkg.path, sequenceDir);
+
+    if (!fs.existsSync(sequencesPath)) {
+      continue;
+    }
+
+    try {
+      const sequenceFiles = glob.sync('**/*.json', { cwd: sequencesPath });
+
+      for (const file of sequenceFiles) {
+        const filePath = path.join(sequencesPath, file);
+
+        try {
+          const sequence = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+          if (sequence.pluginId && !manifestPlugins.has(sequence.pluginId)) {
+            // Find the closest matching manifest ID for better error messages
+            const closestMatch = findClosestMatch(sequence.pluginId, Array.from(manifestPlugins));
+
+            mismatches.push({
+              filePath: path.relative(pkg.path, filePath),
+              sequenceId: sequence.pluginId,
+              manifestId: closestMatch || Array.from(manifestPlugins)[0]
+            });
+          }
+        } catch (parseError) {
+          context.report({
+            loc: { line: 1, column: 0 },
+            messageId: "sequenceFileError",
+            data: {
+              filePath: path.relative(pkg.path, filePath),
+              packageName: pkg.name,
+              error: parseError.message
+            }
+          });
+        }
+      }
+    } catch {
+      // Skip directories that can't be read
+      continue;
+    }
+  }
+
+  return mismatches;
+}
+
+function getNestedProperty(obj, path) {
+  return path.split('.').reduce((current, key) => current?.[key], obj);
+}
+
+function findClosestMatch(target, candidates) {
+  // Simple string similarity - could be enhanced with a proper library
+  let bestMatch = null;
+  let bestScore = 0;
+
+  for (const candidate of candidates) {
+    const score = calculateSimilarity(target, candidate);
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = candidate;
+    }
+  }
+
+  return bestMatch;
+}
+
+function calculateSimilarity(str1, str2) {
+  const longer = str1.length > str2.length ? str1 : str2;
+  const shorter = str1.length > str2.length ? str2 : str1;
+
+  if (longer.length === 0) return 1.0;
+
+  const editDistance = levenshteinDistance(longer, shorter);
+  return (longer.length - editDistance) / longer.length;
+}
+
+function levenshteinDistance(str1, str2) {
+  const matrix = [];
+
+  for (let i = 0; i <= str2.length; i++) {
+    matrix[i] = [i];
+  }
+
+  for (let j = 0; j <= str1.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= str2.length; i++) {
+    for (let j = 1; j <= str1.length; j++) {
+      if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+
+  return matrix[str2.length][str1.length];
+}
+
+export default {
+  rules: {
+    "validate-external-plugin-consistency": rule,
+  },
+};

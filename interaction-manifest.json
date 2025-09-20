@@ -138,11 +138,11 @@
       "sequenceId": "library-component-drag-symphony"
     },
     "library.component.drop": {
-      "pluginId": "LibraryComponentDropPlugin",
+      "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-drop-symphony"
     },
     "library.container.drop": {
-      "pluginId": "LibraryComponentDropPlugin",
+      "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-container-drop-symphony"
     },
     "library.load": {

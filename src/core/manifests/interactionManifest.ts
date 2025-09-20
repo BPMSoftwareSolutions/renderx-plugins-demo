@@ -6,9 +6,7 @@ let loaded = false;
 // Built-in defaults to guarantee test/runtime stability even if manifest isn't preloaded
 const DEFAULT_ROUTES: Record<string, Route> = {
 	'library.load': { pluginId: 'LibraryPlugin', sequenceId: 'library-load-symphony' },
-	'library.component.drag.start': { pluginId: 'LibraryComponentPlugin', sequenceId: 'library-component-drag-symphony' },
-	'library.component.drop': { pluginId: 'LibraryComponentDropPlugin', sequenceId: 'library-component-drop-symphony' },
-	'library.container.drop': { pluginId: 'LibraryComponentDropPlugin', sequenceId: 'library-component-container-drop-symphony' },
+	// Removed hardcoded library-component routes - now auto-derived from external package sequences
 	'canvas.component.create': { pluginId: 'CanvasComponentPlugin', sequenceId: 'canvas-component-create-symphony' },
 	'canvas.component.drag.move': { pluginId: 'CanvasComponentDragPlugin', sequenceId: 'canvas-component-drag-symphony' },
 	'canvas.component.select': { pluginId: 'CanvasComponentSelectionPlugin', sequenceId: 'canvas-component-select-symphony' },

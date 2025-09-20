@@ -16,6 +16,7 @@ import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { buildTopicsManifest } from "@renderx-plugins/manifest-tools";
+import { generateExternalTopicsCatalog } from "./derive-external-topics.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -66,8 +67,12 @@ async function readTopicCatalogs() {
 }
 
 async function main() {
-  const catalogs = await readTopicCatalogs();
-  const manifest = buildTopicsManifest(catalogs);
+  const localCatalogs = await readTopicCatalogs();
+  const externalCatalog = await generateExternalTopicsCatalog();
+
+  // Merge local and derived external catalogs
+  const allCatalogs = [...localCatalogs, externalCatalog];
+  const manifest = buildTopicsManifest(allCatalogs);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");
   await fs.mkdir(outPublicDir, { recursive: true });

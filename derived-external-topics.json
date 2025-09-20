@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "topics": {
+    "library.container.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-container-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library-component/container.drop.json"
+    },
+    "library.component.drag.start.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library-component/drag.json"
+    },
+    "library.component.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library-component/drop.json"
+    },
+    "library.load.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryPlugin",
+          "sequenceId": "library-load-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library/library-load.json"
+    }
+  }
+}

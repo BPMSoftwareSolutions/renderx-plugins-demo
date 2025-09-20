@@ -1067,152 +1067,6 @@
       "perf": {},
       "notes": "Control panel CSS registry updated; published for UI consumption."
     },
-    "library.component.drag.start.requested": {
-      "routes": [
-        {
-          "pluginId": "LibraryComponentPlugin",
-          "sequenceId": "library-component-drag-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "event": {
-            "type": "string"
-          },
-          "domEvent": {
-            "type": "object"
-          },
-          "component": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "event",
-          "domEvent",
-          "component"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Library component drag start requested; routes to drag start sequence."
-    },
-    "library.component.drop.requested": {
-      "routes": [
-        {
-          "pluginId": "LibraryComponentDropPlugin",
-          "sequenceId": "library-component-drop-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "component": {
-            "type": "object"
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "x",
-              "y"
-            ]
-          },
-          "containerId": {
-            "type": "string"
-          },
-          "onComponentCreated": {
-            "type": "object"
-          },
-          "onDragStart": {
-            "type": "object"
-          },
-          "onDragMove": {
-            "type": "object"
-          },
-          "onDragEnd": {
-            "type": "object"
-          },
-          "onSelected": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "component",
-          "position"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Library component drop requested; routes to drop sequence."
-    },
-    "library.container.drop.requested": {
-      "routes": [
-        {
-          "pluginId": "LibraryComponentDropPlugin",
-          "sequenceId": "library-component-container-drop-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "component": {
-            "type": "object"
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "x",
-              "y"
-            ]
-          },
-          "containerId": {
-            "type": "string"
-          },
-          "onComponentCreated": {
-            "type": "object"
-          },
-          "onDragStart": {
-            "type": "object"
-          },
-          "onDragMove": {
-            "type": "object"
-          },
-          "onDragEnd": {
-            "type": "object"
-          },
-          "onSelected": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "component",
-          "position",
-          "containerId"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Library container drop requested; routes to container drop sequence."
-    },
     "library.load.requested": {
       "routes": [
         {
@@ -1221,17 +1075,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "onComponentsLoaded": {
-            "type": "object"
-          }
-        }
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Library load requested; routes to library load sequence."
+      "notes": "Auto-derived from library/library-load.json"
     },
     "test.route": {
       "routes": [
@@ -1257,6 +1106,51 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Test topic for notification-only tests"
+    },
+    "library.container.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-container-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library-component/container.drop.json"
+    },
+    "library.component.drag.start.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library-component/drag.json"
+    },
+    "library.component.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library-component/drop.json"
     }
   }
 }

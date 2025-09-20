@@ -18,6 +18,7 @@ import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { buildInteractionManifest } from "@renderx-plugins/manifest-tools";
+import { generateExternalInteractionsCatalog } from "./derive-external-topics.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -88,9 +89,13 @@ async function readComponentOverrides() {
 }
 
 async function main() {
-  const catalogs = await readPluginCatalogs();
+  const localCatalogs = await readPluginCatalogs();
+  const externalCatalog = await generateExternalInteractionsCatalog();
   const componentOverrides = await readComponentOverrides();
-  const manifest = buildInteractionManifest(catalogs, componentOverrides);
+
+  // Merge local and derived external catalogs
+  const allCatalogs = [...localCatalogs, externalCatalog];
+  const manifest = buildInteractionManifest(allCatalogs, componentOverrides);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "interaction-manifest.json");
   await fs.mkdir(outPublicDir, { recursive: true });
