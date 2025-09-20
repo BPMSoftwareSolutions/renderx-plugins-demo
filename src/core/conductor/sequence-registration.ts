@@ -4,7 +4,22 @@ import { resolveModuleSpecifier } from './conductor';
 
 export type ConductorClient = any; // local alias
 
+let registrationInProgress = false;
+let registrationComplete = false;
+
 export async function registerAllSequences(conductor: ConductorClient) {
+	// Prevent multiple simultaneous registrations
+	if (registrationInProgress) {
+		console.log('🔄 Registration already in progress, skipping...');
+		return;
+	}
+	if (registrationComplete) {
+		console.log('✅ Registration already complete, skipping...');
+		return;
+	}
+
+	registrationInProgress = true;
+	console.log('🚀 Starting plugin registration...');
 	// 1) Discover runtime registration modules via plugin manifest (ui + optional runtime section)
 	let manifest: any = null;
 	try {
@@ -92,4 +107,8 @@ export async function registerAllSequences(conductor: ConductorClient) {
 		console.log('🔎 Mounted plugin IDs after registration:', ids);
 		for (const id of ids) { try { console.log('Plugin mounted successfully:', id); } catch {} }
 	} catch {}
+
+	registrationInProgress = false;
+	registrationComplete = true;
+	console.log('✅ Plugin registration complete!');
 }
