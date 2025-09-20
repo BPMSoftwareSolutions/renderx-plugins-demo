@@ -29,7 +29,7 @@ async function readJsonSafe(path) {
   }
 }
 
-async function discoverSequenceFiles() {
+export async function discoverSequenceFiles() {
   const sequencesDir = join(rootDir, "public", "json-sequences");
   const externalDirs = ["library-component", "canvas-component", "header", "library"];
   const sequences = [];
@@ -61,62 +61,111 @@ async function discoverSequenceFiles() {
 }
 
 function deriveTopicFromSequence(seq) {
-  // Extract topic name from sequence ID
-  // e.g., "library-component-drop-symphony" -> "library.component.drop.requested"
+  // Auto-derive topic name from sequence ID by removing common suffixes and converting to dot notation
   const id = seq.sequenceId;
   if (!id) return null;
-  
-  // Map known sequence patterns to topic names
-  const topicMappings = {
-    "library-component-drag-symphony": "library.component.drag.start.requested",
-    "library-component-drop-symphony": "library.component.drop.requested", 
-    "library-component-container-drop-symphony": "library.container.drop.requested",
-    "library-load-symphony": "library.load.requested"
-  };
-  
-  return topicMappings[id] || null;
+
+  // Remove common symphony suffixes
+  let topicName = id
+    .replace(/-symphony$/, '')
+    .replace(/-sequence$/, '')
+    .replace(/-seq$/, '');
+
+  // Convert kebab-case to dot notation
+  topicName = topicName.replace(/-/g, '.');
+
+  // Handle special cases for better topic naming
+  if (topicName.includes('ui.theme')) {
+    // Keep app.ui.theme.* as-is since it's already well-formed
+    return topicName.replace(/^header\./, 'app.');
+  }
+
+  const isLibraryComponent = (seq.pluginId && /LibraryComponent/i.test(seq.pluginId)) || (seq.file && seq.file.startsWith('library-component/'));
+
+  // Special handling for drag operations - enforce .start.requested
+  if (topicName.includes('component.drag') && !topicName.includes('start')) {
+    topicName = topicName.replace('component.drag', 'component.drag.start');
+  }
+
+  // Ensure .requested suffix
+  if (!topicName.endsWith('.requested')) {
+    topicName = topicName + '.requested';
+  }
+
+  // Final normalization rules for library-component topics
+  if (isLibraryComponent) {
+    // Only collapse the container path: library.component.container.* -> library.container.*
+    topicName = topicName.replace(/^library\.component\.container\./, 'library.container.');
+    // Keep other library.component.* topics (drag, drop, etc.) as-is
+  }
+
+  return topicName;
 }
 
 function deriveInteractionFromSequence(seq) {
-  // Extract interaction route from sequence ID
+  // Auto-derive interaction route from sequence ID
   const id = seq.sequenceId;
   if (!id) return null;
-  
-  // Map known sequence patterns to interaction routes
-  const routeMappings = {
-    "library-component-drag-symphony": "library.component.drag.start",
-    "library-component-drop-symphony": "library.component.drop",
-    "library-component-container-drop-symphony": "library.container.drop", 
-    "library-load-symphony": "library.load"
-  };
-  
-  const route = routeMappings[id];
-  return route ? {
+
+  // Skip "requested" orchestration sequences for interaction routes to avoid circular mappings
+  // These should only produce topics (e.g., canvas.component.select.requested), not interactions
+  if (/\.requested(-|\.|$)/.test(id) || /requested/.test(id)) return null;
+
+  // Remove common symphony suffixes and convert to dot notation
+  let route = id
+    .replace(/-symphony$/, '')
+    .replace(/-sequence$/, '')
+    .replace(/-seq$/, '')
+    .replace(/-/g, '.');
+
+  // Handle special cases for better route naming
+  if (route.includes('ui.theme')) {
+    // Convert header.ui.theme.* to app.ui.theme.*
+    route = route.replace(/^header\./, 'app.');
+  }
+
+  // Normalize library-component 2 library.* (drop .component segment)
+  if ((seq.pluginId && /LibraryComponent/i.test(seq.pluginId)) || (seq.file && seq.file.startsWith('library-component/'))) {
+    route = route.replace(/^library\.component\./, 'library.');
+  }
+
+  // Drag interactions are keyed as *.drag.move for the drag symphony
+  if (/\.drag$/.test(route)) {
+    route = route + '.move';
+  }
+
+  // Remove .requested suffix for interaction routes (topics have it, interactions don't)
+  route = route.replace(/\.requested$/, '');
+
+  return {
     route,
     pluginId: seq.pluginId,
     sequenceId: seq.sequenceId
-  } : null;
+  };
 }
 
 export async function generateExternalTopicsCatalog() {
   const sequences = await discoverSequenceFiles();
   const topics = {};
-  
+
   for (const seq of sequences) {
     const topicName = deriveTopicFromSequence(seq);
-    if (topicName) {
+    if (!topicName) continue;
+
+    const isRequested = /\.requested(-|\.|$)/.test(seq.sequenceId) || /requested/.test(seq.sequenceId);
+    const existing = topics[topicName]?.routes?.[0]?.sequenceId;
+    const existingIsRequested = existing ? (/\.requested(-|\.|$)/.test(existing) || /requested/.test(existing)) : false;
+
+    if (!existing || (isRequested && !existingIsRequested)) {
       topics[topicName] = {
-        routes: [{
-          pluginId: seq.pluginId,
-          sequenceId: seq.sequenceId
-        }],
+        routes: [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }],
         payloadSchema: { type: "object" },
         visibility: "public",
         notes: `Auto-derived from ${seq.file}`
       };
     }
   }
-  
+
   return { version: "1.0.0", topics };
 }
 
