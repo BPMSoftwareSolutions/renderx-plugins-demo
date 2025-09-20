@@ -1,8 +1,8 @@
 {
-  "plugin": "LibraryComponentDropPlugin",
+  "plugin": "LibraryComponentPlugin",
   "routes": {
     "library.container.drop": {
-      "pluginId": "LibraryComponentDropPlugin",
+      "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-container-drop-symphony"
     }
   }

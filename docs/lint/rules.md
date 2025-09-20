@@ -19,6 +19,11 @@ New rules added for issue #142:
   - Supports hierarchical plugin architecture (manifest plugins + logical extensions)
   - Integrated into build pipeline via scripts/validate-plugin-ids.js
 
+- plugin-registration/validate-plugin-registration (error)
+  - Validates plugin registration consistency between manifest declarations and catalog expectations
+  - Detects unused runtime entries, missing runtime entries, and implementation verification needs
+  - Supports UI-only, runtime-only, and hybrid plugin patterns
+
 Examples
 
 - Bad (public path):
