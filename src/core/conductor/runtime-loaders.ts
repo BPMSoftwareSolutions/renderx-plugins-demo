@@ -130,6 +130,57 @@ export async function loadJsonSequenceCatalogs(
       }
     } catch {}
   }
+  // Optional dev-time whitelist: set globalThis.__RENDERX_ONLY_PLUGINS to an array or CSV string
+  try {
+    let onlyRaw: any = (globalThis as any).__RENDERX_ONLY_PLUGINS;
+    // Also support persistence via localStorage or ?only=... query param
+    try {
+      if (!onlyRaw && typeof window !== "undefined") {
+        const fromLS = (window as any).localStorage?.getItem(
+          "__RENDERX_ONLY_PLUGINS"
+        );
+        if (fromLS) {
+          onlyRaw = fromLS;
+        } else {
+          const sp = new URLSearchParams(
+            (window as any).location?.search || ""
+          );
+          const fromQS = sp.get("only");
+          if (fromQS) onlyRaw = fromQS;
+        }
+      }
+      if (typeof onlyRaw === "string") {
+        const s = (onlyRaw as string).trim();
+        if (s.startsWith("[")) {
+          try {
+            const arr = JSON.parse(s);
+            if (Array.isArray(arr)) {
+              onlyRaw = arr;
+            }
+          } catch {}
+        }
+      }
+    } catch {}
+
+    let only: string[] = [];
+    if (Array.isArray(onlyRaw)) {
+      only = onlyRaw.filter((s) => typeof s === "string" && s.length);
+    } else if (typeof onlyRaw === "string") {
+      only = onlyRaw
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.length);
+    }
+    if (only.length) {
+      const before = plugins.slice();
+      plugins = plugins.filter((p) => only.includes(p));
+      console.log(
+        `🎼 loadJsonSequenceCatalogs: Applying ONLY-plugins whitelist`,
+        { only, before, after: plugins }
+      );
+    }
+  } catch {}
+
   (conductor as any)._discoveredPlugins = plugins;
   const isTestEnv =
     typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
@@ -190,18 +241,22 @@ export async function loadJsonSequenceCatalogs(
     (conductor as any)._runtimeMountedSeqIds = runtimeMounted;
   } catch {}
 
-  const mountFrom = async (seq: SequenceJson, handlersPath: string) => {
+  const mountFrom = async (
+    seq: SequenceJson,
+    handlersPath: string,
+    pluginIdHint?: string
+  ) => {
     try {
       if (DEBUG)
         console.log(
           `🎼 loadJsonSequenceCatalogs: Attempting to mount sequence "${seq.name}" (${seq.id}) from ${handlersPath}`
         );
-      if (seen.has(seq.id) || runtimeMounted.has(seq.id)) {
+      // Only dedupe within this loader pass. Allow re-mount attempts so that
+      // the conductor.mount wrapper can dedupe across sources (runtime vs JSON)
+      // and ensure sequences get mounted on the active conductor instance.
+      if (seen.has(seq.id)) {
         console.log(
-          `🎼 loadJsonSequenceCatalogs: Sequence ${seq.id} already mounted; skipping`
-        );
-        (conductor as any).logger?.warn?.(
-          `Sequence ${seq.id} already mounted; skipping`
+          `🎼 loadJsonSequenceCatalogs: Sequence ${seq.id} already queued in this pass; skipping`
         );
         return;
       }
@@ -224,7 +279,37 @@ export async function loadJsonSequenceCatalogs(
         console.log(
           `🎼 loadJsonSequenceCatalogs: Importing handlers from: ${spec}`
         );
-      let mod: any = await import(/* @vite-ignore */ spec as any);
+      // Transient Vite dev re-optimization can cause 504 (Outdated Optimize Dep)
+      // on the first request to /@id/* modules; add a short retry loop.
+      const shouldRetryImport = (err: any) => {
+        try {
+          const msg = String((err && (err.message || err)) || "");
+          return /Outdated Optimize Dep|ERR_ABORTED|\b504\b|Failed to fetch dynamically imported module|Importing a module script failed|Failed to fetch/i.test(
+            msg
+          );
+        } catch {
+          return false;
+        }
+      };
+      let mod: any = undefined;
+      let lastErr: any = undefined;
+      for (let attempt = 1; attempt <= 6; attempt++) {
+        try {
+          mod = await import(/* @vite-ignore */ spec as any);
+          break;
+        } catch (e) {
+          lastErr = e;
+          if (!shouldRetryImport(e)) break;
+          const delay = 150 * attempt + 100; // 250ms, 400ms, 550ms, ...
+          if (DEBUG)
+            console.warn(
+              `🎼 loadJsonSequenceCatalogs: Import failed (attempt ${attempt}/6), will retry in ${delay}ms — reason:`,
+              e
+            );
+          await new Promise((r) => setTimeout(r, delay));
+        }
+      }
+      if (!mod) throw lastErr;
       if (DEBUG)
         console.log(
           `🎼 loadJsonSequenceCatalogs: Imported module:`,
@@ -249,7 +334,26 @@ export async function loadJsonSequenceCatalogs(
         console.log(
           `🎼 loadJsonSequenceCatalogs: Calling conductor.mount for ${seq.id}`
         );
-      await (conductor as any)?.mount?.(seq, handlers, seq.pluginId);
+      const pid =
+        (seq as any)?.pluginId ||
+        pluginIdHint ||
+        (() => {
+          try {
+            const hp = String(handlersPath || "");
+            if (hp.includes("@renderx-plugins/library-component"))
+              return "LibraryComponentPlugin";
+            if (hp.includes("@renderx-plugins/canvas-component"))
+              return "CanvasComponentPlugin";
+            if (hp.includes("@renderx-plugins/control-panel"))
+              return "ControlPanelPlugin";
+            if (hp.includes("@renderx-plugins/library")) return "LibraryPlugin";
+          } catch {}
+          return undefined as any;
+        })();
+      try {
+        if (!(seq as any).pluginId && pid) (seq as any).pluginId = pid;
+      } catch {}
+      await (conductor as any)?.mount?.(seq, handlers, pid as any);
       if (DEBUG)
         console.log(
           `🎼 loadJsonSequenceCatalogs: Successfully mounted ${seq.id}`
@@ -279,6 +383,23 @@ export async function loadJsonSequenceCatalogs(
       console.log(
         `🎼 loadJsonSequenceCatalogs: About to start main loop with ${plugins.length} plugins`
       );
+    // Pre-warm key runtime packages so Vite completes optimizeDeps before handlers imports
+    try {
+      if (isBrowser) {
+        const warms = [
+          runtimePackageLoaders["@renderx-plugins/library-component"],
+          runtimePackageLoaders["@renderx-plugins/control-panel"],
+        ].filter(Boolean) as Array<() => Promise<any>>;
+        if (warms.length) {
+          if (DEBUG)
+            console.log(
+              "🎼 loadJsonSequenceCatalogs: Pre-warming runtime packages to reduce optimizeDeps reloads"
+            );
+          await Promise.all(warms.map((fn) => fn().catch(() => undefined)));
+        }
+      }
+    } catch {}
+
     for (let i = 0; i < plugins.length; i++) {
       try {
         const plugin = plugins[i];
@@ -291,6 +412,8 @@ export async function loadJsonSequenceCatalogs(
         const dir =
           plugin === "CanvasComponentPlugin"
             ? "canvas-component"
+            : plugin === "LibraryComponentPlugin"
+            ? "library-component"
             : plugin === "LibraryPlugin"
             ? "library"
             : plugin === "ControlPanelPlugin"
@@ -311,12 +434,100 @@ export async function loadJsonSequenceCatalogs(
           continue;
         }
 
+        // In browser, skip unknown catalogs to avoid SPA fallback HTML -> JSON parse errors
+        if (
+          typeof window !== "undefined" &&
+          typeof (globalThis as any).fetch === "function"
+        ) {
+          try {
+            const knownDirs = new Set<string>(
+              Array.isArray(
+                (conductor as any)?._sequenceCatalogDirsFromManifest
+              )
+                ? (conductor as any)._sequenceCatalogDirsFromManifest
+                : []
+            );
+            [
+              "canvas-component",
+              "control-panel",
+              "header",
+              "library",
+              "library-component",
+            ].forEach((d) => knownDirs.add(d));
+            if (!knownDirs.has(dir)) {
+              if (DEBUG)
+                console.log(
+                  `🎼 loadJsonSequenceCatalogs: Skipping plugin "${plugin}" — no JSON catalog directory for "${dir}"`
+                );
+              continue;
+            }
+          } catch {}
+        }
+
         if (DEBUG)
           console.log(
             `🎼 loadJsonSequenceCatalogs: Processing plugin ${i + 1}/${
               plugins.length
             }: "${plugin}" -> directory "${dir}"`
           );
+
+        // Extra warm-up for library-component to avoid Vite 504 optimize window
+        try {
+          if (
+            isBrowser &&
+            (dir === "library-component" || plugin === "LibraryComponentPlugin")
+          ) {
+            const specWarm = resolveModuleSpecifier(
+              "@renderx-plugins/library-component"
+            );
+            const shouldRetryWarm = (err: any) => {
+              try {
+                const msg = String((err && (err.message || err)) || "");
+                return /Outdated Optimize Dep|ERR_ABORTED|\b504\b|Failed to fetch dynamically imported module|Importing a module script failed|Failed to fetch/i.test(
+                  msg
+                );
+              } catch {
+                return false;
+              }
+            };
+            // Probe the endpoint until Vite finishes re-optimizing
+            try {
+              const maxProbes = 12; // ~3s at 250ms steps
+              for (let probe = 1; probe <= maxProbes; probe++) {
+                try {
+                  const res = await fetch(specWarm, { method: "GET" } as any);
+                  if ((res as any)?.ok) break;
+                } catch {}
+                await new Promise((r) => setTimeout(r, 250));
+              }
+            } catch {}
+
+            let warmed = false;
+            let lastErr: any = undefined;
+            for (let attempt = 1; attempt <= 6; attempt++) {
+              try {
+                await import(/* @vite-ignore */ specWarm as any);
+                warmed = true;
+                break;
+              } catch (e) {
+                lastErr = e;
+                if (!shouldRetryWarm(e)) break;
+                const delay = 150 * attempt + 100;
+                if (DEBUG)
+                  console.warn(
+                    `🎼 loadJsonSequenceCatalogs: Warm-up import failed (attempt ${attempt}/6), retrying in ${delay}ms — reason:`,
+                    e
+                  );
+                await new Promise((r) => setTimeout(r, delay));
+              }
+            }
+            if (!warmed && DEBUG)
+              console.warn(
+                "🎼 loadJsonSequenceCatalogs: Warm-up for @renderx-plugins/library-component did not complete",
+                lastErr
+              );
+          }
+        } catch {}
 
         try {
           let entries: CatalogEntry[] = [];
@@ -449,7 +660,11 @@ export async function loadJsonSequenceCatalogs(
                   }
                 } catch {}
               }
-              await mountFrom(seqJson as SequenceJson, ent.handlersPath);
+              await mountFrom(
+                seqJson as SequenceJson,
+                ent.handlersPath,
+                plugin
+              );
               console.log(
                 `🎼 loadJsonSequenceCatalogs: Completed task ${index + 1}/${
                   entries.length

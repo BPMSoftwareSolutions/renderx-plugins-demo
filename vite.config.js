@@ -18,7 +18,6 @@ export default {
       "react/jsx-runtime",
       "react/jsx-dev-runtime",
       // Workspace/host packages
-      "@renderx-plugins/library-component",
       "@renderx-plugins/control-panel",
       "@renderx-plugins/host-sdk",
     ],
@@ -27,6 +26,7 @@ export default {
       "@renderx-plugins/library",
       "@renderx-plugins/header",
       "@renderx-plugins/canvas-component",
+      "@renderx-plugins/library-component",
       "gif.js.optimized",
     ],
     // Force re-optimization on every start

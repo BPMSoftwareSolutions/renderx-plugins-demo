@@ -17,6 +17,15 @@ export async function registerAllSequences(conductor: ConductorClient) {
     );
     const originalMount = (conductor as any).mount?.bind(conductor);
     if (typeof originalMount === "function") {
+      const seenPluginIds: Set<string> = new Set(
+        Array.isArray((conductor as any)._mountedPluginIds)
+          ? (conductor as any)._mountedPluginIds
+          : []
+      );
+      if (typeof (conductor as any).getMountedPluginIds !== "function") {
+        (conductor as any).getMountedPluginIds = () =>
+          Array.from(seenPluginIds);
+      }
       (conductor as any).mount = async (
         seq: any,
         handlers: any,
@@ -33,7 +42,20 @@ export async function registerAllSequences(conductor: ConductorClient) {
           seenIds.add(id);
           (conductor as any)._mountedSeqIds = Array.from(seenIds);
         }
-        return await originalMount(seq, handlers, pluginId);
+        const result = await originalMount(seq, handlers, pluginId);
+        try {
+          if (typeof pluginId === "string" && pluginId) {
+            const firstTime = !seenPluginIds.has(pluginId);
+            seenPluginIds.add(pluginId);
+            (conductor as any)._mountedPluginIds = Array.from(seenPluginIds);
+            if (firstTime) {
+              try {
+                console.log("Plugin mounted successfully:", pluginId);
+              } catch {}
+            }
+          }
+        } catch {}
+        return result;
       };
     }
   } catch {}
@@ -101,7 +123,58 @@ export async function registerAllSequences(conductor: ConductorClient) {
         : 0;
     return prio(b) - prio(a);
   });
-  for (const p of prioritized) {
+  // Optional dev-time whitelist: set globalThis.__RENDERX_ONLY_PLUGINS to an array or CSV string
+  let runtimeList = prioritized;
+  try {
+    let onlyRaw: any = (globalThis as any).__RENDERX_ONLY_PLUGINS;
+    // Also support persistence via localStorage or ?only=... query param
+    try {
+      if (!onlyRaw && typeof window !== "undefined") {
+        const fromLS = (window as any).localStorage?.getItem(
+          "__RENDERX_ONLY_PLUGINS"
+        );
+        if (fromLS) {
+          onlyRaw = fromLS;
+        } else {
+          const sp = new URLSearchParams(
+            (window as any).location?.search || ""
+          );
+          const fromQS = sp.get("only");
+          if (fromQS) onlyRaw = fromQS;
+        }
+      }
+      if (typeof onlyRaw === "string") {
+        const s = (onlyRaw as string).trim();
+        if (s.startsWith("[")) {
+          try {
+            const arr = JSON.parse(s);
+            if (Array.isArray(arr)) {
+              onlyRaw = arr;
+            }
+          } catch {}
+        }
+      }
+    } catch {}
+
+    let only: string[] = [];
+    if (Array.isArray(onlyRaw)) {
+      only = onlyRaw.filter((s) => typeof s === "string" && s.length);
+    } else if (typeof onlyRaw === "string") {
+      only = onlyRaw
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.length);
+    }
+    if (only.length) {
+      const before = prioritized.map((p: any) => p?.id);
+      runtimeList = prioritized.filter((p: any) => only.includes(p?.id));
+      console.log(
+        "🎼 registerAllSequences: Applying ONLY-plugins whitelist to runtime registrations",
+        { only, before, after: runtimeList.map((p: any) => p?.id) }
+      );
+    }
+  } catch {}
+  for (const p of runtimeList) {
     const runtime = p.runtime;
     if (!runtime || !runtime.module || !runtime.export) continue;
     try {
@@ -158,7 +231,11 @@ export async function registerAllSequences(conductor: ConductorClient) {
 
   // 4) Debug logs
   try {
-    const ids = (conductor as any).getMountedPluginIds?.() || [];
+    const idsA = (conductor as any).getMountedPluginIds?.() || [];
+    const idsB = Array.isArray((conductor as any)._mountedPluginIds)
+      ? (conductor as any)._mountedPluginIds
+      : [];
+    const ids = Array.from(new Set([...(idsA || []), ...(idsB || [])]));
     console.log("🔎 Mounted plugin IDs after registration:", ids);
     for (const id of ids) {
       try {
