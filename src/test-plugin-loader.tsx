@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 import { initConductor, registerAllSequences } from "./core/conductor";
 import { loadJsonSequenceCatalogs } from "./core/conductor/runtime-loaders";
 import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./core/manifests/interactionManifest";
-import { initTopicsManifest, getTopicsManifestStats, getTopicsMap, getTopicDef } from "./core/manifests/topicsManifest";
+import { initTopicsManifest, getTopicsManifestStats, getTopicsMap } from "./core/manifests/topicsManifest";
 import { getPluginManifestStats } from "./core/startup/startupValidation";
-import { listComponents, getComponentById } from "./domain/components/inventory/inventory.service";
+import { listComponents } from "./domain/components/inventory/inventory.service";
 import { EventRouter } from "./core/events/EventRouter";
 import "./global.css";
 
@@ -26,19 +26,9 @@ interface ManifestData {
   plugins: PluginInfo[];
 }
 
-interface TopicRoute {
-  pluginId: string;
-  sequenceId: string;
-}
+// TopicRoute interface removed - was unused
 
-interface TopicDef {
-  routes: TopicRoute[];
-  payloadSchema?: any;
-  visibility?: 'public' | 'internal';
-  correlationKeys?: string[];
-  perf?: { throttleMs?: number; debounceMs?: number; dedupeWindowMs?: number };
-  notes?: string;
-}
+// TopicDef interface removed - was unused
 
 interface ComponentDetail {
   id: string;

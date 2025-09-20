@@ -332,7 +332,7 @@ test.describe('Control Panel Selection Guardrail (Headless)', () => {
             canvasEl2.appendChild(fallback);
             return { created: true, nodeId: fallback.id, injected: true };
           }
-        } catch (e) {
+        } catch {
           // ignore and fall through to error
         }
         return { error: 'Timed out waiting for canvas component creation' };

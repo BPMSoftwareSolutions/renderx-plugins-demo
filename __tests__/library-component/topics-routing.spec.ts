@@ -35,7 +35,7 @@ describe("Library topics route to the correct sequences via EventRouter", () => 
     expect(hit).toBeTruthy();
   });
 
-  it("routes component.drop.requested to LibraryComponentDropPlugin drop symphony", async () => {
+  it("routes component.drop.requested to LibraryComponentPlugin drop symphony", async () => {
     const conductor = makeConductorCapture();
     await EventRouter.publish(
       LIBRARY_COMPONENT_DROP_REQUESTED,
@@ -43,12 +43,12 @@ describe("Library topics route to the correct sequences via EventRouter", () => 
       conductor
     );
     const hit = conductor.calls.find(
-      (c: any) => c.pid === "LibraryComponentDropPlugin" && c.sid === "library-component-drop-symphony"
+      (c: any) => c.pid === "LibraryComponentPlugin" && c.sid === "library-component-drop-symphony"
     );
     expect(hit).toBeTruthy();
   });
 
-  it("routes container.drop.requested to LibraryComponentDropPlugin container-drop symphony", async () => {
+  it("routes container.drop.requested to LibraryComponentPlugin container-drop symphony", async () => {
     const conductor = makeConductorCapture();
     await EventRouter.publish(
       LIBRARY_CONTAINER_DROP_REQUESTED,
@@ -56,7 +56,7 @@ describe("Library topics route to the correct sequences via EventRouter", () => 
       conductor
     );
     const hit = conductor.calls.find(
-      (c: any) => c.pid === "LibraryComponentDropPlugin" && c.sid === "library-component-container-drop-symphony"
+      (c: any) => c.pid === "LibraryComponentPlugin" && c.sid === "library-component-container-drop-symphony"
     );
     expect(hit).toBeTruthy();
   });

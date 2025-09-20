@@ -31,7 +31,7 @@ async function findFirstExisting(paths) {
     try {
       await access(p);
       return p;
-    } catch (_) {
+    } catch {
       // continue
     }
   }

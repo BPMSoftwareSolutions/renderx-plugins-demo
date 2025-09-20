@@ -29,7 +29,8 @@ describe('renderx-plugin-library-component: register()', () => {
 
     const pluginIds = c.getMountedPluginIds();
     expect(pluginIds).toContain('LibraryComponentPlugin');
-    expect(pluginIds).toContain('LibraryComponentDropPlugin');
+    // LibraryComponentDropPlugin was consolidated into LibraryComponentPlugin
+    // expect(pluginIds).toContain('LibraryComponentDropPlugin');
   }, 30000);
 });
 

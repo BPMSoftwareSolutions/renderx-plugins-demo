@@ -85,10 +85,16 @@ const rule = {
 function validateExternalPlugins(context, config) {
   const { packagePattern, sequenceDirs, manifestPath, manifestKey, cwd } = config;
 
-  // Discover packages
-  const packages = discoverPackages(cwd, packagePattern);
+  // First, get the list of packages that are actually plugins from the plugin manifest
+  const pluginPackages = getPluginPackagesFromManifest(cwd);
 
-  for (const pkg of packages) {
+  // Discover all packages matching the pattern
+  const allPackages = discoverPackages(cwd, packagePattern);
+
+  // Filter to only validate packages that are listed in the plugin manifest
+  const packagesToValidate = allPackages.filter(pkg => pluginPackages.has(pkg.name));
+
+  for (const pkg of packagesToValidate) {
     try {
       const manifestPlugins = parseManifest(pkg.path, manifestPath, manifestKey);
       if (!manifestPlugins) {
@@ -127,6 +133,45 @@ function validateExternalPlugins(context, config) {
       });
     }
   }
+}
+
+function getPluginPackagesFromManifest(cwd) {
+  const pluginPackages = new Set();
+
+  // Try to read the plugin manifest to get the list of actual plugin packages
+  const manifestPaths = [
+    path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
+    path.join(cwd, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
+    path.join(cwd, 'plugin-manifest.json')
+  ];
+
+  for (const manifestPath of manifestPaths) {
+    if (fs.existsSync(manifestPath)) {
+      try {
+        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+        if (manifest.plugins && Array.isArray(manifest.plugins)) {
+          for (const plugin of manifest.plugins) {
+            // Extract package name from runtime.module or ui.module
+            const runtimeModule = plugin.runtime?.module;
+            const uiModule = plugin.ui?.module;
+
+            if (runtimeModule && runtimeModule.startsWith('@renderx-plugins/')) {
+              pluginPackages.add(runtimeModule);
+            }
+            if (uiModule && uiModule.startsWith('@renderx-plugins/') && uiModule !== runtimeModule) {
+              pluginPackages.add(uiModule);
+            }
+          }
+        }
+        break; // Use the first manifest found
+      } catch {
+        // Continue to next manifest path
+        continue;
+      }
+    }
+  }
+
+  return pluginPackages;
 }
 
 function discoverPackages(cwd, packagePattern) {
