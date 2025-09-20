@@ -3,8 +3,8 @@
  * Ensures sequence files reference plugin IDs that exist in the package manifest
  */
 
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { glob } from 'glob';
 
 const rule = {
@@ -55,7 +55,6 @@ const rule = {
     const manifestKey = _options.manifestKey || "renderx.plugins";
 
     // Only run this rule once per lint run, not per file
-    const _filename = context.getFilename();
     const cwd = process.cwd();
 
     // Use a global flag to ensure we only run validation once
@@ -157,13 +156,13 @@ function getPluginPackagesFromManifest(cwd) {
         if (manifest.plugins && Array.isArray(manifest.plugins)) {
           for (const plugin of manifest.plugins) {
             // Extract package name from runtime.module or ui.module
-            const runtimeModule = plugin.runtime?.module;
-            const uiModule = plugin.ui?.module;
+            const runtimeModule = plugin.runtime && plugin.runtime.module;
+            const uiModule = plugin.ui && plugin.ui.module;
 
-            if (runtimeModule && runtimeModule.startsWith('@renderx-plugins/')) {
+            if (runtimeModule && typeof runtimeModule === 'string' && runtimeModule.startsWith('@renderx-plugins/')) {
               pluginPackages.add(runtimeModule);
             }
-            if (uiModule && uiModule.startsWith('@renderx-plugins/') && uiModule !== runtimeModule) {
+            if (uiModule && typeof uiModule === 'string' && uiModule.startsWith('@renderx-plugins/') && uiModule !== runtimeModule) {
               pluginPackages.add(uiModule);
             }
           }
@@ -204,7 +203,24 @@ function discoverPackages(cwd, packagePattern) {
     // If glob fails (e.g., node_modules doesn't exist), return empty array
     return [];
   }
+
+function derivePkgNamespaces(pkgName) {
+  // Derive human-readable prefixes from package name, e.g.:
+  // @renderx-plugins/canvas-component -> ["Canvas", "CanvasComponent"]
+  try {
+    const name = pkgName.split('/').pop() || pkgName; // canvas-component
+    const parts = name.split('-'); // [canvas, component]
+    const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+    const caps = parts.map(cap); // [Canvas, Component]
+    const joined = caps.join(''); // CanvasComponent
+    const bases = new Set([caps[0], joined]);
+    return Array.from(bases);
+  } catch {
+    return [];
+  }
 }
+
+
 
 function packageHasSequences(packagePath, sequenceDirs) {
   for (const dir of sequenceDirs) {
@@ -260,7 +276,13 @@ function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
 
   // Allow sub-plugin IDs that share the base prefix of a declared plugin ID
   const basePrefixes = Array.from(manifestPlugins).map((id) => id.replace(/Plugin$/, ""));
-  const isAllowedByPrefix = (seqId) => basePrefixes.some((p) => seqId === p + "Plugin" || (seqId.startsWith(p) && seqId.endsWith("Plugin")));
+  const pkgNamespaces = derivePkgNamespaces(pkg.name);
+
+  const isAllowedByPrefix = (seqId) =>
+    basePrefixes.some((p) => seqId === p + "Plugin" || (seqId.startsWith(p) && seqId.endsWith("Plugin")));
+
+  const isAllowedByNamespace = (seqId) =>
+    pkgNamespaces.some((ns) => seqId.startsWith(ns) && seqId.endsWith("Plugin"));
 
   for (const sequenceDir of sequenceDirs) {
     const sequencesPath = path.join(pkg.path, sequenceDir);
@@ -279,8 +301,8 @@ function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
           const sequence = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
           if (sequence.pluginId && !manifestPlugins.has(sequence.pluginId)) {
-            // If not explicitly present, accept sub-IDs that follow naming convention
-            if (!isAllowedByPrefix(sequence.pluginId)) {
+            // If not explicitly present, accept sub-IDs by declared base or package namespace
+            if (!isAllowedByPrefix(sequence.pluginId) && !isAllowedByNamespace(sequence.pluginId)) {
               const closestMatch = findClosestMatch(sequence.pluginId, Array.from(manifestPlugins));
               mismatches.push({
                 filePath: path.relative(pkg.path, filePath),
@@ -311,7 +333,7 @@ function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
 }
 
 function getNestedProperty(obj, path) {
-  return path.split('.').reduce((current, key) => current?.[key], obj);
+  return path.split('.').reduce((current, key) => (current ? current[key] : undefined), obj);
 }
 
 function findClosestMatch(target, candidates) {
@@ -370,6 +392,6 @@ function levenshteinDistance(str1, str2) {
 
 export default {
   rules: {
-    "validate-external-plugin-consistency": rule,
-  },
+    "validate-external-plugin-consistency": rule
+  }
 };
