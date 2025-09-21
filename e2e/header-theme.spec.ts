@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { waitForAppReady } from './support/appReady';
 const DIAG = process.env.RX_E2E_DIAG === '1' || process.env.RX_E2E_DIAG === 'true';
 
 
@@ -18,28 +19,16 @@ test('header theme toggles end-to-end', async ({ page }) => {
   });
 
   await page.goto('/');
-
-  // Verify key runtime artifacts are reachable before we wait on UI
-  const manifestOk = await page.evaluate(async () => {
-    try {
-      const res = await fetch('/plugins/plugin-manifest.json', { cache: 'no-store' });
-      return res.ok;
-    } catch { return false; }
-  });
-  expect(manifestOk).toBeTruthy();
+  await waitForAppReady(page);
 
   // Wait for the header slot container to exist (even if empty initially)
-  await page.waitForSelector('[data-slot="headerRight"] [data-slot-content]', { timeout: 15000 });
+  await page.waitForSelector('[data-slot="headerRight"] [data-slot-content]');
 
   // Global readiness: sequencesReady or conductor present (preview can be slower in CI)
   await page.waitForFunction(() => {
     const w = (window as any);
     return w.RenderX?.sequencesReady === true || !!w.renderxCommunicationSystem?.conductor;
-  }, { timeout: 20000 });
-
-  // Do not block on conductor-mounted list in CI preview; rely on DOM visibility instead
-  // (getMountedPluginIds may lag or be empty in preview without affecting UI readiness).
-  // Proceed to waiting for the actual toggle control.
+  });
 
   // If plugins failed to load at runtime, fail fast with details
   const bad = consoleMessages.filter(m => /Failed to resolve module specifier ['"]@renderx-plugins\/header['"]|Failed runtime register for Header(Title|Controls|Theme)Plugin/.test(m.text));
@@ -86,7 +75,7 @@ test('header theme toggles end-to-end', async ({ page }) => {
     const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
     const noPlugins = Array.isArray(ids) && ids.length === 0;
     return changed || noPlugins ? { changed, noPlugins } : false;
-  }, { timeout: 15000 });
+  });
 
   const outcome: any = await outcomeHandle.jsonValue();
   if (!outcome.changed) {
@@ -97,4 +86,3 @@ test('header theme toggles end-to-end', async ({ page }) => {
   // Toggle back (best-effort)
   await toggle.click();
 });
-
