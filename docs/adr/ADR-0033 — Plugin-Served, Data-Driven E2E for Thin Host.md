@@ -1,6 +1,6 @@
 # ADR-0033 — Plugin-Served, Data-Driven E2E for Thin Host
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2025-09-21
 - Authors: RenderX core team
 - Related: ADR-0023 — Host SDK and Plugin Decoupling; ADR-0026/27/28/29/30/31/32 — Externalization efforts
@@ -16,17 +16,27 @@ The thin host should remain largely unaware of plugin internals. Tests must be o
 Adopt a plugin-served, data-driven E2E testing architecture:
 
 - Each plugin serves a versioned Test Manifest (JSON) describing scenarios and a Test Driver page that implements a small postMessage protocol.
-- The host ships a single generic harness page and a Playwright suite that discovers plugin manifests, iframes the driver page, and executes steps/assertions defined by data.
+- The host ships a single generic harness page and a Cypress suite that discovers plugin manifests, iframes the driver page, and executes steps/assertions defined by data.
 - Readiness is deterministic via ordered phases (0 → 1 → 2). The host enforces per-phase and per-step timeouts to reduce flake.
 - Plugins may author scenarios in Gherkin, compiled at build time to the normalized manifest consumed by the host.
 
 This keeps the host ultra-thin and moves plugin-specific selectors and timing into plugin-owned artifacts.
 
+### Amendment (2025-09-21): Switch to Cypress
+
+We initially drafted this ADR around a Playwright-based generic runner. During implementation and CI hardening, we adopted Cypress as the host-side generic E2E runner. The protocol, harness, and plugin-owned artifacts remain unchanged; only the runner changed.
+
+Rationale:
+- Integrated dev workflow with Vite (fast feedback, watch mode) and simpler preview alignment.
+- Mature retries, test skipping, and artifact capture out of the box (videos/screenshots), plus straightforward CI caching of the Cypress binary.
+- CI stability improvements in our environment (preview port alignment; resilient handling when a plugin does not serve `/test/manifest.json`).
+- Reduced dependencies: removed Node Playwright test packages from devDependencies. Note: Playwright (Python) remains for optional export tooling and is unaffected by this change.
+
 ## Architecture (ASCII)
 
 ```
 +-----------------------------+        discovers        +---------------------------+
-| Playwright Generic Runner   | ---------------------> | Plugin Registry (JSON)    |
+| Cypress Generic Runner      | ---------------------> | Plugin Registry (JSON)    |
 | - one suite, no plugin code |                        | [plugin baseUrls]         |
 +-----------------------------+                        +---------------------------+
              |
@@ -41,10 +51,11 @@ This keeps the host ultra-thin and moves plugin-specific selectors and timing in
              ^                                                         |
              |                                                         | interacts with
              |                                                         v
-   Playwright page.evaluate(...)                          +-------------------------+
-   - waitForPhases(0,1,2)                                 | Plugin Under Test       |
-   - runSteps/asserts from manifest                       | actual runtime UI       |
-   - collect logs/snapshots                               +-------------------------+
+  Cypress test code                                      +-------------------------+
+  - visit harness with driver/scenario                   | Plugin Under Test       |
+  - waitForPhases(0,1,2) via TestHarness                 | actual runtime UI       |
+  - runSteps/asserts from manifest                       +-------------------------+
+  - collect logs/snapshots
 ```
 
 ## Roles & Responsibilities
@@ -52,9 +63,9 @@ This keeps the host ultra-thin and moves plugin-specific selectors and timing in
 Host (thin):
 - Serve `src/test-plugin-loading.html` harness with a minimal `window.TestHarness` API.
 - Implement a stable postMessage envelope, validation, timeouts, and logging.
-- Provide a generic Playwright runner that:
+- Provide a generic Cypress runner that:
   - Discovers plugins (via a local registry JSON or CI matrix) and fetches `/test/manifest.json`.
-  - For each scenario: loads the harness with `driverUrl`, waits for phases, runs steps/asserts, collects artifacts.
+  - For each scenario: loads the harness with `driverUrl`, waits for phases, runs steps/asserts, collects artifacts (screenshots/videos as configured).
 
 Plugin (owner of tests):
 - Serve `/test/manifest.json` and `/test/driver.html` (driver loads plugin code and test driver script).
@@ -147,7 +158,7 @@ Compiles to:
 2. Pilot with 1–2 plugins
    - Add `/test/manifest.json` and `/test/driver.html` in pilot plugins.
    - Implement 3–5 smoke scenarios each using normalized steps/asserts.
-   - Create generic Playwright suite to discover and run scenarios.
+  - Create generic Cypress spec to discover and run scenarios.
 
 3. Scale and harden
    - Add tags, capability negotiation, and skip/only controls.
@@ -181,4 +192,4 @@ Compiles to:
 
 - `src/test-plugin-loading.html` (existing harness to extend)
 - ADR-0023 (decoupling), ADR-0026–0032 (externalization)
-- Playwright config and existing E2E folder structure
+- Cypress config and existing E2E folder structure (e.g., `cypress.config.ts`, `cypress/e2e/generic-plugin-runner.cy.ts`)
