@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { waitForAppReady } from './support/appReady';
+
 
 // App smoke: verify runtime bridges, theme toggle, and library inventory loads
 
@@ -15,6 +17,8 @@ test.describe('App smoke', () => {
       }
     });
     await page.goto('/');
+    await waitForAppReady(page);
+
     await page.waitForLoadState('domcontentloaded');
     // Wait for host bridges exposed by main.tsx
     await page.waitForFunction(() => {

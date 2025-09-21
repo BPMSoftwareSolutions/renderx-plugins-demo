@@ -4,13 +4,9 @@ import { defineConfig, devices } from '@playwright/test';
 const isCI = !!(globalThis as any).process?.env?.CI;
 
 const baseURL = isCI ? 'http://localhost:4173' : 'http://localhost:5173';
+// External server in CI: do not start webServer there.
 const webServer = isCI
-  ? {
-      command: 'npm run build && npm run preview',
-      url: 'http://localhost:4173',
-      reuseExistingServer: false,
-      timeout: 180_000,
-    }
+  ? undefined
   : {
       command: 'npm run dev',
       url: 'http://localhost:5173',

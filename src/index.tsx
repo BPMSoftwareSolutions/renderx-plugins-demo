@@ -91,4 +91,24 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   }
   const root = createRoot(document.getElementById("root")!);
   root.render(<App />);
+
+  // Emit deterministic readiness after first paint
+  queueMicrotask(() => {
+    requestAnimationFrame(() => {
+      try {
+        (window as any).RenderX = (window as any).RenderX || {};
+        // Expose conductor for debugging/bridges
+        (window as any).RenderX.conductor = conductor;
+        // In-page readiness signals
+        if (document?.body) {
+          document.body.dataset.renderxReady = '1';
+        }
+        (window as any).__RENDERX_READY__ = true;
+        window.dispatchEvent(new Event('renderx:ready'));
+        try { console.info('[ready] renderx:ready emitted'); } catch {}
+      } catch (e) {
+        try { console.warn('Failed to emit renderx:ready', e); } catch {}
+      }
+    });
+  });
 })();
