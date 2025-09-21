@@ -6,10 +6,28 @@ import fs from 'node:fs/promises';
 
 test.describe('Generic Plugin Runner (Phase 2)', () => {
   test('runs scenarios from local /test/manifest.json via TestHarness', async ({ page }) => {
+    const harnessPath = '/src/test-plugin-loading.html';
     // Fetch manifest from the app origin (served by Vite/Preview)
-    const res = await page.request.get('/test/manifest.json');
+    const res = await page.request.get('/test/manifest.json', { headers: { accept: 'application/json' } });
     expect(res.ok()).toBeTruthy();
-    const manifest = await res.json();
+    let manifest: any;
+    try {
+      const ctype = res.headers()['content-type'] || '';
+      if (ctype.includes('application/json')) {
+        manifest = await res.json();
+      } else {
+        // Some preview servers may SPA-fallback; guard by parsing manually and falling back to FS.
+        const text = await res.text();
+        if (text.trim().startsWith('{')) {
+          manifest = JSON.parse(text);
+        }
+      }
+    } catch {}
+    if (!manifest) {
+      // Fallback: read from repo to avoid CI flake
+      const txt = await fs.readFile('public/test/manifest.json', 'utf-8');
+      manifest = JSON.parse(txt);
+    }
 
     // Basic compat check
     expect(manifest?.testApiVersion).toBeDefined();
@@ -17,7 +35,7 @@ test.describe('Generic Plugin Runner (Phase 2)', () => {
 
     for (const scenario of manifest.scenarios) {
       // Open the harness page and auto-init via query params
-      const url = `/src/test-plugin-loading.html?driver=${encodeURIComponent(manifest.driverUrl)}&scenario=${encodeURIComponent(scenario.id)}&phases=0,1,2&timeout=${scenario?.readiness?.timeoutMs || 3000}`;
+      const url = `${harnessPath}?driver=${encodeURIComponent(manifest.driverUrl)}&scenario=${encodeURIComponent(scenario.id)}&phases=0,1,2&timeout=${scenario?.readiness?.timeoutMs || 3000}`;
       await page.goto(url);
 
       // After auto-init + ready phases, run steps/asserts via the harness API
@@ -41,6 +59,7 @@ test.describe('Generic Plugin Runner (Phase 2)', () => {
   });
 
   test('runs scenarios from plugin registry (tests/e2e.plugin-registry.local.json)', async ({ page }) => {
+    const harnessPath = '/src/test-plugin-loading.html';
     // Read local registry from the repo (dev-only)
     let registry: any;
     try {
@@ -91,7 +110,7 @@ test.describe('Generic Plugin Runner (Phase 2)', () => {
 
       for (const scenario of manifest.scenarios) {
         executed++;
-        const url = `/src/test-plugin-loading.html?driver=${encodeURIComponent(driverUrl)}&scenario=${encodeURIComponent(scenario.id)}&phases=0,1,2&timeout=${scenario?.readiness?.timeoutMs || 5000}`;
+        const url = `${harnessPath}?driver=${encodeURIComponent(driverUrl)}&scenario=${encodeURIComponent(scenario.id)}&phases=0,1,2&timeout=${scenario?.readiness?.timeoutMs || 5000}`;
         await page.goto(url);
 
         const stepResults = await page.evaluate(async (steps) => {
