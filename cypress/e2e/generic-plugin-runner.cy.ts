@@ -33,23 +33,110 @@ describe('Generic Plugin Runner (Cypress)', () => {
       expect(manifest).to.have.property('driverUrl');
       expect(Array.isArray(manifest.scenarios)).to.be.true;
 
-      for (const scenario of manifest.scenarios) {
+      const includeTags = String(Cypress.env('includeTags') || '').split(',').map((s: string) => s.trim()).filter(Boolean);
+      const excludeTags = String(Cypress.env('excludeTags') || '').split(',').map((s: string) => s.trim()).filter(Boolean);
+      const reqCaps = String(Cypress.env('requireCapabilities') || '').split(',').map((s: string) => s.trim()).filter(Boolean);
+      const artDir = String(Cypress.env('artifactsDir') || 'cypress/artifacts');
+
+      const scenarios: any[] = (manifest.scenarios || []).filter((s: any) => {
+        const tags: string[] = Array.isArray(s.tags) ? s.tags : [];
+        if (includeTags.length && !includeTags.some(t => tags.includes(t))) return false;
+        if (excludeTags.some(t => tags.includes(t))) return false;
+        return true;
+      });
+
+      cy.log(`Running ${scenarios.length} scenario(s) after tag filtering`);
+
+      for (const scenario of scenarios) {
         const url = toHarnessUrl(manifest.driverUrl, scenario.id, '0,1,2', scenario?.readiness?.timeoutMs ?? 6000);
         cy.visit(url);
 
-        // Steps
-        cy.window().then((win) => {
-          return (win as any).TestHarness.runSteps(scenario.steps || []);
-        }).then((stepResults: any[]) => {
-          (stepResults || []).forEach((r) => expect(r.status, `step for ${scenario.id}`).to.eq('ok'));
-        });
+        // Version check (basic): ensure manifest.testApiVersion starts with required min major
+        // Accept patterns like '1.0.0' against min '1.0.0' and max '1.x'
+        const minApi = String(Cypress.env('minTestApiVersion') || '1.0.0');
+        const maxApi = String(Cypress.env('maxTestApiVersion') || '1.x');
+        const manifestVer = String(manifest.testApiVersion || '0.0.0');
+        const okMin = manifestVer.split('.')[0] >= minApi.split('.')[0];
+        const okMax = maxApi.endsWith('.x') ? manifestVer.split('.')[0] === maxApi.split('.')[0] : manifestVer <= maxApi;
+        if (!(okMin && okMax)) {
+          cy.log(`Skipping ${scenario.id}: incompatible testApiVersion ${manifestVer}`);
+          continue;
+        }
 
-        // Asserts
-        cy.window().then((win) => {
-          return (win as any).TestHarness.runAsserts(scenario.asserts || []);
-        }).then((assertResults: any[]) => {
-          (assertResults || []).forEach((r) => expect(r.status, `assert for ${scenario.id}`).to.eq('ok'));
-        });
+        // Capabilities check
+        if (reqCaps.length) {
+          cy.window().then((win) => (win as any).TestHarness.getCapabilities()).then((caps: string[]) => {
+            const missing = reqCaps.filter(c => !caps.includes(c));
+            if (missing.length) {
+              cy.log(`Skipping ${scenario.id}: missing capabilities ${missing.join(', ')}`);
+              // mark as skipped by short-circuiting this iteration
+              return Cypress.Promise.resolve('skip');
+            }
+            return Cypress.Promise.resolve('ok');
+          }).then((status) => {
+            if (status === 'skip') return;
+
+            // Steps
+            cy.window().then((win) => {
+              return (win as any).TestHarness.runSteps(scenario.steps || []);
+            }).then((stepResults: any[]) => {
+              (stepResults || []).forEach((r) => expect(r.status, `step for ${scenario.id}`).to.eq('ok'));
+            });
+
+            // Asserts
+            cy.window().then((win) => {
+              return (win as any).TestHarness.runAsserts(scenario.asserts || []);
+            }).then((assertResults: any[]) => {
+              (assertResults || []).forEach((r) => expect(r.status, `assert for ${scenario.id}`).to.eq('ok'));
+            });
+
+            // Optional snapshot artifact if capability present
+            cy.window().then((win) => (win as any).TestHarness.getCapabilities()).then((caps: string[]) => {
+              if (caps.includes('stateSnapshot')) {
+                return cy.window().then((win) => (win as any).TestHarness.getSnapshot()).then((snapshot) => {
+                  const fp = `${artDir}/snapshots/${scenario.id}.json`;
+                  return cy.task('writeArtifact', { filePath: fp, content: snapshot });
+                });
+              }
+              return undefined;
+            });
+
+            // Always capture logs as artifact
+            cy.window().then((win) => (win as any).TestHarness.getLogs()).then((logs) => {
+              const fp = `${artDir}/logs/${scenario.id}.json`;
+              return cy.task('writeArtifact', { filePath: fp, content: logs });
+            });
+          });
+        } else {
+          // No required capabilities; proceed
+          cy.window().then((win) => {
+            return (win as any).TestHarness.runSteps(scenario.steps || []);
+          }).then((stepResults: any[]) => {
+            (stepResults || []).forEach((r) => expect(r.status, `step for ${scenario.id}`).to.eq('ok'));
+          });
+
+          cy.window().then((win) => {
+            return (win as any).TestHarness.runAsserts(scenario.asserts || []);
+          }).then((assertResults: any[]) => {
+            (assertResults || []).forEach((r) => expect(r.status, `assert for ${scenario.id}`).to.eq('ok'));
+          });
+
+          // Snapshot if available
+          cy.window().then((win) => (win as any).TestHarness.getCapabilities()).then((caps: string[]) => {
+            if (caps.includes('stateSnapshot')) {
+              return cy.window().then((win) => (win as any).TestHarness.getSnapshot()).then((snapshot) => {
+                const fp = `${artDir}/snapshots/${scenario.id}.json`;
+                return cy.task('writeArtifact', { filePath: fp, content: snapshot });
+              });
+            }
+            return undefined;
+          });
+
+          cy.window().then((win) => (win as any).TestHarness.getLogs()).then((logs) => {
+            const fp = `${artDir}/logs/${scenario.id}.json`;
+            return cy.task('writeArtifact', { filePath: fp, content: logs });
+          });
+        }
       }
     });
   });

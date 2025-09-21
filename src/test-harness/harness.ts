@@ -166,6 +166,14 @@ class Harness implements TestHarnessAPI {
     return [...this.logs];
   }
 
+  getCapabilities(): string[] {
+    return [...this.capabilities];
+  }
+
+  getDriverInfo(): { driverVersion: string | null; capabilities: string[] } {
+    return { driverVersion: this.driverVersion, capabilities: [...this.capabilities] };
+  }
+
   async teardown(): Promise<void> {
     if (!this.iframe) return;
     try {
