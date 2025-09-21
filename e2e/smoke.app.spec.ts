@@ -19,12 +19,11 @@ test.describe('App smoke', () => {
     await page.goto('/');
     await waitForAppReady(page);
 
-    await page.waitForLoadState('domcontentloaded');
     // Wait for host bridges exposed by main.tsx
     await page.waitForFunction(() => {
       const rx: any = (window as any).RenderX;
       return !!(rx && rx.EventRouter && typeof rx.EventRouter.publish === 'function' && rx.inventory && typeof rx.inventory.listComponents === 'function');
-    }, undefined, { timeout: 8000 });
+    });
   });
 
   test('library components load via host inventory bridge', async ({ page }) => {

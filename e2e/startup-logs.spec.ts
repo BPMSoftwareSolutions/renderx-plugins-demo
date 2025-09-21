@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { waitForAppReady } from './support/appReady';
+
 
 // Browser-startup smoke guardrail: ensure all runtimes register and no critical errors are logged
 // This complements the JSDOM startup test by exercising the real dev/preview server.
@@ -10,16 +12,13 @@ test('startup has no critical errors and all plugin runtimes register', async ({
   });
 
   await page.goto('/');
-  // Give the app a moment to boot and register plugins
-  await page.waitForLoadState('domcontentloaded');
+  await waitForAppReady(page);
 
-  // Wait up to 6s for success logs to appear
+  // Wait for conductor to be available (readiness already gated above)
+  await page.waitForFunction(() => !!(window as any).RenderX?.conductor);
+
   const wanted = ['LibraryPlugin','CanvasPlugin','LibraryComponentPlugin','CanvasComponentPlugin'];
   const hasOk = (id: string) => messages.some(m => new RegExp(`Registered plugin runtime:\\s*${id}`, 'i').test(m));
-  const start = Date.now();
-  while (!wanted.every(hasOk) && Date.now() - start < 6000) {
-    await page.waitForTimeout(100);
-  }
 
   const blob = messages.join('\n');
 

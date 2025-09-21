@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { waitForAppReady } from './support/appReady';
+
 
 // Guardrail: there should be no "Plugin not found: LibraryComponent*" messages during
 // drag/drop orchestration. This gives a crisp failure when library-component sequences
@@ -9,7 +11,7 @@ test('no "Plugin not found: LibraryComponent*" appears during drag/drop orchestr
   page.on('console', (m) => logs.push(m.text()));
 
   await page.goto('/');
-  await page.waitForLoadState('domcontentloaded');
+  await waitForAppReady(page);
 
   // Print mounted IDs for triage
   const ids = await page.evaluate(() => {
@@ -32,9 +34,6 @@ test('no "Plugin not found: LibraryComponent*" appears during drag/drop orchestr
 
     await rx.EventRouter.publish('library.component.drop.requested', { component: comp, position });
   });
-
-  // Let orchestration run
-  await page.waitForTimeout(500);
 
   const blob = logs.join('\n');
   // Assert no plugin-not-found for LibraryComponent* (this will fail in current regression, by design)

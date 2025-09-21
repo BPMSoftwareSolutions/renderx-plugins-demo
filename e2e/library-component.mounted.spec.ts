@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { waitForAppReady } from './support/appReady';
+
 
 
 const isPreview = !!(globalThis as any).process?.env?.CI;
@@ -17,9 +19,10 @@ test('library-component catalogs fetch and handlers resolve in browser', async (
   });
 
   await page.goto('/');
+  await waitForAppReady(page);
 
   // Wait for the app to finish registering/mounting sequences
-  await page.waitForFunction(() => (window as any).RenderX?.sequencesReady === true, { timeout: 15000 });
+  await page.waitForFunction(() => (window as any).RenderX?.sequencesReady === true);
 
   // 1) Catalog is served
   const catalog = await page.evaluate(async () => {

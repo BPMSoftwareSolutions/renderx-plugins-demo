@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { waitForAppReady } from './support/appReady';
+
 const DIAG = process.env.RX_E2E_DIAG === '1' || process.env.RX_E2E_DIAG === 'true';
 
 
@@ -14,8 +16,8 @@ test('library drop creates a canvas element', async ({ page }) => {
       if (t === 'warning' || t === 'error') console.log(`[browser:${t}]`, msg.text());
     });
   }
-
   await page.goto('/');
+  await waitForAppReady(page);
 
   // Wait for canvas to be present
   const canvas = page.locator('#rx-canvas');
@@ -29,7 +31,7 @@ test('library drop creates a canvas element', async ({ page }) => {
   await page.waitForFunction(() => {
     const w = (window as any);
     return w.RenderX?.sequencesReady === true || !!w.renderxCommunicationSystem?.conductor;
-  }, { timeout: 20000 });
+  });
 
   // Do not hard-block on conductor-mounted list; rely on sequencesReady and DOM checks.
   // Some preview builds keep getMountedPluginIds empty while UI still functions.
@@ -52,7 +54,7 @@ test('library drop creates a canvas element', async ({ page }) => {
   });
 
   // Publish a canvas create using a library component selection (robust to DnD variability)
-  const result = await page.evaluate(async () => {
+  await page.evaluate(async () => {
     const rx: any = (window as any).RenderX;
     const list = await rx.inventory.listComponents();
     const comp = list.find((x: any) => x?.id === 'button') ?? list[0];
@@ -80,9 +82,17 @@ test('library drop creates a canvas element', async ({ page }) => {
       },
       // containerId intentionally omitted to drop on root canvas
     });
+  });
 
-    // give the sequences time to run and render DOM (slower in CI)
-    await new Promise((r) => setTimeout(r, 5000));
+  // Wait until either DOM child count increases or we observed creation events/callbacks
+  await page.waitForFunction((b) => {
+    const canvasEl = document.querySelector('#rx-canvas') as HTMLElement;
+    const childCount = canvasEl ? canvasEl.childElementCount : 0;
+    const created = ((window as any).__createdCount || 0) + ((window as any).__createdCbCount || 0);
+    return childCount > b || created > 0;
+  }, before);
+
+  const result = await page.evaluate(() => {
     return {
       childCount: (document.querySelector('#rx-canvas') as HTMLElement).childElementCount,
       createdEvents: (window as any).__createdCount || 0,
