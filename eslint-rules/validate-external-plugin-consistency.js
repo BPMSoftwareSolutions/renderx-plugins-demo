@@ -204,6 +204,8 @@ function discoverPackages(cwd, packagePattern) {
     return [];
   }
 
+}
+
 function derivePkgNamespaces(pkgName) {
   // Derive human-readable prefixes from package name, e.g.:
   // @renderx-plugins/canvas-component -> ["Canvas", "CanvasComponent"]
