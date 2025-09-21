@@ -27,6 +27,7 @@ jobs:
       - name: Precheck plugins and manifests
         run: npm run ci:precheck
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-      - run: npm run ci
+        run: echo "Skip Playwright install (migrated to Cypress)"
+      - name: Run Cypress E2E
+        run: npm run e2e:cypress
 
