@@ -47,7 +47,7 @@
     "@renderx-plugins/control-panel": "0.1.0-rc.4",
     "@renderx-plugins/header": "^0.1.1",
     "@renderx-plugins/host-sdk": "^0.3.0",
-    "@renderx-plugins/library": "^0.1.1-rc.2",
+    "@renderx-plugins/library": "^0.1.1-rc.3",
     "@renderx-plugins/library-component": "^0.1.0-rc.5",
     "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
