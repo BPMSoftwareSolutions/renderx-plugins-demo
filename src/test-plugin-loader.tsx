@@ -350,7 +350,12 @@ const SophisticatedPluginLoader: React.FC = () => {
     );
   }, [manifest, searchTerm]);
 
-  const topicsMap = useMemo(() => getTopicsMap(), []);
+  const topicsMap = useMemo(() => {
+    const topics = getTopicsMap();
+    console.log('🔍 Topics loaded:', Object.keys(topics).length, 'topics');
+    console.log('🔍 Theme topics:', Object.keys(topics).filter(k => k.includes('theme')));
+    return topics;
+  }, []);
   const filteredTopics = useMemo(() => {
     const topics = Object.entries(topicsMap);
     if (!searchTerm) return topics;

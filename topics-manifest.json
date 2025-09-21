@@ -9,59 +9,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "component": {
-            "type": "object"
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "x",
-              "y"
-            ]
-          },
-          "containerId": {
-            "type": "string"
-          },
-          "correlationId": {
-            "type": "string"
-          },
-          "onComponentCreated": {
-            "type": "object"
-          },
-          "onDragStart": {
-            "type": "object"
-          },
-          "onDragMove": {
-            "type": "object"
-          },
-          "onDragEnd": {
-            "type": "object"
-          },
-          "onSelected": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "component",
-          "position"
-        ]
+        "type": "object"
       },
       "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
+      "correlationKeys": [],
       "perf": {},
-      "notes": "Canvas component creation requested; routes to create sequence."
+      "notes": "Auto-derived from canvas-component/create.json"
     },
     "canvas.component.created": {
       "routes": [],
@@ -190,25 +143,17 @@
     "canvas.component.select.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentSelectionRequestPlugin",
+          "pluginId": "CanvasComponentPlugin",
           "sequenceId": "canvas-component-select-requested-symphony"
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Topic-first selection request; routes to selection routing symphony."
+      "notes": "Auto-derived from canvas-component/select.requested.json"
     },
     "canvas.component.deselect.requested": {
       "routes": [
@@ -218,13 +163,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {}
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Topic-first deselection request; routes to deselection symphony."
+      "notes": "Auto-derived from canvas-component/deselect.requested.json"
     },
     "canvas.component.selection.changed": {
       "routes": [
@@ -262,7 +206,7 @@
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "User initiated canvas import; routes to import sequence."
+      "notes": "Auto-derived from canvas-component/import.json"
     },
     "canvas.component.import.started": {
       "routes": [],
@@ -450,25 +394,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "attribute": {
-            "type": "string"
-          },
-          "value": {}
-        },
-        "required": [
-          "id",
-          "attribute"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Canvas component update requested; routes to update sequence with throttling."
+      "notes": "Auto-derived from canvas-component/update.json"
     },
     "canvas.component.resize.line.start": {
       "routes": [
@@ -1082,6 +1013,36 @@
       "perf": {},
       "notes": "Auto-derived from library/library-load.json"
     },
+    "library.component.drag.start.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library-component/drag.json"
+    },
+    "library.component.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library-component/drop.json"
+    },
     "test.route": {
       "routes": [
         {
@@ -1122,11 +1083,11 @@
       "perf": {},
       "notes": "Auto-derived from library-component/container.drop.json"
     },
-    "library.component.drag.start.requested": {
+    "canvas.component.delete.requested": {
       "routes": [
         {
-          "pluginId": "LibraryComponentPlugin",
-          "sequenceId": "library-component-drag-symphony"
+          "pluginId": "CanvasComponentDeleteRequestPlugin",
+          "sequenceId": "canvas-component-delete-requested-symphony"
         }
       ],
       "payloadSchema": {
@@ -1135,13 +1096,13 @@
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Auto-derived from library-component/drag.json"
+      "notes": "Auto-derived from canvas-component/delete.requested.json"
     },
-    "library.component.drop.requested": {
+    "canvas.component.deselect.all.requested": {
       "routes": [
         {
-          "pluginId": "LibraryComponentPlugin",
-          "sequenceId": "library-component-drop-symphony"
+          "pluginId": "CanvasComponentDeselectionPlugin",
+          "sequenceId": "canvas-component-deselect-all-symphony"
         }
       ],
       "payloadSchema": {
@@ -1150,7 +1111,262 @@
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Auto-derived from library-component/drop.json"
+      "notes": "Auto-derived from canvas-component/deselect-all.json"
+    },
+    "canvas.component.drag.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/drag.json"
+    },
+    "canvas.component.export.gif.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportGifPlugin",
+          "sequenceId": "canvas-component-export-gif-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/export-gif.json"
+    },
+    "canvas.component.export.mp4.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportMp4Plugin",
+          "sequenceId": "canvas-component-export-mp4-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/export-mp4.json"
+    },
+    "canvas.component.export.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/export.json"
+    },
+    "canvas.line.manip.end.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipEndPlugin",
+          "sequenceId": "canvas-line-manip-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/line.manip.end.json"
+    },
+    "canvas.line.manip.move.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipMovePlugin",
+          "sequenceId": "canvas-line-manip-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/line.manip.move.json"
+    },
+    "canvas.line.manip.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipStartPlugin",
+          "sequenceId": "canvas-line-manip-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/line.manip.start.json"
+    },
+    "canvas.component.resize.end.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/resize.end.json"
+    },
+    "canvas.line.resize.end.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-line-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/resize.line.end.json"
+    },
+    "canvas.line.resize.move.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-line-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/resize.line.move.json"
+    },
+    "canvas.line.resize.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-line-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/resize.line.start.json"
+    },
+    "canvas.component.resize.move.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/resize.move.json"
+    },
+    "canvas.component.resize.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/resize.start.json"
+    },
+    "canvas.component.select.svg.node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-select-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/select.svg-node.json"
+    },
+    "canvas.component.update.svg.node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-update-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/update.svg-node.json"
+    },
+    "app.ui.theme.get": {
+      "routes": [
+        {
+          "pluginId": "HeaderThemePlugin",
+          "sequenceId": "header-ui-theme-get-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from header/ui.theme.get.json"
+    },
+    "app.ui.theme.toggle": {
+      "routes": [
+        {
+          "pluginId": "HeaderThemePlugin",
+          "sequenceId": "header-ui-theme-toggle-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from header/ui.theme.toggle.json"
     }
   }
 }

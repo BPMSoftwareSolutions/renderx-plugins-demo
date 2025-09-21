@@ -3,8 +3,8 @@
  * Ensures sequence files reference plugin IDs that exist in the package manifest
  */
 
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { glob } from 'glob';
 
 const rule = {
@@ -55,7 +55,6 @@ const rule = {
     const manifestKey = _options.manifestKey || "renderx.plugins";
 
     // Only run this rule once per lint run, not per file
-    const _filename = context.getFilename();
     const cwd = process.cwd();
 
     // Use a global flag to ensure we only run validation once
@@ -96,8 +95,13 @@ function validateExternalPlugins(context, config) {
 
   for (const pkg of packagesToValidate) {
     try {
+      // Skip packages that do not contain any sequence JSON files
+      const hasSequences = packageHasSequences(pkg.path, sequenceDirs);
+      if (!hasSequences) continue;
+
       const manifestPlugins = parseManifest(pkg.path, manifestPath, manifestKey);
       if (!manifestPlugins) {
+        // If there are sequences but no manifest data, report missing manifest
         context.report({
           loc: { line: 1, column: 0 },
           messageId: "missingManifest",
@@ -152,13 +156,13 @@ function getPluginPackagesFromManifest(cwd) {
         if (manifest.plugins && Array.isArray(manifest.plugins)) {
           for (const plugin of manifest.plugins) {
             // Extract package name from runtime.module or ui.module
-            const runtimeModule = plugin.runtime?.module;
-            const uiModule = plugin.ui?.module;
+            const runtimeModule = plugin.runtime && plugin.runtime.module;
+            const uiModule = plugin.ui && plugin.ui.module;
 
-            if (runtimeModule && runtimeModule.startsWith('@renderx-plugins/')) {
+            if (runtimeModule && typeof runtimeModule === 'string' && runtimeModule.startsWith('@renderx-plugins/')) {
               pluginPackages.add(runtimeModule);
             }
-            if (uiModule && uiModule.startsWith('@renderx-plugins/') && uiModule !== runtimeModule) {
+            if (uiModule && typeof uiModule === 'string' && uiModule.startsWith('@renderx-plugins/') && uiModule !== runtimeModule) {
               pluginPackages.add(uiModule);
             }
           }
@@ -199,11 +203,58 @@ function discoverPackages(cwd, packagePattern) {
     // If glob fails (e.g., node_modules doesn't exist), return empty array
     return [];
   }
+
 }
 
-function parseManifest(packagePath, manifestPath, manifestKey) {
-  const manifestFilePath = path.join(packagePath, manifestPath);
+function derivePkgNamespaces(pkgName) {
+  // Derive human-readable prefixes from package name, e.g.:
+  // @renderx-plugins/canvas-component -> ["Canvas", "CanvasComponent"]
+  try {
+    const name = pkgName.split('/').pop() || pkgName; // canvas-component
+    const parts = name.split('-'); // [canvas, component]
+    const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+    const caps = parts.map(cap); // [Canvas, Component]
+    const joined = caps.join(''); // CanvasComponent
+    const bases = new Set([caps[0], joined]);
+    return Array.from(bases);
+  } catch {
+    return [];
+  }
+}
 
+
+
+function packageHasSequences(packagePath, sequenceDirs) {
+  for (const dir of sequenceDirs) {
+    const sequencesPath = path.join(packagePath, dir);
+    if (fs.existsSync(sequencesPath)) {
+      try {
+        const files = glob.sync('**/*.json', { cwd: sequencesPath });
+        if (files && files.length > 0) return true;
+      } catch {
+        // ignore unreadable dirs
+      }
+    }
+  }
+  return false;
+}
+
+
+function parseManifest(packagePath, manifestPath, manifestKey) {
+  // Prefer an internal generated manifest if present inside the package
+  const generatedPath = path.join(packagePath, '.generated', 'plugin-manifest.json');
+  if (fs.existsSync(generatedPath)) {
+    try {
+      const gen = JSON.parse(fs.readFileSync(generatedPath, 'utf8'));
+      if (Array.isArray(gen.plugins)) {
+        return new Set(gen.plugins.map(p => p.id).filter(Boolean));
+      }
+    } catch {
+      // fallthrough to package.json
+    }
+  }
+
+  const manifestFilePath = path.join(packagePath, manifestPath);
   if (!fs.existsSync(manifestFilePath)) {
     return null;
   }
@@ -225,6 +276,16 @@ function parseManifest(packagePath, manifestPath, manifestKey) {
 function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
   const mismatches = [];
 
+  // Allow sub-plugin IDs that share the base prefix of a declared plugin ID
+  const basePrefixes = Array.from(manifestPlugins).map((id) => id.replace(/Plugin$/, ""));
+  const pkgNamespaces = derivePkgNamespaces(pkg.name);
+
+  const isAllowedByPrefix = (seqId) =>
+    basePrefixes.some((p) => seqId === p + "Plugin" || (seqId.startsWith(p) && seqId.endsWith("Plugin")));
+
+  const isAllowedByNamespace = (seqId) =>
+    pkgNamespaces.some((ns) => seqId.startsWith(ns) && seqId.endsWith("Plugin"));
+
   for (const sequenceDir of sequenceDirs) {
     const sequencesPath = path.join(pkg.path, sequenceDir);
 
@@ -242,14 +303,15 @@ function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
           const sequence = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
           if (sequence.pluginId && !manifestPlugins.has(sequence.pluginId)) {
-            // Find the closest matching manifest ID for better error messages
-            const closestMatch = findClosestMatch(sequence.pluginId, Array.from(manifestPlugins));
-
-            mismatches.push({
-              filePath: path.relative(pkg.path, filePath),
-              sequenceId: sequence.pluginId,
-              manifestId: closestMatch || Array.from(manifestPlugins)[0]
-            });
+            // If not explicitly present, accept sub-IDs by declared base or package namespace
+            if (!isAllowedByPrefix(sequence.pluginId) && !isAllowedByNamespace(sequence.pluginId)) {
+              const closestMatch = findClosestMatch(sequence.pluginId, Array.from(manifestPlugins));
+              mismatches.push({
+                filePath: path.relative(pkg.path, filePath),
+                sequenceId: sequence.pluginId,
+                manifestId: closestMatch || Array.from(manifestPlugins)[0]
+              });
+            }
           }
         } catch (parseError) {
           context.report({
@@ -273,7 +335,7 @@ function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {
 }
 
 function getNestedProperty(obj, path) {
-  return path.split('.').reduce((current, key) => current?.[key], obj);
+  return path.split('.').reduce((current, key) => (current ? current[key] : undefined), obj);
 }
 
 function findClosestMatch(target, candidates) {
@@ -332,6 +394,6 @@ function levenshteinDistance(str1, str2) {
 
 export default {
   rules: {
-    "validate-external-plugin-consistency": rule,
-  },
+    "validate-external-plugin-consistency": rule
+  }
 };

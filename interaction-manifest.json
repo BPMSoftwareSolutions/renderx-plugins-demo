@@ -13,6 +13,10 @@
       "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-create-symphony"
     },
+    "canvas.component.delete": {
+      "pluginId": "CanvasComponentDeletePlugin",
+      "sequenceId": "canvas-component-delete-symphony"
+    },
     "canvas.component.deselect": {
       "pluginId": "CanvasComponentDeselectionPlugin",
       "sequenceId": "canvas-component-deselect-symphony"
@@ -58,19 +62,23 @@
       "sequenceId": "canvas-line-resize-start-symphony"
     },
     "canvas.component.resize.move": {
-      "pluginId": "CanvasComponentResizeMovePlugin",
+      "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-resize-move-symphony"
     },
     "canvas.component.resize.start": {
-      "pluginId": "CanvasComponentResizeStartPlugin",
+      "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-resize-start-symphony"
     },
     "canvas.component.select": {
-      "pluginId": "CanvasComponentSelectionPlugin",
+      "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-select-symphony"
     },
     "canvas.component.select.svg-node": {
       "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+      "sequenceId": "canvas-component-select-svg-node-symphony"
+    },
+    "canvas.component.select.svg.node": {
+      "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-select-svg-node-symphony"
     },
     "canvas.component.update": {
@@ -80,6 +88,34 @@
     "canvas.component.update.svg-node": {
       "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
       "sequenceId": "canvas-component-update-svg-node-symphony"
+    },
+    "canvas.component.update.svg.node": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-update-svg-node-symphony"
+    },
+    "canvas.line.manip.end": {
+      "pluginId": "CanvasLineManipEndPlugin",
+      "sequenceId": "canvas-line-manip-end-symphony"
+    },
+    "canvas.line.manip.move": {
+      "pluginId": "CanvasLineManipMovePlugin",
+      "sequenceId": "canvas-line-manip-move-symphony"
+    },
+    "canvas.line.manip.start": {
+      "pluginId": "CanvasLineManipStartPlugin",
+      "sequenceId": "canvas-line-manip-start-symphony"
+    },
+    "canvas.line.resize.end": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-line-resize-end-symphony"
+    },
+    "canvas.line.resize.move": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-line-resize-move-symphony"
+    },
+    "canvas.line.resize.start": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-line-resize-start-symphony"
     },
     "control.panel.classes.add": {
       "pluginId": "ControlPanelPlugin",
@@ -138,12 +174,20 @@
       "sequenceId": "library-component-drag-symphony"
     },
     "library.component.drop": {
-      "pluginId": "LibraryComponentPlugin",
+      "pluginId": "LibraryComponentDropPlugin",
       "sequenceId": "library-component-drop-symphony"
     },
     "library.container.drop": {
       "pluginId": "LibraryComponentPlugin",
       "sequenceId": "library-component-container-drop-symphony"
+    },
+    "library.drag.move": {
+      "pluginId": "LibraryComponentPlugin",
+      "sequenceId": "library-component-drag-symphony"
+    },
+    "library.drop": {
+      "pluginId": "LibraryComponentPlugin",
+      "sequenceId": "library-component-drop-symphony"
     },
     "library.load": {
       "pluginId": "LibraryPlugin",
