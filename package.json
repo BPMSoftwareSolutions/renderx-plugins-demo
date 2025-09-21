@@ -39,7 +39,7 @@
     "packages:test": "npm --prefix packages/renderx-plugin-canvas run test && npm --prefix packages/renderx-plugin-canvas-component run test",
     "e2e": "cypress run",
     "ci:precheck": "node scripts/ci-precheck.js",
-    "ci": "npm run pre:manifests && npm run lint && npm test && npm run e2e",
+  "ci": "npm run pre:manifests && npm run lint && npm test && npm run e2e:cypress",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:run:preview": "cypress run --config baseUrl=http://localhost:4173",
