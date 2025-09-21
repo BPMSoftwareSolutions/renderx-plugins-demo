@@ -29,6 +29,8 @@ export default {
       input: {
         main: "index.html",
         "vendor-control-panel": "src/vendor/vendor-control-panel.ts",
+        // Ensure the test harness page is built and available in preview at /test-plugin-loading.html
+        "test-plugin-loading": "src/test-plugin-loading.html",
       },
       output: {
         entryFileNames: (chunkInfo) =>
