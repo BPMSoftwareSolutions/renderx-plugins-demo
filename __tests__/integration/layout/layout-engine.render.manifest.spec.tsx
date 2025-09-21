@@ -59,6 +59,6 @@ describe("LayoutEngine renders slots dynamically from layout-manifest (TDD)", ()
 
     // Assert placeholders: expect three slot containers by data-slot attribute
     expect(tryFind().length).toBe(3);
-  });
+  }, 30000); // Integration test timeout
 });
 

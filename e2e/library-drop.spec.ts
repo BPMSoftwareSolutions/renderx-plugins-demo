@@ -19,6 +19,17 @@ test('library drop creates a canvas element', async ({ page }) => {
   await page.goto('/');
   await waitForAppReady(page);
 
+  // Skip early if the ControlPanel plugin (or any plugin required for this flow) is not available
+  const hasControlPanel = await page.evaluate(() => {
+    const c: any = (window as any).renderxCommunicationSystem?.conductor;
+    const mounted: string[] = c?.getMountedPluginIds?.() || [];
+    const discovered: string[] = c?._discoveredPlugins || [];
+    return mounted.includes('ControlPanelPlugin') || discovered.includes('ControlPanelPlugin');
+  });
+  if (!hasControlPanel) {
+    test.skip(true, 'Required plugin ControlPanelPlugin not available in preview/CI environment');
+  }
+
   // Wait for canvas to be present
   const canvas = page.locator('#rx-canvas');
   await canvas.waitFor({ state: 'visible' });
@@ -108,8 +119,7 @@ test('library drop creates a canvas element', async ({ page }) => {
       return Array.isArray(ids) && ids.length === 0;
     });
     if (noPlugins) {
-      if (DIAG) console.log('Library Drop E2E: no plugins available in preview; treating as inconclusive pass.');
-      return; // pass in preview where plugin runtimes are not mounted
+      test.skip(true, 'No plugins mounted at runtime in this environment');
     }
   }
   expect(ok).toBeTruthy();

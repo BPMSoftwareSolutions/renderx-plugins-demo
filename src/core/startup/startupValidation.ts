@@ -7,8 +7,10 @@ export async function getPluginManifestStats() {
 		const isBrowser = typeof window !== 'undefined' && typeof (globalThis as any).fetch === 'function';
 		let json: any = null;
 		if (isBrowser) {
-			const res = await fetch('/plugins/plugin-manifest.json');
-			if (res.ok) json = await res.json();
+			try {
+				const res = await fetch('/plugins/plugin-manifest.json');
+				if (res.ok) json = await res.json();
+			} catch {}
 		}
 		if (!json) {
 			// External artifacts dir (env) first
@@ -28,10 +30,14 @@ export async function getPluginManifestStats() {
 				}
 			} catch {}
 			if (!json) {
-				// @ts-ignore
-				const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
-				const txt: string = (mod as any)?.default || (mod as any) || '{}';
-				json = JSON.parse(txt);
+				try {
+					// @ts-ignore
+					const mod = await import(/* @vite-ignore */ '../../../public/plugins/plugin-manifest.json?raw');
+					const txt: string = (mod as any)?.default || (mod as any) || '{}';
+					json = JSON.parse(txt);
+				} catch {
+					json = { plugins: [] };
+				}
 			}
 		}
 		const plugins = Array.isArray(json.plugins) ? json.plugins : [];

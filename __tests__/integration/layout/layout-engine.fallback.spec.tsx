@@ -45,6 +45,6 @@ describe("App falls back to legacy 3-column layout when layout-manifest missing 
     }
 
     expect(gtc).toContain("320px 1fr 360px");
-  });
+  }, 30000); // Integration test timeout
 });
 

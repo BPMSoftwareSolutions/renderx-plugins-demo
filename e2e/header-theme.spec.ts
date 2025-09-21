@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { waitForAppReady } from './support/appReady';
 const DIAG = process.env.RX_E2E_DIAG === '1' || process.env.RX_E2E_DIAG === 'true';
 
@@ -20,6 +20,17 @@ test('header theme toggles end-to-end', async ({ page }) => {
 
   await page.goto('/');
   await waitForAppReady(page);
+
+  // Skip early if the required plugin is not available in this environment
+  const hasHeader = await page.evaluate(() => {
+    const c: any = (window as any).renderxCommunicationSystem?.conductor;
+    const mounted: string[] = c?.getMountedPluginIds?.() || [];
+    const discovered: string[] = c?._discoveredPlugins || [];
+    return mounted.includes('HeaderThemePlugin') || discovered.includes('HeaderThemePlugin');
+  });
+  if (!hasHeader) {
+    test.skip(true, 'Required plugin HeaderThemePlugin not available in preview/CI environment');
+  }
 
   // Wait for the header slot container to exist (even if empty initially)
   await page.waitForSelector('[data-slot="headerRight"] [data-slot-content]');
@@ -79,8 +90,14 @@ test('header theme toggles end-to-end', async ({ page }) => {
 
   const outcome: any = await outcomeHandle.jsonValue();
   if (!outcome.changed) {
-    if (DIAG) console.log('Header E2E: no plugins available in preview; treating as inconclusive pass.');
-    return; // preview without mounted plugins
+    // If plugins are not mounted at runtime, skip instead of treating as pass
+    const noPlugins = await page.evaluate(() => {
+      const ids = (window as any).renderxCommunicationSystem?.conductor?.getMountedPluginIds?.() || [];
+      return Array.isArray(ids) && ids.length === 0;
+    });
+    if (noPlugins) {
+      test.skip(true, 'No plugins mounted at runtime in this environment');
+    }
   }
 
   // Toggle back (best-effort)

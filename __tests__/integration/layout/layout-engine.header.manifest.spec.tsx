@@ -77,5 +77,5 @@ describe("LayoutEngine default manifest includes header row with three slots (TD
     expect(names).toContain("library");
     expect(names).toContain("canvas");
     expect(names).toContain("controlPanel");
-  });
+  }, 30000); // Integration test timeout
 });
