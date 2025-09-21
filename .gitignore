@@ -146,6 +146,11 @@ vite.config.ts.timestamp-*
 !docs/logs/*.md
 
 /.*
+# Allow GitHub workflows (override dotfile ignore)
+!/.github/
+!/.github/workflows/
+!/.github/workflows/ci.yml
+
 /test-results
 /public/interaction-manifest.json
 /public/topics-manifest.json

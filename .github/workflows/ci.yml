@@ -28,5 +28,26 @@ jobs:
         run: npm run ci:precheck
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
-      - run: npm run ci
+      - name: Lint and unit tests
+        run: npm run pre:manifests && npm run lint && npm test
+
+      - name: Build app for preview
+        run: npm run build
+
+      - name: Start preview server (port 4173, strict)
+        run: nohup npm run preview:ci > /tmp/preview.log 2>&1 &
+
+      - name: Wait for server readiness on /healthz
+        run: |
+          for i in {1..120}; do
+            if curl -sf http://localhost:4173/healthz >/dev/null; then
+              echo "Server is ready"; break;
+            fi
+            echo "Waiting for server... ($i)";
+            sleep 1;
+          done
+          curl -sf http://localhost:4173/healthz >/dev/null || (echo "Server failed to start" && tail -n 200 /tmp/preview.log && exit 1)
+
+      - name: Run E2E tests (Playwright)
+        run: npm run e2e
 
