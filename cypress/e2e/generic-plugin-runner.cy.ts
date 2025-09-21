@@ -8,18 +8,27 @@ function toHarnessUrl(driverUrl: string, scenarioId: string, phases = '0,1,2', t
 }
 
 describe('Generic Plugin Runner (Cypress)', () => {
-  it('runs scenarios from local /test/manifest.json via TestHarness', () => {
+  it('runs scenarios from local /test/manifest.json via TestHarness', function () {
     cy.request({ url: '/test/manifest.json', failOnStatusCode: false }).then((res) => {
-      if (res.status !== 200) {
-        // Skip if local fake manifest is not present
-        cy.log('No local /test/manifest.json found; skipping spec');
-        // Use Mocha skip to mark test as pending
-        // eslint-disable-next-line no-unused-expressions
-        (Cypress as any).mocha.getRunner().suite.ctx.currentTest?.pending === true;
+      const contentType = String(res.headers?.['content-type'] || '');
+      const isJson = contentType.includes('application/json');
+      if (res.status !== 200 || !isJson) {
+        // Skip if manifest is missing or server returned SPA fallback (HTML)
+        cy.log('No JSON manifest at /test/manifest.json; skipping spec');
+        // mark this test as skipped
+        (this as any).skip();
         return;
       }
 
-      const manifest = res.body as any;
+      let manifest: any = res.body;
+      if (typeof manifest === 'string') {
+        try { manifest = JSON.parse(manifest); } catch {
+          cy.log('Manifest response is not valid JSON; skipping');
+          (this as any).skip();
+          return;
+        }
+      }
+
       expect(manifest).to.have.property('testApiVersion');
       expect(manifest).to.have.property('driverUrl');
       expect(Array.isArray(manifest.scenarios)).to.be.true;
