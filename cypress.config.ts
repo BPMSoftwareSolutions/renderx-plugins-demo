@@ -25,7 +25,9 @@ export default defineConfig({
       const fs = require('fs');
       const path = require('path');
       on('task', {
-        writeArtifact({ filePath, content }: { filePath: string; content: any }) {
+        writeArtifact(args) {
+          const filePath = args && args.filePath;
+          const content = args && args.content;
           try {
             const full = path.resolve(process.cwd(), filePath);
             fs.mkdirSync(path.dirname(full), { recursive: true });
