@@ -1,6 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures/test-with-app-ready";
 const DIAG =
   process.env.RX_E2E_DIAG === "1" || process.env.RX_E2E_DIAG === "true";
+
+// Allow extra time so gating + plugin readiness can complete in CI
+test.setTimeout(60_000);
 
 // E2E: dropping a library component onto the canvas should create a canvas node
 // In headless/CI, drag/drop orchestration may differ; to make the test robust,
@@ -16,7 +19,7 @@ test("library drop creates a canvas element", async ({ page }) => {
     });
   }
 
-  await page.goto("/");
+  // Navigation handled by test fixture (app-ready gating)
 
   // Wait for canvas to be present
   const canvas = page.locator("#rx-canvas");
@@ -79,12 +82,10 @@ test("library drop creates a canvas element", async ({ page }) => {
     }
   })();
   if (canvasRuntimeReady !== true) {
-    test
-      .info()
-      .annotations.push({
-        type: "inconclusive",
-        description: String(canvasRuntimeReady),
-      });
+    test.info().annotations.push({
+      type: "inconclusive",
+      description: String(canvasRuntimeReady),
+    });
     return;
   }
 

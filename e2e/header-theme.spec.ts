@@ -1,6 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures/test-with-app-ready";
 const DIAG =
   process.env.RX_E2E_DIAG === "1" || process.env.RX_E2E_DIAG === "true";
+
+// Allow extra time so gating + plugin readiness can complete in CI
+test.setTimeout(60_000);
 
 // Smoke test: ensure the HeaderThemePlugin UI mounts and toggles the theme end-to-end
 // Assumptions:
@@ -17,7 +20,7 @@ test("header theme toggles end-to-end", async ({ page }) => {
     }
   });
 
-  await page.goto("/");
+  // Navigation handled by test fixture (app-ready gating)
 
   // Verify key runtime artifacts are reachable before we wait on UI
   const manifestOk = await page.evaluate(async () => {
@@ -90,12 +93,10 @@ test("header theme toggles end-to-end", async ({ page }) => {
     }
   })();
   if (headerReady !== true) {
-    test
-      .info()
-      .annotations.push({
-        type: "inconclusive",
-        description: String(headerReady),
-      });
+    test.info().annotations.push({
+      type: "inconclusive",
+      description: String(headerReady),
+    });
     return;
   }
 
