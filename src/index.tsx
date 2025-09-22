@@ -21,6 +21,10 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   ]);
 
   (window as any).RenderX = (window as any).RenderX || {};
+  // Expose the initialized conductor globally so SDK/hooks/events resolve the same instance
+  if (!(window as any).RenderX.conductor) {
+    (window as any).RenderX.conductor = conductor;
+  }
   if (!(window as any).RenderX.resolveInteraction) {
     (window as any).RenderX.resolveInteraction = resolveInteraction;
   }

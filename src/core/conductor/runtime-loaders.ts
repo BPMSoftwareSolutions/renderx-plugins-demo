@@ -170,13 +170,17 @@ export async function loadJsonSequenceCatalogs(
         );
   const mountFrom = async (seq: SequenceJson, handlersPath: string) => {
     try {
-      if (seen.has(seq.id) || runtimeMounted.has(seq.id)) {
+      // Only skip duplicates seen within this loader invocation.
+      // If the runtime claims the sequence is already mounted, we still ensure
+      // the plugin facade exists for LibraryComponentPlugin by attempting a mount.
+      if (seen.has(seq.id)) {
         (conductor as any).logger?.warn?.(
-          `Sequence ${seq.id} already mounted; skipping`
+          `Sequence ${seq.id} already processed in loader; skipping`
         );
-        try { console.log('⏭️ Sequence already mounted; skipping:', seq?.id); } catch {}
+        try { console.log('\u23ed\ufe0f Sequence already processed in loader; skipping:', seq?.id); } catch {}
         return;
       }
+      const alreadyMountedByRuntime = runtimeMounted.has(seq.id);
       let spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
       if (isBrowser && isBareSpecifier(handlersPath)) {
         try {
@@ -199,21 +203,27 @@ export async function loadJsonSequenceCatalogs(
         (conductor as any).logger?.warn?.(
           `No handlers export found at ${handlersPath} for ${seq.id}`
         );
-        try { console.log('⚠️ No handlers export found at', handlersPath, 'for', seq?.id); } catch {}
+        try { console.log('\u26a0\ufe0f No handlers export found at', handlersPath, 'for', seq?.id); } catch {}
       }
-      await (conductor as any)?.mount?.(seq, handlers, seq.pluginId);
-      try { console.log('✅ Mounted sequence from catalog:', seq?.id, 'plugin:', seq?.pluginId); } catch {}
-
+      if (alreadyMountedByRuntime && seq.pluginId !== 'LibraryComponentPlugin') {
+        try { console.log('\u23ed\ufe0f Sequence already mounted by runtime; skipping:', seq?.id); } catch {}
+      } else {
+        if (alreadyMountedByRuntime && seq.pluginId === 'LibraryComponentPlugin') {
+          try { console.log('\ud83d\udd01 Forcing mount to ensure facade for LibraryComponentPlugin:', seq?.id); } catch {}
+        }
+        await (conductor as any)?.mount?.(seq, handlers, seq.pluginId);
+        try { console.log('\u2705 Mounted sequence from catalog:', seq?.id, 'plugin:', seq?.pluginId); } catch {}
+        try {
+          runtimeMounted.add(seq.id);
+          (conductor as any)._runtimeMountedSeqIds = runtimeMounted;
+        } catch {}
+      }
       seen.add(seq.id);
-      try {
-        runtimeMounted.add(seq.id);
-        (conductor as any)._runtimeMountedSeqIds = runtimeMounted;
-      } catch {}
     } catch (e) {
       (conductor as any).logger?.warn?.(
         `Failed to mount sequence ${seq?.id} from ${handlersPath}: ${e}`
       );
-      try { console.log('⚠️ Failed to mount sequence from catalog:', seq?.id, 'handlersPath:', handlersPath, 'error:', String(e)); } catch {}
+      try { console.log('\u26a0\ufe0f Failed to mount sequence from catalog:', seq?.id, 'handlersPath:', handlersPath, 'error:', String(e)); } catch {}
     }
   };
 
