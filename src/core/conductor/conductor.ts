@@ -16,6 +16,8 @@ export type ConductorClient = any;
 export async function initConductor(): Promise<ConductorClient> {
 	const { initializeCommunicationSystem } = await import('musical-conductor');
 	const { conductor } = initializeCommunicationSystem();
+	// Tag the conductor instance for identity tracing across the app/tests
+	try { (conductor as any).__rxId = (conductor as any).__rxId || `rxc-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`; console.log(`[conductor] init id=${(conductor as any).__rxId}`); } catch {}
 	const { EventRouter } = await import('../events/EventRouter');
 	(window as any).renderxCommunicationSystem = { conductor, eventRouter: EventRouter };
 	(window as any).RenderX = (window as any).RenderX || {}; (window as any).RenderX.conductor = conductor;

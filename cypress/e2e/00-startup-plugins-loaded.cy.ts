@@ -6,6 +6,7 @@
 //  - "🔌 Registered plugin runtime: <id>"
 //  - "📚 Loading catalog directory ... for plugin <id>"
 //  - "✅ Mounted sequence from catalog: ... plugin: <id>"
+// This test runs first (00-prefix) to ensure clean startup state verification
 
 describe('Startup: all manifest plugins load successfully (log-based)', () => {
   let capturedLogs: string[] = [];

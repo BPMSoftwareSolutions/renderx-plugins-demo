@@ -70,6 +70,11 @@ export const EventRouter = {
 			}
 		} catch {}
 		const resolvedConductor = (conductor && typeof conductor.play === 'function') ? conductor : (typeof window !== 'undefined' ? ((window as any).RenderX?.conductor || (window as any).renderxCommunicationSystem?.conductor) : undefined);
+		try {
+			const cid = (resolvedConductor as any)?.__rxId;
+			const gid = (typeof window !== 'undefined') ? ((window as any).RenderX?.conductor as any)?.__rxId : undefined;
+			console.log(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
+		} catch {}
 		let deliver = async (p: any) => {
 			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`deliver_start(${topic}): routes=${def.routes?.length || 0}`);
 			try { console.log(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`); } catch {}

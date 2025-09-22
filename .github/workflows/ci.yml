@@ -77,3 +77,12 @@ jobs:
           name: e2e-artifacts
           path: cypress/artifacts
           if-no-files-found: ignore
+      - name: Upload app logs on failure (.logs)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-logs
+          path: .logs
+          include-hidden-files: true
+          if-no-files-found: ignore
+

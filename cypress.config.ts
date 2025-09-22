@@ -1,6 +1,4 @@
 import { defineConfig } from 'cypress';
-import { writeFileSync, mkdirSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
 
 const isCI = process.env.CI === 'true' || process.env.CI === '1';
 const baseUrl = isCI ? 'http://localhost:4173' : 'http://localhost:5173';
@@ -25,13 +23,15 @@ export default defineConfig({
     },
     setupNodeEvents(on, config) {
       on('task', {
-        writeArtifact(args) {
+        async writeArtifact(args) {
           const filePath = args && args.filePath;
           const content = args && args.content;
           try {
-            const full = resolve(process.cwd(), filePath);
-            mkdirSync(dirname(full), { recursive: true });
-            writeFileSync(full, typeof content === 'string' ? content : JSON.stringify(content, null, 2), 'utf8');
+            const fs = await import('node:fs');
+            const path = await import('node:path');
+            const full = path.resolve(process.cwd(), filePath);
+            fs.mkdirSync(path.dirname(full), { recursive: true });
+            fs.writeFileSync(full, typeof content === 'string' ? content : JSON.stringify(content, null, 2), 'utf8');
             return true;
           } catch (e) {
             console.error('writeArtifact failed', e);
