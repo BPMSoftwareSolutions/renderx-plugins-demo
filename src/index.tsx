@@ -77,6 +77,23 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
         topics: topicsStats.topicCount,
         plugins: pluginStats.pluginCount,
       });
+
+      // E2E readiness beacon: expose minimal, test-friendly object and fire an event
+      try {
+        const mountedIds = (conductor as any).getMountedPluginIds?.() || [];
+        const readiness = {
+          flag: true,
+          routes: interactionStats.routeCount,
+          topics: topicsStats.topicCount,
+          plugins: pluginStats.pluginCount,
+          mountedCount: mountedIds.length,
+          pluginIds: mountedIds,
+          when: Date.now(),
+        };
+        (window as any).__rx = (window as any).__rx || {};
+        (window as any).__rx.ready = readiness;
+        try { window.dispatchEvent(new CustomEvent('renderx:ready', { detail: readiness })); } catch {}
+      } catch {}
     } catch (e) {
       console.warn("Startup validation failed", e);
     }

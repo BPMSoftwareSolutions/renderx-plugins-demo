@@ -125,6 +125,8 @@ export async function loadJsonSequenceCatalogs(
     } catch {}
   }
   (conductor as any)._discoveredPlugins = plugins;
+  try { console.log('🧭 Catalog discovery plugins:', plugins); } catch {}
+
   const isTestEnv =
     typeof import.meta !== "undefined" && !!(import.meta as any).vitest;
   const forcedBrowser =
@@ -172,6 +174,7 @@ export async function loadJsonSequenceCatalogs(
         (conductor as any).logger?.warn?.(
           `Sequence ${seq.id} already mounted; skipping`
         );
+        try { console.log('⏭️ Sequence already mounted; skipping:', seq?.id); } catch {}
         return;
       }
       let spec = normalizeHandlersImportSpec(isBrowser, handlersPath);
@@ -180,14 +183,27 @@ export async function loadJsonSequenceCatalogs(
           spec = resolveModuleSpecifier(handlersPath);
         } catch {}
       }
-      let mod: any = await import(/* @vite-ignore */ spec as any);
+      let mod: any = null;
+      try {
+        if (isBrowser && isBareSpecifier(handlersPath) && runtimePackageLoaders[handlersPath]) {
+          try { console.log('\uD83D\uDD0D Using runtimePackageLoader for', handlersPath); } catch {}
+          mod = await runtimePackageLoaders[handlersPath]!();
+        }
+      } catch {}
+      if (!mod) {
+        try { console.log('\u21AA\uFE0F Dynamic importing handlers module via spec:', spec); } catch {}
+        mod = await import(/* @vite-ignore */ spec as any);
+      }
       const handlers = (mod as any)?.handlers || mod?.default?.handlers;
       if (!handlers) {
         (conductor as any).logger?.warn?.(
           `No handlers export found at ${handlersPath} for ${seq.id}`
         );
+        try { console.log('⚠️ No handlers export found at', handlersPath, 'for', seq?.id); } catch {}
       }
       await (conductor as any)?.mount?.(seq, handlers, seq.pluginId);
+      try { console.log('✅ Mounted sequence from catalog:', seq?.id, 'plugin:', seq?.pluginId); } catch {}
+
       seen.add(seq.id);
       try {
         runtimeMounted.add(seq.id);
@@ -197,6 +213,7 @@ export async function loadJsonSequenceCatalogs(
       (conductor as any).logger?.warn?.(
         `Failed to mount sequence ${seq?.id} from ${handlersPath}: ${e}`
       );
+      try { console.log('⚠️ Failed to mount sequence from catalog:', seq?.id, 'handlersPath:', handlersPath, 'error:', String(e)); } catch {}
     }
   };
 
@@ -218,6 +235,8 @@ export async function loadJsonSequenceCatalogs(
         ? "header"
         : plugin;
     try {
+      try { console.log('📚 Loading catalog directory', dir, 'for plugin', plugin); } catch {}
+
       let entries: CatalogEntry[] = [];
       if (isBrowser) {
         try {
@@ -264,6 +283,8 @@ export async function loadJsonSequenceCatalogs(
           entries = idxJson?.sequences || [];
         }
       }
+      try { console.log('📖 Catalog entries for', dir, ':', Array.isArray(entries) ? entries.length : 0); } catch {}
+
       const tasks = entries.map(async (ent) => {
         let seqJson: SequenceJson | null = null;
         if (isBrowser) {
@@ -271,9 +292,11 @@ export async function loadJsonSequenceCatalogs(
             const filePath = ent.file.startsWith("/")
               ? ent.file
               : `/json-sequences/${dir}/${ent.file}`;
+            try { console.log('[90m[1m[36mFetching sequence[0m', { dir, file: ent.file, url: filePath }); } catch {}
             const seqRes = await fetch(filePath);
-            if (seqRes.ok) seqJson = await seqRes.json();
-          } catch {}
+            try { console.log('[90m[1m[36mFetch status[0m', { url: filePath, ok: seqRes.ok, status: seqRes.status }); } catch {}
+            if (seqRes.ok) { seqJson = await seqRes.json(); try { console.log('[90m[1m[36mLoaded JSON for[0m', { id: (seqJson as any)?.id, pluginId: (seqJson as any)?.pluginId }); } catch {} }
+          } catch (e) { try { console.log('[90m[1m[36mFetch error[0m', String(e)); } catch {} }
         }
         if (!seqJson && !isBrowser && artifactsDir) {
           try {
@@ -304,6 +327,7 @@ export async function loadJsonSequenceCatalogs(
           );
           const seqText: string = (seqMod as any)?.default || (seqMod as any);
           seqJson = JSON.parse(seqText || "{}");
+          try { console.log('\u2728 Fallback raw import used for', { dir, file: ent.file, id: (seqJson as any)?.id }); } catch {}
         }
         await mountFrom(seqJson as SequenceJson, ent.handlersPath);
       });

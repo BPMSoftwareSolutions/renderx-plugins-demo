@@ -7,6 +7,24 @@ export type ConductorClient = any; // local alias
 let registrationInProgress = false;
 let registrationComplete = false;
 
+// Shared readiness promise that resolves exactly once when registration completes
+let registrationResolve: (() => void) | null = null;
+let registrationPromise: Promise<void> | null = null;
+
+export function isPluginsReady(): boolean {
+	return registrationComplete === true;
+}
+
+export function whenPluginsReady(): Promise<void> {
+	if (registrationComplete) return Promise.resolve();
+	if (!registrationPromise) {
+		registrationPromise = new Promise<void>((resolve) => {
+			registrationResolve = resolve;
+		});
+	}
+	return registrationPromise;
+}
+
 export async function registerAllSequences(conductor: ConductorClient) {
 	// Prevent multiple simultaneous registrations
 	if (registrationInProgress) {
@@ -110,5 +128,24 @@ export async function registerAllSequences(conductor: ConductorClient) {
 
 	registrationInProgress = false;
 	registrationComplete = true;
+
+	// Expose a browser-friendly readiness signal for tests and host UIs
+	try {
+		const ids = (conductor as any).getMountedPluginIds?.() || [];
+		const seqSet = (conductor as any)._runtimeMountedSeqIds;
+		const seqIds = Array.isArray(seqSet)
+			? seqSet
+			: (seqSet instanceof Set ? Array.from(seqSet) : []);
+		(globalThis as any).__RENDERX_PLUGINS_READY = true;
+		(globalThis as any).__RENDERX_MOUNTED_PLUGIN_IDS = ids;
+		(globalThis as any).__RENDERX_MOUNTED_SEQUENCE_IDS = seqIds;
+		const w: any = typeof window !== 'undefined' ? window : null;
+		if (w && typeof w.dispatchEvent === 'function' && typeof (w as any).CustomEvent === 'function') {
+			w.dispatchEvent(new CustomEvent('renderx:plugins:ready', { detail: { pluginIds: ids, sequenceIds: seqIds } }));
+		}
+	} catch {}
+
+	// Resolve readiness promise
+	try { if (registrationResolve) { registrationResolve(); registrationResolve = null; } } catch {}
 	console.log('✅ Plugin registration complete!');
 }
