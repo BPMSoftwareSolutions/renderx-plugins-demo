@@ -24,6 +24,15 @@ export default defineConfig({
       artifactsDir: 'cypress/artifacts'
     },
     setupNodeEvents(on, config) {
+      on('before:browser:launch', (browser, launchOptions) => {
+        if (browser.name === 'chrome') {
+          launchOptions.args.push('--disable-dev-shm-usage');
+          launchOptions.args.push('--disable-gpu');
+          launchOptions.args.push('--no-sandbox');
+          launchOptions.args.push('--disable-software-rasterizer');
+        }
+        return launchOptions;
+      });
       on('task', {
         writeArtifact(args) {
           const filePath = args && args.filePath;
