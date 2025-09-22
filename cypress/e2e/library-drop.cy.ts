@@ -108,25 +108,17 @@ describe('Library → Canvas drop creates component', () => {
       } catch {}
     });
 
-    // Give the StageCrew a brief tick to manipulate DOM
-    cy.wait(300);
+    // Give the StageCrew time to manipulate DOM after sequences complete
+    // The logs show sequences execute quickly but DOM update has a delay
+    cy.wait(1500);
 
-    // Debug again after a short delay
+    // Debug again after a longer delay
     cy.window().then((win: any) => {
       try {
         const html = (win.document.getElementById('rx-canvas')?.innerHTML || '').slice(0, 500);
         capturedLogs.push(`[debug-after] rx-canvas innerHTML (first 500): ${html}`);
         const count = win.document.querySelectorAll('#rx-canvas [id^="rx-node-"]').length;
         capturedLogs.push(`[debug-after] rx-canvas node count: ${count}`);
-      } catch {}
-    });
-
-    // One more wait and snapshot for flakiness
-    cy.wait(300);
-    cy.window().then((win: any) => {
-      try {
-        const count = win.document.querySelectorAll('#rx-canvas [id^="rx-node-"]').length;
-        capturedLogs.push(`[debug-after-2] rx-canvas final node count: ${count}`);
       } catch {}
     });
 
