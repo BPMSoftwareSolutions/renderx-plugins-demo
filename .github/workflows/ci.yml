@@ -56,6 +56,19 @@ jobs:
           key: cypress-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Build + Preview + Cypress E2E
         run: npm run e2e:cypress
+      # Always print captured app logs to job output for debugging
+      - name: Print app logs (.logs)
+        if: always()
+        run: |
+          echo "--- Begin .logs ---"
+          if [ -d ".logs" ]; then
+            for f in .logs/*; do
+              echo "----- $f -----" && cat "$f" || true
+            done
+          else
+            echo "No .logs directory found"
+          fi
+          echo "--- End .logs ---"
       - name: Upload Cypress videos on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -77,3 +90,11 @@ jobs:
           name: e2e-artifacts
           path: cypress/artifacts
           if-no-files-found: ignore
+      # Always upload .logs as artifact for post-run inspection
+      - name: Upload app logs (.logs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-logs
+          path: .logs
+          if-no-files-found: warn
