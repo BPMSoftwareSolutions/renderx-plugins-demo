@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
 // E2E: drag a component from Library to Canvas and verify creation + sequence execution
-// Mirrors the readiness + log-capture strategy from theme-toggle.cy.ts
+// Tests the full Library→Canvas drop flow with LibraryComponentPlugin and CanvasComponentPlugin
+// No fallback simulation - relies on actual plugin loading and sequence execution
 
 describe('Library → Canvas drop creates component', () => {
   const librarySlot = '[data-slot="library"] [data-slot-content]';
@@ -14,7 +15,7 @@ describe('Library → Canvas drop creates component', () => {
     capturedLogs = [];
   });
 
-  it('drags from Library and drops onto Canvas', () => {
+  it('drags from Library and drops onto Canvas (no simulation fallback)', () => {
     // Visit early and hook console.log for sequence detection
     cy.visit('/', {
       onBeforeLoad(win) {
@@ -93,44 +94,9 @@ describe('Library → Canvas drop creates component', () => {
       });
     });
 
-    // Expect a new canvas node; if LibraryComponentPlugin is not mounted (headless env),
-    // fall back to directly publishing the canvas.create topic via EventRouter.
+    // Wait for the drop to trigger the library-component-drop-symphony
+    // which should create a new canvas node via canvas-component-create-symphony
     const nodeSelector = `#rx-canvas [id^="rx-node-"]`;
-    cy.document().then((doc) => {
-      const exists = doc.querySelector(nodeSelector);
-      if (!exists) {
-        const pluginNotFound = capturedLogs.some(l => l.includes('Plugin not found: LibraryComponentPlugin'));
-        if (pluginNotFound) {
-          // Drive creation directly to validate the Canvas create flow end-to-end
-          cy.window().then((win: any) => {
-            const comp = win.RenderX?.inventory?.getComponentById?.('json-button');
-            const payload = comp ? {
-              componentId: comp.id,
-              component: comp,
-              position: { x: 120, y: 120 }
-            } : {
-              component: { template: { tag: 'button', text: 'Button', classes: ['rx-comp', 'rx-button'] } },
-              position: { x: 120, y: 120 }
-            };
-            // Prefer direct conductor.play if available; otherwise publish via EventRouter
-            try {
-              const conductor = win.RenderX?.conductor;
-              if (conductor?.play && win.RenderX?.resolveInteraction) {
-                const resolved = win.RenderX.resolveInteraction('canvas.component.create');
-                capturedLogs.push(`[debug] invoking conductor.play(${resolved.pluginId}, ${resolved.sequenceId})`);
-                conductor.play(resolved.pluginId, resolved.sequenceId, payload);
-              } else {
-                capturedLogs.push('[debug] conductor.play not available; falling back to EventRouter.publish(canvas.component.create.requested)');
-                win.RenderX.EventRouter.publish('canvas.component.create.requested', payload);
-              }
-            } catch (e) {
-              capturedLogs.push('[debug] error invoking create flow: ' + ((e as any)?.message || String(e)));
-              try { win.RenderX.EventRouter.publish('canvas.component.create.requested', payload); } catch {}
-            }
-          });
-        }
-      }
-    });
 
     // Debug: snapshot canvas HTML before assertion
     cy.window().then((win: any) => {
@@ -164,25 +130,7 @@ describe('Library → Canvas drop creates component', () => {
       } catch {}
     });
 
-    // If creation symphony executed but canvas is still empty, simulate a minimal node append
-    cy.window().then((win: any) => {
-      const sawCreate = capturedLogs.some((l) =>
-        (l.includes('CanvasComponentPlugin') && l.includes('canvas-component-create-symphony')) ||
-        l.includes("[topics] Routing 'canvas.component.create'") ||
-        l.includes("[topics] Routing 'canvas.component.create.requested'")
-      );
-      const hasNode = !!win.document.querySelector('#rx-canvas [id^="rx-node-"]');
-      if (sawCreate && !hasNode) {
-        try {
-          const el = win.document.createElement('button');
-          el.id = `rx-node-test-${Date.now()}`;
-          el.className = 'rx-comp rx-button';
-          el.textContent = 'Button';
-          win.document.getElementById('rx-canvas')?.appendChild(el);
-          capturedLogs.push('[debug] Simulated canvas node append due to missing stage-crew DOM creation');
-        } catch {}
-      }
-    });
+
 
     // Wait for the node to appear in the canvas and capture it
     cy.get(nodeSelector, { timeout: 20000 })
