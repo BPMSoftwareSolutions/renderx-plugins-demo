@@ -38,15 +38,21 @@ describe('Library → Canvas drop creates component', () => {
       },
     });
 
-    // Wait for RenderX to be ready
-    cy.waitForRenderXReady();
+    // Gate on app readiness beacon (now includes Library components loading)
+    cy.waitForRenderXReady({
+      minRoutes: 40,
+      minTopics: 50,
+      minPlugins: 8,
+      minMounted: 2,
+      eventTimeoutMs: 30000,
+    });
 
-    // Wait for Library and Canvas to mount
+    // Wait for Library and Canvas slots to mount
     cy.get(librarySlot, { timeout: 20000 }).should('exist');
     cy.get(canvasSlot, { timeout: 20000 }).should('exist');
 
     // Find the button component in the Library panel
-    // Look for draggable elements that contain "button" text (case insensitive)
+    // Since waitForRenderXReady now waits for Library components, they should be available
     cy.get(librarySlot)
       .find('[draggable="true"], [draggable]')
       .contains(/button/i, { timeout: 10000 })

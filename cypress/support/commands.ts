@@ -25,12 +25,13 @@ Cypress.Commands.add('waitForRenderXReady', (opts: any = {}) => {
     requiredPluginIds = [],
   } = opts || {};
 
-  // Fast path: if the app already set the beacon, Cypress .should() will retry until it appears.
+  // Wait for the app to be fully ready, including Library components
   cy.window({ log: false })
     .should((win: any) => {
       const ready = win.__rx?.ready;
       expect(ready, 'window.__rx.ready').to.exist;
-      expect(ready.flag, 'ready.flag').to.eq(true);
+      expect(ready.flag, 'ready.flag').to.eq(true); // This will be true only after Library components load
+      expect(ready.libraryComponentsLoaded, 'library components loaded').to.eq(true);
       expect(ready.plugins, 'ready.plugins').to.be.gte(minPlugins);
       expect(ready.mountedCount, 'ready.mountedCount').to.be.gte(minMounted);
       expect(ready.routes, 'ready.routes').to.be.gte(minRoutes);

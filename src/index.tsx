@@ -82,17 +82,45 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
       try {
         const mountedIds = (conductor as any).getMountedPluginIds?.() || [];
         const readiness = {
-          flag: true,
+          flag: false, // Will be set to true when Library components are loaded
           routes: interactionStats.routeCount,
           topics: topicsStats.topicCount,
           plugins: pluginStats.pluginCount,
           mountedCount: mountedIds.length,
           pluginIds: mountedIds,
+          libraryComponentsLoaded: false,
           when: Date.now(),
         };
         (window as any).__rx = (window as any).__rx || {};
         (window as any).__rx.ready = readiness;
-        try { window.dispatchEvent(new CustomEvent('renderx:ready', { detail: readiness })); } catch {}
+
+        // Set up a function to mark Library components as loaded and complete readiness
+        (window as any).__rx.markLibraryComponentsLoaded = () => {
+          if ((window as any).__rx?.ready) {
+            (window as any).__rx.ready.libraryComponentsLoaded = true;
+            (window as any).__rx.ready.flag = true; // Now fully ready
+            try { window.dispatchEvent(new CustomEvent('renderx:ready', { detail: readiness })); } catch {}
+          }
+        };
+
+        // Start a timer to check for Library components in the DOM
+        // This is a fallback approach since we can't modify the external Library plugin
+        const checkLibraryComponents = () => {
+          const librarySlot = document.querySelector('[data-slot="library"]');
+          if (librarySlot) {
+            const draggableElements = librarySlot.querySelectorAll('[draggable="true"], [draggable]');
+            if (draggableElements.length > 0) {
+              (window as any).__rx.markLibraryComponentsLoaded();
+              return;
+            }
+          }
+          // Check again in 100ms if components not found yet
+          setTimeout(checkLibraryComponents, 100);
+        };
+
+        // Start checking after a short delay to allow UI to mount
+        setTimeout(checkLibraryComponents, 500);
+
       } catch {}
     } catch (e) {
       console.warn("Startup validation failed", e);
