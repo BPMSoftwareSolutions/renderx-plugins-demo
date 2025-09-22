@@ -42,9 +42,11 @@
     "ci": "npm run pre:manifests && npm run lint && npm test && npm run e2e:cypress",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:run:preview": "cypress run --config baseUrl=http://localhost:4173",
-    "e2e:cypress": "npm run build && start-server-and-test preview http://localhost:4173 cy:run:preview",
-    "e2e:cypress:dev": "npm run pre:manifests && start-server-and-test dev http://localhost:5173 cy:run"
+  "cy:run:preview": "cypress run --config baseUrl=http://localhost:4173",
+  "cy:run:preview:chrome": "cypress run --browser chrome --config baseUrl=http://localhost:4173",
+  "e2e:cypress": "npm run build && start-server-and-test preview http://localhost:4173 cy:run:preview",
+  "e2e:cypress:chrome": "npm run build && start-server-and-test preview http://localhost:4173 cy:run:preview:chrome",
+  "e2e:cypress:dev": "npm run pre:manifests && start-server-and-test dev http://localhost:5173 cy:run"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.3",

@@ -54,8 +54,8 @@ jobs:
           path: |
             ~/.cache/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-      - name: Build + Preview + Cypress E2E
-        run: npm run e2e:cypress
+      - name: Build + Preview + Cypress E2E (Chrome)
+        run: npm run e2e:cypress:chrome
       # Always print captured app logs to job output for debugging
       - name: Print app logs (.logs)
         if: always()
