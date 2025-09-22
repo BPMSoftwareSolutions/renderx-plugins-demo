@@ -37,6 +37,8 @@ describe('Theme toggle button', () => {
           capturedLogs.push(`[${new Date().toISOString()}] ${message}`);
           originalLog.apply(win.console, args);
         };
+        // Force deterministic initial theme for visual flip in video
+        try { win.localStorage.setItem('theme', 'dark'); } catch {}
       },
     });
 
@@ -70,6 +72,10 @@ describe('Theme toggle button', () => {
       expect(['light', 'dark']).to.include(theme || '');
     });
 
+    // Deterministic initial state for visibility in video
+    cy.get('html', { timeout: 10000 }).should('have.attr', 'data-theme', 'dark');
+
+
     // Ensure EventRouter is initialized and topics are available
     cy.window().its('RenderX').its('EventRouter').its('publish').should('be.a', 'function');
 
@@ -83,18 +89,27 @@ describe('Theme toggle button', () => {
 
     // Capture initial label and verify sequence triggering
     cy.get(toggleSelector).then(($btn) => {
+
       const initialLabel = normalizeLabel($btn.text());
-      
+
       // User click to toggle
       cy.get(toggleSelector).click();
 
       // Wait for the sequence to be triggered (just the initial play call)
       cy.wrap(null).should(() => {
-        const sequenceTriggered = capturedLogs.some((l) => 
+        const sequenceTriggered = capturedLogs.some((l) =>
           l.includes('HeaderThemePlugin') && l.includes('header-ui-theme-toggle-symphony')
         );
         expect(sequenceTriggered, 'header theme toggle sequence triggered').to.eq(true);
       });
+
+      // Small wait so the video captures the visual flip
+      cy.wait(100);
+      cy.get('html', { timeout: 10000 }).should('have.attr', 'data-theme', 'light');
+      cy.window().then((win) => {
+        expect(win.localStorage.getItem('theme')).to.eq('light');
+      });
+
 
       // Log the captured logs for debugging
       cy.wrap(null).then(() => {
@@ -104,10 +119,18 @@ describe('Theme toggle button', () => {
 
       // Second click to ensure the sequence can be triggered multiple times
       cy.get(toggleSelector).click();
-      
+
+      // Small wait so the video captures the visual flip back
+      cy.wait(100);
+      cy.get('html', { timeout: 10000 }).should('have.attr', 'data-theme', 'dark');
+      cy.window().then((win) => {
+        expect(win.localStorage.getItem('theme')).to.eq('dark');
+      });
+
+
       // Wait for second sequence trigger
       cy.wrap(null).should(() => {
-        const secondToggleTriggered = capturedLogs.filter((l) => 
+        const secondToggleTriggered = capturedLogs.filter((l) =>
           l.includes('HeaderThemePlugin') && l.includes('header-ui-theme-toggle-symphony')
         ).length >= 2; // Should have at least 2 triggers now
         expect(secondToggleTriggered, 'second header theme toggle sequence triggered').to.eq(true);
@@ -121,7 +144,7 @@ describe('Theme toggle button', () => {
     // Save captured logs to file
     const logFileName = `theme-toggle-${Cypress.spec.name}-${Date.now()}.log`;
     const logContent = capturedLogs.join('\n');
-    
+
     cy.task('writeArtifact', {
       filePath: `.logs/${logFileName}`,
       content: logContent
