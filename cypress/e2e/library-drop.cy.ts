@@ -43,9 +43,18 @@ describe('Library → Canvas drop creates component', () => {
       minRoutes: 40,
       minTopics: 50,
       minPlugins: 8,
-      minMounted: 2,
+      minMounted: 5,
       eventTimeoutMs: 30000,
     });
+
+    // Verify Library Load sequence completion appears in logs (robust poll)
+    cy.wrap(null, { timeout: 20000 }).should(() => {
+      const found = capturedLogs.some((l) =>
+        l.includes('SequenceExecutor: Sequence "Library Load" completed')
+      );
+      expect(found, 'Library Load sequence completion log appears').to.eq(true);
+    });
+
 
     // Wait for Library and Canvas slots to mount
     cy.get(librarySlot, { timeout: 20000 }).should('exist');
