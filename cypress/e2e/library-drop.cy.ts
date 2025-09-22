@@ -115,15 +115,16 @@ describe('Library → Canvas drop creates component', () => {
             // Prefer direct conductor.play if available; otherwise publish via EventRouter
             try {
               const conductor = win.RenderX?.conductor;
-              if (conductor?.play) {
-                capturedLogs.push('[debug] invoking conductor.play(CanvasComponentPlugin, canvas-component-create-symphony)');
-                conductor.play('CanvasComponentPlugin', 'canvas-component-create-symphony', payload);
+              if (conductor?.play && win.RenderX?.resolveInteraction) {
+                const resolved = win.RenderX.resolveInteraction('canvas.component.create');
+                capturedLogs.push(`[debug] invoking conductor.play(${resolved.pluginId}, ${resolved.sequenceId})`);
+                conductor.play(resolved.pluginId, resolved.sequenceId, payload);
               } else {
                 capturedLogs.push('[debug] conductor.play not available; falling back to EventRouter.publish(canvas.component.create.requested)');
                 win.RenderX.EventRouter.publish('canvas.component.create.requested', payload);
               }
             } catch (e) {
-              capturedLogs.push('[debug] error invoking create flow: ' + (e?.message || String(e)));
+              capturedLogs.push('[debug] error invoking create flow: ' + ((e as any)?.message || String(e)));
               try { win.RenderX.EventRouter.publish('canvas.component.create.requested', payload); } catch {}
             }
           });
