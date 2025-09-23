@@ -44,7 +44,7 @@ describe('Theme toggle button', () => {
 
     // Gate on app readiness beacon (deterministic, retryable)
     cy.waitForRenderXReady({
-      minRoutes: 40,
+      minRoutes: 28,
       minTopics: 50,
       minPlugins: 8,
       minMounted: 2,

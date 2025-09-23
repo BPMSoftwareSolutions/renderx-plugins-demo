@@ -50,18 +50,24 @@ async function readJsonSafe(path) {
 }
 
 async function readPluginCatalogs() {
-  const dir = join(srcRoot, "json-interactions");
-  try {
-    const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
-    const catalogs = [];
-    for (const f of files) {
-      const json = await readJsonSafe(join(dir, f));
-      if (json) catalogs.push(json);
+  const localDir = join(srcRoot, "json-interactions");
+  const genDir = join(srcRoot, "json-interactions", ".generated");
+  async function readDirSafe(dir) {
+    try {
+      const files = (await readdir(dir)).filter((f) => f.endsWith(".json")).sort();
+      const catalogs = [];
+      for (const f of files) {
+        const json = await readJsonSafe(join(dir, f));
+        if (json) catalogs.push(json);
+      }
+      return catalogs;
+    } catch {
+      return [];
     }
-    return catalogs;
-  } catch {
-    return [];
   }
+  const generated = await readDirSafe(genDir);
+  // Phase 2: only use generated catalogs; host-authored catalogs are removed
+  return [...generated];
 }
 
 function extractOverridesFromComponentJson(json) {
