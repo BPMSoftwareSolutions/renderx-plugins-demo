@@ -241,7 +241,7 @@ function packageHasSequences(packagePath, sequenceDirs) {
 
 
 function parseManifest(packagePath, manifestPath, manifestKey) {
-  // Prefer an internal generated manifest if present inside the package
+  // 1) Prefer an internal generated manifest if present inside the package
   const generatedPath = path.join(packagePath, '.generated', 'plugin-manifest.json');
   if (fs.existsSync(generatedPath)) {
     try {
@@ -250,27 +250,61 @@ function parseManifest(packagePath, manifestPath, manifestKey) {
         return new Set(gen.plugins.map(p => p.id).filter(Boolean));
       }
     } catch {
-      // fallthrough to package.json
+      // fallthrough
     }
   }
 
-  const manifestFilePath = path.join(packagePath, manifestPath);
-  if (!fs.existsSync(manifestFilePath)) {
-    return null;
+  // 2) Read package.json (default manifestPath)
+  const pkgJsonPath = path.join(packagePath, manifestPath);
+  let pkg = null;
+  if (fs.existsSync(pkgJsonPath)) {
+    try {
+      pkg = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
+    } catch {
+      pkg = null;
+    }
   }
 
+  // 2a) Inline renderx.plugins in package.json
+  if (pkg) {
+    try {
+      const inlinePlugins = getNestedProperty(pkg, manifestKey);
+      if (Array.isArray(inlinePlugins)) {
+        return new Set(inlinePlugins.map(p => p.id).filter(Boolean));
+      }
+    } catch {
+      // ignore and try pointer
+    }
+
+    // 2b) Pointer: package.json { renderx: { manifest: "dist/plugin-manifest.json" } }
+    try {
+      const rx = pkg && pkg.renderx ? pkg.renderx : null;
+      const pointer = rx && typeof rx.manifest === 'string' ? path.join(packagePath, rx.manifest) : null;
+      if (pointer && fs.existsSync(pointer)) {
+        const mf = JSON.parse(fs.readFileSync(pointer, 'utf8'));
+        if (mf && Array.isArray(mf.plugins)) {
+          return new Set(mf.plugins.map(p => p.id).filter(Boolean));
+        }
+      }
+    } catch {
+      // ignore and try fallback
+    }
+  }
+
+  // 3) Fallback: dist/plugin-manifest.json at package root
   try {
-    const manifest = JSON.parse(fs.readFileSync(manifestFilePath, 'utf8'));
-    const plugins = getNestedProperty(manifest, manifestKey);
-
-    if (!Array.isArray(plugins)) {
-      return null;
+    const distPath = path.join(packagePath, 'dist', 'plugin-manifest.json');
+    if (fs.existsSync(distPath)) {
+      const mf = JSON.parse(fs.readFileSync(distPath, 'utf8'));
+      if (mf && Array.isArray(mf.plugins)) {
+        return new Set(mf.plugins.map(p => p.id).filter(Boolean));
+      }
     }
-
-    return new Set(plugins.map(plugin => plugin.id).filter(id => id));
   } catch {
-    return null;
+    // ignore
   }
+
+  return null;
 }
 
 function validateSequenceFiles(pkg, manifestPlugins, sequenceDirs, context) {

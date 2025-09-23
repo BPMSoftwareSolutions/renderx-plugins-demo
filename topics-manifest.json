@@ -603,45 +603,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "source": {
-            "type": "string"
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            }
-          },
-          "size": {
-            "type": "object",
-            "properties": {
-              "width": {
-                "type": "number"
-              },
-              "height": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        "required": [
-          "id"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel update requested; routes to update sequence with throttling."
+      "notes": "Auto-derived from control-panel/update.json"
     },
     "control.panel.ui.render.requested": {
       "routes": [
@@ -651,17 +618,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "selectedElement": {
-            "type": "object"
-          }
-        }
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel UI render requested; routes to render sequence with throttling for performance."
+      "notes": "Auto-derived from control-panel/ui.render.json"
     },
     "control.panel.ui.field.change.requested": {
       "routes": [
@@ -671,27 +633,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "fieldKey": {
-            "type": "string"
-          },
-          "value": {},
-          "selectedElement": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "fieldKey",
-          "selectedElement"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
-      "perf": {
-        "debounceMs": 250
-      },
-      "notes": "Control panel field change requested; routes to field change sequence with throttling."
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.field.change.json"
     },
     "control.panel.ui.field.validate.requested": {
       "routes": [
@@ -701,25 +648,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "fieldKey": {
-            "type": "string"
-          },
-          "value": {},
-          "selectedElement": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "fieldKey",
-          "selectedElement"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel field validation requested; routes to validation sequence with throttling."
+      "notes": "Auto-derived from control-panel/ui.field.validate.json"
     },
     "control.panel.ui.section.toggle.requested": {
       "routes": [
@@ -729,20 +663,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "sectionId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "sectionId"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel section toggle requested; routes to section toggle sequence."
+      "notes": "Auto-derived from control-panel/ui.section.toggle.json"
     },
     "control.panel.classes.add.requested": {
       "routes": [
@@ -752,24 +678,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "className": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "className"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel add class requested; routes to add class sequence."
+      "notes": "Auto-derived from control-panel/classes.add.json"
     },
     "control.panel.classes.remove.requested": {
       "routes": [
@@ -779,24 +693,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "className": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "className"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel remove class requested; routes to remove class sequence."
+      "notes": "Auto-derived from control-panel/classes.remove.json"
     },
     "control.panel.css.create.requested": {
       "routes": [
@@ -806,28 +708,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "className": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "className",
-          "content"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel create CSS class requested; routes to CSS create sequence."
+      "notes": "Auto-derived from control-panel/css.create.json"
     },
     "control.panel.css.edit.requested": {
       "routes": [
@@ -837,28 +723,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "className": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "className",
-          "content"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel edit CSS class requested; routes to CSS edit sequence."
+      "notes": "Auto-derived from control-panel/css.edit.json"
     },
     "control.panel.css.delete.requested": {
       "routes": [
@@ -868,24 +738,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "className": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "className"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel delete CSS class requested; routes to CSS delete sequence."
+      "notes": "Auto-derived from control-panel/css.delete.json"
     },
     "control.panel.selection.show.requested": {
       "routes": [
@@ -895,20 +753,12 @@
         }
       ],
       "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
+        "type": "object"
       },
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Control panel selection show requested; routes to selection show sequence."
+      "notes": "Auto-derived from control-panel/selection.show.json"
     },
     "control.panel.selection.updated": {
       "routes": [],
@@ -1367,6 +1217,51 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-derived from header/ui.theme.toggle.json"
+    },
+    "control.panel.selection.clear.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-clear-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/selection.clear.json"
+    },
+    "control.panel.ui.init.batched.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.init.json"
     }
   }
 }

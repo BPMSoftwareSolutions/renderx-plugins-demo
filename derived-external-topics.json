@@ -364,6 +364,188 @@
       },
       "visibility": "public",
       "notes": "Auto-derived from library/library-load.json"
+    },
+    "control.panel.classes.add.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-classes-add-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/classes.add.json"
+    },
+    "control.panel.classes.remove.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-classes-remove-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/classes.remove.json"
+    },
+    "control.panel.css.create.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/css.create.json"
+    },
+    "control.panel.css.delete.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-delete-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/css.delete.json"
+    },
+    "control.panel.css.edit.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-edit-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/css.edit.json"
+    },
+    "control.panel.selection.clear.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-clear-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/selection.clear.json"
+    },
+    "control.panel.selection.show.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-show-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/selection.show.json"
+    },
+    "control.panel.ui.field.change.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.validate.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-validate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.field.validate.json"
+    },
+    "control.panel.ui.init.batched.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.init.json"
+    },
+    "control.panel.ui.render.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-render-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.render.json"
+    },
+    "control.panel.ui.section.toggle.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-section-toggle-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.section.toggle.json"
+    },
+    "control.panel.update.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/update.json"
     }
   }
 }

@@ -50,7 +50,7 @@ async function readJsonSafe(path) {
 }
 
 async function readPluginCatalogs() {
-  const localDir = join(srcRoot, "json-interactions");
+  const _localDir = join(srcRoot, "json-interactions");
   const genDir = join(srcRoot, "json-interactions", ".generated");
   async function readDirSafe(dir) {
     try {

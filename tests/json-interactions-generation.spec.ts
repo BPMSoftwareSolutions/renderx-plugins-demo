@@ -17,7 +17,6 @@ describe('json-interactions generator (Phase 1, .generated)', () => {
 
     if (r.status !== 0) {
       // helpful output if it fails
-      // eslint-disable-next-line no-console
       console.error((r.stdout || '') + '\n' + (r.stderr || ''));
     }
     expect(r.status).toBe(0);
