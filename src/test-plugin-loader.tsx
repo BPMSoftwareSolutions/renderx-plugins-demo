@@ -675,75 +675,148 @@ const SophisticatedPluginLoader: React.FC = () => {
 
           {selectedTab === 'conductor' && conductorIntrospection && (
             <div className="panel">
-              <div className="panel-header">
+            <div className="panel-header">
                 <h3 className="panel-title">Conductor Introspection</h3>
-              </div>
-              <div className="panel-content">
-                <div className="plugin-item">
-                  <h4 className="plugin-name">Mounted Plugin IDs</h4>
-                  <div className="plugin-details">
-                    {conductorIntrospection.mountedPluginIds.length > 0 ? (
-                      conductorIntrospection.mountedPluginIds.map(id => (
-                        <div key={id} className="detail-row">
-                          <span className="code">{id}</span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="detail-row" style={{ color: 'var(--text-muted)' }}>No plugins mounted</div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="plugin-item">
-                  <h4 className="plugin-name">Runtime Mounted Sequence IDs</h4>
-                  <div className="plugin-details">
-                    {conductorIntrospection.runtimeMountedSeqIds.length > 0 ? (
-                      conductorIntrospection.runtimeMountedSeqIds.map(id => (
-                        <div key={id} className="detail-row">
-                          <span className="code">{id}</span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="detail-row" style={{ color: 'var(--text-muted)' }}>No sequences mounted</div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="plugin-item">
-                  <h4 className="plugin-name">Sequence Catalog Directories</h4>
-                  <div className="plugin-details">
-                    {conductorIntrospection.sequenceCatalogDirs.length > 0 ? (
-                      conductorIntrospection.sequenceCatalogDirs.map(dir => (
-                        <div key={dir} className="detail-row">
-                          <span className="code">{dir}</span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="detail-row" style={{ color: 'var(--text-muted)' }}>No catalog directories</div>
-                    )}
-                  </div>
-                </div>
-
-                {conductorIntrospection.discoveredPlugins.length > 0 && (
-                  <div className="plugin-item">
-                    <h4 className="plugin-name">Discovered Plugins</h4>
-                    <div className="plugin-details">
-                      <pre style={{
-                        fontSize: '0.75rem',
-                        background: 'var(--bg-tertiary)',
-                        padding: '0.5rem',
-                        borderRadius: '4px',
-                        overflow: 'auto',
-                        maxHeight: '200px'
-                      }}>
-                        {JSON.stringify(conductorIntrospection.discoveredPlugins, null, 2)}
-                      </pre>
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
-          )}
+            <div className="panel-content">
+                {/* Filtered Mounted Plugin IDs */}
+                {(() => {
+                const filteredMountedPlugins = conductorIntrospection.mountedPluginIds.filter(id =>
+                    !searchTerm || id.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+        
+                return (
+                    <div className="plugin-item">
+                    <h4 className="plugin-name">
+                        Mounted Plugin IDs
+                        {searchTerm && ` (${filteredMountedPlugins.length}/${conductorIntrospection.mountedPluginIds.length})`}
+                    </h4>
+                    <div className="plugin-details">
+                        {filteredMountedPlugins.length > 0 ? (
+                        filteredMountedPlugins.map(id => (
+                            <div key={id} className="detail-row">
+                            <span className="code">{id}</span>
+                            </div>
+                        ))
+                        ) : searchTerm ? (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No mounted plugins match "{searchTerm}"
+                        </div>
+                        ) : (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No plugins mounted
+                        </div>
+                        )}
+                    </div>
+                    </div>
+                );
+                })()}
+
+                {/* Filtered Runtime Mounted Sequence IDs */}
+                {(() => {
+                const filteredSequences = conductorIntrospection.runtimeMountedSeqIds.filter(id =>
+                    !searchTerm || id.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+        
+                return (
+                    <div className="plugin-item">
+                    <h4 className="plugin-name">
+                        Runtime Mounted Sequence IDs
+                        {searchTerm && ` (${filteredSequences.length}/${conductorIntrospection.runtimeMountedSeqIds.length})`}
+                    </h4>
+                    <div className="plugin-details">
+                        {filteredSequences.length > 0 ? (
+                        filteredSequences.map(id => (
+                            <div key={id} className="detail-row">
+                            <span className="code">{id}</span>
+                            </div>
+                        ))
+                        ) : searchTerm ? (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No sequences match "{searchTerm}"
+                        </div>
+                        ) : (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No sequences mounted
+                        </div>
+                        )}
+                    </div>
+                    </div>
+                );
+                })()}
+
+                {/* Filtered Sequence Catalog Directories */}
+                {(() => {
+                const filteredDirs = conductorIntrospection.sequenceCatalogDirs.filter(dir =>
+                    !searchTerm || dir.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+        
+                return (
+                    <div className="plugin-item">
+                    <h4 className="plugin-name">
+                        Sequence Catalog Directories
+                        {searchTerm && ` (${filteredDirs.length}/${conductorIntrospection.sequenceCatalogDirs.length})`}
+                    </h4>
+                    <div className="plugin-details">
+                        {filteredDirs.length > 0 ? (
+                        filteredDirs.map(dir => (
+                            <div key={dir} className="detail-row">
+                            <span className="code">{dir}</span>
+                            </div>
+                        ))
+                        ) : searchTerm ? (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No directories match "{searchTerm}"
+                        </div>
+                        ) : (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No catalog directories
+                        </div>
+                        )}
+                    </div>
+                    </div>
+                );
+                })()}
+
+                {/* Filtered Discovered Plugins */}
+                {conductorIntrospection.discoveredPlugins.length > 0 && (() => {
+                // For discovered plugins, we filter based on stringified content since it's complex objects
+                const filteredDiscovered = conductorIntrospection.discoveredPlugins.filter(plugin => {
+                    if (!searchTerm) return true;
+                    const pluginStr = JSON.stringify(plugin).toLowerCase();
+                    return pluginStr.includes(searchTerm.toLowerCase());
+                });
+        
+                return (
+                    <div className="plugin-item">
+                    <h4 className="plugin-name">
+                        Discovered Plugins
+                        {searchTerm && ` (${filteredDiscovered.length}/${conductorIntrospection.discoveredPlugins.length})`}
+                    </h4>
+                    <div className="plugin-details">
+                        {filteredDiscovered.length > 0 ? (
+                        <pre style={{
+                            fontSize: '0.75rem',
+                            background: 'var(--bg-tertiary)',
+                            padding: '0.5rem',
+                            borderRadius: '4px',
+                            overflow: 'auto',
+                            maxHeight: '200px'
+                        }}>
+                            {JSON.stringify(filteredDiscovered, null, 2)}
+                        </pre>
+                        ) : (
+                        <div className="detail-row" style={{ color: 'var(--text-muted)' }}>
+                            No discovered plugins match "{searchTerm}"
+                        </div>
+                        )}
+                    </div>
+                    </div>
+                );
+                })()}
+            </div>
+            </div>
+        )}
 
           {selectedTab === 'performance' && (
             <div className="panel">
