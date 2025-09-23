@@ -31,9 +31,9 @@ async function readJsonSafe(path) {
 
 export async function discoverSequenceFiles() {
   const sequencesDir = join(rootDir, "public", "json-sequences");
-  const externalDirs = ["library-component", "canvas-component", "header", "library"];
+  const externalDirs = ["library-component", "canvas-component", "header", "library", "control-panel"];
   const sequences = [];
-  
+
   for (const dir of externalDirs) {
     const dirPath = join(sequencesDir, dir);
     try {
