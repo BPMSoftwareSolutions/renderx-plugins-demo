@@ -1236,7 +1236,7 @@
     "canvas.line.resize.end.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasLineResizeEndPlugin",
           "sequenceId": "canvas-line-resize-end-symphony"
         }
       ],
@@ -1251,7 +1251,7 @@
     "canvas.line.resize.move.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasLineResizeMovePlugin",
           "sequenceId": "canvas-line-resize-move-symphony"
         }
       ],
@@ -1266,7 +1266,7 @@
     "canvas.line.resize.start.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasLineResizeStartPlugin",
           "sequenceId": "canvas-line-resize-start-symphony"
         }
       ],
@@ -1281,7 +1281,7 @@
     "canvas.component.resize.move.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasComponentResizeMovePlugin",
           "sequenceId": "canvas-component-resize-move-symphony"
         }
       ],
@@ -1296,7 +1296,7 @@
     "canvas.component.resize.start.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasComponentResizeStartPlugin",
           "sequenceId": "canvas-component-resize-start-symphony"
         }
       ],
@@ -1311,7 +1311,7 @@
     "canvas.component.select.svg.node.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
           "sequenceId": "canvas-component-select-svg-node-symphony"
         }
       ],
@@ -1326,7 +1326,7 @@
     "canvas.component.update.svg.node.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
+          "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
           "sequenceId": "canvas-component-update-svg-node-symphony"
         }
       ],

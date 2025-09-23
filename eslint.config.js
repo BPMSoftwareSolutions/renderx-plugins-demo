@@ -24,6 +24,9 @@ import validHandlersPath from "./eslint-rules/valid-handlers-path.js";
 import handlerExportExists from "./eslint-rules/handler-export-exists.js";
 import consistentJsonImportAttributes from "./eslint-rules/consistent-json-import-attributes.js";
 import validateExternalPluginConsistency from "./eslint-rules/validate-external-plugin-consistency.js";
+import validateInternalPluginIds from "./eslint-rules/validate-internal-plugin-ids.js";
+import validateServedSequences from "./eslint-rules/validate-served-sequences-mountable.js";
+
 
 
 // Externalization support: allow linting an out-of-repo plugin source root pointed to by RENDERX_PLUGINS_SRC.
@@ -107,6 +110,8 @@ export default [
       "handler-exports": handlerExportExists,
       "json-import-attrs": consistentJsonImportAttributes,
       "validate-external-plugin-consistency": validateExternalPluginConsistency,
+      "internal-plugin-ids": validateInternalPluginIds,
+      "served-sequences-mountable": validateServedSequences,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -129,6 +134,8 @@ export default [
       "handler-exports/handler-export-exists": "error",
       "json-import-attrs/consistent-json-import-attributes": "warn",
       "validate-external-plugin-consistency/validate-external-plugin-consistency": "error",
+      "internal-plugin-ids/validate-internal-plugin-ids": "error",
+      "served-sequences-mountable/validate-served-sequences-mountable": "error",
 
       "@typescript-eslint/no-unused-vars": [
         "warn",
