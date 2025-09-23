@@ -36,10 +36,21 @@ export default function App() {
       return true;
     };
 
-    if (wireCanvasDeselect() && wireEscapeDeselect()) return;
+    const wireDeleteSelected = () => {
+      const conductor = (window as any).RenderX?.conductor;
+      if (!conductor) return false;
+
+      window.addEventListener("keydown", async (e) => {
+        if (e.key === "Delete") await EventRouter.publish("canvas.component.delete.requested", {}, conductor);
+      });
+      return true;
+    };
+
+
+    if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected()) return;
 
     const observer = new MutationObserver(() => {
-      if (wireCanvasDeselect() && wireEscapeDeselect()) {
+      if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected()) {
         observer.disconnect();
       }
     });
