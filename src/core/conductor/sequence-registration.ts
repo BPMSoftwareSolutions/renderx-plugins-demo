@@ -27,6 +27,13 @@ export function whenPluginsReady(): Promise<void> {
 
 export async function registerAllSequences(conductor: ConductorClient) {
 	// Prevent multiple simultaneous registrations
+	// Global/HMR-safe guard: if a prior registration completed in this session, skip
+	try {
+		if (typeof globalThis !== 'undefined' && (globalThis as any).__RENDERX_PLUGINS_READY === true) {
+			console.log('✅ Plugins already ready (global flag), skipping registration');
+			return;
+		}
+	} catch {}
 	if (registrationInProgress) {
 		console.log('🔄 Registration already in progress, skipping...');
 		return;
@@ -98,21 +105,32 @@ export async function registerAllSequences(conductor: ConductorClient) {
 	// 3) Mount sequences from JSON catalogs
 	await loadJsonSequenceCatalogs(conductor);
 
-	// 3b) Fallback for library-component in browser if sequences missing
+	// 3b) Fallback for library-component only if specific sequences are missing
 	try {
 		const isBrowser = typeof window !== 'undefined' && typeof (globalThis as any).fetch === 'function';
 		if (isBrowser) {
-			const ids: string[] = (conductor as any).getMountedPluginIds?.() || [];
-			const needLib = !ids.includes('LibraryComponentPlugin') || !ids.includes('LibraryComponentDropPlugin');
-			if (needLib) {
+			const seqSet = (conductor as any)._runtimeMountedSeqIds;
+			const seqIds = Array.isArray(seqSet) ? seqSet : (seqSet instanceof Set ? Array.from(seqSet) : []);
+			const required = ['library-component-drag-symphony', 'library-component-drop-symphony', 'library-component-container-drop-symphony'];
+			const missing = required.filter(id => !seqIds.includes(id));
+			if (missing.length) {
 				try {
 					const spec = resolveModuleSpecifier('@renderx-plugins/library-component');
 					const mod: any = await import(/* @vite-ignore */ spec as any);
 					const handlers = (mod as any)?.handlers || mod?.default?.handlers;
 					if (handlers) {
 						const pull = async (file: string) => { try { const r = await fetch(`/json-sequences/library-component/${file}`); if (r.ok) return await r.json(); } catch {}; return null; };
-						const seqs = [await pull('drag.json'), await pull('drop.json'), await pull('container.drop.json')].filter(Boolean) as any[];
-						for (const s of seqs) { try { await (conductor as any).mount?.(s, handlers, s.pluginId); } catch {} }
+						const files = [
+							{ id: 'library-component-drag-symphony', file: 'drag.json' },
+							{ id: 'library-component-drop-symphony', file: 'drop.json' },
+							{ id: 'library-component-container-drop-symphony', file: 'container.drop.json' }
+						];
+						for (const f of files) {
+							if (!seqIds.includes(f.id)) {
+								const s = await pull(f.file);
+								if (s) { try { await (conductor as any).mount?.(s, handlers, s.pluginId); } catch {} }
+							}
+						}
 					}
 				} catch {}
 			}
