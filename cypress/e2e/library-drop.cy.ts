@@ -63,7 +63,7 @@ describe('Library → Canvas drop creates component', () => {
 
     // Gate on app readiness beacon (now includes Library components loading)
     cy.waitForRenderXReady({
-      minRoutes: 40,
+      minRoutes: 28,
       minTopics: 50,
       minPlugins: 8,
       minMounted: 5,

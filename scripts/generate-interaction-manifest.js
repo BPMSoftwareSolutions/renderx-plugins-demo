@@ -65,10 +65,9 @@ async function readPluginCatalogs() {
       return [];
     }
   }
-  const local = await readDirSafe(localDir);
   const generated = await readDirSafe(genDir);
-  // Order matters: later catalogs override earlier ones; generated should take precedence
-  return [...local, ...generated];
+  // Phase 2: only use generated catalogs; host-authored catalogs are removed
+  return [...generated];
 }
 
 function extractOverridesFromComponentJson(json) {

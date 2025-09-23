@@ -49,18 +49,6 @@
       "pluginId": "CanvasComponentResizeEndPlugin",
       "sequenceId": "canvas-component-resize-end-symphony"
     },
-    "canvas.component.resize.line.end": {
-      "pluginId": "CanvasLineResizeEndPlugin",
-      "sequenceId": "canvas-line-resize-end-symphony"
-    },
-    "canvas.component.resize.line.move": {
-      "pluginId": "CanvasLineResizeMovePlugin",
-      "sequenceId": "canvas-line-resize-move-symphony"
-    },
-    "canvas.component.resize.line.start": {
-      "pluginId": "CanvasLineResizeStartPlugin",
-      "sequenceId": "canvas-line-resize-start-symphony"
-    },
     "canvas.component.resize.move": {
       "pluginId": "CanvasComponentResizeMovePlugin",
       "sequenceId": "canvas-component-resize-move-symphony"
@@ -73,10 +61,6 @@
       "pluginId": "CanvasComponentSelectionPlugin",
       "sequenceId": "canvas-component-select-symphony"
     },
-    "canvas.component.select.svg-node": {
-      "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
-      "sequenceId": "canvas-component-select-svg-node-symphony"
-    },
     "canvas.component.select.svg.node": {
       "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
       "sequenceId": "canvas-component-select-svg-node-symphony"
@@ -84,10 +68,6 @@
     "canvas.component.update": {
       "pluginId": "CanvasComponentPlugin",
       "sequenceId": "canvas-component-update-symphony"
-    },
-    "canvas.component.update.svg-node": {
-      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
-      "sequenceId": "canvas-component-update-svg-node-symphony"
     },
     "canvas.component.update.svg.node": {
       "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
@@ -116,66 +96,6 @@
     "canvas.line.resize.start": {
       "pluginId": "CanvasLineResizeStartPlugin",
       "sequenceId": "canvas-line-resize-start-symphony"
-    },
-    "control.panel.classes.add": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-classes-add-symphony"
-    },
-    "control.panel.classes.remove": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-classes-remove-symphony"
-    },
-    "control.panel.css.create": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-css-create-symphony"
-    },
-    "control.panel.css.delete": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-css-delete-symphony"
-    },
-    "control.panel.css.edit": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-css-edit-symphony"
-    },
-    "control.panel.selection.show": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-selection-show-symphony"
-    },
-    "control.panel.ui.field.change": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-ui-field-change-symphony"
-    },
-    "control.panel.ui.field.validate": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-ui-field-validate-symphony"
-    },
-    "control.panel.ui.init": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-ui-init-symphony"
-    },
-    "control.panel.ui.init.batched": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-ui-init-batched-symphony"
-    },
-    "control.panel.ui.render": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-ui-render-symphony"
-    },
-    "control.panel.ui.section.toggle": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-ui-section-toggle-symphony"
-    },
-    "control.panel.update": {
-      "pluginId": "ControlPanelPlugin",
-      "sequenceId": "control-panel-update-symphony"
-    },
-    "library.component.drag.start": {
-      "pluginId": "LibraryComponentPlugin",
-      "sequenceId": "library-component-drag-symphony"
-    },
-    "library.component.drop": {
-      "pluginId": "LibraryComponentDropPlugin",
-      "sequenceId": "library-component-drop-symphony"
     },
     "library.container.drop": {
       "pluginId": "LibraryComponentPlugin",
