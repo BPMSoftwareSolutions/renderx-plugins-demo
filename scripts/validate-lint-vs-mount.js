@@ -50,7 +50,6 @@ function loadManifestIdsByModule(root) {
   const candidates = [
     path.join(root, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
     path.join(root, 'public', 'plugins', 'plugin-manifest.json'),
-    path.join(root, 'catalog', 'json-plugins', 'plugin-manifest.json'),
   ];
   const map = new Map();
   for (const p of candidates) {

@@ -126,11 +126,10 @@ const rule = {
 };
 
 function loadServedManifestPluginIds(cwd) {
-  // Priority: generated aggregate, then served public, then checked-in fallback
+  // Source of truth: generated aggregate first, then actually served public manifest
   const candidates = [
     path.join(cwd, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
     path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
-    path.join(cwd, 'catalog', 'json-plugins', 'plugin-manifest.json'),
   ];
 
   for (const p of candidates) {
@@ -213,7 +212,6 @@ function loadManifestIdsByModule(cwd) {
   const candidates = [
     path.join(cwd, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
     path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
-    path.join(cwd, 'catalog', 'json-plugins', 'plugin-manifest.json'),
   ];
   const map = new Map();
   for (const p of candidates) {

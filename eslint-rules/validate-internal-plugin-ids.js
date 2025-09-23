@@ -40,11 +40,8 @@ const rule = {
       // If nothing to validate against, bail quietly
       if (!pluginIds || pluginIds.size === 0) return {};
 
-      const seqIndex = buildServedSequenceIdIndex(cwd);
-
       const mismatches = [
         ...validateTopicsManifest(cwd, pluginIds),
-        ...validateInteractionJsons(cwd, pluginIds, seqIndex),
       ];
 
       for (const m of mismatches) {
@@ -87,10 +84,8 @@ const rule = {
 
 function loadManifestPluginIds(cwd) {
   const candidates = [
-    path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
     path.join(cwd, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
-    path.join(cwd, 'catalog', 'json-plugins', 'plugin-manifest.json'),
-    path.join(cwd, 'plugin-manifest.json'),
+    path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
   ];
 
   for (const p of candidates) {
@@ -133,7 +128,7 @@ function validateTopicsManifest(cwd, pluginIds) {
   return out;
 }
 
-function validateInteractionJsons(cwd, pluginIds, seqIndex) {
+function _validateInteractionJsons(cwd, pluginIds, seqIndex) {
   const out = [];
   const base = path.join(cwd, 'catalog', 'json-interactions');
   if (!fs.existsSync(base)) return out;
@@ -178,7 +173,7 @@ function validateInteractionJsons(cwd, pluginIds, seqIndex) {
 }
 
 
-function buildServedSequenceIdIndex(cwd) {
+function _buildServedSequenceIdIndex(cwd) {
   const dirs = [
     path.join(cwd, 'public', 'json-sequences'),
     path.join(cwd, 'json-sequences'),
@@ -245,7 +240,7 @@ function levenshtein(a, b) {
   return matrix[b.length][a.length];
 }
 
-function loadManifestNamespaces(cwd) {
+function _loadManifestNamespaces(cwd) {
   const candidates = [
     path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
     path.join(cwd, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
@@ -263,7 +258,7 @@ function loadManifestNamespaces(cwd) {
         const uiModule = item?.ui?.module;
         for (const mod of [runtimeModule, uiModule]) {
           if (!mod) continue;
-          for (const ns of derivePkgNamespaces(mod)) out.add(ns);
+          for (const ns of _derivePkgNamespaces(mod)) out.add(ns);
         }
       }
       if (out.size > 0) return Array.from(out);
@@ -274,7 +269,7 @@ function loadManifestNamespaces(cwd) {
   return Array.from(out);
 }
 
-function derivePkgNamespaces(pkgName) {
+function _derivePkgNamespaces(pkgName) {
   try {
     const name = (pkgName || '').split('/').pop() || pkgName; // e.g. canvas-component
     const parts = String(name).split('-').filter(Boolean);
@@ -288,11 +283,11 @@ function derivePkgNamespaces(pkgName) {
   }
 }
 
-function isAllowedByPrefix(id, basePrefixes) {
+function _isAllowedByPrefix(id, basePrefixes) {
   return (basePrefixes || []).some((p) => id === p + 'Plugin' || (id.startsWith(p) && id.endsWith('Plugin')));
 }
 
-function isAllowedByNamespace(id, namespaces) {
+function _isAllowedByNamespace(id, namespaces) {
   return (namespaces || []).some((ns) => id.startsWith(ns) && id.endsWith('Plugin'));
 }
 

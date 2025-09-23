@@ -62,15 +62,15 @@
       "sequenceId": "canvas-line-resize-start-symphony"
     },
     "canvas.component.resize.move": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasComponentResizeMovePlugin",
       "sequenceId": "canvas-component-resize-move-symphony"
     },
     "canvas.component.resize.start": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasComponentResizeStartPlugin",
       "sequenceId": "canvas-component-resize-start-symphony"
     },
     "canvas.component.select": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasComponentSelectionPlugin",
       "sequenceId": "canvas-component-select-symphony"
     },
     "canvas.component.select.svg-node": {
@@ -78,7 +78,7 @@
       "sequenceId": "canvas-component-select-svg-node-symphony"
     },
     "canvas.component.select.svg.node": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
       "sequenceId": "canvas-component-select-svg-node-symphony"
     },
     "canvas.component.update": {
@@ -90,7 +90,7 @@
       "sequenceId": "canvas-component-update-svg-node-symphony"
     },
     "canvas.component.update.svg.node": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
       "sequenceId": "canvas-component-update-svg-node-symphony"
     },
     "canvas.line.manip.end": {
@@ -106,15 +106,15 @@
       "sequenceId": "canvas-line-manip-start-symphony"
     },
     "canvas.line.resize.end": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasLineResizeEndPlugin",
       "sequenceId": "canvas-line-resize-end-symphony"
     },
     "canvas.line.resize.move": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasLineResizeMovePlugin",
       "sequenceId": "canvas-line-resize-move-symphony"
     },
     "canvas.line.resize.start": {
-      "pluginId": "CanvasComponentPlugin",
+      "pluginId": "CanvasLineResizeStartPlugin",
       "sequenceId": "canvas-line-resize-start-symphony"
     },
     "control.panel.classes.add": {
