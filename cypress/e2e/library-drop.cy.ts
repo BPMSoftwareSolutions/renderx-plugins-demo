@@ -152,6 +152,58 @@ describe('Library → Canvas drop creates component', () => {
       const cls = $node.attr('class') || '';
       capturedLogs.push(`[component] Created node tag=${tag} class="${cls}"`);
     });
+
+    // Click the component on the canvas to select it
+    cy.get(nodeSelector).first().click();
+
+    // Wait for selection to process
+    cy.wait(1000);
+
+    // Verify selection overlay is displayed
+    cy.get('.selection-overlay, .selected-overlay, .rx-selection-overlay', { timeout: 5000 })
+      .should('exist')
+      .then(() => {
+        capturedLogs.push(`[selection] ✅ Selection overlay is displayed`);
+        cy.log(`✅ Selection overlay is displayed`);
+      });
+
+    // Verify the control panel displays the component information
+    const controlPanelSlot = '[data-slot="controlPanel"] [data-slot-content]';
+
+    // Check for control panel header with Properties Panel title
+    cy.get(controlPanelSlot)
+      .find('.control-panel-header')
+      .should('exist')
+      .within(() => {
+        // Verify Properties Panel title
+        cy.contains('⚙️ Properties Panel').should('exist');
+
+        // Verify element-info section is displayed
+        cy.get('.element-info')
+          .should('be.visible')
+          .within(() => {
+            // Verify element-type is displayed (should be "button")
+            cy.get('.element-type')
+              .should('exist')
+              .should('contain.text', 'button')
+              .then(($type) => {
+                capturedLogs.push(`[control-panel] ✅ Element type displayed: ${$type.text()}`);
+              });
+
+            // Verify element-id is displayed (should start with #rx-node-)
+            cy.get('.element-id')
+              .should('exist')
+              .should(($id) => {
+                const idText = $id.text();
+                expect(idText).to.match(/^#rx-node-/);
+                capturedLogs.push(`[control-panel] ✅ Element ID displayed: ${idText}`);
+              });
+          });
+      })
+      .then(() => {
+        capturedLogs.push(`[control-panel] ✅ Control panel shows selected component properties`);
+        cy.log(`✅ Control panel shows selected component properties`);
+      });
   });
 
 
