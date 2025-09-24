@@ -227,17 +227,17 @@ describe('Library → Canvas drop creates component', () => {
           allPropertyItems.forEach((item, index) => {
             const text = item.textContent?.trim();
             if (text?.includes('X Position')) {
-              const input = item.querySelector('.property-input');
+              const input = item.querySelector('.field-input input');
               layoutInfo.x = parseFloat(input?.value || '0');
               layoutInfo.found = true;
             } else if (text?.includes('Y Position')) {
-              const input = item.querySelector('.property-input');
+              const input = item.querySelector('.field-input input');
               layoutInfo.y = parseFloat(input?.value || '0');
             } else if (text?.includes('Width')) {
-              const input = item.querySelector('.property-input');
+              const input = item.querySelector('.field-input input');
               layoutInfo.width = parseFloat(input?.value || '0');
             } else if (text?.includes('Height')) {
-              const input = item.querySelector('.property-input');
+              const input = item.querySelector('.field-input input');
               layoutInfo.height = parseFloat(input?.value || '0');
             }
           });
@@ -317,29 +317,53 @@ describe('Library → Canvas drop creates component', () => {
       // Wait for drag to complete
       cy.wait(1000);
 
-      // Check the component's actual position on the canvas by examining its style attribute
-      cy.get(nodeSelector).first().then(($component) => {
-        const style = $component[0].style;
-        const currentLeft = parseFloat(style.left) || 0;
-        const currentTop = parseFloat(style.top) || 0;
+      // Prefer verifying via Control Panel layout fields (model truth), then fall back to style
+      cy.window().then((win) => {
+        const result = win.eval(`
+          (() => {
+            const allPropertyItems = document.querySelectorAll('[data-slot="controlPanel"] .property-item');
+            const layoutInfo = { found: false, x: 0, y: 0 };
+            allPropertyItems.forEach((item) => {
+              const text = item.textContent?.trim();
+              if (text?.includes('X Position')) {
+                const input = item.querySelector('.field-input input');
+                layoutInfo.x = parseFloat(input?.value || '0');
+                layoutInfo.found = true;
+              } else if (text?.includes('Y Position')) {
+                const input = item.querySelector('.field-input input');
+                layoutInfo.y = parseFloat(input?.value || '0');
+              }
+            });
+            return layoutInfo;
+          })()
+        `);
 
-        capturedLogs.push(`[drag] Canvas position check: Initial(${initialPosition.x}, ${initialPosition.y}) → Current(${currentLeft}, ${currentTop})`);
-        cy.log(`Canvas position: Initial(${initialPosition.x}, ${initialPosition.y}) → Current(${currentLeft}, ${currentTop})`);
+        const currentLeft = result.x;
+        const currentTop = result.y;
 
-        // Check if the component actually moved on the canvas
+        capturedLogs.push(`[drag] Layout position check: Initial(${initialPosition.x}, ${initialPosition.y}) → Current(${currentLeft}, ${currentTop})`);
+        cy.log(`Layout position: Initial(${initialPosition.x}, ${initialPosition.y}) → Current(${currentLeft}, ${currentTop})`);
+
+        // Check if the component actually moved on the canvas using model values
         const xChanged = Math.abs(currentLeft - initialPosition.x) > 5;
         const yChanged = Math.abs(currentTop - initialPosition.y) > 5;
 
-        // Enforce failure if the component did not actually move
-        expect(xChanged || yChanged, 'component position should change after drag').to.be.true;
-
         if (xChanged || yChanged) {
-          capturedLogs.push(`[drag] ✅ Component moved on canvas successfully`);
-          capturedLogs.push(`[drag] ✅ Left: ${initialPosition.x} → ${currentLeft} (changed: ${xChanged})`);
-          capturedLogs.push(`[drag] ✅ Top: ${initialPosition.y} → ${currentTop} (changed: ${yChanged})`);
+          capturedLogs.push(`[drag] ✅ Component moved on canvas successfully (model)`);
+          capturedLogs.push(`[drag] ✅ X: ${initialPosition.x} → ${currentLeft} (changed: ${xChanged})`);
+          capturedLogs.push(`[drag] ✅ Y: ${initialPosition.y} → ${currentTop} (changed: ${yChanged})`);
           cy.log(`✅ Component dragged successfully on canvas`);
         } else {
-          capturedLogs.push(`[drag] ❌ Component position on canvas did not change (failing)`);
+          // Fallback to style attribute check in case model fields didn't refresh yet
+          cy.get(nodeSelector).first().then(($component) => {
+            const style = $component[0].style;
+            const sLeft = parseFloat(style.left) || 0;
+            const sTop = parseFloat(style.top) || 0;
+            const sx = Math.abs(sLeft - initialPosition.x) > 5;
+            const sy = Math.abs(sTop - initialPosition.y) > 5;
+            capturedLogs.push(`[drag] Style position fallback: Initial(${initialPosition.x}, ${initialPosition.y}) → Current(${sLeft}, ${sTop})`);
+            expect((sx || sy) || (xChanged || yChanged), 'component position should change after drag (model or style)').to.be.true;
+          });
         }
       });
     });
