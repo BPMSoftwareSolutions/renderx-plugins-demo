@@ -3,6 +3,7 @@ import { LayoutEngine } from "../../domain/layout/LayoutEngine";
 import { isFlagEnabled } from "../../core/environment/feature-flags";
 import { SlotContainer } from "../../domain/layout/SlotContainer";
 import { EventRouter } from "../../core/events/EventRouter";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 import "../../domain/layout/legacyLayout.css";
 
 export default function App() {
@@ -46,11 +47,66 @@ export default function App() {
       return true;
     };
 
+    const wireCanvasDrag = () => {
+      const canvas = document.querySelector("#rx-canvas") as HTMLElement;
+      if (!canvas) return false;
+      const conductor = (window as any).RenderX?.conductor;
+      if (!conductor) return false;
 
-    if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected()) return;
+      // Resolve interaction route once
+      const dragRoute = resolveInteraction("canvas.component.drag.move");
+      if (!dragRoute) return false;
+
+      let dragging = false;
+      let currentId: string | null = null;
+      let offsetX = 0;
+      let offsetY = 0;
+      let canvasRect: DOMRect | null = null;
+
+      const findNodeEl = (t: HTMLElement): HTMLElement | null => {
+        return (t.closest?.("[id^='rx-node-']") as HTMLElement) || (t.closest?.(".rx-comp") as HTMLElement) || null;
+      };
+
+      const onMouseDown = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const nodeEl = findNodeEl(target);
+        if (!nodeEl) return;
+        const id = nodeEl.id || nodeEl.getAttribute("data-rx-node");
+        if (!id) return;
+        canvasRect = canvas.getBoundingClientRect();
+        const elRect = nodeEl.getBoundingClientRect();
+        offsetX = e.clientX - elRect.left;
+        offsetY = e.clientY - elRect.top;
+        currentId = id;
+        dragging = true;
+        // Prevent text selection while dragging
+        e.preventDefault();
+      };
+
+      const onMouseMove = (e: MouseEvent) => {
+        if (!dragging || !currentId || !canvasRect) return;
+        const x = e.clientX - canvasRect.left - offsetX;
+        const y = e.clientY - canvasRect.top - offsetY;
+        try {
+          (conductor as any).play?.(dragRoute.pluginId, dragRoute.sequenceId, { id: currentId, position: { x, y } });
+        } catch {}
+      };
+
+      const onMouseUp = () => {
+        dragging = false;
+        currentId = null;
+      };
+
+      canvas.addEventListener("mousedown", onMouseDown, true);
+      window.addEventListener("mousemove", onMouseMove, true);
+      window.addEventListener("mouseup", onMouseUp, true);
+      return true;
+    };
+
+    if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected() && wireCanvasDrag()) return;
 
     const observer = new MutationObserver(() => {
-      if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected()) {
+      if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected() && wireCanvasDrag()) {
         observer.disconnect();
       }
     });

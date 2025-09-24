@@ -330,14 +330,16 @@ describe('Library → Canvas drop creates component', () => {
         const xChanged = Math.abs(currentLeft - initialPosition.x) > 5;
         const yChanged = Math.abs(currentTop - initialPosition.y) > 5;
 
+        // Enforce failure if the component did not actually move
+        expect(xChanged || yChanged, 'component position should change after drag').to.be.true;
+
         if (xChanged || yChanged) {
           capturedLogs.push(`[drag] ✅ Component moved on canvas successfully`);
           capturedLogs.push(`[drag] ✅ Left: ${initialPosition.x} → ${currentLeft} (changed: ${xChanged})`);
           capturedLogs.push(`[drag] ✅ Top: ${initialPosition.y} → ${currentTop} (changed: ${yChanged})`);
           cy.log(`✅ Component dragged successfully on canvas`);
         } else {
-          capturedLogs.push(`[drag] ⚠️ Component position on canvas did not change significantly`);
-          cy.log(`⚠️ Canvas position change was minimal or not detected`);
+          capturedLogs.push(`[drag] ❌ Component position on canvas did not change (failing)`);
         }
       });
     });

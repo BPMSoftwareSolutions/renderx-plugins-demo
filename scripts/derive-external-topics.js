@@ -42,9 +42,20 @@ export async function discoverSequenceFiles() {
         if (file.endsWith(".json") && file !== "index.json") {
           const filePath = join(dirPath, file);
           const sequence = await readJsonSafe(filePath);
-          if (sequence && sequence.pluginId) {
+
+          // Some published plugin packages may omit pluginId in legacy builds.
+          // Fallback to known plugin IDs by directory when safe.
+          const fallbackPluginIds = {
+            "control-panel": "ControlPanelPlugin",
+            header: "HeaderThemePlugin",
+            library: "LibraryPlugin",
+            "library-component": "LibraryComponentPlugin",
+          };
+          const pluginId = (sequence && sequence.pluginId) ? sequence.pluginId : fallbackPluginIds[dir];
+
+          if (sequence && pluginId) {
             sequences.push({
-              pluginId: sequence.pluginId,
+              pluginId,
               sequenceId: sequence.id,
               file: `${dir}/${file}`,
               sequence
