@@ -45,7 +45,7 @@ async function readJsonSafe(path) {
   }
 }
 
-async function readTopicCatalogs() {
+async function _readTopicCatalogs() {
   // Prefer root json-topics/, but also support json-components/json-topics/ for compatibility
   const dirs = [
     join(srcRoot, "json-topics"),
@@ -67,12 +67,9 @@ async function readTopicCatalogs() {
 }
 
 async function main() {
-  const localCatalogs = await readTopicCatalogs();
+  // Generate manifest solely from external (plugin-served) sequences
   const externalCatalog = await generateExternalTopicsCatalog();
-
-  // Merge local and derived external catalogs
-  const allCatalogs = [...localCatalogs, externalCatalog];
-  const manifest = buildTopicsManifest(allCatalogs);
+  const manifest = buildTopicsManifest([externalCatalog]);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");
   await fs.mkdir(outPublicDir, { recursive: true });

@@ -74,37 +74,16 @@ Note: The interaction key omits the trailing `.requested` phase. That suffix liv
 
 ---
 
-## 6. Define Topic in Topics Manifests
+## 6. Topic Derivation (no manual manifests)
 
-Add to:
+Topics are now derived exclusively from plugin-served sequence JSON. You do NOT add topic entries in this repo.
 
-- Root `topics-manifest.json`
-- Component-scoped `json-components/json-topics/canvas-component.json`
+What to do instead:
+- Ensure your sequence JSON (in the plugin package) has a stable `id` that maps to the desired topic name (the generator converts kebab-case to dot notation and appends `.requested` for orchestration sequences).
+- Export that sequence from the plugin’s `json-sequences/index.json` so it is synced to `public/json-sequences/`.
+- Run `npm run pre:manifests` locally; the generator will rebuild `topics-manifest.json` from the served sequences.
 
-Schema used:
-
-```json
-{
-  "routes": [
-    {
-      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
-      "sequenceId": "canvas-component-update-svg-node-symphony"
-    }
-  ],
-  "payloadSchema": {
-    "type": "object",
-    "properties": {
-      "id": { "type": "string" },
-      "path": { "type": "string" },
-      "attribute": { "type": "string" },
-      "value": {}
-    },
-    "required": ["id", "path", "attribute"]
-  },
-  "visibility": "public",
-  "notes": "Update an attribute on an SVG sub-node within a canvas component; routes to SVG node update sequence."
-}
-```
+If a topic is missing, verify the sequence file exists under `public/json-sequences/<plugin>/` and its `id` matches the intended topic naming (see rules in `scripts/derive-external-topics.js`).
 
 ---
 
@@ -152,8 +131,6 @@ All attribute changes must pass a whitelist (`ALLOWED_SVG_ATTRIBUTES`) inside `u
 - [x] Sequence registered in index
 - [x] Handlers exported
 - [x] Interaction route added
-- [x] Topic added to root topics manifest
-- [x] Topic added to component topics manifest
 - [x] Code publishing the topic updated / created
 - [x] Tests reference (or added)
 - [x] Docs updated (this file + `svg-node-selection.md` reference already existed)
