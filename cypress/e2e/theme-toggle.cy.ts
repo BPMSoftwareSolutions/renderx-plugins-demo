@@ -42,14 +42,22 @@ describe('Theme toggle button', () => {
       },
     });
 
-    // Gate on app readiness beacon (deterministic, retryable)
-    cy.waitForRenderXReady({
-      minRoutes: 40,
-      minTopics: 50,
-      minPlugins: 8,
-      minMounted: 2,
-      eventTimeoutMs: 20000,
-      requiredPluginIds: ['HeaderThemePlugin'],
+    // Gate on app readiness beacon using actual manifest counts (robust to catalog changes)
+    cy.request('/interaction-manifest.json').then((routesResp) => {
+      const routesJson = typeof routesResp.body === 'string' ? JSON.parse(routesResp.body) : routesResp.body;
+      const routesCount = Object.keys(routesJson?.routes || {}).length;
+      cy.request('/topics-manifest.json').then((topicsResp) => {
+        const topicsJson = typeof topicsResp.body === 'string' ? JSON.parse(topicsResp.body) : topicsResp.body;
+        const topicsCount = Object.keys(topicsJson?.topics || {}).length;
+        cy.waitForRenderXReady({
+          minRoutes: Math.max(1, routesCount),
+          minTopics: Math.max(1, topicsCount),
+          minPlugins: 8,
+          minMounted: 2,
+          eventTimeoutMs: 20000,
+          requiredPluginIds: ['HeaderThemePlugin'],
+        });
+      });
     });
 
     // Ensure the specific plugin + sequences we need are actually mounted

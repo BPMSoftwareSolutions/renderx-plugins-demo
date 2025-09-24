@@ -96,6 +96,10 @@ async function main() {
         routes: cpShow.routes, payloadSchema: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] }, visibility: 'public', notes: 'Synthesized alias to CP selection.show'
       };
     }
+    // 3) Canvas component created → notify-only topic
+    topics['canvas.component.created'] = topics['canvas.component.created'] || {
+      routes: [], payloadSchema: { type: 'object', properties: { id: { type: 'string' } } }, visibility: 'public', notes: 'Synthesized notify-only (component created)'
+    };
   } catch {}
 
   // Use only the (augmented) external catalog

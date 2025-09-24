@@ -688,6 +688,21 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Synthesized alias to CP selection.show"
+    },
+    "canvas.component.created": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (component created)"
     }
   }
 }
