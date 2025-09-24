@@ -113,15 +113,19 @@ export async function loadJsonSequenceCatalogs(
           if (typeof modPath === "string") {
             const m = modPath.match(/^\/plugins\/([^\/]+)\//);
             if (m) catalogDirs.add(m[1]);
+            // Heuristic: if module refers to @renderx-plugins/control-panel, include its catalog dir
+            if (/@renderx-plugins\/control-panel/.test(modPath)) catalogDirs.add("control-panel");
           }
         }
+        // Always include core externalized catalogs, even if manifest UI lacks explicit /plugins/ paths
         catalogDirs.add("library-component");
         catalogDirs.add("canvas-component");
+        catalogDirs.add("control-panel");
         if (catalogDirs.size) {
           (conductor as any)._sequenceCatalogDirsFromManifest =
             Array.from(catalogDirs);
           plugins = Array.from(
-            new Set([...(plugins || []), ...Array.from(catalogDirs)])
+            new Set([...(plugins || []), ...Array.from(catalogDirs), "ControlPanelPlugin"]) // ensure CP is attempted
           );
         }
       } catch {}
