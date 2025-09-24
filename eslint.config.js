@@ -137,12 +137,28 @@ export default [
       "internal-plugin-ids/validate-internal-plugin-ids": "error",
       "served-sequences-mountable/validate-served-sequences-mountable": "error",
 
+
+	      // Enforce externalized json-components: forbid local/public references in code
+	      "no-restricted-imports": [
+	        "error",
+	        {
+	          patterns: [
+	            "**/catalog/json-components/**",
+	            "catalog/json-components/**",
+	            "../catalog/json-components/**",
+	            "../../catalog/json-components/**",
+	            "public/json-components/**",
+	          ],
+	        },
+	      ],
+
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
     },
   },
+
   // Symphony files: enforce DOM access only in stage-crew handlers
   {
     files: ["**/*.symphony.ts", "**/*.symphony.tsx"],
@@ -401,6 +417,18 @@ export default [
       ],
     },
   },
+  // Allow references in syncing/build scripts (host maintenance)
+  {
+    files: [
+      "scripts/sync-json-components.js",
+      "scripts/build-artifacts.js",
+    ],
+    rules: {
+      "no-restricted-syntax": "off",
+      "no-restricted-imports": "off",
+    },
+  },
+
 
   // Stage-crew handlers: allow DOM, forbid UI imports, forbid IO/API here
   {
