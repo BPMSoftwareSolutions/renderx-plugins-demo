@@ -49,6 +49,7 @@
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.3",
     "@renderx-plugins/canvas-component": "^0.1.0-rc.19",
+    "@renderx-plugins/components": "^0.1.0",
     "@renderx-plugins/control-panel": "^0.1.0-rc.7",
     "@renderx-plugins/header": "^0.1.1",
     "@renderx-plugins/host-sdk": "^0.3.0",
