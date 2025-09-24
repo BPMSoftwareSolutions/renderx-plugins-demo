@@ -23,6 +23,22 @@ export const runtimePackageLoaders: Record<string, () => Promise<any>> = {
   // @ts-ignore missing d.ts
   "@renderx-plugins/control-panel": () =>
     import("@renderx-plugins/control-panel"),
+  // Control Panel symphony subpaths (needed for dynamic runtime imports in browser)
+  // @ts-ignore missing d.ts
+  "@renderx-plugins/control-panel/symphonies/ui/ui.symphony": () =>
+    import("@renderx-plugins/control-panel/symphonies/ui/ui.symphony.js"),
+  // @ts-ignore missing d.ts
+  "@renderx-plugins/control-panel/symphonies/selection/selection.symphony": () =>
+    import("@renderx-plugins/control-panel/symphonies/selection/selection.symphony.js"),
+  // @ts-ignore missing d.ts
+  "@renderx-plugins/control-panel/symphonies/classes/classes.symphony": () =>
+    import("@renderx-plugins/control-panel/symphonies/classes/classes.symphony.js"),
+  // @ts-ignore missing d.ts
+  "@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony": () =>
+    import("@renderx-plugins/control-panel/symphonies/css-management/css-management.symphony.js"),
+  // @ts-ignore missing d.ts
+  "@renderx-plugins/control-panel/symphonies/update/update.symphony": () =>
+    import("@renderx-plugins/control-panel/symphonies/update/update.symphony.js"),
 };
 
 export type ConductorClient = any; // re-declared for local file cohesion

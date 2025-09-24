@@ -67,11 +67,12 @@ async function readTopicCatalogs() {
 }
 
 async function main() {
-  const localCatalogs = await readTopicCatalogs();
+  const includeLocal = Boolean(getArg('--includeLocal', process.env.RENDERX_INCLUDE_LOCAL_TOPICS || ''));
+  const localCatalogs = includeLocal ? await readTopicCatalogs() : [];
   const externalCatalog = await generateExternalTopicsCatalog();
 
-  // Merge local and derived external catalogs
-  const allCatalogs = [...localCatalogs, externalCatalog];
+  // Default to external-only; include local catalogs only when explicitly enabled
+  const allCatalogs = includeLocal ? [...localCatalogs, externalCatalog] : [externalCatalog];
   const manifest = buildTopicsManifest(allCatalogs);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");

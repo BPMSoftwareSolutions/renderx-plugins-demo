@@ -80,7 +80,6 @@ function deriveTopicFromSequence(seq) {
     return topicName.replace(/^header\./, 'app.');
   }
 
-  const isLibraryComponent = (seq.pluginId && /LibraryComponent/i.test(seq.pluginId)) || (seq.file && seq.file.startsWith('library-component/'));
 
   // Special handling for drag operations - enforce .start.requested
   if (topicName.includes('component.drag') && !topicName.includes('start')) {
@@ -92,12 +91,6 @@ function deriveTopicFromSequence(seq) {
     topicName = topicName + '.requested';
   }
 
-  // Final normalization rules for library-component topics
-  if (isLibraryComponent) {
-    // Only collapse the container path: library.component.container.* -> library.container.*
-    topicName = topicName.replace(/^library\.component\.container\./, 'library.container.');
-    // Keep other library.component.* topics (drag, drop, etc.) as-is
-  }
 
   return topicName;
 }
@@ -125,9 +118,6 @@ function deriveInteractionFromSequence(seq) {
   }
 
   // Normalize library-component 2 library.* (drop .component segment)
-  if ((seq.pluginId && /LibraryComponent/i.test(seq.pluginId)) || (seq.file && seq.file.startsWith('library-component/'))) {
-    route = route.replace(/^library\.component\./, 'library.');
-  }
 
   // Drag interactions are keyed as *.drag.move for the drag symphony
   if (/\.drag$/.test(route)) {
@@ -165,6 +155,49 @@ export async function generateExternalTopicsCatalog() {
       };
     }
   }
+
+  // Add notify-only topics that are published by the host but have no routes
+  const notifyOnly = [
+    "canvas.component.drag.start",
+    "canvas.component.drag.move",
+    "canvas.component.drag.end",
+    "library.component.drag.start",
+    "library.component.drag.end",
+    "canvas.component.resize.start",
+    "canvas.component.resize.move",
+    "canvas.component.resize.end",
+    "canvas.component.selections.cleared",
+    "canvas.component.created",
+    // Control Panel publishes selection updates to inform UI; no routes
+    "control.panel.selection.updated"
+  ];
+  for (const t of notifyOnly) {
+    if (!topics[t]) {
+      topics[t] = {
+        routes: [],
+        payloadSchema: { type: "object" },
+        visibility: "public",
+        notes: "Notify-only (no routes); required for runtime publishes"
+      };
+    }
+  }
+
+  // Bridge host-published selection topic to Control Panel selection.show
+  try {
+    const cpSelectionShow = sequences.find(
+      (s) => s.pluginId === "ControlPanelPlugin" && s.sequenceId === "control-panel-selection-show-symphony"
+    );
+    if (cpSelectionShow) {
+      topics["canvas.component.selection.changed"] = {
+        routes: [
+          { pluginId: cpSelectionShow.pluginId, sequenceId: cpSelectionShow.sequenceId }
+        ],
+        payloadSchema: { type: "object" },
+        visibility: "public",
+        notes: "Bridged: canvas.component.selection.changed -> ControlPanel selection.show"
+      };
+    }
+  } catch {}
 
   return { version: "1.0.0", topics };
 }
