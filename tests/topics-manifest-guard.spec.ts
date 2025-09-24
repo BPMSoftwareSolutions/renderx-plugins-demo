@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 
 function loadJson(p: string) {
   const raw = readFileSync(p, 'utf8');
@@ -11,6 +12,12 @@ describe('Topics manifest guardrails', () => {
   const root = process.cwd();
   const topicsPath = path.join(root, 'topics-manifest.json');
   const pluginManifestPath = path.join(root, 'public', 'plugins', 'plugin-manifest.json');
+  const genScript = path.join(root, 'scripts', 'generate-topics-manifest.js');
+
+  beforeAll(() => {
+    const res = spawnSync(process.execPath, [genScript], { stdio: 'inherit' });
+    if (res.status !== 0) throw new Error('Failed to regenerate topics-manifest.json');
+  });
 
   const topicsJson = loadJson(topicsPath);
   const topics = topicsJson?.topics || {};

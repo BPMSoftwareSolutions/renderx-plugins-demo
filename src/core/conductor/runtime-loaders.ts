@@ -194,6 +194,19 @@ export async function loadJsonSequenceCatalogs(
           mod = await runtimePackageLoaders[handlersPath]!();
         }
       } catch {}
+      // Try vendor symphony loader for deep handlersPath under @renderx-plugins/*/symphonies/**
+      if (!mod) {
+        try {
+          if (isBrowser && isBareSpecifier(handlersPath) && /@renderx-plugins\/[^/]+\/symphonies\//.test(handlersPath)) {
+            const vendor = await import(/* @vite-ignore */ '../../vendor/vendor-symphony-loader');
+            const loader = (vendor as any)?.getVendorSymphonyLoader?.(handlersPath);
+            if (typeof loader === 'function') {
+              try { console.log('\uD83D\uDD0D Using vendor symphony loader for', handlersPath); } catch {}
+              mod = await loader();
+            }
+          }
+        } catch {}
+      }
       if (!mod) {
         try { console.log('\u21AA\uFE0F Dynamic importing handlers module via spec:', spec); } catch {}
         mod = await import(/* @vite-ignore */ spec as any);

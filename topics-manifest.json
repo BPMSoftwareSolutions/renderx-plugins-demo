@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
   "topics": {
-    "canvas.component.create.requested": {
+    "library.container.drop.requested": {
       "routes": [
         {
-          "pluginId": "CanvasComponentPlugin",
-          "sequenceId": "canvas-component-create-symphony"
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-container-drop-symphony"
         }
       ],
       "payloadSchema": {
@@ -14,854 +14,7 @@
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Auto-derived from canvas-component/create.json"
-    },
-    "canvas.component.created": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "correlationId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "correlationId"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
-      "perf": {},
-      "notes": "Emitted when a canvas component has been created."
-    },
-    "canvas.component.drag.start": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "correlationId": {
-            "type": "string"
-          }
-        }
-      },
-      "visibility": "internal",
-      "correlationKeys": [
-        "correlationId"
-      ],
-      "perf": {},
-      "notes": "Drag start signal; useful for subscribers; no routing."
-    },
-    "canvas.component.drag.move": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentDragPlugin",
-          "sequenceId": "canvas-component-drag-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "x",
-              "y"
-            ]
-          },
-          "event": {
-            "type": "string"
-          },
-          "correlationId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "position"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
-      "perf": {
-        "throttleMs": 16
-      },
-      "notes": "Canvas component dragging movement updates; throttled to animation frame cadence."
-    },
-    "canvas.component.drag.end": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            }
-          },
-          "correlationId": {
-            "type": "string"
-          }
-        }
-      },
-      "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
-      "perf": {},
-      "notes": "Drag ended; subscribers may trigger post-drag behavior (e.g., render)."
-    },
-    "canvas.component.select.requested": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentPlugin",
-          "sequenceId": "canvas-component-select-requested-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from canvas-component/select.requested.json"
-    },
-    "canvas.component.deselect.requested": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentDeselectionRequestPlugin",
-          "sequenceId": "canvas-component-deselect-requested-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from canvas-component/deselect.requested.json"
-    },
-    "canvas.component.selection.changed": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-selection-show-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Selection changed; routes to control panel selection show."
-    },
-    "canvas.component.import.requested": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentImportPlugin",
-          "sequenceId": "canvas-component-import-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from canvas-component/import.json"
-    },
-    "canvas.component.import.started": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "correlationId": {
-            "type": "string"
-          },
-          "fileName": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "correlationId"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
-      "perf": {},
-      "notes": "Import started; subscribers may show progress UI."
-    },
-    "canvas.component.import.completed": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "correlationId": {
-            "type": "string"
-          },
-          "components": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "correlationId"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [
-        "correlationId"
-      ],
-      "perf": {},
-      "notes": "Import completed; subscribers may hide progress and refresh views."
-    },
-    "canvas.component.resize.start": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentResizeStartPlugin",
-          "sequenceId": "canvas-component-resize-start-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "dir": {
-            "type": "string"
-          },
-          "startLeft": {
-            "type": "number"
-          },
-          "startTop": {
-            "type": "number"
-          },
-          "startWidth": {
-            "type": "number"
-          },
-          "startHeight": {
-            "type": "number"
-          },
-          "phase": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Resize started; routes to resize start sequence."
-    },
-    "canvas.component.resize.move": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentResizeMovePlugin",
-          "sequenceId": "canvas-component-resize-move-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "dir": {
-            "type": "string"
-          },
-          "startLeft": {
-            "type": "number"
-          },
-          "startTop": {
-            "type": "number"
-          },
-          "startWidth": {
-            "type": "number"
-          },
-          "startHeight": {
-            "type": "number"
-          },
-          "dx": {
-            "type": "number"
-          },
-          "dy": {
-            "type": "number"
-          },
-          "phase": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Resize move; routes to resize move sequence with throttling for performance."
-    },
-    "canvas.component.resize.end": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentResizeEndPlugin",
-          "sequenceId": "canvas-component-resize-end-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "dir": {
-            "type": "string"
-          },
-          "startLeft": {
-            "type": "number"
-          },
-          "startTop": {
-            "type": "number"
-          },
-          "startWidth": {
-            "type": "number"
-          },
-          "startHeight": {
-            "type": "number"
-          },
-          "phase": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Resize ended; routes to resize end sequence."
-    },
-    "canvas.component.update.requested": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentPlugin",
-          "sequenceId": "canvas-component-update-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from canvas-component/update.json"
-    },
-    "canvas.component.resize.line.start": {
-      "routes": [
-        {
-          "pluginId": "CanvasLineResizeStartPlugin",
-          "sequenceId": "canvas-line-resize-start-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "handle": {
-            "type": "string"
-          },
-          "dx": {
-            "type": "number"
-          },
-          "dy": {
-            "type": "number"
-          },
-          "phase": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "handle",
-          "phase"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Line resize started; routes to line resize start sequence."
-    },
-    "canvas.component.resize.line.move": {
-      "routes": [
-        {
-          "pluginId": "CanvasLineResizeMovePlugin",
-          "sequenceId": "canvas-line-resize-move-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "handle": {
-            "type": "string"
-          },
-          "dx": {
-            "type": "number"
-          },
-          "dy": {
-            "type": "number"
-          },
-          "phase": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "handle",
-          "dx",
-          "dy",
-          "phase"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Line resize move; routes to line resize move sequence with throttling for performance."
-    },
-    "canvas.component.resize.line.end": {
-      "routes": [
-        {
-          "pluginId": "CanvasLineResizeEndPlugin",
-          "sequenceId": "canvas-line-resize-end-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "handle": {
-            "type": "string"
-          },
-          "dx": {
-            "type": "number"
-          },
-          "dy": {
-            "type": "number"
-          },
-          "phase": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "handle",
-          "phase"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Line resize ended; routes to line resize end sequence."
-    },
-    "canvas.component.select.svg-node.requested": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
-          "sequenceId": "canvas-component-select-svg-node-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "path"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Control Panel SvgTreeView click → highlight sub-element in canvas"
-    },
-    "canvas.component.select.svg-node.changed": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "path"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Notify-only: emitted by canvas after applying sub-node selection so UI (control panel) can sync selection state"
-    },
-    "canvas.component.update.svg-node.requested": {
-      "routes": [
-        {
-          "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
-          "sequenceId": "canvas-component-update-svg-node-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          },
-          "attribute": {
-            "type": "string"
-          },
-          "value": {}
-        },
-        "required": [
-          "id",
-          "path",
-          "attribute"
-        ]
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Update an attribute on an SVG sub-node within a canvas component; routes to SVG node update sequence."
-    },
-    "control.panel.update.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-update-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/update.json"
-    },
-    "control.panel.ui.render.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-ui-render-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/ui.render.json"
-    },
-    "control.panel.ui.field.change.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-ui-field-change-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/ui.field.change.json"
-    },
-    "control.panel.ui.field.validate.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-ui-field-validate-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/ui.field.validate.json"
-    },
-    "control.panel.ui.section.toggle.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-ui-section-toggle-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/ui.section.toggle.json"
-    },
-    "control.panel.classes.add.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-classes-add-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/classes.add.json"
-    },
-    "control.panel.classes.remove.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-classes-remove-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/classes.remove.json"
-    },
-    "control.panel.css.create.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-css-create-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/css.create.json"
-    },
-    "control.panel.css.edit.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-css-edit-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/css.edit.json"
-    },
-    "control.panel.css.delete.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-css-delete-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/css.delete.json"
-    },
-    "control.panel.selection.show.requested": {
-      "routes": [
-        {
-          "pluginId": "ControlPanelPlugin",
-          "sequenceId": "control-panel-selection-show-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from control-panel/selection.show.json"
-    },
-    "control.panel.selection.updated": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "header": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              }
-            }
-          },
-          "layout": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              },
-              "width": {
-                "type": "number"
-              },
-              "height": {
-                "type": "number"
-              }
-            }
-          }
-        }
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Control panel selection model updated; published for UI consumption."
-    },
-    "control.panel.classes.updated": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "classes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Control panel classes updated; published for UI consumption."
-    },
-    "control.panel.css.registry.updated": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "className": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          },
-          "error": {
-            "type": "string"
-          },
-          "timestamp": {
-            "type": "number"
-          }
-        }
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Control panel CSS registry updated; published for UI consumption."
-    },
-    "library.load.requested": {
-      "routes": [
-        {
-          "pluginId": "LibraryPlugin",
-          "sequenceId": "library-load-symphony"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "public",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Auto-derived from library/library-load.json"
+      "notes": "Auto-derived from library-component/container.drop.json"
     },
     "library.component.drag.start.requested": {
       "routes": [
@@ -893,36 +46,11 @@
       "perf": {},
       "notes": "Auto-derived from library-component/drop.json"
     },
-    "test.route": {
+    "canvas.component.create.requested": {
       "routes": [
         {
-          "pluginId": "P1",
-          "sequenceId": "S1"
-        }
-      ],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "internal",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Test topic for routing tests"
-    },
-    "test.notify": {
-      "routes": [],
-      "payloadSchema": {
-        "type": "object"
-      },
-      "visibility": "internal",
-      "correlationKeys": [],
-      "perf": {},
-      "notes": "Test topic for notification-only tests"
-    },
-    "library.container.drop.requested": {
-      "routes": [
-        {
-          "pluginId": "LibraryComponentPlugin",
-          "sequenceId": "library-component-container-drop-symphony"
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
         }
       ],
       "payloadSchema": {
@@ -931,7 +59,7 @@
       "visibility": "public",
       "correlationKeys": [],
       "perf": {},
-      "notes": "Auto-derived from library-component/container.drop.json"
+      "notes": "Auto-derived from canvas-component/create.json"
     },
     "canvas.component.delete.requested": {
       "routes": [
@@ -962,6 +90,21 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-derived from canvas-component/deselect-all.json"
+    },
+    "canvas.component.deselect.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDeselectionRequestPlugin",
+          "sequenceId": "canvas-component-deselect-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/deselect.requested.json"
     },
     "canvas.component.drag.start.requested": {
       "routes": [
@@ -1022,6 +165,21 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-derived from canvas-component/export.json"
+    },
+    "canvas.component.import.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/import.json"
     },
     "canvas.line.manip.end.requested": {
       "routes": [
@@ -1158,6 +316,21 @@
       "perf": {},
       "notes": "Auto-derived from canvas-component/resize.start.json"
     },
+    "canvas.component.select.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-select-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/select.requested.json"
+    },
     "canvas.component.select.svg.node.requested": {
       "routes": [
         {
@@ -1172,6 +345,21 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-derived from canvas-component/select.svg-node.json"
+    },
+    "canvas.component.update.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from canvas-component/update.json"
     },
     "canvas.component.update.svg.node.requested": {
       "routes": [
@@ -1218,6 +406,96 @@
       "perf": {},
       "notes": "Auto-derived from header/ui.theme.toggle.json"
     },
+    "library.load.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryPlugin",
+          "sequenceId": "library-load-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from library/library-load.json"
+    },
+    "control.panel.classes.add.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-classes-add-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/classes.add.json"
+    },
+    "control.panel.classes.remove.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-classes-remove-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/classes.remove.json"
+    },
+    "control.panel.css.create.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/css.create.json"
+    },
+    "control.panel.css.delete.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-delete-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/css.delete.json"
+    },
+    "control.panel.css.edit.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-edit-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/css.edit.json"
+    },
     "control.panel.selection.clear.requested": {
       "routes": [
         {
@@ -1232,6 +510,51 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-derived from control-panel/selection.clear.json"
+    },
+    "control.panel.selection.show.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-show-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/selection.show.json"
+    },
+    "control.panel.ui.field.change.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.validate.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-validate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.field.validate.json"
     },
     "control.panel.ui.init.batched.requested": {
       "routes": [
@@ -1262,6 +585,169 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Auto-derived from control-panel/ui.init.json"
+    },
+    "control.panel.ui.render.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-render-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.render.json"
+    },
+    "control.panel.ui.section.toggle.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-section-toggle-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/ui.section.toggle.json"
+    },
+    "control.panel.update.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Auto-derived from control-panel/update.json"
+    },
+    "canvas.component.drag.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (drag start)"
+    },
+    "canvas.component.drag.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (drag end)"
+    },
+    "canvas.component.drag.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized alias to drag symphony (move)"
+    },
+    "canvas.component.selection.changed": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-show-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized alias to CP selection.show"
+    },
+    "canvas.component.resize.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (resize start)"
+    },
+    "canvas.component.resize.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (resize end)"
+    },
+    "canvas.component.resize.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized alias to resize symphony (move)"
+    },
+    "canvas.component.created": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (component created)"
+    },
+    "control.panel.selection.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (CP selection updated)"
     }
   }
 }

@@ -21,6 +21,7 @@ describe('Library → Canvas drop creates component', () => {
       onBeforeLoad(win) {
         const originalLog = win.console.log;
         const originalWarn = win.console.warn;
+        const originalError = win.console.error;
         win.console.log = (...args: any[]) => {
           try {
             const msg = args.map(a => (typeof a === 'object' ? JSON.stringify(a) : String(a))).join(' ');
@@ -34,6 +35,13 @@ describe('Library → Canvas drop creates component', () => {
             capturedLogs.push(`[${new Date().toISOString()}] WARN ${msg}`);
           } catch {}
           originalWarn.apply(win.console, args as any);
+        };
+        win.console.error = (...args: any[]) => {
+          try {
+            const msg = args.map(a => (typeof a === 'object' ? JSON.stringify(a) : String(a))).join(' ');
+            capturedLogs.push(`[${new Date().toISOString()}] ERROR ${msg}`);
+          } catch {}
+          originalError.apply(win.console, args as any);
         };
 
         // Instrument DnD events globally for debug (capture phase so we see all)
@@ -61,17 +69,36 @@ describe('Library → Canvas drop creates component', () => {
       },
     });
 
-    // Gate on app readiness beacon (now includes Library components loading)
-    cy.waitForRenderXReady({
-      minRoutes: 40,
-      minTopics: 50,
-      minPlugins: 8,
-      minMounted: 5,
-      eventTimeoutMs: 30000,
+    // Gate on app readiness beacon using actual manifest counts (robust to catalog changes)
+    cy.request('/interaction-manifest.json').then((routesResp) => {
+      const routesJson = typeof routesResp.body === 'string' ? JSON.parse(routesResp.body) : routesResp.body;
+      const routesCount = Object.keys(routesJson?.routes || {}).length;
+      cy.request('/topics-manifest.json').then((topicsResp) => {
+        const topicsJson = typeof topicsResp.body === 'string' ? JSON.parse(topicsResp.body) : topicsResp.body;
+        const topicsCount = Object.keys(topicsJson?.topics || {}).length;
+        cy.waitForRenderXReady({
+          minRoutes: Math.max(1, routesCount),
+          minTopics: Math.max(1, topicsCount),
+          minPlugins: 8,
+          minMounted: 5,
+          eventTimeoutMs: 30000,
+        });
+      });
     });
 
-
-
+    // Also assert resize sequences are mounted and available (capability check)
+    cy.window().should((win) => {
+      const mountedSeqs: string[] = (win as any).__RENDERX_MOUNTED_SEQUENCE_IDS || [];
+      expect(mountedSeqs, 'mounted sequence IDs').to.be.an('array');
+      const required = [
+        'canvas-component-resize-start-symphony',
+        'canvas-component-resize-move-symphony',
+        'canvas-component-resize-end-symphony',
+      ];
+      required.forEach((id) => {
+        expect(mountedSeqs, `sequence mounted: ${id}`).to.include(id);
+      });
+    });
 
     // Wait for Library and Canvas slots to mount
     cy.get(librarySlot, { timeout: 20000 }).should('exist');
@@ -143,6 +170,8 @@ describe('Library → Canvas drop creates component', () => {
       .should('have.length.at.least', 1)
       .then(($nodes) => {
         capturedLogs.push(`[success] ✅ Found ${$nodes.length} canvas node(s) after drag and drop`);
+        // Mark checkpoint index to only scan for errors AFTER creation
+        (Cypress as any).env('postCreateLogIndex', capturedLogs.length);
         cy.log(`✅ Successfully created ${$nodes.length} component(s) on canvas`);
       });
 
@@ -204,6 +233,16 @@ describe('Library → Canvas drop creates component', () => {
         capturedLogs.push(`[control-panel] ✅ Control panel shows selected component properties`);
         cy.log(`✅ Control panel shows selected component properties`);
       });
+
+    // After successful creation & CP display, ensure no mount/resolve errors occurred afterwards
+    cy.wrap(null).should(() => {
+      const startIdx = (Cypress as any).env('postCreateLogIndex') ?? 0;
+      const tail = capturedLogs.slice(startIdx).join('\n');
+      const badMount = /Failed to mount sequence from catalog/i.test(tail);
+      const badResolve = /Failed to resolve module specifier/i.test(tail);
+      expect(badMount, 'no failed sequence mounts detected in logs after creation').to.eq(false);
+      expect(badResolve, 'no unresolved module specifiers detected in logs after creation').to.eq(false);
+    });
 
     // Store initial component position and size for comparison
     let initialPosition = { x: 0, y: 0 };

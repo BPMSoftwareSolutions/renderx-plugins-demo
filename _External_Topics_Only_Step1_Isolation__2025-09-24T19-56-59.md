@@ -1,0 +1,31 @@
+[ ] NAME:Proposed Isolation Plan (Step 1) DESCRIPTION:Root task to isolate the exact break in Step 1 (external-only topics derivation) causing remote CI E2E failure __NEW_AGENT__
+-[ ] NAME:Review Issue Description DESCRIPTION:review the body of the issue: Remove internal json-topics; generate topics-manifest only from plugin-served sequences #238. 
+https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/issues/238
+-[ ] NAME:Review Lessons Learned from Previous Attempt DESCRIPTION:review the most recent comment and lessons learned
+-[ ] NAME:Create a branch for the third attempt DESCRIPTION:create a branch
+-[ ] NAME:Baseline: run only the relevant spec DESCRIPTION:Build and run just library-drop against vite preview using start-server-and-test
+--[ ] NAME:Build DESCRIPTION:Run "npm run build"
+--[ ] NAME:Preview server DESCRIPTION:Start vite preview via start-server-and-test
+--[ ] NAME:Run library-drop only DESCRIPTION:Execute "cypress run --config baseUrl=http://localhost:4173 --spec cypress/e2e/library-drop.cy.ts"
+--[ ] NAME:Strict readiness gating DESCRIPTION:Ensure cy.waitForRenderXReady asserts minPlugins/minRoutes/minTopics and requiredPluginIds (ControlPanelPlugin, canvas, library)
+-[ ] NAME:Add optional DEBUG logging gate DESCRIPTION:Add env/URL flag to enable verbose logs only in CI
+--[ ] NAME:Startup logs DESCRIPTION:Log mounted plugin IDs, mounted sequence count, derived topics count (console.info)
+--[ ] NAME:Selection logs DESCRIPTION:Log publish of canvas.component.select.requested and resolution (or not) of control.panel.selection.show
+--[ ] NAME:Control Panel logs DESCRIPTION:Log when control.panel.ui.init/render play and whether handler bundle resolves
+-[ ] NAME:Runtime derivation validation DESCRIPTION:Detect missing routes early by logging and checking manifests at runtime
+--[ ] NAME:Summarize manifests DESCRIPTION:After manifests load, log counts + presence checks for key topics and interactions
+--[ ] NAME:Check key topics DESCRIPTION:Verify control.panel.ui.render.requested, control.panel.selection.show, canvas.component.drag.move (route vs notify-only)
+--[ ] NAME:Fail fast on gaps DESCRIPTION:If any keys are missing, log exact keys and exit test with clear error
+-[ ] NAME:CI decision tree: pinpoint failure DESCRIPTION:Use job output logs (printed on failure) to identify earliest break
+--[ ] NAME:Case A: Plugin not found DESCRIPTION:If "Plugin not found: ControlPanelPlugin", confirm plugin-manifest contains it and runtime loader resolves @renderx-plugins/control-panel handlersPath
+--[ ] NAME:Case B: No topic definition DESCRIPTION:If "No topic definition for control.panel.ui.render.requested", diff CI-derived catalogs vs local and fix Step 1 derivation to include control.panel.ui.*
+--[ ] NAME:Case C: Selection without CP UI DESCRIPTION:If selection happens but CP doesn’t render, verify publish wiring from canvas.component.selection.changed → control.panel.selection.show; add explicit route if needed
+-[ ] NAME:Guardrail unit tests (TDD) DESCRIPTION:Add tests that fail fast before E2E when derivations are wrong
+--[ ] NAME:Test: control panel topics present DESCRIPTION:Assert presence of control.panel.ui.render.requested, control.panel.selection.show; classify canvas.component.drag.move (notify-only vs routed)
+--[ ] NAME:Fix then green DESCRIPTION:Write failing test, implement minimal fix in derivation/routing, make tests pass
+--[ ] NAME:(Optional) Test: plugin manifest/loader DESCRIPTION:Assert ControlPanelPlugin in plugin-manifest and loader can resolve handlersPath in build
+-[ ] NAME:Acceptance criteria DESCRIPTION:Define completion signals for this isolation effort
+--[ ] NAME:E2E passes locally and on CI DESCRIPTION:library-drop.cy.ts passes in both environments
+--[ ] NAME:Logs are sufficient DESCRIPTION:CI job output contains enough logs to diagnose without downloading artifacts
+--[ ] NAME:Minimal fix applied DESCRIPTION:Any derivation/loader issue identified is fixed with unit + E2E green
+--[ ] NAME:Topics present post-derivation DESCRIPTION:Unit test proves control panel topics/routes exist after Step 1 derivation

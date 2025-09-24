@@ -82,6 +82,16 @@ describe('Startup: all manifest plugins load successfully (log-based)', () => {
         eventTimeoutMs: 30000,
       });
 
+      // Negative checks: ensure no mount/resolve errors occurred during startup
+      cy.wrap(null).should(() => {
+        const haystack = capturedLogs.join('\n');
+        const badMount = /Failed to mount sequence from catalog/i.test(haystack);
+        const badResolve = /Failed to resolve module specifier/i.test(haystack);
+        expect(badMount, 'no failed sequence mounts detected in startup logs').to.eq(false);
+        expect(badResolve, 'no unresolved module specifiers detected in startup logs').to.eq(false);
+      });
+
+
       // Now assert that console logs show evidence of each plugin being loaded
       cy.wrap(null).should(() => {
         const missing: string[] = [];

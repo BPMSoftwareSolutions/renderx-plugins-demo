@@ -67,11 +67,63 @@ async function readTopicCatalogs() {
 }
 
 async function main() {
-  const localCatalogs = await readTopicCatalogs();
+  // Step 2: External-only topics. Ignore any local json-topics catalogs.
+  // const localCatalogs = await readTopicCatalogs();
   const externalCatalog = await generateExternalTopicsCatalog();
 
-  // Merge local and derived external catalogs
-  const allCatalogs = [...localCatalogs, externalCatalog];
+  // Synthesize essential notify-only/alias topics that historically lived in local catalogs
+  try {
+    const topics = externalCatalog.topics || {};
+    // 1) Drag start/end notify-only topics (no routes)
+    if (topics['canvas.component.drag.start.requested']) {
+      const dragRoute = Array.isArray(topics['canvas.component.drag.start.requested'].routes) ? topics['canvas.component.drag.start.requested'].routes[0] : null;
+      topics['canvas.component.drag.start'] = topics['canvas.component.drag.start'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (drag start)'
+      };
+      topics['canvas.component.drag.end'] = topics['canvas.component.drag.end'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (drag end)'
+      };
+      if (dragRoute) {
+        topics['canvas.component.drag.move'] = topics['canvas.component.drag.move'] || {
+          routes: [dragRoute], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized alias to drag symphony (move)'
+        };
+      }
+    }
+    // 2) Selection changed → route to CP selection.show (alias)
+    const cpShow = topics['control.panel.selection.show.requested'];
+    if (cpShow && Array.isArray(cpShow.routes) && cpShow.routes.length > 0) {
+      topics['canvas.component.selection.changed'] = topics['canvas.component.selection.changed'] || {
+        routes: cpShow.routes, payloadSchema: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] }, visibility: 'public', notes: 'Synthesized alias to CP selection.show'
+      };
+    }
+    // 2b) Resize start/move/end topics used by overlay handles
+    if (topics['canvas.component.resize.start.requested']) {
+      const moveRoute = Array.isArray(topics['canvas.component.resize.move.requested']?.routes) ? topics['canvas.component.resize.move.requested'].routes[0] : null;
+      topics['canvas.component.resize.start'] = topics['canvas.component.resize.start'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (resize start)'
+      };
+      topics['canvas.component.resize.end'] = topics['canvas.component.resize.end'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (resize end)'
+      };
+      if (moveRoute) {
+        topics['canvas.component.resize.move'] = topics['canvas.component.resize.move'] || {
+          routes: [moveRoute], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized alias to resize symphony (move)'
+        };
+      }
+    }
+
+    // 3) Canvas component created → notify-only topic
+    topics['canvas.component.created'] = topics['canvas.component.created'] || {
+      routes: [], payloadSchema: { type: 'object', properties: { id: { type: 'string' } } }, visibility: 'public', notes: 'Synthesized notify-only (component created)'
+    };
+    // 4) Control Panel selection updated → notify-only topic (used by selection.symphony)
+    topics['control.panel.selection.updated'] = topics['control.panel.selection.updated'] || {
+      routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (CP selection updated)'
+    };
+  } catch {}
+
+  // Use only the (augmented) external catalog
+  const allCatalogs = [externalCatalog];
   const manifest = buildTopicsManifest(allCatalogs);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");
