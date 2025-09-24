@@ -139,7 +139,8 @@ export default {
           const keywords = Array.isArray(pkgJson.keywords)
             ? pkgJson.keywords.map(String)
             : [];
-          const isPlugin = keywords.includes("renderx-plugin") || !!pkgJson.renderx;
+          const rx = pkgJson.renderx || null;
+          const isPlugin = keywords.includes("renderx-plugin") || !!(rx && (Array.isArray(rx.plugins) || typeof rx.manifest === "string"));
           if (!isPlugin) return {};
 
           const hasFragment = hasManifestFragment(pkgRoot, pkgJson);
@@ -173,7 +174,8 @@ export default {
             const keywords = Array.isArray(pkgJson.keywords)
               ? pkgJson.keywords.map(String)
               : [];
-            const isPlugin = keywords.includes("renderx-plugin") || !!pkgJson.renderx;
+            const rx = pkgJson.renderx || null;
+            const isPlugin = keywords.includes("renderx-plugin") || !!(rx && (Array.isArray(rx.plugins) || typeof rx.manifest === "string"));
             if (!isPlugin) continue;
             if (!hasManifestFragment(dir, pkgJson)) {
               offenders.push(name);

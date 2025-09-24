@@ -97,11 +97,14 @@ Script / CLI flags (all accept `--srcRoot` and `--outPublic` where applicable):
 | `scripts/generate-interaction-manifest.js` | Builds interaction-manifest.json | `--srcRoot`, `--outPublic`            |
 | `scripts/generate-topics-manifest.js`      | Builds topics-manifest.json      | `--srcRoot`, `--outPublic`            |
 | `scripts/generate-layout-manifest.js`      | Copies layout manifest           | `--srcRoot`, `--outPublic`            |
-| `scripts/sync-json-components.js`          | Copies component JSON            | `--srcRoot`, `--outPublic`            |
+| `scripts/sync-json-components.js`          | Copies component JSON; discovers node_modules packages declaring `renderx.components` (prefers package over local) | `--srcRoot`, `--outPublic`            |
 | `scripts/sync-json-sequences.js`           | Copies sequence catalogs         | `--srcRoot`, `--outPublic`            |
 | `scripts/sync-plugins.js`                  | Copies plugin manifest(s)        | `--srcRoot`, `--outPublic`            |
 | `scripts/build-artifacts.js`               | Full artifact bundle             | `--srcRoot`, `--outDir`               |
 | `scripts/copy-artifacts-to-public.js`      | Consume existing artifacts       | `ARTIFACTS_DIR` env or first arg path |
+
+
+> Note: The host now consumes component catalogs from external packages. Any package in node_modules with a package.json field `renderx.components: ["<dir>"]` will be discovered and copied into `public/json-components/`. If the same file exists both in a package and in the local `catalog/json-components/`, the package version wins to avoid duplication.
 
 On startup the host logs a summary like:
 
