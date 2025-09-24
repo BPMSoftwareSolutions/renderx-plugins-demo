@@ -50,8 +50,6 @@ export default function App() {
     const wireCanvasDrag = () => {
       const canvas = document.querySelector("#rx-canvas") as HTMLElement;
       if (!canvas) return false;
-      const conductor = (window as any).RenderX?.conductor;
-      if (!conductor) return false;
 
       // Resolve interaction route once
       const dragRoute = resolveInteraction("canvas.component.drag.move");
@@ -88,7 +86,8 @@ export default function App() {
         const x = e.clientX - canvasRect.left - offsetX;
         const y = e.clientY - canvasRect.top - offsetY;
         try {
-          (conductor as any).play?.(dragRoute.pluginId, dragRoute.sequenceId, { id: currentId, position: { x, y } });
+          const conductorRef = (window as any).RenderX?.conductor;
+          conductorRef?.play?.(dragRoute.pluginId, dragRoute.sequenceId, { id: currentId, position: { x, y } });
         } catch {}
       };
 
