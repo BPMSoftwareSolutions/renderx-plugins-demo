@@ -53,6 +53,14 @@
       "visibility": "public",
       "notes": "Auto-derived from canvas-component/create.json"
     },
+    "canvas.component.created": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived notify topic (from canvas-component-create-symphony)"
+    },
     "canvas.component.delete.requested": {
       "routes": [
         {

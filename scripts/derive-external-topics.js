@@ -163,6 +163,20 @@ export async function generateExternalTopicsCatalog() {
         visibility: "public",
         notes: `Auto-derived from ${seq.file}`
       };
+
+      // Also derive notify-only topics that are known to be published by handlers
+      // Example: creation flow publishes 'canvas.component.created' (no routes)
+      if (topicName === 'canvas.component.create.requested') {
+        const createdKey = 'canvas.component.created';
+        if (!topics[createdKey]) {
+          topics[createdKey] = {
+            routes: [],
+            payloadSchema: { type: "object" },
+            visibility: "public",
+            notes: `Auto-derived notify topic (from ${seq.sequenceId})`
+          };
+        }
+      }
     }
   }
 
