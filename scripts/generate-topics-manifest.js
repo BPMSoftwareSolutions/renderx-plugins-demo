@@ -96,9 +96,29 @@ async function main() {
         routes: cpShow.routes, payloadSchema: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] }, visibility: 'public', notes: 'Synthesized alias to CP selection.show'
       };
     }
+    // 2b) Resize start/move/end topics used by overlay handles
+    if (topics['canvas.component.resize.start.requested']) {
+      const moveRoute = Array.isArray(topics['canvas.component.resize.move.requested']?.routes) ? topics['canvas.component.resize.move.requested'].routes[0] : null;
+      topics['canvas.component.resize.start'] = topics['canvas.component.resize.start'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (resize start)'
+      };
+      topics['canvas.component.resize.end'] = topics['canvas.component.resize.end'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (resize end)'
+      };
+      if (moveRoute) {
+        topics['canvas.component.resize.move'] = topics['canvas.component.resize.move'] || {
+          routes: [moveRoute], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized alias to resize symphony (move)'
+        };
+      }
+    }
+
     // 3) Canvas component created → notify-only topic
     topics['canvas.component.created'] = topics['canvas.component.created'] || {
       routes: [], payloadSchema: { type: 'object', properties: { id: { type: 'string' } } }, visibility: 'public', notes: 'Synthesized notify-only (component created)'
+    };
+    // 4) Control Panel selection updated → notify-only topic (used by selection.symphony)
+    topics['control.panel.selection.updated'] = topics['control.panel.selection.updated'] || {
+      routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (CP selection updated)'
     };
   } catch {}
 

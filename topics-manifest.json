@@ -689,6 +689,41 @@
       "perf": {},
       "notes": "Synthesized alias to CP selection.show"
     },
+    "canvas.component.resize.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (resize start)"
+    },
+    "canvas.component.resize.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (resize end)"
+    },
+    "canvas.component.resize.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized alias to resize symphony (move)"
+    },
     "canvas.component.created": {
       "routes": [],
       "payloadSchema": {
@@ -703,6 +738,16 @@
       "correlationKeys": [],
       "perf": {},
       "notes": "Synthesized notify-only (component created)"
+    },
+    "control.panel.selection.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized notify-only (CP selection updated)"
     }
   }
 }
