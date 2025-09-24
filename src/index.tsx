@@ -115,6 +115,29 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
               mountedIds: mountedIdsDbg,
               sequenceIds: seqIdsDbg,
             });
+
+            // Selection logs: observe selection request chain → CP show
+            try {
+              let pendingTimer: any = null;
+              const selLog = (...args: any[]) => { try { console.info('🔎 Selection', ...args); } catch {} };
+              // canvas select requested
+              EventRouter.subscribe('canvas.component.select.requested', (p: any) => {
+                selLog('canvas.component.select.requested', p);
+                if (pendingTimer) clearTimeout(pendingTimer);
+                pendingTimer = setTimeout(() => {
+                  selLog('control.panel.selection.show.requested NOT observed within 300ms after select.requested');
+                }, 300);
+              });
+              // canvas selection changed (post-select)
+              EventRouter.subscribe('canvas.component.selection.changed', (p: any) => {
+                selLog('canvas.component.selection.changed', p);
+              });
+              // control panel should show selection
+              EventRouter.subscribe('control.panel.selection.show.requested', (p: any) => {
+                selLog('control.panel.selection.show.requested', p);
+                if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+              });
+            } catch {}
           }
           const requiredTopics = [
             'control.panel.ui.render.requested',
