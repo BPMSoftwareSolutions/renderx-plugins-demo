@@ -98,6 +98,39 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
         (window as any).__rx = (window as any).__rx || {};
         (window as any).__rx.ready = readiness;
 
+        // Optional startup debug and validation (enable with ?debug=1 or ?failFast=1)
+        try {
+          const params = new URLSearchParams(window.location.search || '');
+          const debug = params.get('debug') === '1' || (typeof process !== 'undefined' && process.env?.RENDERX_DEBUG_STARTUP === '1');
+          const failFast = params.get('failFast') === '1' || (typeof process !== 'undefined' && process.env?.RENDERX_FAIL_FAST_VALIDATE === '1');
+          if (debug) {
+            const mountedIdsDbg = (conductor as any).getMountedPluginIds?.() || [];
+            const seqSet = (conductor as any)._runtimeMountedSeqIds;
+            const seqIdsDbg = Array.isArray(seqSet) ? seqSet : (seqSet instanceof Set ? Array.from(seqSet) : []);
+            console.info('🔎 Startup debug:', {
+              routes: readiness.routes,
+              topics: readiness.topics,
+              plugins: readiness.plugins,
+              mountedCount: readiness.mountedCount,
+              mountedIds: mountedIdsDbg,
+              sequenceIds: seqIdsDbg,
+            });
+          }
+          const requiredTopics = [
+            'control.panel.ui.render.requested',
+            'control.panel.selection.show.requested',
+            'library.component.drop.requested',
+            'canvas.component.drag.move',
+          ];
+          const missing: string[] = [];
+          for (const t of requiredTopics) { if (!getTopicDef(t)) missing.push(t); }
+          if ((debug || failFast) && missing.length) {
+            console.error('❌ Missing required topics:', missing);
+            if (failFast) throw new Error('Missing required topics: ' + missing.join(', '));
+          }
+        } catch {}
+
+
         // Set up a function to mark Library components as loaded and complete readiness
         (window as any).__rx.markLibraryComponentsLoaded = () => {
           if ((window as any).__rx?.ready) {
