@@ -51,9 +51,6 @@ export default function App() {
       const canvas = document.querySelector("#rx-canvas") as HTMLElement;
       if (!canvas) return false;
 
-      // Resolve interaction route once
-      const dragRoute = resolveInteraction("canvas.component.drag.move");
-      if (!dragRoute) return false;
 
       let dragging = false;
       let currentId: string | null = null;
@@ -86,8 +83,10 @@ export default function App() {
         const x = e.clientX - canvasRect.left - offsetX;
         const y = e.clientY - canvasRect.top - offsetY;
         try {
+          const route = resolveInteraction("canvas.component.drag.move");
+          if (!route) return; // manifest not ready yet
           const conductorRef = (window as any).RenderX?.conductor;
-          conductorRef?.play?.(dragRoute.pluginId, dragRoute.sequenceId, { id: currentId, position: { x, y } });
+          conductorRef?.play?.(route.pluginId, route.sequenceId, { id: currentId, position: { x, y } });
         } catch {}
       };
 
