@@ -56,6 +56,32 @@ jobs:
           key: cypress-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Build + Preview + Cypress E2E
         run: npm run e2e:cypress
+      - name: Print app logs on failure
+        if: failure()
+        run: |
+          echo "=== .logs (if present) ==="
+          if [ -d ".logs" ]; then
+            ls -la .logs || true
+            for f in ./.logs/*.log; do
+              [ -e "$f" ] || continue
+              echo "::group::$f"
+              tail -n 400 "$f" || true
+              echo "::endgroup::"
+            done
+          else
+            echo "No .logs directory found."
+          fi
+          echo "=== cypress/artifacts (if present) ==="
+          if [ -d "cypress/artifacts" ]; then
+            find cypress/artifacts -type f -name "*.log" | while read -r f; do
+              echo "::group::$f"
+              tail -n 400 "$f" || true
+              echo "::endgroup::"
+            done
+          else
+            echo "No cypress/artifacts directory found."
+          fi
+
       - name: Upload Cypress videos on failure
         if: failure()
         uses: actions/upload-artifact@v4
