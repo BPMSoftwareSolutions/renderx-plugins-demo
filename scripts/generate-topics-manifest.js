@@ -67,11 +67,33 @@ async function readTopicCatalogs() {
 }
 
 async function main() {
-  const localCatalogs = await readTopicCatalogs();
+  // Step 2: External-only topics. Ignore any local json-topics catalogs.
+  // const localCatalogs = await readTopicCatalogs();
   const externalCatalog = await generateExternalTopicsCatalog();
 
-  // Merge local and derived external catalogs
-  const allCatalogs = [...localCatalogs, externalCatalog];
+  // Synthesize essential notify-only/alias topics that historically lived in local catalogs
+  try {
+    const topics = externalCatalog.topics || {};
+    // 1) Drag start/end notify-only topics (no routes)
+    if (topics['canvas.component.drag.start.requested']) {
+      topics['canvas.component.drag.start'] = topics['canvas.component.drag.start'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (drag start)'
+      };
+      topics['canvas.component.drag.end'] = topics['canvas.component.drag.end'] || {
+        routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (drag end)'
+      };
+    }
+    // 2) Selection changed → route to CP selection.show (alias)
+    const cpShow = topics['control.panel.selection.show.requested'];
+    if (cpShow && Array.isArray(cpShow.routes) && cpShow.routes.length > 0) {
+      topics['canvas.component.selection.changed'] = topics['canvas.component.selection.changed'] || {
+        routes: cpShow.routes, payloadSchema: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] }, visibility: 'public', notes: 'Synthesized alias to CP selection.show'
+      };
+    }
+  } catch {}
+
+  // Use only the (augmented) external catalog
+  const allCatalogs = [externalCatalog];
   const manifest = buildTopicsManifest(allCatalogs);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");
