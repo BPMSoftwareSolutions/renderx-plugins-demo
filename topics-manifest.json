@@ -651,6 +651,21 @@
       "perf": {},
       "notes": "Synthesized notify-only (drag end)"
     },
+    "canvas.component.drag.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "correlationKeys": [],
+      "perf": {},
+      "notes": "Synthesized alias to drag symphony (move)"
+    },
     "canvas.component.selection.changed": {
       "routes": [
         {

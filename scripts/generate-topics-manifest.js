@@ -76,12 +76,18 @@ async function main() {
     const topics = externalCatalog.topics || {};
     // 1) Drag start/end notify-only topics (no routes)
     if (topics['canvas.component.drag.start.requested']) {
+      const dragRoute = Array.isArray(topics['canvas.component.drag.start.requested'].routes) ? topics['canvas.component.drag.start.requested'].routes[0] : null;
       topics['canvas.component.drag.start'] = topics['canvas.component.drag.start'] || {
         routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (drag start)'
       };
       topics['canvas.component.drag.end'] = topics['canvas.component.drag.end'] || {
         routes: [], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized notify-only (drag end)'
       };
+      if (dragRoute) {
+        topics['canvas.component.drag.move'] = topics['canvas.component.drag.move'] || {
+          routes: [dragRoute], payloadSchema: { type: 'object' }, visibility: 'public', notes: 'Synthesized alias to drag symphony (move)'
+        };
+      }
     }
     // 2) Selection changed → route to CP selection.show (alias)
     const cpShow = topics['control.panel.selection.show.requested'];
