@@ -3,7 +3,7 @@
 /**
  * Derive topics and interactions from external package sequence files.
  * This eliminates the need for redundant local catalog files for externalized plugins.
- * 
+ *
  * Strategy:
  * 1. Scan public/json-sequences/ for sequence files from external packages
  * 2. Extract topic routing information from sequence definitions
@@ -56,7 +56,7 @@ export async function discoverSequenceFiles() {
       // Directory doesn't exist, skip
     }
   }
-  
+
   return sequences;
 }
 
@@ -199,13 +199,53 @@ export async function generateExternalTopicsCatalog() {
     }
   } catch {}
 
+
+  // Ensure critical Control Panel UI routes are present even if derivation misses them
+  try {
+    const cpUiRender = sequences.find(
+      (s) => s.pluginId === "ControlPanelPlugin" && s.sequenceId === "control-panel-ui-render-symphony"
+    );
+    if (cpUiRender) {
+      topics["control.panel.ui.render.requested"] = {
+        routes: [{ pluginId: cpUiRender.pluginId, sequenceId: cpUiRender.sequenceId }],
+        payloadSchema: { type: "object" },
+        visibility: "public",
+        notes: "Explicit: ensure Control Panel UI render route exists"
+      };
+    }
+
+    const cpUiInit = sequences.find(
+      (s) => s.pluginId === "ControlPanelPlugin" && s.sequenceId === "control-panel-ui-init-symphony"
+    );
+    if (cpUiInit) {
+      topics["control.panel.ui.init.requested"] = {
+        routes: [{ pluginId: cpUiInit.pluginId, sequenceId: cpUiInit.sequenceId }],
+        payloadSchema: { type: "object" },
+        visibility: "public",
+        notes: "Explicit: ensure Control Panel UI init route exists"
+      };
+    }
+
+    const cpUiInitBatched = sequences.find(
+      (s) => s.pluginId === "ControlPanelPlugin" && s.sequenceId === "control-panel-ui-init-batched-symphony"
+    );
+    if (cpUiInitBatched) {
+      topics["control.panel.ui.init.batched.requested"] = {
+        routes: [{ pluginId: cpUiInitBatched.pluginId, sequenceId: cpUiInitBatched.sequenceId }],
+        payloadSchema: { type: "object" },
+        visibility: "public",
+        notes: "Explicit: ensure Control Panel UI init.batched route exists"
+      };
+    }
+  } catch {}
+
   return { version: "1.0.0", topics };
 }
 
 export async function generateExternalInteractionsCatalog() {
   const sequences = await discoverSequenceFiles();
   const routes = {};
-  
+
   for (const seq of sequences) {
     const interaction = deriveInteractionFromSequence(seq);
     if (interaction) {
@@ -215,7 +255,7 @@ export async function generateExternalInteractionsCatalog() {
       };
     }
   }
-  
+
   return { routes };
 }
 
