@@ -33,6 +33,7 @@ export async function discoverSequenceFiles() {
   const sequencesDir = join(rootDir, "public", "json-sequences");
   const externalDirs = ["library-component", "canvas-component", "header", "library", "control-panel"];
   const sequences = [];
+  const seen = new Set();
 
   for (const dir of externalDirs) {
     const dirPath = join(sequencesDir, dir);
@@ -42,10 +43,12 @@ export async function discoverSequenceFiles() {
         if (file.endsWith(".json") && file !== "index.json") {
           const filePath = join(dirPath, file);
           const sequence = await readJsonSafe(filePath);
-          if (sequence && sequence.pluginId) {
+          const id = sequence?.id;
+          if (sequence && sequence.pluginId && id && !seen.has(id)) {
+            seen.add(id);
             sequences.push({
               pluginId: sequence.pluginId,
-              sequenceId: sequence.id,
+              sequenceId: id,
               file: `${dir}/${file}`,
               sequence
             });
@@ -56,7 +59,30 @@ export async function discoverSequenceFiles() {
       // Directory doesn't exist, skip
     }
   }
-  
+
+  // Fallback: some packages might flatten files directly under json-sequences/
+  try {
+    const rootFiles = await readdir(sequencesDir);
+    for (const file of rootFiles) {
+      if (file.endsWith(".json") && file !== "index.json") {
+        const filePath = join(sequencesDir, file);
+        const sequence = await readJsonSafe(filePath);
+        const id = sequence?.id;
+        if (sequence && sequence.pluginId && id && !seen.has(id)) {
+          seen.add(id);
+          sequences.push({
+            pluginId: sequence.pluginId,
+            sequenceId: id,
+            file: file,
+            sequence
+          });
+        }
+      }
+    }
+  } catch {
+    // ignore
+  }
+
   return sequences;
 }
 
