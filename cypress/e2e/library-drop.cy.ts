@@ -17,7 +17,7 @@ describe('Library → Canvas drop creates component', () => {
 
   it('drags button component from Library and drops onto Canvas', () => {
     // Visit early and hook console.log for sequence detection
-    cy.visit('/', {
+    cy.visit('/?debug=1', {
       onBeforeLoad(win) {
         const originalLog = win.console.log;
         const originalWarn = win.console.warn;
