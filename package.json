@@ -25,7 +25,7 @@
     "validate:public-api": "node scripts/validate-public-api.js",
     "preview": "vite preview",
     "pre:manifests": "node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-json-interactions-from-plugins.js && node scripts/generate-interaction-manifest.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/generate-layout-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog && node scripts/sync-control-panel-config.js",
-    "pretest": "node scripts/sync-json-sources.js --srcRoot=catalog",
+    "pretest": "node scripts/sync-json-sources.js --srcRoot=catalog && node scripts/sync-json-sequences.js --srcRoot=catalog",
     "sync:json-components": "node scripts/sync-json-components.js --srcRoot=catalog",
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",
