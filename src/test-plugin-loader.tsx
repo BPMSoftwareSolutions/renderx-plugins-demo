@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { createRoot } from "react-dom/client";
-import { initConductor, registerAllSequences } from "./core/conductor";
-import { loadJsonSequenceCatalogs } from "./core/conductor/runtime-loaders";
+import { initConductor, registerAllSequences, loadJsonSequenceCatalogs } from "./core/conductor";
 import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./core/manifests/interactionManifest";
 import { initTopicsManifest, getTopicsManifestStats, getTopicsMap } from "./core/manifests/topicsManifest";
 import { getPluginManifestStats } from "./core/startup/startupValidation";
 import { listComponents } from "./domain/components/inventory/inventory.service";
-import { EventRouter } from "./core/events/EventRouter";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 import "./global.css";
 
 interface PluginInfo {
@@ -155,8 +154,7 @@ const SophisticatedPluginLoader: React.FC = () => {
         addLog('info', 'Loading manifests...');
         await Promise.all([
           initInteractionManifest(),
-          initTopicsManifest(),
-          EventRouter.init()
+          initTopicsManifest()
         ]);
         addLog('info', 'Manifests loaded successfully');
 
