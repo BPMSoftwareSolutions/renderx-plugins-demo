@@ -27,6 +27,8 @@ export default {
       create(context) {
         const cwd = context.getCwd?.() || process.cwd();
         const slots = loadSlots(cwd);
+        // If layout-manifest has not been generated yet, skip this rule
+        if (!slots || slots.size === 0) return {};
         return {
           JSXOpeningElement(node) {
             const name = node.name && node.name.name;

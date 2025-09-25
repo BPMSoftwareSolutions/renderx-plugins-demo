@@ -43,6 +43,8 @@ const rule = {
     if (filename.includes("node_modules")) return {};
 
     const topics = loadManifestTopics(context);
+    // If the manifest is not available yet (clean checkout before generation), skip this rule
+    if (!topics || topics.size === 0) return {};
 
     function checkCallExpression(node) {
       // Match EventRouter.publish("<topic>")

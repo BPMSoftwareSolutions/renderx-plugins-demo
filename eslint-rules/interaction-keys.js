@@ -169,6 +169,8 @@ const rule = {
     }
 
     const keys = loadManifestKeys(context);
+    // If the manifest is not available yet (clean checkout before generation), skip this rule
+    if (!keys || keys.size === 0) return {};
 
     function checkCallExpression(node) {
       // Match resolveInteraction("<key>")
