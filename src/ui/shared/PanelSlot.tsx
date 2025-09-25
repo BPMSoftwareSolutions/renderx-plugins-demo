@@ -26,7 +26,7 @@ let manifestPromiseRef: Promise<Manifest> = (async () => {
 		}
 		// External artifacts directory (env) before bundled raw import
 		try {
-			const envMod = await import(/* @vite-ignore */ '../../core/environment/env');
+			const envMod = await import(/* @vite-ignore */ '@renderx-plugins/host-sdk/core/environment/env');
 			const artifactsDir = envMod.getArtifactsDir?.();
 			if (artifactsDir) {
 				// @ts-ignore
@@ -40,7 +40,7 @@ let manifestPromiseRef: Promise<Manifest> = (async () => {
 		} catch {}
 		// Only fallback to bundled raw import if no external artifacts dir
 		try {
-			const envMod2 = await import(/* @vite-ignore */ '../../core/environment/env');
+			const envMod2 = await import(/* @vite-ignore */ '@renderx-plugins/host-sdk/core/environment/env');
 			const dir2 = envMod2.getArtifactsDir?.();
 			if (dir2) return { plugins: [] }; // external dir was set but file missing → treat as empty
 		} catch {}

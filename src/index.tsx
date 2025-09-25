@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
-
-import * as React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import App from "./ui/App";
 import { initConductor } from "@renderx-plugins/host-sdk/core/conductor/conductor";

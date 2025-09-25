@@ -9,7 +9,7 @@ describe('Canvas component resize via overlay handles', () => {
   const canvasRoot = '#rx-canvas';
 
   const nodeSelector = `#rx-canvas [id^="rx-node-"], #rx-canvas .rx-comp, #rx-canvas [data-rx-node]`;
-  const handleSelectors = [
+  const _handleSelectors = [
     '#rx-selection-overlay .rx-handle',
     '.rx-handle',
     '.rx-resize-handle',
