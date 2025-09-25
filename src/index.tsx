@@ -1,12 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./ui/App";
-import { initConductor, registerAllSequences } from "./core/conductor"; // via barrel
-import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./core/manifests/interactionManifest";
-import { initTopicsManifest, getTopicsManifestStats, getTopicDef } from "./core/manifests/topicsManifest";
-import { getPluginManifestStats, verifyArtifactsIntegrity } from "./core/startup/startupValidation";
-import { EventRouter } from "./core/events/EventRouter";
+import { initConductor, registerAllSequences } from "./core/conductor";
+import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/interactionManifest";
+import { initTopicsManifest, getTopicsManifestStats, getTopicDef } from "@renderx-plugins/host-sdk/core/manifests/topicsManifest";
+import { getPluginManifestStats, verifyArtifactsIntegrity } from "@renderx-plugins/host-sdk/core/startup/startupValidation";
+import { EventRouter as HostEventRouter } from "./core/events/EventRouter";
 import "./global.css";
+import * as HostFeatureFlags from "./core/environment/feature-flags";
+
 import { listComponents, getComponentById, onInventoryChanged } from "./domain/components/inventory/inventory.service";
 import { cssRegistry } from "./domain/css/cssRegistry.facade";
 declare const process: { env?: Record<string, string | undefined> } | undefined;
@@ -17,7 +19,6 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     registerAllSequences(conductor),
     initInteractionManifest(),
     initTopicsManifest(),
-    EventRouter.init(),
   ]);
 
   (window as any).RenderX = (window as any).RenderX || {};
@@ -32,16 +33,17 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     (window as any).RenderX.getTopicDef = getTopicDef;
   }
   if (!(window as any).RenderX.EventRouter) {
-    (window as any).RenderX.EventRouter = {
-      publish: (topic: string, payload: any, c?: any) => {
-        try { console.log(`[sdk] publish '${topic}' (hasC=${!!c}, hasPlay=${!!(c && c.play)})`); } catch {}
-        return EventRouter.publish(topic, payload, c || conductor);
-      },
-      subscribe: (topic: string, cb: (p: any) => void) => EventRouter.subscribe(topic, cb),
-      init: () => EventRouter.init(),
-      getTopicsStats: () => ({}) as any,
-    } as any;
+    (window as any).RenderX.EventRouter = HostEventRouter as any;
   }
+
+	  if (!(window as any).RenderX.featureFlags) {
+	    (window as any).RenderX.featureFlags = {
+	      isFlagEnabled: HostFeatureFlags.isFlagEnabled,
+	      getFlagMeta: HostFeatureFlags.getFlagMeta,
+	      getAllFlags: HostFeatureFlags.getAllFlags,
+	    } as any;
+	  }
+
 
   if (!(window as any).RenderX.inventory) {
     (window as any).RenderX.inventory = {
@@ -121,7 +123,7 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
               let pendingTimer: any = null;
               const selLog = (...args: any[]) => { try { console.info('🔎 Selection', ...args); } catch {} };
               // canvas select requested
-              EventRouter.subscribe('canvas.component.select.requested', (p: any) => {
+              HostEventRouter.subscribe('canvas.component.select.requested', (p: any) => {
                 selLog('canvas.component.select.requested', p);
                 if (pendingTimer) clearTimeout(pendingTimer);
                 pendingTimer = setTimeout(() => {
@@ -129,11 +131,11 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
                 }, 300);
               });
               // canvas selection changed (post-select)
-              EventRouter.subscribe('canvas.component.selection.changed', (p: any) => {
+              HostEventRouter.subscribe('canvas.component.selection.changed', (p: any) => {
                 selLog('canvas.component.selection.changed', p);
               });
               // control panel should show selection
-              EventRouter.subscribe('control.panel.selection.show.requested', (p: any) => {
+              HostEventRouter.subscribe('control.panel.selection.show.requested', (p: any) => {
                 selLog('control.panel.selection.show.requested', p);
                 if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
               });
