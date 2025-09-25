@@ -17,6 +17,7 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { buildTopicsManifest } from "@renderx-plugins/manifest-tools";
 import { generateExternalTopicsCatalog } from "./derive-external-topics.js";
+import { spawnSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -67,6 +68,17 @@ async function readTopicCatalogs() {
 }
 
 async function main() {
+  // Ensure external package sequences are synced into public/json-sequences before deriving
+  try {
+    const syncScript = join(rootDir, "scripts", "sync-json-sequences.js");
+    const res = spawnSync(process.execPath, [syncScript, "--srcRoot", srcRoot, "--outPublic", outPublicDir], { stdio: "inherit" });
+    if (res.status !== 0) {
+      console.warn("[topics-manifest] sync-json-sequences failed; continuing will likely yield 0 topics");
+    }
+  } catch (e) {
+    console.warn("[topics-manifest] failed to run sync-json-sequences:", e?.message || e);
+  }
+
   // Step 2: External-only topics. Ignore any local json-topics catalogs.
   // const localCatalogs = await readTopicCatalogs();
   const externalCatalog = await generateExternalTopicsCatalog();
