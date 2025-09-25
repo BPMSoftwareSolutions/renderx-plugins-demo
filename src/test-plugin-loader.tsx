@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { createRoot } from "react-dom/client";
-import { initConductor, registerAllSequences, loadJsonSequenceCatalogs } from "./core/conductor";
-import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./core/manifests/interactionManifest";
-import { initTopicsManifest, getTopicsManifestStats, getTopicsMap } from "./core/manifests/topicsManifest";
-import { getPluginManifestStats } from "./core/startup/startupValidation";
+import { initConductor } from "@renderx-plugins/host-sdk/core/conductor/conductor";
+import { registerAllSequences } from "@renderx-plugins/host-sdk/core/conductor/sequence-registration";
+import { loadJsonSequenceCatalogs } from "@renderx-plugins/host-sdk/core/conductor/runtime-loaders";
+import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/interactionManifest";
+import { initTopicsManifest, getTopicsManifestStats, getTopicsMap } from "@renderx-plugins/host-sdk/core/manifests/topicsManifest";
+import { getPluginManifestStats } from "@renderx-plugins/host-sdk/core/startup/startupValidation";
 import { listComponents } from "./domain/components/inventory/inventory.service";
 import { EventRouter } from "@renderx-plugins/host-sdk";
 import "./global.css";

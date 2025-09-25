@@ -1,10 +1,14 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
+import path from 'node:path';
 
 export default {
   resolve: {
     alias: {
       // Host SDK alias (legacy import name)
       "@renderx/host-sdk": "@renderx-plugins/host-sdk",
+      // SDK deep import shims → map to host-provided vendor helpers
+      "../../vendor/vendor-symphony-loader": path.resolve(process.cwd(), "src/vendor/vendor-symphony-loader.ts"),
+      "../../../data/feature-flags.json": path.resolve(process.cwd(), "data/feature-flags.json"),
     },
     // Ensure a single React instance across host and plugins
     dedupe: ["react", "react-dom"],
@@ -23,6 +27,21 @@ export default {
     // Force dependency re-bundling in CI to avoid stale optimization issues
     force: process.env.CI === "true",
   },
+  plugins: [
+    {
+      name: 'fix-sdk-plugin-manifest-raw',
+      enforce: 'pre',
+      resolveId(id, importer) {
+        // The SDK imports the plugin manifest via a relative path from node_modules:
+        //   ../../../public/plugins/plugin-manifest.json?raw
+        // In production build, Rollup may fail to resolve this from node_modules. Redirect it to the app's public path.
+        if (id.endsWith('public/plugins/plugin-manifest.json?raw')) {
+          return path.resolve(process.cwd(), 'public/plugins/plugin-manifest.json?raw');
+        }
+        return null;
+      },
+    },
+  ],
   build: {
     rollupOptions: {
       // Include a stable-named vendor entry that bundles the workspace Control Panel for preview/E2E

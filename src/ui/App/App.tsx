@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
 import { LayoutEngine } from "../../domain/layout/LayoutEngine";
-import { isFlagEnabled } from "../../core/environment/feature-flags";
+import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 import { SlotContainer } from "../../domain/layout/SlotContainer";
-import { EventRouter } from "../../core/events/EventRouter";
+import { EventRouter } from "@renderx-plugins/host-sdk";
 import "../../domain/layout/legacyLayout.css";
 
 export default function App() {
