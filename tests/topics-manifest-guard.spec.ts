@@ -14,14 +14,17 @@ describe('Topics manifest guardrails', () => {
   const pluginManifestPath = path.join(root, 'public', 'plugins', 'plugin-manifest.json');
   const genScript = path.join(root, 'scripts', 'generate-topics-manifest.js');
 
+  let topicsJson: any;
+  let topics: Record<string, any> = {};
+  let keys: string[] = [];
+
   beforeAll(() => {
     const res = spawnSync(process.execPath, [genScript], { stdio: 'inherit' });
     if (res.status !== 0) throw new Error('Failed to regenerate topics-manifest.json');
+    topicsJson = loadJson(topicsPath);
+    topics = topicsJson?.topics || {};
+    keys = Object.keys(topics);
   });
-
-  const topicsJson = loadJson(topicsPath);
-  const topics = topicsJson?.topics || {};
-  const keys = Object.keys(topics);
 
   it('includes critical Control Panel topics with routes', () => {
     const required = [
