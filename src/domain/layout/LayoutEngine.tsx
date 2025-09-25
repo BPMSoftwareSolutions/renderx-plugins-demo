@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { loadLayoutManifest, validateLayoutManifest } from "./layoutManifest";
 import { SlotContainer } from "./SlotContainer";
 
@@ -51,7 +51,7 @@ export function LayoutEngine() {
 		);
 	}
 
-	if (!manifest) return <div data-layout-container style={{ display: "grid" }} />;
+	if (!manifest) return <div data-layout-container="" style={{ display: "grid" }} />;
 
 	const layout = manifest.layout || {};
 	let cols: string[] = layout.columns || [];
@@ -86,7 +86,7 @@ export function LayoutEngine() {
 	} catch {}
 
 	return (
-		<div data-layout-container style={style}>
+		<div data-layout-container="" style={style}>
 			{areas.flatMap((row, rIdx) =>
 				row.map((slotName, cIdx) => (
 					<div
@@ -98,7 +98,10 @@ export function LayoutEngine() {
 							position: "relative",
 						}}
 					>
-						<SlotContainer slot={slotName} capabilities={capsBySlot[slotName]} />
+						<SlotContainer
+							slot={slotName}
+							capabilities={capsBySlot[slotName]}
+						/>
 					</div>
 				))
 			)}

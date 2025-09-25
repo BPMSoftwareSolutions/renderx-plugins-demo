@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import * as React from "react";
 import { LayoutEngine } from "../../domain/layout/LayoutEngine";
 import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 import { SlotContainer } from "../../domain/layout/SlotContainer";
@@ -62,28 +62,28 @@ export default function App() {
 
   if (useLayoutManifest) {
     return (
-      <Suspense fallback={<div className="p-3">Loading Layout…</div>}>
+      <React.Suspense fallback={<div className="p-3">Loading Layout…</div>}>
         <LayoutEngine />
-      </Suspense>
+      </React.Suspense>
     );
   }
 
   return (
     <div className="legacy-grid">
       <div data-slot="library" className="slot-wrapper">
-        <Suspense fallback={<div className="p-3">Loading Library…</div>}>
+        <React.Suspense fallback={<div className="p-3">Loading Library…</div>}>
           <SlotContainer slot="library" />
-        </Suspense>
+        </React.Suspense>
       </div>
       <div data-slot="canvas" className="slot-wrapper">
-        <Suspense fallback={<div className="p-3">Loading Canvas…</div>}>
+        <React.Suspense fallback={<div className="p-3">Loading Canvas…</div>}>
           <SlotContainer slot="canvas" capabilities={{ droppable: true }} />
-        </Suspense>
+        </React.Suspense>
       </div>
       <div data-slot="controlPanel" className="slot-wrapper">
-        <Suspense fallback={<div className="p-3">Loading Control Panel…</div>}>
+        <React.Suspense fallback={<div className="p-3">Loading Control Panel…</div>}>
           <SlotContainer slot="controlPanel" />
-        </Suspense>
+        </React.Suspense>
       </div>
     </div>
   );

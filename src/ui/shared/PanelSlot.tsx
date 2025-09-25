@@ -160,7 +160,9 @@ export function PanelSlot({ slot }: { slot: string }) {
 				const canUpdate = alive && typeof window !== "undefined";
 				if (canUpdate)
 					setComp(() => () => (
-						React.createElement('div', { style: { padding: 12 } }, `Failed to load panel: ${String(err)}`)
+						<div style={{ padding: 12 }}>
+							Failed to load panel: {String(err)}
+						</div>
 					));
 			}
 		})();
@@ -170,5 +172,5 @@ export function PanelSlot({ slot }: { slot: string }) {
 	}, [slot]);
 
 	if (!Comp) return null;
-	return React.createElement(Comp, null);
+	return <Comp />;
 }

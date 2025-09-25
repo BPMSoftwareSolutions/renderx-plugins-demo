@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import * as React from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 import { initConductor } from "@renderx-plugins/host-sdk/core/conductor/conductor";
 import { registerAllSequences } from "@renderx-plugins/host-sdk/core/conductor/sequence-registration";

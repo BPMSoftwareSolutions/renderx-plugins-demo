@@ -1,5 +1,7 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
 import path from 'node:path';
+import react from '@vitejs/plugin-react';
+
 
 export default {
   resolve: {
@@ -14,15 +16,8 @@ export default {
     dedupe: ["react", "react-dom", "@renderx-plugins/host-sdk"],
   },
   optimizeDeps: {
-    // Ensure dev server prebundles core external packages; canvas packages load from source via alias
-    include: [
-      "@renderx-plugins/header",
-      "@renderx-plugins/library",
-      "@renderx-plugins/library-component",
-      "@renderx-plugins/control-panel",
-    ],
-    // Avoid esbuild trying to load asset query imports like ?url in dependencies
-    // Exclude host-sdk and its deep subpaths to avoid resolving dynamic raw JSON imports during prebundle
+    // Vite 7+: disable dependency discovery entirely; we control deps explicitly
+    include: [],
     exclude: [
       "@renderx-plugins/host-sdk",
       "@renderx-plugins/host-sdk/core/conductor/conductor",
@@ -36,8 +31,7 @@ export default {
       "@renderx-plugins/canvas-component",
       "gif.js.optimized"
     ],
-    // Fully disable dep optimization to avoid scanning dynamic imports inside SDK
-    disabled: true,
+    noDiscovery: true,
     esbuildOptions: {
       plugins: [
         {
@@ -53,6 +47,13 @@ export default {
     force: process.env.CI === "true",
   },
   plugins: [
+    react({
+      // Ensure consistent JSX runtime between dev and production
+      jsxRuntime: 'automatic',
+      jsxImportSource: 'react',
+      // Enable fast refresh for better dev experience
+      fastRefresh: true
+    }),
     {
       name: 'fix-sdk-plugin-manifest-raw',
       enforce: 'pre',

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
 
 import * as React from "react";
-import { createRoot } from "react-dom/client";
+import * as ReactDOMClient from "react-dom/client";
 import App from "./ui/App";
 import { initConductor } from "@renderx-plugins/host-sdk/core/conductor/conductor";
 import { registerAllSequences } from "@renderx-plugins/host-sdk/core/conductor/sequence-registration";
@@ -199,6 +199,6 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     el.id = "root";
     document.body.appendChild(el);
   }
-  const root = createRoot(document.getElementById("root")!);
-  root.render(React.createElement(App, null));
+  const root = ReactDOMClient.createRoot(document.getElementById("root")!);
+  root.render(<App />);
 })();
