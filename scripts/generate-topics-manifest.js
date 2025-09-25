@@ -46,7 +46,7 @@ async function readJsonSafe(path) {
   }
 }
 
-async function readTopicCatalogs() {
+async function _readTopicCatalogs() {
   // Prefer root json-topics/, but also support json-components/json-topics/ for compatibility
   const dirs = [
     join(srcRoot, "json-topics"),

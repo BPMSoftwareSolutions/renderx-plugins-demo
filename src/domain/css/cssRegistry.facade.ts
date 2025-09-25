@@ -1,7 +1,7 @@
 // Inlined implementation (Phase 2) formerly at src/cssRegistry/facade.ts
 // Host-side cssRegistry facade
 import { EventRouter } from '@renderx-plugins/host-sdk';
-import { initConductor } from '../../core/conductor/conductor';
+import { initConductor } from '@renderx-plugins/host-sdk/core/conductor/conductor';
 
 export type CssRegistryFacade = {
 	hasClass: (className: string) => Promise<boolean>;

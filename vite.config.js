@@ -50,7 +50,7 @@ export default {
         {
           name: 'dep-scan-externalize-host-sdk',
           setup(build) {
-            build.onResolve({ filter: /^@renderx-plugins\/host-sdk(\/.+)?$/ }, args => ({ external: true }));
+            build.onResolve({ filter: /^@renderx-plugins\/host-sdk(\/.+)?$/ }, _args => ({ external: true }));
             return undefined;
           },
         },
@@ -70,7 +70,7 @@ export default {
     {
       name: 'fix-sdk-plugin-manifest-raw',
       enforce: 'pre',
-      resolveId(id, importer) {
+      resolveId(id, _importer) {
         // The SDK imports the plugin manifest via a relative path from node_modules:
         //   ../../../public/plugins/plugin-manifest.json?raw
         // In production build, Rollup may fail to resolve this from node_modules. Redirect it to the app's public path.
