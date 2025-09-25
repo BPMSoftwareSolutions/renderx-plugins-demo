@@ -11,7 +11,7 @@ export default {
       "../../../data/feature-flags.json": path.resolve(process.cwd(), "data/feature-flags.json"),
     },
     // Ensure a single React instance across host and plugins
-    dedupe: ["react", "react-dom"],
+    dedupe: ["react", "react-dom", "@renderx-plugins/host-sdk"],
   },
   optimizeDeps: {
     // Ensure dev server prebundles core external packages; canvas packages load from source via alias
@@ -22,8 +22,33 @@ export default {
       "@renderx-plugins/control-panel",
     ],
     // Avoid esbuild trying to load asset query imports like ?url in dependencies
-    // Exclude host-sdk to avoid resolving its dynamic raw JSON imports during prebundle
-    exclude: ["@renderx-plugins/host-sdk", "@renderx-plugins/canvas-component", "gif.js.optimized"],
+    // Exclude host-sdk and its deep subpaths to avoid resolving dynamic raw JSON imports during prebundle
+    exclude: [
+      "@renderx-plugins/host-sdk",
+      "@renderx-plugins/host-sdk/core/conductor/conductor",
+      "@renderx-plugins/host-sdk/core/conductor/sequence-registration",
+      "@renderx-plugins/host-sdk/core/conductor/runtime-loaders",
+      "@renderx-plugins/host-sdk/core/manifests/interactionManifest",
+      "@renderx-plugins/host-sdk/core/manifests/topicsManifest",
+      "@renderx-plugins/host-sdk/core/startup/startupValidation",
+      "@renderx-plugins/host-sdk/core/events/EventRouter",
+      "@renderx-plugins/host-sdk/core/environment/feature-flags",
+      "@renderx-plugins/canvas-component",
+      "gif.js.optimized"
+    ],
+    // Fully disable dep optimization to avoid scanning dynamic imports inside SDK
+    disabled: true,
+    esbuildOptions: {
+      plugins: [
+        {
+          name: 'dep-scan-externalize-host-sdk',
+          setup(build) {
+            build.onResolve({ filter: /^@renderx-plugins\/host-sdk(\/.+)?$/ }, args => ({ external: true }));
+            return undefined;
+          },
+        },
+      ],
+    },
     // Force dependency re-bundling in CI to avoid stale optimization issues
     force: process.env.CI === "true",
   },
