@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
+
+import * as React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./ui/App";
 import { initConductor } from "@renderx-plugins/host-sdk/core/conductor/conductor";
@@ -198,5 +200,5 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     document.body.appendChild(el);
   }
   const root = createRoot(document.getElementById("root")!);
-  root.render(<App />);
+  root.render(React.createElement(App, null));
 })();
