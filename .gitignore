@@ -163,3 +163,11 @@ vite.config.ts.timestamp-*
 json-components/
 json-sequences/
 !/catalog/json-components/
+
+# Generated root manifests (do not track)
+/interaction-manifest.json
+/topics-manifest.json
+/layout-manifest.json
+/derived-external-interactions.json
+/derived-external-topics.json
+
