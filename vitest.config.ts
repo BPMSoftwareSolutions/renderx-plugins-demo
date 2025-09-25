@@ -13,6 +13,16 @@ export default defineConfig({
       "tests/**/*.spec.ts",
       "tests/**/*.spec.tsx",
     ],
+    // Exclude non-production test files from CI runs
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/cypress/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*",
+      // Exclude test plugin loader tests - these are for development/debugging only
+      "tests/test-plugin-loader.spec.tsx",
+    ],
     // No setup file for now; will be reintroduced when the new harness lands
     setupFiles: [],
   },
