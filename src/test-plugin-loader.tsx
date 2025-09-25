@@ -120,27 +120,57 @@ const SophisticatedPluginLoader: React.FC = () => {
     }
   }, [addLog]);
 
+  // Function to load the actual interaction manifest with routes data
+  const loadInteractionManifestData = useCallback(async () => {
+    try {
+      const response = await fetch('/interaction-manifest.json');
+      if (response.ok) {
+        const manifest = await response.json();
+        const routes = manifest?.routes || {};
+
+        // Transform routes object into array format expected by the component
+        const routesArray = Object.entries(routes).map(([route, def]: [string, any]) => ({
+          route,
+          pluginId: def.pluginId,
+          sequenceId: def.sequenceId
+        }));
+
+        // Get stats and combine with routes data
+        const stats = getInteractionManifestStats();
+        return {
+          ...stats,
+          routes: routesArray
+        };
+      }
+    } catch (error) {
+      addLog('error', 'Failed to load interaction manifest', error);
+    }
+
+    // Fallback to stats only
+    return getInteractionManifestStats();
+  }, [addLog]);
+
   const updateStats = useCallback(async () => {
     try {
       const [interactionData, topicsData, pluginData, componentsData] = await Promise.all([
-        Promise.resolve(getInteractionManifestStats()),
+        loadInteractionManifestData(),
         Promise.resolve(getTopicsManifestStats()),
         getPluginManifestStats(),
         listComponents().catch(() => [])
       ]);
-      
+
       setInteractionStats(interactionData);
       setTopicsStats(topicsData);
       setPluginStats(pluginData);
       setComponents(componentsData);
-      
+
       if (conductor) {
         setConductorIntrospection(introspectConductor(conductor));
       }
     } catch (error) {
       addLog('error', 'Failed to update stats', error);
     }
-  }, [conductor, introspectConductor, addLog]);
+  }, [conductor, introspectConductor, addLog, loadInteractionManifestData]);
 
   useEffect(() => {
     const initialize = async () => {
