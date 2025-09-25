@@ -20,10 +20,10 @@ export default {
       "@renderx-plugins/library",
       "@renderx-plugins/library-component",
       "@renderx-plugins/control-panel",
-      "@renderx-plugins/host-sdk",
     ],
     // Avoid esbuild trying to load asset query imports like ?url in dependencies
-    exclude: ["@renderx-plugins/canvas-component", "gif.js.optimized"],
+    // Exclude host-sdk to avoid resolving its dynamic raw JSON imports during prebundle
+    exclude: ["@renderx-plugins/host-sdk", "@renderx-plugins/canvas-component", "gif.js.optimized"],
     // Force dependency re-bundling in CI to avoid stale optimization issues
     force: process.env.CI === "true",
   },
@@ -37,6 +37,10 @@ export default {
         // In production build, Rollup may fail to resolve this from node_modules. Redirect it to the app's public path.
         if (id.endsWith('public/plugins/plugin-manifest.json?raw')) {
           return path.resolve(process.cwd(), 'public/plugins/plugin-manifest.json?raw');
+        }
+        // The SDK resolves feature flags via a relative path from within node_modules
+        if (id.endsWith('data/feature-flags.json')) {
+          return path.resolve(process.cwd(), 'data/feature-flags.json');
         }
         return null;
       },
