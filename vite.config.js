@@ -16,9 +16,18 @@ export default {
     dedupe: ["react", "react-dom", "@renderx-plugins/host-sdk"],
   },
   optimizeDeps: {
-    // Vite 7+: disable dependency discovery entirely; we control deps explicitly
-    include: [],
+    // Allow Vite to discover and pre-bundle dependencies that need CommonJS-to-ESM transformation
+    include: [
+      // Pre-bundle React plugins that might have CommonJS dependencies
+      "@renderx-plugins/header",
+      "@renderx-plugins/library",
+      "@renderx-plugins/library-component",
+      "@renderx-plugins/control-panel",
+      // Include any other dependencies that might need transformation
+      "musical-conductor"
+    ],
     exclude: [
+      // Only exclude host-sdk and its subpaths to avoid dynamic import resolution issues
       "@renderx-plugins/host-sdk",
       "@renderx-plugins/host-sdk/core/conductor/conductor",
       "@renderx-plugins/host-sdk/core/conductor/sequence-registration",
@@ -31,8 +40,12 @@ export default {
       "@renderx-plugins/canvas-component",
       "gif.js.optimized"
     ],
-    noDiscovery: true,
+    // Enable discovery but be selective about what gets optimized
+    noDiscovery: false,
     esbuildOptions: {
+      // Ensure proper CommonJS-to-ESM transformation
+      format: 'esm',
+      target: 'es2020',
       plugins: [
         {
           name: 'dep-scan-externalize-host-sdk',
