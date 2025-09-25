@@ -479,38 +479,40 @@ const SophisticatedPluginLoader: React.FC = () => {
         {/* Plugin Statistics */}
         <div className="control-panel">
           <h2>Plugin Statistics</h2>
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-value">{loadingStats.totalPlugins}</div>
-              <div className="stat-label">Total Plugins</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{loadingStats.loadedPlugins}</div>
-              <div className="stat-label">Loaded</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{loadingStats.failedPlugins}</div>
-              <div className="stat-label">Failed</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{loadingStats.loadingTime}ms</div>
-              <div className="stat-label">Load Time</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{interactionStats?.routeCount || 0}</div>
-              <div className="stat-label">Routes</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{topicsStats?.topicCount || 0}</div>
-              <div className="stat-label">Topics</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{components.length}</div>
-              <div className="stat-label">Components</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{conductorIntrospection?.mountedPluginIds.length || 0}</div>
-              <div className="stat-label">Mounted</div>
+          <div className="stats-enhanced">
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-value">{loadingStats.totalPlugins}</div>
+                <div className="stat-label">Total Plugins</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{loadingStats.loadedPlugins}</div>
+                <div className="stat-label">Loaded</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{loadingStats.failedPlugins}</div>
+                <div className="stat-label">Failed</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{loadingStats.loadingTime}ms</div>
+                <div className="stat-label">Load Time</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{interactionStats?.routeCount || 0}</div>
+                <div className="stat-label">Routes</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{topicsStats?.topicCount || 0}</div>
+                <div className="stat-label">Topics</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{components.length}</div>
+                <div className="stat-label">Components</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">{conductorIntrospection?.mountedPluginIds.length || 0}</div>
+                <div className="stat-label">Mounted</div>
+              </div>
             </div>
           </div>
         </div>
