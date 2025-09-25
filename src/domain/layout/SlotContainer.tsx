@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { PanelSlot } from "../../ui/shared/PanelSlot";
 
 export type SlotCapabilities = {
@@ -30,7 +30,7 @@ export function SlotContainer({
 	// The inner content layer ensures coverage; plugin UI mounts inside
 	return (
 		<div
-			data-slot-content
+			data-slot-content=""
 			style={{ position: "absolute", inset: 0, display: "flex" }}
 			onDragOverCapture={droppable ? onDragOverCapture : undefined}
 		>

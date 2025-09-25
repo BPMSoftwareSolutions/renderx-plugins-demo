@@ -1,13 +1,16 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
+/* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
+
+import * as React from "react";
+import * as ReactDOMClient from "react-dom/client";
 import App from "./ui/App";
-import { initConductor, registerAllSequences } from "./core/conductor";
-import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "./core/manifests/interactionManifest";
-import { initTopicsManifest, getTopicsManifestStats, getTopicDef } from "./core/manifests/topicsManifest";
-import { getPluginManifestStats, verifyArtifactsIntegrity } from "./core/startup/startupValidation";
-import { EventRouter as HostEventRouter } from "./core/events/EventRouter";
+import { initConductor } from "@renderx-plugins/host-sdk/core/conductor/conductor";
+import { registerAllSequences } from "@renderx-plugins/host-sdk/core/conductor/sequence-registration";
+import { initInteractionManifest, getInteractionManifestStats, resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/interactionManifest";
+import { initTopicsManifest, getTopicsManifestStats, getTopicDef } from "@renderx-plugins/host-sdk/core/manifests/topicsManifest";
+import { getPluginManifestStats, verifyArtifactsIntegrity } from "@renderx-plugins/host-sdk/core/startup/startupValidation";
+import { EventRouter as HostEventRouter } from "@renderx-plugins/host-sdk/core/events/EventRouter";
 import "./global.css";
-import * as HostFeatureFlags from "./core/environment/feature-flags";
+import * as HostFeatureFlags from "@renderx-plugins/host-sdk/core/environment/feature-flags";
 
 import { listComponents, getComponentById, onInventoryChanged } from "./domain/components/inventory/inventory.service";
 import { cssRegistry } from "./domain/css/cssRegistry.facade";
@@ -196,6 +199,6 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
     el.id = "root";
     document.body.appendChild(el);
   }
-  const root = createRoot(document.getElementById("root")!);
+  const root = ReactDOMClient.createRoot(document.getElementById("root")!);
   root.render(<App />);
 })();

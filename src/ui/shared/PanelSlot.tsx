@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { isBareSpecifier } from "../../infrastructure/handlers/handlersPath";
 
 // Simple manifest-driven PanelSlot that lazy-loads a named export from plugin modules

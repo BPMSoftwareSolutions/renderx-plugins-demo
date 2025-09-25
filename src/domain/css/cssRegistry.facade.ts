@@ -1,6 +1,6 @@
 // Inlined implementation (Phase 2) formerly at src/cssRegistry/facade.ts
 // Host-side cssRegistry facade
-import { EventRouter } from '../../core/events/EventRouter';
+import { EventRouter } from '@renderx-plugins/host-sdk';
 import { initConductor } from '../../core/conductor/conductor';
 
 export type CssRegistryFacade = {
