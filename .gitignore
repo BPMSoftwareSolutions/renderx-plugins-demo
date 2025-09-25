@@ -171,3 +171,9 @@ json-sequences/
 /derived-external-interactions.json
 /derived-external-topics.json
 
+/.generated/*
+/catalog/json-interactions/.generated/app.json
+/catalog/json-interactions/.generated/canvas.json
+/catalog/json-interactions/.generated/control.json
+/catalog/json-interactions/.generated/library.json
+/catalog/json-plugins/.generated/plugin-manifest.json
