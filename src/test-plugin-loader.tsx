@@ -89,6 +89,7 @@ const SophisticatedPluginLoader: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [performanceMetrics, setPerformanceMetrics] = useState<{[key: string]: number}>({});
+  const [manifestsRefreshCounter, setManifestsRefreshCounter] = useState(0);
 
   const addLog = useCallback((level: LogEntry['level'], message: string, data?: any) => {
     const entry: LogEntry = {
@@ -202,14 +203,23 @@ const SophisticatedPluginLoader: React.FC = () => {
     try {
       await loadJsonSequenceCatalogs(conductor);
       setLoadedPlugins(new Set(manifest.plugins.map(p => p.id)));
-      
+
+      // Re-initialize manifests to pick up new routes and topics from loaded plugins
+      addLog('info', 'Refreshing interaction and topics manifests...');
+      await Promise.all([
+        initInteractionManifest(),
+        initTopicsManifest()
+      ]);
+      setManifestsRefreshCounter(prev => prev + 1);
+      addLog('info', 'Manifests refreshed');
+
       const loadTime = Date.now() - startTime;
       setLoadingStats(prev => ({
         ...prev,
         loadedPlugins: manifest.plugins.length,
         loadingTime: loadTime
       }));
-      
+
       addLog('info', `Loaded all ${manifest.plugins.length} plugins in ${loadTime}ms`);
       await updateStats();
     } catch (error) {
@@ -230,14 +240,22 @@ const SophisticatedPluginLoader: React.FC = () => {
     try {
       await loadJsonSequenceCatalogs(conductor, [pluginId]);
       setLoadedPlugins(prev => new Set([...prev, pluginId]));
-      
+
+      // Re-initialize manifests to pick up new routes and topics from loaded plugin
+      addLog('info', `Refreshing manifests after loading ${pluginId}...`);
+      await Promise.all([
+        initInteractionManifest(),
+        initTopicsManifest()
+      ]);
+      setManifestsRefreshCounter(prev => prev + 1);
+
       const loadTime = Date.now() - startTime;
       setLoadingStats(prev => ({
         ...prev,
         loadedPlugins: prev.loadedPlugins + 1,
         loadingTime: prev.loadingTime + loadTime
       }));
-      
+
       addLog('info', `Loaded plugin ${pluginId} in ${loadTime}ms`);
       await updateStats();
     } catch (error) {
@@ -356,7 +374,7 @@ const SophisticatedPluginLoader: React.FC = () => {
     console.log('🔍 Topics loaded:', Object.keys(topics).length, 'topics');
     console.log('🔍 Theme topics:', Object.keys(topics).filter(k => k.includes('theme')));
     return topics;
-  }, []);
+  }, [manifestsRefreshCounter]);
   const filteredTopics = useMemo(() => {
     const topics = Object.entries(topicsMap);
     if (!searchTerm) return topics;
@@ -375,47 +393,62 @@ const SophisticatedPluginLoader: React.FC = () => {
       </div>
       
       <div className="inspector-content">
-        {/* Control Panel */}
-        <div className="control-panel">
-          <h2>Plugin Loading Controls</h2>
-          <div className="button-group">
+        {/* Plugin Loading Controls Toolbar */}
+        <div className="toolbar">
+          <div className="toolbar-section">
+            <h3 className="toolbar-title">Plugin Loading Controls</h3>
+            <div className="toolbar-divider" />
             <button
-              className="btn btn-primary"
+              className="btn btn-primary btn-icon"
               onClick={loadAllPlugins}
               disabled={loading || !conductor || !manifest}
             >
-              {loading && <span className="loading-spinner" />}
+              {loading ? (
+                <span className="loading-spinner" />
+              ) : (
+                <span className="icon">⚡</span>
+              )}
               Load All Plugins
             </button>
             <button
-              className="btn btn-danger"
+              className="btn btn-danger btn-icon btn-sm"
               onClick={unloadAllPlugins}
               disabled={loading}
             >
+              <span className="icon">🗑️</span>
               Unload All
             </button>
+          </div>
+
+          <div className="toolbar-section">
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary btn-icon btn-sm"
               onClick={updateStats}
               disabled={loading}
             >
+              <span className="icon">🔄</span>
               Refresh Stats
             </button>
             <button
-              className="btn btn-warning"
+              className="btn btn-warning btn-icon btn-sm"
               onClick={exportLogs}
             >
+              <span className="icon">📊</span>
               Export Report
             </button>
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary btn-icon btn-sm"
               onClick={clearLogs}
             >
+              <span className="icon">🧹</span>
               Clear Logs
             </button>
           </div>
-          
-          {/* Stats Overview */}
+        </div>
+
+        {/* Plugin Statistics */}
+        <div className="control-panel">
+          <h2>Plugin Statistics</h2>
           <div className="stats-grid">
             <div className="stat-item">
               <div className="stat-value">{loadingStats.totalPlugins}</div>
