@@ -20,6 +20,11 @@ What we changed
 - Added a new wrapper class around the stats grid: .stats-enhanced
 - Styled the wrapper in src/global.css using theme‑aware tokens (gradient, border, radius, padding)
 - Left the existing .stats-grid and .stat-* classes intact
+- Replaced the text-only stats grid with a visual dashboard (`.stats-dashboard`):
+  - Top metrics: progress rings for Loading Progress, Success Rate, and Load Performance (target <= 3000ms)
+  - Bottom metrics: cards for Total Plugins, Loaded, Failed, Routes, and Topics
+- Introduced derived metrics and a small inline `ProgressRing` SVG helper in `src/test-plugin-loader.tsx`
+- Added styles in `src/global.css` for `.stats-dashboard`, `.metric-card`, `.progress-ring`, and `.ring-{blue,green,orange}`
 
 TDD: Red → Green
 1) Red: Introduced tests/stats-enhancements.spec.ts to assert
@@ -49,11 +54,6 @@ References
 
 
 ## Update: Visual dashboard implemented
-- Replaced the text-only stats grid with a visual dashboard (`.stats-dashboard`):
-  - Top metrics: progress rings for Loading Progress, Success Rate, and Load Performance (target <= 3000ms)
-  - Bottom metrics: cards for Total Plugins, Loaded, Failed, Routes, and Topics
-- Introduced derived metrics and a small inline `ProgressRing` SVG helper in `src/test-plugin-loader.tsx`
-- Added styles in `src/global.css` for `.stats-dashboard`, `.metric-card`, `.progress-ring`, and `.ring-{blue,green,orange}`
 - Extended tests in `tests/stats-enhancements.spec.ts` to assert the new dashboard selectors and styles
 - Commit: `feat(#265): replace text stats with visual components (progress rings/cards); add styles and tests`
 - PR #266 has been updated with these changes; local tests and lint are green and CI will reflect status on the PR
