@@ -26,5 +26,19 @@ describe('UI: test-plugin-loader stats enhancements', () => {
     // At least one visual enhancement token should be present nearby
     expect(/\.stats-enhanced[\s\S]*background/i.test(css)).toBe(true);
   });
+
+  it('replaces text stats with visual dashboard elements (progress rings/cards)', () => {
+    const src = readFileSync(loaderPath, 'utf8');
+    expect(src.includes('className="stats-dashboard"')).toBe(true);
+    expect(src.includes('className="progress-ring"')).toBe(true);
+  });
+
+  it('defines base styles for the new dashboard selectors in global.css', () => {
+    const css = readFileSync(cssPath, 'utf8');
+    expect(css.includes('.stats-dashboard')).toBe(true);
+    expect(css.includes('.metric-card')).toBe(true);
+    expect(css.includes('.ring-blue')).toBe(true);
+  });
+
 });
 

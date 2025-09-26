@@ -70,7 +70,7 @@ const SophisticatedPluginLoader: React.FC = () => {
   const [loadedPlugins, setLoadedPlugins] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState<LogEntry[]>([]);
-  
+
   // Detailed state
   const [interactionStats, setInteractionStats] = useState<any>(null);
   const [topicsStats, setTopicsStats] = useState<any>(null);
@@ -83,7 +83,7 @@ const SophisticatedPluginLoader: React.FC = () => {
     failedPlugins: 0,
     loadingTime: 0
   });
-  
+
   // UI state
   const [selectedTab, setSelectedTab] = useState<'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance'>('plugins');
   const [searchTerm, setSearchTerm] = useState('');
@@ -177,7 +177,7 @@ const SophisticatedPluginLoader: React.FC = () => {
       const startTime = Date.now();
       try {
         addLog('info', 'Initializing sophisticated plugin loader...');
-        
+
         // Initialize conductor
         addLog('info', 'Initializing conductor...');
         const cond = await initConductor();
@@ -211,10 +211,10 @@ const SophisticatedPluginLoader: React.FC = () => {
 
         // Update all stats
         await updateStats();
-        
+
         const initTime = Date.now() - startTime;
         addLog('info', `Initialization completed in ${initTime}ms`);
-        
+
       } catch (error) {
         addLog('error', 'Initialization failed', error);
       }
@@ -392,7 +392,7 @@ const SophisticatedPluginLoader: React.FC = () => {
   // Filtered data based on search
   const filteredPlugins = useMemo(() => {
     if (!manifest || !searchTerm) return manifest?.plugins || [];
-    return manifest.plugins.filter(plugin => 
+    return manifest.plugins.filter(plugin =>
       plugin.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       plugin.ui?.slot?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       plugin.ui?.module?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -408,10 +408,66 @@ const SophisticatedPluginLoader: React.FC = () => {
   const filteredTopics = useMemo(() => {
     const topics = Object.entries(topicsMap);
     if (!searchTerm) return topics;
-    return topics.filter(([topic]) => 
+    return topics.filter(([topic]) =>
       topic.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [topicsMap, searchTerm]);
+
+  // Derived metrics for enhanced stats dashboard
+  const totalPluginsCount = loadingStats.totalPlugins || 0;
+  const loadedPluginsCount = loadingStats.loadedPlugins || 0;
+  const failedPluginsCount = loadingStats.failedPlugins || 0;
+  const routeCount = interactionStats?.routeCount || 0;
+  const topicCount = topicsStats?.topicCount || 0;
+  const loadingTimeMs = loadingStats.loadingTime || 0;
+
+  const clamp = (n: number, min = 0, max = 100) => Math.max(min, Math.min(max, n));
+  const percent = (num: number, den: number) => (den > 0 ? Math.round((num / den) * 100) : 0);
+
+  const loadingProgressPct = percent(loadedPluginsCount, totalPluginsCount);
+  const successRatePct = totalPluginsCount > 0
+    ? Math.round(((totalPluginsCount - failedPluginsCount) / totalPluginsCount) * 100)
+    : 0;
+  // Treat 3s as 100% for UX purposes
+  const loadPerfPct = clamp(Math.round((loadingTimeMs / 3000) * 100));
+
+  type ProgressRingProps = { percentage: number; color?: 'blue' | 'green' | 'orange' };
+  const ProgressRing: React.FC<ProgressRingProps> = ({ percentage, color = 'blue' }) => {
+    const radius = 28;
+    const stroke = 6;
+    const normalizedRadius = radius - stroke * 0.5;
+    const circumference = normalizedRadius * 2 * Math.PI;
+    const strokeDashoffset = circumference - (percentage / 100) * circumference;
+
+    return (
+      <svg height={radius * 2} width={radius * 2} className={`ring ring-${color}`}>
+        <circle
+          className="ring-track"
+          stroke="var(--border-color)"
+          fill="transparent"
+          strokeWidth={stroke}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <circle
+          className="ring-progress"
+          stroke="currentColor"
+          fill="transparent"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={`${circumference} ${circumference}`}
+          style={{ strokeDashoffset }}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" className="ring-label">
+          {percentage}%
+        </text>
+      </svg>
+    );
+  };
 
   return (
     <div className="inspector-container">
@@ -421,7 +477,7 @@ const SophisticatedPluginLoader: React.FC = () => {
           Sophisticated Inspector - Vite-driven Plugin Loading with Detailed Introspection
         </p>
       </div>
-      
+
       <div className="inspector-content">
         {/* Plugin Loading Controls Toolbar */}
         <div className="toolbar">
@@ -480,38 +536,55 @@ const SophisticatedPluginLoader: React.FC = () => {
         <div className="control-panel">
           <h2>Plugin Statistics</h2>
           <div className="stats-enhanced">
-            <div className="stats-grid">
-              <div className="stat-item">
-                <div className="stat-value">{loadingStats.totalPlugins}</div>
-                <div className="stat-label">Total Plugins</div>
+            <div className="stats-dashboard">
+              <div className="metric-grid-top">
+                <div className="metric-card">
+                  <h3 className="metric-title">Loading Progress</h3>
+                  <div className="progress-ring">
+                    <ProgressRing percentage={loadingProgressPct} color="blue" />
+                  </div>
+                  <div className="metric-value">{loadedPluginsCount} / {totalPluginsCount}</div>
+                  <div className="metric-subtitle">Successfully Loaded</div>
+                </div>
+                <div className="metric-card">
+                  <h3 className="metric-title">Success Rate</h3>
+                  <div className="progress-ring">
+                    <ProgressRing percentage={successRatePct} color="green" />
+                  </div>
+                  <div className="metric-value">{successRatePct}%</div>
+                  <div className="metric-subtitle">{failedPluginsCount} failed</div>
+                </div>
+                <div className="metric-card">
+                  <h3 className="metric-title">Load Performance</h3>
+                  <div className="progress-ring">
+                    <ProgressRing percentage={loadPerfPct} color="orange" />
+                  </div>
+                  <div className="metric-value">{loadingTimeMs}ms</div>
+                  <div className="metric-subtitle">Target  3000ms</div>
+                </div>
               </div>
-              <div className="stat-item">
-                <div className="stat-value">{loadingStats.loadedPlugins}</div>
-                <div className="stat-label">Loaded</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">{loadingStats.failedPlugins}</div>
-                <div className="stat-label">Failed</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">{loadingStats.loadingTime}ms</div>
-                <div className="stat-label">Load Time</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">{interactionStats?.routeCount || 0}</div>
-                <div className="stat-label">Routes</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">{topicsStats?.topicCount || 0}</div>
-                <div className="stat-label">Topics</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">{components.length}</div>
-                <div className="stat-label">Components</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">{conductorIntrospection?.mountedPluginIds.length || 0}</div>
-                <div className="stat-label">Mounted</div>
+
+              <div className="metric-grid-bottom">
+                <div className="metric-card">
+                  <div className="metric-label">Total Plugins</div>
+                  <div className="metric-strong">{totalPluginsCount}</div>
+                </div>
+                <div className="metric-card">
+                  <div className="metric-label">Loaded</div>
+                  <div className="metric-strong">{loadedPluginsCount}</div>
+                </div>
+                <div className="metric-card">
+                  <div className="metric-label">Failed</div>
+                  <div className="metric-strong">{failedPluginsCount}</div>
+                </div>
+                <div className="metric-card">
+                  <div className="metric-label">Routes</div>
+                  <div className="metric-strong">{routeCount}</div>
+                </div>
+                <div className="metric-card">
+                  <div className="metric-label">Topics</div>
+                  <div className="metric-strong">{topicCount}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -750,7 +823,7 @@ const SophisticatedPluginLoader: React.FC = () => {
                 const filteredMountedPlugins = conductorIntrospection.mountedPluginIds.filter(id =>
                     !searchTerm || id.toLowerCase().includes(searchTerm.toLowerCase())
                 );
-        
+
                 return (
                     <div className="plugin-item">
                     <h4 className="plugin-name">
@@ -783,7 +856,7 @@ const SophisticatedPluginLoader: React.FC = () => {
                 const filteredSequences = conductorIntrospection.runtimeMountedSeqIds.filter(id =>
                     !searchTerm || id.toLowerCase().includes(searchTerm.toLowerCase())
                 );
-        
+
                 return (
                     <div className="plugin-item">
                     <h4 className="plugin-name">
@@ -816,7 +889,7 @@ const SophisticatedPluginLoader: React.FC = () => {
                 const filteredDirs = conductorIntrospection.sequenceCatalogDirs.filter(dir =>
                     !searchTerm || dir.toLowerCase().includes(searchTerm.toLowerCase())
                 );
-        
+
                 return (
                     <div className="plugin-item">
                     <h4 className="plugin-name">
@@ -852,7 +925,7 @@ const SophisticatedPluginLoader: React.FC = () => {
                     const pluginStr = JSON.stringify(plugin).toLowerCase();
                     return pluginStr.includes(searchTerm.toLowerCase());
                 });
-        
+
                 return (
                     <div className="plugin-item">
                     <h4 className="plugin-name">

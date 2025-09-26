@@ -562,3 +562,24 @@ body {
 .canvas-grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, var(--canvas-grid-dot) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; }
 .drop-indicator { position: absolute; border: 2px dashed var(--accent-bg); border-radius: 8px; background: var(--accent-weak-bg); pointer-events: none; opacity: 0; transition: opacity 0.2s ease; }
 .drop-indicator.active { opacity: 1; }
+
+
+/* Stats dashboard visuals */
+.stats-dashboard { display: flex; flex-direction: column; gap: 1rem; }
+.metric-grid-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.metric-grid-bottom { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.metric-card { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.75rem 1rem; text-align: center; }
+.metric-title { font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.5rem 0; }
+.metric-value { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-top: 0.5rem; }
+.metric-subtitle { font-size: 0.75rem; color: var(--text-secondary); }
+.metric-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+.metric-strong { font-size: 1.25rem; font-weight: 700; color: var(--accent-color); }
+
+.progress-ring { display: flex; align-items: center; justify-content: center; height: 64px; }
+.ring { display: block; }
+.ring-blue { color: var(--accent-color); }
+.ring-green { color: var(--success-color); }
+.ring-orange { color: var(--warning-color); }
+.ring-label { font-size: 10px; fill: var(--text-primary); }
+.ring-track { opacity: 0.25; }
+.ring-progress { transition: stroke-dashoffset 0.3s ease; }
