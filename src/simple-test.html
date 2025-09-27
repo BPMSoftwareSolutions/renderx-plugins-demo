@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple React Refresh Test</title>
+    
+    <!-- Vite dev client and React Refresh preamble (explicit, guarded, synchronous via TLA) -->
+    <script type="module">
+      try {
+        if (import.meta.env && import.meta.env.DEV) {
+          // Ensure Vite client is loaded (HMR, env, etc.) before app modules execute
+          await import('/@vite/client');
+          // Install React Refresh preamble exactly once BEFORE React modules run
+          if (!window.__vite_plugin_react_preamble_installed__) {
+            const { default: RefreshRuntime } = await import('/@react-refresh');
+            RefreshRuntime.injectIntoGlobalHook(window);
+            window.$RefreshReg$ = () => {};
+            window.$RefreshSig$ = () => (type) => type;
+            window.__vite_plugin_react_preamble_installed__ = true;
+          }
+        }
+      } catch {}
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background: #f8f9fa;
+        color: #212529;
+      }
+      
+      .plugin-explorer {
+        padding: 2rem;
+      }
+      
+      .panel {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .panel-header {
+        background: #f8f9fa;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #dee2e6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .panel-title {
+        margin: 0;
+        font-size: 1.125rem;
+        font-weight: 600;
+      }
+      
+      .panel-badge {
+        background: #007bff;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+      
+      .panel-content {
+        padding: 1.5rem;
+      }
+      
+      .search-box {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test-root"></div>
+    <script type="module" src="/src/simple-test-loader.tsx"></script>
+  </body>
+</html>

@@ -45,7 +45,7 @@ export default {
     esbuildOptions: {
       // Ensure proper CommonJS-to-ESM transformation
       format: 'esm',
-      target: 'es2020',
+      target: 'es2022', // Updated to support top-level await
       plugins: [
         {
           name: 'dep-scan-externalize-host-sdk',
@@ -80,6 +80,39 @@ export default {
         // The SDK resolves feature flags via a relative path from within node_modules
         if (id.endsWith('data/feature-flags.json')) {
           return path.resolve(process.cwd(), 'data/feature-flags.json');
+        }
+        return null;
+      },
+    },
+    {
+      // Strip broken sourceMappingURL comments from the published host-sdk in dev
+      // to silence browser warnings when the package does not ship its source files.
+      name: 'strip-host-sdk-sourcemap-url',
+      apply: 'serve',
+      enforce: 'post',
+      transform(code, id) {
+        const p = id.split('?')[0].replace(/\\/g, '/');
+        if (p.includes('/node_modules/@renderx-plugins/host-sdk/dist/') && /\.m?js$/i.test(p)) {
+          // Strip both //# sourceMappingURL and //@ sourceMappingURL (legacy format)
+          const stripped = code
+            .replace(/\/\/[@#]\s*sourceMappingURL=.*$/gm, '')
+            .replace(/\/\*[@#]\s*sourceMappingURL=.*?\*\//gm, '');
+          return { code: stripped, map: null };
+        }
+        return null;
+      },
+      load(id) {
+        const p = id.split('?')[0].replace(/\\/g, '/');
+        if (p.includes('/node_modules/@renderx-plugins/host-sdk/dist/') && /\.m?js$/i.test(p)) {
+          // For files that are directly loaded, also strip sourcemap URLs
+          const fs = require('fs');
+          if (fs.existsSync(p)) {
+            const code = fs.readFileSync(p, 'utf-8');
+            const stripped = code
+              .replace(/\/\/[@#]\s*sourceMappingURL=.*$/gm, '')
+              .replace(/\/\*[@#]\s*sourceMappingURL=.*?\*\//gm, '');
+            return stripped;
+          }
         }
         return null;
       },

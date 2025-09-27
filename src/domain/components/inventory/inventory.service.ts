@@ -40,23 +40,30 @@ export async function listComponents(): Promise<ComponentDetail[]> {
 	}
 	// Node/test path: read from repo json-components dir
 	try {
-		const { readFile } = await import('node:fs/promises');
-		const path = await import('node:path');
-		const root = process.cwd();
-		const idxPath = path.resolve(root, 'json-components', 'index.json');
-		const idxRaw = await readFile(idxPath, 'utf8');
-		const idx = JSON.parse(idxRaw);
-		const files: string[] = idx?.components || [];
-		const results: ComponentDetail[] = [];
-		for (const f of files) {
-			try {
-				const p = path.resolve(root, 'json-components', f);
-				const raw = await readFile(p, 'utf8');
-				const json = JSON.parse(raw);
-				results.push(attachId(json));
-			} catch {}
+		// Only import Node.js modules if we're actually in a Node.js environment
+		if (typeof process !== 'undefined' && process.cwd) {
+			const { readFile } = await import('node:fs/promises');
+			const path = await import('node:path');
+			const root = process.cwd();
+			const idxPath = path.resolve(root, 'json-components', 'index.json');
+			const idxRaw = await readFile(idxPath, 'utf8');
+			const idx = JSON.parse(idxRaw);
+			const files: string[] = idx?.components || [];
+			const results: ComponentDetail[] = [];
+			for (const f of files) {
+				try {
+					const p = path.resolve(root, 'json-components', f);
+					const raw = await readFile(p, 'utf8');
+					const json = JSON.parse(raw);
+					results.push(attachId(json));
+				} catch {}
+			}
+			return results;
+		} else {
+			// Fallback for browser environments where Node.js APIs aren't available
+			console.warn('Node.js environment not detected, falling back to empty component list');
+			return [];
 		}
-		return results;
 	} catch {
 		return [];
 	}
