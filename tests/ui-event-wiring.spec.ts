@@ -52,6 +52,20 @@ describe('UI Event Wiring (data-driven)', () => {
       guard: { key: 'Delete' },
       publish: { topic: 'canvas.component.delete.requested', payload: {} },
     },
+    {
+      id: 'canvas.copy.onCtrlC',
+      target: { window: true },
+      event: 'keydown',
+      guard: { key: 'c', ctrlKey: true },
+      publish: { topic: 'canvas.component.copy.requested', payload: {} },
+    },
+    {
+      id: 'canvas.paste.onCtrlV',
+      target: { window: true },
+      event: 'keydown',
+      guard: { key: 'v', ctrlKey: true },
+      publish: { topic: 'canvas.component.paste.requested', payload: {} },
+    },
   ];
 
   it('publishes deselect when clicking on canvas (outside component)', async () => {
@@ -89,6 +103,46 @@ describe('UI Event Wiring (data-driven)', () => {
     expect(publishMock).toHaveBeenCalled();
     const [topic] = publishMock.mock.calls[0];
     expect(topic).toBe('canvas.component.delete.requested');
+  });
+
+  it('publishes copy on Ctrl+C', async () => {
+    cleanup = wireUiEvents(defs);
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'c', ctrlKey: true, bubbles: true }));
+    await Promise.resolve();
+
+    expect(publishMock).toHaveBeenCalled();
+    const [topic] = publishMock.mock.calls[0];
+    expect(topic).toBe('canvas.component.copy.requested');
+  });
+
+  it('publishes paste on Ctrl+V', async () => {
+    cleanup = wireUiEvents(defs);
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'v', ctrlKey: true, bubbles: true }));
+    await Promise.resolve();
+
+    expect(publishMock).toHaveBeenCalled();
+    const [topic] = publishMock.mock.calls[0];
+    expect(topic).toBe('canvas.component.paste.requested');
+  });
+
+  it('does not publish copy on C key without Ctrl', async () => {
+    cleanup = wireUiEvents(defs);
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'c', ctrlKey: false, bubbles: true }));
+    await Promise.resolve();
+
+    expect(publishMock).not.toHaveBeenCalled();
+  });
+
+  it('does not publish paste on V key without Ctrl', async () => {
+    cleanup = wireUiEvents(defs);
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'v', ctrlKey: false, bubbles: true }));
+    await Promise.resolve();
+
+    expect(publishMock).not.toHaveBeenCalled();
   });
 });
 

@@ -7,6 +7,9 @@ export type UiEventDef = {
   options?: AddEventListenerOptions | boolean;
   guard?: {
     key?: string;
+    ctrlKey?: boolean;
+    altKey?: boolean;
+    shiftKey?: boolean;
     notClosestMatch?: string;
   };
   publish: { topic: string; payload?: any };
@@ -40,6 +43,21 @@ export function wireUiEvents(defs: UiEventDef[]): () => void {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const key = (e as any).key as string | undefined;
           if (key !== def.guard.key) return;
+        }
+        if (def.guard?.ctrlKey !== undefined) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const ctrlKey = (e as any).ctrlKey as boolean | undefined;
+          if (ctrlKey !== def.guard.ctrlKey) return;
+        }
+        if (def.guard?.altKey !== undefined) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const altKey = (e as any).altKey as boolean | undefined;
+          if (altKey !== def.guard.altKey) return;
+        }
+        if (def.guard?.shiftKey !== undefined) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const shiftKey = (e as any).shiftKey as boolean | undefined;
+          if (shiftKey !== def.guard.shiftKey) return;
         }
         if (def.guard?.notClosestMatch) {
           const target = e.target as HTMLElement | null;

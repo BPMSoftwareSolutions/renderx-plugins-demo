@@ -20,6 +20,20 @@
     "event": "keydown",
     "guard": { "key": "Delete" },
     "publish": { "topic": "canvas.component.delete.requested", "payload": {} }
+  },
+  {
+    "id": "canvas.copy.onCtrlC",
+    "target": { "window": true },
+    "event": "keydown",
+    "guard": { "key": "c", "ctrlKey": true },
+    "publish": { "topic": "canvas.component.copy.requested", "payload": {} }
+  },
+  {
+    "id": "canvas.paste.onCtrlV",
+    "target": { "window": true },
+    "event": "keydown",
+    "guard": { "key": "v", "ctrlKey": true },
+    "publish": { "topic": "canvas.component.paste.requested", "payload": {} }
   }
 ]
 
