@@ -583,3 +583,11 @@ body {
 .ring-label { font-size: 10px; fill: var(--text-primary); }
 .ring-track { opacity: 0.25; }
 .ring-progress { transition: stroke-dashoffset 0.3s ease; }
+
+
+/* Three-panel layout (Plugin Explorer | Right Panel | Footer) */
+.layout-three-panel { display: grid; grid-template-columns: 320px 1fr; grid-template-rows: auto 1fr auto; grid-template-areas: 'left right' 'left right' 'footer footer'; gap: 1rem; min-height: 60vh; }
+.left-panel { grid-area: left; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem; overflow: auto; resize: horizontal; min-width: 260px; max-width: 640px; }
+.right-panel { grid-area: right; }
+.footer-panel { grid-area: footer; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; color: var(--text-secondary); }
+.footer-stats { font-size: 0.875rem; color: var(--text-secondary); }

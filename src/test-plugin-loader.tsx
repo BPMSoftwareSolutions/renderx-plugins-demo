@@ -9,6 +9,8 @@ import { initTopicsManifest, getTopicsManifestStats, getTopicsMap } from "@rende
 import { getPluginManifestStats } from "@renderx-plugins/host-sdk/core/startup/startupValidation";
 import { listComponents } from "./domain/components/inventory/inventory.service";
 import { EventRouter } from "@renderx-plugins/host-sdk";
+import PluginTreeExplorer from "./ui/PluginTreeExplorer";
+
 import "./global.css";
 
 interface PluginInfo {
@@ -90,6 +92,8 @@ const SophisticatedPluginLoader: React.FC = () => {
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [performanceMetrics, setPerformanceMetrics] = useState<{[key: string]: number}>({});
   const [manifestsRefreshCounter, setManifestsRefreshCounter] = useState(0);
+
+  const [selectedNodePath, setSelectedNodePath] = useState<string | null>(null);
 
   const addLog = useCallback((level: LogEntry['level'], message: string, data?: any) => {
     const entry: LogEntry = {
@@ -590,6 +594,18 @@ const SophisticatedPluginLoader: React.FC = () => {
           </div>
         </div>
 
+
+        <div className="layout-three-panel">
+          <aside className="left-panel">
+            <PluginTreeExplorer
+              plugins={manifest?.plugins || []}
+              routes={interactionStats?.routes || []}
+              topicsMap={topicsMap as any}
+              onSelectNode={setSelectedNodePath}
+            />
+          </aside>
+          <section className="right-panel">
+
         {/* Tab Navigation */}
         <div className="control-panel">
           <div className="button-group">
@@ -1088,10 +1104,23 @@ const SophisticatedPluginLoader: React.FC = () => {
             )}
           </div>
         </div>
+          </section>
+          <footer className="footer-panel">
+            <div><strong>Selected:</strong> {selectedNodePath || 'None'}</div>
+            <div className="footer-stats">
+              {loadedPluginsCount}/{totalPluginsCount} plugins loaded • {routeCount} routes • {topicCount} topics
+            </div>
+          </footer>
+        </div>
+
       </div>
+
     </div>
   );
 };
+
+export { SophisticatedPluginLoader };
+
 
 const container = document.getElementById('test-root');
 if (container) {

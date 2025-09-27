@@ -491,6 +491,24 @@
       }
     </style>
 
+    <!-- Vite dev client and React Refresh preamble (explicit, guarded, synchronous via TLA) -->
+    <script type="module">
+      try {
+        if (import.meta.env && import.meta.env.DEV) {
+          // Ensure Vite client is loaded (HMR, env, etc.) before app modules execute
+          await import('/@vite/client');
+          // Install React Refresh preamble exactly once BEFORE React modules run
+          if (!window.__vite_plugin_react_preamble_installed__) {
+            const { default: RefreshRuntime } = await import('/@react-refresh');
+            RefreshRuntime.injectIntoGlobalHook(window);
+            window.$RefreshReg$ = () => {};
+            window.$RefreshSig$ = () => (type) => type;
+            window.__vite_plugin_react_preamble_installed__ = true;
+          }
+        }
+      } catch {}
+    </script>
+
   </head>
   <body>
     <div id="test-root"></div>
