@@ -14,7 +14,7 @@ describe('Canvas Component Copy/Paste', () => {
     capturedLogs = [];
   });
 
-  it('triggers copy and paste events using Ctrl+C and Ctrl+V', () => {
+  it('creates a second component on paste (Ctrl+V)', () => {
     // Visit with debug mode and capture logs
     cy.visit('/?debug=1', {
       onBeforeLoad(win) {
@@ -199,9 +199,9 @@ describe('Canvas Component Copy/Paste', () => {
       expect(pasteSequenceExecuted, 'paste sequence should execute').to.eq(true);
     });
 
-    // Verify the original component still exists (paste may not work in headless environment)
+    // Step 6: Verify that a second component was created by paste
     cy.get(canvasRoot).within(() => {
-      cy.get('.rx-comp', { timeout: 10000 }).should('have.length.at.least', 1);
+      cy.get('.rx-comp', { timeout: 10000 }).should('have.length', 2);
     });
 
     // Log success
