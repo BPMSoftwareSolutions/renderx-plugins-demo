@@ -1,0 +1,25 @@
+[
+  {
+    "id": "canvas.deselect.onCanvasClick",
+    "target": { "selector": "#rx-canvas" },
+    "event": "click",
+    "options": true,
+    "guard": { "notClosestMatch": ".rx-comp,[id^='rx-node-']" },
+    "publish": { "topic": "canvas.component.deselect.requested", "payload": {} }
+  },
+  {
+    "id": "canvas.deselect.onEscape",
+    "target": { "window": true },
+    "event": "keydown",
+    "guard": { "key": "Escape" },
+    "publish": { "topic": "canvas.component.deselect.requested", "payload": {} }
+  },
+  {
+    "id": "canvas.delete.onDelete",
+    "target": { "window": true },
+    "event": "keydown",
+    "guard": { "key": "Delete" },
+    "publish": { "topic": "canvas.component.delete.requested", "payload": {} }
+  }
+]
+

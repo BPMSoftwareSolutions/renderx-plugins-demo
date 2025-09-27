@@ -2,60 +2,14 @@ import * as React from "react";
 import { LayoutEngine } from "../../domain/layout/LayoutEngine";
 import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 import { SlotContainer } from "../../domain/layout/SlotContainer";
-import { EventRouter } from "@renderx-plugins/host-sdk";
+import { wireUiEvents } from "../events/wiring";
+import uiEventDefs from "../../core/manifests/uiEvents.json";
 import "../../domain/layout/legacyLayout.css";
 
 export default function App() {
   React.useEffect(() => {
-    const wireCanvasDeselect = () => {
-      const canvas = document.querySelector("#rx-canvas") as HTMLElement;
-      if (!canvas) return false;
-      const conductor = (window as any).RenderX?.conductor;
-      if (!conductor) return false;
-
-      canvas.addEventListener(
-        "click",
-        async (e: Event) => {
-          const target = e.target as HTMLElement;
-          const isComp = target.closest?.(".rx-comp,[id^='rx-node-']");
-          if (!isComp)
-            await EventRouter.publish("canvas.component.deselect.requested", {}, conductor);
-        },
-        true
-      );
-      return true;
-    };
-
-    const wireEscapeDeselect = () => {
-      const conductor = (window as any).RenderX?.conductor;
-      if (!conductor) return false;
-
-      window.addEventListener("keydown", async (e) => {
-        if (e.key === "Escape") await EventRouter.publish("canvas.component.deselect.requested", {}, conductor);
-      });
-      return true;
-    };
-
-    const wireDeleteSelected = () => {
-      const conductor = (window as any).RenderX?.conductor;
-      if (!conductor) return false;
-
-      window.addEventListener("keydown", async (e) => {
-        if (e.key === "Delete") await EventRouter.publish("canvas.component.delete.requested", {}, conductor);
-      });
-      return true;
-    };
-
-
-    if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected()) return;
-
-    const observer = new MutationObserver(() => {
-      if (wireCanvasDeselect() && wireEscapeDeselect() && wireDeleteSelected()) {
-        observer.disconnect();
-      }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+    const cleanup = wireUiEvents(uiEventDefs as any);
+    return () => cleanup();
   }, []);
 
   const useLayoutManifest = isFlagEnabled("ui.layout-manifest");
