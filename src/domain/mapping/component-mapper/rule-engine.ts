@@ -280,6 +280,29 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
 				prop: 'lineHeight',
 			},
 		],
+			react: [
+				{ whenAttr: 'code', action: 'innerHtml' },
+				{
+					whenAttr: 'content',
+					action: 'textContent',
+				},
+				{
+					whenAttr: 'color',
+					action: 'style',
+					prop: 'color',
+				},
+				{
+					whenAttr: 'fontSize',
+					action: 'style',
+					prop: 'fontSize',
+				},
+				{
+					whenAttr: 'lineHeight',
+					action: 'style',
+					prop: 'lineHeight',
+				},
+			],
+
 		html: [{ whenAttr: 'markup', action: 'innerHtml' }],
 	},
 };
@@ -310,6 +333,13 @@ const DEFAULT_CONTENT_RULES: ContentRulesConfig = {
 			{ action: 'attr', attr: 'loading', from: 'loading' },
 			{ action: 'style', prop: 'objectFit', from: 'objectFit' },
 		],
+			react: [
+				{ action: 'textFrom', from: 'content' },
+				{ action: 'style', prop: 'color', from: 'color' },
+				{ action: 'style', prop: 'fontSize', from: 'fontSize' },
+				{ action: 'style', prop: 'lineHeight', from: 'lineHeight' },
+			],
+
 		container: [{ action: 'textFrom', from: 'text' }],
 		div: [{ action: 'textFrom', from: 'text' }],
 		heading: [{ action: 'textFrom', from: 'content', fallback: '' }],
@@ -450,6 +480,14 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
 			{ get: 'style', prop: 'fontSize', as: 'fontSize' },
 			{ get: 'style', prop: 'lineHeight', as: 'lineHeight' },
 		],
+			react: [
+				{ get: 'innerHtml', as: 'code' },
+				{ get: 'textContent', as: 'content' },
+				{ get: 'style', prop: 'color', as: 'color' },
+				{ get: 'style', prop: 'fontSize', as: 'fontSize' },
+				{ get: 'style', prop: 'lineHeight', as: 'lineHeight' },
+			],
+
 		html: [{ get: 'innerHtml', as: 'markup' }],
 	},
 };
@@ -460,6 +498,7 @@ function getComponentTypeFromClasses(el: HTMLElement): string {
 	);
 	return typeClass ? typeClass.replace('rx-', '') : el.tagName.toLowerCase();
 }
+
 
 export class ComponentRuleEngine {
 	private updateRules: UpdateRulesConfig;
