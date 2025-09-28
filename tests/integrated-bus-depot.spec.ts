@@ -49,8 +49,8 @@ describe('Integrated Bus Leaving Depot SVG', () => {
     // Sanity: key text labels exist from both images
     // Note: text elements may be represented; check by textContent substring
     const textContent = doc.documentElement.textContent || '';
-    expect(textContent).toMatch(/SCHOOL BUS DEPOT/);
-    expect(textContent).toMatch(/SCHOOL BUS/);
+    expect(textContent).toMatch(/EVENT BUS DEPOT/);
+    expect(textContent).toMatch(/EVENT BUS/);
   });
 });
 

@@ -28,8 +28,11 @@ describe('Middle Journey Scene', () => {
     // Layers/elements
     expect(doc.getElementById('road-layer')).toBeTruthy();
     expect(doc.getElementById(mapping.elements.trafficLight.placement.id)).toBeTruthy();
-    expect(doc.getElementById(mapping.elements.streetSign.placement.id)).toBeTruthy();
     expect(doc.getElementById(mapping.elements.guardRails.placement.id)).toBeTruthy();
+    // Updated signage set
+    expect(doc.getElementById('street-sign-debug')).toBeTruthy();
+    expect(doc.getElementById('street-sign-replay')).toBeTruthy();
+    expect(doc.getElementById('street-sign-feature-flags')).toBeTruthy();
 
     // Bus layer placement
     const busLayer = doc.getElementById('bus-layer');
@@ -44,9 +47,11 @@ describe('Middle Journey Scene', () => {
     expect(getAttr(anim, 'values')).toBe(`${mapping.bus.horizontalPath.startX},0;${mapping.bus.horizontalPath.endX},0`);
     expect(getAttr(anim, 'dur')).toBe(mapping.bus.horizontalPath.duration);
 
-    // Street sign text shows up
+    // Updated street sign texts
     const textContent = doc.documentElement.textContent || '';
-    expect(textContent).toMatch(/MAPLE STREET/);
+    expect(textContent).toMatch(/DEBUG LOGS AHEAD/);
+    expect(textContent).toMatch(/REPLAY CACHE STOP/);
+    expect(textContent).toMatch(/FEATURE FLAGS ON\/OFF/);
   });
 });
 

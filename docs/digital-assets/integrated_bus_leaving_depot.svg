@@ -73,8 +73,8 @@
     
     <!-- Sign on building -->
     <rect x="200" y="95" width="120" height="20" fill="#FFFFFF" stroke="#333" stroke-width="1" rx="3"/>
-    <text x="260" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">SCHOOL BUS DEPOT</text>
-    
+    <text x="260" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">EVENT BUS DEPOT</text>
+
     <!-- Paved area/parking lot (road) -->
     <rect x="0" y="250" width="800" height="50" fill="#555"/>
     
@@ -190,8 +190,8 @@
       <circle cx="319" cy="112" r="1.5" fill="#000"/>
       
       <!-- School Bus text -->
-      <text x="200" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000">SCHOOL BUS</text>
-      
+      <text x="200" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#000">EVENT BUS</text>
+
       <!-- Front and rear lights -->
       <circle cx="353" cy="80" r="3" fill="#FFFF00"/>
       <circle cx="353" cy="120" r="3" fill="#FF4500"/>

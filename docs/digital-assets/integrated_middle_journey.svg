@@ -75,13 +75,24 @@
     </circle>
   </g>
 
-  <!-- Street sign (scaled and positioned on left) -->
-  <g id="street-sign" transform="translate(40, 40) scale(0.7)">
+  <!-- Updated street signs set -->
+  <g id="street-sign-debug" transform="translate(40, 40) scale(0.7)">
     <rect x="145" y="90" width="10" height="60" fill="#666" stroke="#444" stroke-width="1"/>
     <rect x="10" y="10" width="280" height="80" rx="8" ry="8" fill="#006747" stroke="#FFFFFF" stroke-width="3"/>
     <rect x="18" y="18" width="264" height="64" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-width="2"/>
-    <text x="150" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">MAPLE STREET</text>
-    <text x="150" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF">100 BLOCK</text>
+    <text x="150" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">DEBUG LOGS AHEAD</text>
+  </g>
+  <g id="street-sign-replay" transform="translate(220, 45) scale(0.7)">
+    <rect x="145" y="90" width="10" height="60" fill="#666" stroke="#444" stroke-width="1"/>
+    <rect x="10" y="10" width="280" height="80" rx="8" ry="8" fill="#006747" stroke="#FFFFFF" stroke-width="3"/>
+    <rect x="18" y="18" width="264" height="64" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="150" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">REPLAY CACHE STOP</text>
+  </g>
+  <g id="street-sign-feature-flags" transform="translate(400, 50) scale(0.7)">
+    <rect x="145" y="90" width="10" height="60" fill="#666" stroke="#444" stroke-width="1"/>
+    <rect x="10" y="10" width="280" height="80" rx="8" ry="8" fill="#006747" stroke="#FFFFFF" stroke-width="3"/>
+    <rect x="18" y="18" width="264" height="64" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="150" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">FEATURE FLAGS ON/OFF</text>
   </g>
 
   <!-- Bus layer: scaled and aligned to road, animated horizontally -->
