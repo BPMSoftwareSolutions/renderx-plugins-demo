@@ -307,16 +307,21 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   // Derived metrics for enhanced stats dashboard
   // Total plugins from manifest
   const totalPluginsCount = manifest?.plugins?.length || 0;
-  // Use conductor introspection to get actual loaded plugins count
-  const loadedPluginsCount = conductorIntrospection?.mountedPluginIds?.length || 0;
+
+  // Get loaded plugin IDs from conductor's discovered plugins
+  // Filter to only include plugins that are in the manifest (exclude internal plugins)
+  const loadedPluginIds = useMemo(() => {
+    const discovered = conductorIntrospection?.discoveredPlugins || [];
+    const manifestPluginIds = new Set(manifest?.plugins?.map(p => p.id) || []);
+    const discoveredIds = discovered.map((p: any) => p.pluginId).filter(Boolean);
+    // Only include discovered plugins that are in the manifest
+    return new Set(discoveredIds.filter((id: string) => manifestPluginIds.has(id)));
+  }, [conductorIntrospection, manifest]);
+
+  const loadedPluginsCount = loadedPluginIds.size;
   const failedPluginsCount = Math.max(0, totalPluginsCount - loadedPluginsCount);
   const routeCount = interactionStats?.routeCount || 0;
   const topicCount = topicsStats?.topicCount || 0;
-
-  // Create a Set of loaded plugin IDs for quick lookup
-  const loadedPluginIds = useMemo(() => {
-    return new Set(conductorIntrospection?.mountedPluginIds || []);
-  }, [conductorIntrospection]);
 
   const percent = (num: number, den: number) => (den > 0 ? Math.round((num / den) * 100) : 0);
 
