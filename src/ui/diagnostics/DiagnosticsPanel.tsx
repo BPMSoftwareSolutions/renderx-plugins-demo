@@ -18,6 +18,19 @@ interface PluginInfo {
     module: string;
     export: string;
   };
+  // Extended metadata fields with fallback defaults
+  version?: string;
+  author?: string;
+  description?: string;
+  loadTime?: number;
+  memoryUsage?: string;
+  status?: 'loaded' | 'unloaded' | 'failed' | 'loading' | 'deprecated';
+  topics?: { subscribes: string[], publishes: string[] };
+  sequences?: string[];
+  permissions?: any;
+  configuration?: any;
+  metrics?: any;
+  dependencies?: any;
 }
 
 interface ManifestData {
@@ -101,6 +114,18 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     setLogs(prev => [...prev.slice(-99), entry]); // Keep last 100 logs
   }, []);
 
+  // Helper function to enrich plugin data with fallback values
+  const enrichPluginData = useCallback((plugin: PluginInfo): PluginInfo => {
+    return {
+      ...plugin,
+      version: plugin.version || '1.0.0',
+      status: plugin.status || 'loaded',
+      topics: plugin.topics || { subscribes: [], publishes: [] },
+      sequences: plugin.sequences || [],
+      // Keep other fields as-is (undefined if not present)
+    };
+  }, []);
+
   const introspectConductor = useCallback((conductorInstance: any): ConductorIntrospection => {
     try {
       return {
@@ -182,9 +207,14 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
         const response = await fetch('/plugins/plugin-manifest.json');
         if (response.ok) {
           const data = await response.json();
-          setManifest(data);
-          setLoadingStats(prev => ({ ...prev, totalPlugins: data.plugins?.length || 0 }));
-          addLog('info', `Loaded ${data.plugins?.length || 0} plugins from manifest`);
+          // Enrich plugin data with fallback values
+          const enrichedData = {
+            ...data,
+            plugins: data.plugins?.map(enrichPluginData) || []
+          };
+          setManifest(enrichedData);
+          setLoadingStats(prev => ({ ...prev, totalPlugins: enrichedData.plugins?.length || 0 }));
+          addLog('info', `Loaded ${enrichedData.plugins?.length || 0} plugins from manifest`);
         } else {
           addLog('warn', 'Failed to load plugin manifest');
         }
@@ -200,7 +230,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     };
 
     initialize();
-  }, [addLog, updateStats]);
+  }, [addLog, updateStats, enrichPluginData]);
 
   // Subscribe to EventRouter topics for real-time logging
   useEffect(() => {
