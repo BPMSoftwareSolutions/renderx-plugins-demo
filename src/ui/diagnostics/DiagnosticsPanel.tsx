@@ -7,13 +7,53 @@ import { listComponents } from "../../domain/components/inventory/inventory.serv
 import { EventRouter } from "@renderx-plugins/host-sdk";
 import { PluginTreeExplorer } from "../PluginTreeExplorer";
 
+// UI Configuration sub-structures
+interface UIDependency {
+  name: string;
+  version?: string;
+  size?: string;
+  license?: string;
+}
+
+interface UIProp {
+  type: string;
+  default?: any;
+  required?: boolean;
+  validation?: any;
+}
+
+interface UIEvent {
+  name: string;
+  payloadSchema?: any;
+  frequency?: string;
+  subscribers?: string[];
+}
+
+interface UIStyling {
+  cssClasses?: string[];
+  themeVariables?: Record<string, string>;
+}
+
+interface UILifecycleHooks {
+  onMount?: string;
+  onUpdate?: string;
+  onUnmount?: string;
+}
+
+interface UIConfiguration {
+  slot: string;
+  module: string;
+  export: string;
+  dependencies?: UIDependency[];
+  props?: Record<string, UIProp>;
+  events?: UIEvent[];
+  styling?: UIStyling;
+  lifecycleHooks?: UILifecycleHooks;
+}
+
 interface PluginInfo {
   id: string;
-  ui?: {
-    slot: string;
-    module: string;
-    export: string;
-  };
+  ui?: UIConfiguration;
   runtime?: {
     module: string;
     export: string;
@@ -116,8 +156,53 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
 
   // Helper function to enrich plugin data with fallback values
   const enrichPluginData = useCallback((plugin: PluginInfo): PluginInfo => {
+    // Enrich UI configuration with sample data if UI exists but lacks extended fields
+    let enrichedUi = plugin.ui;
+    if (plugin.ui && !plugin.ui.dependencies && !plugin.ui.props && !plugin.ui.events) {
+      // Add sample data for demonstration (only for first plugin as example)
+      if (plugin.id === 'LibraryPlugin') {
+        enrichedUi = {
+          ...plugin.ui,
+          dependencies: [
+            { name: 'react', version: '18.2.0', size: '42.3 KB', license: 'MIT' },
+            { name: 'lucide-react', version: '0.263.1', size: '156 KB', license: 'ISC' }
+          ],
+          props: {
+            theme: {
+              type: 'string',
+              default: 'light',
+              required: false,
+              validation: { enum: ['light', 'dark'] }
+            },
+            onComponentSelect: {
+              type: 'function',
+              required: true
+            }
+          },
+          events: [
+            {
+              name: 'component.selected',
+              payloadSchema: { componentId: 'string' },
+              frequency: 'on-demand',
+              subscribers: ['ControlPanelPlugin']
+            }
+          ],
+          styling: {
+            cssClasses: ['library-panel', 'scrollable'],
+            themeVariables: { '--library-bg': '#ffffff', '--library-border': '#e0e0e0' }
+          },
+          lifecycleHooks: {
+            onMount: 'initializeLibrary',
+            onUpdate: 'refreshComponents',
+            onUnmount: 'cleanup'
+          }
+        };
+      }
+    }
+
     return {
       ...plugin,
+      ui: enrichedUi,
       version: plugin.version || '1.0.0',
       status: plugin.status || 'loaded',
       topics: plugin.topics || { subscribes: [], publishes: [] },
