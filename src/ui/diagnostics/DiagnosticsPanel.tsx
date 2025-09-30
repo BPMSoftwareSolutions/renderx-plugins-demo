@@ -305,28 +305,27 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   }, [topicsMap, searchTerm]);
 
   // Derived metrics for enhanced stats dashboard
-  const totalPluginsCount = loadingStats.totalPlugins || 0;
+  // Total plugins from manifest
+  const totalPluginsCount = manifest?.plugins?.length || 0;
   // Use conductor introspection to get actual loaded plugins count
   const loadedPluginsCount = conductorIntrospection?.mountedPluginIds?.length || 0;
-  const failedPluginsCount = loadingStats.failedPlugins || 0;
+  const failedPluginsCount = Math.max(0, totalPluginsCount - loadedPluginsCount);
   const routeCount = interactionStats?.routeCount || 0;
   const topicCount = topicsStats?.topicCount || 0;
-  const loadingTimeMs = loadingStats.loadingTime || 0;
 
   // Create a Set of loaded plugin IDs for quick lookup
   const loadedPluginIds = useMemo(() => {
     return new Set(conductorIntrospection?.mountedPluginIds || []);
   }, [conductorIntrospection]);
 
-  const clamp = (n: number, min = 0, max = 100) => Math.max(min, Math.min(max, n));
   const percent = (num: number, den: number) => (den > 0 ? Math.round((num / den) * 100) : 0);
 
   const loadingProgressPct = percent(loadedPluginsCount, totalPluginsCount);
   const successRatePct = totalPluginsCount > 0
     ? Math.round(((totalPluginsCount - failedPluginsCount) / totalPluginsCount) * 100)
     : 0;
-  // Treat 3s as 100% for UX purposes
-  const loadPerfPct = clamp(Math.round((loadingTimeMs / 3000) * 100));
+  // Since we don't track loading time, show 100% if plugins are loaded
+  const loadPerfPct = loadedPluginsCount > 0 ? 100 : 0;
 
   type ProgressRingProps = { percentage: number; color?: 'blue' | 'green' | 'orange' };
   const ProgressRing: React.FC<ProgressRingProps> = ({ percentage, color = 'blue' }) => {
@@ -427,12 +426,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
                   <div className="metric-subtitle">{failedPluginsCount} failed</div>
                 </div>
                 <div className="metric-card">
-                  <h3 className="metric-title">Load Performance</h3>
+                  <h3 className="metric-title">System Status</h3>
                   <div className="progress-ring">
-                    <ProgressRing percentage={loadPerfPct} color="orange" />
+                    <ProgressRing percentage={loadPerfPct} color="green" />
                   </div>
-                  <div className="metric-value">{loadingTimeMs}ms</div>
-                  <div className="metric-subtitle">Target &lt; 3000ms</div>
+                  <div className="metric-value">{loadedPluginsCount > 0 ? 'Ready' : 'Loading'}</div>
+                  <div className="metric-subtitle">{loadedPluginsCount} plugins active</div>
                 </div>
               </div>
 
