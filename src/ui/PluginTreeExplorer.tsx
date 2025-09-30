@@ -15,7 +15,15 @@ import {
   Sliders,
   Radio,
   Paintbrush,
-  Activity
+  Activity,
+  Play,
+  ArrowRightLeft,
+  FileInput,
+  FileOutput,
+  Clock,
+  Target,
+  Calendar,
+  Database
 } from 'lucide-react';
 
 // UI Configuration sub-structures
@@ -62,13 +70,71 @@ interface UIConfiguration {
   lifecycleHooks?: UILifecycleHooks;
 }
 
+// Runtime Configuration sub-structures
+interface RuntimeHandler {
+  name: string;
+  duration?: number;
+  errorRate?: number;
+}
+
+interface RuntimeMovement {
+  from: string;
+  to: string;
+  mapping?: any;
+}
+
+interface RuntimeExecution {
+  id: string;
+  timestamp: string;
+  duration: number;
+  input?: any;
+  output?: any;
+  errors?: any;
+  trace?: any;
+}
+
+interface RuntimeSequence {
+  id: string;
+  name: string;
+  description?: string;
+  handlers?: RuntimeHandler[];
+  movements?: RuntimeMovement[];
+  parameters?: Record<string, any>;
+  dataBatonContracts?: any;
+  returns?: any;
+  executions?: RuntimeExecution[];
+  metrics?: {
+    avgDuration?: number;
+    successRate?: number;
+    errorPatterns?: any;
+  };
+}
+
+interface RuntimeBackgroundJob {
+  id: string;
+  schedule?: string;
+  status: string;
+}
+
+interface RuntimeCaching {
+  strategy?: string;
+  hitRate?: number;
+  missRate?: number;
+}
+
+interface RuntimeConfiguration {
+  module: string;
+  export: string;
+  sequences?: RuntimeSequence[];
+  capabilities?: string[];
+  backgroundJobs?: RuntimeBackgroundJob[];
+  caching?: RuntimeCaching;
+}
+
 interface PluginInfo {
   id: string;
   ui?: UIConfiguration;
-  runtime?: {
-    module: string;
-    export: string;
-  };
+  runtime?: RuntimeConfiguration;
   // Extended metadata fields
   version?: string;
   author?: string;
@@ -130,6 +196,13 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
   const hasConfiguration = (plugin: PluginInfo) => !!plugin.configuration;
   const hasMetrics = (plugin: PluginInfo) => !!plugin.metrics;
   const hasDependencies = (plugin: PluginInfo) => !!plugin.dependencies;
+
+  // Helper functions to check runtime sub-node availability
+  const hasRuntimeModule = (runtime?: RuntimeConfiguration) => !!runtime?.module;
+  const hasRuntimeSequences = (runtime?: RuntimeConfiguration) => !!runtime?.sequences && runtime.sequences.length > 0;
+  const hasRuntimeCapabilities = (runtime?: RuntimeConfiguration) => !!runtime?.capabilities && runtime.capabilities.length > 0;
+  const hasRuntimeBackgroundJobs = (runtime?: RuntimeConfiguration) => !!runtime?.backgroundJobs && runtime.backgroundJobs.length > 0;
+  const hasRuntimeCaching = (runtime?: RuntimeConfiguration) => !!runtime?.caching;
 
   // Helper functions to check UI sub-node availability
   const hasUiSlot = (ui: UIConfiguration | undefined) => !!ui?.slot;
@@ -559,12 +632,243 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
 
                   {/* 3. Runtime - Only if plugin has runtime */}
                   {hasRuntime(plugin) && (
-                    <TreeNode
-                      nodeId={`plugin:${plugin.id}:runtime`}
-                      label="Runtime"
-                      level={2}
-                      icon={<Zap size={14} />}
-                    />
+                    <>
+                      <TreeNode
+                        nodeId={`plugin:${plugin.id}:runtime`}
+                        label="Runtime"
+                        level={2}
+                        icon={<Zap size={14} />}
+                        hasChildren={true}
+                      />
+
+                      {/* Runtime sub-nodes - only show when runtime is expanded */}
+                      {isExpanded(`plugin:${plugin.id}:runtime`) && (
+                        <>
+                          {/* 3.1 Module Path */}
+                          {hasRuntimeModule(plugin.runtime) && (
+                            <TreeNode
+                              nodeId={`plugin:${plugin.id}:runtime:module`}
+                              label="Module Path"
+                              level={3}
+                              icon={<FileCode size={14} />}
+                            />
+                          )}
+
+                          {/* 3.2 Sequences */}
+                          {hasRuntimeSequences(plugin.runtime) && (
+                            <>
+                              <TreeNode
+                                nodeId={`plugin:${plugin.id}:runtime:sequences`}
+                                label="Sequences"
+                                level={3}
+                                icon={<GitBranch size={14} />}
+                                hasChildren={true}
+                                badge={`${plugin.runtime?.sequences?.length || 0}`}
+                              />
+
+                              {/* Sequences sub-nodes - only show when sequences is expanded */}
+                              {isExpanded(`plugin:${plugin.id}:runtime:sequences`) && plugin.runtime?.sequences?.map((seq, idx) => {
+                                const seqNodeId = `plugin:${plugin.id}:runtime:sequences:${seq.id}`;
+                                return (
+                                  <React.Fragment key={`${plugin.id}-seq-${idx}`}>
+                                    <TreeNode
+                                      nodeId={seqNodeId}
+                                      label={seq.name || seq.id}
+                                      level={4}
+                                      hasChildren={true}
+                                    />
+
+                                    {/* Sequence details - only show when sequence is expanded */}
+                                    {isExpanded(seqNodeId) && (
+                                      <>
+                                        {/* Handlers */}
+                                        {seq.handlers && seq.handlers.length > 0 && (
+                                          <>
+                                            <TreeNode
+                                              nodeId={`${seqNodeId}:handlers`}
+                                              label="Handlers"
+                                              level={5}
+                                              icon={<Play size={14} />}
+                                              hasChildren={true}
+                                              badge={`${seq.handlers.length}`}
+                                            />
+                                            {isExpanded(`${seqNodeId}:handlers`) && seq.handlers.map((handler, hIdx) => (
+                                              <TreeNode
+                                                key={`${seqNodeId}-handler-${hIdx}`}
+                                                nodeId={`${seqNodeId}:handlers:${handler.name}`}
+                                                label={`${handler.name}${handler.duration ? ` (${handler.duration}ms)` : ''}${handler.errorRate ? ` [${handler.errorRate}% errors]` : ''}`}
+                                                level={6}
+                                              />
+                                            ))}
+                                          </>
+                                        )}
+
+                                        {/* Movements */}
+                                        {seq.movements && seq.movements.length > 0 && (
+                                          <>
+                                            <TreeNode
+                                              nodeId={`${seqNodeId}:movements`}
+                                              label="Movements"
+                                              level={5}
+                                              icon={<ArrowRightLeft size={14} />}
+                                              hasChildren={true}
+                                              badge={`${seq.movements.length}`}
+                                            />
+                                            {isExpanded(`${seqNodeId}:movements`) && seq.movements.map((movement, mIdx) => (
+                                              <TreeNode
+                                                key={`${seqNodeId}-movement-${mIdx}`}
+                                                nodeId={`${seqNodeId}:movements:${mIdx}`}
+                                                label={`${movement.from} → ${movement.to}`}
+                                                level={6}
+                                              />
+                                            ))}
+                                          </>
+                                        )}
+
+                                        {/* Parameters */}
+                                        {seq.parameters && Object.keys(seq.parameters).length > 0 && (
+                                          <TreeNode
+                                            nodeId={`${seqNodeId}:parameters`}
+                                            label="Parameters"
+                                            level={5}
+                                            icon={<FileInput size={14} />}
+                                          />
+                                        )}
+
+                                        {/* Data Baton Contracts */}
+                                        {seq.dataBatonContracts && (
+                                          <TreeNode
+                                            nodeId={`${seqNodeId}:dataBatonContracts`}
+                                            label="Data Baton Contracts"
+                                            level={5}
+                                            icon={<FileCode size={14} />}
+                                          />
+                                        )}
+
+                                        {/* Returns */}
+                                        {seq.returns && (
+                                          <TreeNode
+                                            nodeId={`${seqNodeId}:returns`}
+                                            label="Returns"
+                                            level={5}
+                                            icon={<FileOutput size={14} />}
+                                          />
+                                        )}
+
+                                        {/* Executions */}
+                                        {seq.executions && seq.executions.length > 0 && (
+                                          <>
+                                            <TreeNode
+                                              nodeId={`${seqNodeId}:executions`}
+                                              label="Executions"
+                                              level={5}
+                                              icon={<Clock size={14} />}
+                                              hasChildren={true}
+                                              badge={`${seq.executions.length}`}
+                                            />
+                                            {isExpanded(`${seqNodeId}:executions`) && seq.executions.map((exec, eIdx) => {
+                                              const execNodeId = `${seqNodeId}:executions:${exec.id}`;
+                                              return (
+                                                <React.Fragment key={`${seqNodeId}-exec-${eIdx}`}>
+                                                  <TreeNode
+                                                    nodeId={execNodeId}
+                                                    label={`${exec.timestamp} (${exec.duration}ms)`}
+                                                    level={6}
+                                                    hasChildren={true}
+                                                  />
+                                                  {isExpanded(execNodeId) && (
+                                                    <>
+                                                      {exec.input && (
+                                                        <TreeNode
+                                                          nodeId={`${execNodeId}:input`}
+                                                          label="Input"
+                                                          level={7}
+                                                        />
+                                                      )}
+                                                      {exec.output && (
+                                                        <TreeNode
+                                                          nodeId={`${execNodeId}:output`}
+                                                          label="Output"
+                                                          level={7}
+                                                        />
+                                                      )}
+                                                      {exec.errors && (
+                                                        <TreeNode
+                                                          nodeId={`${execNodeId}:errors`}
+                                                          label="Errors"
+                                                          level={7}
+                                                        />
+                                                      )}
+                                                    </>
+                                                  )}
+                                                </React.Fragment>
+                                              );
+                                            })}
+                                          </>
+                                        )}
+
+                                        {/* Metrics */}
+                                        {seq.metrics && (
+                                          <TreeNode
+                                            nodeId={`${seqNodeId}:metrics`}
+                                            label={`Metrics: ${seq.metrics.avgDuration ? `${seq.metrics.avgDuration}ms avg` : ''}${seq.metrics.successRate ? `, ${seq.metrics.successRate}% success` : ''}`}
+                                            level={5}
+                                            icon={<BarChart3 size={14} />}
+                                          />
+                                        )}
+                                      </>
+                                    )}
+                                  </React.Fragment>
+                                );
+                              })}
+                            </>
+                          )}
+
+                          {/* 3.3 Capabilities */}
+                          {hasRuntimeCapabilities(plugin.runtime) && (
+                            <TreeNode
+                              nodeId={`plugin:${plugin.id}:runtime:capabilities`}
+                              label="Capabilities"
+                              level={3}
+                              icon={<Target size={14} />}
+                              badge={`${plugin.runtime?.capabilities?.length || 0}`}
+                            />
+                          )}
+
+                          {/* 3.4 Background Jobs */}
+                          {hasRuntimeBackgroundJobs(plugin.runtime) && (
+                            <>
+                              <TreeNode
+                                nodeId={`plugin:${plugin.id}:runtime:backgroundJobs`}
+                                label="Background Jobs"
+                                level={3}
+                                icon={<Calendar size={14} />}
+                                hasChildren={true}
+                                badge={`${plugin.runtime?.backgroundJobs?.length || 0}`}
+                              />
+                              {isExpanded(`plugin:${plugin.id}:runtime:backgroundJobs`) && plugin.runtime?.backgroundJobs?.map((job, jIdx) => (
+                                <TreeNode
+                                  key={`${plugin.id}-job-${jIdx}`}
+                                  nodeId={`plugin:${plugin.id}:runtime:backgroundJobs:${job.id}`}
+                                  label={`${job.id} [${job.status}]${job.schedule ? ` - ${job.schedule}` : ''}`}
+                                  level={4}
+                                />
+                              ))}
+                            </>
+                          )}
+
+                          {/* 3.5 Caching Strategy */}
+                          {hasRuntimeCaching(plugin.runtime) && (
+                            <TreeNode
+                              nodeId={`plugin:${plugin.id}:runtime:caching`}
+                              label={`Caching: ${plugin.runtime?.caching?.strategy || 'N/A'}${plugin.runtime?.caching?.hitRate ? ` (${plugin.runtime.caching.hitRate}% hit rate)` : ''}`}
+                              level={3}
+                              icon={<Database size={14} />}
+                            />
+                          )}
+                        </>
+                      )}
+                    </>
                   )}
 
                   {/* 4. Topics - Only if plugin has topics */}

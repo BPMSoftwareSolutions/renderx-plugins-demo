@@ -51,13 +51,71 @@ interface UIConfiguration {
   lifecycleHooks?: UILifecycleHooks;
 }
 
+// Runtime Configuration sub-structures
+interface RuntimeHandler {
+  name: string;
+  duration?: number;
+  errorRate?: number;
+}
+
+interface RuntimeMovement {
+  from: string;
+  to: string;
+  mapping?: any;
+}
+
+interface RuntimeExecution {
+  id: string;
+  timestamp: string;
+  duration: number;
+  input?: any;
+  output?: any;
+  errors?: any;
+  trace?: any;
+}
+
+interface RuntimeSequence {
+  id: string;
+  name: string;
+  description?: string;
+  handlers?: RuntimeHandler[];
+  movements?: RuntimeMovement[];
+  parameters?: Record<string, any>;
+  dataBatonContracts?: any;
+  returns?: any;
+  executions?: RuntimeExecution[];
+  metrics?: {
+    avgDuration?: number;
+    successRate?: number;
+    errorPatterns?: any;
+  };
+}
+
+interface RuntimeBackgroundJob {
+  id: string;
+  schedule?: string;
+  status: string;
+}
+
+interface RuntimeCaching {
+  strategy?: string;
+  hitRate?: number;
+  missRate?: number;
+}
+
+interface RuntimeConfiguration {
+  module: string;
+  export: string;
+  sequences?: RuntimeSequence[];
+  capabilities?: string[];
+  backgroundJobs?: RuntimeBackgroundJob[];
+  caching?: RuntimeCaching;
+}
+
 interface PluginInfo {
   id: string;
   ui?: UIConfiguration;
-  runtime?: {
-    module: string;
-    export: string;
-  };
+  runtime?: RuntimeConfiguration;
   // Extended metadata fields with fallback defaults
   version?: string;
   author?: string;
@@ -155,7 +213,69 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   }, []);
 
   // Helper function to enrich plugin data with fallback values
-  const enrichPluginData = useCallback((plugin: PluginInfo): PluginInfo => {
+  // Helper function to load sequence data for a plugin from JSON catalogs
+  const loadPluginSequences = useCallback(async (pluginId: string): Promise<RuntimeSequence[]> => {
+    try {
+      // Try to load the index.json catalog for this plugin
+      const catalogResponse = await fetch(`/json-sequences/${pluginId}/index.json`);
+      if (!catalogResponse.ok) {
+        return [];
+      }
+
+      const catalog = await catalogResponse.json();
+      const sequences: RuntimeSequence[] = [];
+
+      // Load each sequence file listed in the catalog
+      if (Array.isArray(catalog.sequences)) {
+        for (const seqEntry of catalog.sequences) {
+          try {
+            const seqFile = seqEntry.file || seqEntry;
+            const seqResponse = await fetch(`/json-sequences/${pluginId}/${seqFile}`);
+            if (seqResponse.ok) {
+              const seqData = await seqResponse.json();
+
+              // Extract handler names from movements/beats
+              const handlers: RuntimeHandler[] = [];
+              if (Array.isArray(seqData.movements)) {
+                for (const movement of seqData.movements) {
+                  if (Array.isArray(movement.beats)) {
+                    for (const beat of movement.beats) {
+                      if (beat.handler && !handlers.find(h => h.name === beat.handler)) {
+                        handlers.push({ name: beat.handler });
+                      }
+                    }
+                  }
+                }
+              }
+
+              sequences.push({
+                id: seqData.id || seqFile.replace('.json', ''),
+                name: seqData.name || seqData.id || seqFile.replace('.json', ''),
+                description: seqData.description,
+                handlers: handlers.length > 0 ? handlers : undefined,
+                movements: seqData.movements?.map((m: any) => ({
+                  from: m.id || 'start',
+                  to: m.id || 'end'
+                })),
+                parameters: seqData.parameters,
+                returns: seqData.returns
+              });
+            }
+          } catch (error) {
+            // Skip sequences that fail to load
+            console.warn(`Failed to load sequence ${seqEntry}:`, error);
+          }
+        }
+      }
+
+      return sequences;
+    } catch (error) {
+      console.warn(`Failed to load sequences for plugin ${pluginId}:`, error);
+      return [];
+    }
+  }, []);
+
+  const enrichPluginData = useCallback(async (plugin: PluginInfo): Promise<PluginInfo> => {
     // Enrich UI configuration with sample data if UI exists but lacks extended fields
     let enrichedUi = plugin.ui;
     if (plugin.ui && !plugin.ui.dependencies && !plugin.ui.props && !plugin.ui.events) {
@@ -200,16 +320,27 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       }
     }
 
+    // Enrich runtime configuration with sequence data
+    let enrichedRuntime = plugin.runtime;
+    if (plugin.runtime) {
+      const sequences = await loadPluginSequences(plugin.id);
+      enrichedRuntime = {
+        ...plugin.runtime,
+        sequences: sequences.length > 0 ? sequences : undefined
+      };
+    }
+
     return {
       ...plugin,
       ui: enrichedUi,
+      runtime: enrichedRuntime,
       version: plugin.version || '1.0.0',
       status: plugin.status || 'loaded',
       topics: plugin.topics || { subscribes: [], publishes: [] },
       sequences: plugin.sequences || [],
       // Keep other fields as-is (undefined if not present)
     };
-  }, []);
+  }, [loadPluginSequences]);
 
   const introspectConductor = useCallback((conductorInstance: any): ConductorIntrospection => {
     try {
@@ -292,10 +423,14 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
         const response = await fetch('/plugins/plugin-manifest.json');
         if (response.ok) {
           const data = await response.json();
-          // Enrich plugin data with fallback values
+          // Enrich plugin data with fallback values (now async)
+          addLog('info', 'Enriching plugin data with sequence information...');
+          const enrichedPlugins = await Promise.all(
+            (data.plugins || []).map((p: PluginInfo) => enrichPluginData(p))
+          );
           const enrichedData = {
             ...data,
-            plugins: data.plugins?.map(enrichPluginData) || []
+            plugins: enrichedPlugins
           };
           setManifest(enrichedData);
           setLoadingStats(prev => ({ ...prev, totalPlugins: enrichedData.plugins?.length || 0 }));
