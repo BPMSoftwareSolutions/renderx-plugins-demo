@@ -79,6 +79,9 @@
 .diagnostics-modal-content .inspector-content {
   flex: 1;
   overflow: auto;
+  max-width: none !important; /* Remove width constraint */
+  margin: 0 !important; /* Remove auto centering */
+  padding: 1rem; /* Reduce padding for better space usage */
 }
 
 /* Override control-panel styles within diagnostics modal */

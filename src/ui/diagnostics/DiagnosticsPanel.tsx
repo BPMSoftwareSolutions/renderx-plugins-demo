@@ -195,6 +195,54 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     initialize();
   }, [addLog, updateStats]);
 
+  // Subscribe to EventRouter topics for real-time logging
+  useEffect(() => {
+    if (!conductor) return;
+
+    const subscriptions: Array<() => void> = [];
+
+    try {
+      // Subscribe to common topics to capture real-time activity
+      const topicsToMonitor = [
+        'canvas.component.create.requested',
+        'canvas.component.created',
+        'canvas.component.drag.start',
+        'canvas.component.drag.move',
+        'canvas.component.drag.end',
+        'canvas.component.select.requested',
+        'canvas.component.selection.changed',
+        'canvas.component.deselect.requested',
+        'canvas.component.delete.requested',
+        'control.panel.selection.updated',
+        'control.panel.selection.show.requested',
+        'library.component.drag.start'
+      ];
+
+      topicsToMonitor.forEach(topic => {
+        try {
+          const unsubscribe = EventRouter.subscribe(topic, (payload: any) => {
+            addLog('info', `📡 ${topic}`, payload);
+          });
+          subscriptions.push(unsubscribe);
+        } catch {
+          // Topic might not exist, skip
+        }
+      });
+
+      addLog('info', `Subscribed to ${subscriptions.length} event topics for monitoring`);
+    } catch (error) {
+      addLog('warn', 'Failed to subscribe to event topics', error);
+    }
+
+    return () => {
+      subscriptions.forEach(unsub => {
+        try {
+          unsub();
+        } catch {}
+      });
+    };
+  }, [conductor, addLog]);
+
   const testInteraction = async (route: string) => {
     if (!conductor) return;
 
