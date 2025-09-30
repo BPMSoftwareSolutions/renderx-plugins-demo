@@ -10,11 +10,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { JSONViewer } from '../src/ui/inspection/JSONViewer';
-import { CodeBlock } from '../src/ui/inspection/CodeBlock';
-import { ActionButton } from '../src/ui/inspection/ActionButton';
-import { RelativeTime } from '../src/ui/inspection/RelativeTime';
-import { CollapsibleSection } from '../src/ui/inspection/CollapsibleSection';
+import { JSONViewer } from '../src/ui/diagnostics/components/shared/JSONViewer';
+import { CodeBlock } from '../src/ui/diagnostics/components/shared/CodeBlock';
+import { ActionButton } from '../src/ui/diagnostics/components/shared/ActionButton';
+import { RelativeTime } from '../src/ui/diagnostics/components/shared/RelativeTime';
+import { CollapsibleSection } from '../src/ui/diagnostics/components/shared/CollapsibleSection';
 import { Play } from 'lucide-react';
 
 describe('Inspection Components', () => {

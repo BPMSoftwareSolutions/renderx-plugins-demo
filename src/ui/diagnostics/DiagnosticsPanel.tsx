@@ -4,8 +4,8 @@ import { resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/int
 import { getTopicsMap } from "@renderx-plugins/host-sdk/core/manifests/topicsManifest";
 import { EventRouter } from "@renderx-plugins/host-sdk";
 import { PluginTreeExplorer } from "../PluginTreeExplorer";
-import { InspectionPanel } from "../inspection/InspectionPanel";
-import "../inspection/inspection.css";
+import { InspectionPanel } from "./components/shared/InspectionPanel";
+import "./components/shared/inspection.css";
 import type {
   PluginInfo,
   ManifestData,
