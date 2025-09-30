@@ -57,6 +57,7 @@
     "@renderx-plugins/library-component": "^0.1.0-rc.5",
     "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
+    "lucide-react": "^0.544.0",
     "musical-conductor": "^1.4.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
