@@ -1,9 +1,7 @@
 import * as React from "react";
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { getInteractionManifestStats, resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/interactionManifest";
-import { getTopicsManifestStats, getTopicsMap } from "@renderx-plugins/host-sdk/core/manifests/topicsManifest";
-import { getPluginManifestStats } from "@renderx-plugins/host-sdk/core/startup/startupValidation";
-import { listComponents } from "../../domain/components/inventory/inventory.service";
+import { useState, useCallback, useMemo } from "react";
+import { resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/interactionManifest";
+import { getTopicsMap } from "@renderx-plugins/host-sdk/core/manifests/topicsManifest";
 import { EventRouter } from "@renderx-plugins/host-sdk";
 import { PluginTreeExplorer } from "../PluginTreeExplorer";
 import { InspectionPanel } from "../inspection/InspectionPanel";
@@ -18,34 +16,48 @@ import type {
   RuntimeSequence,
   RuntimeHandler
 } from "./types";
+import {
+  useDiagnosticsData,
+  useDiagnosticsLogs,
+  useConductorIntrospection,
+  useEventMonitoring,
+  usePerformanceMetrics,
+  usePluginLoadingStats
+} from "./hooks";
 
 interface DiagnosticsPanelProps {
   conductor: any;
 }
 
 export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor }) => {
-  // Core state
-  const [manifest, setManifest] = useState<ManifestData | null>(null);
-  const [loading] = useState(false);
-  const [logs, setLogs] = useState<LogEntry[]>([]);
+  // Use custom hooks for state management
+  const { logs, addLog, clearLogs } = useDiagnosticsLogs();
+  const {
+    manifest,
+    interactionStats,
+    topicsStats,
+    pluginStats,
+    components,
+    loading,
+    error,
+    refresh: refreshData
+  } = useDiagnosticsData(conductor, addLog);
+  const { introspection: conductorIntrospection, refresh: refreshConductor } = useConductorIntrospection(conductor);
+  const { metrics: performanceMetrics, trackMetric } = usePerformanceMetrics();
+  const { stats: loadingStats, updateStats: updateLoadingStats } = usePluginLoadingStats();
 
-  // Detailed state
-  const [interactionStats, setInteractionStats] = useState<any>(null);
-  const [topicsStats, setTopicsStats] = useState<any>(null);
-  const [pluginStats, setPluginStats] = useState<any>(null);
-  const [components, setComponents] = useState<ComponentDetail[]>([]);
-  const [conductorIntrospection, setConductorIntrospection] = useState<ConductorIntrospection | null>(null);
-  const [loadingStats, setLoadingStats] = useState<PluginLoadingStats>({
-    totalPlugins: 0,
-    loadedPlugins: 0,
-    failedPlugins: 0,
-    loadingTime: 0
-  });
+  // Subscribe to event monitoring
+  useEventMonitoring(conductor, addLog);
+
+  // Combined refresh function
+  const updateStats = useCallback(async () => {
+    await refreshData();
+    refreshConductor();
+  }, [refreshData, refreshConductor]);
 
   // UI state
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
-  const [performanceMetrics, setPerformanceMetrics] = useState<{[key: string]: number}>({});
   const [manifestsRefreshCounter] = useState(0);
   const [selectedNodePath, setSelectedNodePath] = useState<string | null>(null);
   const [selectedNodeType, setSelectedNodeType] = useState<'overview' | 'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance' | 'inspection'>('overview');
@@ -55,303 +67,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     return saved ? parseInt(saved, 10) : 300;
   });
 
-  const addLog = useCallback((level: LogEntry['level'], message: string, data?: any) => {
-    const entry: LogEntry = {
-      timestamp: new Date().toLocaleTimeString(),
-      level,
-      message,
-      data
-    };
-    setLogs(prev => [...prev.slice(-99), entry]); // Keep last 100 logs
-  }, []);
-
-  // Helper function to enrich plugin data with fallback values
-  // Helper function to load sequence data for a plugin from JSON catalogs
-  const loadPluginSequences = useCallback(async (pluginId: string): Promise<RuntimeSequence[]> => {
-    try {
-      // Try to load the index.json catalog for this plugin
-      const catalogResponse = await fetch(`/json-sequences/${pluginId}/index.json`);
-      if (!catalogResponse.ok) {
-        return [];
-      }
-
-      const catalog = await catalogResponse.json();
-      const sequences: RuntimeSequence[] = [];
-
-      // Load each sequence file listed in the catalog
-      if (Array.isArray(catalog.sequences)) {
-        for (const seqEntry of catalog.sequences) {
-          try {
-            const seqFile = seqEntry.file || seqEntry;
-            const seqResponse = await fetch(`/json-sequences/${pluginId}/${seqFile}`);
-            if (seqResponse.ok) {
-              const seqData = await seqResponse.json();
-
-              // Extract handler names from movements/beats
-              const handlers: RuntimeHandler[] = [];
-              if (Array.isArray(seqData.movements)) {
-                for (const movement of seqData.movements) {
-                  if (Array.isArray(movement.beats)) {
-                    for (const beat of movement.beats) {
-                      if (beat.handler && !handlers.find(h => h.name === beat.handler)) {
-                        handlers.push({ name: beat.handler });
-                      }
-                    }
-                  }
-                }
-              }
-
-              sequences.push({
-                id: seqData.id || seqFile.replace('.json', ''),
-                name: seqData.name || seqData.id || seqFile.replace('.json', ''),
-                description: seqData.description,
-                handlers: handlers.length > 0 ? handlers : undefined,
-                movements: seqData.movements?.map((m: any) => ({
-                  from: m.id || 'start',
-                  to: m.id || 'end'
-                })),
-                parameters: seqData.parameters,
-                returns: seqData.returns
-              });
-            }
-          } catch (error) {
-            // Skip sequences that fail to load
-            console.warn(`Failed to load sequence ${seqEntry}:`, error);
-          }
-        }
-      }
-
-      return sequences;
-    } catch (error) {
-      console.warn(`Failed to load sequences for plugin ${pluginId}:`, error);
-      return [];
+  // Update loading stats when manifest changes
+  React.useEffect(() => {
+    if (manifest?.plugins) {
+      updateLoadingStats({ totalPlugins: manifest.plugins.length });
     }
-  }, []);
-
-  const enrichPluginData = useCallback(async (plugin: PluginInfo): Promise<PluginInfo> => {
-    // Enrich UI configuration with sample data if UI exists but lacks extended fields
-    let enrichedUi = plugin.ui;
-    if (plugin.ui && !plugin.ui.dependencies && !plugin.ui.props && !plugin.ui.events) {
-      // Add sample data for demonstration (only for first plugin as example)
-      if (plugin.id === 'LibraryPlugin') {
-        enrichedUi = {
-          ...plugin.ui,
-          dependencies: [
-            { name: 'react', version: '18.2.0', size: '42.3 KB', license: 'MIT' },
-            { name: 'lucide-react', version: '0.263.1', size: '156 KB', license: 'ISC' }
-          ],
-          props: {
-            theme: {
-              type: 'string',
-              default: 'light',
-              required: false,
-              validation: { enum: ['light', 'dark'] }
-            },
-            onComponentSelect: {
-              type: 'function',
-              required: true
-            }
-          },
-          events: [
-            {
-              name: 'component.selected',
-              payloadSchema: { componentId: 'string' },
-              frequency: 'on-demand',
-              subscribers: ['ControlPanelPlugin']
-            }
-          ],
-          styling: {
-            cssClasses: ['library-panel', 'scrollable'],
-            themeVariables: { '--library-bg': '#ffffff', '--library-border': '#e0e0e0' }
-          },
-          lifecycleHooks: {
-            onMount: 'initializeLibrary',
-            onUpdate: 'refreshComponents',
-            onUnmount: 'cleanup'
-          }
-        };
-      }
-    }
-
-    // Enrich runtime configuration with sequence data
-    let enrichedRuntime = plugin.runtime;
-    if (plugin.runtime) {
-      const sequences = await loadPluginSequences(plugin.id);
-      enrichedRuntime = {
-        ...plugin.runtime,
-        sequences: sequences.length > 0 ? sequences : undefined
-      };
-    }
-
-    return {
-      ...plugin,
-      ui: enrichedUi,
-      runtime: enrichedRuntime,
-      version: plugin.version || '1.0.0',
-      status: plugin.status || 'loaded',
-      topics: plugin.topics || { subscribes: [], publishes: [] },
-      sequences: plugin.sequences || [],
-      // Keep other fields as-is (undefined if not present)
-    };
-  }, [loadPluginSequences]);
-
-  const introspectConductor = useCallback((conductorInstance: any): ConductorIntrospection => {
-    try {
-      return {
-        mountedPluginIds: conductorInstance?.getMountedPluginIds?.() || [],
-        discoveredPlugins: conductorInstance?._discoveredPlugins || [],
-        runtimeMountedSeqIds: Array.from(conductorInstance?._runtimeMountedSeqIds || []),
-        sequenceCatalogDirs: conductorInstance?._sequenceCatalogDirsFromManifest || []
-      };
-    } catch (error) {
-      addLog('warn', 'Failed to introspect conductor', error);
-      return {
-        mountedPluginIds: [],
-        discoveredPlugins: [],
-        runtimeMountedSeqIds: [],
-        sequenceCatalogDirs: []
-      };
-    }
-  }, [addLog]);
-
-  // Function to load the actual interaction manifest with routes data
-  const loadInteractionManifestData = useCallback(async () => {
-    try {
-      const response = await fetch('/interaction-manifest.json');
-      if (response.ok) {
-        const manifest = await response.json();
-        const routes = manifest?.routes || {};
-
-        // Transform routes object into array format expected by the component
-        const routesArray = Object.entries(routes).map(([route, def]: [string, any]) => ({
-          route,
-          pluginId: def.pluginId,
-          sequenceId: def.sequenceId
-        }));
-
-        // Get stats and combine with routes data
-        const stats = getInteractionManifestStats();
-        return {
-          ...stats,
-          routes: routesArray
-        };
-      }
-    } catch (error) {
-      addLog('error', 'Failed to load interaction manifest', error);
-    }
-
-    // Fallback to stats only
-    return getInteractionManifestStats();
-  }, [addLog]);
-
-  const updateStats = useCallback(async () => {
-    try {
-      const [interactionData, topicsData, pluginData, componentsData] = await Promise.all([
-        loadInteractionManifestData(),
-        Promise.resolve(getTopicsManifestStats()),
-        getPluginManifestStats(),
-        listComponents().catch(() => [])
-      ]);
-
-      setInteractionStats(interactionData);
-      setTopicsStats(topicsData);
-      setPluginStats(pluginData);
-      setComponents(componentsData);
-
-      if (conductor) {
-        setConductorIntrospection(introspectConductor(conductor));
-      }
-    } catch (error) {
-      addLog('error', 'Failed to update stats', error);
-    }
-  }, [conductor, introspectConductor, addLog, loadInteractionManifestData]);
-
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        addLog('info', 'Initializing diagnostics panel...');
-
-        // Load plugin manifest
-        addLog('info', 'Loading plugin manifest...');
-        const response = await fetch('/plugins/plugin-manifest.json');
-        if (response.ok) {
-          const data = await response.json();
-          // Enrich plugin data with fallback values (now async)
-          addLog('info', 'Enriching plugin data with sequence information...');
-          const enrichedPlugins = await Promise.all(
-            (data.plugins || []).map((p: PluginInfo) => enrichPluginData(p))
-          );
-          const enrichedData = {
-            ...data,
-            plugins: enrichedPlugins
-          };
-          setManifest(enrichedData);
-          setLoadingStats(prev => ({ ...prev, totalPlugins: enrichedData.plugins?.length || 0 }));
-          addLog('info', `Loaded ${enrichedData.plugins?.length || 0} plugins from manifest`);
-        } else {
-          addLog('warn', 'Failed to load plugin manifest');
-        }
-
-        // Update all stats
-        await updateStats();
-
-        addLog('info', 'Diagnostics panel initialized');
-
-      } catch (error) {
-        addLog('error', 'Initialization failed', error);
-      }
-    };
-
-    initialize();
-  }, [addLog, updateStats, enrichPluginData]);
-
-  // Subscribe to EventRouter topics for real-time logging
-  useEffect(() => {
-    if (!conductor) return;
-
-    const subscriptions: Array<() => void> = [];
-
-    try {
-      // Subscribe to common topics to capture real-time activity
-      const topicsToMonitor = [
-        'canvas.component.create.requested',
-        'canvas.component.created',
-        'canvas.component.drag.start',
-        'canvas.component.drag.move',
-        'canvas.component.drag.end',
-        'canvas.component.select.requested',
-        'canvas.component.selection.changed',
-        'canvas.component.deselect.requested',
-        'canvas.component.delete.requested',
-        'control.panel.selection.updated',
-        'control.panel.selection.show.requested',
-        'library.component.drag.start'
-      ];
-
-      topicsToMonitor.forEach(topic => {
-        try {
-          const unsubscribe = EventRouter.subscribe(topic, (payload: any) => {
-            addLog('info', `📡 ${topic}`, payload);
-          });
-          subscriptions.push(unsubscribe);
-        } catch {
-          // Topic might not exist, skip
-        }
-      });
-
-      addLog('info', `Subscribed to ${subscriptions.length} event topics for monitoring`);
-    } catch (error) {
-      addLog('warn', 'Failed to subscribe to event topics', error);
-    }
-
-    return () => {
-      subscriptions.forEach(unsub => {
-        try {
-          unsub();
-        } catch {}
-      });
-    };
-  }, [conductor, addLog]);
+  }, [manifest, updateLoadingStats]);
 
   const testInteraction = async (route: string) => {
     if (!conductor) return;
@@ -369,11 +90,11 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       });
 
       const duration = Date.now() - startTime;
-      setPerformanceMetrics(prev => ({ ...prev, [`interaction_${route}`]: duration }));
+      trackMetric(`interaction_${route}`, duration);
       addLog('info', `Interaction test completed for ${route} in ${duration}ms`, result);
     } catch (error) {
       const duration = Date.now() - startTime;
-      setPerformanceMetrics(prev => ({ ...prev, [`interaction_${route}_error`]: duration }));
+      trackMetric(`interaction_${route}_error`, duration);
       addLog('error', `Interaction test failed for ${route} after ${duration}ms`, error);
     }
   };
@@ -421,11 +142,6 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     URL.revokeObjectURL(url);
 
     addLog('info', 'Exported detailed report');
-  };
-
-  const clearLogs = () => {
-    setLogs([]);
-    addLog('info', 'Logs cleared');
   };
 
   const toggleExpanded = (id: string) => {

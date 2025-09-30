@@ -1,0 +1,59 @@
+[ ] NAME:Current Task List DESCRIPTION:Root task for conversation __NEW_AGENT__
+-[x] NAME:Review issue DESCRIPTION:https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/issues/297
+-[x] NAME:Review documentation DESCRIPTION:"C:\source\repos\bpm\internal\renderx-plugins-demo\docs\refactoring\diagnostics-modularity-strategy.md"
+"C:\source\repos\bpm\internal\renderx-plugins-demo\docs\refactoring\diagnostics-before-after.md"
+-[x] NAME:Create branch DESCRIPTION:
+-[x] NAME:Ensure TDD Specs for Refactoring DESCRIPTION:Ensure tests specs are in place for refactoring
+-[x] NAME:Update Task List with Implementation Phases and Detail Tasks DESCRIPTION:
+-[x] NAME:Implement Phase 1: Type System Organization DESCRIPTION:
+--[x] NAME:Create types directory structure DESCRIPTION:Create src/ui/diagnostics/types/ directory with index.ts
+--[x] NAME:Extract UI configuration types DESCRIPTION:Create plugin.types.ts, ui-config.types.ts with UIDependency, UIProp, UIEvent, UIStyling, UILifecycleHooks, UIConfiguration
+--[x] NAME:Extract runtime types DESCRIPTION:Create runtime.types.ts with RuntimeHandler, RuntimeMovement, RuntimeExecution, RuntimeSequence, RuntimeBackgroundJob
+--[x] NAME:Extract manifest and stats types DESCRIPTION:Create manifest.types.ts, stats.types.ts, conductor.types.ts, log.types.ts
+--[x] NAME:Update imports in DiagnosticsPanel and PluginTreeExplorer DESCRIPTION:Replace inline type definitions with imports from types/
+--[x] NAME:Run tests to verify no type errors DESCRIPTION:Run npm test to ensure all tests still pass after type extraction
+-[x] NAME:Implement Phase 2: Data Layer Separation DESCRIPTION:
+--[x] NAME:Create services directory DESCRIPTION:Create src/ui/diagnostics/services/ with index.ts
+--[x] NAME:Extract manifest service DESCRIPTION:Create manifest.service.ts with manifest loading and parsing logic
+--[x] NAME:Extract stats service DESCRIPTION:Create stats.service.ts with statistics aggregation logic
+--[x] NAME:Extract conductor service DESCRIPTION:Create conductor.service.ts with conductor introspection logic
+--[x] NAME:Extract plugin enrichment service DESCRIPTION:Create plugin-enrichment.service.ts with plugin data enrichment logic
+--[ ] NAME:Add unit tests for services DESCRIPTION:Create test files for each service
+--[ ] NAME:Update DiagnosticsPanel to use services DESCRIPTION:Refactor DiagnosticsPanel to use extracted services
+-[/] NAME:Implement Phase 3: Custom Hooks Extraction DESCRIPTION:
+--[x] NAME:Create hooks directory DESCRIPTION:Create src/ui/diagnostics/hooks/ with index.ts
+--[x] NAME:Extract useDiagnosticsData hook DESCRIPTION:Create useDiagnosticsData.ts with main data loading logic
+--[x] NAME:Extract usePluginStats hook DESCRIPTION:Create usePluginStats.ts with plugin statistics logic
+--[x] NAME:Extract useConductorIntrospection hook DESCRIPTION:Create useConductorIntrospection.ts with conductor introspection logic
+--[x] NAME:Extract useEventMonitoring hook DESCRIPTION:Create useEventMonitoring.ts with event monitoring logic
+--[ ] NAME:Add tests for hooks DESCRIPTION:Create test files for each hook
+--[ ] NAME:Refactor DiagnosticsPanel to use hooks DESCRIPTION:Update DiagnosticsPanel to use extracted hooks, reduce useState calls
+-[ ] NAME:Implement Phase 4: Component Decomposition DESCRIPTION:
+--[ ] NAME:Create components directory structure DESCRIPTION:Create src/ui/diagnostics/components/ with subdirectories
+--[ ] NAME:Move inspection components to shared DESCRIPTION:Move src/ui/inspection/* to src/ui/diagnostics/components/shared/
+--[ ] NAME:Update all imports from inspection to shared DESCRIPTION:Update all imports from src/ui/inspection to src/ui/diagnostics/components/shared
+--[ ] NAME:Extract StatsOverview components DESCRIPTION:Create StatsOverview/, ProgressRing.tsx, MetricCard.tsx
+--[ ] NAME:Extract ContentPanels components DESCRIPTION:Create ContentPanels/ with PluginsPanel, TopicsPanel, RoutesPanel, ComponentsPanel, ConductorPanel, PerformancePanel
+--[ ] NAME:Extract LogsPanel components DESCRIPTION:Create LogsPanel/ with LogsPanel.tsx, LogEntry.tsx
+--[ ] NAME:Extract FooterPanel component DESCRIPTION:Create FooterPanel/ with FooterPanel.tsx
+--[ ] NAME:Extract DiagnosticsHeader and Toolbar DESCRIPTION:Create DiagnosticsHeader.tsx and DiagnosticsToolbar.tsx
+--[ ] NAME:Refactor main DiagnosticsPanel to orchestrate DESCRIPTION:Update DiagnosticsPanel.tsx to use extracted components, reduce to < 200 lines
+--[ ] NAME:Verify all panels render correctly DESCRIPTION:Test that all panels render and function correctly
+--[ ] NAME:Add component tests DESCRIPTION:Create test files for new components
+-[ ] NAME:Implement Phase 5: Tree Explorer Refactoring DESCRIPTION:
+--[ ] NAME:Create tree directory DESCRIPTION:Create src/ui/diagnostics/tree/ with index.ts
+--[ ] NAME:Extract TreeNode component DESCRIPTION:Create TreeNode.tsx with generic tree node rendering
+--[ ] NAME:Extract TreeSearch component DESCRIPTION:Create TreeSearch.tsx with search functionality
+--[ ] NAME:Extract TreeFilters component DESCRIPTION:Create TreeFilters.tsx with filter functionality
+--[ ] NAME:Extract node-specific components DESCRIPTION:Create nodes/ with PluginNode, TopicNode, RouteNode, SequenceNode, ComponentNode
+--[ ] NAME:Move PluginTreeExplorer to tree directory DESCRIPTION:Move src/ui/PluginTreeExplorer.tsx to src/ui/diagnostics/tree/
+--[ ] NAME:Simplify PluginTreeExplorer to orchestrator DESCRIPTION:Refactor PluginTreeExplorer to use extracted components, reduce to < 200 lines
+--[ ] NAME:Update imports in DiagnosticsPanel DESCRIPTION:Update import path for PluginTreeExplorer
+--[ ] NAME:Add tests for tree components DESCRIPTION:Create test files for tree components
+-[ ] NAME:Implement Phase 6: Testing & Documentation DESCRIPTION:
+--[ ] NAME:Add comprehensive unit tests DESCRIPTION:Ensure all new modules have unit tests
+--[ ] NAME:Add integration tests DESCRIPTION:Create integration tests for the refactored diagnostics panel
+--[ ] NAME:Update documentation DESCRIPTION:Update docs to reflect new structure
+--[ ] NAME:Verify all tests pass DESCRIPTION:Run npm test to ensure all tests pass
+--[ ] NAME:Verify no lint errors DESCRIPTION:Run npm run lint to ensure no lint errors
+-[x] NAME:Push + PR DESCRIPTION:
