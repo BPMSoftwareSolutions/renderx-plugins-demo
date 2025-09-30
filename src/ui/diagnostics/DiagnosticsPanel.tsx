@@ -79,12 +79,17 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   });
 
   // UI state
-  const [selectedTab, setSelectedTab] = useState<'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance'>('plugins');
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [performanceMetrics, setPerformanceMetrics] = useState<{[key: string]: number}>({});
   const [manifestsRefreshCounter] = useState(0);
   const [selectedNodePath, setSelectedNodePath] = useState<string | null>(null);
+  const [selectedNodeType, setSelectedNodeType] = useState<'overview' | 'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance'>('overview');
+  const [_selectedNodeData, _setSelectedNodeData] = useState<any>(null);
+  const [leftPanelWidth, setLeftPanelWidth] = useState<number>(() => {
+    const saved = localStorage.getItem('diagnostics-left-panel-width');
+    return saved ? parseInt(saved, 10) : 300;
+  });
 
   const addLog = useCallback((level: LogEntry['level'], message: string, data?: any) => {
     const entry: LogEntry = {
@@ -332,6 +337,61 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     });
   };
 
+  // Get topics map first (needed by handleTreeNodeSelect)
+  const topicsMap = useMemo(() => {
+    return getTopicsMap();
+  }, [manifestsRefreshCounter]);
+
+  // Handle tree node selection
+  const handleTreeNodeSelect = useCallback((nodePath: string | null) => {
+    setSelectedNodePath(nodePath);
+
+    if (!nodePath) {
+      setSelectedNodeType('overview');
+      _setSelectedNodeData(null);
+      return;
+    }
+
+    // Parse the node path to determine what to show
+    if (nodePath === 'plugins') {
+      setSelectedNodeType('plugins');
+      _setSelectedNodeData(null);
+    } else if (nodePath.startsWith('plugin:')) {
+      const pluginId = nodePath.substring(7);
+      const plugin = manifest?.plugins.find(p => p.id === pluginId);
+      setSelectedNodeType('plugins');
+      _setSelectedNodeData(plugin);
+    } else if (nodePath === 'routes') {
+      setSelectedNodeType('routes');
+      _setSelectedNodeData(null);
+    } else if (nodePath.startsWith('route:')) {
+      const routeName = nodePath.substring(6);
+      const route = interactionStats?.routes?.find((r: any) => r.route === routeName);
+      setSelectedNodeType('routes');
+      _setSelectedNodeData(route);
+    } else if (nodePath === 'topics') {
+      setSelectedNodeType('topics');
+      _setSelectedNodeData(null);
+    } else if (nodePath.startsWith('topic:')) {
+      const topicName = nodePath.substring(6);
+      const topicDef = topicsMap[topicName];
+      setSelectedNodeType('topics');
+      _setSelectedNodeData({ name: topicName, def: topicDef });
+    } else if (nodePath === 'components') {
+      setSelectedNodeType('components');
+      _setSelectedNodeData(null);
+    } else if (nodePath === 'conductor') {
+      setSelectedNodeType('conductor');
+      _setSelectedNodeData(null);
+    } else if (nodePath === 'performance') {
+      setSelectedNodeType('performance');
+      _setSelectedNodeData(null);
+    } else {
+      setSelectedNodeType('overview');
+      _setSelectedNodeData(null);
+    }
+  }, [manifest, interactionStats, topicsMap]);
+
   // Filtered data based on search
   const filteredPlugins = useMemo(() => {
     if (!manifest || !searchTerm) return manifest?.plugins || [];
@@ -341,10 +401,6 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       plugin.ui?.module?.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [manifest, searchTerm]);
-
-  const topicsMap = useMemo(() => {
-    return getTopicsMap();
-  }, [manifestsRefreshCounter]);
   
   const filteredTopics = useMemo(() => {
     const topics = Object.entries(topicsMap);
@@ -518,44 +574,55 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
         {/* Three-panel layout */}
         <div className="layout-three-panel">
           {/* Left Panel - Plugin Tree Explorer */}
-          <aside className="left-panel">
+          <aside className="left-panel" style={{ width: `${leftPanelWidth}px` }}>
             <PluginTreeExplorer
               plugins={manifest?.plugins || []}
               routes={interactionStats?.routes || []}
               topicsMap={topicsMap as any}
-              onSelectNode={setSelectedNodePath}
+              onSelectNode={handleTreeNodeSelect}
             />
           </aside>
 
+          {/* Resize Handle */}
+          <div
+            className="resize-handle"
+            onMouseDown={(e) => {
+              e.preventDefault();
+              const startX = e.clientX;
+              const startWidth = leftPanelWidth;
+
+              const handleMouseMove = (e: MouseEvent) => {
+                const delta = e.clientX - startX;
+                const newWidth = Math.max(250, Math.min(600, startWidth + delta));
+                setLeftPanelWidth(newWidth);
+              };
+
+              const handleMouseUp = () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+                // Save to localStorage
+                localStorage.setItem('diagnostics-left-panel-width', leftPanelWidth.toString());
+              };
+
+              document.addEventListener('mousemove', handleMouseMove);
+              document.addEventListener('mouseup', handleMouseUp);
+            }}
+          />
+
           {/* Right Panel - Main Content */}
           <section className="right-panel">
-            {/* Tab Navigation */}
-            <div className="control-panel">
-              <div className="button-group">
-                {(['plugins', 'topics', 'routes', 'components', 'conductor', 'performance'] as const).map(tab => (
-                  <button
-                    key={tab}
-                    className={`btn ${selectedTab === tab ? 'btn-primary' : 'btn-secondary'}`}
-                    onClick={() => setSelectedTab(tab)}
-                  >
-                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             {/* Search */}
             <input
               type="text"
               className="search-box"
-              placeholder={`Search ${selectedTab}...`}
+              placeholder={`Search ${selectedNodeType}...`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
 
             {/* Main Content Panels */}
             <div className="grid">
-          {selectedTab === 'plugins' && (
+          {selectedNodeType === 'plugins' && (
             <div className="panel">
               <div className="panel-header">
                 <h3 className="panel-title">Available Plugins</h3>
@@ -598,7 +665,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
             </div>
           )}
 
-          {selectedTab === 'topics' && (
+          {selectedNodeType === 'topics' && (
             <div className="panel">
               <div className="panel-header">
                 <h3 className="panel-title">Topics</h3>
@@ -671,7 +738,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
             </div>
           )}
 
-          {selectedTab === 'routes' && (
+          {selectedNodeType === 'routes' && (
             <div className="panel">
               <div className="panel-header">
                 <h3 className="panel-title">Interaction Routes</h3>
@@ -704,7 +771,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
             </div>
           )}
 
-          {selectedTab === 'components' && (
+          {selectedNodeType === 'components' && (
             <div className="panel">
               <div className="panel-header">
                 <h3 className="panel-title">Components</h3>
@@ -743,7 +810,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
             </div>
           )}
 
-          {selectedTab === 'conductor' && conductorIntrospection && (
+          {selectedNodeType === 'conductor' && conductorIntrospection && (
             <div className="panel">
               <div className="panel-header">
                 <h3 className="panel-title">Conductor Introspection</h3>
@@ -803,7 +870,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
             </div>
           )}
 
-          {selectedTab === 'performance' && (
+          {selectedNodeType === 'performance' && (
             <div className="panel">
               <div className="panel-header">
                 <h3 className="panel-title">Performance Metrics</h3>
@@ -895,9 +962,46 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
 
           {/* Footer Panel */}
           <footer className="footer-panel">
-            <div><strong>Selected:</strong> {selectedNodePath || 'None'}</div>
-            <div className="footer-stats">
-              {loadedPluginsCount}/{totalPluginsCount} plugins loaded • {routeCount} routes • {topicCount} topics
+            <div className="footer-section">
+              <strong>Selected:</strong> {selectedNodePath || 'None'}
+            </div>
+            <div className="footer-section footer-stats">
+              <span className="footer-stat">
+                <span className="footer-stat-label">Plugins:</span>
+                <span className="footer-stat-value">{loadedPluginsCount}/{totalPluginsCount}</span>
+              </span>
+              <span className="footer-stat">
+                <span className="footer-stat-label">Routes:</span>
+                <span className="footer-stat-value">{routeCount}</span>
+              </span>
+              <span className="footer-stat">
+                <span className="footer-stat-label">Topics:</span>
+                <span className="footer-stat-value">{topicCount}</span>
+              </span>
+              <span className="footer-stat">
+                <span className="footer-stat-label">Errors:</span>
+                <span className="footer-stat-value" style={{
+                  color: logs.filter(l => l.level === 'error').length > 0 ? 'var(--danger-color)' : 'var(--success-color)'
+                }}>
+                  {logs.filter(l => l.level === 'error').length}
+                </span>
+              </span>
+            </div>
+            <div className="footer-section footer-actions">
+              <button
+                className="btn btn-sm btn-secondary"
+                onClick={exportLogs}
+                title="Export diagnostics report"
+              >
+                📊 Export
+              </button>
+              <button
+                className="btn btn-sm btn-secondary"
+                onClick={updateStats}
+                title="Refresh statistics"
+              >
+                🔄 Refresh
+              </button>
             </div>
           </footer>
         </div>
