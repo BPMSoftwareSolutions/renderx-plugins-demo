@@ -61,7 +61,6 @@ interface DiagnosticsPanelProps {
 export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor }) => {
   // Core state
   const [manifest, setManifest] = useState<ManifestData | null>(null);
-  const [loadedPlugins] = useState<Set<string>>(new Set());
   const [loading] = useState(false);
   const [logs, setLogs] = useState<LogEntry[]>([]);
 
@@ -307,11 +306,17 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
 
   // Derived metrics for enhanced stats dashboard
   const totalPluginsCount = loadingStats.totalPlugins || 0;
-  const loadedPluginsCount = loadingStats.loadedPlugins || 0;
+  // Use conductor introspection to get actual loaded plugins count
+  const loadedPluginsCount = conductorIntrospection?.mountedPluginIds?.length || 0;
   const failedPluginsCount = loadingStats.failedPlugins || 0;
   const routeCount = interactionStats?.routeCount || 0;
   const topicCount = topicsStats?.topicCount || 0;
   const loadingTimeMs = loadingStats.loadingTime || 0;
+
+  // Create a Set of loaded plugin IDs for quick lookup
+  const loadedPluginIds = useMemo(() => {
+    return new Set(conductorIntrospection?.mountedPluginIds || []);
+  }, [conductorIntrospection]);
 
   const clamp = (n: number, min = 0, max = 100) => Math.max(min, Math.min(max, n));
   const percent = (num: number, den: number) => (den > 0 ? Math.round((num / den) * 100) : 0);
@@ -495,8 +500,8 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
                     <div className="plugin-header">
                       <h4 className="plugin-name">{plugin.id}</h4>
                       <div className="plugin-actions">
-                        <span className={`plugin-status ${loadedPlugins.has(plugin.id) ? 'status-loaded' : 'status-unloaded'}`}>
-                          {loadedPlugins.has(plugin.id) ? 'Loaded' : 'Unloaded'}
+                        <span className={`plugin-status ${loadedPluginIds.has(plugin.id) ? 'status-loaded' : 'status-unloaded'}`}>
+                          {loadedPluginIds.has(plugin.id) ? 'Loaded' : 'Unloaded'}
                         </span>
                       </div>
                     </div>
