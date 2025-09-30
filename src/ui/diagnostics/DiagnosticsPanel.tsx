@@ -6,6 +6,8 @@ import { getPluginManifestStats } from "@renderx-plugins/host-sdk/core/startup/s
 import { listComponents } from "../../domain/components/inventory/inventory.service";
 import { EventRouter } from "@renderx-plugins/host-sdk";
 import { PluginTreeExplorer } from "../PluginTreeExplorer";
+import { InspectionPanel } from "../inspection/InspectionPanel";
+import "../inspection/inspection.css";
 
 // UI Configuration sub-structures
 interface UIDependency {
@@ -195,7 +197,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   const [performanceMetrics, setPerformanceMetrics] = useState<{[key: string]: number}>({});
   const [manifestsRefreshCounter] = useState(0);
   const [selectedNodePath, setSelectedNodePath] = useState<string | null>(null);
-  const [selectedNodeType, setSelectedNodeType] = useState<'overview' | 'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance'>('overview');
+  const [selectedNodeType, setSelectedNodeType] = useState<'overview' | 'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance' | 'inspection'>('overview');
   const [_selectedNodeData, _setSelectedNodeData] = useState<any>(null);
   const [leftPanelWidth, setLeftPanelWidth] = useState<number>(() => {
     const saved = localStorage.getItem('diagnostics-left-panel-width');
@@ -607,10 +609,24 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       setSelectedNodeType('plugins');
       _setSelectedNodeData(null);
     } else if (nodePath.startsWith('plugin:')) {
-      const pluginId = nodePath.substring(7);
-      const plugin = manifest?.plugins.find(p => p.id === pluginId);
-      setSelectedNodeType('plugins');
-      _setSelectedNodeData(plugin);
+      // Check if it's a plugin sub-node (e.g., plugin:id:info)
+      const parts = nodePath.split(':');
+      if (parts.length === 3) {
+        // Plugin sub-node: plugin:{pluginId}:{nodeType}
+        const pluginId = parts[1];
+        const _nodeType = parts[2]; // Prefix with _ to indicate intentionally unused
+        const plugin = manifest?.plugins.find(p => p.id === pluginId);
+
+        // Use 'inspection' type to trigger InspectionPanel
+        setSelectedNodeType('inspection');
+        _setSelectedNodeData(plugin);
+      } else {
+        // Just plugin node: plugin:{pluginId}
+        const pluginId = nodePath.substring(7);
+        const plugin = manifest?.plugins.find(p => p.id === pluginId);
+        setSelectedNodeType('plugins');
+        _setSelectedNodeData(plugin);
+      }
     } else if (nodePath === 'routes') {
       setSelectedNodeType('routes');
       _setSelectedNodeData(null);
@@ -872,6 +888,17 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
 
             {/* Main Content Panels */}
             <div className="grid">
+          {selectedNodeType === 'inspection' && (
+            <InspectionPanel
+              selectedNode={selectedNodePath}
+              nodeData={_selectedNodeData}
+              onNavigate={(nodeId) => handleTreeNodeSelect(nodeId)}
+              onAction={(action, data) => {
+                console.log('Action:', action, data);
+                addLog('info', `Action: ${action} on ${data.pluginId}`);
+              }}
+            />
+          )}
           {selectedNodeType === 'plugins' && (
             <div className="panel">
               <div className="panel-header">
