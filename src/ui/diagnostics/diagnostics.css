@@ -72,7 +72,6 @@
 
 /* Ensure the inspector container fits within the modal */
 .diagnostics-modal-content .inspector-container {
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -80,6 +79,13 @@
 .diagnostics-modal-content .inspector-content {
   flex: 1;
   overflow: auto;
+}
+
+/* Override control-panel styles within diagnostics modal */
+.diagnostics-modal-content .control-panel {
+  width: 100%;
+  height: auto !important; /* Remove fixed height */
+  max-width: none;
 }
 
 /* Visual indicator badge */
