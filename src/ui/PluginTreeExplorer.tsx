@@ -44,7 +44,7 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
   topicsMap,
   onSelectNode
 }) => {
-  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['plugins', 'routes', 'topics']));
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['plugins', 'routes', 'topics', 'components', 'conductor', 'performance']));
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
@@ -188,6 +188,27 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
             level={1}
           />
         ))}
+
+        {/* Components Section */}
+        <TreeNode
+          nodeId="components"
+          label="Components"
+          hasChildren={false}
+        />
+
+        {/* Conductor Section */}
+        <TreeNode
+          nodeId="conductor"
+          label="Conductor"
+          hasChildren={false}
+        />
+
+        {/* Performance Section */}
+        <TreeNode
+          nodeId="performance"
+          label="Performance"
+          hasChildren={false}
+        />
       </div>
     </div>
   );
