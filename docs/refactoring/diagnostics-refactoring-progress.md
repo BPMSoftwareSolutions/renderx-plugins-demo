@@ -154,6 +154,7 @@ Refactor DiagnosticsPanel.tsx (1290 lines) and PluginTreeExplorer.tsx (1006 line
 | Type duplication | Yes | No | No | ✅ Complete |
 | Test coverage | Low | Low | > 80% | ⏳ Pending |
 | All tests passing | Yes | Yes | Yes | ✅ Complete |
+| PR #298 | - | Merged | - | ✅ Complete |
 
 ## Timeline Estimate
 
