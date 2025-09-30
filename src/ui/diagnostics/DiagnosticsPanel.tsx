@@ -5,6 +5,7 @@ import { getTopicsManifestStats, getTopicsMap } from "@renderx-plugins/host-sdk/
 import { getPluginManifestStats } from "@renderx-plugins/host-sdk/core/startup/startupValidation";
 import { listComponents } from "../../domain/components/inventory/inventory.service";
 import { EventRouter } from "@renderx-plugins/host-sdk";
+import { PluginTreeExplorer } from "../PluginTreeExplorer";
 
 interface PluginInfo {
   id: string;
@@ -83,6 +84,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [performanceMetrics, setPerformanceMetrics] = useState<{[key: string]: number}>({});
   const [manifestsRefreshCounter] = useState(0);
+  const [selectedNodePath, setSelectedNodePath] = useState<string | null>(null);
 
   const addLog = useCallback((level: LogEntry['level'], message: string, data?: any) => {
     const entry: LogEntry = {
@@ -513,32 +515,46 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="control-panel">
-          <div className="button-group">
-            {(['plugins', 'topics', 'routes', 'components', 'conductor', 'performance'] as const).map(tab => (
-              <button
-                key={tab}
-                className={`btn ${selectedTab === tab ? 'btn-primary' : 'btn-secondary'}`}
-                onClick={() => setSelectedTab(tab)}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
-        </div>
+        {/* Three-panel layout */}
+        <div className="layout-three-panel">
+          {/* Left Panel - Plugin Tree Explorer */}
+          <aside className="left-panel">
+            <PluginTreeExplorer
+              plugins={manifest?.plugins || []}
+              routes={interactionStats?.routes || []}
+              topicsMap={topicsMap as any}
+              onSelectNode={setSelectedNodePath}
+            />
+          </aside>
 
-        {/* Search */}
-        <input
-          type="text"
-          className="search-box"
-          placeholder={`Search ${selectedTab}...`}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          {/* Right Panel - Main Content */}
+          <section className="right-panel">
+            {/* Tab Navigation */}
+            <div className="control-panel">
+              <div className="button-group">
+                {(['plugins', 'topics', 'routes', 'components', 'conductor', 'performance'] as const).map(tab => (
+                  <button
+                    key={tab}
+                    className={`btn ${selectedTab === tab ? 'btn-primary' : 'btn-secondary'}`}
+                    onClick={() => setSelectedTab(tab)}
+                  >
+                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        {/* Main Content Panels */}
-        <div className="grid">
+            {/* Search */}
+            <input
+              type="text"
+              className="search-box"
+              placeholder={`Search ${selectedTab}...`}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+
+            {/* Main Content Panels */}
+            <div className="grid">
           {selectedTab === 'plugins' && (
             <div className="panel">
               <div className="panel-header">
@@ -851,29 +867,39 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
           )}
         </div>
 
-        {/* Logs Panel */}
-        <div className="logs-panel">
-          <div className="panel-header">
-            <h3 className="panel-title">System Logs</h3>
-            <span className="panel-badge">{logs.length}</span>
-          </div>
-          <div className="logs-content">
-            {logs.map((log, index) => (
-              <div key={index} className="log-entry">
-                <span className="log-timestamp">[{log.timestamp}]</span>{' '}
-                <span className={`log-level-${log.level}`}>{log.level.toUpperCase()}</span>{' '}
-                {log.message}
-                {log.data && (
-                  <div style={{ marginLeft: '1rem', color: '#569cd6' }}>
-                    {typeof log.data === 'string' ? log.data : JSON.stringify(log.data)}
+            {/* Logs Panel */}
+            <div className="logs-panel">
+              <div className="panel-header">
+                <h3 className="panel-title">System Logs</h3>
+                <span className="panel-badge">{logs.length}</span>
+              </div>
+              <div className="logs-content">
+                {logs.map((log, index) => (
+                  <div key={index} className="log-entry">
+                    <span className="log-timestamp">[{log.timestamp}]</span>{' '}
+                    <span className={`log-level-${log.level}`}>{log.level.toUpperCase()}</span>{' '}
+                    {log.message}
+                    {log.data && (
+                      <div style={{ marginLeft: '1rem', color: '#569cd6' }}>
+                        {typeof log.data === 'string' ? log.data : JSON.stringify(log.data)}
+                      </div>
+                    )}
                   </div>
+                ))}
+                {logs.length === 0 && (
+                  <div style={{ color: 'var(--text-muted)' }}>No logs yet...</div>
                 )}
               </div>
-            ))}
-            {logs.length === 0 && (
-              <div style={{ color: 'var(--text-muted)' }}>No logs yet...</div>
-            )}
-          </div>
+            </div>
+          </section>
+
+          {/* Footer Panel */}
+          <footer className="footer-panel">
+            <div><strong>Selected:</strong> {selectedNodePath || 'None'}</div>
+            <div className="footer-stats">
+              {loadedPluginsCount}/{totalPluginsCount} plugins loaded • {routeCount} routes • {topicCount} topics
+            </div>
+          </footer>
         </div>
       </div>
     </div>
