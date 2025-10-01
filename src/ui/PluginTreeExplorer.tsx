@@ -111,7 +111,7 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
   // │ DO NOT: Add more useState hooks here                            │
   // │ DO: Keep state minimal until Phase 5 extraction                 │
   // └─────────────────────────────────────────────────────────────────┘
-  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['plugins', 'routes', 'topics', 'components', 'conductor', 'performance', 'sequence-player']));
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['plugins', 'routes', 'topics', 'components', 'conductor', 'performance', 'sequence-player', 'log-converter']));
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
@@ -950,6 +950,13 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
         <TreeNode
           nodeId="sequence-player"
           label="Sequence Player"
+          hasChildren={false}
+        />
+
+        {/* Log Converter Section */}
+        <TreeNode
+          nodeId="log-converter"
+          label="Log Converter"
           hasChildren={false}
         />
       </div>

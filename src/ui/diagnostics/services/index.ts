@@ -55,3 +55,10 @@ export {
   exportAsJson
 } from './log-parser.service';
 
+// Log Converter Service
+export {
+  convertLogToJson,
+  loadLogFile,
+  getLogFiles
+} from './log-converter.service';
+
