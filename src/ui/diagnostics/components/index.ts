@@ -27,3 +27,9 @@ export * from './FooterPanel';
 export { DiagnosticsToolbar } from './DiagnosticsToolbar';
 export type { DiagnosticsToolbarProps } from './DiagnosticsToolbar';
 
+// Sequence Player
+export * from './SequencePlayer';
+
+// Log Converter
+export * from './LogConverter';
+
