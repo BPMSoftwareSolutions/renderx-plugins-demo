@@ -9,8 +9,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { InspectionPanel } from '../src/ui/inspection/InspectionPanel';
-import { PluginInfoInspector } from '../src/ui/inspection/PluginInfoInspector';
+import { InspectionPanel } from '../src/ui/diagnostics/components/shared/InspectionPanel';
+import { PluginInfoInspector } from '../src/ui/diagnostics/components/shared/PluginInfoInspector';
 
 describe('InspectionPanel', () => {
   describe('Empty State', () => {
