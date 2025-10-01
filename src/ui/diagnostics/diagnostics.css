@@ -47,6 +47,14 @@
   background: var(--bg-secondary, #252526);
 }
 
+/* Sequence Player Styles */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
 .diagnostics-close-btn {
   background: transparent;
   border: none;

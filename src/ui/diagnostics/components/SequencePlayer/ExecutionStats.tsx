@@ -41,12 +41,7 @@ export const ExecutionStats: React.FC<ExecutionStatsProps> = ({ stats, onExport 
         )}
       </div>
 
-      <div className="stats-grid" style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '1rem',
-        padding: '1rem'
-      }}>
+      <div className="stats-grid">
         <StatCard
           label="Total Movements"
           value={stats.totalMovements}
