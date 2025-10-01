@@ -7,7 +7,7 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { executeSequence, generateRequestId } from '../services';
-import type { LiveExecution, LiveBeat, AvailableSequence } from '../types';
+import type { LiveExecution, AvailableSequence } from '../types';
 
 /**
  * Hook for managing sequence execution

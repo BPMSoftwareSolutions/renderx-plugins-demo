@@ -46,8 +46,6 @@ export const SequencePlayer: React.FC = () => {
 
   // Live Triggering hooks (Issue #306)
   const {
-    sequences,
-    filteredSequences,
     groupedSequences,
     searchQuery,
     setSearchQuery,
@@ -58,21 +56,16 @@ export const SequencePlayer: React.FC = () => {
     pluginIds,
     stats: sequenceStats,
     isLoading: sequencesLoading,
-    error: sequencesError,
-    refresh: refreshSequences
+    error: sequencesError
   } = useSequenceList();
 
   const {
     liveExecution,
     isExecuting,
-    error: executionError,
-    execute,
-    clear: clearExecution,
-    cancel: cancelExecution
+    execute
   } = useSequenceExecution();
 
   const {
-    history,
     filteredHistory,
     filter: historyFilter,
     setFilter: setHistoryFilter,
@@ -80,8 +73,7 @@ export const SequencePlayer: React.FC = () => {
     pluginIds: historyPluginIds,
     addToHistory,
     clearHistory,
-    removeFromHistory,
-    findById
+    removeFromHistory
   } = useExecutionHistory();
 
   // Selected sequence for triggering
@@ -337,9 +329,9 @@ export const SequencePlayer: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="live-trigger-layout">
               {/* Left Column: Sequence List and Trigger */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div className="live-trigger-left">
                 <SequenceList
                   groupedSequences={groupedSequences}
                   searchQuery={searchQuery}
@@ -364,7 +356,7 @@ export const SequencePlayer: React.FC = () => {
               </div>
 
               {/* Right Column: Live Monitor and History */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div className="live-trigger-right">
                 <LiveExecutionMonitor
                   execution={liveExecution}
                   isExecuting={isExecuting}

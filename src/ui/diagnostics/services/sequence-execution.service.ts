@@ -5,8 +5,8 @@
  * Part of Issue #306 - Release 2: Live Sequence Triggering.
  */
 
-import type { AvailableSequence, LiveExecution, LiveBeat } from '../types';
-import { introspectConductor, isSequenceMounted } from './conductor.service';
+import type { AvailableSequence, LiveExecution } from '../types';
+import { introspectConductor } from './conductor.service';
 import { loadPluginManifest, getPluginById } from './manifest.service';
 
 /**
