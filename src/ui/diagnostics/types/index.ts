@@ -63,3 +63,13 @@ export type {
   ExecutionStats
 } from './sequence-player.types';
 
+// Sequence Execution Types (Live Triggering)
+export type {
+  AvailableSequence,
+  LiveBeat,
+  LiveExecution,
+  ExecutionHistoryItem,
+  HistoryFilter,
+  HistoryStats
+} from './sequence-execution.types';
+

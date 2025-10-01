@@ -62,3 +62,15 @@ export {
   getLogFiles
 } from './log-converter.service';
 
+// Sequence Execution Service
+export {
+  getConductor,
+  isConductorAvailable,
+  getAvailableSequences,
+  executeSequence,
+  generateRequestId,
+  validateParameters,
+  convertToHistoryItem,
+  getSequenceMetadata
+} from './sequence-execution.service';
+
