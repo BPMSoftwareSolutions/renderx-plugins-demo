@@ -897,10 +897,10 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
         <TreeNode
           nodeId="routes"
           label="Routes"
-          hasChildren={true}
+          hasChildren={filteredRoutes.length > 0}
           badge={`${filteredRoutes.length}`}
         />
-        {isExpanded('routes') && filteredRoutes.map((route, idx) => (
+        {isExpanded('routes') && filteredRoutes.length > 0 && filteredRoutes.map((route, idx) => (
           <TreeNode
             key={`route-${idx}`}
             nodeId={`route:${route.route}`}

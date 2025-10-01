@@ -20,16 +20,28 @@ import type { ComponentDetail } from '../types';
  */
 export async function loadInteractionManifestData(): Promise<any> {
   try {
+    // Load the manifest directly to get all routes
+    const response = await fetch('/interaction-manifest.json');
+    let manifest = null;
+    if (response.ok) {
+      manifest = await response.json();
+    }
     const stats = getInteractionManifestStats();
-    
-    // Try to get detailed interaction data
+
+    // Build routes array from manifest
+    let routesArray: any[] = [];
+    if (manifest && manifest.routes) {
+      routesArray = Object.entries(manifest.routes).map(([route, def]: [string, any]) => ({
+        route,
+        pluginId: def.pluginId,
+        sequenceId: def.sequenceId
+      }));
+    }
+
+    // Try to get detailed interaction data (legacy, can be removed if not needed)
     const detailedInteractions: any[] = [];
     if (stats.totalInteractions > 0) {
-      // Attempt to resolve each interaction to get details
-      // This is a best-effort approach since we don't have a direct API
-      // to list all interactions
       try {
-        // Get a sample of interactions if available
         const sampleInteractionIds = ['component.create', 'component.select', 'component.update'];
         for (const id of sampleInteractionIds) {
           try {
@@ -51,6 +63,7 @@ export async function loadInteractionManifestData(): Promise<any> {
 
     return {
       ...stats,
+      routes: routesArray,
       interactions: detailedInteractions
     };
   } catch (error) {
