@@ -179,6 +179,29 @@ function processLogLine(line: LogLine, executions: Map<string, SequenceContext>,
     return;
   }
 
+  // Match: DataBaton with preview
+  const dataBatonMatch = content.match(/🎽 DataBaton:.*preview=(\{.+\})$/);
+  if (dataBatonMatch) {
+    try {
+      const previewJson = dataBatonMatch[1];
+      const dataBaton = JSON.parse(previewJson);
+      const lastExecution = getLastExecution(executions);
+      if (lastExecution && lastExecution.currentMovement) {
+        const movement = lastExecution.movements.get(lastExecution.currentMovement);
+        if (movement && movement.beats.length > 0) {
+          // Attach data baton to the most recent beat
+          const lastBeat = movement.beats[movement.beats.length - 1];
+          if (!lastBeat.dataBaton) {
+            lastBeat.dataBaton = dataBaton;
+          }
+        }
+      }
+    } catch (error) {
+      // Ignore JSON parse errors
+    }
+    return;
+  }
+
   // Match: Movement completed
   const movementCompletedMatch = content.match(/Movement completed in ([\d.]+)ms/);
   if (movementCompletedMatch) {

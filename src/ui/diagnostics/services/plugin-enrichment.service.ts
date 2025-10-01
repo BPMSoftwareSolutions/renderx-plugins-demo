@@ -10,15 +10,41 @@
 import type { PluginInfo, RuntimeSequence, RuntimeHandler } from '../types';
 
 /**
+ * Maps plugin IDs to their sequence catalog directory names
+ * This handles legacy naming conventions where plugin IDs don't match directory names
+ *
+ * @param pluginId - The plugin ID from the manifest
+ * @returns The directory name for the plugin's sequence catalog
+ */
+function mapPluginIdToCatalogDir(pluginId: string): string {
+  // Legacy mappings from plugin IDs to catalog directory names
+  const mappings: Record<string, string> = {
+    'CanvasComponentPlugin': 'canvas-component',
+    'LibraryPlugin': 'library',
+    'LibraryComponentPlugin': 'library-component',
+    'ControlPanelPlugin': 'control-panel',
+    'HeaderTitlePlugin': 'header',
+    'HeaderControlsPlugin': 'header',
+    'HeaderThemePlugin': 'header',
+    'CanvasPlugin': 'canvas',
+  };
+
+  return mappings[pluginId] || pluginId;
+}
+
+/**
  * Loads sequence data for a plugin from JSON catalogs
- * 
+ *
  * @param pluginId - The ID of the plugin to load sequences for
  * @returns Promise resolving to array of runtime sequences
  */
 export async function loadPluginSequences(pluginId: string): Promise<RuntimeSequence[]> {
   try {
+    // Map plugin ID to catalog directory name
+    const catalogDir = mapPluginIdToCatalogDir(pluginId);
+
     // Try to load the index.json catalog for this plugin
-    const catalogResponse = await fetch(`/json-sequences/${pluginId}/index.json`);
+    const catalogResponse = await fetch(`/json-sequences/${catalogDir}/index.json`);
     if (!catalogResponse.ok) {
       return [];
     }
@@ -31,7 +57,7 @@ export async function loadPluginSequences(pluginId: string): Promise<RuntimeSequ
       for (const seqEntry of catalog.sequences) {
         try {
           const seqFile = seqEntry.file || seqEntry;
-          const seqResponse = await fetch(`/json-sequences/${pluginId}/${seqFile}`);
+          const seqResponse = await fetch(`/json-sequences/${catalogDir}/${seqFile}`);
           if (seqResponse.ok) {
             const seqData = await seqResponse.json();
 

@@ -15,4 +15,7 @@ export { usePerformanceMetrics } from './usePerformanceMetrics';
 export { usePluginLoadingStats } from './usePluginLoadingStats';
 export { useDiagnosticsLogs } from './useDiagnosticsLogs';
 export { useLogParser } from './useLogParser';
+export { useSequenceList } from './useSequenceList';
+export { useSequenceExecution } from './useSequenceExecution';
+export { useExecutionHistory } from './useExecutionHistory';
 
