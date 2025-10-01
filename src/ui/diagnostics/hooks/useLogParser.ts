@@ -88,7 +88,7 @@ export function useLogParser() {
             setAutoConverted(true);
             return;
           }
-        } catch (conversionError) {
+        } catch {
           // Conversion also failed, show original error
         }
 

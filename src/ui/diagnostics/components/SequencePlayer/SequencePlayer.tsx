@@ -110,7 +110,7 @@ export const SequencePlayer: React.FC = () => {
             <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem', color: '#1976d2' }}>
               📊 Aggregate Stats (All Sequences)
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', fontSize: '0.9rem' }}>
+            <div className="aggregate-stats-grid">
               <div>
                 <strong>Total Sequences:</strong> {aggregateStats.totalSequences}
               </div>
