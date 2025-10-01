@@ -1,3 +1,28 @@
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  🚧 REFACTORING IN PROGRESS - Issue #297                                 ║
+// ║  Strategy: docs/refactoring/diagnostics-modularity-strategy.md           ║
+// ║  Status: Phase 4 Complete ✅ | Phase 5 Pending ⏳                         ║
+// ║                                                                          ║
+// ║  ⚠️  FOR AI AGENTS: This file is being modularized                       ║
+// ║                                                                          ║
+// ║  DO NOT:                                                                 ║
+// ║    • Add new inline types (use src/ui/diagnostics/types/)               ║
+// ║    • Add data fetching logic here (use services/)                       ║
+// ║    • Add new useState hooks (use existing custom hooks from hooks/)     ║
+// ║    • Add complex nested components (extract to components/)             ║
+// ║                                                                          ║
+// ║  DO:                                                                     ║
+// ║    • Import types from src/ui/diagnostics/types/                        ║
+// ║    • Use existing services from src/ui/diagnostics/services/            ║
+// ║    • Use existing hooks from src/ui/diagnostics/hooks/                  ║
+// ║    • Use existing components from src/ui/diagnostics/components/        ║
+// ║    • Keep changes minimal and follow existing patterns                  ║
+// ║    • Read src/ui/diagnostics/REFACTORING.md for full guidance           ║
+// ║                                                                          ║
+// ║  Current: 383 lines → Target: <200 lines                                ║
+// ║  Next Phase: Tree explorer modularization (Phase 5)                     ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
 import * as React from "react";
 import { useState, useCallback, useMemo } from "react";
 import { resolveInteraction } from "@renderx-plugins/host-sdk/core/manifests/interactionManifest";
@@ -30,8 +55,47 @@ interface DiagnosticsPanelProps {
   conductor: any;
 }
 
+/**
+ * DiagnosticsPanel - Main diagnostics interface for RenderX plugin system
+ *
+ * @refactoring-status phase-4-complete
+ * @refactoring-issue #297
+ * @refactoring-current-phase 4
+ * @refactoring-next-phase 5-tree-explorer-modularization
+ * @refactoring-target <200 lines (currently 383)
+ *
+ * @ai-guidance
+ * This component is under active refactoring per diagnostics-modularity-strategy.md
+ *
+ * **Phase Status:**
+ * - ✅ Phase 1: Types centralized in src/ui/diagnostics/types/
+ * - ✅ Phase 2: Services extracted to src/ui/diagnostics/services/
+ * - ✅ Phase 3: Custom hooks extracted to src/ui/diagnostics/hooks/
+ * - ✅ Phase 4: Components extracted to src/ui/diagnostics/components/
+ * - ⏳ Phase 5: Tree explorer modularization (pending)
+ * - ⏳ Phase 6: Testing & documentation (pending)
+ *
+ * **When modifying this file:**
+ * - Import types from src/ui/diagnostics/types/
+ * - Use services from src/ui/diagnostics/services/
+ * - Use hooks from src/ui/diagnostics/hooks/
+ * - Use components from src/ui/diagnostics/components/
+ * - DO NOT add inline types or data fetching logic
+ * - DO NOT add new useState hooks (use existing custom hooks)
+ * - DO NOT add complex nested components (extract to components/)
+ * - Read src/ui/diagnostics/REFACTORING.md for detailed guidance
+ *
+ * @see docs/refactoring/diagnostics-modularity-strategy.md
+ * @see docs/refactoring/PROGRESS-SUMMARY.md
+ * @see src/ui/diagnostics/REFACTORING.md
+ */
 export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor }) => {
-  // Use custom hooks for state management
+  // ┌─────────────────────────────────────────────────────────────────┐
+  // │ 🚧 REFACTORING ZONE: Custom Hooks Usage                         │
+  // │ Phase 3 Complete: Using custom hooks for state management       │
+  // │ DO: Continue using these hooks for all state needs              │
+  // │ DO NOT: Add new useState hooks - extend existing hooks instead  │
+  // └─────────────────────────────────────────────────────────────────┘
   const { logs, addLog, clearLogs } = useDiagnosticsLogs();
   const {
     manifest,
@@ -40,7 +104,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     pluginStats,
     components,
     loading,
-    error,
+    error: _error,
     refresh: refreshData
   } = useDiagnosticsData(conductor, addLog);
   const { introspection: conductorIntrospection, refresh: refreshConductor } = useConductorIntrospection(conductor);
@@ -56,7 +120,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     refreshConductor();
   }, [refreshData, refreshConductor]);
 
-  // UI state
+  // ┌─────────────────────────────────────────────────────────────────┐
+  // │ 🚧 REFACTORING ZONE: UI State                                   │
+  // │ Target: Extract to useUIState() hook or similar                 │
+  // │ DO NOT: Add more useState hooks here                            │
+  // │ DO: Keep UI state minimal, consider extraction in future        │
+  // └─────────────────────────────────────────────────────────────────┘
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [manifestsRefreshCounter] = useState(0);
@@ -75,6 +144,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
     }
   }, [manifest, updateLoadingStats]);
 
+  // ┌─────────────────────────────────────────────────────────────────┐
+  // │ 🚧 REFACTORING ZONE: Event Handlers                             │
+  // │ Target: Consider extracting to custom hook or service           │
+  // │ DO: Keep handlers focused and minimal                           │
+  // │ DO NOT: Add complex business logic here                         │
+  // └─────────────────────────────────────────────────────────────────┘
   const testInteraction = async (route: string) => {
     if (!conductor) return;
 
@@ -236,14 +311,6 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       plugin.ui?.module?.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [manifest, searchTerm]);
-  
-  const filteredTopics = useMemo(() => {
-    const topics = Object.entries(topicsMap);
-    if (!searchTerm) return topics;
-    return topics.filter(([topic]) =>
-      topic.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [topicsMap, searchTerm]);
 
   // Derived metrics for enhanced stats dashboard
   // Total plugins from manifest
@@ -267,6 +334,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
 
   return (
     <div className="inspector-container">
+      {/* ┌─────────────────────────────────────────────────────────────────┐
+          │ 🚧 REFACTORING ZONE: Header Section                             │
+          │ Phase 4 Complete: Could be extracted to DiagnosticsHeader       │
+          │ DO: Keep header simple and presentational                       │
+          │ DO NOT: Add complex logic to header                             │
+          └─────────────────────────────────────────────────────────────────┘ */}
       <div className="inspector-header">
         <h1 className="inspector-title">RenderX Diagnostics Panel</h1>
         <p className="inspector-subtitle">
@@ -275,7 +348,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       </div>
 
       <div className="inspector-content">
-        {/* Toolbar */}
+        {/* ┌─────────────────────────────────────────────────────────────────┐
+            │ 🚧 REFACTORING ZONE: Toolbar Component                          │
+            │ Phase 4 Complete: Using DiagnosticsToolbar component            │
+            │ DO: Use this component for toolbar actions                      │
+            │ DO NOT: Add inline toolbar UI here                              │
+            └─────────────────────────────────────────────────────────────────┘ */}
         <DiagnosticsToolbar
           loading={loading}
           onRefresh={updateStats}
@@ -283,7 +361,12 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
           onClearLogs={clearLogs}
         />
 
-        {/* Plugin Statistics */}
+        {/* ┌─────────────────────────────────────────────────────────────────┐
+            │ 🚧 REFACTORING ZONE: Stats Overview Component                   │
+            │ Phase 4 Complete: Using StatsOverview component                 │
+            │ DO: Use this component for statistics display                   │
+            │ DO NOT: Add inline stats UI here                                │
+            └─────────────────────────────────────────────────────────────────┘ */}
         <StatsOverview
           loadedPluginsCount={loadedPluginsCount}
           totalPluginsCount={totalPluginsCount}

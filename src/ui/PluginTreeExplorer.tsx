@@ -1,3 +1,26 @@
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  🚧 REFACTORING IN PROGRESS - Issue #297                                 ║
+// ║  Strategy: docs/refactoring/diagnostics-modularity-strategy.md           ║
+// ║  Status: Phase 4 Complete ✅ | Phase 5 Pending ⏳                         ║
+// ║                                                                          ║
+// ║  ⚠️  FOR AI AGENTS: This file will be modularized in Phase 5             ║
+// ║                                                                          ║
+// ║  DO NOT:                                                                 ║
+// ║    • Add new inline types (use src/ui/diagnostics/types/)               ║
+// ║    • Add complex tree logic here (Phase 5 will extract components)      ║
+// ║    • Add new node types without planning extraction                     ║
+// ║    • Break up components yet (Phase 5 will handle decomposition)        ║
+// ║                                                                          ║
+// ║  DO:                                                                     ║
+// ║    • Import types from src/ui/diagnostics/types/                        ║
+// ║    • Keep changes minimal and follow existing patterns                  ║
+// ║    • Read src/ui/diagnostics/REFACTORING.md for full guidance           ║
+// ║                                                                          ║
+// ║  Current: 810 lines → Target: <200 lines                                ║
+// ║  Next Phase: Extract to src/ui/diagnostics/tree/ (Phase 5)              ║
+// ║  Planned Components: TreeNode, TreeSearch, TreeFilters, nodes/*         ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
 import React, { useState, useMemo } from 'react';
 import {
   Package,
@@ -40,17 +63,64 @@ interface PluginTreeExplorerProps {
   onSelectNode: (nodePath: string | null) => void;
 }
 
+/**
+ * PluginTreeExplorer - Hierarchical tree view for plugin system navigation
+ *
+ * @refactoring-status phase-4-complete
+ * @refactoring-issue #297
+ * @refactoring-current-phase 4
+ * @refactoring-next-phase 5-tree-explorer-modularization
+ * @refactoring-target <200 lines (currently 810)
+ *
+ * @ai-guidance
+ * This component will be modularized in Phase 5 per diagnostics-modularity-strategy.md
+ *
+ * **Phase Status:**
+ * - ✅ Phase 1-4: DiagnosticsPanel refactoring complete
+ * - ⏳ Phase 5: THIS component will be extracted to src/ui/diagnostics/tree/
+ * - ⏳ Phase 6: Testing & documentation (pending)
+ *
+ * **Phase 5 Planned Structure:**
+ * - tree/PluginTreeExplorer.tsx (orchestrator, <200 lines)
+ * - tree/TreeNode.tsx
+ * - tree/TreeSearch.tsx
+ * - tree/TreeFilters.tsx
+ * - tree/nodes/ (PluginNode, TopicNode, RouteNode, SequenceNode, ComponentNode)
+ *
+ * **When modifying this file:**
+ * - Import types from src/ui/diagnostics/types/
+ * - DO NOT add complex tree logic here
+ * - DO NOT add new node types without planning extraction
+ * - DO NOT break up components yet (Phase 5 will handle decomposition)
+ * - Keep changes minimal and follow existing patterns
+ * - Read src/ui/diagnostics/REFACTORING.md for detailed guidance
+ *
+ * @see docs/refactoring/diagnostics-modularity-strategy.md
+ * @see docs/refactoring/PROGRESS-SUMMARY.md
+ * @see src/ui/diagnostics/REFACTORING.md
+ */
 export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
   plugins,
   routes,
   topicsMap,
   onSelectNode
 }) => {
+  // ┌─────────────────────────────────────────────────────────────────┐
+  // │ 🚧 REFACTORING ZONE: State Management                           │
+  // │ Phase 5 Target: Extract to useTreeState() hook                  │
+  // │ DO NOT: Add more useState hooks here                            │
+  // │ DO: Keep state minimal until Phase 5 extraction                 │
+  // └─────────────────────────────────────────────────────────────────┘
   const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set(['plugins', 'routes', 'topics', 'components', 'conductor', 'performance']));
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
-  // Helper functions to check node availability
+  // ┌─────────────────────────────────────────────────────────────────┐
+  // │ 🚧 REFACTORING ZONE: Helper Functions                           │
+  // │ Phase 5 Target: Extract to tree/utils/ or tree/helpers/         │
+  // │ DO NOT: Add complex logic here                                  │
+  // │ DO: Keep helpers pure and testable                              │
+  // └─────────────────────────────────────────────────────────────────┘
   const hasPluginInfo = (_plugin: PluginInfo) => true; // Always show plugin info
   const hasUiConfig = (plugin: PluginInfo) => !!plugin.ui;
   const hasRuntime = (plugin: PluginInfo) => !!plugin.runtime;
@@ -126,6 +196,12 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
     );
   }, [topicsMap, searchTerm]);
 
+  // ┌─────────────────────────────────────────────────────────────────┐
+  // │ 🚧 REFACTORING ZONE: TreeNode Component                         │
+  // │ Phase 5 Target: Extract to tree/TreeNode.tsx                    │
+  // │ DO NOT: Add complex rendering logic here                        │
+  // │ DO: Keep component simple until Phase 5 extraction              │
+  // └─────────────────────────────────────────────────────────────────┘
   const TreeNode: React.FC<{
     nodeId: string;
     label: string;
@@ -166,6 +242,12 @@ export const PluginTreeExplorer: React.FC<PluginTreeExplorerProps> = ({
 
   return (
     <div className="plugin-tree-explorer">
+      {/* ┌─────────────────────────────────────────────────────────────────┐
+          │ 🚧 REFACTORING ZONE: Tree Header & Search                       │
+          │ Phase 5 Target: Extract to tree/TreeSearch.tsx                  │
+          │ DO NOT: Add complex search logic here                           │
+          │ DO: Keep search simple until Phase 5 extraction                 │
+          └─────────────────────────────────────────────────────────────────┘ */}
       <div className="tree-header">
         <h3 className="tree-title">Plugin Explorer</h3>
         <input
