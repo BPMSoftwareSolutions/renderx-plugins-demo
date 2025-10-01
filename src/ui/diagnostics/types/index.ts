@@ -53,3 +53,13 @@ export type {
   LogEntry
 } from './log.types';
 
+// Sequence Player Types
+export type {
+  Beat,
+  Movement,
+  ParsedExecution,
+  LogInput,
+  ParseResult,
+  ExecutionStats
+} from './sequence-player.types';
+

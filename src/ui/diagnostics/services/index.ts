@@ -48,3 +48,10 @@ export {
   calculateSuccessRate
 } from './stats.service';
 
+// Log Parser Service
+export {
+  parseLog,
+  calculateExecutionStats,
+  exportAsJson
+} from './log-parser.service';
+

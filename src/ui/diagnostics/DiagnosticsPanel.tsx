@@ -39,7 +39,8 @@ import {
   ConductorPanel,
   PerformancePanel,
   LogsPanel,
-  FooterPanel
+  FooterPanel,
+  SequencePlayer
 } from "./components";
 import "./components/shared/inspection.css";
 import {
@@ -130,7 +131,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [manifestsRefreshCounter] = useState(0);
   const [selectedNodePath, setSelectedNodePath] = useState<string | null>(null);
-  const [selectedNodeType, setSelectedNodeType] = useState<'overview' | 'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance' | 'inspection'>('overview');
+  const [selectedNodeType, setSelectedNodeType] = useState<'overview' | 'plugins' | 'topics' | 'routes' | 'components' | 'conductor' | 'performance' | 'inspection' | 'sequence-player'>('overview');
   const [_selectedNodeData, _setSelectedNodeData] = useState<any>(null);
   const [leftPanelWidth, setLeftPanelWidth] = useState<number>(() => {
     const saved = localStorage.getItem('diagnostics-left-panel-width');
@@ -295,6 +296,9 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
       _setSelectedNodeData(null);
     } else if (nodePath === 'performance') {
       setSelectedNodeType('performance');
+      _setSelectedNodeData(null);
+    } else if (nodePath === 'sequence-player') {
+      setSelectedNodeType('sequence-player');
       _setSelectedNodeData(null);
     } else {
       setSelectedNodeType('overview');
@@ -487,6 +491,10 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
               topicsStatsLoaded={!!topicsStats?.loaded}
               logs={logs}
             />
+          )}
+
+          {selectedNodeType === 'sequence-player' && (
+            <SequencePlayer />
           )}
         </div>
 
