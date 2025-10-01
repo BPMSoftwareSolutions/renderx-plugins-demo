@@ -8,6 +8,7 @@
 import type { AvailableSequence, LiveExecution } from '../types';
 import { introspectConductor } from './conductor.service';
 import { loadPluginManifest, getPluginById } from './manifest.service';
+import { loadPluginSequences } from './plugin-enrichment.service';
 
 /**
  * Gets the conductor instance from the global window object
@@ -34,14 +35,14 @@ export function isConductorAvailable(): boolean {
 
 /**
  * Gets all available sequences from the conductor and manifest
- * 
+ *
  * @returns Promise resolving to array of available sequences
  */
 export async function getAvailableSequences(): Promise<AvailableSequence[]> {
   try {
     const conductor = getConductor();
     const manifest = await loadPluginManifest();
-    
+
     if (!manifest) {
       console.warn('Failed to load manifest, returning empty sequence list');
       return [];
@@ -52,12 +53,13 @@ export async function getAvailableSequences(): Promise<AvailableSequence[]> {
 
     // Iterate through all plugins in the manifest
     for (const plugin of manifest.plugins) {
-      const runtimeSequences = plugin.runtime?.sequences || [];
-      
+      // Load sequences from JSON catalog files
+      const runtimeSequences = await loadPluginSequences(plugin.id);
+
       for (const sequence of runtimeSequences) {
         const sequenceId = sequence.id;
         const isMounted = introspection.runtimeMountedSeqIds.includes(sequenceId);
-        
+
         sequences.push({
           sequenceId,
           sequenceName: sequence.name || sequenceId,
@@ -185,7 +187,7 @@ export function convertToHistoryItem(
 
 /**
  * Gets sequence metadata from the manifest
- * 
+ *
  * @param pluginId - The ID of the plugin
  * @param sequenceId - The ID of the sequence
  * @returns Promise resolving to sequence metadata or null
@@ -201,7 +203,9 @@ export async function getSequenceMetadata(
     const plugin = getPluginById(manifest, pluginId);
     if (!plugin) return null;
 
-    const sequence = plugin.runtime?.sequences?.find(s => s.id === sequenceId);
+    // Load sequences from JSON catalog files
+    const sequences = await loadPluginSequences(pluginId);
+    const sequence = sequences.find(s => s.id === sequenceId);
     if (!sequence) return null;
 
     return {
