@@ -19,6 +19,58 @@ Check out these supporting projects for more detail on the underlying architectu
 - **renderx-plugins** — core utilities, base interfaces, and manifest schema for RenderX-compatible plugins:
   https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md
 
+## 🚧 Active Refactoring Zones
+
+Some parts of the codebase are under active refactoring for improved modularity, scalability, and maintainability. These zones have special markers and guidance for contributors.
+
+### Diagnostics Module (Issue #297)
+
+**Status**: Phase 4 Complete ✅ | Phases 5-6 Pending ⏳
+
+**Files Under Refactoring**:
+- `src/ui/diagnostics/DiagnosticsPanel.tsx` (383 lines → target: <200 lines)
+- `src/ui/PluginTreeExplorer.tsx` (810 lines → target: <200 lines)
+
+**What's Complete**:
+- ✅ Phase 1: Type system centralized in `src/ui/diagnostics/types/`
+- ✅ Phase 2: Business logic extracted to `src/ui/diagnostics/services/`
+- ✅ Phase 3: Custom hooks extracted to `src/ui/diagnostics/hooks/`
+- ✅ Phase 4: Components extracted to `src/ui/diagnostics/components/`
+
+**What's Coming**:
+- ⏳ Phase 5: Tree explorer modularization (extract to `src/ui/diagnostics/tree/`)
+- ⏳ Phase 6: Testing & documentation
+
+**For Contributors & AI Agents**:
+
+When working in these refactoring zones:
+
+1. **Read First**: `src/ui/diagnostics/REFACTORING.md` - Contains detailed guidance
+2. **Use Existing Structure**:
+   - ✅ Import types from `src/ui/diagnostics/types/`
+   - ✅ Use services from `src/ui/diagnostics/services/`
+   - ✅ Use hooks from `src/ui/diagnostics/hooks/`
+   - ✅ Use components from `src/ui/diagnostics/components/`
+3. **Avoid Anti-Patterns**:
+   - ❌ Don't add inline type definitions
+   - ❌ Don't add data fetching logic to components
+   - ❌ Don't add new useState hooks (use existing custom hooks)
+   - ❌ Don't add complex nested components (extract to components/)
+   - ❌ Don't modify tree structure yet (Phase 5 will handle tree refactoring)
+
+**Reference Documents**:
+- [Refactoring Strategy](docs/refactoring/diagnostics-modularity-strategy.md)
+- [Progress Summary](docs/refactoring/PROGRESS-SUMMARY.md)
+- [Before & After Comparison](docs/refactoring/diagnostics-before-after.md)
+- [Module-Specific Guidance](src/ui/diagnostics/REFACTORING.md)
+
+**Related Issues**:
+- [#297 - Refactor Diagnostics Panel](https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/issues/297)
+- [#302 - Add Refactoring Zone Markers](https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/issues/302)
+- [#283 - Deep Hierarchical Navigation](https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/issues/283)
+
+---
+
 ## Getting Started
 
 1. Clone this repository:
