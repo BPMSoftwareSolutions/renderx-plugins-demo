@@ -12,4 +12,6 @@ export { ExecutionStats } from './ExecutionStats';
 export { SequenceList } from './SequenceList';
 export { ParameterEditor } from './ParameterEditor';
 export { SequenceTrigger } from './SequenceTrigger';
+export { LiveExecutionMonitor } from './LiveExecutionMonitor';
+export { ExecutionHistory } from './ExecutionHistory';
 
