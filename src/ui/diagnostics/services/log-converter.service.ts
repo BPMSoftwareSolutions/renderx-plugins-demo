@@ -52,9 +52,16 @@ export function convertLogToJson(logContent: string): ParsedExecution[] {
   })).filter(line => line.content.length > 0);
 
   const executions: Map<string, SequenceContext> = new Map();
-  
+  let lastPluginId: string | null = null;
+
   for (const line of lines) {
-    processLogLine(line, executions);
+    processLogLine(line, executions, lastPluginId);
+
+    // Track plugin ID for next execution
+    const pluginMatch = line.content.match(/PluginInterfaceFacade\.play\(\):\s*(\w+)\s*->/);
+    if (pluginMatch) {
+      lastPluginId = pluginMatch[1];
+    }
   }
 
   // Convert to ParsedExecution array
@@ -64,7 +71,7 @@ export function convertLogToJson(logContent: string): ParsedExecution[] {
 /**
  * Process a single log line and update execution contexts
  */
-function processLogLine(line: LogLine, executions: Map<string, SequenceContext>): void {
+function processLogLine(line: LogLine, executions: Map<string, SequenceContext>, lastPluginId: string | null): void {
   const content = line.content;
 
   // Match: Recording sequence execution
@@ -75,7 +82,7 @@ function processLogLine(line: LogLine, executions: Map<string, SequenceContext>)
       executionId,
       sequenceId: '',
       sequenceName: '',
-      pluginId: '',
+      pluginId: lastPluginId || '',
       requestId: '',
       movements: new Map()
     });
