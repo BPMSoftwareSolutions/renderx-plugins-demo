@@ -39,14 +39,25 @@ export function parseLog(input: LogInput): ParseResult {
 
 /**
  * Parses JSON-formatted log content
- * 
+ *
  * @param content - JSON string containing execution data
  * @returns Parse result with execution data or error
  */
 function parseJsonLog(content: string): ParseResult {
   try {
-    const data = JSON.parse(content);
-    
+    let data = JSON.parse(content);
+
+    // If data is an array, use the first execution
+    if (Array.isArray(data)) {
+      if (data.length === 0) {
+        return {
+          success: false,
+          error: 'Empty execution array'
+        };
+      }
+      data = data[0]; // Use first execution
+    }
+
     // Validate required fields
     if (!data.sequenceId || !data.pluginId || !data.requestId) {
       return {

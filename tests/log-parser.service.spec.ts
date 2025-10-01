@@ -317,10 +317,70 @@ describe('Log Parser Service', () => {
 
       expect(json).toBeDefined();
       expect(() => JSON.parse(json)).not.toThrow();
-      
+
       const parsed = JSON.parse(json);
       expect(parsed.sequenceId).toBe('test');
       expect(parsed.pluginId).toBe('TestPlugin');
+    });
+  });
+
+  describe('JSON Array Format Support', () => {
+    it('should handle JSON array format (from log converter)', () => {
+      const arrayJson = JSON.stringify([
+        {
+          sequenceId: 'test-seq-1',
+          sequenceName: 'Test Sequence 1',
+          pluginId: 'TestPlugin',
+          requestId: 'req-123',
+          movements: [
+            {
+              name: 'Movement 1',
+              beats: [
+                {
+                  number: 1,
+                  event: 'test.event',
+                  duration: 5,
+                  status: 'success'
+                }
+              ],
+              duration: 5,
+              status: 'success'
+            }
+          ],
+          totalDuration: 5,
+          status: 'success'
+        },
+        {
+          sequenceId: 'test-seq-2',
+          sequenceName: 'Test Sequence 2',
+          pluginId: 'TestPlugin2',
+          requestId: 'req-456',
+          movements: [],
+          totalDuration: 0,
+          status: 'success'
+        }
+      ]);
+
+      const result = parseLog({
+        content: arrayJson,
+        format: 'json'
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.execution).toBeDefined();
+      // Should use the first execution in the array
+      expect(result.execution?.sequenceId).toBe('test-seq-1');
+      expect(result.execution?.sequenceName).toBe('Test Sequence 1');
+    });
+
+    it('should handle empty JSON array', () => {
+      const result = parseLog({
+        content: '[]',
+        format: 'json'
+      });
+
+      expect(result.success).toBe(false);
+      expect(result.error).toBe('Empty execution array');
     });
   });
 });
