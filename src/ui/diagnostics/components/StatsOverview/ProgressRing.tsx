@@ -13,10 +13,10 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({ percentage, color = 
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <svg height={radius * 2} width={radius * 2} className={`progress-ring-svg color-${color}`}>
+    <svg height={radius * 2} width={radius * 2} className={`ring ring-${color}`}>
       <circle
-        className="ring-background"
-        stroke="currentColor"
+        className="ring-track"
+        stroke="var(--border-color)"
         fill="transparent"
         strokeWidth={stroke}
         r={normalizedRadius}
@@ -30,18 +30,12 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({ percentage, color = 
         strokeWidth={stroke}
         strokeLinecap="round"
         strokeDasharray={`${circumference} ${circumference}`}
-        strokeDashoffset={strokeDashoffset}
+        style={{ strokeDashoffset }}
         r={normalizedRadius}
         cx={radius}
         cy={radius}
       />
-      <text
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dy=".3em"
-        className="progress-text"
-      >
+      <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" className="ring-label">
         {percentage}%
       </text>
     </svg>
