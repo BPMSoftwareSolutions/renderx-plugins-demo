@@ -13,7 +13,7 @@ import { SequenceTimeline } from './SequenceTimeline';
 import { ExecutionStats } from './ExecutionStats';
 
 export const SequencePlayer: React.FC = () => {
-  const { execution, stats, error, isLoading, parse, clear, exportJson } = useLogParser();
+  const { execution, stats, error, isLoading, autoConverted, parse, clear, exportJson } = useLogParser();
 
   const handleExport = () => {
     const json = exportJson();
@@ -39,19 +39,39 @@ export const SequencePlayer: React.FC = () => {
       height: '100%',
       overflow: 'auto'
     }}>
-      <LogParser 
-        onParse={parse} 
-        isLoading={isLoading} 
-        error={error} 
+      <LogParser
+        onParse={parse}
+        isLoading={isLoading}
+        error={error}
       />
+
+      {autoConverted && (
+        <div style={{
+          padding: '0.75rem 1rem',
+          backgroundColor: '#e8f5e9',
+          border: '1px solid #4caf50',
+          borderRadius: '4px',
+          color: '#2e7d32',
+          fontSize: '0.9rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem'
+        }}>
+          <span style={{ fontSize: '1.2rem' }}>✨</span>
+          <span>
+            <strong>Auto-converted from console log format!</strong>
+            {' '}Your console logs were automatically detected and converted to JSON.
+          </span>
+        </div>
+      )}
 
       {execution && stats && (
         <>
-          <ExecutionStats 
-            stats={stats} 
+          <ExecutionStats
+            stats={stats}
             onExport={handleExport}
           />
-          
+
           <SequenceTimeline execution={execution} />
 
           <div style={{ padding: '1rem', textAlign: 'center' }}>

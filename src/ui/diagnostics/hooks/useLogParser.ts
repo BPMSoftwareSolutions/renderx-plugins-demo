@@ -8,7 +8,7 @@
  */
 
 import { useState, useCallback } from 'react';
-import { parseLog, calculateExecutionStats, exportAsJson } from '../services';
+import { parseLog, calculateExecutionStats, exportAsJson, convertLogToJson } from '../services';
 import type { ParsedExecution, LogInput, ExecutionStats } from '../types';
 
 /**
@@ -21,15 +21,18 @@ export function useLogParser() {
   const [stats, setStats] = useState<ExecutionStats | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [autoConverted, setAutoConverted] = useState(false);
 
   /**
    * Parses log input and updates state
-   * 
+   * Automatically detects and converts console log format if needed
+   *
    * @param input - Log input containing content and format
    */
   const parse = useCallback((input: LogInput) => {
     setIsLoading(true);
     setError(null);
+    setAutoConverted(false);
 
     try {
       const result = parseLog(input);
@@ -39,6 +42,21 @@ export function useLogParser() {
         setStats(calculateExecutionStats(result.execution));
         setError(null);
       } else {
+        // If parsing failed, try auto-converting from console log format
+        try {
+          const executions = convertLogToJson(input.content);
+          if (executions.length > 0) {
+            // Successfully converted from console log format
+            setExecution(executions[0]); // Use first execution
+            setStats(calculateExecutionStats(executions[0]));
+            setError(null);
+            setAutoConverted(true);
+            return;
+          }
+        } catch (conversionError) {
+          // Conversion also failed, show original error
+        }
+
         setExecution(null);
         setStats(null);
         setError(result.error || 'Unknown parsing error');
@@ -77,6 +95,7 @@ export function useLogParser() {
     setExecution(null);
     setStats(null);
     setError(null);
+    setAutoConverted(false);
   }, []);
 
   /**
@@ -94,6 +113,7 @@ export function useLogParser() {
     stats,
     error,
     isLoading,
+    autoConverted,
     parse,
     parseJson,
     parseText,
