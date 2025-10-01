@@ -1129,3 +1129,42 @@
   cursor: not-allowed;
 }
 
+/* Sequence Player Tabs */
+.sequence-player-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--bg-secondary, #1e1e1e);
+  border: 1px solid var(--border-color, #333);
+  border-radius: 4px;
+}
+
+.sequence-player-tab {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-color, #333);
+  background-color: var(--bg-tertiary, #2d2d30);
+  color: var(--text-primary, #cccccc);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.sequence-player-tab:hover:not(:disabled) {
+  background-color: var(--bg-primary, #252526);
+  border-color: #2196f3;
+}
+
+.sequence-player-tab.active {
+  background-color: #2196f3;
+  border-color: #2196f3;
+  color: white;
+}
+
+.sequence-player-tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
