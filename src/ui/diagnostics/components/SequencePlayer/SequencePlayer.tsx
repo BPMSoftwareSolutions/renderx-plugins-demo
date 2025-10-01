@@ -100,14 +100,8 @@ export const SequencePlayer: React.FC = () => {
 
       {hasMultipleSequences && aggregateStats && (
         <>
-          <div style={{
-            padding: '1rem',
-            backgroundColor: '#e3f2fd',
-            border: '1px solid #2196f3',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem', color: '#1976d2' }}>
+          <div className="aggregate-stats-panel">
+            <h3 className="aggregate-stats-title">
               📊 Aggregate Stats (All Sequences)
             </h3>
             <div className="aggregate-stats-grid">
@@ -128,31 +122,16 @@ export const SequencePlayer: React.FC = () => {
             </div>
           </div>
 
-          <div style={{
-            padding: '1rem',
-            backgroundColor: '#f5f5f5',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1rem'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>
+          <div className="sequence-navigation">
+            <div className="sequence-navigation-left">
+              <span className="sequence-counter">
                 Showing sequence {currentIndex + 1} of {totalSequences}
               </span>
 
               <select
                 value={currentIndex}
                 onChange={(e) => goToSequence(Number(e.target.value))}
-                style={{
-                  padding: '0.5rem',
-                  borderRadius: '4px',
-                  border: '1px solid #ccc',
-                  fontSize: '0.9rem',
-                  minWidth: '300px'
-                }}
+                className="sequence-selector"
               >
                 {allExecutions.map((exec, index) => (
                   <option key={index} value={index}>
@@ -162,32 +141,18 @@ export const SequencePlayer: React.FC = () => {
               </select>
             </div>
 
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="sequence-navigation-buttons">
               <button
                 onClick={prevSequence}
                 disabled={currentIndex === 0}
-                style={{
-                  padding: '0.5rem 1rem',
-                  borderRadius: '4px',
-                  border: '1px solid #ccc',
-                  backgroundColor: currentIndex === 0 ? '#f5f5f5' : '#fff',
-                  cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
-                  fontSize: '0.9rem'
-                }}
+                className="sequence-nav-button"
               >
                 ← Previous
               </button>
               <button
                 onClick={nextSequence}
                 disabled={currentIndex === totalSequences - 1}
-                style={{
-                  padding: '0.5rem 1rem',
-                  borderRadius: '4px',
-                  border: '1px solid #ccc',
-                  backgroundColor: currentIndex === totalSequences - 1 ? '#f5f5f5' : '#fff',
-                  cursor: currentIndex === totalSequences - 1 ? 'not-allowed' : 'pointer',
-                  fontSize: '0.9rem'
-                }}
+                className="sequence-nav-button"
               >
                 Next →
               </button>
