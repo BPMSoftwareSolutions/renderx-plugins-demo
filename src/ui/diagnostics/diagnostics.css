@@ -64,16 +64,22 @@
 
 .aggregate-stats-panel {
   padding: 1rem;
-  background-color: #e3f2fd;
-  border: 1px solid #2196f3;
+  background-color: var(--bg-secondary, #1e1e1e);
+  border: 1px solid var(--border-color, #333);
+  border-left: 4px solid #2196f3;
   border-radius: 4px;
   margin-bottom: 1rem;
 }
 
 .aggregate-stats-title {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   font-size: 1rem;
-  color: #1976d2;
+  color: #64b5f6;
+  font-weight: 600;
+}
+
+.aggregate-stats-grid > div {
+  color: var(--text-primary, #cccccc);
 }
 
 .sequence-navigation {
