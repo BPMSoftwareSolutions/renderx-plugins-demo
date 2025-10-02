@@ -45,7 +45,7 @@ export default {
     esbuildOptions: {
       // Ensure proper CommonJS-to-ESM transformation
       format: 'esm',
-      target: 'es2020',
+      target: 'es2022', // Updated to support top-level await
       plugins: [
         {
           name: 'dep-scan-externalize-host-sdk',

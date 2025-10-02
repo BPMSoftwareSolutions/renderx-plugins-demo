@@ -44,19 +44,57 @@ describe('Topics manifest guardrails', () => {
     }
   });
 
-  it('classifies canvas drag topics correctly (start/end notify-only, move routed)', () => {
+  it('classifies canvas drag topics correctly (all drag topics have routes)', () => {
+    // All drag topics should have routes with the updated plugin structure
+    expect(keys).toContain('canvas.component.drag.start.requested');
+    expect(keys).toContain('canvas.component.drag.end');  
+    expect(keys).toContain('canvas.component.drag.move');
+    
+    const startRequestedRoutes = Array.isArray(topics['canvas.component.drag.start.requested']?.routes) ? topics['canvas.component.drag.start.requested'].routes.length : 0;
+    const endRoutes = Array.isArray(topics['canvas.component.drag.end']?.routes) ? topics['canvas.component.drag.end'].routes.length : 0;
+    const moveRoutes = Array.isArray(topics['canvas.component.drag.move']?.routes) ? topics['canvas.component.drag.move'].routes.length : 0;
+    
+    expect(startRequestedRoutes).toBeGreaterThan(0);
+    expect(endRoutes).toBeGreaterThan(0);
+    expect(moveRoutes).toBeGreaterThan(0);
+  });
+
+  it('classifies canvas resize topics correctly (start/end notify-only, move routed)', () => {
     // start/end notify-only
-    expect(keys).toContain('canvas.component.drag.start');
-    expect(keys).toContain('canvas.component.drag.end');
-    expect(Array.isArray(topics['canvas.component.drag.start']?.routes) ? topics['canvas.component.drag.start'].routes.length : 0)
+    expect(keys).toContain('canvas.component.resize.start');
+    expect(keys).toContain('canvas.component.resize.end');
+    expect(Array.isArray(topics['canvas.component.resize.start']?.routes) ? topics['canvas.component.resize.start'].routes.length : 0)
       .toBe(0);
-    expect(Array.isArray(topics['canvas.component.drag.end']?.routes) ? topics['canvas.component.drag.end'].routes.length : 0)
+    expect(Array.isArray(topics['canvas.component.resize.end']?.routes) ? topics['canvas.component.resize.end'].routes.length : 0)
       .toBe(0);
 
-    // move is routed
-    expect(keys).toContain('canvas.component.drag.move');
-    const moveRoutes = Array.isArray(topics['canvas.component.drag.move']?.routes) ? topics['canvas.component.drag.move'].routes : [];
+    // move is routed (matching drag pattern and interaction manifest)
+    expect(keys).toContain('canvas.component.resize.move');
+    const moveRoutes = Array.isArray(topics['canvas.component.resize.move']?.routes) ? topics['canvas.component.resize.move'].routes : [];
     expect(moveRoutes.length).toBeGreaterThan(0);
+  });
+
+  it('includes svg-node selection topics with backward compatibility aliases', () => {
+    // Both canonical (with dots) and alias (with hyphen) versions should exist
+    expect(keys).toContain('canvas.component.select.svg.node.requested');
+    expect(keys).toContain('canvas.component.select.svg-node.requested');
+
+    // Both should have routes to the same plugin
+    const canonicalRoutes = Array.isArray(topics['canvas.component.select.svg.node.requested']?.routes) ? topics['canvas.component.select.svg.node.requested'].routes : [];
+    const aliasRoutes = Array.isArray(topics['canvas.component.select.svg-node.requested']?.routes) ? topics['canvas.component.select.svg-node.requested'].routes : [];
+    
+    expect(canonicalRoutes.length).toBeGreaterThan(0);
+    expect(aliasRoutes.length).toBeGreaterThan(0);
+    
+    // Both should route to CanvasComponentSvgNodeSelectionPlugin
+    const canonicalPluginIds = canonicalRoutes.map((r: any) => r?.pluginId).filter(Boolean);
+    const aliasPluginIds = aliasRoutes.map((r: any) => r?.pluginId).filter(Boolean);
+    
+    expect(canonicalPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
+    expect(aliasPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
+    
+    // Alias should be marked as such in notes
+    expect(topics['canvas.component.select.svg-node.requested']?.notes).toContain('compatibility alias');
   });
 
   it('plugin-manifest contains ControlPanelPlugin (source of truth for runtime)', () => {
