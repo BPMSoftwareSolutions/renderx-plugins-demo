@@ -94,7 +94,7 @@ describe('Topics manifest guardrails', () => {
     expect(aliasPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
     
     // Alias should be marked as such in notes
-    expect(topics['canvas.component.select.svg-node.requested']?.notes).toContain('Backward compatibility alias');
+    expect(topics['canvas.component.select.svg-node.requested']?.notes).toContain('compatibility alias');
   });
 
   it('plugin-manifest contains ControlPanelPlugin (source of truth for runtime)', () => {

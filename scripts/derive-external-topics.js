@@ -5,7 +5,27 @@
  * This eliminates the need for redundant local catalog files for externalized plugins.
  * 
  * Strategy:
- * 1. Scan public/json-sequences/ for sequence files from external packages
+ * 1. Scan public/json-sequences/   // Check if plugin declares explicit interaction mapp  // Temporary compatibility layer for known transformation patterns
+  // TODO: Remove once plugins declare their own mappings
+  route = applyCompatibilityTransforms(route, seq);sequence?.interactionMapping?.route) {
+    return {
+      route: seq.sequence.interactionMapping.route,
+      pluginId: seq.pluginId,
+      sequenceId: seq.sequenceId
+    };
+  }
+
+  // Check if plugin declares transformation rules for interactions
+  if (seq.sequence?.interactionTransform) {
+    const route = applyPluginInteractionTransform(seq, seq.sequence.interactionTransform);
+    if (route) {
+      return {
+        route,
+        pluginId: seq.pluginId,
+        sequenceId: seq.sequenceId
+      };
+    }
+  }les from external packages
  * 2. Extract topic routing information from sequence definitions
  * 3. Generate topic and interaction catalog entries automatically
  * 4. Merge with local catalog files for non-externalized plugins
@@ -27,6 +47,127 @@ async function readJsonSafe(path) {
   } catch {
     return null;
   }
+}
+
+function applyPluginTopicTransform(seq, transform) {
+  // Apply plugin-declared topic transformation rules
+  let topicName = seq.sequenceId
+    .replace(/-symphony$/, '')
+    .replace(/-sequence$/, '')
+    .replace(/-seq$/, '')
+    .replace(/-/g, '.');
+
+  // Apply custom transformations declared by the plugin
+  if (transform.patterns) {
+    for (const pattern of transform.patterns) {
+      if (pattern.from && pattern.to) {
+        const regex = new RegExp(pattern.from, pattern.flags || 'g');
+        topicName = topicName.replace(regex, pattern.to);
+      }
+    }
+  }
+
+  // Apply prefix/suffix transformations
+  if (transform.prefix) {
+    if (transform.prefix.remove && topicName.startsWith(transform.prefix.remove)) {
+      topicName = topicName.substring(transform.prefix.remove.length);
+    }
+    if (transform.prefix.add && !topicName.startsWith(transform.prefix.add)) {
+      topicName = transform.prefix.add + topicName;
+    }
+  }
+
+  if (transform.suffix) {
+    if (transform.suffix.remove && topicName.endsWith(transform.suffix.remove)) {
+      topicName = topicName.substring(0, topicName.length - transform.suffix.remove.length);
+    }
+    if (transform.suffix.add && !topicName.endsWith(transform.suffix.add)) {
+      topicName = topicName + transform.suffix.add;
+    }
+  }
+
+  // Ensure .requested suffix if needed
+  if (!topicName.endsWith('.requested')) {
+    topicName = topicName + '.requested';
+  }
+
+  return topicName;
+}
+
+function applyPluginInteractionTransform(seq, transform) {
+  // Apply plugin-declared interaction transformation rules
+  let route = seq.sequenceId
+    .replace(/-symphony$/, '')
+    .replace(/-sequence$/, '')
+    .replace(/-seq$/, '')
+    .replace(/-/g, '.');
+
+  // Apply custom transformations declared by the plugin
+  if (transform.patterns) {
+    for (const pattern of transform.patterns) {
+      if (pattern.from && pattern.to) {
+        const regex = new RegExp(pattern.from, pattern.flags || 'g');
+        route = route.replace(regex, pattern.to);
+      }
+    }
+  }
+
+  // Apply prefix/suffix transformations
+  if (transform.prefix) {
+    if (transform.prefix.remove && route.startsWith(transform.prefix.remove)) {
+      route = route.substring(transform.prefix.remove.length);
+    }
+    if (transform.prefix.add && !route.startsWith(transform.prefix.add)) {
+      route = transform.prefix.add + route;
+    }
+  }
+
+  if (transform.suffix) {
+    if (transform.suffix.remove && route.endsWith(transform.suffix.remove)) {
+      route = route.substring(0, route.length - transform.suffix.remove.length);
+    }
+    if (transform.suffix.add && !route.endsWith(transform.suffix.add)) {
+      route = route + transform.suffix.add;
+    }
+  }
+
+  // Remove .requested suffix for interaction routes
+  route = route.replace(/\.requested$/, '');
+
+  return route;
+}
+
+function applyCompatibilityTransforms(name, seq) {
+  // Temporary compatibility layer for known plugin transformation patterns
+  // TODO: Remove once all plugins declare their own mappings explicitly
+  
+  let transformed = name;
+  
+  // UI theme transformation: header.ui.theme.* -> app.ui.theme.*
+  if (transformed.includes('ui.theme')) {
+    transformed = transformed.replace(/^header\./, 'app.');
+  }
+  
+  // Library component path normalization
+  const isLibraryComponent = (seq.pluginId && /LibraryComponent/i.test(seq.pluginId)) || 
+                           (seq.file && seq.file.startsWith('library-component/'));
+  if (isLibraryComponent) {
+    // Only transform container.drop to move it up one level
+    transformed = transformed.replace(/^library\.component\.container\./, 'library.container.');
+    // Leave other library.component.* topics as-is (like library.component.drop.requested)
+  }
+  
+  // Drag operation handling: component.drag -> component.drag.start (for topics)
+  if (transformed.includes('component.drag') && !transformed.includes('start') && !transformed.includes('move')) {
+    transformed = transformed.replace('component.drag', 'component.drag.start');
+  }
+  
+  // Drag interaction handling: *.drag -> *.drag.move (for interactions)
+  if (/\.drag$/.test(transformed)) {
+    transformed = transformed + '.move';
+  }
+  
+  return transformed;
 }
 
 export async function discoverSequenceFiles() {
@@ -108,42 +249,34 @@ export async function discoverSequenceFiles() {
 }
 
 function deriveTopicFromSequence(seq) {
-  // Auto-derive topic name from sequence ID by removing common suffixes and converting to dot notation
+  // Data-driven topic derivation - plugins can declare their own topic names and transformations
   const id = seq.sequenceId;
   if (!id) return null;
 
-  // Remove common symphony suffixes
+  // Check if plugin declares explicit topic mapping
+  if (seq.sequence?.topicMapping?.canonical) {
+    return seq.sequence.topicMapping.canonical;
+  }
+
+  // Check if plugin declares transformation rules
+  if (seq.sequence?.topicTransform) {
+    return applyPluginTopicTransform(seq, seq.sequence.topicTransform);
+  }
+
+  // Default transformation: remove suffixes and convert to dot notation
   let topicName = id
     .replace(/-symphony$/, '')
     .replace(/-sequence$/, '')
-    .replace(/-seq$/, '');
+    .replace(/-seq$/, '')
+    .replace(/-/g, '.');
 
-  // Convert kebab-case to dot notation
-  topicName = topicName.replace(/-/g, '.');
+  // Temporary compatibility layer for known transformation patterns
+  // TODO: Remove once plugins declare their own mappings
+  topicName = applyCompatibilityTransforms(topicName, seq);
 
-  // Handle special cases for better topic naming
-  if (topicName.includes('ui.theme')) {
-    // Keep app.ui.theme.* as-is since it's already well-formed
-    return topicName.replace(/^header\./, 'app.');
-  }
-
-  const isLibraryComponent = (seq.pluginId && /LibraryComponent/i.test(seq.pluginId)) || (seq.file && seq.file.startsWith('library-component/'));
-
-  // Special handling for drag operations - enforce .start.requested
-  if (topicName.includes('component.drag') && !topicName.includes('start')) {
-    topicName = topicName.replace('component.drag', 'component.drag.start');
-  }
-
-  // Ensure .requested suffix
+  // Ensure .requested suffix for routed topics
   if (!topicName.endsWith('.requested')) {
     topicName = topicName + '.requested';
-  }
-
-  // Final normalization rules for library-component topics
-  if (isLibraryComponent) {
-    // Only collapse the container path: library.component.container.* -> library.container.*
-    topicName = topicName.replace(/^library\.component\.container\./, 'library.container.');
-    // Keep other library.component.* topics (drag, drop, etc.) as-is
   }
 
   return topicName;
@@ -204,9 +337,15 @@ function extractTopicsFromSequenceBeats(seq) {
         // Convert colon-based event names to dot notation topic names
         let topicName = beat.event.replace(/:/g, '.');
         
-        // Normalize compound terms to match sequence-derived naming
-        // Convert "svg-node" to "svg.node" to match sequence-derived topics
-        topicName = topicName.replace(/svg-node/g, 'svg.node');
+        // Check if sequence declares beat event transformations
+        if (seq.sequence?.beatEventTransforms) {
+          for (const transform of seq.sequence.beatEventTransforms) {
+            if (transform.pattern && transform.replacement) {
+              const regex = new RegExp(transform.pattern, transform.flags || 'g');
+              topicName = topicName.replace(regex, transform.replacement);
+            }
+          }
+        }
         
         topics.push({
           name: topicName,
@@ -301,11 +440,15 @@ export async function generateExternalTopicsCatalog() {
       const existing = topics[topicName]?.routes?.[0]?.sequenceId;
       const existingIsRequested = existing ? (/\.requested(-|\.|$)/.test(existing) || /requested/.test(existing)) : false;
 
-      // Special handling to ensure resize.move follows drag.move pattern
-      // Both should route on the base topic, not .requested variants
+      // Check if sequence declares custom routing behavior
       let routedTopicName = topicName;
-      if (topicName.includes('resize.move') || topicName.includes('drag.move')) {
-        // For move operations, always route to the base topic
+      if (seq.sequence?.topicMapping?.routeToBase || 
+          (seq.sequence?.topicTransform?.routeToBase && topicName.match(seq.sequence.topicTransform.routeToBase))) {
+        // Route to base topic instead of .requested variant
+        routedTopicName = topicName.replace('.requested', '');
+      } else if (topicName.includes('resize.move') || topicName.includes('drag.move')) {
+        // Temporary compatibility: resize.move and drag.move route to base topics
+        // TODO: Remove once plugins declare routeToBase explicitly
         routedTopicName = topicName.replace('.requested', '');
       }
 
@@ -346,16 +489,32 @@ export async function generateExternalTopicsCatalog() {
     }
   }
 
-  // Add backward compatibility aliases for svg-node topics
-  // The UI code may still reference "svg-node" with hyphen, but we normalize to "svg.node" with dot
+  // Add backward compatibility aliases from sequence declarations
   const aliasesToAdd = {};
+  for (const seq of sequences) {
+    if (seq.sequence?.topicAliases) {
+      for (const alias of seq.sequence.topicAliases) {
+        const canonicalTopic = alias.canonical || alias.from;
+        const aliasName = alias.alias || alias.to;
+        
+        if (topics[canonicalTopic] && !topics[aliasName]) {
+          aliasesToAdd[aliasName] = {
+            ...topics[canonicalTopic],
+            notes: `Backward compatibility alias for ${canonicalTopic} (declared by ${seq.pluginId})`
+          };
+        }
+      }
+    }
+  }
+  
+  // Add legacy svg-node aliases if no explicit aliases were declared (temporary fallback)
   for (const [topicName, topicData] of Object.entries(topics)) {
     if (topicName.includes('svg.node')) {
       const aliasName = topicName.replace(/svg\.node/g, 'svg-node');
-      if (aliasName !== topicName && !topics[aliasName]) {
+      if (aliasName !== topicName && !topics[aliasName] && !aliasesToAdd[aliasName]) {
         aliasesToAdd[aliasName] = {
           ...topicData,
-          notes: `Backward compatibility alias for ${topicName}`
+          notes: `Legacy backward compatibility alias for ${topicName} (auto-generated)`
         };
       }
     }
