@@ -59,6 +59,21 @@ describe('Topics manifest guardrails', () => {
     expect(moveRoutes.length).toBeGreaterThan(0);
   });
 
+  it('classifies canvas resize topics correctly (start/end notify-only, move routed)', () => {
+    // start/end notify-only
+    expect(keys).toContain('canvas.component.resize.start');
+    expect(keys).toContain('canvas.component.resize.end');
+    expect(Array.isArray(topics['canvas.component.resize.start']?.routes) ? topics['canvas.component.resize.start'].routes.length : 0)
+      .toBe(0);
+    expect(Array.isArray(topics['canvas.component.resize.end']?.routes) ? topics['canvas.component.resize.end'].routes.length : 0)
+      .toBe(0);
+
+    // move is routed (matching drag pattern and interaction manifest)
+    expect(keys).toContain('canvas.component.resize.move');
+    const moveRoutes = Array.isArray(topics['canvas.component.resize.move']?.routes) ? topics['canvas.component.resize.move'].routes : [];
+    expect(moveRoutes.length).toBeGreaterThan(0);
+  });
+
   it('plugin-manifest contains ControlPanelPlugin (source of truth for runtime)', () => {
     const candidates = [
       pluginManifestPath,

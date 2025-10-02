@@ -30,57 +30,78 @@ async function readJsonSafe(path) {
 }
 
 export async function discoverSequenceFiles() {
-  const sequencesDir = join(rootDir, "public", "json-sequences");
-  const externalDirs = ["library-component", "canvas-component", "header", "library", "control-panel"];
+  const nodeModulesDir = join(rootDir, "node_modules");
   const sequences = [];
   const seen = new Set();
 
-  for (const dir of externalDirs) {
-    const dirPath = join(sequencesDir, dir);
-    try {
-      const files = await readdir(dirPath);
-      for (const file of files) {
-        if (file.endsWith(".json") && file !== "index.json") {
-          const filePath = join(dirPath, file);
-          const sequence = await readJsonSafe(filePath);
-          const id = sequence?.id;
-          if (sequence && sequence.pluginId && id && !seen.has(id)) {
-            seen.add(id);
-            sequences.push({
-              pluginId: sequence.pluginId,
-              sequenceId: id,
-              file: `${dir}/${file}`,
-              sequence
-            });
+  // Discover all @renderx-plugins packages dynamically
+  const renderxPluginsDir = join(nodeModulesDir, "@renderx-plugins");
+  
+  try {
+    const packageDirs = await readdir(renderxPluginsDir);
+    
+    for (const packageName of packageDirs) {
+      const packagePath = join(renderxPluginsDir, packageName);
+      const sequencesPath = join(packagePath, "json-sequences");
+      
+      try {
+        // Check if this package has json-sequences directory
+        const sequencesDirStat = await fs.stat(sequencesPath);
+        if (!sequencesDirStat.isDirectory()) continue;
+        
+        // Scan for subdirectories and files in json-sequences
+        const items = await readdir(sequencesPath);
+        
+        for (const item of items) {
+          const itemPath = join(sequencesPath, item);
+          const itemStat = await fs.stat(itemPath);
+          
+          if (itemStat.isDirectory()) {
+            // Scan subdirectory for sequence files
+            try {
+              const files = await readdir(itemPath);
+              for (const file of files) {
+                if (file.endsWith(".json") && file !== "index.json") {
+                  const filePath = join(itemPath, file);
+                  const sequence = await readJsonSafe(filePath);
+                  const id = sequence?.id;
+                  if (sequence && sequence.pluginId && id && !seen.has(id)) {
+                    seen.add(id);
+                    sequences.push({
+                      pluginId: sequence.pluginId,
+                      sequenceId: id,
+                      file: `${packageName}/${item}/${file}`,
+                      sequence,
+                      sourcePath: filePath
+                    });
+                  }
+                }
+              }
+            } catch {
+              // Subdirectory access failed, skip
+            }
+          } else if (item.endsWith(".json") && item !== "index.json") {
+            // Direct file in json-sequences root
+            const sequence = await readJsonSafe(itemPath);
+            const id = sequence?.id;
+            if (sequence && sequence.pluginId && id && !seen.has(id)) {
+              seen.add(id);
+              sequences.push({
+                pluginId: sequence.pluginId,
+                sequenceId: id,
+                file: `${packageName}/${item}`,
+                sequence,
+                sourcePath: itemPath
+              });
+            }
           }
         }
-      }
-    } catch {
-      // Directory doesn't exist, skip
-    }
-  }
-
-  // Fallback: some packages might flatten files directly under json-sequences/
-  try {
-    const rootFiles = await readdir(sequencesDir);
-    for (const file of rootFiles) {
-      if (file.endsWith(".json") && file !== "index.json") {
-        const filePath = join(sequencesDir, file);
-        const sequence = await readJsonSafe(filePath);
-        const id = sequence?.id;
-        if (sequence && sequence.pluginId && id && !seen.has(id)) {
-          seen.add(id);
-          sequences.push({
-            pluginId: sequence.pluginId,
-            sequenceId: id,
-            file: file,
-            sequence
-          });
-        }
+      } catch {
+        // Package doesn't have json-sequences or access failed, skip
       }
     }
   } catch {
-    // ignore
+    // @renderx-plugins directory doesn't exist, skip
   }
 
   return sequences;
@@ -170,25 +191,154 @@ function deriveInteractionFromSequence(seq) {
   };
 }
 
+function extractTopicsFromSequenceBeats(seq) {
+  const topics = [];
+  
+  if (!seq.sequence?.movements) return topics;
+  
+  for (const movement of seq.sequence.movements) {
+    if (!movement.beats) continue;
+    
+    for (const beat of movement.beats) {
+      if (beat.event) {
+        // Convert colon-based event names to dot notation topic names
+        const topicName = beat.event.replace(/:/g, '.');
+        
+        topics.push({
+          name: topicName,
+          notes: `Auto-derived from beat event "${beat.event}" in ${seq.file}`,
+          pluginId: seq.pluginId,
+          sequenceId: seq.sequenceId
+        });
+      }
+    }
+  }
+  
+  return topics;
+}
+
+function extractLifecycleTopicsFromSequence(seq) {
+  const lifecycleTopics = [];
+  const sequence = seq.sequence;
+  
+  if (!sequence) return lifecycleTopics;
+  
+  // Check if sequence declares lifecycle topics explicitly
+  if (sequence.lifecycleTopics) {
+    for (const lifecycleTopic of sequence.lifecycleTopics) {
+      lifecycleTopics.push({
+        name: lifecycleTopic.name || lifecycleTopic,
+        routes: lifecycleTopic.routed ? [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }] : [],
+        notes: lifecycleTopic.notes || `Declared lifecycle topic from ${seq.file}`,
+        type: lifecycleTopic.type || 'notify-only'
+      });
+    }
+    return lifecycleTopics; // If explicitly declared, don't apply defaults
+  }
+  
+  // Check if sequence declares notification topics explicitly  
+  if (sequence.notificationTopics) {
+    for (const notifyTopic of sequence.notificationTopics) {
+      lifecycleTopics.push({
+        name: notifyTopic.name || notifyTopic,
+        routes: [],
+        notes: notifyTopic.notes || `Declared notification topic from ${seq.file}`,
+        type: 'notify-only'
+      });
+    }
+    return lifecycleTopics; // If explicitly declared, don't apply defaults
+  }
+  
+  // Fallback: Apply conventional lifecycle patterns for backward compatibility
+  // This will be deprecated once plugins migrate to explicit declarations
+  const topicName = deriveTopicFromSequence(seq);
+  if (!topicName) return lifecycleTopics;
+  
+  const baseTopic = topicName.replace('.requested', '');
+  
+  // Default lifecycle topics for .requested sequences
+  if (topicName.endsWith('.requested')) {
+    lifecycleTopics.push(
+      { name: baseTopic, routes: [], notes: `Auto-generated base topic for ${baseTopic}`, type: 'notify-only' },
+      { name: `${baseTopic}.started`, routes: [], notes: `Auto-generated lifecycle topic (started) for ${baseTopic}`, type: 'notify-only' },
+      { name: `${baseTopic}.completed`, routes: [], notes: `Auto-generated lifecycle topic (completed) for ${baseTopic}`, type: 'notify-only' },
+      { name: `${baseTopic}.failed`, routes: [], notes: `Auto-generated lifecycle topic (failed) for ${baseTopic}`, type: 'notify-only' }
+    );
+  }
+  
+  // Default notification topics based on sequence patterns
+  if (baseTopic.includes('create')) {
+    const createdTopic = baseTopic.replace('create', 'created');
+    lifecycleTopics.push({ name: createdTopic, routes: [], notes: `Auto-generated notification topic for ${baseTopic}`, type: 'notify-only' });
+  }
+  
+  if (baseTopic.includes('drag')) {
+    const dragBaseTopic = baseTopic.replace('.start', '');
+    lifecycleTopics.push({ name: `${dragBaseTopic}.end`, routes: [], notes: `Auto-generated lifecycle topic (end) for ${dragBaseTopic}`, type: 'notify-only' });
+  }
+  
+  if (baseTopic.includes('select')) {
+    const selectionBaseTopic = baseTopic.replace('.select', '.selection');
+    lifecycleTopics.push({ name: `${selectionBaseTopic}.changed`, routes: [], notes: `Auto-generated operational topic (changed) for ${selectionBaseTopic}`, type: 'notify-only' });
+  }
+  
+  return lifecycleTopics;
+}
+
 export async function generateExternalTopicsCatalog() {
   const sequences = await discoverSequenceFiles();
   const topics = {};
 
   for (const seq of sequences) {
+    // Process main sequence topic
     const topicName = deriveTopicFromSequence(seq);
-    if (!topicName) continue;
+    if (topicName) {
+      const isRequested = /\.requested(-|\.|$)/.test(seq.sequenceId) || /requested/.test(seq.sequenceId);
+      const existing = topics[topicName]?.routes?.[0]?.sequenceId;
+      const existingIsRequested = existing ? (/\.requested(-|\.|$)/.test(existing) || /requested/.test(existing)) : false;
 
-    const isRequested = /\.requested(-|\.|$)/.test(seq.sequenceId) || /requested/.test(seq.sequenceId);
-    const existing = topics[topicName]?.routes?.[0]?.sequenceId;
-    const existingIsRequested = existing ? (/\.requested(-|\.|$)/.test(existing) || /requested/.test(existing)) : false;
+      // Special handling to ensure resize.move follows drag.move pattern
+      // Both should route on the base topic, not .requested variants
+      let routedTopicName = topicName;
+      if (topicName.includes('resize.move') || topicName.includes('drag.move')) {
+        // For move operations, always route to the base topic
+        routedTopicName = topicName.replace('.requested', '');
+      }
 
-    if (!existing || (isRequested && !existingIsRequested)) {
-      topics[topicName] = {
-        routes: [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }],
-        payloadSchema: { type: "object" },
-        visibility: "public",
-        notes: `Auto-derived from ${seq.file}`
-      };
+      if (!existing || (isRequested && !existingIsRequested)) {
+        topics[routedTopicName] = {
+          routes: [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }],
+          payloadSchema: { type: "object" },
+          visibility: "public",
+          notes: `Auto-derived from ${seq.file}`
+        };
+      }
+    }
+    
+    // Process declared lifecycle and notification topics
+    const lifecycleTopics = extractLifecycleTopicsFromSequence(seq);
+    for (const lifecycleTopic of lifecycleTopics) {
+      if (!topics[lifecycleTopic.name]) {
+        topics[lifecycleTopic.name] = {
+          routes: lifecycleTopic.routes,
+          payloadSchema: { type: "object" },
+          visibility: "public",
+          notes: lifecycleTopic.notes
+        };
+      }
+    }
+    
+    // Process beat event topics (these become routed topics)
+    const beatTopics = extractTopicsFromSequenceBeats(seq);
+    for (const beatTopic of beatTopics) {
+      if (!topics[beatTopic.name]) {
+        topics[beatTopic.name] = {
+          routes: [{ pluginId: beatTopic.pluginId, sequenceId: beatTopic.sequenceId }],
+          payloadSchema: { type: "object" },
+          visibility: "public",
+          notes: beatTopic.notes
+        };
+      }
     }
   }
 
@@ -217,7 +367,7 @@ async function main() {
   const topics = await generateExternalTopicsCatalog();
   const interactions = await generateExternalInteractionsCatalog();
 
-  console.log("🔍 Derived from external sequences:");
+  console.log("🔍 Derived from external sequences (node_modules):");
   console.log("Topics:", Object.keys(topics.topics).length);
   console.log("Interactions:", Object.keys(interactions.routes).length);
 
