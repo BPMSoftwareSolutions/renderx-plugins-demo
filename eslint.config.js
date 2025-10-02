@@ -1,5 +1,6 @@
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
+import jsonParser from "jsonc-eslint-parser";
 import beatKindDomAccess from "./eslint-rules/beat-kind-dom-access.js";
 import playRouting from "./eslint-rules/no-hardcoded-play-ids.js";
 import noConsoleInPlugins from "./eslint-rules/no-console-in-plugins.js";
@@ -26,6 +27,7 @@ import consistentJsonImportAttributes from "./eslint-rules/consistent-json-impor
 import validateExternalPluginConsistency from "./eslint-rules/validate-external-plugin-consistency.js";
 import validateInternalPluginIds from "./eslint-rules/validate-internal-plugin-ids.js";
 import validateServedSequences from "./eslint-rules/validate-served-sequences-mountable.js";
+import requireRoutingDeclarations from "./eslint-rules/require-routing-declarations.js";
 
 
 
@@ -112,6 +114,7 @@ export default [
       "validate-external-plugin-consistency": validateExternalPluginConsistency,
       "internal-plugin-ids": validateInternalPluginIds,
       "served-sequences-mountable": validateServedSequences,
+      "routing-declarations": requireRoutingDeclarations,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -136,6 +139,7 @@ export default [
       "validate-external-plugin-consistency/validate-external-plugin-consistency": "error",
       "internal-plugin-ids/validate-internal-plugin-ids": "error",
       "served-sequences-mountable/validate-served-sequences-mountable": "error",
+      "routing-declarations/require-routing-declarations": "error",
 
 
 	      // Enforce externalized json-components: forbid local/public references in code
@@ -449,6 +453,20 @@ export default [
           message: "Stage-crew handlers must not import UI or IO/API modules.",
         },
       ],
+    },
+  },
+
+  // Canvas component routing declarations for JSON sequence files
+  {
+    files: ["**/canvas-component/*.json"],
+    languageOptions: {
+      parser: jsonParser,
+    },
+    plugins: {
+      "routing-declarations": requireRoutingDeclarations,
+    },
+    rules: {
+      "routing-declarations/require-routing-declarations": "error",
     },
   },
 ];

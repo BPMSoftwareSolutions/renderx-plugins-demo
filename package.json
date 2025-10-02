@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.3",
-    "@renderx-plugins/canvas-component": "1.0.6",
+    "@renderx-plugins/canvas-component": "^1.0.8",
     "@renderx-plugins/components": "0.1.1",
     "@renderx-plugins/control-panel": "0.1.0-rc.9",
     "@renderx-plugins/header": "^0.1.1",
@@ -76,6 +76,7 @@
     "cypress": "^15.2.0",
     "eslint": "^9.33.0",
     "jsdom": "^26.1.0",
+    "jsonc-eslint-parser": "^2.4.1",
     "start-server-and-test": "^2.0.3",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",

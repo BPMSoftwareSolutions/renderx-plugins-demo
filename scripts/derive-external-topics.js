@@ -329,6 +329,10 @@ function extractTopicsFromSequenceBeats(seq) {
   
   if (!seq.sequence?.movements) return topics;
   
+  // Check if sequence has routeToBase configuration
+  const routeToBase = seq.sequence?.topicMapping?.routeToBase || 
+                     (seq.sequence?.topicTransform?.routeToBase);
+  
   for (const movement of seq.sequence.movements) {
     if (!movement.beats) continue;
     
@@ -345,6 +349,14 @@ function extractTopicsFromSequenceBeats(seq) {
               topicName = topicName.replace(regex, transform.replacement);
             }
           }
+        }
+        
+        // If sequence routes to base, beat events should route to the main sequence topic
+        let routesToSequence = [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }];
+        if (routeToBase) {
+          // Beat events in sequences with routeToBase should not create separate topics
+          // They will be handled by the main sequence topic
+          continue;
         }
         
         topics.push({
@@ -446,10 +458,6 @@ export async function generateExternalTopicsCatalog() {
           (seq.sequence?.topicTransform?.routeToBase && topicName.match(seq.sequence.topicTransform.routeToBase))) {
         // Route to base topic instead of .requested variant
         routedTopicName = topicName.replace('.requested', '');
-      } else if (topicName.includes('resize.move') || topicName.includes('drag.move')) {
-        // Temporary compatibility: resize.move and drag.move route to base topics
-        // TODO: Remove once plugins declare routeToBase explicitly
-        routedTopicName = topicName.replace('.requested', '');
       }
 
       if (!existing || (isRequested && !existingIsRequested)) {
@@ -519,11 +527,92 @@ export async function generateExternalTopicsCatalog() {
       }
     }
   }
+
+  // Auto-infer missing topic aliases by analyzing interaction routes
+  await addInferredTopicAliases(topics, aliasesToAdd, sequences);
   
   // Add the aliases to the topics catalog
   Object.assign(topics, aliasesToAdd);
 
   return { version: "1.0.0", topics };
+}
+
+async function addInferredTopicAliases(topics, aliasesToAdd, sequences) {
+  // Generate interaction routes to see what the frontend expects
+  const expectedRoutes = new Set();
+  
+  for (const seq of sequences) {
+    const interaction = deriveInteractionFromSequence(seq);
+    if (interaction) {
+      expectedRoutes.add(interaction.route);
+    }
+  }
+  
+  // Find missing topics that interaction routes expect but don't exist
+  for (const expectedRoute of expectedRoutes) {
+    if (!topics[expectedRoute] && !aliasesToAdd[expectedRoute]) {
+      // Try to find a similar topic that could serve as the canonical topic
+      const candidateTopics = findSimilarTopics(expectedRoute, topics);
+      
+      if (candidateTopics.length > 0) {
+        // Use the best match as the canonical topic
+        const canonicalTopic = candidateTopics[0];
+        aliasesToAdd[expectedRoute] = {
+          ...topics[canonicalTopic],
+          notes: `Auto-inferred alias for ${canonicalTopic} (frontend expects ${expectedRoute})`
+        };
+        
+        console.log(`🔧 Auto-inferred alias: ${expectedRoute} -> ${canonicalTopic}`);
+      }
+    }
+  }
+}
+
+function findSimilarTopics(missingRoute, topics) {
+  const candidates = [];
+  
+  // Extract the base operation from the missing route
+  const parts = missingRoute.split('.');
+  const lastPart = parts[parts.length - 1]; // e.g., "move"
+  const baseParts = parts.slice(0, -1); // e.g., ["canvas", "component", "drag"]
+  
+  // Look for topics with similar base but different operation suffix
+  const basePattern = baseParts.join('.');
+  
+  for (const topicName of Object.keys(topics)) {
+    if (topicName.startsWith(basePattern)) {
+      // Calculate similarity score
+      let score = 0;
+      
+      // Exact base match
+      if (topicName.startsWith(basePattern + '.')) {
+        score += 10;
+      }
+      
+      // Common operation mappings
+      if (lastPart === 'move' && topicName.includes('.start')) {
+        score += 8; // drag.move often maps to drag.start
+      }
+      
+      if (lastPart === 'start' && topicName.includes('.move')) {
+        score += 5; // less common reverse mapping
+      }
+      
+      // Prefer exact plugin match patterns
+      if (baseParts.includes('drag') && topicName.includes('drag')) {
+        score += 3;
+      }
+      
+      if (score > 5) {
+        candidates.push({ topic: topicName, score });
+      }
+    }
+  }
+  
+  // Sort by score and return topic names
+  return candidates
+    .sort((a, b) => b.score - a.score)
+    .map(c => c.topic);
 }
 
 export async function generateExternalInteractionsCatalog() {
