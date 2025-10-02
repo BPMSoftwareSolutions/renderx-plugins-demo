@@ -48,8 +48,12 @@ const rule = {
         const filename = context.getFilename();
         const basename = path.basename(filename);
         
-        // Only check canvas-component sequence files
-        if (!filename.includes('canvas-component') || !basename.endsWith('.json')) {
+        // Only check canvas-component sequence files that are owned by this repo
+        // Exclude files in public/json-sequences (copied from external plugins)
+        if (!filename.includes('canvas-component') || 
+            !basename.endsWith('.json') ||
+            filename.includes('public/json-sequences') ||
+            filename.includes('public\\json-sequences')) {
           return;
         }
 
