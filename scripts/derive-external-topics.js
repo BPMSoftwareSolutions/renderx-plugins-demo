@@ -202,7 +202,11 @@ function extractTopicsFromSequenceBeats(seq) {
     for (const beat of movement.beats) {
       if (beat.event) {
         // Convert colon-based event names to dot notation topic names
-        const topicName = beat.event.replace(/:/g, '.');
+        let topicName = beat.event.replace(/:/g, '.');
+        
+        // Normalize compound terms to match sequence-derived naming
+        // Convert "svg-node" to "svg.node" to match sequence-derived topics
+        topicName = topicName.replace(/svg-node/g, 'svg.node');
         
         topics.push({
           name: topicName,
@@ -341,6 +345,24 @@ export async function generateExternalTopicsCatalog() {
       }
     }
   }
+
+  // Add backward compatibility aliases for svg-node topics
+  // The UI code may still reference "svg-node" with hyphen, but we normalize to "svg.node" with dot
+  const aliasesToAdd = {};
+  for (const [topicName, topicData] of Object.entries(topics)) {
+    if (topicName.includes('svg.node')) {
+      const aliasName = topicName.replace(/svg\.node/g, 'svg-node');
+      if (aliasName !== topicName && !topics[aliasName]) {
+        aliasesToAdd[aliasName] = {
+          ...topicData,
+          notes: `Backward compatibility alias for ${topicName}`
+        };
+      }
+    }
+  }
+  
+  // Add the aliases to the topics catalog
+  Object.assign(topics, aliasesToAdd);
 
   return { version: "1.0.0", topics };
 }

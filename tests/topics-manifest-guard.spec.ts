@@ -74,6 +74,29 @@ describe('Topics manifest guardrails', () => {
     expect(moveRoutes.length).toBeGreaterThan(0);
   });
 
+  it('includes svg-node selection topics with backward compatibility aliases', () => {
+    // Both canonical (with dots) and alias (with hyphen) versions should exist
+    expect(keys).toContain('canvas.component.select.svg.node.requested');
+    expect(keys).toContain('canvas.component.select.svg-node.requested');
+
+    // Both should have routes to the same plugin
+    const canonicalRoutes = Array.isArray(topics['canvas.component.select.svg.node.requested']?.routes) ? topics['canvas.component.select.svg.node.requested'].routes : [];
+    const aliasRoutes = Array.isArray(topics['canvas.component.select.svg-node.requested']?.routes) ? topics['canvas.component.select.svg-node.requested'].routes : [];
+    
+    expect(canonicalRoutes.length).toBeGreaterThan(0);
+    expect(aliasRoutes.length).toBeGreaterThan(0);
+    
+    // Both should route to CanvasComponentSvgNodeSelectionPlugin
+    const canonicalPluginIds = canonicalRoutes.map((r: any) => r?.pluginId).filter(Boolean);
+    const aliasPluginIds = aliasRoutes.map((r: any) => r?.pluginId).filter(Boolean);
+    
+    expect(canonicalPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
+    expect(aliasPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
+    
+    // Alias should be marked as such in notes
+    expect(topics['canvas.component.select.svg-node.requested']?.notes).toContain('Backward compatibility alias');
+  });
+
   it('plugin-manifest contains ControlPanelPlugin (source of truth for runtime)', () => {
     const candidates = [
       pluginManifestPath,
