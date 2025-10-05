@@ -28,6 +28,9 @@ import validateExternalPluginConsistency from "./eslint-rules/validate-external-
 import validateInternalPluginIds from "./eslint-rules/validate-internal-plugin-ids.js";
 import validateServedSequences from "./eslint-rules/validate-served-sequences-mountable.js";
 import requireRoutingDeclarations from "./eslint-rules/require-routing-declarations.js";
+import validateHostSdkVersion from "./eslint-rules/validate-host-sdk-version.js";
+import validateHostSdkVersionMismatch from "./eslint-rules/validate-host-sdk-version-mismatch.js";
+import validateHostSdkMissing from "./eslint-rules/validate-host-sdk-missing.js";
 
 
 
@@ -115,6 +118,7 @@ export default [
       "internal-plugin-ids": validateInternalPluginIds,
       "served-sequences-mountable": validateServedSequences,
       "routing-declarations": requireRoutingDeclarations,
+      "host-sdk-version": validateHostSdkVersion,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -140,6 +144,7 @@ export default [
       "internal-plugin-ids/validate-internal-plugin-ids": "error",
       "served-sequences-mountable/validate-served-sequences-mountable": "error",
       "routing-declarations/require-routing-declarations": "error",
+      "host-sdk-version/validate-host-sdk-version": "error",
 
 
 	      // Enforce externalized json-components: forbid local/public references in code
@@ -467,6 +472,23 @@ export default [
     },
     rules: {
       "routing-declarations/require-routing-declarations": "error",
+    },
+  },
+  // Validate host SDK version compatibility in package.json
+  {
+    files: ["package.json"],
+    languageOptions: {
+      parser: jsonParser,
+    },
+    plugins: {
+      "host-sdk-version-mismatch": validateHostSdkVersionMismatch,
+      "host-sdk-missing": validateHostSdkMissing,
+    },
+    rules: {
+      // Error for version mismatches - these WILL cause runtime errors
+      "host-sdk-version-mismatch/validate-host-sdk-version-mismatch": "error",
+      // Warning for missing dependencies - not all plugins need host-sdk
+      "host-sdk-missing/validate-host-sdk-missing": "warn",
     },
   },
 ];
