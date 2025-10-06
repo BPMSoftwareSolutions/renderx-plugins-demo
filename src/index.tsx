@@ -13,6 +13,10 @@ import { listComponents, getComponentById, onInventoryChanged } from "./domain/c
 import { cssRegistry } from "./domain/css/cssRegistry.facade";
 declare const process: { env?: Record<string, string | undefined> } | undefined;
 
+// Declare Vite-injected config constants
+declare const __CONFIG_OPENAI_API_KEY__: string | undefined;
+declare const __CONFIG_OPENAI_MODEL__: string | undefined;
+
 (async () => {
   const conductor = await initConductor();
   await Promise.all([
@@ -55,6 +59,31 @@ declare const process: { env?: Record<string, string | undefined> } | undefined;
   if (!(window as any).RenderX.cssRegistry) {
     (window as any).RenderX.cssRegistry = cssRegistry as any;
   }
+
+  // Host-Managed Configuration Service
+  if (!(window as any).RenderX.config) {
+    (window as any).RenderX.config = {
+      get: (key: string): string | undefined => {
+        switch (key) {
+          case 'OPENAI_API_KEY':
+            return typeof __CONFIG_OPENAI_API_KEY__ !== 'undefined'
+              ? __CONFIG_OPENAI_API_KEY__
+              : undefined;
+          case 'OPENAI_MODEL':
+            return typeof __CONFIG_OPENAI_MODEL__ !== 'undefined'
+              ? __CONFIG_OPENAI_MODEL__
+              : 'gpt-3.5-turbo'; // Default model
+          default:
+            return undefined;
+        }
+      },
+      has: (key: string): boolean => {
+        const value = (window as any).RenderX.config.get(key);
+        return value !== undefined && value !== '';
+      }
+    } as any;
+  }
+
   (window as any).RenderX.sequencesReady = true;
 
   (window as any).testEventRouter = function() {

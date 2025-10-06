@@ -177,3 +177,4 @@ json-sequences/
 /catalog/json-interactions/.generated/control.json
 /catalog/json-interactions/.generated/library.json
 /catalog/json-plugins/.generated/plugin-manifest.json
+/cypress/screenshots

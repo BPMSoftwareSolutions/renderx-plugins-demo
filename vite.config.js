@@ -4,6 +4,11 @@ import react from '@vitejs/plugin-react';
 
 
 export default {
+  define: {
+    // Inject environment variables for secure configuration
+    '__CONFIG_OPENAI_API_KEY__': JSON.stringify(process.env.OPENAI_API_KEY || ''),
+    '__CONFIG_OPENAI_MODEL__': JSON.stringify(process.env.OPENAI_MODEL || 'gpt-3.5-turbo'),
+  },
   resolve: {
     alias: {
       // Host SDK alias (legacy import name)
