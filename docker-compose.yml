@@ -1,0 +1,32 @@
+﻿version: '3.8'
+
+services:
+  renderx-host:
+    build: .
+    container_name: renderx-plugins-demo
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+      - RENDERX_DISABLE_STARTUP_VALIDATION=0
+      - RENDERX_DISABLE_INTEGRITY=0
+      - RENDERX_VALIDATION_STRICT=0
+      - LOG_LEVEL=debug
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+      - ./logs:/app/logs
+    networks:
+      - renderx-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  renderx-network:
+    driver: bridge
+
+volumes:
+  logs:

@@ -1,0 +1,20 @@
+﻿apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: renderx-config
+  labels:
+    app: renderx-plugins-demo
+data:
+  disable-startup-validation: "0"
+  disable-integrity: "0"
+  validation-strict: "0"
+  log-level: "debug"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: renderx-artifacts
+  labels:
+    app: renderx-plugins-demo
+data:
+  artifacts-path: "/app/artifacts"

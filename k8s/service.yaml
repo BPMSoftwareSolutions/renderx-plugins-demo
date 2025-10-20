@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: renderx-plugins-demo
+  labels:
+    app: renderx-plugins-demo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5173
+    protocol: TCP
+    name: http
+  selector:
+    app: renderx-plugins-demo
