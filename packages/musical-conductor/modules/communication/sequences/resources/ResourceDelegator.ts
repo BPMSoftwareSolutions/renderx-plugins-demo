@@ -358,8 +358,8 @@ export class ResourceDelegator {
    */
   private resolveTimingConflict(
     resourceId: string,
-    requesterId: string,
-    priority: string
+    _requesterId: string,
+    _priority: string
   ): AdvancedConflictResolution {
     return {
       strategy: "time-based",
@@ -377,8 +377,8 @@ export class ResourceDelegator {
    */
   private resolveDependencyConflict(
     resourceId: string,
-    requesterId: string,
-    priority: string
+    _requesterId: string,
+    _priority: string
   ): AdvancedConflictResolution {
     const alternativeResources: string[] = []; // Simplified - no alternatives
 
@@ -398,8 +398,8 @@ export class ResourceDelegator {
    */
   private resolveAccessConflict(
     resourceId: string,
-    requesterId: string,
-    priority: string
+    _requesterId: string,
+    _priority: string
   ): AdvancedConflictResolution {
     return {
       strategy: "priority-based",
