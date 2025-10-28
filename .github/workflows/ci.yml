@@ -1,5 +1,10 @@
 name: ci
 
+# Monorepo-aware CI pipeline
+# - Installs all workspace packages via npm workspaces
+# - Runs lint, test, and E2E across host and packages
+# - Caches node_modules and Cypress binary for faster builds
+
 on:
   push:
     branches: [main, feat/**, fix/**, chore/**]

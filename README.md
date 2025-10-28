@@ -4,10 +4,20 @@ A **thin-client host application** showcasing the RenderX plugin architecture. T
 
 ## Overview
 
-This repository contains:
+This repository is organized as a **monorepo** that consolidates all RenderX architecture components and dependencies. This structure:
 
-- A minimal host app that initializes the RenderX plugin system.
-- Example plugins serving as a sandbox for testing orchestration flows, UI extension, and manifest-driven panel slots.
+- **Simplifies Development**: All code in one place, easier to make cross-cutting changes
+- **Unifies Versioning**: Coordinate releases across all packages
+- **Shares Tooling**: Single ESLint, TypeScript, and test configuration
+- **Accelerates CI/CD**: Build and test all packages together
+
+### Repository Contents
+
+- **Host Application**: A minimal host app that initializes the RenderX plugin system
+- **Packages**: Core infrastructure and plugins (see `packages/` directory)
+- **Example Plugins**: Sandbox for testing orchestration flows, UI extension, and manifest-driven panel slots
+
+For detailed monorepo development guidelines, see [MONOREPO.md](./MONOREPO.md).
 
 ## Related Resources
 
