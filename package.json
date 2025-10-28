@@ -51,7 +51,7 @@
     "e2e:cypress:dev": "npm run pre:manifests && start-server-and-test dev http://localhost:5173 cy:run"
   },
   "dependencies": {
-    "@renderx-plugins/canvas": "^1.0.1",
+    "@renderx-plugins/canvas": "workspace:*",
     "@renderx-plugins/canvas-component": "^1.0.11",
     "@renderx-plugins/components": "0.1.1",
     "@renderx-plugins/control-panel": "0.1.0-rc.9",
