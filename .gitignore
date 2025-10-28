@@ -41,6 +41,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Ignore package-lock.json in workspace packages (only root lock is tracked)
+packages/*/package-lock.json
+
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
