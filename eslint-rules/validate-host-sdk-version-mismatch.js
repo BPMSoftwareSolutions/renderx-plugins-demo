@@ -55,6 +55,11 @@ const rule = {
             return;
           }
 
+          // Skip validation if host is using workspace protocol (monorepo)
+          if (hostSdkVersion.startsWith('workspace:')) {
+            return;
+          }
+
           const normalizeVersion = (version) => {
             if (!version) return null;
             return version.replace(/^[\^~>=<]/, '');
