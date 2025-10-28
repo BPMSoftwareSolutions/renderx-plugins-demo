@@ -371,7 +371,7 @@ See [Issue #321](https://github.com/BPMSoftwareSolutions/renderx-plugins-demo/is
 ### Phases
 
 - [x] Phase 1: Setup monorepo infrastructure
-- [ ] Phase 2: Migrate @renderx-plugins/host-sdk
+- [x] Phase 2: Migrate @renderx-plugins/host-sdk
 - [ ] Phase 3: Migrate @renderx-plugins/manifest-tools
 - [ ] Phase 4: Migrate musical-conductor
 - [ ] Phase 5: Migrate @renderx-plugins/canvas

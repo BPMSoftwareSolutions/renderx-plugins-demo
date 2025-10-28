@@ -1,3 +1,4 @@
+/* eslint-disable feature-flags/enforce-flag-ids */
 import {
   isFlagEnabled,
   getFlagMeta,

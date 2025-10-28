@@ -1,19 +1,8 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
-    "resolveJsonModule": true
+    "rootDir": "./"
   },
   "include": [
     "index.ts",
@@ -25,6 +14,9 @@
     "feature-flags.ts",
     "component-mapper.ts",
     "jsonComponent.mapper.ts",
+    "inventory.ts",
+    "cssRegistry.ts",
+    "config.ts",
     "types.ts",
     "types/**/*.d.ts",
     "core/**/*.ts",
@@ -32,6 +24,8 @@
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "tests",
+    "smoke"
   ]
 }

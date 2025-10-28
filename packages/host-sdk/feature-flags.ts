@@ -57,6 +57,7 @@ export function isFlagEnabled(id: string): boolean {
 
   // Delegate to provider if set (SSR-safe)
   if (flagsProvider) {
+    // eslint-disable-next-line feature-flags/enforce-flag-ids
     try { return !!flagsProvider.isFlagEnabled(id); } catch {}
   }
 
@@ -65,6 +66,7 @@ export function isFlagEnabled(id: string): boolean {
     const hostFlags = (window as any).RenderX?.featureFlags;
     if (hostFlags) {
       try {
+        // eslint-disable-next-line feature-flags/enforce-flag-ids
         return !!hostFlags.isFlagEnabled(id);
       } catch {
         // Fall through to defaults
