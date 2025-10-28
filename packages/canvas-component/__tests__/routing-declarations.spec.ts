@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 describe("Routing declarations for drag and resize.move sequences", () => {
-  const sequencesDir = path.join(process.cwd(), "json-sequences", "canvas-component");
+  const sequencesDir = path.join(__dirname, "..", "json-sequences", "canvas-component");
 
   it("drag.move.json should have topicMapping with routeToBase: true", () => {
     const dragMoveJsonPath = path.join(sequencesDir, "drag.move.json");

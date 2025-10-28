@@ -7,7 +7,7 @@ import { join } from 'node:path';
 type Beat = { dynamics?: string } & Record<string, unknown>;
 
 describe('copy/paste sequences schema (canvas-component)', () => {
-  const root = join(process.cwd(), 'json-sequences', 'canvas-component');
+  const root = join(__dirname, '..', 'json-sequences', 'canvas-component');
   const files = [
     'copy.json',
     'paste.json',

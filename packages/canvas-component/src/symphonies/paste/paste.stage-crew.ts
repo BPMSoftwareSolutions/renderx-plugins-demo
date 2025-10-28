@@ -31,7 +31,7 @@ export async function readFromClipboard(_data: any, _ctx: any) {
   let text = "";
   try {
     text = await (navigator as any)?.clipboard?.readText?.();
-  } catch (_err) {
+  } catch {
     // ignore
   }
   // Fallback to in-memory clipboard when system clipboard is empty/unavailable
