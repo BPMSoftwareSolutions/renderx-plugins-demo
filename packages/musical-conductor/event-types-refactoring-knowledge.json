@@ -1,0 +1,201 @@
+{
+  "knowledgeTransfer": {
+    "version": "1.0.0",
+    "exportedAt": "2025-01-07T16:00:00.000Z",
+    "fromAgent": "primary-development-agent",
+    "toAgent": "event-types-refactoring-agent",
+    "priority": "high",
+    "category": "refactoring",
+    "estimatedDuration": "2-3 hours"
+  },
+  "projectContext": {
+    "title": "Event-Types Refactoring: Remove Unused App-Specific Events",
+    "description": "Clean up the communication/event-types folder by removing unused app-specific event definitions while preserving core MusicalConductor functionality",
+    "scope": "modules/communication/event-types/",
+    "objective": "Reduce codebase complexity by removing unused event definitions that were specific to a previous application context"
+  },
+  "currentState": {
+    "eventTypeFiles": [
+      {
+        "file": "modules/communication/event-types/canvas.event-types.ts",
+        "lines": 43,
+        "events": 19,
+        "usage": "Only 'canvas-element-created' used in EventOrchestrator debugging",
+        "status": "mostly-unused"
+      },
+      {
+        "file": "modules/communication/event-types/element-library.event-types.ts",
+        "lines": 36,
+        "events": 13,
+        "usage": "No actual usage found in codebase",
+        "status": "unused"
+      },
+      {
+        "file": "modules/communication/event-types/control-panel.event-types.ts",
+        "lines": 25,
+        "events": 11,
+        "usage": "No actual usage found in codebase",
+        "status": "unused"
+      },
+      {
+        "file": "modules/communication/event-types/layout.event-types.ts",
+        "lines": 27,
+        "events": 11,
+        "usage": "No actual usage found in codebase",
+        "status": "unused"
+      },
+      {
+        "file": "modules/communication/event-types/core.event-types.ts",
+        "lines": 20,
+        "events": 7,
+        "usage": "Core system events - keep these",
+        "status": "keep"
+      },
+      {
+        "file": "modules/communication/event-types/index.ts",
+        "lines": 140,
+        "usage": "Central export point - needs updating",
+        "status": "needs-refactoring"
+      }
+    ],
+    "totalUnusedEvents": 54,
+    "totalUnusedLines": 131
+  },
+  "usageAnalysis": {
+    "actualUsages": [
+      {
+        "event": "canvas-element-created",
+        "file": "modules/communication/sequences/orchestration/EventOrchestrator.ts",
+        "lines": [175, 177, 179, 181],
+        "purpose": "Debugging canvas element creation",
+        "critical": false,
+        "canRemove": true
+      }
+    ],
+    "exportUsages": [
+      {
+        "location": "modules/communication/index.ts",
+        "exports": [
+          "CANVAS_EVENT_TYPES",
+          "CONTROL_PANEL_EVENT_TYPES",
+          "LAYOUT_EVENT_TYPES",
+          "ELEMENT_LIBRARY_EVENT_TYPES"
+        ],
+        "impact": "Public API exports - need to be removed"
+      }
+    ],
+    "typeUsages": [
+      {
+        "location": "modules/communication/event-types/index.ts",
+        "types": [
+          "CanvasEventType",
+          "ControlPanelEventType",
+          "LayoutEventType",
+          "ElementLibraryEventType"
+        ],
+        "impact": "Union types need updating"
+      }
+    ]
+  },
+  "refactoringPlan": {
+    "phase1": {
+      "title": "Remove Unused Event Type Files",
+      "tasks": [
+        "Remove canvas.event-types.ts (keep debugging reference for now)",
+        "Remove element-library.event-types.ts",
+        "Remove control-panel.event-types.ts",
+        "Remove layout.event-types.ts"
+      ],
+      "testAfter": true
+    },
+    "phase2": {
+      "title": "Update Index File",
+      "tasks": [
+        "Remove imports for deleted event type files",
+        "Remove from EVENT_TYPES consolidation object",
+        "Remove from individual exports",
+        "Remove from type exports",
+        "Update EventType union type",
+        "Remove from EVENT_CATEGORIES",
+        "Update getEventCategory function",
+        "Update getEventsByCategory function"
+      ],
+      "testAfter": true
+    },
+    "phase3": {
+      "title": "Update Main Communication Index",
+      "tasks": [
+        "Remove exports from modules/communication/index.ts",
+        "Update type exports"
+      ],
+      "testAfter": true
+    },
+    "phase4": {
+      "title": "Clean Up Debugging Code",
+      "tasks": [
+        "Remove canvas-element-created debugging from EventOrchestrator.ts",
+        "Verify no other references exist"
+      ],
+      "testAfter": true
+    }
+  },
+  "testingStrategy": {
+    "approach": "Test-driven refactoring following established methodology",
+    "baselineTests": [
+      "npm test - ensure all tests pass before starting",
+      "npm run build - verify clean compilation"
+    ],
+    "incrementalTesting": [
+      "Run tests after each phase",
+      "Verify no compilation errors",
+      "Check for any runtime issues"
+    ],
+    "regressionPrevention": [
+      "Focus on MusicalConductor functionality",
+      "Ensure EventBus still works correctly",
+      "Verify core event types remain functional"
+    ],
+    "testFiles": [
+      "tests/unit/communication/EventBus.simple.test.ts",
+      "tests/unit/communication/sequences/MusicalConductor.simple.test.ts"
+    ]
+  },
+  "riskAssessment": {
+    "low": ["Removing unused event type files", "Updating index exports"],
+    "medium": ["Modifying union types", "Updating utility functions"],
+    "high": ["None identified - these are unused events"],
+    "mitigations": [
+      "Incremental approach with testing after each phase",
+      "Keep core events untouched",
+      "Preserve MusicalConductor event types"
+    ]
+  },
+  "expectedOutcomes": {
+    "codeReduction": {
+      "filesRemoved": 4,
+      "linesRemoved": "~131 lines",
+      "eventsRemoved": 54
+    },
+    "maintainability": [
+      "Cleaner event-types folder structure",
+      "Reduced cognitive load for developers",
+      "Fewer unused exports in public API"
+    ],
+    "performance": [
+      "Slightly smaller bundle size",
+      "Reduced TypeScript compilation time",
+      "Cleaner type checking"
+    ]
+  },
+  "implementationNotes": {
+    "preserveCore": "Keep CORE_EVENT_TYPES and MUSICAL_CONDUCTOR_EVENT_TYPES intact",
+    "cleanDebug": "Remove canvas-element-created debugging code as it's not needed",
+    "updateDocs": "Update any documentation that references removed event types",
+    "verifyImports": "Ensure no other files import the removed event types"
+  },
+  "rollbackPlan": {
+    "gitCommits": "Make atomic commits for each phase for easy rollback",
+    "backupFiles": "Keep deleted files in a backup folder temporarily",
+    "testingCheckpoints": "If tests fail, rollback to previous working state"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "knowledgeTransfer": {
+    "version": "1.0.0",
+    "exportedAt": "2025-01-07T16:45:00.000Z",
+    "fromAgent": "event-types-refactoring-agent",
+    "toAgent": "cli-improvement-agent",
+    "priority": "high",
+    "category": "cli-improvement",
+    "estimatedDuration": "1-2 hours"
+  },
+  "projectContext": {
+    "title": "Knowledge Transfer Queue CLI Usability Issues",
+    "description": "Identified usability issues and missing functionality in the knowledge transfer queue CLI system that need improvement for better agent coordination",
+    "scope": "tools/cli/knowledge-cli.ts, tools/cli/queue/",
+    "objective": "Improve CLI usability and implement missing functionality for better agent experience"
+  },
+  "issuesIdentified": {
+    "missingFunctionality": [
+      {
+        "issue": "Consumed command not fully implemented",
+        "description": "The --consumed <transferId> option is defined but not handled in the handleQueue method",
+        "impact": "Agents cannot mark transfers as consumed via CLI",
+        "location": "tools/cli/knowledge-cli.ts:258, handleQueue method",
+        "severity": "high"
+      },
+      {
+        "issue": "Agent ID inference missing",
+        "description": "CLI doesn't automatically infer current agent ID for consumed/received operations",
+        "impact": "Agents must manually specify agent IDs, causing confusion",
+        "location": "tools/cli/knowledge-cli.ts:handleQueue",
+        "severity": "medium"
+      },
+      {
+        "issue": "Incomplete command handling",
+        "description": "handleQueue method only handles status, list, agent options but not sent/received/consumed/failed",
+        "impact": "Core transfer state management commands don't work",
+        "location": "tools/cli/knowledge-cli.ts:598-717",
+        "severity": "high"
+      }
+    ],
+    "usabilityProblems": [
+      {
+        "issue": "Confusing agent ID requirements",
+        "description": "Transfer shows 'primary-development-agent → event-types-refactoring-agent' but CLI doesn't clarify which agent ID to use",
+        "impact": "Agents get confused about which agent ID they should use for operations",
+        "severity": "medium"
+      },
+      {
+        "issue": "No feedback on failed operations",
+        "description": "When consumed command fails, no clear error message or guidance provided",
+        "impact": "Agents don't know why operations fail or how to fix them",
+        "severity": "medium"
+      },
+      {
+        "issue": "Inconsistent command patterns",
+        "description": "Some commands work with --option <value> while others expect different patterns",
+        "impact": "Inconsistent user experience across CLI commands",
+        "severity": "low"
+      }
+    ]
+  },
+  "experiencedWorkflow": {
+    "successfulOperations": [
+      {
+        "command": "npm run knowledge -- queue --status",
+        "result": "✅ Worked perfectly - showed queue status and available transfers"
+      },
+      {
+        "command": "npm run knowledge -- queue --list",
+        "result": "✅ Worked perfectly - listed all transfers with details"
+      },
+      {
+        "command": "npm run knowledge -- queue --received transfer-1754588505452-b7x3iao9m",
+        "result": "✅ Worked - marked transfer as received successfully"
+      }
+    ],
+    "failedOperations": [
+      {
+        "command": "npm run knowledge -- queue --consumed transfer-1754588505452-b7x3iao9m",
+        "result": "❌ Failed - command not implemented in handleQueue method",
+        "expectedBehavior": "Should mark transfer as consumed and show success message"
+      },
+      {
+        "command": "npm run knowledge -- queue --consumed transfer-1754588505452-b7x3iao9m --agent event-types-refactoring-agent",
+        "result": "❌ Failed - agent option not recognized for consumed command",
+        "expectedBehavior": "Should accept agent ID and mark transfer as consumed"
+      }
+    ]
+  },
+  "technicalAnalysis": {
+    "codeIssues": [
+      {
+        "file": "tools/cli/knowledge-cli.ts",
+        "method": "handleQueue",
+        "lines": "598-717",
+        "issue": "Missing implementation for consumed, sent, received, failed options",
+        "currentCode": "Only handles status, list, agent options in if-else chain",
+        "requiredFix": "Add handling for options.consumed, options.sent, options.received, options.failed"
+      },
+      {
+        "file": "tools/cli/knowledge-cli.ts",
+        "method": "handleQueue",
+        "issue": "No agent ID inference logic",
+        "requiredFix": "Add logic to determine current agent ID or provide clear guidance"
+      }
+    ],
+    "missingMethods": [
+      {
+        "method": "getCurrentAgentId",
+        "purpose": "Infer current agent ID from context or configuration",
+        "location": "tools/cli/knowledge-cli.ts"
+      },
+      {
+        "method": "handleTransferStateChange",
+        "purpose": "Handle consumed, sent, received, failed state changes",
+        "location": "tools/cli/knowledge-cli.ts"
+      }
+    ]
+  },
+  "proposedSolutions": {
+    "immediatefixes": [
+      {
+        "priority": "high",
+        "task": "Implement consumed command handling",
+        "description": "Add options.consumed handling in handleQueue method",
+        "implementation": "Call this.transferQueue.markAsConsumed(options.consumed, agentId) with proper agent ID resolution"
+      },
+      {
+        "priority": "high", 
+        "task": "Implement sent/received/failed command handling",
+        "description": "Add complete state change command handling in handleQueue",
+        "implementation": "Add if-else blocks for each state change option"
+      },
+      {
+        "priority": "medium",
+        "task": "Add agent ID inference",
+        "description": "Automatically determine agent ID or provide clear guidance",
+        "implementation": "Add getCurrentAgentId() method or improve error messages"
+      }
+    ],
+    "usabilityImprovements": [
+      {
+        "priority": "medium",
+        "task": "Improve error messages",
+        "description": "Provide clear feedback when operations fail",
+        "implementation": "Add try-catch blocks with descriptive error messages"
+      },
+      {
+        "priority": "low",
+        "task": "Add command validation",
+        "description": "Validate transfer IDs and agent IDs before operations",
+        "implementation": "Add validation methods and helpful error messages"
+      },
+      {
+        "priority": "low",
+        "task": "Standardize command patterns",
+        "description": "Ensure consistent CLI command patterns across all operations",
+        "implementation": "Review and standardize all CLI option handling"
+      }
+    ]
+  },
+  "testingStrategy": {
+    "testCases": [
+      {
+        "scenario": "Mark transfer as consumed",
+        "command": "npm run knowledge -- queue --consumed <transfer-id>",
+        "expectedResult": "Transfer marked as consumed with success message"
+      },
+      {
+        "scenario": "Mark transfer as consumed with agent ID",
+        "command": "npm run knowledge -- queue --consumed <transfer-id> --agent <agent-id>",
+        "expectedResult": "Transfer marked as consumed for specific agent"
+      },
+      {
+        "scenario": "Handle invalid transfer ID",
+        "command": "npm run knowledge -- queue --consumed invalid-id",
+        "expectedResult": "Clear error message about invalid transfer ID"
+      },
+      {
+        "scenario": "Handle missing agent permissions",
+        "command": "npm run knowledge -- queue --consumed <transfer-id> --agent wrong-agent",
+        "expectedResult": "Clear error message about agent permissions"
+      }
+    ]
+  },
+  "implementationNotes": {
+    "preserveExisting": "Keep all existing functionality working - only add missing features",
+    "errorHandling": "Add comprehensive error handling with helpful messages",
+    "consistency": "Maintain consistency with existing CLI patterns and help text",
+    "documentation": "Update CLI help text and README to reflect new functionality"
+  },
+  "successCriteria": {
+    "functionalRequirements": [
+      "All transfer state commands (consumed, sent, received, failed) work correctly",
+      "Agent ID inference works or provides clear guidance",
+      "Error messages are helpful and actionable",
+      "Commands work consistently across different scenarios"
+    ],
+    "usabilityRequirements": [
+      "Agents can easily mark transfers as consumed without confusion",
+      "Clear feedback provided for all operations",
+      "Consistent command patterns across all CLI operations",
+      "Help text accurately reflects available functionality"
+    ]
+  }
+}

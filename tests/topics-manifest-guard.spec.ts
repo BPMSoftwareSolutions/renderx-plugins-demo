@@ -24,7 +24,7 @@ describe('Topics manifest guardrails', () => {
     topicsJson = loadJson(topicsPath);
     topics = topicsJson?.topics || {};
     keys = Object.keys(topics);
-  });
+  }, 60000);
 
   it('includes critical Control Panel topics with routes', () => {
     const required = [

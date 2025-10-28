@@ -1,0 +1,80 @@
+# NPM Ignore - Override .gitignore for publishing
+# Include dist in npm package (excluded by .gitignore)
+!dist/**
+
+# Exclude development files
+.*/
+!.git/
+!.gitignore
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test artifacts
+test-results/
+screenshots/
+playwright-report/
+
+tests/
+coverage/
+*.lcov
+.nyc_output
+
+# Development tools
+tools/
+RenderX/
+*.tsbuildinfo
+.eslintcache
+
+# Build artifacts (keep only dist)
+build/
+.cache
+.parcel-cache
+.next
+.nuxt
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+
+# Config files
+jest.config.*
+jest.resolver.*
+tsconfig.*.json
+playwright.config.ts
+webpack.config.js
+vite.config.ts
+
+# Knowledge files
+*-knowledge.json
+*-transfer.json

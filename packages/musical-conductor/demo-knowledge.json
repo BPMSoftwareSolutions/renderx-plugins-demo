@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "agentId": "agent-demo-12345",
+    "timestamp": 1754584935892,
+    "version": "1.0.0",
+    "musicalConductorVersion": "1.0.0",
+    "exportType": "full",
+    "description": "Demo knowledge export from AI Agent"
+  },
+  "systemState": {
+    "conductorStatistics": {
+      "totalSequencesExecuted": 42,
+      "successRate": 0.95,
+      "averageExecutionTime": 150
+    },
+    "performanceMetrics": {
+      "memoryUsage": "45MB",
+      "cpuUsage": "12%"
+    },
+    "eventLogs": [
+      {
+        "timestamp": 1754584934892,
+        "event": "sequence.started",
+        "data": {
+          "sequenceId": "demo-seq-1"
+        }
+      },
+      {
+        "timestamp": 1754584935392,
+        "event": "sequence.completed",
+        "data": {
+          "sequenceId": "demo-seq-1"
+        }
+      }
+    ],
+    "queueState": {
+      "queuedSequences": [],
+      "timestamp": 1754584935892
+    }
+  },
+  "pluginKnowledge": {
+    "mountedPlugins": [
+      {
+        "id": "demo-plugin-1",
+        "name": "Demo Plugin",
+        "version": "1.0.0"
+      }
+    ],
+    "pluginConfigurations": [
+      {
+        "pluginId": "demo-plugin-1",
+        "config": {
+          "enabled": true,
+          "priority": "high"
+        }
+      }
+    ],
+    "pluginMetadata": [
+      {
+        "pluginId": "demo-plugin-1",
+        "metadata": {
+          "author": "AI Agent",
+          "category": "demo"
+        }
+      }
+    ],
+    "sequenceDefinitions": [
+      {
+        "id": "demo-sequence",
+        "name": "Demo Sequence",
+        "description": "A demonstration sequence",
+        "movements": [
+          {
+            "name": "Demo Movement",
+            "beats": [
+              {
+                "action": "log",
+                "data": {
+                  "message": "Hello from demo sequence!"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eventKnowledge": {
+    "eventSubscriptions": [
+      {
+        "id": "sub-1",
+        "eventName": "sequence.started",
+        "pluginId": "demo-plugin-1"
+      }
+    ],
+    "eventHistory": [
+      {
+        "eventName": "sequence.started",
+        "timestamp": 1754584934892,
+        "data": {}
+      }
+    ],
+    "eventPatterns": [
+      {
+        "name": "startup-pattern",
+        "events": [
+          "system.init",
+          "plugins.loaded"
+        ]
+      }
+    ],
+    "domainEvents": []
+  },
+  "resourceKnowledge": {
+    "resourceOwnership": [
+      {
+        "resourceId": "demo-resource",
+        "symphonyName": "demo-symphony",
+        "ownerId": "demo-plugin-1"
+      }
+    ],
+    "resourceConflicts": [],
+    "resourceDelegations": []
+  },
+  "learningData": {
+    "successPatterns": [
+      {
+        "pattern": "sequence-completion",
+        "successRate": 0.95,
+        "conditions": [
+          "proper-initialization"
+        ]
+      }
+    ],
+    "errorPatterns": [
+      {
+        "pattern": "timeout-error",
+        "frequency": 0.02,
+        "causes": [
+          "network-delay",
+          "resource-contention"
+        ]
+      }
+    ],
+    "optimizationInsights": [
+      {
+        "type": "performance",
+        "insight": "Sequences with fewer than 5 beats execute 30% faster",
+        "metric": "executionTime",
+        "value": 120,
+        "timestamp": 1754584935892
+      }
+    ],
+    "bestPractices": [
+      "Use conductor.play() instead of direct eventBus.emit() for SPA compliance",
+      "Always handle sequence errors gracefully with proper error handling strategies",
+      "Use appropriate musical dynamics (pp, p, mp, mf, f, ff) for sequence priorities",
+      "Implement proper resource ownership patterns to avoid conflicts",
+      "Use data baton (payload) for passing data between sequence beats"
+    ]
+  }
+}

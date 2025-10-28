@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "agentId": "agent-me1qublu-2k8t4",
+    "timestamp": 1754592113731,
+    "version": "1.0.0",
+    "musicalConductorVersion": "1.0.0",
+    "exportType": "full",
+    "description": "AI Agent Knowledge Export from MusicalConductor System"
+  },
+  "systemState": {
+    "conductorStatistics": {
+      "totalSequencesExecuted": 0,
+      "totalBeatsExecuted": 0,
+      "averageExecutionTime": 0,
+      "totalSequencesQueued": 0,
+      "currentQueueLength": 0,
+      "maxQueueLength": 0,
+      "averageQueueWaitTime": 0,
+      "errorCount": 0,
+      "successRate": 0,
+      "lastExecutionTime": null,
+      "sequenceCompletionRate": 0,
+      "chainedSequences": 0,
+      "mountedPlugins": 0
+    },
+    "queueState": {
+      "queuedSequences": [],
+      "timestamp": 1754592113732
+    },
+    "eventLogs": []
+  },
+  "pluginKnowledge": {
+    "mountedPlugins": [],
+    "pluginConfigurations": [],
+    "pluginMetadata": [],
+    "sequenceDefinitions": []
+  },
+  "eventKnowledge": {
+    "eventSubscriptions": [],
+    "eventHistory": [],
+    "eventPatterns": [],
+    "domainEvents": []
+  },
+  "resourceKnowledge": {
+    "resourceOwnership": [],
+    "resourceConflicts": [],
+    "resourceDelegations": []
+  },
+  "learningData": {
+    "successPatterns": [],
+    "errorPatterns": [],
+    "optimizationInsights": [],
+    "bestPractices": [
+      "Use conductor.play() instead of direct eventBus.emit() for SPA compliance",
+      "Always handle sequence errors gracefully with proper error handling strategies",
+      "Use appropriate musical dynamics (pp, p, mp, mf, f, ff) for sequence priorities",
+      "Implement proper resource ownership patterns to avoid conflicts",
+      "Use data baton (payload) for passing data between sequence beats"
+    ]
+  }
+}
