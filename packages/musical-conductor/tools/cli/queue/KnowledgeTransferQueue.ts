@@ -6,7 +6,6 @@
 import * as fs from "fs";
 import * as path from "path";
 import { CLILogger } from "../utils/CLILogger";
-import { AgentKnowledge } from "../knowledge-cli";
 
 export type TransferState =
   | "pending"

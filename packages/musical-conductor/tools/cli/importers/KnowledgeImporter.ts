@@ -197,8 +197,8 @@ export class KnowledgeImporter {
   }
 
   private async importSystemState(
-    systemState: any,
-    options: ImportOptions
+    _systemState: any,
+    _options: ImportOptions
   ): Promise<ImportResult> {
     const result: ImportResult = {
       success: true,
@@ -228,7 +228,7 @@ export class KnowledgeImporter {
 
   private async importPluginKnowledge(
     pluginKnowledge: any,
-    options: ImportOptions
+    _options: ImportOptions
   ): Promise<ImportResult> {
     const result: ImportResult = {
       success: true,
@@ -291,7 +291,7 @@ export class KnowledgeImporter {
 
   private async importEventKnowledge(
     eventKnowledge: any,
-    options: ImportOptions
+    _options: ImportOptions
   ): Promise<ImportResult> {
     const result: ImportResult = {
       success: true,
@@ -338,7 +338,7 @@ export class KnowledgeImporter {
 
   private async importResourceKnowledge(
     resourceKnowledge: any,
-    options: ImportOptions
+    _options: ImportOptions
   ): Promise<ImportResult> {
     const result: ImportResult = {
       success: true,
@@ -385,7 +385,7 @@ export class KnowledgeImporter {
 
   private async importLearningData(
     learningData: any,
-    options: ImportOptions
+    _options: ImportOptions
   ): Promise<ImportResult> {
     const result: ImportResult = {
       success: true,

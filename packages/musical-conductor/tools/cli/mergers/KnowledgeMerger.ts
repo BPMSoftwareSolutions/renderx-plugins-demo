@@ -183,7 +183,7 @@ export class KnowledgeMerger {
 
   private async mergeSystemState(
     knowledgeFiles: AgentKnowledge[],
-    options: MergeOptions
+    _options: MergeOptions
   ): Promise<any> {
     const merged: any = {};
 

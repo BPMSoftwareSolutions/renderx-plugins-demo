@@ -182,7 +182,7 @@ export class KnowledgeValidator {
 
   private async validateSystemState(
     systemState: any,
-    options: ValidationOptions
+    _options: ValidationOptions
   ): Promise<ValidationDetail> {
     const detail = this.createEmptyDetail();
 

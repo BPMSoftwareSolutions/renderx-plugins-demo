@@ -62,7 +62,7 @@ export class ShortcutManager {
         this.database = this.createDefaultDatabase();
         this.saveDatabase();
       }
-    } catch (error) {
+    } catch {
       this.logger.warn("⚠️ Failed to load shortcuts database, using defaults");
       this.database = this.createDefaultDatabase();
     }
