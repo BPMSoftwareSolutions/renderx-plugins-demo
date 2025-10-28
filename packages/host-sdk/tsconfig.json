@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "include": [
+    "index.ts",
+    "public-api.ts",
+    "pluginManifest.ts",
+    "conductor.ts",
+    "EventRouter.ts",
+    "interactionManifest.ts",
+    "feature-flags.ts",
+    "component-mapper.ts",
+    "jsonComponent.mapper.ts",
+    "inventory.ts",
+    "cssRegistry.ts",
+    "config.ts",
+    "types.ts",
+    "types/**/*.d.ts",
+    "core/**/*.ts",
+    "core/**/*.tsx"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "tests",
+    "smoke"
+  ]
+}

@@ -27,6 +27,8 @@ jobs:
             echo "npm ci failed – falling back to npm install"
             npm install --legacy-peer-deps
           fi
+      - name: Build workspace packages
+        run: npm run build:packages
       - name: Build artifacts with integrity (sanity)
         run: npm run artifacts:build:integrity
       - name: Precheck plugins and manifests
