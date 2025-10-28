@@ -1,16 +1,12 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "jsx": "react-jsx",
-    "strict": true,
     "noEmit": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {}
   },
-  "include": ["plugins", "__tests__", "src", "data", "packages"]
+  "include": ["plugins", "__tests__", "src", "data", "packages"],
+  "references": [
+    // Package references will be added here as packages are migrated
+  ]
 }
