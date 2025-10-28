@@ -372,7 +372,7 @@ export class KnowledgeTransferQueue {
     const now = Date.now();
     let expiredCount = 0;
 
-    for (const [transferId, transfer] of this.transfers) {
+    for (const [_transferId, transfer] of this.transfers) {
       if (
         transfer.metadata.expiresAt &&
         now > transfer.metadata.expiresAt &&
@@ -405,7 +405,7 @@ export class KnowledgeTransferQueue {
         this.transfers = new Map(parsed.transfers || []);
         this.agents = new Map(parsed.agents || []);
       }
-    } catch (error) {
+    } catch {
       this.logger.warn("⚠️ Failed to load transfer queue, starting fresh");
       this.transfers = new Map();
       this.agents = new Map();

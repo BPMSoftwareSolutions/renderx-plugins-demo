@@ -227,7 +227,7 @@ export class KnowledgeValidator {
 
   private async validatePluginKnowledge(
     pluginKnowledge: any,
-    options: ValidationOptions
+    _options: ValidationOptions
   ): Promise<ValidationDetail> {
     const detail = this.createEmptyDetail();
 
@@ -270,7 +270,7 @@ export class KnowledgeValidator {
 
   private async validateEventKnowledge(
     eventKnowledge: any,
-    options: ValidationOptions
+    _options: ValidationOptions
   ): Promise<ValidationDetail> {
     const detail = this.createEmptyDetail();
 
@@ -317,7 +317,7 @@ export class KnowledgeValidator {
 
   private async validateResourceKnowledge(
     resourceKnowledge: any,
-    options: ValidationOptions
+    _options: ValidationOptions
   ): Promise<ValidationDetail> {
     const detail = this.createEmptyDetail();
 
@@ -349,7 +349,7 @@ export class KnowledgeValidator {
 
   private async validateLearningData(
     learningData: any,
-    options: ValidationOptions
+    _options: ValidationOptions
   ): Promise<ValidationDetail> {
     const detail = this.createEmptyDetail();
 
