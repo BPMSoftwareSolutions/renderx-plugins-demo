@@ -46,15 +46,15 @@ describe('Topics manifest guardrails', () => {
 
   it('classifies canvas drag topics correctly (all drag topics have routes)', () => {
     // All drag topics should have routes with the updated plugin structure
-    expect(keys).toContain('canvas.component.drag.start.requested');
-    expect(keys).toContain('canvas.component.drag.end');  
+    expect(keys).toContain('canvas.component.drag.start');
+    expect(keys).toContain('canvas.component.drag.end');
     expect(keys).toContain('canvas.component.drag.move');
-    
-    const startRequestedRoutes = Array.isArray(topics['canvas.component.drag.start.requested']?.routes) ? topics['canvas.component.drag.start.requested'].routes.length : 0;
+
+    const startRoutes = Array.isArray(topics['canvas.component.drag.start']?.routes) ? topics['canvas.component.drag.start'].routes.length : 0;
     const endRoutes = Array.isArray(topics['canvas.component.drag.end']?.routes) ? topics['canvas.component.drag.end'].routes.length : 0;
     const moveRoutes = Array.isArray(topics['canvas.component.drag.move']?.routes) ? topics['canvas.component.drag.move'].routes.length : 0;
-    
-    expect(startRequestedRoutes).toBeGreaterThan(0);
+
+    expect(startRoutes).toBeGreaterThan(0);
     expect(endRoutes).toBeGreaterThan(0);
     expect(moveRoutes).toBeGreaterThan(0);
   });
