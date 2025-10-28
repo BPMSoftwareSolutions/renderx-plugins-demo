@@ -19,14 +19,8 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
-      - name: Install dependencies (prefer clean install)
-        run: |
-          if npm ci --legacy-peer-deps; then
-            echo "npm ci succeeded"
-          else
-            echo "npm ci failed – falling back to npm install"
-            npm install --legacy-peer-deps
-          fi
+      - name: Install dependencies (work around npm optional deps bug)
+        run: npm install --legacy-peer-deps
       - name: Build workspace packages
         run: npm run build:packages
       - name: Build artifacts with integrity (sanity)
@@ -47,14 +41,8 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
-      - name: Install dependencies (prefer clean install)
-        run: |
-          if npm ci --legacy-peer-deps; then
-            echo "npm ci succeeded"
-          else
-            echo "npm ci failed – falling back to npm install"
-            npm install --legacy-peer-deps
-          fi
+      - name: Install dependencies (work around npm optional deps bug)
+        run: npm install --legacy-peer-deps
       - name: Cache Cypress binary
         uses: actions/cache@v4
         with:
