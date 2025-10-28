@@ -74,6 +74,16 @@ describe('Config API', () => {
       expect(mockConfig.getValue).toHaveBeenCalledTimes(3);
     });
   });
+    it('should delegate to config.get when getValue is not available (back-compat)', () => {
+      const mockConfig = {
+        get: vi.fn().mockReturnValue('legacy-api-key'),
+      } as any;
+      (globalThis as any).window = { RenderX: { config: mockConfig } };
+      const result = getConfigValue('API_KEY');
+      expect(result).toBe('legacy-api-key');
+      expect(mockConfig.get).toHaveBeenCalledWith('API_KEY');
+    });
+
 
   describe('hasConfigValue', () => {
     it('should return false when window is not defined (SSR)', () => {
@@ -138,6 +148,20 @@ describe('Config API', () => {
       expect(hasConfigValue('API_URL')).toBe(true);
       expect(hasConfigValue('OTHER')).toBe(false);
       expect(mockConfig.hasValue).toHaveBeenCalledTimes(3);
+    });
+
+    it('should delegate to config.has when hasValue is not available (back-compat)', () => {
+      const mockConfig = {
+        has: vi.fn().mockReturnValue(true),
+      } as any;
+
+      (globalThis as any).window = {
+        RenderX: { config: mockConfig },
+      };
+
+      const result = hasConfigValue('API_KEY');
+      expect(result).toBe(true);
+      expect(mockConfig.has).toHaveBeenCalledWith('API_KEY');
     });
   });
 
