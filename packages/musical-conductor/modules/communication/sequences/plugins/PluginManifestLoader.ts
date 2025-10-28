@@ -238,7 +238,7 @@ export class PluginManifestLoader {
         const manifest = await this.loadManifest(path);
         console.log(`✅ Successfully loaded manifest from: ${path}`);
         return manifest;
-      } catch (error) {
+      } catch {
         console.warn(`⚠️ Failed to load manifest from ${path}, trying next...`);
       }
     }

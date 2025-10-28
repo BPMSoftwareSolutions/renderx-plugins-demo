@@ -3,12 +3,6 @@
  * Validates plugin structure, sequences, and handlers for CIA compliance
  */
 
-import type {
-  MusicalSequence,
-  SequenceMovement,
-  SequenceBeat,
-} from "../SequenceTypes.js";
-
 export interface PluginValidationResult {
   isValid: boolean;
   errors: string[];
@@ -284,9 +278,9 @@ export class PluginValidator {
 
       // Validate event naming conventions
       if (sequence.movements) {
-        sequence.movements.forEach((movement: any, movementIndex: number) => {
+        sequence.movements.forEach((movement: any) => {
           if (movement.beats) {
-            movement.beats.forEach((beat: any, beatIndex: number) => {
+            movement.beats.forEach((beat: any) => {
               if (beat.event) {
                 // Check for CIA event naming conventions
                 if (!beat.event.includes("-") && !beat.event.includes(".")) {
