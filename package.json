@@ -51,18 +51,18 @@
     "e2e:cypress:dev": "npm run pre:manifests && start-server-and-test dev http://localhost:5173 cy:run"
   },
   "dependencies": {
-    "@renderx-plugins/canvas": "*",
+    "@renderx-plugins/canvas": "^0.1.0-rc.4",
     "@renderx-plugins/canvas-component": "^1.0.11",
     "@renderx-plugins/components": "0.1.1",
     "@renderx-plugins/control-panel": "0.1.0-rc.9",
     "@renderx-plugins/header": "^1.0.2",
-    "@renderx-plugins/host-sdk": "*",
+    "@renderx-plugins/host-sdk": "^1.0.6",
     "@renderx-plugins/library": "^1.0.6",
     "@renderx-plugins/library-component": "^1.0.3",
-    "@renderx-plugins/manifest-tools": "*",
+    "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
     "lucide-react": "^0.544.0",
-    "musical-conductor": "*",
+    "musical-conductor": "^1.4.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
