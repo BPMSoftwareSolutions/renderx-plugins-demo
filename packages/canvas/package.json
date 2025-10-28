@@ -51,7 +51,7 @@
     ]
   },
   "dependencies": {
-    "@renderx-plugins/host-sdk": "workspace:*"
+    "@renderx-plugins/host-sdk": "*"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.43.0",
