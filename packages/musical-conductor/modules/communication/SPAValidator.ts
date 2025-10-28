@@ -322,7 +322,6 @@ export class SPAValidator {
     const lines = stack.split("\n");
     let isReactComponent = false;
     let isInMountMethod = false;
-    const isMusicalConductor = false;
     let source = "unknown";
 
     for (const line of lines) {

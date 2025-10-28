@@ -127,26 +127,26 @@ export class ResourceDelegator {
 
   /**
    * Check for timing conflicts
-   * @param resourceId - Resource ID
-   * @param requesterId - Requester ID
+   * @param _resourceId - Resource ID
+   * @param _requesterId - Requester ID
    * @returns True if timing conflict exists
    */
-  private hasTimingConflict(resourceId: string, requesterId: string): boolean {
+  private hasTimingConflict(_resourceId: string, _requesterId: string): boolean {
     // Simplified timing conflict check
     return false; // For now, assume no timing conflicts
   }
 
   /**
    * Check for dependency conflicts
-   * @param resourceId - Resource ID
-   * @param currentOwner - Current owner ID
-   * @param requesterId - Requester ID
+   * @param _resourceId - Resource ID
+   * @param _currentOwner - Current owner ID
+   * @param _requesterId - Requester ID
    * @returns True if dependency conflict exists
    */
   private hasDependencyConflict(
-    resourceId: string,
-    currentOwner: string,
-    requesterId: string
+    _resourceId: string,
+    _currentOwner: string,
+    _requesterId: string
   ): boolean {
     // Simplified dependency conflict check
     return false; // For now, assume no dependency conflicts
@@ -154,15 +154,15 @@ export class ResourceDelegator {
 
   /**
    * Check for access level conflicts
-   * @param resourceId - Resource ID
-   * @param currentOwner - Current owner ID
-   * @param requesterId - Requester ID
+   * @param _resourceId - Resource ID
+   * @param _currentOwner - Current owner ID
+   * @param _requesterId - Requester ID
    * @returns True if access conflict exists
    */
   private hasAccessConflict(
-    resourceId: string,
-    currentOwner: string,
-    requesterId: string
+    _resourceId: string,
+    _currentOwner: string,
+    _requesterId: string
   ): boolean {
     // Simplified access conflict check
     return false; // For now, assume no access conflicts
