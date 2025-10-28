@@ -167,6 +167,15 @@ export default [
       ],
     },
   },
+  // Package-specific overrides: exclude non-plugin library from plugin-only rules
+  {
+    files: ["packages/musical-conductor/**/*.{ts,tsx,js,jsx}"],
+    rules: {
+      "plugin-console/no-console-in-plugins": "off",
+      "play-routing/no-hardcoded-play-ids": "off",
+    },
+  },
+
 
   // Symphony files: enforce DOM access only in stage-crew handlers
   {

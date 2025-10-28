@@ -14,11 +14,11 @@ describe('No local json-topics merged', () => {
   const topicsPath = path.join(root, 'topics-manifest.json');
 
   beforeAll(() => {
-    const res = spawnSync('node', [script], { stdio: 'inherit' });
+    const res = spawnSync(process.execPath, [script], { stdio: 'inherit' });
     if (res.status !== 0) {
       throw new Error('Failed to regenerate topics-manifest.json');
     }
-  });
+  }, 60000);
 
   it('excludes known local-only test topics', () => {
     const topicsJson = loadJson(topicsPath);
