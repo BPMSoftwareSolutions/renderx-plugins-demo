@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/host-sdk run build",
+    "build:packages": "npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "dev": "npm run pre:manifests && vite",
@@ -39,8 +39,8 @@
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "packages:test": "npm --prefix packages/host-sdk run test",
-    "packages:lint": "npm --prefix packages/host-sdk run lint",
-    "packages:clean": "npm --prefix packages/host-sdk run clean",
+    "packages:lint": "npm --prefix packages/host-sdk run lint && npm --prefix packages/manifest-tools run lint",
+    "packages:clean": "npm --prefix packages/host-sdk run clean && npm --prefix packages/manifest-tools run clean",
     "e2e": "cypress run",
     "ci:precheck": "node scripts/ci-precheck.js",
     "ci": "npm run pre:manifests && npm run lint && npm test && npm run e2e:cypress",
@@ -59,7 +59,7 @@
     "@renderx-plugins/host-sdk": "workspace:*",
     "@renderx-plugins/library": "^1.0.6",
     "@renderx-plugins/library-component": "^1.0.3",
-    "@renderx-plugins/manifest-tools": "^0.1.2",
+    "@renderx-plugins/manifest-tools": "workspace:*",
     "gif.js.optimized": "^1.0.1",
     "lucide-react": "^0.544.0",
     "musical-conductor": "^1.4.5",
