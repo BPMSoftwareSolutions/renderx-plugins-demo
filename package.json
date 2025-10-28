@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build",
+    "build:packages": "npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "dev": "npm run pre:manifests && vite",

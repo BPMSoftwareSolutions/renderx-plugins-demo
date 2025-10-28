@@ -47,7 +47,7 @@ import { PluginManager } from "./plugins/PluginManager.js";
 // Instead we rely on a relative require which remains stable after build (rootDir is repo root).
 let pkg: any = { version: "unknown" };
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+   
   // Using relative path from this file to root package.json (two levels up from modules/communication/sequences)
   pkg = require("../../../package.json");
 } catch {}
