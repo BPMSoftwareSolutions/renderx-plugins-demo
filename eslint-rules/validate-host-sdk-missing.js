@@ -25,7 +25,19 @@ const rule = {
         'Plugin "{{pluginName}}" does not declare @renderx-plugins/host-sdk as a dependency. ' +
         'If this plugin uses host SDK APIs, it should declare the dependency.',
     },
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        properties: {
+          ignore: {
+            type: 'array',
+            items: { type: 'string' },
+            description: 'List of plugin names to ignore (without @renderx-plugins/ prefix)',
+          },
+        },
+        additionalProperties: false,
+      },
+    ],
   },
 
   create(context) {
@@ -34,12 +46,15 @@ const rule = {
       return {};
     }
 
+    const options = context.options[0] || {};
+    const ignoreList = options.ignore || [];
+
     return {
       Program(node) {
         try {
           const repoRoot = path.resolve(__dirname, '..');
           const nodeModulesPath = path.join(repoRoot, 'node_modules', '@renderx-plugins');
-          
+
           if (!fs.existsSync(nodeModulesPath)) {
             return;
           }
@@ -47,7 +62,7 @@ const rule = {
           const pluginDirs = fs.readdirSync(nodeModulesPath, { withFileTypes: true })
             .filter(dirent => dirent.isDirectory())
             .map(dirent => dirent.name)
-            .filter(name => name !== 'host-sdk');
+            .filter(name => name !== 'host-sdk' && !ignoreList.includes(name));
 
           for (const pluginName of pluginDirs) {
             const pluginPackageJsonPath = path.join(
