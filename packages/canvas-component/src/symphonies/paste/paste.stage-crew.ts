@@ -1,4 +1,5 @@
-import { EventRouter, resolveInteraction } from "@renderx-plugins/host-sdk";
+// import { EventRouter } from "@renderx-plugins/host-sdk";
+import { resolveInteraction } from "@renderx-plugins/host-sdk";
 import { getClipboardText } from "../_clipboard";
 import { toCreatePayloadFromData, attachStandardImportInteractions } from "../create/create.from-import";
 
@@ -30,7 +31,7 @@ export async function readFromClipboard(_data: any, _ctx: any) {
   let text = "";
   try {
     text = await (navigator as any)?.clipboard?.readText?.();
-  } catch (err) {
+  } catch (_err) {
     // ignore
   }
   // Fallback to in-memory clipboard when system clipboard is empty/unavailable
@@ -129,7 +130,7 @@ export async function createPastedComponent(data: any, ctx: any) {
   }
 }
 
-export async function notifyPasteComplete(_data: any, ctx: any) {
+export async function notifyPasteComplete(_data: any, _ctx: any) {
   try {
     // TODO: Re-enable once topics are properly registered in topics-manifest
     // await EventRouter.publish("canvas.component.pasted", {}, ctx?.conductor);

@@ -1,4 +1,4 @@
-import { EventRouter } from "@renderx-plugins/host-sdk";
+// import { EventRouter } from "@renderx-plugins/host-sdk";
 import {
   ensureOverlay,
   applyOverlayRectForEl,
@@ -11,7 +11,7 @@ import {
  *  - id: the Canvas component id (expected to be the <svg> element id)
  *  - path: slash-separated child indices (element-only), e.g. "0/1/0"
  */
-export async function showSvgNodeOverlay(data: any, ctx?: any) {
+export async function showSvgNodeOverlay(data: any, _ctx?: any) {
   const { id, path } = data || {};
   if (!id) return;
 
@@ -140,18 +140,18 @@ export async function showSvgNodeOverlay(data: any, ctx?: any) {
       "stroke-width": getAttr("stroke-width"),
       opacity: getAttr("opacity"),
     };
-    let attributes: Record<string, string | undefined> = { ...commonAttrs };
+    let _attributes: Record<string, string | undefined> = { ...commonAttrs };
     if (tag === "rect") {
-      attributes = {
-        ...attributes,
+      _attributes = {
+        ..._attributes,
         x: getAttr("x"),
         y: getAttr("y"),
         width: getAttr("width"),
         height: getAttr("height"),
       };
     } else if (tag === "circle") {
-      attributes = {
-        ...attributes,
+      _attributes = {
+        ..._attributes,
         cx: getAttr("cx"),
         cy: getAttr("cy"),
         r: getAttr("r"),
@@ -161,8 +161,8 @@ export async function showSvgNodeOverlay(data: any, ctx?: any) {
     // TODO: Re-enable once topics are properly registered in topics-manifest
     // await EventRouter.publish(
     //   "canvas.component.select.svg-node.changed",
-    //   { id: String(id), path: String(path || ""), tag, attributes },
-    //   ctx?.conductor
+    //   { id: String(id), path: String(path || ""), tag, attributes: _attributes },
+    //   _ctx?.conductor
     // );
   } catch {}
 }

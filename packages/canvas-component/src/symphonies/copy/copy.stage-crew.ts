@@ -1,4 +1,4 @@
-import { EventRouter } from "@renderx-plugins/host-sdk";
+// import { EventRouter } from "@renderx-plugins/host-sdk";
 import { setClipboardText } from "../_clipboard";
 
 function getSelectedId(data: any): string | undefined {
@@ -47,7 +47,7 @@ function serializeElement(el: HTMLElement, id: string) {
   };
 }
 
-export async function serializeSelectedComponent(data: any, ctx: any) {
+export async function serializeSelectedComponent(data: any, _ctx: any) {
   const id = getSelectedId(data);
   if (!id) return {};
   const el = document.getElementById(String(id)) as HTMLElement | null;
@@ -71,12 +71,12 @@ export async function copyToClipboard(data: any, ctx: any) {
     // Always populate memory clipboard as a fallback for headless runs
     try { setClipboardText(text); } catch {}
     await (navigator as any)?.clipboard?.writeText?.(text);
-  } catch (err) {
-    try { ctx?.logger?.warn?.("Clipboard write failed", err); } catch {}
+  } catch (_err) {
+    try { ctx?.logger?.warn?.("Clipboard write failed", _err); } catch {}
   }
 }
 
-export async function notifyCopyComplete(_data: any, ctx: any) {
+export async function notifyCopyComplete(_data: any, _ctx: any) {
   try {
     // TODO: Re-enable once topics are properly registered in topics-manifest
     // await EventRouter.publish("canvas.component.copied", {}, ctx?.conductor);

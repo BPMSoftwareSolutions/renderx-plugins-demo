@@ -16,7 +16,7 @@ vi.mock("react-dom/client", () => ({
 }));
 
 import { renderReact, cleanupReactRoot } from "../src/symphonies/create/create.react.stage-crew";
-import React from "react";
+// import React from "react";
 import { createRoot } from "react-dom/client";
 
 // Get the mocked functions
