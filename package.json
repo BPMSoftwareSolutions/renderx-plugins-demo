@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build",
+    "build:packages": "npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "dev": "npm run pre:manifests && vite",
@@ -62,7 +62,7 @@
     "@renderx-plugins/manifest-tools": "workspace:*",
     "gif.js.optimized": "^1.0.1",
     "lucide-react": "^0.544.0",
-    "musical-conductor": "^1.4.5",
+    "musical-conductor": "workspace:*",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
