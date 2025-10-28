@@ -7,7 +7,6 @@ import type { EventBus } from "../../EventBus.js";
 import type {
   SequenceExecutionContext,
   SequenceBeat,
-  SequenceMovement,
 } from "../SequenceTypes.js";
 import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "../SequenceTypes.js";
 import type { PerformanceTracker } from "./PerformanceTracker.js";
