@@ -158,7 +158,8 @@ function applyCompatibilityTransforms(name, seq) {
   }
   
   // Drag operation handling: component.drag -> component.drag.start (for topics)
-  if (transformed.includes('component.drag') && !transformed.includes('start') && !transformed.includes('move')) {
+  // But don't transform if it already has start, move, or end
+  if (transformed.includes('component.drag') && !transformed.includes('start') && !transformed.includes('move') && !transformed.includes('end')) {
     transformed = transformed.replace('component.drag', 'component.drag.start');
   }
   
@@ -470,6 +471,21 @@ export async function generateExternalTopicsCatalog() {
   const sequences = await discoverSequenceFiles();
   const topics = {};
 
+  // First pass: collect all actual sequence topics (these take precedence)
+  const actualTopicNames = new Set();
+  for (const seq of sequences) {
+    const topicName = deriveTopicFromSequence(seq);
+    if (topicName) {
+      actualTopicNames.add(topicName);
+      // Also add the base topic name (without .requested) if routeToBase is true
+      if (seq.sequence?.topicMapping?.routeToBase ||
+          (seq.sequence?.topicTransform?.routeToBase && topicName.match(seq.sequence.topicTransform.routeToBase))) {
+        const baseTopic = topicName.replace('.requested', '');
+        actualTopicNames.add(baseTopic);
+      }
+    }
+  }
+
   for (const seq of sequences) {
     // Process main sequence topic
     const topicName = deriveTopicFromSequence(seq);
@@ -480,7 +496,7 @@ export async function generateExternalTopicsCatalog() {
 
       // Check if sequence declares custom routing behavior
       let routedTopicName = topicName;
-      if (seq.sequence?.topicMapping?.routeToBase || 
+      if (seq.sequence?.topicMapping?.routeToBase ||
           (seq.sequence?.topicTransform?.routeToBase && topicName.match(seq.sequence.topicTransform.routeToBase))) {
         // Route to base topic instead of .requested variant
         routedTopicName = topicName.replace('.requested', '');
@@ -495,10 +511,15 @@ export async function generateExternalTopicsCatalog() {
         };
       }
     }
-    
+
     // Process declared lifecycle and notification topics
     const lifecycleTopics = extractLifecycleTopicsFromSequence(seq);
     for (const lifecycleTopic of lifecycleTopics) {
+      // Skip auto-generated lifecycle topics if an actual sequence file exists for that topic
+      if (actualTopicNames.has(lifecycleTopic.name)) {
+        continue;
+      }
+
       if (!topics[lifecycleTopic.name]) {
         topics[lifecycleTopic.name] = {
           routes: lifecycleTopic.routes,
@@ -508,7 +529,7 @@ export async function generateExternalTopicsCatalog() {
         };
       }
     }
-    
+
     // Process beat event topics (these become routed topics)
     const beatTopics = extractTopicsFromSequenceBeats(seq);
     for (const beatTopic of beatTopics) {
