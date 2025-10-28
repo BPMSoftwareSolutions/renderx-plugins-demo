@@ -379,7 +379,7 @@ export class SPAValidator {
         normalized.includes("EventBus.js") ||
         normalized.includes("SPAValidator.js")
       ) {
-        isMusicalConductor = true;
+        const _isMusicalConductor = true;
         source = "MusicalConductor";
         // MusicalConductor is allowed to access eventBus directly for internal operations
         return {

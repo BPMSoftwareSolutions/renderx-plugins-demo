@@ -36,7 +36,7 @@ export class BeatExecutor {
   constructor(
     eventBus: EventBus,
     spaValidator: SPAValidator,
-    statisticsManager?: StatisticsManager
+    _statisticsManager?: StatisticsManager
   ) {
     this.eventBus = eventBus;
     this.spaValidator = spaValidator;
