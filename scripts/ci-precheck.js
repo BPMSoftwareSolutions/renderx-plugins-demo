@@ -14,6 +14,7 @@ import fs from 'fs';
 import path from 'path';
 import url from 'url';
 import { createRequire } from 'module';
+import { execSync } from 'child_process';
 
 const cwd = process.cwd();
 const to = (...p) => path.join(cwd, ...p);
@@ -44,6 +45,24 @@ log('module resolution (require.resolve)', {
   '@renderx-plugins/header': resolvedHeader || 'NOT RESOLVED',
   '@renderx-plugins/host-sdk': resolvedHostSdk || 'NOT RESOLVED',
 });
+
+// If using workspace host-sdk, ensure it's built before dynamic import
+try {
+  const rootPkg = JSON.parse(fs.readFileSync(to('package.json'), 'utf-8'));
+  const hostDep = rootPkg?.dependencies?.['@renderx-plugins/host-sdk'] || '';
+  const isWorkspace = typeof hostDep === 'string' && hostDep.startsWith('workspace:');
+  const hostSdkNmDir = to('node_modules', '@renderx-plugins', 'host-sdk');
+  const hostSdkDistIndex = path.join(hostSdkNmDir, 'dist', 'index.js');
+  const hostSdkWorkspaceDir = to('packages', 'host-sdk');
+  const needsBuild = isWorkspace && exists(hostSdkWorkspaceDir) && !exists(hostSdkDistIndex);
+  if (needsBuild) {
+    log('ci-precheck', 'Detected workspace host-sdk without dist. Building packages/host-sdk...');
+    execSync('npm --prefix packages/host-sdk run build', { stdio: 'inherit' });
+  }
+} catch (e) {
+  // Non-fatal: continue to import checks; failures will be reported below
+  log('ci-precheck', `Host SDK pre-build step skipped/failed: ${e?.message || e}`);
+}
 
 // 1b) Try dynamic import to validate ESM importability
 async function tryImport(id) {
