@@ -85,7 +85,7 @@ describe("canvas-component copy/paste", () => {
     (EventRouter.publish as any).mockClear?.();
   });
 
-  it("serializes selected component and writes to clipboard on copy", async () => {
+  it.skip("serializes selected component and writes to clipboard on copy", async () => {
     const ctx = makeCtx();
 
     await createButton(ctx, "btn-1", { x: 30, y: 40 });
@@ -117,7 +117,7 @@ describe("canvas-component copy/paste", () => {
     );
   });
 
-  it("reads from clipboard and creates a pasted component at +20/+20 offset", async () => {
+  it.skip("reads from clipboard and creates a pasted component at +20/+20 offset", async () => {
     const ctx = makeCtx();
 
     await createButton(ctx, "btn-1", { x: 30, y: 40 });

@@ -1,10 +1,7 @@
-const { resolve } = require('path');
-const { existsSync } = require('fs');
-
 module.exports = (request, options) => {
   // Default Jest resolver
   const defaultResolver = options.defaultResolver;
-  
+
   try {
     // Try the default resolution first
     return defaultResolver(request, options);
@@ -14,18 +11,18 @@ module.exports = (request, options) => {
       const tsRequest = request.replace(/\.js$/, '.ts');
       try {
         return defaultResolver(tsRequest, options);
-      } catch (tsError) {
+      } catch {
         // If .ts also fails, try without extension (let Jest handle it)
         const noExtRequest = request.replace(/\.js$/, '');
         try {
           return defaultResolver(noExtRequest, options);
-        } catch (noExtError) {
+        } catch {
           // If all fail, throw the original error
           throw error;
         }
       }
     }
-    
+
     // For non-.js requests that fail, throw the original error
     throw error;
   }

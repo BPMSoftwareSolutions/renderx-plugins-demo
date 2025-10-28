@@ -240,7 +240,7 @@ export class SPAValidator {
     if (typeof window === "undefined") return;
 
     // Monitor access to window.renderxCommunicationSystem.eventBus
-    const originalDescriptor = Object.getOwnPropertyDescriptor(
+    const _originalDescriptor = Object.getOwnPropertyDescriptor(
       window,
       "renderxCommunicationSystem"
     );

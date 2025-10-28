@@ -6,7 +6,7 @@ import { describe, it, expect } from "vitest";
 describe("plugin-manifest runtime entry: @renderx-plugins/canvas-component", () => {
   it("includes a runtime entry for @renderx-plugins/canvas-component", async () => {
     // @ts-ignore - Vite raw import
-    const raw = await import("../public/plugins/plugin-manifest.json?raw");
+    const raw = await import("../../../public/plugins/plugin-manifest.json?raw");
     const txt: string = (raw as any)?.default || (raw as any);
     const manifest = JSON.parse(txt || "{}");
     const plugins = Array.isArray(manifest.plugins) ? manifest.plugins : [];
