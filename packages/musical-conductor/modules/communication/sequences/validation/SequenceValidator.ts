@@ -218,7 +218,7 @@ export class SequenceValidator {
       // Check for circular references
       try {
         JSON.stringify(data);
-      } catch (error) {
+      } catch {
         errors.push("Sequence data contains circular references");
       }
 

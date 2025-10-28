@@ -6,10 +6,7 @@
 import { EventBus, ConductorEventBus } from "@communication/EventBus";
 import {
   TestEnvironment,
-  EventTestHelpers,
-  AsyncTestHelpers,
 } from "@test-utils/test-helpers";
-import { MockEventBusFactory } from "@mocks/MockEventBus";
 
 describe("EventBus", () => {
   let eventBus: EventBus;

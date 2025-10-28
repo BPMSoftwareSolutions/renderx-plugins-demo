@@ -184,7 +184,7 @@ describe("Movement Timing Integration", () => {
       eventBus.subscribe("test-single", () => Promise.resolve());
 
       // Execute the sequence
-      const executionId = await conductor.startSequence(
+      const _executionId = await conductor.startSequence(
         "Performance Tracker Test"
       );
 
@@ -236,7 +236,7 @@ describe("Movement Timing Integration", () => {
       // Execute the sequence and expect it to fail
       try {
         await conductor.startSequence("Movement Failure Test");
-      } catch (error) {
+      } catch {
         // Expected to fail
       }
 

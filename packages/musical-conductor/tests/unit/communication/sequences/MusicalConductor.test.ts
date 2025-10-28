@@ -185,7 +185,7 @@ describe("MusicalConductor", () => {
       conductor.registerSequence(TestSequences.FAST_TEMPO_SEQUENCE);
 
       // Start first sequence
-      const id1 = await conductor.startSequence(
+      const _id1 = await conductor.startSequence(
         TestSequences.BASIC_TEST_SEQUENCE.name
       );
 
