@@ -5,8 +5,7 @@ import {
   getAvailableSequences,
   generateRequestId,
   validateParameters,
-  convertToHistoryItem,
-  getSequenceMetadata
+  convertToHistoryItem
 } from '../src/ui/diagnostics/services/sequence-execution.service';
 import type { LiveExecution } from '../src/ui/diagnostics/types';
 

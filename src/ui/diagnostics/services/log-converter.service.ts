@@ -127,7 +127,7 @@ function processLogLine(line: LogLine, executions: Map<string, SequenceContext>,
   const movementStartMatch = content.match(/Movement Started:\s*(.+?)\s*\((\d+)\s*beats?\)/);
   if (movementStartMatch) {
     const movementName = movementStartMatch[1].trim();
-    const beatCount = parseInt(movementStartMatch[2], 10);
+    const _beatCount = parseInt(movementStartMatch[2], 10);
     const lastExecution = getLastExecution(executions);
     if (lastExecution) {
       lastExecution.currentMovement = movementName;
@@ -144,7 +144,7 @@ function processLogLine(line: LogLine, executions: Map<string, SequenceContext>,
   const beatStartMatch = content.match(/Beat (\d+) Started:\s*(.+?)\s*\(([^)]+)\)/);
   if (beatStartMatch) {
     const beatNumber = parseInt(beatStartMatch[1], 10);
-    const beatName = beatStartMatch[2].trim();
+    const _beatName = beatStartMatch[2].trim();
     const event = beatStartMatch[3].trim();
     const lastExecution = getLastExecution(executions);
     if (lastExecution && lastExecution.currentMovement) {
@@ -196,7 +196,7 @@ function processLogLine(line: LogLine, executions: Map<string, SequenceContext>,
           }
         }
       }
-    } catch (error) {
+    } catch {
       // Ignore JSON parse errors
     }
     return;
@@ -221,9 +221,9 @@ function processLogLine(line: LogLine, executions: Map<string, SequenceContext>,
   const sequenceCompletedMatch = content.match(/Sequence "(.+?)" completed in (\d+)ms/);
   if (sequenceCompletedMatch) {
     const sequenceName = sequenceCompletedMatch[1];
-    const duration = parseInt(sequenceCompletedMatch[2], 10);
+    const _duration = parseInt(sequenceCompletedMatch[2], 10);
     // Mark execution as complete
-    for (const [id, ctx] of executions.entries()) {
+    for (const [_id, ctx] of executions.entries()) {
       if (ctx.sequenceName === sequenceName && !ctx.startTime) {
         // This execution is complete
         break;

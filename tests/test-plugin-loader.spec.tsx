@@ -8,7 +8,7 @@
  * Exclusion configured in vitest.config.ts under test.exclude
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 // Mock the SDK imports
 vi.mock('@renderx-plugins/host-sdk/core/conductor/conductor', () => ({
@@ -64,6 +64,7 @@ vi.mock('@renderx-plugins/host-sdk', () => ({
 vi.mock('../src/global.css', () => ({}));
 
 // Import the component after mocks are set up
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SophisticatedPluginLoader from '../src/test-plugin-loader';
 
 describe('SophisticatedPluginLoader - Routes Tab Issue', () => {

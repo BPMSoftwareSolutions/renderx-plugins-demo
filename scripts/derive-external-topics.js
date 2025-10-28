@@ -94,7 +94,7 @@ function applyPluginTopicTransform(seq, transform) {
   return topicName;
 }
 
-function applyPluginInteractionTransform(seq, transform) {
+function _applyPluginInteractionTransform(seq, transform) {
   // Apply plugin-declared interaction transformation rules
   let route = seq.sequenceId
     .replace(/-symphony$/, '')
@@ -377,9 +377,9 @@ function extractTopicsFromSequenceBeats(seq) {
             }
           }
         }
-        
+
         // If sequence routes to base, beat events should route to the main sequence topic
-        let routesToSequence = [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }];
+        let _routesToSequence = [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }];
         if (routeToBase) {
           // Beat events in sequences with routeToBase should not create separate topics
           // They will be handled by the main sequence topic

@@ -24,8 +24,8 @@ describe('Host Configuration Service', () => {
       // Mock mockWindow.RenderX.config
       mockWindow.RenderX = {
         config: {
-          get: (key: string) => undefined,
-          has: (key: string) => false
+          get: (_key: string) => undefined,
+          has: (_key: string) => false
         }
       };
 
@@ -41,7 +41,7 @@ describe('Host Configuration Service', () => {
             if (key === 'OPENAI_API_KEY') return 'test-key';
             return undefined;
           },
-          has: (key: string) => false
+          has: (_key: string) => false
         }
       };
 
@@ -119,7 +119,7 @@ describe('Host Configuration Service', () => {
     it('should return false when key does not exist', () => {
       mockWindow.RenderX = {
         config: {
-          get: (key: string) => undefined,
+          get: (_key: string) => undefined,
           has: (key: string) => {
             const value = mockWindow.RenderX.config.get(key);
             return value !== undefined && value !== '';
@@ -152,7 +152,7 @@ describe('Host Configuration Service', () => {
     it('should return false when key exists but value is undefined', () => {
       mockWindow.RenderX = {
         config: {
-          get: (key: string) => undefined,
+          get: (_key: string) => undefined,
           has: (key: string) => {
             const value = mockWindow.RenderX.config.get(key);
             return value !== undefined && value !== '';

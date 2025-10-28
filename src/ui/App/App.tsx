@@ -3,7 +3,7 @@ import { LayoutEngine } from "../../domain/layout/LayoutEngine";
 import { isFlagEnabled } from "@renderx-plugins/host-sdk";
 import { SlotContainer } from "../../domain/layout/SlotContainer";
 import { wireUiEvents } from "../events/wiring";
-import uiEventDefs from "../../core/manifests/uiEvents.json";
+import uiEventDefs from "../../core/manifests/uiEvents.json" with { type: "json" };
 import { DiagnosticsOverlay } from "../diagnostics";
 import "../../domain/layout/legacyLayout.css";
 
