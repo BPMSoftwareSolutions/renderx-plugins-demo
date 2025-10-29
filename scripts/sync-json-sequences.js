@@ -134,7 +134,9 @@ async function syncJsonSequences() {
 
     // Also copy sequences from local packages/ directory
     const packagesDir = join(rootDir, 'packages');
+    console.log(`🔍 Discovering sequences from local packages in: ${packagesDir}`);
     const localPkgs = await discoverRenderxSequencePackages(packagesDir);
+    console.log(`🔍 Found ${localPkgs.length} local packages with sequences`);
     for (const pkg of localPkgs) {
       const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
       for (const rel of pkg.sequences) {
