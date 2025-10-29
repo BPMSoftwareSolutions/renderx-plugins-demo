@@ -28,7 +28,7 @@ export class StageCueLogger {
     try {
       const line = JSON.stringify(cue);
       this.fs.appendFileSync(this.filePath, line + "\n");
-    } catch (e) {
+    } catch {
       // swallow errors in tests
     }
   }

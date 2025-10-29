@@ -183,7 +183,7 @@ export class KnowledgeMerger {
 
   private async mergeSystemState(
     knowledgeFiles: AgentKnowledge[],
-    options: MergeOptions
+    _options: MergeOptions
   ): Promise<any> {
     const merged: any = {};
 
@@ -200,7 +200,7 @@ export class KnowledgeMerger {
 
   private async mergePluginKnowledge(
     knowledgeFiles: AgentKnowledge[],
-    options: MergeOptions
+    _options: MergeOptions
   ): Promise<any> {
     const merged = {
       mountedPlugins: [] as any[],
@@ -254,7 +254,7 @@ export class KnowledgeMerger {
 
   private async mergeEventKnowledge(
     knowledgeFiles: AgentKnowledge[],
-    options: MergeOptions
+    _options: MergeOptions
   ): Promise<any> {
     const merged = {
       eventSubscriptions: [] as any[],
@@ -311,7 +311,7 @@ export class KnowledgeMerger {
 
   private async mergeResourceKnowledge(
     knowledgeFiles: AgentKnowledge[],
-    options: MergeOptions
+    _options: MergeOptions
   ): Promise<any> {
     const merged = {
       resourceOwnership: [] as any[],
@@ -349,7 +349,7 @@ export class KnowledgeMerger {
 
   private async mergeLearningData(
     knowledgeFiles: AgentKnowledge[],
-    options: MergeOptions
+    _options: MergeOptions
   ): Promise<any> {
     const merged = {
       successPatterns: [] as any[],

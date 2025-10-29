@@ -17,7 +17,6 @@
  */
 
 import { EventBus, EventCallback, UnsubscribeFunction } from "../EventBus.js";
-import { SPAValidator } from "../SPAValidator.js";
 import type {
   MusicalSequence,
   SequenceExecutionContext,
@@ -25,12 +24,8 @@ import type {
   SequenceRequest,
   SequencePriority,
   SequenceBeat,
-  SequenceMovement,
 } from "./SequenceTypes.js";
 import {
-  MUSICAL_TIMING,
-  MUSICAL_DYNAMICS,
-  MUSICAL_CONDUCTOR_EVENT_TYPES,
   SEQUENCE_PRIORITIES,
 } from "./SequenceTypes.js";
 
@@ -47,7 +42,7 @@ import { PluginManager } from "./plugins/PluginManager.js";
 // Instead we rely on a relative require which remains stable after build (rootDir is repo root).
 let pkg: any = { version: "unknown" };
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+   
   // Using relative path from this file to root package.json (two levels up from modules/communication/sequences)
   pkg = require("../../../package.json");
 } catch {}

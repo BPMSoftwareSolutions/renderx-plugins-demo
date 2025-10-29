@@ -423,7 +423,7 @@ export class PerformanceTracker {
     }
 
     // Check for long-running sequences
-    for (const [executionId, timing] of this.sequenceTimings.entries()) {
+    for (const [_executionId, timing] of this.sequenceTimings.entries()) {
       const elapsed = now - timing.startTime;
       if (elapsed > sequenceThreshold) {
         warnings.push(

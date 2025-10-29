@@ -497,7 +497,8 @@ export default [
       // Error for version mismatches - these WILL cause runtime errors
       "host-sdk-version-mismatch/validate-host-sdk-version-mismatch": "error",
       // Warning for missing dependencies - not all plugins need host-sdk
-      "host-sdk-missing/validate-host-sdk-missing": "warn",
+      // Ignore: components (JSON-only catalog), header (has host-sdk in devDependencies)
+      "host-sdk-missing/validate-host-sdk-missing": ["warn", { ignore: ["components", "header"] }],
     },
   },
 ];

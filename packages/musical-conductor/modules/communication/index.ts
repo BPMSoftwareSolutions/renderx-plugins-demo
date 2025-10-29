@@ -50,9 +50,6 @@ export {
   validateAllSequences,
 } from "./sequences/index.js";
 
-// Sequence Types imports for internal use
-import { MUSICAL_CONDUCTOR_EVENT_TYPES } from "./sequences/SequenceTypes.js";
-
 // Sequence Types exports
 export {
   MUSICAL_DYNAMICS,

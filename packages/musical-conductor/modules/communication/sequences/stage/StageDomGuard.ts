@@ -189,7 +189,7 @@ export class StageDomGuard {
     }
   }
 
-  private static maybeWarn(op: string, el: any): void {
+  private static maybeWarn(op: string, _el: any): void {
     try {
       if (this.silenced > 0) return;
       // In tests/CI, keep output concise

@@ -113,7 +113,7 @@ export class PluginLoader {
         this.moduleCache.set(pluginPath, module);
         console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
         return module;
-      } catch (originalError) {
+      } catch {
         console.log(
           `⚠️ Dev load failed (${pluginPath}), trying bundled path as fallback`
         );
@@ -130,7 +130,7 @@ export class PluginLoader {
         this.moduleCache.set(pluginPath, module);
         console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
         return module;
-      } catch (bundledError) {
+      } catch {
         console.warn(
           `⚠️ Failed to load plugin from both dev and bundled paths for ${pluginPath}`
         );
@@ -147,7 +147,7 @@ export class PluginLoader {
         this.moduleCache.set(pluginPath, module);
         console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
         return module;
-      } catch (bundledError) {
+      } catch {
         console.log(
           `⚠️ Bundled version not available (${bundledPath}), trying original path`
         );

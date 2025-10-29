@@ -315,7 +315,7 @@ export class PluginManager {
                         try {
                           // Prefer correlation id from CallbackRegistry key on data if present
                           const key = (CBInternal as any).CORRELATION_KEY;
-                          const corr =
+                          const _corr =
                             (data as any)?.[key] ||
                             `mc-${Date.now()}-${Math.random()
                               .toString(36)

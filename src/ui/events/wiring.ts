@@ -41,7 +41,7 @@ export function wireUiEvents(defs: UiEventDef[]): () => void {
       try {
         // Guard checks
         if (def.guard?.key) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+           
           const key = (e as any).key as string | undefined;
           if (key !== def.guard.key) return;
         }

@@ -163,8 +163,8 @@ export function convertToHistoryItem(
   execution: LiveExecution,
   sequenceName: string
 ) {
-  const successfulBeats = execution.beats.filter(b => b.status === 'success').length;
-  const totalDuration = execution.totalDuration || 
+  const _successfulBeats = execution.beats.filter(b => b.status === 'success').length;
+  const totalDuration = execution.totalDuration ||
     (execution.endTime && execution.startTime 
       ? new Date(execution.endTime).getTime() - new Date(execution.startTime).getTime()
       : 0);

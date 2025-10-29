@@ -59,7 +59,7 @@ describe("Plugin handler context integrity (ADR-0008)", () => {
           } catch {}
         }
       );
-      const to = setTimeout(() => {
+      const _to = setTimeout(() => {
         try {
           unsubStart();
           unsubDone();

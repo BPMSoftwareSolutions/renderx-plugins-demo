@@ -1,0 +1,18 @@
+{
+  "plugin": "CanvasComponentPlugin",
+  "topics": {
+    "canvas.component.copied": {
+      "visibility": "public",
+      "notes": "Published when a component is copied to clipboard"
+    },
+    "canvas.component.pasted": {
+      "visibility": "public",
+      "notes": "Published when a component is pasted from clipboard"
+    },
+    "canvas.component.select.svg-node.changed": {
+      "visibility": "public",
+      "notes": "Published when SVG node selection changes"
+    }
+  }
+}
+

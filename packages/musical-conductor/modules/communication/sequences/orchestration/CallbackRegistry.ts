@@ -53,7 +53,6 @@ export class CallbackRegistry {
     const visit = (node: any, path: string) => {
       if (!node || typeof node !== "object") return;
       // Avoid reserved fields
-      const keys = Array.isArray(node) ? node.keys?.() : Object.keys(node);
       if (Array.isArray(node)) {
         for (let i = 0; i < node.length; i++) {
           const child = node[i];

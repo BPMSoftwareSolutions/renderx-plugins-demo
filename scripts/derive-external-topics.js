@@ -94,7 +94,7 @@ function applyPluginTopicTransform(seq, transform) {
   return topicName;
 }
 
-function applyPluginInteractionTransform(seq, transform) {
+function _applyPluginInteractionTransform(seq, transform) {
   // Apply plugin-declared interaction transformation rules
   let route = seq.sequenceId
     .replace(/-symphony$/, '')
@@ -158,7 +158,8 @@ function applyCompatibilityTransforms(name, seq) {
   }
   
   // Drag operation handling: component.drag -> component.drag.start (for topics)
-  if (transformed.includes('component.drag') && !transformed.includes('start') && !transformed.includes('move')) {
+  // But don't transform if it already has start, move, or end
+  if (transformed.includes('component.drag') && !transformed.includes('start') && !transformed.includes('move') && !transformed.includes('end')) {
     transformed = transformed.replace('component.drag', 'component.drag.start');
   }
   
@@ -172,77 +173,103 @@ function applyCompatibilityTransforms(name, seq) {
 
 export async function discoverSequenceFiles() {
   const nodeModulesDir = join(rootDir, "node_modules");
+  const localPackagesDir = join(rootDir, "packages");
   const sequences = [];
   const seen = new Set();
 
-  // Discover all @renderx-plugins packages dynamically
-  const renderxPluginsDir = join(nodeModulesDir, "@renderx-plugins");
-  
-  try {
-    const packageDirs = await readdir(renderxPluginsDir);
-    
-    for (const packageName of packageDirs) {
-      const packagePath = join(renderxPluginsDir, packageName);
-      const sequencesPath = join(packagePath, "json-sequences");
-      
-      try {
-        // Check if this package has json-sequences directory
-        const sequencesDirStat = await fs.stat(sequencesPath);
-        if (!sequencesDirStat.isDirectory()) continue;
-        
-        // Scan for subdirectories and files in json-sequences
-        const items = await readdir(sequencesPath);
-        
-        for (const item of items) {
-          const itemPath = join(sequencesPath, item);
-          const itemStat = await fs.stat(itemPath);
-          
-          if (itemStat.isDirectory()) {
-            // Scan subdirectory for sequence files
-            try {
-              const files = await readdir(itemPath);
-              for (const file of files) {
-                if (file.endsWith(".json") && file !== "index.json") {
-                  const filePath = join(itemPath, file);
-                  const sequence = await readJsonSafe(filePath);
-                  const id = sequence?.id;
-                  if (sequence && sequence.pluginId && id && !seen.has(id)) {
-                    seen.add(id);
-                    sequences.push({
-                      pluginId: sequence.pluginId,
-                      sequenceId: id,
-                      file: `${packageName}/${item}/${file}`,
-                      sequence,
-                      sourcePath: filePath
-                    });
-                  }
+  // Helper function to scan a package directory for sequences
+  async function scanPackageForSequences(packagePath, packageName) {
+    const sequencesPath = join(packagePath, "json-sequences");
+
+    try {
+      // Check if this package has json-sequences directory
+      const sequencesDirStat = await fs.stat(sequencesPath);
+      if (!sequencesDirStat.isDirectory()) return;
+
+      // Scan for subdirectories and files in json-sequences
+      const items = await readdir(sequencesPath);
+
+      for (const item of items) {
+        const itemPath = join(sequencesPath, item);
+        const itemStat = await fs.stat(itemPath);
+
+        if (itemStat.isDirectory()) {
+          // Scan subdirectory for sequence files
+          try {
+            const files = await readdir(itemPath);
+            for (const file of files) {
+              if (file.endsWith(".json") && file !== "index.json") {
+                const filePath = join(itemPath, file);
+                const sequence = await readJsonSafe(filePath);
+                const id = sequence?.id;
+                if (sequence && sequence.pluginId && id && !seen.has(id)) {
+                  seen.add(id);
+                  sequences.push({
+                    pluginId: sequence.pluginId,
+                    sequenceId: id,
+                    file: `${packageName}/${item}/${file}`,
+                    sequence,
+                    sourcePath: filePath
+                  });
                 }
               }
-            } catch {
-              // Subdirectory access failed, skip
             }
-          } else if (item.endsWith(".json") && item !== "index.json") {
-            // Direct file in json-sequences root
-            const sequence = await readJsonSafe(itemPath);
-            const id = sequence?.id;
-            if (sequence && sequence.pluginId && id && !seen.has(id)) {
-              seen.add(id);
-              sequences.push({
-                pluginId: sequence.pluginId,
-                sequenceId: id,
-                file: `${packageName}/${item}`,
-                sequence,
-                sourcePath: itemPath
-              });
-            }
+          } catch {
+            // Subdirectory access failed, skip
+          }
+        } else if (item.endsWith(".json") && item !== "index.json") {
+          // Direct file in json-sequences root
+          const sequence = await readJsonSafe(itemPath);
+          const id = sequence?.id;
+          if (sequence && sequence.pluginId && id && !seen.has(id)) {
+            seen.add(id);
+            sequences.push({
+              pluginId: sequence.pluginId,
+              sequenceId: id,
+              file: `${packageName}/${item}`,
+              sequence,
+              sourcePath: itemPath
+            });
           }
         }
-      } catch {
-        // Package doesn't have json-sequences or access failed, skip
       }
+    } catch {
+      // Package doesn't have json-sequences or access failed, skip
+    }
+  }
+
+  // Discover all @renderx-plugins packages in node_modules
+  const renderxPluginsDir = join(nodeModulesDir, "@renderx-plugins");
+
+  try {
+    const packageDirs = await readdir(renderxPluginsDir);
+
+    for (const packageName of packageDirs) {
+      const packagePath = join(renderxPluginsDir, packageName);
+      await scanPackageForSequences(packagePath, packageName);
     }
   } catch {
     // @renderx-plugins directory doesn't exist, skip
+  }
+
+  // Also discover local packages in packages/ directory
+  try {
+    const localPackageDirs = await readdir(localPackagesDir);
+
+    for (const packageName of localPackageDirs) {
+      const packagePath = join(localPackagesDir, packageName);
+      // Check if it's a directory
+      try {
+        const stat = await fs.stat(packagePath);
+        if (stat.isDirectory()) {
+          await scanPackageForSequences(packagePath, packageName);
+        }
+      } catch {
+        // Skip if not accessible
+      }
+    }
+  } catch {
+    // packages/ directory doesn't exist, skip
   }
 
   return sequences;
@@ -350,9 +377,9 @@ function extractTopicsFromSequenceBeats(seq) {
             }
           }
         }
-        
+
         // If sequence routes to base, beat events should route to the main sequence topic
-        let routesToSequence = [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }];
+        let _routesToSequence = [{ pluginId: seq.pluginId, sequenceId: seq.sequenceId }];
         if (routeToBase) {
           // Beat events in sequences with routeToBase should not create separate topics
           // They will be handled by the main sequence topic
@@ -444,6 +471,21 @@ export async function generateExternalTopicsCatalog() {
   const sequences = await discoverSequenceFiles();
   const topics = {};
 
+  // First pass: collect all actual sequence topics (these take precedence)
+  const actualTopicNames = new Set();
+  for (const seq of sequences) {
+    const topicName = deriveTopicFromSequence(seq);
+    if (topicName) {
+      actualTopicNames.add(topicName);
+      // Also add the base topic name (without .requested) if routeToBase is true
+      if (seq.sequence?.topicMapping?.routeToBase ||
+          (seq.sequence?.topicTransform?.routeToBase && topicName.match(seq.sequence.topicTransform.routeToBase))) {
+        const baseTopic = topicName.replace('.requested', '');
+        actualTopicNames.add(baseTopic);
+      }
+    }
+  }
+
   for (const seq of sequences) {
     // Process main sequence topic
     const topicName = deriveTopicFromSequence(seq);
@@ -454,7 +496,7 @@ export async function generateExternalTopicsCatalog() {
 
       // Check if sequence declares custom routing behavior
       let routedTopicName = topicName;
-      if (seq.sequence?.topicMapping?.routeToBase || 
+      if (seq.sequence?.topicMapping?.routeToBase ||
           (seq.sequence?.topicTransform?.routeToBase && topicName.match(seq.sequence.topicTransform.routeToBase))) {
         // Route to base topic instead of .requested variant
         routedTopicName = topicName.replace('.requested', '');
@@ -469,10 +511,15 @@ export async function generateExternalTopicsCatalog() {
         };
       }
     }
-    
+
     // Process declared lifecycle and notification topics
     const lifecycleTopics = extractLifecycleTopicsFromSequence(seq);
     for (const lifecycleTopic of lifecycleTopics) {
+      // Skip auto-generated lifecycle topics if an actual sequence file exists for that topic
+      if (actualTopicNames.has(lifecycleTopic.name)) {
+        continue;
+      }
+
       if (!topics[lifecycleTopic.name]) {
         topics[lifecycleTopic.name] = {
           routes: lifecycleTopic.routes,
@@ -482,7 +529,7 @@ export async function generateExternalTopicsCatalog() {
         };
       }
     }
-    
+
     // Process beat event topics (these become routed topics)
     const beatTopics = extractTopicsFromSequenceBeats(seq);
     for (const beatTopic of beatTopics) {

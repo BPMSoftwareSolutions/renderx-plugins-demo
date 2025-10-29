@@ -273,7 +273,7 @@ export class KnowledgeExporter {
   }
 
   private async exportResourceKnowledge(
-    options: KnowledgeTransferOptions
+    _options: KnowledgeTransferOptions
   ): Promise<any> {
     const resourceKnowledge = {
       resourceOwnership: [] as any[],
@@ -356,7 +356,7 @@ export class KnowledgeExporter {
   }
 
   private async exportPerformanceMetrics(
-    options: KnowledgeTransferOptions
+    _options: KnowledgeTransferOptions
   ): Promise<any> {
     const performanceMetrics = {
       executionTimes: [],
@@ -391,7 +391,7 @@ export class KnowledgeExporter {
   }
 
   private async exportEventHistory(
-    options: KnowledgeTransferOptions
+    _options: KnowledgeTransferOptions
   ): Promise<any[]> {
     const eventHistory: any[] = [];
 
@@ -411,7 +411,7 @@ export class KnowledgeExporter {
       // Try to get version from package.json
       const packageJson = require("../../../package.json");
       return packageJson.version || "1.0.0";
-    } catch (error) {
+    } catch {
       return "1.0.0";
     }
   }

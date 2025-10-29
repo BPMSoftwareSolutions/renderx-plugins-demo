@@ -88,7 +88,7 @@ export class ResourceConflictResolver {
     currentOwner: ResourceOwner
   ): { success: boolean; message: string } {
     // Add to queue with resource dependency metadata
-    const queuedRequest = {
+    const _queuedRequest = {
       ...sequenceRequest,
       data: {
         ...sequenceRequest.data,

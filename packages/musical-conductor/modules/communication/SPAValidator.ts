@@ -240,7 +240,7 @@ export class SPAValidator {
     if (typeof window === "undefined") return;
 
     // Monitor access to window.renderxCommunicationSystem.eventBus
-    const originalDescriptor = Object.getOwnPropertyDescriptor(
+    const _originalDescriptor = Object.getOwnPropertyDescriptor(
       window,
       "renderxCommunicationSystem"
     );
@@ -322,7 +322,6 @@ export class SPAValidator {
     const lines = stack.split("\n");
     let isReactComponent = false;
     let isInMountMethod = false;
-    let isMusicalConductor = false;
     let source = "unknown";
 
     for (const line of lines) {
@@ -379,7 +378,7 @@ export class SPAValidator {
         normalized.includes("EventBus.js") ||
         normalized.includes("SPAValidator.js")
       ) {
-        isMusicalConductor = true;
+        const _isMusicalConductor = true;
         source = "MusicalConductor";
         // MusicalConductor is allowed to access eventBus directly for internal operations
         return {

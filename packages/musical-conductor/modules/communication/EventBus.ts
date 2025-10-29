@@ -287,7 +287,7 @@ export class EventBus {
 }
 
 // Import EVENT_TYPES from the dedicated event-types module
-import { EVENT_TYPES, type EventType } from "./event-types/index.js";
+import { EVENT_TYPES } from "./event-types/index.js";
 export { EVENT_TYPES };
 
 /**
@@ -423,9 +423,9 @@ export class ConductorEventBus extends EventBus {
    * Execute event with base EventBus emit
    * @param eventName - Event name
    * @param data - Event data
-   * @param priority - Event priority
+   * @param _priority - Event priority
    */
-  private executeEvent(eventName: string, data: any, priority: string): void {
+  private executeEvent(eventName: string, data: any, _priority: string): void {
     // Call parent emit method
     super.emit(eventName, data);
     this.completedEvents.add(eventName);
@@ -457,9 +457,9 @@ export class ConductorEventBus extends EventBus {
   /**
    * Check if dependencies are met
    * @param dependencies - Array of dependency event names
-   * @param context - Execution context
+   * @param _context - Execution context
    */
-  private dependenciesMet(dependencies: string[], context: any): boolean {
+  private dependenciesMet(dependencies: string[], _context: any): boolean {
     return dependencies.every((dep) => this.completedEvents.has(dep));
   }
 

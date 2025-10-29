@@ -186,9 +186,8 @@ export class DuplicationDetector {
     newestRecentExecution: number | null;
     memoryUsageEstimate: number;
   } {
-    const now = performance.now();
     const timestamps = Array.from(this.recentExecutions.values());
-    
+
     return {
       totalHashesTracked: this.executedSequenceHashes.size,
       recentExecutionsTracked: this.recentExecutions.size,
