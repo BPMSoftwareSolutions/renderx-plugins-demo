@@ -59,6 +59,7 @@
     "@renderx-plugins/host-sdk": "^1.0.6",
     "@renderx-plugins/library": "^1.0.6",
     "@renderx-plugins/library-component": "file:packages/library-component",
+    "@renderx-plugins/digital-assets": "workspace:*",
     "@renderx-plugins/manifest-tools": "^0.1.2",
     "gif.js.optimized": "^1.0.1",
     "lucide-react": "^0.544.0",

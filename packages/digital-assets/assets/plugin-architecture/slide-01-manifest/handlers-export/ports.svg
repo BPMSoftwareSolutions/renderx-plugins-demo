@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <title>Handlers Export - Ports</title>
+  <g id="ports" font-family="'SF Mono', 'Monaco', monospace">
+    <!-- Matching ports labeled onDragStart and publishCreateRequested -->
+
+    <!-- onDragStart port -->
+    <g transform="translate(60, 100)">
+      <rect x="0" y="0" width="120" height="30" fill="#F3F0FF" stroke="#8B5CF6"
+            stroke-width="1.5" rx="6"/>
+      <text x="60" y="20" text-anchor="middle" font-size="11" fill="#7C3AED"
+            font-weight="500">onDragStart</text>
+      <!-- Port indicator -->
+      <circle cx="10" cy="15" r="3" fill="#8B5CF6"/>
+    </g>
+
+    <!-- publishCreateRequested port -->
+    <g transform="translate(220, 160)">
+      <rect x="0" y="0" width="160" height="30" fill="#F3F0FF" stroke="#8B5CF6"
+            stroke-width="1.5" rx="6"/>
+      <text x="80" y="20" text-anchor="middle" font-size="11" fill="#7C3AED"
+            font-weight="500">publishCreateRequested</text>
+      <!-- Port indicator -->
+      <circle cx="10" cy="15" r="3" fill="#8B5CF6"/>
+    </g>
+  </g>
+</svg>
+
