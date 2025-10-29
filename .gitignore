@@ -181,3 +181,6 @@ json-sequences/
 /catalog/json-interactions/.generated/library.json
 /catalog/json-plugins/.generated/plugin-manifest.json
 /cypress/screenshots
+
+# Temporary cloned repositories
+/temp-control-panel
