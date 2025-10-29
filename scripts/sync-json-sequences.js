@@ -120,7 +120,7 @@ async function syncJsonSequences() {
     // Copy repo-local sequences first
     await copyTreeWithBase(sourceDir, targetDir, sourceDir);
 
-    // Then copy any package-provided sequences (declared via package.json renderx.sequences)
+    // Then copy any package-provided sequences from node_modules (declared via package.json renderx.sequences)
     const nodeModulesDir = join(rootDir, 'node_modules');
     const pkgs = await discoverRenderxSequencePackages(nodeModulesDir);
     for (const pkg of pkgs) {
@@ -128,6 +128,18 @@ async function syncJsonSequences() {
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel}`);
+        await copyTreeWithBase(seqRoot, targetDir, seqRoot);
+      }
+    }
+
+    // Also copy sequences from local packages/ directory
+    const packagesDir = join(rootDir, 'packages');
+    const localPkgs = await discoverRenderxSequencePackages(packagesDir);
+    for (const pkg of localPkgs) {
+      const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
+      for (const rel of pkg.sequences) {
+        const seqRoot = join(pkg.pkgDir, rel);
+        console.log(`📦 Including sequences from ${pkgName}/${rel} (local package)`);
         await copyTreeWithBase(seqRoot, targetDir, seqRoot);
       }
     }
