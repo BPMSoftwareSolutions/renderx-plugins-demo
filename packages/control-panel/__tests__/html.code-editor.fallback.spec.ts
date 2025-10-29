@@ -4,7 +4,7 @@ import type {
   ControlPanelConfig,
   SelectedElement,
 } from "../src/types/control-panel.types";
-import htmlSchemaOriginal from "../../../json-components/html.json";
+import htmlSchemaOriginal from "./__fixtures__/json-components/html.json";
 
 const baseConfig: ControlPanelConfig = {
   version: "1.0.0-test",

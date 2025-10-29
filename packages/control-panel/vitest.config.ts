@@ -25,10 +25,6 @@ export default defineConfig({
       { find: '@renderx-plugins/control-panel', replacement: r('src') },
       { find: '@renderx-plugins/control-panel/observer.store', replacement: r('src/state/observer.store.ts') },
       { find: '@renderx-plugins/control-panel/', replacement: r('src/') },
-      // Redirect json-components imports to test fixtures
-      // This handles imports like '../../../json-components/html.json' from test files
-      // The find pattern matches the resolved absolute path
-      { find: r('../../../json-components'), replacement: r('__tests__/__fixtures__/json-components') },
     ],
   },
 });
