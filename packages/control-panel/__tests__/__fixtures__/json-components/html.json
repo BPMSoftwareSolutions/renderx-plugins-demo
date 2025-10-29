@@ -1,0 +1,15 @@
+{
+  "integration": {
+    "properties": {
+      "schema": {
+        "markup": {
+          "type": "string",
+          "description": "HTML markup content",
+          "default": "<p></p>",
+          "ui": { "control": "code", "rows": 8 }
+        }
+      }
+    }
+  }
+}
+

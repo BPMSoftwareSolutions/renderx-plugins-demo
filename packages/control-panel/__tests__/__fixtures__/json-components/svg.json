@@ -1,0 +1,24 @@
+{
+  "integration": {
+    "properties": {
+      "schema": {
+        "svgMarkup": {
+          "type": "string",
+          "description": "SVG markup",
+          "default": "<svg viewBox=\"0 0 100 100\"></svg>",
+          "ui": { "control": "code", "rows": 8 }
+        },
+        "preserveAspectRatio": {
+          "type": "string",
+          "description": "Preserve Aspect Ratio",
+          "enum": [
+            "xMinYMin meet",
+            "xMidYMid meet",
+            "xMaxYMax meet",
+            "xMidYMid slice"
+          ]
+        }
+      }
+    }
+  }
+}
