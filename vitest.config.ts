@@ -25,6 +25,11 @@ export default defineConfig({
     ],
     // No setup file for now; will be reintroduced when the new harness lands
     setupFiles: [],
+    // Use jsdom for library tests that need DOM/window/document
+    environmentMatchGlobs: [
+      ["packages/library/__tests__/**", "jsdom"],
+      ["packages/control-panel/__tests__/**/*.tsx", "jsdom"],
+    ],
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
