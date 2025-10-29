@@ -43,7 +43,11 @@ async function copyFile(source, target) {
 
 async function copyTreeWithBase(src, dst, baseLabel) {
   await ensureDir(dst);
-  const entries = await readdir(src, { withFileTypes: true }).catch(() => []);
+  const entries = await readdir(src, { withFileTypes: true }).catch((err) => {
+    console.log(`⚠️  Failed to read directory ${src}: ${err.message}`);
+    return [];
+  });
+  console.log(`📂 Reading ${src}: found ${entries.length} entries`);
   for (const ent of entries) {
     const srcPath = join(src, ent.name);
     const dstPath = join(dst, ent.name);
