@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build",
+    "build:packages": "npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "dev": "npm run pre:manifests && vite",
@@ -27,7 +27,7 @@
     "validate:public-api": "node scripts/validate-public-api.js",
     "preview": "vite preview",
     "pre:manifests": "node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-json-interactions-from-plugins.js && node scripts/generate-interaction-manifest.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/generate-layout-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog && node scripts/sync-control-panel-config.js",
-    "pretest": "node scripts/sync-json-sources.js --srcRoot=catalog && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog",
+    "pretest": "node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog",
     "sync:json-components": "node scripts/sync-json-components.js --srcRoot=catalog",
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",
@@ -54,7 +54,7 @@
     "@renderx-plugins/canvas": "^0.1.0-rc.4",
     "@renderx-plugins/canvas-component": "^1.0.11",
     "@renderx-plugins/components": "0.1.1",
-    "@renderx-plugins/control-panel": "0.1.0-rc.9",
+    "@renderx-plugins/control-panel": "^0.1.0-rc.9",
     "@renderx-plugins/header": "^1.0.2",
     "@renderx-plugins/host-sdk": "^1.0.6",
     "@renderx-plugins/library": "^1.0.6",

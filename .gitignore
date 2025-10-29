@@ -166,6 +166,7 @@ vite.config.ts.timestamp-*
 json-components/
 json-sequences/
 !/catalog/json-components/
+!/packages/*/json-sequences/
 
 # Generated root manifests (do not track)
 /interaction-manifest.json
@@ -181,3 +182,6 @@ json-sequences/
 /catalog/json-interactions/.generated/library.json
 /catalog/json-plugins/.generated/plugin-manifest.json
 /cypress/screenshots
+
+# Temporary cloned repositories
+/temp-control-panel

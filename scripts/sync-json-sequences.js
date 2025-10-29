@@ -43,7 +43,11 @@ async function copyFile(source, target) {
 
 async function copyTreeWithBase(src, dst, baseLabel) {
   await ensureDir(dst);
-  const entries = await readdir(src, { withFileTypes: true }).catch(() => []);
+  const entries = await readdir(src, { withFileTypes: true }).catch((err) => {
+    console.log(`⚠️  Failed to read directory ${src}: ${err.message}`);
+    return [];
+  });
+  console.log(`📂 Reading ${src}: found ${entries.length} entries`);
   for (const ent of entries) {
     const srcPath = join(src, ent.name);
     const dstPath = join(dst, ent.name);
@@ -120,7 +124,7 @@ async function syncJsonSequences() {
     // Copy repo-local sequences first
     await copyTreeWithBase(sourceDir, targetDir, sourceDir);
 
-    // Then copy any package-provided sequences (declared via package.json renderx.sequences)
+    // Then copy any package-provided sequences from node_modules (declared via package.json renderx.sequences)
     const nodeModulesDir = join(rootDir, 'node_modules');
     const pkgs = await discoverRenderxSequencePackages(nodeModulesDir);
     for (const pkg of pkgs) {
@@ -128,6 +132,20 @@ async function syncJsonSequences() {
       for (const rel of pkg.sequences) {
         const seqRoot = join(pkg.pkgDir, rel);
         console.log(`📦 Including sequences from ${pkgName}/${rel}`);
+        await copyTreeWithBase(seqRoot, targetDir, seqRoot);
+      }
+    }
+
+    // Also copy sequences from local packages/ directory
+    const packagesDir = join(rootDir, 'packages');
+    console.log(`🔍 Discovering sequences from local packages in: ${packagesDir}`);
+    const localPkgs = await discoverRenderxSequencePackages(packagesDir);
+    console.log(`🔍 Found ${localPkgs.length} local packages with sequences`);
+    for (const pkg of localPkgs) {
+      const pkgName = pkg.pkgJson?.name || pkg.pkgDir;
+      for (const rel of pkg.sequences) {
+        const seqRoot = join(pkg.pkgDir, rel);
+        console.log(`📦 Including sequences from ${pkgName}/${rel} (local package)`);
         await copyTreeWithBase(seqRoot, targetDir, seqRoot);
       }
     }

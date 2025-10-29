@@ -275,6 +275,72 @@ export async function discoverSequenceFiles() {
   return sequences;
 }
 
+async function discoverTopicCatalogs() {
+  const nodeModulesDir = join(rootDir, "node_modules");
+  const localPackagesDir = join(rootDir, "packages");
+  const topicCatalogs = [];
+
+  async function scanPackageForTopics(packagePath, packageName) {
+    try {
+      const jsonTopicsDir = join(packagePath, "json-topics");
+      const items = await readdir(jsonTopicsDir);
+
+      for (const item of items) {
+        const itemPath = join(jsonTopicsDir, item);
+        if (item.endsWith(".json")) {
+          const catalog = await readJsonSafe(itemPath);
+          if (catalog && catalog.plugin && catalog.topics) {
+            topicCatalogs.push({
+              plugin: catalog.plugin,
+              topics: catalog.topics,
+              file: `${packageName}/json-topics/${item}`,
+              sourcePath: itemPath
+            });
+          }
+        }
+      }
+    } catch {
+      // Package doesn't have json-topics or access failed, skip
+    }
+  }
+
+  // Discover all @renderx-plugins packages in node_modules
+  const renderxPluginsDir = join(nodeModulesDir, "@renderx-plugins");
+
+  try {
+    const packageDirs = await readdir(renderxPluginsDir);
+
+    for (const packageName of packageDirs) {
+      const packagePath = join(renderxPluginsDir, packageName);
+      await scanPackageForTopics(packagePath, packageName);
+    }
+  } catch {
+    // @renderx-plugins directory doesn't exist, skip
+  }
+
+  // Also discover local packages in packages/ directory
+  try {
+    const localPackageDirs = await readdir(localPackagesDir);
+
+    for (const packageName of localPackageDirs) {
+      const packagePath = join(localPackagesDir, packageName);
+      // Check if it's a directory
+      try {
+        const stat = await fs.stat(packagePath);
+        if (stat.isDirectory()) {
+          await scanPackageForTopics(packagePath, packageName);
+        }
+      } catch {
+        // Skip if not accessible
+      }
+    }
+  } catch {
+    // packages/ directory doesn't exist, skip
+  }
+
+  return topicCatalogs;
+}
+
 function deriveTopicFromSequence(seq) {
   // Data-driven topic derivation - plugins can declare their own topic names and transformations
   const id = seq.sequenceId;
@@ -469,7 +535,22 @@ function extractLifecycleTopicsFromSequence(seq) {
 
 export async function generateExternalTopicsCatalog() {
   const sequences = await discoverSequenceFiles();
+  const topicCatalogs = await discoverTopicCatalogs();
   const topics = {};
+
+  // Add topics from json-topics catalogs (these are explicit declarations)
+  for (const catalog of topicCatalogs) {
+    for (const [topicName, topicData] of Object.entries(catalog.topics)) {
+      if (!topics[topicName]) {
+        topics[topicName] = {
+          routes: [],
+          payloadSchema: { type: "object" },
+          visibility: topicData.visibility || "public",
+          notes: topicData.notes || `Declared in ${catalog.file}`
+        };
+      }
+    }
+  }
 
   // First pass: collect all actual sequence topics (these take precedence)
   const actualTopicNames = new Set();
