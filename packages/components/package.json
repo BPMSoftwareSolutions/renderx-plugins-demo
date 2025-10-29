@@ -1,0 +1,46 @@
+{
+  "name": "@renderx-plugins/components",
+  "version": "0.1.1",
+  "description": "JSON component definitions for RenderX-based hosts. This package publishes a catalog of components (as JSON) that thin hosts can serve and plugins can consume without coupling.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "json-components"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/**/*.{ts,tsx,js,jsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx,js,jsx} --fix"
+  },
+  "keywords": [
+    "renderx",
+    "components",
+    "json",
+    "catalog"
+  ],
+  "author": "BPM Software Solutions",
+  "license": "Apache-2.0",
+  "renderx": {
+    "components": [
+      "json-components"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "eslint": "^9.33.0"
+  }
+}
+

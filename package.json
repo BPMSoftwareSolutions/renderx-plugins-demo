@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build && npm --prefix packages/header run build && npm --prefix packages/library run build && npm --prefix packages/library-component run build",
+    "build:packages": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build && npm --prefix packages/header run build && npm --prefix packages/library run build && npm --prefix packages/library-component run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "dev": "npm run pre:manifests && vite",
@@ -53,7 +53,7 @@
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.4",
     "@renderx-plugins/canvas-component": "^1.0.11",
-    "@renderx-plugins/components": "0.1.1",
+    "@renderx-plugins/components": "workspace:*",
     "@renderx-plugins/control-panel": "^0.1.0-rc.9",
     "@renderx-plugins/header": "^1.0.1",
     "@renderx-plugins/host-sdk": "^1.0.6",

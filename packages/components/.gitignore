@@ -41,9 +41,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Ignore package-lock.json in workspace packages (only root lock is tracked)
-packages/*/package-lock.json
-
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
@@ -84,7 +81,6 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
-/public
 
 # Gatsby files
 .cache/
@@ -141,48 +137,3 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/.vs
-/.logs
-
-# Allow committed docs logs
-!docs/logs/
-!docs/logs/*.md
-
-/.*
-/test-results
-/public/interaction-manifest.json
-/public/topics-manifest.json
-/docs/articles/article-0001/*.gif
-/docs/articles/article-0003
-/docs/articles/article-0004
-
-
-# Ignore generated plugin manifests (optional: keep generated files ephemeral)
-# catalog/json-plugins/.generated/
-/tmp/pack-verify-library-component
-
-# Generated compatibility catalogs (root copies for Node tests/tools)
-# Source of truth lives under catalog/
-json-components/
-json-sequences/
-!/catalog/json-components/
-!/packages/*/json-components/
-!/packages/*/json-sequences/
-
-# Generated root manifests (do not track)
-/interaction-manifest.json
-/topics-manifest.json
-/layout-manifest.json
-/derived-external-interactions.json
-/derived-external-topics.json
-
-/.generated/*
-/catalog/json-interactions/.generated/app.json
-/catalog/json-interactions/.generated/canvas.json
-/catalog/json-interactions/.generated/control.json
-/catalog/json-interactions/.generated/library.json
-/catalog/json-plugins/.generated/plugin-manifest.json
-/cypress/screenshots
-
-# Temporary cloned repositories
-/temp-control-panel
