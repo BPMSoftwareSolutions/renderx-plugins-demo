@@ -4,6 +4,31 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+
+// Provide a minimal in-memory EventRouter for these tests to avoid environment differences
+vi.mock("@renderx-plugins/host-sdk", () => {
+  const topics = new Map<string, Set<(data: any) => void>>();
+  return {
+    EventRouter: {
+      subscribe(topic: string, cb: (data: any) => void) {
+        const set = topics.get(topic) ?? new Set();
+        set.add(cb);
+        topics.set(topic, set);
+        return () => {
+          set.delete(cb);
+        };
+      },
+      async publish(topic: string, payload: any) {
+        const set = topics.get(topic);
+        if (set) for (const cb of set) cb(payload);
+      },
+      reset() {
+        topics.clear();
+      }
+    }
+  };
+});
+
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
 describe('Control Panel EventRouter Communication', () => {
@@ -41,7 +66,7 @@ describe('Control Panel EventRouter Communication', () => {
     unsubscribeFunctions.push(unsubscribe);
 
     // Simulate what the symphony would do
-    EventRouter.publish('control.panel.selection.updated', mockSelectionModel);
+    await EventRouter.publish('control.panel.selection.updated', mockSelectionModel);
 
     // Allow event to process
     await new Promise(resolve => setTimeout(resolve, 10));
@@ -63,7 +88,7 @@ describe('Control Panel EventRouter Communication', () => {
     });
     unsubscribeFunctions.push(unsubscribe);
 
-    EventRouter.publish('control.panel.classes.updated', mockClassData);
+    await EventRouter.publish('control.panel.classes.updated', mockClassData);
 
     await new Promise(resolve => setTimeout(resolve, 10));
 
@@ -86,7 +111,7 @@ describe('Control Panel EventRouter Communication', () => {
     });
     unsubscribeFunctions.push(unsubscribe);
 
-    EventRouter.publish('control.panel.css.registry.updated', mockCssData);
+    await EventRouter.publish('control.panel.css.registry.updated', mockCssData);
 
     await new Promise(resolve => setTimeout(resolve, 10));
 

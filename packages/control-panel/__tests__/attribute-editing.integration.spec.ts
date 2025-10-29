@@ -4,6 +4,11 @@ import { handlers as createHandlers } from "@renderx-plugins/canvas-component";
 import { handlers as canvasUpdateHandlers } from "@renderx-plugins/canvas-component";
 import { setSelectionObserver } from "../src/state/observer.store";
 
+// Ensure we always use the local mocked canvas-component handlers in CI and locally
+vi.mock("@renderx-plugins/canvas-component", async () => {
+  return await import("./__mocks__/@renderx-plugins/canvas-component.ts");
+});
+
 function makeButtonTemplate() {
   return {
     tag: "button",

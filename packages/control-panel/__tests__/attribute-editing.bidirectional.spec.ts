@@ -6,6 +6,11 @@ import { resolveInteraction } from "@renderx-plugins/host-sdk";
 
 import { handlers as canvasUpdateHandlers } from "@renderx-plugins/canvas-component";
 
+// Ensure we always use the local mocked canvas-component handlers in CI and locally
+vi.mock("@renderx-plugins/canvas-component", async () => {
+  return await import("./__mocks__/@renderx-plugins/canvas-component.ts");
+});
+
 // Mock resolveInteraction via Host SDK to avoid host internals
 vi.mock("@renderx-plugins/host-sdk", async () => {
   const actual = await vi.importActual<any>("@renderx-plugins/host-sdk");
