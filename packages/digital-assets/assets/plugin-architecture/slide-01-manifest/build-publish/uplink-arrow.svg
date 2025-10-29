@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140">
+  <title>Build &amp; Publish - Uplink Arrow</title>
+  <g id="uplink-arrow">
+    <!-- Publish uplink -->
+    <path d="M330,86 L330,42" stroke="#D97706" stroke-width="2"/>
+    <polygon points="330,32 324,44 336,44" fill="#D97706"/>
+  </g>
+</svg>
+

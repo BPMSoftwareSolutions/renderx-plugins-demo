@@ -1,0 +1,58 @@
+{
+  "name": "renderx-plugins-digital-assets",
+  "version": "1.0.0",
+  "description": "Digital assets and SVG animations for RenderX plugins",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build:svgs": "node scripts/generate-integrated-svgs.js --all",
+    "test:server": "node tests/server.js",
+    "test:cypress": "cypress run",
+    "test:cypress:open": "cypress open",
+    "test:svg": "npm run test:server & sleep 2 && npm run test:cypress && pkill -f 'node tests/server.js'",
+    "example": "npm run build && node dist/example.js",
+    "graph-to-svg": "npm run build && node dist/cli.js",
+    "generate-samples": "npm run build && node dist/sample-generator.js",
+    "generate-slide-01": "npm run build && node dist/slide-01-generator.js",
+    "generate-slide-01-scene": "npm run build && node dist/slide01-generator.js",
+    "cli": "npm run build && node dist/cli.js",
+    "scene:list": "npm run build && node dist/cli.js scene list",
+    "scene:generate": "npm run build && node dist/cli.js scene generate",
+    "scene:example": "npm run build && node dist/cli.js scene example",
+    "graph:samples": "npm run build && node dist/cli.js graph create-samples",
+    "graph:list": "npm run build && node dist/cli.js graph list",
+    "graph:generate": "npm run build && node dist/cli.js graph generate",
+    "config:list": "npm run build && node dist/cli.js config list",
+    "config:sprites": "npm run build && node dist/cli.js config sprites",
+    "config:themes": "npm run build && node dist/cli.js config themes",
+    "config:layouts": "npm run build && node dist/cli.js config layouts"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "express": "^4.21.2",
+    "jest": "^29.7.0",
+    "jsdom": "^27.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "assets/**/*.{js,svg}",
+      "!**/node_modules/**"
+    ]
+  },
+  "keywords": [
+    "svg",
+    "animation",
+    "renderx",
+    "digital-assets"
+  ],
+  "author": "BPM Software Solutions",
+  "license": "MIT"
+}
