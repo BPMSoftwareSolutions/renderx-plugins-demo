@@ -19,7 +19,13 @@ describe('Topics manifest guardrails', () => {
   let keys: string[] = [];
 
   beforeAll(() => {
-    const res = spawnSync(process.execPath, [genScript], { stdio: 'inherit' });
+    // Run prerequisite scripts to ensure all sequences are synced
+    const syncSeqScript = path.join(root, 'scripts', 'sync-json-sequences.js');
+    const syncSeqRes = spawnSync(process.execPath, [syncSeqScript, '--srcRoot=catalog'], { stdio: 'inherit' });
+    if (syncSeqRes.status !== 0) throw new Error('Failed to sync json-sequences');
+
+    // Now generate the topics manifest
+    const res = spawnSync(process.execPath, [genScript, '--srcRoot=catalog'], { stdio: 'inherit' });
     if (res.status !== 0) throw new Error('Failed to regenerate topics-manifest.json');
     topicsJson = loadJson(topicsPath);
     topics = topicsJson?.topics || {};
