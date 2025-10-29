@@ -39,7 +39,7 @@ vi.mock('@renderx-plugins/host-sdk', () => {
         set!.delete(cb);
       };
     },
-    publish(topic: string, payload: any) {
+    async publish(topic: string, payload: any): Promise<void> {
       const set = topics.get(topic);
       if (set) {
         for (const cb of set) cb(payload);

@@ -19,17 +19,17 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: '@', replacement: '/src' },
-      { find: /^@renderx-plugins\/canvas-component$/, replacement: '/__tests__/__mocks__/@renderx-plugins/canvas-component.ts' },
-      { find: /^@renderx-plugins\/canvas-component\//, replacement: '/__tests__/__mocks__/@renderx-plugins/canvas-component/' },
+      { find: '@', replacement: r('src') },
+      { find: /^@renderx-plugins\/canvas-component$/, replacement: r('__tests__/__mocks__/@renderx-plugins/canvas-component.ts') },
+      { find: /^@renderx-plugins\/canvas-component\//, replacement: r('__tests__/__mocks__/@renderx-plugins/canvas-component/') },
 
       // Map package imports to source for local testing
-      { find: /^@renderx-plugins\/control-panel$/, replacement: '/src' },
-      { find: /^@renderx-plugins\/control-panel\/observer\.store$/, replacement: '/src/state/observer.store.ts' },
-      { find: /^@renderx-plugins\/control-panel\//, replacement: '/src/' },
+      { find: /^@renderx-plugins\/control-panel$/, replacement: r('src') },
+      { find: /^@renderx-plugins\/control-panel\/observer\.store$/, replacement: r('src/state/observer.store.ts') },
+      { find: /^@renderx-plugins\/control-panel\//, replacement: r('src/') },
 
       // Map tests' relative json-components imports to local fixtures
-      { find: /^\.\.\/\.\.\/\.\.\/json-components\//, replacement: '/__tests__/__fixtures__/json-components/' },
+      { find: /^\.\.\/\.\.\/\.\.\/json-components\//, replacement: r('__tests__/__fixtures__/json-components/') },
     ],
   },
 });
