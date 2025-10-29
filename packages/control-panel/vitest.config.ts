@@ -12,9 +12,10 @@ const jsonComponentsFixturePlugin = (): Plugin => ({
   enforce: 'pre',
   resolveId(id, importer) {
     // If importing from a test file and the import is for json-components
-    if (importer && importer.includes('__tests__') && id.includes('json-components/')) {
+    if (importer && importer.includes('__tests__') && id.includes('json-components')) {
       // Extract the filename (e.g., 'html.json' from '../../../json-components/html.json')
-      const match = id.match(/json-components\/(.+)$/);
+      // Use both forward and back slashes to handle different platforms
+      const match = id.match(/json-components[/\\](.+)$/);
       if (match) {
         const filename = match[1];
         const fixturePath = r(`__tests__/__fixtures__/json-components/${filename}`);
