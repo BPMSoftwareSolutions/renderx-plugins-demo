@@ -40,6 +40,20 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
     }
   }, [isOpen, configStatus.configured]);
 
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscKey);
+      return () => document.removeEventListener('keydown', handleEscKey);
+    }
+  }, [isOpen, onClose]);
+
   // Load chat history from current session
   useEffect(() => {
     if (configStatus.configured) {
@@ -174,20 +188,25 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
   // Show configuration UI if not configured
   if (!configStatus.configured) {
     return (
-      <div className="chat-window">
-        <div className="chat-header">
-          <h3>🤖 AI Component Generator</h3>
-          <button className="chat-close-button" onClick={onClose} title="Close">
-            ✕
-          </button>
+      <>
+        <div className="chat-modal-backdrop" onClick={onClose} />
+        <div className="chat-window">
+          <div className="chat-header">
+            <h3>🤖 AI Component Generator</h3>
+            <button className="chat-close-button" onClick={onClose} title="Close">
+              ✕
+            </button>
+          </div>
+          <ConfigStatusUI status={configStatus} />
         </div>
-        <ConfigStatusUI status={configStatus} />
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="chat-window">
+    <>
+      <div className="chat-modal-backdrop" onClick={onClose} />
+      <div className="chat-window">
       <div className="chat-header">
         <h3>🤖 AI Component Generator</h3>
         <div className="chat-header-info">
@@ -287,5 +306,6 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
         </button>
       </div>
     </div>
+    </>
   );
 }
