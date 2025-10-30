@@ -28,7 +28,7 @@ export function getConfigValue(key: string): string | undefined {
     return undefined;
   }
 
-  const getter = (config as any).getValue || (config as any).get;
+  const getter = (config as any).getValue;
   if (typeof getter !== 'function') return undefined;
   return getter.call(config, key);
 }
@@ -60,7 +60,7 @@ export function hasConfigValue(key: string): boolean {
     return false;
   }
 
-  const hasFn = (config as any).hasValue || (config as any).has;
+  const hasFn = (config as any).hasValue;
   if (typeof hasFn !== 'function') return false;
   return hasFn.call(config, key);
 }
