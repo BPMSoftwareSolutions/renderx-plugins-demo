@@ -49,7 +49,11 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
 	if (isContainer) attrs['data-role'] = 'container';
 
 	// Normalize to safe HTML tag for preview/canvas via JSON-driven rules
-	const tag = computeTagFromJson(json) || String(type || 'div');
+	// For AI-generated SVG components with custom types, detect by template content
+	let tag = computeTagFromJson(json) || String(type || 'div');
+	if (tag === type && json?.ui?.template?.includes('<svg')) {
+		tag = 'svg';
+	}
 
 	// Map ui.tools.resize → data-* attributes so overlay/resize can be data-driven
 	const tools = json?.ui?.tools || {};
