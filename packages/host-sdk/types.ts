@@ -45,6 +45,9 @@ export interface CssRegistryAPI {
 export interface ConfigAPI {
   getValue(key: string): string | undefined;
   hasValue(key: string): boolean;
+  // Backward compatibility aliases
+  get?(key: string): string | undefined;
+  has?(key: string): boolean;
 }
 
 declare global {

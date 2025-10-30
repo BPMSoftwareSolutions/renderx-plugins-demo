@@ -49,6 +49,15 @@ export function initConfig(initialConfig?: Record<string, string | undefined>): 
     hasValue(key: string): boolean {
       return configStore.has(key);
     },
+
+    // Backward compatibility aliases for E2E tests and legacy code
+    get(key: string): string | undefined {
+      return configStore.get(key);
+    },
+
+    has(key: string): boolean {
+      return configStore.has(key);
+    },
   };
 
   // Attach to window.RenderX.config
