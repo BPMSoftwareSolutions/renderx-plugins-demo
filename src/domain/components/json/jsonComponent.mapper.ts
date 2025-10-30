@@ -15,6 +15,7 @@ export type RuntimeTemplate = {
 	attributes?: Record<string, string>;
 	dimensions?: { width?: number; height?: number };
 	style?: Record<string, string>;
+	content?: any;
 };
 
 export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
@@ -70,6 +71,25 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
 	// Default text content remains type-specific for now; will move to content rules later
 	const defaults: any = json?.integration?.properties?.defaultValues || {};
 
+	// Extract SVG template markup for SVG components
+	let svgContent: any = undefined;
+	if (type === 'svg' && json?.ui?.template) {
+		const templateStr = json.ui.template;
+		if (typeof templateStr === 'string') {
+			// Parse the SVG template string to extract inner content
+			// For AI-generated SVG, the template contains the full <svg>...</svg> markup
+			const svgMatch = templateStr.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
+			if (svgMatch) {
+				// Extract the inner SVG markup
+				const innerMarkup = svgMatch[1];
+				svgContent = {
+					...defaults,
+					svgMarkup: innerMarkup,
+				};
+			}
+		}
+	}
+
 	return {
 		tag,
 		text:
@@ -98,7 +118,8 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
 				: {}),
 		},
 		// Pass default property values as content for rule-engine-driven application
-		...(defaults && Object.keys(defaults).length ? { content: defaults } : {}),
+		// For SVG components, include the extracted markup
+		...(svgContent ? { content: svgContent } : (defaults && Object.keys(defaults).length ? { content: defaults } : {})),
 		dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
 		style: {
 			...(type === 'image' && defaults?.objectFit
