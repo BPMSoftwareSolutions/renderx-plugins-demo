@@ -31,10 +31,10 @@ export function initConfig(initialConfig?: Record<string, string | undefined>): 
   // Clear existing config
   configStore.clear();
 
-  // Load initial config, filtering out undefined values
+  // Load initial config, filtering out undefined and empty string values
   if (initialConfig) {
     for (const [key, value] of Object.entries(initialConfig)) {
-      if (value !== undefined) {
+      if (value !== undefined && value !== '') {
         configStore.set(key, value);
       }
     }
@@ -47,6 +47,15 @@ export function initConfig(initialConfig?: Record<string, string | undefined>): 
     },
 
     hasValue(key: string): boolean {
+      return configStore.has(key);
+    },
+
+    // Backward compatibility aliases for E2E tests and legacy code
+    get(key: string): string | undefined {
+      return configStore.get(key);
+    },
+
+    has(key: string): boolean {
       return configStore.has(key);
     },
   };
