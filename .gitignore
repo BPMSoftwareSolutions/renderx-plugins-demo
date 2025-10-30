@@ -186,3 +186,5 @@ json-sequences/
 
 # Temporary cloned repositories
 /temp-control-panel
+
+cypress/videos/
