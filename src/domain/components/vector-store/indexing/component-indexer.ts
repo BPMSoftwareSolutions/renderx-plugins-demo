@@ -26,7 +26,7 @@ export class DefaultComponentIndexer implements ComponentIndexer {
    * Index all components from directory
    * Note: This is a simplified implementation. In production, you'd read from actual files.
    */
-  async indexDirectory(path: string): Promise<IndexResult> {
+  async indexDirectory(_path: string): Promise<IndexResult> {
     this.progress = {
       total: 0,
       processed: 0,

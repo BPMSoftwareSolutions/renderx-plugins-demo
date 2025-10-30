@@ -76,7 +76,7 @@ export class InMemoryVectorStore implements VectorStore {
     // Calculate similarity for all components
     const results: SearchResult[] = [];
 
-    this.components.forEach((component, index) => {
+    this.components.forEach((component) => {
       // Apply filters if provided
       if (filters) {
         if (filters.category && component.metadata.category !== filters.category) {

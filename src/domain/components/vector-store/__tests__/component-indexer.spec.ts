@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { DefaultComponentIndexer } from '../indexing/component-indexer';
 import { InMemoryVectorStore } from '../store/in-memory-store';
 import { EmbeddingService, ModelInfo } from '../store/store.types';
