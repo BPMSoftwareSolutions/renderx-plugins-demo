@@ -71,23 +71,55 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
 	// Default text content remains type-specific for now; will move to content rules later
 	const defaults: any = json?.integration?.properties?.defaultValues || {};
 
+	// For SVG components without explicit integration config, provide sensible defaults
+	const isSvgComponent = type === 'svg' || json?.ui?.template?.includes('<svg');
+	if (isSvgComponent && !ci.defaultWidth) {
+		ci.defaultWidth = ci.defaultWidth || 900;
+		ci.defaultHeight = ci.defaultHeight || 500;
+	}
+
 	// Extract SVG template markup for SVG components
 	// Check if this is an SVG component (type is 'svg' or contains 'svg' in the tag)
 	let svgContent: any = undefined;
-	const isSvgComponent = type === 'svg' || json?.ui?.template?.includes('<svg');
 	if (isSvgComponent && json?.ui?.template) {
 		const templateStr = json.ui.template;
 		if (typeof templateStr === 'string') {
-			// Parse the SVG template string to extract inner content
+			// Parse the SVG template string to extract inner content and attributes
 			// For AI-generated SVG, the template contains the full <svg>...</svg> markup
 			const svgMatch = templateStr.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
 			if (svgMatch) {
 				// Extract the inner SVG markup
 				const innerMarkup = svgMatch[1];
+
+				// Extract viewBox and preserveAspectRatio from SVG tag if present
+				const svgTagMatch = templateStr.match(/<svg\s+([^>]*)>/);
+				let viewBox = defaults?.viewBox;
+				let preserveAspectRatio = defaults?.preserveAspectRatio;
+
+				if (svgTagMatch) {
+					const svgAttrs = svgTagMatch[1];
+
+					// Extract viewBox attribute
+					const viewBoxMatch = svgAttrs.match(/viewBox\s*=\s*["']([^"']+)["']/);
+					if (viewBoxMatch) {
+						viewBox = viewBoxMatch[1];
+					}
+
+					// Extract preserveAspectRatio attribute
+					const preserveMatch = svgAttrs.match(/preserveAspectRatio\s*=\s*["']([^"']+)["']/);
+					if (preserveMatch) {
+						preserveAspectRatio = preserveMatch[1];
+					}
+				}
+
 				svgContent = {
 					...defaults,
 					svgMarkup: innerMarkup,
 				};
+
+				// Add extracted attributes if found
+				if (viewBox) svgContent.viewBox = viewBox;
+				if (preserveAspectRatio) svgContent.preserveAspectRatio = preserveAspectRatio;
 			}
 		}
 	}
