@@ -72,8 +72,10 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
 	const defaults: any = json?.integration?.properties?.defaultValues || {};
 
 	// Extract SVG template markup for SVG components
+	// Check if this is an SVG component (type is 'svg' or contains 'svg' in the tag)
 	let svgContent: any = undefined;
-	if (type === 'svg' && json?.ui?.template) {
+	const isSvgComponent = type === 'svg' || json?.ui?.template?.includes('<svg');
+	if (isSvgComponent && json?.ui?.template) {
 		const templateStr = json.ui.template;
 		if (typeof templateStr === 'string') {
 			// Parse the SVG template string to extract inner content
