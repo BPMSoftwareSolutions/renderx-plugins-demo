@@ -3,8 +3,10 @@
  * Indexes components from JSON files and populates the vector store
  */
 
+
 import { VectorStore, ComponentMetadata, EmbeddingService } from '../store/store.types';
 import { ComponentIndexer, IndexResult, IndexProgress, IndexError } from './indexer.types';
+import { ComponentLoader, LoadedComponent } from '../loaders/component-loader';
 
 export class DefaultComponentIndexer implements ComponentIndexer {
   private progress: IndexProgress;
@@ -26,7 +28,7 @@ export class DefaultComponentIndexer implements ComponentIndexer {
    * Index all components from directory
    * Note: This is a simplified implementation. In production, you'd read from actual files.
    */
-  async indexDirectory(_path: string): Promise<IndexResult> {
+  async indexDirectory(dirPath: string): Promise<IndexResult> {
     this.progress = {
       total: 0,
       processed: 0,
@@ -35,13 +37,34 @@ export class DefaultComponentIndexer implements ComponentIndexer {
     };
     this.errors = [];
 
-    // This would be implemented to read from actual file system
-    // For now, return empty result as placeholder
+    const loader = new ComponentLoader();
+    let components: LoadedComponent[] = [];
+    try {
+      components = await loader.loadAll({ basePath: dirPath });
+    } catch (err) {
+      this.errors.push({
+        componentId: 'ALL',
+        error: err instanceof Error ? err.message : String(err),
+        timestamp: new Date(),
+      });
+      return {
+        total: 0,
+        indexed: 0,
+        failed: 0, // No components failed, directory-level error only
+        errors: this.errors,
+      };
+    }
+
+    this.progress.total = components.length;
+    for (const comp of components) {
+      await this.indexComponent(comp.id, comp.data);
+    }
+
     return {
-      total: 0,
-      indexed: 0,
-      failed: 0,
-      errors: [],
+      total: components.length,
+      indexed: this.progress.processed,
+      failed: this.errors.length,
+      errors: this.errors,
     };
   }
 
@@ -76,16 +99,24 @@ export class DefaultComponentIndexer implements ComponentIndexer {
    * Extract metadata from component data
    */
   private extractMetadata(componentId: string, componentData: Record<string, unknown>): ComponentMetadata {
+    // Try nested RenderX format first
+    let metadata = (componentData.metadata as Record<string, unknown>) || {};
+    let ui = (componentData.ui as Record<string, any>) || {};
+    // If metadata is empty, try flat format
+    if (Object.keys(metadata).length === 0) {
+      metadata = componentData;
+    }
+    const styles = (ui.styles as Record<string, any>) || {};
     return {
       id: componentId,
-      name: (componentData.name as string) || componentId,
-      description: (componentData.description as string) || '',
-      type: (componentData.type as string) || 'unknown',
-      category: (componentData.category as string) || 'general',
-      tags: (componentData.tags as string[]) || [],
-      markup: (componentData.markup as string) || undefined,
-      cssPreview: (componentData.cssPreview as string) || undefined,
-      template: (componentData.template as Record<string, unknown>) || undefined,
+      name: (metadata.name as string) || componentId,
+      description: (metadata.description as string) || '',
+      type: (metadata.type as string) || 'unknown',
+      category: (metadata.category as string) || 'general',
+      tags: (metadata.tags as string[]) || [],
+      markup: (ui.template as string) || undefined,
+      cssPreview: (styles.css as string)?.substring(0, 200) || undefined,
+      template: ui || undefined,
     };
   }
 
