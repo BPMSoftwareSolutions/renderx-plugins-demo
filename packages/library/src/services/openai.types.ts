@@ -63,6 +63,7 @@ export interface ComponentJSON {
     version: string;
     author: string;
     tags: string[];
+    replaces?: string;
   };
   ui: {
     template: string;
@@ -77,8 +78,49 @@ export interface ComponentJSON {
     icon: {
       mode: 'emoji' | 'svg' | 'image';
       value: string;
+      position?: string;
+    };
+    tools?: {
+      drag?: {
+        enabled?: boolean;
+      };
+      resize?: {
+        enabled?: boolean;
+        handles?: string[];
+        constraints?: {
+          min?: { w?: number; h?: number };
+          max?: { w?: number; h?: number };
+        };
+      };
     };
   };
+  integration?: {
+    properties?: {
+      schema?: Record<string, any>;
+      defaultValues?: Record<string, any>;
+    };
+    events?: Record<string, {
+      description?: string;
+      parameters?: string[];
+    }>;
+    canvasIntegration?: {
+      resizable?: boolean;
+      draggable?: boolean;
+      selectable?: boolean;
+      minWidth?: number;
+      minHeight?: number;
+      maxWidth?: number;
+      maxHeight?: number;
+      defaultWidth?: number;
+      defaultHeight?: number;
+      snapToGrid?: boolean;
+      allowChildElements?: boolean;
+    };
+  };
+  interactions?: Record<string, {
+    pluginId: string;
+    sequenceId: string;
+  }>;
 }
 
 export interface GenerateComponentRequest {

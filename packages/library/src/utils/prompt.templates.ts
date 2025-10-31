@@ -28,7 +28,41 @@ Generate custom UI components in JSON format following this exact schema:
       "variables": {},
       "library": { "css": "string", "variables": {} }
     },
-    "icon": { "mode": "emoji", "value": "string" }
+    "icon": { "mode": "emoji", "value": "string" },
+    "tools": {
+      "drag": { "enabled": true },
+      "resize": { "enabled": true, "handles": ["nw", "n", "ne", "e", "se", "s", "sw", "w"] }
+    }
+  },
+  "integration": {
+    "properties": {
+      "schema": { "propertyName": { "type": "string", "default": "value", "description": "..." } },
+      "defaultValues": { "propertyName": "value" }
+    },
+    "events": {
+      "click": { "description": "Triggered when clicked", "parameters": ["event", "elementData"] },
+      "focus": { "description": "Triggered on focus", "parameters": ["event", "elementData"] },
+      "blur": { "description": "Triggered on blur", "parameters": ["event", "elementData"] }
+    },
+    "canvasIntegration": {
+      "resizable": true,
+      "draggable": true,
+      "selectable": true,
+      "minWidth": 80,
+      "minHeight": 30,
+      "defaultWidth": 120,
+      "defaultHeight": 40,
+      "snapToGrid": true,
+      "allowChildElements": false
+    }
+  },
+  "interactions": {
+    "canvas.component.create": { "pluginId": "CanvasComponentPlugin", "sequenceId": "canvas-component-create-symphony" },
+    "canvas.component.select": { "pluginId": "CanvasComponentSelectionPlugin", "sequenceId": "canvas-component-select-symphony" },
+    "canvas.component.drag.move": { "pluginId": "CanvasComponentDragPlugin", "sequenceId": "canvas-component-drag-symphony" },
+    "canvas.component.resize.start": { "pluginId": "CanvasComponentResizeStartPlugin", "sequenceId": "canvas-component-resize-start-symphony" },
+    "canvas.component.resize.move": { "pluginId": "CanvasComponentResizeMovePlugin", "sequenceId": "canvas-component-resize-move-symphony" },
+    "canvas.component.resize.end": { "pluginId": "CanvasComponentResizeEndPlugin", "sequenceId": "canvas-component-resize-end-symphony" }
   }
 }
 
