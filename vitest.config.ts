@@ -10,8 +10,12 @@ export default defineConfig({
     include: [
       "**/__tests__/**/*.spec.ts",
       "**/__tests__/**/*.spec.tsx",
+      "**/__tests__/**/*.test.ts",
+      "**/__tests__/**/*.test.tsx",
       "tests/**/*.spec.ts",
       "tests/**/*.spec.tsx",
+      "tests/**/*.test.ts",
+      "tests/**/*.test.tsx",
     ],
     // Exclude non-production test files from CI runs
     exclude: [

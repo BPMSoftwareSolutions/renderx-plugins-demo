@@ -59,13 +59,26 @@ describe('CssRegistryStore', () => {
       expect(createdClass?.isBuiltIn).toBe(false);
     });
 
-    it('should not create duplicate classes', () => {
+    it('should be idempotent: creating same class with identical content succeeds', () => {
       const className = 'test-class';
       const content = '.test-class { color: red; }';
-      
-      store.createClass(className, content);
-      const success = store.createClass(className, content);
-      
+
+      const first = store.createClass(className, content);
+      expect(first).toBe(true);
+
+      // Second create with identical content should succeed (idempotent no-op)
+      const second = store.createClass(className, content);
+      expect(second).toBe(true);
+    });
+
+    it('should fail when creating duplicate with different content', () => {
+      const className = 'test-class';
+      const content1 = '.test-class { color: red; }';
+      const content2 = '.test-class { color: blue; }';
+
+      store.createClass(className, content1);
+      const success = store.createClass(className, content2);
+
       expect(success).toBe(false);
     });
 
@@ -89,9 +102,16 @@ describe('CssRegistryStore', () => {
       expect(updatedClass?.content).toBe(updatedContent);
     });
 
-    it('should not update non-existent classes', () => {
-      const success = store.updateClass('non-existent', '.test { color: red; }');
-      expect(success).toBe(false);
+    it('should upsert: create class if it does not exist', () => {
+      const className = 'non-existent';
+      const content = '.test { color: red; }';
+
+      const success = store.updateClass(className, content);
+      expect(success).toBe(true);
+
+      const created = store.getClass(className);
+      expect(created).toBeDefined();
+      expect(created?.content).toBe(content);
     });
 
     it('should update built-in classes', () => {

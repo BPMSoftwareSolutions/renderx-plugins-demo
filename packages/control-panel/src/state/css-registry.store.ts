@@ -179,7 +179,8 @@ class CssRegistryStore {
 
   updateClass(name: string, content: string): boolean {
     const existingClass = this.state.classes.get(name);
-    // Upsert: create when missing
+
+    // Upsert: if class doesn't exist, create it
     if (!existingClass) {
       return this.createClass(name, content);
     }

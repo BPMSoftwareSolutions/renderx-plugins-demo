@@ -209,10 +209,92 @@ This is a simple button component.`
       } as Response);
 
       const service = new OpenAIService();
-      
+
       await expect(service.generateComponent({
         prompt: 'Create invalid component'
       })).rejects.toThrow('Component validation failed');
+    });
+
+    it('should preserve integration and interactions fields', async () => {
+      const mockResponse = {
+        choices: [{
+          message: {
+            content: `\`\`\`json
+{
+  "metadata": {
+    "type": "test-button",
+    "name": "Test Button",
+    "category": "custom",
+    "description": "A test button",
+    "version": "1.0.0",
+    "author": "AI Generated",
+    "tags": ["button"]
+  },
+  "ui": {
+    "template": "<button>{{text}}</button>",
+    "styles": {
+      "css": ".test-button { padding: 8px; }",
+      "variables": { "text": "Click me" },
+      "library": { "css": "", "variables": {} }
+    },
+    "icon": { "mode": "emoji", "value": "🔘" },
+    "tools": {
+      "drag": { "enabled": true },
+      "resize": { "enabled": true, "handles": ["nw", "ne", "sw", "se"] }
+    }
+  },
+  "integration": {
+    "properties": {
+      "schema": { "text": { "type": "string", "default": "Click me" } },
+      "defaultValues": { "text": "Click me" }
+    },
+    "events": {
+      "click": { "description": "Triggered on click", "parameters": ["event"] }
+    },
+    "canvasIntegration": {
+      "resizable": true,
+      "draggable": true,
+      "defaultWidth": 120,
+      "defaultHeight": 40
+    }
+  },
+  "interactions": {
+    "canvas.component.create": {
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony"
+    }
+  }
+}
+\`\`\``
+          }
+        }]
+      };
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve(mockResponse)
+      } as Response);
+
+      const service = new OpenAIService();
+      const result = await service.generateComponent({
+        prompt: 'Create a button'
+      });
+
+      // Verify integration field is preserved
+      expect(result.component.integration).toBeDefined();
+      expect(result.component.integration?.properties?.schema).toBeDefined();
+      expect(result.component.integration?.events?.click).toBeDefined();
+      expect(result.component.integration?.canvasIntegration?.resizable).toBe(true);
+
+      // Verify interactions field is preserved
+      expect(result.component.interactions).toBeDefined();
+      expect(result.component.interactions?.['canvas.component.create']).toBeDefined();
+      expect(result.component.interactions?.['canvas.component.create'].pluginId).toBe('CanvasComponentPlugin');
+
+      // Verify ui.tools field is preserved
+      expect(result.component.ui.tools).toBeDefined();
+      expect(result.component.ui.tools?.drag?.enabled).toBe(true);
+      expect(result.component.ui.tools?.resize?.handles).toContain('nw');
     });
   });
 

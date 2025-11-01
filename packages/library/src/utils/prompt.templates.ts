@@ -28,7 +28,41 @@ Generate custom UI components in JSON format following this exact schema:
       "variables": {},
       "library": { "css": "string", "variables": {} }
     },
-    "icon": { "mode": "emoji", "value": "string" }
+    "icon": { "mode": "emoji", "value": "string" },
+    "tools": {
+      "drag": { "enabled": true },
+      "resize": { "enabled": true, "handles": ["nw", "n", "ne", "e", "se", "s", "sw", "w"] }
+    }
+  },
+  "integration": {
+    "properties": {
+      "schema": { "propertyName": { "type": "string", "default": "value", "description": "..." } },
+      "defaultValues": { "propertyName": "value" }
+    },
+    "events": {
+      "click": { "description": "Triggered when clicked", "parameters": ["event", "elementData"] },
+      "focus": { "description": "Triggered on focus", "parameters": ["event", "elementData"] },
+      "blur": { "description": "Triggered on blur", "parameters": ["event", "elementData"] }
+    },
+    "canvasIntegration": {
+      "resizable": true,
+      "draggable": true,
+      "selectable": true,
+      "minWidth": 80,
+      "minHeight": 30,
+      "defaultWidth": 120,
+      "defaultHeight": 40,
+      "snapToGrid": true,
+      "allowChildElements": false
+    }
+  },
+  "interactions": {
+    "canvas.component.create": { "pluginId": "CanvasComponentPlugin", "sequenceId": "canvas-component-create-symphony" },
+    "canvas.component.select": { "pluginId": "CanvasComponentSelectionPlugin", "sequenceId": "canvas-component-select-symphony" },
+    "canvas.component.drag.move": { "pluginId": "CanvasComponentDragPlugin", "sequenceId": "canvas-component-drag-symphony" },
+    "canvas.component.resize.start": { "pluginId": "CanvasComponentResizeStartPlugin", "sequenceId": "canvas-component-resize-start-symphony" },
+    "canvas.component.resize.move": { "pluginId": "CanvasComponentResizeMovePlugin", "sequenceId": "canvas-component-resize-move-symphony" },
+    "canvas.component.resize.end": { "pluginId": "CanvasComponentResizeEndPlugin", "sequenceId": "canvas-component-resize-end-symphony" }
   }
 }
 
@@ -43,6 +77,12 @@ CRITICAL RULES:
 8. Include hover effects and smooth transitions where appropriate
 9. Use modern CSS features (flexbox, grid, custom properties)
 10. Ensure components work well in both light and dark themes
+11. ALWAYS include the "integration" field with properties schema, events, and canvasIntegration settings
+12. ALWAYS include the "interactions" field with plugin/sequence mappings for canvas operations
+13. ALWAYS include the "ui.tools" field with drag and resize configuration
+14. Define all component properties in integration.properties.schema with types, defaults, and descriptions
+15. Include standard canvas events (click, focus, blur) in integration.events
+16. Set appropriate canvas integration constraints (minWidth, minHeight, defaultWidth, defaultHeight)
 
 TEMPLATE PATTERNS:
 - Buttons: <button class="{{classes}}" {{#if disabled}}disabled{{/if}}>{{text}}</button>
@@ -177,7 +217,53 @@ export const EXAMPLE_COMPONENTS = [
           }
         }
       },
-      icon: { mode: "emoji", value: "🔘" }
+      icon: { mode: "emoji", value: "🔘" },
+      tools: {
+        drag: { enabled: true },
+        resize: { enabled: true, handles: ["nw", "n", "ne", "e", "se", "s", "sw", "w"] }
+      }
+    },
+    integration: {
+      properties: {
+        schema: {
+          text: { type: "string", default: "Click me", description: "Button text content", required: true },
+          variant: { type: "string", default: "primary", description: "Button style variant", enum: ["primary", "secondary", "outline"] },
+          size: { type: "string", default: "medium", description: "Button size", enum: ["small", "medium", "large"] },
+          disabled: { type: "boolean", default: false, description: "Whether the button is disabled" }
+        },
+        defaultValues: {
+          text: "Click me",
+          variant: "primary",
+          size: "medium",
+          disabled: false
+        }
+      },
+      events: {
+        click: { description: "Triggered when the button is clicked", parameters: ["event", "elementData"] },
+        focus: { description: "Triggered when the button receives focus", parameters: ["event", "elementData"] },
+        blur: { description: "Triggered when the button loses focus", parameters: ["event", "elementData"] }
+      },
+      canvasIntegration: {
+        resizable: true,
+        draggable: true,
+        selectable: true,
+        minWidth: 80,
+        minHeight: 30,
+        maxWidth: 400,
+        maxHeight: 100,
+        defaultWidth: 120,
+        defaultHeight: 40,
+        snapToGrid: true,
+        allowChildElements: false
+      }
+    },
+    interactions: {
+      "canvas.component.create": { pluginId: "CanvasComponentPlugin", sequenceId: "canvas-component-create-symphony" },
+      "canvas.component.select": { pluginId: "CanvasComponentSelectionPlugin", sequenceId: "canvas-component-select-symphony" },
+      "canvas.component.drag.move": { pluginId: "CanvasComponentDragPlugin", sequenceId: "canvas-component-drag-symphony" },
+      "canvas.component.resize.start": { pluginId: "CanvasComponentResizeStartPlugin", sequenceId: "canvas-component-resize-start-symphony" },
+      "canvas.component.resize.move": { pluginId: "CanvasComponentResizeMovePlugin", sequenceId: "canvas-component-resize-move-symphony" },
+      "canvas.component.resize.end": { pluginId: "CanvasComponentResizeEndPlugin", sequenceId: "canvas-component-resize-end-symphony" }
     }
   }
 ];
