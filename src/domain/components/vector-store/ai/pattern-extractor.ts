@@ -52,7 +52,7 @@ export class PatternExtractor {
     };
   }
 
-  async getPatternUsage(patternName: string): Promise<string[]> {
+  async getPatternUsage(_patternName: string): Promise<string[]> {
     // Dummy implementation for now
     return [];
   }
