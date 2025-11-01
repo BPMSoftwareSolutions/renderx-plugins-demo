@@ -19,16 +19,19 @@ import {
 } from './openai.types';
 import { buildSystemPrompt, EXAMPLE_COMPONENTS } from '../utils/prompt.templates';
 import { validateComponentJson } from '../utils/validation.utils';
+import { RAGEnrichmentService } from './rag-enrichment.service';
 
 export class OpenAIService {
   private apiKey?: string;
   private model: string;
   private baseURL = 'https://api.openai.com/v1';
+  private ragEnrichment: RAGEnrichmentService;
 
   constructor() {
     // Get API key from host config service
     this.apiKey = getConfigValue('OPENAI_API_KEY');
     this.model = getConfigValue('OPENAI_MODEL') || 'gpt-4-turbo-preview';
+    this.ragEnrichment = new RAGEnrichmentService();
   }
 
   /**
@@ -82,7 +85,26 @@ export class OpenAIService {
         max_tokens: options.maxTokens || 2000
       });
 
-      return this.parseComponentResponse(response, request.prompt);
+      // Parse AI response to get basic component
+      const parseResult = this.parseComponentResponse(response, request.prompt);
+
+      // Enrich with RAG data from library components
+      const libraryComponents = request.libraryComponents || EXAMPLE_COMPONENTS;
+      const enrichmentResult = await this.ragEnrichment.enrichComponent(
+        parseResult.component,
+        libraryComponents
+      );
+
+      return {
+        component: enrichmentResult.component,
+        explanation: parseResult.explanation,
+        suggestions: parseResult.suggestions,
+        enrichmentMetadata: {
+          sourceComponents: enrichmentResult.sourceComponents,
+          enrichmentStrategy: enrichmentResult.enrichmentStrategy,
+          confidence: enrichmentResult.confidence
+        }
+      };
     } catch (error) {
       console.error('OpenAI generation failed:', error);
       

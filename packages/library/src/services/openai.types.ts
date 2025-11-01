@@ -126,6 +126,7 @@ export interface ComponentJSON {
 export interface GenerateComponentRequest {
   prompt: string;
   context?: ChatMessage[];
+  libraryComponents?: ComponentJSON[];
   options?: {
     model?: string;
     temperature?: number;
@@ -137,6 +138,11 @@ export interface GenerateComponentResponse {
   component: ComponentJSON;
   explanation: string;
   suggestions?: string[];
+  enrichmentMetadata?: {
+    sourceComponents: string[];
+    enrichmentStrategy: 'exact-match' | 'similar-merge' | 'default';
+    confidence: number;
+  };
 }
 
 // Configuration Types
