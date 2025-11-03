@@ -89,6 +89,7 @@ export class RAGEnrichmentTelemetryService extends RAGEnrichmentService {
         if (line.includes('create')) operations.create = (operations.create || 0) + 1;
         if (line.includes('update')) operations.update = (operations.update || 0) + 1;
         if (line.includes('delete')) operations.delete = (operations.delete || 0) + 1;
+        if (line.includes('load')) operations.load = (operations.load || 0) + 1;
         if (line.includes('click')) operations.click = (operations.click || 0) + 1;
         if (line.includes('drag')) operations.drag = (operations.drag || 0) + 1;
         if (line.includes('resize')) operations.resize = (operations.resize || 0) + 1;
