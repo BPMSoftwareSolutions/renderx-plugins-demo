@@ -81,6 +81,18 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
       }
     });
   } catch {}
+  // Also support WebView2's chrome.webview message channel
+  try {
+    (window as any).chrome?.webview?.addEventListener?.('message', (evt: any) => {
+      const data: any = (evt && (evt.data ?? evt?.detail)) || null;
+      if (!data) return;
+      const topic = data.topic || data?.message?.topic;
+      const payload = data.payload ?? data?.message?.payload ?? data?.message;
+      if (typeof topic === 'string' && topic.length) {
+        try { (window as any).RenderX?.EventRouter?.publish?.(topic, payload); } catch {}
+      }
+    });
+  } catch {}
 
 
 	  if (!(window as any).RenderX.featureFlags) {
