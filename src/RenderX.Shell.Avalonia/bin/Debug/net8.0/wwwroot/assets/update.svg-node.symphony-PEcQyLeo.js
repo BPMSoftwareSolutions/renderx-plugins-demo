@@ -1,0 +1,1 @@
+import{refreshControlPanel as r,updateSvgNodeAttribute as e}from"./update.svg-node.stage-crew-BxfHgaX2.js";import"./EventRouter-DUQzZvsb.js";var a={updateSvgNodeAttribute:e,refreshControlPanel:r};export{a as handlers};

@@ -1,0 +1,1 @@
+function o(){if(typeof window>"u")return{play:async()=>({})};const{conductor:e}=window.renderxCommunicationSystem||{};if(!e)throw new Error("Conductor not initialized. Ensure the host has called initConductor().");return e}const n=Object.freeze(Object.defineProperty({__proto__:null},Symbol.toStringTag,{value:"Module"}));export{n as H,o as u};

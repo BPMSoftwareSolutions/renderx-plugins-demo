@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RenderX Plugins Demo</title>
+    <script>
+      (function () {
+        try {
+          var d = document.documentElement;
+          var stored = null;
+          try {
+            stored = localStorage.getItem("theme");
+          } catch (e) {}
+          var t = stored === "dark" || stored === "light" ? stored : "dark";
+          d.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+
+
+    <!-- In Vite dev, ensure Control Panel CSS is injected even when using the vendor mapping -->
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@renderx-plugins/control-panel": "/assets/vendor-control-panel.js"
+        }
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/main-w8kOe9p1.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/EventRouter-DUQzZvsb.js">
+    <link rel="modulepreload" crossorigin href="/assets/global-CMa2Rm43.js">
+    <link rel="modulepreload" crossorigin href="/assets/feature-flags-IuyZAa4_.js">
+    <link rel="modulepreload" crossorigin href="/assets/index-CpUT_Mw0.js">
+    <link rel="modulepreload" crossorigin href="/assets/EventRouter-BSDNTYCD.js">
+    <link rel="stylesheet" crossorigin href="/assets/global-DVG2pnu0.css">
+    <link rel="stylesheet" crossorigin href="/assets/main-HxK9eMo1.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
