@@ -9,6 +9,7 @@ import { EventRouter as HostEventRouter } from "@renderx-plugins/host-sdk/core/e
 import { initConfig } from "@renderx-plugins/host-sdk/core/environment/config";
 import "./global.css";
 import * as HostFeatureFlags from "@renderx-plugins/host-sdk/core/environment/feature-flags";
+import { recordTelemetryEvent, getPlugins, enablePlugin, disablePlugin } from "./infrastructure/dotnet/apiClient";
 
 import { listComponents, getComponentById, onInventoryChanged } from "./domain/components/inventory/inventory.service";
 import { cssRegistry } from "./domain/css/cssRegistry.facade";
@@ -28,6 +29,25 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
 
   (window as any).RenderX = (window as any).RenderX || {};
   // Expose the initialized conductor globally so SDK/hooks/events resolve the same instance
+  // Wrap conductor.play to report sequence execution to the .NET telemetry API (non-blocking)
+  try {
+    const originalPlay = (conductor as any).play?.bind(conductor);
+    if (typeof originalPlay === 'function') {
+      (conductor as any).play = async (pluginId: string, sequenceId: string, payload?: any) => {
+        const startedAt = Date.now();
+        try { await recordTelemetryEvent({ eventType: 'sequence.started', payload: { pluginId, sequenceId, input: payload } }); } catch {}
+        try {
+          const result = await originalPlay(pluginId, sequenceId, payload);
+          try { await recordTelemetryEvent({ eventType: 'sequence.completed', payload: { pluginId, sequenceId, durationMs: Date.now() - startedAt } }); } catch {}
+          return result;
+        } catch (e) {
+          try { await recordTelemetryEvent({ eventType: 'sequence.failed', payload: { pluginId, sequenceId, error: String(e) } }); } catch {}
+          throw e;
+        }
+      };
+    }
+  } catch {}
+
   if (!(window as any).RenderX.conductor) {
     (window as any).RenderX.conductor = conductor;
   }
@@ -37,9 +57,31 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
   if (!(window as any).RenderX.getTopicDef) {
     (window as any).RenderX.getTopicDef = getTopicDef;
   }
-  if (!(window as any).RenderX.EventRouter) {
-    (window as any).RenderX.EventRouter = HostEventRouter as any;
+  // Install an EventRouter bridge that mirrors all publishes to the .NET telemetry endpoint
+  {
+    const bridged = {
+      ...HostEventRouter,
+      async publish(topic: string, payload: any, c?: any) {
+        // Do not block routing; fire-and-forget telemetry
+        try { recordTelemetryEvent({ eventType: topic, payload, source: 'frontend' }); } catch {}
+        return (HostEventRouter as any).publish(topic, payload, c);
+      },
+    } as any;
+    (window as any).RenderX.EventRouter = bridged;
   }
+  // Bridge: listen for messages from the .NET host and route to EventRouter
+  try {
+    window.addEventListener('message', (evt: MessageEvent) => {
+      const data: any = (evt && (evt as any).data) || null;
+      if (!data || data.source !== 'dotnet-host') return;
+      const topic = data.topic || data?.message?.topic;
+      const payload = data.payload ?? data?.message?.payload ?? data?.message;
+      if (typeof topic === 'string' && topic.length) {
+        try { (window as any).RenderX?.EventRouter?.publish?.(topic, payload); } catch {}
+      }
+    });
+  } catch {}
+
 
 	  if (!(window as any).RenderX.featureFlags) {
 	    (window as any).RenderX.featureFlags = {
@@ -60,6 +102,16 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
   if (!(window as any).RenderX.cssRegistry) {
     (window as any).RenderX.cssRegistry = cssRegistry as any;
   }
+  // Expose plugin management bridge to .NET backend
+  if (!(window as any).RenderX.plugins) {
+    (window as any).RenderX.plugins = {
+      list: getPlugins,
+      enable: enablePlugin,
+      disable: disablePlugin,
+    } as any;
+  }
+  // Optionally prime plugin discovery (fire-and-forget)
+  try { getPlugins().then(r => { try { console.log('🔌 Plugins discovered via .NET bridge:', r?.plugins?.map(p=>p.id)); } catch {} }).catch(() => {}); } catch {}
 
   // Initialize configuration service with environment variables
   initConfig({
