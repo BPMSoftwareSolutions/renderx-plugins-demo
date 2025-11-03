@@ -108,3 +108,21 @@ export function toPluginManifestJson(resp: PluginDiscoveryResponse): { plugins: 
   };
 }
 
+
+
+// Sequences bridge (optional): allow .NET to trigger frontend conductor and publish topics
+export async function executeSequence(pluginId: string, sequenceId: string, payload?: any): Promise<{ success: boolean }>
+{
+  return http<{ success: boolean }>(`/api/sequences/execute`, {
+    method: 'POST',
+    body: JSON.stringify({ pluginId, sequenceId, payload }),
+  });
+}
+
+export async function publishToFrontend(topic: string, payload?: any): Promise<{ success: boolean }>
+{
+  return http<{ success: boolean }>(`/api/sequences/publish`, {
+    method: 'POST',
+    body: JSON.stringify({ topic, payload }),
+  });
+}
