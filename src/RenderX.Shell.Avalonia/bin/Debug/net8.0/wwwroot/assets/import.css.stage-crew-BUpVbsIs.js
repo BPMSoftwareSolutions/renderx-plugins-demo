@@ -1,0 +1,1 @@
+import{injectRawCss as n}from"./create.css.stage-crew-9NMo-z0p.js";function r(a,t){try{const s=t.payload.importCssClasses||{};for(const o of Object.keys(s)){const e=s[o]?.content;typeof e=="string"&&e.trim().length&&n(t,e)}}catch(s){t.logger?.warn?.("injectCssClasses failed:",s)}}export{r as injectCssClasses};

@@ -1,0 +1,30 @@
+{
+  "testApiVersion": "1.0.0",
+  "plugin": { "id": "demo.fake", "version": "0.0.1" },
+  "driverUrl": "/test/driver.html",
+  "capabilities": ["selectors", "stateSnapshot"],
+  "scenarios": [
+    {
+      "id": "label-default",
+      "title": "Label renders default",
+      "tags": ["smoke", "render"],
+      "readiness": { "phases": [0,1,2], "timeoutMs": 3000 },
+      "steps": [],
+      "asserts": [
+        { "type": "selectorText", "selector": "[data-testid=\"fake-label\"]", "equals": "Hello" }
+      ]
+    },
+    {
+      "id": "label-updates",
+      "title": "Label updates via setProps",
+      "tags": ["render"],
+      "readiness": { "phases": [0,1,2], "timeoutMs": 3000 },
+      "steps": [
+        { "type": "setProps", "payload": { "label": "Click me" } }
+      ],
+      "asserts": [
+        { "type": "selectorText", "selector": "[data-testid=\"fake-label\"]", "equals": "Click me" }
+      ]
+    }
+  ]
+}

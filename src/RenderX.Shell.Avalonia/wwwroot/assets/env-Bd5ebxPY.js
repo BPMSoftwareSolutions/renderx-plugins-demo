@@ -1,0 +1,1 @@
+const r={BASE_URL:"/",DEV:!1,MODE:"production",PROD:!0,SSR:!1};var e={};function n(){try{if(typeof process<"u"&&e){const t=e.HOST_ARTIFACTS_DIR||e.ARTIFACTS_DIR;if(t)return t}}catch{}try{const t=r?.VITE_ARTIFACTS_DIR;if(t)return t}catch{}return null}function _(){return!!n()}export{_ as artifactsEnabled,n as getArtifactsDir};

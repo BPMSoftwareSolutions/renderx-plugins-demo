@@ -1,0 +1,1 @@
+import{updateSize as r}from"./resize.stage-crew-DFswr5SZ.js";import"./select.overlay.dom.stage-crew-T3p4uTrs.js";import"./select.overlay.css.stage-crew-CJxa9lQN.js";var e={updateSize:r};export{e as handlers};

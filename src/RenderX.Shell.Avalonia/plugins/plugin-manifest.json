@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "id": "HeaderTitlePlugin",
+      "displayName": "Header Title",
+      "description": "Displays the application title in the header",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerLeft",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderTitlePlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderTitlePlugin"
+      },
+      "dependencies": [],
+      "autoMount": true
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "displayName": "Header Controls",
+      "description": "Provides header control buttons",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerCenter",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderControlsPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderControlsPlugin"
+      },
+      "dependencies": [],
+      "autoMount": true
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "displayName": "Theme Toggle",
+      "description": "Provides theme switching functionality",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerRight",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderThemePlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderThemePlugin"
+      },
+      "dependencies": [],
+      "autoMount": true
+    },
+    {
+      "id": "LibraryPlugin",
+      "displayName": "Component Library",
+      "description": "Component library panel for browsing and selecting components",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "library",
+        "module": "RenderX.Plugins.Library.dll",
+        "export": "LibraryPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Library.dll",
+        "export": "LibraryPlugin"
+      },
+      "dependencies": [],
+      "autoMount": true
+    },
+    {
+      "id": "CanvasPlugin",
+      "displayName": "Design Canvas",
+      "description": "Main design canvas for component composition",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "canvas",
+        "module": "RenderX.Plugins.Canvas.dll",
+        "export": "CanvasPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Canvas.dll",
+        "export": "CanvasPlugin"
+      },
+      "dependencies": [],
+      "autoMount": true
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "displayName": "Control Panel",
+      "description": "Property editing panel for selected components",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "controlPanel",
+        "module": "RenderX.Plugins.ControlPanel.dll",
+        "export": "ControlPanelPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.ControlPanel.dll",
+        "export": "ControlPanelPlugin"
+      },
+      "dependencies": [],
+      "autoMount": true
+    }
+  ]
+}

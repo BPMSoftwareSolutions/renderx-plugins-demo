@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RenderX.Shell.Avalonia.UI.ViewModels"
+        xmlns:views="using:RenderX.Shell.Avalonia.UI.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="RenderX.Shell.Avalonia.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RenderX Shell"
+        WindowStartupLocation="CenterScreen"
+        MinWidth="800"
+        MinHeight="600">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid>
+        <!-- WebView host for TypeScript RenderX frontend -->
+        <views:WebViewHost Name="WebViewHost"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"/>
+
+        <!-- Fallback content (shown while WebView loads) -->
+        <Grid Name="MainContent"
+              IsVisible="{Binding !WebViewLoaded}"
+              Background="#F5F5F5">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+                <TextBlock Text="Loading RenderX..."
+                           HorizontalAlignment="Center"
+                           FontSize="16"
+                           Foreground="Gray"/>
+                <ProgressBar IsIndeterminate="True" Width="200" Height="4"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Diagnostics badge -->
+        <Button Name="DiagnosticsBadge"
+                IsVisible="{Binding DiagnosticsBadgeVisible}"
+                Command="{Binding ToggleDiagnosticsCommand}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,10,10,0"
+                Width="40"
+                Height="40"
+                Background="Transparent"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                CornerRadius="20"
+                ToolTip.Tip="Open Diagnostics (Ctrl+Shift+D)">
+            <TextBlock Text="🔍" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+
+        <!-- Diagnostics overlay (will be implemented later) -->
+        <Border Name="DiagnosticsOverlay"
+                IsVisible="{Binding DiagnosticsOpen}"
+                Background="#CC000000"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+            <Border Background="White"
+                    CornerRadius="8"
+                    Margin="50"
+                    Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Diagnostics" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock Text="Diagnostics panel will be implemented in Phase 4" FontSize="14"/>
+                    <Button Content="Close" 
+                            Command="{Binding ToggleDiagnosticsCommand}"
+                            HorizontalAlignment="Right"
+                            Margin="0,20,0,0"/>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</Window>
