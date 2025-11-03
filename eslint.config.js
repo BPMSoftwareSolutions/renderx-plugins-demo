@@ -72,6 +72,13 @@ export default [
       "coverage/**",
       "scripts/codemods/**",
       "docs/**",
+      // Ignore .NET build outputs and embedded frontend assets
+      "src/RenderX.Shell.Avalonia/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/**/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/bin/**",
+      "src/RenderX.Shell.Avalonia/obj/**",
+      "**/bin/**",
+      "**/obj/**",
     ],
   },
   {
@@ -85,6 +92,13 @@ export default [
       "coverage/**",
       "scripts/codemods/**",
       "docs/**",
+      // Ignore .NET build outputs and embedded frontend assets
+      "src/RenderX.Shell.Avalonia/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/**/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/bin/**",
+      "src/RenderX.Shell.Avalonia/obj/**",
+      "**/bin/**",
+      "**/obj/**",
     ],
     languageOptions: {
       parser: tsparser,
