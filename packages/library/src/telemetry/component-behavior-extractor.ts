@@ -74,12 +74,18 @@ function ensureOp(patterns: Map<string, Pattern>, componentType: string, opKey: 
 }
 
 function toComponentFromTopic(topic: string): { component: string; op: string } {
-  // Example: 'library.load.requested' => library, op=load
   const parts = topic.split('.');
-  const component = parts[0] || 'unknown';
-  const op = parts[1] || 'unknown';
-  return { component, op };
+  if (parts[0] === 'control' && parts[1] === 'panel') {
+    return { component: 'control-panel', op: parts[2] || 'unknown' };
+  }
+  return { component: parts[0] || 'unknown', op: parts[1] || 'unknown' };
 }
+
+function normalizeOp(op: string): string {
+  if (op === 'load') return 'components';
+  return op || 'unknown';
+}
+
 
 function toComponentFromEvent(event: string): { component: string; op: string } {
   // Examples:
@@ -113,6 +119,27 @@ export class ComponentBehaviorExtractor {
     for (const c of chunks) lines.push(...c.lines);
 
     const patterns = new Map<string, Pattern>();
+
+
+    // 1) Plugin/Sequence mappings via topics router
+    for (const raw of lines) {
+      const line = raw.trim();
+      const m = line.match(/^\[topics\]\s+Routing '([^']+)'\s*->\s*([A-Za-z0-9]+)::([a-z0-9-]+)/i);
+      if (m) {
+        const topic = m[1];
+        const pluginId = m[2];
+        const sequenceId = m[3];
+        const { component, op } = toComponentFromTopic(topic);
+        const opKey = normalizeOp(op);
+        const opAgg = ensureOp(patterns, component, opKey);
+        opAgg.pluginSequenceMappings.push({
+          topic,
+          pluginId,
+          sequenceId,
+          sequenceName: titleFromSequenceId(sequenceId),
+        });
+      }
+    }
 
     // 2) Sequence structure (movements, beats, durations)
     interface InFlightSequence {
@@ -208,28 +235,28 @@ export class ComponentBehaviorExtractor {
       }
     }
 
-    // 2.5) Plugin-sequence mappings from routing logs
-    for (const line of lines) {
-      // Match routing lines with optional prefixes (timestamps, spaces) before the marker
-      const routingMatch = line.match(/.*PluginInterfaceFacade\.play\(\):\s+([^\s]+)\s*->\s*([^\s]+)/);
+    // 2.5) Plugin-sequence mappings from PluginInterfaceFacade.play()
+    for (const raw of lines) {
+      const line = raw.trim();
+      const routingMatch = line.match(/PluginInterfaceFacade\.play\(\):\s+([^\s]+)\s*->\s*([^\s]+)/);
       if (routingMatch) {
         const pluginId = routingMatch[1];
         const sequenceId = routingMatch[2];
-        
+
         // Determine component type from plugin ID
         let componentType = 'unknown';
-        if (pluginId.includes('Library')) componentType = 'library';
-        else if (pluginId.includes('ControlPanel') || pluginId.includes('Canvas')) componentType = 'control-panel';
-        else if (pluginId.includes('Canvas')) componentType = 'canvas';
-        
+        if (/Library/i.test(pluginId)) componentType = 'library';
+        else if (/ControlPanel/i.test(pluginId)) componentType = 'control-panel';
+        else if (/Canvas/i.test(pluginId)) componentType = 'canvas';
+
         // Determine operation from sequence ID
         let operation = 'unknown';
         if (sequenceId.includes('load')) operation = 'components';
         else if (sequenceId.includes('ui') || sequenceId.includes('render')) operation = 'ui';
-        
+
         // Determine topic from component and operation
-        const topic = `${componentType}:${operation}:*`;
-        
+        const topic = `${componentType}.${operation}.requested`;
+
         const opAgg = ensureOp(patterns, componentType, operation);
         opAgg.pluginSequenceMappings.push({
           topic,
