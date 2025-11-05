@@ -1,1 +1,0 @@
-var t=(r,e)=>{const o=r?.component?.template;if(!o)throw new Error("Missing component template.");e.payload.template=o,e.payload.nodeId=r._overrideNodeId||`rx-node-${Math.random().toString(36).slice(2,8)}`,o.render?.strategy==="react"&&(e.payload.kind="react")};export{t as resolveTemplate};

@@ -1,1 +1,0 @@
-import{R as o,j as i}from"./EventRouter-DUQzZvsb.js";var e=o.forwardRef(({theme:t,onToggle:a},r)=>i.jsx("button",{ref:r,onClick:a,className:"header-theme-button",title:"Toggle Theme",children:t==="light"?"🌙 Dark":"🌞 Light"}));e.displayName="HeaderThemeButtonView";var m=e;export{m as default};

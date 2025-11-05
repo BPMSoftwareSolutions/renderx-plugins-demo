@@ -1,1 +1,0 @@
-import{E as d}from"./EventRouter-DUQzZvsb.js";var i=(e,o)=>{const r=o.payload?.createdNode;e?.onComponentCreated?.(r);const a=r?.id||o.payload?.id,n=o.payload?.correlationId||e?.correlationId;a&&n&&d.publish("canvas.component.created",{id:a,correlationId:n},o.conductor)};export{i as notifyUi};
