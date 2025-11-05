@@ -192,4 +192,4 @@ cypress/videos/
 # .NET build artifacts
 **/bin/
 **/obj/
-**/wwwroot/assets/
+**/wwwroot/
