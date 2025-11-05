@@ -188,3 +188,8 @@ json-sequences/
 /temp-control-panel
 
 cypress/videos/
+
+# .NET build artifacts
+**/bin/
+**/obj/
+**/wwwroot/

@@ -1,1 +1,0 @@
-var s=async(o,e)=>{const{nodeId:a,template:t}=e.payload||{};if(!a||!t)throw new Error("Missing nodeId/template in payload for IO registration");const n={type:t.tag,classes:t.classes,style:t.style,createdAt:Date.now()};t.content&&Object.keys(t.content).length>0&&(n.content=t.content),await e.io?.kv?.put?.(a,n)};export{s as registerInstance};

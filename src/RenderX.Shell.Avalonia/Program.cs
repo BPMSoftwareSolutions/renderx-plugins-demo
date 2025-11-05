@@ -14,6 +14,7 @@ using RenderX.Shell.Avalonia.Core.Plugins;
 using RenderX.Shell.Avalonia.Infrastructure.Api.Endpoints;
 using RenderX.Shell.Avalonia.Infrastructure.Api.Services;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
+using RenderX.Shell.Avalonia.Infrastructure.Bridge;
 using RenderX.Shell.Avalonia.UI.ViewModels;
 using System;
 
@@ -80,6 +81,9 @@ public partial class App : Application
                 services.AddSingleton<ITelemetryService, TelemetryService>();
                 services.AddSingleton<IConfigurationService, ConfigurationService>();
 
+                // Bridge services
+                services.AddSingleton<IWebViewBridgeService, WebViewBridgeService>();
+
                 // ASP.NET Core API
                 services.AddControllers();
                 services.AddCors(options =>
@@ -119,6 +123,7 @@ public partial class App : Application
                         endpoints.MapPluginEndpoints();
                         endpoints.MapTelemetryEndpoints();
                         endpoints.MapConfigurationEndpoints();
+                        endpoints.MapSequenceEndpoints();
                     });
                 })
                 .UseUrls("http://localhost:5000");

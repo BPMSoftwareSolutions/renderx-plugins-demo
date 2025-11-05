@@ -1,1 +1,0 @@
-async function a(s,e){const o=e.payload.importComponents||[];for(const t of o){const n={type:t.tag,classes:t.classRefs||[],style:t.style||{},createdAt:t.createdAt||Date.now()};t.content&&Object.keys(t.content).length>0&&(n.content=t.content),await e.io?.kv?.put?.(t.id,n)}}export{a as registerInstances};

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <IsPackable>false</IsPackable>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Test packages to be added via package manager: xunit, FlaUI.Core, FlaUI.UIA3, Microsoft.NET.Test.Sdk, xunit.runner.visualstudio, FluentAssertions -->
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RenderX.Shell.Avalonia\RenderX.Shell.Avalonia.csproj" />
+  </ItemGroup>
+</Project>
+

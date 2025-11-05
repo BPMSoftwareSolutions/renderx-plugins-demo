@@ -35,13 +35,14 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
     if (typeof originalPlay === 'function') {
       (conductor as any).play = async (pluginId: string, sequenceId: string, payload?: any) => {
         const startedAt = Date.now();
-        try { await recordTelemetryEvent({ eventType: 'sequence.started', payload: { pluginId, sequenceId, input: payload } }); } catch {}
+        const corrId = (payload && ((payload as any).__corrId || (payload as any).__correlationId)) || (window as any).__rxCorrId;
+        try { await recordTelemetryEvent({ eventType: 'sequence.started', correlationId: corrId, payload: { pluginId, sequenceId, input: payload } }); } catch {}
         try {
           const result = await originalPlay(pluginId, sequenceId, payload);
-          try { await recordTelemetryEvent({ eventType: 'sequence.completed', payload: { pluginId, sequenceId, durationMs: Date.now() - startedAt } }); } catch {}
+          try { await recordTelemetryEvent({ eventType: 'sequence.completed', correlationId: corrId, payload: { pluginId, sequenceId, durationMs: Date.now() - startedAt } }); } catch {}
           return result;
         } catch (e) {
-          try { await recordTelemetryEvent({ eventType: 'sequence.failed', payload: { pluginId, sequenceId, error: String(e) } }); } catch {}
+          try { await recordTelemetryEvent({ eventType: 'sequence.failed', correlationId: corrId, payload: { pluginId, sequenceId, error: String(e) } }); } catch {}
           throw e;
         }
       };
@@ -63,7 +64,8 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
       ...HostEventRouter,
       async publish(topic: string, payload: any, c?: any) {
         // Do not block routing; fire-and-forget telemetry
-        try { recordTelemetryEvent({ eventType: topic, payload, source: 'frontend' }); } catch {}
+        const corrId = (payload && ((payload as any).__corrId || (payload as any).__correlationId)) || (window as any).__rxCorrId;
+        try { recordTelemetryEvent({ eventType: topic, payload, correlationId: corrId, source: 'frontend' }); } catch {}
         return (HostEventRouter as any).publish(topic, payload, c);
       },
     } as any;

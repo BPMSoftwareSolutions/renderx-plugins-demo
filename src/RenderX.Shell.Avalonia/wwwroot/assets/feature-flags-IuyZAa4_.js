@@ -1,1 +1,0 @@
-const s={"lint.topics.runtime-validate":{status:"off",created:"2024-01-01",description:"Runtime validation of topic payloads"}};let a=new Map;function i(t){if(a.has(t))return a.get(t);if(typeof window<"u"){const n=window.RenderX?.featureFlags;if(n)try{return!!n.isFlagEnabled(t)}catch{}}const e=s[t];return e?e.status==="on"||e.status==="experiment":!1}export{i};
