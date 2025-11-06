@@ -7,7 +7,6 @@
         mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
         x:Class="RenderX.Shell.Avalonia.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
         Title="RenderX Shell"
         WindowStartupLocation="CenterScreen"
         MinWidth="800"
@@ -22,24 +21,34 @@
     <Grid>
         <!-- WebView host for TypeScript RenderX frontend -->
         <views:WebViewHost Name="WebViewHost"
+                          AutomationProperties.AutomationId="WebViewHost"
+                          AutomationProperties.Name="WebViewHost"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch"/>
 
         <!-- Fallback content (shown while WebView loads) -->
         <Grid Name="MainContent"
+              AutomationProperties.AutomationId="MainContent"
+              AutomationProperties.Name="MainContent"
               IsVisible="{Binding !WebViewLoaded}"
               Background="#F5F5F5">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
-                <TextBlock Text="Loading RenderX..."
+                <TextBlock Name="LoadingText" Text="Loading RenderX..."
+                           AutomationProperties.AutomationId="LoadingText"
+                           AutomationProperties.Name="LoadingText"
                            HorizontalAlignment="Center"
                            FontSize="16"
                            Foreground="Gray"/>
-                <ProgressBar IsIndeterminate="True" Width="200" Height="4"/>
+                <ProgressBar Name="LoadingProgress"
+                             AutomationProperties.AutomationId="LoadingProgress"
+                             AutomationProperties.Name="LoadingProgress"
+                             IsIndeterminate="True" Width="200" Height="4"/>
             </StackPanel>
         </Grid>
 
         <!-- Diagnostics badge -->
         <Button Name="DiagnosticsBadge"
+                AutomationProperties.AutomationId="DiagnosticsBadge"
                 IsVisible="{Binding DiagnosticsBadgeVisible}"
                 Command="{Binding ToggleDiagnosticsCommand}"
                 HorizontalAlignment="Right"

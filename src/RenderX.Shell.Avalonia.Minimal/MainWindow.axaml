@@ -1,0 +1,18 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RenderX.Shell.Avalonia.Minimal.MainWindow"
+        Title="RenderX WebView2 Minimal Test"
+        Width="1024"
+        Height="768"
+        Background="White">
+    <Grid Name="RootGrid" Background="White">
+        <TextBlock
+            Name="LoadingIndicator"
+            Text="Loading WebView2..."
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="24"
+            Foreground="Gray" />
+    </Grid>
+</Window>
+

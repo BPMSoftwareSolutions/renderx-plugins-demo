@@ -12,15 +12,20 @@
     
     For now, this serves as a placeholder that will be populated with the WebView2 control.
   -->
-  <Grid Name="WebViewContainer" Background="White">
-    <TextBlock 
+  <Grid Name="WebViewContainer"
+        AutomationProperties.AutomationId="WebViewContainer"
+        AutomationProperties.Name="WebViewContainer"
+        Background="White">
+    <TextBlock
       Name="LoadingIndicator"
+      AutomationProperties.AutomationId="LoadingIndicator"
+      AutomationProperties.Name="LoadingIndicator"
       Text="Loading RenderX Frontend..."
       VerticalAlignment="Center"
       HorizontalAlignment="Center"
       FontSize="16"
       Foreground="Gray" />
   </Grid>
-  
+
 </UserControl>
 
