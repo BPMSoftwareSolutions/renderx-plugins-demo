@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 
-namespace RenderX.Shell.Avalonia.UI.Views;
+namespace RenderX.Shell.Avalonia.UI;
 
 /// <summary>
 /// Manages layout configuration and responsive layout logic for the main window

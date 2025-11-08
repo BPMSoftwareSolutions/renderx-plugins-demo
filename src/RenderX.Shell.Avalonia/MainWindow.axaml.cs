@@ -5,8 +5,9 @@ using Avalonia.Interactivity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RenderX.Shell.Avalonia.Core;
+using RenderX.Shell.Avalonia.Infrastructure.Plugins;
+using RenderX.Shell.Avalonia.UI;
 using RenderX.Shell.Avalonia.UI.ViewModels;
-using RenderX.Shell.Avalonia.UI.Views;
 using System;
 using System.Threading.Tasks;
 
@@ -60,34 +61,39 @@ public partial class MainWindow : Window
             _layoutManager = new LayoutManager(layoutLogger);
             _layoutManager.Initialize();
 
-            // Mount native Avalonia controls into slots (thin-host architecture)
+            // Mount native Avalonia controls into slots via IPluginLoader (thin-host architecture)
+            var pluginLoader = _serviceProvider.GetRequiredService<IPluginLoader>();
 
-            // Canvas slot - CanvasControl
+            // Canvas slot
             var canvasSlot = this.FindControl<Border>("Canvas");
             if (canvasSlot != null)
             {
-                var canvasControl = new CanvasControl();
-                var canvasLogger = _serviceProvider.GetRequiredService<ILogger<CanvasControl>>();
-                canvasControl.Initialize(
-                    thinHostLayer.EventRouter,
-                    thinHostLayer.Conductor,
-                    canvasLogger);
-                canvasSlot.Child = canvasControl;
-                _logger.LogInformation("CanvasControl mounted in Canvas slot");
+                var canvasControl = await pluginLoader.LoadControlForSlotAsync("Canvas", _serviceProvider);
+                if (canvasControl != null)
+                {
+                    canvasSlot.Child = canvasControl;
+                    _logger.LogInformation("Canvas control mounted in Canvas slot");
+                }
+                else
+                {
+                    _logger.LogWarning("Failed to load control for Canvas slot");
+                }
             }
 
-            // ControlPanel slot - ControlPanelControl
+            // ControlPanel slot
             var controlPanelSlot = this.FindControl<Border>("ControlPanel");
             if (controlPanelSlot != null)
             {
-                var controlPanelControl = new ControlPanelControl();
-                var controlPanelLogger = _serviceProvider.GetRequiredService<ILogger<ControlPanelControl>>();
-                controlPanelControl.Initialize(
-                    thinHostLayer.EventRouter,
-                    thinHostLayer.Conductor,
-                    controlPanelLogger);
-                controlPanelSlot.Child = controlPanelControl;
-                _logger.LogInformation("ControlPanelControl mounted in ControlPanel slot");
+                var controlPanelControl = await pluginLoader.LoadControlForSlotAsync("ControlPanel", _serviceProvider);
+                if (controlPanelControl != null)
+                {
+                    controlPanelSlot.Child = controlPanelControl;
+                    _logger.LogInformation("ControlPanel control mounted in ControlPanel slot");
+                }
+                else
+                {
+                    _logger.LogWarning("Failed to load control for ControlPanel slot");
+                }
             }
 
             _logger.LogInformation("MainWindow initialization complete");

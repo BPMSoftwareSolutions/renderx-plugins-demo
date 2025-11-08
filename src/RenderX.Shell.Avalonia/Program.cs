@@ -16,6 +16,7 @@ using RenderX.Shell.Avalonia.Infrastructure.Api.Services;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
 using RenderX.Shell.Avalonia.Infrastructure.Bridge;
 using RenderX.Shell.Avalonia.UI.ViewModels;
+using RenderX.Shell.Avalonia.Infrastructure.Plugins;
 using System;
 
 namespace RenderX.Shell.Avalonia;
@@ -154,6 +155,9 @@ public partial class App : Application
 
                 // Thin Host Layer - unified wrapper around SDKs
                 services.AddSingleton<IThinHostLayer, ThinHostLayer>();
+
+                // Plugin loader - manifest-agnostic slot-to-control mapping
+                services.AddSingleton<IPluginLoader, PluginLoader>();
 
                 // API Services
                 services.AddSingleton<IPluginDiscoveryService, PluginDiscoveryService>();
