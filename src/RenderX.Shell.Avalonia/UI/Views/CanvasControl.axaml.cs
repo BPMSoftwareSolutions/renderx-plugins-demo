@@ -3,8 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
+using RenderX.HostSDK.Avalonia.Interfaces;
+using MusicalConductor.Avalonia.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace RenderX.Shell.Avalonia.UI.Views;
 public partial class CanvasControl : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductor? _conductor;
+    private IConductorClient? _conductor;
     private ILogger<CanvasControl>? _logger;
     private ObservableCollection<ComponentViewModel> _components;
     private ComponentViewModel? _selectedComponent;
@@ -49,7 +49,7 @@ public partial class CanvasControl : UserControl
     /// <summary>
     /// Initialize the canvas control with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductor conductor, ILogger<CanvasControl> logger)
+    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<CanvasControl> logger)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
@@ -79,35 +79,43 @@ public partial class CanvasControl : UserControl
         try
         {
             // Subscribe to component creation
-            _eventRouter.Subscribe<JsonElement>("canvas.component.created", async (payload) =>
+            _eventRouter.Subscribe("canvas.component.created", (payload) =>
             {
                 _logger.LogDebug("Component created event received");
-                HandleComponentCreated(payload);
-                await Task.CompletedTask;
+                if (payload is JsonElement jsonPayload)
+                {
+                    HandleComponentCreated(jsonPayload);
+                }
             });
 
             // Subscribe to component selection
-            _eventRouter.Subscribe<JsonElement>("canvas.component.selection.changed", async (payload) =>
+            _eventRouter.Subscribe("canvas.component.selection.changed", (payload) =>
             {
                 _logger.LogDebug("Component selection changed event received");
-                HandleComponentSelectionChanged(payload);
-                await Task.CompletedTask;
+                if (payload is JsonElement jsonPayload)
+                {
+                    HandleComponentSelectionChanged(jsonPayload);
+                }
             });
 
             // Subscribe to component deletion
-            _eventRouter.Subscribe<JsonElement>("canvas.component.deleted", async (payload) =>
+            _eventRouter.Subscribe("canvas.component.deleted", (payload) =>
             {
                 _logger.LogDebug("Component deleted event received");
-                HandleComponentDeleted(payload);
-                await Task.CompletedTask;
+                if (payload is JsonElement jsonPayload)
+                {
+                    HandleComponentDeleted(jsonPayload);
+                }
             });
 
             // Subscribe to component updates
-            _eventRouter.Subscribe<JsonElement>("canvas.component.updated", async (payload) =>
+            _eventRouter.Subscribe("canvas.component.updated", (payload) =>
             {
                 _logger.LogDebug("Component updated event received");
-                HandleComponentUpdated(payload);
-                await Task.CompletedTask;
+                if (payload is JsonElement jsonPayload)
+                {
+                    HandleComponentUpdated(jsonPayload);
+                }
             });
 
             _logger.LogInformation("Canvas event subscriptions established");
@@ -267,7 +275,7 @@ public partial class CanvasControl : UserControl
     /// </summary>
     private async void PublishSelectionChanged(ComponentViewModel component)
     {
-        if (_eventRouter == null || _conductor == null || _logger == null)
+        if (_eventRouter == null || _logger == null)
             return;
 
         try

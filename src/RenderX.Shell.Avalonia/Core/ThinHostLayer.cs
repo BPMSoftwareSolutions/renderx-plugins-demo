@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
+using RenderX.HostSDK.Avalonia.Interfaces;
+using MusicalConductor.Avalonia.Interfaces;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ public interface IThinHostLayer
     /// <summary>
     /// Main conductor for orchestrating plugin sequences
     /// </summary>
-    IConductor Conductor { get; }
+    IConductorClient Conductor { get; }
 
     /// <summary>
     /// Initialize the thin host layer and all SDKs
@@ -42,19 +42,19 @@ public interface IThinHostLayer
 public class ThinHostLayer : IThinHostLayer
 {
     private readonly IEventRouter _eventRouter;
-    private readonly IConductor _conductor;
+    private readonly IConductorClient _conductor;
     private readonly ILogger<ThinHostLayer> _logger;
     private bool _initialized;
 
     /// <summary>
     /// Initialize ThinHostLayer with SDK services via dependency injection
     /// </summary>
-    /// <param name="eventRouter">Event router service</param>
-    /// <param name="conductor">Conductor service</param>
+    /// <param name="eventRouter">Event router service from RenderX.HostSDK.Avalonia</param>
+    /// <param name="conductor">Conductor client from MusicalConductor.Avalonia</param>
     /// <param name="logger">Logger service</param>
     public ThinHostLayer(
         IEventRouter eventRouter,
-        IConductor conductor,
+        IConductorClient conductor,
         ILogger<ThinHostLayer> logger)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
@@ -71,7 +71,7 @@ public class ThinHostLayer : IThinHostLayer
     /// <summary>
     /// Main conductor for orchestrating plugin sequences
     /// </summary>
-    public IConductor Conductor => _conductor;
+    public IConductorClient Conductor => _conductor;
 
     /// <summary>
     /// Initialize the thin host layer and all SDKs
@@ -89,18 +89,13 @@ public class ThinHostLayer : IThinHostLayer
         {
             _logger.LogInformation("Initializing ThinHostLayer...");
 
-            // Initialize event router
-            _logger.LogDebug("Initializing EventRouter...");
-            await _eventRouter.InitAsync();
-            _logger.LogDebug("EventRouter initialized successfully");
-
-            // Initialize conductor
-            _logger.LogDebug("Initializing Conductor...");
-            await _conductor.InitializeAsync();
-            _logger.LogDebug("Conductor initialized successfully");
+            // SDKs are already initialized via DI (RenderX.HostSDK.Avalonia and MusicalConductor.Avalonia)
+            // Just mark as initialized and log
+            _logger.LogDebug("SDK services are ready via dependency injection");
 
             _initialized = true;
             _logger.LogInformation("ThinHostLayer initialized successfully");
+            await Task.CompletedTask;
         }
         catch (Exception ex)
         {
@@ -125,18 +120,14 @@ public class ThinHostLayer : IThinHostLayer
         {
             _logger.LogInformation("Shutting down ThinHostLayer...");
 
-            // Shutdown conductor
-            _logger.LogDebug("Shutting down Conductor...");
-            await _conductor.ShutdownAsync();
-            _logger.LogDebug("Conductor shut down successfully");
-
-            // Shutdown event router
-            _logger.LogDebug("Shutting down EventRouter...");
+            // Reset event router
+            _logger.LogDebug("Resetting EventRouter...");
             _eventRouter.Reset();
-            _logger.LogDebug("EventRouter shut down successfully");
+            _logger.LogDebug("EventRouter reset successfully");
 
             _initialized = false;
             _logger.LogInformation("ThinHostLayer shut down successfully");
+            await Task.CompletedTask;
         }
         catch (Exception ex)
         {

@@ -1,0 +1,137 @@
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Microsoft.Extensions.Logging;
+using RenderX.HostSDK.Avalonia.Interfaces;
+using MusicalConductor.Avalonia.Interfaces;
+using System;
+using System.Collections.ObjectModel;
+
+namespace RenderX.Plugins.Library;
+
+/// <summary>
+/// Library plugin - displays component library in the library slot
+/// </summary>
+public partial class LibraryPlugin : UserControl
+{
+    private IEventRouter? _eventRouter;
+    private IConductorClient? _conductor;
+    private ILogger<LibraryPlugin>? _logger;
+    private ObservableCollection<ComponentItem> _components;
+
+    /// <summary>
+    /// Component item for display in library
+    /// </summary>
+    public class ComponentItem
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+    }
+
+    public LibraryPlugin()
+    {
+        InitializeComponent();
+        _components = new ObservableCollection<ComponentItem>();
+    }
+
+    /// <summary>
+    /// Initialize the library plugin with dependencies
+    /// </summary>
+    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<LibraryPlugin> logger)
+    {
+        _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
+        _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        _logger.LogInformation("LibraryPlugin initialized");
+
+        // Set up ItemsControl
+        var itemsControl = this.FindControl<ItemsControl>("ComponentsItemsControl");
+        if (itemsControl != null)
+        {
+            itemsControl.ItemsSource = _components;
+        }
+
+        // Load sample components
+        LoadSampleComponents();
+    }
+
+    /// <summary>
+    /// Load sample components for demonstration
+    /// </summary>
+    private void LoadSampleComponents()
+    {
+        _components.Add(new ComponentItem 
+        { 
+            Id = "button", 
+            Name = "Button", 
+            Category = "Input",
+            Description = "Interactive button component"
+        });
+        _components.Add(new ComponentItem 
+        { 
+            Id = "textbox", 
+            Name = "TextBox", 
+            Category = "Input",
+            Description = "Text input component"
+        });
+        _components.Add(new ComponentItem 
+        { 
+            Id = "label", 
+            Name = "Label", 
+            Category = "Display",
+            Description = "Text label component"
+        });
+        _components.Add(new ComponentItem 
+        { 
+            Id = "panel", 
+            Name = "Panel", 
+            Category = "Layout",
+            Description = "Container panel component"
+        });
+
+        _logger?.LogInformation("Loaded {ComponentCount} sample components", _components.Count);
+    }
+
+    /// <summary>
+    /// Handle component drag start
+    /// </summary>
+    private void OnComponentPointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        if (sender is Border border && border.DataContext is ComponentItem component)
+        {
+            _logger?.LogDebug("Component drag started: {ComponentId}", component.Id);
+            
+            // Publish component drag started event
+            if (_eventRouter != null)
+            {
+                _eventRouter.PublishAsync("library.component.drag.started", 
+                    new { componentId = component.Id, componentName = component.Name }, 
+                    _conductor);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handle component double-click (add to canvas)
+    /// </summary>
+    private void OnComponentDoubleClick(object? sender, TappedEventArgs e)
+    {
+        if (sender is Border border && border.DataContext is ComponentItem component)
+        {
+            _logger?.LogInformation("Component double-clicked: {ComponentId}", component.Id);
+            
+            // Publish component add requested event
+            if (_eventRouter != null)
+            {
+                _eventRouter.PublishAsync("library.component.add.requested", 
+                    new { componentId = component.Id, componentName = component.Name }, 
+                    _conductor);
+            }
+        }
+    }
+}
+

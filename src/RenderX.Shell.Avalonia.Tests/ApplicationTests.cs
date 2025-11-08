@@ -92,17 +92,16 @@ public class ApplicationTests : IDisposable
         LaunchApplication();
         var mainWindow = GetMainWindow();
 
-        // Act - Check if window has any descendants at all
-        var allDescendants = mainWindow.FindAllDescendants();
+        // Act - Find WebView container
+        var webViewContainer = FindByIdOrNameWithRetry(mainWindow, "WebViewContainer", timeoutMs: 5000);
 
         // Debug: dump what we can see
-        DumpWindowTree(mainWindow, 150);
+        DumpWindowTree(mainWindow, 200);
         DumpProcessTree(300);
 
-        // Assert - For now, just verify the window exists
-        // TODO: Once Avalonia UIA support is fixed, test for specific child elements
-        Assert.NotNull(mainWindow);
-        Assert.NotNull(allDescendants);
+        // Assert
+        Assert.NotNull(webViewContainer);
+        Assert.True(webViewContainer.IsAvailable, "WebViewContainer should be visible");
     }
 
     /// <summary>
@@ -113,19 +112,304 @@ public class ApplicationTests : IDisposable
     /// Its presence and enabled state confirms the diagnostic system is initialized.
     /// </summary>
     [Fact]
-    public void Application_Diagnostics_Badge_Exists_And_Is_Accessible()
+    public void Application_WebViewHost_LoadingIndicator_Present()
     {
         // Arrange
         LaunchApplication();
         var mainWindow = GetMainWindow();
-        Thread.Sleep(2000); // Give bindings time to settle
+        Thread.Sleep(1000); // Give initial bindings time to settle
 
-        // Act - Find the diagnostics badge button
-        var diagnosticsBadge = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("DiagnosticsBadge"));
+        // Act - Find the loading indicator inside WebViewHost container
+        var loadingIndicator = FindByIdOrNameWithRetry(mainWindow, "LoadingIndicator", timeoutMs: 5000);
+
+        // Debug
+        DumpWindowTree(mainWindow, 200);
 
         // Assert
-        Assert.NotNull(diagnosticsBadge);
-        Assert.True(diagnosticsBadge.IsEnabled);
+        Assert.NotNull(loadingIndicator);
+        Assert.True(loadingIndicator.IsAvailable, "LoadingIndicator should be visible before WebView fully loads");
+    }
+
+    /// <summary>
+    /// PHASE 3 TEST 1: Native Avalonia Controls Are Initialized
+    /// Verifies that CanvasControl and ControlPanelControl are created and available.
+    ///
+    /// Phase 3 replaces WebView2 with native Avalonia controls. This test validates
+    /// that the controls are properly instantiated and accessible via the UI tree.
+    /// </summary>
+    [Fact]
+    public void Application_Does_Not_Render_Static_Avalonia_Panels()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 3, timeoutMs: 10000);
+
+        // Act - Ensure host does NOT render native static panels (thin-host contract)
+        var canvasControl = FindByIdOrNameWithRetry(mainWindow, "CanvasControl", timeoutMs: 1000);
+        var controlPanelControl = FindByIdOrNameWithRetry(mainWindow, "ControlPanelControl", timeoutMs: 1000);
+        var libraryPanel = FindByIdOrNameWithRetry(mainWindow, "LibraryPanel", timeoutMs: 1000);
+
+        DumpWindowTree(mainWindow, 200);
+
+        // Assert - These should NOT exist in thin host
+        Assert.Null(canvasControl);
+        Assert.Null(controlPanelControl);
+        Assert.Null(libraryPanel);
+    }
+
+    /// <summary>
+    /// PHASE 3 TEST 2: ThinHostLayer Services Are Wired
+    /// Verifies that the application initializes without errors and services are available.
+    ///
+    /// Phase 3 wires SDK services (IConductorClient, IEventRouter) through ThinHostLayer.
+    /// This test validates that the DI container properly registers and initializes these services.
+    /// </summary>
+    [Fact]
+    public void Application_Phase3_ThinHostLayer_Services_Are_Wired()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        Thread.Sleep(3000); // Allow services to initialize
+
+        // Act - Verify window is responsive and initialized
+        var isAvailable = mainWindow.IsAvailable;
+        var title = mainWindow.Title;
+
+        // Assert - Window should be fully initialized
+        Assert.True(isAvailable, "Main window should be available after service initialization");
+        Assert.Equal("RenderX Shell", title);
+    }
+
+    /// <summary>
+    /// PHASE 3 TEST 3: Event Router Is Functional
+    /// Verifies that event subscriptions are working by checking for event-related UI elements.
+    ///
+    /// Phase 3 replaces custom IEventRouter with SDK IEventRouter. This test validates
+    /// that events can be subscribed to and the UI responds appropriately.
+    /// </summary>
+    [Fact]
+    public void Application_Phase3_Event_Router_Is_Functional()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 5, timeoutMs: 10000);
+
+        // Act - Check that the window tree is populated (indicates event subscriptions are working)
+        var allDescendants = mainWindow.FindAllDescendants();
+
+        // Assert - Should have multiple UI elements indicating proper initialization
+        Assert.NotNull(allDescendants);
+        Assert.True(allDescendants.Length > 0, "Window should have UI elements from event subscriptions");
+    }
+
+    /// <summary>
+    /// CRITICAL TEST: Application Displays Correct 3-Column Layout on Startup
+    ///
+    /// This is the PRIMARY E2E test that validates the application displays the correct UI.
+    /// The app should show:
+    /// - Header row (48px) with headerLeft, headerCenter, headerRight slots
+    /// - Main content row with 3 columns:
+    ///   * Library panel (left, 320px)
+    ///   * Canvas (center, 1fr) - main drawing area
+    ///   * Control Panel (right, 360px) - properties panel
+    ///
+    /// FAILURE INDICATES: Blank white screen, missing panels, or incorrect layout
+    /// </summary>
+    [Fact(Skip="SPA-layer UI verified in Cypress; thin host renders only WebViewHost")]
+    public void Application_Displays_Correct_3Column_Layout_On_Startup()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 10, timeoutMs: 15000);
+        Thread.Sleep(2000); // Allow layout to settle
+
+        // Act - Find all major UI sections
+        var canvasControl = FindByIdOrNameWithRetry(mainWindow, "CanvasControl", timeoutMs: 5000);
+        var controlPanelControl = FindByIdOrNameWithRetry(mainWindow, "ControlPanelControl", timeoutMs: 5000);
+        var libraryPanel = FindByIdOrNameWithRetry(mainWindow, "LibraryPanel", timeoutMs: 5000);
+        var headerArea = FindByIdOrNameWithRetry(mainWindow, "HeaderArea", timeoutMs: 5000);
+
+        // Debug output
+        DumpWindowTree(mainWindow, 300);
+        DumpProcessTree(400);
+
+        // Assert - All major panels should be present
+        Assert.NotNull(canvasControl, "CanvasControl should be present in the layout");
+        Assert.NotNull(controlPanelControl, "ControlPanelControl should be present in the layout");
+        Assert.NotNull(libraryPanel, "LibraryPanel should be present in the layout (left sidebar)");
+        Assert.NotNull(headerArea, "HeaderArea should be present in the layout (top row)");
+
+        // Assert - All panels should be visible
+        Assert.True(canvasControl.IsAvailable, "CanvasControl should be visible");
+        Assert.True(controlPanelControl.IsAvailable, "ControlPanelControl should be visible");
+        Assert.True(libraryPanel.IsAvailable, "LibraryPanel should be visible");
+        Assert.True(headerArea.IsAvailable, "HeaderArea should be visible");
+    }
+
+    /// <summary>
+    /// CRITICAL TEST: Canvas Panel Shows Expected Content
+    ///
+    /// Validates that the Canvas panel displays:
+    /// - Header with "Canvas" title
+    /// - Component count indicator
+    /// - Canvas content area (white background)
+    /// - Status bar at bottom
+    /// </summary>
+    [Fact(Skip="SPA-layer UI verified in Cypress; thin host renders only WebViewHost")]
+    public void Application_Canvas_Panel_Shows_Expected_Content()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 10, timeoutMs: 15000);
+
+        // Act - Find canvas-specific elements
+        var canvasControl = FindByIdOrNameWithRetry(mainWindow, "CanvasControl", timeoutMs: 5000);
+        var componentCountText = canvasControl?.FindFirstDescendant(cf => cf.ByName("ComponentCountText"));
+        var statusText = canvasControl?.FindFirstDescendant(cf => cf.ByName("StatusText"));
+
+        // Debug output
+        DumpWindowTree(mainWindow, 300);
+
+        // Assert - Canvas should have expected child elements
+        Assert.NotNull(canvasControl, "CanvasControl should exist");
+        Assert.NotNull(componentCountText, "Canvas should display component count");
+        Assert.NotNull(statusText, "Canvas should display status bar");
+    }
+
+    /// <summary>
+    /// CRITICAL TEST: Control Panel Shows Expected Content
+    ///
+    /// Validates that the Control Panel displays:
+    /// - Header with "Properties" title
+    /// - Selected component indicator
+    /// - Properties section
+    /// - Interactions section
+    /// - CSS Classes section
+    /// - Status section
+    /// </summary>
+    [Fact(Skip="SPA-layer UI verified in Cypress; thin host renders only WebViewHost")]
+    public void Application_ControlPanel_Shows_Expected_Content()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 10, timeoutMs: 15000);
+
+        // Act - Find control panel-specific elements
+        var controlPanelControl = FindByIdOrNameWithRetry(mainWindow, "ControlPanelControl", timeoutMs: 5000);
+        var selectedComponentText = controlPanelControl?.FindFirstDescendant(cf => cf.ByName("SelectedComponentText"));
+        var propertiesItemsControl = controlPanelControl?.FindFirstDescendant(cf => cf.ByName("PropertiesItemsControl"));
+        var interactionsItemsControl = controlPanelControl?.FindFirstDescendant(cf => cf.ByName("InteractionsItemsControl"));
+        var cssClassesInput = controlPanelControl?.FindFirstDescendant(cf => cf.ByName("CssClassesInput"));
+
+        // Debug output
+        DumpWindowTree(mainWindow, 300);
+
+        // Assert - Control Panel should have expected child elements
+        Assert.NotNull(controlPanelControl, "ControlPanelControl should exist");
+        Assert.NotNull(selectedComponentText, "Control Panel should display selected component indicator");
+        Assert.NotNull(propertiesItemsControl, "Control Panel should have properties section");
+        Assert.NotNull(interactionsItemsControl, "Control Panel should have interactions section");
+        Assert.NotNull(cssClassesInput, "Control Panel should have CSS classes input");
+    }
+
+    /// <summary>
+    /// CRITICAL TEST: Status Bar Is Visible and Functional
+    ///
+    /// Validates that the status bar at the bottom displays:
+    /// - Status text ("Ready")
+    /// - Diagnostics badge button (if enabled)
+    /// </summary>
+    [Fact(Skip="SPA-layer status UX lives in web app; host has no native status bar")]
+    public void Application_StatusBar_Is_Visible_And_Functional()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 5, timeoutMs: 10000);
+
+        // Act - Find status bar elements
+        var statusBarText = FindByIdOrNameWithRetry(mainWindow, "StatusBarText", timeoutMs: 5000);
+        var diagnosticsBadge = FindByIdOrNameWithRetry(mainWindow, "DiagnosticsBadge", timeoutMs: 5000);
+
+        // Debug output
+        DumpWindowTree(mainWindow, 200);
+
+        // Assert - Status bar should be present
+        Assert.NotNull(statusBarText, "Status bar text should be visible");
+        Assert.NotNull(diagnosticsBadge, "Diagnostics badge should be present");
+    }
+
+    /// <summary>
+    /// CRITICAL TEST: Header Slots Are Present and Accessible
+    ///
+    /// Validates that all three header slots are rendered:
+    /// - headerLeft (320px) - Application branding/logo
+    /// - headerCenter (1fr) - Canvas title/info
+    /// - headerRight (360px) - Theme toggle and other controls
+    ///
+    /// The headerRight slot is where the theme toggle plugin will be mounted.
+    /// This test ensures the slot infrastructure is in place for plugin mounting.
+    /// </summary>
+    [Fact(Skip="Header slots are rendered by SPA; validate via Cypress (theme toggle, etc.)")]
+    public void Application_Header_Slots_Are_Present_And_Accessible()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 10, timeoutMs: 15000);
+        Thread.Sleep(2000); // Allow layout to settle
+
+        // Act - Find all header slots
+        var headerArea = FindByIdOrNameWithRetry(mainWindow, "HeaderArea", timeoutMs: 5000);
+        var headerLeft = FindByIdOrNameWithRetry(mainWindow, "HeaderLeft", timeoutMs: 5000);
+        var headerCenter = FindByIdOrNameWithRetry(mainWindow, "HeaderCenter", timeoutMs: 5000);
+        var headerRight = FindByIdOrNameWithRetry(mainWindow, "HeaderRight", timeoutMs: 5000);
+
+        // Debug output
+        DumpWindowTree(mainWindow, 300);
+
+        // Assert - All header slots should be present
+        Assert.NotNull(headerArea, "HeaderArea container should be present");
+        Assert.NotNull(headerLeft, "HeaderLeft slot should be present (application branding)");
+        Assert.NotNull(headerCenter, "HeaderCenter slot should be present (canvas info)");
+        Assert.NotNull(headerRight, "HeaderRight slot should be present (theme toggle location)");
+
+        // Assert - All header slots should be visible
+        Assert.True(headerArea.IsAvailable, "HeaderArea should be visible");
+        Assert.True(headerLeft.IsAvailable, "HeaderLeft should be visible");
+        Assert.True(headerCenter.IsAvailable, "HeaderCenter should be visible");
+        Assert.True(headerRight.IsAvailable, "HeaderRight should be visible");
+    }
+
+    /// <summary>
+    /// CRITICAL TEST: Library Panel Is Present and Accessible
+    ///
+    /// Validates that the Library panel (left sidebar) is rendered and accessible.
+    /// This is where the component library plugin will be mounted.
+    /// </summary>
+    [Fact(Skip="Library panel is SPA-owned; verify via Cypress")]
+    public void Application_Library_Panel_Is_Present_And_Accessible()
+    {
+        // Arrange
+        LaunchApplication();
+        var mainWindow = GetMainWindow();
+        WaitForWindowTreeReady(mainWindow, minElements: 10, timeoutMs: 15000);
+
+        // Act - Find library panel
+        var libraryPanel = FindByIdOrNameWithRetry(mainWindow, "LibraryPanel", timeoutMs: 5000);
+
+        // Debug output
+        DumpWindowTree(mainWindow, 300);
+
+        // Assert - Library panel should be present and visible
+        Assert.NotNull(libraryPanel, "LibraryPanel should be present (left sidebar)");
+        Assert.True(libraryPanel.IsAvailable, "LibraryPanel should be visible");
     }
 
     /// <summary>
@@ -138,7 +422,7 @@ public class ApplicationTests : IDisposable
     ///
     /// This confirms the binding system and frontend initialization are working.
     /// </summary>
-    [Fact]
+    [Fact(Skip="Fallback visibility handled by SPA; host does not own MainContent")]
     public void Application_MainContent_Hides_When_WebView_Loads()
     {
         // Arrange

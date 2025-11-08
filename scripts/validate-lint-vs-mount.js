@@ -128,6 +128,7 @@ function runEslintJson() {
     cwd,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'pipe'],
+    maxBuffer: 10 * 1024 * 1024, // 10MB buffer for large ESLint output
   });
   if (r.status == null) throw new Error('Failed to run eslint');
   const text = (r.stdout || '').trim() || '[]';

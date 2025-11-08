@@ -4,10 +4,10 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
+using RenderX.Shell.Avalonia.Core;
+using RenderX.Shell.Avalonia.Infrastructure.Plugins;
+using RenderX.Shell.Avalonia.UI;
 using RenderX.Shell.Avalonia.UI.ViewModels;
-using RenderX.Shell.Avalonia.UI.Views;
 using System;
 using System.Threading.Tasks;
 
@@ -50,38 +50,43 @@ public partial class MainWindow : Window
         {
             _logger.LogInformation("MainWindow loaded, initializing controls");
 
-            // Get dependencies
-            var eventRouter = _serviceProvider.GetRequiredService<IEventRouter>();
-            var conductor = _serviceProvider.GetRequiredService<IConductor>();
-            var canvasLogger = _serviceProvider.GetRequiredService<ILogger<CanvasControl>>();
-            var controlPanelLogger = _serviceProvider.GetRequiredService<ILogger<ControlPanelControl>>();
+            // Get ThinHostLayer from DI
+            var thinHostLayer = _serviceProvider.GetRequiredService<IThinHostLayer>();
             var layoutLogger = _serviceProvider.GetRequiredService<ILogger<LayoutManager>>();
+
+            // Initialize ThinHostLayer
+            await thinHostLayer.InitializeAsync();
 
             // Initialize LayoutManager
             _layoutManager = new LayoutManager(layoutLogger);
             _layoutManager.Initialize();
 
-            // Initialize CanvasControl
-            var canvasControl = this.FindControl<CanvasControl>("CanvasControl");
-            if (canvasControl != null)
-            {
-                canvasControl.Initialize(eventRouter, conductor, canvasLogger);
-                _logger.LogInformation("CanvasControl initialized");
-            }
+            // Mount native Avalonia controls into slots via IPluginLoader (thin-host architecture)
+            var pluginLoader = _serviceProvider.GetRequiredService<IPluginLoader>();
 
-            // Initialize ControlPanelControl
-            var controlPanelControl = this.FindControl<ControlPanelControl>("ControlPanelControl");
-            if (controlPanelControl != null)
-            {
-                controlPanelControl.Initialize(eventRouter, conductor, controlPanelLogger);
-                _logger.LogInformation("ControlPanelControl initialized");
-            }
+            // Define all slots to load (from layout-manifest.json)
+            var slots = new[] { "HeaderLeft", "HeaderCenter", "HeaderRight", "Library", "Canvas", "ControlPanel" };
 
-            // Update status bar
-            var statusBar = this.FindControl<TextBlock>("StatusBarText");
-            if (statusBar != null)
+            foreach (var slotName in slots)
             {
-                statusBar.Text = "Ready";
+                var slot = this.FindControl<Border>(slotName);
+                if (slot != null)
+                {
+                    var control = await pluginLoader.LoadControlForSlotAsync(slotName, _serviceProvider);
+                    if (control != null)
+                    {
+                        slot.Child = control;
+                        _logger.LogInformation("Control mounted in {SlotName} slot", slotName);
+                    }
+                    else
+                    {
+                        _logger.LogDebug("No control mapped for {SlotName} slot (may not be implemented yet)", slotName);
+                    }
+                }
+                else
+                {
+                    _logger.LogDebug("Slot {SlotName} not found in MainWindow", slotName);
+                }
             }
 
             _logger.LogInformation("MainWindow initialization complete");

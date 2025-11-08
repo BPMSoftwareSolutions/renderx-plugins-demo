@@ -8,8 +8,6 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    <!-- TypeScript build output directory -->
-    <TypeScriptBuildDir>$(ProjectDir)wwwroot</TypeScriptBuildDir>
     <RenderXRepoRoot>$(ProjectDir)..\..</RenderXRepoRoot>
   </PropertyGroup>
 
@@ -44,13 +42,18 @@
 
     <!-- Plugin Loading -->
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
-
-    <!-- WebView2 for hosting TypeScript frontend -->
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2739.28" />
   </ItemGroup>
 
+  <!-- SDK Projects -->
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\RenderX.HostSDK.Avalonia\RenderX.HostSDK.Avalonia.csproj" />
+    <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
+  </ItemGroup>
+
+  <!-- Plugin Projects -->
+  <ItemGroup>
+    <ProjectReference Include="..\RenderX.Plugins.Header\RenderX.Plugins.Header.csproj" />
+    <ProjectReference Include="..\RenderX.Plugins.Library\RenderX.Plugins.Library.csproj" />
   </ItemGroup>
 
   <!-- Roslyn Analyzers for enforcing thin-host architecture pattern -->
@@ -59,8 +62,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Conductor\" />
-    <Folder Include="Core\Events\" />
     <Folder Include="Core\Manifests\" />
     <Folder Include="Core\Plugins\" />
     <Folder Include="UI\ViewModels\" />
@@ -68,33 +69,11 @@
     <Folder Include="UI\Controls\" />
     <Folder Include="Infrastructure\Validation\" />
     <Folder Include="Infrastructure\Configuration\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
-  <!-- Pre-build target: Compile TypeScript frontend to static assets -->
-  <!-- Set SkipFrontendBuild=true to bypass this step (e.g., dotnet build /p:SkipFrontendBuild=true) -->
-  <Target Name="BuildTypeScriptFrontend" BeforeTargets="Build" Condition="'$(SkipFrontendBuild)' != 'true'">
-    <Message Text="Building TypeScript RenderX frontend..." Importance="high" />
-
-    <!-- Check if npm is available -->
-    <Exec Command="npm --version" ContinueOnError="true" IgnoreExitCode="true" />
-
-    <!-- Build the TypeScript frontend from the repo root -->
-    <Exec Command="npm run build:host" WorkingDirectory="$(RenderXRepoRoot)" ContinueOnError="false" />
-
-    <!-- Copy built assets to wwwroot -->
-    <ItemGroup>
-      <BuiltAssets Include="$(RenderXRepoRoot)\dist\**\*" />
-    </ItemGroup>
-
-    <Copy SourceFiles="@(BuiltAssets)" DestinationFolder="$(TypeScriptBuildDir)\%(RecursiveDir)" SkipUnchangedFiles="true" />
-
-    <Message Text="TypeScript frontend built successfully to $(TypeScriptBuildDir)" Importance="high" />
+  <!-- Pre-build validation of plugin manifest and implementations -->
+  <Target Name="ValidatePlugins" BeforeTargets="Build">
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)validate-plugins.ps1&quot; -ProjectRoot &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
   </Target>
-
-  <!-- Include wwwroot files in the build output -->
-  <ItemGroup>
-    <Content Include="wwwroot\**" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
 
 </Project>

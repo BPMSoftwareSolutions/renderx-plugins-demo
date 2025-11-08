@@ -2,21 +2,15 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MusicalConductor.Avalonia.Extensions;
+using RenderX.HostSDK.Avalonia.Extensions;
 using RenderX.Shell.Avalonia.Core;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
-using RenderX.Shell.Avalonia.Core.Manifests;
-using RenderX.Shell.Avalonia.Core.Plugins;
-using RenderX.Shell.Avalonia.Infrastructure.Api.Endpoints;
-using RenderX.Shell.Avalonia.Infrastructure.Api.Services;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
-using RenderX.Shell.Avalonia.Infrastructure.Bridge;
 using RenderX.Shell.Avalonia.UI.ViewModels;
+using RenderX.Shell.Avalonia.Infrastructure.Plugins;
 using System;
 
 namespace RenderX.Shell.Avalonia;
@@ -145,34 +139,16 @@ public partial class App : Application
         return Host.CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
-                // Core services
-                services.AddSingleton<IConductor, AvaloniaMusicalConductor>();
-                services.AddSingleton<IEventRouter, AvaloniaEventRouter>();
-                services.AddSingleton<IPluginManager, AvaloniaPluginManager>();
-                services.AddSingleton<IManifestLoader, JsonManifestLoader>();
+                // SDK services - RenderX.HostSDK.Avalonia and MusicalConductor.Avalonia
+                // These are registered by the SDKs themselves via extension methods
+                services.AddRenderXHostSdk();
+                services.AddMusicalConductor();
 
                 // Thin Host Layer - unified wrapper around SDKs
                 services.AddSingleton<IThinHostLayer, ThinHostLayer>();
 
-                // API Services
-                services.AddSingleton<IPluginDiscoveryService, PluginDiscoveryService>();
-                services.AddSingleton<ITelemetryService, TelemetryService>();
-                services.AddSingleton<IConfigurationService, ConfigurationService>();
-
-                // Bridge services
-                services.AddSingleton<IWebViewBridgeService, WebViewBridgeService>();
-
-                // ASP.NET Core API
-                services.AddControllers();
-                services.AddCors(options =>
-                {
-                    options.AddPolicy("AllowAll", builder =>
-                    {
-                        builder.AllowAnyOrigin()
-                               .AllowAnyMethod()
-                               .AllowAnyHeader();
-                    });
-                });
+                // Plugin loader - manifest-agnostic slot-to-control mapping
+                services.AddSingleton<IPluginLoader, PluginLoader>();
 
                 // Configuration
                 services.Configure<RenderXConfiguration>(context.Configuration.GetSection("RenderX"));
@@ -186,32 +162,6 @@ public partial class App : Application
                     builder.AddConsole();
                     builder.SetMinimumLevel(LogLevel.Information);
                 });
-            })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.Configure((context, app) =>
-                {
-                    // Configure ASP.NET Core pipeline
-                    app.UseRouting();
-                    app.UseCors("AllowAll");
-
-                    app.UseEndpoints(endpoints =>
-                    {
-                        // Map API endpoints
-                        endpoints.MapPluginEndpoints();
-                        endpoints.MapTelemetryEndpoints();
-                        endpoints.MapConfigurationEndpoints();
-                        endpoints.MapSequenceEndpoints();
-                    });
-                });
-
-                // Bind API to env var if provided; otherwise use an ephemeral port to avoid collisions
-                var apiUrl = Environment.GetEnvironmentVariable("RENDERX_API_URL");
-                if (string.IsNullOrWhiteSpace(apiUrl))
-                {
-                    apiUrl = "http://127.0.0.1:0";
-                }
-                webBuilder.UseUrls(apiUrl);
             });
     }
 }

@@ -10,90 +10,41 @@
         Title="RenderX Shell"
         WindowStartupLocation="CenterScreen"
         MinWidth="800"
-        MinHeight="600">
+        MinHeight="600"
+        Background="White">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid RowDefinitions="*,Auto">
-        <!-- Main Content Grid with Canvas and ControlPanel -->
-        <Grid Grid.Row="0" ColumnDefinitions="*,4,300">
-            <!-- Canvas Control -->
-            <views:CanvasControl Name="CanvasControl"
-                                Grid.Column="0"
-                                AutomationProperties.AutomationId="CanvasControl"
-                                AutomationProperties.Name="CanvasControl"/>
+    <!-- Thin host: 6 slots (3 header + 3 main) defined in layout-manifest.json -->
+    <Grid RowDefinitions="48,*" ColumnDefinitions="320,*,360" Background="White">
 
-            <!-- Splitter -->
-            <GridSplitter Grid.Column="1"
-                         Background="#D0D0D0"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Stretch"
-                         Cursor="SizeWestEast"/>
-
-            <!-- Control Panel Control -->
-            <views:ControlPanelControl Name="ControlPanelControl"
-                                      Grid.Column="2"
-                                      AutomationProperties.AutomationId="ControlPanelControl"
-                                      AutomationProperties.Name="ControlPanelControl"/>
-        </Grid>
-
-        <!-- Status Bar -->
-        <Border Grid.Row="1"
+        <!-- Header Row (48px) -->
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                Name="HeaderArea"
+                AutomationProperties.AutomationId="HeaderArea"
                 Background="#F5F5F5"
-                BorderThickness="0,1,0,0"
-                BorderBrush="#E0E0E0"
-                Padding="12,8">
-            <Grid ColumnDefinitions="*,Auto">
-                <TextBlock Grid.Column="0"
-                          Name="StatusBarText"
-                          Text="Ready"
-                          FontSize="11"
-                          Foreground="Gray"
-                          VerticalAlignment="Center"/>
-
-                <!-- Diagnostics badge -->
-                <Button Grid.Column="1"
-                       Name="DiagnosticsBadge"
-                       AutomationProperties.AutomationId="DiagnosticsBadge"
-                       IsVisible="{Binding DiagnosticsBadgeVisible}"
-                       Command="{Binding ToggleDiagnosticsCommand}"
-                       Width="32"
-                       Height="32"
-                       Background="Transparent"
-                       BorderThickness="1"
-                       BorderBrush="Gray"
-                       CornerRadius="16"
-                       ToolTip.Tip="Open Diagnostics (Ctrl+Shift+D)">
-                    <TextBlock Text="🔍" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
+                BorderThickness="0,0,0,1"
+                BorderBrush="#E0E0E0">
+            <Grid ColumnDefinitions="320,*,360">
+                <!-- Header Left Slot -->
+                <Border Grid.Column="0" Name="HeaderLeft" AutomationProperties.AutomationId="HeaderLeft" Background="White" />
+                <!-- Header Center Slot -->
+                <Border Grid.Column="1" Name="HeaderCenter" AutomationProperties.AutomationId="HeaderCenter" Background="White" />
+                <!-- Header Right Slot -->
+                <Border Grid.Column="2" Name="HeaderRight" AutomationProperties.AutomationId="HeaderRight" Background="White" />
             </Grid>
         </Border>
 
-        <!-- Diagnostics overlay (will be implemented later) -->
-        <Border Name="DiagnosticsOverlay"
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                IsVisible="{Binding DiagnosticsOpen}"
-                Background="#CC000000"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch">
-            <Border Background="White"
-                    CornerRadius="8"
-                    Margin="50"
-                    Padding="20">
-                <StackPanel>
-                    <TextBlock Text="Diagnostics" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBlock Text="Diagnostics panel will be implemented in Phase 4" FontSize="14"/>
-                    <Button Content="Close"
-                            Command="{Binding ToggleDiagnosticsCommand}"
-                            HorizontalAlignment="Right"
-                            Margin="0,20,0,0"/>
-                </StackPanel>
-            </Border>
-        </Border>
+        <!-- Main Content Row -->
+        <!-- Library Slot (320px) -->
+        <Border Grid.Row="1" Grid.Column="0" Name="Library" AutomationProperties.AutomationId="Library" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
+
+        <!-- Canvas Slot (1fr) -->
+        <Border Grid.Row="1" Grid.Column="1" Name="Canvas" AutomationProperties.AutomationId="Canvas" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
+
+        <!-- Control Panel Slot (360px) -->
+        <Border Grid.Row="1" Grid.Column="2" Name="ControlPanel" AutomationProperties.AutomationId="ControlPanel" Background="White" />
     </Grid>
 </Window>

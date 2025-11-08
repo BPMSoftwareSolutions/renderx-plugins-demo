@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderTitlePlugin"
+             Background="Transparent">
+    <Border Padding="16,0">
+        <TextBlock x:Name="TitleText"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="#333333"
+                   VerticalAlignment="Center" />
+    </Border>
+</UserControl>
+

@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderControlsPlugin"
+             Background="Transparent">
+    <Border Padding="16,0">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+            <Button x:Name="SaveButton"
+                    Content="Save"
+                    Click="OnSaveClick"
+                    Padding="12,6"
+                    Background="#007ACC"
+                    Foreground="White" />
+            <Button x:Name="ExportButton"
+                    Content="Export"
+                    Click="OnExportClick"
+                    Padding="12,6"
+                    Background="#6C757D"
+                    Foreground="White" />
+            <Button x:Name="ImportButton"
+                    Content="Import"
+                    Click="OnImportClick"
+                    Padding="12,6"
+                    Background="#6C757D"
+                    Foreground="White" />
+        </StackPanel>
+    </Border>
+</UserControl>
+

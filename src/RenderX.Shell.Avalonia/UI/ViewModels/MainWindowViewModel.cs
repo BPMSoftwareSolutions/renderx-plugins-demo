@@ -1,6 +1,5 @@
 using ReactiveUI;
 using RenderX.Shell.Avalonia.Core;
-using RenderX.Shell.Avalonia.Core.Conductor;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using System;
@@ -41,15 +40,6 @@ public class MainWindowViewModel : ViewModelBase
         // Commands
         ToggleDiagnosticsCommand = ReactiveCommand.Create(ToggleDiagnostics);
         InitializeCommand = ReactiveCommand.CreateFromTask(InitializeAsync);
-
-        // Subscribe to conductor events for status updates
-        _thinHost.Conductor.SequenceEvents
-            .Where(e => e.EventType == SequenceEventType.Failed)
-            .Subscribe(e => StatusMessage = $"Error: {e.Error}");
-
-        _thinHost.Conductor.SequenceEvents
-            .Where(e => e.EventType == SequenceEventType.Completed)
-            .Subscribe(e => StatusMessage = "Ready");
 
         // Auto-initialize
         InitializeCommand.Execute().Subscribe();
