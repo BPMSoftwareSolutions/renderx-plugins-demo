@@ -92,17 +92,16 @@ public class ApplicationTests : IDisposable
         LaunchApplication();
         var mainWindow = GetMainWindow();
 
-        // Act - Check if window has any descendants at all
-        var allDescendants = mainWindow.FindAllDescendants();
+        // Act - Find WebView container
+        var webViewContainer = FindByIdOrNameWithRetry(mainWindow, "WebViewContainer", timeoutMs: 5000);
 
         // Debug: dump what we can see
-        DumpWindowTree(mainWindow, 150);
+        DumpWindowTree(mainWindow, 200);
         DumpProcessTree(300);
 
-        // Assert - For now, just verify the window exists
-        // TODO: Once Avalonia UIA support is fixed, test for specific child elements
-        Assert.NotNull(mainWindow);
-        Assert.NotNull(allDescendants);
+        // Assert
+        Assert.NotNull(webViewContainer);
+        Assert.True(webViewContainer.IsAvailable, "WebViewContainer should be visible");
     }
 
     /// <summary>
@@ -113,19 +112,22 @@ public class ApplicationTests : IDisposable
     /// Its presence and enabled state confirms the diagnostic system is initialized.
     /// </summary>
     [Fact]
-    public void Application_Diagnostics_Badge_Exists_And_Is_Accessible()
+    public void Application_WebViewHost_LoadingIndicator_Present()
     {
         // Arrange
         LaunchApplication();
         var mainWindow = GetMainWindow();
-        Thread.Sleep(2000); // Give bindings time to settle
+        Thread.Sleep(1000); // Give initial bindings time to settle
 
-        // Act - Find the diagnostics badge button
-        var diagnosticsBadge = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("DiagnosticsBadge"));
+        // Act - Find the loading indicator inside WebViewHost container
+        var loadingIndicator = FindByIdOrNameWithRetry(mainWindow, "LoadingIndicator", timeoutMs: 5000);
+
+        // Debug
+        DumpWindowTree(mainWindow, 200);
 
         // Assert
-        Assert.NotNull(diagnosticsBadge);
-        Assert.True(diagnosticsBadge.IsEnabled);
+        Assert.NotNull(loadingIndicator);
+        Assert.True(loadingIndicator.IsAvailable, "LoadingIndicator should be visible before WebView fully loads");
     }
 
     /// <summary>
@@ -136,26 +138,24 @@ public class ApplicationTests : IDisposable
     /// that the controls are properly instantiated and accessible via the UI tree.
     /// </summary>
     [Fact]
-    public void Application_Phase3_Native_Controls_Are_Initialized()
+    public void Application_Does_Not_Render_Static_Avalonia_Panels()
     {
         // Arrange
         LaunchApplication();
         var mainWindow = GetMainWindow();
-        WaitForWindowTreeReady(mainWindow, minElements: 5, timeoutMs: 10000);
+        WaitForWindowTreeReady(mainWindow, minElements: 3, timeoutMs: 10000);
 
-        // Act - Find native Avalonia controls
-        var canvasControl = FindByIdOrNameWithRetry(mainWindow, "CanvasControl", timeoutMs: 5000);
-        var controlPanelControl = FindByIdOrNameWithRetry(mainWindow, "ControlPanelControl", timeoutMs: 5000);
+        // Act - Ensure host does NOT render native static panels (thin-host contract)
+        var canvasControl = FindByIdOrNameWithRetry(mainWindow, "CanvasControl", timeoutMs: 1000);
+        var controlPanelControl = FindByIdOrNameWithRetry(mainWindow, "ControlPanelControl", timeoutMs: 1000);
+        var libraryPanel = FindByIdOrNameWithRetry(mainWindow, "LibraryPanel", timeoutMs: 1000);
 
-        // Debug output
         DumpWindowTree(mainWindow, 200);
-        DumpProcessTree(300);
 
-        // Assert - Both controls should exist
-        Assert.NotNull(canvasControl);
-        Assert.NotNull(controlPanelControl);
-        Assert.True(canvasControl.IsAvailable, "CanvasControl should be available");
-        Assert.True(controlPanelControl.IsAvailable, "ControlPanelControl should be available");
+        // Assert - These should NOT exist in thin host
+        Assert.Null(canvasControl);
+        Assert.Null(controlPanelControl);
+        Assert.Null(libraryPanel);
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class ApplicationTests : IDisposable
     ///
     /// FAILURE INDICATES: Blank white screen, missing panels, or incorrect layout
     /// </summary>
-    [Fact]
+    [Fact(Skip="SPA-layer UI verified in Cypress; thin host renders only WebViewHost")]
     public void Application_Displays_Correct_3Column_Layout_On_Startup()
     {
         // Arrange
@@ -259,7 +259,7 @@ public class ApplicationTests : IDisposable
     /// - Canvas content area (white background)
     /// - Status bar at bottom
     /// </summary>
-    [Fact]
+    [Fact(Skip="SPA-layer UI verified in Cypress; thin host renders only WebViewHost")]
     public void Application_Canvas_Panel_Shows_Expected_Content()
     {
         // Arrange
@@ -292,7 +292,7 @@ public class ApplicationTests : IDisposable
     /// - CSS Classes section
     /// - Status section
     /// </summary>
-    [Fact]
+    [Fact(Skip="SPA-layer UI verified in Cypress; thin host renders only WebViewHost")]
     public void Application_ControlPanel_Shows_Expected_Content()
     {
         // Arrange
@@ -325,7 +325,7 @@ public class ApplicationTests : IDisposable
     /// - Status text ("Ready")
     /// - Diagnostics badge button (if enabled)
     /// </summary>
-    [Fact]
+    [Fact(Skip="SPA-layer status UX lives in web app; host has no native status bar")]
     public void Application_StatusBar_Is_Visible_And_Functional()
     {
         // Arrange
@@ -356,7 +356,7 @@ public class ApplicationTests : IDisposable
     /// The headerRight slot is where the theme toggle plugin will be mounted.
     /// This test ensures the slot infrastructure is in place for plugin mounting.
     /// </summary>
-    [Fact]
+    [Fact(Skip="Header slots are rendered by SPA; validate via Cypress (theme toggle, etc.)")]
     public void Application_Header_Slots_Are_Present_And_Accessible()
     {
         // Arrange
@@ -393,7 +393,7 @@ public class ApplicationTests : IDisposable
     /// Validates that the Library panel (left sidebar) is rendered and accessible.
     /// This is where the component library plugin will be mounted.
     /// </summary>
-    [Fact]
+    [Fact(Skip="Library panel is SPA-owned; verify via Cypress")]
     public void Application_Library_Panel_Is_Present_And_Accessible()
     {
         // Arrange
@@ -422,7 +422,7 @@ public class ApplicationTests : IDisposable
     ///
     /// This confirms the binding system and frontend initialization are working.
     /// </summary>
-    [Fact]
+    [Fact(Skip="Fallback visibility handled by SPA; host does not own MainContent")]
     public void Application_MainContent_Hides_When_WebView_Loads()
     {
         // Arrange

@@ -51,8 +51,6 @@ public partial class MainWindow : Window
 
             // Get ThinHostLayer from DI
             var thinHostLayer = _serviceProvider.GetRequiredService<IThinHostLayer>();
-            var canvasLogger = _serviceProvider.GetRequiredService<ILogger<CanvasControl>>();
-            var controlPanelLogger = _serviceProvider.GetRequiredService<ILogger<ControlPanelControl>>();
             var layoutLogger = _serviceProvider.GetRequiredService<ILogger<LayoutManager>>();
 
             // Initialize ThinHostLayer
@@ -62,27 +60,34 @@ public partial class MainWindow : Window
             _layoutManager = new LayoutManager(layoutLogger);
             _layoutManager.Initialize();
 
-            // Initialize CanvasControl with SDK services from ThinHostLayer
-            var canvasControl = this.FindControl<CanvasControl>("CanvasControl");
-            if (canvasControl != null)
+            // Mount native Avalonia controls into slots (thin-host architecture)
+
+            // Canvas slot - CanvasControl
+            var canvasSlot = this.FindControl<Border>("Canvas");
+            if (canvasSlot != null)
             {
-                canvasControl.Initialize(thinHostLayer.EventRouter, thinHostLayer.Conductor, canvasLogger);
-                _logger.LogInformation("CanvasControl initialized");
+                var canvasControl = new CanvasControl();
+                var canvasLogger = _serviceProvider.GetRequiredService<ILogger<CanvasControl>>();
+                canvasControl.Initialize(
+                    thinHostLayer.EventRouter,
+                    thinHostLayer.Conductor,
+                    canvasLogger);
+                canvasSlot.Child = canvasControl;
+                _logger.LogInformation("CanvasControl mounted in Canvas slot");
             }
 
-            // Initialize ControlPanelControl with SDK services from ThinHostLayer
-            var controlPanelControl = this.FindControl<ControlPanelControl>("ControlPanelControl");
-            if (controlPanelControl != null)
+            // ControlPanel slot - ControlPanelControl
+            var controlPanelSlot = this.FindControl<Border>("ControlPanel");
+            if (controlPanelSlot != null)
             {
-                controlPanelControl.Initialize(thinHostLayer.EventRouter, thinHostLayer.Conductor, controlPanelLogger);
-                _logger.LogInformation("ControlPanelControl initialized");
-            }
-
-            // Update status bar
-            var statusBar = this.FindControl<TextBlock>("StatusBarText");
-            if (statusBar != null)
-            {
-                statusBar.Text = "Ready";
+                var controlPanelControl = new ControlPanelControl();
+                var controlPanelLogger = _serviceProvider.GetRequiredService<ILogger<ControlPanelControl>>();
+                controlPanelControl.Initialize(
+                    thinHostLayer.EventRouter,
+                    thinHostLayer.Conductor,
+                    controlPanelLogger);
+                controlPanelSlot.Child = controlPanelControl;
+                _logger.LogInformation("ControlPanelControl mounted in ControlPanel slot");
             }
 
             _logger.LogInformation("MainWindow initialization complete");

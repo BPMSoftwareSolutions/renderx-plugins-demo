@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MusicalConductor.Avalonia.Extensions;
+using RenderX.HostSDK.Avalonia.Extensions;
 using RenderX.Shell.Avalonia.Core;
 using RenderX.Shell.Avalonia.Core.Manifests;
 using RenderX.Shell.Avalonia.Infrastructure.Api.Endpoints;
@@ -144,8 +146,8 @@ public partial class App : Application
             {
                 // SDK services - RenderX.HostSDK.Avalonia and MusicalConductor.Avalonia
                 // These are registered by the SDKs themselves via extension methods
-                // services.AddRenderXHostSdk();
-                // services.AddMusicalConductor();
+                services.AddRenderXHostSdk();
+                services.AddMusicalConductor();
 
                 // Manifest loader
                 services.AddSingleton<IManifestLoader, JsonManifestLoader>();
