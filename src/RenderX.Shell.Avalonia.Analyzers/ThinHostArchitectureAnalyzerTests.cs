@@ -1,6 +1,8 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
+using System.Collections.Immutable;
+using System.Linq;
 using Xunit;
 
 namespace RenderX.Shell.Avalonia.Analyzers.Tests;
@@ -18,7 +20,7 @@ public class ThinHostArchitectureAnalyzerTests
         var compilationWithAnalyzers = compilation.WithAnalyzers(
             ImmutableArray.Create<DiagnosticAnalyzer>(analyzer));
 
-        return compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result.ToArray();
+        return compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result.ToList().ToArray();
     }
 
     [Fact]
