@@ -129,4 +129,44 @@ public class MW { void F(){ var x = new CanvasControl(); } }
             var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/MainWindow.axaml.cs");
             Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginDecouplingDiagnosticId);
         }
+
+        [Fact]
+        public void MainWindow_New_LibraryControl_Reports_SHELL002()
+        {
+            var code = @"
+public class MW { void F(){ var x = new LibraryControl(); } }
+";
+            var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/MainWindow.axaml.cs");
+            Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginDecouplingDiagnosticId);
+        }
+
+        [Fact]
+        public void MainWindow_New_HeaderLeftControl_Reports_SHELL002()
+        {
+            var code = @"
+public class MW { void F(){ var x = new HeaderLeftControl(); } }
+";
+            var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/MainWindow.axaml.cs");
+            Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginDecouplingDiagnosticId);
+        }
+
+        [Fact]
+        public void MainWindow_New_HeaderCenterControl_Reports_SHELL002()
+        {
+            var code = @"
+public class MW { void F(){ var x = new HeaderCenterControl(); } }
+";
+            var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/MainWindow.axaml.cs");
+            Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginDecouplingDiagnosticId);
+        }
+
+        [Fact]
+        public void MainWindow_New_HeaderRightControl_Reports_SHELL002()
+        {
+            var code = @"
+public class MW { void F(){ var x = new HeaderRightControl(); } }
+";
+            var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/MainWindow.axaml.cs");
+            Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginDecouplingDiagnosticId);
+        }
     }

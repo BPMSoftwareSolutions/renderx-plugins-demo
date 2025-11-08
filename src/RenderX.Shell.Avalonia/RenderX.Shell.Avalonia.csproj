@@ -50,6 +50,12 @@
     <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
   </ItemGroup>
 
+  <!-- Plugin Projects -->
+  <ItemGroup>
+    <ProjectReference Include="..\RenderX.Plugins.Header\RenderX.Plugins.Header.csproj" />
+    <ProjectReference Include="..\RenderX.Plugins.Library\RenderX.Plugins.Library.csproj" />
+  </ItemGroup>
+
   <!-- Roslyn Analyzers for enforcing thin-host architecture pattern -->
   <ItemGroup>
     <ProjectReference Include="..\RenderX.Shell.Avalonia.Analyzers\RenderX.Shell.Avalonia.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
@@ -64,5 +70,10 @@
     <Folder Include="Infrastructure\Validation\" />
     <Folder Include="Infrastructure\Configuration\" />
   </ItemGroup>
+
+  <!-- Pre-build validation of plugin manifest and implementations -->
+  <Target Name="ValidatePlugins" BeforeTargets="Build">
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)validate-plugins.ps1&quot; -ProjectRoot &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
+  </Target>
 
 </Project>
