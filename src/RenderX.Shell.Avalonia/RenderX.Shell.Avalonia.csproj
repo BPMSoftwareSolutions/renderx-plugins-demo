@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -66,7 +67,8 @@
   </ItemGroup>
 
   <!-- Pre-build target: Compile TypeScript frontend to static assets -->
-  <Target Name="BuildTypeScriptFrontend" BeforeTargets="Build">
+  <!-- Set SkipFrontendBuild=true to bypass this step (e.g., dotnet build /p:SkipFrontendBuild=true) -->
+  <Target Name="BuildTypeScriptFrontend" BeforeTargets="Build" Condition="'$(SkipFrontendBuild)' != 'true'">
     <Message Text="Building TypeScript RenderX frontend..." Importance="high" />
 
     <!-- Check if npm is available -->

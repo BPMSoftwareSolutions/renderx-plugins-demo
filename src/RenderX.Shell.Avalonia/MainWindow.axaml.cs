@@ -36,7 +36,11 @@ public partial class MainWindow : Window
             var webViewHost = this.FindControl<WebViewHost>("WebViewHost");
             if (webViewHost != null)
             {
-                await webViewHost.InitializeWebViewAsync();
+                // Pass the parent window to WebViewHost for proper bounds calculation
+                await webViewHost.InitializeWebViewAsync(this);
+
+                // Simulate async frontend load to ensure fallback UI is visible briefly
+                await Task.Delay(1500);
 
                 // Update ViewModel to indicate WebView is loaded
                 if (DataContext is MainWindowViewModel viewModel)

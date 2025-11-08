@@ -47,21 +47,90 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
+    private static void Log(string message)
+    {
+        try
+        {
+            var ts = DateTime.Now.ToString("HH:mm:ss.fff");
+            var line = $"[{ts}] {message}{Environment.NewLine}";
+            var path = System.IO.Path.Combine(AppContext.BaseDirectory ?? "", "startup.log");
+            System.IO.File.AppendAllText(path, line);
+        }
+        catch { /* ignore logging errors */ }
+    }
+
     public override async void OnFrameworkInitializationCompleted()
     {
-        // Build and start the host
-        _host = CreateHostBuilder().Build();
-        await _host.StartAsync();
-
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        Log("OnFrameworkInitializationCompleted: begin");
+        // Build the host (services are available even if StartAsync fails)
+        try
         {
-            var mainWindowViewModel = _host.Services.GetRequiredService<MainWindowViewModel>();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = mainWindowViewModel
-            };
+            _host = CreateHostBuilder().Build();
+            Log("Host built successfully");
+        }
+        catch (Exception ex)
+        {
+            Log($"Host build failed: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Host build failed: {ex.Message}");
         }
 
+        // Always create and show the MainWindow so the app starts even if hosting fails
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            try
+            {
+                Log("Creating MainWindow...");
+                MainWindowViewModel? mainWindowViewModel = null;
+                try
+                {
+                    mainWindowViewModel = _host?.Services.GetService(typeof(MainWindowViewModel)) as MainWindowViewModel;
+                }
+                catch (Exception ex)
+                {
+                    Log($"Resolving MainWindowViewModel failed: {ex.Message}");
+                    // ignore resolving errors; we'll create the window without a DataContext
+                }
+
+                desktop.MainWindow = new MainWindow();
+                if (mainWindowViewModel is not null)
+                {
+                    desktop.MainWindow.DataContext = mainWindowViewModel;
+                    Log("MainWindow DataContext set");
+                }
+                Log("MainWindow created");
+            }
+            catch (Exception ex)
+            {
+                Log($"Failed to create MainWindow: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Failed to create MainWindow: {ex.Message}");
+                desktop.MainWindow = new MainWindow();
+            }
+        }
+        else
+        {
+            Log("ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime");
+        }
+
+        // Start the host in the background; if it fails, log and continue
+        try
+        {
+            if (_host != null)
+            {
+                await _host.StartAsync();
+                Log("Host started successfully");
+            }
+            else
+            {
+                Log("Host is null, skipping StartAsync");
+            }
+        }
+        catch (Exception ex)
+        {
+            Log($"Host start failed: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Host start failed: {ex.Message}");
+        }
+
+        Log("OnFrameworkInitializationCompleted: end");
         base.OnFrameworkInitializationCompleted();
     }
 
@@ -125,8 +194,15 @@ public partial class App : Application
                         endpoints.MapConfigurationEndpoints();
                         endpoints.MapSequenceEndpoints();
                     });
-                })
-                .UseUrls("http://localhost:5000");
+                });
+
+                // Bind API to env var if provided; otherwise use an ephemeral port to avoid collisions
+                var apiUrl = Environment.GetEnvironmentVariable("RENDERX_API_URL");
+                if (string.IsNullOrWhiteSpace(apiUrl))
+                {
+                    apiUrl = "http://127.0.0.1:0";
+                }
+                webBuilder.UseUrls(apiUrl);
             });
     }
 }
