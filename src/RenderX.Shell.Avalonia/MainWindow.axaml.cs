@@ -64,35 +64,28 @@ public partial class MainWindow : Window
             // Mount native Avalonia controls into slots via IPluginLoader (thin-host architecture)
             var pluginLoader = _serviceProvider.GetRequiredService<IPluginLoader>();
 
-            // Canvas slot
-            var canvasSlot = this.FindControl<Border>("Canvas");
-            if (canvasSlot != null)
-            {
-                var canvasControl = await pluginLoader.LoadControlForSlotAsync("Canvas", _serviceProvider);
-                if (canvasControl != null)
-                {
-                    canvasSlot.Child = canvasControl;
-                    _logger.LogInformation("Canvas control mounted in Canvas slot");
-                }
-                else
-                {
-                    _logger.LogWarning("Failed to load control for Canvas slot");
-                }
-            }
+            // Define all slots to load (from layout-manifest.json)
+            var slots = new[] { "HeaderLeft", "HeaderCenter", "HeaderRight", "Library", "Canvas", "ControlPanel" };
 
-            // ControlPanel slot
-            var controlPanelSlot = this.FindControl<Border>("ControlPanel");
-            if (controlPanelSlot != null)
+            foreach (var slotName in slots)
             {
-                var controlPanelControl = await pluginLoader.LoadControlForSlotAsync("ControlPanel", _serviceProvider);
-                if (controlPanelControl != null)
+                var slot = this.FindControl<Border>(slotName);
+                if (slot != null)
                 {
-                    controlPanelSlot.Child = controlPanelControl;
-                    _logger.LogInformation("ControlPanel control mounted in ControlPanel slot");
+                    var control = await pluginLoader.LoadControlForSlotAsync(slotName, _serviceProvider);
+                    if (control != null)
+                    {
+                        slot.Child = control;
+                        _logger.LogInformation("Control mounted in {SlotName} slot", slotName);
+                    }
+                    else
+                    {
+                        _logger.LogDebug("No control mapped for {SlotName} slot (may not be implemented yet)", slotName);
+                    }
                 }
                 else
                 {
-                    _logger.LogWarning("Failed to load control for ControlPanel slot");
+                    _logger.LogDebug("Slot {SlotName} not found in MainWindow", slotName);
                 }
             }
 

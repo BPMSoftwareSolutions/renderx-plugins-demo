@@ -24,10 +24,17 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
         {
             _logger = logger;
             // Map slot name (case-insensitive) to fully-qualified type name
+            // Currently only Canvas and ControlPanel have native Avalonia implementations
+            // Header slots and Library slot are not yet implemented as native controls
             _slotTypeMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
                 { "Canvas", "RenderX.Shell.Avalonia.UI.Views.CanvasControl, RenderX.Shell.Avalonia" },
                 { "ControlPanel", "RenderX.Shell.Avalonia.UI.Views.ControlPanelControl, RenderX.Shell.Avalonia" },
+                // Header slots and Library slot are not yet implemented
+                // { "HeaderLeft", "..." },
+                // { "HeaderCenter", "..." },
+                // { "HeaderRight", "..." },
+                // { "Library", "..." },
             };
         }
 
