@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>RenderX.HostSDK.Avalonia</AssemblyName>
+    <RootNamespace>RenderX.HostSDK.Avalonia</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>Avalonia.NET integration for RenderX Host SDK</Description>
+    <Authors>BPM Software Solutions</Authors>
+    <PackageProjectUrl>https://github.com/BPMSoftwareSolutions/renderx-host-sdk</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Jint for in-process JS engine -->
+    <PackageReference Include="Jint" Version="4.1.0" />
+
+    <!-- Avalonia for desktop UI -->
+    <PackageReference Include="Avalonia" Version="11.0.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
+
+    <!-- Microsoft DI for dependency injection -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Include the compiled JS bundle -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\host-sdk-bundle.js" />
+  </ItemGroup>
+
+  <!-- Exclude Tests folder from compilation -->
+  <ItemGroup>
+    <Compile Remove="Tests\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove="Tests\**" />
+  </ItemGroup>
+
+</Project>
