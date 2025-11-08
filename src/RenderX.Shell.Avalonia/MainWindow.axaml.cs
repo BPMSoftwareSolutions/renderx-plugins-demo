@@ -2,6 +2,10 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using RenderX.Shell.Avalonia.Core.Conductor;
+using RenderX.Shell.Avalonia.Core.Events;
 using RenderX.Shell.Avalonia.UI.ViewModels;
 using RenderX.Shell.Avalonia.UI.Views;
 using System;
@@ -18,40 +22,90 @@ public partial class MainWindow : Window
         public void OnNext(T value) { }
     }
 
+    private readonly IServiceProvider _serviceProvider;
+    private readonly ILogger<MainWindow> _logger;
+    private LayoutManager? _layoutManager;
+
     public MainWindow()
     {
         InitializeComponent();
 
+        // Get service provider from App
+        _serviceProvider = ((App)Application.Current!).ServiceProvider;
+        _logger = _serviceProvider.GetRequiredService<ILogger<MainWindow>>();
+
         // Global keyboard shortcut for diagnostics (Ctrl+Shift+D)
         KeyDown += OnKeyDown;
 
-        // Initialize WebView when window loads
+        // Initialize controls when window loads
         Loaded += OnWindowLoaded;
+
+        // Handle window size changes for responsive layout
+        SizeChanged += OnWindowSizeChanged;
     }
 
     private async void OnWindowLoaded(object? sender, RoutedEventArgs e)
     {
         try
         {
-            var webViewHost = this.FindControl<WebViewHost>("WebViewHost");
-            if (webViewHost != null)
+            _logger.LogInformation("MainWindow loaded, initializing controls");
+
+            // Get dependencies
+            var eventRouter = _serviceProvider.GetRequiredService<IEventRouter>();
+            var conductor = _serviceProvider.GetRequiredService<IConductor>();
+            var canvasLogger = _serviceProvider.GetRequiredService<ILogger<CanvasControl>>();
+            var controlPanelLogger = _serviceProvider.GetRequiredService<ILogger<ControlPanelControl>>();
+            var layoutLogger = _serviceProvider.GetRequiredService<ILogger<LayoutManager>>();
+
+            // Initialize LayoutManager
+            _layoutManager = new LayoutManager(layoutLogger);
+            _layoutManager.Initialize();
+
+            // Initialize CanvasControl
+            var canvasControl = this.FindControl<CanvasControl>("CanvasControl");
+            if (canvasControl != null)
             {
-                // Pass the parent window to WebViewHost for proper bounds calculation
-                await webViewHost.InitializeWebViewAsync(this);
+                canvasControl.Initialize(eventRouter, conductor, canvasLogger);
+                _logger.LogInformation("CanvasControl initialized");
+            }
 
-                // Simulate async frontend load to ensure fallback UI is visible briefly
-                await Task.Delay(1500);
+            // Initialize ControlPanelControl
+            var controlPanelControl = this.FindControl<ControlPanelControl>("ControlPanelControl");
+            if (controlPanelControl != null)
+            {
+                controlPanelControl.Initialize(eventRouter, conductor, controlPanelLogger);
+                _logger.LogInformation("ControlPanelControl initialized");
+            }
 
-                // Update ViewModel to indicate WebView is loaded
-                if (DataContext is MainWindowViewModel viewModel)
-                {
-                    viewModel.WebViewLoaded = true;
-                }
+            // Update status bar
+            var statusBar = this.FindControl<TextBlock>("StatusBarText");
+            if (statusBar != null)
+            {
+                statusBar.Text = "Ready";
+            }
+
+            _logger.LogInformation("MainWindow initialization complete");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error initializing MainWindow");
+        }
+    }
+
+    private void OnWindowSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        try
+        {
+            if (_layoutManager != null)
+            {
+                var layout = _layoutManager.CalculateLayout(e.NewSize.Width, e.NewSize.Height);
+                _logger.LogDebug("Window resized: Width={Width}, Height={Height}, ResponsiveMode={ResponsiveMode}",
+                    e.NewSize.Width, e.NewSize.Height, layout.IsResponsiveMode);
             }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error initializing WebView: {ex.Message}");
+            _logger.LogError(ex, "Error handling window size change");
         }
     }
 

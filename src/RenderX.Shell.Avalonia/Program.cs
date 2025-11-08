@@ -42,6 +42,11 @@ public partial class App : Application
 {
     private IHost? _host;
 
+    /// <summary>
+    /// Service provider for dependency injection
+    /// </summary>
+    public IServiceProvider ServiceProvider => _host?.Services ?? throw new InvalidOperationException("Host not initialized");
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
