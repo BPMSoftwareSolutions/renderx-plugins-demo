@@ -1,6 +1,6 @@
 using ReactiveUI;
+using RenderX.Shell.Avalonia.Core;
 using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 using System;
@@ -15,8 +15,7 @@ namespace RenderX.Shell.Avalonia.UI.ViewModels;
 /// </summary>
 public class MainWindowViewModel : ViewModelBase
 {
-    private readonly IConductor _conductor;
-    private readonly IEventRouter _eventRouter;
+    private readonly IThinHostLayer _thinHost;
     private readonly RenderXConfiguration _configuration;
     private readonly ILogger<MainWindowViewModel> _logger;
 
@@ -27,13 +26,11 @@ public class MainWindowViewModel : ViewModelBase
     private string _statusMessage = "Initializing...";
 
     public MainWindowViewModel(
-        IConductor conductor,
-        IEventRouter eventRouter,
+        IThinHostLayer thinHost,
         IOptions<RenderXConfiguration> configuration,
         ILogger<MainWindowViewModel> logger)
     {
-        _conductor = conductor;
-        _eventRouter = eventRouter;
+        _thinHost = thinHost ?? throw new ArgumentNullException(nameof(thinHost));
         _configuration = configuration.Value;
         _logger = logger;
 
@@ -46,11 +43,11 @@ public class MainWindowViewModel : ViewModelBase
         InitializeCommand = ReactiveCommand.CreateFromTask(InitializeAsync);
 
         // Subscribe to conductor events for status updates
-        _conductor.SequenceEvents
+        _thinHost.Conductor.SequenceEvents
             .Where(e => e.EventType == SequenceEventType.Failed)
             .Subscribe(e => StatusMessage = $"Error: {e.Error}");
 
-        _conductor.SequenceEvents
+        _thinHost.Conductor.SequenceEvents
             .Where(e => e.EventType == SequenceEventType.Completed)
             .Subscribe(e => StatusMessage = "Ready");
 
@@ -129,11 +126,8 @@ public class MainWindowViewModel : ViewModelBase
     {
         try
         {
-            StatusMessage = "Initializing event router...";
-            await _eventRouter.InitAsync();
-
-            StatusMessage = "Initializing conductor...";
-            await _conductor.InitializeAsync();
+            StatusMessage = "Initializing thin host layer...";
+            await _thinHost.InitializeAsync();
 
             StatusMessage = "Ready";
             _logger.LogInformation("RenderX Shell initialized successfully");

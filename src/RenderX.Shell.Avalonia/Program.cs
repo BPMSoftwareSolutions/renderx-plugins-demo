@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RenderX.Shell.Avalonia.Core;
 using RenderX.Shell.Avalonia.Core.Conductor;
 using RenderX.Shell.Avalonia.Core.Events;
 using RenderX.Shell.Avalonia.Core.Manifests;
@@ -149,6 +150,9 @@ public partial class App : Application
                 services.AddSingleton<IEventRouter, AvaloniaEventRouter>();
                 services.AddSingleton<IPluginManager, AvaloniaPluginManager>();
                 services.AddSingleton<IManifestLoader, JsonManifestLoader>();
+
+                // Thin Host Layer - unified wrapper around SDKs
+                services.AddSingleton<IThinHostLayer, ThinHostLayer>();
 
                 // API Services
                 services.AddSingleton<IPluginDiscoveryService, PluginDiscoveryService>();
