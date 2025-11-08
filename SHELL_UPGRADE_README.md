@@ -74,6 +74,41 @@ Welcome! This directory contains comprehensive documentation for upgrading Rende
 **Target Architecture (Thin Host):**
 - Avalonia Window → Native Controls → ThinHostLayer → SDKs (via Jint)
 
+---
+
+## ⚠️ CRITICAL ARCHITECTURE CONSTRAINTS
+
+**The shell MUST be a thin presentation layer that consumes SDKs as dependencies, NOT a monolith.**
+
+### ✅ DO:
+- Consume `RenderX.HostSDK.Avalonia` services via DI
+- Consume `MusicalConductor.Avalonia` services via DI
+- Create Avalonia UI controls (CanvasControl, ControlPanelControl)
+- Route user interactions through SDK services
+- Use Conductor's logging infrastructure (never create custom loggers)
+- Delegate all business logic to the SDKs
+
+### ❌ DON'T:
+- Create custom implementations of SDK interfaces
+- Duplicate logic from the SDKs
+- Import from `RenderX.Shell.Avalonia.Core.Conductor/**`
+- Import from `RenderX.Shell.Avalonia.Core.Events/**`
+- Implement your own `IEventRouter`, `IConductor`, etc.
+- Create custom event routing logic
+- Create custom conductor implementations
+
+### Why This Matters:
+- **Maintainability:** Single source of truth for business logic
+- **Consistency:** All shells use the same SDK implementations
+- **Testability:** SDKs are tested independently
+- **Scalability:** Easy to add new shells without duplicating code
+- **Performance:** Optimizations in SDKs benefit all shells
+
+### Enforcement:
+- **C# Roslyn Analyzer:** Prevents imports from shell's Core/** directories
+- **Code Review:** Verify all services come from DI
+- **Tests:** Validate thin-host pattern in integration tests
+
 ### 🎓 Learning Path
 
 1. Understand the problem (SHELL_UPGRADE_SUMMARY.md)
