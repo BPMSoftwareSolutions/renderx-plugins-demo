@@ -4,8 +4,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
+using RenderX.Shell.Avalonia.Core;
 using RenderX.Shell.Avalonia.UI.ViewModels;
 using RenderX.Shell.Avalonia.UI.Views;
 using System;
@@ -50,30 +49,32 @@ public partial class MainWindow : Window
         {
             _logger.LogInformation("MainWindow loaded, initializing controls");
 
-            // Get dependencies
-            var eventRouter = _serviceProvider.GetRequiredService<IEventRouter>();
-            var conductor = _serviceProvider.GetRequiredService<IConductor>();
+            // Get ThinHostLayer from DI
+            var thinHostLayer = _serviceProvider.GetRequiredService<IThinHostLayer>();
             var canvasLogger = _serviceProvider.GetRequiredService<ILogger<CanvasControl>>();
             var controlPanelLogger = _serviceProvider.GetRequiredService<ILogger<ControlPanelControl>>();
             var layoutLogger = _serviceProvider.GetRequiredService<ILogger<LayoutManager>>();
+
+            // Initialize ThinHostLayer
+            await thinHostLayer.InitializeAsync();
 
             // Initialize LayoutManager
             _layoutManager = new LayoutManager(layoutLogger);
             _layoutManager.Initialize();
 
-            // Initialize CanvasControl
+            // Initialize CanvasControl with SDK services from ThinHostLayer
             var canvasControl = this.FindControl<CanvasControl>("CanvasControl");
             if (canvasControl != null)
             {
-                canvasControl.Initialize(eventRouter, conductor, canvasLogger);
+                canvasControl.Initialize(thinHostLayer.EventRouter, thinHostLayer.Conductor, canvasLogger);
                 _logger.LogInformation("CanvasControl initialized");
             }
 
-            // Initialize ControlPanelControl
+            // Initialize ControlPanelControl with SDK services from ThinHostLayer
             var controlPanelControl = this.FindControl<ControlPanelControl>("ControlPanelControl");
             if (controlPanelControl != null)
             {
-                controlPanelControl.Initialize(eventRouter, conductor, controlPanelLogger);
+                controlPanelControl.Initialize(thinHostLayer.EventRouter, thinHostLayer.Conductor, controlPanelLogger);
                 _logger.LogInformation("ControlPanelControl initialized");
             }
 

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RenderX.Shell.Avalonia.Core.Plugins;
 
 namespace RenderX.Shell.Avalonia.Core.Manifests;
 
@@ -138,6 +137,24 @@ public record PluginDefinition
     public PluginRuntimeDefinition? Runtime { get; init; }
     public string[] Dependencies { get; init; } = Array.Empty<string>();
     public bool AutoMount { get; init; } = true;
+}
+
+/// <summary>
+/// Plugin UI definition
+/// </summary>
+public record PluginUIDefinition
+{
+    public string? PanelId { get; init; }
+    public string? Title { get; init; }
+}
+
+/// <summary>
+/// Plugin runtime definition
+/// </summary>
+public record PluginRuntimeDefinition
+{
+    public string? EntryPoint { get; init; }
+    public string? Type { get; init; }
 }
 
 /// <summary>

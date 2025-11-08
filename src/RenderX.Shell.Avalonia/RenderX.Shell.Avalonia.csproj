@@ -53,6 +53,12 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <!-- SDK Projects -->
+  <ItemGroup>
+    <ProjectReference Include="..\RenderX.HostSDK.Avalonia\RenderX.HostSDK.Avalonia.csproj" />
+    <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
+  </ItemGroup>
+
   <!-- Roslyn Analyzers for enforcing thin-host architecture pattern -->
   <ItemGroup>
     <ProjectReference Include="..\RenderX.Shell.Avalonia.Analyzers\RenderX.Shell.Avalonia.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />

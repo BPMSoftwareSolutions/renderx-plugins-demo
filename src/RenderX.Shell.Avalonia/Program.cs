@@ -8,10 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RenderX.Shell.Avalonia.Core;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
 using RenderX.Shell.Avalonia.Core.Manifests;
-using RenderX.Shell.Avalonia.Core.Plugins;
 using RenderX.Shell.Avalonia.Infrastructure.Api.Endpoints;
 using RenderX.Shell.Avalonia.Infrastructure.Api.Services;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
@@ -145,10 +142,12 @@ public partial class App : Application
         return Host.CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
-                // Core services
-                services.AddSingleton<IConductor, AvaloniaMusicalConductor>();
-                services.AddSingleton<IEventRouter, AvaloniaEventRouter>();
-                services.AddSingleton<IPluginManager, AvaloniaPluginManager>();
+                // SDK services - RenderX.HostSDK.Avalonia and MusicalConductor.Avalonia
+                // These are registered by the SDKs themselves via extension methods
+                // services.AddRenderXHostSdk();
+                // services.AddMusicalConductor();
+
+                // Manifest loader
                 services.AddSingleton<IManifestLoader, JsonManifestLoader>();
 
                 // Thin Host Layer - unified wrapper around SDKs

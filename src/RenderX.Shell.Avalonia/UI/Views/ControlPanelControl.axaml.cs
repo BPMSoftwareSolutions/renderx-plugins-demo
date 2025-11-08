@@ -2,8 +2,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
-using RenderX.Shell.Avalonia.Core.Conductor;
-using RenderX.Shell.Avalonia.Core.Events;
+using RenderX.HostSDK.Avalonia.Interfaces;
+using MusicalConductor.Avalonia.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
@@ -17,7 +17,7 @@ namespace RenderX.Shell.Avalonia.UI.Views;
 public partial class ControlPanelControl : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductor? _conductor;
+    private IConductorClient? _conductor;
     private ILogger<ControlPanelControl>? _logger;
     private ObservableCollection<PropertyItem> _properties;
     private ObservableCollection<InteractionItem> _interactions;
@@ -52,7 +52,7 @@ public partial class ControlPanelControl : UserControl
     /// <summary>
     /// Initialize the control panel with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductor conductor, ILogger<ControlPanelControl> logger)
+    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<ControlPanelControl> logger)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
@@ -88,19 +88,23 @@ public partial class ControlPanelControl : UserControl
         try
         {
             // Subscribe to component selection
-            _eventRouter.Subscribe<JsonElement>("canvas.component.selection.changed", async (payload) =>
+            _eventRouter.Subscribe("canvas.component.selection.changed", (payload) =>
             {
                 _logger.LogDebug("Component selection changed event received");
-                HandleComponentSelectionChanged(payload);
-                await Task.CompletedTask;
+                if (payload is JsonElement jsonPayload)
+                {
+                    HandleComponentSelectionChanged(jsonPayload);
+                }
             });
 
             // Subscribe to component updates
-            _eventRouter.Subscribe<JsonElement>("canvas.component.updated", async (payload) =>
+            _eventRouter.Subscribe("canvas.component.updated", (payload) =>
             {
                 _logger.LogDebug("Component updated event received");
-                HandleComponentUpdated(payload);
-                await Task.CompletedTask;
+                if (payload is JsonElement jsonPayload)
+                {
+                    HandleComponentUpdated(jsonPayload);
+                }
             });
 
             _logger.LogInformation("Control panel event subscriptions established");
@@ -256,7 +260,7 @@ public partial class ControlPanelControl : UserControl
                 UpdateStatus($"Executing {interaction.Name}...");
 
                 var data = new { componentId = _selectedComponentId };
-                await _conductor.PlayAsync<object>(
+                _conductor.Play(
                     interaction.PluginId,
                     interaction.SequenceId,
                     data
@@ -264,6 +268,7 @@ public partial class ControlPanelControl : UserControl
 
                 UpdateStatus($"{interaction.Name} completed");
                 _logger.LogDebug("Interaction completed: {InteractionName}", interaction.Name);
+                await Task.CompletedTask;
             }
             catch (Exception ex)
             {
