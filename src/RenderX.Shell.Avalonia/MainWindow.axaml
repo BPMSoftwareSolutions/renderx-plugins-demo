@@ -18,31 +18,106 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid RowDefinitions="*,Auto">
-        <!-- Main Content Grid with Canvas and ControlPanel -->
-        <Grid Grid.Row="0" ColumnDefinitions="*,4,300">
-            <!-- Canvas Control -->
-            <views:CanvasControl Name="CanvasControl"
-                                Grid.Column="0"
+    <Grid RowDefinitions="48,*,Auto">
+        <!-- Header Row (48px) - Renders headerLeft, headerCenter, headerRight slots -->
+        <Border Grid.Row="0"
+                Name="HeaderArea"
+                AutomationProperties.AutomationId="HeaderArea"
+                Background="#F5F5F5"
+                BorderThickness="0,0,0,1"
+                BorderBrush="#E0E0E0">
+            <Grid ColumnDefinitions="320,*,360">
+
+            <!-- Header Left Slot -->
+            <Border Grid.Column="0"
+                    Name="HeaderLeft"
+                    AutomationProperties.AutomationId="HeaderLeft"
+                    Background="#F5F5F5"
+                    Padding="12,8"
+                    BorderThickness="0,0,1,0"
+                    BorderBrush="#E0E0E0">
+                <TextBlock Text="RenderX"
+                           FontSize="12"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Foreground="#333"/>
+            </Border>
+
+            <!-- Header Center Slot -->
+            <Border Grid.Column="1"
+                    Name="HeaderCenter"
+                    AutomationProperties.AutomationId="HeaderCenter"
+                    Background="#F5F5F5"
+                    Padding="12,8">
+                <TextBlock Text="Canvas"
+                           FontSize="12"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Foreground="#666"/>
+            </Border>
+
+            <!-- Header Right Slot (Theme Toggle will be mounted here) -->
+            <Border Grid.Column="2"
+                    Name="HeaderRight"
+                    AutomationProperties.AutomationId="HeaderRight"
+                    Background="#F5F5F5"
+                    Padding="12,8"
+                    BorderThickness="1,0,0,0"
+                    BorderBrush="#E0E0E0">
+                <TextBlock Text="Theme"
+                           FontSize="12"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Foreground="#666"
+                           HorizontalAlignment="Right"/>
+            </Border>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Grid with 3-column layout: Library | Canvas | ControlPanel -->
+        <Grid Grid.Row="1" ColumnDefinitions="320,*,4,360">
+            <!-- Library Panel (Left) -->
+            <Border Grid.Column="0"
+                    Name="LibraryPanel"
+                    AutomationProperties.AutomationId="LibraryPanel"
+                    Background="White"
+                    BorderThickness="0,0,1,0"
+                    BorderBrush="#E0E0E0"
+                    Padding="12">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Component Library"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Foreground="#333"/>
+                    <TextBlock Text="(Library components will be loaded here)"
+                               FontSize="11"
+                               Foreground="#999"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Canvas Control (Center) -->
+            <views:CanvasControl Grid.Column="1"
+                                Name="CanvasControl"
                                 AutomationProperties.AutomationId="CanvasControl"
                                 AutomationProperties.Name="CanvasControl"/>
 
             <!-- Splitter -->
-            <GridSplitter Grid.Column="1"
+            <GridSplitter Grid.Column="2"
                          Background="#D0D0D0"
                          HorizontalAlignment="Stretch"
                          VerticalAlignment="Stretch"
                          Cursor="SizeWestEast"/>
 
-            <!-- Control Panel Control -->
-            <views:ControlPanelControl Name="ControlPanelControl"
-                                      Grid.Column="2"
+            <!-- Control Panel Control (Right) -->
+            <views:ControlPanelControl Grid.Column="3"
+                                      Name="ControlPanelControl"
                                       AutomationProperties.AutomationId="ControlPanelControl"
                                       AutomationProperties.Name="ControlPanelControl"/>
         </Grid>
 
         <!-- Status Bar -->
-        <Border Grid.Row="1"
+        <Border Grid.Row="2"
                 Background="#F5F5F5"
                 BorderThickness="0,1,0,0"
                 BorderBrush="#E0E0E0"
@@ -76,8 +151,8 @@
         <!-- Diagnostics overlay (will be implemented later) -->
         <Border Name="DiagnosticsOverlay"
                 Grid.Row="0"
-                Grid.RowSpan="2"
-                IsVisible="{Binding DiagnosticsOpen}"
+                Grid.RowSpan="3"
+                IsVisible="False"
                 Background="#CC000000"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch">
