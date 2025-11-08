@@ -10,14 +10,15 @@
         Title="RenderX Shell"
         WindowStartupLocation="CenterScreen"
         MinWidth="800"
-        MinHeight="600">
+        MinHeight="600"
+        Background="White">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
     <!-- Thin host: 6 slots (3 header + 3 main) defined in layout-manifest.json -->
-    <Grid RowDefinitions="48,*" ColumnDefinitions="320,*,360">
+    <Grid RowDefinitions="48,*" ColumnDefinitions="320,*,360" Background="White">
 
         <!-- Header Row (48px) -->
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
@@ -28,22 +29,22 @@
                 BorderBrush="#E0E0E0">
             <Grid ColumnDefinitions="320,*,360">
                 <!-- Header Left Slot -->
-                <Border Grid.Column="0" Name="HeaderLeft" AutomationProperties.AutomationId="HeaderLeft" />
+                <Border Grid.Column="0" Name="HeaderLeft" AutomationProperties.AutomationId="HeaderLeft" Background="White" />
                 <!-- Header Center Slot -->
-                <Border Grid.Column="1" Name="HeaderCenter" AutomationProperties.AutomationId="HeaderCenter" />
+                <Border Grid.Column="1" Name="HeaderCenter" AutomationProperties.AutomationId="HeaderCenter" Background="White" />
                 <!-- Header Right Slot -->
-                <Border Grid.Column="2" Name="HeaderRight" AutomationProperties.AutomationId="HeaderRight" />
+                <Border Grid.Column="2" Name="HeaderRight" AutomationProperties.AutomationId="HeaderRight" Background="White" />
             </Grid>
         </Border>
 
         <!-- Main Content Row -->
         <!-- Library Slot (320px) -->
-        <Border Grid.Row="1" Grid.Column="0" Name="Library" AutomationProperties.AutomationId="Library" />
+        <Border Grid.Row="1" Grid.Column="0" Name="Library" AutomationProperties.AutomationId="Library" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
 
         <!-- Canvas Slot (1fr) -->
-        <Border Grid.Row="1" Grid.Column="1" Name="Canvas" AutomationProperties.AutomationId="Canvas" />
+        <Border Grid.Row="1" Grid.Column="1" Name="Canvas" AutomationProperties.AutomationId="Canvas" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
 
         <!-- Control Panel Slot (360px) -->
-        <Border Grid.Row="1" Grid.Column="2" Name="ControlPanel" AutomationProperties.AutomationId="ControlPanel" />
+        <Border Grid.Row="1" Grid.Column="2" Name="ControlPanel" AutomationProperties.AutomationId="ControlPanel" Background="White" />
     </Grid>
 </Window>
