@@ -2,7 +2,7 @@
          AVALONIA AXAML COMPONENT USAGE REPORT
 ════════════════════════════════════════════════════════════════════════════════
 
-Total Components: 65
+Total Components: 68
 Components with Usage: 0
 
 ════════════════════════════════════════════════════════════════════════════════
@@ -14,7 +14,7 @@ Components with Usage: 0
   • CanvasControl
     Path: RenderX.Plugins.Canvas\CanvasControl.axaml
     Class: RenderX.Plugins.Canvas.CanvasControl
-    Lines: 96
+    Lines: 125
     Uses: DataTemplate, ItemsPanelTemplate
     ⚠️  Not used by other components
 
@@ -67,7 +67,7 @@ Components with Usage: 0
     Uses: ComboBoxItem, DataTemplate, ItemsPanelTemplate, WrapPanel
     ⚠️  Not used by other components
 
-📦 ControlPanel: 7 components (0 used)
+📦 ControlPanel: 9 components (0 used)
 
   • ClassManager
     Path: RenderX.Plugins.ControlPanel\ClassManager.axaml
@@ -89,6 +89,12 @@ Components with Usage: 0
     Lines: 23
     ⚠️  Not used by other components
 
+  • FormField
+    Path: RenderX.Plugins.ControlPanel\FormField.axaml
+    Class: RenderX.Plugins.ControlPanel.FormField
+    Lines: 42
+    ⚠️  Not used by other components
+
   • LoadingState
     Path: RenderX.Plugins.ControlPanel\LoadingState.axaml
     Class: RenderX.Plugins.ControlPanel.LoadingState
@@ -106,6 +112,12 @@ Components with Usage: 0
     Class: RenderX.Plugins.ControlPanel.PropertySection
     Lines: 58
     Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • SearchBar
+    Path: RenderX.Plugins.ControlPanel\SearchBar.axaml
+    Class: RenderX.Plugins.ControlPanel.SearchBar
+    Lines: 35
     ⚠️  Not used by other components
 
   • ValidationErrorDisplay
@@ -223,12 +235,19 @@ Components with Usage: 0
     Lines: 80
     ⚠️  Not used by other components
 
-📦 Header: 10 components (0 used)
+📦 Header: 11 components (0 used)
+
+  • BreadcrumbItem
+    Path: RenderX.Plugins.Header\BreadcrumbItem.axaml
+    Class: RenderX.Plugins.Header.BreadcrumbItem
+    Lines: 24
+    ⚠️  Not used by other components
 
   • HeaderBreadcrumb
     Path: RenderX.Plugins.Header\HeaderBreadcrumb.axaml
     Class: RenderX.Plugins.Header.HeaderBreadcrumb
-    Lines: 8
+    Lines: 22
+    Uses: DataTemplate, ItemsPanelTemplate
     ⚠️  Not used by other components
 
   • HeaderButton
@@ -413,7 +432,7 @@ Components with Usage: 0
   • App
     Path: RenderX.Shell.Avalonia\App.axaml
     Class: RenderX.Shell.Avalonia.App
-    Lines: 11
+    Lines: 23
     Uses: Application, StyleInclude
     ⚠️  Not used by other components
 
@@ -465,7 +484,7 @@ Web (React/TypeScript):
   • 48 components with tracked usage (16.7%)
 
 Desktop (Avalonia/AXAML):
-  • 65 components total
+  • 68 components total
   • 0 components with tracked usage (0.0%)
 
 ════════════════════════════════════════════════════════════════════════════════
@@ -487,8 +506,7 @@ Desktop (Avalonia/AXAML):
 ❌ digital-assets: 0/40 (0%)
    Missing: 40 components
 
-✅ header: 10/11 (91%)
-   Missing: 1 components
+✅ header: 11/11 (100%)
 
 ❌ library: 7/29 (24%)
    Missing: 22 components

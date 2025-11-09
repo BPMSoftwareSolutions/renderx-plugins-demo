@@ -1,6 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Shapes;
 using Avalonia.Input;
+using Avalonia.Layout;
 using Avalonia.Media;
 using System;
 
@@ -45,21 +48,18 @@ namespace RenderX.Plugins.Canvas
         public CanvasRuler()
         {
             InitializeComponent();
-            
+
             // Subscribe to property changes
             ZoomProperty.Changed.AddClassHandler<CanvasRuler>((ruler, e) => ruler.InvalidateRuler());
             OffsetProperty.Changed.AddClassHandler<CanvasRuler>((ruler, e) => ruler.InvalidateRuler());
-            
+
             // Subscribe to pointer events for position indicator
             PointerMoved += OnPointerMoved;
             PointerEntered += OnPointerEntered;
             PointerExited += OnPointerExited;
-        }
 
-        protected override void OnLoaded()
-        {
-            base.OnLoaded();
-            InvalidateRuler();
+            // Subscribe to loaded event
+            Loaded += (s, e) => InvalidateRuler();
         }
 
         private void InvalidateRuler()

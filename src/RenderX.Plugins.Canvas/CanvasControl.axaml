@@ -10,86 +10,115 @@
              BorderThickness="1"
              BorderBrush="#E0E0E0">
 
-    <Grid RowDefinitions="Auto,*">
-        <!-- Canvas Header -->
-        <Border Grid.Row="0"
-                Background="#F5F5F5"
-                BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
-                Padding="12">
-            <StackPanel Orientation="Horizontal" Spacing="8">
-                <TextBlock Text="Canvas"
-                           FontSize="14"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"/>
-                <TextBlock Name="ComponentCountText"
-                           Text="(0 components)"
-                           FontSize="12"
-                           Foreground="Gray"
-                           VerticalAlignment="Center"/>
-            </StackPanel>
-        </Border>
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <!-- Canvas Header Component -->
+        <local:CanvasHeader Grid.Row="0" x:Name="CanvasHeaderComponent" />
 
-        <!-- Canvas Content Area -->
-        <Border Grid.Row="1"
-                Background="White"
-                Padding="12">
-            <Grid RowDefinitions="*,Auto">
-                <!-- Components ItemsControl -->
-                <ItemsControl Grid.Row="0"
-                              Name="ComponentsItemsControl"
-                              Background="White"
-                              BorderThickness="1"
-                              BorderBrush="#E0E0E0"
-                              Padding="8">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Canvas Background="White" 
-                                    Name="rxCanvas"
-                                    AutomationProperties.AutomationId="rx-canvas"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border Name="ComponentItem"
-                                    Background="White"
-                                    BorderThickness="2"
-                                    BorderBrush="#2196F3"
-                                    CornerRadius="4"
-                                    Padding="8"
-                                    Margin="4"
-                                    PointerPressed="OnComponentPointerPressed"
-                                    PointerReleased="OnComponentPointerReleased"
-                                    PointerMoved="OnComponentPointerMoved">
-                                <StackPanel Spacing="4">
-                                    <TextBlock Name="ComponentNameText"
-                                               FontSize="12"
-                                               FontWeight="Bold"
-                                               Text="{Binding Name}"/>
-                                    <TextBlock Name="ComponentIdText"
-                                               FontSize="10"
-                                               Foreground="Gray"
-                                               Text="{Binding Id}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+        <!-- Horizontal Ruler -->
+        <local:CanvasRuler Grid.Row="1"
+                          x:Name="HorizontalRuler"
+                          Height="30"
+                          Background="#F5F5F5"
+                          BorderThickness="0,0,0,1"
+                          BorderBrush="#E0E0E0" />
 
-                <!-- Status Bar -->
-                <Border Grid.Row="1"
-                        Background="#F5F5F5"
-                        BorderThickness="0,1,0,0"
-                        BorderBrush="#E0E0E0"
-                        Padding="8"
-                        Margin="0,8,0,0">
-                    <TextBlock Name="StatusText"
-                               Text="Ready"
-                               FontSize="11"
-                               Foreground="Gray"/>
-                </Border>
-            </Grid>
-        </Border>
+        <!-- Canvas Content Area with Vertical Ruler -->
+        <Grid Grid.Row="2" ColumnDefinitions="30,*">
+            <!-- Vertical Ruler -->
+            <local:CanvasRuler Grid.Column="0"
+                              x:Name="VerticalRuler"
+                              Width="30"
+                              Background="#F5F5F5"
+                              BorderThickness="0,0,1,0"
+                              BorderBrush="#E0E0E0" />
+
+            <!-- Main Canvas Area -->
+            <Border Grid.Column="1"
+                    Background="White"
+                    Padding="0">
+                <Grid RowDefinitions="*,Auto">
+                    <!-- Canvas Container with Overlays -->
+                    <Grid Grid.Row="0" Background="White">
+                        <!-- Grid Overlay (conditional visibility) -->
+                        <local:GridOverlay x:Name="GridOverlayComponent"
+                                          Background="Transparent"
+                                          IsVisible="False" />
+
+                        <!-- Components ItemsControl -->
+                        <ItemsControl Grid.Row="0"
+                                      Name="ComponentsItemsControl"
+                                      Background="White"
+                                      BorderThickness="1"
+                                      BorderBrush="#E0E0E0"
+                                      Padding="8">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Background="White"
+                                            Name="rxCanvas"
+                                            AutomationProperties.AutomationId="rx-canvas"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Name="ComponentItem"
+                                            Background="White"
+                                            BorderThickness="2"
+                                            BorderBrush="#2196F3"
+                                            CornerRadius="4"
+                                            Padding="8"
+                                            Margin="4"
+                                            PointerPressed="OnComponentPointerPressed"
+                                            PointerReleased="OnComponentPointerReleased"
+                                            PointerMoved="OnComponentPointerMoved">
+                                        <StackPanel Spacing="4">
+                                            <TextBlock Name="ComponentNameText"
+                                                       FontSize="12"
+                                                       FontWeight="Bold"
+                                                       Text="{Binding Name}"/>
+                                            <TextBlock Name="ComponentIdText"
+                                                       FontSize="10"
+                                                       Foreground="Gray"
+                                                       Text="{Binding Id}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Selection Indicator (overlay on selected component) -->
+                        <local:SelectionIndicator x:Name="SelectionIndicatorComponent"
+                                                 Background="Transparent"
+                                                 IsVisible="False" />
+
+                        <!-- Drop Indicator (shown during drag operations) -->
+                        <local:DropIndicator x:Name="DropIndicatorComponent"
+                                            Background="Transparent"
+                                            IsVisible="False" />
+                    </Grid>
+
+                    <!-- Status Bar -->
+                    <Border Grid.Row="1"
+                            Background="#F5F5F5"
+                            BorderThickness="0,1,0,0"
+                            BorderBrush="#E0E0E0"
+                            Padding="8"
+                            Margin="0,0,0,0">
+                        <TextBlock Name="StatusText"
+                                   Text="Ready"
+                                   FontSize="11"
+                                   Foreground="Gray"/>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Floating Layer Panel (bottom) -->
+        <local:CanvasLayerPanel Grid.Row="3"
+                               x:Name="CanvasLayerPanelComponent"
+                               Height="150"
+                               Background="White"
+                               BorderThickness="0,1,0,0"
+                               BorderBrush="#E0E0E0" />
     </Grid>
 </UserControl>
 

@@ -1,0 +1,150 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- ============================================ -->
+    <!-- RENDERX DESIGN TOKENS - COMPLETE SYSTEM -->
+    <!-- ============================================ -->
+    <!-- This is the single source of truth for all colors, typography, spacing, and effects -->
+    <!-- Used by both light and dark themes -->
+    
+    <Styles.Resources>
+        
+        <!-- ============================================ -->
+        <!-- SEMANTIC COLORS - LIGHT THEME -->
+        <!-- ============================================ -->
+        
+        <!-- Backgrounds -->
+        <SolidColorBrush x:Key="Color.Background.Primary" Color="#ffffff"/>
+        <SolidColorBrush x:Key="Color.Background.Secondary" Color="#f9fafb"/>
+        <SolidColorBrush x:Key="Color.Background.Tertiary" Color="#f3f4f6"/>
+        <SolidColorBrush x:Key="Color.Background.Hover" Color="#e5e7eb"/>
+        <SolidColorBrush x:Key="Color.Background.Active" Color="#d1d5db"/>
+        
+        <!-- Text -->
+        <SolidColorBrush x:Key="Color.Text.Primary" Color="#1f2937"/>
+        <SolidColorBrush x:Key="Color.Text.Secondary" Color="#6b7280"/>
+        <SolidColorBrush x:Key="Color.Text.Tertiary" Color="#9ca3af"/>
+        <SolidColorBrush x:Key="Color.Text.Muted" Color="#d1d5db"/>
+        <SolidColorBrush x:Key="Color.Text.Inverse" Color="#ffffff"/>
+        
+        <!-- Borders -->
+        <SolidColorBrush x:Key="Color.Border.Primary" Color="#e5e7eb"/>
+        <SolidColorBrush x:Key="Color.Border.Secondary" Color="#d1d5db"/>
+        <SolidColorBrush x:Key="Color.Border.Strong" Color="#9ca3af"/>
+        
+        <!-- Accents -->
+        <SolidColorBrush x:Key="Color.Accent.Primary" Color="#3b82f6"/>
+        <SolidColorBrush x:Key="Color.Accent.Dark" Color="#2563eb"/>
+        <SolidColorBrush x:Key="Color.Accent.Darker" Color="#1d4ed8"/>
+        <SolidColorBrush x:Key="Color.Accent.Light" Color="#dbeafe"/>
+        <SolidColorBrush x:Key="Color.Accent.Weak" Color="#eff6ff"/>
+        
+        <!-- Status Colors -->
+        <SolidColorBrush x:Key="Color.Success" Color="#10b981"/>
+        <SolidColorBrush x:Key="Color.Success.Light" Color="#d1fae5"/>
+        <SolidColorBrush x:Key="Color.Warning" Color="#f59e0b"/>
+        <SolidColorBrush x:Key="Color.Warning.Light" Color="#fef3c7"/>
+        <SolidColorBrush x:Key="Color.Error" Color="#ef4444"/>
+        <SolidColorBrush x:Key="Color.Error.Light" Color="#fee2e2"/>
+        <SolidColorBrush x:Key="Color.Info" Color="#0ea5e9"/>
+        <SolidColorBrush x:Key="Color.Info.Light" Color="#cffafe"/>
+        
+        <!-- Component Specific -->
+        <SolidColorBrush x:Key="Color.Canvas.Background" Color="#f9fafb"/>
+        <SolidColorBrush x:Key="Color.Canvas.Grid" Color="#e5e7eb"/>
+        <SolidColorBrush x:Key="Color.Canvas.Component" Color="#ffffff"/>
+        <SolidColorBrush x:Key="Color.Canvas.ComponentBorder" Color="#3b82f6"/>
+        <SolidColorBrush x:Key="Color.Canvas.ComponentHover" Color="#eff6ff"/>
+        
+        <SolidColorBrush x:Key="Color.Panel.Background" Color="#ffffff"/>
+        <SolidColorBrush x:Key="Color.Panel.Border" Color="#e5e7eb"/>
+        <SolidColorBrush x:Key="Color.Panel.Header" Color="#f9fafb"/>
+        <SolidColorBrush x:Key="Color.Panel.HeaderBorder" Color="#e5e7eb"/>
+        
+        <!-- ============================================ -->
+        <!-- TYPOGRAPHY TOKENS -->
+        <!-- ============================================ -->
+        
+        <!-- Font Sizes -->
+        <x:Double x:Key="FontSize.XS">10</x:Double>
+        <x:Double x:Key="FontSize.SM">11</x:Double>
+        <x:Double x:Key="FontSize.Base">12</x:Double>
+        <x:Double x:Key="FontSize.MD">14</x:Double>
+        <x:Double x:Key="FontSize.LG">16</x:Double>
+        <x:Double x:Key="FontSize.XL">18</x:Double>
+        <x:Double x:Key="FontSize.2XL">24</x:Double>
+        
+        <!-- Font Weights -->
+        <FontWeight x:Key="FontWeight.Regular">Regular</FontWeight>
+        <FontWeight x:Key="FontWeight.Medium">Medium</FontWeight>
+        <FontWeight x:Key="FontWeight.SemiBold">SemiBold</FontWeight>
+        <FontWeight x:Key="FontWeight.Bold">Bold</FontWeight>
+        
+        <!-- ============================================ -->
+        <!-- SPACING TOKENS (4px base unit) -->
+        <!-- ============================================ -->
+        
+        <!-- Padding/Margin -->
+        <Thickness x:Key="Spacing.0">0</Thickness>
+        <Thickness x:Key="Spacing.1">4</Thickness>
+        <Thickness x:Key="Spacing.2">8</Thickness>
+        <Thickness x:Key="Spacing.3">12</Thickness>
+        <Thickness x:Key="Spacing.4">16</Thickness>
+        <Thickness x:Key="Spacing.5">20</Thickness>
+        <Thickness x:Key="Spacing.6">24</Thickness>
+        <Thickness x:Key="Spacing.8">32</Thickness>
+        <Thickness x:Key="Spacing.12">48</Thickness>
+        
+        <!-- Horizontal Padding -->
+        <Thickness x:Key="Spacing.PX.1">4,0</Thickness>
+        <Thickness x:Key="Spacing.PX.2">8,0</Thickness>
+        <Thickness x:Key="Spacing.PX.3">12,0</Thickness>
+        <Thickness x:Key="Spacing.PX.4">16,0</Thickness>
+        <Thickness x:Key="Spacing.PX.6">24,0</Thickness>
+        
+        <!-- Vertical Padding -->
+        <Thickness x:Key="Spacing.PY.1">0,4</Thickness>
+        <Thickness x:Key="Spacing.PY.2">0,8</Thickness>
+        <Thickness x:Key="Spacing.PY.3">0,12</Thickness>
+        <Thickness x:Key="Spacing.PY.4">0,16</Thickness>
+        <Thickness x:Key="Spacing.PY.6">0,24</Thickness>
+        
+        <!-- Gap (for StackPanel/Grid) -->
+        <x:Double x:Key="Gap.1">4</x:Double>
+        <x:Double x:Key="Gap.2">8</x:Double>
+        <x:Double x:Key="Gap.3">12</x:Double>
+        <x:Double x:Key="Gap.4">16</x:Double>
+        <x:Double x:Key="Gap.6">24</x:Double>
+        
+        <!-- ============================================ -->
+        <!-- BORDER RADIUS TOKENS -->
+        <!-- ============================================ -->
+        
+        <CornerRadius x:Key="CornerRadius.None">0</CornerRadius>
+        <CornerRadius x:Key="CornerRadius.SM">4</CornerRadius>
+        <CornerRadius x:Key="CornerRadius.MD">6</CornerRadius>
+        <CornerRadius x:Key="CornerRadius.LG">8</CornerRadius>
+        <CornerRadius x:Key="CornerRadius.XL">12</CornerRadius>
+        <CornerRadius x:Key="CornerRadius.Full">999</CornerRadius>
+        
+        <!-- ============================================ -->
+        <!-- SHADOW TOKENS -->
+        <!-- ============================================ -->
+        
+        <!-- Box Shadows (using Brush opacity for simulation) -->
+        <SolidColorBrush x:Key="Shadow.SM" Color="#000000" Opacity="0.05"/>
+        <SolidColorBrush x:Key="Shadow.MD" Color="#000000" Opacity="0.1"/>
+        <SolidColorBrush x:Key="Shadow.LG" Color="#000000" Opacity="0.15"/>
+        
+        <!-- ============================================ -->
+        <!-- OPACITY TOKENS -->
+        <!-- ============================================ -->
+        
+        <x:Double x:Key="Opacity.Disabled">0.5</x:Double>
+        <x:Double x:Key="Opacity.Hover">0.8</x:Double>
+        <x:Double x:Key="Opacity.Focus">1.0</x:Double>
+        
+    </Styles.Resources>
+    
+</Styles>
+

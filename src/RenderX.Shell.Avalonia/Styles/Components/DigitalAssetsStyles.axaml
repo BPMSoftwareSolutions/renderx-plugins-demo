@@ -1,0 +1,201 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Digital Assets Component Styles -->
+    
+    <!-- Asset Grid Layout -->
+    
+    <!-- asset-grid: Asset grid container -->
+    <Style Selector="ItemsControl.asset-grid">
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+    
+    <!-- asset-grid-item: Individual asset grid item -->
+    <Style Selector="Border.asset-grid-item">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Border.asset-grid-item:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+    
+    <!-- Asset Card Styles -->
+    
+    <!-- asset-card: Asset card container -->
+    <Style Selector="Border.asset-card">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+    
+    <!-- asset-preview: Asset preview area -->
+    <Style Selector="Border.asset-preview">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="MinHeight" Value="120"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+    
+    <!-- asset-title: Asset title -->
+    <Style Selector="TextBlock.asset-title">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+    
+    <!-- asset-description: Asset description -->
+    <Style Selector="TextBlock.asset-description">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+    
+    <!-- asset-metadata: Asset metadata container -->
+    <Style Selector="StackPanel.asset-metadata">
+        <Setter Property="Spacing" Value="8"/>
+        <Setter Property="Margin" Value="0,8,0,0"/>
+    </Style>
+    
+    <!-- asset-meta-item: Individual metadata item -->
+    <Style Selector="StackPanel.asset-meta-item">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="4"/>
+    </Style>
+    
+    <!-- asset-meta-label: Metadata label -->
+    <Style Selector="TextBlock.asset-meta-label">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+    </Style>
+    
+    <!-- asset-meta-value: Metadata value -->
+    <Style Selector="TextBlock.asset-meta-value">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+    
+    <!-- Asset Actions -->
+    
+    <!-- asset-actions: Asset action buttons container -->
+    <Style Selector="StackPanel.asset-actions">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="8"/>
+        <Setter Property="Margin" Value="0,12,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    
+    <!-- asset-action-btn: Asset action button -->
+    <Style Selector="Button.asset-action-btn">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,4,12,4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.asset-action-btn:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+    
+    <!-- Version History Styles -->
+    
+    <!-- version-history: Version history container -->
+    <Style Selector="StackPanel.version-history">
+        <Setter Property="Spacing" Value="12"/>
+        <Setter Property="Margin" Value="16"/>
+    </Style>
+    
+    <!-- version-item: Individual version item -->
+    <Style Selector="Border.version-item">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+    
+    <!-- version-number: Version number -->
+    <Style Selector="TextBlock.version-number">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+    
+    <!-- version-date: Version date -->
+    <Style Selector="TextBlock.version-date">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+    </Style>
+    
+    <!-- version-author: Version author -->
+    <Style Selector="TextBlock.version-author">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+    </Style>
+    
+    <!-- version-changes: Version changes description -->
+    <Style Selector="TextBlock.version-changes">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="0,8,0,0"/>
+    </Style>
+    
+    <!-- Asset Metadata Editor -->
+    
+    <!-- metadata-editor: Metadata editor container -->
+    <Style Selector="Border.metadata-editor">
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Panel.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+    
+    <!-- metadata-field: Metadata field -->
+    <Style Selector="StackPanel.metadata-field">
+        <Setter Property="Spacing" Value="4"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+    
+    <!-- metadata-field-label: Metadata field label -->
+    <Style Selector="TextBlock.metadata-field-label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+    
+    <!-- metadata-field-input: Metadata field input -->
+    <Style Selector="TextBox.metadata-field-input">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,6,12,6"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    
+    <Style Selector="TextBox.metadata-field-input:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    
+</Styles>
+

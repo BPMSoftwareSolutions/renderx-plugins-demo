@@ -1,7 +1,21 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RenderX.Plugins.Header"
              x:Class="RenderX.Plugins.Header.HeaderBreadcrumb"
              Background="Transparent">
-    <StackPanel x:Name="BreadcrumbContainer" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center" />
+    <ItemsControl x:Name="BreadcrumbContainer"
+                  Background="Transparent">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" Spacing="4" VerticalAlignment="Center" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <local:BreadcrumbItem Text="{Binding}"
+                                     IsFirst="{Binding RelativeSource={RelativeSource Self}, Path=DataContext, Converter={StaticResource IsFirstConverter}}" />
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 </UserControl>
 

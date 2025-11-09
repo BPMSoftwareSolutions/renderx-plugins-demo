@@ -37,24 +37,10 @@ public partial class HeaderBreadcrumb : UserControl
 
     private void UpdateBreadcrumb()
     {
-        var container = this.FindControl<StackPanel>("BreadcrumbContainer");
+        var container = this.FindControl<ItemsControl>("BreadcrumbContainer");
         if (container != null)
         {
-            container.Children.Clear();
-            
-            for (int i = 0; i < Path.Count; i++)
-            {
-                if (i > 0)
-                {
-                    container.Children.Add(new TextBlock { Text = "/", Foreground = Avalonia.Media.Brushes.Gray });
-                }
-                
-                container.Children.Add(new TextBlock 
-                { 
-                    Text = Path[i], 
-                    Foreground = Avalonia.Media.Brushes.White 
-                });
-            }
+            container.ItemsSource = Path;
         }
     }
 }
