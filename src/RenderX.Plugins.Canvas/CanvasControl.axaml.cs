@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace RenderX.Shell.Avalonia.UI.Views;
+namespace RenderX.Plugins.Canvas;
 
 /// <summary>
 /// Canvas control for rendering and managing components

@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace RenderX.Shell.Avalonia.UI.Views;
+namespace RenderX.Plugins.ControlPanel;
 
 /// <summary>
 /// Control panel for editing component properties and executing interactions

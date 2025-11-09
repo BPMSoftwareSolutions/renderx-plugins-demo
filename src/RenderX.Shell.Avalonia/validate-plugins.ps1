@@ -1,6 +1,6 @@
 # Plugin Validation Pre-Build Script
 # Validates that all plugins in plugin-manifest.json have corresponding implementations
-# and are registered in PluginLoader.cs
+# and that PluginLoader uses manifest-driven loading (not hardcoded mappings)
 
 param(
     [string]$ManifestPath = "plugins/plugin-manifest.json",
@@ -28,20 +28,37 @@ if (-not (Test-Path $loaderFile)) {
 
 $loaderContent = Get-Content $loaderFile -Raw
 
-# Validate each plugin
+# Validate that PluginLoader uses manifest-driven loading
+if ($loaderContent -match "_slotTypeMap = new Dictionary") {
+    Write-Error "PluginLoader should not have hardcoded _slotTypeMap. Use manifest-driven loading instead."
+    $ErrorCount++
+}
+
+if (-not ($loaderContent -match "plugin-manifest.json")) {
+    Write-Error "PluginLoader should load plugin mappings from plugin-manifest.json"
+    $ErrorCount++
+}
+
+# Validate each plugin has required UI configuration
 foreach ($plugin in $manifest.plugins) {
     $pluginId = $plugin.id
     $slot = $plugin.ui.slot
+    $module = $plugin.ui.module
+    $export = $plugin.ui.export
 
     # Skip runtime-only plugins
     if (-not $slot) {
         continue
     }
 
-    # Check if slot is registered in PluginLoader
-    $slotPattern = "`"$slot`""
-    if (-not ($loaderContent -match $slotPattern)) {
-        Write-Error "Slot '$slot' is NOT registered in PluginLoader for plugin $pluginId"
+    # Check that all required fields are present
+    if (-not $module) {
+        Write-Error "Plugin '$pluginId' missing 'module' in UI configuration"
+        $ErrorCount++
+    }
+
+    if (-not $export) {
+        Write-Error "Plugin '$pluginId' missing 'export' in UI configuration"
         $ErrorCount++
     }
 }

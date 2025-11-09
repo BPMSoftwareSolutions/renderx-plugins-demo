@@ -169,4 +169,32 @@ public class MW { void F(){ var x = new HeaderRightControl(); } }
             var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/MainWindow.axaml.cs");
             Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginDecouplingDiagnosticId);
         }
+
+        [Fact]
+        public void EmbeddedPlugins_CanvasControl_Reports_SHELL003()
+        {
+            // SHELL003: Canvas should be a standalone plugin, not embedded in shell
+            var code = @"
+namespace RenderX.Shell.Avalonia.UI.Views;
+
+public class CanvasControl
+{
+}";
+            var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/UI/Views/CanvasControl.axaml.cs");
+            Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginCompletenessDiagnosticId);
+        }
+
+        [Fact]
+        public void EmbeddedPlugins_ControlPanelControl_Reports_SHELL003()
+        {
+            // SHELL003: ControlPanel should be a standalone plugin, not embedded in shell
+            var code = @"
+namespace RenderX.Shell.Avalonia.UI.Views;
+
+public class ControlPanelControl
+{
+}";
+            var diagnostics = GetDiagnostics(code, "RenderX.Shell.Avalonia/UI/Views/ControlPanelControl.axaml.cs");
+            Assert.Contains(diagnostics, d => d.Id == ThinHostArchitectureAnalyzer.PluginCompletenessDiagnosticId);
+        }
     }
