@@ -4,9 +4,9 @@
       "id": "CanvasPlugin",
       "version": "1.0.0",
       "ui": {
-        "slot": null,
+        "slot": "canvas",
         "module": "RenderX.Plugins.Canvas.dll",
-        "export": "CanvasPlugin"
+        "export": "CanvasControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.Canvas.dll",
@@ -52,9 +52,9 @@
       "id": "ControlPanelPlugin",
       "version": "1.0.0",
       "ui": {
-        "slot": null,
+        "slot": "controlPanel",
         "module": "RenderX.Plugins.ControlPanel.dll",
-        "export": "ControlPanelPlugin"
+        "export": "ControlPanelControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.ControlPanel.dll",
@@ -65,16 +65,48 @@
       "components": null
     },
     {
-      "id": "HeaderPlugin",
+      "id": "HeaderTitlePlugin",
       "version": "1.0.0",
       "ui": {
-        "slot": null,
+        "slot": "headerLeft",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderPlugin"
+        "export": "HeaderTitlePlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderPlugin"
+        "export": "HeaderTitlePlugin"
+      },
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerCenter",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderControlsPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderControlsPlugin"
+      },
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerRight",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderThemePlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "HeaderThemePlugin"
       },
       "sequences": null,
       "topics": null,
@@ -84,7 +116,7 @@
       "id": "LibraryPlugin",
       "version": "1.0.0",
       "ui": {
-        "slot": null,
+        "slot": "library",
         "module": "RenderX.Plugins.Library.dll",
         "export": "LibraryPlugin"
       },

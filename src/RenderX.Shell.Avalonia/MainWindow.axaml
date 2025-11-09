@@ -29,22 +29,22 @@
                 BorderBrush="#E0E0E0">
             <Grid ColumnDefinitions="320,*,360">
                 <!-- Header Left Slot -->
-                <Border Grid.Column="0" Name="HeaderLeft" AutomationProperties.AutomationId="HeaderLeft" Background="White" />
+                <Border Grid.Column="0" Name="headerLeft" AutomationProperties.AutomationId="headerLeft" Background="White" />
                 <!-- Header Center Slot -->
-                <Border Grid.Column="1" Name="HeaderCenter" AutomationProperties.AutomationId="HeaderCenter" Background="White" />
+                <Border Grid.Column="1" Name="headerCenter" AutomationProperties.AutomationId="headerCenter" Background="White" />
                 <!-- Header Right Slot -->
-                <Border Grid.Column="2" Name="HeaderRight" AutomationProperties.AutomationId="HeaderRight" Background="White" />
+                <Border Grid.Column="2" Name="headerRight" AutomationProperties.AutomationId="headerRight" Background="White" />
             </Grid>
         </Border>
 
         <!-- Main Content Row -->
         <!-- Library Slot (320px) -->
-        <Border Grid.Row="1" Grid.Column="0" Name="Library" AutomationProperties.AutomationId="Library" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
+        <Border Grid.Row="1" Grid.Column="0" Name="library" AutomationProperties.AutomationId="library" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
 
         <!-- Canvas Slot (1fr) -->
-        <Border Grid.Row="1" Grid.Column="1" Name="Canvas" AutomationProperties.AutomationId="Canvas" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
+        <Border Grid.Row="1" Grid.Column="1" Name="canvas" AutomationProperties.AutomationId="canvas" Background="White" BorderThickness="0,0,1,0" BorderBrush="#E0E0E0" />
 
         <!-- Control Panel Slot (360px) -->
-        <Border Grid.Row="1" Grid.Column="2" Name="ControlPanel" AutomationProperties.AutomationId="ControlPanel" Background="White" />
+        <Border Grid.Row="1" Grid.Column="2" Name="controlPanel" AutomationProperties.AutomationId="controlPanel" Background="White" />
     </Grid>
 </Window>

@@ -9,6 +9,10 @@ using RenderX.Shell.Avalonia.Infrastructure.Plugins;
 using RenderX.Shell.Avalonia.UI;
 using RenderX.Shell.Avalonia.UI.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace RenderX.Shell.Avalonia;
@@ -64,8 +68,9 @@ public partial class MainWindow : Window
             // Mount native Avalonia controls into slots via IPluginLoader (thin-host architecture)
             var pluginLoader = _serviceProvider.GetRequiredService<IPluginLoader>();
 
-            // Define all slots to load (from layout-manifest.json)
-            var slots = new[] { "HeaderLeft", "HeaderCenter", "HeaderRight", "Library", "Canvas", "ControlPanel" };
+            // Read slot names from layout-manifest.json (manifest-driven architecture)
+            var slots = LoadSlotsFromManifest();
+            _logger.LogInformation("Loaded {SlotCount} slots from layout manifest", slots.Count);
 
             foreach (var slotName in slots)
             {
@@ -127,5 +132,68 @@ public partial class MainWindow : Window
                 viewModel.ToggleDiagnosticsCommand.Execute().Subscribe(new NoopObserver<System.Reactive.Unit>());
             }
         }
+    }
+
+    /// <summary>
+    /// Load slot names from layout-manifest.json (manifest-driven architecture).
+    /// Reads the layout.areas array and flattens it to get all slot names.
+    /// </summary>
+    private List<string> LoadSlotsFromManifest()
+    {
+        var slots = new List<string>();
+
+        try
+        {
+            var manifestPath = Path.Combine(
+                AppContext.BaseDirectory,
+                "plugins",
+                "layout-manifest.json");
+
+            if (!File.Exists(manifestPath))
+            {
+                _logger.LogWarning("Layout manifest not found at {ManifestPath}, using fallback slots", manifestPath);
+                // Fallback to hardcoded slots if manifest not found
+                return new List<string> { "headerLeft", "headerCenter", "headerRight", "library", "canvas", "controlPanel" };
+            }
+
+            var manifestContent = File.ReadAllText(manifestPath);
+            using var doc = JsonDocument.Parse(manifestContent);
+
+            if (!doc.RootElement.TryGetProperty("layout", out var layout))
+            {
+                _logger.LogWarning("Layout manifest missing 'layout' property");
+                return new List<string>();
+            }
+
+            if (!layout.TryGetProperty("areas", out var areas))
+            {
+                _logger.LogWarning("Layout manifest missing 'layout.areas' property");
+                return new List<string>();
+            }
+
+            // Flatten the 2D areas array to get all slot names
+            foreach (var row in areas.EnumerateArray())
+            {
+                foreach (var slotName in row.EnumerateArray())
+                {
+                    var name = slotName.GetString();
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        slots.Add(name);
+                    }
+                }
+            }
+
+            _logger.LogDebug("Loaded {SlotCount} slots from layout manifest: {Slots}",
+                slots.Count, string.Join(", ", slots));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error loading slots from layout manifest");
+            // Fallback to hardcoded slots on error
+            return new List<string> { "headerLeft", "headerCenter", "headerRight", "library", "canvas", "controlPanel" };
+        }
+
+        return slots;
     }
 }
