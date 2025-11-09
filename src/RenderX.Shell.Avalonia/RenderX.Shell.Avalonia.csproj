@@ -76,6 +76,11 @@
     <Folder Include="Infrastructure\Configuration\" />
   </ItemGroup>
 
+  <!-- Pre-build: Generate manifests from plugin metadata -->
+  <Target Name="GenerateManifests" BeforeTargets="SyncPluginJsonFiles">
+    <Exec Command="dotnet run --project &quot;$(ProjectDir)..\RenderX.ManifestGenerator\RenderX.ManifestGenerator.csproj&quot; -- &quot;$(RenderXRepoRoot)&quot;" />
+  </Target>
+
   <!-- Pre-build: Sync JSON files from plugins -->
   <Target Name="SyncPluginJsonFiles" BeforeTargets="ValidatePlugins">
     <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Scripts\Sync-PluginJsonFiles.ps1&quot; -SourceRoot &quot;$(ProjectDir)..&quot; -TargetRoot &quot;$(ProjectDir)plugins&quot;" />
