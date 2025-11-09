@@ -2,6 +2,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.LibraryPanel"
              Background="{DynamicResource Color.Background.Tertiary}">
+    <UserControl.Styles>
+        <Style Selector="Border.component-item">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.component-item:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-2"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
     <DockPanel>
         <!-- Header -->
         <Border DockPanel.Dock="Top"
@@ -30,6 +50,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border x:Name="ComponentBorder"
+                                Classes="component-item"
                                 Background="{DynamicResource Color.Background.Primary}"
                                 BorderBrush="{DynamicResource Color.Border.Secondary}"
                                 BorderThickness="1"

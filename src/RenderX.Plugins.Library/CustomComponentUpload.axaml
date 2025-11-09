@@ -2,9 +2,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.CustomComponentUpload"
              Background="{DynamicResource Color.Background.Primary}">
+    <UserControl.Styles>
+        <Style Selector="Button.upload-button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.upload-button:pointerover">
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
     <Border BorderThickness="1"
             BorderBrush="{DynamicResource Color.Border.Primary}"
-            CornerRadius="4"
+            CornerRadius="8"
             Padding="12">
         <StackPanel Spacing="12">
             <TextBlock Text="Upload Custom Component"
@@ -18,11 +35,12 @@
                            FontSize="11"
                            FontWeight="Bold"
                            Foreground="#666" />
-                <Button x:Name="BrowseButton"
+                <Button Classes="upload-button"
+                        x:Name="BrowseButton"
                         Content="Browse Files..."
                         Padding="12,6"
                         Background="{DynamicResource Color.Border.Primary}"
-                        Foreground="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
                         FontSize="11"
                         Click="OnBrowseClick" />
                 <TextBlock x:Name="FileNameText"
@@ -62,7 +80,8 @@
             </StackPanel>
 
             <!-- Upload Button -->
-            <Button Content="Upload Component"
+            <Button Classes="upload-button"
+                    Content="Upload Component"
                     Padding="12,6"
                     Background="{DynamicResource Color.Success}"
                     Foreground="{DynamicResource Color.Background.Primary}"

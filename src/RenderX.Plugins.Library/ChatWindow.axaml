@@ -2,9 +2,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.ChatWindow"
              Background="{DynamicResource Color.Background.Primary}">
-    <Grid RowDefinitions="*,Auto">
+    <UserControl.Styles>
+        <Style Selector="Border.message-bubble">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.message-bubble:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Padding="12,8"
+                BorderThickness="0,0,0,1"
+                BorderBrush="#555">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Color="#667eea" Offset="0"/>
+                    <GradientStop Color="#764ba2" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock Text="AI Component Generator"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="White" />
+        </Border>
+
         <!-- Messages Area -->
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="MessagesItemsControl"
                           Padding="12"
                           Background="{DynamicResource Color.Background.Primary}">
@@ -16,11 +46,13 @@
                                            FontSize="11"
                                            FontWeight="Bold"
                                            Foreground="{DynamicResource Color.Border.Primary}" />
-                                <Border Background="{DynamicResource Color.Background.Tertiary}"
+                                <Border Classes="message-bubble"
+                                        Background="{DynamicResource Color.Background.Tertiary}"
                                         BorderThickness="1"
                                         BorderBrush="{DynamicResource Color.Border.Primary}"
-                                        CornerRadius="4"
-                                        Padding="8">
+                                        CornerRadius="8"
+                                        Padding="12"
+                                        BoxShadow="0 2px 8px rgba(0,0,0,0.05)">
                                     <TextBlock Text="{Binding Content}"
                                                FontSize="11"
                                                Foreground="#666"
@@ -34,7 +66,7 @@
         </ScrollViewer>
 
         <!-- Input Area -->
-        <Border Grid.Row="1"
+        <Border Grid.Row="2"
                 Background="{DynamicResource Color.Background.Primary}"
                 BorderThickness="0,1,0,0"
                 BorderBrush="{DynamicResource Color.Border.Primary}"
