@@ -107,6 +107,13 @@ public partial class ControlPanelControl : UserControl
                 }
             });
 
+            // Subscribe to selections cleared
+            _eventRouter.Subscribe("canvas.component.selections.cleared", (payload) =>
+            {
+                _logger.LogDebug("Canvas selections cleared event received");
+                HandleSelectionsCleared();
+            });
+
             _logger.LogInformation("Control panel event subscriptions established");
         }
         catch (Exception ex)
@@ -125,8 +132,8 @@ public partial class ControlPanelControl : UserControl
             if (payload.TryGetProperty("id", out var idElement))
             {
                 _selectedComponentId = idElement.GetString();
-                var name = payload.TryGetProperty("name", out var nameElement) 
-                    ? nameElement.GetString() ?? "Unknown" 
+                var name = payload.TryGetProperty("name", out var nameElement)
+                    ? nameElement.GetString() ?? "Unknown"
                     : "Unknown";
 
                 UpdateSelectedComponentDisplay(name);
@@ -134,6 +141,9 @@ public partial class ControlPanelControl : UserControl
                 PopulateInteractions();
                 UpdateStatus($"Selected: {name}");
                 _logger?.LogDebug("Component selected in control panel: {ComponentId}", _selectedComponentId);
+
+                // Publish control panel update requested event
+                PublishUpdateRequested(payload);
             }
         }
         catch (Exception ex)
@@ -313,6 +323,26 @@ public partial class ControlPanelControl : UserControl
     }
 
     /// <summary>
+    /// Handle selections cleared event
+    /// </summary>
+    private void HandleSelectionsCleared()
+    {
+        try
+        {
+            _selectedComponentId = null;
+            _properties.Clear();
+            _interactions.Clear();
+            UpdateSelectedComponentDisplay("None");
+            UpdateStatus("Selection cleared");
+            _logger?.LogDebug("Control panel cleared due to selection cleared event");
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Error handling selections cleared event");
+        }
+    }
+
+    /// <summary>
     /// Update status message
     /// </summary>
     private void UpdateStatus(string message)
@@ -321,6 +351,84 @@ public partial class ControlPanelControl : UserControl
         if (statusText != null)
         {
             statusText.Text = message;
+        }
+    }
+
+    /// <summary>
+    /// Publish control panel update requested event
+    /// </summary>
+    private async void PublishUpdateRequested(JsonElement payload)
+    {
+        if (_eventRouter == null || _logger == null)
+            return;
+
+        try
+        {
+            await _eventRouter.PublishAsync("control.panel.update.requested", payload, _conductor);
+            _logger.LogInformation("📡 EventRouter.publish('control.panel.update.requested')");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error publishing update requested event");
+        }
+    }
+
+    /// <summary>
+    /// Publish control panel selection updated event
+    /// </summary>
+    private async void PublishSelectionUpdated(object selectionModel)
+    {
+        if (_eventRouter == null || _logger == null)
+            return;
+
+        try
+        {
+            await _eventRouter.PublishAsync("control.panel.selection.updated", selectionModel, _conductor);
+            _logger.LogInformation("📡 EventRouter.publish('control.panel.selection.updated')");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error publishing selection updated event");
+        }
+    }
+
+    /// <summary>
+    /// Publish control panel classes updated event
+    /// </summary>
+    private async void PublishClassesUpdated(string componentId, string[] classes)
+    {
+        if (_eventRouter == null || _logger == null)
+            return;
+
+        try
+        {
+            var payload = new { id = componentId, classes = classes };
+            await _eventRouter.PublishAsync("control.panel.classes.updated", payload, _conductor);
+            _logger.LogInformation("📡 EventRouter.publish('control.panel.classes.updated')");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error publishing classes updated event");
+        }
+    }
+
+    /// <summary>
+    /// Publish control panel CSS registry updated event
+    /// </summary>
+    private async void PublishCssRegistryUpdated(string className, string content)
+    {
+        if (_eventRouter == null || _logger == null)
+            return;
+
+        try
+        {
+            var payload = new { className = className, content = content, timestamp = DateTime.UtcNow };
+            await _eventRouter.PublishAsync("control.panel.css.registry.updated", payload, _conductor);
+            _logger.LogInformation("📡 EventRouter.publish('control.panel.css.registry.updated')");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error publishing CSS registry updated event");
         }
     }
 }
