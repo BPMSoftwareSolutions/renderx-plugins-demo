@@ -1,0 +1,122 @@
+================================================================================
+Log Messages Report - Grouped by FILE
+================================================================================
+
+├── packages\control-panel\__tests__\attribute-editing.integration.spec.ts (12 messages)
+│   └── 📝 LOG (12 occurrences)
+│       ├── 🎯 Testing content change...
+│       ├── 🎯 Testing content change...
+│       ├── 🎨 Testing styling changes...
+│       ├── 🎨 Testing styling changes...
+│       ├── 📐 Testing layout changes...
+│       ├── 📐 Testing layout changes...
+│       ├── 🔧 Testing variant changes...
+│       ├── 🔧 Testing variant changes...
+│       ├── ✅ Testing disabled state...
+│       ├── ✅ Testing disabled state...
+│       └── ... and 2 more
+
+├── packages\control-panel\src\hooks\useControlPanelState.ts (9 messages)
+│   ├── 📝 LOG (6 occurrences)
+│   │   ├── [cp] useControlPanelState:${label} selection.updated
+│   │   ├── [cp] useControlPanelState:${label} selection.updated
+│   │   ├── [cp] useControlPanelState:${label} classes.updated
+│   │   ├── [cp] useControlPanelState:${label} classes.updated
+│   │   ├── [cp] useControlPanelState:${label} fallback from selection.changed
+│   │   └── [cp] useControlPanelState:${label} fallback from selection.changed
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── [cp] useControlPanelState: No EventRouter available; UI will not react...
+│       ├── [cp] useControlPanelState:${label} fallback selection.changed handler ...
+│       └── [cp] useControlPanelState: failed to subscribe via ${label}:
+
+├── packages\control-panel\src\symphonies\classes\classes.symphony.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── info
+│       ├── warn
+│       └── warn
+
+├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts (28 messages)
+│   └── 📝 LOG (28 occurrences)
+│       ├── error
+│       ├── info
+│       ├── warn
+│       ├── error
+│       ├── error
+│       ├── error
+│       ├── info
+│       ├── warn
+│       ├── error
+│       ├── error
+│       └── ... and 18 more
+
+├── packages\control-panel\src\symphonies\css-management\css-management.symphony.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── info
+│       ├── warn
+│       └── warn
+
+├── packages\control-panel\src\symphonies\selection\selection.symphony.ts (11 messages)
+│   └── 📝 LOG (11 occurrences)
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── warn
+│       ├── warn
+│       ├── warn
+│       └── ... and 1 more
+
+├── packages\control-panel\src\symphonies\ui\ui.stage-crew.ts (35 messages)
+│   └── 📝 LOG (35 occurrences)
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── error
+│       ├── info
+│       ├── error
+│       ├── info
+│       ├── info
+│       ├── error
+│       ├── info
+│       └── ... and 25 more
+
+├── packages\control-panel\src\symphonies\update\update.symphony.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── info
+│       ├── warn
+│       └── warn
+
+└── packages\control-panel\tsup.config.ts (2 messages)
+    └── 📝 LOG (2 occurrences)
+        ├── ✅ Plugin manifest created at dist/plugin-manifest.json
+        └── ✅ Plugin manifest created at dist/plugin-manifest.json
+
+
+================================================================================
+STATISTICS SUMMARY
+================================================================================
+
+📊 Total Log Messages: 106
+
+📈 By Log Level:
+  LOG         103 ( 97.2%) ████████████████████████████████████████████████
+  WARN          3 (  2.8%) █
+
+📦 By Package (Top 10):
+  control-panel                   106 (100.0%)
+
+📁 Files with Most Logs (Top 10):
+  ui.stage-crew.ts                                     35
+  css-management.stage-crew.ts                         28
+  attribute-editing.integration.spec.ts                12
+  selection.symphony.ts                                11
+  useControlPanelState.ts                               9
+  classes.symphony.ts                                   3
+  css-management.symphony.ts                            3
+  update.symphony.ts                                    3
+  tsup.config.ts                                        2
+
+================================================================================

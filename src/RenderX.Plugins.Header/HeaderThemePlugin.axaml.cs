@@ -3,7 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
+using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using System;
 
 namespace RenderX.Plugins.Header;
@@ -14,7 +16,7 @@ namespace RenderX.Plugins.Header;
 public partial class HeaderThemePlugin : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductorClient? _conductor;
+    private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<HeaderThemePlugin>? _logger;
     private bool _isDarkMode = false;
 
@@ -26,11 +28,17 @@ public partial class HeaderThemePlugin : UserControl
     /// <summary>
     /// Initialize the header theme plugin with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<HeaderThemePlugin> logger)
+    public void Initialize(IEventRouter eventRouter, MusicalConductor.Avalonia.Interfaces.IConductorClient conductor, ILogger<HeaderThemePlugin> logger, IEventBus eventBus)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Wrap logger with ConductorAwareLogger to emit logs through Musical Conductor event bus
+        // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 header)
+        _logger = new ConductorAwareLoggerWrapper<HeaderThemePlugin>(
+            logger ?? throw new ArgumentNullException(nameof(logger)),
+            eventBus ?? throw new ArgumentNullException(nameof(eventBus)),
+            "header");
 
         _logger.LogInformation("HeaderThemePlugin initialized");
 
@@ -41,19 +49,28 @@ public partial class HeaderThemePlugin : UserControl
     /// <summary>
     /// Handle theme toggle button click
     /// </summary>
-    private void OnThemeToggleClick(object? sender, RoutedEventArgs e)
+    private async void OnThemeToggleClick(object? sender, RoutedEventArgs e)
     {
         _isDarkMode = !_isDarkMode;
-        _logger?.LogInformation("Theme toggled to {Theme}", _isDarkMode ? "dark" : "light");
+        var newTheme = _isDarkMode ? "dark" : "light";
+        _logger?.LogInformation("🎨 Theme toggle clicked: {Theme}", newTheme);
         
         UpdateThemeButtonText();
 
-        // Publish theme changed event
-        if (_eventRouter != null)
+        // Execute theme toggle sequence via Musical Conductor
+        // This matches web version: conductor.play("HeaderThemePlugin", "header-ui-theme-toggle-symphony", { theme })
+        if (_conductor != null)
         {
-            _eventRouter.PublishAsync("header.theme.changed", 
-                new { isDarkMode = _isDarkMode, timestamp = DateTime.UtcNow }, 
-                _conductor);
+            try
+            {
+                _logger?.LogInformation("🎼 Executing header-ui-theme-toggle-symphony sequence");
+                var result = _conductor.Play("HeaderPlugin", "header-ui-theme-toggle-symphony", new { theme = newTheme });
+                _logger?.LogInformation("✅ Theme toggle sequence completed: {Result}", result);
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "❌ Failed to execute theme toggle sequence");
+            }
         }
     }
 

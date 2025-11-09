@@ -1,0 +1,395 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- RenderX Spacing System - Matching Web Application -->
+    <!-- Base unit: 4px -->
+    <!-- Web uses: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 48px -->
+    
+    <Styles.Resources>
+        <!-- ============================================ -->
+        <!-- SPACING VALUES -->
+        <!-- ============================================ -->
+        
+        <x:Double x:Key="Space.0">0</x:Double>      <!-- 0px -->
+        <x:Double x:Key="Space.1">4</x:Double>      <!-- 4px -->
+        <x:Double x:Key="Space.2">8</x:Double>      <!-- 8px -->
+        <x:Double x:Key="Space.3">12</x:Double>     <!-- 12px -->
+        <x:Double x:Key="Space.4">16</x:Double>     <!-- 16px -->
+        <x:Double x:Key="Space.5">20</x:Double>     <!-- 20px -->
+        <x:Double x:Key="Space.6">24</x:Double>     <!-- 24px -->
+        <x:Double x:Key="Space.8">32</x:Double>     <!-- 32px -->
+        <x:Double x:Key="Space.10">40</x:Double>    <!-- 40px -->
+        <x:Double x:Key="Space.12">48</x:Double>    <!-- 48px -->
+        <x:Double x:Key="Space.16">64</x:Double>    <!-- 64px -->
+        
+        <!-- Thickness resources -->
+        <Thickness x:Key="Thickness.0">0</Thickness>
+        <Thickness x:Key="Thickness.1">4</Thickness>
+        <Thickness x:Key="Thickness.2">8</Thickness>
+        <Thickness x:Key="Thickness.3">12</Thickness>
+        <Thickness x:Key="Thickness.4">16</Thickness>
+        <Thickness x:Key="Thickness.5">20</Thickness>
+        <Thickness x:Key="Thickness.6">24</Thickness>
+        <Thickness x:Key="Thickness.8">32</Thickness>
+        <Thickness x:Key="Thickness.12">48</Thickness>
+        
+    </Styles.Resources>
+    
+    <!-- ============================================ -->
+    <!-- PADDING UTILITIES (p-*) -->
+    <!-- ============================================ -->
+    
+    <!-- All sides padding -->
+    <Style Selector="Decorator.p-0">
+        <Setter Property="Padding" Value="0" />
+    </Style>
+    
+    <Style Selector="Decorator.p-1">
+        <Setter Property="Padding" Value="4" />
+    </Style>
+    
+    <Style Selector="Decorator.p-2">
+        <Setter Property="Padding" Value="8" />
+    </Style>
+    
+    <Style Selector="Decorator.p-3">
+        <Setter Property="Padding" Value="12" />
+    </Style>
+    
+    <Style Selector="Decorator.p-4">
+        <Setter Property="Padding" Value="16" />
+    </Style>
+    
+    <Style Selector="Decorator.p-5">
+        <Setter Property="Padding" Value="20" />
+    </Style>
+    
+    <Style Selector="Decorator.p-6">
+        <Setter Property="Padding" Value="24" />
+    </Style>
+    
+    <Style Selector="Decorator.p-8">
+        <Setter Property="Padding" Value="32" />
+    </Style>
+    
+    <Style Selector="Decorator.p-12">
+        <Setter Property="Padding" Value="48" />
+    </Style>
+    
+    <!-- Horizontal padding (px-*) -->
+    <Style Selector="Decorator.px-1">
+        <Setter Property="Padding" Value="4,0" />
+    </Style>
+    
+    <Style Selector="Decorator.px-2">
+        <Setter Property="Padding" Value="8,0" />
+    </Style>
+    
+    <Style Selector="Decorator.px-3">
+        <Setter Property="Padding" Value="12,0" />
+    </Style>
+    
+    <Style Selector="Decorator.px-4">
+        <Setter Property="Padding" Value="16,0" />
+    </Style>
+    
+    <Style Selector="Decorator.px-6">
+        <Setter Property="Padding" Value="24,0" />
+    </Style>
+    
+    <!-- Vertical padding (py-*) -->
+    <Style Selector="Decorator.py-1">
+        <Setter Property="Padding" Value="0,4" />
+    </Style>
+    
+    <Style Selector="Decorator.py-2">
+        <Setter Property="Padding" Value="0,8" />
+    </Style>
+    
+    <Style Selector="Decorator.py-3">
+        <Setter Property="Padding" Value="0,12" />
+    </Style>
+    
+    <Style Selector="Decorator.py-4">
+        <Setter Property="Padding" Value="0,16" />
+    </Style>
+    
+    <Style Selector="Decorator.py-6">
+        <Setter Property="Padding" Value="0,24" />
+    </Style>
+    
+    <!-- Top padding (pt-*) -->
+    <Style Selector="Decorator.pt-2">
+        <Setter Property="Padding" Value="0,8,0,0" />
+    </Style>
+    
+    <Style Selector="Decorator.pt-4">
+        <Setter Property="Padding" Value="0,16,0,0" />
+    </Style>
+    
+    <!-- Bottom padding (pb-*) -->
+    <Style Selector="Decorator.pb-2">
+        <Setter Property="Padding" Value="0,0,0,8" />
+    </Style>
+    
+    <Style Selector="Decorator.pb-4">
+        <Setter Property="Padding" Value="0,0,0,16" />
+    </Style>
+    
+    <!-- Left padding (pl-*) -->
+    <Style Selector="Decorator.pl-2">
+        <Setter Property="Padding" Value="8,0,0,0" />
+    </Style>
+    
+    <Style Selector="Decorator.pl-4">
+        <Setter Property="Padding" Value="16,0,0,0" />
+    </Style>
+    
+    <!-- Right padding (pr-*) -->
+    <Style Selector="Decorator.pr-2">
+        <Setter Property="Padding" Value="0,0,8,0" />
+    </Style>
+    
+    <Style Selector="Decorator.pr-4">
+        <Setter Property="Padding" Value="0,0,16,0" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- MARGIN UTILITIES (m-*) -->
+    <!-- ============================================ -->
+    
+    <!-- All sides margin -->
+    <Style Selector="Control.m-0">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    
+    <Style Selector="Control.m-1">
+        <Setter Property="Margin" Value="4" />
+    </Style>
+    
+    <Style Selector="Control.m-2">
+        <Setter Property="Margin" Value="8" />
+    </Style>
+    
+    <Style Selector="Control.m-3">
+        <Setter Property="Margin" Value="12" />
+    </Style>
+    
+    <Style Selector="Control.m-4">
+        <Setter Property="Margin" Value="16" />
+    </Style>
+    
+    <Style Selector="Control.m-5">
+        <Setter Property="Margin" Value="20" />
+    </Style>
+    
+    <Style Selector="Control.m-6">
+        <Setter Property="Margin" Value="24" />
+    </Style>
+    
+    <Style Selector="Control.m-8">
+        <Setter Property="Margin" Value="32" />
+    </Style>
+    
+    <!-- Horizontal margin (mx-*) -->
+    <Style Selector="Control.mx-1">
+        <Setter Property="Margin" Value="4,0" />
+    </Style>
+    
+    <Style Selector="Control.mx-2">
+        <Setter Property="Margin" Value="8,0" />
+    </Style>
+    
+    <Style Selector="Control.mx-3">
+        <Setter Property="Margin" Value="12,0" />
+    </Style>
+    
+    <Style Selector="Control.mx-4">
+        <Setter Property="Margin" Value="16,0" />
+    </Style>
+    
+    <Style Selector="Control.mx-auto">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    
+    <!-- Vertical margin (my-*) -->
+    <Style Selector="Control.my-1">
+        <Setter Property="Margin" Value="0,4" />
+    </Style>
+    
+    <Style Selector="Control.my-2">
+        <Setter Property="Margin" Value="0,8" />
+    </Style>
+    
+    <Style Selector="Control.my-3">
+        <Setter Property="Margin" Value="0,12" />
+    </Style>
+    
+    <Style Selector="Control.my-4">
+        <Setter Property="Margin" Value="0,16" />
+    </Style>
+    
+    <Style Selector="Control.my-6">
+        <Setter Property="Margin" Value="0,24" />
+    </Style>
+    
+    <!-- Top margin (mt-*) -->
+    <Style Selector="Control.mt-1">
+        <Setter Property="Margin" Value="0,4,0,0" />
+    </Style>
+    
+    <Style Selector="Control.mt-2">
+        <Setter Property="Margin" Value="0,8,0,0" />
+    </Style>
+    
+    <Style Selector="Control.mt-4">
+        <Setter Property="Margin" Value="0,16,0,0" />
+    </Style>
+    
+    <Style Selector="Control.mt-6">
+        <Setter Property="Margin" Value="0,24,0,0" />
+    </Style>
+    
+    <!-- Bottom margin (mb-*) -->
+    <Style Selector="Control.mb-1">
+        <Setter Property="Margin" Value="0,0,0,4" />
+    </Style>
+    
+    <Style Selector="Control.mb-2">
+        <Setter Property="Margin" Value="0,0,0,8" />
+    </Style>
+    
+    <Style Selector="Control.mb-4">
+        <Setter Property="Margin" Value="0,0,0,16" />
+    </Style>
+    
+    <Style Selector="Control.mb-6">
+        <Setter Property="Margin" Value="0,0,0,24" />
+    </Style>
+    
+    <!-- Left margin (ml-*) -->
+    <Style Selector="Control.ml-1">
+        <Setter Property="Margin" Value="4,0,0,0" />
+    </Style>
+    
+    <Style Selector="Control.ml-2">
+        <Setter Property="Margin" Value="8,0,0,0" />
+    </Style>
+    
+    <Style Selector="Control.ml-4">
+        <Setter Property="Margin" Value="16,0,0,0" />
+    </Style>
+    
+    <Style Selector="Control.ml-auto">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    
+    <!-- Right margin (mr-*) -->
+    <Style Selector="Control.mr-1">
+        <Setter Property="Margin" Value="0,0,4,0" />
+    </Style>
+    
+    <Style Selector="Control.mr-2">
+        <Setter Property="Margin" Value="0,0,8,0" />
+    </Style>
+    
+    <Style Selector="Control.mr-4">
+        <Setter Property="Margin" Value="0,0,16,0" />
+    </Style>
+    
+    <Style Selector="Control.mr-auto">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- GAP UTILITIES (for StackPanel) -->
+    <!-- ============================================ -->
+    
+    <Style Selector="StackPanel.gap-1">
+        <Setter Property="Spacing" Value="4" />
+    </Style>
+    
+    <Style Selector="StackPanel.gap-2">
+        <Setter Property="Spacing" Value="8" />
+    </Style>
+    
+    <Style Selector="StackPanel.gap-3">
+        <Setter Property="Spacing" Value="12" />
+    </Style>
+    
+    <Style Selector="StackPanel.gap-4">
+        <Setter Property="Spacing" Value="16" />
+    </Style>
+    
+    <Style Selector="StackPanel.gap-6">
+        <Setter Property="Spacing" Value="24" />
+    </Style>
+    
+    <Style Selector="StackPanel.gap-8">
+        <Setter Property="Spacing" Value="32" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- WIDTH & HEIGHT UTILITIES -->
+    <!-- ============================================ -->
+    
+    <!-- Width utilities -->
+    <Style Selector="Control.w-auto">
+        <Setter Property="Width" Value="NaN" />
+    </Style>
+    
+    <Style Selector="Control.w-full">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    
+    <Style Selector="Control.w-screen">
+        <Setter Property="Width" Value="{Binding $parent[Window].Width}" />
+    </Style>
+    
+    <!-- Fixed widths -->
+    <Style Selector="Control.w-64">
+        <Setter Property="Width" Value="256" />
+    </Style>
+    
+    <Style Selector="Control.w-80">
+        <Setter Property="Width" Value="320" />
+    </Style>
+    
+    <Style Selector="Control.w-96">
+        <Setter Property="Width" Value="384" />
+    </Style>
+    
+    <!-- Height utilities -->
+    <Style Selector="Control.h-auto">
+        <Setter Property="Height" Value="NaN" />
+    </Style>
+    
+    <Style Selector="Control.h-full">
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    
+    <Style Selector="Control.h-screen">
+        <Setter Property="Height" Value="{Binding $parent[Window].Height}" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- MIN/MAX WIDTH & HEIGHT -->
+    <!-- ============================================ -->
+    
+    <Style Selector="Control.min-w-0">
+        <Setter Property="MinWidth" Value="0" />
+    </Style>
+    
+    <Style Selector="Control.max-w-full">
+        <Setter Property="MaxWidth" Value="Infinity" />
+    </Style>
+    
+    <Style Selector="Control.min-h-0">
+        <Setter Property="MinHeight" Value="0" />
+    </Style>
+    
+    <Style Selector="Control.max-h-full">
+        <Setter Property="MaxHeight" Value="Infinity" />
+    </Style>
+    
+</Styles>

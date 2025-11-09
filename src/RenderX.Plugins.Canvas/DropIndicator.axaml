@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Canvas.DropIndicator"
+             Background="Transparent">
+    <Border x:Name="DropBorder"
+            Background="#E3F2FD"
+            BorderThickness="2"
+            BorderBrush="#2196F3"
+            CornerRadius="2"
+            IsVisible="False">
+        <TextBlock Text="Drop here"
+                   FontSize="11"
+                   Foreground="#1976D2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Padding="8" />
+    </Border>
+</UserControl>
+

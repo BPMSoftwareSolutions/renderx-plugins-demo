@@ -1,0 +1,314 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Canvas Component Styles -->
+    
+    <!-- rx-button: Primary button style -->
+    <Style Selector="Button.rx-button">
+        <Setter Property="Background" Value="#3b82f6"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#2563eb"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.rx-button:pointerover">
+        <Setter Property="Background" Value="#2563eb"/>
+    </Style>
+    
+    <Style Selector="Button.rx-button:pressed">
+        <Setter Property="Background" Value="#1d4ed8"/>
+    </Style>
+    
+    <!-- rx-container: Generic container style -->
+    <Style Selector="Border.rx-container">
+        <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="BorderBrush" Value="#e5e7eb"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+    
+    <!-- rx-canvas: Canvas area style -->
+    <Style Selector="Border.rx-canvas">
+        <Setter Property="Background" Value="#f9fafb"/>
+        <Setter Property="BorderBrush" Value="#d1d5db"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    
+    <!-- rx-comp: Component wrapper style -->
+    <Style Selector="Border.rx-comp">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="#3b82f6"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+    
+    <Style Selector="Border.rx-comp:pointerover">
+        <Setter Property="BorderBrush" Value="#2563eb"/>
+        <Setter Property="Background" Value="#eff6ff"/>
+    </Style>
+    
+    <!-- canvas-area: Main canvas container -->
+    <Style Selector="Panel.canvas-area">
+        <Setter Property="Background" Value="#f9fafb"/>
+    </Style>
+    
+    <!-- canvas-header: Canvas header bar -->
+    <Style Selector="Border.canvas-header">
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Panel.HeaderBorder}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Padding" Value="12,12,24,12"/>
+    </Style>
+
+    <!-- canvas-title: Canvas title text -->
+    <Style Selector="TextBlock.canvas-title">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+
+    <!-- canvas-control: Canvas toolbar button -->
+    <Style Selector="Button.canvas-control">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="6,4,12,4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.canvas-control:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+
+    <Style Selector="Button.canvas-control.active">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Inverse}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Dark}"/>
+    </Style>
+    
+    <!-- Header Component Styles -->
+
+    <!-- header-container: Header container -->
+    <Style Selector="Border.header-container">
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+    </Style>
+
+    <!-- header-title: Header title text -->
+    <Style Selector="TextBlock.header-title">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+
+    <!-- header-controls: Header controls container -->
+    <Style Selector="StackPanel.header-controls">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+
+    <!-- header-button: Header action button -->
+    <Style Selector="Button.header-button">
+        <Setter Property="Padding" Value="8,4,16,4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.header-button:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+
+    <Style Selector="Button.header-button:pressed">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Active}"/>
+    </Style>
+
+    <!-- header-theme-toggle: Theme toggle container -->
+    <Style Selector="StackPanel.header-theme-toggle">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+
+    <!-- header-theme-button: Theme toggle button -->
+    <Style Selector="Button.header-theme-button">
+        <Setter Property="Padding" Value="8,4,16,4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Inverse}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.header-theme-button:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Dark}"/>
+    </Style>
+    
+    <Style Selector="Button.header-theme-button:pressed">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Dark}"/>
+    </Style>
+
+    <!-- Breadcrumb Component Styles -->
+
+    <!-- breadcrumb-container: Breadcrumb navigation container -->
+    <Style Selector="StackPanel.breadcrumb-container">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="4"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- breadcrumb-item: Individual breadcrumb item -->
+    <Style Selector="Button.breadcrumb-item">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="4,0"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.breadcrumb-item:pointerover">
+        <Setter Property="Opacity" Value="0.8"/>
+    </Style>
+
+    <!-- breadcrumb-separator: Breadcrumb separator text -->
+    <Style Selector="TextBlock.breadcrumb-separator">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <!-- canvas-controls: Canvas controls container -->
+    <Style Selector="StackPanel.canvas-controls">
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+    
+    <!-- canvas-divider: Visual divider in toolbar -->
+    <Style Selector="Border.canvas-divider">
+        <Setter Property="Width" Value="1"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="Margin" Value="0,0,4,0"/>
+    </Style>
+
+    <!-- zoom-controls: Zoom controls container -->
+    <Style Selector="Border.zoom-controls">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <!-- zoom-btn: Zoom button -->
+    <Style Selector="Button.zoom-btn">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="4,8"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.zoom-btn:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+
+    <!-- zoom-level: Zoom level display text -->
+    <Style Selector="TextBlock.zoom-level">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="MinWidth" Value="35"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- canvas-content: Canvas content area -->
+    <Style Selector="Border.canvas-content">
+        <Setter Property="Background" Value="{DynamicResource Color.Canvas.Background}"/>
+        <Setter Property="Padding" Value="20"/>
+    </Style>
+
+    <!-- canvas-grid: Grid overlay pattern -->
+    <Style Selector="Panel.canvas-grid">
+        <Setter Property="Background" Value="{DynamicResource Color.Canvas.Background}"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+    <!-- drop-indicator: Drop indicator overlay -->
+    <Style Selector="Border.drop-indicator">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Weak}"/>
+        <Setter Property="Opacity" Value="0"/>
+    </Style>
+
+    <Style Selector="Border.drop-indicator.active">
+        <Setter Property="Opacity" Value="1"/>
+    </Style>
+
+    <!-- rx-selection-overlay: Component selection border -->
+    <Style Selector="Border.rx-selection-overlay">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="ZIndex" Value="10"/>
+    </Style>
+
+    <!-- rx-handle: Resize handle on selected component -->
+    <Style Selector="Border.rx-handle">
+        <Setter Property="Width" Value="8"/>
+        <Setter Property="Height" Value="8"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Cursor" Value="SizeAll"/>
+    </Style>
+
+    <!-- canvas-ruler: Measurement ruler -->
+    <Style Selector="Border.canvas-ruler">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <!-- ruler-tick: Individual tick mark -->
+    <Style Selector="Line.ruler-tick">
+        <Setter Property="Stroke" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+    </Style>
+
+    <!-- ruler-label: Tick label text -->
+    <Style Selector="TextBlock.ruler-label">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+    </Style>
+    
+    <!-- Control Panel Styles -->
+
+    <!-- rx-line: Visual separator line -->
+    <Style Selector="Border.rx-line">
+        <Setter Property="Height" Value="1"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="Margin" Value="0,8"/>
+    </Style>
+    
+</Styles>

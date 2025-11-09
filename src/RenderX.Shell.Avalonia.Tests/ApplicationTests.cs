@@ -238,10 +238,10 @@ public class ApplicationTests : IDisposable
         DumpProcessTree(400);
 
         // Assert - All major panels should be present
-        Assert.NotNull(canvasControl, "CanvasControl should be present in the layout");
-        Assert.NotNull(controlPanelControl, "ControlPanelControl should be present in the layout");
-        Assert.NotNull(libraryPanel, "LibraryPanel should be present in the layout (left sidebar)");
-        Assert.NotNull(headerArea, "HeaderArea should be present in the layout (top row)");
+        Assert.NotNull(canvasControl);
+        Assert.NotNull(controlPanelControl);
+        Assert.NotNull(libraryPanel);
+        Assert.NotNull(headerArea);
 
         // Assert - All panels should be visible
         Assert.True(canvasControl.IsAvailable, "CanvasControl should be visible");
@@ -276,9 +276,9 @@ public class ApplicationTests : IDisposable
         DumpWindowTree(mainWindow, 300);
 
         // Assert - Canvas should have expected child elements
-        Assert.NotNull(canvasControl, "CanvasControl should exist");
-        Assert.NotNull(componentCountText, "Canvas should display component count");
-        Assert.NotNull(statusText, "Canvas should display status bar");
+        Assert.NotNull(canvasControl);
+        Assert.NotNull(componentCountText);
+        Assert.NotNull(statusText);
     }
 
     /// <summary>
@@ -311,11 +311,11 @@ public class ApplicationTests : IDisposable
         DumpWindowTree(mainWindow, 300);
 
         // Assert - Control Panel should have expected child elements
-        Assert.NotNull(controlPanelControl, "ControlPanelControl should exist");
-        Assert.NotNull(selectedComponentText, "Control Panel should display selected component indicator");
-        Assert.NotNull(propertiesItemsControl, "Control Panel should have properties section");
-        Assert.NotNull(interactionsItemsControl, "Control Panel should have interactions section");
-        Assert.NotNull(cssClassesInput, "Control Panel should have CSS classes input");
+        Assert.NotNull(controlPanelControl);
+        Assert.NotNull(selectedComponentText);
+        Assert.NotNull(propertiesItemsControl);
+        Assert.NotNull(interactionsItemsControl);
+        Assert.NotNull(cssClassesInput);
     }
 
     /// <summary>
@@ -341,8 +341,8 @@ public class ApplicationTests : IDisposable
         DumpWindowTree(mainWindow, 200);
 
         // Assert - Status bar should be present
-        Assert.NotNull(statusBarText, "Status bar text should be visible");
-        Assert.NotNull(diagnosticsBadge, "Diagnostics badge should be present");
+        Assert.NotNull(statusBarText);
+        Assert.NotNull(diagnosticsBadge);
     }
 
     /// <summary>
@@ -375,10 +375,10 @@ public class ApplicationTests : IDisposable
         DumpWindowTree(mainWindow, 300);
 
         // Assert - All header slots should be present
-        Assert.NotNull(headerArea, "HeaderArea container should be present");
-        Assert.NotNull(headerLeft, "HeaderLeft slot should be present (application branding)");
-        Assert.NotNull(headerCenter, "HeaderCenter slot should be present (canvas info)");
-        Assert.NotNull(headerRight, "HeaderRight slot should be present (theme toggle location)");
+        Assert.NotNull(headerArea);
+        Assert.NotNull(headerLeft);
+        Assert.NotNull(headerCenter);
+        Assert.NotNull(headerRight);
 
         // Assert - All header slots should be visible
         Assert.True(headerArea.IsAvailable, "HeaderArea should be visible");
@@ -408,7 +408,7 @@ public class ApplicationTests : IDisposable
         DumpWindowTree(mainWindow, 300);
 
         // Assert - Library panel should be present and visible
-        Assert.NotNull(libraryPanel, "LibraryPanel should be present (left sidebar)");
+        Assert.NotNull(libraryPanel);
         Assert.True(libraryPanel.IsAvailable, "LibraryPanel should be visible");
     }
 

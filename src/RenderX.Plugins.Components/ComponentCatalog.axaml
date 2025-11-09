@@ -1,0 +1,88 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Components.ComponentCatalog"
+             Background="White">
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="#F5F5F5"
+                BorderThickness="0,0,0,1"
+                BorderBrush="#E0E0E0"
+                Padding="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Component Catalog"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#333" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBox Grid.Column="0"
+                             Watermark="Search components..."
+                             FontSize="11"
+                             Padding="6,4"
+                             BorderThickness="1"
+                             BorderBrush="#D0D0D0" />
+                    <ComboBox Grid.Column="1"
+                              Margin="8,0,0,0"
+                              Width="120"
+                              SelectedIndex="0">
+                        <ComboBoxItem>All Categories</ComboBoxItem>
+                        <ComboBoxItem>UI Components</ComboBoxItem>
+                        <ComboBoxItem>Forms</ComboBoxItem>
+                        <ComboBoxItem>Layout</ComboBoxItem>
+                        <ComboBoxItem>Navigation</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Components Grid -->
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl x:Name="CatalogControl"
+                          Padding="12"
+                          Background="White">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#F9F9F9"
+                                BorderThickness="1"
+                                BorderBrush="#E0E0E0"
+                                CornerRadius="4"
+                                Padding="12"
+                                Width="200"
+                                Height="180">
+                            <StackPanel Spacing="8">
+                                <Border Background="#E0E0E0"
+                                        CornerRadius="2"
+                                        Height="80">
+                                    <TextBlock Text="🧩"
+                                               FontSize="32"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+                                </Border>
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="#333" />
+                                    <TextBlock Text="{Binding Category}"
+                                               FontSize="9"
+                                               Foreground="#999" />
+                                    <TextBlock Text="{Binding Description}"
+                                               FontSize="10"
+                                               Foreground="#666"
+                                               TextWrapping="Wrap"
+                                               TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
+

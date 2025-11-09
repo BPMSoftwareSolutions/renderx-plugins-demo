@@ -8,6 +8,7 @@ using Avalonia.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.Shell.Avalonia.Core;
 
@@ -36,9 +37,7 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
         /// </summary>
         private void ValidatePluginManifest()
         {
-            var manifestPath = Path.Combine(
-                Path.GetDirectoryName(typeof(PluginLoader).Assembly.Location) ?? "",
-                "..", "..", "RenderX.Shell.Avalonia", "plugins", "plugin-manifest.json");
+            var manifestPath = GetPluginManifestPath();
 
             try
             {
@@ -94,15 +93,47 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
         }
 
         /// <summary>
+        /// Gets the plugin manifest path using AppContext.BaseDirectory for reliable resolution.
+        /// </summary>
+        private string GetPluginManifestPath()
+        {
+            // Try multiple locations in order of preference
+            var candidates = new[]
+            {
+                // 1. Relative to AppContext.BaseDirectory (most reliable)
+                Path.Combine(AppContext.BaseDirectory, "plugins", "plugin-manifest.json"),
+
+                // 2. Relative to assembly location
+                Path.Combine(
+                    Path.GetDirectoryName(typeof(PluginLoader).Assembly.Location) ?? "",
+                    "plugins", "plugin-manifest.json"),
+
+                // 3. Fallback: look in bin/Debug or bin/Release
+                Path.Combine(
+                    AppContext.BaseDirectory, "..", "..", "..", "plugins", "plugin-manifest.json")
+            };
+
+            foreach (var candidate in candidates)
+            {
+                var fullPath = Path.GetFullPath(candidate);
+                if (File.Exists(fullPath))
+                {
+                    _logger.LogDebug("Found plugin manifest at {ManifestPath}", fullPath);
+                    return fullPath;
+                }
+            }
+
+            // Return the first candidate even if it doesn't exist (for error reporting)
+            return Path.GetFullPath(candidates[0]);
+        }
+
+        /// <summary>
         /// Loads plugin mappings from plugin-manifest.json.
         /// Maps slot names to fully-qualified type names (namespace.class, assembly).
         /// </summary>
         private IReadOnlyDictionary<string, string> LoadPluginMappingsFromManifest()
         {
-            var manifestPath = Path.Combine(
-                Path.GetDirectoryName(typeof(PluginLoader).Assembly.Location) ?? "",
-                "..", "..", "RenderX.Shell.Avalonia", "plugins", "plugin-manifest.json");
-
+            var manifestPath = GetPluginManifestPath();
             var mappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
             try
@@ -177,22 +208,23 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                 var thinHost = services.GetRequiredService<IThinHostLayer>();
                 var eventRouter = thinHost.EventRouter;
                 var conductor = thinHost.Conductor;
+                var eventBus = services.GetRequiredService<IEventBus>();
 
                 // Resolve a typed logger matching the control type: ILogger<ControlType>
                 var loggerGenericType = typeof(ILogger<>).MakeGenericType(controlType);
                 var typedLogger = services.GetRequiredService(loggerGenericType);
 
-                // Call Initialize(eventRouter, conductor, ILogger<TControl>) if present
+                // Call Initialize(eventRouter, conductor, ILogger<TControl>, IEventBus) if present
                 var initMethod = controlType.GetMethod(
                     name: "Initialize",
                     BindingFlags.Instance | BindingFlags.Public,
                     binder: null,
-                    types: new[] { typeof(IEventRouter), typeof(IConductorClient), loggerGenericType },
+                    types: new[] { typeof(IEventRouter), typeof(MusicalConductor.Avalonia.Interfaces.IConductorClient), loggerGenericType, typeof(IEventBus) },
                     modifiers: null);
 
                 if (initMethod != null)
                 {
-                    initMethod.Invoke(instance, new object?[] { eventRouter, conductor, typedLogger });
+                    initMethod.Invoke(instance, new object?[] { eventRouter, conductor, typedLogger, eventBus });
                     _logger.LogInformation("Initialized control {ControlType} for slot '{SlotName}'", controlType.Name, slotName);
                 }
                 else
@@ -204,7 +236,11 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error loading control for slot '{SlotName}'", slotName);
+                _logger.LogError(ex, "Error loading control for slot '{SlotName}': {ExceptionMessage}", slotName, ex.Message);
+                if (ex.InnerException != null)
+                {
+                    _logger.LogError(ex.InnerException, "Inner exception: {InnerMessage}", ex.InnerException.Message);
+                }
                 return Task.FromResult<Control?>(null);
             }
         }

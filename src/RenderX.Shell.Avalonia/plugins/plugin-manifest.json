@@ -6,11 +6,11 @@
       "ui": {
         "slot": "canvas",
         "module": "RenderX.Plugins.Canvas.dll",
-        "export": "CanvasControl"
+        "export": "RenderX.Plugins.Canvas.CanvasControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.Canvas.dll",
-        "export": "CanvasPlugin"
+        "export": "RenderX.Plugins.Canvas.CanvasPlugin"
       },
       "sequences": null,
       "topics": null,
@@ -22,11 +22,11 @@
       "ui": {
         "slot": null,
         "module": "RenderX.Plugins.CanvasComponent.dll",
-        "export": "CanvasComponentPlugin"
+        "export": "RenderX.Plugins.CanvasComponent.CanvasComponentPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.CanvasComponent.dll",
-        "export": "CanvasComponentPlugin"
+        "export": "RenderX.Plugins.CanvasComponent.CanvasComponentPlugin"
       },
       "sequences": null,
       "topics": null,
@@ -38,11 +38,11 @@
       "ui": {
         "slot": null,
         "module": "RenderX.Plugins.Components.dll",
-        "export": "ComponentsPlugin"
+        "export": "RenderX.Plugins.Components.ComponentsPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Components.dll",
-        "export": "ComponentsPlugin"
+        "export": "RenderX.Plugins.Components.ComponentsPlugin"
       },
       "sequences": null,
       "topics": null,
@@ -54,11 +54,11 @@
       "ui": {
         "slot": "controlPanel",
         "module": "RenderX.Plugins.ControlPanel.dll",
-        "export": "ControlPanelControl"
+        "export": "RenderX.Plugins.ControlPanel.ControlPanelControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.ControlPanel.dll",
-        "export": "ControlPanelPlugin"
+        "export": "RenderX.Plugins.ControlPanel.ControlPanelPlugin"
       },
       "sequences": null,
       "topics": null,
@@ -70,11 +70,11 @@
       "ui": {
         "slot": "headerLeft",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderTitlePlugin"
+        "export": "RenderX.Plugins.Header.HeaderTitlePlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderTitlePlugin"
+        "export": "RenderX.Plugins.Header.HeaderTitlePlugin"
       },
       "sequences": null,
       "topics": null,
@@ -86,11 +86,11 @@
       "ui": {
         "slot": "headerCenter",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderControlsPlugin"
+        "export": "RenderX.Plugins.Header.HeaderControlsPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderControlsPlugin"
+        "export": "RenderX.Plugins.Header.HeaderControlsPlugin"
       },
       "sequences": null,
       "topics": null,
@@ -102,11 +102,11 @@
       "ui": {
         "slot": "headerRight",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderThemePlugin"
+        "export": "RenderX.Plugins.Header.HeaderThemePlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderThemePlugin"
+        "export": "RenderX.Plugins.Header.HeaderThemePlugin"
       },
       "sequences": null,
       "topics": null,
@@ -118,11 +118,11 @@
       "ui": {
         "slot": "library",
         "module": "RenderX.Plugins.Library.dll",
-        "export": "LibraryPlugin"
+        "export": "RenderX.Plugins.Library.LibraryPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Library.dll",
-        "export": "LibraryPlugin"
+        "export": "RenderX.Plugins.Library.LibraryPlugin"
       },
       "sequences": null,
       "topics": null,
@@ -134,11 +134,11 @@
       "ui": {
         "slot": null,
         "module": "RenderX.Plugins.LibraryComponent.dll",
-        "export": "LibraryComponentPlugin"
+        "export": "RenderX.Plugins.LibraryComponent.LibraryComponentPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.LibraryComponent.dll",
-        "export": "LibraryComponentPlugin"
+        "export": "RenderX.Plugins.LibraryComponent.LibraryComponentPlugin"
       },
       "sequences": null,
       "topics": null,

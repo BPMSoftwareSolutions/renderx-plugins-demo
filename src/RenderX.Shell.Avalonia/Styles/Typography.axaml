@@ -1,0 +1,220 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- RenderX Typography System - Matching Web Application -->
+    <!-- Font sizes: 10px, 11px, 12px, 14px, 16px, 18px, 24px -->
+    <!-- Font weights: 400 (Regular), 500 (Medium), 600 (SemiBold) -->
+    
+    <Styles.Resources>
+        <!-- ============================================ -->
+        <!-- FONT FAMILIES -->
+        <!-- ============================================ -->
+        
+        <!-- Default sans-serif font stack -->
+        <FontFamily x:Key="Font.Sans">Segoe UI, system-ui, -apple-system, sans-serif</FontFamily>
+        
+        <!-- Monospace font stack for code display -->
+        <FontFamily x:Key="Font.Mono">Consolas, Courier New, monospace</FontFamily>
+        
+        <!-- ============================================ -->
+        <!-- FONT SIZES (matching web's most used) -->
+        <!-- ============================================ -->
+        
+        <x:Double x:Key="FontSize.XS">10</x:Double>      <!-- 10px -->
+        <x:Double x:Key="FontSize.SM">11</x:Double>      <!-- 11px -->
+        <x:Double x:Key="FontSize.Base">12</x:Double>    <!-- 12px - most common (62 uses) -->
+        <x:Double x:Key="FontSize.MD">14</x:Double>      <!-- 14px -->
+        <x:Double x:Key="FontSize.LG">16</x:Double>      <!-- 16px -->
+        <x:Double x:Key="FontSize.XL">18</x:Double>      <!-- 18px -->
+        <x:Double x:Key="FontSize.2XL">24</x:Double>     <!-- 24px -->
+        
+        <!-- ============================================ -->
+        <!-- FONT WEIGHTS -->
+        <!-- ============================================ -->
+        
+        <FontWeight x:Key="FontWeight.Regular">Regular</FontWeight>    <!-- 400 -->
+        <FontWeight x:Key="FontWeight.Medium">Medium</FontWeight>      <!-- 500 -->
+        <FontWeight x:Key="FontWeight.SemiBold">SemiBold</FontWeight>  <!-- 600 -->
+        
+        <!-- ============================================ -->
+        <!-- LINE HEIGHTS -->
+        <!-- ============================================ -->
+        
+        <x:Double x:Key="LineHeight.Tight">1.25</x:Double>     <!-- 125% -->
+        <x:Double x:Key="LineHeight.Normal">1.5</x:Double>     <!-- 150% -->
+        <x:Double x:Key="LineHeight.Relaxed">1.75</x:Double>   <!-- 175% -->
+        
+    </Styles.Resources>
+    
+    <!-- ============================================ -->
+    <!-- TEXT STYLE CLASSES -->
+    <!-- ============================================ -->
+    
+    <!-- Size utilities -->
+    <Style Selector="TextBlock.text-xs">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.XS}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-sm">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-base">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Base}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-md">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.MD}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-lg">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.LG}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-xl">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.XL}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-2xl">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.2XL}" />
+    </Style>
+    
+    <!-- Weight utilities -->
+    <Style Selector="TextBlock.font-normal">
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Regular}" />
+    </Style>
+    
+    <Style Selector="TextBlock.font-medium">
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Medium}" />
+    </Style>
+    
+    <Style Selector="TextBlock.font-semibold">
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.SemiBold}" />
+    </Style>
+    
+    <!-- Font family utilities -->
+    <Style Selector="TextBlock.font-mono">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Mono}" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- SEMANTIC TEXT STYLES -->
+    <!-- ============================================ -->
+    
+    <!-- Heading styles -->
+    <Style Selector="TextBlock.heading-1">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.2XL}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.SemiBold}" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Tight}" />
+    </Style>
+    
+    <Style Selector="TextBlock.heading-2">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.XL}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.SemiBold}" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Tight}" />
+    </Style>
+    
+    <Style Selector="TextBlock.heading-3">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.LG}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Medium}" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Tight}" />
+    </Style>
+    
+    <!-- Body text styles -->
+    <Style Selector="TextBlock.body-large">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.MD}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Regular}" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Normal}" />
+    </Style>
+    
+    <Style Selector="TextBlock.body">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Base}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Regular}" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Normal}" />
+    </Style>
+    
+    <Style Selector="TextBlock.body-small">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Regular}" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Normal}" />
+    </Style>
+    
+    <!-- Label styles -->
+    <Style Selector="TextBlock.label">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Base}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Medium}" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Secondary}" />
+    </Style>
+    
+    <Style Selector="TextBlock.label-small">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Medium}" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Secondary}" />
+    </Style>
+    
+    <!-- Caption/help text -->
+    <Style Selector="TextBlock.caption">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.XS}" />
+        <Setter Property="FontWeight" Value="{StaticResource FontWeight.Regular}" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Tertiary}" />
+    </Style>
+    
+    <!-- Code text -->
+    <Style Selector="TextBlock.code">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Mono}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+        <Setter Property="Background" Value="{DynamicResource Gray.100}" />
+        <Setter Property="Padding" Value="2,1" />
+    </Style>
+    
+    <!-- Error text -->
+    <Style Selector="TextBlock.error">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+        <Setter Property="Foreground" Value="{DynamicResource Color.Error}" />
+    </Style>
+    
+    <!-- Success text -->
+    <Style Selector="TextBlock.success">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+        <Setter Property="Foreground" Value="{DynamicResource Color.Success}" />
+    </Style>
+    
+    <!-- Warning text -->
+    <Style Selector="TextBlock.warning">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.SM}" />
+        <Setter Property="Foreground" Value="{DynamicResource Color.Warning}" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- TEXT ALIGNMENT UTILITIES -->
+    <!-- ============================================ -->
+    
+    <Style Selector="TextBlock.text-left">
+        <Setter Property="TextAlignment" Value="Left" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-center">
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-right">
+        <Setter Property="TextAlignment" Value="Right" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- TEXT WRAPPING UTILITIES -->
+    <!-- ============================================ -->
+    
+    <Style Selector="TextBlock.text-wrap">
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-nowrap">
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-truncate">
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+    
+</Styles>

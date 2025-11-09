@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "sequences": [
+    {
+      "file": "drag.json",
+      "handlersPath": "@renderx-plugins/library-component"
+    },
+    {
+      "file": "drop.json",
+      "handlersPath": "@renderx-plugins/library-component"
+    },
+    {
+      "file": "container.drop.json",
+      "handlersPath": "@renderx-plugins/library-component"
+    }
+  ]
+}

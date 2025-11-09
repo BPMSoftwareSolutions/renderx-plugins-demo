@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using MusicalConductor.Avalonia.Client;
 using MusicalConductor.Avalonia.Engine;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Avalonia.Logging;
+using MusicalConductor.Core.Extensions;
 
 namespace MusicalConductor.Avalonia.Extensions;
 
@@ -18,12 +20,25 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection for chaining</returns>
     public static IServiceCollection AddMusicalConductor(this IServiceCollection services)
     {
+        // Register MusicalConductor.Core services first (IEventBus, IConductor, etc.)
+        services.AddMusicalConductorCore();
+
+        // Register ConductorLogger as a singleton
+        services.AddSingleton<ConductorLogger>(provider =>
+        {
+            var logger = provider.GetRequiredService<ILogger<ConductorLogger>>();
+            var opts = provider.GetService<MusicalConductorOptions>();
+            var enabled = opts?.EnableHierarchicalLogging ?? true;
+            return new ConductorLogger(logger, enabled);
+        });
+
         // Register the Jint engine host as a singleton
         services.AddSingleton<JintEngineHost>(provider =>
         {
             var logger = provider.GetRequiredService<ILogger<JintEngineHost>>();
             var opts = provider.GetService<MusicalConductorOptions>();
-            return new JintEngineHost(logger, opts);
+            var conductorLogger = provider.GetRequiredService<ConductorLogger>();
+            return new JintEngineHost(logger, opts, conductorLogger);
         });
 
         // Register the conductor client as a singleton
@@ -64,6 +79,13 @@ public class MusicalConductorOptions
     /// Enable debug logging (default: false).
     /// </summary>
     public bool EnableDebugLogging { get; set; } = false;
+
+    /// <summary>
+    /// Enable hierarchical logging with contextual icons (default: true).
+    /// When enabled, ConductorLogger will subscribe to Musical Conductor events
+    /// and log them with proper indentation and emoji icons matching the web version.
+    /// </summary>
+    public bool EnableHierarchicalLogging { get; set; } = true;
 
     /// <summary>
     /// Timeout for conductor operations in milliseconds (default: 30000).

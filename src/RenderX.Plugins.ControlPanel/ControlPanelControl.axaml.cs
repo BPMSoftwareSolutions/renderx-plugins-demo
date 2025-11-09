@@ -3,7 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
+using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
@@ -17,7 +19,7 @@ namespace RenderX.Plugins.ControlPanel;
 public partial class ControlPanelControl : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductorClient? _conductor;
+    private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<ControlPanelControl>? _logger;
     private ObservableCollection<PropertyItem> _properties;
     private ObservableCollection<InteractionItem> _interactions;
@@ -52,11 +54,17 @@ public partial class ControlPanelControl : UserControl
     /// <summary>
     /// Initialize the control panel with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<ControlPanelControl> logger)
+    public void Initialize(IEventRouter eventRouter, MusicalConductor.Avalonia.Interfaces.IConductorClient conductor, ILogger<ControlPanelControl> logger, IEventBus eventBus)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Wrap logger with ConductorAwareLogger to emit logs through Musical Conductor event bus
+        // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 control-panel)
+        _logger = new ConductorAwareLoggerWrapper<ControlPanelControl>(
+            logger ?? throw new ArgumentNullException(nameof(logger)),
+            eventBus ?? throw new ArgumentNullException(nameof(eventBus)),
+            "control-panel");
 
         _logger.LogInformation("ControlPanelControl initialized");
 
@@ -136,11 +144,14 @@ public partial class ControlPanelControl : UserControl
                     ? nameElement.GetString() ?? "Unknown"
                     : "Unknown";
 
+                _logger?.LogInformation("[cp] Control Panel received selection changed: {ComponentId}", _selectedComponentId);
+
                 UpdateSelectedComponentDisplay(name);
                 PopulateProperties(payload);
                 PopulateInteractions();
                 UpdateStatus($"Selected: {name}");
-                _logger?.LogDebug("Component selected in control panel: {ComponentId}", _selectedComponentId);
+
+                _logger?.LogInformation("[cp] Control Panel updated for component: {ComponentName}", name);
 
                 // Publish control panel update requested event
                 PublishUpdateRequested(payload);
@@ -190,6 +201,7 @@ public partial class ControlPanelControl : UserControl
     private void PopulateProperties(JsonElement componentData)
     {
         _properties.Clear();
+        _logger?.LogInformation("[cp] Populating properties for component");
 
         try
         {
@@ -209,7 +221,7 @@ public partial class ControlPanelControl : UserControl
                 _properties.Add(new PropertyItem { Key = "Type", Value = type.GetString() ?? "" });
             }
 
-            _logger?.LogDebug("Properties populated: {PropertyCount}", _properties.Count);
+            _logger?.LogInformation("[cp] Populated {PropertyCount} properties", _properties.Count);
         }
         catch (Exception ex)
         {
@@ -329,12 +341,15 @@ public partial class ControlPanelControl : UserControl
     {
         try
         {
+            _logger?.LogInformation("[cp] Control Panel received selections cleared");
+
             _selectedComponentId = null;
             _properties.Clear();
             _interactions.Clear();
             UpdateSelectedComponentDisplay("None");
             UpdateStatus("Selection cleared");
-            _logger?.LogDebug("Control panel cleared due to selection cleared event");
+
+            _logger?.LogInformation("[cp] Control panel cleared");
         }
         catch (Exception ex)
         {

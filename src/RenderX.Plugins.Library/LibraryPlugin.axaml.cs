@@ -4,7 +4,9 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
+using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 
@@ -16,7 +18,7 @@ namespace RenderX.Plugins.Library;
 public partial class LibraryPlugin : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductorClient? _conductor;
+    private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<LibraryPlugin>? _logger;
     private ObservableCollection<ComponentItem> _components;
 
@@ -40,11 +42,17 @@ public partial class LibraryPlugin : UserControl
     /// <summary>
     /// Initialize the library plugin with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<LibraryPlugin> logger)
+    public void Initialize(IEventRouter eventRouter, MusicalConductor.Avalonia.Interfaces.IConductorClient conductor, ILogger<LibraryPlugin> logger, IEventBus eventBus)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Wrap logger with ConductorAwareLogger to emit logs through Musical Conductor event bus
+        // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 library-component)
+        _logger = new ConductorAwareLoggerWrapper<LibraryPlugin>(
+            logger ?? throw new ArgumentNullException(nameof(logger)),
+            eventBus ?? throw new ArgumentNullException(nameof(eventBus)),
+            "library-component");
 
         _logger.LogInformation("LibraryPlugin initialized");
 
@@ -106,7 +114,7 @@ public partial class LibraryPlugin : UserControl
     {
         if (sender is Border border && border.DataContext is ComponentItem component)
         {
-            _logger?.LogDebug("Component drag started: {ComponentId}", component.Id);
+            _logger?.LogInformation("Library component drag started: {ComponentId}", component.Id);
 
             // Publish component drag started event
             PublishComponentDragStarted(component);
@@ -123,7 +131,7 @@ public partial class LibraryPlugin : UserControl
     {
         if (sender is Border border && border.DataContext is ComponentItem component)
         {
-            _logger?.LogInformation("Component double-clicked: {ComponentId}", component.Id);
+            _logger?.LogInformation("Library component double-clicked: {ComponentId}", component.Id);
 
             // Publish component add requested event
             PublishComponentAddRequested(component);
@@ -140,6 +148,7 @@ public partial class LibraryPlugin : UserControl
 
         try
         {
+            _logger.LogInformation("Library requesting component load");
             await _eventRouter.PublishAsync("library.load.requested", new { }, _conductor);
             _logger.LogInformation("📡 EventRouter.publish('library.load.requested')");
         }
@@ -159,6 +168,7 @@ public partial class LibraryPlugin : UserControl
 
         try
         {
+            _logger.LogInformation("Library publishing drag started for: {ComponentId}", component.Id);
             var payload = new { componentId = component.Id, componentName = component.Name };
             await _eventRouter.PublishAsync("library.component.drag.started", payload, _conductor);
             _logger.LogInformation("📡 EventRouter.publish('library.component.drag.started')");

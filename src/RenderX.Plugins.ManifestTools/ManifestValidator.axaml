@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.ManifestTools.ManifestValidator"
+             Background="White">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="#F5F5F5"
+                BorderThickness="0,0,0,1"
+                BorderBrush="#E0E0E0"
+                Padding="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Manifest Validator"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="#333" />
+                <Button Content="Validate Manifest"
+                        Padding="8,4"
+                        Background="#007ACC"
+                        Foreground="White"
+                        FontSize="11" />
+            </StackPanel>
+        </Border>
+
+        <!-- Validation Results -->
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl x:Name="ResultsControl"
+                          Padding="12"
+                          Background="White">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#F9F9F9"
+                                BorderThickness="1"
+                                BorderBrush="#E0E0E0"
+                                CornerRadius="4"
+                                Padding="8"
+                                Margin="0,4">
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock x:Name="StatusIcon"
+                                               Text="✓"
+                                               FontSize="12"
+                                               Foreground="#10B981" />
+                                    <TextBlock Text="{Binding Message}"
+                                               FontSize="11"
+                                               Foreground="#333" />
+                                </StackPanel>
+                                <TextBlock Text="{Binding Details}"
+                                           FontSize="9"
+                                           Foreground="#666"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <Border Grid.Row="2"
+                Background="#F5F5F5"
+                BorderThickness="0,1,0,0"
+                BorderBrush="#E0E0E0"
+                Padding="12">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <TextBlock x:Name="ValidCountText"
+                           Text="0 valid"
+                           FontSize="10"
+                           Foreground="#10B981" />
+                <TextBlock x:Name="ErrorCountText"
+                           Text="0 errors"
+                           FontSize="10"
+                           Foreground="#EF5350" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderMenu"
+             Background="Transparent"
+             x:CompileBindings="False">
+    <StackPanel Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+        <Button x:Name="MenuButton"
+                Content="☰"
+                Padding="8,6"
+                Background="Transparent"
+                Foreground="White"
+                VerticalAlignment="Center"
+                ToolTip.Tip="Menu" />
+        <Popup x:Name="MenuPopup" PlacementMode="BottomEdgeAlignedLeft">
+            <Border Background="#252526" BorderBrush="#333" BorderThickness="1" Padding="0">
+                <StackPanel Orientation="Vertical" />
+            </Border>
+        </Popup>
+    </StackPanel>
+</UserControl>
+

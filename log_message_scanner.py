@@ -61,8 +61,10 @@ class LogScanner:
         (r'console\.(log|error|warn|info|debug)\s*\((.*?)\)', 'console'),
         # logger.log, logger.error, logger.warn, logger.info, logger.debug
         (r'(?:this\.)?logger\.(log|error|warn|info|debug|success)\s*\((.*?)\)', 'logger'),
-        # context.logger methods
-        (r'context\.logger\.(log|error|warn|info|debug|success)\s*\((.*?)\)', 'context.logger'),
+        # context.logger or ctx.logger methods (with optional chaining: ctx.logger?.error?.(...))
+        (r'(?:context|ctx)\.logger\?\.\s*(log|error|warn|info|debug|success)\?\.\s*\((.*?)\)', 'ctx.logger'),
+        # context.logger without optional chaining
+        (r'(?:context|ctx)\.logger\.(log|error|warn|info|debug|success)\s*\((.*?)\)', 'context.logger'),
         # DataBaton.log
         (r'DataBaton\.log\s*\((.*?)\)', 'DataBaton'),
         # Generic .log() method calls

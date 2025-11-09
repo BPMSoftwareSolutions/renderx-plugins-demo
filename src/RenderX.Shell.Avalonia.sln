@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -12,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Plugins.Canvas", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Plugins.ControlPanel", "RenderX.Plugins.ControlPanel\RenderX.Plugins.ControlPanel.csproj", "{F170DF3F-681A-4881-A6B6-41B1D8069E8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.ManifestGenerator", "RenderX.ManifestGenerator\RenderX.ManifestGenerator.csproj", "{0F15D20A-5996-4CCB-8625-080CF05A97B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.ManifestGenerator", "RenderX.ManifestGenerator\RenderX.ManifestGenerator.csproj", "{0F15D20A-5996-4CCB-8625-080CF05A97B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Plugins.CanvasComponent", "RenderX.Plugins.CanvasComponent\RenderX.Plugins.CanvasComponent.csproj", "{CD4072C2-18AE-4CE7-8FD8-5A9A31AC2635}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Plugins.LibraryComponent", "RenderX.Plugins.LibraryComponent\RenderX.Plugins.LibraryComponent.csproj", "{0493082F-B238-4197-8413-005AA112FAAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +49,14 @@ Global
 		{0F15D20A-5996-4CCB-8625-080CF05A97B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F15D20A-5996-4CCB-8625-080CF05A97B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F15D20A-5996-4CCB-8625-080CF05A97B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD4072C2-18AE-4CE7-8FD8-5A9A31AC2635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4072C2-18AE-4CE7-8FD8-5A9A31AC2635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4072C2-18AE-4CE7-8FD8-5A9A31AC2635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4072C2-18AE-4CE7-8FD8-5A9A31AC2635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0493082F-B238-4197-8413-005AA112FAAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0493082F-B238-4197-8413-005AA112FAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0493082F-B238-4197-8413-005AA112FAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0493082F-B238-4197-8413-005AA112FAAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

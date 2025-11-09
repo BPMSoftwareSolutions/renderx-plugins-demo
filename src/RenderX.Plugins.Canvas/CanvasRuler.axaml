@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="50"
+             x:Class="RenderX.Plugins.Canvas.CanvasRuler">
+    
+    <!-- Canvas Ruler Component - Horizontal/Vertical measurement guide -->
+    
+    <Border Background="{DynamicResource Gray.100}"
+            BorderBrush="{DynamicResource Border.Primary}"
+            BorderThickness="0,0,0,1"
+            Classes="bg-transition">
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Ruler Canvas for tick marks -->
+            <Canvas x:Name="RulerCanvas"
+                    Background="Transparent"
+                    ClipToBounds="True">
+                
+                <!-- Tick marks will be generated dynamically in code-behind -->
+                
+            </Canvas>
+            
+            <!-- Current position indicator -->
+            <Border x:Name="PositionIndicator"
+                    Width="1"
+                    Background="{DynamicResource Blue.500}"
+                    HorizontalAlignment="Left"
+                    IsVisible="False"
+                    ZIndex="10">
+                
+                <!-- Position tooltip -->
+                <Border.Styles>
+                    <Style Selector="Border#PositionIndicator">
+                        <Setter Property="Transitions">
+                            <Transitions>
+                                <DoubleTransition Property="Margin" Duration="0:0:0.05"/>
+                            </Transitions>
+                        </Setter>
+                    </Style>
+                </Border.Styles>
+                
+            </Border>
+            
+            <!-- Position label -->
+            <Border x:Name="PositionLabel"
+                    Background="{DynamicResource Gray.900}"
+                    Padding="4,2"
+                    CornerRadius="2"
+                    IsVisible="False"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,2"
+                    ZIndex="11">
+                
+                <TextBlock x:Name="PositionText"
+                          Text="0"
+                          Foreground="{DynamicResource Text.Inverse}"
+                          FontSize="10"
+                          Classes="font-mono"/>
+            </Border>
+            
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

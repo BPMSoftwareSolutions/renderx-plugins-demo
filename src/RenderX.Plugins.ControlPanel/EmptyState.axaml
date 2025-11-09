@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.ControlPanel.EmptyState"
+             Background="Transparent">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="12">
+        <TextBlock Text="📭" FontSize="48" TextAlignment="Center" />
+        <TextBlock x:Name="TitleText"
+                   Text="No Component Selected"
+                   FontSize="14"
+                   FontWeight="Bold"
+                   TextAlignment="Center"
+                   Foreground="#333" />
+        <TextBlock x:Name="MessageText"
+                   Text="Select a component on the canvas to view its properties"
+                   FontSize="12"
+                   TextAlignment="Center"
+                   Foreground="#666"
+                   TextWrapping="Wrap"
+                   MaxWidth="200" />
+    </StackPanel>
+</UserControl>
+

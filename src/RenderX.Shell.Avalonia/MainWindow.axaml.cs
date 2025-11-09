@@ -29,6 +29,7 @@ public partial class MainWindow : Window
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<MainWindow> _logger;
     private LayoutManager? _layoutManager;
+    private Infrastructure.Events.IUiEventService? _uiEventService;
 
     public MainWindow()
     {
@@ -38,7 +39,8 @@ public partial class MainWindow : Window
         _serviceProvider = ((App)Application.Current!).ServiceProvider;
         _logger = _serviceProvider.GetRequiredService<ILogger<MainWindow>>();
 
-        // Global keyboard shortcut for diagnostics (Ctrl+Shift+D)
+        // Keyboard shortcuts (diagnostics - Ctrl+Shift+D)
+        // Other shortcuts are handled by UiEventService from manifest
         KeyDown += OnKeyDown;
 
         // Initialize controls when window loads
@@ -93,6 +95,12 @@ public partial class MainWindow : Window
                     _logger.LogDebug("Slot {SlotName} not found in MainWindow", slotName);
                 }
             }
+
+            // Wire UI events from manifest (ADR-0037)
+            _uiEventService = _serviceProvider.GetRequiredService<Infrastructure.Events.IUiEventService>();
+            var uiEventsManifestPath = Path.Combine(AppContext.BaseDirectory, "manifests", "uiEvents.json");
+            await _uiEventService.WireEventsAsync(uiEventsManifestPath);
+            _uiEventService.RegisterHandlers(this);
 
             _logger.LogInformation("MainWindow initialization complete");
         }

@@ -1,98 +1,1238 @@
 ================================================================================
-Log Messages Report - Grouped by LEVEL
+Log Messages Report - Grouped by FILE
 ================================================================================
 
-├── error (84 messages)
-│   └── ❌ ERROR (84 occurrences)
-│       ├── All selection fallbacks failed:
-│       ├── No targets found. Use --all, --slide <id>, or ensure sub_elements/spec...
-│       ├── `Validation failed: ${issues.length} issue(s
-│       ├── err.message || String(err
-│       ├── Error: Slides JSON file not found: ${JSON_PATH}
-│       ├── Error: Slide not found: ${args.slide}
-│       ├── ❌ Error during canvas scene demo:
-│       ├── ❌ Error processing ${sceneFile}:
-│       ├── ❌ Error processing combined scene:
-│       ├──    ❌ Error extracting scene ${sceneNumber}:
-│       └── ... and 74 more
+├── packages\canvas-component\__tests__\export.css.debug.spec.ts (12 messages)
+│   └── 📝 LOG (12 occurrences)
+│       ├── CSS Registry state before test:
+│       ├── CSS Registry state before test:
+│       ├── - Has rx-button:
+│       ├── - Has rx-button:
+│       ├── - Has rx-comp:
+│       ├── - Has rx-comp:
+│       ├── - All class names:
+│       ├── - All class names:
+│       ├── INFO:
+│       ├── INFO:
+│       └── ... and 2 more
 
-├── info (15 messages)
-│   └── ℹ️ INFO (15 occurrences)
+├── packages\canvas-component\__tests__\helpers\host-click-select.ts (4 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── All selection fallbacks failed:
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── Selection click handler error:
+│       ├── No conductor available for selection
+│       └── Production selection handler error:
+
+├── packages\canvas-component\src\symphonies\create\create.react.stage-crew.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── warn
+│       └── error
+
+├── packages\canvas-component\src\symphonies\drag\drag.stage-crew.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── warn
+│       └── warn
+
+├── packages\canvas-component\src\symphonies\export\export.css.stage-crew.ts (1 messages)
+│   └── 📝 LOG (1 occurrences)
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.discover.stage-crew.ts (4 messages)
+│   └── 📝 LOG (4 occurrences)
+│       ├── warn
+│       ├── info
+│       ├── info
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.download.stage-crew.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── info
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts (5 messages)
+│   └── 📝 LOG (5 occurrences)
+│       ├── info
+│       ├── error
+│       ├── info
+│       ├── error
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.io.ts (5 messages)
+│   └── 📝 LOG (5 occurrences)
+│       ├── info
+│       ├── warn
+│       ├── info
+│       ├── info
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.mp4.stage-crew.ts (9 messages)
+│   └── 📝 LOG (9 occurrences)
+│       ├── info
+│       ├── info
+│       ├── warn
+│       ├── info
+│       ├── info
+│       ├── error
+│       ├── error
+│       ├── warn
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.pure.ts (1 messages)
+│   └── 📝 LOG (1 occurrences)
+│       └── error
+
+├── packages\canvas-component\src\symphonies\export\export.stage-crew.ts (1 messages)
+│   └── 📝 LOG (1 occurrences)
+│       └── error
+
+├── packages\canvas-component\src\symphonies\import\import.css.stage-crew.ts (1 messages)
+│   └── 📝 LOG (1 occurrences)
+│       └── warn
+
+├── packages\canvas-component\src\symphonies\import\import.file.stage-crew.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── warn
+│       ├── error
+│       └── error
+
+├── packages\canvas-component\src\symphonies\import\import.parse.pure.ts (1 messages)
+│   └── 📝 LOG (1 occurrences)
+│       └── error
+
+├── packages\canvas-component\src\symphonies\select\select.stage-crew.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── warn
+│       └── warn
+
+├── packages\canvas-component\src\symphonies\update\update.stage-crew.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── warn
+│       ├── warn
+│       └── warn
+
+├── packages\canvas\src\ui\CanvasDrop.ts (4 messages)
+│   └── 📝 LOG (4 occurrences)
+│       ├── Drag started:
+│       ├── Drag started:
+│       ├── Drag ended:
+│       └── Drag ended:
+
+├── packages\control-panel\__tests__\attribute-editing.integration.spec.ts (12 messages)
+│   └── 📝 LOG (12 occurrences)
+│       ├── 🎯 Testing content change...
+│       ├── 🎯 Testing content change...
+│       ├── 🎨 Testing styling changes...
+│       ├── 🎨 Testing styling changes...
+│       ├── 📐 Testing layout changes...
+│       ├── 📐 Testing layout changes...
+│       ├── 🔧 Testing variant changes...
+│       ├── 🔧 Testing variant changes...
+│       ├── ✅ Testing disabled state...
+│       ├── ✅ Testing disabled state...
+│       └── ... and 2 more
+
+├── packages\control-panel\src\hooks\useControlPanelState.ts (9 messages)
+│   ├── 📝 LOG (6 occurrences)
+│   │   ├── [cp] useControlPanelState:${label} selection.updated
+│   │   ├── [cp] useControlPanelState:${label} selection.updated
+│   │   ├── [cp] useControlPanelState:${label} classes.updated
+│   │   ├── [cp] useControlPanelState:${label} classes.updated
+│   │   ├── [cp] useControlPanelState:${label} fallback from selection.changed
+│   │   └── [cp] useControlPanelState:${label} fallback from selection.changed
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── [cp] useControlPanelState: No EventRouter available; UI will not react...
+│       ├── [cp] useControlPanelState:${label} fallback selection.changed handler ...
+│       └── [cp] useControlPanelState: failed to subscribe via ${label}:
+
+├── packages\control-panel\src\symphonies\classes\classes.symphony.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── info
+│       ├── warn
+│       └── warn
+
+├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts (28 messages)
+│   └── 📝 LOG (28 occurrences)
+│       ├── error
+│       ├── info
+│       ├── warn
+│       ├── error
+│       ├── error
+│       ├── error
+│       ├── info
+│       ├── warn
+│       ├── error
+│       ├── error
+│       └── ... and 18 more
+
+├── packages\control-panel\src\symphonies\css-management\css-management.symphony.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── info
+│       ├── warn
+│       └── warn
+
+├── packages\control-panel\src\symphonies\selection\selection.symphony.ts (11 messages)
+│   └── 📝 LOG (11 occurrences)
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── warn
+│       ├── warn
+│       ├── warn
+│       └── ... and 1 more
+
+├── packages\control-panel\src\symphonies\ui\ui.stage-crew.ts (35 messages)
+│   └── 📝 LOG (35 occurrences)
+│       ├── info
+│       ├── info
+│       ├── info
+│       ├── error
+│       ├── info
+│       ├── error
+│       ├── info
+│       ├── info
+│       ├── error
+│       ├── info
+│       └── ... and 25 more
+
+├── packages\control-panel\src\symphonies\update\update.symphony.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── info
+│       ├── warn
+│       └── warn
+
+├── packages\control-panel\tsup.config.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── ✅ Plugin manifest created at dist/plugin-manifest.json
+│       └── ✅ Plugin manifest created at dist/plugin-manifest.json
+
+├── packages\digital-assets\cypress\e2e\svg-rendering.cy.js (1 messages)
+│   └── 📝 LOG (1 occurrences)
+│       └── Error handling test - would verify graceful failure for missing SVGs
+
+├── packages\digital-assets\scripts\generate-integrated-svgs.js (11 messages)
+│   ├── ❌ ERROR (3 occurrences)
+│   │   ├── No targets found. Use --all, --slide <id>, or ensure sub_elements/spec...
+│   │   ├── `Validation failed: ${issues.length} issue(s
+│   │   └── err.message || String(err
+│   └── 📝 LOG (8 occurrences)
+│       ├── JSON.stringify({ processed: targets.length, issues }, null, 2
+│       ├── JSON.stringify({ processed: targets.length, issues }, null, 2
+│       ├── `Validated ${targets.length} elements; ${issues.length} issue(s
+│       ├── `Validated ${targets.length} elements; ${issues.length} issue(s
+│       ├── JSON.stringify({ processed: targets.length, changed, details: summarie...
+│       ├── JSON.stringify({ processed: targets.length, changed, details: summarie...
+│       ├── Processed ${targets.length} elements; updated ${changed}.
+│       └── Processed ${targets.length} elements; updated ${changed}.
+
+├── packages\digital-assets\scripts\generate-slide-svgs.js (18 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── Error: Slides JSON file not found: ${JSON_PATH}
+│   │   └── Error: Slide not found: ${args.slide}
+│   ├── 📝 LOG (14 occurrences)
+│   │   ├── \nProcessing slide: ${slide.id}
+│   │   ├── \nProcessing slide: ${slide.id}
+│   │   ├──   Calculating layout for ${elements.length} elements...
+│   │   ├──   Calculating layout for ${elements.length} elements...
+│   │   ├──     Updated ${originalElement.id} compose:
+│   │   ├──     Updated ${originalElement.id} compose:
+│   │   ├──   Generated: ${outputPath}
+│   │   ├──   Generated: ${outputPath}
+│   │   ├── `    ${element.label}: (${compose.x}, ${compose.y}
+│   │   ├── `    ${element.label}: (${compose.x}, ${compose.y}
+│   │   └── ... and 4 more
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── Warning: Element SVG not found: ${element.svg}
+│       └── Warning: Invalid SVG format in ${element.svg}
+
+├── packages\digital-assets\scripts\lib\injector.js (2 messages)
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── Warning: Unbalanced group tags for id="${id}"
+│       └── Warning: Could not find group element ${se.id} in ${se.svg}
+
+├── packages\digital-assets\src\canvas-scene-demo.ts (29 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Error during canvas scene demo:
+│   └── 📝 LOG (28 occurrences)
+│       ├── ✅ Saved: ${filename}
+│       ├── ✅ Saved: ${filename}
+│       ├── 🎨 Canvas Scene Demo
+│       ├── 🎨 Canvas Scene Demo
+│       ├── Testing raw-svg node type with canvas-extracted content...\n
+│       ├── Testing raw-svg node type with canvas-extracted content...\n
+│       ├── 📄 Processing Scene 1: Bus Leaving Depot
+│       ├── 📄 Processing Scene 1: Bus Leaving Depot
+│       ├──    ✅ Scene 1 rendered successfully
+│       ├──    ✅ Scene 1 rendered successfully
+│       └── ... and 18 more
+
+├── packages\digital-assets\src\canvas-storybook-demo.ts (74 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── ❌ Error processing ${sceneFile}:
+│   │   └── ❌ Error processing combined scene:
+│   └── 📝 LOG (72 occurrences)
+│       ├── ✅ Saved: ${filename}
+│       ├── ✅ Saved: ${filename}
+│       ├── \n🎬 Processing scene: ${sceneFile}
+│       ├── \n🎬 Processing scene: ${sceneFile}
+│       ├──    📊 Violations detected: ${violationCount}
+│       ├──    📊 Violations detected: ${violationCount}
+│       ├──    🔧 Auto-fixes applied: ${autoFixCount}
+│       ├──    🔧 Auto-fixes applied: ${autoFixCount}
+│       ├──    ⏱️  Processing time: ${processingTime}ms
+│       ├──    ⏱️  Processing time: ${processingTime}ms
+│       └── ... and 62 more
+
+├── packages\digital-assets\src\canvas-svg-extractor.ts (63 messages)
+│   ├── ❌ ERROR (3 occurrences)
+│   │   ├──    ❌ Error extracting scene ${sceneNumber}:
+│   │   ├── ❌ No scenes were successfully extracted. Cannot create combined storyb...
+│   │   └── ❌ Error during extraction:
+│   └── 📝 LOG (60 occurrences)
+│       ├── ✅ Saved: ${filename}
+│       ├── ✅ Saved: ${filename}
+│       ├── 🎬 Extracting Individual SVG Scenes from Canvas File...\n
+│       ├── 🎬 Extracting Individual SVG Scenes from Canvas File...\n
+│       ├── 📄 Processing Scene ${sceneNumber}: ${title}
+│       ├── 📄 Processing Scene ${sceneNumber}: ${title}
+│       ├──    Component ID: ${component.id}
+│       ├──    Component ID: ${component.id}
+│       ├── `   Layout: ${component.layout.width}x${component.layout.height} at ($...
+│       ├── `   Layout: ${component.layout.width}x${component.layout.height} at ($...
+│       └── ... and 50 more
+
+├── packages\digital-assets\src\canvas-to-graph-converter.ts (52 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├──    ❌ Error processing scene ${sceneNumber}:
+│   │   └── ❌ Error during conversion:
+│   └── 📝 LOG (50 occurrences)
+│       ├── ✅ Saved: ${filename}
+│       ├── ✅ Saved: ${filename}
+│       ├── 🔄 Canvas to Graph Converter
+│       ├── 🔄 Canvas to Graph Converter
+│       ├── Converting EventRouter canvas file to graph configurations...\n
+│       ├── Converting EventRouter canvas file to graph configurations...\n
+│       ├── 📂 Loaded canvas file with ${canvas.components.length} components\n
+│       ├── 📂 Loaded canvas file with ${canvas.components.length} components\n
+│       ├── 📄 Processing Scene ${sceneNumber}: ${title}
+│       ├── 📄 Processing Scene ${sceneNumber}: ${title}
+│       └── ... and 40 more
+
+├── packages\digital-assets\src\cli.ts (97 messages)
+│   ├── ❌ ERROR (7 occurrences)
+│   │   ├── ❌ Error: ${error}
+│   │   ├── Usage: graph-to-svg scene generate <templateId> [key=value...]
+│   │   ├── Usage: graph-to-svg scene example <templateId> <exampleName>
+│   │   ├── list
+│   │   ├── Usage: graph-to-svg graph generate <templatePath> [themeId] [layoutId]
+│   │   ├── create-samples
+│   │   └── list
+│   └── 📝 LOG (90 occurrences)
+│       ├── 🎨 Graph-to-SVG CLI - Configuration-Driven Generation
+│       ├── 🎨 Graph-to-SVG CLI - Configuration-Driven Generation
+│       ├── 
+│       ├── 
+│       ├── BASIC USAGE:
+│       ├── BASIC USAGE:
+│       ├──   graph-to-svg <input.json> [output.svg]           Convert simple grap...
+│       ├──   graph-to-svg <input.json> [output.svg]           Convert simple grap...
+│       ├── 
+│       ├── 
+│       └── ... and 80 more
+
+├── packages\digital-assets\src\combined-storybook-generator.ts (59 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Error during enhanced combined storybook generation:
+│   └── 📝 LOG (58 occurrences)
+│       ├── ✅ Saved: ${filename}
+│       ├── ✅ Saved: ${filename}
+│       ├── 📚 Creating Enhanced Combined Storybook with Scene-by-Scene Animation T...
+│       ├── 📚 Creating Enhanced Combined Storybook with Scene-by-Scene Animation T...
+│       ├── `📐 Enhanced canvas: ${config.canvas.width}x${config.canvas.height} (${...
+│       ├── `📐 Enhanced canvas: ${config.canvas.width}x${config.canvas.height} (${...
+│       ├── ⏱️  Total duration: ${config.timing.totalDuration}s with ${config.timi...
+│       ├── ⏱️  Total duration: ${config.timing.totalDuration}s with ${config.timi...
+│       ├── ✅ Enhanced combined storybook saved as ${enhancedFilename}
+│       ├── ✅ Enhanced combined storybook saved as ${enhancedFilename}
+│       └── ... and 48 more
+
+├── packages\digital-assets\src\containment-demo.ts (46 messages)
+│   └── 📝 LOG (46 occurrences)
+│       ├── 🚀 Running Boundary Containment Demo...\n
+│       ├── 🚀 Running Boundary Containment Demo...\n
+│       ├── createDiagnosticSummary(diagnosticReport
+│       ├── createDiagnosticSummary(diagnosticReport
+│       ├── 📁 Files Generated:
+│       ├── 📁 Files Generated:
+│       ├── '   - samples/slide-01-with-containment.svg (Enhanced SVG with contain...
+│       ├── '   - samples/slide-01-with-containment.svg (Enhanced SVG with contain...
+│       ├── '   - samples/slide-01-diagnostics.json (Diagnostic report
+│       ├── '   - samples/slide-01-diagnostics.json (Diagnostic report
+│       └── ... and 36 more
+
+├── packages\digital-assets\src\contextual-boundaries-demo.ts (12 messages)
+│   └── 📝 LOG (12 occurrences)
+│       ├── ✅ Generated contextual boundaries demo SVG: samples/slide-01-contextua...
+│       ├── ✅ Generated contextual boundaries demo SVG: samples/slide-01-contextua...
+│       ├── 📊 Scene contains:
+│       ├── 📊 Scene contains:
+│       ├── boundary
+│       ├── boundary
+│       ├──    - ${scene.ports?.length ?? 0} ports
+│       ├──    - ${scene.ports?.length ?? 0} ports
+│       ├──    - ${scene.connectors?.length ?? 0} connectors
+│       ├──    - ${scene.connectors?.length ?? 0} connectors
+│       └── ... and 2 more
+
+├── packages\digital-assets\src\create-cinematic-presentation.ts (73 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Error creating cinematic presentation:
+│   └── 📝 LOG (72 occurrences)
+│       ├── 🎬 Creating EventRouter Cinematic Presentation...\n
+│       ├── 🎬 Creating EventRouter Cinematic Presentation...\n
+│       ├── 📊 Loaded Mono Graph:
+│       ├── 📊 Loaded Mono Graph:
+│       ├──    - ID: ${monoGraph.id}
+│       ├──    - ID: ${monoGraph.id}
+│       ├──    - Scenes: ${monoGraph.scenes.length}
+│       ├──    - Scenes: ${monoGraph.scenes.length}
+│       ├──    - Canvas: ${monoGraph.canvas.width}x${monoGraph.canvas.height}\n
+│       ├──    - Canvas: ${monoGraph.canvas.width}x${monoGraph.canvas.height}\n
+│       └── ... and 62 more
+
+├── packages\digital-assets\src\create-mono-journey.ts (24 messages)
+│   └── 📝 LOG (24 occurrences)
+│       ├── 🚌 Creating EventRouter Mono Journey...\n
+│       ├── 🚌 Creating EventRouter Mono Journey...\n
+│       ├── 📊 Mono Graph Created:
+│       ├── 📊 Mono Graph Created:
+│       ├──    - ID: ${monoGraph.id}
+│       ├──    - ID: ${monoGraph.id}
+│       ├──    - Canvas: ${monoGraph.canvas.width}x${monoGraph.canvas.height}
+│       ├──    - Canvas: ${monoGraph.canvas.width}x${monoGraph.canvas.height}
+│       ├──    - Scenes: ${monoGraph.scenes.length}
+│       ├──    - Scenes: ${monoGraph.scenes.length}
+│       └── ... and 14 more
+
+├── packages\digital-assets\src\event-router-demo.ts (90 messages)
+│   └── 📝 LOG (90 occurrences)
+│       ├── 🚌 Running EventRouter Contextual Boundaries Demo...\n
+│       ├── 🚌 Running EventRouter Contextual Boundaries Demo...\n
+│       ├── 📊 Scene Overview:
+│       ├── 📊 Scene Overview:
+│       ├──    - Canvas: ${scene.canvas.width}x${scene.canvas.height}
+│       ├──    - Canvas: ${scene.canvas.width}x${scene.canvas.height}
+│       ├──    - Total nodes: ${scene.nodes.length}
+│       ├──    - Total nodes: ${scene.nodes.length}
+│       ├── boundary
+│       ├── boundary
+│       └── ... and 80 more
+
+├── packages\digital-assets\src\example.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── svg
+│       └── svg
+
+├── packages\digital-assets\src\generate-mono-svg.ts (47 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Error generating mono journey SVG:
+│   └── 📝 LOG (46 occurrences)
+│       ├── 🎨 Generating EventRouter Mono Journey SVG...\n
+│       ├── 🎨 Generating EventRouter Mono Journey SVG...\n
+│       ├── 📊 Loaded Mono Graph:
+│       ├── 📊 Loaded Mono Graph:
+│       ├──    - ID: ${monoGraph.id}
+│       ├──    - ID: ${monoGraph.id}
+│       ├──    - Canvas: ${monoGraph.canvas.width}x${monoGraph.canvas.height}
+│       ├──    - Canvas: ${monoGraph.canvas.width}x${monoGraph.canvas.height}
+│       ├──    - Scenes: ${monoGraph.scenes.length}
+│       ├──    - Scenes: ${monoGraph.scenes.length}
+│       └── ... and 36 more
+
+├── packages\digital-assets\src\generic-graph-generator.ts (41 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── Usage: node generic-graph-generator.js generate <templatePath> [themeI...
+│   └── 📝 LOG (40 occurrences)
+│       ├── ✅ Generated graph: ${graphFilename}
+│       ├── ✅ Generated graph: ${graphFilename}
+│       ├──    📊 ${styledGraph.nodes.length} nodes, ${styledGraph.edges.length} ed...
+│       ├──    📊 ${styledGraph.nodes.length} nodes, ${styledGraph.edges.length} ed...
+│       ├──    🎨 Theme: ${themeId || "default"}, Layout: ${layoutId || styledGraph...
+│       ├──    🎨 Theme: ${themeId || "default"}, Layout: ${layoutId || styledGraph...
+│       ├──    🖼️  ${svgPath}
+│       ├──    🖼️  ${svgPath}
+│       ├──    📁 ${jsonPath}
+│       ├──    📁 ${jsonPath}
+│       └── ... and 30 more
+
+├── packages\digital-assets\src\generic-scene-generator.ts (77 messages)
+│   ├── ❌ ERROR (5 occurrences)
+│   │   ├── ❌ Failed to generate scene: ${error}
+│   │   ├── ❌ Template validation failed:
+│   │   ├──    • ${error}
+│   │   ├── Usage: node generic-scene-generator.js generate <templateId> [paramete...
+│   │   └── Usage: node generic-scene-generator.js example <templateId> <exampleNa...
+│   └── 📝 LOG (72 occurrences)
+│       ├── 🎨 Generating scene from template: ${templateId}...\n
+│       ├── 🎨 Generating scene from template: ${templateId}...\n
+│       ├── ✅ Generated main scene: ${scene.id}
+│       ├── ✅ Generated main scene: ${scene.id}
+│       ├──    📊 ${scene.nodes.length} nodes, ${scene.connectors?.length || 0} con...
+│       ├──    📊 ${scene.nodes.length} nodes, ${scene.connectors?.length || 0} con...
+│       ├──    🎨 Canvas: ${scene.canvas.width}×${scene.canvas.height}, Background:...
+│       ├──    🎨 Canvas: ${scene.canvas.width}×${scene.canvas.height}, Background:...
+│       ├──    🖼️  ${svgPath}
+│       ├──    🖼️  ${svgPath}
+│       └── ... and 62 more
+
+├── packages\digital-assets\src\mono-graph-generator.ts (1 messages)
+│   └── ⚠️ WARN (1 occurrences)
+│       └── Warning: Could not render scene ${scene.id} from nodes:
+
+├── packages\digital-assets\src\sample-generator.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── Generated ${name}: ${jsonPath} and ${svgPath}
+│       └── Generated ${name}: ${jsonPath} and ${svgPath}
+
+├── packages\digital-assets\src\slide-01-generator.ts (18 messages)
+│   └── 📝 LOG (18 occurrences)
+│       ├── 🎨 Generating ${graphs.length} graph specifications for Slide 1...\n
+│       ├── 🎨 Generating ${graphs.length} graph specifications for Slide 1...\n
+│       ├── ✅ ${name}
+│       ├── ✅ ${name}
+│       ├──    📊 ${graph.nodes.length} nodes, ${graph.edges.length} edges
+│       ├──    📊 ${graph.nodes.length} nodes, ${graph.edges.length} edges
+│       ├──    🎨 Layout: ${graph.meta?.layout || 'grid'}, Theme: ${graph.meta?.the...
+│       ├──    🎨 Layout: ${graph.meta?.layout || 'grid'}, Theme: ${graph.meta?.the...
+│       ├──    📝 ${description}
+│       ├──    📝 ${description}
+│       └── ... and 8 more
+
+├── packages\digital-assets\src\slide01-generator.ts (34 messages)
+│   └── 📝 LOG (34 occurrences)
+│       ├── 🎨 Generating Slide 1 Scene using advanced scene-graph system...\n
+│       ├── 🎨 Generating Slide 1 Scene using advanced scene-graph system...\n
+│       ├── ✅ Generated slide-01-manifest scene
+│       ├── ✅ Generated slide-01-manifest scene
+│       ├──    📊 ${slide01.nodes.length} top-level nodes, ${slide01.connectors?.le...
+│       ├──    📊 ${slide01.nodes.length} top-level nodes, ${slide01.connectors?.le...
+│       ├──    🎨 Canvas: ${slide01.canvas.width}×${slide01.canvas.height}, Backgro...
+│       ├──    🎨 Canvas: ${slide01.canvas.width}×${slide01.canvas.height}, Backgro...
+│       ├──    🖼️  ${svgPath}
+│       ├──    🖼️  ${svgPath}
+│       └── ... and 24 more
+
+├── packages\digital-assets\src\template-processor.ts (2 messages)
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── Unknown parameter: ${key}
+│       └── Parameter not found: ${paramName}
+
+├── packages\digital-assets\test-canvas-layout.js (8 messages)
+│   └── 📝 LOG (8 occurrences)
+│       ├── Running Canvas Layout Tests...\n
+│       ├── Running Canvas Layout Tests...\n
+│       ├── ✓ ${name}
+│       ├── ✓ ${name}
+│       ├── ✗ ${name}: ${error.message}
+│       ├── ✗ ${name}: ${error.message}
+│       ├── \nResults: ${this.passed} passed, ${this.failed} failed
+│       └── \nResults: ${this.passed} passed, ${this.failed} failed
+
+├── packages\digital-assets\test-svg-utilities-demo.js (44 messages)
+│   └── 📝 LOG (44 occurrences)
+│       ├── 🎬 SVG Animation Utilities Demo
+│       ├── 🎬 SVG Animation Utilities Demo
+│       ├── ===============================\n
+│       ├── ===============================\n
+│       ├── 1️⃣ Testing makeElementDisappear on simple SVG...
+│       ├── 1️⃣ Testing makeElementDisappear on simple SVG...
+│       ├── ✅ Result saved to test-results/simple-disappear.svg
+│       ├── ✅ Result saved to test-results/simple-disappear.svg
+│       ├──    - Blue rectangle will disappear at 2s\n
+│       ├──    - Blue rectangle will disappear at 2s\n
+│       └── ... and 34 more
+
+├── packages\digital-assets\tests\run-svg-tests.js (23 messages)
+│   ├── ❌ ERROR (5 occurrences)
+│   │   ├── `Server Error: ${data.toString(
+│   │   ├── Failed to start server:
+│   │   ├── ❌ Cypress tests failed with code ${code}
+│   │   ├── Failed to run Cypress:
+│   │   └── ❌ Test run failed:
+│   └── 📝 LOG (18 occurrences)
+│       ├── 🚀 Starting test server...
+│       ├── 🚀 Starting test server...
+│       ├── `Server: ${output.trim(
+│       ├── `Server: ${output.trim(
+│       ├── ✅ Test server is ready
+│       ├── ✅ Test server is ready
+│       ├── 🧪 Running Cypress tests...
+│       ├── 🧪 Running Cypress tests...
+│       ├── ✅ Cypress tests completed successfully
+│       ├── ✅ Cypress tests completed successfully
+│       └── ... and 8 more
+
+├── packages\digital-assets\tests\server.js (4 messages)
+│   └── 📝 LOG (4 occurrences)
+│       ├── Test server running at http://localhost:${PORT}
+│       ├── Test server running at http://localhost:${PORT}
+│       ├── SVG test page: http://localhost:${PORT}/tests/browser-svg-render-test....
+│       └── SVG test page: http://localhost:${PORT}/tests/browser-svg-render-test....
+
+├── packages\digital-assets\tests\slide-xml-validation.test.js (3 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── XML parsing error in ${slideFile}:
+│   │   └── Unbalanced group tags in ${slideFile}: ${openGroups} open, ${closeGrou...
+│   └── ⚠️ WARN (1 occurrences)
+│       └── Duplicate IDs found in ${slideFile}:
+
+├── packages\digital-assets\tests\svg-scene-validation.test.js (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── `Scene ${index + 1}: Layout(${layoutWidth}x${layoutHeight}
+│       └── `Scene ${index + 1}: Layout(${layoutWidth}x${layoutHeight}
+
+├── packages\header\src\symphonies\ui\ui.stage-crew.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── warn
+│       └── warn
+
+├── packages\host-sdk\EventRouter.ts (2 messages)
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── Host EventRouter not available. Events will not be routed.
+│       └── Host EventRouter not available. Event will not be published:
+
+├── packages\host-sdk\config.ts (2 messages)
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── "Host config not available. Ensure the host has called initConfig(
+│       └── "Host config not available. Ensure the host has called initConfig(
+
+├── packages\host-sdk\core\conductor\conductor.ts (3 messages)
+│   ├── 📝 LOG (2 occurrences)
+│   │   ├── `[conductor] init id=${(conductor as any
+│   │   └── `[conductor] init id=${(conductor as any
+│   └── ⚠️ WARN (1 occurrences)
+│       └── `[topics] Direct conductor.play(${pid}, ${sid}
+
+├── packages\host-sdk\core\conductor\runtime-loaders.ts (34 messages)
+│   └── 📝 LOG (34 occurrences)
+│       ├── 🧭 Catalog discovery plugins:
+│       ├── 🧭 Catalog discovery plugins:
+│       ├── \u23ed\ufe0f Sequence already processed in loader; skipping:
+│       ├── \u23ed\ufe0f Sequence already processed in loader; skipping:
+│       ├── \uD83D\uDD0D Using runtimePackageLoader for
+│       ├── \uD83D\uDD0D Using runtimePackageLoader for
+│       ├── \uD83D\uDD0D Using vendor symphony loader for
+│       ├── \uD83D\uDD0D Using vendor symphony loader for
+│       ├── \u21AA\uFE0F Dynamic importing handlers module via spec:
+│       ├── \u21AA\uFE0F Dynamic importing handlers module via spec:
+│       └── ... and 24 more
+
+├── packages\host-sdk\core\conductor\sequence-registration.ts (17 messages)
+│   ├── 📝 LOG (16 occurrences)
+│   │   ├── '✅ Plugins already ready (global flag
+│   │   ├── '✅ Plugins already ready (global flag
+│   │   ├── 🔄 Registration already in progress, skipping...
+│   │   ├── 🔄 Registration already in progress, skipping...
+│   │   ├── ✅ Registration already complete, skipping...
+│   │   ├── ✅ Registration already complete, skipping...
+│   │   ├── 🚀 Starting plugin registration...
+│   │   ├── 🚀 Starting plugin registration...
+│   │   ├── 🔌 Registered plugin runtime:
+│   │   ├── 🔌 Registered plugin runtime:
+│   │   └── ... and 6 more
+│   └── ⚠️ WARN (1 occurrences)
+│       └── ⚠️ Failed runtime register for
+
+├── packages\host-sdk\core\events\EventRouter.ts (13 messages)
+│   ├── 📝 LOG (10 occurrences)
+│   │   ├── [EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}
+│   │   ├── [EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}
+│   │   ├── [EventRouter] Topic '${topic}' definition:
+│   │   ├── [EventRouter] Topic '${topic}' definition:
+│   │   ├── `[EventRouter] resolvedConductor id=${cid} (global id=${gid}
+│   │   ├── `[EventRouter] resolvedConductor id=${cid} (global id=${gid}
+│   │   ├── [EventRouter] Starting delivery for '${topic}' with ${def.routes?.leng...
+│   │   ├── [EventRouter] Starting delivery for '${topic}' with ${def.routes?.leng...
+│   │   ├── ${topic}
+│   │   └── ${topic}
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── [EventRouter] No topic definition found for '${topic}'
+│       ├── [topics] Blocking immediate republish of '${topic}' to prevent feedbac...
+│       └── [topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:
+
+├── packages\host-sdk\core\manifests\interactionManifest.ts (1 messages)
+│   └── ⚠️ WARN (1 occurrences)
+│       └── [interactionManifest] Failed to load interaction-manifest.json; using ...
+
+├── packages\host-sdk\core\startup\startupValidation.ts (4 messages)
+│   ├── 📝 LOG (2 occurrences)
+│   │   ├── ✅ Artifact integrity verified:
+│   │   └── ✅ Artifact integrity verified:
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── [startupValidation] Failed reading plugin-manifest.json
+│       └── ⚠️ Artifact integrity mismatch:
+
+├── packages\host-sdk\cssRegistry.ts (11 messages)
+│   └── ⚠️ WARN (11 occurrences)
+│       ├── Error in CSS registry observer callback:
+│       ├── Host CSS Registry API not available.
+│       ├── Error calling host cssRegistry.hasClass:
+│       ├── Host CSS Registry API not available. Class will not be created.
+│       ├── Error calling host cssRegistry.createClass:
+│       ├── Host CSS Registry API not available. Class will not be updated.
+│       ├── Error calling host cssRegistry.updateClass:
+│       ├── Host CSS Registry API not available. Observer will not receive updates...
+│       ├── Error setting up CSS registry observer:
+│       ├── setMockCssClass should only be used in Node/SSR environments
+│       └── ... and 1 more
+
+├── packages\host-sdk\inventory.ts (10 messages)
+│   └── ⚠️ WARN (10 occurrences)
+│       ├── Error in inventory observer callback:
+│       ├── Host Inventory API not available. Using empty inventory.
+│       ├── Error calling host inventory.listComponents:
+│       ├── Host Inventory API not available.
+│       ├── Error calling host inventory.getComponentById:
+│       ├── Host Inventory API not available. Observer will not receive updates.
+│       ├── Error setting up inventory observer:
+│       ├── setMockInventory should only be used in Node/SSR environments
+│       ├── setMockComponent should only be used in Node/SSR environments
+│       └── clearMockInventory should only be used in Node/SSR environments
+
+├── packages\host-sdk\smoke\vite-app\src\main.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── smoke:
+│       └── smoke:
+
+├── packages\library\src\services\openai.service.ts (2 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── OpenAI generation failed:
+│   └── ⚠️ WARN (1 occurrences)
+│       └── Component validation warnings:
+
+├── packages\library\src\ui\ChatMessage.tsx (1 messages)
+│   └── ❌ ERROR (1 occurrences)
+│       └── Failed to copy JSON:
+
+├── packages\library\src\ui\ChatWindow.tsx (3 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── Chat error:
+│   │   └── Regeneration error:
+│   └── ⚠️ WARN (1 occurrences)
+│       └── Failed to load current chat session:
+
+├── packages\library\src\ui\CustomComponentList.tsx (1 messages)
+│   └── ❌ ERROR (1 occurrences)
+│       └── Error removing component:
+
+├── packages\library\src\ui\CustomComponentUpload.tsx (2 messages)
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── File validation warnings:
+│       └── Component validation warnings:
+
+├── packages\library\src\ui\LibraryPanel.tsx (5 messages)
+│   ├── ❌ ERROR (3 occurrences)
+│   │   ├── Custom component error:
+│   │   ├── Failed to save AI-generated component:
+│   │   └── Failed to save AI-generated component:
+│   └── 📝 LOG (2 occurrences)
+│       ├── AI-generated component added to library:
+│       └── AI-generated component added to library:
+
+├── packages\library\src\utils\chat.utils.ts (6 messages)
+│   └── ⚠️ WARN (6 occurrences)
+│       ├── Failed to load chat history:
+│       ├── Failed to save chat history:
+│       ├── Failed to add messages to session:
+│       ├── Failed to delete chat session:
+│       ├── Failed to clear chat history:
+│       └── Failed to cleanup chat history:
+
+├── packages\musical-conductor\modules\communication\DomainEventSystem.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🎼 Domain Event: ${eventName}
+│       └── 🎼 Domain Event: ${eventName}
+
+├── packages\musical-conductor\modules\communication\EventBus.ts (10 messages)
+│   └── 📝 LOG (10 occurrences)
+│       ├── 📡 EventBus: Cleared all subscribers for "${eventName}"
+│       ├── 📡 EventBus: Cleared all subscribers for "${eventName}"
+│       ├── 📡 EventBus: Cleared all subscribers
+│       ├── 📡 EventBus: Cleared all subscribers
+│       ├── 📡 EventBus: Debug mode ${enabled ? "enabled" : "disabled"}
+│       ├── 📡 EventBus: Debug mode ${enabled ? "enabled" : "disabled"}
+│       ├── "🎼 EventBus: Using internal conductor (legacy mode
+│       ├── "🎼 EventBus: Using internal conductor (legacy mode
+│       ├── 🎼 EventBus: Queueing ${eventName} for signal: ${signal}
+│       └── 🎼 EventBus: Queueing ${eventName} for signal: ${signal}
+
+├── packages\musical-conductor\modules\communication\SPAValidator.ts (8 messages)
+│   ├── ❌ ERROR (4 occurrences)
+│   │   ├──    Plugin: ${violation.pluginId}
+│   │   ├── `   Time: ${violation.timestamp.toISOString(
+│   │   ├──    Location: ${violation.fileUrl}:${violation.lineNumber}${col}
+│   │   └── `   Code: ${violation.codeSnippet.trim(
+│   └── 📝 LOG (4 occurrences)
+│       ├── 🎼 SPA Validator: Runtime checks initialized
+│       ├── 🎼 SPA Validator: Runtime checks initialized
+│       ├── 🎼 SPA Validator: Runtime checks disabled
+│       └── 🎼 SPA Validator: Runtime checks disabled
+
+├── packages\musical-conductor\modules\communication\index.ts (6 messages)
+│   └── 📝 LOG (6 occurrences)
+│       ├── 🔄 Communication system state reset
+│       ├── 🔄 Communication system state reset
+│       ├── 🎼 Initializing RenderX Evolution Communication System...
+│       ├── 🎼 Initializing RenderX Evolution Communication System...
+│       ├── ✅ Communication System initialized successfully
+│       └── ✅ Communication System initialized successfully
+
+├── packages\musical-conductor\modules\communication\sequences\MusicalConductor.ts (6 messages)
+│   └── 📝 LOG (6 occurrences)
+│       ├── 🎼 MusicalConductor: Initialized with core components
+│       ├── 🎼 MusicalConductor: Initialized with core components
+│       ├── 🔄 MusicalConductor: Singleton instance reset
+│       ├── 🔄 MusicalConductor: Singleton instance reset
+│       ├── 🎼 MusicalConductor: All monitoring data reset
+│       └── 🎼 MusicalConductor: All monitoring data reset
+
+├── packages\musical-conductor\modules\communication\sequences\api\ConductorAPI.ts (6 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── 🎽 ConductorAPI: Failed to update data baton:
+│   │   └── 🎽 ConductorAPI: Failed to clear data baton:
+│   ├── 📝 LOG (2 occurrences)
+│   │   ├── 🎼 ConductorAPI: Statistics reset
+│   │   └── 🎼 ConductorAPI: Statistics reset
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── 🎽 ConductorAPI: No active sequence to update data baton
+│       └── 🎽 ConductorAPI: No active sequence to clear data baton
+
+├── packages\musical-conductor\modules\communication\sequences\core\ConductorCore.ts (34 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── 🎼 Beat execution error:
+│   ├── 📝 LOG (32 occurrences)
+│   │   ├── 🎼 ConductorCore: Initialized successfully
+│   │   ├── 🎼 ConductorCore: Initialized successfully
+│   │   ├── 🎼 Beat execution logging already initialized, skipping...
+│   │   ├── 🎼 Beat execution logging already initialized, skipping...
+│   │   ├── 🎼 ConductorCore: Setting up beat execution logging...
+│   │   ├── 🎼 ConductorCore: Setting up beat execution logging...
+│   │   ├── ✅ Beat execution logging initialized
+│   │   ├── ✅ Beat execution logging initialized
+│   │   ├── 🎼 ┌─ Beat ${beatNumber} Started
+│   │   ├── 🎼 ┌─ Beat ${beatNumber} Started
+│   │   └── ... and 22 more
+│   └── ⚠️ WARN (1 occurrences)
+│       └── 🎼 Error during event unsubscription:
+
+├── packages\musical-conductor\modules\communication\sequences\core\EventSubscriptionManager.ts (1 messages)
+│   └── ❌ ERROR (1 occurrences)
+│       └── 🎼 Subscriber: ${subscriberId}
+
+├── packages\musical-conductor\modules\communication\sequences\core\SequenceRegistry.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🎼 SequenceRegistry: Cleared ${sequences.length} sequences
+│       └── 🎼 SequenceRegistry: Cleared ${sequences.length} sequences
+
+├── packages\musical-conductor\modules\communication\sequences\execution\BeatExecutor.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🧹 BeatExecutor: Beat execution queue cleared
+│       └── 🧹 BeatExecutor: Beat execution queue cleared
+
+├── packages\musical-conductor\modules\communication\sequences\execution\ExecutionQueue.ts (6 messages)
+│   └── 📝 LOG (6 occurrences)
+│       ├── 🎼 ExecutionQueue: Dequeued "${request.sequenceName}"
+│       ├── 🎼 ExecutionQueue: Dequeued "${request.sequenceName}"
+│       ├── 🎼 ExecutionQueue: Now executing "${request.sequenceName}"
+│       ├── 🎼 ExecutionQueue: Now executing "${request.sequenceName}"
+│       ├── 🎼 ExecutionQueue: No sequence currently executing
+│       └── 🎼 ExecutionQueue: No sequence currently executing
+
+├── packages\musical-conductor\modules\communication\sequences\execution\SequenceExecutor.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🧹 SequenceExecutor: Execution history cleared
+│       └── 🧹 SequenceExecutor: Execution history cleared
+
+├── packages\musical-conductor\modules\communication\sequences\index.ts (11 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Failed to register sequence: ${sequence.name}
+│   └── 📝 LOG (10 occurrences)
+│       ├── 🎼 Registering all musical sequences with conductor...
+│       ├── 🎼 Registering all musical sequences with conductor...
+│       ├── ✅ Registered sequence: ${sequence.name}
+│       ├── ✅ Registered sequence: ${sequence.name}
+│       ├── `📊 Sequence categories: ${Array.from(categories
+│       ├── `📊 Sequence categories: ${Array.from(categories
+│       ├── 🎼 Initializing Musical Sequences System...
+│       ├── 🎼 Initializing Musical Sequences System...
+│       ├── 📊 Total sequences registered: ${registeredSequences}
+│       └── 📊 Total sequences registered: ${registeredSequences}
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\ConductorLogger.ts (22 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── line, ...evt.message
+│   ├── 📝 LOG (20 occurrences)
+│   │   ├── line, ...evt.message
+│   │   ├── line, ...evt.message
+│   │   ├── ${indent}${scope.label}
+│   │   ├── ${indent}${scope.label}
+│   │   ├── `${indent}🎭 Stage Crew: ${pluginPrefix}${handlerName} (${correlationId...
+│   │   ├── `${indent}🎭 Stage Crew: ${pluginPrefix}${handlerName} (${correlationId...
+│   │   ├── ${opIndent}${connector} Add class "${op.value}" to ${op.selector}
+│   │   ├── ${opIndent}${connector} Add class "${op.value}" to ${op.selector}
+│   │   ├── ${opIndent}${connector} Remove class "${op.value}" from ${op.selector}
+│   │   ├── ${opIndent}${connector} Remove class "${op.value}" from ${op.selector}
+│   │   └── ... and 10 more
+│   └── ⚠️ WARN (1 occurrences)
+│       └── line, ...evt.message
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\DuplicationDetector.ts (5 messages)
+│   ├── 📝 LOG (4 occurrences)
+│   │   ├── 🔍 DuplicationDetector: Configuration updated:
+│   │   ├── 🔍 DuplicationDetector: Configuration updated:
+│   │   ├── 🧹 DuplicationDetector: All detection data reset
+│   │   └── 🧹 DuplicationDetector: All detection data reset
+│   └── ⚠️ WARN (1 occurrences)
+│       └── 🔍 DuplicationDetector: Failed to generate hash, using fallback:
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts (16 messages)
+│   └── 📝 LOG (16 occurrences)
+│       ├── 🎼 EventLogger: Hierarchical logging disabled
+│       ├── 🎼 EventLogger: Hierarchical logging disabled
+│       ├── 🎼 EventLogger: Hierarchical beat logging initialized
+│       ├── 🎼 EventLogger: Hierarchical beat logging initialized
+│       ├── 🎼 EventLogger: Movement hierarchical logging disabled
+│       ├── 🎼 EventLogger: Movement hierarchical logging disabled
+│       ├── 🎼 EventLogger: Hierarchical movement logging initialized
+│       ├── 🎼 EventLogger: Hierarchical movement logging initialized
+│       ├── %c✅ Completed
+│       ├── %c✅ Completed
+│       └── ... and 6 more
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\PerformanceTracker.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🧹 PerformanceTracker: All tracking data reset
+│       └── 🧹 PerformanceTracker: All tracking data reset
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\StatisticsManager.ts (3 messages)
+│   ├── 📝 LOG (2 occurrences)
+│   │   ├── 🧹 StatisticsManager: All statistics reset
+│   │   └── 🧹 StatisticsManager: All statistics reset
+│   └── ⚠️ WARN (1 occurrences)
+│       └── 📊 StatisticsManager: Recorded error occurrence
+
+├── packages\musical-conductor\modules\communication\sequences\orchestration\SequenceOrchestrator.ts (3 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── ❌ Sequence name: "${sequenceName}"
+│   │   └── ❌ Available sequences:
+│   └── ⚠️ WARN (1 occurrences)
+│       └── 🎼 SequenceOrchestrator: ${deduplicationResult.reason}
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginInterfaceFacade.ts (2 messages)
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── 🧠 No handlers found for sequence: ${sequenceName}
+│       └── 🎼 Failed to extract plugin code for validation:
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginLoader.ts (40 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── ❌ Failed to load plugin from ${pluginPath}:
+│   │   └── ❌ Failed to preload plugin ${path}:
+│   └── 📝 LOG (38 occurrences)
+│       ├── 📦 Loading plugin from cache: ${pluginPath}
+│       ├── 📦 Loading plugin from cache: ${pluginPath}
+│       ├── 🔄 [node] Importing plugin via file URL: ${fileUrl}
+│       ├── 🔄 [node] Importing plugin via file URL: ${fileUrl}
+│       ├── 🔄 Attempting to load plugin: ${pluginPath}
+│       ├── 🔄 Attempting to load plugin: ${pluginPath}
+│       ├── ✅ Successfully loaded plugin: ${pluginPath}
+│       ├── ✅ Successfully loaded plugin: ${pluginPath}
+│       ├── 🔄 Attempting to load bundled plugin: ${bundledPath}
+│       ├── 🔄 Attempting to load bundled plugin: ${bundledPath}
+│       └── ... and 28 more
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginManager.ts (32 messages)
+│   ├── ❌ ERROR (4 occurrences)
+│   │   ├── ❌ Failed to mount plugin ${id}:
+│   │   ├── ❌ Failed to unmount plugin ${pluginId}:
+│   │   ├── ❌ Failed to register CIA plugins:
+│   │   └── ❌ Error processing plugin ${plugin.name}:
+│   ├── 📝 LOG (26 occurrences)
+│   │   ├── 🧠 PluginManager: Attempting to mount plugin: ${id}
+│   │   ├── 🧠 PluginManager: Attempting to mount plugin: ${id}
+│   │   ├── 🧠 Plugin already mounted: ${id} — augmenting with additional sequence
+│   │   ├── 🧠 Plugin already mounted: ${id} — augmenting with additional sequence
+│   │   ├── ✅ Plugin mounted successfully: ${id}
+│   │   ├── ✅ Plugin mounted successfully: ${id}
+│   │   ├── 🎼 Sequence registered: ${sequence.name}
+│   │   ├── 🎼 Sequence registered: ${sequence.name}
+│   │   ├── ✅ Plugin unmounted successfully: ${pluginId}
+│   │   ├── ✅ Plugin unmounted successfully: ${pluginId}
+│   │   └── ... and 16 more
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── 🧠 PluginManager: Failed to unmount ${pluginId}:
+│       └── 🧠 Plugin not found for unmounting: ${pluginId}
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginManifestLoader.ts (19 messages)
+│   ├── ❌ ERROR (3 occurrences)
+│   │   ├── ❌ Failed to load manifest from ${manifestPath}:
+│   │   ├── ❌ Invalid plugin entry at index ${index}:
+│   │   └── ❌ Failed to parse manifest JSON:
+│   ├── 📝 LOG (12 occurrences)
+│   │   ├── 📦 Loading manifest from cache: ${manifestPath}
+│   │   ├── 📦 Loading manifest from cache: ${manifestPath}
+│   │   ├── 🔄 Loading plugin manifest: ${manifestPath}
+│   │   ├── 🔄 Loading plugin manifest: ${manifestPath}
+│   │   ├── ✅ Successfully loaded manifest: ${manifestPath}
+│   │   ├── ✅ Successfully loaded manifest: ${manifestPath}
+│   │   ├── 🔄 Using fallback manifest
+│   │   ├── 🔄 Using fallback manifest
+│   │   ├── ✅ Successfully loaded manifest from: ${path}
+│   │   ├── ✅ Successfully loaded manifest from: ${path}
+│   │   └── ... and 2 more
+│   └── ⚠️ WARN (4 occurrences)
+│       ├── ⚠️ Manifest missing version, using default
+│       ├── ⚠️ No valid plugins found in manifest
+│       ├── ⚠️ Failed to load manifest from ${path}, trying next...
+│       └── ⚠️ All manifest sources failed, using fallback
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceConflictManager.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🎼 ResourceConflictManager: Clearing all resource ownership
+│       └── 🎼 ResourceConflictManager: Clearing all resource ownership
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceManager.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🧹 ResourceManager: All resource ownership reset
+│       └── 🧹 ResourceManager: All resource ownership reset
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceOwnershipTracker.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🧹 ResourceOwnershipTracker: All tracking data reset
+│       └── 🧹 ResourceOwnershipTracker: All tracking data reset
+
+├── packages\musical-conductor\modules\communication\sequences\strictmode\StrictModeManager.ts (6 messages)
+│   └── 📝 LOG (6 occurrences)
+│       ├── 🎼 StrictModeManager: Added StrictMode pattern: ${pattern}
+│       ├── 🎼 StrictModeManager: Added StrictMode pattern: ${pattern}
+│       ├── 🎼 StrictModeManager: Removed StrictMode pattern: ${pattern}
+│       ├── 🎼 StrictModeManager: Removed StrictMode pattern: ${pattern}
+│       ├── 🎼 StrictModeManager: Cleared execution history
+│       └── 🎼 StrictModeManager: Cleared execution history
+
+├── packages\musical-conductor\modules\communication\sequences\validation\SequenceValidator.ts (2 messages)
+│   └── 📝 LOG (2 occurrences)
+│       ├── 🧹 SequenceValidator: Validation state reset
+│       └── 🧹 SequenceValidator: Validation state reset
+
+├── packages\musical-conductor\tests\unit\communication\plugins\logger.exposure.test.ts (3 messages)
+│   └── 📝 LOG (3 occurrences)
+│       ├── hello
+│       ├── hello
+│       └── hello
+
+├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts (4 messages)
+│   └── ℹ️ INFO (4 occurrences)
+│       ├── seq1 ran
 │       ├── seq1 ran
 │       ├── seq2 ran
-│       ├── 🚀 Starting knowledge export...
-│       ├── 📥 Starting knowledge import...
-│       ├── 🔍 Import preview:
-│       ├── `📊 Import summary: ${this.getImportSummary(result
-│       ├── 🔄 Starting knowledge merge...
-│       ├── 🔍 Validating knowledge file...
-│       ├── 📄 Validation report saved to: ${options.report}
-│       ├── 🔍 Comparing knowledge...
-│       └── ... and 5 more
+│       └── seq2 ran
 
-├── log (1667 messages)
-│   └── 📝 LOG (1667 occurrences)
-│       ├── ✅ Plugin manifest created at dist/plugin-manifest.json
-│       ├── ✅ Plugin manifest created at dist/plugin-manifest.json
-│       ├── Running Canvas Layout Tests...\n
-│       ├── Running Canvas Layout Tests...\n
-│       ├── ✓ ${name}
-│       ├── ✓ ${name}
-│       ├── ✗ ${name}: ${error.message}
-│       ├── ✗ ${name}: ${error.message}
-│       ├── \nResults: ${this.passed} passed, ${this.failed} failed
-│       ├── \nResults: ${this.passed} passed, ${this.failed} failed
-│       └── ... and 1657 more
+├── packages\musical-conductor\tools\cli\demo.ts (70 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── ❌ Knowledge file not found: ${filePath}
+│   │   └── ❌ Knowledge file not found: ${filePath}
+│   └── 📝 LOG (68 occurrences)
+│       ├── 🚀 Demo: Starting knowledge export...
+│       ├── 🚀 Demo: Starting knowledge export...
+│       ├── ✅ Demo: Knowledge exported to: ${outputPath}
+│       ├── ✅ Demo: Knowledge exported to: ${outputPath}
+│       ├── 📥 Demo: Starting knowledge import...
+│       ├── 📥 Demo: Starting knowledge import...
+│       ├── 🔍 Demo: Validating knowledge file...
+│       ├── 🔍 Demo: Validating knowledge file...
+│       ├── ✅ Demo: Knowledge file is valid
+│       ├── ✅ Demo: Knowledge file is valid
+│       └── ... and 58 more
 
-├── success (10 messages)
-│   └── ✅ SUCCESS (10 occurrences)
-│       ├── ✅ Knowledge exported to: ${outputPath}
-│       ├── ✅ Knowledge file is valid
-│       ├── ✅ Knowledge imported successfully
-│       ├── ✅ Knowledge merged and saved to: ${outputPath}
-│       ├── ✅ Knowledge file is valid
-│       ├── ✅ Shortcuts exported to: ${options.export}
-│       ├── ✅ Backup created: ${backupPath}
-│       ├── ✅ Added shortcut: ${shortcut.keyword}
-│       ├── ✅ Updated shortcut: ${keyword}
-│       └── ✅ Removed shortcut: ${removed.keyword}
+├── packages\musical-conductor\tools\cli\exporters\KnowledgeExporter.ts (7 messages)
+│   └── ⚠️ WARN (7 occurrences)
+│       ├── ⚠️ Could not get full system status:
+│       ├── ⚠️ Could not get event bus statistics:
+│       ├── ⚠️ Could not export complete system state:
+│       ├── ⚠️ Could not export complete plugin knowledge:
+│       ├── ⚠️ Could not export complete event knowledge:
+│       ├── ⚠️ Could not export complete resource knowledge:
+│       └── ⚠️ Could not export performance insights:
 
-└── warn (87 messages)
-    └── ⚠️ WARN (87 occurrences)
-        ├── "Host config not available. Ensure the host has called initConfig(
-        ├── "Host config not available. Ensure the host has called initConfig(
-        ├── Error in CSS registry observer callback:
-        ├── Host CSS Registry API not available.
-        ├── Error calling host cssRegistry.hasClass:
-        ├── Host CSS Registry API not available. Class will not be created.
-        ├── Error calling host cssRegistry.createClass:
-        ├── Host CSS Registry API not available. Class will not be updated.
-        ├── Error calling host cssRegistry.updateClass:
-        ├── Host CSS Registry API not available. Observer will not receive updates...
-        └── ... and 77 more
+├── packages\musical-conductor\tools\cli\importers\KnowledgeImporter.ts (8 messages)
+│   └── 📝 LOG (8 occurrences)
+│       ├── 📚 Imported Best Practices:
+│       ├── 📚 Imported Best Practices:
+│       ├──   ${index + 1}. ${practice}
+│       ├──   ${index + 1}. ${practice}
+│       ├── 💡 Imported Optimization Insights:
+│       ├── 💡 Imported Optimization Insights:
+│       ├── `  ${index + 1}. ${insight.insight} (${insight.type}
+│       └── `  ${index + 1}. ${insight.insight} (${insight.type}
+
+├── packages\musical-conductor\tools\cli\knowledge-cli.ts (247 messages)
+│   ├── ❌ ERROR (11 occurrences)
+│   │   ├── ❌ Export failed:
+│   │   ├── ❌ Validation failed:
+│   │   ├── ❌ Import failed:
+│   │   ├── ❌ Merge failed:
+│   │   ├── ❌ Validation failed:
+│   │   ├── ❌ Validation failed:
+│   │   ├── ❌ Failed to get status:
+│   │   ├── ❌ Diff failed:
+│   │   ├── ❌ Shortcut command failed:
+│   │   ├── ❌ Shortcuts command failed:
+│   │   └── ... and 1 more
+│   ├── ℹ️ INFO (12 occurrences)
+│   │   ├── 🚀 Starting knowledge export...
+│   │   ├── 📥 Starting knowledge import...
+│   │   ├── 🔍 Import preview:
+│   │   ├── `📊 Import summary: ${this.getImportSummary(result
+│   │   ├── 🔄 Starting knowledge merge...
+│   │   ├── 🔍 Validating knowledge file...
+│   │   ├── 📄 Validation report saved to: ${options.report}
+│   │   ├── 🔍 Comparing knowledge...
+│   │   ├── \n💡 Did you mean one of these?
+│   │   ├── \n🔍 Use --search flag to search for shortcuts
+│   │   └── ... and 2 more
+│   ├── 📝 LOG (214 occurrences)
+│   │   ├── JSON.stringify(status, null, 2
+│   │   ├── JSON.stringify(status, null, 2
+│   │   ├── JSON.stringify(diff, null, 2
+│   │   ├── JSON.stringify(diff, null, 2
+│   │   ├──    - ${s.keyword}: ${s.description}
+│   │   ├──    - ${s.keyword}: ${s.description}
+│   │   ├── \n${index + 1}. 🔗 ${shortcut.keyword}
+│   │   ├── \n${index + 1}. 🔗 ${shortcut.keyword}
+│   │   ├──    ${shortcut.description}
+│   │   ├──    ${shortcut.description}
+│   │   └── ... and 204 more
+│   ├── ✅ SUCCESS (7 occurrences)
+│   │   ├── ✅ Knowledge exported to: ${outputPath}
+│   │   ├── ✅ Knowledge file is valid
+│   │   ├── ✅ Knowledge imported successfully
+│   │   ├── ✅ Knowledge merged and saved to: ${outputPath}
+│   │   ├── ✅ Knowledge file is valid
+│   │   ├── ✅ Shortcuts exported to: ${options.export}
+│   │   └── ✅ Backup created: ${backupPath}
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── ⚠️ Warnings:
+│       ├── ⚠️ Warnings:
+│       └── ❌ Shortcut '${keyword}' not found
+
+├── packages\musical-conductor\tools\cli\queue-demo.ts (52 messages)
+│   └── 📝 LOG (52 occurrences)
+│       ├── 📤 Agent A wants to share plugin knowledge with Agent B...
+│       ├── 📤 Agent A wants to share plugin knowledge with Agent B...
+│       ├── \n📊 Current Queue Status:
+│       ├── \n📊 Current Queue Status:
+│       ├── \n📤 Agent A sends the plugin knowledge...
+│       ├── \n📤 Agent A sends the plugin knowledge...
+│       ├── 📥 Agent B receives the plugin knowledge...
+│       ├── 📥 Agent B receives the plugin knowledge...
+│       ├── \n👤 Agent B's current transfers:
+│       ├── \n👤 Agent B's current transfers:
+│       └── ... and 42 more
+
+├── packages\musical-conductor\tools\cli\queue\KnowledgeTransferQueue.ts (4 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Failed to save transfer queue:
+│   ├── ℹ️ INFO (1 occurrences)
+│   │   └── 📤 Transfer ${transferId} marked as sent by ${agentId}
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── ⏰ Cleaned up ${expiredCount} expired transfers
+│       └── ⚠️ Failed to load transfer queue, starting fresh
+
+├── packages\musical-conductor\tools\cli\shortcut-demo.ts (48 messages)
+│   ├── ❌ ERROR (2 occurrences)
+│   │   ├── ❌ Shortcut command failed:
+│   │   └── ❌ Shortcuts command failed:
+│   └── 📝 LOG (46 occurrences)
+│       ├── ❌ Shortcut '${keyword}' not found
+│       ├── ❌ Shortcut '${keyword}' not found
+│       ├── \n💡 Did you mean one of these?
+│       ├── \n💡 Did you mean one of these?
+│       ├──    - ${s.keyword}: ${s.description}
+│       ├──    - ${s.keyword}: ${s.description}
+│       ├── \n🔍 Use --search flag to search for shortcuts
+│       ├── \n🔍 Use --search flag to search for shortcuts
+│       ├── \n🎼 Available Categories
+│       ├── \n🎼 Available Categories
+│       └── ... and 36 more
+
+├── packages\musical-conductor\tools\cli\shortcuts\ShortcutManager.ts (28 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── ❌ Failed to save shortcuts database:
+│   ├── 📝 LOG (22 occurrences)
+│   │   ├── 📝 ${shortcut.description}
+│   │   ├── 📝 ${shortcut.description}
+│   │   ├── , 
+│   │   ├── , 
+│   │   ├── `\n📚 Resources (${shortcut.resources.length}
+│   │   ├── `\n📚 Resources (${shortcut.resources.length}
+│   │   ├──      ${resource.description}
+│   │   ├──      ${resource.description}
+│   │   ├──      📁 ${displayPath}
+│   │   ├──      📁 ${displayPath}
+│   │   └── ... and 12 more
+│   ├── ✅ SUCCESS (3 occurrences)
+│   │   ├── ✅ Added shortcut: ${shortcut.keyword}
+│   │   ├── ✅ Updated shortcut: ${keyword}
+│   │   └── ✅ Removed shortcut: ${removed.keyword}
+│   └── ⚠️ WARN (2 occurrences)
+│       ├── ⚠️ Failed to load shortcuts database, using defaults
+│       └── ❌ No shortcuts found for: "${query}"
+
+└── packages\musical-conductor\tools\cli\utils\CLILogger.ts (20 messages)
+    ├── ❌ ERROR (1 occurrences)
+    │   └── red
+    ├── 📝 LOG (18 occurrences)
+    │   ├── cyan
+    │   ├── cyan
+    │   ├── green
+    │   ├── green
+    │   ├── [DEBUG] ${message}
+    │   ├── [DEBUG] ${message}
+    │   ├── message, ...args
+    │   ├── message, ...args
+    │   ├── ─
+    │   ├── ─
+    │   └── ... and 8 more
+    └── ⚠️ WARN (1 occurrences)
+        └── yellow
 
 
 ================================================================================
 STATISTICS SUMMARY
 ================================================================================
 
-📊 Total Log Messages: 1863
+📊 Total Log Messages: 1993
 
 📈 By Log Level:
-  LOG        1667 ( 89.5%) ████████████████████████████████████████████
-  WARN         87 (  4.7%) ██
-  ERROR        84 (  4.5%) ██
-  INFO         15 (  0.8%) 
+  LOG        1795 ( 90.1%) █████████████████████████████████████████████
+  WARN         87 (  4.4%) ██
+  ERROR        84 (  4.2%) ██
+  INFO         17 (  0.9%) 
   SUCCESS      10 (  0.5%) 
 
 📦 By Package (Top 10):
-  digital-assets                  959 ( 51.5%)
-  musical-conductor               742 ( 39.8%)
-  host-sdk                         99 (  5.3%)
-  control-panel                    23 (  1.2%)
-  library                          20 (  1.1%)
-  canvas-component                 16 (  0.9%)
+  digital-assets                  959 ( 48.1%)
+  musical-conductor               745 ( 37.4%)
+  control-panel                   106 (  5.3%)
+  host-sdk                         99 (  5.0%)
+  canvas-component                 58 (  2.9%)
+  library                          20 (  1.0%)
   canvas                            4 (  0.2%)
+  header                            2 (  0.1%)
 
 📁 Files with Most Logs (Top 10):
   knowledge-cli.ts                                    247

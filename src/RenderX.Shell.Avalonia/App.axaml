@@ -4,5 +4,19 @@
              x:Class="RenderX.Shell.Avalonia.App">
   <Application.Styles>
     <fluent:FluentTheme/>
+    <!-- Design Tokens - Single source of truth for all colors, typography, spacing -->
+    <StyleInclude Source="/Styles/DesignTokens.axaml"/>
+    <!-- RenderX base component styles -->
+    <StyleInclude Source="/Styles/RenderXStyles.axaml"/>
+    <!-- Component-specific styles -->
+    <StyleInclude Source="/Styles/Components/ComponentStyles.axaml"/>
+    <StyleInclude Source="/Styles/Components/ControlPanelStyles.axaml"/>
+    <StyleInclude Source="/Styles/Components/LibraryStyles.axaml"/>
+    <StyleInclude Source="/Styles/Components/UICoreStyles.axaml"/>
+    <StyleInclude Source="/Styles/Components/DigitalAssetsStyles.axaml"/>
+    <!-- Animations and transitions -->
+    <StyleInclude Source="/Styles/Animations.axaml"/>
+    <StyleInclude Source="/Styles/Typography.axaml"/>
+    <StyleInclude Source="/Styles/Spacing.axaml"/>
   </Application.Styles>
 </Application>

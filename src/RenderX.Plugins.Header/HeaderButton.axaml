@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderButton"
+             Background="Transparent">
+    <Button x:Name="ActionButton"
+            Padding="12,6"
+            Background="#007ACC"
+            Foreground="White"
+            VerticalAlignment="Center"
+            Cursor="Hand" />
+</UserControl>
+
