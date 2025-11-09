@@ -70,6 +70,18 @@
       "autoMount": true
     },
     {
+      "id": "LibraryComponentPlugin",
+      "displayName": "Library Component Handlers",
+      "description": "Runtime for Library drag/drop sequences",
+      "version": "1.0.0",
+      "runtime": {
+        "module": "RenderX.Plugins.LibraryComponent.dll",
+        "export": "LibraryComponentPlugin"
+      },
+      "dependencies": ["LibraryPlugin"],
+      "autoMount": true
+    },
+    {
       "id": "CanvasPlugin",
       "displayName": "Design Canvas",
       "description": "Main design canvas for component composition",
@@ -87,6 +99,18 @@
       "autoMount": true
     },
     {
+      "id": "CanvasComponentPlugin",
+      "displayName": "Canvas Component Handlers",
+      "description": "High-frequency interaction & manipulation handlers for Canvas",
+      "version": "1.0.0",
+      "runtime": {
+        "module": "RenderX.Plugins.CanvasComponent.dll",
+        "export": "CanvasComponentPlugin"
+      },
+      "dependencies": ["CanvasPlugin"],
+      "autoMount": true
+    },
+    {
       "id": "ControlPanelPlugin",
       "displayName": "Control Panel",
       "description": "Property editing panel for selected components",
@@ -99,6 +123,18 @@
       "runtime": {
         "module": "RenderX.Plugins.ControlPanel.dll",
         "export": "ControlPanelControl"
+      },
+      "dependencies": [],
+      "autoMount": true
+    },
+    {
+      "id": "ComponentsPlugin",
+      "displayName": "Component Definitions",
+      "description": "Provides JSON component definitions for the component library",
+      "version": "1.0.0",
+      "runtime": {
+        "module": "RenderX.Plugins.Components.dll",
+        "export": "ComponentsPlugin"
       },
       "dependencies": [],
       "autoMount": true
