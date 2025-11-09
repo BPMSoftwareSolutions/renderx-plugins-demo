@@ -1,0 +1,193 @@
+📋 ESLint Custom Rules Analysis
+==================================================
+📁 Directory: C:\source\repos\bpm\internal\renderx-plugins-demo\eslint-rules
+📊 Total Rules: 31
+🏷️  Categories: 6
+
+📈 Statistics:
+├── Rules with tests: 1/31 (3.2%)
+├── Fixable rules: 2/31 (6.5%)
+└── Average lines per rule: 153.4
+
+🗂️  Rules by Category:
+├── Architecture Rules (4 rules)
+│   ├── feature-flags (problem)
+│       📝 ESLint plugin: feature-flags
+│       💬 Messages: 2
+│          • nonLiteralFlagId: isFlagEnabled() requires a string literal flag id...
+│          • unknownFlagId: Unknown feature flag id ...
+│       📏 Lines: 63
+
+│   ├── handler-export-exists (problem)
+│       📝 Ensure each handler referenced in json-sequences beats exists in the referenced handlersPath module
+│       💬 Messages: 1
+│          • missingHandler: Handler ...
+│       📏 Lines: 120
+
+│   ├── interaction-keys (problem)
+│       📝 ESLint plugin: interaction-keys
+│       💬 Messages: 2
+│          • nonLiteralKey: resolveInteraction() requires a string literal key...
+│          • unknownKey: Unknown interaction key ...
+│       📏 Lines: 243
+
+│   └── topics-keys (problem)
+│       📝 ESLint plugin: topics-keys
+│       💬 Messages: 2
+│          • nonLiteralTopic: EventRouter.publish() requires a string literal to...
+│          • unknownTopic: Unknown topic ...
+│       📏 Lines: 82
+
+├── Configuration Rules (1 rules)
+│   └── panelslot-inside-slotcontainer (problem)
+│       📝 Require that <PanelSlot> is used only inside <SlotContainer> wrappers
+│       💬 Messages: 1
+│          • wrapped: <PanelSlot> must be nested inside <SlotContainer> ...
+│       📏 Lines: 45
+
+├── General Rules (7 rules)
+│   ├── beat-kind-dom-access (problem)
+│       📝 ESLint rule: beat-kind-dom-access
+│       💬 Messages: 1
+│          • domAccessInNonStageCrew: DOM access ...
+│       📏 Lines: 363
+
+│   ├── deprecate-stagecrew-api (problem)
+│       📝 ESLint plugin: deprecate-stagecrew-api
+│       💬 Messages: 1
+│          • deprecatedStageCrew: StageCrew API is deprecated in stage-crew handlers...
+│       📏 Lines: 76
+
+│   ├── root-shims-only (problem)
+│       📝 Top-level src/* legacy entrypoints must be pure re-export shims to src/core/** or src/domain/** (Phase C guardrail)
+│       📏 Lines: 58
+
+│   ├── rule-engine-coverage (missingExtraction)
+│       📝 ESLint plugin: rule-engine-coverage
+│       💬 Messages: 1
+│          • missingUpdateRule: Control panel property ...
+│       📏 Lines: 489
+
+│   ├── sequences-in-json (problem)
+│       📝 ESLint rule: sequences-in-json
+│       💬 Messages: 2
+│          • sequenceExportNotAllowed: Sequence definitions must be in JSON files, not Ty...
+│          • sequenceObjectNotAllowed: Object with sequence-like structure detected. Sequ...
+│       📏 Lines: 188
+
+│   ├── valid-handlers-path (problem)
+│       📝 Validate handlersPath entries in json-sequences/*/index.json are module-resolvable and not under public/
+│       💬 Messages: 1
+│          • publicPath: handlersPath ...
+│       📏 Lines: 147
+
+│   └── valid-sequence-handlers (problem)
+│       📝 ESLint plugin: valid-sequence-handlers
+│       💬 Messages: 1
+│          • missingHandler: Handler ...
+│       📏 Lines: 258
+
+├── Import/Export Rules (2 rules)
+│   ├── consistent-json-import-attributes (suggestion)
+│       📝 Enforce consistent use of import attributes for JSON imports in src/**/*.ts(x)
+│       💬 Messages: 1
+│          • requireAttrs: JSON import should include import attributes: with...
+│       📏 Lines: 62
+
+│   └── import-css-injection-coverage (problem)
+│       📝 ESLint plugin: import-css-injection-coverage
+│       💬 Messages: 1
+│          • missingCssMapping: Import flow does not map template CSS into importe...
+│       📏 Lines: 220
+
+├── Prohibition Rules (7 rules)
+│   ├── no-console-in-plugins (problem) 🔧
+│       📝 ESLint rule to prevent direct console usage in plugin code
+│       📏 Lines: 112
+
+│   ├── no-cross-plugin-imports (problem)
+│       📝 ESLint rule: Forbid cross-plugin imports within plugins/**.
+│       📏 Lines: 80
+
+│   ├── no-hardcoded-layout-styles (problem)
+│       📝 Disallow inline grid template styles outside src/layout/**
+│       📏 Lines: 46
+
+│   ├── no-hardcoded-play-ids (problem)
+│       📝 Disallow hard-coded pluginId/sequenceId in conductor.play(); use resolveInteraction(
+│       💬 Messages: 1
+│          • noHardcoded: Do not hard-code pluginId/sequenceId in play(); us...
+│       📏 Lines: 96
+
+│   ├── no-hardcoded-slot-names (problem)
+│       📝 Disallow hardcoded slot name unions; use string + manifest
+│       💬 Messages: 1
+│          • hardcoded: Hardcoded slot names detected. Use string + manife...
+│       📏 Lines: 25
+
+│   ├── no-host-internals-in-plugins (problem)
+│       📝 ESLint rule: Forbid imports from src/** within plugins/**.
+│       📏 Lines: 44
+
+│   └── no-layout-logic-in-components (problem)
+│       📝 Disallow layout computation outside src/layout/**
+│       💬 Messages: 1
+│          • move: Layout logic must live in src/layout/** (issue #61...
+│       📏 Lines: 29
+
+└── Validation Rules (10 rules)
+    ├── require-manifest-validation (problem)
+        📝 Require validateLayoutManifest(manifest) to be called in concrete LayoutEngine implementation (domain or legacy)
+        💬 Messages: 1
+           • required: validateLayoutManifest(manifest) must be called in...
+        📏 Lines: 41
+
+    ├── require-plugin-manifest-fragment (problem)
+        📝 ESLint plugin: require-plugin-manifest-fragment (#133)
+        📏 Lines: 198
+
+    ├── require-routing-declarations (problem) 🔧
+        📝 ESLint rule: require-routing-declarations
+        💬 Messages: 1
+           • missingRoutingDeclaration: Canvas sequence ...
+        📏 Lines: 169
+
+    ├── require-slot-manifest-registration (problem)
+        📝 Require that literal PanelSlot slot values are registered in layout-manifest.json
+        💬 Messages: 1
+           • unregistered: Slot ...
+        📏 Lines: 50
+
+    ├── validate-external-plugin-consistency (problem)
+        📝 ESLint rule to validate plugin ID consistency in external @renderx-plugins/* packages
+        📏 Lines: 433
+
+    ├── validate-host-sdk-missing (suggestion)
+        📝 ESLint rule: validate-host-sdk-missing
+        💬 Messages: 1
+           • missingDependency: Plugin ...
+        📏 Lines: 109
+
+    ├── validate-host-sdk-version (problem) ✅
+        📝 ESLint rule: validate-host-sdk-version
+        💬 Messages: 1
+           • incompatibleVersion: Plugin ...
+        📏 Lines: 173
+
+    ├── validate-host-sdk-version-mismatch (problem)
+        📝 ESLint rule: validate-host-sdk-version-mismatch
+        💬 Messages: 1
+           • incompatibleVersion: Plugin ...
+        📏 Lines: 140
+
+    ├── validate-internal-plugin-ids (problem)
+        📝 ESLint rule to validate internal plugin ID consistency across repo manifests
+        💬 Messages: 1
+           • missingPlugin: Plugin ID ...
+        📏 Lines: 299
+
+    └── validate-served-sequences-mountable (problem)
+        📝 ESLint rule to validate that served sequence JSONs are mountable
+        💬 Messages: 1
+           • notMountable: Served sequence ...
+        📏 Lines: 298

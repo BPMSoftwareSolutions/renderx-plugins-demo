@@ -28,6 +28,11 @@ namespace RenderX.Shell.Avalonia.Analyzers;
 /// 9. All plugins in plugin-manifest.json must have corresponding implementations
 /// 10. All plugins must be registered in PluginLoader.cs
 /// 11. All plugin DLLs must be referenced in the shell project
+///
+/// SHELL004: Manifest-driven loading violations
+/// 12. PluginLoader must NOT have hardcoded _slotTypeMap dictionary
+/// 13. PluginLoader must load plugin mappings from plugin-manifest.json
+/// 14. All plugin mappings must be defined in the manifest, not in code
 /// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
@@ -64,8 +69,18 @@ public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
         isEnabledByDefault: true,
         description: "All plugins must be standalone DLLs, not embedded in the shell. Canvas and ControlPanel should be in RenderX.Plugins.Canvas and RenderX.Plugins.ControlPanel, not in RenderX.Shell.Avalonia.UI.Views.");
 
+    private const string ManifestDrivenLoadingDiagnosticId = "SHELL004";
+    private static readonly DiagnosticDescriptor ManifestDrivenLoadingRule = new DiagnosticDescriptor(
+        ManifestDrivenLoadingDiagnosticId,
+        title: "Manifest-driven loading violation",
+        messageFormat: "PluginLoader must use manifest-driven loading: {0}",
+        category: Category,
+        defaultSeverity: DiagnosticSeverity.Error,
+        isEnabledByDefault: true,
+        description: "PluginLoader must load plugin mappings from plugin-manifest.json, not use hardcoded _slotTypeMap dictionary. This ensures the manifest is the single source of truth for plugin configuration.");
+
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics =>
-        ImmutableArray.Create(Rule, PluginDecouplingRule, PluginCompletenessRule);
+        ImmutableArray.Create(Rule, PluginDecouplingRule, PluginCompletenessRule, ManifestDrivenLoadingRule);
 
     public override void Initialize(AnalysisContext context)
     {
@@ -74,6 +89,7 @@ public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
         context.RegisterSyntaxNodeAction(AnalyzeImportStatement, SyntaxKind.UsingDirective);
         context.RegisterSyntaxNodeAction(AnalyzeObjectCreation, SyntaxKind.ObjectCreationExpression);
         context.RegisterCompilationAction(AnalyzePluginCompleteness);
+        context.RegisterCompilationAction(AnalyzeManifestDrivenLoading);
     }
 
     private static void AnalyzeImportStatement(SyntaxNodeAnalysisContext context)
@@ -194,6 +210,50 @@ public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
                     context.ReportDiagnostic(diagnostic);
                 }
             }
+        }
+    }
+
+    private static void AnalyzeManifestDrivenLoading(CompilationAnalysisContext context)
+    {
+        // SHELL004: Check that PluginLoader uses manifest-driven loading
+        // PluginLoader must NOT have hardcoded _slotTypeMap dictionary
+
+        var pluginLoaderType = context.Compilation.GetTypeByMetadataName("RenderX.Shell.Avalonia.Infrastructure.Plugins.PluginLoader");
+        if (pluginLoaderType == null)
+            return;
+
+        var location = pluginLoaderType.Locations.FirstOrDefault();
+        if (location == null || !location.IsInSource)
+            return;
+
+        // Get the source code of the PluginLoader file
+        var syntaxTree = location.SourceTree;
+        if (syntaxTree == null)
+            return;
+
+        var sourceText = syntaxTree.GetText();
+        var code = sourceText.ToString();
+
+        // Check for hardcoded _slotTypeMap dictionary (anti-pattern)
+        if (code.Contains("_slotTypeMap = new Dictionary"))
+        {
+            var diagnostic = Diagnostic.Create(
+                ManifestDrivenLoadingRule,
+                location,
+                "PluginLoader has hardcoded _slotTypeMap dictionary. Use manifest-driven loading instead.");
+
+            context.ReportDiagnostic(diagnostic);
+        }
+
+        // Check that manifest loading is present
+        if (!code.Contains("plugin-manifest.json"))
+        {
+            var diagnostic = Diagnostic.Create(
+                ManifestDrivenLoadingRule,
+                location,
+                "PluginLoader should load plugin mappings from plugin-manifest.json");
+
+            context.ReportDiagnostic(diagnostic);
         }
     }
 }

@@ -193,3 +193,5 @@ cypress/videos/
 **/bin/
 **/obj/
 **/wwwroot/
+/src/.vs/RenderX.Shell.Avalonia/FileContentIndex
+/src/.vs/RenderX.Shell.Avalonia/v17
