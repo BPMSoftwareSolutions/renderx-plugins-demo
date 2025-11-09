@@ -11,6 +11,7 @@ using RenderX.Shell.Avalonia.Core;
 using RenderX.Shell.Avalonia.Infrastructure.Configuration;
 using RenderX.Shell.Avalonia.UI.ViewModels;
 using RenderX.Shell.Avalonia.Infrastructure.Plugins;
+using Serilog;
 using System;
 
 namespace RenderX.Shell.Avalonia;
@@ -156,11 +157,30 @@ public partial class App : Application
                 // ViewModels
                 services.AddTransient<MainWindowViewModel>();
 
-                // Logging
+                // Logging - Configure Serilog with file output
+                var logDirectory = System.IO.Path.Combine(AppContext.BaseDirectory ?? "", ".logs");
+                System.IO.Directory.CreateDirectory(logDirectory);
+                
+                var logFileName = $"renderx-{DateTime.Now:yyyyMMdd-HHmmss}.log";
+                var logFilePath = System.IO.Path.Combine(logDirectory, logFileName);
+
+                Serilog.Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Information()
+                    .WriteTo.Console(
+                        outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {SourceContext}: {Message:lj}{NewLine}{Exception}")
+                    .WriteTo.File(
+                        logFilePath,
+                        outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz}] [{Level:u3}] {SourceContext}: {Message:lj}{NewLine}{Exception}",
+                        rollingInterval: RollingInterval.Day,
+                        retainedFileCountLimit: 7,
+                        shared: true,
+                        flushToDiskInterval: TimeSpan.FromSeconds(1))
+                    .CreateLogger();
+
                 services.AddLogging(builder =>
                 {
-                    builder.AddConsole();
-                    builder.SetMinimumLevel(LogLevel.Information);
+                    builder.ClearProviders();
+                    builder.AddSerilog(Serilog.Log.Logger, dispose: true);
                 });
             });
     }

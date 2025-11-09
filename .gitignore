@@ -147,6 +147,8 @@ vite.config.ts.timestamp-*
 *.vs/
 
 /.logs
+# Keep the README to document log file location and format
+!.logs/README.md
 
 # Allow committed docs logs
 !docs/logs/
