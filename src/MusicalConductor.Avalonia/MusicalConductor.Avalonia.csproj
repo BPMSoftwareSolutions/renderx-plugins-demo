@@ -24,6 +24,12 @@
     <!-- Microsoft DI for dependency injection -->
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="MusicalConductor.Core\MusicalConductor.Core.csproj" />
   </ItemGroup>
 
   <!-- Include the compiled JS bundle -->

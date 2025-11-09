@@ -2,6 +2,7 @@ using Jint;
 using Jint.Native;
 using Jint.Runtime;
 using Microsoft.Extensions.Logging;
+using MusicalConductor.Avalonia.Logging;
 
 namespace MusicalConductor.Avalonia.Engine;
 
@@ -14,13 +15,18 @@ public class JintEngineHost : IDisposable
     private readonly Jint.Engine _engine;
     private readonly ILogger<JintEngineHost> _logger;
     private readonly MusicalConductor.Avalonia.Extensions.MusicalConductorOptions? _options;
+    private readonly ConductorLogger? _conductorLogger;
     private JsValue _conductorInstance = JsValue.Undefined;
     private bool _disposed;
 
-    public JintEngineHost(ILogger<JintEngineHost> logger, MusicalConductor.Avalonia.Extensions.MusicalConductorOptions? options = null)
+    public JintEngineHost(
+        ILogger<JintEngineHost> logger,
+        MusicalConductor.Avalonia.Extensions.MusicalConductorOptions? options = null,
+        ConductorLogger? conductorLogger = null)
     {
         _logger = logger;
         _options = options;
+        _conductorLogger = conductorLogger;
         _engine = new Jint.Engine(options =>
         {
             options.TimeoutInterval(TimeSpan.FromSeconds(30));
@@ -29,10 +35,12 @@ public class JintEngineHost : IDisposable
 
         InitializeBrowserStubs();
         LoadConductorBundle();
+        SubscribeToConductorEvents();
     }
 
     /// <summary>
     /// Initialize browser API stubs (window, document, console).
+    /// Console stubs preserve icons from JavaScript (ConductorLogger.ts) instead of adding redundant prefixes.
     /// </summary>
     private void InitializeBrowserStubs()
     {
@@ -43,13 +51,54 @@ public class JintEngineHost : IDisposable
         _engine.SetValue("document", new object());
         _engine.SetValue("console", new
         {
-            log = new Action<object?[]>(args => _logger.LogInformation("🎼 [JS] {Message}", string.Join(" ", (args ?? Array.Empty<object?>()).Select(a => a?.ToString())))),
-            info = new Action<object?[]>(args => _logger.LogInformation("ℹ️ [JS] {Message}", string.Join(" ", (args ?? Array.Empty<object?>()).Select(a => a?.ToString())))),
-            warn = new Action<object?[]>(args => _logger.LogWarning("⚠️ [JS] {Message}", string.Join(" ", (args ?? Array.Empty<object?>()).Select(a => a?.ToString())))),
-            error = new Action<object?[]>(args => _logger.LogError("❌ [JS] {Message}", string.Join(" ", (args ?? Array.Empty<object?>()).Select(a => a?.ToString()))))
+            log = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Information, args)),
+            info = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Information, args)),
+            warn = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Warning, args)),
+            error = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Error, args))
         });
 
         _logger.LogInformation("✅ Browser stubs initialized");
+    }
+
+    /// <summary>
+    /// Log with icon preservation - don't add our own prefix if message already has an icon from ConductorLogger.ts
+    /// </summary>
+    private void LogWithIconPreservation(LogLevel level, object?[] args)
+    {
+        var message = string.Join(" ", (args ?? Array.Empty<object?>()).Select(a => a?.ToString()));
+
+        // Preserve icons from JavaScript - don't add our own prefix if message already has an icon
+        // Icons are typically emoji which are represented as surrogate pairs in UTF-16
+        var hasIcon = message.Length > 0 && (char.IsHighSurrogate(message[0]) || IsCommonEmoji(message));
+
+        if (hasIcon)
+        {
+            // Message already has an icon from ConductorLogger.ts, preserve it as-is
+            _logger.Log(level, "{Message}", message);
+        }
+        else
+        {
+            // No icon detected, add default based on level
+            var icon = level switch
+            {
+                LogLevel.Warning => "⚠️",
+                LogLevel.Error => "❌",
+                _ => "🎼"
+            };
+            _logger.Log(level, "{Icon} [JS] {Message}", icon, message);
+        }
+    }
+
+    /// <summary>
+    /// Check if the message starts with a common emoji used in ConductorLogger
+    /// </summary>
+    private bool IsCommonEmoji(string message)
+    {
+        if (string.IsNullOrEmpty(message)) return false;
+
+        // Check for common emoji prefixes used in ConductorLogger
+        var commonEmojis = new[] { "🎼", "🎵", "🥁", "🔧", "🧩", "🎭", "📡", "🎽", "🧠", "🔍", "📊", "🎯", "✅" };
+        return commonEmojis.Any(emoji => message.StartsWith(emoji));
     }
 
 
@@ -180,6 +229,44 @@ public class JintEngineHost : IDisposable
         return JsValue.FromObject(_engine, value);
     }
 
+    /// <summary>
+    /// Subscribe ConductorLogger to Musical Conductor events from the JavaScript EventBus.
+    /// This enables hierarchical logging with contextual icons matching the web version.
+    /// </summary>
+    private void SubscribeToConductorEvents()
+    {
+        if (_conductorLogger == null)
+        {
+            _logger.LogDebug("ConductorLogger not provided, skipping event subscriptions");
+            return;
+        }
+
+        try
+        {
+            // Get EventBus from the conductor instance
+            var eventBusJs = _conductorInstance.AsObject().Get("eventBus");
+
+            if (eventBusJs.IsNull() || eventBusJs.IsUndefined())
+            {
+                _logger.LogWarning("⚠️ EventBus not found on MusicalConductor instance, cannot subscribe ConductorLogger");
+                return;
+            }
+
+            // Create adapter to bridge JavaScript EventBus to .NET IEventBus
+            var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var adapterLogger = loggerFactory.CreateLogger<JintEventBusAdapter>();
+            var eventBusAdapter = new JintEventBusAdapter(_engine, eventBusJs, adapterLogger);
+
+            // Subscribe ConductorLogger to events
+            _conductorLogger.SubscribeToEvents(eventBusAdapter);
+
+            _logger.LogInformation("✅ ConductorLogger subscribed to Musical Conductor events");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "❌ Failed to subscribe ConductorLogger to Musical Conductor events");
+        }
+    }
 
     public void Dispose()
     {
