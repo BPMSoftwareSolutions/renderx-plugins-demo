@@ -1,0 +1,1864 @@
+================================================================================
+Symphony Handler Tracing Report
+================================================================================
+
+├── canvas-component-copy-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\copy.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 3
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Copy to Clipboard
+│       └── 🥁 BEATS (3):
+│           ├── Beat 1: Serialize Component Data
+│           │   ├── 📡 Event: canvas:component:copy:serialize
+│           │   ├── 🎯 Handler: serializeSelectedComponent
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\copy\copy.stage-crew.ts:50
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, _ctx
+│           │
+│           ├── Beat 2: Copy to Clipboard
+│           │   ├── 📡 Event: canvas:component:copy:clipboard
+│           │   ├── 🎯 Handler: copyToClipboard
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: io
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\copy\copy.stage-crew.ts:67
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Notify Copy Complete
+│           │   ├── 📡 Event: canvas:component:copy:notify
+│           │   ├── 🎯 Handler: notifyCopyComplete
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\copy\copy.stage-crew.ts:79
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, _ctx
+│           │
+
+├── canvas-component-create-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\create.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 6
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Create
+│       └── 🥁 BEATS (6):
+│           ├── Beat 1: Resolve Template
+│           │   ├── 📡 Event: canvas:component:resolve-template
+│           │   ├── 🎯 Handler: resolveTemplate
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.arrangement.ts:1
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Register Instance
+│           │   ├── 📡 Event: canvas:component:register-instance
+│           │   ├── 🎯 Handler: registerInstance
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: io
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.io.ts:1
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Create Node
+│           │   ├── 📡 Event: canvas:component:create
+│           │   ├── 🎯 Handler: createNode
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.stage-crew.ts:39
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 4: Render React Component
+│           │   ├── 📡 Event: canvas:component:render-react
+│           │   ├── 🎯 Handler: renderReact
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.react.stage-crew.ts:11
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Renders React code inside a canvas component node. Compiles user-provided React ...
+│           │
+│           ├── Beat 5: Notify UI
+│           │   ├── 📡 Event: canvas:component:notify-ui
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 6: Enhance Line (Advanced)
+│           │   ├── 📡 Event: canvas:component:augment:line
+│           │   ├── 🎯 Handler: enhanceLine
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\augment\augment.line.stage-crew.ts:30
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+
+├── canvas-component-delete-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\delete.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Delete
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Delete Component
+│           │   ├── 📡 Event: canvas:component:delete
+│           │   ├── 🎯 Handler: deleteComponent
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\delete\delete.stage-crew.ts:31
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Publish Deleted
+│           │   ├── 📡 Event: canvas:component:deleted
+│           │   ├── 🎯 Handler: publishDeleted
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\delete\delete.stage-crew.ts:14
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-delete-requested-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\delete.requested.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Route Delete
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Route Delete Request
+│           │   ├── 📡 Event: canvas:component:delete:route
+│           │   ├── 🎯 Handler: routeDeleteRequest
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\delete\delete.stage-crew.ts:47
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-deselect-all-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\deselect-all.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Deselect All
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Hide All Overlays
+│           │   ├── 📡 Event: canvas:component:deselect:all
+│           │   ├── 🎯 Handler: hideAllOverlays
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:11
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │
+│           ├── Beat 2: Publish Selections Cleared
+│           │   ├── 📡 Event: canvas:component:selections:cleared
+│           │   ├── 🎯 Handler: publishSelectionsCleared
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:44
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+
+├── canvas-component-deselect-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\deselect.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Deselect
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Hide Overlays for ID
+│           │   ├── 📡 Event: canvas:component:deselect
+│           │   ├── 🎯 Handler: deselectComponent
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:20
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Publish Deselection Changed
+│           │   ├── 📡 Event: canvas:component:deselection:changed
+│           │   ├── 🎯 Handler: publishDeselectionChanged
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:36
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-deselect-requested-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\deselect.requested.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Route Deselection
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Route Deselection Request
+│           │   ├── 📡 Event: canvas:component:deselect:route
+│           │   ├── 🎯 Handler: routeDeselectionRequest
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:62
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Topic-first deselection routing handler - If data.id is present route to canvas....
+│           │
+
+├── canvas-component-drag-end-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\drag.end.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Drag End
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Drag End
+│           │   ├── 📡 Event: canvas:component:drag:end
+│           │   ├── 🎯 Handler: endDrag
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\drag\drag.stage-crew.ts:86
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-drag-move-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\drag.move.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Drag Move
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Update Position
+│           │   ├── 📡 Event: canvas:component:drag:move
+│           │   ├── 🎯 Handler: updatePosition
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\drag\drag.stage-crew.ts:6
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Forward to Control Panel
+│           │   ├── 📡 Event: canvas:component:drag:forward
+│           │   ├── 🎯 Handler: forwardToControlPanel
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\drag\drag.stage-crew.ts:111
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data?, _ctx?
+│           │       └── 📖 Doc: Forward selection info over to Control Panel (stub for now)...
+│           │
+
+├── canvas-component-drag-start-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\drag.start.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Drag Start
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Drag Start
+│           │   ├── 📡 Event: canvas:component:drag:start
+│           │   ├── 🎯 Handler: startDrag
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\drag\drag.stage-crew.ts:62
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-export-gif-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\export-gif.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Export GIF
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Rasterize SVG and Encode GIF
+│           │   ├── 📡 Event: canvas:component:export-gif:rasterize-and-encode
+│           │   ├── 🎯 Handler: exportSvgToGif
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.gif.stage-crew.ts:27
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-export-mp4-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\export-mp4.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Export MP4
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Rasterize SVG and Encode MP4
+│           │   ├── 📡 Event: canvas:component:export-mp4:rasterize-and-encode
+│           │   ├── 🎯 Handler: exportSvgToMp4
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.mp4.stage-crew.ts:6
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-export-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\export.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 6
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Export
+│       └── 🥁 BEATS (6):
+│           ├── Beat 1: Query All Components
+│           │   ├── 📡 Event: canvas:component:query-all
+│           │   ├── 🎯 Handler: queryAllComponents
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: io
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.io.ts:1
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Discover Components from DOM
+│           │   ├── 📡 Event: canvas:component:discover-components
+│           │   ├── 🎯 Handler: discoverComponentsFromDom
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.discover.stage-crew.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+│           ├── Beat 3: Collect CSS Classes
+│           │   ├── 📡 Event: canvas:component:collect-css
+│           │   ├── 🎯 Handler: collectCssClasses
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.css.stage-crew.ts:6
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │       └── 📖 Doc: Stage-crew collector that uses the front-end CSS registry store. No IO fallbacks...
+│           │
+│           ├── Beat 3: Collect Layout Data
+│           │   ├── 📡 Event: canvas:component:collect-layout
+│           │   ├── 🎯 Handler: collectLayoutData
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.stage-crew.ts:15
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 4: Build UI File Content
+│           │   ├── 📡 Event: canvas:component:build-ui-file
+│           │   ├── 🎯 Handler: buildUiFileContent
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.pure.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 5: Download UI File
+│           │   ├── 📡 Event: canvas:component:download-file
+│           │   ├── 🎯 Handler: downloadUiFile
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\export\export.download.stage-crew.ts:2
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Stage-crew download handler: performs DOM-based download in browser...
+│           │
+
+├── canvas-component-import-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\import.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 5
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Import
+│       └── 🥁 BEATS (5):
+│           ├── Beat 1: Open UI File
+│           │   ├── 📡 Event: canvas:component:ui:open
+│           │   ├── 🎯 Handler: openUiFile
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\import\import.file.stage-crew.ts:3
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+│           ├── Beat 2: Parse UI File
+│           │   ├── 📡 Event: canvas:component:ui:parse
+│           │   ├── 🎯 Handler: parseUiFile
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\import\import.parse.pure.ts:32
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+│           ├── Beat 3: Inject CSS Classes
+│           │   ├── 📡 Event: canvas:component:css:inject
+│           │   ├── 🎯 Handler: injectCssClasses
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\import\import.css.stage-crew.ts:3
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+│           ├── Beat 4: Create Components Sequentially
+│           │   ├── 📡 Event: canvas:component:nodes:create
+│           │   ├── 🎯 Handler: createComponentsSequentially
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:10
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │       └── 📖 Doc: NEW: Sequential component creation handler that uses canvas.component.create as ...
+│           │
+│           ├── Beat 5: Apply Hierarchy & Order
+│           │   ├── 📡 Event: canvas:component:hierarchy:apply
+│           │   ├── 🎯 Handler: applyHierarchyAndOrder
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:35
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │
+
+├── index (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\index.json
+│   ├── 🎵 Movements: 0
+│   ├── 🥁 Total Beats: 0
+│   └── 🎼 MOVEMENTS:
+
+├── canvas-line-manip-end-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\line.manip.end.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Manip Line End
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Line Manip End
+│           │   ├── 📡 Event: canvas:component:manip:line:end
+│           │   ├── 🎯 Handler: endLineManip
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\line-advanced\line.manip.stage-crew.ts:69
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data
+│           │
+
+├── canvas-line-manip-move-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\line.manip.move.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Manip Line Move
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Line Manip Move
+│           │   ├── 📡 Event: canvas:component:manip:line:move
+│           │   ├── 🎯 Handler: moveLineManip
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\line-advanced\line.manip.stage-crew.ts:49
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-line-manip-start-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\line.manip.start.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Manip Line Start
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Line Manip Start
+│           │   ├── 📡 Event: canvas:component:manip:line:start
+│           │   ├── 🎯 Handler: startLineManip
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\line-advanced\line.manip.stage-crew.ts:44
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-component-paste-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\paste.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 5
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Paste from Clipboard
+│       └── 🥁 BEATS (5):
+│           ├── Beat 1: Read from Clipboard
+│           │   ├── 📡 Event: canvas:component:paste:clipboard
+│           │   ├── 🎯 Handler: readFromClipboard
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: io
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\paste\paste.stage-crew.ts:30
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, _ctx
+│           │
+│           ├── Beat 2: Deserialize Component Data
+│           │   ├── 📡 Event: canvas:component:paste:deserialize
+│           │   ├── 🎯 Handler: deserializeComponentData
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\paste\paste.stage-crew.ts:50
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, _ctx
+│           │
+│           ├── Beat 3: Calculate Paste Position
+│           │   ├── 📡 Event: canvas:component:paste:position
+│           │   ├── 🎯 Handler: calculatePastePosition
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\paste\paste.stage-crew.ts:64
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, _ctx
+│           │
+│           ├── Beat 4: Create Pasted Component
+│           │   ├── 📡 Event: canvas:component:paste:create
+│           │   ├── 🎯 Handler: createPastedComponent
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\paste\paste.stage-crew.ts:72
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 5: Notify Paste Complete
+│           │   ├── 📡 Event: canvas:component:paste:notify
+│           │   ├── 🎯 Handler: notifyPasteComplete
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\paste\paste.stage-crew.ts:133
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, _ctx
+│           │
+
+├── canvas-component-resize-end-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\resize.end.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Resize End
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Resize End
+│           │   ├── 📡 Event: canvas:component:resize:end
+│           │   ├── 🎯 Handler: endResize
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\resize\resize.stage-crew.ts:253
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-line-resize-end-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\resize.line.end.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Resize Line End
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Line Resize End
+│           │   ├── 📡 Event: canvas:component:resize:line:end
+│           │   ├── 🎯 Handler: endLineResize
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\resize-line\resize.line.stage-crew.ts:29
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-line-resize-move-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\resize.line.move.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Resize Line Move
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Line Resize Move
+│           │   ├── 📡 Event: canvas:component:resize:line:move
+│           │   ├── 🎯 Handler: updateLine
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\resize-line\resize.line.stage-crew.ts:9
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-line-resize-start-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\resize.line.start.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Resize Line Start
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Line Resize Start
+│           │   ├── 📡 Event: canvas:component:resize:line:start
+│           │   ├── 🎯 Handler: startLineResize
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\resize-line\resize.line.stage-crew.ts:2
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-component-resize-move-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\resize.move.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Resize Move
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Resize Move
+│           │   ├── 📡 Event: canvas:component:resize:move
+│           │   ├── 🎯 Handler: updateSize
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\resize\resize.stage-crew.ts:81
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx?
+│           │
+│           ├── Beat 2: Forward to Control Panel
+│           │   ├── 📡 Event: canvas:component:resize:forward
+│           │   ├── 🎯 Handler: forwardToControlPanel
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\drag\drag.stage-crew.ts:111
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data?, _ctx?
+│           │       └── 📖 Doc: Forward selection info over to Control Panel (stub for now)...
+│           │
+
+├── canvas-component-resize-start-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\resize.start.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Resize Start
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Resize Start
+│           │   ├── 📡 Event: canvas:component:resize:start
+│           │   ├── 🎯 Handler: startResize
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\resize\resize.stage-crew.ts:41
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data
+│           │
+
+├── canvas-component-select-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\select.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 3
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Select
+│       └── 🥁 BEATS (3):
+│           ├── Beat 1: Show Selection
+│           │   ├── 📡 Event: canvas:component:select
+│           │   ├── 🎯 Handler: showSelectionOverlay
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:62
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx?
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: canvas:component:select:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Publish Selection Changed
+│           │   ├── 📡 Event: canvas:component:selection:changed
+│           │   ├── 🎯 Handler: publishSelectionChanged
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:137
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── canvas-component-select-requested-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\select.requested.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Route Selection
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Route Selection Request
+│           │   ├── 📡 Event: canvas:component:select:route
+│           │   ├── 🎯 Handler: routeSelectionRequest
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:14
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Topic-first selection handler: routes canvas.component.select.requested to the s...
+│           │
+
+├── canvas-component-select-svg-node-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\select.svg-node.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Select SVG Node
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Show Sub-node Selection
+│           │   ├── 📡 Event: canvas:component:select:svg-node
+│           │   ├── 🎯 Handler: showSvgNodeOverlay
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.svg-node.stage-crew.ts:14
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, _ctx?
+│           │       └── 📖 Doc: Show selection overlay for a sub-node within an SVG component.  data: { id: stri...
+│           │
+
+├── canvas-component-update-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\update.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Update
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Update Attribute
+│           │   ├── 📡 Event: canvas:component:update:attribute
+│           │   ├── 🎯 Handler: updateAttribute
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\update\update.stage-crew.ts:8
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Refresh Control Panel
+│           │   ├── 📡 Event: canvas:component:update:refresh
+│           │   ├── 🎯 Handler: refreshControlPanel
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\update\update.stage-crew.ts:39
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts:110
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Refresh the Control Panel after updating an SVG node attribute. This reuses the ...
+│           │
+
+├── canvas-component-update-svg-node-symphony (canvas-component)
+│   ├── 📄 JSON: packages\canvas-component\json-sequences\canvas-component\update.svg-node.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Update SVG Node Attribute
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Update SVG Node Attribute
+│           │   ├── 📡 Event: canvas:component:update:svg-node:attribute
+│           │   ├── 🎯 Handler: updateSvgNodeAttribute
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts:44
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx?
+│           │       └── 📖 Doc: Safely update an attribute on an SVG sub-node.  data: { id: string; path: string...
+│           │
+│           ├── Beat 2: Refresh Control Panel
+│           │   ├── 📡 Event: canvas:component:update:svg-node:refresh
+│           │   ├── 🎯 Handler: refreshControlPanel
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\update\update.stage-crew.ts:39
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: _data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts:110
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Refresh the Control Panel after updating an SVG node attribute. This reuses the ...
+│           │
+
+├── control-panel-classes-add-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\classes.add.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Add Class
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Add CSS Class
+│           │   ├── 📡 Event: control:panel:classes:add
+│           │   ├── 🎯 Handler: addClass
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\classes\classes.stage-crew.d.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\classes\classes.stage-crew.ts:3
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: Stage-crew handlers for adding/removing CSS classes on canvas elements...
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:classes:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-classes-remove-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\classes.remove.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Remove Class
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Remove CSS Class
+│           │   ├── 📡 Event: control:panel:classes:remove
+│           │   ├── 🎯 Handler: removeClass
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\temp-deps\css-registry.store.ts:194
+│           │       ├── 🔧 Type: class-method
+│           │       ├── 📋 Params: name
+│           │       ├── 🔙 Returns: boolean
+│           │       ├── 📁 File: control-panel\dist\symphonies\classes\classes.stage-crew.d.ts:2
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\state\css-registry.store.ts:207
+│           │       ├── 🔧 Type: class-method
+│           │       ├── 📋 Params: name
+│           │       ├── 🔙 Returns: boolean
+│           │       ├── 📁 File: control-panel\src\symphonies\classes\classes.stage-crew.ts:17
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:classes:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-css-create-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\css.create.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Create CSS Class
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Create CSS Class
+│           │   ├── 📡 Event: control:panel:css:create
+│           │   ├── 🎯 Handler: createCssClass
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\css-management\css-management.stage-crew.d.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\css-management\css-management.stage-crew.ts:6
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:css:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-css-delete-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\css.delete.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Delete CSS Class
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Delete CSS Class
+│           │   ├── 📡 Event: control:panel:css:delete
+│           │   ├── 🎯 Handler: deleteCssClass
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\css-management\css-management.stage-crew.d.ts:3
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\css-management\css-management.stage-crew.ts:73
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:css:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-css-edit-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\css.edit.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Update CSS Class
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Update CSS Class
+│           │   ├── 📡 Event: control:panel:css:update
+│           │   ├── 🎯 Handler: updateCssClass
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\css-management\css-management.stage-crew.d.ts:2
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\css-management\css-management.stage-crew.ts:40
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:css:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── index (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\index.json
+│   ├── 🎵 Movements: 0
+│   ├── 🥁 Total Beats: 0
+│   └── 🎼 MOVEMENTS:
+
+├── control-panel-selection-show-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\selection.show.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Selection
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Derive Selection Model
+│           │   ├── 📡 Event: control:panel:selection:derive
+│           │   ├── 🎯 Handler: deriveSelectionModel
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\selection\selection.stage-crew.d.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\selection\selection.stage-crew.ts:4
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:selection:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-ui-field-change-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\ui.field.change.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 4
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Field Change
+│       └── 🥁 BEATS (4):
+│           ├── Beat 1: Prepare Field
+│           │   ├── 📡 Event: control:panel:ui:field:prepare
+│           │   ├── 🎯 Handler: prepareField
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:10
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:271
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: ============================================================================ UI....
+│           │
+│           ├── Beat 2: Dispatch Field
+│           │   ├── 📡 Event: control:panel:ui:field:dispatch
+│           │   ├── 🎯 Handler: dispatchField
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:11
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:293
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Set Dirty
+│           │   ├── 📡 Event: control:panel:ui:field:dirty
+│           │   ├── 🎯 Handler: setDirty
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:12
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:331
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 4: Await Refresh
+│           │   ├── 📡 Event: control:panel:ui:field:await-refresh
+│           │   ├── 🎯 Handler: awaitRefresh
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:13
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:343
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-ui-field-validate-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\ui.field.validate.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 3
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Field Validate
+│       └── 🥁 BEATS (3):
+│           ├── Beat 1: Validate Field
+│           │   ├── 📡 Event: control:panel:ui:field:validate
+│           │   ├── 🎯 Handler: validateField
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:14
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:359
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: ============================================================================ UI....
+│           │
+│           ├── Beat 2: Merge Errors
+│           │   ├── 📡 Event: control:panel:ui:errors:merge
+│           │   ├── 🎯 Handler: mergeErrors
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:15
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:388
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Update View
+│           │   ├── 📡 Event: control:panel:ui:update
+│           │   ├── 🎯 Handler: updateView
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:16
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:404
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-ui-init-batched-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\ui.init.batched.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 6
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Init
+│       └── 🥁 BEATS (6):
+│           ├── Beat 1: Init Config
+│           │   ├── 📡 Event: control:panel:ui:init:config
+│           │   ├── 🎯 Handler: initConfig
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:2
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:96
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Init Resolver
+│           │   ├── 📡 Event: control:panel:ui:init:resolver
+│           │   ├── 🎯 Handler: initResolver
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:3
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\hooks\useSchemaResolver.ts:39
+│           │       ├── 🔧 Type: class-method
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:109
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Load Schemas
+│           │   ├── 📡 Event: control:panel:ui:init:schemas
+│           │   ├── 🎯 Handler: loadSchemas
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:4
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:129
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 4: Register Observers
+│           │   ├── 📡 Event: control:panel:ui:init:observers
+│           │   ├── 🎯 Handler: registerObservers
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:5
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:174
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 5: Notify Ready
+│           │   ├── 📡 Event: control:panel:ui:init:notify
+│           │   ├── 🎯 Handler: notifyReady
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:6
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:187
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 6: Init Movement
+│           │   ├── 📡 Event: control:panel:ui:init:movement
+│           │   ├── 🎯 Handler: initMovement
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:33
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-ui-init-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\ui.init.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 6
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Init
+│       └── 🥁 BEATS (6):
+│           ├── Beat 1: Init Config
+│           │   ├── 📡 Event: control:panel:ui:init:config
+│           │   ├── 🎯 Handler: initConfig
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:2
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:96
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Init Resolver
+│           │   ├── 📡 Event: control:panel:ui:init:resolver
+│           │   ├── 🎯 Handler: initResolver
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:3
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\hooks\useSchemaResolver.ts:39
+│           │       ├── 🔧 Type: class-method
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:109
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Load Schemas
+│           │   ├── 📡 Event: control:panel:ui:init:schemas
+│           │   ├── 🎯 Handler: loadSchemas
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:4
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:129
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 4: Register Observers
+│           │   ├── 📡 Event: control:panel:ui:init:observers
+│           │   ├── 🎯 Handler: registerObservers
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:5
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:174
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 5: Notify Ready
+│           │   ├── 📡 Event: control:panel:ui:init:notify
+│           │   ├── 🎯 Handler: notifyReady
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:6
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:187
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 6: Init Movement
+│           │   ├── 📡 Event: control:panel:ui:init:movement
+│           │   ├── 🎯 Handler: initMovement
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:33
+│           │       ├── 🔧 Type: async-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-ui-render-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\ui.render.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 3
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Render
+│       └── 🥁 BEATS (3):
+│           ├── Beat 1: Generate Fields
+│           │   ├── 📡 Event: control:panel:ui:fields:generate
+│           │   ├── 🎯 Handler: generateFields
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:7
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:205
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: ============================================================================ UI....
+│           │
+│           ├── Beat 2: Generate Sections
+│           │   ├── 📡 Event: control:panel:ui:sections:generate
+│           │   ├── 🎯 Handler: generateSections
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:8
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:228
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 3: Render View
+│           │   ├── 📡 Event: control:panel:ui:render
+│           │   ├── 🎯 Handler: renderView
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:9
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:251
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── control-panel-ui-section-toggle-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\ui.section.toggle.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Section Toggle
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Toggle Section
+│           │   ├── 📡 Event: control:panel:ui:section:toggle
+│           │   ├── 🎯 Handler: toggleSection
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\ui\ui.stage-crew.d.ts:17
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\ui\ui.stage-crew.ts:421
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       └── 📖 Doc: ============================================================================ UI....
+│           │
+
+├── control-panel-update-symphony (control-panel)
+│   ├── 📄 JSON: packages\control-panel\json-sequences\update.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Update
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Update From Element
+│           │   ├── 📡 Event: control:panel:update:derive
+│           │   ├── 🎯 Handler: updateFromElement
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: control-panel\dist\symphonies\update\update.stage-crew.d.ts:1
+│           │       ├── 🔧 Type: sync-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: control-panel\src\symphonies\update\update.stage-crew.ts:9
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: control:panel:update:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── index (header)
+│   ├── 📄 JSON: packages\header\json-sequences\header\index.json
+│   ├── 🎵 Movements: 0
+│   ├── 🥁 Total Beats: 0
+│   └── 🎼 MOVEMENTS:
+
+├── header-ui-theme-get-symphony (header)
+│   ├── 📄 JSON: packages\header\json-sequences\header\ui.theme.get.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Get Current Theme
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Get Current Theme
+│           │   ├── 📡 Event: app:ui:theme:get
+│           │   ├── 🎯 Handler: getCurrentTheme
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: header\src\symphonies\ui\ui.stage-crew.ts:27
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx, unknown>; logger?, error
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: app:ui:theme:notify
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── header-ui-theme-toggle-symphony (header)
+│   ├── 📄 JSON: packages\header\json-sequences\header\ui.theme.toggle.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Toggle Theme
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Toggle Theme
+│           │   ├── 📡 Event: app:ui:theme:toggle
+│           │   ├── 🎯 Handler: toggleTheme
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: stage-crew
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: header\src\symphonies\ui\ui.stage-crew.ts:60
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx, unknown>; logger?, error
+│           │
+
+├── index (library)
+│   ├── 📄 JSON: packages\library\json-sequences\library\index.json
+│   ├── 🎵 Movements: 0
+│   ├── 🥁 Total Beats: 0
+│   └── 🎼 MOVEMENTS:
+
+├── library-load-symphony (library)
+│   ├── 📄 JSON: packages\library\json-sequences\library\library-load.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 2
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Load
+│       └── 🥁 BEATS (2):
+│           ├── Beat 1: Load Components
+│           │   ├── 📡 Event: library:components:load
+│           │   ├── 🎯 Handler: loadComponents
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: library\src\symphonies\load.symphony.ts:21
+│           │       ├── 🔧 Type: async-function
+│           │       ├── 📋 Params: _data, ctx
+│           │
+│           ├── Beat 2: Notify UI
+│           │   ├── 📡 Event: library:components:notify-ui
+│           │   ├── 🎯 Handler: notifyUi
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas-component\src\symphonies\create\create.notify.ts:3
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: canvas-component\src\symphonies\select\select.stage-crew.ts:120
+│           │       ├── 🔧 Type: class-method
+│           │       ├── ✅ Exported: Yes
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── library-component-container-drop-symphony (library-component)
+│   ├── 📄 JSON: packages\library-component\json-sequences\library-component\container.drop.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Drop
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Publish Create Requested (Container)
+│           │   ├── 📡 Event: library:container:drop
+│           │   ├── 🎯 Handler: publishCreateRequested
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: library-component\src\symphonies\drop.container.symphony.ts:16
+│           │       ├── 🔧 Type: async-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: library-component\src\symphonies\drop.symphony.ts:16
+│           │       ├── 🔧 Type: async-function
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── library-component-drag-symphony (library-component)
+│   ├── 📄 JSON: packages\library-component\json-sequences\library-component\drag.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Drag
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Start Drag
+│           │   ├── 📡 Event: library.component.drag.start.requested
+│           │   ├── 🎯 Handler: onDragStart
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: canvas\src\ui\CanvasDrop.ts:37
+│           │       ├── 🔧 Type: arrow-function
+│           │       ├── 📋 Params: dragData
+│           │       └── 📖 Doc: Define drag callbacks that use conductor.play...
+│           │
+
+├── library-component-drop-symphony (library-component)
+│   ├── 📄 JSON: packages\library-component\json-sequences\library-component\drop.json
+│   ├── 🎵 Movements: 1
+│   ├── 🥁 Total Beats: 1
+│   └── 🎼 MOVEMENTS:
+│       ├── Movement 0: Drop
+│       └── 🥁 BEATS (1):
+│           ├── Beat 1: Publish Create Requested
+│           │   ├── 📡 Event: library:component:drop
+│           │   ├── 🎯 Handler: publishCreateRequested
+│           │   ├── 🎚️  Dynamics: mf
+│           │   ├── ⏱️  Timing: immediate
+│           │   ├── 🏷️  Kind: pure
+│           │   └── 💻 IMPLEMENTATION:
+│           │       ├── 📁 File: library-component\src\symphonies\drop.container.symphony.ts:16
+│           │       ├── 🔧 Type: async-function
+│           │       ├── 📋 Params: data, ctx
+│           │       ├── 📁 File: library-component\src\symphonies\drop.symphony.ts:16
+│           │       ├── 🔧 Type: async-function
+│           │       ├── 📋 Params: data, ctx
+│           │
+
+├── index (library-component)
+│   ├── 📄 JSON: packages\library-component\json-sequences\library-component\index.json
+│   ├── 🎵 Movements: 0
+│   ├── 🥁 Total Beats: 0
+│   └── 🎼 MOVEMENTS:
+
+
+================================================================================
+STATISTICS SUMMARY
+================================================================================
+
+📊 Total Sequences: 53
+🎵 Total Movements: 48
+🥁 Total Beats: 103
+🎯 Unique Handlers: 84
+✅ Implemented: 84
+⚠️  Orphaned: 0
+📈 Implementation Rate: 100.0%
+
+📦 By Package:
+  canvas-component                 58 beats
+  control-panel                    37 beats
+  header                            3 beats
+  library-component                 3 beats
+  library                           2 beats
+
+📡 By Event (Top 10):
+  control:panel:css:notify                             3×
+  control:panel:classes:notify                         2×
+  control:panel:ui:init:config                         2×
+  control:panel:ui:init:resolver                       2×
+  control:panel:ui:init:schemas                        2×
+  control:panel:ui:init:observers                      2×
+  control:panel:ui:init:notify                         2×
+  control:panel:ui:init:movement                       2×
+  canvas:component:copy:serialize                      1×
+  canvas:component:copy:clipboard                      1×
+
+🔧 Handler Types:
+  sync-function         53
+  class-method          22
+  arrow-function        20
+  async-function        19

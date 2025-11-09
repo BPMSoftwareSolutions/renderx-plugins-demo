@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using System;
 
 namespace RenderX.HostSDK.Avalonia.Logging;
@@ -10,11 +11,10 @@ namespace RenderX.HostSDK.Avalonia.Logging;
 /// Mirrors the web version's ctx.logger behavior where logs are emitted as "musical-conductor:log" events
 /// and captured by ConductorLogger with emoji icons (🧩 for plugin logs).
 /// </summary>
-public class ConductorAwareLogger : ILogger
+public class ConductorAwareLogger : Microsoft.Extensions.Logging.ILogger
 {
-    private readonly ILogger _innerLogger;
-    private readonly IEventRouter _eventRouter;
-    private readonly IConductorClient _conductor;
+    private readonly Microsoft.Extensions.Logging.ILogger _innerLogger;
+    private readonly IEventBus _eventBus;
     private readonly string _pluginId;
     private readonly string? _handlerName;
 
@@ -22,20 +22,17 @@ public class ConductorAwareLogger : ILogger
     /// Create a conductor-aware logger for a plugin
     /// </summary>
     /// <param name="innerLogger">Underlying ILogger for fallback</param>
-    /// <param name="eventRouter">Event router for emitting log events</param>
-    /// <param name="conductor">Conductor client for context</param>
+    /// <param name="eventBus">Event bus for emitting log events directly to .NET subscribers</param>
     /// <param name="pluginId">Plugin identifier (e.g., "canvas-component")</param>
     /// <param name="handlerName">Optional handler name (e.g., "create")</param>
     public ConductorAwareLogger(
-        ILogger innerLogger,
-        IEventRouter eventRouter,
-        IConductorClient conductor,
+        Microsoft.Extensions.Logging.ILogger innerLogger,
+        IEventBus eventBus,
         string pluginId,
         string? handlerName = null)
     {
         _innerLogger = innerLogger ?? throw new ArgumentNullException(nameof(innerLogger));
-        _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
-        _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
+        _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
         _pluginId = pluginId ?? throw new ArgumentNullException(nameof(pluginId));
         _handlerName = handlerName;
     }
@@ -80,8 +77,8 @@ public class ConductorAwareLogger : ILogger
                 handlerName = _handlerName
             };
 
-            // Emit through event router (async fire-and-forget)
-            _ = _eventRouter.PublishAsync("musical-conductor:log", logEvent, _conductor);
+            // Emit through event bus (fire-and-forget)
+            _ = _eventBus.EmitAsync("musical-conductor:log", logEvent);
         }
         catch
         {
@@ -113,17 +110,14 @@ public class ConductorAwareLogger : ILogger
 public class ConductorAwareLoggerFactory
 {
     private readonly ILoggerFactory _loggerFactory;
-    private readonly IEventRouter _eventRouter;
-    private readonly IConductorClient _conductor;
+    private readonly IEventBus _eventBus;
 
     public ConductorAwareLoggerFactory(
         ILoggerFactory loggerFactory,
-        IEventRouter eventRouter,
-        IConductorClient conductor)
+        IEventBus eventBus)
     {
         _loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
-        _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
-        _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
+        _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
     }
 
     /// <summary>
@@ -136,25 +130,24 @@ public class ConductorAwareLoggerFactory
     public ILogger<T> CreateLogger<T>(string pluginId, string? handlerName = null)
     {
         var innerLogger = _loggerFactory.CreateLogger<T>();
-        return new ConductorAwareLoggerWrapper<T>(innerLogger, _eventRouter, _conductor, pluginId, handlerName);
+        return new ConductorAwareLoggerWrapper<T>(innerLogger, _eventBus, pluginId, handlerName);
     }
 }
 
 /// <summary>
 /// Generic wrapper for ConductorAwareLogger to support ILogger&lt;T&gt;
 /// </summary>
-public class ConductorAwareLoggerWrapper<T> : ILogger<T>
+public class ConductorAwareLoggerWrapper<T> : Microsoft.Extensions.Logging.ILogger<T>
 {
     private readonly ConductorAwareLogger _logger;
 
     public ConductorAwareLoggerWrapper(
-        ILogger innerLogger,
-        IEventRouter eventRouter,
-        IConductorClient conductor,
+        Microsoft.Extensions.Logging.ILogger innerLogger,
+        IEventBus eventBus,
         string pluginId,
         string? handlerName = null)
     {
-        _logger = new ConductorAwareLogger(innerLogger, eventRouter, conductor, pluginId, handlerName);
+        _logger = new ConductorAwareLogger(innerLogger, eventBus, pluginId, handlerName);
     }
 
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)

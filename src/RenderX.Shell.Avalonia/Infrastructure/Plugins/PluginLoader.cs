@@ -8,6 +8,7 @@ using Avalonia.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.Shell.Avalonia.Core;
 
@@ -207,22 +208,23 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                 var thinHost = services.GetRequiredService<IThinHostLayer>();
                 var eventRouter = thinHost.EventRouter;
                 var conductor = thinHost.Conductor;
+                var eventBus = services.GetRequiredService<IEventBus>();
 
                 // Resolve a typed logger matching the control type: ILogger<ControlType>
                 var loggerGenericType = typeof(ILogger<>).MakeGenericType(controlType);
                 var typedLogger = services.GetRequiredService(loggerGenericType);
 
-                // Call Initialize(eventRouter, conductor, ILogger<TControl>) if present
+                // Call Initialize(eventRouter, conductor, ILogger<TControl>, IEventBus) if present
                 var initMethod = controlType.GetMethod(
                     name: "Initialize",
                     BindingFlags.Instance | BindingFlags.Public,
                     binder: null,
-                    types: new[] { typeof(IEventRouter), typeof(IConductorClient), loggerGenericType },
+                    types: new[] { typeof(IEventRouter), typeof(MusicalConductor.Avalonia.Interfaces.IConductorClient), loggerGenericType, typeof(IEventBus) },
                     modifiers: null);
 
                 if (initMethod != null)
                 {
-                    initMethod.Invoke(instance, new object?[] { eventRouter, conductor, typedLogger });
+                    initMethod.Invoke(instance, new object?[] { eventRouter, conductor, typedLogger, eventBus });
                     _logger.LogInformation("Initialized control {ControlType} for slot '{SlotName}'", controlType.Name, slotName);
                 }
                 else
@@ -234,7 +236,11 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error loading control for slot '{SlotName}'", slotName);
+                _logger.LogError(ex, "Error loading control for slot '{SlotName}': {ExceptionMessage}", slotName, ex.Message);
+                if (ex.InnerException != null)
+                {
+                    _logger.LogError(ex.InnerException, "Inner exception: {InnerMessage}", ex.InnerException.Message);
+                }
                 return Task.FromResult<Control?>(null);
             }
         }

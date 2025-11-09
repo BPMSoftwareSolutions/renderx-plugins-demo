@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
@@ -18,7 +19,7 @@ namespace RenderX.Plugins.ControlPanel;
 public partial class ControlPanelControl : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductorClient? _conductor;
+    private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<ControlPanelControl>? _logger;
     private ObservableCollection<PropertyItem> _properties;
     private ObservableCollection<InteractionItem> _interactions;
@@ -53,7 +54,7 @@ public partial class ControlPanelControl : UserControl
     /// <summary>
     /// Initialize the control panel with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<ControlPanelControl> logger)
+    public void Initialize(IEventRouter eventRouter, MusicalConductor.Avalonia.Interfaces.IConductorClient conductor, ILogger<ControlPanelControl> logger, IEventBus eventBus)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
@@ -62,8 +63,7 @@ public partial class ControlPanelControl : UserControl
         // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 control-panel)
         _logger = new ConductorAwareLoggerWrapper<ControlPanelControl>(
             logger ?? throw new ArgumentNullException(nameof(logger)),
-            eventRouter,
-            conductor,
+            eventBus ?? throw new ArgumentNullException(nameof(eventBus)),
             "control-panel");
 
         _logger.LogInformation("ControlPanelControl initialized");

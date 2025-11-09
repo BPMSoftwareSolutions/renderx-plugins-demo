@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 using System;
 
 namespace RenderX.Plugins.Header;
@@ -15,7 +16,7 @@ namespace RenderX.Plugins.Header;
 public partial class HeaderThemePlugin : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductorClient? _conductor;
+    private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<HeaderThemePlugin>? _logger;
     private bool _isDarkMode = false;
 
@@ -27,7 +28,7 @@ public partial class HeaderThemePlugin : UserControl
     /// <summary>
     /// Initialize the header theme plugin with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<HeaderThemePlugin> logger)
+    public void Initialize(IEventRouter eventRouter, MusicalConductor.Avalonia.Interfaces.IConductorClient conductor, ILogger<HeaderThemePlugin> logger, IEventBus eventBus)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
@@ -36,8 +37,7 @@ public partial class HeaderThemePlugin : UserControl
         // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 header)
         _logger = new ConductorAwareLoggerWrapper<HeaderThemePlugin>(
             logger ?? throw new ArgumentNullException(nameof(logger)),
-            eventRouter,
-            conductor,
+            eventBus ?? throw new ArgumentNullException(nameof(eventBus)),
             "header");
 
         _logger.LogInformation("HeaderThemePlugin initialized");

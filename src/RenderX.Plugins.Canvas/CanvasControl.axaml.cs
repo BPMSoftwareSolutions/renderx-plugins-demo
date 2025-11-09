@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;  // For IEventBus only
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace RenderX.Plugins.Canvas;
 public partial class CanvasControl : UserControl
 {
     private IEventRouter? _eventRouter;
-    private IConductorClient? _conductor;
+    private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<CanvasControl>? _logger;
     private ObservableCollection<ComponentViewModel> _components;
     private ComponentViewModel? _selectedComponent;
@@ -50,7 +51,7 @@ public partial class CanvasControl : UserControl
     /// <summary>
     /// Initialize the canvas control with dependencies
     /// </summary>
-    public void Initialize(IEventRouter eventRouter, IConductorClient conductor, ILogger<CanvasControl> logger)
+    public void Initialize(IEventRouter eventRouter, MusicalConductor.Avalonia.Interfaces.IConductorClient conductor, ILogger<CanvasControl> logger, IEventBus eventBus)
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
@@ -59,8 +60,7 @@ public partial class CanvasControl : UserControl
         // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 canvas-component)
         _logger = new ConductorAwareLoggerWrapper<CanvasControl>(
             logger ?? throw new ArgumentNullException(nameof(logger)),
-            eventRouter,
-            conductor,
+            eventBus ?? throw new ArgumentNullException(nameof(eventBus)),
             "canvas-component");
 
         _logger.LogInformation("CanvasControl initialized");

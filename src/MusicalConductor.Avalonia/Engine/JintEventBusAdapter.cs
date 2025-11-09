@@ -134,18 +134,37 @@ public class JintEventBusAdapter : IEventBus
 
     public Task Emit<T>(string eventName, T data)
     {
-        // This adapter is primarily for subscribing to JavaScript events
-        // Emitting from .NET to JavaScript is not the primary use case
-        // but we can implement it if needed
-        _logger.LogWarning("Emit from .NET to JavaScript EventBus is not implemented");
-        return Task.CompletedTask;
+        try
+        {
+            // Get the emit method from the JavaScript EventBus
+            var emitMethod = _eventBusJs.AsObject().Get("emit");
+            if (emitMethod.IsNull() || emitMethod.IsUndefined())
+            {
+                _logger.LogWarning("EventBus.emit method not found");
+                return Task.CompletedTask;
+            }
+
+            // Convert .NET data to JavaScript object
+            var jsData = ConvertDynamicToJsValue(data);
+
+            // Call eventBus.emit(eventName, data)
+            _engine.Invoke(emitMethod, _eventBusJs, new[] { JsValue.FromObject(_engine, eventName), jsData });
+
+            _logger.LogDebug("Emitted event from .NET to JavaScript: {EventName}", eventName);
+            return Task.CompletedTask;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error emitting event to JavaScript EventBus: {EventName}", eventName);
+            return Task.CompletedTask;
+        }
     }
 
     public Task EmitAsync<T>(string eventName, T data)
     {
-        // This adapter is primarily for subscribing to JavaScript events
-        _logger.LogWarning("EmitAsync from .NET to JavaScript EventBus is not implemented");
-        return Task.CompletedTask;
+        // For now, just call Emit synchronously
+        // In the future, this could be enhanced to handle async operations
+        return Emit(eventName, data);
     }
 
     public int GetSubscriberCount(string eventName)
@@ -267,6 +286,94 @@ public class JintEventBusAdapter : IEventBus
         public string EventName { get; set; } = string.Empty;
         public Delegate Callback { get; set; } = null!;
         public Action<object> JsCallback { get; set; } = null!;
+    }
+
+    /// <summary>
+    /// Convert a .NET dynamic object to a JavaScript value
+    /// </summary>
+    private JsValue ConvertDynamicToJsValue<T>(T data)
+    {
+        if (data == null)
+        {
+            return JsValue.Null;
+        }
+
+        // Handle primitive types
+        if (data is string str)
+        {
+            return JsValue.FromObject(_engine, str);
+        }
+
+        if (data is int intVal)
+        {
+            return JsValue.FromObject(_engine, intVal);
+        }
+
+        if (data is double doubleVal)
+        {
+            return JsValue.FromObject(_engine, doubleVal);
+        }
+
+        if (data is bool boolVal)
+        {
+            return JsValue.FromObject(_engine, boolVal);
+        }
+
+        // Handle arrays
+        if (data is System.Collections.IEnumerable enumerable && !(data is string))
+        {
+            var jsArray = _engine.Intrinsics.Array.Construct(System.Array.Empty<JsValue>());
+            int index = 0;
+            foreach (var item in enumerable)
+            {
+                var jsItem = ConvertDynamicToJsValue(item);
+                jsArray.AsObject().Set(index.ToString(), jsItem);
+                index++;
+            }
+            return jsArray;
+        }
+
+        // Handle objects (including ExpandoObject and anonymous types)
+        try
+        {
+            var jsObject = _engine.Intrinsics.Object.Construct(System.Array.Empty<JsValue>());
+            var objAsDict = data as IDictionary<string, object>;
+
+            if (objAsDict != null)
+            {
+                // Handle ExpandoObject and IDictionary
+                foreach (var kvp in objAsDict)
+                {
+                    var jsValue = ConvertDynamicToJsValue(kvp.Value);
+                    jsObject.AsObject().Set(kvp.Key, jsValue);
+                }
+            }
+            else
+            {
+                // Handle regular objects via reflection
+                var properties = data.GetType().GetProperties();
+                foreach (var prop in properties)
+                {
+                    try
+                    {
+                        var value = prop.GetValue(data);
+                        var jsValue = ConvertDynamicToJsValue(value);
+                        jsObject.AsObject().Set(prop.Name, jsValue);
+                    }
+                    catch
+                    {
+                        // Skip properties that can't be read
+                    }
+                }
+            }
+
+            return jsObject;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to convert object to JavaScript value, using null");
+            return JsValue.Null;
+        }
     }
 
     private class JintSubscription : ISubscription

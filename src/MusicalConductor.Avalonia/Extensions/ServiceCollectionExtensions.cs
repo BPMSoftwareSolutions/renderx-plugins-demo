@@ -4,6 +4,7 @@ using MusicalConductor.Avalonia.Client;
 using MusicalConductor.Avalonia.Engine;
 using MusicalConductor.Avalonia.Interfaces;
 using MusicalConductor.Avalonia.Logging;
+using MusicalConductor.Core.Extensions;
 
 namespace MusicalConductor.Avalonia.Extensions;
 
@@ -19,6 +20,9 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection for chaining</returns>
     public static IServiceCollection AddMusicalConductor(this IServiceCollection services)
     {
+        // Register MusicalConductor.Core services first (IEventBus, IConductor, etc.)
+        services.AddMusicalConductorCore();
+
         // Register ConductorLogger as a singleton
         services.AddSingleton<ConductorLogger>(provider =>
         {

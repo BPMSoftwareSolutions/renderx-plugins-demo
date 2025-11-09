@@ -1,0 +1,2161 @@
+{
+  "sequences": [
+    {
+      "id": "canvas-component-copy-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\copy.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Copy to Clipboard",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:copy:serialize",
+              "title": "Serialize Component Data",
+              "handler": "serializeSelectedComponent",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\copy.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:copy:clipboard",
+              "title": "Copy to Clipboard",
+              "handler": "copyToClipboard",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "io",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\copy.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:copy:notify",
+              "title": "Notify Copy Complete",
+              "handler": "notifyCopyComplete",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\copy.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-create-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Create",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resolve-template",
+              "title": "Resolve Template",
+              "handler": "resolveTemplate",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:register-instance",
+              "title": "Register Instance",
+              "handler": "registerInstance",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "io",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:create",
+              "title": "Create Node",
+              "handler": "createNode",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+              "line_number": 0
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:render-react",
+              "title": "Render React Component",
+              "handler": "renderReact",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+              "line_number": 0
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:notify-ui",
+              "title": "Notify UI",
+              "handler": "notifyUi",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+              "line_number": 0
+            },
+            {
+              "beat": 6,
+              "event": "canvas:component:augment:line",
+              "title": "Enhance Line (Advanced)",
+              "handler": "enhanceLine",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\create.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-delete-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\delete.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Delete",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:delete",
+              "title": "Delete Component",
+              "handler": "deleteComponent",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\delete.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:deleted",
+              "title": "Publish Deleted",
+              "handler": "publishDeleted",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\delete.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-delete-requested-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\delete.requested.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Route Delete",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:delete:route",
+              "title": "Route Delete Request",
+              "handler": "routeDeleteRequest",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\delete.requested.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-deselect-all-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect-all.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Deselect All",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:deselect:all",
+              "title": "Hide All Overlays",
+              "handler": "hideAllOverlays",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect-all.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:selections:cleared",
+              "title": "Publish Selections Cleared",
+              "handler": "publishSelectionsCleared",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect-all.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-deselect-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Deselect",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:deselect",
+              "title": "Hide Overlays for ID",
+              "handler": "deselectComponent",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:deselection:changed",
+              "title": "Publish Deselection Changed",
+              "handler": "publishDeselectionChanged",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-deselect-requested-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect.requested.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Route Deselection",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:deselect:route",
+              "title": "Route Deselection Request",
+              "handler": "routeDeselectionRequest",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\deselect.requested.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-drag-end-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.end.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Drag End",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:drag:end",
+              "title": "Drag End",
+              "handler": "endDrag",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.end.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-drag-move-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.move.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Drag Move",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:drag:move",
+              "title": "Update Position",
+              "handler": "updatePosition",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.move.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:drag:forward",
+              "title": "Forward to Control Panel",
+              "handler": "forwardToControlPanel",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.move.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-drag-start-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.start.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Drag Start",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:drag:start",
+              "title": "Drag Start",
+              "handler": "startDrag",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\drag.start.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-export-gif-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\export-gif.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Export GIF",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:export-gif:rasterize-and-encode",
+              "title": "Rasterize SVG and Encode GIF",
+              "handler": "exportSvgToGif",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export-gif.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-export-mp4-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\export-mp4.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Export MP4",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:export-mp4:rasterize-and-encode",
+              "title": "Rasterize SVG and Encode MP4",
+              "handler": "exportSvgToMp4",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export-mp4.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-export-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Export",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:query-all",
+              "title": "Query All Components",
+              "handler": "queryAllComponents",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "io",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:discover-components",
+              "title": "Discover Components from DOM",
+              "handler": "discoverComponentsFromDom",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:collect-css",
+              "title": "Collect CSS Classes",
+              "handler": "collectCssClasses",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:collect-layout",
+              "title": "Collect Layout Data",
+              "handler": "collectLayoutData",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+              "line_number": 0
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:build-ui-file",
+              "title": "Build UI File Content",
+              "handler": "buildUiFileContent",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+              "line_number": 0
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:download-file",
+              "title": "Download UI File",
+              "handler": "downloadUiFile",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\export.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-import-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\import.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Import",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:ui:open",
+              "title": "Open UI File",
+              "handler": "openUiFile",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\import.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:ui:parse",
+              "title": "Parse UI File",
+              "handler": "parseUiFile",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\import.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:css:inject",
+              "title": "Inject CSS Classes",
+              "handler": "injectCssClasses",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\import.json",
+              "line_number": 0
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:nodes:create",
+              "title": "Create Components Sequentially",
+              "handler": "createComponentsSequentially",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\import.json",
+              "line_number": 0
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:hierarchy:apply",
+              "title": "Apply Hierarchy & Order",
+              "handler": "applyHierarchyAndOrder",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\import.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "index",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\index.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": []
+    },
+    {
+      "id": "canvas-line-manip-end-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\line.manip.end.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Manip Line End",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:manip:line:end",
+              "title": "Line Manip End",
+              "handler": "endLineManip",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\line.manip.end.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-manip-move-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\line.manip.move.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Manip Line Move",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:manip:line:move",
+              "title": "Line Manip Move",
+              "handler": "moveLineManip",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\line.manip.move.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-manip-start-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\line.manip.start.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Manip Line Start",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:manip:line:start",
+              "title": "Line Manip Start",
+              "handler": "startLineManip",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\line.manip.start.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-paste-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\paste.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Paste from Clipboard",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:paste:clipboard",
+              "title": "Read from Clipboard",
+              "handler": "readFromClipboard",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "io",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\paste.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:paste:deserialize",
+              "title": "Deserialize Component Data",
+              "handler": "deserializeComponentData",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\paste.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:paste:position",
+              "title": "Calculate Paste Position",
+              "handler": "calculatePastePosition",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\paste.json",
+              "line_number": 0
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:paste:create",
+              "title": "Create Pasted Component",
+              "handler": "createPastedComponent",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\paste.json",
+              "line_number": 0
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:paste:notify",
+              "title": "Notify Paste Complete",
+              "handler": "notifyPasteComplete",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\paste.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-resize-end-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.end.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Resize End",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:end",
+              "title": "Resize End",
+              "handler": "endResize",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.end.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-resize-end-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.line.end.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Resize Line End",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:line:end",
+              "title": "Line Resize End",
+              "handler": "endLineResize",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.line.end.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-resize-move-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.line.move.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Resize Line Move",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:line:move",
+              "title": "Line Resize Move",
+              "handler": "updateLine",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.line.move.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-resize-start-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.line.start.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Resize Line Start",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:line:start",
+              "title": "Line Resize Start",
+              "handler": "startLineResize",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.line.start.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-resize-move-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.move.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Resize Move",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:move",
+              "title": "Resize Move",
+              "handler": "updateSize",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.move.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:resize:forward",
+              "title": "Forward to Control Panel",
+              "handler": "forwardToControlPanel",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.move.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-resize-start-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.start.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Resize Start",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:start",
+              "title": "Resize Start",
+              "handler": "startResize",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\resize.start.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-select-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\select.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Select",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:select",
+              "title": "Show Selection",
+              "handler": "showSelectionOverlay",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\select.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:select:notify",
+              "title": "Notify UI",
+              "handler": "notifyUi",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\select.json",
+              "line_number": 0
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:selection:changed",
+              "title": "Publish Selection Changed",
+              "handler": "publishSelectionChanged",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\select.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-select-requested-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\select.requested.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Route Selection",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:select:route",
+              "title": "Route Selection Request",
+              "handler": "routeSelectionRequest",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\select.requested.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-select-svg-node-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\select.svg-node.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Select SVG Node",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:select:svg-node",
+              "title": "Show Sub-node Selection",
+              "handler": "showSvgNodeOverlay",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\select.svg-node.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-update-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\update.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Update",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:update:attribute",
+              "title": "Update Attribute",
+              "handler": "updateAttribute",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\update.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:update:refresh",
+              "title": "Refresh Control Panel",
+              "handler": "refreshControlPanel",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\update.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-update-svg-node-symphony",
+      "package": "canvas-component",
+      "file": "packages\\canvas-component\\json-sequences\\canvas-component\\update.svg-node.json",
+      "title": null,
+      "description": null,
+      "trigger": null,
+      "movements": [
+        {
+          "movement": 0,
+          "name": "Update SVG Node Attribute",
+          "description": null,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:update:svg-node:attribute",
+              "title": "Update SVG Node Attribute",
+              "handler": "updateSvgNodeAttribute",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "stage-crew",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\update.svg-node.json",
+              "line_number": 0
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:update:svg-node:refresh",
+              "title": "Refresh Control Panel",
+              "handler": "refreshControlPanel",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "kind": "pure",
+              "transition": null,
+              "description": null,
+              "file_path": "packages\\canvas-component\\json-sequences\\canvas-component\\update.svg-node.json",
+              "line_number": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "handler_implementations": {
+    "startResize": [
+      {
+        "handler_name": "startResize",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_number": 41,
+        "function_type": "arrow-function",
+        "signature": "export const startResize = (data: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "startLineResize": [
+      {
+        "handler_name": "startLineResize",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "line_number": 2,
+        "function_type": "arrow-function",
+        "signature": "export const startLineResize = (data: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "copyToClipboard": [
+      {
+        "handler_name": "copyToClipboard",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+        "line_number": 67,
+        "function_type": "class-method",
+        "signature": "export async function copyToClipboard(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "endLineResize": [
+      {
+        "handler_name": "endLineResize",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "line_number": 29,
+        "function_type": "arrow-function",
+        "signature": "export const endLineResize = (data: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "exportSvgToGif": [
+      {
+        "handler_name": "exportSvgToGif",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.gif.stage-crew.ts",
+        "line_number": 27,
+        "function_type": "async-function",
+        "signature": "export async function exportSvgToGif(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "endResize": [
+      {
+        "handler_name": "endResize",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_number": 253,
+        "function_type": "class-method",
+        "signature": "export const endResize = (data: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "publishDeleted": [
+      {
+        "handler_name": "publishDeleted",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+        "line_number": 14,
+        "function_type": "async-function",
+        "signature": "export async function publishDeleted(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "readFromClipboard": [
+      {
+        "handler_name": "readFromClipboard",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "line_number": 30,
+        "function_type": "class-method",
+        "signature": "export async function readFromClipboard(_data: any, _ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "_ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "hideAllOverlays": [
+      {
+        "handler_name": "hideAllOverlays",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_number": 11,
+        "function_type": "sync-function",
+        "signature": "export function hideAllOverlays() {",
+        "is_exported": true,
+        "parameters": [],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "notifyCopyComplete": [
+      {
+        "handler_name": "notifyCopyComplete",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+        "line_number": 79,
+        "function_type": "class-method",
+        "signature": "export async function notifyCopyComplete(_data: any, _ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "_ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "deselectComponent": [
+      {
+        "handler_name": "deselectComponent",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_number": 20,
+        "function_type": "async-function",
+        "signature": "export async function deselectComponent(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "applyHierarchyAndOrder": [
+      {
+        "handler_name": "applyHierarchyAndOrder",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\import\\import.nodes.stage-crew.ts",
+        "line_number": 35,
+        "function_type": "sync-function",
+        "signature": "export function applyHierarchyAndOrder(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "startDrag": [
+      {
+        "handler_name": "startDrag",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_number": 62,
+        "function_type": "arrow-function",
+        "signature": "export const startDrag = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "injectCssClasses": [
+      {
+        "handler_name": "injectCssClasses",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\import\\import.css.stage-crew.ts",
+        "line_number": 3,
+        "function_type": "sync-function",
+        "signature": "export function injectCssClasses(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "publishSelectionChanged": [
+      {
+        "handler_name": "publishSelectionChanged",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_number": 137,
+        "function_type": "class-method",
+        "signature": "export async function publishSelectionChanged(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "createPastedComponent": [
+      {
+        "handler_name": "createPastedComponent",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "line_number": 72,
+        "function_type": "class-method",
+        "signature": "export async function createPastedComponent(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "deleteComponent": [
+      {
+        "handler_name": "deleteComponent",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+        "line_number": 31,
+        "function_type": "async-function",
+        "signature": "export async function deleteComponent(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "collectCssClasses": [
+      {
+        "handler_name": "collectCssClasses",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.css.stage-crew.ts",
+        "line_number": 6,
+        "function_type": "sync-function",
+        "signature": "export function collectCssClasses(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "Stage-crew collector that uses the front-end CSS registry store. No IO fallbacks or browser stylesheet parsing; clean and deterministic."
+      }
+    ],
+    "updateLine": [
+      {
+        "handler_name": "updateLine",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "line_number": 9,
+        "function_type": "arrow-function",
+        "signature": "export const updateLine = (data: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "notifyUi": [
+      {
+        "handler_name": "notifyUi",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\create\\create.notify.ts",
+        "line_number": 3,
+        "function_type": "arrow-function",
+        "signature": "export const notifyUi = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      },
+      {
+        "handler_name": "notifyUi",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_number": 120,
+        "function_type": "class-method",
+        "signature": "export function notifyUi(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "openUiFile": [
+      {
+        "handler_name": "openUiFile",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\import\\import.file.stage-crew.ts",
+        "line_number": 3,
+        "function_type": "async-function",
+        "signature": "export async function openUiFile(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "routeDeleteRequest": [
+      {
+        "handler_name": "routeDeleteRequest",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+        "line_number": 47,
+        "function_type": "async-function",
+        "signature": "export async function routeDeleteRequest(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "registerInstance": [
+      {
+        "handler_name": "registerInstance",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\create\\create.io.ts",
+        "line_number": 1,
+        "function_type": "arrow-function",
+        "signature": "export const registerInstance = async (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "parseUiFile": [
+      {
+        "handler_name": "parseUiFile",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\import\\import.parse.pure.ts",
+        "line_number": 32,
+        "function_type": "sync-function",
+        "signature": "export function parseUiFile(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "refreshControlPanel": [
+      {
+        "handler_name": "refreshControlPanel",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
+        "line_number": 39,
+        "function_type": "sync-function",
+        "signature": "export function refreshControlPanel(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      },
+      {
+        "handler_name": "refreshControlPanel",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\update\\update.svg-node.stage-crew.ts",
+        "line_number": 110,
+        "function_type": "sync-function",
+        "signature": "export function refreshControlPanel(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "Refresh the Control Panel after updating an SVG node attribute. This reuses the existing refresh logic from the main update handler."
+      }
+    ],
+    "routeSelectionRequest": [
+      {
+        "handler_name": "routeSelectionRequest",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_number": 14,
+        "function_type": "async-function",
+        "signature": "export async function routeSelectionRequest(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "Topic-first selection handler: routes canvas.component.select.requested to the selection sequence This ensures data.id is always available from Beat 1 onward, making notify/publish reliable"
+      }
+    ],
+    "queryAllComponents": [
+      {
+        "handler_name": "queryAllComponents",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.io.ts",
+        "line_number": 1,
+        "function_type": "arrow-function",
+        "signature": "export const queryAllComponents = async (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "publishSelectionsCleared": [
+      {
+        "handler_name": "publishSelectionsCleared",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_number": 44,
+        "function_type": "async-function",
+        "signature": "export async function publishSelectionsCleared(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "calculatePastePosition": [
+      {
+        "handler_name": "calculatePastePosition",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "line_number": 64,
+        "function_type": "class-method",
+        "signature": "export async function calculatePastePosition(data: any, _ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "_ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "showSelectionOverlay": [
+      {
+        "handler_name": "showSelectionOverlay",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_number": 62,
+        "function_type": "class-method",
+        "signature": "export function showSelectionOverlay(data: any, ctx?: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx?"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "showSvgNodeOverlay": [
+      {
+        "handler_name": "showSvgNodeOverlay",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\select\\select.svg-node.stage-crew.ts",
+        "line_number": 14,
+        "function_type": "async-function",
+        "signature": "export async function showSvgNodeOverlay(data: any, _ctx?: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "_ctx?"
+        ],
+        "return_type": null,
+        "doc_comment": "Show selection overlay for a sub-node within an SVG component.  data: { id: string; path?: string } - id: the Canvas component id (expected to be the <svg> element id) - path: slash-separated child indices (element-only), e.g. \"0/1/0\""
+      }
+    ],
+    "renderReact": [
+      {
+        "handler_name": "renderReact",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+        "line_number": 11,
+        "function_type": "arrow-function",
+        "signature": "export const renderReact = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "Renders React code inside a canvas component node. Compiles user-provided React code and mounts it using React 19 createRoot."
+      }
+    ],
+    "createNode": [
+      {
+        "handler_name": "createNode",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\create\\create.stage-crew.ts",
+        "line_number": 39,
+        "function_type": "arrow-function",
+        "signature": "export const createNode = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "createComponentsSequentially": [
+      {
+        "handler_name": "createComponentsSequentially",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\import\\import.nodes.stage-crew.ts",
+        "line_number": 10,
+        "function_type": "async-function",
+        "signature": "export async function createComponentsSequentially(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "NEW: Sequential component creation handler that uses canvas.component.create as the single source of truth for all component creation"
+      }
+    ],
+    "serializeSelectedComponent": [
+      {
+        "handler_name": "serializeSelectedComponent",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+        "line_number": 50,
+        "function_type": "class-method",
+        "signature": "export async function serializeSelectedComponent(data: any, _ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "_ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "enhanceLine": [
+      {
+        "handler_name": "enhanceLine",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\augment\\augment.line.stage-crew.ts",
+        "line_number": 30,
+        "function_type": "sync-function",
+        "signature": "export function enhanceLine(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "endLineManip": [
+      {
+        "handler_name": "endLineManip",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_number": 69,
+        "function_type": "sync-function",
+        "signature": "export function endLineManip(_data: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "publishDeselectionChanged": [
+      {
+        "handler_name": "publishDeselectionChanged",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_number": 36,
+        "function_type": "async-function",
+        "signature": "export async function publishDeselectionChanged(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "updateSize": [
+      {
+        "handler_name": "updateSize",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_number": 81,
+        "function_type": "class-method",
+        "signature": "export const updateSize = (data: any, ctx?: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx?"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "downloadUiFile": [
+      {
+        "handler_name": "downloadUiFile",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.download.stage-crew.ts",
+        "line_number": 2,
+        "function_type": "arrow-function",
+        "signature": "export const downloadUiFile = async (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "Stage-crew download handler: performs DOM-based download in browser"
+      }
+    ],
+    "deserializeComponentData": [
+      {
+        "handler_name": "deserializeComponentData",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "line_number": 50,
+        "function_type": "class-method",
+        "signature": "export async function deserializeComponentData(data: any, _ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "_ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "updateSvgNodeAttribute": [
+      {
+        "handler_name": "updateSvgNodeAttribute",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\update\\update.svg-node.stage-crew.ts",
+        "line_number": 44,
+        "function_type": "async-function",
+        "signature": "export async function updateSvgNodeAttribute(data: any, ctx?: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx?"
+        ],
+        "return_type": null,
+        "doc_comment": "Safely update an attribute on an SVG sub-node.  data: { id: string; path: string; attribute: string; value: any } - id: the Canvas component id (expected to be the <svg> element id) - path: slash-separated child indices (element-only), e.g. \"0/1/0\" - attribute: the SVG attribute to update (must be in whitelist) - value: the new value for the attribute"
+      }
+    ],
+    "exportSvgToMp4": [
+      {
+        "handler_name": "exportSvgToMp4",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.mp4.stage-crew.ts",
+        "line_number": 6,
+        "function_type": "async-function",
+        "signature": "export async function exportSvgToMp4(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "moveLineManip": [
+      {
+        "handler_name": "moveLineManip",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_number": 49,
+        "function_type": "sync-function",
+        "signature": "export function moveLineManip(data: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "startLineManip": [
+      {
+        "handler_name": "startLineManip",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_number": 44,
+        "function_type": "sync-function",
+        "signature": "export function startLineManip(data: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "endDrag": [
+      {
+        "handler_name": "endDrag",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_number": 86,
+        "function_type": "arrow-function",
+        "signature": "export const endDrag = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "updateAttribute": [
+      {
+        "handler_name": "updateAttribute",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
+        "line_number": 8,
+        "function_type": "sync-function",
+        "signature": "export function updateAttribute(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "updatePosition": [
+      {
+        "handler_name": "updatePosition",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_number": 6,
+        "function_type": "arrow-function",
+        "signature": "export const updatePosition = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "discoverComponentsFromDom": [
+      {
+        "handler_name": "discoverComponentsFromDom",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.discover.stage-crew.ts",
+        "line_number": 1,
+        "function_type": "sync-function",
+        "signature": "export function discoverComponentsFromDom(_data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "buildUiFileContent": [
+      {
+        "handler_name": "buildUiFileContent",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.pure.ts",
+        "line_number": 3,
+        "function_type": "arrow-function",
+        "signature": "export const buildUiFileContent = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "notifyPasteComplete": [
+      {
+        "handler_name": "notifyPasteComplete",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "line_number": 133,
+        "function_type": "class-method",
+        "signature": "export async function notifyPasteComplete(_data: any, _ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "_data",
+          "_ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "resolveTemplate": [
+      {
+        "handler_name": "resolveTemplate",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\create\\create.arrangement.ts",
+        "line_number": 1,
+        "function_type": "arrow-function",
+        "signature": "export const resolveTemplate = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "collectLayoutData": [
+      {
+        "handler_name": "collectLayoutData",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\export\\export.stage-crew.ts",
+        "line_number": 15,
+        "function_type": "arrow-function",
+        "signature": "export const collectLayoutData = (data: any, ctx: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": null
+      }
+    ],
+    "routeDeselectionRequest": [
+      {
+        "handler_name": "routeDeselectionRequest",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_number": 62,
+        "function_type": "async-function",
+        "signature": "export async function routeDeselectionRequest(data: any, ctx: any) {",
+        "is_exported": true,
+        "parameters": [
+          "data",
+          "ctx"
+        ],
+        "return_type": null,
+        "doc_comment": "Topic-first deselection routing handler - If data.id is present route to canvas.component.deselect sequence - Otherwise route to canvas.component.deselect.all sequence"
+      }
+    ],
+    "forwardToControlPanel": [
+      {
+        "handler_name": "forwardToControlPanel",
+        "file_path": "packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_number": 111,
+        "function_type": "arrow-function",
+        "signature": "export const forwardToControlPanel = (_data?: any, _ctx?: any) => {",
+        "is_exported": true,
+        "parameters": [
+          "_data?",
+          "_ctx?"
+        ],
+        "return_type": null,
+        "doc_comment": "Forward selection info over to Control Panel (stub for now)"
+      }
+    ]
+  },
+  "orphaned_handlers": [],
+  "unused_handlers": []
+}

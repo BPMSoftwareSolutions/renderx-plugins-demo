@@ -5,6 +5,7 @@ using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.HostSDK.Avalonia.Logging;
 using RenderX.HostSDK.Avalonia.Services;
 using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
 
 namespace RenderX.HostSDK.Avalonia.Extensions;
 
@@ -69,9 +70,8 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ConductorAwareLoggerFactory>(provider =>
         {
             var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
-            var eventRouter = provider.GetRequiredService<IEventRouter>();
-            var conductor = provider.GetRequiredService<IConductorClient>();
-            return new ConductorAwareLoggerFactory(loggerFactory, eventRouter, conductor);
+            var eventBus = provider.GetRequiredService<IEventBus>();
+            return new ConductorAwareLoggerFactory(loggerFactory, eventBus);
         });
 
         return services;
