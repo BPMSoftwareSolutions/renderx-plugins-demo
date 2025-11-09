@@ -169,8 +169,6 @@ vite.config.ts.timestamp-*
 
 # Generated compatibility catalogs (root copies for Node tests/tools)
 # Source of truth lives under catalog/
-json-components/
-json-sequences/
 !/catalog/json-components/
 !/packages/*/json-components/
 !/packages/*/json-sequences/
@@ -200,3 +198,5 @@ cypress/videos/
 **/bin/
 **/obj/
 **/wwwroot/
+/json-components
+/json-sequences/control-panel
