@@ -1,0 +1,23 @@
+================================================================================
+Log Messages Report - Grouped by FILE
+================================================================================
+
+├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts (28 messages)
+│   └── 📝 LOG (28 occurrences)
+│       ├── Line 10: error
+│       ├── Line 27: info
+│       ├── Line 31: warn
+│       ├── Line 36: error
+│       ├── Line 44: error
+│       ├── Line 49: error
+│       ├── Line 60: info
+│       ├── Line 64: warn
+│       ├── Line 69: error
+│       ├── Line 77: error
+│       └── ... and 18 more
+
+└── packages\control-panel\src\symphonies\css-management\css-management.symphony.ts (3 messages)
+    └── 📝 LOG (3 occurrences)
+        ├── Line 36: info
+        ├── Line 38: warn
+        └── Line 41: warn
