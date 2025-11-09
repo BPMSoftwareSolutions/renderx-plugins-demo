@@ -44,7 +44,9 @@
                               Padding="8">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <Canvas Background="White"/>
+                            <Canvas Background="White" 
+                                    Name="rxCanvas"
+                                    AutomationProperties.AutomationId="rx-canvas"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>

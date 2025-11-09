@@ -151,6 +151,9 @@ public partial class App : Application
                 // Plugin loader - manifest-agnostic slot-to-control mapping
                 services.AddSingleton<IPluginLoader, PluginLoader>();
 
+                // UI Event Service - manifest-driven keyboard shortcuts (ADR-0037)
+                services.AddSingleton<Infrastructure.Events.IUiEventService, Infrastructure.Events.UiEventService>();
+
                 // Configuration
                 services.Configure<RenderXConfiguration>(context.Configuration.GetSection("RenderX"));
 

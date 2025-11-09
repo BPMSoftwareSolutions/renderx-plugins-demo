@@ -83,6 +83,11 @@
     <Folder Include="Infrastructure\Configuration\" />
   </ItemGroup>
 
+  <!-- Copy manifest files to output directory -->
+  <ItemGroup>
+    <None Include="manifests\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <!-- Pre-build: Generate manifests from plugin metadata -->
   <Target Name="GenerateManifests" BeforeTargets="SyncPluginJsonFiles">
     <Exec Command="dotnet run --project &quot;$(ProjectDir)..\RenderX.ManifestGenerator\RenderX.ManifestGenerator.csproj&quot; -- &quot;$(RenderXRepoRoot)&quot;" />
