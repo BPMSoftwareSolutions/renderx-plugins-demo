@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.ManifestValidator"
+             Background="White">
+    <Border BorderThickness="1"
+            BorderBrush="#E0E0E0"
+            CornerRadius="4"
+            Padding="12">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Manifest Validation"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Foreground="#333" />
+
+            <!-- Validation Status -->
+            <StackPanel Spacing="4">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Ellipse x:Name="ValidationDot"
+                             Width="12" Height="12"
+                             Fill="#10b981" />
+                    <TextBlock x:Name="ValidationStatus"
+                               Text="Valid"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               Foreground="#10b981" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Validation Results -->
+            <ItemsControl x:Name="ValidationResultsControl"
+                          Background="Transparent">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent"
+                                BorderThickness="0,0,0,1"
+                                BorderBrush="#E0E0E0"
+                                Padding="0,8">
+                            <StackPanel Spacing="2">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock x:Name="ResultIcon"
+                                               Text="✓"
+                                               FontSize="10"
+                                               Foreground="#10b981" />
+                                    <TextBlock Text="{Binding Message}"
+                                               FontSize="10"
+                                               Foreground="#333" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Validate Button -->
+            <Button Content="Validate Manifests"
+                    Padding="8,4"
+                    Background="#007ACC"
+                    Foreground="White"
+                    FontSize="10"
+                    Click="OnValidateClick" />
+        </StackPanel>
+    </Border>
+</UserControl>
+

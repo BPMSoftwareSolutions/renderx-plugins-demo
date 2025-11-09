@@ -1,0 +1,242 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- RenderX Elevation & Shadow System - Matching Web Application -->
+    <!-- Web uses box-shadow: 0 2px 8px, 0 4px 12px, 0 8px 24px -->
+    
+    <Styles.Resources>
+        <!-- ============================================ -->
+        <!-- DROP SHADOW EFFECTS (Elevation Levels) -->
+        <!-- ============================================ -->
+        
+        <!-- Level 1: Subtle hover elevation -->
+        <!-- box-shadow: 0 2px 4px rgba(0,0,0,0.1) -->
+        <DropShadowEffect x:Key="Shadow.Level1"
+                          OffsetX="0"
+                          OffsetY="2"
+                          BlurRadius="4"
+                          Color="#1A000000"
+                          Opacity="1"/>
+        
+        <!-- Level 2: Card/panel elevation -->
+        <!-- box-shadow: 0 2px 8px rgba(0,0,0,0.15) -->
+        <DropShadowEffect x:Key="Shadow.Level2"
+                          OffsetX="0"
+                          OffsetY="2"
+                          BlurRadius="8"
+                          Color="#26000000"
+                          Opacity="1"/>
+        
+        <!-- Level 3: Raised card/modal elevation -->
+        <!-- box-shadow: 0 4px 12px rgba(0,0,0,0.2) -->
+        <DropShadowEffect x:Key="Shadow.Level3"
+                          OffsetX="0"
+                          OffsetY="4"
+                          BlurRadius="12"
+                          Color="#33000000"
+                          Opacity="1"/>
+        
+        <!-- Level 4: Dialog/overlay elevation -->
+        <!-- box-shadow: 0 8px 24px rgba(0,0,0,0.3) -->
+        <DropShadowEffect x:Key="Shadow.Level4"
+                          OffsetX="0"
+                          OffsetY="8"
+                          BlurRadius="24"
+                          Color="#4D000000"
+                          Opacity="1"/>
+        
+        <!-- Level 5: Maximum elevation (popups, tooltips) -->
+        <!-- box-shadow: 0 12px 32px rgba(0,0,0,0.4) -->
+        <DropShadowEffect x:Key="Shadow.Level5"
+                          OffsetX="0"
+                          OffsetY="12"
+                          BlurRadius="32"
+                          Color="#66000000"
+                          Opacity="1"/>
+        
+        <!-- ============================================ -->
+        <!-- INNER SHADOW EFFECTS -->
+        <!-- ============================================ -->
+        
+        <!-- Inset shadow for pressed/active states -->
+        <DropShadowEffect x:Key="Shadow.Inset"
+                          OffsetX="0"
+                          OffsetY="1"
+                          BlurRadius="2"
+                          Color="#33000000"
+                          Opacity="1"/>
+        
+        <!-- ============================================ -->
+        <!-- SPECIALIZED SHADOWS -->
+        <!-- ============================================ -->
+        
+        <!-- Focus ring shadow (blue glow) -->
+        <DropShadowEffect x:Key="Shadow.Focus"
+                          OffsetX="0"
+                          OffsetY="0"
+                          BlurRadius="4"
+                          Color="#802196F3"
+                          Opacity="1"/>
+        
+        <!-- Error glow shadow (red) -->
+        <DropShadowEffect x:Key="Shadow.Error"
+                          OffsetX="0"
+                          OffsetY="0"
+                          BlurRadius="4"
+                          Color="#80EF4444"
+                          Opacity="1"/>
+        
+        <!-- Success glow shadow (green) -->
+        <DropShadowEffect x:Key="Shadow.Success"
+                          OffsetX="0"
+                          OffsetY="0"
+                          BlurRadius="4"
+                          Color="#8010B981"
+                          Opacity="1"/>
+        
+    </Styles.Resources>
+    
+    <!-- ============================================ -->
+    <!-- SHADOW UTILITY CLASSES -->
+    <!-- ============================================ -->
+    
+    <!-- Border controls with shadow levels -->
+    <Style Selector="Border.shadow-sm">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level1}" />
+    </Style>
+    
+    <Style Selector="Border.shadow">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level2}" />
+    </Style>
+    
+    <Style Selector="Border.shadow-md">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level3}" />
+    </Style>
+    
+    <Style Selector="Border.shadow-lg">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level4}" />
+    </Style>
+    
+    <Style Selector="Border.shadow-xl">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level5}" />
+    </Style>
+    
+    <!-- Focus shadow -->
+    <Style Selector="Border.shadow-focus">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Focus}" />
+    </Style>
+    
+    <!-- No shadow -->
+    <Style Selector="Border.shadow-none">
+        <Setter Property="Effect" Value="{x:Null}" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- CARD STYLES WITH ELEVATION -->
+    <!-- ============================================ -->
+    
+    <!-- Base card style -->
+    <Style Selector="Border.card">
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level2}" />
+    </Style>
+    
+    <!-- Card hover state (lift effect) -->
+    <Style Selector="Border.card:pointerover">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level3}" />
+    </Style>
+    
+    <!-- Elevated card variant -->
+    <Style Selector="Border.card-elevated">
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level3}" />
+    </Style>
+    
+    <Style Selector="Border.card-elevated:pointerover">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level4}" />
+    </Style>
+    
+    <!-- Flat card (no elevation) -->
+    <Style Selector="Border.card-flat">
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="Effect" Value="{x:Null}" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- PANEL STYLES WITH ELEVATION -->
+    <!-- ============================================ -->
+    
+    <!-- Floating panel (like control panel, library) -->
+    <Style Selector="Border.panel-floating">
+        <Setter Property="Background" Value="{DynamicResource Gray.50}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="12" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level2}" />
+    </Style>
+    
+    <!-- Modal dialog -->
+    <Style Selector="Border.modal">
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Secondary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="24" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level4}" />
+    </Style>
+    
+    <!-- Tooltip style -->
+    <Style Selector="Border.tooltip">
+        <Setter Property="Background" Value="{DynamicResource Gray.900}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray.700}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level3}" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- BUTTON ELEVATION STYLES -->
+    <!-- ============================================ -->
+    
+    <!-- Raised button (with subtle shadow) -->
+    <Style Selector="Button.btn-raised">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level1}" />
+    </Style>
+    
+    <Style Selector="Button.btn-raised:pointerover">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level2}" />
+    </Style>
+    
+    <Style Selector="Button.btn-raised:pressed">
+        <Setter Property="Effect" Value="{x:Null}" />
+    </Style>
+    
+    <!-- Floating action button -->
+    <Style Selector="Button.fab">
+        <Setter Property="Width" Value="56" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="CornerRadius" Value="28" />
+        <Setter Property="Background" Value="{DynamicResource Blue.500}" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Inverse}" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level3}" />
+    </Style>
+    
+    <Style Selector="Button.fab:pointerover">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level4}" />
+    </Style>
+    
+</Styles>

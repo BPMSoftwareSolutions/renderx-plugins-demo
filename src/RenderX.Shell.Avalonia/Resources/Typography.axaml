@@ -1,0 +1,81 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Font Families -->
+    <FontFamily x:Key="FontFamilyDefault">Segoe UI, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue</FontFamily>
+    <FontFamily x:Key="FontFamilyMono">Consolas, Monaco, Courier New, monospace</FontFamily>
+    <FontFamily x:Key="FontFamilySerif">Georgia, serif</FontFamily>
+    
+    <!-- Font Sizes -->
+    <x:Double x:Key="FontSizeXXSmall">10</x:Double>
+    <x:Double x:Key="FontSizeXSmall">11</x:Double>
+    <x:Double x:Key="FontSizeSmall">12</x:Double>
+    <x:Double x:Key="FontSizeBase">13</x:Double>
+    <x:Double x:Key="FontSizeMedium">14</x:Double>
+    <x:Double x:Key="FontSizeLarge">16</x:Double>
+    <x:Double x:Key="FontSizeXLarge">18</x:Double>
+    <x:Double x:Key="FontSizeXXLarge">20</x:Double>
+    <x:Double x:Key="FontSize3XLarge">24</x:Double>
+    <x:Double x:Key="FontSize4XLarge">28</x:Double>
+    <x:Double x:Key="FontSize5XLarge">32</x:Double>
+    
+    <!-- Font Weights -->
+    <FontWeight x:Key="FontWeightThin">Thin</FontWeight>
+    <FontWeight x:Key="FontWeightExtraLight">ExtraLight</FontWeight>
+    <FontWeight x:Key="FontWeightLight">Light</FontWeight>
+    <FontWeight x:Key="FontWeightNormal">Normal</FontWeight>
+    <FontWeight x:Key="FontWeightMedium">Medium</FontWeight>
+    <FontWeight x:Key="FontWeightSemiBold">SemiBold</FontWeight>
+    <FontWeight x:Key="FontWeightBold">Bold</FontWeight>
+    <FontWeight x:Key="FontWeightExtraBold">ExtraBold</FontWeight>
+    <FontWeight x:Key="FontWeightBlack">Black</FontWeight>
+    
+    <!-- Line Heights -->
+    <x:Double x:Key="LineHeightTight">1.2</x:Double>
+    <x:Double x:Key="LineHeightNormal">1.5</x:Double>
+    <x:Double x:Key="LineHeightRelaxed">1.75</x:Double>
+    <x:Double x:Key="LineHeightLoose">2</x:Double>
+    
+    <!-- Letter Spacing -->
+    <x:Double x:Key="LetterSpacingTight">-0.02</x:Double>
+    <x:Double x:Key="LetterSpacingNormal">0</x:Double>
+    <x:Double x:Key="LetterSpacingWide">0.02</x:Double>
+    <x:Double x:Key="LetterSpacingExtraWide">0.05</x:Double>
+    
+    <!-- Heading Styles -->
+    <x:Double x:Key="HeadingH1Size">32</x:Double>
+    <FontWeight x:Key="HeadingH1Weight">Bold</FontWeight>
+    
+    <x:Double x:Key="HeadingH2Size">28</x:Double>
+    <FontWeight x:Key="HeadingH2Weight">Bold</FontWeight>
+    
+    <x:Double x:Key="HeadingH3Size">24</x:Double>
+    <FontWeight x:Key="HeadingH3Weight">SemiBold</FontWeight>
+    
+    <x:Double x:Key="HeadingH4Size">20</x:Double>
+    <FontWeight x:Key="HeadingH4Weight">SemiBold</FontWeight>
+    
+    <x:Double x:Key="HeadingH5Size">18</x:Double>
+    <FontWeight x:Key="HeadingH5Weight">Medium</FontWeight>
+    
+    <x:Double x:Key="HeadingH6Size">16</x:Double>
+    <FontWeight x:Key="HeadingH6Weight">Medium</FontWeight>
+    
+    <!-- Body Text Styles -->
+    <x:Double x:Key="BodyLargeSize">16</x:Double>
+    <FontWeight x:Key="BodyLargeWeight">Normal</FontWeight>
+    
+    <x:Double x:Key="BodySize">14</x:Double>
+    <FontWeight x:Key="BodyWeight">Normal</FontWeight>
+    
+    <x:Double x:Key="BodySmallSize">12</x:Double>
+    <FontWeight x:Key="BodySmallWeight">Normal</FontWeight>
+    
+    <!-- Caption Styles -->
+    <x:Double x:Key="CaptionSize">11</x:Double>
+    <FontWeight x:Key="CaptionWeight">Normal</FontWeight>
+    
+    <!-- Code/Monospace Styles -->
+    <x:Double x:Key="CodeSize">12</x:Double>
+    <FontWeight x:Key="CodeWeight">Normal</FontWeight>
+</ResourceDictionary>
+

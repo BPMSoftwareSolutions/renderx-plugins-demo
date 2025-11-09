@@ -1,0 +1,103 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Primary Colors -->
+    <Color x:Key="Primary">#007ACC</Color>
+    <Color x:Key="PrimaryLight">#0098FF</Color>
+    <Color x:Key="PrimaryDark">#005A9E</Color>
+    
+    <!-- Secondary Colors -->
+    <Color x:Key="Secondary">#6C757D</Color>
+    <Color x:Key="SecondaryLight">#ADB5BD</Color>
+    <Color x:Key="SecondaryDark">#495057</Color>
+    
+    <!-- Success Colors -->
+    <Color x:Key="Success">#10B981</Color>
+    <Color x:Key="SuccessLight">#34D399</Color>
+    <Color x:Key="SuccessDark">#059669</Color>
+    
+    <!-- Warning Colors -->
+    <Color x:Key="Warning">#FFA726</Color>
+    <Color x:Key="WarningLight">#FFB74D</Color>
+    <Color x:Key="WarningDark">#FB8500</Color>
+    
+    <!-- Error/Danger Colors -->
+    <Color x:Key="Error">#EF5350</Color>
+    <Color x:Key="ErrorLight">#EF9A9A</Color>
+    <Color x:Key="ErrorDark">#C62828</Color>
+    
+    <!-- Info Colors -->
+    <Color x:Key="Info">#2196F3</Color>
+    <Color x:Key="InfoLight">#64B5F6</Color>
+    <Color x:Key="InfoDark">#1565C0</Color>
+    
+    <!-- Neutral/Gray Colors -->
+    <Color x:Key="Gray50">#F9FAFB</Color>
+    <Color x:Key="Gray100">#F3F4F6</Color>
+    <Color x:Key="Gray200">#E5E7EB</Color>
+    <Color x:Key="Gray300">#D1D5DB</Color>
+    <Color x:Key="Gray400">#9CA3AF</Color>
+    <Color x:Key="Gray500">#6B7280</Color>
+    <Color x:Key="Gray600">#4B5563</Color>
+    <Color x:Key="Gray700">#374151</Color>
+    <Color x:Key="Gray800">#1F2937</Color>
+    <Color x:Key="Gray900">#111827</Color>
+    
+    <!-- Background Colors -->
+    <Color x:Key="BgPrimary">#FFFFFF</Color>
+    <Color x:Key="BgSecondary">#F5F5F5</Color>
+    <Color x:Key="BgTertiary">#EEEEEE</Color>
+    <Color x:Key="BgDark">#1E1E1E</Color>
+    <Color x:Key="BgDarkSecondary">#252526</Color>
+    
+    <!-- Text Colors -->
+    <Color x:Key="TextPrimary">#333333</Color>
+    <Color x:Key="TextSecondary">#666666</Color>
+    <Color x:Key="TextTertiary">#999999</Color>
+    <Color x:Key="TextInverse">#FFFFFF</Color>
+    <Color x:Key="TextMuted">#CCCCCC</Color>
+    
+    <!-- Border Colors -->
+    <Color x:Key="BorderLight">#E0E0E0</Color>
+    <Color x:Key="BorderMedium">#D0D0D0</Color>
+    <Color x:Key="BorderDark">#999999</Color>
+    
+    <!-- Accent Colors -->
+    <Color x:Key="AccentBlue">#007ACC</Color>
+    <Color x:Key="AccentGreen">#10B981</Color>
+    <Color x:Key="AccentRed">#EF5350</Color>
+    <Color x:Key="AccentOrange">#FFA726</Color>
+    <Color x:Key="AccentPurple">#9C27B0</Color>
+    <Color x:Key="AccentPink">#E91E63</Color>
+    <Color x:Key="AccentCyan">#00BCD4</Color>
+    <Color x:Key="AccentTeal">#009688</Color>
+    
+    <!-- Semantic Colors -->
+    <Color x:Key="Disabled">#BDBDBD</Color>
+    <Color x:Key="Hover">#F0F0F0</Color>
+    <Color x:Key="Active">#E0E0E0</Color>
+    <Color x:Key="Focus">#007ACC</Color>
+    <Color x:Key="Selected">#E3F2FD</Color>
+    
+    <!-- Status Colors -->
+    <Color x:Key="StatusOnline">#10B981</Color>
+    <Color x:Key="StatusOffline">#6B7280</Color>
+    <Color x:Key="StatusBusy">#EF5350</Color>
+    <Color x:Key="StatusAway">#FFA726</Color>
+    
+    <!-- Overlay Colors -->
+    <Color x:Key="OverlayDark">#00000080</Color>
+    <Color x:Key="OverlayLight">#FFFFFF80</Color>
+    
+    <!-- SolidColorBrush Resources -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource Success}" />
+    <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource Error}" />
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource Warning}" />
+    <SolidColorBrush x:Key="InfoBrush" Color="{StaticResource Info}" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}" />
+    <SolidColorBrush x:Key="BgPrimaryBrush" Color="{StaticResource BgPrimary}" />
+    <SolidColorBrush x:Key="BgSecondaryBrush" Color="{StaticResource BgSecondary}" />
+    <SolidColorBrush x:Key="BorderLightBrush" Color="{StaticResource BorderLight}" />
+</ResourceDictionary>
+

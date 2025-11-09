@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderContainer"
+             Background="Transparent">
+    <Border Background="#1e1e1e" BorderBrush="#333" BorderThickness="0,0,0,1" Padding="0">
+        <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="Auto" Height="60">
+            <!-- Left slot -->
+            <ContentPresenter x:Name="LeftSlot" Grid.Column="0" VerticalAlignment="Center" Margin="16,0,0,0" />
+            
+            <!-- Center slot -->
+            <ContentPresenter x:Name="CenterSlot" Grid.Column="1" VerticalAlignment="Center" />
+            
+            <!-- Right slot -->
+            <ContentPresenter x:Name="RightSlot" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,16,0" HorizontalAlignment="Right" />
+        </Grid>
+    </Border>
+</UserControl>
+

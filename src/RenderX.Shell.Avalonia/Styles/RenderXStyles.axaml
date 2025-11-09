@@ -3,6 +3,13 @@
     
     <!-- Base RenderX Application Styles -->
     
+    <!-- Include foundation styles first -->
+    <StyleInclude Source="/Styles/ColorPalette.axaml"/>
+    <StyleInclude Source="/Styles/Typography.axaml"/>
+    <StyleInclude Source="/Styles/Elevation.axaml"/>
+    <StyleInclude Source="/Styles/Animations.axaml"/>
+    <StyleInclude Source="/Styles/Spacing.axaml"/>
+    
     <!-- Include component-specific styles -->
     <StyleInclude Source="/Styles/Components/ComponentStyles.axaml"/>
     <StyleInclude Source="/Styles/Components/ControlPanelStyles.axaml"/>
@@ -15,8 +22,8 @@
 
     <!-- rx-button: Standard RenderX button -->
     <Style Selector="Button.rx-button">
-        <Setter Property="Background" Value="#3B82F6" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource Blue.500}" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Inverse}" />
         <Setter Property="Padding" Value="12,8" />
         <Setter Property="Margin" Value="4" />
         <Setter Property="FontSize" Value="14" />
@@ -26,24 +33,24 @@
     </Style>
 
     <Style Selector="Button.rx-button:pointerover">
-        <Setter Property="Background" Value="#2563EB" />
+        <Setter Property="Background" Value="{DynamicResource Blue.600}" />
     </Style>
 
     <Style Selector="Button.rx-button:pressed">
-        <Setter Property="Background" Value="#1D4ED8" />
+        <Setter Property="Background" Value="{DynamicResource Blue.700}" />
     </Style>
 
     <!-- rx-comp: Generic RenderX component wrapper -->
     <Style Selector="Border.rx-comp">
-        <Setter Property="Background" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
         <Setter Property="Padding" Value="8" />
         <Setter Property="Margin" Value="2" />
     </Style>
 
     <!-- rx-container: Container component -->
     <Style Selector="Border.rx-container">
-        <Setter Property="Background" Value="#F9FAFB" />
-        <Setter Property="BorderBrush" Value="#E5E7EB" />
+        <Setter Property="Background" Value="{DynamicResource Gray.50}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="16" />
         <Setter Property="Margin" Value="4" />
@@ -70,30 +77,47 @@
     
     <!-- Text utilities -->
     <Style Selector="TextBlock.text-primary">
-        <Setter Property="Foreground" Value="#111827" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Primary}" />
     </Style>
 
     <Style Selector="TextBlock.text-secondary">
-        <Setter Property="Foreground" Value="#6B7280" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Secondary}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-tertiary">
+        <Setter Property="Foreground" Value="{DynamicResource Text.Tertiary}" />
+    </Style>
+    
+    <Style Selector="TextBlock.text-light">
+        <Setter Property="Foreground" Value="{DynamicResource Text.Light}" />
     </Style>
 
     <!-- Background utilities (for Border controls) -->
     <Style Selector="Border.bg-white">
-        <Setter Property="Background" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
     </Style>
 
     <Style Selector="Border.bg-gray-50">
-        <Setter Property="Background" Value="#F9FAFB" />
+        <Setter Property="Background" Value="{DynamicResource Gray.50}" />
     </Style>
 
     <Style Selector="Border.bg-gray-100">
-        <Setter Property="Background" Value="#F3F4F6" />
+        <Setter Property="Background" Value="{DynamicResource Gray.100}" />
+    </Style>
+    
+    <Style Selector="Border.bg-gray-900">
+        <Setter Property="Background" Value="{DynamicResource Gray.900}" />
     </Style>
 
     <!-- Border utilities -->
     <Style Selector="Border.border">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="#E5E7EB" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
+    </Style>
+    
+    <Style Selector="Border.border-error">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Error}" />
     </Style>
 
     <Style Selector="Border.rounded">

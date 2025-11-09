@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderThemeButtonView"
+             Background="Transparent">
+    <Button x:Name="ThemeButton"
+            Click="OnThemeButtonClick"
+            Padding="12,6"
+            Background="#6C757D"
+            Foreground="White"
+            VerticalAlignment="Center"
+            ToolTip.Tip="Toggle Theme" />
+</UserControl>
+

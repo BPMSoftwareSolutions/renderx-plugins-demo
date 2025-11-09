@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.PluginDetail"
+             Background="White">
+    <Border BorderThickness="1"
+            BorderBrush="#E0E0E0"
+            CornerRadius="4"
+            Padding="12">
+        <StackPanel Spacing="12">
+            <!-- Plugin Name -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Plugin Name"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="PluginName"
+                           Text="Unknown"
+                           FontSize="12"
+                           FontWeight="Bold"
+                           Foreground="#333" />
+            </StackPanel>
+
+            <!-- Status -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Status"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Ellipse x:Name="StatusDot"
+                             Width="10" Height="10"
+                             Fill="#10b981" />
+                    <TextBlock x:Name="StatusText"
+                               Text="Loaded"
+                               FontSize="11"
+                               Foreground="#333" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Version -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Version"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="VersionText"
+                           Text="1.0.0"
+                           FontSize="11"
+                           Foreground="#333" />
+            </StackPanel>
+
+            <!-- Load Time -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Load Time"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="LoadTimeText"
+                           Text="0ms"
+                           FontSize="11"
+                           Foreground="#333" />
+            </StackPanel>
+
+            <!-- Error Message (if any) -->
+            <Border x:Name="ErrorBorder"
+                    Background="#FFEBEE"
+                    BorderThickness="1"
+                    BorderBrush="#EF5350"
+                    CornerRadius="4"
+                    Padding="8"
+                    IsVisible="False">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Error"
+                               FontSize="10"
+                               FontWeight="Bold"
+                               Foreground="#C62828" />
+                    <TextBlock x:Name="ErrorText"
+                               Text="Error message"
+                               FontSize="10"
+                               Foreground="#D32F2F"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Border>
+</UserControl>
+

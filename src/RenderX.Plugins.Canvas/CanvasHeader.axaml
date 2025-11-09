@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Canvas.CanvasHeader"
+             Background="Transparent">
+    <Border Background="#F5F5F5"
+            BorderThickness="0,0,0,1"
+            BorderBrush="#E0E0E0"
+            Padding="12">
+        <Grid ColumnDefinitions="*,Auto,Auto">
+            <!-- Title and Info -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8">
+                <TextBlock x:Name="TitleText"
+                           Text="Canvas"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+                <TextBlock x:Name="InfoText"
+                           Text="(0 components)"
+                           FontSize="12"
+                           Foreground="Gray"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Zoom Controls -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center" Margin="0,0,12,0">
+                <Button x:Name="ZoomOutButton"
+                        Content="−"
+                        Padding="8,4"
+                        Background="#E0E0E0"
+                        Foreground="#333"
+                        FontSize="12"
+                        Click="OnZoomOutClick" />
+                <TextBlock x:Name="ZoomLevelText"
+                           Text="100%"
+                           FontSize="11"
+                           VerticalAlignment="Center"
+                           MinWidth="40"
+                           TextAlignment="Center" />
+                <Button x:Name="ZoomInButton"
+                        Content="+"
+                        Padding="8,4"
+                        Background="#E0E0E0"
+                        Foreground="#333"
+                        FontSize="12"
+                        Click="OnZoomInClick" />
+            </StackPanel>
+
+            <!-- View Options -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                <Button x:Name="GridToggleButton"
+                        Content="⊞"
+                        Padding="8,4"
+                        Background="#E0E0E0"
+                        Foreground="#333"
+                        FontSize="12"
+                        ToolTip.Tip="Toggle Grid"
+                        Click="OnGridToggleClick" />
+                <Button x:Name="FitToViewButton"
+                        Content="⊡"
+                        Padding="8,4"
+                        Background="#E0E0E0"
+                        Foreground="#333"
+                        FontSize="12"
+                        ToolTip.Tip="Fit to View"
+                        Click="OnFitToViewClick" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
+

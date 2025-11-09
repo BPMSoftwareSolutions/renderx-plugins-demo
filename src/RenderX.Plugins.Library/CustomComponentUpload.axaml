@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Library.CustomComponentUpload"
+             Background="White">
+    <Border BorderThickness="1"
+            BorderBrush="#E0E0E0"
+            CornerRadius="4"
+            Padding="12">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Upload Custom Component"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="#333" />
+
+            <!-- File Input -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Component File"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <Button x:Name="BrowseButton"
+                        Content="Browse Files..."
+                        Padding="12,6"
+                        Background="#E0E0E0"
+                        Foreground="#333"
+                        FontSize="11"
+                        Click="OnBrowseClick" />
+                <TextBlock x:Name="FileNameText"
+                           Text="No file selected"
+                           FontSize="10"
+                           Foreground="#999" />
+            </StackPanel>
+
+            <!-- Component Name -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Component Name"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBox x:Name="ComponentNameInput"
+                         Watermark="Enter component name..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="#D0D0D0" />
+            </StackPanel>
+
+            <!-- Description -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Description"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBox x:Name="DescriptionInput"
+                         Watermark="Enter component description..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="#D0D0D0"
+                         AcceptsReturn="True"
+                         Height="80" />
+            </StackPanel>
+
+            <!-- Upload Button -->
+            <Button Content="Upload Component"
+                    Padding="12,6"
+                    Background="#4CAF50"
+                    Foreground="White"
+                    FontSize="11"
+                    Click="OnUploadClick" />
+        </StackPanel>
+    </Border>
+</UserControl>
+
