@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+             x:Class="RenderX.Plugins.Library.Controls.LibrarySearch">
+    
+    <!-- Library search -->
+    
+    <Border Classes="rx-control librarysearch"
+            Background="{StaticResource rx-bg-primary}"
+            BorderBrush="{StaticResource rx-border-primary}"
+            BorderThickness="1"
+            CornerRadius="4"
+            Padding="8">
+        
+        <StackPanel Spacing="8">
+            <!-- Header -->
+            <TextBlock Text="LibrarySearch"
+                       Classes="rx-text-base rx-font-semibold"
+                       Foreground="{StaticResource rx-text-primary}" />
+            
+            <!-- Content -->
+            <ContentPresenter Content="{Binding}" />
+            
+            <!-- Placeholder for implementation -->
+            <TextBlock Text="TODO: Implement LibrarySearch"
+                       Classes="rx-text-sm"
+                       Foreground="{StaticResource rx-text-muted}"
+                       TextWrapping="Wrap" />
+        </StackPanel>
+    </Border>
+</UserControl>

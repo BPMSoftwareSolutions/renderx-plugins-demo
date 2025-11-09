@@ -5,7 +5,7 @@
 ║              Sophisticated Analysis with ASCII Visualizations                 ║
 ║                                                                               ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
-Generated: 2025-11-09 16:37:28
+Generated: 2025-11-09 16:51:24
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃                          EXECUTIVE SUMMARY                            ┃
@@ -135,9 +135,9 @@ Generated: 2025-11-09 16:37:28
 ╠══════════════════════════════════════════════════════════╣
 ║ FUNCTION | 530 lines | Complexity: 84                    ║
 ╟──────────────────────────────────────────────────────────╢
-║ Hooks: usePerformanceMetrics, useEffect, useMemo +8     ║
+║ Hooks: useCallback, useConductorIntrospection, useUIState +8 ║
 ╟──────────────────────────────────────────────────────────╢
-║ CSS: resize-handle, inspector-subtitle +9               ║
+║ CSS: left-panel, inspector-title +9                     ║
 ╟──────────────────────────────────────────────────────────╢
 ║ Used in 1 file                                           ║
 ║   └─ DiagnosticsOverlay.tsx                             ║
@@ -163,9 +163,9 @@ Generated: 2025-11-09 16:37:28
 ╠══════════════════════════════════════════════════════════╣
 ║ FUNCTION | 967 lines | Complexity: 52                    ║
 ╟──────────────────────────────────────────────────────────╢
-║ Hooks: useTreeState, useState, useMemo                  ║
+║ Hooks: useTreeState, useMemo, useState                  ║
 ╟──────────────────────────────────────────────────────────╢
-║ CSS: plugin-tree-explorer, tree-search +6               ║
+║ CSS: tree-content, tree-header +6                       ║
 ╟──────────────────────────────────────────────────────────╢
 ║ Used in 1 file                                           ║
 ║   └─ DiagnosticsPanel.tsx                               ║
@@ -814,38 +814,38 @@ Generated: 2025-11-09 16:37:28
 🔷 CanvasHeader
    │
    ├─ .zoom-level ← CanvasPage.css
+   ├─ .canvas-control ← CanvasPage.css
+   ├─ .canvas-title ← CanvasPage.css
    ├─ .zoom-controls ← CanvasPage.css
    ├─ .canvas-divider ← CanvasPage.css
-   ├─ .canvas-title ← CanvasPage.css
-   ├─ .canvas-header ← CanvasPage.css
-   ├─ .canvas-controls ← CanvasPage.css
    ├─ .zoom-btn ← CanvasPage.css
-   ├─ .canvas-control ← CanvasPage.css
+   ├─ .canvas-controls ← CanvasPage.css
+   ├─ .canvas-header ← CanvasPage.css
 
 🔷 CanvasPage
    │
-   ├─ .canvas-grid ← CanvasPage.css
    ├─ .drop-indicator ← CanvasPage.css
-   ├─ .canvas-content ← CanvasPage.css
+   ├─ .canvas-grid ← CanvasPage.css
    ├─ .canvas-area ← CanvasPage.css
+   ├─ .canvas-content ← CanvasPage.css
 
 🔷 CanvasHeader
    │
    ├─ .zoom-level ← CanvasPage.css
+   ├─ .canvas-control ← CanvasPage.css
+   ├─ .canvas-title ← CanvasPage.css
    ├─ .zoom-controls ← CanvasPage.css
    ├─ .canvas-divider ← CanvasPage.css
-   ├─ .canvas-title ← CanvasPage.css
-   ├─ .canvas-header ← CanvasPage.css
-   ├─ .canvas-controls ← CanvasPage.css
    ├─ .zoom-btn ← CanvasPage.css
-   ├─ .canvas-control ← CanvasPage.css
+   ├─ .canvas-controls ← CanvasPage.css
+   ├─ .canvas-header ← CanvasPage.css
 
 🔷 CanvasPage
    │
-   ├─ .canvas-grid ← CanvasPage.css
    ├─ .drop-indicator ← CanvasPage.css
-   ├─ .canvas-content ← CanvasPage.css
+   ├─ .canvas-grid ← CanvasPage.css
    ├─ .canvas-area ← CanvasPage.css
+   ├─ .canvas-content ← CanvasPage.css
 
 
 
@@ -877,9 +877,9 @@ Top 10 Most Used React Hooks:
    4. useConductor              ███████████████ (15)
    5. useMemo                   ████████ (8)
    6. useControlPanelSequences  ██████ (6)
-   7. useSchemaResolver         ███ (3)
+   7. useControlPanelActions    ███ (3)
    8. useControlPanelState      ███ (3)
-   9. useControlPanelActions    ███ (3)
+   9. useSchemaResolver         ███ (3)
   10. useRef                    ██ (2)
 
 Top 10 Most Used CSS Properties:
@@ -901,4 +901,4 @@ Top 10 Most Used CSS Properties:
 ════════════════════════════════════════════════════════════════════════════════
 
 Generated by UI Component & Style Scanner
-Scan completed at: 2025-11-09 16:37:28
+Scan completed at: 2025-11-09 16:51:24
