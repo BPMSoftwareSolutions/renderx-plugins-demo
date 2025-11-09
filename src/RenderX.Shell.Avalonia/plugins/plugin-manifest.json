@@ -6,7 +6,7 @@
       "ui": {
         "slot": "canvas",
         "module": "RenderX.Plugins.Canvas.dll",
-        "export": "CanvasControl"
+        "export": "RenderX.Plugins.Canvas.CanvasControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.Canvas.dll",
@@ -54,7 +54,7 @@
       "ui": {
         "slot": "controlPanel",
         "module": "RenderX.Plugins.ControlPanel.dll",
-        "export": "ControlPanelControl"
+        "export": "RenderX.Plugins.ControlPanel.ControlPanelControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.ControlPanel.dll",
@@ -70,7 +70,7 @@
       "ui": {
         "slot": "headerLeft",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderTitlePlugin"
+        "export": "RenderX.Plugins.Header.HeaderTitlePlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
@@ -86,7 +86,7 @@
       "ui": {
         "slot": "headerCenter",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderControlsPlugin"
+        "export": "RenderX.Plugins.Header.HeaderControlsPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
@@ -102,7 +102,7 @@
       "ui": {
         "slot": "headerRight",
         "module": "RenderX.Plugins.Header.dll",
-        "export": "HeaderThemePlugin"
+        "export": "RenderX.Plugins.Header.HeaderThemePlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Header.dll",
@@ -118,7 +118,7 @@
       "ui": {
         "slot": "library",
         "module": "RenderX.Plugins.Library.dll",
-        "export": "LibraryPlugin"
+        "export": "RenderX.Plugins.Library.LibraryPlugin"
       },
       "runtime": {
         "module": "RenderX.Plugins.Library.dll",

@@ -91,4 +91,12 @@
     <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)validate-plugins.ps1&quot; -ProjectRoot &quot;$(ProjectDir.TrimEnd('\'))&quot;" />
   </Target>
 
+  <!-- Post-build: Copy plugins folder to output directory -->
+  <Target Name="CopyPluginsToOutput" AfterTargets="Build">
+    <ItemGroup>
+      <PluginFiles Include="$(ProjectDir)plugins\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(OutputPath)plugins\%(RecursiveDir)" />
+  </Target>
+
 </Project>
