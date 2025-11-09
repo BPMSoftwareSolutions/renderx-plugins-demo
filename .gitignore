@@ -172,6 +172,7 @@ json-sequences/
 !/catalog/json-components/
 !/packages/*/json-components/
 !/packages/*/json-sequences/
+!/src/RenderX.Plugins.*/json-sequences/
 
 # Generated root manifests (do not track)
 /interaction-manifest.json
