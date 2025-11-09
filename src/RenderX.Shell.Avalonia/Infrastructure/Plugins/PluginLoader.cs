@@ -27,6 +27,70 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
             _logger = logger;
             // Load plugin mappings from manifest instead of hardcoding
             _slotTypeMap = LoadPluginMappingsFromManifest();
+            // SHELL010: Validate manifest at startup
+            ValidatePluginManifest();
+        }
+
+        /// <summary>
+        /// Validates the plugin manifest structure and content at startup (SHELL010).
+        /// </summary>
+        private void ValidatePluginManifest()
+        {
+            var manifestPath = Path.Combine(
+                Path.GetDirectoryName(typeof(PluginLoader).Assembly.Location) ?? "",
+                "..", "..", "RenderX.Shell.Avalonia", "plugins", "plugin-manifest.json");
+
+            try
+            {
+                if (!File.Exists(manifestPath))
+                {
+                    _logger.LogWarning("Plugin manifest not found at {ManifestPath}", manifestPath);
+                    return;
+                }
+
+                var manifestContent = File.ReadAllText(manifestPath);
+                using var doc = JsonDocument.Parse(manifestContent);
+
+                // Validate root structure
+                if (!doc.RootElement.TryGetProperty("version", out _))
+                {
+                    _logger.LogWarning("Plugin manifest missing 'version' property");
+                }
+
+                if (!doc.RootElement.TryGetProperty("plugins", out var plugins))
+                {
+                    _logger.LogWarning("Plugin manifest missing 'plugins' array");
+                    return;
+                }
+
+                // Validate each plugin entry
+                foreach (var plugin in plugins.EnumerateArray())
+                {
+                    if (!plugin.TryGetProperty("id", out var id))
+                    {
+                        _logger.LogWarning("Plugin entry missing 'id' property");
+                        continue;
+                    }
+
+                    if (!plugin.TryGetProperty("ui", out var ui))
+                    {
+                        _logger.LogWarning("Plugin {PluginId} missing 'ui' configuration", id.GetString());
+                        continue;
+                    }
+
+                    // Validate UI configuration
+                    if (!ui.TryGetProperty("slot", out _) || !ui.TryGetProperty("module", out _) || !ui.TryGetProperty("export", out _))
+                    {
+                        _logger.LogWarning("Plugin {PluginId} has incomplete UI configuration", id.GetString());
+                    }
+                }
+
+                _logger.LogInformation("Plugin manifest validation completed successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error validating plugin manifest at {ManifestPath}", manifestPath);
+            }
         }
 
         /// <summary>

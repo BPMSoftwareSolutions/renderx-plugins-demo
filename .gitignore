@@ -141,7 +141,11 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/.vs
+
+# Visual Studio temporary files and directories
+.vs/
+*.vs/
+
 /.logs
 
 # Allow committed docs logs
@@ -193,5 +197,3 @@ cypress/videos/
 **/bin/
 **/obj/
 **/wwwroot/
-/src/.vs/RenderX.Shell.Avalonia/FileContentIndex
-/src/.vs/RenderX.Shell.Avalonia/v17
