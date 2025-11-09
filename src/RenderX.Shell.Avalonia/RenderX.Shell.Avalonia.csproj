@@ -54,6 +54,8 @@
   <ItemGroup>
     <ProjectReference Include="..\RenderX.Plugins.Header\RenderX.Plugins.Header.csproj" />
     <ProjectReference Include="..\RenderX.Plugins.Library\RenderX.Plugins.Library.csproj" />
+    <ProjectReference Include="..\RenderX.Plugins.Canvas\RenderX.Plugins.Canvas.csproj" />
+    <ProjectReference Include="..\RenderX.Plugins.ControlPanel\RenderX.Plugins.ControlPanel.csproj" />
   </ItemGroup>
 
   <!-- Roslyn Analyzers for enforcing thin-host architecture pattern -->

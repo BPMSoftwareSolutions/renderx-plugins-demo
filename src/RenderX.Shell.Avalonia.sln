@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.Header", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.Library", "RenderX.Plugins.Library\RenderX.Plugins.Library.csproj", "{C0D7D7E3-0H7C-6D7C-1H7C-0D7D7E3C0H7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.Canvas", "RenderX.Plugins.Canvas\RenderX.Plugins.Canvas.csproj", "{D1E8E8F4-1I8D-7E8D-2I8D-1E8E8F4D1I8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.ControlPanel", "RenderX.Plugins.ControlPanel\RenderX.Plugins.ControlPanel.csproj", "{E2F9F9G5-2J9E-8F9E-3J9E-2F9F9G5E2J9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,5 +30,13 @@ Global
 		{C0D7D7E3-0H7C-6D7C-1H7C-0D7D7E3C0H7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D7D7E3-0H7C-6D7C-1H7C-0D7D7E3C0H7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D7D7E3-0H7C-6D7C-1H7C-0D7D7E3C0H7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E8E8F4-1I8D-7E8D-2I8D-1E8E8F4D1I8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E8E8F4-1I8D-7E8D-2I8D-1E8E8F4D1I8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E8E8F4-1I8D-7E8D-2I8D-1E8E8F4D1I8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E8E8F4-1I8D-7E8D-2I8D-1E8E8F4D1I8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F9F9G5-2J9E-8F9E-3J9E-2F9F9G5E2J9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F9F9G5-2J9E-8F9E-3J9E-2F9F9G5E2J9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F9F9G5-2J9E-8F9E-3J9E-2F9F9G5E2J9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F9F9G5-2J9E-8F9E-3J9E-2F9F9G5E2J9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

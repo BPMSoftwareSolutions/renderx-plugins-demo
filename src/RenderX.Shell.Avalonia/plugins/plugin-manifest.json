@@ -77,11 +77,11 @@
       "ui": {
         "slot": "canvas",
         "module": "RenderX.Plugins.Canvas.dll",
-        "export": "CanvasPlugin"
+        "export": "CanvasControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.Canvas.dll",
-        "export": "CanvasPlugin"
+        "export": "CanvasControl"
       },
       "dependencies": [],
       "autoMount": true
@@ -94,11 +94,11 @@
       "ui": {
         "slot": "controlPanel",
         "module": "RenderX.Plugins.ControlPanel.dll",
-        "export": "ControlPanelPlugin"
+        "export": "ControlPanelControl"
       },
       "runtime": {
         "module": "RenderX.Plugins.ControlPanel.dll",
-        "export": "ControlPanelPlugin"
+        "export": "ControlPanelControl"
       },
       "dependencies": [],
       "autoMount": true

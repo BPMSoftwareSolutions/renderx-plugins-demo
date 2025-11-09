@@ -2,7 +2,9 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 
 namespace RenderX.Shell.Avalonia.Analyzers;
 
@@ -21,12 +23,18 @@ namespace RenderX.Shell.Avalonia.Analyzers;
 /// 6. MainWindow.axaml.cs must NOT import from RenderX.Shell.Avalonia.UI.Views.* (plugin controls)
 /// 7. Plugin loading must use IPluginLoader and manifest-driven discovery
 /// 8. All plugin controls must be loaded dynamically via SlotContainer
+///
+/// SHELL003: Plugin completeness violations
+/// 9. All plugins in plugin-manifest.json must have corresponding implementations
+/// 10. All plugins must be registered in PluginLoader.cs
+/// 11. All plugin DLLs must be referenced in the shell project
 /// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
 {
     public const string DiagnosticId = "SHELL001";
     public const string PluginDecouplingDiagnosticId = "SHELL002";
+    public const string PluginCompletenessDiagnosticId = "SHELL003";
     private const string Category = "Architecture";
 
     private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
@@ -47,8 +55,17 @@ public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
         isEnabledByDefault: true,
         description: "Plugins must be loaded dynamically via SlotContainer using the plugin manifest, not hardcoded in MainWindow. This ensures plugins can be added/removed without rebuilding the shell.");
 
+    private static readonly DiagnosticDescriptor PluginCompletenessRule = new DiagnosticDescriptor(
+        PluginCompletenessDiagnosticId,
+        title: "Plugin completeness violation",
+        messageFormat: "Plugin architecture gap: {0}",
+        category: Category,
+        defaultSeverity: DiagnosticSeverity.Error,
+        isEnabledByDefault: true,
+        description: "All plugins must be standalone DLLs, not embedded in the shell. Canvas and ControlPanel should be in RenderX.Plugins.Canvas and RenderX.Plugins.ControlPanel, not in RenderX.Shell.Avalonia.UI.Views.");
+
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics =>
-        ImmutableArray.Create(Rule, PluginDecouplingRule);
+        ImmutableArray.Create(Rule, PluginDecouplingRule, PluginCompletenessRule);
 
     public override void Initialize(AnalysisContext context)
     {
@@ -56,6 +73,7 @@ public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
         context.EnableConcurrentExecution();
         context.RegisterSyntaxNodeAction(AnalyzeImportStatement, SyntaxKind.UsingDirective);
         context.RegisterSyntaxNodeAction(AnalyzeObjectCreation, SyntaxKind.ObjectCreationExpression);
+        context.RegisterCompilationAction(AnalyzePluginCompleteness);
     }
 
     private static void AnalyzeImportStatement(SyntaxNodeAnalysisContext context)
@@ -142,6 +160,36 @@ public class ThinHostArchitectureAnalyzer : DiagnosticAnalyzer
                         PluginDecouplingRule,
                         objectCreation.GetLocation(),
                         $"Direct instantiation of {forbidden}");
+
+                    context.ReportDiagnostic(diagnostic);
+                }
+            }
+        }
+    }
+
+    private static void AnalyzePluginCompleteness(CompilationAnalysisContext context)
+    {
+        // SHELL003: Check for embedded plugins that should be standalone
+        // Canvas and ControlPanel should NOT be in RenderX.Shell.Avalonia.UI.Views
+
+        var embeddedPlugins = new[]
+        {
+            "RenderX.Shell.Avalonia.UI.Views.CanvasControl",
+            "RenderX.Shell.Avalonia.UI.Views.ControlPanelControl",
+        };
+
+        foreach (var embeddedPlugin in embeddedPlugins)
+        {
+            var symbol = context.Compilation.GetTypeByMetadataName(embeddedPlugin);
+            if (symbol != null)
+            {
+                var location = symbol.Locations.FirstOrDefault();
+                if (location != null && location.IsInSource)
+                {
+                    var diagnostic = Diagnostic.Create(
+                        PluginCompletenessRule,
+                        location,
+                        $"{symbol.Name} is embedded in shell but should be a standalone plugin (RenderX.Plugins.Canvas or RenderX.Plugins.ControlPanel)");
 
                     context.ReportDiagnostic(diagnostic);
                 }
