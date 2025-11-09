@@ -1,0 +1,31 @@
+================================================================================
+GENERATED FILES SUMMARY
+================================================================================
+
+📁 catalog/
+   ├─ catalog/json-interactions/.generated/app.json                ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-interactions/.generated/canvas.json             ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-interactions/.generated/control.json            ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-interactions/.generated/library.json            ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-plugins/.generated/plugin-manifest.json         ← aggregate-plugins.js
+
+📁 json-components/
+   ├─ json-components/**/*.json (repo root)                        ← sync-json-sources.js
+
+📁 json-sequences/
+   ├─ json-sequences/**/*.json (repo root)                         ← sync-json-sources.js
+
+📁 public/
+   ├─ public/control-panel-config/*.json (assumed)                 ← sync-control-panel-config.js
+   ├─ public/interaction-manifest.json                             ← generate-interaction-manifest.js
+   ├─ public/json-sequences/**/*.json                              ← sync-json-sequences.js
+   ├─ public/layout-manifest.json                                  ← generate-layout-manifest.js
+   ├─ public/plugins/plugin-manifest.json                          ← sync-plugins.js
+   ├─ public/topics-manifest.json                                  ← generate-topics-manifest.js
+
+📁 repo root/
+   ├─ interaction-manifest.json (repo root)                        ← generate-interaction-manifest.js
+   ├─ layout-manifest.json (repo root)                             ← generate-layout-manifest.js
+   ├─ topics-manifest.json (repo root)                             ← generate-topics-manifest.js
+
+
