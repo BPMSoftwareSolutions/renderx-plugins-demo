@@ -9,17 +9,17 @@ using RenderX.Plugins.Library.Handlers;
 namespace RenderX.Plugins.Library;
 
 /// <summary>
-/// Library plugin for loading component templates.
+/// Library handlers plugin for loading component templates.
 /// </summary>
-public class LibraryPlugin : IPlugin
+public class LibraryHandlersPlugin : IPlugin
 {
-    private readonly ILogger<LibraryPlugin> _logger;
+    private readonly ILogger<LibraryHandlersPlugin> _logger;
     private readonly ILoggerFactory _loggerFactory;
     private readonly IEventBus _eventBus;
     private readonly Dictionary<string, IHandler> _handlers = new();
     private readonly List<ISequence> _sequences = new();
 
-    public LibraryPlugin(ILogger<LibraryPlugin> logger, ILoggerFactory loggerFactory, IEventBus eventBus)
+    public LibraryHandlersPlugin(ILogger<LibraryHandlersPlugin> logger, ILoggerFactory loggerFactory, IEventBus eventBus)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));

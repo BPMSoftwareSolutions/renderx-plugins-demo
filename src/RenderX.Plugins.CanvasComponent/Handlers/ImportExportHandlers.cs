@@ -110,9 +110,10 @@ public class ImportExportHandlers
             // TODO: Inject CSS into application
             // In Avalonia: Add styles to Application.Current.Styles or specific window resources
 
-            _logger.LogInformation("Would inject {Count} CSS classes", cssMap.Count);
+            int count = cssMap?.Count ?? 0;
+            _logger.LogInformation("Would inject {Count} CSS classes", count);
 
-            return new { success = true, injected = cssMap.Count };
+            return new { success = true, injected = count };
         }
         catch (Exception ex)
         {
@@ -143,9 +144,10 @@ public class ImportExportHandlers
             // - Pass component data with _overrideNodeId set to preserve IDs
             // - Await each creation before starting next
 
-            _logger.LogInformation("Would create {Count} components", components.Count);
+            int count = components?.Count ?? 0;
+            _logger.LogInformation("Would create {Count} components", count);
 
-            return new { success = true, created = components.Count };
+            return new { success = true, created = count };
         }
         catch (Exception ex)
         {
@@ -193,9 +195,10 @@ public class ImportExportHandlers
             }
 
             // TODO: Store each component in KV store
-            _logger.LogInformation("Would register {Count} instances in storage", components.Count);
+            int count = components?.Count ?? 0;
+            _logger.LogInformation("Would register {Count} instances in storage", count);
 
-            return new { success = true, registered = components.Count };
+            return new { success = true, registered = count };
         }
         catch (Exception ex)
         {

@@ -255,8 +255,11 @@ public class CrudHandlers
             // TODO: Apply attribute update using component rule engine
             // The rule engine handles different attribute types (style, content, etc.)
             
+            string attrStr = attribute?.ToString() ?? "";
+            string valueStr = value?.ToString() ?? "";
+            string idStr = id?.ToString() ?? "";
             _logger.LogInformation("Would update attribute {Attribute}={Value} on component {Id}", 
-                attribute, value, id);
+                attrStr, valueStr, idStr);
 
             // Store updated info for next beat
             SetPayloadProperty(ctx, "updatedAttribute", new { id, attribute, value });
@@ -295,8 +298,12 @@ public class CrudHandlers
 
             // TODO: Update SVG sub-node attribute
             
+            string pathStr = path?.ToString() ?? "";
+            string attrStr = attribute?.ToString() ?? "";
+            string valueStr = value?.ToString() ?? "";
+            string idStr = id?.ToString() ?? "";
             _logger.LogInformation("Would update SVG node {Path} attribute {Attribute}={Value} on {Id}", 
-                path, attribute, value, id);
+                pathStr, attrStr, valueStr, idStr);
 
             SetPayloadProperty(ctx, "elementId", id);
 

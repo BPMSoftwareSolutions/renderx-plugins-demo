@@ -259,8 +259,8 @@ public class CopyPasteHandlers
             //     position
             // });
 
-            _logger.LogInformation("Would create pasted component at position {Position}", 
-                JsonSerializer.Serialize(position));
+            string positionStr = JsonSerializer.Serialize(position);
+            _logger.LogInformation("Would create pasted component at position {Position}", positionStr);
 
             return new { success = true, created = true };
         }

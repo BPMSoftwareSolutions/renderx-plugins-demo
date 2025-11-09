@@ -247,7 +247,9 @@ public class ControlPanelHandlers
             // - Update component
             // - Refresh UI
 
-            _logger.LogInformation("Would handle field change {FieldName}={Value}", fieldName, value);
+            string fieldNameStr = fieldName?.ToString() ?? "";
+            string valueStr = value?.ToString() ?? "";
+            _logger.LogInformation("Would handle field change {FieldName}={Value}", fieldNameStr, valueStr);
 
             return new { success = true, fieldName, value };
         }
