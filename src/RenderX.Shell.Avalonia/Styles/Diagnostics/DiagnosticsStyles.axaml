@@ -1,0 +1,516 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Diagnostics UI Styles -->
+    
+    <!-- btn: Standard button style -->
+    <Style Selector="Button.btn">
+        <Setter Property="Background" Value="#3b82f6"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#2563eb"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.btn:pointerover">
+        <Setter Property="Background" Value="#2563eb"/>
+    </Style>
+    
+    <!-- btn-sm: Small button variant -->
+    <Style Selector="Button.btn-sm">
+        <Setter Property="Padding" Value="6,2"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+    
+    <!-- stat-badge: Statistics badge style -->
+    <Style Selector="Border.stat-badge">
+        <Setter Property="Background" Value="#3b82f6"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="6,2"/>
+        <Setter Property="Margin" Value="4,0"/>
+    </Style>
+    
+    <Style Selector="TextBlock.stat-badge">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <!-- panel-header: Panel header container -->
+    <Style Selector="Border.panel-header">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+    
+    <!-- panel-title: Panel title text -->
+    <Style Selector="TextBlock.panel-title">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#64b5f6"/>
+    </Style>
+    
+    <!-- panel-content: Panel content area -->
+    <Style Selector="Border.panel-content">
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+    
+    <!-- detail-row: Detail information row -->
+    <Style Selector="StackPanel.detail-row">
+        <Setter Property="Spacing" Value="8"/>
+        <Setter Property="Margin" Value="0,4"/>
+    </Style>
+    
+    <!-- detail-label: Detail label text -->
+    <Style Selector="TextBlock.detail-label">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="#888"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+    
+    <!-- code: Inline code style -->
+    <Style Selector="TextBlock.code">
+        <Setter Property="FontFamily" Value="Consolas, Monaco, monospace"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="#ce9178"/>
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="Padding" Value="2,1"/>
+    </Style>
+    
+    <!-- plugin-item: Plugin list item -->
+    <Style Selector="Border.plugin-item">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Margin" Value="0,4"/>
+    </Style>
+    
+    <Style Selector="Border.plugin-item:pointerover">
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="BorderBrush" Value="#444"/>
+    </Style>
+    
+    <!-- plugin-header: Plugin item header -->
+    <Style Selector="Border.plugin-header">
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+    
+    <!-- plugin-name: Plugin name text -->
+    <Style Selector="TextBlock.plugin-name">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- inspection-panel-content: Inspection panel content -->
+    <Style Selector="Border.inspection-panel-content">
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Margin" Value="8"/>
+    </Style>
+    
+    <!-- diagnostics-overlay: Overlay background -->
+    <Style Selector="Border.diagnostics-overlay">
+        <Setter Property="Background" Value="#CC000000"/>
+    </Style>
+    
+    <!-- diagnostics-modal: Modal container -->
+    <Style Selector="Border.diagnostics-modal">
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    
+    <!-- diagnostics-modal-header: Modal header -->
+    <Style Selector="Border.diagnostics-modal-header">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Padding" Value="8"/>
+    </Style>
+    
+    <!-- diagnostics-close-btn: Close button -->
+    <Style Selector="Button.diagnostics-close-btn">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="4,0,8,0"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <Style Selector="Button.diagnostics-close-btn:pointerover">
+        <Setter Property="Background" Value="#333"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+    <!-- diagnostics-badge: Floating badge button -->
+    <Style Selector="Border.diagnostics-badge">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="24"/>
+        <Setter Property="Width" Value="48"/>
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Border.diagnostics-badge:pointerover">
+        <Setter Property="Background" Value="#333"/>
+    </Style>
+    
+    <!-- Sequence Player Styles -->
+    
+    <!-- stats-grid: Statistics grid layout -->
+    <Style Selector="StackPanel.stats-grid">
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+    
+    <!-- sequence-navigation: Sequence navigation bar -->
+    <Style Selector="Border.sequence-navigation">
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+    
+    <!-- sequence-counter: Sequence counter display -->
+    <Style Selector="TextBlock.sequence-counter">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+    
+    <!-- sequence-selector: Sequence dropdown selector -->
+    <Style Selector="ComboBox.sequence-selector">
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="MinWidth" Value="300"/>
+    </Style>
+    
+    <!-- sequence-nav-button: Navigation button -->
+    <Style Selector="Button.sequence-nav-button">
+        <Setter Property="Padding" Value="8,4,16,4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+    
+    <Style Selector="Button.sequence-nav-button:pointerover:not(:disabled)">
+        <Setter Property="Background" Value="#2d2d30"/>
+    </Style>
+    
+    <Style Selector="Button.sequence-nav-button:disabled">
+        <Setter Property="Opacity" Value="0.5"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+    </Style>
+    
+    <!-- Sequence List Styles -->
+    
+    <!-- sequence-list-header: Sequence list header -->
+    <Style Selector="Border.sequence-list-header">
+        <Setter Property="Padding" Value="12,12,16,12"/>
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <!-- sequence-list-title: Sequence list title -->
+    <Style Selector="TextBlock.sequence-list-title">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <!-- stat-badge-success: Success badge variant -->
+    <Style Selector="Border.stat-badge-success">
+        <Setter Property="Background" Value="#4caf50"/>
+        <Setter Property="BorderBrush" Value="#4caf50"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    
+    <Style Selector="TextBlock.stat-badge-success">
+        <Setter Property="Foreground" Value="#81c784"/>
+    </Style>
+    
+    <!-- stat-badge-warning: Warning badge variant -->
+    <Style Selector="Border.stat-badge-warning">
+        <Setter Property="Background" Value="#ff9800"/>
+        <Setter Property="BorderBrush" Value="#ff9800"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    
+    <Style Selector="TextBlock.stat-badge-warning">
+        <Setter Property="Foreground" Value="#ffb74d"/>
+    </Style>
+    
+    <!-- sequence-list-filters: Filters container -->
+    <Style Selector="Border.sequence-list-filters">
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <!-- sequence-search-input: Search input field -->
+    <Style Selector="TextBox.sequence-search-input">
+        <Setter Property="Padding" Value="8,4,12,4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+    
+    <Style Selector="TextBox.sequence-search-input:focus">
+        <Setter Property="BorderBrush" Value="#2196f3"/>
+    </Style>
+    
+    <!-- sequence-filter-select: Filter dropdown -->
+    <Style Selector="ComboBox.sequence-filter-select">
+        <Setter Property="Padding" Value="8,4,12,4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="MaxWidth" Value="300"/>
+    </Style>
+    
+    <!-- sequence-group: Sequence group container -->
+    <Style Selector="Border.sequence-group">
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <!-- sequence-group-header: Group header button -->
+    <Style Selector="Button.sequence-group-header">
+        <Setter Property="Background" Value="#2d2d30"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="12,12,16,12"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+    
+    <Style Selector="Button.sequence-group-header:pointerover">
+        <Setter Property="Background" Value="#252526"/>
+    </Style>
+    
+    <!-- sequence-group-count: Group item count -->
+    <Style Selector="TextBlock.sequence-group-count">
+        <Setter Property="Foreground" Value="#888"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+    
+    <!-- sequence-item: Individual sequence item -->
+    <Style Selector="Border.sequence-item">
+        <Setter Property="Padding" Value="12,12,16,12"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="0,1,0,0"/>
+    </Style>
+    
+    <Style Selector="Border.sequence-item:pointerover">
+        <Setter Property="Background" Value="#252526"/>
+    </Style>
+    
+    <!-- sequence-item-name: Sequence name -->
+    <Style Selector="TextBlock.sequence-item-name">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!-- sequence-item-id: Sequence ID -->
+    <Style Selector="TextBlock.sequence-item-id">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#888"/>
+        <Setter Property="FontFamily" Value="Consolas,Monaco,monospace"/>
+    </Style>
+    
+    <!-- sequence-item-description: Sequence description -->
+    <Style Selector="TextBlock.sequence-item-description">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#aaa"/>
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+    
+    <!-- sequence-play-button: Play sequence button -->
+    <Style Selector="Button.sequence-play-button">
+        <Setter Property="Padding" Value="8,4,16,4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="#4caf50"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#1b4d1e"/>
+        <Setter Property="Foreground" Value="#81c784"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <Style Selector="Button.sequence-play-button:pointerover:not(:disabled)">
+        <Setter Property="Background" Value="#2d5f30"/>
+        <Setter Property="BorderBrush" Value="#66bb6a"/>
+        <Setter Property="Foreground" Value="#a5d6a7"/>
+    </Style>
+    
+    <Style Selector="Button.sequence-play-button:disabled">
+        <Setter Property="Opacity" Value="0.4"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="Background" Value="#2d2d30"/>
+        <Setter Property="Foreground" Value="#888"/>
+    </Style>
+    
+    <!-- Live Monitor Styles -->
+    
+    <!-- live-monitor-container: Live monitor container -->
+    <Style Selector="Border.live-monitor-container">
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <!-- live-monitor-title: Monitor title -->
+    <Style Selector="TextBlock.live-monitor-title">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <!-- live-monitor-beat: Beat execution item -->
+    <Style Selector="Border.live-monitor-beat">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Background" Value="#2d2d30"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderThickness" Value="4,0,0,0"/>
+    </Style>
+    
+    <Style Selector="Border.live-monitor-beat:pointerover">
+        <Setter Property="Background" Value="#252526"/>
+    </Style>
+    
+    <!-- live-monitor-beat-success: Success state -->
+    <Style Selector="Border.live-monitor-beat-success">
+        <Setter Property="BorderBrush" Value="#4caf50"/>
+    </Style>
+    
+    <!-- live-monitor-beat-error: Error state -->
+    <Style Selector="Border.live-monitor-beat-error">
+        <Setter Property="BorderBrush" Value="#f44336"/>
+    </Style>
+    
+    <!-- live-monitor-beat-running: Running state -->
+    <Style Selector="Border.live-monitor-beat-running">
+        <Setter Property="BorderBrush" Value="#2196f3"/>
+    </Style>
+    
+    <!-- live-monitor-beat-pending: Pending state -->
+    <Style Selector="Border.live-monitor-beat-pending">
+        <Setter Property="BorderBrush" Value="#888"/>
+        <Setter Property="Opacity" Value="0.6"/>
+    </Style>
+    
+    <!-- Tree View and Plugin Styles -->
+    
+    <!-- seqNodeId: Sequence node ID display -->
+    <Style Selector="TextBlock.seqNodeId">
+        <Setter Property="FontFamily" Value="Consolas,Monaco,monospace"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="#888"/>
+    </Style>
+    
+    <!-- plugin: Plugin container -->
+    <Style Selector="Border.plugin">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+    
+    <Style Selector="Border.plugin:pointerover">
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="BorderBrush" Value="#444"/>
+    </Style>
+    
+    <!-- Empty and Error States -->
+    
+    <!-- sequence-list-empty: Empty state -->
+    <Style Selector="StackPanel.sequence-list-empty">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+    
+    <Style Selector="TextBlock.sequence-list-empty">
+        <Setter Property="Foreground" Value="#888"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- sequence-list-error: Error state -->
+    <Style Selector="Border.sequence-list-error">
+        <Setter Property="Background" Value="#331111"/>
+        <Setter Property="BorderBrush" Value="#f44336"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+    
+    <Style Selector="TextBlock.sequence-list-error">
+        <Setter Property="Foreground" Value="#f44336"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- empty-icon: Empty state icon -->
+    <Style Selector="TextBlock.empty-icon">
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- error-icon: Error state icon -->
+    <Style Selector="TextBlock.error-icon">
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#f44336"/>
+    </Style>
+    
+</Styles>

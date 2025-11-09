@@ -1,0 +1,392 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Inspection Panel Styles -->
+    
+    <!-- inspection-panel: Main inspection panel container -->
+    <Style Selector="ScrollViewer.inspection-panel">
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Background" Value="#1e1e1e"/>
+    </Style>
+    
+    <!-- inspection-panel-content: Panel content area -->
+    <Style Selector="StackPanel.inspection-panel-content">
+        <Setter Property="MaxWidth" Value="800"/>
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+    
+    <!-- inspection-panel-empty: Empty state container -->
+    <Style Selector="StackPanel.inspection-panel-empty">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+    
+    <!-- inspection-panel-empty-icon: Empty state icon -->
+    <Style Selector="TextBlock.inspection-panel-empty-icon">
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="FontSize" Value="48"/>
+        <Setter Property="Opacity" Value="0.5"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- inspection-panel-empty-title: Empty state title -->
+    <Style Selector="TextBlock.inspection-panel-empty-title">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- inspection-panel-empty-text: Empty state description -->
+    <Style Selector="TextBlock.inspection-panel-empty-text">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="MaxWidth" Value="400"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <!-- JSON Viewer Styles -->
+    
+    <!-- json-viewer: JSON viewer container -->
+    <Style Selector="Border.json-viewer">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+    
+    <!-- json-viewer-header: JSON viewer header -->
+    <Style Selector="Border.json-viewer-header">
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+    
+    <!-- json-viewer-toggle: Toggle expand/collapse button -->
+    <Style Selector="Button.json-viewer-toggle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    
+    <Style Selector="Button.json-viewer-toggle:pointerover">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+    <!-- json-viewer-title: JSON viewer title -->
+    <Style Selector="TextBlock.json-viewer-title">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- json-viewer-copy: Copy button -->
+    <Style Selector="Button.json-viewer-copy">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <Style Selector="Button.json-viewer-copy:pointerover">
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="Foreground" Value="#007bff"/>
+    </Style>
+    
+    <!-- json-viewer-content: JSON content area -->
+    <Style Selector="ScrollViewer.json-viewer-content">
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+    
+    <!-- json-viewer-pre: Preformatted text container -->
+    <Style Selector="TextBlock.json-viewer-pre">
+        <Setter Property="FontFamily" Value="Consolas,Monaco,Courier New,monospace"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <!-- Code Block Styles -->
+    
+    <!-- code-block: Code block container -->
+    <Style Selector="Border.code-block">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+    
+    <!-- code-block-header: Code block header -->
+    <Style Selector="Border.code-block-header">
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+    
+    <!-- code-block-title: Code block title -->
+    <Style Selector="TextBlock.code-block-title">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- code-block-language: Language badge -->
+    <Style Selector="TextBlock.code-block-language">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#999"/>
+    </Style>
+    
+    <!-- code-block-copy: Copy code button -->
+    <Style Selector="Button.code-block-copy">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <Style Selector="Button.code-block-copy:pointerover">
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="Foreground" Value="#007bff"/>
+    </Style>
+    
+    <!-- code-block-content: Code content area -->
+    <Style Selector="ScrollViewer.code-block-content">
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+    
+    <!-- code-block-pre: Preformatted code text -->
+    <Style Selector="TextBlock.code-block-pre">
+        <Setter Property="FontFamily" Value="Consolas,Monaco,Courier New,monospace"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- Action Button Styles -->
+    
+    <!-- action-button: Base action button -->
+    <Style Selector="Button.action-button">
+        <Setter Property="Padding" Value="8,4,16,4"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.action-button:disabled">
+        <Setter Property="Opacity" Value="0.5"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+    </Style>
+    
+    <!-- action-button-primary: Primary variant -->
+    <Style Selector="Button.action-button-primary">
+        <Setter Property="Background" Value="#007bff"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#007bff"/>
+    </Style>
+    
+    <Style Selector="Button.action-button-primary:pointerover:not(:disabled)">
+        <Setter Property="Background" Value="#0056b3"/>
+        <Setter Property="BorderBrush" Value="#0056b3"/>
+    </Style>
+    
+    <!-- action-button-secondary: Secondary variant -->
+    <Style Selector="Button.action-button-secondary">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <Style Selector="Button.action-button-secondary:pointerover:not(:disabled)">
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="BorderBrush" Value="#007bff"/>
+    </Style>
+    
+    <!-- action-button-danger: Danger variant -->
+    <Style Selector="Button.action-button-danger">
+        <Setter Property="Background" Value="#dc3545"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#dc3545"/>
+    </Style>
+    
+    <Style Selector="Button.action-button-danger:pointerover:not(:disabled)">
+        <Setter Property="Background" Value="#c82333"/>
+        <Setter Property="BorderBrush" Value="#c82333"/>
+    </Style>
+    
+    <!-- action-button-small: Small size variant -->
+    <Style Selector="Button.action-button-small">
+        <Setter Property="Padding" Value="4,2,8,2"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    
+    <!-- action-button-medium: Medium size variant -->
+    <Style Selector="Button.action-button-medium">
+        <Setter Property="Padding" Value="8,4,16,4"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!-- action-button-large: Large size variant -->
+    <Style Selector="Button.action-button-large">
+        <Setter Property="Padding" Value="12,6,24,6"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    
+    <!-- Collapsible Section Styles -->
+    
+    <!-- collapsible-section: Collapsible section container -->
+    <Style Selector="StackPanel.collapsible-section">
+        <Setter Property="Margin" Value="0,0,0,16"/>
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+    
+    <!-- collapsible-section-header: Section header button -->
+    <Style Selector="Button.collapsible-section-header">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    </Style>
+    
+    <Style Selector="Button.collapsible-section-header:pointerover">
+        <Setter Property="Background" Value="#2d2d2d"/>
+        <Setter Property="BorderBrush" Value="#007bff"/>
+    </Style>
+    
+    <!-- collapsible-section-badge: Section badge -->
+    <Style Selector="Border.collapsible-section-badge">
+        <Setter Property="Background" Value="#1e3a8a"/>
+        <Setter Property="Padding" Value="2,0,8,0"/>
+        <Setter Property="CornerRadius" Value="12"/>
+    </Style>
+    
+    <Style Selector="TextBlock.collapsible-section-badge">
+        <Setter Property="Foreground" Value="#007bff"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <!-- collapsible-section-content: Section content -->
+    <Style Selector="Border.collapsible-section-content">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Background" Value="#1e1e1e"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+    
+    <!-- Plugin Info Inspector Styles -->
+    
+    <!-- plugin-info-inspector: Inspector container -->
+    <Style Selector="StackPanel.plugin-info-inspector">
+        <Setter Property="MaxWidth" Value="800"/>
+        <Setter Property="Spacing" Value="24"/>
+    </Style>
+    
+    <!-- plugin-info-header: Plugin header -->
+    <Style Selector="Border.plugin-info-header">
+        <Setter Property="Padding" Value="24"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Margin" Value="0,0,0,24"/>
+    </Style>
+    
+    <!-- plugin-info-title: Plugin title -->
+    <Style Selector="TextBlock.plugin-info-title">
+        <Setter Property="Margin" Value="0,0,0,8"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- plugin-info-version: Version text -->
+    <Style Selector="TextBlock.plugin-info-version">
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!-- plugin-info-status: Status indicator -->
+    <Style Selector="TextBlock.plugin-info-status">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!-- plugin-info-section: Info section container -->
+    <Style Selector="StackPanel.plugin-info-section">
+        <Setter Property="Margin" Value="0,0,0,24"/>
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+    
+    <!-- plugin-info-section-title: Section title -->
+    <Style Selector="TextBlock.plugin-info-section-title">
+        <Setter Property="Margin" Value="0,0,0,16"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- plugin-info-description: Description text -->
+    <Style Selector="TextBlock.plugin-info-description">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <!-- plugin-info-stat: Statistics item -->
+    <Style Selector="Border.plugin-info-stat">
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#333"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+    
+    <!-- plugin-info-stat-label: Stat label -->
+    <Style Selector="TextBlock.plugin-info-stat-label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+    
+    <!-- plugin-info-stat-value: Stat value -->
+    <Style Selector="TextBlock.plugin-info-stat-value">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#cccccc"/>
+    </Style>
+    
+    <!-- relative-time: Relative time display -->
+    <Style Selector="TextBlock.relative-time">
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Help"/>
+    </Style>
+    
+</Styles>

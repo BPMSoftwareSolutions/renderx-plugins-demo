@@ -1,3 +1,6 @@
+using Avalonia;
+using Avalonia.Styling;
+using Avalonia.Threading;
 using Jint;
 using Jint.Native;
 using Jint.Runtime;
@@ -5,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Engine;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.HostSDK.Avalonia.Models;
+using RenderX.HostSDK.Avalonia.Styling;
 using System.Collections.Concurrent;
 using System.Text.Json;
 
@@ -20,6 +24,8 @@ public class CssRegistryService : ICssRegistryAPI
     private readonly ILogger<CssRegistryService> _logger;
     private readonly ConcurrentBag<Action<IReadOnlyList<CssClassDef>>> _observers;
     private readonly List<JsValue> _jsUnsubscribers;
+    private readonly AvaloniaStyleConverter _styleConverter;
+    private readonly ConcurrentDictionary<string, Style> _injectedStyles;
     private bool _disposed;
 
     /// <summary>
@@ -33,6 +39,9 @@ public class CssRegistryService : ICssRegistryAPI
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _observers = new ConcurrentBag<Action<IReadOnlyList<CssClassDef>>>();
         _jsUnsubscribers = new List<JsValue>();
+        // Note: Passing null for logger since we'll use our own logger for CSS operations
+        _styleConverter = new AvaloniaStyleConverter(null);
+        _injectedStyles = new ConcurrentDictionary<string, Style>();
 
         _logger.LogInformation("🎨 CssRegistryService initialized");
     }
@@ -86,12 +95,68 @@ public class CssRegistryService : ICssRegistryAPI
             // Convert the JavaScript promise to a C# Task
             await ConvertJsPromiseToTask(jsPromise);
 
+            // Convert CSS to Avalonia Style and inject into application
+            InjectAvaloniaStyle(def);
+
             _logger.LogInformation("✅ Created CSS class: {Name}", def.Name);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "❌ Failed to create CSS class: {Name}", def.Name);
             throw;
+        }
+    }
+
+    /// <summary>
+    /// Convert CSS class definition to Avalonia Style and inject into application.
+    /// </summary>
+    private void InjectAvaloniaStyle(CssClassDef def)
+    {
+        try
+        {
+            // Convert CSS to Avalonia Style
+            var style = _styleConverter.ConvertToStyle(def.Name, def.Rules);
+
+            if (style == null)
+            {
+                _logger.LogWarning("⚠️ Could not convert CSS class {Name} to Avalonia Style", def.Name);
+                return;
+            }
+
+            // Inject into Application styles on UI thread
+            if (Application.Current != null)
+            {
+                Dispatcher.UIThread.Post(() =>
+                {
+                    try
+                    {
+                        // Remove existing style with same name if present
+                        if (_injectedStyles.TryRemove(def.Name, out var oldStyle))
+                        {
+                            Application.Current.Styles.Remove(oldStyle);
+                            _logger.LogDebug("🗑️ Removed existing style for {Name}", def.Name);
+                        }
+
+                        // Add new style
+                        Application.Current.Styles.Add(style);
+                        _injectedStyles.TryAdd(def.Name, style);
+
+                        _logger.LogInformation("✅ Injected Avalonia Style for .{Name} into Application.Styles", def.Name);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "❌ Failed to inject Avalonia Style for {Name}", def.Name);
+                    }
+                });
+            }
+            else
+            {
+                _logger.LogWarning("⚠️ Application.Current is null, cannot inject styles");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "❌ Failed to inject Avalonia style for {Name}", def.Name);
         }
     }
 

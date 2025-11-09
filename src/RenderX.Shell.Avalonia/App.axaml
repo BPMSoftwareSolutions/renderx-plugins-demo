@@ -4,5 +4,7 @@
              x:Class="RenderX.Shell.Avalonia.App">
   <Application.Styles>
     <fluent:FluentTheme/>
+    <!-- RenderX base component styles -->
+    <StyleInclude Source="/Styles/RenderXStyles.axaml"/>
   </Application.Styles>
 </Application>

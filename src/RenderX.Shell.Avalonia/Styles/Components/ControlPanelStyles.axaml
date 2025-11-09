@@ -1,0 +1,322 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Control Panel Component Styles -->
+    
+    <!-- control-panel: Main control panel container -->
+    <Style Selector="Border.control-panel">
+        <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="BorderBrush" Value="#e5e7eb"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+    </Style>
+    
+    <!-- control-panel-header: Control panel header -->
+    <Style Selector="Border.control-panel-header">
+        <Setter Property="Padding" Value="16,16,20,16"/>
+        <Setter Property="Background" Value="#f9fafb"/>
+        <Setter Property="BorderBrush" Value="#e5e7eb"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+    
+    <!-- control-panel-content: Control panel content area -->
+    <Style Selector="ScrollViewer.control-panel-content">
+        <Setter Property="Padding" Value="20"/>
+    </Style>
+    
+    <!-- element-info: Element information display -->
+    <Style Selector="StackPanel.element-info">
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+    
+    <!-- element-type: Element type badge -->
+    <Style Selector="Border.element-type">
+        <Setter Property="Background" Value="#e0e7ff"/>
+        <Setter Property="Padding" Value="2,0,6,0"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <Style Selector="TextBlock.element-type">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+    
+    <!-- element-id: Element ID display -->
+    <Style Selector="Border.element-id">
+        <Setter Property="Background" Value="#f3f4f6"/>
+        <Setter Property="Padding" Value="2,0,6,0"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+    
+    <Style Selector="TextBlock.element-id">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontFamily" Value="Consolas,Monaco,monospace"/>
+    </Style>
+    
+    <!-- no-selection: No selection state -->
+    <Style Selector="StackPanel.no-selection">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+    
+    <Style Selector="TextBlock.no-selection-icon">
+        <Setter Property="FontSize" Value="48"/>
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+    
+    <!-- property-section: Property section container -->
+    <Style Selector="StackPanel.property-section">
+        <Setter Property="Margin" Value="0,0,0,20"/>
+        <Setter Property="Spacing" Value="12"/>
+    </Style>
+    
+    <!-- property-section-title: Property section title -->
+    <Style Selector="TextBlock.property-section-title">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#6b7280"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+    
+    <!-- property-grid: Property grid layout -->
+    <Style Selector="StackPanel.property-grid">
+        <Setter Property="Spacing" Value="12"/>
+    </Style>
+    
+    <!-- property-item: Individual property item -->
+    <Style Selector="StackPanel.property-item">
+        <Setter Property="Spacing" Value="4"/>
+    </Style>
+    
+    <!-- property-label: Property label text -->
+    <Style Selector="TextBlock.property-label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="#6b7280"/>
+    </Style>
+    
+    <!-- property-input: Property input field -->
+    <Style Selector="TextBox.property-input">
+        <Setter Property="Padding" Value="6,4,8,4"/>
+        <Setter Property="BorderBrush" Value="#d1d5db"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
+    <Style Selector="TextBox.property-input:focus">
+        <Setter Property="BorderBrush" Value="#3b82f6"/>
+    </Style>
+    
+    <Style Selector="TextBox.property-input:disabled">
+        <Setter Property="Background" Value="#f3f4f6"/>
+        <Setter Property="Foreground" Value="#6b7280"/>
+    </Style>
+    
+    <!-- class-list: CSS class list container -->
+    <Style Selector="Border.class-list">
+        <Setter Property="BorderBrush" Value="#d1d5db"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Background" Value="#f3f4f6"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="MinHeight" Value="24"/>
+    </Style>
+    
+    <!-- class-pill: Individual class pill -->
+    <Style Selector="Border.class-pill">
+        <Setter Property="Background" Value="#e5e7eb"/>
+        <Setter Property="Padding" Value="2,0,6,0"/>
+        <Setter Property="CornerRadius" Value="12"/>
+    </Style>
+    
+    <Style Selector="TextBlock.class-pill">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+    
+    <!-- class-remove-btn: Remove class button -->
+    <Style Selector="Button.class-remove-btn">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="#6b7280"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <Style Selector="Button.class-remove-btn:pointerover">
+        <Setter Property="Background" Value="#f3f4f6"/>
+        <Setter Property="Foreground" Value="#ef4444"/>
+    </Style>
+    
+    <!-- add-class-controls: Add class controls container -->
+    <Style Selector="StackPanel.add-class-controls">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="4"/>
+    </Style>
+    
+    <!-- add-class-btn: Add class button -->
+    <Style Selector="Button.add-class-btn">
+        <Setter Property="Padding" Value="6,4,12,4"/>
+        <Setter Property="Background" Value="#3b82f6"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.add-class-btn:pointerover">
+        <Setter Property="Background" Value="#2563eb"/>
+    </Style>
+    
+    <!-- css-classes-container: CSS classes list container -->
+    <Style Selector="StackPanel.css-classes-container">
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+    
+    <!-- css-class-item: Individual CSS class item -->
+    <Style Selector="Border.css-class-item">
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="Background" Value="#f3f4f6"/>
+        <Setter Property="BorderBrush" Value="#d1d5db"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+    
+    <Style Selector="Border.css-class-item:pointerover">
+        <Setter Property="Background" Value="#e5e7eb"/>
+    </Style>
+    
+    <!-- css-class-name: CSS class name text -->
+    <Style Selector="TextBlock.css-class-name">
+        <Setter Property="FontFamily" Value="Monaco,Menlo,Consolas,monospace"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <!-- css-action-btn: CSS class action button -->
+    <Style Selector="Button.css-action-btn">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="4,4,6,4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="MinWidth" Value="24"/>
+        <Setter Property="Height" Value="24"/>
+    </Style>
+    
+    <Style Selector="Button.css-action-btn:pointerover">
+        <Setter Property="Background" Value="#e2e8f0"/>
+    </Style>
+    
+    <Style Selector="Button.css-action-btn.remove:pointerover">
+        <Setter Property="Background" Value="#fee2e2"/>
+        <Setter Property="Foreground" Value="#dc2626"/>
+    </Style>
+    
+    <!-- action-buttons: Action buttons container -->
+    <Style Selector="StackPanel.action-buttons">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="8"/>
+        <Setter Property="Margin" Value="16,16,0,0"/>
+    </Style>
+    
+    <!-- action-btn: Generic action button -->
+    <Style Selector="Button.action-btn">
+        <Setter Property="Padding" Value="8,4,12,4"/>
+        <Setter Property="BorderBrush" Value="#d1d5db"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.action-btn:pointerover">
+        <Setter Property="Background" Value="#e5e7eb"/>
+    </Style>
+    
+    <Style Selector="Button.action-btn.primary">
+        <Setter Property="Background" Value="#3b82f6"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#2563eb"/>
+    </Style>
+    
+    <Style Selector="Button.action-btn.primary:pointerover">
+        <Setter Property="Background" Value="#2563eb"/>
+    </Style>
+    
+    <Style Selector="Button.action-btn.danger">
+        <Setter Property="Background" Value="#ef4444"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#dc2626"/>
+    </Style>
+    
+    <Style Selector="Button.action-btn.danger:pointerover">
+        <Setter Property="Background" Value="#dc2626"/>
+    </Style>
+    
+    <!-- field-error: Field error message -->
+    <Style Selector="TextBlock.field-error">
+        <Setter Property="Foreground" Value="#dc3545"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+    
+    <!-- field-description: Field description text -->
+    <Style Selector="TextBlock.field-description">
+        <Setter Property="Foreground" Value="#6b7280"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="Margin" Value="0,2,0,0"/>
+    </Style>
+    
+    <!-- required-indicator: Required field indicator -->
+    <Style Selector="TextBlock.required-indicator">
+        <Setter Property="Foreground" Value="#dc3545"/>
+        <Setter Property="Margin" Value="2,0,0,0"/>
+    </Style>
+    
+    <Style Selector="TextBox.property-input.error">
+        <Setter Property="BorderBrush" Value="#dc3545"/>
+    </Style>
+    
+    <!-- color-picker: Color picker button -->
+    <Style Selector="Button.color-picker">
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="BorderBrush" Value="#d1d5db"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+    
+    <!-- loading-state: Loading state display -->
+    <Style Selector="StackPanel.loading-state">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Spacing" Value="12"/>
+    </Style>
+    
+    <Style Selector="TextBlock.loading-spinner">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="#6b7280"/>
+    </Style>
+    
+    <!-- code-toolbar: Code editor toolbar -->
+    <Style Selector="StackPanel.code-toolbar">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="8"/>
+        <Setter Property="Margin" Value="0,0,0,6"/>
+    </Style>
+    
+</Styles>
