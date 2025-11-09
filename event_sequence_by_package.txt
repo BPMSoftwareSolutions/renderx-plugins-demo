@@ -1,0 +1,204 @@
+================================================================================
+Event & Sequence Calls Report - Grouped by PACKAGE
+================================================================================
+
+├── canvas (11 calls)
+│   └── 📡 EventRouter.publish() (11 calls)
+│       ├── 'canvas.component.drag.end' (2 occurrences)
+│       │   ├── packages\canvas\src\ui\CanvasDrop.ts:96
+│       │   └── packages\canvas\src\ui\CanvasDrop.ts:97
+│       ├── 'canvas.component.drag.move' (2 occurrences)
+│       │   ├── packages\canvas\src\ui\CanvasDrop.ts:60
+│       │   └── packages\canvas\src\ui\CanvasDrop.ts:61
+│       ├── 'canvas.component.drag.start' (2 occurrences)
+│       │   ├── packages\canvas\src\ui\CanvasDrop.ts:41
+│       │   └── packages\canvas\src\ui\CanvasDrop.ts:42
+│       └── 'canvas.component.import.requested' (5 occurrences)
+│           ├── packages\canvas\src\ui\CanvasHeader.tsx:36
+│           ├── packages\canvas\src\ui\CanvasHeader.tsx:37
+│           ├── packages\canvas\src\ui\CanvasHeader.tsx:38
+│           ├── packages\canvas\src\ui\CanvasHeader.tsx:39
+│           └── packages\canvas\src\ui\CanvasHeader.tsx:40
+
+├── canvas-component (35 calls)
+│   └── 📡 EventRouter.publish() (35 calls)
+│       ├── 'canvas.component.created' (3 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\create\create.notify.ts:9
+│       │   ├── packages\canvas-component\src\symphonies\create\create.notify.ts:10
+│       │   └── packages\canvas-component\src\symphonies\create\create.notify.ts:11
+│       ├── 'canvas.component.deleted' (2 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\delete\delete.stage-crew.ts:17
+│       │   └── packages\canvas-component\src\symphonies\delete\delete.stage-crew.ts:18
+│       ├── 'canvas.component.deselection.changed' (2 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:39
+│       │   └── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:40
+│       ├── 'canvas.component.drag.end' (2 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:61
+│       │   └── packages\canvas-component\src\symphonies\create\create.from-import.ts:62
+│       ├── 'canvas.component.drag.move' (2 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:53
+│       │   └── packages\canvas-component\src\symphonies\create\create.from-import.ts:54
+│       ├── 'canvas.component.drag.start' (2 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:48
+│       │   └── packages\canvas-component\src\symphonies\create\create.from-import.ts:49
+│       ├── 'canvas.component.import.completed' (3 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:63
+│       │   ├── packages\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:64
+│       │   └── packages\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:65
+│       ├── 'canvas.component.import.started' (2 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\import\import.file.stage-crew.ts:34
+│       │   └── packages\canvas-component\src\symphonies\import\import.file.stage-crew.ts:35
+│       ├── 'canvas.component.select.requested' (2 occurrences)
+│       │   ├── packages\canvas-component\__tests__\helpers\host-click-select.ts:16
+│       │   └── packages\canvas-component\__tests__\helpers\host-click-select.ts:51
+│       ├── 'canvas.component.select.svg-node.requested' (1 occurrence)
+│       │   └── packages\canvas-component\src\symphonies\create\create.interactions.stage-crew.ts:174
+│       ├── 'canvas.component.selection.changed' (5 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:64
+│       │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:65
+│       │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:66
+│       │   ├── packages\canvas-component\src\symphonies\select\select.stage-crew.ts:142
+│       │   └── packages\canvas-component\src\symphonies\select\select.stage-crew.ts:143
+│       ├── 'canvas.component.selections.cleared' (6 occurrences)
+│       │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:41
+│       │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:42
+│       │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:43
+│       │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:44
+│       │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:45
+│       │   └── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:46
+│       └── 'control.panel.update.requested' (3 occurrences)
+│           ├── packages\canvas-component\src\symphonies\update\update.stage-crew.ts:46
+│           ├── packages\canvas-component\src\symphonies\update\update.stage-crew.ts:47
+│           └── packages\canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts:121
+
+├── control-panel (44 calls)
+│   ├── 🎼 conductor.play() (6 calls)
+│   │   └── 'ControlPanelPlugin' (6 occurrences)
+│   │       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:106
+│   │       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:106
+│   │       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:107
+│   │       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:107
+│   │       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:108
+│   │       └── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:108
+│   └── 📡 EventRouter.publish() (38 calls)
+│       ├── 'canvas.component.select.svg-node.requested' (3 occurrences)
+│       │   ├── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx:190
+│       │   ├── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx:191
+│       │   └── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx:192
+│       ├── 'canvas.component.update.svg-node.requested' (1 occurrence)
+│       │   └── packages\control-panel\src\components\field-renderers\SvgNodeInspector.tsx:120
+│       ├── 'control.panel.classes.updated' (6 occurrences)
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:89
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:90
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:91
+│       │   ├── packages\control-panel\src\symphonies\classes\classes.symphony.ts:14
+│       │   ├── packages\control-panel\src\symphonies\classes\classes.symphony.ts:15
+│       │   └── packages\control-panel\src\symphonies\classes\classes.symphony.ts:16
+│       ├── 'control.panel.css.registry.updated' (6 occurrences)
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:112
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:113
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:114
+│       │   ├── packages\control-panel\src\symphonies\css-management\css-management.symphony.ts:27
+│       │   ├── packages\control-panel\src\symphonies\css-management\css-management.symphony.ts:28
+│       │   └── packages\control-panel\src\symphonies\css-management\css-management.symphony.ts:29
+│       ├── 'control.panel.selection.updated' (10 occurrences)
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:69
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:141
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:142
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:143
+│       │   ├── packages\control-panel\__tests__\eventrouter-communication.spec.ts:169
+│       │   ├── packages\control-panel\src\symphonies\selection\selection.symphony.ts:19
+│       │   ├── packages\control-panel\src\symphonies\selection\selection.symphony.ts:20
+│       │   ├── packages\control-panel\src\symphonies\update\update.symphony.ts:68
+│       │   ├── packages\control-panel\src\symphonies\update\update.symphony.ts:69
+│       │   └── packages\control-panel\src\symphonies\update\update.symphony.ts:70
+│       ├── 'control.panel.ui.field.change.requested' (3 occurrences)
+│       │   ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:122
+│       │   ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:123
+│       │   └── packages\control-panel\src\hooks\useControlPanelSequences.ts:124
+│       ├── 'control.panel.ui.field.validate.requested' (3 occurrences)
+│       │   ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:156
+│       │   ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:157
+│       │   └── packages\control-panel\src\hooks\useControlPanelSequences.ts:158
+│       ├── 'control.panel.ui.render.requested' (3 occurrences)
+│       │   ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:84
+│       │   ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:85
+│       │   └── packages\control-panel\src\hooks\useControlPanelSequences.ts:86
+│       └── 'control.panel.ui.section.toggle.requested' (3 occurrences)
+│           ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:186
+│           ├── packages\control-panel\src\hooks\useControlPanelSequences.ts:187
+│           └── packages\control-panel\src\hooks\useControlPanelSequences.ts:188
+
+├── library (10 calls)
+│   └── 📡 EventRouter.publish() (10 calls)
+│       ├── 'library.component.drag.start.requested' (5 occurrences)
+│       │   ├── packages\library\src\ui\LibraryPreview.tsx:21
+│       │   ├── packages\library\src\ui\LibraryPreview.tsx:22
+│       │   ├── packages\library\src\ui\LibraryPreview.tsx:23
+│       │   ├── packages\library\src\ui\LibraryPreview.tsx:24
+│       │   └── packages\library\src\ui\LibraryPreview.tsx:25
+│       └── 'library.load.requested' (5 occurrences)
+│           ├── packages\library\src\ui\LibraryPanel.tsx:86
+│           ├── packages\library\src\ui\LibraryPanel.tsx:87
+│           ├── packages\library\src\ui\LibraryPanel.tsx:88
+│           ├── packages\library\src\ui\LibraryPanel.tsx:89
+│           └── packages\library\src\ui\LibraryPanel.tsx:90
+
+├── library-component (4 calls)
+│   └── 📡 EventRouter.publish() (4 calls)
+│       └── 'canvas.component.create.requested' (4 occurrences)
+│           ├── packages\library-component\src\symphonies\drop.container.symphony.ts:18
+│           ├── packages\library-component\src\symphonies\drop.container.symphony.ts:19
+│           ├── packages\library-component\src\symphonies\drop.symphony.ts:18
+│           └── packages\library-component\src\symphonies\drop.symphony.ts:19
+
+└── musical-conductor (40 calls)
+    └── 🎼 conductor.play() (40 calls)
+        ├── '${callerInfo.pluginId}' (6 occurrences)
+        │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:141
+        │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:141
+        │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:142
+        │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:142
+        │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:143
+        │   └── packages\musical-conductor\modules\communication\SPAValidator.ts:143
+        ├── 'Canvas.component-create-symphony' (4 occurrences)
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:98
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:98
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:99
+        │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:99
+        ├── 'Canvas.double-create' (6 occurrences)
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:223
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:223
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:228
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:228
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:229
+        │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:229
+        ├── 'Canvas.multiple-create' (4 occurrences)
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:104
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:104
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:105
+        │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:105
+        ├── 'Library.component-drop-symphony' (2 occurrences)
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:114
+        │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:114
+        ├── 'Library.double-forward' (6 occurrences)
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:243
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:243
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:244
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:244
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:245
+        │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:245
+        ├── 'Library.forward-to-canvas-multi' (6 occurrences)
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:119
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:119
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:120
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:120
+        │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:121
+        │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:121
+        └── 'plug-multi' (6 occurrences)
+            ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+            ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+            ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+            ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+            ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:102
+            └── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:102
