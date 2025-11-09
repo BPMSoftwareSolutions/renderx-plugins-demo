@@ -1,0 +1,368 @@
+C:\source\repos\bpm\internal\renderx-plugins-demo\packages/
+├── canvas/
+│   ├── eslint-rules/
+│   ├── package.json
+│   ├── src/
+│   │   └── ui/
+│   ├── tsconfig.json
+│   └── __tests__/
+├── canvas-component/
+│   ├── docs/
+│   ├── eslint-rules/
+│   ├── json-topics/
+│   │   └── canvas-component.json
+│   ├── package.json
+│   ├── src/
+│   │   ├── symphonies/
+│   │   │   ├── augment/
+│   │   │   ├── copy/
+│   │   │   ├── create/
+│   │   │   ├── delete/
+│   │   │   ├── deselect/
+│   │   │   ├── drag/
+│   │   │   ├── export/
+│   │   │   ├── import/
+│   │   │   ├── line-advanced/
+│   │   │   ├── paste/
+│   │   │   ├── resize/
+│   │   │   ├── resize-line/
+│   │   │   ├── select/
+│   │   │   └── update/
+│   │   └── temp-deps/
+│   ├── tsconfig.json
+│   └── __tests__/
+│       └── helpers/
+├── components/
+│   ├── package.json
+│   ├── src/
+│   └── tsconfig.json
+├── control-panel/
+│   ├── json-topics/
+│   │   └── control-panel.json
+│   ├── package.json
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── field-renderers/
+│   │   │   ├── layout/
+│   │   │   ├── modals/
+│   │   │   └── sections/
+│   │   ├── config/
+│   │   │   └── control-panel.schema.json
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── state/
+│   │   │   └── __tests__/
+│   │   ├── symphonies/
+│   │   │   ├── classes/
+│   │   │   ├── css-management/
+│   │   │   ├── selection/
+│   │   │   ├── ui/
+│   │   │   └── update/
+│   │   ├── types/
+│   │   ├── ui/
+│   │   └── utils/
+│   ├── tsconfig.json
+│   └── __tests__/
+│       ├── __fixtures__/
+│       └── __mocks__/
+│           └── @renderx-plugins/
+│               └── canvas-component/
+│                   └── symphonies/
+│                       ├── create/
+│                       ├── drag/
+│                       └── resize/
+├── digital-assets/
+│   ├── assets/
+│   │   ├── event-router/
+│   │   │   ├── header-bar/
+│   │   │   ├── inventory/
+│   │   │   │   ├── bus_depot.mapping.json
+│   │   │   │   ├── event_route.mapping.json
+│   │   │   │   ├── middle_journey.mapping.json
+│   │   │   │   ├── scene3_subscribers.mapping.json
+│   │   │   │   ├── scene4_transfer_hub.mapping.json
+│   │   │   │   ├── scene5_destination.mapping.json
+│   │   │   │   ├── scene6_boundaries.mapping.json
+│   │   │   │   └── scene7_route_map.mapping.json
+│   │   │   ├── scene-1/
+│   │   │   ├── scene-2/
+│   │   │   ├── scene-3/
+│   │   │   ├── scene-4/
+│   │   │   ├── scene-5/
+│   │   │   ├── scene-6/
+│   │   │   └── storyboard-summary/
+│   │   └── plugin-architecture/
+│   │       ├── plugin-integration-slides.json
+│   │       ├── slide-01-manifest/
+│   │       │   ├── build-publish/
+│   │       │   ├── handlers-export/
+│   │       │   ├── host-sdk/
+│   │       │   ├── plugin-manifest/
+│   │       │   └── plugin-package/
+│   │       ├── slide-02-discovery/
+│   │       ├── slide-03-events/
+│   │       ├── slide-04-ui/
+│   │       ├── slide-05-quality/
+│   │       └── specs/
+│   │           ├── slide-01-manifest/
+│   │           │   ├── build-publish.json
+│   │           │   ├── handlers-export.json
+│   │           │   ├── host-sdk.json
+│   │           │   ├── plugin-manifest.json
+│   │           │   └── plugin-package.json
+│   │           ├── slide-02-discovery/
+│   │           │   ├── handlers-path.json
+│   │           │   ├── host-app.json
+│   │           │   └── plugin-loader.json
+│   │           ├── slide-03-events/
+│   │           │   └── event-router.json
+│   │           ├── slide-04-ui/
+│   │           │   └── canvas.json
+│   │           └── slide-05-quality/
+│   │               └── vitest.json
+│   ├── config/
+│   │   ├── graph-templates/
+│   │   │   ├── data-pipeline.json
+│   │   │   ├── microservices.json
+│   │   │   └── social-network.json
+│   │   ├── layouts/
+│   │   │   ├── plugin-tiles.json
+│   │   │   └── standard-graph.json
+│   │   ├── schemas/
+│   │   │   ├── layout-config.schema.json
+│   │   │   ├── scene-template.schema.json
+│   │   │   ├── sprite-library.schema.json
+│   │   │   └── theme-config.schema.json
+│   │   ├── sprites/
+│   │   │   ├── business-process.json
+│   │   │   ├── data-flow.json
+│   │   │   ├── microservices.json
+│   │   │   ├── network.json
+│   │   │   ├── plugin-architecture.json
+│   │   │   └── ui-components.json
+│   │   ├── templates/
+│   │   │   ├── plugin-architecture-scene.json
+│   │   │   └── simple-plugin-scene.json
+│   │   └── themes/
+│   │       ├── blueprint.json
+│   │       ├── dark-plugin.json
+│   │       ├── high-contrast.json
+│   │       ├── light-professional.json
+│   │       └── neon.json
+│   ├── cypress/
+│   │   ├── e2e/
+│   │   ├── screenshots/
+│   │   │   └── enhanced-storybook.cy.js/
+│   │   └── support/
+│   ├── data/
+│   │   └── scene-animation-config.json
+│   ├── docs/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── samples/
+│   │   ├── boundary-violation-diagnostics.json
+│   │   ├── data-pipeline.json
+│   │   ├── event-router-combined-storybook-diagnostics.json
+│   │   ├── event-router-combined-storybook.json
+│   │   ├── event-router-contextual-boundaries.json
+│   │   ├── event-router-diagnostics.json
+│   │   ├── event-router-mono-journey.json
+│   │   ├── event-router-scene-1-depot-diagnostics.json
+│   │   ├── event-router-scene-1-depot.json
+│   │   ├── event-router-scene-2-manifest-diagnostics.json
+│   │   ├── event-router-scene-2-manifest.json
+│   │   ├── event-router-scene-3-subscribers-diagnostics.json
+│   │   ├── event-router-scene-3-subscribers.json
+│   │   ├── event-router-scene-4-conductor-diagnostics.json
+│   │   ├── event-router-scene-4-conductor.json
+│   │   ├── event-router-scene-5-rules-diagnostics.json
+│   │   ├── event-router-scene-5-rules.json
+│   │   ├── event-router-scene-6-school-diagnostics.json
+│   │   ├── event-router-scene-6-school.json
+│   │   ├── event-router-violation-diagnostics.json
+│   │   ├── generated/
+│   │   │   ├── index.json
+│   │   │   ├── plugin-manifest.json
+│   │   │   ├── plugin-package.json
+│   │   │   └── simple-plugin-scene.json
+│   │   ├── graph-scene-1-rx-node-73eke9.json
+│   │   ├── graph-scene-2-rx-node-s1wplc.json
+│   │   ├── graph-scene-3-rx-node-scene3.json
+│   │   ├── graph-scene-4-rx-node-scene4.json
+│   │   ├── graph-scene-5-rx-node-scene5.json
+│   │   ├── graph-scene-6-rx-node-scene6.json
+│   │   ├── graphs/
+│   │   │   └── microservices.json
+│   │   ├── microservices-architecture.json
+│   │   ├── neural-network.json
+│   │   ├── slide-01/
+│   │   │   ├── build-publish-process.json
+│   │   │   ├── handlers-export-structure.json
+│   │   │   ├── host-sdk-structure.json
+│   │   │   ├── index.json
+│   │   │   ├── plugin-capabilities.json
+│   │   │   ├── plugin-manifest-structure.json
+│   │   │   ├── plugin-package-structure.json
+│   │   │   ├── plugin-workflow.json
+│   │   │   └── slide-01-architecture.json
+│   │   ├── slide-01-contextual-boundaries.json
+│   │   ├── slide-01-diagnostics.json
+│   │   ├── slide-01-scene/
+│   │   │   ├── build-publish.json
+│   │   │   ├── handlers-export.json
+│   │   │   ├── host-sdk.json
+│   │   │   ├── index.json
+│   │   │   ├── plugin-manifest.json
+│   │   │   ├── plugin-package.json
+│   │   │   └── slide-01-manifest.json
+│   │   └── social-network.json
+│   ├── scripts/
+│   │   └── lib/
+│   ├── src/
+│   ├── tests/
+│   └── tsconfig.json
+├── header/
+│   ├── package.json
+│   ├── scripts/
+│   ├── src/
+│   │   ├── symphonies/
+│   │   │   └── ui/
+│   │   └── ui/
+│   ├── tests/
+│   │   ├── integration/
+│   │   ├── setup/
+│   │   └── unit/
+│   │       ├── symphonies/
+│   │       └── ui/
+│   └── tsconfig.json
+├── host-sdk/
+│   ├── core/
+│   │   ├── conductor/
+│   │   ├── environment/
+│   │   ├── events/
+│   │   ├── infrastructure/
+│   │   │   └── handlers/
+│   │   ├── manifests/
+│   │   └── startup/
+│   ├── docs/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── smoke/
+│   │   └── vite-app/
+│   │       ├── package.json
+│   │       ├── src/
+│   │       └── tsconfig.json
+│   ├── tests/
+│   ├── topics-manifest.json
+│   ├── tsconfig.json
+│   └── types/
+├── library/
+│   ├── docs/
+│   ├── examples/
+│   │   ├── custom-alert.json
+│   │   ├── custom-badge.json
+│   │   ├── custom-card.json
+│   │   └── real-json-components/
+│   │       ├── button.json
+│   │       ├── container.json
+│   │       ├── heading.json
+│   │       ├── html.json
+│   │       ├── image.json
+│   │       ├── index.json
+│   │       ├── input.json
+│   │       ├── line.json
+│   │       ├── paragraph.json
+│   │       └── svg.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src/
+│   │   ├── services/
+│   │   │   └── __tests__/
+│   │   ├── symphonies/
+│   │   ├── telemetry/
+│   │   ├── ui/
+│   │   └── utils/
+│   ├── tsconfig.json
+│   └── __tests__/
+├── library-component/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── scripts/
+│   ├── src/
+│   │   └── symphonies/
+│   │       └── drag/
+│   ├── tsconfig.json
+│   └── __tests__/
+├── manifest-tools/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src/
+│   └── tsconfig.json
+├── musical-conductor/
+│   ├── browser-compatibility-fix-transfer.json
+│   ├── build-fix-knowledge-export.json
+│   ├── demo-knowledge.json
+│   ├── e2e-module-resolution-transfer.json
+│   ├── e2e-testing-knowledge.json
+│   ├── e2e-testing-module-resolution-knowledge.json
+│   ├── event-types-refactoring-knowledge.json
+│   ├── modules/
+│   │   └── communication/
+│   │       ├── event-types/
+│   │       └── sequences/
+│   │           ├── api/
+│   │           ├── core/
+│   │           ├── environment/
+│   │           ├── execution/
+│   │           ├── monitoring/
+│   │           ├── orchestration/
+│   │           ├── plugins/
+│   │           ├── resources/
+│   │           ├── stage/
+│   │           ├── strictmode/
+│   │           ├── utilities/
+│   │           └── validation/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── queue-cli-improvement-knowledge.json
+│   ├── src/
+│   │   ├── events/
+│   │   ├── sequences/
+│   │   └── validation/
+│   ├── tests/
+│   │   ├── fixtures/
+│   │   ├── mocks/
+│   │   ├── plugins/
+│   │   │   └── theme-management-plugin/
+│   │   ├── setup/
+│   │   ├── types/
+│   │   ├── unit/
+│   │   │   └── communication/
+│   │   │       ├── plugins/
+│   │   │       └── sequences/
+│   │   │           └── monitoring/
+│   │   └── utils/
+│   ├── tools/
+│   │   ├── cli/
+│   │   │   ├── data/
+│   │   │   │   ├── shortcuts.json
+│   │   │   │   └── transfer-queue.json
+│   │   │   ├── exporters/
+│   │   │   ├── importers/
+│   │   │   ├── mergers/
+│   │   │   ├── queue/
+│   │   │   ├── shortcuts/
+│   │   │   ├── utils/
+│   │   │   └── validators/
+│   │   ├── docs/
+│   │   │   └── wiki/
+│   │   │       ├── adr/
+│   │   │       ├── api/
+│   │   │       └── guides/
+│   │   └── issue-logs/
+│   ├── tsconfig.jest.json
+│   ├── tsconfig.json
+│   └── tsconfig.test.json
+└── robotics/
+    ├── Battery Boxes/
+    └── __pycache__/

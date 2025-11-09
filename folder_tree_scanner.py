@@ -152,6 +152,7 @@ class TreeScanner:
                  files_only: bool = False,
                  folders_only: bool = False,
                  ignore_patterns: List[str] = None,
+                 include_only_patterns: List[str] = None,
                  show_size: bool = False,
                  sort_entries: bool = False,
                  max_depth: Optional[int] = None,
@@ -160,6 +161,7 @@ class TreeScanner:
         self.files_only = files_only
         self.folders_only = folders_only
         self.ignore_patterns = ignore_patterns or []
+        self.include_only_patterns = include_only_patterns or []
         self.show_size = show_size
         self.sort_entries = sort_entries
         self.max_depth = max_depth
@@ -168,7 +170,17 @@ class TreeScanner:
         
     def should_ignore(self, name: str, full_path: Path = None) -> bool:
         """Check if a file/folder should be ignored based on patterns and gitignore."""
-        # Check explicit ignore patterns first
+        # If include_only_patterns is specified, only include files matching those patterns
+        if self.include_only_patterns and full_path and full_path.is_file():
+            matches_include = False
+            for pattern in self.include_only_patterns:
+                if fnmatch.fnmatch(name, pattern):
+                    matches_include = True
+                    break
+            if not matches_include:
+                return True
+        
+        # Check explicit ignore patterns
         for pattern in self.ignore_patterns:
             if fnmatch.fnmatch(name, pattern):
                 return True
@@ -325,6 +337,8 @@ Examples:
   %(prog)s . --ignore "*.pyc" --ignore "node_modules"  # Ignore patterns
   %(prog)s . --gitignore .gitignore           # Use .gitignore for exclusions
   %(prog)s . --gitignore .gitignore --ignore "*.log"   # Combine gitignore and custom patterns
+  %(prog)s . --include-only "*.json"         # Show only JSON files
+  %(prog)s . --include-only "*.js" --include-only "*.ts"  # Show only JS and TS files
   %(prog)s . --output tree.txt               # Save to file
         """
     )
@@ -341,6 +355,8 @@ Examples:
                        help='Show only folders, not files')
     parser.add_argument('--ignore', action='append', metavar='PATTERN',
                        help='Ignore files/folders matching pattern (can be used multiple times)')
+    parser.add_argument('--include-only', action='append', metavar='PATTERN',
+                       help='Include only files matching pattern (can be used multiple times)')
     parser.add_argument('--gitignore', metavar='FILE',
                        help='Path to .gitignore file to use for exclusions')
     parser.add_argument('--output', metavar='FILE',
@@ -363,6 +379,7 @@ Examples:
         files_only=args.files_only,
         folders_only=args.folders_only,
         ignore_patterns=args.ignore or [],
+        include_only_patterns=args.include_only or [],
         show_size=args.size,
         sort_entries=args.sort,
         max_depth=args.max_depth,
