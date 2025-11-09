@@ -1,0 +1,506 @@
+════════════════════════════════════════════════════════════════════════════════
+         AVALONIA AXAML COMPONENT USAGE REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+Total Components: 65
+Components with Usage: 0
+
+════════════════════════════════════════════════════════════════════════════════
+                    COMPONENTS BY PACKAGE
+════════════════════════════════════════════════════════════════════════════════
+
+📦 Canvas: 7 components (0 used)
+
+  • CanvasControl
+    Path: RenderX.Plugins.Canvas\CanvasControl.axaml
+    Class: RenderX.Plugins.Canvas.CanvasControl
+    Lines: 96
+    Uses: DataTemplate, ItemsPanelTemplate
+    ⚠️  Not used by other components
+
+  • CanvasHeader
+    Path: RenderX.Plugins.Canvas\CanvasHeader.axaml
+    Class: RenderX.Plugins.Canvas.CanvasHeader
+    Lines: 71
+    ⚠️  Not used by other components
+
+  • CanvasLayerPanel
+    Path: RenderX.Plugins.Canvas\CanvasLayerPanel.axaml
+    Class: RenderX.Plugins.Canvas.CanvasLayerPanel
+    Lines: 172
+    Uses: DataTemplate
+    Styles: body, card, card-flat, rx-button, shadow +1
+    ⚠️  Not used by other components
+
+  • CanvasRuler
+    Path: RenderX.Plugins.Canvas\CanvasRuler.axaml
+    Class: RenderX.Plugins.Canvas.CanvasRuler
+    Lines: 73
+    Uses: ColumnDefinition, DoubleTransition, Setter, Transitions
+    Styles: bg-transition, font-mono
+    ⚠️  Not used by other components
+
+  • DropIndicator
+    Path: RenderX.Plugins.Canvas\DropIndicator.axaml
+    Class: RenderX.Plugins.Canvas.DropIndicator
+    Lines: 20
+    ⚠️  Not used by other components
+
+  • GridOverlay
+    Path: RenderX.Plugins.Canvas\GridOverlay.axaml
+    Class: RenderX.Plugins.Canvas.GridOverlay
+    Lines: 10
+    ⚠️  Not used by other components
+
+  • SelectionIndicator
+    Path: RenderX.Plugins.Canvas\SelectionIndicator.axaml
+    Class: RenderX.Plugins.Canvas.SelectionIndicator
+    Lines: 40
+    ⚠️  Not used by other components
+
+📦 Components: 1 components (0 used)
+
+  • ComponentCatalog
+    Path: RenderX.Plugins.Components\ComponentCatalog.axaml
+    Class: RenderX.Plugins.Components.ComponentCatalog
+    Lines: 89
+    Uses: ComboBoxItem, DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+📦 ControlPanel: 7 components (0 used)
+
+  • ClassManager
+    Path: RenderX.Plugins.ControlPanel\ClassManager.axaml
+    Class: RenderX.Plugins.ControlPanel.ClassManager
+    Lines: 63
+    Uses: DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • ControlPanelControl
+    Path: RenderX.Plugins.ControlPanel\ControlPanelControl.axaml
+    Class: RenderX.Plugins.ControlPanel.ControlPanelControl
+    Lines: 167
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • EmptyState
+    Path: RenderX.Plugins.ControlPanel\EmptyState.axaml
+    Class: RenderX.Plugins.ControlPanel.EmptyState
+    Lines: 23
+    ⚠️  Not used by other components
+
+  • LoadingState
+    Path: RenderX.Plugins.ControlPanel\LoadingState.axaml
+    Class: RenderX.Plugins.ControlPanel.LoadingState
+    Lines: 18
+    ⚠️  Not used by other components
+
+  • PanelHeader
+    Path: RenderX.Plugins.ControlPanel\PanelHeader.axaml
+    Class: RenderX.Plugins.ControlPanel.PanelHeader
+    Lines: 24
+    ⚠️  Not used by other components
+
+  • PropertySection
+    Path: RenderX.Plugins.ControlPanel\PropertySection.axaml
+    Class: RenderX.Plugins.ControlPanel.PropertySection
+    Lines: 58
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ValidationErrorDisplay
+    Path: RenderX.Plugins.ControlPanel\ValidationErrorDisplay.axaml
+    Class: RenderX.Plugins.ControlPanel.ValidationErrorDisplay
+    Lines: 29
+    ⚠️  Not used by other components
+
+📦 Diagnostics: 12 components (0 used)
+
+  • ConfigurationInspector
+    Path: RenderX.Plugins.Diagnostics\ConfigurationInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.ConfigurationInspector
+    Lines: 60
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • DiagnosticsOverlay
+    Path: RenderX.Plugins.Diagnostics\DiagnosticsOverlay.axaml
+    Class: RenderX.Plugins.Diagnostics.DiagnosticsOverlay
+    Lines: 66
+    ⚠️  Not used by other components
+
+  • DiagnosticsPanel
+    Path: RenderX.Plugins.Diagnostics\DiagnosticsPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.DiagnosticsPanel
+    Lines: 129
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • EventLog
+    Path: RenderX.Plugins.Diagnostics\EventLog.axaml
+    Class: RenderX.Plugins.Diagnostics.EventLog
+    Lines: 87
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ManifestValidator
+    Path: RenderX.Plugins.Diagnostics\ManifestValidator.axaml
+    Class: RenderX.Plugins.Diagnostics.ManifestValidator
+    Lines: 65
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • PerformanceMonitor
+    Path: RenderX.Plugins.Diagnostics\PerformanceMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.PerformanceMonitor
+    Lines: 78
+    ⚠️  Not used by other components
+
+  • PluginDetail
+    Path: RenderX.Plugins.Diagnostics\PluginDetail.axaml
+    Class: RenderX.Plugins.Diagnostics.PluginDetail
+    Lines: 88
+    ⚠️  Not used by other components
+
+  • PluginLoadingStats
+    Path: RenderX.Plugins.Diagnostics\PluginLoadingStats.axaml
+    Class: RenderX.Plugins.Diagnostics.PluginLoadingStats
+    Lines: 52
+    ⚠️  Not used by other components
+
+  • PluginTreeExplorer
+    Path: RenderX.Plugins.Diagnostics\PluginTreeExplorer.axaml
+    Class: RenderX.Plugins.Diagnostics.PluginTreeExplorer
+    Lines: 56
+    Uses: TreeDataTemplate, TreeView
+    ⚠️  Not used by other components
+
+  • SequenceInspector
+    Path: RenderX.Plugins.Diagnostics\SequenceInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.SequenceInspector
+    Lines: 65
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • SystemInformation
+    Path: RenderX.Plugins.Diagnostics\SystemInformation.axaml
+    Class: RenderX.Plugins.Diagnostics.SystemInformation
+    Lines: 78
+    ⚠️  Not used by other components
+
+  • TopicInspector
+    Path: RenderX.Plugins.Diagnostics\TopicInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.TopicInspector
+    Lines: 59
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+📦 DigitalAssets: 4 components (0 used)
+
+  • AssetBrowser
+    Path: RenderX.Plugins.DigitalAssets\AssetBrowser.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetBrowser
+    Lines: 84
+    Uses: ComboBoxItem, DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • AssetLibrary
+    Path: RenderX.Plugins.DigitalAssets\AssetLibrary.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetLibrary
+    Lines: 95
+    Uses: DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • AssetPreview
+    Path: RenderX.Plugins.DigitalAssets\AssetPreview.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetPreview
+    Lines: 89
+    ⚠️  Not used by other components
+
+  • AssetUploader
+    Path: RenderX.Plugins.DigitalAssets\AssetUploader.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetUploader
+    Lines: 80
+    ⚠️  Not used by other components
+
+📦 Header: 10 components (0 used)
+
+  • HeaderBreadcrumb
+    Path: RenderX.Plugins.Header\HeaderBreadcrumb.axaml
+    Class: RenderX.Plugins.Header.HeaderBreadcrumb
+    Lines: 8
+    ⚠️  Not used by other components
+
+  • HeaderButton
+    Path: RenderX.Plugins.Header\HeaderButton.axaml
+    Class: RenderX.Plugins.Header.HeaderButton
+    Lines: 13
+    ⚠️  Not used by other components
+
+  • HeaderContainer
+    Path: RenderX.Plugins.Header\HeaderContainer.axaml
+    Class: RenderX.Plugins.Header.HeaderContainer
+    Lines: 19
+    Uses: ContentPresenter
+    ⚠️  Not used by other components
+
+  • HeaderControlsPlugin
+    Path: RenderX.Plugins.Header\HeaderControlsPlugin.axaml
+    Class: RenderX.Plugins.Header.HeaderControlsPlugin
+    Lines: 29
+    ⚠️  Not used by other components
+
+  • HeaderDivider
+    Path: RenderX.Plugins.Header\HeaderDivider.axaml
+    Class: RenderX.Plugins.Header.HeaderDivider
+    Lines: 8
+    ⚠️  Not used by other components
+
+  • HeaderMenu
+    Path: RenderX.Plugins.Header\HeaderMenu.axaml
+    Class: RenderX.Plugins.Header.HeaderMenu
+    Lines: 22
+    Uses: Popup
+    ⚠️  Not used by other components
+
+  • HeaderStatusIndicator
+    Path: RenderX.Plugins.Header\HeaderStatusIndicator.axaml
+    Class: RenderX.Plugins.Header.HeaderStatusIndicator
+    Lines: 11
+    ⚠️  Not used by other components
+
+  • HeaderThemeButtonView
+    Path: RenderX.Plugins.Header\HeaderThemeButtonView.axaml
+    Class: RenderX.Plugins.Header.HeaderThemeButtonView
+    Lines: 14
+    ⚠️  Not used by other components
+
+  • HeaderThemePlugin
+    Path: RenderX.Plugins.Header\HeaderThemePlugin.axaml
+    Class: RenderX.Plugins.Header.HeaderThemePlugin
+    Lines: 16
+    ⚠️  Not used by other components
+
+  • HeaderTitlePlugin
+    Path: RenderX.Plugins.Header\HeaderTitlePlugin.axaml
+    Class: RenderX.Plugins.Header.HeaderTitlePlugin
+    Lines: 14
+    ⚠️  Not used by other components
+
+📦 Library: 7 components (0 used)
+
+  • ChatMessage
+    Path: RenderX.Plugins.Library\ChatMessage.axaml
+    Class: RenderX.Plugins.Library.ChatMessage
+    Lines: 28
+    ⚠️  Not used by other components
+
+  • ChatWindow
+    Path: RenderX.Plugins.Library\ChatWindow.axaml
+    Class: RenderX.Plugins.Library.ChatWindow
+    Lines: 64
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ConfigStatusUI
+    Path: RenderX.Plugins.Library\ConfigStatusUI.axaml
+    Class: RenderX.Plugins.Library.ConfigStatusUI
+    Lines: 32
+    ⚠️  Not used by other components
+
+  • CustomComponentUpload
+    Path: RenderX.Plugins.Library\CustomComponentUpload.axaml
+    Class: RenderX.Plugins.Library.CustomComponentUpload
+    Lines: 75
+    ⚠️  Not used by other components
+
+  • LibraryPanel
+    Path: RenderX.Plugins.Library\LibraryPanel.axaml
+    Class: RenderX.Plugins.Library.LibraryPanel
+    Lines: 62
+    Uses: DataTemplate, DockPanel
+    ⚠️  Not used by other components
+
+  • LibraryPlugin
+    Path: RenderX.Plugins.Library\LibraryPlugin.axaml
+    Class: RenderX.Plugins.Library.LibraryPlugin
+    Lines: 50
+    Uses: DataTemplate, DockPanel
+    ⚠️  Not used by other components
+
+  • LibraryPreview
+    Path: RenderX.Plugins.Library\LibraryPreview.axaml
+    Class: RenderX.Plugins.Library.LibraryPreview
+    Lines: 63
+    ⚠️  Not used by other components
+
+📦 LibraryComponent: 2 components (0 used)
+
+  • ComponentEditor
+    Path: RenderX.Plugins.LibraryComponent\ComponentEditor.axaml
+    Class: RenderX.Plugins.LibraryComponent.ComponentEditor
+    Lines: 109
+    Uses: ComboBoxItem, DataTemplate
+    ⚠️  Not used by other components
+
+  • ComponentRegistry
+    Path: RenderX.Plugins.LibraryComponent\ComponentRegistry.axaml
+    Class: RenderX.Plugins.LibraryComponent.ComponentRegistry
+    Lines: 65
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+📦 ManifestTools: 2 components (0 used)
+
+  • ManifestEditor
+    Path: RenderX.Plugins.ManifestTools\ManifestEditor.axaml
+    Class: RenderX.Plugins.ManifestTools.ManifestEditor
+    Lines: 109
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ManifestValidator
+    Path: RenderX.Plugins.ManifestTools\ManifestValidator.axaml
+    Class: RenderX.Plugins.ManifestTools.ManifestValidator
+    Lines: 79
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+📦 MusicalConductor: 2 components (0 used)
+
+  • EventBusMonitor
+    Path: RenderX.Plugins.MusicalConductor\EventBusMonitor.axaml
+    Class: RenderX.Plugins.MusicalConductor.EventBusMonitor
+    Lines: 83
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • TopicSubscriber
+    Path: RenderX.Plugins.MusicalConductor\TopicSubscriber.axaml
+    Class: RenderX.Plugins.MusicalConductor.TopicSubscriber
+    Lines: 85
+    Uses: ComboBoxItem, DataTemplate
+    ⚠️  Not used by other components
+
+📦 Other: 4 components (0 used)
+
+  • ColorPalette
+    Path: RenderX.Shell.Avalonia\Resources\ColorPalette.axaml
+    Lines: 104
+    Uses: Color, ResourceDictionary, SolidColorBrush
+    ⚠️  Not used by other components
+
+  • Effects
+    Path: RenderX.Shell.Avalonia\Resources\Effects.axaml
+    Lines: 110
+    Uses: DropShadowEffect, GradientStop, LinearGradientBrush, RadialGradientBrush, ResourceDictionary, Thickness
+    ⚠️  Not used by other components
+
+  • Spacing
+    Path: RenderX.Shell.Avalonia\Resources\Spacing.axaml
+    Lines: 88
+    Uses: CornerRadius, ResourceDictionary, Thickness
+    ⚠️  Not used by other components
+
+  • Typography
+    Path: RenderX.Shell.Avalonia\Resources\Typography.axaml
+    Lines: 82
+    Uses: FontFamily, FontWeight, ResourceDictionary
+    ⚠️  Not used by other components
+
+📦 Shell: 7 components (0 used)
+
+  • App
+    Path: RenderX.Shell.Avalonia\App.axaml
+    Class: RenderX.Shell.Avalonia.App
+    Lines: 11
+    Uses: Application, StyleInclude
+    ⚠️  Not used by other components
+
+  • MainWindow
+    Path: RenderX.Shell.Avalonia\MainWindow.axaml
+    Class: RenderX.Shell.Avalonia.MainWindow
+    Lines: 51
+    Uses: Design
+    ⚠️  Not used by other components
+
+  • App
+    Path: RenderX.Shell.Avalonia.Minimal\App.axaml
+    Class: RenderX.Shell.Avalonia.Minimal.App
+    Lines: 9
+    Uses: Application, FluentTheme
+    ⚠️  Not used by other components
+
+  • MainWindow
+    Path: RenderX.Shell.Avalonia.Minimal\MainWindow.axaml
+    Class: RenderX.Shell.Avalonia.Minimal.MainWindow
+    Lines: 19
+    ⚠️  Not used by other components
+
+  • ColorPaletteShowcase
+    Path: RenderX.Shell.Avalonia\Components\ColorPaletteShowcase.axaml
+    Class: RenderX.Shell.Avalonia.Components.ColorPaletteShowcase
+    Lines: 80
+    ⚠️  Not used by other components
+
+  • EffectsShowcase
+    Path: RenderX.Shell.Avalonia\Components\EffectsShowcase.axaml
+    Class: RenderX.Shell.Avalonia.Components.EffectsShowcase
+    Lines: 63
+    ⚠️  Not used by other components
+
+  • FlexLayout
+    Path: RenderX.Shell.Avalonia\Components\FlexLayout.axaml
+    Class: RenderX.Shell.Avalonia.Components.FlexLayout
+    Lines: 65
+    Uses: WrapPanel
+    ⚠️  Not used by other components
+
+════════════════════════════════════════════════════════════════════════════════
+                 WEB vs DESKTOP COMPARISON
+════════════════════════════════════════════════════════════════════════════════
+
+Web (React/TypeScript):
+  • 287 components total
+  • 48 components with tracked usage (16.7%)
+
+Desktop (Avalonia/AXAML):
+  • 65 components total
+  • 0 components with tracked usage (0.0%)
+
+════════════════════════════════════════════════════════════════════════════════
+                      GAP ANALYSIS
+════════════════════════════════════════════════════════════════════════════════
+
+❌ canvas-component: 0/7 (0%)
+   Missing: 7 components
+
+❌ components: 0/10 (0%)
+   Missing: 10 components
+
+❌ control-panel: 0/41 (0%)
+   Missing: 41 components
+
+❌ diagnostics: 12/75 (16%)
+   Missing: 63 components
+
+❌ digital-assets: 0/40 (0%)
+   Missing: 40 components
+
+✅ header: 10/11 (91%)
+   Missing: 1 components
+
+❌ library: 7/29 (24%)
+   Missing: 22 components
+
+❌ library-component: 0/5 (0%)
+   Missing: 5 components
+
+❌ manifest-tools: 0/2 (0%)
+   Missing: 2 components
+
+❌ musical-conductor: 0/2 (0%)
+   Missing: 2 components
+
+❌ ui: 0/65 (0%)
+   Missing: 65 components

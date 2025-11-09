@@ -74,6 +74,7 @@ class Component:
     line_count: int = 0
     complexity_score: int = 0
     children_components: List[str] = field(default_factory=list)
+    used_in: List[str] = field(default_factory=list)  # Files that import this component
 
 @dataclass
 class Package:
@@ -285,6 +286,29 @@ class UIScanner:
             self._scan_ui_directory()
             
         print(f"✅ Scan complete! Found {len(self.all_components)} components and {len(self.all_styles)} styles.")
+        
+        # Track component usage
+        self._track_component_usage()
+    
+    def _track_component_usage(self) -> None:
+        """Track which files import and use each component."""
+        print("🔗 Tracking component usage...")
+        
+        # Create a lookup map of component names to components
+        component_map = {comp.name: comp for comp in self.all_components}
+        
+        # For each component, check what it imports
+        for comp in self.all_components:
+            # Check jsx_elements (child components used)
+            for child_name in comp.jsx_elements:
+                if child_name in component_map:
+                    # This component uses child_name
+                    child_comp = component_map[child_name]
+                    if comp.file_path not in child_comp.used_in:
+                        child_comp.used_in.append(comp.file_path)
+        
+        usage_count = sum(1 for comp in self.all_components if comp.used_in)
+        print(f"✅ Usage tracking complete! {usage_count} components have tracked usage.")
     
     def _scan_packages(self) -> None:
         """Scan packages directory."""
@@ -399,6 +423,21 @@ class ASCIIArtGenerator:
             if len(component.class_names_used) > 2:
                 classes_str += f" +{len(component.class_names_used)-2}"
             lines.append(f'║ CSS: {classes_str:<{width-10}} ║')
+        
+        if component.used_in:
+            lines.append('╟' + '─' * (width-2) + '╢')
+            usage_count = len(component.used_in)
+            usage_str = f'Used in {usage_count} file{"s" if usage_count != 1 else ""}'
+            lines.append(f'║ {usage_str:<{width-4}} ║')
+            # Show first 2 usage locations
+            for usage_file in component.used_in[:2]:
+                file_name = Path(usage_file).name
+                truncated_name = file_name[:width-10] if len(file_name) > width-10 else file_name
+                lines.append(f'║   └─ {truncated_name:<{width-10}} ║')
+            if len(component.used_in) > 2:
+                more_count = len(component.used_in) - 2
+                more_text = f'+{more_count} more...'
+                lines.append(f'║   └─ {more_text:<{width-10}} ║')
         
         # Bottom border
         lines.append('╚' + '═' * (width-2) + '╝')
