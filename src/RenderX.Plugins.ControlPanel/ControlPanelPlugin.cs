@@ -4,22 +4,22 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using MusicalConductor.Core.Interfaces;
 using MusicalConductor.Core.Models;
-using RenderX.Plugins.LibraryComponent.Handlers;
+using RenderX.Plugins.ControlPanel.Handlers;
 
-namespace RenderX.Plugins.LibraryComponent;
+namespace RenderX.Plugins.ControlPanel;
 
 /// <summary>
-/// LibraryComponent plugin for drag-and-drop from component library.
+/// Control Panel plugin for managing CSS classes, field changes, and UI rendering.
 /// </summary>
-public class LibraryComponentPlugin : IPlugin
+public class ControlPanelPlugin : IPlugin
 {
-    private readonly ILogger<LibraryComponentPlugin> _logger;
+    private readonly ILogger<ControlPanelPlugin> _logger;
     private readonly ILoggerFactory _loggerFactory;
     private readonly IEventBus _eventBus;
     private readonly Dictionary<string, IHandler> _handlers = new();
     private readonly List<ISequence> _sequences = new();
 
-    public LibraryComponentPlugin(ILogger<LibraryComponentPlugin> logger, ILoggerFactory loggerFactory, IEventBus eventBus)
+    public ControlPanelPlugin(ILogger<ControlPanelPlugin> logger, ILoggerFactory loggerFactory, IEventBus eventBus)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
@@ -30,25 +30,25 @@ public class LibraryComponentPlugin : IPlugin
     {
         return new PluginMetadata
         {
-            Id = "library-component",
-            Name = "Library Component",
+            Id = "control-panel",
+            Name = "Control Panel",
             Version = "1.0.0",
-            Description = "Drag-and-drop component creation from library",
+            Description = "CSS management, field changes, and UI rendering for Control Panel",
             Author = "RenderX Team"
         };
     }
 
     public async Task Initialize(IConductor conductor)
     {
-        _logger.LogInformation("🎪 Initializing Library Component Plugin");
+        _logger.LogInformation("🎛️ Initializing Control Panel Plugin");
         
         // Create handler instance with proper logger type
-        var handlers = new LibraryComponentHandlers(_loggerFactory.CreateLogger<LibraryComponentHandlers>(), _eventBus);
+        var handlers = new ControlPanelHandlers(_loggerFactory.CreateLogger<ControlPanelHandlers>(), _eventBus);
 
-        // Register all 3 sequences using helper class
-        LibraryComponentSequenceRegistration.RegisterAllSequences(_sequences, handlers);
+        // Register all 13 sequences using helper class
+        ControlPanelSequenceRegistration.RegisterAllSequences(_sequences, handlers);
 
-        _logger.LogInformation("✅ Library Component Plugin initialized with {Count} sequences", _sequences.Count);
+        _logger.LogInformation("✅ Control Panel Plugin initialized with {Count} sequences", _sequences.Count);
         
         await Task.CompletedTask;
     }
@@ -65,7 +65,7 @@ public class LibraryComponentPlugin : IPlugin
 
     public async Task Cleanup()
     {
-        _logger.LogInformation("🧹 Cleaning up Library Component Plugin");
+        _logger.LogInformation("🧹 Cleaning up Control Panel Plugin");
         _handlers.Clear();
         _sequences.Clear();
         await Task.CompletedTask;

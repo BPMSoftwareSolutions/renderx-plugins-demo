@@ -4,22 +4,22 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using MusicalConductor.Core.Interfaces;
 using MusicalConductor.Core.Models;
-using RenderX.Plugins.LibraryComponent.Handlers;
+using RenderX.Plugins.Library.Handlers;
 
-namespace RenderX.Plugins.LibraryComponent;
+namespace RenderX.Plugins.Library;
 
 /// <summary>
-/// LibraryComponent plugin for drag-and-drop from component library.
+/// Library plugin for loading component templates.
 /// </summary>
-public class LibraryComponentPlugin : IPlugin
+public class LibraryPlugin : IPlugin
 {
-    private readonly ILogger<LibraryComponentPlugin> _logger;
+    private readonly ILogger<LibraryPlugin> _logger;
     private readonly ILoggerFactory _loggerFactory;
     private readonly IEventBus _eventBus;
     private readonly Dictionary<string, IHandler> _handlers = new();
     private readonly List<ISequence> _sequences = new();
 
-    public LibraryComponentPlugin(ILogger<LibraryComponentPlugin> logger, ILoggerFactory loggerFactory, IEventBus eventBus)
+    public LibraryPlugin(ILogger<LibraryPlugin> logger, ILoggerFactory loggerFactory, IEventBus eventBus)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
@@ -30,25 +30,25 @@ public class LibraryComponentPlugin : IPlugin
     {
         return new PluginMetadata
         {
-            Id = "library-component",
-            Name = "Library Component",
+            Id = "library",
+            Name = "Library",
             Version = "1.0.0",
-            Description = "Drag-and-drop component creation from library",
+            Description = "Component library template loading",
             Author = "RenderX Team"
         };
     }
 
     public async Task Initialize(IConductor conductor)
     {
-        _logger.LogInformation("🎪 Initializing Library Component Plugin");
+        _logger.LogInformation("📚 Initializing Library Plugin");
         
         // Create handler instance with proper logger type
-        var handlers = new LibraryComponentHandlers(_loggerFactory.CreateLogger<LibraryComponentHandlers>(), _eventBus);
+        var handlers = new LibraryHandlers(_loggerFactory.CreateLogger<LibraryHandlers>(), _eventBus);
 
-        // Register all 3 sequences using helper class
-        LibraryComponentSequenceRegistration.RegisterAllSequences(_sequences, handlers);
+        // Register all 1 sequence using helper class
+        LibrarySequenceRegistration.RegisterAllSequences(_sequences, handlers);
 
-        _logger.LogInformation("✅ Library Component Plugin initialized with {Count} sequences", _sequences.Count);
+        _logger.LogInformation("✅ Library Plugin initialized with {Count} sequences", _sequences.Count);
         
         await Task.CompletedTask;
     }
@@ -65,7 +65,7 @@ public class LibraryComponentPlugin : IPlugin
 
     public async Task Cleanup()
     {
-        _logger.LogInformation("🧹 Cleaning up Library Component Plugin");
+        _logger.LogInformation("🧹 Cleaning up Library Plugin");
         _handlers.Clear();
         _sequences.Clear();
         await Task.CompletedTask;
