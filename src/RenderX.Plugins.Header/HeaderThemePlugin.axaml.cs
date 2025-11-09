@@ -49,19 +49,28 @@ public partial class HeaderThemePlugin : UserControl
     /// <summary>
     /// Handle theme toggle button click
     /// </summary>
-    private void OnThemeToggleClick(object? sender, RoutedEventArgs e)
+    private async void OnThemeToggleClick(object? sender, RoutedEventArgs e)
     {
         _isDarkMode = !_isDarkMode;
-        _logger?.LogInformation("Theme toggled to {Theme}", _isDarkMode ? "dark" : "light");
+        var newTheme = _isDarkMode ? "dark" : "light";
+        _logger?.LogInformation("🎨 Theme toggle clicked: {Theme}", newTheme);
         
         UpdateThemeButtonText();
 
-        // Publish theme changed event
-        if (_eventRouter != null)
+        // Execute theme toggle sequence via Musical Conductor
+        // This matches web version: conductor.play("HeaderThemePlugin", "header-ui-theme-toggle-symphony", { theme })
+        if (_conductor != null)
         {
-            _eventRouter.PublishAsync("header.theme.changed", 
-                new { isDarkMode = _isDarkMode, timestamp = DateTime.UtcNow }, 
-                _conductor);
+            try
+            {
+                _logger?.LogInformation("🎼 Executing header-ui-theme-toggle-symphony sequence");
+                var result = await _conductor.Play("HeaderPlugin", "header-ui-theme-toggle-symphony", new { theme = newTheme });
+                _logger?.LogInformation("✅ Theme toggle sequence completed: {Result}", result);
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "❌ Failed to execute theme toggle sequence");
+            }
         }
     }
 
