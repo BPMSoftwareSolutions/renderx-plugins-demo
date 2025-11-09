@@ -1,0 +1,109 @@
+================================================================================
+Log Messages Report - Grouped by LEVEL
+================================================================================
+
+├── error (84 messages)
+│   └── ❌ ERROR (84 occurrences)
+│       ├── All selection fallbacks failed:
+│       ├── No targets found. Use --all, --slide <id>, or ensure sub_elements/spec...
+│       ├── `Validation failed: ${issues.length} issue(s
+│       ├── err.message || String(err
+│       ├── Error: Slides JSON file not found: ${JSON_PATH}
+│       ├── Error: Slide not found: ${args.slide}
+│       ├── ❌ Error during canvas scene demo:
+│       ├── ❌ Error processing ${sceneFile}:
+│       ├── ❌ Error processing combined scene:
+│       ├──    ❌ Error extracting scene ${sceneNumber}:
+│       └── ... and 74 more
+
+├── info (15 messages)
+│   └── ℹ️ INFO (15 occurrences)
+│       ├── seq1 ran
+│       ├── seq2 ran
+│       ├── 🚀 Starting knowledge export...
+│       ├── 📥 Starting knowledge import...
+│       ├── 🔍 Import preview:
+│       ├── `📊 Import summary: ${this.getImportSummary(result
+│       ├── 🔄 Starting knowledge merge...
+│       ├── 🔍 Validating knowledge file...
+│       ├── 📄 Validation report saved to: ${options.report}
+│       ├── 🔍 Comparing knowledge...
+│       └── ... and 5 more
+
+├── log (1667 messages)
+│   └── 📝 LOG (1667 occurrences)
+│       ├── ✅ Plugin manifest created at dist/plugin-manifest.json
+│       ├── ✅ Plugin manifest created at dist/plugin-manifest.json
+│       ├── Running Canvas Layout Tests...\n
+│       ├── Running Canvas Layout Tests...\n
+│       ├── ✓ ${name}
+│       ├── ✓ ${name}
+│       ├── ✗ ${name}: ${error.message}
+│       ├── ✗ ${name}: ${error.message}
+│       ├── \nResults: ${this.passed} passed, ${this.failed} failed
+│       ├── \nResults: ${this.passed} passed, ${this.failed} failed
+│       └── ... and 1657 more
+
+├── success (10 messages)
+│   └── ✅ SUCCESS (10 occurrences)
+│       ├── ✅ Knowledge exported to: ${outputPath}
+│       ├── ✅ Knowledge file is valid
+│       ├── ✅ Knowledge imported successfully
+│       ├── ✅ Knowledge merged and saved to: ${outputPath}
+│       ├── ✅ Knowledge file is valid
+│       ├── ✅ Shortcuts exported to: ${options.export}
+│       ├── ✅ Backup created: ${backupPath}
+│       ├── ✅ Added shortcut: ${shortcut.keyword}
+│       ├── ✅ Updated shortcut: ${keyword}
+│       └── ✅ Removed shortcut: ${removed.keyword}
+
+└── warn (87 messages)
+    └── ⚠️ WARN (87 occurrences)
+        ├── "Host config not available. Ensure the host has called initConfig(
+        ├── "Host config not available. Ensure the host has called initConfig(
+        ├── Error in CSS registry observer callback:
+        ├── Host CSS Registry API not available.
+        ├── Error calling host cssRegistry.hasClass:
+        ├── Host CSS Registry API not available. Class will not be created.
+        ├── Error calling host cssRegistry.createClass:
+        ├── Host CSS Registry API not available. Class will not be updated.
+        ├── Error calling host cssRegistry.updateClass:
+        ├── Host CSS Registry API not available. Observer will not receive updates...
+        └── ... and 77 more
+
+
+================================================================================
+STATISTICS SUMMARY
+================================================================================
+
+📊 Total Log Messages: 1863
+
+📈 By Log Level:
+  LOG        1667 ( 89.5%) ████████████████████████████████████████████
+  WARN         87 (  4.7%) ██
+  ERROR        84 (  4.5%) ██
+  INFO         15 (  0.8%) 
+  SUCCESS      10 (  0.5%) 
+
+📦 By Package (Top 10):
+  digital-assets                  959 ( 51.5%)
+  musical-conductor               742 ( 39.8%)
+  host-sdk                         99 (  5.3%)
+  control-panel                    23 (  1.2%)
+  library                          20 (  1.1%)
+  canvas-component                 16 (  0.9%)
+  canvas                            4 (  0.2%)
+
+📁 Files with Most Logs (Top 10):
+  knowledge-cli.ts                                    247
+  cli.ts                                               97
+  event-router-demo.ts                                 90
+  generic-scene-generator.ts                           77
+  canvas-storybook-demo.ts                             74
+  create-cinematic-presentation.ts                     73
+  demo.ts                                              70
+  canvas-svg-extractor.ts                              63
+  combined-storybook-generator.ts                      59
+  canvas-to-graph-converter.ts                         52
+
+================================================================================

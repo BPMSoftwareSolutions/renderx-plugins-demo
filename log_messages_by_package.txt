@@ -1,0 +1,195 @@
+================================================================================
+Log Messages Report - Grouped by PACKAGE
+================================================================================
+
+├── canvas (4 messages)
+│   └── 📝 LOG (4 occurrences)
+│       ├── Line 51: Drag started:
+│       ├── Line 51: Drag started:
+│       ├── Line 91: Drag ended:
+│       └── Line 91: Drag ended:
+
+├── canvas-component (16 messages)
+│   ├── ❌ ERROR (1 occurrences)
+│   │   └── Line 65: All selection fallbacks failed:
+│   ├── 📝 LOG (12 occurrences)
+│   │   ├── Line 8: CSS Registry state before test:
+│   │   ├── Line 8: CSS Registry state before test:
+│   │   ├── Line 9: - Has rx-button:
+│   │   ├── Line 9: - Has rx-button:
+│   │   ├── Line 10: - Has rx-comp:
+│   │   ├── Line 10: - Has rx-comp:
+│   │   ├── Line 11: - All class names:
+│   │   ├── Line 11: - All class names:
+│   │   ├── Line 30: INFO:
+│   │   ├── Line 30: INFO:
+│   │   └── ... and 2 more
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── Line 25: Selection click handler error:
+│       ├── Line 46: No conductor available for selection
+│       └── Line 54: Production selection handler error:
+
+├── control-panel (23 messages)
+│   ├── 📝 LOG (20 occurrences)
+│   │   ├── Line 52: ✅ Plugin manifest created at dist/plugin-manifest.json
+│   │   ├── Line 52: ✅ Plugin manifest created at dist/plugin-manifest.json
+│   │   ├── Line 48: 🎯 Testing content change...
+│   │   ├── Line 48: 🎯 Testing content change...
+│   │   ├── Line 60: 🎨 Testing styling changes...
+│   │   ├── Line 60: 🎨 Testing styling changes...
+│   │   ├── Line 83: 📐 Testing layout changes...
+│   │   ├── Line 83: 📐 Testing layout changes...
+│   │   ├── Line 106: 🔧 Testing variant changes...
+│   │   ├── Line 106: 🔧 Testing variant changes...
+│   │   └── ... and 10 more
+│   └── ⚠️ WARN (3 occurrences)
+│       ├── Line 34: [cp] useControlPanelState: No EventRouter available; UI will not react...
+│       ├── Line 83: [cp] useControlPanelState:${label} fallback selection.changed handler ...
+│       └── Line 90: [cp] useControlPanelState: failed to subscribe via ${label}:
+
+├── digital-assets (959 messages)
+│   ├── ❌ ERROR (36 occurrences)
+│   │   ├── Line 68: No targets found. Use --all, --slide <id>, or ensure sub_elements/spec...
+│   │   ├── Line 133: `Validation failed: ${issues.length} issue(s
+│   │   ├── Line 152: err.message || String(err
+│   │   ├── Line 275: Error: Slides JSON file not found: ${JSON_PATH}
+│   │   ├── Line 286: Error: Slide not found: ${args.slide}
+│   │   ├── Line 51: ❌ Error during canvas scene demo:
+│   │   ├── Line 143: ❌ Error processing ${sceneFile}:
+│   │   ├── Line 153: ❌ Error processing combined scene:
+│   │   ├── Line 133:    ❌ Error extracting scene ${sceneNumber}:
+│   │   ├── Line 154: ❌ No scenes were successfully extracted. Cannot create combined storyb...
+│   │   └── ... and 26 more
+│   ├── 📝 LOG (915 occurrences)
+│   │   ├── Line 44: Running Canvas Layout Tests...\n
+│   │   ├── Line 44: Running Canvas Layout Tests...\n
+│   │   ├── Line 49: ✓ ${name}
+│   │   ├── Line 49: ✓ ${name}
+│   │   ├── Line 52: ✗ ${name}: ${error.message}
+│   │   ├── Line 52: ✗ ${name}: ${error.message}
+│   │   ├── Line 57: \nResults: ${this.passed} passed, ${this.failed} failed
+│   │   ├── Line 57: \nResults: ${this.passed} passed, ${this.failed} failed
+│   │   ├── Line 9: 🎬 SVG Animation Utilities Demo
+│   │   ├── Line 9: 🎬 SVG Animation Utilities Demo
+│   │   └── ... and 905 more
+│   └── ⚠️ WARN (8 occurrences)
+│       ├── Line 205: Warning: Element SVG not found: ${element.svg}
+│       ├── Line 215: Warning: Invalid SVG format in ${element.svg}
+│       ├── Line 76: Warning: Could not render scene ${scene.id} from nodes:
+│       ├── Line 49: Unknown parameter: ${key}
+│       ├── Line 252: Parameter not found: ${paramName}
+│       ├── Line 65: Duplicate IDs found in ${slideFile}:
+│       ├── Line 132: Warning: Unbalanced group tags for id="${id}"
+│       └── Line 213: Warning: Could not find group element ${se.id} in ${se.svg}
+
+├── host-sdk (99 messages)
+│   ├── 📝 LOG (66 occurrences)
+│   │   ├── Line 20: `[conductor] init id=${(conductor as any
+│   │   ├── Line 20: `[conductor] init id=${(conductor as any
+│   │   ├── Line 128: 🧭 Catalog discovery plugins:
+│   │   ├── Line 128: 🧭 Catalog discovery plugins:
+│   │   ├── Line 180: \u23ed\ufe0f Sequence already processed in loader; skipping:
+│   │   ├── Line 180: \u23ed\ufe0f Sequence already processed in loader; skipping:
+│   │   ├── Line 193: \uD83D\uDD0D Using runtimePackageLoader for
+│   │   ├── Line 193: \uD83D\uDD0D Using runtimePackageLoader for
+│   │   ├── Line 205: \uD83D\uDD0D Using vendor symphony loader for
+│   │   ├── Line 205: \uD83D\uDD0D Using vendor symphony loader for
+│   │   └── ... and 56 more
+│   └── ⚠️ WARN (33 occurrences)
+│       ├── Line 27: "Host config not available. Ensure the host has called initConfig(
+│       ├── Line 59: "Host config not available. Ensure the host has called initConfig(
+│       ├── Line 49: Error in CSS registry observer callback:
+│       ├── Line 63: Host CSS Registry API not available.
+│       ├── Line 70: Error calling host cssRegistry.hasClass:
+│       ├── Line 83: Host CSS Registry API not available. Class will not be created.
+│       ├── Line 90: Error calling host cssRegistry.createClass:
+│       ├── Line 103: Host CSS Registry API not available. Class will not be updated.
+│       ├── Line 110: Error calling host cssRegistry.updateClass:
+│       ├── Line 123: Host CSS Registry API not available. Observer will not receive updates...
+│       └── ... and 23 more
+
+├── library (20 messages)
+│   ├── ❌ ERROR (8 occurrences)
+│   │   ├── Line 109: OpenAI generation failed:
+│   │   ├── Line 38: Failed to copy JSON:
+│   │   ├── Line 129: Chat error:
+│   │   ├── Line 179: Regeneration error:
+│   │   ├── Line 51: Error removing component:
+│   │   ├── Line 36: Custom component error:
+│   │   ├── Line 152: Failed to save AI-generated component:
+│   │   └── Line 156: Failed to save AI-generated component:
+│   ├── 📝 LOG (2 occurrences)
+│   │   ├── Line 150: AI-generated component added to library:
+│   │   └── Line 150: AI-generated component added to library:
+│   └── ⚠️ WARN (10 occurrences)
+│       ├── Line 243: Component validation warnings:
+│       ├── Line 78: Failed to load current chat session:
+│       ├── Line 55: File validation warnings:
+│       ├── Line 71: Component validation warnings:
+│       ├── Line 43: Failed to load chat history:
+│       ├── Line 65: Failed to save chat history:
+│       ├── Line 108: Failed to add messages to session:
+│       ├── Line 145: Failed to delete chat session:
+│       ├── Line 158: Failed to clear chat history:
+│       └── Line 279: Failed to cleanup chat history:
+
+└── musical-conductor (742 messages)
+    ├── ❌ ERROR (39 occurrences)
+    │   ├── Line 550:    Plugin: ${violation.pluginId}
+    │   ├── Line 551: `   Time: ${violation.timestamp.toISOString(
+    │   ├── Line 554:    Location: ${violation.fileUrl}:${violation.lineNumber}${col}
+    │   ├── Line 557: `   Code: ${violation.codeSnippet.trim(
+    │   ├── Line 91: ❌ Failed to register sequence: ${sequence.name}
+    │   ├── Line 218: 🎽 ConductorAPI: Failed to update data baton:
+    │   ├── Line 254: 🎽 ConductorAPI: Failed to clear data baton:
+    │   ├── Line 125: 🎼 Beat execution error:
+    │   ├── Line 155: 🎼 Subscriber: ${subscriberId}
+    │   ├── Line 108: line, ...evt.message
+    │   └── ... and 29 more
+    ├── ℹ️ INFO (15 occurrences)
+    │   ├── Line 73: seq1 ran
+    │   ├── Line 76: seq2 ran
+    │   ├── Line 265: 🚀 Starting knowledge export...
+    │   ├── Line 291: 📥 Starting knowledge import...
+    │   ├── Line 317: 🔍 Import preview:
+    │   ├── Line 331: `📊 Import summary: ${this.getImportSummary(result
+    │   ├── Line 340: 🔄 Starting knowledge merge...
+    │   ├── Line 364: 🔍 Validating knowledge file...
+    │   ├── Line 385: 📄 Validation report saved to: ${options.report}
+    │   ├── Line 410: 🔍 Comparing knowledge...
+    │   └── ... and 5 more
+    ├── 📝 LOG (648 occurrences)
+    │   ├── Line 44: 🎼 Domain Event: ${eventName}
+    │   ├── Line 44: 🎼 Domain Event: ${eventName}
+    │   ├── Line 222: 📡 EventBus: Cleared all subscribers for "${eventName}"
+    │   ├── Line 222: 📡 EventBus: Cleared all subscribers for "${eventName}"
+    │   ├── Line 234: 📡 EventBus: Cleared all subscribers
+    │   ├── Line 234: 📡 EventBus: Cleared all subscribers
+    │   ├── Line 285: 📡 EventBus: Debug mode ${enabled ? "enabled" : "disabled"}
+    │   ├── Line 285: 📡 EventBus: Debug mode ${enabled ? "enabled" : "disabled"}
+    │   ├── Line 329: "🎼 EventBus: Using internal conductor (legacy mode
+    │   ├── Line 329: "🎼 EventBus: Using internal conductor (legacy mode
+    │   └── ... and 638 more
+    ├── ✅ SUCCESS (10 occurrences)
+    │   ├── Line 279: ✅ Knowledge exported to: ${outputPath}
+    │   ├── Line 311: ✅ Knowledge file is valid
+    │   ├── Line 330: ✅ Knowledge imported successfully
+    │   ├── Line 355: ✅ Knowledge merged and saved to: ${outputPath}
+    │   ├── Line 374: ✅ Knowledge file is valid
+    │   ├── Line 548: ✅ Shortcuts exported to: ${options.export}
+    │   ├── Line 1107: ✅ Backup created: ${backupPath}
+    │   ├── Line 483: ✅ Added shortcut: ${shortcut.keyword}
+    │   ├── Line 498: ✅ Updated shortcut: ${keyword}
+    │   └── Line 515: ✅ Removed shortcut: ${removed.keyword}
+    └── ⚠️ WARN (30 occurrences)
+        ├── Line 203: 🎽 ConductorAPI: No active sequence to update data baton
+        ├── Line 243: 🎽 ConductorAPI: No active sequence to clear data baton
+        ├── Line 191: 🎼 Error during event unsubscription:
+        ├── Line 105: line, ...evt.message
+        ├── Line 147: 🔍 DuplicationDetector: Failed to generate hash, using fallback:
+        ├── Line 65: 📊 StatisticsManager: Recorded error occurrence
+        ├── Line 333: 🎼 SequenceOrchestrator: ${deduplicationResult.reason}
+        ├── Line 136: 🧠 No handlers found for sequence: ${sequenceName}
+        ├── Line 221: 🎼 Failed to extract plugin code for validation:
+        ├── Line 463: 🧠 PluginManager: Failed to unmount ${pluginId}:
+        └── ... and 20 more
