@@ -2,9 +2,12 @@ using Jint;
 using Jint.Native;
 using Jint.Runtime;
 using Microsoft.Extensions.Logging;
+using System.Linq;
+
 using MusicalConductor.Avalonia.Logging;
 
 namespace MusicalConductor.Avalonia.Engine;
+
 
 /// <summary>
 /// Hosts the MusicalConductor JavaScript engine using Jint.
@@ -18,6 +21,18 @@ public class JintEngineHost : IDisposable
     private readonly ConductorLogger? _conductorLogger;
     private JsValue _conductorInstance = JsValue.Undefined;
     private bool _disposed;
+
+    // Shim object exposed to JS as `console` that supports varargs methods
+    private sealed class ConsoleShim
+    {
+        private readonly Action<LogLevel, object?[]> _sink;
+        public ConsoleShim(Action<LogLevel, object?[]> sink) => _sink = sink;
+        public void log(params object?[] args) => _sink(LogLevel.Information, args);
+        public void info(params object?[] args) => _sink(LogLevel.Information, args);
+        public void warn(params object?[] args) => _sink(LogLevel.Warning, args);
+        public void error(params object?[] args) => _sink(LogLevel.Error, args);
+    }
+
 
     public JintEngineHost(
         ILogger<JintEngineHost> logger,
@@ -49,13 +64,9 @@ public class JintEngineHost : IDisposable
         // Minimal stubs sufficient for compilation and simple runtime
         _engine.SetValue("window", new object());
         _engine.SetValue("document", new object());
-        _engine.SetValue("console", new
-        {
-            log = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Information, args)),
-            info = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Information, args)),
-            warn = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Warning, args)),
-            error = new Action<object?[]>(args => LogWithIconPreservation(LogLevel.Error, args))
-        });
+
+        // Console shim with params varargs methods to match browser semantics
+        _engine.SetValue("console", new ConsoleShim((lvl, arr) => LogWithIconPreservation(lvl, arr)));
 
         _logger.LogInformation("✅ Browser stubs initialized");
     }
@@ -65,20 +76,48 @@ public class JintEngineHost : IDisposable
     /// </summary>
     private void LogWithIconPreservation(LogLevel level, object?[] args)
     {
-        var message = string.Join(" ", (args ?? Array.Empty<object?>()).Select(a => a?.ToString()));
+        args ??= Array.Empty<object?>();
+
+        // Handle console styling tokens like %c and drop the corresponding style args
+        string first = args.Length > 0 ? args[0]?.ToString() ?? string.Empty : string.Empty;
+        int styleTokenCount = 0;
+        if (!string.IsNullOrEmpty(first))
+        {
+            // Count occurrences of %c in the first argument and strip them
+            int idx = 0;
+            while (true)
+            {
+                var found = first.IndexOf("%c", idx, StringComparison.Ordinal);
+                if (found < 0) break;
+                styleTokenCount++;
+                idx = found + 2;
+            }
+            if (styleTokenCount > 0)
+            {
+
+
+                first = first.Replace("%c", "");
+            }
+        }
+
+        // Rebuild message skipping style args immediately following the first arg
+        var parts = new List<string>();
+        if (!string.IsNullOrWhiteSpace(first)) parts.Add(first);
+        for (int i = 1 + styleTokenCount; i < args.Length; i++)
+        {
+            parts.Add(args[i]?.ToString() ?? string.Empty);
+        }
+        var message = string.Join(" ", parts.Where(p => !string.IsNullOrEmpty(p))).Trim();
 
         // Preserve icons from JavaScript - don't add our own prefix if message already has an icon
-        // Icons are typically emoji which are represented as surrogate pairs in UTF-16
-        var hasIcon = message.Length > 0 && (char.IsHighSurrogate(message[0]) || IsCommonEmoji(message));
+        var hasIcon = HasEmoji(message);
 
         if (hasIcon)
         {
-            // Message already has an icon from ConductorLogger.ts, preserve it as-is
             _logger.Log(level, "{Message}", message);
         }
         else
         {
-            // No icon detected, add default based on level
             var icon = level switch
             {
                 LogLevel.Warning => "⚠️",
@@ -90,15 +129,23 @@ public class JintEngineHost : IDisposable
     }
 
     /// <summary>
-    /// Check if the message starts with a common emoji used in ConductorLogger
+    /// Return true if the message contains any common emoji we use to signal categories.
+    /// This ignores leading console style tokens like %c.
     /// </summary>
-    private bool IsCommonEmoji(string message)
+    private bool HasEmoji(string message)
     {
         if (string.IsNullOrEmpty(message)) return false;
+        var trimmed = message.TrimStart();
 
-        // Check for common emoji prefixes used in ConductorLogger
-        var commonEmojis = new[] { "🎼", "🎵", "🥁", "🔧", "🧩", "🎭", "📡", "🎽", "🧠", "🔍", "📊", "🎯", "✅" };
-        return commonEmojis.Any(emoji => message.StartsWith(emoji));
+        // Common emoji used across the web logs (expanded set for parity)
+        var commonEmojis = new[]
+        {
+            "🎼","🎵","🥁","🔧","🧩","🎭","📡","🎽","🧠","🔍","📊","🎯","✅",
+            "🧭","⏱️","📦","🔄","📄","📂","📚","🎬","🖼️","📥","🧪","🚀","🧹","🔌",
+            "⏭","↪️","🧭","📐","🎨","🚌","%c✅" // include styled token variant
+        };
+        // If message starts with any emoji or contains them anywhere, consider present
+        return commonEmojis.Any(e => trimmed.StartsWith(e, StringComparison.Ordinal) || trimmed.Contains(e, StringComparison.Ordinal));
     }
 
 
@@ -113,6 +160,8 @@ public class JintEngineHost : IDisposable
         try
         {
             // Load the compiled conductor bundle
+
+
             var bundleScript = GetBundleScript();
             _engine.Execute(bundleScript);
 
@@ -210,6 +259,7 @@ public class JintEngineHost : IDisposable
             throw new InvalidOperationException("Conductor not initialized");
         }
 
+
         return _conductorInstance.AsObject().Get(propertyName);
     }
 
@@ -219,6 +269,16 @@ public class JintEngineHost : IDisposable
     public JsValue Execute(string code)
     {
         return _engine.Evaluate(code);
+    }
+
+
+    /// <summary>
+    /// Evaluate arbitrary JavaScript in the hosted engine (primarily for tests).
+    /// </summary>
+    public void Eval(string script)
+    {
+        if (string.IsNullOrWhiteSpace(script)) return;
+        _engine.Execute(script);
     }
 
     /// <summary>
