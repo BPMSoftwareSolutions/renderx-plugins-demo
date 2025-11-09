@@ -181,7 +181,7 @@ public partial class CanvasControl : UserControl
             _components.Add(component);
             UpdateComponentCount();
             UpdateStatus($"Component created: {component.Name}");
-            _logger?.LogDebug("Component added to canvas: {ComponentId}", component.Id);
+            _logger?.LogInformation("Component added to canvas: {ComponentId}", component.Id);
 
             // Publish component created event
             PublishComponentCreated(component);
@@ -202,9 +202,19 @@ public partial class CanvasControl : UserControl
             if (payload.TryGetProperty("id", out var idElement))
             {
                 var componentId = idElement.GetString();
+                _logger?.LogInformation("Canvas received selection changed: {ComponentId}", componentId);
+
                 _selectedComponent = _components.FirstOrDefault(c => c.Id == componentId);
                 UpdateStatus($"Component selected: {_selectedComponent?.Name ?? "unknown"}");
-                _logger?.LogDebug("Component selected: {ComponentId}", componentId);
+
+                if (_selectedComponent != null)
+                {
+                    _logger?.LogInformation("Canvas component selected: {ComponentName}", _selectedComponent.Name);
+                }
+                else
+                {
+                    _logger?.LogWarning("Canvas component not found for selection: {ComponentId}", componentId);
+                }
             }
         }
         catch (Exception ex)
@@ -223,16 +233,22 @@ public partial class CanvasControl : UserControl
             if (payload.TryGetProperty("id", out var idElement))
             {
                 var componentId = idElement.GetString();
+                _logger?.LogInformation("Canvas received delete request: {ComponentId}", componentId);
+
                 var component = _components.FirstOrDefault(c => c.Id == componentId);
                 if (component != null)
                 {
                     _components.Remove(component);
                     UpdateComponentCount();
                     UpdateStatus($"Component deleted: {component.Name}");
-                    _logger?.LogDebug("Component removed from canvas: {ComponentId}", componentId);
+                    _logger?.LogInformation("Component removed from canvas: {ComponentId}", componentId);
 
                     // Publish component deleted event
                     PublishComponentDeleted(componentId ?? "unknown");
+                }
+                else
+                {
+                    _logger?.LogWarning("Canvas component not found for deletion: {ComponentId}", componentId);
                 }
             }
         }
@@ -252,6 +268,8 @@ public partial class CanvasControl : UserControl
             if (payload.TryGetProperty("id", out var idElement))
             {
                 var componentId = idElement.GetString();
+                _logger?.LogInformation("Canvas received update request: {ComponentId}", componentId);
+
                 var component = _components.FirstOrDefault(c => c.Id == componentId);
                 if (component != null)
                 {
@@ -260,7 +278,11 @@ public partial class CanvasControl : UserControl
                         component.Name = nameElement.GetString() ?? component.Name;
                     }
                     component.Data = payload;
-                    _logger?.LogDebug("Component updated: {ComponentId}", componentId);
+                    _logger?.LogInformation("Component updated: {ComponentId}", componentId);
+                }
+                else
+                {
+                    _logger?.LogWarning("Canvas component not found for update: {ComponentId}", componentId);
                 }
             }
         }
@@ -280,7 +302,7 @@ public partial class CanvasControl : UserControl
             _dragStartPoint = e.GetPosition(this);
             _isDragging = true;
             _selectedComponent = component;
-            _logger?.LogDebug("Component pointer pressed: {ComponentId}", component.Id);
+            _logger?.LogInformation("Component pointer pressed: {ComponentId}", component.Id);
 
             // Publish drag start event
             PublishDragStart(component, _dragStartPoint);

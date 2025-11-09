@@ -114,7 +114,7 @@ public partial class LibraryPlugin : UserControl
     {
         if (sender is Border border && border.DataContext is ComponentItem component)
         {
-            _logger?.LogDebug("Component drag started: {ComponentId}", component.Id);
+            _logger?.LogInformation("Library component drag started: {ComponentId}", component.Id);
 
             // Publish component drag started event
             PublishComponentDragStarted(component);
@@ -131,7 +131,7 @@ public partial class LibraryPlugin : UserControl
     {
         if (sender is Border border && border.DataContext is ComponentItem component)
         {
-            _logger?.LogInformation("Component double-clicked: {ComponentId}", component.Id);
+            _logger?.LogInformation("Library component double-clicked: {ComponentId}", component.Id);
 
             // Publish component add requested event
             PublishComponentAddRequested(component);
@@ -148,6 +148,7 @@ public partial class LibraryPlugin : UserControl
 
         try
         {
+            _logger.LogInformation("Library requesting component load");
             await _eventRouter.PublishAsync("library.load.requested", new { }, _conductor);
             _logger.LogInformation("📡 EventRouter.publish('library.load.requested')");
         }
@@ -167,6 +168,7 @@ public partial class LibraryPlugin : UserControl
 
         try
         {
+            _logger.LogInformation("Library publishing drag started for: {ComponentId}", component.Id);
             var payload = new { componentId = component.Id, componentName = component.Name };
             await _eventRouter.PublishAsync("library.component.drag.started", payload, _conductor);
             _logger.LogInformation("📡 EventRouter.publish('library.component.drag.started')");
