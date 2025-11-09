@@ -6,7 +6,7 @@
             Click="OnThemeButtonClick"
             Padding="12,6"
             Background="#6C757D"
-            Foreground="White"
+            Foreground="{DynamicResource Color.Background.Primary}"
             VerticalAlignment="Center"
             ToolTip.Tip="Toggle Theme" />
 </UserControl>

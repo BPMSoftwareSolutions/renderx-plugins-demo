@@ -1,26 +1,26 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Components.ComponentCatalog"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Grid RowDefinitions="Auto,*">
         <!-- Header -->
         <Border Grid.Row="0"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Spacing="8">
                 <TextBlock Text="Component Catalog"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <Grid ColumnDefinitions="*,Auto">
                     <TextBox Grid.Column="0"
                              Watermark="Search components..."
                              FontSize="11"
                              Padding="6,4"
                              BorderThickness="1"
-                             BorderBrush="#D0D0D0" />
+                             BorderBrush="{DynamicResource Color.Border.Secondary}" />
                     <ComboBox Grid.Column="1"
                               Margin="8,0,0,0"
                               Width="120"
@@ -39,7 +39,7 @@
         <ScrollViewer Grid.Row="1">
             <ItemsControl x:Name="CatalogControl"
                           Padding="12"
-                          Background="White">
+                          Background="{DynamicResource Color.Background.Primary}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel />
@@ -47,15 +47,15 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="#F9F9F9"
+                        <Border Background="{DynamicResource Color.Background.Secondary}"
                                 BorderThickness="1"
-                                BorderBrush="#E0E0E0"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
                                 CornerRadius="4"
                                 Padding="12"
                                 Width="200"
                                 Height="180">
                             <StackPanel Spacing="8">
-                                <Border Background="#E0E0E0"
+                                <Border Background="{DynamicResource Color.Border.Primary}"
                                         CornerRadius="2"
                                         Height="80">
                                     <TextBlock Text="🧩"
@@ -67,7 +67,7 @@
                                     <TextBlock Text="{Binding Name}"
                                                FontSize="12"
                                                FontWeight="Bold"
-                                               Foreground="#333" />
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
                                     <TextBlock Text="{Binding Category}"
                                                FontSize="9"
                                                Foreground="#999" />

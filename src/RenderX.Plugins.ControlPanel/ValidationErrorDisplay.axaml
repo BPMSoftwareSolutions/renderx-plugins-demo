@@ -5,7 +5,7 @@
     <Border x:Name="ErrorBorder"
             Background="#FFEBEE"
             BorderThickness="1"
-            BorderBrush="#EF5350"
+            BorderBrush="{DynamicResource Color.Error}"
             CornerRadius="4"
             Padding="12"
             IsVisible="False">
@@ -15,12 +15,12 @@
                 <TextBlock Text="Validation Error"
                            FontSize="12"
                            FontWeight="Bold"
-                           Foreground="#C62828"
+                           Foreground="{DynamicResource Color.Error}"
                            VerticalAlignment="Center" />
             </StackPanel>
             <TextBlock Text="An error occurred"
                        FontSize="11"
-                       Foreground="#D32F2F"
+                       Foreground="{DynamicResource Color.Error}"
                        TextWrapping="Wrap" />
         </StackPanel>
     </Border>

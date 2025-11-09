@@ -8,11 +8,11 @@
                        Text="User"
                        FontSize="11"
                        FontWeight="Bold"
-                       Foreground="#333" />
+                       Foreground="{DynamicResource Color.Border.Primary}" />
             <Border x:Name="MessageBorder"
-                    Background="#F5F5F5"
+                    Background="{DynamicResource Color.Background.Tertiary}"
                     BorderThickness="1"
-                    BorderBrush="#E0E0E0"
+                    BorderBrush="{DynamicResource Color.Border.Primary}"
                     CornerRadius="4"
                     Padding="8">
                 <TextBlock x:Name="ContentText"

@@ -8,11 +8,11 @@
                 Content="☰"
                 Padding="8,6"
                 Background="Transparent"
-                Foreground="White"
+                Foreground="{DynamicResource Color.Background.Primary}"
                 VerticalAlignment="Center"
                 ToolTip.Tip="Menu" />
         <Popup x:Name="MenuPopup" PlacementMode="BottomEdgeAlignedLeft">
-            <Border Background="#252526" BorderBrush="#333" BorderThickness="1" Padding="0">
+            <Border Background="{DynamicResource Color.Background.Secondary}" BorderBrush="{DynamicResource Color.Border.Primary}" BorderThickness="1" Padding="0">
                 <StackPanel Orientation="Vertical" />
             </Border>
         </Popup>

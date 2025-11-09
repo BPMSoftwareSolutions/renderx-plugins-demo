@@ -58,21 +58,21 @@
     <LinearGradientBrush x:Key="GradientPrimaryToSecondary"
                          StartPoint="0%,0%"
                          EndPoint="100%,100%">
-        <GradientStop Color="#007ACC" Offset="0" />
+        <GradientStop Color="{DynamicResource Color.Accent.Primary}" Offset="0" />
         <GradientStop Color="#0098FF" Offset="1" />
     </LinearGradientBrush>
     
     <LinearGradientBrush x:Key="GradientSuccessToGreen"
                          StartPoint="0%,0%"
                          EndPoint="100%,100%">
-        <GradientStop Color="#10B981" Offset="0" />
+        <GradientStop Color="{DynamicResource Color.Success}" Offset="0" />
         <GradientStop Color="#34D399" Offset="1" />
     </LinearGradientBrush>
     
     <LinearGradientBrush x:Key="GradientErrorToRed"
                          StartPoint="0%,0%"
                          EndPoint="100%,100%">
-        <GradientStop Color="#EF5350" Offset="0" />
+        <GradientStop Color="{DynamicResource Color.Error}" Offset="0" />
         <GradientStop Color="#EF9A9A" Offset="1" />
     </LinearGradientBrush>
     
@@ -88,7 +88,7 @@
                          Center="0.5,0.5"
                          Radius="0.5">
         <GradientStop Color="#0098FF" Offset="0" />
-        <GradientStop Color="#007ACC" Offset="1" />
+        <GradientStop Color="{DynamicResource Color.Accent.Primary}" Offset="1" />
     </RadialGradientBrush>
     
     <!-- Hover Effects -->

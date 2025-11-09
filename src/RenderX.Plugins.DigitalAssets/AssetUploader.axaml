@@ -1,21 +1,21 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.DigitalAssets.AssetUploader"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Border BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="24">
         <StackPanel Spacing="16">
             <TextBlock Text="Upload Assets"
                        FontSize="14"
                        FontWeight="Bold"
-                       Foreground="#333" />
+                       Foreground="{DynamicResource Color.Border.Primary}" />
             
             <!-- Drop Zone -->
-            <Border Background="#F9F9F9"
+            <Border Background="{DynamicResource Color.Background.Secondary}"
                     BorderThickness="2"
-                    BorderBrush="#D0D0D0"
+                    BorderBrush="{DynamicResource Color.Border.Secondary}"
                     CornerRadius="4"
                     Padding="32"
                     x:Name="DropZone">
@@ -25,7 +25,7 @@
                                HorizontalAlignment="Center" />
                     <TextBlock Text="Drag and drop files here"
                                FontSize="12"
-                               Foreground="#333"
+                               Foreground="{DynamicResource Color.Border.Primary}"
                                HorizontalAlignment="Center" />
                     <TextBlock Text="or"
                                FontSize="11"
@@ -33,8 +33,8 @@
                                HorizontalAlignment="Center" />
                     <Button Content="Browse Files"
                             Padding="12,6"
-                            Background="#007ACC"
-                            Foreground="White"
+                            Background="{DynamicResource Color.Accent.Primary}"
+                            Foreground="{DynamicResource Color.Background.Primary}"
                             FontSize="11"
                             HorizontalAlignment="Center" />
                 </StackPanel>
@@ -61,13 +61,13 @@
             <StackPanel x:Name="ProgressPanel" Spacing="8" IsVisible="False">
                 <TextBlock Text="Uploading..."
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <ProgressBar x:Name="UploadProgress"
                              Value="0"
                              Maximum="100"
                              Height="4"
-                             Background="#E0E0E0"
-                             Foreground="#007ACC" />
+                             Background="{DynamicResource Color.Border.Primary}"
+                             Foreground="{DynamicResource Color.Accent.Primary}" />
                 <TextBlock x:Name="ProgressText"
                            Text="0%"
                            FontSize="10"

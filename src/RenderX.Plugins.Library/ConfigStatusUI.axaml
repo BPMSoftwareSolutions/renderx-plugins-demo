@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.ConfigStatusUI"
              Background="Transparent">
-    <Border Background="#F9F9F9"
+    <Border Background="{DynamicResource Color.Background.Secondary}"
             BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="8">
@@ -17,7 +17,7 @@
                            Text="Ready"
                            FontSize="12"
                            FontWeight="Bold"
-                           Foreground="#333"
+                           Foreground="{DynamicResource Color.Border.Primary}"
                            VerticalAlignment="Center" />
             </StackPanel>
             <TextBlock x:Name="DetailText"

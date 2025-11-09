@@ -9,14 +9,14 @@
                    Text="Field Label"
                    FontSize="12"
                    FontWeight="Bold"
-                   Foreground="#333"
+                   Foreground="{DynamicResource Color.Border.Primary}"
                    Margin="0,0,0,4" />
         
         <!-- Input Container -->
         <Border Grid.Row="1"
-                Background="White"
+                Background="{DynamicResource Color.Background.Primary}"
                 BorderThickness="1"
-                BorderBrush="#D0D0D0"
+                BorderBrush="{DynamicResource Color.Border.Secondary}"
                 CornerRadius="4"
                 Padding="8,4">
             <TextBox x:Name="InputControl"
@@ -32,7 +32,7 @@
                    x:Name="ErrorMessage"
                    Text=""
                    FontSize="10"
-                   Foreground="#D32F2F"
+                   Foreground="{DynamicResource Color.Error}"
                    Margin="0,4,0,0"
                    IsVisible="False"
                    TextWrapping="Wrap" />

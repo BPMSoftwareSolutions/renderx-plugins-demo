@@ -8,20 +8,20 @@
                     Content="Save"
                     Click="OnSaveClick"
                     Padding="12,6"
-                    Background="#007ACC"
-                    Foreground="White" />
+                    Background="{DynamicResource Color.Accent.Primary}"
+                    Foreground="{DynamicResource Color.Background.Primary}" />
             <Button x:Name="ExportButton"
                     Content="Export"
                     Click="OnExportClick"
                     Padding="12,6"
                     Background="#6C757D"
-                    Foreground="White" />
+                    Foreground="{DynamicResource Color.Background.Primary}" />
             <Button x:Name="ImportButton"
                     Content="Import"
                     Click="OnImportClick"
                     Padding="12,6"
                     Background="#6C757D"
-                    Foreground="White" />
+                    Foreground="{DynamicResource Color.Background.Primary}" />
         </StackPanel>
     </Border>
 </UserControl>

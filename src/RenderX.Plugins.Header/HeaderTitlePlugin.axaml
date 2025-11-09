@@ -6,7 +6,7 @@
         <TextBlock x:Name="TitleText"
                    FontSize="16"
                    FontWeight="Bold"
-                   Foreground="#333333"
+                   Foreground="{DynamicResource Color.Text.Primary}"
                    VerticalAlignment="Center" />
     </Border>
 </UserControl>

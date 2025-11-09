@@ -1,24 +1,24 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Shell.Avalonia.Components.EffectsShowcase"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <ScrollViewer>
         <Border Padding="24">
             <StackPanel Spacing="24">
                 <!-- Shadows -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Shadows" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Shadows" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto">
-                        <Border Grid.Column="0" Grid.Row="0" Background="White" Height="100" CornerRadius="4" 
-                                BorderBrush="#E0E0E0" BorderThickness="1" Padding="16">
+                        <Border Grid.Column="0" Grid.Row="0" Background="{DynamicResource Color.Background.Primary}" Height="100" CornerRadius="4" 
+                                BorderBrush="{DynamicResource Color.Border.Primary}" BorderThickness="1" Padding="16">
                             <TextBlock Text="Subtle" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Border>
-                        <Border Grid.Column="1" Grid.Row="0" Background="White" Height="100" CornerRadius="4" 
-                                BorderBrush="#D0D0D0" BorderThickness="1" Padding="16">
+                        <Border Grid.Column="1" Grid.Row="0" Background="{DynamicResource Color.Background.Primary}" Height="100" CornerRadius="4" 
+                                BorderBrush="{DynamicResource Color.Border.Secondary}" BorderThickness="1" Padding="16">
                             <TextBlock Text="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Border>
-                        <Border Grid.Column="2" Grid.Row="0" Background="White" Height="100" CornerRadius="4" 
-                                BorderBrush="#B0B0B0" BorderThickness="2" Padding="16">
+                        <Border Grid.Column="2" Grid.Row="0" Background="{DynamicResource Color.Background.Primary}" Height="100" CornerRadius="4" 
+                                BorderBrush="{DynamicResource Color.Border.Strong}" BorderThickness="2" Padding="16">
                             <TextBlock Text="Strong" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Border>
                     </Grid>
@@ -26,27 +26,27 @@
                 
                 <!-- Gradients -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Gradients" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Gradients" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
                         <Border Grid.Column="0" Grid.Row="0" Height="100" CornerRadius="4" 
-                                Background="#007ACC" Padding="16">
-                            <TextBlock Text="Linear" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                Background="{DynamicResource Color.Accent.Primary}" Padding="16">
+                            <TextBlock Text="Linear" Foreground="{DynamicResource Color.Background.Primary}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="0" Height="100" CornerRadius="4" 
                                 Background="#0098FF" Padding="16">
-                            <TextBlock Text="Radial" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <TextBlock Text="Radial" Foreground="{DynamicResource Color.Background.Primary}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Border>
                     </Grid>
                 </StackPanel>
                 
                 <!-- Opacity -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Opacity Levels" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Opacity Levels" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,Auto">
-                        <Border Grid.Column="0" Grid.Row="0" Background="#007ACC" Height="80" CornerRadius="4" Opacity="1.0" />
-                        <Border Grid.Column="1" Grid.Row="0" Background="#007ACC" Height="80" CornerRadius="4" Opacity="0.75" />
-                        <Border Grid.Column="2" Grid.Row="0" Background="#007ACC" Height="80" CornerRadius="4" Opacity="0.5" />
-                        <Border Grid.Column="3" Grid.Row="0" Background="#007ACC" Height="80" CornerRadius="4" Opacity="0.25" />
+                        <Border Grid.Column="0" Grid.Row="0" Background="{DynamicResource Color.Accent.Primary}" Height="80" CornerRadius="4" Opacity="1.0" />
+                        <Border Grid.Column="1" Grid.Row="0" Background="{DynamicResource Color.Accent.Primary}" Height="80" CornerRadius="4" Opacity="0.75" />
+                        <Border Grid.Column="2" Grid.Row="0" Background="{DynamicResource Color.Accent.Primary}" Height="80" CornerRadius="4" Opacity="0.5" />
+                        <Border Grid.Column="3" Grid.Row="0" Background="{DynamicResource Color.Accent.Primary}" Height="80" CornerRadius="4" Opacity="0.25" />
                     </Grid>
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <TextBlock Text="100%" FontSize="11" Foreground="#666" />

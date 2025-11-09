@@ -1,16 +1,16 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.CustomComponentUpload"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Border BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="12">
             <TextBlock Text="Upload Custom Component"
                        FontSize="14"
                        FontWeight="Bold"
-                       Foreground="#333" />
+                       Foreground="{DynamicResource Color.Border.Primary}" />
 
             <!-- File Input -->
             <StackPanel Spacing="4">
@@ -21,8 +21,8 @@
                 <Button x:Name="BrowseButton"
                         Content="Browse Files..."
                         Padding="12,6"
-                        Background="#E0E0E0"
-                        Foreground="#333"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Border.Primary}"
                         FontSize="11"
                         Click="OnBrowseClick" />
                 <TextBlock x:Name="FileNameText"
@@ -42,7 +42,7 @@
                          FontSize="11"
                          Padding="6,4"
                          BorderThickness="1"
-                         BorderBrush="#D0D0D0" />
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
             </StackPanel>
 
             <!-- Description -->
@@ -56,7 +56,7 @@
                          FontSize="11"
                          Padding="6,4"
                          BorderThickness="1"
-                         BorderBrush="#D0D0D0"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}"
                          AcceptsReturn="True"
                          Height="80" />
             </StackPanel>
@@ -64,8 +64,8 @@
             <!-- Upload Button -->
             <Button Content="Upload Component"
                     Padding="12,6"
-                    Background="#4CAF50"
-                    Foreground="White"
+                    Background="{DynamicResource Color.Success}"
+                    Foreground="{DynamicResource Color.Background.Primary}"
                     FontSize="11"
                     Click="OnUploadClick" />
         </StackPanel>

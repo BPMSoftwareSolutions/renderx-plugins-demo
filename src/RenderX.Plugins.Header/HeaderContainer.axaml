@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Header.HeaderContainer"
              Background="Transparent">
-    <Border Background="#1e1e1e" BorderBrush="#333" BorderThickness="0,0,0,1" Padding="0">
+    <Border Background="{DynamicResource Color.Background.Primary}" BorderBrush="{DynamicResource Color.Border.Primary}" BorderThickness="0,0,0,1" Padding="0">
         <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="Auto" Height="60">
             <!-- Left slot -->
             <ContentPresenter x:Name="LeftSlot" Grid.Column="0" VerticalAlignment="Center" Margin="16,0,0,0" />

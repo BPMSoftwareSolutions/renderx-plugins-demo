@@ -1,7 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:fluent="clr-namespace:Avalonia.Themes.Fluent;assembly=Avalonia.Themes.Fluent"
-             x:Class="RenderX.Shell.Avalonia.App">
+             x:Class="RenderX.Shell.Avalonia.App"
+             RequestedThemeVariant="Dark">
   <Application.Styles>
     <fluent:FluentTheme/>
     <!-- Design Tokens - Single source of truth for all colors, typography, spacing -->

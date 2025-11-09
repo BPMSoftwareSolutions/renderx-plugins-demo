@@ -1,7 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.LibraryPlugin"
-             Background="#F5F5F5">
+             Background="{DynamicResource Color.Background.Tertiary}">
     <DockPanel>
         <!-- Header -->
         <TextBlock DockPanel.Dock="Top" 
@@ -9,8 +9,8 @@
                    FontSize="14" 
                    FontWeight="Bold"
                    Padding="12,8"
-                   Background="#E8E8E8"
-                   Foreground="#333333" />
+                   Background="{DynamicResource Color.Background.Hover}"
+                   Foreground="{DynamicResource Color.Text.Primary}" />
         
         <!-- Components List -->
         <ScrollViewer DockPanel.Dock="Top">
@@ -18,8 +18,8 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border x:Name="ComponentBorder"
-                                Background="White"
-                                BorderBrush="#CCCCCC"
+                                Background="{DynamicResource Color.Background.Primary}"
+                                BorderBrush="{DynamicResource Color.Border.Secondary}"
                                 BorderThickness="1"
                                 CornerRadius="4"
                                 Padding="12"
@@ -30,13 +30,13 @@
                             <StackPanel Spacing="4">
                                 <TextBlock Text="{Binding Name}" 
                                            FontWeight="Bold" 
-                                           Foreground="#333333" />
+                                           Foreground="{DynamicResource Color.Text.Primary}" />
                                 <TextBlock Text="{Binding Category}" 
                                            FontSize="11" 
-                                           Foreground="#666666" />
+                                           Foreground="{DynamicResource Color.Text.Secondary}" />
                                 <TextBlock Text="{Binding Description}" 
                                            FontSize="10" 
-                                           Foreground="#999999"
+                                           Foreground="{DynamicResource Color.Text.Tertiary}"
                                            TextWrapping="Wrap" />
                             </StackPanel>
                         </Border>

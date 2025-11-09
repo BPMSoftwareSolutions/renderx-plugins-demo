@@ -1,9 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Diagnostics.PluginDetail"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Border BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="12">
@@ -17,7 +17,7 @@
                            Text="Unknown"
                            FontSize="12"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Status -->
@@ -33,7 +33,7 @@
                     <TextBlock x:Name="StatusText"
                                Text="Loaded"
                                FontSize="11"
-                               Foreground="#333" />
+                               Foreground="{DynamicResource Color.Border.Primary}" />
                 </StackPanel>
             </StackPanel>
 
@@ -46,7 +46,7 @@
                 <TextBlock x:Name="VersionText"
                            Text="1.0.0"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Load Time -->
@@ -58,14 +58,14 @@
                 <TextBlock x:Name="LoadTimeText"
                            Text="0ms"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Error Message (if any) -->
             <Border x:Name="ErrorBorder"
                     Background="#FFEBEE"
                     BorderThickness="1"
-                    BorderBrush="#EF5350"
+                    BorderBrush="{DynamicResource Color.Error}"
                     CornerRadius="4"
                     Padding="8"
                     IsVisible="False">
@@ -73,11 +73,11 @@
                     <TextBlock Text="Error"
                                FontSize="10"
                                FontWeight="Bold"
-                               Foreground="#C62828" />
+                               Foreground="{DynamicResource Color.Error}" />
                     <TextBlock x:Name="ErrorText"
                                Text="Error message"
                                FontSize="10"
-                               Foreground="#D32F2F"
+                               Foreground="{DynamicResource Color.Error}"
                                TextWrapping="Wrap" />
                 </StackPanel>
             </Border>

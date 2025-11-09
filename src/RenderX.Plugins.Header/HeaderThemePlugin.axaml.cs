@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Styling;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
 using RenderX.HostSDK.Avalonia.Logging;
@@ -18,7 +19,7 @@ public partial class HeaderThemePlugin : UserControl
     private IEventRouter? _eventRouter;
     private MusicalConductor.Avalonia.Interfaces.IConductorClient? _conductor;
     private ILogger<HeaderThemePlugin>? _logger;
-    private bool _isDarkMode = false;
+    private bool _isDarkMode = true; // Default to dark mode
 
     public HeaderThemePlugin()
     {
@@ -54,6 +55,13 @@ public partial class HeaderThemePlugin : UserControl
         _isDarkMode = !_isDarkMode;
         var newTheme = _isDarkMode ? "dark" : "light";
         _logger?.LogInformation("🎨 Theme toggle clicked: {Theme}", newTheme);
+        
+        // Actually change the application theme
+        if (Application.Current != null)
+        {
+            Application.Current.RequestedThemeVariant = _isDarkMode ? ThemeVariant.Dark : ThemeVariant.Light;
+            _logger?.LogInformation("✅ Application theme changed to: {Theme}", newTheme);
+        }
         
         UpdateThemeButtonText();
 

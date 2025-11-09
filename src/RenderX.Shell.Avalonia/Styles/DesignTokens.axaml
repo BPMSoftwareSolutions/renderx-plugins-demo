@@ -5,61 +5,109 @@
     <!-- RENDERX DESIGN TOKENS - COMPLETE SYSTEM -->
     <!-- ============================================ -->
     <!-- This is the single source of truth for all colors, typography, spacing, and effects -->
-    <!-- Used by both light and dark themes -->
+    <!-- Supports both Light and Dark themes via ThemeVariant-aware resources -->
+    
+    <!-- ============================================ -->
+    <!-- LIGHT THEME COLORS -->
+    <!-- ============================================ -->
+    <Style Selector=":is(Application)">
+        <Style.Resources>
+            <!-- Backgrounds -->
+            <SolidColorBrush x:Key="Color.Background.Primary" Color="#ffffff"/>
+            <SolidColorBrush x:Key="Color.Background.Secondary" Color="#f9fafb"/>
+            <SolidColorBrush x:Key="Color.Background.Tertiary" Color="#f3f4f6"/>
+            <SolidColorBrush x:Key="Color.Background.Hover" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="Color.Background.Active" Color="#d1d5db"/>
+            
+            <!-- Text -->
+            <SolidColorBrush x:Key="Color.Text.Primary" Color="#1f2937"/>
+            <SolidColorBrush x:Key="Color.Text.Secondary" Color="#6b7280"/>
+            <SolidColorBrush x:Key="Color.Text.Tertiary" Color="#9ca3af"/>
+            <SolidColorBrush x:Key="Color.Text.Muted" Color="#d1d5db"/>
+            <SolidColorBrush x:Key="Color.Text.Inverse" Color="#ffffff"/>
+            
+            <!-- Borders -->
+            <SolidColorBrush x:Key="Color.Border.Primary" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="Color.Border.Secondary" Color="#d1d5db"/>
+            <SolidColorBrush x:Key="Color.Border.Strong" Color="#9ca3af"/>
+            
+            <!-- Accents -->
+            <SolidColorBrush x:Key="Color.Accent.Primary" Color="#3b82f6"/>
+            <SolidColorBrush x:Key="Color.Accent.Dark" Color="#2563eb"/>
+            <SolidColorBrush x:Key="Color.Accent.Darker" Color="#1d4ed8"/>
+            <SolidColorBrush x:Key="Color.Accent.Light" Color="#dbeafe"/>
+            <SolidColorBrush x:Key="Color.Accent.Weak" Color="#eff6ff"/>
+            
+            <!-- Status Colors (same for both themes) -->
+            <SolidColorBrush x:Key="Color.Success" Color="#10b981"/>
+            <SolidColorBrush x:Key="Color.Success.Light" Color="#d1fae5"/>
+            <SolidColorBrush x:Key="Color.Warning" Color="#f59e0b"/>
+            <SolidColorBrush x:Key="Color.Warning.Light" Color="#fef3c7"/>
+            <SolidColorBrush x:Key="Color.Error" Color="#ef4444"/>
+            <SolidColorBrush x:Key="Color.Error.Light" Color="#fee2e2"/>
+            <SolidColorBrush x:Key="Color.Info" Color="#0ea5e9"/>
+            <SolidColorBrush x:Key="Color.Info.Light" Color="#cffafe"/>
+            
+            <!-- Component Specific - Light Theme -->
+            <SolidColorBrush x:Key="Color.Canvas.Background" Color="#f9fafb"/>
+            <SolidColorBrush x:Key="Color.Canvas.Grid" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="Color.Canvas.Component" Color="#ffffff"/>
+            <SolidColorBrush x:Key="Color.Canvas.ComponentBorder" Color="#3b82f6"/>
+            <SolidColorBrush x:Key="Color.Canvas.ComponentHover" Color="#eff6ff"/>
+            
+            <SolidColorBrush x:Key="Color.Panel.Background" Color="#ffffff"/>
+            <SolidColorBrush x:Key="Color.Panel.Border" Color="#e5e7eb"/>
+            <SolidColorBrush x:Key="Color.Panel.Header" Color="#f9fafb"/>
+            <SolidColorBrush x:Key="Color.Panel.HeaderBorder" Color="#e5e7eb"/>
+        </Style.Resources>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- DARK THEME COLORS - Overrides for Dark Mode -->
+    <!-- ============================================ -->
+    <Style Selector=":is(Application)[RequestedThemeVariant=Dark]">
+        <Style.Resources>
+            <!-- Backgrounds - Dark Theme -->
+            <SolidColorBrush x:Key="Color.Background.Primary" Color="#1f2937"/>
+            <SolidColorBrush x:Key="Color.Background.Secondary" Color="#111827"/>
+            <SolidColorBrush x:Key="Color.Background.Tertiary" Color="#0f172a"/>
+            <SolidColorBrush x:Key="Color.Background.Hover" Color="#374151"/>
+            <SolidColorBrush x:Key="Color.Background.Active" Color="#4b5563"/>
+            
+            <!-- Text - Dark Theme -->
+            <SolidColorBrush x:Key="Color.Text.Primary" Color="#f8fafc"/>
+            <SolidColorBrush x:Key="Color.Text.Secondary" Color="#e2e8f0"/>
+            <SolidColorBrush x:Key="Color.Text.Tertiary" Color="#cbd5e1"/>
+            <SolidColorBrush x:Key="Color.Text.Muted" Color="#94a3b8"/>
+            <SolidColorBrush x:Key="Color.Text.Inverse" Color="#1f2937"/>
+            
+            <!-- Borders - Dark Theme -->
+            <SolidColorBrush x:Key="Color.Border.Primary" Color="#374151"/>
+            <SolidColorBrush x:Key="Color.Border.Secondary" Color="#4b5563"/>
+            <SolidColorBrush x:Key="Color.Border.Strong" Color="#6b7280"/>
+            
+            <!-- Accents - Brighter for dark backgrounds -->
+            <SolidColorBrush x:Key="Color.Accent.Primary" Color="#60a5fa"/>
+            <SolidColorBrush x:Key="Color.Accent.Dark" Color="#3b82f6"/>
+            <SolidColorBrush x:Key="Color.Accent.Darker" Color="#2563eb"/>
+            <SolidColorBrush x:Key="Color.Accent.Light" Color="#1e3a8a"/>
+            <SolidColorBrush x:Key="Color.Accent.Weak" Color="#1e293b"/>
+            
+            <!-- Component Specific - Dark Theme -->
+            <SolidColorBrush x:Key="Color.Canvas.Background" Color="#0f172a"/>
+            <SolidColorBrush x:Key="Color.Canvas.Grid" Color="#1e293b"/>
+            <SolidColorBrush x:Key="Color.Canvas.Component" Color="#1f2937"/>
+            <SolidColorBrush x:Key="Color.Canvas.ComponentBorder" Color="#60a5fa"/>
+            <SolidColorBrush x:Key="Color.Canvas.ComponentHover" Color="#1e3a8a"/>
+            
+            <SolidColorBrush x:Key="Color.Panel.Background" Color="#1f2937"/>
+            <SolidColorBrush x:Key="Color.Panel.Border" Color="#374151"/>
+            <SolidColorBrush x:Key="Color.Panel.Header" Color="#111827"/>
+            <SolidColorBrush x:Key="Color.Panel.HeaderBorder" Color="#374151"/>
+        </Style.Resources>
+    </Style>
     
     <Styles.Resources>
-        
-        <!-- ============================================ -->
-        <!-- SEMANTIC COLORS - LIGHT THEME -->
-        <!-- ============================================ -->
-        
-        <!-- Backgrounds -->
-        <SolidColorBrush x:Key="Color.Background.Primary" Color="#ffffff"/>
-        <SolidColorBrush x:Key="Color.Background.Secondary" Color="#f9fafb"/>
-        <SolidColorBrush x:Key="Color.Background.Tertiary" Color="#f3f4f6"/>
-        <SolidColorBrush x:Key="Color.Background.Hover" Color="#e5e7eb"/>
-        <SolidColorBrush x:Key="Color.Background.Active" Color="#d1d5db"/>
-        
-        <!-- Text -->
-        <SolidColorBrush x:Key="Color.Text.Primary" Color="#1f2937"/>
-        <SolidColorBrush x:Key="Color.Text.Secondary" Color="#6b7280"/>
-        <SolidColorBrush x:Key="Color.Text.Tertiary" Color="#9ca3af"/>
-        <SolidColorBrush x:Key="Color.Text.Muted" Color="#d1d5db"/>
-        <SolidColorBrush x:Key="Color.Text.Inverse" Color="#ffffff"/>
-        
-        <!-- Borders -->
-        <SolidColorBrush x:Key="Color.Border.Primary" Color="#e5e7eb"/>
-        <SolidColorBrush x:Key="Color.Border.Secondary" Color="#d1d5db"/>
-        <SolidColorBrush x:Key="Color.Border.Strong" Color="#9ca3af"/>
-        
-        <!-- Accents -->
-        <SolidColorBrush x:Key="Color.Accent.Primary" Color="#3b82f6"/>
-        <SolidColorBrush x:Key="Color.Accent.Dark" Color="#2563eb"/>
-        <SolidColorBrush x:Key="Color.Accent.Darker" Color="#1d4ed8"/>
-        <SolidColorBrush x:Key="Color.Accent.Light" Color="#dbeafe"/>
-        <SolidColorBrush x:Key="Color.Accent.Weak" Color="#eff6ff"/>
-        
-        <!-- Status Colors -->
-        <SolidColorBrush x:Key="Color.Success" Color="#10b981"/>
-        <SolidColorBrush x:Key="Color.Success.Light" Color="#d1fae5"/>
-        <SolidColorBrush x:Key="Color.Warning" Color="#f59e0b"/>
-        <SolidColorBrush x:Key="Color.Warning.Light" Color="#fef3c7"/>
-        <SolidColorBrush x:Key="Color.Error" Color="#ef4444"/>
-        <SolidColorBrush x:Key="Color.Error.Light" Color="#fee2e2"/>
-        <SolidColorBrush x:Key="Color.Info" Color="#0ea5e9"/>
-        <SolidColorBrush x:Key="Color.Info.Light" Color="#cffafe"/>
-        
-        <!-- Component Specific -->
-        <SolidColorBrush x:Key="Color.Canvas.Background" Color="#f9fafb"/>
-        <SolidColorBrush x:Key="Color.Canvas.Grid" Color="#e5e7eb"/>
-        <SolidColorBrush x:Key="Color.Canvas.Component" Color="#ffffff"/>
-        <SolidColorBrush x:Key="Color.Canvas.ComponentBorder" Color="#3b82f6"/>
-        <SolidColorBrush x:Key="Color.Canvas.ComponentHover" Color="#eff6ff"/>
-        
-        <SolidColorBrush x:Key="Color.Panel.Background" Color="#ffffff"/>
-        <SolidColorBrush x:Key="Color.Panel.Border" Color="#e5e7eb"/>
-        <SolidColorBrush x:Key="Color.Panel.Header" Color="#f9fafb"/>
-        <SolidColorBrush x:Key="Color.Panel.HeaderBorder" Color="#e5e7eb"/>
         
         <!-- ============================================ -->
         <!-- TYPOGRAPHY TOKENS -->

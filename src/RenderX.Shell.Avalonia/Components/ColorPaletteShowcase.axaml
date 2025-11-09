@@ -1,15 +1,15 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Shell.Avalonia.Components.ColorPaletteShowcase"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <ScrollViewer>
         <Border Padding="24">
             <StackPanel Spacing="24">
                 <!-- Primary Colors -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Primary Colors" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Primary Colors" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*,*">
-                        <Border Grid.Column="0" Background="#007ACC" Height="80" CornerRadius="4" />
+                        <Border Grid.Column="0" Background="{DynamicResource Color.Accent.Primary}" Height="80" CornerRadius="4" />
                         <Border Grid.Column="1" Background="#0098FF" Height="80" CornerRadius="4" />
                         <Border Grid.Column="2" Background="#005A9E" Height="80" CornerRadius="4" />
                     </Grid>
@@ -22,11 +22,11 @@
                 
                 <!-- Status Colors -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Status Colors" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Status Colors" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*,*,*">
-                        <Border Grid.Column="0" Background="#10B981" Height="80" CornerRadius="4" />
+                        <Border Grid.Column="0" Background="{DynamicResource Color.Success}" Height="80" CornerRadius="4" />
                         <Border Grid.Column="1" Background="#FFA726" Height="80" CornerRadius="4" />
-                        <Border Grid.Column="2" Background="#EF5350" Height="80" CornerRadius="4" />
+                        <Border Grid.Column="2" Background="{DynamicResource Color.Error}" Height="80" CornerRadius="4" />
                         <Border Grid.Column="3" Background="#2196F3" Height="80" CornerRadius="4" />
                     </Grid>
                     <StackPanel Orientation="Horizontal" Spacing="12">
@@ -39,12 +39,12 @@
                 
                 <!-- Neutral Colors -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Neutral Colors" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Neutral Colors" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*,*,*,*">
-                        <Border Grid.Column="0" Background="#F9FAFB" Height="80" CornerRadius="4" BorderBrush="#E0E0E0" BorderThickness="1" />
+                        <Border Grid.Column="0" Background="#F9FAFB" Height="80" CornerRadius="4" BorderBrush="{DynamicResource Color.Border.Primary}" BorderThickness="1" />
                         <Border Grid.Column="1" Background="#F3F4F6" Height="80" CornerRadius="4" />
                         <Border Grid.Column="2" Background="#D1D5DB" Height="80" CornerRadius="4" />
-                        <Border Grid.Column="3" Background="#6B7280" Height="80" CornerRadius="4" />
+                        <Border Grid.Column="3" Background="{DynamicResource Color.Text.Secondary}" Height="80" CornerRadius="4" />
                         <Border Grid.Column="4" Background="#1F2937" Height="80" CornerRadius="4" />
                     </Grid>
                     <StackPanel Orientation="Horizontal" Spacing="12">
@@ -58,7 +58,7 @@
                 
                 <!-- Accent Colors -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Accent Colors" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Accent Colors" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Grid ColumnDefinitions="*,*,*,*">
                         <Border Grid.Column="0" Background="#9C27B0" Height="80" CornerRadius="4" />
                         <Border Grid.Column="1" Background="#E91E63" Height="80" CornerRadius="4" />

@@ -1,13 +1,13 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.ChatWindow"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Grid RowDefinitions="*,Auto">
         <!-- Messages Area -->
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="MessagesItemsControl"
                           Padding="12"
-                          Background="White">
+                          Background="{DynamicResource Color.Background.Primary}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Background="Transparent" Margin="0,8">
@@ -15,10 +15,10 @@
                                 <TextBlock Text="{Binding Author}"
                                            FontSize="11"
                                            FontWeight="Bold"
-                                           Foreground="#333" />
-                                <Border Background="#F5F5F5"
+                                           Foreground="{DynamicResource Color.Border.Primary}" />
+                                <Border Background="{DynamicResource Color.Background.Tertiary}"
                                         BorderThickness="1"
-                                        BorderBrush="#E0E0E0"
+                                        BorderBrush="{DynamicResource Color.Border.Primary}"
                                         CornerRadius="4"
                                         Padding="8">
                                     <TextBlock Text="{Binding Content}"
@@ -35,9 +35,9 @@
 
         <!-- Input Area -->
         <Border Grid.Row="1"
-                Background="White"
+                Background="{DynamicResource Color.Background.Primary}"
                 BorderThickness="0,1,0,0"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <Grid ColumnDefinitions="*,Auto">
                 <TextBox Grid.Column="0"
@@ -46,14 +46,14 @@
                          FontSize="11"
                          Padding="6,4"
                          BorderThickness="1"
-                         BorderBrush="#D0D0D0"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}"
                          AcceptsReturn="False" />
                 <Button Grid.Column="1"
                         Content="Send"
                         Margin="8,0,0,0"
                         Padding="12,4"
-                        Background="#007ACC"
-                        Foreground="White"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
                         FontSize="11"
                         Click="OnSendClick" />
             </Grid>

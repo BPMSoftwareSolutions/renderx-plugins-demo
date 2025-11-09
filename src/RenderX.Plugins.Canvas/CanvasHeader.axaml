@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Canvas.CanvasHeader"
              Background="Transparent">
-    <Border Background="#F5F5F5"
+    <Border Background="{DynamicResource Color.Background.Tertiary}"
             BorderThickness="0,0,0,1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             Padding="12">
         <Grid ColumnDefinitions="*,Auto,Auto">
             <!-- Title and Info -->
@@ -26,8 +26,8 @@
                 <Button x:Name="ZoomOutButton"
                         Content="−"
                         Padding="8,4"
-                        Background="#E0E0E0"
-                        Foreground="#333"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Border.Primary}"
                         FontSize="12"
                         Click="OnZoomOutClick" />
                 <TextBlock x:Name="ZoomLevelText"
@@ -39,8 +39,8 @@
                 <Button x:Name="ZoomInButton"
                         Content="+"
                         Padding="8,4"
-                        Background="#E0E0E0"
-                        Foreground="#333"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Border.Primary}"
                         FontSize="12"
                         Click="OnZoomInClick" />
             </StackPanel>
@@ -50,16 +50,16 @@
                 <Button x:Name="GridToggleButton"
                         Content="⊞"
                         Padding="8,4"
-                        Background="#E0E0E0"
-                        Foreground="#333"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Border.Primary}"
                         FontSize="12"
                         ToolTip.Tip="Toggle Grid"
                         Click="OnGridToggleClick" />
                 <Button x:Name="FitToViewButton"
                         Content="⊡"
                         Padding="8,4"
-                        Background="#E0E0E0"
-                        Foreground="#333"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Border.Primary}"
                         FontSize="12"
                         ToolTip.Tip="Fit to View"
                         Click="OnFitToViewClick" />
