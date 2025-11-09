@@ -64,7 +64,7 @@ public partial class HeaderThemePlugin : UserControl
             try
             {
                 _logger?.LogInformation("🎼 Executing header-ui-theme-toggle-symphony sequence");
-                var result = await _conductor.Play("HeaderPlugin", "header-ui-theme-toggle-symphony", new { theme = newTheme });
+                var result = _conductor.Play("HeaderPlugin", "header-ui-theme-toggle-symphony", new { theme = newTheme });
                 _logger?.LogInformation("✅ Theme toggle sequence completed: {Result}", result);
             }
             catch (Exception ex)
