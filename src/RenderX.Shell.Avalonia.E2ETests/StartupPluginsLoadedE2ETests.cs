@@ -24,15 +24,15 @@ public class StartupPluginsLoadedE2ETests : IAsyncLifetime
 
     public async Task InitializeAsync()
     {
-        var exe = ResolveAppExePath();
+        var exe = TestHelpers.ResolveAppExePath();
         _app = Application.Launch(exe);
         _automation = new UIA3Automation();
-        
+
         // Wait for main window
         var main = _app.GetMainWindow(_automation, TimeSpan.FromSeconds(60));
         Assert.NotNull(main);
 
-        await WaitForHealthAsync(TimeSpan.FromSeconds(60));
+        await TestHelpers.WaitForHealthAsync(TimeSpan.FromSeconds(60));
     }
 
     public Task DisposeAsync()
@@ -46,7 +46,7 @@ public class StartupPluginsLoadedE2ETests : IAsyncLifetime
     public async Task VerifiesAllManifestPluginIdsArePresentInStartupLogs()
     {
         // Fetch the plugin manifest to know expected plugin IDs
-        var manifest = await GetAsync<PluginManifest>("/plugins/plugin-manifest.json");
+        var manifest = await TestHelpers.GetAsync<PluginManifest>("/plugins/plugin-manifest.json");
         Assert.NotNull(manifest);
         Assert.NotNull(manifest!.Plugins);
         Assert.True(manifest.Plugins.Length > 0, "manifest plugin count should be greater than 0");
@@ -59,7 +59,7 @@ public class StartupPluginsLoadedE2ETests : IAsyncLifetime
         Assert.True(pluginIds.Length > 0, "should have at least one plugin ID");
 
         // Fetch startup logs from telemetry API
-        var logs = await GetAsync<TelemetryEventDto[]>("/api/telemetry/events?limit=1000");
+        var logs = await TestHelpers.GetAsync<TelemetryEventDto[]>("/api/telemetry/events?limit=1000");
         Assert.NotNull(logs);
         Assert.True(logs!.Length > 0, "should have captured startup logs");
 
@@ -86,7 +86,7 @@ public class StartupPluginsLoadedE2ETests : IAsyncLifetime
         Assert.False(resolveErrors, "no unresolved module specifiers detected in startup logs");
 
         // Write artifacts for debugging
-        await WriteArtifactAsync($"startup-plugins-{DateTime.Now:yyyyMMddHHmmss}.json", 
+        await TestHelpers.WriteArtifactAsync($"startup-plugins-{DateTime.Now:yyyyMMddHHmmss}.json",
             new { logs, manifestIds = pluginIds, captureCount = logs.Length });
     }
 
@@ -107,52 +107,6 @@ public class StartupPluginsLoadedE2ETests : IAsyncLifetime
         if (haystack.Contains($"Initialized control") && haystack.Contains(pluginId)) return true;
 
         return false;
-    }
-
-    private static string ResolveAppExePath()
-    {
-        var baseDir = AppContext.BaseDirectory;
-        var root = Path.GetFullPath(Path.Combine(baseDir, "../../../../.."));
-        var debugPath = Path.Combine(root, "src", "RenderX.Shell.Avalonia", "bin", "Debug", "net8.0", "RenderX.Shell.Avalonia.exe");
-        var releasePath = Path.Combine(root, "src", "RenderX.Shell.Avalonia", "bin", "Release", "net8.0", "RenderX.Shell.Avalonia.exe");
-        if (File.Exists(debugPath)) return debugPath;
-        if (File.Exists(releasePath)) return releasePath;
-        throw new FileNotFoundException("RenderX.Shell.Avalonia.exe not found. Build the project first.");
-    }
-
-    private static async Task WaitForHealthAsync(TimeSpan timeout)
-    {
-        var deadline = DateTime.UtcNow + timeout;
-        while (DateTime.UtcNow < deadline)
-        {
-            try
-            {
-                using var client = new HttpClient { BaseAddress = new Uri("http://localhost:5000") };
-                var resp = await client.GetAsync("/api/config/health");
-                if (resp.IsSuccessStatusCode) return;
-            }
-            catch { /* server not up yet */ }
-            await Task.Delay(500);
-        }
-        throw new TimeoutException("Backend health endpoint did not become ready.");
-    }
-
-    private static async Task<T?> GetAsync<T>(string path)
-    {
-        using var client = new HttpClient { BaseAddress = new Uri("http://localhost:5000") };
-        var resp = await client.GetAsync(path);
-        resp.EnsureSuccessStatusCode();
-        var json = await resp.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-    }
-
-    private static async Task WriteArtifactAsync(string fileName, object content)
-    {
-        var logsDir = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", ".logs");
-        Directory.CreateDirectory(logsDir);
-        var filePath = Path.Combine(logsDir, fileName);
-        var json = JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true });
-        await File.WriteAllTextAsync(filePath, json);
     }
 
     public record PluginManifest

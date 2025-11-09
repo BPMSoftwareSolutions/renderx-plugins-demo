@@ -272,5 +272,228 @@ public class PluginStructureValidationTests
         Assert.True(code.Contains("plugin-manifest.json"),
             "PluginLoader should load plugin mappings from plugin-manifest.json");
     }
+
+    [Fact]
+    public void DesktopPlugins_MustHaveJsonSequencesDirectories()
+    {
+        // Desktop plugins must mirror web plugins' json-sequences structure
+        // This is the single source of truth for sequence definitions
+
+        var webToDesktopMapping = new Dictionary<string, string>
+        {
+            { "packages/canvas-component", "src/RenderX.Plugins.Canvas" },
+            { "packages/control-panel", "src/RenderX.Plugins.ControlPanel" },
+            { "packages/header", "src/RenderX.Plugins.Header" },
+            { "packages/library", "src/RenderX.Plugins.Library" },
+            { "packages/library-component", "src/RenderX.Plugins.Library" }
+        };
+
+        var failures = new List<string>();
+
+        foreach (var (webPath, desktopPath) in webToDesktopMapping)
+        {
+            var webSequencesDir = Path.Combine(RepoRoot, webPath, "json-sequences");
+            var desktopSequencesDir = Path.Combine(RepoRoot, desktopPath, "json-sequences");
+
+            // If web plugin has json-sequences, desktop must too
+            if (Directory.Exists(webSequencesDir))
+            {
+                if (!Directory.Exists(desktopSequencesDir))
+                {
+                    failures.Add($"Desktop plugin {desktopPath} is missing json-sequences directory (web has it at {webPath})");
+                }
+            }
+        }
+
+        Assert.True(failures.Count == 0,
+            $"Desktop plugins missing json-sequences directories:\n{string.Join("\n", failures)}");
+    }
+
+    [Fact]
+    public void DesktopPlugins_MustHaveJsonTopicsFiles()
+    {
+        // Desktop plugins must mirror web plugins' json-topics structure
+        // This is the single source of truth for topic definitions
+
+        var webToDesktopMapping = new Dictionary<string, string>
+        {
+            { "packages/canvas-component", "src/RenderX.Plugins.Canvas" },
+            { "packages/control-panel", "src/RenderX.Plugins.ControlPanel" }
+        };
+
+        var failures = new List<string>();
+
+        foreach (var (webPath, desktopPath) in webToDesktopMapping)
+        {
+            var webTopicsDir = Path.Combine(RepoRoot, webPath, "json-topics");
+            var desktopTopicsDir = Path.Combine(RepoRoot, desktopPath, "json-topics");
+
+            // If web plugin has json-topics, desktop must too
+            if (Directory.Exists(webTopicsDir))
+            {
+                if (!Directory.Exists(desktopTopicsDir))
+                {
+                    failures.Add($"Desktop plugin {desktopPath} is missing json-topics directory (web has it at {webPath})");
+                }
+            }
+        }
+
+        Assert.True(failures.Count == 0,
+            $"Desktop plugins missing json-topics directories:\n{string.Join("\n", failures)}");
+    }
+
+    [Fact]
+    public void DesktopPlugins_SequenceFilesMustMatchWebVersion()
+    {
+        // Verify that desktop plugins have the same sequence files as web plugins
+        // This ensures feature parity between web and desktop
+
+        var webToDesktopMapping = new Dictionary<string, string>
+        {
+            { "packages/canvas-component/json-sequences", "src/RenderX.Plugins.Canvas/json-sequences" },
+            { "packages/control-panel/json-sequences", "src/RenderX.Plugins.ControlPanel/json-sequences" },
+            { "packages/header/json-sequences", "src/RenderX.Plugins.Header/json-sequences" },
+            { "packages/library/json-sequences", "src/RenderX.Plugins.Library/json-sequences" }
+        };
+
+        var failures = new List<string>();
+
+        foreach (var (webPath, desktopPath) in webToDesktopMapping)
+        {
+            var webDir = Path.Combine(RepoRoot, webPath);
+            var desktopDir = Path.Combine(RepoRoot, desktopPath);
+
+            if (!Directory.Exists(webDir)) continue;
+            if (!Directory.Exists(desktopDir))
+            {
+                failures.Add($"Desktop directory {desktopPath} does not exist");
+                continue;
+            }
+
+            // Get all JSON files from web version
+            var webFiles = Directory.GetFiles(webDir, "*.json", SearchOption.AllDirectories)
+                .Select(f => Path.GetRelativePath(webDir, f))
+                .OrderBy(f => f)
+                .ToList();
+
+            // Get all JSON files from desktop version
+            var desktopFiles = Directory.GetFiles(desktopDir, "*.json", SearchOption.AllDirectories)
+                .Select(f => Path.GetRelativePath(desktopDir, f))
+                .OrderBy(f => f)
+                .ToList();
+
+            // Check for missing files
+            var missingFiles = webFiles.Except(desktopFiles).ToList();
+            if (missingFiles.Any())
+            {
+                failures.Add($"Desktop {desktopPath} is missing sequence files: {string.Join(", ", missingFiles)}");
+            }
+        }
+
+        Assert.True(failures.Count == 0,
+            $"Desktop plugins missing sequence files:\n{string.Join("\n", failures)}");
+    }
+
+    [Fact]
+    public void DesktopPlugins_TopicFilesMustMatchWebVersion()
+    {
+        // Verify that desktop plugins have the same topic files as web plugins
+
+        var webToDesktopMapping = new Dictionary<string, string>
+        {
+            { "packages/canvas-component/json-topics", "src/RenderX.Plugins.Canvas/json-topics" },
+            { "packages/control-panel/json-topics", "src/RenderX.Plugins.ControlPanel/json-topics" }
+        };
+
+        var failures = new List<string>();
+
+        foreach (var (webPath, desktopPath) in webToDesktopMapping)
+        {
+            var webDir = Path.Combine(RepoRoot, webPath);
+            var desktopDir = Path.Combine(RepoRoot, desktopPath);
+
+            if (!Directory.Exists(webDir)) continue;
+            if (!Directory.Exists(desktopDir))
+            {
+                failures.Add($"Desktop directory {desktopPath} does not exist");
+                continue;
+            }
+
+            // Get all JSON files from web version
+            var webFiles = Directory.GetFiles(webDir, "*.json", SearchOption.AllDirectories)
+                .Select(f => Path.GetRelativePath(webDir, f))
+                .OrderBy(f => f)
+                .ToList();
+
+            // Get all JSON files from desktop version
+            var desktopFiles = Directory.GetFiles(desktopDir, "*.json", SearchOption.AllDirectories)
+                .Select(f => Path.GetRelativePath(desktopDir, f))
+                .OrderBy(f => f)
+                .ToList();
+
+            // Check for missing files
+            var missingFiles = webFiles.Except(desktopFiles).ToList();
+            if (missingFiles.Any())
+            {
+                failures.Add($"Desktop {desktopPath} is missing topic files: {string.Join(", ", missingFiles)}");
+            }
+        }
+
+        Assert.True(failures.Count == 0,
+            $"Desktop plugins missing topic files:\n{string.Join("\n", failures)}");
+    }
+
+    [Fact]
+    public void ComponentsPlugin_MustExistInDesktop()
+    {
+        // The components plugin (json-components) must exist in desktop version
+        // This is the single source of truth for component definitions
+
+        var webComponentsDir = Path.Combine(RepoRoot, "packages", "components", "json-components");
+        var desktopComponentsDir = Path.Combine(RepoRoot, "src", "RenderX.Plugins.Components", "json-components");
+
+        Assert.True(Directory.Exists(webComponentsDir),
+            $"Web components directory not found: {webComponentsDir}");
+
+        Assert.True(Directory.Exists(desktopComponentsDir),
+            $"Desktop components directory not found: {desktopComponentsDir}. " +
+            $"Desktop must have RenderX.Plugins.Components with json-components directory mirroring the web version.");
+    }
+
+    [Fact]
+    public void ComponentsPlugin_FilesMustMatchWebVersion()
+    {
+        // Verify that desktop components plugin has the same JSON files as web version
+
+        var webDir = Path.Combine(RepoRoot, "packages", "components", "json-components");
+        var desktopDir = Path.Combine(RepoRoot, "src", "RenderX.Plugins.Components", "json-components");
+
+        if (!Directory.Exists(webDir))
+        {
+            // Skip if web directory doesn't exist
+            return;
+        }
+
+        Assert.True(Directory.Exists(desktopDir),
+            $"Desktop components directory not found: {desktopDir}");
+
+        // Get all JSON files from web version
+        var webFiles = Directory.GetFiles(webDir, "*.json", SearchOption.AllDirectories)
+            .Select(f => Path.GetRelativePath(webDir, f))
+            .OrderBy(f => f)
+            .ToList();
+
+        // Get all JSON files from desktop version
+        var desktopFiles = Directory.GetFiles(desktopDir, "*.json", SearchOption.AllDirectories)
+            .Select(f => Path.GetRelativePath(desktopDir, f))
+            .OrderBy(f => f)
+            .ToList();
+
+        // Check for missing files
+        var missingFiles = webFiles.Except(desktopFiles).ToList();
+
+        Assert.True(missingFiles.Count == 0,
+            $"Desktop components plugin is missing files: {string.Join(", ", missingFiles)}");
+    }
 }
 
