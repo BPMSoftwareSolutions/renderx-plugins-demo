@@ -32,11 +32,23 @@ public class PluginStructureValidationTests
     }
 
     [Fact]
+    public void DesktopPlugins_MustMatchWebPluginCount()
+    {
+        // Enforce COMPLETE PARITY between web and desktop plugin counts
+        var webPlugins = new[] { "canvas", "canvas-component", "control-panel", "header", "library", "library-component", "components" };
+        var desktopPlugins = new[] { "Canvas", "CanvasComponent", "ControlPanel", "Header", "Library", "LibraryComponent", "Components" };
+
+        Assert.Equal(webPlugins.Length, desktopPlugins.Length);
+        Assert.Equal(7, webPlugins.Length); // Explicit count check
+        Assert.Equal(7, desktopPlugins.Length); // Explicit count check
+    }
+
+    [Fact]
     public void WebPluginsExist()
     {
         Assert.True(Directory.Exists(WebPluginsPath), $"Web plugins directory not found: {WebPluginsPath}");
-        
-        var expectedPlugins = new[] { "header", "canvas", "control-panel", "library" };
+
+        var expectedPlugins = new[] { "header", "canvas", "canvas-component", "control-panel", "library", "library-component", "components" };
         foreach (var plugin in expectedPlugins)
         {
             var pluginPath = Path.Combine(WebPluginsPath, plugin);
@@ -226,6 +238,82 @@ public class PluginStructureValidationTests
     }
 
     [Fact]
+    public void CanvasComponentPlugin_MustExistInDesktop()
+    {
+        var pluginPath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.CanvasComponent");
+        Assert.True(Directory.Exists(pluginPath), "RenderX.Plugins.CanvasComponent project must exist");
+    }
+
+    [Fact]
+    public void CanvasComponentPlugin_FilesMustMatchWebVersion()
+    {
+        var webPath = Path.Combine(RepoRoot, "packages", "canvas-component", "json-sequences");
+        var desktopPath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.CanvasComponent", "json-sequences");
+
+        var webFiles = Directory.GetFiles(webPath, "*.json", SearchOption.AllDirectories).Length;
+        var desktopFiles = Directory.GetFiles(desktopPath, "*.json", SearchOption.AllDirectories).Length;
+
+        Assert.Equal(30, webFiles);
+        Assert.Equal(30, desktopFiles);
+    }
+
+    [Fact]
+    public void CanvasComponentPlugin_TopicFileMustExist()
+    {
+        var topicFile = Path.Combine(RepoRoot, "src", "RenderX.Plugins.CanvasComponent", "json-topics", "canvas-component.json");
+        Assert.True(File.Exists(topicFile), "canvas-component.json topic file must exist");
+    }
+
+    [Fact]
+    public void LibraryComponentPlugin_MustExistInDesktop()
+    {
+        var pluginPath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.LibraryComponent");
+        Assert.True(Directory.Exists(pluginPath), "RenderX.Plugins.LibraryComponent project must exist");
+    }
+
+    [Fact]
+    public void LibraryComponentPlugin_FilesMustMatchWebVersion()
+    {
+        var webPath = Path.Combine(RepoRoot, "packages", "library-component", "json-sequences");
+        var desktopPath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.LibraryComponent", "json-sequences");
+
+        var webFiles = Directory.GetFiles(webPath, "*.json", SearchOption.AllDirectories).Length;
+        var desktopFiles = Directory.GetFiles(desktopPath, "*.json", SearchOption.AllDirectories).Length;
+
+        Assert.Equal(4, webFiles);
+        Assert.Equal(4, desktopFiles);
+    }
+
+    [Fact]
+    public void CanvasPlugin_ShouldHaveZeroSequences()
+    {
+        // Canvas plugin should only be UI shell, no sequences
+        var sequencePath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.Canvas", "json-sequences");
+
+        if (Directory.Exists(sequencePath))
+        {
+            var files = Directory.GetFiles(sequencePath, "*.json", SearchOption.AllDirectories);
+            Assert.Empty(files);
+        }
+    }
+
+    [Fact]
+    public void LibraryPlugin_ShouldHaveOnlyLibrarySequences()
+    {
+        // Library plugin should have 2 sequences (library/ directory only)
+        var sequencePath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.Library", "json-sequences", "library");
+
+        Assert.True(Directory.Exists(sequencePath), "library/ sequence directory must exist");
+
+        var files = Directory.GetFiles(sequencePath, "*.json", SearchOption.AllDirectories);
+        Assert.Equal(2, files.Length);
+
+        // Ensure library-component directory does NOT exist
+        var componentPath = Path.Combine(RepoRoot, "src", "RenderX.Plugins.Library", "json-sequences", "library-component");
+        Assert.False(Directory.Exists(componentPath), "library-component/ should be in separate plugin");
+    }
+
+    [Fact]
     public void PluginManifestDefinesAllPluginMappings()
     {
         // Enforce that plugin manifest is the single source of truth for plugin mappings
@@ -281,11 +369,11 @@ public class PluginStructureValidationTests
 
         var webToDesktopMapping = new Dictionary<string, string>
         {
-            { "packages/canvas-component", "src/RenderX.Plugins.Canvas" },
+            { "packages/canvas-component", "src/RenderX.Plugins.CanvasComponent" },
             { "packages/control-panel", "src/RenderX.Plugins.ControlPanel" },
             { "packages/header", "src/RenderX.Plugins.Header" },
             { "packages/library", "src/RenderX.Plugins.Library" },
-            { "packages/library-component", "src/RenderX.Plugins.Library" }
+            { "packages/library-component", "src/RenderX.Plugins.LibraryComponent" }
         };
 
         var failures = new List<string>();
@@ -317,7 +405,7 @@ public class PluginStructureValidationTests
 
         var webToDesktopMapping = new Dictionary<string, string>
         {
-            { "packages/canvas-component", "src/RenderX.Plugins.Canvas" },
+            { "packages/canvas-component", "src/RenderX.Plugins.CanvasComponent" },
             { "packages/control-panel", "src/RenderX.Plugins.ControlPanel" }
         };
 
@@ -350,10 +438,11 @@ public class PluginStructureValidationTests
 
         var webToDesktopMapping = new Dictionary<string, string>
         {
-            { "packages/canvas-component/json-sequences", "src/RenderX.Plugins.Canvas/json-sequences" },
+            { "packages/canvas-component/json-sequences", "src/RenderX.Plugins.CanvasComponent/json-sequences" },
             { "packages/control-panel/json-sequences", "src/RenderX.Plugins.ControlPanel/json-sequences" },
             { "packages/header/json-sequences", "src/RenderX.Plugins.Header/json-sequences" },
-            { "packages/library/json-sequences", "src/RenderX.Plugins.Library/json-sequences" }
+            { "packages/library/json-sequences", "src/RenderX.Plugins.Library/json-sequences" },
+            { "packages/library-component/json-sequences", "src/RenderX.Plugins.LibraryComponent/json-sequences" }
         };
 
         var failures = new List<string>();
@@ -401,7 +490,7 @@ public class PluginStructureValidationTests
 
         var webToDesktopMapping = new Dictionary<string, string>
         {
-            { "packages/canvas-component/json-topics", "src/RenderX.Plugins.Canvas/json-topics" },
+            { "packages/canvas-component/json-topics", "src/RenderX.Plugins.CanvasComponent/json-topics" },
             { "packages/control-panel/json-topics", "src/RenderX.Plugins.ControlPanel/json-topics" }
         };
 

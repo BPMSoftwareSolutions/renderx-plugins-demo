@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <AssemblyName>RenderX.Plugins.LibraryComponent</AssemblyName>
+    <RootNamespace>RenderX.Plugins.LibraryComponent</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RenderX.HostSDK.Avalonia\RenderX.HostSDK.Avalonia.csproj" />
+  </ItemGroup>
+
+  <!-- Include JSON sequence files -->
+  <ItemGroup>
+    <Content Include="json-sequences\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
