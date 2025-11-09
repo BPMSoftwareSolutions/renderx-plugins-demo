@@ -22,5 +22,12 @@
     <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
   </ItemGroup>
 
+  <!-- Include JSON sequence files -->
+  <ItemGroup>
+    <Content Include="json-sequences\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
 

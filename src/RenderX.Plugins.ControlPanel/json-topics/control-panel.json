@@ -1,0 +1,18 @@
+{
+  "plugin": "ControlPanelPlugin",
+  "topics": {
+    "control.panel.selection.updated": {
+      "visibility": "public",
+      "notes": "Published when control panel selection state is updated"
+    },
+    "control.panel.classes.updated": {
+      "visibility": "public",
+      "notes": "Published when CSS classes are updated for a component"
+    },
+    "control.panel.css.registry.updated": {
+      "visibility": "public",
+      "notes": "Published when the CSS registry is updated"
+    }
+  }
+}
+

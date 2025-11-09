@@ -4,8 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
-    <AssemblyName>RenderX.Plugins.ControlPanel</AssemblyName>
-    <RootNamespace>RenderX.Plugins.ControlPanel</RootNamespace>
+    <AssemblyName>RenderX.Plugins.Components</AssemblyName>
+    <RootNamespace>RenderX.Plugins.Components</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,12 +22,9 @@
     <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
   </ItemGroup>
 
-  <!-- Include JSON sequence and topic files -->
+  <!-- Include JSON component files -->
   <ItemGroup>
-    <Content Include="json-sequences\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="json-topics\**\*.json">
+    <Content Include="json-components\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

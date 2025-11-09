@@ -56,6 +56,7 @@
     <ProjectReference Include="..\RenderX.Plugins.Library\RenderX.Plugins.Library.csproj" />
     <ProjectReference Include="..\RenderX.Plugins.Canvas\RenderX.Plugins.Canvas.csproj" />
     <ProjectReference Include="..\RenderX.Plugins.ControlPanel\RenderX.Plugins.ControlPanel.csproj" />
+    <ProjectReference Include="..\RenderX.Plugins.Components\RenderX.Plugins.Components.csproj" />
   </ItemGroup>
 
   <!-- Roslyn Analyzers for enforcing thin-host architecture pattern -->
@@ -72,6 +73,11 @@
     <Folder Include="Infrastructure\Validation\" />
     <Folder Include="Infrastructure\Configuration\" />
   </ItemGroup>
+
+  <!-- Pre-build: Sync JSON files from plugins -->
+  <Target Name="SyncPluginJsonFiles" BeforeTargets="ValidatePlugins">
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Scripts\Sync-PluginJsonFiles.ps1&quot; -SourceRoot &quot;$(ProjectDir)..&quot; -TargetRoot &quot;$(ProjectDir)plugins&quot;" />
+  </Target>
 
   <!-- Pre-build validation of plugin manifest and implementations -->
   <Target Name="ValidatePlugins" BeforeTargets="Build">
