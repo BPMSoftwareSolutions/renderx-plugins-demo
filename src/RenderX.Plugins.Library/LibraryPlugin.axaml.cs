@@ -4,6 +4,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
+using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
 using System;
 using System.Collections.ObjectModel;
@@ -44,7 +45,14 @@ public partial class LibraryPlugin : UserControl
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Wrap logger with ConductorAwareLogger to emit logs through Musical Conductor event bus
+        // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 library-component)
+        _logger = new ConductorAwareLoggerWrapper<LibraryPlugin>(
+            logger ?? throw new ArgumentNullException(nameof(logger)),
+            eventRouter,
+            conductor,
+            "library-component");
 
         _logger.LogInformation("LibraryPlugin initialized");
 

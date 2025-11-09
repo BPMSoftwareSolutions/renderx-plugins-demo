@@ -2,7 +2,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Engine;
 using RenderX.HostSDK.Avalonia.Interfaces;
+using RenderX.HostSDK.Avalonia.Logging;
 using RenderX.HostSDK.Avalonia.Services;
+using MusicalConductor.Avalonia.Interfaces;
 
 namespace RenderX.HostSDK.Avalonia.Extensions;
 
@@ -62,6 +64,15 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IPluginManifestService, PluginManifestService>();
         services.AddSingleton<IInteractionManifestService, InteractionManifestService>();
         services.AddSingleton<ITopicsManifestService, TopicsManifestService>();
+
+        // Conductor-aware logger factory (Phase 5 - Log Parity)
+        services.AddSingleton<ConductorAwareLoggerFactory>(provider =>
+        {
+            var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
+            var eventRouter = provider.GetRequiredService<IEventRouter>();
+            var conductor = provider.GetRequiredService<IConductorClient>();
+            return new ConductorAwareLoggerFactory(loggerFactory, eventRouter, conductor);
+        });
 
         return services;
     }

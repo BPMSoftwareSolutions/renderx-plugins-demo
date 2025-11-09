@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.Logging;
 using RenderX.HostSDK.Avalonia.Interfaces;
+using RenderX.HostSDK.Avalonia.Logging;
 using MusicalConductor.Avalonia.Interfaces;
 using System;
 
@@ -30,7 +31,14 @@ public partial class HeaderThemePlugin : UserControl
     {
         _eventRouter = eventRouter ?? throw new ArgumentNullException(nameof(eventRouter));
         _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Wrap logger with ConductorAwareLogger to emit logs through Musical Conductor event bus
+        // This mirrors the web version's ctx.logger behavior with emoji icons (🧩 header)
+        _logger = new ConductorAwareLoggerWrapper<HeaderThemePlugin>(
+            logger ?? throw new ArgumentNullException(nameof(logger)),
+            eventRouter,
+            conductor,
+            "header");
 
         _logger.LogInformation("HeaderThemePlugin initialized");
 

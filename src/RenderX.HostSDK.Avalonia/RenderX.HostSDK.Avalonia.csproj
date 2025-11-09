@@ -26,6 +26,11 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
   </ItemGroup>
 
+  <!-- Project references -->
+  <ItemGroup>
+    <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
+  </ItemGroup>
+
   <!-- Include the compiled JS bundle -->
   <ItemGroup>
     <EmbeddedResource Include="Resources\host-sdk-bundle.js" />
