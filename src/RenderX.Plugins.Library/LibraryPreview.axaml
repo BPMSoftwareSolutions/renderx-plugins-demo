@@ -22,7 +22,10 @@
     <Border BorderThickness="1"
             BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="8"
-            Padding="12">
+            Padding="12"
+            PointerPressed="OnPreviewPointerPressed"
+            PointerMoved="OnPreviewPointerMoved"
+            PointerReleased="OnPreviewPointerReleased">
         <StackPanel Spacing="12">
             <!-- Preview Title -->
             <TextBlock x:Name="PreviewTitle"

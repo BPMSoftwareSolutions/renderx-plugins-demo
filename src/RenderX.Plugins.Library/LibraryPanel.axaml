@@ -58,6 +58,8 @@
                                 Padding="12"
                                 Margin="0,4"
                                 PointerPressed="OnComponentPointerPressed"
+                                PointerMoved="OnComponentPointerMoved"
+                                PointerReleased="OnComponentPointerReleased"
                                 DoubleTapped="OnComponentDoubleClick"
                                 Cursor="Hand">
                             <StackPanel Spacing="4">

@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using System;
 
@@ -10,6 +11,10 @@ namespace RenderX.Plugins.Library;
 /// </summary>
 public partial class LibraryPreview : UserControl
 {
+    private DragAdorner? _dragAdorner;
+    private bool _isDragging;
+    private Point _dragStartPoint;
+
     public static readonly RoutedEvent<RoutedEventArgs> InsertRequestedEvent =
         RoutedEvent.Register<LibraryPreview, RoutedEventArgs>(
             nameof(InsertRequested),
@@ -80,6 +85,88 @@ public partial class LibraryPreview : UserControl
         if (componentDescription != null)
         {
             componentDescription.Text = ComponentDescription;
+        }
+    }
+
+    private void OnPreviewPointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
+        {
+            _isDragging = true;
+            _dragStartPoint = e.GetPosition(this);
+        }
+    }
+
+    private void OnPreviewPointerMoved(object? sender, PointerEventArgs e)
+    {
+        if (!_isDragging)
+        {
+            return;
+        }
+
+        var currentPoint = e.GetPosition(this);
+        var distance = Math.Sqrt(
+            Math.Pow(currentPoint.X - _dragStartPoint.X, 2) +
+            Math.Pow(currentPoint.Y - _dragStartPoint.Y, 2));
+
+        // Start drag if moved more than 5 pixels
+        if (distance > 5)
+        {
+            StartDrag(e);
+            _isDragging = false;
+        }
+    }
+
+    private void OnPreviewPointerReleased(object? sender, PointerReleasedEventArgs e)
+    {
+        EndDrag();
+        _isDragging = false;
+    }
+
+    private void StartDrag(PointerEventArgs e)
+    {
+        try
+        {
+            // Get the preview area border
+            var previewArea = this.FindControl<Border>("PreviewArea");
+            if (previewArea == null)
+            {
+                return;
+            }
+
+            // Create drag data
+            var data = new DataObject();
+            data.Set(DataFormats.Text, ComponentName);
+
+            // Create ghost adorner
+            _dragAdorner = DragGhostHelper.CreateGhost(
+                previewArea,
+                previewArea.Width,
+                previewArea.Height);
+
+            // Apply styling
+            DragGhostHelper.ApplyComponentStyles(_dragAdorner, previewArea);
+
+            // Show ghost at initial position
+            var screenPoint = e.GetPosition(null);
+            DragGhostHelper.ShowGhost(_dragAdorner, screenPoint.X, screenPoint.Y);
+
+            // Start drag operation
+            DragDrop.DoDragDrop(e, data, DragDropEffects.Copy);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error starting drag: {ex.Message}");
+            EndDrag();
+        }
+    }
+
+    private void EndDrag()
+    {
+        if (_dragAdorner != null)
+        {
+            DragGhostHelper.CleanupGhost(_dragAdorner);
+            _dragAdorner = null;
         }
     }
 }
