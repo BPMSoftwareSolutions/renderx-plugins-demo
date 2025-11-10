@@ -71,10 +71,50 @@ class DesktopFeatureDetector:
             ))
 
         # Detect JSON component metadata extraction
-        if re.search(r'JObject|JsonDocument|JsonSerializer\.Deserialize|component\.Icon|component\.Metadata|ParseJson', cs_content):
+        if re.search(r'JObject|JsonDocument|JsonSerializer\.Deserialize|component\.Icon|component\.Metadata|ParseJson|ComponentPreviewModel\.Parse|JsonNode', cs_content):
             features.append(ComponentFeature(
                 name='JSON Metadata Extraction',
                 description='Extracts metadata (icons, descriptions, attributes) from JSON component definitions',
+                implementation_type='logic'
+            ))
+
+        # Detect form handling (Avalonia: PropertyChanged, StyledProperty, TextChanged events, TextBox validation, event handlers)
+        if re.search(r'PropertyChanged|StyledProperty|TextChanged|PropertyChangedEventArgs|OnPropertyChanged|TextBox.*Text|nameInput|descriptionInput|On\w+Click.*\(|async\s+void\s+On\w+', cs_content):
+            features.append(ComponentFeature(
+                name='Form Handling',
+                description='Implements form input and submission',
+                implementation_type='interaction'
+            ))
+
+        # Detect file upload (Avalonia: OpenFileDialog, file selection patterns)
+        if re.search(r'OpenFileDialog|SelectionChanged.*file|FileSelect', cs_content, re.IGNORECASE):
+            features.append(ComponentFeature(
+                name='File Upload',
+                description='Handles file uploads',
+                implementation_type='interaction'
+            ))
+
+        # Detect emoji/icon rendering (comprehensive emoji set including all commonly used emojis)
+        if re.search(r'Text="\s*[🧩💬💡⚠️✅❌📦🔴🟠🟡🟢🔵🟣⭕⚙️🎉📊📈💾🔍🔎🗑️✏️📝📤📁]', axaml_content):
+            features.append(ComponentFeature(
+                name='Emoji Icon Display',
+                description='Displays emoji icons extracted from component metadata',
+                implementation_type='ui'
+            ))
+
+        # Detect component card rendering (Avalonia: ItemTemplate, data templates for components)
+        if re.search(r'ItemTemplate|DataTemplate|ComponentCard|ComponentPreview|PreviewCard', combined_content, re.IGNORECASE):
+            features.append(ComponentFeature(
+                name='Component Card Rendering',
+                description='Renders component preview cards with styling from JSON data',
+                implementation_type='ui'
+            ))
+
+        # Detect error handling (Avalonia: try-catch, exception handling)
+        if re.search(r'try\s*{|catch\s*\(|ErrorBoundary|OnError|ExceptionHandler', combined_content):
+            features.append(ComponentFeature(
+                name='Error Handling',
+                description='Implements error boundary or error handling',
                 implementation_type='logic'
             ))
 
@@ -197,22 +237,6 @@ class DesktopFeatureDetector:
                 name='Dynamic CSS Injection',
                 description='Dynamically injects CSS styles and variables from component data',
                 implementation_type='style'
-            ))
-
-        # Detect TextBlock emoji/icon rendering
-        if re.search(r'TextBlock.*Text="[🧩💡⚠️✅❌📦]|emoji|icon.*glyph', combined_content, re.IGNORECASE):
-            features.append(ComponentFeature(
-                name='Emoji Icon Display',
-                description='Displays emoji icons extracted from component metadata',
-                implementation_type='ui'
-            ))
-
-        # Detect component card rendering
-        if re.search(r'ComponentCard|LibraryCard|PreviewControl|ItemTemplate.*Component', combined_content, re.IGNORECASE):
-            features.append(ComponentFeature(
-                name='Component Card Rendering',
-                description='Renders component preview cards with styling from JSON data',
-                implementation_type='ui'
             ))
 
         return features

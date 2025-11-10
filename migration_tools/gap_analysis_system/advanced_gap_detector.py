@@ -14,17 +14,41 @@ class AdvancedGapDetector:
     """Detects advanced gaps: CSS styling and plugin-level feature parity."""
     
     @staticmethod
-    def detect_css_gaps(css_analyses: List[CSSAnalysis]) -> List[Gap]:
-        """Detect CSS/styling gaps."""
+    def detect_css_gaps(css_analyses: List[CSSAnalysis],
+                       desktop_components: List[DesktopComponent] = None) -> List[Gap]:
+        """Detect CSS/styling gaps.
+
+        NOTE: This detector now checks if desktop components already have
+        equivalent implementations via :pointerover and LinearGradientBrush
+        to avoid false positives.
+        """
         gaps = []
         if not css_analyses:
             return gaps
-        
+
         total_css_classes = len(css_analyses)
         animated_classes = sum(1 for c in css_analyses if c.has_animation or c.has_transition)
         hover_classes = sum(1 for c in css_analyses if c.has_hover)
         gradient_classes = sum(1 for c in css_analyses if c.has_gradient)
-        
+
+        # Check if desktop components have hover effects and gradients implemented
+        has_desktop_hover = False
+        has_desktop_gradient = False
+
+        if desktop_components:
+            for comp in desktop_components:
+                # Check for :pointerover styles in AXAML
+                if hasattr(comp, 'axaml_file') and comp.axaml_file:
+                    try:
+                        with open(comp.axaml_file, 'r', encoding='utf-8') as f:
+                            axaml_content = f.read()
+                            if ':pointerover' in axaml_content:
+                                has_desktop_hover = True
+                            if 'LinearGradientBrush' in axaml_content:
+                                has_desktop_gradient = True
+                    except:
+                        pass
+
         if animated_classes > 0:
             gaps.append(Gap(
                 gap_type='style',
@@ -42,8 +66,9 @@ class AdvancedGapDetector:
                 ],
                 is_quick_win=False
             ))
-        
-        if hover_classes > 0:
+
+        # Only report hover gap if desktop doesn't have :pointerover implementations
+        if hover_classes > 0 and not has_desktop_hover:
             gaps.append(Gap(
                 gap_type='style',
                 severity='low',
@@ -60,8 +85,9 @@ class AdvancedGapDetector:
                 ],
                 is_quick_win=True
             ))
-        
-        if gradient_classes > 0:
+
+        # Only report gradient gap if desktop doesn't have LinearGradientBrush implementations
+        if gradient_classes > 0 and not has_desktop_gradient:
             gaps.append(Gap(
                 gap_type='style',
                 severity='low',

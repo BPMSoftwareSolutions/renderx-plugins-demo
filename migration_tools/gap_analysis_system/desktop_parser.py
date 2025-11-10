@@ -222,13 +222,29 @@ class DesktopComponentParser:
         """Detect conditional UI like AI chat toggle button and hints in AXAML."""
         hints: Dict[str, Any] = {
             'has_ai_toggle': False,
-            'has_ai_hint': False
+            'has_ai_hint': False,
+            'has_max_width_constraint': False,
+            'has_max_height_constraint': False,
+            'has_text_truncation': False
         }
         try:
             if re.search(r'🤖', axaml_content) or re.search(r'<Button[^>]*(?:Content|Header)="[^"]*AI[^"]*"', axaml_content, re.IGNORECASE) or re.search(r'<Button[^>]*>[^<]*AI[^<]*<', axaml_content, re.IGNORECASE):
                 hints['has_ai_toggle'] = True
             if re.search(r'💡', axaml_content) or re.search(r'AI\s*unavailable', axaml_content, re.IGNORECASE):
                 hints['has_ai_hint'] = True
+
+            # Detect content constraints that may cause text squishing
+            # Look for MaxWidth on TextBlock or other text elements
+            if re.search(r'<TextBlock[^>]*MaxWidth="[^"]*"', axaml_content):
+                hints['has_max_width_constraint'] = True
+
+            # Look for MaxHeight constraints
+            if re.search(r'<TextBlock[^>]*MaxHeight="[^"]*"', axaml_content) or re.search(r'<Border[^>]*MaxHeight="[^"]*"', axaml_content):
+                hints['has_max_height_constraint'] = True
+
+            # Look for TextTrimming which indicates text truncation
+            if re.search(r'TextTrimming="[^"]*"', axaml_content):
+                hints['has_text_truncation'] = True
         except Exception:
             pass
         return hints

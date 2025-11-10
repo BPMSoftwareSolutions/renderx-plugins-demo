@@ -31,12 +31,25 @@ class ComponentDiscovery:
         # Also check for related packages (e.g., library-component for library plugin)
         related_path = Path(web_path) / f'{plugin_name}-component' / 'src'
         if related_path.exists():
-            # Check symphonies and handlers for drag ghost image logic
+            # Check for actual UI components (not event definitions or manifest handlers)
+            # Skip: *.symphony.ts (manifest definitions), handlers, index files, and event-related files
             for ts_file in related_path.rglob('*.ts'):
-                if 'drag' in ts_file.name.lower() or 'symphony' in ts_file.name.lower():
-                    component = WebComponentParser.parse_component(str(ts_file))
-                    if component:
-                        components.append(component)
+                # Skip barrel/index files (just exports, not UI components)
+                if ts_file.name == 'index.ts':
+                    continue
+                # Skip symphony files (manifest/event definitions, not UI components)
+                if 'symphony' in ts_file.name.lower():
+                    continue
+                # Skip handler files
+                if 'handler' in ts_file.name.lower():
+                    continue
+                # Skip event definition files
+                if any(x in ts_file.name.lower() for x in ['event', 'drag', 'drop']):
+                    continue
+                    
+                component = WebComponentParser.parse_component(str(ts_file))
+                if component:
+                    components.append(component)
                     
         return components
     

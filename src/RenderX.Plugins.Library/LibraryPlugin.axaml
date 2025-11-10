@@ -109,14 +109,13 @@
                                            Margin="0,0,0,4"
                                            Foreground="{DynamicResource Color.Text.Primary}" />
                                 <!-- Description centered -->
-                                <TextBlock Text="{Binding Description}" 
-                                           FontSize="10" 
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="10"
                                            Foreground="#999"
                                            HorizontalAlignment="Center"
                                            TextAlignment="Center"
                                            TextWrapping="Wrap"
-                                           LineHeight="1.3"
-                                           MaxWidth="180" />
+                                           LineHeight="1.3" />
                             </StackPanel>
                         </Border>
                     </DataTemplate>

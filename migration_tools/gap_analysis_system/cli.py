@@ -4,8 +4,14 @@ Command-Line Interface Domain
 Main entry point and CLI orchestration for the gap analysis system.
 """
 
+import sys
+import io
 import argparse
 from pathlib import Path
+
+# Force UTF-8 output encoding for emoji support on Windows
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from .analyzer import GapAnalyzer
 from .report_generator import ReportGenerator

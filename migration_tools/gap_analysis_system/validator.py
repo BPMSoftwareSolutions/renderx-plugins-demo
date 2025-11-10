@@ -13,8 +13,14 @@ This script verifies:
 
 import json
 import os
+import sys
 from pathlib import Path
 from collections import defaultdict
+
+# Force UTF-8 output encoding for Unicode support
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 def validate_refactoring():
@@ -160,7 +166,7 @@ def validate_refactoring():
     cli_ok = False
     try:
         result = subprocess.run(
-            ['python', 'gap_analyzer_v2.py', '--help'],
+            ['python', 'web_desktop_gap_analyzer.py', '--help'],
             cwd=str(migration_dir),
             capture_output=True,
             text=True,
@@ -181,7 +187,7 @@ def validate_refactoring():
     print("VALIDATION SUMMARY")
     print("=" * 70)
     print(f"  Module Files:       {'✅ ALL EXIST' if all_files_exist else '❌ SOME MISSING'}")
-    print(f"  File Size Limits:   {'✅ ALL COMPLIANT (≤400 lines)' if compliant else '❌ SOME EXCEED LIMIT'}")
+    print(f"  File Size Limits:   {'✅ ALL COMPLIANT (<=400 lines)' if compliant else '❌ SOME EXCEED LIMIT'}")
     print(f"  Syntax Validation:  {'✅ ALL VALID' if syntax_ok else '❌ SYNTAX ERRORS FOUND'}")
     print(f"  Import Chain:       {'✅ WORKING' if import_ok else '❌ IMPORT FAILURE'}")
     print(f"  CLI Functionality:  {'✅ WORKING' if cli_ok else '❌ CLI FAILURE'}")

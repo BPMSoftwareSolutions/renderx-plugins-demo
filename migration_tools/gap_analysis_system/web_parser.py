@@ -208,7 +208,10 @@ class WebComponentParser:
         """Detect conditional UI like AI chat toggle button and hints."""
         hints: Dict[str, Any] = {
             'has_ai_toggle': False,
-            'has_ai_hint': False
+            'has_ai_hint': False,
+            'has_max_width_constraint': False,
+            'has_max_height_constraint': False,
+            'has_text_truncation': False
         }
         try:
             jsx = re.search(r'return\s*\(([\s\S]*?)\);', content)
@@ -227,6 +230,19 @@ class WebComponentParser:
                 'ai-unavailable-hint' in search_space
             ):
                 hints['has_ai_hint'] = True
+
+            # Detect content constraints
+            # Look for max-width in CSS classes or inline styles
+            if re.search(r'max-w-|maxWidth|style=.*max-width', search_space):
+                hints['has_max_width_constraint'] = True
+
+            # Look for max-height in CSS classes or inline styles
+            if re.search(r'max-h-|maxHeight|style=.*max-height', search_space):
+                hints['has_max_height_constraint'] = True
+
+            # Look for text truncation (ellipsis, line-clamp, etc.)
+            if re.search(r'truncate|line-clamp|text-overflow|ellipsis|overflow.*hidden', search_space):
+                hints['has_text_truncation'] = True
         except Exception:
             pass
         return hints
