@@ -87,6 +87,7 @@ class GapDetector:
         gaps.extend(GapDetector._detect_feature_gaps(web_components, desktop_components))
         gaps.extend(GapDetector._detect_ui_element_gaps(web_components, desktop_components))
         gaps.extend(GapDetector._detect_text_parity_gaps(web_components, desktop_components))
+        gaps.extend(GapDetector._detect_text_truncation_gaps(desktop_components))
         gaps.extend(GapDetector._detect_layout_gaps(web_components, desktop_components))
         gaps.extend(GapDetector._detect_conditional_ui_gaps(web_components, desktop_components))
         gaps.extend(GapDetector._detect_container_layout_gaps(web_components, desktop_components))
@@ -226,6 +227,37 @@ class GapDetector:
                     is_quick_win=True,
                     web_source_path=web_comp.file_path
                 ))
+        return gaps
+
+    @staticmethod
+    def _detect_text_truncation_gaps(desktop_components: List[DesktopComponent]) -> List[Gap]:
+        """Detect text truncation or encoding issues in component descriptions."""
+        gaps = []
+        for desktop_comp in desktop_components:
+            if 'LibraryPlugin' in desktop_comp.name or 'LibraryPanel' in desktop_comp.name:
+                # Check if description TextBlock has proper text wrapping and no truncation
+                if hasattr(desktop_comp, 'axaml_file') and desktop_comp.axaml_file:
+                    try:
+                        with open(desktop_comp.axaml_file, 'r', encoding='utf-8') as f:
+                            axaml_content = f.read()
+                            # Check for description TextBlock with potential truncation issues
+                            if 'Description' in axaml_content and 'TextWrapping="Wrap"' in axaml_content:
+                                # Check if there's a MaxHeight or MaxWidth that could truncate descriptions
+                                if 'MaxHeight' in axaml_content or ('MaxWidth' in axaml_content and 'Description' in axaml_content):
+                                    gaps.append(Gap(
+                                        gap_type='component',
+                                        severity='medium',
+                                        title=f'⚠️ TEXT TRUNCATION RISK in {desktop_comp.name}',
+                                        description='Component descriptions may be truncated or garbled due to size constraints',
+                                        web_implementation='Web descriptions display fully with text wrapping',
+                                        desktop_implementation='Desktop may have MaxWidth/MaxHeight constraints causing truncation',
+                                        impact='Users see incomplete or corrupted component descriptions',
+                                        effort_estimate='quick',
+                                        is_quick_win=True,
+                                        web_source_path=desktop_comp.axaml_file
+                                    ))
+                    except:
+                        pass
         return gaps
 
     @staticmethod

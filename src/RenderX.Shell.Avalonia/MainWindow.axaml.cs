@@ -4,6 +4,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RenderX.HostSDK.Avalonia.Services;
 using RenderX.Shell.Avalonia.Core;
 using RenderX.Shell.Avalonia.Infrastructure.Plugins;
 using RenderX.Shell.Avalonia.UI;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -93,6 +95,32 @@ public partial class MainWindow : Window
                 else
                 {
                     _logger.LogDebug("Slot {SlotName} not found in MainWindow", slotName);
+                }
+            }
+
+            // Mount ActivityLogPanel to footer slot (built-in observability)
+            var activityLogSlot = this.FindControl<Border>("activityLog");
+            if (activityLogSlot != null)
+            {
+                try
+                {
+                    // Use reflection to instantiate ActivityLogPanel to avoid direct plugin reference
+                    var panelType = Type.GetType("RenderX.Shell.Avalonia.UI.Views.ActivityLogPanel");
+                    if (panelType != null)
+                    {
+                        var activityLogPanel = (Control?)Activator.CreateInstance(panelType);
+                        if (activityLogPanel != null)
+                        {
+                            activityLogSlot.Child = activityLogPanel;
+                            _logger.LogInformation("ActivityLogPanel mounted in activityLog slot");
+                            ConductorLogService.Instance.LogInfo("Shell startup complete", "MainWindow");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to mount ActivityLogPanel");
+                    ConductorLogService.Instance.LogError($"Failed to mount ActivityLogPanel: {ex.Message}", "MainWindow");
                 }
             }
 

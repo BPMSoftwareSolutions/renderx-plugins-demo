@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using RenderX.HostSDK.Avalonia.Services;
 using System;
 using System.Text.Json.Nodes;
 
@@ -357,10 +358,13 @@ public partial class LibraryPreview : UserControl
     {
         try
         {
+            ConductorLogService.Instance.LogInfo($"Drag started for component: {ComponentName}", "LibraryPreview");
+
             // Get the preview area border
             var previewArea = this.FindControl<Border>("PreviewArea");
             if (previewArea == null)
             {
+                ConductorLogService.Instance.LogWarning("PreviewArea control not found", "LibraryPreview");
                 return;
             }
 
@@ -379,13 +383,17 @@ public partial class LibraryPreview : UserControl
 
             // Show ghost at initial position
             var screenPoint = e.GetPosition(null);
+            ConductorLogService.Instance.LogDebug($"Drag ghost position: ({screenPoint.X:F0}, {screenPoint.Y:F0})", "LibraryPreview");
             DragGhostHelper.ShowGhost(_dragAdorner, screenPoint.X, screenPoint.Y);
 
             // Start drag operation
+            ConductorLogService.Instance.LogDebug("Starting DragDrop operation", "LibraryPreview");
             DragDrop.DoDragDrop(e, data, DragDropEffects.Copy);
+            ConductorLogService.Instance.LogInfo("Drag operation completed", "LibraryPreview");
         }
         catch (Exception ex)
         {
+            ConductorLogService.Instance.LogError($"Error starting drag: {ex.Message}", "LibraryPreview");
             System.Diagnostics.Debug.WriteLine($"Error starting drag: {ex.Message}");
             EndDrag();
         }

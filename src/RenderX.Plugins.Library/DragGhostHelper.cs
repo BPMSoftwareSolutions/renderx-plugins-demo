@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
+using RenderX.HostSDK.Avalonia.Services;
 using System;
 
 namespace RenderX.Plugins.Library;
@@ -21,16 +22,27 @@ public static class DragGhostHelper
     /// <returns>A configured DragAdorner instance.</returns>
     public static DragAdorner CreateGhost(Control component, double width, double height)
     {
-        // Create a copy of the component for preview
-        var ghostContent = CreatePreviewControl(component, width, height);
-
-        // Create the adorner (Popup-based)
-        var adorner = new DragAdorner(component, width, height)
+        try
         {
-            Content = ghostContent
-        };
+            ConductorLogService.Instance.LogDebug($"Creating drag ghost ({width:F0}x{height:F0})", "DragGhostHelper");
 
-        return adorner;
+            // Create a copy of the component for preview
+            var ghostContent = CreatePreviewControl(component, width, height);
+
+            // Create the adorner (Popup-based)
+            var adorner = new DragAdorner(component, width, height)
+            {
+                Content = ghostContent
+            };
+
+            ConductorLogService.Instance.LogDebug("Drag ghost created successfully", "DragGhostHelper");
+            return adorner;
+        }
+        catch (Exception ex)
+        {
+            ConductorLogService.Instance.LogError($"Error creating drag ghost: {ex.Message}", "DragGhostHelper");
+            throw;
+        }
     }
 
     /// <summary>
@@ -142,10 +154,13 @@ public static class DragGhostHelper
     {
         try
         {
+            ConductorLogService.Instance.LogDebug($"Showing drag ghost at ({screenX:F0}, {screenY:F0})", "DragGhostHelper");
             adorner.Show(screenX, screenY);
+            ConductorLogService.Instance.LogDebug("Drag ghost displayed successfully", "DragGhostHelper");
         }
         catch (Exception ex)
         {
+            ConductorLogService.Instance.LogError($"Error showing drag ghost: {ex.Message}", "DragGhostHelper");
             System.Diagnostics.Debug.WriteLine($"Error showing drag ghost: {ex.Message}");
         }
     }

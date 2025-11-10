@@ -17,8 +17,8 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <!-- Thin host: 6 slots (3 header + 3 main) defined in layout-manifest.json -->
-    <Grid RowDefinitions="48,*" ColumnDefinitions="320,*,360" Background="{DynamicResource Color.Background.Primary}">
+    <!-- Thin host: 7 slots (3 header + 3 main + 1 footer) defined in layout-manifest.json -->
+    <Grid RowDefinitions="48,*,Auto" ColumnDefinitions="320,*,360" Background="{DynamicResource Color.Background.Primary}">
 
         <!-- Header Row (48px) -->
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
@@ -46,5 +46,22 @@
 
         <!-- Control Panel Slot (360px) -->
         <Border Grid.Row="1" Grid.Column="2" Name="controlPanel" AutomationProperties.AutomationId="controlPanel" Background="{DynamicResource Color.Panel.Background}" />
+
+        <!-- Resizable Splitter for Footer -->
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                      VerticalAlignment="Bottom"
+                      Height="4"
+                      Background="{DynamicResource Color.Border.Primary}"
+                      Foreground="{DynamicResource Color.Border.Secondary}" />
+
+        <!-- Activity Log Footer Slot (resizable, initially 200px) -->
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                Name="activityLog"
+                AutomationProperties.AutomationId="activityLog"
+                Background="{DynamicResource Color.Panel.Background}"
+                BorderThickness="0,1,0,0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                MinHeight="100"
+                MaxHeight="400" />
     </Grid>
 </Window>

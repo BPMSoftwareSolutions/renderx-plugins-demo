@@ -72,9 +72,9 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                         continue;
                     }
 
-                    if (!plugin.TryGetProperty("ui", out var ui))
+                    if (!plugin.TryGetProperty("ui", out var ui) || ui.ValueKind == JsonValueKind.Null)
                     {
-                        _logger.LogWarning("Plugin {PluginId} missing 'ui' configuration", id.GetString());
+                        // UI-less plugins are valid (e.g., data-only plugins)
                         continue;
                     }
 
@@ -152,8 +152,14 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                 foreach (var plugin in plugins.EnumerateArray())
                 {
                     var id = plugin.GetProperty("id").GetString();
-                    var ui = plugin.GetProperty("ui");
-                    var slot = ui.GetProperty("slot").GetString();
+
+                    if (!plugin.TryGetProperty("ui", out var ui) || ui.ValueKind == JsonValueKind.Null)
+                        continue; // Skip plugins without UI configuration
+
+                    if (!ui.TryGetProperty("slot", out var slotElement) || slotElement.ValueKind == JsonValueKind.Null)
+                        continue; // Skip plugins without slot
+
+                    var slot = slotElement.GetString();
                     var module = ui.GetProperty("module").GetString();
                     var export = ui.GetProperty("export").GetString();
 
@@ -268,11 +274,17 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                 var plugins = doc.RootElement.GetProperty("plugins");
                 foreach (var plugin in plugins.EnumerateArray())
                 {
-                    if (!plugin.TryGetProperty("runtime", out var runtime))
+                    if (!plugin.TryGetProperty("runtime", out var runtime) || runtime.ValueKind == JsonValueKind.Null)
+                        continue; // Skip plugins without runtime configuration
+
+                    if (!runtime.TryGetProperty("module", out var moduleElement) || moduleElement.ValueKind == JsonValueKind.Null)
                         continue;
 
-                    var module = runtime.GetProperty("module").GetString();
-                    var export = runtime.GetProperty("export").GetString();
+                    if (!runtime.TryGetProperty("export", out var exportElement) || exportElement.ValueKind == JsonValueKind.Null)
+                        continue;
+
+                    var module = moduleElement.GetString();
+                    var export = exportElement.GetString();
 
                     if (string.IsNullOrWhiteSpace(module) || string.IsNullOrWhiteSpace(export))
                         continue;
