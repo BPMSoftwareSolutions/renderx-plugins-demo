@@ -15,6 +15,12 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
         /// Returns null if no control is mapped for the slot.
         /// </summary>
         Task<Control?> LoadControlForSlotAsync(string slotName, IServiceProvider services);
+
+        /// <summary>
+        /// Load and register runtime (non-UI) plugins from plugin-manifest.json.
+        /// Returns the number of plugins successfully registered.
+        /// </summary>
+        Task<int> LoadRuntimePluginsAsync(IServiceProvider services);
     }
 }
 

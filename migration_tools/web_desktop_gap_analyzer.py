@@ -1090,6 +1090,25 @@ class GapAnalyzer:
                         effort_estimate='quick',
                         is_quick_win=True
                     ))
+            for entry in manifest_audit.get('runtime_plugins', []):
+                if entry.get('status') == 'missing':
+                    analysis.gaps.append(Gap(
+                        gap_type='component',
+                        severity='critical',
+                        title=f"🔴 RUNTIME PLUGIN NOT LOADED: {entry['class']}",
+                        description=f"Plugin class '{entry['export']}' (pluginId: {entry['pluginId']}) is declared in plugin-manifest.json but not being instantiated at runtime. Reason: {entry.get('reason', 'unknown')}",
+                        web_implementation=f"plugin-manifest.json declares runtime plugin with module='{entry['module']}' and export='{entry['export']}'",
+                        desktop_implementation='Plugin not loaded/registered at runtime',
+                        impact='Plugin functionality completely unavailable - no breakpoints will hit, no logic executes',
+                        effort_estimate='medium',
+                        recommendations=[
+                            'Implement PluginLoader.LoadRuntimePluginsAsync() to scan manifest and instantiate runtime plugins',
+                            'Call LoadRuntimePluginsAsync from MainWindow.axaml.cs after UI slots are mounted',
+                            'Use DI to resolve plugin dependencies and register with IConductorClient.RegisterPlugin()',
+                            'Verify plugin class exists and has a parameterless or DI-compatible constructor'
+                        ],
+                        is_quick_win=False
+                    ))
         except Exception as e:
             print(f"Manifest audit failed: {e}")
         
@@ -1101,16 +1120,20 @@ class GapAnalyzer:
     @staticmethod
     def _manifest_audit(plugin_name: str, desktop_components: List[DesktopComponent]) -> Dict[str, List[Dict[str, any]]]:
         """Load manifests and compute declared vs desktop-present audit for the plugin."""
+        base_name = ''.join(word.capitalize() for word in plugin_name.split('-'))
         plugin_id_candidates = {
             plugin_name,
-            ''.join(word.capitalize() for word in plugin_name.split('-')) + 'Plugin',
-            ''.join(word.capitalize() for word in plugin_name.split('-'))
+            base_name + 'Plugin',
+            base_name,
+            base_name + 'ComponentPlugin',  # NEW: also check for ComponentPlugin variant
+            plugin_name + '-component'       # NEW: also check for kebab-case component variant
         }
         desktop_names = {c.name for c in desktop_components}
         audit: Dict[str, List[Dict[str, any]]] = {
             'interactions': [],
             'topics': [],
-            'layout': []
+            'layout': [],
+            'runtime_plugins': []
         }
 
         def resolve_manifest_path(filename: str) -> Optional[Path]:
@@ -1170,6 +1193,64 @@ class GapAnalyzer:
                 slots = [s.get('name') for s in lm.get('slots') or [] if s.get('name')]
                 for s in slots:
                     audit['layout'].append({'slot': s})
+        except Exception:
+            pass
+
+        # Runtime plugin audit (from Shell plugin-manifest.json)
+        try:
+            # Prefer the shell path where the manifest lives at runtime
+            pm_path = resolve_manifest_path(str(Path('src') / 'RenderX.Shell.Avalonia' / 'plugins' / 'plugin-manifest.json')) or resolve_manifest_path('plugins/plugin-manifest.json')
+            plugin_loader_path = Path('src') / 'RenderX.Shell.Avalonia' / 'Infrastructure' / 'Plugins' / 'PluginLoader.cs'
+            mainwindow_path = Path('src') / 'RenderX.Shell.Avalonia' / 'MainWindow.axaml.cs'
+
+            loader_support = plugin_loader_path.exists() and ('LoadRuntimePluginsAsync' in plugin_loader_path.read_text(encoding='utf-8', errors='ignore'))
+            callsite_support = mainwindow_path.exists() and ('LoadRuntimePluginsAsync' in mainwindow_path.read_text(encoding='utf-8', errors='ignore'))
+
+            def type_present(class_name: str) -> bool:
+                # Quick scan: look for ClassName.cs or ClassName.axaml.cs anywhere under src/
+                patterns = [f'{class_name}.cs', f'{class_name}.axaml.cs']
+                for pattern in patterns:
+                    for cs in Path('src').rglob(pattern):
+                        try:
+                            content = cs.read_text(encoding='utf-8', errors='ignore')
+                            if re.search(rf'class\s+{re.escape(class_name)}\b', content):
+                                return True
+                        except Exception:
+                            continue
+                return False
+
+            if pm_path and pm_path.exists():
+                pm = json.loads(pm_path.read_text(encoding='utf-8'))
+                for p in pm.get('plugins', []):
+                    pid = p.get('id')
+                    rt = p.get('runtime') or {}
+                    module = rt.get('module')
+                    export = rt.get('export')
+                    if not (pid and module and export):
+                        continue
+                    # Map export like 'RenderX.Plugins.LibraryComponent.LibraryComponentPlugin' to class 'LibraryComponentPlugin'
+                    class_name = export.split('.')[-1]
+                    if any(cand.lower() == (pid or '').lower() for cand in plugin_id_candidates):
+                        present_type = type_present(class_name)
+                        status = 'present' if (present_type and loader_support and callsite_support) else 'missing'
+                        reason = None
+                        if status == 'missing':
+                            missing_bits = []
+                            if not present_type:
+                                missing_bits.append('type not found in src')
+                            if not loader_support:
+                                missing_bits.append('loader lacks runtime support')
+                            if not callsite_support:
+                                missing_bits.append('MainWindow does not invoke runtime loader')
+                            reason = ', '.join(missing_bits)
+                        audit['runtime_plugins'].append({
+                            'pluginId': pid,
+                            'module': module,
+                            'export': export,
+                            'class': class_name,
+                            'status': status,
+                            'reason': reason
+                        })
         except Exception:
             pass
 
@@ -1773,6 +1854,23 @@ class ReportGenerator:
                 report.append("### Layout Slots\n")
                 report.append(', '.join(sorted({s.get('slot') for s in layout_slots if s.get('slot')})))
                 report.append("")
+            
+            # Runtime plugins audit
+            runtime_plugins = ma.get('runtime_plugins', [])
+            if runtime_plugins:
+                present_rp = [rp for rp in runtime_plugins if rp.get('status') == 'present']
+                missing_rp = [rp for rp in runtime_plugins if rp.get('status') == 'missing']
+                report.append(f"### Runtime Plugins ({len(present_rp)} present / {len(missing_rp)} missing)\n")
+                for rp in runtime_plugins:
+                    emoji = '✅' if rp.get('status') == 'present' else '🔴'
+                    reason_str = f" — {rp.get('reason')}" if rp.get('reason') else ''
+                    report.append(f"- {emoji} {rp.get('export')} (pluginId: {rp.get('pluginId')}, class: {rp.get('class')}){reason_str}")
+                if missing_rp:
+                    report.append("\n**Remediation:**")
+                    report.append("- Ensure `PluginLoader.LoadRuntimePluginsAsync` exists and is invoked during startup")
+                    report.append("- Verify the plugin class is defined in the codebase")
+                    report.append("- Confirm manifest entry includes `runtime.module` and `runtime.export` properties")
+                report.append("")
                 
         # Component Details
         report.append("## 📋 Component Details\n")
@@ -1822,6 +1920,57 @@ class ReportGenerator:
                     report.append(f"   - {gap.description}")
                 report.append("")
                 
+        # How to reproduce / verify section (TDD-style loop)
+        try:
+            report.append("## 🔁 Reproduce and Verify (TDD loop)\n")
+            # Build flags from args
+            flags = []
+            if args.show_css_gap:
+                flags.append('--show-css-gap')
+            if args.show_component_gap:
+                flags.append('--show-component-gap')
+            if args.show_feature_gap:
+                flags.append('--show-feature-gap')
+            if args.quick_wins:
+                flags.append('--quick-wins')
+            if getattr(args, 'feature_map', None):
+                flags.append(f"--feature-map {args.feature_map}")
+            out_name = f"migration_tools/output/gap_analysis_{analysis.plugin_name}_feature_links.md"
+            cmd = (
+                f"& ./.venv/Scripts/Activate.ps1; "
+                f"./.venv/Scripts/python.exe migration_tools/web_desktop_gap_analyzer.py "
+                f"--plugin {analysis.plugin_name} --output {out_name} " + ' '.join(flags)
+            )
+            report.append("### Steps\n")
+            report.append("1. Open a PowerShell in the repo root.")
+            report.append("2. Activate the Python env and run the analyzer:")
+            report.append("")
+            report.append("```powershell")
+            report.append(cmd)
+            report.append("```")
+            report.append("")
+            report.append("3. Open the regenerated report:")
+            report.append(f"   - `{out_name}`")
+            report.append("")
+            report.append("### Success criteria")
+            report.append("- Executive Summary → Total Gaps decreases vs last run (ideally 0).")
+            report.append("- Feature Map Audit → no entries with `missing` or `unmapped`.")
+            report.append("- Manifest Audit → `missing` counts for Routes/Topics are 0.")
+            report.append("- No MISPLACED AI CHAT TOGGLE / AI AVAILABILITY HINT gaps remain.")
+            report.append("")
+            report.append("### Optional pre-checks")
+            report.append("- Rebuild desktop to ensure XAML compiles:")
+            report.append("```powershell")
+            report.append("dotnet build src/RenderX.Shell.Avalonia.sln -c Release")
+            report.append("```")
+            report.append("- Rebuild web packages as needed:")
+            report.append("```powershell")
+            report.append("npm run build")
+            report.append("```")
+            report.append("")
+        except Exception:
+            pass
+
         return '\n'.join(report)
     
     @staticmethod

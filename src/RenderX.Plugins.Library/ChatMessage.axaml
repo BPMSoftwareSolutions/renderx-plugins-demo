@@ -78,31 +78,36 @@
                             <!-- Action Buttons -->
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <Button x:Name="AddToLibraryButton"
-                                        Content="➕ Add to Library"
+                                        Content="➕ Add to Component Library"
                                         Classes="action-button primary"
                                         FontSize="11"
-                                        Padding="8,4" />
+                                        Padding="8,4"
+                                        ToolTip.Tip="Add to Component Library" />
                                 <Button x:Name="ViewJSONButton"
-                                        Content="📄 View JSON"
+                                        Content="📄 View/Hide JSON"
                                         Classes="action-button secondary"
                                         FontSize="11"
                                         Padding="8,4"
-                                        Click="OnViewJSONClick" />
+                                        Click="OnViewJSONClick"
+                                        ToolTip.Tip="View/Hide JSON" />
                                 <Button x:Name="CopyJSONButton"
                                         Content="📋 Copy JSON"
                                         Classes="action-button secondary"
                                         FontSize="11"
-                                        Padding="8,4" />
+                                        Padding="8,4"
+                                        ToolTip.Tip="Copy JSON to clipboard" />
                                 <Button x:Name="EditButton"
-                                        Content="✏️ Edit"
+                                        Content="✏️ Edit component"
                                         Classes="action-button secondary"
                                         FontSize="11"
-                                        Padding="8,4" />
+                                        Padding="8,4"
+                                        ToolTip.Tip="Edit component" />
                                 <Button x:Name="RegenerateButton"
-                                        Content="🔄 Try Again"
+                                        Content="🔄 Generate a new version"
                                         Classes="action-button secondary"
                                         FontSize="11"
-                                        Padding="8,4" />
+                                        Padding="8,4"
+                                        ToolTip.Tip="Generate a new version" />
                             </StackPanel>
                             
                             <!-- JSON Display (initially hidden) -->

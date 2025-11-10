@@ -96,6 +96,17 @@ public partial class MainWindow : Window
                 }
             }
 
+            // Load runtime plugins (non-UI) from manifest and register them with the conductor
+            try
+            {
+                var runtimeLoaded = await pluginLoader.LoadRuntimePluginsAsync(_serviceProvider);
+                _logger.LogInformation("Runtime plugins loaded: {Count}", runtimeLoaded);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading runtime plugins");
+            }
+
             // Wire UI events from manifest (ADR-0037)
             _uiEventService = _serviceProvider.GetRequiredService<Infrastructure.Events.IUiEventService>();
             var uiEventsManifestPath = Path.Combine(AppContext.BaseDirectory, "manifests", "uiEvents.json");

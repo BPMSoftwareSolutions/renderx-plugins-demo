@@ -1,6 +1,6 @@
 # Web vs Desktop Gap Analysis: Library
 
-**Generated:** 2025-11-09 22:07:30
+**Generated:** 2025-11-09 22:29:29
 
 ## 📊 Executive Summary
 
@@ -8,18 +8,18 @@
 |--------|-------|
 | Web Components | 11 |
 | Desktop Components | 30 |
-| Total Gaps Found | 42 |
-| Missing Components | 9 |
-| Missing Features | 30 |
+| Total Gaps Found | 49 |
+| Missing Components | 10 |
+| Missing Features | 36 |
 | Style Gaps | 3 |
-| Quick Win Opportunities | 7 |
+| Quick Win Opportunities | 10 |
 
 ### Gap Severity Breakdown
 
-- 🔴 **Critical:** 0
+- 🔴 **Critical:** 1
 - 🟠 **High:** 6
-- 🟡 **Medium:** 33
-- 🟢 **Low:** 3
+- 🟡 **Medium:** 36
+- 🟢 **Low:** 6
 
 ### Code Volume
 
@@ -29,18 +29,18 @@
 
 ## 🚀 Quick Win Opportunities
 
-### 1. Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-
-### 2. Missing Component: drag.symphony
+### 1. Missing Component: drag.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
 Web component "drag.symphony" (43 lines) not found in desktop implementation
+
+
+### 2. Missing Component: drop.container.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
 
 
 ### 3. Missing Component: drop.symphony
@@ -86,18 +86,28 @@ Missing AI chat toggle button
 - Replace solid colors with gradient brushes
 - Create reusable gradient resources
 
+### 8. Manifest Topic Route Missing: library.container.drop.requested
+
+**Severity:** LOW | **Effort:** quick
+
+Topic 'library.container.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+
+
+### 9. Manifest Topic Route Missing: library.component.drag.start.requested
+
+**Severity:** LOW | **Effort:** quick
+
+Topic 'library.component.drag.start.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+
+
+### 10. Manifest Topic Route Missing: library.component.drop.requested
+
+**Severity:** LOW | **Effort:** quick
+
+Topic 'library.component.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+
+
 ## 🧩 Component Implementation Gaps
-
-### 🟡 Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
-- **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
-- **Impact:** Users will not have access to this UI component
 
 ### 🟡 Missing Component: drag.symphony
 
@@ -110,15 +120,15 @@ Web component "drag.symphony" (43 lines) not found in desktop implementation
 - **Web Source:** [packages/library-component/src/symphonies/drag.symphony.ts](packages/library-component/src/symphonies/drag.symphony.ts)
 - **Impact:** Users will not have access to this UI component
 
-### 🟡 Missing Component: drop.symphony
+### 🟡 Missing Component: drop.container.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
-Web component "drop.symphony" (31 lines) not found in desktop implementation
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
 
-- **Web:** packages\library-component\src\symphonies\drop.symphony.ts (unknown)
+- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
 - **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drop.symphony.ts](packages/library-component/src/symphonies/drop.symphony.ts)
+- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
 - **Impact:** Users will not have access to this UI component
 
 ### 🟠 Missing Component: drag.preview.stage-crew
@@ -132,11 +142,22 @@ Web component "drag.preview.stage-crew" (151 lines) not found in desktop impleme
 - **Web Source:** [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
 - **Impact:** Users will not have access to this UI component
 
+### 🟡 Missing Component: drop.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.symphony" (31 lines) not found in desktop implementation
+
+- **Web:** packages\library-component\src\symphonies\drop.symphony.ts (unknown)
+- **Desktop:** Not implemented
+- **Web Source:** [packages/library-component/src/symphonies/drop.symphony.ts](packages/library-component/src/symphonies/drop.symphony.ts)
+- **Impact:** Users will not have access to this UI component
+
 ### 🟠 🔴 MISSING UI ELEMENTS in ChatMessage
 
 **Severity:** HIGH | **Effort:** medium
 
-Desktop missing 3 UI elements that web renders: code (expected code), h4 (expected h4), pre (expected pre)
+Desktop missing 3 UI elements that web renders: pre (expected pre), h4 (expected h4), code (expected code)
 
 - **Web:** Web renders: button, code, div, h4, p, pre, span
 - **Desktop:** Desktop renders: Border, Button, Grid, StackPanel, TextBlock, UserControl
@@ -149,8 +170,8 @@ Desktop missing 3 UI elements that web renders: code (expected code), h4 (expect
 
 Desktop missing 4 text labels/content that web displays
 
-- **Web:** Web shows: ➕ Add to Library, 🔄 Try Again, ✏️ Edit, Hide JSON
-- **Desktop:** Desktop shows: Component Name, Component description, ➕ Add to Component Library, 📄 View/Hide JSON, ✏️ Edit component
+- **Web:** Web shows: ✏️ Edit, ➕ Add to Library, Hide JSON, 🔄 Try Again
+- **Desktop:** Desktop shows: Edit component, ✕, User, ➕ Add to Component Library, 📄 View/Hide JSON
 - **Web Source:** [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
 - **Impact:** Users see different labels, headings, or instructions than web version
 
@@ -186,6 +207,16 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 - **Desktop:** Desktop renders: Border, BrushTransition, Button, Setter, StackPanel, Style, TextBlock, TransformGroup, TransformOperationsTransition, Transitions, TranslateTransform, UserControl
 - **Web Source:** [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Impact:** Users see incomplete or different UI structure than web version
+
+### 🔴 🔴 RUNTIME PLUGIN NOT LOADED: LibraryPlugin
+
+**Severity:** CRITICAL | **Effort:** medium
+
+Plugin class 'RenderX.Plugins.Library.LibraryPlugin' (pluginId: LibraryPlugin) is declared in plugin-manifest.json but not being instantiated at runtime. Reason: type not found in src
+
+- **Web:** plugin-manifest.json declares runtime plugin with module='RenderX.Plugins.Library.dll' and export='RenderX.Plugins.Library.LibraryPlugin'
+- **Desktop:** Plugin not loaded/registered at runtime
+- **Impact:** Plugin functionality completely unavailable - no breakpoints will hit, no logic executes
 
 ## ⚙️ Feature Implementation Gaps
 
@@ -224,12 +255,12 @@ Desktop missing 1 UI elements that web renders: style (expected style)
   - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
-- **File Upload** (medium)
-  - Handles file uploads
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
 - **Form Handling** (medium)
   - Implements form input and submission
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
+- **File Upload** (medium)
+  - Handles file uploads
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
 
@@ -242,12 +273,12 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ### LibraryPreview
 
-- **JSON Metadata Extraction** (medium)
-  - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Emoji Icon Display** (medium)
   - Displays emoji icons extracted from component metadata
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
+- **JSON Metadata Extraction** (medium)
+  - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Component Card Rendering** (medium)
@@ -350,6 +381,30 @@ Desktop missing 1 UI elements that web renders: style (expected style)
   - Web feature "Search/Filter" not satisfied by any mapped desktop feature ['Search/Filter']
   - Effort: medium
   - Web Source: [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
+
+### Manifest Interaction Missing
+
+- **library.container.drop** (medium)
+  - Web manifest routes 'library.container.drop' to plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: medium
+- **library.drag.move** (medium)
+  - Web manifest routes 'library.drag.move' to plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: medium
+- **library.drop** (medium)
+  - Web manifest routes 'library.drop' to plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: medium
+
+### Manifest Topic Route Missing
+
+- **library.container.drop.requested** (low)
+  - Topic 'library.container.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: quick
+- **library.component.drag.start.requested** (low)
+  - Topic 'library.component.drag.start.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: quick
+- **library.component.drop.requested** (low)
+  - Topic 'library.component.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: quick
 
 ## 🎨 CSS & Styling Gaps
 
@@ -461,20 +516,36 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ## 🧾 Manifest Audit (Declared vs Desktop)
 
-### Routes / Interactions (1 present / 0 missing)
+### Routes / Interactions (1 present / 3 missing)
 
+- 🟠 library.container.drop → LibraryComponentPlugin (sequence library-component-container-drop-symphony) — missing
+- 🟠 library.drag.move → LibraryComponentPlugin (sequence library-component-drag-symphony) — missing
+- 🟠 library.drop → LibraryComponentPlugin (sequence library-component-drop-symphony) — missing
 - ✅ library.load → LibraryPlugin (sequence library-load-symphony) — present
 
-### Topics (4 present / 0 missing)
+### Topics (4 present / 3 missing)
 
 - ✅ library.load.requested → LibraryPlugin (sequence library-load-symphony) — present
 - ✅ library.components.load → LibraryPlugin (sequence library-load-symphony) — present
 - ✅ library.components.notify-ui → LibraryPlugin (sequence library-load-symphony) — present
+- 🟡 library.container.drop.requested → LibraryComponentPlugin (sequence library-component-container-drop-symphony) — missing
+- 🟡 library.component.drag.start.requested → LibraryComponentPlugin (sequence library-component-drag-symphony) — missing
+- 🟡 library.component.drop.requested → LibraryComponentPlugin (sequence library-component-drop-symphony) — missing
 - ✅ library.drop → LibraryPlugin (sequence library-load-symphony) — present
 
 ### Layout Slots
 
 canvas, controlPanel, headerCenter, headerLeft, headerRight, library
+
+### Runtime Plugins (1 present / 1 missing)
+
+- 🔴 RenderX.Plugins.Library.LibraryPlugin (pluginId: LibraryPlugin, class: LibraryPlugin) — type not found in src
+- ✅ RenderX.Plugins.LibraryComponent.LibraryComponentPlugin (pluginId: LibraryComponentPlugin, class: LibraryComponentPlugin)
+
+**Remediation:**
+- Ensure `PluginLoader.LoadRuntimePluginsAsync` exists and is invoked during startup
+- Verify the plugin class is defined in the codebase
+- Confirm manifest entry includes `runtime.module` and `runtime.export` properties
 
 ## 📋 Component Details
 
@@ -526,7 +597,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Props:** setShowAIChat] = React.useState(false);
   const safeItems = Array.isArray(items) ? items, {
           onComponentsLoaded
-- **Hooks:** useState, useCallback, useConductor, React.useCallback, useEffect
+- **Hooks:** React.useState, React.useCallback, React.useEffect, useConductor, useState
 - **CSS Classes:** 18
 - **Features:** Error Handling, Emoji Icon Display
 

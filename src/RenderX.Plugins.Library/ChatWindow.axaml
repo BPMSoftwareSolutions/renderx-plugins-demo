@@ -88,8 +88,9 @@
             <!-- Welcome Screen (shown when no messages) -->
             <Border x:Name="WelcomeScreen"
                     Background="{DynamicResource Color.Background.Primary}"
-                    IsVisible="True">
-                <StackPanel Spacing="16" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="24">
+                    IsVisible="True"
+                    Padding="24">
+                <StackPanel Spacing="16" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="🤖"
                                FontSize="48"
                                HorizontalAlignment="Center" />

@@ -1,6 +1,6 @@
 # Web vs Desktop Gap Analysis: Library
 
-**Generated:** 2025-11-09 22:07:30
+**Generated:** 2025-11-09 22:32:40
 
 ## 📊 Executive Summary
 
@@ -8,18 +8,18 @@
 |--------|-------|
 | Web Components | 11 |
 | Desktop Components | 30 |
-| Total Gaps Found | 42 |
+| Total Gaps Found | 48 |
 | Missing Components | 9 |
-| Missing Features | 30 |
+| Missing Features | 36 |
 | Style Gaps | 3 |
-| Quick Win Opportunities | 7 |
+| Quick Win Opportunities | 10 |
 
 ### Gap Severity Breakdown
 
 - 🔴 **Critical:** 0
 - 🟠 **High:** 6
-- 🟡 **Medium:** 33
-- 🟢 **Low:** 3
+- 🟡 **Medium:** 36
+- 🟢 **Low:** 6
 
 ### Code Volume
 
@@ -29,25 +29,25 @@
 
 ## 🚀 Quick Win Opportunities
 
-### 1. Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-
-### 2. Missing Component: drag.symphony
+### 1. Missing Component: drag.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
 Web component "drag.symphony" (43 lines) not found in desktop implementation
 
 
-### 3. Missing Component: drop.symphony
+### 2. Missing Component: drop.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
 Web component "drop.symphony" (31 lines) not found in desktop implementation
+
+
+### 3. Missing Component: drop.container.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
 
 
 ### 4. 🔴 MISSING TEXT CONTENT in ChatMessage
@@ -86,18 +86,28 @@ Missing AI chat toggle button
 - Replace solid colors with gradient brushes
 - Create reusable gradient resources
 
+### 8. Manifest Topic Route Missing: library.container.drop.requested
+
+**Severity:** LOW | **Effort:** quick
+
+Topic 'library.container.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+
+
+### 9. Manifest Topic Route Missing: library.component.drag.start.requested
+
+**Severity:** LOW | **Effort:** quick
+
+Topic 'library.component.drag.start.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+
+
+### 10. Manifest Topic Route Missing: library.component.drop.requested
+
+**Severity:** LOW | **Effort:** quick
+
+Topic 'library.component.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+
+
 ## 🧩 Component Implementation Gaps
-
-### 🟡 Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
-- **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
-- **Impact:** Users will not have access to this UI component
 
 ### 🟡 Missing Component: drag.symphony
 
@@ -132,11 +142,22 @@ Web component "drag.preview.stage-crew" (151 lines) not found in desktop impleme
 - **Web Source:** [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
 - **Impact:** Users will not have access to this UI component
 
+### 🟡 Missing Component: drop.container.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
+
+- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
+- **Desktop:** Not implemented
+- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
+- **Impact:** Users will not have access to this UI component
+
 ### 🟠 🔴 MISSING UI ELEMENTS in ChatMessage
 
 **Severity:** HIGH | **Effort:** medium
 
-Desktop missing 3 UI elements that web renders: code (expected code), h4 (expected h4), pre (expected pre)
+Desktop missing 3 UI elements that web renders: h4 (expected h4), code (expected code), pre (expected pre)
 
 - **Web:** Web renders: button, code, div, h4, p, pre, span
 - **Desktop:** Desktop renders: Border, Button, Grid, StackPanel, TextBlock, UserControl
@@ -149,8 +170,8 @@ Desktop missing 3 UI elements that web renders: code (expected code), h4 (expect
 
 Desktop missing 4 text labels/content that web displays
 
-- **Web:** Web shows: ➕ Add to Library, 🔄 Try Again, ✏️ Edit, Hide JSON
-- **Desktop:** Desktop shows: Component Name, Component description, ➕ Add to Component Library, 📄 View/Hide JSON, ✏️ Edit component
+- **Web:** Web shows: Hide JSON, 🔄 Try Again, ➕ Add to Library, ✏️ Edit
+- **Desktop:** Desktop shows: Message content, Edit component, ✏️ Edit component, ➕ Add to Component Library, User
 - **Web Source:** [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
 - **Impact:** Users see different labels, headings, or instructions than web version
 
@@ -191,23 +212,23 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ### ChatMessage
 
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
 - **Form Handling** (medium)
   - Implements form input and submission
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
 
 ### ConfigStatusUI
 
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
 - **Form Handling** (medium)
   - Implements form input and submission
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
 
@@ -220,16 +241,16 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ### CustomComponentUpload
 
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
+- **Form Handling** (medium)
+  - Implements form input and submission
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
 - **File Upload** (medium)
   - Handles file uploads
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
-- **Form Handling** (medium)
-  - Implements form input and submission
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
 
@@ -246,12 +267,12 @@ Desktop missing 1 UI elements that web renders: style (expected style)
   - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Component Card Rendering** (medium)
   - Renders component preview cards with styling from JSON data
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 
@@ -350,6 +371,30 @@ Desktop missing 1 UI elements that web renders: style (expected style)
   - Web feature "Search/Filter" not satisfied by any mapped desktop feature ['Search/Filter']
   - Effort: medium
   - Web Source: [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
+
+### Manifest Interaction Missing
+
+- **library.container.drop** (medium)
+  - Web manifest routes 'library.container.drop' to plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: medium
+- **library.drag.move** (medium)
+  - Web manifest routes 'library.drag.move' to plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: medium
+- **library.drop** (medium)
+  - Web manifest routes 'library.drop' to plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: medium
+
+### Manifest Topic Route Missing
+
+- **library.container.drop.requested** (low)
+  - Topic 'library.container.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: quick
+- **library.component.drag.start.requested** (low)
+  - Topic 'library.component.drag.start.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: quick
+- **library.component.drop.requested** (low)
+  - Topic 'library.component.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
+  - Effort: quick
 
 ## 🎨 CSS & Styling Gaps
 
@@ -461,20 +506,31 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ## 🧾 Manifest Audit (Declared vs Desktop)
 
-### Routes / Interactions (1 present / 0 missing)
+### Routes / Interactions (1 present / 3 missing)
 
+- 🟠 library.container.drop → LibraryComponentPlugin (sequence library-component-container-drop-symphony) — missing
+- 🟠 library.drag.move → LibraryComponentPlugin (sequence library-component-drag-symphony) — missing
+- 🟠 library.drop → LibraryComponentPlugin (sequence library-component-drop-symphony) — missing
 - ✅ library.load → LibraryPlugin (sequence library-load-symphony) — present
 
-### Topics (4 present / 0 missing)
+### Topics (4 present / 3 missing)
 
 - ✅ library.load.requested → LibraryPlugin (sequence library-load-symphony) — present
 - ✅ library.components.load → LibraryPlugin (sequence library-load-symphony) — present
 - ✅ library.components.notify-ui → LibraryPlugin (sequence library-load-symphony) — present
+- 🟡 library.container.drop.requested → LibraryComponentPlugin (sequence library-component-container-drop-symphony) — missing
+- 🟡 library.component.drag.start.requested → LibraryComponentPlugin (sequence library-component-drag-symphony) — missing
+- 🟡 library.component.drop.requested → LibraryComponentPlugin (sequence library-component-drop-symphony) — missing
 - ✅ library.drop → LibraryPlugin (sequence library-load-symphony) — present
 
 ### Layout Slots
 
 canvas, controlPanel, headerCenter, headerLeft, headerRight, library
+
+### Runtime Plugins (2 present / 0 missing)
+
+- ✅ RenderX.Plugins.Library.LibraryPlugin (pluginId: LibraryPlugin, class: LibraryPlugin)
+- ✅ RenderX.Plugins.LibraryComponent.LibraryComponentPlugin (pluginId: LibraryComponentPlugin, class: LibraryComponentPlugin)
 
 ## 📋 Component Details
 
@@ -492,7 +548,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Type:** function
 - **Lines:** 311
 - **Props:** None
-- **Hooks:** useState, useEffect
+- **Hooks:** useEffect, useState
 - **CSS Classes:** 23
 - **Features:** Modal/Dialog, Animations, Emoji Icon Display
 
@@ -526,7 +582,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Props:** setShowAIChat] = React.useState(false);
   const safeItems = Array.isArray(items) ? items, {
           onComponentsLoaded
-- **Hooks:** useState, useCallback, useConductor, React.useCallback, useEffect
+- **Hooks:** useCallback, useState, useEffect, React.useEffect, React.useState
 - **CSS Classes:** 18
 - **Features:** Error Handling, Emoji Icon Display
 

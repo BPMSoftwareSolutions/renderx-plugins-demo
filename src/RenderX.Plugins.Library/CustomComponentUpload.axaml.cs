@@ -5,6 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace RenderX.Plugins.Library;
@@ -32,6 +33,15 @@ public partial class CustomComponentUpload : UserControl
     public CustomComponentUpload()
     {
         InitializeComponent();
+
+        // Wire up drag-and-drop handlers
+        var dragDropZone = this.FindControl<Border>("DragDropZone");
+        if (dragDropZone != null)
+        {
+            dragDropZone.AddHandler(DragDrop.DragOverEvent, OnDragOver);
+            dragDropZone.AddHandler(DragDrop.DragLeaveEvent, OnDragLeave);
+            dragDropZone.AddHandler(DragDrop.DropEvent, OnDrop);
+        }
     }
 
     private async void OnBrowseClick(object? sender, RoutedEventArgs e)
@@ -251,7 +261,7 @@ public partial class CustomComponentUpload : UserControl
         if (e.Data.Contains(DataFormats.Files))
         {
             var files = e.Data.GetFiles();
-            if (files != null && files.Count() > 0)
+            if (files != null && files.Any())
             {
                 var filePath = files.First().Path.LocalPath;
                 if (!string.IsNullOrEmpty(filePath))

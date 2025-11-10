@@ -49,9 +49,6 @@
                     BorderThickness="2"
                     CornerRadius="6"
                     Padding="24"
-                    DragOver="OnDragOver"
-                    DragLeave="OnDragLeave"
-                    Drop="OnDrop"
                     Cursor="Hand">
                 <StackPanel Spacing="8" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="📁"

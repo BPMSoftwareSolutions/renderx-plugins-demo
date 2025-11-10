@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
+using Avalonia.Media;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -130,13 +131,14 @@ public partial class CustomComponentList : UserControl
             CanResize = false
         };
 
-        var panel = new StackPanel { Spacing = 12, Padding = new Thickness(16) };
+        var panel = new StackPanel { Spacing = 12 };
+        panel.Margin = new Thickness(16);
 
         var messageBlock = new TextBlock
         {
             Text = message,
             TextWrapping = TextWrapping.Wrap,
-            Foreground = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#374151"))
+            Foreground = new SolidColorBrush(Color.Parse("#374151"))
         };
         panel.Children.Add(messageBlock);
 
@@ -146,16 +148,16 @@ public partial class CustomComponentList : UserControl
         {
             Content = "Cancel",
             Padding = new Thickness(12, 6),
-            Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#e5e7eb")),
-            Foreground = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#374151"))
+            Background = new SolidColorBrush(Color.Parse("#e5e7eb")),
+            Foreground = new SolidColorBrush(Color.Parse("#374151"))
         };
 
         var removeButton = new Button
         {
             Content = "Remove",
             Padding = new Thickness(12, 6),
-            Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#ef4444")),
-            Foreground = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#ffffff"))
+            Background = new SolidColorBrush(Color.Parse("#ef4444")),
+            Foreground = new SolidColorBrush(Color.Parse("#ffffff"))
         };
 
         bool result = false;
@@ -168,7 +170,11 @@ public partial class CustomComponentList : UserControl
         panel.Children.Add(buttonPanel);
 
         window.Content = panel;
-        await window.ShowDialog(this.FindAncestorOfType<Window>() ?? new Window());
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel is Window parentWindow)
+        {
+            await window.ShowDialog(parentWindow);
+        }
 
         return result;
     }
