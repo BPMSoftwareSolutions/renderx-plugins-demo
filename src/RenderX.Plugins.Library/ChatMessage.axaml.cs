@@ -156,7 +156,7 @@ public partial class ChatMessage : UserControl
             // Update button text to reflect state
             if (viewJSONButton != null)
             {
-                viewJSONButton.Content = isVisible ? "📄 View JSON" : "👁️ Hide JSON";
+                viewJSONButton.Content = isVisible ? "📄 View JSON" : "📄 Hide JSON";
             }
         }
     }

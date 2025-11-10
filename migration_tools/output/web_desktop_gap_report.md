@@ -1,6 +1,6 @@
-# Web vs Desktop Gap Analysis: Library
+# Web vs Desktop Gap Analysis: Test
 
-**Generated:** 2025-11-09 18:28:45
+**Generated:** 2025-11-10 00:08:55
 
 ## 📊 Executive Summary
 
@@ -39,10 +39,40 @@
 
 No significant style gaps detected.
 
+## 🧾 Manifest Audit (Declared vs Desktop)
+
+### Layout Slots
+
+canvas, controlPanel, headerCenter, headerLeft, headerRight, library
+
 ## 📋 Component Details
 
 ### Web Components
 
 ### Desktop Components
 
-## 💡 Implementation Recommendations
+## 🔁 Reproduce and Verify (TDD loop)
+
+### Steps
+
+1. Open a PowerShell in the repo root.
+
+2. Activate the Python env and run the analyzer:
+
+
+```powershell
+
+./.venv/Scripts/python.exe migration_tools/web_desktop_gap_analyzer.py
+
+```
+
+
+### Success criteria
+
+- Executive Summary → Total Gaps decreases vs last run (ideally 0).
+
+- Feature Map Audit → no entries with `missing` or `unmapped`.
+
+- Manifest Audit → `missing` counts for Routes/Topics are 0.
+
+- No MISPLACED AI CHAT TOGGLE / AI AVAILABILITY HINT gaps remain.

@@ -54,40 +54,69 @@
             </StackPanel>
         </Border>
         
-        <!-- Components List -->
+        <!-- Components Grid (2-column grid matching web) -->
         <ScrollViewer DockPanel.Dock="Top">
-            <ItemsControl x:Name="ComponentsItemsControl" Padding="8">
+            <ItemsControl x:Name="ComponentsItemsControl" Padding="12">
+                <!-- FIX: Add ItemsPanel with UniformGrid Columns="2" per analyzer recommendation -->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+                        <!-- FIX: Center content vertically and update styling per analyzer recommendation -->
                         <Border x:Name="ComponentBorder"
                                 Background="{DynamicResource Color.Background.Primary}"
-                                BorderBrush="{DynamicResource Color.Border.Secondary}"
-                                BorderThickness="1"
-                                CornerRadius="4"
-                                Padding="12"
-                                Margin="0,4"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
+                                BorderThickness="2"
+                                CornerRadius="12"
+                                Padding="16"
+                                Margin="6"
                                 PointerPressed="OnComponentPointerPressed"
                                 DoubleTapped="OnComponentDoubleClick"
                                 Cursor="Hand">
-                            <StackPanel Spacing="4">
-                                <!-- Component with emoji icon -->
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <TextBlock Text="{Binding Icon}" 
-                                               FontSize="20"
-                                               VerticalAlignment="Center" />
-                                    <TextBlock Text="{Binding Name}" 
-                                               FontWeight="Bold" 
-                                               FontSize="14"
-                                               VerticalAlignment="Center"
-                                               Foreground="{DynamicResource Color.Text.Primary}" />
-                                </StackPanel>
-                                <TextBlock Text="{Binding Category}" 
-                                           FontSize="11" 
-                                           Foreground="{DynamicResource Color.Text.Secondary}" />
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3"/>
+                                </Transitions>
+                            </Border.Transitions>
+                            <Border.Styles>
+                                <Style Selector="Border:pointerover">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}" />
+                                    <Setter Property="RenderTransform">
+                                        <TransformGroup>
+                                            <TranslateTransform Y="-2"/>
+                                        </TransformGroup>
+                                    </Setter>
+                                </Style>
+                            </Border.Styles>
+                            <!-- FIX: Center content vertically (icon on top, text below) -->
+                            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                                <!-- Icon centered on top -->
+                                <TextBlock Text="{Binding Icon}" 
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,0,0,8" />
+                                <!-- Name centered -->
+                                <TextBlock Text="{Binding Name}" 
+                                           FontWeight="Medium" 
+                                           FontSize="12"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           Margin="0,0,0,4"
+                                           Foreground="{DynamicResource Color.Text.Primary}" />
+                                <!-- Description centered -->
                                 <TextBlock Text="{Binding Description}" 
                                            FontSize="10" 
-                                           Foreground="{DynamicResource Color.Text.Tertiary}"
-                                           TextWrapping="Wrap" />
+                                           Foreground="#999"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           LineHeight="1.3"
+                                           MaxWidth="180" />
                             </StackPanel>
                         </Border>
                     </DataTemplate>

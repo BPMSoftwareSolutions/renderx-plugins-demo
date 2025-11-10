@@ -1,6 +1,6 @@
 # Web vs Desktop Gap Analysis: Library
 
-**Generated:** 2025-11-09 22:40:12
+**Generated:** 2025-11-09 22:42:48
 
 ## 📊 Executive Summary
 
@@ -8,8 +8,8 @@
 |--------|-------|
 | Web Components | 11 |
 | Desktop Components | 30 |
-| Total Gaps Found | 46 |
-| Missing Components | 7 |
+| Total Gaps Found | 47 |
+| Missing Components | 8 |
 | Missing Features | 36 |
 | Style Gaps | 3 |
 | Quick Win Opportunities | 8 |
@@ -18,22 +18,22 @@
 
 - 🔴 **Critical:** 0
 - 🟠 **High:** 4
-- 🟡 **Medium:** 36
+- 🟡 **Medium:** 37
 - 🟢 **Low:** 6
 
 ### Code Volume
 
 - **Web:** 1,562 lines of code
-- **Desktop:** 4,395 lines of code
-- **Parity:** 281.4% of web implementation
+- **Desktop:** 4,424 lines of code
+- **Parity:** 283.2% of web implementation
 
 ## 🚀 Quick Win Opportunities
 
-### 1. Missing Component: drag.symphony
+### 1. Missing Component: drop.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
-Web component "drag.symphony" (43 lines) not found in desktop implementation
+Web component "drop.symphony" (31 lines) not found in desktop implementation
 
 
 ### 2. Missing Component: drop.container.symphony
@@ -43,11 +43,11 @@ Web component "drag.symphony" (43 lines) not found in desktop implementation
 Web component "drop.container.symphony" (31 lines) not found in desktop implementation
 
 
-### 3. Missing Component: drop.symphony
+### 3. Missing Component: drag.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
-Web component "drop.symphony" (31 lines) not found in desktop implementation
+Web component "drag.symphony" (43 lines) not found in desktop implementation
 
 
 ### 4. Missing Hover Effects
@@ -95,28 +95,6 @@ Topic 'library.component.drop.requested' references plugin 'LibraryComponentPlug
 
 ## 🧩 Component Implementation Gaps
 
-### 🟡 Missing Component: drag.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drag.symphony" (43 lines) not found in desktop implementation
-
-- **Web:** packages\library-component\src\symphonies\drag.symphony.ts (unknown)
-- **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drag.symphony.ts](packages/library-component/src/symphonies/drag.symphony.ts)
-- **Impact:** Users will not have access to this UI component
-
-### 🟡 Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
-- **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
-- **Impact:** Users will not have access to this UI component
-
 ### 🟡 Missing Component: drop.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
@@ -139,11 +117,33 @@ Web component "drag.preview.stage-crew" (151 lines) not found in desktop impleme
 - **Web Source:** [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
 - **Impact:** Users will not have access to this UI component
 
+### 🟡 Missing Component: drop.container.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
+
+- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
+- **Desktop:** Not implemented
+- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
+- **Impact:** Users will not have access to this UI component
+
+### 🟡 Missing Component: drag.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drag.symphony" (43 lines) not found in desktop implementation
+
+- **Web:** packages\library-component\src\symphonies\drag.symphony.ts (unknown)
+- **Desktop:** Not implemented
+- **Web Source:** [packages/library-component/src/symphonies/drag.symphony.ts](packages/library-component/src/symphonies/drag.symphony.ts)
+- **Impact:** Users will not have access to this UI component
+
 ### 🟠 🔴 MISSING UI ELEMENTS in ChatMessage
 
 **Severity:** HIGH | **Effort:** medium
 
-Desktop missing 3 UI elements that web renders: code (expected code), pre (expected pre), h4 (expected h4)
+Desktop missing 3 UI elements that web renders: h4 (expected h4), code (expected code), pre (expected pre)
 
 - **Web:** Web renders: button, code, div, h4, p, pre, span
 - **Desktop:** Desktop renders: Border, Button, Grid, StackPanel, TextBlock, UserControl
@@ -161,6 +161,17 @@ Desktop missing 2 UI elements that web renders: strong (expected strong), h4 (ex
 - **Web Source:** [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
 - **Impact:** Users see incomplete or different UI structure than web version
 
+### 🟡 LAYOUT PARITY ISSUES in LibraryPanel
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web uses grid layout; desktop lacks UniformGrid/WrapPanel
+
+- **Web:** Grid hints: {'is_grid': True, 'has_aspect_square': False, 'has_centering': False, 'class_samples': ['custom-component-error', 'error-icon', 'error-text']}
+- **Desktop:** Panel hints: {'panel': None, 'orientation': None, 'has_uniform_grid': False, 'has_wrap_panel': False, 'has_stack_panel': True, 'has_square_card': False}
+- **Web Source:** [packages/library/src/ui/LibraryPanel.tsx](packages/library/src/ui/LibraryPanel.tsx)
+- **Impact:** Visual arrangement differs (card alignment/sizing/parity)
+
 ### 🟠 🔴 MISSING UI ELEMENTS in LibraryPreview
 
 **Severity:** HIGH | **Effort:** medium
@@ -176,23 +187,23 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ### ChatMessage
 
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
 - **Form Handling** (medium)
   - Implements form input and submission
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/ChatMessage.tsx](packages/library/src/ui/ChatMessage.tsx)
 
 ### ConfigStatusUI
 
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
 - **Form Handling** (medium)
   - Implements form input and submission
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
 
@@ -209,12 +220,12 @@ Desktop missing 1 UI elements that web renders: style (expected style)
   - Handles file uploads
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
 - **Form Handling** (medium)
   - Implements form input and submission
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/CustomComponentUpload.tsx](packages/library/src/ui/CustomComponentUpload.tsx)
 
@@ -227,16 +238,16 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ### LibraryPreview
 
-- **Component Card Rendering** (medium)
-  - Renders component preview cards with styling from JSON data
+- **Emoji Icon Display** (medium)
+  - Displays emoji icons extracted from component metadata
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **JSON Metadata Extraction** (medium)
   - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
-- **Emoji Icon Display** (medium)
-  - Displays emoji icons extracted from component metadata
+- **Component Card Rendering** (medium)
+  - Renders component preview cards with styling from JSON data
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 
@@ -546,7 +557,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Props:** setShowAIChat] = React.useState(false);
   const safeItems = Array.isArray(items) ? items, {
           onComponentsLoaded
-- **Hooks:** React.useEffect, useState, useConductor, useEffect, React.useState
+- **Hooks:** useEffect, useCallback, React.useEffect, React.useState, useConductor
 - **CSS Classes:** 18
 - **Features:** Error Handling, Emoji Icon Display
 
@@ -635,11 +646,11 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Features:** Drag Ghost Image, Drag and Drop, Animations, ⚠️ Stub Implementation Detected, ⚠️ Hidden Controls Detected, 🔴 MISSING FILE LOADING, Dynamic CSS Injection, Emoji Icon Display
 
 #### LibraryPlugin
-- **Lines:** 437
+- **Lines:** 466
 - **Properties:** Id, Name, Category, Description, Icon
 - **Events:** None
-- **Styles:** 7
-- **Features:** Drag and Drop, File Operations, JSON Metadata Extraction, ⚠️ Hidden Controls Detected, �🔴 HARDCODED SAMPLE DATA, 🔴 MISSING FILE LOADING, Dynamic CSS Injection, Emoji Icon Display
+- **Styles:** 6
+- **Features:** Drag and Drop, Animations, File Operations, JSON Metadata Extraction, ⚠️ Hidden Controls Detected, �🔴 HARDCODED SAMPLE DATA, 🔴 MISSING FILE LOADING, Dynamic CSS Injection, Emoji Icon Display
 
 #### LibraryPreview
 - **Lines:** 516

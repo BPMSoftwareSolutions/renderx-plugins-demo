@@ -1,6 +1,6 @@
 # Web vs Desktop Gap Analysis: Library
 
-**Generated:** 2025-11-09 22:40:12
+**Generated:** 2025-11-09 22:41:06
 
 ## 📊 Executive Summary
 
@@ -8,17 +8,17 @@
 |--------|-------|
 | Web Components | 11 |
 | Desktop Components | 30 |
-| Total Gaps Found | 46 |
-| Missing Components | 7 |
+| Total Gaps Found | 48 |
+| Missing Components | 9 |
 | Missing Features | 36 |
 | Style Gaps | 3 |
-| Quick Win Opportunities | 8 |
+| Quick Win Opportunities | 9 |
 
 ### Gap Severity Breakdown
 
-- 🔴 **Critical:** 0
+- 🔴 **Critical:** 1
 - 🟠 **High:** 4
-- 🟡 **Medium:** 36
+- 🟡 **Medium:** 37
 - 🟢 **Low:** 6
 
 ### Code Volume
@@ -29,28 +29,39 @@
 
 ## 🚀 Quick Win Opportunities
 
-### 1. Missing Component: drag.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drag.symphony" (43 lines) not found in desktop implementation
-
-
-### 2. Missing Component: drop.container.symphony
+### 1. Missing Component: drop.container.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
 Web component "drop.container.symphony" (31 lines) not found in desktop implementation
 
 
-### 3. Missing Component: drop.symphony
+### 2. Missing Component: drop.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
 Web component "drop.symphony" (31 lines) not found in desktop implementation
 
 
-### 4. Missing Hover Effects
+### 3. Missing Component: drag.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drag.symphony" (43 lines) not found in desktop implementation
+
+
+### 4. 🔴 LAYOUT MISMATCH: Grid vs List in LibraryPanel
+
+**Severity:** CRITICAL | **Effort:** quick
+
+Web component LibraryPanel uses a 2-column grid layout (grid-template-columns), but desktop CustomComponentList uses a vertical list (StackPanel or no ItemsPanelTemplate). Cards will appear as a vertical list instead of a grid.
+
+**Recommendations:**
+- Add <ItemsControl.ItemsPanel> with <UniformGrid Columns="2" /> to match web grid
+- Alternatively use <WrapPanel Orientation="Horizontal" /> for responsive grid
+- Update card styling to center content vertically (web cards are centered, desktop may be horizontal)
+
+### 5. Missing Hover Effects
 
 **Severity:** LOW | **Effort:** quick
 
@@ -61,7 +72,7 @@ Web component "drop.symphony" (31 lines) not found in desktop implementation
 - Implement hover state visual changes
 - Use RenderTransform for subtle hover animations
 
-### 5. Missing Gradient Backgrounds
+### 6. Missing Gradient Backgrounds
 
 **Severity:** LOW | **Effort:** quick
 
@@ -72,21 +83,21 @@ Web component "drop.symphony" (31 lines) not found in desktop implementation
 - Replace solid colors with gradient brushes
 - Create reusable gradient resources
 
-### 6. Manifest Topic Route Missing: library.container.drop.requested
+### 7. Manifest Topic Route Missing: library.container.drop.requested
 
 **Severity:** LOW | **Effort:** quick
 
 Topic 'library.container.drop.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
 
 
-### 7. Manifest Topic Route Missing: library.component.drag.start.requested
+### 8. Manifest Topic Route Missing: library.component.drag.start.requested
 
 **Severity:** LOW | **Effort:** quick
 
 Topic 'library.component.drag.start.requested' references plugin 'LibraryComponentPlugin' but corresponding desktop component wasn't found.
 
 
-### 8. Manifest Topic Route Missing: library.component.drop.requested
+### 9. Manifest Topic Route Missing: library.component.drop.requested
 
 **Severity:** LOW | **Effort:** quick
 
@@ -95,15 +106,15 @@ Topic 'library.component.drop.requested' references plugin 'LibraryComponentPlug
 
 ## 🧩 Component Implementation Gaps
 
-### 🟡 Missing Component: drag.symphony
+### 🟠 Missing Component: drag.preview.stage-crew
 
-**Severity:** MEDIUM | **Effort:** medium
+**Severity:** HIGH | **Effort:** medium
 
-Web component "drag.symphony" (43 lines) not found in desktop implementation
+Web component "drag.preview.stage-crew" (151 lines) not found in desktop implementation
 
-- **Web:** packages\library-component\src\symphonies\drag.symphony.ts (unknown)
+- **Web:** packages\library-component\src\symphonies\drag\drag.preview.stage-crew.ts (unknown)
 - **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drag.symphony.ts](packages/library-component/src/symphonies/drag.symphony.ts)
+- **Web Source:** [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
 - **Impact:** Users will not have access to this UI component
 
 ### 🟡 Missing Component: drop.container.symphony
@@ -128,22 +139,22 @@ Web component "drop.symphony" (31 lines) not found in desktop implementation
 - **Web Source:** [packages/library-component/src/symphonies/drop.symphony.ts](packages/library-component/src/symphonies/drop.symphony.ts)
 - **Impact:** Users will not have access to this UI component
 
-### 🟠 Missing Component: drag.preview.stage-crew
+### 🟡 Missing Component: drag.symphony
 
-**Severity:** HIGH | **Effort:** medium
+**Severity:** MEDIUM | **Effort:** medium
 
-Web component "drag.preview.stage-crew" (151 lines) not found in desktop implementation
+Web component "drag.symphony" (43 lines) not found in desktop implementation
 
-- **Web:** packages\library-component\src\symphonies\drag\drag.preview.stage-crew.ts (unknown)
+- **Web:** packages\library-component\src\symphonies\drag.symphony.ts (unknown)
 - **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
+- **Web Source:** [packages/library-component/src/symphonies/drag.symphony.ts](packages/library-component/src/symphonies/drag.symphony.ts)
 - **Impact:** Users will not have access to this UI component
 
 ### 🟠 🔴 MISSING UI ELEMENTS in ChatMessage
 
 **Severity:** HIGH | **Effort:** medium
 
-Desktop missing 3 UI elements that web renders: code (expected code), pre (expected pre), h4 (expected h4)
+Desktop missing 3 UI elements that web renders: pre (expected pre), code (expected code), h4 (expected h4)
 
 - **Web:** Web renders: button, code, div, h4, p, pre, span
 - **Desktop:** Desktop renders: Border, Button, Grid, StackPanel, TextBlock, UserControl
@@ -161,6 +172,17 @@ Desktop missing 2 UI elements that web renders: strong (expected strong), h4 (ex
 - **Web Source:** [packages/library/src/ui/ConfigStatusUI.tsx](packages/library/src/ui/ConfigStatusUI.tsx)
 - **Impact:** Users see incomplete or different UI structure than web version
 
+### 🟡 LAYOUT PARITY ISSUES in LibraryPanel
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web uses grid layout; desktop lacks UniformGrid/WrapPanel
+
+- **Web:** Grid hints: {'is_grid': True, 'has_aspect_square': False, 'has_centering': False, 'class_samples': ['custom-component-error', 'error-icon', 'error-text']}
+- **Desktop:** Panel hints: {'panel': None, 'orientation': None, 'has_uniform_grid': False, 'has_wrap_panel': False, 'has_stack_panel': True, 'has_square_card': False}
+- **Web Source:** [packages/library/src/ui/LibraryPanel.tsx](packages/library/src/ui/LibraryPanel.tsx)
+- **Impact:** Visual arrangement differs (card alignment/sizing/parity)
+
 ### 🟠 🔴 MISSING UI ELEMENTS in LibraryPreview
 
 **Severity:** HIGH | **Effort:** medium
@@ -171,6 +193,17 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 - **Desktop:** Desktop renders: Border, BrushTransition, Button, Setter, StackPanel, Style, TextBlock, TransformGroup, TransformOperationsTransition, Transitions, TranslateTransform, UserControl
 - **Web Source:** [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Impact:** Users see incomplete or different UI structure than web version
+
+### 🔴 🔴 LAYOUT MISMATCH: Grid vs List in LibraryPanel
+
+**Severity:** CRITICAL | **Effort:** quick
+
+Web component LibraryPanel uses a 2-column grid layout (grid-template-columns), but desktop CustomComponentList uses a vertical list (StackPanel or no ItemsPanelTemplate). Cards will appear as a vertical list instead of a grid.
+
+- **Web:** CSS grid with 2 columns; {'is_grid': True, 'has_aspect_square': False, 'has_centering': False, 'class_samples': ['custom-component-error', 'error-icon', 'error-text']}
+- **Desktop:** Vertical StackPanel (default ItemsControl); {'panel': None, 'orientation': None, 'has_uniform_grid': False, 'has_wrap_panel': False, 'has_stack_panel': True, 'has_square_card': False}
+- **Web Source:** [packages/library/src/ui/LibraryPanel.tsx](packages/library/src/ui/LibraryPanel.tsx)
+- **Impact:** CRITICAL UX ISSUE: Layout completely different - cards stack vertically instead of side-by-side grid, wasting space and breaking visual design
 
 ## ⚙️ Feature Implementation Gaps
 
@@ -227,12 +260,12 @@ Desktop missing 1 UI elements that web renders: style (expected style)
 
 ### LibraryPreview
 
-- **Component Card Rendering** (medium)
-  - Renders component preview cards with styling from JSON data
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **JSON Metadata Extraction** (medium)
   - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
+- **Component Card Rendering** (medium)
+  - Renders component preview cards with styling from JSON data
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Emoji Icon Display** (medium)
@@ -512,7 +545,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Type:** function
 - **Lines:** 311
 - **Props:** None
-- **Hooks:** useEffect, useState
+- **Hooks:** useState, useEffect
 - **CSS Classes:** 23
 - **Features:** Modal/Dialog, Animations, Emoji Icon Display
 
@@ -546,7 +579,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Props:** setShowAIChat] = React.useState(false);
   const safeItems = Array.isArray(items) ? items, {
           onComponentsLoaded
-- **Hooks:** React.useEffect, useState, useConductor, useEffect, React.useState
+- **Hooks:** useCallback, React.useEffect, React.useCallback, useState, useEffect
 - **CSS Classes:** 18
 - **Features:** Error Handling, Emoji Icon Display
 

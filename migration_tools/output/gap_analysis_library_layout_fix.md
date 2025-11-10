@@ -1,6 +1,6 @@
 # Web vs Desktop Gap Analysis: Library
 
-**Generated:** 2025-11-09 22:40:12
+**Generated:** 2025-11-09 22:39:55
 
 ## 📊 Executive Summary
 
@@ -36,18 +36,18 @@
 Web component "drag.symphony" (43 lines) not found in desktop implementation
 
 
-### 2. Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-
-### 3. Missing Component: drop.symphony
+### 2. Missing Component: drop.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
 
 Web component "drop.symphony" (31 lines) not found in desktop implementation
+
+
+### 3. Missing Component: drop.container.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
 
 
 ### 4. Missing Hover Effects
@@ -106,17 +106,6 @@ Web component "drag.symphony" (43 lines) not found in desktop implementation
 - **Web Source:** [packages/library-component/src/symphonies/drag.symphony.ts](packages/library-component/src/symphonies/drag.symphony.ts)
 - **Impact:** Users will not have access to this UI component
 
-### 🟡 Missing Component: drop.container.symphony
-
-**Severity:** MEDIUM | **Effort:** medium
-
-Web component "drop.container.symphony" (31 lines) not found in desktop implementation
-
-- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
-- **Desktop:** Not implemented
-- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
-- **Impact:** Users will not have access to this UI component
-
 ### 🟡 Missing Component: drop.symphony
 
 **Severity:** MEDIUM | **Effort:** medium
@@ -139,11 +128,22 @@ Web component "drag.preview.stage-crew" (151 lines) not found in desktop impleme
 - **Web Source:** [packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts](packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts)
 - **Impact:** Users will not have access to this UI component
 
+### 🟡 Missing Component: drop.container.symphony
+
+**Severity:** MEDIUM | **Effort:** medium
+
+Web component "drop.container.symphony" (31 lines) not found in desktop implementation
+
+- **Web:** packages\library-component\src\symphonies\drop.container.symphony.ts (unknown)
+- **Desktop:** Not implemented
+- **Web Source:** [packages/library-component/src/symphonies/drop.container.symphony.ts](packages/library-component/src/symphonies/drop.container.symphony.ts)
+- **Impact:** Users will not have access to this UI component
+
 ### 🟠 🔴 MISSING UI ELEMENTS in ChatMessage
 
 **Severity:** HIGH | **Effort:** medium
 
-Desktop missing 3 UI elements that web renders: code (expected code), pre (expected pre), h4 (expected h4)
+Desktop missing 3 UI elements that web renders: code (expected code), h4 (expected h4), pre (expected pre)
 
 - **Web:** Web renders: button, code, div, h4, p, pre, span
 - **Desktop:** Desktop renders: Border, Button, Grid, StackPanel, TextBlock, UserControl
@@ -231,12 +231,12 @@ Desktop missing 1 UI elements that web renders: style (expected style)
   - Renders component preview cards with styling from JSON data
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
-- **JSON Metadata Extraction** (medium)
-  - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
-  - Effort: medium
-  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 - **Emoji Icon Display** (medium)
   - Displays emoji icons extracted from component metadata
+  - Effort: medium
+  - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
+- **JSON Metadata Extraction** (medium)
+  - Extracts metadata (icons, descriptions, attributes) from JSON component definitions
   - Effort: medium
   - Web Source: [packages/library/src/ui/LibraryPreview.tsx](packages/library/src/ui/LibraryPreview.tsx)
 
@@ -512,7 +512,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Type:** function
 - **Lines:** 311
 - **Props:** None
-- **Hooks:** useEffect, useState
+- **Hooks:** useState, useEffect
 - **CSS Classes:** 23
 - **Features:** Modal/Dialog, Animations, Emoji Icon Display
 
@@ -546,7 +546,7 @@ canvas, controlPanel, headerCenter, headerLeft, headerRight, library
 - **Props:** setShowAIChat] = React.useState(false);
   const safeItems = Array.isArray(items) ? items, {
           onComponentsLoaded
-- **Hooks:** React.useEffect, useState, useConductor, useEffect, React.useState
+- **Hooks:** useConductor, useCallback, React.useEffect, useEffect, useState
 - **CSS Classes:** 18
 - **Features:** Error Handling, Emoji Icon Display
 

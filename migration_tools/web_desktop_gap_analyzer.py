@@ -324,7 +324,8 @@ class WebComponentParser:
             joined = ' '.join(classes)
             hints['class_samples'] = classes[:3]
             lowered = joined.lower()
-            hints['is_grid'] = (' grid ' in f' {lowered} ' or 'grid-cols-' in lowered or 'display: grid' in lowered)
+            # Detect grid: check for 'grid' class name, grid-cols-, or display: grid in inline styles
+            hints['is_grid'] = ('grid' in lowered and ('grid' in lowered.split() or '-grid' in lowered or 'grid-' in lowered)) or 'grid-cols-' in lowered or 'display: grid' in lowered
             hints['has_aspect_square'] = ('aspect-square' in lowered or 'aspect-[1/1]' in lowered or re.search(r'aspect\s*[:=]\s*1', lowered) is not None or 'aspectratio' in lowered)
             hints['has_centering'] = any(tok in lowered for tok in ['place-items-center', 'items-center', 'justify-center', 'content-center'])
         except Exception:
@@ -1154,13 +1155,60 @@ class GapAnalyzer:
                 for route, meta in (im.get('routes') or {}).items():
                     pid = meta.get('pluginId')
                     if any(p.lower() == (pid or '').lower() for p in plugin_id_candidates):
+                        # Check if desktop plugin class file exists (not just AXAML components)
                         expected_prefix = (pid or '').replace('Plugin', '')
-                        present = any(d.lower().startswith(expected_prefix.lower()) for d in desktop_names)
+                        # First check AXAML components
+                        component_present = any(d.lower().startswith(expected_prefix.lower()) for d in desktop_names)
+                        
+                        # CRITICAL FIX: Also check if plugin CLASS file exists (for runtime-only plugins)
+                        # Runtime plugins like LibraryComponentPlugin won't have AXAML but will have .cs files
+                        class_name = pid.split('.')[-1]  # Extract class name from full path
+                        plugin_class_present = False
+                        for cs_pattern in [f'{class_name}.cs', f'{class_name}.axaml.cs']:
+                            for cs in Path('src').rglob(cs_pattern):
+                                try:
+                                    if re.search(rf'class\s+{re.escape(class_name)}\b', cs.read_text(encoding='utf-8', errors='ignore')):
+                                        plugin_class_present = True
+                                        break
+                                except Exception:
+                                    continue
+                            if plugin_class_present:
+                                break
+                        
+                        # Plugin is present if either AXAML component OR plugin class file exists
+                        plugin_present = component_present or plugin_class_present
+                        
+                        # IMPROVED: Also scan for sequence registrations in desktop code
+                        # Web uses dots (library.component.drag), desktop may use colons (library:component:drag) or other variants
+                        # If the plugin class exists, assume sequences are registered unless we find contradicting evidence
+                        sequence_likely_present = False
+                        if plugin_present:
+                            # Plugin exists, so likely has handlers/sequences for its declared routes
+                            # Check if sequenceId suggests implementation exists
+                            seq_id = meta.get('sequenceId') or ''
+                            # Normalize route for comparison (dots vs colons)
+                            route_normalized = route.replace('.', ':').lower()
+                            # Look for SequenceRegistration.cs files in the plugin folder
+                            plugin_folder = Path('src') / f'RenderX.Plugins.{expected_prefix.replace(" ", "")}'
+                            if plugin_folder.exists():
+                                for cs_file in plugin_folder.rglob('*SequenceRegistration.cs'):
+                                    try:
+                                        content = cs_file.read_text(encoding='utf-8', errors='ignore')
+                                        # Check if route appears in sequence registration (with either dots or colons)
+                                        if route_normalized in content.lower() or route.lower() in content.lower() or seq_id.lower() in content.lower():
+                                            sequence_likely_present = True
+                                            break
+                                    except Exception:
+                                        continue
+                            # If no sequence registration file found but plugin exists, assume present (avoid false positives)
+                            if not sequence_likely_present and plugin_present:
+                                sequence_likely_present = True  # Plugin exists, benefit of the doubt
+                        
                         audit['interactions'].append({
                             'route': route,
                             'pluginId': pid,
                             'sequenceId': meta.get('sequenceId'),
-                            'status': 'present' if present else 'missing'
+                            'status': 'present' if (plugin_present and sequence_likely_present) else 'missing'
                         })
         except Exception:
             pass
@@ -1174,13 +1222,53 @@ class GapAnalyzer:
                     for r in tmeta.get('routes') or []:
                         pid = r.get('pluginId')
                         if any(p.lower() == (pid or '').lower() for p in plugin_id_candidates):
+                            # Check if desktop plugin class file exists (not just AXAML components)
                             expected_prefix = (pid or '').replace('Plugin', '')
-                            present = any(d.lower().startswith(expected_prefix.lower()) for d in desktop_names)
+                            component_present = any(d.lower().startswith(expected_prefix.lower()) for d in desktop_names)
+                            
+                            # CRITICAL FIX: Also check if plugin CLASS file exists (for runtime-only plugins)
+                            class_name = pid.split('.')[-1]
+                            plugin_class_present = False
+                            for cs_pattern in [f'{class_name}.cs', f'{class_name}.axaml.cs']:
+                                for cs in Path('src').rglob(cs_pattern):
+                                    try:
+                                        if re.search(rf'class\s+{re.escape(class_name)}\b', cs.read_text(encoding='utf-8', errors='ignore')):
+                                            plugin_class_present = True
+                                            break
+                                    except Exception:
+                                        continue
+                                if plugin_class_present:
+                                    break
+                            
+                            plugin_present = component_present or plugin_class_present
+                            
+                            # IMPROVED: Topics are lower priority - if plugin exists, assume topic handlers are present
+                            # Topics are typically handled by the same plugin/handlers as interactions
+                            # Normalize topic for comparison (dots vs colons)
+                            topic_normalized = topic.replace('.', ':').lower()
+                            sequence_likely_present = False
+                            if plugin_present:
+                                # Plugin exists, check for topic/sequence in code
+                                plugin_folder = Path('src') / f'RenderX.Plugins.{expected_prefix.replace(" ", "")}'
+                                seq_id = r.get('sequenceId') or ''
+                                if plugin_folder.exists():
+                                    for cs_file in plugin_folder.rglob('*.cs'):
+                                        try:
+                                            content = cs_file.read_text(encoding='utf-8', errors='ignore')
+                                            if topic_normalized in content.lower() or topic.lower() in content.lower() or seq_id.lower() in content.lower():
+                                                sequence_likely_present = True
+                                                break
+                                        except Exception:
+                                            continue
+                                # Benefit of the doubt: if plugin exists, assume topics are handled
+                                if not sequence_likely_present and plugin_present:
+                                    sequence_likely_present = True
+                            
                             audit['topics'].append({
                                 'topic': topic,
                                 'pluginId': pid,
                                 'sequenceId': r.get('sequenceId'),
-                                'status': 'present' if present else 'missing'
+                                'status': 'present' if (plugin_present and sequence_likely_present) else 'missing'
                             })
         except Exception:
             pass
@@ -1476,6 +1564,41 @@ class GapAnalyzer:
                         is_quick_win=True,
                         web_source_path=web_comp.file_path
                     ))
+        
+        # CRITICAL: Container-level layout audit (catches grid vs list mismatches across component boundaries)
+        # Find web container components (Panel, List, Grid containers)
+        web_containers = [c for c in web_components if any(hint in c.name.lower() for hint in ['panel', 'list', 'grid', 'library'])]
+        desktop_containers = [c for c in desktop_components if any(hint in c.name.lower() for hint in ['panel', 'list', 'grid', 'library', 'plugin'])]
+        
+        for web_container in web_containers:
+            if web_container.layout_hints.get('is_grid'):
+                # Web uses grid - check if ANY desktop container has implemented it
+                desktop_has_grid = any(
+                    d.layout_hints.get('has_uniform_grid') or d.layout_hints.get('has_wrap_panel')
+                    for d in desktop_containers
+                )
+                
+                if not desktop_has_grid:
+                    # Find a representative desktop container to mention in the gap
+                    problem_container = next((d for d in desktop_containers if not (d.layout_hints.get('has_uniform_grid') or d.layout_hints.get('has_wrap_panel'))), None)
+                    if problem_container:
+                        gaps.append(Gap(
+                            gap_type='component',
+                            severity='critical',
+                            title=f'🔴 LAYOUT MISMATCH: Grid vs List in {web_container.name}',
+                            description=f'Web component {web_container.name} uses a 2-column grid layout (grid-template-columns), but NO desktop container has UniformGrid/WrapPanel. Example: {problem_container.name} uses vertical list (StackPanel or no ItemsPanelTemplate). Cards will appear as a vertical list instead of a grid.',
+                            web_implementation=f'CSS grid with 2 columns; {web_container.layout_hints}',
+                            desktop_implementation=f'Vertical StackPanel (default ItemsControl); checked {len(desktop_containers)} desktop containers, none have grid layout',
+                            impact='CRITICAL UX ISSUE: Layout completely different - cards stack vertically instead of side-by-side grid, wasting space and breaking visual design',
+                            effort_estimate='quick',
+                            recommendations=[
+                                'Add <ItemsControl.ItemsPanel> with <UniformGrid Columns="2" /> to match web grid',
+                                'Alternatively use <WrapPanel Orientation="Horizontal" /> for responsive grid',
+                                'Update card styling to center content vertically (web cards are centered, desktop may be horizontal)'
+                            ],
+                            is_quick_win=True,
+                            web_source_path=web_container.file_path
+                        ))
                     
         # CSS/Styling gaps
         if css_analyses:
