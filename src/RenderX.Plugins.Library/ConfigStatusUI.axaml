@@ -16,18 +16,23 @@
                          Width="12" Height="12"
                          Fill="#10b981"
                          VerticalAlignment="Center" />
+                <!-- H4 equivalent: Title with header styling -->
                 <TextBlock x:Name="StatusText"
                            Text="Ready"
-                           FontSize="12"
+                           FontSize="14"
                            FontWeight="Bold"
                            Foreground="{DynamicResource Color.Border.Primary}"
                            VerticalAlignment="Center" />
             </StackPanel>
+            <!-- Paragraph with strong (bold) text -->
             <TextBlock x:Name="DetailText"
-                       Text="Configuration loaded successfully"
                        FontSize="11"
                        Foreground="#666"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap">
+                <Run Text="Configuration loaded successfully" />
+                <Run Text=" Using model: " />
+                <Run x:Name="ModelText" Text="gpt-4" FontWeight="Bold" />
+            </TextBlock>
         </StackPanel>
     </Border>
 </UserControl>

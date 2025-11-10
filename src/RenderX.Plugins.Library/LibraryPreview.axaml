@@ -45,14 +45,14 @@
         </Border.Transitions>
         <StackPanel Spacing="8" HorizontalAlignment="Center">
             <!-- Component Icon -->
-            <TextBlock x:Name="ComponentIcon"
+            <TextBlock x:Name="IconTextBlock"
                        Text="🧩"
                        FontSize="24"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,8" />
             
             <!-- Component Name -->
-            <TextBlock x:Name="ComponentName"
+            <TextBlock x:Name="NameTextBlock"
                        Text="Component Name"
                        FontSize="12"
                        FontWeight="Medium"
@@ -62,7 +62,7 @@
                        Margin="0,0,0,4" />
             
             <!-- Component Description -->
-            <TextBlock x:Name="ComponentDescription"
+            <TextBlock x:Name="DescriptionTextBlock"
                        Text="Component description"
                        FontSize="10"
                        Foreground="#999"

@@ -9,6 +9,9 @@ using MusicalConductor.Avalonia.Interfaces;
 using MusicalConductor.Core.Interfaces;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Text.Json.Nodes;
 
 namespace RenderX.Plugins.Library;
 
@@ -31,6 +34,7 @@ public partial class LibraryPlugin : UserControl
         public string Name { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public string Icon { get; set; } = "🧩";
     }
 
     public LibraryPlugin()
@@ -68,43 +72,116 @@ public partial class LibraryPlugin : UserControl
     }
 
     /// <summary>
-    /// Load sample components for demonstration
+    /// Load components from JSON files in json-components folder
     /// </summary>
     private void LoadSampleComponents()
     {
         // Publish library load requested event
         PublishLibraryLoadRequested();
 
+        try
+        {
+            // Find json-components folder (in workspace root)
+            var currentDir = Directory.GetCurrentDirectory();
+            var jsonComponentsPath = Path.Combine(currentDir, "json-components");
+
+            if (!Directory.Exists(jsonComponentsPath))
+            {
+                _logger?.LogWarning("json-components folder not found at: {Path}", jsonComponentsPath);
+                LoadFallbackComponents();
+                return;
+            }
+
+            // Load all .json files except index.json
+            var jsonFiles = Directory.GetFiles(jsonComponentsPath, "*.json", SearchOption.TopDirectoryOnly)
+                .Where(f => !Path.GetFileName(f).Equals("index.json", StringComparison.OrdinalIgnoreCase))
+                .ToArray();
+
+            _logger?.LogInformation("Found {Count} component JSON files in {Path}", jsonFiles.Length, jsonComponentsPath);
+
+            foreach (var filePath in jsonFiles)
+            {
+                try
+                {
+                    var component = LoadComponentFromJson(filePath);
+                    if (component != null)
+                    {
+                        _components.Add(component);
+                        _logger?.LogDebug("Loaded component: {Name} ({Icon})", component.Name, component.Icon);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger?.LogError(ex, "Failed to load component from {File}", Path.GetFileName(filePath));
+                }
+            }
+
+            _logger?.LogInformation("Loaded {Count} components from JSON files", _components.Count);
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Failed to load components from JSON");
+            LoadFallbackComponents();
+        }
+    }
+
+    /// <summary>
+    /// Load a component from a JSON file
+    /// </summary>
+    private ComponentItem? LoadComponentFromJson(string filePath)
+    {
+        var json = File.ReadAllText(filePath);
+        var doc = JsonNode.Parse(json);
+
+        if (doc == null)
+        {
+            return null;
+        }
+
+        var metadata = doc["metadata"];
+        if (metadata == null)
+        {
+            return null;
+        }
+
+        var ui = doc["ui"];
+        var icon = ui?["icon"];
+
+        return new ComponentItem
+        {
+            Id = metadata["type"]?.GetValue<string>() ?? Path.GetFileNameWithoutExtension(filePath),
+            Name = metadata["name"]?.GetValue<string>() ?? "Unknown",
+            Category = metadata["category"]?.GetValue<string>() ?? "Other",
+            Description = metadata["description"]?.GetValue<string>() ?? "",
+            Icon = icon?["value"]?.GetValue<string>() ?? "🧩"
+        };
+    }
+
+    /// <summary>
+    /// Load fallback components if JSON loading fails
+    /// </summary>
+    private void LoadFallbackComponents()
+    {
+        _logger?.LogWarning("Loading fallback hardcoded components");
+
         _components.Add(new ComponentItem
         {
             Id = "button",
             Name = "Button",
             Category = "Input",
-            Description = "Interactive button component"
+            Description = "Interactive button component",
+            Icon = "🔘"
         });
         _components.Add(new ComponentItem
         {
-            Id = "textbox",
-            Name = "TextBox",
-            Category = "Input",
-            Description = "Text input component"
-        });
-        _components.Add(new ComponentItem
-        {
-            Id = "label",
-            Name = "Label",
-            Category = "Display",
-            Description = "Text label component"
-        });
-        _components.Add(new ComponentItem
-        {
-            Id = "panel",
-            Name = "Panel",
+            Id = "container",
+            Name = "Container",
             Category = "Layout",
-            Description = "Container panel component"
+            Description = "Container panel component",
+            Icon = "📦"
         });
 
-        _logger?.LogInformation("Loaded {ComponentCount} sample components", _components.Count);
+        _logger?.LogInformation("Loaded {Count} fallback components", _components.Count);
     }
 
     /// <summary>

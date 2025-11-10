@@ -4,6 +4,6 @@
              Background="Transparent">
     <Canvas x:Name="GridCanvas"
             Background="Transparent"
-            IsVisible="False" />
+            IsVisible="True" />
 </UserControl>
 

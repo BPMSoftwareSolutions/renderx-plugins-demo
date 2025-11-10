@@ -130,22 +130,22 @@ public partial class LibraryPreview : UserControl
         }
 
         // Update UI elements
-        var componentIcon = this.FindControl<TextBlock>("ComponentIcon");
-        if (componentIcon != null)
+        var iconTextBlock = this.FindControl<TextBlock>("IconTextBlock");
+        if (iconTextBlock != null)
         {
-            componentIcon.Text = ComponentIcon;
+            iconTextBlock.Text = ComponentIcon;
         }
 
-        var componentName = this.FindControl<TextBlock>("ComponentName");
-        if (componentName != null)
+        var nameTextBlock = this.FindControl<TextBlock>("NameTextBlock");
+        if (nameTextBlock != null)
         {
-            componentName.Text = ComponentName;
+            nameTextBlock.Text = ComponentName;
         }
 
-        var componentDescription = this.FindControl<TextBlock>("ComponentDescription");
-        if (componentDescription != null)
+        var descriptionTextBlock = this.FindControl<TextBlock>("DescriptionTextBlock");
+        if (descriptionTextBlock != null)
         {
-            componentDescription.Text = ComponentDescription;
+            descriptionTextBlock.Text = ComponentDescription;
         }
 
         // Apply CSS variables as dynamic resources

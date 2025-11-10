@@ -68,6 +68,11 @@ class WebComponent:
     css_classes: Set[str] = field(default_factory=set)
     features: List[ComponentFeature] = field(default_factory=list)
     imports: List[str] = field(default_factory=list)
+    jsx_elements: List[str] = field(default_factory=list)  # NEW: Actual JSX elements rendered
+    rendered_text: List[str] = field(default_factory=list)  # NEW: Text content/labels
+    # NEW: Heuristics for layout and conditional UI
+    layout_hints: Dict[str, any] = field(default_factory=dict)
+    ui_hints: Dict[str, any] = field(default_factory=dict)
 
 @dataclass
 class DesktopComponent:
@@ -82,6 +87,11 @@ class DesktopComponent:
     styles: Set[str] = field(default_factory=set)
     controls_used: List[str] = field(default_factory=list)
     features: List[ComponentFeature] = field(default_factory=list)
+    axaml_elements: List[str] = field(default_factory=list)  # NEW: Actual AXAML elements rendered
+    rendered_text: List[str] = field(default_factory=list)  # NEW: Text content/labels
+    # NEW: Heuristics for layout and conditional UI
+    layout_hints: Dict[str, any] = field(default_factory=dict)
+    ui_hints: Dict[str, any] = field(default_factory=dict)
 
 @dataclass
 class CSSAnalysis:
@@ -202,6 +212,16 @@ class WebComponentParser:
         # Extract imports
         imports = re.findall(r'import\s+.*?from\s+[\'"]([^\'"]+)[\'"]', content)
         
+        # Extract JSX elements (actual rendered UI structure)
+        jsx_elements = WebComponentParser._extract_jsx_elements(content)
+        
+        # Extract rendered text (h1, h2, p, button text, labels, etc.)
+        rendered_text = WebComponentParser._extract_rendered_text(content)
+        
+        # NEW: Extract layout and UI hints for parity checks
+        layout_hints = WebComponentParser._detect_layout_hints_jsx(content)
+        ui_hints = WebComponentParser._detect_ui_hints_jsx(content)
+        
         # Detect features
         features = WebComponentParser._detect_features(content, file_path)
         
@@ -216,8 +236,125 @@ class WebComponentParser:
             css_file=css_file,
             css_classes=css_classes,
             features=features,
-            imports=imports
+            imports=imports,
+            jsx_elements=jsx_elements,
+            rendered_text=rendered_text,
+            layout_hints=layout_hints,
+            ui_hints=ui_hints
         )
+    
+    @staticmethod
+    def _extract_jsx_elements(content: str) -> List[str]:
+        """Extract JSX elements from return statement."""
+        jsx_elements = []
+        
+        # Find return statement with JSX
+        return_match = re.search(r'return\s*\(([\s\S]*?)\);', content)
+        if return_match:
+            jsx_content = return_match.group(1)
+            
+            # Extract HTML-like tags
+            tag_pattern = r'<(\w+)[\s>]'
+            tags = re.findall(tag_pattern, jsx_content)
+            jsx_elements = list(set(tags))
+        
+        return sorted(jsx_elements)
+    
+    @staticmethod
+    def _extract_rendered_text(content: str) -> List[str]:
+        """Extract text content that will be rendered (headings, labels, button text)."""
+        rendered_text = []
+        
+        # Find return statement with JSX
+        return_match = re.search(r'return\s*\(([\s\S]*?)\);', content)
+        if not return_match:
+            return rendered_text
+        
+        jsx_content = return_match.group(1)
+        
+        # Extract text inside JSX elements (h1, h2, p, button, etc.)
+        # Pattern: >text content<  (text between tags)
+        text_pattern = r'>([^<>{}]+)<'
+        texts = re.findall(text_pattern, jsx_content)
+        
+        # Clean up and filter
+        for text in texts:
+            text = text.strip()
+            # Skip empty, variable interpolations, and short strings
+            if text and not text.startswith('{') and len(text) > 2:
+                # Skip if it's just whitespace or newlines
+                if re.search(r'[a-zA-Z0-9]', text):
+                    rendered_text.append(text)
+        
+        # Also extract string literals in JSX (like title="text", aria-label="text")
+        attr_pattern = r'(?:title|aria-label|placeholder|alt)=["\']([^"\']+)["\']'
+        attr_texts = re.findall(attr_pattern, jsx_content)
+        rendered_text.extend(attr_texts)
+        
+        # Deduplicate while preserving order
+        seen = set()
+        unique_text = []
+        for text in rendered_text:
+            if text not in seen:
+                seen.add(text)
+                unique_text.append(text)
+        
+        return unique_text
+
+    @staticmethod
+    def _detect_layout_hints_jsx(content: str) -> Dict[str, any]:
+        """Heuristics to detect grid/list layout and square cards in JSX."""
+        hints: Dict[str, any] = {
+            'is_grid': False,
+            'has_aspect_square': False,
+            'has_centering': False,
+            'class_samples': []
+        }
+        try:
+            class_patterns = [
+                r'className=["\']([^"\']+)["\']',
+                r'className=\{["\']([^"\']+)["\']\}',
+            ]
+            classes: List[str] = []
+            for pat in class_patterns:
+                classes.extend(re.findall(pat, content))
+            joined = ' '.join(classes)
+            hints['class_samples'] = classes[:3]
+            lowered = joined.lower()
+            hints['is_grid'] = (' grid ' in f' {lowered} ' or 'grid-cols-' in lowered or 'display: grid' in lowered)
+            hints['has_aspect_square'] = ('aspect-square' in lowered or 'aspect-[1/1]' in lowered or re.search(r'aspect\s*[:=]\s*1', lowered) is not None or 'aspectratio' in lowered)
+            hints['has_centering'] = any(tok in lowered for tok in ['place-items-center', 'items-center', 'justify-center', 'content-center'])
+        except Exception:
+            pass
+        return hints
+
+    @staticmethod
+    def _detect_ui_hints_jsx(content: str) -> Dict[str, any]:
+        """Detect conditional UI like AI chat toggle button and hints."""
+        hints: Dict[str, any] = {
+            'has_ai_toggle': False,
+            'has_ai_hint': False
+        }
+        try:
+            jsx = re.search(r'return\s*\(([\s\S]*?)\);', content)
+            snippet = jsx.group(1) if jsx else ''
+            search_space = snippet + "\n" + content
+            # Detect via emoji, text, or known class name
+            if (
+                re.search(r'🤖', search_space) or
+                re.search(r'<button[^>]*>[^<]*ai[^<]*<', search_space, re.IGNORECASE) or
+                'ai-chat-toggle' in search_space
+            ):
+                hints['has_ai_toggle'] = True
+            if (
+                re.search(r'💡', search_space) or
+                re.search(r'unavailable|ai\s*hint', search_space, re.IGNORECASE) or
+                'ai-unavailable-hint' in search_space
+            ):
+                hints['has_ai_hint'] = True
+        except Exception:
+            pass
+        return hints
     
     @staticmethod
     def _detect_features(content: str, file_path: str) -> List[ComponentFeature]:
@@ -418,6 +555,16 @@ class DesktopComponentParser:
         control_pattern = r'<(\w+)\s+'
         controls_used = list(set(re.findall(control_pattern, axaml_content)))
         
+        # Extract AXAML elements (actual rendered UI structure)
+        axaml_elements = DesktopComponentParser._extract_axaml_elements(axaml_content)
+        
+        # Extract rendered text (TextBlock, Button content, labels, etc.)
+        rendered_text = DesktopComponentParser._extract_rendered_text(axaml_content)
+        
+        # NEW: Extract layout and UI hints for parity checks
+        layout_hints = DesktopComponentParser._extract_layout_hints(axaml_content)
+        ui_hints = DesktopComponentParser._extract_ui_hints(axaml_content)
+        
         # Detect features
         features = DesktopComponentParser._detect_features(axaml_content, cs_content, axaml_file)
         
@@ -433,8 +580,121 @@ class DesktopComponentParser:
             events=events,
             styles=styles,
             controls_used=controls_used,
-            features=features
+            features=features,
+            axaml_elements=axaml_elements,
+            rendered_text=rendered_text,
+            layout_hints=layout_hints,
+            ui_hints=ui_hints
         )
+    
+    @staticmethod
+    def _extract_axaml_elements(axaml_content: str) -> List[str]:
+        """Extract AXAML control elements."""
+        axaml_elements = []
+        
+        # Extract XML-like tags
+        tag_pattern = r'<(\w+)[\s>]'
+        tags = re.findall(tag_pattern, axaml_content)
+        axaml_elements = list(set(tags))
+        
+        return sorted(axaml_elements)
+    
+    @staticmethod
+    def _extract_rendered_text(axaml_content: str) -> List[str]:
+        """Extract text content that will be rendered (TextBlock content, Button content, etc.)."""
+        rendered_text = []
+        
+        # Extract text between XML tags
+        text_pattern = r'>([^<>{}]+)<'
+        texts = re.findall(text_pattern, axaml_content)
+        
+        # Clean up and filter
+        for text in texts:
+            text = text.strip()
+            # Skip empty, bindings, and short strings
+            if text and not text.startswith('{') and len(text) > 2:
+                # Skip if it's just whitespace or newlines
+                if re.search(r'[a-zA-Z0-9]', text):
+                    rendered_text.append(text)
+        
+        # Also extract string literals in attributes (like Content="text", Header="text")
+        attr_pattern = r'(?:Content|Header|Text|Title|ToolTip\.Tip)="([^"]+)"'
+        attr_texts = re.findall(attr_pattern, axaml_content)
+        for text in attr_texts:
+            if not text.startswith('{'):  # Skip bindings
+                rendered_text.append(text)
+        
+        # Deduplicate while preserving order
+        seen = set()
+        unique_text = []
+        for text in rendered_text:
+            if text not in seen:
+                seen.add(text)
+                unique_text.append(text)
+        
+        return unique_text
+
+    @staticmethod
+    def _extract_layout_hints(axaml_content: str) -> Dict[str, any]:
+        """Heuristics to detect grid/list layout and square cards in AXAML."""
+        hints: Dict[str, any] = {
+            'panel': None,
+            'orientation': None,
+            'has_uniform_grid': False,
+            'has_wrap_panel': False,
+            'has_stack_panel': False,
+            'has_square_card': False
+        }
+        try:
+            # ItemsPanelTemplate detection
+            ip_match = re.search(r'<ItemsPanelTemplate>[\s\S]*?<(?P<panel>WrapPanel|UniformGrid|Grid|StackPanel)([^>]*)>', axaml_content)
+            if ip_match:
+                panel = ip_match.group('panel')
+                hints['panel'] = panel
+                attrs = ip_match.group(2)
+                ori = re.search(r'Orientation="(Vertical|Horizontal)"', attrs or '')
+                if ori:
+                    hints['orientation'] = ori.group(1)
+                hints['has_uniform_grid'] = panel == 'UniformGrid'
+                hints['has_wrap_panel'] = panel == 'WrapPanel'
+                hints['has_stack_panel'] = panel == 'StackPanel'
+            else:
+                # Fallback: any occurrence of these panels
+                hints['has_uniform_grid'] = 'UniformGrid' in axaml_content
+                hints['has_wrap_panel'] = 'WrapPanel' in axaml_content
+                hints['has_stack_panel'] = 'StackPanel' in axaml_content
+            
+            # Square card heuristic within DataTemplate/Border
+            # Look for Border with equal Width/Height (literal or same binding)
+            border_block = re.search(r'<DataTemplate[\s\S]*?<Border([\s\S]*?)>', axaml_content)
+            if border_block:
+                border_attrs = border_block.group(1)
+                # Literal equality
+                m1 = re.search(r'Width="([0-9.]+)"[^"]*Height="\1"', border_attrs)
+                m2 = re.search(r'Height="([0-9.]+)"[^"]*Width="\1"', border_attrs)
+                # Binding to same property
+                mb1 = re.search(r'Width="\{Binding\s+([\w.]+)\}"[^"]*Height="\{Binding\s+\1\}"', border_attrs)
+                mb2 = re.search(r'Height="\{Binding\s+([\w.]+)\}"[^"]*Width="\{Binding\s+\1\}"', border_attrs)
+                hints['has_square_card'] = bool(m1 or m2 or mb1 or mb2)
+        except Exception:
+            pass
+        return hints
+
+    @staticmethod
+    def _extract_ui_hints(axaml_content: str) -> Dict[str, any]:
+        """Detect conditional UI like AI chat toggle button and hints in AXAML."""
+        hints: Dict[str, any] = {
+            'has_ai_toggle': False,
+            'has_ai_hint': False
+        }
+        try:
+            if re.search(r'🤖', axaml_content) or re.search(r'<Button[^>]*(?:Content|Header)="[^"]*AI[^"]*"', axaml_content, re.IGNORECASE) or re.search(r'<Button[^>]*>[^<]*AI[^<]*<', axaml_content, re.IGNORECASE):
+                hints['has_ai_toggle'] = True
+            if re.search(r'💡', axaml_content) or re.search(r'AI\s*unavailable', axaml_content, re.IGNORECASE):
+                hints['has_ai_hint'] = True
+        except Exception:
+            pass
+        return hints
     
     @staticmethod
     def _detect_features(axaml_content: str, cs_content: str, file_path: str) -> List[ComponentFeature]:
@@ -499,6 +759,119 @@ class DesktopComponentParser:
                 implementation_type='logic'
             ))
         
+        # CRITICAL: Detect stub implementations (empty methods, TODOs, not implemented)
+        stub_patterns = [
+            (r'//\s*(TODO|FIXME|HACK|XXX|STUB)', 'TODO/FIXME comments indicating incomplete implementation'),
+            (r'throw\s+new\s+NotImplementedException', 'NotImplementedException thrown'),
+            (r'\/\/.*(?:would\s+be\s+implemented|should\s+be\s+implemented|to\s+be\s+implemented)', 'Placeholder comment for future implementation'),
+            (r'\/\/\s*Implementation\s+needed', 'Implementation needed comment'),
+            (r'\/\/.*(?:simplified|stub|placeholder|not\s+implemented)', 'Simplified/stub implementation'),
+            (r'{\s*\/\/[^\}]*\s*}\s*$', 'Empty method with only comments'),
+        ]
+        for pattern, desc in stub_patterns:
+            matches = re.findall(pattern, cs_content, re.MULTILINE | re.IGNORECASE)
+            if matches:
+                features.append(ComponentFeature(
+                    name='⚠️ Stub Implementation Detected',
+                    description=f'Code contains stub/incomplete implementation: {desc} ({len(matches)} occurrence(s))',
+                    implementation_type='logic',
+                    file_path=file_path
+                ))
+                break  # Only report once per component
+        
+        # CRITICAL: Detect IsVisible="False" by default (hidden controls)
+        if re.search(r'IsVisible="False"', axaml_content):
+            hidden_controls = re.findall(r'<(\w+)[^>]*IsVisible="False"', axaml_content)
+            if hidden_controls:
+                features.append(ComponentFeature(
+                    name='⚠️ Hidden Controls Detected',
+                    description=f'Controls set to IsVisible="False" by default: {", ".join(set(hidden_controls))}',
+                    implementation_type='ui',
+                    file_path=file_path
+                ))
+        
+        # CRITICAL: Detect empty draw/render methods
+        empty_render_patterns = [
+            r'private\s+void\s+Draw\w+\([^)]*\)\s*{\s*(?:canvas\.Children\.Clear\(\);)?\s*(?://[^\n]*)?\s*}',
+            r'protected\s+override\s+void\s+(?:OnRender|Render)\([^)]*\)\s*{\s*(?://[^\n]*)?\s*}',
+        ]
+        for pattern in empty_render_patterns:
+            if re.search(pattern, cs_content, re.MULTILINE):
+                features.append(ComponentFeature(
+                    name='⚠️ Empty Render Method',
+                    description='Draw/Render method exists but has no implementation',
+                    implementation_type='ui',
+                    file_path=file_path
+                ))
+                break
+        
+        # CRITICAL: Detect hardcoded sample/mock data instead of loading from files
+        hardcoded_data_patterns = [
+            (r'LoadSample\w*\(', 'LoadSample method suggests hardcoded demo data'),
+            (r'Load(?:Demo|Mock|Test)\w*\(', 'LoadDemo/LoadMock method suggests hardcoded test data'),
+            (r'_components\.Add\(\s*new\s+\w+Item\s*\{[^}]*Id\s*=\s*"(?:button|textbox|panel|label)"', 'Hardcoded component items (button, textbox, etc.) instead of loading from JSON'),
+            (r'new\s+(?:List|ObservableCollection)<[^>]*>\s*\{[^}]*new\s+\w+\s*\{[^}]*Name\s*=\s*"(?:Button|TextBox|Panel)', 'Hardcoded collection initialization with sample UI components'),
+            (r'\/\/.*sample\s+components?\s+for\s+demonstration', 'Comment indicates sample/demo data'),
+        ]
+        hardcoded_matches = []
+        for pattern, desc in hardcoded_data_patterns:
+            if re.search(pattern, cs_content, re.IGNORECASE):
+                hardcoded_matches.append(desc)
+        
+        if hardcoded_matches:
+            # Downgrade severity if file loading & parsing also present (fallback only)
+            has_file_loading = bool(re.search(r'File\.ReadAllText|Directory\.GetFiles|File\.Open|StreamReader|JsonSerializer\.Deserialize.*File', cs_content))
+            has_json_parsing = bool(re.search(r'JsonDocument\.Parse|JObject\.Parse|JsonNode\.Parse.*File', cs_content))
+            if has_file_loading and has_json_parsing:
+                features.append(ComponentFeature(
+                    name='� Fallback Sample Data Present',
+                    description=f'Fallback hardcoded data exists though JSON loading implemented: {"; ".join(hardcoded_matches)}',
+                    implementation_type='logic',
+                    file_path=file_path
+                ))
+            else:
+                features.append(ComponentFeature(
+                    name='�🔴 HARDCODED SAMPLE DATA',
+                    description=f'Using hardcoded sample data instead of loading from files: {"; ".join(hardcoded_matches)}',
+                    implementation_type='logic',
+                    file_path=file_path
+                ))
+        
+        # CRITICAL: Detect missing file loading when JSON component folders exist
+        # Check if json-components or catalog folders exist in workspace
+        workspace_root = Path(file_path).parents[2]  # Go up to workspace root
+        json_components_exists = (workspace_root / 'json-components').exists()
+        catalog_exists = (workspace_root / 'catalog' / 'json-plugins').exists()
+        
+        if (json_components_exists or catalog_exists) and 'Library' in file_path:
+            # Check if file loading is implemented
+            has_file_loading = bool(re.search(r'File\.ReadAllText|Directory\.GetFiles|File\.Open|StreamReader|JsonSerializer\.Deserialize.*File', cs_content))
+            has_json_parsing = bool(re.search(r'JsonDocument\.Parse|JObject\.Parse|JsonNode\.Parse.*File', cs_content))
+            
+            if not (has_file_loading and has_json_parsing):
+                features.append(ComponentFeature(
+                    name='🔴 MISSING FILE LOADING',
+                    description=f'JSON component files exist in workspace (json-components: {json_components_exists}, catalog: {catalog_exists}) but component does not load them from disk',
+                    implementation_type='logic',
+                    file_path=file_path
+                ))
+        
+        # CRITICAL: Detect placeholder event handlers (empty or just logging)
+        placeholder_handler_patterns = [
+            r'private\s+void\s+On\w+\([^)]*\)\s*{\s*(?:\/\/[^\n]*)?\s*}',  # Empty event handler
+            r'private\s+void\s+On\w+\([^)]*\)\s*{\s*(?:_logger\?\.Log\w+|Console\.WriteLine)\([^)]*\);\s*}',  # Handler with only logging
+        ]
+        for pattern in placeholder_handler_patterns:
+            matches = re.findall(pattern, cs_content, re.MULTILINE)
+            if matches and len(matches) >= 2:  # Only report if multiple empty handlers
+                features.append(ComponentFeature(
+                    name='⚠️ Placeholder Event Handlers',
+                    description=f'Found {len(matches)} event handlers that are empty or only contain logging',
+                    implementation_type='logic',
+                    file_path=file_path
+                ))
+                break
+        
         # Detect dynamic style binding
         if re.search(r'DynamicResource|StaticResource|Style\.Resources|SetResourceReference|Brush\s*=', combined_content):
             features.append(ComponentFeature(
@@ -561,6 +934,10 @@ class CSSParser:
                     
             # Analyze features
             props_str = str(properties)
+            
+            # Check for specific grid/pattern backgrounds (like canvas grid)
+            has_pattern_bg = bool(re.search(r'radial-gradient|repeating-linear-gradient|url\(["\']?data:image', props_str))
+            
             analysis = CSSAnalysis(
                 class_name=class_name,
                 properties=properties,
@@ -569,10 +946,14 @@ class CSSParser:
                 has_animation='animation' in props_str or '@keyframes' in content,
                 has_transition='transition' in props_str,
                 has_transform='transform' in props_str,
-                has_gradient='gradient' in props_str,
+                has_gradient='gradient' in props_str or has_pattern_bg,
                 has_shadow='shadow' in props_str,
                 complexity_score=len(properties)
             )
+            
+            # Add metadata for special patterns
+            if has_pattern_bg:
+                analysis.properties['_pattern_background'] = 'true'
             
             analyses.append(analysis)
             
@@ -725,6 +1106,107 @@ class GapAnalyzer:
                         effort_estimate='quick' if feature.implementation_type == 'style' else 'medium',
                         is_quick_win=feature.implementation_type == 'style'
                     ))
+                
+                # 🔴 CRITICAL: Check UI element parity (JSX vs AXAML)
+                web_elements = set(web_comp.jsx_elements)
+                desktop_elements = set(desktop_comp.axaml_elements)
+                
+                # Map web elements to desktop equivalents
+                element_mapping = {
+                    'div': {'Border', 'Panel', 'StackPanel', 'Grid'},
+                    'button': {'Button'},
+                    'input': {'TextBox', 'CheckBox', 'NumericUpDown'},
+                    'p': {'TextBlock'},
+                    'h1': {'TextBlock'},
+                    'h2': {'TextBlock'},
+                    'h3': {'TextBlock'},
+                    'span': {'TextBlock', 'Run'},
+                    'select': {'ComboBox'},
+                    'textarea': {'TextBox'},
+                    'img': {'Image'},
+                }
+                
+                missing_ui_elements = []
+                for web_elem in web_elements:
+                    expected_desktop = element_mapping.get(web_elem, {web_elem})
+                    if not expected_desktop.intersection(desktop_elements):
+                        missing_ui_elements.append(f'{web_elem} (expected {", ".join(expected_desktop)})')
+                
+                if missing_ui_elements:
+                    gaps.append(Gap(
+                        gap_type='component',
+                        severity='high',
+                        title=f'🔴 MISSING UI ELEMENTS in {web_comp.name}',
+                        description=f'Desktop missing {len(missing_ui_elements)} UI elements that web renders: {", ".join(missing_ui_elements[:5])}{"..." if len(missing_ui_elements) > 5 else ""}',
+                        web_implementation=f'Web renders: {", ".join(sorted(web_elements))}',
+                        desktop_implementation=f'Desktop renders: {", ".join(sorted(desktop_elements)) if desktop_elements else "No elements found"}',
+                        impact='Users see incomplete or different UI structure than web version',
+                        effort_estimate='medium',
+                        is_quick_win=False
+                    ))
+                
+                # 🔴 CRITICAL: Check rendered text parity
+                web_text = set(web_comp.rendered_text)
+                desktop_text = set(desktop_comp.rendered_text)
+                missing_text = web_text - desktop_text
+                
+                if len(missing_text) > 3:  # Only report if significant text missing
+                    gaps.append(Gap(
+                        gap_type='component',
+                        severity='high',
+                        title=f'🔴 MISSING TEXT CONTENT in {web_comp.name}',
+                        description=f'Desktop missing {len(missing_text)} text labels/content that web displays',
+                        web_implementation=f'Web shows: {", ".join(list(missing_text)[:5])}{"..." if len(missing_text) > 5 else ""}',
+                        desktop_implementation=f'Desktop shows: {", ".join(list(desktop_text)[:5]) if desktop_text else "No text content found"}',
+                        impact='Users see different labels, headings, or instructions than web version',
+                        effort_estimate='quick',
+                        is_quick_win=True
+                    ))
+
+                # NEW: Layout parity check (only once per component to avoid noise)
+                if web_comp.layout_hints or desktop_comp.layout_hints:
+                    w_layout = web_comp.layout_hints
+                    d_layout = desktop_comp.layout_hints
+                    layout_issues = []
+                    if w_layout.get('is_grid') and not (d_layout.get('has_uniform_grid') or d_layout.get('has_wrap_panel')):
+                        layout_issues.append('Web uses grid layout; desktop lacks UniformGrid/WrapPanel')
+                    if w_layout.get('has_aspect_square') and not d_layout.get('has_square_card'):
+                        layout_issues.append('Web cards appear square; desktop cards non-square')
+                    if w_layout.get('has_centering') and d_layout.get('panel') == 'StackPanel' and d_layout.get('orientation') == 'Vertical':
+                        layout_issues.append('Web centers cards; desktop vertical StackPanel may misalign')
+                    if layout_issues:
+                        gaps.append(Gap(
+                            gap_type='component',
+                            severity='medium',
+                            title=f'LAYOUT PARITY ISSUES in {web_comp.name}',
+                            description='; '.join(layout_issues),
+                            web_implementation=f'Grid hints: {w_layout}',
+                            desktop_implementation=f'Panel hints: {d_layout}',
+                            impact='Visual arrangement differs (card alignment/sizing/parity)',
+                            effort_estimate='medium',
+                            is_quick_win=False
+                        ))
+
+                # NEW: Conditional UI parity (AI toggle & hint)
+                w_ui = web_comp.ui_hints
+                d_ui = desktop_comp.ui_hints
+                cond_issues = []
+                if w_ui.get('has_ai_toggle') and not d_ui.get('has_ai_toggle'):
+                    cond_issues.append('Missing AI chat toggle button')
+                if w_ui.get('has_ai_hint') and not d_ui.get('has_ai_hint'):
+                    cond_issues.append('Missing AI availability hint')
+                if cond_issues:
+                    gaps.append(Gap(
+                        gap_type='component',
+                        severity='high',
+                        title=f'CONDITIONAL UI PARITY in {web_comp.name}',
+                        description='; '.join(cond_issues),
+                        web_implementation=f'Web UI hints: {w_ui}',
+                        desktop_implementation=f'Desktop UI hints: {d_ui}',
+                        impact='Users cannot access AI-related interactions or contextual hints',
+                        effort_estimate='quick',
+                        is_quick_win=True
+                    ))
                     
         # CSS/Styling gaps
         if css_analyses:
@@ -787,6 +1269,39 @@ class GapAnalyzer:
                     is_quick_win=True
                 ))
                 
+        # NEW: Plugin-level conditional UI parity (aggregate)
+        try:
+            web_ai_any = any(c.ui_hints.get('has_ai_toggle') for c in web_components)
+            desktop_ai_any = any(c.ui_hints.get('has_ai_toggle') for c in desktop_components)
+            if web_ai_any and not desktop_ai_any:
+                gaps.append(Gap(
+                    gap_type='component',
+                    severity='high',
+                    title='PLUGIN-WIDE MISSING AI CHAT TOGGLE',
+                    description='Web plugin exposes AI chat toggle but no desktop component includes AI toggle button (🤖 AI).',
+                    web_implementation='AI toggle detected in one or more web components',
+                    desktop_implementation='No desktop component contains AI toggle button or related hints',
+                    impact='Desktop users cannot access AI component generation features available on web.',
+                    effort_estimate='quick',
+                    is_quick_win=True
+                ))
+            web_ai_hint_any = any(c.ui_hints.get('has_ai_hint') for c in web_components)
+            desktop_ai_hint_any = any(c.ui_hints.get('has_ai_hint') for c in desktop_components)
+            if web_ai_hint_any and not desktop_ai_hint_any:
+                gaps.append(Gap(
+                    gap_type='component',
+                    severity='medium',
+                    title='PLUGIN-WIDE MISSING AI AVAILABILITY HINT',
+                    description='Web shows AI unavailable hint (💡) when AI is not configured; desktop lacks equivalent contextual notice.',
+                    web_implementation='AI availability hint detected in web components',
+                    desktop_implementation='No desktop component provides AI availability status hint',
+                    impact='Desktop users receive less guidance about AI feature availability.',
+                    effort_estimate='quick',
+                    is_quick_win=True
+                ))
+        except Exception:
+            pass
+
         return gaps
     
     @staticmethod
