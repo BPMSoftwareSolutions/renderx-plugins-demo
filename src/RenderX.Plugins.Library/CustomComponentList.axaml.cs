@@ -1,7 +1,11 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RenderX.Plugins.Library;
 
@@ -87,11 +91,11 @@ public partial class CustomComponentList : UserControl
         }
     }
 
-    private void OnRemoveClick(object? sender, RoutedEventArgs e)
+    private async void OnRemoveClick(object? sender, RoutedEventArgs e)
     {
         if (sender is Button button && button.Tag is string componentId)
         {
-            // Find and remove the component
+            // Find the component to get its name for confirmation
             if (this.FindControl<ItemsControl>("ComponentsItemsControl") is ItemsControl itemsControl)
             {
                 if (itemsControl.ItemsSource is ObservableCollection<CustomComponentItem> components)
@@ -99,12 +103,74 @@ public partial class CustomComponentList : UserControl
                     var componentToRemove = components.FirstOrDefault(c => c.Id == componentId);
                     if (componentToRemove != null)
                     {
-                        components.Remove(componentToRemove);
-                        UpdateStorageInfo(components);
+                        // Show confirmation dialog
+                        var confirmMessage = $"Are you sure you want to remove \"{componentToRemove.Name}\"?";
+                        var result = await ShowConfirmationDialog(confirmMessage);
+
+                        if (result)
+                        {
+                            components.Remove(componentToRemove);
+                            UpdateStorageInfo(components);
+                        }
                     }
                 }
             }
         }
+    }
+
+    private async Task<bool> ShowConfirmationDialog(string message)
+    {
+        // Create a simple confirmation dialog
+        var window = new Window
+        {
+            Title = "Confirm Removal",
+            Width = 400,
+            Height = 150,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            CanResize = false
+        };
+
+        var panel = new StackPanel { Spacing = 12, Padding = new Thickness(16) };
+
+        var messageBlock = new TextBlock
+        {
+            Text = message,
+            TextWrapping = TextWrapping.Wrap,
+            Foreground = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#374151"))
+        };
+        panel.Children.Add(messageBlock);
+
+        var buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, HorizontalAlignment = HorizontalAlignment.Right };
+
+        var cancelButton = new Button
+        {
+            Content = "Cancel",
+            Padding = new Thickness(12, 6),
+            Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#e5e7eb")),
+            Foreground = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#374151"))
+        };
+
+        var removeButton = new Button
+        {
+            Content = "Remove",
+            Padding = new Thickness(12, 6),
+            Background = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#ef4444")),
+            Foreground = new Avalonia.Media.SolidColorBrush(Avalonia.Media.Color.Parse("#ffffff"))
+        };
+
+        bool result = false;
+
+        cancelButton.Click += (s, e) => window.Close();
+        removeButton.Click += (s, e) => { result = true; window.Close(); };
+
+        buttonPanel.Children.Add(cancelButton);
+        buttonPanel.Children.Add(removeButton);
+        panel.Children.Add(buttonPanel);
+
+        window.Content = panel;
+        await window.ShowDialog(this.FindAncestorOfType<Window>() ?? new Window());
+
+        return result;
     }
 }
 

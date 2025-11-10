@@ -295,5 +295,44 @@ public partial class LibraryPlugin : UserControl
             _logger.LogError(ex, "Error publishing component add requested event");
         }
     }
+
+    /// <summary>
+    /// Handle AI Chat toggle button click
+    /// </summary>
+    private void OnAIChatToggle(object? sender, RoutedEventArgs e)
+    {
+        var aiToggleButton = this.FindControl<Button>("AIToggleButton");
+        if (aiToggleButton != null)
+        {
+            aiToggleButton.Content = "🤖 AI Chat (Opening...)";
+            _logger?.LogInformation("AI Chat toggle clicked");
+        }
+    }
+
+    /// <summary>
+    /// Show AI availability hint when AI is not configured
+    /// </summary>
+    public void ShowAIAvailabilityHint()
+    {
+        var hint = this.FindControl<Border>("AIAvailabilityHint");
+        if (hint != null)
+        {
+            hint.IsVisible = true;
+            _logger?.LogInformation("AI availability hint shown");
+        }
+    }
+
+    /// <summary>
+    /// Hide AI availability hint when AI is configured
+    /// </summary>
+    public void HideAIAvailabilityHint()
+    {
+        var hint = this.FindControl<Border>("AIAvailabilityHint");
+        if (hint != null)
+        {
+            hint.IsVisible = false;
+            _logger?.LogInformation("AI availability hint hidden");
+        }
+    }
 }
 

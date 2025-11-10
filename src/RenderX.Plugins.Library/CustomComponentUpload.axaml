@@ -42,20 +42,44 @@
                        TextWrapping="Wrap"
                        IsVisible="False" />
 
+            <!-- Drag and Drop Zone -->
+            <Border x:Name="DragDropZone"
+                    Background="#f9fafb"
+                    BorderBrush="#e5e7eb"
+                    BorderThickness="2"
+                    CornerRadius="6"
+                    Padding="24"
+                    DragOver="OnDragOver"
+                    DragLeave="OnDragLeave"
+                    Drop="OnDrop"
+                    Cursor="Hand">
+                <StackPanel Spacing="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="📁"
+                               FontSize="32"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="Drop .json file here or click to browse"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Foreground="#374151" />
+                    <TextBlock Text="Maximum file size: 5 MB"
+                               FontSize="10"
+                               HorizontalAlignment="Center"
+                               Foreground="#9ca3af" />
+                    <Button Classes="upload-button"
+                            x:Name="BrowseButton"
+                            Content="Browse Files..."
+                            Padding="12,6"
+                            Background="{DynamicResource Color.Border.Primary}"
+                            Foreground="{DynamicResource Color.Background.Primary}"
+                            FontSize="11"
+                            Click="OnBrowseClick"
+                            HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+
             <!-- File Input -->
             <StackPanel Spacing="4">
-                <TextBlock Text="Component File"
-                           FontSize="11"
-                           FontWeight="Bold"
-                           Foreground="#666" />
-                <Button Classes="upload-button"
-                        x:Name="BrowseButton"
-                        Content="Browse Files..."
-                        Padding="12,6"
-                        Background="{DynamicResource Color.Border.Primary}"
-                        Foreground="{DynamicResource Color.Background.Primary}"
-                        FontSize="11"
-                        Click="OnBrowseClick" />
                 <TextBlock x:Name="FileNameText"
                            Text="No file selected"
                            FontSize="10"

@@ -4,19 +4,53 @@
              Background="{DynamicResource Color.Background.Tertiary}">
     <DockPanel>
         <!-- Header -->
-        <Border DockPanel.Dock="Top" 
+        <Border DockPanel.Dock="Top"
                 Background="{DynamicResource Color.Background.Hover}"
                 Padding="12">
-            <StackPanel Spacing="4">
-                <!-- Title matching web: 🧩 Component Library -->
-                <TextBlock Text="🧩 Component Library" 
-                           FontSize="16" 
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource Color.Text.Primary}" />
-                <!-- Subtitle matching web: Drag components to the canvas -->
-                <TextBlock Text="Drag components to the canvas" 
-                           FontSize="11" 
-                           Foreground="{DynamicResource Color.Text.Secondary}" />
+            <StackPanel Spacing="8">
+                <!-- Header with Title and AI Toggle -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <StackPanel Grid.Column="0" Spacing="4">
+                        <!-- Title matching web: 🧩 Component Library -->
+                        <TextBlock Text="🧩 Component Library"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Text.Primary}" />
+                        <!-- Subtitle matching web: Drag components to the canvas -->
+                        <TextBlock Text="Drag components to the canvas"
+                                   FontSize="11"
+                                   Foreground="{DynamicResource Color.Text.Secondary}" />
+                    </StackPanel>
+                    <!-- AI Chat Toggle Button -->
+                    <Button Grid.Column="1"
+                            x:Name="AIToggleButton"
+                            Content="🤖 AI Chat"
+                            Classes="ai-toggle-button"
+                            FontSize="11"
+                            Padding="8,4"
+                            VerticalAlignment="Top"
+                            Click="OnAIChatToggle" />
+                </Grid>
+
+                <!-- AI Availability Hint -->
+                <Border x:Name="AIAvailabilityHint"
+                        Background="#fef3c7"
+                        BorderThickness="1"
+                        BorderBrush="#fcd34d"
+                        CornerRadius="4"
+                        Padding="8"
+                        IsVisible="False">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="💡"
+                                   FontSize="12"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="AI is not configured. Configure API key to enable AI component generation."
+                                   FontSize="10"
+                                   Foreground="#92400e"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
         

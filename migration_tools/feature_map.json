@@ -1,0 +1,39 @@
+{
+  
+  "version": 1,
+  "notes": "Maps web feature names (as detected) to one or more acceptable desktop feature names. If any mapped name is present on desktop, the feature is considered satisfied. Omit a mapping to mark as 'unmapped'.",
+  "mappings": {
+    "Drag Ghost Image": ["Drag Ghost Image"],
+    "Drag and Drop": ["Drag and Drop"],
+    "Modal/Dialog": ["Modal/Dialog", "Window", "Dialog"],
+    "Animations": ["Animations", "Transitions"],
+    "API Integration": ["API Integration"],
+    "Form Handling": ["Form Handling"],
+    "Error Handling": ["Error Handling"],
+    "File Upload": ["File Operations", "File Upload"],
+    "Search/Filter": ["Search/Filter"],
+    "Virtualization": ["Virtualization"],
+    "JSON Metadata Extraction": ["JSON Metadata Extraction"],
+    "Dynamic CSS Injection": ["Dynamic CSS Injection", "Dynamic Resource Binding"],
+    "Emoji Icon Display": ["Emoji Icon Display"],
+    "Component Card Rendering": ["Component Card Rendering"]
+  },
+  "placement": {
+    "AI Chat Toggle": {
+      "web_feature_hint": "Conditional AI chat interaction button (🤖 AI) in LibraryPanel header",
+      "desktop_target_file": "LibraryPlugin.axaml",
+      "desktop_expected_pattern": "<Button.*AI", 
+      "importance": "high",
+      "notes": "Must exist in the header region near title/subtitle; enables AI component generation access",
+      "wiring_note": "Wire up in the parent AXAML header area and connect to ChatWindow open state"
+    },
+    "AI Availability Hint": {
+      "web_feature_hint": "Visual hint (💡) when AI not configured",
+      "desktop_target_file": "LibraryPlugin.axaml",
+      "desktop_expected_pattern": "💡",
+      "importance": "medium",
+      "notes": "Non-blocking hint informing user why AI features absent",
+      "wiring_note": "Display near the header actions when AI is not configured"
+    }
+  }
+}

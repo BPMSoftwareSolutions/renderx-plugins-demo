@@ -1,6 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using System;
 using System.IO;
 using System.Text.Json;
@@ -25,6 +27,7 @@ public partial class CustomComponentUpload : UserControl
 
     private string? _selectedFilePath;
     private const long MaxFileSizeBytes = 5 * 1024 * 1024; // 5 MB
+    private bool _isDragOver = false;
 
     public CustomComponentUpload()
     {
@@ -191,6 +194,72 @@ public partial class CustomComponentUpload : UserControl
         }
 
         ClearError();
+    }
+
+    private void OnDragOver(object? sender, DragEventArgs e)
+    {
+        e.Handled = true;
+        _isDragOver = true;
+
+        // Update visual feedback
+        var dragDropZone = this.FindControl<Border>("DragDropZone");
+        if (dragDropZone != null)
+        {
+            dragDropZone.Background = new SolidColorBrush(Color.Parse("#eff6ff"));
+            dragDropZone.BorderBrush = new SolidColorBrush(Color.Parse("#3b82f6"));
+        }
+
+        // Check if dragged data contains files
+        if (e.Data.Contains(DataFormats.Files))
+        {
+            e.DragEffects = DragDropEffects.Copy;
+        }
+        else
+        {
+            e.DragEffects = DragDropEffects.None;
+        }
+    }
+
+    private void OnDragLeave(object? sender, DragEventArgs e)
+    {
+        e.Handled = true;
+        _isDragOver = false;
+
+        // Reset visual feedback
+        var dragDropZone = this.FindControl<Border>("DragDropZone");
+        if (dragDropZone != null)
+        {
+            dragDropZone.Background = new SolidColorBrush(Color.Parse("#f9fafb"));
+            dragDropZone.BorderBrush = new SolidColorBrush(Color.Parse("#e5e7eb"));
+        }
+    }
+
+    private void OnDrop(object? sender, DragEventArgs e)
+    {
+        e.Handled = true;
+        _isDragOver = false;
+
+        // Reset visual feedback
+        var dragDropZone = this.FindControl<Border>("DragDropZone");
+        if (dragDropZone != null)
+        {
+            dragDropZone.Background = new SolidColorBrush(Color.Parse("#f9fafb"));
+            dragDropZone.BorderBrush = new SolidColorBrush(Color.Parse("#e5e7eb"));
+        }
+
+        // Get dropped files
+        if (e.Data.Contains(DataFormats.Files))
+        {
+            var files = e.Data.GetFiles();
+            if (files != null && files.Count() > 0)
+            {
+                var filePath = files.First().Path.LocalPath;
+                if (!string.IsNullOrEmpty(filePath))
+                {
+                    ValidateAndDisplayFile(filePath);
+                }
+            }
+        }
     }
 }
 

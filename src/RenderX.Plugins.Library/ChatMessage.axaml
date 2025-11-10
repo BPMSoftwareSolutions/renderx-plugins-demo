@@ -4,18 +4,26 @@
              Background="Transparent">
     <Border Background="Transparent" Margin="0,8">
         <StackPanel Spacing="8">
-            <!-- Author with icon -->
-            <StackPanel Orientation="Horizontal" Spacing="6">
-                <TextBlock Text="💬"
-                           FontSize="12"
+            <!-- Author with icon and timestamp -->
+            <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="6">
+                    <TextBlock Text="💬"
+                               FontSize="12"
+                               VerticalAlignment="Center" />
+                    <TextBlock x:Name="AuthorText"
+                               Text="User"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Border.Primary}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock Grid.Column="1"
+                           x:Name="TimestampText"
+                           Text="12:34 PM"
+                           FontSize="9"
+                           Foreground="{DynamicResource Color.Text.Tertiary}"
                            VerticalAlignment="Center" />
-                <TextBlock x:Name="AuthorText"
-                           Text="User"
-                           FontSize="11"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource Color.Border.Primary}"
-                           VerticalAlignment="Center" />
-            </StackPanel>
+            </Grid>
             
             <!-- Message Content -->
             <Border x:Name="MessageBorder"
@@ -47,16 +55,23 @@
                                            FontSize="24"
                                            VerticalAlignment="Top" />
                                 <StackPanel Spacing="4">
+                                    <!-- Component Name (h4 equivalent) -->
                                     <TextBlock x:Name="ComponentNameText"
                                                Text="Component Name"
                                                FontSize="14"
                                                FontWeight="Bold"
                                                Foreground="{DynamicResource Color.Text.Primary}" />
+                                    <!-- Component Description (p equivalent) -->
                                     <TextBlock x:Name="ComponentDescriptionText"
                                                Text="Component description"
                                                FontSize="11"
                                                Foreground="{DynamicResource Color.Text.Secondary}"
                                                TextWrapping="Wrap" />
+                                    <!-- Component Tags -->
+                                    <StackPanel x:Name="ComponentTagsPanel"
+                                               Orientation="Horizontal"
+                                               Spacing="4"
+                                               Margin="0,4,0,0" />
                                 </StackPanel>
                             </StackPanel>
                             
@@ -71,7 +86,8 @@
                                         Content="📄 View JSON"
                                         Classes="action-button secondary"
                                         FontSize="11"
-                                        Padding="8,4" />
+                                        Padding="8,4"
+                                        Click="OnViewJSONClick" />
                                 <Button x:Name="CopyJSONButton"
                                         Content="📋 Copy JSON"
                                         Classes="action-button secondary"
@@ -99,32 +115,44 @@
                                     Padding="12">
                                 <StackPanel Spacing="8">
                                     <!-- JSON Header -->
-                                    <Grid>
-                                        <TextBlock Text="Component JSON"
+                                    <Grid ColumnDefinitions="*,Auto,Auto">
+                                        <TextBlock Grid.Column="0"
+                                                   Text="Component JSON"
                                                    FontSize="12"
                                                    FontWeight="Bold"
                                                    Foreground="{DynamicResource Color.Text.Primary}"
-                                                   HorizontalAlignment="Left" />
-                                        <Button x:Name="CloseJSONButton"
+                                                   VerticalAlignment="Center" />
+                                        <Button Grid.Column="1"
+                                                x:Name="CopyJSONButton"
+                                                Content="📋 Copy"
+                                                FontSize="10"
+                                                Padding="6,4"
+                                                Margin="4,0"
+                                                Background="{DynamicResource Color.Border.Primary}"
+                                                Foreground="{DynamicResource Color.Background.Primary}"
+                                                BorderThickness="0"
+                                                Click="OnCopyJSONClick" />
+                                        <Button Grid.Column="2"
+                                                x:Name="CloseJSONButton"
                                                 Content="✕"
                                                 FontSize="14"
                                                 Padding="4"
-                                                HorizontalAlignment="Right"
                                                 Background="Transparent"
-                                                BorderThickness="0" />
+                                                BorderThickness="0"
+                                                Click="OnCloseJSONClick" />
                                     </Grid>
-                                    <!-- JSON Content (with monospace font) -->
-                                    <TextBox x:Name="JSONContentText"
-                                             Text="{}"
-                                             FontFamily="Consolas,Courier New,monospace"
-                                             FontSize="10"
-                                             IsReadOnly="True"
-                                             TextWrapping="Wrap"
-                                             AcceptsReturn="True"
-                                             Background="{DynamicResource Color.Background.Primary}"
-                                             BorderThickness="0"
-                                             MinHeight="150"
-                                             MaxHeight="400" />
+                                    <!-- JSON Content (with monospace font - pre/code equivalent) -->
+                                    <Border Background="#1f2937"
+                                            CornerRadius="4"
+                                            Padding="12">
+                                        <TextBlock x:Name="JSONContentText"
+                                                   Text="{}"
+                                                   FontFamily="Consolas,Courier New,monospace"
+                                                   FontSize="10"
+                                                   Foreground="#e5e7eb"
+                                                   TextWrapping="Wrap"
+                                                   LineHeight="1.4" />
+                                    </Border>
                                 </StackPanel>
                             </Border>
                         </StackPanel>

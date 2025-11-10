@@ -122,6 +122,7 @@ class Gap:
     effort_estimate: Optional[str] = None  # 'quick', 'medium', 'large'
     recommendations: List[str] = field(default_factory=list)
     is_quick_win: bool = False
+    web_source_path: Optional[str] = None  # New: direct link/path to web component file
 
 @dataclass
 class PluginAnalysis:
@@ -132,6 +133,8 @@ class PluginAnalysis:
     gaps: List[Gap] = field(default_factory=list)
     css_analysis: List[CSSAnalysis] = field(default_factory=list)
     summary: Dict[str, any] = field(default_factory=dict)
+    feature_audit: Dict[str, List[Dict[str, any]]] = field(default_factory=dict)
+    manifest_audit: Dict[str, List[Dict[str, any]]] = field(default_factory=dict)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -966,6 +969,7 @@ class CSSParser:
 
 class GapAnalyzer:
     """Analyzes gaps between web and desktop implementations."""
+    FEATURE_MAP_PATH: Optional[Path] = None
     
     @staticmethod
     def analyze_plugin(plugin_name: str, web_path: str, desktop_path: str) -> PluginAnalysis:
@@ -987,11 +991,189 @@ class GapAnalyzer:
         # Find gaps
         gaps = GapAnalyzer._detect_gaps(web_components, desktop_components, css_analyses)
         analysis.gaps = gaps
+
+        # Feature map audit (mapping web features to desktop equivalents)
+        feature_map_path = GapAnalyzer.FEATURE_MAP_PATH or Path('migration_tools/feature_map.json')
+        if feature_map_path.exists():
+            try:
+                with open(feature_map_path, 'r', encoding='utf-8') as fm:
+                    fmap = json.load(fm)
+                mappings: Dict[str, List[str]] = fmap.get('mappings', {})
+                audit: Dict[str, List[Dict[str, any]]] = {}
+                # Build desktop feature index per component
+                desktop_feature_index: Dict[str, Set[str]] = {
+                    d.name: {f.name for f in d.features} for d in desktop_components
+                }
+                for w in web_components:
+                    web_feature_names = [f.name for f in w.features]
+                    component_results: List[Dict[str, any]] = []
+                    d_features = desktop_feature_index.get(w.name, set())
+                    for wf in sorted(set(web_feature_names)):
+                        mapped = mappings.get(wf, [])
+                        if not mapped:
+                            status = 'unmapped'  # no mapping defined yet
+                            satisfied = False
+                        else:
+                            satisfied = any(m in d_features for m in mapped)
+                            status = 'present' if satisfied else 'missing'
+                        component_results.append({
+                            'web_feature': wf,
+                            'mapped_desktop_features': mapped,
+                            'desktop_component': w.name if w.name in desktop_feature_index else None,
+                            'status': status,
+                            'satisfied': satisfied
+                        })
+                    audit[w.name] = component_results
+                analysis.feature_audit = audit
+                # Create gaps for missing mapped features (only once per feature per component)
+                # Build quick lookup for web component -> file path
+                web_file_by_name: Dict[str, str] = {w.name: w.file_path for w in web_components}
+                for comp, results in audit.items():
+                    for r in results:
+                        if r['status'] == 'missing':
+                            analysis.gaps.append(Gap(
+                                gap_type='feature',
+                                severity='medium',
+                                title=f'Mapped Feature Missing in {comp}: {r["web_feature"]}',
+                                description=f'Web feature "{r["web_feature"]}" not satisfied by any mapped desktop feature {r["mapped_desktop_features"]}',
+                                web_implementation=f'Feature detected in web component {comp}',
+                                desktop_implementation='Absent in mapped desktop component',
+                                impact='Feature behavior unavailable on desktop',
+                                effort_estimate='medium',
+                                is_quick_win=False,
+                                web_source_path=web_file_by_name.get(comp)
+                            ))
+                        elif r['status'] == 'unmapped':
+                            # Track unmapped so audit can highlight need for mapping, but don't inflate gap count too much
+                            analysis.gaps.append(Gap(
+                                gap_type='feature',
+                                severity='low',
+                                title=f'Unmapped Web Feature in {comp}: {r["web_feature"]}',
+                                description='Web feature has no mapping definition yet in feature_map.json',
+                                web_implementation=f'Feature present in web component {comp}',
+                                desktop_implementation='Mapping missing',
+                                impact='Audit incomplete until mapping added',
+                                effort_estimate='quick',
+                                is_quick_win=True,
+                                web_source_path=web_file_by_name.get(comp)
+                            ))
+            except Exception as e:
+                print(f"Feature map audit failed: {e}")
+
+        # Manifest audit (layout, interactions, topics) → add gaps for missing declarations
+        try:
+            manifest_audit = GapAnalyzer._manifest_audit(plugin_name, desktop_components)
+            analysis.manifest_audit = manifest_audit
+            for entry in manifest_audit.get('interactions', []):
+                if entry.get('status') == 'missing':
+                    analysis.gaps.append(Gap(
+                        gap_type='feature',
+                        severity='medium',
+                        title=f"Manifest Interaction Missing: {entry['route']}",
+                        description=f"Web manifest routes '{entry['route']}' to plugin '{entry['pluginId']}' but corresponding desktop component wasn't found.",
+                        web_implementation=f"interaction-manifest.json → {entry['route']} → {entry.get('pluginId')}/{entry.get('sequenceId')}",
+                        desktop_implementation='No matching desktop component detected',
+                        impact='Declared interaction may not function on desktop',
+                        effort_estimate='medium',
+                        is_quick_win=False
+                    ))
+            for entry in manifest_audit.get('topics', []):
+                if entry.get('status') == 'missing':
+                    analysis.gaps.append(Gap(
+                        gap_type='feature',
+                        severity='low',
+                        title=f"Manifest Topic Route Missing: {entry['topic']}",
+                        description=f"Topic '{entry['topic']}' references plugin '{entry['pluginId']}' but corresponding desktop component wasn't found.",
+                        web_implementation=f"topics-manifest.json → {entry['topic']}",
+                        desktop_implementation='No matching desktop component detected',
+                        impact='Desktop may not handle this topic route',
+                        effort_estimate='quick',
+                        is_quick_win=True
+                    ))
+        except Exception as e:
+            print(f"Manifest audit failed: {e}")
         
         # Generate summary
         analysis.summary = GapAnalyzer._generate_summary(analysis)
         
         return analysis
+
+    @staticmethod
+    def _manifest_audit(plugin_name: str, desktop_components: List[DesktopComponent]) -> Dict[str, List[Dict[str, any]]]:
+        """Load manifests and compute declared vs desktop-present audit for the plugin."""
+        plugin_id_candidates = {
+            plugin_name,
+            ''.join(word.capitalize() for word in plugin_name.split('-')) + 'Plugin',
+            ''.join(word.capitalize() for word in plugin_name.split('-'))
+        }
+        desktop_names = {c.name for c in desktop_components}
+        audit: Dict[str, List[Dict[str, any]]] = {
+            'interactions': [],
+            'topics': [],
+            'layout': []
+        }
+
+        def resolve_manifest_path(filename: str) -> Optional[Path]:
+            candidates = [
+                Path(filename),
+                Path(__file__).resolve().parent.parent / filename
+            ]
+            for c in candidates:
+                if c.exists():
+                    return c
+            return None
+
+        # Interaction manifest
+        try:
+            im_path = resolve_manifest_path('interaction-manifest.json')
+            if im_path:
+                im = json.loads(im_path.read_text(encoding='utf-8'))
+                for route, meta in (im.get('routes') or {}).items():
+                    pid = meta.get('pluginId')
+                    if any(p.lower() == (pid or '').lower() for p in plugin_id_candidates):
+                        expected_prefix = (pid or '').replace('Plugin', '')
+                        present = any(d.lower().startswith(expected_prefix.lower()) for d in desktop_names)
+                        audit['interactions'].append({
+                            'route': route,
+                            'pluginId': pid,
+                            'sequenceId': meta.get('sequenceId'),
+                            'status': 'present' if present else 'missing'
+                        })
+        except Exception:
+            pass
+
+        # Topics manifest
+        try:
+            tm_path = resolve_manifest_path('topics-manifest.json')
+            if tm_path:
+                tm = json.loads(tm_path.read_text(encoding='utf-8'))
+                for topic, tmeta in (tm.get('topics') or {}).items():
+                    for r in tmeta.get('routes') or []:
+                        pid = r.get('pluginId')
+                        if any(p.lower() == (pid or '').lower() for p in plugin_id_candidates):
+                            expected_prefix = (pid or '').replace('Plugin', '')
+                            present = any(d.lower().startswith(expected_prefix.lower()) for d in desktop_names)
+                            audit['topics'].append({
+                                'topic': topic,
+                                'pluginId': pid,
+                                'sequenceId': r.get('sequenceId'),
+                                'status': 'present' if present else 'missing'
+                            })
+        except Exception:
+            pass
+
+        # Layout manifest (record slots for context)
+        try:
+            lm_path = resolve_manifest_path('layout-manifest.json')
+            if lm_path:
+                lm = json.loads(lm_path.read_text(encoding='utf-8'))
+                slots = [s.get('name') for s in lm.get('slots') or [] if s.get('name')]
+                for s in slots:
+                    audit['layout'].append({'slot': s})
+        except Exception:
+            pass
+
+        return audit
     
     @staticmethod
     def _find_web_components(web_path: str, plugin_name: str) -> List[WebComponent]:
@@ -1081,7 +1263,8 @@ class GapAnalyzer:
                 desktop_implementation='Not implemented',
                 impact='Users will not have access to this UI component',
                 effort_estimate='medium' if web_comp.line_count < 200 else 'large',
-                is_quick_win=web_comp.line_count < 100
+                is_quick_win=web_comp.line_count < 100,
+                web_source_path=web_comp.file_path
             ))
             
         # Feature gaps for matching components
@@ -1104,7 +1287,8 @@ class GapAnalyzer:
                         desktop_implementation='Not implemented',
                         impact=f'Feature "{feature_name}" not available in desktop version',
                         effort_estimate='quick' if feature.implementation_type == 'style' else 'medium',
-                        is_quick_win=feature.implementation_type == 'style'
+                        is_quick_win=feature.implementation_type == 'style',
+                        web_source_path=web_comp.file_path
                     ))
                 
                 # 🔴 CRITICAL: Check UI element parity (JSX vs AXAML)
@@ -1142,7 +1326,8 @@ class GapAnalyzer:
                         desktop_implementation=f'Desktop renders: {", ".join(sorted(desktop_elements)) if desktop_elements else "No elements found"}',
                         impact='Users see incomplete or different UI structure than web version',
                         effort_estimate='medium',
-                        is_quick_win=False
+                        is_quick_win=False,
+                        web_source_path=web_comp.file_path
                     ))
                 
                 # 🔴 CRITICAL: Check rendered text parity
@@ -1160,7 +1345,8 @@ class GapAnalyzer:
                         desktop_implementation=f'Desktop shows: {", ".join(list(desktop_text)[:5]) if desktop_text else "No text content found"}',
                         impact='Users see different labels, headings, or instructions than web version',
                         effort_estimate='quick',
-                        is_quick_win=True
+                        is_quick_win=True,
+                        web_source_path=web_comp.file_path
                     ))
 
                 # NEW: Layout parity check (only once per component to avoid noise)
@@ -1184,7 +1370,8 @@ class GapAnalyzer:
                             desktop_implementation=f'Panel hints: {d_layout}',
                             impact='Visual arrangement differs (card alignment/sizing/parity)',
                             effort_estimate='medium',
-                            is_quick_win=False
+                            is_quick_win=False,
+                            web_source_path=web_comp.file_path
                         ))
 
                 # NEW: Conditional UI parity (AI toggle & hint)
@@ -1205,7 +1392,8 @@ class GapAnalyzer:
                         desktop_implementation=f'Desktop UI hints: {d_ui}',
                         impact='Users cannot access AI-related interactions or contextual hints',
                         effort_estimate='quick',
-                        is_quick_win=True
+                        is_quick_win=True,
+                        web_source_path=web_comp.file_path
                     ))
                     
         # CSS/Styling gaps
@@ -1269,7 +1457,7 @@ class GapAnalyzer:
                     is_quick_win=True
                 ))
                 
-        # NEW: Plugin-level conditional UI parity (aggregate)
+        # NEW: Plugin-level conditional UI parity (aggregate) + placement-aware hints
         try:
             web_ai_any = any(c.ui_hints.get('has_ai_toggle') for c in web_components)
             desktop_ai_any = any(c.ui_hints.get('has_ai_toggle') for c in desktop_components)
@@ -1299,6 +1487,57 @@ class GapAnalyzer:
                     effort_estimate='quick',
                     is_quick_win=True
                 ))
+
+            # Placement-aware: detect misplaced AI toggle/hint relative to target file
+            try:
+                fmap_path = GapAnalyzer.FEATURE_MAP_PATH or Path('migration_tools/feature_map.json')
+                if fmap_path.exists():
+                    fmap = json.loads(Path(fmap_path).read_text(encoding='utf-8'))
+                    placement = fmap.get('placement', {})
+                    # AI Chat Toggle placement
+                    chat_meta = placement.get('AI Chat Toggle') or {}
+                    target_file = (chat_meta.get('desktop_target_file') or chat_meta.get('desktop_target_component'))
+                    if target_file:
+                        # normalize just filename
+                        target_file_name = Path(target_file).name
+                        present_components = [d for d in desktop_components if d.ui_hints.get('has_ai_toggle')]
+                        present_in_target = any(d for d in desktop_components if d.ui_hints.get('has_ai_toggle') and d.axaml_file and Path(d.axaml_file).name == target_file_name)
+                        if present_components and not present_in_target:
+                            where = ', '.join({Path(d.axaml_file).name if d.axaml_file else d.name for d in present_components})
+                            gaps.append(Gap(
+                                gap_type='component',
+                                severity='high',
+                                title='MISPLACED AI CHAT TOGGLE',
+                                description=f'AI chat toggle is implemented in {where} but expected in {target_file_name}.',
+                                web_implementation='Web places AI toggle in LibraryPanel header',
+                                desktop_implementation=f'Not found in {target_file_name}',
+                                impact='Inconsistent user experience and discoverability of AI features',
+                                effort_estimate='quick',
+                                is_quick_win=True
+                            ))
+
+                    # AI Availability Hint placement
+                    hint_meta = placement.get('AI Availability Hint') or {}
+                    target_file_hint = (hint_meta.get('desktop_target_file') or hint_meta.get('desktop_target_component'))
+                    if target_file_hint:
+                        target_file_hint_name = Path(target_file_hint).name
+                        present_hint_components = [d for d in desktop_components if d.ui_hints.get('has_ai_hint')]
+                        present_hint_in_target = any(d for d in desktop_components if d.ui_hints.get('has_ai_hint') and d.axaml_file and Path(d.axaml_file).name == target_file_hint_name)
+                        if present_hint_components and not present_hint_in_target:
+                            where = ', '.join({Path(d.axaml_file).name if d.axaml_file else d.name for d in present_hint_components})
+                            gaps.append(Gap(
+                                gap_type='component',
+                                severity='medium',
+                                title='MISPLACED AI AVAILABILITY HINT',
+                                description=f'AI availability hint is implemented in {where} but expected in {target_file_hint_name}.',
+                                web_implementation='Web shows hint near LibraryPanel header actions',
+                                desktop_implementation=f'Not found in {target_file_hint_name}',
+                                impact='Users may miss configuration guidance for AI features',
+                                effort_estimate='quick',
+                                is_quick_win=True
+                            ))
+            except Exception:
+                pass
         except Exception:
             pass
 
@@ -1397,7 +1636,39 @@ class ReportGenerator:
                     report.append(f"{gap.description}\n")
                     report.append(f"- **Web:** {gap.web_implementation}")
                     report.append(f"- **Desktop:** {gap.desktop_implementation}")
+                    if gap.web_source_path:
+                        # Provide relative path and a clickable markdown link
+                        rel_path = gap.web_source_path.replace('\\', '/')
+                        report.append(f"- **Web Source:** [{rel_path}]({rel_path})")
                     report.append(f"- **Impact:** {gap.impact}")
+                    # Placement-aware guidance from feature_map if relevant
+                    try:
+                        fmap_path = GapAnalyzer.FEATURE_MAP_PATH or Path('migration_tools/feature_map.json')
+                        if fmap_path.exists():
+                            fmap = json.loads(Path(fmap_path).read_text(encoding='utf-8'))
+                            placement = fmap.get('placement', {})
+                            # Detect AI toggle/hint by title keywords
+                            if 'AI CHAT TOGGLE' in gap.title.upper():
+                                meta = placement.get('AI Chat Toggle')
+                            elif 'AI AVAILABILITY HINT' in gap.title.upper():
+                                meta = placement.get('AI Availability Hint')
+                            else:
+                                meta = None
+                            if meta:
+                                target_file = meta.get('desktop_target_file') or meta.get('desktop_target_component')
+                                notes = meta.get('notes')
+                                wiring = meta.get('wiring_note')
+                                report.append("")
+                                report.append("**Placement Recommendation:**")
+                                if target_file:
+                                    report.append(f"- Add/Edit File: `{target_file}` (header area)")
+                                if notes:
+                                    report.append(f"- Notes: {notes}")
+                                if wiring:
+                                    report.append(f"- Wiring: {wiring}")
+                                report.append("")
+                    except Exception:
+                        pass
                     report.append("")
             else:
                 report.append("✅ All web components have desktop equivalents!\n")
@@ -1419,6 +1690,9 @@ class ReportGenerator:
                         report.append(f"- **{gap.title.split(': ')[1]}** ({gap.severity})")
                         report.append(f"  - {gap.description}")
                         report.append(f"  - Effort: {gap.effort_estimate}")
+                        if gap.web_source_path:
+                            rel_path = gap.web_source_path.replace('\\', '/')
+                            report.append(f"  - Web Source: [{rel_path}]({rel_path})")
                     report.append("")
             else:
                 report.append("✅ Feature parity achieved!\n")
@@ -1454,6 +1728,51 @@ class ReportGenerator:
                     report.append("")
             else:
                 report.append("No significant style gaps detected.\n")
+        
+        # Feature Map Audit
+        if analysis.feature_audit:
+            report.append("## 🗺️ Feature Map Audit (Web → Desktop)\n")
+            for comp, entries in analysis.feature_audit.items():
+                report.append(f"### {comp}")
+                for e in entries:
+                    status = e.get('status')
+                    emoji = '✅' if status == 'present' else ('🟡' if status == 'unmapped' else '🟠')
+                    mapped = e.get('mapped_desktop_features') or []
+                    mapped_str = ', '.join(mapped) if mapped else '—'
+                    report.append(f"- {emoji} {e['web_feature']} → {mapped_str} — {status}")
+                report.append("")
+
+        # Manifest Audit
+        if analysis.manifest_audit:
+            ma = analysis.manifest_audit
+            report.append("## 🧾 Manifest Audit (Declared vs Desktop)\n")
+            interactions = ma.get('interactions', [])
+            topics = ma.get('topics', [])
+            layout_slots = ma.get('layout', [])
+            if interactions:
+                present_i = sum(1 for i in interactions if i.get('status') == 'present')
+                missing_i = sum(1 for i in interactions if i.get('status') == 'missing')
+                report.append(f"### Routes / Interactions ({present_i} present / {missing_i} missing)\n")
+                for i in interactions:
+                    emoji = '✅' if i.get('status') == 'present' else '🟠'
+                    seq = f" (sequence {i.get('sequenceId')})" if i.get('sequenceId') else ''
+                    report.append(f"- {emoji} {i['route']} → {i.get('pluginId')}{seq} — {i.get('status')}")
+                report.append("")
+            if topics:
+                present_t = sum(1 for t in topics if t.get('status') == 'present')
+                missing_t = sum(1 for t in topics if t.get('status') == 'missing')
+                report.append(f"### Topics ({present_t} present / {missing_t} missing)\n")
+                for t in topics[:150]:  # avoid overly long list
+                    emoji = '✅' if t.get('status') == 'present' else '🟡'
+                    seq = f" (sequence {t.get('sequenceId')})" if t.get('sequenceId') else ''
+                    report.append(f"- {emoji} {t['topic']} → {t.get('pluginId')}{seq} — {t.get('status')}")
+                if len(topics) > 150:
+                    report.append(f"… (truncated {len(topics)-150} additional topics)")
+                report.append("")
+            if layout_slots:
+                report.append("### Layout Slots\n")
+                report.append(', '.join(sorted({s.get('slot') for s in layout_slots if s.get('slot')})))
+                report.append("")
                 
         # Component Details
         report.append("## 📋 Component Details\n")
@@ -1580,6 +1899,7 @@ def main():
     parser.add_argument('--severity', choices=['critical', 'high', 'medium', 'low', 'all'], default='all', help='Filter by severity')
     parser.add_argument('--recommendations', action='store_true', help='Include recommendations')
     parser.add_argument('--quick-wins', action='store_true', help='Highlight quick wins')
+    parser.add_argument('--feature-map', default='migration_tools/feature_map.json', help='Path to feature map JSON file')
     
     args = parser.parse_args()
     
@@ -1594,6 +1914,12 @@ def main():
     print(f"   Desktop source: {args.desktop}")
     print()
     
+    # Configure optional resources
+    try:
+        GapAnalyzer.FEATURE_MAP_PATH = Path(args.feature_map) if args.feature_map else None
+    except Exception:
+        GapAnalyzer.FEATURE_MAP_PATH = None
+
     # Analyze plugin
     analysis = GapAnalyzer.analyze_plugin(args.plugin, args.web_packages, args.desktop)
     

@@ -39,7 +39,35 @@
                                FontWeight="Bold"
                                Foreground="{DynamicResource Color.Text.Primary}"
                                VerticalAlignment="Center" />
+                    <!-- AI Chat Toggle Button -->
+                    <Button x:Name="AIToggleButton"
+                            Content="🤖 AI Chat"
+                            Classes="ai-toggle-button"
+                            FontSize="11"
+                            Padding="8,4"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Right"
+                            Click="OnAIChatToggle" />
                 </StackPanel>
+                <!-- AI Availability Hint -->
+                <Border x:Name="AIAvailabilityHint"
+                        Background="#fef3c7"
+                        BorderThickness="1"
+                        BorderBrush="#fcd34d"
+                        CornerRadius="4"
+                        Padding="8"
+                        IsVisible="False">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="💡"
+                                   FontSize="12"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="AI is not configured. Configure API key to enable AI component generation."
+                                   FontSize="10"
+                                   Foreground="#92400e"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Border>
                 <!-- Search Box -->
                 <TextBox x:Name="SearchBox"
                          Watermark="Search components..."

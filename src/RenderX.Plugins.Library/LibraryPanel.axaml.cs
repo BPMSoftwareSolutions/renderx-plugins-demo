@@ -211,5 +211,40 @@ public partial class LibraryPanel : UserControl
             ShowError($"Retry failed: {ex.Message}");
         }
     }
+
+    private void OnAIChatToggle(object? sender, RoutedEventArgs e)
+    {
+        // Trigger AI chat window - this would be handled by the plugin host
+        // For now, just show a notification that AI chat is being opened
+        var aiToggleButton = this.FindControl<Button>("AIToggleButton");
+        if (aiToggleButton != null)
+        {
+            aiToggleButton.Content = "🤖 AI Chat (Opening...)";
+        }
+    }
+
+    /// <summary>
+    /// Show AI availability hint when AI is not configured
+    /// </summary>
+    public void ShowAIAvailabilityHint()
+    {
+        var hint = this.FindControl<Border>("AIAvailabilityHint");
+        if (hint != null)
+        {
+            hint.IsVisible = true;
+        }
+    }
+
+    /// <summary>
+    /// Hide AI availability hint when AI is configured
+    /// </summary>
+    public void HideAIAvailabilityHint()
+    {
+        var hint = this.FindControl<Border>("AIAvailabilityHint");
+        if (hint != null)
+        {
+            hint.IsVisible = false;
+        }
+    }
 }
 
