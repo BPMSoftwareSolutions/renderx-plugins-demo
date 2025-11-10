@@ -35,10 +35,16 @@
                 BorderBrush="{DynamicResource Color.Border.Secondary}"
                 Padding="12,8">
             <StackPanel Spacing="8">
-                <TextBlock Text="Custom Components"
-                           FontSize="14"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource Color.Text.Primary}" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="📦"
+                               FontSize="16"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="Custom Components"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Text.Primary}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
                 <TextBlock x:Name="StorageInfo"
                            FontSize="10"
                            Foreground="{DynamicResource Color.Text.Secondary}"

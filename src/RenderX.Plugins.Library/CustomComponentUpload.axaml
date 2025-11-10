@@ -24,10 +24,16 @@
             CornerRadius="8"
             Padding="12">
         <StackPanel Spacing="12">
-            <TextBlock Text="Upload Custom Component"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Foreground="{DynamicResource Color.Border.Primary}" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="📤"
+                           FontSize="16"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Upload Custom Component"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}"
+                           VerticalAlignment="Center" />
+            </StackPanel>
 
             <!-- File Input -->
             <StackPanel Spacing="4">

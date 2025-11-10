@@ -27,10 +27,16 @@
                     <GradientStop Color="#764ba2" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <TextBlock Text="AI Component Generator"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Foreground="White" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="🤖"
+                           FontSize="16"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="AI Component Generator"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           VerticalAlignment="Center" />
+            </StackPanel>
         </Border>
 
         <!-- Messages Area -->
