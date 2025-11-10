@@ -148,10 +148,67 @@ public partial class LibraryPanel : UserControl
 
     private void UpdateComponents()
     {
+        try
+        {
+            var componentsControl = this.FindControl<ItemsControl>("ComponentsItemsControl");
+            if (componentsControl != null)
+            {
+                componentsControl.ItemsSource = Components;
+            }
+            HideError();
+        }
+        catch (Exception ex)
+        {
+            ShowError($"Failed to load components: {ex.Message}");
+        }
+    }
+
+    private void ShowError(string message)
+    {
+        var errorState = this.FindControl<Border>("ErrorState");
+        var errorMessage = this.FindControl<TextBlock>("ErrorMessage");
+
+        if (errorState != null)
+        {
+            errorState.IsVisible = true;
+        }
+
+        if (errorMessage != null)
+        {
+            errorMessage.Text = message;
+        }
+
         var componentsControl = this.FindControl<ItemsControl>("ComponentsItemsControl");
         if (componentsControl != null)
         {
-            componentsControl.ItemsSource = Components;
+            componentsControl.IsVisible = false;
+        }
+    }
+
+    private void HideError()
+    {
+        var errorState = this.FindControl<Border>("ErrorState");
+        if (errorState != null)
+        {
+            errorState.IsVisible = false;
+        }
+
+        var componentsControl = this.FindControl<ItemsControl>("ComponentsItemsControl");
+        if (componentsControl != null)
+        {
+            componentsControl.IsVisible = true;
+        }
+    }
+
+    private void OnRetryClick(object? sender, RoutedEventArgs e)
+    {
+        try
+        {
+            UpdateComponents();
+        }
+        catch (Exception ex)
+        {
+            ShowError($"Retry failed: {ex.Message}");
         }
     }
 }

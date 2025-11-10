@@ -4,11 +4,18 @@
              Background="Transparent">
     <Border Background="Transparent" Margin="0,8">
         <StackPanel Spacing="4">
-            <TextBlock x:Name="AuthorText"
-                       Text="User"
-                       FontSize="11"
-                       FontWeight="Bold"
-                       Foreground="{DynamicResource Color.Border.Primary}" />
+            <!-- Author with icon -->
+            <StackPanel Orientation="Horizontal" Spacing="6">
+                <TextBlock Text="💬"
+                           FontSize="12"
+                           VerticalAlignment="Center" />
+                <TextBlock x:Name="AuthorText"
+                           Text="User"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}"
+                           VerticalAlignment="Center" />
+            </StackPanel>
             <Border x:Name="MessageBorder"
                     Background="{DynamicResource Color.Background.Tertiary}"
                     BorderThickness="1"

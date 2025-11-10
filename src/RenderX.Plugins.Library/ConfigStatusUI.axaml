@@ -9,6 +9,9 @@
             Padding="12">
         <StackPanel Spacing="8">
             <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="⚙️"
+                           FontSize="14"
+                           VerticalAlignment="Center" />
                 <Ellipse x:Name="StatusDot"
                          Width="12" Height="12"
                          Fill="#10b981"

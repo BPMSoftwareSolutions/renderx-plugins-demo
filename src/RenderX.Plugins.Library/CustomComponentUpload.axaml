@@ -35,6 +35,13 @@
                            VerticalAlignment="Center" />
             </StackPanel>
 
+            <!-- Error Message -->
+            <TextBlock x:Name="ErrorMessage"
+                       FontSize="10"
+                       Foreground="#ef4444"
+                       TextWrapping="Wrap"
+                       IsVisible="False" />
+
             <!-- File Input -->
             <StackPanel Spacing="4">
                 <TextBlock Text="Component File"

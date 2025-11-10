@@ -19,47 +19,74 @@
             </Setter>
         </Style>
     </UserControl.Styles>
-    <Border BorderThickness="1"
+    <Border BorderThickness="2"
             BorderBrush="{DynamicResource Color.Border.Primary}"
-            CornerRadius="8"
-            Padding="12"
+            CornerRadius="12"
+            Padding="16"
+            Background="{DynamicResource Color.Background.Primary}"
             PointerPressed="OnPreviewPointerPressed"
             PointerMoved="OnPreviewPointerMoved"
             PointerReleased="OnPreviewPointerReleased">
-        <StackPanel Spacing="12">
-            <!-- Preview Title -->
-            <TextBlock x:Name="PreviewTitle"
-                       Text="Component Preview"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Foreground="{DynamicResource Color.Border.Primary}" />
+        <Border.Styles>
+            <Style Selector="Border:pointerover">
+                <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}" />
+                <Setter Property="RenderTransform">
+                    <TransformGroup>
+                        <TranslateTransform Y="-2"/>
+                    </TransformGroup>
+                </Setter>
+            </Style>
+        </Border.Styles>
+        <Border.Transitions>
+            <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3"/>
+            </Transitions>
+        </Border.Transitions>
+        <StackPanel Spacing="8" HorizontalAlignment="Center">
+            <!-- Component Icon -->
+            <TextBlock x:Name="ComponentIcon"
+                       Text="🧩"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,8" />
+            
+            <!-- Component Name -->
+            <TextBlock x:Name="ComponentName"
+                       Text="Component Name"
+                       FontSize="12"
+                       FontWeight="Medium"
+                       Foreground="{DynamicResource Color.Border.Primary}"
+                       HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,4" />
+            
+            <!-- Component Description -->
+            <TextBlock x:Name="ComponentDescription"
+                       Text="Component description"
+                       FontSize="10"
+                       Foreground="#999"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       LineHeight="1.3"
+                       MaxWidth="180" />
 
-            <!-- Preview Area -->
+            <!-- Preview Area (optional, for rendering component template) -->
             <Border x:Name="PreviewArea"
                     Background="{DynamicResource Color.Background.Secondary}"
                     BorderThickness="1"
                     BorderBrush="{DynamicResource Color.Border.Primary}"
                     CornerRadius="4"
-                    MinHeight="200"
-                    Padding="12">
-                <TextBlock Text="No preview available"
-                           FontSize="12"
-                           Foreground="#999"
+                    MinHeight="80"
+                    Padding="8"
+                    Margin="0,8,0,0"
+                    IsVisible="False">
+                <TextBlock Text="Preview"
+                           FontSize="10"
+                           Foreground="#666"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
             </Border>
-
-            <!-- Component Info -->
-            <StackPanel Spacing="4">
-                <TextBlock Text="Component Name"
-                           FontSize="12"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource Color.Border.Primary}" />
-                <TextBlock Text="Component description"
-                           FontSize="11"
-                           Foreground="#666"
-                           TextWrapping="Wrap" />
-            </StackPanel>
 
             <!-- Action Buttons -->
             <StackPanel Orientation="Horizontal" Spacing="8">

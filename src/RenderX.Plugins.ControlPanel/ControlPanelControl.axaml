@@ -10,6 +10,66 @@
              BorderThickness="1"
              BorderBrush="{DynamicResource Color.Border.Primary}">
 
+    <UserControl.Styles>
+        <!-- Property Item Hover -->
+        <Style Selector="Border.property-item">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.property-item:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        </Style>
+
+        <!-- Button Hover -->
+        <Style Selector="Button.control-button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.control-button:pointerover">
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+
+        <!-- TextBox Hover -->
+        <Style Selector="TextBox.control-input">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TextBox.control-input:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+        </Style>
+
+        <!-- Section Border Hover -->
+        <Style Selector="Border.control-section">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.control-section:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        </Style>
+    </UserControl.Styles>
+
     <Grid RowDefinitions="Auto,*">
         <!-- Control Panel Header -->
         <Border Grid.Row="0"
@@ -37,7 +97,8 @@
             <ScrollViewer>
                 <StackPanel Spacing="12">
                     <!-- Properties Section -->
-                    <Border Background="{DynamicResource Color.Background.Secondary}"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
@@ -53,7 +114,8 @@
                                           Background="{DynamicResource Color.Background.Primary}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="{DynamicResource Color.Background.Primary}"
+                                        <Border Classes="property-item"
+                                                Background="{DynamicResource Color.Background.Primary}"
                                                 BorderThickness="0,0,0,1"
                                                 BorderBrush="{DynamicResource Color.Border.Primary}"
                                                 Padding="0,8">
@@ -63,7 +125,8 @@
                                                            FontSize="11"
                                                            VerticalAlignment="Center"
                                                            Foreground="#666"/>
-                                                <TextBox Grid.Column="1"
+                                                <TextBox Classes="control-input"
+                                                         Grid.Column="1"
                                                          Text="{Binding Value}"
                                                          FontSize="11"
                                                          Margin="8,0,0,0"
@@ -79,7 +142,8 @@
                     </Border>
 
                     <!-- Interactions Section -->
-                    <Border Background="{DynamicResource Color.Background.Secondary}"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
@@ -95,7 +159,8 @@
                                           Background="{DynamicResource Color.Background.Primary}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Name}"
+                                        <Button Classes="control-button"
+                                                Content="{Binding Name}"
                                                 Click="OnInteractionButtonClicked"
                                                 Padding="8,6"
                                                 Margin="0,4"
@@ -110,7 +175,8 @@
                     </Border>
 
                     <!-- CSS Classes Section -->
-                    <Border Background="{DynamicResource Color.Background.Secondary}"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
@@ -122,7 +188,8 @@
                                        Foreground="{DynamicResource Color.Border.Primary}"/>
 
                             <!-- CSS Classes Input -->
-                            <TextBox Name="CssClassesInput"
+                            <TextBox Classes="control-input"
+                                     Name="CssClassesInput"
                                      Watermark="Enter CSS classes..."
                                      FontSize="11"
                                      Padding="6,4"
@@ -130,7 +197,8 @@
                                      BorderBrush="{DynamicResource Color.Border.Secondary}"
                                      AcceptsReturn="False"/>
 
-                            <Button Content="Apply CSS Classes"
+                            <Button Classes="control-button"
+                                    Content="Apply CSS Classes"
                                     Click="OnApplyCssClassesClicked"
                                     Padding="8,6"
                                     Background="{DynamicResource Color.Success}"
@@ -141,7 +209,8 @@
                     </Border>
 
                     <!-- Status Section -->
-                    <Border Background="{DynamicResource Color.Background.Secondary}"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"

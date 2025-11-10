@@ -50,6 +50,41 @@
             </StackPanel>
         </Border>
 
+        <!-- Error State -->
+        <Border x:Name="ErrorState"
+                DockPanel.Dock="Top"
+                Background="#fee2e2"
+                BorderThickness="1"
+                BorderBrush="#fca5a5"
+                CornerRadius="4"
+                Padding="12"
+                Margin="8"
+                IsVisible="False">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="⚠️"
+                               FontSize="16"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="Error Loading Components"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Foreground="#dc2626"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock x:Name="ErrorMessage"
+                           FontSize="11"
+                           Foreground="#991b1b"
+                           TextWrapping="Wrap"
+                           Text="An error occurred while loading components. Please try refreshing the page." />
+                <Button Content="Retry"
+                        Padding="8,4"
+                        Background="#dc2626"
+                        Foreground="White"
+                        FontSize="11"
+                        Click="OnRetryClick" />
+            </StackPanel>
+        </Border>
+
         <!-- Components List -->
         <ScrollViewer DockPanel.Dock="Top">
             <ItemsControl x:Name="ComponentsItemsControl" Padding="8">
