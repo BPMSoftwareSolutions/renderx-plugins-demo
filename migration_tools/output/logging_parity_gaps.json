@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "generated": "2025-11-10 09:00:13",
-    "total_gaps": 321,
+    "generated": "2025-11-10 10:48:02",
+    "total_gaps": 295,
     "web_logs_analyzed": 409,
-    "desktop_logs_analyzed": 95
+    "desktop_logs_analyzed": 126
   },
   "gaps": [
     {
@@ -34,84 +34,6 @@
     },
     {
       "gap_type": "missing_in_desktop",
-      "category": "Conductor",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
-        "line": 250,
-        "message": "\"\ud83c\udfbc MusicalConductor: Initialized with core components\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.2,
-      "recommendation": "Add logging to MusicalConductor.Core/Conductor.cs: `_logger.LogInformation(\"\"\ud83c\udfbc MusicalConductor: Initialized with core components\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Conductor",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
-        "line": 285,
-        "message": "\"\ud83d\udd04 MusicalConductor: Singleton instance reset\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Add logging to MusicalConductor.Core/Conductor.cs: `_logger.LogInformation(\"\"\ud83d\udd04 MusicalConductor: Singleton instance reset\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Conductor",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
-        "line": 299,
-        "message": "executionContext, beat, error",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.125,
-      "recommendation": "Add logging to MusicalConductor.Core/Conductor.cs: `_logger.LogInformation(\"executionContext, beat, error...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Conductor",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
-        "line": 638,
-        "message": "\"\ud83c\udfbc MusicalConductor: All monitoring data reset\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.09090909090909091,
-      "recommendation": "Add logging to MusicalConductor.Core/Conductor.cs: `_logger.LogInformation(\"\"\ud83c\udfbc MusicalConductor: All monitoring data reset\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "EventBus",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
-        "line": 222,
-        "message": "`\ud83d\udce1 EventBus: Cleared all subscribers for \"${eventName}\"`",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.07142857142857142,
-      "recommendation": "Add logging to MusicalConductor.Core/EventBus.cs: `_logger.LogInformation(\"`\ud83d\udce1 EventBus: Cleared all subscribers for \"${eventName}\"`...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "EventBus",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
-        "line": 234,
-        "message": "\"\ud83d\udce1 EventBus: Cleared all subscribers\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.07692307692307693,
-      "recommendation": "Add logging to MusicalConductor.Core/EventBus.cs: `_logger.LogInformation(\"\"\ud83d\udce1 EventBus: Cleared all subscribers\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
       "category": "EventBus",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
@@ -120,21 +42,8 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.07692307692307693,
+      "similarity_score": 0.2222222222222222,
       "recommendation": "Add logging to MusicalConductor.Core/EventBus.cs: `_logger.LogInformation(\"`\ud83d\udce1 EventBus: Debug mode ${enabled ? \"enabled\" : \"disabled\"}`...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "EventBus",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
-        "line": 329,
-        "message": "\"\ud83c\udfbc EventBus: Using internal conductor (legacy mode",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.06666666666666667,
-      "recommendation": "Add logging to MusicalConductor.Core/EventBus.cs: `_logger.LogInformation(\"\"\ud83c\udfbc EventBus: Using internal conductor (legacy mode...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -146,7 +55,7 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.07142857142857142,
+      "similarity_score": 0.1,
       "recommendation": "Add logging to MusicalConductor.Core/EventBus.cs: `_logger.LogInformation(\"`\ud83c\udfbc EventBus: Queueing ${eventName} for signal: ${signal}`...\")`"
     },
     {
@@ -172,21 +81,8 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.1111111111111111,
+      "similarity_score": 0.25,
       "recommendation": "Add logging to MusicalConductor.Core/ExecutionQueue.cs: `_logger.LogInformation(\"`\ud83c\udfbc ExecutionQueue: Now executing \"${request.sequenceName}\"`...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "ExecutionQueue",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\ExecutionQueue.ts",
-        "line": 125,
-        "message": "`\ud83c\udfbc ExecutionQueue: No sequence currently executing`",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.1,
-      "recommendation": "Add logging to MusicalConductor.Core/ExecutionQueue.cs: `_logger.LogInformation(\"`\ud83c\udfbc ExecutionQueue: No sequence currently executing`...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -336,58 +232,6 @@
       "category": "Logging",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
-        "line": 51,
-        "message": "\"\ud83c\udfbc EventLogger: Hierarchical logging disabled\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.09090909090909091,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc EventLogger: Hierarchical logging disabled\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Logging",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
-        "line": 76,
-        "message": "\"\ud83c\udfbc EventLogger: Hierarchical beat logging initialized\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.08333333333333333,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc EventLogger: Hierarchical beat logging initialized\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Logging",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
-        "line": 84,
-        "message": "\"\ud83c\udfbc EventLogger: Movement hierarchical logging disabled\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.08333333333333333,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc EventLogger: Movement hierarchical logging disabled\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Logging",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
-        "line": 116,
-        "message": "\"\ud83c\udfbc EventLogger: Hierarchical movement logging initialized\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.08333333333333333,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc EventLogger: Hierarchical movement logging initialized\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Logging",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
         "line": 186,
         "message": "`%c\u2705 Completed`, \"color: #28A745; font-weight: bold;\"",
         "severity": "INFO"
@@ -406,34 +250,8 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
+      "similarity_score": 0.25,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc EventLogger: Emitted ${eventType}`, data...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Logging",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
-        "line": 411,
-        "message": "\"\ud83c\udfbc EventLogger: Configuration updated:\", this.config",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.09090909090909091,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc EventLogger: Configuration updated:\", this.config...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "Logging",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
-        "line": 430,
-        "message": "\"\ud83e\uddf9 EventLogger: Event subscriptions cleaned up\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.2222222222222222,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83e\uddf9 EventLogger: Event subscriptions cleaned up\"...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -657,7 +475,7 @@
       "recommendation": "Implement Monitoring logging in desktop variant"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\DomainEventSystem.ts",
@@ -667,10 +485,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc Domain Event: ${eventName}`, domainEvent...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\index.ts",
@@ -679,11 +497,11 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1111111111111111,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udd04 Communication system state reset\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\index.ts",
@@ -693,10 +511,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc Initializing RenderX Evolution Communication System...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\index.ts",
@@ -706,10 +524,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\u2705 Communication System initialized successfully\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
@@ -718,11 +536,11 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.09090909090909091,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc Registering all musical sequences with conductor...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
@@ -732,10 +550,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u2705 Registered sequence: ${sequence.name}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
@@ -744,11 +562,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.09090909090909091,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"`\u274c Failed to register sequence: ${sequence.name}`, error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
@@ -758,10 +576,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcca Sequence categories: ${Array.from(categories...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
@@ -771,10 +589,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc Initializing Musical Sequences System...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
@@ -784,10 +602,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcca Total sequences registered: ${registeredSequences}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
@@ -796,11 +614,11 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.2857142857142857,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc ConductorAPI: Statistics reset\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
@@ -809,11 +627,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.07142857142857142,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\ud83c\udfbd ConductorAPI: No active sequence to update data baton\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
@@ -822,11 +640,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\ud83c\udfbd ConductorAPI: Failed to update data baton:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
@@ -835,11 +653,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.07142857142857142,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\ud83c\udfbd ConductorAPI: No active sequence to clear data baton\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
@@ -848,11 +666,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\ud83c\udfbd ConductorAPI: Failed to clear data baton:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -862,10 +680,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc ConductorCore: Initialized successfully\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -875,10 +693,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc Beat execution logging already initialized, skipping...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -888,10 +706,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc ConductorCore: Setting up beat execution logging...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -900,11 +718,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\ud83c\udfbc Beat execution error:\", data...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -914,10 +732,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\u2705 Beat execution logging initialized\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -927,10 +745,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc \u250c\u2500 Beat ${beatNumber} Started`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -940,10 +758,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc \u2502  Sequence: ${sequenceName}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -953,10 +771,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc \u2502  Movement: ${movementName}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -966,10 +784,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc \u2502  Event: ${eventType}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -979,10 +797,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc \u2502  Timing: ${timing}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -991,11 +809,11 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbd \u2502  Data Baton:`, data.payload...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1005,10 +823,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc \u2514\u2500 Beat ${beatNumber} Completed`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1018,10 +836,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc    Duration: ${duration}ms`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1031,10 +849,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc    Sequence: ${sequenceName}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1044,10 +862,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc    Movement: ${movementName}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1057,10 +875,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc ConductorCore: Cleaning up...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1069,11 +887,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1111111111111111,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\ud83c\udfbc Error during event unsubscription:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
@@ -1083,10 +901,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\u2705 ConductorCore: Cleanup completed\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\EventSubscriptionManager.ts",
@@ -1096,10 +914,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"`\ud83c\udfbc Subscriber: ${subscriberId}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\node_modules\\type-fest\\source\\promisable.d.ts",
@@ -1109,10 +927,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"entry...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1122,10 +940,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\ude80 Starting knowledge export...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1134,11 +952,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.125,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Export failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1148,10 +966,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udce5 Starting knowledge import...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1161,10 +979,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Validation failed:\", validation.errors...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1174,10 +992,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Warnings:\", validation.warnings...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1187,10 +1005,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udd0d Import preview:\", preview...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1200,10 +1018,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcca Import summary: ${this.getImportSummary(result...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1212,11 +1030,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.125,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Import failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1226,10 +1044,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udd04 Starting knowledge merge...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1238,11 +1056,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.125,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Merge failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1252,10 +1070,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udd0d Validating knowledge file...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1265,10 +1083,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Validation failed:\", validation.errors...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1278,10 +1096,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Warnings:\", validation.warnings...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1291,10 +1109,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcc4 Validation report saved to: ${options.report}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1303,11 +1121,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.125,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Validation failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1317,10 +1135,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"JSON.stringify(status, null, 2...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1329,11 +1147,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Failed to get status:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1343,10 +1161,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udd0d Comparing knowledge...\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1356,10 +1174,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"JSON.stringify(diff, null, 2...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1368,11 +1186,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.125,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Diff failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1382,10 +1200,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"`\u274c Shortcut '${keyword}' not found`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1395,10 +1213,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udca1 Did you mean one of these?\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1408,10 +1226,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   - ${s.keyword}: ${s.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1421,10 +1239,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udd0d Use --search flag to search for shortcuts\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1433,11 +1251,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1111111111111111,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Shortcut command failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1447,10 +1265,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n${index + 1}. \ud83d\udd17 ${shortcut.keyword}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1460,10 +1278,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   ${shortcut.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1473,10 +1291,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcda ${shortcut.resources.length} resources`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1486,10 +1304,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83c\udff7\ufe0f  Aliases: ${shortcut.aliases.join(\", \"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1499,10 +1317,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udcc1 ${category.toUpperCase(...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1512,10 +1330,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`      Aliases: ${shortcut.aliases.join(\", \"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1525,10 +1343,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udce5 Import shortcuts functionality - coming soon!\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1538,10 +1356,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcca Total shortcuts: ${shortcuts.length}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1551,10 +1369,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcc1 Categories: ${categories.length}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1564,10 +1382,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udccb Quick Commands:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1577,10 +1395,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udd25 Popular shortcuts:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1590,10 +1408,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udd17 ${keyword} - ${shortcut.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1602,11 +1420,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1111111111111111,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Shortcuts command failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1616,10 +1434,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u274c Failed to mark transfer ${transferId} as consumed`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1629,10 +1447,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u274c Failed to mark transfer ${transferId} as sent`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1642,10 +1460,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u274c Failed to mark transfer ${transferId} as received`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1655,10 +1473,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u274c Failed to mark transfer ${transferId} as failed`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1668,10 +1486,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83c\udfbc Knowledge Transfer Creation Guide\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1681,10 +1499,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1694,10 +1512,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udccb Steps to create a knowledge transfer:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1707,10 +1525,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n1. Create your knowledge file (JSON format...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1720,10 +1538,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   cat > my-knowledge.json << 'EOF'\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1733,10 +1551,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   {\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1746,10 +1564,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'     \"knowledgeTransfer\": {'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1759,10 +1577,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'       \"version\": \"1.0.0\",'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1772,10 +1590,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'       \"fromAgent\": \"your-agent-id\",'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1785,10 +1603,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'       \"toAgent\": \"target-agent-id\",'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1798,10 +1616,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'       \"priority\": \"high\"'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1811,10 +1629,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"     },\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1824,10 +1642,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'     \"content\": { /* your knowledge here */ }'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1837,10 +1655,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   }\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1850,10 +1668,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   EOF\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1863,10 +1681,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n2. Create the transfer:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1876,10 +1694,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'   node -r ts-node/register -e \"'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1889,10 +1707,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   const queue = new KnowledgeTransferQueue(...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1902,10 +1720,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   const transferId = queue.createTransfer(\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1915,10 +1733,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"     'from-agent', 'to-agent', 'my-knowledge.json',\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1928,10 +1746,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1941,10 +1759,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   console.log('Transfer created:', transferId...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1954,10 +1772,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   queue.markAsSent(transferId, 'from-agent'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1967,10 +1785,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"'   \"'...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1980,10 +1798,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n3. Verify creation:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -1993,10 +1811,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   npm run queue -- --status\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2006,10 +1824,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcca Total transfers: ${status.totalTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2019,10 +1837,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u23f3 Pending: ${status.pendingTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2032,10 +1850,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udd04 Active: ${status.activeTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2045,10 +1863,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u2705 Completed: ${status.completedTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2058,10 +1876,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u274c Failed: ${status.failedTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2071,10 +1889,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u23f0 Expired: ${status.expiredTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2084,10 +1902,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udc65 Active Agents (${agents.length}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2097,10 +1915,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udced No transfers found\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2110,10 +1928,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n${index + 1}. ${stateIcon} ${transfer.transferId}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2123,10 +1941,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcdd ${transfer.metadata.title}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2136,10 +1954,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udc64 ${transfer.fromAgentId} \u2192 ${transfer.toAgentId}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2149,10 +1967,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \u23f0 ${timeAgo}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2162,10 +1980,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2175,10 +1993,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n... and ${transfers.length - 10} more transfers`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2188,10 +2006,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcca Status: ${onlineStatus}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2201,10 +2019,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udce5 Pending receives: ${agentStatus.pendingReceives}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2214,10 +2032,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udd04 Pending consumes: ${agentStatus.pendingConsumes}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2227,10 +2045,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcc8 Total transfers: ${agentStatus.totalTransfers}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2240,10 +2058,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udccb Recent Transfers (${transfers.length}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2253,10 +2071,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcdd ${transfer.metadata.title}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2266,10 +2084,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udc64 ${role === \"sender\" ? \"\u2192\" : \"\u2190\"} ${otherAgent}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2279,10 +2097,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udced No transfers found for this agent\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2292,10 +2110,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udccb Quick Commands:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2305,10 +2123,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udd04 Transfer States:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2318,10 +2136,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   pending \u2192 sent \u2192 received \u2192 consumed \u2705\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2331,10 +2149,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"   Any state can go to \u2192 failed \u274c or expired \u23f0\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2343,11 +2161,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.1111111111111111,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Queue command failed:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2357,10 +2175,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83c\udfaf Next Steps for Agent:`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2370,10 +2188,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2383,10 +2201,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n${index + 1}. \ud83d\udce4 ${transfer.metadata.title}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2396,10 +2214,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcdd ${transfer.metadata.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2409,10 +2227,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2422,10 +2240,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \u23f0 Expires in: ${hoursRemaining}h`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2435,10 +2253,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcc1 Knowledge file: ${transfer.knowledgeFile}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2448,10 +2266,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`      npm run queue -- --received ${transfer.transferId}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2461,10 +2279,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n${index + 1}. \ud83d\udce5 ${transfer.metadata.title}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2474,10 +2292,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcc1 Knowledge file: ${transfer.knowledgeFile}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2487,10 +2305,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`      npm run queue -- --consumed ${transfer.transferId}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2500,10 +2318,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udca1 Quick Commands:`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2513,10 +2331,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udce6 Creating backup: ${backupPath}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2526,10 +2344,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83c\udfbc MusicalConductor Knowledge Status\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2539,10 +2357,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"=====================================\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2552,10 +2370,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83c\udfaf Conductor Status:`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2565,10 +2383,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Active: ${status.conductor.active ? \"\u2705\" : \"\u274c\"}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2578,10 +2396,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Sequences: ${status.conductor.sequences || 0}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2591,10 +2409,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Plugins: ${status.conductor.plugins || 0}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2604,10 +2422,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Queue Length: ${status.conductor.queueLength || 0}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2617,10 +2435,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udcca Performance Metrics:`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2630,10 +2448,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Average Time: ${status.performance.averageTime || 0}ms`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2643,10 +2461,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Success Rate: ${status.performance.successRate || 0}%`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2656,10 +2474,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udce1 Event System:`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2669,10 +2487,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Subscriptions: ${status.events.subscriptions || 0}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2682,10 +2500,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - Events Emitted: ${status.events.emitted || 0}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2695,10 +2513,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2708,10 +2526,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\\n\ud83d\udd0d Knowledge Comparison\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2721,10 +2539,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"=======================\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2734,10 +2552,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udccb Metadata Changes:`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2747,10 +2565,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  ${key}: ${JSON.stringify(value...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2760,10 +2578,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\u2795 Added (${diff.added.length}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2773,10 +2591,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  + ${item.type}: ${item.name || item.id}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2786,10 +2604,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\u2796 Removed (${diff.removed.length}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2799,10 +2617,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  - ${item.type}: ${item.name || item.id}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2812,10 +2630,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udd04 Modified (${diff.modified.length}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2825,10 +2643,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  ~ ${item.type}: ${item.name || item.id}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
@@ -2838,10 +2656,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2850,11 +2668,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not get full system status:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2863,11 +2681,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not get event bus statistics:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2876,11 +2694,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not export complete system state:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2889,11 +2707,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not export complete plugin knowledge:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2902,11 +2720,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not export complete event knowledge:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2915,11 +2733,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.08333333333333333,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not export complete resource knowledge:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
@@ -2928,11 +2746,11 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.09090909090909091,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Could not export performance insights:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
@@ -2942,10 +2760,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udcda Imported Best Practices:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
@@ -2955,10 +2773,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  ${index + 1}. ${practice}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
@@ -2968,10 +2786,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udca1 Imported Optimization Insights:\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
@@ -2981,10 +2799,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`  ${index + 1}. ${insight.insight} (${insight.type}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
@@ -2994,10 +2812,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udce4 Transfer ${transferId} marked as sent by ${agentId}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
@@ -3007,10 +2825,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"`\u23f0 Cleaned up ${expiredCount} expired transfers`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
@@ -3020,10 +2838,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Failed to load transfer queue, starting fresh\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
@@ -3032,11 +2850,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.09090909090909091,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Failed to save transfer queue:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3046,10 +2864,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f Failed to load shortcuts database, using defaults\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3058,11 +2876,11 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "similarity_score": 0.09090909090909091,
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Failed to save shortcuts database:\", error...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3072,10 +2890,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udcdd ${shortcut.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3085,10 +2903,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udd17 Aliases: ${shortcut.aliases.join(\", \"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3098,10 +2916,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\\n\ud83d\udcda Resources (${shortcut.resources.length}...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3111,10 +2929,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`     ${resource.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3124,10 +2942,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`     \ud83d\udcc1 ${displayPath}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3137,10 +2955,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`     \ud83c\udf10 ${resource.url}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3150,10 +2968,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`     \ud83c\udff7\ufe0f  ${resource.tags.join(\", \"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3163,10 +2981,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\"...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3176,10 +2994,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"`\u274c No shortcuts found for: \"${query}\"`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3189,10 +3007,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   ${shortcut.description}`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3202,10 +3020,10 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`   \ud83d\udcda ${shortcut.resources.length} resources available`...\")`"
     },
     {
-      "gap_type": "missing_category",
+      "gap_type": "missing_in_desktop",
       "category": "Other",
       "web": {
         "file": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
@@ -3215,7 +3033,7 @@
       },
       "desktop": null,
       "similarity_score": 0.0,
-      "recommendation": "Implement Other logging in desktop variant"
+      "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\"...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -3240,7 +3058,7 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.08333333333333333,
+      "similarity_score": 0.25,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\ud83c\udfbc Failed to extract plugin code for validation:\", error...\")`"
     },
     {
@@ -3461,7 +3279,7 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.09090909090909091,
+      "similarity_score": 0.2727272727272727,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"`\u274c Failed to load plugin from ${pluginPath}:`, error...\")`"
     },
     {
@@ -3476,19 +3294,6 @@
       "desktop": null,
       "similarity_score": 0.1111111111111111,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udd04 Preloading ${pluginPaths.length} plugins...`...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
-        "line": 305,
-        "message": "`\u274c Failed to preload plugin ${path}:`, error",
-        "severity": "ERROR"
-      },
-      "desktop": null,
-      "similarity_score": 0.1,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"`\u274c Failed to preload plugin ${path}:`, error...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -3526,7 +3331,7 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.08333333333333333,
+      "similarity_score": 0.1111111111111111,
       "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"`\ud83e\udde0 PluginManager: Attempting to mount plugin: ${id}`...\")`"
     },
     {
@@ -3573,25 +3378,12 @@
       "category": "PluginManagement",
       "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 437,
-        "message": "`\u274c Failed to mount plugin ${id}:`, error",
-        "severity": "ERROR"
-      },
-      "desktop": null,
-      "similarity_score": 0.1,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogError(\"`\u274c Failed to mount plugin ${id}:`, error...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
         "line": 463,
         "message": "`\ud83e\udde0 PluginManager: Failed to unmount ${pluginId}:`, err",
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
+      "similarity_score": 0.18181818181818182,
       "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogWarning(\"`\ud83e\udde0 PluginManager: Failed to unmount ${pluginId}:`, err...\")`"
     },
     {
@@ -3619,58 +3411,6 @@
       "desktop": null,
       "similarity_score": 0.125,
       "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"`\u2705 Plugin unmounted successfully: ${pluginId}`...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 491,
-        "message": "`\u274c Failed to unmount plugin ${pluginId}:`, error",
-        "severity": "ERROR"
-      },
-      "desktop": null,
-      "similarity_score": 0.1,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogError(\"`\u274c Failed to unmount plugin ${pluginId}:`, error...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 510,
-        "message": "\"\ud83e\udde0 Registering CIA-compliant plugins...\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"\"\ud83e\udde0 Registering CIA-compliant plugins...\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 545,
-        "message": "\"\u274c Failed to register CIA plugins:\", error",
-        "severity": "ERROR"
-      },
-      "desktop": null,
-      "similarity_score": 0.08333333333333333,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogError(\"\"\u274c Failed to register CIA plugins:\", error...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 556,
-        "message": "\"\ud83c\udfbc PluginManager: Registering plugins from manifest...\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"\"\ud83c\udfbc PluginManager: Registering plugins from manifest...\"...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -3728,52 +3468,13 @@
       "gap_type": "missing_in_desktop",
       "category": "PluginManagement",
       "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 623,
-        "message": "\"\ud83d\udd04 Registering fallback sequences...\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"\"\ud83d\udd04 Registering fallback sequences...\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 654,
-        "message": "\"\u2705 Fallback sequences registered\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"\"\u2705 Fallback sequences registered\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
-        "line": 744,
-        "message": "\"\ud83e\uddf9 PluginManager: State reset\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.0,
-      "recommendation": "Add logging to MusicalConductor.Core/PluginManager.cs: `_logger.LogInformation(\"\"\ud83e\uddf9 PluginManager: State reset\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
         "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
         "line": 40,
         "message": "`\ud83d\udce6 Loading manifest from cache: ${manifestPath}`",
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
+      "similarity_score": 0.1,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83d\udce6 Loading manifest from cache: ${manifestPath}`...\")`"
     },
     {
@@ -3812,7 +3513,7 @@
         "severity": "ERROR"
       },
       "desktop": null,
-      "similarity_score": 0.07692307692307693,
+      "similarity_score": 0.2727272727272727,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"`\u274c Failed to load manifest from ${manifestPath}:`, error...\")`"
     },
     {
@@ -3825,7 +3526,7 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.0,
+      "similarity_score": 0.16666666666666666,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"\"\ud83d\udd04 Using fallback manifest\"...\")`"
     },
     {
@@ -3864,7 +3565,7 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
+      "similarity_score": 0.09090909090909091,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f No valid plugins found in manifest\"...\")`"
     },
     {
@@ -3890,7 +3591,7 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.08333333333333333,
+      "similarity_score": 0.15384615384615385,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"`\u26a0\ufe0f Failed to load manifest from ${path}, trying next...`...\")`"
     },
     {
@@ -3903,21 +3604,8 @@
         "severity": "WARN"
       },
       "desktop": null,
-      "similarity_score": 0.0,
+      "similarity_score": 0.1111111111111111,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogWarning(\"\"\u26a0\ufe0f All manifest sources failed, using fallback\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "PluginManagement",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
-        "line": 260,
-        "message": "\"\u274c Failed to parse manifest JSON:\", error",
-        "severity": "ERROR"
-      },
-      "desktop": null,
-      "similarity_score": 0.08333333333333333,
-      "recommendation": "Add logging to appropriate desktop file: `_logger.LogError(\"\"\u274c Failed to parse manifest JSON:\", error...\")`"
     },
     {
       "gap_type": "missing_in_desktop",
@@ -3981,34 +3669,8 @@
         "severity": "INFO"
       },
       "desktop": null,
-      "similarity_score": 0.1111111111111111,
+      "similarity_score": 0.125,
       "recommendation": "Add logging to appropriate desktop file: `_logger.LogInformation(\"`\ud83c\udfbc SequenceRegistry: Cleared ${sequences.length} sequences`...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "SequenceExecution",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\BeatExecutor.ts",
-        "line": 388,
-        "message": "\"\ud83e\uddf9 BeatExecutor: Beat execution queue cleared\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.1,
-      "recommendation": "Add logging to MusicalConductor.Core/SequenceExecutor.cs: `_logger.LogInformation(\"\"\ud83e\uddf9 BeatExecutor: Beat execution queue cleared\"...\")`"
-    },
-    {
-      "gap_type": "missing_in_desktop",
-      "category": "SequenceExecution",
-      "web": {
-        "file": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\SequenceExecutor.ts",
-        "line": 247,
-        "message": "\"\ud83e\uddf9 SequenceExecutor: Execution history cleared\"",
-        "severity": "INFO"
-      },
-      "desktop": null,
-      "similarity_score": 0.1111111111111111,
-      "recommendation": "Add logging to MusicalConductor.Core/SequenceExecutor.cs: `_logger.LogInformation(\"\"\ud83e\uddf9 SequenceExecutor: Execution history cleared\"...\")`"
     },
     {
       "gap_type": "missing_in_desktop",

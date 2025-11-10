@@ -2,9 +2,9 @@
 
 **Platform:** Avalonia.NET (C#)
 
-**Generated:** 2025-11-10 08:55:37
+**Generated:** 2025-11-10 10:47:49
 
-**Total Logging Statements:** 95
+**Total Logging Statements:** 126
 
 ## Table of Contents
 
@@ -23,53 +23,54 @@
 
 ### Overview
 
-The Avalonia Musical Conductor contains **95** logging statements across **11** files.
+The Avalonia Musical Conductor contains **126** logging statements across **14** files.
 
 ### Severity Breakdown
 
 - **Critical:** 0 (0.0%)
-- **Error:** 24 (25.3%)
-- **Warning:** 8 (8.4%)
-- **Information:** 55 (57.9%)
-- **Debug:** 8 (8.4%)
+- **Error:** 28 (22.2%)
+- **Warning:** 9 (7.1%)
+- **Information:** 80 (63.5%)
+- **Debug:** 9 (7.1%)
 - **Trace:** 0 (0.0%)
 
 ### Top Categories
 
-- **Conductor:** 23 (24.2%)
-- **Engine:** 14 (14.7%)
-- **EventBus:** 13 (13.7%)
-- **Logging:** 13 (13.7%)
-- **Sample:** 12 (12.6%)
+- **Conductor:** 29 (23.0%)
+- **Logging:** 24 (19.0%)
+- **EventBus:** 15 (11.9%)
+- **Engine:** 14 (11.1%)
+- **PluginManagement:** 13 (10.3%)
 
 ### Structured Logging
 
-- **Statements using structured logging:** 62 (65.3%)
-- **Statements using string interpolation:** 33 (34.7%)
+- **Statements using structured logging:** 67 (53.2%)
+- **Statements using string interpolation:** 59 (46.8%)
 
 ## ASCII Visualization
 
 ### Logging Distribution by Category
 
 ```
-Conductor                 │██████████████████████████████████████████████████ 23
-Engine                    │██████████████████████████████ 14
-EventBus                  │████████████████████████████ 13
-Logging                   │████████████████████████████ 13
-Sample                    │██████████████████████████ 12
-SequenceExecution         │███████████████████ 9
-PluginManagement          │███████████████ 7
-ExecutionQueue            │████████ 4
+Conductor                 │██████████████████████████████████████████████████ 29
+Logging                   │█████████████████████████████████████████ 24
+EventBus                  │█████████████████████████ 15
+Engine                    │████████████████████████ 14
+PluginManagement          │██████████████████████ 13
+Sample                    │████████████████████ 12
+SequenceExecution         │██████████████████ 11
+ExecutionQueue            │████████ 5
+Other                     │█████ 3
 ```
 
 ### Logging Distribution by Severity
 
 ```
 🔥 Critical    │ 0
-🔴 Error       │█████████████████████ 24
-🟡 Warning     │███████ 8
-🔵 Information │██████████████████████████████████████████████████ 55
-🟢 Debug       │███████ 8
+🔴 Error       │█████████████████ 28
+🟡 Warning     │█████ 9
+🔵 Information │██████████████████████████████████████████████████ 80
+🟢 Debug       │█████ 9
 ⚪ Trace       │ 0
 ```
 
@@ -79,82 +80,89 @@ ExecutionQueue            │████████ 4
 ConductorClient.cs                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 15
 JintEngineHost.cs                     │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 14
 ConductorLogger.cs                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 13
+PluginManager.cs                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 13
 MainWindow.xaml.cs                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 12
-SequenceExecutor.cs                   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 9
+SequenceExecutor.cs                   │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 11
+EventLogger.cs                        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 11
+Conductor.cs                          │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 9
 JintEventBusAdapter.cs                │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 8
-PluginManager.cs                      │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 7
+EventBus.cs                           │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 7
 ConductorClient.cs                    │▓▓▓▓▓▓▓▓▓▓▓▓▓ 5
-EventBus.cs                           │▓▓▓▓▓▓▓▓▓▓▓▓▓ 5
-ExecutionQueue.cs                     │▓▓▓▓▓▓▓▓▓▓ 4
-Conductor.cs                          │▓▓▓▓▓▓▓▓ 3
+ExecutionQueue.cs                     │▓▓▓▓▓▓▓▓▓▓▓▓▓ 5
+StatisticsManager.cs                  │▓▓▓▓▓ 2
+PerformanceTracker.cs                 │▓▓ 1
 ```
 
 ### Logging Method Distribution
 
 ```
-LogInformation                 │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 53
-LogError                       │░░░░░░░░░░░░░░░░░░ 24
-LogDebug                       │░░░░░░ 8
-LogWarning                     │░░░░░░ 8
+LogInformation                 │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 78
+LogError                       │░░░░░░░░░░░░░░ 28
+LogDebug                       │░░░░ 9
+LogWarning                     │░░░░ 9
 Log                            │░ 2
 ```
 
 ### Structured vs Non-Structured Logging
 
 ```
-✅ Structured {param}   │██████████████████████████████████████████████████ 62
-⚠️  Non-structured       │██████████████████████████ 33
+✅ Structured {param}   │██████████████████████████████████████████████████ 67
+⚠️  Non-structured       │████████████████████████████████████████████ 59
 ```
 
 ## Statistics by Category
 
 | Category | Count | Percentage |
 |----------|-------|------------|
-| Conductor | 23 | 24.2% |
-| Engine | 14 | 14.7% |
-| EventBus | 13 | 13.7% |
-| Logging | 13 | 13.7% |
-| Sample | 12 | 12.6% |
-| SequenceExecution | 9 | 9.5% |
-| PluginManagement | 7 | 7.4% |
-| ExecutionQueue | 4 | 4.2% |
+| Conductor | 29 | 23.0% |
+| Logging | 24 | 19.0% |
+| EventBus | 15 | 11.9% |
+| Engine | 14 | 11.1% |
+| PluginManagement | 13 | 10.3% |
+| Sample | 12 | 9.5% |
+| SequenceExecution | 11 | 8.7% |
+| ExecutionQueue | 5 | 4.0% |
+| Other | 3 | 2.4% |
 
 ## Statistics by Severity
 
 | Severity | Count | Percentage |
 |----------|-------|------------|
 | Critical | 0 | 0.0% |
-| Error | 24 | 25.3% |
-| Warning | 8 | 8.4% |
-| Information | 55 | 57.9% |
-| Debug | 8 | 8.4% |
+| Error | 28 | 22.2% |
+| Warning | 9 | 7.1% |
+| Information | 80 | 63.5% |
+| Debug | 9 | 7.1% |
 | Trace | 0 | 0.0% |
 
 ## Statistics by Log Type
 
 | Log Method | Count | Percentage |
 |------------|-------|------------|
-| `LogInformation` | 53 | 55.8% |
-| `LogError` | 24 | 25.3% |
-| `LogDebug` | 8 | 8.4% |
-| `LogWarning` | 8 | 8.4% |
-| `Log` | 2 | 2.1% |
+| `LogInformation` | 78 | 61.9% |
+| `LogError` | 28 | 22.2% |
+| `LogDebug` | 9 | 7.1% |
+| `LogWarning` | 9 | 7.1% |
+| `Log` | 2 | 1.6% |
 
 ## Top Logging Files
 
 | File | Count | Percentage |
 |------|-------|------------|
-| `src\MusicalConductor.Avalonia\Client\ConductorClient.cs` | 15 | 15.8% |
-| `src\MusicalConductor.Avalonia\Engine\JintEngineHost.cs` | 14 | 14.7% |
-| `src\MusicalConductor.Avalonia\Logging\ConductorLogger.cs` | 13 | 13.7% |
-| `src\MusicalConductor.Avalonia\Sample\MainWindow.xaml.cs` | 12 | 12.6% |
-| `src\MusicalConductor.Avalonia\MusicalConductor.Core\SequenceExecutor.cs` | 9 | 9.5% |
-| `src\MusicalConductor.Avalonia\Engine\JintEventBusAdapter.cs` | 8 | 8.4% |
-| `src\MusicalConductor.Avalonia\MusicalConductor.Core\PluginManager.cs` | 7 | 7.4% |
-| `src\MusicalConductor.Avalonia\MusicalConductor.Core\ConductorClient.cs` | 5 | 5.3% |
-| `src\MusicalConductor.Avalonia\MusicalConductor.Core\EventBus.cs` | 5 | 5.3% |
-| `src\MusicalConductor.Avalonia\MusicalConductor.Core\ExecutionQueue.cs` | 4 | 4.2% |
-| `src\MusicalConductor.Avalonia\MusicalConductor.Core\Conductor.cs` | 3 | 3.2% |
+| `src\MusicalConductor.Avalonia\Client\ConductorClient.cs` | 15 | 11.9% |
+| `src\MusicalConductor.Avalonia\Engine\JintEngineHost.cs` | 14 | 11.1% |
+| `src\MusicalConductor.Avalonia\Logging\ConductorLogger.cs` | 13 | 10.3% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\PluginManager.cs` | 13 | 10.3% |
+| `src\MusicalConductor.Avalonia\Sample\MainWindow.xaml.cs` | 12 | 9.5% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\SequenceExecutor.cs` | 11 | 8.7% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\Monitoring\EventLogger.cs` | 11 | 8.7% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\Conductor.cs` | 9 | 7.1% |
+| `src\MusicalConductor.Avalonia\Engine\JintEventBusAdapter.cs` | 8 | 6.3% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\EventBus.cs` | 7 | 5.6% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\ConductorClient.cs` | 5 | 4.0% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\ExecutionQueue.cs` | 5 | 4.0% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\Monitoring\StatisticsManager.cs` | 2 | 1.6% |
+| `src\MusicalConductor.Avalonia\MusicalConductor.Core\Monitoring\PerformanceTracker.cs` | 1 | 0.8% |
 
 ## Structured Logging Analysis
 
@@ -162,8 +170,8 @@ Log                            │░ 2
 
 Microsoft's ILogger supports **structured logging** using `{ParameterName}` syntax, which provides better performance and queryability compared to string interpolation.
 
-- **Structured:** 62 (65.3%)
-- **Non-structured:** 33 (34.7%)
+- **Structured:** 67 (53.2%)
+- **Non-structured:** 59 (46.8%)
 
 ✅ **Good practice:** Majority of logging uses structured logging.
 
@@ -171,18 +179,19 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 
 | Category | Structured | Non-Structured | % Structured |
 |----------|------------|----------------|-------------|
-| Conductor | 17 | 6 | 73.9% |
+| Conductor | 17 | 12 | 58.6% |
 | Engine | 4 | 10 | 28.6% |
-| EventBus | 11 | 2 | 84.6% |
-| ExecutionQueue | 3 | 1 | 75.0% |
-| Logging | 10 | 3 | 76.9% |
-| PluginManagement | 7 | 0 | 100.0% |
+| EventBus | 11 | 4 | 73.3% |
+| ExecutionQueue | 3 | 2 | 60.0% |
+| Logging | 15 | 9 | 62.5% |
+| Other | 0 | 3 | 0.0% |
+| PluginManagement | 7 | 6 | 53.8% |
 | Sample | 5 | 7 | 41.7% |
-| SequenceExecution | 5 | 4 | 55.6% |
+| SequenceExecution | 5 | 6 | 45.5% |
 
 ## Detailed Log Inventory
 
-### Conductor (23 statements)
+### Conductor (29 statements)
 
 #### `src\MusicalConductor.Avalonia\Client\ConductorClient.cs`
 
@@ -208,9 +217,15 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 
 | Line | Severity | Method | Structured | Message Preview |
 |------|----------|--------|------------|----------------|
-| 53 | Error | `LogError` | ✅ | "Sequence not found: {SequenceId}", sequenceId... |
-| 141 | Information | `LogInformation` | ✅ | "🎼 Conductor: Now executing \"{SequenceName}\"", s... |
-| 151 | Error | `LogError` | ✅ | ex, "Error executing sequence: {SequenceId}", sequ... |
+| 61 | Information | `LogInformation` | ❌ | "🎼 MusicalConductor: Initialized with core compone... |
+| 62 | Information | `LogInformation` | ❌ | ""... |
+| 64 | Information | `LogInformation` | ❌ | ""... |
+| 67 | Information | `LogInformation` | ❌ | " MusicalConductor: Singleton instance reset"... |
+| 69 | Information | `LogInformation` | ❌ | "executionContext, beat, error"... |
+| 72 | Information | `LogInformation` | ❌ | " MusicalConductor: All monitoring data reset"... |
+| 88 | Error | `LogError` | ✅ | "Sequence not found: {SequenceId}", sequenceId... |
+| 181 | Information | `LogInformation` | ✅ | "🎼 Conductor: Now executing \"{SequenceName}\"", s... |
+| 199 | Error | `LogError` | ✅ | ex, "Error executing sequence: {SequenceId}", sequ... |
 
 #### `src\MusicalConductor.Avalonia\MusicalConductor.Core\ConductorClient.cs`
 
@@ -243,7 +258,7 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 | 327 | Error | `LogError` | ❌ | ex, "❌ Failed to subscribe ConductorLogger to Musi... |
 | 337 | Information | `LogInformation` | ❌ | "🛑 Jint engine disposed"... |
 
-### EventBus (13 statements)
+### EventBus (15 statements)
 
 #### `src\MusicalConductor.Avalonia\Engine\JintEventBusAdapter.cs`
 
@@ -262,24 +277,27 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 
 | Line | Severity | Method | Structured | Message Preview |
 |------|----------|--------|------------|----------------|
-| 36 | Debug | `LogDebug` | ✅ | "Subscribed to event: {EventName}", eventName... |
-| 59 | Debug | `LogDebug` | ✅ | "Unsubscribed from event: {EventName}", eventName... |
-| 87 | Debug | `LogDebug` | ✅ | "Unsubscribed from event: {EventName}", eventName... |
-| 134 | Error | `LogError` | ✅ | ex, "Error in event callback for {EventName}", eve... |
-| 177 | Error | `LogError` | ✅ | ex, "Error in event callback for {EventName}", eve... |
+| 20 | Information | `LogInformation` | ❌ | " EventBus: Cleared all subscribers"... |
+| 24 | Information | `LogInformation` | ❌ | " EventBus: Using internal conductor (legacy mode"... |
+| 46 | Debug | `LogDebug` | ✅ | "Subscribed to event: {EventName}", eventName... |
+| 69 | Debug | `LogDebug` | ✅ | "Unsubscribed from event: {EventName}", eventName... |
+| 97 | Debug | `LogDebug` | ✅ | "Unsubscribed from event: {EventName}", eventName... |
+| 144 | Error | `LogError` | ✅ | ex, "Error in event callback for {EventName}", eve... |
+| 187 | Error | `LogError` | ✅ | ex, "Error in event callback for {EventName}", eve... |
 
-### ExecutionQueue (4 statements)
+### ExecutionQueue (5 statements)
 
 #### `src\MusicalConductor.Avalonia\MusicalConductor.Core\ExecutionQueue.cs`
 
 | Line | Severity | Method | Structured | Message Preview |
 |------|----------|--------|------------|----------------|
-| 35 | Information | `LogInformation` | ✅ | "🎼 ExecutionQueue: Enqueued \"{SequenceId}\" with ... |
-| 53 | Information | `LogInformation` | ✅ | "🎼 ExecutionQueue: Dequeued \"{SequenceId}\"", ite... |
-| 111 | Information | `LogInformation` | ❌ | "Execution queue cleared"... |
-| 131 | Information | `LogInformation` | ✅ | "🎼 ExecutionQueue: Marked \"{SequenceId}\" as comp... |
+| 24 | Information | `LogInformation` | ❌ | " ExecutionQueue: No sequence currently executing"... |
+| 40 | Information | `LogInformation` | ✅ | "🎼 ExecutionQueue: Enqueued \"{SequenceId}\" with ... |
+| 58 | Information | `LogInformation` | ✅ | "🎼 ExecutionQueue: Dequeued \"{SequenceId}\"", ite... |
+| 116 | Information | `LogInformation` | ❌ | "Execution queue cleared"... |
+| 136 | Information | `LogInformation` | ✅ | "🎼 ExecutionQueue: Marked \"{SequenceId}\" as comp... |
 
-### Logging (13 statements)
+### Logging (24 statements)
 
 #### `src\MusicalConductor.Avalonia\Logging\ConductorLogger.cs`
 
@@ -299,19 +317,56 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 | 246 | Information | `LogInformation` | ✅ | $"{opIndent}{connector} {opText}"... |
 | 283 | Warning | `LogWarning` | ✅ | "Scope mismatch: expected {Expected}, but not foun... |
 
-### PluginManagement (7 statements)
+#### `src\MusicalConductor.Avalonia\MusicalConductor.Core\Monitoring\EventLogger.cs`
+
+| Line | Severity | Method | Structured | Message Preview |
+|------|----------|--------|------------|----------------|
+| 64 | Information | `LogInformation` | ❌ | "🎼 EventLogger: Hierarchical logging disabled"... |
+| 83 | Information | `LogInformation` | ❌ | "🎼 EventLogger: Hierarchical beat logging initiali... |
+| 93 | Information | `LogInformation` | ❌ | "🎼 EventLogger: Movement hierarchical logging disa... |
+| 117 | Information | `LogInformation` | ❌ | "🎼 EventLogger: Hierarchical movement logging init... |
+| 163 | Information | `LogInformation` | ✅ | "✅ Beat {Beat} Completed", data.Beat... |
+| 209 | Error | `LogError` | ✅ | "❌ Movement failed: {Error}", data.Error... |
+| 238 | Error | `LogError` | ✅ | "❌ Error: {ErrorMessage}", error.Message... |
+| 261 | Debug | `LogDebug` | ✅ | "🎼 EventLogger: Emitted {EventType}", eventType... |
+| 266 | Error | `LogError` | ✅ | error, "🎼 EventLogger: Failed to emit event {Event... |
+| 348 | Information | `LogInformation` | ❌ | "🎼 EventLogger: Configuration updated"... |
+| 372 | Information | `LogInformation` | ❌ | "🧹 EventLogger: Event subscriptions cleaned up"... |
+
+### Other (3 statements)
+
+#### `src\MusicalConductor.Avalonia\MusicalConductor.Core\Monitoring\PerformanceTracker.cs`
+
+| Line | Severity | Method | Structured | Message Preview |
+|------|----------|--------|------------|----------------|
+| 341 | Information | `LogInformation` | ❌ | "🧹 PerformanceTracker: All tracking data reset"... |
+
+#### `src\MusicalConductor.Avalonia\MusicalConductor.Core\Monitoring\StatisticsManager.cs`
+
+| Line | Severity | Method | Structured | Message Preview |
+|------|----------|--------|------------|----------------|
+| 87 | Warning | `LogWarning` | ❌ | "📊 StatisticsManager: Recorded error occurrence"... |
+| 196 | Information | `LogInformation` | ❌ | "🧹 StatisticsManager: All statistics reset"... |
+
+### PluginManagement (13 statements)
 
 #### `src\MusicalConductor.Avalonia\MusicalConductor.Core\PluginManager.cs`
 
 | Line | Severity | Method | Structured | Message Preview |
 |------|----------|--------|------------|----------------|
-| 35 | Warning | `LogWarning` | ✅ | "Plugin already registered: {PluginId}", metadata.... |
-| 42 | Information | `LogInformation` | ✅ | "Plugin registered: {PluginId} v{Version}", metada... |
-| 53 | Information | `LogInformation` | ✅ | "Plugin initialized: {PluginId}", metadata.Id... |
-| 57 | Error | `LogError` | ✅ | ex, "Error initializing plugin: {PluginId}", metad... |
-| 77 | Information | `LogInformation` | ✅ | "Plugin unregistered: {PluginId}", pluginId... |
-| 90 | Information | `LogInformation` | ✅ | "Plugin cleaned up: {PluginId}", pluginId... |
-| 94 | Error | `LogError` | ✅ | ex, "Error cleaning up plugin: {PluginId}", plugin... |
+| 21 | Information | `LogInformation` | ❌ | " Registering CIA-compliant plugins..."... |
+| 24 | Error | `LogError` | ❌ | " Failed to register CIA plugins:, error"... |
+| 27 | Information | `LogInformation` | ❌ | " PluginManager: Registering plugins from manifest... |
+| 31 | Information | `LogInformation` | ❌ | " Registering fallback sequences..."... |
+| 34 | Information | `LogInformation` | ❌ | " Fallback sequences registered"... |
+| 37 | Information | `LogInformation` | ❌ | " PluginManager: State reset"... |
+| 56 | Warning | `LogWarning` | ✅ | "Plugin already registered: {PluginId}", metadata.... |
+| 63 | Information | `LogInformation` | ✅ | "Plugin registered: {PluginId} v{Version}", metada... |
+| 74 | Information | `LogInformation` | ✅ | "Plugin initialized: {PluginId}", metadata.Id... |
+| 78 | Error | `LogError` | ✅ | ex, "Error initializing plugin: {PluginId}", metad... |
+| 98 | Information | `LogInformation` | ✅ | "Plugin unregistered: {PluginId}", pluginId... |
+| 111 | Information | `LogInformation` | ✅ | "Plugin cleaned up: {PluginId}", pluginId... |
+| 115 | Error | `LogError` | ✅ | ex, "Error cleaning up plugin: {PluginId}", plugin... |
 
 ### Sample (12 statements)
 
@@ -332,7 +387,7 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 | 102 | Error | `LogError` | ❌ | ex, \"❌ Failed to get statistics\"... |
 | 109 | Information | `LogInformation` | ✅ | \"📝 Status: {Message}\", message... |
 
-### SequenceExecution (9 statements)
+### SequenceExecution (11 statements)
 
 #### `src\MusicalConductor.Avalonia\MusicalConductor.Core\SequenceExecutor.cs`
 
@@ -343,29 +398,31 @@ Microsoft's ILogger supports **structured logging** using `{ParameterName}` synt
 | 158 | Information | `LogInformation` | ✅ | "✅ SequenceExecutor: Beat {BeatNumber} ({BeatId}... |
 | 172 | Error | `LogError` | ✅ | ex, "❌ SequenceExecutor: Error executing beat {Bea... |
 | 207 | Error | `LogError` | ✅ | ex, "Error executing sequence: {SequenceId}", sequ... |
-| 269 | Information | `LogInformation` | ❌ | message... |
-| 270 | Information | `LogInformation` | ❌ | message... |
-| 271 | Warning | `LogWarning` | ❌ | message... |
-| 272 | Error | `LogError` | ❌ | ex, message... |
+| 268 | Information | `LogInformation` | ❌ | " BeatExecutor: Beat execution queue cleared"... |
+| 271 | Information | `LogInformation` | ❌ | " SequenceExecutor: Execution history cleared"... |
+| 275 | Information | `LogInformation` | ❌ | message... |
+| 276 | Information | `LogInformation` | ❌ | message... |
+| 277 | Warning | `LogWarning` | ❌ | message... |
+| 278 | Error | `LogError` | ❌ | ex, message... |
 
 ## Recommendations
 
 ### 1. Logging Standardization
 
-- **ILogger logging:** 87 statements (91.6%)
-- **Console/Debug/Trace:** 8 statements (8.4%)
+- **ILogger logging:** 117 statements (92.9%)
+- **Console/Debug/Trace:** 9 statements (7.1%)
 
 ⚠️ **Recommendation:** Migrate all `Console.*`, `Debug.*`, and `Trace.*` calls to ILogger for consistent logging, better control, and production readiness.
 
 ### 2. Structured Logging
 
-⚠️ **Recommendation:** Increase structured logging adoption (currently 65.3%). Use `_logger.LogInformation("Message {Param}", value)` instead of string interpolation for better performance and queryability.
+⚠️ **Recommendation:** Increase structured logging adoption (currently 53.2%). Use `_logger.LogInformation("Message {Param}", value)` instead of string interpolation for better performance and queryability.
 
 ### 3. Severity Distribution
 
 ### 4. Category-Specific Recommendations
 
-- **Conductor** has the most logging (23 statements). Verify this level of instrumentation is appropriate.
+- **Conductor** has the most logging (29 statements). Verify this level of instrumentation is appropriate.
 
 ### 5. Production Considerations
 

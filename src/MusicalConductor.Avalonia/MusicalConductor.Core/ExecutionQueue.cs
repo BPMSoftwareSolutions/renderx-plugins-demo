@@ -19,6 +19,11 @@ public class ExecutionQueue : IExecutionQueue
     public ExecutionQueue(ILogger<ExecutionQueue> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Original web: `🎼 ExecutionQueue: No sequence currently executing`
+        _logger.LogInformation(" ExecutionQueue: No sequence currently executing");
+
+
     }
 
     public void Enqueue(ExecutionItem item)

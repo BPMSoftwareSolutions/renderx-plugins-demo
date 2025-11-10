@@ -264,6 +264,12 @@ public class SequenceExecutor
         public LoggerAdapter(ILogger<SequenceExecutor> logger)
         {
             _logger = logger;
+            // Original web: "🧹 BeatExecutor: Beat execution queue cleared"
+            _logger.LogInformation(" BeatExecutor: Beat execution queue cleared");
+
+            // Original web: "🧹 SequenceExecutor: Execution history cleared"
+            _logger.LogInformation(" SequenceExecutor: Execution history cleared");
+
         }
 
         public void Log(string message) => _logger.LogInformation(message);

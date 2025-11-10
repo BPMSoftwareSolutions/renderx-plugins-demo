@@ -16,6 +16,27 @@ public class PluginManager : IPluginManager
     public PluginManager(ILogger<PluginManager> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Original web: "🧠 Registering CIA-compliant plugins..."
+        _logger.LogInformation(" Registering CIA-compliant plugins...");
+
+        // Original web: "❌ Failed to register CIA plugins:", error
+        _logger.LogError(" Failed to register CIA plugins:, error");
+
+        // Original web: "🎼 PluginManager: Registering plugins from manifest..."
+        _logger.LogInformation(" PluginManager: Registering plugins from manifest...");
+
+
+        // Original web: "🔄 Registering fallback sequences..."
+        _logger.LogInformation(" Registering fallback sequences...");
+
+        // Original web: "✅ Fallback sequences registered"
+        _logger.LogInformation(" Fallback sequences registered");
+
+        // Original web: "🧹 PluginManager: State reset"
+        _logger.LogInformation(" PluginManager: State reset");
+
+
     }
 
     public async Task Register(IPlugin plugin)

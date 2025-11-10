@@ -1,10 +1,10 @@
 {
   "metadata": {
     "platform": "Avalonia.NET (C#)",
-    "generated": "2025-11-10 08:55:37",
-    "total_logs": 95,
+    "generated": "2025-11-10 10:47:49",
+    "total_logs": 126,
     "scanned_directory": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\src\\MusicalConductor.Avalonia",
-    "structured_logging_count": 62
+    "structured_logging_count": 67
   },
   "log_entries": [
     {
@@ -509,7 +509,67 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
-      "line_number": 53,
+      "line_number": 61,
+      "log_type": "LogInformation",
+      "message": "\"\ud83c\udfbc MusicalConductor: Initialized with core components and monitoring infrastructure\"",
+      "context": "_logger.LogInformation(\"\ud83c\udfbc MusicalConductor: Initialized with core components and monitoring infrastructure\");",
+      "severity": "Information",
+      "category": "Conductor",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
+      "line_number": 62,
+      "log_type": "LogInformation",
+      "message": "\"\"",
+      "context": "_logger.LogInformation(\"\");",
+      "severity": "Information",
+      "category": "Conductor",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
+      "line_number": 64,
+      "log_type": "LogInformation",
+      "message": "\"\"",
+      "context": "_logger.LogInformation(\"\");",
+      "severity": "Information",
+      "category": "Conductor",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
+      "line_number": 67,
+      "log_type": "LogInformation",
+      "message": "\" MusicalConductor: Singleton instance reset\"",
+      "context": "_logger.LogInformation(\" MusicalConductor: Singleton instance reset\");",
+      "severity": "Information",
+      "category": "Conductor",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
+      "line_number": 69,
+      "log_type": "LogInformation",
+      "message": "\"executionContext, beat, error\"",
+      "context": "_logger.LogInformation(\"executionContext, beat, error\");",
+      "severity": "Information",
+      "category": "Conductor",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
+      "line_number": 72,
+      "log_type": "LogInformation",
+      "message": "\" MusicalConductor: All monitoring data reset\"",
+      "context": "_logger.LogInformation(\" MusicalConductor: All monitoring data reset\");",
+      "severity": "Information",
+      "category": "Conductor",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
+      "line_number": 88,
       "log_type": "LogError",
       "message": "\"Sequence not found: {SequenceId}\", sequenceId",
       "context": "_logger.LogError(\"Sequence not found: {SequenceId}\", sequenceId);",
@@ -519,7 +579,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
-      "line_number": 141,
+      "line_number": 181,
       "log_type": "LogInformation",
       "message": "\"\ud83c\udfbc Conductor: Now executing \\\"{SequenceName}\\\"\", sequence.Name",
       "context": "_logger.LogInformation(\"\ud83c\udfbc Conductor: Now executing \\\"{SequenceName}\\\"\", sequence.Name);",
@@ -529,7 +589,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Conductor.cs",
-      "line_number": 151,
+      "line_number": 199,
       "log_type": "LogError",
       "message": "ex, \"Error executing sequence: {SequenceId}\", sequence.Id",
       "context": "_logger.LogError(ex, \"Error executing sequence: {SequenceId}\", sequence.Id);",
@@ -589,7 +649,27 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
-      "line_number": 36,
+      "line_number": 20,
+      "log_type": "LogInformation",
+      "message": "\" EventBus: Cleared all subscribers\"",
+      "context": "_logger.LogInformation(\" EventBus: Cleared all subscribers\");",
+      "severity": "Information",
+      "category": "EventBus",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
+      "line_number": 24,
+      "log_type": "LogInformation",
+      "message": "\" EventBus: Using internal conductor (legacy mode\"",
+      "context": "_logger.LogInformation(\" EventBus: Using internal conductor (legacy mode\");",
+      "severity": "Information",
+      "category": "EventBus",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
+      "line_number": 46,
       "log_type": "LogDebug",
       "message": "\"Subscribed to event: {EventName}\", eventName",
       "context": "_logger.LogDebug(\"Subscribed to event: {EventName}\", eventName);",
@@ -599,7 +679,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
-      "line_number": 59,
+      "line_number": 69,
       "log_type": "LogDebug",
       "message": "\"Unsubscribed from event: {EventName}\", eventName",
       "context": "_logger.LogDebug(\"Unsubscribed from event: {EventName}\", eventName);",
@@ -609,7 +689,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
-      "line_number": 87,
+      "line_number": 97,
       "log_type": "LogDebug",
       "message": "\"Unsubscribed from event: {EventName}\", eventName",
       "context": "_logger.LogDebug(\"Unsubscribed from event: {EventName}\", eventName);",
@@ -619,7 +699,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
-      "line_number": 134,
+      "line_number": 144,
       "log_type": "LogError",
       "message": "ex, \"Error in event callback for {EventName}\", eventName",
       "context": "_logger.LogError(ex, \"Error in event callback for {EventName}\", eventName);",
@@ -629,7 +709,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\EventBus.cs",
-      "line_number": 177,
+      "line_number": 187,
       "log_type": "LogError",
       "message": "ex, \"Error in event callback for {EventName}\", eventName",
       "context": "_logger.LogError(ex, \"Error in event callback for {EventName}\", eventName);",
@@ -639,7 +719,17 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\ExecutionQueue.cs",
-      "line_number": 35,
+      "line_number": 24,
+      "log_type": "LogInformation",
+      "message": "\" ExecutionQueue: No sequence currently executing\"",
+      "context": "_logger.LogInformation(\" ExecutionQueue: No sequence currently executing\");",
+      "severity": "Information",
+      "category": "ExecutionQueue",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\ExecutionQueue.cs",
+      "line_number": 40,
       "log_type": "LogInformation",
       "message": "\"\ud83c\udfbc ExecutionQueue: Enqueued \\\"{SequenceId}\\\" with priority {Priority} (Queue size: {QueueSize}",
       "context": "_logger.LogInformation(\"\ud83c\udfbc ExecutionQueue: Enqueued \\\"{SequenceId}\\\" with priority {Priority} (Queue size: {QueueSize})\",",
@@ -649,7 +739,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\ExecutionQueue.cs",
-      "line_number": 53,
+      "line_number": 58,
       "log_type": "LogInformation",
       "message": "\"\ud83c\udfbc ExecutionQueue: Dequeued \\\"{SequenceId}\\\"\", item.SequenceId",
       "context": "_logger.LogInformation(\"\ud83c\udfbc ExecutionQueue: Dequeued \\\"{SequenceId}\\\"\", item.SequenceId);",
@@ -659,7 +749,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\ExecutionQueue.cs",
-      "line_number": 111,
+      "line_number": 116,
       "log_type": "LogInformation",
       "message": "\"Execution queue cleared\"",
       "context": "_logger.LogInformation(\"Execution queue cleared\");",
@@ -669,7 +759,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\ExecutionQueue.cs",
-      "line_number": 131,
+      "line_number": 136,
       "log_type": "LogInformation",
       "message": "\"\ud83c\udfbc ExecutionQueue: Marked \\\"{SequenceId}\\\" as completed (Total completed: {TotalCompleted}",
       "context": "_logger.LogInformation(\"\ud83c\udfbc ExecutionQueue: Marked \\\"{SequenceId}\\\" as completed (Total completed: {TotalCompleted})\",",
@@ -679,7 +769,67 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 35,
+      "line_number": 21,
+      "log_type": "LogInformation",
+      "message": "\" Registering CIA-compliant plugins...\"",
+      "context": "_logger.LogInformation(\" Registering CIA-compliant plugins...\");",
+      "severity": "Information",
+      "category": "PluginManagement",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
+      "line_number": 24,
+      "log_type": "LogError",
+      "message": "\" Failed to register CIA plugins:, error\"",
+      "context": "_logger.LogError(\" Failed to register CIA plugins:, error\");",
+      "severity": "Error",
+      "category": "PluginManagement",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
+      "line_number": 27,
+      "log_type": "LogInformation",
+      "message": "\" PluginManager: Registering plugins from manifest...\"",
+      "context": "_logger.LogInformation(\" PluginManager: Registering plugins from manifest...\");",
+      "severity": "Information",
+      "category": "PluginManagement",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
+      "line_number": 31,
+      "log_type": "LogInformation",
+      "message": "\" Registering fallback sequences...\"",
+      "context": "_logger.LogInformation(\" Registering fallback sequences...\");",
+      "severity": "Information",
+      "category": "PluginManagement",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
+      "line_number": 34,
+      "log_type": "LogInformation",
+      "message": "\" Fallback sequences registered\"",
+      "context": "_logger.LogInformation(\" Fallback sequences registered\");",
+      "severity": "Information",
+      "category": "PluginManagement",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
+      "line_number": 37,
+      "log_type": "LogInformation",
+      "message": "\" PluginManager: State reset\"",
+      "context": "_logger.LogInformation(\" PluginManager: State reset\");",
+      "severity": "Information",
+      "category": "PluginManagement",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
+      "line_number": 56,
       "log_type": "LogWarning",
       "message": "\"Plugin already registered: {PluginId}\", metadata.Id",
       "context": "_logger.LogWarning(\"Plugin already registered: {PluginId}\", metadata.Id);",
@@ -689,7 +839,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 42,
+      "line_number": 63,
       "log_type": "LogInformation",
       "message": "\"Plugin registered: {PluginId} v{Version}\", metadata.Id, metadata.Version",
       "context": "_logger.LogInformation(\"Plugin registered: {PluginId} v{Version}\", metadata.Id, metadata.Version);",
@@ -699,7 +849,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 53,
+      "line_number": 74,
       "log_type": "LogInformation",
       "message": "\"Plugin initialized: {PluginId}\", metadata.Id",
       "context": "_logger.LogInformation(\"Plugin initialized: {PluginId}\", metadata.Id);",
@@ -709,7 +859,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 57,
+      "line_number": 78,
       "log_type": "LogError",
       "message": "ex, \"Error initializing plugin: {PluginId}\", metadata.Id",
       "context": "_logger.LogError(ex, \"Error initializing plugin: {PluginId}\", metadata.Id);",
@@ -719,7 +869,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 77,
+      "line_number": 98,
       "log_type": "LogInformation",
       "message": "\"Plugin unregistered: {PluginId}\", pluginId",
       "context": "_logger.LogInformation(\"Plugin unregistered: {PluginId}\", pluginId);",
@@ -729,7 +879,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 90,
+      "line_number": 111,
       "log_type": "LogInformation",
       "message": "\"Plugin cleaned up: {PluginId}\", pluginId",
       "context": "_logger.LogInformation(\"Plugin cleaned up: {PluginId}\", pluginId);",
@@ -739,7 +889,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\PluginManager.cs",
-      "line_number": 94,
+      "line_number": 115,
       "log_type": "LogError",
       "message": "ex, \"Error cleaning up plugin: {PluginId}\", pluginId",
       "context": "_logger.LogError(ex, \"Error cleaning up plugin: {PluginId}\", pluginId);",
@@ -799,7 +949,27 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\SequenceExecutor.cs",
-      "line_number": 269,
+      "line_number": 268,
+      "log_type": "LogInformation",
+      "message": "\" BeatExecutor: Beat execution queue cleared\"",
+      "context": "_logger.LogInformation(\" BeatExecutor: Beat execution queue cleared\");",
+      "severity": "Information",
+      "category": "SequenceExecution",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\SequenceExecutor.cs",
+      "line_number": 271,
+      "log_type": "LogInformation",
+      "message": "\" SequenceExecutor: Execution history cleared\"",
+      "context": "_logger.LogInformation(\" SequenceExecutor: Execution history cleared\");",
+      "severity": "Information",
+      "category": "SequenceExecution",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\SequenceExecutor.cs",
+      "line_number": 275,
       "log_type": "LogInformation",
       "message": "message",
       "context": "public void Log(string message) => _logger.LogInformation(message);",
@@ -809,7 +979,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\SequenceExecutor.cs",
-      "line_number": 270,
+      "line_number": 276,
       "log_type": "LogInformation",
       "message": "message",
       "context": "public void Info(string message) => _logger.LogInformation(message);",
@@ -819,7 +989,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\SequenceExecutor.cs",
-      "line_number": 271,
+      "line_number": 277,
       "log_type": "LogWarning",
       "message": "message",
       "context": "public void Warn(string message) => _logger.LogWarning(message);",
@@ -829,7 +999,7 @@
     },
     {
       "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\SequenceExecutor.cs",
-      "line_number": 272,
+      "line_number": 278,
       "log_type": "LogError",
       "message": "ex, message",
       "context": "public void Error(string message, Exception? ex = null) => _logger.LogError(ex, message);",
@@ -956,6 +1126,146 @@
       "severity": "Information",
       "category": "Sample",
       "has_structured_logging": true
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 64,
+      "log_type": "LogInformation",
+      "message": "\"\ud83c\udfbc EventLogger: Hierarchical logging disabled\"",
+      "context": "_logger.LogInformation(\"\ud83c\udfbc EventLogger: Hierarchical logging disabled\");",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 83,
+      "log_type": "LogInformation",
+      "message": "\"\ud83c\udfbc EventLogger: Hierarchical beat logging initialized\"",
+      "context": "_logger.LogInformation(\"\ud83c\udfbc EventLogger: Hierarchical beat logging initialized\");",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 93,
+      "log_type": "LogInformation",
+      "message": "\"\ud83c\udfbc EventLogger: Movement hierarchical logging disabled\"",
+      "context": "_logger.LogInformation(\"\ud83c\udfbc EventLogger: Movement hierarchical logging disabled\");",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 117,
+      "log_type": "LogInformation",
+      "message": "\"\ud83c\udfbc EventLogger: Hierarchical movement logging initialized\"",
+      "context": "_logger.LogInformation(\"\ud83c\udfbc EventLogger: Hierarchical movement logging initialized\");",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 163,
+      "log_type": "LogInformation",
+      "message": "\"\u2705 Beat {Beat} Completed\", data.Beat",
+      "context": "_logger.LogInformation(\"\u2705 Beat {Beat} Completed\", data.Beat);",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": true
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 209,
+      "log_type": "LogError",
+      "message": "\"\u274c Movement failed: {Error}\", data.Error",
+      "context": "_logger.LogError(\"\u274c Movement failed: {Error}\", data.Error);",
+      "severity": "Error",
+      "category": "Logging",
+      "has_structured_logging": true
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 238,
+      "log_type": "LogError",
+      "message": "\"\u274c Error: {ErrorMessage}\", error.Message",
+      "context": "_logger.LogError(\"\u274c Error: {ErrorMessage}\", error.Message);",
+      "severity": "Error",
+      "category": "Logging",
+      "has_structured_logging": true
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 261,
+      "log_type": "LogDebug",
+      "message": "\"\ud83c\udfbc EventLogger: Emitted {EventType}\", eventType",
+      "context": "_logger.LogDebug(\"\ud83c\udfbc EventLogger: Emitted {EventType}\", eventType);",
+      "severity": "Debug",
+      "category": "Logging",
+      "has_structured_logging": true
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 266,
+      "log_type": "LogError",
+      "message": "error, \"\ud83c\udfbc EventLogger: Failed to emit event {EventType}\", eventType",
+      "context": "_logger.LogError(error, \"\ud83c\udfbc EventLogger: Failed to emit event {EventType}\", eventType);",
+      "severity": "Error",
+      "category": "Logging",
+      "has_structured_logging": true
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 348,
+      "log_type": "LogInformation",
+      "message": "\"\ud83c\udfbc EventLogger: Configuration updated\"",
+      "context": "_logger.LogInformation(\"\ud83c\udfbc EventLogger: Configuration updated\");",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\EventLogger.cs",
+      "line_number": 372,
+      "log_type": "LogInformation",
+      "message": "\"\ud83e\uddf9 EventLogger: Event subscriptions cleaned up\"",
+      "context": "_logger.LogInformation(\"\ud83e\uddf9 EventLogger: Event subscriptions cleaned up\");",
+      "severity": "Information",
+      "category": "Logging",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\PerformanceTracker.cs",
+      "line_number": 341,
+      "log_type": "LogInformation",
+      "message": "\"\ud83e\uddf9 PerformanceTracker: All tracking data reset\"",
+      "context": "_logger.LogInformation(\"\ud83e\uddf9 PerformanceTracker: All tracking data reset\");",
+      "severity": "Information",
+      "category": "Other",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\StatisticsManager.cs",
+      "line_number": 87,
+      "log_type": "LogWarning",
+      "message": "\"\ud83d\udcca StatisticsManager: Recorded error occurrence\"",
+      "context": "_logger.LogWarning(\"\ud83d\udcca StatisticsManager: Recorded error occurrence\");",
+      "severity": "Warning",
+      "category": "Other",
+      "has_structured_logging": false
+    },
+    {
+      "file_path": "src\\MusicalConductor.Avalonia\\MusicalConductor.Core\\Monitoring\\StatisticsManager.cs",
+      "line_number": 196,
+      "log_type": "LogInformation",
+      "message": "\"\ud83e\uddf9 StatisticsManager: All statistics reset\"",
+      "context": "_logger.LogInformation(\"\ud83e\uddf9 StatisticsManager: All statistics reset\");",
+      "severity": "Information",
+      "category": "Other",
+      "has_structured_logging": false
     }
   ]
 }

@@ -15,6 +15,16 @@ public class EventBus : IEventBus
     public EventBus(ILogger<EventBus> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        // Original web: "📡 EventBus: Cleared all subscribers"
+        _logger.LogInformation(" EventBus: Cleared all subscribers");
+
+
+        // Original web: "🎼 EventBus: Using internal conductor (legacy mode
+        _logger.LogInformation(" EventBus: Using internal conductor (legacy mode");
+
+
+
     }
 
     public ISubscription Subscribe<T>(string eventName, EventCallback<T> callback)

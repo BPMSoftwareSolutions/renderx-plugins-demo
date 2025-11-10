@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using MusicalConductor.Core.Interfaces;
 using MusicalConductor.Core.Models;
+using MusicalConductor.Core.Monitoring;
 
 namespace MusicalConductor.Core;
 
@@ -18,9 +19,17 @@ public class Conductor : IConductor
     private readonly ConductorStatistics _statistics = new();
     private readonly ReaderWriterLockSlim _lock = new();
     private int _activeSequences;
+    
+    // Monitoring infrastructure
+    private readonly PerformanceTracker _performanceTracker;
+    private readonly EventLogger _eventLogger;
+    private readonly StatisticsManager _statisticsManager;
 
     public IEventBus EventBus => _eventBus;
     public ISequenceRegistry SequenceRegistry => _sequenceRegistry;
+    public PerformanceTracker PerformanceTracker => _performanceTracker;
+    public EventLogger EventLogger => _eventLogger;
+    public StatisticsManager StatisticsManager => _statisticsManager;
 
     public Conductor(
         IEventBus eventBus,
@@ -28,7 +37,10 @@ public class Conductor : IConductor
         IPluginManager pluginManager,
         IExecutionQueue executionQueue,
         SequenceExecutor sequenceExecutor,
-        ILogger<Conductor> logger)
+        ILogger<Conductor> logger,
+        ILogger<PerformanceTracker> performanceLogger,
+        ILogger<EventLogger> eventLoggerLogger,
+        ILogger<StatisticsManager> statisticsLogger)
     {
         _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
         _sequenceRegistry = sequenceRegistry ?? throw new ArgumentNullException(nameof(sequenceRegistry));
@@ -36,6 +48,17 @@ public class Conductor : IConductor
         _executionQueue = executionQueue ?? throw new ArgumentNullException(nameof(executionQueue));
         _sequenceExecutor = sequenceExecutor ?? throw new ArgumentNullException(nameof(sequenceExecutor));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        
+        // Initialize monitoring infrastructure
+        _performanceTracker = new PerformanceTracker(performanceLogger);
+        _statisticsManager = new StatisticsManager(statisticsLogger);
+        _eventLogger = new EventLogger(_eventBus, _performanceTracker, eventLoggerLogger);
+        
+        // Setup hierarchical logging
+        _eventLogger.SetupBeatExecutionLogging();
+        _eventLogger.SetupMovementExecutionLogging();
+
+        _logger.LogInformation("🎼 MusicalConductor: Initialized with core components and monitoring infrastructure");
     }
 
     public string Play(string pluginId, string sequenceId, object? context = null, SequencePriority priority = SequencePriority.NORMAL)
@@ -135,6 +158,11 @@ public class Conductor : IConductor
     private async Task ExecuteSequenceAsync(string requestId, string pluginId, ISequence sequence, object? context)
     {
         var startTime = DateTime.UtcNow;
+        
+        // Start sequence timing
+        _performanceTracker.StartSequenceTiming(sequence.Name);
+        _eventLogger.LogSequenceStart(sequence.Name, requestId, context ?? new { });
+        _statisticsManager.RecordSequenceQueued();
 
         try
         {
@@ -145,11 +173,23 @@ public class Conductor : IConductor
 
             _statistics.SuccessfulExecutions++;
             _statistics.TotalBeats += sequence.GetAllBeats().Count();
+            
+            // Record successful execution in StatisticsManager
+            var duration = _performanceTracker.EndSequenceTiming(sequence.Name);
+            if (duration.HasValue)
+            {
+                _statisticsManager.RecordSequenceExecution(duration.Value);
+            }
+            _eventLogger.LogSequenceComplete(sequence.Name, requestId, true, duration);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error executing sequence: {SequenceId}", sequence.Id);
             _statistics.FailedExecutions++;
+            _statisticsManager.RecordError();
+            
+            var duration = _performanceTracker.EndSequenceTiming(sequence.Name);
+            _eventLogger.LogSequenceComplete(sequence.Name, requestId, false, duration);
         }
         finally
         {
@@ -172,6 +212,8 @@ public class Conductor : IConductor
             {
                 _executionQueue.RecordFailure(executionItem, "Sequence execution failed");
             }
+            
+            _statisticsManager.RecordSequenceDequeued();
 
             _lock.EnterWriteLock();
             try
