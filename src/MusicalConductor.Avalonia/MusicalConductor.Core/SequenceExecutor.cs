@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using MusicalConductor.Core.Interfaces;
+using MusicalConductor.Core.Monitoring;
 
 namespace MusicalConductor.Core;
 
@@ -43,6 +44,9 @@ public class SequenceExecutor
 
         var startTime = DateTime.UtcNow;
 
+        // 🎽 Create payload dictionary for data baton
+        var payload = new Dictionary<string, object?>();
+
         try
         {
             _logger.LogInformation(
@@ -62,11 +66,24 @@ public class SequenceExecutor
             // Execute all beats in the sequence
             var beats = sequence.GetAllBeats().ToList();
             var successfulBeats = 0;
+            var beatNumber = 0;
+
+            _logger.LogInformation("🎵 SequenceExecutor: Executing sequence \"{SequenceName}\" with {BeatCount} beats",
+                sequence.Name, beats.Count);
 
             foreach (var beat in beats)
             {
+                beatNumber++;
+                var beatStartTime = DateTime.UtcNow;
+
                 try
                 {
+                    _logger.LogInformation("🥁 SequenceExecutor: Executing beat {BeatNumber} ({BeatId})",
+                        beatNumber, beat.Id);
+
+                    // 🎽 Take snapshot before beat execution
+                    var prevSnapshot = DataBaton.Snapshot(payload);
+
                     // Emit beat:started event
                     await _eventBus.Emit("beat:started", new
                     {
@@ -81,12 +98,13 @@ public class SequenceExecutor
                     {
                         try
                         {
-                            // Create handler context
+                            // Create handler context with payload
                             var handlerContext = new HandlerContext(
                                 pluginId,
                                 sequence.Id,
                                 requestId,
                                 context,
+                                payload,
                                 conductor,
                                 _logger);
 
@@ -120,6 +138,26 @@ public class SequenceExecutor
                         successfulBeats++;
                     }
 
+                    // 🎽 Take snapshot after beat execution and log changes
+                    var nextSnapshot = DataBaton.Snapshot(payload);
+                    DataBaton.Log(
+                        _logger,
+                        new BatonLogContext
+                        {
+                            SequenceName = sequence.Name,
+                            BeatEvent = beat.Event,
+                            BeatNumber = beatNumber,
+                            RequestId = requestId,
+                            PluginId = pluginId
+                        },
+                        prevSnapshot,
+                        nextSnapshot);
+
+                    var beatDuration = (DateTime.UtcNow - beatStartTime).TotalMilliseconds;
+
+                    _logger.LogInformation("✅ SequenceExecutor: Beat {BeatNumber} ({BeatId}) completed in {Duration}ms",
+                        beatNumber, beat.Id, beatDuration);
+
                     // Emit beat:completed event
                     await _eventBus.Emit("beat:completed", new
                     {
@@ -131,7 +169,7 @@ public class SequenceExecutor
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Error executing beat: {BeatId}", beat.Id);
+                    _logger.LogError(ex, "❌ SequenceExecutor: Error executing beat {BeatNumber} ({BeatId})", beatNumber, beat.Id);
 
                     await _eventBus.Emit("beat:failed", new
                     {
@@ -158,11 +196,11 @@ public class SequenceExecutor
             });
 
             _logger.LogInformation(
-                "Sequence execution completed: {SequenceId} ({SuccessfulBeats}/{TotalBeats} beats, {Duration}ms)",
-                sequence.Id,
+                "✅ SequenceExecutor: Sequence \"{SequenceName}\" completed in {Duration}ms ({SuccessfulBeats}/{TotalBeats} beats)",
+                sequence.Name,
+                duration,
                 successfulBeats,
-                beats.Count,
-                duration);
+                beats.Count);
         }
         catch (Exception ex)
         {
@@ -193,6 +231,7 @@ public class SequenceExecutor
         public string SequenceId { get; }
         public string CorrelationId { get; }
         public object? Data { get; }
+        public Dictionary<string, object?> Payload { get; }
         public Interfaces.ILogger Logger => _logger;
         public IConductor Conductor { get; }
 
@@ -201,6 +240,7 @@ public class SequenceExecutor
             string sequenceId,
             string correlationId,
             object? data,
+            Dictionary<string, object?> payload,
             IConductor conductor,
             ILogger<SequenceExecutor> logger)
         {
@@ -208,6 +248,7 @@ public class SequenceExecutor
             SequenceId = sequenceId;
             CorrelationId = correlationId;
             Data = data;
+            Payload = payload;
             Conductor = conductor;
             _logger = new LoggerAdapter(logger);
         }

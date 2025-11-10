@@ -32,7 +32,8 @@ public class ExecutionQueue : IExecutionQueue
             // Convert priority to queue priority (higher enum value = higher priority)
             int queuePriority = (int)item.Priority;
             _queue.Enqueue(item, -queuePriority); // Negate for max-heap behavior
-            _logger.LogDebug("Enqueued execution item: {ItemId} with priority {Priority}", item.Id, item.Priority);
+            _logger.LogInformation("🎼 ExecutionQueue: Enqueued \"{SequenceId}\" with priority {Priority} (Queue size: {QueueSize})",
+                item.SequenceId, item.Priority, _queue.Count);
         }
         finally
         {
@@ -49,7 +50,7 @@ public class ExecutionQueue : IExecutionQueue
             {
                 item.StartedAt = DateTime.UtcNow;
                 _activeCount++;
-                _logger.LogDebug("Dequeued execution item: {ItemId}", item.Id);
+                _logger.LogInformation("🎼 ExecutionQueue: Dequeued \"{SequenceId}\"", item.SequenceId);
                 return item;
             }
 
@@ -127,6 +128,8 @@ public class ExecutionQueue : IExecutionQueue
             _totalProcessed++;
             _totalProcessingTimeMs += processingTimeMs;
             _activeCount = Math.Max(0, _activeCount - 1);
+            _logger.LogInformation("🎼 ExecutionQueue: Marked \"{SequenceId}\" as completed (Total completed: {TotalCompleted})",
+                item.SequenceId, _totalProcessed);
 
             _logger.LogDebug(
                 "Recorded success for item {ItemId}: {ProcessingTimeMs}ms",

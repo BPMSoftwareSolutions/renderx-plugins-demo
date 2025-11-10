@@ -138,6 +138,8 @@ public class Conductor : IConductor
 
         try
         {
+            _logger.LogInformation("🎼 Conductor: Now executing \"{SequenceName}\"", sequence.Name);
+
             // Use SequenceExecutor to execute the sequence
             await _sequenceExecutor.ExecuteAsync(requestId, pluginId, sequence, context, this);
 

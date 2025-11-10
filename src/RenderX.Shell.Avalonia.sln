@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Plugins.CanvasCompo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Plugins.LibraryComponent", "RenderX.Plugins.LibraryComponent\RenderX.Plugins.LibraryComponent.csproj", "{0493082F-B238-4197-8413-005AA112FAAB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicalConductor.Avalonia", "MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj", "{8C9E5D2A-1B4F-4E6C-9A2B-3D5E7F8A9B1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{0493082F-B238-4197-8413-005AA112FAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0493082F-B238-4197-8413-005AA112FAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0493082F-B238-4197-8413-005AA112FAAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9E5D2A-1B4F-4E6C-9A2B-3D5E7F8A9B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9E5D2A-1B4F-4E6C-9A2B-3D5E7F8A9B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9E5D2A-1B4F-4E6C-9A2B-3D5E7F8A9B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9E5D2A-1B4F-4E6C-9A2B-3D5E7F8A9B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,6 +62,12 @@ public interface IHandlerContext
     object? Data { get; }
 
     /// <summary>
+    /// 🎽 Data Baton - shared payload passed between beats.
+    /// Handlers can read and modify this dictionary to pass data to subsequent beats.
+    /// </summary>
+    Dictionary<string, object?> Payload { get; }
+
+    /// <summary>
     /// Logger for the handler.
     /// </summary>
     ILogger Logger { get; }
