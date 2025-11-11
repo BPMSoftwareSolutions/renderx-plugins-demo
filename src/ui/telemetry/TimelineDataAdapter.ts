@@ -26,16 +26,104 @@ export interface AnalyzerOutput {
 }
 
 /**
+ * Map plugin names to semantic operation types and colors
+ */
+const PLUGIN_TYPE_MAP: Record<string, { type: string; displayName: string; color: string }> = {
+  Manager: { type: 'create', displayName: 'Component Create', color: '#06b6d4' },
+  ControlPanel: { type: 'ui', displayName: 'Control Panel UI Init', color: '#ec4899' },
+  DynamicTheme: { type: 'ui', displayName: 'Theme Manager', color: '#f59e0b' },
+  HeaderComponent: { type: 'ui', displayName: 'Header UI Render', color: '#f59e0b' },
+  LayoutManager: { type: 'create', displayName: 'Layout Manager Init', color: '#06b6d4' },
+  SequenceCoordinator: { type: 'data', displayName: 'Sequence Coordinator', color: '#8b5cf6' },
+  default: { type: 'create', displayName: 'Plugin Mount', color: '#a855f7' },
+};
+
+/**
+ * Map topic names to semantic operation types and colors
+ */
+const TOPIC_TYPE_MAP: Record<string, { type: string; displayName: string; color: string }> = {
+  // System initialization
+  'app:initialized': { type: 'init', displayName: 'System Initialized', color: '#6366f1' },
+  'symphony:initialized': { type: 'init', displayName: 'Symphony Initialized', color: '#6366f1' },
+
+  // UI operations
+  'app:ui:theme:toggle': { type: 'ui', displayName: 'Header UI Theme Toggle', color: '#f59e0b' },
+  'app:ui:theme:get': { type: 'ui', displayName: 'Header UI Theme Get', color: '#f59e0b' },
+  'app:ui:theme:notify': { type: 'ui', displayName: 'Theme Manager', color: '#f59e0b' },
+  'theme:changed': { type: 'ui', displayName: 'Theme Changed', color: '#f59e0b' },
+  'control-panel:ready': { type: 'ui', displayName: 'Control Panel UI Init', color: '#ec4899' },
+
+  // Data/Library operations
+  'library:components:load': { type: 'data', displayName: 'Library Load', color: '#8b5cf6' },
+  'library:components:notify-ui': { type: 'data', displayName: 'Library Notify UI', color: '#8b5cf6' },
+
+  // Canvas/Layout operations
+  'canvas:component:resolve-template': { type: 'create', displayName: 'Canvas Template Resolve', color: '#06b6d4' },
+  'canvas:component:register-instance': { type: 'create', displayName: 'Canvas Register', color: '#06b6d4' },
+  'canvas:component:create': { type: 'create', displayName: 'Canvas Component Create', color: '#06b6d4' },
+  'canvas:component:render-react': { type: 'render', displayName: 'Canvas React Render', color: '#10b981' },
+  'canvas:component:notify-ui': { type: 'render', displayName: 'Canvas Notify UI', color: '#10b981' },
+
+  // Beat/Movement events (render timing)
+  'musical-conductor:beat:started': { type: 'render', displayName: 'Beat Started', color: '#10b981' },
+  'musical-conductor:beat:completed': { type: 'render', displayName: 'Beat Completed', color: '#10b981' },
+  'beat-started': { type: 'render', displayName: 'Beat Started', color: '#10b981' },
+  'beat-completed': { type: 'render', displayName: 'Beat Completed', color: '#10b981' },
+  'movement-started': { type: 'render', displayName: 'Movement Started', color: '#10b981' },
+  'movement-completed': { type: 'render', displayName: 'Movement Completed', color: '#10b981' },
+
+  // Sequence/Coordination events (marked as data since they're metadata)
+  'LibraryPlugin:sequence:completed': { type: 'data', displayName: 'Library Sequence', color: '#8b5cf6' },
+  'HeaderThemePlugin:sequence:completed': { type: 'ui', displayName: 'Header Sequence', color: '#f59e0b' },
+
+  default: { type: 'data', displayName: 'Topic Event', color: '#14b8a6' },
+};
+
+/**
+ * Map sequence names to semantic operation types and colors
+ */
+const SEQUENCE_TYPE_MAP: Record<string, { type: TimelineEvent['type']; displayName: string; color: string }> = {
+  // Data/library
+  'Library Load': { type: 'data', displayName: 'Library Load', color: '#8b5cf6' },
+
+  // Header/UI
+  'Header UI Theme Toggle': { type: 'ui', displayName: 'Header UI Theme Toggle', color: '#f59e0b' },
+  'Header UI Theme Get': { type: 'ui', displayName: 'Header UI Theme Get', color: '#f59e0b' },
+
+  // Canvas operations
+  'Canvas Component Create': { type: 'create', displayName: 'Canvas Component Create', color: '#06b6d4' },
+  'Canvas Component Update': { type: 'render', displayName: 'Canvas Component Update', color: '#10b981' },
+
+  // Control Panel
+  'Control Panel UI Init': { type: 'ui', displayName: 'Control Panel UI Init', color: '#ec4899' },
+  'Control Panel UI Init (Batched)': { type: 'ui', displayName: 'Control Panel UI Init (Batched)', color: '#ec4899' },
+  'Control Panel UI Render': { type: 'render', displayName: 'Control Panel UI Render', color: '#10b981' },
+  'Control Panel UI Field Change': { type: 'ui', displayName: 'Control Panel Field Change', color: '#ec4899' },
+
+  // Library interactions
+  'Library Component Drag': { type: 'interaction', displayName: 'Library Component Drag', color: '#3b82f6' },
+  'Library Component Drop': { type: 'interaction', displayName: 'Library Component Drop', color: '#3b82f6' },
+  'Library Component Container Drop': { type: 'interaction', displayName: 'Library Container Drop', color: '#3b82f6' },
+
+  // Default
+  default: { type: 'sequence', displayName: 'Sequence', color: '#f43f5e' },
+};
+
+/**
  * Convert analyzer output to timeline visualization data
+ * Includes semantic mapping to high-level operations
  */
 export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineData {
   const events: TimelineEvent[] = [];
   const baseTime = new Date(analyzerData.earliest).getTime();
 
-  // 1. Add plugin mount events
+  // 1. Add plugin mount events with semantic mapping
   if (analyzerData.pluginMounts?.byPlugin) {
     Object.entries(analyzerData.pluginMounts.byPlugin).forEach(([pluginName, data]: [string, any]) => {
       if (data.successTimestamps && Array.isArray(data.successTimestamps)) {
+        // Get semantic type mapping for this plugin
+        const typeMapping = PLUGIN_TYPE_MAP[pluginName] || PLUGIN_TYPE_MAP.default;
+
         data.successTimestamps.forEach((timestamp: string, idx: number) => {
           const eventTime = new Date(timestamp).getTime() - baseTime;
           const duration = data.durations?.[idx] ?? 1;
@@ -43,9 +131,9 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
           events.push({
             time: eventTime,
             duration: Math.max(duration, 1),
-            name: `${pluginName}`,
-            type: 'plugin',
-            color: '#a855f7',
+            name: `${typeMapping.displayName}`,
+            type: typeMapping.type as TimelineEvent['type'],
+            color: typeMapping.color,
             details: {
               plugin: pluginName,
               timestamp,
@@ -67,14 +155,18 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
             : startTime;
         const duration = Math.max(endTime - startTime, 1);
 
+        const seqName: string | undefined = seqData.name || undefined;
+        const mapping = (seqName && SEQUENCE_TYPE_MAP[seqName]) || SEQUENCE_TYPE_MAP.default;
+
         events.push({
           time: startTime,
           duration,
-          name: `Sequence ${seqId.slice(0, 8)}`,
-          type: 'sequence',
-          color: '#f43f5e',
+          name: mapping.displayName || (seqName ? seqName : `Sequence ${seqId.slice(0, 8)}`),
+          type: mapping.type,
+          color: mapping.color,
           details: {
             sequenceId: seqId,
+            sequenceName: seqName || seqId,
             beats: seqData.timestamps.length,
           },
         });
@@ -82,10 +174,13 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
     });
   }
 
-  // 3. Add topic events
+  // 3. Add topic events with semantic mapping
   if (analyzerData.topics) {
     Object.entries(analyzerData.topics).forEach(([topicName, topicData]: [string, any]) => {
       if (topicData.firstSeen && topicData.lastSeen) {
+        // Get semantic type mapping for this topic
+        const typeMapping = TOPIC_TYPE_MAP[topicName] || TOPIC_TYPE_MAP.default;
+
         const startTime = new Date(topicData.firstSeen).getTime() - baseTime;
         const endTime = new Date(topicData.lastSeen).getTime() - baseTime;
         const duration = Math.max(endTime - startTime, 1);
@@ -93,9 +188,9 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
         events.push({
           time: startTime,
           duration,
-          name: `Topic: ${topicName}`,
-          type: 'topic',
-          color: '#14b8a6',
+          name: typeMapping.displayName,
+          type: typeMapping.type as TimelineEvent['type'],
+          color: typeMapping.color,
           details: {
             topic: topicName,
             messages: topicData.count,
@@ -105,22 +200,30 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
     });
   }
 
-  // 4. Add performance gaps
+  // 4. Add performance gaps with better categorization
   if (analyzerData.performance?.gaps && Array.isArray(analyzerData.performance.gaps)) {
     analyzerData.performance.gaps.forEach(gap => {
       const startTime = new Date(gap.start).getTime() - baseTime;
       const duration = gap.durationMs;
 
-      // Categorize gaps
+      // Categorize gaps by severity
       let gapType: TimelineEvent['type'] = 'gap';
       let gapColor = '#dc2626'; // Default red for gaps
-      let gapName = `Gap (${(duration / 1000).toFixed(2)}s)`;
+      let gapName = `Gap`;
 
-      // Highlight particularly long gaps as "blocked"
+      // Highlight particularly long gaps as "blocked" (React or main thread)
       if (duration > 5000) {
         gapType = 'blocked';
         gapColor = '#ef4444';
         gapName = `⚠️ React Block (${(duration / 1000).toFixed(2)}s)`;
+      } else if (duration > 2000) {
+        gapType = 'gap';
+        gapColor = '#dc2626';
+        gapName = `Gap (${(duration / 1000).toFixed(2)}s)`;
+      } else {
+        gapType = 'gap';
+        gapColor = '#fca5a5';
+        gapName = `Gap (${(duration / 1000).toFixed(2)}s)`;
       }
 
       events.push({

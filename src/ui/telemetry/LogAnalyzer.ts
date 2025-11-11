@@ -11,26 +11,25 @@ import { AnalyzerOutput } from './TimelineDataAdapter';
 export function parseRawLogFile(logText: string): AnalyzerOutput {
   const lines = logText.split(/\r?\n/).filter(Boolean);
   
-  // Extract timestamps
-  const timestamps: string[] = [];
+  // Extract all timestamps in chronological order
+  const timestampSet = new Set<string>();
   const pluginMounts: Record<string, any> = {};
   const sequences: Record<string, any> = {};
   const topics: Record<string, any> = {};
-  const gaps: Array<{ start: string; end: string; durationMs: number }> = [];
 
   // Pattern to match ISO timestamps
-  const isoPattern = /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)/g;
+  const isoPattern = /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)/;
 
   lines.forEach((line) => {
-    // Extract all timestamps from this line
-    const matches = line.matchAll(isoPattern);
-    for (const match of matches) {
-      timestamps.push(match[1]);
+    // Extract timestamp from this line
+    const tsMatch = line.match(isoPattern);
+    if (tsMatch) {
+      timestampSet.add(tsMatch[1]);
     }
 
-    // Extract plugin mounts (look for __MC_PLUGIN patterns)
-    if (line.includes('__MC_PLUGIN') || line.includes('Plugin mounted')) {
-      const pluginMatch = line.match(/(?:__MC_PLUGIN|plugin)[\s:]*(\w+)/i);
+    // Extract plugin mounts (look for "✅ Plugin mounted successfully" or "Attempting to mount plugin")
+    if (line.includes('Plugin mounted successfully') || line.includes('Attempting to mount plugin')) {
+      const pluginMatch = line.match(/(?:plugin|Plugin)[\s:]*(\w+Plugin|\w+)/i);
       if (pluginMatch) {
         const pluginName = pluginMatch[1];
         if (!pluginMounts[pluginName]) {
@@ -39,41 +38,79 @@ export function parseRawLogFile(logText: string): AnalyzerOutput {
             durations: [],
           };
         }
-        // Find timestamp on this line
-        const tsMatch = line.match(isoPattern);
         if (tsMatch) {
-          pluginMounts[pluginName].successTimestamps.push(tsMatch[0]);
-          pluginMounts[pluginName].durations.push(1); // Default duration
+          pluginMounts[pluginName].successTimestamps.push(tsMatch[1]);
+          pluginMounts[pluginName].durations.push(50); // Estimated duration
         }
       }
     }
 
-    // Extract sequences (look for sequence patterns)
-    if (line.includes('sequence') || line.includes('Sequence')) {
-      const seqMatch = line.match(/sequence[\s:]*([a-zA-Z0-9\-]+)/i);
-      if (seqMatch) {
-        const seqId = seqMatch[1];
-        if (!sequences[seqId]) {
-          sequences[seqId] = { timestamps: [] };
+    // Extract sequences (look for Registration/Validation lines with explicit names and optional IDs)
+    if (
+      line.includes('Registered sequence') ||
+      line.includes('Sequence registered') ||
+      line.includes('SequenceRegistry: Sequence')
+    ) {
+      // Prefer explicit "Registered sequence \"NAME\" (id: SOME-ID)"
+      let seqName: string | null = null;
+      let seqId: string | null = null;
+
+      // Pattern 1: Registered sequence "NAME" (id: some-id)
+      const regWithId = line.match(/Registered sequence\s+"([^"]+)"\s*\(id:\s*([^\)]+)\)/i);
+      if (regWithId) {
+        seqName = regWithId[1];
+        seqId = regWithId[2].trim();
+      }
+
+      // Pattern 2: Registered sequence "NAME" (name only)
+      if (!seqName) {
+        const regNameOnly = line.match(/Registered sequence\s+"([^"]+)"/i);
+        if (regNameOnly) {
+          seqName = regNameOnly[1];
         }
-        const tsMatch = line.match(isoPattern);
+      }
+
+      // Pattern 3: Sequence registered: NAME (legacy phrasing)
+      if (!seqName) {
+        const legacyReg = line.match(/Sequence registered:\s*([^\"\']+)/i);
+        if (legacyReg) {
+          seqName = legacyReg[1].trim();
+        }
+      }
+
+      // Pattern 4: Validation passed lines e.g. SequenceRegistry: Sequence "NAME" validation passed
+      if (!seqName) {
+        const validation = line.match(/Sequence\s+"([^"]+)"\s+validation\s+passed/i);
+        if (validation) {
+          seqName = validation[1];
+        }
+      }
+
+      if (seqName) {
+        // Derive ID if not present
+        const derivedId = (seqId || seqName).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+        if (!sequences[derivedId]) {
+          sequences[derivedId] = { timestamps: [], name: seqName, id: derivedId, count: 0 };
+        }
         if (tsMatch) {
-          sequences[seqId].timestamps.push(tsMatch[0]);
+          const ts = tsMatch[1];
+          sequences[derivedId].timestamps.push(ts);
+          sequences[derivedId].count += 1;
         }
       }
     }
 
-    // Extract topics (look for topic patterns)
-    if (line.includes('topic') || line.includes('Topic')) {
-      const topicMatch = line.match(/topic[\s:]*([a-zA-Z0-9\.\-_]+)/i);
+    // Extract topics (look for "EventBus: Subscribed" which indicates topic subscription)
+    if (line.includes('EventBus: Subscribed to')) {
+      const topicMatch = line.match(/Subscribed to ["']([^"']+)["']/);
       if (topicMatch) {
         const topicName = topicMatch[1];
         if (!topics[topicName]) {
           topics[topicName] = { firstSeen: null, lastSeen: null, count: 0 };
         }
-        const tsMatch = line.match(isoPattern);
         if (tsMatch) {
-          const ts = tsMatch[0];
+          const ts = tsMatch[1];
           if (!topics[topicName].firstSeen) {
             topics[topicName].firstSeen = ts;
           }
@@ -84,18 +121,22 @@ export function parseRawLogFile(logText: string): AnalyzerOutput {
     }
   });
 
-  // Calculate gaps from timestamps
-  if (timestamps.length > 1) {
-    for (let i = 0; i < timestamps.length - 1; i++) {
-      const current = new Date(timestamps[i]).getTime();
-      const next = new Date(timestamps[i + 1]).getTime();
+  // Convert set to sorted array
+  const sortedTimestamps = Array.from(timestampSet).sort();
+
+  // Calculate gaps from unique timestamps
+  const gaps: Array<{ start: string; end: string; durationMs: number }> = [];
+  if (sortedTimestamps.length > 1) {
+    for (let i = 0; i < sortedTimestamps.length - 1; i++) {
+      const current = new Date(sortedTimestamps[i]).getTime();
+      const next = new Date(sortedTimestamps[i + 1]).getTime();
       const duration = next - current;
 
-      // Only record significant gaps (>100ms)
-      if (duration > 100) {
+      // Record gaps > 500ms (significant delays)
+      if (duration > 500) {
         gaps.push({
-          start: timestamps[i],
-          end: timestamps[i + 1],
+          start: sortedTimestamps[i],
+          end: sortedTimestamps[i + 1],
           durationMs: duration,
         });
       }
@@ -103,7 +144,6 @@ export function parseRawLogFile(logText: string): AnalyzerOutput {
   }
 
   // Calculate session duration
-  const sortedTimestamps = timestamps.sort();
   const earliest = sortedTimestamps[0] || new Date().toISOString();
   const latest = sortedTimestamps[sortedTimestamps.length - 1] || earliest;
   const durationMs = new Date(latest).getTime() - new Date(earliest).getTime();

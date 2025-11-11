@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import TimelineFlowVisualization, { TimelineData } from './TimelineFlowVisualization';
+import TimelineFlowVisualization, { TimelineEvent, TimelineData } from './TimelineFlowVisualization';
 import { analyzerToTimelineData, createSampleTimelineData, AnalyzerOutput } from './TimelineDataAdapter';
 import { loadAndParseFile } from './LogAnalyzer';
+import { OperationFilterPanel, applyEventFilter, OperationFilter } from './OperationFilter';
 import './telemetry.css';
 interface TelemetryPageProps {
   /**
@@ -25,6 +26,13 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
   const [timelineData, setTimelineData] = useState<TimelineData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  // Store intermediate data for inspection
+  const [rawLogData, setRawLogData] = useState<AnalyzerOutput | null>(null);
+  
+  // Filtering state
+  const [currentFilter, setCurrentFilter] = useState<OperationFilter>({ strategyId: 'all', query: '' });
+  const [filteredEvents, setFilteredEvents] = useState<TimelineEvent[]>([]);
 
   // Initialize with provided data or sample data
   useEffect(() => {
@@ -32,6 +40,7 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
       try {
         const converted = analyzerToTimelineData(analyzerData);
         setTimelineData(converted);
+        setRawLogData(analyzerData);
         setError(null);
       } catch (err) {
         setError(`Failed to convert analyzer data: ${err}`);
@@ -41,6 +50,14 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
       setError(null);
     }
   }, [analyzerData, useSampleData]);
+
+  // Update filtered events when timeline data or filter changes
+  useEffect(() => {
+    if (timelineData) {
+      const filtered = applyEventFilter(timelineData.events, currentFilter);
+      setFilteredEvents(filtered);
+    }
+  }, [timelineData, currentFilter]);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -52,8 +69,9 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
     try {
       // Automatically detect and parse raw logs or JSON
       const analyzerOutput = await loadAndParseFile(file);
-      const timelineData = analyzerToTimelineData(analyzerOutput);
-      setTimelineData(timelineData);
+      const timeline = analyzerToTimelineData(analyzerOutput);
+      setTimelineData(timeline);
+      setRawLogData(analyzerOutput);
     } catch (err) {
       setError(`Failed to load file: ${err}`);
     } finally {
@@ -63,7 +81,26 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
 
   const handleUseSampleData = () => {
     setTimelineData(createSampleTimelineData());
+    setRawLogData(null);
     setError(null);
+  };
+
+  const exportDiagnostics = () => {
+    if (!timelineData) return;
+
+    const diagnostics = {
+      stage1_rawLog: rawLogData || 'sample-data',
+      stage2_analyzerJson: rawLogData || { source: 'sample' },
+      stage3_timelineData: timelineData,
+      timestamp: new Date().toISOString(),
+    };
+
+    const blob = new Blob([JSON.stringify(diagnostics, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `telemetry-diagnostics-${Date.now()}.json`;
+    a.click();
   };
 
   if (!timelineData) {
@@ -134,10 +171,52 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
   return (
     <div className="telemetry-container">
       <div className="telemetry-content">
+        {/* Diagnostics Toolbar */}
+        <div style={{ padding: '1rem 2rem', backgroundColor: '#1e1e1e', borderBottom: '1px solid #333', display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ fontSize: '0.875rem', color: '#888' }}>
+            {rawLogData && (
+              <span>
+                📊 Log: {rawLogData.totalLines} lines | {rawLogData.earliest} → {rawLogData.latest}
+              </span>
+            )}
+          </div>
+          <button
+            onClick={exportDiagnostics}
+            style={{ padding: '0.5rem 1rem', backgroundColor: '#333', color: '#888', border: '1px solid #555', borderRadius: '0.375rem', fontSize: '0.75rem', cursor: 'pointer', transition: 'all 0.2s' }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = '#444';
+              e.currentTarget.style.color = '#fff';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = '#333';
+              e.currentTarget.style.color = '#888';
+            }}
+          >
+            📥 Export Diagnostics (JSON)
+          </button>
+        </div>
+
+        {/* Filtering Panel */}
+        <div style={{ padding: '1.5rem 2rem', backgroundColor: '#1a1a1b', borderBottom: '1px solid #333' }}>
+          <OperationFilterPanel
+            events={timelineData.events}
+            onFilterChange={(filter) => setCurrentFilter(filter)}
+            onPressetSelect={() => {
+              // Preset selected, filter will be applied via onFilterChange
+            }}
+          />
+          <div style={{ fontSize: '0.75rem', color: '#666', marginTop: '1rem' }}>
+            Showing {filteredEvents.length} of {timelineData.events.length} events
+          </div>
+        </div>
+
         <TimelineFlowVisualization
-          data={timelineData}
+          data={{
+            ...timelineData,
+            events: filteredEvents,
+          }}
           title="RenderX Session Telemetry"
-          subtitle={`${timelineData.events.length} events across ${(timelineData.totalDuration / 1000).toFixed(2)} seconds`}
+          subtitle={`${filteredEvents.length} events across ${(timelineData.totalDuration / 1000).toFixed(2)} seconds`}
           onEventClick={(event) => {
             console.log('Clicked event:', event);
           }}
