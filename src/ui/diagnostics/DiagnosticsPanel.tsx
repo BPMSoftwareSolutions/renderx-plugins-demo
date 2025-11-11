@@ -510,7 +510,7 @@ export const DiagnosticsPanel: React.FC<DiagnosticsPanelProps> = ({ conductor })
           )}
 
           {selectedNodeType === 'telemetry' && (
-            <TelemetryPage useSampleData={true} />
+            <TelemetryPage />
           )}
         </div>
 

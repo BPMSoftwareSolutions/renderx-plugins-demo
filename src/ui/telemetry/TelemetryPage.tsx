@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TimelineFlowVisualization, { TimelineData } from './TimelineFlowVisualization';
-import { analyzerToTimelineData, createSampleTimelineData, loadAnalyzerFile, AnalyzerOutput } from './TimelineDataAdapter';
+import { analyzerToTimelineData, createSampleTimelineData, AnalyzerOutput } from './TimelineDataAdapter';
+import { loadAndParseFile } from './LogAnalyzer';
 import './telemetry.css';
 interface TelemetryPageProps {
   /**
@@ -49,8 +50,10 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
     setError(null);
 
     try {
-      const data = await loadAnalyzerFile(file);
-      setTimelineData(data);
+      // Automatically detect and parse raw logs or JSON
+      const analyzerOutput = await loadAndParseFile(file);
+      const timelineData = analyzerToTimelineData(analyzerOutput);
+      setTimelineData(timelineData);
     } catch (err) {
       setError(`Failed to load file: ${err}`);
     } finally {
@@ -70,7 +73,7 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
           <div className="max-w-2xl" style={{ margin: '0 auto' }}>
             <div style={{ textAlign: 'center', paddingTop: '3rem', paddingBottom: '3rem' }}>
             <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Telemetry Visualization</h1>
-            <p style={{ color: '#888', marginBottom: '2rem' }}>Load analyzer output to visualize session timeline</p>
+            <p style={{ color: '#888', marginBottom: '2rem' }}>Upload your console log to automatically analyze and visualize session timeline</p>
 
             {error && (
               <div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: 'rgba(244, 67, 54, 0.1)', border: '1px solid rgba(244, 67, 54, 0.3)', borderRadius: '0.5rem', color: '#ef5350' }}>
@@ -81,7 +84,7 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {/* File Upload Section */}
               <div style={{ backgroundColor: '#252526', border: '1px solid #333', borderRadius: '0.5rem', padding: '1.5rem' }}>
-                <h2 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem' }}>Upload Analyzer Output</h2>
+                <h2 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem' }}>Upload Console Log or JSON</h2>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                   <label style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '8rem', border: '2px dashed #444', borderRadius: '0.5rem', padding: '1.5rem', cursor: 'pointer', transition: 'all 0.2s' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '1.75rem' }}>
@@ -91,11 +94,11 @@ export const TelemetryPage: React.FC<TelemetryPageProps> = ({
                       <p style={{ fontSize: '0.875rem', color: '#888' }}>
                         Click to upload or drag and drop
                       </p>
-                      <p style={{ fontSize: '0.75rem', color: '#666' }}>JSON files from analyzer</p>
+                      <p style={{ fontSize: '0.75rem', color: '#666' }}>Raw console logs or analyzer JSON files</p>
                     </div>
                     <input
                       type="file"
-                      accept=".json"
+                      accept=".json,.log,.txt"
                       onChange={handleFileUpload}
                       disabled={loading}
                       style={{ display: 'none' }}
