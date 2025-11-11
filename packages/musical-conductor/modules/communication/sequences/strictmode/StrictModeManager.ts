@@ -80,7 +80,7 @@ export class StrictModeManager {
    */
   recordSequenceExecution(hash: string): void {
     this.duplicationDetector.recordSequenceExecution(hash);
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 StrictModeManager: Recorded sequence execution: ${hash.substring(
         0,
         8
@@ -253,7 +253,7 @@ export class StrictModeManager {
    */
   addStrictModePattern(pattern: string): void {
     this.strictModePatterns.add(pattern.toLowerCase());
-    console.log(`🎼 StrictModeManager: Added StrictMode pattern: ${pattern}`);
+    (globalThis as any).__MC_LOG(`🎼 StrictModeManager: Added StrictMode pattern: ${pattern}`);
   }
 
   /**
@@ -262,7 +262,7 @@ export class StrictModeManager {
    */
   removeStrictModePattern(pattern: string): void {
     this.strictModePatterns.delete(pattern.toLowerCase());
-    console.log(`🎼 StrictModeManager: Removed StrictMode pattern: ${pattern}`);
+    (globalThis as any).__MC_LOG(`🎼 StrictModeManager: Removed StrictMode pattern: ${pattern}`);
   }
 
   /**
@@ -278,7 +278,7 @@ export class StrictModeManager {
    */
   clearExecutionHistory(): void {
     this.duplicationDetector.reset();
-    console.log("🎼 StrictModeManager: Cleared execution history");
+    (globalThis as any).__MC_LOG("🎼 StrictModeManager: Cleared execution history");
   }
 
   /**
@@ -320,7 +320,7 @@ export class StrictModeManager {
       this.strictModePatterns.clear();
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 StrictModeManager: StrictMode detection ${
         enabled ? "enabled" : "disabled"
       }`

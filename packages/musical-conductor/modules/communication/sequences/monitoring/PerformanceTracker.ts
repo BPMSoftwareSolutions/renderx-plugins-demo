@@ -48,7 +48,7 @@ export class PerformanceTracker {
     const startTime = performance.now();
     this.beatStartTimes.set(beatKey, startTime);
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `⏱️ PerformanceTracker: Started timing beat ${beat} for ${sequenceName}`
     );
 
@@ -66,7 +66,7 @@ export class PerformanceTracker {
     const startTime = this.beatStartTimes.get(beatKey);
 
     if (!startTime) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `⏱️ PerformanceTracker: No start time found for beat ${beat} in ${sequenceName}`
       );
       return null;
@@ -92,7 +92,7 @@ export class PerformanceTracker {
       this.completedBeats = this.completedBeats.slice(-this.maxHistorySize / 2);
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `⏱️ PerformanceTracker: Beat ${beat} completed in ${duration.toFixed(
         2
       )}ms`
@@ -110,7 +110,7 @@ export class PerformanceTracker {
     const beatKey = `${sequenceName}-${beat}`;
     this.beatStartTimes.delete(beatKey);
 
-    console.warn(
+    (globalThis as any).__MC_WARN(
       `⏱️ PerformanceTracker: Cleaned up failed beat ${beat} for ${sequenceName}`
     );
   }
@@ -131,7 +131,7 @@ export class PerformanceTracker {
     const startTime = performance.now();
     this.movementStartTimes.set(movementKey, startTime);
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `⏱️ PerformanceTracker: Started timing movement ${movementName} for ${sequenceName}`
     );
 
@@ -156,7 +156,7 @@ export class PerformanceTracker {
     const startTime = this.movementStartTimes.get(movementKey);
 
     if (!startTime) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `⏱️ PerformanceTracker: No start time found for movement ${movementName} in ${sequenceName}`
       );
       return null;
@@ -186,7 +186,7 @@ export class PerformanceTracker {
       );
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `⏱️ PerformanceTracker: Movement ${movementName} completed in ${duration.toFixed(
         2
       )}ms`
@@ -209,7 +209,7 @@ export class PerformanceTracker {
     const movementKey = `${sequenceName}-${movementName}-${requestId}`;
     this.movementStartTimes.delete(movementKey);
 
-    console.warn(
+    (globalThis as any).__MC_WARN(
       `⏱️ PerformanceTracker: Cleaned up failed movement ${movementName} for ${sequenceName}`
     );
   }
@@ -227,7 +227,7 @@ export class PerformanceTracker {
       beatCount: 0,
     });
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `⏱️ PerformanceTracker: Started timing sequence ${sequenceName} (${executionId})`
     );
   }
@@ -241,7 +241,7 @@ export class PerformanceTracker {
     const timing = this.sequenceTimings.get(executionId);
 
     if (!timing) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `⏱️ PerformanceTracker: No timing found for execution ${executionId}`
       );
       return null;
@@ -253,7 +253,7 @@ export class PerformanceTracker {
     timing.endTime = endTime;
     timing.duration = duration;
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `⏱️ PerformanceTracker: Sequence ${
         timing.sequenceName
       } completed in ${duration.toFixed(2)}ms`
@@ -447,7 +447,7 @@ export class PerformanceTracker {
     this.completedBeats = [];
     this.completedMovements = [];
 
-    console.log("🧹 PerformanceTracker: All tracking data reset");
+    (globalThis as any).__MC_LOG("🧹 PerformanceTracker: All tracking data reset");
   }
 
   /**

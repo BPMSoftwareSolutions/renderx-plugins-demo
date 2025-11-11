@@ -101,12 +101,12 @@ export class ResourceManager {
     );
 
     if (conflictResult.resolution === "REJECT") {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `🎼 ResourceManager: Resource acquisition rejected - ${conflictResult.message}`
       );
       return false;
     } else if (conflictResult.resolution === "INTERRUPT") {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 ResourceManager: Interrupting current owner for HIGH priority request - ${conflictResult.message}`
       );
       this.releaseResourceOwnership(
@@ -152,7 +152,7 @@ export class ResourceManager {
       sequenceExecutionId &&
       currentOwner.sequenceExecutionId !== sequenceExecutionId
     ) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `🎼 ResourceManager: Cannot release resource ${resourceId} - execution ID mismatch`
       );
       return;
@@ -163,7 +163,7 @@ export class ResourceManager {
       currentOwner.symphonyName
     );
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ResourceManager: Released resource ${resourceId} from ${currentOwner.symphonyName}`
     );
   }
@@ -303,6 +303,6 @@ export class ResourceManager {
    */
   reset(): void {
     this.ownershipTracker.reset();
-    console.log("🧹 ResourceManager: All resource ownership reset");
+    (globalThis as any).__MC_LOG("🧹 ResourceManager: All resource ownership reset");
   }
 }

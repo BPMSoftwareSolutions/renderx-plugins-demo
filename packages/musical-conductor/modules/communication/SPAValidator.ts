@@ -80,7 +80,7 @@ export class SPAValidator {
     // Intercept global eventBus access
     this.interceptGlobalAccess();
 
-    console.log("🎼 SPA Validator: Runtime checks initialized");
+    (globalThis as any).__MC_LOG("🎼 SPA Validator: Runtime checks initialized");
   }
 
   /**
@@ -136,10 +136,10 @@ export class SPAValidator {
 
         // In strict mode, block the call
         if (validator.config.strictMode) {
-          console.error(
+          (globalThis as any).__MC_ERROR(
             `🚫 SPA Validator: Blocked direct eventBus.emit() call from plugin '${callerInfo.pluginId}'`
           );
-          console.error(
+          (globalThis as any).__MC_ERROR(
             `💡 Use conductor.play('${callerInfo.pluginId}', 'SEQUENCE_NAME', data) instead`
           );
           return;
@@ -542,22 +542,22 @@ export class SPAValidator {
     this.violations.push(violation);
 
     if (this.config.logViolations) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🎼 SPA Violation [${violation.severity.toUpperCase()}]: ${
           violation.description
         }`
       );
-      console.error(`   Plugin: ${violation.pluginId}`);
-      console.error(`   Time: ${violation.timestamp.toISOString()}`);
+      (globalThis as any).__MC_ERROR(`   Plugin: ${violation.pluginId}`);
+      (globalThis as any).__MC_ERROR(`   Time: ${violation.timestamp.toISOString()}`);
       if (violation.fileUrl && typeof violation.lineNumber === "number") {
         const col = typeof violation.columnNumber === "number" ? `:${violation.columnNumber}` : "";
-        console.error(`   Location: ${violation.fileUrl}:${violation.lineNumber}${col}`);
+        (globalThis as any).__MC_ERROR(`   Location: ${violation.fileUrl}:${violation.lineNumber}${col}`);
       }
       if (violation.codeSnippet) {
-        console.error(`   Code: ${violation.codeSnippet.trim()}`);
+        (globalThis as any).__MC_ERROR(`   Code: ${violation.codeSnippet.trim()}`);
       }
       if (violation.severity === "critical") {
-        console.error(
+        (globalThis as any).__MC_ERROR(
           `   Stack: ${violation.stackTrace.split("\n").slice(0, 3).join("\n")}`
         );
       }
@@ -724,7 +724,7 @@ export class SPAValidator {
   public disableRuntimeChecks(): void {
     if (this.originalEventBusEmit) {
       (EventBus.prototype.emit as any) = this.originalEventBusEmit!;
-      console.log("🎼 SPA Validator: Runtime checks disabled");
+      (globalThis as any).__MC_LOG("🎼 SPA Validator: Runtime checks disabled");
     }
   }
 }

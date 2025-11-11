@@ -50,9 +50,10 @@ public class SequenceExecutor
         try
         {
             _logger.LogInformation(
-                "Starting sequence execution: {SequenceId} (request: {RequestId})",
+                "🎼 SequenceExecutor: Starting sequence execution: {SequenceId} (RequestId={RequestId}, PluginId={PluginId})",
                 sequence.Id,
-                requestId);
+                requestId,
+                pluginId);
 
             // Emit sequence:started event
             await _eventBus.Emit("sequence:started", new
@@ -204,7 +205,7 @@ public class SequenceExecutor
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error executing sequence: {SequenceId}", sequence.Id);
+            _logger.LogError(ex, "❌ SequenceExecutor: Error executing sequence: {SequenceId} (RequestId={RequestId}, Reason={Reason})", sequence.Id, requestId, ex.Message);
 
             var duration = (DateTime.UtcNow - startTime).TotalMilliseconds;
 
@@ -255,6 +256,19 @@ public class SequenceExecutor
     }
 
     /// <summary>
+    /// Handle sequence cancellation
+    /// </summary>
+    public void CancelExecution(string requestId)
+    {
+        _logger.LogInformation("🛑 SequenceExecutor: Cancelling sequence execution (RequestId={RequestId})", requestId);
+
+        if (_logger.IsEnabled(LogLevel.Debug))
+        {
+            _logger.LogDebug("🛑 SequenceExecutor: Cancellation details - RequestId: {RequestId}, Timestamp: {Timestamp}", requestId, DateTime.UtcNow);
+        }
+    }
+
+    /// <summary>
     /// Adapter to convert ILogger<T> to ILogger.
     /// </summary>
     private class LoggerAdapter : Interfaces.ILogger
@@ -264,12 +278,6 @@ public class SequenceExecutor
         public LoggerAdapter(ILogger<SequenceExecutor> logger)
         {
             _logger = logger;
-            // Original web: "🧹 BeatExecutor: Beat execution queue cleared"
-            _logger.LogInformation(" BeatExecutor: Beat execution queue cleared");
-
-            // Original web: "🧹 SequenceExecutor: Execution history cleared"
-            _logger.LogInformation(" SequenceExecutor: Execution history cleared");
-
         }
 
         public void Log(string message) => _logger.LogInformation(message);

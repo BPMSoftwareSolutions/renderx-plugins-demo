@@ -202,7 +202,7 @@ export class ResourceConflictManager {
    */
   clearAllResourceOwnership(): void {
     // This would clear all resource ownership
-    console.log("🎼 ResourceConflictManager: Clearing all resource ownership");
+    (globalThis as any).__MC_LOG("🎼 ResourceConflictManager: Clearing all resource ownership");
   }
 
   /**

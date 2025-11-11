@@ -51,10 +51,9 @@ export class MovementExecutor {
     executionContext: SequenceExecutionContext,
     sequence: MusicalSequence
   ): Promise<void> {
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎵 MovementExecutor: Starting movement "${movement.name}" with ${movement.beats.length} beats`
     );
-
     // Start movement timing if PerformanceTracker is available
     if (this.performanceTracker) {
       this.performanceTracker.startMovementTiming(
@@ -78,12 +77,9 @@ export class MovementExecutor {
         const beat = movement.beats[beatIndex];
         executionContext.currentBeat = beat.beat;
 
-        console.log(
-          `🥁 MovementExecutor: Executing beat ${beat.beat} (${beatIndex + 1}/${
-            movement.beats.length
-          })`
+        (globalThis as any).__MC_LOG(
+          `🥁 MovementExecutor: Executing beat ${beat.beat} (${beatIndex + 1}/${movement.beats.length})`
         );
-
         // Handle timing before executing beat based on its timing
         await this.handleBeatTiming(beat, sequence);
 
@@ -119,9 +115,17 @@ export class MovementExecutor {
         duration: movementDuration,
       });
 
-      console.log(
+      (globalThis as any).__MC_LOG(
         `✅ MovementExecutor: Movement "${movement.name}" completed successfully`
       );
+      // Clean up failed movement timing if PerformanceTracker is available
+      if (this.performanceTracker) {
+        this.performanceTracker.cleanupFailedMovement(
+          sequence.name,
+          movement.name,
+          executionContext.id
+        );
+      }
     } catch (error) {
       // Clean up failed movement timing if PerformanceTracker is available
       if (this.performanceTracker) {
@@ -131,28 +135,21 @@ export class MovementExecutor {
           executionContext.id
         );
       }
-
-      // Handle movement execution error
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ MovementExecutor: Movement "${movement.name}" failed:`,
         error
       );
-
-      // Add error to execution context
       executionContext.errors.push({
         beat: executionContext.currentBeat,
         error: error instanceof Error ? error.message : String(error),
         timestamp: Date.now(),
       });
-
-      // Emit movement failed event
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.MOVEMENT_FAILED, {
         sequenceName: sequence.name,
         movementName: movement.name,
         requestId: executionContext.id,
         error: error instanceof Error ? error.message : String(error),
       });
-
       throw error;
     }
   }
@@ -213,7 +210,7 @@ export class MovementExecutor {
     } catch {}
 
     if (delay > 0) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `⏱️ MovementExecutor: Waiting ${delay}ms for beat timing (${beat.timing})`
       );
       await this.sleep(delay);
@@ -269,7 +266,7 @@ export class MovementExecutor {
 
       return true;
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ MovementExecutor: Movement validation failed for "${movement.name}":`,
         error
       );

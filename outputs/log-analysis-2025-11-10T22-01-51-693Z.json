@@ -1,0 +1,330 @@
+{
+  "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.logs\\web-variant-localhost-1762811808902.log",
+  "totalLines": 2848,
+  "earliest": "2025-11-10T21:56:16.932Z",
+  "latest": "2025-11-10T21:56:45.285Z",
+  "durationMs": 28353,
+  "pluginMounts": {
+    "attempts": 51,
+    "successes": 48,
+    "byPlugin": {
+      "LibraryComponentPlugin": {
+        "attempts": 6,
+        "successes": 3
+      },
+      "LibraryPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "HeaderThemePlugin": {
+        "attempts": 2,
+        "successes": 2
+      },
+      "CanvasComponentPlugin": {
+        "attempts": 3,
+        "successes": 3
+      },
+      "CanvasComponentSelectionPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentSvgNodeSelectionPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentDeselectionRequestPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentDeselectionPlugin": {
+        "attempts": 2,
+        "successes": 2
+      },
+      "CanvasComponentDeleteRequestPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentDeletePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentDragStartPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentDragMovePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentDragEndPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentResizeStartPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentResizeMovePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentResizeEndPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentImportPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentExportPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentExportGifPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentExportMp4Plugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasLineResizeStartPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasLineResizeMovePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasLineResizeEndPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentSvgNodeUpdatePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasLineManipStartPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasLineManipMovePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasLineManipEndPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentCopyPlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "CanvasComponentPastePlugin": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "ControlPanelPlugin": {
+        "attempts": 13,
+        "successes": 13
+      }
+    }
+  },
+  "sequences": {
+    "registered": 48,
+    "byName": {
+      "Library Load": 1,
+      "Header UI Theme Toggle": 1,
+      "Header UI Theme Get": 1,
+      "Canvas Component Create": 1,
+      "Canvas Component Select Requested": 1,
+      "Canvas Component Select": 1,
+      "Canvas Component Select SVG Node": 1,
+      "Canvas Component Deselect Requested": 1,
+      "Canvas Component Deselect": 1,
+      "Canvas Component Deselect All": 1,
+      "Canvas Component Delete Requested": 1,
+      "Canvas Component Delete": 1,
+      "Canvas Component Drag Start": 1,
+      "Canvas Component Drag Move": 1,
+      "Canvas Component Drag End": 1,
+      "Canvas Component Resize Start": 1,
+      "Canvas Component Resize Move": 1,
+      "Canvas Component Resize End": 1,
+      "Canvas Component Import": 1,
+      "Canvas Component Export": 1,
+      "Canvas Component Export GIF": 1,
+      "Canvas Component Export MP4": 1,
+      "Canvas Line Resize Start": 1,
+      "Canvas Line Resize Move": 1,
+      "Canvas Line Resize End": 1,
+      "Canvas Component Update": 1,
+      "Canvas Component Update SVG Node": 1,
+      "Canvas Line Manip Start": 1,
+      "Canvas Line Manip Move": 1,
+      "Canvas Line Manip End": 1,
+      "Canvas Component Copy": 1,
+      "Canvas Component Paste": 1,
+      "Control Panel UI Section Toggle": 1,
+      "Control Panel UI Init (Batched)": 1,
+      "Control Panel UI Field Validate": 1,
+      "Control Panel UI Render": 1,
+      "Control Panel UI Init": 1,
+      "Control Panel UI Field Change": 1,
+      "Control Panel CSS Create": 1,
+      "Control Panel CSS Edit": 1,
+      "Control Panel CSS Delete": 1,
+      "Control Panel Update": 1,
+      "Control Panel Selection Show": 1,
+      "Control Panel Classes Remove": 1,
+      "Control Panel Classes Add": 1,
+      "Library Component Drag": 1,
+      "Library Component Drop": 1,
+      "Library Component Container Drop": 1
+    }
+  },
+  "topics": {
+    "subscribed": 162,
+    "byTopic": {
+      "musical-conductor:beat:started": 1,
+      "musical-conductor:beat:completed": 1,
+      "musical-conductor:beat:error": 1,
+      "beat-started": 1,
+      "beat-completed": 1,
+      "movement-started": 1,
+      "movement-completed": 1,
+      "movement-failed": 1,
+      "library:components:load": 1,
+      "library:components:notify-ui": 1,
+      "LibraryPlugin:sequence:completed": 1,
+      "app:ui:theme:toggle": 1,
+      "HeaderThemePlugin:sequence:completed": 2,
+      "app:ui:theme:get": 1,
+      "app:ui:theme:notify": 1,
+      "canvas:component:resolve-template": 1,
+      "canvas:component:register-instance": 1,
+      "canvas:component:create": 1,
+      "canvas:component:render-react": 1,
+      "canvas:component:notify-ui": 1,
+      "canvas:component:augment:line": 1,
+      "CanvasComponentPlugin:sequence:completed": 3,
+      "canvas:component:select:route": 1,
+      "canvas:component:select": 1,
+      "canvas:component:select:notify": 1,
+      "canvas:component:selection:changed": 1,
+      "CanvasComponentSelectionPlugin:sequence:completed": 1,
+      "canvas:component:select:svg-node": 1,
+      "CanvasComponentSvgNodeSelectionPlugin:sequence:completed": 1,
+      "canvas:component:deselect:route": 1,
+      "CanvasComponentDeselectionRequestPlugin:sequence:completed": 1,
+      "canvas:component:deselect": 1,
+      "canvas:component:deselection:changed": 1,
+      "CanvasComponentDeselectionPlugin:sequence:completed": 2,
+      "canvas:component:deselect:all": 1,
+      "canvas:component:selections:cleared": 1,
+      "canvas:component:delete:route": 1,
+      "CanvasComponentDeleteRequestPlugin:sequence:completed": 1,
+      "canvas:component:delete": 1,
+      "canvas:component:deleted": 1,
+      "CanvasComponentDeletePlugin:sequence:completed": 1,
+      "canvas:component:drag:start": 1,
+      "CanvasComponentDragStartPlugin:sequence:completed": 1,
+      "canvas:component:drag:move": 1,
+      "canvas:component:drag:forward": 1,
+      "CanvasComponentDragMovePlugin:sequence:completed": 1,
+      "canvas:component:drag:end": 1,
+      "CanvasComponentDragEndPlugin:sequence:completed": 1,
+      "canvas:component:resize:start": 1,
+      "CanvasComponentResizeStartPlugin:sequence:completed": 1,
+      "canvas:component:resize:move": 1,
+      "canvas:component:resize:forward": 1,
+      "CanvasComponentResizeMovePlugin:sequence:completed": 1,
+      "canvas:component:resize:end": 1,
+      "CanvasComponentResizeEndPlugin:sequence:completed": 1,
+      "canvas:component:ui:open": 1,
+      "canvas:component:ui:parse": 1,
+      "canvas:component:css:inject": 1,
+      "canvas:component:nodes:create": 1,
+      "canvas:component:hierarchy:apply": 1,
+      "CanvasComponentImportPlugin:sequence:completed": 1,
+      "canvas:component:query-all": 1,
+      "canvas:component:discover-components": 1,
+      "canvas:component:collect-css": 1,
+      "canvas:component:collect-layout": 1,
+      "canvas:component:build-ui-file": 1,
+      "canvas:component:download-file": 1,
+      "CanvasComponentExportPlugin:sequence:completed": 1,
+      "canvas:component:export-gif:rasterize-and-encode": 1,
+      "CanvasComponentExportGifPlugin:sequence:completed": 1,
+      "canvas:component:export-mp4:rasterize-and-encode": 1,
+      "CanvasComponentExportMp4Plugin:sequence:completed": 1,
+      "canvas:component:resize:line:start": 1,
+      "CanvasLineResizeStartPlugin:sequence:completed": 1,
+      "canvas:component:resize:line:move": 1,
+      "CanvasLineResizeMovePlugin:sequence:completed": 1,
+      "canvas:component:resize:line:end": 1,
+      "CanvasLineResizeEndPlugin:sequence:completed": 1,
+      "canvas:component:update:attribute": 1,
+      "canvas:component:update:refresh": 1,
+      "canvas:component:update:svg-node:attribute": 1,
+      "canvas:component:update:svg-node:refresh": 1,
+      "CanvasComponentSvgNodeUpdatePlugin:sequence:completed": 1,
+      "canvas:component:manip:line:start": 1,
+      "CanvasLineManipStartPlugin:sequence:completed": 1,
+      "canvas:component:manip:line:move": 1,
+      "CanvasLineManipMovePlugin:sequence:completed": 1,
+      "canvas:component:manip:line:end": 1,
+      "CanvasLineManipEndPlugin:sequence:completed": 1,
+      "canvas:component:copy:serialize": 1,
+      "canvas:component:copy:clipboard": 1,
+      "canvas:component:copy:notify": 1,
+      "CanvasComponentCopyPlugin:sequence:completed": 1,
+      "canvas:component:paste:clipboard": 1,
+      "canvas:component:paste:deserialize": 1,
+      "canvas:component:paste:position": 1,
+      "canvas:component:paste:create": 1,
+      "canvas:component:paste:notify": 1,
+      "CanvasComponentPastePlugin:sequence:completed": 1,
+      "control:panel:ui:section:toggle": 1,
+      "ControlPanelPlugin:sequence:completed": 13,
+      "control:panel:ui:init:config": 2,
+      "control:panel:ui:init:resolver": 2,
+      "control:panel:ui:init:schemas": 2,
+      "control:panel:ui:init:observers": 2,
+      "control:panel:ui:init:notify": 2,
+      "control:panel:ui:init:movement": 2,
+      "control:panel:ui:field:validate": 1,
+      "control:panel:ui:errors:merge": 1,
+      "control:panel:ui:update": 1,
+      "control:panel:ui:fields:generate": 1,
+      "control:panel:ui:sections:generate": 1,
+      "control:panel:ui:render": 1,
+      "control:panel:ui:field:prepare": 1,
+      "control:panel:ui:field:dispatch": 1,
+      "control:panel:ui:field:dirty": 1,
+      "control:panel:ui:field:await-refresh": 1,
+      "control:panel:css:create": 1,
+      "control:panel:css:notify": 3,
+      "control:panel:css:update": 1,
+      "control:panel:css:delete": 1,
+      "control:panel:update:derive": 1,
+      "control:panel:update:notify": 1,
+      "control:panel:selection:derive": 1,
+      "control:panel:selection:notify": 1,
+      "control:panel:classes:remove": 1,
+      "control:panel:classes:notify": 2,
+      "control:panel:classes:add": 1,
+      "library.component.drag.start.requested": 1,
+      "LibraryComponentPlugin:sequence:completed": 3,
+      "library:component:drop": 1,
+      "library:container:drop": 1,
+      "sequence-completed": 1,
+      "sequence-failed": 1,
+      "sequence-cancelled": 1
+    }
+  },
+  "css": {
+    "injectTopics": 1,
+    "controlPanelEvents": 6
+  }
+}

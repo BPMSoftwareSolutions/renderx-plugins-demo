@@ -16,7 +16,7 @@ export class PluginLoader {
   async loadPluginModule(pluginPath: string): Promise<any> {
     // Check cache first
     if (this.moduleCache.has(pluginPath)) {
-      console.log(`📦 Loading plugin from cache: ${pluginPath}`);
+      (globalThis as any).__MC_LOG(`📦 Loading plugin from cache: ${pluginPath}`);
       return this.moduleCache.get(pluginPath);
     }
 
@@ -33,7 +33,7 @@ export class PluginLoader {
           pluginPath.replace(/^\/?plugins\//, "RenderX/public/plugins/")
         );
         const fileUrl = pathToFileURL(localPath).href;
-        console.log(`🔄 [node] Importing plugin via file URL: ${fileUrl}`);
+        (globalThis as any).__MC_LOG(`🔄 [node] Importing plugin via file URL: ${fileUrl}`);
         let module: any | null = null;
         try {
           module = await import(fileUrl);
@@ -48,7 +48,7 @@ export class PluginLoader {
             if (def && (def.sequence || def.handlers)) module = def;
           }
         } catch (importErr) {
-          console.warn(
+          (globalThis as any).__MC_WARN(
             `⚠️ file:// import failed for ${fileUrl}. Trying transform fallback.`,
             importErr
           );
@@ -79,7 +79,7 @@ export class PluginLoader {
             evaluator(moduleExports, (globalThis as any).fetch);
             module = moduleExports;
           } catch (fallbackErr) {
-            console.warn(
+            (globalThis as any).__MC_WARN(
               "⚠️ PluginLoader fallback transform failed:",
               fallbackErr
             );
@@ -92,7 +92,7 @@ export class PluginLoader {
         return module;
       }
     } catch (nodeImportErr) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "⚠️ Node/Jest import path mapping failed, falling back to web import:",
         nodeImportErr
       );
@@ -108,63 +108,63 @@ export class PluginLoader {
     if (isDev) {
       // Try original path first (dev)
       try {
-        console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
+        (globalThis as any).__MC_LOG(`🔄 Attempting to load plugin: ${pluginPath}`);
         const module = await import(pluginPath);
         this.moduleCache.set(pluginPath, module);
-        console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
+        (globalThis as any).__MC_LOG(`✅ Successfully loaded plugin: ${pluginPath}`);
         return module;
       } catch {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `⚠️ Dev load failed (${pluginPath}), trying bundled path as fallback`
         );
         // Fall through to bundled attempt
       }
 
       try {
-        console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
+        (globalThis as any).__MC_LOG(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
         let module: any = await import(bundledPath);
         if (module && module.default && !module.sequence && !module.handlers) {
           const def = module.default;
           if (def && (def.sequence || def.handlers)) module = def;
         }
         this.moduleCache.set(pluginPath, module);
-        console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
+        (globalThis as any).__MC_LOG(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
         return module;
       } catch {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `⚠️ Failed to load plugin from both dev and bundled paths for ${pluginPath}`
         );
       }
     } else {
       // Prod: try bundled first
       try {
-        console.log(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
+        (globalThis as any).__MC_LOG(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
         let module: any = await import(bundledPath);
         if (module && module.default && !module.sequence && !module.handlers) {
           const def = module.default;
           if (def && (def.sequence || def.handlers)) module = def;
         }
         this.moduleCache.set(pluginPath, module);
-        console.log(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
+        (globalThis as any).__MC_LOG(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
         return module;
       } catch {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `⚠️ Bundled version not available (${bundledPath}), trying original path`
         );
       }
 
       try {
-        console.log(`🔄 Attempting to load plugin: ${pluginPath}`);
+        (globalThis as any).__MC_LOG(`🔄 Attempting to load plugin: ${pluginPath}`);
         let module: any = await import(pluginPath);
         if (module && module.default && !module.sequence && !module.handlers) {
           const def = module.default;
           if (def && (def.sequence || def.handlers)) module = def;
         }
         this.moduleCache.set(pluginPath, module);
-        console.log(`✅ Successfully loaded plugin: ${pluginPath}`);
+        (globalThis as any).__MC_LOG(`✅ Successfully loaded plugin: ${pluginPath}`);
         return module;
       } catch (originalError) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `⚠️ Failed to load plugin from original path: ${pluginPath}. Error: ${
             originalError instanceof Error
               ? originalError.message
@@ -184,7 +184,7 @@ export class PluginLoader {
    */
   private async loadPluginModuleComplex(pluginPath: string): Promise<any> {
     try {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🔄 Loading plugin module with complex resolution: ${pluginPath}`
       );
 
@@ -192,8 +192,8 @@ export class PluginLoader {
       const pluginDir = pluginPath.substring(0, pluginPath.lastIndexOf("/"));
       const pluginName = pluginDir.substring(pluginDir.lastIndexOf("/") + 1);
 
-      console.log(`🔍 Plugin directory: ${pluginDir}`);
-      console.log(`🔍 Plugin name: ${pluginName}`);
+      (globalThis as any).__MC_LOG(`🔍 Plugin directory: ${pluginDir}`);
+      (globalThis as any).__MC_LOG(`🔍 Plugin name: ${pluginName}`);
 
       // Try multiple resolution strategies
       const resolutionStrategies = [
@@ -207,7 +207,7 @@ export class PluginLoader {
 
       for (const strategy of resolutionStrategies) {
         try {
-          console.log(`🔄 Trying resolution strategy: ${strategy}`);
+          (globalThis as any).__MC_LOG(`🔄 Trying resolution strategy: ${strategy}`);
           let module: any = await import(strategy);
           if (
             module &&
@@ -221,12 +221,12 @@ export class PluginLoader {
           // Cache the loaded module
           this.moduleCache.set(pluginPath, module);
 
-          console.log(
+          (globalThis as any).__MC_LOG(
             `✅ Successfully loaded plugin with strategy: ${strategy}`
           );
           return module;
         } catch (strategyError) {
-          console.log(
+          (globalThis as any).__MC_LOG(
             `⚠️ Strategy failed: ${strategy} - ${
               strategyError instanceof Error
                 ? strategyError.message
@@ -241,7 +241,7 @@ export class PluginLoader {
         `Failed to load plugin module: ${pluginPath}. All resolution strategies failed.`
       );
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ Complex plugin loading failed for ${pluginPath}:`,
         error
       );
@@ -256,13 +256,13 @@ export class PluginLoader {
    */
   async loadPlugin(pluginPath: string): Promise<any> {
     try {
-      console.log(`🧠 PluginLoader: Loading plugin from: ${pluginPath}`);
+      (globalThis as any).__MC_LOG(`🧠 PluginLoader: Loading plugin from: ${pluginPath}`);
 
       const plugin = await this.loadPluginModule(pluginPath);
 
       // Validate plugin structure after import
       if (!plugin || typeof plugin !== "object") {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🧠 Failed to load plugin: invalid plugin structure at ${pluginPath}`
         );
         return null;
@@ -270,7 +270,7 @@ export class PluginLoader {
 
       // Check for required exports
       if (!plugin.sequence && !plugin.handlers && !plugin.default) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🧠 Plugin at ${pluginPath} missing required exports (sequence, handlers, or default)`
         );
         return null;
@@ -278,14 +278,14 @@ export class PluginLoader {
 
       // Handle default export
       if (plugin.default && !plugin.sequence) {
-        console.log(`🔄 Using default export for plugin: ${pluginPath}`);
+        (globalThis as any).__MC_LOG(`🔄 Using default export for plugin: ${pluginPath}`);
         return plugin.default;
       }
 
-      console.log(`✅ Successfully loaded and validated plugin: ${pluginPath}`);
+      (globalThis as any).__MC_LOG(`✅ Successfully loaded and validated plugin: ${pluginPath}`);
       return plugin;
     } catch (error) {
-      console.error(`❌ Failed to load plugin from ${pluginPath}:`, error);
+      (globalThis as any).__MC_ERROR(`❌ Failed to load plugin from ${pluginPath}:`, error);
       return null;
     }
   }
@@ -296,13 +296,13 @@ export class PluginLoader {
    * @returns Array of loaded plugins (null for failed loads)
    */
   async preloadPlugins(pluginPaths: string[]): Promise<(any | null)[]> {
-    console.log(`🔄 Preloading ${pluginPaths.length} plugins...`);
+    (globalThis as any).__MC_LOG(`🔄 Preloading ${pluginPaths.length} plugins...`);
 
     const loadPromises = pluginPaths.map(async (path) => {
       try {
         return await this.loadPlugin(path);
       } catch (error) {
-        console.error(`❌ Failed to preload plugin ${path}:`, error);
+        (globalThis as any).__MC_ERROR(`❌ Failed to preload plugin ${path}:`, error);
         return null;
       }
     });
@@ -310,7 +310,7 @@ export class PluginLoader {
     const results = await Promise.all(loadPromises);
     const successCount = results.filter((result) => result !== null).length;
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `✅ Preloaded ${successCount}/${pluginPaths.length} plugins successfully`
     );
 
@@ -331,7 +331,7 @@ export class PluginLoader {
    */
   clearCache(): void {
     this.moduleCache.clear();
-    console.log("🧹 PluginLoader: Module cache cleared");
+    (globalThis as any).__MC_LOG("🧹 PluginLoader: Module cache cleared");
   }
 
   /**
@@ -356,7 +356,7 @@ export class PluginLoader {
   removeCached(pluginPath: string): boolean {
     const removed = this.moduleCache.delete(pluginPath);
     if (removed) {
-      console.log(`🗑️ Removed plugin from cache: ${pluginPath}`);
+      (globalThis as any).__MC_LOG(`🗑️ Removed plugin from cache: ${pluginPath}`);
     }
     return removed;
   }

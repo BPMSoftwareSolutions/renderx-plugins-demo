@@ -59,6 +59,7 @@ public class Conductor : IConductor
         _eventLogger.SetupMovementExecutionLogging();
 
         _logger.LogInformation("🎼 MusicalConductor: Initialized with core components and monitoring infrastructure");
+        _logger.LogInformation("🎼 MusicalConductor: Startup complete - ready to execute sequences");
     }
 
     public string Play(string pluginId, string sequenceId, object? context = null, SequencePriority priority = SequencePriority.NORMAL)
@@ -184,10 +185,13 @@ public class Conductor : IConductor
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error executing sequence: {SequenceId}", sequence.Id);
+            _logger.LogError(ex, "❌ MusicalConductor: Error executing sequence: {SequenceId} (RequestId={RequestId}, Reason={Reason})", sequence.Id, requestId, ex.Message);
             _statistics.FailedExecutions++;
             _statisticsManager.RecordError();
-            
+
+            // Log state transition to failed
+            _logger.LogWarning("⚠️ MusicalConductor: Sequence state transitioned to FAILED - {SequenceName}", sequence.Name);
+
             var duration = _performanceTracker.EndSequenceTiming(sequence.Name);
             _eventLogger.LogSequenceComplete(sequence.Name, requestId, false, duration);
         }
@@ -226,6 +230,41 @@ public class Conductor : IConductor
                 _lock.ExitWriteLock();
             }
         }
+    }
+
+    /// <summary>
+    /// Stop the current sequence execution
+    /// </summary>
+    public void StopExecution()
+    {
+        _lock.EnterWriteLock();
+        try
+        {
+            if (_activeSequences > 0)
+            {
+                _logger.LogInformation("🛑 MusicalConductor: Stopping execution - {ActiveSequences} active sequences", _activeSequences);
+                _activeSequences = 0;
+                _statistics.ActiveSequences = 0;
+            }
+        }
+        finally
+        {
+            _lock.ExitWriteLock();
+        }
+    }
+
+    /// <summary>
+    /// Shutdown the conductor and cleanup resources
+    /// </summary>
+    public void Shutdown()
+    {
+        _logger.LogInformation("🎼 MusicalConductor: Initiating shutdown sequence");
+
+        // Log final statistics
+        _statisticsManager.LogStatistics();
+        _performanceTracker.ResetTrackingData();
+
+        _logger.LogInformation("🎼 MusicalConductor: Shutdown complete");
     }
 }
 

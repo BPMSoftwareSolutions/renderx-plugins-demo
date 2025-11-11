@@ -112,10 +112,8 @@ export class SequenceExecutor {
         executionContext.currentMovement = i;
         executionContext.currentBeat = 0;
 
-        console.log(
-          `🎼 SequenceExecutor: Executing movement "${movement.name}" (${
-            i + 1
-          }/${sequence.movements.length})`
+        (globalThis as any).__MC_LOG(
+          `🎼 SequenceExecutor: Executing movement "${movement.name}" (${i + 1}/${sequence.movements.length})`
         );
 
         await this.movementExecutor.executeMovement(
@@ -142,7 +140,7 @@ export class SequenceExecutor {
       this.activeSequence = null;
       this.executionQueue.markCompleted(sequenceRequest);
 
-      console.log(
+      (globalThis as any).__MC_LOG(
         `✅ SequenceExecutor: Sequence "${sequence.name}" completed in ${executionTime}ms`
       );
 
@@ -169,7 +167,7 @@ export class SequenceExecutor {
       this.activeSequence = null;
       this.executionQueue.markCompleted(sequenceRequest);
 
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ SequenceExecutor: Sequence "${sequence.name}" failed:`,
         error
       );
@@ -208,7 +206,7 @@ export class SequenceExecutor {
    */
   stopExecution(): void {
     if (this.activeSequence) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🛑 SequenceExecutor: Stopping execution of "${this.activeSequence.sequenceName}"`
       );
 
@@ -243,8 +241,8 @@ export class SequenceExecutor {
    * Clear execution history
    */
   clearExecutionHistory(): void {
-    this.sequenceHistory = [];
-    console.log("🧹 SequenceExecutor: Execution history cleared");
+  this.sequenceHistory = [];
+  (globalThis as any).__MC_LOG("🧹 SequenceExecutor: Execution history cleared");
   }
 
   /**

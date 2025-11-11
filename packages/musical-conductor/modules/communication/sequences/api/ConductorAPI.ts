@@ -139,7 +139,7 @@ export class ConductorAPI {
   clearSequenceQueue(): number {
     const clearedCount = this.executionQueue.size();
     this.executionQueue.clear();
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ConductorAPI: Cleared ${clearedCount} sequences from queue`
     );
     return clearedCount;
@@ -188,7 +188,7 @@ export class ConductorAPI {
    */
   resetStatistics(): void {
     this.statisticsManager.reset();
-    console.log("🎼 ConductorAPI: Statistics reset");
+    (globalThis as any).__MC_LOG("🎼 ConductorAPI: Statistics reset");
   }
 
   /**
@@ -200,7 +200,7 @@ export class ConductorAPI {
   updateDataBaton(payloadData: Record<string, any>): boolean {
     const currentSequence = this.sequenceExecutor.getCurrentSequence();
     if (!currentSequence) {
-      console.warn("🎽 ConductorAPI: No active sequence to update data baton");
+      (globalThis as any).__MC_WARN("🎽 ConductorAPI: No active sequence to update data baton");
       return false;
     }
 
@@ -208,14 +208,14 @@ export class ConductorAPI {
       // Merge the new payload data with existing payload
       Object.assign(currentSequence.payload, payloadData);
 
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎽 ConductorAPI: Updated data baton for sequence ${currentSequence.sequenceName}`,
         payloadData
       );
 
       return true;
     } catch (error) {
-      console.error("🎽 ConductorAPI: Failed to update data baton:", error);
+      (globalThis as any).__MC_ERROR("🎽 ConductorAPI: Failed to update data baton:", error);
       return false;
     }
   }
@@ -240,18 +240,18 @@ export class ConductorAPI {
   clearDataBaton(): boolean {
     const currentSequence = this.sequenceExecutor.getCurrentSequence();
     if (!currentSequence) {
-      console.warn("🎽 ConductorAPI: No active sequence to clear data baton");
+      (globalThis as any).__MC_WARN("🎽 ConductorAPI: No active sequence to clear data baton");
       return false;
     }
 
     try {
       currentSequence.payload = {};
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎽 ConductorAPI: Cleared data baton for sequence ${currentSequence.sequenceName}`
       );
       return true;
     } catch (error) {
-      console.error("🎽 ConductorAPI: Failed to clear data baton:", error);
+      (globalThis as any).__MC_ERROR("🎽 ConductorAPI: Failed to clear data baton:", error);
       return false;
     }
   }

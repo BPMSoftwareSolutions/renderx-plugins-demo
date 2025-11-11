@@ -66,6 +66,11 @@ public class PerformanceTracker
             beat,
             sequenceName);
 
+        if (_logger.IsEnabled(LogLevel.Trace))
+        {
+            _logger.LogTrace("⏱️ PerformanceTracker: Beat timing details - BeatKey: {BeatKey}, StartTime: {StartTime}ms, TotalBeats: {TotalBeats}", beatKey, startTime, _beatStartTimes.Count);
+        }
+
         return beatKey;
     }
 
@@ -127,6 +132,9 @@ public class PerformanceTracker
             "⏱️ PerformanceTracker: Cleaned up failed beat {Beat} for {SequenceName}",
             beat,
             sequenceName);
+
+        // Log state transition
+        _logger.LogInformation("⚠️ PerformanceTracker: Beat state transitioned to FAILED - {SequenceName}:{Beat}", sequenceName, beat);
     }
 
     /// <summary>
@@ -206,6 +214,9 @@ public class PerformanceTracker
             "⏱️ PerformanceTracker: Cleaned up failed movement {MovementName} for {SequenceName}",
             movementName,
             sequenceName);
+
+        // Log state transition
+        _logger.LogInformation("⚠️ PerformanceTracker: Movement state transitioned to FAILED - {SequenceName}:{MovementName}", sequenceName, movementName);
     }
 
     /// <summary>

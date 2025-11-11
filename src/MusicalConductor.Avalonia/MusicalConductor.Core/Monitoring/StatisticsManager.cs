@@ -66,6 +66,11 @@ public class StatisticsManager
         _logger.LogDebug(
             "📊 StatisticsManager: Recorded sequence execution ({ExecutionTime:F2}ms)",
             executionTime);
+
+        if (_logger.IsEnabled(LogLevel.Trace))
+        {
+            _logger.LogTrace("📊 StatisticsManager: Execution details - Total: {Total}, Average: {Average:F2}ms, SuccessRate: {SuccessRate:F2}%", _statistics.TotalSequencesExecuted, _statistics.AverageExecutionTime, _statistics.SuccessRate);
+        }
     }
 
     /// <summary>
@@ -84,7 +89,18 @@ public class StatisticsManager
         _statistics.ErrorCount++;
         UpdateSuccessRate();
 
-        _logger.LogWarning("📊 StatisticsManager: Recorded error occurrence");
+        _logger.LogWarning("📊 StatisticsManager: Recorded error occurrence (Total errors: {ErrorCount}, Success rate: {SuccessRate:F2}%)", _statistics.ErrorCount, _statistics.SuccessRate);
+    }
+
+    /// <summary>
+    /// Record an error with details
+    /// </summary>
+    public void RecordError(string errorMessage, string? context = null)
+    {
+        _statistics.ErrorCount++;
+        UpdateSuccessRate();
+
+        _logger.LogError("❌ StatisticsManager: Error recorded - {ErrorMessage} (Context={Context}, Total errors: {ErrorCount})", errorMessage, context ?? "N/A", _statistics.ErrorCount);
     }
 
     /// <summary>
@@ -108,6 +124,16 @@ public class StatisticsManager
         {
             _statistics.CurrentQueueLength--;
         }
+
+        _logger.LogDebug("📊 StatisticsManager: Sequence dequeued (Queue length: {QueueLength})", _statistics.CurrentQueueLength);
+    }
+
+    /// <summary>
+    /// Record a sequence cancellation
+    /// </summary>
+    public void RecordCancellation(string sequenceName)
+    {
+        _logger.LogInformation("🛑 StatisticsManager: Sequence cancelled - {SequenceName}", sequenceName);
     }
 
     /// <summary>
@@ -258,5 +284,29 @@ public class StatisticsManager
             PerformanceSummary = GetPerformanceSummary(),
             QueueAnalytics = GetQueueAnalytics()
         };
+    }
+
+    /// <summary>
+    /// Reset all statistics
+    /// </summary>
+    public void ResetStatistics()
+    {
+        _statistics = new ConductorStatistics
+        {
+            TotalSequencesExecuted = 0,
+            TotalBeatsExecuted = 0,
+            AverageExecutionTime = 0,
+            TotalSequencesQueued = 0,
+            CurrentQueueLength = 0,
+            MaxQueueLength = 0,
+            AverageQueueWaitTime = 0,
+            ErrorCount = 0,
+            SuccessRate = 0,
+            LastExecutionTime = null,
+            SequenceCompletionRate = 0,
+            ChainedSequences = 0
+        };
+
+        _logger.LogInformation("🧹 StatisticsManager: All statistics reset");
     }
 }

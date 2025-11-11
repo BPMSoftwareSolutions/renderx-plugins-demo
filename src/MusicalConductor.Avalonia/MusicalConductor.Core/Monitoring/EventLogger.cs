@@ -344,8 +344,25 @@ public class EventLogger
     /// </summary>
     public void UpdateConfig(LoggingConfig newConfig)
     {
+        var oldConfig = _config;
         _config = newConfig;
-        _logger.LogInformation("🎼 EventLogger: Configuration updated");
+
+        _logger.LogInformation("⚙️ EventLogger: Configuration updated");
+
+        if (oldConfig.EnableHierarchicalLogging != newConfig.EnableHierarchicalLogging)
+        {
+            _logger.LogInformation("⚙️ EventLogger: Hierarchical logging changed from {OldValue} to {NewValue}", oldConfig.EnableHierarchicalLogging, newConfig.EnableHierarchicalLogging);
+        }
+
+        if (oldConfig.EnableEventEmission != newConfig.EnableEventEmission)
+        {
+            _logger.LogInformation("⚙️ EventLogger: Event emission changed from {OldValue} to {NewValue}", oldConfig.EnableEventEmission, newConfig.EnableEventEmission);
+        }
+
+        if (oldConfig.LogLevel != newConfig.LogLevel)
+        {
+            _logger.LogInformation("⚙️ EventLogger: Log level changed from {OldLevel} to {NewLevel}", oldConfig.LogLevel, newConfig.LogLevel);
+        }
     }
 
     /// <summary>
@@ -384,6 +401,74 @@ public class EventLogger
             BeatLoggingInitialized = _beatLoggingInitialized,
             ActiveSubscriptions = _eventSubscriptions.Count
         };
+    }
+
+    /// <summary>
+    /// Initialize logger lifecycle tracking
+    /// </summary>
+    public void InitializeLoggerLifecycle()
+    {
+        _logger.LogInformation("📝 EventLogger: Logger lifecycle initialized");
+
+        if (_logger.IsEnabled(LogLevel.Debug))
+        {
+            _logger.LogDebug("📝 EventLogger: Initialization details - Timestamp: {Timestamp}, Config: {Config}", DateTime.UtcNow, _config?.LogLevel);
+        }
+    }
+
+    /// <summary>
+    /// Bind logger to execution context
+    /// </summary>
+    public void BindLoggerToContext(string contextId)
+    {
+        _logger.LogInformation("📝 EventLogger: Logger bound to context {ContextId}", contextId);
+
+        if (_logger.IsEnabled(LogLevel.Debug))
+        {
+            _logger.LogDebug("📝 EventLogger: Context binding details - ContextId: {ContextId}, Timestamp: {Timestamp}, Subscriptions: {SubscriptionCount}", contextId, DateTime.UtcNow, _eventSubscriptions.Count);
+        }
+    }
+
+    /// <summary>
+    /// Emit context information for logging
+    /// </summary>
+    public void EmitContextInformation(string contextId, Dictionary<string, object> contextData)
+    {
+        _logger.LogInformation("📝 EventLogger: Context information emitted for {ContextId} with {DataCount} properties", contextId, contextData.Count);
+
+        if (_config.LogLevel <= LogLevel.Debug)
+        {
+            foreach (var kvp in contextData)
+            {
+                _logger.LogDebug("  📝 Context: {Key} = {Value}", kvp.Key, kvp.Value);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Log logger state change
+    /// </summary>
+    public void LogLoggerStateChange(string oldState, string newState)
+    {
+        _logger.LogInformation("📝 EventLogger: Logger state changed from {OldState} to {NewState}", oldState, newState);
+
+        if (_logger.IsEnabled(LogLevel.Debug))
+        {
+            _logger.LogDebug("📝 EventLogger: State change details - OldState: {OldState}, NewState: {NewState}, Timestamp: {Timestamp}", oldState, newState, DateTime.UtcNow);
+        }
+    }
+
+    /// <summary>
+    /// Log logger configuration binding
+    /// </summary>
+    public void LogConfigurationBinding(string configName, object configValue)
+    {
+        _logger.LogDebug("📝 EventLogger: Configuration binding - {ConfigName} = {ConfigValue}", configName, configValue);
+
+        if (_logger.IsEnabled(LogLevel.Trace))
+        {
+            _logger.LogTrace("📝 EventLogger: Configuration binding trace - ConfigName: {ConfigName}, ValueType: {ValueType}, Timestamp: {Timestamp}", configName, configValue?.GetType().Name ?? "null", DateTime.UtcNow);
+        }
     }
 }
 

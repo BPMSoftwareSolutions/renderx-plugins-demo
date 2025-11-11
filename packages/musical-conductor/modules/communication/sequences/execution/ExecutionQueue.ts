@@ -37,7 +37,7 @@ export class ExecutionQueue {
     // Insert based on priority
     this.insertByPriority(request);
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ExecutionQueue: Enqueued "${request.sequenceName}" with priority ${
         request.priority || "NORMAL"
       } (Queue size: ${this.queue.length})`
@@ -54,7 +54,7 @@ export class ExecutionQueue {
     }
 
     const request = this.queue.shift()!;
-    console.log(`🎼 ExecutionQueue: Dequeued "${request.sequenceName}"`);
+    (globalThis as any).__MC_LOG(`🎼 ExecutionQueue: Dequeued "${request.sequenceName}"`);
 
     return request;
   }
@@ -76,7 +76,7 @@ export class ExecutionQueue {
     this.queue = [];
     this.priorities.clear();
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ExecutionQueue: Cleared ${clearedCount} requests from queue`
     );
     return clearedCount;
@@ -120,9 +120,9 @@ export class ExecutionQueue {
     this.currentlyExecuting = request;
 
     if (request) {
-      console.log(`🎼 ExecutionQueue: Now executing "${request.sequenceName}"`);
+      (globalThis as any).__MC_LOG(`🎼 ExecutionQueue: Now executing "${request.sequenceName}"`);
     } else {
-      console.log(`🎼 ExecutionQueue: No sequence currently executing`);
+      (globalThis as any).__MC_LOG(`🎼 ExecutionQueue: No sequence currently executing`);
     }
   }
 
@@ -137,7 +137,7 @@ export class ExecutionQueue {
       this.currentlyExecuting = null;
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ExecutionQueue: Marked "${request.sequenceName}" as completed (Total completed: ${this.completedCount})`
     );
   }
@@ -165,7 +165,7 @@ export class ExecutionQueue {
    */
   setPriority(eventType: string, priority: SequencePriority): void {
     this.priorities.set(eventType, priority);
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ExecutionQueue: Set priority for "${eventType}" to ${priority}`
     );
   }
@@ -263,7 +263,7 @@ export class ExecutionQueue {
     const removedCount = initialLength - this.queue.length;
 
     if (removedCount > 0) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 ExecutionQueue: Removed ${removedCount} requests for sequence "${sequenceName}"`
       );
     }
