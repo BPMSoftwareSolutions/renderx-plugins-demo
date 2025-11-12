@@ -22,6 +22,7 @@ import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
 import rootShimsOnly from "./eslint-rules/root-shims-only.js";
 import requirePluginManifestFragment from "./eslint-rules/require-plugin-manifest-fragment.js";
 import validHandlersPath from "./eslint-rules/valid-handlers-path.js";
+import noConsoleFallbacks from "./eslint-rules/no-console-fallbacks.js";
 import handlerExportExists from "./eslint-rules/handler-export-exists.js";
 import consistentJsonImportAttributes from "./eslint-rules/consistent-json-import-attributes.js";
 import validateExternalPluginConsistency from "./eslint-rules/validate-external-plugin-consistency.js";
@@ -31,6 +32,7 @@ import requireRoutingDeclarations from "./eslint-rules/require-routing-declarati
 import validateHostSdkVersion from "./eslint-rules/validate-host-sdk-version.js";
 import validateHostSdkVersionMismatch from "./eslint-rules/validate-host-sdk-version-mismatch.js";
 import validateHostSdkMissing from "./eslint-rules/validate-host-sdk-missing.js";
+import validatePluginManifestExports from "./eslint-rules/validate-plugin-manifest-exports.js";
 
 
 
@@ -72,6 +74,13 @@ export default [
       "coverage/**",
       "scripts/codemods/**",
       "docs/**",
+      // Ignore .NET build outputs and embedded frontend assets
+      "src/RenderX.Shell.Avalonia/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/**/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/bin/**",
+      "src/RenderX.Shell.Avalonia/obj/**",
+      "**/bin/**",
+      "**/obj/**",
     ],
   },
   {
@@ -85,6 +94,13 @@ export default [
       "coverage/**",
       "scripts/codemods/**",
       "docs/**",
+      // Ignore .NET build outputs and embedded frontend assets
+      "src/RenderX.Shell.Avalonia/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/**/wwwroot/**",
+      "src/RenderX.Shell.Avalonia/bin/**",
+      "src/RenderX.Shell.Avalonia/obj/**",
+      "**/bin/**",
+      "**/obj/**",
     ],
     languageOptions: {
       parser: tsparser,
@@ -94,6 +110,7 @@ export default [
       "@typescript-eslint": tseslint,
       "play-routing": playRouting,
       "plugin-console": noConsoleInPlugins,
+      "no-console-fallbacks": noConsoleFallbacks,
       "sequences-json": sequencesInJson,
       "feature-flags": featureFlags,
       "sequence-handlers": validSequenceHandlers,
@@ -119,10 +136,12 @@ export default [
       "served-sequences-mountable": validateServedSequences,
       "routing-declarations": requireRoutingDeclarations,
       "host-sdk-version": validateHostSdkVersion,
+      "plugin-manifest-exports": validatePluginManifestExports,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
       "plugin-console/no-console-in-plugins": "error",
+  "no-console-fallbacks/no-console-fallbacks": "error",
       "sequences-json/sequences-in-json": "error",
       "feature-flags/enforce-flag-ids": "error",
       "sequence-handlers/validate-handlers": "error",
@@ -145,6 +164,7 @@ export default [
       "served-sequences-mountable/validate-served-sequences-mountable": "error",
       "routing-declarations/require-routing-declarations": "error",
       "host-sdk-version/validate-host-sdk-version": "error",
+      "plugin-manifest-exports/validate-plugin-manifest-exports": "error",
 
 
 	      // Enforce externalized json-components: forbid local/public references in code

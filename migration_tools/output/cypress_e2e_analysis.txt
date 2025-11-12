@@ -1,0 +1,76 @@
+🧪 Cypress E2E Tests Analysis
+==================================================
+📁 Directory: C:\source\repos\bpm\internal\renderx-plugins-demo\cypress
+🧪 Total Tests: 6
+🏷️  Categories: 6
+📁 Support Files: 3
+
+📈 Statistics:
+├── Total test cases: 20
+├── Total assertions: 81
+├── Average complexity: 36.7
+├── Tests with API calls: 4
+├── Tests with file ops: 5
+└── Average lines per test: 205.3
+
+🔧 Most Used Commands:
+├── cy.visit(): 6 uses
+├── cy.task(): 5 uses
+├── cy.window(): 5 uses
+├── cy.log(): 4 uses
+└── cy.request(): 4 uses
+
+🗂️  Tests by Category:
+├── Component Interaction (1 tests)
+│   └── component-resize 📁 ⚡
+│       📝 / <reference types="cypress" />...
+│       🧪 Test cases: 1
+│          • drops a button on canvas and resizes it by dragging a handle...
+│       🔧 Commands: cy.get(), cy.task(), cy.then(), cy.visit(), cy.wait()
+│       ✅ Assertions: 7
+│       📏 Lines: 144 | Complexity: 26
+
+├── Configuration (1 tests)
+│   └── config-service ⚡
+│       📝 / <reference types="cypress" />...
+│       🧪 Test cases: 16
+│          • should expose window.RenderX.config...
+│          • should have get() method that returns string or undefined...
+│          • should have has() method that returns boolean...
+│       🔧 Commands: cy.document(), cy.get(), cy.spy(), cy.visit(), cy.window()
+│       ✅ Assertions: 32
+│       📏 Lines: 251 | Complexity: 82
+
+├── Library/Catalog (1 tests)
+│   └── library-drop 🌐 📁 ⚡
+│       📝 / <reference types="cypress" />...
+│       🧪 Test cases: 1
+│          • drags button component from Library and drops onto Canvas...
+│       🔧 Commands: cy.contains(), cy.get(), cy.log(), cy.request(), cy.task()
+│       ✅ Assertions: 20
+│       📏 Lines: 404 | Complexity: 53
+
+├── Plugin System (1 tests)
+│   └── generic-plugin-runner 🌐 📁
+│       📝 / <reference types="cypress" />...
+│       🔧 Commands: cy.log(), cy.request(), cy.task(), cy.visit(), cy.window()
+│       ✅ Assertions: 6
+│       📏 Lines: 143 | Complexity: 14
+
+├── Startup/Initialization (1 tests)
+│   └── 00-startup-plugins-loaded 🌐 📁
+│       📝 / <reference types="cypress" />...
+│       🧪 Test cases: 1
+│          • verifies all manifest plugin IDs are present in startup logs...
+│       🔧 Commands: cy.log(), cy.request(), cy.task(), cy.visit(), cy.waitForRenderXReady()
+│       ✅ Assertions: 4
+│       📏 Lines: 129 | Complexity: 15
+
+└── UI/Styling (1 tests)
+    └── theme-toggle 🌐 📁 ⚡
+        📝 / <reference types="cypress" />...
+        🧪 Test cases: 1
+           • toggles theme and persists...
+        🔧 Commands: cy.get(), cy.log(), cy.request(), cy.task(), cy.visit()
+        ✅ Assertions: 12
+        📏 Lines: 161 | Complexity: 30

@@ -1,0 +1,2346 @@
+════════════════════════════════════════════════════════════════════════════════
+         AVALONIA AXAML COMPONENT USAGE REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+Total Components: 296
+Components with Usage: 0
+
+════════════════════════════════════════════════════════════════════════════════
+                    COMPONENTS BY PACKAGE
+════════════════════════════════════════════════════════════════════════════════
+
+📦 Canvas: 7 components (0 used)
+
+  • CanvasControl
+    Path: RenderX.Plugins.Canvas\CanvasControl.axaml
+    Class: RenderX.Plugins.Canvas.CanvasControl
+    Lines: 125
+    Uses: DataTemplate, ItemsPanelTemplate
+    ⚠️  Not used by other components
+
+  • CanvasHeader
+    Path: RenderX.Plugins.Canvas\CanvasHeader.axaml
+    Class: RenderX.Plugins.Canvas.CanvasHeader
+    Lines: 71
+    ⚠️  Not used by other components
+
+  • CanvasLayerPanel
+    Path: RenderX.Plugins.Canvas\CanvasLayerPanel.axaml
+    Class: RenderX.Plugins.Canvas.CanvasLayerPanel
+    Lines: 172
+    Uses: DataTemplate
+    Styles: body, card, card-flat, rx-button, shadow +1
+    ⚠️  Not used by other components
+
+  • CanvasRuler
+    Path: RenderX.Plugins.Canvas\CanvasRuler.axaml
+    Class: RenderX.Plugins.Canvas.CanvasRuler
+    Lines: 73
+    Uses: ColumnDefinition, DoubleTransition, Setter, Transitions
+    Styles: bg-transition, font-mono
+    ⚠️  Not used by other components
+
+  • DropIndicator
+    Path: RenderX.Plugins.Canvas\DropIndicator.axaml
+    Class: RenderX.Plugins.Canvas.DropIndicator
+    Lines: 20
+    ⚠️  Not used by other components
+
+  • GridOverlay
+    Path: RenderX.Plugins.Canvas\GridOverlay.axaml
+    Class: RenderX.Plugins.Canvas.GridOverlay
+    Lines: 10
+    ⚠️  Not used by other components
+
+  • SelectionIndicator
+    Path: RenderX.Plugins.Canvas\SelectionIndicator.axaml
+    Class: RenderX.Plugins.Canvas.SelectionIndicator
+    Lines: 40
+    ⚠️  Not used by other components
+
+📦 Components: 11 components (0 used)
+
+  • ComponentCatalog
+    Path: RenderX.Plugins.Components\ComponentCatalog.axaml
+    Class: RenderX.Plugins.Components.ComponentCatalog
+    Lines: 89
+    Uses: ComboBoxItem, DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • ComponentEditor
+    Path: RenderX.Plugins.Components\Controls\ComponentEditor.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componenteditor, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentError
+    Path: RenderX.Plugins.Components\Controls\ComponentError.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentError
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componenterror, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentEvents
+    Path: RenderX.Plugins.Components\Controls\ComponentEvents.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentEvents
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentevents, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentInspector
+    Path: RenderX.Plugins.Components\Controls\ComponentInspector.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentInspector
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentinspector, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentLoader
+    Path: RenderX.Plugins.Components\Controls\ComponentLoader.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentLoader
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentloader, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentPlaceholder
+    Path: RenderX.Plugins.Components\Controls\ComponentPlaceholder.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentPlaceholder
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentplaceholder, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentPreview
+    Path: RenderX.Plugins.Components\Controls\ComponentPreview.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentPreview
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentpreview, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentProperties
+    Path: RenderX.Plugins.Components\Controls\ComponentProperties.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentProperties
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentproperties, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentSkeleton
+    Path: RenderX.Plugins.Components\Controls\ComponentSkeleton.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentSkeleton
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentskeleton, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentWrapper
+    Path: RenderX.Plugins.Components\Controls\ComponentWrapper.axaml
+    Class: RenderX.Plugins.Components.Controls.ComponentWrapper
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentwrapper, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+📦 ControlPanel: 41 components (0 used)
+
+  • ClassManager
+    Path: RenderX.Plugins.ControlPanel\ClassManager.axaml
+    Class: RenderX.Plugins.ControlPanel.ClassManager
+    Lines: 63
+    Uses: DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • ControlPanelControl
+    Path: RenderX.Plugins.ControlPanel\ControlPanelControl.axaml
+    Class: RenderX.Plugins.ControlPanel.ControlPanelControl
+    Lines: 167
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • EmptyState
+    Path: RenderX.Plugins.ControlPanel\EmptyState.axaml
+    Class: RenderX.Plugins.ControlPanel.EmptyState
+    Lines: 23
+    ⚠️  Not used by other components
+
+  • FormField
+    Path: RenderX.Plugins.ControlPanel\FormField.axaml
+    Class: RenderX.Plugins.ControlPanel.FormField
+    Lines: 42
+    ⚠️  Not used by other components
+
+  • LoadingState
+    Path: RenderX.Plugins.ControlPanel\LoadingState.axaml
+    Class: RenderX.Plugins.ControlPanel.LoadingState
+    Lines: 18
+    ⚠️  Not used by other components
+
+  • PanelHeader
+    Path: RenderX.Plugins.ControlPanel\PanelHeader.axaml
+    Class: RenderX.Plugins.ControlPanel.PanelHeader
+    Lines: 24
+    ⚠️  Not used by other components
+
+  • PropertySection
+    Path: RenderX.Plugins.ControlPanel\PropertySection.axaml
+    Class: RenderX.Plugins.ControlPanel.PropertySection
+    Lines: 58
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • SearchBar
+    Path: RenderX.Plugins.ControlPanel\SearchBar.axaml
+    Class: RenderX.Plugins.ControlPanel.SearchBar
+    Lines: 35
+    ⚠️  Not used by other components
+
+  • ValidationErrorDisplay
+    Path: RenderX.Plugins.ControlPanel\ValidationErrorDisplay.axaml
+    Class: RenderX.Plugins.ControlPanel.ValidationErrorDisplay
+    Lines: 29
+    ⚠️  Not used by other components
+
+  • AlignmentControl
+    Path: RenderX.Plugins.ControlPanel\Controls\AlignmentControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.AlignmentControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: alignmentcontrol, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AnimationPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\AnimationPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.AnimationPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: animationpanel, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • BlendModeSelector
+    Path: RenderX.Plugins.ControlPanel\Controls\BlendModeSelector.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.BlendModeSelector
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: blendmodeselector, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ColorPicker
+    Path: RenderX.Plugins.ControlPanel\Controls\ColorPicker.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.ColorPicker
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: colorpicker, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • ConfigPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\ConfigPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.ConfigPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: configpanel, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ControlPanelContainer
+    Path: RenderX.Plugins.ControlPanel\Controls\ControlPanelContainer.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.ControlPanelContainer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: controlpanelcontainer, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ControlPanelGroup
+    Path: RenderX.Plugins.ControlPanel\Controls\ControlPanelGroup.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.ControlPanelGroup
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: controlpanelgroup, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ControlPanelSection
+    Path: RenderX.Plugins.ControlPanel\Controls\ControlPanelSection.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.ControlPanelSection
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: controlpanelsection, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • CurveEditor
+    Path: RenderX.Plugins.ControlPanel\Controls\CurveEditor.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.CurveEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: curveeditor, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DelayControl
+    Path: RenderX.Plugins.ControlPanel\Controls\DelayControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.DelayControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: delaycontrol, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DirectionControl
+    Path: RenderX.Plugins.ControlPanel\Controls\DirectionControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.DirectionControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: directioncontrol, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DurationControl
+    Path: RenderX.Plugins.ControlPanel\Controls\DurationControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.DurationControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: durationcontrol, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • EasingSelector
+    Path: RenderX.Plugins.ControlPanel\Controls\EasingSelector.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.EasingSelector
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: easingselector, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • EffectPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\EffectPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.EffectPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: effectpanel, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • FillModeControl
+    Path: RenderX.Plugins.ControlPanel\Controls\FillModeControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.FillModeControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: fillmodecontrol, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • FilterPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\FilterPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.FilterPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: filterpanel, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • FontPicker
+    Path: RenderX.Plugins.ControlPanel\Controls\FontPicker.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.FontPicker
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: fontpicker, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • InspectorPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\InspectorPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.InspectorPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, inspectorpanel, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • IterationControl
+    Path: RenderX.Plugins.ControlPanel\Controls\IterationControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.IterationControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, iterationcontrol, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • KeyframeEditor
+    Path: RenderX.Plugins.ControlPanel\Controls\KeyframeEditor.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.KeyframeEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: keyframeeditor, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • OpacitySlider
+    Path: RenderX.Plugins.ControlPanel\Controls\OpacitySlider.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.OpacitySlider
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: opacityslider, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • OptionsPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\OptionsPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.OptionsPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, optionspanel, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PlayStateControl
+    Path: RenderX.Plugins.ControlPanel\Controls\PlayStateControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.PlayStateControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, playstatecontrol, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PositionControl
+    Path: RenderX.Plugins.ControlPanel\Controls\PositionControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.PositionControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: positioncontrol, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • PropertiesPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\PropertiesPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.PropertiesPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, propertiespanel, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PropertyEditor
+    Path: RenderX.Plugins.ControlPanel\Controls\PropertyEditor.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.PropertyEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, propertyeditor, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PropertyGrid
+    Path: RenderX.Plugins.ControlPanel\Controls\PropertyGrid.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.PropertyGrid
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: propertygrid, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • RotationControl
+    Path: RenderX.Plugins.ControlPanel\Controls\RotationControl.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.RotationControl
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rotationcontrol, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • SettingsPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\SettingsPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.SettingsPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, settingspanel, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • SizePicker
+    Path: RenderX.Plugins.ControlPanel\Controls\SizePicker.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.SizePicker
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, sizepicker
+    ⚠️  Not used by other components
+
+  • TimelinePanel
+    Path: RenderX.Plugins.ControlPanel\Controls\TimelinePanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.TimelinePanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, timelinepanel
+    ⚠️  Not used by other components
+
+  • TransformPanel
+    Path: RenderX.Plugins.ControlPanel\Controls\TransformPanel.axaml
+    Class: RenderX.Plugins.ControlPanel.Controls.TransformPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, transformpanel
+    ⚠️  Not used by other components
+
+📦 Diagnostics: 75 components (0 used)
+
+  • ConfigurationInspector
+    Path: RenderX.Plugins.Diagnostics\ConfigurationInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.ConfigurationInspector
+    Lines: 60
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • DiagnosticsOverlay
+    Path: RenderX.Plugins.Diagnostics\DiagnosticsOverlay.axaml
+    Class: RenderX.Plugins.Diagnostics.DiagnosticsOverlay
+    Lines: 66
+    ⚠️  Not used by other components
+
+  • DiagnosticsPanel
+    Path: RenderX.Plugins.Diagnostics\DiagnosticsPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.DiagnosticsPanel
+    Lines: 129
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • EventLog
+    Path: RenderX.Plugins.Diagnostics\EventLog.axaml
+    Class: RenderX.Plugins.Diagnostics.EventLog
+    Lines: 87
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ManifestValidator
+    Path: RenderX.Plugins.Diagnostics\ManifestValidator.axaml
+    Class: RenderX.Plugins.Diagnostics.ManifestValidator
+    Lines: 65
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • PerformanceMonitor
+    Path: RenderX.Plugins.Diagnostics\PerformanceMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.PerformanceMonitor
+    Lines: 78
+    ⚠️  Not used by other components
+
+  • PluginDetail
+    Path: RenderX.Plugins.Diagnostics\PluginDetail.axaml
+    Class: RenderX.Plugins.Diagnostics.PluginDetail
+    Lines: 88
+    ⚠️  Not used by other components
+
+  • PluginLoadingStats
+    Path: RenderX.Plugins.Diagnostics\PluginLoadingStats.axaml
+    Class: RenderX.Plugins.Diagnostics.PluginLoadingStats
+    Lines: 52
+    ⚠️  Not used by other components
+
+  • PluginTreeExplorer
+    Path: RenderX.Plugins.Diagnostics\PluginTreeExplorer.axaml
+    Class: RenderX.Plugins.Diagnostics.PluginTreeExplorer
+    Lines: 56
+    Uses: TreeDataTemplate, TreeView
+    ⚠️  Not used by other components
+
+  • SequenceInspector
+    Path: RenderX.Plugins.Diagnostics\SequenceInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.SequenceInspector
+    Lines: 65
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • SystemInformation
+    Path: RenderX.Plugins.Diagnostics\SystemInformation.axaml
+    Class: RenderX.Plugins.Diagnostics.SystemInformation
+    Lines: 78
+    ⚠️  Not used by other components
+
+  • TopicInspector
+    Path: RenderX.Plugins.Diagnostics\TopicInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.TopicInspector
+    Lines: 59
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • AlertDetails
+    Path: RenderX.Plugins.Diagnostics\Controls\AlertDetails.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.AlertDetails
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: alertdetails, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AlertList
+    Path: RenderX.Plugins.Diagnostics\Controls\AlertList.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.AlertList
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: alertlist, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AlertPanel
+    Path: RenderX.Plugins.Diagnostics\Controls\AlertPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.AlertPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: alertpanel, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AnalyticsChart
+    Path: RenderX.Plugins.Diagnostics\Controls\AnalyticsChart.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.AnalyticsChart
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: analyticschart, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AnalyticsPanel
+    Path: RenderX.Plugins.Diagnostics\Controls\AnalyticsPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.AnalyticsPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: analyticspanel, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AnalyticsSummary
+    Path: RenderX.Plugins.Diagnostics\Controls\AnalyticsSummary.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.AnalyticsSummary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: analyticssummary, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • CPUGraph
+    Path: RenderX.Plugins.Diagnostics\Controls\CPUGraph.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.CPUGraph
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: cpugraph, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • CPUMonitor
+    Path: RenderX.Plugins.Diagnostics\Controls\CPUMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.CPUMonitor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: cpumonitor, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DebugBreakpoints
+    Path: RenderX.Plugins.Diagnostics\Controls\DebugBreakpoints.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DebugBreakpoints
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: debugbreakpoints, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DebugCallStack
+    Path: RenderX.Plugins.Diagnostics\Controls\DebugCallStack.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DebugCallStack
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: debugcallstack, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DebugConsole
+    Path: RenderX.Plugins.Diagnostics\Controls\DebugConsole.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DebugConsole
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: debugconsole, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • DebugPanel
+    Path: RenderX.Plugins.Diagnostics\Controls\DebugPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DebugPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: debugpanel, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DebugVariables
+    Path: RenderX.Plugins.Diagnostics\Controls\DebugVariables.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DebugVariables
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: debugvariables, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DiagnosticsContainer
+    Path: RenderX.Plugins.Diagnostics\Controls\DiagnosticsContainer.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DiagnosticsContainer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: diagnosticscontainer, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • DiagnosticsTabs
+    Path: RenderX.Plugins.Diagnostics\Controls\DiagnosticsTabs.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.DiagnosticsTabs
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: diagnosticstabs, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ErrorBoundary
+    Path: RenderX.Plugins.Diagnostics\Controls\ErrorBoundary.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ErrorBoundary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: errorboundary, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ErrorDetails
+    Path: RenderX.Plugins.Diagnostics\Controls\ErrorDetails.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ErrorDetails
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: errordetails, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ErrorDisplay
+    Path: RenderX.Plugins.Diagnostics\Controls\ErrorDisplay.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ErrorDisplay
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: errordisplay, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • ErrorStack
+    Path: RenderX.Plugins.Diagnostics\Controls\ErrorStack.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ErrorStack
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: errorstack, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • EventDetails
+    Path: RenderX.Plugins.Diagnostics\Controls\EventDetails.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.EventDetails
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: eventdetails, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • EventList
+    Path: RenderX.Plugins.Diagnostics\Controls\EventList.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.EventList
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: eventlist, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • EventMonitor
+    Path: RenderX.Plugins.Diagnostics\Controls\EventMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.EventMonitor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: eventmonitor, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • HealthCheck
+    Path: RenderX.Plugins.Diagnostics\Controls\HealthCheck.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.HealthCheck
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, healthcheck, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • HealthIndicator
+    Path: RenderX.Plugins.Diagnostics\Controls\HealthIndicator.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.HealthIndicator
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, healthindicator, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • HealthStatus
+    Path: RenderX.Plugins.Diagnostics\Controls\HealthStatus.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.HealthStatus
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, healthstatus, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • InspectorProperties
+    Path: RenderX.Plugins.Diagnostics\Controls\InspectorProperties.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.InspectorProperties
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, inspectorproperties, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • InspectorTree
+    Path: RenderX.Plugins.Diagnostics\Controls\InspectorTree.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.InspectorTree
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, inspectortree, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LogEntry
+    Path: RenderX.Plugins.Diagnostics\Controls\LogEntry.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.LogEntry
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: logentry, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • LogExport
+    Path: RenderX.Plugins.Diagnostics\Controls\LogExport.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.LogExport
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, logexport, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LogFilter
+    Path: RenderX.Plugins.Diagnostics\Controls\LogFilter.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.LogFilter
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, logfilter, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LogSearch
+    Path: RenderX.Plugins.Diagnostics\Controls\LogSearch.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.LogSearch
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, logsearch, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LogViewer
+    Path: RenderX.Plugins.Diagnostics\Controls\LogViewer.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.LogViewer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: logviewer, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • MemoryGraph
+    Path: RenderX.Plugins.Diagnostics\Controls\MemoryGraph.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.MemoryGraph
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: memorygraph, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • MemoryMonitor
+    Path: RenderX.Plugins.Diagnostics\Controls\MemoryMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.MemoryMonitor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: memorymonitor, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • MemorySnapshot
+    Path: RenderX.Plugins.Diagnostics\Controls\MemorySnapshot.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.MemorySnapshot
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, memorysnapshot, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • MetricsChart
+    Path: RenderX.Plugins.Diagnostics\Controls\MetricsChart.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.MetricsChart
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, metricschart, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • MetricsPanel
+    Path: RenderX.Plugins.Diagnostics\Controls\MetricsPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.MetricsPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: metricspanel, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • MetricsTable
+    Path: RenderX.Plugins.Diagnostics\Controls\MetricsTable.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.MetricsTable
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, metricstable, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • NetworkMonitor
+    Path: RenderX.Plugins.Diagnostics\Controls\NetworkMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.NetworkMonitor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: networkmonitor, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • NetworkRequest
+    Path: RenderX.Plugins.Diagnostics\Controls\NetworkRequest.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.NetworkRequest
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, networkrequest, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • NetworkResponse
+    Path: RenderX.Plugins.Diagnostics\Controls\NetworkResponse.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.NetworkResponse
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, networkresponse, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • NetworkTimeline
+    Path: RenderX.Plugins.Diagnostics\Controls\NetworkTimeline.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.NetworkTimeline
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, networktimeline, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • NotificationCenter
+    Path: RenderX.Plugins.Diagnostics\Controls\NotificationCenter.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.NotificationCenter
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, notificationcenter, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • NotificationItem
+    Path: RenderX.Plugins.Diagnostics\Controls\NotificationItem.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.NotificationItem
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, notificationitem, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PerformanceGraph
+    Path: RenderX.Plugins.Diagnostics\Controls\PerformanceGraph.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.PerformanceGraph
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: performancegraph, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • PerformanceMetrics
+    Path: RenderX.Plugins.Diagnostics\Controls\PerformanceMetrics.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.PerformanceMetrics
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, performancemetrics, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PerformanceMonitor
+    Path: RenderX.Plugins.Diagnostics\Controls\PerformanceMonitor.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.PerformanceMonitor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: performancemonitor, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • PerformanceSummary
+    Path: RenderX.Plugins.Diagnostics\Controls\PerformanceSummary.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.PerformanceSummary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, performancesummary, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ProfilerFlameGraph
+    Path: RenderX.Plugins.Diagnostics\Controls\ProfilerFlameGraph.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ProfilerFlameGraph
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, profilerflamegraph, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ProfilerPanel
+    Path: RenderX.Plugins.Diagnostics\Controls\ProfilerPanel.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ProfilerPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, profilerpanel, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ProfilerTimeline
+    Path: RenderX.Plugins.Diagnostics\Controls\ProfilerTimeline.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ProfilerTimeline
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, profilertimeline, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ReportExport
+    Path: RenderX.Plugins.Diagnostics\Controls\ReportExport.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ReportExport
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, reportexport, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ReportGenerator
+    Path: RenderX.Plugins.Diagnostics\Controls\ReportGenerator.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ReportGenerator
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, reportgenerator, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ReportViewer
+    Path: RenderX.Plugins.Diagnostics\Controls\ReportViewer.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.ReportViewer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, reportviewer, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • StateDiff
+    Path: RenderX.Plugins.Diagnostics\Controls\StateDiff.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.StateDiff
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, statediff, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • StateInspector
+    Path: RenderX.Plugins.Diagnostics\Controls\StateInspector.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.StateInspector
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, stateinspector, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • StateTree
+    Path: RenderX.Plugins.Diagnostics\Controls\StateTree.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.StateTree
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, statetree
+    ⚠️  Not used by other components
+
+  • SystemInfo
+    Path: RenderX.Plugins.Diagnostics\Controls\SystemInfo.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.SystemInfo
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, systeminfo, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • SystemLogs
+    Path: RenderX.Plugins.Diagnostics\Controls\SystemLogs.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.SystemLogs
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, systemlogs, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • SystemResources
+    Path: RenderX.Plugins.Diagnostics\Controls\SystemResources.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.SystemResources
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, systemresources, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • TraceEntry
+    Path: RenderX.Plugins.Diagnostics\Controls\TraceEntry.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.TraceEntry
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, text-base, text-sm, traceentry
+    ⚠️  Not used by other components
+
+  • TraceTimeline
+    Path: RenderX.Plugins.Diagnostics\Controls\TraceTimeline.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.TraceTimeline
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, text-base, text-sm, tracetimeline
+    ⚠️  Not used by other components
+
+  • TraceViewer
+    Path: RenderX.Plugins.Diagnostics\Controls\TraceViewer.axaml
+    Class: RenderX.Plugins.Diagnostics.Controls.TraceViewer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, traceviewer
+    ⚠️  Not used by other components
+
+📦 DigitalAssets: 40 components (0 used)
+
+  • AssetBrowser
+    Path: RenderX.Plugins.DigitalAssets\AssetBrowser.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetBrowser
+    Lines: 84
+    Uses: ComboBoxItem, DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • AssetLibrary
+    Path: RenderX.Plugins.DigitalAssets\AssetLibrary.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetLibrary
+    Lines: 95
+    Uses: DataTemplate, ItemsPanelTemplate, WrapPanel
+    ⚠️  Not used by other components
+
+  • AssetPreview
+    Path: RenderX.Plugins.DigitalAssets\AssetPreview.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetPreview
+    Lines: 89
+    ⚠️  Not used by other components
+
+  • AssetUploader
+    Path: RenderX.Plugins.DigitalAssets\AssetUploader.axaml
+    Class: RenderX.Plugins.DigitalAssets.AssetUploader
+    Lines: 80
+    ⚠️  Not used by other components
+
+  • AssetCard
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetCard.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetcard, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AssetCategories
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetCategories.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetCategories
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetcategories, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetCollection
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetCollection.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetCollection
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetcollection, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetDetails
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetDetails.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetDetails
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetdetails, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetExporter
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetExporter.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetExporter
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetexporter, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetFilter
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetFilter.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetFilter
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetfilter, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetFolder
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetFolder.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetFolder
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetfolder, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetGrid
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetGrid.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetGrid
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetgrid, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AssetHistory
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetHistory.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetHistory
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assethistory, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetImporter
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetImporter.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetImporter
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetimporter, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetList
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetList.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetList
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetlist, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AssetManager
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetManager.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetManager
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetmanager, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetMetadata
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetMetadata.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetMetadata
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetmetadata, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AssetProperties
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetProperties.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetProperties
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetproperties, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetSearch
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetSearch.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetSearch
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetsearch, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetSort
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetSort.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetSort
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetsort, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetTags
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetTags.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetTags
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assettags, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AssetThumbnail
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetThumbnail.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetThumbnail
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetthumbnail, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AssetUploadQueue
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetUploadQueue.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetUploadQueue
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetuploadqueue, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • AssetVersioning
+    Path: RenderX.Plugins.DigitalAssets\Controls\AssetVersioning.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AssetVersioning
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: assetversioning, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AudioEditor
+    Path: RenderX.Plugins.DigitalAssets\Controls\AudioEditor.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AudioEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: audioeditor, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AudioMixer
+    Path: RenderX.Plugins.DigitalAssets\Controls\AudioMixer.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AudioMixer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: audiomixer, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • AudioWaveform
+    Path: RenderX.Plugins.DigitalAssets\Controls\AudioWaveform.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.AudioWaveform
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: audiowaveform, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ColorLibrary
+    Path: RenderX.Plugins.DigitalAssets\Controls\ColorLibrary.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.ColorLibrary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: colorlibrary, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • FontManager
+    Path: RenderX.Plugins.DigitalAssets\Controls\FontManager.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.FontManager
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, fontmanager, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ImageAdjustments
+    Path: RenderX.Plugins.DigitalAssets\Controls\ImageAdjustments.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.ImageAdjustments
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, imageadjustments, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ImageCropper
+    Path: RenderX.Plugins.DigitalAssets\Controls\ImageCropper.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.ImageCropper
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, imagecropper, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ImageEditor
+    Path: RenderX.Plugins.DigitalAssets\Controls\ImageEditor.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.ImageEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: imageeditor, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • ImageFilters
+    Path: RenderX.Plugins.DigitalAssets\Controls\ImageFilters.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.ImageFilters
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, imagefilters, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • MediaControls
+    Path: RenderX.Plugins.DigitalAssets\Controls\MediaControls.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.MediaControls
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: mediacontrols, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • MediaPlayer
+    Path: RenderX.Plugins.DigitalAssets\Controls\MediaPlayer.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.MediaPlayer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: mediaplayer, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • MediaThumbnail
+    Path: RenderX.Plugins.DigitalAssets\Controls\MediaThumbnail.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.MediaThumbnail
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, mediathumbnail, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • MediaTimeline
+    Path: RenderX.Plugins.DigitalAssets\Controls\MediaTimeline.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.MediaTimeline
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, mediatimeline, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • VideoEditor
+    Path: RenderX.Plugins.DigitalAssets\Controls\VideoEditor.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.VideoEditor
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, text-base, text-sm, videoeditor
+    ⚠️  Not used by other components
+
+  • VideoEffects
+    Path: RenderX.Plugins.DigitalAssets\Controls\VideoEffects.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.VideoEffects
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, text-base, text-sm, videoeffects
+    ⚠️  Not used by other components
+
+  • VideoTimeline
+    Path: RenderX.Plugins.DigitalAssets\Controls\VideoTimeline.axaml
+    Class: RenderX.Plugins.DigitalAssets.Controls.VideoTimeline
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, text-base, text-sm, videotimeline
+    ⚠️  Not used by other components
+
+📦 Header: 11 components (0 used)
+
+  • BreadcrumbItem
+    Path: RenderX.Plugins.Header\BreadcrumbItem.axaml
+    Class: RenderX.Plugins.Header.BreadcrumbItem
+    Lines: 24
+    ⚠️  Not used by other components
+
+  • HeaderBreadcrumb
+    Path: RenderX.Plugins.Header\HeaderBreadcrumb.axaml
+    Class: RenderX.Plugins.Header.HeaderBreadcrumb
+    Lines: 22
+    Uses: DataTemplate, ItemsPanelTemplate
+    ⚠️  Not used by other components
+
+  • HeaderButton
+    Path: RenderX.Plugins.Header\HeaderButton.axaml
+    Class: RenderX.Plugins.Header.HeaderButton
+    Lines: 13
+    ⚠️  Not used by other components
+
+  • HeaderContainer
+    Path: RenderX.Plugins.Header\HeaderContainer.axaml
+    Class: RenderX.Plugins.Header.HeaderContainer
+    Lines: 19
+    Uses: ContentPresenter
+    ⚠️  Not used by other components
+
+  • HeaderControlsPlugin
+    Path: RenderX.Plugins.Header\HeaderControlsPlugin.axaml
+    Class: RenderX.Plugins.Header.HeaderControlsPlugin
+    Lines: 29
+    ⚠️  Not used by other components
+
+  • HeaderDivider
+    Path: RenderX.Plugins.Header\HeaderDivider.axaml
+    Class: RenderX.Plugins.Header.HeaderDivider
+    Lines: 8
+    ⚠️  Not used by other components
+
+  • HeaderMenu
+    Path: RenderX.Plugins.Header\HeaderMenu.axaml
+    Class: RenderX.Plugins.Header.HeaderMenu
+    Lines: 22
+    Uses: Popup
+    ⚠️  Not used by other components
+
+  • HeaderStatusIndicator
+    Path: RenderX.Plugins.Header\HeaderStatusIndicator.axaml
+    Class: RenderX.Plugins.Header.HeaderStatusIndicator
+    Lines: 11
+    ⚠️  Not used by other components
+
+  • HeaderThemeButtonView
+    Path: RenderX.Plugins.Header\HeaderThemeButtonView.axaml
+    Class: RenderX.Plugins.Header.HeaderThemeButtonView
+    Lines: 14
+    ⚠️  Not used by other components
+
+  • HeaderThemePlugin
+    Path: RenderX.Plugins.Header\HeaderThemePlugin.axaml
+    Class: RenderX.Plugins.Header.HeaderThemePlugin
+    Lines: 16
+    ⚠️  Not used by other components
+
+  • HeaderTitlePlugin
+    Path: RenderX.Plugins.Header\HeaderTitlePlugin.axaml
+    Class: RenderX.Plugins.Header.HeaderTitlePlugin
+    Lines: 14
+    ⚠️  Not used by other components
+
+📦 Library: 29 components (0 used)
+
+  • ChatMessage
+    Path: RenderX.Plugins.Library\ChatMessage.axaml
+    Class: RenderX.Plugins.Library.ChatMessage
+    Lines: 28
+    ⚠️  Not used by other components
+
+  • ChatWindow
+    Path: RenderX.Plugins.Library\ChatWindow.axaml
+    Class: RenderX.Plugins.Library.ChatWindow
+    Lines: 64
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ConfigStatusUI
+    Path: RenderX.Plugins.Library\ConfigStatusUI.axaml
+    Class: RenderX.Plugins.Library.ConfigStatusUI
+    Lines: 32
+    ⚠️  Not used by other components
+
+  • CustomComponentUpload
+    Path: RenderX.Plugins.Library\CustomComponentUpload.axaml
+    Class: RenderX.Plugins.Library.CustomComponentUpload
+    Lines: 75
+    ⚠️  Not used by other components
+
+  • LibraryPanel
+    Path: RenderX.Plugins.Library\LibraryPanel.axaml
+    Class: RenderX.Plugins.Library.LibraryPanel
+    Lines: 62
+    Uses: DataTemplate, DockPanel
+    ⚠️  Not used by other components
+
+  • LibraryPlugin
+    Path: RenderX.Plugins.Library\LibraryPlugin.axaml
+    Class: RenderX.Plugins.Library.LibraryPlugin
+    Lines: 50
+    Uses: DataTemplate, DockPanel
+    ⚠️  Not used by other components
+
+  • LibraryPreview
+    Path: RenderX.Plugins.Library\LibraryPreview.axaml
+    Class: RenderX.Plugins.Library.LibraryPreview
+    Lines: 63
+    ⚠️  Not used by other components
+
+  • ComponentCard
+    Path: RenderX.Plugins.Library\Controls\ComponentCard.axaml
+    Class: RenderX.Plugins.Library.Controls.ComponentCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentcard, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ComponentLibrary
+    Path: RenderX.Plugins.Library\Controls\ComponentLibrary.axaml
+    Class: RenderX.Plugins.Library.Controls.ComponentLibrary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentlibrary, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • ComponentPreview
+    Path: RenderX.Plugins.Library\Controls\ComponentPreview.axaml
+    Class: RenderX.Plugins.Library.Controls.ComponentPreview
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: componentpreview, font-semibold, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LibraryBrowser
+    Path: RenderX.Plugins.Library\Controls\LibraryBrowser.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryBrowser
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, librarybrowser, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LibraryCard
+    Path: RenderX.Plugins.Library\Controls\LibraryCard.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: librarycard, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • LibraryCategory
+    Path: RenderX.Plugins.Library\Controls\LibraryCategory.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryCategory
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, librarycategory, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LibraryFilter
+    Path: RenderX.Plugins.Library\Controls\LibraryFilter.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryFilter
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: libraryfilter, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • LibraryGrid
+    Path: RenderX.Plugins.Library\Controls\LibraryGrid.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryGrid
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: librarygrid, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • LibraryList
+    Path: RenderX.Plugins.Library\Controls\LibraryList.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryList
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: librarylist, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • LibrarySearch
+    Path: RenderX.Plugins.Library\Controls\LibrarySearch.axaml
+    Class: RenderX.Plugins.Library.Controls.LibrarySearch
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: librarysearch, rx-control, rx-font-semibold, rx-text-base, rx-text-sm
+    ⚠️  Not used by other components
+
+  • LibrarySort
+    Path: RenderX.Plugins.Library\Controls\LibrarySort.axaml
+    Class: RenderX.Plugins.Library.Controls.LibrarySort
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, librarysort, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • LibraryTag
+    Path: RenderX.Plugins.Library\Controls\LibraryTag.axaml
+    Class: RenderX.Plugins.Library.Controls.LibraryTag
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, librarytag, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PatternCard
+    Path: RenderX.Plugins.Library\Controls\PatternCard.axaml
+    Class: RenderX.Plugins.Library.Controls.PatternCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, patterncard, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PatternLibrary
+    Path: RenderX.Plugins.Library\Controls\PatternLibrary.axaml
+    Class: RenderX.Plugins.Library.Controls.PatternLibrary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, patternlibrary, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • PatternPreview
+    Path: RenderX.Plugins.Library\Controls\PatternPreview.axaml
+    Class: RenderX.Plugins.Library.Controls.PatternPreview
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, patternpreview, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • ResourceManager
+    Path: RenderX.Plugins.Library\Controls\ResourceManager.axaml
+    Class: RenderX.Plugins.Library.Controls.ResourceManager
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, resourcemanager, rx-control, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • StyleCard
+    Path: RenderX.Plugins.Library\Controls\StyleCard.axaml
+    Class: RenderX.Plugins.Library.Controls.StyleCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, stylecard, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • StyleLibrary
+    Path: RenderX.Plugins.Library\Controls\StyleLibrary.axaml
+    Class: RenderX.Plugins.Library.Controls.StyleLibrary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, stylelibrary, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • StylePreview
+    Path: RenderX.Plugins.Library\Controls\StylePreview.axaml
+    Class: RenderX.Plugins.Library.Controls.StylePreview
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, stylepreview, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • TemplateCard
+    Path: RenderX.Plugins.Library\Controls\TemplateCard.axaml
+    Class: RenderX.Plugins.Library.Controls.TemplateCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, templatecard, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • TemplateGallery
+    Path: RenderX.Plugins.Library\Controls\TemplateGallery.axaml
+    Class: RenderX.Plugins.Library.Controls.TemplateGallery
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, templategallery
+    ⚠️  Not used by other components
+
+  • TemplatePreview
+    Path: RenderX.Plugins.Library\Controls\TemplatePreview.axaml
+    Class: RenderX.Plugins.Library.Controls.TemplatePreview
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, templatepreview, text-base, text-sm
+    ⚠️  Not used by other components
+
+📦 LibraryComponent: 2 components (0 used)
+
+  • ComponentEditor
+    Path: RenderX.Plugins.LibraryComponent\ComponentEditor.axaml
+    Class: RenderX.Plugins.LibraryComponent.ComponentEditor
+    Lines: 109
+    Uses: ComboBoxItem, DataTemplate
+    ⚠️  Not used by other components
+
+  • ComponentRegistry
+    Path: RenderX.Plugins.LibraryComponent\ComponentRegistry.axaml
+    Class: RenderX.Plugins.LibraryComponent.ComponentRegistry
+    Lines: 65
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+📦 ManifestTools: 2 components (0 used)
+
+  • ManifestEditor
+    Path: RenderX.Plugins.ManifestTools\ManifestEditor.axaml
+    Class: RenderX.Plugins.ManifestTools.ManifestEditor
+    Lines: 109
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • ManifestValidator
+    Path: RenderX.Plugins.ManifestTools\ManifestValidator.axaml
+    Class: RenderX.Plugins.ManifestTools.ManifestValidator
+    Lines: 79
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+📦 MusicalConductor: 2 components (0 used)
+
+  • EventBusMonitor
+    Path: RenderX.Plugins.MusicalConductor\EventBusMonitor.axaml
+    Class: RenderX.Plugins.MusicalConductor.EventBusMonitor
+    Lines: 83
+    Uses: DataTemplate
+    ⚠️  Not used by other components
+
+  • TopicSubscriber
+    Path: RenderX.Plugins.MusicalConductor\TopicSubscriber.axaml
+    Class: RenderX.Plugins.MusicalConductor.TopicSubscriber
+    Lines: 85
+    Uses: ComboBoxItem, DataTemplate
+    ⚠️  Not used by other components
+
+📦 Other: 4 components (0 used)
+
+  • ColorPalette
+    Path: RenderX.Shell.Avalonia\Resources\ColorPalette.axaml
+    Lines: 104
+    Uses: Color, ResourceDictionary, SolidColorBrush
+    ⚠️  Not used by other components
+
+  • Effects
+    Path: RenderX.Shell.Avalonia\Resources\Effects.axaml
+    Lines: 110
+    Uses: DropShadowEffect, GradientStop, LinearGradientBrush, RadialGradientBrush, ResourceDictionary, Thickness
+    ⚠️  Not used by other components
+
+  • Spacing
+    Path: RenderX.Shell.Avalonia\Resources\Spacing.axaml
+    Lines: 88
+    Uses: CornerRadius, ResourceDictionary, Thickness
+    ⚠️  Not used by other components
+
+  • Typography
+    Path: RenderX.Shell.Avalonia\Resources\Typography.axaml
+    Lines: 82
+    Uses: FontFamily, FontWeight, ResourceDictionary
+    ⚠️  Not used by other components
+
+📦 Shell: 72 components (0 used)
+
+  • App
+    Path: RenderX.Shell.Avalonia\App.axaml
+    Class: RenderX.Shell.Avalonia.App
+    Lines: 23
+    Uses: Application, StyleInclude
+    ⚠️  Not used by other components
+
+  • MainWindow
+    Path: RenderX.Shell.Avalonia\MainWindow.axaml
+    Class: RenderX.Shell.Avalonia.MainWindow
+    Lines: 51
+    Uses: Design
+    ⚠️  Not used by other components
+
+  • App
+    Path: RenderX.Shell.Avalonia.Minimal\App.axaml
+    Class: RenderX.Shell.Avalonia.Minimal.App
+    Lines: 9
+    Uses: Application, FluentTheme
+    ⚠️  Not used by other components
+
+  • MainWindow
+    Path: RenderX.Shell.Avalonia.Minimal\MainWindow.axaml
+    Class: RenderX.Shell.Avalonia.Minimal.MainWindow
+    Lines: 19
+    ⚠️  Not used by other components
+
+  • ColorPaletteShowcase
+    Path: RenderX.Shell.Avalonia\Components\ColorPaletteShowcase.axaml
+    Class: RenderX.Shell.Avalonia.Components.ColorPaletteShowcase
+    Lines: 80
+    ⚠️  Not used by other components
+
+  • EffectsShowcase
+    Path: RenderX.Shell.Avalonia\Components\EffectsShowcase.axaml
+    Class: RenderX.Shell.Avalonia.Components.EffectsShowcase
+    Lines: 63
+    ⚠️  Not used by other components
+
+  • FlexLayout
+    Path: RenderX.Shell.Avalonia\Components\FlexLayout.axaml
+    Class: RenderX.Shell.Avalonia.Components.FlexLayout
+    Lines: 65
+    Uses: WrapPanel
+    ⚠️  Not used by other components
+
+  • RxAbbr
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxAbbr.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxAbbr
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxabbr, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxAddress
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxAddress.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxAddress
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxaddress, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxAlert
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxAlert.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxAlert
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxalert
+    ⚠️  Not used by other components
+
+  • RxAudio
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxAudio.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxAudio
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxaudio, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxAvatar
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxAvatar.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxAvatar
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxavatar
+    ⚠️  Not used by other components
+
+  • RxBadge
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxBadge.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxBadge
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxbadge
+    ⚠️  Not used by other components
+
+  • RxBlockquote
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxBlockquote.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxBlockquote
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxblockquote, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxButton
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxButton.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxButton
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxbutton
+    ⚠️  Not used by other components
+
+  • RxCaption
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxCaption.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxCaption
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxcaption
+    ⚠️  Not used by other components
+
+  • RxCard
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxCard.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxCard
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxcard
+    ⚠️  Not used by other components
+
+  • RxCheckBox
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxCheckBox.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxCheckBox
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxcheckbox
+    ⚠️  Not used by other components
+
+  • RxCite
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxCite.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxCite
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxcite, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxCode
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxCode.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxCode
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxcode
+    ⚠️  Not used by other components
+
+  • RxComboBox
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxComboBox.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxComboBox
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxcombobox
+    ⚠️  Not used by other components
+
+  • RxContainer
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxContainer.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxContainer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxcontainer
+    ⚠️  Not used by other components
+
+  • RxDel
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxDel.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxDel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxdel, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxDetails
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxDetails.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxDetails
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxdetails, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxDialog
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxDialog.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxDialog
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxdialog
+    ⚠️  Not used by other components
+
+  • RxDivider
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxDivider.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxDivider
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxdivider
+    ⚠️  Not used by other components
+
+  • RxDrawer
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxDrawer.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxDrawer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxdrawer
+    ⚠️  Not used by other components
+
+  • RxEm
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxEm.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxEm
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxem, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxGrid
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxGrid.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxGrid
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxgrid
+    ⚠️  Not used by other components
+
+  • RxHeading
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxHeading.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxHeading
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxheading
+    ⚠️  Not used by other components
+
+  • RxIcon
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxIcon.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxIcon
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxicon
+    ⚠️  Not used by other components
+
+  • RxImage
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxImage.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxImage
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rximage
+    ⚠️  Not used by other components
+
+  • RxIns
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxIns.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxIns
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxins, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxKbd
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxKbd.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxKbd
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxkbd, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxLabel
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxLabel.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxLabel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxlabel
+    ⚠️  Not used by other components
+
+  • RxLink
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxLink.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxLink
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxlink, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxList
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxList.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxList
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxlist, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxMark
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxMark.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxMark
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxmark, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxMenu
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxMenu.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxMenu
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxmenu, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxMenuDivider
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxMenuDivider.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxMenuDivider
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxmenudivider, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxMenuItem
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxMenuItem.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxMenuItem
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxmenuitem, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxModal
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxModal.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxModal
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxmodal
+    ⚠️  Not used by other components
+
+  • RxNumericUpDown
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxNumericUpDown.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxNumericUpDown
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxnumericupdown
+    ⚠️  Not used by other components
+
+  • RxOutput
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxOutput.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxOutput
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxoutput, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxPanel
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxPanel.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxPanel
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxpanel
+    ⚠️  Not used by other components
+
+  • RxParagraph
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxParagraph.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxParagraph
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxparagraph, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxPasswordBox
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxPasswordBox.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxPasswordBox
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxpasswordbox
+    ⚠️  Not used by other components
+
+  • RxPopover
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxPopover.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxPopover
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxpopover
+    ⚠️  Not used by other components
+
+  • RxPre
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxPre.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxPre
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxpre, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxProgress
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxProgress.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxProgress
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxprogress
+    ⚠️  Not used by other components
+
+  • RxQ
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxQ.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxQ
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxq, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxRadioButton
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxRadioButton.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxRadioButton
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxradiobutton
+    ⚠️  Not used by other components
+
+  • RxSamp
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSamp.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSamp
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxsamp, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxSlider
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSlider.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSlider
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxslider
+    ⚠️  Not used by other components
+
+  • RxSmall
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSmall.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSmall
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxsmall, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxSpacer
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSpacer.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSpacer
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxspacer
+    ⚠️  Not used by other components
+
+  • RxSpinner
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSpinner.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSpinner
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxspinner
+    ⚠️  Not used by other components
+
+  • RxStack
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxStack.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxStack
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxstack
+    ⚠️  Not used by other components
+
+  • RxStatusBar
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxStatusBar.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxStatusBar
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxstatusbar, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxStrong
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxStrong.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxStrong
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxstrong, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxSub
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSub.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSub
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxsub, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxSummary
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSummary.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSummary
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxsummary, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxSup
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxSup.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxSup
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxsup, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxTable
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxTable.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxTable
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxtable, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxTextArea
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxTextArea.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxTextArea
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxtextarea
+    ⚠️  Not used by other components
+
+  • RxTextBox
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxTextBox.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxTextBox
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxtextbox
+    ⚠️  Not used by other components
+
+  • RxTime
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxTime.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxTime
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxtime, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxToast
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxToast.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxToast
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxtoast
+    ⚠️  Not used by other components
+
+  • RxToggleSwitch
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxToggleSwitch.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxToggleSwitch
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxtoggleswitch
+    ⚠️  Not used by other components
+
+  • RxTooltip
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxTooltip.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxTooltip
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: rx-control, rx-font-semibold, rx-text-base, rx-text-sm, rxtooltip
+    ⚠️  Not used by other components
+
+  • RxVar
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxVar.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxVar
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxvar, text-base, text-sm
+    ⚠️  Not used by other components
+
+  • RxVideo
+    Path: RenderX.Shell.Avalonia\UI\Controls\RxVideo.axaml
+    Class: RenderX.Shell.Avalonia.UI.Controls.RxVideo
+    Lines: 34
+    Uses: ContentPresenter
+    Styles: font-semibold, rx-control, rxvideo, text-base, text-sm
+    ⚠️  Not used by other components
+
+════════════════════════════════════════════════════════════════════════════════
+                 WEB vs DESKTOP COMPARISON
+════════════════════════════════════════════════════════════════════════════════
+
+Web (React/TypeScript):
+  • 287 components total
+  • 48 components with tracked usage (16.7%)
+
+Desktop (Avalonia/AXAML):
+  • 296 components total
+  • 0 components with tracked usage (0.0%)
+
+════════════════════════════════════════════════════════════════════════════════
+                      GAP ANALYSIS
+════════════════════════════════════════════════════════════════════════════════
+
+❌ canvas-component: 0/7 (0%)
+   Missing: 7 components
+
+❌ components: 0/10 (0%)
+   Missing: 10 components
+
+❌ control-panel: 0/41 (0%)
+   Missing: 41 components
+
+✅ diagnostics: 75/75 (100%)
+
+❌ digital-assets: 0/40 (0%)
+   Missing: 40 components
+
+✅ header: 11/11 (100%)
+
+✅ library: 29/29 (100%)
+
+❌ library-component: 0/5 (0%)
+   Missing: 5 components
+
+❌ manifest-tools: 0/2 (0%)
+   Missing: 2 components
+
+❌ musical-conductor: 0/2 (0%)
+   Missing: 2 components
+
+❌ ui: 0/65 (0%)
+   Missing: 65 components

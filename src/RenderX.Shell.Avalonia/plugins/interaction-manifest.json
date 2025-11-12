@@ -1,0 +1,381 @@
+{
+  "routes": {
+    "canvas:component:copy:serialize": {
+      "pluginId": "CanvasComponentCopyPlugin",
+      "description": null
+    },
+    "canvas:component:copy:clipboard": {
+      "pluginId": "CanvasComponentCopyPlugin",
+      "description": null
+    },
+    "canvas:component:copy:notify": {
+      "pluginId": "CanvasComponentCopyPlugin",
+      "description": null
+    },
+    "canvas:component:resolve-template": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:register-instance": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:create": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:render-react": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:notify-ui": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:augment:line": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:delete": {
+      "pluginId": "CanvasComponentDeletePlugin",
+      "description": null
+    },
+    "canvas:component:deleted": {
+      "pluginId": "CanvasComponentDeletePlugin",
+      "description": null
+    },
+    "canvas:component:delete:route": {
+      "pluginId": "CanvasComponentDeleteRequestPlugin",
+      "description": null
+    },
+    "canvas:component:deselect:all": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "description": null
+    },
+    "canvas:component:selections:cleared": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "description": null
+    },
+    "canvas:component:deselect": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "description": null
+    },
+    "canvas:component:deselection:changed": {
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "description": null
+    },
+    "canvas:component:deselect:route": {
+      "pluginId": "CanvasComponentDeselectionRequestPlugin",
+      "description": null
+    },
+    "canvas:component:drag:end": {
+      "pluginId": "CanvasComponentDragEndPlugin",
+      "description": null
+    },
+    "canvas:component:drag:move": {
+      "pluginId": "CanvasComponentDragMovePlugin",
+      "description": null
+    },
+    "canvas:component:drag:forward": {
+      "pluginId": "CanvasComponentDragMovePlugin",
+      "description": null
+    },
+    "canvas:component:drag:start": {
+      "pluginId": "CanvasComponentDragStartPlugin",
+      "description": null
+    },
+    "canvas:component:export-gif:rasterize-and-encode": {
+      "pluginId": "CanvasComponentExportGifPlugin",
+      "description": null
+    },
+    "canvas:component:export-mp4:rasterize-and-encode": {
+      "pluginId": "CanvasComponentExportMp4Plugin",
+      "description": null
+    },
+    "canvas:component:query-all": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "description": null
+    },
+    "canvas:component:discover-components": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "description": null
+    },
+    "canvas:component:collect-css": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "description": null
+    },
+    "canvas:component:collect-layout": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "description": null
+    },
+    "canvas:component:build-ui-file": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "description": null
+    },
+    "canvas:component:download-file": {
+      "pluginId": "CanvasComponentExportPlugin",
+      "description": null
+    },
+    "canvas:component:ui:open": {
+      "pluginId": "CanvasComponentImportPlugin",
+      "description": null
+    },
+    "canvas:component:ui:parse": {
+      "pluginId": "CanvasComponentImportPlugin",
+      "description": null
+    },
+    "canvas:component:css:inject": {
+      "pluginId": "CanvasComponentImportPlugin",
+      "description": null
+    },
+    "canvas:component:nodes:create": {
+      "pluginId": "CanvasComponentImportPlugin",
+      "description": null
+    },
+    "canvas:component:hierarchy:apply": {
+      "pluginId": "CanvasComponentImportPlugin",
+      "description": null
+    },
+    "canvas:component:manip:line:end": {
+      "pluginId": "CanvasLineManipEndPlugin",
+      "description": null
+    },
+    "canvas:component:manip:line:move": {
+      "pluginId": "CanvasLineManipMovePlugin",
+      "description": null
+    },
+    "canvas:component:manip:line:start": {
+      "pluginId": "CanvasLineManipStartPlugin",
+      "description": null
+    },
+    "canvas:component:paste:clipboard": {
+      "pluginId": "CanvasComponentPastePlugin",
+      "description": null
+    },
+    "canvas:component:paste:deserialize": {
+      "pluginId": "CanvasComponentPastePlugin",
+      "description": null
+    },
+    "canvas:component:paste:position": {
+      "pluginId": "CanvasComponentPastePlugin",
+      "description": null
+    },
+    "canvas:component:paste:create": {
+      "pluginId": "CanvasComponentPastePlugin",
+      "description": null
+    },
+    "canvas:component:paste:notify": {
+      "pluginId": "CanvasComponentPastePlugin",
+      "description": null
+    },
+    "canvas:component:resize:end": {
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "description": null
+    },
+    "canvas:component:resize:line:end": {
+      "pluginId": "CanvasLineResizeEndPlugin",
+      "description": null
+    },
+    "canvas:component:resize:line:move": {
+      "pluginId": "CanvasLineResizeMovePlugin",
+      "description": null
+    },
+    "canvas:component:resize:line:start": {
+      "pluginId": "CanvasLineResizeStartPlugin",
+      "description": null
+    },
+    "canvas:component:resize:move": {
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "description": null
+    },
+    "canvas:component:resize:forward": {
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "description": null
+    },
+    "canvas:component:resize:start": {
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "description": null
+    },
+    "canvas:component:select": {
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "description": null
+    },
+    "canvas:component:select:notify": {
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "description": null
+    },
+    "canvas:component:selection:changed": {
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "description": null
+    },
+    "canvas:component:select:route": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:select:svg-node": {
+      "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+      "description": null
+    },
+    "canvas:component:update:attribute": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:update:refresh": {
+      "pluginId": "CanvasComponentPlugin",
+      "description": null
+    },
+    "canvas:component:update:svg-node:attribute": {
+      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+      "description": null
+    },
+    "canvas:component:update:svg-node:refresh": {
+      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+      "description": null
+    },
+    "control:panel:classes:add": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:classes:notify": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:classes:remove": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:css:create": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:css:notify": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:css:delete": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:css:update": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:selection:derive": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:selection:notify": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:field:prepare": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:field:dispatch": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:field:dirty": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:field:await-refresh": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:field:validate": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:errors:merge": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:update": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:init:config": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:init:resolver": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:init:schemas": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:init:observers": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:init:notify": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:init:movement": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:fields:generate": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:sections:generate": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:render": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:ui:section:toggle": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:update:derive": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "control:panel:update:notify": {
+      "pluginId": "ControlPanelPlugin",
+      "description": null
+    },
+    "app:ui:theme:get": {
+      "pluginId": "HeaderThemePlugin",
+      "description": null
+    },
+    "app:ui:theme:notify": {
+      "pluginId": "HeaderThemePlugin",
+      "description": null
+    },
+    "app:ui:theme:toggle": {
+      "pluginId": "HeaderThemePlugin",
+      "description": null
+    },
+    "library:components:load": {
+      "pluginId": "LibraryPlugin",
+      "description": null
+    },
+    "library:components:notify-ui": {
+      "pluginId": "LibraryPlugin",
+      "description": null
+    },
+    "library:container:drop": {
+      "pluginId": "LibraryComponentPlugin",
+      "description": null
+    },
+    "library.component.drag.start.requested": {
+      "pluginId": "LibraryComponentPlugin",
+      "description": null
+    },
+    "library:component:drop": {
+      "pluginId": "LibraryComponentPlugin",
+      "description": null
+    }
+  },
+  "generated": "2025-11-09T05:16:04.7254228Z"
+}

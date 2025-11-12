@@ -1,0 +1,77 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.PerformanceMonitor"
+             Background="{DynamicResource Color.Background.Primary}">
+    <Border BorderThickness="1"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            CornerRadius="4"
+            Padding="12">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Performance Metrics"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource Color.Border.Primary}" />
+
+            <!-- CPU Usage -->
+            <StackPanel Spacing="4">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="CPU Usage"
+                               FontSize="11"
+                               Foreground="#666" />
+                    <TextBlock x:Name="CPUValue"
+                               Text="0%"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Border.Primary}" />
+                </StackPanel>
+                <ProgressBar x:Name="CPUBar"
+                             Value="0"
+                             Maximum="100"
+                             Height="4"
+                             Background="{DynamicResource Color.Border.Primary}"
+                             Foreground="#FF9800" />
+            </StackPanel>
+
+            <!-- Memory Usage -->
+            <StackPanel Spacing="4">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="Memory Usage"
+                               FontSize="11"
+                               Foreground="#666" />
+                    <TextBlock x:Name="MemoryValue"
+                               Text="0 MB"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Border.Primary}" />
+                </StackPanel>
+                <ProgressBar x:Name="MemoryBar"
+                             Value="0"
+                             Maximum="100"
+                             Height="4"
+                             Background="{DynamicResource Color.Border.Primary}"
+                             Foreground="#2196F3" />
+            </StackPanel>
+
+            <!-- Uptime -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Uptime"
+                           FontSize="11"
+                           Foreground="#666" />
+                <TextBlock x:Name="UptimeValue"
+                           Text="0h 0m 0s"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+            </StackPanel>
+
+            <!-- Refresh Button -->
+            <Button Content="Refresh Metrics"
+                    Padding="8,4"
+                    Background="{DynamicResource Color.Border.Primary}"
+                    Foreground="{DynamicResource Color.Border.Primary}"
+                    FontSize="10"
+                    Click="OnRefreshClick" />
+        </StackPanel>
+    </Border>
+</UserControl>
+

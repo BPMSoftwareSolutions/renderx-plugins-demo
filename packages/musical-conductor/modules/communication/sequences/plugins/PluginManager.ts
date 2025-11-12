@@ -73,7 +73,7 @@ export class PluginManager {
     const warnings: string[] = [];
 
     try {
-      console.log(`🧠 PluginManager: Attempting to mount plugin: ${id}`);
+      (globalThis as any).__MC_LOG(`🧠 PluginManager: Attempting to mount plugin: ${id}`);
 
       // Validate plugin structure
       const validationResult = this.pluginValidator.validatePluginStructure(
@@ -100,7 +100,7 @@ export class PluginManager {
 
       // If plugin already exists, allow augmenting with additional sequences (issue #60)
       if (this.mountedPlugins.has(id)) {
-        console.log(`🧠 Plugin already mounted: ${id} — augmenting with additional sequence`);
+        (globalThis as any).__MC_LOG(`🧠 Plugin already mounted: ${id} — augmenting with additional sequence`);
         // proceed without early return; we'll register the new sequence and wire handlers
       }
 
@@ -192,12 +192,12 @@ export class PluginManager {
                   const restored =
                     CallbackRegistry.getInstance().rehydrateInPlace(data);
                   if (restored > 0) {
-                    console.log(
+                    (globalThis as any).__MC_LOG(
                       `🎼 PluginManager: rehydrated ${restored} callback(s) for event ${eventName}`
                     );
                   }
                 } catch (e) {
-                  console.warn(
+                  (globalThis as any).__MC_WARN(
                     "⚠️ PluginManager: callback rehydration skipped:",
                     (e as Error)?.message || e
                   );
@@ -302,7 +302,7 @@ export class PluginManager {
                             );
                             return mc.play(pluginId, sequenceId, ctx, priority);
                           } catch (err) {
-                            console.warn(
+                            (globalThis as any).__MC_WARN(
                               `🧠 PluginManager: conductor.play unavailable in handler context for ${id}.${handlerName}:`,
                               (err as any)?.message || err
                             );
@@ -364,7 +364,7 @@ export class PluginManager {
                       });
                     }
                   } catch (err) {
-                    console.error(
+                    (globalThis as any).__MC_ERROR(
                       `🧠 PluginManager: Handler execution failed for ${id}.${handlerName}:`,
                       err
                     );
@@ -399,7 +399,7 @@ export class PluginManager {
           this.pluginSubscriptions.set(id, [...existingUnsubscribes, ...unsubscribes]);
         }
       } catch (wireErr) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🧠 PluginManager: Failed wiring beat handlers for ${id}:`,
           wireErr
         );
@@ -424,8 +424,8 @@ export class PluginManager {
         );
       } catch {}
 
-      console.log(`✅ Plugin mounted successfully: ${id}`);
-      console.log(`🎼 Sequence registered: ${sequence.name}`);
+      (globalThis as any).__MC_LOG(`✅ Plugin mounted successfully: ${id}`);
+      (globalThis as any).__MC_LOG(`🎼 Sequence registered: ${sequence.name}`);
 
       return {
         success: true,
@@ -434,7 +434,7 @@ export class PluginManager {
         warnings,
       };
     } catch (error) {
-      console.error(`❌ Failed to mount plugin ${id}:`, error);
+      (globalThis as any).__MC_ERROR(`❌ Failed to mount plugin ${id}:`, error);
       return {
         success: false,
         pluginId: id,
@@ -460,7 +460,7 @@ export class PluginManager {
       this.mountedPlugins.delete(pluginId);
       this.pluginHandlers.delete(pluginId);
     } catch (err) {
-      console.warn(`🧠 PluginManager: Failed to unmount ${pluginId}:`, err);
+      (globalThis as any).__MC_WARN(`🧠 PluginManager: Failed to unmount ${pluginId}:`, err);
     }
   }
 
@@ -472,7 +472,7 @@ export class PluginManager {
   unmountPlugin(pluginId: string): boolean {
     try {
       if (!this.mountedPlugins.has(pluginId)) {
-        console.warn(`🧠 Plugin not found for unmounting: ${pluginId}`);
+        (globalThis as any).__MC_WARN(`🧠 Plugin not found for unmounting: ${pluginId}`);
         return false;
       }
 
@@ -485,10 +485,10 @@ export class PluginManager {
       this.mountedPlugins.delete(pluginId);
       this.pluginHandlers.delete(pluginId);
 
-      console.log(`✅ Plugin unmounted successfully: ${pluginId}`);
+      (globalThis as any).__MC_LOG(`✅ Plugin unmounted successfully: ${pluginId}`);
       return true;
     } catch (error) {
-      console.error(`❌ Failed to unmount plugin ${pluginId}:`, error);
+      (globalThis as any).__MC_ERROR(`❌ Failed to unmount plugin ${pluginId}:`, error);
       return false;
     }
   }
@@ -501,13 +501,13 @@ export class PluginManager {
     try {
       // Prevent React StrictMode double execution
       if (this.pluginsRegistered) {
-        console.log(
+        (globalThis as any).__MC_LOG(
           "⚠️ Plugins already registered, skipping duplicate registration"
         );
         return;
       }
 
-      console.log("🧠 Registering CIA-compliant plugins...");
+      (globalThis as any).__MC_LOG("🧠 Registering CIA-compliant plugins...");
 
       // Track count before attempting registration
       const beforeCount = this.getMountedPluginIds().length;
@@ -530,19 +530,19 @@ export class PluginManager {
       if (afterCount > beforeCount) {
         // Mark plugins as registered to prevent duplicate execution
         this.pluginsRegistered = true;
-        console.log(
+        (globalThis as any).__MC_LOG(
           `✅ CIA-compliant plugins registered successfully (mounted: ${
             afterCount - beforeCount
           }, total: ${afterCount})`
         );
       } else {
         // Nothing mounted (likely manifest load issue or all autoMount=false) — allow retry later
-        console.warn(
+        (globalThis as any).__MC_WARN(
           "⚠️ No CIA plugins were mounted. Leaving pluginsRegistered=false so a later retry can succeed."
         );
       }
     } catch (error) {
-      console.error("❌ Failed to register CIA plugins:", error);
+      (globalThis as any).__MC_ERROR("❌ Failed to register CIA plugins:", error);
       // Fallback to basic event handling if plugin loading fails
       this.registerFallbackSequences();
     }
@@ -553,9 +553,9 @@ export class PluginManager {
    * @param manifest - Plugin manifest data
    */
   private async registerPluginsFromManifest(manifest: any): Promise<void> {
-    console.log("🎼 PluginManager: Registering plugins from manifest...");
+    (globalThis as any).__MC_LOG("🎼 PluginManager: Registering plugins from manifest...");
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🔌 Processing ${manifest.plugins.length} plugins from manifest`
     );
 
@@ -565,11 +565,11 @@ export class PluginManager {
         if (plugin.autoMount) {
           // Check if plugin is already mounted (prevents React StrictMode double execution)
           if (this.mountedPlugins.has(plugin.name)) {
-            console.log(`⚠️ Plugin already mounted, skipping: ${plugin.name}`);
+            (globalThis as any).__MC_LOG(`⚠️ Plugin already mounted, skipping: ${plugin.name}`);
             continue;
           }
 
-          console.log(
+          (globalThis as any).__MC_LOG(
             `🔌 Auto-mounting plugin: ${plugin.name} from ${plugin.path}`
           );
 
@@ -580,7 +580,7 @@ export class PluginManager {
 
           // Validate plugin structure
           if (!pluginModule.sequence || !pluginModule.handlers) {
-            console.warn(
+            (globalThis as any).__MC_WARN(
               `⚠️ Plugin ${plugin.name} missing required exports (sequence, handlers)`
             );
             continue;
@@ -601,17 +601,17 @@ export class PluginManager {
           );
 
           if (mountResult.success) {
-            console.log(`✅ Auto-mounted plugin: ${plugin.name}`);
+            (globalThis as any).__MC_LOG(`✅ Auto-mounted plugin: ${plugin.name}`);
           } else {
-            console.error(
+            (globalThis as any).__MC_ERROR(
               `❌ Failed to auto-mount plugin ${plugin.name}: ${mountResult.message}`
             );
           }
         } else {
-          console.log(`⏭️ Skipping non-auto-mount plugin: ${plugin.name}`);
+          (globalThis as any).__MC_LOG(`⏭️ Skipping non-auto-mount plugin: ${plugin.name}`);
         }
       } catch (error) {
-        console.error(`❌ Error processing plugin ${plugin.name}:`, error);
+        (globalThis as any).__MC_ERROR(`❌ Error processing plugin ${plugin.name}:`, error);
       }
     }
   }
@@ -620,7 +620,7 @@ export class PluginManager {
    * Register fallback sequences when plugin loading fails
    */
   private registerFallbackSequences(): void {
-    console.log("🔄 Registering fallback sequences...");
+    (globalThis as any).__MC_LOG("🔄 Registering fallback sequences...");
 
     // Register basic fallback sequences for essential functionality
     const fallbackSequences = [
@@ -651,7 +651,7 @@ export class PluginManager {
       this.sequenceRegistry.register(sequence as MusicalSequence);
     });
 
-    console.log("✅ Fallback sequences registered");
+    (globalThis as any).__MC_LOG("✅ Fallback sequences registered");
   }
 
   /**
@@ -697,7 +697,7 @@ export class PluginManager {
     // Validate plugin exists
     const plugin = this.mountedPlugins.get(pluginId);
     if (!plugin) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `🧠 Plugin not found: ${pluginId}. Available plugins: [${Array.from(
           this.mountedPlugins.keys()
         ).join(", ")}]`
@@ -741,6 +741,6 @@ export class PluginManager {
     this.mountedPlugins.clear();
     this.pluginHandlers.clear();
     this.pluginsRegistered = false;
-    console.log("🧹 PluginManager: State reset");
+    (globalThis as any).__MC_LOG("🧹 PluginManager: State reset");
   }
 }

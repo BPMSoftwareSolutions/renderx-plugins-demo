@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.ControlPanel.SearchBar"
+             Background="Transparent">
+    <Border Background="{DynamicResource Color.Background.Primary}"
+            BorderThickness="1"
+            BorderBrush="{DynamicResource Color.Border.Secondary}"
+            CornerRadius="4"
+            Padding="8,4">
+        <Grid ColumnDefinitions="*,Auto">
+            <!-- Search Input -->
+            <TextBox Grid.Column="0"
+                     x:Name="SearchInput"
+                     Watermark="Search..."
+                     FontSize="12"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     Padding="0"
+                     TextChanged="OnSearchTextChanged" />
+            
+            <!-- Clear Button -->
+            <Button Grid.Column="1"
+                    x:Name="ClearButton"
+                    Content="✕"
+                    Padding="4"
+                    Background="Transparent"
+                    Foreground="Gray"
+                    FontSize="12"
+                    Click="OnClearClick"
+                    IsVisible="False" />
+        </Grid>
+    </Border>
+</UserControl>
+

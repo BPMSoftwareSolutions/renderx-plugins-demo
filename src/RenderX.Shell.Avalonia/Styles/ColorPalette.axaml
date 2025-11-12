@@ -1,0 +1,155 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- RenderX Color Palette - Matching Web Application -->
+    <!-- 69 Hex Colors + 23 RGBA Colors from ui_component_style_report.txt -->
+    
+    <Styles.Resources>
+        <!-- ============================================ -->
+        <!-- PRIMARY COLORS -->
+        <!-- ============================================ -->
+        
+        <!-- Blues -->
+        <SolidColorBrush x:Key="Blue.Primary" Color="#007bff"/>
+        <SolidColorBrush x:Key="Blue.Dark" Color="#0056b3"/>
+        <SolidColorBrush x:Key="Blue.700" Color="#1e40af"/>
+        <SolidColorBrush x:Key="Blue.600" Color="#2563eb"/>
+        <SolidColorBrush x:Key="Blue.500" Color="#3B82F6"/>
+        <SolidColorBrush x:Key="Blue.Accent" Color="#2196f3"/>
+        
+        <!-- Greens -->
+        <SolidColorBrush x:Key="Green.Primary" Color="#10b981"/>
+        <SolidColorBrush x:Key="Green.600" Color="#059669"/>
+        <SolidColorBrush x:Key="Green.700" Color="#166534"/>
+        <SolidColorBrush x:Key="Green.Success" Color="#34c759"/>
+        
+        <!-- Purples & Indigos -->
+        <SolidColorBrush x:Key="Purple.Primary" Color="#667eea"/>
+        <SolidColorBrush x:Key="Purple.Dark" Color="#764ba2"/>
+        <SolidColorBrush x:Key="Indigo.700" Color="#3730a3"/>
+        
+        <!-- ============================================ -->
+        <!-- GRAY SCALE -->
+        <!-- ============================================ -->
+        
+        <!-- Dark Grays -->
+        <SolidColorBrush x:Key="Gray.950" Color="#0f172a"/>
+        <SolidColorBrush x:Key="Gray.900" Color="#111827"/>
+        <SolidColorBrush x:Key="Gray.850" Color="#1e1e1e"/>
+        <SolidColorBrush x:Key="Gray.825" Color="#1e293b"/>
+        <SolidColorBrush x:Key="Gray.800" Color="#1f2937"/>
+        <SolidColorBrush x:Key="Gray.775" Color="#252526"/>
+        <SolidColorBrush x:Key="Gray.750" Color="#2d2d2d"/>
+        <SolidColorBrush x:Key="Gray.725" Color="#2d2d30"/>
+        <SolidColorBrush x:Key="Gray.700" Color="#374151"/>
+        <SolidColorBrush x:Key="Gray.675" Color="#333"/>
+        
+        <!-- Medium Grays -->
+        <SolidColorBrush x:Key="Gray.600" Color="#4b5563"/>
+        <SolidColorBrush x:Key="Gray.500" Color="#6b7280"/>
+        <SolidColorBrush x:Key="Gray.400" Color="#9ca3af"/>
+        <SolidColorBrush x:Key="Gray.300" Color="#d1d5db"/>
+        
+        <!-- Light Grays -->
+        <SolidColorBrush x:Key="Gray.200" Color="#e5e7eb"/>
+        <SolidColorBrush x:Key="Gray.150" Color="#e2e8f0"/>
+        <SolidColorBrush x:Key="Gray.125" Color="#e0e0e0"/>
+        <SolidColorBrush x:Key="Gray.100" Color="#f3f4f6"/>
+        <SolidColorBrush x:Key="Gray.75" Color="#f5f5f5"/>
+        <SolidColorBrush x:Key="Gray.50" Color="#f9fafb"/>
+        <SolidColorBrush x:Key="Gray.25" Color="#fafafa"/>
+        
+        <!-- Special Grays -->
+        <SolidColorBrush x:Key="Gray.Border" Color="#cccccc"/>
+        <SolidColorBrush x:Key="Gray.Text" Color="#666666"/>
+        <SolidColorBrush x:Key="Gray.Secondary" Color="#999999"/>
+        
+        <!-- ============================================ -->
+        <!-- STATUS COLORS -->
+        <!-- ============================================ -->
+        
+        <!-- Reds / Error -->
+        <SolidColorBrush x:Key="Red.Primary" Color="#ef4444"/>
+        <SolidColorBrush x:Key="Red.600" Color="#dc2626"/>
+        <SolidColorBrush x:Key="Red.700" Color="#b91c1c"/>
+        <SolidColorBrush x:Key="Red.Error" Color="#f44336"/>
+        
+        <!-- Oranges / Warning -->
+        <SolidColorBrush x:Key="Orange.Primary" Color="#f97316"/>
+        <SolidColorBrush x:Key="Orange.600" Color="#ea580c"/>
+        <SolidColorBrush x:Key="Orange.Warning" Color="#ff9800"/>
+        <SolidColorBrush x:Key="Amber.Primary" Color="#f59e0b"/>
+        
+        <!-- Yellows -->
+        <SolidColorBrush x:Key="Yellow.Primary" Color="#fbbf24"/>
+        <SolidColorBrush x:Key="Yellow.500" Color="#eab308"/>
+        
+        <!-- ============================================ -->
+        <!-- TRANSPARENCY LAYERS (RGBA) -->
+        <!-- ============================================ -->
+        
+        <!-- Black Transparencies -->
+        <SolidColorBrush x:Key="Black.Alpha5" Color="#0D000000"/>   <!-- rgba(0,0,0,0.05) -->
+        <SolidColorBrush x:Key="Black.Alpha10" Color="#1A000000"/>  <!-- rgba(0,0,0,0.1) -->
+        <SolidColorBrush x:Key="Black.Alpha15" Color="#26000000"/>  <!-- rgba(0,0,0,0.15) -->
+        <SolidColorBrush x:Key="Black.Alpha20" Color="#33000000"/>  <!-- rgba(0,0,0,0.2) -->
+        <SolidColorBrush x:Key="Black.Alpha30" Color="#4D000000"/>  <!-- rgba(0,0,0,0.3) -->
+        <SolidColorBrush x:Key="Black.Alpha40" Color="#66000000"/>  <!-- rgba(0,0,0,0.4) -->
+        <SolidColorBrush x:Key="Black.Alpha50" Color="#80000000"/>  <!-- rgba(0,0,0,0.5) -->
+        <SolidColorBrush x:Key="Black.Alpha60" Color="#99000000"/>  <!-- rgba(0,0,0,0.6) -->
+        <SolidColorBrush x:Key="Black.Alpha75" Color="#BF000000"/>  <!-- rgba(0,0,0,0.75) -->
+        
+        <!-- White Transparencies -->
+        <SolidColorBrush x:Key="White.Alpha5" Color="#0DFFFFFF"/>   <!-- rgba(255,255,255,0.05) -->
+        <SolidColorBrush x:Key="White.Alpha10" Color="#1AFFFFFF"/>  <!-- rgba(255,255,255,0.1) -->
+        <SolidColorBrush x:Key="White.Alpha15" Color="#26FFFFFF"/>  <!-- rgba(255,255,255,0.15) -->
+        <SolidColorBrush x:Key="White.Alpha20" Color="#33FFFFFF"/>  <!-- rgba(255,255,255,0.2) -->
+        
+        <!-- Colored Transparencies -->
+        <SolidColorBrush x:Key="Red.Alpha10" Color="#1AF44336"/>    <!-- rgba(244,67,54,0.1) -->
+        <SolidColorBrush x:Key="Red.Alpha20" Color="#33F44336"/>    <!-- rgba(244,67,54,0.2) -->
+        <SolidColorBrush x:Key="Orange.Alpha10" Color="#1AFF9800"/> <!-- rgba(255,152,0,0.1) -->
+        <SolidColorBrush x:Key="Blue.Alpha10" Color="#1A2196F3"/>   <!-- rgba(33,150,243,0.1) -->
+        <SolidColorBrush x:Key="Blue.Alpha20" Color="#332196F3"/>   <!-- rgba(33,150,243,0.2) -->
+        <SolidColorBrush x:Key="Blue.Alpha30" Color="#4D2196F3"/>   <!-- rgba(33,150,243,0.3) -->
+        <SolidColorBrush x:Key="Purple.Alpha30" Color="#4D667EEA"/> <!-- rgba(102,126,234,0.3) -->
+        
+        <!-- ============================================ -->
+        <!-- CSS VARIABLE EQUIVALENTS (Theme-aware) -->
+        <!-- ============================================ -->
+        
+        <!-- Background Colors -->
+        <SolidColorBrush x:Key="Bg.Primary" Color="White"/>
+        <SolidColorBrush x:Key="Bg.Secondary" Color="#252526"/>
+        <SolidColorBrush x:Key="Bg.Tertiary" Color="#2d2d30"/>
+        <SolidColorBrush x:Key="Bg.Hover" Color="#f9fafb"/>
+        
+        <!-- Text Colors -->
+        <SolidColorBrush x:Key="Text.Primary" Color="#111827"/>
+        <SolidColorBrush x:Key="Text.Secondary" Color="#6b7280"/>
+        <SolidColorBrush x:Key="Text.Tertiary" Color="#9ca3af"/>
+        <SolidColorBrush x:Key="Text.Inverse" Color="White"/>
+        <SolidColorBrush x:Key="Text.Light" Color="#cccccc"/>
+        
+        <!-- Border Colors -->
+        <SolidColorBrush x:Key="Border.Primary" Color="#e5e7eb"/>
+        <SolidColorBrush x:Key="Border.Secondary" Color="#d1d5db"/>
+        <SolidColorBrush x:Key="Border.Focus" Color="#2196f3"/>
+        <SolidColorBrush x:Key="Border.Error" Color="#ef4444"/>
+        
+        <!-- Panel Colors -->
+        <SolidColorBrush x:Key="Panel.Background" Color="#f5f5f5"/>
+        <SolidColorBrush x:Key="Panel.Border" Color="#e0e0e0"/>
+        
+        <!-- ============================================ -->
+        <!-- SEMANTIC COLORS -->
+        <!-- ============================================ -->
+        
+        <SolidColorBrush x:Key="Color.Success" Color="#10b981"/>
+        <SolidColorBrush x:Key="Color.Warning" Color="#f59e0b"/>
+        <SolidColorBrush x:Key="Color.Error" Color="#ef4444"/>
+        <SolidColorBrush x:Key="Color.Info" Color="#3B82F6"/>
+        
+    </Styles.Resources>
+    
+</Styles>

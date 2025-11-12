@@ -1,0 +1,541 @@
+================================================================================
+CSS Classes Report
+================================================================================
+
+├── .n (65 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\src\symphonies\select\select.overlay.css.stage-crew.ts:14
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:50 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:96 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:103 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:109 (template-literal)
+│       └── packages\digital-assets\src\canvas-storybook-demo.ts:121 (template-literal)
+│       └── ... and 59 more
+
+├── .Math (42 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\resize\resize.stage-crew.ts:199 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\resize\resize.stage-crew.ts:200 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\resize\resize.stage-crew.ts:201 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\resize\resize.stage-crew.ts:202 (template-literal)
+│       └── packages\canvas-component\src\symphonies\select\select.overlay.dom.stage-crew.ts:61 (template-literal)
+│       └── ... and 37 more
+
+├── .Failed (40 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\export\export.mp4.stage-crew.ts:276 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\update\update.stage-crew.ts:35 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts:102 (template-literal)
+│       ├── packages\control-panel\src\symphonies\ui\ui.stage-crew.ts:316 (template-literal)
+│       └── packages\digital-assets\src\canvas-svg-extractor.ts:252 (template-literal)
+│       └── ... and 35 more
+
+├── .rx-button (39 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\src\temp-deps\css-registry.store.ts:48
+│   │   ├── packages\canvas-component\__tests__\container-child-overlay.spec.ts:32
+│   │   ├── packages\canvas-component\__tests__\container-child-selection.spec.ts:22
+│   │   ├── packages\canvas-component\__tests__\create.container-append.spec.ts:22
+│   │   ├── packages\canvas-component\__tests__\create.dom.spec.ts:10
+│   │   ├── packages\canvas-component\__tests__\create.from-import.spec.ts:13
+│   │   ├── packages\canvas-component\__tests__\create.react.integration.spec.ts:43
+│   │   ├── packages\canvas-component\__tests__\drag.overlay-hide.spec.ts:11
+│   │   ├── packages\canvas-component\__tests__\export.css.collection.fix.spec.ts:8
+│   │   ├── packages\canvas-component\__tests__\export.io.spec.ts:110
+│   │   ├── packages\canvas-component\__tests__\export.json-css.end-to-end.spec.ts:25
+│   │   ├── packages\canvas-component\__tests__\export.pure.spec.ts:56
+│   │   ├── packages\canvas-component\__tests__\export.pure.spec.ts:90
+│   │   ├── packages\canvas-component\__tests__\import.instance-class.spec.ts:84
+│   │   ├── packages\canvas-component\__tests__\import.integration.spec.ts:102
+│   │   ├── packages\canvas-component\__tests__\import.nesting.spec.ts:152
+│   │   ├── packages\canvas-component\__tests__\import.variant-toggle.spec.ts:58
+│   │   ├── packages\canvas-component\__tests__\resize.overlay-align.spec.ts:12
+│   │   ├── packages\canvas-component\__tests__\resize.play.spec.ts:30
+│   │   ├── packages\canvas-component\__tests__\select.overlay-container.spec.ts:38
+│   │   ├── packages\canvas-component\__tests__\select.overlay.css.spec.ts:11
+│   │   ├── packages\control-panel\src\state\css-registry.store.ts:48
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:86
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:118
+│   │   ├── packages\control-panel\__tests__\attribute-editing.bidirectional.spec.ts:36
+│   │   ├── packages\control-panel\__tests__\attribute-editing.integration.spec.ts:17
+│   │   ├── packages\control-panel\__tests__\classes.editing.spec.ts:12
+│   │   ├── packages\control-panel\__tests__\integration.end-to-end.spec.ts:21
+│   │   ├── packages\control-panel\__tests__\live-updates.drag-resize.spec.ts:13
+│   │   ├── packages\control-panel\__tests__\selection.sequence-model-and-notify.spec.ts:11
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\__tests__\host.harness.click-select.spec.ts:26 (class-attr)
+│       ├── packages\canvas-component\__tests__\import.variant-toggle.spec.ts:87 (template-literal)
+│       ├── packages\canvas-component\__tests__\selection-id-derivation.spec.ts:26 (class-attr)
+│       ├── packages\canvas-component\__tests__\selection-id-derivation.spec.ts:32 (class-attr)
+│       └── packages\canvas-component\__tests__\selection-post-externalization.spec.ts:26 (class-attr)
+│       └── ... and 4 more
+
+├── .rx-comp (33 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\__tests__\export.io.spec.ts:103
+│   │   ├── packages\canvas-component\__tests__\export.pure.spec.ts:48
+│   │   ├── packages\canvas-component\__tests__\export.pure.spec.ts:82
+│   │   ├── packages\canvas-component\__tests__\import.instance-class.spec.ts:80
+│   │   ├── packages\canvas-component\__tests__\import.integration.spec.ts:101
+│   │   ├── packages\canvas-component\__tests__\import.variant-toggle.spec.ts:57
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\create\create.style.stage-crew.ts:4 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\export\export.css.stage-crew.ts:15 (querySelector)
+│       ├── packages\canvas-component\src\symphonies\export\export.discover.stage-crew.ts:12 (querySelector)
+│       ├── packages\canvas-component\src\symphonies\export\export.stage-crew.ts:47 (querySelector)
+│       └── packages\canvas-component\__tests__\delete.spec.ts:34 (className-prop)
+│       └── ... and 22 more
+
+├── .data (30 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\create\create.style.stage-crew.ts:39 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\create\create.style.stage-crew.ts:43 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts:34 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts:35 (template-literal)
+│       └── packages\canvas-component\src\symphonies\export\export.mp4.stage-crew.ts:16 (template-literal)
+│       └── ... and 25 more
+
+├── .g (24 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\scripts\lib\injector.js:55 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:60 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:101 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:150 (template-literal)
+│       └── packages\digital-assets\scripts\lib\injector.js:151 (template-literal)
+│       └── ... and 19 more
+
+├── .btn (21 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\digital-assets\assets\plugin-architecture\index.html:98
+│   │   ├── packages\digital-assets\tests\bus-coordination-test.html:42
+│   │   ├── packages\library\__tests__\rag-enrichment.service.spec.ts:44
+│   │   ├── packages\library\__tests__\rag-enrichment.service.spec.ts:46
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:217 (class-attr)
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:218 (class-attr)
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:240 (class-attr)
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:241 (class-attr)
+│       └── packages\digital-assets\assets\plugin-architecture\index.html:263 (class-attr)
+│       └── ... and 12 more
+
+├── .id (20 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\scripts\generate-integrated-svgs.js:97 (template-literal)
+│       ├── packages\digital-assets\scripts\generate-slide-svgs.js:119 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:189 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:190 (template-literal)
+│       └── packages\digital-assets\src\config-loader.ts:200 (template-literal)
+│       └── ... and 15 more
+
+├── .Movement (20 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\modules\communication\sequences\index.ts:152 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\index.ts:154 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\index.ts:161 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\index.ts:165 (template-literal)
+│       └── packages\musical-conductor\modules\communication\sequences\core\ConductorCore.ts:149 (template-literal)
+│       └── ... and 15 more
+
+├── .Plugin (19 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\modules\communication\SPAValidator.ts:124 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\SPAValidator.ts:214 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\SPAValidator.ts:416 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\SPAValidator.ts:430 (template-literal)
+│       └── packages\musical-conductor\modules\communication\SPAValidator.ts:550 (template-literal)
+│       └── ... and 14 more
+
+├── .test-class (18 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:50
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:64
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:76
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:77
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:94
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:95
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:130
+│   │   ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:182
+│   │   ├── packages\host-sdk\tests\cssRegistry.spec.ts:30
+│   │   ├── packages\host-sdk\tests\cssRegistry.spec.ts:146
+│   │   ├── packages\host-sdk\tests\cssRegistry.spec.ts:242
+│   │   ├── packages\host-sdk\tests\cssRegistry.spec.ts:286
+│   └── 🔧 USED IN:
+│       ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:49 (className-prop)
+│       ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:63 (className-prop)
+│       ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:75 (className-prop)
+│       ├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:93 (className-prop)
+│       └── packages\control-panel\src\state\__tests__\css-registry.store.test.ts:129 (className-prop)
+│       └── ... and 1 more
+
+├── .scene (18 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\cypress\e2e\enhanced-storybook.cy.js:36 (template-literal)
+│       ├── packages\digital-assets\cypress\e2e\enhanced-storybook.cy.js:75 (template-literal)
+│       ├── packages\digital-assets\cypress\e2e\enhanced-storybook.cy.js:76 (template-literal)
+│       ├── packages\digital-assets\src\canvas-svg-extractor.ts:108 (template-literal)
+│       └── packages\digital-assets\src\canvas-to-graph-converter.ts:99 (template-literal)
+│       └── ... and 13 more
+
+├── .Total (18 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:97 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:98 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:99 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:100 (template-literal)
+│       └── packages\digital-assets\src\canvas-svg-extractor.ts:250 (template-literal)
+│       └── ... and 13 more
+
+├── .handle (16 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts:16
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts:36 (className-prop)
+│       ├── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts:36 (utility-classes)
+│       ├── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts:38 (className-prop)
+│       ├── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts:38 (utility-classes)
+│       └── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts:44 (querySelector)
+│       └── ... and 10 more
+
+├── .Scene (16 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\test-canvas-layout.js:100 (template-literal)
+│       ├── packages\digital-assets\test-canvas-layout.js:101 (template-literal)
+│       ├── packages\digital-assets\test-canvas-layout.js:154 (template-literal)
+│       ├── packages\digital-assets\src\canvas-scene-demo.ts:38 (template-literal)
+│       └── packages\digital-assets\src\canvas-storybook-demo.ts:113 (template-literal)
+│       └── ... and 11 more
+
+├── .name (15 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\__tests__\export-import.content.spec.ts:77 (template-literal)
+│       ├── packages\canvas-component\__tests__\export.integration.structure.spec.ts:18 (template-literal)
+│       ├── packages\digital-assets\test-canvas-layout.js:49 (template-literal)
+│       ├── packages\digital-assets\test-canvas-layout.js:52 (template-literal)
+│       └── packages\digital-assets\src\sample-generator.ts:221 (template-literal)
+│       └── ... and 10 more
+
+├── .field (15 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\control-panel\src\components\field-renderers\CodeTextarea.tsx:31 (template-literal)
+│       ├── packages\control-panel\src\components\field-renderers\ColorInput.tsx:32 (template-literal)
+│       ├── packages\control-panel\src\components\field-renderers\ColorInput.tsx:34 (template-literal)
+│       ├── packages\control-panel\src\components\field-renderers\NumberInput.tsx:29 (template-literal)
+│       └── packages\control-panel\src\components\field-renderers\NumberInput.tsx:33 (template-literal)
+│       └── ... and 10 more
+
+├── .index (15 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\src\canvas-svg-extractor.ts:257 (template-literal)
+│       ├── packages\digital-assets\src\canvas-svg-extractor.ts:265 (template-literal)
+│       ├── packages\digital-assets\src\canvas-to-graph-converter.ts:195 (template-literal)
+│       ├── packages\digital-assets\src\event-router-demo.ts:48 (template-literal)
+│       └── packages\digital-assets\src\event-router-demo.ts:57 (template-literal)
+│       └── ... and 10 more
+
+├── .rx-container (14 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\src\temp-deps\css-registry.store.ts:74
+│   │   ├── packages\canvas-component\__tests__\container-child-overlay.spec.ts:20
+│   │   ├── packages\canvas-component\__tests__\container-child-selection.spec.ts:10
+│   │   ├── packages\canvas-component\__tests__\create.container-append.spec.ts:10
+│   │   ├── packages\canvas-component\__tests__\import.instance-class.spec.ts:88
+│   │   ├── packages\canvas-component\__tests__\import.integration.spec.ts:103
+│   │   ├── packages\canvas-component\__tests__\import.nesting.spec.ts:72
+│   │   ├── packages\canvas-component\__tests__\import.nesting.spec.ts:148
+│   │   ├── packages\canvas-component\__tests__\select.overlay-container.spec.ts:17
+│   │   ├── packages\control-panel\src\state\css-registry.store.ts:74
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\__tests__\selection-id-derivation.spec.ts:27 (class-attr)
+│       ├── packages\canvas-component\__tests__\selection-post-externalization.spec.ts:27 (class-attr)
+│       ├── packages\canvas-component\__tests__\selection-post-externalization.spec.ts:93 (class-attr)
+│       └── packages\canvas-component\__tests__\selection-topic-first.spec.ts:41 (class-attr)
+
+├── .div (14 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\temp-deps\sanitizeHtml.ts:69 (template-literal)
+│       ├── packages\canvas-component\__tests__\copy-paste.spec.ts:26 (template-literal)
+│       ├── packages\canvas-component\__tests__\export-import.content.spec.ts:62 (template-literal)
+│       ├── packages\canvas-component\__tests__\import.base-classes.spec.ts:7 (template-literal)
+│       └── packages\canvas-component\__tests__\import.instance-class.spec.ts:27 (template-literal)
+│       └── ... and 9 more
+
+├── .Successfully (14 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\src\canvas-svg-extractor.ts:130 (template-literal)
+│       ├── packages\digital-assets\src\canvas-svg-extractor.ts:251 (template-literal)
+│       ├── packages\digital-assets\src\canvas-to-graph-converter.ts:163 (template-literal)
+│       ├── packages\digital-assets\src\canvas-to-graph-converter.ts:189 (template-literal)
+│       └── packages\musical-conductor\modules\communication\sequences\plugins\PluginLoader.ts:114 (template-literal)
+│       └── ... and 9 more
+
+├── .c (14 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts:140 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts:144 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts:148 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts:152 (template-literal)
+│       └── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts:182 (template-literal)
+│       └── ... and 9 more
+
+├── .rx-line (13 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\__tests__\line.overlay-data-driven.spec.ts:23
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\__tests__\advanced-line.augment.spec.ts:20 (template-literal)
+│       ├── packages\canvas-component\__tests__\advanced-line.augment.spec.ts:51 (classList-method)
+│       ├── packages\canvas-component\__tests__\advanced-line.manip.handlers.spec.ts:16 (template-literal)
+│       ├── packages\canvas-component\__tests__\advanced-line.overlay.attach.spec.ts:17 (template-literal)
+│       └── packages\canvas-component\__tests__\advanced-line.overlay.attach.spec.ts:44 (classList-method)
+│       └── ... and 7 more
+
+├── .CSS (13 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\control-panel\src\components\sections\ClassManager.tsx:81 (template-literal)
+│       ├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts:27 (template-literal)
+│       ├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts:30 (template-literal)
+│       ├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts:31 (template-literal)
+│       └── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts:60 (template-literal)
+│       └── ... and 8 more
+
+├── .scene-title (13 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:74
+│   │   ├── packages\digital-assets\src\cinematic-renderer.ts:224
+│   │   ├── packages\digital-assets\src\mono-graph-generator.ts:516
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:280 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:469 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:486 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:505 (class-attr)
+│       └── packages\digital-assets\samples\event-router-cinematic-presentation.html:523 (class-attr)
+│       └── ... and 5 more
+
+├── .secondary (13 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\digital-assets\tests\bus-coordination-test.html:55
+│   │   ├── packages\library\src\ui\ChatMessage.css:156
+│   │   ├── packages\library\src\utils\prompt.templates.ts:178
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\tests\bus-coordination-test.html:130 (class-attr)
+│       ├── packages\digital-assets\tests\bus-coordination-test.html:131 (class-attr)
+│       ├── packages\library\src\ui\ChatMessage.tsx:95 (className-prop)
+│       ├── packages\library\src\ui\ChatMessage.tsx:95 (utility-classes)
+│       └── packages\library\src\ui\ChatMessage.tsx:103 (className-prop)
+│       └── ... and 5 more
+
+├── .EventBus (13 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\modules\communication\EventBus.ts:68 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\EventBus.ts:94 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\EventBus.ts:126 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\EventBus.ts:162 (template-literal)
+│       └── packages\musical-conductor\modules\communication\EventBus.ts:172 (template-literal)
+│       └── ... and 8 more
+
+├── .Sequence (12 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\host-sdk\core\conductor\runtime-loaders.ts:178 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\index.ts:96 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\index.ts:101 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\core\ConductorCore.ts:148 (template-literal)
+│       └── packages\musical-conductor\modules\communication\sequences\core\ConductorCore.ts:167 (template-literal)
+│       └── ... and 7 more
+
+├── .action-button (12 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\library\src\ui\ChatMessage.css:133
+│   │   ├── packages\library\src\ui\ChatMessage.css:226
+│   └── 🔧 USED IN:
+│       ├── packages\library\src\ui\ChatMessage.tsx:87 (className-prop)
+│       ├── packages\library\src\ui\ChatMessage.tsx:87 (utility-classes)
+│       ├── packages\library\src\ui\ChatMessage.tsx:95 (className-prop)
+│       ├── packages\library\src\ui\ChatMessage.tsx:95 (utility-classes)
+│       └── packages\library\src\ui\ChatMessage.tsx:103 (className-prop)
+│       └── ... and 5 more
+
+├── .Canvas (11 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\drag\drag.stage-crew.ts:23 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\resize\resize.stage-crew.ts:99 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\resize-line\resize.line.stage-crew.ts:13 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\update\update.stage-crew.ts:20 (template-literal)
+│       └── packages\digital-assets\src\canvas-scene-demo.ts:39 (template-literal)
+│       └── ... and 6 more
+
+├── .SVG (11 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts:94 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts:96 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts:103 (template-literal)
+│       ├── packages\canvas-component\src\symphonies\export\export.mp4.stage-crew.ts:65 (template-literal)
+│       └── packages\canvas-component\src\symphonies\export\export.mp4.stage-crew.ts:72 (template-literal)
+│       └── ... and 6 more
+
+├── .property-input (11 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\control-panel\src\ui\ControlPanel.css:115
+│   │   ├── packages\control-panel\src\ui\ControlPanel.css:191
+│   │   ├── packages\control-panel\src\ui\ControlPanel.css:323
+│   │   ├── packages\control-panel\__tests__\dark-mode-form-controls.spec.tsx:27
+│   └── 🔧 USED IN:
+│       ├── packages\control-panel\src\components\field-renderers\CodeTextarea.tsx:203 (className-prop)
+│       ├── packages\control-panel\src\components\field-renderers\ColorInput.tsx:66 (template-literal)
+│       ├── packages\control-panel\src\components\field-renderers\NumberInput.tsx:64 (template-literal)
+│       ├── packages\control-panel\src\components\field-renderers\SelectInput.tsx:34 (template-literal)
+│       └── packages\control-panel\src\components\field-renderers\TextInput.tsx:63 (template-literal)
+│       └── ... and 2 more
+
+├── .Generated (11 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\control-panel\src\symphonies\ui\ui.stage-crew.ts:219 (template-literal)
+│       ├── packages\control-panel\src\symphonies\ui\ui.stage-crew.ts:242 (template-literal)
+│       ├── packages\digital-assets\scripts\generate-slide-svgs.js:358 (template-literal)
+│       ├── packages\digital-assets\src\cli.ts:203 (template-literal)
+│       └── packages\digital-assets\src\generic-graph-generator.ts:84 (template-literal)
+│       └── ... and 6 more
+
+├── .slide-svg (11 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\digital-assets\assets\plugin-architecture\index.html:70
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:206 (class-attr)
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:207 (class-attr)
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:229 (class-attr)
+│       ├── packages\digital-assets\assets\plugin-architecture\index.html:230 (class-attr)
+│       └── packages\digital-assets\assets\plugin-architecture\index.html:252 (class-attr)
+│       └── ... and 5 more
+
+├── .scene-container (11 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:17
+│   │   ├── packages\digital-assets\src\cinematic-renderer.ts:167
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:279 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:468 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:485 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:504 (class-attr)
+│       └── packages\digital-assets\samples\event-router-cinematic-presentation.html:522 (class-attr)
+│       └── ... and 4 more
+
+├── .sequenceName (11 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\DuplicationDetector.ts:135 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\DuplicationDetector.ts:148 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\PerformanceTracker.ts:47 (template-literal)
+│       ├── packages\musical-conductor\modules\communication\sequences\monitoring\PerformanceTracker.ts:65 (template-literal)
+│       └── packages\musical-conductor\modules\communication\sequences\monitoring\PerformanceTracker.ts:110 (template-literal)
+│       └── ... and 6 more
+
+├── .active (10 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas\src\ui\CanvasPage.css:48
+│   │   ├── packages\canvas\src\ui\CanvasPage.css:123
+│   │   ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:27
+│   │   ├── packages\digital-assets\src\animation-coordinator.ts:227
+│   │   ├── packages\digital-assets\src\cinematic-renderer.ts:177
+│   │   ├── packages\digital-assets\tests\combined-storybook.test.js:100
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:643 (classList-method)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:646 (classList-method)
+│       ├── packages\digital-assets\src\cinematic-renderer.ts:317 (classList-method)
+│       └── packages\digital-assets\src\cinematic-renderer.ts:320 (classList-method)
+
+├── .M (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\augment\line.recompute.stage-crew.ts:176 (template-literal)
+│       ├── packages\digital-assets\src\animation-coordinator.ts:184 (template-literal)
+│       ├── packages\digital-assets\src\mono-graph-generator.ts:160 (template-literal)
+│       ├── packages\digital-assets\src\render-svg.ts:243 (template-literal)
+│       └── packages\digital-assets\src\render-svg.ts:247 (template-literal)
+│       └── ... and 5 more
+
+├── .rx-handle (10 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\canvas-component\src\symphonies\select\select.overlay.css.stage-crew.ts:12
+│   └── 🔧 USED IN:
+│       ├── packages\canvas-component\src\symphonies\select\select.overlay.dom.stage-crew.ts:27 (template-literal)
+│       ├── packages\canvas-component\__tests__\line.overlay-data-driven.spec.ts:84 (querySelector)
+│       ├── packages\canvas-component\__tests__\resize.dom.spec.ts:73 (querySelector)
+│       ├── packages\canvas-component\__tests__\resize.overlay-align.spec.ts:55 (querySelector)
+│       └── packages\canvas-component\__tests__\resize.overlay-tools-config.spec.ts:52 (querySelector)
+│       └── ... and 4 more
+
+├── .template (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:32 (template-literal)
+│       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:35 (template-literal)
+│       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component\symphonies\create\create.symphony.ts:60 (template-literal)
+│       ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component\symphonies\create\create.symphony.ts:63 (template-literal)
+│       └── packages\digital-assets\src\config-loader.ts:240 (template-literal)
+│       └── ... and 5 more
+
+├── .control-button (10 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:60
+│   │   ├── packages\digital-assets\src\cinematic-renderer.ts:210
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:567 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:568 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:569 (class-attr)
+│       ├── packages\digital-assets\samples\event-router-cinematic-presentation.html:570 (class-attr)
+│       └── packages\digital-assets\src\cinematic-renderer.ts:454 (class-attr)
+│       └── ... and 3 more
+
+├── .Error (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\scripts\generate-slide-svgs.js:275 (template-literal)
+│       ├── packages\digital-assets\scripts\generate-slide-svgs.js:286 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:143 (template-literal)
+│       ├── packages\digital-assets\src\canvas-storybook-demo.ts:153 (template-literal)
+│       └── packages\digital-assets\src\canvas-svg-extractor.ts:133 (template-literal)
+│       └── ... and 5 more
+
+├── .use (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\scripts\lib\injector.js:12 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:28 (template-literal)
+│       ├── packages\digital-assets\scripts\lib\injector.js:32 (template-literal)
+│       ├── packages\digital-assets\src\render-svg.ts:183 (template-literal)
+│       └── packages\digital-assets\tests\slide-driven-composition.validation.test.js:42 (template-literal)
+│       └── ... and 5 more
+
+├── .rect (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\digital-assets\src\render-svg.ts:59 (template-literal)
+│       ├── packages\digital-assets\src\render-svg.ts:190 (template-literal)
+│       ├── packages\digital-assets\src\slide01-data.ts:12 (template-literal)
+│       ├── packages\digital-assets\src\slide01-data.ts:14 (template-literal)
+│       └── packages\digital-assets\src\slide01-data.ts:16 (template-literal)
+│       └── ... and 5 more
+
+├── .chat-window (10 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── packages\library\src\ui\ChatWindow.css:17
+│   │   ├── packages\library\src\ui\ChatWindow.css:282
+│   │   ├── packages\library\src\ui\ChatWindow.css:290
+│   └── 🔧 USED IN:
+│       ├── packages\library\src\ui\ChatWindow.tsx:193 (className-prop)
+│       ├── packages\library\src\ui\ChatWindow.tsx:209 (className-prop)
+│       ├── packages\library\__tests__\ChatWindow.modal.spec.tsx:78 (querySelector)
+│       ├── packages\library\__tests__\ChatWindow.modal.spec.tsx:124 (querySelector)
+│       └── packages\library\__tests__\ChatWindow.modal.spec.tsx:144 (querySelector)
+│       └── ... and 2 more
+
+├── .shortcut (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:504 (template-literal)
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:505 (template-literal)
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:527 (template-literal)
+│       ├── packages\musical-conductor\tools\cli\shortcut-demo.ts:114 (template-literal)
+│       └── packages\musical-conductor\tools\cli\shortcut-demo.ts:115 (template-literal)
+│       └── ... and 5 more
+
+├── .Transfer (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:612 (template-literal)
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:636 (template-literal)
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:660 (template-literal)
+│       ├── packages\musical-conductor\tools\cli\knowledge-cli.ts:685 (template-literal)
+│       └── packages\musical-conductor\tools\cli\knowledge-cli.ts:760 (template-literal)
+│       └── ... and 5 more

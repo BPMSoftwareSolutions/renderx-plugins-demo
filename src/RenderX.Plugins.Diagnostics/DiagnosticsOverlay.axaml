@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.DiagnosticsOverlay"
+             Background="Transparent">
+    <Grid x:Name="OverlayGrid"
+          Background="#00000080"
+          IsVisible="False">
+        <!-- Modal Window -->
+        <Border Background="{DynamicResource Color.Background.Primary}"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                CornerRadius="8"
+                Padding="0"
+                Width="600"
+                Height="400"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            <Grid RowDefinitions="Auto,*,Auto">
+                <!-- Header -->
+                <Border Grid.Row="0"
+                        Background="{DynamicResource Color.Background.Tertiary}"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
+                        Padding="16">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <TextBlock Text="Diagnostics Details"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Border.Primary}"
+                                   VerticalAlignment="Center" />
+                        <Button x:Name="CloseButton"
+                                Content="✕"
+                                Background="Transparent"
+                                Foreground="#666"
+                                Padding="4"
+                                HorizontalAlignment="Right"
+                                Click="OnCloseClick" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Content -->
+                <ScrollViewer Grid.Row="1" Padding="16">
+                    <StackPanel x:Name="ContentPanel" Spacing="12" />
+                </ScrollViewer>
+
+                <!-- Footer -->
+                <Border Grid.Row="2"
+                        Background="{DynamicResource Color.Background.Tertiary}"
+                        BorderThickness="0,1,0,0"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
+                        Padding="16">
+                    <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+                        <Button Content="Close"
+                                Padding="12,6"
+                                Background="{DynamicResource Color.Border.Primary}"
+                                Foreground="{DynamicResource Color.Border.Primary}"
+                                FontSize="11"
+                                Click="OnCloseClick" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
+

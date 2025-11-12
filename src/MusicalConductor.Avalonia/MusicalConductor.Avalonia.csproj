@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>MusicalConductor.Avalonia</AssemblyName>
+    <RootNamespace>MusicalConductor.Avalonia</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>Avalonia.NET integration for MusicalConductor orchestration engine</Description>
+    <Authors>BPM Software Solutions</Authors>
+    <PackageProjectUrl>https://github.com/BPMSoftwareSolutions/MusicalConductor</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Jint for in-process JS engine -->
+    <PackageReference Include="Jint" Version="4.1.0" />
+
+    <!-- Avalonia for desktop UI -->
+    <PackageReference Include="Avalonia" Version="11.0.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
+
+    <!-- Microsoft DI for dependency injection -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="MusicalConductor.Core\MusicalConductor.Core.csproj" />
+  </ItemGroup>
+
+  <!-- Include the compiled JS bundle -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\conductor-bundle.js" />
+  </ItemGroup>
+
+  <!-- Exclude non-library code from this project -->
+  <ItemGroup>
+    <Compile Remove="Sample\**\*.cs" />
+    <Compile Remove="Tests\**\*.cs" />
+    <Compile Remove="MusicalConductor.Core\**\*.cs" />
+    <Compile Remove="MusicalConductor.AvaloniaV2\**\*.cs" />
+    <Compile Remove="MusicalConductor.Analyzers\**\*.cs" />
+  </ItemGroup>
+
+</Project>
+

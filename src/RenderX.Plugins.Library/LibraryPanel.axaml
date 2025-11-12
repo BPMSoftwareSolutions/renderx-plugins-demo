@@ -1,0 +1,153 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Library.LibraryPanel"
+             Background="{DynamicResource Color.Background.Tertiary}">
+    <UserControl.Styles>
+        <Style Selector="Border.component-item">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.component-item:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-2"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+    <DockPanel>
+        <!-- Header -->
+        <Border DockPanel.Dock="Top"
+                Background="{DynamicResource Color.Background.Hover}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{DynamicResource Color.Border.Secondary}"
+                Padding="12,8">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="📚"
+                               FontSize="16"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="Component Library"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Text.Primary}"
+                               VerticalAlignment="Center" />
+                    <!-- AI Chat Toggle Button -->
+                    <Button x:Name="AIToggleButton"
+                            Content="🤖 AI Chat"
+                            Classes="ai-toggle-button"
+                            FontSize="11"
+                            Padding="8,4"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Right"
+                            Click="OnAIChatToggle" />
+                </StackPanel>
+                <!-- AI Availability Hint -->
+                <Border x:Name="AIAvailabilityHint"
+                        Background="#fef3c7"
+                        BorderThickness="1"
+                        BorderBrush="#fcd34d"
+                        CornerRadius="4"
+                        Padding="8"
+                        IsVisible="False">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="💡"
+                                   FontSize="12"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="AI is not configured. Configure API key to enable AI component generation."
+                                   FontSize="10"
+                                   Foreground="#92400e"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+                <!-- Search Box -->
+                <TextBox x:Name="SearchBox"
+                         Watermark="Search components..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Error State -->
+        <Border x:Name="ErrorState"
+                DockPanel.Dock="Top"
+                Background="#fee2e2"
+                BorderThickness="1"
+                BorderBrush="#fca5a5"
+                CornerRadius="4"
+                Padding="12"
+                Margin="8"
+                IsVisible="False">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="⚠️"
+                               FontSize="16"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="Error Loading Components"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Foreground="#dc2626"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock x:Name="ErrorMessage"
+                           FontSize="11"
+                           Foreground="#991b1b"
+                           TextWrapping="Wrap"
+                           Text="An error occurred while loading components. Please try refreshing the page." />
+                <Button Content="Retry"
+                        Padding="8,4"
+                        Background="#dc2626"
+                        Foreground="White"
+                        FontSize="11"
+                        Click="OnRetryClick" />
+            </StackPanel>
+        </Border>
+
+        <!-- Components List -->
+        <ScrollViewer DockPanel.Dock="Top">
+            <ItemsControl x:Name="ComponentsItemsControl" Padding="8">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="ComponentBorder"
+                                Classes="component-item"
+                                Background="{DynamicResource Color.Background.Primary}"
+                                BorderBrush="{DynamicResource Color.Border.Secondary}"
+                                BorderThickness="1"
+                                CornerRadius="4"
+                                Padding="12"
+                                Margin="0,4"
+                                PointerPressed="OnComponentPointerPressed"
+                                PointerMoved="OnComponentPointerMoved"
+                                PointerReleased="OnComponentPointerReleased"
+                                DoubleTapped="OnComponentDoubleClick"
+                                Cursor="Hand">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding Name}"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource Color.Text.Primary}" />
+                                <TextBlock Text="{Binding Category}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource Color.Text.Secondary}" />
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="10"
+                                           Foreground="{DynamicResource Color.Text.Tertiary}"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
+

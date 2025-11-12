@@ -1,0 +1,108 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.LibraryComponent.ComponentEditor"
+             Background="{DynamicResource Color.Background.Primary}">
+    <Border BorderThickness="1"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            CornerRadius="4"
+            Padding="16">
+        <StackPanel Spacing="16">
+            <TextBlock Text="Component Editor"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource Color.Border.Primary}" />
+            
+            <!-- Component Name -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Component Name"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBox x:Name="ComponentNameBox"
+                         Watermark="Enter component name..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
+            </StackPanel>
+            
+            <!-- Component Type -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Component Type"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <ComboBox x:Name="ComponentTypeBox"
+                          FontSize="11"
+                          Padding="6,4">
+                    <ComboBoxItem>UserControl</ComboBoxItem>
+                    <ComboBoxItem>Custom</ComboBoxItem>
+                    <ComboBoxItem>Library</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            
+            <!-- Description -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Description"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBox x:Name="DescriptionBox"
+                         Watermark="Enter description..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}"
+                         Height="80"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+            
+            <!-- Properties -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Properties"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <ItemsControl x:Name="PropertiesControl"
+                              Background="Transparent">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{DynamicResource Color.Background.Tertiary}"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource Color.Border.Primary}"
+                                    CornerRadius="2"
+                                    Padding="8"
+                                    Margin="0,2">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="10"
+                                               FontWeight="Bold"
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
+                                    <TextBlock Text="{Binding Type}"
+                                               FontSize="9"
+                                               Foreground="#999" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+            
+            <!-- Actions -->
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Save"
+                        Padding="12,6"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
+                        FontSize="11" />
+                <Button Content="Cancel"
+                        Padding="12,6"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Border.Primary}"
+                        FontSize="11" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
+

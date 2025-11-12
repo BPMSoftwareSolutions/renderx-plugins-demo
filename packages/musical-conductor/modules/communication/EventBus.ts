@@ -40,6 +40,37 @@ export class EventBus {
   private subscriptionCounter: number = 0;
   private eventCounts: Record<string, number> = {};
 
+  constructor() {
+    // Provide minimal global shims so refactored logs can add ISO timestamps
+    // even when ConductorLogger isn't initialized (e.g., non-dev builds).
+    try {
+      const g: any = (globalThis as any);
+      const buildShim = (method: 'log'|'info'|'warn'|'error') => {
+        return (...args: any[]) => {
+          const ts = new Date().toISOString();
+          if (typeof args[0] === 'string') {
+            args[0] = `${ts} ${args[0]}`;
+          } else {
+            args.unshift(ts);
+          }
+          (console as any)[method](...args);
+        };
+      };
+      if (!g.__MC_LOG) {
+        g.__MC_LOG = buildShim('log');
+      }
+      if (!g.__MC_INFO) {
+        g.__MC_INFO = buildShim('info');
+      }
+      if (!g.__MC_WARN) {
+        g.__MC_WARN = buildShim('warn');
+      }
+      if (!g.__MC_ERROR) {
+        g.__MC_ERROR = buildShim('error');
+      }
+    } catch {}
+  }
+
   /**
    * Subscribe to an event
    * @param eventName - Name of the event to subscribe to
@@ -64,7 +95,7 @@ export class EventBus {
 
       if (existingSubscription) {
         const pluginInfo = ` from plugin ${context.pluginId}`;
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🚫 EventBus: Duplicate subscription blocked for "${eventName}"${pluginInfo}`
         );
         // Return the existing unsubscribe function
@@ -90,7 +121,7 @@ export class EventBus {
       const pluginInfo = context?.pluginId
         ? ` (plugin: ${context.pluginId})`
         : "";
-      console.log(
+      (globalThis as any).__MC_LOG(
         `📡 EventBus: Subscribed to "${eventName}" (${this.events[eventName].length} total subscribers)${pluginInfo}`
       );
     }
@@ -122,7 +153,7 @@ export class EventBus {
         const pluginInfo = removedSub.pluginId
           ? ` (plugin: ${removedSub.pluginId})`
           : "";
-        console.log(
+        (globalThis as any).__MC_LOG(
           `📡 EventBus: Unsubscribed from "${eventName}" (${this.events[eventName].length} remaining subscribers)${pluginInfo}`
         );
       }
@@ -158,7 +189,7 @@ export class EventBus {
             const pluginInfo = subscription.pluginId
               ? ` (plugin: ${subscription.pluginId})`
               : "";
-            console.error(
+            (globalThis as any).__MC_ERROR(
               `📡 EventBus: Async error in subscriber ${index} for "${eventName}"${pluginInfo}:`,
               error
             );
@@ -168,7 +199,7 @@ export class EventBus {
         const pluginInfo = subscription.pluginId
           ? ` (plugin: ${subscription.pluginId})`
           : "";
-        console.error(
+        (globalThis as any).__MC_ERROR(
           `📡 EventBus: Error in subscriber ${index} for "${eventName}"${pluginInfo}:`,
           error
         );
@@ -199,7 +230,7 @@ export class EventBus {
         const pluginInfo = subscription.pluginId
           ? ` (plugin: ${subscription.pluginId})`
           : "";
-        console.error(
+        (globalThis as any).__MC_ERROR(
           `📡 EventBus: Error in subscriber ${index} for "${eventName}"${pluginInfo}:`,
           error
         );
@@ -219,7 +250,7 @@ export class EventBus {
     if (this.events[eventName]) {
       delete this.events[eventName];
       if (this.debugMode) {
-        console.log(`📡 EventBus: Cleared all subscribers for "${eventName}"`);
+  (globalThis as any).__MC_LOG(`📡 EventBus: Cleared all subscribers for "${eventName}"`);
       }
     }
   }
@@ -231,7 +262,7 @@ export class EventBus {
     this.events = {};
     this.eventCounts = {};
     if (this.debugMode) {
-      console.log("📡 EventBus: Cleared all subscribers");
+  (globalThis as any).__MC_LOG("📡 EventBus: Cleared all subscribers");
     }
   }
 
@@ -282,7 +313,7 @@ export class EventBus {
    */
   setDebugMode(enabled: boolean): void {
     this.debugMode = enabled;
-    console.log(`📡 EventBus: Debug mode ${enabled ? "enabled" : "disabled"}`);
+  (globalThis as any).__MC_LOG(`📡 EventBus: Debug mode ${enabled ? "enabled" : "disabled"}`);
   }
 }
 
@@ -319,14 +350,14 @@ export class ConductorEventBus extends EventBus {
 
     // Use external conductor if provided
     if (externalConductor) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         "🎼 EventBus: Using external conductor for unified sequence system"
       );
       this.externalConductor = externalConductor;
       // Use external conductor's sequence registry for unified system
       this.sequences = externalConductor.sequences || new Map();
     } else {
-      console.log("🎼 EventBus: Using internal conductor (legacy mode)");
+  (globalThis as any).__MC_LOG("🎼 EventBus: Using internal conductor (legacy mode)");
       // Legacy mode: separate sequence system
       this.sequences = new Map();
     }
@@ -440,7 +471,7 @@ export class ConductorEventBus extends EventBus {
   private emitInSequence(eventName: string, data: any, options: any): void {
     // Delegate to external conductor if available
     if (this.externalConductor && this.externalConductor.startSequence) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 EventBus: Delegating to external conductor for sequence event "${eventName}"`
       );
       return this.externalConductor.startSequence(
@@ -476,7 +507,7 @@ export class ConductorEventBus extends EventBus {
     options: any,
     dependencies: string[]
   ): void {
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 EventBus: Queueing ${eventName} for dependencies:`,
       dependencies
     );
@@ -501,7 +532,7 @@ export class ConductorEventBus extends EventBus {
     signal: string,
     priority: string
   ): void {
-    console.log(`🎼 EventBus: Queueing ${eventName} for signal: ${signal}`);
+  (globalThis as any).__MC_LOG(`🎼 EventBus: Queueing ${eventName} for signal: ${signal}`);
     // Simple implementation - could be enhanced with proper signal handling
     const checkSignal = () => {
       if (this.completedEvents.has(signal)) {
@@ -543,7 +574,7 @@ export class ConductorEventBus extends EventBus {
    * @param conductor - The main conductor instance
    */
   connectToMainConductor(conductor: any): void {
-    console.log(
+    (globalThis as any).__MC_LOG(
       "🎼 EventBus: Connecting to main conductor for unified sequence system"
     );
     this.externalConductor = conductor;
@@ -551,11 +582,11 @@ export class ConductorEventBus extends EventBus {
     // Use the main conductor's sequence registry for unified access
     if (conductor.sequences) {
       this.sequences = conductor.sequences;
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 EventBus: Connected to main conductor with ${this.sequences.size} sequences`
       );
     } else {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "🚨 EventBus: Main conductor does not have sequences property"
       );
     }
@@ -625,7 +656,7 @@ export class ConductorEventBus extends EventBus {
       try {
         return await this.externalConductor.startSequence(sequenceName, data);
       } catch (error) {
-        console.error(
+        (globalThis as any).__MC_ERROR(
           `🎼 EventBus: Error playing sequence ${sequenceName}:`,
           error
         );

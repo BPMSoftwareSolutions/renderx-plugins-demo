@@ -1,0 +1,1213 @@
+C:\source\repos\bpm\internal\renderx-plugins-demo\packages/
+├── canvas/
+│   ├── AI_ARCHITECTURE_DIAGRAMS.md
+│   ├── AI_CHATBOT_FEATURE_ISSUE.md
+│   ├── AI_CHATBOT_RESEARCH_SUMMARY.md
+│   ├── AI_FEATURE_DOCS_INDEX.md
+│   ├── eslint-rules/
+│   │   └── allowed-imports.js
+│   ├── eslint.config.js
+│   ├── GITHUB_ISSUE_TEMPLATE.md
+│   ├── package.json
+│   ├── README.md
+│   ├── src/
+│   │   ├── index.ts
+│   │   └── ui/
+│   │       ├── CanvasDrop.ts
+│   │       ├── CanvasHeader.tsx
+│   │       ├── CanvasPage.css
+│   │       └── CanvasPage.tsx
+│   ├── tsconfig.json
+│   ├── vitest.config.ts
+│   └── __tests__/
+│       ├── allowed-imports.spec.ts
+│       ├── CanvasDrop.container-route.spec.ts
+│       ├── create-page.dom.spec.ts
+│       ├── drop.spec.ts
+│       ├── exports.spec.ts
+│       ├── lint.guardrails.spec.ts
+│       └── ui.export.spec.ts
+├── canvas-component/
+│   ├── docs/
+│   │   ├── canvas-component-deselection.md
+│   │   └── what-needs-to-change-for-deselection.md
+│   ├── eslint-rules/
+│   │   └── allowed-imports.js
+│   ├── eslint.config.js
+│   ├── json-topics/
+│   │   └── canvas-component.json
+│   ├── package.json
+│   ├── README.md
+│   ├── src/
+│   │   ├── index.ts
+│   │   ├── symphonies/
+│   │   │   ├── augment/
+│   │   │   │   ├── augment.line.stage-crew.ts
+│   │   │   │   └── line.recompute.stage-crew.ts
+│   │   │   ├── copy/
+│   │   │   │   ├── copy.stage-crew.ts
+│   │   │   │   └── copy.symphony.ts
+│   │   │   ├── create/
+│   │   │   │   ├── create.arrangement.ts
+│   │   │   │   ├── create.css.stage-crew.ts
+│   │   │   │   ├── create.dom.stage-crew.ts
+│   │   │   │   ├── create.from-import.ts
+│   │   │   │   ├── create.interactions.stage-crew.ts
+│   │   │   │   ├── create.io.ts
+│   │   │   │   ├── create.notify.ts
+│   │   │   │   ├── create.react.stage-crew.ts
+│   │   │   │   ├── create.stage-crew.ts
+│   │   │   │   ├── create.style.stage-crew.ts
+│   │   │   │   └── create.symphony.ts
+│   │   │   ├── delete/
+│   │   │   │   └── delete.stage-crew.ts
+│   │   │   ├── deselect/
+│   │   │   │   └── deselect.stage-crew.ts
+│   │   │   ├── drag/
+│   │   │   │   ├── drag.stage-crew.ts
+│   │   │   │   └── drag.symphony.ts
+│   │   │   ├── export/
+│   │   │   │   ├── export.css.stage-crew.ts
+│   │   │   │   ├── export.discover.stage-crew.ts
+│   │   │   │   ├── export.download.stage-crew.ts
+│   │   │   │   ├── export.gif.stage-crew.ts
+│   │   │   │   ├── export.gif.symphony.ts
+│   │   │   │   ├── export.io.ts
+│   │   │   │   ├── export.mp4-encoder.ts
+│   │   │   │   ├── export.mp4.stage-crew.ts
+│   │   │   │   ├── export.mp4.symphony.ts
+│   │   │   │   ├── export.pure.ts
+│   │   │   │   ├── export.stage-crew.ts
+│   │   │   │   └── export.symphony.ts
+│   │   │   ├── import/
+│   │   │   │   ├── import.css.stage-crew.ts
+│   │   │   │   ├── import.file.stage-crew.ts
+│   │   │   │   ├── import.io.ts
+│   │   │   │   ├── import.nodes.stage-crew.ts
+│   │   │   │   ├── import.parse.pure.ts
+│   │   │   │   └── import.symphony.ts
+│   │   │   ├── line-advanced/
+│   │   │   │   ├── line.manip.end.symphony.ts
+│   │   │   │   ├── line.manip.move.symphony.ts
+│   │   │   │   ├── line.manip.stage-crew.ts
+│   │   │   │   └── line.manip.start.symphony.ts
+│   │   │   ├── paste/
+│   │   │   │   ├── paste.stage-crew.ts
+│   │   │   │   └── paste.symphony.ts
+│   │   │   ├── resize/
+│   │   │   │   ├── resize.end.symphony.ts
+│   │   │   │   ├── resize.move.symphony.ts
+│   │   │   │   ├── resize.stage-crew.ts
+│   │   │   │   ├── resize.start.symphony.ts
+│   │   │   │   └── resize.symphony.ts
+│   │   │   ├── resize-line/
+│   │   │   │   ├── resize.line.end.symphony.ts
+│   │   │   │   ├── resize.line.move.symphony.ts
+│   │   │   │   ├── resize.line.stage-crew.ts
+│   │   │   │   └── resize.line.start.symphony.ts
+│   │   │   ├── select/
+│   │   │   │   ├── select.overlay.css.stage-crew.ts
+│   │   │   │   ├── select.overlay.dom.stage-crew.ts
+│   │   │   │   ├── select.overlay.line-advanced.stage-crew.ts
+│   │   │   │   ├── select.overlay.line-resize.stage-crew.ts
+│   │   │   │   ├── select.overlay.resize.stage-crew.ts
+│   │   │   │   ├── select.stage-crew.ts
+│   │   │   │   ├── select.svg-node.stage-crew.ts
+│   │   │   │   ├── select.svg-node.symphony.ts
+│   │   │   │   └── select.symphony.ts
+│   │   │   ├── update/
+│   │   │   │   ├── update.stage-crew.ts
+│   │   │   │   ├── update.svg-node.stage-crew.ts
+│   │   │   │   ├── update.svg-node.symphony.ts
+│   │   │   │   └── update.symphony.ts
+│   │   │   └── _clipboard.ts
+│   │   └── temp-deps/
+│   │       ├── conductor.ts
+│   │       ├── css-registry.store.ts
+│   │       ├── feature-flags.ts
+│   │       ├── observer.store.ts
+│   │       ├── rule-engine.ts
+│   │       └── sanitizeHtml.ts
+│   ├── tsconfig.json
+│   ├── vitest.config.ts
+│   └── __tests__/
+│       ├── advanced-line.augment.spec.ts
+│       ├── advanced-line.manip.handlers.spec.ts
+│       ├── advanced-line.overlay.attach.spec.ts
+│       ├── advanced-line.overlay.drag.spec.ts
+│       ├── advanced-line.recompute.spec.ts
+│       ├── advanced-line.resize.scale.spec.ts
+│       ├── advanced-line.viewbox.autosize.spec.ts
+│       ├── allowed-imports.spec.ts
+│       ├── container-child-overlay.spec.ts
+│       ├── container-child-selection.spec.ts
+│       ├── copy-paste.sequences.schema.spec.ts
+│       ├── copy-paste.spec.ts
+│       ├── create.container-append.spec.ts
+│       ├── create.dom.spec.ts
+│       ├── create.from-data.spec.ts
+│       ├── create.from-import.spec.ts
+│       ├── create.io.spec.ts
+│       ├── create.react.integration.spec.ts
+│       ├── create.react.spec.ts
+│       ├── create.svg.basic.spec.ts
+│       ├── create.svg.markup.spec.ts
+│       ├── delete.spec.ts
+│       ├── deselection.spec.ts
+│       ├── drag.dom.spec.ts
+│       ├── drag.overlay-hide.spec.ts
+│       ├── drag.transform.spec.ts
+│       ├── export-import.content.spec.ts
+│       ├── export.css.collection.fix.spec.ts
+│       ├── export.css.debug.spec.ts
+│       ├── export.integration.basic.spec.ts
+│       ├── export.integration.dom-errors.spec.ts
+│       ├── export.integration.dom-scan.spec.ts
+│       ├── export.integration.structure.spec.ts
+│       ├── export.io.spec.ts
+│       ├── export.json-css.end-to-end.spec.ts
+│       ├── export.pure.spec.ts
+│       ├── export.stage-crew.spec.ts
+│       ├── exports.spec.ts
+│       ├── helpers/
+│       │   └── host-click-select.ts
+│       ├── host.harness.click-select.spec.ts
+│       ├── import.base-classes.spec.ts
+│       ├── import.instance-class.spec.ts
+│       ├── import.integration.spec.ts
+│       ├── import.interactions.drag-callbacks.spec.ts
+│       ├── import.nesting.spec.ts
+│       ├── import.selection.spec.ts
+│       ├── import.variant-toggle.spec.ts
+│       ├── line.overlay-data-driven.spec.ts
+│       ├── line.svg.spec.ts
+│       ├── lint.guardrails.spec.ts
+│       ├── manifest.runtime.entry.spec.ts
+│       ├── package.register.spec.ts
+│       ├── paste.interactions.spec.ts
+│       ├── registerAllSequences.idempotency.spec.ts
+│       ├── registerAllSequences.spec.ts
+│       ├── resize.dom.spec.ts
+│       ├── resize.overlay-align.spec.ts
+│       ├── resize.overlay-tools-config.spec.ts
+│       ├── resize.play.spec.ts
+│       ├── resize.plugin-route.spec.ts
+│       ├── resize.svg.spec.ts
+│       ├── routing-declarations.spec.ts
+│       ├── runtime.register.spec.ts
+│       ├── select.overlay-container.spec.ts
+│       ├── select.overlay.css.spec.ts
+│       ├── select.svg-node.overlay.spec.ts
+│       ├── selection-id-derivation.spec.ts
+│       ├── selection-post-externalization.spec.ts
+│       ├── selection-topic-first.spec.ts
+│       ├── selection-topic-publishing.spec.ts
+│       ├── selection.forwarding.spec.ts
+│       ├── selection.loop-regression.spec.ts
+│       ├── svg-node-click-select.spec.ts
+│       └── svg-node.update.spec.ts
+├── components/
+│   ├── LICENSE
+│   ├── package.json
+│   ├── README.md
+│   ├── src/
+│   │   └── index.ts
+│   └── tsconfig.json
+├── control-panel/
+│   ├── eslint.config.js
+│   ├── json-topics/
+│   │   └── control-panel.json
+│   ├── package.json
+│   ├── README.md
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── field-renderers/
+│   │   │   │   ├── CheckboxInput.tsx
+│   │   │   │   ├── CodeTextarea.tsx
+│   │   │   │   ├── ColorInput.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── NumberInput.tsx
+│   │   │   │   ├── SelectInput.tsx
+│   │   │   │   ├── SvgNodeInspector.tsx
+│   │   │   │   ├── SvgTreeView.tsx
+│   │   │   │   └── TextInput.tsx
+│   │   │   ├── layout/
+│   │   │   │   ├── EmptyState.tsx
+│   │   │   │   ├── LoadingState.tsx
+│   │   │   │   └── PanelHeader.tsx
+│   │   │   ├── modals/
+│   │   │   │   ├── CodeEditorModal.tsx
+│   │   │   │   ├── CssEditorModal.css
+│   │   │   │   └── CssEditorModal.tsx
+│   │   │   └── sections/
+│   │   │       ├── ClassManager.tsx
+│   │   │       ├── PropertyFieldRenderer.tsx
+│   │   │       └── PropertySection.tsx
+│   │   ├── config/
+│   │   │   └── control-panel.schema.json
+│   │   ├── hooks/
+│   │   │   ├── useControlPanelActions.ts
+│   │   │   ├── useControlPanelSequences.ts
+│   │   │   ├── useControlPanelState.ts
+│   │   │   └── useSchemaResolver.ts
+│   │   ├── index.css
+│   │   ├── index.ts
+│   │   ├── services/
+│   │   │   └── schema-resolver.service.ts
+│   │   ├── state/
+│   │   │   ├── control-panel.reducer.ts
+│   │   │   ├── css-registry.store.ts
+│   │   │   ├── observer.store.ts
+│   │   │   └── __tests__/
+│   │   │       └── css-registry.store.test.ts
+│   │   ├── symphonies/
+│   │   │   ├── classes/
+│   │   │   │   ├── classes.stage-crew.ts
+│   │   │   │   └── classes.symphony.ts
+│   │   │   ├── css-management/
+│   │   │   │   ├── css-management.stage-crew.ts
+│   │   │   │   └── css-management.symphony.ts
+│   │   │   ├── selection/
+│   │   │   │   ├── selection.stage-crew.ts
+│   │   │   │   └── selection.symphony.ts
+│   │   │   ├── ui/
+│   │   │   │   ├── ui.stage-crew.ts
+│   │   │   │   └── ui.symphony.ts
+│   │   │   └── update/
+│   │   │       ├── update.stage-crew.ts
+│   │   │       └── update.symphony.ts
+│   │   ├── types/
+│   │   │   └── control-panel.types.ts
+│   │   ├── ui/
+│   │   │   ├── ControlPanel.css
+│   │   │   └── ControlPanel.tsx
+│   │   └── utils/
+│   │       ├── content-extractor.ts
+│   │       └── field.utils.ts
+│   ├── test-results.xml
+│   ├── tsconfig.json
+│   ├── tsup.config.ts
+│   ├── vitest.config.ts
+│   ├── vitest.setup.ts
+│   └── __tests__/
+│       ├── attribute-editing.bidirectional.spec.ts
+│       ├── attribute-editing.integration.spec.ts
+│       ├── bidirectional-sync.spec.ts
+│       ├── classes.editing.spec.ts
+│       ├── css.idempotency.spec.ts
+│       ├── dark-mode-form-controls.spec.tsx
+│       ├── eventrouter-communication.spec.ts
+│       ├── exports.spec.ts
+│       ├── heading-level-sync.spec.ts
+│       ├── html.code-editor.fallback.spec.ts
+│       ├── html.code-editor.mapping.spec.ts
+│       ├── integration.end-to-end.spec.ts
+│       ├── interaction-routing.spec.ts
+│       ├── live-updates.drag-resize.spec.ts
+│       ├── observer.store.spec.ts
+│       ├── schema-resolver.memo.spec.ts
+│       ├── selection.package-notify.observer.spec.ts
+│       ├── selection.sequence-model-and-notify.spec.ts
+│       ├── svg.code-editor.mapping.spec.ts
+│       ├── ui-init.batched.spec.ts
+│       ├── ui-sequences.spec.ts
+│       ├── __fixtures__/
+│       └── __mocks__/
+│           └── @renderx-plugins/
+│               ├── canvas-component/
+│               │   └── symphonies/
+│               │       ├── create/
+│               │       │   └── create.symphony.ts
+│               │       ├── drag/
+│               │       │   └── drag.symphony.ts
+│               │       └── resize/
+│               │           └── resize.move.symphony.ts
+│               └── canvas-component.ts
+├── digital-assets/
+│   ├── assets/
+│   │   ├── event-router/
+│   │   │   ├── event_router_storybook - draft.ui
+│   │   │   ├── event_router_storybook.ui
+│   │   │   ├── header-bar/
+│   │   │   │   ├── bus-icon.svg
+│   │   │   │   ├── complete-header-bar.svg
+│   │   │   │   ├── legend-icons.svg
+│   │   │   │   └── navigation-tabs.svg
+│   │   │   ├── inventory/
+│   │   │   │   ├── animated_traffic_light.svg
+│   │   │   │   ├── bus_depot.mapping.json
+│   │   │   │   ├── canvas-design-1759075265568.ui
+│   │   │   │   ├── canvas-design-1759075361399.ui
+│   │   │   │   ├── canvas-design-1759075862874.ui
+│   │   │   │   ├── container-example-canvas-design-1759076283542.ui
+│   │   │   │   ├── event-router-story.canvas.ui
+│   │   │   │   ├── event_route.mapping.json
+│   │   │   │   ├── event_routing-bus-driving through depot - with traffic light.ui
+│   │   │   │   ├── event_routing-bus-driving through depot - without other elements.ui
+│   │   │   │   ├── event_routing-bus-driving through depot.ui
+│   │   │   │   ├── event_routing-scene-1-and-2.ui
+│   │   │   │   ├── event_routing.ui
+│   │   │   │   ├── guard_rails.svg
+│   │   │   │   ├── integrated_bus_leaving_depot.svg
+│   │   │   │   ├── integrated_event_route.svg
+│   │   │   │   ├── integrated_middle_journey.svg
+│   │   │   │   ├── integrated_scene_1_2.svg
+│   │   │   │   ├── integrated_scene_3.svg
+│   │   │   │   ├── integrated_scene_4.svg
+│   │   │   │   ├── integrated_scene_5.svg
+│   │   │   │   ├── integrated_scene_6.svg
+│   │   │   │   ├── integrated_scene_7.svg
+│   │   │   │   ├── middle_journey.mapping.json
+│   │   │   │   ├── people_waiting_bus.svg
+│   │   │   │   ├── road_600px.svg
+│   │   │   │   ├── scene3_subscribers.mapping.json
+│   │   │   │   ├── scene4_transfer_hub.mapping.json
+│   │   │   │   ├── scene5_destination.mapping.json
+│   │   │   │   ├── scene6_boundaries.mapping.json
+│   │   │   │   ├── scene7_route_map.mapping.json
+│   │   │   │   ├── school_bus_depot.svg
+│   │   │   │   ├── street_sign.svg
+│   │   │   │   ├── yellow_school_bus-driving-thru.svg
+│   │   │   │   └── yellow_school_bus.svg
+│   │   │   ├── Overall header bar.md
+│   │   │   ├── Scene 1 (the bus leaving the depot).md
+│   │   │   ├── Scene 2 (the bus encountering its first rules of the road).md
+│   │   │   ├── Scene 3 (the first subscriber stop and replay cache).md
+│   │   │   ├── Scene 4 (the transfer hub and the conductor).md
+│   │   │   ├── Scene 5 (rules, boundaries, and street signs).md
+│   │   │   ├── Scene 6 (the final destination, the school representing application state).md
+│   │   │   ├── scene-1/
+│   │   │   │   ├── animated-scene-1.svg
+│   │   │   │   ├── complete-scene-1.svg
+│   │   │   │   ├── depot-building.svg
+│   │   │   │   ├── road-with-dashes.svg
+│   │   │   │   ├── school-bus-leaving.svg
+│   │   │   │   └── sky-with-clouds.svg
+│   │   │   ├── scene-2/
+│   │   │   │   ├── animated-scene-2.svg
+│   │   │   │   ├── complete-scene-2.svg
+│   │   │   │   ├── diagnostics-street-sign.svg
+│   │   │   │   ├── manifest-billboard.svg
+│   │   │   │   └── traffic-light-debounce.svg
+│   │   │   ├── scene-3/
+│   │   │   │   ├── animated-scene-3.svg
+│   │   │   │   ├── bus-stop-shelter.svg
+│   │   │   │   ├── complete-scene-3.svg
+│   │   │   │   └── replay-cache-kiosk.svg
+│   │   │   ├── scene-4/
+│   │   │   │   ├── animated-scene-4.svg
+│   │   │   │   ├── complete-scene-4.svg
+│   │   │   │   └── transfer-hub-conductor.svg
+│   │   │   ├── scene-5/
+│   │   │   │   ├── animated-scene-5.svg
+│   │   │   │   ├── complete-scene-5.svg
+│   │   │   │   ├── performance-lane-markings.svg
+│   │   │   │   └── street-signs-rules.svg
+│   │   │   ├── scene-6/
+│   │   │   │   ├── animated-scene-6.svg
+│   │   │   │   ├── children-disembarking.svg
+│   │   │   │   ├── complete-scene-6.svg
+│   │   │   │   └── school-building.svg
+│   │   │   ├── School Bus Route — EventRouter Story.md
+│   │   │   ├── story-driven one-page diagram.md
+│   │   │   ├── storyboard summary.md
+│   │   │   ├── storyboard-summary/
+│   │   │   │   └── complete-storyboard.svg
+│   │   │   └── unified_storybook.svg
+│   │   └── plugin-architecture/
+│   │       ├── architecture-review.md
+│   │       ├── index.html
+│   │       ├── plugin-integration-slides.json
+│   │       ├── slide-01-manifest/
+│   │       │   ├── build-publish/
+│   │       │   │   ├── conveyor.svg
+│   │       │   │   ├── staging-pad.svg
+│   │       │   │   ├── uplink-arrow.svg
+│   │       │   │   └── version-tags.svg
+│   │       │   ├── build-publish - template.svg
+│   │       │   ├── build-publish.description.md
+│   │       │   ├── build-publish.svg
+│   │       │   ├── handlers-export/
+│   │       │   │   ├── circuit-traces.svg
+│   │       │   │   ├── connectors.svg
+│   │       │   │   ├── gradient.svg
+│   │       │   │   └── ports.svg
+│   │       │   ├── handlers-export.description.md
+│   │       │   ├── handlers-export.svg
+│   │       │   ├── host-sdk/
+│   │       │   │   ├── console.svg
+│   │       │   │   ├── modules.svg
+│   │       │   │   ├── ports.svg
+│   │       │   │   └── rails.svg
+│   │       │   ├── host-sdk.description.md
+│   │       │   ├── host-sdk.svg
+│   │       │   ├── plugin-manifest/
+│   │       │   │   ├── document-card.svg
+│   │       │   │   ├── generated-stamp.svg
+│   │       │   │   ├── json-braces.svg
+│   │       │   │   ├── key-value-rows.svg
+│   │       │   │   └── tabs.svg
+│   │       │   ├── plugin-manifest.description.md
+│   │       │   ├── plugin-manifest.svg
+│   │       │   ├── plugin-package/
+│   │       │   │   ├── glyphs.svg
+│   │       │   │   ├── label.svg
+│   │       │   │   ├── npm-badge.svg
+│   │       │   │   ├── package-box.svg
+│   │       │   │   └── shadow.svg
+│   │       │   ├── plugin-package.description.md
+│   │       │   ├── plugin-package.svg
+│   │       │   └── story.md
+│   │       ├── slide-01-manifest.svg
+│   │       ├── slide-02-discovery/
+│   │       │   ├── feature-flags.description.md
+│   │       │   ├── feature-flags.svg
+│   │       │   ├── handlers-path.description.md
+│   │       │   ├── handlers-path.svg
+│   │       │   ├── host-app.description.md
+│   │       │   ├── host-app.svg
+│   │       │   ├── plugin-loader.description.md
+│   │       │   ├── plugin-loader.svg
+│   │       │   ├── routing-config.description.md
+│   │       │   ├── routing-config.svg
+│   │       │   └── story.md
+│   │       ├── slide-02-discovery.svg
+│   │       ├── slide-03-events/
+│   │       │   ├── event-router.description.md
+│   │       │   ├── event-router.svg
+│   │       │   ├── replay-cache.description.md
+│   │       │   ├── replay-cache.svg
+│   │       │   ├── selection-flow.description.md
+│   │       │   ├── selection-flow.svg
+│   │       │   ├── story.md
+│   │       │   ├── symphony.description.md
+│   │       │   ├── symphony.svg
+│   │       │   ├── topics-bus.description.md
+│   │       │   └── topics-bus.svg
+│   │       ├── slide-03-events.svg
+│   │       ├── slide-04-ui/
+│   │       │   ├── canvas.description.md
+│   │       │   ├── canvas.svg
+│   │       │   ├── component-json.description.md
+│   │       │   ├── component-json.svg
+│   │       │   ├── component-mapper.description.md
+│   │       │   ├── component-mapper.svg
+│   │       │   ├── control-panel.description.md
+│   │       │   ├── control-panel.svg
+│   │       │   ├── library-panel.description.md
+│   │       │   ├── library-panel.svg
+│   │       │   └── story.md
+│   │       ├── slide-04-ui.svg
+│   │       ├── slide-05-quality/
+│   │       │   ├── adr.description.md
+│   │       │   ├── adr.svg
+│   │       │   ├── ci.description.md
+│   │       │   ├── ci.svg
+│   │       │   ├── e2e-test.description.md
+│   │       │   ├── e2e-test.svg
+│   │       │   ├── eslint-rules.description.md
+│   │       │   ├── eslint-rules.svg
+│   │       │   ├── story.md
+│   │       │   ├── vitest.description.md
+│   │       │   └── vitest.svg
+│   │       ├── slide-05-quality.svg
+│   │       └── specs/
+│   │           ├── slide-01-manifest/
+│   │           │   ├── build-publish.json
+│   │           │   ├── handlers-export.json
+│   │           │   ├── host-sdk.json
+│   │           │   ├── plugin-manifest.json
+│   │           │   └── plugin-package.json
+│   │           ├── slide-02-discovery/
+│   │           │   ├── handlers-path.json
+│   │           │   ├── host-app.json
+│   │           │   └── plugin-loader.json
+│   │           ├── slide-03-events/
+│   │           │   └── event-router.json
+│   │           ├── slide-04-ui/
+│   │           │   └── canvas.json
+│   │           └── slide-05-quality/
+│   │               └── vitest.json
+│   ├── CANVAS-STORYBOOK-PROCESSING-SUMMARY.md
+│   ├── CANVAS-TO-GRAPH-CONVERSION-SUMMARY.md
+│   ├── config/
+│   │   ├── graph-templates/
+│   │   │   ├── data-pipeline.json
+│   │   │   ├── microservices.json
+│   │   │   └── social-network.json
+│   │   ├── layouts/
+│   │   │   ├── plugin-tiles.json
+│   │   │   └── standard-graph.json
+│   │   ├── schemas/
+│   │   │   ├── layout-config.schema.json
+│   │   │   ├── scene-template.schema.json
+│   │   │   ├── sprite-library.schema.json
+│   │   │   └── theme-config.schema.json
+│   │   ├── sprites/
+│   │   │   ├── business-process.json
+│   │   │   ├── data-flow.json
+│   │   │   ├── microservices.json
+│   │   │   ├── network.json
+│   │   │   ├── plugin-architecture.json
+│   │   │   └── ui-components.json
+│   │   ├── templates/
+│   │   │   ├── plugin-architecture-scene.json
+│   │   │   └── simple-plugin-scene.json
+│   │   └── themes/
+│   │       ├── blueprint.json
+│   │       ├── dark-plugin.json
+│   │       ├── high-contrast.json
+│   │       ├── light-professional.json
+│   │       └── neon.json
+│   ├── cypress/
+│   │   ├── e2e/
+│   │   │   ├── enhanced-storybook.cy.js
+│   │   │   └── svg-rendering.cy.js
+│   │   ├── screenshots/
+│   │   │   └── enhanced-storybook.cy.js/
+│   │   │       ├── Enhanced Combined Storybook Animation Tests -- should show only one bus at a time (true single bus illusion) (failed).png
+│   │   │       ├── enhanced-storybook-animation-progress.png
+│   │   │       ├── enhanced-storybook-desktop-large.png
+│   │   │       ├── enhanced-storybook-desktop-medium.png
+│   │   │       └── enhanced-storybook-initial-state.png
+│   │   └── support/
+│   │       ├── commands.js
+│   │       └── e2e.js
+│   ├── cypress.config.js
+│   ├── data/
+│   │   └── scene-animation-config.json
+│   ├── docs/
+│   │   ├── CONTEXTUAL-BOUNDARIES.md
+│   │   └── VISUAL-CONTAINMENT-SYSTEM.md
+│   ├── EVENT-ROUTER-CONTAINMENT-DEMO.md
+│   ├── GRAPH-TO-SVG.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── samples/
+│   │   ├── boundary-violation-diagnostics.json
+│   │   ├── boundary-violation-test.svg
+│   │   ├── canvas-extracted-combined-storybook.svg
+│   │   ├── canvas-extracted-scene-1-rx-node-73eke9.svg
+│   │   ├── canvas-extracted-scene-2-rx-node-s1wplc.svg
+│   │   ├── canvas-extracted-scene-3-rx-node-scene3.svg
+│   │   ├── canvas-extracted-scene-4-rx-node-scene4.svg
+│   │   ├── canvas-extracted-scene-5-rx-node-scene5.svg
+│   │   ├── canvas-extracted-scene-6-rx-node-scene6.svg
+│   │   ├── canvas-scene-1-depot.svg
+│   │   ├── contextual-boundaries-demo.svg
+│   │   ├── data-pipeline.json
+│   │   ├── data-pipeline.svg
+│   │   ├── enhanced-combined-storybook.svg
+│   │   ├── event-router-cinematic-presentation.html
+│   │   ├── event-router-combined-storybook-diagnostics.json
+│   │   ├── event-router-combined-storybook.json
+│   │   ├── event-router-combined-storybook.svg
+│   │   ├── event-router-contextual-boundaries.json
+│   │   ├── event-router-diagnostics.json
+│   │   ├── event-router-mono-journey.json
+│   │   ├── event-router-mono-journey.svg
+│   │   ├── event-router-scene-1-depot-diagnostics.json
+│   │   ├── event-router-scene-1-depot.json
+│   │   ├── event-router-scene-1-depot.svg
+│   │   ├── event-router-scene-2-manifest-diagnostics.json
+│   │   ├── event-router-scene-2-manifest.json
+│   │   ├── event-router-scene-2-manifest.svg
+│   │   ├── event-router-scene-3-subscribers-diagnostics.json
+│   │   ├── event-router-scene-3-subscribers.json
+│   │   ├── event-router-scene-3-subscribers.svg
+│   │   ├── event-router-scene-4-conductor-diagnostics.json
+│   │   ├── event-router-scene-4-conductor.json
+│   │   ├── event-router-scene-4-conductor.svg
+│   │   ├── event-router-scene-5-rules-diagnostics.json
+│   │   ├── event-router-scene-5-rules.json
+│   │   ├── event-router-scene-5-rules.svg
+│   │   ├── event-router-scene-6-school-diagnostics.json
+│   │   ├── event-router-scene-6-school.json
+│   │   ├── event-router-scene-6-school.svg
+│   │   ├── event-router-violation-diagnostics.json
+│   │   ├── event-router-violation-test.svg
+│   │   ├── event-router-with-containment.svg
+│   │   ├── generated/
+│   │   │   ├── index.json
+│   │   │   ├── plugin-manifest.json
+│   │   │   ├── plugin-manifest.svg
+│   │   │   ├── plugin-package.json
+│   │   │   ├── plugin-package.svg
+│   │   │   ├── simple-plugin-scene.json
+│   │   │   └── simple-plugin-scene.svg
+│   │   ├── graph-generated-combined-storybook.svg
+│   │   ├── graph-scene-1-rx-node-73eke9.json
+│   │   ├── graph-scene-1-rx-node-73eke9.svg
+│   │   ├── graph-scene-2-rx-node-s1wplc.json
+│   │   ├── graph-scene-2-rx-node-s1wplc.svg
+│   │   ├── graph-scene-3-rx-node-scene3.json
+│   │   ├── graph-scene-3-rx-node-scene3.svg
+│   │   ├── graph-scene-4-rx-node-scene4.json
+│   │   ├── graph-scene-4-rx-node-scene4.svg
+│   │   ├── graph-scene-5-rx-node-scene5.json
+│   │   ├── graph-scene-5-rx-node-scene5.svg
+│   │   ├── graph-scene-6-rx-node-scene6.json
+│   │   ├── graph-scene-6-rx-node-scene6.svg
+│   │   ├── graphs/
+│   │   │   ├── microservices.json
+│   │   │   └── microservices.svg
+│   │   ├── microservices-architecture.json
+│   │   ├── microservices-architecture.svg
+│   │   ├── neural-network.json
+│   │   ├── neural-network.svg
+│   │   ├── slide-01/
+│   │   │   ├── build-publish-process.json
+│   │   │   ├── build-publish-process.svg
+│   │   │   ├── handlers-export-structure.json
+│   │   │   ├── handlers-export-structure.svg
+│   │   │   ├── host-sdk-structure.json
+│   │   │   ├── host-sdk-structure.svg
+│   │   │   ├── index.json
+│   │   │   ├── plugin-capabilities.json
+│   │   │   ├── plugin-capabilities.svg
+│   │   │   ├── plugin-manifest-structure.json
+│   │   │   ├── plugin-manifest-structure.svg
+│   │   │   ├── plugin-package-structure.json
+│   │   │   ├── plugin-package-structure.svg
+│   │   │   ├── plugin-workflow.json
+│   │   │   ├── plugin-workflow.svg
+│   │   │   ├── README.md
+│   │   │   ├── slide-01-architecture.json
+│   │   │   └── slide-01-architecture.svg
+│   │   ├── SLIDE-01-CONTEXTUAL-BOUNDARIES-COMPARISON.md
+│   │   ├── slide-01-contextual-boundaries.json
+│   │   ├── slide-01-contextual-boundaries.svg
+│   │   ├── slide-01-diagnostics.json
+│   │   ├── slide-01-scene/
+│   │   │   ├── build-publish.json
+│   │   │   ├── build-publish.svg
+│   │   │   ├── handlers-export.json
+│   │   │   ├── handlers-export.svg
+│   │   │   ├── host-sdk.json
+│   │   │   ├── host-sdk.svg
+│   │   │   ├── index.json
+│   │   │   ├── plugin-manifest.json
+│   │   │   ├── plugin-manifest.svg
+│   │   │   ├── plugin-package.json
+│   │   │   ├── plugin-package.svg
+│   │   │   ├── README.md
+│   │   │   ├── slide-01-manifest.json
+│   │   │   └── slide-01-manifest.svg
+│   │   ├── slide-01-with-containment.svg
+│   │   ├── social-network.json
+│   │   └── social-network.svg
+│   ├── scripts/
+│   │   ├── generate-integrated-svgs.js
+│   │   ├── generate-slide-svgs.js
+│   │   ├── lib/
+│   │   │   ├── injector.js
+│   │   │   └── spec-resolver.js
+│   │   └── README-slide-generation.md
+│   ├── src/
+│   │   ├── animation-coordinator.ts
+│   │   ├── animation-orchestrator.ts
+│   │   ├── boundary-enforcement.ts
+│   │   ├── canvas-scene-demo.ts
+│   │   ├── canvas-storybook-demo.ts
+│   │   ├── canvas-svg-extractor.ts
+│   │   ├── canvas-to-graph-converter.ts
+│   │   ├── cinematic-renderer.ts
+│   │   ├── cli.ts
+│   │   ├── combined-storybook-generator.ts
+│   │   ├── combined-storybook-types.ts
+│   │   ├── config-loader.ts
+│   │   ├── containment-demo.ts
+│   │   ├── contextual-boundaries-demo.ts
+│   │   ├── create-cinematic-presentation.ts
+│   │   ├── create-mono-journey.ts
+│   │   ├── diagnostics.ts
+│   │   ├── event-router-demo.ts
+│   │   ├── example.ts
+│   │   ├── generate-mono-svg.ts
+│   │   ├── generic-graph-generator.ts
+│   │   ├── generic-scene-generator.ts
+│   │   ├── graph.ts
+│   │   ├── index.ts
+│   │   ├── layout.ts
+│   │   ├── mono-graph-generator.ts
+│   │   ├── mono-graph-types.ts
+│   │   ├── mono-graph.test.ts
+│   │   ├── render-svg.ts
+│   │   ├── sample-generator.ts
+│   │   ├── scene.ts
+│   │   ├── slide-01-generator.ts
+│   │   ├── slide-01-graph-specs.ts
+│   │   ├── slide01-data.ts
+│   │   ├── slide01-generator.ts
+│   │   ├── svg-animation-utilities.ts
+│   │   ├── svg-export.ts
+│   │   ├── template-processor.ts
+│   │   └── visual-containment.ts
+│   ├── test-canvas-layout.js
+│   ├── test-svg-utilities-demo.js
+│   ├── tests/
+│   │   ├── animation-orchestrator.test.js
+│   │   ├── boundary-containment.test.js
+│   │   ├── browser-svg-render-test.html
+│   │   ├── bus-coordination-test.html
+│   │   ├── combined-storybook.test.js
+│   │   ├── config-loader.test.js
+│   │   ├── contextual-boundaries.test.js
+│   │   ├── contextual-elements-composition.test.js
+│   │   ├── contextual-elements-presence.test.js
+│   │   ├── enhanced-storybook-test.html
+│   │   ├── generator.injector.test.js
+│   │   ├── generator.inline.test.js
+│   │   ├── generic-generators.test.js
+│   │   ├── graph-to-svg.test.js
+│   │   ├── layout.test.js
+│   │   ├── mono-graph.test.js
+│   │   ├── plugin-architecture-sub-elements.test.js
+│   │   ├── README.md
+│   │   ├── run-svg-tests.js
+│   │   ├── scene-graph.test.js
+│   │   ├── server.js
+│   │   ├── slide-01-graphs.test.js
+│   │   ├── slide-driven-composition.validation.test.js
+│   │   ├── slide-generation.test.js
+│   │   ├── slide-xml-validation.test.js
+│   │   ├── spec-resolver.test.js
+│   │   ├── sprite-libraries.test.js
+│   │   ├── svg-animation-utilities.test.js
+│   │   ├── svg-scene-validation.test.js
+│   │   ├── svg-xml-validation.test.js
+│   │   ├── template-exactness.test.js
+│   │   ├── template-processor.test.js
+│   │   ├── themes.test.js
+│   │   └── unified-svg-validation.test.js
+│   ├── tsconfig.json
+│   └── VISUAL-CONTAINMENT-IMPLEMENTATION-SUMMARY.md
+├── header/
+│   ├── package.json
+│   ├── README.md
+│   ├── scripts/
+│   │   └── copy-css.cjs
+│   ├── src/
+│   │   ├── index.ts
+│   │   ├── symphonies/
+│   │   │   └── ui/
+│   │   │       ├── ui.stage-crew.ts
+│   │   │       └── ui.symphony.ts
+│   │   └── ui/
+│   │       ├── Header.css
+│   │       ├── HeaderControls.tsx
+│   │       ├── HeaderThemeButtonView.tsx
+│   │       ├── HeaderThemeToggle.tsx
+│   │       └── HeaderTitle.tsx
+│   ├── tests/
+│   │   ├── integration/
+│   │   │   ├── css-side-effects.spec.ts
+│   │   │   └── exports.spec.ts
+│   │   ├── setup/
+│   │   │   └── vitest.setup.ts
+│   │   └── unit/
+│   │       ├── symphonies/
+│   │       │   └── ui.stage-crew.spec.ts
+│   │       └── ui/
+│   │           └── header-theme-toggle.spec.tsx
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   └── vitest.config.ts
+├── host-sdk/
+│   ├── CHANGELOG.md
+│   ├── component-mapper.ts
+│   ├── conductor.ts
+│   ├── config.ts
+│   ├── CONTRIBUTING.md
+│   ├── core/
+│   │   ├── conductor/
+│   │   │   ├── conductor.ts
+│   │   │   ├── index.ts
+│   │   │   ├── runtime-loaders.ts
+│   │   │   └── sequence-registration.ts
+│   │   ├── environment/
+│   │   │   ├── config.ts
+│   │   │   ├── env.ts
+│   │   │   ├── feature-flags.ts
+│   │   │   └── index.ts
+│   │   ├── events/
+│   │   │   ├── EventRouter.ts
+│   │   │   └── topic-replay-cache.ts
+│   │   ├── infrastructure/
+│   │   │   └── handlers/
+│   │   │       └── handlersPath.ts
+│   │   ├── manifests/
+│   │   │   ├── interactionManifest.ts
+│   │   │   └── topicsManifest.ts
+│   │   └── startup/
+│   │       ├── buildInteractionManifest.ts
+│   │       └── startupValidation.ts
+│   ├── cssRegistry.ts
+│   ├── docs/
+│   │   └── host-wiring.md
+│   ├── EventRouter.ts
+│   ├── feature-flags.ts
+│   ├── index.ts
+│   ├── interactionManifest.ts
+│   ├── inventory.ts
+│   ├── jsonComponent.mapper.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── pluginManifest.ts
+│   ├── public-api.ts
+│   ├── README.md
+│   ├── smoke/
+│   │   └── vite-app/
+│   │       ├── index.html
+│   │       ├── package.json
+│   │       ├── src/
+│   │       │   └── main.ts
+│   │       ├── tsconfig.json
+│   │       └── vite.config.ts
+│   ├── tests/
+│   │   ├── component-mapper.spec.ts
+│   │   ├── conductor.spec.ts
+│   │   ├── config.spec.ts
+│   │   ├── core-environment-config.spec.ts
+│   │   ├── cssRegistry.spec.ts
+│   │   ├── feature-flags.spec.ts
+│   │   └── inventory.spec.ts
+│   ├── topics-manifest.json
+│   ├── tsconfig.json
+│   ├── types/
+│   │   └── ambient.d.ts
+│   ├── types.ts
+│   └── vitest.config.ts
+├── library/
+│   ├── docs/
+│   │   ├── AI_CHATBOT_ADMIN_GUIDE.md
+│   │   ├── AI_CHATBOT_CHANGES_SUMMARY.md
+│   │   ├── AI_CHATBOT_READY_TO_START.md
+│   │   ├── AI_CHATBOT_USER_GUIDE.md
+│   │   ├── AI_DOCUMENTATION_INDEX.md
+│   │   ├── AI_FEATURE_QUICK_REFERENCE.md
+│   │   ├── AI_FEATURE_TECHNICAL_SUMMARY.md
+│   │   ├── CUSTOM_COMPONENTS_CHECKLIST.md
+│   │   ├── CUSTOM_COMPONENTS_OVERVIEW.md
+│   │   ├── CUSTOM_COMPONENTS_SUMMARY.md
+│   │   ├── GITHUB_ISSUE_AI_CHATBOT.md
+│   │   ├── GITHUB_ISSUE_AI_CHATBOT_UPDATED.md
+│   │   ├── GITHUB_ISSUE_CONFIG_SERVICE_INTEGRATION.md
+│   │   ├── ISSUE_AI_COMPONENT_GENERATOR.md
+│   │   ├── ISSUE_CUSTOM_COMPONENTS.md
+│   │   └── SECURE_OPENAI_ARCHITECTURE.md
+│   ├── eslint.config.js
+│   ├── examples/
+│   │   ├── custom-alert.json
+│   │   ├── custom-badge.json
+│   │   ├── custom-card.json
+│   │   ├── README.md
+│   │   └── real-json-components/
+│   │       ├── button.json
+│   │       ├── container.json
+│   │       ├── heading.json
+│   │       ├── html.json
+│   │       ├── image.json
+│   │       ├── index.json
+│   │       ├── input.json
+│   │       ├── line.json
+│   │       ├── paragraph.json
+│   │       └── svg.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── src/
+│   │   ├── index.ts
+│   │   ├── services/
+│   │   │   ├── openai.service.ts
+│   │   │   ├── openai.types.ts
+│   │   │   ├── rag-enrichment-telemetry.service.ts
+│   │   │   ├── rag-enrichment.service.ts
+│   │   │   └── __tests__/
+│   │   │       └── rag-enrichment-telemetry.service.test.ts
+│   │   ├── symphonies/
+│   │   │   └── load.symphony.ts
+│   │   ├── telemetry/
+│   │   │   └── component-behavior-extractor.ts
+│   │   ├── ui/
+│   │   │   ├── ChatMessage.css
+│   │   │   ├── ChatMessage.tsx
+│   │   │   ├── ChatWindow.css
+│   │   │   ├── ChatWindow.tsx
+│   │   │   ├── ConfigStatusUI.css
+│   │   │   ├── ConfigStatusUI.tsx
+│   │   │   ├── CustomComponentList.tsx
+│   │   │   ├── CustomComponentUpload.tsx
+│   │   │   ├── LibraryPanel.css
+│   │   │   ├── LibraryPanel.tsx
+│   │   │   ├── LibraryPreview.tsx
+│   │   │   └── preview.model.ts
+│   │   └── utils/
+│   │       ├── chat.utils.ts
+│   │       ├── library.utils.js
+│   │       ├── prompt.templates.ts
+│   │       ├── storage.utils.ts
+│   │       └── validation.utils.ts
+│   ├── tsconfig.json
+│   ├── vitest.config.ts
+│   └── __tests__/
+│       ├── chat.utils.spec.ts
+│       ├── ChatWindow.modal.spec.tsx
+│       ├── handlers.loadComponents.spec.ts
+│       ├── LibraryPanel.spec.tsx
+│       ├── manifest.exports.spec.ts
+│       ├── openai.service.spec.ts
+│       ├── rag-enrichment.service.spec.ts
+│       ├── register.spec.ts
+│       ├── storage.utils.spec.ts
+│       ├── utils.spec.ts
+│       └── validation.utils.spec.ts
+├── library-component/
+│   ├── CHANGELOG.md
+│   ├── CONTRIBUTING.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── scripts/
+│   │   └── validate-handlers-export.cjs
+│   ├── src/
+│   │   ├── index.ts
+│   │   └── symphonies/
+│   │       ├── drag/
+│   │       │   └── drag.preview.stage-crew.ts
+│   │       ├── drag.symphony.ts
+│   │       ├── drop.container.symphony.ts
+│   │       └── drop.symphony.ts
+│   ├── tsconfig.json
+│   ├── tsup.config.ts
+│   ├── vitest.config.ts
+│   └── __tests__/
+│       ├── handlers.drag.nodragimage.spec.ts
+│       ├── handlers.drop.container.spec.ts
+│       ├── handlers.drop.spec.ts
+│       ├── handlers.export.spec.ts
+│       ├── package.manifest.spec.ts
+│       └── register.spec.ts
+├── manifest-tools/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── src/
+│   │   ├── index.js
+│   │   └── index.ts
+│   └── tsconfig.json
+├── musical-conductor/
+│   ├── browser-compatibility-fix-transfer.json
+│   ├── build-fix-knowledge-export.json
+│   ├── CHANGELOG.md
+│   ├── demo-knowledge.json
+│   ├── e2e-module-resolution-transfer.json
+│   ├── e2e-testing-knowledge.json
+│   ├── e2e-testing-module-resolution-knowledge.json
+│   ├── event-types-refactoring-knowledge.json
+│   ├── jest.config.cjs
+│   ├── jest.resolver.cjs
+│   ├── jest.resolver.js
+│   ├── LICENSE
+│   ├── modules/
+│   │   └── communication/
+│   │       ├── DomainEventSystem.ts
+│   │       ├── event-types/
+│   │       │   ├── core.event-types.ts
+│   │       │   └── index.ts
+│   │       ├── EventBus.ts
+│   │       ├── index.ts
+│   │       ├── sequences/
+│   │       │   ├── api/
+│   │       │   │   ├── ConductorAPI.ts
+│   │       │   │   └── ConductorClient.ts
+│   │       │   ├── core/
+│   │       │   │   ├── ConductorCore.ts
+│   │       │   │   ├── EventSubscriptionManager.ts
+│   │       │   │   └── SequenceRegistry.ts
+│   │       │   ├── environment/
+│   │       │   │   └── ConductorEnv.ts
+│   │       │   ├── execution/
+│   │       │   │   ├── BeatExecutor.ts
+│   │       │   │   ├── ExecutionQueue.ts
+│   │       │   │   ├── MovementExecutor.ts
+│   │       │   │   └── SequenceExecutor.ts
+│   │       │   ├── index.ts
+│   │       │   ├── monitoring/
+│   │       │   │   ├── ConductorLogger.ts
+│   │       │   │   ├── DataBaton.ts
+│   │       │   │   ├── DuplicationDetector.ts
+│   │       │   │   ├── EventLogger.ts
+│   │       │   │   ├── PerformanceTracker.ts
+│   │       │   │   └── StatisticsManager.ts
+│   │       │   ├── MusicalConductor.ts
+│   │       │   ├── orchestration/
+│   │       │   │   ├── CallbackRegistry.ts
+│   │       │   │   ├── EventOrchestrator.ts
+│   │       │   │   └── SequenceOrchestrator.ts
+│   │       │   ├── plugins/
+│   │       │   │   ├── PluginInterfaceFacade.ts
+│   │       │   │   ├── PluginLoader.ts
+│   │       │   │   ├── PluginManager.ts
+│   │       │   │   ├── PluginManifestLoader.ts
+│   │       │   │   └── PluginValidator.ts
+│   │       │   ├── resources/
+│   │       │   │   ├── ResourceConflictManager.ts
+│   │       │   │   ├── ResourceConflictResolver.ts
+│   │       │   │   ├── ResourceDelegator.ts
+│   │       │   │   ├── ResourceManager.ts
+│   │       │   │   └── ResourceOwnershipTracker.ts
+│   │       │   ├── SequenceTypes.ts
+│   │       │   ├── stage/
+│   │       │   │   ├── StageCrew.ts
+│   │       │   │   ├── StageCueLogger.ts
+│   │       │   │   └── StageDomGuard.ts
+│   │       │   ├── strictmode/
+│   │       │   │   └── StrictModeManager.ts
+│   │       │   ├── utilities/
+│   │       │   │   └── SequenceUtilities.ts
+│   │       │   └── validation/
+│   │       │       └── SequenceValidator.ts
+│   │       └── SPAValidator.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── queue-cli-improvement-knowledge.json
+│   ├── README.md
+│   ├── src/
+│   │   ├── events/
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── sequences/
+│   │   │   └── index.ts
+│   │   └── validation/
+│   │       └── index.ts
+│   ├── tests/
+│   │   ├── fixtures/
+│   │   │   └── mock-sequences.ts
+│   │   ├── mocks/
+│   │   │   └── MockEventBus.ts
+│   │   ├── plugins/
+│   │   │   └── theme-management-plugin/
+│   │   │       └── fake-plugin.ts
+│   │   ├── setup/
+│   │   │   └── jest.setup.ts
+│   │   ├── types/
+│   │   │   └── jest.d.ts
+│   │   ├── unit/
+│   │   │   └── communication/
+│   │   │       ├── callback-preservation.hardening.test.ts
+│   │   │       ├── callback-preservation.nested-play.test.ts
+│   │   │       ├── conductor.version-log.test.ts
+│   │   │       ├── EventBus.simple.test.ts
+│   │   │       ├── EventBus.test.ts
+│   │   │       ├── plugin-handler-context.test.ts
+│   │   │       ├── plugins/
+│   │   │       │   ├── logger.exposure.test.ts
+│   │   │       │   └── multiple-sequences-per-plugin.test.ts
+│   │   │       ├── sequences/
+│   │   │       │   ├── monitoring/
+│   │   │       │   │   ├── MovementTiming.integration.test.ts
+│   │   │       │   │   └── PerformanceTracker.test.ts
+│   │   │       │   ├── MusicalConductor.minimal.test.ts
+│   │   │       │   ├── MusicalConductor.on-off.test.ts
+│   │   │       │   ├── MusicalConductor.simple.test.ts
+│   │   │       │   └── MusicalConductor.test.ts
+│   │   │       ├── spa-validator.stage-crew-violations.test.ts
+│   │   │       ├── stage-crew.batching.test.ts
+│   │   │       ├── stage-crew.console-logging.test.ts
+│   │   │       ├── stage-crew.context.test.ts
+│   │   │       ├── stage-crew.cue-logger.test.ts
+│   │   │       ├── stage-crew.dom-driver.test.ts
+│   │   │       ├── stage-crew.guard.test.ts
+│   │   │       └── stage-crew.ops.test.ts
+│   │   └── utils/
+│   │       ├── sequence-builders.ts
+│   │       └── test-helpers.ts
+│   ├── tools/
+│   │   ├── cli/
+│   │   │   ├── AGENT_ONBOARDING_GUIDE.md
+│   │   │   ├── data/
+│   │   │   │   ├── shortcuts.json
+│   │   │   │   └── transfer-queue.json
+│   │   │   ├── demo.ts
+│   │   │   ├── exporters/
+│   │   │   │   └── KnowledgeExporter.ts
+│   │   │   ├── IMPLEMENTATION_SUMMARY.md
+│   │   │   ├── importers/
+│   │   │   │   └── KnowledgeImporter.ts
+│   │   │   ├── knowledge-cli.ts
+│   │   │   ├── mergers/
+│   │   │   │   └── KnowledgeMerger.ts
+│   │   │   ├── queue/
+│   │   │   │   └── KnowledgeTransferQueue.ts
+│   │   │   ├── queue-demo.ts
+│   │   │   ├── README.md
+│   │   │   ├── shortcut-demo.ts
+│   │   │   ├── shortcuts/
+│   │   │   │   └── ShortcutManager.ts
+│   │   │   ├── utils/
+│   │   │   │   └── CLILogger.ts
+│   │   │   └── validators/
+│   │   │       └── KnowledgeValidator.ts
+│   │   ├── docs/
+│   │   │   ├── MusicalConductor Refactoring Strategy.md
+│   │   │   ├── react-spa-integration.md
+│   │   │   ├── refactoring-methodology.md
+│   │   │   ├── RenderX UI to Plugins, Routing.md
+│   │   │   ├── RenderX-Plugins-Unit-Testing.md
+│   │   │   ├── Split RenderX and Plugins out of MusicalConductor ( keep core; deprecate E2E here - align with ADR‑0014).md
+│   │   │   ├── Testing Strategy.md
+│   │   │   ├── testing-strategy.md
+│   │   │   └── wiki/
+│   │   │       ├── adr/
+│   │   │       │   ├── 0001-conductor-client-surface.md
+│   │   │       │   ├── 0002-no-public-emitter-plugins-prohibited.md
+│   │   │       │   ├── 0003-events-via-beat-execution.md
+│   │   │       │   ├── 0004-client-orchestration-via-play.md
+│   │   │       │   ├── 0005-callbacks-vs-events.md
+│   │   │       │   ├── 0006-progress-update-symphony.md
+│   │   │       │   ├── 0007-cooperative-cancellation.md
+│   │   │       │   ├── 0008-plugin-handler-context.md
+│   │   │       │   ├── 0009-client-sequence-registration.md
+│   │   │       │   ├── 0010-event-naming-and-payloads.md
+│   │   │       │   ├── 0011-ui-subscriptions-policy.md
+│   │   │       │   ├── 0012-data-baton-traceability.md
+│   │   │       │   ├── 0013-test-friendly-import-meta-in-jest.md
+│   │   │       │   ├── 0013-visual-tools-in-component-schema.md
+│   │   │       │   ├── 0014-manifest-driven-panel-slot-plugins.md
+│   │   │       │   ├── 0015-split-renderx-and-plugins.md
+│   │   │       │   ├── 0016-callback-preservation-nested-play.md
+│   │   │       │   ├── 0017-stage-crew-dom-mutation-facade.md
+│   │   │       │   ├── 0018-component-part-schema-and-ui-states-behaviors.md
+│   │   │       │   └── 0019-beat-kind-and-dom-mutation-policy.md
+│   │   │       ├── api/
+│   │   │       │   └── conductor-api.md
+│   │   │       └── guides/
+│   │   │           ├── callbacks-pattern.md
+│   │   │           └── visual-tools.md
+│   │   └── issue-logs/
+│   │       └── issues-log-2025-08-12.md
+│   ├── tsconfig.jest.json
+│   ├── tsconfig.json
+│   └── tsconfig.test.json
+├── README.md
+└── robotics/
+    ├── apply_artwork.py
+    ├── Battery Boxes/
+    │   ├── artwork-transfer-automation.md
+    │   ├── Daniels Battery Box.step
+    │   ├── Kevin's Battery Box.step
+    │   └── Vertical Battery Box.pdf
+    ├── config.py
+    ├── daniel_artwork.dxf
+    ├── extract_artwork.py
+    ├── IMPLEMENTATION_SUMMARY.md
+    ├── inspect_step_files.py
+    ├── Kevins_Box_with_Simple_Artwork.step
+    ├── run_artwork_transfer.py
+    ├── simple_artwork_transfer.py
+    ├── simple_test.py
+    ├── test_simple.dxf
+    └── __pycache__/
+        └── config.cpython-312.pyc

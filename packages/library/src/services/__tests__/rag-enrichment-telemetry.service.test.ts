@@ -198,7 +198,7 @@ describe('RAGEnrichmentTelemetryService', () => {
 
     it('should increase confidence with telemetry', async () => {
 
-  const sampleLogPath = path.join(__dirname, '../../../../../src/domain/logs/__tests__/sample-telemetry.log');
+  const sampleLogPath = path.join(__dirname, './sample-telemetry.log');
   const chunks = await loadAndChunk(sampleLogPath, { chunkSize: 10 });
 
       // Get base enrichment
@@ -223,7 +223,7 @@ describe('RAGEnrichmentTelemetryService', () => {
   describe('interaction extraction', () => {
     it('should extract interactions with frequency and duration', async () => {
 
-  const sampleLogPath = path.join(__dirname, '../../../../../src/domain/logs/__tests__/sample-telemetry.log');
+  const sampleLogPath = path.join(__dirname, './sample-telemetry.log');
   const chunks = await loadAndChunk(sampleLogPath, { chunkSize: 10 });
 
       const result = await service.enrichComponentWithTelemetry(
@@ -251,7 +251,7 @@ describe('RAGEnrichmentTelemetryService', () => {
 
     it('should include event sequences in interactions', async () => {
 
-  const sampleLogPath = path.join(__dirname, '../../../../../src/domain/logs/__tests__/sample-telemetry.log');
+  const sampleLogPath = path.join(__dirname, './sample-telemetry.log');
   const chunks = await loadAndChunk(sampleLogPath, { chunkSize: 10 });
 
       const result = await service.enrichComponentWithTelemetry(
@@ -282,7 +282,7 @@ describe('RAGEnrichmentTelemetryService', () => {
   describe('data flow extraction', () => {
     it('should extract data flow patterns from telemetry', async () => {
 
-  const sampleLogPath = path.join(__dirname, '../../../../../src/domain/logs/__tests__/sample-telemetry.log');
+  const sampleLogPath = path.join(__dirname, './sample-telemetry.log');
   const chunks = await loadAndChunk(sampleLogPath, { chunkSize: 10 });
 
       const result = await service.enrichComponentWithTelemetry(

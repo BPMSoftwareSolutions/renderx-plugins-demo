@@ -1,0 +1,58 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.TopicInspector"
+             Background="{DynamicResource Color.Background.Primary}">
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource Color.Background.Tertiary}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                Padding="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Topic Inspector"
+                           FontSize="12"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+                <TextBox x:Name="TopicFilterBox"
+                         Watermark="Filter topics..."
+                         FontSize="10"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Topics List -->
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl x:Name="TopicsItemsControl"
+                          Padding="12"
+                          Background="{DynamicResource Color.Background.Primary}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{DynamicResource Color.Background.Secondary}"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
+                                CornerRadius="4"
+                                Padding="8"
+                                Margin="0,4">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding Name}"
+                                           FontSize="11"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource Color.Border.Primary}" />
+                                <TextBlock Text="{Binding SubscriberCount}"
+                                           FontSize="10"
+                                           Foreground="#666" />
+                                <TextBlock Text="{Binding LastPublished}"
+                                           FontSize="9"
+                                           Foreground="#999" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
+

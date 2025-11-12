@@ -64,7 +64,7 @@ export class PluginInterfaceFacade {
     ) => Promise<string>
   ): Promise<string | null> {
     try {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 PluginInterfaceFacade.play(): ${pluginId} -> ${sequenceName}`
       );
 
@@ -74,7 +74,7 @@ export class PluginInterfaceFacade {
       // Validate plugin exists
       const plugin = this.pluginManager.getPluginInfo(pluginId);
       if (!plugin) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🧠 Plugin not found: ${pluginId}. Available plugins: [${this.pluginManager
             .getMountedPluginIds()
             .join(", ")}]`
@@ -85,7 +85,7 @@ export class PluginInterfaceFacade {
       // Start the sequence instead of calling handlers directly
       return startSequenceCallback(sequenceName, context, priority);
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🧠 PluginInterfaceFacade.play() failed for ${pluginId}.${sequenceName}:`,
         (error as Error).message
       );
@@ -133,26 +133,26 @@ export class PluginInterfaceFacade {
       const handlers = this.pluginManager.getPluginHandlers(sequenceName);
 
       if (!handlers) {
-        console.warn(`🧠 No handlers found for sequence: ${sequenceName}`);
+        (globalThis as any).__MC_WARN(`🧠 No handlers found for sequence: ${sequenceName}`);
         return null;
       }
 
       const handler = handlers[movementName];
       if (!handler || typeof handler !== "function") {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🧠 Handler not found or not a function: ${sequenceName}.${movementName}`
         );
         return null;
       }
 
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 Executing handler: ${sequenceName}.${movementName} with data:`,
         data
       );
 
       return handler(data);
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🧠 Handler execution failed for ${sequenceName}.${movementName}:`,
         (error as Error).message
       );
@@ -167,7 +167,7 @@ export class PluginInterfaceFacade {
    */
   async loadPlugin(pluginPath: string): Promise<PluginMountResult> {
     try {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🧠 PluginInterfaceFacade: Loading plugin from: ${pluginPath}`
       );
 
@@ -187,7 +187,7 @@ export class PluginInterfaceFacade {
       // Mount the plugin
       return await this.mount(plugin.sequence, plugin.handlers);
     } catch (error) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `🧠 PluginInterfaceFacade: Failed to load plugin from ${pluginPath}:`,
         (error as Error).message
       );
@@ -218,7 +218,7 @@ export class PluginInterfaceFacade {
 
       return `${sequenceCode}\n${handlersCode}`;
     } catch (error) {
-      console.warn("🎼 Failed to extract plugin code for validation:", error);
+      (globalThis as any).__MC_WARN("🎼 Failed to extract plugin code for validation:", error);
       return "";
     }
   }
@@ -264,7 +264,7 @@ export class PluginInterfaceFacade {
         issues,
       };
     } catch (error) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `🔨 Pre-compilation validation error for ${pluginId}:`,
         error
       );

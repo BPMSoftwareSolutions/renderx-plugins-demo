@@ -1,0 +1,112 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Library.LibraryPreview"
+             Background="{DynamicResource Color.Background.Primary}">
+    <UserControl.Styles>
+        <!-- Dynamic CSS Injection Point - styles can be added at runtime -->
+        <Style Selector="Button.action-button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.action-button:pointerover">
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+        <!-- Additional dynamic styles can be injected here via code-behind -->
+    </UserControl.Styles>
+    <Border BorderThickness="2"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            CornerRadius="12"
+            Padding="16"
+            Background="{DynamicResource Color.Background.Primary}"
+            PointerPressed="OnPreviewPointerPressed"
+            PointerMoved="OnPreviewPointerMoved"
+            PointerReleased="OnPreviewPointerReleased">
+        <Border.Styles>
+            <Style Selector="Border:pointerover">
+                <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}" />
+                <Setter Property="RenderTransform">
+                    <TransformGroup>
+                        <TranslateTransform Y="-2"/>
+                    </TransformGroup>
+                </Setter>
+            </Style>
+        </Border.Styles>
+        <Border.Transitions>
+            <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3"/>
+            </Transitions>
+        </Border.Transitions>
+        <StackPanel Spacing="8" HorizontalAlignment="Center">
+            <!-- Component Icon -->
+            <TextBlock x:Name="IconTextBlock"
+                       Text="🧩"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,8" />
+            
+            <!-- Component Name -->
+            <TextBlock x:Name="NameTextBlock"
+                       Text="Component Name"
+                       FontSize="12"
+                       FontWeight="Medium"
+                       Foreground="{DynamicResource Color.Border.Primary}"
+                       HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,4" />
+            
+            <!-- Component Description -->
+            <TextBlock x:Name="DescriptionTextBlock"
+                       Text="Component description"
+                       FontSize="10"
+                       Foreground="#999"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       LineHeight="1.3" />
+
+            <!-- Preview Area (optional, for rendering component template) -->
+            <Border x:Name="PreviewArea"
+                    Background="{DynamicResource Color.Background.Secondary}"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource Color.Border.Primary}"
+                    CornerRadius="4"
+                    MinHeight="80"
+                    Padding="8"
+                    Margin="0,8,0,0"
+                    IsVisible="False">
+                <TextBlock Text="Preview"
+                           FontSize="10"
+                           Foreground="#666"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Border>
+
+            <!-- Action Buttons -->
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Classes="action-button"
+                        Content="Insert"
+                        Padding="12,6"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
+                        FontSize="11"
+                        Click="OnInsertClick" />
+                <Button Classes="action-button"
+                        Content="Edit"
+                        Padding="12,6"
+                        Background="{DynamicResource Color.Border.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
+                        FontSize="11"
+                        Click="OnEditClick" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
+

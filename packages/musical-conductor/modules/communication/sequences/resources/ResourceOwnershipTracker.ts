@@ -49,13 +49,13 @@ export class ResourceOwnershipTracker {
       }
       this.symphonyResourceMap.get(symphonyName)!.add(resourceId);
 
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 ResourceOwnershipTracker: Resource ${resourceId} acquired by ${symphonyName} (${owner.instanceId})`
       );
 
       return true;
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🎼 ResourceOwnershipTracker: Failed to set resource owner for ${resourceId}:`,
         error
       );
@@ -80,7 +80,7 @@ export class ResourceOwnershipTracker {
       }
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ResourceOwnershipTracker: Resource ${resourceId} released from ${symphonyName}`
     );
   }
@@ -108,7 +108,7 @@ export class ResourceOwnershipTracker {
 
     this.sequenceInstances.set(instanceId, instance);
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ResourceOwnershipTracker: Created sequence instance ${instanceId} for ${symphonyName}`
     );
 
@@ -140,7 +140,7 @@ export class ResourceOwnershipTracker {
       });
 
       this.sequenceInstances.delete(instanceId);
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 ResourceOwnershipTracker: Removed sequence instance ${instanceId}`
       );
     }
@@ -262,7 +262,7 @@ export class ResourceOwnershipTracker {
     }
 
     if (cleanedUp > 0) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🧹 ResourceOwnershipTracker: Cleaned up ${cleanedUp} expired instances`
       );
     }
@@ -278,7 +278,7 @@ export class ResourceOwnershipTracker {
     this.sequenceInstances.clear();
     this.symphonyResourceMap.clear();
     this.instanceCounter = 0;
-    console.log("🧹 ResourceOwnershipTracker: All tracking data reset");
+    (globalThis as any).__MC_LOG("🧹 ResourceOwnershipTracker: All tracking data reset");
   }
 
   /**

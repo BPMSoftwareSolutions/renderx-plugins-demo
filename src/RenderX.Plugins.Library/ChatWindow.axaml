@@ -1,0 +1,207 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Library.ChatWindow"
+             Background="{DynamicResource Color.Background.Primary}">
+    <UserControl.Styles>
+        <Style Selector="Border.message-bubble">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.message-bubble:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+        </Style>
+    </UserControl.Styles>
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Padding="12,8"
+                BorderThickness="0,0,0,1"
+                BorderBrush="#555">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Color="#667eea" Offset="0"/>
+                    <GradientStop Color="#764ba2" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid ColumnDefinitions="*,Auto,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="🤖"
+                               FontSize="16"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="AI Component Generator"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <Button Grid.Column="1"
+                        Content="➕ New Chat"
+                        Margin="4,0"
+                        Padding="8,4"
+                        FontSize="10"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderThickness="1"
+                        BorderBrush="White"
+                        Click="OnNewChatClick" />
+                <Button Grid.Column="2"
+                        Content="🗑️ Clear"
+                        Margin="4,0"
+                        Padding="8,4"
+                        FontSize="10"
+                        Background="Transparent"
+                        Foreground="White"
+                        BorderThickness="1"
+                        BorderBrush="White"
+                        Click="OnClearHistoryClick" />
+            </Grid>
+        </Border>
+
+        <!-- AI Availability Hint -->
+        <Border Grid.Row="1"
+                Background="#fef3c7"
+                BorderThickness="1"
+                BorderBrush="#fcd34d"
+                CornerRadius="4"
+                Padding="8"
+                Margin="8"
+                IsVisible="False"
+                x:Name="AIAvailabilityHint">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+                <TextBlock Text="💡"
+                           FontSize="12"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="AI is not configured. Configure API key to enable AI component generation."
+                           FontSize="10"
+                           Foreground="#92400e"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+        </Border>
+
+        <!-- Messages Area -->
+        <Grid Grid.Row="2">
+            <!-- Welcome Screen (shown when no messages) -->
+            <Border x:Name="WelcomeScreen"
+                    Background="{DynamicResource Color.Background.Primary}"
+                    IsVisible="True"
+                    Padding="24">
+                <StackPanel Spacing="16" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="🤖"
+                               FontSize="48"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="AI Component Generator"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Text.Primary}"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="Describe a component and I'll generate the JSON for you"
+                               FontSize="12"
+                               Foreground="{DynamicResource Color.Text.Secondary}"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap" />
+                    <StackPanel Spacing="8" Margin="0,16,0,0">
+                        <TextBlock Text="Example prompts:"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Text.Primary}" />
+                        <TextBlock Text="• Create a button component with blue background"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource Color.Text.Secondary}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="• Design a card component with image and title"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource Color.Text.Secondary}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="• Build a form with email and password fields"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource Color.Text.Secondary}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Messages List -->
+            <ScrollViewer x:Name="MessagesScrollViewer"
+                          VerticalScrollBarVisibility="Auto"
+                          IsVisible="False">
+                <ItemsControl x:Name="MessagesItemsControl"
+                              Padding="12"
+                              Background="{DynamicResource Color.Background.Primary}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="Transparent" Margin="0,8">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="{Binding Author}"
+                                               FontSize="11"
+                                               FontWeight="Bold"
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
+                                    <Border Classes="message-bubble"
+                                            Background="{DynamicResource Color.Background.Tertiary}"
+                                            BorderThickness="1"
+                                            BorderBrush="{DynamicResource Color.Border.Primary}"
+                                            CornerRadius="8"
+                                            Padding="12"
+                                            BoxShadow="0 2px 8px rgba(0,0,0,0.05)">
+                                        <TextBlock Text="{Binding Content}"
+                                                   FontSize="11"
+                                                   Foreground="#666"
+                                                   TextWrapping="Wrap" />
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <!-- Loading Indicator -->
+            <Border x:Name="LoadingIndicator"
+                    Background="{DynamicResource Color.Background.Primary}"
+                    IsVisible="False"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="⏳"
+                               FontSize="32"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="Generating component..."
+                               FontSize="12"
+                               Foreground="{DynamicResource Color.Text.Secondary}"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Input Area -->
+        <Border Grid.Row="3"
+                Background="{DynamicResource Color.Background.Primary}"
+                BorderThickness="0,1,0,0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                Padding="12">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBox Grid.Column="0"
+                         x:Name="MessageInput"
+                         Watermark="Type a message..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}"
+                         AcceptsReturn="False" />
+                <Button Grid.Column="1"
+                        Content="Send"
+                        Margin="8,0,0,0"
+                        Padding="12,4"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
+                        FontSize="11"
+                        Click="OnSendClick" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
+

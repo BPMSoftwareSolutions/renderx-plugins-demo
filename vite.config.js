@@ -13,6 +13,8 @@ export default {
     alias: {
       // Host SDK alias (legacy import name)
       "@renderx/host-sdk": "@renderx-plugins/host-sdk",
+      // Resolve musical-conductor from workspace to fix import resolution in host-sdk dist files
+      "musical-conductor": path.resolve(process.cwd(), "packages/musical-conductor/dist/src/index.js"),
       // SDK deep import shims → map to host-provided vendor helpers
       "../../vendor/vendor-symphony-loader": path.resolve(process.cwd(), "src/vendor/vendor-symphony-loader.ts"),
       "../../../data/feature-flags.json": path.resolve(process.cwd(), "data/feature-flags.json"),

@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Shell.Avalonia.Components.FlexLayout"
+             Background="{DynamicResource Color.Background.Primary}">
+    <ScrollViewer>
+        <Border Padding="24">
+            <StackPanel Spacing="24">
+                <!-- Horizontal Layout -->
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Horizontal Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                    <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <Border Background="{DynamicResource Color.Accent.Primary}" Width="60" Height="60" CornerRadius="4" />
+                            <Border Background="#0098FF" Width="60" Height="60" CornerRadius="4" />
+                            <Border Background="#005A9E" Width="60" Height="60" CornerRadius="4" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                
+                <!-- Vertical Layout -->
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Vertical Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                    <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
+                        <StackPanel Orientation="Vertical" Spacing="12">
+                            <Border Background="{DynamicResource Color.Success}" Height="40" CornerRadius="4" />
+                            <Border Background="#FFA726" Height="40" CornerRadius="4" />
+                            <Border Background="{DynamicResource Color.Error}" Height="40" CornerRadius="4" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                
+                <!-- Grid Layout -->
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Grid Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                    <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
+                            <Border Grid.Column="0" Grid.Row="0" Background="#9C27B0" CornerRadius="4" Margin="4" />
+                            <Border Grid.Column="1" Grid.Row="0" Background="#E91E63" CornerRadius="4" Margin="4" />
+                            <Border Grid.Column="2" Grid.Row="0" Background="#00BCD4" CornerRadius="4" Margin="4" />
+                            <Border Grid.Column="0" Grid.Row="1" Background="#009688" CornerRadius="4" Margin="4" />
+                            <Border Grid.Column="1" Grid.Row="1" Background="#2196F3" CornerRadius="4" Margin="4" />
+                            <Border Grid.Column="2" Grid.Row="1" Background="#3F51B5" CornerRadius="4" Margin="4" />
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                
+                <!-- Wrap Layout -->
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Wrap Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                    <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
+                        <WrapPanel>
+                            <Border Background="#FF6B6B" Width="80" Height="80" CornerRadius="4" Margin="4" />
+                            <Border Background="#4ECDC4" Width="80" Height="80" CornerRadius="4" Margin="4" />
+                            <Border Background="#45B7D1" Width="80" Height="80" CornerRadius="4" Margin="4" />
+                            <Border Background="#FFA07A" Width="80" Height="80" CornerRadius="4" Margin="4" />
+                            <Border Background="#98D8C8" Width="80" Height="80" CornerRadius="4" Margin="4" />
+                        </WrapPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</UserControl>
+

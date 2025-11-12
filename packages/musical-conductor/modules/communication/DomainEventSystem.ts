@@ -41,7 +41,7 @@ export class DomainEventSystem {
       source: "app",
     };
 
-    console.log(`🎼 Domain Event: ${eventName}`, domainEvent);
+    (globalThis as any).__MC_LOG(`🎼 Domain Event: ${eventName}`, domainEvent);
     this.eventBus.emit(eventName, domainEvent);
   }
 

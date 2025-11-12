@@ -1,0 +1,2734 @@
+================================================================================
+CSS Classes Report
+================================================================================
+
+├── packages\canvas-component\__tests__\advanced-line.augment.spec.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       ├── .rx-line (template-literal)
+│       └── .rx-line (classList-method)
+
+├── packages\canvas-component\__tests__\advanced-line.manip.handlers.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       └── .rx-line (template-literal)
+
+├── packages\canvas-component\__tests__\advanced-line.overlay.attach.spec.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       ├── .rx-line (template-literal)
+│       └── .rx-line (classList-method)
+
+├── packages\canvas-component\__tests__\advanced-line.overlay.drag.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       └── .rx-line (template-literal)
+
+├── packages\canvas-component\__tests__\advanced-line.recompute.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment-curve
+│   └── 🔧 USAGES
+│       └── .rx-line (template-literal)
+
+├── packages\canvas-component\__tests__\advanced-line.resize.scale.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       └── .rx-line (template-literal)
+
+├── packages\canvas-component\__tests__\advanced-line.viewbox.autosize.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       └── .rx-line (template-literal)
+
+├── packages\canvas-component\__tests__\container-child-overlay.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-container
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\container-child-selection.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-container
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\copy-paste.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas-component\__tests__\create.container-append.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-container
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\create.dom.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\create.from-import.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\create.react.integration.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\create.svg.basic.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-svg (template-literal)
+
+├── packages\canvas-component\__tests__\create.svg.markup.spec.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-svg (template-literal)
+│       └── .defs (template-literal)
+
+├── packages\canvas-component\__tests__\delete.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-comp (className-prop)
+
+├── packages\canvas-component\__tests__\drag.overlay-hide.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\export-import.content.spec.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .div (template-literal)
+│       └── .name (template-literal)
+
+├── packages\canvas-component\__tests__\export.css.collection.fix.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   │   └── .rx-button--primary
+
+├── packages\canvas-component\__tests__\export.integration.basic.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .className (template-literal)
+
+├── packages\canvas-component\__tests__\export.integration.structure.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .name (template-literal)
+
+├── packages\canvas-component\__tests__\export.io.spec.ts (4 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-comp
+│   │   ├── .rx-button
+│   │   ├── .custom-highlight
+│   └── 🔧 USAGES
+│       └── .className (template-literal)
+
+├── packages\canvas-component\__tests__\export.json-css.end-to-end.spec.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   │   ├── .rx-button--primary
+│   │   └── .rx-button--secondary
+
+├── packages\canvas-component\__tests__\export.pure.spec.ts (6 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-comp
+│   │   ├── .rx-button
+│   │   ├── .rx-card
+│   │   ├── .rx-comp
+│   │   ├── .rx-button
+│   │   └── .rx-card
+
+├── packages\canvas-component\__tests__\host.harness.click-select.spec.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (class-attr)
+│       └── .rx-button (class-attr)
+
+├── packages\canvas-component\__tests__\import.base-classes.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas-component\__tests__\import.instance-class.spec.ts (6 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-comp
+│   │   ├── .rx-button
+│   │   ├── .rx-container
+│   └── 🔧 USAGES
+│       ├── .div (template-literal)
+│       ├── .rx-comp-div-container-1 (template-literal)
+│       └── .rx-comp-button-btn-1 (template-literal)
+
+├── packages\canvas-component\__tests__\import.integration.spec.ts (4 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-comp
+│   │   ├── .rx-button
+│   │   ├── .rx-container
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas-component\__tests__\import.nesting.spec.ts (4 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-container
+│   │   ├── .rx-container
+│   │   ├── .rx-button
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas-component\__tests__\import.selection.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas-component\__tests__\import.variant-toggle.spec.ts (5 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-comp
+│   │   ├── .rx-button
+│   │   ├── .rx-button--primary
+│   └── 🔧 USAGES
+│       ├── .div (template-literal)
+│       └── .rx-button (template-literal)
+
+├── packages\canvas-component\__tests__\line.overlay-data-driven.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-line
+│   └── 🔧 USAGES
+│       └── .rx-handle (querySelector)
+
+├── packages\canvas-component\__tests__\line.svg.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .segment
+│   └── 🔧 USAGES
+│       └── .rx-line (template-literal)
+
+├── packages\canvas-component\__tests__\resize.dom.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-box
+│   └── 🔧 USAGES
+│       └── .rx-handle (querySelector)
+
+├── packages\canvas-component\__tests__\resize.overlay-align.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   └── 🔧 USAGES
+│       └── .rx-handle (querySelector)
+
+├── packages\canvas-component\__tests__\resize.overlay-tools-config.spec.ts (6 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-box
+│   │   ├── .rx-box
+│   │   ├── .rx-box
+│   └── 🔧 USAGES
+│       ├── .rx-handle (querySelector)
+│       ├── .rx-handle (querySelector)
+│       └── .rx-handle (querySelector)
+
+├── packages\canvas-component\__tests__\resize.play.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   └── 🔧 USAGES
+│       └── .rx-handle (querySelector)
+
+├── packages\canvas-component\__tests__\resize.plugin-route.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-box
+│   └── 🔧 USAGES
+│       └── .rx-handle (querySelector)
+
+├── packages\canvas-component\__tests__\resize.svg.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-svg (template-literal)
+
+├── packages\canvas-component\__tests__\select.overlay-container.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-container
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\select.overlay.css.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\canvas-component\__tests__\select.svg-node.overlay.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-svg (template-literal)
+
+├── packages\canvas-component\__tests__\selection-id-derivation.spec.ts (9 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-button (class-attr)
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-container (class-attr)
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-line (class-attr)
+│       ├── .nested-container (class-attr)
+│       ├── .rx-comp (class-attr)
+│       └── .rx-button (class-attr)
+
+├── packages\canvas-component\__tests__\selection-post-externalization.spec.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-button (class-attr)
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-container (class-attr)
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-line (class-attr)
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-button (class-attr)
+│       ├── .rx-comp (class-attr)
+│       └── .rx-container (class-attr)
+
+├── packages\canvas-component\__tests__\selection-topic-first.spec.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (class-attr)
+│       ├── .rx-button (class-attr)
+│       ├── .rx-comp (class-attr)
+│       └── .rx-container (class-attr)
+
+├── packages\canvas-component\__tests__\selection.loop-regression.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas-component\__tests__\svg-node-click-select.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-svg (template-literal)
+
+├── packages\canvas-component\__tests__\svg-node.update.spec.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-svg (template-literal)
+
+├── packages\canvas-component\src\symphonies\augment\line.recompute.stage-crew.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .rotate (template-literal)
+│       └── .M (template-literal)
+
+├── packages\canvas-component\src\symphonies\create\create.arrangement.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .rx-node (template-literal)
+
+├── packages\canvas-component\src\symphonies\create\create.io.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .tpl (template-literal)
+
+├── packages\canvas-component\src\symphonies\create\create.react.stage-crew.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .ComponentType
+│   └── 🔧 USAGES
+│       ├── .Container (template-literal)
+│       └── .Compilation (template-literal)
+
+├── packages\canvas-component\src\symphonies\create\create.stage-crew.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .instanceClass (template-literal)
+
+├── packages\canvas-component\src\symphonies\create\create.style.stage-crew.ts (7 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (template-literal)
+│       ├── .k (template-literal)
+│       ├── .varDecl (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .width (template-literal)
+│       └── .height (template-literal)
+
+├── packages\canvas-component\src\symphonies\drag\drag.stage-crew.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .Canvas (template-literal)
+│       ├── .position (template-literal)
+│       ├── .position (template-literal)
+│       ├── .position (template-literal)
+│       └── .position (template-literal)
+
+├── packages\canvas-component\src\symphonies\export\export.css.stage-crew.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (querySelector)
+│       ├── .DOM (template-literal)
+│       └── .Stage-crew (template-literal)
+
+├── packages\canvas-component\src\symphonies\export\export.discover.stage-crew.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (querySelector)
+│       └── .DOM (template-literal)
+
+├── packages\canvas-component\src\symphonies\export\export.download.stage-crew.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .canvas-design (template-literal)
+
+├── packages\canvas-component\src\symphonies\export\export.gif.stage-crew.ts (18 classes)
+│   └── 🔧 USAGES
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .Element (template-literal)
+│       ├── .Exporting (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .targetId (template-literal)
+│       ├── .http (template-literal)
+│       ├── .width (template-literal)
+│       └── ... and 8 more
+
+├── packages\canvas-component\src\symphonies\export\export.io.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .KV (template-literal)
+│       └── .Retrieved (template-literal)
+
+├── packages\canvas-component\src\symphonies\export\export.mp4.stage-crew.ts (17 classes)
+│   └── 🔧 USAGES
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .Element (template-literal)
+│       ├── .Element (template-literal)
+│       ├── .MP4 (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .MP4 (template-literal)
+│       ├── .MP4 (template-literal)
+│       ├── .targetId (template-literal)
+│       └── ... and 7 more
+
+├── packages\canvas-component\src\symphonies\export\export.stage-crew.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (querySelector)
+│       └── .Collected (template-literal)
+
+├── packages\canvas-component\src\symphonies\import\import.parse.pure.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .componentType (template-literal)
+│       ├── .css (css-module)
+│       └── .rx (template-literal)
+
+├── packages\canvas-component\src\symphonies\line-advanced\line.manip.stage-crew.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .nx (template-literal)
+│       ├── .ny (template-literal)
+│       ├── .ncx (template-literal)
+│       ├── .ncy (template-literal)
+│       └── .next (template-literal)
+
+├── packages\canvas-component\src\symphonies\resize-line\resize.line.stage-crew.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .Canvas (template-literal)
+│       ├── .nx (template-literal)
+│       └── .ny (template-literal)
+
+├── packages\canvas-component\src\symphonies\resize\resize.stage-crew.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .Canvas (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       └── .Math (template-literal)
+
+├── packages\canvas-component\src\symphonies\select\select.overlay.css.stage-crew.ts (10 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-selection-overlay
+│   │   ├── .rx-handle
+│   │   ├── .nw
+│   │   ├── .n
+│   │   ├── .ne
+│   │   ├── .e
+│   │   ├── .se
+│   │   ├── .s
+│   │   ├── .sw
+│   │   └── .w
+
+├── packages\canvas-component\src\symphonies\select\select.overlay.dom.stage-crew.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-selection-overlay (className-prop)
+│       ├── .rx-handle (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       └── .Math (template-literal)
+
+├── packages\canvas-component\src\symphonies\select\select.overlay.line-advanced.stage-crew.ts (42 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-adv-line-overlay
+│   │   ├── .handle
+│   └── 🔧 USAGES
+│       ├── .rx-adv-line-overlay (className-prop)
+│       ├── .handle (className-prop)
+│       ├── .a (className-prop)
+│       ├── .handle (utility-classes)
+│       ├── .a (utility-classes)
+│       ├── .handle (className-prop)
+│       ├── .b (className-prop)
+│       ├── .handle (utility-classes)
+│       ├── .b (utility-classes)
+│       ├── .handle (querySelector)
+│       └── ... and 30 more
+
+├── packages\canvas-component\src\symphonies\select\select.overlay.line-resize.stage-crew.ts (25 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-line-overlay
+│   │   ├── .endpoint
+│   └── 🔧 USAGES
+│       ├── .rx-line-overlay (className-prop)
+│       ├── .endpoint (className-prop)
+│       ├── .a (className-prop)
+│       ├── .endpoint (utility-classes)
+│       ├── .a (utility-classes)
+│       ├── .endpoint (className-prop)
+│       ├── .b (className-prop)
+│       ├── .endpoint (utility-classes)
+│       ├── .b (utility-classes)
+│       ├── .Math (template-literal)
+│       └── ... and 13 more
+
+├── packages\canvas-component\src\symphonies\select\select.svg-node.stage-crew.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       ├── .Math (template-literal)
+│       └── .Math (template-literal)
+
+├── packages\canvas-component\src\symphonies\update\update.stage-crew.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .Canvas (template-literal)
+│       ├── .Unknown (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\canvas-component\src\symphonies\update\update.svg-node.stage-crew.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .SVG (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .Invalid (template-literal)
+│       ├── .Updated (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\canvas-component\src\temp-deps\conductor.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .pluginId (template-literal)
+
+├── packages\canvas-component\src\temp-deps\css-registry.store.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   │   ├── .rx-container
+│   │   └── .rx-comp-div
+
+├── packages\canvas-component\src\temp-deps\rule-engine.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .prefix (template-literal)
+│       ├── .prefix (template-literal)
+│       └── .prefix (template-literal)
+
+├── packages\canvas-component\src\temp-deps\sanitizeHtml.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\canvas\src\ui\CanvasHeader.tsx (20 classes)
+│   └── 🔧 USAGES
+│       ├── .canvas-header (className-prop)
+│       ├── .canvas-title (className-prop)
+│       ├── .canvas-controls (className-prop)
+│       ├── .select (data-attr)
+│       ├── .canvas-control (template-literal)
+│       ├── .move (data-attr)
+│       ├── .canvas-control (template-literal)
+│       ├── .draw (data-attr)
+│       ├── .canvas-divider (className-prop)
+│       ├── .canvas-control (className-prop)
+│       └── ... and 10 more
+
+├── packages\canvas\src\ui\CanvasPage.css (14 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .canvas-area
+│   │   ├── .canvas-header
+│   │   ├── .canvas-title
+│   │   ├── .canvas-controls
+│   │   ├── .canvas-control
+│   │   ├── .active
+│   │   ├── .canvas-divider
+│   │   ├── .zoom-controls
+│   │   ├── .zoom-btn
+│   │   ├── .zoom-level
+│   │   └── ... and 4 more
+
+├── packages\canvas\src\ui\CanvasPage.tsx (4 classes)
+│   └── 🔧 USAGES
+│       ├── .canvas-area (className-prop)
+│       ├── .canvas-content (className-prop)
+│       ├── .canvas-grid (className-prop)
+│       └── .drop-indicator (className-prop)
+
+├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts (17 classes)
+│   └── 🔧 USAGES
+│       ├── .mock-node (template-literal)
+│       ├── .position (template-literal)
+│       ├── .position (template-literal)
+│       ├── .template (template-literal)
+│       ├── .template (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       └── ... and 7 more
+
+├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component\symphonies\create\create.symphony.ts (9 classes)
+│   └── 🔧 USAGES
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .mock-node (template-literal)
+│       ├── .position (template-literal)
+│       ├── .position (template-literal)
+│       ├── .template (template-literal)
+│       └── .template (template-literal)
+
+├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component\symphonies\drag\drag.symphony.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       └── .data (template-literal)
+
+├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component\symphonies\resize\resize.move.symphony.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .width (template-literal)
+│       └── .height (template-literal)
+
+├── packages\control-panel\__tests__\attribute-editing.bidirectional.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\control-panel\__tests__\attribute-editing.integration.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\control-panel\__tests__\bidirectional-sync.spec.ts (15 classes)
+│   └── 🔧 USAGES
+│       ├── .componentType (template-literal)
+│       ├── .should (template-literal)
+│       ├── .test (template-literal)
+│       ├── .Test (template-literal)
+│       ├── .test (template-literal)
+│       ├── .should (template-literal)
+│       ├── .test (template-literal)
+│       ├── .Test (template-literal)
+│       ├── .test (template-literal)
+│       ├── .rx-comp (className-prop)
+│       └── ... and 5 more
+
+├── packages\control-panel\__tests__\classes.editing.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   └── 🔧 USAGES
+│       └── .rx-button--primary (classList-method)
+
+├── packages\control-panel\__tests__\css.idempotency.spec.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-idem (template-literal)
+│       ├── .className (template-literal)
+│       ├── .rx-idem-upsert (template-literal)
+│       └── .className (template-literal)
+
+├── packages\control-panel\__tests__\dark-mode-form-controls.spec.tsx (12 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .property-input
+│   │   ├── .property-select
+│   │   ├── .property-checkbox
+│   │   ├── .checkbox-text
+│   └── 🔧 USAGES
+│       ├── .dark (data-attr)
+│       ├── .forEach (css-module)
+│       ├── .property-input (className-prop)
+│       ├── .property-select (className-prop)
+│       ├── .property-select (className-prop)
+│       ├── .property-checkbox (className-prop)
+│       ├── .property-checkbox (className-prop)
+│       └── .checkbox-text (className-prop)
+
+├── packages\control-panel\__tests__\eventrouter-communication.spec.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .custom-style
+│   └── 🔧 USAGES
+│       ├── .test-button (template-literal)
+│       └── .form-field (template-literal)
+
+├── packages\control-panel\__tests__\heading-level-sync.spec.ts (24 classes)
+│   └── 🔧 USAGES
+│       ├── .rx-comp (className-prop)
+│       ├── .rx-heading (className-prop)
+│       ├── .rx-heading--level-h3 (className-prop)
+│       ├── .rx-comp (utility-classes)
+│       ├── .rx-heading (utility-classes)
+│       ├── .rx-heading--level-h3 (utility-classes)
+│       ├── .rx-comp (className-prop)
+│       ├── .rx-heading (className-prop)
+│       ├── .rx-heading--level-h2 (className-prop)
+│       ├── .rx-comp (utility-classes)
+│       └── ... and 14 more
+
+├── packages\control-panel\__tests__\integration.end-to-end.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\control-panel\__tests__\live-updates.drag-resize.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\control-panel\__tests__\selection.sequence-model-and-notify.spec.ts (1 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   └── .rx-button
+
+├── packages\control-panel\src\components\field-renderers\CheckboxInput.tsx (7 classes)
+│   └── 🔧 USAGES
+│       ├── .field-input (template-literal)
+│       ├── .property-label (className-prop)
+│       ├── .checkbox-label (className-prop)
+│       ├── .property-label (utility-classes)
+│       ├── .checkbox-label (utility-classes)
+│       ├── .checkbox-text (className-prop)
+│       └── .field-description (className-prop)
+
+├── packages\control-panel\src\components\field-renderers\CodeTextarea.tsx (13 classes)
+│   └── 🔧 USAGES
+│       ├── .field (template-literal)
+│       ├── .root (template-literal)
+│       ├── .repeat (template-literal)
+│       ├── .field-input (template-literal)
+│       ├── .code-toolbar (className-prop)
+│       ├── .action-btn (className-prop)
+│       ├── .action-btn (className-prop)
+│       ├── .action-btn (className-prop)
+│       ├── .extract-prompt (className-prop)
+│       ├── .property-input (className-prop)
+│       └── ... and 3 more
+
+├── packages\control-panel\src\components\field-renderers\ColorInput.tsx (9 classes)
+│   └── 🔧 USAGES
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field-input (template-literal)
+│       ├── .color-input-container (className-prop)
+│       ├── .color-picker (className-prop)
+│       ├── .Pick (template-literal)
+│       ├── .property-input (template-literal)
+│       ├── .field-errors (className-prop)
+│       └── .field-error (className-prop)
+
+├── packages\control-panel\src\components\field-renderers\NumberInput.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field-input (template-literal)
+│       ├── .property-input (template-literal)
+│       ├── .field-errors (className-prop)
+│       └── .field-error (className-prop)
+
+├── packages\control-panel\src\components\field-renderers\SelectInput.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .field (template-literal)
+│       ├── .field-input (template-literal)
+│       ├── .property-input (template-literal)
+│       ├── .field-errors (className-prop)
+│       └── .field-error (className-prop)
+
+├── packages\control-panel\src\components\field-renderers\SvgNodeInspector.tsx (2 classes)
+│   └── 🔧 USAGES
+│       ├── .svg-node-inspector (className-prop)
+│       └── .svg-node-inspector (className-prop)
+
+├── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .svg (template-literal)
+│       ├── .k (template-literal)
+│       ├── .k (template-literal)
+│       ├── .parts (template-literal)
+│       ├── .node (template-literal)
+│       ├── .path (template-literal)
+│       ├── .idx (template-literal)
+│       └── .svg-tree-view (className-prop)
+
+├── packages\control-panel\src\components\field-renderers\TextInput.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field-input (template-literal)
+│       ├── .property-input (template-literal)
+│       ├── .field-errors (className-prop)
+│       └── .field-error (className-prop)
+
+├── packages\control-panel\src\components\layout\EmptyState.tsx (2 classes)
+│   └── 🔧 USAGES
+│       ├── .no-selection (className-prop)
+│       └── .no-selection-icon (className-prop)
+
+├── packages\control-panel\src\components\layout\LoadingState.tsx (2 classes)
+│   └── 🔧 USAGES
+│       ├── .loading-state (className-prop)
+│       └── .loading-spinner (className-prop)
+
+├── packages\control-panel\src\components\layout\PanelHeader.tsx (4 classes)
+│   └── 🔧 USAGES
+│       ├── .control-panel-header (className-prop)
+│       ├── .element-info (className-prop)
+│       ├── .element-type (className-prop)
+│       └── .element-id (className-prop)
+
+├── packages\control-panel\src\components\modals\CodeEditorModal.tsx (7 classes)
+│   └── 🔧 USAGES
+│       ├── .modal-overlay (template-literal)
+│       ├── .modal (template-literal)
+│       ├── .modal-header (className-prop)
+│       ├── .modal-actions (className-prop)
+│       ├── .primary (className-prop)
+│       ├── .modal-content (className-prop)
+│       └── .css-editor-textarea (className-prop)
+
+├── packages\control-panel\src\components\modals\CssEditorModal.css (30 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .css-editor-modal-overlay
+│   │   ├── .css-editor-modal
+│   │   ├── .css-editor-header
+│   │   ├── .css-editor-title
+│   │   ├── .css-editor-icon
+│   │   ├── .css-editor-close
+│   │   ├── .css-editor-class-name
+│   │   ├── .css-class-selector
+│   │   ├── .css-editor-content
+│   │   ├── .css-editor-container
+│   │   └── ... and 20 more
+
+├── packages\control-panel\src\components\modals\CssEditorModal.tsx (26 classes)
+│   └── 🔧 USAGES
+│       ├── .line-number (className-prop)
+│       ├── .css-editor-modal-overlay (className-prop)
+│       ├── .css-editor-modal (className-prop)
+│       ├── .css-editor-header (className-prop)
+│       ├── .css-editor-title (className-prop)
+│       ├── .css-editor-icon (className-prop)
+│       ├── .css-editor-close (className-prop)
+│       ├── .css-editor-class-name (className-prop)
+│       ├── .css-class-selector (className-prop)
+│       ├── .css-editor-content (className-prop)
+│       └── ... and 16 more
+
+├── packages\control-panel\src\components\sections\ClassManager.tsx (26 classes)
+│   └── 🔧 USAGES
+│       ├── .CSS (template-literal)
+│       ├── .Cannot (template-literal)
+│       ├── .Are (template-literal)
+│       ├── .property-section (className-prop)
+│       ├── .property-section-title (className-prop)
+│       ├── .property-grid (className-prop)
+│       ├── .property-item (className-prop)
+│       ├── .property-label (className-prop)
+│       ├── .css-classes-container (className-prop)
+│       ├── .css-class-item (className-prop)
+│       └── ... and 16 more
+
+├── packages\control-panel\src\components\sections\PropertyFieldRenderer.tsx (4 classes)
+│   └── 🔧 USAGES
+│       ├── .property-item (className-prop)
+│       ├── .property-label (className-prop)
+│       ├── .required-indicator (className-prop)
+│       └── .field-description (className-prop)
+
+├── packages\control-panel\src\components\sections\PropertySection.tsx (4 classes)
+│   └── 🔧 USAGES
+│       ├── .property-section (className-prop)
+│       ├── .property-section-title (template-literal)
+│       ├── .collapse-icon (template-literal)
+│       └── .property-grid (className-prop)
+
+├── packages\control-panel\src\hooks\useControlPanelActions.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .interaction (template-literal)
+
+├── packages\control-panel\src\hooks\useControlPanelState.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .cp (template-literal)
+│       ├── .cp (template-literal)
+│       ├── .cp (template-literal)
+│       ├── .cp (template-literal)
+│       └── .cp (template-literal)
+
+├── packages\control-panel\src\services\schema-resolver.service.ts (17 classes)
+│   └── 🔧 USAGES
+│       ├── .json-components (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .field (template-literal)
+│       ├── .content (template-literal)
+│       ├── .styling (template-literal)
+│       ├── .content (template-literal)
+│       ├── .content (template-literal)
+│       ├── .layout (template-literal)
+│       ├── .styling (template-literal)
+│       └── ... and 7 more
+
+├── packages\control-panel\src\state\__tests__\css-registry.store.test.ts (18 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .test-class
+│   │   ├── .test-class
+│   │   ├── .test-class
+│   │   ├── .test-class
+│   │   ├── .rx-button
+│   │   ├── .test-class
+│   │   ├── .test-class
+│   │   ├── .test
+│   │   ├── .rx-button
+│   │   ├── .test-class
+│   │   └── ... and 2 more
+│   └── 🔧 USAGES
+│       ├── .test-class (className-prop)
+│       ├── .test-class (className-prop)
+│       ├── .test-class (className-prop)
+│       ├── .test-class (className-prop)
+│       ├── .non-existent (className-prop)
+│       └── .test-class (className-prop)
+
+├── packages\control-panel\src\state\css-registry.store.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .rx-button
+│   │   ├── .rx-container
+│   │   └── .rx-comp-div
+
+├── packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts (21 classes)
+│   └── 🔧 USAGES
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .Cannot (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       ├── .CSS (template-literal)
+│       └── ... and 11 more
+
+├── packages\control-panel\src\symphonies\selection\selection.stage-crew.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Control (template-literal)
+
+├── packages\control-panel\src\symphonies\ui\ui.stage-crew.ts (8 classes)
+│   └── 🔧 USAGES
+│       ├── .UI (template-literal)
+│       ├── .Generated (template-literal)
+│       ├── .Generated (template-literal)
+│       ├── .Field (template-literal)
+│       ├── .Field (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Validation (template-literal)
+│       └── .Section (template-literal)
+
+├── packages\control-panel\src\ui\ControlPanel.css (60 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .control-panel
+│   │   ├── .control-panel-header
+│   │   ├── .element-info
+│   │   ├── .element-type
+│   │   ├── .element-id
+│   │   ├── .control-panel-content
+│   │   ├── .no-selection
+│   │   ├── .no-selection-icon
+│   │   ├── .property-section
+│   │   ├── .property-section-title
+│   │   └── ... and 50 more
+
+├── packages\control-panel\src\ui\ControlPanel.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .control-panel (className-prop)
+│       ├── .control-panel-content (className-prop)
+│       ├── .control-panel (className-prop)
+│       ├── .control-panel-content (className-prop)
+│       └── .property-sections (className-prop)
+
+├── packages\control-panel\src\utils\field.utils.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Enter (template-literal)
+
+├── packages\control-panel\tsup.config.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .npm (template-literal)
+
+├── packages\digital-assets\assets\plugin-architecture\index.html (107 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .container
+│   │   ├── .slides-grid
+│   │   ├── .slide-card
+│   │   ├── .slide-header
+│   │   ├── .slide-title
+│   │   ├── .slide-description
+│   │   ├── .slide-content
+│   │   ├── .slide-svg
+│   │   ├── .slide-footer
+│   │   ├── .slide-meta
+│   │   └── ... and 11 more
+│   └── 🔧 USAGES
+│       ├── .container (class-attr)
+│       ├── .stats (class-attr)
+│       ├── .stats-grid (class-attr)
+│       ├── .stat-item (class-attr)
+│       ├── .stat-number (class-attr)
+│       ├── .stat-label (class-attr)
+│       ├── .stat-item (class-attr)
+│       ├── .stat-number (class-attr)
+│       ├── .stat-label (class-attr)
+│       ├── .stat-item (class-attr)
+│       └── ... and 76 more
+
+├── packages\digital-assets\cypress\e2e\enhanced-storybook.cy.js (5 classes)
+│   └── 🔧 USAGES
+│       ├── .enhanced-storybook-container (data-attr)
+│       ├── .scene (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .scene (template-literal)
+│       └── .enhanced-storybook (template-literal)
+
+├── packages\digital-assets\cypress\e2e\svg-rendering.cy.js (27 classes)
+│   └── 🔧 USAGES
+│       ├── .svg-test-container (data-attr)
+│       ├── .slide (template-literal)
+│       ├── .should (template-literal)
+│       ├── .data-testid (template-literal)
+│       ├── .elementSelector (template-literal)
+│       ├── .slide (template-literal)
+│       ├── .elementSelector (template-literal)
+│       ├── .elementSelector (template-literal)
+│       ├── .elementSelector (template-literal)
+│       ├── .should (template-literal)
+│       └── ... and 17 more
+
+├── packages\digital-assets\cypress\support\commands.js (5 classes)
+│   └── 🔧 USAGES
+│       ├── .elementName (template-literal)
+│       ├── .elementName (template-literal)
+│       ├── .elementName (template-literal)
+│       ├── .elementName (template-literal)
+│       └── .elementName (template-literal)
+
+├── packages\digital-assets\cypress\support\e2e.js (6 classes)
+│   └── 🔧 USAGES
+│       ├── .elementName (template-literal)
+│       ├── .elementName (template-literal)
+│       ├── .elementName (template-literal)
+│       ├── .elementName (template-literal)
+│       ├── .selector (template-literal)
+│       └── .selector (template-literal)
+
+├── packages\digital-assets\samples\event-router-cinematic-presentation.html (45 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .cinematic-container
+│   │   ├── .scene-container
+│   │   ├── .active
+│   │   ├── .progress-bar
+│   │   ├── .progress-fill
+│   │   ├── .controls
+│   │   ├── .control-button
+│   │   ├── .scene-title
+│   │   ├── .scene-1-enter
+│   │   ├── .scene-1-exit
+│   │   └── ... and 10 more
+│   └── 🔧 USAGES
+│       ├── .cinematic-container (class-attr)
+│       ├── .scene-container (class-attr)
+│       ├── .scene-title (class-attr)
+│       ├── .scene-container (class-attr)
+│       ├── .scene-title (class-attr)
+│       ├── .scene-container (class-attr)
+│       ├── .scene-title (class-attr)
+│       ├── .scene-container (class-attr)
+│       ├── .scene-title (class-attr)
+│       ├── .scene-container (class-attr)
+│       └── ... and 15 more
+
+├── packages\digital-assets\scripts\generate-integrated-svgs.js (5 classes)
+│   └── 🔧 USAGES
+│       ├── .Parent (template-literal)
+│       ├── .id (template-literal)
+│       ├── .Validation (template-literal)
+│       ├── .Validated (template-literal)
+│       └── .Processed (template-literal)
+
+├── packages\digital-assets\scripts\generate-slide-svgs.js (20 classes)
+│   └── 🔧 USAGES
+│       ├── .id (template-literal)
+│       ├── .url (template-literal)
+│       ├── .href (template-literal)
+│       ├── .attrName (template-literal)
+│       ├── .stop (template-literal)
+│       ├── .style (template-literal)
+│       ├── .font-family (template-literal)
+│       ├── .Warning (template-literal)
+│       ├── .Warning (template-literal)
+│       ├── .def (template-literal)
+│       └── ... and 10 more
+
+├── packages\digital-assets\scripts\lib\injector.js (34 classes)
+│   └── 🔧 USAGES
+│       ├── .se (template-literal)
+│       ├── .use (template-literal)
+│       ├── .translate (template-literal)
+│       ├── .scale (template-literal)
+│       ├── .scale (template-literal)
+│       ├── .rotate (template-literal)
+│       ├── .rotate (template-literal)
+│       ├── .use (template-literal)
+│       ├── .use (template-literal)
+│       ├── .svg (template-literal)
+│       └── ... and 24 more
+
+├── packages\digital-assets\src\animation-coordinator.ts (5 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .active
+│   │   ├── .dimmed
+│   │   ├── .inactive
+│   └── 🔧 USAGES
+│       ├── .M (template-literal)
+│       └── .kf (template-literal)
+
+├── packages\digital-assets\src\boundary-enforcement.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .Node (template-literal)
+│       └── .Port (template-literal)
+
+├── packages\digital-assets\src\canvas-scene-demo.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .Saved (template-literal)
+│       ├── .Scene (template-literal)
+│       ├── .Canvas (template-literal)
+│       ├── .Nodes (template-literal)
+│       └── .Raw (template-literal)
+
+├── packages\digital-assets\src\canvas-storybook-demo.ts (31 classes)
+│   └── 🔧 USAGES
+│       ├── .Saved (template-literal)
+│       ├── .n (template-literal)
+│       ├── .Violations (template-literal)
+│       ├── .Auto-fixes (template-literal)
+│       ├── .Processing (template-literal)
+│       ├── .n (template-literal)
+│       ├── .Total (template-literal)
+│       ├── .Total (template-literal)
+│       ├── .Total (template-literal)
+│       ├── .Total (template-literal)
+│       └── ... and 21 more
+
+├── packages\digital-assets\src\canvas-svg-extractor.ts (26 classes)
+│   └── 🔧 USAGES
+│       ├── .Saved (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .canvas-extracted (template-literal)
+│       ├── .Processing (template-literal)
+│       ├── .Component (template-literal)
+│       ├── .Layout (template-literal)
+│       ├── .Successfully (template-literal)
+│       ├── .Error (template-literal)
+│       ├── .Combined (template-literal)
+│       ├── .Scene (template-literal)
+│       └── ... and 16 more
+
+├── packages\digital-assets\src\canvas-to-graph-converter.ts (25 classes)
+│   └── 🔧 USAGES
+│       ├── .event-router-scene (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .Saved (template-literal)
+│       ├── .Loaded (template-literal)
+│       ├── .Processing (template-literal)
+│       ├── .Component (template-literal)
+│       ├── .Layout (template-literal)
+│       ├── .graph-scene (template-literal)
+│       ├── .graph-scene (template-literal)
+│       ├── .Successfully (template-literal)
+│       └── ... and 15 more
+
+├── packages\digital-assets\src\cinematic-renderer.ts (25 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .cinematic-container
+│   │   ├── .scene-container
+│   │   ├── .active
+│   │   ├── .progress-bar
+│   │   ├── .progress-fill
+│   │   ├── .controls
+│   │   ├── .control-button
+│   │   ├── .scene-title
+│   └── 🔧 USAGES
+│       ├── .monoGraph (template-literal)
+│       ├── .monoGraph (template-literal)
+│       ├── .scene-container (querySelector)
+│       ├── .scene-title (querySelector)
+│       ├── .active (classList-method)
+│       ├── .active (classList-method)
+│       ├── .progress-fill (querySelector)
+│       ├── .scene-container (class-attr)
+│       ├── .scene-title (class-attr)
+│       ├── .controls (class-attr)
+│       └── ... and 7 more
+
+├── packages\digital-assets\src\cli.ts (17 classes)
+│   └── 🔧 USAGES
+│       ├── .Error (template-literal)
+│       ├── .Sprite (template-literal)
+│       ├── .Themes (template-literal)
+│       ├── .Layouts (template-literal)
+│       ├── .Templates (template-literal)
+│       ├── .libId (template-literal)
+│       ├── .lib (template-literal)
+│       ├── .libId (template-literal)
+│       ├── .themeId (template-literal)
+│       ├── .theme (template-literal)
+│       └── ... and 7 more
+
+├── packages\digital-assets\src\combined-storybook-generator.ts (30 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .progress-bar
+│   │   ├── .connection-path
+│   └── 🔧 USAGES
+│       ├── .Saved (template-literal)
+│       ├── .Enhanced (template-literal)
+│       ├── .Total (template-literal)
+│       ├── .Enhanced (template-literal)
+│       ├── .Animation (template-literal)
+│       ├── .progress-bar (class-attr)
+│       ├── .path (template-literal)
+│       ├── .connection-path (class-attr)
+│       ├── .Scene (template-literal)
+│       ├── .scene-${sceneInfo.sceneNumber} (class-attr)
+│       └── ... and 18 more
+
+├── packages\digital-assets\src\config-loader.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .sprite (template-literal)
+│       ├── .id (template-literal)
+│       ├── .theme (template-literal)
+│       ├── .id (template-literal)
+│       ├── .layout (template-literal)
+│       ├── .id (template-literal)
+│       ├── .template (template-literal)
+│       ├── .id (template-literal)
+│       ├── .File (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\digital-assets\src\containment-demo.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .i (template-literal)
+│       ├── .Changes (template-literal)
+│       └── .n (template-literal)
+
+├── packages\digital-assets\src\contextual-boundaries-demo.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .scene (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .scene (template-literal)
+│       └── .scene (template-literal)
+
+├── packages\digital-assets\src\create-cinematic-presentation.ts (13 classes)
+│   └── 🔧 USAGES
+│       ├── .Loaded (template-literal)
+│       ├── .ID (template-literal)
+│       ├── .Scenes (template-literal)
+│       ├── .Canvas (template-literal)
+│       ├── .Cinematic (template-literal)
+│       ├── .ID (template-literal)
+│       ├── .Title (template-literal)
+│       ├── .Scenes (template-literal)
+│       ├── .Viewport (template-literal)
+│       ├── .Auto (template-literal)
+│       └── ... and 3 more
+
+├── packages\digital-assets\src\create-mono-journey.ts (6 classes)
+│   └── 🔧 USAGES
+│       ├── .Mono (template-literal)
+│       ├── .ID (template-literal)
+│       ├── .Canvas (template-literal)
+│       ├── .Scenes (template-literal)
+│       ├── .Total (template-literal)
+│       └── .Connections (template-literal)
+
+├── packages\digital-assets\src\diagnostics.ts (12 classes)
+│   └── 🔧 USAGES
+│       ├── .Move (template-literal)
+│       ├── .Adjust (template-literal)
+│       ├── .Fix (template-literal)
+│       ├── .Add (template-literal)
+│       ├── .n (template-literal)
+│       ├── .Summary (template-literal)
+│       ├── .Processed (template-literal)
+│       ├── .n (template-literal)
+│       ├── .i (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 2 more
+
+├── packages\digital-assets\src\event-router-demo.ts (13 classes)
+│   └── 🔧 USAGES
+│       ├── .Canvas (template-literal)
+│       ├── .Total (template-literal)
+│       ├── .Boundaries (template-literal)
+│       ├── .Ports (template-literal)
+│       ├── .Connectors (template-literal)
+│       ├── .Flows (template-literal)
+│       ├── .boundary (template-literal)
+│       ├── .index (template-literal)
+│       ├── .index (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 3 more
+
+├── packages\digital-assets\src\generate-mono-svg.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .Loaded (template-literal)
+│       ├── .ID (template-literal)
+│       ├── .Canvas (template-literal)
+│       ├── .Scenes (template-literal)
+│       ├── .Duration (template-literal)
+│       ├── .Connections (template-literal)
+│       ├── .SVG (template-literal)
+│       ├── .File (template-literal)
+│       ├── .Size (template-literal)
+│       └── .Dimensions (template-literal)
+
+├── packages\digital-assets\src\generic-graph-generator.ts (17 classes)
+│   └── 🔧 USAGES
+│       ├── .styledGraph (template-literal)
+│       ├── .Generated (template-literal)
+│       ├── .styledGraph (template-literal)
+│       ├── .Theme (template-literal)
+│       ├── .svgPath (template-literal)
+│       ├── .jsonPath (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Generating (template-literal)
+│       ├── .Description (template-literal)
+│       ├── .template (template-literal)
+│       └── ... and 7 more
+
+├── packages\digital-assets\src\generic-scene-generator.ts (40 classes)
+│   └── 🔧 USAGES
+│       ├── .Generating (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .Generated (template-literal)
+│       ├── .scene (template-literal)
+│       ├── .Canvas (template-literal)
+│       ├── .svgPath (template-literal)
+│       ├── .jsonPath (template-literal)
+│       ├── .n (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 30 more
+
+├── packages\digital-assets\src\mono-graph-generator.ts (14 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .scene-boundary
+│   │   ├── .scene-content
+│   │   ├── .scene-title
+│   └── 🔧 USAGES
+│       ├── .Warning (template-literal)
+│       ├── .M (template-literal)
+│       ├── .connection (template-literal)
+│       ├── .currentX (template-literal)
+│       ├── .sceneEndX (template-literal)
+│       ├── .nextSceneStartX (template-literal)
+│       ├── .symbol (template-literal)
+│       ├── .scene-boundary (class-attr)
+│       ├── .scene-title (class-attr)
+│       ├── .scene-content (class-attr)
+│       └── ... and 1 more
+
+├── packages\digital-assets\src\mono-graph.test.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .connection (template-literal)
+│       └── .id (template-literal)
+
+├── packages\digital-assets\src\render-svg.ts (45 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .connector
+│   │   ├── .boundary-title
+│   │   ├── .flow-token
+│   │   ├── .boundary-contained
+│   └── 🔧 USAGES
+│       ├── .symbol (template-literal)
+│       ├── .rect (template-literal)
+│       ├── .g (template-literal)
+│       ├── .filter (template-literal)
+│       ├── .filter (template-literal)
+│       ├── .applyContainmentAttributes (template-literal)
+│       ├── .boundary${containmentClass} (class-attr)
+│       ├── .text (template-literal)
+│       ├── .boundary-title (class-attr)
+│       ├── .g (template-literal)
+│       └── ... and 31 more
+
+├── packages\digital-assets\src\sample-generator.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .name (template-literal)
+│       ├── .name (template-literal)
+│       └── .Generated (template-literal)
+
+├── packages\digital-assets\src\slide-01-generator.ts (13 classes)
+│   └── 🔧 USAGES
+│       ├── .Generating (template-literal)
+│       ├── .name (template-literal)
+│       ├── .name (template-literal)
+│       ├── .name (template-literal)
+│       ├── .graph (template-literal)
+│       ├── .Layout (template-literal)
+│       ├── .description (template-literal)
+│       ├── .jsonPath (template-literal)
+│       ├── .svgPath (template-literal)
+│       ├── .name (template-literal)
+│       └── ... and 3 more
+
+├── packages\digital-assets\src\slide01-data.ts (22 classes)
+│   └── 🔧 USAGES
+│       ├── .rect (template-literal)
+│       ├── .ellipse (template-literal)
+│       ├── .rect (template-literal)
+│       ├── .g (template-literal)
+│       ├── .rect (template-literal)
+│       ├── .rect (template-literal)
+│       ├── .text (template-literal)
+│       ├── .g (template-literal)
+│       ├── .rect (template-literal)
+│       ├── .g (template-literal)
+│       └── ... and 12 more
+
+├── packages\digital-assets\src\slide01-generator.ts (23 classes)
+│   └── 🔧 USAGES
+│       ├── .Generating (template-literal)
+│       ├── .Generated (template-literal)
+│       ├── .slide01 (template-literal)
+│       ├── .Canvas (template-literal)
+│       ├── .svgPath (template-literal)
+│       ├── .jsonPath (template-literal)
+│       ├── .slide01 (template-literal)
+│       ├── .tile (template-literal)
+│       ├── .tile (template-literal)
+│       ├── .Generated (template-literal)
+│       └── ... and 13 more
+
+├── packages\digital-assets\src\svg-animation-utilities.ts (22 classes)
+│   └── 🔧 USAGES
+│       ├── .disappear (template-literal)
+│       ├── .trigger (template-literal)
+│       ├── .disappear (template-literal)
+│       ├── .tagName (template-literal)
+│       ├── .openingTag (template-literal)
+│       ├── .appear (template-literal)
+│       ├── .trigger (template-literal)
+│       ├── .appear (template-literal)
+│       ├── .tagName (template-literal)
+│       ├── .beforeClosing (template-literal)
+│       └── ... and 12 more
+
+├── packages\digital-assets\src\svg-export.ts (18 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .bg
+│   │   ├── .node-rect
+│   │   ├── .node-label
+│   │   ├── .edge-line
+│   │   ├── .edge-label
+│   └── 🔧 USAGES
+│       ├── .e (template-literal)
+│       ├── .stroke-dasharray (template-literal)
+│       ├── .marker-end (template-literal)
+│       ├── .text (template-literal)
+│       ├── .edge-label (class-attr)
+│       ├── .edge (class-attr)
+│       ├── .edge-line (class-attr)
+│       ├── .node (class-attr)
+│       ├── .node-rect (class-attr)
+│       ├── .node-label (class-attr)
+│       └── ... and 3 more
+
+├── packages\digital-assets\src\template-processor.ts (6 classes)
+│   └── 🔧 USAGES
+│       ├── .Unknown (template-literal)
+│       ├── .Required (template-literal)
+│       ├── .categoryName (template-literal)
+│       ├── .Parameter (template-literal)
+│       ├── .Required (template-literal)
+│       └── .Parameter (template-literal)
+
+├── packages\digital-assets\src\visual-containment.ts (18 classes)
+│   └── 🔧 USAGES
+│       ├── .clip (template-literal)
+│       ├── .corridor (template-literal)
+│       ├── .M (template-literal)
+│       ├── .L (template-literal)
+│       ├── .Q (template-literal)
+│       ├── .L (template-literal)
+│       ├── .Q (template-literal)
+│       ├── .L (template-literal)
+│       ├── .Q (template-literal)
+│       ├── .L (template-literal)
+│       └── ... and 8 more
+
+├── packages\digital-assets\test-canvas-layout.js (9 classes)
+│   └── 🔧 USAGES
+│       ├── .message (template-literal)
+│       ├── .message (template-literal)
+│       ├── .name (template-literal)
+│       ├── .name (template-literal)
+│       ├── .nResults (template-literal)
+│       ├── .Scene (template-literal)
+│       ├── .Scene (template-literal)
+│       ├── .Scene (template-literal)
+│       └── .Components (template-literal)
+
+├── packages\digital-assets\tests\browser-svg-render-test.html (56 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .container
+│   │   ├── .subtitle
+│   │   ├── .slide-section
+│   │   ├── .slide-title
+│   │   ├── .elements-grid
+│   │   ├── .element-card
+│   │   ├── .element-title
+│   │   ├── .click-hint
+│   │   ├── .click-hint
+│   │   ├── .element-description
+│   │   └── ... and 9 more
+│   └── 🔧 USAGES
+│       ├── .container (class-attr)
+│       ├── .subtitle (class-attr)
+│       ├── .test-summary (class-attr)
+│       ├── .summary-item (class-attr)
+│       ├── .summary-item (class-attr)
+│       ├── .summary-item (class-attr)
+│       ├── .summary-item (class-attr)
+│       ├── .svg-test-container (data-attr)
+│       ├── .assets (template-literal)
+│       ├── .HTTP (template-literal)
+│       └── ... and 27 more
+
+├── packages\digital-assets\tests\bus-coordination-test.html (33 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .container
+│   │   ├── .header
+│   │   ├── .controls
+│   │   ├── .btn
+│   │   ├── .secondary
+│   │   ├── .timing-info
+│   │   ├── .timing-table
+│   │   ├── .timing-item
+│   │   ├── .svg-container
+│   │   ├── .status
+│   │   └── ... and 1 more
+│   └── 🔧 USAGES
+│       ├── .container (class-attr)
+│       ├── .header (class-attr)
+│       ├── .controls (class-attr)
+│       ├── .btn (class-attr)
+│       ├── .btn (class-attr)
+│       ├── .secondary (class-attr)
+│       ├── .btn (class-attr)
+│       ├── .secondary (class-attr)
+│       ├── .timing-info (class-attr)
+│       ├── .timing-table (class-attr)
+│       └── ... and 12 more
+
+├── packages\digital-assets\tests\combined-storybook.test.js (10 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .scene-1
+│   │   ├── .active
+│   └── 🔧 USAGES
+│       ├── .scene-progress (class-attr)
+│       ├── .progress-bar (class-attr)
+│       ├── .connection-path (class-attr)
+│       ├── .scene-${i} (class-attr)
+│       ├── .Scene (template-literal)
+│       ├── .id (template-literal)
+│       ├── .clip-path (template-literal)
+│       └── .Scene (template-literal)
+
+├── packages\digital-assets\tests\contextual-boundaries.test.js (7 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .connector
+│   └── 🔧 USAGES
+│       ├── .boundary (class-attr)
+│       ├── .connector (class-attr)
+│       ├── .flow (class-attr)
+│       ├── .boundary (class-attr)
+│       ├── .connector (class-attr)
+│       └── .flow (class-attr)
+
+├── packages\digital-assets\tests\contextual-elements-composition.test.js (3 classes)
+│   └── 🔧 USAGES
+│       ├── .file (template-literal)
+│       ├── .xlink (template-literal)
+│       └── .data-sub-id (template-literal)
+
+├── packages\digital-assets\tests\enhanced-storybook-test.html (29 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .container
+│   │   ├── .subtitle
+│   │   ├── .svg-container
+│   │   ├── .controls
+│   │   ├── .status
+│   │   ├── .loading
+│   │   ├── .success
+│   │   ├── .error
+│   │   ├── .diagnostics
+│   │   ├── .highlight
+│   └── 🔧 USAGES
+│       ├── .container (class-attr)
+│       ├── .subtitle (class-attr)
+│       ├── .controls (class-attr)
+│       ├── .status (class-attr)
+│       ├── .loading (class-attr)
+│       ├── .svg-container (class-attr)
+│       ├── .enhanced-storybook-container (data-attr)
+│       ├── .diagnostics (class-attr)
+│       ├── .status (template-literal)
+│       ├── .message (template-literal)
+│       └── ... and 9 more
+
+├── packages\digital-assets\tests\generator.inline.test.js (2 classes)
+│   └── 🔧 USAGES
+│       ├── .a (data-attr)
+│       └── .b (data-attr)
+
+├── packages\digital-assets\tests\graph-to-svg.test.js (8 classes)
+│   └── 🔧 USAGES
+│       ├── .node (class-attr)
+│       ├── .edge (class-attr)
+│       ├── .node (class-attr)
+│       ├── .edge (class-attr)
+│       ├── .node (class-attr)
+│       ├── .edge (class-attr)
+│       ├── .edge-label (class-attr)
+│       └── .custom-edge (data-attr)
+
+├── packages\digital-assets\tests\mono-graph.test.js (6 classes)
+│   └── 🔧 USAGES
+│       ├── .connection (template-literal)
+│       ├── .id (template-literal)
+│       ├── .scene-boundary (class-attr)
+│       ├── .clipPath (template-literal)
+│       ├── .clip-path (template-literal)
+│       └── .scene-content (class-attr)
+
+├── packages\digital-assets\tests\run-svg-tests.js (4 classes)
+│   └── 🔧 USAGES
+│       ├── .Server (template-literal)
+│       ├── .Server (template-literal)
+│       ├── .Cypress (template-literal)
+│       └── .Cypress (template-literal)
+
+├── packages\digital-assets\tests\scene-graph.test.js (11 classes)
+│   └── 🔧 USAGES
+│       ├── .id (template-literal)
+│       ├── .id (template-literal)
+│       ├── .id (template-literal)
+│       ├── .connector (class-attr)
+│       ├── .width (template-literal)
+│       ├── .height (template-literal)
+│       ├── .viewBox (template-literal)
+│       ├── .fill (template-literal)
+│       ├── .tileId (template-literal)
+│       ├── .tileId (template-literal)
+│       └── ... and 1 more
+
+├── packages\digital-assets\tests\server.js (2 classes)
+│   └── 🔧 USAGES
+│       ├── .Test (template-literal)
+│       └── .SVG (template-literal)
+
+├── packages\digital-assets\tests\slide-01-graphs.test.js (2 classes)
+│   └── 🔧 USAGES
+│       ├── .graphInfo (template-literal)
+│       └── .data-id (template-literal)
+
+├── packages\digital-assets\tests\slide-driven-composition.validation.test.js (15 classes)
+│   └── 🔧 USAGES
+│       ├── .el (template-literal)
+│       ├── .sub (template-literal)
+│       ├── .g (template-literal)
+│       ├── .use (template-literal)
+│       ├── .use (template-literal)
+│       ├── .g (template-literal)
+│       ├── .data-sub-id (template-literal)
+│       ├── .transform (template-literal)
+│       ├── .use (template-literal)
+│       ├── .use (template-literal)
+│       └── ... and 5 more
+
+├── packages\digital-assets\tests\slide-generation.test.js (7 classes)
+│   └── 🔧 USAGES
+│       ├── .el (template-literal)
+│       ├── .element (template-literal)
+│       ├── .Element (template-literal)
+│       ├── .test (template-literal)
+│       ├── .id (template-literal)
+│       ├── .data-element (template-literal)
+│       └── .transform (template-literal)
+
+├── packages\digital-assets\tests\slide-xml-validation.test.js (4 classes)
+│   └── 🔧 USAGES
+│       ├── .slideFile (template-literal)
+│       ├── .Duplicate (template-literal)
+│       ├── .XML (template-literal)
+│       └── .Unbalanced (template-literal)
+
+├── packages\digital-assets\tests\sprite-libraries.test.js (2 classes)
+│   └── 🔧 USAGES
+│       ├── .libraryName (template-literal)
+│       └── .libraryName (template-literal)
+
+├── packages\digital-assets\tests\svg-animation-utilities.test.js (2 classes)
+│   └── 🔧 USAGES
+│       ├── .svg (template-literal)
+│       └── .test-class (class-attr)
+
+├── packages\digital-assets\tests\svg-scene-validation.test.js (1 classes)
+│   └── 🔧 USAGES
+│       └── .Scene (template-literal)
+
+├── packages\digital-assets\tests\template-exactness.test.js (4 classes)
+│   └── 🔧 USAGES
+│       ├── .conveyor (data-attr)
+│       ├── .staging-pad (data-attr)
+│       ├── .version-tags (data-attr)
+│       └── .uplink-arrow (data-attr)
+
+├── packages\digital-assets\tests\themes.test.js (2 classes)
+│   └── 🔧 USAGES
+│       ├── .themeName (template-literal)
+│       └── .themeName (template-literal)
+
+├── packages\digital-assets\tests\unified-svg-validation.test.js (3 classes)
+│   └── 🔧 USAGES
+│       ├── .scene (template-literal)
+│       ├── .g (template-literal)
+│       └── .Scene (template-literal)
+
+├── packages\header\src\ui\Header.css (14 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .header-container
+│   │   ├── .header-title
+│   │   ├── .header-title
+│   │   ├── .header-controls
+│   │   ├── .header-button
+│   │   ├── .header-button
+│   │   ├── .header-theme-toggle
+│   │   ├── .header-theme-button
+│   │   ├── .header-theme-button
+│   └── 🔧 USAGES
+│       ├── .dark (data-attr)
+│       ├── .dark (data-attr)
+│       ├── .dark (data-attr)
+│       ├── .dark (data-attr)
+│       └── .dark (data-attr)
+
+├── packages\header\src\ui\HeaderControls.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .header-container (className-prop)
+│       ├── .header-controls (className-prop)
+│       ├── .header-button (className-prop)
+│       ├── .header-button (className-prop)
+│       └── .header-button (className-prop)
+
+├── packages\header\src\ui\HeaderThemeButtonView.tsx (1 classes)
+│   └── 🔧 USAGES
+│       └── .header-theme-button (className-prop)
+
+├── packages\header\src\ui\HeaderThemeToggle.tsx (4 classes)
+│   └── 🔧 USAGES
+│       ├── .header-container (className-prop)
+│       ├── .header-theme-toggle (className-prop)
+│       ├── .header-theme-button (className-prop)
+│       └── .header-theme-button (className-prop)
+
+├── packages\header\src\ui\HeaderTitle.tsx (2 classes)
+│   └── 🔧 USAGES
+│       ├── .header-container (className-prop)
+│       └── .header-title (className-prop)
+
+├── packages\header\tests\unit\ui\header-theme-toggle.spec.tsx (3 classes)
+│   └── 🔧 USAGES
+│       ├── .header-theme-button (querySelector)
+│       ├── .header-theme-button (querySelector)
+│       └── .header-theme-button (querySelector)
+
+├── packages\host-sdk\core\conductor\conductor.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .rxc (template-literal)
+│       ├── .conductor (template-literal)
+│       ├── .r (template-literal)
+│       ├── .pid (template-literal)
+│       └── .topics (template-literal)
+
+├── packages\host-sdk\core\conductor\runtime-loaders.ts (8 classes)
+│   └── 🔧 USAGES
+│       ├── .Sequence (template-literal)
+│       ├── .No (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .json-sequences (template-literal)
+│       ├── .json-sequences (template-literal)
+│       ├── .json-sequences (template-literal)
+│       ├── .json-sequences (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\host-sdk\core\conductor\sequence-registration.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .json-sequences (template-literal)
+
+├── packages\host-sdk\core\events\EventRouter.ts (19 classes)
+│   └── 🔧 USAGES
+│       ├── .publish (template-literal)
+│       ├── .used_global_getTopicDef (template-literal)
+│       ├── .EventRouter (template-literal)
+│       ├── .no_topic_def (template-literal)
+│       ├── .EventRouter (template-literal)
+│       ├── .Unknown (template-literal)
+│       ├── .found_topic_def (template-literal)
+│       ├── .EventRouter (template-literal)
+│       ├── .topics (template-literal)
+│       ├── .e (template-literal)
+│       └── ... and 9 more
+
+├── packages\host-sdk\core\manifests\interactionManifest.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Unknown (template-literal)
+
+├── packages\host-sdk\cssRegistry.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .CSS (template-literal)
+
+├── packages\host-sdk\interactionManifest.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Unknown (template-literal)
+
+├── packages\host-sdk\jsonComponent.mapper.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .rx (template-literal)
+│       └── .name (template-literal)
+
+├── packages\host-sdk\tests\cssRegistry.spec.ts (14 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .test-class
+│   │   ├── .new-class
+│   │   ├── .host-class
+│   │   ├── .error-class
+│   │   ├── .test-class
+│   │   ├── .update-class
+│   │   ├── .update-class
+│   │   ├── .non-existent
+│   │   ├── .host-class
+│   │   ├── .error-class
+│   │   └── ... and 4 more
+
+├── packages\library-component\src\symphonies\drag\drag.preview.stage-crew.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .width (template-literal)
+│       ├── .height (template-literal)
+│       ├── .width (template-literal)
+│       ├── .height (template-literal)
+│       └── .k (template-literal)
+
+├── packages\library-component\src\symphonies\drop.container.symphony.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Date (template-literal)
+
+├── packages\library-component\src\symphonies\drop.symphony.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Date (template-literal)
+
+├── packages\library\__tests__\ChatWindow.modal.spec.tsx (11 classes)
+│   └── 🔧 USAGES
+│       ├── .chat-modal-backdrop (querySelector)
+│       ├── .chat-window (querySelector)
+│       ├── .chat-modal-backdrop (querySelector)
+│       ├── .chat-close-button (querySelector)
+│       ├── .chat-window (querySelector)
+│       ├── .chat-modal-backdrop (querySelector)
+│       ├── .chat-window (querySelector)
+│       ├── .chat-window (querySelector)
+│       ├── .chat-modal-backdrop (querySelector)
+│       ├── .chat-modal-backdrop (querySelector)
+│       └── ... and 1 more
+
+├── packages\library\__tests__\LibraryPanel.spec.tsx (3 classes)
+│   └── 🔧 USAGES
+│       ├── .Custom (template-literal)
+│       ├── .custom-upload (data-attr)
+│       └── .custom-list (data-attr)
+
+├── packages\library\__tests__\chat.utils.spec.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .msg (template-literal)
+│       ├── .chat (template-literal)
+│       └── .Message (template-literal)
+
+├── packages\library\__tests__\openai.service.spec.ts (3 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .test-button
+│   │   ├── .test-button
+│   │   └── .test-button
+
+├── packages\library\__tests__\rag-enrichment.service.spec.ts (6 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .purple-btn
+│   │   ├── .purple-btn
+│   │   ├── .btn
+│   │   ├── .btn
+│   └── 🔧 USAGES
+│       ├── .purple-btn (class-attr)
+│       └── .btn (class-attr)
+
+├── packages\library\__tests__\validation.utils.spec.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .test
+│   │   └── .button
+
+├── packages\library\src\services\__tests__\rag-enrichment-telemetry.service.test.ts (2 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .primary
+│   └── 🔧 USAGES
+│       └── .primary (class-attr)
+
+├── packages\library\src\services\openai.service.ts (7 classes)
+│   └── 🔧 USAGES
+│       ├── .OpenAI (template-literal)
+│       ├── .Bearer (template-literal)
+│       ├── .json (template-literal)
+│       ├── .json (template-literal)
+│       ├── .Generated (template-literal)
+│       ├── .Failed (template-literal)
+│       └── .Component (template-literal)
+
+├── packages\library\src\services\rag-enrichment-telemetry.service.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .key (template-literal)
+
+├── packages\library\src\symphonies\load.symphony.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .json (template-literal)
+
+├── packages\library\src\telemetry\component-behavior-extractor.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .componentType (template-literal)
+
+├── packages\library\src\ui\ChatMessage.css (31 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .chat-message
+│   │   ├── .message-avatar
+│   │   ├── .message-avatar
+│   │   ├── .message-avatar
+│   │   ├── .message-avatar
+│   │   ├── .message-content
+│   │   ├── .message-header
+│   │   ├── .message-role
+│   │   ├── .message-timestamp
+│   │   ├── .message-text
+│   │   └── ... and 21 more
+
+├── packages\library\src\ui\ChatMessage.tsx (41 classes)
+│   └── 🔧 USAGES
+│       ├── .component-preview (className-prop)
+│       ├── .component-header (className-prop)
+│       ├── .component-info (className-prop)
+│       ├── .component-icon (className-prop)
+│       ├── .component-details (className-prop)
+│       ├── .component-name (className-prop)
+│       ├── .component-description (className-prop)
+│       ├── .component-tags (className-prop)
+│       ├── .component-tag (className-prop)
+│       ├── .component-actions (className-prop)
+│       └── ... and 31 more
+
+├── packages\library\src\ui\ChatWindow.css (24 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .chat-modal-backdrop
+│   │   ├── .chat-window
+│   │   ├── .chat-header
+│   │   ├── .chat-header-info
+│   │   ├── .model-badge
+│   │   ├── .new-chat-button
+│   │   ├── .chat-close-button
+│   │   ├── .chat-messages
+│   │   ├── .chat-welcome
+│   │   ├── .welcome-icon
+│   │   └── ... and 14 more
+
+├── packages\library\src\ui\ChatWindow.tsx (39 classes)
+│   └── 🔧 USAGES
+│       ├── .user (template-literal)
+│       ├── .ai (template-literal)
+│       ├── .error (template-literal)
+│       ├── .Please (template-literal)
+│       ├── .ai-regen (template-literal)
+│       ├── .Here (template-literal)
+│       ├── .chat-modal-backdrop (className-prop)
+│       ├── .chat-window (className-prop)
+│       ├── .chat-header (className-prop)
+│       ├── .chat-close-button (className-prop)
+│       └── ... and 29 more
+
+├── packages\library\src\ui\ConfigStatusUI.css (25 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .config-status-panel
+│   │   ├── .configured
+│   │   ├── .not-configured
+│   │   ├── .status-icon
+│   │   ├── .status-content
+│   │   ├── .status-title
+│   │   ├── .status-message
+│   │   ├── .status-instructions
+│   │   ├── .status-model
+│   │   ├── .setup-guide
+│   │   └── ... and 15 more
+
+├── packages\library\src\ui\ConfigStatusUI.tsx (31 classes)
+│   └── 🔧 USAGES
+│       ├── .config-status-panel (className-prop)
+│       ├── .configured (className-prop)
+│       ├── .config-status-panel (utility-classes)
+│       ├── .configured (utility-classes)
+│       ├── .status-icon (className-prop)
+│       ├── .status-content (className-prop)
+│       ├── .status-title (className-prop)
+│       ├── .status-model (className-prop)
+│       ├── .config-status-panel (className-prop)
+│       ├── .not-configured (className-prop)
+│       └── ... and 21 more
+
+├── packages\library\src\ui\CustomComponentList.tsx (37 classes)
+│   └── 🔧 USAGES
+│       ├── .Are (template-literal)
+│       ├── .sizeKB (template-literal)
+│       ├── .custom-component-list (className-prop)
+│       ├── .empty (className-prop)
+│       ├── .custom-component-list (utility-classes)
+│       ├── .empty (utility-classes)
+│       ├── .empty-state (className-prop)
+│       ├── .empty-icon (className-prop)
+│       ├── .empty-text (className-prop)
+│       ├── .empty-subtext (className-prop)
+│       └── ... and 27 more
+
+├── packages\library\src\ui\CustomComponentUpload.tsx (22 classes)
+│   └── 🔧 USAGES
+│       ├── .Component (template-literal)
+│       ├── .Component (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .custom-component-upload (className-prop)
+│       ├── .upload-zone (template-literal)
+│       ├── .upload-content (className-prop)
+│       ├── .upload-icon (className-prop)
+│       ├── .upload-text (className-prop)
+│       ├── .upload-primary (className-prop)
+│       ├── .upload-secondary (className-prop)
+│       └── ... and 12 more
+
+├── packages\library\src\ui\LibraryPanel.css (61 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .library-sidebar
+│   │   ├── .library-sidebar-header
+│   │   ├── .library-header-content
+│   │   ├── .library-header-actions
+│   │   ├── .library-sidebar-title
+│   │   ├── .library-sidebar-subtitle
+│   │   ├── .library-component-library
+│   │   ├── .library-component-category
+│   │   ├── .library-category-title
+│   │   ├── .library-component-grid
+│   │   └── ... and 51 more
+
+├── packages\library\src\ui\LibraryPanel.tsx (23 classes)
+│   └── 🔧 USAGES
+│       ├── .custom-component-error (className-prop)
+│       ├── .error-icon (className-prop)
+│       ├── .error-text (className-prop)
+│       ├── .error-title (className-prop)
+│       ├── .error-message (className-prop)
+│       ├── .css (css-module)
+│       ├── .rx (template-literal)
+│       ├── .library-sidebar (className-prop)
+│       ├── .library-sidebar-header (className-prop)
+│       ├── .library-header-content (className-prop)
+│       └── ... and 13 more
+
+├── packages\library\src\ui\LibraryPreview.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .name (template-literal)
+│       ├── .library-component-item (className-prop)
+│       ├── .library-component-icon (className-prop)
+│       ├── .library-component-name (className-prop)
+│       └── .library-component-description (className-prop)
+
+├── packages\library\src\ui\preview.model.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .k (template-literal)
+
+├── packages\library\src\utils\chat.utils.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .chat (template-literal)
+│       ├── .content (template-literal)
+│       ├── .Chat (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\library\src\utils\prompt.templates.ts (17 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .custom-btn
+│   │   ├── .primary
+│   │   ├── .secondary
+│   │   ├── .outline
+│   │   ├── .small
+│   │   ├── .large
+│   │   ├── .custom-btn
+│   └── 🔧 USAGES
+│       ├── .card (class-attr)
+│       ├── .custom-btn (class-attr)
+│       ├── .btn-icon (class-attr)
+│       ├── .btn-text (class-attr)
+│       ├── .custom-btn (template-literal)
+│       ├── .nExample (template-literal)
+│       ├── .json (template-literal)
+│       ├── .n (template-literal)
+│       ├── .index (template-literal)
+│       └── .index (template-literal)
+
+├── packages\library\src\utils\storage.utils.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .custom (template-literal)
+│       ├── .Component (template-literal)
+│       ├── .Storage (template-literal)
+│       ├── .Component (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\library\src\utils\validation.utils.ts (8 classes)
+│   └── 🔧 USAGES
+│       ├── .fieldName (template-literal)
+│       ├── .fieldName (template-literal)
+│       ├── .Unknown (template-literal)
+│       ├── .metadata (template-literal)
+│       ├── .component (template-literal)
+│       ├── .Invalid (template-literal)
+│       ├── .File (template-literal)
+│       └── .File (template-literal)
+
+├── packages\musical-conductor\modules\communication\DomainEventSystem.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .action (template-literal)
+│       └── .Domain (template-literal)
+
+├── packages\musical-conductor\modules\communication\EventBus.ts (20 classes)
+│   └── 🔧 USAGES
+│       ├── .from (template-literal)
+│       ├── .EventBus (template-literal)
+│       ├── .sub_ (template-literal)
+│       ├── .plugin (template-literal)
+│       ├── .EventBus (template-literal)
+│       ├── .plugin (template-literal)
+│       ├── .EventBus (template-literal)
+│       ├── .plugin (template-literal)
+│       ├── .EventBus (template-literal)
+│       ├── .plugin (template-literal)
+│       └── ... and 10 more
+
+├── packages\musical-conductor\modules\communication\SPAValidator.ts (21 classes)
+│   └── 🔧 USAGES
+│       ├── .Plugin (template-literal)
+│       ├── .SPA (template-literal)
+│       ├── .Use (template-literal)
+│       ├── .React (template-literal)
+│       ├── .React (template-literal)
+│       ├── .Plugin (template-literal)
+│       ├── .Global (template-literal)
+│       ├── .React (template-literal)
+│       ├── .Plugin (template-literal)
+│       ├── .Plugin (template-literal)
+│       └── ... and 11 more
+
+├── packages\musical-conductor\modules\communication\index.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Registered (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\MusicalConductor.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .MusicalConductor (template-literal)
+│       ├── .MusicalConductor (template-literal)
+│       ├── .MusicalConductor (template-literal)
+│       └── .MusicalConductor (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\api\ConductorAPI.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .ConductorAPI (template-literal)
+│       ├── .ConductorAPI (template-literal)
+│       └── .ConductorAPI (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\core\ConductorCore.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .Beat (template-literal)
+│       ├── .Sequence (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Event (template-literal)
+│       ├── .Timing (template-literal)
+│       ├── .Data (template-literal)
+│       ├── .Beat (template-literal)
+│       ├── .Duration (template-literal)
+│       ├── .Sequence (template-literal)
+│       └── .Movement (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\core\EventSubscriptionManager.ts (8 classes)
+│   └── 🔧 USAGES
+│       ├── .Unauthorized (template-literal)
+│       ├── .Unauthorized (template-literal)
+│       ├── .Unauthorized (template-literal)
+│       ├── .Unauthorized (template-literal)
+│       ├── .EventSubscriptionManager (template-literal)
+│       ├── .EventSubscriptionManager (template-literal)
+│       ├── .Subscriber (template-literal)
+│       └── .EventSubscriptionManager (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\core\SequenceRegistry.ts (14 classes)
+│   └── 🔧 USAGES
+│       ├── .SequenceRegistry (template-literal)
+│       ├── .SequenceRegistry (template-literal)
+│       ├── .SequenceRegistry (template-literal)
+│       ├── .SequenceRegistry (template-literal)
+│       ├── .Sequence (template-literal)
+│       ├── .Sequence (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       └── ... and 4 more
+
+├── packages\musical-conductor\modules\communication\sequences\execution\BeatExecutor.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .indent (template-literal)
+│       ├── .BeatExecutor (template-literal)
+│       ├── .BeatExecutor (template-literal)
+│       └── .BeatExecutor (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\execution\ExecutionQueue.ts (7 classes)
+│   └── 🔧 USAGES
+│       ├── .ExecutionQueue (template-literal)
+│       ├── .ExecutionQueue (template-literal)
+│       ├── .ExecutionQueue (template-literal)
+│       ├── .ExecutionQueue (template-literal)
+│       ├── .ExecutionQueue (template-literal)
+│       ├── .ExecutionQueue (template-literal)
+│       └── .ExecutionQueue (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\execution\MovementExecutor.ts (9 classes)
+│   └── 🔧 USAGES
+│       ├── .MovementExecutor (template-literal)
+│       ├── .MovementExecutor (template-literal)
+│       ├── .MovementExecutor (template-literal)
+│       ├── .MovementExecutor (template-literal)
+│       ├── .Beat (template-literal)
+│       ├── .Beat (template-literal)
+│       ├── .Beat (template-literal)
+│       ├── .Beat (template-literal)
+│       └── .MovementExecutor (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\execution\SequenceExecutor.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .SequenceExecutor (template-literal)
+│       ├── .SequenceExecutor (template-literal)
+│       └── .SequenceExecutor (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\index.ts (11 classes)
+│   └── 🔧 USAGES
+│       ├── .custom (template-literal)
+│       ├── .Registered (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Sequence (template-literal)
+│       ├── .Sequence (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Musical (template-literal)
+│       └── ... and 1 more
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\ConductorLogger.ts (20 classes)
+│   └── 🔧 USAGES
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .data (template-literal)
+│       ├── .evt (template-literal)
+│       ├── .indent (template-literal)
+│       ├── .indent (template-literal)
+│       ├── .cue (template-literal)
+│       ├── .cue (template-literal)
+│       ├── .indent (template-literal)
+│       └── ... and 10 more
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\DataBaton.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .diff (template-literal)
+│       ├── .diff (template-literal)
+│       └── .diff (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\DuplicationDetector.ts (8 classes)
+│   └── 🔧 USAGES
+│       ├── .React (template-literal)
+│       ├── .Duplicate (template-literal)
+│       ├── .Outside (template-literal)
+│       ├── .DuplicationDetector (template-literal)
+│       ├── .DuplicationDetector (template-literal)
+│       ├── .sequenceName (template-literal)
+│       ├── .sequenceName (template-literal)
+│       └── .DuplicationDetector (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts (22 classes)
+│   └── 🔧 USAGES
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       ├── .c (template-literal)
+│       └── ... and 12 more
+
+├── packages\musical-conductor\modules\communication\sequences\monitoring\PerformanceTracker.ts (16 classes)
+│   └── 🔧 USAGES
+│       ├── .sequenceName (template-literal)
+│       ├── .PerformanceTracker (template-literal)
+│       ├── .sequenceName (template-literal)
+│       ├── .PerformanceTracker (template-literal)
+│       ├── .sequenceName (template-literal)
+│       ├── .PerformanceTracker (template-literal)
+│       ├── .sequenceName (template-literal)
+│       ├── .PerformanceTracker (template-literal)
+│       ├── .sequenceName (template-literal)
+│       ├── .PerformanceTracker (template-literal)
+│       └── ... and 6 more
+
+├── packages\musical-conductor\modules\communication\sequences\orchestration\CallbackRegistry.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .mc (template-literal)
+│       ├── .path (template-literal)
+│       ├── .childPath (template-literal)
+│       └── .path (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\orchestration\EventOrchestrator.ts (11 classes)
+│   └── 🔧 USAGES
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .DEBUG (template-literal)
+│       ├── .DEBUG (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       ├── .EventOrchestrator (template-literal)
+│       └── ... and 1 more
+
+├── packages\musical-conductor\modules\communication\sequences\orchestration\SequenceOrchestrator.ts (15 classes)
+│   └── 🔧 USAGES
+│       ├── .Sequence (template-literal)
+│       ├── .SequenceOrchestrator (template-literal)
+│       ├── .Resource (template-literal)
+│       ├── .SequenceOrchestrator (template-literal)
+│       ├── .SequenceOrchestrator (template-literal)
+│       ├── .SequenceOrchestrator (template-literal)
+│       ├── .SequenceOrchestrator (template-literal)
+│       ├── .Sequence (template-literal)
+│       ├── .SequenceOrchestrator (template-literal)
+│       ├── .Sequence (template-literal)
+│       └── ... and 5 more
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginInterfaceFacade.ts (19 classes)
+│   └── 🔧 USAGES
+│       ├── .PluginInterfaceFacade (template-literal)
+│       ├── .PluginInterfaceFacade (template-literal)
+│       ├── .No (template-literal)
+│       ├── .Handler (template-literal)
+│       ├── .Executing (template-literal)
+│       ├── .Handler (template-literal)
+│       ├── .PluginInterfaceFacade (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .PluginInterfaceFacade (template-literal)
+│       ├── .key (template-literal)
+│       └── ... and 9 more
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginLoader.ts (39 classes)
+│   └── 🔧 USAGES
+│       ├── .Loading (template-literal)
+│       ├── .node (template-literal)
+│       ├── .file (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .pluginDir (template-literal)
+│       ├── .Attempting (template-literal)
+│       ├── .Successfully (template-literal)
+│       ├── .Dev (template-literal)
+│       ├── .Attempting (template-literal)
+│       ├── .Successfully (template-literal)
+│       └── ... and 29 more
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginManager.ts (29 classes)
+│   └── 🔧 USAGES
+│       ├── .PluginManager (template-literal)
+│       ├── .Plugin (template-literal)
+│       ├── .Direct (template-literal)
+│       ├── .Handler (template-literal)
+│       ├── .PluginManager (template-literal)
+│       ├── .id (template-literal)
+│       ├── .PluginManager (template-literal)
+│       ├── .PluginManager (template-literal)
+│       ├── .id (template-literal)
+│       ├── .PluginManager (template-literal)
+│       └── ... and 19 more
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginManifestLoader.ts (15 classes)
+│   └── 🔧 USAGES
+│       ├── .Loading (template-literal)
+│       ├── .Loading (template-literal)
+│       ├── .Successfully (template-literal)
+│       ├── .Found (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Successfully (template-literal)
+│       ├── .Found (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Invalid (template-literal)
+│       ├── .Plugin (template-literal)
+│       └── ... and 5 more
+
+├── packages\musical-conductor\modules\communication\sequences\plugins\PluginValidator.ts (16 classes)
+│   └── 🔧 USAGES
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .beatRef (template-literal)
+│       ├── .beatRef (template-literal)
+│       ├── .beatRef (template-literal)
+│       ├── .beatRef (template-literal)
+│       └── ... and 6 more
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceConflictResolver.ts (12 classes)
+│   └── 🔧 USAGES
+│       ├── .HIGH (template-literal)
+│       ├── .Resource (template-literal)
+│       ├── .ResourceConflictResolver (template-literal)
+│       ├── .Resource (template-literal)
+│       ├── .ResourceConflictResolver (template-literal)
+│       ├── .Request (template-literal)
+│       ├── .Only (template-literal)
+│       ├── .ResourceConflictResolver (template-literal)
+│       ├── .ResourceConflictResolver (template-literal)
+│       ├── .ResourceConflictResolver (template-literal)
+│       └── ... and 2 more
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceDelegator.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .Error (template-literal)
+│       ├── .Error (template-literal)
+│       └── .ResourceDelegator (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceManager.ts (10 classes)
+│   └── 🔧 USAGES
+│       ├── .Resource (template-literal)
+│       ├── .Resource (template-literal)
+│       ├── .Resource (template-literal)
+│       ├── .ResourceManager (template-literal)
+│       ├── .ResourceManager (template-literal)
+│       ├── .ResourceManager (template-literal)
+│       ├── .ResourceManager (template-literal)
+│       ├── .Resource (template-literal)
+│       ├── .Failed (template-literal)
+│       └── .Unknown (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\resources\ResourceOwnershipTracker.ts (6 classes)
+│   └── 🔧 USAGES
+│       ├── .ResourceOwnershipTracker (template-literal)
+│       ├── .ResourceOwnershipTracker (template-literal)
+│       ├── .ResourceOwnershipTracker (template-literal)
+│       ├── .ResourceOwnershipTracker (template-literal)
+│       ├── .ResourceOwnershipTracker (template-literal)
+│       └── .ResourceOwnershipTracker (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\stage\StageCueLogger.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .logs (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\stage\StageDomGuard.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .StageDomGuard (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\strictmode\StrictModeManager.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .StrictMode (template-literal)
+│       ├── .StrictModeManager (template-literal)
+│       └── .StrictModeManager (template-literal)
+
+├── packages\musical-conductor\modules\communication\sequences\utilities\SequenceUtilities.ts (11 classes)
+│   └── 🔧 USAGES
+│       ├── .SequenceUtilities (template-literal)
+│       ├── .component_ (template-literal)
+│       ├── .element_ (template-literal)
+│       ├── .canvas_ (template-literal)
+│       ├── .symphony_ (template-literal)
+│       ├── .Movement (template-literal)
+│       ├── .Display (template-literal)
+│       ├── .Animation (template-literal)
+│       ├── .Interaction (template-literal)
+│       ├── .Data (template-literal)
+│       └── ... and 1 more
+
+├── packages\musical-conductor\modules\communication\sequences\validation\SequenceValidator.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .sequenceName (template-literal)
+│       ├── .sequenceName (template-literal)
+│       └── .SequenceValidator (template-literal)
+
+├── packages\musical-conductor\tests\setup\jest.setup.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .Expected (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Expected (template-literal)
+│       └── .Failed (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\EventBus.test.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .temp-event (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\conductor.version-log.test.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .MusicalConductor (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\plugin-handler-context.test.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .timeout (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\sequences\MusicalConductor.test.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .Performance (template-literal)
+│       └── .perf-event (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\spa-validator.stage-crew-violations.test.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\stage-crew.batching.test.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .div (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\stage-crew.cue-logger.test.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .mc-stage-cues-test (template-literal)
+
+├── packages\musical-conductor\tests\unit\communication\stage-crew.guard.test.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .div (template-literal)
+│       └── .x (classList-method)
+
+├── packages\musical-conductor\tests\utils\test-helpers.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .waitFor (template-literal)
+│       ├── .name (template-literal)
+│       └── .name (template-literal)
+
+├── packages\musical-conductor\tools\cli\demo.ts (22 classes)
+│   └── 🔧 USAGES
+│       ├── .Demo (template-literal)
+│       ├── .Knowledge (template-literal)
+│       ├── .index (template-literal)
+│       ├── .index (template-literal)
+│       ├── .n (template-literal)
+│       ├── .Active (template-literal)
+│       ├── .Sequences (template-literal)
+│       ├── .Plugins (template-literal)
+│       ├── .Queue (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 12 more
+
+├── packages\musical-conductor\tools\cli\exporters\KnowledgeExporter.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .agent (template-literal)
+
+├── packages\musical-conductor\tools\cli\importers\KnowledgeImporter.ts (11 classes)
+│   └── 🔧 USAGES
+│       ├── .index (template-literal)
+│       ├── .index (template-literal)
+│       ├── .Add (template-literal)
+│       ├── .Mount (template-literal)
+│       ├── .Add (template-literal)
+│       ├── .Add (template-literal)
+│       ├── .Update (template-literal)
+│       ├── .Add (template-literal)
+│       ├── .Add (template-literal)
+│       ├── .Version (template-literal)
+│       └── ... and 1 more
+
+├── packages\musical-conductor\tools\cli\knowledge-cli.ts (101 classes)
+│   └── 🔧 USAGES
+│       ├── .Knowledge (template-literal)
+│       ├── .Knowledge (template-literal)
+│       ├── .Knowledge (template-literal)
+│       ├── .Validation (template-literal)
+│       ├── .Shortcut (template-literal)
+│       ├── .s (template-literal)
+│       ├── .index (template-literal)
+│       ├── .No (template-literal)
+│       ├── .Shortcuts (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 91 more
+
+├── packages\musical-conductor\tools\cli\mergers\KnowledgeMerger.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .merged (template-literal)
+│       ├── .Merged (template-literal)
+│       └── .subscription (template-literal)
+
+├── packages\musical-conductor\tools\cli\queue-demo.ts (14 classes)
+│   └── 🔧 USAGES
+│       ├── .Total (template-literal)
+│       ├── .Pending (template-literal)
+│       ├── .Active (template-literal)
+│       ├── .Completed (template-literal)
+│       ├── .Failed (template-literal)
+│       ├── .Status (template-literal)
+│       ├── .Pending (template-literal)
+│       ├── .Pending (template-literal)
+│       ├── .index (template-literal)
+│       ├── .index (template-literal)
+│       └── ... and 4 more
+
+├── packages\musical-conductor\tools\cli\queue\KnowledgeTransferQueue.ts (8 classes)
+│   └── 🔧 USAGES
+│       ├── .Created (template-literal)
+│       ├── .Transfer (template-literal)
+│       ├── .Transfer (template-literal)
+│       ├── .Transfer (template-literal)
+│       ├── .Transfer (template-literal)
+│       ├── .Transfer (template-literal)
+│       ├── .transfer (template-literal)
+│       └── .Cleaned (template-literal)
+
+├── packages\musical-conductor\tools\cli\shortcut-demo.ts (16 classes)
+│   └── 🔧 USAGES
+│       ├── .Shortcut (template-literal)
+│       ├── .s (template-literal)
+│       ├── .index (template-literal)
+│       ├── .No (template-literal)
+│       ├── .n (template-literal)
+│       ├── .n (template-literal)
+│       ├── .shortcut (template-literal)
+│       ├── .shortcut (template-literal)
+│       ├── .Aliases (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 6 more
+
+├── packages\musical-conductor\tools\cli\shortcuts\ShortcutManager.ts (22 classes)
+│   └── 🔧 USAGES
+│       ├── .Shortcut (template-literal)
+│       ├── .Added (template-literal)
+│       ├── .Shortcut (template-literal)
+│       ├── .Updated (template-literal)
+│       ├── .Shortcut (template-literal)
+│       ├── .Removed (template-literal)
+│       ├── .shortcut (template-literal)
+│       ├── .shortcut (template-literal)
+│       ├── .Aliases (template-literal)
+│       ├── .n (template-literal)
+│       └── ... and 12 more
+
+├── packages\musical-conductor\tools\cli\utils\CLILogger.ts (5 classes)
+│   └── 🔧 USAGES
+│       ├── .DEBUG (template-literal)
+│       ├── .title (template-literal)
+│       ├── .progressBar (template-literal)
+│       ├── .r (template-literal)
+│       └── .r (template-literal)
+
+├── packages\musical-conductor\tools\cli\validators\KnowledgeValidator.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .Required (template-literal)
+│       ├── .Unsupported (template-literal)
+│       └── .Unknown (template-literal)
+
+
+================================================================================
+STATISTICS SUMMARY
+================================================================================
+
+📊 Total Occurrences: 2824
+🎨 Unique Classes: 877
+📝 Definitions: 493
+🔧 Usages: 2331
+📁 Files Scanned: 289
+
+📈 By Usage Type:
+  template-literal            1622 ( 57.4%) ████████████████████████████
+  css-definition               493 ( 17.5%) ████████
+  className-prop               326 ( 11.5%) █████
+  class-attr                   234 (  8.3%) ████
+  utility-classes               65 (  2.3%) █
+  querySelector                 48 (  1.7%) 
+  data-attr                     23 (  0.8%) 
+  classList-method              10 (  0.4%) 
+  css-module                     3 (  0.1%) 
+
+📦 By Package (Top 10):
+  digital-assets                    956
+  musical-conductor                 607
+  library                           414
+  control-panel                     405
+  canvas-component                  316
+  host-sdk                           52
+  canvas                             38
+  header                             29
+  library-component                   7
+
+🔥 Most Used Classes (Top 20):
+  .n                                       65 occurrences
+  .Math                                    42 occurrences
+  .Failed                                  40 occurrences
+  .rx-button                               39 occurrences
+  .rx-comp                                 33 occurrences
+  .data                                    30 occurrences
+  .g                                       24 occurrences
+  .btn                                     21 occurrences
+  .id                                      20 occurrences
+  .Movement                                20 occurrences
+  .Plugin                                  19 occurrences
+  .test-class                              18 occurrences
+  .scene                                   18 occurrences
+  .Total                                   18 occurrences
+  .handle                                  16 occurrences
+  .Scene                                   16 occurrences
+  .name                                    15 occurrences
+  .field                                   15 occurrences
+  .index                                   15 occurrences
+  .rx-container                            14 occurrences
+
+⚠️  Orphaned Classes (defined but not used):
+  .scene-1-enter
+  .class-pill
+  .scene-2-exit
+  .property-color
+  .scene-3-enter
+  .small
+  .custom-highlight
+  .full-width
+  .scene-4-exit
+  .segment
+  .scene-4-enter
+  .custom-class
+  .rx-card
+  .sw
+  .success
+  .drag-over
+  .scene-2-enter
+  .scene-3-exit
+  .rx-box
+  .scene-1-exit
+
+================================================================================

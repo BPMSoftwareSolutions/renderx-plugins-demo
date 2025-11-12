@@ -1,0 +1,67 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- ============================================ -->
+    <!-- DARK THEME OVERRIDES -->
+    <!-- ============================================ -->
+    <!-- Applied when theme is switched to dark mode -->
+    <!-- Overrides the light theme colors defined in DesignTokens.axaml -->
+    
+    <Styles.Resources>
+        
+        <!-- ============================================ -->
+        <!-- SEMANTIC COLORS - DARK THEME -->
+        <!-- ============================================ -->
+        
+        <!-- Backgrounds -->
+        <SolidColorBrush x:Key="Color.Background.Primary" Color="#1f2937"/>
+        <SolidColorBrush x:Key="Color.Background.Secondary" Color="#111827"/>
+        <SolidColorBrush x:Key="Color.Background.Tertiary" Color="#0f172a"/>
+        <SolidColorBrush x:Key="Color.Background.Hover" Color="#1e293b"/>
+        <SolidColorBrush x:Key="Color.Background.Active" Color="#334155"/>
+        
+        <!-- Text -->
+        <SolidColorBrush x:Key="Color.Text.Primary" Color="#f8fafc"/>
+        <SolidColorBrush x:Key="Color.Text.Secondary" Color="#cbd5e1"/>
+        <SolidColorBrush x:Key="Color.Text.Tertiary" Color="#94a3b8"/>
+        <SolidColorBrush x:Key="Color.Text.Muted" Color="#64748b"/>
+        <SolidColorBrush x:Key="Color.Text.Inverse" Color="#1f2937"/>
+        
+        <!-- Borders -->
+        <SolidColorBrush x:Key="Color.Border.Primary" Color="#334155"/>
+        <SolidColorBrush x:Key="Color.Border.Secondary" Color="#475569"/>
+        <SolidColorBrush x:Key="Color.Border.Strong" Color="#64748b"/>
+        
+        <!-- Accents -->
+        <SolidColorBrush x:Key="Color.Accent.Primary" Color="#3b82f6"/>
+        <SolidColorBrush x:Key="Color.Accent.Dark" Color="#1e40af"/>
+        <SolidColorBrush x:Key="Color.Accent.Darker" Color="#1e3a8a"/>
+        <SolidColorBrush x:Key="Color.Accent.Light" Color="#1e3a8a"/>
+        <SolidColorBrush x:Key="Color.Accent.Weak" Color="#0c2340"/>
+        
+        <!-- Status Colors -->
+        <SolidColorBrush x:Key="Color.Success" Color="#10b981"/>
+        <SolidColorBrush x:Key="Color.Success.Light" Color="#064e3b"/>
+        <SolidColorBrush x:Key="Color.Warning" Color="#f59e0b"/>
+        <SolidColorBrush x:Key="Color.Warning.Light" Color="#78350f"/>
+        <SolidColorBrush x:Key="Color.Error" Color="#ef4444"/>
+        <SolidColorBrush x:Key="Color.Error.Light" Color="#7f1d1d"/>
+        <SolidColorBrush x:Key="Color.Info" Color="#0ea5e9"/>
+        <SolidColorBrush x:Key="Color.Info.Light" Color="#082f49"/>
+        
+        <!-- Component Specific -->
+        <SolidColorBrush x:Key="Color.Canvas.Background" Color="#111827"/>
+        <SolidColorBrush x:Key="Color.Canvas.Grid" Color="#1e293b"/>
+        <SolidColorBrush x:Key="Color.Canvas.Component" Color="#1f2937"/>
+        <SolidColorBrush x:Key="Color.Canvas.ComponentBorder" Color="#3b82f6"/>
+        <SolidColorBrush x:Key="Color.Canvas.ComponentHover" Color="#0c2340"/>
+        
+        <SolidColorBrush x:Key="Color.Panel.Background" Color="#1f2937"/>
+        <SolidColorBrush x:Key="Color.Panel.Border" Color="#334155"/>
+        <SolidColorBrush x:Key="Color.Panel.Header" Color="#111827"/>
+        <SolidColorBrush x:Key="Color.Panel.HeaderBorder" Color="#334155"/>
+        
+    </Styles.Resources>
+    
+</Styles>
+

@@ -1,0 +1,124 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:RenderX.Plugins.Canvas"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="RenderX.Plugins.Canvas.CanvasControl"
+             x:CompileBindings="False"
+             Background="{DynamicResource Color.Background.Primary}"
+             BorderThickness="1"
+             BorderBrush="{DynamicResource Color.Border.Primary}">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <!-- Canvas Header Component -->
+        <local:CanvasHeader Grid.Row="0" x:Name="CanvasHeaderComponent" />
+
+        <!-- Horizontal Ruler -->
+        <local:CanvasRuler Grid.Row="1"
+                          x:Name="HorizontalRuler"
+                          Height="30"
+                          Background="{DynamicResource Color.Background.Tertiary}"
+                          BorderThickness="0,0,0,1"
+                          BorderBrush="{DynamicResource Color.Border.Primary}" />
+
+        <!-- Canvas Content Area with Vertical Ruler -->
+        <Grid Grid.Row="2" ColumnDefinitions="30,*">
+            <!-- Vertical Ruler -->
+            <local:CanvasRuler Grid.Column="0"
+                              x:Name="VerticalRuler"
+                              Width="30"
+                              Background="{DynamicResource Color.Background.Tertiary}"
+                              BorderThickness="0,0,1,0"
+                              BorderBrush="{DynamicResource Color.Border.Primary}" />
+
+            <!-- Main Canvas Area -->
+            <Border Grid.Column="1"
+                    Background="{DynamicResource Color.Background.Primary}"
+                    Padding="0">
+                <Grid RowDefinitions="*,Auto">
+                    <!-- Canvas Container with Overlays -->
+                    <Grid Grid.Row="0" Background="{DynamicResource Color.Background.Primary}">
+                        <!-- Grid Overlay (conditional visibility) -->
+                        <local:GridOverlay x:Name="GridOverlayComponent"
+                                          Background="Transparent"
+                                          IsVisible="False" />
+
+                        <!-- Components ItemsControl -->
+                        <ItemsControl Grid.Row="0"
+                                      Name="ComponentsItemsControl"
+                                      Background="{DynamicResource Color.Background.Primary}"
+                                      BorderThickness="1"
+                                      BorderBrush="{DynamicResource Color.Border.Primary}"
+                                      Padding="8">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Background="{DynamicResource Color.Background.Primary}"
+                                            Name="rxCanvas"
+                                            AutomationProperties.AutomationId="rx-canvas"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Name="ComponentItem"
+                                            Background="{DynamicResource Color.Background.Primary}"
+                                            BorderThickness="2"
+                                            BorderBrush="#2196F3"
+                                            CornerRadius="4"
+                                            Padding="8"
+                                            Margin="4"
+                                            PointerPressed="OnComponentPointerPressed"
+                                            PointerReleased="OnComponentPointerReleased"
+                                            PointerMoved="OnComponentPointerMoved">
+                                        <StackPanel Spacing="4">
+                                            <TextBlock Name="ComponentNameText"
+                                                       FontSize="12"
+                                                       FontWeight="Bold"
+                                                       Text="{Binding Name}"/>
+                                            <TextBlock Name="ComponentIdText"
+                                                       FontSize="10"
+                                                       Foreground="Gray"
+                                                       Text="{Binding Id}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Selection Indicator (overlay on selected component) -->
+                        <local:SelectionIndicator x:Name="SelectionIndicatorComponent"
+                                                 Background="Transparent"
+                                                 IsVisible="False" />
+
+                        <!-- Drop Indicator (shown during drag operations) -->
+                        <local:DropIndicator x:Name="DropIndicatorComponent"
+                                            Background="Transparent"
+                                            IsVisible="False" />
+                    </Grid>
+
+                    <!-- Status Bar -->
+                    <Border Grid.Row="1"
+                            Background="{DynamicResource Color.Background.Tertiary}"
+                            BorderThickness="0,1,0,0"
+                            BorderBrush="{DynamicResource Color.Border.Primary}"
+                            Padding="8"
+                            Margin="0,0,0,0">
+                        <TextBlock Name="StatusText"
+                                   Text="Ready"
+                                   FontSize="11"
+                                   Foreground="Gray"/>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Floating Layer Panel (bottom) -->
+        <local:CanvasLayerPanel Grid.Row="3"
+                               x:Name="CanvasLayerPanelComponent"
+                               Height="150"
+                               Background="{DynamicResource Color.Background.Primary}"
+                               BorderThickness="0,1,0,0"
+                               BorderBrush="{DynamicResource Color.Border.Primary}" />
+    </Grid>
+</UserControl>
+

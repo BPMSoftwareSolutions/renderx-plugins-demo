@@ -1,0 +1,233 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- UI Core Component Styles -->
+    
+    <!-- Button Variants -->
+    
+    <!-- btn-primary: Primary button -->
+    <Style Selector="Button.btn-primary">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Inverse}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="12,8,16,8"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.btn-primary:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Dark}"/>
+    </Style>
+    
+    <Style Selector="Button.btn-primary:pressed">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Dark}"/>
+        <Setter Property="Opacity" Value="0.9"/>
+    </Style>
+    
+    <!-- btn-secondary: Secondary button -->
+    <Style Selector="Button.btn-secondary">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="12,8,16,8"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.btn-secondary:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+    
+    <!-- btn-danger: Danger button -->
+    <Style Selector="Button.btn-danger">
+        <Setter Property="Background" Value="{DynamicResource Color.Error}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Inverse}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="12,8,16,8"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.btn-danger:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Error.Dark}"/>
+    </Style>
+    
+    <!-- btn-ghost: Ghost button -->
+    <Style Selector="Button.btn-ghost">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="8,4,12,4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <Style Selector="Button.btn-ghost:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+    </Style>
+    
+    <!-- Input Components -->
+    
+    <!-- input-text: Text input field -->
+    <Style Selector="TextBox.input-text">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,6,12,6"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    
+    <Style Selector="TextBox.input-text:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    
+    <!-- input-number: Number input field -->
+    <Style Selector="NumericUpDown.input-number">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,6,12,6"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    
+    <!-- Form Components -->
+    
+    <!-- form-label: Form field label -->
+    <Style Selector="TextBlock.form-label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+    
+    <!-- form-hint: Form field hint text -->
+    <Style Selector="TextBlock.form-hint">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+    
+    <!-- form-error: Form error message -->
+    <Style Selector="TextBlock.form-error">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Error}"/>
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+    
+    <!-- Modal/Dialog Styles -->
+    
+    <!-- modal-overlay: Modal background overlay -->
+    <Style Selector="Border.modal-overlay">
+        <Setter Property="Background" Value="#00000080"/>
+        <Setter Property="ZIndex" Value="100"/>
+    </Style>
+    
+    <!-- modal-content: Modal content container -->
+    <Style Selector="Border.modal-content">
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Panel.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="24"/>
+        <Setter Property="MinWidth" Value="400"/>
+        <Setter Property="MaxWidth" Value="600"/>
+    </Style>
+    
+    <!-- modal-header: Modal header -->
+    <Style Selector="Border.modal-header">
+        <Setter Property="Padding" Value="0,0,0,16"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+    
+    <!-- modal-title: Modal title -->
+    <Style Selector="TextBlock.modal-title">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+    
+    <!-- modal-footer: Modal footer -->
+    <Style Selector="StackPanel.modal-footer">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="8"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,16,0,0"/>
+    </Style>
+    
+    <!-- Notification/Toast Styles -->
+    
+    <!-- toast-container: Toast notification container -->
+    <Style Selector="Border.toast-container">
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Panel.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="12,12,16,12"/>
+        <Setter Property="MinWidth" Value="300"/>
+    </Style>
+    
+    <!-- toast-success: Success toast -->
+    <Style Selector="Border.toast-success">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Success}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,3"/>
+    </Style>
+    
+    <!-- toast-error: Error toast -->
+    <Style Selector="Border.toast-error">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Error}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,3"/>
+    </Style>
+    
+    <!-- toast-warning: Warning toast -->
+    <Style Selector="Border.toast-warning">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Warning}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,3"/>
+    </Style>
+    
+    <!-- toast-message: Toast message text -->
+    <Style Selector="TextBlock.toast-message">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+    
+    <!-- Diagnostics Overlay Styles -->
+    
+    <!-- diagnostics-overlay: Diagnostics overlay container -->
+    <Style Selector="Border.diagnostics-overlay">
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Error}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+    
+    <!-- diagnostics-title: Diagnostics title -->
+    <Style Selector="TextBlock.diagnostics-title">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Error}"/>
+    </Style>
+    
+    <!-- diagnostics-message: Diagnostics message -->
+    <Style Selector="TextBlock.diagnostics-message">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+</Styles>
+

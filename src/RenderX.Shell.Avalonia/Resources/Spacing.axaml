@@ -1,0 +1,87 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Spacing Scale (in pixels) -->
+    <Thickness x:Key="Spacing0">0</Thickness>
+    <Thickness x:Key="Spacing1">2</Thickness>
+    <Thickness x:Key="Spacing2">4</Thickness>
+    <Thickness x:Key="Spacing3">6</Thickness>
+    <Thickness x:Key="Spacing4">8</Thickness>
+    <Thickness x:Key="Spacing5">12</Thickness>
+    <Thickness x:Key="Spacing6">16</Thickness>
+    <Thickness x:Key="Spacing7">20</Thickness>
+    <Thickness x:Key="Spacing8">24</Thickness>
+    <Thickness x:Key="Spacing9">28</Thickness>
+    <Thickness x:Key="Spacing10">32</Thickness>
+    <Thickness x:Key="Spacing11">36</Thickness>
+    <Thickness x:Key="Spacing12">40</Thickness>
+    
+    <!-- Padding Presets -->
+    <Thickness x:Key="PaddingXSmall">4</Thickness>
+    <Thickness x:Key="PaddingSmall">8</Thickness>
+    <Thickness x:Key="PaddingMedium">12</Thickness>
+    <Thickness x:Key="PaddingLarge">16</Thickness>
+    <Thickness x:Key="PaddingXLarge">24</Thickness>
+    <Thickness x:Key="PaddingXXLarge">32</Thickness>
+    
+    <!-- Margin Presets -->
+    <Thickness x:Key="MarginXSmall">4</Thickness>
+    <Thickness x:Key="MarginSmall">8</Thickness>
+    <Thickness x:Key="MarginMedium">12</Thickness>
+    <Thickness x:Key="MarginLarge">16</Thickness>
+    <Thickness x:Key="MarginXLarge">24</Thickness>
+    <Thickness x:Key="MarginXXLarge">32</Thickness>
+    
+    <!-- Gap/Spacing for StackPanel -->
+    <x:Double x:Key="GapXSmall">2</x:Double>
+    <x:Double x:Key="GapSmall">4</x:Double>
+    <x:Double x:Key="GapMedium">8</x:Double>
+    <x:Double x:Key="GapLarge">12</x:Double>
+    <x:Double x:Key="GapXLarge">16</x:Double>
+    <x:Double x:Key="GapXXLarge">24</x:Double>
+    
+    <!-- Border Radius -->
+    <CornerRadius x:Key="CornerRadiusNone">0</CornerRadius>
+    <CornerRadius x:Key="CornerRadiusSmall">2</CornerRadius>
+    <CornerRadius x:Key="CornerRadiusMedium">4</CornerRadius>
+    <CornerRadius x:Key="CornerRadiusLarge">8</CornerRadius>
+    <CornerRadius x:Key="CornerRadiusXLarge">12</CornerRadius>
+    <CornerRadius x:Key="CornerRadiusFull">9999</CornerRadius>
+    
+    <!-- Border Thickness -->
+    <Thickness x:Key="BorderThicknessThin">1</Thickness>
+    <Thickness x:Key="BorderThicknessMedium">2</Thickness>
+    <Thickness x:Key="BorderThicknessThick">3</Thickness>
+    
+    <!-- Component Heights -->
+    <x:Double x:Key="HeightXSmall">24</x:Double>
+    <x:Double x:Key="HeightSmall">32</x:Double>
+    <x:Double x:Key="HeightMedium">40</x:Double>
+    <x:Double x:Key="HeightLarge">48</x:Double>
+    <x:Double x:Key="HeightXLarge">56</x:Double>
+    
+    <!-- Component Widths -->
+    <x:Double x:Key="WidthXSmall">64</x:Double>
+    <x:Double x:Key="WidthSmall">128</x:Double>
+    <x:Double x:Key="WidthMedium">256</x:Double>
+    <x:Double x:Key="WidthLarge">384</x:Double>
+    <x:Double x:Key="WidthXLarge">512</x:Double>
+    
+    <!-- Icon Sizes -->
+    <x:Double x:Key="IconSizeXSmall">12</x:Double>
+    <x:Double x:Key="IconSizeSmall">16</x:Double>
+    <x:Double x:Key="IconSizeMedium">20</x:Double>
+    <x:Double x:Key="IconSizeLarge">24</x:Double>
+    <x:Double x:Key="IconSizeXLarge">32</x:Double>
+    <x:Double x:Key="IconSize2XLarge">40</x:Double>
+    <x:Double x:Key="IconSize3XLarge">48</x:Double>
+    
+    <!-- Z-Index Values -->
+    <x:Int32 x:Key="ZIndexBase">0</x:Int32>
+    <x:Int32 x:Key="ZIndexDropdown">100</x:Int32>
+    <x:Int32 x:Key="ZIndexSticky">200</x:Int32>
+    <x:Int32 x:Key="ZIndexFixed">300</x:Int32>
+    <x:Int32 x:Key="ZIndexModal">400</x:Int32>
+    <x:Int32 x:Key="ZIndexPopover">500</x:Int32>
+    <x:Int32 x:Key="ZIndexTooltip">600</x:Int32>
+</ResourceDictionary>
+

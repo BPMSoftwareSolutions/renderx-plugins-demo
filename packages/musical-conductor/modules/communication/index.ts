@@ -1,3 +1,4 @@
+import "./bootstrap.js"; // Early logger/bootstrap side-effects
 /**
  * Communication System Exports
  *
@@ -87,7 +88,7 @@ export function resetCommunicationSystem(): void {
   communicationSystemInitialized = false;
   communicationSystemInstance = null;
   MusicalConductor.resetInstance();
-  console.log("🔄 Communication system state reset");
+  (globalThis as any).__MC_LOG("🔄 Communication system state reset");
 }
 
 /**
@@ -102,13 +103,13 @@ export function initializeCommunicationSystem(): {
 } {
   // Return existing instance if already initialized (React StrictMode protection)
   if (communicationSystemInitialized && communicationSystemInstance) {
-    console.log(
+    (globalThis as any).__MC_LOG(
       "🎼 Communication System already initialized, returning existing instance..."
     );
     return communicationSystemInstance;
   }
 
-  console.log("🎼 Initializing RenderX Evolution Communication System...");
+  (globalThis as any).__MC_LOG("🎼 Initializing RenderX Evolution Communication System...");
 
   // Get singleton musical conductor instance with the internal eventBus
   const conductor = MusicalConductor.getInstance(internalEventBus);
@@ -121,13 +122,13 @@ export function initializeCommunicationSystem(): {
   // Initialize and register all musical sequences
   const sequenceResults = initializeMusicalSequences(conductor);
 
-  console.log("✅ Communication System initialized successfully");
-  console.log(
+  (globalThis as any).__MC_LOG("✅ Communication System initialized successfully");
+  (globalThis as any).__MC_LOG(
     `🎼 Registered ${sequenceResults.registeredSequences} musical sequences`
   );
 
   if (sequenceResults.validationResults.invalid.length > 0) {
-    console.warn(
+    (globalThis as any).__MC_WARN(
       "⚠️ Some sequences have validation issues:",
       sequenceResults.validationResults.invalid
     );

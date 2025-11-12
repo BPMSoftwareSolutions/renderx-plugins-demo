@@ -1,0 +1,130 @@
+{
+  "plugins": [
+    {
+      "id": "CanvasPlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "canvas",
+        "module": "RenderX.Plugins.Canvas.dll",
+        "export": "RenderX.Plugins.Canvas.CanvasControl"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.Canvas.dll",
+        "export": "RenderX.Plugins.Canvas.CanvasPlugin"
+      },
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "CanvasComponentPlugin",
+      "version": "1.0.0.0",
+      "ui": {
+        "slot": null,
+        "module": "RenderX.Plugins.CanvasComponent.dll",
+        "export": "RenderX.Plugins.CanvasComponent.CanvasComponentPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.CanvasComponent.dll",
+        "export": "RenderX.Plugins.CanvasComponent.CanvasComponentPlugin"
+      },
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "ComponentsPlugin",
+      "version": "1.0.0.0",
+      "ui": null,
+      "runtime": null,
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "controlPanel",
+        "module": "RenderX.Plugins.ControlPanel.dll",
+        "export": "RenderX.Plugins.ControlPanel.ControlPanelControl"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.ControlPanel.dll",
+        "export": "RenderX.Plugins.ControlPanel.ControlPanelPlugin"
+      },
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "HeaderTitlePlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerLeft",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "RenderX.Plugins.Header.HeaderTitlePlugin"
+      },
+      "runtime": null,
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerCenter",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "RenderX.Plugins.Header.HeaderControlsPlugin"
+      },
+      "runtime": null,
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "headerRight",
+        "module": "RenderX.Plugins.Header.dll",
+        "export": "RenderX.Plugins.Header.HeaderThemePlugin"
+      },
+      "runtime": null,
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "LibraryPlugin",
+      "version": "1.0.0",
+      "ui": {
+        "slot": "library",
+        "module": "RenderX.Plugins.Library.dll",
+        "export": "RenderX.Plugins.Library.LibraryPlugin"
+      },
+      "runtime": null,
+      "sequences": null,
+      "topics": null,
+      "components": null
+    },
+    {
+      "id": "LibraryComponentPlugin",
+      "version": "1.0.0.0",
+      "ui": {
+        "slot": null,
+        "module": "RenderX.Plugins.LibraryComponent.dll",
+        "export": "RenderX.Plugins.LibraryComponent.LibraryComponentPlugin"
+      },
+      "runtime": {
+        "module": "RenderX.Plugins.LibraryComponent.dll",
+        "export": "RenderX.Plugins.LibraryComponent.LibraryComponentPlugin"
+      },
+      "sequences": null,
+      "topics": null,
+      "components": null
+    }
+  ],
+  "generated": "2025-11-09T05:16:04.6144964Z"
+}

@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.ControlPanel.FormField"
+             Background="Transparent">
+    <Grid RowDefinitions="Auto,Auto,Auto">
+        <!-- Label -->
+        <TextBlock Grid.Row="0"
+                   x:Name="LabelText"
+                   Text="Field Label"
+                   FontSize="12"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource Color.Border.Primary}"
+                   Margin="0,0,0,4" />
+        
+        <!-- Input Container -->
+        <Border Grid.Row="1"
+                Background="{DynamicResource Color.Background.Primary}"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Color.Border.Secondary}"
+                CornerRadius="4"
+                Padding="8,4">
+            <TextBox x:Name="InputControl"
+                     Watermark="Enter value..."
+                     FontSize="11"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     Padding="0" />
+        </Border>
+        
+        <!-- Error Message -->
+        <TextBlock Grid.Row="2"
+                   x:Name="ErrorMessage"
+                   Text=""
+                   FontSize="10"
+                   Foreground="{DynamicResource Color.Error}"
+                   Margin="0,4,0,0"
+                   IsVisible="False"
+                   TextWrapping="Wrap" />
+    </Grid>
+</UserControl>
+

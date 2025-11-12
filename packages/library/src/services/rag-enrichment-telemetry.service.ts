@@ -1,6 +1,6 @@
 /**
  * RAG Enrichment Service with Telemetry Support
- * 
+ *
  * Extends RAG enrichment to use conductor telemetry logs to extract realistic
  * component behavior patterns and interactions.
  */
@@ -36,7 +36,7 @@ export class RAGEnrichmentTelemetryService extends RAGEnrichmentService {
 
     // Extract behavior patterns from telemetry
     const patterns = await this.behaviorExtractor.extractPatterns(telemetryChunks);
-    
+
     // Find patterns matching the component type
     const componentType = aiComponent.metadata.type.toLowerCase();
     const matchingPattern = this.findMatchingPattern(componentType, patterns);
@@ -79,7 +79,7 @@ export class RAGEnrichmentTelemetryService extends RAGEnrichmentService {
     if (match) return match;
 
     // Try partial match
-    match = patterns.find(p => 
+    match = patterns.find(p =>
       p.componentType.includes(componentType) || componentType.includes(p.componentType)
     );
     if (match) return match;

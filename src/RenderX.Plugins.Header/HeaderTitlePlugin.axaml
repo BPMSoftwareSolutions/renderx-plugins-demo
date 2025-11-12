@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Header.HeaderTitlePlugin"
+             Background="Transparent">
+
+    <UserControl.Styles>
+        <Style Selector="TextBlock.header-title">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Foreground" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TextBlock.header-title:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource Color.Accent.Primary}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Border Padding="16,0">
+        <TextBlock Classes="header-title"
+                   x:Name="TitleText"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource Color.Text.Primary}"
+                   VerticalAlignment="Center" />
+    </Border>
+</UserControl>
+

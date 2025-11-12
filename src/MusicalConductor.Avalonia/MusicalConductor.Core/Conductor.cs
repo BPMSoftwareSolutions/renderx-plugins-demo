@@ -1,0 +1,270 @@
+using Microsoft.Extensions.Logging;
+using MusicalConductor.Core.Interfaces;
+using MusicalConductor.Core.Models;
+using MusicalConductor.Core.Monitoring;
+
+namespace MusicalConductor.Core;
+
+/// <summary>
+/// Core orchestration engine.
+/// </summary>
+public class Conductor : IConductor
+{
+    private readonly IEventBus _eventBus;
+    private readonly ISequenceRegistry _sequenceRegistry;
+    private readonly IPluginManager _pluginManager;
+    private readonly IExecutionQueue _executionQueue;
+    private readonly SequenceExecutor _sequenceExecutor;
+    private readonly ILogger<Conductor> _logger;
+    private readonly ConductorStatistics _statistics = new();
+    private readonly ReaderWriterLockSlim _lock = new();
+    private int _activeSequences;
+    
+    // Monitoring infrastructure
+    private readonly PerformanceTracker _performanceTracker;
+    private readonly EventLogger _eventLogger;
+    private readonly StatisticsManager _statisticsManager;
+
+    public IEventBus EventBus => _eventBus;
+    public ISequenceRegistry SequenceRegistry => _sequenceRegistry;
+    public PerformanceTracker PerformanceTracker => _performanceTracker;
+    public EventLogger EventLogger => _eventLogger;
+    public StatisticsManager StatisticsManager => _statisticsManager;
+
+    public Conductor(
+        IEventBus eventBus,
+        ISequenceRegistry sequenceRegistry,
+        IPluginManager pluginManager,
+        IExecutionQueue executionQueue,
+        SequenceExecutor sequenceExecutor,
+        ILogger<Conductor> logger,
+        ILogger<PerformanceTracker> performanceLogger,
+        ILogger<EventLogger> eventLoggerLogger,
+        ILogger<StatisticsManager> statisticsLogger)
+    {
+        _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
+        _sequenceRegistry = sequenceRegistry ?? throw new ArgumentNullException(nameof(sequenceRegistry));
+        _pluginManager = pluginManager ?? throw new ArgumentNullException(nameof(pluginManager));
+        _executionQueue = executionQueue ?? throw new ArgumentNullException(nameof(executionQueue));
+        _sequenceExecutor = sequenceExecutor ?? throw new ArgumentNullException(nameof(sequenceExecutor));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        
+        // Initialize monitoring infrastructure
+        _performanceTracker = new PerformanceTracker(performanceLogger);
+        _statisticsManager = new StatisticsManager(statisticsLogger);
+        _eventLogger = new EventLogger(_eventBus, _performanceTracker, eventLoggerLogger);
+        
+        // Setup hierarchical logging
+        _eventLogger.SetupBeatExecutionLogging();
+        _eventLogger.SetupMovementExecutionLogging();
+
+        _logger.LogInformation("🎼 MusicalConductor: Initialized with core components and monitoring infrastructure");
+        _logger.LogInformation("🎼 MusicalConductor: Startup complete - ready to execute sequences");
+    }
+
+    public string Play(string pluginId, string sequenceId, object? context = null, SequencePriority priority = SequencePriority.NORMAL)
+    {
+        if (string.IsNullOrEmpty(pluginId))
+            throw new ArgumentNullException(nameof(pluginId));
+        if (string.IsNullOrEmpty(sequenceId))
+            throw new ArgumentNullException(nameof(sequenceId));
+
+        var requestId = Guid.NewGuid().ToString();
+        var sequence = _sequenceRegistry.Get(sequenceId);
+
+        if (sequence == null)
+        {
+            _logger.LogError("Sequence not found: {SequenceId}", sequenceId);
+            _statistics.FailedExecutions++;
+            return requestId;
+        }
+
+        _lock.EnterWriteLock();
+        try
+        {
+            _statistics.TotalExecutions++;
+            _activeSequences++;
+            _statistics.ActiveSequences = _activeSequences;
+        }
+        finally
+        {
+            _lock.ExitWriteLock();
+        }
+
+        // Create execution item and enqueue
+        var executionItem = new ExecutionItem
+        {
+            Id = requestId,
+            PluginId = pluginId,
+            SequenceId = sequenceId,
+            Context = context,
+            Priority = priority
+        };
+
+        _executionQueue.Enqueue(executionItem);
+
+        // Execute sequence asynchronously
+        _ = ExecuteSequenceAsync(requestId, pluginId, sequence, context);
+
+        return requestId;
+    }
+
+    public ConductorStatistics GetStatistics()
+    {
+        _lock.EnterReadLock();
+        try
+        {
+            return new ConductorStatistics
+            {
+                TotalExecutions = _statistics.TotalExecutions,
+                SuccessfulExecutions = _statistics.SuccessfulExecutions,
+                FailedExecutions = _statistics.FailedExecutions,
+                ActiveSequences = _statistics.ActiveSequences,
+                TotalBeats = _statistics.TotalBeats,
+                AverageExecutionTimeMs = _statistics.AverageExecutionTimeMs
+            };
+        }
+        finally
+        {
+            _lock.ExitReadLock();
+        }
+    }
+
+    public object? GetStatus()
+    {
+        var stats = GetStatistics();
+        var plugins = _pluginManager.GetAll().Select(p => new
+        {
+            id = p.GetMetadata().Id,
+            name = p.GetMetadata().Name,
+            version = p.GetMetadata().Version
+        });
+
+        var sequences = _sequenceRegistry.GetAll().Select(s => new
+        {
+            id = s.Id,
+            name = s.Name,
+            category = s.Category
+        });
+
+        return new
+        {
+            statistics = stats,
+            plugins = plugins.ToList(),
+            sequences = sequences.ToList(),
+            timestamp = DateTime.UtcNow
+        };
+    }
+
+    private async Task ExecuteSequenceAsync(string requestId, string pluginId, ISequence sequence, object? context)
+    {
+        var startTime = DateTime.UtcNow;
+        
+        // Start sequence timing
+        _performanceTracker.StartSequenceTiming(sequence.Name);
+        _eventLogger.LogSequenceStart(sequence.Name, requestId, context ?? new { });
+        _statisticsManager.RecordSequenceQueued();
+
+        try
+        {
+            _logger.LogInformation("🎼 Conductor: Now executing \"{SequenceName}\"", sequence.Name);
+
+            // Use SequenceExecutor to execute the sequence
+            await _sequenceExecutor.ExecuteAsync(requestId, pluginId, sequence, context, this);
+
+            _statistics.SuccessfulExecutions++;
+            _statistics.TotalBeats += sequence.GetAllBeats().Count();
+            
+            // Record successful execution in StatisticsManager
+            var duration = _performanceTracker.EndSequenceTiming(sequence.Name);
+            if (duration.HasValue)
+            {
+                _statisticsManager.RecordSequenceExecution(duration.Value);
+            }
+            _eventLogger.LogSequenceComplete(sequence.Name, requestId, true, duration);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "❌ MusicalConductor: Error executing sequence: {SequenceId} (RequestId={RequestId}, Reason={Reason})", sequence.Id, requestId, ex.Message);
+            _statistics.FailedExecutions++;
+            _statisticsManager.RecordError();
+
+            // Log state transition to failed
+            _logger.LogWarning("⚠️ MusicalConductor: Sequence state transitioned to FAILED - {SequenceName}", sequence.Name);
+
+            var duration = _performanceTracker.EndSequenceTiming(sequence.Name);
+            _eventLogger.LogSequenceComplete(sequence.Name, requestId, false, duration);
+        }
+        finally
+        {
+            var processingTime = (DateTime.UtcNow - startTime).TotalMilliseconds;
+
+            // Record in execution queue
+            var executionItem = new ExecutionItem
+            {
+                Id = requestId,
+                PluginId = pluginId,
+                SequenceId = sequence.Id,
+                Context = context
+            };
+
+            if (_statistics.SuccessfulExecutions > 0)
+            {
+                _executionQueue.RecordSuccess(executionItem, processingTime);
+            }
+            else
+            {
+                _executionQueue.RecordFailure(executionItem, "Sequence execution failed");
+            }
+            
+            _statisticsManager.RecordSequenceDequeued();
+
+            _lock.EnterWriteLock();
+            try
+            {
+                _activeSequences--;
+                _statistics.ActiveSequences = _activeSequences;
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Stop the current sequence execution
+    /// </summary>
+    public void StopExecution()
+    {
+        _lock.EnterWriteLock();
+        try
+        {
+            if (_activeSequences > 0)
+            {
+                _logger.LogInformation("🛑 MusicalConductor: Stopping execution - {ActiveSequences} active sequences", _activeSequences);
+                _activeSequences = 0;
+                _statistics.ActiveSequences = 0;
+            }
+        }
+        finally
+        {
+            _lock.ExitWriteLock();
+        }
+    }
+
+    /// <summary>
+    /// Shutdown the conductor and cleanup resources
+    /// </summary>
+    public void Shutdown()
+    {
+        _logger.LogInformation("🎼 MusicalConductor: Initiating shutdown sequence");
+
+        // Log final statistics
+        _statisticsManager.LogStatistics();
+        _performanceTracker.ResetTrackingData();
+
+        _logger.LogInformation("🎼 MusicalConductor: Shutdown complete");
+    }
+}
+

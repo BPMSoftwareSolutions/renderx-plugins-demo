@@ -141,8 +141,14 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/.vs
+
+# Visual Studio temporary files and directories
+.vs/
+*.vs/
+
 /.logs
+# Keep the README to document log file location and format
+!.logs/README.md
 
 # Allow committed docs logs
 !docs/logs/
@@ -163,11 +169,10 @@ vite.config.ts.timestamp-*
 
 # Generated compatibility catalogs (root copies for Node tests/tools)
 # Source of truth lives under catalog/
-json-components/
-json-sequences/
 !/catalog/json-components/
 !/packages/*/json-components/
 !/packages/*/json-sequences/
+!/src/RenderX.Plugins.*/json-sequences/
 
 # Generated root manifests (do not track)
 /interaction-manifest.json
@@ -188,3 +193,10 @@ json-sequences/
 /temp-control-panel
 
 cypress/videos/
+
+# .NET build artifacts
+**/bin/
+**/obj/
+**/wwwroot/
+/json-components
+/json-sequences/control-panel

@@ -1,0 +1,63 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Shell.Avalonia", "src\RenderX.Shell.Avalonia\RenderX.Shell.Avalonia.csproj", "{ECF42D61-F99B-B499-847B-83C2479B5810}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Shell.Avalonia.Tests", "src\RenderX.Shell.Avalonia.Tests\RenderX.Shell.Avalonia.Tests.csproj", "{12345678-ABCD-1234-5678-123456789ABC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderX.Shell.Avalonia.Minimal", "src\RenderX.Shell.Avalonia.Minimal\RenderX.Shell.Avalonia.Minimal.csproj", "{48614D16-74BB-40F5-A889-47775BC633FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.Components", "src\RenderX.Plugins.Components\RenderX.Plugins.Components.csproj", "{709974DA-BBC3-48E2-86F3-B5385BF1F1FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.CanvasComponent", "src\RenderX.Plugins.CanvasComponent\RenderX.Plugins.CanvasComponent.csproj", "{1AEDFBC2-DC30-4219-BEBF-D6C0BA9DA242}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderX.Plugins.LibraryComponent", "src\RenderX.Plugins.LibraryComponent\RenderX.Plugins.LibraryComponent.csproj", "{03F751DD-0BC1-4AA4-BEB6-DDF4F789D945}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECF42D61-F99B-B499-847B-83C2479B5810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF42D61-F99B-B499-847B-83C2479B5810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF42D61-F99B-B499-847B-83C2479B5810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF42D61-F99B-B499-847B-83C2479B5810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12345678-ABCD-1234-5678-123456789ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12345678-ABCD-1234-5678-123456789ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12345678-ABCD-1234-5678-123456789ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12345678-ABCD-1234-5678-123456789ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48614D16-74BB-40F5-A889-47775BC633FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48614D16-74BB-40F5-A889-47775BC633FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48614D16-74BB-40F5-A889-47775BC633FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48614D16-74BB-40F5-A889-47775BC633FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709974DA-BBC3-48E2-86F3-B5385BF1F1FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709974DA-BBC3-48E2-86F3-B5385BF1F1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709974DA-BBC3-48E2-86F3-B5385BF1F1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709974DA-BBC3-48E2-86F3-B5385BF1F1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AEDFBC2-DC30-4219-BEBF-D6C0BA9DA242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AEDFBC2-DC30-4219-BEBF-D6C0BA9DA242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AEDFBC2-DC30-4219-BEBF-D6C0BA9DA242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AEDFBC2-DC30-4219-BEBF-D6C0BA9DA242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03F751DD-0BC1-4AA4-BEB6-DDF4F789D945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F751DD-0BC1-4AA4-BEB6-DDF4F789D945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F751DD-0BC1-4AA4-BEB6-DDF4F789D945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F751DD-0BC1-4AA4-BEB6-DDF4F789D945}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ECF42D61-F99B-B499-847B-83C2479B5810} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{12345678-ABCD-1234-5678-123456789ABC} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{709974DA-BBC3-48E2-86F3-B5385BF1F1FC} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{1AEDFBC2-DC30-4219-BEBF-D6C0BA9DA242} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{03F751DD-0BC1-4AA4-BEB6-DDF4F789D945} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A721A8B8-3A9E-4CF1-8B7E-C3F5024E2AAB}
+	EndGlobalSection
+EndGlobal

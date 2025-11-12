@@ -76,7 +76,7 @@ export const MusicalSequences = {
  * @param conductor - The musical conductor instance
  */
 export function registerAllSequences(conductor: MusicalConductor): void {
-  console.log("🎼 Registering all musical sequences with conductor...");
+  (globalThis as any).__MC_LOG("🎼 Registering all musical sequences with conductor...");
 
   let registeredCount = 0;
   let failedCount = 0;
@@ -85,20 +85,20 @@ export function registerAllSequences(conductor: MusicalConductor): void {
     try {
       conductor.registerSequence(sequence);
       registeredCount++;
-      console.log(`✅ Registered sequence: ${sequence.name}`);
+      (globalThis as any).__MC_LOG(`✅ Registered sequence: ${sequence.name}`);
     } catch (error) {
       failedCount++;
-      console.error(`❌ Failed to register sequence: ${sequence.name}`, error);
+      (globalThis as any).__MC_ERROR(`❌ Failed to register sequence: ${sequence.name}`, error);
     }
   }
 
-  console.log(
+  (globalThis as any).__MC_LOG(
     `🎼 Sequence registration complete: ${registeredCount} registered, ${failedCount} failed`
   );
 
   // Log sequence categories for debugging
   const categories = new Set(ALL_SEQUENCES.map((seq) => seq.category));
-  console.log(`📊 Sequence categories: ${Array.from(categories).join(", ")}`);
+  (globalThis as any).__MC_LOG(`📊 Sequence categories: ${Array.from(categories).join(", ")}`);
 }
 
 /**
@@ -189,13 +189,13 @@ export function initializeMusicalSequences(conductor: MusicalConductor): {
   registeredSequences: number;
   validationResults: ReturnType<typeof validateAllSequences>;
 } {
-  console.log("🎼 Initializing Musical Sequences System...");
+  (globalThis as any).__MC_LOG("🎼 Initializing Musical Sequences System...");
 
   // Validate all sequences first
   const validationResults = validateAllSequences();
 
   if (validationResults.invalid.length > 0) {
-    console.warn(
+    (globalThis as any).__MC_WARN(
       "⚠️ Some sequences have validation errors:",
       validationResults.invalid
     );
@@ -209,10 +209,10 @@ export function initializeMusicalSequences(conductor: MusicalConductor): {
   const registeredSequences = conductor.getSequenceNames().length;
   const success = registeredSequences > 0;
 
-  console.log(
+  (globalThis as any).__MC_LOG(
     `🎼 Musical Sequences System initialized: ${success ? "SUCCESS" : "FAILED"}`
   );
-  console.log(`📊 Total sequences registered: ${registeredSequences}`);
+  (globalThis as any).__MC_LOG(`📊 Total sequences registered: ${registeredSequences}`);
 
   return {
     success,

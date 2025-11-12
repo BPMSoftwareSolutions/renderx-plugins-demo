@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.LibraryComponent.ComponentRegistry"
+             Background="{DynamicResource Color.Background.Primary}">
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource Color.Background.Tertiary}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                Padding="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Component Registry"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+                <TextBox x:Name="SearchBox"
+                         Watermark="Search components..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Components List -->
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl x:Name="ComponentsControl"
+                          Padding="12"
+                          Background="{DynamicResource Color.Background.Primary}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{DynamicResource Color.Background.Secondary}"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
+                                CornerRadius="4"
+                                Padding="12"
+                                Margin="0,4">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding Name}"
+                                           FontSize="12"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource Color.Border.Primary}" />
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="10"
+                                           Foreground="#666"
+                                           TextWrapping="Wrap" />
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock Text="{Binding Version}"
+                                               FontSize="9"
+                                               Foreground="#999" />
+                                    <TextBlock Text="{Binding Status}"
+                                               FontSize="9"
+                                               Foreground="#999" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
+

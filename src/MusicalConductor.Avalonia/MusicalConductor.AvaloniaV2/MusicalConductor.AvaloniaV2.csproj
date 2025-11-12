@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>MusicalConductor.AvaloniaV2</AssemblyName>
+    <RootNamespace>MusicalConductor.AvaloniaV2</RootNamespace>
+    <Version>2.0.0</Version>
+    <Description>Avalonia.NET integration for native C# MusicalConductor (Phase 2)</Description>
+    <Authors>BPM Software Solutions</Authors>
+    <PackageProjectUrl>https://github.com/BPMSoftwareSolutions/MusicalConductor</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MusicalConductor.Core\MusicalConductor.Core.csproj" />
+  </ItemGroup>
+
+</Project>
+

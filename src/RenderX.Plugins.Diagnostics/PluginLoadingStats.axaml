@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.PluginLoadingStats"
+             Background="Transparent">
+    <Border Background="{DynamicResource Color.Background.Secondary}"
+            BorderThickness="1"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            CornerRadius="4"
+            Padding="12">
+        <StackPanel Spacing="8">
+            <TextBlock Text="Loading Statistics"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource Color.Border.Primary}" />
+            
+            <Grid ColumnDefinitions="*,*,*,*">
+                <!-- Success -->
+                <StackPanel Grid.Column="0" Spacing="4">
+                    <TextBlock Text="✓ Success" FontSize="10" Foreground="{DynamicResource Color.Success}" FontWeight="Bold" />
+                    <TextBlock x:Name="SuccessCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Success}" />
+                </StackPanel>
+                
+                <!-- Failed -->
+                <StackPanel Grid.Column="1" Spacing="4">
+                    <TextBlock Text="✗ Failed" FontSize="10" Foreground="{DynamicResource Color.Error}" FontWeight="Bold" />
+                    <TextBlock x:Name="FailedCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Error}" />
+                </StackPanel>
+                
+                <!-- Pending -->
+                <StackPanel Grid.Column="2" Spacing="4">
+                    <TextBlock Text="⏳ Pending" FontSize="10" Foreground="#FFA726" FontWeight="Bold" />
+                    <TextBlock x:Name="PendingCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="#FFA726" />
+                </StackPanel>
+                
+                <!-- Total Time -->
+                <StackPanel Grid.Column="3" Spacing="4">
+                    <TextBlock Text="⏱ Time" FontSize="10" Foreground="#666" FontWeight="Bold" />
+                    <TextBlock x:Name="TotalTime" Text="0ms" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                </StackPanel>
+            </Grid>
+
+            <!-- Progress Bar -->
+            <ProgressBar x:Name="LoadingProgress"
+                         IsIndeterminate="False"
+                         Height="4"
+                         Background="{DynamicResource Color.Border.Primary}"
+                         Foreground="{DynamicResource Color.Accent.Primary}" />
+        </StackPanel>
+    </Border>
+</UserControl>
+

@@ -1,0 +1,538 @@
+================================================================================
+CSS Classes Report
+================================================================================
+
+├── src\ui\App\App.tsx (15 classes)
+│   └── 🔧 USAGES
+│       ├── .p-3 (className-prop)
+│       ├── .diagnostics-badge (className-prop)
+│       ├── .diagnostics-badge-tooltip (className-prop)
+│       ├── .legacy-grid (className-prop)
+│       ├── .slot-wrapper (className-prop)
+│       ├── .library (data-attr)
+│       ├── .p-3 (className-prop)
+│       ├── .slot-wrapper (className-prop)
+│       ├── .canvas (data-attr)
+│       ├── .p-3 (className-prop)
+│       └── ... and 5 more
+
+├── src\ui\PluginTreeExplorer.tsx (125 classes)
+│   └── 🔧 USAGES
+│       ├── .tree-node (template-literal)
+│       ├── .level (template-literal)
+│       ├── .tree-node-icon (className-prop)
+│       ├── .tree-node-icon (className-prop)
+│       ├── .tree-node-icon (className-prop)
+│       ├── .tree-node-label (className-prop)
+│       ├── .tree-node-badge (className-prop)
+│       ├── .plugin-tree-explorer (className-prop)
+│       ├── .tree-header (className-prop)
+│       ├── .tree-title (className-prop)
+│       └── ... and 115 more
+
+├── src\ui\diagnostics\DiagnosticsOverlay.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .diagnostics-overlay (className-prop)
+│       ├── .diagnostics-modal (className-prop)
+│       ├── .diagnostics-modal-header (className-prop)
+│       ├── .diagnostics-close-btn (className-prop)
+│       └── .diagnostics-modal-content (className-prop)
+
+├── src\ui\diagnostics\DiagnosticsPanel.tsx (24 classes)
+│   └── 🔧 USAGES
+│       ├── .Testing (template-literal)
+│       ├── .Resolved (template-literal)
+│       ├── .interaction_ (template-literal)
+│       ├── .Interaction (template-literal)
+│       ├── .interaction_ (template-literal)
+│       ├── .Interaction (template-literal)
+│       ├── .Testing (template-literal)
+│       ├── .Topic (template-literal)
+│       ├── .Topic (template-literal)
+│       ├── .diagnostics-report (template-literal)
+│       └── ... and 14 more
+
+├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx (16 classes)
+│   └── 🔧 USAGES
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .plugin-item (className-prop)
+│       ├── .plugin-header (className-prop)
+│       ├── .plugin-name (className-prop)
+│       ├── .plugin-details (className-prop)
+│       ├── .detail-row (className-prop)
+│       └── ... and 6 more
+
+├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx (26 classes)
+│   └── 🔧 USAGES
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .plugin-item (className-prop)
+│       ├── .plugin-name (className-prop)
+│       └── ... and 16 more
+
+├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx (26 classes)
+│   └── 🔧 USAGES
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .plugin-item (className-prop)
+│       ├── .plugin-name (className-prop)
+│       ├── .plugin-details (className-prop)
+│       ├── .detail-row (className-prop)
+│       ├── .detail-label (className-prop)
+│       └── ... and 16 more
+
+├── src\ui\diagnostics\components\ContentPanels\PluginsPanel.tsx (19 classes)
+│   └── 🔧 USAGES
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .plugin-item (className-prop)
+│       ├── .plugin-header (className-prop)
+│       ├── .plugin-name (className-prop)
+│       ├── .plugin-actions (className-prop)
+│       ├── .plugin-status (template-literal)
+│       └── ... and 9 more
+
+├── src\ui\diagnostics\components\ContentPanels\RoutesPanel.tsx (14 classes)
+│   └── 🔧 USAGES
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .route-item (className-prop)
+│       ├── .route-name (className-prop)
+│       ├── .route-target (className-prop)
+│       ├── .code (className-prop)
+│       ├── .code (className-prop)
+│       └── ... and 4 more
+
+├── src\ui\diagnostics\components\ContentPanels\TopicsPanel.tsx (18 classes)
+│   └── 🔧 USAGES
+│       ├── .panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .panel-content (className-prop)
+│       ├── .topic-item (className-prop)
+│       ├── .topic-name (template-literal)
+│       ├── .btn (className-prop)
+│       ├── .btn-primary (className-prop)
+│       ├── .btn (utility-classes)
+│       └── ... and 8 more
+
+├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx (29 classes)
+│   └── 🔧 USAGES
+│       ├── .toolbar (className-prop)
+│       ├── .toolbar-section (className-prop)
+│       ├── .btn (className-prop)
+│       ├── .btn-secondary (className-prop)
+│       ├── .btn-icon (className-prop)
+│       ├── .btn-sm (className-prop)
+│       ├── .btn (utility-classes)
+│       ├── .btn-secondary (utility-classes)
+│       ├── .btn-icon (utility-classes)
+│       ├── .btn-sm (utility-classes)
+│       └── ... and 19 more
+
+├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx (34 classes)
+│   └── 🔧 USAGES
+│       ├── .footer-panel (className-prop)
+│       ├── .footer-section (className-prop)
+│       ├── .footer-section (className-prop)
+│       ├── .footer-stats (className-prop)
+│       ├── .footer-section (utility-classes)
+│       ├── .footer-stats (utility-classes)
+│       ├── .footer-stat (className-prop)
+│       ├── .footer-stat-label (className-prop)
+│       ├── .footer-stat-value (className-prop)
+│       ├── .footer-stat (className-prop)
+│       └── ... and 24 more
+
+├── src\ui\diagnostics\components\LogConverter\LogConverter.tsx (6 classes)
+│   └── 🔧 USAGES
+│       ├── .converted-sequences (template-literal)
+│       ├── .log-converter (className-prop)
+│       ├── .converter-header (className-prop)
+│       ├── .error-message (className-prop)
+│       ├── .converter-input-section (className-prop)
+│       └── .converter-output-section (className-prop)
+
+├── src\ui\diagnostics\components\LogsPanel\LogsPanel.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .logs-panel (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .logs-content (className-prop)
+│       ├── .log-entry (className-prop)
+│       ├── .log-timestamp (className-prop)
+│       └── .log-level (template-literal)
+
+├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx (36 classes)
+│   └── 🔧 USAGES
+│       ├── .duration (template-literal)
+│       ├── .execution-history-container (className-prop)
+│       ├── .execution-history-header (className-prop)
+│       ├── .execution-history-title (className-prop)
+│       ├── .execution-history-stats (className-prop)
+│       ├── .stat-badge (className-prop)
+│       ├── .stat-badge (className-prop)
+│       ├── .stat-badge-success (className-prop)
+│       ├── .stat-badge (utility-classes)
+│       ├── .stat-badge-success (utility-classes)
+│       └── ... and 26 more
+
+├── src\ui\diagnostics\components\SequencePlayer\ExecutionStats.tsx (11 classes)
+│   └── 🔧 USAGES
+│       ├── .execution-stats (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .button-secondary (className-prop)
+│       ├── .stats-grid (className-prop)
+│       ├── .stats (template-literal)
+│       ├── .stats (template-literal)
+│       ├── .successRate (template-literal)
+│       ├── .slowest-beat (className-prop)
+│       ├── .stat-card (className-prop)
+│       └── ... and 1 more
+
+├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx (38 classes)
+│   └── 🔧 USAGES
+│       ├── .live-monitor-empty (className-prop)
+│       ├── .empty-icon (className-prop)
+│       ├── .live-monitor-container (className-prop)
+│       ├── .live-monitor-header (className-prop)
+│       ├── .live-monitor-title (className-prop)
+│       ├── .live-monitor-status-badge (className-prop)
+│       ├── .live-monitor-info (className-prop)
+│       ├── .live-monitor-info-row (className-prop)
+│       ├── .live-monitor-label (className-prop)
+│       ├── .live-monitor-value (className-prop)
+│       └── ... and 28 more
+
+├── src\ui\diagnostics\components\SequencePlayer\LogParser.tsx (14 classes)
+│   └── 🔧 USAGES
+│       ├── .log-parser (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .log-parser-content (className-prop)
+│       ├── .log-parser-controls (className-prop)
+│       ├── .format-selector (className-prop)
+│       ├── .file-upload (className-prop)
+│       ├── .button-secondary (className-prop)
+│       ├── .log-input-area (className-prop)
+│       ├── .Paste (template-literal)
+│       └── ... and 4 more
+
+├── src\ui\diagnostics\components\SequencePlayer\ParameterEditor.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .parameter-editor (className-prop)
+│       ├── .parameter-editor-label (className-prop)
+│       ├── .parameter-editor-textarea (template-literal)
+│       ├── .parameter-editor-error-message (className-prop)
+│       └── .parameter-editor-hint (className-prop)
+
+├── src\ui\diagnostics\components\SequencePlayer\SequenceList.tsx (38 classes)
+│   └── 🔧 USAGES
+│       ├── .sequence-list-error (className-prop)
+│       ├── .error-icon (className-prop)
+│       ├── .sequence-list-container (className-prop)
+│       ├── .sequence-list-header (className-prop)
+│       ├── .sequence-list-title (className-prop)
+│       ├── .sequence-list-stats (className-prop)
+│       ├── .stat-badge (className-prop)
+│       ├── .stat-badge (className-prop)
+│       ├── .stat-badge-success (className-prop)
+│       ├── .stat-badge (utility-classes)
+│       └── ... and 28 more
+
+├── src\ui\diagnostics\components\SequencePlayer\SequencePlayer.tsx (19 classes)
+│   └── 🔧 USAGES
+│       ├── .execution (template-literal)
+│       ├── .sequence-player (className-prop)
+│       ├── .sequence-player-tabs (className-prop)
+│       ├── .sequence-player-tab (template-literal)
+│       ├── .sequence-player-tab (template-literal)
+│       ├── .aggregate-stats-panel (className-prop)
+│       ├── .aggregate-stats-title (className-prop)
+│       ├── .aggregate-stats-grid (className-prop)
+│       ├── .sequence-navigation (className-prop)
+│       ├── .sequence-navigation-left (className-prop)
+│       └── ... and 9 more
+
+├── src\ui\diagnostics\components\SequencePlayer\SequenceTimeline.tsx (12 classes)
+│   └── 🔧 USAGES
+│       ├── .sequence-timeline (className-prop)
+│       ├── .panel-header (className-prop)
+│       ├── .panel-title (className-prop)
+│       ├── .panel-badge (className-prop)
+│       ├── .timeline-metadata (className-prop)
+│       ├── .timeline-movements (className-prop)
+│       ├── .movement (className-prop)
+│       ├── .solid (template-literal)
+│       ├── .movement-header (className-prop)
+│       ├── .movement-beats (className-prop)
+│       └── ... and 2 more
+
+├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx (27 classes)
+│   └── 🔧 USAGES
+│       ├── .sequence-trigger-empty (className-prop)
+│       ├── .empty-icon (className-prop)
+│       ├── .sequence-trigger-container (className-prop)
+│       ├── .sequence-trigger-header (className-prop)
+│       ├── .sequence-trigger-title (className-prop)
+│       ├── .button-secondary (className-prop)
+│       ├── .sequence-trigger-info (className-prop)
+│       ├── .sequence-trigger-info-row (className-prop)
+│       ├── .sequence-trigger-label (className-prop)
+│       ├── .sequence-trigger-value (className-prop)
+│       └── ... and 17 more
+
+├── src\ui\diagnostics\components\StatsOverview\MetricCard.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .metric-card (className-prop)
+│       ├── .metric-title (className-prop)
+│       ├── .progress-ring (className-prop)
+│       ├── .metric-value (className-prop)
+│       ├── .metric-subtitle (className-prop)
+│       ├── .metric-card (className-prop)
+│       ├── .metric-label (className-prop)
+│       └── .metric-strong (className-prop)
+
+├── src\ui\diagnostics\components\StatsOverview\ProgressRing.tsx (5 classes)
+│   └── 🔧 USAGES
+│       ├── .ring (template-literal)
+│       ├── .ring-track (className-prop)
+│       ├── .ring-progress (className-prop)
+│       ├── .circumference (template-literal)
+│       └── .ring-label (className-prop)
+
+├── src\ui\diagnostics\components\StatsOverview\StatsOverview.tsx (9 classes)
+│   └── 🔧 USAGES
+│       ├── .control-panel (className-prop)
+│       ├── .stats-enhanced (className-prop)
+│       ├── .stats-dashboard (className-prop)
+│       ├── .metric-grid-top (className-prop)
+│       ├── .loadedPluginsCount (template-literal)
+│       ├── .successRatePct (template-literal)
+│       ├── .failedPluginsCount (template-literal)
+│       ├── .loadedPluginsCount (template-literal)
+│       └── .metric-grid-bottom (className-prop)
+
+├── src\ui\diagnostics\components\shared\ActionButton.tsx (3 classes)
+│   └── 🔧 USAGES
+│       ├── .action-button (template-literal)
+│       ├── .action-button-spinner (className-prop)
+│       └── .action-button-label (className-prop)
+
+├── src\ui\diagnostics\components\shared\CodeBlock.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .code-block (className-prop)
+│       ├── .code-block-header (className-prop)
+│       ├── .code-block-title (className-prop)
+│       ├── .code-block-language (className-prop)
+│       ├── .code-block-copy (className-prop)
+│       ├── .code-block-content (className-prop)
+│       ├── .code-block-pre (className-prop)
+│       └── .code-block-code (template-literal)
+
+├── src\ui\diagnostics\components\shared\CollapsibleSection.tsx (7 classes)
+│   └── 🔧 USAGES
+│       ├── .collapsible-section (className-prop)
+│       ├── .collapsible-section-header (className-prop)
+│       ├── .collapsible-section-toggle (className-prop)
+│       ├── .collapsible-section-icon (className-prop)
+│       ├── .collapsible-section-title (className-prop)
+│       ├── .collapsible-section-badge (className-prop)
+│       └── .collapsible-section-content (className-prop)
+
+├── src\ui\diagnostics\components\shared\InspectionPanel.tsx (20 classes)
+│   └── 🔧 USAGES
+│       ├── .inspection-panel-empty (className-prop)
+│       ├── .inspection-panel-empty-icon (className-prop)
+│       ├── .inspection-panel-empty-title (className-prop)
+│       ├── .inspection-panel-empty-text (className-prop)
+│       ├── .inspection-panel-content (className-prop)
+│       ├── .inspection-panel-content (className-prop)
+│       ├── .inspection-panel-content (className-prop)
+│       ├── .inspection-panel-content (className-prop)
+│       ├── .inspection-panel-content (className-prop)
+│       ├── .inspection-panel-content (className-prop)
+│       └── ... and 10 more
+
+├── src\ui\diagnostics\components\shared\JSONViewer.tsx (8 classes)
+│   └── 🔧 USAGES
+│       ├── .json-viewer (className-prop)
+│       ├── .json-viewer-header (className-prop)
+│       ├── .json-viewer-toggle (className-prop)
+│       ├── .json-viewer-title (className-prop)
+│       ├── .json-viewer-copy (className-prop)
+│       ├── .json-viewer-content (className-prop)
+│       ├── .json-viewer-pre (className-prop)
+│       └── .json-viewer-code (className-prop)
+
+├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx (43 classes)
+│   └── 🔧 USAGES
+│       ├── .plugin-info-inspector (className-prop)
+│       ├── .Action (template-literal)
+│       ├── .Plugin (template-literal)
+│       ├── .plugin-info-inspector (className-prop)
+│       ├── .plugin-info-header (className-prop)
+│       ├── .plugin-info-header-icon (className-prop)
+│       ├── .plugin-info-header-content (className-prop)
+│       ├── .plugin-info-title (className-prop)
+│       ├── .plugin-info-meta (className-prop)
+│       ├── .plugin-info-version (className-prop)
+│       └── ... and 33 more
+
+├── src\ui\diagnostics\components\shared\RelativeTime.tsx (4 classes)
+│   └── 🔧 USAGES
+│       ├── .diffMin (template-literal)
+│       ├── .diffHour (template-literal)
+│       ├── .diffDay (template-literal)
+│       └── .relative-time (className-prop)
+
+├── src\ui\diagnostics\components\shared\inspection.css (59 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .inspection-panel
+│   │   ├── .inspection-panel-content
+│   │   ├── .inspection-panel-empty
+│   │   ├── .inspection-panel-empty-icon
+│   │   ├── .inspection-panel-empty-title
+│   │   ├── .inspection-panel-empty-text
+│   │   ├── .json-viewer
+│   │   ├── .json-viewer-header
+│   │   ├── .json-viewer-toggle
+│   │   ├── .json-viewer-title
+│   │   └── ... and 49 more
+
+├── src\ui\diagnostics\diagnostics.css (134 classes)
+│   ├── 🎨 DEFINITIONS
+│   │   ├── .diagnostics-overlay
+│   │   ├── .diagnostics-modal
+│   │   ├── .diagnostics-modal-header
+│   │   ├── .stats-grid
+│   │   ├── .aggregate-stats-grid
+│   │   ├── .aggregate-stats-panel
+│   │   ├── .aggregate-stats-title
+│   │   ├── .sequence-navigation
+│   │   ├── .sequence-navigation-left
+│   │   ├── .sequence-counter
+│   │   └── ... and 124 more
+
+├── src\ui\diagnostics\hooks\useDiagnosticsData.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .Loaded (template-literal)
+
+├── src\ui\diagnostics\hooks\useEventMonitoring.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .Event (template-literal)
+│       └── .Failed (template-literal)
+
+├── src\ui\diagnostics\services\log-converter.service.ts (3 classes)
+│   └── 🔧 USAGES
+│       ├── .logs (template-literal)
+│       ├── .Failed (template-literal)
+│       └── .Error (template-literal)
+
+├── src\ui\diagnostics\services\log-parser.service.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .JSON (template-literal)
+│       └── .Text (template-literal)
+
+├── src\ui\diagnostics\services\plugin-enrichment.service.ts (4 classes)
+│   └── 🔧 USAGES
+│       ├── .json-sequences (template-literal)
+│       ├── .json-sequences (template-literal)
+│       ├── .Failed (template-literal)
+│       └── .Failed (template-literal)
+
+├── src\ui\diagnostics\services\sequence-execution.service.ts (1 classes)
+│   └── 🔧 USAGES
+│       └── .sequenceId (template-literal)
+
+├── src\ui\diagnostics\services\stats.service.ts (2 classes)
+│   └── 🔧 USAGES
+│       ├── .milliseconds (template-literal)
+│       └── .seconds (template-literal)
+
+├── src\ui\shared\PanelSlot.tsx (3 classes)
+│   └── 🔧 USAGES
+│       ├── .No (template-literal)
+│       ├── .Unsupported (template-literal)
+│       └── .window (template-literal)
+
+
+================================================================================
+STATISTICS SUMMARY
+================================================================================
+
+📊 Total Occurrences: 891
+🎨 Unique Classes: 374
+📝 Definitions: 193
+🔧 Usages: 698
+📁 Files Scanned: 43
+
+📈 By Usage Type:
+  className-prop               477 ( 53.5%) ██████████████████████████
+  css-definition               193 ( 21.7%) ██████████
+  template-literal             182 ( 20.4%) ██████████
+  utility-classes               36 (  4.0%) ██
+  data-attr                      3 (  0.3%) 
+
+🔥 Most Used Classes (Top 20):
+  .plugin                                  52 occurrences
+  .detail-row                              17 occurrences
+  .seqNodeId                               16 occurrences
+  .code                                    16 occurrences
+  .inspection-panel-content                16 occurrences
+  .btn                                     14 occurrences
+  .stat-badge                              12 occurrences
+  .panel-header                            11 occurrences
+  .panel-title                             11 occurrences
+  .btn-sm                                  10 occurrences
+  .detail-label                            10 occurrences
+  .button-secondary                         7 occurrences
+  .panel                                    7 occurrences
+  .panel-badge                              7 occurrences
+  .panel-content                            7 occurrences
+  .plugin-item                              7 occurrences
+  .plugin-name                              7 occurrences
+  .plugin-details                           7 occurrences
+  .sequence-trigger-value                   6 occurrences
+  .btn-secondary                            6 occurrences
+
+⚠️  Orphaned Classes (defined but not used):
+  .live-monitor-beat-pending
+  .live-monitor-beat-running
+  .sequence-item-unmounted
+  .active
+  .execution-history-item-running
+  .action-button-primary
+  .live-monitor-beat-success
+  .action-button-danger
+  .action-button-large
+  .execution-history-item-success
+  .action-button-small
+  .parameter-editor-error
+  .action-button-secondary
+  .action-button-medium
+  .execution-history-item-pending
+
+================================================================================

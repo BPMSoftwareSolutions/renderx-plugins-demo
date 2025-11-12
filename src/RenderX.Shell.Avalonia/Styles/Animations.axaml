@@ -1,0 +1,308 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- RenderX Animation System - Matching Web Application -->
+    <!-- Web has 70 transitions: all 0.2s (28x), opacity 0.2s (11x), background-color 0.2s (7x) -->
+    <!-- Web has 38 transforms: translateY(-1px) hover lift (15x) -->
+    
+    <Styles.Resources>
+        <!-- ============================================ -->
+        <!-- ANIMATION DURATIONS -->
+        <!-- ============================================ -->
+        
+        <x:TimeSpan x:Key="Duration.Fast">0:0:0.15</x:TimeSpan>      <!-- 150ms -->
+        <x:TimeSpan x:Key="Duration.Normal">0:0:0.2</x:TimeSpan>     <!-- 200ms - most common -->
+        <x:TimeSpan x:Key="Duration.Slow">0:0:0.3</x:TimeSpan>       <!-- 300ms -->
+        
+        <!-- ============================================ -->
+        <!-- EASING FUNCTIONS -->
+        <!-- ============================================ -->
+        
+        <!-- CSS ease equivalent -->
+        <CubicEaseOut x:Key="Easing.Standard"/>
+        
+        <!-- CSS ease-in-out equivalent -->
+        <CubicEaseInOut x:Key="Easing.Smooth"/>
+        
+    </Styles.Resources>
+    
+    <!-- ============================================ -->
+    <!-- BUTTON HOVER ANIMATIONS (translateY lift) -->
+    <!-- ============================================ -->
+    
+    <!-- Standard button with lift on hover -->
+    <Style Selector="Button.btn-lift">
+        <Setter Property="RenderTransform" Value="translateY(0)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.btn-lift:pointerover">
+        <Setter Property="RenderTransform" Value="translateY(-1px)" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- FADE ANIMATIONS -->
+    <!-- ============================================ -->
+    
+    <!-- Fade transition on hover -->
+    <Style Selector="Control.fade-hover">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Control.fade-hover:pointerover">
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
+    
+    <!-- Fade in/out for visibility -->
+    <Style Selector="Control.fade">
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Smooth}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- BACKGROUND COLOR TRANSITIONS -->
+    <!-- ============================================ -->
+    
+    <!-- Smooth background color change -->
+    <Style Selector="Border.bg-transition">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.bg-transition">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- BORDER COLOR TRANSITIONS -->
+    <!-- ============================================ -->
+    
+    <Style Selector="Border.border-transition">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- ALL PROPERTY TRANSITIONS (like CSS transition: all) -->
+    <!-- ============================================ -->
+    
+    <!-- Transition all animatable properties -->
+    <Style Selector="Control.transition-all">
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Border.transition-all">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+                <BrushTransition Property="BorderBrush" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+                <DoubleTransition Property="Opacity" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- SCALE ANIMATIONS (for cards, images) -->
+    <!-- ============================================ -->
+    
+    <!-- Scale up on hover -->
+    <Style Selector="Border.scale-hover">
+        <Setter Property="RenderTransform" Value="scale(1)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Border.scale-hover:pointerover">
+        <Setter Property="RenderTransform" Value="scale(1.05)" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- CARD ANIMATIONS (lift + shadow) -->
+    <!-- ============================================ -->
+    
+    <!-- Animated card with lift and shadow transition -->
+    <Style Selector="Border.card-animated">
+        <Setter Property="Background" Value="{DynamicResource Bg.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border.Primary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level2}" />
+        <Setter Property="RenderTransform" Value="translateY(0)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Border.card-animated:pointerover">
+        <Setter Property="Effect" Value="{StaticResource Shadow.Level3}" />
+        <Setter Property="RenderTransform" Value="translateY(-2px)" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- BUTTON ANIMATION PRESETS -->
+    <!-- ============================================ -->
+    
+    <!-- Animated primary button -->
+    <Style Selector="Button.btn-animated">
+        <Setter Property="Background" Value="{DynamicResource Blue.500}" />
+        <Setter Property="Foreground" Value="{DynamicResource Text.Inverse}" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="RenderTransform" Value="translateY(0)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.btn-animated:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Blue.600}" />
+        <Setter Property="RenderTransform" Value="translateY(-1px)" />
+    </Style>
+    
+    <Style Selector="Button.btn-animated:pressed">
+        <Setter Property="Background" Value="{DynamicResource Blue.700}" />
+        <Setter Property="RenderTransform" Value="translateY(0)" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- PANEL SLIDE ANIMATIONS -->
+    <!-- ============================================ -->
+    
+    <!-- Slide in from left -->
+    <Style Selector="Border.slide-left">
+        <Setter Property="RenderTransform" Value="translateX(0)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Slow}" Easing="{StaticResource Easing.Smooth}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <!-- Slide in from right -->
+    <Style Selector="Border.slide-right">
+        <Setter Property="RenderTransform" Value="translateX(0)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Slow}" Easing="{StaticResource Easing.Smooth}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- ROTATE ANIMATIONS (for icons, loaders) -->
+    <!-- ============================================ -->
+    
+    <!-- Rotate on hover (for refresh icons, etc) -->
+    <Style Selector="Control.rotate-hover">
+        <Setter Property="RenderTransform" Value="rotate(0deg)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource Duration.Normal}" Easing="{StaticResource Easing.Standard}"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Control.rotate-hover:pointerover">
+        <Setter Property="RenderTransform" Value="rotate(90deg)" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- PULSE ANIMATION (for notifications, alerts) -->
+    <!-- ============================================ -->
+    
+    <Style Selector="Border.pulse">
+        <Style.Animations>
+            <Animation Duration="0:0:1" IterationCount="Infinite">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Opacity" Value="1.0"/>
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="Opacity" Value="0.5"/>
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="1.0"/>
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- LOADING SPINNER ANIMATION -->
+    <!-- ============================================ -->
+    
+    <Style Selector="Border.spinner">
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform" Value="rotate(0deg)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:1">
+                    <TransformOperationsTransition.Easing>
+                        <LinearEasing />
+                    </TransformOperationsTransition.Easing>
+                </TransformOperationsTransition>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Border.spinner:pointerover">
+        <Setter Property="RenderTransform" Value="rotate(360deg)" />
+    </Style>
+    
+    <!-- ============================================ -->
+    <!-- BOUNCE ANIMATION (for success states) -->
+    <!-- ============================================ -->
+    
+    <Style Selector="Control.bounce">
+        <Setter Property="RenderTransform" Value="translateY(0)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.6">
+                    <TransformOperationsTransition.Easing>
+                        <BounceEaseOut />
+                    </TransformOperationsTransition.Easing>
+                </TransformOperationsTransition>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Control.bounce:pointerover">
+        <Setter Property="RenderTransform" Value="translateY(-5px)" />
+    </Style>
+    
+</Styles>

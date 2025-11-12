@@ -41,7 +41,7 @@ export class StatisticsManager {
     // Update success rate
     this.updateSuccessRate();
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `📊 StatisticsManager: Recorded sequence execution (${executionTime.toFixed(
         2
       )}ms)`
@@ -62,7 +62,7 @@ export class StatisticsManager {
     this.statistics.errorCount++;
     this.updateSuccessRate();
 
-    console.warn("📊 StatisticsManager: Recorded error occurrence");
+    (globalThis as any).__MC_WARN("📊 StatisticsManager: Recorded error occurrence");
   }
 
   /**
@@ -152,7 +152,7 @@ export class StatisticsManager {
       chainedSequences: 0,
     };
 
-    console.log("🧹 StatisticsManager: All statistics reset");
+    (globalThis as any).__MC_LOG("🧹 StatisticsManager: All statistics reset");
   }
 
   /**

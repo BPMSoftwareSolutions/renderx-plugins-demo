@@ -1,0 +1,144 @@
+================================================================================
+CSS Classes Report
+================================================================================
+
+├── 📦 canvas (38 occurrences, 17 unique)
+│   ├── className-prop: 18
+│   ├── css-definition: 14
+│   ├── data-attr: 4
+│   └── template-literal: 2
+
+├── 📦 canvas-component (316 occurrences, 82 unique)
+│   ├── class-attr: 25
+│   ├── classList-method: 2
+│   ├── className-prop: 16
+│   ├── css-definition: 73
+│   ├── css-module: 1
+│   ├── querySelector: 20
+│   ├── template-literal: 167
+│   └── utility-classes: 12
+
+├── 📦 control-panel (405 occurrences, 151 unique)
+│   ├── classList-method: 3
+│   ├── className-prop: 117
+│   ├── css-definition: 116
+│   ├── css-module: 1
+│   ├── data-attr: 1
+│   ├── template-literal: 143
+│   └── utility-classes: 24
+
+├── 📦 digital-assets (956 occurrences, 329 unique)
+│   ├── class-attr: 202
+│   ├── classList-method: 4
+│   ├── className-prop: 8
+│   ├── css-definition: 109
+│   ├── data-attr: 11
+│   ├── querySelector: 14
+│   ├── template-literal: 604
+│   └── utility-classes: 4
+
+├── 📦 header (29 occurrences, 7 unique)
+│   ├── className-prop: 12
+│   ├── css-definition: 9
+│   ├── data-attr: 5
+│   └── querySelector: 3
+
+├── 📦 host-sdk (52 occurrences, 32 unique)
+│   ├── css-definition: 14
+│   └── template-literal: 38
+
+├── 📦 library (414 occurrences, 175 unique)
+│   ├── class-attr: 7
+│   ├── className-prop: 155
+│   ├── css-definition: 158
+│   ├── css-module: 1
+│   ├── data-attr: 2
+│   ├── querySelector: 11
+│   ├── template-literal: 55
+│   └── utility-classes: 25
+
+├── 📦 library-component (7 occurrences, 4 unique)
+│   └── template-literal: 7
+
+├── 📦 musical-conductor (607 occurrences, 202 unique)
+│   ├── classList-method: 1
+│   └── template-literal: 606
+
+
+================================================================================
+STATISTICS SUMMARY
+================================================================================
+
+📊 Total Occurrences: 2824
+🎨 Unique Classes: 877
+📝 Definitions: 493
+🔧 Usages: 2331
+📁 Files Scanned: 289
+
+📈 By Usage Type:
+  template-literal            1622 ( 57.4%) ████████████████████████████
+  css-definition               493 ( 17.5%) ████████
+  className-prop               326 ( 11.5%) █████
+  class-attr                   234 (  8.3%) ████
+  utility-classes               65 (  2.3%) █
+  querySelector                 48 (  1.7%) 
+  data-attr                     23 (  0.8%) 
+  classList-method              10 (  0.4%) 
+  css-module                     3 (  0.1%) 
+
+📦 By Package (Top 10):
+  digital-assets                    956
+  musical-conductor                 607
+  library                           414
+  control-panel                     405
+  canvas-component                  316
+  host-sdk                           52
+  canvas                             38
+  header                             29
+  library-component                   7
+
+🔥 Most Used Classes (Top 20):
+  .n                                       65 occurrences
+  .Math                                    42 occurrences
+  .Failed                                  40 occurrences
+  .rx-button                               39 occurrences
+  .rx-comp                                 33 occurrences
+  .data                                    30 occurrences
+  .g                                       24 occurrences
+  .btn                                     21 occurrences
+  .id                                      20 occurrences
+  .Movement                                20 occurrences
+  .Plugin                                  19 occurrences
+  .test-class                              18 occurrences
+  .scene                                   18 occurrences
+  .Total                                   18 occurrences
+  .handle                                  16 occurrences
+  .Scene                                   16 occurrences
+  .name                                    15 occurrences
+  .field                                   15 occurrences
+  .index                                   15 occurrences
+  .rx-container                            14 occurrences
+
+⚠️  Orphaned Classes (defined but not used):
+  .scene-2-enter
+  .segment-curve
+  .class-pill
+  .another-class
+  .class-list
+  .action-buttons
+  .segment
+  .rx-card
+  .sw
+  .update-class
+  .highlight
+  .rx-box
+  .full-width
+  .large
+  .scene-2-exit
+  .dimmed
+  .color-text
+  .property-row
+  .outline
+  .custom-highlight
+
+================================================================================

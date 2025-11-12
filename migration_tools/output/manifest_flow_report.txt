@@ -1,0 +1,372 @@
+================================================================================
+PRE:MANIFESTS BUILD CHAIN - DATA FLOW TREE
+================================================================================
+
+1. sync-json-sources.js
+   Copies JSON catalogs from catalog/ to repo root for backward compatibility
+
+   📥 SOURCES:
+      ├─ catalog/json-sequences/**/*.json
+      ├─ catalog/json-components/**/*.json
+
+   📤 OUTPUTS:
+      ├─ json-sequences/**/*.json (repo root)
+      └─ json-components/**/*.json (repo root)
+
+
+2. sync-json-sequences.js
+   Syncs sequence catalogs from local catalog and npm packages to public/
+
+   📥 SOURCES:
+      ├─ catalog/json-sequences/**/*.json
+      ├─ node_modules/@*/*/package.json (renderx.sequences)
+
+   ⚙️  PROCESSING:
+      ├─ Discovers packages with renderx.sequences field
+      ├─ Guardrail: prevents local library-component sequences
+
+   📤 OUTPUTS:
+      └─ public/json-sequences/**/*.json
+
+
+3. generate-json-interactions-from-plugins.js
+   Auto-generates interaction catalogs from plugin sequences
+
+   📥 SOURCES:
+      ├─ public/json-sequences/**/*.json
+      ├─ catalog/json-plugins/.generated/plugin-manifest.json
+
+   ⚙️  PROCESSING:
+      ├─ Calls derive-external-topics.js
+      ├─ Groups routes by first segment (app, canvas, control, library)
+      ├─ Picks most frequent pluginId per group
+
+   📤 OUTPUTS:
+      ├─ catalog/json-interactions/.generated/app.json
+      ├─ catalog/json-interactions/.generated/canvas.json
+      ├─ catalog/json-interactions/.generated/control.json
+      └─ catalog/json-interactions/.generated/library.json
+
+
+4. generate-interaction-manifest.js
+   Builds unified interaction manifest from all catalogs and overrides
+
+   📥 SOURCES:
+      ├─ catalog/json-interactions/.generated/*.json
+      ├─ catalog/json-components/*.json (routeOverrides)
+
+   ⚙️  PROCESSING:
+      ├─ Uses buildInteractionManifest from manifest-tools
+      ├─ Merges generated catalogs with component overrides
+
+   📤 OUTPUTS:
+      ├─ interaction-manifest.json (repo root)
+      └─ public/interaction-manifest.json
+
+
+5. generate-topics-manifest.js
+   Auto-generates topics manifest from plugin lifecycle sequences
+
+   📥 SOURCES:
+      ├─ public/json-sequences/**/*.json (lifecycle topics)
+
+   ⚙️  PROCESSING:
+      ├─ Runs sync-json-sequences first
+      ├─ Calls generateExternalTopicsCatalog
+      ├─ Uses buildTopicsManifest from manifest-tools
+
+   📤 OUTPUTS:
+      ├─ topics-manifest.json (repo root)
+      └─ public/topics-manifest.json
+
+
+6. generate-layout-manifest.js
+   Copies layout configuration to manifest files
+
+   📥 SOURCES:
+      ├─ catalog/json-layout/layout.json
+
+   📤 OUTPUTS:
+      ├─ layout-manifest.json (repo root)
+      └─ public/layout-manifest.json
+
+
+7. aggregate-plugins.js
+   Discovers and aggregates plugin manifests from npm packages
+
+   📥 SOURCES:
+      ├─ node_modules/@*/*/package.json (keyword: renderx-plugin)
+      ├─ node_modules/@*/*/package.json (renderx.manifest)
+      ├─ node_modules/@*/*/package.json (renderx.plugins)
+      ├─ catalog/json-plugins/plugin-manifest.json (existing)
+
+   ⚙️  PROCESSING:
+      ├─ Discovers packages with renderx-plugin keyword
+      ├─ Loads manifests via renderx.manifest path
+      ├─ Loads inline plugins from renderx.plugins array
+      ├─ Merges with existing catalog/json-plugins/plugin-manifest.json
+
+   📤 OUTPUTS:
+      └─ catalog/json-plugins/.generated/plugin-manifest.json
+
+
+8. sync-plugins.js
+   Copies plugin manifest to public/ (prefers generated over fallback)
+
+   📥 SOURCES:
+      ├─ catalog/json-plugins/.generated/plugin-manifest.json
+      ├─ catalog/json-plugins/plugin-manifest.json (fallback)
+
+   📤 OUTPUTS:
+      └─ public/plugins/plugin-manifest.json
+
+
+9. sync-control-panel-config.js
+   Syncs control panel configuration to public/
+
+   📥 SOURCES:
+      ├─ catalog/control-panel-config/*.json (assumed)
+
+   📤 OUTPUTS:
+      └─ public/control-panel-config/*.json (assumed)
+
+
+
+====================================================================================================
+PRE:MANIFESTS BUILD CHAIN - FLOW DIAGRAM
+====================================================================================================
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [1] sync-json-sources.js                                                                       │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Copies JSON catalogs from catalog/ to repo root for backward compatibility                     │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • catalog/json-sequences/**/*.json                                                           │
+│   • catalog/json-components/**/*.json                                                          │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → json-sequences/**/*.json (repo root)                                                       │
+│   → json-components/**/*.json (repo root)                                                      │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [2] sync-json-sequences.js                                                                     │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Syncs sequence catalogs from local catalog and npm packages to public/                         │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • catalog/json-sequences/**/*.json                                                           │
+│   • node_modules/@*/*/package.json (renderx.sequences)                                         │
+│                                                                                                │
+│ PROCESSING:                                                                                  │
+│   ⇒ Discovers packages with renderx.sequences field                                            │
+│   ⇒ Guardrail: prevents local library-component sequences                                      │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → public/json-sequences/**/*.json                                                            │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [3] generate-json-interactions-from-plugins.js                                                 │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Auto-generates interaction catalogs from plugin sequences                                      │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • public/json-sequences/**/*.json                                                            │
+│   • catalog/json-plugins/.generated/plugin-manifest.json                                       │
+│                                                                                                │
+│ PROCESSING:                                                                                  │
+│   ⇒ Calls derive-external-topics.js                                                            │
+│   ⇒ Groups routes by first segment (app, canvas, control, library)                             │
+│   ⇒ Picks most frequent pluginId per group                                                     │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → catalog/json-interactions/.generated/app.json                                              │
+│   → catalog/json-interactions/.generated/canvas.json                                           │
+│   → catalog/json-interactions/.generated/control.json                                          │
+│   → catalog/json-interactions/.generated/library.json                                          │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [4] generate-interaction-manifest.js                                                           │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Builds unified interaction manifest from all catalogs and overrides                            │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • catalog/json-interactions/.generated/*.json                                                │
+│   • catalog/json-components/*.json (routeOverrides)                                            │
+│                                                                                                │
+│ PROCESSING:                                                                                  │
+│   ⇒ Uses buildInteractionManifest from manifest-tools                                          │
+│   ⇒ Merges generated catalogs with component overrides                                         │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → interaction-manifest.json (repo root)                                                      │
+│   → public/interaction-manifest.json                                                           │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [5] generate-topics-manifest.js                                                                │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Auto-generates topics manifest from plugin lifecycle sequences                                 │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • public/json-sequences/**/*.json (lifecycle topics)                                         │
+│                                                                                                │
+│ PROCESSING:                                                                                  │
+│   ⇒ Runs sync-json-sequences first                                                             │
+│   ⇒ Calls generateExternalTopicsCatalog                                                        │
+│   ⇒ Uses buildTopicsManifest from manifest-tools                                               │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → topics-manifest.json (repo root)                                                           │
+│   → public/topics-manifest.json                                                                │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [6] generate-layout-manifest.js                                                                │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Copies layout configuration to manifest files                                                  │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • catalog/json-layout/layout.json                                                            │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → layout-manifest.json (repo root)                                                           │
+│   → public/layout-manifest.json                                                                │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [7] aggregate-plugins.js                                                                       │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Discovers and aggregates plugin manifests from npm packages                                    │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • node_modules/@*/*/package.json (keyword: renderx-plugin)                                   │
+│   • node_modules/@*/*/package.json (renderx.manifest)                                          │
+│   • node_modules/@*/*/package.json (renderx.plugins)                                           │
+│   • catalog/json-plugins/plugin-manifest.json (existing)                                       │
+│                                                                                                │
+│ PROCESSING:                                                                                  │
+│   ⇒ Discovers packages with renderx-plugin keyword                                             │
+│   ⇒ Loads manifests via renderx.manifest path                                                  │
+│   ⇒ Loads inline plugins from renderx.plugins array                                            │
+│   ⇒ Merges with existing catalog/json-plugins/plugin-manifest.json                             │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → catalog/json-plugins/.generated/plugin-manifest.json                                       │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [8] sync-plugins.js                                                                            │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Copies plugin manifest to public/ (prefers generated over fallback)                            │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • catalog/json-plugins/.generated/plugin-manifest.json                                       │
+│   • catalog/json-plugins/plugin-manifest.json (fallback)                                       │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → public/plugins/plugin-manifest.json                                                        │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+    │
+    ▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [9] sync-control-panel-config.js                                                               │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Syncs control panel configuration to public/                                                   │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SOURCES:                                                                                      │
+│   • catalog/control-panel-config/*.json (assumed)                                              │
+│                                                                                                │
+│ OUTPUTS:                                                                                      │
+│   → public/control-panel-config/*.json (assumed)                                               │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+GENERATED FILES SUMMARY
+================================================================================
+
+📁 catalog/
+   ├─ catalog/json-interactions/.generated/app.json                ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-interactions/.generated/canvas.json             ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-interactions/.generated/control.json            ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-interactions/.generated/library.json            ← generate-json-interactions-from-plugins.js
+   ├─ catalog/json-plugins/.generated/plugin-manifest.json         ← aggregate-plugins.js
+
+📁 json-components/
+   ├─ json-components/**/*.json (repo root)                        ← sync-json-sources.js
+
+📁 json-sequences/
+   ├─ json-sequences/**/*.json (repo root)                         ← sync-json-sources.js
+
+📁 public/
+   ├─ public/control-panel-config/*.json (assumed)                 ← sync-control-panel-config.js
+   ├─ public/interaction-manifest.json                             ← generate-interaction-manifest.js
+   ├─ public/json-sequences/**/*.json                              ← sync-json-sequences.js
+   ├─ public/layout-manifest.json                                  ← generate-layout-manifest.js
+   ├─ public/plugins/plugin-manifest.json                          ← sync-plugins.js
+   ├─ public/topics-manifest.json                                  ← generate-topics-manifest.js
+
+📁 repo root/
+   ├─ interaction-manifest.json (repo root)                        ← generate-interaction-manifest.js
+   ├─ layout-manifest.json (repo root)                             ← generate-layout-manifest.js
+   ├─ topics-manifest.json (repo root)                             ← generate-topics-manifest.js
+
+
+================================================================================
+SCRIPT DEPENDENCY GRAPH
+================================================================================
+
+Shows which script outputs are used as inputs by other scripts
+
+📜 sync-json-sources.js
+   ↳ depends on:
+      • sync-json-sequences.js
+
+📜 sync-json-sequences.js
+   ↳ no dependencies (entry point)
+
+📜 generate-json-interactions-from-plugins.js
+   ↳ depends on:
+      • aggregate-plugins.js
+      • sync-json-sequences.js
+
+📜 generate-interaction-manifest.js
+   ↳ depends on:
+      • aggregate-plugins.js
+      • generate-json-interactions-from-plugins.js
+
+📜 generate-topics-manifest.js
+   ↳ depends on:
+      • sync-json-sequences.js
+
+📜 generate-layout-manifest.js
+   ↳ no dependencies (entry point)
+
+📜 aggregate-plugins.js
+   ↳ no dependencies (entry point)
+
+📜 sync-plugins.js
+   ↳ depends on:
+      • aggregate-plugins.js
+      • generate-json-interactions-from-plugins.js
+
+📜 sync-control-panel-config.js
+   ↳ no dependencies (entry point)

@@ -1,0 +1,453 @@
+================================================================================
+Symphony Handler Tracing Report
+================================================================================
+
+├── 🎯 applyHierarchyAndOrder (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\import\import.nodes.stage-crew.ts:35 (sync-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-import-symphony (canvas-component)
+│       │   └── Movement 0, Beat 5: canvas:component:hierarchy:apply
+│
+├── 🎯 buildUiFileContent (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.pure.ts:3 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-symphony (canvas-component)
+│       │   └── Movement 0, Beat 4: canvas:component:build-ui-file
+│
+├── 🎯 calculatePastePosition (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\paste\paste.stage-crew.ts:64 (class-method)
+│   │   └── Params: data, _ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-paste-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:paste:position
+│
+├── 🎯 collectCssClasses (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.css.stage-crew.ts:6 (sync-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:collect-css
+│
+├── 🎯 collectLayoutData (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.stage-crew.ts:15 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:collect-layout
+│
+├── 🎯 copyToClipboard (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\copy\copy.stage-crew.ts:67 (class-method)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-copy-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:copy:clipboard
+│
+├── 🎯 createComponentsSequentially (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\import\import.nodes.stage-crew.ts:10 (async-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-import-symphony (canvas-component)
+│       │   └── Movement 0, Beat 4: canvas:component:nodes:create
+│
+├── 🎯 createNode (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\create\create.stage-crew.ts:39 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-create-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:create
+│
+├── 🎯 createPastedComponent (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\paste\paste.stage-crew.ts:72 (class-method)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-paste-symphony (canvas-component)
+│       │   └── Movement 0, Beat 4: canvas:component:paste:create
+│
+├── 🎯 deleteComponent (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\delete\delete.stage-crew.ts:31 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-delete-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:delete
+│
+├── 🎯 deselectComponent (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\deselect\deselect.stage-crew.ts:20 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-deselect-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:deselect
+│
+├── 🎯 deserializeComponentData (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\paste\paste.stage-crew.ts:50 (class-method)
+│   │   └── Params: data, _ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-paste-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:paste:deserialize
+│
+├── 🎯 discoverComponentsFromDom (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.discover.stage-crew.ts:1 (sync-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:discover-components
+│
+├── 🎯 downloadUiFile (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.download.stage-crew.ts:2 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-symphony (canvas-component)
+│       │   └── Movement 0, Beat 5: canvas:component:download-file
+│
+├── 🎯 endDrag (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\drag\drag.stage-crew.ts:86 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-drag-end-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:drag:end
+│
+├── 🎯 endLineManip (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\line-advanced\line.manip.stage-crew.ts:69 (sync-function)
+│   │   └── Params: _data
+│   └── 📍 USED IN:
+│       ├── canvas-line-manip-end-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:manip:line:end
+│
+├── 🎯 endLineResize (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\resize-line\resize.line.stage-crew.ts:29 (arrow-function)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-line-resize-end-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resize:line:end
+│
+├── 🎯 endResize (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\resize\resize.stage-crew.ts:253 (class-method)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-component-resize-end-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resize:end
+│
+├── 🎯 enhanceLine (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\augment\augment.line.stage-crew.ts:30 (sync-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-create-symphony (canvas-component)
+│       │   └── Movement 0, Beat 6: canvas:component:augment:line
+│
+├── 🎯 exportSvgToGif (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.gif.stage-crew.ts:27 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-gif-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:export-gif:rasterize-and-encode
+│
+├── 🎯 exportSvgToMp4 (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.mp4.stage-crew.ts:6 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-mp4-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:export-mp4:rasterize-and-encode
+│
+├── 🎯 forwardToControlPanel (used 2 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\drag\drag.stage-crew.ts:111 (arrow-function)
+│   │   └── Params: _data?, _ctx?
+│   └── 📍 USED IN:
+│       ├── canvas-component-drag-move-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:drag:forward
+│       ├── canvas-component-resize-move-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:resize:forward
+│
+├── 🎯 hideAllOverlays (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\deselect\deselect.stage-crew.ts:11 (sync-function)
+│   └── 📍 USED IN:
+│       ├── canvas-component-deselect-all-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:deselect:all
+│
+├── 🎯 injectCssClasses (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\import\import.css.stage-crew.ts:3 (sync-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-import-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:css:inject
+│
+├── 🎯 moveLineManip (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\line-advanced\line.manip.stage-crew.ts:49 (sync-function)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-line-manip-move-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:manip:line:move
+│
+├── 🎯 notifyCopyComplete (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\copy\copy.stage-crew.ts:79 (class-method)
+│   │   └── Params: _data, _ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-copy-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:copy:notify
+│
+├── 🎯 notifyPasteComplete (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\paste\paste.stage-crew.ts:133 (class-method)
+│   │   └── Params: _data, _ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-paste-symphony (canvas-component)
+│       │   └── Movement 0, Beat 5: canvas:component:paste:notify
+│
+├── 🎯 notifyUi (used 2 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\create\create.notify.ts:3 (arrow-function)
+│   │   └── Params: data, ctx
+│   │   ├── src\symphonies\select\select.stage-crew.ts:120 (class-method)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-create-symphony (canvas-component)
+│       │   └── Movement 0, Beat 5: canvas:component:notify-ui
+│       ├── canvas-component-select-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:select:notify
+│
+├── 🎯 openUiFile (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\import\import.file.stage-crew.ts:3 (async-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-import-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:ui:open
+│
+├── 🎯 parseUiFile (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\import\import.parse.pure.ts:32 (sync-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-import-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:ui:parse
+│
+├── 🎯 publishDeleted (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\delete\delete.stage-crew.ts:14 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-delete-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:deleted
+│
+├── 🎯 publishDeselectionChanged (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\deselect\deselect.stage-crew.ts:36 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-deselect-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:deselection:changed
+│
+├── 🎯 publishSelectionChanged (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\select\select.stage-crew.ts:137 (class-method)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-select-symphony (canvas-component)
+│       │   └── Movement 0, Beat 3: canvas:component:selection:changed
+│
+├── 🎯 publishSelectionsCleared (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\deselect\deselect.stage-crew.ts:44 (async-function)
+│   │   └── Params: _data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-deselect-all-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:selections:cleared
+│
+├── 🎯 queryAllComponents (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\export\export.io.ts:1 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-export-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:query-all
+│
+├── 🎯 readFromClipboard (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\paste\paste.stage-crew.ts:30 (class-method)
+│   │   └── Params: _data, _ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-paste-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:paste:clipboard
+│
+├── 🎯 refreshControlPanel (used 2 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\update\update.stage-crew.ts:39 (sync-function)
+│   │   └── Params: _data, ctx
+│   │   ├── src\symphonies\update\update.svg-node.stage-crew.ts:110 (sync-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-update-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:update:refresh
+│       ├── canvas-component-update-svg-node-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:update:svg-node:refresh
+│
+├── 🎯 registerInstance (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\create\create.io.ts:1 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-create-symphony (canvas-component)
+│       │   └── Movement 0, Beat 2: canvas:component:register-instance
+│
+├── 🎯 renderReact (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\create\create.react.stage-crew.ts:11 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-create-symphony (canvas-component)
+│       │   └── Movement 0, Beat 4: canvas:component:render-react
+│
+├── 🎯 resolveTemplate (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\create\create.arrangement.ts:1 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-create-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resolve-template
+│
+├── 🎯 routeDeleteRequest (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\delete\delete.stage-crew.ts:47 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-delete-requested-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:delete:route
+│
+├── 🎯 routeDeselectionRequest (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\deselect\deselect.stage-crew.ts:62 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-deselect-requested-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:deselect:route
+│
+├── 🎯 routeSelectionRequest (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\select\select.stage-crew.ts:14 (async-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-select-requested-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:select:route
+│
+├── 🎯 serializeSelectedComponent (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\copy\copy.stage-crew.ts:50 (class-method)
+│   │   └── Params: data, _ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-copy-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:copy:serialize
+│
+├── 🎯 showSelectionOverlay (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\select\select.stage-crew.ts:62 (class-method)
+│   │   └── Params: data, ctx?
+│   └── 📍 USED IN:
+│       ├── canvas-component-select-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:select
+│
+├── 🎯 showSvgNodeOverlay (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\select\select.svg-node.stage-crew.ts:14 (async-function)
+│   │   └── Params: data, _ctx?
+│   └── 📍 USED IN:
+│       ├── canvas-component-select-svg-node-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:select:svg-node
+│
+├── 🎯 startDrag (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\drag\drag.stage-crew.ts:62 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-drag-start-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:drag:start
+│
+├── 🎯 startLineManip (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\line-advanced\line.manip.stage-crew.ts:44 (sync-function)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-line-manip-start-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:manip:line:start
+│
+├── 🎯 startLineResize (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\resize-line\resize.line.stage-crew.ts:2 (arrow-function)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-line-resize-start-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resize:line:start
+│
+├── 🎯 startResize (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\resize\resize.stage-crew.ts:41 (arrow-function)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-component-resize-start-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resize:start
+│
+├── 🎯 updateAttribute (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\update\update.stage-crew.ts:8 (sync-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-update-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:update:attribute
+│
+├── 🎯 updateLine (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\resize-line\resize.line.stage-crew.ts:9 (arrow-function)
+│   │   └── Params: data
+│   └── 📍 USED IN:
+│       ├── canvas-line-resize-move-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resize:line:move
+│
+├── 🎯 updatePosition (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\drag\drag.stage-crew.ts:6 (arrow-function)
+│   │   └── Params: data, ctx
+│   └── 📍 USED IN:
+│       ├── canvas-component-drag-move-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:drag:move
+│
+├── 🎯 updateSize (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\resize\resize.stage-crew.ts:81 (class-method)
+│   │   └── Params: data, ctx?
+│   └── 📍 USED IN:
+│       ├── canvas-component-resize-move-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:resize:move
+│
+├── 🎯 updateSvgNodeAttribute (used 1 times)
+│   ├── 💻 IMPLEMENTATION:
+│   │   ├── src\symphonies\update\update.svg-node.stage-crew.ts:44 (async-function)
+│   │   └── Params: data, ctx?
+│   └── 📍 USED IN:
+│       ├── canvas-component-update-svg-node-symphony (canvas-component)
+│       │   └── Movement 0, Beat 1: canvas:component:update:svg-node:attribute
+│

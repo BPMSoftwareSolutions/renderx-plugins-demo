@@ -1,0 +1,77 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Diagnostics.SystemInformation"
+             Background="{DynamicResource Color.Background.Primary}">
+    <Border BorderThickness="1"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            CornerRadius="4"
+            Padding="12">
+        <StackPanel Spacing="12">
+            <TextBlock Text="System Information"
+                       FontSize="12"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource Color.Border.Primary}" />
+
+            <!-- OS -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Operating System"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="OSText"
+                           Text="Unknown"
+                           FontSize="11"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+            </StackPanel>
+
+            <!-- Runtime -->
+            <StackPanel Spacing="4">
+                <TextBlock Text=".NET Runtime"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="RuntimeText"
+                           Text="Unknown"
+                           FontSize="11"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+            </StackPanel>
+
+            <!-- Processor -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Processor Cores"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="ProcessorText"
+                           Text="Unknown"
+                           FontSize="11"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+            </StackPanel>
+
+            <!-- Total Memory -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Total Memory"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="MemoryText"
+                           Text="Unknown"
+                           FontSize="11"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+            </StackPanel>
+
+            <!-- Application Version -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Application Version"
+                           FontSize="10"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBlock x:Name="VersionText"
+                           Text="1.0.0"
+                           FontSize="11"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
+

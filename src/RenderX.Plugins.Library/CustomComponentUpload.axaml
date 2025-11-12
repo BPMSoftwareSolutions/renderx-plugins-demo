@@ -1,0 +1,127 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.Library.CustomComponentUpload"
+             Background="{DynamicResource Color.Background.Primary}">
+    <UserControl.Styles>
+        <Style Selector="Button.upload-button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.upload-button:pointerover">
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+    <Border BorderThickness="1"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            CornerRadius="8"
+            Padding="12">
+        <StackPanel Spacing="12">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="📤"
+                           FontSize="16"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="Upload Custom Component"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Error Message -->
+            <TextBlock x:Name="ErrorMessage"
+                       FontSize="10"
+                       Foreground="#ef4444"
+                       TextWrapping="Wrap"
+                       IsVisible="False" />
+
+            <!-- Drag and Drop Zone -->
+            <Border x:Name="DragDropZone"
+                    Background="#f9fafb"
+                    BorderBrush="#e5e7eb"
+                    BorderThickness="2"
+                    CornerRadius="6"
+                    Padding="24"
+                    Cursor="Hand">
+                <StackPanel Spacing="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="📁"
+                               FontSize="32"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="Drop .json file here or click to browse"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Foreground="#374151" />
+                    <TextBlock Text="Maximum file size: 5 MB"
+                               FontSize="10"
+                               HorizontalAlignment="Center"
+                               Foreground="#9ca3af" />
+                    <Button Classes="upload-button"
+                            x:Name="BrowseButton"
+                            Content="Browse Files..."
+                            Padding="12,6"
+                            Background="{DynamicResource Color.Border.Primary}"
+                            Foreground="{DynamicResource Color.Background.Primary}"
+                            FontSize="11"
+                            Click="OnBrowseClick"
+                            HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+
+            <!-- File Input -->
+            <StackPanel Spacing="4">
+                <TextBlock x:Name="FileNameText"
+                           Text="No file selected"
+                           FontSize="10"
+                           Foreground="#999" />
+            </StackPanel>
+
+            <!-- Component Name -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Component Name"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBox x:Name="ComponentNameInput"
+                         Watermark="Enter component name..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
+            </StackPanel>
+
+            <!-- Description -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Description"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="#666" />
+                <TextBox x:Name="DescriptionInput"
+                         Watermark="Enter component description..."
+                         FontSize="11"
+                         Padding="6,4"
+                         BorderThickness="1"
+                         BorderBrush="{DynamicResource Color.Border.Secondary}"
+                         AcceptsReturn="True"
+                         Height="80" />
+            </StackPanel>
+
+            <!-- Upload Button -->
+            <Button Classes="upload-button"
+                    Content="Upload Component"
+                    Padding="12,6"
+                    Background="{DynamicResource Color.Success}"
+                    Foreground="{DynamicResource Color.Background.Primary}"
+                    FontSize="11"
+                    Click="OnUploadClick" />
+        </StackPanel>
+    </Border>
+</UserControl>
+

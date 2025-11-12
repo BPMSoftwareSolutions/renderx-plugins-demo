@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RenderX.Plugins.ManifestTools.ManifestValidator"
+             Background="{DynamicResource Color.Background.Primary}">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="{DynamicResource Color.Background.Tertiary}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                Padding="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Manifest Validator"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource Color.Border.Primary}" />
+                <Button Content="Validate Manifest"
+                        Padding="8,4"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
+                        FontSize="11" />
+            </StackPanel>
+        </Border>
+
+        <!-- Validation Results -->
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl x:Name="ResultsControl"
+                          Padding="12"
+                          Background="{DynamicResource Color.Background.Primary}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{DynamicResource Color.Background.Secondary}"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
+                                CornerRadius="4"
+                                Padding="8"
+                                Margin="0,4">
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock x:Name="StatusIcon"
+                                               Text="✓"
+                                               FontSize="12"
+                                               Foreground="{DynamicResource Color.Success}" />
+                                    <TextBlock Text="{Binding Message}"
+                                               FontSize="11"
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
+                                </StackPanel>
+                                <TextBlock Text="{Binding Details}"
+                                           FontSize="9"
+                                           Foreground="#666"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <Border Grid.Row="2"
+                Background="{DynamicResource Color.Background.Tertiary}"
+                BorderThickness="0,1,0,0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                Padding="12">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <TextBlock x:Name="ValidCountText"
+                           Text="0 valid"
+                           FontSize="10"
+                           Foreground="{DynamicResource Color.Success}" />
+                <TextBlock x:Name="ErrorCountText"
+                           Text="0 errors"
+                           FontSize="10"
+                           Foreground="{DynamicResource Color.Error}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,616 @@
+================================================================================
+Event & Sequence Calls Report - Grouped by TYPE
+================================================================================
+
+├── play (46 calls)
+│   └── 🎼 conductor.play() (46 calls)
+│       ├── '${callerInfo.pluginId}' (6 occurrences)
+│       │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:141
+│       │   │       Context:
+│       │   │                   console.error(
+│       │   │                     `🚫 SPA Validator: Blocked direct eventBus.emit() call from plugin '${callerInfo.pluginId}'`
+│       │   │       ▶ );
+│       │   │                   console.error(
+│       │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:141
+│       │   │       Context:
+│       │   │                   console.error(
+│       │   │                     `🚫 SPA Validator: Blocked direct eventBus.emit() call from plugin '${callerInfo.pluginId}'`
+│       │   │       ▶ );
+│       │   │                   console.error(
+│       │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:142
+│       │   │       Context:
+│       │   │                     `🚫 SPA Validator: Blocked direct eventBus.emit() call from plugin '${callerInfo.pluginId}'`
+│       │   │                   );
+│       │   │       ▶ console.error(
+│       │   │                     `💡 Use conductor.play('${callerInfo.pluginId}', 'SEQUENCE_NAME', data) instead`
+│       │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:142
+│       │   │       Context:
+│       │   │                     `🚫 SPA Validator: Blocked direct eventBus.emit() call from plugin '${callerInfo.pluginId}'`
+│       │   │                   );
+│       │   │       ▶ console.error(
+│       │   │                     `💡 Use conductor.play('${callerInfo.pluginId}', 'SEQUENCE_NAME', data) instead`
+│       │   ├── packages\musical-conductor\modules\communication\SPAValidator.ts:143
+│       │   │       Context:
+│       │   │                   );
+│       │   │                   console.error(
+│       │   │       ▶ `💡 Use conductor.play('${callerInfo.pluginId}', 'SEQUENCE_NAME', data) instead`
+│       │   │                   );
+│       │   └── packages\musical-conductor\modules\communication\SPAValidator.ts:143
+│       │           Context:
+│       │                       );
+│       │                       console.error(
+│       │           ▶ `💡 Use conductor.play('${callerInfo.pluginId}', 'SEQUENCE_NAME', data) instead`
+│       │                       );
+│       ├── 'Canvas.component-create-symphony' (4 occurrences)
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:98
+│       │   │       Context:
+│       │   │                   onComponentCreated: data.onComponentCreated,
+│       │   │                 };
+│       │   │       ▶ const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │                 await ctx.conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:98
+│       │   │       Context:
+│       │   │                   onComponentCreated: data.onComponentCreated,
+│       │   │                 };
+│       │   │       ▶ const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │                 await ctx.conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:99
+│       │   │       Context:
+│       │   │                 };
+│       │   │                 const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │       ▶ await ctx.conductor.play(
+│       │   │                   "Canvas.component-create-symphony",
+│       │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:99
+│       │           Context:
+│       │                     };
+│       │                     const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │           ▶ await ctx.conductor.play(
+│       │                       "Canvas.component-create-symphony",
+│       ├── 'Canvas.double-create' (6 occurrences)
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:223
+│       │   │       Context:
+│       │   │                 const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │                 // Start two sibling nested plays; they share correlation id propagated by PluginManager
+│       │   │       ▶ await ctx.conductor.play(
+│       │   │                   "Canvas.double-create",
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:223
+│       │   │       Context:
+│       │   │                 const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │                 // Start two sibling nested plays; they share correlation id propagated by PluginManager
+│       │   │       ▶ await ctx.conductor.play(
+│       │   │                   "Canvas.double-create",
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:228
+│       │   │       Context:
+│       │   │                   cloned,
+│       │   │                   "CHAINED"
+│       │   │       ▶ );
+│       │   │                 await ctx.conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:228
+│       │   │       Context:
+│       │   │                   cloned,
+│       │   │                   "CHAINED"
+│       │   │       ▶ );
+│       │   │                 await ctx.conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:229
+│       │   │       Context:
+│       │   │                   "CHAINED"
+│       │   │                 );
+│       │   │       ▶ await ctx.conductor.play(
+│       │   │                   "Canvas.double-create",
+│       │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:229
+│       │           Context:
+│       │                       "CHAINED"
+│       │                     );
+│       │           ▶ await ctx.conductor.play(
+│       │                       "Canvas.double-create",
+│       ├── 'Canvas.multiple-create' (4 occurrences)
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:104
+│       │   │       Context:
+│       │   │                   list: data.list,
+│       │   │                 };
+│       │   │       ▶ const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │                 await ctx.conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:104
+│       │   │       Context:
+│       │   │                   list: data.list,
+│       │   │                 };
+│       │   │       ▶ const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │                 await ctx.conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:105
+│       │   │       Context:
+│       │   │                 };
+│       │   │                 const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │   │       ▶ await ctx.conductor.play(
+│       │   │                   "Canvas.multiple-create",
+│       │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:105
+│       │           Context:
+│       │                     };
+│       │                     const cloned = JSON.parse(JSON.stringify(userPayload));
+│       │           ▶ await ctx.conductor.play(
+│       │                       "Canvas.multiple-create",
+│       ├── 'ControlPanelPlugin' (6 occurrences)
+│       │   ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:106
+│       │   │       Context:
+│       │   │           refreshControlPanel: vi.fn((data: any, ctx: any) => {
+│       │   │             // Mock refresh control panel handler
+│       │   │       ▶ const elementId = ctx.payload?.elementId;
+│       │   │             if (ctx.conductor?.play && elementId) {
+│       │   ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:106
+│       │   │       Context:
+│       │   │           refreshControlPanel: vi.fn((data: any, ctx: any) => {
+│       │   │             // Mock refresh control panel handler
+│       │   │       ▶ const elementId = ctx.payload?.elementId;
+│       │   │             if (ctx.conductor?.play && elementId) {
+│       │   ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:107
+│       │   │       Context:
+│       │   │             // Mock refresh control panel handler
+│       │   │             const elementId = ctx.payload?.elementId;
+│       │   │       ▶ if (ctx.conductor?.play && elementId) {
+│       │   │               ctx.conductor.play(
+│       │   ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:107
+│       │   │       Context:
+│       │   │             // Mock refresh control panel handler
+│       │   │             const elementId = ctx.payload?.elementId;
+│       │   │       ▶ if (ctx.conductor?.play && elementId) {
+│       │   │               ctx.conductor.play(
+│       │   ├── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:108
+│       │   │       Context:
+│       │   │             const elementId = ctx.payload?.elementId;
+│       │   │             if (ctx.conductor?.play && elementId) {
+│       │   │       ▶ ctx.conductor.play(
+│       │   │                 "ControlPanelPlugin",
+│       │   └── packages\control-panel\__tests__\__mocks__\@renderx-plugins\canvas-component.ts:108
+│       │           Context:
+│       │                 const elementId = ctx.payload?.elementId;
+│       │                 if (ctx.conductor?.play && elementId) {
+│       │           ▶ ctx.conductor.play(
+│       │                     "ControlPanelPlugin",
+│       ├── 'Library.component-drop-symphony' (2 occurrences)
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:114
+│       │   │       Context:
+│       │   │         
+│       │   │             // Kick off upstream, passing a function callback in the outer context
+│       │   │       ▶ await conductor.play(
+│       │   │               "Library.component-drop-symphony",
+│       │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.nested-play.test.ts:114
+│       │           Context:
+│       │             
+│       │                 // Kick off upstream, passing a function callback in the outer context
+│       │           ▶ await conductor.play(
+│       │                   "Library.component-drop-symphony",
+│       ├── 'Library.double-forward' (6 occurrences)
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:243
+│       │   │       Context:
+│       │   │             const logSpy = jest
+│       │   │               .spyOn(console, "log")
+│       │   │       ▶ .mockImplementation(() => undefined);
+│       │   │         
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:243
+│       │   │       Context:
+│       │   │             const logSpy = jest
+│       │   │               .spyOn(console, "log")
+│       │   │       ▶ .mockImplementation(() => undefined);
+│       │   │         
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:244
+│       │   │       Context:
+│       │   │               .spyOn(console, "log")
+│       │   │               .mockImplementation(() => undefined);
+│       │   │       ▶ 
+│       │   │             await conductor.play("Library.double-forward", "Library.double-forward", {
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:244
+│       │   │       Context:
+│       │   │               .spyOn(console, "log")
+│       │   │               .mockImplementation(() => undefined);
+│       │   │       ▶ 
+│       │   │             await conductor.play("Library.double-forward", "Library.double-forward", {
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:245
+│       │   │       Context:
+│       │   │               .mockImplementation(() => undefined);
+│       │   │         
+│       │   │       ▶ await conductor.play("Library.double-forward", "Library.double-forward", {
+│       │   │               onCreated,
+│       │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:245
+│       │           Context:
+│       │                   .mockImplementation(() => undefined);
+│       │             
+│       │           ▶ await conductor.play("Library.double-forward", "Library.double-forward", {
+│       │                   onCreated,
+│       ├── 'Library.forward-to-canvas-multi' (6 occurrences)
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:119
+│       │   │       Context:
+│       │   │             const onTop = jest.fn();
+│       │   │             const onInner = jest.fn();
+│       │   │       ▶ const onItem = jest.fn();
+│       │   │         
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:119
+│       │   │       Context:
+│       │   │             const onTop = jest.fn();
+│       │   │             const onInner = jest.fn();
+│       │   │       ▶ const onItem = jest.fn();
+│       │   │         
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:120
+│       │   │       Context:
+│       │   │             const onInner = jest.fn();
+│       │   │             const onItem = jest.fn();
+│       │   │       ▶ 
+│       │   │             await conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:120
+│       │   │       Context:
+│       │   │             const onInner = jest.fn();
+│       │   │             const onItem = jest.fn();
+│       │   │       ▶ 
+│       │   │             await conductor.play(
+│       │   ├── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:121
+│       │   │       Context:
+│       │   │             const onItem = jest.fn();
+│       │   │         
+│       │   │       ▶ await conductor.play(
+│       │   │               "Library.forward-to-canvas-multi",
+│       │   └── packages\musical-conductor\tests\unit\communication\callback-preservation.hardening.test.ts:121
+│       │           Context:
+│       │                 const onItem = jest.fn();
+│       │             
+│       │           ▶ await conductor.play(
+│       │                   "Library.forward-to-canvas-multi",
+│       └── 'plug-multi' (6 occurrences)
+│           ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+│           │       Context:
+│           │         
+│           │             // Playing each sequence by id under the same plugin should reach its handler
+│           │       ▶ await conductor.play("plug-multi", seq1.id, {});
+│           │             await conductor.play("plug-multi", seq2.id, {});
+│           ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+│           │       Context:
+│           │         
+│           │             // Playing each sequence by id under the same plugin should reach its handler
+│           │       ▶ await conductor.play("plug-multi", seq1.id, {});
+│           │             await conductor.play("plug-multi", seq2.id, {});
+│           ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+│           │       Context:
+│           │         
+│           │             // Playing each sequence by id under the same plugin should reach its handler
+│           │       ▶ await conductor.play("plug-multi", seq1.id, {});
+│           │             await conductor.play("plug-multi", seq2.id, {});
+│           ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:101
+│           │       Context:
+│           │         
+│           │             // Playing each sequence by id under the same plugin should reach its handler
+│           │       ▶ await conductor.play("plug-multi", seq1.id, {});
+│           │             await conductor.play("plug-multi", seq2.id, {});
+│           ├── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:102
+│           │       Context:
+│           │             // Playing each sequence by id under the same plugin should reach its handler
+│           │             await conductor.play("plug-multi", seq1.id, {});
+│           │       ▶ await conductor.play("plug-multi", seq2.id, {});
+│           │         
+│           └── packages\musical-conductor\tests\unit\communication\plugins\multiple-sequences-per-plugin.test.ts:102
+│                   Context:
+│                         // Playing each sequence by id under the same plugin should reach its handler
+│                         await conductor.play("plug-multi", seq1.id, {});
+│                   ▶ await conductor.play("plug-multi", seq2.id, {});
+│                     
+
+└── publish (98 calls)
+    └── 📡 EventRouter.publish() (98 calls)
+        ├── 'canvas.component.create.requested' (4 occurrences)
+        │   ├── packages\library-component\src\symphonies\drop.container.symphony.ts:18
+        │   │       Context:
+        │   │           async publishCreateRequested(data: any, ctx: any) {
+        │   │             const correlationId =
+        │   │       ▶ data?.correlationId || generateUUID() || String(Date.now());
+        │   │             await EventRouter.publish(
+        │   ├── packages\library-component\src\symphonies\drop.container.symphony.ts:19
+        │   │       Context:
+        │   │             const correlationId =
+        │   │               data?.correlationId || generateUUID() || String(Date.now());
+        │   │       ▶ await EventRouter.publish(
+        │   │               "canvas.component.create.requested",
+        │   ├── packages\library-component\src\symphonies\drop.symphony.ts:18
+        │   │       Context:
+        │   │           async publishCreateRequested(data: any, ctx: any) {
+        │   │             const correlationId =
+        │   │       ▶ data?.correlationId || generateUUID() || String(Date.now());
+        │   │             await EventRouter.publish(
+        │   └── packages\library-component\src\symphonies\drop.symphony.ts:19
+        │           Context:
+        │                 const correlationId =
+        │                   data?.correlationId || generateUUID() || String(Date.now());
+        │           ▶ await EventRouter.publish(
+        │                   "canvas.component.create.requested",
+        ├── 'canvas.component.created' (3 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\create\create.notify.ts:9
+        │   │       Context:
+        │   │         
+        │   │           const id = created?.id || ctx.payload?.id;
+        │   │       ▶ const correlationId = ctx.payload?.correlationId || data?.correlationId;
+        │   │           if (id && correlationId) {
+        │   ├── packages\canvas-component\src\symphonies\create\create.notify.ts:10
+        │   │       Context:
+        │   │           const id = created?.id || ctx.payload?.id;
+        │   │           const correlationId = ctx.payload?.correlationId || data?.correlationId;
+        │   │       ▶ if (id && correlationId) {
+        │   │             EventRouter.publish(
+        │   └── packages\canvas-component\src\symphonies\create\create.notify.ts:11
+        │           Context:
+        │               const correlationId = ctx.payload?.correlationId || data?.correlationId;
+        │               if (id && correlationId) {
+        │           ▶ EventRouter.publish(
+        │                   "canvas.component.created",
+        ├── 'canvas.component.deleted' (2 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\delete\delete.stage-crew.ts:17
+        │   │       Context:
+        │   │           try {
+        │   │             const id = resolveId(data, ctx);
+        │   │       ▶ if (!id) return;
+        │   │             await EventRouter.publish("canvas.component.deleted", { id }, ctx?.conductor);
+        │   └── packages\canvas-component\src\symphonies\delete\delete.stage-crew.ts:18
+        │           Context:
+        │                 const id = resolveId(data, ctx);
+        │                 if (!id) return;
+        │           ▶ await EventRouter.publish("canvas.component.deleted", { id }, ctx?.conductor);
+        │               } catch {}
+        ├── 'canvas.component.deselection.changed' (2 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:39
+        │   │       Context:
+        │   │           try {
+        │   │             const baton = ctx?.baton ?? data;
+        │   │       ▶ const id = data?.id || baton?.id || baton?.elementId || baton?.selectedId;
+        │   │             if (id) await EventRouter.publish("canvas.component.deselection.changed", { id: String(id) }, ctx?.conductor);
+        │   └── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:40
+        │           Context:
+        │                 const baton = ctx?.baton ?? data;
+        │                 const id = data?.id || baton?.id || baton?.elementId || baton?.selectedId;
+        │           ▶ if (id) await EventRouter.publish("canvas.component.deselection.changed", { id: String(id) }, ctx?.conductor);
+        │               } catch {}
+        ├── 'canvas.component.drag.end' (4 occurrences)
+        │   ├── packages\canvas\src\ui\CanvasDrop.ts:96
+        │   │       Context:
+        │   │             // Publish drag end notification (no routing; subscribers may react)
+        │   │             try {
+        │   │       ▶ const { id, position, correlationId } = dragData || {};
+        │   │               EventRouter.publish(
+        │   ├── packages\canvas\src\ui\CanvasDrop.ts:97
+        │   │       Context:
+        │   │             try {
+        │   │               const { id, position, correlationId } = dragData || {};
+        │   │       ▶ EventRouter.publish(
+        │   │                 "canvas.component.drag.end",
+        │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:61
+        │   │       Context:
+        │   │             try {
+        │   │               const { id, finalPosition, correlationId } = info || {};
+        │   │       ▶ const position = finalPosition || info?.position;
+        │   │               EventRouter.publish("canvas.component.drag.end", { id, position, correlationId }, ctx.conductor);
+        │   └── packages\canvas-component\src\symphonies\create\create.from-import.ts:62
+        │           Context:
+        │                   const { id, finalPosition, correlationId } = info || {};
+        │                   const position = finalPosition || info?.position;
+        │           ▶ EventRouter.publish("canvas.component.drag.end", { id, position, correlationId }, ctx.conductor);
+        │                 } catch {}
+        ├── 'canvas.component.drag.move' (4 occurrences)
+        │   ├── packages\canvas\src\ui\CanvasDrop.ts:60
+        │   │       Context:
+        │   │           const onDragMove = (dragData: any) => {
+        │   │             // Publish drag move as a topic (throttled by EventRouter perf config)
+        │   │       ▶ try {
+        │   │               EventRouter.publish(
+        │   ├── packages\canvas\src\ui\CanvasDrop.ts:61
+        │   │       Context:
+        │   │             // Publish drag move as a topic (throttled by EventRouter perf config)
+        │   │             try {
+        │   │       ▶ EventRouter.publish(
+        │   │                 "canvas.component.drag.move",
+        │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:53
+        │   │       Context:
+        │   │           payload.onDragMove = (info: any) => {
+        │   │             try {
+        │   │       ▶ const { id, position } = info || {};
+        │   │               EventRouter.publish("canvas.component.drag.move", { id, position }, ctx.conductor);
+        │   └── packages\canvas-component\src\symphonies\create\create.from-import.ts:54
+        │           Context:
+        │                 try {
+        │                   const { id, position } = info || {};
+        │           ▶ EventRouter.publish("canvas.component.drag.move", { id, position }, ctx.conductor);
+        │                 } catch {}
+        ├── 'canvas.component.drag.start' (4 occurrences)
+        │   ├── packages\canvas\src\ui\CanvasDrop.ts:41
+        │   │       Context:
+        │   │         
+        │   │             // Publish drag start notification (no routing; subscribers may listen)
+        │   │       ▶ try {
+        │   │               EventRouter.publish(
+        │   ├── packages\canvas\src\ui\CanvasDrop.ts:42
+        │   │       Context:
+        │   │             // Publish drag start notification (no routing; subscribers may listen)
+        │   │             try {
+        │   │       ▶ EventRouter.publish(
+        │   │                 "canvas.component.drag.start",
+        │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:48
+        │   │       Context:
+        │   │         export function attachStandardImportInteractions(payload: any, ctx: any) {
+        │   │           payload.onDragStart = (info: any) => {
+        │   │       ▶ try { (globalThis as any).__cpDragInProgress = true; } catch {}
+        │   │             try { EventRouter.publish("canvas.component.drag.start", { id: info?.id }, ctx.conductor); } catch {}
+        │   └── packages\canvas-component\src\symphonies\create\create.from-import.ts:49
+        │           Context:
+        │               payload.onDragStart = (info: any) => {
+        │                 try { (globalThis as any).__cpDragInProgress = true; } catch {}
+        │           ▶ try { EventRouter.publish("canvas.component.drag.start", { id: info?.id }, ctx.conductor); } catch {}
+        │               };
+        ├── 'canvas.component.import.completed' (3 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:63
+        │   │       Context:
+        │   │           try {
+        │   │             const correlationId = ctx.payload.importCorrelationId;
+        │   │       ▶ const components = Array.isArray(list) ? list.length : 0;
+        │   │             if (correlationId) {
+        │   ├── packages\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:64
+        │   │       Context:
+        │   │             const correlationId = ctx.payload.importCorrelationId;
+        │   │             const components = Array.isArray(list) ? list.length : 0;
+        │   │       ▶ if (correlationId) {
+        │   │               EventRouter.publish(
+        │   └── packages\canvas-component\src\symphonies\import\import.nodes.stage-crew.ts:65
+        │           Context:
+        │                 const components = Array.isArray(list) ? list.length : 0;
+        │                 if (correlationId) {
+        │           ▶ EventRouter.publish(
+        │                     "canvas.component.import.completed",
+        ├── 'canvas.component.import.requested' (5 occurrences)
+        │   ├── packages\canvas\src\ui\CanvasHeader.tsx:36
+        │   │       Context:
+        │   │               // TODO: Show user-facing error notification
+        │   │             }
+        │   │       ▶ };
+        │   │         
+        │   ├── packages\canvas\src\ui\CanvasHeader.tsx:37
+        │   │       Context:
+        │   │             }
+        │   │           };
+        │   │       ▶ 
+        │   │           const handleImport = async () => {
+        │   ├── packages\canvas\src\ui\CanvasHeader.tsx:38
+        │   │       Context:
+        │   │           };
+        │   │         
+        │   │       ▶ const handleImport = async () => {
+        │   │             try {
+        │   ├── packages\canvas\src\ui\CanvasHeader.tsx:39
+        │   │       Context:
+        │   │         
+        │   │           const handleImport = async () => {
+        │   │       ▶ try {
+        │   │               await EventRouter.publish(
+        │   └── packages\canvas\src\ui\CanvasHeader.tsx:40
+        │           Context:
+        │               const handleImport = async () => {
+        │                 try {
+        │           ▶ await EventRouter.publish(
+        │                     "canvas.component.import.requested",
+        ├── 'canvas.component.import.started' (2 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\import\import.file.stage-crew.ts:34
+        │   │       Context:
+        │   │                   .toString(36)
+        │   │                   .slice(2)}`;
+        │   │       ▶ ctx.payload.importCorrelationId = correlationId;
+        │   │                 EventRouter.publish(
+        │   └── packages\canvas-component\src\symphonies\import\import.file.stage-crew.ts:35
+        │           Context:
+        │                       .slice(2)}`;
+        │                     ctx.payload.importCorrelationId = correlationId;
+        │           ▶ EventRouter.publish(
+        │                       "canvas.component.import.started",
+        ├── 'canvas.component.select.requested' (2 occurrences)
+        │   ├── packages\canvas-component\__tests__\helpers\host-click-select.ts:16
+        │   │       Context:
+        │   │               // This will be routed to the selection sequence with guaranteed ID
+        │   │               // Ensure conductor is passed explicitly for proper routing
+        │   │       ▶ await EventRouter.publish("canvas.component.select.requested", { id }, conductor);
+        │   │         
+        │   └── packages\canvas-component\__tests__\helpers\host-click-select.ts:51
+        │           Context:
+        │             
+        │                   // Topic-first approach with explicit conductor
+        │           ▶ await EventRouter.publish("canvas.component.select.requested", { id }, conductor);
+        │             
+        ├── 'canvas.component.select.svg-node.requested' (4 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\create\create.interactions.stage-crew.ts:174
+        │   │       Context:
+        │   │         
+        │   │                   // Publish the SVG node selection request
+        │   │       ▶ EventRouter.publish(
+        │   │                     "canvas.component.select.svg-node.requested",
+        │   ├── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx:190
+        │   │       Context:
+        │   │             const cleanPath = String(path || "").replace(/^\//, "");
+        │   │             setSelectedPath(cleanPath);
+        │   │       ▶ if (!id || !conductor?.play) return;
+        │   │             try {
+        │   ├── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx:191
+        │   │       Context:
+        │   │             setSelectedPath(cleanPath);
+        │   │             if (!id || !conductor?.play) return;
+        │   │       ▶ try {
+        │   │               await EventRouter.publish(
+        │   └── packages\control-panel\src\components\field-renderers\SvgTreeView.tsx:192
+        │           Context:
+        │                 if (!id || !conductor?.play) return;
+        │                 try {
+        │           ▶ await EventRouter.publish(
+        │                     "canvas.component.select.svg-node.requested",
+        ├── 'canvas.component.selection.changed' (5 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:64
+        │   │       Context:
+        │   │               EventRouter.publish("canvas.component.drag.end", { id, position, correlationId }, ctx.conductor);
+        │   │             } catch {}
+        │   │       ▶ };
+        │   │           payload.onSelected = (info: any) => {
+        │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:65
+        │   │       Context:
+        │   │             } catch {}
+        │   │           };
+        │   │       ▶ payload.onSelected = (info: any) => {
+        │   │             try { EventRouter.publish("canvas.component.selection.changed", { id: info?.id }, ctx.conductor); } catch {}
+        │   ├── packages\canvas-component\src\symphonies\create\create.from-import.ts:66
+        │   │       Context:
+        │   │           };
+        │   │           payload.onSelected = (info: any) => {
+        │   │       ▶ try { EventRouter.publish("canvas.component.selection.changed", { id: info?.id }, ctx.conductor); } catch {}
+        │   │           };
+        │   ├── packages\canvas-component\src\symphonies\select\select.stage-crew.ts:142
+        │   │       Context:
+        │   │             const baton = ctx?.baton ?? data;
+        │   │             const overlayId = document.getElementById('rx-selection-overlay')?.dataset?.targetId;
+        │   │       ▶ const id = data?.id || baton?.id || baton?.elementId || baton?.selectedId || overlayId;
+        │   │             if (id) await EventRouter.publish("canvas.component.selection.changed", { id: String(id) }, ctx?.conductor);
+        │   └── packages\canvas-component\src\symphonies\select\select.stage-crew.ts:143
+        │           Context:
+        │                 const overlayId = document.getElementById('rx-selection-overlay')?.dataset?.targetId;
+        │                 const id = data?.id || baton?.id || baton?.elementId || baton?.selectedId || overlayId;
+        │           ▶ if (id) await EventRouter.publish("canvas.component.selection.changed", { id: String(id) }, ctx?.conductor);
+        │               } catch {}
+        ├── 'canvas.component.selections.cleared' (6 occurrences)
+        │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:41
+        │   │       Context:
+        │   │             const id = data?.id || baton?.id || baton?.elementId || baton?.selectedId;
+        │   │             if (id) await EventRouter.publish("canvas.component.deselection.changed", { id: String(id) }, ctx?.conductor);
+        │   │       ▶ } catch {}
+        │   │         }
+        │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:42
+        │   │       Context:
+        │   │             if (id) await EventRouter.publish("canvas.component.deselection.changed", { id: String(id) }, ctx?.conductor);
+        │   │           } catch {}
+        │   │       ▶ }
+        │   │         
+        │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:43
+        │   │       Context:
+        │   │           } catch {}
+        │   │         }
+        │   │       ▶ 
+        │   │         export async function publishSelectionsCleared(_data: any, ctx: any) {
+        │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:44
+        │   │       Context:
+        │   │         }
+        │   │         
+        │   │       ▶ export async function publishSelectionsCleared(_data: any, ctx: any) {
+        │   │           try {
+        │   ├── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:45
+        │   │       Context:
+        │   │         
+        │   │         export async function publishSelectionsCleared(_data: any, ctx: any) {
+        │   │       ▶ try {
+        │   │             await EventRouter.publish("canvas.component.selections.cleared", {}, ctx?.conductor);
+        │   └── packages\canvas-component\src\symphonies\deselect\deselect.stage-crew.ts:46
+        │           Context:
+        │             export async function publishSelectionsCleared(_data: any, ctx: any) {
+        │               try {
+        │           ▶ await EventRouter.publish("canvas.component.selections.cleared", {}, ctx?.conductor);
+        │               } catch {}
+        ├── 'canvas.component.update.svg-node.requested' (1 occurrence)
+        │   └── packages\control-panel\src\components\field-renderers\SvgNodeInspector.tsx:120
+        │           Context:
+        │             
+        │                   // Publish the update request
+        │           ▶ await EventRouter.publish(
+        │                     "canvas.component.update.svg-node.requested",
+        └── ... and 10 more events/sequences

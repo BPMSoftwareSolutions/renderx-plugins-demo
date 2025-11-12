@@ -1,0 +1,315 @@
+================================================================================
+CSS Classes Report
+================================================================================
+
+├── .plugin (52 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\PluginTreeExplorer.tsx:271 (template-literal)
+│       ├── src\ui\PluginTreeExplorer.tsx:289 (template-literal)
+│       ├── src\ui\PluginTreeExplorer.tsx:300 (template-literal)
+│       ├── src\ui\PluginTreeExplorer.tsx:308 (template-literal)
+│       └── src\ui\PluginTreeExplorer.tsx:313 (template-literal)
+│       └── ... and 47 more
+
+├── .detail-row (17 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:33 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:38 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:43 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:33 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:38 (className-prop)
+│       └── ... and 12 more
+
+├── .seqNodeId (16 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\PluginTreeExplorer.tsx:635 (template-literal)
+│       ├── src\ui\PluginTreeExplorer.tsx:642 (template-literal)
+│       ├── src\ui\PluginTreeExplorer.tsx:644 (template-literal)
+│       ├── src\ui\PluginTreeExplorer.tsx:645 (template-literal)
+│       └── src\ui\PluginTreeExplorer.tsx:657 (template-literal)
+│       └── ... and 11 more
+
+├── .code (16 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:44 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:34 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:51 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:68 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:35 (className-prop)
+│       └── ... and 11 more
+
+├── .inspection-panel-content (16 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\components\shared\inspection.css:11
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\shared\InspectionPanel.tsx:115 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\InspectionPanel.tsx:124 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\InspectionPanel.tsx:132 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\InspectionPanel.tsx:140 (className-prop)
+│       └── src\ui\diagnostics\components\shared\InspectionPanel.tsx:148 (className-prop)
+│       └── ... and 10 more
+
+├── .btn (14 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (utility-classes)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:28 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:28 (utility-classes)
+│       └── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:35 (className-prop)
+│       └── ... and 9 more
+
+├── .stat-badge (12 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:268
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:73 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:76 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:76 (utility-classes)
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:80 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:80 (utility-classes)
+│       └── ... and 6 more
+
+├── .panel-header (11 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:21 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:12 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:24 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:25 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PluginsPanel.tsx:21 (className-prop)
+│       └── ... and 6 more
+
+├── .panel-title (11 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:22 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:13 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:25 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:26 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PluginsPanel.tsx:22 (className-prop)
+│       └── ... and 6 more
+
+├── .btn-sm (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (utility-classes)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:28 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:28 (utility-classes)
+│       └── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:35 (className-prop)
+│       └── ... and 5 more
+
+├── .detail-label (10 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:34 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:39 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:44 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:34 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:40 (className-prop)
+│       └── ... and 5 more
+
+├── .button-secondary (7 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:1111
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:92 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionStats.tsx:28 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LogParser.tsx:87 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LogParser.tsx:145 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\SequencePlayer.tsx:274 (className-prop)
+│       └── ... and 1 more
+
+├── .panel (7 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:20 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:11 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:23 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:24 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PluginsPanel.tsx:20 (className-prop)
+│       └── ... and 2 more
+
+├── .panel-badge (7 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:23 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:27 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PluginsPanel.tsx:23 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\RoutesPanel.tsx:28 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\TopicsPanel.tsx:31 (className-prop)
+│       └── ... and 2 more
+
+├── .panel-content (7 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:25 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:15 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:27 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:29 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PluginsPanel.tsx:25 (className-prop)
+│       └── ... and 2 more
+
+├── .plugin-item (7 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:27 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:28 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:45 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:62 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:30 (className-prop)
+│       └── ... and 2 more
+
+├── .plugin-name (7 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:29 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:29 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:46 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:63 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:31 (className-prop)
+│       └── ... and 2 more
+
+├── .plugin-details (7 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\ContentPanels\ComponentsPanel.tsx:31 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:30 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:47 (className-prop)
+│       ├── src\ui\diagnostics\components\ContentPanels\ConductorPanel.tsx:64 (className-prop)
+│       └── src\ui\diagnostics\components\ContentPanels\PerformancePanel.tsx:32 (className-prop)
+│       └── ... and 2 more
+
+├── .sequence-trigger-value (6 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:615
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:80 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:84 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:84 (utility-classes)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:90 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:95 (className-prop)
+
+├── .btn-secondary (6 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (utility-classes)
+│       ├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:56 (className-prop)
+│       ├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:56 (utility-classes)
+│       └── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:63 (className-prop)
+│       └── ... and 1 more
+
+├── .btn-icon (6 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:20 (utility-classes)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:28 (className-prop)
+│       ├── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:28 (utility-classes)
+│       └── src\ui\diagnostics\components\DiagnosticsToolbar.tsx:35 (className-prop)
+│       └── ... and 1 more
+
+├── .stat-badge-success (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:277
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:76 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:76 (utility-classes)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceList.tsx:99 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\SequenceList.tsx:99 (utility-classes)
+
+├── .empty-icon (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:362
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\ExecutionHistory.tsx:141 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:25 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceList.tsx:155 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:56 (className-prop)
+
+├── .sequence-trigger-info-row (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:603
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:78 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:82 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:88 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:93 (className-prop)
+
+├── .sequence-trigger-label (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:609
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:79 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:83 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:89 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\SequenceTrigger.tsx:94 (className-prop)
+
+├── .live-monitor-info-row (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:747
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:99 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:103 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:107 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:111 (className-prop)
+
+├── .live-monitor-label (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:753
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:100 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:104 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:108 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:112 (className-prop)
+
+├── .live-monitor-value (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\diagnostics.css:759
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:101 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:105 (className-prop)
+│       ├── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:109 (className-prop)
+│       └── src\ui\diagnostics\components\SequencePlayer\LiveExecutionMonitor.tsx:113 (className-prop)
+
+├── .footer-section (5 occurrences)
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:29 (className-prop)
+│       ├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:32 (className-prop)
+│       ├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:32 (utility-classes)
+│       ├── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:54 (className-prop)
+│       └── src\ui\diagnostics\components\FooterPanel\FooterPanel.tsx:54 (utility-classes)
+
+├── .plugin-info-stat (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\components\shared\inspection.css:449
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:103 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:110 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:120 (className-prop)
+│       └── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:129 (className-prop)
+
+├── .plugin-info-stat-icon (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\components\shared\inspection.css:459
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:104 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:111 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:121 (className-prop)
+│       └── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:130 (className-prop)
+
+├── .plugin-info-stat-content (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\components\shared\inspection.css:465
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:105 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:112 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:122 (className-prop)
+│       └── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:131 (className-prop)
+
+├── .plugin-info-stat-label (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\components\shared\inspection.css:470
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:106 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:113 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:123 (className-prop)
+│       └── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:132 (className-prop)
+
+├── .plugin-info-stat-value (5 occurrences)
+│   ├── 🎨 DEFINED IN:
+│   │   ├── src\ui\diagnostics\components\shared\inspection.css:479
+│   └── 🔧 USED IN:
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:107 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:114 (className-prop)
+│       ├── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:124 (className-prop)
+│       └── src\ui\diagnostics\components\shared\PluginInfoInspector.tsx:133 (className-prop)

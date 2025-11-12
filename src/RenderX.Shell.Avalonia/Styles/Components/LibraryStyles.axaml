@@ -1,0 +1,276 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Library Panel Component Styles -->
+    
+    <!-- library-sidebar: Library sidebar container -->
+    <Style Selector="Border.library-sidebar">
+        <Setter Property="Width" Value="320"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Panel.Border}"/>
+        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+    </Style>
+
+    <!-- library-sidebar-header: Library header -->
+    <Style Selector="Border.library-sidebar-header">
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Panel.Header}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Panel.HeaderBorder}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <!-- library-sidebar-title: Library title -->
+    <Style Selector="TextBlock.library-sidebar-title">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <!-- library-sidebar-subtitle: Library subtitle -->
+    <Style Selector="TextBlock.library-sidebar-subtitle">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="Opacity" Value="0.9"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <!-- library-component-library: Component library container -->
+    <Style Selector="ScrollViewer.library-component-library">
+        <Setter Property="Padding" Value="20"/>
+    </Style>
+
+    <!-- library-component-category: Component category section -->
+    <Style Selector="StackPanel.library-component-category">
+        <Setter Property="Margin" Value="0,0,0,24"/>
+        <Setter Property="Spacing" Value="12"/>
+    </Style>
+
+    <!-- library-category-title: Category title -->
+    <Style Selector="TextBlock.library-category-title">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+
+    <!-- library-component-item: Component library item -->
+    <Style Selector="Border.library-component-item">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+
+    <Style Selector="Border.library-component-item:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+    </Style>
+    
+    <!-- library-component-icon: Component icon -->
+    <Style Selector="TextBlock.library-component-icon">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- library-component-name: Component name -->
+    <Style Selector="TextBlock.library-component-name">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- library-component-description: Component description -->
+    <Style Selector="TextBlock.library-component-description">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <!-- upload-zone: Upload drop zone -->
+    <Style Selector="Border.upload-zone">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="MinHeight" Value="80"/>
+    </Style>
+
+    <Style Selector="Border.upload-zone:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+    </Style>
+
+    <Style Selector="Border.upload-zone.drag-over">
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Weak}"/>
+    </Style>
+    
+    <!-- upload-icon: Upload icon -->
+    <Style Selector="TextBlock.upload-icon">
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
+    
+    <!-- upload-primary: Primary upload text -->
+    <Style Selector="TextBlock.upload-primary">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+    
+    <!-- upload-secondary: Secondary upload text -->
+    <Style Selector="TextBlock.upload-secondary">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+    </Style>
+
+    <!-- upload-error: Upload error message -->
+    <Style Selector="Border.upload-error">
+        <Setter Property="Background" Value="{DynamicResource Color.Error.Weak}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Error.Light}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="Margin" Value="8,8,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.upload-error">
+        <Setter Property="Foreground" Value="{DynamicResource Color.Error}"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+
+    <!-- upload-success: Upload success message -->
+    <Style Selector="Border.upload-success">
+        <Setter Property="Background" Value="{DynamicResource Color.Success.Weak}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Success.Light}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="Margin" Value="8,8,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.upload-success">
+        <Setter Property="Foreground" Value="{DynamicResource Color.Success}"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+    
+    <!-- empty-state: Empty state display -->
+    <Style Selector="StackPanel.empty-state">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+    
+    <Style Selector="TextBlock.empty-icon">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.empty-text">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.empty-subtext">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Tertiary}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- component-item: Custom component item -->
+    <Style Selector="Border.component-item">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border.Primary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+
+    <!-- component-name: Component name -->
+    <Style Selector="TextBlock.component-name">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+    </Style>
+
+    <!-- component-type: Component type badge -->
+    <Style Selector="Border.component-type">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Tertiary}"/>
+        <Setter Property="Padding" Value="2,0,6,0"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+    <Style Selector="TextBlock.component-type">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="FontFamily" Value="Consolas,Monaco,monospace"/>
+    </Style>
+
+    <!-- component-description: Component description -->
+    <Style Selector="TextBlock.component-description">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxLines" Value="2"/>
+    </Style>
+    
+    <!-- remove-button: Remove component button -->
+    <Style Selector="Button.remove-button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Width" Value="24"/>
+        <Setter Property="Height" Value="24"/>
+    </Style>
+
+    <Style Selector="Button.remove-button:pointerover:not(:disabled)">
+        <Setter Property="Background" Value="{DynamicResource Color.Error.Weak}"/>
+    </Style>
+
+    <Style Selector="Button.remove-button:disabled">
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="Opacity" Value="0.5"/>
+    </Style>
+
+    <!-- storage-warning: Storage warning message -->
+    <Style Selector="Border.storage-warning">
+        <Setter Property="Margin" Value="12,12,0,0"/>
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="Background" Value="{DynamicResource Color.Warning.Weak}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Warning.Light}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+
+    <Style Selector="TextBlock.storage-warning">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Warning}"/>
+    </Style>
+
+    <!-- ai-chat-toggle: AI chat toggle button -->
+    <Style Selector="Button.ai-chat-toggle">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Inverse}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="8,8,12,8"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.ai-chat-toggle:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Color.Accent.Dark}"/>
+    </Style>
+    
+</Styles>

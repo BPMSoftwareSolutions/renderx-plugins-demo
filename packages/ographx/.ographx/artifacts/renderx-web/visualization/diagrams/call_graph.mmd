@@ -1,0 +1,142 @@
+graph LR
+    Root["Call Graph"]
+
+    create_from_import_ts_toCreatePayloadFromData["Function: toCreatePayloadFromData"]
+    select_overlay_resize_stage_crew_ts_attachResizeHandlers["Function: attachResizeHandlers"]
+    App_tsx_exportDiagnostics["Function: exportDiagnostics"]
+    resize_stage_crew_ts_writeCssNumber["Function: writeCssNumber"]
+    resize_stage_crew_ts_updateSize["Function: updateSize"]
+    select_overlay_dom_stage_crew_ts_applyOverlayRectForEl["Function: applyOverlayRectForEl"]
+    cinematic_renderer_ts_CinematicPresentation_initializeControls["Class: initializeControls"]
+    render_svg_ts_camelToKebab["Function: camelToKebab"]
+    create_from_import_ts_transformImportToCreatePayload["Function: transformImportToCreatePayload"]
+    augment_line_stage_crew_ts_ensureLineMarkers["Function: ensureLineMarkers"]
+    line_manip_stage_crew_ts_updateCurve["Function: updateCurve"]
+    CodeTextarea_tsx_validateAndReport["Function: validateAndReport"]
+    CodeTextarea_tsx_extractFromFullSvg["Function: extractFromFullSvg"]
+    css_management_stage_crew_ts_deleteCssClass["Function: deleteCssClass"]
+    resize_stage_crew_ts_getResizeConfig["Function: getResizeConfig"]
+    create_from_import_ts_transformClipboardToCreatePayload["Function: transformClipboardToCreatePayload"]
+    App_tsx_App["Function: App"]
+    cinematic_renderer_ts_CinematicPresentation_scheduleNextScene["Class: scheduleNextScene"]
+    deselect_stage_crew_ts_hideOverlayById["Function: hideOverlayById"]
+    cinematic_renderer_ts_CinematicPresentation_restart["Class: restart"]
+    render_svg_ts_styleAttr["Function: styleAttr"]
+    CanvasHeader_tsx_CanvasHeader["Function: CanvasHeader"]
+    cinematic_renderer_ts_CinematicPresentation_updatePlayPauseButton["Class: updatePlayPauseButton"]
+    create_css_stage_crew_ts_injectCssFallback["Function: injectCssFallback"]
+    cinematic_renderer_ts_CinematicPresentation_togglePlayPause["Class: togglePlayPause"]
+    App_tsx_exportCsv["Function: exportCsv"]
+    select_stage_crew_ts_configureHandlesVisibility["Function: configureHandlesVisibility"]
+    cinematic_renderer_ts_CinematicPresentation_previousScene["Class: previousScene"]
+    ui_stage_crew_ts_toggleTheme["Function: toggleTheme"]
+    resize_stage_crew_ts_clamp["Function: clamp"]
+    cinematic_renderer_ts_CinematicPresentation_startPresentation["Class: startPresentation"]
+    cinematic_renderer_ts_CinematicPresentation_showScene["Class: showScene"]
+    select_overlay_dom_stage_crew_ts_getCanvasRect["Function: getCanvasRect"]
+    resize_stage_crew_ts_readCssNumber["Function: readCssNumber"]
+    CodeTextarea_tsx_detectExtractCandidate["Function: detectExtractCandidate"]
+    schema_resolver_service_ts_SchemaResolverService_loadComponentSchemas["Class: loadComponentSchemas"]
+    select_overlay_resize_stage_crew_ts_getResizeConfig["Function: getResizeConfig"]
+    cinematic_renderer_ts_CinematicPresentation_updateProgress["Class: updateProgress"]
+    select_stage_crew_ts_showSelectionOverlay["Function: showSelectionOverlay"]
+    ui_stage_crew_ts_safeSetStoredTheme["Function: safeSetStoredTheme"]
+    line_manip_stage_crew_ts_moveLineManip["Function: moveLineManip"]
+    augment_line_stage_crew_ts_enhanceLine["Function: enhanceLine"]
+    cinematic_renderer_ts_CinematicPresentation_nextScene["Class: nextScene"]
+    ui_stage_crew_ts_getCurrentTheme["Function: getCurrentTheme"]
+    CanvasPage_tsx_CanvasPage["Function: CanvasPage"]
+    schema_resolver_service_ts_SchemaResolverService_registerComponentSchema["Class: registerComponentSchema"]
+    css_management_stage_crew_ts_removeClassFromAllElements["Function: removeClassFromAllElements"]
+    line_manip_stage_crew_ts_updateRotate["Function: updateRotate"]
+    deselect_stage_crew_ts_hideAllOverlays["Function: hideAllOverlays"]
+    create_css_stage_crew_ts_injectRawCss["Function: injectRawCss"]
+
+    create_from_import_ts_toCreatePayloadFromData -->|transformImportToCreatePayload| create_from_import_ts_transformImportToCreatePayload
+    create_from_import_ts_toCreatePayloadFromData -->|toCreatePayloadFromData| create_from_import_ts_toCreatePayloadFromData
+    create_from_import_ts_toCreatePayloadFromData -->|transformClipboardToCreatePayload| create_from_import_ts_transformClipboardToCreatePayload
+    select_overlay_resize_stage_crew_ts_attachResizeHandlers -->|getResizeConfig| select_overlay_resize_stage_crew_ts_getResizeConfig
+    select_overlay_resize_stage_crew_ts_attachResizeHandlers -->|attachResizeHandlers| select_overlay_resize_stage_crew_ts_attachResizeHandlers
+    App_tsx_exportDiagnostics -->|exportDiagnostics| App_tsx_exportDiagnostics
+    resize_stage_crew_ts_writeCssNumber -->|writeCssNumber| resize_stage_crew_ts_writeCssNumber
+    resize_stage_crew_ts_updateSize -->|clamp| resize_stage_crew_ts_clamp
+    resize_stage_crew_ts_updateSize -->|getResizeConfig| resize_stage_crew_ts_getResizeConfig
+    resize_stage_crew_ts_updateSize -->|writeCssNumber| resize_stage_crew_ts_writeCssNumber
+    select_overlay_dom_stage_crew_ts_applyOverlayRectForEl -->|getCanvasRect| select_overlay_dom_stage_crew_ts_getCanvasRect
+    select_overlay_dom_stage_crew_ts_applyOverlayRectForEl -->|applyOverlayRectForEl| select_overlay_dom_stage_crew_ts_applyOverlayRectForEl
+    cinematic_renderer_ts_CinematicPresentation_initializeControls -->|nextScene| cinematic_renderer_ts_CinematicPresentation_nextScene
+    cinematic_renderer_ts_CinematicPresentation_initializeControls -->|restart| cinematic_renderer_ts_CinematicPresentation_restart
+    cinematic_renderer_ts_CinematicPresentation_initializeControls -->|initializeControls| cinematic_renderer_ts_CinematicPresentation_initializeControls
+    cinematic_renderer_ts_CinematicPresentation_initializeControls -->|togglePlayPause| cinematic_renderer_ts_CinematicPresentation_togglePlayPause
+    cinematic_renderer_ts_CinematicPresentation_initializeControls -->|previousScene| cinematic_renderer_ts_CinematicPresentation_previousScene
+    render_svg_ts_camelToKebab -->|camelToKebab| render_svg_ts_camelToKebab
+    create_from_import_ts_transformImportToCreatePayload -->|transformImportToCreatePayload| create_from_import_ts_transformImportToCreatePayload
+    augment_line_stage_crew_ts_ensureLineMarkers -->|ensureLineMarkers| augment_line_stage_crew_ts_ensureLineMarkers
+    line_manip_stage_crew_ts_updateCurve -->|updateCurve| line_manip_stage_crew_ts_updateCurve
+    CodeTextarea_tsx_validateAndReport -->|validateAndReport| CodeTextarea_tsx_validateAndReport
+    CodeTextarea_tsx_extractFromFullSvg -->|extractFromFullSvg| CodeTextarea_tsx_extractFromFullSvg
+    CodeTextarea_tsx_extractFromFullSvg -->|validateAndReport| CodeTextarea_tsx_validateAndReport
+    css_management_stage_crew_ts_deleteCssClass -->|deleteCssClass| css_management_stage_crew_ts_deleteCssClass
+    css_management_stage_crew_ts_deleteCssClass -->|removeClassFromAllElements| css_management_stage_crew_ts_removeClassFromAllElements
+    resize_stage_crew_ts_getResizeConfig -->|getResizeConfig| resize_stage_crew_ts_getResizeConfig
+    create_from_import_ts_transformClipboardToCreatePayload -->|transformClipboardToCreatePayload| create_from_import_ts_transformClipboardToCreatePayload
+    App_tsx_App -->|App| App_tsx_App
+    App_tsx_App -->|exportDiagnostics| App_tsx_exportDiagnostics
+    App_tsx_App -->|exportCsv| App_tsx_exportCsv
+    cinematic_renderer_ts_CinematicPresentation_scheduleNextScene -->|scheduleNextScene| cinematic_renderer_ts_CinematicPresentation_scheduleNextScene
+    cinematic_renderer_ts_CinematicPresentation_scheduleNextScene -->|nextScene| cinematic_renderer_ts_CinematicPresentation_nextScene
+    deselect_stage_crew_ts_hideOverlayById -->|hideOverlayById| deselect_stage_crew_ts_hideOverlayById
+    cinematic_renderer_ts_CinematicPresentation_restart -->|scheduleNextScene| cinematic_renderer_ts_CinematicPresentation_scheduleNextScene
+    cinematic_renderer_ts_CinematicPresentation_restart -->|showScene| cinematic_renderer_ts_CinematicPresentation_showScene
+    cinematic_renderer_ts_CinematicPresentation_restart -->|restart| cinematic_renderer_ts_CinematicPresentation_restart
+    render_svg_ts_styleAttr -->|camelToKebab| render_svg_ts_camelToKebab
+    render_svg_ts_styleAttr -->|styleAttr| render_svg_ts_styleAttr
+    CanvasHeader_tsx_CanvasHeader -->|CanvasHeader| CanvasHeader_tsx_CanvasHeader
+    cinematic_renderer_ts_CinematicPresentation_updatePlayPauseButton -->|updatePlayPauseButton| cinematic_renderer_ts_CinematicPresentation_updatePlayPauseButton
+    create_css_stage_crew_ts_injectCssFallback -->|injectCssFallback| create_css_stage_crew_ts_injectCssFallback
+    cinematic_renderer_ts_CinematicPresentation_togglePlayPause -->|togglePlayPause| cinematic_renderer_ts_CinematicPresentation_togglePlayPause
+    cinematic_renderer_ts_CinematicPresentation_togglePlayPause -->|scheduleNextScene| cinematic_renderer_ts_CinematicPresentation_scheduleNextScene
+    cinematic_renderer_ts_CinematicPresentation_togglePlayPause -->|updatePlayPauseButton| cinematic_renderer_ts_CinematicPresentation_updatePlayPauseButton
+    App_tsx_exportCsv -->|exportCsv| App_tsx_exportCsv
+    select_stage_crew_ts_configureHandlesVisibility -->|configureHandlesVisibility| select_stage_crew_ts_configureHandlesVisibility
+    cinematic_renderer_ts_CinematicPresentation_previousScene -->|previousScene| cinematic_renderer_ts_CinematicPresentation_previousScene
+    cinematic_renderer_ts_CinematicPresentation_previousScene -->|showScene| cinematic_renderer_ts_CinematicPresentation_showScene
+    ui_stage_crew_ts_toggleTheme -->|safeSetStoredTheme| ui_stage_crew_ts_safeSetStoredTheme
+    ui_stage_crew_ts_toggleTheme -->|toggleTheme| ui_stage_crew_ts_toggleTheme
+    resize_stage_crew_ts_clamp -->|clamp| resize_stage_crew_ts_clamp
+    cinematic_renderer_ts_CinematicPresentation_startPresentation -->|showScene| cinematic_renderer_ts_CinematicPresentation_showScene
+    cinematic_renderer_ts_CinematicPresentation_startPresentation -->|scheduleNextScene| cinematic_renderer_ts_CinematicPresentation_scheduleNextScene
+    cinematic_renderer_ts_CinematicPresentation_startPresentation -->|startPresentation| cinematic_renderer_ts_CinematicPresentation_startPresentation
+    cinematic_renderer_ts_CinematicPresentation_showScene -->|updateProgress| cinematic_renderer_ts_CinematicPresentation_updateProgress
+    cinematic_renderer_ts_CinematicPresentation_showScene -->|showScene| cinematic_renderer_ts_CinematicPresentation_showScene
+    select_overlay_dom_stage_crew_ts_getCanvasRect -->|getCanvasRect| select_overlay_dom_stage_crew_ts_getCanvasRect
+    resize_stage_crew_ts_readCssNumber -->|readCssNumber| resize_stage_crew_ts_readCssNumber
+    CodeTextarea_tsx_detectExtractCandidate -->|detectExtractCandidate| CodeTextarea_tsx_detectExtractCandidate
+    schema_resolver_service_ts_SchemaResolverService_loadComponentSchemas -->|loadComponentSchemas| schema_resolver_service_ts_SchemaResolverService_loadComponentSchemas
+    schema_resolver_service_ts_SchemaResolverService_loadComponentSchemas -->|registerComponentSchema| schema_resolver_service_ts_SchemaResolverService_registerComponentSchema
+    select_overlay_resize_stage_crew_ts_getResizeConfig -->|getResizeConfig| select_overlay_resize_stage_crew_ts_getResizeConfig
+    cinematic_renderer_ts_CinematicPresentation_updateProgress -->|updateProgress| cinematic_renderer_ts_CinematicPresentation_updateProgress
+    select_stage_crew_ts_showSelectionOverlay -->|showSelectionOverlay| select_stage_crew_ts_showSelectionOverlay
+    select_stage_crew_ts_showSelectionOverlay -->|configureHandlesVisibility| select_stage_crew_ts_configureHandlesVisibility
+    ui_stage_crew_ts_safeSetStoredTheme -->|safeSetStoredTheme| ui_stage_crew_ts_safeSetStoredTheme
+    line_manip_stage_crew_ts_moveLineManip -->|updateCurve| line_manip_stage_crew_ts_updateCurve
+    line_manip_stage_crew_ts_moveLineManip -->|moveLineManip| line_manip_stage_crew_ts_moveLineManip
+    line_manip_stage_crew_ts_moveLineManip -->|updateRotate| line_manip_stage_crew_ts_updateRotate
+    augment_line_stage_crew_ts_enhanceLine -->|enhanceLine| augment_line_stage_crew_ts_enhanceLine
+    augment_line_stage_crew_ts_enhanceLine -->|ensureLineMarkers| augment_line_stage_crew_ts_ensureLineMarkers
+    cinematic_renderer_ts_CinematicPresentation_nextScene -->|scheduleNextScene| cinematic_renderer_ts_CinematicPresentation_scheduleNextScene
+    cinematic_renderer_ts_CinematicPresentation_nextScene -->|nextScene| cinematic_renderer_ts_CinematicPresentation_nextScene
+    cinematic_renderer_ts_CinematicPresentation_nextScene -->|showScene| cinematic_renderer_ts_CinematicPresentation_showScene
+    cinematic_renderer_ts_CinematicPresentation_nextScene -->|updatePlayPauseButton| cinematic_renderer_ts_CinematicPresentation_updatePlayPauseButton
+    ui_stage_crew_ts_getCurrentTheme -->|safeSetStoredTheme| ui_stage_crew_ts_safeSetStoredTheme
+    ui_stage_crew_ts_getCurrentTheme -->|getCurrentTheme| ui_stage_crew_ts_getCurrentTheme
+    CanvasPage_tsx_CanvasPage -->|CanvasPage| CanvasPage_tsx_CanvasPage
+    schema_resolver_service_ts_SchemaResolverService_registerComponentSchema -->|registerComponentSchema| schema_resolver_service_ts_SchemaResolverService_registerComponentSchema
+    css_management_stage_crew_ts_removeClassFromAllElements -->|removeClassFromAllElements| css_management_stage_crew_ts_removeClassFromAllElements
+    line_manip_stage_crew_ts_updateRotate -->|updateRotate| line_manip_stage_crew_ts_updateRotate
+    deselect_stage_crew_ts_hideAllOverlays -->|hideOverlayById| deselect_stage_crew_ts_hideOverlayById
+    deselect_stage_crew_ts_hideAllOverlays -->|hideAllOverlays| deselect_stage_crew_ts_hideAllOverlays
+    create_css_stage_crew_ts_injectRawCss -->|injectRawCss| create_css_stage_crew_ts_injectRawCss
+    create_css_stage_crew_ts_injectRawCss -->|injectCssFallback| create_css_stage_crew_ts_injectCssFallback
+
+    style Root fill:#4CAF50,stroke:#2E7D32,color:#fff,font-weight:bold

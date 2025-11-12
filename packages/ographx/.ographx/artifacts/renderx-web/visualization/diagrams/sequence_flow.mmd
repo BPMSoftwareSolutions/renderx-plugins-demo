@@ -1,0 +1,38 @@
+graph TD
+    Root["Sequence Flows"]
+
+    Seq0["Sequence: onDragStart Flow<br/>Key: C Major<br/>Tempo: 100"]
+    Root --> Seq0
+    Mov0_0["Movement: Initialization<br/>1 beats"]
+    Seq0 --> Mov0_0
+    Beat0_0_0["Beat 1: unknown<br/>immediate | mf"]
+    Mov0_0 --> Beat0_0_0
+    Mov0_1["Movement: Execution<br/>1 beats"]
+    Seq0 --> Mov0_1
+    Beat0_1_0["Beat 1: unknown<br/>immediate | mf"]
+    Mov0_1 --> Beat0_1_0
+    Seq1["Sequence: onDragMove Flow<br/>Key: C Major<br/>Tempo: 100"]
+    Root --> Seq1
+    Mov1_0["Movement: Initialization<br/>1 beats"]
+    Seq1 --> Mov1_0
+    Beat1_0_0["Beat 1: unknown<br/>immediate | mf"]
+    Mov1_0 --> Beat1_0_0
+    Mov1_1["Movement: Execution<br/>1 beats"]
+    Seq1 --> Mov1_1
+    Beat1_1_0["Beat 1: unknown<br/>immediate | mf"]
+    Mov1_1 --> Beat1_1_0
+    Seq2["Sequence: onDragEnd Flow<br/>Key: C Major<br/>Tempo: 100"]
+    Root --> Seq2
+    Mov2_0["Movement: Initialization<br/>1 beats"]
+    Seq2 --> Mov2_0
+    Beat2_0_0["Beat 1: unknown<br/>immediate | mf"]
+    Mov2_0 --> Beat2_0_0
+    Mov2_1["Movement: Execution<br/>1 beats"]
+    Seq2 --> Mov2_1
+    Beat2_1_0["Beat 1: unknown<br/>immediate | mf"]
+    Mov2_1 --> Beat2_1_0
+
+    style Root fill:#4CAF50,stroke:#2E7D32,color:#fff,font-weight:bold
+    classDef sequence fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef movement fill:#FF9800,stroke:#E65100,color:#fff
+    classDef beat fill:#F44336,stroke:#C62828,color:#fff

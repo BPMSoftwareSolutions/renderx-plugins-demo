@@ -128,7 +128,7 @@ export class SequenceOrchestrator {
       );
 
       if (conflictResult.resolution === "REJECT") {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🎼 SequenceOrchestrator: Sequence request rejected - ${conflictResult.message}`
         );
         throw new Error(`Resource conflict: ${conflictResult.message}`);
@@ -161,7 +161,7 @@ export class SequenceOrchestrator {
         priority
       );
 
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 SequenceOrchestrator: Sequence "${sequence.name}" (id: ${sequenceId}) queued successfully`
       );
 
@@ -170,7 +170,7 @@ export class SequenceOrchestrator {
         success: true,
       };
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🎼 SequenceOrchestrator: Failed to start sequence: ${sequenceId}`,
         error
       );
@@ -206,7 +206,7 @@ export class SequenceOrchestrator {
 
     const sequence = this.sequenceRegistry.get(nextRequest.sequenceId);
     if (!sequence) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ SequenceOrchestrator: Sequence ${nextRequest.sequenceId} not found in registry`
       );
       // Continue processing queue
@@ -235,7 +235,7 @@ export class SequenceOrchestrator {
         success: true,
       };
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ SequenceOrchestrator: Failed to execute sequence ${nextRequest.sequenceName}:`,
         error
       );
@@ -294,25 +294,25 @@ export class SequenceOrchestrator {
    * @param sequenceName - Name of the sequence (if available)
    */
   private logSequenceNotFound(sequenceId: string, sequenceName?: string): void {
-    console.error(
+    (globalThis as any).__MC_ERROR(
       `❌ SequenceOrchestrator: Sequence with ID "${sequenceId}" not found!`
     );
     if (sequenceName) {
-      console.error(`❌ Sequence name: "${sequenceName}"`);
+      (globalThis as any).__MC_ERROR(`❌ Sequence name: "${sequenceName}"`);
     }
-    console.error(
+    (globalThis as any).__MC_ERROR(
       `❌ This means the plugin for this sequence is not loaded or registered.`
     );
-    console.error(`❌ Available sequences:`, this.sequenceRegistry.getNames());
+    (globalThis as any).__MC_ERROR(`❌ Available sequences:`, this.sequenceRegistry.getNames());
 
     if (
       sequenceId === "ElementLibrary.library-drop-symphony" ||
       sequenceName === "ElementLibrary.library-drop-symphony"
     ) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ CRITICAL: ElementLibrary.library-drop-symphony not available - drag-and-drop will not work!`
       );
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ Check plugin loading logs above for ElementLibrary.library-drop-symphony errors.`
       );
     }
@@ -330,7 +330,7 @@ export class SequenceOrchestrator {
     sequenceName: string,
     deduplicationResult: any
   ): SequenceStartResult {
-    console.warn(`🎼 SequenceOrchestrator: ${deduplicationResult.reason}`);
+    (globalThis as any).__MC_WARN(`🎼 SequenceOrchestrator: ${deduplicationResult.reason}`);
 
     // For StrictMode duplicates, return a duplicate request ID but don't execute
     const duplicateRequestId = `${sequenceId}-duplicate-${Date.now()}-${Math.random()
@@ -461,7 +461,7 @@ export class SequenceOrchestrator {
   private recordSequenceExecution(sequenceHash: string): void {
     // This would typically be handled by the DuplicationDetector
     // For now, we'll delegate to the validator
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 SequenceOrchestrator: Recording sequence execution: ${sequenceHash}`
     );
   }

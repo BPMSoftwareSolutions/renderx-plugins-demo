@@ -132,12 +132,12 @@ export class BeatExecutor {
         executionContext.id
       ) ?? 0) as number;
       const indent = "  ".repeat(Math.max(0, depth));
-      console.log(
+      (globalThis as any).__MC_LOG(
         `${indent}✅ BeatExecutor: Beat ${beat.beat} (${beat.event}) completed in ${executionTime}ms`
       );
     } catch (error) {
       // Handle beat execution error
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ BeatExecutor: Beat ${beat.beat} (${beat.event}) failed:`,
         error
       );
@@ -166,7 +166,7 @@ export class BeatExecutor {
       ) {
         throw error;
       } else if (beat.errorHandling === "continue") {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `⚠️ BeatExecutor: Continuing execution despite beat error (errorHandling: continue)`
         );
       }
@@ -288,7 +288,7 @@ export class BeatExecutor {
 
       return true;
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `❌ BeatExecutor: Beat validation failed for beat ${beat.beat}:`,
         error
       );
@@ -385,7 +385,7 @@ export class BeatExecutor {
    */
   clearBeatQueue(): void {
     this.beatExecutionQueue = [];
-    console.log("🧹 BeatExecutor: Beat execution queue cleared");
+    (globalThis as any).__MC_LOG("🧹 BeatExecutor: Beat execution queue cleared");
   }
 
   /**

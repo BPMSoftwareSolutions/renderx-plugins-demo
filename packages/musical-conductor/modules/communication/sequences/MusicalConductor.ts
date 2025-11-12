@@ -243,11 +243,11 @@ export class MusicalConductor {
 
     try {
       const v = (pkg as any)?.version || "unknown";
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 MusicalConductor v${v}: Initialized with core components`
       );
     } catch {
-      console.log("🎼 MusicalConductor: Initialized with core components");
+      (globalThis as any).__MC_LOG("🎼 MusicalConductor: Initialized with core components");
     }
   }
 
@@ -265,7 +265,7 @@ export class MusicalConductor {
       }
       MusicalConductor.instance = new MusicalConductor(eventBus);
     } else if (eventBus && MusicalConductor.instance.eventBus !== eventBus) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "🎼 MusicalConductor: Attempting to change eventBus on existing singleton instance - ignoring"
       );
     }
@@ -282,7 +282,7 @@ export class MusicalConductor {
       ConductorCore.resetInstance();
     }
     MusicalConductor.instance = null;
-    console.log("🔄 MusicalConductor: Singleton instance reset");
+    (globalThis as any).__MC_LOG("🔄 MusicalConductor: Singleton instance reset");
   }
 
   /**
@@ -374,14 +374,14 @@ export class MusicalConductor {
       const registry = CallbackRegistry.getInstance();
       const { correlationId, count } = registry.preserveInPlace(context);
       if (count > 0) {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `🎼 MusicalConductor.play: preserved ${count} callback(s) for correlationId=${correlationId}`
         );
       }
       // Map correlationId to requestId after play() returns a requestId (via startSequence)
       // We'll capture this below in the startSequence callback wrapper
     } catch (e) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "⚠️ MusicalConductor.play: callback preservation skipped:",
         (e as Error)?.message || e
       );
@@ -552,7 +552,7 @@ export class MusicalConductor {
    * @param priority - Priority level (MUSICAL_DYNAMICS value)
    */
   setPriority(eventType: string, priority: string): void {
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 MusicalConductor: Set priority for ${eventType}: ${priority}`
     );
   }
@@ -635,7 +635,7 @@ export class MusicalConductor {
     this.conductorAPI.resetStatistics();
     this.performanceTracker.reset();
     this.duplicationDetector.reset();
-    console.log("🎼 MusicalConductor: All monitoring data reset");
+    (globalThis as any).__MC_LOG("🎼 MusicalConductor: All monitoring data reset");
   }
 
   /**
@@ -753,7 +753,7 @@ export class MusicalConductor {
           if (remaining <= 0) {
             registry.cleanup(corr);
             this.correlationActiveCounts.delete(corr);
-            console.log(
+            (globalThis as any).__MC_LOG(
               `🎼 MusicalConductor: cleaned callbacks for correlationId=${corr}`
             );
           } else {

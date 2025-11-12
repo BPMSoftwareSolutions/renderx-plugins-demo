@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <AssemblyName>RenderX.Plugins.Header</AssemblyName>
+    <RootNamespace>RenderX.Plugins.Header</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- SDK Projects -->
+  <ItemGroup>
+    <ProjectReference Include="..\RenderX.HostSDK.Avalonia\RenderX.HostSDK.Avalonia.csproj" />
+    <ProjectReference Include="..\MusicalConductor.Avalonia\MusicalConductor.Avalonia.csproj" />
+  </ItemGroup>
+
+  <!-- Include JSON sequence files -->
+  <ItemGroup>
+    <Content Include="json-sequences\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
+

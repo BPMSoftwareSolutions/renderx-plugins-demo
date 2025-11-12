@@ -36,6 +36,15 @@ export class ConductorLogger {
   init(): void {
     if (!this.enabled) return;
 
+    // Expose simple global writer proxies so scattered logs can route through ConductorLogger
+    try {
+      const g: any = (globalThis as any);
+      g.__MC_LOG = (...args: any[]) => this.write("log", ...args);
+      g.__MC_INFO = (...args: any[]) => this.write("info", ...args);
+      g.__MC_WARN = (...args: any[]) => this.write("warn", ...args);
+      g.__MC_ERROR = (...args: any[]) => this.write("error", ...args);
+    } catch {}
+
     // Sequence scope
     this.eventBus.subscribe(
       MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_STARTED,
@@ -100,18 +109,7 @@ export class ConductorLogger {
         ? `🧩 ${evt.pluginId}${evt.handlerName ? "." + evt.handlerName : ""}`
         : "🎼";
       const line = `${indent}${prefix}`;
-      switch (evt.level) {
-        case "warn":
-          console.warn(line, ...evt.message);
-          break;
-        case "error":
-          console.error(line, ...evt.message);
-          break;
-        case "info":
-        case "log":
-        default:
-          console.log(line, ...evt.message);
-      }
+      this.write(evt.level, line, ...evt.message);
     });
 
     // Stage crew commit logging
@@ -126,7 +124,7 @@ export class ConductorLogger {
     stack.push(scope);
     this.stacks.set(key, stack);
     const indent = this.getIndent(requestId);
-    console.log(`${indent}${scope.label}`);
+    this.write("log", `${indent}${scope.label}`);
   }
 
   private pop(requestId: string | undefined, type: Scope["type"]): void {
@@ -167,8 +165,7 @@ export class ConductorLogger {
     const pluginPrefix = cue.pluginId ? `${cue.pluginId}` : "unknown";
     const correlationId = cue.correlationId || "no-correlation";
     const handlerName = cue.meta?.handlerName ? `.${cue.meta.handlerName}` : "";
-
-    console.log(`${indent}🎭 Stage Crew: ${pluginPrefix}${handlerName} (${correlationId})`);
+    this.write("log", `${indent}🎭 Stage Crew: ${pluginPrefix}${handlerName} (${correlationId})`);
 
     // Log each operation with proper indentation
     cue.operations.forEach((op: any, index: number) => {
@@ -178,28 +175,50 @@ export class ConductorLogger {
 
       switch (op.op) {
         case "classes.add":
-          console.log(`${opIndent}${connector} Add class "${op.value}" to ${op.selector}`);
+          this.write("log", `${opIndent}${connector} Add class "${op.value}" to ${op.selector}`);
           break;
         case "classes.remove":
-          console.log(`${opIndent}${connector} Remove class "${op.value}" from ${op.selector}`);
+          this.write("log", `${opIndent}${connector} Remove class "${op.value}" from ${op.selector}`);
           break;
         case "attr.set":
-          console.log(`${opIndent}${connector} Set ${op.key}="${op.value}" on ${op.selector}`);
+          this.write("log", `${opIndent}${connector} Set ${op.key}="${op.value}" on ${op.selector}`);
           break;
         case "style.set":
-          console.log(`${opIndent}${connector} Set style ${op.key}="${op.value}" on ${op.selector}`);
+          this.write("log", `${opIndent}${connector} Set style ${op.key}="${op.value}" on ${op.selector}`);
           break;
         case "create":
           const classes = op.classes ? ` classes=[${op.classes.join(", ")}]` : "";
           const attrs = op.attrs ? ` attrs=${JSON.stringify(op.attrs)}` : "";
-          console.log(`${opIndent}${connector} Create <${op.tag}>${classes}${attrs} in ${op.parent}`);
+          this.write("log", `${opIndent}${connector} Create <${op.tag}>${classes}${attrs} in ${op.parent}`);
           break;
         case "remove":
-          console.log(`${opIndent}${connector} Remove ${op.selector}`);
+          this.write("log", `${opIndent}${connector} Remove ${op.selector}`);
           break;
         default:
-          console.log(`${opIndent}${connector} Unknown operation: ${JSON.stringify(op)}`);
+          this.write("log", `${opIndent}${connector} Unknown operation: ${JSON.stringify(op)}`);
       }
     });
+  }
+
+  /** Centralized writer adding ISO timestamp prefix directly to first string argument for visibility in copied logs */
+  private write(level: LogEvent["level"], ...args: any[]): void {
+    const ts = new Date().toISOString();
+    if (typeof args[0] === "string") {
+      args[0] = `${ts} ${args[0]}`;
+    } else {
+      args.unshift(ts);
+    }
+    switch (level) {
+      case "warn":
+        console.warn(...args);
+        break;
+      case "error":
+        console.error(...args);
+        break;
+      case "info":
+      case "log":
+      default:
+        console.log(...args);
+    }
   }
 }

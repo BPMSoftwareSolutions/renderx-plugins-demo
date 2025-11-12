@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+             x:Class="RenderX.Plugins.Diagnostics.Controls.MemoryGraph">
+    
+    <!-- Memory graph -->
+    
+    <Border Classes="rx-control memorygraph"
+            Background="{DynamicResource Color.Background.Primary}"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
+            BorderThickness="1"
+            CornerRadius="4"
+            Padding="8">
+        
+        <StackPanel Spacing="8">
+            <!-- Header -->
+            <TextBlock Text="MemoryGraph"
+                       Classes="rx-text-base rx-font-semibold"
+                       Foreground="{DynamicResource Color.Text.Primary}" />
+            
+            <!-- Content -->
+            <ContentPresenter Content="{Binding}" />
+            
+            <!-- Placeholder for implementation -->
+            <TextBlock Text="TODO: Implement MemoryGraph"
+                       Classes="rx-text-sm"
+                       Foreground="{DynamicResource Color.Text.Tertiary}"
+                       TextWrapping="Wrap" />
+        </StackPanel>
+    </Border>
+</UserControl>
