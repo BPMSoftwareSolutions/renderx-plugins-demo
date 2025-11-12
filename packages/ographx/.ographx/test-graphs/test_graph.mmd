@@ -1,0 +1,25 @@
+graph TD
+    A["🧪 OgraphX Test Suite<br/>47 Tests Total"]
+    A --> B["📊 Unit Tests<br/>32 Tests"]
+    A --> C["🔗 Integration Tests<br/>15 Tests"]
+    B --> B10["Core Extraction<br/>16 Tests"]
+    B10 --> B100["TestTypeScriptSymbolExtraction<br/>5 tests"]
+    B10 --> B101["TestTypeScriptCallResolution<br/>2 tests"]
+    B10 --> B102["TestTypeScriptContractExtraction<br/>2 tests"]
+    B10 --> B103["TestImportGraphBuilding<br/>2 tests"]
+    B10 --> B104["TestTypeHandling<br/>2 tests"]
+    B10 --> B105["TestIRValidation<br/>3 tests"]
+    B --> B11["Generators<br/>16 Tests"]
+    B11 --> B116["TestSequenceGeneration<br/>3 tests"]
+    B11 --> B117["TestDiagramGeneration<br/>4 tests"]
+    B11 --> B118["TestSVGConversion<br/>3 tests"]
+    B11 --> B119["TestContractValidation<br/>3 tests"]
+    B11 --> B1110["TestPipelineIntegration<br/>3 tests"]
+    C --> C20["Pipeline<br/>15 Tests"]
+    C20 --> C2011["TestFullPipeline<br/>6 tests"]
+    C20 --> C2012["TestDataFlowValidation<br/>4 tests"]
+    C20 --> C2013["TestErrorHandling<br/>3 tests"]
+    C20 --> C2014["TestPipelineConsistency<br/>2 tests"]
+    style A fill:#4a90e2,stroke:#2c5aa0,color:#fff,stroke-width:3px
+    style B fill:#7cb342,stroke:#558b2f,color:#fff,stroke-width:2px
+    style C fill:#ff7043,stroke:#d84315,color:#fff,stroke-width:2px

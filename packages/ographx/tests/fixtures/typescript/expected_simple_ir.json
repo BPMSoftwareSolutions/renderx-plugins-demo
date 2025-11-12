@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "language": "typescript",
+  "symbols": [
+    {
+      "id": "greet",
+      "type": "function",
+      "exported": false,
+      "file": "simple.ts",
+      "line": 5,
+      "contract": ["name: string"],
+      "returns": "string"
+    },
+    {
+      "id": "add",
+      "type": "function",
+      "exported": false,
+      "file": "simple.ts",
+      "line": 9,
+      "contract": ["a: number", "b: number"],
+      "returns": "number"
+    },
+    {
+      "id": "multiply",
+      "type": "function",
+      "exported": true,
+      "file": "simple.ts",
+      "line": 14,
+      "contract": ["x: number", "y: number"],
+      "returns": "number"
+    },
+    {
+      "id": "Calculator",
+      "type": "class",
+      "exported": true,
+      "file": "simple.ts",
+      "line": 18,
+      "methods": ["compute", "helper"]
+    },
+    {
+      "id": "Calculator.compute",
+      "type": "method",
+      "exported": true,
+      "file": "simple.ts",
+      "line": 19,
+      "contract": ["a: number", "b: number"],
+      "returns": "number"
+    },
+    {
+      "id": "Calculator.helper",
+      "type": "method",
+      "exported": false,
+      "file": "simple.ts",
+      "line": 25,
+      "contract": ["value: number"],
+      "returns": "number"
+    },
+    {
+      "id": "divide",
+      "type": "function",
+      "exported": false,
+      "file": "simple.ts",
+      "line": 30,
+      "contract": ["a: number", "b: number"],
+      "returns": "number"
+    },
+    {
+      "id": "processData",
+      "type": "function",
+      "exported": true,
+      "file": "simple.ts",
+      "line": 37,
+      "contract": ["data: string[]", "callback: (item: string) => void", "options?: { verbose: boolean }"],
+      "returns": "void"
+    }
+  ],
+  "calls": [
+    {
+      "from": "Calculator.compute",
+      "to": "add",
+      "file": "simple.ts",
+      "line": 20
+    },
+    {
+      "from": "Calculator.compute",
+      "to": "multiply",
+      "file": "simple.ts",
+      "line": 21
+    }
+  ],
+  "contracts": [
+    {
+      "id": "greet_contract",
+      "symbol": "greet",
+      "parameters": ["name: string"],
+      "returns": "string"
+    },
+    {
+      "id": "add_contract",
+      "symbol": "add",
+      "parameters": ["a: number", "b: number"],
+      "returns": "number"
+    }
+  ]
+}
+

@@ -1,0 +1,625 @@
+{
+  "unit": {
+    "Core Extraction": [
+      {
+        "name": "TestTypeScriptSymbolExtraction",
+        "description": "Test TypeScript symbol extraction",
+        "methods": [
+          {
+            "name": "test_extract_function_declarations",
+            "description": "Test extraction of function declarations"
+          },
+          {
+            "name": "test_extract_arrow_functions",
+            "description": "Test extraction of arrow functions"
+          },
+          {
+            "name": "test_extract_exported_functions",
+            "description": "Test extraction of exported functions"
+          },
+          {
+            "name": "test_extract_class_declarations",
+            "description": "Test extraction of class declarations"
+          },
+          {
+            "name": "test_extract_class_methods",
+            "description": "Test extraction of class methods"
+          }
+        ],
+        "count": 5
+      },
+      {
+        "name": "TestTypeScriptCallResolution",
+        "description": "Test TypeScript call resolution",
+        "methods": [
+          {
+            "name": "test_extract_direct_calls",
+            "description": "Test extraction of direct function calls"
+          },
+          {
+            "name": "test_extract_method_calls",
+            "description": "Test extraction of method calls"
+          }
+        ],
+        "count": 2
+      },
+      {
+        "name": "TestTypeScriptContractExtraction",
+        "description": "Test TypeScript contract extraction",
+        "methods": [
+          {
+            "name": "test_extract_parameter_contracts",
+            "description": "Test extraction of parameter contracts"
+          },
+          {
+            "name": "test_extract_return_type_contracts",
+            "description": "Test extraction of return type contracts"
+          }
+        ],
+        "count": 2
+      },
+      {
+        "name": "TestImportGraphBuilding",
+        "description": "Test import graph construction",
+        "methods": [
+          {
+            "name": "test_parse_import_statements",
+            "description": "Test parsing of import statements"
+          },
+          {
+            "name": "test_resolve_imported_symbols",
+            "description": "Test resolution of imported symbols"
+          }
+        ],
+        "count": 2
+      },
+      {
+        "name": "TestTypeHandling",
+        "description": "Test handling of complex types",
+        "methods": [
+          {
+            "name": "test_extract_generic_types",
+            "description": "Test extraction of generic type parameters"
+          },
+          {
+            "name": "test_extract_union_types",
+            "description": "Test extraction of union types"
+          }
+        ],
+        "count": 2
+      },
+      {
+        "name": "TestIRValidation",
+        "description": "Test IR output validation",
+        "methods": [
+          {
+            "name": "test_ir_schema_validity",
+            "description": "Test that IR follows expected schema"
+          },
+          {
+            "name": "test_ir_symbol_structure",
+            "description": "Test that symbols have required fields"
+          },
+          {
+            "name": "test_ir_call_structure",
+            "description": "Test that calls have required fields"
+          }
+        ],
+        "count": 3
+      }
+    ],
+    "Generators": [
+      {
+        "name": "TestSequenceGeneration",
+        "description": "Test sequence generation from IR",
+        "methods": [
+          {
+            "name": "test_sequence_structure",
+            "description": "Test that generated sequences have correct structure"
+          },
+          {
+            "name": "test_beat_generation",
+            "description": "Test that beats are generated for calls"
+          },
+          {
+            "name": "test_dfs_depth_limiting",
+            "description": "Test that DFS respects depth limit"
+          }
+        ],
+        "count": 3
+      },
+      {
+        "name": "TestDiagramGeneration",
+        "description": "Test Mermaid diagram generation",
+        "methods": [
+          {
+            "name": "test_mermaid_graph_structure",
+            "description": "Test that Mermaid diagrams have correct structure"
+          },
+          {
+            "name": "test_node_creation",
+            "description": "Test that nodes are created for all symbols"
+          },
+          {
+            "name": "test_edge_creation",
+            "description": "Test that edges are created for all calls"
+          },
+          {
+            "name": "test_mermaid_syntax_validation",
+            "description": "Test that generated Mermaid is syntactically valid"
+          }
+        ],
+        "count": 4
+      },
+      {
+        "name": "TestSVGConversion",
+        "description": "Test SVG conversion from Mermaid",
+        "methods": [
+          {
+            "name": "test_svg_structure",
+            "description": "Test that SVG has correct structure"
+          },
+          {
+            "name": "test_svg_dimensions",
+            "description": "Test that SVG has proper dimensions"
+          },
+          {
+            "name": "test_conversion_error_handling",
+            "description": "Test error handling in conversion"
+          }
+        ],
+        "count": 3
+      },
+      {
+        "name": "TestContractValidation",
+        "description": "Test data contract validation between layers",
+        "methods": [
+          {
+            "name": "test_ir_to_sequence_contract",
+            "description": "Test that IR output matches sequence input contract"
+          },
+          {
+            "name": "test_sequence_to_diagram_contract",
+            "description": "Test that sequence output matches diagram input contract"
+          },
+          {
+            "name": "test_diagram_to_svg_contract",
+            "description": "Test that diagram output matches SVG input contract"
+          }
+        ],
+        "count": 3
+      },
+      {
+        "name": "TestPipelineIntegration",
+        "description": "Test integration between generator stages",
+        "methods": [
+          {
+            "name": "test_ir_flows_to_sequences",
+            "description": "Test that IR can flow to sequence generation"
+          },
+          {
+            "name": "test_sequences_flow_to_diagrams",
+            "description": "Test that sequences can flow to diagram generation"
+          },
+          {
+            "name": "test_diagrams_flow_to_svg",
+            "description": "Test that diagrams can flow to SVG conversion"
+          }
+        ],
+        "count": 3
+      }
+    ]
+  },
+  "integration": {
+    "Pipeline": [
+      {
+        "name": "TestFullPipeline",
+        "description": "Test complete regeneration pipeline",
+        "methods": [
+          {
+            "name": "test_extraction_phase",
+            "description": "Test Phase 1: Source extraction"
+          },
+          {
+            "name": "test_ir_generation",
+            "description": "Test Phase 2: IR generation"
+          },
+          {
+            "name": "test_sequence_generation",
+            "description": "Test Phase 3: Sequence generation"
+          },
+          {
+            "name": "test_diagram_generation",
+            "description": "Test Phase 4: Diagram generation"
+          },
+          {
+            "name": "test_svg_conversion",
+            "description": "Test Phase 5: SVG conversion"
+          },
+          {
+            "name": "test_analysis_extraction",
+            "description": "Test Phase 6: Analysis extraction"
+          }
+        ],
+        "count": 6
+      },
+      {
+        "name": "TestDataFlowValidation",
+        "description": "Test data flow between pipeline stages",
+        "methods": [
+          {
+            "name": "test_extraction_to_ir_contract",
+            "description": "Test extraction output matches IR input contract"
+          },
+          {
+            "name": "test_ir_to_sequence_contract",
+            "description": "Test IR output matches sequence input contract"
+          },
+          {
+            "name": "test_sequence_to_diagram_contract",
+            "description": "Test sequence output matches diagram input contract"
+          },
+          {
+            "name": "test_diagram_to_svg_contract",
+            "description": "Test diagram output matches SVG input contract"
+          }
+        ],
+        "count": 4
+      },
+      {
+        "name": "TestErrorHandling",
+        "description": "Test error handling in pipeline",
+        "methods": [
+          {
+            "name": "test_invalid_ir_handling",
+            "description": "Test handling of invalid IR"
+          },
+          {
+            "name": "test_missing_required_fields",
+            "description": "Test handling of missing required fields"
+          },
+          {
+            "name": "test_malformed_json_handling",
+            "description": "Test handling of malformed JSON"
+          }
+        ],
+        "count": 3
+      },
+      {
+        "name": "TestPipelineConsistency",
+        "description": "Test consistency throughout pipeline",
+        "methods": [
+          {
+            "name": "test_symbol_preservation",
+            "description": "Test that symbols are preserved through pipeline"
+          },
+          {
+            "name": "test_call_preservation",
+            "description": "Test that calls are preserved through pipeline"
+          }
+        ],
+        "count": 2
+      }
+    ]
+  },
+  "total_tests": 47,
+  "files": [
+    {
+      "path": "unit\\test_core_extraction.py",
+      "type": "unit",
+      "category": "Core Extraction",
+      "classes": [
+        {
+          "name": "TestTypeScriptSymbolExtraction",
+          "description": "Test TypeScript symbol extraction",
+          "methods": [
+            {
+              "name": "test_extract_function_declarations",
+              "description": "Test extraction of function declarations"
+            },
+            {
+              "name": "test_extract_arrow_functions",
+              "description": "Test extraction of arrow functions"
+            },
+            {
+              "name": "test_extract_exported_functions",
+              "description": "Test extraction of exported functions"
+            },
+            {
+              "name": "test_extract_class_declarations",
+              "description": "Test extraction of class declarations"
+            },
+            {
+              "name": "test_extract_class_methods",
+              "description": "Test extraction of class methods"
+            }
+          ],
+          "count": 5
+        },
+        {
+          "name": "TestTypeScriptCallResolution",
+          "description": "Test TypeScript call resolution",
+          "methods": [
+            {
+              "name": "test_extract_direct_calls",
+              "description": "Test extraction of direct function calls"
+            },
+            {
+              "name": "test_extract_method_calls",
+              "description": "Test extraction of method calls"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "name": "TestTypeScriptContractExtraction",
+          "description": "Test TypeScript contract extraction",
+          "methods": [
+            {
+              "name": "test_extract_parameter_contracts",
+              "description": "Test extraction of parameter contracts"
+            },
+            {
+              "name": "test_extract_return_type_contracts",
+              "description": "Test extraction of return type contracts"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "name": "TestImportGraphBuilding",
+          "description": "Test import graph construction",
+          "methods": [
+            {
+              "name": "test_parse_import_statements",
+              "description": "Test parsing of import statements"
+            },
+            {
+              "name": "test_resolve_imported_symbols",
+              "description": "Test resolution of imported symbols"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "name": "TestTypeHandling",
+          "description": "Test handling of complex types",
+          "methods": [
+            {
+              "name": "test_extract_generic_types",
+              "description": "Test extraction of generic type parameters"
+            },
+            {
+              "name": "test_extract_union_types",
+              "description": "Test extraction of union types"
+            }
+          ],
+          "count": 2
+        },
+        {
+          "name": "TestIRValidation",
+          "description": "Test IR output validation",
+          "methods": [
+            {
+              "name": "test_ir_schema_validity",
+              "description": "Test that IR follows expected schema"
+            },
+            {
+              "name": "test_ir_symbol_structure",
+              "description": "Test that symbols have required fields"
+            },
+            {
+              "name": "test_ir_call_structure",
+              "description": "Test that calls have required fields"
+            }
+          ],
+          "count": 3
+        }
+      ],
+      "total": 16
+    },
+    {
+      "path": "unit\\test_generators.py",
+      "type": "unit",
+      "category": "Generators",
+      "classes": [
+        {
+          "name": "TestSequenceGeneration",
+          "description": "Test sequence generation from IR",
+          "methods": [
+            {
+              "name": "test_sequence_structure",
+              "description": "Test that generated sequences have correct structure"
+            },
+            {
+              "name": "test_beat_generation",
+              "description": "Test that beats are generated for calls"
+            },
+            {
+              "name": "test_dfs_depth_limiting",
+              "description": "Test that DFS respects depth limit"
+            }
+          ],
+          "count": 3
+        },
+        {
+          "name": "TestDiagramGeneration",
+          "description": "Test Mermaid diagram generation",
+          "methods": [
+            {
+              "name": "test_mermaid_graph_structure",
+              "description": "Test that Mermaid diagrams have correct structure"
+            },
+            {
+              "name": "test_node_creation",
+              "description": "Test that nodes are created for all symbols"
+            },
+            {
+              "name": "test_edge_creation",
+              "description": "Test that edges are created for all calls"
+            },
+            {
+              "name": "test_mermaid_syntax_validation",
+              "description": "Test that generated Mermaid is syntactically valid"
+            }
+          ],
+          "count": 4
+        },
+        {
+          "name": "TestSVGConversion",
+          "description": "Test SVG conversion from Mermaid",
+          "methods": [
+            {
+              "name": "test_svg_structure",
+              "description": "Test that SVG has correct structure"
+            },
+            {
+              "name": "test_svg_dimensions",
+              "description": "Test that SVG has proper dimensions"
+            },
+            {
+              "name": "test_conversion_error_handling",
+              "description": "Test error handling in conversion"
+            }
+          ],
+          "count": 3
+        },
+        {
+          "name": "TestContractValidation",
+          "description": "Test data contract validation between layers",
+          "methods": [
+            {
+              "name": "test_ir_to_sequence_contract",
+              "description": "Test that IR output matches sequence input contract"
+            },
+            {
+              "name": "test_sequence_to_diagram_contract",
+              "description": "Test that sequence output matches diagram input contract"
+            },
+            {
+              "name": "test_diagram_to_svg_contract",
+              "description": "Test that diagram output matches SVG input contract"
+            }
+          ],
+          "count": 3
+        },
+        {
+          "name": "TestPipelineIntegration",
+          "description": "Test integration between generator stages",
+          "methods": [
+            {
+              "name": "test_ir_flows_to_sequences",
+              "description": "Test that IR can flow to sequence generation"
+            },
+            {
+              "name": "test_sequences_flow_to_diagrams",
+              "description": "Test that sequences can flow to diagram generation"
+            },
+            {
+              "name": "test_diagrams_flow_to_svg",
+              "description": "Test that diagrams can flow to SVG conversion"
+            }
+          ],
+          "count": 3
+        }
+      ],
+      "total": 16
+    },
+    {
+      "path": "integration\\test_pipeline.py",
+      "type": "integration",
+      "category": "Pipeline",
+      "classes": [
+        {
+          "name": "TestFullPipeline",
+          "description": "Test complete regeneration pipeline",
+          "methods": [
+            {
+              "name": "test_extraction_phase",
+              "description": "Test Phase 1: Source extraction"
+            },
+            {
+              "name": "test_ir_generation",
+              "description": "Test Phase 2: IR generation"
+            },
+            {
+              "name": "test_sequence_generation",
+              "description": "Test Phase 3: Sequence generation"
+            },
+            {
+              "name": "test_diagram_generation",
+              "description": "Test Phase 4: Diagram generation"
+            },
+            {
+              "name": "test_svg_conversion",
+              "description": "Test Phase 5: SVG conversion"
+            },
+            {
+              "name": "test_analysis_extraction",
+              "description": "Test Phase 6: Analysis extraction"
+            }
+          ],
+          "count": 6
+        },
+        {
+          "name": "TestDataFlowValidation",
+          "description": "Test data flow between pipeline stages",
+          "methods": [
+            {
+              "name": "test_extraction_to_ir_contract",
+              "description": "Test extraction output matches IR input contract"
+            },
+            {
+              "name": "test_ir_to_sequence_contract",
+              "description": "Test IR output matches sequence input contract"
+            },
+            {
+              "name": "test_sequence_to_diagram_contract",
+              "description": "Test sequence output matches diagram input contract"
+            },
+            {
+              "name": "test_diagram_to_svg_contract",
+              "description": "Test diagram output matches SVG input contract"
+            }
+          ],
+          "count": 4
+        },
+        {
+          "name": "TestErrorHandling",
+          "description": "Test error handling in pipeline",
+          "methods": [
+            {
+              "name": "test_invalid_ir_handling",
+              "description": "Test handling of invalid IR"
+            },
+            {
+              "name": "test_missing_required_fields",
+              "description": "Test handling of missing required fields"
+            },
+            {
+              "name": "test_malformed_json_handling",
+              "description": "Test handling of malformed JSON"
+            }
+          ],
+          "count": 3
+        },
+        {
+          "name": "TestPipelineConsistency",
+          "description": "Test consistency throughout pipeline",
+          "methods": [
+            {
+              "name": "test_symbol_preservation",
+              "description": "Test that symbols are preserved through pipeline"
+            },
+            {
+              "name": "test_call_preservation",
+              "description": "Test that calls are preserved through pipeline"
+            }
+          ],
+          "count": 2
+        }
+      ],
+      "total": 15
+    }
+  ]
+}
