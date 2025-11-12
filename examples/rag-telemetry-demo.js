@@ -1,0 +1,255 @@
+#!/usr/bin/env node
+
+/**
+ * RAG Telemetry Demo - How to use the RAG System with Telemetry
+ *
+ * This demo shows how to:
+ * 1. Load telemetry logs from conductor
+ * 2. Use the RAG system to enrich AI-generated components with real behavior patterns
+ * 3. See the difference between library-only vs telemetry-enhanced enrichment
+ */
+
+import { RAGEnrichmentTelemetryService } from '../packages/library/dist/index.js';
+import fs from 'fs/promises';
+import path from 'path';
+
+// Simple LogLoader implementation for demo purposes
+class SimpleLogLoader {
+  async loadAndChunk(filePath, options = { chunkSize: 50 }) {
+    const content = await fs.readFile(filePath, 'utf-8');
+    const lines = content.split(/\r?\n/).filter(Boolean);
+    const chunks = [];
+
+    for (let i = 0; i < lines.length; i += options.chunkSize) {
+      const chunkLines = lines.slice(i, i + options.chunkSize);
+      chunks.push({
+        lines: chunkLines,
+        metadata: {
+          timestamp: this.extractTimestamp(chunkLines[0]) || new Date().toISOString(),
+          eventType: this.inferEventType(chunkLines),
+          sessionId: this.extractSessionId(chunkLines) || 'demo-session'
+        }
+      });
+    }
+
+    return chunks;
+  }
+
+  extractTimestamp(line) {
+    if (!line) return null;
+    const match = line.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
+    return match ? match[0] : null;
+  }
+
+  inferEventType(lines) {
+    const content = lines.join(' ');
+    if (content.includes('PluginMounted')) return 'PluginMounted';
+    if (content.includes('Sequence')) return 'Sequence';
+    if (content.includes('Event')) return 'Event';
+    if (content.includes('Beat')) return 'Beat';
+    if (content.includes('Routing')) return 'Routing';
+    return 'Unknown';
+  }
+
+  extractSessionId(lines) {
+    const content = lines.join(' ');
+    const match = content.match(/session[:\s]+([a-zA-Z0-9\-]+)/i);
+    return match ? match[1] : null;
+  }
+}
+
+class RAGTelemetryDemo {
+  constructor() {
+    this.ragService = new RAGEnrichmentTelemetryService();
+    this.logLoader = new SimpleLogLoader();
+  }
+
+  async run() {
+    console.log('🎼 RAG Telemetry Demo - Component Enrichment with Real Behavior Data');
+    console.log('='.repeat(80));
+
+    try {
+      // Step 1: Load telemetry logs
+      console.log('\n📊 Step 1: Loading telemetry logs...');
+      const telemetryChunks = await this.loadTelemetryLogs();
+      console.log(`✅ Loaded ${telemetryChunks.length} log chunks`);
+
+      // Step 2: Load library components
+      console.log('\n📚 Step 2: Loading library components...');
+      const libraryComponents = await this.loadLibraryComponents();
+      console.log(`✅ Loaded ${libraryComponents.length} library components`);
+
+      // Step 3: Create a sample AI-generated component
+      console.log('\n🤖 Step 3: Creating sample AI-generated component...');
+      const aiComponent = this.createSampleAIComponent();
+      console.log(`✅ Created AI component: ${aiComponent.metadata.type} - ${aiComponent.metadata.name}`);
+
+      // Step 4: Enrich with telemetry
+      console.log('\n🚀 Step 4: Enriching with telemetry data...');
+      const enrichmentResult = await this.ragService.enrichComponentWithTelemetry(
+        aiComponent,
+        libraryComponents,
+        telemetryChunks
+      );
+
+      // Step 5: Display results
+      console.log('\n📋 Step 5: Enrichment Results');
+      this.displayResults(enrichmentResult);
+
+      // Step 6: Show telemetry insights
+      if (enrichmentResult.telemetryUsed) {
+        console.log('\n🔍 Step 6: Telemetry Insights');
+        this.displayTelemetryInsights(enrichmentResult);
+      }
+
+    } catch (error) {
+      console.error('❌ Demo failed:', error.message);
+      process.exit(1);
+    }
+  }
+
+  async loadTelemetryLogs() {
+  const logPath = path.join(__dirname, 'sample-telemetry.log');
+    
+    try {
+      await fs.access(logPath);
+      return await this.logLoader.loadAndChunk(logPath, { chunkSize: 50 });
+  } catch {
+      console.log('⚠️  Sample telemetry log not found, using empty chunks');
+      return [];
+    }
+  }
+
+  async loadLibraryComponents() {
+    const componentsDir = path.join(process.cwd(), 'public', 'json-components');
+    
+    try {
+      const files = await fs.readdir(componentsDir);
+      const components = [];
+      
+      for (const file of files) {
+        if (file.endsWith('.json') && file !== 'index.json') {
+          const filePath = path.join(componentsDir, file);
+          const content = await fs.readFile(filePath, 'utf-8');
+          components.push(JSON.parse(content));
+        }
+      }
+      
+      return components;
+  } catch {
+      console.log('⚠️  Library components not found, using empty array');
+      return [];
+    }
+  }
+
+  createSampleAIComponent() {
+    return {
+      metadata: {
+        type: 'button',
+        name: 'AI Generated Button',
+        description: 'A button component generated by AI'
+      },
+      ui: {
+        tag: 'button',
+        content: 'Click Me',
+        css: {
+          backgroundColor: '#007bff',
+          color: 'white',
+          padding: '10px 20px',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer'
+        }
+      },
+      interactions: {},
+      integration: {}
+    };
+  }
+
+  displayResults(result) {
+    console.log(`📊 Enrichment Strategy: ${result.enrichmentStrategy}`);
+    console.log(`🎯 Confidence Score: ${(result.confidence * 100).toFixed(1)}%`);
+    console.log(`🔬 Telemetry Used: ${result.telemetryUsed ? '✅ Yes' : '❌ No'}`);
+    console.log(`🔗 Interaction Count: ${result.interactionCount}`);
+    console.log(`📚 Source Components: ${result.sourceComponents.join(', ') || 'None'}`);
+
+    if (result.component.interactions && Object.keys(result.component.interactions).length > 0) {
+      console.log('\n🎭 Interactions Added:');
+      Object.keys(result.component.interactions).forEach(key => {
+        console.log(`   • ${key}`);
+      });
+    }
+
+    if (result.component.integration && Object.keys(result.component.integration).length > 0) {
+      console.log('\n🔧 Integration Data Added:');
+      Object.keys(result.component.integration).forEach(key => {
+        if (key !== 'telemetryInsights') {
+          console.log(`   • ${key}`);
+        }
+      });
+    }
+  }
+
+  displayTelemetryInsights(result) {
+    const insights = result.component.integration?.telemetryInsights;
+    if (!insights) return;
+
+    console.log(`🔢 Operation Count: ${insights.operationCount}`);
+    console.log(`⏱️  Average Execution Time: ${insights.averageExecutionTime?.toFixed(2)}ms`);
+    
+    if (insights.commonOperations?.length > 0) {
+      console.log(`🎯 Common Operations: ${insights.commonOperations.join(', ')}`);
+    }
+    
+    if (insights.dataFlowPatterns?.length > 0) {
+      console.log(`🌊 Data Flow Patterns: ${insights.dataFlowPatterns.length} patterns detected`);
+    }
+
+    if (result.extractedPatterns) {
+      console.log('\n📈 Extracted Behavior Patterns:');
+      const pattern = result.extractedPatterns;
+      console.log(`   Component Type: ${pattern.componentType}`);
+      console.log(`   Operations: ${Object.keys(pattern.operations).length}`);
+      
+      Object.entries(pattern.operations).forEach(([op, data]) => {
+        console.log(`   • ${op}: ${data.frequency} times, avg ${data.averageDuration?.toFixed(2)}ms`);
+      });
+    }
+  }
+}
+
+// CLI interface
+if (process.argv.length > 2) {
+  const command = process.argv[2];
+  
+  switch (command) {
+    case 'demo':
+      new RAGTelemetryDemo().run();
+      break;
+    case 'help':
+      console.log(`
+🎼 RAG Telemetry Demo Commands:
+
+  node examples/rag-telemetry-demo.js demo    # Run full demo
+  node examples/rag-telemetry-demo.js help    # Show this help
+
+📋 What this demo shows:
+  • How to load conductor telemetry logs
+  • How to use RAGEnrichmentTelemetryService
+  • Difference between library-only vs telemetry-enhanced enrichment
+  • Real behavior patterns extracted from logs
+  • Telemetry insights and performance data
+
+🚀 Prerequisites:
+  • Telemetry logs in .logs/ directory
+  • Library components in public/json-components/
+  • Built packages (npm run build:packages)
+      `);
+      break;
+    default:
+      console.log('❌ Unknown command. Use "help" for usage information.');
+      process.exit(1);
+  }
+} else {
+  new RAGTelemetryDemo().run();
+}

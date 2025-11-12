@@ -1,170 +1,194 @@
+/**
+ * RAG Enrichment Service with Telemetry Support
+ *
+ * Extends RAG enrichment to use conductor telemetry logs to extract realistic
+ * component behavior patterns and interactions.
+ */
+
 import { ComponentJSON } from './openai.types';
 import { RAGEnrichmentService, EnrichmentResult } from './rag-enrichment.service';
-
-export interface TelemetryChunk {
-  lines: string[];
-  metadata: { timestamp: string };
-}
+import { ComponentBehaviorExtractor, ComponentBehaviorPattern, LogChunk } from '../telemetry/component-behavior-extractor';
 
 export interface TelemetryEnrichmentResult extends EnrichmentResult {
   telemetryUsed: boolean;
+  extractedPatterns?: ComponentBehaviorPattern;
   interactionCount: number;
-  extractedPatterns?: {
-    componentType: string;
-    operations: Record<string, any>;
-  };
-}
-
-export interface InteractionWithTelemetry {
-  pluginId: string;
-  sequenceId: string;
-  frequency?: number;
-  averageDuration?: number;
-  eventSequences?: Array<{
-    sequenceId: string;
-    sequenceName: string;
-    eventCount: number;
-    totalDuration: number;
-  }>;
 }
 
 export class RAGEnrichmentTelemetryService extends RAGEnrichmentService {
+  private behaviorExtractor: ComponentBehaviorExtractor;
+
+  constructor() {
+    super();
+    this.behaviorExtractor = new ComponentBehaviorExtractor();
+  }
+
   /**
-   * Enrich AI-generated component with telemetry data
+   * Enrich AI-generated component using both library and telemetry data
    */
   async enrichComponentWithTelemetry(
     aiComponent: ComponentJSON,
     libraryComponents: ComponentJSON[],
-    telemetryChunks: TelemetryChunk[]
+    telemetryChunks: LogChunk[]
   ): Promise<TelemetryEnrichmentResult> {
-    // First, get base enrichment
-    const baseResult = await this.enrichComponent(aiComponent, libraryComponents);
+    // First, get base enrichment from library
+    const baseEnrichment = await this.enrichComponent(aiComponent, libraryComponents);
 
-    if (!telemetryChunks || telemetryChunks.length === 0) {
+    // Extract behavior patterns from telemetry
+    const patterns = await this.behaviorExtractor.extractPatterns(telemetryChunks);
+
+    // Find patterns matching the component type
+    const componentType = aiComponent.metadata.type.toLowerCase();
+    const matchingPattern = this.findMatchingPattern(componentType, patterns);
+
+    if (!matchingPattern) {
+      // No telemetry patterns found, return base enrichment
       return {
-        ...baseResult,
+        ...baseEnrichment,
         telemetryUsed: false,
-        interactionCount: Object.keys(baseResult.component.interactions || {}).length
+        interactionCount: Object.keys(baseEnrichment.component.interactions || {}).length
       };
     }
 
-    // Extract patterns from telemetry
-    const extractedPatterns = this.extractPatternsFromTelemetry(telemetryChunks, aiComponent);
-
-    // Enrich interactions with telemetry data
-    const enrichedInteractions = this.enrichInteractionsWithTelemetry(
-      baseResult.component.interactions || {},
-      telemetryChunks
+    // Enrich with telemetry data
+    const telemetryEnriched = this.enrichWithTelemetryPatterns(
+      baseEnrichment.component,
+      matchingPattern
     );
 
-    // Update component with enriched interactions
-    const enrichedComponent: ComponentJSON = {
-      ...baseResult.component,
-      interactions: enrichedInteractions
-    };
-
-    const interactionCount = Object.keys(enrichedInteractions).length;
-
     return {
-      component: enrichedComponent,
-      sourceComponents: baseResult.sourceComponents,
-      enrichmentStrategy: baseResult.enrichmentStrategy,
-      confidence: Math.min(1.0, baseResult.confidence + 0.1), // Boost confidence with telemetry
+      component: telemetryEnriched,
+      sourceComponents: baseEnrichment.sourceComponents,
+      enrichmentStrategy: 'similar-merge',
+      confidence: Math.min(0.99, baseEnrichment.confidence + 0.15),
       telemetryUsed: true,
-      interactionCount,
-      extractedPatterns
+      extractedPatterns: matchingPattern,
+      interactionCount: Object.keys(telemetryEnriched.interactions || {}).length
     };
   }
 
-  private extractPatternsFromTelemetry(
-    chunks: TelemetryChunk[],
-    component: ComponentJSON
-  ): { componentType: string; operations: Record<string, any> } {
-    const operations: Record<string, any> = {};
+  /**
+   * Find pattern matching the component type
+   */
+  private findMatchingPattern(
+    componentType: string,
+    patterns: ComponentBehaviorPattern[]
+  ): ComponentBehaviorPattern | null {
+    // Try exact match first
+    let match = patterns.find(p => p.componentType === componentType);
+    if (match) return match;
 
-    // Simple pattern extraction - count occurrences of operations in telemetry
-    for (const chunk of chunks) {
-      for (const line of chunk.lines) {
-        // Extract operation patterns from event logs
-        if (line.includes('create')) operations.create = (operations.create || 0) + 1;
-        if (line.includes('update')) operations.update = (operations.update || 0) + 1;
-        if (line.includes('delete')) operations.delete = (operations.delete || 0) + 1;
-        if (line.includes('load')) operations.load = (operations.load || 0) + 1;
-        if (line.includes('click')) operations.click = (operations.click || 0) + 1;
-        if (line.includes('drag')) operations.drag = (operations.drag || 0) + 1;
-        if (line.includes('resize')) operations.resize = (operations.resize || 0) + 1;
+    // Try partial match
+    match = patterns.find(p =>
+      p.componentType.includes(componentType) || componentType.includes(p.componentType)
+    );
+    if (match) return match;
+
+    // Return first pattern as fallback
+    return patterns.length > 0 ? patterns[0] : null;
+  }
+
+  /**
+   * Enrich component with telemetry-extracted patterns
+   */
+  private enrichWithTelemetryPatterns(
+    component: ComponentJSON,
+    pattern: ComponentBehaviorPattern
+  ): ComponentJSON {
+    const enriched = { ...component };
+
+    // Merge interactions from telemetry patterns
+    const telemetryInteractions = this.extractInteractionsFromPattern(pattern);
+    if (Object.keys(telemetryInteractions).length > 0) {
+      enriched.interactions = {
+        ...enriched.interactions,
+        ...telemetryInteractions
+      };
+    }
+
+    // Enhance integration with telemetry insights
+    if (!enriched.integration) {
+      enriched.integration = {};
+    }
+
+    // Add telemetry-based properties
+    enriched.integration.telemetryInsights = {
+      operationCount: Object.keys(pattern.operations).length,
+      averageExecutionTime: this.calculateAverageExecutionTime(pattern),
+      commonOperations: Object.keys(pattern.operations).slice(0, 5),
+      dataFlowPatterns: this.extractDataFlowSummary(pattern)
+    };
+
+    return enriched;
+  }
+
+  /**
+   * Extract interactions from behavior pattern
+   */
+  private extractInteractionsFromPattern(pattern: ComponentBehaviorPattern): Record<string, any> {
+    const interactions: Record<string, any> = {};
+
+    for (const [operation, opData] of Object.entries(pattern.operations)) {
+      // Create interaction for each operation
+      const topMapping = opData.pluginSequenceMappings[0];
+      if (topMapping) {
+        interactions[`canvas.component.${operation}`] = {
+          pluginId: topMapping.pluginId,
+          sequenceId: topMapping.sequenceId,
+          topic: topMapping.topic,
+          frequency: opData.frequency,
+          averageDuration: Math.round(opData.averageDuration),
+          eventSequences: opData.eventSequences.map(seq => ({
+            sequenceId: seq.sequenceId,
+            sequenceName: seq.sequenceName,
+            eventCount: seq.eventCount,
+            totalDuration: seq.totalDuration
+          }))
+        };
       }
     }
 
-    return {
-      componentType: component.metadata.type,
-      operations
-    };
+    return interactions;
   }
 
-  private enrichInteractionsWithTelemetry(
-    baseInteractions: Record<string, any>,
-    chunks: TelemetryChunk[]
-  ): Record<string, InteractionWithTelemetry> {
-    const enriched: Record<string, InteractionWithTelemetry> = { ...baseInteractions };
+  /**
+   * Calculate average execution time across all operations
+   */
+  private calculateAverageExecutionTime(pattern: ComponentBehaviorPattern): number {
+    const durations = Object.values(pattern.operations)
+      .filter(op => op.averageDuration > 0)
+      .map(op => op.averageDuration);
 
-    // Analyze telemetry for interaction patterns
-    const interactionStats: Record<string, {
-      frequency: number;
-      totalDuration: number;
-      eventSequences: Array<{
-        sequenceId: string;
-        sequenceName: string;
-        eventCount: number;
-        totalDuration: number;
-      }>;
-    }> = {};
+    if (durations.length === 0) return 0;
+    return Math.round(durations.reduce((a, b) => a + b, 0) / durations.length);
+  }
 
-    for (const chunk of chunks) {
-      for (const line of chunk.lines) {
-        // Look for interaction patterns in logs
-        const interactionMatch = line.match(/interaction:(\w+\.\w+\.\w+)/);
-        if (interactionMatch) {
-          const interactionKey = interactionMatch[1];
-          if (!interactionStats[interactionKey]) {
-            interactionStats[interactionKey] = {
-              frequency: 0,
-              totalDuration: 0,
-              eventSequences: []
-            };
-          }
-          interactionStats[interactionKey].frequency++;
+  /**
+   * Extract data flow summary from pattern
+   */
+  private extractDataFlowSummary(pattern: ComponentBehaviorPattern): any {
+    const summary: Record<string, any> = {};
 
-          // Extract duration if present
-          const durationMatch = line.match(/duration:(\d+)/);
-          if (durationMatch) {
-            interactionStats[interactionKey].totalDuration += parseInt(durationMatch[1]);
-          }
+    for (const [operation, opData] of Object.entries(pattern.operations)) {
+      if (opData.dataFlowPatterns.length > 0) {
+        const addedFields = opData.dataFlowPatterns
+          .filter(df => df.changeType === 'added')
+          .flatMap(df => df.changes);
+
+        const removedFields = opData.dataFlowPatterns
+          .filter(df => df.changeType === 'removed')
+          .flatMap(df => df.changes);
+
+        if (addedFields.length > 0 || removedFields.length > 0) {
+          summary[operation] = {
+            fieldsAdded: [...new Set(addedFields)],
+            fieldsRemoved: [...new Set(removedFields)]
+          };
         }
       }
     }
 
-    // Merge telemetry data into interactions
-    for (const [key, stats] of Object.entries(interactionStats)) {
-      if (enriched[key]) {
-        enriched[key] = {
-          ...enriched[key],
-          frequency: stats.frequency,
-          averageDuration: stats.totalDuration / stats.frequency,
-          eventSequences: stats.eventSequences
-        };
-      } else {
-        // Add new interaction from telemetry
-        enriched[key] = {
-          pluginId: 'TelemetryDerivedPlugin',
-          sequenceId: `${key}-sequence`,
-          frequency: stats.frequency,
-          averageDuration: stats.totalDuration / stats.frequency,
-          eventSequences: stats.eventSequences
-        };
-      }
-    }
-
-    return enriched;
+    return summary;
   }
 }
+

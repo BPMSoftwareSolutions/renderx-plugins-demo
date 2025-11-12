@@ -32,3 +32,13 @@ export async function register(conductor: any) {
 
 export { handlers } from './symphonies/load.symphony';
 export { LibraryPanel } from './ui/LibraryPanel';
+
+// RAG and Telemetry Services
+export { RAGEnrichmentService } from './services/rag-enrichment.service';
+export { RAGEnrichmentTelemetryService } from './services/rag-enrichment-telemetry.service';
+export { ComponentBehaviorExtractor } from './telemetry/component-behavior-extractor';
+
+// Types
+export type { ComponentJSON } from './services/openai.types';
+export type { EnrichmentResult, TelemetryEnrichmentResult } from './services/rag-enrichment-telemetry.service';
+export type { ComponentBehaviorPattern, PluginSequenceMapping, LogChunk } from './telemetry/component-behavior-extractor';

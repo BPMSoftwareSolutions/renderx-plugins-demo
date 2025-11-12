@@ -75,7 +75,7 @@ export class TemplateDiscoveryService {
   }
 
   // Legacy: for backward compatibility with old tests
-  rankSimilarComponents(query: string, constraints?: any): Array<{ component: any; score: number; explanation: string }> {
+  rankSimilarComponents(query: string, _constraints?: any): Array<{ component: any; score: number; explanation: string }> {
     const q = query.toLowerCase();
     const results = this.componentLibrary
       .map(component => {
