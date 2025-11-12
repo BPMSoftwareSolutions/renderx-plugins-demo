@@ -10,6 +10,12 @@ export interface AnalyzerOutput {
   earliest: string;
   latest: string;
   durationMs: number;
+  /** Optional array of raw events with absolute timestamps for fine-grained mapping */
+  rawEvents?: Array<{
+    timestamp: string; // ISO string
+    type: string;
+    name: string;
+  }>;
   pluginMounts?: {
     byPlugin?: Record<string, any>;
   };
@@ -134,6 +140,7 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
             name: `${typeMapping.displayName}`,
             type: typeMapping.type as TimelineEvent['type'],
             color: typeMapping.color,
+            sourceTimestamp: new Date(timestamp).getTime(),
             details: {
               plugin: pluginName,
               timestamp,
@@ -158,17 +165,43 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
         const seqName: string | undefined = seqData.name || undefined;
         const mapping = (seqName && SEQUENCE_TYPE_MAP[seqName]) || SEQUENCE_TYPE_MAP.default;
 
+        // Derive pins (beat markers). If we only have count and timestamps array, treat each timestamp as a beat position.
+        let pins: TimelineEvent['pins'] | undefined;
+        if (Array.isArray(seqData.timestamps) && seqData.timestamps.length > 0) {
+          // If timestamps length > 1, map each to a pin offset (relative to first)
+          if (seqData.timestamps.length > 1) {
+            pins = seqData.timestamps.map((ts: string, idx: number) => {
+              const pinAbs = new Date(ts).getTime();
+              const pinOffset = pinAbs - new Date(seqData.timestamps[0]).getTime();
+              return {
+                offset: pinOffset,
+                label: `Beat ${idx + 1}`,
+                type: 'beat',
+                color: '#f59e0b',
+                sourceTimestamp: pinAbs,
+              };
+            });
+          } else {
+            // Single timestamp sequence: create a single pin at offset 0
+            pins = [{ offset: 0, label: 'Beat 1', type: 'beat', color: '#f59e0b', sourceTimestamp: new Date(seqData.timestamps[0]).getTime() }];
+          }
+        }
+
         events.push({
           time: startTime,
           duration,
           name: mapping.displayName || (seqName ? seqName : `Sequence ${seqId.slice(0, 8)}`),
           type: mapping.type,
           color: mapping.color,
+          sourceTimestamp: new Date(seqData.timestamps[0]).getTime(),
           details: {
             sequenceId: seqId,
             sequenceName: seqName || seqId,
             beats: seqData.timestamps.length,
+            firstTimestamp: seqData.timestamps[0],
+            lastTimestamp: seqData.timestamps[seqData.timestamps.length - 1],
           },
+          pins,
         });
       }
     });
@@ -191,9 +224,12 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
           name: typeMapping.displayName,
           type: typeMapping.type as TimelineEvent['type'],
           color: typeMapping.color,
+          sourceTimestamp: new Date(topicData.firstSeen).getTime(),
           details: {
             topic: topicName,
             messages: topicData.count,
+            firstSeen: topicData.firstSeen,
+            lastSeen: topicData.lastSeen,
           },
         });
       }
@@ -232,9 +268,12 @@ export function analyzerToTimelineData(analyzerData: AnalyzerOutput): TimelineDa
         name: gapName,
         type: gapType,
         color: gapColor,
+        sourceTimestamp: new Date(gap.start).getTime(),
         details: {
           durationMs: duration,
           category: 'performance-gap',
+          start: gap.start,
+          end: gap.end,
         },
       });
     });

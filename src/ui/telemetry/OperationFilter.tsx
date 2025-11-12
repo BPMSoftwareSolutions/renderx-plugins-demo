@@ -275,6 +275,15 @@ export function OperationFilterPanel({
                 if (preset.filter.minDuration) {
                   setMinDuration(preset.filter.minDuration);
                 }
+                // Apply the preset filter immediately (previously missing)
+                const applied: OperationFilter = {
+                  strategyId: preset.filter.strategyId,
+                  query: preset.filter.query,
+                  // Only include minDuration if defined for performance-related presets
+                  ...(preset.filter.minDuration !== undefined ? { minDuration: preset.filter.minDuration } : {}),
+                  eventTypes: preset.filter.eventTypes,
+                };
+                onFilterChange(applied);
                 onPressetSelect(preset);
               }}
               className="telemetry-preset-button"

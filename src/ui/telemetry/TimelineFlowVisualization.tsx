@@ -9,6 +9,16 @@ export interface TimelineEvent {
   type: 'init' | 'ui' | 'data' | 'render' | 'interaction' | 'create' | 'gap' | 'blocked' | 'plugin' | 'sequence' | 'topic';
   color: string;
   details?: Record<string, any>;
+  /** Absolute source timestamp in epoch milliseconds, if available */
+  sourceTimestamp?: number;
+  /** Optional beat/annotation pins within this event, offsets in ms from event start */
+  pins?: Array<{
+    offset: number; // ms offset from event.time
+    label?: string;
+    type?: string;
+    color?: string;
+    sourceTimestamp?: number; // absolute if known
+  }>;
 }
 
 export interface TimelineData {
@@ -39,7 +49,8 @@ export default function TimelineFlowVisualization({
 
   const { events, totalDuration } = data;
   const containerWidth = 1200;
-  const pixelsPerMs = (containerWidth - 40) / totalDuration;
+  const basePixelsPerMs = (containerWidth - 40) / totalDuration;
+  const pixelsPerMs = basePixelsPerMs * zoom;
 
   // Animation loop
   useEffect(() => {
@@ -113,6 +124,36 @@ export default function TimelineFlowVisualization({
     return stats;
   }, [events]);
 
+  // Build a compact layered layout: minimal vertical rows, only when events overlap
+  const { placedEvents, layerCount } = useMemo(() => {
+    // Sort events by start time (stable by original index)
+    const indexed = events.map((e, i) => ({ e, i }));
+    indexed.sort((a, b) => (a.e.time - b.e.time) || (a.i - b.i));
+
+    // For quick lookup of original indices (used for hover/list consistency)
+    const endTimes: number[] = []; // per layer last end time
+    const placed: Array<{ e: TimelineEvent; originalIndex: number; layer: number }> = [];
+
+    for (const { e, i } of indexed) {
+      // Find first layer where this event does not overlap (end <= start)
+      let assigned = -1;
+      for (let layer = 0; layer < endTimes.length; layer++) {
+        if (endTimes[layer] <= e.time) {
+          assigned = layer;
+          endTimes[layer] = e.time + e.duration;
+          break;
+        }
+      }
+      if (assigned === -1) {
+        assigned = endTimes.length;
+        endTimes.push(e.time + e.duration);
+      }
+      placed.push({ e, originalIndex: i, layer: assigned });
+    }
+
+    return { placedEvents: placed, layerCount: endTimes.length };
+  }, [events]);
+
   const handleExport = () => {
     const csvContent = [
       ['Time (ms)', 'Duration (ms)', 'Name', 'Type', 'Start', 'End'],
@@ -121,8 +162,12 @@ export default function TimelineFlowVisualization({
         e.duration,
         e.name,
         e.type,
-        new Date(data.sessionStart ? new Date(data.sessionStart).getTime() + e.time : e.time).toISOString(),
-        new Date(data.sessionStart ? new Date(data.sessionStart).getTime() + e.time + e.duration : e.time + e.duration).toISOString(),
+        e.sourceTimestamp
+          ? new Date(e.sourceTimestamp).toISOString()
+          : new Date(data.sessionStart ? new Date(data.sessionStart).getTime() + e.time : e.time).toISOString(),
+        e.sourceTimestamp
+          ? new Date(e.sourceTimestamp + e.duration).toISOString()
+          : new Date(data.sessionStart ? new Date(data.sessionStart).getTime() + e.time + e.duration : e.time + e.duration).toISOString(),
       ]),
     ]
       .map(row => row.map(cell => `"${cell}"`).join(','))
@@ -250,14 +295,21 @@ export default function TimelineFlowVisualization({
             <div className="telemetry-timeline-section">
               <h2 className="telemetry-timeline-title">
                 <div className="telemetry-timeline-title-icon"></div>
-                Operation Waterfall Timeline
+                Compact Timeline (minimal layering)
               </h2>
 
-              <svg width="100%" height={60 * events.length + 40} style={{ minWidth: containerWidth }} className="telemetry-waterfall-svg">
+              {(() => {
+                const layerHeight = 32; // px per layer
+                const barHeight = 22;   // px bar height
+                const topMargin = 20;
+                const bottomMargin = 40;
+                const svgHeight = layerCount * layerHeight + topMargin + bottomMargin;
+                return (
+                  <svg width="100%" height={svgHeight} style={{ minWidth: containerWidth }} className="telemetry-waterfall-svg">
                 {/* Timeline background */}
                 <defs>
                   <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
-                    <line x1="0" y1="0" x2="0" y2={`${60 * events.length}`} stroke="#334155" strokeWidth="0.5" />
+                    <line x1="0" y1="0" x2="0" y2={`${svgHeight}`} stroke="#334155" strokeWidth="0.5" />
                   </pattern>
                 </defs>
 
@@ -270,14 +322,14 @@ export default function TimelineFlowVisualization({
                         x1={20 + t * 1000 * pixelsPerMs}
                         y1="0"
                         x2={20 + t * 1000 * pixelsPerMs}
-                        y2={60 * events.length + 20}
+                        y2={svgHeight - 20}
                         stroke="#334155"
                         strokeWidth="1"
                         strokeDasharray="4,4"
                       />
                       <text
                         x={20 + t * 1000 * pixelsPerMs}
-                        y={60 * events.length + 35}
+                        y={svgHeight - 5}
                         textAnchor="middle"
                         fontSize="12"
                         fill="#94a3b8"
@@ -288,17 +340,18 @@ export default function TimelineFlowVisualization({
                   );
                 })}
 
-                {/* Events */}
-                {events.map((event, idx) => {
+                {/* Events placed with minimal layering (with optional beat pins) */}
+                {placedEvents.map((p) => {
+                  const event = p.e;
                   const x = 20 + event.time * pixelsPerMs;
                   const width = Math.max(event.duration * pixelsPerMs, 2);
-                  const y = 20 + idx * 60;
+                  const y = topMargin + p.layer * layerHeight;
                   const isActive = currentTime >= event.time && currentTime <= event.time + event.duration;
 
                   return (
                     <g
-                      key={idx}
-                      onMouseEnter={() => setHoveredEvent(idx)}
+                      key={`${p.originalIndex}-${p.layer}`}
+                      onMouseEnter={() => setHoveredEvent(p.originalIndex)}
                       onMouseLeave={() => setHoveredEvent(null)}
                       onClick={() => onEventClick?.(event)}
                       style={{ cursor: onEventClick ? 'pointer' : 'default' }}
@@ -308,9 +361,9 @@ export default function TimelineFlowVisualization({
                         x={x}
                         y={y}
                         width={width}
-                        height="40"
+                        height={barHeight}
                         fill={event.color || getEventColor(event.type)}
-                        opacity={hoveredEvent === idx ? 1 : 0.7}
+                        opacity={hoveredEvent === p.originalIndex ? 1 : 0.7}
                         rx="4"
                         className="transition-opacity"
                         style={{
@@ -318,11 +371,39 @@ export default function TimelineFlowVisualization({
                         }}
                       />
 
+                      {/* Beat pins */}
+                      {event.pins && event.pins.map((pin, idx) => {
+                        const pinX = x + pin.offset * pixelsPerMs;
+                        return (
+                          <g key={`pin-${idx}`} className="telemetry-beat-pin">
+                            <path
+                              d={`M ${pinX} ${y - 4} L ${pinX - 4} ${y + 4} L ${pinX + 4} ${y + 4} Z`}
+                              fill={pin.color || '#f59e0b'}
+                              stroke="#1e293b"
+                              strokeWidth="1"
+                              opacity={hoveredEvent === p.originalIndex ? 1 : 0.85}
+                            />
+                            {zoom > 0.9 && (
+                              <text
+                                x={pinX}
+                                y={y - 8}
+                                textAnchor="middle"
+                                fontSize="9"
+                                fill="#e2e8f0"
+                                style={{ pointerEvents: 'none' }}
+                              >
+                                {pin.label}
+                              </text>
+                            )}
+                          </g>
+                        );
+                      })}
+
                       {/* Event label */}
                       {width > 60 && (
                         <text
                           x={x + width / 2}
-                          y={y + 25}
+                          y={y + barHeight - 6}
                           textAnchor="middle"
                           fontSize="11"
                           fill="white"
@@ -333,12 +414,12 @@ export default function TimelineFlowVisualization({
                         </text>
                       )}
 
-                      {/* Duration label on hover */}
-                      {hoveredEvent === idx && (
+                      {/* Hover detail (includes beats count if present) */}
+                      {hoveredEvent === p.originalIndex && (
                         <g>
                           <rect
                             x={x}
-                            y={y - 30}
+                            y={Math.max(0, y - 30)}
                             width="120"
                             height="25"
                             fill="#1e293b"
@@ -347,13 +428,13 @@ export default function TimelineFlowVisualization({
                           />
                           <text
                             x={x + 60}
-                            y={y - 10}
+                            y={Math.max(12, y - 10)}
                             textAnchor="middle"
                             fontSize="12"
                             fill="#e2e8f0"
                             fontWeight="bold"
                           >
-                            {event.name} - {event.duration}ms
+                            {event.name} - {event.duration}ms{event.pins ? ` • ${event.pins.length} beats` : ''}
                           </text>
                         </g>
                       )}
@@ -362,7 +443,7 @@ export default function TimelineFlowVisualization({
                       {isActive && (
                         <circle
                           cx={20 + currentTime * pixelsPerMs}
-                          cy={y + 20}
+                          cy={y + barHeight / 2}
                           r="5"
                           fill="#06b6d4"
                           style={{ pointerEvents: 'none' }}
@@ -371,7 +452,20 @@ export default function TimelineFlowVisualization({
                     </g>
                   );
                 })}
-              </svg>
+                  {/* Current time guideline across the compact timeline */}
+                  <line
+                    x1={20 + currentTime * pixelsPerMs}
+                    y1={0}
+                    x2={20 + currentTime * pixelsPerMs}
+                    y2={svgHeight}
+                    stroke="#06b6d4"
+                    strokeWidth="1"
+                    opacity={0.5}
+                    style={{ pointerEvents: 'none' }}
+                  />
+                </svg>
+                );
+              })()}
             </div>
           )}
 

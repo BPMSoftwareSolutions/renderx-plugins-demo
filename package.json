@@ -49,7 +49,9 @@
     "cy:run:preview": "cypress run --config baseUrl=http://localhost:4173",
     "e2e:cypress": "npm run build && start-server-and-test preview http://localhost:4173 cy:run:preview",
     "e2e:cypress:dev": "npm run pre:manifests && start-server-and-test dev http://localhost:5173 cy:run",
-    "analyze:logs": "node scripts/analyze-logs.js"
+    "analyze:logs": "node scripts/analyze-logs.js",
+    "telemetry:dev": "npm --prefix packages/telemetry-workbench run dev",
+    "telemetry:build": "npm --prefix packages/telemetry-workbench run build"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "^0.1.0-rc.4",

@@ -1,0 +1,38 @@
+/* Copied operation-filter.css for telemetry workbench */
+/* Operation Filter Styling */
+
+.telemetry-filter-panel {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.telemetry-filter-section { margin-bottom: 1.5rem; }
+.telemetry-filter-title { font-size: 0.875rem; font-weight: bold; color: #888; margin-bottom: 0.75rem; text-transform: uppercase; }
+
+.telemetry-preset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; }
+.telemetry-preset-button { padding: 0.5rem 0.75rem; background-color: #252526; border: 1px solid #444; border-radius: 0.375rem; color: #cbd5e1; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+.telemetry-preset-button:hover { background-color: #333; border-color: #06b6d4; }
+
+.telemetry-strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; }
+.telemetry-strategy-button { padding: 0.75rem; background-color: #252526; border: 1px solid #444; border-radius: 0.375rem; color: #cbd5e1; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+.telemetry-strategy-button:hover { background-color: #333; }
+.telemetry-strategy-button.active { background-color: #2196f3; border-color: #1976d2; color: #fff; font-weight: bold; }
+.telemetry-strategy-icon { margin: 0; }
+.telemetry-strategy-label { margin-top: 0.25rem; }
+
+.telemetry-filter-input { width: 100%; padding: 0.5rem; margin-top: 0.5rem; background-color: #252526; border: 1px solid #444; border-radius: 0.375rem; color: #fff; font-size: 0.875rem; }
+.telemetry-filter-input::placeholder { color: #666; }
+.telemetry-filter-input:focus { outline: none; border-color: #06b6d4; background-color: #2a2a2b; }
+
+.telemetry-type-flex { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.telemetry-type-button { padding: 0.4rem 0.75rem; background-color: #252526; border: 1px solid #444; border-radius: 0.375rem; color: #888; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+.telemetry-type-button:hover { background-color: #333; border-color: #555; }
+.telemetry-type-button.selected { background-color: #2196f3; border-color: #1976d2; color: #fff; }
+
+.telemetry-range-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.telemetry-range-input { width: 100%; accent-color: #2196f3; }
+
+.telemetry-filter-label { font-size: 0.875rem; color: #888; display: block; margin-bottom: 0.5rem; }
