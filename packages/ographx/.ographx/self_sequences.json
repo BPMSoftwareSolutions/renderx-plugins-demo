@@ -1,0 +1,6295 @@
+{
+  "version": "0.1.0",
+  "contracts": [
+    {
+      "id": "contract_4",
+      "kind": "params",
+      "props": [
+        {
+          "name": "raw_type",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_5",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "file_path",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_6",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "file_path",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_7",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_8",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_9",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        },
+        {
+          "name": "out_path",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_6",
+      "kind": "params",
+      "props": [
+        {
+          "name": "sym_name",
+          "raw": "str"
+        },
+        {
+          "name": "params_sig",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_7",
+      "kind": "params",
+      "props": [
+        {
+          "name": "raw_type",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_8",
+      "kind": "params",
+      "props": [
+        {
+          "name": "params_text",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_9",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "file_path",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_10",
+      "kind": "params",
+      "props": [
+        {
+          "name": "lines",
+          "raw": "List[str]"
+        },
+        {
+          "name": "start_idx",
+          "raw": "int"
+        }
+      ]
+    },
+    {
+      "id": "contract_11",
+      "kind": "params",
+      "props": [
+        {
+          "name": "path",
+          "raw": "str"
+        },
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str = \"\""
+        },
+        {
+          "name": "imports",
+          "raw": "Optional[Dict[str"
+        },
+        {
+          "name": "str]] = None",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "contract_12",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_13",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_14",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        },
+        {
+          "name": "out_path",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_15",
+      "kind": "params",
+      "props": [
+        {
+          "name": "o",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "contract_16",
+      "kind": "params",
+      "props": [
+        {
+          "name": "o",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "contract_17",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        }
+      ]
+    },
+    {
+      "id": "contract_18",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        },
+        {
+          "name": "out_path",
+          "raw": "str"
+        },
+        {
+          "name": "enrich_with_dfs",
+          "raw": "bool = True"
+        }
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "id": "ographx_py.py__Symbol",
+      "name": "Symbol Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__CallEdge",
+      "name": "CallEdge Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__Contract",
+      "name": "Contract Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__IR",
+      "name": "IR Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__normalize_type",
+      "name": "normalize_type Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__extract_imports",
+      "name": "extract_imports Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__extract_symbols_and_calls",
+      "name": "extract_symbols_and_calls Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 22,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 23,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 24,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 25,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 26,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 27,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 28,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 29,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 30,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 31,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 32,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 33,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 34,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 35,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 36,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 37,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 38,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 39,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 40,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 41,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 42,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 43,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 44,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 45,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 46,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 47,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 48,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 49,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 50,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 51,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 52,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 53,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__walk_py_files",
+      "name": "walk_py_files Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:walk_py_files",
+              "handler": "walk_py_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:walk",
+              "handler": "walk",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__build_ir",
+      "name": "build_ir Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:build_ir",
+              "handler": "build_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:walk_py_files",
+              "handler": "walk_py_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:walk_py_files",
+              "handler": "walk_py_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:walk",
+              "handler": "walk",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:read",
+              "handler": "read",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 22,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 23,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 24,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 25,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 26,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 27,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 28,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 29,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 30,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 31,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 32,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 33,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 34,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 35,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 36,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 37,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 38,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 39,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 40,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 41,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 42,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 43,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 44,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 45,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 46,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 47,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 48,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 49,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 50,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 51,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 52,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 53,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 54,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 55,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 56,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 57,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 58,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 59,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 60,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 61,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 62,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 63,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 64,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 65,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 66,
+              "event": "call:IR",
+              "handler": "IR",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__emit_ir",
+      "name": "emit_ir Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:emit_ir",
+              "handler": "emit_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:makedirs",
+              "handler": "makedirs",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:dump",
+              "handler": "dump",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_py.py__main",
+      "name": "main Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:main",
+              "handler": "main",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:ArgumentParser",
+              "handler": "ArgumentParser",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:add_argument",
+              "handler": "add_argument",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:add_argument",
+              "handler": "add_argument",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:parse_args",
+              "handler": "parse_args",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:build_ir",
+              "handler": "build_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:build_ir",
+              "handler": "build_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:walk_py_files",
+              "handler": "walk_py_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:walk_py_files",
+              "handler": "walk_py_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:walk",
+              "handler": "walk",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:read",
+              "handler": "read",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 22,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 23,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 24,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 25,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 26,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 27,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 28,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 29,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 30,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 31,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 32,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 33,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 34,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 35,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 36,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 37,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 38,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 39,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 40,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 41,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 42,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 43,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 44,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 45,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 46,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 47,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 48,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 49,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 50,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 51,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 52,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 53,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 54,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 55,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 56,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 57,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 58,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 59,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 60,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 61,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 62,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 63,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 64,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 65,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 66,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 67,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 68,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 69,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 70,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 71,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 72,
+              "event": "call:IR",
+              "handler": "IR",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 73,
+              "event": "call:emit_ir",
+              "handler": "emit_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 74,
+              "event": "call:emit_ir",
+              "handler": "emit_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 75,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 76,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 77,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 78,
+              "event": "call:makedirs",
+              "handler": "makedirs",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 79,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 80,
+              "event": "call:dump",
+              "handler": "dump",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 81,
+              "event": "call:main",
+              "handler": "main",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__ContractProp",
+      "name": "ContractProp Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__Contract",
+      "name": "Contract Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__Symbol",
+      "name": "Symbol Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__CallEdge",
+      "name": "CallEdge Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__IR",
+      "name": "IR Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__ImportInfo",
+      "name": "ImportInfo Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__normalize_contract_id",
+      "name": "normalize_contract_id Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__normalize_type",
+      "name": "normalize_type Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__parse_params",
+      "name": "parse_params Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:max",
+              "handler": "max",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__extract_imports",
+      "name": "extract_imports Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:normpath",
+              "handler": "normpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:relpath",
+              "handler": "relpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__find_blocks",
+      "name": "find_blocks Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:min",
+              "handler": "min",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__extract_symbols_and_calls",
+      "name": "extract_symbols_and_calls Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:normpath",
+              "handler": "normpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:relpath",
+              "handler": "relpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 22,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 23,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 24,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 25,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 26,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 27,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 28,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 29,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 30,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 31,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 32,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 33,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 34,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 35,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 36,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 37,
+              "event": "call:min",
+              "handler": "min",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 38,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 39,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 40,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 41,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 42,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 43,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 44,
+              "event": "call:max",
+              "handler": "max",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 45,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 46,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 47,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 48,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 49,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 50,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 51,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 52,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 53,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 54,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 55,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 56,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 57,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 58,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 59,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 60,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 61,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 62,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 63,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 64,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 65,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 66,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 67,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 68,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 69,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 70,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 71,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 72,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 73,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 74,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 75,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 76,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 77,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 78,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 79,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 80,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 81,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 82,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 83,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 84,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 85,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 86,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 87,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 88,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 89,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 90,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 91,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 92,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 93,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 94,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 95,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 96,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 97,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 98,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 99,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 100,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 101,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 102,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 103,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 104,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 105,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 106,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 107,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 108,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 109,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 110,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 111,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 112,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 113,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 114,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 115,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 116,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 117,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 118,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 119,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 120,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 121,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 122,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 123,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 124,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 125,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 126,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 127,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 128,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 129,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 130,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 131,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 132,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 133,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 134,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 135,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 136,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 137,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 138,
+              "event": "call:values",
+              "handler": "values",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__walk_ts_files",
+      "name": "walk_ts_files Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:walk_ts_files",
+              "handler": "walk_ts_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:walk",
+              "handler": "walk",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__build_ir",
+      "name": "build_ir Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:build_ir",
+              "handler": "build_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:walk_ts_files",
+              "handler": "walk_ts_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:walk_ts_files",
+              "handler": "walk_ts_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:walk",
+              "handler": "walk",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:read",
+              "handler": "read",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:normpath",
+              "handler": "normpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 22,
+              "event": "call:relpath",
+              "handler": "relpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 23,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 24,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 25,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 26,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 27,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 28,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 29,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 30,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 31,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 32,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 33,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 34,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 35,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 36,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 37,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 38,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 39,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 40,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 41,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 42,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 43,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 44,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 45,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 46,
+              "event": "call:min",
+              "handler": "min",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 47,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 48,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 49,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 50,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 51,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 52,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 53,
+              "event": "call:max",
+              "handler": "max",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 54,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 55,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 56,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 57,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 58,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 59,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 60,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 61,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 62,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 63,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 64,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 65,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 66,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 67,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 68,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 69,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 70,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 71,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 72,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 73,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 74,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 75,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 76,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 77,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 78,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 79,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 80,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 81,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 82,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 83,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 84,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 85,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 86,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 87,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 88,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 89,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 90,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 91,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 92,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 93,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 94,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 95,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 96,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 97,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 98,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 99,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 100,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 101,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 102,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 103,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 104,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 105,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 106,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 107,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 108,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 109,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 110,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 111,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 112,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 113,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 114,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 115,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 116,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 117,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 118,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 119,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 120,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 121,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 122,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 123,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 124,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 125,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 126,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 127,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 128,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 129,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 130,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 131,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 132,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 133,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 134,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 135,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 136,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 137,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 138,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 139,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 140,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 141,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 142,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 143,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 144,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 145,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 146,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 147,
+              "event": "call:values",
+              "handler": "values",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 148,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 149,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 150,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 151,
+              "event": "call:IR",
+              "handler": "IR",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__emit_ir",
+      "name": "emit_ir Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:emit_ir",
+              "handler": "emit_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__ImportInfo.enc",
+      "name": "enc Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "noop",
+              "handler": "noop",
+              "timing": "immediate",
+              "dynamics": "pp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__enc",
+      "name": "enc Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:enc",
+              "handler": "enc",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:isinstance",
+              "handler": "isinstance",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:TypeError",
+              "handler": "TypeError",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:makedirs",
+              "handler": "makedirs",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:dump",
+              "handler": "dump",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:asdict",
+              "handler": "asdict",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__build_call_graph",
+      "name": "build_call_graph Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:build_call_graph",
+              "handler": "build_call_graph",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__emit_sequences",
+      "name": "emit_sequences Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:emit_sequences",
+              "handler": "emit_sequences",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:build_call_graph",
+              "handler": "build_call_graph",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:build_call_graph",
+              "handler": "build_call_graph",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:makedirs",
+              "handler": "makedirs",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:dump",
+              "handler": "dump",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ographx_ts.py__main",
+      "name": "main Flow",
+      "category": "analysis",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "calls",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "call:main",
+              "handler": "main",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 2,
+              "event": "call:ArgumentParser",
+              "handler": "ArgumentParser",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 3,
+              "event": "call:extractor",
+              "handler": "extractor",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 4,
+              "event": "call:add_argument",
+              "handler": "add_argument",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 5,
+              "event": "call:add_argument",
+              "handler": "add_argument",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 6,
+              "event": "call:add_argument",
+              "handler": "add_argument",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 7,
+              "event": "call:parse_args",
+              "handler": "parse_args",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 8,
+              "event": "call:build_ir",
+              "handler": "build_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 9,
+              "event": "call:build_ir",
+              "handler": "build_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 10,
+              "event": "call:walk_ts_files",
+              "handler": "walk_ts_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 11,
+              "event": "call:walk_ts_files",
+              "handler": "walk_ts_files",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 12,
+              "event": "call:walk",
+              "handler": "walk",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 13,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 14,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 15,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 16,
+              "event": "call:read",
+              "handler": "read",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 17,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 18,
+              "event": "call:extract_symbols_and_calls",
+              "handler": "extract_symbols_and_calls",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 19,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 20,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 21,
+              "event": "call:extract_imports",
+              "handler": "extract_imports",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 22,
+              "event": "call:splitlines",
+              "handler": "splitlines",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 23,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 24,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 25,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 26,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 27,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 28,
+              "event": "call:normpath",
+              "handler": "normpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 29,
+              "event": "call:join",
+              "handler": "join",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 30,
+              "event": "call:relpath",
+              "handler": "relpath",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 31,
+              "event": "call:endswith",
+              "handler": "endswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 32,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 33,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 34,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 35,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 36,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 37,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 38,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 39,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 40,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 41,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 42,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 43,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 44,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 45,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 46,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 47,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 48,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 49,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 50,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 51,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 52,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 53,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 54,
+              "event": "call:min",
+              "handler": "min",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 55,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 56,
+              "event": "call:count",
+              "handler": "count",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 57,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 58,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 59,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 60,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 61,
+              "event": "call:max",
+              "handler": "max",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 62,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 63,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 64,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 65,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 66,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 67,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 68,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 69,
+              "event": "call:normalize_type",
+              "handler": "normalize_type",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 70,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 71,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 72,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 73,
+              "event": "call:split",
+              "handler": "split",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 74,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 75,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 76,
+              "event": "call:ContractProp",
+              "handler": "ContractProp",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 77,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 78,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 79,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 80,
+              "event": "call:strip",
+              "handler": "strip",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 81,
+              "event": "call:replace",
+              "handler": "replace",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 82,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 83,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 84,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 85,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 86,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 87,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 88,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 89,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 90,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 91,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 92,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 93,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 94,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 95,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 96,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 97,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 98,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 99,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 100,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 101,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 102,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 103,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 104,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 105,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 106,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 107,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 108,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 109,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 110,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 111,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 112,
+              "event": "call:startswith",
+              "handler": "startswith",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 113,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 114,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 115,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 116,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 117,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 118,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 119,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 120,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 121,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 122,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 123,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 124,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 125,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 126,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 127,
+              "event": "call:match",
+              "handler": "match",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 128,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 129,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 130,
+              "event": "call:find_blocks",
+              "handler": "find_blocks",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 131,
+              "event": "call:parse_params",
+              "handler": "parse_params",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 132,
+              "event": "call:normalize_contract_id",
+              "handler": "normalize_contract_id",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 133,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 134,
+              "event": "call:Contract",
+              "handler": "Contract",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 135,
+              "event": "call:Symbol",
+              "handler": "Symbol",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 136,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 137,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 138,
+              "event": "call:finditer",
+              "handler": "finditer",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 139,
+              "event": "call:group",
+              "handler": "group",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 140,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 141,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 142,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 143,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 144,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 145,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 146,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 147,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 148,
+              "event": "call:basename",
+              "handler": "basename",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 149,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 150,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 151,
+              "event": "call:CallEdge",
+              "handler": "CallEdge",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 152,
+              "event": "call:values",
+              "handler": "values",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 153,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 154,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 155,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 156,
+              "event": "call:IR",
+              "handler": "IR",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 157,
+              "event": "call:emit_ir",
+              "handler": "emit_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 158,
+              "event": "call:emit_ir",
+              "handler": "emit_ir",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 159,
+              "event": "call:emit_sequences",
+              "handler": "emit_sequences",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 160,
+              "event": "call:emit_sequences",
+              "handler": "emit_sequences",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 161,
+              "event": "call:build_call_graph",
+              "handler": "build_call_graph",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 162,
+              "event": "call:build_call_graph",
+              "handler": "build_call_graph",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 163,
+              "event": "call:setdefault",
+              "handler": "setdefault",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 164,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 165,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 166,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 167,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 168,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 169,
+              "event": "call:extend",
+              "handler": "extend",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 170,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 171,
+              "event": "call:dfs_call_chain",
+              "handler": "dfs_call_chain",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 172,
+              "event": "call:get",
+              "handler": "get",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 173,
+              "event": "call:add",
+              "handler": "add",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 174,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 175,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 176,
+              "event": "call:append",
+              "handler": "append",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 177,
+              "event": "call:sub",
+              "handler": "sub",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 178,
+              "event": "call:makedirs",
+              "handler": "makedirs",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 179,
+              "event": "call:dirname",
+              "handler": "dirname",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 180,
+              "event": "call:dump",
+              "handler": "dump",
+              "timing": "immediate",
+              "dynamics": "mf"
+            },
+            {
+              "beat": 181,
+              "event": "call:main",
+              "handler": "main",
+              "timing": "immediate",
+              "dynamics": "mf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
