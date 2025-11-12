@@ -1,0 +1,39 @@
+{
+  "codebase_name": "renderx-web",
+  "config": {
+    "name": "renderx-web",
+    "root_dirs": [
+      "../../packages",
+      "../../src/ui"
+    ],
+    "exclude_dirs": [
+      "robotics",
+      "ographx",
+      "node_modules",
+      "dist"
+    ],
+    "created_at": "2025-11-12T15:49:11.120054"
+  },
+  "generated_at": "2025-11-12T15:49:11.122059",
+  "artifacts": {
+    "ir": ".ographx\\artifacts\\renderx-web\\ir\\graph.json",
+    "sequences": [
+      ".ographx\\artifacts\\renderx-web\\sequences\\sequences.json"
+    ],
+    "visualizations": [
+      ".ographx\\artifacts\\renderx-web\\visualization\\diagrams\\call_graph.mmd",
+      ".ographx\\artifacts\\renderx-web\\visualization\\diagrams\\call_graph.svg",
+      ".ographx\\artifacts\\renderx-web\\visualization\\diagrams\\orchestration.mmd",
+      ".ographx\\artifacts\\renderx-web\\visualization\\diagrams\\orchestration.svg",
+      ".ographx\\artifacts\\renderx-web\\visualization\\diagrams\\sequence_flow.mmd",
+      ".ographx\\artifacts\\renderx-web\\visualization\\diagrams\\sequence_flow.svg"
+    ],
+    "analysis": ".ographx\\artifacts\\renderx-web\\analysis\\analysis.json"
+  },
+  "statistics": {
+    "files": 543,
+    "symbols": 1010,
+    "calls": 4579,
+    "contracts": 927
+  }
+}

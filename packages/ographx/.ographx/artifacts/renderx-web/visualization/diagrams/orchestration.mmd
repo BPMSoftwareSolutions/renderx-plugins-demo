@@ -1,0 +1,52 @@
+graph TD
+    Root["Orchestration"]
+
+    Cat0["UNCATEGORIZED<br/>1010 sequences"]
+    Root --> Cat0
+
+    Seq0_0["Sequence: onDragStart<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_0
+    Mov0_0_0["Movement: Initialization<br/>1 beats"]
+    Seq0_0 --> Mov0_0_0
+    Seq0_1["Sequence: onDragMove<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_1
+    Mov0_1_0["Movement: Initialization<br/>1 beats"]
+    Seq0_1 --> Mov0_1_0
+    Seq0_2["Sequence: onDragEnd<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_2
+    Mov0_2_0["Movement: Initialization<br/>1 beats"]
+    Seq0_2 --> Mov0_2_0
+    Seq0_3["Sequence: onSelected<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_3
+    Mov0_3_0["Movement: Initialization<br/>1 beats"]
+    Seq0_3 --> Mov0_3_0
+    Seq0_4["Sequence: CanvasHeader<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_4
+    Mov0_4_0["Movement: Initialization<br/>1 beats"]
+    Seq0_4 --> Mov0_4_0
+    Seq0_5["Sequence: CanvasPage<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_5
+    Mov0_5_0["Movement: Initialization<br/>1 beats"]
+    Seq0_5 --> Mov0_5_0
+    Seq0_6["Sequence: makeConductor<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_6
+    Mov0_6_0["Movement: Initialization<br/>1 beats"]
+    Seq0_6 --> Mov0_6_0
+    Seq0_7["Sequence: setClipboardText<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_7
+    Mov0_7_0["Movement: Initialization<br/>1 beats"]
+    Seq0_7 --> Mov0_7_0
+    Seq0_8["Sequence: ensureLineMarkers<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_8
+    Mov0_8_0["Movement: Initialization<br/>1 beats"]
+    Seq0_8 --> Mov0_8_0
+    Seq0_9["Sequence: enhanceLine<br/>Flow<br/>Tempo: 100"]
+    Cat0 --> Seq0_9
+    Mov0_9_0["Movement: Initialization<br/>1 beats"]
+    Seq0_9 --> Mov0_9_0
+    NoteCat0["... +1000 more sequences"]
+    Cat0 --> NoteCat0
+
+    style Root fill:#4CAF50,stroke:#2E7D32,color:#fff,font-weight:bold
+    classDef category fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef sequence fill:#9C27B0,stroke:#6A1B9A,color:#fff

@@ -1,0 +1,14 @@
+{
+  "name": "renderx-web",
+  "root_dirs": [
+    "../../packages",
+    "../../src/ui"
+  ],
+  "exclude_dirs": [
+    "robotics",
+    "ographx",
+    "node_modules",
+    "dist"
+  ],
+  "created_at": "2025-11-12T15:49:11.120054"
+}
