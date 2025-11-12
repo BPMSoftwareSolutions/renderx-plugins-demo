@@ -1,0 +1,403 @@
+{
+  "version": "0.1.0",
+  "metadata": {
+    "name": "OgraphX Codebase Graphing Orchestration",
+    "description": "Complete orchestration of the six-layer meditation pipeline for graphing any codebase",
+    "author": "OgraphX SAS",
+    "created": "2025-11-12",
+    "purpose": "Self-aware system orchestration - generates all artifacts from this sequence"
+  },
+  "contracts": [
+    {
+      "id": "SourceCode",
+      "kind": "input",
+      "props": [
+        {"name": "files", "raw": "string[]"},
+        {"name": "language", "raw": "TypeScript | Python"}
+      ]
+    },
+    {
+      "id": "IntermediateRepresentation",
+      "kind": "data",
+      "props": [
+        {"name": "symbols", "raw": "Symbol[]"},
+        {"name": "calls", "raw": "CallEdge[]"},
+        {"name": "contracts", "raw": "Contract[]"}
+      ]
+    },
+    {
+      "id": "ConductorSequences",
+      "kind": "data",
+      "props": [
+        {"name": "movements", "raw": "Movement[]"},
+        {"name": "beats", "raw": "Beat[]"}
+      ]
+    },
+    {
+      "id": "Visualizations",
+      "kind": "output",
+      "props": [
+        {"name": "mermaidDiagrams", "raw": "string[]"},
+        {"name": "svgFiles", "raw": "string[]"}
+      ]
+    },
+    {
+      "id": "Telemetry",
+      "kind": "output",
+      "props": [
+        {"name": "metrics", "raw": "Metrics"},
+        {"name": "coverage", "raw": "Coverage"}
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "id": "GraphCodebase",
+      "name": "Graph Codebase - Complete Pipeline",
+      "category": "orchestration",
+      "key": "C Major",
+      "tempo": 100,
+      "movements": [
+        {
+          "id": "layer1_extraction",
+          "name": "Layer 1: Core Extraction",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "start:extraction",
+              "handler": "ographx_ts",
+              "timing": "immediate",
+              "dynamics": "ff",
+              "description": "Extract TypeScript/JavaScript code structure"
+            },
+            {
+              "beat": 2,
+              "event": "call:scanFiles",
+              "handler": "scanFiles",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Scan source files for symbols"
+            },
+            {
+              "beat": 3,
+              "event": "call:extractSymbols",
+              "handler": "extractSymbols",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Extract functions, classes, methods"
+            },
+            {
+              "beat": 4,
+              "event": "call:discoverCalls",
+              "handler": "discoverCalls",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Discover call edges and relationships"
+            },
+            {
+              "beat": 5,
+              "event": "call:captureContracts",
+              "handler": "captureContracts",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Capture parameter signatures and types"
+            },
+            {
+              "beat": 6,
+              "event": "output:self_graph.json",
+              "handler": "writeIR",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Output: self_graph.json (IR)"
+            }
+          ]
+        },
+        {
+          "id": "layer2_validation",
+          "name": "Layer 2: Self-Observation & Validation",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "start:validation",
+              "handler": "validateIR",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Validate IR structure integrity"
+            },
+            {
+              "beat": 2,
+              "event": "call:checkSymbols",
+              "handler": "checkSymbols",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Verify symbol definitions"
+            },
+            {
+              "beat": 3,
+              "event": "call:verifyCalls",
+              "handler": "verifyCalls",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Verify call edge consistency"
+            },
+            {
+              "beat": 4,
+              "event": "call:validateContracts",
+              "handler": "validateContracts",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Validate contract definitions"
+            },
+            {
+              "beat": 5,
+              "event": "output:validated_ir",
+              "handler": "storeValidated",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Output: Validated IR to .ographx/self-observation/"
+            }
+          ]
+        },
+        {
+          "id": "layer3_sequences",
+          "name": "Layer 3: Sequences Generation",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "start:sequences",
+              "handler": "generateSequences",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Generate Conductor sequences from IR"
+            },
+            {
+              "beat": 2,
+              "event": "call:buildCallGraph",
+              "handler": "buildCallGraph",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Build call graph from IR"
+            },
+            {
+              "beat": 3,
+              "event": "call:dfsTraversal",
+              "handler": "dfsTraversal",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "DFS traversal (depth ≤ 3)"
+            },
+            {
+              "beat": 4,
+              "event": "call:createMovements",
+              "handler": "createMovements",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Create movements for exported symbols"
+            },
+            {
+              "beat": 5,
+              "event": "call:createBeats",
+              "handler": "createBeats",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Create beats for each call"
+            },
+            {
+              "beat": 6,
+              "event": "output:self_sequences.json",
+              "handler": "writeSequences",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Output: self_sequences.json (Conductor format)"
+            }
+          ]
+        },
+        {
+          "id": "layer4_visualization",
+          "name": "Layer 4: Visualization & Diagrams",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "start:visualization",
+              "handler": "generateDiagrams",
+              "timing": "immediate",
+              "dynamics": "ff",
+              "description": "Generate visualization diagrams"
+            },
+            {
+              "beat": 2,
+              "event": "call:orchestrationDiagram",
+              "handler": "generateOrchestrationDiagram",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Generate orchestration diagram (call graph)"
+            },
+            {
+              "beat": 3,
+              "event": "call:sequenceFlowDiagram",
+              "handler": "generateSequenceFlow",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Generate sequence flow diagram"
+            },
+            {
+              "beat": 4,
+              "event": "output:mermaid_diagrams",
+              "handler": "writeMermaid",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Output: .mmd files"
+            },
+            {
+              "beat": 5,
+              "event": "call:convertToSVG",
+              "handler": "convertToSVG",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Convert Mermaid diagrams to SVG"
+            },
+            {
+              "beat": 6,
+              "event": "output:svg_visualizations",
+              "handler": "writeSVG",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Output: .svg files to .ographx/visualization/"
+            }
+          ]
+        },
+        {
+          "id": "layer5_analysis",
+          "name": "Layer 5: Analysis & Telemetry",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "start:analysis",
+              "handler": "analyzeGraph",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Extract metrics and insights"
+            },
+            {
+              "beat": 2,
+              "event": "call:calculateComplexity",
+              "handler": "calculateComplexity",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Calculate complexity metrics"
+            },
+            {
+              "beat": 3,
+              "event": "call:identifyCoverage",
+              "handler": "identifyCoverage",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Identify coverage gaps"
+            },
+            {
+              "beat": 4,
+              "event": "call:analyzePatterns",
+              "handler": "analyzePatterns",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Analyze call patterns"
+            },
+            {
+              "beat": 5,
+              "event": "call:extractMetrics",
+              "handler": "extractMetrics",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Extract performance indicators"
+            },
+            {
+              "beat": 6,
+              "event": "output:analysis.json",
+              "handler": "writeTelemetry",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Output: self_graph_analysis.json"
+            }
+          ]
+        },
+        {
+          "id": "layer6_interawareness",
+          "name": "Layer 6: Inter-Awareness (Future)",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "start:interawareness",
+              "handler": "initInterAwareness",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Initialize cross-system analysis"
+            },
+            {
+              "beat": 2,
+              "event": "call:conductorAnalyzer",
+              "handler": "conductorAnalyzer",
+              "timing": "deferred",
+              "dynamics": "pp",
+              "description": "Analyze Conductor systems (planned)"
+            },
+            {
+              "beat": 3,
+              "event": "call:pluginAnalyzer",
+              "handler": "pluginAnalyzer",
+              "timing": "deferred",
+              "dynamics": "pp",
+              "description": "Analyze plugin architectures (planned)"
+            },
+            {
+              "beat": 4,
+              "event": "call:shellAnalyzer",
+              "handler": "shellAnalyzer",
+              "timing": "deferred",
+              "dynamics": "pp",
+              "description": "Analyze shell implementations (planned)"
+            },
+            {
+              "beat": 5,
+              "event": "output:insights",
+              "handler": "writeInsights",
+              "timing": "deferred",
+              "dynamics": "pp",
+              "description": "Output: Cross-system insights"
+            }
+          ]
+        },
+        {
+          "id": "completion",
+          "name": "Completion & Verification",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "verify:artifacts",
+              "handler": "verifyArtifacts",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Verify all artifacts generated"
+            },
+            {
+              "beat": 2,
+              "event": "report:summary",
+              "handler": "generateSummary",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Generate completion summary"
+            },
+            {
+              "beat": 3,
+              "event": "end:success",
+              "handler": "complete",
+              "timing": "immediate",
+              "dynamics": "ff",
+              "description": "Pipeline complete - all artifacts ready"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
