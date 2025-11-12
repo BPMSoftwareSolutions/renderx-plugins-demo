@@ -1,0 +1,2367 @@
+{
+  "files": [
+    ".\\ographx_py.py",
+    ".\\ographx_ts.py"
+  ],
+  "symbols": [
+    {
+      "id": "ographx_py.py::Symbol",
+      "file": ".\\ographx_py.py",
+      "kind": "class",
+      "name": "Symbol",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        54,
+        54
+      ]
+    },
+    {
+      "id": "ographx_py.py::CallEdge",
+      "file": ".\\ographx_py.py",
+      "kind": "class",
+      "name": "CallEdge",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        65,
+        65
+      ]
+    },
+    {
+      "id": "ographx_py.py::Contract",
+      "file": ".\\ographx_py.py",
+      "kind": "class",
+      "name": "Contract",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        72,
+        72
+      ]
+    },
+    {
+      "id": "ographx_py.py::IR",
+      "file": ".\\ographx_py.py",
+      "kind": "class",
+      "name": "IR",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        78,
+        78
+      ]
+    },
+    {
+      "id": "ographx_py.py::normalize_type",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "normalize_type",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_4",
+      "range": [
+        84,
+        84
+      ]
+    },
+    {
+      "id": "ographx_py.py::extract_imports",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "extract_imports",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_5",
+      "range": [
+        91,
+        91
+      ]
+    },
+    {
+      "id": "ographx_py.py::extract_symbols_and_calls",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "extract_symbols_and_calls",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_6",
+      "range": [
+        103,
+        103
+      ]
+    },
+    {
+      "id": "ographx_py.py::walk_py_files",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "walk_py_files",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_7",
+      "range": [
+        225,
+        225
+      ]
+    },
+    {
+      "id": "ographx_py.py::build_ir",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "build_ir",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_8",
+      "range": [
+        236,
+        236
+      ]
+    },
+    {
+      "id": "ographx_py.py::emit_ir",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "emit_ir",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_9",
+      "range": [
+        261,
+        261
+      ]
+    },
+    {
+      "id": "ographx_py.py::main",
+      "file": ".\\ographx_py.py",
+      "kind": "function",
+      "name": "main",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        274,
+        274
+      ]
+    },
+    {
+      "id": "ographx_ts.py::ContractProp",
+      "file": ".\\ographx_ts.py",
+      "kind": "class",
+      "name": "ContractProp",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        58,
+        58
+      ]
+    },
+    {
+      "id": "ographx_ts.py::Contract",
+      "file": ".\\ographx_ts.py",
+      "kind": "class",
+      "name": "Contract",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        63,
+        63
+      ]
+    },
+    {
+      "id": "ographx_ts.py::Symbol",
+      "file": ".\\ographx_ts.py",
+      "kind": "class",
+      "name": "Symbol",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        69,
+        69
+      ]
+    },
+    {
+      "id": "ographx_ts.py::CallEdge",
+      "file": ".\\ographx_ts.py",
+      "kind": "class",
+      "name": "CallEdge",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        80,
+        80
+      ]
+    },
+    {
+      "id": "ographx_ts.py::IR",
+      "file": ".\\ographx_ts.py",
+      "kind": "class",
+      "name": "IR",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        87,
+        87
+      ]
+    },
+    {
+      "id": "ographx_ts.py::ImportInfo",
+      "file": ".\\ographx_ts.py",
+      "kind": "class",
+      "name": "ImportInfo",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        94,
+        94
+      ]
+    },
+    {
+      "id": "ographx_ts.py::normalize_contract_id",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "normalize_contract_id",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_6",
+      "range": [
+        100,
+        100
+      ]
+    },
+    {
+      "id": "ographx_ts.py::normalize_type",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "normalize_type",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_7",
+      "range": [
+        106,
+        106
+      ]
+    },
+    {
+      "id": "ographx_ts.py::parse_params",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "parse_params",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_8",
+      "range": [
+        115,
+        115
+      ]
+    },
+    {
+      "id": "ographx_ts.py::extract_imports",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "extract_imports",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_9",
+      "range": [
+        153,
+        153
+      ]
+    },
+    {
+      "id": "ographx_ts.py::find_blocks",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "find_blocks",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_10",
+      "range": [
+        194,
+        194
+      ]
+    },
+    {
+      "id": "ographx_ts.py::extract_symbols_and_calls",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "extract_symbols_and_calls",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_11",
+      "range": [
+        211,
+        211
+      ]
+    },
+    {
+      "id": "ographx_ts.py::walk_ts_files",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "walk_ts_files",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_12",
+      "range": [
+        392,
+        392
+      ]
+    },
+    {
+      "id": "ographx_ts.py::build_ir",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "build_ir",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_13",
+      "range": [
+        400,
+        400
+      ]
+    },
+    {
+      "id": "ographx_ts.py::emit_ir",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "emit_ir",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_14",
+      "range": [
+        421,
+        421
+      ]
+    },
+    {
+      "id": "ographx_ts.py::ImportInfo.enc",
+      "file": ".\\ographx_ts.py",
+      "kind": "method",
+      "name": "enc",
+      "class_name": "ImportInfo",
+      "exported": true,
+      "params_contract": "contract_15",
+      "range": [
+        422,
+        422
+      ]
+    },
+    {
+      "id": "ographx_ts.py::enc",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "enc",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_16",
+      "range": [
+        422,
+        422
+      ]
+    },
+    {
+      "id": "ographx_ts.py::build_call_graph",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "build_call_graph",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_17",
+      "range": [
+        440,
+        440
+      ]
+    },
+    {
+      "id": "ographx_ts.py::emit_sequences",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "emit_sequences",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "contract_18",
+      "range": [
+        471,
+        471
+      ]
+    },
+    {
+      "id": "ographx_ts.py::main",
+      "file": ".\\ographx_ts.py",
+      "kind": "function",
+      "name": "main",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        537,
+        537
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "frm": "ographx_py.py::normalize_type",
+      "to": "ographx_py.py::normalize_type",
+      "name": "normalize_type",
+      "line": 84
+    },
+    {
+      "frm": "ographx_py.py::normalize_type",
+      "to": "",
+      "name": "sub",
+      "line": 88
+    },
+    {
+      "frm": "ographx_py.py::normalize_type",
+      "to": "",
+      "name": "strip",
+      "line": 88
+    },
+    {
+      "frm": "ographx_py.py::extract_imports",
+      "to": "ographx_py.py::extract_imports",
+      "name": "extract_imports",
+      "line": 91
+    },
+    {
+      "frm": "ographx_py.py::extract_imports",
+      "to": "",
+      "name": "splitlines",
+      "line": 94
+    },
+    {
+      "frm": "ographx_py.py::extract_imports",
+      "to": "",
+      "name": "match",
+      "line": 96
+    },
+    {
+      "frm": "ographx_py.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 96
+    },
+    {
+      "frm": "ographx_py.py::extract_imports",
+      "to": "",
+      "name": "group",
+      "line": 98
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::extract_symbols_and_calls",
+      "name": "extract_symbols_and_calls",
+      "line": 103
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::extract_imports",
+      "name": "extract_imports",
+      "line": 108
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "splitlines",
+      "line": 110
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 117
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "startswith",
+      "line": 118
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 122
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 124
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 125
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 126
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::Symbol",
+      "name": "Symbol",
+      "line": 126
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 139
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 141
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 142
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 144
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "split",
+      "line": 150
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 151
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "split",
+      "line": 153
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 154
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 154
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::normalize_type",
+      "name": "normalize_type",
+      "line": 154
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 154
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 156
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 159
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::Contract",
+      "name": "Contract",
+      "line": 159
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 161
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::Symbol",
+      "name": "Symbol",
+      "line": 161
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 173
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 175
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 176
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 177
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "split",
+      "line": 183
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 184
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "split",
+      "line": 186
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 187
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 187
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::normalize_type",
+      "name": "normalize_type",
+      "line": 187
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 187
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 189
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 192
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::Contract",
+      "name": "Contract",
+      "line": 192
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 194
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::Symbol",
+      "name": "Symbol",
+      "line": 194
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "startswith",
+      "line": 199
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "finditer",
+      "line": 206
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 207
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 216
+    },
+    {
+      "frm": "ographx_py.py::extract_symbols_and_calls",
+      "to": "ographx_py.py::CallEdge",
+      "name": "CallEdge",
+      "line": 216
+    },
+    {
+      "frm": "ographx_py.py::walk_py_files",
+      "to": "ographx_py.py::walk_py_files",
+      "name": "walk_py_files",
+      "line": 225
+    },
+    {
+      "frm": "ographx_py.py::walk_py_files",
+      "to": "",
+      "name": "walk",
+      "line": 228
+    },
+    {
+      "frm": "ographx_py.py::walk_py_files",
+      "to": "",
+      "name": "endswith",
+      "line": 232
+    },
+    {
+      "frm": "ographx_py.py::walk_py_files",
+      "to": "",
+      "name": "append",
+      "line": 233
+    },
+    {
+      "frm": "ographx_py.py::walk_py_files",
+      "to": "",
+      "name": "join",
+      "line": 233
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "ographx_py.py::build_ir",
+      "name": "build_ir",
+      "line": 236
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "ographx_py.py::walk_py_files",
+      "name": "walk_py_files",
+      "line": 238
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "",
+      "name": "read",
+      "line": 246
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "ographx_py.py::extract_symbols_and_calls",
+      "name": "extract_symbols_and_calls",
+      "line": 247
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "",
+      "name": "extend",
+      "line": 248
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "",
+      "name": "extend",
+      "line": 249
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "",
+      "name": "extend",
+      "line": 250
+    },
+    {
+      "frm": "ographx_py.py::build_ir",
+      "to": "ographx_py.py::IR",
+      "name": "IR",
+      "line": 254
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "ographx_py.py::emit_ir",
+      "name": "emit_ir",
+      "line": 261
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "",
+      "name": "asdict",
+      "line": 265
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "",
+      "name": "asdict",
+      "line": 266
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "",
+      "name": "asdict",
+      "line": 267
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "",
+      "name": "makedirs",
+      "line": 269
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "",
+      "name": "dirname",
+      "line": 269
+    },
+    {
+      "frm": "ographx_py.py::emit_ir",
+      "to": "",
+      "name": "dump",
+      "line": 271
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "ographx_py.py::main",
+      "name": "main",
+      "line": 274
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "",
+      "name": "ArgumentParser",
+      "line": 275
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "",
+      "name": "add_argument",
+      "line": 276
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "",
+      "name": "add_argument",
+      "line": 277
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "",
+      "name": "parse_args",
+      "line": 278
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "ographx_py.py::build_ir",
+      "name": "build_ir",
+      "line": 280
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "ographx_py.py::emit_ir",
+      "name": "emit_ir",
+      "line": 281
+    },
+    {
+      "frm": "ographx_py.py::main",
+      "to": "ographx_py.py::main",
+      "name": "main",
+      "line": 285
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "ographx_ts.py::normalize_contract_id",
+      "name": "normalize_contract_id",
+      "line": 100
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "sub",
+      "line": 101
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "strip",
+      "line": 101
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "replace",
+      "line": 102
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "replace",
+      "line": 102
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "replace",
+      "line": 102
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "replace",
+      "line": 102
+    },
+    {
+      "frm": "ographx_ts.py::normalize_contract_id",
+      "to": "",
+      "name": "sub",
+      "line": 103
+    },
+    {
+      "frm": "ographx_ts.py::normalize_type",
+      "to": "ographx_ts.py::normalize_type",
+      "name": "normalize_type",
+      "line": 106
+    },
+    {
+      "frm": "ographx_ts.py::normalize_type",
+      "to": "",
+      "name": "sub",
+      "line": 111
+    },
+    {
+      "frm": "ographx_ts.py::normalize_type",
+      "to": "",
+      "name": "strip",
+      "line": 111
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "ographx_ts.py::parse_params",
+      "name": "parse_params",
+      "line": 115
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "strip",
+      "line": 116
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "max",
+      "line": 126
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "strip",
+      "line": 128
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "append",
+      "line": 130
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "strip",
+      "line": 134
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "append",
+      "line": 136
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "match",
+      "line": 141
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "group",
+      "line": 143
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "strip",
+      "line": 143
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "ographx_ts.py::normalize_type",
+      "name": "normalize_type",
+      "line": 145
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "append",
+      "line": 146
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "ographx_ts.py::ContractProp",
+      "name": "ContractProp",
+      "line": 146
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "group",
+      "line": 146
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "split",
+      "line": 149
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "split",
+      "line": 149
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "strip",
+      "line": 149
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "",
+      "name": "append",
+      "line": 150
+    },
+    {
+      "frm": "ographx_ts.py::parse_params",
+      "to": "ographx_ts.py::ContractProp",
+      "name": "ContractProp",
+      "line": 150
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "ographx_ts.py::extract_imports",
+      "name": "extract_imports",
+      "line": 153
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "splitlines",
+      "line": 159
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "match",
+      "line": 161
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 161
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "group",
+      "line": 163
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "startswith",
+      "line": 165
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "dirname",
+      "line": 168
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "normpath",
+      "line": 169
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "join",
+      "line": 169
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "relpath",
+      "line": 172
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "endswith",
+      "line": 176
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "split",
+      "line": 179
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "replace",
+      "line": 179
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 179
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "startswith",
+      "line": 180
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 182
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "split",
+      "line": 182
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 184
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "split",
+      "line": 184
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 184
+    },
+    {
+      "frm": "ographx_ts.py::extract_imports",
+      "to": "",
+      "name": "strip",
+      "line": 189
+    },
+    {
+      "frm": "ographx_ts.py::find_blocks",
+      "to": "ographx_ts.py::find_blocks",
+      "name": "find_blocks",
+      "line": 194
+    },
+    {
+      "frm": "ographx_ts.py::find_blocks",
+      "to": "",
+      "name": "min",
+      "line": 202
+    },
+    {
+      "frm": "ographx_ts.py::find_blocks",
+      "to": "",
+      "name": "count",
+      "line": 205
+    },
+    {
+      "frm": "ographx_ts.py::find_blocks",
+      "to": "",
+      "name": "count",
+      "line": 206
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::extract_symbols_and_calls",
+      "name": "extract_symbols_and_calls",
+      "line": 211
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "splitlines",
+      "line": 212
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::extract_imports",
+      "name": "extract_imports",
+      "line": 219
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "dirname",
+      "line": 219
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 225
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 225
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 227
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 229
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "startswith",
+      "line": 229
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "add",
+      "line": 231
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "strip",
+      "line": 237
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 240
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 242
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 243
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::find_blocks",
+      "name": "find_blocks",
+      "line": 244
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "startswith",
+      "line": 245
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::parse_params",
+      "name": "parse_params",
+      "line": 246
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::normalize_contract_id",
+      "name": "normalize_contract_id",
+      "line": 247
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 248
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Contract",
+      "name": "Contract",
+      "line": 248
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Symbol",
+      "name": "Symbol",
+      "line": 249
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 250
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 254
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "finditer",
+      "line": 257
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 258
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 260
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::CallEdge",
+      "name": "CallEdge",
+      "line": 260
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 265
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 267
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 268
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::find_blocks",
+      "name": "find_blocks",
+      "line": 269
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "startswith",
+      "line": 270
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::parse_params",
+      "name": "parse_params",
+      "line": 271
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::normalize_contract_id",
+      "name": "normalize_contract_id",
+      "line": 272
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 273
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Contract",
+      "name": "Contract",
+      "line": 273
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Symbol",
+      "name": "Symbol",
+      "line": 274
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 275
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 279
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "finditer",
+      "line": 281
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 282
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 284
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::CallEdge",
+      "name": "CallEdge",
+      "line": 284
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 289
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 291
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 292
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::find_blocks",
+      "name": "find_blocks",
+      "line": 293
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "startswith",
+      "line": 294
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::parse_params",
+      "name": "parse_params",
+      "line": 295
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::normalize_contract_id",
+      "name": "normalize_contract_id",
+      "line": 296
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 297
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Contract",
+      "name": "Contract",
+      "line": 297
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Symbol",
+      "name": "Symbol",
+      "line": 298
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 299
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 303
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "finditer",
+      "line": 305
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 306
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 308
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::CallEdge",
+      "name": "CallEdge",
+      "line": 308
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 313
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 315
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::find_blocks",
+      "name": "find_blocks",
+      "line": 316
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "match",
+      "line": 320
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 322
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 323
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::find_blocks",
+      "name": "find_blocks",
+      "line": 324
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::parse_params",
+      "name": "parse_params",
+      "line": 325
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::normalize_contract_id",
+      "name": "normalize_contract_id",
+      "line": 326
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 327
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Contract",
+      "name": "Contract",
+      "line": 327
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::Symbol",
+      "name": "Symbol",
+      "line": 328
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 329
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 334
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "finditer",
+      "line": 336
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "group",
+      "line": 337
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 339
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::CallEdge",
+      "name": "CallEdge",
+      "line": 339
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 352
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "setdefault",
+      "line": 355
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 355
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "setdefault",
+      "line": 360
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 360
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 366
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "basename",
+      "line": 373
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "get",
+      "line": 379
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "append",
+      "line": 382
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "ographx_ts.py::CallEdge",
+      "name": "CallEdge",
+      "line": 382
+    },
+    {
+      "frm": "ographx_ts.py::extract_symbols_and_calls",
+      "to": "",
+      "name": "values",
+      "line": 390
+    },
+    {
+      "frm": "ographx_ts.py::walk_ts_files",
+      "to": "ographx_ts.py::walk_ts_files",
+      "name": "walk_ts_files",
+      "line": 392
+    },
+    {
+      "frm": "ographx_ts.py::walk_ts_files",
+      "to": "",
+      "name": "walk",
+      "line": 394
+    },
+    {
+      "frm": "ographx_ts.py::walk_ts_files",
+      "to": "",
+      "name": "endswith",
+      "line": 396
+    },
+    {
+      "frm": "ographx_ts.py::walk_ts_files",
+      "to": "",
+      "name": "endswith",
+      "line": 396
+    },
+    {
+      "frm": "ographx_ts.py::walk_ts_files",
+      "to": "",
+      "name": "append",
+      "line": 397
+    },
+    {
+      "frm": "ographx_ts.py::walk_ts_files",
+      "to": "",
+      "name": "join",
+      "line": 397
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "ographx_ts.py::build_ir",
+      "name": "build_ir",
+      "line": 400
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "ographx_ts.py::walk_ts_files",
+      "name": "walk_ts_files",
+      "line": 401
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "",
+      "name": "read",
+      "line": 409
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "ographx_ts.py::extract_symbols_and_calls",
+      "name": "extract_symbols_and_calls",
+      "line": 410
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "",
+      "name": "extend",
+      "line": 411
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "",
+      "name": "extend",
+      "line": 412
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "",
+      "name": "extend",
+      "line": 413
+    },
+    {
+      "frm": "ographx_ts.py::build_ir",
+      "to": "ographx_ts.py::IR",
+      "name": "IR",
+      "line": 419
+    },
+    {
+      "frm": "ographx_ts.py::emit_ir",
+      "to": "ographx_ts.py::emit_ir",
+      "name": "emit_ir",
+      "line": 421
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "ographx_ts.py::ImportInfo.enc",
+      "name": "enc",
+      "line": 422
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "isinstance",
+      "line": 423
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "asdict",
+      "line": 424
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "TypeError",
+      "line": 426
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "makedirs",
+      "line": 427
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "dirname",
+      "line": 427
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "dump",
+      "line": 429
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "asdict",
+      "line": 431
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "asdict",
+      "line": 432
+    },
+    {
+      "frm": "ographx_ts.py::enc",
+      "to": "",
+      "name": "asdict",
+      "line": 436
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "ographx_ts.py::build_call_graph",
+      "name": "build_call_graph",
+      "line": 440
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "setdefault",
+      "line": 444
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "append",
+      "line": 444
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "dfs_call_chain",
+      "line": 447
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "add",
+      "line": 460
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "get",
+      "line": 463
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "append",
+      "line": 464
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "extend",
+      "line": 467
+    },
+    {
+      "frm": "ographx_ts.py::build_call_graph",
+      "to": "",
+      "name": "dfs_call_chain",
+      "line": 467
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "ographx_ts.py::emit_sequences",
+      "name": "emit_sequences",
+      "line": 471
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "ographx_ts.py::build_call_graph",
+      "name": "build_call_graph",
+      "line": 475
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "dfs_call_chain",
+      "line": 485
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "get",
+      "line": 488
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "add",
+      "line": 496
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "append",
+      "line": 497
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "append",
+      "line": 500
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "append",
+      "line": 509
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "sub",
+      "line": 510
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "makedirs",
+      "line": 533
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "dirname",
+      "line": 533
+    },
+    {
+      "frm": "ographx_ts.py::emit_sequences",
+      "to": "",
+      "name": "dump",
+      "line": 535
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "ographx_ts.py::main",
+      "name": "main",
+      "line": 537
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "",
+      "name": "ArgumentParser",
+      "line": 538
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "",
+      "name": "extractor",
+      "line": 538
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "",
+      "name": "add_argument",
+      "line": 539
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "",
+      "name": "add_argument",
+      "line": 540
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "",
+      "name": "add_argument",
+      "line": 541
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "",
+      "name": "parse_args",
+      "line": 542
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "ographx_ts.py::build_ir",
+      "name": "build_ir",
+      "line": 544
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "ographx_ts.py::emit_ir",
+      "name": "emit_ir",
+      "line": 545
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "ographx_ts.py::emit_sequences",
+      "name": "emit_sequences",
+      "line": 547
+    },
+    {
+      "frm": "ographx_ts.py::main",
+      "to": "ographx_ts.py::main",
+      "name": "main",
+      "line": 553
+    }
+  ],
+  "contracts": [
+    {
+      "id": "contract_4",
+      "kind": "params",
+      "props": [
+        {
+          "name": "raw_type",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_5",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "file_path",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_6",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "file_path",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_7",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_8",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_9",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        },
+        {
+          "name": "out_path",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_6",
+      "kind": "params",
+      "props": [
+        {
+          "name": "sym_name",
+          "raw": "str"
+        },
+        {
+          "name": "params_sig",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_7",
+      "kind": "params",
+      "props": [
+        {
+          "name": "raw_type",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_8",
+      "kind": "params",
+      "props": [
+        {
+          "name": "params_text",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_9",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "file_path",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_10",
+      "kind": "params",
+      "props": [
+        {
+          "name": "lines",
+          "raw": "List[str]"
+        },
+        {
+          "name": "start_idx",
+          "raw": "int"
+        }
+      ]
+    },
+    {
+      "id": "contract_11",
+      "kind": "params",
+      "props": [
+        {
+          "name": "path",
+          "raw": "str"
+        },
+        {
+          "name": "text",
+          "raw": "str"
+        },
+        {
+          "name": "root",
+          "raw": "str = \"\""
+        },
+        {
+          "name": "imports",
+          "raw": "Optional[Dict[str"
+        },
+        {
+          "name": "str]] = None",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "contract_12",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_13",
+      "kind": "params",
+      "props": [
+        {
+          "name": "root",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_14",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        },
+        {
+          "name": "out_path",
+          "raw": "str"
+        }
+      ]
+    },
+    {
+      "id": "contract_15",
+      "kind": "params",
+      "props": [
+        {
+          "name": "o",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "contract_16",
+      "kind": "params",
+      "props": [
+        {
+          "name": "o",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "contract_17",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        }
+      ]
+    },
+    {
+      "id": "contract_18",
+      "kind": "params",
+      "props": [
+        {
+          "name": "ir",
+          "raw": "IR"
+        },
+        {
+          "name": "out_path",
+          "raw": "str"
+        },
+        {
+          "name": "enrich_with_dfs",
+          "raw": "bool = True"
+        }
+      ]
+    }
+  ]
+}
