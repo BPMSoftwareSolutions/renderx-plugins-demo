@@ -1,27 +1,26 @@
-using Jint.Native;
 using Microsoft.Extensions.Logging;
-using MusicalConductor.Avalonia.Engine;
-using MusicalConductor.Avalonia.Interfaces;
+using MusicalConductor.Core.Interfaces;
+using MusicalConductor.Core.Models;
 
 namespace MusicalConductor.Avalonia.Client;
 
 /// <summary>
-/// Client wrapper around the Jint-hosted MusicalConductor engine.
+/// Client wrapper around the native .NET Conductor.
 /// Implements IConductorClient to provide a .NET-friendly API.
 /// </summary>
-public class ConductorClient : IConductorClient
+public class ConductorClient : Interfaces.IConductorClient
 {
-    private readonly JintEngineHost _engine;
+    private readonly IConductor _conductor;
     private readonly ILogger<ConductorClient> _logger;
     private readonly Dictionary<string, List<Action<object?>>> _subscriptions;
 
-    public ConductorClient(JintEngineHost engine, ILogger<ConductorClient> logger)
+    public ConductorClient(IConductor conductor, ILogger<ConductorClient> logger)
     {
-        _engine = engine ?? throw new ArgumentNullException(nameof(engine));
+        _conductor = conductor ?? throw new ArgumentNullException(nameof(conductor));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _subscriptions = new Dictionary<string, List<Action<object?>>>();
 
-        _logger.LogInformation("🎼 ConductorClient initialized");
+        _logger.LogInformation("🎼 ConductorClient initialized (native .NET mode)");
     }
 
     public string Play(string pluginId, string sequenceId, object? context = null, string? priority = null)
@@ -30,24 +29,18 @@ public class ConductorClient : IConductorClient
         {
             _logger.LogInformation("▶️ Playing sequence: {PluginId}/{SequenceId}", pluginId, sequenceId);
 
-            var args = new List<JsValue>
-            {
-                _engine.FromObject(pluginId),
-                _engine.FromObject(sequenceId)
-            };
-
-            if (context != null)
-            {
-                args.Add(_engine.FromObject(context));
-            }
-
+            // Parse priority string to enum
+            var sequencePriority = SequencePriority.NORMAL;
             if (!string.IsNullOrEmpty(priority))
             {
-                args.Add(_engine.FromObject(priority));
+                if (Enum.TryParse<SequencePriority>(priority, true, out var parsed))
+                {
+                    sequencePriority = parsed;
+                }
             }
 
-            var result = _engine.CallMethod("play", args.ToArray());
-            var requestId = result.ToString();
+            // Call native .NET Conductor directly
+            var requestId = _conductor.Play(pluginId, sequenceId, context, sequencePriority);
 
             _logger.LogInformation("✅ Sequence started with request ID: {RequestId}", requestId);
             return requestId;
@@ -101,8 +94,8 @@ public class ConductorClient : IConductorClient
         {
             _logger.LogInformation("📊 Getting conductor status");
 
-            var result = _engine.CallMethod("getStatus");
-            return result.ToObject();
+            var status = _conductor.GetStatus();
+            return status;
         }
         catch (Exception ex)
         {
@@ -117,8 +110,8 @@ public class ConductorClient : IConductorClient
         {
             _logger.LogInformation("📈 Getting conductor statistics");
 
-            var result = _engine.CallMethod("getStatistics");
-            return result.ToObject();
+            var statistics = _conductor.GetStatistics();
+            return statistics;
         }
         catch (Exception ex)
         {
@@ -129,20 +122,10 @@ public class ConductorClient : IConductorClient
 
     public async Task RegisterCIAPlugins()
     {
-        try
-        {
-            _logger.LogInformation("🔌 Registering CIA-compliant plugins");
-
-            var _ = _engine.CallMethod("registerCIAPlugins");
-            _logger.LogInformation("✅ CIA plugins registered");
-
-            await Task.CompletedTask;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "❌ Failed to register CIA plugins");
-            throw;
-        }
+        // Native .NET conductor doesn't need CIA plugin registration
+        // Plugins are registered directly via PluginManager
+        _logger.LogInformation("🔌 CIA plugin registration not needed in native .NET mode");
+        await Task.CompletedTask;
     }
 
     private Action Subscribe(string eventName, Action<object?> callback, object? context = null)

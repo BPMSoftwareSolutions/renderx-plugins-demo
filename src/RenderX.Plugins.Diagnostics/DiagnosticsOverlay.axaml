@@ -6,9 +6,9 @@
           Background="#00000080"
           IsVisible="False">
         <!-- Modal Window -->
-        <Border Background="White"
+        <Border Background="{DynamicResource Color.Background.Primary}"
                 BorderThickness="1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 CornerRadius="8"
                 Padding="0"
                 Width="600"
@@ -18,15 +18,15 @@
             <Grid RowDefinitions="Auto,*,Auto">
                 <!-- Header -->
                 <Border Grid.Row="0"
-                        Background="#F5F5F5"
+                        Background="{DynamicResource Color.Background.Tertiary}"
                         BorderThickness="0,0,0,1"
-                        BorderBrush="#E0E0E0"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
                         Padding="16">
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <TextBlock Text="Diagnostics Details"
                                    FontSize="14"
                                    FontWeight="Bold"
-                                   Foreground="#333"
+                                   Foreground="{DynamicResource Color.Border.Primary}"
                                    VerticalAlignment="Center" />
                         <Button x:Name="CloseButton"
                                 Content="✕"
@@ -45,15 +45,15 @@
 
                 <!-- Footer -->
                 <Border Grid.Row="2"
-                        Background="#F5F5F5"
+                        Background="{DynamicResource Color.Background.Tertiary}"
                         BorderThickness="0,1,0,0"
-                        BorderBrush="#E0E0E0"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
                         Padding="16">
                     <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
                         <Button Content="Close"
                                 Padding="12,6"
-                                Background="#E0E0E0"
-                                Foreground="#333"
+                                Background="{DynamicResource Color.Border.Primary}"
+                                Foreground="{DynamicResource Color.Border.Primary}"
                                 FontSize="11"
                                 Click="OnCloseClick" />
                     </StackPanel>

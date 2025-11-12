@@ -65,7 +65,7 @@ export class ResourceConflictResolver {
     requestingSymphony: string,
     currentOwner: ResourceOwner
   ): { success: boolean; message: string } {
-    console.warn(
+    (globalThis as any).__MC_WARN(
       `🎼 ResourceConflictResolver: REJECT - Resource ${resourceId} is owned by ${currentOwner.symphonyName}, rejecting request from ${requestingSymphony}`
     );
 
@@ -98,7 +98,7 @@ export class ResourceConflictResolver {
       },
     };
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ResourceConflictResolver: QUEUE - Adding ${sequenceRequest.sequenceName} to queue, waiting for resource ${resourceId} from ${currentOwner.symphonyName}`
     );
 
@@ -138,17 +138,17 @@ export class ResourceConflictResolver {
       };
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ResourceConflictResolver: INTERRUPT - HIGH priority ${requestingSymphony} interrupting ${currentOwner.symphonyName} for resource ${resourceId}`
     );
 
     // Notify current owner of interruption
-    console.warn(
+    (globalThis as any).__MC_WARN(
       `🎼 ResourceConflictResolver: Interrupting ${currentOwner.symphonyName} (${currentOwner.instanceId}) for HIGH priority request`
     );
 
     // Log interruption for monitoring
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 ResourceConflictResolver: Resource ${resourceId} forcibly transferred from ${currentOwner.symphonyName} to ${requestingSymphony}`
     );
 

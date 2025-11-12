@@ -1,0 +1,3690 @@
+{
+  "metadata": {
+    "generated": "2025-11-10 08:29:53",
+    "total_logs": 409,
+    "scanned_directory": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\musical-conductor"
+  },
+  "log_entries": [
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\DomainEventSystem.ts",
+      "line_number": 44,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc Domain Event: ${eventName}`, domainEvent",
+      "context": "console.log(`\ud83c\udfbc Domain Event: ${eventName}`, domainEvent);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+      "line_number": 222,
+      "log_type": "console.log",
+      "message": "`\ud83d\udce1 EventBus: Cleared all subscribers for \"${eventName}\"`",
+      "context": "console.log(`\ud83d\udce1 EventBus: Cleared all subscribers for \"${eventName}\"`);",
+      "severity": "INFO",
+      "category": "EventBus"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+      "line_number": 234,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udce1 EventBus: Cleared all subscribers\"",
+      "context": "console.log(\"\ud83d\udce1 EventBus: Cleared all subscribers\");",
+      "severity": "INFO",
+      "category": "EventBus"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+      "line_number": 285,
+      "log_type": "console.log",
+      "message": "`\ud83d\udce1 EventBus: Debug mode ${enabled ? \"enabled\" : \"disabled\"}`",
+      "context": "console.log(`\ud83d\udce1 EventBus: Debug mode ${enabled ? \"enabled\" : \"disabled\"}`);",
+      "severity": "INFO",
+      "category": "EventBus"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+      "line_number": 329,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc EventBus: Using internal conductor (legacy mode",
+      "context": "console.log(\"\ud83c\udfbc EventBus: Using internal conductor (legacy mode)\");",
+      "severity": "INFO",
+      "category": "EventBus"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+      "line_number": 504,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc EventBus: Queueing ${eventName} for signal: ${signal}`",
+      "context": "console.log(`\ud83c\udfbc EventBus: Queueing ${eventName} for signal: ${signal}`);",
+      "severity": "INFO",
+      "category": "EventBus"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\index.ts",
+      "line_number": 90,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd04 Communication system state reset\"",
+      "context": "console.log(\"\ud83d\udd04 Communication system state reset\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\index.ts",
+      "line_number": 111,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc Initializing RenderX Evolution Communication System...\"",
+      "context": "console.log(\"\ud83c\udfbc Initializing RenderX Evolution Communication System...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\index.ts",
+      "line_number": 124,
+      "log_type": "console.log",
+      "message": "\"\u2705 Communication System initialized successfully\"",
+      "context": "console.log(\"\u2705 Communication System initialized successfully\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+      "line_number": 83,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc SPA Validator: Runtime checks initialized\"",
+      "context": "console.log(\"\ud83c\udfbc SPA Validator: Runtime checks initialized\");",
+      "severity": "INFO",
+      "category": "Validation"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+      "line_number": 550,
+      "log_type": "console.error",
+      "message": "`   Plugin: ${violation.pluginId}`",
+      "context": "console.error(`   Plugin: ${violation.pluginId}`);",
+      "severity": "ERROR",
+      "category": "Validation"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+      "line_number": 551,
+      "log_type": "console.error",
+      "message": "`   Time: ${violation.timestamp.toISOString(",
+      "context": "console.error(`   Time: ${violation.timestamp.toISOString()}`);",
+      "severity": "ERROR",
+      "category": "Validation"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+      "line_number": 554,
+      "log_type": "console.error",
+      "message": "`   Location: ${violation.fileUrl}:${violation.lineNumber}${col}`",
+      "context": "console.error(`   Location: ${violation.fileUrl}:${violation.lineNumber}${col}`);",
+      "severity": "ERROR",
+      "category": "Validation"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+      "line_number": 557,
+      "log_type": "console.error",
+      "message": "`   Code: ${violation.codeSnippet.trim(",
+      "context": "console.error(`   Code: ${violation.codeSnippet.trim()}`);",
+      "severity": "ERROR",
+      "category": "Validation"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+      "line_number": 727,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc SPA Validator: Runtime checks disabled\"",
+      "context": "console.log(\"\ud83c\udfbc SPA Validator: Runtime checks disabled\");",
+      "severity": "INFO",
+      "category": "Validation"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+      "line_number": 79,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc Registering all musical sequences with conductor...\"",
+      "context": "console.log(\"\ud83c\udfbc Registering all musical sequences with conductor...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+      "line_number": 88,
+      "log_type": "console.log",
+      "message": "`\u2705 Registered sequence: ${sequence.name}`",
+      "context": "console.log(`\u2705 Registered sequence: ${sequence.name}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+      "line_number": 91,
+      "log_type": "console.error",
+      "message": "`\u274c Failed to register sequence: ${sequence.name}`, error",
+      "context": "console.error(`\u274c Failed to register sequence: ${sequence.name}`, error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+      "line_number": 101,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcca Sequence categories: ${Array.from(categories",
+      "context": "console.log(`\ud83d\udcca Sequence categories: ${Array.from(categories).join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+      "line_number": 192,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc Initializing Musical Sequences System...\"",
+      "context": "console.log(\"\ud83c\udfbc Initializing Musical Sequences System...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+      "line_number": 215,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcca Total sequences registered: ${registeredSequences}`",
+      "context": "console.log(`\ud83d\udcca Total sequences registered: ${registeredSequences}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+      "line_number": 182,
+      "log_type": "event_logger_instance.setupBeatExecutionLogging",
+      "message": "",
+      "context": "this.eventLogger.setupBeatExecutionLogging();",
+      "severity": "INFO",
+      "category": "MusicalConductor"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+      "line_number": 183,
+      "log_type": "event_logger_instance.setupMovementExecutionLogging",
+      "message": "",
+      "context": "this.eventLogger.setupMovementExecutionLogging();",
+      "severity": "INFO",
+      "category": "MusicalConductor"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+      "line_number": 250,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc MusicalConductor: Initialized with core components\"",
+      "context": "console.log(\"\ud83c\udfbc MusicalConductor: Initialized with core components\");",
+      "severity": "INFO",
+      "category": "MusicalConductor"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+      "line_number": 285,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd04 MusicalConductor: Singleton instance reset\"",
+      "context": "console.log(\"\ud83d\udd04 MusicalConductor: Singleton instance reset\");",
+      "severity": "INFO",
+      "category": "MusicalConductor"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+      "line_number": 299,
+      "log_type": "event_logger_instance.handleBeatError",
+      "message": "executionContext, beat, error",
+      "context": "this.eventLogger.handleBeatError(executionContext, beat, error);",
+      "severity": "INFO",
+      "category": "MusicalConductor"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+      "line_number": 638,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc MusicalConductor: All monitoring data reset\"",
+      "context": "console.log(\"\ud83c\udfbc MusicalConductor: All monitoring data reset\");",
+      "severity": "INFO",
+      "category": "MusicalConductor"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
+      "line_number": 191,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc ConductorAPI: Statistics reset\"",
+      "context": "console.log(\"\ud83c\udfbc ConductorAPI: Statistics reset\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
+      "line_number": 203,
+      "log_type": "console.warn",
+      "message": "\"\ud83c\udfbd ConductorAPI: No active sequence to update data baton\"",
+      "context": "console.warn(\"\ud83c\udfbd ConductorAPI: No active sequence to update data baton\");",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
+      "line_number": 218,
+      "log_type": "console.error",
+      "message": "\"\ud83c\udfbd ConductorAPI: Failed to update data baton:\", error",
+      "context": "console.error(\"\ud83c\udfbd ConductorAPI: Failed to update data baton:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
+      "line_number": 243,
+      "log_type": "console.warn",
+      "message": "\"\ud83c\udfbd ConductorAPI: No active sequence to clear data baton\"",
+      "context": "console.warn(\"\ud83c\udfbd ConductorAPI: No active sequence to clear data baton\");",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
+      "line_number": 254,
+      "log_type": "console.error",
+      "message": "\"\ud83c\udfbd ConductorAPI: Failed to clear data baton:\", error",
+      "context": "console.error(\"\ud83c\udfbd ConductorAPI: Failed to clear data baton:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 86,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc ConductorCore: Initialized successfully\"",
+      "context": "console.log(\"\ud83c\udfbc ConductorCore: Initialized successfully\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 94,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc Beat execution logging already initialized, skipping...\"",
+      "context": "console.log(\"\ud83c\udfbc Beat execution logging already initialized, skipping...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 98,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc ConductorCore: Setting up beat execution logging...\"",
+      "context": "console.log(\"\ud83c\udfbc ConductorCore: Setting up beat execution logging...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 125,
+      "log_type": "console.error",
+      "message": "\"\ud83c\udfbc Beat execution error:\", data",
+      "context": "console.error(\"\ud83c\udfbc Beat execution error:\", data);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 138,
+      "log_type": "console.log",
+      "message": "\"\u2705 Beat execution logging initialized\"",
+      "context": "console.log(\"\u2705 Beat execution logging initialized\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 147,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc \u250c\u2500 Beat ${beatNumber} Started`",
+      "context": "console.log(`\ud83c\udfbc \u250c\u2500 Beat ${beatNumber} Started`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 148,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc \u2502  Sequence: ${sequenceName}`",
+      "context": "console.log(`\ud83c\udfbc \u2502  Sequence: ${sequenceName}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 149,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc \u2502  Movement: ${movementName}`",
+      "context": "console.log(`\ud83c\udfbc \u2502  Movement: ${movementName}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 150,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc \u2502  Event: ${eventType}`",
+      "context": "console.log(`\ud83c\udfbc \u2502  Event: ${eventType}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 151,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc \u2502  Timing: ${timing}`",
+      "context": "console.log(`\ud83c\udfbc \u2502  Timing: ${timing}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 155,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbd \u2502  Data Baton:`, data.payload",
+      "context": "console.log(`\ud83c\udfbd \u2502  Data Baton:`, data.payload);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 165,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc \u2514\u2500 Beat ${beatNumber} Completed`",
+      "context": "console.log(`\ud83c\udfbc \u2514\u2500 Beat ${beatNumber} Completed`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 166,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc    Duration: ${duration}ms`",
+      "context": "console.log(`\ud83c\udfbc    Duration: ${duration}ms`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 167,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc    Sequence: ${sequenceName}`",
+      "context": "console.log(`\ud83c\udfbc    Sequence: ${sequenceName}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 168,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc    Movement: ${movementName}`",
+      "context": "console.log(`\ud83c\udfbc    Movement: ${movementName}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 184,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc ConductorCore: Cleaning up...\"",
+      "context": "console.log(\"\ud83c\udfbc ConductorCore: Cleaning up...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 191,
+      "log_type": "console.warn",
+      "message": "\"\ud83c\udfbc Error during event unsubscription:\", error",
+      "context": "console.warn(\"\ud83c\udfbc Error during event unsubscription:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+      "line_number": 198,
+      "log_type": "console.log",
+      "message": "\"\u2705 ConductorCore: Cleanup completed\"",
+      "context": "console.log(\"\u2705 ConductorCore: Cleanup completed\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\EventSubscriptionManager.ts",
+      "line_number": 155,
+      "log_type": "console.error",
+      "message": "`\ud83c\udfbc Subscriber: ${subscriberId}`",
+      "context": "console.error(`\ud83c\udfbc Subscriber: ${subscriberId}`);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\core\\SequenceRegistry.ts",
+      "line_number": 197,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc SequenceRegistry: Cleared ${sequences.length} sequences`",
+      "context": "console.log(`\ud83c\udfbc SequenceRegistry: Cleared ${sequences.length} sequences`);",
+      "severity": "INFO",
+      "category": "SequenceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\BeatExecutor.ts",
+      "line_number": 388,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 BeatExecutor: Beat execution queue cleared\"",
+      "context": "console.log(\"\ud83e\uddf9 BeatExecutor: Beat execution queue cleared\");",
+      "severity": "INFO",
+      "category": "BeatExecution"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\ExecutionQueue.ts",
+      "line_number": 57,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc ExecutionQueue: Dequeued \"${request.sequenceName}\"`",
+      "context": "console.log(`\ud83c\udfbc ExecutionQueue: Dequeued \"${request.sequenceName}\"`);",
+      "severity": "INFO",
+      "category": "ExecutionQueue"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\ExecutionQueue.ts",
+      "line_number": 123,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc ExecutionQueue: Now executing \"${request.sequenceName}\"`",
+      "context": "console.log(`\ud83c\udfbc ExecutionQueue: Now executing \"${request.sequenceName}\"`);",
+      "severity": "INFO",
+      "category": "ExecutionQueue"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\ExecutionQueue.ts",
+      "line_number": 125,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc ExecutionQueue: No sequence currently executing`",
+      "context": "console.log(`\ud83c\udfbc ExecutionQueue: No sequence currently executing`);",
+      "severity": "INFO",
+      "category": "ExecutionQueue"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\execution\\SequenceExecutor.ts",
+      "line_number": 247,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 SequenceExecutor: Execution history cleared\"",
+      "context": "console.log(\"\ud83e\uddf9 SequenceExecutor: Execution history cleared\");",
+      "severity": "INFO",
+      "category": "SequenceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 105,
+      "log_type": "console.warn",
+      "message": "line, ...evt.message",
+      "context": "console.warn(line, ...evt.message);",
+      "severity": "WARN",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 108,
+      "log_type": "console.error",
+      "message": "line, ...evt.message",
+      "context": "console.error(line, ...evt.message);",
+      "severity": "ERROR",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 113,
+      "log_type": "console.log",
+      "message": "line, ...evt.message",
+      "context": "console.log(line, ...evt.message);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 129,
+      "log_type": "console.log",
+      "message": "`${indent}${scope.label}`",
+      "context": "console.log(`${indent}${scope.label}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 171,
+      "log_type": "console.log",
+      "message": "`${indent}\ud83c\udfad Stage Crew: ${pluginPrefix}${handlerName} (${correlationId}",
+      "context": "console.log(`${indent}\ud83c\udfad Stage Crew: ${pluginPrefix}${handlerName} (${correlationId})`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 181,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Add class \"${op.value}\" to ${op.selector}`",
+      "context": "console.log(`${opIndent}${connector} Add class \"${op.value}\" to ${op.selector}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 184,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Remove class \"${op.value}\" from ${op.selector}`",
+      "context": "console.log(`${opIndent}${connector} Remove class \"${op.value}\" from ${op.selector}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 187,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Set ${op.key}=\"${op.value}\" on ${op.selector}`",
+      "context": "console.log(`${opIndent}${connector} Set ${op.key}=\"${op.value}\" on ${op.selector}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 190,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Set style ${op.key}=\"${op.value}\" on ${op.selector}`",
+      "context": "console.log(`${opIndent}${connector} Set style ${op.key}=\"${op.value}\" on ${op.selector}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 195,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Create <${op.tag}>${classes}${attrs} in ${op.parent}`",
+      "context": "console.log(`${opIndent}${connector} Create <${op.tag}>${classes}${attrs} in ${op.parent}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 198,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Remove ${op.selector}`",
+      "context": "console.log(`${opIndent}${connector} Remove ${op.selector}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+      "line_number": 201,
+      "log_type": "console.log",
+      "message": "`${opIndent}${connector} Unknown operation: ${JSON.stringify(op",
+      "context": "console.log(`${opIndent}${connector} Unknown operation: ${JSON.stringify(op)}`);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+      "line_number": 147,
+      "log_type": "console.warn",
+      "message": "\"\ud83d\udd0d DuplicationDetector: Failed to generate hash, using fallback:\", error",
+      "context": "console.warn(\"\ud83d\udd0d DuplicationDetector: Failed to generate hash, using fallback:\", error);",
+      "severity": "WARN",
+      "category": "Monitoring"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+      "line_number": 217,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd0d DuplicationDetector: Configuration updated:\", this.config",
+      "context": "console.log(\"\ud83d\udd0d DuplicationDetector: Configuration updated:\", this.config);",
+      "severity": "INFO",
+      "category": "Monitoring"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+      "line_number": 260,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 DuplicationDetector: All detection data reset\"",
+      "context": "console.log(\"\ud83e\uddf9 DuplicationDetector: All detection data reset\");",
+      "severity": "INFO",
+      "category": "Monitoring"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 51,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc EventLogger: Hierarchical logging disabled\"",
+      "context": "console.log(\"\ud83c\udfbc EventLogger: Hierarchical logging disabled\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 76,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc EventLogger: Hierarchical beat logging initialized\"",
+      "context": "console.log(\"\ud83c\udfbc EventLogger: Hierarchical beat logging initialized\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 84,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc EventLogger: Movement hierarchical logging disabled\"",
+      "context": "console.log(\"\ud83c\udfbc EventLogger: Movement hierarchical logging disabled\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 116,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc EventLogger: Hierarchical movement logging initialized\"",
+      "context": "console.log(\"\ud83c\udfbc EventLogger: Hierarchical movement logging initialized\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 186,
+      "log_type": "console.log",
+      "message": "`%c\u2705 Completed`, \"color: #28A745; font-weight: bold;\"",
+      "context": "console.log(`%c\u2705 Completed`, \"color: #28A745; font-weight: bold;\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 317,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc EventLogger: Emitted ${eventType}`, data",
+      "context": "console.log(`\ud83c\udfbc EventLogger: Emitted ${eventType}`, data);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 411,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc EventLogger: Configuration updated:\", this.config",
+      "context": "console.log(\"\ud83c\udfbc EventLogger: Configuration updated:\", this.config);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+      "line_number": 430,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 EventLogger: Event subscriptions cleaned up\"",
+      "context": "console.log(\"\ud83e\uddf9 EventLogger: Event subscriptions cleaned up\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\PerformanceTracker.ts",
+      "line_number": 450,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 PerformanceTracker: All tracking data reset\"",
+      "context": "console.log(\"\ud83e\uddf9 PerformanceTracker: All tracking data reset\");",
+      "severity": "INFO",
+      "category": "Monitoring"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\StatisticsManager.ts",
+      "line_number": 65,
+      "log_type": "console.warn",
+      "message": "\"\ud83d\udcca StatisticsManager: Recorded error occurrence\"",
+      "context": "console.warn(\"\ud83d\udcca StatisticsManager: Recorded error occurrence\");",
+      "severity": "WARN",
+      "category": "Monitoring"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\StatisticsManager.ts",
+      "line_number": 155,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 StatisticsManager: All statistics reset\"",
+      "context": "console.log(\"\ud83e\uddf9 StatisticsManager: All statistics reset\");",
+      "severity": "INFO",
+      "category": "Monitoring"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\SequenceOrchestrator.ts",
+      "line_number": 301,
+      "log_type": "console.error",
+      "message": "`\u274c Sequence name: \"${sequenceName}\"`",
+      "context": "console.error(`\u274c Sequence name: \"${sequenceName}\"`);",
+      "severity": "ERROR",
+      "category": "SequenceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\SequenceOrchestrator.ts",
+      "line_number": 306,
+      "log_type": "console.error",
+      "message": "`\u274c Available sequences:`, this.sequenceRegistry.getNames(",
+      "context": "console.error(`\u274c Available sequences:`, this.sequenceRegistry.getNames());",
+      "severity": "ERROR",
+      "category": "SequenceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\SequenceOrchestrator.ts",
+      "line_number": 333,
+      "log_type": "console.warn",
+      "message": "`\ud83c\udfbc SequenceOrchestrator: ${deduplicationResult.reason}`",
+      "context": "console.warn(`\ud83c\udfbc SequenceOrchestrator: ${deduplicationResult.reason}`);",
+      "severity": "WARN",
+      "category": "SequenceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginInterfaceFacade.ts",
+      "line_number": 136,
+      "log_type": "console.warn",
+      "message": "`\ud83e\udde0 No handlers found for sequence: ${sequenceName}`",
+      "context": "console.warn(`\ud83e\udde0 No handlers found for sequence: ${sequenceName}`);",
+      "severity": "WARN",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginInterfaceFacade.ts",
+      "line_number": 221,
+      "log_type": "console.warn",
+      "message": "\"\ud83c\udfbc Failed to extract plugin code for validation:\", error",
+      "context": "console.warn(\"\ud83c\udfbc Failed to extract plugin code for validation:\", error);",
+      "severity": "WARN",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 19,
+      "log_type": "console.log",
+      "message": "`\ud83d\udce6 Loading plugin from cache: ${pluginPath}`",
+      "context": "console.log(`\ud83d\udce6 Loading plugin from cache: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 36,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 [node] Importing plugin via file URL: ${fileUrl}`",
+      "context": "console.log(`\ud83d\udd04 [node] Importing plugin via file URL: ${fileUrl}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 111,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Attempting to load plugin: ${pluginPath}`",
+      "context": "console.log(`\ud83d\udd04 Attempting to load plugin: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 114,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded plugin: ${pluginPath}`",
+      "context": "console.log(`\u2705 Successfully loaded plugin: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 124,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Attempting to load bundled plugin: ${bundledPath}`",
+      "context": "console.log(`\ud83d\udd04 Attempting to load bundled plugin: ${bundledPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 131,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded bundled plugin: ${bundledPath}`",
+      "context": "console.log(`\u2705 Successfully loaded bundled plugin: ${bundledPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 141,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Attempting to load bundled plugin: ${bundledPath}`",
+      "context": "console.log(`\ud83d\udd04 Attempting to load bundled plugin: ${bundledPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 148,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded bundled plugin: ${bundledPath}`",
+      "context": "console.log(`\u2705 Successfully loaded bundled plugin: ${bundledPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 157,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Attempting to load plugin: ${pluginPath}`",
+      "context": "console.log(`\ud83d\udd04 Attempting to load plugin: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 164,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded plugin: ${pluginPath}`",
+      "context": "console.log(`\u2705 Successfully loaded plugin: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 195,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd0d Plugin directory: ${pluginDir}`",
+      "context": "console.log(`\ud83d\udd0d Plugin directory: ${pluginDir}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 196,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd0d Plugin name: ${pluginName}`",
+      "context": "console.log(`\ud83d\udd0d Plugin name: ${pluginName}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 210,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Trying resolution strategy: ${strategy}`",
+      "context": "console.log(`\ud83d\udd04 Trying resolution strategy: ${strategy}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 259,
+      "log_type": "console.log",
+      "message": "`\ud83e\udde0 PluginLoader: Loading plugin from: ${pluginPath}`",
+      "context": "console.log(`\ud83e\udde0 PluginLoader: Loading plugin from: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 281,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Using default export for plugin: ${pluginPath}`",
+      "context": "console.log(`\ud83d\udd04 Using default export for plugin: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 285,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded and validated plugin: ${pluginPath}`",
+      "context": "console.log(`\u2705 Successfully loaded and validated plugin: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 288,
+      "log_type": "console.error",
+      "message": "`\u274c Failed to load plugin from ${pluginPath}:`, error",
+      "context": "console.error(`\u274c Failed to load plugin from ${pluginPath}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 299,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Preloading ${pluginPaths.length} plugins...`",
+      "context": "console.log(`\ud83d\udd04 Preloading ${pluginPaths.length} plugins...`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 305,
+      "log_type": "console.error",
+      "message": "`\u274c Failed to preload plugin ${path}:`, error",
+      "context": "console.error(`\u274c Failed to preload plugin ${path}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 334,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 PluginLoader: Module cache cleared\"",
+      "context": "console.log(\"\ud83e\uddf9 PluginLoader: Module cache cleared\");",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+      "line_number": 359,
+      "log_type": "console.log",
+      "message": "`\ud83d\uddd1\ufe0f Removed plugin from cache: ${pluginPath}`",
+      "context": "console.log(`\ud83d\uddd1\ufe0f Removed plugin from cache: ${pluginPath}`);",
+      "severity": "INFO",
+      "category": "PluginLoader"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 76,
+      "log_type": "console.log",
+      "message": "`\ud83e\udde0 PluginManager: Attempting to mount plugin: ${id}`",
+      "context": "console.log(`\ud83e\udde0 PluginManager: Attempting to mount plugin: ${id}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 103,
+      "log_type": "console.log",
+      "message": "`\ud83e\udde0 Plugin already mounted: ${id} \u2014 augmenting with additional sequence`",
+      "context": "console.log(`\ud83e\udde0 Plugin already mounted: ${id} \u2014 augmenting with additional sequence`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 427,
+      "log_type": "console.log",
+      "message": "`\u2705 Plugin mounted successfully: ${id}`",
+      "context": "console.log(`\u2705 Plugin mounted successfully: ${id}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 428,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc Sequence registered: ${sequence.name}`",
+      "context": "console.log(`\ud83c\udfbc Sequence registered: ${sequence.name}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 437,
+      "log_type": "console.error",
+      "message": "`\u274c Failed to mount plugin ${id}:`, error",
+      "context": "console.error(`\u274c Failed to mount plugin ${id}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 463,
+      "log_type": "console.warn",
+      "message": "`\ud83e\udde0 PluginManager: Failed to unmount ${pluginId}:`, err",
+      "context": "console.warn(`\ud83e\udde0 PluginManager: Failed to unmount ${pluginId}:`, err);",
+      "severity": "WARN",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 475,
+      "log_type": "console.warn",
+      "message": "`\ud83e\udde0 Plugin not found for unmounting: ${pluginId}`",
+      "context": "console.warn(`\ud83e\udde0 Plugin not found for unmounting: ${pluginId}`);",
+      "severity": "WARN",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 488,
+      "log_type": "console.log",
+      "message": "`\u2705 Plugin unmounted successfully: ${pluginId}`",
+      "context": "console.log(`\u2705 Plugin unmounted successfully: ${pluginId}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 491,
+      "log_type": "console.error",
+      "message": "`\u274c Failed to unmount plugin ${pluginId}:`, error",
+      "context": "console.error(`\u274c Failed to unmount plugin ${pluginId}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 510,
+      "log_type": "console.log",
+      "message": "\"\ud83e\udde0 Registering CIA-compliant plugins...\"",
+      "context": "console.log(\"\ud83e\udde0 Registering CIA-compliant plugins...\");",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 545,
+      "log_type": "console.error",
+      "message": "\"\u274c Failed to register CIA plugins:\", error",
+      "context": "console.error(\"\u274c Failed to register CIA plugins:\", error);",
+      "severity": "ERROR",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 556,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc PluginManager: Registering plugins from manifest...\"",
+      "context": "console.log(\"\ud83c\udfbc PluginManager: Registering plugins from manifest...\");",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 568,
+      "log_type": "console.log",
+      "message": "`\u26a0\ufe0f Plugin already mounted, skipping: ${plugin.name}`",
+      "context": "console.log(`\u26a0\ufe0f Plugin already mounted, skipping: ${plugin.name}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 604,
+      "log_type": "console.log",
+      "message": "`\u2705 Auto-mounted plugin: ${plugin.name}`",
+      "context": "console.log(`\u2705 Auto-mounted plugin: ${plugin.name}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 611,
+      "log_type": "console.log",
+      "message": "`\u23ed\ufe0f Skipping non-auto-mount plugin: ${plugin.name}`",
+      "context": "console.log(`\u23ed\ufe0f Skipping non-auto-mount plugin: ${plugin.name}`);",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 614,
+      "log_type": "console.error",
+      "message": "`\u274c Error processing plugin ${plugin.name}:`, error",
+      "context": "console.error(`\u274c Error processing plugin ${plugin.name}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 623,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd04 Registering fallback sequences...\"",
+      "context": "console.log(\"\ud83d\udd04 Registering fallback sequences...\");",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 654,
+      "log_type": "console.log",
+      "message": "\"\u2705 Fallback sequences registered\"",
+      "context": "console.log(\"\u2705 Fallback sequences registered\");",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+      "line_number": 744,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 PluginManager: State reset\"",
+      "context": "console.log(\"\ud83e\uddf9 PluginManager: State reset\");",
+      "severity": "INFO",
+      "category": "PluginManager"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 40,
+      "log_type": "console.log",
+      "message": "`\ud83d\udce6 Loading manifest from cache: ${manifestPath}`",
+      "context": "console.log(`\ud83d\udce6 Loading manifest from cache: ${manifestPath}`);",
+      "severity": "INFO",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 45,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Loading plugin manifest: ${manifestPath}`",
+      "context": "console.log(`\ud83d\udd04 Loading plugin manifest: ${manifestPath}`);",
+      "severity": "INFO",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 97,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded manifest: ${manifestPath}`",
+      "context": "console.log(`\u2705 Successfully loaded manifest: ${manifestPath}`);",
+      "severity": "INFO",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 104,
+      "log_type": "console.error",
+      "message": "`\u274c Failed to load manifest from ${manifestPath}:`, error",
+      "context": "console.error(`\u274c Failed to load manifest from ${manifestPath}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 108,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd04 Using fallback manifest\"",
+      "context": "console.log(\"\ud83d\udd04 Using fallback manifest\");",
+      "severity": "INFO",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 126,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Manifest missing version, using default\"",
+      "context": "console.warn(\"\u26a0\ufe0f Manifest missing version, using default\");",
+      "severity": "WARN",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 142,
+      "log_type": "console.error",
+      "message": "`\u274c Invalid plugin entry at index ${index}:`, error",
+      "context": "console.error(`\u274c Invalid plugin entry at index ${index}:`, error);",
+      "severity": "ERROR",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 148,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f No valid plugins found in manifest\"",
+      "context": "console.warn(\"\u26a0\ufe0f No valid plugins found in manifest\");",
+      "severity": "WARN",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 239,
+      "log_type": "console.log",
+      "message": "`\u2705 Successfully loaded manifest from: ${path}`",
+      "context": "console.log(`\u2705 Successfully loaded manifest from: ${path}`);",
+      "severity": "INFO",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 242,
+      "log_type": "console.warn",
+      "message": "`\u26a0\ufe0f Failed to load manifest from ${path}, trying next...`",
+      "context": "console.warn(`\u26a0\ufe0f Failed to load manifest from ${path}, trying next...`);",
+      "severity": "WARN",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 246,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f All manifest sources failed, using fallback\"",
+      "context": "console.warn(\"\u26a0\ufe0f All manifest sources failed, using fallback\");",
+      "severity": "WARN",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 260,
+      "log_type": "console.error",
+      "message": "\"\u274c Failed to parse manifest JSON:\", error",
+      "context": "console.error(\"\u274c Failed to parse manifest JSON:\", error);",
+      "severity": "ERROR",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+      "line_number": 336,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 PluginManifestLoader: Cache cleared\"",
+      "context": "console.log(\"\ud83e\uddf9 PluginManifestLoader: Cache cleared\");",
+      "severity": "INFO",
+      "category": "PluginSystem"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceConflictManager.ts",
+      "line_number": 205,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc ResourceConflictManager: Clearing all resource ownership\"",
+      "context": "console.log(\"\ud83c\udfbc ResourceConflictManager: Clearing all resource ownership\");",
+      "severity": "INFO",
+      "category": "ResourceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceManager.ts",
+      "line_number": 306,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 ResourceManager: All resource ownership reset\"",
+      "context": "console.log(\"\ud83e\uddf9 ResourceManager: All resource ownership reset\");",
+      "severity": "INFO",
+      "category": "ResourceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceOwnershipTracker.ts",
+      "line_number": 281,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 ResourceOwnershipTracker: All tracking data reset\"",
+      "context": "console.log(\"\ud83e\uddf9 ResourceOwnershipTracker: All tracking data reset\");",
+      "severity": "INFO",
+      "category": "ResourceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+      "line_number": 256,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc StrictModeManager: Added StrictMode pattern: ${pattern}`",
+      "context": "console.log(`\ud83c\udfbc StrictModeManager: Added StrictMode pattern: ${pattern}`);",
+      "severity": "INFO",
+      "category": "Strictmode"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+      "line_number": 265,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc StrictModeManager: Removed StrictMode pattern: ${pattern}`",
+      "context": "console.log(`\ud83c\udfbc StrictModeManager: Removed StrictMode pattern: ${pattern}`);",
+      "severity": "INFO",
+      "category": "Strictmode"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+      "line_number": 281,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc StrictModeManager: Cleared execution history\"",
+      "context": "console.log(\"\ud83c\udfbc StrictModeManager: Cleared execution history\");",
+      "severity": "INFO",
+      "category": "Strictmode"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\modules\\communication\\sequences\\validation\\SequenceValidator.ts",
+      "line_number": 291,
+      "log_type": "console.log",
+      "message": "\"\ud83e\uddf9 SequenceValidator: Validation state reset\"",
+      "context": "console.log(\"\ud83e\uddf9 SequenceValidator: Validation state reset\");",
+      "severity": "INFO",
+      "category": "SequenceManagement"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\node_modules\\type-fest\\source\\promisable.d.ts",
+      "line_number": 16,
+      "log_type": "console.log",
+      "message": "entry",
+      "context": "console.log(entry);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 191,
+      "log_type": "console.log",
+      "message": "\"\ud83d\ude80 Demo: Starting knowledge export...\"",
+      "context": "console.log(\"\ud83d\ude80 Demo: Starting knowledge export...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 198,
+      "log_type": "console.log",
+      "message": "`\u2705 Demo: Knowledge exported to: ${outputPath}`",
+      "context": "console.log(`\u2705 Demo: Knowledge exported to: ${outputPath}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 205,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udce5 Demo: Starting knowledge import...\"",
+      "context": "console.log(\"\ud83d\udce5 Demo: Starting knowledge import...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 209,
+      "log_type": "console.error",
+      "message": "`\u274c Knowledge file not found: ${filePath}`",
+      "context": "console.error(`\u274c Knowledge file not found: ${filePath}`);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 219,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd0d Demo: Validating knowledge file...\"",
+      "context": "console.log(\"\ud83d\udd0d Demo: Validating knowledge file...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 220,
+      "log_type": "console.log",
+      "message": "\"\u2705 Demo: Knowledge file is valid\"",
+      "context": "console.log(\"\u2705 Demo: Knowledge file is valid\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 229,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udcda Demo: Importing best practices:\"",
+      "context": "console.log(\"\ud83d\udcda Demo: Importing best practices:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 232,
+      "log_type": "console.log",
+      "message": "`  ${index + 1}. ${practice}`",
+      "context": "console.log(`  ${index + 1}. ${practice}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 236,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udca1 Demo: Importing optimization insights:\"",
+      "context": "console.log(\"\ud83d\udca1 Demo: Importing optimization insights:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 239,
+      "log_type": "console.log",
+      "message": "`  ${index + 1}. ${insight.insight} (${insight.type}",
+      "context": "console.log(`  ${index + 1}. ${insight.insight} (${insight.type})`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 243,
+      "log_type": "console.log",
+      "message": "\"\u2705 Demo: Knowledge imported successfully\"",
+      "context": "console.log(\"\u2705 Demo: Knowledge imported successfully\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 274,
+      "log_type": "console.log",
+      "message": "JSON.stringify(status, null, 2",
+      "context": "console.log(JSON.stringify(status, null, 2));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 276,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83c\udfbc MusicalConductor Knowledge Status (Demo",
+      "context": "console.log(\"\\n\ud83c\udfbc MusicalConductor Knowledge Status (Demo)\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 277,
+      "log_type": "console.log",
+      "message": "\"=============================================\"",
+      "context": "console.log(\"=============================================\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 279,
+      "log_type": "console.log",
+      "message": "`\\n\ud83c\udfaf Conductor Status:`",
+      "context": "console.log(`\\n\ud83c\udfaf Conductor Status:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 280,
+      "log_type": "console.log",
+      "message": "`  - Active: ${status.conductor.active ? \"\u2705\" : \"\u274c\"}`",
+      "context": "console.log(`  - Active: ${status.conductor.active ? \"\u2705\" : \"\u274c\"}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 281,
+      "log_type": "console.log",
+      "message": "`  - Sequences: ${status.conductor.sequences}`",
+      "context": "console.log(`  - Sequences: ${status.conductor.sequences}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 282,
+      "log_type": "console.log",
+      "message": "`  - Plugins: ${status.conductor.plugins}`",
+      "context": "console.log(`  - Plugins: ${status.conductor.plugins}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 283,
+      "log_type": "console.log",
+      "message": "`  - Queue Length: ${status.conductor.queueLength}`",
+      "context": "console.log(`  - Queue Length: ${status.conductor.queueLength}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 285,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udcca Performance Metrics:`",
+      "context": "console.log(`\\n\ud83d\udcca Performance Metrics:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 289,
+      "log_type": "console.log",
+      "message": "`  - Average Time: ${status.performance.averageTime}ms`",
+      "context": "console.log(`  - Average Time: ${status.performance.averageTime}ms`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 290,
+      "log_type": "console.log",
+      "message": "`  - Success Rate: ${status.performance.successRate}%`",
+      "context": "console.log(`  - Success Rate: ${status.performance.successRate}%`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 292,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udce1 Event System:`",
+      "context": "console.log(`\\n\ud83d\udce1 Event System:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 293,
+      "log_type": "console.log",
+      "message": "`  - Subscriptions: ${status.events.subscriptions}`",
+      "context": "console.log(`  - Subscriptions: ${status.events.subscriptions}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 294,
+      "log_type": "console.log",
+      "message": "`  - Events Emitted: ${status.events.emitted}`",
+      "context": "console.log(`  - Events Emitted: ${status.events.emitted}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 296,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 301,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udd0d Demo: Validating knowledge file...\"",
+      "context": "console.log(\"\ud83d\udd0d Demo: Validating knowledge file...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 305,
+      "log_type": "console.error",
+      "message": "`\u274c Knowledge file not found: ${filePath}`",
+      "context": "console.error(`\u274c Knowledge file not found: ${filePath}`);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 330,
+      "log_type": "console.log",
+      "message": "\"\u2705 Demo: Knowledge file is valid\"",
+      "context": "console.log(\"\u2705 Demo: Knowledge file is valid\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 331,
+      "log_type": "console.log",
+      "message": "`\ud83d\udccb Agent: ${knowledge.metadata.agentId}`",
+      "context": "console.log(`\ud83d\udccb Agent: ${knowledge.metadata.agentId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 337,
+      "log_type": "console.log",
+      "message": "`\ud83d\udce6 Type: ${knowledge.metadata.exportType}`",
+      "context": "console.log(`\ud83d\udce6 Type: ${knowledge.metadata.exportType}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 338,
+      "log_type": "console.log",
+      "message": "`\ud83c\udfbc Version: ${knowledge.metadata.musicalConductorVersion}`",
+      "context": "console.log(`\ud83c\udfbc Version: ${knowledge.metadata.musicalConductorVersion}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 340,
+      "log_type": "console.log",
+      "message": "\"\u274c Demo: Validation failed\"",
+      "context": "console.log(\"\u274c Demo: Validation failed\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 341,
+      "log_type": "console.log",
+      "message": "`  - ${error}`",
+      "context": "errors.forEach((error: string) => console.log(`  - ${error}`));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 345,
+      "log_type": "console.log",
+      "message": "\"\u26a0\ufe0f Demo: Warnings:\"",
+      "context": "console.log(\"\u26a0\ufe0f Demo: Warnings:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\demo.ts",
+      "line_number": 346,
+      "log_type": "console.log",
+      "message": "`  - ${warning}`",
+      "context": "warnings.forEach((warning: string) => console.log(`  - ${warning}`));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 265,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\ude80 Starting knowledge export...\"",
+      "context": "this.logger.info(\"\ud83d\ude80 Starting knowledge export...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 284,
+      "log_type": "logger.error",
+      "message": "\"\u274c Export failed:\", error",
+      "context": "this.logger.error(\"\u274c Export failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 291,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\udce5 Starting knowledge import...\"",
+      "context": "this.logger.info(\"\ud83d\udce5 Starting knowledge import...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 303,
+      "log_type": "logger.error",
+      "message": "\"\u274c Validation failed:\", validation.errors",
+      "context": "this.logger.error(\"\u274c Validation failed:\", validation.errors);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 305,
+      "log_type": "logger.warn",
+      "message": "\"\u26a0\ufe0f Warnings:\", validation.warnings",
+      "context": "this.logger.warn(\"\u26a0\ufe0f Warnings:\", validation.warnings);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 317,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\udd0d Import preview:\", preview",
+      "context": "this.logger.info(\"\ud83d\udd0d Import preview:\", preview);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 331,
+      "log_type": "logger.info",
+      "message": "`\ud83d\udcca Import summary: ${this.getImportSummary(result",
+      "context": "this.logger.info(`\ud83d\udcca Import summary: ${this.getImportSummary(result)}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 333,
+      "log_type": "logger.error",
+      "message": "\"\u274c Import failed:\", error",
+      "context": "this.logger.error(\"\u274c Import failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 340,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\udd04 Starting knowledge merge...\"",
+      "context": "this.logger.info(\"\ud83d\udd04 Starting knowledge merge...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 357,
+      "log_type": "logger.error",
+      "message": "\"\u274c Merge failed:\", error",
+      "context": "this.logger.error(\"\u274c Merge failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 364,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\udd0d Validating knowledge file...\"",
+      "context": "this.logger.info(\"\ud83d\udd0d Validating knowledge file...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 376,
+      "log_type": "logger.error",
+      "message": "\"\u274c Validation failed:\", validation.errors",
+      "context": "this.logger.error(\"\u274c Validation failed:\", validation.errors);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 380,
+      "log_type": "logger.warn",
+      "message": "\"\u26a0\ufe0f Warnings:\", validation.warnings",
+      "context": "this.logger.warn(\"\u26a0\ufe0f Warnings:\", validation.warnings);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 385,
+      "log_type": "logger.info",
+      "message": "`\ud83d\udcc4 Validation report saved to: ${options.report}`",
+      "context": "this.logger.info(`\ud83d\udcc4 Validation report saved to: ${options.report}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 388,
+      "log_type": "logger.error",
+      "message": "\"\u274c Validation failed:\", error",
+      "context": "this.logger.error(\"\u274c Validation failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 398,
+      "log_type": "console.log",
+      "message": "JSON.stringify(status, null, 2",
+      "context": "console.log(JSON.stringify(status, null, 2));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 403,
+      "log_type": "logger.error",
+      "message": "\"\u274c Failed to get status:\", error",
+      "context": "this.logger.error(\"\u274c Failed to get status:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 410,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\udd0d Comparing knowledge...\"",
+      "context": "this.logger.info(\"\ud83d\udd0d Comparing knowledge...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 426,
+      "log_type": "console.log",
+      "message": "JSON.stringify(diff, null, 2",
+      "context": "console.log(JSON.stringify(diff, null, 2));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 431,
+      "log_type": "logger.error",
+      "message": "\"\u274c Diff failed:\", error",
+      "context": "this.logger.error(\"\u274c Diff failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 447,
+      "log_type": "logger.warn",
+      "message": "`\u274c Shortcut '${keyword}' not found`",
+      "context": "this.logger.warn(`\u274c Shortcut '${keyword}' not found`);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 452,
+      "log_type": "logger.info",
+      "message": "\"\\n\ud83d\udca1 Did you mean one of these?\"",
+      "context": "this.logger.info(\"\\n\ud83d\udca1 Did you mean one of these?\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 454,
+      "log_type": "console.log",
+      "message": "`   - ${s.keyword}: ${s.description}`",
+      "context": "console.log(`   - ${s.keyword}: ${s.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 458,
+      "log_type": "logger.info",
+      "message": "\"\\n\ud83d\udd0d Use --search flag to search for shortcuts\"",
+      "context": "this.logger.info(\"\\n\ud83d\udd0d Use --search flag to search for shortcuts\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 468,
+      "log_type": "logger.error",
+      "message": "\"\u274c Shortcut command failed:\", error",
+      "context": "this.logger.error(\"\u274c Shortcut command failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 503,
+      "log_type": "console.log",
+      "message": "`\\n${index + 1}. \ud83d\udd17 ${shortcut.keyword}`",
+      "context": "console.log(`\\n${index + 1}. \ud83d\udd17 ${shortcut.keyword}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 504,
+      "log_type": "console.log",
+      "message": "`   ${shortcut.description}`",
+      "context": "console.log(`   ${shortcut.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 505,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcda ${shortcut.resources.length} resources`",
+      "context": "console.log(`   \ud83d\udcda ${shortcut.resources.length} resources`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 507,
+      "log_type": "console.log",
+      "message": "`   \ud83c\udff7\ufe0f  Aliases: ${shortcut.aliases.join(\", \"",
+      "context": "console.log(`   \ud83c\udff7\ufe0f  Aliases: ${shortcut.aliases.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 524,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udcc1 ${category.toUpperCase(",
+      "context": "console.log(`\\n\ud83d\udcc1 ${category.toUpperCase()}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 530,
+      "log_type": "console.log",
+      "message": "`      Aliases: ${shortcut.aliases.join(\", \"",
+      "context": "console.log(`      Aliases: ${shortcut.aliases.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 551,
+      "log_type": "logger.info",
+      "message": "\"\ud83d\udce5 Import shortcuts functionality - coming soon!\"",
+      "context": "this.logger.info(\"\ud83d\udce5 Import shortcuts functionality - coming soon!\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 561,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcca Total shortcuts: ${shortcuts.length}`",
+      "context": "console.log(`\ud83d\udcca Total shortcuts: ${shortcuts.length}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 562,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcc1 Categories: ${categories.length}`",
+      "context": "console.log(`\ud83d\udcc1 Categories: ${categories.length}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 564,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udccb Quick Commands:\"",
+      "context": "console.log(\"\\n\ud83d\udccb Quick Commands:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 578,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udd25 Popular shortcuts:\"",
+      "context": "console.log(\"\\n\ud83d\udd25 Popular shortcuts:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 588,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udd17 ${keyword} - ${shortcut.description}`",
+      "context": "console.log(`   \ud83d\udd17 ${keyword} - ${shortcut.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 593,
+      "log_type": "logger.error",
+      "message": "\"\u274c Shortcuts command failed:\", error",
+      "context": "this.logger.error(\"\u274c Shortcuts command failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 615,
+      "log_type": "console.log",
+      "message": "`\u274c Failed to mark transfer ${transferId} as consumed`",
+      "context": "console.log(`\u274c Failed to mark transfer ${transferId} as consumed`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 639,
+      "log_type": "console.log",
+      "message": "`\u274c Failed to mark transfer ${transferId} as sent`",
+      "context": "console.log(`\u274c Failed to mark transfer ${transferId} as sent`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 663,
+      "log_type": "console.log",
+      "message": "`\u274c Failed to mark transfer ${transferId} as received`",
+      "context": "console.log(`\u274c Failed to mark transfer ${transferId} as received`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 688,
+      "log_type": "console.log",
+      "message": "`\u274c Failed to mark transfer ${transferId} as failed`",
+      "context": "console.log(`\u274c Failed to mark transfer ${transferId} as failed`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 699,
+      "log_type": "console.log",
+      "message": "\"\ud83c\udfbc Knowledge Transfer Creation Guide\"",
+      "context": "console.log(\"\ud83c\udfbc Knowledge Transfer Creation Guide\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 700,
+      "log_type": "console.log",
+      "message": "\"\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\"",
+      "context": "console.log(\"\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 701,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udccb Steps to create a knowledge transfer:\"",
+      "context": "console.log(\"\\n\ud83d\udccb Steps to create a knowledge transfer:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 702,
+      "log_type": "console.log",
+      "message": "\"\\n1. Create your knowledge file (JSON format",
+      "context": "console.log(\"\\n1. Create your knowledge file (JSON format):\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 703,
+      "log_type": "console.log",
+      "message": "\"   cat > my-knowledge.json << 'EOF'\"",
+      "context": "console.log(\"   cat > my-knowledge.json << 'EOF'\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 704,
+      "log_type": "console.log",
+      "message": "\"   {\"",
+      "context": "console.log(\"   {\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 705,
+      "log_type": "console.log",
+      "message": "'     \"knowledgeTransfer\": {'",
+      "context": "console.log('     \"knowledgeTransfer\": {');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 706,
+      "log_type": "console.log",
+      "message": "'       \"version\": \"1.0.0\",'",
+      "context": "console.log('       \"version\": \"1.0.0\",');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 707,
+      "log_type": "console.log",
+      "message": "'       \"fromAgent\": \"your-agent-id\",'",
+      "context": "console.log('       \"fromAgent\": \"your-agent-id\",');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 708,
+      "log_type": "console.log",
+      "message": "'       \"toAgent\": \"target-agent-id\",'",
+      "context": "console.log('       \"toAgent\": \"target-agent-id\",');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 709,
+      "log_type": "console.log",
+      "message": "'       \"priority\": \"high\"'",
+      "context": "console.log('       \"priority\": \"high\"');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 710,
+      "log_type": "console.log",
+      "message": "\"     },\"",
+      "context": "console.log(\"     },\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 711,
+      "log_type": "console.log",
+      "message": "'     \"content\": { /* your knowledge here */ }'",
+      "context": "console.log('     \"content\": { /* your knowledge here */ }');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 712,
+      "log_type": "console.log",
+      "message": "\"   }\"",
+      "context": "console.log(\"   }\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 713,
+      "log_type": "console.log",
+      "message": "\"   EOF\"",
+      "context": "console.log(\"   EOF\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 714,
+      "log_type": "console.log",
+      "message": "\"\\n2. Create the transfer:\"",
+      "context": "console.log(\"\\n2. Create the transfer:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 715,
+      "log_type": "console.log",
+      "message": "'   node -r ts-node/register -e \"'",
+      "context": "console.log('   node -r ts-node/register -e \"');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 719,
+      "log_type": "console.log",
+      "message": "\"   const queue = new KnowledgeTransferQueue(",
+      "context": "console.log(\"   const queue = new KnowledgeTransferQueue();\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 720,
+      "log_type": "console.log",
+      "message": "\"   const transferId = queue.createTransfer(\"",
+      "context": "console.log(\"   const transferId = queue.createTransfer(\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 721,
+      "log_type": "console.log",
+      "message": "\"     'from-agent', 'to-agent', 'my-knowledge.json',\"",
+      "context": "console.log(\"     'from-agent', 'to-agent', 'my-knowledge.json',\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 725,
+      "log_type": "console.log",
+      "message": "\"",
+      "context": "console.log(\"   );\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 726,
+      "log_type": "console.log",
+      "message": "\"   console.log('Transfer created:', transferId",
+      "context": "console.log(\"   console.log('Transfer created:', transferId);\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 727,
+      "log_type": "console.log",
+      "message": "\"   queue.markAsSent(transferId, 'from-agent'",
+      "context": "console.log(\"   queue.markAsSent(transferId, 'from-agent');\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 728,
+      "log_type": "console.log",
+      "message": "'   \"'",
+      "context": "console.log('   \"');",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 729,
+      "log_type": "console.log",
+      "message": "\"\\n3. Verify creation:\"",
+      "context": "console.log(\"\\n3. Verify creation:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 730,
+      "log_type": "console.log",
+      "message": "\"   npm run queue -- --status\"",
+      "context": "console.log(\"   npm run queue -- --status\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 736,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcca Total transfers: ${status.totalTransfers}`",
+      "context": "console.log(`\ud83d\udcca Total transfers: ${status.totalTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 737,
+      "log_type": "console.log",
+      "message": "`\u23f3 Pending: ${status.pendingTransfers}`",
+      "context": "console.log(`\u23f3 Pending: ${status.pendingTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 738,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Active: ${status.activeTransfers}`",
+      "context": "console.log(`\ud83d\udd04 Active: ${status.activeTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 739,
+      "log_type": "console.log",
+      "message": "`\u2705 Completed: ${status.completedTransfers}`",
+      "context": "console.log(`\u2705 Completed: ${status.completedTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 740,
+      "log_type": "console.log",
+      "message": "`\u274c Failed: ${status.failedTransfers}`",
+      "context": "console.log(`\u274c Failed: ${status.failedTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 741,
+      "log_type": "console.log",
+      "message": "`\u23f0 Expired: ${status.expiredTransfers}`",
+      "context": "console.log(`\u23f0 Expired: ${status.expiredTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 744,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udc65 Active Agents (${agents.length}",
+      "context": "console.log(`\\n\ud83d\udc65 Active Agents (${agents.length}):`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 763,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udced No transfers found\"",
+      "context": "console.log(\"\ud83d\udced No transfers found\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 771,
+      "log_type": "console.log",
+      "message": "`\\n${index + 1}. ${stateIcon} ${transfer.transferId}`",
+      "context": "console.log(`\\n${index + 1}. ${stateIcon} ${transfer.transferId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 772,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcdd ${transfer.metadata.title}`",
+      "context": "console.log(`   \ud83d\udcdd ${transfer.metadata.title}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 773,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udc64 ${transfer.fromAgentId} \u2192 ${transfer.toAgentId}`",
+      "context": "console.log(`   \ud83d\udc64 ${transfer.fromAgentId} \u2192 ${transfer.toAgentId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 774,
+      "log_type": "console.log",
+      "message": "`   \u23f0 ${timeAgo}`",
+      "context": "console.log(`   \u23f0 ${timeAgo}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 775,
+      "log_type": "console.log",
+      "message": "`   \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \"",
+      "context": "console.log(`   \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 779,
+      "log_type": "console.log",
+      "message": "`\\n... and ${transfers.length - 10} more transfers`",
+      "context": "console.log(`\\n... and ${transfers.length - 10} more transfers`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 793,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcca Status: ${onlineStatus}`",
+      "context": "console.log(`\ud83d\udcca Status: ${onlineStatus}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 794,
+      "log_type": "console.log",
+      "message": "`\ud83d\udce5 Pending receives: ${agentStatus.pendingReceives}`",
+      "context": "console.log(`\ud83d\udce5 Pending receives: ${agentStatus.pendingReceives}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 795,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd04 Pending consumes: ${agentStatus.pendingConsumes}`",
+      "context": "console.log(`\ud83d\udd04 Pending consumes: ${agentStatus.pendingConsumes}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 796,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcc8 Total transfers: ${agentStatus.totalTransfers}`",
+      "context": "console.log(`\ud83d\udcc8 Total transfers: ${agentStatus.totalTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 800,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udccb Recent Transfers (${transfers.length}",
+      "context": "console.log(`\\n\ud83d\udccb Recent Transfers (${transfers.length}):`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 813,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcdd ${transfer.metadata.title}`",
+      "context": "console.log(`   \ud83d\udcdd ${transfer.metadata.title}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 814,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udc64 ${role === \"sender\" ? \"\u2192\" : \"\u2190\"} ${otherAgent}`",
+      "context": "console.log(`   \ud83d\udc64 ${role === \"sender\" ? \"\u2192\" : \"\u2190\"} ${otherAgent}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 820,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udced No transfers found for this agent\"",
+      "context": "console.log(\"\\n\ud83d\udced No transfers found for this agent\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 831,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udccb Quick Commands:\"",
+      "context": "console.log(\"\\n\ud83d\udccb Quick Commands:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 845,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udd04 Transfer States:\"",
+      "context": "console.log(\"\\n\ud83d\udd04 Transfer States:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 846,
+      "log_type": "console.log",
+      "message": "\"   pending \u2192 sent \u2192 received \u2192 consumed \u2705\"",
+      "context": "console.log(\"   pending \u2192 sent \u2192 received \u2192 consumed \u2705\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 847,
+      "log_type": "console.log",
+      "message": "\"   Any state can go to \u2192 failed \u274c or expired \u23f0\"",
+      "context": "console.log(\"   Any state can go to \u2192 failed \u274c or expired \u23f0\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 850,
+      "log_type": "logger.error",
+      "message": "\"\u274c Queue command failed:\", error",
+      "context": "this.logger.error(\"\u274c Queue command failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 908,
+      "log_type": "console.log",
+      "message": "`\\n\ud83c\udfaf Next Steps for Agent:`",
+      "context": "console.log(`\\n\ud83c\udfaf Next Steps for Agent:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 909,
+      "log_type": "console.log",
+      "message": "`\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550`",
+      "context": "console.log(`\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 921,
+      "log_type": "console.log",
+      "message": "`\\n${index + 1}. \ud83d\udce4 ${transfer.metadata.title}`",
+      "context": "console.log(`\\n${index + 1}. \ud83d\udce4 ${transfer.metadata.title}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 922,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcdd ${transfer.metadata.description}`",
+      "context": "console.log(`   \ud83d\udcdd ${transfer.metadata.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 923,
+      "log_type": "console.log",
+      "message": "`   \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \"",
+      "context": "console.log(`   \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 924,
+      "log_type": "console.log",
+      "message": "`   \u23f0 Expires in: ${hoursRemaining}h`",
+      "context": "console.log(`   \u23f0 Expires in: ${hoursRemaining}h`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 925,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcc1 Knowledge file: ${transfer.knowledgeFile}`",
+      "context": "console.log(`   \ud83d\udcc1 Knowledge file: ${transfer.knowledgeFile}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 928,
+      "log_type": "console.log",
+      "message": "`      npm run queue -- --received ${transfer.transferId}`",
+      "context": "console.log(`      npm run queue -- --received ${transfer.transferId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 938,
+      "log_type": "console.log",
+      "message": "`\\n${index + 1}. \ud83d\udce5 ${transfer.metadata.title}`",
+      "context": "console.log(`\\n${index + 1}. \ud83d\udce5 ${transfer.metadata.title}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 939,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcc1 Knowledge file: ${transfer.knowledgeFile}`",
+      "context": "console.log(`   \ud83d\udcc1 Knowledge file: ${transfer.knowledgeFile}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 942,
+      "log_type": "console.log",
+      "message": "`      npm run queue -- --consumed ${transfer.transferId}`",
+      "context": "console.log(`      npm run queue -- --consumed ${transfer.transferId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 947,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udca1 Quick Commands:`",
+      "context": "console.log(`\\n\ud83d\udca1 Quick Commands:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1096,
+      "log_type": "logger.info",
+      "message": "`\ud83d\udce6 Creating backup: ${backupPath}`",
+      "context": "this.logger.info(`\ud83d\udce6 Creating backup: ${backupPath}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1111,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83c\udfbc MusicalConductor Knowledge Status\"",
+      "context": "console.log(\"\\n\ud83c\udfbc MusicalConductor Knowledge Status\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1112,
+      "log_type": "console.log",
+      "message": "\"=====================================\"",
+      "context": "console.log(\"=====================================\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1115,
+      "log_type": "console.log",
+      "message": "`\\n\ud83c\udfaf Conductor Status:`",
+      "context": "console.log(`\\n\ud83c\udfaf Conductor Status:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1116,
+      "log_type": "console.log",
+      "message": "`  - Active: ${status.conductor.active ? \"\u2705\" : \"\u274c\"}`",
+      "context": "console.log(`  - Active: ${status.conductor.active ? \"\u2705\" : \"\u274c\"}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1117,
+      "log_type": "console.log",
+      "message": "`  - Sequences: ${status.conductor.sequences || 0}`",
+      "context": "console.log(`  - Sequences: ${status.conductor.sequences || 0}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1118,
+      "log_type": "console.log",
+      "message": "`  - Plugins: ${status.conductor.plugins || 0}`",
+      "context": "console.log(`  - Plugins: ${status.conductor.plugins || 0}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1119,
+      "log_type": "console.log",
+      "message": "`  - Queue Length: ${status.conductor.queueLength || 0}`",
+      "context": "console.log(`  - Queue Length: ${status.conductor.queueLength || 0}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1123,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udcca Performance Metrics:`",
+      "context": "console.log(`\\n\ud83d\udcca Performance Metrics:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1127,
+      "log_type": "console.log",
+      "message": "`  - Average Time: ${status.performance.averageTime || 0}ms`",
+      "context": "console.log(`  - Average Time: ${status.performance.averageTime || 0}ms`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1128,
+      "log_type": "console.log",
+      "message": "`  - Success Rate: ${status.performance.successRate || 0}%`",
+      "context": "console.log(`  - Success Rate: ${status.performance.successRate || 0}%`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1132,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udce1 Event System:`",
+      "context": "console.log(`\\n\ud83d\udce1 Event System:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1133,
+      "log_type": "console.log",
+      "message": "`  - Subscriptions: ${status.events.subscriptions || 0}`",
+      "context": "console.log(`  - Subscriptions: ${status.events.subscriptions || 0}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1134,
+      "log_type": "console.log",
+      "message": "`  - Events Emitted: ${status.events.emitted || 0}`",
+      "context": "console.log(`  - Events Emitted: ${status.events.emitted || 0}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1137,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1141,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udd0d Knowledge Comparison\"",
+      "context": "console.log(\"\\n\ud83d\udd0d Knowledge Comparison\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1142,
+      "log_type": "console.log",
+      "message": "\"=======================\"",
+      "context": "console.log(\"=======================\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1145,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udccb Metadata Changes:`",
+      "context": "console.log(`\\n\ud83d\udccb Metadata Changes:`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1147,
+      "log_type": "console.log",
+      "message": "`  ${key}: ${JSON.stringify(value",
+      "context": "console.log(`  ${key}: ${JSON.stringify(value)}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1152,
+      "log_type": "console.log",
+      "message": "`\\n\u2795 Added (${diff.added.length}",
+      "context": "console.log(`\\n\u2795 Added (${diff.added.length}):`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1154,
+      "log_type": "console.log",
+      "message": "`  + ${item.type}: ${item.name || item.id}`",
+      "context": "console.log(`  + ${item.type}: ${item.name || item.id}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1159,
+      "log_type": "console.log",
+      "message": "`\\n\u2796 Removed (${diff.removed.length}",
+      "context": "console.log(`\\n\u2796 Removed (${diff.removed.length}):`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1161,
+      "log_type": "console.log",
+      "message": "`  - ${item.type}: ${item.name || item.id}`",
+      "context": "console.log(`  - ${item.type}: ${item.name || item.id}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1166,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udd04 Modified (${diff.modified.length}",
+      "context": "console.log(`\\n\ud83d\udd04 Modified (${diff.modified.length}):`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1168,
+      "log_type": "console.log",
+      "message": "`  ~ ${item.type}: ${item.name || item.id}`",
+      "context": "console.log(`  ~ ${item.type}: ${item.name || item.id}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+      "line_number": 1172,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 28,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udce4 Agent A wants to share plugin knowledge with Agent B...\"",
+      "context": "console.log(\"\ud83d\udce4 Agent A wants to share plugin knowledge with Agent B...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 61,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udcca Current Queue Status:\"",
+      "context": "console.log(\"\\n\ud83d\udcca Current Queue Status:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 65,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udce4 Agent A sends the plugin knowledge...\"",
+      "context": "console.log(\"\\n\ud83d\udce4 Agent A sends the plugin knowledge...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 69,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udce5 Agent B receives the plugin knowledge...\"",
+      "context": "console.log(\"\ud83d\udce5 Agent B receives the plugin knowledge...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 73,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udc64 Agent B's current transfers:\"",
+      "context": "console.log(\"\\n\ud83d\udc64 Agent B's current transfers:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 77,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udd04 Agent B processes and imports the knowledge...\"",
+      "context": "console.log(\"\\n\ud83d\udd04 Agent B processes and imports the knowledge...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 85,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udce4 Agent C sends testing knowledge...\"",
+      "context": "console.log(\"\\n\ud83d\udce4 Agent C sends testing knowledge...\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 89,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udcca Final Queue Status:\"",
+      "context": "console.log(\"\\n\ud83d\udcca Final Queue Status:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 93,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udccb All Transfers:\"",
+      "context": "console.log(\"\\n\ud83d\udccb All Transfers:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 99,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udca1 Key Benefits:\"",
+      "context": "console.log(\"\\n\ud83d\udca1 Key Benefits:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 100,
+      "log_type": "console.log",
+      "message": "\"   \u2022 Tracks sent/received/consumed states\"",
+      "context": "console.log(\"   \u2022 Tracks sent/received/consumed states\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 101,
+      "log_type": "console.log",
+      "message": "\"   \u2022 Prevents lost transfers\"",
+      "context": "console.log(\"   \u2022 Prevents lost transfers\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 102,
+      "log_type": "console.log",
+      "message": "\"   \u2022 Enables agent coordination\"",
+      "context": "console.log(\"   \u2022 Enables agent coordination\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 103,
+      "log_type": "console.log",
+      "message": "\"   \u2022 Provides transfer history\"",
+      "context": "console.log(\"   \u2022 Provides transfer history\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 104,
+      "log_type": "console.log",
+      "message": "\"   \u2022 Supports priority and expiration\"",
+      "context": "console.log(\"   \u2022 Supports priority and expiration\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 109,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcca Total: ${status.totalTransfers}`",
+      "context": "console.log(`   \ud83d\udcca Total: ${status.totalTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 110,
+      "log_type": "console.log",
+      "message": "`   \u23f3 Pending: ${status.pendingTransfers}`",
+      "context": "console.log(`   \u23f3 Pending: ${status.pendingTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 111,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udd04 Active: ${status.activeTransfers}`",
+      "context": "console.log(`   \ud83d\udd04 Active: ${status.activeTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 112,
+      "log_type": "console.log",
+      "message": "`   \u2705 Completed: ${status.completedTransfers}`",
+      "context": "console.log(`   \u2705 Completed: ${status.completedTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 113,
+      "log_type": "console.log",
+      "message": "`   \u274c Failed: ${status.failedTransfers}`",
+      "context": "console.log(`   \u274c Failed: ${status.failedTransfers}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 124,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udce5 Pending receives: ${status.pendingReceives}`",
+      "context": "console.log(`   \ud83d\udce5 Pending receives: ${status.pendingReceives}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 125,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udd04 Pending consumes: ${status.pendingConsumes}`",
+      "context": "console.log(`   \ud83d\udd04 Pending consumes: ${status.pendingConsumes}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 163,
+      "log_type": "console.log",
+      "message": "`   ${index + 1}. ${stateIcon} ${transfer.metadata.title}`",
+      "context": "console.log(`   ${index + 1}. ${stateIcon} ${transfer.metadata.title}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 164,
+      "log_type": "console.log",
+      "message": "`      \ud83d\udc64 ${transfer.fromAgentId} \u2192 ${transfer.toAgentId}`",
+      "context": "console.log(`      \ud83d\udc64 ${transfer.fromAgentId} \u2192 ${transfer.toAgentId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 165,
+      "log_type": "console.log",
+      "message": "`      \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \"",
+      "context": "console.log(`      \ud83c\udff7\ufe0f  ${transfer.metadata.knowledgeType.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+      "line_number": 166,
+      "log_type": "console.log",
+      "message": "`      \u23f0 ${this.getTimeAgo(transfer.metadata.updatedAt",
+      "context": "console.log(`      \u23f0 ${this.getTimeAgo(transfer.metadata.updatedAt)}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 57,
+      "log_type": "console.log",
+      "message": "`\u274c Shortcut '${keyword}' not found`",
+      "context": "console.log(`\u274c Shortcut '${keyword}' not found`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 62,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udca1 Did you mean one of these?\"",
+      "context": "console.log(\"\\n\ud83d\udca1 Did you mean one of these?\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 64,
+      "log_type": "console.log",
+      "message": "`   - ${s.keyword}: ${s.description}`",
+      "context": "console.log(`   - ${s.keyword}: ${s.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 68,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udd0d Use --search flag to search for shortcuts\"",
+      "context": "console.log(\"\\n\ud83d\udd0d Use --search flag to search for shortcuts\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 78,
+      "log_type": "console.error",
+      "message": "\"\u274c Shortcut command failed:\", error",
+      "context": "console.error(\"\u274c Shortcut command failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 87,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83c\udfbc Available Categories\"",
+      "context": "console.log(\"\\n\ud83c\udfbc Available Categories\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 88,
+      "log_type": "console.log",
+      "message": "\"======================\"",
+      "context": "console.log(\"======================\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 104,
+      "log_type": "console.log",
+      "message": "`\u274c No shortcuts found in category: ${options.category}`",
+      "context": "console.log(`\u274c No shortcuts found in category: ${options.category}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 111,
+      "log_type": "console.log",
+      "message": "\"=\".repeat(50",
+      "context": "console.log(\"=\".repeat(50));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 113,
+      "log_type": "console.log",
+      "message": "`\\n${index + 1}. \ud83d\udd17 ${shortcut.keyword}`",
+      "context": "console.log(`\\n${index + 1}. \ud83d\udd17 ${shortcut.keyword}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 114,
+      "log_type": "console.log",
+      "message": "`   ${shortcut.description}`",
+      "context": "console.log(`   ${shortcut.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 115,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcda ${shortcut.resources.length} resources`",
+      "context": "console.log(`   \ud83d\udcda ${shortcut.resources.length} resources`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 117,
+      "log_type": "console.log",
+      "message": "`   \ud83c\udff7\ufe0f  Aliases: ${shortcut.aliases.join(\", \"",
+      "context": "console.log(`   \ud83c\udff7\ufe0f  Aliases: ${shortcut.aliases.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 125,
+      "log_type": "console.log",
+      "message": "`\\n\ud83c\udfbc All Shortcuts (${shortcuts.length}",
+      "context": "console.log(`\\n\ud83c\udfbc All Shortcuts (${shortcuts.length})`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 126,
+      "log_type": "console.log",
+      "message": "\"=\".repeat(30",
+      "context": "console.log(\"=\".repeat(30));",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 135,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udcc1 ${category.toUpperCase(",
+      "context": "console.log(`\\n\ud83d\udcc1 ${category.toUpperCase()}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 141,
+      "log_type": "console.log",
+      "message": "`      Aliases: ${shortcut.aliases.join(\", \"",
+      "context": "console.log(`      Aliases: ${shortcut.aliases.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 155,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83c\udfbc Knowledge Shortcuts Summary\"",
+      "context": "console.log(\"\\n\ud83c\udfbc Knowledge Shortcuts Summary\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 156,
+      "log_type": "console.log",
+      "message": "\"==============================\"",
+      "context": "console.log(\"==============================\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 157,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcca Total shortcuts: ${shortcuts.length}`",
+      "context": "console.log(`\ud83d\udcca Total shortcuts: ${shortcuts.length}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 158,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcc1 Categories: ${categories.length}`",
+      "context": "console.log(`\ud83d\udcc1 Categories: ${categories.length}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 160,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udccb Quick Commands:\"",
+      "context": "console.log(\"\\n\ud83d\udccb Quick Commands:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 174,
+      "log_type": "console.log",
+      "message": "\"\\n\ud83d\udd25 Popular shortcuts:\"",
+      "context": "console.log(\"\\n\ud83d\udd25 Popular shortcuts:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 186,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udd17 ${keyword} - ${shortcut.description}`",
+      "context": "console.log(`   \ud83d\udd17 ${keyword} - ${shortcut.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+      "line_number": 191,
+      "log_type": "console.error",
+      "message": "\"\u274c Shortcuts command failed:\", error",
+      "context": "console.error(\"\u274c Shortcuts command failed:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 143,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not get full system status:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not get full system status:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 154,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not get event bus statistics:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not get event bus statistics:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 187,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not export complete system state:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not export complete system state:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 224,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not export complete plugin knowledge:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not export complete plugin knowledge:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 268,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not export complete event knowledge:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not export complete event knowledge:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 298,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not export complete resource knowledge:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not export complete resource knowledge:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+      "line_number": 351,
+      "log_type": "console.warn",
+      "message": "\"\u26a0\ufe0f Could not export performance insights:\", error",
+      "context": "console.warn(\"\u26a0\ufe0f Could not export performance insights:\", error);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+      "line_number": 403,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udcda Imported Best Practices:\"",
+      "context": "console.log(\"\ud83d\udcda Imported Best Practices:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+      "line_number": 406,
+      "log_type": "console.log",
+      "message": "`  ${index + 1}. ${practice}`",
+      "context": "console.log(`  ${index + 1}. ${practice}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+      "line_number": 417,
+      "log_type": "console.log",
+      "message": "\"\ud83d\udca1 Imported Optimization Insights:\"",
+      "context": "console.log(\"\ud83d\udca1 Imported Optimization Insights:\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+      "line_number": 420,
+      "log_type": "console.log",
+      "message": "`  ${index + 1}. ${insight.insight} (${insight.type}",
+      "context": "console.log(`  ${index + 1}. ${insight.insight} (${insight.type})`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+      "line_number": 169,
+      "log_type": "logger.info",
+      "message": "`\ud83d\udce4 Transfer ${transferId} marked as sent by ${agentId}`",
+      "context": "this.logger.info(`\ud83d\udce4 Transfer ${transferId} marked as sent by ${agentId}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+      "line_number": 395,
+      "log_type": "logger.warn",
+      "message": "`\u23f0 Cleaned up ${expiredCount} expired transfers`",
+      "context": "this.logger.warn(`\u23f0 Cleaned up ${expiredCount} expired transfers`);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+      "line_number": 409,
+      "log_type": "logger.warn",
+      "message": "\"\u26a0\ufe0f Failed to load transfer queue, starting fresh\"",
+      "context": "this.logger.warn(\"\u26a0\ufe0f Failed to load transfer queue, starting fresh\");",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+      "line_number": 430,
+      "log_type": "logger.error",
+      "message": "\"\u274c Failed to save transfer queue:\", error",
+      "context": "this.logger.error(\"\u274c Failed to save transfer queue:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 66,
+      "log_type": "logger.warn",
+      "message": "\"\u26a0\ufe0f Failed to load shortcuts database, using defaults\"",
+      "context": "this.logger.warn(\"\u26a0\ufe0f Failed to load shortcuts database, using defaults\");",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 82,
+      "log_type": "logger.error",
+      "message": "\"\u274c Failed to save shortcuts database:\", error",
+      "context": "this.logger.error(\"\u274c Failed to save shortcuts database:\", error);",
+      "severity": "ERROR",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 524,
+      "log_type": "console.log",
+      "message": "`\ud83d\udcdd ${shortcut.description}`",
+      "context": "console.log(`\ud83d\udcdd ${shortcut.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 527,
+      "log_type": "console.log",
+      "message": "`\ud83d\udd17 Aliases: ${shortcut.aliases.join(\", \"",
+      "context": "console.log(`\ud83d\udd17 Aliases: ${shortcut.aliases.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 531,
+      "log_type": "console.log",
+      "message": "`\\n\ud83d\udcda Resources (${shortcut.resources.length}",
+      "context": "console.log(`\\n\ud83d\udcda Resources (${shortcut.resources.length}):`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 545,
+      "log_type": "console.log",
+      "message": "`     ${resource.description}`",
+      "context": "console.log(`     ${resource.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 551,
+      "log_type": "console.log",
+      "message": "`     \ud83d\udcc1 ${displayPath}`",
+      "context": "console.log(`     \ud83d\udcc1 ${displayPath}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 555,
+      "log_type": "console.log",
+      "message": "`     \ud83c\udf10 ${resource.url}`",
+      "context": "console.log(`     \ud83c\udf10 ${resource.url}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 559,
+      "log_type": "console.log",
+      "message": "`     \ud83c\udff7\ufe0f  ${resource.tags.join(\", \"",
+      "context": "console.log(`     \ud83c\udff7\ufe0f  ${resource.tags.join(\", \")}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 567,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 586,
+      "log_type": "logger.warn",
+      "message": "`\u274c No shortcuts found for: \"${query}\"`",
+      "context": "this.logger.warn(`\u274c No shortcuts found for: \"${query}\"`);",
+      "severity": "WARN",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 601,
+      "log_type": "console.log",
+      "message": "`   ${shortcut.description}`",
+      "context": "console.log(`   ${shortcut.description}`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 602,
+      "log_type": "console.log",
+      "message": "`   \ud83d\udcda ${shortcut.resources.length} resources available`",
+      "context": "console.log(`   \ud83d\udcda ${shortcut.resources.length} resources available`);",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+      "line_number": 608,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\");",
+      "severity": "INFO",
+      "category": "Other"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 34,
+      "log_type": "console.log",
+      "message": "this.colorize(message, \"cyan\"",
+      "context": "console.log(this.colorize(message, \"cyan\"), ...args);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 38,
+      "log_type": "console.log",
+      "message": "this.colorize(message, \"green\"",
+      "context": "console.log(this.colorize(message, \"green\"), ...args);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 42,
+      "log_type": "console.warn",
+      "message": "this.colorize(message, \"yellow\"",
+      "context": "console.warn(this.colorize(message, \"yellow\"), ...args);",
+      "severity": "WARN",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 46,
+      "log_type": "console.error",
+      "message": "this.colorize(message, \"red\"",
+      "context": "console.error(this.colorize(message, \"red\"), ...args);",
+      "severity": "ERROR",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 51,
+      "log_type": "console.log",
+      "message": "this.colorize(`[DEBUG] ${message}`, \"dim\"",
+      "context": "console.log(this.colorize(`[DEBUG] ${message}`, \"dim\"), ...args);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 56,
+      "log_type": "console.log",
+      "message": "message, ...args",
+      "context": "console.log(message, ...args);",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 72,
+      "log_type": "console.log",
+      "message": "this.colorize(\"\u2500\".repeat(50",
+      "context": "console.log(this.colorize(\"\u2500\".repeat(50), \"dim\"));",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 76,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\");",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 77,
+      "log_type": "console.log",
+      "message": "this.colorize(`\ud83c\udfbc ${title}`, \"bright\"",
+      "context": "console.log(this.colorize(`\ud83c\udfbc ${title}`, \"bright\"));",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 78,
+      "log_type": "console.log",
+      "message": "this.colorize(\"\u2550\".repeat(title.length + 3",
+      "context": "console.log(this.colorize(\"\u2550\".repeat(title.length + 3), \"dim\"));",
+      "severity": "INFO",
+      "category": "Logging"
+    },
+    {
+      "file_path": "packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+      "line_number": 97,
+      "log_type": "console.log",
+      "message": "\"\"",
+      "context": "console.log(\"\"); // New line when complete",
+      "severity": "INFO",
+      "category": "Logging"
+    }
+  ]
+}

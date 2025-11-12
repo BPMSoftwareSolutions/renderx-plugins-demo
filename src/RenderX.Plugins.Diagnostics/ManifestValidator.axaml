@@ -1,16 +1,16 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Diagnostics.ManifestValidator"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Border BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="12">
             <TextBlock Text="Manifest Validation"
                        FontSize="12"
                        FontWeight="Bold"
-                       Foreground="#333" />
+                       Foreground="{DynamicResource Color.Border.Primary}" />
 
             <!-- Validation Status -->
             <StackPanel Spacing="4">
@@ -22,7 +22,7 @@
                                Text="Valid"
                                FontSize="11"
                                FontWeight="Bold"
-                               Foreground="#10b981" />
+                               Foreground="{DynamicResource Color.Success}" />
                 </StackPanel>
             </StackPanel>
 
@@ -33,17 +33,17 @@
                     <DataTemplate>
                         <Border Background="Transparent"
                                 BorderThickness="0,0,0,1"
-                                BorderBrush="#E0E0E0"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
                                 Padding="0,8">
                             <StackPanel Spacing="2">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBlock x:Name="ResultIcon"
                                                Text="✓"
                                                FontSize="10"
-                                               Foreground="#10b981" />
+                                               Foreground="{DynamicResource Color.Success}" />
                                     <TextBlock Text="{Binding Message}"
                                                FontSize="10"
-                                               Foreground="#333" />
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -54,8 +54,8 @@
             <!-- Validate Button -->
             <Button Content="Validate Manifests"
                     Padding="8,4"
-                    Background="#007ACC"
-                    Foreground="White"
+                    Background="{DynamicResource Color.Accent.Primary}"
+                    Foreground="{DynamicResource Color.Background.Primary}"
                     FontSize="10"
                     Click="OnValidateClick" />
         </StackPanel>

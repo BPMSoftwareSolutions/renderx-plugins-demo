@@ -22,6 +22,7 @@ import deprecateStageCrew from "./eslint-rules/deprecate-stagecrew-api.js";
 import rootShimsOnly from "./eslint-rules/root-shims-only.js";
 import requirePluginManifestFragment from "./eslint-rules/require-plugin-manifest-fragment.js";
 import validHandlersPath from "./eslint-rules/valid-handlers-path.js";
+import noConsoleFallbacks from "./eslint-rules/no-console-fallbacks.js";
 import handlerExportExists from "./eslint-rules/handler-export-exists.js";
 import consistentJsonImportAttributes from "./eslint-rules/consistent-json-import-attributes.js";
 import validateExternalPluginConsistency from "./eslint-rules/validate-external-plugin-consistency.js";
@@ -109,6 +110,7 @@ export default [
       "@typescript-eslint": tseslint,
       "play-routing": playRouting,
       "plugin-console": noConsoleInPlugins,
+      "no-console-fallbacks": noConsoleFallbacks,
       "sequences-json": sequencesInJson,
       "feature-flags": featureFlags,
       "sequence-handlers": validSequenceHandlers,
@@ -139,6 +141,7 @@ export default [
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
       "plugin-console/no-console-in-plugins": "error",
+  "no-console-fallbacks/no-console-fallbacks": "error",
       "sequences-json/sequences-in-json": "error",
       "feature-flags/enforce-flag-ids": "error",
       "sequence-handlers/validate-handlers": "error",

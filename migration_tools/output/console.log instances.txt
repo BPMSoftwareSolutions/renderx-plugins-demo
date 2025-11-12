@@ -1,0 +1,185 @@
+Search "((globalThis as any).__MC_LOG || console.log)(" (158 hits in 26 files of 2651 searched) [Normal]
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\DomainEventSystem.ts (1 hit)
+	Line  44:     ((globalThis as any).__MC_LOG || console.log)(`🎼 Domain Event: ${eventName}`, domainEvent);
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\EventBus.ts (2 hits)
+	Line 124:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 474:       ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\api\ConductorAPI.ts (4 hits)
+	Line 142:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 191:     ((globalThis as any).__MC_LOG || console.log)("🎼 ConductorAPI: Statistics reset");
+	Line 211:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 249:       ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\core\EventSubscriptionManager.ts (2 hits)
+	Line 143:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 175:       ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\core\SequenceRegistry.ts (4 hits)
+	Line  51:     ((globalThis as any).__MC_LOG || console.log)(
+	Line  92:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 197:     ((globalThis as any).__MC_LOG || console.log)(`🎼 SequenceRegistry: Cleared ${sequences.length} sequences`);
+	Line 317:     ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\execution\BeatExecutor.ts (3 hits)
+	Line 135:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 169:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 388:     ((globalThis as any).__MC_LOG || console.log)("🧹 BeatExecutor: Beat execution queue cleared");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\execution\ExecutionQueue.ts (8 hits)
+	Line  40:     ((globalThis as any).__MC_LOG || console.log)(
+	Line  57:     ((globalThis as any).__MC_LOG || console.log)(`🎼 ExecutionQueue: Dequeued "${request.sequenceName}"`);
+	Line  79:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 123:       ((globalThis as any).__MC_LOG || console.log)(`🎼 ExecutionQueue: Now executing "${request.sequenceName}"`);
+	Line 125:       ((globalThis as any).__MC_LOG || console.log)(`🎼 ExecutionQueue: No sequence currently executing`);
+	Line 140:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 168:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 266:       ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\index.ts (7 hits)
+	Line  79:   ((globalThis as any).__MC_LOG || console.log)("🎼 Registering all musical sequences with conductor...");
+	Line  88:       ((globalThis as any).__MC_LOG || console.log)(`✅ Registered sequence: ${sequence.name}`);
+	Line  95:   ((globalThis as any).__MC_LOG || console.log)(
+	Line 101:   ((globalThis as any).__MC_LOG || console.log)(`📊 Sequence categories: ${Array.from(categories).join(", ")}`);
+	Line 192:   ((globalThis as any).__MC_LOG || console.log)("🎼 Initializing Musical Sequences System...");
+	Line 212:   ((globalThis as any).__MC_LOG || console.log)(
+	Line 215:   ((globalThis as any).__MC_LOG || console.log)(`📊 Total sequences registered: ${registeredSequences}`);
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\monitoring\DataBaton.ts (2 hits)
+	Line  88:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 114:     ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\monitoring\DuplicationDetector.ts (4 hits)
+	Line  85:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 172:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 217:     ((globalThis as any).__MC_LOG || console.log)("🔍 DuplicationDetector: Configuration updated:", this.config);
+	Line 260:     ((globalThis as any).__MC_LOG || console.log)("🧹 DuplicationDetector: All detection data reset");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\monitoring\EventLogger.ts (25 hits)
+	Line  51:       ((globalThis as any).__MC_LOG || console.log)("🎼 EventLogger: Hierarchical logging disabled");
+	Line  76:     ((globalThis as any).__MC_LOG || console.log)("🎼 EventLogger: Hierarchical beat logging initialized");
+	Line  84:       ((globalThis as any).__MC_LOG || console.log)("🎼 EventLogger: Movement hierarchical logging disabled");
+	Line 116:     ((globalThis as any).__MC_LOG || console.log)("🎼 EventLogger: Hierarchical movement logging initialized");
+	Line 139:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 143:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 147:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 151:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 157:     ((globalThis as any).__MC_LOG || console.log)({
+	Line 181:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 186:       ((globalThis as any).__MC_LOG || console.log)(`%c✅ Completed`, "color: #28A745; font-weight: bold;");
+	Line 201:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 205:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 209:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 221:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 226:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 232:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 245:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 289:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 317:         ((globalThis as any).__MC_LOG || console.log)(`🎼 EventLogger: Emitted ${eventType}`, data);
+	Line 335:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 366:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 392:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 411:     ((globalThis as any).__MC_LOG || console.log)("🎼 EventLogger: Configuration updated:", this.config);
+	Line 430:       ((globalThis as any).__MC_LOG || console.log)("🧹 EventLogger: Event subscriptions cleaned up");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\monitoring\PerformanceTracker.ts (7 hits)
+	Line  51:     ((globalThis as any).__MC_LOG || console.log)(
+	Line  95:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 134:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 189:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 230:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 256:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 450:     ((globalThis as any).__MC_LOG || console.log)("🧹 PerformanceTracker: All tracking data reset");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\MusicalConductor.ts (7 hits)
+	Line 246:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 250:       ((globalThis as any).__MC_LOG || console.log)("🎼 MusicalConductor: Initialized with core components");
+	Line 285:     ((globalThis as any).__MC_LOG || console.log)("🔄 MusicalConductor: Singleton instance reset");
+	Line 377:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 555:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 638:     ((globalThis as any).__MC_LOG || console.log)("🎼 MusicalConductor: All monitoring data reset");
+	Line 756:             ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\orchestration\EventOrchestrator.ts (6 hits)
+	Line  68:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 105:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 168:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 182:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 218:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 286:           ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\orchestration\SequenceOrchestrator.ts (2 hits)
+	Line 164:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 464:     ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\plugins\PluginInterfaceFacade.ts (3 hits)
+	Line  67:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 148:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 170:       ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\plugins\PluginLoader.ts (25 hits)
+	Line  19:       ((globalThis as any).__MC_LOG || console.log)(`📦 Loading plugin from cache: ${pluginPath}`);
+	Line  36:         ((globalThis as any).__MC_LOG || console.log)(`🔄 [node] Importing plugin via file URL: ${fileUrl}`);
+	Line 111:         ((globalThis as any).__MC_LOG || console.log)(`🔄 Attempting to load plugin: ${pluginPath}`);
+	Line 114:         ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded plugin: ${pluginPath}`);
+	Line 117:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 124:         ((globalThis as any).__MC_LOG || console.log)(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
+	Line 131:         ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
+	Line 141:         ((globalThis as any).__MC_LOG || console.log)(`🔄 Attempting to load bundled plugin: ${bundledPath}`);
+	Line 148:         ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded bundled plugin: ${bundledPath}`);
+	Line 151:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 157:         ((globalThis as any).__MC_LOG || console.log)(`🔄 Attempting to load plugin: ${pluginPath}`);
+	Line 164:         ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded plugin: ${pluginPath}`);
+	Line 187:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 195:       ((globalThis as any).__MC_LOG || console.log)(`🔍 Plugin directory: ${pluginDir}`);
+	Line 196:       ((globalThis as any).__MC_LOG || console.log)(`🔍 Plugin name: ${pluginName}`);
+	Line 210:           ((globalThis as any).__MC_LOG || console.log)(`🔄 Trying resolution strategy: ${strategy}`);
+	Line 224:           ((globalThis as any).__MC_LOG || console.log)(
+	Line 229:           ((globalThis as any).__MC_LOG || console.log)(
+	Line 259:       ((globalThis as any).__MC_LOG || console.log)(`🧠 PluginLoader: Loading plugin from: ${pluginPath}`);
+	Line 281:         ((globalThis as any).__MC_LOG || console.log)(`🔄 Using default export for plugin: ${pluginPath}`);
+	Line 285:       ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded and validated plugin: ${pluginPath}`);
+	Line 299:     ((globalThis as any).__MC_LOG || console.log)(`🔄 Preloading ${pluginPaths.length} plugins...`);
+	Line 313:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 334:     ((globalThis as any).__MC_LOG || console.log)("🧹 PluginLoader: Module cache cleared");
+	Line 359:       ((globalThis as any).__MC_LOG || console.log)(`🗑️ Removed plugin from cache: ${pluginPath}`);
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\plugins\PluginManager.ts (18 hits)
+	Line  76:       ((globalThis as any).__MC_LOG || console.log)(`🧠 PluginManager: Attempting to mount plugin: ${id}`);
+	Line 103:         ((globalThis as any).__MC_LOG || console.log)(`🧠 Plugin already mounted: ${id} — augmenting with additional sequence`);
+	Line 195:                     ((globalThis as any).__MC_LOG || console.log)(
+	Line 427:       ((globalThis as any).__MC_LOG || console.log)(`✅ Plugin mounted successfully: ${id}`);
+	Line 428:       ((globalThis as any).__MC_LOG || console.log)(`🎼 Sequence registered: ${sequence.name}`);
+	Line 488:       ((globalThis as any).__MC_LOG || console.log)(`✅ Plugin unmounted successfully: ${pluginId}`);
+	Line 504:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 510:       ((globalThis as any).__MC_LOG || console.log)("🧠 Registering CIA-compliant plugins...");
+	Line 533:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 556:     ((globalThis as any).__MC_LOG || console.log)("🎼 PluginManager: Registering plugins from manifest...");
+	Line 558:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 568:             ((globalThis as any).__MC_LOG || console.log)(`⚠️ Plugin already mounted, skipping: ${plugin.name}`);
+	Line 572:           ((globalThis as any).__MC_LOG || console.log)(
+	Line 604:             ((globalThis as any).__MC_LOG || console.log)(`✅ Auto-mounted plugin: ${plugin.name}`);
+	Line 611:           ((globalThis as any).__MC_LOG || console.log)(`⏭️ Skipping non-auto-mount plugin: ${plugin.name}`);
+	Line 623:     ((globalThis as any).__MC_LOG || console.log)("🔄 Registering fallback sequences...");
+	Line 654:     ((globalThis as any).__MC_LOG || console.log)("✅ Fallback sequences registered");
+	Line 744:     ((globalThis as any).__MC_LOG || console.log)("🧹 PluginManager: State reset");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\plugins\PluginManifestLoader.ts (9 hits)
+	Line  40:       ((globalThis as any).__MC_LOG || console.log)(`📦 Loading manifest from cache: ${manifestPath}`);
+	Line  45:       ((globalThis as any).__MC_LOG || console.log)(`🔄 Loading plugin manifest: ${manifestPath}`);
+	Line  64:             ((globalThis as any).__MC_LOG || console.log)(
+	Line  67:             ((globalThis as any).__MC_LOG || console.log)(
+	Line  97:       ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded manifest: ${manifestPath}`);
+	Line  98:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 108:       ((globalThis as any).__MC_LOG || console.log)("🔄 Using fallback manifest");
+	Line 239:         ((globalThis as any).__MC_LOG || console.log)(`✅ Successfully loaded manifest from: ${path}`);
+	Line 336:     ((globalThis as any).__MC_LOG || console.log)("🧹 PluginManifestLoader: Cache cleared");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\resources\ResourceConflictManager.ts (1 hit)
+	Line 205:     ((globalThis as any).__MC_LOG || console.log)("🎼 ResourceConflictManager: Clearing all resource ownership");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\resources\ResourceConflictResolver.ts (3 hits)
+	Line 101:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 141:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 151:     ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\resources\ResourceDelegator.ts (1 hit)
+	Line 296:       ((globalThis as any).__MC_LOG || console.log)(
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\resources\ResourceManager.ts (3 hits)
+	Line 109:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 166:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 306:     ((globalThis as any).__MC_LOG || console.log)("🧹 ResourceManager: All resource ownership reset");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\resources\ResourceOwnershipTracker.ts (6 hits)
+	Line  52:       ((globalThis as any).__MC_LOG || console.log)(
+	Line  83:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 111:     ((globalThis as any).__MC_LOG || console.log)(
+	Line 143:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 265:       ((globalThis as any).__MC_LOG || console.log)(
+	Line 281:     ((globalThis as any).__MC_LOG || console.log)("🧹 ResourceOwnershipTracker: All tracking data reset");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\sequences\validation\SequenceValidator.ts (3 hits)
+	Line 125:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 131:         ((globalThis as any).__MC_LOG || console.log)(
+	Line 291:     ((globalThis as any).__MC_LOG || console.log)("🧹 SequenceValidator: Validation state reset");
+  C:\source\repos\bpm\internal\renderx-plugins-demo\packages\musical-conductor\modules\communication\SPAValidator.ts (2 hits)
+	Line  83:     ((globalThis as any).__MC_LOG || console.log)("🎼 SPA Validator: Runtime checks initialized");
+	Line 727:       ((globalThis as any).__MC_LOG || console.log)("🎼 SPA Validator: Runtime checks disabled");

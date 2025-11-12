@@ -82,7 +82,7 @@ export class DuplicationDetector {
     // Clean up old entries to prevent memory leaks
     this.cleanupOldExecutionRecords();
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🔍 DuplicationDetector: Recorded execution of sequence hash: ${sequenceHash.substring(0, 8)}...`
     );
   }
@@ -98,7 +98,7 @@ export class DuplicationDetector {
     if (data.timestamp && typeof data.timestamp === "number") {
       const timeDiff = now - data.timestamp;
       if (timeDiff < this.config.strictModeThreshold) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🔍 DuplicationDetector: StrictMode duplicate detected - rapid succession (${timeDiff.toFixed(0)}ms)`
         );
         return true;
@@ -107,7 +107,7 @@ export class DuplicationDetector {
 
     // Check for React development mode indicators
     if (data._reactInternalFiber || data._reactInternalInstance) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "🔍 DuplicationDetector: StrictMode duplicate detected - React internal properties"
       );
       return true;
@@ -144,7 +144,7 @@ export class DuplicationDetector {
       
       return hash.toString(36); // Convert to base36 for shorter string
     } catch (error) {
-      console.warn("🔍 DuplicationDetector: Failed to generate hash, using fallback:", error);
+      (globalThis as any).__MC_WARN("🔍 DuplicationDetector: Failed to generate hash, using fallback:", error);
       return `${sequenceName}-${Date.now()}-${Math.random()}`;
     }
   }
@@ -169,7 +169,7 @@ export class DuplicationDetector {
       const toKeep = hashArray.slice(-this.config.maxHashSetSize / 2); // Keep the most recent half
       this.executedSequenceHashes = new Set(toKeep);
       
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🧹 DuplicationDetector: Cleaned up hash set, kept ${toKeep.length} most recent entries`
       );
     }
@@ -214,7 +214,7 @@ export class DuplicationDetector {
    */
   updateConfig(newConfig: Partial<DuplicationConfig>): void {
     this.config = { ...this.config, ...newConfig };
-    console.log("🔍 DuplicationDetector: Configuration updated:", this.config);
+    (globalThis as any).__MC_LOG("🔍 DuplicationDetector: Configuration updated:", this.config);
   }
 
   /**
@@ -257,7 +257,7 @@ export class DuplicationDetector {
   reset(): void {
     this.executedSequenceHashes.clear();
     this.recentExecutions.clear();
-    console.log("🧹 DuplicationDetector: All detection data reset");
+    (globalThis as any).__MC_LOG("🧹 DuplicationDetector: All detection data reset");
   }
 
   /**

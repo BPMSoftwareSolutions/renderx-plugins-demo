@@ -1,26 +1,26 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.DigitalAssets.AssetLibrary"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Grid ColumnDefinitions="200,*" RowDefinitions="Auto,*">
         <!-- Sidebar -->
         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,1,0"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Spacing="12">
                 <TextBlock Text="Collections"
                            FontSize="12"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <ItemsControl x:Name="CollectionsControl">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Content="{Binding Name}"
                                     Padding="8,6"
                                     Background="Transparent"
-                                    Foreground="#333"
+                                    Foreground="{DynamicResource Color.Border.Primary}"
                                     FontSize="11"
                                     HorizontalAlignment="Stretch"
                                     HorizontalContentAlignment="Left" />
@@ -32,21 +32,21 @@
         
         <!-- Header -->
         <Border Grid.Row="0" Grid.Column="1"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Spacing="8">
                 <TextBlock x:Name="CollectionTitle"
                            Text="All Assets"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <TextBox Watermark="Search assets..."
                          FontSize="11"
                          Padding="6,4"
                          BorderThickness="1"
-                         BorderBrush="#D0D0D0" />
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
             </StackPanel>
         </Border>
         
@@ -54,7 +54,7 @@
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <ItemsControl x:Name="AssetsControl"
                           Padding="12"
-                          Background="White">
+                          Background="{DynamicResource Color.Background.Primary}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Spacing="12" />
@@ -62,15 +62,15 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="#F9F9F9"
+                        <Border Background="{DynamicResource Color.Background.Secondary}"
                                 BorderThickness="1"
-                                BorderBrush="#E0E0E0"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
                                 CornerRadius="4"
                                 Padding="8"
                                 Width="100"
                                 Height="120">
                             <StackPanel Spacing="8">
-                                <Border Background="#E0E0E0"
+                                <Border Background="{DynamicResource Color.Border.Primary}"
                                         CornerRadius="2"
                                         Height="70">
                                     <TextBlock Text="📁"
@@ -80,7 +80,7 @@
                                 </Border>
                                 <TextBlock Text="{Binding Name}"
                                            FontSize="9"
-                                           Foreground="#333"
+                                           Foreground="{DynamicResource Color.Border.Primary}"
                                            TextWrapping="Wrap"
                                            TextTrimming="CharacterEllipsis" />
                             </StackPanel>

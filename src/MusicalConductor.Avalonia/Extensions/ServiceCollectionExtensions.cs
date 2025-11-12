@@ -32,7 +32,7 @@ public static class ServiceCollectionExtensions
             return new ConductorLogger(logger, enabled);
         });
 
-        // Register the Jint engine host as a singleton
+        // Register the Jint engine host as a singleton (kept for backward compatibility, but not used for sequence execution)
         services.AddSingleton<JintEngineHost>(provider =>
         {
             var logger = provider.GetRequiredService<ILogger<JintEngineHost>>();
@@ -41,12 +41,12 @@ public static class ServiceCollectionExtensions
             return new JintEngineHost(logger, opts, conductorLogger);
         });
 
-        // Register the conductor client as a singleton
+        // Register the conductor client as a singleton - NOW USING NATIVE .NET CONDUCTOR
         services.AddSingleton<IConductorClient>(provider =>
         {
-            var engine = provider.GetRequiredService<JintEngineHost>();
+            var conductor = provider.GetRequiredService<Core.Interfaces.IConductor>();
             var logger = provider.GetRequiredService<ILogger<ConductorClient>>();
-            return new ConductorClient(engine, logger);
+            return new ConductorClient(conductor, logger);
         });
 
         return services;

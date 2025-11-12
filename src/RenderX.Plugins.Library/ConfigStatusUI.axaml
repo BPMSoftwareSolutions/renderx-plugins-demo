@@ -2,30 +2,155 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.ConfigStatusUI"
              Background="Transparent">
-    <Border Background="#F9F9F9"
-            BorderThickness="1"
-            BorderBrush="#E0E0E0"
-            CornerRadius="4"
-            Padding="12">
-        <StackPanel Spacing="8">
-            <StackPanel Orientation="Horizontal" Spacing="8">
-                <Ellipse x:Name="StatusDot"
-                         Width="12" Height="12"
-                         Fill="#10b981"
-                         VerticalAlignment="Center" />
-                <TextBlock x:Name="StatusText"
-                           Text="Ready"
-                           FontSize="12"
-                           FontWeight="Bold"
-                           Foreground="#333"
-                           VerticalAlignment="Center" />
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Background="{DynamicResource Color.Background.Secondary}"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
+                CornerRadius="4"
+                Padding="12">
+            <StackPanel Spacing="12">
+                <!-- H4 equivalent: Header with icon and status -->
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="⚙️"
+                               FontSize="14"
+                               VerticalAlignment="Center" />
+                    <Ellipse x:Name="StatusDot"
+                             Width="12" Height="12"
+                             Fill="#10b981"
+                             VerticalAlignment="Center" />
+                    <TextBlock x:Name="StatusText"
+                               Text="Ready"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource Color.Border.Primary}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+
+                <!-- Paragraph with strong (bold) text - strong element equivalent -->
+                <TextBlock x:Name="DetailText"
+                           FontSize="11"
+                           Foreground="#666"
+                           TextWrapping="Wrap">
+                    <Run Text="Configuration loaded successfully" />
+                    <Run Text=" Using model: " />
+                    <Run x:Name="ModelText" Text="gpt-4" FontWeight="Bold" />
+                </TextBlock>
+
+                <!-- Setup Guide Section -->
+                <Border Background="{DynamicResource Color.Background.Tertiary}"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource Color.Border.Secondary}"
+                        CornerRadius="4"
+                        Padding="8"
+                        IsVisible="False"
+                        x:Name="SetupGuideSection">
+                    <StackPanel Spacing="8">
+                        <!-- H5 equivalent: For Administrators -->
+                        <TextBlock Text="For Administrators:"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Text.Primary}" />
+
+                        <!-- Setup Steps -->
+                        <StackPanel Spacing="4" Margin="12,0,0,0">
+                            <TextBlock Text="1. Get an API key from OpenAI Platform"
+                                       FontSize="10"
+                                       Foreground="{DynamicResource Color.Text.Secondary}"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Text="2. Set the environment variable:"
+                                       FontSize="10"
+                                       Foreground="{DynamicResource Color.Text.Secondary}" />
+                            <!-- Code example (pre/code equivalent) -->
+                            <Border Background="#1f2937"
+                                    CornerRadius="4"
+                                    Padding="8"
+                                    Margin="0,4,0,0">
+                                <TextBlock Text="OPENAI_API_KEY=sk-your-key-here"
+                                           FontFamily="Consolas,Courier New,monospace"
+                                           FontSize="9"
+                                           Foreground="#e5e7eb" />
+                            </Border>
+                            <TextBlock Text="3. Restart the application"
+                                       FontSize="10"
+                                       Foreground="{DynamicResource Color.Text.Secondary}"
+                                       Margin="0,4,0,0" />
+                        </StackPanel>
+
+                        <!-- H5 equivalent: For Local Development -->
+                        <TextBlock Text="For Local Development:"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Text.Primary}"
+                                   Margin="0,8,0,0" />
+
+                        <TextBlock Text="Create a .env.local file in your project root:"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource Color.Text.Secondary}" />
+
+                        <!-- Code example -->
+                        <Border Background="#1f2937"
+                                CornerRadius="4"
+                                Padding="8">
+                            <TextBlock FontFamily="Consolas,Courier New,monospace"
+                                       FontSize="9"
+                                       Foreground="#e5e7eb"
+                                       TextWrapping="Wrap">
+                                <Run Text="# .env.local" />
+                                <LineBreak />
+                                <Run Text="OPENAI_API_KEY=sk-your-key-here" />
+                                <LineBreak />
+                                <Run Text="OPENAI_MODEL=gpt-4-turbo-preview" />
+                            </TextBlock>
+                        </Border>
+
+                        <!-- Security Note -->
+                        <Border Background="#fef3c7"
+                                BorderBrush="#fcd34d"
+                                BorderThickness="1"
+                                CornerRadius="4"
+                                Padding="8"
+                                Margin="0,8,0,0">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="🔒"
+                                           FontSize="14"
+                                           VerticalAlignment="Top" />
+                                <StackPanel Spacing="2">
+                                    <TextBlock Text="Security Note:"
+                                               FontWeight="Bold"
+                                               FontSize="10"
+                                               Foreground="#92400e" />
+                                    <TextBlock Text="API keys are managed securely by the host application and never stored in browser storage."
+                                               FontSize="9"
+                                               Foreground="#92400e"
+                                               TextWrapping="Wrap" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <!-- Additional status details section -->
+                <Border Background="{DynamicResource Color.Background.Tertiary}"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource Color.Border.Secondary}"
+                        CornerRadius="4"
+                        Padding="8"
+                        IsVisible="False"
+                        x:Name="DetailsSection">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Configuration Details"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Text.Primary}" />
+                        <TextBlock x:Name="DetailsContent"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource Color.Text.Secondary}"
+                                   TextWrapping="Wrap"
+                                   Text="API Key: Configured" />
+                    </StackPanel>
+                </Border>
             </StackPanel>
-            <TextBlock x:Name="DetailText"
-                       Text="Configuration loaded successfully"
-                       FontSize="11"
-                       Foreground="#666"
-                       TextWrapping="Wrap" />
-        </StackPanel>
-    </Border>
+        </Border>
+    </ScrollViewer>
 </UserControl>
 

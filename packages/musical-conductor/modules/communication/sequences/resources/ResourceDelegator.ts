@@ -81,7 +81,7 @@ export class ResourceDelegator {
         reason: result.message,
       };
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         "🔴 ResourceDelegator: Error checking resource conflict:",
         error
       );
@@ -251,7 +251,7 @@ export class ResourceDelegator {
         };
       }
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         "🔴 ResourceDelegator: Error acquiring resource ownership:",
         error
       );
@@ -293,12 +293,12 @@ export class ResourceDelegator {
     try {
       // Use ResourceManager's existing release method
       this.resourceManager.releaseResourceOwnership(resourceId, ownerId);
-      console.log(
+      (globalThis as any).__MC_LOG(
         `✅ ResourceDelegator: Released resource ${resourceId} from ${ownerId}`
       );
       return true;
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         "🔴 ResourceDelegator: Error releasing resource ownership:",
         error
       );

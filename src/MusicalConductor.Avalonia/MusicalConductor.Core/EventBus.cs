@@ -15,6 +15,7 @@ public class EventBus : IEventBus
     public EventBus(ILogger<EventBus> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _logger.LogInformation("📡 EventBus: Initialized");
     }
 
     public ISubscription Subscribe<T>(string eventName, EventCallback<T> callback)
@@ -33,7 +34,7 @@ public class EventBus : IEventBus
             }
 
             _subscribers[eventName].Add(callback);
-            _logger.LogDebug("Subscribed to event: {EventName}", eventName);
+            _logger.LogDebug("📡 EventBus: Subscribed to event: {EventName} (Total subscribers: {SubscriberCount})", eventName, _subscribers[eventName].Count);
 
             return new Subscription(this, eventName, callback);
         }
@@ -56,7 +57,7 @@ public class EventBus : IEventBus
             if (_subscribers.ContainsKey(eventName))
             {
                 _subscribers[eventName].Remove(callback);
-                _logger.LogDebug("Unsubscribed from event: {EventName}", eventName);
+                _logger.LogDebug("📡 EventBus: Unsubscribed from event: {EventName} (Remaining subscribers: {SubscriberCount})", eventName, _subscribers[eventName].Count);
 
                 if (_subscribers[eventName].Count == 0)
                 {
@@ -84,7 +85,7 @@ public class EventBus : IEventBus
             if (_subscribers.ContainsKey(eventName))
             {
                 _subscribers[eventName].Remove(callback);
-                _logger.LogDebug("Unsubscribed from event: {EventName}", eventName);
+                _logger.LogDebug("📡 EventBus: Unsubscribed from event: {EventName} (Remaining subscribers: {SubscriberCount})", eventName, _subscribers[eventName].Count);
 
                 if (_subscribers[eventName].Count == 0)
                 {

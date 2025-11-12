@@ -1,26 +1,26 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Diagnostics.DiagnosticsPanel"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Grid RowDefinitions="Auto,*">
         <!-- Header -->
         <Border Grid.Row="0"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Spacing="8">
                 <TextBlock Text="Diagnostics"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <!-- Search Box -->
                 <TextBox x:Name="SearchBox"
                          Watermark="Search diagnostics..."
                          FontSize="11"
                          Padding="6,4"
                          BorderThickness="1"
-                         BorderBrush="#D0D0D0" />
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
             </StackPanel>
         </Border>
 
@@ -28,16 +28,16 @@
         <ScrollViewer Grid.Row="1">
             <StackPanel Padding="12" Spacing="12">
                 <!-- Plugin Stats -->
-                <Border Background="#F9F9F9"
+                <Border Background="{DynamicResource Color.Background.Secondary}"
                         BorderThickness="1"
-                        BorderBrush="#E0E0E0"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
                         CornerRadius="4"
                         Padding="12">
                     <StackPanel Spacing="8">
                         <TextBlock Text="Plugin Statistics"
                                    FontSize="12"
                                    FontWeight="Bold"
-                                   Foreground="#333" />
+                                   Foreground="{DynamicResource Color.Border.Primary}" />
                         <Grid ColumnDefinitions="*,*,*">
                             <StackPanel Grid.Column="0" Spacing="4">
                                 <TextBlock Text="Loaded" FontSize="10" Foreground="#666" />
@@ -45,7 +45,7 @@
                                            Text="0"
                                            FontSize="16"
                                            FontWeight="Bold"
-                                           Foreground="#10b981" />
+                                           Foreground="{DynamicResource Color.Success}" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" Spacing="4">
                                 <TextBlock Text="Failed" FontSize="10" Foreground="#666" />
@@ -53,7 +53,7 @@
                                            Text="0"
                                            FontSize="16"
                                            FontWeight="Bold"
-                                           Foreground="#EF5350" />
+                                           Foreground="{DynamicResource Color.Error}" />
                             </StackPanel>
                             <StackPanel Grid.Column="2" Spacing="4">
                                 <TextBlock Text="Total" FontSize="10" Foreground="#666" />
@@ -61,36 +61,36 @@
                                            Text="0"
                                            FontSize="16"
                                            FontWeight="Bold"
-                                           Foreground="#333" />
+                                           Foreground="{DynamicResource Color.Border.Primary}" />
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                 </Border>
 
                 <!-- Plugin Tree -->
-                <Border Background="#F9F9F9"
+                <Border Background="{DynamicResource Color.Background.Secondary}"
                         BorderThickness="1"
-                        BorderBrush="#E0E0E0"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
                         CornerRadius="4"
                         Padding="12">
                     <StackPanel Spacing="8">
                         <TextBlock Text="Loaded Plugins"
                                    FontSize="12"
                                    FontWeight="Bold"
-                                   Foreground="#333" />
+                                   Foreground="{DynamicResource Color.Border.Primary}" />
                         <ItemsControl x:Name="PluginsItemsControl"
-                                      Background="White">
+                                      Background="{DynamicResource Color.Background.Primary}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Background="White"
+                                    <Border Background="{DynamicResource Color.Background.Primary}"
                                             BorderThickness="0,0,0,1"
-                                            BorderBrush="#E0E0E0"
+                                            BorderBrush="{DynamicResource Color.Border.Primary}"
                                             Padding="8">
                                         <StackPanel Spacing="4">
                                             <TextBlock Text="{Binding Name}"
                                                        FontSize="11"
                                                        FontWeight="Bold"
-                                                       Foreground="#333" />
+                                                       Foreground="{DynamicResource Color.Border.Primary}" />
                                             <TextBlock Text="{Binding Version}"
                                                        FontSize="10"
                                                        Foreground="#666" />
@@ -103,21 +103,21 @@
                 </Border>
 
                 <!-- System Info -->
-                <Border Background="#F9F9F9"
+                <Border Background="{DynamicResource Color.Background.Secondary}"
                         BorderThickness="1"
-                        BorderBrush="#E0E0E0"
+                        BorderBrush="{DynamicResource Color.Border.Primary}"
                         CornerRadius="4"
                         Padding="12">
                     <StackPanel Spacing="8">
                         <TextBlock Text="System Information"
                                    FontSize="12"
                                    FontWeight="Bold"
-                                   Foreground="#333" />
+                                   Foreground="{DynamicResource Color.Border.Primary}" />
                         <Grid ColumnDefinitions="120,*">
                             <TextBlock Grid.Column="0" Text="Runtime:" Foreground="#666" FontSize="10" />
-                            <TextBlock Grid.Column="1" x:Name="RuntimeText" Text=".NET 8.0" Foreground="#333" FontSize="10" />
+                            <TextBlock Grid.Column="1" x:Name="RuntimeText" Text=".NET 8.0" Foreground="{DynamicResource Color.Border.Primary}" FontSize="10" />
                             <TextBlock Grid.Column="0" Text="OS:" Foreground="#666" FontSize="10" Margin="0,4,0,0" />
-                            <TextBlock Grid.Column="1" x:Name="OSText" Text="Windows" Foreground="#333" FontSize="10" Margin="0,4,0,0" />
+                            <TextBlock Grid.Column="1" x:Name="OSText" Text="Windows" Foreground="{DynamicResource Color.Border.Primary}" FontSize="10" Margin="0,4,0,0" />
                         </Grid>
                     </StackPanel>
                 </Border>

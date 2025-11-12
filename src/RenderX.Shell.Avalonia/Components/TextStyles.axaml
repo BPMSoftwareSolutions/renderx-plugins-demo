@@ -1,43 +1,43 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Shell.Avalonia.Components.TextStyles"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <ScrollViewer>
         <Border Padding="24">
             <StackPanel Spacing="24">
                 <!-- Headings -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Headings" FontSize="18" FontWeight="Bold" Foreground="#333" />
-                    <TextBlock Text="Heading 1" FontSize="32" FontWeight="Bold" Foreground="#111827" />
-                    <TextBlock Text="Heading 2" FontSize="28" FontWeight="Bold" Foreground="#111827" />
-                    <TextBlock Text="Heading 3" FontSize="24" FontWeight="Bold" Foreground="#111827" />
+                    <TextBlock Text="Headings" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                    <TextBlock Text="Heading 1" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource Color.Background.Secondary}" />
+                    <TextBlock Text="Heading 2" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource Color.Background.Secondary}" />
+                    <TextBlock Text="Heading 3" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource Color.Background.Secondary}" />
                 </StackPanel>
                 
                 <!-- Body Text -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Body Text" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Body Text" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <TextBlock Text="This is body text with regular weight and size. It's used for main content." 
-                               FontSize="14" Foreground="#111827" TextWrapping="Wrap" />
+                               FontSize="14" Foreground="{DynamicResource Color.Background.Secondary}" TextWrapping="Wrap" />
                     <TextBlock Text="This is secondary body text with a lighter color for less important information." 
-                               FontSize="14" Foreground="#6B7280" TextWrapping="Wrap" />
+                               FontSize="14" Foreground="{DynamicResource Color.Text.Secondary}" TextWrapping="Wrap" />
                 </StackPanel>
                 
                 <!-- Captions -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Captions" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Captions" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <TextBlock Text="This is a caption - smaller text for supplementary information" 
-                               FontSize="12" Foreground="#6B7280" />
+                               FontSize="12" Foreground="{DynamicResource Color.Text.Secondary}" />
                     <TextBlock Text="This is a small caption - even smaller for minimal information" 
                                FontSize="11" Foreground="#9CA3AF" />
                 </StackPanel>
                 
                 <!-- Font Weights -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Font Weights" FontSize="18" FontWeight="Bold" Foreground="#333" />
-                    <TextBlock Text="Light Weight" FontSize="14" FontWeight="Light" Foreground="#111827" />
-                    <TextBlock Text="Regular Weight" FontSize="14" FontWeight="Regular" Foreground="#111827" />
-                    <TextBlock Text="Medium Weight" FontSize="14" FontWeight="Medium" Foreground="#111827" />
-                    <TextBlock Text="Bold Weight" FontSize="14" FontWeight="Bold" Foreground="#111827" />
+                    <TextBlock Text="Font Weights" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
+                    <TextBlock Text="Light Weight" FontSize="14" FontWeight="Light" Foreground="{DynamicResource Color.Background.Secondary}" />
+                    <TextBlock Text="Regular Weight" FontSize="14" FontWeight="Regular" Foreground="{DynamicResource Color.Background.Secondary}" />
+                    <TextBlock Text="Medium Weight" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource Color.Background.Secondary}" />
+                    <TextBlock Text="Bold Weight" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Background.Secondary}" />
                 </StackPanel>
             </StackPanel>
         </Border>

@@ -1,23 +1,23 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.ManifestTools.ManifestValidator"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Grid RowDefinitions="Auto,*,Auto">
         <!-- Header -->
         <Border Grid.Row="0"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Spacing="8">
                 <TextBlock Text="Manifest Validator"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <Button Content="Validate Manifest"
                         Padding="8,4"
-                        Background="#007ACC"
-                        Foreground="White"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
                         FontSize="11" />
             </StackPanel>
         </Border>
@@ -26,12 +26,12 @@
         <ScrollViewer Grid.Row="1">
             <ItemsControl x:Name="ResultsControl"
                           Padding="12"
-                          Background="White">
+                          Background="{DynamicResource Color.Background.Primary}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="#F9F9F9"
+                        <Border Background="{DynamicResource Color.Background.Secondary}"
                                 BorderThickness="1"
-                                BorderBrush="#E0E0E0"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
                                 CornerRadius="4"
                                 Padding="8"
                                 Margin="0,4">
@@ -40,10 +40,10 @@
                                     <TextBlock x:Name="StatusIcon"
                                                Text="✓"
                                                FontSize="12"
-                                               Foreground="#10B981" />
+                                               Foreground="{DynamicResource Color.Success}" />
                                     <TextBlock Text="{Binding Message}"
                                                FontSize="11"
-                                               Foreground="#333" />
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
                                 </StackPanel>
                                 <TextBlock Text="{Binding Details}"
                                            FontSize="9"
@@ -58,19 +58,19 @@
 
         <!-- Footer -->
         <Border Grid.Row="2"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,1,0,0"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Orientation="Horizontal" Spacing="12">
                 <TextBlock x:Name="ValidCountText"
                            Text="0 valid"
                            FontSize="10"
-                           Foreground="#10B981" />
+                           Foreground="{DynamicResource Color.Success}" />
                 <TextBlock x:Name="ErrorCountText"
                            Text="0 errors"
                            FontSize="10"
-                           Foreground="#EF5350" />
+                           Foreground="{DynamicResource Color.Error}" />
             </StackPanel>
         </Border>
     </Grid>

@@ -140,7 +140,7 @@ export class EventSubscriptionManager {
     subscriberId: string,
     context?: any
   ): UnsubscribeFunction {
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 EventSubscriptionManager: Creating managed subscription for ${subscriberId} -> ${eventName}`
     );
 
@@ -148,11 +148,11 @@ export class EventSubscriptionManager {
       try {
         callback(data);
       } catch (error) {
-        console.error(
+        (globalThis as any).__MC_ERROR(
           `🎼 EventSubscriptionManager: Error in subscription callback for ${eventName}:`,
           error
         );
-        console.error(`🎼 Subscriber: ${subscriberId}`);
+        (globalThis as any).__MC_ERROR(`🎼 Subscriber: ${subscriberId}`);
       }
     };
 
@@ -172,7 +172,7 @@ export class EventSubscriptionManager {
    */
   emit(eventName: string, data?: any, emitterId?: string): void {
     if (emitterId) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 EventSubscriptionManager: ${emitterId} emitting ${eventName}`
       );
     }

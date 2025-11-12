@@ -4,7 +4,7 @@
              Background="Transparent">
     <Border x:Name="SelectionBorder"
             BorderThickness="2"
-            BorderBrush="#007ACC"
+            BorderBrush="{DynamicResource Color.Accent.Primary}"
             Background="Transparent"
             IsVisible="False">
         <Grid>

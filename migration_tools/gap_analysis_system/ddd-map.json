@@ -1,0 +1,675 @@
+{
+  "metadata": {
+    "source_file": "migration_tools/web_desktop_gap_analyzer.py",
+    "total_lines": 2227,
+    "created_at": "2025-11-09",
+    "description": "Domain-Driven Design map for Web/Desktop Gap Analyzer refactoring",
+    "last_updated": "2025-11-09",
+    "status": "completed"
+  },
+  "domains": {
+    "core_models": {
+      "description": "Domain models and data structures representing the core entities",
+      "target_module": "gap-analysis-system/models.py",
+      "elements": {
+        "classes": [
+          {
+            "name": "ComponentFeature",
+            "type": "dataclass",
+            "line_start": 48,
+            "line_end": 56,
+            "methods": [],
+            "dependencies": [
+              "dataclass"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "name": "WebComponent",
+            "type": "dataclass",
+            "line_start": 58,
+            "line_end": 76,
+            "methods": [],
+            "dependencies": [
+              "dataclass",
+              "field",
+              "ComponentFeature"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "name": "DesktopComponent",
+            "type": "dataclass",
+            "line_start": 78,
+            "line_end": 95,
+            "methods": [],
+            "dependencies": [
+              "dataclass",
+              "field",
+              "ComponentFeature"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "name": "CSSAnalysis",
+            "type": "dataclass",
+            "line_start": 97,
+            "line_end": 109,
+            "methods": [],
+            "dependencies": [
+              "dataclass"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "name": "Gap",
+            "type": "dataclass",
+            "line_start": 111,
+            "line_end": 126,
+            "methods": [],
+            "dependencies": [
+              "dataclass",
+              "field"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "name": "PluginAnalysis",
+            "type": "dataclass",
+            "line_start": 128,
+            "line_end": 140,
+            "methods": [],
+            "dependencies": [
+              "dataclass",
+              "field",
+              "WebComponent",
+              "DesktopComponent",
+              "Gap",
+              "CSSAnalysis"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "web_parsing": {
+      "description": "Parsing and analysis of web components (React/TypeScript/JSX)",
+      "target_module": "gap-analysis-system/web_parser.py",
+      "elements": {
+        "classes": [
+          {
+            "name": "WebComponentParser",
+            "type": "class",
+            "line_start": 144,
+            "line_end": 481,
+            "methods": [
+              {
+                "name": "parse_component",
+                "line_start": 148,
+                "line_end": 248,
+                "is_static": true,
+                "dependencies": [
+                  "WebComponent",
+                  "_extract_jsx_elements",
+                  "_extract_rendered_text",
+                  "_detect_layout_hints_jsx",
+                  "_detect_ui_hints_jsx",
+                  "_detect_features"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_extract_jsx_elements",
+                "line_start": 250,
+                "line_end": 265,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_extract_rendered_text",
+                "line_start": 267,
+                "line_end": 306,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_detect_layout_hints_jsx",
+                "line_start": 308,
+                "line_end": 334,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_detect_ui_hints_jsx",
+                "line_start": 336,
+                "line_end": 362,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_detect_features",
+                "line_start": 364,
+                "line_end": 481,
+                "is_static": true,
+                "dependencies": [
+                  "ComponentFeature",
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              }
+            ],
+            "dependencies": [
+              "WebComponent",
+              "ComponentFeature",
+              "Path",
+              "re",
+              "os"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "desktop_parsing": {
+      "description": "Parsing and analysis of desktop components (Avalonia/C#/AXAML)",
+      "target_module": "gap-analysis-system/desktop_parser.py",
+      "elements": {
+        "classes": [
+          {
+            "name": "DesktopComponentParser",
+            "type": "class",
+            "line_start": 483,
+            "line_end": 904,
+            "methods": [
+              {
+                "name": "parse_component",
+                "line_start": 487,
+                "line_end": 593,
+                "is_static": true,
+                "dependencies": [
+                  "DesktopComponent",
+                  "_extract_axaml_elements",
+                  "_extract_rendered_text",
+                  "_extract_layout_hints",
+                  "_extract_ui_hints",
+                  "_detect_features"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_extract_axaml_elements",
+                "line_start": 595,
+                "line_end": 605,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_extract_rendered_text",
+                "line_start": 607,
+                "line_end": 640,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_extract_layout_hints",
+                "line_start": 642,
+                "line_end": 686,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_extract_ui_hints",
+                "line_start": 688,
+                "line_end": 702,
+                "is_static": true,
+                "dependencies": [
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_detect_features",
+                "line_start": 704,
+                "line_end": 904,
+                "is_static": true,
+                "dependencies": [
+                  "ComponentFeature",
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              }
+            ],
+            "dependencies": [
+              "DesktopComponent",
+              "ComponentFeature",
+              "Path",
+              "re",
+              "os"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "css_parsing": {
+      "description": "CSS file parsing and analysis",
+      "target_module": "gap-analysis-system/css_parser.py",
+      "elements": {
+        "classes": [
+          {
+            "name": "CSSParser",
+            "type": "class",
+            "line_start": 906,
+            "line_end": 969,
+            "methods": [
+              {
+                "name": "parse_css_file",
+                "line_start": 910,
+                "line_end": 969,
+                "is_static": true,
+                "dependencies": [
+                  "CSSAnalysis",
+                  "re"
+                ],
+                "refactoring_status": "completed"
+              }
+            ],
+            "dependencies": [
+              "CSSAnalysis",
+              "Path",
+              "re",
+              "os"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "gap_analysis": {
+      "description": "Core gap detection and analysis logic",
+      "target_module": "gap-analysis-system/analyzer.py",
+      "elements": {
+        "classes": [
+          {
+            "name": "GapAnalyzer",
+            "type": "class",
+            "line_start": 971,
+            "line_end": 1773,
+            "methods": [
+              {
+                "name": "analyze_plugin",
+                "line_start": 976,
+                "line_end": 1120,
+                "is_static": true,
+                "dependencies": [
+                  "PluginAnalysis",
+                  "_find_web_components",
+                  "_find_desktop_components",
+                  "_analyze_css",
+                  "_detect_gaps",
+                  "_manifest_audit",
+                  "_generate_summary"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_manifest_audit",
+                "line_start": 1122,
+                "line_end": 1346,
+                "is_static": true,
+                "dependencies": [
+                  "DesktopComponent",
+                  "json",
+                  "Path"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_find_web_components",
+                "line_start": 1348,
+                "line_end": 1371,
+                "is_static": true,
+                "dependencies": [
+                  "WebComponentParser",
+                  "Path"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_find_desktop_components",
+                "line_start": 1373,
+                "line_end": 1398,
+                "is_static": true,
+                "dependencies": [
+                  "DesktopComponentParser",
+                  "Path"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_analyze_css",
+                "line_start": 1400,
+                "line_end": 1411,
+                "is_static": true,
+                "dependencies": [
+                  "CSSParser",
+                  "Path"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_detect_gaps",
+                "line_start": 1413,
+                "line_end": 1749,
+                "is_static": true,
+                "dependencies": [
+                  "Gap",
+                  "WebComponent",
+                  "DesktopComponent",
+                  "CSSAnalysis",
+                  "difflib"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "_generate_summary",
+                "line_start": 1751,
+                "line_end": 1773,
+                "is_static": true,
+                "dependencies": [
+                  "PluginAnalysis"
+                ],
+                "refactoring_status": "completed"
+              }
+            ],
+            "class_variables": [
+              {
+                "name": "FEATURE_MAP_PATH",
+                "type": "Optional[Path]",
+                "value": "None",
+                "line": 972,
+                "refactoring_status": "completed"
+              }
+            ],
+            "dependencies": [
+              "PluginAnalysis",
+              "Gap",
+              "WebComponent",
+              "DesktopComponent",
+              "CSSAnalysis",
+              "WebComponentParser",
+              "DesktopComponentParser",
+              "CSSParser",
+              "Path",
+              "json",
+              "difflib"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "report_generation": {
+      "description": "Report generation in various formats (Markdown, JSON, HTML)",
+      "target_module": "gap-analysis-system/report_generator.py",
+      "elements": {
+        "classes": [
+          {
+            "name": "ReportGenerator",
+            "type": "class",
+            "line_start": 1775,
+            "line_end": 2153,
+            "methods": [
+              {
+                "name": "generate_markdown",
+                "line_start": 1779,
+                "line_end": 2098,
+                "is_static": true,
+                "dependencies": [
+                  "PluginAnalysis",
+                  "datetime"
+                ],
+                "refactoring_status": "completed"
+              },
+              {
+                "name": "generate_json",
+                "line_start": 2100,
+                "line_end": 2153,
+                "is_static": true,
+                "dependencies": [
+                  "PluginAnalysis",
+                  "json",
+                  "asdict"
+                ],
+                "refactoring_status": "completed"
+              }
+            ],
+            "dependencies": [
+              "PluginAnalysis",
+              "datetime",
+              "json",
+              "asdict"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "cli_orchestration": {
+      "description": "Command-line interface and orchestration logic",
+      "target_module": "gap-analysis-system/cli.py",
+      "elements": {
+        "functions": [
+          {
+            "name": "main",
+            "line_start": 2155,
+            "line_end": 2221,
+            "dependencies": [
+              "argparse",
+              "GapAnalyzer",
+              "ReportGenerator",
+              "Path"
+            ],
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    },
+    "shared_imports": {
+      "description": "Common imports used across all domains",
+      "target_module": "gap-analysis-system/__init__.py",
+      "elements": {
+        "imports": [
+          {
+            "module": "os",
+            "line": 31,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "re",
+            "line": 32,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "json",
+            "line": 33,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "argparse",
+            "line": 34,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "pathlib.Path",
+            "line": 35,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "typing",
+            "line": 36,
+            "type": "standard",
+            "items": [
+              "List",
+              "Dict",
+              "Set",
+              "Tuple",
+              "Optional"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "collections.defaultdict",
+            "line": 37,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "dataclasses",
+            "line": 38,
+            "type": "standard",
+            "items": [
+              "dataclass",
+              "field",
+              "asdict"
+            ],
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "datetime.datetime",
+            "line": 39,
+            "type": "standard",
+            "refactoring_status": "completed"
+          },
+          {
+            "module": "difflib",
+            "line": 40,
+            "type": "standard",
+            "refactoring_status": "completed"
+          }
+        ]
+      }
+    }
+  },
+  "refactoring_plan": {
+    "phase_1": {
+      "description": "Extract core models",
+      "domains": [
+        "core_models"
+      ],
+      "status": "completed"
+    },
+    "phase_2": {
+      "description": "Extract parsers",
+      "domains": [
+        "web_parsing",
+        "desktop_parsing",
+        "css_parsing"
+      ],
+      "status": "completed"
+    },
+    "phase_3": {
+      "description": "Extract analysis engine",
+      "domains": [
+        "gap_analysis"
+      ],
+      "status": "completed"
+    },
+    "phase_4": {
+      "description": "Extract report generation",
+      "domains": [
+        "report_generation"
+      ],
+      "status": "completed"
+    },
+    "phase_5": {
+      "description": "Create CLI orchestrator",
+      "domains": [
+        "cli_orchestration"
+      ],
+      "status": "completed"
+    }
+  },
+  "cross_domain_dependencies": {
+    "models_to_parsers": {
+      "from": "core_models",
+      "to": [
+        "web_parsing",
+        "desktop_parsing",
+        "css_parsing"
+      ],
+      "types": [
+        "ComponentFeature",
+        "WebComponent",
+        "DesktopComponent",
+        "CSSAnalysis"
+      ]
+    },
+    "parsers_to_analyzer": {
+      "from": [
+        "web_parsing",
+        "desktop_parsing",
+        "css_parsing"
+      ],
+      "to": "gap_analysis",
+      "types": [
+        "WebComponentParser",
+        "DesktopComponentParser",
+        "CSSParser"
+      ]
+    },
+    "models_to_analyzer": {
+      "from": "core_models",
+      "to": "gap_analysis",
+      "types": [
+        "Gap",
+        "PluginAnalysis"
+      ]
+    },
+    "analyzer_to_report": {
+      "from": "gap_analysis",
+      "to": "report_generation",
+      "types": [
+        "PluginAnalysis",
+        "GapAnalyzer"
+      ]
+    },
+    "all_to_cli": {
+      "from": [
+        "gap_analysis",
+        "report_generation"
+      ],
+      "to": "cli_orchestration",
+      "types": [
+        "GapAnalyzer",
+        "ReportGenerator"
+      ]
+    }
+  }
+}

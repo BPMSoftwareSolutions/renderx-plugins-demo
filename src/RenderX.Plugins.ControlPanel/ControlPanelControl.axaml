@@ -6,16 +6,76 @@
              mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="600"
              x:Class="RenderX.Plugins.ControlPanel.ControlPanelControl"
              x:CompileBindings="False"
-             Background="White"
+             Background="{DynamicResource Color.Background.Primary}"
              BorderThickness="1"
-             BorderBrush="#E0E0E0">
+             BorderBrush="{DynamicResource Color.Border.Primary}">
+
+    <UserControl.Styles>
+        <!-- Property Item Hover -->
+        <Style Selector="Border.property-item">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.property-item:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        </Style>
+
+        <!-- Button Hover -->
+        <Style Selector="Button.control-button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.control-button:pointerover">
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+
+        <!-- TextBox Hover -->
+        <Style Selector="TextBox.control-input">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TextBox.control-input:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+            <Setter Property="Background" Value="{DynamicResource Color.Background.Hover}"/>
+        </Style>
+
+        <!-- Section Border Hover -->
+        <Style Selector="Border.control-section">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.control-section:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}"/>
+        </Style>
+    </UserControl.Styles>
 
     <Grid RowDefinitions="Auto,*">
         <!-- Control Panel Header -->
         <Border Grid.Row="0"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Orientation="Horizontal" Spacing="8">
                 <TextBlock Text="Properties"
@@ -32,30 +92,32 @@
 
         <!-- Control Panel Content -->
         <Border Grid.Row="1"
-                Background="White"
+                Background="{DynamicResource Color.Background.Primary}"
                 Padding="12">
             <ScrollViewer>
                 <StackPanel Spacing="12">
                     <!-- Properties Section -->
-                    <Border Background="#F9F9F9"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
-                            BorderBrush="#E0E0E0"
+                            BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
                             Padding="12">
                         <StackPanel Spacing="8">
                             <TextBlock Text="Component Properties"
                                        FontSize="12"
                                        FontWeight="Bold"
-                                       Foreground="#333"/>
+                                       Foreground="{DynamicResource Color.Border.Primary}"/>
 
                             <!-- Property Grid -->
                             <ItemsControl Name="PropertiesItemsControl"
-                                          Background="White">
+                                          Background="{DynamicResource Color.Background.Primary}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="White"
+                                        <Border Classes="property-item"
+                                                Background="{DynamicResource Color.Background.Primary}"
                                                 BorderThickness="0,0,0,1"
-                                                BorderBrush="#E0E0E0"
+                                                BorderBrush="{DynamicResource Color.Border.Primary}"
                                                 Padding="0,8">
                                             <Grid ColumnDefinitions="120,*">
                                                 <TextBlock Grid.Column="0"
@@ -63,13 +125,14 @@
                                                            FontSize="11"
                                                            VerticalAlignment="Center"
                                                            Foreground="#666"/>
-                                                <TextBox Grid.Column="1"
+                                                <TextBox Classes="control-input"
+                                                         Grid.Column="1"
                                                          Text="{Binding Value}"
                                                          FontSize="11"
                                                          Margin="8,0,0,0"
                                                          Padding="6,4"
                                                          BorderThickness="1"
-                                                         BorderBrush="#D0D0D0"/>
+                                                         BorderBrush="{DynamicResource Color.Border.Secondary}"/>
                                             </Grid>
                                         </Border>
                                     </DataTemplate>
@@ -79,28 +142,30 @@
                     </Border>
 
                     <!-- Interactions Section -->
-                    <Border Background="#F9F9F9"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
-                            BorderBrush="#E0E0E0"
+                            BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
                             Padding="12">
                         <StackPanel Spacing="8">
                             <TextBlock Text="Interactions"
                                        FontSize="12"
                                        FontWeight="Bold"
-                                       Foreground="#333"/>
+                                       Foreground="{DynamicResource Color.Border.Primary}"/>
 
                             <!-- Interaction Buttons -->
                             <ItemsControl Name="InteractionsItemsControl"
-                                          Background="White">
+                                          Background="{DynamicResource Color.Background.Primary}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Name}"
+                                        <Button Classes="control-button"
+                                                Content="{Binding Name}"
                                                 Click="OnInteractionButtonClicked"
                                                 Padding="8,6"
                                                 Margin="0,4"
                                                 Background="#2196F3"
-                                                Foreground="White"
+                                                Foreground="{DynamicResource Color.Background.Primary}"
                                                 FontSize="11"
                                                 CornerRadius="4"/>
                                     </DataTemplate>
@@ -110,47 +175,51 @@
                     </Border>
 
                     <!-- CSS Classes Section -->
-                    <Border Background="#F9F9F9"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
-                            BorderBrush="#E0E0E0"
+                            BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
                             Padding="12">
                         <StackPanel Spacing="8">
                             <TextBlock Text="CSS Classes"
                                        FontSize="12"
                                        FontWeight="Bold"
-                                       Foreground="#333"/>
+                                       Foreground="{DynamicResource Color.Border.Primary}"/>
 
                             <!-- CSS Classes Input -->
-                            <TextBox Name="CssClassesInput"
+                            <TextBox Classes="control-input"
+                                     Name="CssClassesInput"
                                      Watermark="Enter CSS classes..."
                                      FontSize="11"
                                      Padding="6,4"
                                      BorderThickness="1"
-                                     BorderBrush="#D0D0D0"
+                                     BorderBrush="{DynamicResource Color.Border.Secondary}"
                                      AcceptsReturn="False"/>
 
-                            <Button Content="Apply CSS Classes"
+                            <Button Classes="control-button"
+                                    Content="Apply CSS Classes"
                                     Click="OnApplyCssClassesClicked"
                                     Padding="8,6"
-                                    Background="#4CAF50"
-                                    Foreground="White"
+                                    Background="{DynamicResource Color.Success}"
+                                    Foreground="{DynamicResource Color.Background.Primary}"
                                     FontSize="11"
                                     CornerRadius="4"/>
                         </StackPanel>
                     </Border>
 
                     <!-- Status Section -->
-                    <Border Background="#F9F9F9"
+                    <Border Classes="control-section"
+                            Background="{DynamicResource Color.Background.Secondary}"
                             BorderThickness="1"
-                            BorderBrush="#E0E0E0"
+                            BorderBrush="{DynamicResource Color.Border.Primary}"
                             CornerRadius="4"
                             Padding="12">
                         <StackPanel Spacing="4">
                             <TextBlock Text="Status"
                                        FontSize="12"
                                        FontWeight="Bold"
-                                       Foreground="#333"/>
+                                       Foreground="{DynamicResource Color.Border.Primary}"/>
                             <TextBlock Name="StatusText"
                                        Text="No component selected"
                                        FontSize="11"

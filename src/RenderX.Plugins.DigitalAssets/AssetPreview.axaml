@@ -1,23 +1,23 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.DigitalAssets.AssetPreview"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Border BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="12">
             <!-- Preview Area -->
-            <Border Background="#F5F5F5"
+            <Border Background="{DynamicResource Color.Background.Tertiary}"
                     CornerRadius="4"
                     Height="200"
                     BorderThickness="1"
-                    BorderBrush="#E0E0E0">
+                    BorderBrush="{DynamicResource Color.Border.Primary}">
                 <TextBlock Text="📄"
                            FontSize="64"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Foreground="#D0D0D0" />
+                           Foreground="{DynamicResource Color.Border.Secondary}" />
             </Border>
             
             <!-- Asset Info -->
@@ -30,7 +30,7 @@
                     <TextBlock x:Name="AssetName"
                                Text="asset.jpg"
                                FontSize="12"
-                               Foreground="#333" />
+                               Foreground="{DynamicResource Color.Border.Primary}" />
                 </StackPanel>
                 
                 <StackPanel Spacing="4">
@@ -41,7 +41,7 @@
                     <TextBlock x:Name="AssetType"
                                Text="Image"
                                FontSize="12"
-                               Foreground="#333" />
+                               Foreground="{DynamicResource Color.Border.Primary}" />
                 </StackPanel>
                 
                 <StackPanel Spacing="4">
@@ -52,7 +52,7 @@
                     <TextBlock x:Name="AssetSize"
                                Text="2.5 MB"
                                FontSize="12"
-                               Foreground="#333" />
+                               Foreground="{DynamicResource Color.Border.Primary}" />
                 </StackPanel>
                 
                 <StackPanel Spacing="4">
@@ -63,7 +63,7 @@
                     <TextBlock x:Name="AssetDimensions"
                                Text="1920 x 1080"
                                FontSize="12"
-                               Foreground="#333" />
+                               Foreground="{DynamicResource Color.Border.Primary}" />
                 </StackPanel>
             </StackPanel>
             
@@ -71,14 +71,14 @@
             <StackPanel Orientation="Horizontal" Spacing="8">
                 <Button Content="Download"
                         Padding="8,4"
-                        Background="#007ACC"
-                        Foreground="White"
+                        Background="{DynamicResource Color.Accent.Primary}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
                         FontSize="10"
                         HorizontalAlignment="Stretch" />
                 <Button Content="Delete"
                         Padding="8,4"
-                        Background="#EF5350"
-                        Foreground="White"
+                        Background="{DynamicResource Color.Error}"
+                        Foreground="{DynamicResource Color.Background.Primary}"
                         FontSize="10"
                         HorizontalAlignment="Stretch" />
             </StackPanel>

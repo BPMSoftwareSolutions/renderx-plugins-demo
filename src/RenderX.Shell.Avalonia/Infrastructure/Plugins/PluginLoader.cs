@@ -22,6 +22,7 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
     {
         private readonly ILogger<PluginLoader> _logger;
         private readonly IReadOnlyDictionary<string, string> _slotTypeMap;
+        private readonly HashSet<string> _loadedRuntimePlugins = new(StringComparer.OrdinalIgnoreCase);
 
         public PluginLoader(ILogger<PluginLoader> logger)
         {
@@ -71,9 +72,9 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                         continue;
                     }
 
-                    if (!plugin.TryGetProperty("ui", out var ui))
+                    if (!plugin.TryGetProperty("ui", out var ui) || ui.ValueKind == JsonValueKind.Null)
                     {
-                        _logger.LogWarning("Plugin {PluginId} missing 'ui' configuration", id.GetString());
+                        // UI-less plugins are valid (e.g., data-only plugins)
                         continue;
                     }
 
@@ -151,8 +152,14 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                 foreach (var plugin in plugins.EnumerateArray())
                 {
                     var id = plugin.GetProperty("id").GetString();
-                    var ui = plugin.GetProperty("ui");
-                    var slot = ui.GetProperty("slot").GetString();
+
+                    if (!plugin.TryGetProperty("ui", out var ui) || ui.ValueKind == JsonValueKind.Null)
+                        continue; // Skip plugins without UI configuration
+
+                    if (!ui.TryGetProperty("slot", out var slotElement) || slotElement.ValueKind == JsonValueKind.Null)
+                        continue; // Skip plugins without slot
+
+                    var slot = slotElement.GetString();
                     var module = ui.GetProperty("module").GetString();
                     var export = ui.GetProperty("export").GetString();
 
@@ -243,6 +250,96 @@ namespace RenderX.Shell.Avalonia.Infrastructure.Plugins
                 }
                 return Task.FromResult<Control?>(null);
             }
+        }
+
+        /// <summary>
+        /// Loads and registers runtime plugins (IPlugin) from plugin-manifest.json.
+        /// This instantiates plugin classes via DI and registers them with the ConductorClient.
+        /// </summary>
+        public async Task<int> LoadRuntimePluginsAsync(IServiceProvider services)
+        {
+            var manifestPath = GetPluginManifestPath();
+            var loaded = 0;
+            try
+            {
+                if (!File.Exists(manifestPath))
+                {
+                    _logger.LogWarning("Plugin manifest not found at {ManifestPath}; skipping runtime plugin load", manifestPath);
+                    return 0;
+                }
+
+                var manifestContent = File.ReadAllText(manifestPath);
+                using var doc = JsonDocument.Parse(manifestContent);
+
+                var plugins = doc.RootElement.GetProperty("plugins");
+                foreach (var plugin in plugins.EnumerateArray())
+                {
+                    if (!plugin.TryGetProperty("runtime", out var runtime) || runtime.ValueKind == JsonValueKind.Null)
+                        continue; // Skip plugins without runtime configuration
+
+                    if (!runtime.TryGetProperty("module", out var moduleElement) || moduleElement.ValueKind == JsonValueKind.Null)
+                        continue;
+
+                    if (!runtime.TryGetProperty("export", out var exportElement) || exportElement.ValueKind == JsonValueKind.Null)
+                        continue;
+
+                    var module = moduleElement.GetString();
+                    var export = exportElement.GetString();
+
+                    if (string.IsNullOrWhiteSpace(module) || string.IsNullOrWhiteSpace(export))
+                        continue;
+
+                    var assemblyName = Path.GetFileNameWithoutExtension(module);
+                    var typeName = $"{export}, {assemblyName}";
+
+                    if (_loadedRuntimePlugins.Contains(typeName))
+                        continue; // already loaded
+
+                    var pluginType = Type.GetType(typeName, throwOnError: false);
+                    if (pluginType == null)
+                    {
+                        _logger.LogWarning("Runtime plugin type not found: {TypeName}", typeName);
+                        continue;
+                    }
+
+                    try
+                    {
+                        // Create instance via DI to satisfy constructor deps
+                        var instance = ActivatorUtilities.CreateInstance(services, pluginType) as IPlugin;
+                        if (instance == null)
+                        {
+                            _logger.LogWarning("Failed to create runtime plugin instance for type {TypeName}", typeName);
+                            continue;
+                        }
+
+                        // Prefer the Core Conductor client if available for direct plugin registration
+                        var coreConductor = services.GetService<MusicalConductor.Core.Interfaces.IConductorClient>();
+                        if (coreConductor != null)
+                        {
+                            await coreConductor.RegisterPlugin(instance);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Core IConductorClient not available; runtime plugin not registered: {TypeName}", typeName);
+                            continue;
+                        }
+
+                        _loadedRuntimePlugins.Add(typeName);
+                        loaded++;
+                        _logger.LogInformation("Registered runtime plugin: {TypeName}", typeName);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Error registering runtime plugin {TypeName}", typeName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading runtime plugins from manifest {ManifestPath}", manifestPath);
+            }
+
+            return loaded;
         }
     }
 }

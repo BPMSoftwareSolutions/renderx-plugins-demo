@@ -48,7 +48,7 @@ export class EventLogger {
     }
 
     if (!this.config.enableHierarchicalLogging) {
-      console.log("🎼 EventLogger: Hierarchical logging disabled");
+      (globalThis as any).__MC_LOG("🎼 EventLogger: Hierarchical logging disabled");
       return;
     }
 
@@ -73,7 +73,7 @@ export class EventLogger {
     );
     this.beatLoggingInitialized = true;
 
-    console.log("🎼 EventLogger: Hierarchical beat logging initialized");
+    (globalThis as any).__MC_LOG("🎼 EventLogger: Hierarchical beat logging initialized");
   }
 
   /**
@@ -81,7 +81,7 @@ export class EventLogger {
    */
   setupMovementExecutionLogging(): void {
     if (!this.config.enableHierarchicalLogging) {
-      console.log("🎼 EventLogger: Movement hierarchical logging disabled");
+      (globalThis as any).__MC_LOG("🎼 EventLogger: Movement hierarchical logging disabled");
       return;
     }
 
@@ -113,7 +113,7 @@ export class EventLogger {
       movementFailedUnsubscribe
     );
 
-    console.log("🎼 EventLogger: Hierarchical movement logging initialized");
+    (globalThis as any).__MC_LOG("🎼 EventLogger: Hierarchical movement logging initialized");
   }
 
   /**
@@ -136,25 +136,25 @@ export class EventLogger {
     } (${data.event})`;
 
     console.group(groupLabel);
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🎼 Sequence: ${data.sequenceName}`,
       "color: #007BFF; font-weight: bold;"
     );
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🎵 Movement: ${movementName}`,
       "color: #6F42C1; font-weight: bold;"
     );
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c📊 Beat: ${data.beat}`,
       "color: #FD7E14; font-weight: bold;"
     );
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🎯 Event: ${data.event}`,
       "color: #20C997; font-weight: bold;"
     );
 
     // Log additional metadata
-    console.log({
+    (globalThis as any).__MC_LOG({
       sequence: data.sequenceName,
       movement: movementName,
       beat: data.beat,
@@ -178,12 +178,12 @@ export class EventLogger {
     );
 
     if (duration !== null) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `%c✅ Completed in ${duration.toFixed(2)}ms`,
         "color: #28A745; font-weight: bold;"
       );
     } else {
-      console.log(`%c✅ Completed`, "color: #28A745; font-weight: bold;");
+      (globalThis as any).__MC_LOG(`%c✅ Completed`, "color: #28A745; font-weight: bold;");
     }
 
     console.groupEnd();
@@ -198,15 +198,15 @@ export class EventLogger {
     const groupLabel = `🎵 Movement Started: ${data.movementName} (${data.beatsCount} beats)`;
 
     console.group(groupLabel);
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🎼 Sequence: ${data.sequenceName}`,
       "color: #007BFF; font-weight: bold;"
     );
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🆔 Request ID: ${data.requestId}`,
       "color: #6C757D; font-weight: normal;"
     );
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🥁 Beats Count: ${data.beatsCount}`,
       "color: #17A2B8; font-weight: bold;"
     );
@@ -218,18 +218,18 @@ export class EventLogger {
    */
   private logMovementCompletedHierarchical(data: any): void {
     if (data.duration !== null && data.duration !== undefined) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `%c✅ Movement completed in ${data.duration.toFixed(2)}ms`,
         "color: #28A745; font-weight: bold;"
       );
     } else {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `%c✅ Movement completed`,
         "color: #28A745; font-weight: bold;"
       );
     }
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c🥁 Beats executed: ${data.beatsExecuted}`,
       "color: #17A2B8; font-weight: normal;"
     );
@@ -242,7 +242,7 @@ export class EventLogger {
    * @param data - Movement failed event data
    */
   private logMovementFailedHierarchical(data: any): void {
-    console.log(
+    (globalThis as any).__MC_LOG(
       `%c❌ Movement failed: ${data.error}`,
       "color: #DC3545; font-weight: bold;"
     );
@@ -286,7 +286,7 @@ export class EventLogger {
 
     // Log error in hierarchical format if enabled
     if (this.config.enableHierarchicalLogging) {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `%c❌ Error: ${error.message}`,
         "color: #DC3545; font-weight: bold;"
       );
@@ -314,10 +314,10 @@ export class EventLogger {
       this.eventBus.emit(eventType, data);
 
       if (this.config.logLevel === "debug") {
-        console.log(`🎼 EventLogger: Emitted ${eventType}`, data);
+        (globalThis as any).__MC_LOG(`🎼 EventLogger: Emitted ${eventType}`, data);
       }
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🎼 EventLogger: Failed to emit event ${eventType}:`,
         error
       );
@@ -332,7 +332,7 @@ export class EventLogger {
    */
   logSequenceStart(sequenceName: string, executionId: string, data: any): void {
     if (this.config.logLevel === "debug" || this.config.logLevel === "info") {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 EventLogger: Starting sequence ${sequenceName} (${executionId})`,
         data
       );
@@ -363,7 +363,7 @@ export class EventLogger {
     const durationText = duration ? ` in ${duration.toFixed(2)}ms` : "";
 
     if (this.config.logLevel === "debug" || this.config.logLevel === "info") {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 EventLogger: Sequence ${sequenceName} ${status}${durationText}`
       );
     }
@@ -389,7 +389,7 @@ export class EventLogger {
     queueLength: number
   ): void {
     if (this.config.logLevel === "debug") {
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 EventLogger: Queue ${operation} - ${sequenceName} (queue: ${queueLength})`
       );
     }
@@ -408,7 +408,7 @@ export class EventLogger {
    */
   updateConfig(newConfig: Partial<LoggingConfig>): void {
     this.config = { ...this.config, ...newConfig };
-    console.log("🎼 EventLogger: Configuration updated:", this.config);
+    (globalThis as any).__MC_LOG("🎼 EventLogger: Configuration updated:", this.config);
   }
 
   /**
@@ -427,7 +427,7 @@ export class EventLogger {
       this.eventSubscriptions.forEach((unsubscribe) => unsubscribe());
       this.eventSubscriptions = [];
       this.beatLoggingInitialized = false;
-      console.log("🧹 EventLogger: Event subscriptions cleaned up");
+      (globalThis as any).__MC_LOG("🧹 EventLogger: Event subscriptions cleaned up");
     }
   }
 

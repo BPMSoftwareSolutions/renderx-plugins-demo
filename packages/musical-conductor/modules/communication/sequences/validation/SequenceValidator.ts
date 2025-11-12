@@ -58,7 +58,7 @@ export class SequenceValidator {
 
       return hash.toString(36); // Convert to base36 for shorter string
     } catch (error) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "🔍 SequenceValidator: Failed to generate hash, using fallback:",
         error
       );
@@ -122,13 +122,13 @@ export class SequenceValidator {
         const result =
           this.duplicationDetector.isDuplicateSequenceRequest(sequenceHash);
 
-        console.log(
+        (globalThis as any).__MC_LOG(
           `🎼 SequenceValidator: ElementLibrary Display duplicate check - ${result.reason}`
         );
 
         // Always allow the first ElementLibrary Display sequence to execute
         // This ensures the display sequence can run at least once
-        console.log(
+        (globalThis as any).__MC_LOG(
           "🎼 SequenceValidator: Allowing ElementLibrary Display sequence to execute (special handling)"
         );
 
@@ -288,7 +288,7 @@ export class SequenceValidator {
    * Reset validation state
    */
   reset(): void {
-    console.log("🧹 SequenceValidator: Validation state reset");
+    (globalThis as any).__MC_LOG("🧹 SequenceValidator: Validation state reset");
   }
 
   /**

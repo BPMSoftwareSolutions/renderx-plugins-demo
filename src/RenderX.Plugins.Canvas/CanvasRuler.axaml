@@ -39,7 +39,7 @@
                     <Style Selector="Border#PositionIndicator">
                         <Setter Property="Transitions">
                             <Transitions>
-                                <DoubleTransition Property="Margin" Duration="0:0:0.05"/>
+                                <ThicknessTransition Property="Margin" Duration="0:0:0.05"/>
                             </Transitions>
                         </Setter>
                     </Style>

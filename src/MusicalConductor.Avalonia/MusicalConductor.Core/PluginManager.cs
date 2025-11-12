@@ -16,6 +16,7 @@ public class PluginManager : IPluginManager
     public PluginManager(ILogger<PluginManager> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _logger.LogInformation("🧩 PluginManager: Initialized");
     }
 
     public async Task Register(IPlugin plugin)
@@ -27,19 +28,21 @@ public class PluginManager : IPluginManager
         if (string.IsNullOrEmpty(metadata.Id))
             throw new ArgumentException("Plugin ID cannot be empty", nameof(plugin));
 
+        _logger.LogDebug("🧩 PluginManager: Validating manifest for plugin {PluginId}", metadata.Id);
+
         _lock.EnterWriteLock();
         try
         {
             if (_plugins.ContainsKey(metadata.Id))
             {
-                _logger.LogWarning("Plugin already registered: {PluginId}", metadata.Id);
+                _logger.LogWarning("⚠️ PluginManager: Plugin already registered: {PluginId}", metadata.Id);
                 return;
             }
 
             _plugins[metadata.Id] = plugin;
             _handlers[metadata.Id] = plugin.GetHandlers();
 
-            _logger.LogInformation("Plugin registered: {PluginId} v{Version}", metadata.Id, metadata.Version);
+            _logger.LogInformation("🧩 PluginManager: Plugin registered: {PluginId} v{Version}", metadata.Id, metadata.Version);
         }
         finally
         {
@@ -49,12 +52,13 @@ public class PluginManager : IPluginManager
         // Initialize plugin
         try
         {
+            _logger.LogDebug("🧩 PluginManager: Starting lifecycle for plugin {PluginId}", metadata.Id);
             await plugin.Initialize(null!); // TODO: Pass conductor instance
-            _logger.LogInformation("Plugin initialized: {PluginId}", metadata.Id);
+            _logger.LogInformation("🧩 PluginManager: Plugin lifecycle started: {PluginId}", metadata.Id);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error initializing plugin: {PluginId}", metadata.Id);
+            _logger.LogError(ex, "❌ PluginManager: Error initializing plugin: {PluginId} (Reason={Reason})", metadata.Id, ex.Message);
             throw;
         }
     }
@@ -66,6 +70,8 @@ public class PluginManager : IPluginManager
 
         IPlugin? plugin = null;
 
+        _logger.LogDebug("🧩 PluginManager: Stopping lifecycle for plugin {PluginId}", pluginId);
+
         _lock.EnterWriteLock();
         try
         {
@@ -74,7 +80,7 @@ public class PluginManager : IPluginManager
                 plugin = p;
                 _plugins.Remove(pluginId);
                 _handlers.Remove(pluginId);
-                _logger.LogInformation("Plugin unregistered: {PluginId}", pluginId);
+                _logger.LogInformation("🧩 PluginManager: Plugin deregistered: {PluginId}", pluginId);
             }
         }
         finally
@@ -87,11 +93,11 @@ public class PluginManager : IPluginManager
             try
             {
                 await plugin.Cleanup();
-                _logger.LogInformation("Plugin cleaned up: {PluginId}", pluginId);
+                _logger.LogInformation("🧩 PluginManager: Plugin lifecycle stopped: {PluginId}", pluginId);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error cleaning up plugin: {PluginId}", pluginId);
+                _logger.LogError(ex, "❌ PluginManager: Error stopping plugin: {PluginId} (Reason={Reason})", pluginId, ex.Message);
             }
         }
     }
@@ -133,7 +139,63 @@ public class PluginManager : IPluginManager
         _lock.EnterReadLock();
         try
         {
-            return _plugins.Values.ToList();
+            var plugins = _plugins.Values.ToList();
+            _logger.LogDebug("🧩 PluginManager: Retrieved {PluginCount} registered plugins", plugins.Count);
+
+            if (_logger.IsEnabled(LogLevel.Trace))
+            {
+                var pluginNames = string.Join(", ", plugins.Select(p => p.Id));
+                _logger.LogTrace("🧩 PluginManager: Plugin details - Names: {PluginNames}", pluginNames);
+            }
+
+            return plugins;
+        }
+        finally
+        {
+            _lock.ExitReadLock();
+        }
+    }
+
+    /// <summary>
+    /// Get a specific plugin by ID
+    /// </summary>
+    public IPlugin? Get(string pluginId)
+    {
+        if (string.IsNullOrEmpty(pluginId))
+            throw new ArgumentNullException(nameof(pluginId));
+
+        _lock.EnterReadLock();
+        try
+        {
+            if (_plugins.TryGetValue(pluginId, out var plugin))
+            {
+                _logger.LogDebug("🧩 PluginManager: Retrieved plugin {PluginId}", pluginId);
+                return plugin;
+            }
+
+            _logger.LogWarning("⚠️ PluginManager: Plugin not found: {PluginId}", pluginId);
+            return null;
+        }
+        finally
+        {
+            _lock.ExitReadLock();
+        }
+    }
+
+    /// <summary>
+    /// Check if a plugin is registered
+    /// </summary>
+    public bool IsRegistered(string pluginId)
+    {
+        if (string.IsNullOrEmpty(pluginId))
+            throw new ArgumentNullException(nameof(pluginId));
+
+        _lock.EnterReadLock();
+        try
+        {
+            var isRegistered = _plugins.ContainsKey(pluginId);
+            _logger.LogDebug("🧩 PluginManager: Plugin {PluginId} registration status: {IsRegistered}", pluginId, isRegistered);
+            return isRegistered;
         }
         finally
         {

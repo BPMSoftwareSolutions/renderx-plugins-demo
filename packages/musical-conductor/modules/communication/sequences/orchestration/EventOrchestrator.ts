@@ -65,7 +65,7 @@ export class EventOrchestrator {
 
       // Log successful emission if debug mode is enabled
       if (this.debugMode) {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `🎼 EventOrchestrator: Emitted ${eventType} to ${subscriberCount} subscribers`
         );
       }
@@ -76,7 +76,7 @@ export class EventOrchestrator {
         subscriberCount,
       };
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🎼 EventOrchestrator: Failed to emit event ${eventType}:`,
         error
       );
@@ -102,7 +102,7 @@ export class EventOrchestrator {
       this.eventBus.emit(eventType, data);
 
       if (this.debugMode) {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `🎼 EventOrchestrator: Emitted simple event ${eventType} to ${subscriberCount} subscribers`
         );
       }
@@ -113,7 +113,7 @@ export class EventOrchestrator {
         subscriberCount,
       };
     } catch (error) {
-      console.error(
+      (globalThis as any).__MC_ERROR(
         `🎼 EventOrchestrator: Failed to emit simple event ${eventType}:`,
         error
       );
@@ -165,7 +165,7 @@ export class EventOrchestrator {
     // Special debugging for sequence events
     if (eventType.includes("sequence")) {
       if (this.debugMode) {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `🔍 DEBUG: EventOrchestrator emitting sequence event: ${eventType}`,
           {
             sequenceName: contextualEventData.context.sequenceName,
@@ -179,7 +179,7 @@ export class EventOrchestrator {
     // Special debugging for beat events
     if (eventType.includes("beat")) {
       if (this.debugMode) {
-        console.log(
+        (globalThis as any).__MC_LOG(
           `🔍 DEBUG: EventOrchestrator emitting beat event: ${eventType}`,
           {
             beat: contextualEventData.metadata.beat,
@@ -215,7 +215,7 @@ export class EventOrchestrator {
    */
   setDebugMode(enabled: boolean): void {
     this.debugMode = enabled;
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 EventOrchestrator: Debug mode ${enabled ? "enabled" : "disabled"}`
     );
   }
@@ -252,7 +252,7 @@ export class EventOrchestrator {
 
       // Stop on first failure if desired
       if (!result.success) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🎼 EventOrchestrator: Stopping multiple event emission due to failure: ${result.error}`
         );
         break;
@@ -283,7 +283,7 @@ export class EventOrchestrator {
 
       if (lastResult.success) {
         if (attempt > 1) {
-          console.log(
+          (globalThis as any).__MC_LOG(
             `🎼 EventOrchestrator: Event ${eventType} succeeded on attempt ${attempt}`
           );
         }
@@ -291,7 +291,7 @@ export class EventOrchestrator {
       }
 
       if (attempt < maxRetries) {
-        console.warn(
+        (globalThis as any).__MC_WARN(
           `🎼 EventOrchestrator: Event ${eventType} failed on attempt ${attempt}, retrying...`
         );
         // Small delay before retry
@@ -299,7 +299,7 @@ export class EventOrchestrator {
       }
     }
 
-    console.error(
+    (globalThis as any).__MC_ERROR(
       `🎼 EventOrchestrator: Event ${eventType} failed after ${maxRetries} attempts`
     );
     return lastResult!;

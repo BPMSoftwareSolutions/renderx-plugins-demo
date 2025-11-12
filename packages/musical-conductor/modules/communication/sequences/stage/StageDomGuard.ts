@@ -145,7 +145,7 @@ export class StageDomGuard {
 
       this.installed = true;
     } catch (e) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "⚠️ StageDomGuard: install failed:",
         (e as any)?.message || e
       );
@@ -193,7 +193,7 @@ export class StageDomGuard {
     try {
       if (this.silenced > 0) return;
       // In tests/CI, keep output concise
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `⚠️ StageDomGuard: Direct DOM write detected via ${op}. Use ctx.stageCrew instead.`
       );
     } catch {}

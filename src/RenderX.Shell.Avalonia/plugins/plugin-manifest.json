@@ -35,15 +35,8 @@
     {
       "id": "ComponentsPlugin",
       "version": "1.0.0.0",
-      "ui": {
-        "slot": null,
-        "module": "RenderX.Plugins.Components.dll",
-        "export": "RenderX.Plugins.Components.ComponentsPlugin"
-      },
-      "runtime": {
-        "module": "RenderX.Plugins.Components.dll",
-        "export": "RenderX.Plugins.Components.ComponentsPlugin"
-      },
+      "ui": null,
+      "runtime": null,
       "sequences": null,
       "topics": null,
       "components": null
@@ -72,10 +65,7 @@
         "module": "RenderX.Plugins.Header.dll",
         "export": "RenderX.Plugins.Header.HeaderTitlePlugin"
       },
-      "runtime": {
-        "module": "RenderX.Plugins.Header.dll",
-        "export": "RenderX.Plugins.Header.HeaderTitlePlugin"
-      },
+      "runtime": null,
       "sequences": null,
       "topics": null,
       "components": null
@@ -88,10 +78,7 @@
         "module": "RenderX.Plugins.Header.dll",
         "export": "RenderX.Plugins.Header.HeaderControlsPlugin"
       },
-      "runtime": {
-        "module": "RenderX.Plugins.Header.dll",
-        "export": "RenderX.Plugins.Header.HeaderControlsPlugin"
-      },
+      "runtime": null,
       "sequences": null,
       "topics": null,
       "components": null
@@ -104,10 +91,7 @@
         "module": "RenderX.Plugins.Header.dll",
         "export": "RenderX.Plugins.Header.HeaderThemePlugin"
       },
-      "runtime": {
-        "module": "RenderX.Plugins.Header.dll",
-        "export": "RenderX.Plugins.Header.HeaderThemePlugin"
-      },
+      "runtime": null,
       "sequences": null,
       "topics": null,
       "components": null
@@ -120,10 +104,7 @@
         "module": "RenderX.Plugins.Library.dll",
         "export": "RenderX.Plugins.Library.LibraryPlugin"
       },
-      "runtime": {
-        "module": "RenderX.Plugins.Library.dll",
-        "export": "RenderX.Plugins.Library.LibraryPlugin"
-      },
+      "runtime": null,
       "sequences": null,
       "topics": null,
       "components": null

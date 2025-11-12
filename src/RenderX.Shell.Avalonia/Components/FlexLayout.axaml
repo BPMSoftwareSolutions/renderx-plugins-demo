@@ -1,16 +1,16 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Shell.Avalonia.Components.FlexLayout"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <ScrollViewer>
         <Border Padding="24">
             <StackPanel Spacing="24">
                 <!-- Horizontal Layout -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Horizontal Layout" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Horizontal Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
                         <StackPanel Orientation="Horizontal" Spacing="12">
-                            <Border Background="#007ACC" Width="60" Height="60" CornerRadius="4" />
+                            <Border Background="{DynamicResource Color.Accent.Primary}" Width="60" Height="60" CornerRadius="4" />
                             <Border Background="#0098FF" Width="60" Height="60" CornerRadius="4" />
                             <Border Background="#005A9E" Width="60" Height="60" CornerRadius="4" />
                         </StackPanel>
@@ -19,19 +19,19 @@
                 
                 <!-- Vertical Layout -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Vertical Layout" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Vertical Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
                         <StackPanel Orientation="Vertical" Spacing="12">
-                            <Border Background="#10B981" Height="40" CornerRadius="4" />
+                            <Border Background="{DynamicResource Color.Success}" Height="40" CornerRadius="4" />
                             <Border Background="#FFA726" Height="40" CornerRadius="4" />
-                            <Border Background="#EF5350" Height="40" CornerRadius="4" />
+                            <Border Background="{DynamicResource Color.Error}" Height="40" CornerRadius="4" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
                 
                 <!-- Grid Layout -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Grid Layout" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Grid Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
                         <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
                             <Border Grid.Column="0" Grid.Row="0" Background="#9C27B0" CornerRadius="4" Margin="4" />
@@ -46,7 +46,7 @@
                 
                 <!-- Wrap Layout -->
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Wrap Layout" FontSize="18" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock Text="Wrap Layout" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                     <Border Background="#F9FAFB" CornerRadius="4" Padding="12">
                         <WrapPanel>
                             <Border Background="#FF6B6B" Width="80" Height="80" CornerRadius="4" Margin="4" />

@@ -5,8 +5,8 @@
     <Button x:Name="ThemeButton"
             Click="OnThemeButtonClick"
             Padding="12,6"
-            Background="#6C757D"
-            Foreground="White"
+            Background="{DynamicResource Color.Accent.Primary}"
+            Foreground="{DynamicResource Color.Text.Inverse}"
             VerticalAlignment="Center"
             ToolTip.Tip="Toggle Theme" />
 </UserControl>

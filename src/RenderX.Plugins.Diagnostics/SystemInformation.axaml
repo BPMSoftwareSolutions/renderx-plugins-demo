@@ -1,16 +1,16 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Diagnostics.SystemInformation"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Border BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="12">
             <TextBlock Text="System Information"
                        FontSize="12"
                        FontWeight="Bold"
-                       Foreground="#333" />
+                       Foreground="{DynamicResource Color.Border.Primary}" />
 
             <!-- OS -->
             <StackPanel Spacing="4">
@@ -21,7 +21,7 @@
                 <TextBlock x:Name="OSText"
                            Text="Unknown"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Runtime -->
@@ -33,7 +33,7 @@
                 <TextBlock x:Name="RuntimeText"
                            Text="Unknown"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Processor -->
@@ -45,7 +45,7 @@
                 <TextBlock x:Name="ProcessorText"
                            Text="Unknown"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Total Memory -->
@@ -57,7 +57,7 @@
                 <TextBlock x:Name="MemoryText"
                            Text="Unknown"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
 
             <!-- Application Version -->
@@ -69,7 +69,7 @@
                 <TextBlock x:Name="VersionText"
                            Text="1.0.0"
                            FontSize="11"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
             </StackPanel>
         </StackPanel>
     </Border>

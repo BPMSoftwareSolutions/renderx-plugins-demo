@@ -8,8 +8,8 @@
     <!-- Library tag -->
     
     <Border Classes="rx-control librarytag"
-            Background="{StaticResource rx-bg-primary}"
-            BorderBrush="{StaticResource rx-border-primary}"
+            Background="{DynamicResource Color.Background.Primary}"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             BorderThickness="1"
             CornerRadius="4"
             Padding="{StaticResource spacing-4}">
@@ -18,7 +18,7 @@
             <!-- Header -->
             <TextBlock Text="LibraryTag"
                        Classes="text-base font-semibold"
-                       Foreground="{StaticResource rx-text-primary}" />
+                       Foreground="{DynamicResource Color.Text.Primary}" />
             
             <!-- Content -->
             <ContentPresenter Content="{Binding}" x:DataType="x:Object" />
@@ -26,7 +26,7 @@
             <!-- Status -->
             <TextBlock Text="Ready"
                        Classes="text-sm"
-                       Foreground="{StaticResource rx-text-muted}"
+                       Foreground="{DynamicResource Color.Text.Tertiary}"
                        Opacity="0.7" />
         </StackPanel>
     </Border>

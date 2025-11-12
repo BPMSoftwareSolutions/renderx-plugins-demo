@@ -2,28 +2,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Diagnostics.PluginLoadingStats"
              Background="Transparent">
-    <Border Background="#F9F9F9"
+    <Border Background="{DynamicResource Color.Background.Secondary}"
             BorderThickness="1"
-            BorderBrush="#E0E0E0"
+            BorderBrush="{DynamicResource Color.Border.Primary}"
             CornerRadius="4"
             Padding="12">
         <StackPanel Spacing="8">
             <TextBlock Text="Loading Statistics"
                        FontSize="12"
                        FontWeight="Bold"
-                       Foreground="#333" />
+                       Foreground="{DynamicResource Color.Border.Primary}" />
             
             <Grid ColumnDefinitions="*,*,*,*">
                 <!-- Success -->
                 <StackPanel Grid.Column="0" Spacing="4">
-                    <TextBlock Text="✓ Success" FontSize="10" Foreground="#10b981" FontWeight="Bold" />
-                    <TextBlock x:Name="SuccessCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="#10b981" />
+                    <TextBlock Text="✓ Success" FontSize="10" Foreground="{DynamicResource Color.Success}" FontWeight="Bold" />
+                    <TextBlock x:Name="SuccessCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Success}" />
                 </StackPanel>
                 
                 <!-- Failed -->
                 <StackPanel Grid.Column="1" Spacing="4">
-                    <TextBlock Text="✗ Failed" FontSize="10" Foreground="#EF5350" FontWeight="Bold" />
-                    <TextBlock x:Name="FailedCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="#EF5350" />
+                    <TextBlock Text="✗ Failed" FontSize="10" Foreground="{DynamicResource Color.Error}" FontWeight="Bold" />
+                    <TextBlock x:Name="FailedCount" Text="0" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Error}" />
                 </StackPanel>
                 
                 <!-- Pending -->
@@ -35,7 +35,7 @@
                 <!-- Total Time -->
                 <StackPanel Grid.Column="3" Spacing="4">
                     <TextBlock Text="⏱ Time" FontSize="10" Foreground="#666" FontWeight="Bold" />
-                    <TextBlock x:Name="TotalTime" Text="0ms" FontSize="14" FontWeight="Bold" Foreground="#333" />
+                    <TextBlock x:Name="TotalTime" Text="0ms" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource Color.Border.Primary}" />
                 </StackPanel>
             </Grid>
 
@@ -43,8 +43,8 @@
             <ProgressBar x:Name="LoadingProgress"
                          IsIndeterminate="False"
                          Height="4"
-                         Background="#E0E0E0"
-                         Foreground="#007ACC" />
+                         Background="{DynamicResource Color.Border.Primary}"
+                         Foreground="{DynamicResource Color.Accent.Primary}" />
         </StackPanel>
     </Border>
 </UserControl>

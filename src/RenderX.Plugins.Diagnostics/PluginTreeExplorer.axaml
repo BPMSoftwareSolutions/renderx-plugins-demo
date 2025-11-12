@@ -1,25 +1,25 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Diagnostics.PluginTreeExplorer"
-             Background="White">
+             Background="{DynamicResource Color.Background.Primary}">
     <Grid RowDefinitions="Auto,*">
         <!-- Header -->
         <Border Grid.Row="0"
-                Background="#F5F5F5"
+                Background="{DynamicResource Color.Background.Tertiary}"
                 BorderThickness="0,0,0,1"
-                BorderBrush="#E0E0E0"
+                BorderBrush="{DynamicResource Color.Border.Primary}"
                 Padding="12">
             <StackPanel Spacing="8">
                 <TextBlock Text="Plugin Tree"
                            FontSize="14"
                            FontWeight="Bold"
-                           Foreground="#333" />
+                           Foreground="{DynamicResource Color.Border.Primary}" />
                 <TextBox x:Name="FilterBox"
                          Watermark="Filter plugins..."
                          FontSize="11"
                          Padding="6,4"
                          BorderThickness="1"
-                         BorderBrush="#D0D0D0" />
+                         BorderBrush="{DynamicResource Color.Border.Secondary}" />
             </StackPanel>
         </Border>
 
@@ -27,7 +27,7 @@
         <ScrollViewer Grid.Row="1">
             <TreeView x:Name="PluginTree"
                       Padding="12"
-                      Background="White">
+                      Background="{DynamicResource Color.Background.Primary}">
                 <TreeView.ItemTemplate>
                     <TreeDataTemplate ItemsSource="{Binding Children}">
                         <Border Background="Transparent" Padding="4">
@@ -39,7 +39,7 @@
                                     <TextBlock Text="{Binding Name}"
                                                FontSize="11"
                                                FontWeight="Bold"
-                                               Foreground="#333" />
+                                               Foreground="{DynamicResource Color.Border.Primary}" />
                                     <TextBlock Text="{Binding Status}"
                                                FontSize="9"
                                                Foreground="#999" />

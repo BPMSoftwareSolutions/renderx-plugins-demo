@@ -62,10 +62,35 @@ public partial class GridOverlay : UserControl
     private void DrawGrid(Avalonia.Controls.Canvas canvas)
     {
         canvas.Children.Clear();
-        var pen = new Pen(new SolidColorBrush(Color.Parse("#E0E0E0")), 1);
 
-        // Grid drawing would be implemented here
-        // This is a simplified version - actual implementation would draw lines
+        // Get canvas dimensions
+        var width = canvas.Bounds.Width > 0 ? canvas.Bounds.Width : 2000;
+        var height = canvas.Bounds.Height > 0 ? canvas.Bounds.Height : 2000;
+
+        // Create grid lines using dots (similar to web's radial-gradient pattern)
+        var dotColor = new SolidColorBrush(Color.Parse("#CCCCCC"));
+        var dotSize = 2;
+        var opacity = 0.5;
+
+        // Draw grid dots at regular intervals
+        for (double x = 0; x < width; x += GridSize)
+        {
+            for (double y = 0; y < height; y += GridSize)
+            {
+                var dot = new Avalonia.Controls.Shapes.Ellipse
+                {
+                    Width = dotSize,
+                    Height = dotSize,
+                    Fill = dotColor,
+                    Opacity = opacity
+                };
+
+                Avalonia.Controls.Canvas.SetLeft(dot, x - dotSize / 2);
+                Avalonia.Controls.Canvas.SetTop(dot, y - dotSize / 2);
+
+                canvas.Children.Add(dot);
+            }
+        }
     }
 }
 

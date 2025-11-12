@@ -2,26 +2,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Header.HeaderControlsPlugin"
              Background="Transparent">
+
+    <UserControl.Styles>
+        <Style Selector="Button.header-button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.header-button:pointerover">
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
     <Border Padding="16,0">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
-            <Button x:Name="SaveButton"
+            <Button Classes="header-button"
+                    x:Name="SaveButton"
                     Content="Save"
                     Click="OnSaveClick"
                     Padding="12,6"
-                    Background="#007ACC"
-                    Foreground="White" />
-            <Button x:Name="ExportButton"
+                    Background="{DynamicResource Color.Accent.Primary}"
+                    Foreground="{DynamicResource Color.Background.Primary}" />
+            <Button Classes="header-button"
+                    x:Name="ExportButton"
                     Content="Export"
                     Click="OnExportClick"
                     Padding="12,6"
                     Background="#6C757D"
-                    Foreground="White" />
-            <Button x:Name="ImportButton"
+                    Foreground="{DynamicResource Color.Background.Primary}" />
+            <Button Classes="header-button"
+                    x:Name="ImportButton"
                     Content="Import"
                     Click="OnImportClick"
                     Padding="12,6"
                     Background="#6C757D"
-                    Foreground="White" />
+                    Foreground="{DynamicResource Color.Background.Primary}" />
         </StackPanel>
     </Border>
 </UserControl>

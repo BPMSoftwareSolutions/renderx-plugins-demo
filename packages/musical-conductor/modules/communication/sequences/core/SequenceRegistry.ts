@@ -48,7 +48,7 @@ export class SequenceRegistry {
     this.validateSequence(sequence);
 
     this.sequences.set(sequence.id, sequence);
-    console.log(
+    (globalThis as any).__MC_LOG(
       `🎼 SequenceRegistry: Registered sequence "${sequence.name}" (id: ${sequence.id})`
     );
 
@@ -66,7 +66,7 @@ export class SequenceRegistry {
     } else {
       // Fallback to direct eventBus.emit() for backward compatibility
       // This should only happen during initialization before EventSubscriptionManager is set
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "🎼 SequenceRegistry: EventSubscriptionManager not set, using direct eventBus.emit()"
       );
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_REGISTERED, {
@@ -89,7 +89,7 @@ export class SequenceRegistry {
     const sequence = this.sequences.get(sequenceId);
     if (sequence) {
       this.sequences.delete(sequenceId);
-      console.log(
+      (globalThis as any).__MC_LOG(
         `🎼 SequenceRegistry: Unregistered sequence "${sequence.name}" (id: ${sequenceId})`
       );
 
@@ -105,7 +105,7 @@ export class SequenceRegistry {
         );
       } else {
         // Fallback to direct eventBus.emit() for backward compatibility
-        console.warn(
+        (globalThis as any).__MC_WARN(
           "🎼 SequenceRegistry: EventSubscriptionManager not set, using direct eventBus.emit()"
         );
         this.eventBus.emit(
@@ -117,7 +117,7 @@ export class SequenceRegistry {
         );
       }
     } else {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         `🎼 SequenceRegistry: Sequence with ID "${sequenceId}" not found for unregistration`
       );
     }
@@ -194,7 +194,7 @@ export class SequenceRegistry {
     const sequences = this.getAll();
     this.sequences.clear();
 
-    console.log(`🎼 SequenceRegistry: Cleared ${sequences.length} sequences`);
+    (globalThis as any).__MC_LOG(`🎼 SequenceRegistry: Cleared ${sequences.length} sequences`);
 
     // Emit individual unregistration events for each cleared sequence using EventSubscriptionManager for SPA compliance
     sequences.forEach((sequence) => {
@@ -209,7 +209,7 @@ export class SequenceRegistry {
         );
       } else {
         // Fallback to direct eventBus.emit() for backward compatibility
-        console.warn(
+        (globalThis as any).__MC_WARN(
           "🎼 SequenceRegistry: EventSubscriptionManager not set, using direct eventBus.emit()"
         );
         this.eventBus.emit(
@@ -314,7 +314,7 @@ export class SequenceRegistry {
       });
     });
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `✅ SequenceRegistry: Sequence "${sequence.name}" validation passed`
     );
   }

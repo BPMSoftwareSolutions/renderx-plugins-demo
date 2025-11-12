@@ -1,43 +1,121 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RenderX.Plugins.Library.LibraryPlugin"
-             Background="#F5F5F5">
+             Background="{DynamicResource Color.Background.Tertiary}">
     <DockPanel>
         <!-- Header -->
-        <TextBlock DockPanel.Dock="Top" 
-                   Text="Component Library" 
-                   FontSize="14" 
-                   FontWeight="Bold"
-                   Padding="12,8"
-                   Background="#E8E8E8"
-                   Foreground="#333333" />
+        <Border DockPanel.Dock="Top"
+                Background="{DynamicResource Color.Background.Hover}"
+                Padding="12">
+            <StackPanel Spacing="8">
+                <!-- Header with Title and AI Toggle -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <StackPanel Grid.Column="0" Spacing="4">
+                        <!-- Title matching web: 🧩 Component Library -->
+                        <TextBlock Text="🧩 Component Library"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource Color.Text.Primary}" />
+                        <!-- Subtitle matching web: Drag components to the canvas -->
+                        <TextBlock Text="Drag components to the canvas"
+                                   FontSize="11"
+                                   Foreground="{DynamicResource Color.Text.Secondary}" />
+                    </StackPanel>
+                    <!-- AI Chat Toggle Button -->
+                    <Button Grid.Column="1"
+                            x:Name="AIToggleButton"
+                            Content="🤖 AI Chat"
+                            Classes="ai-toggle-button"
+                            FontSize="11"
+                            Padding="8,4"
+                            VerticalAlignment="Top"
+                            Click="OnAIChatToggle" />
+                </Grid>
+
+                <!-- AI Availability Hint -->
+                <Border x:Name="AIAvailabilityHint"
+                        Background="#fef3c7"
+                        BorderThickness="1"
+                        BorderBrush="#fcd34d"
+                        CornerRadius="4"
+                        Padding="8"
+                        IsVisible="False">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="💡"
+                                   FontSize="12"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Text="AI is not configured. Configure API key to enable AI component generation."
+                                   FontSize="10"
+                                   Foreground="#92400e"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
         
-        <!-- Components List -->
+        <!-- Components Grid (2-column grid matching web) -->
         <ScrollViewer DockPanel.Dock="Top">
-            <ItemsControl x:Name="ComponentsItemsControl" Padding="8">
+            <ItemsControl x:Name="ComponentsItemsControl" Padding="12">
+                <!-- FIX: Add ItemsPanel with UniformGrid Columns="2" per analyzer recommendation -->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+                        <!-- FIX: Center content vertically and update styling per analyzer recommendation -->
                         <Border x:Name="ComponentBorder"
-                                Background="White"
-                                BorderBrush="#CCCCCC"
-                                BorderThickness="1"
-                                CornerRadius="4"
-                                Padding="12"
-                                Margin="0,4"
+                                Background="{DynamicResource Color.Background.Primary}"
+                                BorderBrush="{DynamicResource Color.Border.Primary}"
+                                BorderThickness="2"
+                                CornerRadius="12"
+                                Padding="16"
+                                Margin="6"
                                 PointerPressed="OnComponentPointerPressed"
                                 DoubleTapped="OnComponentDoubleClick"
                                 Cursor="Hand">
-                            <StackPanel Spacing="4">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3"/>
+                                </Transitions>
+                            </Border.Transitions>
+                            <Border.Styles>
+                                <Style Selector="Border:pointerover">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource Color.Accent.Primary}" />
+                                    <Setter Property="RenderTransform">
+                                        <TransformGroup>
+                                            <TranslateTransform Y="-2"/>
+                                        </TransformGroup>
+                                    </Setter>
+                                </Style>
+                            </Border.Styles>
+                            <!-- FIX: Center content vertically (icon on top, text below) -->
+                            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                                <!-- Icon centered on top -->
+                                <TextBlock Text="{Binding Icon}" 
+                                           FontSize="24"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,0,0,8" />
+                                <!-- Name centered -->
                                 <TextBlock Text="{Binding Name}" 
-                                           FontWeight="Bold" 
-                                           Foreground="#333333" />
-                                <TextBlock Text="{Binding Category}" 
-                                           FontSize="11" 
-                                           Foreground="#666666" />
-                                <TextBlock Text="{Binding Description}" 
-                                           FontSize="10" 
-                                           Foreground="#999999"
-                                           TextWrapping="Wrap" />
+                                           FontWeight="Medium" 
+                                           FontSize="12"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           Margin="0,0,0,4"
+                                           Foreground="{DynamicResource Color.Text.Primary}" />
+                                <!-- Description centered -->
+                                <TextBlock Text="{Binding Description}"
+                                           FontSize="10"
+                                           Foreground="#999"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           LineHeight="1.3" />
                             </StackPanel>
                         </Border>
                     </DataTemplate>

@@ -85,7 +85,7 @@ export class DataBaton {
 
     if (!hasChanges) {
       const indent = DataBaton.computeIndent(context.requestId);
-      console.log(
+      (globalThis as any).__MC_LOG(
         `${indent}${prefix}: No changes | seq=${
           context.sequenceName || "?"
         } beat=${context.beatNumber ?? "?"} event=${
@@ -111,7 +111,7 @@ export class DataBaton {
 
     const indent = DataBaton.computeIndent(context.requestId);
 
-    console.log(
+    (globalThis as any).__MC_LOG(
       `${indent}${prefix}: ${details.join(" ")} | seq=${
         context.sequenceName || "?"
       } beat=${context.beatNumber ?? "?"} event=${

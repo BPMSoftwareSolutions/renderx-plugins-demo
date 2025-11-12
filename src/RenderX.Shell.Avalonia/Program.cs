@@ -178,6 +178,7 @@ public partial class App : Application
                         retainedFileCountLimit: 7,
                         shared: true,
                         flushToDiskInterval: TimeSpan.FromSeconds(1))
+                    .WriteTo.Sink(new RenderX.HostSDK.Avalonia.Services.ActivityLogSink())
                     .CreateLogger();
 
                 services.AddLogging(builder =>

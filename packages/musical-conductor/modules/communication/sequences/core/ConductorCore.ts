@@ -68,8 +68,20 @@ export class ConductorCore {
     try {
       // Initialize logger only in development environments (safe across TS/Jest)
       const isDev = isDevEnv();
+      // Allow override via global/env flag MC_LOG_TS to force timestamps outside dev
+      const forceTs = (() => {
+        try {
+          const g: any = (globalThis as any);
+          if (g && (g.MC_LOG_TS === true || g.MC_LOG_TS === '1')) return true;
+        } catch {}
+        try {
+          const env = (typeof process !== 'undefined' && (process as any).env) || {};
+          if (env.MC_LOG_TS === '1' || env.MC_LOG_TS === 'true') return true;
+        } catch {}
+        return false;
+      })();
 
-      if (isDev) {
+      if (isDev || forceTs) {
         const { ConductorLogger } = await import(
           "../monitoring/ConductorLogger.js"
         );
@@ -77,13 +89,13 @@ export class ConductorCore {
         logger.init();
       }
     } catch (e) {
-      console.warn(
+      (globalThis as any).__MC_WARN(
         "⚠️ ConductorLogger initialization skipped:",
         (e as Error)?.message || e
       );
     }
 
-    console.log("🎼 ConductorCore: Initialized successfully");
+    (globalThis as any).__MC_LOG("🎼 ConductorCore: Initialized successfully");
   }
 
   /**
@@ -91,11 +103,11 @@ export class ConductorCore {
    */
   private setupBeatExecutionLogging(): void {
     if (this.beatLoggingInitialized) {
-      console.log("🎼 Beat execution logging already initialized, skipping...");
+      (globalThis as any).__MC_LOG("🎼 Beat execution logging already initialized, skipping...");
       return;
     }
 
-    console.log("🎼 ConductorCore: Setting up beat execution logging...");
+    (globalThis as any).__MC_LOG("🎼 ConductorCore: Setting up beat execution logging...");
 
     // Subscribe to beat started events for hierarchical logging
     const beatStartedUnsubscribe = this.eventBus.subscribe(
@@ -122,7 +134,7 @@ export class ConductorCore {
       "musical-conductor:beat:error",
       (data: any) => {
         if (!this.shouldEnableHierarchicalLogging()) {
-          console.error("🎼 Beat execution error:", data);
+          (globalThis as any).__MC_ERROR("🎼 Beat execution error:", data);
         }
       }
     );
@@ -135,7 +147,7 @@ export class ConductorCore {
     );
 
     this.beatLoggingInitialized = true;
-    console.log("✅ Beat execution logging initialized");
+    (globalThis as any).__MC_LOG("✅ Beat execution logging initialized");
   }
 
   /**
@@ -144,15 +156,15 @@ export class ConductorCore {
   private logBeatStartedHierarchical(data: any): void {
     const { sequenceName, movementName, beatNumber, eventType, timing } = data;
 
-    console.log(`🎼 ┌─ Beat ${beatNumber} Started`);
-    console.log(`🎼 │  Sequence: ${sequenceName}`);
-    console.log(`🎼 │  Movement: ${movementName}`);
-    console.log(`🎼 │  Event: ${eventType}`);
-    console.log(`🎼 │  Timing: ${timing}`);
+  (globalThis as any).__MC_LOG(`🎼 ┌─ Beat ${beatNumber} Started`);
+  (globalThis as any).__MC_LOG(`🎼 │  Sequence: ${sequenceName}`);
+  (globalThis as any).__MC_LOG(`🎼 │  Movement: ${movementName}`);
+  (globalThis as any).__MC_LOG(`🎼 │  Event: ${eventType}`);
+  (globalThis as any).__MC_LOG(`🎼 │  Timing: ${timing}`);
 
     // Log the Data Baton - show payload contents at each beat
     if (data.payload) {
-      console.log(`🎽 │  Data Baton:`, data.payload);
+      (globalThis as any).__MC_LOG(`🎽 │  Data Baton:`, data.payload);
     }
   }
 
@@ -162,10 +174,10 @@ export class ConductorCore {
   private logBeatCompletedHierarchical(data: any): void {
     const { sequenceName, movementName, beatNumber, duration } = data;
 
-    console.log(`🎼 └─ Beat ${beatNumber} Completed`);
-    console.log(`🎼    Duration: ${duration}ms`);
-    console.log(`🎼    Sequence: ${sequenceName}`);
-    console.log(`🎼    Movement: ${movementName}`);
+    (globalThis as any).__MC_LOG(`🎼 └─ Beat ${beatNumber} Completed`);
+    (globalThis as any).__MC_LOG(`🎼    Duration: ${duration}ms`);
+    (globalThis as any).__MC_LOG(`🎼    Sequence: ${sequenceName}`);
+    (globalThis as any).__MC_LOG(`🎼    Movement: ${movementName}`);
   }
 
   /**
@@ -181,21 +193,21 @@ export class ConductorCore {
    * Cleanup resources and event subscriptions
    */
   public cleanup(): void {
-    console.log("🎼 ConductorCore: Cleaning up...");
+  (globalThis as any).__MC_LOG("🎼 ConductorCore: Cleaning up...");
 
     // Unsubscribe from all events
     this.eventSubscriptions.forEach((unsubscribe) => {
       try {
         unsubscribe();
       } catch (error) {
-        console.warn("🎼 Error during event unsubscription:", error);
+        (globalThis as any).__MC_WARN("🎼 Error during event unsubscription:", error);
       }
     });
 
     this.eventSubscriptions = [];
     this.beatLoggingInitialized = false;
 
-    console.log("✅ ConductorCore: Cleanup completed");
+    (globalThis as any).__MC_LOG("✅ ConductorCore: Cleanup completed");
   }
 
   /**

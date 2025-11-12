@@ -37,12 +37,12 @@ export class PluginManifestLoader {
   async loadManifest(manifestPath: string): Promise<PluginManifest> {
     // Check cache first
     if (this.manifestCache.has(manifestPath)) {
-      console.log(`📦 Loading manifest from cache: ${manifestPath}`);
+      (globalThis as any).__MC_LOG(`📦 Loading manifest from cache: ${manifestPath}`);
       return this.manifestCache.get(manifestPath)!;
     }
 
     try {
-      console.log(`🔄 Loading plugin manifest: ${manifestPath}`);
+      (globalThis as any).__MC_LOG(`🔄 Loading plugin manifest: ${manifestPath}`);
 
       // Node/Jest-friendly: if running in Node (no window), try local repo path first
       const isBrowser =
@@ -61,16 +61,16 @@ export class PluginManifestLoader {
             const manifestData = JSON.parse(jsonText);
             const validatedManifest = this.validateManifest(manifestData);
             this.manifestCache.set(manifestPath, validatedManifest);
-            console.log(
+            (globalThis as any).__MC_LOG(
               `✅ Successfully loaded manifest from local file: ${localPath}`
             );
-            console.log(
+            (globalThis as any).__MC_LOG(
               `📋 Found ${validatedManifest.plugins.length} plugins in manifest`
             );
             return validatedManifest;
           }
         } catch (nodeErr) {
-          console.warn(
+          (globalThis as any).__MC_WARN(
             "⚠️ Node local manifest load failed, falling back to fetch:",
             nodeErr
           );
@@ -94,18 +94,18 @@ export class PluginManifestLoader {
       // Cache the manifest
       this.manifestCache.set(manifestPath, validatedManifest);
 
-      console.log(`✅ Successfully loaded manifest: ${manifestPath}`);
-      console.log(
+      (globalThis as any).__MC_LOG(`✅ Successfully loaded manifest: ${manifestPath}`);
+      (globalThis as any).__MC_LOG(
         `📋 Found ${validatedManifest.plugins.length} plugins in manifest`
       );
 
       return validatedManifest;
     } catch (error) {
-      console.error(`❌ Failed to load manifest from ${manifestPath}:`, error);
+      (globalThis as any).__MC_ERROR(`❌ Failed to load manifest from ${manifestPath}:`, error);
 
       // Return fallback manifest
       const fallbackManifest = this.createFallbackManifest();
-      console.log("🔄 Using fallback manifest");
+      (globalThis as any).__MC_LOG("🔄 Using fallback manifest");
 
       return fallbackManifest;
     }
@@ -123,7 +123,7 @@ export class PluginManifestLoader {
 
     // Validate required properties
     if (!manifestData.version || typeof manifestData.version !== "string") {
-      console.warn("⚠️ Manifest missing version, using default");
+      (globalThis as any).__MC_WARN("⚠️ Manifest missing version, using default");
       manifestData.version = "1.0.0";
     }
 
@@ -139,13 +139,13 @@ export class PluginManifestLoader {
         const validatedPlugin = this.validatePluginEntry(plugin, index);
         validatedPlugins.push(validatedPlugin);
       } catch (error) {
-        console.error(`❌ Invalid plugin entry at index ${index}:`, error);
+        (globalThis as any).__MC_ERROR(`❌ Invalid plugin entry at index ${index}:`, error);
         // Skip invalid entries but continue processing
       }
     });
 
     if (validatedPlugins.length === 0) {
-      console.warn("⚠️ No valid plugins found in manifest");
+      (globalThis as any).__MC_WARN("⚠️ No valid plugins found in manifest");
     }
 
     return {
@@ -236,14 +236,14 @@ export class PluginManifestLoader {
     for (const path of manifestPaths) {
       try {
         const manifest = await this.loadManifest(path);
-        console.log(`✅ Successfully loaded manifest from: ${path}`);
+        (globalThis as any).__MC_LOG(`✅ Successfully loaded manifest from: ${path}`);
         return manifest;
       } catch {
-        console.warn(`⚠️ Failed to load manifest from ${path}, trying next...`);
+        (globalThis as any).__MC_WARN(`⚠️ Failed to load manifest from ${path}, trying next...`);
       }
     }
 
-    console.warn("⚠️ All manifest sources failed, using fallback");
+    (globalThis as any).__MC_WARN("⚠️ All manifest sources failed, using fallback");
     return this.createFallbackManifest();
   }
 
@@ -257,7 +257,7 @@ export class PluginManifestLoader {
       const manifestData = JSON.parse(manifestJson);
       return this.validateManifest(manifestData);
     } catch (error) {
-      console.error("❌ Failed to parse manifest JSON:", error);
+      (globalThis as any).__MC_ERROR("❌ Failed to parse manifest JSON:", error);
       throw new Error(
         `Invalid manifest JSON: ${
           error instanceof Error ? error.message : String(error)
@@ -333,7 +333,7 @@ export class PluginManifestLoader {
    */
   clearCache(): void {
     this.manifestCache.clear();
-    console.log("🧹 PluginManifestLoader: Cache cleared");
+    (globalThis as any).__MC_LOG("🧹 PluginManifestLoader: Cache cleared");
   }
 
   /**
