@@ -3,7 +3,11 @@
 import json
 import os
 
-data = json.load(open('self_graph.json'))
+# Paths relative to packages/ographx/
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ir_path = os.path.join(base_dir, '.ographx', 'self-observation', 'self_graph.json')
+
+data = json.load(open(ir_path))
 
 print('=' * 60)
 print('🧘 OgraphX Self-Graph Analysis')

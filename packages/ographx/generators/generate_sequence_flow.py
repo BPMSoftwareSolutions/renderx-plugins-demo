@@ -128,14 +128,24 @@ def generate_beat_timeline(sequences_path: str, output_path: str = None):
     return diagram
 
 if __name__ == '__main__':
+    import os
+
+    # Paths relative to packages/ographx/
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    seq_path = os.path.join(base_dir, '.ographx', 'sequences', 'self_sequences.json')
+    diag_dir = os.path.join(base_dir, '.ographx', 'visualization', 'diagrams')
+
+    # Ensure output directory exists
+    os.makedirs(diag_dir, exist_ok=True)
+
     print("=== Generating Detailed Sequence Flow Diagrams ===")
     print()
-    
-    flow_diagram = generate_sequence_flow_diagram('self_sequences.json', 'sequence_flow_diagram.md')
+
+    flow_diagram = generate_sequence_flow_diagram(seq_path, os.path.join(diag_dir, 'sequence_flow_diagram.md'))
     print()
-    
-    timeline = generate_beat_timeline('self_sequences.json', 'beat_timeline.md')
+
+    timeline = generate_beat_timeline(seq_path, os.path.join(diag_dir, 'beat_timeline.md'))
     print()
-    
+
     print("All flow diagrams generated!")
 

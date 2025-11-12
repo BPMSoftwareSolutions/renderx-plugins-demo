@@ -118,45 +118,29 @@ Unified observability across ecosystem
 
 ## 📁 Proposed Directory Structure
 
+### Source Code (packages/ographx/)
 ```
-packages/ographx/.ographx/
+packages/ographx/
 │
-├── 📂 core/                          # Core extraction & IR generation
+├── 📂 core/                          # Layer 1: Core extraction & IR generation
 │   ├── ographx_ts.py                 # TypeScript extractor
 │   ├── ographx_py.py                 # Python extractor
 │   └── README.md                     # Core documentation
 │
-├── 📂 self-observation/              # Self-graphing (SAS Layer 2)
-│   ├── self_graph.json               # OgraphX's self-description
-│   ├── generate_self_graph.sh        # Script to generate self_graph
-│   └── README.md                     # Self-observation guide
-│
-├── 📂 sequences/                     # Sequence compilation (SAS Layer 3)
+├── 📂 generators/                    # Layer 3-4: Sequence & Visualization generation
 │   ├── generate_self_sequences.py    # IR → Sequences converter
-│   ├── self_sequences.json           # Generated sequences
-│   └── README.md                     # Sequence documentation
-│
-├── 📂 visualization/                 # Visualization (SAS Layer 4)
-│   ├── diagrams/                     # Generated diagrams
-│   │   ├── summary_diagram.md
-│   │   ├── orchestration_diagram.md
-│   │   ├── call_graph_diagram.md
-│   │   ├── sequence_flow_diagram.md
-│   │   ├── beat_timeline.md
-│   │   ├── *.svg                     # SVG exports
-│   │   └── README.md
 │   ├── generate_orchestration_diagram.py
 │   ├── generate_sequence_flow.py
 │   ├── convert_to_svg.py
 │   └── README.md
 │
-├── 📂 analysis/                      # Analysis & telemetry (SAS Layer 5)
+├── 📂 analysis/                      # Layer 5: Analysis & telemetry
 │   ├── analyze_self_graph.py
 │   ├── show_sequences.py
 │   ├── show_rich_sequence.py
 │   └── README.md
 │
-├── 📂 inter-awareness/               # Inter-system awareness (SAS Layer 6)
+├── 📂 inter-awareness/               # Layer 6: Inter-system awareness
 │   ├── conductor_analyzer.py         # Analyze Musical Conductor
 │   ├── plugin_analyzer.py            # Analyze RenderX plugins
 │   ├── shell_analyzer.py             # Analyze desktop shell
@@ -173,10 +157,36 @@ packages/ographx/.ographx/
 │   │   └── ...
 │   └── README.md
 │
-└── 📂 scripts/                       # Utility scripts
-    ├── regenerate_all.sh             # Regenerate all artifacts
-    ├── watch_and_regenerate.sh       # Watch for changes
-    └── README.md
+├── 📂 scripts/                       # Utility scripts
+│   ├── regenerate_all.sh             # Regenerate all artifacts
+│   ├── watch_and_regenerate.sh       # Watch for changes
+│   └── README.md
+│
+└── README.md                         # Main entry point
+```
+
+### Auto-Generated Content (.ographx/)
+```
+packages/ographx/.ographx/
+│
+├── 📂 self-observation/              # Layer 2: Self-graphing (auto-generated)
+│   ├── self_graph.json               # OgraphX's self-description
+│   └── generate_self_graph.sh        # Script to generate self_graph
+│
+├── 📂 sequences/                     # Layer 3: Sequences (auto-generated)
+│   └── self_sequences.json           # Generated sequences
+│
+├── 📂 visualization/                 # Layer 4: Visualization (auto-generated)
+│   ├── diagrams/
+│   │   ├── summary_diagram.md
+│   │   ├── orchestration_diagram.md
+│   │   ├── call_graph_diagram.md
+│   │   ├── sequence_flow_diagram.md
+│   │   ├── beat_timeline.md
+│   │   └── *.svg                     # SVG exports
+│   └── README.md
+│
+└── .gitignore                        # Ignore auto-generated files
 ```
 
 ---

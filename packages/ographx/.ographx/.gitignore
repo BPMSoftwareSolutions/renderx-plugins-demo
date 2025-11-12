@@ -1,0 +1,45 @@
+# OgraphX Auto-Generated Content
+# This directory contains auto-generated artifacts that should never be version controlled
+# All files here are regenerable from source code in packages/ographx/
+
+# Self-Observation Layer (auto-generated IR)
+self-observation/self_graph.json
+
+# Sequences Layer (auto-generated sequences)
+sequences/self_sequences.json
+
+# Visualization Layer (auto-generated diagrams and SVG)
+visualization/diagrams/*.md
+visualization/diagrams/*.svg
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# Note: This .gitignore ensures that auto-generated files are never committed to git.
+# To regenerate all artifacts, run: python ../generators/generate_self_sequences.py
+

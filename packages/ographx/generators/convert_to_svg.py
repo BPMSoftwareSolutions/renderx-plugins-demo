@@ -131,9 +131,14 @@ def convert_diagram(md_file: str, output_file: Optional[str] = None, method: str
         print(f"❌ Unknown method: {method}")
         return False
 
-def convert_all_diagrams(method: str = 'auto') -> int:
-    """Convert all Mermaid diagrams in current directory."""
-    
+def convert_all_diagrams(method: str = 'auto', diag_dir: str = None) -> int:
+    """Convert all Mermaid diagrams in specified directory."""
+
+    if diag_dir is None:
+        # Default to .ographx/visualization/diagrams/
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        diag_dir = os.path.join(base_dir, '.ographx', 'visualization', 'diagrams')
+
     md_files = [
         'summary_diagram.md',
         'orchestration_diagram.md',
@@ -141,16 +146,17 @@ def convert_all_diagrams(method: str = 'auto') -> int:
         'sequence_flow_diagram.md',
         'beat_timeline.md'
     ]
-    
+
     success_count = 0
-    
+
     for md_file in md_files:
-        if os.path.exists(md_file):
-            if convert_diagram(md_file, method=method):
+        full_path = os.path.join(diag_dir, md_file)
+        if os.path.exists(full_path):
+            if convert_diagram(full_path, method=method):
                 success_count += 1
         else:
-            print(f"⚠️  File not found: {md_file}")
-    
+            print(f"⚠️  File not found: {full_path}")
+
     print()
     print(f"✅ Converted {success_count}/{len(md_files)} diagrams")
     return success_count
@@ -191,27 +197,32 @@ Examples:
     )
     
     args = parser.parse_args()
-    
+
+    # Determine diagram directory
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    diag_dir = os.path.join(base_dir, '.ographx', 'visualization', 'diagrams')
+
     if args.all or not args.diagram:
         # Convert all diagrams
-        convert_all_diagrams(method=args.method)
+        convert_all_diagrams(method=args.method, diag_dir=diag_dir)
     else:
         # Convert specific diagram
         diagram_name = args.diagram
-        
+
         # Add .md extension if not present
         if not diagram_name.endswith('.md'):
             diagram_name += '.md'
-        
-        if not os.path.exists(diagram_name):
-            print(f"❌ File not found: {diagram_name}")
+
+        full_path = os.path.join(diag_dir, diagram_name)
+        if not os.path.exists(full_path):
+            print(f"❌ File not found: {full_path}")
             sys.exit(1)
-        
+
         output_file = args.output
         if not output_file:
-            output_file = diagram_name.replace('.md', '.svg')
-        
-        if convert_diagram(diagram_name, output_file, method=args.method):
+            output_file = full_path.replace('.md', '.svg')
+
+        if convert_diagram(full_path, output_file, method=args.method):
             sys.exit(0)
         else:
             sys.exit(1)

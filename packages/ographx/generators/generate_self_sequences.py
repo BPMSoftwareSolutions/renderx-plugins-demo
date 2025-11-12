@@ -113,5 +113,10 @@ def generate_sequences(ir_path: str, out_path: str):
     print(f"[OK] Sequences written to {out_path}")
 
 if __name__ == '__main__':
-    generate_sequences('self_graph.json', 'self_sequences.json')
+    import os
+    # Paths relative to packages/ographx/
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    ir_path = os.path.join(base_dir, '.ographx', 'self-observation', 'self_graph.json')
+    out_path = os.path.join(base_dir, '.ographx', 'sequences', 'self_sequences.json')
+    generate_sequences(ir_path, out_path)
 

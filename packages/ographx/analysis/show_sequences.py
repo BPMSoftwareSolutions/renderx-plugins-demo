@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 import json
+import os
 
-data = json.load(open('self_sequences.json'))
+# Paths relative to packages/ographx/
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+seq_path = os.path.join(base_dir, '.ographx', 'sequences', 'self_sequences.json')
+
+data = json.load(open(seq_path))
 
 print('=== SELF-SEQUENCES STRUCTURE ===')
 print(f'Version: {data["version"]}')

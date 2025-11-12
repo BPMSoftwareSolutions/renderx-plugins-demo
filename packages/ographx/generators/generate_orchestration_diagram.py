@@ -196,18 +196,29 @@ def generate_summary_diagram(sequences_path: str, output_path: str = None):
     return diagram
 
 if __name__ == '__main__':
+    import os
+
+    # Paths relative to packages/ographx/
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    seq_path = os.path.join(base_dir, '.ographx', 'sequences', 'self_sequences.json')
+    ir_path = os.path.join(base_dir, '.ographx', 'self-observation', 'self_graph.json')
+    diag_dir = os.path.join(base_dir, '.ographx', 'visualization', 'diagrams')
+
+    # Ensure output directory exists
+    os.makedirs(diag_dir, exist_ok=True)
+
     print("=== Generating OgraphX Orchestration Diagrams ===")
     print()
-    
+
     # Generate all diagrams
-    seq_diagram = generate_diagram('self_sequences.json', 'orchestration_diagram.md')
+    seq_diagram = generate_diagram(seq_path, os.path.join(diag_dir, 'orchestration_diagram.md'))
     print()
-    
-    call_diagram = generate_call_graph_diagram('self_graph.json', 'call_graph_diagram.md')
+
+    call_diagram = generate_call_graph_diagram(ir_path, os.path.join(diag_dir, 'call_graph_diagram.md'))
     print()
-    
-    summary_diagram = generate_summary_diagram('self_sequences.json', 'summary_diagram.md')
+
+    summary_diagram = generate_summary_diagram(seq_path, os.path.join(diag_dir, 'summary_diagram.md'))
     print()
-    
+
     print("All diagrams generated!")
 

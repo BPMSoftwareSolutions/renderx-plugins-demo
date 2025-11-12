@@ -22,33 +22,17 @@ The new hierarchical structure:
 
 ## Proposed Structure
 
+### Source Code (packages/ographx/)
 ```
-.ographx/
+packages/ographx/
 │
 ├── core/
 │   ├── ographx_ts.py
 │   ├── ographx_py.py
 │   └── README.md
 │
-├── self-observation/
-│   ├── self_graph.json
-│   ├── generate_self_graph.sh
-│   └── README.md
-│
-├── sequences/
+├── generators/
 │   ├── generate_self_sequences.py
-│   ├── self_sequences.json
-│   └── README.md
-│
-├── visualization/
-│   ├── diagrams/
-│   │   ├── summary_diagram.md
-│   │   ├── orchestration_diagram.md
-│   │   ├── call_graph_diagram.md
-│   │   ├── sequence_flow_diagram.md
-│   │   ├── beat_timeline.md
-│   │   ├── *.svg
-│   │   └── README.md
 │   ├── generate_orchestration_diagram.py
 │   ├── generate_sequence_flow.py
 │   ├── convert_to_svg.py
@@ -84,6 +68,30 @@ The new hierarchical structure:
 │   └── README.md
 │
 └── README.md (main entry point)
+```
+
+### Auto-Generated Content (.ographx/)
+```
+.ographx/
+│
+├── self-observation/
+│   ├── self_graph.json
+│   └── generate_self_graph.sh
+│
+├── sequences/
+│   └── self_sequences.json
+│
+├── visualization/
+│   ├── diagrams/
+│   │   ├── summary_diagram.md
+│   │   ├── orchestration_diagram.md
+│   │   ├── call_graph_diagram.md
+│   │   ├── sequence_flow_diagram.md
+│   │   ├── beat_timeline.md
+│   │   └── *.svg
+│   └── README.md
+│
+└── .gitignore (ignore auto-generated files)
 ```
 
 ## Migration Checklist
