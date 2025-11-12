@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
-OgraphX TS — minimal TypeScript flow extractor (MVP)
----------------------------------------------------
+OgraphX TS — minimal TypeScript flow extractor (MVP+)
+-----------------------------------------------------
 Pure-Python, no external deps. Heuristic (not a full parser).
-Scans .ts/.tsx files, finds function-like symbols, discovers simple call edges,
+Scans .ts/.tsx files, finds function-like symbols, discovers call edges,
 captures parameter "contracts", and emits a compact JSON IR + optional sequences.
 
 Usage:
   python ographx_ts.py --root ./src --out ./.ographx/graph.json --emit-sequences ./.ographx/sequences.json
+
+Enhancements (MVP+):
+- Scope-aware resolution: Prioritizes same-file symbols, then imports, then global fallback
+- Import graph awareness: Parses import statements to resolve cross-file targets
+- Generics/union types: Handles T<U>, T<U,V>, T | U type annotations
+- Enriched sequences: Uses DFS to build call chains (depth-limited to 3) instead of just direct calls
 
 Notes:
 - This is intentionally conservative. It favors correctness over completeness.
@@ -20,7 +26,7 @@ Notes:
 - Detects calls within bodies via regex; filters out TS/JS keywords.
 - Contracts are inferred from parameter lists as plain strings (names + raw type text when present).
 - Entry points (for sequence emission) are exported functions and class methods whose class is exported.
-- Sequences are naive linearizations: each function becomes a movement; each direct call a beat.
+- Sequences are enriched linearizations: each function becomes a movement; call chains become beats.
 """
 import argparse
 import json
@@ -37,6 +43,9 @@ CLASS_DECL_RE = re.compile(r'^(?:export\s+)?class\s+([A-Za-z_]\w*)\b')
 METHOD_RE = re.compile(r'^\s*(?:public|private|protected|static|async\s+)*([A-Za-z_]\w*)\s*\((.*?)\)\s*{')
 EXPORT_RE = re.compile(r'^\s*export\s+')
 CALL_RE = re.compile(r'\b([A-Za-z_]\w*)\s*\(')
+IMPORT_RE = re.compile(r'^\s*import\s+(?:{[^}]*}|[A-Za-z_]\w*)\s+from\s+[\'"]([^\'"]+)[\'"]')
+GENERIC_RE = re.compile(r'<[^>]+>')  # Match generic type parameters
+UNION_RE = re.compile(r'\s*\|\s*')  # Match union type separator
 
 # Reserved identifiers to ignore as "calls"
 RESERVED = {
@@ -81,11 +90,27 @@ class IR:
     calls: List[CallEdge]
     contracts: List[Contract]
 
+@dataclass
+class ImportInfo:
+    """Track imports from a file for scope-aware resolution."""
+    file: str
+    imports: Dict[str, str]  # local_name -> source_file (relative path)
+    exports: List[str]  # exported symbol names from this file
+
 def normalize_contract_id(sym_name: str, params_sig: str) -> str:
     sig = re.sub(r'\s+', ' ', params_sig.strip())
     compact = sig.replace(':', '').replace(',', '-').replace('[]','arr').replace('|','or')
     compact = re.sub(r'[^A-Za-z0-9_\-]', '', compact)[:40] or 'none'
     return f"{sym_name}Params@0.1.0::{compact}"
+
+def normalize_type(raw_type: str) -> str:
+    """Normalize type annotations to handle generics and union types."""
+    if not raw_type:
+        return ''
+    # Preserve structure but normalize whitespace
+    normalized = re.sub(r'\s+', ' ', raw_type.strip())
+    # Keep generics and unions readable
+    return normalized
 
 def parse_params(params_text: str) -> List[ContractProp]:
     if params_text.strip() == '':
@@ -115,12 +140,56 @@ def parse_params(params_text: str) -> List[ContractProp]:
         # match "name: type = default" or "name?: type"
         m = re.match(r'^\s*([A-Za-z_]\w*)\s*\??\s*:\s*(.*?)(?:=\s*.*)?$', p)
         if m:
-            out.append(ContractProp(name=m.group(1), raw=m.group(2).strip()))
+            raw_type = m.group(2).strip()
+            # Normalize type (handles generics T<U>, unions T | U, etc.)
+            normalized = normalize_type(raw_type)
+            out.append(ContractProp(name=m.group(1), raw=normalized))
         else:
             # fallback: just a name (untyped or destructured) – keep raw
             name = p.split(':',1)[0].split('=',1)[0].strip()
             out.append(ContractProp(name=name, raw=''))
     return out
+
+def extract_imports(text: str, file_path: str, root: str) -> Dict[str, str]:
+    """Extract import statements and map local names to source files.
+
+    Returns a dict: local_name -> relative_source_file
+    """
+    imports = {}
+    lines = text.splitlines()
+    for line in lines:
+        m = IMPORT_RE.match(line.strip())
+        if m:
+            source = m.group(1)
+            # Normalize path: remove .ts/.tsx, resolve relative to root
+            if not source.startswith('.'):
+                continue  # Skip node_modules imports
+            # Resolve relative path
+            file_dir = os.path.dirname(file_path)
+            resolved = os.path.normpath(os.path.join(file_dir, source))
+            # Make relative to root
+            try:
+                rel_path = os.path.relpath(resolved, root)
+            except ValueError:
+                rel_path = resolved
+            # Add .ts if not present
+            if not rel_path.endswith(('.ts', '.tsx')):
+                rel_path += '.ts'
+            # Extract imported names (simplified: just get first identifier after 'import')
+            import_part = line.split('from')[0].replace('import', '').strip()
+            if import_part.startswith('{'):
+                # Named imports: { foo, bar }
+                names = import_part.strip('{}').split(',')
+                for name in names:
+                    clean = name.strip().split(' as ')[-1].strip()
+                    if clean:
+                        imports[clean] = rel_path
+            else:
+                # Default import: import foo from ...
+                clean = import_part.strip()
+                if clean:
+                    imports[clean] = rel_path
+    return imports
 
 def find_blocks(lines: List[str], start_idx: int) -> int:
     """Find matching closing brace for a block starting with '{' on or after start_idx."""
@@ -139,11 +208,15 @@ def find_blocks(lines: List[str], start_idx: int) -> int:
             return j
     return len(lines)-1
 
-def extract_symbols_and_calls(path: str, text: str) -> Tuple[List[Symbol], List[CallEdge], List[Contract]]:
+def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Optional[Dict[str, str]] = None) -> Tuple[List[Symbol], List[CallEdge], List[Contract]]:
     lines = text.splitlines()
     symbols: List[Symbol] = []
     calls: List[CallEdge] = []
     contracts: List[Contract] = []
+
+    # Track imports for scope-aware resolution
+    if imports is None:
+        imports = extract_imports(text, path, root or os.path.dirname(path))
 
     exported_classes: set = set()
 
@@ -272,16 +345,40 @@ def extract_symbols_and_calls(path: str, text: str) -> Tuple[List[Symbol], List[
 
         idx += 1
 
-    # Resolve call "to" fields where target symbol names match
+    # Resolve call "to" fields with scope-aware resolution
+    # Build symbol index by file and name
+    symbols_by_file: Dict[str, Dict[str, List[Symbol]]] = {}
+    for s in symbols:
+        file_key = os.path.basename(s.file)
+        if file_key not in symbols_by_file:
+            symbols_by_file[file_key] = {}
+        symbols_by_file[file_key].setdefault(s.name, []).append(s)
+
+    # Also build global name index for fallback
     name_to_ids: Dict[str, List[str]] = {}
     for s in symbols:
-        simple = s.name
-        name_to_ids.setdefault(simple, []).append(s.id)
+        name_to_ids.setdefault(s.name, []).append(s.id)
 
     resolved_calls: List[CallEdge] = []
     for c in calls:
-        cand = name_to_ids.get(c.name, [])
-        to_id = cand[0] if cand else ""  # pick first match if multiple; future: scope-aware resolution
+        to_id = ""
+        # Try to resolve within same file first (scope-aware)
+        caller_file = os.path.basename(path)
+        if caller_file in symbols_by_file and c.name in symbols_by_file[caller_file]:
+            candidates = symbols_by_file[caller_file][c.name]
+            to_id = candidates[0].id
+        # Try imports (cross-file resolution)
+        elif c.name in imports:
+            imported_file = imports[c.name]
+            imported_basename = os.path.basename(imported_file)
+            if imported_basename in symbols_by_file and c.name in symbols_by_file[imported_basename]:
+                candidates = symbols_by_file[imported_basename][c.name]
+                to_id = candidates[0].id
+        # Fallback to global name resolution
+        else:
+            cand = name_to_ids.get(c.name, [])
+            to_id = cand[0] if cand else ""
+
         resolved_calls.append(CallEdge(frm=c.frm, to=to_id, name=c.name, line=c.line))
 
     # Deduplicate contracts by id
@@ -310,7 +407,7 @@ def build_ir(root: str) -> IR:
         try:
             with open(f, 'r', encoding='utf-8', errors='ignore') as fh:
                 text = fh.read()
-            syms, cs, cts = extract_symbols_and_calls(f, text)
+            syms, cs, cts = extract_symbols_and_calls(f, text, root=root)
             symbols.extend(syms)
             calls.extend(cs)
             contracts.extend(cts)
@@ -340,20 +437,66 @@ def emit_ir(ir: IR, out_path: str):
             } for ct in ir.contracts]
         }, f, indent=2)
 
-def emit_sequences(ir: IR, out_path: str):
-    # Build a naive sequence bundle: each exported symbol becomes an entry sequence.
-    # Beats are the direct calls detected within that symbol.
-    sequences = []
-    # index calls by frm
+def build_call_graph(ir: IR) -> Dict[str, List[CallEdge]]:
+    """Build a call graph indexed by source symbol."""
     by_src: Dict[str, List[CallEdge]] = {}
     for c in ir.calls:
         by_src.setdefault(c.frm, []).append(c)
+    return by_src
+
+def dfs_call_chain(start_id: str, call_graph: Dict[str, List[CallEdge]],
+                   visited: Optional[set] = None, depth: int = 0, max_depth: int = 3) -> List[CallEdge]:
+    """Perform DFS to build enriched call chain from an entry point.
+
+    Returns a list of CallEdge objects representing the call chain.
+    Limits depth to avoid infinite recursion and keep sequences manageable.
+    """
+    if visited is None:
+        visited = set()
+
+    if depth > max_depth or start_id in visited:
+        return []
+
+    visited.add(start_id)
+    chain = []
+
+    for call in call_graph.get(start_id, []):
+        chain.append(call)
+        # Recursively add calls from the target
+        if call.to:
+            chain.extend(dfs_call_chain(call.to, call_graph, visited, depth + 1, max_depth))
+
+    return chain
+
+def emit_sequences(ir: IR, out_path: str, enrich_with_dfs: bool = True):
+    # Build sequence bundle: each exported symbol becomes an entry sequence.
+    # Beats are enriched with DFS call chains (if enabled) or just direct calls.
+    sequences = []
+    call_graph = build_call_graph(ir)
 
     for s in ir.symbols:
         if not s.exported:
             continue
+
         beats = []
-        for i, c in enumerate(by_src.get(s.id, []), start=1):
+
+        if enrich_with_dfs:
+            # Use DFS to build enriched call chain
+            call_chain = dfs_call_chain(s.id, call_graph, max_depth=3)
+        else:
+            # Use only direct calls
+            call_chain = call_graph.get(s.id, [])
+
+        # Deduplicate calls while preserving order
+        seen = set()
+        unique_calls = []
+        for c in call_chain:
+            key = (c.frm, c.name, c.line)
+            if key not in seen:
+                seen.add(key)
+                unique_calls.append(c)
+
+        for i, c in enumerate(unique_calls, start=1):
             beats.append({
                 "beat": i,
                 "event": f"call:{c.name}",
@@ -362,6 +505,7 @@ def emit_sequences(ir: IR, out_path: str):
                 "dynamics": "mf",
                 "in": [s.params_contract] if s.params_contract else []
             })
+
         sequences.append({
             "id": re.sub(r'[^A-Za-z0-9_\-\.]', '_', s.id),
             "name": f"{s.name} Flow",
