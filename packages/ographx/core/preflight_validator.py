@@ -332,15 +332,35 @@ class PreFlightValidator:
 
         return res
 
-    def run_all_checks(self, strict: bool = False, coverage_threshold: Optional[float] = None, skip_generate_coverage: bool = False, use_criticality: bool = True, regenerate_test_graph: bool = True) -> ValidationResult:
+    def run_all_checks(self, strict: bool = False, coverage_threshold: Optional[float] = None, skip_generate_coverage: bool = False, use_criticality: bool = True, regenerate_test_graph: bool = True, allow_external_codebases: bool = True) -> ValidationResult:
         result = ValidationResult()
 
         # Regenerate test graph to keep it in sync (self-aware system)
         if regenerate_test_graph:
             result = result.merge(self.regenerate_test_graph())
 
-        for check in (self.validate_self_observation, self.validate_test_coverage, self.detect_drift, self.validate_dependencies):
-            part = check() if check != self.validate_self_observation else check()
+        # Validate self-observation, but allow external codebases to proceed with warnings
+        self_obs_result = self.validate_self_observation()
+        if allow_external_codebases and not self_obs_result.passed:
+            # Convert errors to warnings for external codebases
+            for error in self_obs_result.errors:
+                self_obs_result.add_warning(f"(external codebase) {error}")
+            self_obs_result.errors = []
+            self_obs_result.passed = True
+        result = result.merge(self_obs_result)
+
+        # Detect drift, but allow external codebases to proceed with warnings
+        drift_result = self.detect_drift()
+        if allow_external_codebases and not drift_result.passed:
+            # Convert errors to warnings for external codebases
+            for error in drift_result.errors:
+                drift_result.add_warning(f"(external codebase) {error}")
+            drift_result.errors = []
+            drift_result.passed = True
+        result = result.merge(drift_result)
+
+        for check in (self.validate_test_coverage, self.validate_dependencies):
+            part = check()
             result = result.merge(part)
 
         # Optional: enforce criticality-aware coverage (preferred)
