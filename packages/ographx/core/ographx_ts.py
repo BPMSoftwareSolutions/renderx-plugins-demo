@@ -35,12 +35,14 @@ import re
 from dataclasses import dataclass, asdict, field
 from typing import List, Dict, Optional, Tuple
 
-FUNC_DECL_RE = re.compile(r'^(?:export\s+)?function\s+([A-Za-z_]\w*)\s*\((.*?)\)\s*{')
+FUNC_DECL_RE = re.compile(r'^(?:export\s+)?function\s+([A-Za-z_]\w*)\s*(?:<[^>]+>)?\s*\((.*?)\)\s*(?::\s*[^({]+)?\s*{')
+# Start-only matcher for multi-line function headers
+FUNC_START_RE = re.compile(r'^(?:export\s+)?function\s+([A-Za-z_]\w*)\s*(?:<[^>]+>)?\s*\(')
 CONST_FUNC_RE = re.compile(r'^(?:export\s+)?const\s+([A-Za-z_]\w*)\s*=\s*(?:async\s*)?(?:function|\()')
-ARROW_PARAMS_RE = re.compile(r'^(?:export\s+)?const\s+([A-Za-z_]\w*)\s*=\s*\((.*?)\)\s*=>\s*{')
-NAMED_FUNC_RE = re.compile(r'^(?:export\s+)?(?:var|let|const)\s+([A-Za-z_]\w*)\s*=\s*function\s*\((.*?)\)\s*{')
+ARROW_PARAMS_RE = re.compile(r'^(?:export\s+)?const\s+([A-Za-z_]\w*)\s*=\s*\((.*?)\)\s*(?::\s*[^=]+)?=>\s*{')
+NAMED_FUNC_RE = re.compile(r'^(?:export\s+)?(?:var|let|const)\s+([A-Za-z_]\w*)\s*=\s*function\s*\((.*?)\)\s*(?::\s*[^({]+)?\s*{')
 CLASS_DECL_RE = re.compile(r'^(?:export\s+)?class\s+([A-Za-z_]\w*)\b')
-METHOD_RE = re.compile(r'^\s*(?:public|private|protected|static|async\s+)*([A-Za-z_]\w*)\s*\((.*?)\)\s*{')
+METHOD_RE = re.compile(r'^\s*(?:(?:public|private|protected|static|async)\s+)*([A-Za-z_]\w*)\s*\((.*?)\)\s*(?::\s*[^({]+)?\s*{')
 EXPORT_RE = re.compile(r'^\s*export\s+')
 CALL_RE = re.compile(r'\b([A-Za-z_]\w*)\s*\(')
 IMPORT_RE = re.compile(r'^\s*import\s+(?:{[^}]*}|[A-Za-z_]\w*)\s+from\s+[\'"]([^\'"]+)[\'"]')
@@ -113,6 +115,11 @@ def normalize_type(raw_type: str) -> str:
     return normalized
 
 def parse_params(params_text: str) -> List[ContractProp]:
+    """Parse function parameters into contracts.
+
+    @critical: Core IR extraction — must be 100% tested.
+    Parses parameter lists with type annotations, generics, unions, and defaults.
+    """
     if params_text.strip() == '':
         return []
     props = []
@@ -154,6 +161,9 @@ def extract_imports(text: str, file_path: str, root: str) -> Dict[str, str]:
     """Extract import statements and map local names to source files.
 
     Returns a dict: local_name -> relative_source_file
+
+    @important: Scope-aware resolution — must be 90%+ tested.
+    Handles named imports, default imports, and relative path resolution.
     """
     imports = {}
     lines = text.splitlines()
@@ -192,7 +202,11 @@ def extract_imports(text: str, file_path: str, root: str) -> Dict[str, str]:
     return imports
 
 def find_blocks(lines: List[str], start_idx: int) -> int:
-    """Find matching closing brace for a block starting with '{' on or after start_idx."""
+    """Find matching closing brace for a block starting with '{' on or after start_idx.
+
+    @optional: Block boundary detection — 70%+ coverage acceptable.
+    Used for scope extraction; edge cases (unmatched braces) are rare in valid TS.
+    """
     # locate first { at/after start line
     i = start_idx
     # find first { on the same line or subsequent
@@ -209,6 +223,12 @@ def find_blocks(lines: List[str], start_idx: int) -> int:
     return len(lines)-1
 
 def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Optional[Dict[str, str]] = None) -> Tuple[List[Symbol], List[CallEdge], List[Contract]]:
+    """Extract symbols (functions, classes, methods) and call edges from a single TS file.
+
+    @critical: Core IR extraction — must be 100% tested.
+    Parses all function/class declarations, detects exports, extracts call sites,
+    and builds the symbol table and call graph for a file.
+    """
     lines = text.splitlines()
     symbols: List[Symbol] = []
     calls: List[CallEdge] = []
@@ -253,7 +273,7 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
             )
             symbols.append(sym)
             # scan body for calls
-            for j in range(idx, end+1):
+            for j in range(idx+1, end+1):
                 for cm in CALL_RE.finditer(lines[j]):
                     callee = cm.group(1)
                     if callee not in RESERVED:
@@ -277,7 +297,7 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
                 params_contract=cid, range=(idx+1, end+1)
             )
             symbols.append(sym)
-            for j in range(idx, end+1):
+            for j in range(idx+1, end+1):
                 for cm in CALL_RE.finditer(lines[j]):
                     callee = cm.group(1)
                     if callee not in RESERVED:
@@ -301,7 +321,54 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
                 params_contract=cid, range=(idx+1, end+1)
             )
             symbols.append(sym)
-            for j in range(idx, end+1):
+            for j in range(idx+1, end+1):
+                for cm in CALL_RE.finditer(lines[j]):
+                    callee = cm.group(1)
+                    if callee not in RESERVED:
+                        calls.append(CallEdge(frm=sym.id, to="", name=callee, line=j+1))
+            idx = end + 1
+            continue
+
+        # Multi-line function declaration starting at this line
+        m = FUNC_START_RE.match(stripped)
+        if m:
+            name = m.group(1)
+            # Collect params across lines until the closing paren is matched
+            depth = 0
+            saw_first = False
+            buf = []
+            for k in range(idx, len(lines)):
+                ln = lines[k]
+                for ch in ln:
+                    if ch == '(':
+                        depth += 1
+                        saw_first = True
+                        if saw_first and depth == 1:
+                            # start capturing after first '('
+                            continue
+                    elif ch == ')':
+                        depth -= 1
+                        if depth == 0:
+                            # finished params for header
+                            break
+                    if saw_first:
+                        buf.append(ch)
+                if depth == 0 and saw_first:
+                    # move k to end of header line and proceed
+                    break
+            params_text = ''.join(buf).strip()
+            end = find_blocks(lines, idx)
+            is_export = stripped.startswith('export')
+            cprops = parse_params(params_text)
+            cid = normalize_contract_id(name, params_text)
+            contracts.append(Contract(id=cid, props=cprops))
+            sym = Symbol(
+                id=f"{os.path.basename(path)}::{name}",
+                file=path, kind="function", name=name, exported=is_export,
+                params_contract=cid, range=(idx+1, end+1)
+            )
+            symbols.append(sym)
+            for j in range(idx+1, end+1):
                 for cm in CALL_RE.finditer(lines[j]):
                     callee = cm.group(1)
                     if callee not in RESERVED:
@@ -314,6 +381,12 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
         if m:
             cls = m.group(1)
             end = find_blocks(lines, idx)
+            # record class symbol (used by tests and higher-level tools)
+            symbols.append(Symbol(
+                id=f"{os.path.basename(path)}::{cls}",
+                file=path, kind="class", name=cls, exported=(cls in exported_classes),
+                params_contract=None, range=(idx+1, end+1)
+            ))
             # walk inside class for methods
             k = idx + 1
             while k <= end:
@@ -332,7 +405,7 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
                         range=(k+1, mend+1)
                     )
                     symbols.append(sym)
-                    for j in range(k, mend+1):
+                    for j in range(k+1, mend+1):
                         for cm in CALL_RE.finditer(lines[j]):
                             callee = cm.group(1)
                             if callee not in RESERVED:
@@ -346,6 +419,9 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
         idx += 1
 
     # Resolve call "to" fields with scope-aware resolution
+    # @critical: Call graph resolution — must be 100% tested.
+    # Scope-aware resolution is core to accurate IR; must handle same-file, imports, and fallback.
+
     # Build symbol index by file and name
     symbols_by_file: Dict[str, Dict[str, List[Symbol]]] = {}
     for s in symbols:
@@ -390,6 +466,11 @@ def extract_symbols_and_calls(path: str, text: str, root: str = "", imports: Opt
     return symbols, resolved_calls, list(uniq_contracts.values())
 
 def walk_ts_files(root: str) -> List[str]:
+    """Discover all TypeScript files in root directory.
+
+    @optional: File discovery — 70%+ coverage acceptable.
+    Simple directory walk; edge cases (symlinks, permissions) are rare.
+    """
     files = []
     for dirpath, _, filenames in os.walk(root):
         for fn in filenames:
@@ -398,6 +479,11 @@ def walk_ts_files(root: str) -> List[str]:
     return files
 
 def build_ir(root: str) -> IR:
+    """Build the Intermediate Representation (IR) by scanning all TS files in root.
+
+    @critical: Core IR generation — must be 100% tested.
+    Orchestrates file discovery, parsing, and aggregation of symbols/calls/contracts.
+    """
     files = walk_ts_files(root)
     symbols: List[Symbol] = []
     calls: List[CallEdge] = []
@@ -412,6 +498,7 @@ def build_ir(root: str) -> IR:
             calls.extend(cs)
             contracts.extend(cts)
         except Exception as e:
+            # @optional: Error handling — 70%+ coverage acceptable.
             # keep going; log minimal context
             print(f"[WARN] failed to parse {f}: {e}")
 
@@ -548,6 +635,131 @@ def main():
     print(f"[OK] IR written to {args.out}")
     if args.emit_sequences:
         print(f"[OK] Sequences written to {args.emit_sequences}")
+
+# --- Lightweight wrapper APIs expected by existing unit tests ---
+import re as _re
+
+def _simplify_id(_id: str) -> str:
+    return (_id or "").split("::")[-1]
+
+def extract_symbols(text: str, file_name: str):
+    """Compatibility wrapper returning a simplified symbol dict structure.
+    Produces fields expected by tests: id, type, exported, file, contract.
+    Also preserves basic generic notation like functionName<T, U>(...).
+    """
+    syms, _calls, contracts = extract_symbols_and_calls(file_name, text, root=os.path.dirname(file_name))
+    # Map contract id -> ["name: type", ...]
+    ct_map = {}
+    for ct in contracts:
+        parts = []
+        for p in ct.props:
+            parts.append(f"{p.name}: {p.raw}" if p.raw else p.name)
+        ct_map[ct.id] = parts
+    # Capture function-level generic params, e.g., function transform<T, U>(...)
+    gen_map = {}
+    gen_decl_re = _re.compile(r'^(?:export\s+)?function\s+([A-Za-z_]\w*)\s*<([^>]+)>\s*\(')
+    for ln in text.splitlines():
+        m = gen_decl_re.match(ln.strip())
+        if m:
+            gen_map[m.group(1)] = m.group(2).strip()
+    out = []
+    for s in syms:
+        typ = s.kind if s.kind in ("function", "method", "class") else "function"
+        sid = _simplify_id(s.id)
+        contract = list(ct_map.get(s.params_contract or "", []))
+        # If generics exist for this function, include a "<...>" marker so tests see it
+        base_name = sid.split('.')[-1]
+        if base_name in gen_map:
+            contract = [f"<{gen_map[base_name]}>", *contract]
+        out.append({
+            "id": sid,
+            "type": typ,
+            "exported": bool(s.exported),
+            "file": os.path.basename(s.file),
+            "contract": contract,
+        })
+    return out
+
+def extract_calls(text: str, file_name: str):
+    """Compatibility wrapper returning calls with keys: from, to, file, line."""
+    _syms, calls, _contracts = extract_symbols_and_calls(file_name, text, root=os.path.dirname(file_name))
+    out = []
+    for c in calls:
+        out.append({
+            "from": _simplify_id(c.frm),
+            "to": _simplify_id(c.to) if c.to else c.name,
+            "file": os.path.basename(file_name),
+            "line": c.line,
+        })
+    return out
+
+def extract_contracts(text: str, file_name: str):
+    """Return contracts as dicts with symbol, parameters, returns (if inferrable)."""
+    syms, _calls, contracts = extract_symbols_and_calls(file_name, text, root=os.path.dirname(file_name))
+    # Build quick return-type map from source lines
+    lines = text.splitlines()
+    func_ret_re = _re.compile(r'^(?:export\s+)?function\s+([A-Za-z_]\w*)\s*(?:<[^>]+>)?\s*\([^)]*\)\s*:\s*([^\s{]+)')
+    arrow_ret_re = _re.compile(r'^(?:export\s+)?const\s+([A-Za-z_]\w*)\s*=\s*\([^)]*\)\s*:\s*([^=]+)=>')
+    returns_map = {}
+    for ln in lines:
+        m1 = func_ret_re.match(ln.strip())
+        if m1:
+            returns_map[m1.group(1)] = m1.group(2).strip()
+            continue
+        m2 = arrow_ret_re.match(ln.strip())
+        if m2:
+            returns_map[m2.group(1)] = m2.group(2).strip()
+    # Map contract id -> [param strings]
+    ct_map = {}
+    for ct in contracts:
+        ct_map[ct.id] = [f"{p.name}: {p.raw}" if p.raw else p.name for p in ct.props]
+    # Emit per-symbol contract entries
+    out = []
+    for s in syms:
+        if not s.params_contract:
+            continue
+        name = _simplify_id(s.id).split('.')[-1]
+        out.append({
+            "symbol": name,
+            "parameters": ct_map.get(s.params_contract, []),
+            "returns": returns_map.get(name, "")
+        })
+    return out
+
+def build_import_graph(text: str, file_path: str):
+    """Parse import statements and return a simple module->names map.
+    Keys are module specifiers (e.g., './simple'), values are lists of imported names.
+    """
+    g = {}
+    for ln in text.splitlines():
+        ls = ln.strip()
+        if not ls.startswith('import') or ' from ' not in ls:
+            continue
+        try:
+            src = ls.split(' from ')[1].strip().strip(';').strip().strip("\"'")
+        except Exception:
+            continue
+        # Extract names between { }
+        names = []
+        if '{' in ls and '}' in ls:
+            inner = ls.split('{',1)[1].split('}',1)[0]
+            names = [n.strip().split(' as ')[-1] for n in inner.split(',') if n.strip()]
+        else:
+            # default import
+            after_import = ls[len('import'):].split(' from ')[0].strip()
+            if after_import:
+                names = [after_import]
+        g.setdefault(src, []).extend(names)
+    return g
+
+def resolve_call(name: str, available_symbols: list[str]) -> str:
+    """Very light helper: return the first matching symbol name, else ''."""
+    for s in available_symbols:
+        if s.endswith(name) or s == name:
+            return s
+    return ""
+
+
 
 if __name__ == "__main__":
     main()

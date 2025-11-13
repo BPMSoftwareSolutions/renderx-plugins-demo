@@ -56,14 +56,20 @@ def extract_test_classes(file_path: Path) -> List[Dict[str, Any]]:
 def generate_mermaid_graph(test_structure: Dict[str, Any]) -> str:
     """Generate Mermaid diagram from test structure"""
     lines = ['graph TD']
-    lines.append('    A["🧪 OgraphX Test Suite<br/>47 Tests Total"]')
-    
+
+    # Calculate totals dynamically
+    total_tests = test_structure['total_tests']
+    unit_tests = sum(c['count'] for cat in test_structure['unit'].values() for c in cat)
+    integration_tests = sum(c['count'] for cat in test_structure['integration'].values() for c in cat)
+
+    lines.append(f'    A["🧪 OgraphX Test Suite<br/>{total_tests} Tests Total"]')
+
     node_id = 1
     node_map = {}
-    
+
     # Add main categories
-    lines.append('    A --> B["📊 Unit Tests<br/>32 Tests"]')
-    lines.append('    A --> C["🔗 Integration Tests<br/>15 Tests"]')
+    lines.append(f'    A --> B["📊 Unit Tests<br/>{unit_tests} Tests"]')
+    lines.append(f'    A --> C["🔗 Integration Tests<br/>{integration_tests} Tests"]')
     
     # Unit tests
     unit_id = 10
@@ -121,6 +127,8 @@ def analyze_test_files() -> Dict[str, Any]:
             # Categorize by test type
             if 'core' in test_file.name:
                 category = 'Core Extraction'
+            elif 'critical' in test_file.name:
+                category = 'Coverage & Quality'
             elif 'generator' in test_file.name:
                 category = 'Generators'
             elif 'analysis' in test_file.name:
