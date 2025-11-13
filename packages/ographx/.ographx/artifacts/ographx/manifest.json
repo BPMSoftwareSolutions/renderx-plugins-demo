@@ -1,0 +1,37 @@
+{
+  "codebase_name": "ographx",
+  "config": {
+    "name": "ographx",
+    "root_dirs": [
+      "."
+    ],
+    "exclude_dirs": [
+      "tests",
+      "node_modules",
+      "__pycache__"
+    ],
+    "created_at": "2025-11-12T19:51:47.659659"
+  },
+  "generated_at": "2025-11-12T19:51:47.663661",
+  "artifacts": {
+    "ir": ".ographx\\artifacts\\ographx\\ir\\graph.json",
+    "sequences": [
+      ".ographx\\artifacts\\ographx\\sequences\\sequences.json"
+    ],
+    "visualizations": [
+      ".ographx\\artifacts\\ographx\\visualization\\diagrams\\call_graph.mmd",
+      ".ographx\\artifacts\\ographx\\visualization\\diagrams\\call_graph.svg",
+      ".ographx\\artifacts\\ographx\\visualization\\diagrams\\orchestration.mmd",
+      ".ographx\\artifacts\\ographx\\visualization\\diagrams\\orchestration.svg",
+      ".ographx\\artifacts\\ographx\\visualization\\diagrams\\sequence_flow.mmd",
+      ".ographx\\artifacts\\ographx\\visualization\\diagrams\\sequence_flow.svg"
+    ],
+    "analysis": ".ographx\\artifacts\\ographx\\analysis\\analysis.json"
+  },
+  "statistics": {
+    "files": 0,
+    "symbols": 0,
+    "calls": 0,
+    "contracts": 0
+  }
+}

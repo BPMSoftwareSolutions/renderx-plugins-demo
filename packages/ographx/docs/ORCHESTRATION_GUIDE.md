@@ -4,11 +4,11 @@
 
 The graphing process is now fully orchestrated as a **Conductor sequence** in `graphing-orchestration.json`. This enables:
 
-✅ **Self-Aware Execution**: The pipeline orchestrates itself  
-✅ **Reproducible**: Same sequence → Same results every time  
-✅ **Extensible**: Add new layers by adding movements  
-✅ **Monitorable**: Track progress through beats  
-✅ **Testable**: Validate each movement independently  
+✅ **Self-Aware Execution**: The pipeline orchestrates itself
+✅ **Reproducible**: Same sequence → Same results every time
+✅ **Extensible**: Add new layers by adding movements
+✅ **Monitorable**: Track progress through beats
+✅ **Testable**: Validate each movement independently
 
 ---
 
@@ -35,7 +35,25 @@ Defines the data flowing through the pipeline:
 
 ---
 
-## The Six Movements (Layers)
+## The Seven Movements (Layers)
+
+### Movement 0: Layer 0 - Pre-Flight Validation
+**Purpose**: Prevent self-awareness drift before any work begins
+
+**Beats**:
+1. `start:preflight` - Begin pre-flight validation
+2. `call:validateSelfObservation` - IR must exist, be fresh, and have no empty call targets
+3. `call:validateTestCoverage` - Every Layer 4 beat must have a corresponding test
+4. `call:validateUnitTestCoverage` - Enforce unit test coverage threshold (configurable)
+5. `call:detectDrift` - Fail if code changed after last self-observation IR was generated
+6. `call:validateDependencies` - Sanity-check environment (Python version; mermaid-cli optional)
+7. `gate:proceed` - Continue only if all checks pass
+
+Note: Unit test coverage enforcement is configurable via CLI `--coverage-threshold` (accepts 0..1 or 0..100) or env `OGRAPHX_COVERAGE_THRESHOLD`. If coverage tools are unavailable locally, pre-flight emits a warning (strict mode treats warnings as errors).
+
+**Output**: None (acts as a gate)
+
+---
 
 ### Movement 1: Layer 1 - Core Extraction
 **Purpose**: Extract code structure into IR
@@ -145,6 +163,12 @@ Each beat has a **dynamics** value indicating intensity:
 | `mf` | Mezzo-forte (medium-loud) | Main processing steps |
 | `mp` | Mezzo-piano (medium-soft) | Validation/checking steps |
 | `pp` | Pianissimo (very soft) | Output/completion steps |
+
+### Run Pre-Flight Validation
+```bash
+cd packages/ographx
+python core/preflight_validator.py --strict
+```
 
 ---
 

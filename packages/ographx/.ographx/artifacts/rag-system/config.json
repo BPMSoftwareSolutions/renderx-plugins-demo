@@ -1,0 +1,12 @@
+{
+  "name": "rag-system",
+  "root_dirs": [
+    "../../src/domain/components/vector-store"
+  ],
+  "exclude_dirs": [
+    "__tests__",
+    "node_modules",
+    "dist"
+  ],
+  "created_at": "2025-11-12T19:51:35.047284"
+}

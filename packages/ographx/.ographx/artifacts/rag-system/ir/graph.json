@@ -1,0 +1,3603 @@
+{
+  "files": [
+    "../../src/domain/components/vector-store\\demo-ai-component-generator.ts",
+    "../../src/domain/components/vector-store\\playground.ts",
+    "../../src/domain/components/vector-store\\ai\\ai-component-generator.ts",
+    "../../src/domain/components/vector-store\\ai\\pattern-extractor.ts",
+    "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+    "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+    "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+    "../../src/domain/components/vector-store\\embeddings\\embedding-service-factory.ts",
+    "../../src/domain/components/vector-store\\embeddings\\embedding.types.ts",
+    "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+    "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+    "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+    "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+    "../../src/domain/components/vector-store\\indexing\\indexer.types.ts",
+    "../../src/domain/components/vector-store\\loaders\\component-loader.ts",
+    "../../src/domain/components/vector-store\\search\\similarity-search.ts",
+    "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+    "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+    "../../src/domain/components/vector-store\\store\\store.types.ts"
+  ],
+  "symbols": [
+    {
+      "id": "ai-component-generator.ts::AIComponentGenerator",
+      "file": "../../src/domain/components/vector-store\\ai\\ai-component-generator.ts",
+      "kind": "class",
+      "name": "AIComponentGenerator",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        21,
+        129
+      ]
+    },
+    {
+      "id": "ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+      "file": "../../src/domain/components/vector-store\\ai\\ai-component-generator.ts",
+      "kind": "method",
+      "name": "prepareGenerationContext",
+      "class_name": "AIComponentGenerator",
+      "exported": true,
+      "params_contract": "AIComponentGenerator.prepareGenerationContextParams@0.1.0::requestAIGenerationRequest",
+      "range": [
+        30,
+        54
+      ]
+    },
+    {
+      "id": "ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+      "file": "../../src/domain/components/vector-store\\ai\\ai-component-generator.ts",
+      "kind": "method",
+      "name": "buildSystemPrompt",
+      "class_name": "AIComponentGenerator",
+      "exported": true,
+      "params_contract": "AIComponentGenerator.buildSystemPromptParams@0.1.0::userPromptstring-similarComponentsCompon",
+      "range": [
+        59,
+        111
+      ]
+    },
+    {
+      "id": "ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+      "file": "../../src/domain/components/vector-store\\ai\\ai-component-generator.ts",
+      "kind": "method",
+      "name": "getDiscoveryMetrics",
+      "class_name": "AIComponentGenerator",
+      "exported": true,
+      "params_contract": "AIComponentGenerator.getDiscoveryMetricsParams@0.1.0::none",
+      "range": [
+        116,
+        128
+      ]
+    },
+    {
+      "id": "pattern-extractor.ts::PatternExtractor",
+      "file": "../../src/domain/components/vector-store\\ai\\pattern-extractor.ts",
+      "kind": "class",
+      "name": "PatternExtractor",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        20,
+        59
+      ]
+    },
+    {
+      "id": "pattern-extractor.ts::PatternExtractor.constructor",
+      "file": "../../src/domain/components/vector-store\\ai\\pattern-extractor.ts",
+      "kind": "method",
+      "name": "constructor",
+      "class_name": "PatternExtractor",
+      "exported": true,
+      "params_contract": "PatternExtractor.constructorParams@0.1.0::none",
+      "range": [
+        21,
+        21
+      ]
+    },
+    {
+      "id": "pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "file": "../../src/domain/components/vector-store\\ai\\pattern-extractor.ts",
+      "kind": "method",
+      "name": "extractPatterns",
+      "class_name": "PatternExtractor",
+      "exported": true,
+      "params_contract": "PatternExtractor.extractPatternsParams@0.1.0::componentsanyarrarr",
+      "range": [
+        23,
+        40
+      ]
+    },
+    {
+      "id": "pattern-extractor.ts::PatternExtractor.analyzePattern",
+      "file": "../../src/domain/components/vector-store\\ai\\pattern-extractor.ts",
+      "kind": "method",
+      "name": "analyzePattern",
+      "class_name": "PatternExtractor",
+      "exported": true,
+      "params_contract": "PatternExtractor.analyzePatternParams@0.1.0::patternTypestring",
+      "range": [
+        42,
+        53
+      ]
+    },
+    {
+      "id": "pattern-extractor.ts::PatternExtractor.getPatternUsage",
+      "file": "../../src/domain/components/vector-store\\ai\\pattern-extractor.ts",
+      "kind": "method",
+      "name": "getPatternUsage",
+      "class_name": "PatternExtractor",
+      "exported": true,
+      "params_contract": "PatternExtractor.getPatternUsageParams@0.1.0::_patternNamestring",
+      "range": [
+        55,
+        58
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "class",
+      "name": "TemplateDiscoveryService",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        24,
+        96
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService.constructor",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "method",
+      "name": "constructor",
+      "class_name": "TemplateDiscoveryService",
+      "exported": true,
+      "params_contract": "TemplateDiscoveryService.constructorParams@0.1.0::none",
+      "range": [
+        27,
+        27
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "method",
+      "name": "extractComponentType",
+      "class_name": "TemplateDiscoveryService",
+      "exported": true,
+      "params_contract": "TemplateDiscoveryService.extractComponentTypeParams@0.1.0::promptstring",
+      "range": [
+        29,
+        40
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService.findByType",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "method",
+      "name": "findByType",
+      "class_name": "TemplateDiscoveryService",
+      "exported": true,
+      "params_contract": "TemplateDiscoveryService.findByTypeParams@0.1.0::typestring",
+      "range": [
+        42,
+        44
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "method",
+      "name": "detectExactMatch",
+      "class_name": "TemplateDiscoveryService",
+      "exported": true,
+      "params_contract": "TemplateDiscoveryService.detectExactMatchParams@0.1.0::promptstring",
+      "range": [
+        46,
+        66
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "method",
+      "name": "findExactMatch",
+      "class_name": "TemplateDiscoveryService",
+      "exported": true,
+      "params_contract": "TemplateDiscoveryService.findExactMatchParams@0.1.0::componentTypestring",
+      "range": [
+        69,
+        75
+      ]
+    },
+    {
+      "id": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "file": "../../src/domain/components/vector-store\\ai\\template-discovery.ts",
+      "kind": "method",
+      "name": "rankSimilarComponents",
+      "class_name": "TemplateDiscoveryService",
+      "exported": true,
+      "params_contract": "TemplateDiscoveryService.rankSimilarComponentsParams@0.1.0::querystring-_constraintsany",
+      "range": [
+        78,
+        95
+      ]
+    },
+    {
+      "id": "template-synthesis.ts::TemplateSynthesisEngine",
+      "file": "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+      "kind": "class",
+      "name": "TemplateSynthesisEngine",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        45,
+        181
+      ]
+    },
+    {
+      "id": "template-synthesis.ts::TemplateSynthesisEngine.constructor",
+      "file": "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+      "kind": "method",
+      "name": "constructor",
+      "class_name": "TemplateSynthesisEngine",
+      "exported": true,
+      "params_contract": "TemplateSynthesisEngine.constructorParams@0.1.0::none",
+      "range": [
+        46,
+        46
+      ]
+    },
+    {
+      "id": "template-synthesis.ts::TemplateSynthesisEngine.if",
+      "file": "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+      "kind": "method",
+      "name": "if",
+      "class_name": "TemplateSynthesisEngine",
+      "exported": true,
+      "params_contract": "TemplateSynthesisEngine.ifParams@0.1.0::similarComponentsororsimilarComponentsle",
+      "range": [
+        58,
+        66
+      ]
+    },
+    {
+      "id": "template-synthesis.ts::TemplateSynthesisEngine.if",
+      "file": "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+      "kind": "method",
+      "name": "if",
+      "class_name": "TemplateSynthesisEngine",
+      "exported": true,
+      "params_contract": "TemplateSynthesisEngine.ifParams@0.1.0::baseui",
+      "range": [
+        114,
+        116
+      ]
+    },
+    {
+      "id": "template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+      "file": "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+      "kind": "method",
+      "name": "mergeVariables",
+      "class_name": "TemplateSynthesisEngine",
+      "exported": true,
+      "params_contract": "TemplateSynthesisEngine.mergeVariablesParams@0.1.0::componentsFullComponentarr",
+      "range": [
+        152,
+        162
+      ]
+    },
+    {
+      "id": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "file": "../../src/domain/components/vector-store\\ai\\template-synthesis.ts",
+      "kind": "method",
+      "name": "mergeCss",
+      "class_name": "TemplateSynthesisEngine",
+      "exported": true,
+      "params_contract": "TemplateSynthesisEngine.mergeCssParams@0.1.0::componentsFullComponentarr",
+      "range": [
+        168,
+        180
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "class",
+      "name": "EmbeddingCache",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        18,
+        144
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.constructor",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "constructor",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.constructorParams@0.1.0::maxSizenumber10000-ttlnumber2460601000",
+      "range": [
+        30,
+        33
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.get",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "get",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.getParams@0.1.0::keystring",
+      "range": [
+        40,
+        57
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.set",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "set",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.setParams@0.1.0::keystring-embeddingnumberarr",
+      "range": [
+        64,
+        75
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.has",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "has",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.hasParams@0.1.0::keystring",
+      "range": [
+        82,
+        96
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.clear",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "clear",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.clearParams@0.1.0::none",
+      "range": [
+        101,
+        105
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.removeExpired",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "removeExpired",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.removeExpiredParams@0.1.0::none",
+      "range": [
+        110,
+        121
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.getStats",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "getStats",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.getStatsParams@0.1.0::none",
+      "range": [
+        126,
+        136
+      ]
+    },
+    {
+      "id": "embedding-cache.ts::EmbeddingCache.size",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-cache.ts",
+      "kind": "method",
+      "name": "size",
+      "class_name": "EmbeddingCache",
+      "exported": true,
+      "params_contract": "EmbeddingCache.sizeParams@0.1.0::none",
+      "range": [
+        141,
+        143
+      ]
+    },
+    {
+      "id": "embedding-service-factory.ts::EmbeddingServiceFactory",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-service-factory.ts",
+      "kind": "class",
+      "name": "EmbeddingServiceFactory",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        10,
+        50
+      ]
+    },
+    {
+      "id": "embedding-service-factory.ts::EmbeddingServiceFactory.create",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-service-factory.ts",
+      "kind": "method",
+      "name": "create",
+      "class_name": "EmbeddingServiceFactory",
+      "exported": true,
+      "params_contract": "EmbeddingServiceFactory.createParams@0.1.0::configEmbeddingServiceConfig",
+      "range": [
+        14,
+        26
+      ]
+    },
+    {
+      "id": "embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-service-factory.ts",
+      "kind": "method",
+      "name": "createLocal",
+      "class_name": "EmbeddingServiceFactory",
+      "exported": true,
+      "params_contract": "EmbeddingServiceFactory.createLocalParams@0.1.0::none",
+      "range": [
+        31,
+        37
+      ]
+    },
+    {
+      "id": "embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+      "file": "../../src/domain/components/vector-store\\embeddings\\embedding-service-factory.ts",
+      "kind": "method",
+      "name": "createOpenAI",
+      "class_name": "EmbeddingServiceFactory",
+      "exported": true,
+      "params_contract": "EmbeddingServiceFactory.createOpenAIParams@0.1.0::apiKeystring-modelstring-dimensionsnumbe",
+      "range": [
+        42,
+        49
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "class",
+      "name": "LocalEmbeddingService",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        10,
+        142
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.constructor",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "constructor",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.constructorParams@0.1.0::configEmbeddingServiceConfig",
+      "range": [
+        15,
+        29
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "embed",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.embedParams@0.1.0::textstring",
+      "range": [
+        34,
+        43
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "embedBatch",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.embedBatchParams@0.1.0::textsstringarr",
+      "range": [
+        48,
+        57
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "getModelInfo",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.getModelInfoParams@0.1.0::none",
+      "range": [
+        62,
+        64
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.isReady",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "isReady",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.isReadyParams@0.1.0::none",
+      "range": [
+        69,
+        71
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "generateEmbedding",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.generateEmbeddingParams@0.1.0::textstring",
+      "range": [
+        77,
+        93
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.hashString",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "hashString",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.hashStringParams@0.1.0::strstring",
+      "range": [
+        98,
+        106
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.nextHash",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "nextHash",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.nextHashParams@0.1.0::seednumber",
+      "range": [
+        111,
+        116
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "normalizeVector",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.normalizeVectorParams@0.1.0::vectornumberarr",
+      "range": [
+        121,
+        127
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.clearCache",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "clearCache",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.clearCacheParams@0.1.0::none",
+      "range": [
+        132,
+        134
+      ]
+    },
+    {
+      "id": "local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+      "file": "../../src/domain/components/vector-store\\embeddings\\local-embedding-service.ts",
+      "kind": "method",
+      "name": "getCacheStats",
+      "class_name": "LocalEmbeddingService",
+      "exported": true,
+      "params_contract": "LocalEmbeddingService.getCacheStatsParams@0.1.0::none",
+      "range": [
+        139,
+        141
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "class",
+      "name": "OpenAIEmbeddingService",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        9,
+        180
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "constructor",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.constructorParams@0.1.0::configEmbeddingServiceConfig",
+      "range": [
+        17,
+        39
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "embed",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.embedParams@0.1.0::textstring",
+      "range": [
+        44,
+        57
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "embedBatch",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.embedBatchParams@0.1.0::textsstringarr",
+      "range": [
+        62,
+        94
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "getModelInfo",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.getModelInfoParams@0.1.0::none",
+      "range": [
+        99,
+        101
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "isReady",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.isReadyParams@0.1.0::none",
+      "range": [
+        106,
+        114
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "callOpenAIEmbedding",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.callOpenAIEmbeddingParams@0.1.0::textstring",
+      "range": [
+        119,
+        139
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "callOpenAIBatchEmbedding",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.callOpenAIBatchEmbeddingParams@0.1.0::textsstringarr",
+      "range": [
+        144,
+        165
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "clearCache",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.clearCacheParams@0.1.0::none",
+      "range": [
+        170,
+        172
+      ]
+    },
+    {
+      "id": "openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+      "file": "../../src/domain/components/vector-store\\embeddings\\openai-embedding-service.ts",
+      "kind": "method",
+      "name": "getCacheStats",
+      "class_name": "OpenAIEmbeddingService",
+      "exported": true,
+      "params_contract": "OpenAIEmbeddingService.getCacheStatsParams@0.1.0::none",
+      "range": [
+        177,
+        179
+      ]
+    },
+    {
+      "id": "batch-indexer.ts::BatchIndexer",
+      "file": "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+      "kind": "class",
+      "name": "BatchIndexer",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        14,
+        133
+      ]
+    },
+    {
+      "id": "batch-indexer.ts::BatchIndexer.for",
+      "file": "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+      "kind": "method",
+      "name": "for",
+      "class_name": "BatchIndexer",
+      "exported": true,
+      "params_contract": "BatchIndexer.forParams@0.1.0::leti0icomponentslengthithisbatchSize",
+      "range": [
+        39,
+        55
+      ]
+    },
+    {
+      "id": "batch-indexer.ts::BatchIndexer.extractMetadata",
+      "file": "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+      "kind": "method",
+      "name": "extractMetadata",
+      "class_name": "BatchIndexer",
+      "exported": true,
+      "params_contract": "BatchIndexer.extractMetadataParams@0.1.0::componentIdstring-componentDataRecordstr",
+      "range": [
+        91,
+        103
+      ]
+    },
+    {
+      "id": "batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+      "file": "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+      "kind": "method",
+      "name": "generateEmbeddingText",
+      "class_name": "BatchIndexer",
+      "exported": true,
+      "params_contract": "BatchIndexer.generateEmbeddingTextParams@0.1.0::metadataComponentMetadata",
+      "range": [
+        108,
+        118
+      ]
+    },
+    {
+      "id": "batch-indexer.ts::BatchIndexer.getErrors",
+      "file": "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+      "kind": "method",
+      "name": "getErrors",
+      "class_name": "BatchIndexer",
+      "exported": true,
+      "params_contract": "BatchIndexer.getErrorsParams@0.1.0::none",
+      "range": [
+        123,
+        125
+      ]
+    },
+    {
+      "id": "batch-indexer.ts::BatchIndexer.clearErrors",
+      "file": "../../src/domain/components/vector-store\\indexing\\batch-indexer.ts",
+      "kind": "method",
+      "name": "clearErrors",
+      "class_name": "BatchIndexer",
+      "exported": true,
+      "params_contract": "BatchIndexer.clearErrorsParams@0.1.0::none",
+      "range": [
+        130,
+        132
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "class",
+      "name": "DefaultComponentIndexer",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        11,
+        173
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "indexDirectory",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.indexDirectoryParams@0.1.0::dirPathstring",
+      "range": [
+        31,
+        69
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "indexComponent",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.indexComponentParams@0.1.0::componentIdstring-componentDataRecordstr",
+      "range": [
+        74,
+        96
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "extractMetadata",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.extractMetadataParams@0.1.0::componentIdstring-componentDataRecordstr",
+      "range": [
+        101,
+        121
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "generateEmbeddingText",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.generateEmbeddingTextParams@0.1.0::metadataComponentMetadata",
+      "range": [
+        126,
+        136
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.getProgress",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "getProgress",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.getProgressParams@0.1.0::none",
+      "range": [
+        141,
+        143
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.updateProgress",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "updateProgress",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.updateProgressParams@0.1.0::none",
+      "range": [
+        148,
+        158
+      ]
+    },
+    {
+      "id": "component-indexer.ts::DefaultComponentIndexer.clear",
+      "file": "../../src/domain/components/vector-store\\indexing\\component-indexer.ts",
+      "kind": "method",
+      "name": "clear",
+      "class_name": "DefaultComponentIndexer",
+      "exported": true,
+      "params_contract": "DefaultComponentIndexer.clearParams@0.1.0::none",
+      "range": [
+        163,
+        172
+      ]
+    },
+    {
+      "id": "component-loader.ts::ComponentLoader",
+      "file": "../../src/domain/components/vector-store\\loaders\\component-loader.ts",
+      "kind": "class",
+      "name": "ComponentLoader",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        15,
+        45
+      ]
+    },
+    {
+      "id": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "file": "../../src/domain/components/vector-store\\loaders\\component-loader.ts",
+      "kind": "method",
+      "name": "getComponentIndex",
+      "class_name": "ComponentLoader",
+      "exported": true,
+      "params_contract": "ComponentLoader.getComponentIndexParams@0.1.0::basePathstringjson-components-indexFiles",
+      "range": [
+        16,
+        23
+      ]
+    },
+    {
+      "id": "component-loader.ts::ComponentLoader.loadComponent",
+      "file": "../../src/domain/components/vector-store\\loaders\\component-loader.ts",
+      "kind": "method",
+      "name": "loadComponent",
+      "class_name": "ComponentLoader",
+      "exported": true,
+      "params_contract": "ComponentLoader.loadComponentParams@0.1.0::filenamestring-basePathstringjson-compon",
+      "range": [
+        25,
+        31
+      ]
+    },
+    {
+      "id": "component-loader.ts::ComponentLoader.loadAll",
+      "file": "../../src/domain/components/vector-store\\loaders\\component-loader.ts",
+      "kind": "method",
+      "name": "loadAll",
+      "class_name": "ComponentLoader",
+      "exported": true,
+      "params_contract": "ComponentLoader.loadAllParams@0.1.0::optionsComponentLoaderOptions",
+      "range": [
+        33,
+        44
+      ]
+    },
+    {
+      "id": "similarity-search.ts::cosineSimilarity",
+      "file": "../../src/domain/components/vector-store\\search\\similarity-search.ts",
+      "kind": "function",
+      "name": "cosineSimilarity",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "cosineSimilarityParams@0.1.0::vectorAnumberarr-vectorBnumberarr",
+      "range": [
+        15,
+        48
+      ]
+    },
+    {
+      "id": "similarity-search.ts::normalizeVector",
+      "file": "../../src/domain/components/vector-store\\search\\similarity-search.ts",
+      "kind": "function",
+      "name": "normalizeVector",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "normalizeVectorParams@0.1.0::vectornumberarr",
+      "range": [
+        57,
+        70
+      ]
+    },
+    {
+      "id": "similarity-search.ts::euclideanDistance",
+      "file": "../../src/domain/components/vector-store\\search\\similarity-search.ts",
+      "kind": "function",
+      "name": "euclideanDistance",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "euclideanDistanceParams@0.1.0::vectorAnumberarr-vectorBnumberarr",
+      "range": [
+        80,
+        92
+      ]
+    },
+    {
+      "id": "similarity-search.ts::manhattanDistance",
+      "file": "../../src/domain/components/vector-store\\search\\similarity-search.ts",
+      "kind": "function",
+      "name": "manhattanDistance",
+      "class_name": null,
+      "exported": true,
+      "params_contract": "manhattanDistanceParams@0.1.0::vectorAnumberarr-vectorBnumberarr",
+      "range": [
+        102,
+        113
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "class",
+      "name": "InMemoryVectorStore",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        21,
+        161
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.initialize",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "initialize",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.initializeParams@0.1.0::embeddingDimensionsnumber",
+      "range": [
+        30,
+        33
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.add",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "add",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.addParams@0.1.0::idstring-embeddingnumberarr-metadataComp",
+      "range": [
+        38,
+        56
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.search",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "search",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.searchParams@0.1.0::querynumberarr-optionsSearchOptions",
+      "range": [
+        61,
+        118
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.get",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "get",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.getParams@0.1.0::idstring",
+      "range": [
+        123,
+        126
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.remove",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "remove",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.removeParams@0.1.0::idstring",
+      "range": [
+        131,
+        134
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.clear",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "clear",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.clearParams@0.1.0::none",
+      "range": [
+        139,
+        142
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.stats",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "stats",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.statsParams@0.1.0::none",
+      "range": [
+        147,
+        153
+      ]
+    },
+    {
+      "id": "in-memory-store.ts::InMemoryVectorStore.isInitialized",
+      "file": "../../src/domain/components/vector-store\\store\\in-memory-store.ts",
+      "kind": "method",
+      "name": "isInitialized",
+      "class_name": "InMemoryVectorStore",
+      "exported": true,
+      "params_contract": "InMemoryVectorStore.isInitializedParams@0.1.0::none",
+      "range": [
+        158,
+        160
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "class",
+      "name": "IndexedVectorStore",
+      "class_name": null,
+      "exported": true,
+      "params_contract": null,
+      "range": [
+        26,
+        283
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.initialize",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "initialize",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.initializeParams@0.1.0::dimensionsnumber",
+      "range": [
+        39,
+        42
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.add",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "add",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.addParams@0.1.0::idstring-embeddingnumberarr-metadataComp",
+      "range": [
+        47,
+        63
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "search",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.searchParams@0.1.0::querynumberarr-optionsSearchOptions",
+      "range": [
+        68,
+        112
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.get",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "get",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.getParams@0.1.0::idstring",
+      "range": [
+        117,
+        120
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.remove",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "remove",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.removeParams@0.1.0::idstring",
+      "range": [
+        125,
+        131
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.clear",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "clear",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.clearParams@0.1.0::none",
+      "range": [
+        136,
+        141
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.stats",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "stats",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.statsParams@0.1.0::none",
+      "range": [
+        146,
+        153
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "isInitialized",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.isInitializedParams@0.1.0::none",
+      "range": [
+        158,
+        160
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "updateIndices",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.updateIndicesParams@0.1.0::idstring-metadataComponentMetadata",
+      "range": [
+        165,
+        191
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "removeFromIndices",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.removeFromIndicesParams@0.1.0::idstring-metadataComponentMetadata",
+      "range": [
+        196,
+        215
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "if",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.ifParams@0.1.0::filterscategorythiscategoryIndexfiltersc",
+      "range": [
+        228,
+        230
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "if",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.ifParams@0.1.0::filterstypethistypeIndexfilterstype",
+      "range": [
+        233,
+        240
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "if",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.ifParams@0.1.0::filterstagsfilterstagslength0",
+      "range": [
+        243,
+        256
+      ]
+    },
+    {
+      "id": "indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "file": "../../src/domain/components/vector-store\\store\\indexed-vector-store.ts",
+      "kind": "method",
+      "name": "estimateMemoryUsage",
+      "class_name": "IndexedVectorStore",
+      "exported": true,
+      "params_contract": "IndexedVectorStore.estimateMemoryUsageParams@0.1.0::none",
+      "range": [
+        264,
+        282
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "name": "embed",
+      "line": 35
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+      "to": "in-memory-store.ts::InMemoryVectorStore.search",
+      "name": "search",
+      "line": 38
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+      "to": "",
+      "name": "map",
+      "line": 44
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+      "to": "ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+      "name": "buildSystemPrompt",
+      "line": 47
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+      "to": "",
+      "name": "forEach",
+      "line": 69
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+      "to": "",
+      "name": "join",
+      "line": 74
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+      "to": "",
+      "name": "substring",
+      "line": 78
+    },
+    {
+      "frm": "ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+      "to": "in-memory-store.ts::InMemoryVectorStore.stats",
+      "name": "stats",
+      "line": 121
+    },
+    {
+      "frm": "pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "to": "",
+      "name": "filter",
+      "line": 26
+    },
+    {
+      "frm": "pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "to": "",
+      "name": "includes",
+      "line": 26
+    },
+    {
+      "frm": "pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "to": "",
+      "name": "includes",
+      "line": 26
+    },
+    {
+      "frm": "pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "to": "",
+      "name": "push",
+      "line": 28
+    },
+    {
+      "frm": "pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "to": "",
+      "name": "map",
+      "line": 31
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 31
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "includes",
+      "line": 33
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 33
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "word",
+      "line": 37
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "match",
+      "line": 38
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "toUpperCase",
+      "line": 39
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "to": "",
+      "name": "slice",
+      "line": 39
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.findByType",
+      "to": "",
+      "name": "find",
+      "line": 43
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.findByType",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 43
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.findByType",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 43
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+      "to": "template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "name": "extractComponentType",
+      "line": 47
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+      "to": "template-discovery.ts::TemplateDiscoveryService.findByType",
+      "name": "findByType",
+      "line": 51
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+      "to": "",
+      "name": "find",
+      "line": 70
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 79
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "map",
+      "line": 81
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "includes",
+      "line": 83
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 83
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "includes",
+      "line": 84
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 84
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "some",
+      "line": 85
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "includes",
+      "line": 85
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 85
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "filter",
+      "line": 92
+    },
+    {
+      "frm": "template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "to": "",
+      "name": "sort",
+      "line": 93
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+      "to": "",
+      "name": "assign",
+      "line": 157
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "",
+      "name": "split",
+      "line": 174
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "",
+      "name": "filter",
+      "line": 174
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "",
+      "name": "trim",
+      "line": 174
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "",
+      "name": "forEach",
+      "line": 175
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "",
+      "name": "trim",
+      "line": 176
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "in-memory-store.ts::InMemoryVectorStore.add",
+      "name": "add",
+      "line": 177
+    },
+    {
+      "frm": "template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "to": "",
+      "name": "trim",
+      "line": 177
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.get",
+      "to": "embedding-cache.ts::EmbeddingCache.get",
+      "name": "get",
+      "line": 41
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.get",
+      "to": "",
+      "name": "now",
+      "line": 49
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.set",
+      "to": "embedding-cache.ts::EmbeddingCache.has",
+      "name": "has",
+      "line": 66
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.set",
+      "to": "",
+      "name": "keys",
+      "line": 67
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.set",
+      "to": "",
+      "name": "next",
+      "line": 67
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.set",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 71
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.set",
+      "to": "",
+      "name": "now",
+      "line": 73
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.has",
+      "to": "embedding-cache.ts::EmbeddingCache.get",
+      "name": "get",
+      "line": 83
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.has",
+      "to": "",
+      "name": "now",
+      "line": 90
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.clear",
+      "to": "embedding-cache.ts::EmbeddingCache.clear",
+      "name": "clear",
+      "line": 102
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.removeExpired",
+      "to": "",
+      "name": "now",
+      "line": 111
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.removeExpired",
+      "to": "",
+      "name": "forEach",
+      "line": 114
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.removeExpired",
+      "to": "",
+      "name": "push",
+      "line": 116
+    },
+    {
+      "frm": "embedding-cache.ts::EmbeddingCache.removeExpired",
+      "to": "",
+      "name": "forEach",
+      "line": 120
+    },
+    {
+      "frm": "embedding-service-factory.ts::EmbeddingServiceFactory.create",
+      "to": "openai-embedding-service.ts::OpenAIEmbeddingService",
+      "name": "OpenAIEmbeddingService",
+      "line": 17
+    },
+    {
+      "frm": "embedding-service-factory.ts::EmbeddingServiceFactory.create",
+      "to": "local-embedding-service.ts::LocalEmbeddingService",
+      "name": "LocalEmbeddingService",
+      "line": 19
+    },
+    {
+      "frm": "embedding-service-factory.ts::EmbeddingServiceFactory.create",
+      "to": "",
+      "name": "Error",
+      "line": 22
+    },
+    {
+      "frm": "embedding-service-factory.ts::EmbeddingServiceFactory.create",
+      "to": "",
+      "name": "Error",
+      "line": 24
+    },
+    {
+      "frm": "embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+      "to": "local-embedding-service.ts::LocalEmbeddingService",
+      "name": "LocalEmbeddingService",
+      "line": 32
+    },
+    {
+      "frm": "embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+      "to": "openai-embedding-service.ts::OpenAIEmbeddingService",
+      "name": "OpenAIEmbeddingService",
+      "line": 43
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.constructor",
+      "to": "embedding-cache.ts::EmbeddingCache",
+      "name": "EmbeddingCache",
+      "line": 19
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "to": "embedding-cache.ts::EmbeddingCache.has",
+      "name": "has",
+      "line": 36
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "to": "embedding-cache.ts::EmbeddingCache.get",
+      "name": "get",
+      "line": 37
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "name": "generateEmbedding",
+      "line": 40
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 41
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "to": "",
+      "name": "map",
+      "line": 49
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "to": "embedding-cache.ts::EmbeddingCache.has",
+      "name": "has",
+      "line": 50
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "to": "embedding-cache.ts::EmbeddingCache.get",
+      "name": "get",
+      "line": 51
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "name": "generateEmbedding",
+      "line": 53
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 54
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.hashString",
+      "name": "hashString",
+      "line": 81
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.nextHash",
+      "name": "nextHash",
+      "line": 85
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "to": "",
+      "name": "push",
+      "line": 88
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+      "name": "normalizeVector",
+      "line": 92
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.hashString",
+      "to": "",
+      "name": "charCodeAt",
+      "line": 101
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.hashString",
+      "to": "",
+      "name": "abs",
+      "line": 105
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+      "to": "",
+      "name": "sqrt",
+      "line": 122
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+      "to": "",
+      "name": "reduce",
+      "line": 122
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+      "to": "",
+      "name": "map",
+      "line": 126
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.clearCache",
+      "to": "embedding-cache.ts::EmbeddingCache.clear",
+      "name": "clear",
+      "line": 133
+    },
+    {
+      "frm": "local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+      "to": "embedding-cache.ts::EmbeddingCache.getStats",
+      "name": "getStats",
+      "line": 140
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+      "to": "",
+      "name": "Error",
+      "line": 19
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+      "to": "embedding-cache.ts::EmbeddingCache",
+      "name": "EmbeddingCache",
+      "line": 28
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+      "to": "embedding-cache.ts::EmbeddingCache.has",
+      "name": "has",
+      "line": 46
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+      "to": "embedding-cache.ts::EmbeddingCache.get",
+      "name": "get",
+      "line": 47
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+      "to": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "name": "callOpenAIEmbedding",
+      "line": 51
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 54
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "to": "embedding-cache.ts::EmbeddingCache.get",
+      "name": "get",
+      "line": 69
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "to": "",
+      "name": "push",
+      "line": 73
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "to": "",
+      "name": "push",
+      "line": 74
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "to": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "name": "callOpenAIBatchEmbedding",
+      "line": 84
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 89
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+      "to": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "name": "callOpenAIEmbedding",
+      "line": 109
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "to": "",
+      "name": "fetch",
+      "line": 120
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "to": "",
+      "name": "stringify",
+      "line": 126
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "to": "",
+      "name": "json",
+      "line": 133
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "to": "",
+      "name": "Error",
+      "line": 134
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "to": "",
+      "name": "json",
+      "line": 137
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "fetch",
+      "line": 145
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "stringify",
+      "line": 151
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "json",
+      "line": 158
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "Error",
+      "line": 159
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "json",
+      "line": 162
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "sort",
+      "line": 164
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "to": "",
+      "name": "map",
+      "line": 164
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+      "to": "embedding-cache.ts::EmbeddingCache.clear",
+      "name": "clear",
+      "line": 171
+    },
+    {
+      "frm": "openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+      "to": "embedding-cache.ts::EmbeddingCache.getStats",
+      "name": "getStats",
+      "line": 178
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.for",
+      "to": "",
+      "name": "slice",
+      "line": 40
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.for",
+      "to": "",
+      "name": "allSettled",
+      "line": 43
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.for",
+      "to": "",
+      "name": "map",
+      "line": 44
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.for",
+      "to": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "name": "indexComponent",
+      "line": 44
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.for",
+      "to": "",
+      "name": "forEach",
+      "line": 48
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+      "to": "",
+      "name": "filter",
+      "line": 117
+    },
+    {
+      "frm": "batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+      "to": "",
+      "name": "join",
+      "line": 117
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "",
+      "name": "Date",
+      "line": 36
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "component-loader.ts::ComponentLoader",
+      "name": "ComponentLoader",
+      "line": 40
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "component-loader.ts::ComponentLoader.loadAll",
+      "name": "loadAll",
+      "line": 43
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "",
+      "name": "push",
+      "line": 45
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "",
+      "name": "String",
+      "line": 47
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "",
+      "name": "Date",
+      "line": 48
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "to": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "name": "indexComponent",
+      "line": 60
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+      "name": "extractMetadata",
+      "line": 77
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+      "name": "generateEmbeddingText",
+      "line": 80
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "local-embedding-service.ts::LocalEmbeddingService.embed",
+      "name": "embed",
+      "line": 81
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "in-memory-store.ts::InMemoryVectorStore.add",
+      "name": "add",
+      "line": 84
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "component-indexer.ts::DefaultComponentIndexer.updateProgress",
+      "name": "updateProgress",
+      "line": 87
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "",
+      "name": "String",
+      "line": 89
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "",
+      "name": "push",
+      "line": 90
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "to": "",
+      "name": "Date",
+      "line": 93
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+      "to": "",
+      "name": "keys",
+      "line": 106
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+      "to": "",
+      "name": "substring",
+      "line": 118
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+      "to": "",
+      "name": "filter",
+      "line": 135
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+      "to": "",
+      "name": "join",
+      "line": 135
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.updateProgress",
+      "to": "",
+      "name": "now",
+      "line": 151
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.updateProgress",
+      "to": "",
+      "name": "getTime",
+      "line": 151
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.clear",
+      "to": "component-indexer.ts::DefaultComponentIndexer.clear",
+      "name": "clear",
+      "line": 164
+    },
+    {
+      "frm": "component-indexer.ts::DefaultComponentIndexer.clear",
+      "to": "",
+      "name": "Date",
+      "line": 169
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "to": "",
+      "name": "join",
+      "line": 17
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "to": "",
+      "name": "readFile",
+      "line": 18
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "to": "",
+      "name": "parse",
+      "line": 19
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "to": "",
+      "name": "isArray",
+      "line": 20
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "to": "",
+      "name": "isArray",
+      "line": 21
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "to": "",
+      "name": "Error",
+      "line": 22
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadComponent",
+      "to": "",
+      "name": "join",
+      "line": 26
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadComponent",
+      "to": "",
+      "name": "readFile",
+      "line": 27
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadComponent",
+      "to": "",
+      "name": "parse",
+      "line": 28
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadComponent",
+      "to": "",
+      "name": "basename",
+      "line": 29
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadComponent",
+      "to": "",
+      "name": "extname",
+      "line": 29
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadAll",
+      "to": "component-loader.ts::ComponentLoader.getComponentIndex",
+      "name": "getComponentIndex",
+      "line": 36
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadAll",
+      "to": "component-loader.ts::ComponentLoader.loadComponent",
+      "name": "loadComponent",
+      "line": 39
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadAll",
+      "to": "",
+      "name": "Error",
+      "line": 40
+    },
+    {
+      "frm": "component-loader.ts::ComponentLoader.loadAll",
+      "to": "",
+      "name": "push",
+      "line": 41
+    },
+    {
+      "frm": "similarity-search.ts::cosineSimilarity",
+      "to": "",
+      "name": "Error",
+      "line": 17
+    },
+    {
+      "frm": "similarity-search.ts::cosineSimilarity",
+      "to": "",
+      "name": "sqrt",
+      "line": 38
+    },
+    {
+      "frm": "similarity-search.ts::cosineSimilarity",
+      "to": "",
+      "name": "sqrt",
+      "line": 39
+    },
+    {
+      "frm": "similarity-search.ts::normalizeVector",
+      "to": "",
+      "name": "sqrt",
+      "line": 63
+    },
+    {
+      "frm": "similarity-search.ts::normalizeVector",
+      "to": "",
+      "name": "map",
+      "line": 69
+    },
+    {
+      "frm": "similarity-search.ts::euclideanDistance",
+      "to": "",
+      "name": "Error",
+      "line": 82
+    },
+    {
+      "frm": "similarity-search.ts::euclideanDistance",
+      "to": "",
+      "name": "sqrt",
+      "line": 91
+    },
+    {
+      "frm": "similarity-search.ts::manhattanDistance",
+      "to": "",
+      "name": "Error",
+      "line": 104
+    },
+    {
+      "frm": "similarity-search.ts::manhattanDistance",
+      "to": "",
+      "name": "abs",
+      "line": 109
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.add",
+      "to": "",
+      "name": "Error",
+      "line": 40
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.add",
+      "to": "",
+      "name": "Error",
+      "line": 44
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.add",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 49
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.add",
+      "to": "",
+      "name": "Date",
+      "line": 55
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "Error",
+      "line": 63
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "Error",
+      "line": 67
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "forEach",
+      "line": 79
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "some",
+      "line": 89
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "includes",
+      "line": 90
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "similarity-search.ts::cosineSimilarity",
+      "name": "cosineSimilarity",
+      "line": 98
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "push",
+      "line": 101
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "similarity",
+      "line": 110
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "sort",
+      "line": 111
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "slice",
+      "line": 114
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.search",
+      "to": "",
+      "name": "map",
+      "line": 114
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.get",
+      "to": "in-memory-store.ts::InMemoryVectorStore.get",
+      "name": "get",
+      "line": 124
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.remove",
+      "to": "",
+      "name": "Date",
+      "line": 133
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.clear",
+      "to": "in-memory-store.ts::InMemoryVectorStore.clear",
+      "name": "clear",
+      "line": 140
+    },
+    {
+      "frm": "in-memory-store.ts::InMemoryVectorStore.clear",
+      "to": "",
+      "name": "Date",
+      "line": 141
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.add",
+      "to": "",
+      "name": "Error",
+      "line": 49
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.add",
+      "to": "",
+      "name": "Error",
+      "line": 53
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.add",
+      "to": "embedding-cache.ts::EmbeddingCache.set",
+      "name": "set",
+      "line": 59
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.add",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "name": "updateIndices",
+      "line": 62
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "Error",
+      "line": 70
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "getFilteredCandidates",
+      "line": 81
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "Set",
+      "line": 83
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "keys",
+      "line": 83
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "forEach",
+      "line": 89
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.get",
+      "name": "get",
+      "line": 90
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "similarity-search.ts::cosineSimilarity",
+      "name": "cosineSimilarity",
+      "line": 93
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "push",
+      "line": 96
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "sort",
+      "line": 106
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "forEach",
+      "line": 107
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.search",
+      "to": "",
+      "name": "slice",
+      "line": 111
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.get",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.get",
+      "name": "get",
+      "line": 118
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.remove",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.get",
+      "name": "get",
+      "line": 126
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.remove",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "name": "removeFromIndices",
+      "line": 130
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.clear",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.clear",
+      "name": "clear",
+      "line": 137
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.stats",
+      "to": "",
+      "name": "Date",
+      "line": 150
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.stats",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "name": "estimateMemoryUsage",
+      "line": 151
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "includes",
+      "line": 170
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "push",
+      "line": 171
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "includes",
+      "line": 178
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "push",
+      "line": 179
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "forEach",
+      "line": 183
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "includes",
+      "line": 187
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "to": "",
+      "name": "push",
+      "line": 188
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "to": "",
+      "name": "filter",
+      "line": 199
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "to": "",
+      "name": "filter",
+      "line": 206
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "to": "",
+      "name": "forEach",
+      "line": 210
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "to": "",
+      "name": "filter",
+      "line": 212
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "Set",
+      "line": 229
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "Set",
+      "line": 234
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "Set",
+      "line": 236
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "filter",
+      "line": 236
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "embedding-cache.ts::EmbeddingCache.has",
+      "name": "has",
+      "line": 236
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "forEach",
+      "line": 245
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "forEach",
+      "line": 247
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "indexed-vector-store.ts::IndexedVectorStore.add",
+      "name": "add",
+      "line": 247
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "Set",
+      "line": 252
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "",
+      "name": "filter",
+      "line": 252
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.if",
+      "to": "embedding-cache.ts::EmbeddingCache.has",
+      "name": "has",
+      "line": 252
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "to": "",
+      "name": "forEach",
+      "line": 268
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "to": "",
+      "name": "stringify",
+      "line": 273
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "to": "",
+      "name": "values",
+      "line": 277
+    },
+    {
+      "frm": "indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "to": "",
+      "name": "forEach",
+      "line": 277
+    }
+  ],
+  "contracts": [
+    {
+      "id": "AIComponentGenerator.prepareGenerationContextParams@0.1.0::requestAIGenerationRequest",
+      "kind": "params",
+      "props": [
+        {
+          "name": "request",
+          "raw": "AIGenerationRequest"
+        }
+      ]
+    },
+    {
+      "id": "AIComponentGenerator.buildSystemPromptParams@0.1.0::userPromptstring-similarComponentsCompon",
+      "kind": "params",
+      "props": [
+        {
+          "name": "userPrompt",
+          "raw": "string"
+        },
+        {
+          "name": "similarComponents",
+          "raw": "ComponentMetadata[]"
+        }
+      ]
+    },
+    {
+      "id": "AIComponentGenerator.getDiscoveryMetricsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "PatternExtractor.constructorParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "PatternExtractor.extractPatternsParams@0.1.0::componentsanyarrarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "components",
+          "raw": "any[]"
+        }
+      ]
+    },
+    {
+      "id": "PatternExtractor.analyzePatternParams@0.1.0::patternTypestring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "patternType",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "PatternExtractor.getPatternUsageParams@0.1.0::_patternNamestring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "_patternName",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "TemplateDiscoveryService.constructorParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "TemplateDiscoveryService.extractComponentTypeParams@0.1.0::promptstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "prompt",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "TemplateDiscoveryService.findByTypeParams@0.1.0::typestring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "type",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "TemplateDiscoveryService.detectExactMatchParams@0.1.0::promptstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "prompt",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "TemplateDiscoveryService.findExactMatchParams@0.1.0::componentTypestring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "componentType",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "TemplateDiscoveryService.rankSimilarComponentsParams@0.1.0::querystring-_constraintsany",
+      "kind": "params",
+      "props": [
+        {
+          "name": "query",
+          "raw": "string"
+        },
+        {
+          "name": "_constraints",
+          "raw": "any"
+        }
+      ]
+    },
+    {
+      "id": "TemplateSynthesisEngine.constructorParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "TemplateSynthesisEngine.ifParams@0.1.0::similarComponentsororsimilarComponentsle",
+      "kind": "params",
+      "props": [
+        {
+          "name": "!similarComponents || similarComponents.length",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "TemplateSynthesisEngine.ifParams@0.1.0::baseui",
+      "kind": "params",
+      "props": [
+        {
+          "name": "!base.ui",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "TemplateSynthesisEngine.mergeVariablesParams@0.1.0::componentsFullComponentarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "components",
+          "raw": "FullComponent[]"
+        }
+      ]
+    },
+    {
+      "id": "TemplateSynthesisEngine.mergeCssParams@0.1.0::componentsFullComponentarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "components",
+          "raw": "FullComponent[]"
+        }
+      ]
+    },
+    {
+      "id": "EmbeddingCache.constructorParams@0.1.0::maxSizenumber10000-ttlnumber2460601000",
+      "kind": "params",
+      "props": [
+        {
+          "name": "maxSize",
+          "raw": "number"
+        },
+        {
+          "name": "ttl",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "EmbeddingCache.getParams@0.1.0::keystring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "key",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "EmbeddingCache.setParams@0.1.0::keystring-embeddingnumberarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "key",
+          "raw": "string"
+        },
+        {
+          "name": "embedding",
+          "raw": "number[]"
+        }
+      ]
+    },
+    {
+      "id": "EmbeddingCache.hasParams@0.1.0::keystring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "key",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "EmbeddingCache.clearParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "EmbeddingCache.removeExpiredParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "EmbeddingCache.getStatsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "EmbeddingCache.sizeParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "EmbeddingServiceFactory.createParams@0.1.0::configEmbeddingServiceConfig",
+      "kind": "params",
+      "props": [
+        {
+          "name": "config",
+          "raw": "EmbeddingServiceConfig"
+        }
+      ]
+    },
+    {
+      "id": "EmbeddingServiceFactory.createLocalParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "EmbeddingServiceFactory.createOpenAIParams@0.1.0::apiKeystring-modelstring-dimensionsnumbe",
+      "kind": "params",
+      "props": [
+        {
+          "name": "apiKey",
+          "raw": "string"
+        },
+        {
+          "name": "model",
+          "raw": "string"
+        },
+        {
+          "name": "dimensions",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.constructorParams@0.1.0::configEmbeddingServiceConfig",
+      "kind": "params",
+      "props": [
+        {
+          "name": "config",
+          "raw": "EmbeddingServiceConfig"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.embedParams@0.1.0::textstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.embedBatchParams@0.1.0::textsstringarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "texts",
+          "raw": "string[]"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.getModelInfoParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "LocalEmbeddingService.isReadyParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "LocalEmbeddingService.generateEmbeddingParams@0.1.0::textstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.hashStringParams@0.1.0::strstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "str",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.nextHashParams@0.1.0::seednumber",
+      "kind": "params",
+      "props": [
+        {
+          "name": "seed",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.normalizeVectorParams@0.1.0::vectornumberarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "vector",
+          "raw": "number[]"
+        }
+      ]
+    },
+    {
+      "id": "LocalEmbeddingService.clearCacheParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "LocalEmbeddingService.getCacheStatsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "OpenAIEmbeddingService.constructorParams@0.1.0::configEmbeddingServiceConfig",
+      "kind": "params",
+      "props": [
+        {
+          "name": "config",
+          "raw": "EmbeddingServiceConfig"
+        }
+      ]
+    },
+    {
+      "id": "OpenAIEmbeddingService.embedParams@0.1.0::textstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "OpenAIEmbeddingService.embedBatchParams@0.1.0::textsstringarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "texts",
+          "raw": "string[]"
+        }
+      ]
+    },
+    {
+      "id": "OpenAIEmbeddingService.getModelInfoParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "OpenAIEmbeddingService.isReadyParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "OpenAIEmbeddingService.callOpenAIEmbeddingParams@0.1.0::textstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "text",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "OpenAIEmbeddingService.callOpenAIBatchEmbeddingParams@0.1.0::textsstringarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "texts",
+          "raw": "string[]"
+        }
+      ]
+    },
+    {
+      "id": "OpenAIEmbeddingService.clearCacheParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "OpenAIEmbeddingService.getCacheStatsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "BatchIndexer.forParams@0.1.0::leti0icomponentslengthithisbatchSize",
+      "kind": "params",
+      "props": [
+        {
+          "name": "let i",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "BatchIndexer.extractMetadataParams@0.1.0::componentIdstring-componentDataRecordstr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "componentId",
+          "raw": "string"
+        },
+        {
+          "name": "componentData",
+          "raw": "Record<string, unknown>"
+        }
+      ]
+    },
+    {
+      "id": "BatchIndexer.generateEmbeddingTextParams@0.1.0::metadataComponentMetadata",
+      "kind": "params",
+      "props": [
+        {
+          "name": "metadata",
+          "raw": "ComponentMetadata"
+        }
+      ]
+    },
+    {
+      "id": "BatchIndexer.getErrorsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "BatchIndexer.clearErrorsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "DefaultComponentIndexer.indexDirectoryParams@0.1.0::dirPathstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "dirPath",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "DefaultComponentIndexer.indexComponentParams@0.1.0::componentIdstring-componentDataRecordstr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "componentId",
+          "raw": "string"
+        },
+        {
+          "name": "componentData",
+          "raw": "Record<string, unknown>"
+        }
+      ]
+    },
+    {
+      "id": "DefaultComponentIndexer.extractMetadataParams@0.1.0::componentIdstring-componentDataRecordstr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "componentId",
+          "raw": "string"
+        },
+        {
+          "name": "componentData",
+          "raw": "Record<string, unknown>"
+        }
+      ]
+    },
+    {
+      "id": "DefaultComponentIndexer.generateEmbeddingTextParams@0.1.0::metadataComponentMetadata",
+      "kind": "params",
+      "props": [
+        {
+          "name": "metadata",
+          "raw": "ComponentMetadata"
+        }
+      ]
+    },
+    {
+      "id": "DefaultComponentIndexer.getProgressParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "DefaultComponentIndexer.updateProgressParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "DefaultComponentIndexer.clearParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "ComponentLoader.getComponentIndexParams@0.1.0::basePathstringjson-components-indexFiles",
+      "kind": "params",
+      "props": [
+        {
+          "name": "basePath",
+          "raw": "string"
+        },
+        {
+          "name": "indexFile",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "ComponentLoader.loadComponentParams@0.1.0::filenamestring-basePathstringjson-compon",
+      "kind": "params",
+      "props": [
+        {
+          "name": "filename",
+          "raw": "string"
+        },
+        {
+          "name": "basePath",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "ComponentLoader.loadAllParams@0.1.0::optionsComponentLoaderOptions",
+      "kind": "params",
+      "props": [
+        {
+          "name": "options",
+          "raw": "ComponentLoaderOptions"
+        }
+      ]
+    },
+    {
+      "id": "cosineSimilarityParams@0.1.0::vectorAnumberarr-vectorBnumberarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "vectorA",
+          "raw": "number[]"
+        },
+        {
+          "name": "vectorB",
+          "raw": "number[]"
+        }
+      ]
+    },
+    {
+      "id": "normalizeVectorParams@0.1.0::vectornumberarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "vector",
+          "raw": "number[]"
+        }
+      ]
+    },
+    {
+      "id": "euclideanDistanceParams@0.1.0::vectorAnumberarr-vectorBnumberarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "vectorA",
+          "raw": "number[]"
+        },
+        {
+          "name": "vectorB",
+          "raw": "number[]"
+        }
+      ]
+    },
+    {
+      "id": "manhattanDistanceParams@0.1.0::vectorAnumberarr-vectorBnumberarr",
+      "kind": "params",
+      "props": [
+        {
+          "name": "vectorA",
+          "raw": "number[]"
+        },
+        {
+          "name": "vectorB",
+          "raw": "number[]"
+        }
+      ]
+    },
+    {
+      "id": "InMemoryVectorStore.initializeParams@0.1.0::embeddingDimensionsnumber",
+      "kind": "params",
+      "props": [
+        {
+          "name": "embeddingDimensions",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "InMemoryVectorStore.addParams@0.1.0::idstring-embeddingnumberarr-metadataComp",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        },
+        {
+          "name": "embedding",
+          "raw": "number[]"
+        },
+        {
+          "name": "metadata",
+          "raw": "ComponentMetadata"
+        }
+      ]
+    },
+    {
+      "id": "InMemoryVectorStore.searchParams@0.1.0::querynumberarr-optionsSearchOptions",
+      "kind": "params",
+      "props": [
+        {
+          "name": "query",
+          "raw": "number[]"
+        },
+        {
+          "name": "options",
+          "raw": "SearchOptions"
+        }
+      ]
+    },
+    {
+      "id": "InMemoryVectorStore.getParams@0.1.0::idstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "InMemoryVectorStore.removeParams@0.1.0::idstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "InMemoryVectorStore.clearParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "InMemoryVectorStore.statsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "InMemoryVectorStore.isInitializedParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "IndexedVectorStore.initializeParams@0.1.0::dimensionsnumber",
+      "kind": "params",
+      "props": [
+        {
+          "name": "dimensions",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.addParams@0.1.0::idstring-embeddingnumberarr-metadataComp",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        },
+        {
+          "name": "embedding",
+          "raw": "number[]"
+        },
+        {
+          "name": "metadata",
+          "raw": "ComponentMetadata"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.searchParams@0.1.0::querynumberarr-optionsSearchOptions",
+      "kind": "params",
+      "props": [
+        {
+          "name": "query",
+          "raw": "number[]"
+        },
+        {
+          "name": "options",
+          "raw": "SearchOptions"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.getParams@0.1.0::idstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.removeParams@0.1.0::idstring",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.clearParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "IndexedVectorStore.statsParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "IndexedVectorStore.isInitializedParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    },
+    {
+      "id": "IndexedVectorStore.updateIndicesParams@0.1.0::idstring-metadataComponentMetadata",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        },
+        {
+          "name": "metadata",
+          "raw": "ComponentMetadata"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.removeFromIndicesParams@0.1.0::idstring-metadataComponentMetadata",
+      "kind": "params",
+      "props": [
+        {
+          "name": "id",
+          "raw": "string"
+        },
+        {
+          "name": "metadata",
+          "raw": "ComponentMetadata"
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.ifParams@0.1.0::filterscategorythiscategoryIndexfiltersc",
+      "kind": "params",
+      "props": [
+        {
+          "name": "filters.category && this.categoryIndex[filters.category]",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.ifParams@0.1.0::filterstypethistypeIndexfilterstype",
+      "kind": "params",
+      "props": [
+        {
+          "name": "filters.type && this.typeIndex[filters.type]",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.ifParams@0.1.0::filterstagsfilterstagslength0",
+      "kind": "params",
+      "props": [
+        {
+          "name": "filters.tags && filters.tags.length > 0",
+          "raw": ""
+        }
+      ]
+    },
+    {
+      "id": "IndexedVectorStore.estimateMemoryUsageParams@0.1.0::none",
+      "kind": "params",
+      "props": []
+    }
+  ]
+}

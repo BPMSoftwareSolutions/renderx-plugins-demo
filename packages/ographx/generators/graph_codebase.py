@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Graph Codebase - Unified Pipeline Orchestrator
 
@@ -17,10 +18,16 @@ import subprocess
 from pathlib import Path
 from typing import List, Optional
 
+# Ensure UTF-8 output on Windows
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from core.artifact_manager import ArtifactManager, ArtifactConfig, ArtifactManifest
+from core.preflight_validator import PreFlightValidator
 
 
 class CodebaseGrapher:
@@ -69,22 +76,22 @@ class CodebaseGrapher:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
 
             if result.returncode == 0:
-                print(f"✅ {name} completed")
+                print(f"[OK] {name} completed")
                 if result.stdout:
                     for line in result.stdout.strip().split('\n'):
                         if line.strip():
                             print(f"   {line}")
                 return True
             else:
-                print(f"❌ {name} failed (code {result.returncode})")
+                print(f"[!] {name} failed (code {result.returncode})")
                 if result.stderr:
                     print(f"   {result.stderr}")
                 return False
         except subprocess.TimeoutExpired:
-            print(f"❌ {name} timed out")
+            print(f"[!] {name} timed out")
             return False
         except Exception as e:
-            print(f"❌ {name} failed: {e}")
+            print(f"[!] {name} failed: {e}")
             return False
     
     def extract_ir(self):
@@ -232,9 +239,24 @@ class CodebaseGrapher:
         print("OgraphX Codebase Graphing Pipeline")
         print(f"Codebase: {self.codebase_name}")
         print("="*70)
-        
+
+        # Layer 0: Pre-flight validation
+        print("\n🔍 Running pre-flight validation...")
+        validator = PreFlightValidator()
+        validation_result = validator.run_all_checks()
+        if not validation_result.passed:
+            print("\n❌ PRE-FLIGHT VALIDATION FAILED")
+            print("="*70)
+            for error in validation_result.errors:
+                print(f"  • {error}")
+            print("\n💡 Fix by running self-observation first:")
+            print("   cd packages/ographx")
+            print("   python generators/graph_codebase.py --name ographx --roots . --exclude tests,node_modules,__pycache__")
+            return 1
+        print("✅ Pre-flight validation passed\n")
+
         self.setup()
-        
+
         steps = [
             ("Extract IR", self.extract_ir),
             ("Generate Sequences", self.generate_sequences),
@@ -242,7 +264,7 @@ class CodebaseGrapher:
             ("Extract Analysis", self.extract_analysis),
             ("Finalize", self.finalize),
         ]
-        
+
         results = []
         for name, step_func in steps:
             try:
@@ -251,21 +273,21 @@ class CodebaseGrapher:
             except Exception as e:
                 print(f"❌ {name} failed: {e}")
                 results.append((name, False))
-        
+
         # Print final summary
         print("\n" + "="*70)
         print("PIPELINE SUMMARY")
         print("="*70)
-        
+
         passed = sum(1 for _, success in results if success)
         total = len(results)
-        
+
         for name, success in results:
             status = "✅" if success else "❌"
             print(f"{status} {name}")
-        
+
         print(f"\nTotal: {passed}/{total} steps completed")
-        
+
         if passed == total:
             print(f"\n✅ All artifacts generated for '{self.codebase_name}'!")
             return 0

@@ -1,0 +1,4125 @@
+{
+  "version": "0.1.0",
+  "sequences": [
+    {
+      "id": "seq_ai-component-generator.ts::AIComponentGenerator",
+      "name": "Sequence: AIComponentGenerator",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_ai-component-generator.ts::AIComponentGenerator",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_ai-component-generator.ts::AIComponentGenerator",
+              "event": "start:AIComponentGenerator",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_ai-component-generator.ts::AIComponentGenerator",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_ai-component-generator.ts::AIComponentGenerator",
+              "event": "call:AIComponentGenerator",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_ai-component-generator.ts::AIComponentGenerator",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_ai-component-generator.ts::AIComponentGenerator",
+              "event": "end:AIComponentGenerator",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+      "name": "Sequence: prepareGenerationContext",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+              "event": "start:prepareGenerationContext",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+              "event": "call:prepareGenerationContext",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_ai-component-generator.ts::AIComponentGenerator.prepareGenerationContext",
+              "event": "end:prepareGenerationContext",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+      "name": "Sequence: buildSystemPrompt",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+              "event": "start:buildSystemPrompt",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+              "event": "call:buildSystemPrompt",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_ai-component-generator.ts::AIComponentGenerator.buildSystemPrompt",
+              "event": "end:buildSystemPrompt",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+      "name": "Sequence: getDiscoveryMetrics",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+              "event": "start:getDiscoveryMetrics",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+              "event": "call:getDiscoveryMetrics",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_ai-component-generator.ts::AIComponentGenerator.getDiscoveryMetrics",
+              "event": "end:getDiscoveryMetrics",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_pattern-extractor.ts::PatternExtractor",
+      "name": "Sequence: PatternExtractor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_pattern-extractor.ts::PatternExtractor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_pattern-extractor.ts::PatternExtractor",
+              "event": "start:PatternExtractor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_pattern-extractor.ts::PatternExtractor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_pattern-extractor.ts::PatternExtractor",
+              "event": "call:PatternExtractor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_pattern-extractor.ts::PatternExtractor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_pattern-extractor.ts::PatternExtractor",
+              "event": "end:PatternExtractor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_pattern-extractor.ts::PatternExtractor.constructor",
+      "name": "Sequence: constructor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_pattern-extractor.ts::PatternExtractor.constructor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_pattern-extractor.ts::PatternExtractor.constructor",
+              "event": "start:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_pattern-extractor.ts::PatternExtractor.constructor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_pattern-extractor.ts::PatternExtractor.constructor",
+              "event": "call:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_pattern-extractor.ts::PatternExtractor.constructor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_pattern-extractor.ts::PatternExtractor.constructor",
+              "event": "end:constructor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_pattern-extractor.ts::PatternExtractor.extractPatterns",
+      "name": "Sequence: extractPatterns",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_pattern-extractor.ts::PatternExtractor.extractPatterns",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_pattern-extractor.ts::PatternExtractor.extractPatterns",
+              "event": "start:extractPatterns",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_pattern-extractor.ts::PatternExtractor.extractPatterns",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_pattern-extractor.ts::PatternExtractor.extractPatterns",
+              "event": "call:extractPatterns",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_pattern-extractor.ts::PatternExtractor.extractPatterns",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_pattern-extractor.ts::PatternExtractor.extractPatterns",
+              "event": "end:extractPatterns",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_pattern-extractor.ts::PatternExtractor.analyzePattern",
+      "name": "Sequence: analyzePattern",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_pattern-extractor.ts::PatternExtractor.analyzePattern",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_pattern-extractor.ts::PatternExtractor.analyzePattern",
+              "event": "start:analyzePattern",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_pattern-extractor.ts::PatternExtractor.analyzePattern",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_pattern-extractor.ts::PatternExtractor.analyzePattern",
+              "event": "call:analyzePattern",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_pattern-extractor.ts::PatternExtractor.analyzePattern",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_pattern-extractor.ts::PatternExtractor.analyzePattern",
+              "event": "end:analyzePattern",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+      "name": "Sequence: getPatternUsage",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+              "event": "start:getPatternUsage",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+              "event": "call:getPatternUsage",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_pattern-extractor.ts::PatternExtractor.getPatternUsage",
+              "event": "end:getPatternUsage",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService",
+      "name": "Sequence: TemplateDiscoveryService",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService",
+              "event": "start:TemplateDiscoveryService",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService",
+              "event": "call:TemplateDiscoveryService",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService",
+              "event": "end:TemplateDiscoveryService",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService.constructor",
+      "name": "Sequence: constructor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService.constructor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService.constructor",
+              "event": "start:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService.constructor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService.constructor",
+              "event": "call:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService.constructor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService.constructor",
+              "event": "end:constructor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+      "name": "Sequence: extractComponentType",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+              "event": "start:extractComponentType",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+              "event": "call:extractComponentType",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService.extractComponentType",
+              "event": "end:extractComponentType",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService.findByType",
+      "name": "Sequence: findByType",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService.findByType",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService.findByType",
+              "event": "start:findByType",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService.findByType",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService.findByType",
+              "event": "call:findByType",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService.findByType",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService.findByType",
+              "event": "end:findByType",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+      "name": "Sequence: detectExactMatch",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+              "event": "start:detectExactMatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+              "event": "call:detectExactMatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService.detectExactMatch",
+              "event": "end:detectExactMatch",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+      "name": "Sequence: findExactMatch",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+              "event": "start:findExactMatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+              "event": "call:findExactMatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService.findExactMatch",
+              "event": "end:findExactMatch",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+      "name": "Sequence: rankSimilarComponents",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+              "event": "start:rankSimilarComponents",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+              "event": "call:rankSimilarComponents",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-discovery.ts::TemplateDiscoveryService.rankSimilarComponents",
+              "event": "end:rankSimilarComponents",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-synthesis.ts::TemplateSynthesisEngine",
+      "name": "Sequence: TemplateSynthesisEngine",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-synthesis.ts::TemplateSynthesisEngine",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-synthesis.ts::TemplateSynthesisEngine",
+              "event": "start:TemplateSynthesisEngine",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-synthesis.ts::TemplateSynthesisEngine",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-synthesis.ts::TemplateSynthesisEngine",
+              "event": "call:TemplateSynthesisEngine",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-synthesis.ts::TemplateSynthesisEngine",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-synthesis.ts::TemplateSynthesisEngine",
+              "event": "end:TemplateSynthesisEngine",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+      "name": "Sequence: constructor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+              "event": "start:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+              "event": "call:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-synthesis.ts::TemplateSynthesisEngine.constructor",
+              "event": "end:constructor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-synthesis.ts::TemplateSynthesisEngine.if",
+      "name": "Sequence: if",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-synthesis.ts::TemplateSynthesisEngine.if",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-synthesis.ts::TemplateSynthesisEngine.if",
+              "event": "start:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-synthesis.ts::TemplateSynthesisEngine.if",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-synthesis.ts::TemplateSynthesisEngine.if",
+              "event": "call:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-synthesis.ts::TemplateSynthesisEngine.if",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-synthesis.ts::TemplateSynthesisEngine.if",
+              "event": "end:if",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-synthesis.ts::TemplateSynthesisEngine.if",
+      "name": "Sequence: if",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-synthesis.ts::TemplateSynthesisEngine.if",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-synthesis.ts::TemplateSynthesisEngine.if",
+              "event": "start:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-synthesis.ts::TemplateSynthesisEngine.if",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-synthesis.ts::TemplateSynthesisEngine.if",
+              "event": "call:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-synthesis.ts::TemplateSynthesisEngine.if",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-synthesis.ts::TemplateSynthesisEngine.if",
+              "event": "end:if",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+      "name": "Sequence: mergeVariables",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+              "event": "start:mergeVariables",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+              "event": "call:mergeVariables",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-synthesis.ts::TemplateSynthesisEngine.mergeVariables",
+              "event": "end:mergeVariables",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+      "name": "Sequence: mergeCss",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+              "event": "start:mergeCss",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+              "event": "call:mergeCss",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_template-synthesis.ts::TemplateSynthesisEngine.mergeCss",
+              "event": "end:mergeCss",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache",
+      "name": "Sequence: EmbeddingCache",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache",
+              "event": "start:EmbeddingCache",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache",
+              "event": "call:EmbeddingCache",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache",
+              "event": "end:EmbeddingCache",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.constructor",
+      "name": "Sequence: constructor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.constructor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.constructor",
+              "event": "start:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.constructor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.constructor",
+              "event": "call:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.constructor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.constructor",
+              "event": "end:constructor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.get",
+      "name": "Sequence: get",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.get",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.get",
+              "event": "start:get",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.get",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.get",
+              "event": "call:get",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.get",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.get",
+              "event": "end:get",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.set",
+      "name": "Sequence: set",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.set",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.set",
+              "event": "start:set",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.set",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.set",
+              "event": "call:set",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.set",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.set",
+              "event": "end:set",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.has",
+      "name": "Sequence: has",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.has",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.has",
+              "event": "start:has",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.has",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.has",
+              "event": "call:has",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.has",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.has",
+              "event": "end:has",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.clear",
+      "name": "Sequence: clear",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.clear",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.clear",
+              "event": "start:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.clear",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.clear",
+              "event": "call:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.clear",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.clear",
+              "event": "end:clear",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.removeExpired",
+      "name": "Sequence: removeExpired",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.removeExpired",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.removeExpired",
+              "event": "start:removeExpired",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.removeExpired",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.removeExpired",
+              "event": "call:removeExpired",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.removeExpired",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.removeExpired",
+              "event": "end:removeExpired",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.getStats",
+      "name": "Sequence: getStats",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.getStats",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.getStats",
+              "event": "start:getStats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.getStats",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.getStats",
+              "event": "call:getStats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.getStats",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.getStats",
+              "event": "end:getStats",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-cache.ts::EmbeddingCache.size",
+      "name": "Sequence: size",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-cache.ts::EmbeddingCache.size",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-cache.ts::EmbeddingCache.size",
+              "event": "start:size",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-cache.ts::EmbeddingCache.size",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-cache.ts::EmbeddingCache.size",
+              "event": "call:size",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-cache.ts::EmbeddingCache.size",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-cache.ts::EmbeddingCache.size",
+              "event": "end:size",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-service-factory.ts::EmbeddingServiceFactory",
+      "name": "Sequence: EmbeddingServiceFactory",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-service-factory.ts::EmbeddingServiceFactory",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-service-factory.ts::EmbeddingServiceFactory",
+              "event": "start:EmbeddingServiceFactory",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-service-factory.ts::EmbeddingServiceFactory",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-service-factory.ts::EmbeddingServiceFactory",
+              "event": "call:EmbeddingServiceFactory",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-service-factory.ts::EmbeddingServiceFactory",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-service-factory.ts::EmbeddingServiceFactory",
+              "event": "end:EmbeddingServiceFactory",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+      "name": "Sequence: create",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+              "event": "start:create",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+              "event": "call:create",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-service-factory.ts::EmbeddingServiceFactory.create",
+              "event": "end:create",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+      "name": "Sequence: createLocal",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+              "event": "start:createLocal",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+              "event": "call:createLocal",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-service-factory.ts::EmbeddingServiceFactory.createLocal",
+              "event": "end:createLocal",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+      "name": "Sequence: createOpenAI",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+              "event": "start:createOpenAI",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+              "event": "call:createOpenAI",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_embedding-service-factory.ts::EmbeddingServiceFactory.createOpenAI",
+              "event": "end:createOpenAI",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService",
+      "name": "Sequence: LocalEmbeddingService",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService",
+              "event": "start:LocalEmbeddingService",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService",
+              "event": "call:LocalEmbeddingService",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService",
+              "event": "end:LocalEmbeddingService",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.constructor",
+      "name": "Sequence: constructor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.constructor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.constructor",
+              "event": "start:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.constructor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.constructor",
+              "event": "call:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.constructor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.constructor",
+              "event": "end:constructor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.embed",
+      "name": "Sequence: embed",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.embed",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.embed",
+              "event": "start:embed",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.embed",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.embed",
+              "event": "call:embed",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.embed",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.embed",
+              "event": "end:embed",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+      "name": "Sequence: embedBatch",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+              "event": "start:embedBatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+              "event": "call:embedBatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.embedBatch",
+              "event": "end:embedBatch",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+      "name": "Sequence: getModelInfo",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+              "event": "start:getModelInfo",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+              "event": "call:getModelInfo",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.getModelInfo",
+              "event": "end:getModelInfo",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.isReady",
+      "name": "Sequence: isReady",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.isReady",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.isReady",
+              "event": "start:isReady",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.isReady",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.isReady",
+              "event": "call:isReady",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.isReady",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.isReady",
+              "event": "end:isReady",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+      "name": "Sequence: generateEmbedding",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+              "event": "start:generateEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+              "event": "call:generateEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.generateEmbedding",
+              "event": "end:generateEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.hashString",
+      "name": "Sequence: hashString",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.hashString",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.hashString",
+              "event": "start:hashString",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.hashString",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.hashString",
+              "event": "call:hashString",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.hashString",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.hashString",
+              "event": "end:hashString",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+      "name": "Sequence: nextHash",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+              "event": "start:nextHash",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+              "event": "call:nextHash",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.nextHash",
+              "event": "end:nextHash",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+      "name": "Sequence: normalizeVector",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+              "event": "start:normalizeVector",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+              "event": "call:normalizeVector",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.normalizeVector",
+              "event": "end:normalizeVector",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+      "name": "Sequence: clearCache",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+              "event": "start:clearCache",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+              "event": "call:clearCache",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.clearCache",
+              "event": "end:clearCache",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+      "name": "Sequence: getCacheStats",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+              "event": "start:getCacheStats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+              "event": "call:getCacheStats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_local-embedding-service.ts::LocalEmbeddingService.getCacheStats",
+              "event": "end:getCacheStats",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService",
+      "name": "Sequence: OpenAIEmbeddingService",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService",
+              "event": "start:OpenAIEmbeddingService",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService",
+              "event": "call:OpenAIEmbeddingService",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService",
+              "event": "end:OpenAIEmbeddingService",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+      "name": "Sequence: constructor",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+              "event": "start:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+              "event": "call:constructor",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.constructor",
+              "event": "end:constructor",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+      "name": "Sequence: embed",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+              "event": "start:embed",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+              "event": "call:embed",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.embed",
+              "event": "end:embed",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+      "name": "Sequence: embedBatch",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+              "event": "start:embedBatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+              "event": "call:embedBatch",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.embedBatch",
+              "event": "end:embedBatch",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+      "name": "Sequence: getModelInfo",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+              "event": "start:getModelInfo",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+              "event": "call:getModelInfo",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.getModelInfo",
+              "event": "end:getModelInfo",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+      "name": "Sequence: isReady",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+              "event": "start:isReady",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+              "event": "call:isReady",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.isReady",
+              "event": "end:isReady",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+      "name": "Sequence: callOpenAIEmbedding",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+              "event": "start:callOpenAIEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+              "event": "call:callOpenAIEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIEmbedding",
+              "event": "end:callOpenAIEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+      "name": "Sequence: callOpenAIBatchEmbedding",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+              "event": "start:callOpenAIBatchEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+              "event": "call:callOpenAIBatchEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.callOpenAIBatchEmbedding",
+              "event": "end:callOpenAIBatchEmbedding",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+      "name": "Sequence: clearCache",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+              "event": "start:clearCache",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+              "event": "call:clearCache",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.clearCache",
+              "event": "end:clearCache",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+      "name": "Sequence: getCacheStats",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+              "event": "start:getCacheStats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+              "event": "call:getCacheStats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_openai-embedding-service.ts::OpenAIEmbeddingService.getCacheStats",
+              "event": "end:getCacheStats",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_batch-indexer.ts::BatchIndexer",
+      "name": "Sequence: BatchIndexer",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_batch-indexer.ts::BatchIndexer",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_batch-indexer.ts::BatchIndexer",
+              "event": "start:BatchIndexer",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_batch-indexer.ts::BatchIndexer",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_batch-indexer.ts::BatchIndexer",
+              "event": "call:BatchIndexer",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_batch-indexer.ts::BatchIndexer",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_batch-indexer.ts::BatchIndexer",
+              "event": "end:BatchIndexer",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_batch-indexer.ts::BatchIndexer.for",
+      "name": "Sequence: for",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_batch-indexer.ts::BatchIndexer.for",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_batch-indexer.ts::BatchIndexer.for",
+              "event": "start:for",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_batch-indexer.ts::BatchIndexer.for",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_batch-indexer.ts::BatchIndexer.for",
+              "event": "call:for",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_batch-indexer.ts::BatchIndexer.for",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_batch-indexer.ts::BatchIndexer.for",
+              "event": "end:for",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_batch-indexer.ts::BatchIndexer.extractMetadata",
+      "name": "Sequence: extractMetadata",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_batch-indexer.ts::BatchIndexer.extractMetadata",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_batch-indexer.ts::BatchIndexer.extractMetadata",
+              "event": "start:extractMetadata",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_batch-indexer.ts::BatchIndexer.extractMetadata",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_batch-indexer.ts::BatchIndexer.extractMetadata",
+              "event": "call:extractMetadata",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_batch-indexer.ts::BatchIndexer.extractMetadata",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_batch-indexer.ts::BatchIndexer.extractMetadata",
+              "event": "end:extractMetadata",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+      "name": "Sequence: generateEmbeddingText",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+              "event": "start:generateEmbeddingText",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+              "event": "call:generateEmbeddingText",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_batch-indexer.ts::BatchIndexer.generateEmbeddingText",
+              "event": "end:generateEmbeddingText",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_batch-indexer.ts::BatchIndexer.getErrors",
+      "name": "Sequence: getErrors",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_batch-indexer.ts::BatchIndexer.getErrors",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_batch-indexer.ts::BatchIndexer.getErrors",
+              "event": "start:getErrors",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_batch-indexer.ts::BatchIndexer.getErrors",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_batch-indexer.ts::BatchIndexer.getErrors",
+              "event": "call:getErrors",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_batch-indexer.ts::BatchIndexer.getErrors",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_batch-indexer.ts::BatchIndexer.getErrors",
+              "event": "end:getErrors",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_batch-indexer.ts::BatchIndexer.clearErrors",
+      "name": "Sequence: clearErrors",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_batch-indexer.ts::BatchIndexer.clearErrors",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_batch-indexer.ts::BatchIndexer.clearErrors",
+              "event": "start:clearErrors",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_batch-indexer.ts::BatchIndexer.clearErrors",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_batch-indexer.ts::BatchIndexer.clearErrors",
+              "event": "call:clearErrors",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_batch-indexer.ts::BatchIndexer.clearErrors",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_batch-indexer.ts::BatchIndexer.clearErrors",
+              "event": "end:clearErrors",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer",
+      "name": "Sequence: DefaultComponentIndexer",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer",
+              "event": "start:DefaultComponentIndexer",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer",
+              "event": "call:DefaultComponentIndexer",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer",
+              "event": "end:DefaultComponentIndexer",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+      "name": "Sequence: indexDirectory",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+              "event": "start:indexDirectory",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+              "event": "call:indexDirectory",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.indexDirectory",
+              "event": "end:indexDirectory",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+      "name": "Sequence: indexComponent",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+              "event": "start:indexComponent",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+              "event": "call:indexComponent",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.indexComponent",
+              "event": "end:indexComponent",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+      "name": "Sequence: extractMetadata",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+              "event": "start:extractMetadata",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+              "event": "call:extractMetadata",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.extractMetadata",
+              "event": "end:extractMetadata",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+      "name": "Sequence: generateEmbeddingText",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+              "event": "start:generateEmbeddingText",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+              "event": "call:generateEmbeddingText",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.generateEmbeddingText",
+              "event": "end:generateEmbeddingText",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.getProgress",
+      "name": "Sequence: getProgress",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.getProgress",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.getProgress",
+              "event": "start:getProgress",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.getProgress",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.getProgress",
+              "event": "call:getProgress",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.getProgress",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.getProgress",
+              "event": "end:getProgress",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+      "name": "Sequence: updateProgress",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+              "event": "start:updateProgress",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+              "event": "call:updateProgress",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.updateProgress",
+              "event": "end:updateProgress",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-indexer.ts::DefaultComponentIndexer.clear",
+      "name": "Sequence: clear",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-indexer.ts::DefaultComponentIndexer.clear",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-indexer.ts::DefaultComponentIndexer.clear",
+              "event": "start:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-indexer.ts::DefaultComponentIndexer.clear",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-indexer.ts::DefaultComponentIndexer.clear",
+              "event": "call:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-indexer.ts::DefaultComponentIndexer.clear",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-indexer.ts::DefaultComponentIndexer.clear",
+              "event": "end:clear",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-loader.ts::ComponentLoader",
+      "name": "Sequence: ComponentLoader",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-loader.ts::ComponentLoader",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-loader.ts::ComponentLoader",
+              "event": "start:ComponentLoader",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-loader.ts::ComponentLoader",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-loader.ts::ComponentLoader",
+              "event": "call:ComponentLoader",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-loader.ts::ComponentLoader",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-loader.ts::ComponentLoader",
+              "event": "end:ComponentLoader",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-loader.ts::ComponentLoader.getComponentIndex",
+      "name": "Sequence: getComponentIndex",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-loader.ts::ComponentLoader.getComponentIndex",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-loader.ts::ComponentLoader.getComponentIndex",
+              "event": "start:getComponentIndex",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-loader.ts::ComponentLoader.getComponentIndex",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-loader.ts::ComponentLoader.getComponentIndex",
+              "event": "call:getComponentIndex",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-loader.ts::ComponentLoader.getComponentIndex",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-loader.ts::ComponentLoader.getComponentIndex",
+              "event": "end:getComponentIndex",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-loader.ts::ComponentLoader.loadComponent",
+      "name": "Sequence: loadComponent",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-loader.ts::ComponentLoader.loadComponent",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-loader.ts::ComponentLoader.loadComponent",
+              "event": "start:loadComponent",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-loader.ts::ComponentLoader.loadComponent",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-loader.ts::ComponentLoader.loadComponent",
+              "event": "call:loadComponent",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-loader.ts::ComponentLoader.loadComponent",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-loader.ts::ComponentLoader.loadComponent",
+              "event": "end:loadComponent",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_component-loader.ts::ComponentLoader.loadAll",
+      "name": "Sequence: loadAll",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_component-loader.ts::ComponentLoader.loadAll",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_component-loader.ts::ComponentLoader.loadAll",
+              "event": "start:loadAll",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_component-loader.ts::ComponentLoader.loadAll",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_component-loader.ts::ComponentLoader.loadAll",
+              "event": "call:loadAll",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_component-loader.ts::ComponentLoader.loadAll",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_component-loader.ts::ComponentLoader.loadAll",
+              "event": "end:loadAll",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_similarity-search.ts::cosineSimilarity",
+      "name": "Sequence: cosineSimilarity",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_similarity-search.ts::cosineSimilarity",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_similarity-search.ts::cosineSimilarity",
+              "event": "start:cosineSimilarity",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_similarity-search.ts::cosineSimilarity",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_similarity-search.ts::cosineSimilarity",
+              "event": "call:cosineSimilarity",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_similarity-search.ts::cosineSimilarity",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_similarity-search.ts::cosineSimilarity",
+              "event": "end:cosineSimilarity",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_similarity-search.ts::normalizeVector",
+      "name": "Sequence: normalizeVector",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_similarity-search.ts::normalizeVector",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_similarity-search.ts::normalizeVector",
+              "event": "start:normalizeVector",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_similarity-search.ts::normalizeVector",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_similarity-search.ts::normalizeVector",
+              "event": "call:normalizeVector",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_similarity-search.ts::normalizeVector",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_similarity-search.ts::normalizeVector",
+              "event": "end:normalizeVector",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_similarity-search.ts::euclideanDistance",
+      "name": "Sequence: euclideanDistance",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_similarity-search.ts::euclideanDistance",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_similarity-search.ts::euclideanDistance",
+              "event": "start:euclideanDistance",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_similarity-search.ts::euclideanDistance",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_similarity-search.ts::euclideanDistance",
+              "event": "call:euclideanDistance",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_similarity-search.ts::euclideanDistance",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_similarity-search.ts::euclideanDistance",
+              "event": "end:euclideanDistance",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_similarity-search.ts::manhattanDistance",
+      "name": "Sequence: manhattanDistance",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_similarity-search.ts::manhattanDistance",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_similarity-search.ts::manhattanDistance",
+              "event": "start:manhattanDistance",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_similarity-search.ts::manhattanDistance",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_similarity-search.ts::manhattanDistance",
+              "event": "call:manhattanDistance",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_similarity-search.ts::manhattanDistance",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_similarity-search.ts::manhattanDistance",
+              "event": "end:manhattanDistance",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore",
+      "name": "Sequence: InMemoryVectorStore",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore",
+              "event": "start:InMemoryVectorStore",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore",
+              "event": "call:InMemoryVectorStore",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore",
+              "event": "end:InMemoryVectorStore",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.initialize",
+      "name": "Sequence: initialize",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.initialize",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.initialize",
+              "event": "start:initialize",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.initialize",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.initialize",
+              "event": "call:initialize",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.initialize",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.initialize",
+              "event": "end:initialize",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.add",
+      "name": "Sequence: add",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.add",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.add",
+              "event": "start:add",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.add",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.add",
+              "event": "call:add",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.add",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.add",
+              "event": "end:add",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.search",
+      "name": "Sequence: search",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.search",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.search",
+              "event": "start:search",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.search",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.search",
+              "event": "call:search",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.search",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.search",
+              "event": "end:search",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.get",
+      "name": "Sequence: get",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.get",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.get",
+              "event": "start:get",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.get",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.get",
+              "event": "call:get",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.get",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.get",
+              "event": "end:get",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.remove",
+      "name": "Sequence: remove",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.remove",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.remove",
+              "event": "start:remove",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.remove",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.remove",
+              "event": "call:remove",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.remove",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.remove",
+              "event": "end:remove",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.clear",
+      "name": "Sequence: clear",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.clear",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.clear",
+              "event": "start:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.clear",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.clear",
+              "event": "call:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.clear",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.clear",
+              "event": "end:clear",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.stats",
+      "name": "Sequence: stats",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.stats",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.stats",
+              "event": "start:stats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.stats",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.stats",
+              "event": "call:stats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.stats",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.stats",
+              "event": "end:stats",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+      "name": "Sequence: isInitialized",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+              "event": "start:isInitialized",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+              "event": "call:isInitialized",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_in-memory-store.ts::InMemoryVectorStore.isInitialized",
+              "event": "end:isInitialized",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore",
+      "name": "Sequence: IndexedVectorStore",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore",
+              "event": "start:IndexedVectorStore",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore",
+              "event": "call:IndexedVectorStore",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore",
+              "event": "end:IndexedVectorStore",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.initialize",
+      "name": "Sequence: initialize",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.initialize",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.initialize",
+              "event": "start:initialize",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.initialize",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.initialize",
+              "event": "call:initialize",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.initialize",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.initialize",
+              "event": "end:initialize",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.add",
+      "name": "Sequence: add",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.add",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.add",
+              "event": "start:add",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.add",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.add",
+              "event": "call:add",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.add",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.add",
+              "event": "end:add",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.search",
+      "name": "Sequence: search",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.search",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.search",
+              "event": "start:search",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.search",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.search",
+              "event": "call:search",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.search",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.search",
+              "event": "end:search",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.get",
+      "name": "Sequence: get",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.get",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.get",
+              "event": "start:get",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.get",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.get",
+              "event": "call:get",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.get",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.get",
+              "event": "end:get",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.remove",
+      "name": "Sequence: remove",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.remove",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.remove",
+              "event": "start:remove",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.remove",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.remove",
+              "event": "call:remove",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.remove",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.remove",
+              "event": "end:remove",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.clear",
+      "name": "Sequence: clear",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.clear",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.clear",
+              "event": "start:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.clear",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.clear",
+              "event": "call:clear",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.clear",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.clear",
+              "event": "end:clear",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.stats",
+      "name": "Sequence: stats",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.stats",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.stats",
+              "event": "start:stats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.stats",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.stats",
+              "event": "call:stats",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.stats",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.stats",
+              "event": "end:stats",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+      "name": "Sequence: isInitialized",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+              "event": "start:isInitialized",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+              "event": "call:isInitialized",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.isInitialized",
+              "event": "end:isInitialized",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+      "name": "Sequence: updateIndices",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+              "event": "start:updateIndices",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+              "event": "call:updateIndices",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.updateIndices",
+              "event": "end:updateIndices",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+      "name": "Sequence: removeFromIndices",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+              "event": "start:removeFromIndices",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+              "event": "call:removeFromIndices",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.removeFromIndices",
+              "event": "end:removeFromIndices",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.if",
+      "name": "Sequence: if",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "start:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "call:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "end:if",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.if",
+      "name": "Sequence: if",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "start:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "call:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "end:if",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.if",
+      "name": "Sequence: if",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "start:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "call:if",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.if",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.if",
+              "event": "end:if",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seq_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+      "name": "Sequence: estimateMemoryUsage",
+      "type": "sequence",
+      "movements": [
+        {
+          "id": "mov_1_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+          "name": "Initialization",
+          "beats": [
+            {
+              "id": "beat_1_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+              "event": "start:estimateMemoryUsage",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+          "name": "Execution",
+          "beats": [
+            {
+              "id": "beat_2_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+              "event": "call:estimateMemoryUsage",
+              "timing": "immediate"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+          "name": "Completion",
+          "beats": [
+            {
+              "id": "beat_3_indexed-vector-store.ts::IndexedVectorStore.estimateMemoryUsage",
+              "event": "end:estimateMemoryUsage",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,10 +4,10 @@
 
 OgraphX's self-graphing capabilities are now **fully integrated into the build pipeline**. This means:
 
-✅ **Automatic Regeneration**: Graphs regenerate on every build  
-✅ **Self-Aware**: OgraphX analyzes itself during the build  
-✅ **Reproducible**: Same source → Same graphs every time  
-✅ **Continuous Delivery**: Foundation for self-testing, self-observing, self-improving  
+✅ **Automatic Regeneration**: Graphs regenerate on every build
+✅ **Self-Aware**: OgraphX analyzes itself during the build
+✅ **Reproducible**: Same source → Same graphs every time
+✅ **Continuous Delivery**: Foundation for self-testing, self-observing, self-improving
 
 ## Build Integration
 
@@ -39,8 +39,8 @@ npm run regenerate:ographx:analysis        # Analysis telemetry
 
 ### 1. Pre-Manifest Generation (`pre:manifests`)
 
-**When**: Before building host application  
-**What**: Regenerates all OgraphX graphs  
+**When**: Before building host application
+**What**: Regenerates all OgraphX graphs
 **Why**: Ensures manifests are based on latest self-analysis
 
 ```bash
@@ -56,8 +56,8 @@ npm run pre:manifests
 
 ### 2. Pre-Test (`pretest`)
 
-**When**: Before running tests  
-**What**: Regenerates test graph  
+**When**: Before running tests
+**What**: Regenerates test graph
 **Why**: Ensures test structure is current
 
 ```bash
@@ -72,8 +72,8 @@ npm run pretest
 
 ### 3. Development Mode (`dev`)
 
-**When**: Running development server  
-**What**: Regenerates graphs before starting dev server  
+**When**: Running development server
+**What**: Regenerates graphs before starting dev server
 **Why**: Keeps graphs in sync during development
 
 ```bash
@@ -87,14 +87,14 @@ npm run dev
 - **test_structure.json**: Complete test hierarchy
 - **test_graph.mmd**: Mermaid diagram of tests
 
-**Regenerated**: Before tests run  
+**Regenerated**: Before tests run
 **Purpose**: Self-testing capabilities
 
 ### Self-Sequences (`.ographx/sequences/`)
 
 - **self_sequences.json**: Conductor sequences from IR
 
-**Regenerated**: During full build  
+**Regenerated**: During full build
 **Purpose**: Self-documentation
 
 ### Diagrams (`.ographx/visualization/diagrams/`)
@@ -104,14 +104,14 @@ npm run dev
 - **sequence_flow_diagram.mmd**: Sequence flows
 - **beat_timeline.mmd**: Beat timeline
 
-**Regenerated**: During full build  
+**Regenerated**: During full build
 **Purpose**: Self-visualization
 
 ### Analysis (`.ographx/analysis/`)
 
 - **self_graph_analysis.json**: Telemetry and metrics
 
-**Regenerated**: During full build  
+**Regenerated**: During full build
 **Purpose**: Self-observation
 
 ## CI/CD Integration
@@ -128,26 +128,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Build with self-graphing
         run: npm run build
-      
+
       - name: Run tests with test graph
         run: npm test
-      
+
       - name: Verify graphs generated
         run: |
           test -f packages/ographx/.ographx/test-graphs/test_structure.json
@@ -250,7 +250,29 @@ npm run regenerate:ographx:diagrams
 
 ---
 
-**Status**: ✅ Integrated  
-**Version**: 1.0  
+**Status**: ✅ Integrated
+**Version**: 1.0
 **Date**: 2025-11-12
 
+
+
+## Pre-Flight Validation (Layer 0)
+
+Before any extraction runs, OgraphX performs a pre-flight validation to prevent self-awareness drift:
+
+- validateSelfObservation: IR exists and is recent; no empty call targets
+- validateTestCoverage: Visualization (Layer 4) beats have tests
+- detectDrift: Source changed since last IR → block until refreshed
+- validateDependencies: Sanity checks (Python), optional Mermaid CLI
+
+Run manually:
+
+```bash
+cd packages/ographx
+python core/preflight_validator.py --strict
+```
+
+Integrated into the pipeline:
+
+- graph_codebase.py runs pre-flight automatically and aborts with clear guidance if any check fails
+- GitHub Actions workflow .github/workflows/ographx-self-maintenance.yml enforces these gates in CI
