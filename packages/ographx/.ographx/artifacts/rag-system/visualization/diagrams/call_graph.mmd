@@ -1,0 +1,113 @@
+graph LR
+    Root["Call Graph"]
+
+    template_discovery_ts_TemplateDiscoveryService_detectExactMatch["Class: detectExactMatch"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_clearCache["Class: clearCache"]
+    in_memory_store_ts_InMemoryVectorStore_stats["Class: stats"]
+    embedding_cache_ts_EmbeddingCache_clear["Class: clear"]
+    local_embedding_service_ts_LocalEmbeddingService_generateEmbedding["Class: generateEmbedding"]
+    component_loader_ts_ComponentLoader_loadAll["Class: loadAll"]
+    in_memory_store_ts_InMemoryVectorStore_search["Class: search"]
+    indexed_vector_store_ts_IndexedVectorStore_remove["Class: remove"]
+    embedding_service_factory_ts_EmbeddingServiceFactory_createLocal["Class: createLocal"]
+    ai_component_generator_ts_AIComponentGenerator_prepareGenerationContext["Class: prepareGenerationContext"]
+    local_embedding_service_ts_LocalEmbeddingService_normalizeVector["Class: normalizeVector"]
+    in_memory_store_ts_InMemoryVectorStore_clear["Class: clear"]
+    indexed_vector_store_ts_IndexedVectorStore_get["Class: get"]
+    in_memory_store_ts_InMemoryVectorStore_add["Class: add"]
+    embedding_cache_ts_EmbeddingCache_get["Class: get"]
+    indexed_vector_store_ts_IndexedVectorStore_add["Class: add"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_callOpenAIBatchEmbedding["Class: callOpenAIBatchEmbedding"]
+    local_embedding_service_ts_LocalEmbeddingService_hashString["Class: hashString"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_callOpenAIEmbedding["Class: callOpenAIEmbedding"]
+    local_embedding_service_ts_LocalEmbeddingService_clearCache["Class: clearCache"]
+    embedding_cache_ts_EmbeddingCache_has["Class: has"]
+    local_embedding_service_ts_LocalEmbeddingService_nextHash["Class: nextHash"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_embedBatch["Class: embedBatch"]
+    embedding_cache_ts_EmbeddingCache["Class: EmbeddingCache"]
+    similarity_search_ts_cosineSimilarity["Function: cosineSimilarity"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_isReady["Class: isReady"]
+    local_embedding_service_ts_LocalEmbeddingService_constructor["Class: constructor"]
+    ai_component_generator_ts_AIComponentGenerator_getDiscoveryMetrics["Class: getDiscoveryMetrics"]
+    local_embedding_service_ts_LocalEmbeddingService_embed["Class: embed"]
+    embedding_service_factory_ts_EmbeddingServiceFactory_create["Class: create"]
+    local_embedding_service_ts_LocalEmbeddingService["Class: LocalEmbeddingService"]
+    component_indexer_ts_DefaultComponentIndexer_indexComponent["Class: indexComponent"]
+    indexed_vector_store_ts_IndexedVectorStore_search["Class: search"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_embed["Class: embed"]
+    openai_embedding_service_ts_OpenAIEmbeddingService_constructor["Class: constructor"]
+    component_indexer_ts_DefaultComponentIndexer_clear["Class: clear"]
+    template_discovery_ts_TemplateDiscoveryService_extractComponentType["Class: extractComponentType"]
+    local_embedding_service_ts_LocalEmbeddingService_embedBatch["Class: embedBatch"]
+    in_memory_store_ts_InMemoryVectorStore_get["Class: get"]
+    embedding_cache_ts_EmbeddingCache_set["Class: set"]
+    indexed_vector_store_ts_IndexedVectorStore_if["Class: if"]
+    template_discovery_ts_TemplateDiscoveryService_findByType["Class: findByType"]
+    component_indexer_ts_DefaultComponentIndexer_indexDirectory["Class: indexDirectory"]
+    embedding_service_factory_ts_EmbeddingServiceFactory_createOpenAI["Class: createOpenAI"]
+    ai_component_generator_ts_AIComponentGenerator_buildSystemPrompt["Class: buildSystemPrompt"]
+    openai_embedding_service_ts_OpenAIEmbeddingService["Class: OpenAIEmbeddingService"]
+    embedding_cache_ts_EmbeddingCache_getStats["Class: getStats"]
+    indexed_vector_store_ts_IndexedVectorStore_clear["Class: clear"]
+    local_embedding_service_ts_LocalEmbeddingService_getCacheStats["Class: getCacheStats"]
+    template_synthesis_ts_TemplateSynthesisEngine_mergeCss["Class: mergeCss"]
+
+    template_discovery_ts_TemplateDiscoveryService_detectExactMatch -->|extractComponentType| template_discovery_ts_TemplateDiscoveryService_extractComponentType
+    template_discovery_ts_TemplateDiscoveryService_detectExactMatch -->|findByType| template_discovery_ts_TemplateDiscoveryService_findByType
+    openai_embedding_service_ts_OpenAIEmbeddingService_clearCache -->|clear| embedding_cache_ts_EmbeddingCache_clear
+    embedding_cache_ts_EmbeddingCache_clear -->|clear| embedding_cache_ts_EmbeddingCache_clear
+    local_embedding_service_ts_LocalEmbeddingService_generateEmbedding -->|hashString| local_embedding_service_ts_LocalEmbeddingService_hashString
+    local_embedding_service_ts_LocalEmbeddingService_generateEmbedding -->|nextHash| local_embedding_service_ts_LocalEmbeddingService_nextHash
+    local_embedding_service_ts_LocalEmbeddingService_generateEmbedding -->|normalizeVector| local_embedding_service_ts_LocalEmbeddingService_normalizeVector
+    in_memory_store_ts_InMemoryVectorStore_search -->|cosineSimilarity| similarity_search_ts_cosineSimilarity
+    indexed_vector_store_ts_IndexedVectorStore_remove -->|get| indexed_vector_store_ts_IndexedVectorStore_get
+    embedding_service_factory_ts_EmbeddingServiceFactory_createLocal -->|LocalEmbeddingService| local_embedding_service_ts_LocalEmbeddingService
+    ai_component_generator_ts_AIComponentGenerator_prepareGenerationContext -->|embed| local_embedding_service_ts_LocalEmbeddingService_embed
+    ai_component_generator_ts_AIComponentGenerator_prepareGenerationContext -->|buildSystemPrompt| ai_component_generator_ts_AIComponentGenerator_buildSystemPrompt
+    ai_component_generator_ts_AIComponentGenerator_prepareGenerationContext -->|search| in_memory_store_ts_InMemoryVectorStore_search
+    in_memory_store_ts_InMemoryVectorStore_clear -->|clear| in_memory_store_ts_InMemoryVectorStore_clear
+    indexed_vector_store_ts_IndexedVectorStore_get -->|get| indexed_vector_store_ts_IndexedVectorStore_get
+    in_memory_store_ts_InMemoryVectorStore_add -->|set| embedding_cache_ts_EmbeddingCache_set
+    embedding_cache_ts_EmbeddingCache_get -->|get| embedding_cache_ts_EmbeddingCache_get
+    indexed_vector_store_ts_IndexedVectorStore_add -->|set| embedding_cache_ts_EmbeddingCache_set
+    local_embedding_service_ts_LocalEmbeddingService_clearCache -->|clear| embedding_cache_ts_EmbeddingCache_clear
+    embedding_cache_ts_EmbeddingCache_has -->|get| embedding_cache_ts_EmbeddingCache_get
+    openai_embedding_service_ts_OpenAIEmbeddingService_embedBatch -->|callOpenAIBatchEmbedding| openai_embedding_service_ts_OpenAIEmbeddingService_callOpenAIBatchEmbedding
+    openai_embedding_service_ts_OpenAIEmbeddingService_embedBatch -->|set| embedding_cache_ts_EmbeddingCache_set
+    openai_embedding_service_ts_OpenAIEmbeddingService_embedBatch -->|get| embedding_cache_ts_EmbeddingCache_get
+    openai_embedding_service_ts_OpenAIEmbeddingService_isReady -->|callOpenAIEmbedding| openai_embedding_service_ts_OpenAIEmbeddingService_callOpenAIEmbedding
+    local_embedding_service_ts_LocalEmbeddingService_constructor -->|EmbeddingCache| embedding_cache_ts_EmbeddingCache
+    ai_component_generator_ts_AIComponentGenerator_getDiscoveryMetrics -->|stats| in_memory_store_ts_InMemoryVectorStore_stats
+    local_embedding_service_ts_LocalEmbeddingService_embed -->|set| embedding_cache_ts_EmbeddingCache_set
+    local_embedding_service_ts_LocalEmbeddingService_embed -->|has| embedding_cache_ts_EmbeddingCache_has
+    local_embedding_service_ts_LocalEmbeddingService_embed -->|generateEmbedding| local_embedding_service_ts_LocalEmbeddingService_generateEmbedding
+    local_embedding_service_ts_LocalEmbeddingService_embed -->|get| embedding_cache_ts_EmbeddingCache_get
+    embedding_service_factory_ts_EmbeddingServiceFactory_create -->|LocalEmbeddingService| local_embedding_service_ts_LocalEmbeddingService
+    embedding_service_factory_ts_EmbeddingServiceFactory_create -->|OpenAIEmbeddingService| openai_embedding_service_ts_OpenAIEmbeddingService
+    component_indexer_ts_DefaultComponentIndexer_indexComponent -->|add| in_memory_store_ts_InMemoryVectorStore_add
+    component_indexer_ts_DefaultComponentIndexer_indexComponent -->|embed| local_embedding_service_ts_LocalEmbeddingService_embed
+    indexed_vector_store_ts_IndexedVectorStore_search -->|cosineSimilarity| similarity_search_ts_cosineSimilarity
+    indexed_vector_store_ts_IndexedVectorStore_search -->|get| indexed_vector_store_ts_IndexedVectorStore_get
+    openai_embedding_service_ts_OpenAIEmbeddingService_embed -->|set| embedding_cache_ts_EmbeddingCache_set
+    openai_embedding_service_ts_OpenAIEmbeddingService_embed -->|callOpenAIEmbedding| openai_embedding_service_ts_OpenAIEmbeddingService_callOpenAIEmbedding
+    openai_embedding_service_ts_OpenAIEmbeddingService_embed -->|has| embedding_cache_ts_EmbeddingCache_has
+    openai_embedding_service_ts_OpenAIEmbeddingService_embed -->|get| embedding_cache_ts_EmbeddingCache_get
+    openai_embedding_service_ts_OpenAIEmbeddingService_constructor -->|EmbeddingCache| embedding_cache_ts_EmbeddingCache
+    component_indexer_ts_DefaultComponentIndexer_clear -->|clear| component_indexer_ts_DefaultComponentIndexer_clear
+    local_embedding_service_ts_LocalEmbeddingService_embedBatch -->|set| embedding_cache_ts_EmbeddingCache_set
+    local_embedding_service_ts_LocalEmbeddingService_embedBatch -->|has| embedding_cache_ts_EmbeddingCache_has
+    local_embedding_service_ts_LocalEmbeddingService_embedBatch -->|generateEmbedding| local_embedding_service_ts_LocalEmbeddingService_generateEmbedding
+    local_embedding_service_ts_LocalEmbeddingService_embedBatch -->|get| embedding_cache_ts_EmbeddingCache_get
+    in_memory_store_ts_InMemoryVectorStore_get -->|get| in_memory_store_ts_InMemoryVectorStore_get
+    embedding_cache_ts_EmbeddingCache_set -->|set| embedding_cache_ts_EmbeddingCache_set
+    embedding_cache_ts_EmbeddingCache_set -->|has| embedding_cache_ts_EmbeddingCache_has
+    indexed_vector_store_ts_IndexedVectorStore_if -->|has| embedding_cache_ts_EmbeddingCache_has
+    indexed_vector_store_ts_IndexedVectorStore_if -->|add| indexed_vector_store_ts_IndexedVectorStore_add
+    component_indexer_ts_DefaultComponentIndexer_indexDirectory -->|indexComponent| component_indexer_ts_DefaultComponentIndexer_indexComponent
+    component_indexer_ts_DefaultComponentIndexer_indexDirectory -->|loadAll| component_loader_ts_ComponentLoader_loadAll
+    embedding_service_factory_ts_EmbeddingServiceFactory_createOpenAI -->|OpenAIEmbeddingService| openai_embedding_service_ts_OpenAIEmbeddingService
+    indexed_vector_store_ts_IndexedVectorStore_clear -->|clear| indexed_vector_store_ts_IndexedVectorStore_clear
+    local_embedding_service_ts_LocalEmbeddingService_getCacheStats -->|getStats| embedding_cache_ts_EmbeddingCache_getStats
+    template_synthesis_ts_TemplateSynthesisEngine_mergeCss -->|add| in_memory_store_ts_InMemoryVectorStore_add
+
+    style Root fill:#4CAF50,stroke:#2E7D32,color:#fff,font-weight:bold

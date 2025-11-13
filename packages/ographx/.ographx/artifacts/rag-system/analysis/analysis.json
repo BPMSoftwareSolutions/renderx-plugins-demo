@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0",
+  "generated_at": "",
+  "statistics": {
+    "files": 19,
+    "symbols": 103,
+    "calls": 232,
+    "contracts": 90
+  },
+  "symbol_types": {
+    "unknown": 103
+  },
+  "call_distribution": {
+    "unknown": 232
+  },
+  "complexity": {
+    "average_calls_per_symbol": 232.0,
+    "max_calls_per_symbol": 232,
+    "min_calls_per_symbol": 232
+  },
+  "coverage": {
+    "symbols_with_calls": 1,
+    "symbols_without_calls": 102
+  }
+}

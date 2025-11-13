@@ -1,0 +1,37 @@
+{
+  "codebase_name": "rag-system",
+  "config": {
+    "name": "rag-system",
+    "root_dirs": [
+      "../../src/domain/components/vector-store"
+    ],
+    "exclude_dirs": [
+      "__tests__",
+      "node_modules",
+      "dist"
+    ],
+    "created_at": "2025-11-12T19:51:35.047284"
+  },
+  "generated_at": "2025-11-12T19:51:35.051284",
+  "artifacts": {
+    "ir": ".ographx\\artifacts\\rag-system\\ir\\graph.json",
+    "sequences": [
+      ".ographx\\artifacts\\rag-system\\sequences\\sequences.json"
+    ],
+    "visualizations": [
+      ".ographx\\artifacts\\rag-system\\visualization\\diagrams\\call_graph.mmd",
+      ".ographx\\artifacts\\rag-system\\visualization\\diagrams\\call_graph.svg",
+      ".ographx\\artifacts\\rag-system\\visualization\\diagrams\\orchestration.mmd",
+      ".ographx\\artifacts\\rag-system\\visualization\\diagrams\\orchestration.svg",
+      ".ographx\\artifacts\\rag-system\\visualization\\diagrams\\sequence_flow.mmd",
+      ".ographx\\artifacts\\rag-system\\visualization\\diagrams\\sequence_flow.svg"
+    ],
+    "analysis": ".ographx\\artifacts\\rag-system\\analysis\\analysis.json"
+  },
+  "statistics": {
+    "files": 19,
+    "symbols": 103,
+    "calls": 232,
+    "contracts": 90
+  }
+}

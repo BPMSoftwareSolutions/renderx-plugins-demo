@@ -108,6 +108,369 @@
         "count": 3
       }
     ],
+    "Coverage & Quality": [
+      {
+        "name": "TestParseParams",
+        "description": "Test parse_params() \u00e2\u20ac\u201d CRITICAL function",
+        "methods": [
+          {
+            "name": "test_parse_simple_params",
+            "description": "Test parsing simple typed parameters"
+          },
+          {
+            "name": "test_parse_generic_params",
+            "description": "Test parsing parameters with generic types"
+          },
+          {
+            "name": "test_parse_union_types",
+            "description": "Test parsing union type parameters"
+          },
+          {
+            "name": "test_parse_optional_params",
+            "description": "Test parsing optional parameters"
+          },
+          {
+            "name": "test_parse_default_values",
+            "description": "Test parsing parameters with default values"
+          },
+          {
+            "name": "test_parse_empty_params",
+            "description": "Test parsing empty parameter list"
+          },
+          {
+            "name": "test_parse_complex_callback_params",
+            "description": "Test parsing callback/function type parameters"
+          }
+        ],
+        "count": 7
+      },
+      {
+        "name": "TestExtractImports",
+        "description": "Test extract_imports() \u00e2\u20ac\u201d IMPORTANT function",
+        "methods": [
+          {
+            "name": "test_extract_named_imports",
+            "description": "Test extracting named imports"
+          },
+          {
+            "name": "test_extract_default_import",
+            "description": "Test extracting default imports"
+          },
+          {
+            "name": "test_extract_relative_imports",
+            "description": "Test extracting relative path imports"
+          },
+          {
+            "name": "test_extract_multiple_imports",
+            "description": "Test extracting multiple import statements"
+          },
+          {
+            "name": "test_extract_no_imports",
+            "description": "Test file with no imports"
+          }
+        ],
+        "count": 5
+      },
+      {
+        "name": "TestFindBlocks",
+        "description": "Test find_blocks() \u00e2\u20ac\u201d OPTIONAL function",
+        "methods": [
+          {
+            "name": "test_find_simple_block",
+            "description": "Test finding simple block"
+          },
+          {
+            "name": "test_find_nested_blocks",
+            "description": "Test finding block with nested braces"
+          },
+          {
+            "name": "test_find_block_with_strings",
+            "description": "Test finding block with string literals containing braces"
+          }
+        ],
+        "count": 3
+      },
+      {
+        "name": "TestExtractSymbolsAndCalls",
+        "description": "Test extract_symbols_and_calls() \u00e2\u20ac\u201d CRITICAL function",
+        "methods": [
+          {
+            "name": "test_extract_multiline_function",
+            "description": "Test extracting multi-line function declaration"
+          },
+          {
+            "name": "test_extract_class_methods",
+            "description": "Test extracting class and its methods"
+          },
+          {
+            "name": "test_extract_calls_within_function",
+            "description": "Test extracting call edges within function body"
+          },
+          {
+            "name": "test_extract_arrow_function",
+            "description": "Test extracting arrow function"
+          },
+          {
+            "name": "test_extract_named_function_expression",
+            "description": "Test extracting named function expression"
+          }
+        ],
+        "count": 5
+      },
+      {
+        "name": "TestBuildIR",
+        "description": "Test build_ir() \u00e2\u20ac\u201d CRITICAL function",
+        "methods": [
+          {
+            "name": "test_build_ir_single_file",
+            "description": "Test building IR from single file"
+          },
+          {
+            "name": "test_build_ir_multiple_files",
+            "description": "Test building IR from multiple files"
+          },
+          {
+            "name": "test_build_ir_handles_parse_errors",
+            "description": "Test that build_ir handles parse errors gracefully"
+          },
+          {
+            "name": "test_build_ir_skips_d_ts_files",
+            "description": "Test that build_ir skips .d.ts declaration files"
+          }
+        ],
+        "count": 4
+      },
+      {
+        "name": "TestCallResolution",
+        "description": "Test call resolution in extract_symbols_and_calls() \u00e2\u20ac\u201d CRITICAL",
+        "methods": [
+          {
+            "name": "test_resolve_same_file_calls",
+            "description": "Test resolving calls within same file"
+          },
+          {
+            "name": "test_resolve_imported_calls",
+            "description": "Test resolving calls to imported functions"
+          },
+          {
+            "name": "test_resolve_builtin_calls",
+            "description": "Test that builtin calls are not resolved"
+          },
+          {
+            "name": "test_resolve_cross_file_calls_with_imports",
+            "description": "Test cross-file call resolution through imports"
+          },
+          {
+            "name": "test_resolve_multiple_calls_same_function",
+            "description": "Test multiple calls to same function"
+          },
+          {
+            "name": "test_resolve_chained_calls",
+            "description": "Test chained method calls"
+          },
+          {
+            "name": "test_resolve_calls_with_no_matching_symbol",
+            "description": "Test calls to undefined functions"
+          }
+        ],
+        "count": 7
+      },
+      {
+        "name": "TestEdgeCases",
+        "description": "Test edge cases and error paths \u00e2\u20ac\u201d CRITICAL",
+        "methods": [
+          {
+            "name": "test_multiline_arrow_function_with_complex_params",
+            "description": "Test multi-line arrow function with complex parameter types"
+          },
+          {
+            "name": "test_class_with_constructor",
+            "description": "Test class with constructor method"
+          },
+          {
+            "name": "test_async_function",
+            "description": "Test async function extraction"
+          },
+          {
+            "name": "test_function_with_generics",
+            "description": "Test function with generic type parameters"
+          },
+          {
+            "name": "test_nested_function_calls",
+            "description": "Test nested function calls"
+          },
+          {
+            "name": "test_method_with_access_modifiers",
+            "description": "Test methods with various access modifiers"
+          },
+          {
+            "name": "test_function_with_rest_parameters",
+            "description": "Test function with rest parameters"
+          },
+          {
+            "name": "test_function_with_destructured_params",
+            "description": "Test function with destructured parameters"
+          },
+          {
+            "name": "test_multiple_exports_in_file",
+            "description": "Test file with multiple exported symbols"
+          },
+          {
+            "name": "test_call_with_multiple_arguments",
+            "description": "Test extracting calls with multiple arguments"
+          }
+        ],
+        "count": 10
+      },
+      {
+        "name": "TestImportResolution",
+        "description": "Test import resolution and scope-aware call resolution \u00e2\u20ac\u201d CRITICAL",
+        "methods": [
+          {
+            "name": "test_extract_imports_with_root_resolution",
+            "description": "Test import path resolution with root directory"
+          },
+          {
+            "name": "test_extract_imports_handles_windows_paths",
+            "description": "Test import resolution with Windows-style paths"
+          },
+          {
+            "name": "test_extract_imports_with_as_aliases",
+            "description": "Test import with 'as' aliases"
+          },
+          {
+            "name": "test_extract_imports_skips_node_modules",
+            "description": "Test that node_modules imports are skipped"
+          },
+          {
+            "name": "test_normalize_type_with_generics",
+            "description": "Test type normalization with generic types"
+          },
+          {
+            "name": "test_normalize_type_with_unions",
+            "description": "Test type normalization with union types"
+          },
+          {
+            "name": "test_normalize_type_empty",
+            "description": "Test type normalization with empty string"
+          },
+          {
+            "name": "test_normalize_contract_id",
+            "description": "Test contract ID normalization"
+          }
+        ],
+        "count": 8
+      },
+      {
+        "name": "TestMultiLineFunctions",
+        "description": "Test multi-line function declarations \u00e2\u20ac\u201d CRITICAL",
+        "methods": [
+          {
+            "name": "test_multiline_function_declaration",
+            "description": "Test function declaration spanning multiple lines"
+          },
+          {
+            "name": "test_arrow_function_single_line",
+            "description": "Test arrow function on single line"
+          },
+          {
+            "name": "test_named_function_expression_single_line",
+            "description": "Test named function expression on single line"
+          },
+          {
+            "name": "test_function_with_many_parameters",
+            "description": "Test function with many parameters"
+          }
+        ],
+        "count": 4
+      },
+      {
+        "name": "TestEdgeCasesAndErrorPaths",
+        "description": "Test edge cases and error paths in critical functions \u00e2\u20ac\u201d CRITICAL",
+        "methods": [
+          {
+            "name": "test_find_blocks_no_opening_brace",
+            "description": "Test find_blocks when no opening brace exists"
+          },
+          {
+            "name": "test_find_blocks_unmatched_braces",
+            "description": "Test find_blocks with unmatched braces"
+          },
+          {
+            "name": "test_extract_imports_cross_drive_path",
+            "description": "Test import resolution with cross-drive paths (Windows edge case)"
+          },
+          {
+            "name": "test_parse_params_with_whitespace_variations",
+            "description": "Test parameter parsing with various whitespace patterns"
+          },
+          {
+            "name": "test_parse_params_with_nested_generics",
+            "description": "Test parameter parsing with deeply nested generics"
+          },
+          {
+            "name": "test_extract_symbols_with_malformed_function",
+            "description": "Test extraction with malformed function declaration"
+          },
+          {
+            "name": "test_extract_symbols_with_comments",
+            "description": "Test extraction ignoring comments"
+          },
+          {
+            "name": "test_extract_symbols_with_block_comments",
+            "description": "Test extraction with block comments"
+          },
+          {
+            "name": "test_extract_symbols_empty_file",
+            "description": "Test extraction from empty file"
+          },
+          {
+            "name": "test_extract_symbols_only_comments",
+            "description": "Test extraction from file with only comments"
+          }
+        ],
+        "count": 10
+      },
+      {
+        "name": "TestComplexScenarios",
+        "description": "Test complex real-world scenarios \u00e2\u20ac\u201d CRITICAL",
+        "methods": [
+          {
+            "name": "test_mixed_exports_and_calls",
+            "description": "Test file with mixed exported and non-exported functions"
+          },
+          {
+            "name": "test_nested_classes_and_methods",
+            "description": "Test extraction of nested class structures"
+          },
+          {
+            "name": "test_function_with_inline_arrow_functions",
+            "description": "Test function containing inline arrow functions"
+          },
+          {
+            "name": "test_function_with_template_literals",
+            "description": "Test function with template literals containing braces"
+          },
+          {
+            "name": "test_function_with_string_literals_containing_braces",
+            "description": "Test function with string literals containing braces"
+          },
+          {
+            "name": "test_multiple_function_declarations_same_line",
+            "description": "Test handling of multiple declarations"
+          },
+          {
+            "name": "test_function_with_complex_return_type",
+            "description": "Test function with complex return type annotation"
+          },
+          {
+            "name": "test_interface_and_type_declarations",
+            "description": "Test that interfaces and types are handled"
+          }
+        ],
+        "count": 8
+      }
+    ],
     "Generators": [
       {
         "name": "TestSequenceGeneration",
@@ -207,6 +570,12 @@
           }
         ],
         "count": 3
+      },
+      {
+        "name": "TestVisualizationLayer",
+        "description": "Functional tests for Layer 4 beats (Visualization & Diagrams)",
+        "methods": [],
+        "count": 0
       }
     ]
   },
@@ -302,7 +671,7 @@
       }
     ]
   },
-  "total_tests": 47,
+  "total_tests": 118,
   "files": [
     {
       "path": "unit\\test_core_extraction.py",
@@ -419,6 +788,375 @@
       "total": 16
     },
     {
+      "path": "unit\\test_critical_coverage.py",
+      "type": "unit",
+      "category": "Coverage & Quality",
+      "classes": [
+        {
+          "name": "TestParseParams",
+          "description": "Test parse_params() \u00e2\u20ac\u201d CRITICAL function",
+          "methods": [
+            {
+              "name": "test_parse_simple_params",
+              "description": "Test parsing simple typed parameters"
+            },
+            {
+              "name": "test_parse_generic_params",
+              "description": "Test parsing parameters with generic types"
+            },
+            {
+              "name": "test_parse_union_types",
+              "description": "Test parsing union type parameters"
+            },
+            {
+              "name": "test_parse_optional_params",
+              "description": "Test parsing optional parameters"
+            },
+            {
+              "name": "test_parse_default_values",
+              "description": "Test parsing parameters with default values"
+            },
+            {
+              "name": "test_parse_empty_params",
+              "description": "Test parsing empty parameter list"
+            },
+            {
+              "name": "test_parse_complex_callback_params",
+              "description": "Test parsing callback/function type parameters"
+            }
+          ],
+          "count": 7
+        },
+        {
+          "name": "TestExtractImports",
+          "description": "Test extract_imports() \u00e2\u20ac\u201d IMPORTANT function",
+          "methods": [
+            {
+              "name": "test_extract_named_imports",
+              "description": "Test extracting named imports"
+            },
+            {
+              "name": "test_extract_default_import",
+              "description": "Test extracting default imports"
+            },
+            {
+              "name": "test_extract_relative_imports",
+              "description": "Test extracting relative path imports"
+            },
+            {
+              "name": "test_extract_multiple_imports",
+              "description": "Test extracting multiple import statements"
+            },
+            {
+              "name": "test_extract_no_imports",
+              "description": "Test file with no imports"
+            }
+          ],
+          "count": 5
+        },
+        {
+          "name": "TestFindBlocks",
+          "description": "Test find_blocks() \u00e2\u20ac\u201d OPTIONAL function",
+          "methods": [
+            {
+              "name": "test_find_simple_block",
+              "description": "Test finding simple block"
+            },
+            {
+              "name": "test_find_nested_blocks",
+              "description": "Test finding block with nested braces"
+            },
+            {
+              "name": "test_find_block_with_strings",
+              "description": "Test finding block with string literals containing braces"
+            }
+          ],
+          "count": 3
+        },
+        {
+          "name": "TestExtractSymbolsAndCalls",
+          "description": "Test extract_symbols_and_calls() \u00e2\u20ac\u201d CRITICAL function",
+          "methods": [
+            {
+              "name": "test_extract_multiline_function",
+              "description": "Test extracting multi-line function declaration"
+            },
+            {
+              "name": "test_extract_class_methods",
+              "description": "Test extracting class and its methods"
+            },
+            {
+              "name": "test_extract_calls_within_function",
+              "description": "Test extracting call edges within function body"
+            },
+            {
+              "name": "test_extract_arrow_function",
+              "description": "Test extracting arrow function"
+            },
+            {
+              "name": "test_extract_named_function_expression",
+              "description": "Test extracting named function expression"
+            }
+          ],
+          "count": 5
+        },
+        {
+          "name": "TestBuildIR",
+          "description": "Test build_ir() \u00e2\u20ac\u201d CRITICAL function",
+          "methods": [
+            {
+              "name": "test_build_ir_single_file",
+              "description": "Test building IR from single file"
+            },
+            {
+              "name": "test_build_ir_multiple_files",
+              "description": "Test building IR from multiple files"
+            },
+            {
+              "name": "test_build_ir_handles_parse_errors",
+              "description": "Test that build_ir handles parse errors gracefully"
+            },
+            {
+              "name": "test_build_ir_skips_d_ts_files",
+              "description": "Test that build_ir skips .d.ts declaration files"
+            }
+          ],
+          "count": 4
+        },
+        {
+          "name": "TestCallResolution",
+          "description": "Test call resolution in extract_symbols_and_calls() \u00e2\u20ac\u201d CRITICAL",
+          "methods": [
+            {
+              "name": "test_resolve_same_file_calls",
+              "description": "Test resolving calls within same file"
+            },
+            {
+              "name": "test_resolve_imported_calls",
+              "description": "Test resolving calls to imported functions"
+            },
+            {
+              "name": "test_resolve_builtin_calls",
+              "description": "Test that builtin calls are not resolved"
+            },
+            {
+              "name": "test_resolve_cross_file_calls_with_imports",
+              "description": "Test cross-file call resolution through imports"
+            },
+            {
+              "name": "test_resolve_multiple_calls_same_function",
+              "description": "Test multiple calls to same function"
+            },
+            {
+              "name": "test_resolve_chained_calls",
+              "description": "Test chained method calls"
+            },
+            {
+              "name": "test_resolve_calls_with_no_matching_symbol",
+              "description": "Test calls to undefined functions"
+            }
+          ],
+          "count": 7
+        },
+        {
+          "name": "TestEdgeCases",
+          "description": "Test edge cases and error paths \u00e2\u20ac\u201d CRITICAL",
+          "methods": [
+            {
+              "name": "test_multiline_arrow_function_with_complex_params",
+              "description": "Test multi-line arrow function with complex parameter types"
+            },
+            {
+              "name": "test_class_with_constructor",
+              "description": "Test class with constructor method"
+            },
+            {
+              "name": "test_async_function",
+              "description": "Test async function extraction"
+            },
+            {
+              "name": "test_function_with_generics",
+              "description": "Test function with generic type parameters"
+            },
+            {
+              "name": "test_nested_function_calls",
+              "description": "Test nested function calls"
+            },
+            {
+              "name": "test_method_with_access_modifiers",
+              "description": "Test methods with various access modifiers"
+            },
+            {
+              "name": "test_function_with_rest_parameters",
+              "description": "Test function with rest parameters"
+            },
+            {
+              "name": "test_function_with_destructured_params",
+              "description": "Test function with destructured parameters"
+            },
+            {
+              "name": "test_multiple_exports_in_file",
+              "description": "Test file with multiple exported symbols"
+            },
+            {
+              "name": "test_call_with_multiple_arguments",
+              "description": "Test extracting calls with multiple arguments"
+            }
+          ],
+          "count": 10
+        },
+        {
+          "name": "TestImportResolution",
+          "description": "Test import resolution and scope-aware call resolution \u00e2\u20ac\u201d CRITICAL",
+          "methods": [
+            {
+              "name": "test_extract_imports_with_root_resolution",
+              "description": "Test import path resolution with root directory"
+            },
+            {
+              "name": "test_extract_imports_handles_windows_paths",
+              "description": "Test import resolution with Windows-style paths"
+            },
+            {
+              "name": "test_extract_imports_with_as_aliases",
+              "description": "Test import with 'as' aliases"
+            },
+            {
+              "name": "test_extract_imports_skips_node_modules",
+              "description": "Test that node_modules imports are skipped"
+            },
+            {
+              "name": "test_normalize_type_with_generics",
+              "description": "Test type normalization with generic types"
+            },
+            {
+              "name": "test_normalize_type_with_unions",
+              "description": "Test type normalization with union types"
+            },
+            {
+              "name": "test_normalize_type_empty",
+              "description": "Test type normalization with empty string"
+            },
+            {
+              "name": "test_normalize_contract_id",
+              "description": "Test contract ID normalization"
+            }
+          ],
+          "count": 8
+        },
+        {
+          "name": "TestMultiLineFunctions",
+          "description": "Test multi-line function declarations \u00e2\u20ac\u201d CRITICAL",
+          "methods": [
+            {
+              "name": "test_multiline_function_declaration",
+              "description": "Test function declaration spanning multiple lines"
+            },
+            {
+              "name": "test_arrow_function_single_line",
+              "description": "Test arrow function on single line"
+            },
+            {
+              "name": "test_named_function_expression_single_line",
+              "description": "Test named function expression on single line"
+            },
+            {
+              "name": "test_function_with_many_parameters",
+              "description": "Test function with many parameters"
+            }
+          ],
+          "count": 4
+        },
+        {
+          "name": "TestEdgeCasesAndErrorPaths",
+          "description": "Test edge cases and error paths in critical functions \u00e2\u20ac\u201d CRITICAL",
+          "methods": [
+            {
+              "name": "test_find_blocks_no_opening_brace",
+              "description": "Test find_blocks when no opening brace exists"
+            },
+            {
+              "name": "test_find_blocks_unmatched_braces",
+              "description": "Test find_blocks with unmatched braces"
+            },
+            {
+              "name": "test_extract_imports_cross_drive_path",
+              "description": "Test import resolution with cross-drive paths (Windows edge case)"
+            },
+            {
+              "name": "test_parse_params_with_whitespace_variations",
+              "description": "Test parameter parsing with various whitespace patterns"
+            },
+            {
+              "name": "test_parse_params_with_nested_generics",
+              "description": "Test parameter parsing with deeply nested generics"
+            },
+            {
+              "name": "test_extract_symbols_with_malformed_function",
+              "description": "Test extraction with malformed function declaration"
+            },
+            {
+              "name": "test_extract_symbols_with_comments",
+              "description": "Test extraction ignoring comments"
+            },
+            {
+              "name": "test_extract_symbols_with_block_comments",
+              "description": "Test extraction with block comments"
+            },
+            {
+              "name": "test_extract_symbols_empty_file",
+              "description": "Test extraction from empty file"
+            },
+            {
+              "name": "test_extract_symbols_only_comments",
+              "description": "Test extraction from file with only comments"
+            }
+          ],
+          "count": 10
+        },
+        {
+          "name": "TestComplexScenarios",
+          "description": "Test complex real-world scenarios \u00e2\u20ac\u201d CRITICAL",
+          "methods": [
+            {
+              "name": "test_mixed_exports_and_calls",
+              "description": "Test file with mixed exported and non-exported functions"
+            },
+            {
+              "name": "test_nested_classes_and_methods",
+              "description": "Test extraction of nested class structures"
+            },
+            {
+              "name": "test_function_with_inline_arrow_functions",
+              "description": "Test function containing inline arrow functions"
+            },
+            {
+              "name": "test_function_with_template_literals",
+              "description": "Test function with template literals containing braces"
+            },
+            {
+              "name": "test_function_with_string_literals_containing_braces",
+              "description": "Test function with string literals containing braces"
+            },
+            {
+              "name": "test_multiple_function_declarations_same_line",
+              "description": "Test handling of multiple declarations"
+            },
+            {
+              "name": "test_function_with_complex_return_type",
+              "description": "Test function with complex return type annotation"
+            },
+            {
+              "name": "test_interface_and_type_declarations",
+              "description": "Test that interfaces and types are handled"
+            }
+          ],
+          "count": 8
+        }
+      ],
+      "total": 71
+    },
+    {
       "path": "unit\\test_generators.py",
       "type": "unit",
       "category": "Generators",
@@ -521,6 +1259,12 @@
             }
           ],
           "count": 3
+        },
+        {
+          "name": "TestVisualizationLayer",
+          "description": "Functional tests for Layer 4 beats (Visualization & Diagrams)",
+          "methods": [],
+          "count": 0
         }
       ],
       "total": 16

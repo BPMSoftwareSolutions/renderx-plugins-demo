@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "generated_at": "",
+  "statistics": {
+    "files": 0,
+    "symbols": 0,
+    "calls": 0,
+    "contracts": 0
+  },
+  "symbol_types": {},
+  "call_distribution": {},
+  "complexity": {
+    "average_calls_per_symbol": 0,
+    "max_calls_per_symbol": 0,
+    "min_calls_per_symbol": 0
+  },
+  "coverage": {
+    "symbols_with_calls": 0,
+    "symbols_without_calls": 0
+  }
+}

@@ -59,6 +59,61 @@
       "tempo": 100,
       "movements": [
         {
+          "id": "layer0_preflight",
+          "name": "Layer 0: Pre-Flight Validation",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "check:self_observation",
+              "handler": "validateSelfObservation",
+              "timing": "immediate",
+              "dynamics": "ff",
+              "description": "Ensure recent self-observation IR exists and is complete"
+            },
+            {
+              "beat": 2,
+              "event": "check:test_coverage",
+              "handler": "validateTestCoverage",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Ensure visualization beats have tests"
+            },
+            {
+              "beat": 3,
+              "event": "check:unit_test_coverage",
+              "handler": "validateUnitTestCoverage",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Enforce unit test coverage threshold"
+            },
+            {
+              "beat": 4,
+              "event": "check:drift",
+              "handler": "detectDrift",
+              "timing": "immediate",
+              "dynamics": "mf",
+              "description": "Detect code changes since last IR"
+            },
+            {
+              "beat": 5,
+              "event": "check:dependencies",
+              "handler": "validateDependencies",
+              "timing": "immediate",
+              "dynamics": "mp",
+              "description": "Check environment and optional tools"
+            },
+            {
+              "beat": 6,
+              "event": "gate:proceed_or_block",
+              "handler": "gateProceed",
+              "timing": "immediate",
+              "dynamics": "pp",
+              "description": "Proceed only if all checks pass"
+            }
+          ]
+        },
+
+        {
           "id": "layer1_extraction",
           "name": "Layer 1: Core Extraction",
           "beats": [
