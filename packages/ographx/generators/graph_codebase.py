@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Graph Codebase - Unified Pipeline Orchestrator
 
@@ -16,6 +17,11 @@ import argparse
 import subprocess
 from pathlib import Path
 from typing import List, Optional
+
+# Ensure UTF-8 output on Windows
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -70,22 +76,22 @@ class CodebaseGrapher:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
 
             if result.returncode == 0:
-                print(f"✅ {name} completed")
+                print(f"[OK] {name} completed")
                 if result.stdout:
                     for line in result.stdout.strip().split('\n'):
                         if line.strip():
                             print(f"   {line}")
                 return True
             else:
-                print(f"❌ {name} failed (code {result.returncode})")
+                print(f"[!] {name} failed (code {result.returncode})")
                 if result.stderr:
                     print(f"   {result.stderr}")
                 return False
         except subprocess.TimeoutExpired:
-            print(f"❌ {name} timed out")
+            print(f"[!] {name} timed out")
             return False
         except Exception as e:
-            print(f"❌ {name} failed: {e}")
+            print(f"[!] {name} failed: {e}")
             return False
     
     def extract_ir(self):
