@@ -21,6 +21,7 @@ from typing import List, Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from core.artifact_manager import ArtifactManager, ArtifactConfig, ArtifactManifest
+from core.preflight_validator import PreFlightValidator
 
 
 class CodebaseGrapher:
@@ -232,9 +233,24 @@ class CodebaseGrapher:
         print("OgraphX Codebase Graphing Pipeline")
         print(f"Codebase: {self.codebase_name}")
         print("="*70)
-        
+
+        # Layer 0: Pre-flight validation
+        print("\n🔍 Running pre-flight validation...")
+        validator = PreFlightValidator()
+        validation_result = validator.run_all_checks()
+        if not validation_result.passed:
+            print("\n❌ PRE-FLIGHT VALIDATION FAILED")
+            print("="*70)
+            for error in validation_result.errors:
+                print(f"  • {error}")
+            print("\n💡 Fix by running self-observation first:")
+            print("   cd packages/ographx")
+            print("   python generators/graph_codebase.py --name ographx --roots . --exclude tests,node_modules,__pycache__")
+            return 1
+        print("✅ Pre-flight validation passed\n")
+
         self.setup()
-        
+
         steps = [
             ("Extract IR", self.extract_ir),
             ("Generate Sequences", self.generate_sequences),
@@ -242,7 +258,7 @@ class CodebaseGrapher:
             ("Extract Analysis", self.extract_analysis),
             ("Finalize", self.finalize),
         ]
-        
+
         results = []
         for name, step_func in steps:
             try:
@@ -251,21 +267,21 @@ class CodebaseGrapher:
             except Exception as e:
                 print(f"❌ {name} failed: {e}")
                 results.append((name, False))
-        
+
         # Print final summary
         print("\n" + "="*70)
         print("PIPELINE SUMMARY")
         print("="*70)
-        
+
         passed = sum(1 for _, success in results if success)
         total = len(results)
-        
+
         for name, success in results:
             status = "✅" if success else "❌"
             print(f"{status} {name}")
-        
+
         print(f"\nTotal: {passed}/{total} steps completed")
-        
+
         if passed == total:
             print(f"\n✅ All artifacts generated for '{self.codebase_name}'!")
             return 0

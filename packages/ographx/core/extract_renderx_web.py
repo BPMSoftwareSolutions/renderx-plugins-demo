@@ -68,6 +68,25 @@ def build_ir_from_roots(root_dirs: list, exclude_dirs: list = None) -> dict:
 
         all_files.extend(files)
 
+    # Global resolution pass: fill empty 'to' using all discovered symbols
+    try:
+        name_to_ids = {}
+        for s in all_symbols:
+            name = getattr(s, 'name', None) or getattr(s, 'id', '')
+            if name:
+                name_to_ids.setdefault(name, []).append(getattr(s, 'id', ''))
+        resolved = 0
+        for c in all_calls:
+            if not getattr(c, 'to', ''):
+                target = name_to_ids.get(getattr(c, 'name', ''), [])
+                if target:
+                    c.to = target[0]
+                    resolved += 1
+        if resolved:
+            print(f"    [resolve] Filled {resolved} empty call targets using global symbol map")
+    except Exception as e:
+        print(f"[WARN] Global resolution pass failed: {e}")
+
     # Create IR
     ir = IR(files=all_files, symbols=all_symbols, calls=all_calls, contracts=all_contracts)
     return ir

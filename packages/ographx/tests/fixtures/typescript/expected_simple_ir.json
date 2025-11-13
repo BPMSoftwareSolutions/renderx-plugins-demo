@@ -35,6 +35,7 @@
       "exported": true,
       "file": "simple.ts",
       "line": 18,
+      "contract": [],
       "methods": ["compute", "helper"]
     },
     {
