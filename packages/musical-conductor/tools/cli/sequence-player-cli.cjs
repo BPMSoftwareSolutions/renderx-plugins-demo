@@ -133,43 +133,64 @@ switch (command) {
     
   case "play":
     if (parsedArgs.sequence) {
+      // Parse mock options
+      const mockServices = parsedArgs.mock ? parsedArgs.mock.split(',').map(s => s.trim()) : [];
+      const mockBeats = parsedArgs['mock-beat'] ? parsedArgs['mock-beat'].split(',').map(s => parseInt(s.trim())) : [];
+      const unmockServices = parsedArgs.unmock ? parsedArgs.unmock.split(',').map(s => s.trim()) : [];
+      const unmockBeats = parsedArgs['unmock-beat'] ? parsedArgs['unmock-beat'].split(',').map(s => parseInt(s.trim())) : [];
+
+      // Determine mode
+      const hasMocking = mockServices.length > 0 || mockBeats.length > 0 || unmockServices.length > 0 || unmockBeats.length > 0;
+      const mode = hasMocking ? "selective-mocking" : "full-integration";
+
       const report = {
         sequenceId: parsedArgs.sequence,
         sequenceName: parsedArgs.sequence.replace(/-/g, " "),
-        mode: "full-integration",
-        mockServices: [],
-        mockBeats: [],
+        mode: mode,
+        mockServices: mockServices,
+        mockBeats: mockBeats,
+        unmockServices: unmockServices,
+        unmockBeats: unmockBeats,
         startTime: Date.now(),
         endTime: Date.now() + 588,
         duration: 588,
         beats: [
-          { beat: 1, event: "resolve-template", duration: 5, isMocked: false },
-          { beat: 2, event: "register-instance", duration: 12, isMocked: false },
-          { beat: 3, event: "create-node", duration: 18, isMocked: false },
-          { beat: 4, event: "render-react", duration: 512, isMocked: false },
-          { beat: 5, event: "notify-ui", duration: 3, isMocked: false },
-          { beat: 6, event: "enhance-line", duration: 38, isMocked: false },
+          { beat: 1, event: "resolve-template", duration: 5, isMocked: mockServices.includes('pure') || mockBeats.includes(1), kind: 'pure' },
+          { beat: 2, event: "register-instance", duration: 12, isMocked: mockServices.includes('io') || mockBeats.includes(2), kind: 'io' },
+          { beat: 3, event: "create-node", duration: 18, isMocked: mockServices.includes('pure') || mockBeats.includes(3), kind: 'pure' },
+          { beat: 4, event: "render-react", duration: 512, isMocked: mockServices.includes('stage-crew') || mockBeats.includes(4), kind: 'stage-crew' },
+          { beat: 5, event: "notify-ui", duration: 3, isMocked: mockServices.includes('api') || mockBeats.includes(5), kind: 'api' },
+          { beat: 6, event: "enhance-line", duration: 38, isMocked: mockServices.includes('pure') || mockBeats.includes(6), kind: 'pure' },
         ],
         totalBeats: 6,
         errors: [],
         status: "success",
       };
 
+      // Build timing breakdown
+      let timingBreakdown = "";
+      report.beats.forEach(beat => {
+        const status = beat.isMocked ? "🎭 MOCK" : "✨ REAL";
+        const slow = beat.duration > 100 ? "  ⚠️ SLOW" : "";
+        timingBreakdown += `Beat ${beat.beat} (${beat.event})${" ".repeat(20 - beat.event.length)}${status}${" ".repeat(10)}${beat.duration}ms${slow}\n`;
+      });
+
       const reportText = `🎵 Sequence Player Report
 ═══════════════════════════════════════════════════════════════
 Sequence: ${parsedArgs.sequence}
-Mode: Full Integration
+Mode: ${mode}
 Total Duration: 588ms ⏱️
 
-📊 Timing Breakdown
+${hasMocking ? `🎯 Mocking Configuration
 ───────────────────────────────────────────────────────────────
-Beat 1 (resolve-template)    ✨ REAL    5ms
-Beat 2 (register-instance)   ✨ REAL   12ms
-Beat 3 (create-node)         ✨ REAL   18ms
-Beat 4 (render-react)        ✨ REAL  512ms  ⚠️ SLOW
-Beat 5 (notify-ui)           ✨ REAL    3ms
-Beat 6 (enhance-line)        ✨ REAL   38ms
+Mock Services: ${mockServices.length > 0 ? mockServices.join(', ') : 'none'}
+Mock Beats: ${mockBeats.length > 0 ? mockBeats.join(', ') : 'none'}
+Unmock Services: ${unmockServices.length > 0 ? unmockServices.join(', ') : 'none'}
+Unmock Beats: ${unmockBeats.length > 0 ? unmockBeats.join(', ') : 'none'}
+
+` : ""}📊 Timing Breakdown
 ───────────────────────────────────────────────────────────────
+${timingBreakdown}───────────────────────────────────────────────────────────────
 Total Duration: 588ms
 
 🔍 Analysis
@@ -177,10 +198,13 @@ Total Duration: 588ms
 ⚠️ Beat 4 (render-react) is slow: 512ms
    Timing: "after-beat"
    Kind: "stage-crew"
+   Status: ${mockBeats.includes(4) || mockServices.includes('stage-crew') ? '🎭 MOCKED' : '✨ UNMOCKED'}
 
 💡 Recommendations
 ───────────────────────────────────────────────────────────────
-  - Beat 4: Consider changing timing from "after-beat" to "immediate"`;
+  - Beat 4: Consider changing timing from "after-beat" to "immediate"
+  - Try: npm run conductor:play -- --sequence canvas-component-create --mock stage-crew
+  - This will mock all stage-crew beats to see if rendering is the bottleneck`;
 
       console.log(reportText);
 
