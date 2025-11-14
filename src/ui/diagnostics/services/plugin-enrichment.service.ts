@@ -49,6 +49,13 @@ export async function loadPluginSequences(pluginId: string): Promise<RuntimeSequ
       return [];
     }
 
+    // Check if response is actually JSON (not HTML 404 page)
+    const contentType = catalogResponse.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      console.warn(`Plugin ${pluginId} catalog returned non-JSON content type: ${contentType}`);
+      return [];
+    }
+
     const catalog = await catalogResponse.json();
     const sequences: RuntimeSequence[] = [];
 
@@ -59,6 +66,13 @@ export async function loadPluginSequences(pluginId: string): Promise<RuntimeSequ
           const seqFile = seqEntry.file || seqEntry;
           const seqResponse = await fetch(`/json-sequences/${catalogDir}/${seqFile}`);
           if (seqResponse.ok) {
+            // Check if response is actually JSON
+            const contentType = seqResponse.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+              console.warn(`Sequence file ${seqFile} returned non-JSON content type: ${contentType}`);
+              continue;
+            }
+
             const seqData = await seqResponse.json();
 
             // Extract handler names from movements/beats

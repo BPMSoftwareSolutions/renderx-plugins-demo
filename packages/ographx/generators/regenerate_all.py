@@ -18,20 +18,22 @@ import subprocess
 from pathlib import Path
 
 
-def run_step(name: str, script: str, cwd: Path) -> bool:
+def run_step(name: str, script: str, cwd: Path, args: list[str] | None = None) -> bool:
     """Run a generation step and report status"""
     print(f"\n[STEP] {name}")
-    print(f"       Running: {script}")
-    
+    full_cmd = [sys.executable, script, *(args or [])]
+    print(f"       Running: {' '.join(full_cmd)}")
+
     try:
         result = subprocess.run(
-            [sys.executable, script],
+            full_cmd,
             cwd=cwd,
             capture_output=True,
             text=True,
-            timeout=60
+            encoding='utf-8',
+            timeout=120
         )
-        
+
         if result.returncode == 0:
             print(f"[OK]   {name} completed successfully")
             if result.stdout:
@@ -61,19 +63,28 @@ def main():
     print("OgraphX Self-Aware System - Regeneration Pipeline")
     print("=" * 70)
     
+    # Prepare paths
+    self_ir = ographx_dir / ".ographx" / "self-observation" / "self_graph.json"
+    sequences_out = ographx_dir / ".ographx" / "sequences" / "self_sequences.json"
+
     steps = [
-        ("Extract Self-Graph (IR)", "core/ographx_ts.py", ographx_dir),
-        ("Generate Sequences", "generators/generate_self_sequences.py", ographx_dir),
-        ("Generate Orchestration Diagram", "generators/generate_orchestration_diagram.py", ographx_dir),
-        ("Generate Sequence Flow", "generators/generate_sequence_flow.py", ographx_dir),
-        ("Convert Diagrams to SVG", "generators/convert_to_svg.py", ographx_dir),
-        ("Generate Test Graph", "generators/generate_test_graph.py", ographx_dir),
-        ("Extract Analysis", "analysis/analyze_self_graph.py", ographx_dir),
+        (
+            "Extract Self-Graph (IR)",
+            "core/ographx_py.py",
+            ographx_dir,
+            ["--root", str(ographx_dir), "--out", str(self_ir)],
+        ),
+        ("Generate Sequences", "generators/generate_self_sequences.py", ographx_dir, []),
+        ("Generate Orchestration Diagram", "generators/generate_orchestration_diagram.py", ographx_dir, []),
+        ("Generate Sequence Flow", "generators/generate_sequence_flow.py", ographx_dir, []),
+        ("Convert Diagrams to SVG", "generators/convert_to_svg.py", ographx_dir, ["--all", "--method", "api"]),
+        ("Generate Test Graph", "generators/generate_test_graph.py", ographx_dir, []),
+        ("Extract Analysis", "analysis/analyze_self_graph.py", ographx_dir, []),
     ]
-    
+
     results = []
-    for name, script, cwd in steps:
-        success = run_step(name, script, cwd)
+    for name, script, cwd, args in steps:
+        success = run_step(name, script, cwd, args)
         results.append((name, success))
     
     # Print summary

@@ -110,8 +110,8 @@ export class PerformanceTracker {
     const beatKey = `${sequenceName}-${beat}`;
     this.beatStartTimes.delete(beatKey);
 
-    (globalThis as any).__MC_WARN(
-      `⏱️ PerformanceTracker: Cleaned up failed beat ${beat} for ${sequenceName}`
+    (globalThis as any).__MC_LOG(
+      `⏱️ PerformanceTracker: Cleaned up tracking for beat ${beat} in ${sequenceName}`
     );
   }
 
@@ -209,8 +209,8 @@ export class PerformanceTracker {
     const movementKey = `${sequenceName}-${movementName}-${requestId}`;
     this.movementStartTimes.delete(movementKey);
 
-    (globalThis as any).__MC_WARN(
-      `⏱️ PerformanceTracker: Cleaned up failed movement ${movementName} for ${sequenceName}`
+    (globalThis as any).__MC_LOG(
+      `⏱️ PerformanceTracker: Cleaned up tracking for movement ${movementName} in ${sequenceName}`
     );
   }
 

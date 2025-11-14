@@ -4,28 +4,40 @@
  */
 
 import { VectorStore, ComponentMetadata, EmbeddingService } from '../store/store.types';
+import { OgraphXContextBuilder, AIGenerationContext as OgraphXContext } from './ographx-context-builder';
+import { OgraphXArtifactRetriever } from '../search/ographx-artifact-retriever';
 
 export interface AIGenerationRequest {
   prompt: string;
   context?: string;
   maxSimilarComponents?: number;
   similarityThreshold?: number;
+  includeOgraphXContext?: boolean;
 }
 
 export interface AIGenerationContext {
   prompt: string;
   similarComponents: ComponentMetadata[];
   systemPrompt: string;
+  ographxContext?: OgraphXContext;
 }
 
 export class AIComponentGenerator {
+  private ographxContextBuilder?: OgraphXContextBuilder;
+
   constructor(
     private vectorStore: VectorStore,
-    private embeddingService: EmbeddingService
-  ) {}
+    private embeddingService: EmbeddingService,
+    ographxRetriever?: OgraphXArtifactRetriever
+  ) {
+    if (ographxRetriever) {
+      this.ographxContextBuilder = new OgraphXContextBuilder(ographxRetriever);
+    }
+  }
 
   /**
    * Prepare context for AI generation by finding similar components
+   * Optionally enriches with OgraphX artifact context
    */
   async prepareGenerationContext(request: AIGenerationRequest): Promise<AIGenerationContext> {
     const maxSimilar = request.maxSimilarComponents ?? 5;
@@ -46,11 +58,21 @@ export class AIComponentGenerator {
     // Build system prompt with similar components as examples
     const systemPrompt = this.buildSystemPrompt(request.prompt, componentMetadata);
 
-    return {
+    const context: AIGenerationContext = {
       prompt: request.prompt,
       similarComponents: componentMetadata,
       systemPrompt,
     };
+
+    // Optionally add OgraphX context
+    if (request.includeOgraphXContext && this.ographxContextBuilder) {
+      context.ographxContext = await this.ographxContextBuilder.buildGenerationContext({
+        prompt: request.prompt,
+        type: 'component',
+      });
+    }
+
+    return context;
   }
 
   /**
@@ -106,6 +128,20 @@ Ensure the generated component:
 2. Is semantically correct and accessible
 3. Includes proper metadata
 4. Has clean, maintainable markup`;
+
+    return prompt;
+  }
+
+  /**
+   * Build enhanced system prompt with OgraphX context
+   */
+  buildEnhancedSystemPrompt(userPrompt: string, similarComponents: ComponentMetadata[], ographxContext?: OgraphXContext): string {
+    let prompt = this.buildSystemPrompt(userPrompt, similarComponents);
+
+    if (ographxContext && this.ographxContextBuilder) {
+      const contextStr = this.ographxContextBuilder.formatContextForPrompt(ographxContext);
+      prompt += `\n\n## Codebase Architecture Context\n${contextStr}`;
+    }
 
     return prompt;
   }

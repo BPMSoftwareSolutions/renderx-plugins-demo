@@ -1,0 +1,414 @@
+{
+  "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.logs\\localhost-1763017364944.log",
+  "totalLines": 977,
+  "earliest": "2025-11-13T07:02:26.861Z",
+  "latest": "2025-11-13T07:02:39.206Z",
+  "durationMs": 12345,
+  "pluginMounts": {
+    "attempts": 8,
+    "successes": 9,
+    "byPlugin": {
+      "ControlPanelPlugin": {
+        "attempts": 5,
+        "successes": 6,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T07:02:26.862Z",
+          "2025-11-13T07:02:26.862Z",
+          "2025-11-13T07:02:26.863Z",
+          "2025-11-13T07:02:26.864Z",
+          "2025-11-13T07:02:26.864Z",
+          "2025-11-13T07:02:26.865Z"
+        ],
+        "durations": [
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      "LibraryComponentPlugin": {
+        "attempts": 3,
+        "successes": 3,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T07:02:26.873Z",
+          "2025-11-13T07:02:26.874Z",
+          "2025-11-13T07:02:26.875Z"
+        ],
+        "durations": [
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "sequences": {
+    "registered": 9,
+    "byName": {
+      "Control Panel UI Section Toggle": 1,
+      "Control Panel UI Init": 1,
+      "Control Panel UI Field Validate": 1,
+      "Control Panel UI Field Change": 1,
+      "Control Panel UI Render": 1,
+      "Control Panel UI Init (Batched)": 1,
+      "Library Component Drag": 1,
+      "Library Component Drop": 1,
+      "Library Component Container Drop": 1
+    },
+    "details": {
+      "Control Panel UI Section Toggle": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-section-toggle-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.861Z"
+        ]
+      },
+      "Control Panel UI Init": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-init-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.862Z"
+        ],
+        "beats": {
+          "1": [
+            8.1
+          ],
+          "2": [
+            8
+          ],
+          "3": [
+            7.3
+          ],
+          "4": [
+            7.9
+          ],
+          "5": [
+            7.4
+          ],
+          "6": [
+            8.1
+          ]
+        },
+        "movements": [
+          {
+            "name": "Init",
+            "durationMs": 48
+          }
+        ]
+      },
+      "Control Panel UI Field Validate": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-field-validate-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.863Z"
+        ]
+      },
+      "Control Panel UI Field Change": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-field-change-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.863Z"
+        ]
+      },
+      "Control Panel UI Render": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-render-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.864Z"
+        ],
+        "beats": {
+          "1": [
+            8.2
+          ],
+          "2": [
+            4.9
+          ],
+          "3": [
+            4.3
+          ]
+        },
+        "movements": [
+          {
+            "name": "Render",
+            "durationMs": 17.8
+          }
+        ]
+      },
+      "Control Panel UI Init (Batched)": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-init-batched-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.864Z"
+        ]
+      },
+      "Library Component Drag": {
+        "count": 1,
+        "ids": [
+          "library-component-drag-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.873Z"
+        ],
+        "beats": {
+          "1": [
+            2
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag",
+            "durationMs": 2.2
+          }
+        ]
+      },
+      "Library Component Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.874Z"
+        ],
+        "beats": {
+          "1": [
+            8
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drop",
+            "durationMs": 8.2
+          }
+        ]
+      },
+      "Library Component Container Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-container-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T07:02:26.874Z"
+        ]
+      },
+      "Header UI Theme Get": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            16
+          ],
+          "2": [
+            6.5
+          ]
+        },
+        "movements": [
+          {
+            "name": "Get Current Theme",
+            "durationMs": 23.3
+          }
+        ]
+      },
+      "Library Load": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            5.5,
+            8.9
+          ],
+          "2": [
+            3.9,
+            4.4
+          ]
+        },
+        "movements": [
+          {
+            "name": "Load",
+            "durationMs": 9.7
+          },
+          {
+            "name": "Load",
+            "durationMs": 14.1
+          }
+        ]
+      },
+      "Canvas Component Create": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            4
+          ],
+          "2": [
+            4
+          ],
+          "3": [
+            4.8
+          ],
+          "4": [
+            7.2
+          ],
+          "5": [
+            4.5
+          ],
+          "6": [
+            5.4
+          ]
+        },
+        "movements": [
+          {
+            "name": "Create",
+            "durationMs": 532.2
+          }
+        ]
+      }
+    },
+    "executions": [
+      {
+        "name": "Header UI Theme Get",
+        "start": "2025-11-13T07:02:29.306Z",
+        "end": "2025-11-13T07:02:29.331Z",
+        "durationMs": 25
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T07:02:29.331Z",
+        "end": "2025-11-13T07:02:29.341Z",
+        "durationMs": 10
+      },
+      {
+        "name": "Control Panel UI Init",
+        "start": "2025-11-13T07:02:29.341Z",
+        "end": "2025-11-13T07:02:29.390Z",
+        "durationMs": 49
+      },
+      {
+        "name": "Library Component Drag",
+        "start": "2025-11-13T07:02:31.526Z",
+        "end": "2025-11-13T07:02:31.529Z",
+        "durationMs": 3
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T07:02:31.904Z",
+        "end": "2025-11-13T07:02:31.923Z",
+        "durationMs": 19
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T07:02:33.899Z",
+        "end": "2025-11-13T07:02:33.914Z",
+        "durationMs": 14
+      },
+      {
+        "name": "Library Component Drop",
+        "start": "2025-11-13T07:02:34.493Z",
+        "end": "2025-11-13T07:02:34.502Z",
+        "durationMs": 9
+      },
+      {
+        "name": "Canvas Component Create",
+        "start": "2025-11-13T07:02:36.845Z",
+        "end": "2025-11-13T07:02:37.378Z",
+        "durationMs": 533
+      }
+    ]
+  },
+  "topics": {
+    "subscribed": 38,
+    "byTopic": {
+      "control:panel:ui:section:toggle": 1,
+      "ControlPanelPlugin:sequence:completed": 6,
+      "control:panel:ui:init:config": 2,
+      "control:panel:ui:init:resolver": 2,
+      "control:panel:ui:init:schemas": 2,
+      "control:panel:ui:init:observers": 2,
+      "control:panel:ui:init:notify": 2,
+      "control:panel:ui:init:movement": 2,
+      "control:panel:ui:field:validate": 1,
+      "control:panel:ui:errors:merge": 1,
+      "control:panel:ui:update": 1,
+      "control:panel:ui:field:prepare": 1,
+      "control:panel:ui:field:dispatch": 1,
+      "control:panel:ui:field:dirty": 1,
+      "control:panel:ui:field:await-refresh": 1,
+      "control:panel:ui:fields:generate": 1,
+      "control:panel:ui:sections:generate": 1,
+      "control:panel:ui:render": 1,
+      "library.component.drag.start.requested": 1,
+      "LibraryComponentPlugin:sequence:completed": 3,
+      "library:component:drop": 1,
+      "library:container:drop": 1,
+      "sequence-completed": 1,
+      "sequence-failed": 1,
+      "sequence-cancelled": 1
+    }
+  },
+  "css": {
+    "injectTopics": 0,
+    "controlPanelEvents": 0
+  },
+  "beats": {
+    "started": [],
+    "completed": [],
+    "stats": {}
+  },
+  "movements": {
+    "started": [],
+    "completed": [],
+    "stats": {}
+  },
+  "_ctx": {
+    "currentSequence": "Canvas Component Create",
+    "currentMovement": "Movement 2"
+  },
+  "performance": {
+    "metrics": {},
+    "gaps": [
+      {
+        "start": "2025-11-13T07:02:26.875Z",
+        "end": "2025-11-13T07:02:29.305Z",
+        "durationMs": 2430
+      },
+      {
+        "start": "2025-11-13T07:02:29.407Z",
+        "end": "2025-11-13T07:02:31.526Z",
+        "durationMs": 2119
+      },
+      {
+        "start": "2025-11-13T07:02:31.923Z",
+        "end": "2025-11-13T07:02:33.898Z",
+        "durationMs": 1975
+      },
+      {
+        "start": "2025-11-13T07:02:34.502Z",
+        "end": "2025-11-13T07:02:36.845Z",
+        "durationMs": 2343
+      },
+      {
+        "start": "2025-11-13T07:02:37.378Z",
+        "end": "2025-11-13T07:02:39.206Z",
+        "durationMs": 1828
+      }
+    ],
+    "slowSequences": {}
+  }
+}

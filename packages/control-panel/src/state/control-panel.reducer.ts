@@ -21,6 +21,18 @@ export function controlPanelReducer(state: ControlPanelState, action: ControlPan
       return { ...state, expandedSections: newExpanded };
     case 'SET_VALIDATION_ERRORS':
       return { ...state, validationErrors: action.payload };
+    case 'MERGE_ERRORS':
+      return {
+        ...state,
+        validationErrors: {
+          ...state.validationErrors,
+          [action.payload.field]: [action.payload.error]
+        }
+      };
+    case 'CLEAR_ERRORS':
+      const clearedErrors = { ...state.validationErrors };
+      delete clearedErrors[action.payload.field];
+      return { ...state, validationErrors: clearedErrors };
     case 'SET_DIRTY':
       return { ...state, isDirty: action.payload };
     case 'RESET_STATE':

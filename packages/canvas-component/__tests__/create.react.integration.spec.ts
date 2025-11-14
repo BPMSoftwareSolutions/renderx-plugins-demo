@@ -6,6 +6,10 @@ vi.mock("react", () => ({
   default: {
     createElement: vi.fn((type, props, ...children) => ({ type, props, children })),
   },
+  startTransition: vi.fn((callback) => {
+    // Execute callback immediately in tests for synchronous behavior
+    callback();
+  }),
 }));
 
 vi.mock("react-dom/client", () => ({

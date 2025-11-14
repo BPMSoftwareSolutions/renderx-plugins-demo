@@ -1,0 +1,64 @@
+{
+  "sequence_id": "canvas-component-create-symphony",
+  "movement_id": "create",
+  "beats": [
+    "resolveTemplate",
+    "registerInstance",
+    "createNode",
+    "renderReact",
+    "notifyUi",
+    "enhanceLine"
+  ],
+  "code_units": [
+    "create.arrangement#resolveTemplate",
+    "create.io#registerInstance",
+    "create.stage-crew#createNode",
+    "create.react.stage-crew#renderReact",
+    "create.notify#notifyUi",
+    "augment.line.stage-crew#enhanceLine"
+  ],
+  "contracts_in": {
+    "baton": {
+      "component": {
+        "template": {
+          "tag": "button",
+          "text": "Click Me",
+          "classes": [
+            "rx-comp",
+            "rx-button"
+          ],
+          "css": ".rx-button { padding: 8px 16px; border-radius: 4px; }",
+          "dimensions": {
+            "width": 120,
+            "height": 40
+          },
+          "content": {
+            "variant": "primary",
+            "size": "medium"
+          }
+        }
+      },
+      "position": {
+        "x": 50,
+        "y": 80
+      },
+      "containerId": null,
+      "correlationId": "corr-1763065074192"
+    }
+  },
+  "dependencies": {
+    "io": "stubbed kv.put",
+    "dom": "#rx-canvas",
+    "topics": [
+      "canvas.component.created"
+    ],
+    "logger": "stubbed"
+  },
+  "env": {
+    "TZ": "UTC"
+  },
+  "seed": 284803,
+  "privacy": {
+    "redactions": []
+  }
+}

@@ -92,6 +92,12 @@ function main() {
       gaps: [],
       slowSequences: {},
     },
+    // build/version info captured from logs
+    build: {
+      manifest: null,
+      packages: [],
+    },
+    alerts: [],
   };
 
   // Track all timestamped lines for gap detection
@@ -175,6 +181,47 @@ function main() {
       if (topic && topic.includes('css:inject')) stats.css.injectTopics += 1;
       if (topic && topic.startsWith('control:panel:css:')) stats.css.controlPanelEvents += 1;
     }
+
+    // Build/version manifest lines
+    try {
+      if (line.includes('VERSIONS_JSON:')) {
+        const idx = line.indexOf('VERSIONS_JSON:') + 'VERSIONS_JSON:'.length;
+        const jsonStr = line.slice(idx).trim();
+        try {
+          const obj = JSON.parse(jsonStr);
+          stats.build.manifest = obj;
+          if (obj && Array.isArray(obj.packages)) {
+            for (const p of obj.packages) {
+              if (p && p.name && p.version) {
+                stats.build.packages.push({ name: p.name, version: p.version });
+              }
+            }
+          }
+        } catch {}
+      } else if (line.startsWith('VERSIONS: ')) {
+        const rest = line.slice('VERSIONS: '.length).trim();
+        // Expect format name@version
+        const token = rest.split(/\s+/)[0];
+        const atIdx = token.lastIndexOf('@');
+        if (atIdx > 0) {
+          const name = token.slice(0, atIdx);
+          const version = token.slice(atIdx + 1);
+          if (name && version) {
+            stats.build.packages.push({ name, version });
+          }
+        }
+      }
+    } catch {}
+
+    // Detect stale Musical Conductor bundle logs (pre-fix message)
+    if (/PerformanceTracker:\s*Cleaned up failed movement/i.test(line)) {
+      stats.alerts.push({
+        type: 'stale-bundle:musical-conductor',
+        message: 'Detected legacy log string "Cleaned up failed movement". This indicates a stale Vite-optimized bundle; the fix logs "Cleaned up tracking for movement".',
+        line,
+      });
+    }
+
 
     // Heuristic: update current sequence/movement context when explicit sequence/movement lines appear
     if (line.includes('🎼 Sequence:')) {
@@ -322,6 +369,8 @@ function main() {
     for (const [topic, count] of topTopics) {
       console.log(`   - ${topic}: ${count}`);
     }
+
+
   }
   console.log('');
   console.log('CSS-related:');
@@ -388,7 +437,61 @@ function main() {
         const last = (p.durations && p.durations.length) ? p.durations[p.durations.length - 1] : null;
         mdLines.push(`| ${name} | ${p.attempts||0} | ${p.successes||0} | ${avg ? humanMs(avg) : 'N/A'} | ${last ? humanMs(last) : 'N/A'} |`);
       }
+
+	      // Build versions section (Markdown)
+	      if (stats.build && (stats.build.packages?.length || stats.build.manifest)) {
+	        mdLines.push('## Build Versions');
+	        mdLines.push('');
+	        if (stats.build.manifest) {
+	          const meta = stats.build.manifest;
+	          const commit = meta.commit || meta.commitHash || 'N/A';
+	          const builtAt = meta.builtAt || meta.buildTime || 'N/A';
+	          mdLines.push(`- Commit: ${commit}`);
+	          mdLines.push(`- Built at: ${builtAt}`);
+	          if (meta.node) mdLines.push(`- Node: ${meta.node}`);
+	          if (meta.vite) mdLines.push(`- Vite: ${meta.vite}`);
+	        }
+	        if (stats.build.packages && stats.build.packages.length) {
+	          mdLines.push('');
+	          mdLines.push('| Package | Version |');
+	          mdLines.push('|---|---|');
+	          const seen = new Set();
+	          for (const p of stats.build.packages) {
+	            const key = `${p.name}@${p.version}`;
+	            if (seen.has(key)) continue; // de-dupe
+	            seen.add(key);
+	            mdLines.push(`| ${p.name} | ${p.version} |`);
+	          }
+	          mdLines.push('');
+	        }
+	        mdLines.push('');
+	      }
+
       mdLines.push('');
+      // Diagnostics / Alerts
+      if (stats.alerts && stats.alerts.length) {
+        mdLines.push('## Diagnostics');
+        mdLines.push('');
+        const counts = stats.alerts.reduce((acc, a) => {
+          acc[a.type] = (acc[a.type] || 0) + 1;
+          return acc;
+        }, {});
+        for (const [type, cnt] of Object.entries(counts)) {
+          mdLines.push(`- ${type}: ${cnt}`);
+        }
+        mdLines.push('');
+        if (counts['stale-bundle:musical-conductor']) {
+          mdLines.push('### Recommended remediation for stale-bundle:musical-conductor');
+          mdLines.push('');
+          mdLines.push('On Windows PowerShell:');
+          mdLines.push('1. Stop the dev server');
+          mdLines.push('2. Rebuild the package: `npm run rebuild:mc`');
+          mdLines.push('3. Clear Vite cache: `npm run clean:vite`');
+          mdLines.push('4. Start dev: `npm run dev`');
+          mdLines.push('');
+        }
+      }
+
 
       // Sequences with timestamps (collapsible)
       mdLines.push('## Sequences');

@@ -74,6 +74,30 @@ The drag symphony:
 ## Source Layout (During Extraction)
 `src/symphonies/*` currently re-exports legacy implementations from `plugins/canvas-component/*`. Each will be inlined here so the package becomes self-contained.
 
+## Isolation Harness (Library → Canvas Drop)
+- Based on OgraphX playbook self‑isolation pattern.
+- See OgraphX playbook: `packages/ographx/docs/Self-isolation for prod-only bugs — playbook.md`
+
+- Deterministic jsdom harness that runs only the Create beats with IO and router stubbed.
+
+How to run locally:
+1) Generate an extraction spec from a recent log
+```powershell
+npm run isolation:spec -- %CD%\path\to\your.log
+```
+This writes `outputs/extraction-spec.json` capturing the template baton and stubbed deps.
+
+2) Execute the isolation suite
+```powershell
+npm run test:isolation
+```
+
+Acceptance probes covered:
+- Creates a node inside `#rx-canvas` for the provided baton
+- Stubs `ctx.io.kv.put` and records a write for the nodeId
+- React templates render via `startTransition`; on error, inline error UI is shown (no throw)
+- SVG rx-line adds child `<line.segment>` with `vector-effect="non-scaling-stroke"`
+
 ## Roadmap
 - Inline all legacy handler code (remove deep relative exports).
 - Add resize + rotate symphonies.

@@ -1,0 +1,560 @@
+{
+  "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.logs\\localhost-1763039998976.log",
+  "totalLines": 978,
+  "earliest": "2025-11-13T13:18:06.701Z",
+  "latest": "2025-11-13T13:19:43.924Z",
+  "durationMs": 97223,
+  "pluginMounts": {
+    "attempts": 8,
+    "successes": 9,
+    "byPlugin": {
+      "ControlPanelPlugin": {
+        "attempts": 5,
+        "successes": 6,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T13:19:31.632Z",
+          "2025-11-13T13:19:31.633Z",
+          "2025-11-13T13:19:31.633Z",
+          "2025-11-13T13:19:31.634Z",
+          "2025-11-13T13:19:31.635Z",
+          "2025-11-13T13:19:31.636Z"
+        ],
+        "durations": [
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "LibraryComponentPlugin": {
+        "attempts": 3,
+        "successes": 3,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T13:19:31.651Z",
+          "2025-11-13T13:19:31.653Z",
+          "2025-11-13T13:19:31.655Z"
+        ],
+        "durations": [
+          0,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "sequences": {
+    "registered": 8,
+    "byName": {
+      "Control Panel CSS Delete": 1,
+      "Control Panel CSS Create": 1,
+      "Control Panel Classes Remove": 1,
+      "Control Panel Classes Add": 1,
+      "Control Panel Selection Show": 1,
+      "Library Component Drag": 1,
+      "Library Component Drop": 1,
+      "Library Component Container Drop": 1
+    },
+    "details": {
+      "Control Panel CSS Delete": {
+        "count": 1,
+        "ids": [
+          "control-panel-css-delete-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.632Z"
+        ]
+      },
+      "Control Panel CSS Create": {
+        "count": 1,
+        "ids": [
+          "control-panel-css-create-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.633Z"
+        ]
+      },
+      "Control Panel Classes Remove": {
+        "count": 1,
+        "ids": [
+          "control-panel-classes-remove-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.634Z"
+        ]
+      },
+      "Control Panel Classes Add": {
+        "count": 1,
+        "ids": [
+          "control-panel-classes-add-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.635Z"
+        ]
+      },
+      "Control Panel Selection Show": {
+        "count": 1,
+        "ids": [
+          "control-panel-selection-show-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.635Z"
+        ]
+      },
+      "Library Component Drag": {
+        "count": 1,
+        "ids": [
+          "library-component-drag-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.651Z"
+        ],
+        "beats": {
+          "1": [
+            2.3
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag",
+            "durationMs": 2.7
+          }
+        ]
+      },
+      "Library Component Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.652Z"
+        ],
+        "beats": {
+          "1": [
+            5.3
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drop",
+            "durationMs": 5.5
+          }
+        ]
+      },
+      "Library Component Container Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-container-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T13:19:31.654Z"
+        ]
+      },
+      "Header UI Theme Get": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            19.6
+          ],
+          "2": [
+            9.7
+          ]
+        },
+        "movements": [
+          {
+            "name": "Get Current Theme",
+            "durationMs": 30.4
+          }
+        ]
+      },
+      "Library Load": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            8.9,
+            4.6
+          ],
+          "2": [
+            5.9,
+            4.5
+          ]
+        },
+        "movements": [
+          {
+            "name": "Load",
+            "durationMs": 15.3
+          },
+          {
+            "name": "Load",
+            "durationMs": 9.4
+          }
+        ]
+      },
+      "Control Panel UI Init": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            13
+          ],
+          "2": [
+            10.5
+          ],
+          "3": [
+            11.5
+          ],
+          "4": [
+            11.9
+          ],
+          "5": [
+            11.4
+          ],
+          "6": [
+            10.3
+          ]
+        },
+        "movements": [
+          {
+            "name": "Init",
+            "durationMs": 70.2
+          }
+        ]
+      },
+      "Control Panel UI Render": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            4.6
+          ],
+          "2": [
+            5.3
+          ],
+          "3": [
+            4.4
+          ]
+        },
+        "movements": [
+          {
+            "name": "Render",
+            "durationMs": 14.8
+          }
+        ]
+      },
+      "Canvas Component Create": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            4.4
+          ],
+          "2": [
+            4.3
+          ],
+          "3": [
+            5.4
+          ],
+          "4": [
+            5.7
+          ],
+          "5": [
+            5
+          ],
+          "6": [
+            5.6
+          ]
+        },
+        "movements": [
+          {
+            "name": "Create",
+            "durationMs": 546
+          }
+        ]
+      }
+    },
+    "executions": [
+      {
+        "name": "Header UI Theme Get",
+        "start": "2025-11-13T13:19:34.298Z",
+        "end": "2025-11-13T13:19:34.330Z",
+        "durationMs": 32
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T13:19:34.423Z",
+        "end": "2025-11-13T13:19:34.439Z",
+        "durationMs": 15
+      },
+      {
+        "name": "Control Panel UI Init",
+        "start": "2025-11-13T13:19:34.439Z",
+        "end": "2025-11-13T13:19:34.509Z",
+        "durationMs": 70
+      },
+      {
+        "name": "Library Component Drag",
+        "start": "2025-11-13T13:19:35.975Z",
+        "end": "2025-11-13T13:19:35.978Z",
+        "durationMs": 3
+      },
+      {
+        "name": "Library Component Drop",
+        "start": "2025-11-13T13:19:38.862Z",
+        "end": "2025-11-13T13:19:38.868Z",
+        "durationMs": 6
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T13:19:38.868Z",
+        "end": "2025-11-13T13:19:38.878Z",
+        "durationMs": 10
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T13:19:39.177Z",
+        "end": "2025-11-13T13:19:39.192Z",
+        "durationMs": 15
+      },
+      {
+        "name": "Canvas Component Create",
+        "start": "2025-11-13T13:19:41.220Z",
+        "end": "2025-11-13T13:19:41.767Z",
+        "durationMs": 546
+      }
+    ]
+  },
+  "topics": {
+    "subscribed": 27,
+    "byTopic": {
+      "control:panel:css:update": 1,
+      "control:panel:css:notify": 3,
+      "ControlPanelPlugin:sequence:completed": 6,
+      "control:panel:css:delete": 1,
+      "control:panel:css:create": 1,
+      "control:panel:classes:remove": 1,
+      "control:panel:classes:notify": 2,
+      "control:panel:classes:add": 1,
+      "control:panel:selection:derive": 1,
+      "control:panel:selection:notify": 1,
+      "library.component.drag.start.requested": 1,
+      "LibraryComponentPlugin:sequence:completed": 3,
+      "library:component:drop": 1,
+      "library:container:drop": 1,
+      "sequence-completed": 1,
+      "sequence-failed": 1,
+      "sequence-cancelled": 1
+    }
+  },
+  "css": {
+    "injectTopics": 0,
+    "controlPanelEvents": 6
+  },
+  "beats": {
+    "started": [],
+    "completed": [],
+    "stats": {}
+  },
+  "movements": {
+    "started": [],
+    "completed": [],
+    "stats": {}
+  },
+  "_ctx": {
+    "currentSequence": "Canvas Component Create",
+    "currentMovement": "Movement 2"
+  },
+  "performance": {
+    "metrics": {},
+    "gaps": [
+      {
+        "start": "2025-11-13T13:18:06.701Z",
+        "end": "2025-11-13T13:19:31.829Z",
+        "durationMs": 85128
+      },
+      {
+        "start": "2025-11-13T13:19:31.829Z",
+        "end": "2025-11-13T13:19:34.296Z",
+        "durationMs": 2467
+      },
+      {
+        "start": "2025-11-13T13:19:34.529Z",
+        "end": "2025-11-13T13:19:35.974Z",
+        "durationMs": 1445
+      },
+      {
+        "start": "2025-11-13T13:19:35.978Z",
+        "end": "2025-11-13T13:19:38.862Z",
+        "durationMs": 2884
+      },
+      {
+        "start": "2025-11-13T13:19:39.192Z",
+        "end": "2025-11-13T13:19:41.220Z",
+        "durationMs": 2028
+      },
+      {
+        "start": "2025-11-13T13:19:41.767Z",
+        "end": "2025-11-13T13:19:43.924Z",
+        "durationMs": 2157
+      }
+    ],
+    "slowSequences": {}
+  },
+  "build": {
+    "manifest": {
+      "builtAt": "2025-11-13T13:18:06.701Z",
+      "node": "v20.19.0",
+      "commit": "dd1abe7",
+      "packages": [
+        {
+          "name": "@renderx-plugins/canvas",
+          "version": "0.1.0-rc.4"
+        },
+        {
+          "name": "@renderx-plugins/canvas-component",
+          "version": "1.0.11"
+        },
+        {
+          "name": "@renderx-plugins/components",
+          "version": "0.1.1"
+        },
+        {
+          "name": "@renderx-plugins/control-panel",
+          "version": "0.1.0-rc.9"
+        },
+        {
+          "name": "@renderx-plugins/digital-assets",
+          "version": "1.0.0"
+        },
+        {
+          "name": "@renderx-plugins/header",
+          "version": "1.0.1"
+        },
+        {
+          "name": "@renderx-plugins/host-sdk",
+          "version": "1.0.6"
+        },
+        {
+          "name": "@renderx-plugins/library",
+          "version": "1.0.6"
+        },
+        {
+          "name": "@renderx-plugins/library-component",
+          "version": "1.0.3"
+        },
+        {
+          "name": "@renderx-plugins/manifest-tools",
+          "version": "0.1.2"
+        },
+        {
+          "name": "@renderx-plugins/telemetry-workbench",
+          "version": "0.1.0"
+        },
+        {
+          "name": "musical-conductor",
+          "version": "1.5.0"
+        }
+      ]
+    },
+    "packages": [
+      {
+        "name": "@renderx-plugins/canvas",
+        "version": "0.1.0-rc.4"
+      },
+      {
+        "name": "@renderx-plugins/canvas-component",
+        "version": "1.0.11"
+      },
+      {
+        "name": "@renderx-plugins/components",
+        "version": "0.1.1"
+      },
+      {
+        "name": "@renderx-plugins/control-panel",
+        "version": "0.1.0-rc.9"
+      },
+      {
+        "name": "@renderx-plugins/digital-assets",
+        "version": "1.0.0"
+      },
+      {
+        "name": "@renderx-plugins/header",
+        "version": "1.0.1"
+      },
+      {
+        "name": "@renderx-plugins/host-sdk",
+        "version": "1.0.6"
+      },
+      {
+        "name": "@renderx-plugins/library",
+        "version": "1.0.6"
+      },
+      {
+        "name": "@renderx-plugins/library-component",
+        "version": "1.0.3"
+      },
+      {
+        "name": "@renderx-plugins/manifest-tools",
+        "version": "0.1.2"
+      },
+      {
+        "name": "@renderx-plugins/telemetry-workbench",
+        "version": "0.1.0"
+      },
+      {
+        "name": "musical-conductor",
+        "version": "1.5.0"
+      }
+    ]
+  },
+  "alerts": [
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:34.329Z ⏱️ PerformanceTracker: Cleaned up failed movement Get Current Theme for Header UI Theme Get"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:34.438Z ⏱️ PerformanceTracker: Cleaned up failed movement Load for Library Load"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:34.509Z ⏱️ PerformanceTracker: Cleaned up failed movement Init for Control Panel UI Init"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:35.977Z ⏱️ PerformanceTracker: Cleaned up failed movement Drag for Library Component Drag"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:38.868Z ⏱️ PerformanceTracker: Cleaned up failed movement Drop for Library Component Drop"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:38.878Z ⏱️ PerformanceTracker: Cleaned up failed movement Load for Library Load"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:39.192Z ⏱️ PerformanceTracker: Cleaned up failed movement Render for Control Panel UI Render"
+    },
+    {
+      "type": "stale-bundle:musical-conductor",
+      "message": "Detected legacy log string \"Cleaned up failed movement\". This indicates a stale Vite-optimized bundle; the fix logs \"Cleaned up tracking for movement\".",
+      "line": "installHook.js:1 2025-11-13T13:19:41.766Z ⏱️ PerformanceTracker: Cleaned up failed movement Create for Canvas Component Create"
+    }
+  ]
+}

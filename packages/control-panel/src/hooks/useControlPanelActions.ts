@@ -30,18 +30,32 @@ export function useControlPanelActions(
             conductor
           );
           dispatch({ type: "SET_DIRTY", payload: true });
+          // Clear any previous errors for this interaction
+          dispatch({ type: "CLEAR_ERRORS", payload: { field: interaction } });
           return;
-        } catch {
-          // Fallback to direct interaction routing
+        } catch (routerError) {
+          // Log router error and try fallback
+          console.warn(`EventRouter failed for ${topicKey}:`, routerError);
           const route = resolveInteraction(interaction);
           conductor?.play?.(route.pluginId, route.sequenceId, {
             id: selectedElement.header.id,
             ...data,
           });
           dispatch({ type: "SET_DIRTY", payload: true });
+          // Clear any previous errors for this interaction
+          dispatch({ type: "CLEAR_ERRORS", payload: { field: interaction } });
         }
-      } catch {
-        // Silently ignore interaction execution failures
+      } catch (error) {
+        // Properly merge error into UI state
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        dispatch({
+          type: "MERGE_ERRORS",
+          payload: {
+            field: interaction,
+            error: errorMessage
+          }
+        });
+        console.error(`Action failed for ${interaction}:`, error);
       }
     },
     [conductor, selectedElement, dispatch]

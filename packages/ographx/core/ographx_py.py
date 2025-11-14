@@ -30,8 +30,16 @@ import argparse
 import json
 import os
 import re
+import sys
 from dataclasses import dataclass, asdict, field
 from typing import List, Dict, Optional, Tuple
+
+# Ensure UTF-8 output on Windows terminals
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+except Exception:
+    pass
 
 # Regex patterns for Python
 FUNC_DEF_RE = re.compile(r'^(?:async\s+)?def\s+([A-Za-z_]\w*)\s*\((.*?)\)\s*(?:->\s*[^:]+)?\s*:')

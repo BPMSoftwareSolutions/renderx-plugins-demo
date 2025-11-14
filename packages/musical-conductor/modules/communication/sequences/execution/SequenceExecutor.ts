@@ -148,18 +148,32 @@ export class SequenceExecutor {
     } catch (error) {
       // Handle sequence execution error
       const executionTime = Date.now() - startTime;
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorStack = error instanceof Error ? error.stack : undefined;
+
       executionContext.errors.push({
         beat: executionContext.currentBeat,
-        error: error instanceof Error ? error.message : String(error),
+        error: errorMessage,
         timestamp: Date.now(),
       });
 
-      // Emit sequence failed event
+      // Emit detailed sequence failed event with full context
       this.eventBus.emit(MUSICAL_CONDUCTOR_EVENT_TYPES.SEQUENCE_FAILED, {
         sequenceName: sequence.name,
+        sequenceId: sequence.id,
         requestId: executionId,
-        error: error instanceof Error ? error.message : String(error),
+        error: errorMessage,
+        errorStack,
         executionTime,
+        context: {
+          currentMovement: executionContext.currentMovement,
+          currentBeat: executionContext.currentBeat,
+          completedBeats: executionContext.completedBeats,
+          totalMovements: sequence.movements.length,
+          totalBeats: sequence.movements.reduce((sum, m) => sum + m.beats.length, 0),
+          payload: executionContext.payload,
+          allErrors: executionContext.errors,
+        },
       });
 
       // Add to history and clear active sequence
@@ -168,8 +182,13 @@ export class SequenceExecutor {
       this.executionQueue.markCompleted(sequenceRequest);
 
       (globalThis as any).__MC_ERROR(
-        `❌ SequenceExecutor: Sequence "${sequence.name}" failed:`,
+        `❌ SequenceExecutor: Sequence "${sequence.name}" failed at movement ${executionContext.currentMovement}, beat ${executionContext.currentBeat}:`,
         error
+      );
+
+      // Log detailed failure context for debugging
+      (globalThis as any).__MC_LOG(
+        `📊 Failure Context: ${executionContext.completedBeats.length} beats completed, ${executionContext.errors.length} errors recorded`
       );
 
       throw error;

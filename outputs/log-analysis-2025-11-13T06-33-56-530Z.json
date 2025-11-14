@@ -1,0 +1,360 @@
+{
+  "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.logs\\localhost-1763015552776.log",
+  "totalLines": 975,
+  "earliest": "2025-11-13T06:30:10.144Z",
+  "latest": "2025-11-13T06:31:33.446Z",
+  "durationMs": 83302,
+  "pluginMounts": {
+    "attempts": 3,
+    "successes": 4,
+    "byPlugin": {
+      "ControlPanelPlugin": {
+        "attempts": 0,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:30:10.144Z"
+        ],
+        "durations": []
+      },
+      "LibraryComponentPlugin": {
+        "attempts": 3,
+        "successes": 3,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:30:10.159Z",
+          "2025-11-13T06:30:10.160Z",
+          "2025-11-13T06:30:10.162Z"
+        ],
+        "durations": [
+          1,
+          1,
+          2
+        ]
+      }
+    }
+  },
+  "sequences": {
+    "registered": 3,
+    "byName": {
+      "Library Component Drag": 1,
+      "Library Component Container Drop": 1,
+      "Library Component Drop": 1
+    },
+    "details": {
+      "Library Component Drag": {
+        "count": 1,
+        "ids": [
+          "library-component-drag-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:30:10.158Z"
+        ],
+        "beats": {
+          "1": [
+            7.5
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag",
+            "durationMs": 7.8
+          }
+        ]
+      },
+      "Library Component Container Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-container-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:30:10.159Z"
+        ]
+      },
+      "Library Component Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:30:10.161Z"
+        ],
+        "beats": {
+          "1": [
+            7.5
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drop",
+            "durationMs": 8
+          }
+        ]
+      },
+      "Header UI Theme Get": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            64.6
+          ],
+          "2": [
+            30
+          ]
+        },
+        "movements": [
+          {
+            "name": "Get Current Theme",
+            "durationMs": 101.1
+          }
+        ]
+      },
+      "Library Load": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            38,
+            29.4
+          ],
+          "2": [
+            39,
+            38.7
+          ]
+        },
+        "movements": [
+          {
+            "name": "Load",
+            "durationMs": 80
+          },
+          {
+            "name": "Load",
+            "durationMs": 69.7
+          }
+        ]
+      },
+      "Control Panel UI Init": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            74.8
+          ],
+          "2": [
+            63.9
+          ],
+          "3": [
+            68.5
+          ],
+          "4": [
+            22.6
+          ],
+          "5": [
+            24.1
+          ],
+          "6": [
+            19.7
+          ]
+        },
+        "movements": [
+          {
+            "name": "Init",
+            "durationMs": 278.4
+          }
+        ]
+      },
+      "Control Panel UI Render": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            350.7,
+            7.9
+          ],
+          "2": [
+            632.5,
+            7.5
+          ],
+          "3": [
+            64.8,
+            6.4
+          ]
+        },
+        "movements": [
+          {
+            "name": "Render",
+            "durationMs": 1064.5
+          },
+          {
+            "name": "Render",
+            "durationMs": 22.8
+          }
+        ]
+      },
+      "Canvas Component Create": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            7
+          ],
+          "2": [
+            5.6
+          ],
+          "3": [
+            5.8
+          ],
+          "4": [
+            5.1
+          ],
+          "5": [
+            5.3
+          ],
+          "6": [
+            4.8
+          ]
+        },
+        "movements": [
+          {
+            "name": "Create",
+            "durationMs": 549.4
+          }
+        ]
+      }
+    },
+    "executions": [
+      {
+        "name": "Header UI Theme Get",
+        "start": "2025-11-13T06:30:12.767Z",
+        "end": "2025-11-13T06:30:12.873Z",
+        "durationMs": 105
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T06:30:12.874Z",
+        "end": "2025-11-13T06:30:12.957Z",
+        "durationMs": 82
+      },
+      {
+        "name": "Control Panel UI Init",
+        "start": "2025-11-13T06:30:12.958Z",
+        "end": "2025-11-13T06:30:13.238Z",
+        "durationMs": 280
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T06:30:15.897Z",
+        "end": "2025-11-13T06:30:15.969Z",
+        "durationMs": 71
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T06:30:18.600Z",
+        "end": "2025-11-13T06:30:19.670Z",
+        "durationMs": 1069
+      },
+      {
+        "name": "Library Component Drag",
+        "start": "2025-11-13T06:31:14.817Z",
+        "end": "2025-11-13T06:31:14.826Z",
+        "durationMs": 8
+      },
+      {
+        "name": "Library Component Drop",
+        "start": "2025-11-13T06:31:17.717Z",
+        "end": "2025-11-13T06:31:17.726Z",
+        "durationMs": 9
+      },
+      {
+        "name": "Canvas Component Create",
+        "start": "2025-11-13T06:31:20.057Z",
+        "end": "2025-11-13T06:31:20.607Z",
+        "durationMs": 550
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T06:31:33.423Z",
+        "end": "2025-11-13T06:31:33.446Z",
+        "durationMs": 23
+      }
+    ]
+  },
+  "topics": {
+    "subscribed": 11,
+    "byTopic": {
+      "control:panel:update:notify": 1,
+      "ControlPanelPlugin:sequence:completed": 1,
+      "library.component.drag.start.requested": 1,
+      "LibraryComponentPlugin:sequence:completed": 3,
+      "library:container:drop": 1,
+      "library:component:drop": 1,
+      "sequence-completed": 1,
+      "sequence-failed": 1,
+      "sequence-cancelled": 1
+    }
+  },
+  "css": {
+    "injectTopics": 0,
+    "controlPanelEvents": 0
+  },
+  "beats": {
+    "started": [],
+    "completed": [],
+    "stats": {}
+  },
+  "movements": {
+    "started": [],
+    "completed": [],
+    "stats": {}
+  },
+  "_ctx": {
+    "currentSequence": "Control Panel UI Render",
+    "currentMovement": "Movement 1"
+  },
+  "performance": {
+    "metrics": {},
+    "gaps": [
+      {
+        "start": "2025-11-13T06:30:10.162Z",
+        "end": "2025-11-13T06:30:12.763Z",
+        "durationMs": 2601
+      },
+      {
+        "start": "2025-11-13T06:30:13.282Z",
+        "end": "2025-11-13T06:30:15.896Z",
+        "durationMs": 2614
+      },
+      {
+        "start": "2025-11-13T06:30:16.052Z",
+        "end": "2025-11-13T06:30:18.599Z",
+        "durationMs": 2547
+      },
+      {
+        "start": "2025-11-13T06:30:19.670Z",
+        "end": "2025-11-13T06:31:14.816Z",
+        "durationMs": 55146
+      },
+      {
+        "start": "2025-11-13T06:31:14.826Z",
+        "end": "2025-11-13T06:31:17.716Z",
+        "durationMs": 2890
+      },
+      {
+        "start": "2025-11-13T06:31:17.726Z",
+        "end": "2025-11-13T06:31:20.057Z",
+        "durationMs": 2331
+      },
+      {
+        "start": "2025-11-13T06:31:20.607Z",
+        "end": "2025-11-13T06:31:33.421Z",
+        "durationMs": 12814
+      }
+    ],
+    "slowSequences": {}
+  }
+}

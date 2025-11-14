@@ -24,6 +24,13 @@ import urllib.request
 import urllib.parse
 import base64
 
+# Ensure UTF-8 output on Windows terminals
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+except Exception:
+    pass
+
 def extract_mermaid_from_md(md_file: str) -> Optional[str]:
     """Extract Mermaid diagram code from markdown file."""
     with open(md_file, 'r', encoding='utf-8') as f:

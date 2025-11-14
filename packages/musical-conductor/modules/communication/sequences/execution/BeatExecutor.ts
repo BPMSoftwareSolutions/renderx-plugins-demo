@@ -165,6 +165,23 @@ export class BeatExecutor {
         beat.errorHandling === ("abort" as any)
       ) {
         throw error;
+      } else if (beat.errorHandling === "retry") {
+        // Retry the beat (max 3 attempts)
+        const retryCount = (executionContext.payload._retryCount || 0) + 1;
+        if (retryCount <= 3) {
+          executionContext.payload._retryCount = retryCount;
+          (globalThis as any).__MC_LOG(
+            `🔄 BeatExecutor: Retrying beat ${beat.beat} (attempt ${retryCount}/3)`
+          );
+          // Retry by recursively calling executeBeat
+          this.isExecutingBeat = false; // Reset flag before retry
+          return this.executeBeat(beat, executionContext, sequence, movement);
+        } else {
+          (globalThis as any).__MC_ERROR(
+            `❌ BeatExecutor: Beat ${beat.beat} failed after 3 retry attempts, aborting sequence`
+          );
+          throw error;
+        }
       } else if (beat.errorHandling === "continue") {
         (globalThis as any).__MC_LOG(
           `⚠️ BeatExecutor: Continuing execution despite beat error (errorHandling: continue)`

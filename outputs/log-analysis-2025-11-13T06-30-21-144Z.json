@@ -1,0 +1,1398 @@
+{
+  "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.logs\\library-drop-library-drop.cy.ts-1763014004157.log",
+  "totalLines": 1991,
+  "earliest": "2025-11-13T06:06:34.388Z",
+  "latest": "2025-11-13T06:06:43.502Z",
+  "durationMs": 9114,
+  "pluginMounts": {
+    "attempts": 51,
+    "successes": 48,
+    "byPlugin": {
+      "LibraryComponentPlugin": {
+        "attempts": 6,
+        "successes": 3,
+        "attemptTimestamps": [
+          "2025-11-13T06:06:35.489Z",
+          "2025-11-13T06:06:35.490Z",
+          "2025-11-13T06:06:35.491Z"
+        ],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.490Z",
+          "2025-11-13T06:06:35.491Z",
+          "2025-11-13T06:06:35.492Z"
+        ],
+        "durations": [
+          1058,
+          1058,
+          1059
+        ]
+      },
+      "LibraryPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:34.658Z"
+        ],
+        "durations": [
+          2
+        ]
+      },
+      "HeaderThemePlugin": {
+        "attempts": 2,
+        "successes": 2,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:34.821Z",
+          "2025-11-13T06:06:34.822Z"
+        ],
+        "durations": [
+          1,
+          1
+        ]
+      },
+      "CanvasComponentPlugin": {
+        "attempts": 3,
+        "successes": 3,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.041Z",
+          "2025-11-13T06:06:35.191Z",
+          "2025-11-13T06:06:35.254Z"
+        ],
+        "durations": [
+          1,
+          1,
+          1
+        ]
+      },
+      "CanvasComponentSelectionPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.192Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentSvgNodeSelectionPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.194Z"
+        ],
+        "durations": [
+          2
+        ]
+      },
+      "CanvasComponentDeselectionRequestPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.223Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentDeselectionPlugin": {
+        "attempts": 2,
+        "successes": 2,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.224Z",
+          "2025-11-13T06:06:35.231Z"
+        ],
+        "durations": [
+          1,
+          2
+        ]
+      },
+      "CanvasComponentDeleteRequestPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.232Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentDeletePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.233Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentDragStartPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.234Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentDragMovePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.235Z"
+        ],
+        "durations": [
+          0
+        ]
+      },
+      "CanvasComponentDragEndPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.236Z"
+        ],
+        "durations": [
+          0
+        ]
+      },
+      "CanvasComponentImportPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.240Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentResizeEndPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.241Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentResizeMovePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.243Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentResizeStartPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.244Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentExportPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.246Z"
+        ],
+        "durations": [
+          2
+        ]
+      },
+      "CanvasComponentExportGifPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.247Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentExportMp4Plugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.250Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasLineResizeStartPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.251Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasLineResizeMovePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.252Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasLineResizeEndPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.253Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentSvgNodeUpdatePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.255Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasLineManipStartPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.256Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasLineManipMovePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.257Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasLineManipEndPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.258Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "CanvasComponentCopyPlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.259Z"
+        ],
+        "durations": [
+          0
+        ]
+      },
+      "CanvasComponentPastePlugin": {
+        "attempts": 1,
+        "successes": 1,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.261Z"
+        ],
+        "durations": [
+          1
+        ]
+      },
+      "ControlPanelPlugin": {
+        "attempts": 13,
+        "successes": 13,
+        "attemptTimestamps": [],
+        "successTimestamps": [
+          "2025-11-13T06:06:35.419Z",
+          "2025-11-13T06:06:35.420Z",
+          "2025-11-13T06:06:35.422Z",
+          "2025-11-13T06:06:35.428Z",
+          "2025-11-13T06:06:35.429Z",
+          "2025-11-13T06:06:35.430Z",
+          "2025-11-13T06:06:35.436Z",
+          "2025-11-13T06:06:35.439Z",
+          "2025-11-13T06:06:35.440Z",
+          "2025-11-13T06:06:35.441Z",
+          "2025-11-13T06:06:35.443Z",
+          "2025-11-13T06:06:35.444Z",
+          "2025-11-13T06:06:35.445Z"
+        ],
+        "durations": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "sequences": {
+    "registered": 48,
+    "byName": {
+      "Library Load": 1,
+      "Header UI Theme Toggle": 1,
+      "Header UI Theme Get": 1,
+      "Canvas Component Create": 1,
+      "Canvas Component Select Requested": 1,
+      "Canvas Component Select": 1,
+      "Canvas Component Select SVG Node": 1,
+      "Canvas Component Deselect Requested": 1,
+      "Canvas Component Deselect": 1,
+      "Canvas Component Deselect All": 1,
+      "Canvas Component Delete Requested": 1,
+      "Canvas Component Delete": 1,
+      "Canvas Component Drag Start": 1,
+      "Canvas Component Drag Move": 1,
+      "Canvas Component Drag End": 1,
+      "Canvas Component Import": 1,
+      "Canvas Component Resize End": 1,
+      "Canvas Component Resize Move": 1,
+      "Canvas Component Resize Start": 1,
+      "Canvas Component Export": 1,
+      "Canvas Component Export GIF": 1,
+      "Canvas Component Export MP4": 1,
+      "Canvas Line Resize Start": 1,
+      "Canvas Line Resize Move": 1,
+      "Canvas Line Resize End": 1,
+      "Canvas Component Update": 1,
+      "Canvas Component Update SVG Node": 1,
+      "Canvas Line Manip Start": 1,
+      "Canvas Line Manip Move": 1,
+      "Canvas Line Manip End": 1,
+      "Canvas Component Copy": 1,
+      "Canvas Component Paste": 1,
+      "Control Panel Classes Add": 1,
+      "Control Panel Classes Remove": 1,
+      "Control Panel Update": 1,
+      "Control Panel CSS Edit": 1,
+      "Control Panel CSS Create": 1,
+      "Control Panel CSS Delete": 1,
+      "Control Panel Selection Show": 1,
+      "Control Panel UI Render": 1,
+      "Control Panel UI Field Change": 1,
+      "Control Panel UI Init (Batched)": 1,
+      "Control Panel UI Field Validate": 1,
+      "Control Panel UI Section Toggle": 1,
+      "Control Panel UI Init": 1,
+      "Library Component Drag": 1,
+      "Library Component Drop": 1,
+      "Library Component Container Drop": 1
+    },
+    "details": {
+      "Library Load": {
+        "count": 1,
+        "ids": [
+          "library-load-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:34.656Z"
+        ]
+      },
+      "Header UI Theme Toggle": {
+        "count": 1,
+        "ids": [
+          "header-ui-theme-toggle-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:34.820Z"
+        ]
+      },
+      "Header UI Theme Get": {
+        "count": 1,
+        "ids": [
+          "header-ui-theme-get-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:34.821Z"
+        ]
+      },
+      "Canvas Component Create": {
+        "count": 1,
+        "ids": [
+          "canvas-component-create-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.040Z"
+        ]
+      },
+      "Canvas Component Select Requested": {
+        "count": 1,
+        "ids": [
+          "canvas-component-select-requested-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.190Z"
+        ]
+      },
+      "Canvas Component Select": {
+        "count": 1,
+        "ids": [
+          "canvas-component-select-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.191Z"
+        ]
+      },
+      "Canvas Component Select SVG Node": {
+        "count": 1,
+        "ids": [
+          "canvas-component-select-svg-node-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.193Z"
+        ]
+      },
+      "Canvas Component Deselect Requested": {
+        "count": 1,
+        "ids": [
+          "canvas-component-deselect-requested-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.222Z"
+        ]
+      },
+      "Canvas Component Deselect": {
+        "count": 1,
+        "ids": [
+          "canvas-component-deselect-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.223Z"
+        ]
+      },
+      "Canvas Component Deselect All": {
+        "count": 1,
+        "ids": [
+          "canvas-component-deselect-all-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.230Z"
+        ]
+      },
+      "Canvas Component Delete Requested": {
+        "count": 1,
+        "ids": [
+          "canvas-component-delete-requested-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.231Z"
+        ]
+      },
+      "Canvas Component Delete": {
+        "count": 1,
+        "ids": [
+          "canvas-component-delete-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.232Z"
+        ]
+      },
+      "Canvas Component Drag Start": {
+        "count": 1,
+        "ids": [
+          "canvas-component-drag-start-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.234Z"
+        ]
+      },
+      "Canvas Component Drag Move": {
+        "count": 1,
+        "ids": [
+          "canvas-component-drag-move-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.235Z"
+        ]
+      },
+      "Canvas Component Drag End": {
+        "count": 1,
+        "ids": [
+          "canvas-component-drag-end-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.236Z"
+        ]
+      },
+      "Canvas Component Import": {
+        "count": 1,
+        "ids": [
+          "canvas-component-import-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.239Z"
+        ]
+      },
+      "Canvas Component Resize End": {
+        "count": 1,
+        "ids": [
+          "canvas-component-resize-end-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.241Z"
+        ]
+      },
+      "Canvas Component Resize Move": {
+        "count": 1,
+        "ids": [
+          "canvas-component-resize-move-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.242Z"
+        ]
+      },
+      "Canvas Component Resize Start": {
+        "count": 1,
+        "ids": [
+          "canvas-component-resize-start-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.243Z"
+        ]
+      },
+      "Canvas Component Export": {
+        "count": 1,
+        "ids": [
+          "canvas-component-export-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.244Z"
+        ]
+      },
+      "Canvas Component Export GIF": {
+        "count": 1,
+        "ids": [
+          "canvas-component-export-gif-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.246Z"
+        ]
+      },
+      "Canvas Component Export MP4": {
+        "count": 1,
+        "ids": [
+          "canvas-component-export-mp4-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.250Z"
+        ]
+      },
+      "Canvas Line Resize Start": {
+        "count": 1,
+        "ids": [
+          "canvas-line-resize-start-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.251Z"
+        ]
+      },
+      "Canvas Line Resize Move": {
+        "count": 1,
+        "ids": [
+          "canvas-line-resize-move-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.252Z"
+        ]
+      },
+      "Canvas Line Resize End": {
+        "count": 1,
+        "ids": [
+          "canvas-line-resize-end-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.252Z"
+        ]
+      },
+      "Canvas Component Update": {
+        "count": 1,
+        "ids": [
+          "canvas-component-update-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.253Z"
+        ]
+      },
+      "Canvas Component Update SVG Node": {
+        "count": 1,
+        "ids": [
+          "canvas-component-update-svg-node-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.254Z"
+        ]
+      },
+      "Canvas Line Manip Start": {
+        "count": 1,
+        "ids": [
+          "canvas-line-manip-start-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.256Z"
+        ]
+      },
+      "Canvas Line Manip Move": {
+        "count": 1,
+        "ids": [
+          "canvas-line-manip-move-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.256Z"
+        ]
+      },
+      "Canvas Line Manip End": {
+        "count": 1,
+        "ids": [
+          "canvas-line-manip-end-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.258Z"
+        ]
+      },
+      "Canvas Component Copy": {
+        "count": 1,
+        "ids": [
+          "canvas-component-copy-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.259Z"
+        ]
+      },
+      "Canvas Component Paste": {
+        "count": 1,
+        "ids": [
+          "canvas-component-paste-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.260Z"
+        ]
+      },
+      "Control Panel Classes Add": {
+        "count": 1,
+        "ids": [
+          "control-panel-classes-add-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.419Z"
+        ]
+      },
+      "Control Panel Classes Remove": {
+        "count": 1,
+        "ids": [
+          "control-panel-classes-remove-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.420Z"
+        ]
+      },
+      "Control Panel Update": {
+        "count": 1,
+        "ids": [
+          "control-panel-update-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.421Z"
+        ]
+      },
+      "Control Panel CSS Edit": {
+        "count": 1,
+        "ids": [
+          "control-panel-css-edit-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.428Z"
+        ]
+      },
+      "Control Panel CSS Create": {
+        "count": 1,
+        "ids": [
+          "control-panel-css-create-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.429Z"
+        ]
+      },
+      "Control Panel CSS Delete": {
+        "count": 1,
+        "ids": [
+          "control-panel-css-delete-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.430Z"
+        ]
+      },
+      "Control Panel Selection Show": {
+        "count": 1,
+        "ids": [
+          "control-panel-selection-show-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.436Z"
+        ]
+      },
+      "Control Panel UI Render": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-render-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.438Z"
+        ]
+      },
+      "Control Panel UI Field Change": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-field-change-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.439Z"
+        ]
+      },
+      "Control Panel UI Init (Batched)": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-init-batched-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.440Z"
+        ]
+      },
+      "Control Panel UI Field Validate": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-field-validate-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.442Z"
+        ]
+      },
+      "Control Panel UI Section Toggle": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-section-toggle-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.443Z"
+        ]
+      },
+      "Control Panel UI Init": {
+        "count": 1,
+        "ids": [
+          "control-panel-ui-init-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.444Z"
+        ]
+      },
+      "Library Component Drag": {
+        "count": 1,
+        "ids": [
+          "library-component-drag-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.489Z"
+        ]
+      },
+      "Library Component Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.490Z"
+        ]
+      },
+      "Library Component Container Drop": {
+        "count": 1,
+        "ids": [
+          "library-component-container-drop-symphony"
+        ],
+        "timestamps": [
+          "2025-11-13T06:06:35.491Z"
+        ]
+      },
+      "Header UI Theme Get color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            32.2
+          ],
+          "2": [
+            10.9
+          ]
+        },
+        "movements": [
+          {
+            "name": "Get Current Theme",
+            "durationMs": 46.5
+          }
+        ]
+      },
+      "Library Load color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            13,
+            12.9
+          ],
+          "2": [
+            9.4,
+            8.8
+          ]
+        },
+        "movements": [
+          {
+            "name": "Load",
+            "durationMs": 24.3
+          },
+          {
+            "name": "Load",
+            "durationMs": 23.6
+          }
+        ]
+      },
+      "Control Panel UI Init color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            18.3
+          ],
+          "2": [
+            18.5
+          ],
+          "3": [
+            21.8
+          ],
+          "4": [
+            18.1
+          ],
+          "5": [
+            16.6
+          ],
+          "6": [
+            17.5
+          ]
+        },
+        "movements": [
+          {
+            "name": "Init",
+            "durationMs": 116.1
+          }
+        ]
+      },
+      "Control Panel UI Render color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            8.9,
+            15.9,
+            13.2
+          ],
+          "2": [
+            8.1,
+            14.2,
+            9.4
+          ],
+          "3": [
+            8,
+            16.1,
+            8.7
+          ]
+        },
+        "movements": [
+          {
+            "name": "Render",
+            "durationMs": 26.9
+          },
+          {
+            "name": "Render",
+            "durationMs": 50.9
+          },
+          {
+            "name": "Render",
+            "durationMs": 33.6
+          }
+        ]
+      },
+      "Library Component Drag color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            17.1
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag",
+            "durationMs": 19.3
+          }
+        ]
+      },
+      "Library Component Drop color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            10.2
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drop",
+            "durationMs": 11.3
+          }
+        ]
+      },
+      "Canvas Component Create color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            8
+          ],
+          "2": [
+            7.3
+          ],
+          "3": [
+            8.9
+          ],
+          "4": [
+            6.8
+          ],
+          "5": [
+            8.4
+          ],
+          "6": [
+            7.5
+          ]
+        },
+        "movements": [
+          {
+            "name": "Create",
+            "durationMs": 550.6
+          }
+        ]
+      },
+      "Canvas Component Drag Start color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            7.8,
+            10.3
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag Start",
+            "durationMs": 8.9
+          },
+          {
+            "name": "Drag Start",
+            "durationMs": 11.7
+          }
+        ]
+      },
+      "Canvas Component Drag End color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            7.9,
+            11.1
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag End",
+            "durationMs": 8.9
+          },
+          {
+            "name": "Drag End",
+            "durationMs": 12.3
+          }
+        ]
+      },
+      "Canvas Component Select color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            8.8
+          ],
+          "2": [
+            7.8
+          ],
+          "3": [
+            9.9
+          ]
+        },
+        "movements": [
+          {
+            "name": "Select",
+            "durationMs": 28.4
+          }
+        ]
+      },
+      "Canvas Component Drag Move color: #007BFF; font-weight: bold;": {
+        "count": 0,
+        "ids": [],
+        "timestamps": [],
+        "beats": {
+          "1": [
+            9.5
+          ],
+          "2": [
+            9.7
+          ]
+        },
+        "movements": [
+          {
+            "name": "Drag Move",
+            "durationMs": 20.9
+          }
+        ]
+      }
+    },
+    "executions": [
+      {
+        "name": "Header UI Theme Get",
+        "start": "2025-11-13T06:06:36.600Z",
+        "end": "2025-11-13T06:06:36.648Z",
+        "durationMs": 48
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T06:06:36.679Z",
+        "end": "2025-11-13T06:06:36.704Z",
+        "durationMs": 25
+      },
+      {
+        "name": "Control Panel UI Init",
+        "start": "2025-11-13T06:06:36.705Z",
+        "end": "2025-11-13T06:06:36.822Z",
+        "durationMs": 117
+      },
+      {
+        "name": "Library Load",
+        "start": "2025-11-13T06:06:37.564Z",
+        "end": "2025-11-13T06:06:37.589Z",
+        "durationMs": 25
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T06:06:37.594Z",
+        "end": "2025-11-13T06:06:37.621Z",
+        "durationMs": 27
+      },
+      {
+        "name": "Library Component Drag",
+        "start": "2025-11-13T06:06:37.648Z",
+        "end": "2025-11-13T06:06:37.668Z",
+        "durationMs": 20
+      },
+      {
+        "name": "Library Component Drop",
+        "start": "2025-11-13T06:06:38.240Z",
+        "end": "2025-11-13T06:06:38.252Z",
+        "durationMs": 12
+      },
+      {
+        "name": "Canvas Component Create",
+        "start": "2025-11-13T06:06:38.567Z",
+        "end": "2025-11-13T06:06:39.118Z",
+        "durationMs": 551
+      },
+      {
+        "name": "Canvas Component Drag Start",
+        "start": "2025-11-13T06:06:40.448Z",
+        "end": "2025-11-13T06:06:40.457Z",
+        "durationMs": 9
+      },
+      {
+        "name": "Canvas Component Drag End",
+        "start": "2025-11-13T06:06:40.459Z",
+        "end": "2025-11-13T06:06:40.469Z",
+        "durationMs": 10
+      },
+      {
+        "name": "Canvas Component Select",
+        "start": "2025-11-13T06:06:40.470Z",
+        "end": "2025-11-13T06:06:40.499Z",
+        "durationMs": 29
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T06:06:41.058Z",
+        "end": "2025-11-13T06:06:41.111Z",
+        "durationMs": 53
+      },
+      {
+        "name": "Control Panel UI Render",
+        "start": "2025-11-13T06:06:41.816Z",
+        "end": "2025-11-13T06:06:41.851Z",
+        "durationMs": 35
+      },
+      {
+        "name": "Canvas Component Drag Start",
+        "start": "2025-11-13T06:06:42.905Z",
+        "end": "2025-11-13T06:06:42.917Z",
+        "durationMs": 12
+      },
+      {
+        "name": "Canvas Component Drag Move",
+        "start": "2025-11-13T06:06:43.219Z",
+        "end": "2025-11-13T06:06:43.241Z",
+        "durationMs": 22
+      },
+      {
+        "name": "Canvas Component Drag End",
+        "start": "2025-11-13T06:06:43.488Z",
+        "end": "2025-11-13T06:06:43.502Z",
+        "durationMs": 13
+      }
+    ]
+  },
+  "topics": {
+    "subscribed": 162,
+    "byTopic": {
+      "musical-conductor:beat:started": 1,
+      "musical-conductor:beat:completed": 1,
+      "musical-conductor:beat:error": 1,
+      "beat-started": 1,
+      "beat-completed": 1,
+      "movement-started": 1,
+      "movement-completed": 1,
+      "movement-failed": 1,
+      "library:components:load": 1,
+      "library:components:notify-ui": 1,
+      "LibraryPlugin:sequence:completed": 1,
+      "app:ui:theme:toggle": 1,
+      "HeaderThemePlugin:sequence:completed": 2,
+      "app:ui:theme:get": 1,
+      "app:ui:theme:notify": 1,
+      "canvas:component:resolve-template": 1,
+      "canvas:component:register-instance": 1,
+      "canvas:component:create": 1,
+      "canvas:component:render-react": 1,
+      "canvas:component:notify-ui": 1,
+      "canvas:component:augment:line": 1,
+      "CanvasComponentPlugin:sequence:completed": 3,
+      "canvas:component:select:route": 1,
+      "canvas:component:select": 1,
+      "canvas:component:select:notify": 1,
+      "canvas:component:selection:changed": 1,
+      "CanvasComponentSelectionPlugin:sequence:completed": 1,
+      "canvas:component:select:svg-node": 1,
+      "CanvasComponentSvgNodeSelectionPlugin:sequence:completed": 1,
+      "canvas:component:deselect:route": 1,
+      "CanvasComponentDeselectionRequestPlugin:sequence:completed": 1,
+      "canvas:component:deselect": 1,
+      "canvas:component:deselection:changed": 1,
+      "CanvasComponentDeselectionPlugin:sequence:completed": 2,
+      "canvas:component:deselect:all": 1,
+      "canvas:component:selections:cleared": 1,
+      "canvas:component:delete:route": 1,
+      "CanvasComponentDeleteRequestPlugin:sequence:completed": 1,
+      "canvas:component:delete": 1,
+      "canvas:component:deleted": 1,
+      "CanvasComponentDeletePlugin:sequence:completed": 1,
+      "canvas:component:drag:start": 1,
+      "CanvasComponentDragStartPlugin:sequence:completed": 1,
+      "canvas:component:drag:move": 1,
+      "canvas:component:drag:forward": 1,
+      "CanvasComponentDragMovePlugin:sequence:completed": 1,
+      "canvas:component:drag:end": 1,
+      "CanvasComponentDragEndPlugin:sequence:completed": 1,
+      "canvas:component:ui:open": 1,
+      "canvas:component:ui:parse": 1,
+      "canvas:component:css:inject": 1,
+      "canvas:component:nodes:create": 1,
+      "canvas:component:hierarchy:apply": 1,
+      "CanvasComponentImportPlugin:sequence:completed": 1,
+      "canvas:component:resize:end": 1,
+      "CanvasComponentResizeEndPlugin:sequence:completed": 1,
+      "canvas:component:resize:move": 1,
+      "canvas:component:resize:forward": 1,
+      "CanvasComponentResizeMovePlugin:sequence:completed": 1,
+      "canvas:component:resize:start": 1,
+      "CanvasComponentResizeStartPlugin:sequence:completed": 1,
+      "canvas:component:query-all": 1,
+      "canvas:component:discover-components": 1,
+      "canvas:component:collect-css": 1,
+      "canvas:component:collect-layout": 1,
+      "canvas:component:build-ui-file": 1,
+      "canvas:component:download-file": 1,
+      "CanvasComponentExportPlugin:sequence:completed": 1,
+      "canvas:component:export-gif:rasterize-and-encode": 1,
+      "CanvasComponentExportGifPlugin:sequence:completed": 1,
+      "canvas:component:export-mp4:rasterize-and-encode": 1,
+      "CanvasComponentExportMp4Plugin:sequence:completed": 1,
+      "canvas:component:resize:line:start": 1,
+      "CanvasLineResizeStartPlugin:sequence:completed": 1,
+      "canvas:component:resize:line:move": 1,
+      "CanvasLineResizeMovePlugin:sequence:completed": 1,
+      "canvas:component:resize:line:end": 1,
+      "CanvasLineResizeEndPlugin:sequence:completed": 1,
+      "canvas:component:update:attribute": 1,
+      "canvas:component:update:refresh": 1,
+      "canvas:component:update:svg-node:attribute": 1,
+      "canvas:component:update:svg-node:refresh": 1,
+      "CanvasComponentSvgNodeUpdatePlugin:sequence:completed": 1,
+      "canvas:component:manip:line:start": 1,
+      "CanvasLineManipStartPlugin:sequence:completed": 1,
+      "canvas:component:manip:line:move": 1,
+      "CanvasLineManipMovePlugin:sequence:completed": 1,
+      "canvas:component:manip:line:end": 1,
+      "CanvasLineManipEndPlugin:sequence:completed": 1,
+      "canvas:component:copy:serialize": 1,
+      "canvas:component:copy:clipboard": 1,
+      "canvas:component:copy:notify": 1,
+      "CanvasComponentCopyPlugin:sequence:completed": 1,
+      "canvas:component:paste:clipboard": 1,
+      "canvas:component:paste:deserialize": 1,
+      "canvas:component:paste:position": 1,
+      "canvas:component:paste:create": 1,
+      "canvas:component:paste:notify": 1,
+      "CanvasComponentPastePlugin:sequence:completed": 1,
+      "control:panel:classes:add": 1,
+      "control:panel:classes:notify": 2,
+      "ControlPanelPlugin:sequence:completed": 13,
+      "control:panel:classes:remove": 1,
+      "control:panel:update:derive": 1,
+      "control:panel:update:notify": 1,
+      "control:panel:css:update": 1,
+      "control:panel:css:notify": 3,
+      "control:panel:css:create": 1,
+      "control:panel:css:delete": 1,
+      "control:panel:selection:derive": 1,
+      "control:panel:selection:notify": 1,
+      "control:panel:ui:fields:generate": 1,
+      "control:panel:ui:sections:generate": 1,
+      "control:panel:ui:render": 1,
+      "control:panel:ui:field:prepare": 1,
+      "control:panel:ui:field:dispatch": 1,
+      "control:panel:ui:field:dirty": 1,
+      "control:panel:ui:field:await-refresh": 1,
+      "control:panel:ui:init:config": 2,
+      "control:panel:ui:init:resolver": 2,
+      "control:panel:ui:init:schemas": 2,
+      "control:panel:ui:init:observers": 2,
+      "control:panel:ui:init:notify": 2,
+      "control:panel:ui:init:movement": 2,
+      "control:panel:ui:field:validate": 1,
+      "control:panel:ui:errors:merge": 1,
+      "control:panel:ui:update": 1,
+      "control:panel:ui:section:toggle": 1,
+      "library.component.drag.start.requested": 1,
+      "LibraryComponentPlugin:sequence:completed": 3,
+      "library:component:drop": 1,
+      "library:container:drop": 1,
+      "sequence-completed": 1,
+      "sequence-failed": 1,
+      "sequence-cancelled": 1
+    }
+  },
+  "css": {
+    "injectTopics": 1,
+    "controlPanelEvents": 6
+  },
+  "beats": {
+    "started": [
+      "2025-11-13T06:06:34.394Z",
+      "2025-11-13T06:06:34.395Z"
+    ],
+    "completed": [
+      "2025-11-13T06:06:34.394Z",
+      "2025-11-13T06:06:34.395Z"
+    ],
+    "stats": {}
+  },
+  "movements": {
+    "started": [
+      "2025-11-13T06:06:34.395Z"
+    ],
+    "completed": [
+      "2025-11-13T06:06:34.395Z"
+    ],
+    "stats": {}
+  },
+  "_ctx": {
+    "currentSequence": "Canvas Component Drag End color: #007BFF; font-weight: bold;",
+    "currentMovement": "Movement 1 color: #6F42C1; font-weight: bold;"
+  },
+  "performance": {
+    "metrics": {},
+    "gaps": [],
+    "slowSequences": {}
+  }
+}

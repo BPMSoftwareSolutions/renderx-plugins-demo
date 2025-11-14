@@ -118,14 +118,6 @@ export class MovementExecutor {
       (globalThis as any).__MC_LOG(
         `✅ MovementExecutor: Movement "${movement.name}" completed successfully`
       );
-      // Clean up failed movement timing if PerformanceTracker is available
-      if (this.performanceTracker) {
-        this.performanceTracker.cleanupFailedMovement(
-          sequence.name,
-          movement.name,
-          executionContext.id
-        );
-      }
     } catch (error) {
       // Clean up failed movement timing if PerformanceTracker is available
       if (this.performanceTracker) {
@@ -150,7 +142,17 @@ export class MovementExecutor {
         requestId: executionContext.id,
         error: error instanceof Error ? error.message : String(error),
       });
-      throw error;
+
+      // Handle error based on movement's error handling strategy
+      if (movement.errorHandling === "continue") {
+        (globalThis as any).__MC_LOG(
+          `⚠️ MovementExecutor: Continuing sequence despite movement failure (errorHandling: continue)`
+        );
+        // Don't throw, allow sequence to continue to next movement
+      } else {
+        // Default: abort sequence
+        throw error;
+      }
     }
   }
 

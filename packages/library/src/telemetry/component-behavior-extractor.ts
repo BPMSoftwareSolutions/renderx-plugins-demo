@@ -121,6 +121,13 @@ export class ComponentBehaviorExtractor {
           )
         );
 
+      }
+    }
+
+    return Array.from(patterns.values());
+  }
+
+  /*
 interface MovementInfo {
   name: string;
   beats: BeatInfo[];
@@ -411,6 +418,8 @@ export class ComponentBehaviorExtractor {
 
     return Array.from(patterns.values());
   }
+
+*/
 
   private extractPluginSequenceMappings(chunks: LogChunk[]): PluginSequenceMapping[] {
     const mappings: PluginSequenceMapping[] = [];

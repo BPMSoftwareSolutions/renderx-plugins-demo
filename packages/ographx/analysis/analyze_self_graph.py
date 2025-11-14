@@ -2,6 +2,14 @@
 """Analyze OgraphX's self-graph - the tool observing itself."""
 import json
 import os
+import sys
+
+# Ensure UTF-8 output on Windows terminals
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+except Exception:
+    pass
 
 # Paths relative to packages/ographx/
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

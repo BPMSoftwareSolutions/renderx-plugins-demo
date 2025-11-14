@@ -1,4 +1,4 @@
-import React from "react";
+import React, { startTransition } from "react";
 import { createRoot } from "react-dom/client";
 
 // Track React roots for cleanup
@@ -44,7 +44,12 @@ export const renderReact = (data: any, ctx: any) => {
     // Create React root and render the component
     const root = createRoot(container);
     const element = React.createElement(compiledComponent);
-    root.render(element);
+
+    // Use startTransition to make rendering non-blocking
+    // This leverages React 18/19's concurrent rendering features
+    startTransition(() => {
+      root.render(element);
+    });
 
     // Track the root for future cleanup
     reactRoots.set(nodeId, root);

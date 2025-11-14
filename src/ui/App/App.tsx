@@ -5,9 +5,18 @@ import { SlotContainer } from "../../domain/layout/SlotContainer";
 import { wireUiEvents } from "../events/wiring";
 import uiEventDefs from "../../core/manifests/uiEvents.json" with { type: "json" };
 import { DiagnosticsOverlay } from "../diagnostics";
+import { IsolationHarnessPlayground } from "../isolation-harness";
 import "../../domain/layout/legacyLayout.css";
 
 export default function App() {
+  // Check for dev mode via URL parameter
+  const [devMode, setDevMode] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('dev');
+    setDevMode(mode);
+  }, []);
   const [diagnosticsOpen, setDiagnosticsOpen] = React.useState(false);
   const [diagnosticsBadgeVisible, setDiagnosticsBadgeVisible] = React.useState(false);
 
@@ -41,6 +50,11 @@ export default function App() {
   const conductor = React.useMemo(() => {
     return (window as any).RenderX?.conductor;
   }, []);
+
+  // Dev mode: show isolation harness playground
+  if (devMode === 'isolation-harness') {
+    return <IsolationHarnessPlayground />;
+  }
 
   if (useLayoutManifest) {
     return (

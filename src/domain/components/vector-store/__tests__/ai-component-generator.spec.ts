@@ -178,5 +178,28 @@ describe('AIComponentGenerator', () => {
       }
     });
   });
+
+  describe('OgraphX context integration', () => {
+    it('should support optional OgraphX context parameter', async () => {
+      const context = await generator.prepareGenerationContext({
+        prompt: 'Create a button',
+        includeOgraphXContext: false,
+      });
+
+      expect(context.ographxContext).toBeUndefined();
+    });
+
+    it('should handle missing OgraphX retriever gracefully', async () => {
+      // Generator created without OgraphX retriever
+      const context = await generator.prepareGenerationContext({
+        prompt: 'Create a button',
+        includeOgraphXContext: true,
+      });
+
+      // Should still work, just without OgraphX context
+      expect(context.prompt).toBe('Create a button');
+      expect(context.systemPrompt).toBeDefined();
+    });
+  });
 });
 

@@ -140,5 +140,7 @@ export type ControlPanelAction =
   | { type: "SET_CLASSES"; payload: string[] }
   | { type: "TOGGLE_SECTION"; payload: string }
   | { type: "SET_VALIDATION_ERRORS"; payload: Record<string, string[]> }
+  | { type: "MERGE_ERRORS"; payload: { field: string; error: string } }
+  | { type: "CLEAR_ERRORS"; payload: { field: string } }
   | { type: "SET_DIRTY"; payload: boolean }
   | { type: "RESET_STATE" };

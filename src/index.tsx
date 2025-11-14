@@ -27,6 +27,26 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
     initTopicsManifest(),
   ]);
 
+
+	  // Load and stamp the build versions manifest into the logs for reproducibility
+	  try {
+	    const res = await fetch('/build-versions.json', { cache: 'no-store' });
+	    if (res && res.ok) {
+	      const manifest = await res.json();
+	      try { console.log('VERSIONS_JSON:', JSON.stringify(manifest)); } catch {}
+	      try { (globalThis as any).__MC_LOG?.('🔖 Versions manifest loaded'); } catch {}
+	      if (manifest && Array.isArray(manifest.packages)) {
+	        for (const p of manifest.packages) {
+	          try { console.log(`VERSIONS: ${p.name}@${p.version}`); } catch {}
+	        }
+	      }
+	    } else {
+	      try { console.warn('Versions manifest not found (public/build-versions.json)'); } catch {}
+	    }
+	  } catch (e) {
+	    try { console.warn('Failed to load versions manifest', e); } catch {}
+	  }
+
   (window as any).RenderX = (window as any).RenderX || {};
   // Expose the initialized conductor globally so SDK/hooks/events resolve the same instance
   // Wrap conductor.play to report sequence execution to the .NET telemetry API (non-blocking)
