@@ -118,13 +118,13 @@ export const EventRouter = {
 				console.log(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
 			}
 		} catch {}
-		let deliver = async (p: any) => {
+		let deliver = (p: any) => {
 			const deliverStart = Date.now();
 			if ((globalThis as any).__MC_LOG) {
 				(globalThis as any).__MC_LOG(`[EventRouter.publish] CP3 DELIVER START at ${new Date().toISOString()}`);
 			}
 			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`deliver_start(${topic}): routes=${def.routes?.length || 0}`);
-			try { 
+			try {
 				if ((globalThis as any).__MC_LOG) {
 					(globalThis as any).__MC_LOG(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`);
 				} else {
@@ -148,32 +148,28 @@ export const EventRouter = {
 				if ((globalThis as any).__MC_LOG) {
 					(globalThis as any).__MC_LOG(`[EventRouter.publish] CP4 BEFORE conductor.play() for ${routePluginId}::${routeSequenceId} at ${new Date().toISOString()}`);
 				}
-				const playStart = Date.now();
 				if ((globalThis as any).__MC_LOG) {
 					(globalThis as any).__MC_LOG(`[EventRouter] Starting play() for ${routePluginId}::${routeSequenceId}`);
 				}
 				const playStartPerfNow = performance.now();
 				if ((globalThis as any).__MC_LOG) {
-					(globalThis as any).__MC_LOG(`[EventRouter] 🕐 About to await conductor.play() at perf=${playStartPerfNow.toFixed(2)}ms`);
+					(globalThis as any).__MC_LOG(`[EventRouter] 🕐 About to fire-and-forget conductor.play() at perf=${playStartPerfNow.toFixed(2)}ms`);
 				}
-				await resolvedConductor?.play?.(routePluginId, routeSequenceId, p);
-				const playEndPerfNow = performance.now();
-				const playElapsed = Date.now() - playStart;
+				// Fire-and-forget: don't await conductor.play() to avoid blocking on sequence completion
+				// Don't attach .then()/.catch() handlers as they create promise chains that block the queue
+				resolvedConductor?.play?.(routePluginId, routeSequenceId, p);
 				if ((globalThis as any).__MC_LOG) {
-					(globalThis as any).__MC_LOG(`[EventRouter] 🕐 Returned from await conductor.play() at perf=${playEndPerfNow.toFixed(2)}ms (delta=${(playEndPerfNow - playStartPerfNow).toFixed(2)}ms)`);
-					(globalThis as any).__MC_LOG(`[EventRouter] play() completed in ${playElapsed}ms for ${routePluginId}::${routeSequenceId}`);
-					(globalThis as any).__MC_LOG(`[EventRouter.publish] CP5 AFTER conductor.play() at ${new Date().toISOString()}, play took ${playElapsed}ms`);
+					(globalThis as any).__MC_LOG(`[EventRouter.publish] CP5 AFTER conductor.play() initiated (not awaited) at ${new Date().toISOString()}`);
 				}
-					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routed_success: ${routePluginId}::${routeSequenceId}`);
 				} catch (e) {
-					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`route_error: ${r.pluginId}::${r.sequenceId} - ${e}`); 
-					try { 
+					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`route_error: ${r.pluginId}::${r.sequenceId} - ${e}`);
+					try {
 						if ((globalThis as any).__MC_WARN) {
 							(globalThis as any).__MC_WARN(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
 						} else {
 							console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
 						}
-					} catch {} 
+					} catch {}
 				}
 			}
 			try { if (REPLAY_TOPICS.has(topic)) lastPayload.set(topic, p); } catch {}
@@ -186,7 +182,7 @@ export const EventRouter = {
 		const perf = def.perf || {};
 		if (typeof perf.throttleMs === 'number' && perf.throttleMs > 0) { const d = deliver; const t = throttle((x: any) => d(x), perf.throttleMs); t(payload); return; }
 		if (typeof perf.debounceMs === 'number' && perf.debounceMs > 0) { const d = deliver; const f = debounce((x: any) => d(x), perf.debounceMs); f(payload); return; }
-		__publishStack.push(topic); try { await deliver(payload); } finally { __publishStack.pop(); }
+		__publishStack.push(topic); try { deliver(payload); } finally { __publishStack.pop(); }
 		const publishExit = Date.now();
 		if ((globalThis as any).__MC_LOG) {
 			(globalThis as any).__MC_LOG(`[EventRouter.publish] CP6 EXIT at ${new Date().toISOString()}, total publish time: ${publishExit - publishEntry}ms`);

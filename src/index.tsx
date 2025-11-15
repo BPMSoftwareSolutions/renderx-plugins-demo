@@ -58,22 +58,85 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
 
   (window as any).RenderX = (window as any).RenderX || {};
   // Expose the initialized conductor globally so SDK/hooks/events resolve the same instance
-  // Wrap conductor.play to report sequence execution to the .NET telemetry API (non-blocking)
+  // Wrap conductor.play to report sequence execution to the .NET telemetry API without blocking sequence start
   try {
     const originalPlay = (conductor as any).play?.bind(conductor);
     if (typeof originalPlay === 'function') {
-      (conductor as any).play = async (pluginId: string, sequenceId: string, payload?: any) => {
+      (conductor as any).play = (pluginId: string, sequenceId: string, payload?: any) => {
         const startedAt = Date.now();
-        const corrId = (payload && ((payload as any).__corrId || (payload as any).__correlationId)) || (window as any).__rxCorrId;
-        try { await recordTelemetryEvent({ eventType: 'sequence.started', correlationId: corrId, payload: { pluginId, sequenceId, input: payload } }); } catch {}
+        const corrId =
+          (payload && (((payload as any).__corrId as string) || ((payload as any).__correlationId as string))) ||
+          (window as any).__rxCorrId;
+
+        // Fire-and-forget "started" telemetry so we never block sequence execution
         try {
-          const result = await originalPlay(pluginId, sequenceId, payload);
-          try { await recordTelemetryEvent({ eventType: 'sequence.completed', correlationId: corrId, payload: { pluginId, sequenceId, durationMs: Date.now() - startedAt } }); } catch {}
-          return result;
+          recordTelemetryEvent({
+            eventType: 'sequence.started',
+            correlationId: corrId,
+            payload: { pluginId, sequenceId, input: payload },
+          }).catch(() => {});
+        } catch {}
+
+        let result: any;
+        try {
+          result = originalPlay(pluginId, sequenceId, payload);
         } catch (e) {
-          try { await recordTelemetryEvent({ eventType: 'sequence.failed', correlationId: corrId, payload: { pluginId, sequenceId, error: String(e) } }); } catch {}
+          // Synchronous failure before a Promise is returned
+          try {
+            recordTelemetryEvent({
+              eventType: 'sequence.failed',
+              correlationId: corrId,
+              payload: { pluginId, sequenceId, error: String(e) },
+            }).catch(() => {});
+          } catch {}
           throw e;
         }
+
+        // If the original play returns a Promise, attach completion/failure telemetry
+        if (result && typeof (result as any).then === 'function') {
+          (result as Promise<any>)
+            .then(() => {
+              try {
+                recordTelemetryEvent({
+                  eventType: 'sequence.completed',
+                  correlationId: corrId,
+                  payload: {
+                    pluginId,
+                    sequenceId,
+                    durationMs: Date.now() - startedAt,
+                  },
+                }).catch(() => {});
+              } catch {}
+            })
+            .catch((e) => {
+              try {
+                recordTelemetryEvent({
+                  eventType: 'sequence.failed',
+                  correlationId: corrId,
+                  payload: {
+                    pluginId,
+                    sequenceId,
+                    error: String(e),
+                  },
+                }).catch(() => {});
+              } catch {}
+            });
+        } else {
+          // Non-promise result: treat as synchronous completion
+          try {
+            recordTelemetryEvent({
+              eventType: 'sequence.completed',
+              correlationId: corrId,
+              payload: {
+                pluginId,
+                sequenceId,
+                durationMs: Date.now() - startedAt,
+              },
+            }).catch(() => {});
+          } catch {}
+        }
+
+        return result;
       };
     }
   } catch {}
