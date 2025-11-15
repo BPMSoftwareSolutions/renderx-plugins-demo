@@ -8,6 +8,7 @@ import WebSocket from 'ws';
 export interface PlayOptions {
   mockServices?: string[];
   mockBeats?: number[];
+  pluginId?: string;
 }
 
 export interface PlayResult {
@@ -47,23 +48,44 @@ export class SequencePlayerEngine {
   }
 
   private async connectWebSocket(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      this.ws = new WebSocket(this.wsUrl);
+  const ports = [5173, 5174, 5175, 5176, 5177];
+    let connected = false;
 
-      this.ws.on('open', () => {
-        console.log('✅ Connected to browser conductor');
-        resolve();
-      });
+    for (const port of ports) {
+      try {
+        await new Promise<void>((resolvePort, rejectPort) => {
+          const url = `ws://localhost:${port}/conductor-ws`;
+          const socket = new WebSocket(url);
+          const onOpen = () => {
+            this.ws = socket;
+            connected = true;
+            console.log(`✅ Connected to browser conductor on port ${port}`);
+            resolvePort();
+          };
+          const onError = (err: Error) => {
+            socket.removeAllListeners();
+            rejectPort(err);
+          };
 
-      this.ws.on('error', (error: Error) => {
-        console.error('❌ WebSocket connection failed:', error.message);
-        reject(new Error('Failed to connect to running browser. Make sure dev server is running on http://localhost:5173'));
-      });
+          socket.once('open', onOpen);
+          socket.once('error', onError);
+        });
+        if (connected) break;
+      } catch {
+        // Try next port
+      }
+    }
 
+    if (!connected) {
+      throw new Error('Could not connect to running browser conductor on any known port');
+    }
+
+    // Hook up a close handler
+    if (this.ws) {
       this.ws.on('close', () => {
         console.log('🔌 Disconnected from browser conductor');
       });
-    });
+    }
   }
 
   private async sendCommand(command: any): Promise<any> {
@@ -107,7 +129,7 @@ export class SequencePlayerEngine {
       // Send play command to browser conductor via WebSocket
       await this.sendCommand({
         type: 'play',
-        pluginId: 'CanvasComponentPlugin', // TODO: Make this configurable
+        pluginId: options.pluginId || 'CanvasComponentPlugin',
         sequenceId,
         context,
       });

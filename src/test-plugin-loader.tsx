@@ -178,11 +178,17 @@ const SophisticatedPluginLoader: React.FC = () => {
       try {
         addLog('info', 'Initializing sophisticated plugin loader...');
 
-        // Initialize conductor
+        // Initialize conductor (prefer global instance to avoid re-initialization)
         addLog('info', 'Initializing conductor...');
-        const cond = await initConductor();
+        const globalCond = (window as any).renderxGlobalConductor;
+        const cond = globalCond || await initConductor();
+        if (globalCond) {
+          addLog('info', 'Using existing global conductor instance');
+        } else {
+          addLog('info', 'Created new conductor instance');
+        }
         setConductor(cond);
-        addLog('info', 'Conductor initialized successfully');
+        addLog('info', 'Conductor ready for use');
 
         // Initialize manifests
         addLog('info', 'Loading manifests...');

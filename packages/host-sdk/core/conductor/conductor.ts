@@ -13,9 +13,22 @@ function resolveModuleSpecifier(spec: string): string {
 
 export type ConductorClient = any;
 
+// Global conductor instance cache to prevent re-initialization
+let globalConductor: ConductorClient | null = null;
+
 export async function initConductor(): Promise<ConductorClient> {
+	// Return cached conductor if already initialized
+	if (globalConductor) {
+		console.log('🎼 Reusing existing conductor instance - avoiding re-initialization');
+		return globalConductor;
+	}
+
+	console.log('🎼 Initializing new conductor instance...');
 	const { initializeCommunicationSystem } = await import('musical-conductor');
 	const { conductor } = initializeCommunicationSystem();
+	
+	// Cache the conductor for future calls
+	globalConductor = conductor;
 	// Tag the conductor instance for identity tracing across the app/tests
 	try { (conductor as any).__rxId = (conductor as any).__rxId || `rxc-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`; console.log(`[conductor] init id=${(conductor as any).__rxId}`); } catch {}
 	const { EventRouter } = await import('../events/EventRouter');
@@ -35,7 +48,20 @@ export async function initConductor(): Promise<ConductorClient> {
 			}
 		}
 	} catch {}
+	
+	console.log('🎼 Conductor initialization complete');
 	return conductor as ConductorClient;
+}
+
+/**
+ * Reset the global conductor cache (for testing/development)
+ * Production code should rarely need this
+ */
+export function resetConductorCache(): void {
+	if (globalConductor) {
+		console.log('🎼 Resetting global conductor cache');
+		globalConductor = null;
+	}
 }
 
 // Exported for reuse in split files

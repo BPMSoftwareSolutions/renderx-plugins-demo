@@ -80,11 +80,23 @@ let communicationSystemInstance: {
   sequenceResults: ReturnType<typeof initializeMusicalSequences>;
 } | null = null;
 
+// Track initialization count for debugging multiple initialization issues
+let initializationCount = 0;
+
 /**
  * Reset communication system state (for testing/cleanup)
  * This allows re-initialization if needed
  */
 export function resetCommunicationSystem(): void {
+  // Prevent resets in production to avoid performance issues
+  const isProduction = process?.env?.NODE_ENV === 'production' || 
+                      (typeof window !== 'undefined' && (window as any)?.location?.hostname !== 'localhost');
+  
+  if (isProduction) {
+    console.warn('🎼 Communication system reset blocked in production mode to prevent performance degradation');
+    return;
+  }
+  
   communicationSystemInitialized = false;
   communicationSystemInstance = null;
   MusicalConductor.resetInstance();
@@ -101,6 +113,12 @@ export function initializeCommunicationSystem(): {
   conductor: ConductorClient;
   sequenceResults: ReturnType<typeof initializeMusicalSequences>;
 } {
+  // Track and warn about multiple initializations
+  initializationCount++;
+  if (initializationCount > 1) {
+    console.warn(`🎼 Multiple communication system initializations detected: ${initializationCount}. This may cause performance issues.`);
+  }
+  
   // Return existing instance if already initialized (React StrictMode protection)
   if (communicationSystemInitialized && communicationSystemInstance) {
     (globalThis as any).__MC_LOG(

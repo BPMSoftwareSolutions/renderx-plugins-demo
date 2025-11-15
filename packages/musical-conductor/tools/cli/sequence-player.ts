@@ -56,15 +56,18 @@ class SequencePlayerCLI {
     this.program
       .command("play")
       .description("Play a sequence and measure performance")
+  .option("--context-file <file>", "File path for sequence context JSON")
       .option("-s, --sequence <id>", "Sequence ID to play")
       .option("-l, --from-log <file>", "Load sequence from production log")
       .option("-m, --mock <types>", "Mock service types (pure,io,stage-crew)")
+  .option("--context <json>", "JSON-encoded context to pass to the sequence")
+  .option("--plugin <pluginId>", "Plugin ID to play sequence under (e.g. LibraryComponentPlugin)")
       .option("-b, --mock-beat <beats>", "Mock specific beats (comma-separated)")
       .option("-o, --output <file>", "Output report file (JSON)")
       .option("--analyze-beat <beat>", "Analyze specific beat in detail")
       .option("--compare <file>", "Compare with previous run for before/after")
       .option("--json", "Output in JSON format")
-      .action(this.handlePlay.bind(this));
+  .action(this.handlePlay.bind(this));
 
     // List command
     this.program
@@ -108,13 +111,51 @@ class SequencePlayerCLI {
         this.printVersionsFromLog(options.fromLog);
       }
 
+      // Prefer context from file (--context-file) or inline JSON (--context)
+      if (options.contextFile) {
+        try {
+          const fullPath = path.isAbsolute(options.contextFile)
+            ? options.contextFile
+            : path.join(process.cwd(), options.contextFile);
+          const raw = fs.readFileSync(fullPath, "utf-8");
+          const fileContext = JSON.parse(raw);
+          context = { ...context, ...fileContext };
+        } catch (err) {
+          this.logger.error("❌ Failed to read context file:", err);
+          process.exit(1);
+        }
+      }
+
+      if (options.context) {
+        try {
+          // Accept either pure JSON or JS-style object literal; prefer JSON.parse
+          try {
+            const parsed = JSON.parse(options.context);
+            context = { ...context, ...parsed };
+          } catch {
+            // Fall back to VM evaluation
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
+            const vm = require('vm');
+            const parsed = vm.runInNewContext('(' + options.context + ')', {}, { timeout: 1000 });
+            context = { ...context, ...parsed };
+          }
+        } catch (err) {
+          this.logger.error('❌ Invalid --context provided:', err);
+          process.exit(1);
+        }
+      }
+
       // Play sequence
       const result = await this.engine.play(sequenceId, context, {
         mockServices: options.mock ? options.mock.split(",") : [],
         mockBeats: options.mockBeat
           ? options.mockBeat.split(",").map(Number)
           : [],
+        pluginId: options.plugin || undefined,
+        // Load context from file if provided (PowerShell-friendly)
       });
+
+      // (context handling completed above)
 
       // Generate report
       const report = this.reporter.generate(result);

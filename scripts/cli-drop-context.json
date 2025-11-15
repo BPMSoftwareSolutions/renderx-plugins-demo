@@ -1,0 +1,11 @@
+{
+  "component": {
+    "template": {
+      "tag": "button",
+      "text": "CLI drop button",
+      "classes": ["rx-comp", "rx-button"]
+    }
+  },
+  "position": { "x": 120, "y": 120 },
+  "_overrideNodeId": "rx-node-cli-official-drop"
+}

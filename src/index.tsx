@@ -22,6 +22,11 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
 
 (async () => {
   const conductor = await initConductor();
+  
+  // Make conductor globally available to prevent re-initialization
+  (window as any).renderxGlobalConductor = conductor;
+  console.log('🎼 Global conductor instance cached for reuse');
+  
   await Promise.all([
     registerAllSequences(conductor),
     initInteractionManifest(),
