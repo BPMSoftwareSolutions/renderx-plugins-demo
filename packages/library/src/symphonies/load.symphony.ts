@@ -18,7 +18,7 @@ function mapJsonComponentToTemplateCompat(json: any) {
 
 
 export const handlers = {
-  async loadComponents(_data: any, ctx: any) {
+  async loadComponents(data: any, ctx: any) {
     let list: any[] = [];
     try {
       // Load custom components from storage first
@@ -58,9 +58,14 @@ export const handlers = {
     }
 
     ctx.payload.components = Array.isArray(list) ? list : [];
+    // Preserve callback in payload for notifyUi beat to access
+    if (typeof data?.onComponentsLoaded === "function") {
+      ctx.payload.onComponentsLoaded = data.onComponentsLoaded;
+    }
     return { count: ctx.payload.components.length };
   },
-  notifyUi(data: any, ctx: any) {
-    data?.onComponentsLoaded?.(ctx.payload.components);
+  notifyUi(_data: any, ctx: any) {
+    // Access callback from ctx.payload (preserved from loadComponents beat)
+    ctx.payload.onComponentsLoaded?.(ctx.payload.components);
   },
 };

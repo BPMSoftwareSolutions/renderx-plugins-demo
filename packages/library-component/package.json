@@ -41,7 +41,7 @@
   "dependencies": {
     "@renderx-plugins/host-sdk": "^1.0.6",
     "@renderx-plugins/library": "^1.0.6",
-    "musical-conductor": "^1.4.5"
+    "musical-conductor": "^1.5.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

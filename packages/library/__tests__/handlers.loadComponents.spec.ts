@@ -120,11 +120,13 @@ describe("library.handlers", () => {
     expect(ctx.payload.components[0].name).toBe("Button");
   });
 
-  it("notifyUi calls onComponentsLoaded with payload list", () => {
+  it("notifyUi calls onComponentsLoaded from ctx.payload (not from data parameter)", () => {
     const payloadList = [{ id: "json-button" }];
     const spy = vi.fn();
-    const ctx: any = { payload: { components: payloadList } };
-    handlers.notifyUi({ onComponentsLoaded: spy }, ctx);
+    // In real sequence flow, callback is in ctx.payload (preserved from loadComponents beat)
+    // and data parameter is a different object without the callback
+    const ctx: any = { payload: { components: payloadList, onComponentsLoaded: spy } };
+    handlers.notifyUi({}, ctx); // Empty data - callback is in ctx.payload
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(payloadList);
   });

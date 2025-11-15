@@ -369,13 +369,19 @@ export class MusicalConductor {
     context: any = {},
     priority: SequencePriority = SEQUENCE_PRIORITIES.NORMAL
   ): any {
+    const playStartTime = Date.now();
+    const playStartPerfNow = performance.now();
+    (globalThis as any).__MC_LOG?.(
+      `🎼 MusicalConductor.play ENTRY: pluginId=${pluginId}, sequenceId=${sequenceId} at ${new Date(playStartTime).toISOString()} (perf=${playStartPerfNow.toFixed(2)}ms)`
+    );
     try {
       // Preserve function-valued fields and attach correlation id for transport across nested play()
       const registry = CallbackRegistry.getInstance();
       const { correlationId, count } = registry.preserveInPlace(context);
       if (count > 0) {
+        const elapsed = Date.now() - playStartTime;
         (globalThis as any).__MC_LOG(
-          `🎼 MusicalConductor.play: preserved ${count} callback(s) for correlationId=${correlationId}`
+          `🎼 MusicalConductor.play: preserved ${count} callback(s) for correlationId=${correlationId} (elapsed=${elapsed}ms)`
         );
       }
       // Map correlationId to requestId after play() returns a requestId (via startSequence)

@@ -16,7 +16,13 @@ export const handlers = {
   async publishCreateRequested(data: any, ctx: any) {
     const correlationId =
       data?.correlationId || generateUUID() || String(Date.now());
-    await EventRouter.publish(
+    const publishStart = Date.now();
+    if ((globalThis as any).__MC_LOG) {
+      (globalThis as any).__MC_LOG(`[drop.symphony] publishCreateRequested: Starting EventRouter.publish at ${new Date().toISOString()}`);
+    }
+    // Fire-and-forget: do NOT await the publish call to avoid blocking the drop symphony
+    // while the canvas-component-create sequence executes
+    EventRouter.publish(
       "canvas.component.create.requested",
       {
         component: data.component,
@@ -26,6 +32,10 @@ export const handlers = {
       },
       ctx.conductor
     );
+    const publishElapsed = Date.now() - publishStart;
+    if ((globalThis as any).__MC_LOG) {
+      (globalThis as any).__MC_LOG(`[drop.symphony] publishCreateRequested: EventRouter.publish initiated (not awaited) in ${publishElapsed}ms`);
+    }
   },
 };
 

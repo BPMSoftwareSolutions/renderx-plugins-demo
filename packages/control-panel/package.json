@@ -40,7 +40,7 @@
   "dependencies": {
     "@renderx-plugins/host-sdk": "^1.0.6",
     "@renderx-plugins/manifest-tools": "^0.1.2",
-    "musical-conductor": "^1.4.5"
+    "musical-conductor": "^1.5.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

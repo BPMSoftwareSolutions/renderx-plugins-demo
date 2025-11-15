@@ -40,11 +40,19 @@ export const EventRouter = {
 	},
 
 	async publish(topic: string, payload: any, conductor?: any) {
+		const publishEntry = Date.now();
+		if ((globalThis as any).__MC_LOG) {
+			(globalThis as any).__MC_LOG(`[EventRouter.publish] CP1 ENTRY at ${new Date().toISOString()}`);
+		}
 		if (typeof window !== 'undefined') {
 			(window as any).__DEBUG_EVENTROUTER = (window as any).__DEBUG_EVENTROUTER || [];
 			(window as any).__DEBUG_EVENTROUTER.push(`publish(${topic})`);
 		}
 		let def = getTopicDef(topic);
+		const afterDefLookup = Date.now();
+		if ((globalThis as any).__MC_LOG) {
+			(globalThis as any).__MC_LOG(`[EventRouter.publish] CP2 AFTER DEF LOOKUP (${afterDefLookup - publishEntry}ms)`);
+		}
 		if (!def && typeof window !== 'undefined') {
 			const globalGetTopicDef = (window as any).RenderX?.getTopicDef;
 			if (globalGetTopicDef) {
@@ -111,6 +119,10 @@ export const EventRouter = {
 			}
 		} catch {}
 		let deliver = async (p: any) => {
+			const deliverStart = Date.now();
+			if ((globalThis as any).__MC_LOG) {
+				(globalThis as any).__MC_LOG(`[EventRouter.publish] CP3 DELIVER START at ${new Date().toISOString()}`);
+			}
 			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`deliver_start(${topic}): routes=${def.routes?.length || 0}`);
 			try { 
 				if ((globalThis as any).__MC_LOG) {
@@ -120,19 +132,40 @@ export const EventRouter = {
 				}
 			} catch {}
 			for (const r of def.routes as TopicRoute[]) {
-				if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routing_to: ${r.pluginId}::${r.sequenceId}`);
-				try { 
-					const hasPlay = !!(resolvedConductor && typeof resolvedConductor.play === 'function'); 
-					try { 
+				// Capture route info in block scope to prevent closure issues
+				const routePluginId = r.pluginId;
+				const routeSequenceId = r.sequenceId;
+				if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routing_to: ${routePluginId}::${routeSequenceId}`);
+				try {
+					const hasPlay = !!(resolvedConductor && typeof resolvedConductor.play === 'function');
+					try {
 						if ((globalThis as any).__MC_LOG) {
-							(globalThis as any).__MC_LOG(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`);
+							(globalThis as any).__MC_LOG(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`);
 						} else {
-							console.log(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`);
+							console.log(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`);
 						}
-					} catch {}; 
-					await resolvedConductor?.play?.(r.pluginId, r.sequenceId, p); 
-					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routed_success: ${r.pluginId}::${r.sequenceId}`); 
-				} catch (e) { 
+				} catch {};
+				if ((globalThis as any).__MC_LOG) {
+					(globalThis as any).__MC_LOG(`[EventRouter.publish] CP4 BEFORE conductor.play() for ${routePluginId}::${routeSequenceId} at ${new Date().toISOString()}`);
+				}
+				const playStart = Date.now();
+				if ((globalThis as any).__MC_LOG) {
+					(globalThis as any).__MC_LOG(`[EventRouter] Starting play() for ${routePluginId}::${routeSequenceId}`);
+				}
+				const playStartPerfNow = performance.now();
+				if ((globalThis as any).__MC_LOG) {
+					(globalThis as any).__MC_LOG(`[EventRouter] 🕐 About to await conductor.play() at perf=${playStartPerfNow.toFixed(2)}ms`);
+				}
+				await resolvedConductor?.play?.(routePluginId, routeSequenceId, p);
+				const playEndPerfNow = performance.now();
+				const playElapsed = Date.now() - playStart;
+				if ((globalThis as any).__MC_LOG) {
+					(globalThis as any).__MC_LOG(`[EventRouter] 🕐 Returned from await conductor.play() at perf=${playEndPerfNow.toFixed(2)}ms (delta=${(playEndPerfNow - playStartPerfNow).toFixed(2)}ms)`);
+					(globalThis as any).__MC_LOG(`[EventRouter] play() completed in ${playElapsed}ms for ${routePluginId}::${routeSequenceId}`);
+					(globalThis as any).__MC_LOG(`[EventRouter.publish] CP5 AFTER conductor.play() at ${new Date().toISOString()}, play took ${playElapsed}ms`);
+				}
+					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routed_success: ${routePluginId}::${routeSequenceId}`);
+				} catch (e) {
 					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`route_error: ${r.pluginId}::${r.sequenceId} - ${e}`); 
 					try { 
 						if ((globalThis as any).__MC_WARN) {
@@ -145,11 +178,19 @@ export const EventRouter = {
 			}
 			try { if (REPLAY_TOPICS.has(topic)) lastPayload.set(topic, p); } catch {}
 			const set = subscribers.get(topic); if (set) for (const h of Array.from(set)) try { h(p); } catch {}
+			const deliverEnd = Date.now();
+			if ((globalThis as any).__MC_LOG) {
+				(globalThis as any).__MC_LOG(`[EventRouter.publish] CP3 DELIVER END at ${new Date().toISOString()} (${deliverEnd - deliverStart}ms)`);
+			}
 		};
 		const perf = def.perf || {};
 		if (typeof perf.throttleMs === 'number' && perf.throttleMs > 0) { const d = deliver; const t = throttle((x: any) => d(x), perf.throttleMs); t(payload); return; }
 		if (typeof perf.debounceMs === 'number' && perf.debounceMs > 0) { const d = deliver; const f = debounce((x: any) => d(x), perf.debounceMs); f(payload); return; }
 		__publishStack.push(topic); try { await deliver(payload); } finally { __publishStack.pop(); }
+		const publishExit = Date.now();
+		if ((globalThis as any).__MC_LOG) {
+			(globalThis as any).__MC_LOG(`[EventRouter.publish] CP6 EXIT at ${new Date().toISOString()}, total publish time: ${publishExit - publishEntry}ms`);
+		}
 	},
 
 	reset() { try { subscribers.clear(); lastPayload.clear(); __publishStack.length = 0; } catch {} },

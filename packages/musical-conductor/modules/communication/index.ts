@@ -38,6 +38,7 @@ import { MusicalConductor } from "./sequences/MusicalConductor.js";
 import type { ConductorClient } from "./sequences/api/ConductorClient.js";
 import { initializeMusicalSequences } from "./sequences/index.js";
 import { eventBus as internalEventBus, ConductorEventBus } from "./EventBus.js";
+import { CallbackRegistry } from "./sequences/orchestration/CallbackRegistry.js";
 
 // Musical Sequences exports
 export {
@@ -159,6 +160,14 @@ export function initializeCommunicationSystem(): {
     sequenceResults,
   };
   communicationSystemInitialized = true;
+
+  // Expose CallbackRegistry on global MusicalConductor for plugin access
+  try {
+    const g: any = typeof globalThis !== "undefined" ? globalThis : (typeof window !== "undefined" ? window : null);
+    if (g && g.MusicalConductor) {
+      g.MusicalConductor.CallbackRegistry = CallbackRegistry;
+    }
+  } catch {}
 
   return communicationSystemInstance;
 }

@@ -1,13 +1,109 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
 import path from 'node:path';
+import fs from 'node:fs';
 import react from '@vitejs/plugin-react';
 import { WebSocketServer } from 'ws';
+
+// Plugin to detect stale code from rebuilt packages and force HMR invalidation
+function staleCodeDetectionPlugin() {
+  let server;
+  const packageDistTimestamps = new Map();
+  const PACKAGES = [
+    'packages/components',
+    'packages/musical-conductor',
+    'packages/host-sdk',
+    'packages/manifest-tools',
+    'packages/canvas',
+    'packages/canvas-component',
+    'packages/control-panel',
+    'packages/header',
+    'packages/library',
+    'packages/library-component',
+  ];
+
+  // Initialize timestamps on startup
+  function initializeTimestamps() {
+    PACKAGES.forEach(pkg => {
+      const distPath = path.resolve(process.cwd(), pkg, 'dist');
+      if (fs.existsSync(distPath)) {
+        const stat = fs.statSync(distPath);
+        packageDistTimestamps.set(pkg, stat.mtimeMs);
+      }
+    });
+  }
+
+  // Check if any package dist has been updated
+  function checkForStaleCode() {
+    let hasUpdates = false;
+    const updatedPackages = [];
+
+    PACKAGES.forEach(pkg => {
+      const distPath = path.resolve(process.cwd(), pkg, 'dist');
+      if (fs.existsSync(distPath)) {
+        const stat = fs.statSync(distPath);
+        const lastKnownTime = packageDistTimestamps.get(pkg);
+
+        if (lastKnownTime && stat.mtimeMs > lastKnownTime) {
+          hasUpdates = true;
+          updatedPackages.push(pkg);
+          packageDistTimestamps.set(pkg, stat.mtimeMs);
+        }
+      }
+    });
+
+    return { hasUpdates, updatedPackages };
+  }
+
+  return {
+    name: 'stale-code-detection',
+    apply: 'serve',
+    configResolved() {
+      initializeTimestamps();
+    },
+    configureServer(srv) {
+      server = srv;
+
+      // Check for stale code every 500ms
+      const checkInterval = setInterval(() => {
+        const { hasUpdates, updatedPackages } = checkForStaleCode();
+
+        if (hasUpdates) {
+          console.log(`\n🔄 Detected rebuilt packages: ${updatedPackages.join(', ')}`);
+          console.log('🧹 Clearing Vite cache and forcing full reload...\n');
+
+          // Clear Vite's module cache
+          server.moduleGraph.clear();
+
+          // Force full page reload via HMR
+          server.ws.send({
+            type: 'full',
+            event: 'full-reload',
+            payload: { path: '*' }
+          });
+        }
+      }, 500);
+
+      // Clean up interval on server close
+      server.httpServer?.on('close', () => clearInterval(checkInterval));
+    },
+  };
+}
 
 export default {
   server: {
     port: 5173,
+    // Ensure source maps are served correctly in dev mode
+    sourcemap: true,
+    // Disable caching to ensure fresh source maps on every request
+    middlewareMode: false,
+    // Force module invalidation on file changes
+    watch: {
+      usePolling: false,
+      ignored: ['**/node_modules/**', '**/.git/**', '**/dist/**'],
+    },
   },
   plugins: [
+    staleCodeDetectionPlugin(),
     react({
       // Ensure consistent JSX runtime between dev and production
       jsxRuntime: 'automatic',
@@ -148,6 +244,8 @@ export default {
     force: process.env.CI === "true",
   },
   build: {
+    // Enable source maps in production for debugging
+    sourcemap: true,
     rollupOptions: {
       // Include a stable-named vendor entry that bundles the workspace Control Panel for preview/E2E
       input: {
