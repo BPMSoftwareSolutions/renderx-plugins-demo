@@ -128,7 +128,19 @@ export async function registerAllSequences(conductor: ConductorClient) {
 						for (const f of files) {
 							if (!seqIds.includes(f.id)) {
 								const s = await pull(f.file);
-								if (s) { try { await (conductor as any).mount?.(s, handlers, s.pluginId); } catch {} }
+								if (s) {
+									try {
+										const result = await (conductor as any).mount?.(s, handlers, s.pluginId);
+										if (result && !result.success) {
+											console.error(`❌ [sequence-registration] Failed to mount ${f.id}:`, result.message);
+											if (result.warnings?.length) {
+												console.warn(`⚠️  [sequence-registration] Warnings:`, result.warnings);
+											}
+										}
+									} catch (err) {
+										console.error(`❌ [sequence-registration] Exception mounting ${f.id}:`, err);
+									}
+								}
 							}
 						}
 					}

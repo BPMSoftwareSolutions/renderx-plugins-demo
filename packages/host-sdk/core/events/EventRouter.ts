@@ -50,13 +50,44 @@ export const EventRouter = {
 			if (globalGetTopicDef) {
 				def = globalGetTopicDef(topic);
 				if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`used_global_getTopicDef(${topic}): ${!!def}`);
-				try { console.log(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`); } catch {}
+				try { 
+					if ((globalThis as any).__MC_LOG) {
+						(globalThis as any).__MC_LOG(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`);
+					} else {
+						console.log(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`);
+					}
+				} catch {}
 			}
 		}
-		if (!def) { if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`no_topic_def(${topic})`); try { console.warn(`[EventRouter] No topic definition found for '${topic}'`); } catch {}; throw new Error(`Unknown topic: ${topic}`); }
+		if (!def) { 
+			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`no_topic_def(${topic})`); 
+			try { 
+				if ((globalThis as any).__MC_WARN) {
+					(globalThis as any).__MC_WARN(`[EventRouter] No topic definition found for '${topic}'`);
+				} else {
+					console.warn(`[EventRouter] No topic definition found for '${topic}'`);
+				}
+			} catch {}; 
+			throw new Error(`Unknown topic: ${topic}`); 
+		}
 		if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`found_topic_def(${topic}): routes=${def.routes?.length || 0}`);
-		try { console.log(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }); } catch {}
-		if (__publishStack.includes(topic)) { try { console.warn(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`); } catch {}; return; }
+		try { 
+			if ((globalThis as any).__MC_LOG) {
+				(globalThis as any).__MC_LOG(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
+			} else {
+				console.log(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
+			}
+		} catch {}
+		if (__publishStack.includes(topic)) { 
+			try { 
+				if ((globalThis as any).__MC_WARN) {
+					(globalThis as any).__MC_WARN(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
+				} else {
+					console.warn(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
+				}
+			} catch {}; 
+			return; 
+		}
 		try {
 			if (isFlagEnabled('lint.topics.runtime-validate') && def.payloadSchema) {
 				const AjvMod: any = await import('ajv');
@@ -73,14 +104,44 @@ export const EventRouter = {
 		try {
 			const cid = (resolvedConductor as any)?.__rxId;
 			const gid = (typeof window !== 'undefined') ? ((window as any).RenderX?.conductor as any)?.__rxId : undefined;
-			console.log(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
+			if ((globalThis as any).__MC_LOG) {
+				(globalThis as any).__MC_LOG(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
+			} else {
+				console.log(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
+			}
 		} catch {}
 		let deliver = async (p: any) => {
 			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`deliver_start(${topic}): routes=${def.routes?.length || 0}`);
-			try { console.log(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`); } catch {}
+			try { 
+				if ((globalThis as any).__MC_LOG) {
+					(globalThis as any).__MC_LOG(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`);
+				} else {
+					console.log(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`);
+				}
+			} catch {}
 			for (const r of def.routes as TopicRoute[]) {
 				if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routing_to: ${r.pluginId}::${r.sequenceId}`);
-				try { const hasPlay = !!(resolvedConductor && typeof resolvedConductor.play === 'function'); try { console.log(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`); } catch {}; await resolvedConductor?.play?.(r.pluginId, r.sequenceId, p); if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routed_success: ${r.pluginId}::${r.sequenceId}`); } catch (e) { if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`route_error: ${r.pluginId}::${r.sequenceId} - ${e}`); try { console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e); } catch {} }
+				try { 
+					const hasPlay = !!(resolvedConductor && typeof resolvedConductor.play === 'function'); 
+					try { 
+						if ((globalThis as any).__MC_LOG) {
+							(globalThis as any).__MC_LOG(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`);
+						} else {
+							console.log(`[topics] Routing '${topic}' -> ${r.pluginId}::${r.sequenceId} (hasPlay=${hasPlay})`);
+						}
+					} catch {}; 
+					await resolvedConductor?.play?.(r.pluginId, r.sequenceId, p); 
+					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`routed_success: ${r.pluginId}::${r.sequenceId}`); 
+				} catch (e) { 
+					if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`route_error: ${r.pluginId}::${r.sequenceId} - ${e}`); 
+					try { 
+						if ((globalThis as any).__MC_WARN) {
+							(globalThis as any).__MC_WARN(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
+						} else {
+							console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
+						}
+					} catch {} 
+				}
 			}
 			try { if (REPLAY_TOPICS.has(topic)) lastPayload.set(topic, p); } catch {}
 			const set = subscribers.get(topic); if (set) for (const h of Array.from(set)) try { h(p); } catch {}

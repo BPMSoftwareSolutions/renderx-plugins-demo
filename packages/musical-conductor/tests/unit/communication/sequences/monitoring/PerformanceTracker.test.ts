@@ -10,14 +10,22 @@ describe("PerformanceTracker - Movement Timing", () => {
 
   beforeEach(() => {
     performanceTracker = new PerformanceTracker();
+
+    // Stub global logging hooks used by PerformanceTracker so tests
+    // do not depend on console.* directly.
+    (globalThis as any).__MC_LOG = jest.fn();
+    (globalThis as any).__MC_WARN = jest.fn();
+
     // Mock performance.now() for consistent testing
-    jest.spyOn(performance, 'now')
+    jest.spyOn(performance, "now")
       .mockReturnValueOnce(1000) // First call (start)
       .mockReturnValueOnce(1250); // Second call (end)
   });
 
   afterEach(() => {
     jest.restoreAllMocks();
+    delete (globalThis as any).__MC_LOG;
+    delete (globalThis as any).__MC_WARN;
   });
 
   describe("MovementTiming Interface", () => {
@@ -45,8 +53,8 @@ describe("PerformanceTracker - Movement Timing", () => {
 
   describe("startMovementTiming", () => {
     it("should start timing a movement and return movement key", () => {
-      const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-      
+      const logSpy = (globalThis as any).__MC_LOG as jest.Mock;
+
       const movementKey = performanceTracker.startMovementTiming(
         "LoadComponents",
         "Setup",
@@ -54,11 +62,9 @@ describe("PerformanceTracker - Movement Timing", () => {
       );
 
       expect(movementKey).toBe("LoadComponents-Setup-req-123");
-      expect(consoleSpy).toHaveBeenCalledWith(
+      expect(logSpy).toHaveBeenCalledWith(
         "⏱️ PerformanceTracker: Started timing movement Setup for LoadComponents"
       );
-
-      consoleSpy.mockRestore();
     });
 
     it("should track multiple movements simultaneously", () => {
@@ -75,30 +81,28 @@ describe("PerformanceTracker - Movement Timing", () => {
 
   describe("endMovementTiming", () => {
     it("should end timing a movement and return duration", () => {
-      const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-      
+      const logSpy = (globalThis as any).__MC_LOG as jest.Mock;
+
       // Start timing
       performanceTracker.startMovementTiming("LoadComponents", "Setup", "req-123");
-      
+
       // End timing
       const duration = performanceTracker.endMovementTiming(
         "LoadComponents",
-        "Setup", 
+        "Setup",
         "req-123",
         3
       );
 
       expect(duration).toBe(250); // 1250 - 1000
-      expect(consoleSpy).toHaveBeenCalledWith(
+      expect(logSpy).toHaveBeenCalledWith(
         "⏱️ PerformanceTracker: Movement Setup completed in 250.00ms"
       );
-
-      consoleSpy.mockRestore();
     });
 
     it("should return null for movement that was not started", () => {
-      const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
-      
+      const warnSpy = (globalThis as any).__MC_WARN as jest.Mock;
+
       const duration = performanceTracker.endMovementTiming(
         "NonExistent",
         "Movement",
@@ -107,11 +111,9 @@ describe("PerformanceTracker - Movement Timing", () => {
       );
 
       expect(duration).toBeNull();
-      expect(consoleSpy).toHaveBeenCalledWith(
+      expect(warnSpy).toHaveBeenCalledWith(
         "⏱️ PerformanceTracker: No start time found for movement Movement in NonExistent"
       );
-
-      consoleSpy.mockRestore();
     });
 
     it("should store completed movement timing data", () => {
@@ -169,27 +171,25 @@ describe("PerformanceTracker - Movement Timing", () => {
 
   describe("cleanupFailedMovement", () => {
     it("should clean up timing data for failed movement", () => {
-      const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
-      
+      const logSpy = (globalThis as any).__MC_LOG as jest.Mock;
+
       // Start timing
       performanceTracker.startMovementTiming("LoadComponents", "Setup", "req-123");
-      
+
       // Verify movement is active
       let activeTimings = performanceTracker.getActiveTimings();
       expect(activeTimings.activeMovements).toHaveLength(1);
-      
+
       // Clean up failed movement
       performanceTracker.cleanupFailedMovement("LoadComponents", "Setup", "req-123");
-      
+
       // Verify movement is no longer active
       activeTimings = performanceTracker.getActiveTimings();
       expect(activeTimings.activeMovements).toHaveLength(0);
-      
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "⏱️ PerformanceTracker: Cleaned up failed movement Setup for LoadComponents"
-      );
 
-      consoleSpy.mockRestore();
+      expect(logSpy).toHaveBeenCalledWith(
+        "⏱️ PerformanceTracker: Cleaned up tracking for movement Setup in LoadComponents"
+      );
     });
   });
 
@@ -209,8 +209,6 @@ describe("PerformanceTracker - Movement Timing", () => {
 
   describe("reset", () => {
     it("should clear all movement timing data", () => {
-      const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-      
       // Add some movement data
       performanceTracker.startMovementTiming("Seq1", "Move1", "req-1");
       performanceTracker.endMovementTiming("Seq1", "Move1", "req-1", 2);
@@ -226,8 +224,6 @@ describe("PerformanceTracker - Movement Timing", () => {
       // Verify data is cleared
       expect(performanceTracker.getMovementTimings()).toHaveLength(0);
       expect(performanceTracker.getActiveTimings().activeMovements).toHaveLength(0);
-
-      consoleSpy.mockRestore();
     });
   });
 });

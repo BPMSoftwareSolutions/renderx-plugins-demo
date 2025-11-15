@@ -135,6 +135,11 @@ export class EventLogger {
       data.title || data.event
     } (${data.event})`;
 
+    // Only log the group label via timestamped logging if available
+    if ((globalThis as any).__MC_LOG) {
+      (globalThis as any).__MC_LOG(groupLabel);
+    }
+    // Note: console.group() is always used for browser dev tools grouping
     console.group(groupLabel);
     (globalThis as any).__MC_LOG(
       `%c🎼 Sequence: ${data.sequenceName}`,
@@ -197,6 +202,11 @@ export class EventLogger {
     // Create hierarchical log group with enhanced styling
     const groupLabel = `🎵 Movement Started: ${data.movementName} (${data.beatsCount} beats)`;
 
+    // Only log the group label via timestamped logging if available
+    if ((globalThis as any).__MC_LOG) {
+      (globalThis as any).__MC_LOG(groupLabel);
+    }
+    // Note: console.group() is always used for browser dev tools grouping
     console.group(groupLabel);
     (globalThis as any).__MC_LOG(
       `%c🎼 Sequence: ${data.sequenceName}`,

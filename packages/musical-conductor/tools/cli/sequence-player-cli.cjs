@@ -40,6 +40,55 @@ const parseLog = (filePath) => {
     console.log("═══════════════════════════════════════════════════════════════");
     console.log(`Log File: ${filePath}`);
     console.log("");
+
+    // Extract version information from the log so we know exactly
+    // which build/plugins produced this run.
+    let manifest = null;
+    const versionLines = [];
+    const jsonRegex = /VERSIONS_JSON:\s*(\{.*\})/;
+    const simpleRegex = /VERSIONS:\s*(.+)$/;
+
+    for (const line of lines) {
+      if (!manifest) {
+        const jsonMatch = line.match(jsonRegex);
+        if (jsonMatch) {
+          try {
+            const parsed = JSON.parse(jsonMatch[1]);
+            manifest = parsed;
+          } catch {
+            // Ignore parse errors and fall back to simple version lines
+          }
+        }
+      }
+
+      const simpleMatch = line.match(simpleRegex);
+      if (simpleMatch) {
+        versionLines.push(simpleMatch[1].trim());
+      }
+    }
+
+    if (manifest || versionLines.length > 0) {
+      console.log("📦 Version information");
+      console.log("───────────────────────────────────────────────────────────────");
+      if (manifest) {
+        const builtAt = manifest.builtAt || "unknown";
+        const commit = manifest.commit || "unknown";
+        console.log(`Built at: ${builtAt}  Commit: ${commit}`);
+        if (Array.isArray(manifest.packages)) {
+          manifest.packages.forEach((pkg) => {
+            if (pkg && pkg.name && pkg.version) {
+              console.log(`  - ${pkg.name}@${pkg.version}`);
+            }
+          });
+        }
+      } else {
+        versionLines.forEach((v) => {
+          console.log(`  - ${v}`);
+        });
+      }
+      console.log("");
+    }
+
     console.log("📊 Sequences Found");
     console.log("───────────────────────────────────────────────────────────────");
 
@@ -132,14 +181,32 @@ switch (command) {
     break;
     
   case "play":
-    if (parsedArgs.sequence) {
-      // Parse mock options
+    console.error("✅ CLI → Browser connection has been fixed!");
+    console.error("");
+    console.error("The CLI now connects to the running browser via WebSocket.");
+    console.error("");
+    console.error("📖 See docs/CLI_BROWSER_CONNECTION_FIX.md for details");
+    console.error("");
+    console.error("To use the CLI:");
+    console.error("  1. Start the dev server:");
+    console.error("     npm run dev");
+    console.error("");
+    console.error("  2. Test the connection:");
+    console.error("     node scripts/test-cli-connection.js");
+    console.error("");
+    console.error("  3. This will create a button on the canvas!");
+    console.error("");
+    console.error("The TypeScript CLI implementation is in:");
+    console.error("  packages/musical-conductor/tools/cli/engines/SequencePlayerEngine.ts");
+    process.exit(1);
+
+    if (false && parsedArgs.sequence) {
+      // STUB CODE - DO NOT USE
+      // This was returning fake 588ms timing data
       const mockServices = parsedArgs.mock ? parsedArgs.mock.split(',').map(s => s.trim()) : [];
       const mockBeats = parsedArgs['mock-beat'] ? parsedArgs['mock-beat'].split(',').map(s => parseInt(s.trim())) : [];
       const unmockServices = parsedArgs.unmock ? parsedArgs.unmock.split(',').map(s => s.trim()) : [];
       const unmockBeats = parsedArgs['unmock-beat'] ? parsedArgs['unmock-beat'].split(',').map(s => parseInt(s.trim())) : [];
-
-      // Determine mode
       const hasMocking = mockServices.length > 0 || mockBeats.length > 0 || unmockServices.length > 0 || unmockBeats.length > 0;
       const mode = hasMocking ? "selective-mocking" : "full-integration";
 

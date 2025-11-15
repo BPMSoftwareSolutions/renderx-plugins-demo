@@ -18,6 +18,12 @@ const DEFAULT_ROUTES: Record<string, Route> = {
     pluginId: "HeaderThemePlugin",
     sequenceId: "header-ui-theme-toggle-symphony",
   },
+  // Canvas component interactions
+  "canvas.component.create": {
+    pluginId: "CanvasComponentPlugin",
+    sequenceId: "canvas-component-create-symphony",
+  },
+  // Control panel interactions
   "control.panel.selection.show": {
     pluginId: "ControlPanelPlugin",
     sequenceId: "control-panel-selection-show-symphony",

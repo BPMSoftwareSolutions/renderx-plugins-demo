@@ -7,6 +7,8 @@ module.exports = {
     "<rootDir>/tests/**/*.spec.ts",
     "<rootDir>/modules/**/*.test.ts",
   ],
+  // CLI Bug Detective tests are Vitest-only; avoid running them under Jest
+  testPathIgnorePatterns: ["<rootDir>/tests/unit/cli/"],
   transform: {
     "^.+\\.tsx?$": [
       "ts-jest",

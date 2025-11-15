@@ -33,6 +33,7 @@ import validateHostSdkVersion from "./eslint-rules/validate-host-sdk-version.js"
 import validateHostSdkVersionMismatch from "./eslint-rules/validate-host-sdk-version-mismatch.js";
 import validateHostSdkMissing from "./eslint-rules/validate-host-sdk-missing.js";
 import validatePluginManifestExports from "./eslint-rules/validate-plugin-manifest-exports.js";
+import requireTimestampedLogging from "./eslint-rules/require-timestamped-logging.js";
 
 
 
@@ -137,6 +138,7 @@ export default [
       "routing-declarations": requireRoutingDeclarations,
       "host-sdk-version": validateHostSdkVersion,
       "plugin-manifest-exports": validatePluginManifestExports,
+      "timestamped-logging": requireTimestampedLogging,
     },
     rules: {
       "play-routing/no-hardcoded-play-ids": "error",
@@ -165,6 +167,7 @@ export default [
       "routing-declarations/require-routing-declarations": "error",
       "host-sdk-version/validate-host-sdk-version": "error",
       "plugin-manifest-exports/validate-plugin-manifest-exports": "error",
+      "timestamped-logging/require-timestamped-logging": "error",
 
 
 	      // Enforce externalized json-components: forbid local/public references in code

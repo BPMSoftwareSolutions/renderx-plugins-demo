@@ -214,18 +214,53 @@ export class EventBus {
    * Resolves when all subscriber callbacks have settled
    */
   async emitAsync<T = any>(eventName: string, data?: T): Promise<void> {
+    const t0 = performance.now();
+    (globalThis as any).__MC_LOG(
+      `🕐 [EVENTBUS] emitAsync CALLED for "${eventName}" at ${new Date().toISOString()} (perf: ${t0.toFixed(2)}ms)`
+    );
+
     // Track event counts
     this.eventCounts[eventName] = (this.eventCounts[eventName] || 0) + 1;
 
     if (!this.events[eventName]) {
+      (globalThis as any).__MC_LOG(
+        `🕐 [EVENTBUS] No subscribers for "${eventName}", returning immediately`
+      );
       return;
     }
 
     const subscribers = [...this.events[eventName]];
+    (globalThis as any).__MC_LOG(
+      `🕐 [EVENTBUS] Found ${subscribers.length} subscriber(s) for "${eventName}"`
+    );
+
     const tasks = subscribers.map((subscription, index) => {
+      const t1 = performance.now();
+      (globalThis as any).__MC_LOG(
+        `🕐 [EVENTBUS] Calling subscriber ${index} for "${eventName}" at ${new Date().toISOString()} (perf: ${t1.toFixed(2)}ms)`
+      );
+
       try {
         const ret = (subscription.callback as any)(data);
-        return Promise.resolve(ret);
+
+        const t2 = performance.now();
+        (globalThis as any).__MC_LOG(
+          `🕐 [EVENTBUS] Subscriber ${index} for "${eventName}" returned (sync) at ${new Date().toISOString()} (perf: ${t2.toFixed(2)}ms)`
+        );
+        (globalThis as any).__MC_LOG(
+          `🕐 [EVENTBUS] Subscriber ${index} sync execution took ${(t2 - t1).toFixed(2)}ms`
+        );
+
+        return Promise.resolve(ret).then((result) => {
+          const t3 = performance.now();
+          (globalThis as any).__MC_LOG(
+            `🕐 [EVENTBUS] Subscriber ${index} for "${eventName}" promise resolved at ${new Date().toISOString()} (perf: ${t3.toFixed(2)}ms)`
+          );
+          (globalThis as any).__MC_LOG(
+            `🕐 [EVENTBUS] Subscriber ${index} total execution took ${(t3 - t1).toFixed(2)}ms`
+          );
+          return result;
+        });
       } catch (error) {
         const pluginInfo = subscription.pluginId
           ? ` (plugin: ${subscription.pluginId})`
@@ -238,8 +273,20 @@ export class EventBus {
       }
     });
 
+    (globalThis as any).__MC_LOG(
+      `🕐 [EVENTBUS] About to await Promise.allSettled for "${eventName}" with ${tasks.length} task(s)`
+    );
+
     // Await all, but do not throw on individual failures
     await Promise.allSettled(tasks);
+
+    const t4 = performance.now();
+    (globalThis as any).__MC_LOG(
+      `🕐 [EVENTBUS] Promise.allSettled completed for "${eventName}" at ${new Date().toISOString()} (perf: ${t4.toFixed(2)}ms)`
+    );
+    (globalThis as any).__MC_LOG(
+      `🕐 [EVENTBUS] Total emitAsync execution for "${eventName}" took ${(t4 - t0).toFixed(2)}ms`
+    );
   }
 
   /**

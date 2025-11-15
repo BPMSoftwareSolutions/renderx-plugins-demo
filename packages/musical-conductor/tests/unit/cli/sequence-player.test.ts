@@ -115,6 +115,35 @@ describe("LogParser", () => {
     const sequences = parser.extractSequences(tempLogFile);
     expect(sequences[0].beats).toBe(3);
   });
+
+  it("should extract versions from versioned log", () => {
+    const logContent = [
+      "2025-11-14T10:00:00Z Startup: Application starting",
+      'VERSIONS_JSON: {"builtAt":"2025-11-14T13:28:29.602Z","node":"v20.19.0","commit":"abc123","packages":[{"name":"@renderx-plugins/library-component","version":"1.0.3"},{"name":"@renderx-plugins/canvas-component","version":"1.0.11"}]}',
+      "VERSIONS: @renderx-plugins/library-component@1.0.3",
+      "VERSIONS: @renderx-plugins/canvas-component@1.0.11",
+      "2025-11-14T10:00:01Z SequenceExecutor: Executing sequence seq1",
+    ].join("\n");
+
+    fs.writeFileSync(tempLogFile, logContent);
+
+    const versions = parser.extractVersions(tempLogFile);
+    expect(versions).not.toBeNull();
+    expect(versions?.manifest).toBeDefined();
+    expect(versions?.manifest?.packages).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "@renderx-plugins/library-component",
+          version: "1.0.3",
+        }),
+        expect.objectContaining({
+          name: "@renderx-plugins/canvas-component",
+          version: "1.0.11",
+        }),
+      ])
+    );
+  });
+
 });
 
 describe("PerformanceReporter", () => {

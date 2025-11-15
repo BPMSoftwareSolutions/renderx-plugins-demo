@@ -1,0 +1,241 @@
+========================================================================================================================
+🚀 DROP TO CANVAS COMPONENT DELAY ANALYSIS
+========================================================================================================================
+📊 Total Duration: 7.160 seconds (7160ms)
+⏰ Start Time: 16:38:21.600
+🏁 End Time: 16:38:28.760
+
+Timeline (each '█' = ~70ms):
+0ms                                                                                          7160ms
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+
+📋 DETAILED TIMELINE:
+------------------------------------------------------------------------------------------------------------------------
+⏱️  Second 0:
+     +0.000s │ EventBus.ts:56 2025-11-15T16:38:21.600Z 📡 Topic: library.component.drop.requested: {routes: 1, hasThrottle: false, hasDebounce: false}
+     +0.001s │ ⚙️ EventBus
+     +0.001s │ EventBus.ts:56 2025-11-15T16:38:21.601Z [EventRouter] 🚀 Starting: library.component.drop.requested with 1 routes
+     +0.001s │ ⚙️ EventBus
+
+⏱️  Second 2:
+     +2.368s │ EventBus.ts:56 2025-11-15T16:38:23.968Z 🎼 🎼 Conductor: 4 callbacks(s) for correlationId=mc-1763224703968-ascipf
+     +2.369s │ EventBus.ts:56 2025-11-15T16:38:23.969Z 🎼 🔌 Plugin: LibraryComponentPlugin -> library-component-drop-symphony
+     +2.369s │ ⚙️ EventBus
+     +2.369s │ EventBus.ts:56 2025-11-15T16:38:23.969Z 🎼 ExecutionQueue: 📥 Queued: Library Component Drop NORMAL (Queue size: 1)
+     +2.369s │ ⚙️ ExecutionQueue
+     +2.369s │ ⚙️ EventBus
+     +2.369s │ EventBus.ts:56 2025-11-15T16:38:23.969Z 🎼 ExecutionQueue: ⚡ Executing: Library Component Drop
+     +2.369s │ EventBus.ts:56 2025-11-15T16:38:23.969Z 🎼 🎵 Movement: Drop (1/1)
+     +2.369s │ EventBus.ts:56 2025-11-15T16:38:23.969Z 🎵 🥁 Starting: Drop (1 beats)
+     +2.369s │ ⚙️ PerformanceTracker
+     +2.369s │ ⚙️ EventBus
+     +2.369s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ PerformanceTracker
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ ⚙️ EventBus
+     +2.370s │ EventBus.ts:56 2025-11-15T16:38:23.970Z 🕐 [EVENTBUS] 📤 Emit: library:component:drop at 2025-11-15T16:38:23.970Z (perf: 21072.70ms)
+     +2.371s │ ⚙️ EventBus
+     +2.371s │ ⚙️ EventBus
+     +2.383s │ ⚙️ EventBus
+     +2.383s │ EventBus.ts:56 2025-11-15T16:38:23.983Z 🕐 [EVENTBUS] ✅ Sub 0 Done: library:component:drop (sync) at 2025-11-15T16:38:23.983Z (perf: 21085.30ms)
+     +2.383s │ ⚙️ EventBus
+     +2.383s │ ⚙️ EventBus
+     +2.384s │ ⚙️ EventBus
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ EventBus.ts:56 2025-11-15T16:38:23.985Z 🎽 🎽 Data: No changes | seq=Library Component Drop beat=1 event=library:component:drop handler=?
+     +2.385s │ EventBus.ts:56 2025-11-15T16:38:23.985Z ⏱️ PerformanceTracker: ✅ Beat 1: 15.20ms
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ ⚙️ EventBus
+     +2.385s │ ⚙️ PerformanceTracker
+     +2.385s │ EventBus.ts:56 2025-11-15T16:38:23.985Z ✅ ✅ Movement: 16.10ms
+     +2.385s │ ⚙️ EventBus
+     +2.386s │ ⚙️ EventBus
+     +2.386s │ ⚙️ ExecutionQueue
+     +2.386s │ EventBus.ts:56 2025-11-15T16:38:23.986Z ✅ SequenceExecutor: 🎊 Sequence Complete: Library Component Drop (17ms)
+
+⏱️  Second 4:
+     +4.734s │ EventBus.ts:56 2025-11-15T16:38:26.334Z 🎼 🎼 Conductor: 4 callbacks(s) for correlationId=mc-1763224703968-ascipf
+     +4.735s │ EventBus.ts:56 2025-11-15T16:38:26.335Z 🎼 🔌 Plugin: CanvasComponentPlugin -> canvas-component-create-symphony
+     +4.735s │ ⚙️ EventBus
+     +4.735s │ 2025-11-15T16:38:26.335Z 🎼 ExecutionQueue: 📥 Queued: Canvas Component Create NORMAL (Queue size: 1)
+     +4.735s │ ⚙️ ExecutionQueue
+     +4.735s │ 2025-11-15T16:38:26.335Z 🎼 ExecutionQueue: ⚡ Executing: Canvas Component Create
+     +4.735s │ 2025-11-15T16:38:26.335Z 🎼 🎵 Movement: Create (1/1)
+     +4.735s │ 2025-11-15T16:38:26.335Z 🎵 🥁 Starting: Create (6 beats)
+     +4.735s │ ⚙️ PerformanceTracker
+     +4.736s │ ⚙️ PerformanceTracker
+     +4.736s │ 2025-11-15T16:38:26.336Z 🕐 [EVENTBUS] 📤 Emit: canvas:component:resolve-template at 2025-11-15T16:38:26.336Z (perf: 23438.60ms)
+     +4.748s │ 2025-11-15T16:38:26.348Z 🕐 [EVENTBUS] ✅ Sub 0 Done: canvas:component:resolve-template (sync) at 2025-11-15T16:38:26.348Z (perf: 23449.70ms)
+     +4.748s │ 2025-11-15T16:38:26.348Z 🎽 🎽 Data: +template,nodeId | seq=Canvas Component Create beat=? event=canvas:component:resolve-template handler=resolveTemplate plugin=CanvasComponentPlugin req=canvas-component-create-symphony-1763224706335-as0ylt9zl preview={"template":{"tag":"button","text":"Click me","classes":["rx-comp","rx-button"],"css":".rx-button { background-color: var(--bg-color); color: var(--text-color); border: var(--border); padding: var(--p
+     +4.748s │ 2025-11-15T16:38:26.348Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=1 event=canvas:component:resolve-template handler=?
+     +4.749s │ 2025-11-15T16:38:26.349Z ⏱️ PerformanceTracker: ✅ Beat 1: 12.70ms
+     +4.749s │ ⚙️ BeatExecutor
+     +4.749s │ ⚙️ PerformanceTracker
+     +4.749s │ ⚙️ EventBus
+     +4.749s │ EventBus.ts:56 2025-11-15T16:38:26.349Z 🕐 [EVENTBUS] 📤 Emit: canvas:component:register-instance at 2025-11-15T16:38:26.349Z (perf: 23451.30ms)
+     +4.749s │ ⚙️ EventBus
+     +4.749s │ ⚙️ EventBus
+     +4.759s │ ⚙️ EventBus
+     +4.759s │ EventBus.ts:56 2025-11-15T16:38:26.359Z 🕐 [EVENTBUS] ✅ Sub 0 Done: canvas:component:register-instance (sync) at 2025-11-15T16:38:26.359Z (perf: 23461.60ms)
+     +4.759s │ ⚙️ EventBus
+     +4.759s │ ⚙️ EventBus
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ EventBus.ts:56 2025-11-15T16:38:26.360Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=? event=canvas:component:register-instance handler=registerInstance
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ EventBus.ts:56 2025-11-15T16:38:26.360Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=2 event=canvas:component:register-instance handler=?
+     +4.760s │ EventBus.ts:56 2025-11-15T16:38:26.360Z ⏱️ PerformanceTracker: ✅ Beat 2: 11.40ms
+     +4.760s │ ⚙️ EventBus
+     +4.760s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ PerformanceTracker
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ EventBus.ts:56 2025-11-15T16:38:26.361Z 🕐 [EVENTBUS] 📤 Emit: canvas:component:create at 2025-11-15T16:38:26.361Z (perf: 23463.30ms)
+     +4.761s │ ⚙️ EventBus
+     +4.761s │ ⚙️ EventBus
+     +4.771s │ ⚙️ EventBus
+     +4.771s │ EventBus.ts:56 2025-11-15T16:38:26.371Z 🕐 [EVENTBUS] ✅ Sub 0 Done: canvas:component:create (sync) at 2025-11-15T16:38:26.371Z (perf: 23472.90ms)
+     +4.771s │ ⚙️ EventBus
+     +4.771s │ ⚙️ EventBus
+     +4.772s │ ⚙️ EventBus
+     +4.772s │ ⚙️ EventBus
+     +4.772s │ EventBus.ts:56 2025-11-15T16:38:26.372Z 🎽 🎽 Data: +_cssQueue,createdNode | seq=Canvas Component Create beat=? event=canvas:component:create handler=createNode plugin=CanvasComponentPlugin req=canvas-component-create-symphony-1763224706335-as0ylt9zl preview={"_cssQueue":[".rx-button { background-color: var(--bg-color); color: var(--text-color); border: var(--border); padding: var(--padding); border-radius: var(--border-radius); cursor: pointer; font-size
+     +4.772s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ EventBus.ts:56 2025-11-15T16:38:26.373Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=3 event=canvas:component:create handler=?
+     +4.773s │ EventBus.ts:56 2025-11-15T16:38:26.373Z ⏱️ PerformanceTracker: ✅ Beat 3: 12.20ms
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ PerformanceTracker
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ EventBus.ts:56 2025-11-15T16:38:26.373Z 🕐 [EVENTBUS] 📤 Emit: canvas:component:render-react at 2025-11-15T16:38:26.373Z (perf: 23475.60ms)
+     +4.773s │ ⚙️ EventBus
+     +4.773s │ ⚙️ EventBus
+     +4.783s │ ⚙️ EventBus
+     +4.783s │ EventBus.ts:56 2025-11-15T16:38:26.383Z 🕐 [EVENTBUS] ✅ Sub 0 Done: canvas:component:render-react (sync) at 2025-11-15T16:38:26.383Z (perf: 23485.40ms)
+     +4.783s │ ⚙️ EventBus
+     +4.783s │ ⚙️ EventBus
+     +4.783s │ ⚙️ EventBus
+     +4.783s │ ⚙️ EventBus
+     +4.783s │ EventBus.ts:56 2025-11-15T16:38:26.383Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=? event=canvas:component:render-react handler=renderReact
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ EventBus.ts:56 2025-11-15T16:38:26.384Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=4 event=canvas:component:render-react handler=?
+     +4.784s │ EventBus.ts:56 2025-11-15T16:38:26.384Z ⏱️ PerformanceTracker: ✅ Beat 4: 10.70ms
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ PerformanceTracker
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ EventBus.ts:56 2025-11-15T16:38:26.384Z 🕐 [EVENTBUS] 📤 Emit: canvas:component:notify-ui at 2025-11-15T16:38:26.384Z (perf: 23486.70ms)
+     +4.784s │ ⚙️ EventBus
+     +4.784s │ ⚙️ EventBus
+     +4.795s │ ⚙️ EventBus
+     +4.795s │ EventBus.ts:56 2025-11-15T16:38:26.395Z 🕐 [EVENTBUS] ✅ Sub 0 Done: canvas:component:notify-ui (sync) at 2025-11-15T16:38:26.395Z (perf: 23497.00ms)
+     +4.795s │ ⚙️ EventBus
+     +4.795s │ ⚙️ EventBus
+     +4.796s │ EventBus.ts:56 2025-11-15T16:38:26.396Z 📡 Topic: canvas.component.created: {routes: 0, hasThrottle: false, hasDebounce: false}
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ EventBus.ts:56 2025-11-15T16:38:26.396Z [EventRouter] 🚀 Starting: canvas.component.created with 0 routes
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ EventBus.ts:56 2025-11-15T16:38:26.396Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=? event=canvas:component:notify-ui handler=notifyUi
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ ⚙️ EventBus
+     +4.796s │ EventBus.ts:56 2025-11-15T16:38:26.396Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=5 event=canvas:component:notify-ui handler=?
+     +4.796s │ EventBus.ts:56 2025-11-15T16:38:26.396Z ⏱️ PerformanceTracker: ✅ Beat 5: 12.30ms
+     +4.796s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ PerformanceTracker
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ EventBus.ts:56 2025-11-15T16:38:26.397Z 🕐 [EVENTBUS] 📤 Emit: canvas:component:augment:line at 2025-11-15T16:38:26.397Z (perf: 23499.30ms)
+     +4.797s │ ⚙️ EventBus
+     +4.797s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ EventBus.ts:56 2025-11-15T16:38:26.407Z 🕐 [EVENTBUS] ✅ Sub 0 Done: canvas:component:augment:line (sync) at 2025-11-15T16:38:26.407Z (perf: 23508.90ms)
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ EventBus.ts:56 2025-11-15T16:38:26.407Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=? event=canvas:component:augment:line handler=enhanceLine
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ ⚙️ EventBus
+     +4.807s │ EventBus.ts:56 2025-11-15T16:38:26.407Z 🎽 🎽 Data: No changes | seq=Canvas Component Create beat=6 event=canvas:component:augment:line handler=?
+     +4.807s │ EventBus.ts:56 2025-11-15T16:38:26.407Z ⏱️ PerformanceTracker: ✅ Beat 6: 10.80ms
+     +4.808s │ ⚙️ EventBus
+     +4.808s │ ⚙️ EventBus
+     +4.808s │ ⚙️ PerformanceTracker
+     +4.808s │ EventBus.ts:56 2025-11-15T16:38:26.408Z ✅ ✅ Movement: 72.20ms
+     +4.808s │ ⚙️ EventBus
+     +4.808s │ ⚙️ EventBus
+     +4.808s │ ⚙️ ExecutionQueue
+     +4.808s │ EventBus.ts:56 2025-11-15T16:38:26.408Z ✅ SequenceExecutor: 🎊 Sequence Complete: Canvas Component Create (73ms)
+
+⏱️  Second 7:
+     +7.160s │ EventBus.ts:56 2025-11-15T16:38:28.760Z 🎽 🎽 Data: No changes | seq=Library Component Drop beat=? event=library:component:drop handler=publishCreateRequested
+
+========================================================================================================================
+🔍 PERFORMANCE ANALYSIS:
+--------------------------------------------------
+⚠️  SIGNIFICANT DELAYS (>500ms):
+   • 2.367s gap
+     From: ⚙️ EventBus
+     To:   EventBus.ts:56 2025-11-15T16:38:23.968Z 🎼 🎼 Conductor: 4 callbacks(s) for correlationId=mc-1763224703968-ascipf
+
+   • 2.352s gap
+     From: EventBus.ts:56 2025-11-15T16:38:26.408Z ✅ SequenceExecutor: 🎊 Sequence Complete: Canvas Component Create (73ms)
+     To:   EventBus.ts:56 2025-11-15T16:38:28.760Z 🎽 🎽 Data: No changes | seq=Library Component Drop beat=? event=library:component:drop handler=publishCreateRequested
+
+   • 2.348s gap
+     From: EventBus.ts:56 2025-11-15T16:38:23.986Z ✅ SequenceExecutor: 🎊 Sequence Complete: Library Component Drop (17ms)
+     To:   EventBus.ts:56 2025-11-15T16:38:26.334Z 🎼 🎼 Conductor: 4 callbacks(s) for correlationId=mc-1763224703968-ascipf
+
+💡 OPTIMIZATION OPPORTUNITIES:
+   • The largest delays appear to be between sequence orchestration
+   • Consider async processing for non-blocking operations
+   • Investigate plugin loading/rehydration performance
+   • Review event bus subscriber execution times

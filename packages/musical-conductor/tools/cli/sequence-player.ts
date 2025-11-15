@@ -102,12 +102,18 @@ class SequencePlayerCLI {
           sequenceId = logData.sequenceId;
         }
         context = logData.context;
+
+        // Also surface version information from the log so we know
+        // exactly which plugin/package versions were running.
+        this.printVersionsFromLog(options.fromLog);
       }
 
       // Play sequence
       const result = await this.engine.play(sequenceId, context, {
         mockServices: options.mock ? options.mock.split(",") : [],
-        mockBeats: options.mockBeat ? options.mockBeat.split(",").map(Number) : [],
+        mockBeats: options.mockBeat
+          ? options.mockBeat.split(",").map(Number)
+          : [],
       });
 
       // Generate report
@@ -158,13 +164,19 @@ class SequencePlayerCLI {
       this.logger.info(`📖 Parsing log: ${options.file}`);
       const sequences = this.logParser.extractSequences(options.file);
 
+      // Always print version information when available so we know
+      // exactly which build produced this log.
+      this.printVersionsFromLog(options.file);
+
       if (options.output) {
         fs.writeFileSync(options.output, JSON.stringify(sequences, null, 2));
-        this.logger.success(`✅ Extracted ${sequences.length} sequences to ${options.output}`);
+        this.logger.success(
+          `✅ Extracted ${sequences.length} sequences to ${options.output}`
+        );
       } else {
         this.logger.info(`📊 Found ${sequences.length} sequences`);
         sequences.forEach((seq: any) => {
-          this.logger.info(`  - ${seq.id}: ${seq.beats.length} beats`);
+          this.logger.info(`  - ${seq.id}: ${seq.beats} beats`);
         });
       }
     } catch (error) {
@@ -172,6 +184,40 @@ class SequencePlayerCLI {
       process.exit(1);
     }
   }
+
+  private printVersionsFromLog(filePath: string): void {
+    try {
+      const versions = this.logParser.extractVersions(filePath);
+      if (!versions || (!versions.manifest && versions.lines.length === 0)) {
+        return;
+      }
+
+      this.logger.separator();
+      this.logger.info("📦 Version information from log");
+
+      const manifest = versions.manifest;
+      if (manifest) {
+        const builtAt = manifest.builtAt ?? "unknown";
+        const commit = manifest.commit ?? "unknown";
+        this.logger.info(`Built at: ${builtAt}  Commit: ${commit}`);
+
+        if (manifest.packages && manifest.packages.length > 0) {
+          manifest.packages.forEach((pkg) => {
+            this.logger.info(`  - ${pkg.name}@${pkg.version}`);
+          });
+        }
+      } else {
+        versions.lines.forEach((line) => {
+          this.logger.info(`  - ${line}`);
+        });
+      }
+
+      this.logger.separator();
+    } catch (error) {
+      this.logger.warn("⚠️ Failed to extract versions from log:", error);
+    }
+  }
+
 
   public run(): void {
     this.program.parse(process.argv);

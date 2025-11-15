@@ -24,7 +24,11 @@ export const EventRouter = {
 
     const hostRouter = window.RenderX?.EventRouter;
     if (!hostRouter) {
-      console.warn("Host EventRouter not available. Events will not be routed.");
+      if ((globalThis as any).__MC_WARN) {
+        (globalThis as any).__MC_WARN("Host EventRouter not available. Events will not be routed.");
+      } else {
+        console.warn("Host EventRouter not available. Events will not be routed.");
+      }
       return () => {};
     }
 
@@ -39,7 +43,11 @@ export const EventRouter = {
 
     const hostRouter = window.RenderX?.EventRouter;
     if (!hostRouter) {
-      console.warn("Host EventRouter not available. Event will not be published:", topic);
+      if ((globalThis as any).__MC_WARN) {
+        (globalThis as any).__MC_WARN("Host EventRouter not available. Event will not be published:", topic);
+      } else {
+        console.warn("Host EventRouter not available. Event will not be published:", topic);
+      }
       return;
     }
 

@@ -18,6 +18,20 @@ export interface LogData {
   sequenceId: string;
   context: any;
 }
+export interface VersionsManifest {
+  builtAt?: string;
+  node?: string;
+  vite?: string;
+  commit?: string | null;
+  packages: Array<{ name: string; version: string }>;
+}
+
+export interface VersionsFromLog {
+  manifest?: VersionsManifest;
+  lines: string[];
+}
+
+
 
 export class LogParser {
   /**
@@ -112,6 +126,62 @@ export class LogParser {
 
     return Array.from(sequenceMap.values());
   }
+
+  /**
+   * Extract version information from a log file, if present.
+   *
+   * Looks for:
+   * - A single line containing `VERSIONS_JSON: { ... }` with a manifest
+   * - Zero or more lines starting with `VERSIONS:` for human-readable entries
+   */
+  extractVersions(filePath: string): VersionsFromLog | null {
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`Log file not found: ${filePath}`);
+    }
+
+    const content = fs.readFileSync(filePath, "utf-8");
+    const lines = content.split("\n");
+
+    let manifest: VersionsManifest | undefined;
+    const versionLines: string[] = [];
+
+    for (const line of lines) {
+      if (!manifest) {
+        const jsonMatch = line.match(/VERSIONS_JSON:\s*(\{.*\})/);
+        if (jsonMatch) {
+          try {
+            const parsed = JSON.parse(jsonMatch[1]);
+            if (parsed && Array.isArray(parsed.packages)) {
+              manifest = {
+                builtAt: parsed.builtAt,
+                node: parsed.node,
+                vite: parsed.vite,
+                commit: parsed.commit ?? null,
+                packages: parsed.packages.map((pkg: any) => ({
+                  name: String(pkg.name),
+                  version: String(pkg.version),
+                })),
+              };
+            }
+          } catch {
+            // Ignore parse errors and fall back to plain version lines
+          }
+        }
+      }
+
+      const simpleMatch = line.match(/VERSIONS:\s*(.+)$/);
+      if (simpleMatch) {
+        versionLines.push(simpleMatch[1].trim());
+      }
+    }
+
+    if (!manifest && versionLines.length === 0) {
+      return null;
+    }
+
+    return { manifest, lines: versionLines };
+  }
+
 
   private extractSequenceId(line: string): string {
     const match = line.match(/sequence[:\s]+([a-zA-Z0-9\-_]+)/i);

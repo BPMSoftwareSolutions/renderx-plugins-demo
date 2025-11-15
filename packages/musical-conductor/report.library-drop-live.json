@@ -1,0 +1,59 @@
+{
+  "sequenceId": "library-drop-canvas-component",
+  "sequenceName": "library drop canvas component",
+  "mode": "full-integration",
+  "mockServices": [],
+  "mockBeats": [],
+  "unmockServices": [],
+  "unmockBeats": [],
+  "startTime": 1763160957583,
+  "endTime": 1763160958171,
+  "duration": 588,
+  "beats": [
+    {
+      "beat": 1,
+      "event": "resolve-template",
+      "duration": 5,
+      "isMocked": false,
+      "kind": "pure"
+    },
+    {
+      "beat": 2,
+      "event": "register-instance",
+      "duration": 12,
+      "isMocked": false,
+      "kind": "io"
+    },
+    {
+      "beat": 3,
+      "event": "create-node",
+      "duration": 18,
+      "isMocked": false,
+      "kind": "pure"
+    },
+    {
+      "beat": 4,
+      "event": "render-react",
+      "duration": 512,
+      "isMocked": false,
+      "kind": "stage-crew"
+    },
+    {
+      "beat": 5,
+      "event": "notify-ui",
+      "duration": 3,
+      "isMocked": false,
+      "kind": "api"
+    },
+    {
+      "beat": 6,
+      "event": "enhance-line",
+      "duration": 38,
+      "isMocked": false,
+      "kind": "pure"
+    }
+  ],
+  "totalBeats": 6,
+  "errors": [],
+  "status": "success"
+}

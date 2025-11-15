@@ -1,9 +1,90 @@
 // Vite config: ensure dev prebundle for header + host-sdk; bundle host-sdk in prod so preview works
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
-
+import { WebSocketServer } from 'ws';
 
 export default {
+  server: {
+    port: 5173,
+  },
+  plugins: [
+    react({
+      // Ensure consistent JSX runtime between dev and production
+      jsxRuntime: 'automatic',
+      jsxImportSource: 'react',
+      // Enable fast refresh for better dev experience
+      fastRefresh: true
+    }),
+    // WebSocket server for CLI communication
+    {
+      name: 'conductor-websocket',
+      configureServer(server) {
+        const wss = new WebSocketServer({ noServer: true });
+
+        server.httpServer?.on('upgrade', (request, socket, head) => {
+          if (request.url === '/conductor-ws') {
+            wss.handleUpgrade(request, socket, head, (ws) => {
+              wss.emit('connection', ws, request);
+            });
+          }
+        });
+
+        wss.on('connection', (ws) => {
+          console.log('🎼 CLI connected to conductor WebSocket');
+
+          // Listen for responses from browser to forward back to CLI
+          const responseHandler = (data) => {
+            console.log('📨 Received response from browser:', data);
+            ws.send(JSON.stringify(data));
+          };
+
+          // Register handler for browser responses
+          server.ws.on('conductor:cli-response', responseHandler);
+
+          ws.on('message', (data) => {
+            try {
+              const message = JSON.parse(data.toString());
+              console.log('📨 Received from CLI:', message);
+
+              // Broadcast to all browser clients
+              server.ws.send('conductor:cli-command', message);
+
+              // Send acknowledgment back to CLI (for non-eval commands)
+              if (message.type !== 'eval') {
+                ws.send(JSON.stringify({ type: 'ack', id: message.id }));
+              }
+            } catch (error) {
+              console.error('❌ WebSocket message error:', error);
+              ws.send(JSON.stringify({ type: 'error', error: error.message }));
+            }
+          });
+
+          ws.on('close', () => {
+            console.log('🎼 CLI disconnected from conductor WebSocket');
+            // Clean up response handler
+            server.ws.off('conductor:cli-response', responseHandler);
+          });
+        });
+      },
+    },
+    {
+      name: 'fix-sdk-plugin-manifest-raw',
+      enforce: 'pre',
+      resolveId(id, _importer) {
+        // The SDK imports the plugin manifest via a relative path from node_modules:
+        //   ../../../public/plugins/plugin-manifest.json?raw
+        // In production build, Rollup may fail to resolve this from node_modules. Redirect it to the app's public path.
+        if (id.endsWith('public/plugins/plugin-manifest.json?raw')) {
+          return path.resolve(process.cwd(), 'public/plugins/plugin-manifest.json?raw');
+        }
+        // The SDK resolves feature flags via a relative path from within node_modules
+        if (id.endsWith('data/feature-flags.json')) {
+          return path.resolve(process.cwd(), 'data/feature-flags.json');
+        }
+        return null;
+      },
+    },
+  ],
   define: {
     // Inject environment variables for secure configuration
     '__CONFIG_OPENAI_API_KEY__': JSON.stringify(process.env.OPENAI_API_KEY || ''),
@@ -66,32 +147,6 @@ export default {
     // Force dependency re-bundling in CI to avoid stale optimization issues
     force: process.env.CI === "true",
   },
-  plugins: [
-    react({
-      // Ensure consistent JSX runtime between dev and production
-      jsxRuntime: 'automatic',
-      jsxImportSource: 'react',
-      // Enable fast refresh for better dev experience
-      fastRefresh: true
-    }),
-    {
-      name: 'fix-sdk-plugin-manifest-raw',
-      enforce: 'pre',
-      resolveId(id, _importer) {
-        // The SDK imports the plugin manifest via a relative path from node_modules:
-        //   ../../../public/plugins/plugin-manifest.json?raw
-        // In production build, Rollup may fail to resolve this from node_modules. Redirect it to the app's public path.
-        if (id.endsWith('public/plugins/plugin-manifest.json?raw')) {
-          return path.resolve(process.cwd(), 'public/plugins/plugin-manifest.json?raw');
-        }
-        // The SDK resolves feature flags via a relative path from within node_modules
-        if (id.endsWith('data/feature-flags.json')) {
-          return path.resolve(process.cwd(), 'data/feature-flags.json');
-        }
-        return null;
-      },
-    },
-  ],
   build: {
     rollupOptions: {
       // Include a stable-named vendor entry that bundles the workspace Control Panel for preview/E2E

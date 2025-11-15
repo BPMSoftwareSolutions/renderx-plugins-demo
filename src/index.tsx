@@ -13,6 +13,7 @@ import { recordTelemetryEvent, getPlugins, enablePlugin, disablePlugin } from ".
 
 import { listComponents, getComponentById, onInventoryChanged } from "./domain/components/inventory/inventory.service";
 import { cssRegistry } from "./domain/css/cssRegistry.facade";
+import { initCLIBridge } from "./infrastructure/cli-bridge";
 declare const process: { env?: Record<string, string | undefined> } | undefined;
 
 // Declare Vite-injected config constants
@@ -26,6 +27,9 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
     initInteractionManifest(),
     initTopicsManifest(),
   ]);
+
+  // Initialize CLI bridge for dev mode
+  initCLIBridge();
 
 
 	  // Load and stamp the build versions manifest into the logs for reproducibility

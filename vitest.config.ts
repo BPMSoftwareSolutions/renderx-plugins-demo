@@ -16,6 +16,8 @@ export default defineConfig({
       "tests/**/*.spec.tsx",
       "tests/**/*.test.ts",
       "tests/**/*.test.tsx",
+      // MusicalConductor CLI Bug Detective tests (Vitest-only harness)
+      "packages/musical-conductor/tests/unit/cli/**/*.test.ts",
     ],
     // Exclude non-production test files from CI runs
     exclude: [

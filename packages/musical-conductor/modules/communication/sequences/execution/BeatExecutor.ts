@@ -97,7 +97,22 @@ export class BeatExecutor {
       const prevSnap = DataBaton.snapshot(executionContext.payload);
       // Attach a shallow copy to payload for handlers to mutate
       (contextualEventData as any)._baton = executionContext.payload;
+
+      const t0 = performance.now();
+      (globalThis as any).__MC_LOG(
+        `🕐 [BEAT EXECUTOR] About to emitAsync for event "${beat.event}" at ${new Date().toISOString()} (perf: ${t0.toFixed(2)}ms)`
+      );
+
       await (this.eventBus as any).emitAsync(beat.event, contextualEventData);
+
+      const t1 = performance.now();
+      (globalThis as any).__MC_LOG(
+        `🕐 [BEAT EXECUTOR] emitAsync returned for event "${beat.event}" at ${new Date().toISOString()} (perf: ${t1.toFixed(2)}ms)`
+      );
+      (globalThis as any).__MC_LOG(
+        `🕐 [BEAT EXECUTOR] emitAsync took ${(t1 - t0).toFixed(2)}ms`
+      );
+
       // After emit, log diff if payload changed
       const nextSnap = DataBaton.snapshot(executionContext.payload);
       DataBaton.log(

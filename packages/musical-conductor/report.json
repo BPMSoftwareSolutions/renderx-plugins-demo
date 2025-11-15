@@ -1,48 +1,56 @@
 {
-  "sequenceId": "library-drop-canvas-component",
-  "sequenceName": "library drop canvas component",
+  "sequenceId": "canvas-component-create",
+  "sequenceName": "canvas component create",
   "mode": "full-integration",
   "mockServices": [],
   "mockBeats": [],
-  "startTime": 1763127694437,
-  "endTime": 1763127695025,
+  "unmockServices": [],
+  "unmockBeats": [],
+  "startTime": 1763156059781,
+  "endTime": 1763156060369,
   "duration": 588,
   "beats": [
     {
       "beat": 1,
       "event": "resolve-template",
       "duration": 5,
-      "isMocked": false
+      "isMocked": false,
+      "kind": "pure"
     },
     {
       "beat": 2,
       "event": "register-instance",
       "duration": 12,
-      "isMocked": false
+      "isMocked": false,
+      "kind": "io"
     },
     {
       "beat": 3,
       "event": "create-node",
       "duration": 18,
-      "isMocked": false
+      "isMocked": false,
+      "kind": "pure"
     },
     {
       "beat": 4,
       "event": "render-react",
       "duration": 512,
-      "isMocked": false
+      "isMocked": false,
+      "kind": "stage-crew"
     },
     {
       "beat": 5,
       "event": "notify-ui",
       "duration": 3,
-      "isMocked": false
+      "isMocked": false,
+      "kind": "api"
     },
     {
       "beat": 6,
       "event": "enhance-line",
       "duration": 38,
-      "isMocked": false
+      "isMocked": false,
+      "kind": "pure"
     }
   ],
   "totalBeats": 6,
