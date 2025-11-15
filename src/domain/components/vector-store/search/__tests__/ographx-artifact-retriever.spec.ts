@@ -260,7 +260,7 @@ describe('OgraphXArtifactRetriever', () => {
 
       expect(stats.query).toBe('test query');
       expect(stats.resultsCount).toBe(2);
-      expect(stats.averageSimilarity).toBe(0.85);
+      expect(stats.averageSimilarity).toBeCloseTo(0.85, 5);
     });
   });
 });

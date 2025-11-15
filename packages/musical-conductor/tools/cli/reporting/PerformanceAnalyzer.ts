@@ -68,24 +68,24 @@ export class PerformanceAnalyzer {
     slowBeats.forEach(beat => {
       const percentage = ((beat.duration / totalDuration) * 100).toFixed(1);
       recommendations.push(
-        `Beat ${beat.beat} (${beat.event}) is slow: ${beat.duration}ms (${percentage}% of total)`
+        `Beat ${beat.beatNumber} (${beat.event}) is slow: ${beat.duration}ms (${percentage}% of total)`
       );
 
       if (beat.timing === 'after-beat') {
         recommendations.push(
-          `  → Consider changing timing from "after-beat" to "immediate" for beat ${beat.beat}`
+          `  → Consider changing timing from "after-beat" to "immediate" for beat ${beat.beatNumber}`
         );
       }
 
       if (beat.kind === 'stage-crew') {
         recommendations.push(
-          `  → Beat ${beat.beat} is rendering (stage-crew). Consider optimizing React component or using memoization`
+          `  → Beat ${beat.beatNumber} is rendering (stage-crew). Consider optimizing React component or using memoization`
         );
       }
 
       if (beat.kind === 'api') {
         recommendations.push(
-          `  → Beat ${beat.beat} is an API call. Consider caching or parallel execution`
+          `  → Beat ${beat.beatNumber} is an API call. Consider caching or parallel execution`
         );
       }
     });

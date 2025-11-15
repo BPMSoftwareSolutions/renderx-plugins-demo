@@ -31,10 +31,10 @@ export function initConfig(initialConfig?: Record<string, string | undefined>): 
   // Clear existing config
   configStore.clear();
 
-  // Load initial config, filtering out undefined and empty string values
+  // Load initial config, filtering out undefined values
   if (initialConfig) {
     for (const [key, value] of Object.entries(initialConfig)) {
-      if (value !== undefined && value !== '') {
+      if (value !== undefined) {
         configStore.set(key, value);
       }
     }
