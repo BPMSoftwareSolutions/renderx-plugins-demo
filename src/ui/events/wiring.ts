@@ -18,20 +18,21 @@ export type UiEventDef = {
 };
 
 /**
- * Deduplication tracker: prevents the same topic from being published too frequently.
- * Key: topic name, Value: timestamp of last successful publish
- */
-const lastPublishTime: Record<string, number> = {};
-const DEDUP_WINDOW_MS = 150; // Don't allow same topic twice within 150ms
-
-/**
  * Wires UI events based on provided definitions. Returns a cleanup function.
  */
+const DEDUP_WINDOW_MS = 150; // Don't allow same topic twice within 150ms
+
 export function wireUiEvents(defs: UiEventDef[]): () => void {
   const disposers: Array<() => void> = [];
   const pending: UiEventDef[] = [];
 
   const getConductor = () => (window as any).RenderX?.conductor;
+
+  /**
+   * Deduplication tracker (per wiring instance): prevents the same topic from being
+   * published too frequently. Key: topic name, Value: timestamp of last successful publish.
+   */
+  const lastPublishTime: Record<string, number> = {};
 
   /**
    * Check if a topic should be published based on deduplication window.
@@ -41,11 +42,11 @@ export function wireUiEvents(defs: UiEventDef[]): () => void {
     const now = Date.now();
     const lastTime = lastPublishTime[topic] ?? 0;
     const timeSinceLastPublish = now - lastTime;
-    
+
     if (timeSinceLastPublish < DEDUP_WINDOW_MS) {
       return false; // Skip: too soon after last publish
     }
-    
+
     lastPublishTime[topic] = now;
     return true;
   };

@@ -1,17 +1,24 @@
 import { vi } from "vitest";
-vi.mock("@renderx-plugins/host-sdk", async (orig) => {
-  const actual = await (orig as any).importActual?.("@renderx-plugins/host-sdk");
+vi.mock("@renderx-plugins/host-sdk", async (importOriginal) => {
+  const actual: any = await importOriginal();
   return {
     ...actual,
     // Ensure feature flags used by showSelectionOverlay are available
     isFlagEnabled: actual?.isFlagEnabled ?? (() => false),
+    // Provide a test-safe resolveInteraction that never throws
+    resolveInteraction: (key: string) => ({
+      pluginId: "CanvasComponentPlugin",
+      sequenceId: key,
+    }),
     // Drive conductor directly in tests to avoid no-op host router.
     // We bypass the real routing and call the provided conductor directly
     // so resize.move events invoke the canvas-component resize handlers.
     EventRouter: {
+      ...actual?.EventRouter,
       publish: (key: string, payload: any, conductor?: any) => {
         if (!conductor?.play) return;
-        conductor.play("TestPlugin", key, payload);
+        const route = { pluginId: "CanvasComponentPlugin", sequenceId: key };
+        conductor.play(route.pluginId, route.sequenceId, payload);
       },
     },
   } as any;
