@@ -3,7 +3,7 @@
  */
 
 // Function declaration (unused in fixture, but part of test data)
-function greet(_name: string): string {
+function _greet(_name: string): string {
   return `Hello, ${_name}!`;
 }
 
@@ -31,7 +31,7 @@ export class Calculator {
 }
 
 // Const function (unused in fixture, but part of test data)
-const divide = function(_a: number, _b: number): number {
+const _divide = function(_a: number, _b: number): number {
   if (_b === 0) {
     throw new Error("Division by zero");
   }

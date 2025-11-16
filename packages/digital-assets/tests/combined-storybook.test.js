@@ -2,8 +2,7 @@
 const { readFileSync, existsSync } = require('fs');
 const { join } = require('path');
 const { 
-  runCombinedStorybookGenerator,
-  createEnhancedCombinedStorybook 
+  runCombinedStorybookGenerator
 } = require('../dist/combined-storybook-generator');
 
 /**

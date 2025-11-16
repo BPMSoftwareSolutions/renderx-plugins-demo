@@ -24,7 +24,7 @@ const diagnosticReport = generateDiagnosticReport(scene);
 console.log(createDiagnosticSummary(diagnosticReport));
 
 // Render scene with diagnostics
-const { svg, diagnostics } = renderSceneWithDiagnostics(scene);
+const { svg, diagnostics: _diagnostics } = renderSceneWithDiagnostics(scene);
 
 // Save the enhanced SVG
 fs.writeFileSync('samples/event-router-with-containment.svg', svg);
@@ -59,7 +59,7 @@ if (scene.flows && scene.flows.length > 0) {
 }
 
 // Performance metrics
-const endTime = Date.now();
+const _endTime = Date.now();
 console.log(`\n⚡ EventRouter Demo completed successfully!`);
 console.log(`\n📋 Summary of EventRouter Story Demonstrated:`);
 console.log('   🏭 Scene 1: Publisher Origin (Bus leaves depot)');

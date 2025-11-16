@@ -15,7 +15,7 @@ const diagnosticReport = generateDiagnosticReport(scene);
 console.log(createDiagnosticSummary(diagnosticReport));
 
 // Render scene with diagnostics
-const { svg, diagnostics } = renderSceneWithDiagnostics(scene);
+const { svg, diagnostics: _diagnostics } = renderSceneWithDiagnostics(scene);
 
 // Save the enhanced SVG
 fs.writeFileSync('samples/slide-01-with-containment.svg', svg);

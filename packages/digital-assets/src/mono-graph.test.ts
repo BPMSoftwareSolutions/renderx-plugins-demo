@@ -92,7 +92,7 @@ describe('Mono Graph System', () => {
     });
 
     it('should have proper bus travel configuration for each scene', () => {
-      monoGraph.scenes.forEach((scene, index) => {
+      monoGraph.scenes.forEach((scene) => {
         expect(scene.busTravel).toBeDefined();
         expect(scene.busTravel.entryPoint).toBeDefined();
         expect(scene.busTravel.exitPoint).toBeDefined();

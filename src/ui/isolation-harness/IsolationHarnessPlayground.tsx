@@ -87,8 +87,8 @@ export const IsolationHarnessPlayground: React.FC = () => {
     const beatTimings: Map<number, { start: number; end: number }> = new Map();
     let inputData: any = null;
     let totalDuration = 0;
-    let sequenceStartTime: number | null = null;
-    let sequenceEndTime: number | null = null;
+  let sequenceStartTime: number | null = null;
+  let _sequenceEndTime: number | null = null;
 
     for (const line of lines) {
       // Extract Canvas Component Create sequence lines only
@@ -190,9 +190,9 @@ export const IsolationHarnessPlayground: React.FC = () => {
     setRunning(true);
 
     const startTime = Date.now();
-    const logs: ExecutionLog[] = [];
-    const kvOps: Array<[string, any]> = [];
-    const publishedEvents: Array<{ topic: string; data: any }> = [];
+  const logs: ExecutionLog[] = [];
+  const kvOps: Array<[string, any, any?]> = [];
+  const publishedEvents: Array<{ topic: string; data: any }> = [];
 
     try {
       // Execute each beat

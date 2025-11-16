@@ -141,6 +141,7 @@ export class GenericSceneGenerator {
         timestamp: new Date().toISOString(),
         parameters: parameters,
         parametersUsed: Object.keys(parameters).length,
+        tilesGenerated: tilesGenerated,
         parametersAvailable: Object.keys(template.parameters).length
       },
       scenes: [{

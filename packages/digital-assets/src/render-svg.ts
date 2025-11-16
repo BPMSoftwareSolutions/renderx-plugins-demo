@@ -92,7 +92,7 @@ function flattenWithContainment(nodes: Node[], parentAt = {x:0,y:0}): (Node & { 
 }
 
 // Legacy flatten function for backward compatibility
-function flatten(nodes: Node[], parentAt = {x:0,y:0}): (Node & { _abs: {x:number;y:number} })[] {
+function _flatten(nodes: Node[], parentAt = {x:0,y:0}): (Node & { _abs: {x:number;y:number} })[] {
   const out: any[] = [];
   for (const n of nodes) {
     const at = "at" in n && n.at ? { x: parentAt.x + n.at.x, y: parentAt.y + n.at.y } : parentAt;
@@ -100,11 +100,11 @@ function flatten(nodes: Node[], parentAt = {x:0,y:0}): (Node & { _abs: {x:number
     out.push(nn);
     if ((n.kind === "group" || n.kind === "boundary") && n.children?.length) {
       // For boundary nodes, apply grid snapping to children
-      if (n.kind === "boundary" && n.grid) {
+        if (n.kind === "boundary" && n.grid) {
         const snappedChildren = n.children.map(child => snapToGrid(child, n.grid!));
-        out.push(...flatten(snappedChildren, at));
+        out.push(..._flatten(snappedChildren, at));
       } else {
-        out.push(...flatten(n.children, at));
+        out.push(..._flatten(n.children, at));
       }
     }
   }

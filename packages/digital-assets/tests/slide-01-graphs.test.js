@@ -105,7 +105,7 @@ describe('Slide 01 Graph Specifications', () => {
         });
 
         test('generated SVG file should match programmatic generation', () => {
-          const generatedSVG = graphToSVG(graph);
+          const _generatedSVG = graphToSVG(graph);
           const fileSVG = fs.readFileSync(svgPath, 'utf-8');
           
           // Compare key structural elements (allowing for minor formatting differences)

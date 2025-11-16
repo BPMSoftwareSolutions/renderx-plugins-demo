@@ -1,0 +1,19 @@
+﻿
+> renderx-plugins-demo@0.1.0 lint
+> eslint .
+
+
+C:\source\repos\bpm\internal\renderx-plugins-demo\packages\digital-assets\tests\combined-storybook.test.js
+  6:3  warning  'createEnhancedCombinedStorybook' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\source\repos\bpm\internal\renderx-plugins-demo\packages\digital-assets\tests\slide-01-graphs.test.js
+  108:17  warning  'generatedSVG' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\source\repos\bpm\internal\renderx-plugins-demo\packages\digital-assets\tests\slide-driven-composition.validation.test.js
+  39:17  warning  'subIdPattern' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\source\repos\bpm\internal\renderx-plugins-demo\src\ui\isolation-harness\IsolationHarnessPlayground.tsx
+  91:9  warning  'sequenceEndTime' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+Γ£û 4 problems (0 errors, 4 warnings)
+

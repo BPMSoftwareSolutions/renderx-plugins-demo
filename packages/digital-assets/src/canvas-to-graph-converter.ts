@@ -77,6 +77,7 @@ function createSceneConfig(component: CanvasComponent, sceneNumber: number): Sce
   
   return {
     id: `event-router-scene-${sceneNumber}-${component.id}`,
+    title,
     canvas: { 
       width: component.layout.width, 
       height: component.layout.height 
@@ -105,7 +106,7 @@ function createSceneConfig(component: CanvasComponent, sceneNumber: number): Sce
         rawSvg: "USE_DEFS_RAWSVG"
       }
     ]
-  };
+  } as unknown as Scene;
 }
 
 function saveFile(filename: string, content: string): void {

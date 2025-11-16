@@ -306,6 +306,7 @@ export function createMonoGraph(
     },
     connections,
     timeline: {
+      ...timeline,
       totalDuration,
       loop: options.loop || true,
       autoPlay: true

@@ -1,7 +1,7 @@
 // mono-graph.test.js
 const { readFileSync, existsSync } = require('fs');
 const { join } = require('path');
-const { createMonoGraph, renderMonoGraph, saveMonoGraph } = require('../dist/mono-graph-generator');
+const { createMonoGraph, renderMonoGraph } = require('../dist/mono-graph-generator');
 
 /**
  * Comprehensive tests for the mono graph system
@@ -90,7 +90,7 @@ describe('Mono Graph System', () => {
     });
 
     test('should have proper bus travel configuration for each scene', () => {
-      monoGraph.scenes.forEach((scene, index) => {
+      monoGraph.scenes.forEach((scene) => {
         expect(scene.busTravel).toBeDefined();
         expect(scene.busTravel.entryPoint).toBeDefined();
         expect(scene.busTravel.exitPoint).toBeDefined();

@@ -1,5 +1,5 @@
 // combined-storybook-types.ts
-import type { Scene, SceneTimingConfig } from './scene';
+import type { SceneTimingConfig } from './scene';
 
 /**
  * Enhanced scene information for combined storybook with animation coordination

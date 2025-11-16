@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { applySceneAnimationFromConfig, loadAnimationConfig } = require('../dist/animation-orchestrator');
+const { applySceneAnimationFromConfig } = require('../dist/animation-orchestrator');
 
 const SAMPLES_DIR = path.join(__dirname, '..', 'samples');
 const DATA_DIR = path.join(__dirname, '..', 'data');

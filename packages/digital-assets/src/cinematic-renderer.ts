@@ -90,7 +90,6 @@ export function createCinematicPresentation(monoGraph: MonoGraph): CinematicPres
 function generateTransitionCSS(scenes: CinematicScene[]): string {
   const transitions = scenes.map((scene, index) => {
     const { transition } = scene.cinematic;
-    const nextIndex = (index + 1) % scenes.length;
     
     let transformStart = '';
     let transformEnd = '';

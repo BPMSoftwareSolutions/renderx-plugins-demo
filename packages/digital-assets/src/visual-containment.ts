@@ -1,5 +1,5 @@
 // visual-containment.ts
-import type { Node, BoundaryPolicy } from './scene';
+import type { Node } from './scene';
 import type { Rect } from './boundary-enforcement';
 import { rectOfBoundary, DEFAULT_BOUNDARY_POLICY } from './boundary-enforcement';
 

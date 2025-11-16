@@ -89,7 +89,7 @@ export default {
                 }
               }
             }
-          } catch (_error) {
+          } catch {
             // Silently skip invalid manifests
           }
         }

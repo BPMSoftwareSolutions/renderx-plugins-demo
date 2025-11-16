@@ -319,7 +319,7 @@ export class ConfigLoader {
       return files
         .filter(file => file.endsWith(".json"))
         .map(file => path.basename(file, ".json"));
-    } catch (error) {
+    } catch {
       return [];
     }
   }

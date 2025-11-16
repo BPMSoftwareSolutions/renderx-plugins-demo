@@ -36,7 +36,7 @@ describe('Slide-driven composition validation', () => {
           const expectedHref = `${sub.svg.replace('slide-01-manifest/', '')}#${sub.id}`;
 
           const hasTransform = sub.compose && typeof sub.compose.transform === 'string';
-          const subIdPattern = new RegExp(`<g[^>]*data-sub-id=\"${escapeRegExp(sub.id)}\"[^>]*>`);
+          const _subIdPattern = new RegExp(`<g[^>]*data-sub-id=\"${escapeRegExp(sub.id)}\"[^>]*>`);
 
           if (hasTransform) {
             const patternHrefThenTransform = new RegExp(`<use[\\s\\S]*?xlink:href=\"${escapeRegExp(expectedHref)}\"[\\s\\S]*?transform=\"${escapeRegExp(sub.compose.transform)}\"[\\s\\S]*?>`);
