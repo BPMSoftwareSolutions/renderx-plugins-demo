@@ -31,6 +31,20 @@ export interface EventDebugInfo {
   subscriptionCounts: Record<string, number>;
 }
 
+
+function emitHostDiagnosticFromEventBus(event: { level: string; message: string; data?: any }) {
+  try {
+    const anyGlobal = globalThis as any;
+    const diagnostics = anyGlobal?.RenderX?.diagnostics;
+    if (diagnostics && typeof diagnostics.emitDiagnostic === 'function') {
+      diagnostics.emitDiagnostic({
+        source: 'EventBus',
+        ...event,
+      });
+    }
+  } catch {}
+}
+
 /**
  * Base EventBus Class
  */
@@ -218,6 +232,11 @@ export class EventBus {
     (globalThis as any).__MC_LOG(
       `🕐 [EVENTBUS] emitAsync CALLED for "${eventName}" at ${new Date().toISOString()} (perf: ${t0.toFixed(2)}ms)`
     );
+    emitHostDiagnosticFromEventBus({
+      level: 'debug',
+      message: `emitAsync("${eventName}") called`,
+      data: { eventName, data },
+    });
 
     // Track event counts
     this.eventCounts[eventName] = (this.eventCounts[eventName] || 0) + 1;
@@ -226,6 +245,11 @@ export class EventBus {
       (globalThis as any).__MC_LOG(
         `🕐 [EVENTBUS] No subscribers for "${eventName}", returning immediately`
       );
+      emitHostDiagnosticFromEventBus({
+        level: 'debug',
+        message: `emitAsync("${eventName}") no subscribers`,
+        data: { eventName, data },
+      });
       return;
     }
 
@@ -287,6 +311,14 @@ export class EventBus {
     (globalThis as any).__MC_LOG(
       `🕐 [EVENTBUS] Total emitAsync execution for "${eventName}" took ${(t4 - t0).toFixed(2)}ms`
     );
+    emitHostDiagnosticFromEventBus({
+      level: 'debug',
+      message: `emitAsync("${eventName}") completed`,
+      data: {
+        eventName,
+        durationMs: t4 - t0,
+      },
+    });
   }
 
   /**

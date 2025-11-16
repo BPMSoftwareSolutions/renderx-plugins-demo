@@ -14,6 +14,15 @@ import { recordTelemetryEvent, getPlugins, enablePlugin, disablePlugin } from ".
 import { listComponents, getComponentById, onInventoryChanged } from "./domain/components/inventory/inventory.service";
 import { cssRegistry } from "./domain/css/cssRegistry.facade";
 import { initCLIBridge } from "./infrastructure/cli-bridge";
+import {
+  enableDiagnostics,
+  disableDiagnostics,
+  isDiagnosticsEnabled,
+  addDiagnosticListener,
+  emitDiagnostic,
+} from "./ui/diagnostics/eventTap";
+import { attachConsoleDiagnostics } from "./ui/diagnostics/consoleListener";
+
 declare const process: { env?: Record<string, string | undefined> } | undefined;
 
 // Declare Vite-injected config constants
@@ -22,11 +31,11 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
 
 (async () => {
   const conductor = await initConductor();
-  
+
   // Make conductor globally available to prevent re-initialization
   (window as any).renderxGlobalConductor = conductor;
   console.log('🎼 Global conductor instance cached for reuse');
-  
+
   await Promise.all([
     registerAllSequences(conductor),
     initInteractionManifest(),
@@ -57,6 +66,47 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
 	  }
 
   (window as any).RenderX = (window as any).RenderX || {};
+
+  // Diagnostics: expose host-side diagnostics tap and dev helpers
+  try {
+    const existingDiagnostics = (window as any).RenderX.diagnostics || {};
+    const diagnosticsApi = {
+      ...existingDiagnostics,
+      enable: enableDiagnostics,
+      disable: disableDiagnostics,
+      isEnabled: isDiagnosticsEnabled,
+      emitDiagnostic,
+      addListener: addDiagnosticListener,
+    };
+    (window as any).RenderX.diagnostics = diagnosticsApi;
+
+    const devFlag =
+      (window as any).__RENDERX_DEV_DIAGNOSTICS__ === true ||
+      (typeof process !== 'undefined' &&
+        process.env?.RENDERX_DEV_DIAGNOSTICS === '1');
+
+    // Auto-enable diagnostics in Vite dev mode for easier debugging
+    const isHotModule = !!(import.meta as any).hot;
+    const shouldEnableDiagnostics = devFlag || isHotModule;
+
+    if (shouldEnableDiagnostics) {
+      enableDiagnostics();
+      attachConsoleDiagnostics();
+
+      if ((import.meta as any).hot) {
+        const anyWindow = window as any;
+        if (!anyWindow.__RENDERX_DIAG_HMR_ATTACHED) {
+          anyWindow.__RENDERX_DIAG_HMR_ATTACHED = true;
+          addDiagnosticListener((event: any) => {
+            try {
+              ((import.meta as any).hot as any).send('diagnostics:event', event);
+            } catch {}
+          });
+        }
+      }
+    }
+  } catch {}
+
   // Expose the initialized conductor globally so SDK/hooks/events resolve the same instance
   // Wrap conductor.play to report sequence execution to the .NET telemetry API without blocking sequence start
   try {

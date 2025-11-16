@@ -116,6 +116,43 @@ export default {
       name: 'conductor-websocket',
       configureServer(server) {
         const wss = new WebSocketServer({ noServer: true });
+        const diagnosticClients = new Set();
+
+        // Forward diagnostics events from browser HMR channel to any subscribed CLI clients
+        server.ws.on('diagnostics:event', (event) => {
+          try {
+            diagnosticClients.forEach((client) => {
+              try {
+                const filters = (client).__diagnosticsFilters || {};
+                const level = (event && event.level) || undefined;
+                const source = (event && event.source) || undefined;
+                const data = (event && event.data) || {};
+                const topic = (data && (data.topic || data.eventName)) || '';
+
+                if (filters.level && level && filters.level !== level) {
+                  return;
+                }
+                if (filters.source && source && filters.source !== source) {
+                  return;
+                }
+                if (filters.topic && typeof topic === 'string' && !topic.includes(filters.topic)) {
+                  return;
+                }
+
+                client.send(
+                  JSON.stringify({
+                    type: 'diagnostics:event',
+                    event,
+                  }),
+                );
+              } catch (err) {
+                console.error('❌ Failed to send diagnostics event to CLI client', err);
+              }
+            });
+          } catch (err) {
+            console.error('❌ Diagnostics forwarding error', err);
+          }
+        });
 
         server.httpServer?.on('upgrade', (request, socket, head) => {
           if (request.url === '/conductor-ws') {
@@ -142,6 +179,18 @@ export default {
               const message = JSON.parse(data.toString());
               console.log('📨 Received from CLI:', message);
 
+              if (message.type === 'diagnostics:subscribe') {
+                (ws).__diagnosticsFilters = message.filters || {};
+                diagnosticClients.add(ws);
+                ws.send(
+                  JSON.stringify({
+                    type: 'diagnostics:subscribed',
+                    id: message.id,
+                  }),
+                );
+                return;
+              }
+
               // Broadcast to all browser clients
               server.ws.send('conductor:cli-command', message);
 
@@ -157,6 +206,7 @@ export default {
 
           ws.on('close', () => {
             console.log('🎼 CLI disconnected from conductor WebSocket');
+            diagnosticClients.delete(ws);
             // Clean up response handler
             server.ws.off('conductor:cli-response', responseHandler);
           });

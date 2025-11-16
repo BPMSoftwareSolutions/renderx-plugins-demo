@@ -1,4 +1,5 @@
 import { EventRouter } from "@renderx-plugins/host-sdk";
+import { emitDiagnostic } from "../diagnostics/eventTap";
 
 export type UiEventDef = {
   id: string;
@@ -17,6 +18,13 @@ export type UiEventDef = {
 };
 
 /**
+ * Deduplication tracker: prevents the same topic from being published too frequently.
+ * Key: topic name, Value: timestamp of last successful publish
+ */
+const lastPublishTime: Record<string, number> = {};
+const DEDUP_WINDOW_MS = 150; // Don't allow same topic twice within 150ms
+
+/**
  * Wires UI events based on provided definitions. Returns a cleanup function.
  */
 export function wireUiEvents(defs: UiEventDef[]): () => void {
@@ -24,6 +32,23 @@ export function wireUiEvents(defs: UiEventDef[]): () => void {
   const pending: UiEventDef[] = [];
 
   const getConductor = () => (window as any).RenderX?.conductor;
+
+  /**
+   * Check if a topic should be published based on deduplication window.
+   * Returns true if enough time has passed since last publish.
+   */
+  const shouldPublish = (topic: string): boolean => {
+    const now = Date.now();
+    const lastTime = lastPublishTime[topic] ?? 0;
+    const timeSinceLastPublish = now - lastTime;
+    
+    if (timeSinceLastPublish < DEDUP_WINDOW_MS) {
+      return false; // Skip: too soon after last publish
+    }
+    
+    lastPublishTime[topic] = now;
+    return true;
+  };
 
   const tryAttach = (def: UiEventDef): boolean => {
     const conductor = getConductor();
@@ -69,7 +94,24 @@ export function wireUiEvents(defs: UiEventDef[]): () => void {
         }
         const conductor = getConductor();
         if (!conductor) return;
-        await EventRouter.publish(def.publish.topic, def.publish.payload ?? {}, conductor);
+
+        // Check deduplication: skip if same topic published too recently
+        const topic = def.publish.topic;
+        if (!shouldPublish(topic)) {
+          return; // Duplicate publish within debounce window, skip
+        }
+
+        const payload = def.publish.payload ?? {};
+        // Emit diagnostic event before publishing
+        emitDiagnostic({
+          timestamp: new Date().toISOString(),
+          level: "debug",
+          source: "EventRouter",
+          message: `Topic '${topic}' published from UI event '${def.event}'`,
+          data: { topic, payload, eventId: def.id },
+        });
+
+        await EventRouter.publish(topic, payload, conductor);
       } catch {}
     };
 

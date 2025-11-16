@@ -76,6 +76,7 @@
     "conductor:play": "node tools/cli/sequence-player-cli.cjs play",
     "conductor:play:list": "node tools/cli/sequence-player-cli.cjs list",
     "conductor:play:parse": "node tools/cli/sequence-player-cli.cjs parse-log",
+    "conductor:observe": "node tools/cli/sequence-player-cli.cjs observe",
     "shortcut-demo": "node -r ts-node/register tools/cli/shortcut-demo.ts",
     "queue": "npm run knowledge -- queue",
     "queue-demo": "node -r ts-node/register tools/cli/queue-demo.ts"

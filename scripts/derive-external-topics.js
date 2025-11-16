@@ -419,21 +419,21 @@ function deriveInteractionFromSequence(seq) {
 
 function extractTopicsFromSequenceBeats(seq) {
   const topics = [];
-  
+
   if (!seq.sequence?.movements) return topics;
-  
+
   // Check if sequence has routeToBase configuration
-  const routeToBase = seq.sequence?.topicMapping?.routeToBase || 
+  const routeToBase = seq.sequence?.topicMapping?.routeToBase ||
                      (seq.sequence?.topicTransform?.routeToBase);
-  
+
   for (const movement of seq.sequence.movements) {
     if (!movement.beats) continue;
-    
+
     for (const beat of movement.beats) {
       if (beat.event) {
         // Convert colon-based event names to dot notation topic names
         let topicName = beat.event.replace(/:/g, '.');
-        
+
         // Check if sequence declares beat event transformations
         if (seq.sequence?.beatEventTransforms) {
           for (const transform of seq.sequence.beatEventTransforms) {
@@ -451,17 +451,19 @@ function extractTopicsFromSequenceBeats(seq) {
           // They will be handled by the main sequence topic
           continue;
         }
-        
+
         topics.push({
           name: topicName,
           notes: `Auto-derived from beat event "${beat.event}" in ${seq.file}`,
           pluginId: seq.pluginId,
-          sequenceId: seq.sequenceId
+          sequenceId: seq.sequenceId,
+          // Preserve beat.kind so we can treat pure beats as notify-only topics
+          kind: beat.kind || 'stage-crew'
         });
       }
     }
   }
-  
+
   return topics;
 }
 
@@ -615,8 +617,10 @@ export async function generateExternalTopicsCatalog() {
     const beatTopics = extractTopicsFromSequenceBeats(seq);
     for (const beatTopic of beatTopics) {
       if (!topics[beatTopic.name]) {
+        const isNotifyOnly = beatTopic.kind === "pure";
         topics[beatTopic.name] = {
-          routes: [{ pluginId: beatTopic.pluginId, sequenceId: beatTopic.sequenceId }],
+          // Pure beats publish notification topics only; they should not route back into sequences
+          routes: isNotifyOnly ? [] : [{ pluginId: beatTopic.pluginId, sequenceId: beatTopic.sequenceId }],
           payloadSchema: { type: "object" },
           visibility: "public",
           notes: beatTopic.notes

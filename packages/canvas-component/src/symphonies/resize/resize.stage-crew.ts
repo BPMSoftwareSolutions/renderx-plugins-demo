@@ -195,11 +195,40 @@ export const updateSize = (data: any, ctx?: any) => {
     if (height <= cfg.minH) top = startTop + (startHeight - cfg.minH);
   }
 
+  // Avoid writing inline styles if the rounded values are unchanged -
+  // this prevents needless layout mutations which can re-trigger
+  // resize/move handling and create feedback loops.
+  const rLeft = Math.round(left);
+  const rTop = Math.round(top);
+  const rWidth = Math.round(width);
+  const rHeight = Math.round(height);
+
+  const currLeft = parseFloat(el.style.left || "");
+  const currTop = parseFloat(el.style.top || "");
+  const currWidth = parseFloat(el.style.width || "");
+  const currHeight = parseFloat(el.style.height || "");
+
+  const stylesAreFinite =
+    Number.isFinite(currLeft) &&
+    Number.isFinite(currTop) &&
+    Number.isFinite(currWidth) &&
+    Number.isFinite(currHeight);
+
+  if (stylesAreFinite && currLeft === rLeft && currTop === rTop && currWidth === rWidth && currHeight === rHeight) {
+    // Nothing to change in inline styles. Still populate payload so
+    // callers see the current layout, then return early.
+    if (ctx && ctx.payload) {
+      ctx.payload.updatedLayout = { x: left, y: top, width, height };
+      ctx.payload.elementId = id;
+    }
+    return { id, left, top, width, height };
+  }
+
   el.style.position = "absolute";
-  el.style.left = `${Math.round(left)}px`;
-  el.style.top = `${Math.round(top)}px`;
-  el.style.width = `${Math.round(width)}px`;
-  el.style.height = `${Math.round(height)}px`;
+  el.style.left = `${rLeft}px`;
+  el.style.top = `${rTop}px`;
+  el.style.width = `${rWidth}px`;
+  el.style.height = `${rHeight}px`;
 
   // Proportionally scale rx-line endpoints when the element is resized
   try {

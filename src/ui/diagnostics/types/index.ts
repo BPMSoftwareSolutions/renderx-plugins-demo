@@ -73,3 +73,10 @@ export type {
   HistoryStats
 } from './sequence-execution.types';
 
+// Diagnostics Event Types
+export type {
+  DiagnosticEvent,
+  DiagnosticLevel,
+  DiagnosticSource,
+} from './diagnostics.types';
+

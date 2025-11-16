@@ -1,6 +1,15 @@
 import { getCanvasRect } from "./select.overlay.dom.stage-crew";
 import { resolveInteraction, EventRouter } from "@renderx-plugins/host-sdk";
 
+// Import diagnostics from the host (will be available at runtime)
+function getDiagnosticsEmitter() {
+  try {
+    return (window as any)?.RenderX?.diagnostics?.emitDiagnostic;
+  } catch {
+    return null;
+  }
+}
+
 function readNumericPx(value: string): number | null {
   const n = parseFloat(value || "");
   return Number.isFinite(n) ? n : null;
@@ -53,6 +62,57 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
     const startX = e.clientX;
     const startY = e.clientY;
 
+	    const clamp = (value: number, min: number) =>
+	      value < min ? min : value;
+
+	    let lastMoveRect:
+	      | { left: number; top: number; width: number; height: number }
+	      | null = null;
+
+	    const computeMoveRect = (dx: number, dy: number) => {
+	      let left = startLeft;
+	      let top = startTop;
+	      let width = startWidth;
+	      let height = startHeight;
+
+	      const dxNumber = Number(dx);
+	      const dyNumber = Number(dy);
+	      if (!Number.isFinite(dxNumber) || !Number.isFinite(dyNumber)) {
+	        return {
+	          left: startLeft,
+	          top: startTop,
+	          width: startWidth,
+	          height: startHeight,
+	        };
+	      }
+
+	      const dirStr = String(dir);
+	      const safeDx = dxNumber;
+	      const safeDy = dyNumber;
+
+	      if (dirStr.includes("e")) {
+	        width = clamp(startWidth + safeDx, cfg.minW);
+	      }
+	      if (dirStr.includes("s")) {
+	        height = clamp(startHeight + safeDy, cfg.minH);
+	      }
+	      if (dirStr.includes("w")) {
+	        const nextWidth = clamp(startWidth - safeDx, cfg.minW);
+	        const delta = startWidth - nextWidth;
+	        width = nextWidth;
+	        left = startLeft + delta;
+	      }
+	      if (dirStr.includes("n")) {
+	        const nextHeight = clamp(startHeight - safeDy, cfg.minH);
+	        const delta = startHeight - nextHeight;
+	        height = nextHeight;
+	        top = startTop + delta;
+	      }
+
+	      return { left, top, width, height };
+	    };
+
+
     const call = (
       dx: number,
       dy: number,
@@ -66,19 +126,58 @@ export function attachResizeHandlers(ov: HTMLDivElement, conductor?: any) {
       }
 
       const base = { id, dir, startLeft, startTop, startWidth, startHeight };
-      const payload =
-        event === "move"
-          ? { ...base, dx, dy, phase: "move" }
-          : { ...base, phase: event };
-      const key =
-        event === "start"
-          ? "canvas.component.resize.start"
-          : event === "end"
-          ? "canvas.component.resize.end"
-          : "canvas.component.resize.move";
+      let payload: any;
+      let key: string;
+
+      if (event === "move") {
+        const geom = computeMoveRect(dx, dy);
+        const rounded = {
+          left: Math.round(geom.left),
+          top: Math.round(geom.top),
+          width: Math.round(geom.width),
+          height: Math.round(geom.height),
+        };
+
+        if (
+          lastMoveRect &&
+          lastMoveRect.left === rounded.left &&
+          lastMoveRect.top === rounded.top &&
+          lastMoveRect.width === rounded.width &&
+          lastMoveRect.height === rounded.height
+        ) {
+          // Geometry has not changed since the last emitted move; skip publishing
+          return;
+        }
+
+        lastMoveRect = rounded;
+        payload = { ...base, dx, dy, phase: "move" };
+        key = "canvas.component.resize.move";
+      } else {
+        if (event === "end") {
+          // Reset cache at the end of a drag so the next drag starts clean
+          lastMoveRect = null;
+        }
+        payload = { ...base, phase: event };
+        key =
+          event === "start"
+            ? "canvas.component.resize.start"
+            : "canvas.component.resize.end";
+      }
 
       try {
         EventRouter.publish(key, payload, conductor);
+
+        // Emit diagnostic event for this publish
+        const emitDiagnostic = getDiagnosticsEmitter();
+        if (emitDiagnostic) {
+          emitDiagnostic({
+            timestamp: new Date().toISOString(),
+            level: "debug",
+            source: "EventRouter",
+            message: `Topic '${key}' published from resize handler`,
+            data: { topic: key, payload },
+          });
+        }
       } catch {
         // Fallback to direct interaction routing if EventRouter fails
         const r = resolveInteraction(key);

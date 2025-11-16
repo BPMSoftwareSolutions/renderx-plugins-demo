@@ -88,20 +88,27 @@ describe('Topics manifest guardrails', () => {
     // Both should have routes to the same plugin
     const canonicalRoutes = Array.isArray(topics['canvas.component.select.svg.node.requested']?.routes) ? topics['canvas.component.select.svg.node.requested'].routes : [];
     const aliasRoutes = Array.isArray(topics['canvas.component.select.svg-node.requested']?.routes) ? topics['canvas.component.select.svg-node.requested'].routes : [];
-    
+
     expect(canonicalRoutes.length).toBeGreaterThan(0);
     expect(aliasRoutes.length).toBeGreaterThan(0);
-    
+
     // Both should route to CanvasComponentSvgNodeSelectionPlugin
     const canonicalPluginIds = canonicalRoutes.map((r: any) => r?.pluginId).filter(Boolean);
     const aliasPluginIds = aliasRoutes.map((r: any) => r?.pluginId).filter(Boolean);
-    
+
     expect(canonicalPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
     expect(aliasPluginIds).toContain('CanvasComponentSvgNodeSelectionPlugin');
-    
+
     // Alias should be marked as such in notes
     expect(topics['canvas.component.select.svg-node.requested']?.notes).toContain('compatibility alias');
   });
+  it('treats canvas.component.selections.cleared as notify-only to avoid deselect loops', () => {
+    const topicKey = 'canvas.component.selections.cleared';
+    expect(keys).toContain(topicKey);
+    const routes = Array.isArray(topics[topicKey]?.routes) ? topics[topicKey].routes : [];
+    expect(routes.length).toBe(0);
+  });
+
 
   it.skip('plugin-manifest contains ControlPanelPlugin (source of truth for runtime)', () => {
     const candidates = [

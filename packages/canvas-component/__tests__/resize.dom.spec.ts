@@ -3,15 +3,15 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
   const actual = await (orig as any).importActual?.("@renderx-plugins/host-sdk");
   return {
     ...actual,
+    // Ensure feature flags used by showSelectionOverlay are available
+    isFlagEnabled: actual?.isFlagEnabled ?? (() => false),
+    // Drive conductor directly in tests to avoid no-op host router.
+    // We bypass the real routing and call the provided conductor directly
+    // so resize.move events invoke the canvas-component resize handlers.
     EventRouter: {
       publish: (key: string, payload: any, conductor?: any) => {
-        // Drive conductor directly in tests to avoid no-op host router
-        if (conductor?.play) {
-          try {
-            const route = (actual as any).resolveInteraction?.(key) ?? { pluginId: "noop", sequenceId: key };
-            conductor.play(route.pluginId, route.sequenceId, payload);
-          } catch {}
-        }
+        if (!conductor?.play) return;
+        conductor.play("TestPlugin", key, payload);
       },
     },
   } as any;
@@ -19,9 +19,9 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
 
 /* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
-import { handlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
-import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
-import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.stage-crew.ts";
+import { handlers } from "../src/symphonies/create/create.symphony";
+import { showSelectionOverlay } from "../src/symphonies/select/select.stage-crew";
+import { handlers as resizeHandlers } from "../src/symphonies/resize/resize.stage-crew";
 
 function makeTemplate() {
   return {
@@ -48,7 +48,7 @@ describe("canvas-component resize (DOM-only)", () => {
     document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';
   });
 
-  it.skip("resizes the element via SE handle drag", () => {
+  it("resizes the element via SE handle drag", () => {
     const ctx: any = makeCtx();
     const template = makeTemplate();
 
@@ -77,11 +77,88 @@ describe("canvas-component resize (DOM-only)", () => {
     expect((el as HTMLElement).style.height).toBe("50px");
 
     // Start drag near bottom-right
-    dispatchMouse(se, "mousedown", { clientX: 200, clientY: 200, button: 0 });
+    dispatchMouse(se, "mousedown", {
+      clientX: 200,
+      clientY: 200,
+      button: 0,
+    });
     // Move mouse by +20,+30
-    dispatchMouse(document, "mousemove", { clientX: 220, clientY: 230 });
+    dispatchMouse(document, "mousemove", {
+      clientX: 220,
+      clientY: 230,
+    });
     // End
-    dispatchMouse(document, "mouseup", { clientX: 220, clientY: 230 });
+    dispatchMouse(document, "mouseup", {
+      clientX: 220,
+      clientY: 230,
+    });
+
+    expect((el as HTMLElement).style.width).toBe("120px");
+    expect((el as HTMLElement).style.height).toBe("80px");
+  });
+
+  it("emits a single resize.move for repeated mousemove at same geometry", () => {
+    const ctx: any = makeCtx();
+    const template = makeTemplate();
+
+    handlers.resolveTemplate({ component: { template } } as any, ctx);
+    handlers.createNode({ position: { x: 10, y: 20 } } as any, ctx);
+
+    const id = ctx.payload.nodeId;
+    const el = document.getElementById(id)!;
+
+    const conductor = {
+      play: (_pluginId: string, _seqId: string, payload: any) => {
+        resizeHandlers.updateSize?.(payload, {});
+      },
+    };
+
+    showSelectionOverlay({ id }, { conductor });
+
+    const overlay = document.getElementById("rx-selection-overlay")!;
+    const se = overlay.querySelector(".rx-handle.se")!;
+
+    const spy = vi.spyOn(resizeHandlers, "updateSize");
+
+    const originalRaf = (globalThis as any).requestAnimationFrame;
+    const originalCancelRaf = (globalThis as any).cancelAnimationFrame;
+
+    (globalThis as any).requestAnimationFrame = (
+      cb: FrameRequestCallback
+    ) => {
+      cb(performance.now() as any);
+      return 1 as any;
+    };
+    (globalThis as any).cancelAnimationFrame = () => {};
+
+    try {
+      dispatchMouse(se, "mousedown", {
+        clientX: 200,
+        clientY: 200,
+        button: 0,
+      });
+
+      for (let i = 0; i < 3; i++) {
+        dispatchMouse(document, "mousemove", {
+          clientX: 220,
+          clientY: 230,
+        });
+      }
+
+      dispatchMouse(document, "mouseup", {
+        clientX: 220,
+        clientY: 230,
+      });
+
+      const moveCalls = spy.mock.calls.filter(
+        ([payload]) => payload?.phase === "move"
+      );
+      expect(moveCalls.length).toBe(1);
+    } finally {
+      (globalThis as any).requestAnimationFrame = originalRaf;
+      (globalThis as any).cancelAnimationFrame = originalCancelRaf;
+      spy.mockRestore();
+    }
 
     expect((el as HTMLElement).style.width).toBe("120px");
     expect((el as HTMLElement).style.height).toBe("80px");

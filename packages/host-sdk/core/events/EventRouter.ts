@@ -30,6 +30,20 @@ function debounce(fn: Function, ms: number) {
 
 const __publishStack: string[] = [];
 
+
+function emitHostDiagnosticFromEventRouter(event: { level: string; message: string; data?: any }) {
+	try {
+		const anyGlobal = globalThis as any;
+		const diagnostics = anyGlobal?.RenderX?.diagnostics;
+		if (diagnostics && typeof diagnostics.emitDiagnostic === 'function') {
+			diagnostics.emitDiagnostic({
+				source: 'EventRouter',
+				...event,
+			});
+		}
+	} catch {}
+}
+
 export const EventRouter = {
 	async init() { await initTopicsManifest(); },
 
@@ -59,7 +73,7 @@ export const EventRouter = {
 			if (globalGetTopicDef) {
 				def = globalGetTopicDef(topic);
 				if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`used_global_getTopicDef(${topic}): ${!!def}`);
-				try { 
+				try {
 					if ((globalThis as any).__MC_LOG) {
 						(globalThis as any).__MC_LOG(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`);
 					} else {
@@ -68,34 +82,50 @@ export const EventRouter = {
 				} catch {}
 			}
 		}
-		if (!def) { 
-			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`no_topic_def(${topic})`); 
-			try { 
+		if (!def) {
+			if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`no_topic_def(${topic})`);
+			try {
 				if ((globalThis as any).__MC_WARN) {
 					(globalThis as any).__MC_WARN(`[EventRouter] No topic definition found for '${topic}'`);
 				} else {
 					(globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || console.warn(`[EventRouter] No topic definition found for '${topic}'`);
 				}
-			} catch {}; 
-			throw new Error(`Unknown topic: ${topic}`); 
+			} catch {};
+			emitHostDiagnosticFromEventRouter({
+				level: 'warn',
+				message: `No topic definition found for '${topic}'`,
+				data: { topic, payload },
+			});
+			throw new Error(`Unknown topic: ${topic}`);
 		}
 		if (typeof window !== 'undefined') (window as any).__DEBUG_EVENTROUTER.push(`found_topic_def(${topic}): routes=${def.routes?.length || 0}`);
-		try { 
+		try {
 			if ((globalThis as any).__MC_LOG) {
 				(globalThis as any).__MC_LOG(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
 			} else {
 				(globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || console.log(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
 			}
+			emitHostDiagnosticFromEventRouter({
+				level: 'debug',
+				message: `publish(${topic})`,
+				data: {
+					topic,
+					payload,
+					routes: def.routes?.length || 0,
+					hasThrottle: !!(def.perf?.throttleMs),
+					hasDebounce: !!(def.perf?.debounceMs),
+				},
+			});
 		} catch {}
-		if (__publishStack.includes(topic)) { 
-			try { 
+		if (__publishStack.includes(topic)) {
+			try {
 				if ((globalThis as any).__MC_WARN) {
 					(globalThis as any).__MC_WARN(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
 				} else {
 					(globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || console.warn(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
 				}
-			} catch {}; 
-			return; 
+			} catch {};
+			return;
 		}
 		try {
 			if (isFlagEnabled('lint.topics.runtime-validate') && def.payloadSchema) {
