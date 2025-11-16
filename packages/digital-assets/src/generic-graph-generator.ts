@@ -2,7 +2,7 @@
 // generic-graph-generator.ts - Generic graph generator using configuration files
 import type { Graph } from "./graph";
 import { graphToSVG } from "./svg-export";
-import { configLoader, type ThemeConfig, type LayoutConfig } from "./config-loader";
+import { configLoader, type ThemeConfig } from "./config-loader";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -359,11 +359,11 @@ export class GenericGraphGenerator {
           console.log(`     ${template.description}`);
           console.log(`     Nodes: ${template.nodes.length}, Edges: ${template.edges.length}`);
           console.log();
-        } catch (error) {
+        } catch {
           console.log(`   • ${file}: Error loading template`);
         }
       }
-    } catch (error) {
+    } catch {
       console.log("No graph templates directory found. Use 'create-samples' to create sample templates.");
     }
   }

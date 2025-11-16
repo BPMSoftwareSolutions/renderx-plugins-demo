@@ -1,7 +1,5 @@
 // config-loader.test.js - Tests for configuration loading and validation
 const { ConfigLoader } = require('../dist/config-loader');
-const fs = require('fs');
-const path = require('path');
 
 describe('Configuration Loader', () => {
   let configLoader;

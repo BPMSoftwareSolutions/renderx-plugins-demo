@@ -1,5 +1,5 @@
 // mono-graph-types.ts
-import type { Scene, Node, Connector, Flow, Port } from './scene';
+import type { Scene } from './scene';
 
 /**
  * Mono scene timing configuration (different from SceneTimingConfig)

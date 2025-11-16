@@ -26,11 +26,11 @@ describe('SVG Scene Validation', () => {
       
       expect(sceneComponents.length).toBeGreaterThan(0);
       
-      sceneComponents.forEach((scene, index) => {
+      sceneComponents.forEach((scene) => {
         const viewBoxMatch = scene.content.viewBox.match(/(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
         expect(viewBoxMatch).toBeTruthy();
         
-        const [, vbX, vbY, vbWidth, vbHeight] = viewBoxMatch.map(Number);
+  const [, , vbWidth, vbHeight] = viewBoxMatch.map(Number);
         const layoutWidth = scene.layout.width;
         const layoutHeight = scene.layout.height;
         
@@ -38,7 +38,7 @@ describe('SVG Scene Validation', () => {
         expect(layoutWidth).toBe(vbWidth);
         expect(layoutHeight).toBe(vbHeight);
         
-        console.log(`Scene ${index + 1}: Layout(${layoutWidth}x${layoutHeight}) vs ViewBox(${vbWidth}x${vbHeight})`);
+        console.log(`Scene: Layout(${layoutWidth}x${layoutHeight}) vs ViewBox(${vbWidth}x${vbHeight})`);
       });
     });
 
@@ -53,11 +53,11 @@ describe('SVG Scene Validation', () => {
       
       const firstScene = sceneComponents[0];
       const firstViewBox = firstScene.content.viewBox.match(/(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
-      const [, firstVbX, firstVbY, firstVbWidth, firstVbHeight] = firstViewBox.map(Number);
+  const [, , firstVbWidth, firstVbHeight] = firstViewBox.map(Number);
       
-      sceneComponents.forEach((scene, index) => {
+      sceneComponents.forEach((scene) => {
         const viewBoxMatch = scene.content.viewBox.match(/(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
-        const [, vbX, vbY, vbWidth, vbHeight] = viewBoxMatch.map(Number);
+        const [, , vbWidth, vbHeight] = viewBoxMatch.map(Number);
         
         // All scenes should have the same viewBox dimensions
         expect(vbWidth).toBe(firstVbWidth);

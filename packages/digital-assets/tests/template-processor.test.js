@@ -1,7 +1,5 @@
 // template-processor.test.js - Tests for template processing and parameter substitution
 const { TemplateProcessor } = require('../dist/template-processor');
-const fs = require('fs');
-const path = require('path');
 
 describe('Template Processor', () => {
   let templateProcessor;

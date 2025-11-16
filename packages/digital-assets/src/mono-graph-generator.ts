@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import type { Scene } from './scene';
-import type { MonoGraph, MonoScene, SceneLayout, BusState, AnimationTimeline } from './mono-graph-types';
+import type { MonoGraph, MonoScene, SceneLayout, AnimationTimeline } from './mono-graph-types';
 import { renderScene } from './render-svg';
 
 /**
@@ -112,8 +112,7 @@ function calculateScenePositions(sceneCount: number, layout: SceneLayout, canvas
       break;
       
     case 'grid':
-      const cols = layout.cols || 2;
-      const rows = layout.rows || Math.ceil(sceneCount / cols);
+  const cols = layout.cols || 2;
       const gridSpacing = layout.spacing || 50;
       const headerHeight = 100; // Space for title like combined storybook
 
@@ -336,7 +335,6 @@ function createUnifiedBusSprite(monoGraph: MonoGraph): string {
   }
 
   // Create seamless travel animation path
-  const totalWidth = monoGraph.canvas.width;
   const sceneWidth = 800;
   const sceneSpacing = 100;
   const busY = 300; // Middle of scene height

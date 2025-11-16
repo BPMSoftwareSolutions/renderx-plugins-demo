@@ -137,7 +137,7 @@ async function handleGraphCommand(subcommand: string, args: string[]) {
   }
 }
 
-async function handleConfigCommand(subcommand: string, args: string[]) {
+async function handleConfigCommand(subcommand: string, _args: string[]) {
   const configs = await configLoader.getAvailableConfigs();
 
   switch (subcommand) {
@@ -156,7 +156,7 @@ async function handleConfigCommand(subcommand: string, args: string[]) {
           const spriteCount = Object.values(lib.categories).reduce((sum, cat) => sum + Object.keys(cat.sprites).length, 0);
           console.log(`   • ${libId}: ${lib.name} (v${lib.version}) - ${spriteCount} sprites`);
           console.log(`     ${lib.description}`);
-        } catch (error) {
+        } catch {
           console.log(`   • ${libId}: Error loading library`);
         }
       }
@@ -169,7 +169,7 @@ async function handleConfigCommand(subcommand: string, args: string[]) {
           console.log(`   • ${themeId}: ${theme.name} (v${theme.version})`);
           console.log(`     ${theme.description}`);
           console.log(`     Colors: ${theme.colors.primary} (primary), ${theme.colors.background} (background)`);
-        } catch (error) {
+        } catch {
           console.log(`   • ${themeId}: Error loading theme`);
         }
       }
@@ -182,7 +182,7 @@ async function handleConfigCommand(subcommand: string, args: string[]) {
           console.log(`   • ${layoutId}: ${layout.name} (v${layout.version})`);
           console.log(`     ${layout.description}`);
           console.log(`     Algorithm: ${layout.algorithm}, Spacing: ${layout.parameters.spacingX}×${layout.parameters.spacingY}`);
-        } catch (error) {
+        } catch {
           console.log(`   • ${layoutId}: Error loading layout`);
         }
       }

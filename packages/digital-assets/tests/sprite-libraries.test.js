@@ -40,7 +40,7 @@ describe('Sprite Libraries', () => {
         expect(typeof library.categories).toBe('object');
         expect(Object.keys(library.categories).length).toBeGreaterThan(0);
 
-        Object.entries(library.categories).forEach(([categoryKey, category]) => {
+  Object.entries(library.categories).forEach(([, category]) => {
           expect(category).toHaveProperty('name');
           expect(category).toHaveProperty('description');
           expect(category).toHaveProperty('sprites');
@@ -53,7 +53,7 @@ describe('Sprite Libraries', () => {
 
       test('should have valid sprite definitions', () => {
         Object.values(library.categories).forEach(category => {
-          Object.entries(category.sprites).forEach(([spriteKey, sprite]) => {
+          Object.entries(category.sprites).forEach(([, sprite]) => {
             // Required fields
             expect(sprite).toHaveProperty('id');
             expect(sprite).toHaveProperty('name');
@@ -95,8 +95,8 @@ describe('Sprite Libraries', () => {
       });
 
       test('should have consistent sprite ID format', () => {
-        Object.values(library.categories).forEach(category => {
-          Object.entries(category.sprites).forEach(([spriteKey, sprite]) => {
+      Object.values(library.categories).forEach(category => {
+        Object.entries(category.sprites).forEach(([, sprite]) => {
             // ID should follow category/sprite-name format
             expect(sprite.id).toMatch(/^[a-z-]+\/[a-z-]+$/);
             

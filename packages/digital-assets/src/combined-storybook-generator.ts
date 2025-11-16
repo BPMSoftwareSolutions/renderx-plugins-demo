@@ -9,7 +9,6 @@ import type {
 } from './combined-storybook-types';
 import {
   createAnimationTimeline,
-  generateBusAnimationValues,
   generateSceneTransitionCSS
 } from './animation-coordinator';
 

@@ -199,7 +199,7 @@ export class GenericSceneGenerator {
           console.log(`     Examples: ${template.examples.map(e => e.name).join(", ")}`);
         }
         console.log();
-      } catch (error) {
+      } catch {
         console.log(`   • ${templateId}: Error loading template`);
       }
     }

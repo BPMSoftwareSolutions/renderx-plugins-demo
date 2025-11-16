@@ -82,6 +82,7 @@ export default [
       "src/RenderX.Shell.Avalonia/**/wwwroot/**",
       "src/RenderX.Shell.Avalonia/bin/**",
       "src/RenderX.Shell.Avalonia/obj/**",
+  "src/MusicalConductor.Avalonia/**",
       "**/bin/**",
       "**/obj/**",
     ],
