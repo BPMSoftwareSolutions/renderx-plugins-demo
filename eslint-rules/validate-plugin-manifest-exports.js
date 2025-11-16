@@ -49,11 +49,12 @@ export default {
         ];
 
         // Web manifests use simple names for React components
-        const webManifestPaths = [
-          path.join(cwd, "catalog/json-plugins/plugin-manifest.json"),
-          path.join(cwd, "public/plugins/plugin-manifest.json"),
-          path.join(cwd, "json-plugins/plugin-manifest.json"),
-        ];
+        // Keeping this for documentation purposes, but not used in validation
+        // const webManifestPaths = [
+        //   path.join(cwd, "catalog/json-plugins/plugin-manifest.json"),
+        //   path.join(cwd, "public/plugins/plugin-manifest.json"),
+        //   path.join(cwd, "json-plugins/plugin-manifest.json"),
+        // ];
 
         // Validate desktop manifests (require fully-qualified exports)
         for (const manifestPath of desktopManifestPaths) {
@@ -88,7 +89,7 @@ export default {
                 }
               }
             }
-          } catch (error) {
+          } catch (_error) {
             // Silently skip invalid manifests
           }
         }
@@ -98,7 +99,6 @@ export default {
 
         // Report all violations at once
         if (reports.length > 0) {
-          const filename = context.getFilename?.() || "plugin-manifest.json";
           context.report({
             node: context.sourceCode?.ast || { loc: { start: { line: 1, column: 0 } } },
             message: `Plugin manifest validation failed:\n${reports.map((r) => `  - ${r.message}`).join("\n")}`,

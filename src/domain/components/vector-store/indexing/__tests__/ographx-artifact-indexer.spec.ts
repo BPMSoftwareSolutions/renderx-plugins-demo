@@ -4,7 +4,9 @@
 
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { OgraphXArtifactIndexer } from '../ographx-artifact-indexer';
-import { VectorStore, ComponentMetadata, EmbeddingService } from '../../store/store.types';
+import { VectorStore, EmbeddingService } from '../../store/store.types';
+// ComponentMetadata type is available but not currently used
+// import { ComponentMetadata } from '../../store/store.types';
 import * as fs from 'fs';
 
 vi.mock('fs');

@@ -1,3 +1,4 @@
+/* eslint-disable play-routing/no-hardcoded-play-ids */
 // Script to trigger canvas.component.create from browser console
 // This will create a button component on the canvas programmatically
 

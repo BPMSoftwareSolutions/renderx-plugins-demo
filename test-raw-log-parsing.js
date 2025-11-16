@@ -30,15 +30,16 @@ try {
     
     // Simple parser that mimics LogAnalyzer
     const lines = logContent.split('\n');
-    const events = {
-      pluginMounts: { byPlugin: {} },
-      topics: {},
-      sequences: {},
-      performance: { gaps: [] },
-      earliest: null,
-      latest: null,
-      durationMs: 0,
-    };
+    // events object is prepared but not used in current implementation
+    // const events = {
+    //   pluginMounts: { byPlugin: {} },
+    //   topics: {},
+    //   sequences: {},
+    //   performance: { gaps: [] },
+    //   earliest: null,
+    //   latest: null,
+    //   durationMs: 0,
+    // };
 
     const timestampPattern = /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)/;
     const pluginPattern = /\[PLUGIN\]\s*(\w+)\s*Mount/;
@@ -49,7 +50,7 @@ try {
     let pluginMounts = {};
     let topicNames = new Set();
 
-    lines.forEach((line, idx) => {
+    lines.forEach((line, _idx) => {
       const tsMatch = line.match(timestampPattern);
       if (tsMatch) {
         timestamps.push(tsMatch[1]);

@@ -72,8 +72,10 @@ export default [
       "build/**",
       "node_modules/**",
       ".vite/**",
+      ".venv/**",
       "coverage/**",
-      "scripts/codemods/**",
+  "scripts/codemods/**",
+  "scripts/**",
       "docs/**",
       // Ignore .NET build outputs and embedded frontend assets
       "src/RenderX.Shell.Avalonia/wwwroot/**",

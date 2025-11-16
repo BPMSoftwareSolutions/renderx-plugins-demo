@@ -134,7 +134,7 @@ class SequencePlayerCLI {
             context = { ...context, ...parsed };
           } catch {
             // Fall back to VM evaluation
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
+             
             const vm = require('vm');
             const parsed = vm.runInNewContext('(' + options.context + ')', {}, { timeout: 1000 });
             context = { ...context, ...parsed };

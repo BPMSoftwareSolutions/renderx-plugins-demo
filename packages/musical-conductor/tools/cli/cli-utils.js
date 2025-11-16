@@ -27,11 +27,11 @@ function parseArgs(args) {
 
 function parseContextString(s) {
   if (!s || s === true) return {};
-  try { return JSON.parse(s); } catch (err) {
+  try { return JSON.parse(s); } catch {
     try {
       const vm = require('vm');
       return vm.runInNewContext('(' + s + ')', {}, { timeout: 1000 });
-    } catch (err2) {
+    } catch {
       try {
         // First add quotes around keys (simple and safe)
         const quoteKeys = s.replace(/([,{]\s*)([A-Za-z_][A-Za-z0-9_-]*)\s*:/g, '$1"$2":');

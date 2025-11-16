@@ -285,7 +285,7 @@ describe('RAGEnrichmentTelemetryService', () => {
   const sampleLogPath = path.join(__dirname, './sample-telemetry.log');
   const chunks = await loadAndChunk(sampleLogPath, { chunkSize: 10 });
 
-      const result = await service.enrichComponentWithTelemetry(
+      await service.enrichComponentWithTelemetry(
         sampleAiComponent,
         sampleLibraryComponents,
         chunks

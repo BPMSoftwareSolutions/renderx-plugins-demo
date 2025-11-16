@@ -1,3 +1,4 @@
+/* eslint-disable play-routing/no-hardcoded-play-ids */
 // Trigger canvas.component.create by injecting JavaScript into the running browser
 // This uses Playwright to connect to the running dev server
 

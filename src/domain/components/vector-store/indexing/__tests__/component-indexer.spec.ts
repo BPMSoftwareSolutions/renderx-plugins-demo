@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+// vi is available but not currently used
+// import { vi } from 'vitest';
 import fs from 'fs/promises';
 import path from 'path';
 import { DefaultComponentIndexer } from '../component-indexer';

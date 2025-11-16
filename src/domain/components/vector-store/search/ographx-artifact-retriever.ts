@@ -24,7 +24,8 @@ export class OgraphXArtifactRetriever {
    * Example: "Find handlers that deal with canvas selection"
    */
   async searchSymbols(query: string, options?: OgraphXSearchOptions): Promise<OgraphXSearchResult[]> {
-    const startTime = Date.now();
+    // startTime is prepared for future telemetry but not currently used
+    // const startTime = Date.now();
     const embedding = await this.embeddingService.embed(query);
 
     const searchOptions: SearchOptions = {

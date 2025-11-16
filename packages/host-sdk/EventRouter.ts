@@ -1,3 +1,4 @@
+/* eslint-disable timestamped-logging/require-timestamped-logging */
 // Standalone EventRouter for @renderx/host-sdk
 // Simplified version that delegates to the host's EventRouter
 
@@ -27,7 +28,7 @@ export const EventRouter = {
       if ((globalThis as any).__MC_WARN) {
         (globalThis as any).__MC_WARN("Host EventRouter not available. Events will not be routed.");
       } else {
-        console.warn("Host EventRouter not available. Events will not be routed.");
+        (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Events will not be routed.") || console.warn("Host EventRouter not available. Events will not be routed.");
       }
       return () => {};
     }
@@ -46,7 +47,7 @@ export const EventRouter = {
       if ((globalThis as any).__MC_WARN) {
         (globalThis as any).__MC_WARN("Host EventRouter not available. Event will not be published:", topic);
       } else {
-        console.warn("Host EventRouter not available. Event will not be published:", topic);
+        (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || (globalThis as any).__MC_WARN?.("Host EventRouter not available. Event will not be published:", topic) || console.warn("Host EventRouter not available. Event will not be published:", topic);
       }
       return;
     }

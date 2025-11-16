@@ -2,7 +2,9 @@
  * PerformanceReporter - Generate performance reports from sequence execution
  */
 
-import type { PlayResult, BeatTiming } from "../engines/SequencePlayerEngine";
+import type { PlayResult } from "../engines/SequencePlayerEngine";
+// BeatTiming type is available but not currently used
+// import type { BeatTiming } from "../engines/SequencePlayerEngine";
 
 export class PerformanceReporter {
   private readonly SLOW_BEAT_THRESHOLD = 100; // ms
@@ -21,7 +23,7 @@ export class PerformanceReporter {
   /**
    * Compare two execution results
    */
-  compare(current: PlayResult, previousFile: string): string {
+  compare(_current: PlayResult, _previousFile: string): string {
     // TODO: Load previous result from file and compare
     return "Comparison not yet implemented";
   }

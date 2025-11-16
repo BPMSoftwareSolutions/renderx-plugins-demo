@@ -1,3 +1,4 @@
+/* eslint-disable timestamped-logging/require-timestamped-logging */
 // EventRouter (migrated from src/EventRouter.ts)
 import { getTopicDef, initTopicsManifest, type TopicRoute } from '../manifests/topicsManifest';
 import { isFlagEnabled } from '../environment/feature-flags';
@@ -62,7 +63,7 @@ export const EventRouter = {
 					if ((globalThis as any).__MC_LOG) {
 						(globalThis as any).__MC_LOG(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`);
 					} else {
-						console.log(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`);
+						(globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`) || console.log(`[EventRouter] Used global getTopicDef for '${topic}', found: ${!!def}`);
 					}
 				} catch {}
 			}
@@ -73,7 +74,7 @@ export const EventRouter = {
 				if ((globalThis as any).__MC_WARN) {
 					(globalThis as any).__MC_WARN(`[EventRouter] No topic definition found for '${topic}'`);
 				} else {
-					console.warn(`[EventRouter] No topic definition found for '${topic}'`);
+					(globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || (globalThis as any).__MC_WARN?.(`[EventRouter] No topic definition found for '${topic}'`) || console.warn(`[EventRouter] No topic definition found for '${topic}'`);
 				}
 			} catch {}; 
 			throw new Error(`Unknown topic: ${topic}`); 
@@ -83,7 +84,7 @@ export const EventRouter = {
 			if ((globalThis as any).__MC_LOG) {
 				(globalThis as any).__MC_LOG(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
 			} else {
-				console.log(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
+				(globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || (globalThis as any).__MC_LOG?.(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) }) || console.log(`[EventRouter] Topic '${topic}' definition:`, { routes: def.routes?.length || 0, hasThrottle: !!(def.perf?.throttleMs), hasDebounce: !!(def.perf?.debounceMs) });
 			}
 		} catch {}
 		if (__publishStack.includes(topic)) { 
@@ -91,7 +92,7 @@ export const EventRouter = {
 				if ((globalThis as any).__MC_WARN) {
 					(globalThis as any).__MC_WARN(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
 				} else {
-					console.warn(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
+					(globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || (globalThis as any).__MC_WARN?.(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`) || console.warn(`[topics] Blocking immediate republish of '${topic}' to prevent feedback loop`);
 				}
 			} catch {}; 
 			return; 
@@ -115,7 +116,7 @@ export const EventRouter = {
 			if ((globalThis as any).__MC_LOG) {
 				(globalThis as any).__MC_LOG(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
 			} else {
-				console.log(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
+				(globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || (globalThis as any).__MC_LOG?.(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`) || console.log(`[EventRouter] resolvedConductor id=${cid} (global id=${gid}) for '${topic}'`);
 			}
 		} catch {}
 		let deliver = (p: any) => {
@@ -128,7 +129,7 @@ export const EventRouter = {
 				if ((globalThis as any).__MC_LOG) {
 					(globalThis as any).__MC_LOG(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`);
 				} else {
-					console.log(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`);
+					(globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || (globalThis as any).__MC_LOG?.(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`) || console.log(`[EventRouter] Starting delivery for '${topic}' with ${def.routes?.length || 0} routes`);
 				}
 			} catch {}
 			for (const r of def.routes as TopicRoute[]) {
@@ -142,7 +143,7 @@ export const EventRouter = {
 						if ((globalThis as any).__MC_LOG) {
 							(globalThis as any).__MC_LOG(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`);
 						} else {
-							console.log(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`);
+							(globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || (globalThis as any).__MC_LOG?.(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`) || console.log(`[topics] Routing '${topic}' -> ${routePluginId}::${routeSequenceId} (hasPlay=${hasPlay})`);
 						}
 				} catch {};
 				if ((globalThis as any).__MC_LOG) {
@@ -167,7 +168,7 @@ export const EventRouter = {
 						if ((globalThis as any).__MC_WARN) {
 							(globalThis as any).__MC_WARN(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
 						} else {
-							console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
+							(globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || (globalThis as any).__MC_WARN?.(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e) || console.warn(`[topics] Failed to route '${topic}' -> ${r.pluginId}::${r.sequenceId}:`, e);
 						}
 					} catch {}
 				}

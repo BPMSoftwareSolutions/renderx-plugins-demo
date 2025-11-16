@@ -57,10 +57,10 @@ export class PerformanceAnalyzer {
   }
 
   private generateRecommendations(
-    beats: BeatPerformance[],
+    _beats: BeatPerformance[],
     slowBeats: BeatPerformance[],
     totalDuration: number,
-    averageBeatDuration: number
+    _averageBeatDuration: number
   ): string[] {
     const recommendations: string[] = [];
 

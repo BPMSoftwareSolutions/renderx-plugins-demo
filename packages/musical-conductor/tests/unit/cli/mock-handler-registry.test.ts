@@ -8,7 +8,8 @@ import {
   getMockDelay,
   formatMockContext,
   parseMockOptions,
-  type BeatKind,
+  // BeatKind type is available but not used in tests
+  // type BeatKind,
 } from '../../../tools/cli/mocking/MockHandlerRegistry';
 
 describe('MockHandlerRegistry', () => {

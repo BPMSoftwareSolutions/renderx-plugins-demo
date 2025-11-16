@@ -2,9 +2,9 @@
  * Simple TypeScript fixture for testing basic extraction
  */
 
-// Function declaration
-function greet(name: string): string {
-  return `Hello, ${name}!`;
+// Function declaration (unused in fixture, but part of test data)
+function greet(_name: string): string {
+  return `Hello, ${_name}!`;
 }
 
 // Arrow function
@@ -30,19 +30,19 @@ export class Calculator {
   }
 }
 
-// Const function
-const divide = function(a: number, b: number): number {
-  if (b === 0) {
+// Const function (unused in fixture, but part of test data)
+const divide = function(_a: number, _b: number): number {
+  if (_b === 0) {
     throw new Error("Division by zero");
   }
-  return a / b;
+  return _a / _b;
 };
 
 // Function with complex parameters
 export function processData(
   data: string[],
   callback: (item: string) => void,
-  options?: { verbose: boolean }
+  _options?: { verbose: boolean }
 ): void {
   data.forEach(callback);
 }

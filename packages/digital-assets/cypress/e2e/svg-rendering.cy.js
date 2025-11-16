@@ -145,14 +145,14 @@ describe('SVG Element Rendering Tests', () => {
   it('should handle missing SVG files gracefully', () => {
     // This test would verify error handling for missing files
     // We'll implement this by temporarily modifying the test data
-    cy.window().then(win => {
-      // Inject a test element with invalid SVG path
-      const testElement = {
-        id: 'test-missing',
-        label: 'Missing SVG Test',
-        svg: 'non-existent/missing.svg',
-        description: 'Test element with missing SVG file'
-      }
+    cy.window().then(_win => {
+      // Inject a test element with invalid SVG path (prepared for future use)
+      // const testElement = {
+      //   id: 'test-missing',
+      //   label: 'Missing SVG Test',
+      //   svg: 'non-existent/missing.svg',
+      //   description: 'Test element with missing SVG file'
+      // }
       
       // This would be implemented in the test page JavaScript
       // For now, we'll just verify the error handling exists

@@ -1,4 +1,5 @@
-import type { TimelineEvent } from '../TimelineFlowVisualization';
+// TimelineEvent type is available but not currently used
+// import type { TimelineEvent } from '../TimelineFlowVisualization';
 
 export interface FrameEvent {
   raw: string;

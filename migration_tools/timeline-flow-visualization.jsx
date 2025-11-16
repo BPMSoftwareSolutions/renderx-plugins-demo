@@ -286,14 +286,15 @@ export default function SessionTimelineVisualization() {
                 {heatmapBuckets.map((bucket, idx) => {
                   const x = 20 + bucket.time * pixelsPerMs;
                   const width = Math.max(500 * pixelsPerMs, 1);
-                  const colors = {
-                    0: '#334155',
-                    0.2: '#3b82f6',
-                    0.4: '#0ea5e9',
-                    0.6: '#06b6d4',
-                    0.8: '#f59e0b',
-                    1: '#ef4444'
-                  };
+                  // Color scale for heatmap intensity
+                  // const colors = {
+                  //   0: '#334155',
+                  //   0.2: '#3b82f6',
+                  //   0.4: '#0ea5e9',
+                  //   0.6: '#06b6d4',
+                  //   0.8: '#f59e0b',
+                  //   1: '#ef4444'
+                  // };
                   
                   let color = '#334155';
                   if (bucket.hasBlocked) color = '#ef4444';

@@ -22,8 +22,9 @@ try {
   console.log('   Size: ' + (logContent.length / 1024).toFixed(1) + ' KB');
   console.log('   Lines: ' + logContent.split('\n').length);
 
-  // Import the transformation functions
-  const { analyzerToTimelineData } = await import('./dist/src/ui/telemetry/TimelineDataAdapter.js').catch(() => {
+  // Import the transformation functions (not currently used but shows expected behavior)
+  // const { analyzerToTimelineData } =
+  await import('./dist/src/ui/telemetry/TimelineDataAdapter.js').catch(() => {
     console.log('\n⚠️  Cannot import dist (not built for Node.js)');
     console.log('   Showing what SHOULD happen:\n');
     

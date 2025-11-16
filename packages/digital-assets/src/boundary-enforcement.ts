@@ -1,5 +1,7 @@
 // boundary-enforcement.ts
-import type { Scene, Node, BoundaryPolicy, Port, Connector } from './scene';
+import type { Scene, Node, BoundaryPolicy, Port } from './scene';
+// Connector type is available but not currently used
+// import type { Connector } from './scene';
 
 export type Rect = { x: number; y: number; w: number; h: number };
 export type Pt = { x: number; y: number };

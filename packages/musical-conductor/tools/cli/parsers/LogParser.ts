@@ -3,7 +3,8 @@
  */
 
 import * as fs from "fs";
-import * as readline from "readline";
+// readline is available but not currently used
+// import * as readline from "readline";
 
 export interface ExtractedSequence {
   id: string;
@@ -74,7 +75,8 @@ export class LogParser {
     const content = fs.readFileSync(filePath, "utf-8");
     const lines = content.split("\n");
 
-    const sequences: ExtractedSequence[] = [];
+    // sequences array is not used, but sequenceMap is returned
+    // const sequences: ExtractedSequence[] = [];
     const sequenceMap = new Map<string, ExtractedSequence>();
 
     lines.forEach((line) => {

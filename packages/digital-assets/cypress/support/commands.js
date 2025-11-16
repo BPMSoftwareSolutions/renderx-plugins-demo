@@ -18,7 +18,7 @@ Cypress.Commands.add('screenshotElement', (selector, name) => {
 })
 
 // Custom command to validate SVG accessibility
-Cypress.Commands.add('checkSVGAccessibility', (selector, elementName) => {
+Cypress.Commands.add('checkSVGAccessibility', (selector, _elementName) => {
   cy.get(selector).within(() => {
     cy.get('svg').should('exist')
 

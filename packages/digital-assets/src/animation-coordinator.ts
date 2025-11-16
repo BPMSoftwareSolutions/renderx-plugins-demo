@@ -206,7 +206,7 @@ export function generateBusAnimationValues(keyframes: BusAnimationKeyframe[]): s
 /**
  * Generate CSS keyframes for scene transitions
  */
-export function generateSceneTransitionCSS(keyframes: AnimationKeyframe[], totalDuration: number): string {
+export function generateSceneTransitionCSS(keyframes: AnimationKeyframe[], _totalDuration: number): string {
   const css: string[] = [];
 
   // Group keyframes by scene
@@ -216,7 +216,7 @@ export function generateSceneTransitionCSS(keyframes: AnimationKeyframe[], total
     return acc;
   }, {} as Record<string, AnimationKeyframe[]>);
 
-  Object.entries(sceneKeyframes).forEach(([sceneId, kfs]) => {
+  Object.entries(sceneKeyframes).forEach(([sceneId, _kfs]) => {
     const sceneNumber = sceneId.match(/scene-(\d+)/)?.[1] || '1';
 
     css.push(`

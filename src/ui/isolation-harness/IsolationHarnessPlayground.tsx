@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+// useEffect is available but not currently used
+// import { useEffect } from 'react';
 import './isolation-harness.css';
 
 interface ExecutionLog {
@@ -28,14 +30,15 @@ interface CanvasComponent {
   label: string;
 }
 
-interface ProductionLogEntry {
-  timestamp: string;
-  beat?: number;
-  handler?: string;
-  timing?: string;
-  duration?: number;
-  message: string;
-}
+// ProductionLogEntry interface is defined but not currently used
+// interface ProductionLogEntry {
+//   timestamp: string;
+//   beat?: number;
+//   handler?: string;
+//   timing?: string;
+//   duration?: number;
+//   message: string;
+// }
 
 interface ExtractedSequenceData {
   beats: Array<{
@@ -149,7 +152,7 @@ export const IsolationHarnessPlayground: React.FC = () => {
           if (previewMatch) {
             inputData = JSON.parse(previewMatch[1]);
           }
-        } catch (_e) {
+        } catch {
           // Silently ignore parse errors
         }
       }
@@ -159,7 +162,8 @@ export const IsolationHarnessPlayground: React.FC = () => {
         sequenceStartTime = timestamp;
       }
       if (line.includes('Sequence') && line.includes('completed in')) {
-        sequenceEndTime = timestamp;
+        // sequenceEndTime is prepared for future use but not currently used
+        // sequenceEndTime = timestamp;
       }
     }
 

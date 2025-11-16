@@ -41,7 +41,9 @@ function loadSpecFile(specPathAbs) {
 }
 
 function deepMergeElementFromSpec(element, options) {
-  const { assetsRoot, specRoot } = options;
+  const { assetsRoot } = options;
+  // specRoot is available but not currently used
+  // const { specRoot } = options;
   const specRel = element.spec;
   if (!specRel) return element;
   const specAbs = path.isAbsolute(specRel) ? specRel : path.join(assetsRoot, specRel);
