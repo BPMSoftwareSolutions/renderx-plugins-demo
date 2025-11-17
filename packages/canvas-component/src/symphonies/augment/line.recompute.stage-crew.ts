@@ -3,6 +3,19 @@
 
 const NS = "http://www.w3.org/2000/svg";
 
+// Formatting helpers extracted to file scope to reduce repeated in-function definitions
+function fmt(n: number) {
+  return n.toFixed(3).replace(/\.0+$/, "").replace(/\.$/, "");
+}
+
+function toVbX(px: number, w: number) {
+  return Number((w ? (px / w) * 100 : 0).toFixed(3).replace(/\.0+$/, "").replace(/\.$/, ""));
+}
+
+function toVbY(px: number, h: number) {
+  return Number((h ? (px / h) * 100 : 0).toFixed(3).replace(/\.0+$/, "").replace(/\.$/, ""));
+}
+
 function ensureLine(svg: SVGSVGElement): SVGLineElement {
   let line = svg.querySelector("line.segment") as SVGLineElement | null;
   if (!line) {
@@ -101,17 +114,12 @@ export function recomputeLineSvg(svg: SVGSVGElement) {
   const curveOn = readBooleanVar(host, "--curve", cs);
   const angle = readCssNumber(host, "--angle", 0, cs); // degrees
 
-  const fmt = (n: number) =>
-    n.toFixed(3).replace(/\.0+$/, "").replace(/\.$/, "");
-  const toVbX = (px: number) => Number((w ? (px / w) * 100 : 0).toFixed(3).replace(/\.0+$/, "").replace(/\.$/, ""));
-  const toVbY = (px: number) => Number((h ? (px / h) * 100 : 0).toFixed(3).replace(/\.0+$/, "").replace(/\.$/, ""));
-
-  const nx1 = toVbX(x1);
-  const ny1 = toVbY(y1);
-  const nx2 = toVbX(x2);
-  const ny2 = toVbY(y2);
-  const ncx = toVbX(cx);
-  const ncy = toVbY(cy);
+  const nx1 = toVbX(x1, w);
+  const ny1 = toVbY(y1, h);
+  const nx2 = toVbX(x2, w);
+  const ny2 = toVbY(y2, h);
+  const ncx = toVbX(cx, w);
+  const ncy = toVbY(cy, h);
 
   const setRotate = (elt: SVGElement) => {
     if (!elt) return;
