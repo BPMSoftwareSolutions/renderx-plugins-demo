@@ -4,15 +4,15 @@
   "description": "Detailed analysis of god functions (functions with 10+ calls and 8+ unique callees)",
   "generated_at": "",
   "summary": {
-    "total_god_functions": 98,
-    "total_calls_in_god_functions": 2566,
-    "total_unique_callees": 1401
+    "total_god_functions": 100,
+    "total_calls_in_god_functions": 2541,
+    "total_unique_callees": 1400
   },
   "god_functions": [
     {
       "rank": 1,
       "symbol": "component-behavior-extractor.ts::ComponentBehaviorExtractor.extractPatterns",
-      "file": "packages/library/src/telemetry/component-behavior-extractor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/telemetry/component-behavior-extractor.ts",
       "line_range": [
         73,
         128
@@ -68,7 +68,7 @@
     {
       "rank": 2,
       "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "file": "packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
       "line_range": [
         73,
         205
@@ -123,64 +123,8 @@
     },
     {
       "rank": 3,
-      "symbol": "select.overlay.line-advanced.stage-crew.ts::ensureAdvancedLineOverlayFor",
-      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
-      "line_range": [
-        23,
-        173
-      ],
-      "metrics": {
-        "total_calls": 81,
-        "unique_called": 31,
-        "complexity_ratio": 0.38
-      },
-      "top_callees": [
-        {
-          "name": "round",
-          "count": 8
-        },
-        {
-          "name": "parseFloat",
-          "count": 8
-        },
-        {
-          "name": "querySelector",
-          "count": 6
-        },
-        {
-          "name": "createElement",
-          "count": 5
-        },
-        {
-          "name": "appendChild",
-          "count": 5
-        },
-        {
-          "name": "getAttribute",
-          "count": 5
-        },
-        {
-          "name": "String",
-          "count": 5
-        },
-        {
-          "name": "toPx",
-          "count": 4
-        },
-        {
-          "name": "getPropertyValue",
-          "count": 4
-        },
-        {
-          "name": "readVar",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
       "symbol": "resize.stage-crew.ts::updateSize",
-      "file": "packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
       "line_range": [
         81,
         280
@@ -234,9 +178,9 @@
       ]
     },
     {
-      "rank": 5,
+      "rank": 4,
       "symbol": "ChatWindow.tsx::ChatWindow",
-      "file": "packages/library/src/ui/ChatWindow.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/ui/ChatWindow.tsx",
       "line_range": [
         20,
         311
@@ -290,9 +234,9 @@
       ]
     },
     {
-      "rank": 6,
+      "rank": 5,
       "symbol": "cinematic-renderer.ts::generatePresentationJS",
-      "file": "packages/digital-assets/src/cinematic-renderer.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/cinematic-renderer.ts",
       "line_range": [
         244,
         404
@@ -346,65 +290,9 @@
       ]
     },
     {
-      "rank": 7,
-      "symbol": "select.overlay.line-advanced.stage-crew.ts::attachAdvancedLineManipHandlers",
-      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
-      "line_range": [
-        175,
-        321
-      ],
-      "metrics": {
-        "total_calls": 55,
-        "unique_called": 24,
-        "complexity_ratio": 0.44
-      },
-      "top_callees": [
-        {
-          "name": "parseFloat",
-          "count": 7
-        },
-        {
-          "name": "round",
-          "count": 6
-        },
-        {
-          "name": "getAttribute",
-          "count": 5
-        },
-        {
-          "name": "querySelector",
-          "count": 5
-        },
-        {
-          "name": "toPx",
-          "count": 4
-        },
-        {
-          "name": "addEventListener",
-          "count": 3
-        },
-        {
-          "name": "call",
-          "count": 3
-        },
-        {
-          "name": "contains",
-          "count": 2
-        },
-        {
-          "name": "getPropertyValue",
-          "count": 2
-        },
-        {
-          "name": "setProperty",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "rank": 8,
+      "rank": 6,
       "symbol": "PluginLoader.ts::PluginLoader.loadPluginModule",
-      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginLoader.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/plugins/PluginLoader.ts",
       "line_range": [
         16,
         178
@@ -458,9 +346,9 @@
       ]
     },
     {
-      "rank": 9,
+      "rank": 7,
       "symbol": "select.overlay.resize.stage-crew.ts::attachResizeHandlers",
-      "file": "packages/canvas-component/src/symphonies/select/select.overlay.resize.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.resize.stage-crew.ts",
       "line_range": [
         30,
         221
@@ -514,9 +402,9 @@
       ]
     },
     {
-      "rank": 10,
+      "rank": 8,
       "symbol": "export.stage-crew.ts::collectLayoutData",
-      "file": "packages/canvas-component/src/symphonies/export/export.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/export/export.stage-crew.ts",
       "line_range": [
         15,
         227
@@ -570,9 +458,9 @@
       ]
     },
     {
-      "rank": 11,
+      "rank": 9,
       "symbol": "create-cinematic-presentation.ts::main",
-      "file": "packages/digital-assets/src/create-cinematic-presentation.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/create-cinematic-presentation.ts",
       "line_range": [
         13,
         73
@@ -626,9 +514,9 @@
       ]
     },
     {
-      "rank": 12,
+      "rank": 10,
       "symbol": "CustomComponentUpload.tsx::CustomComponentUpload",
-      "file": "packages/library/src/ui/CustomComponentUpload.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/ui/CustomComponentUpload.tsx",
       "line_range": [
         28,
         215
@@ -682,9 +570,9 @@
       ]
     },
     {
-      "rank": 13,
+      "rank": 11,
       "symbol": "slide01-generator.ts::generateSlide01Scene",
-      "file": "packages/digital-assets/src/slide01-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/slide01-generator.ts",
       "line_range": [
         8,
         115
@@ -738,9 +626,9 @@
       ]
     },
     {
-      "rank": 14,
+      "rank": 12,
       "symbol": "create.stage-crew.ts::createNode",
-      "file": "packages/canvas-component/src/symphonies/create/create.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/create/create.stage-crew.ts",
       "line_range": [
         39,
         164
@@ -794,9 +682,9 @@
       ]
     },
     {
-      "rank": 15,
+      "rank": 13,
       "symbol": "SPAValidator.ts::SPAValidator.analyzeCallStack",
-      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/SPAValidator.ts",
       "line_range": [
         313,
         450
@@ -842,9 +730,9 @@
       ]
     },
     {
-      "rank": 16,
+      "rank": 14,
       "symbol": "OperationFilter.tsx::OperationFilterPanel",
-      "file": "packages/telemetry-workbench/src/modules/telemetry/OperationFilter.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/telemetry/OperationFilter.tsx",
       "line_range": [
         106,
         216
@@ -898,9 +786,65 @@
       ]
     },
     {
-      "rank": 17,
+      "rank": 15,
+      "symbol": "select.overlay.helpers.ts::resolveEndpoints",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.helpers.ts",
+      "line_range": [
+        73,
+        137
+      ],
+      "metrics": {
+        "total_calls": 41,
+        "unique_called": 19,
+        "complexity_ratio": 0.46
+      },
+      "top_callees": [
+        {
+          "name": "getAttribute",
+          "count": 6
+        },
+        {
+          "name": "parseFloat",
+          "count": 6
+        },
+        {
+          "name": "svgToPixel",
+          "count": 4
+        },
+        {
+          "name": "readCssNumber",
+          "count": 4
+        },
+        {
+          "name": "querySelector",
+          "count": 2
+        },
+        {
+          "name": "getPointAtLength",
+          "count": 2
+        },
+        {
+          "name": "getComputedStyle",
+          "count": 2
+        },
+        {
+          "name": "String",
+          "count": 2
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 2
+        },
+        {
+          "name": "rot",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 16,
       "symbol": "App.tsx::App",
-      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/App.tsx",
       "line_range": [
         13,
         148
@@ -954,9 +898,9 @@
       ]
     },
     {
-      "rank": 18,
+      "rank": 17,
       "symbol": "LogAnalyzer.ts::parseRawLogFile",
-      "file": "packages/telemetry-workbench/src/modules/telemetry/LogAnalyzer.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/telemetry/LogAnalyzer.ts",
       "line_range": [
         6,
         61
@@ -1010,9 +954,9 @@
       ]
     },
     {
-      "rank": 19,
+      "rank": 18,
       "symbol": "LibraryPanel.tsx::LibraryPanel",
-      "file": "packages/library/src/ui/LibraryPanel.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/ui/LibraryPanel.tsx",
       "line_range": [
         77,
         248
@@ -1066,9 +1010,65 @@
       ]
     },
     {
+      "rank": 19,
+      "symbol": "select.overlay.line-advanced.stage-crew.ts::attachAdvancedLineManipHandlers",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
+      "line_range": [
+        66,
+        173
+      ],
+      "metrics": {
+        "total_calls": 35,
+        "unique_called": 19,
+        "complexity_ratio": 0.54
+      },
+      "top_callees": [
+        {
+          "name": "round",
+          "count": 6
+        },
+        {
+          "name": "addEventListener",
+          "count": 3
+        },
+        {
+          "name": "querySelector",
+          "count": 3
+        },
+        {
+          "name": "call",
+          "count": 3
+        },
+        {
+          "name": "contains",
+          "count": 2
+        },
+        {
+          "name": "parseFloat",
+          "count": 2
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 2
+        },
+        {
+          "name": "setProperty",
+          "count": 2
+        },
+        {
+          "name": "removeEventListener",
+          "count": 2
+        },
+        {
+          "name": "preventDefault",
+          "count": 1
+        }
+      ]
+    },
+    {
       "rank": 20,
       "symbol": "select.overlay.line-resize.stage-crew.ts::ensureLineOverlayFor",
-      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
       "line_range": [
         22,
         77
@@ -1124,7 +1124,7 @@
     {
       "rank": 21,
       "symbol": "slide-01-generator.ts::generateSlide01Graphs",
-      "file": "packages/digital-assets/src/slide-01-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/slide-01-generator.ts",
       "line_range": [
         17,
         117
@@ -1180,7 +1180,7 @@
     {
       "rank": 22,
       "symbol": "useControlPanelState.ts::useControlPanelState",
-      "file": "packages/control-panel/src/hooks/useControlPanelState.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/hooks/useControlPanelState.ts",
       "line_range": [
         11,
         106
@@ -1236,7 +1236,7 @@
     {
       "rank": 23,
       "symbol": "generate-mono-svg.ts::main",
-      "file": "packages/digital-assets/src/generate-mono-svg.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/generate-mono-svg.ts",
       "line_range": [
         13,
         59
@@ -1288,7 +1288,7 @@
     {
       "rank": 24,
       "symbol": "TimelineFlowVisualization.tsx::TimelineFlowVisualization",
-      "file": "packages/telemetry-workbench/src/modules/TimelineFlowVisualization.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/TimelineFlowVisualization.tsx",
       "line_range": [
         23,
         120
@@ -1344,7 +1344,7 @@
     {
       "rank": 25,
       "symbol": "css-registry.store.ts::CssRegistryStore.loadDefaultClasses",
-      "file": "packages/canvas-component/src/temp-deps/css-registry.store.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/temp-deps/css-registry.store.ts",
       "line_range": [
         40,
         111
@@ -1392,7 +1392,7 @@
     {
       "rank": 26,
       "symbol": "useControlPanelSequences.ts::useControlPanelSequences",
-      "file": "packages/control-panel/src/hooks/useControlPanelSequences.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/hooks/useControlPanelSequences.ts",
       "line_range": [
         17,
         213
@@ -1448,7 +1448,7 @@
     {
       "rank": 27,
       "symbol": "PluginManifestLoader.ts::PluginManifestLoader.loadManifest",
-      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginManifestLoader.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/plugins/PluginManifestLoader.ts",
       "line_range": [
         37,
         112
@@ -1504,7 +1504,7 @@
     {
       "rank": 28,
       "symbol": "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers",
-      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
       "line_range": [
         79,
         174
@@ -1560,7 +1560,7 @@
     {
       "rank": 29,
       "symbol": "schema-resolver.service.ts::SchemaResolverService.generatePropertyFields",
-      "file": "packages/control-panel/src/services/schema-resolver.service.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/services/schema-resolver.service.ts",
       "line_range": [
         90,
         203
@@ -1616,7 +1616,7 @@
     {
       "rank": 30,
       "symbol": "mono-graph-generator.ts::renderMonoGraph",
-      "file": "packages/digital-assets/src/mono-graph-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/mono-graph-generator.ts",
       "line_range": [
         425,
         574
@@ -1672,7 +1672,7 @@
     {
       "rank": 31,
       "symbol": "rule-engine.ts::ComponentRuleEngine.applyUpdate",
-      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/temp-deps/rule-engine.ts",
       "line_range": [
         486,
         570
@@ -1728,7 +1728,7 @@
     {
       "rank": 32,
       "symbol": "layout.ts::layered",
-      "file": "packages/digital-assets/src/layout.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/layout.ts",
       "line_range": [
         42,
         82
@@ -1784,7 +1784,7 @@
     {
       "rank": 33,
       "symbol": "App.tsx::InteractionFlowView",
-      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/App.tsx",
       "line_range": [
         151,
         200
@@ -1840,7 +1840,7 @@
     {
       "rank": 34,
       "symbol": "generic-scene-generator.ts::GenericSceneGenerator.generateScene",
-      "file": "packages/digital-assets/src/generic-scene-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/generic-scene-generator.ts",
       "line_range": [
         19,
         80
@@ -1896,7 +1896,7 @@
     {
       "rank": 35,
       "symbol": "CanvasHeader.tsx::CanvasHeader",
-      "file": "packages/canvas/src/ui/CanvasHeader.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas/src/ui/CanvasHeader.tsx",
       "line_range": [
         9,
         181
@@ -1952,7 +1952,7 @@
     {
       "rank": 36,
       "symbol": "ChatMessage.tsx::ChatMessageComponent",
-      "file": "packages/library/src/ui/ChatMessage.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/ui/ChatMessage.tsx",
       "line_range": [
         10,
         176
@@ -2008,7 +2008,7 @@
     {
       "rank": 37,
       "symbol": "sanitizeHtml.ts::sanitizeHtml",
-      "file": "packages/canvas-component/src/temp-deps/sanitizeHtml.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/temp-deps/sanitizeHtml.ts",
       "line_range": [
         65,
         127
@@ -2064,7 +2064,7 @@
     {
       "rank": 38,
       "symbol": "useControlPanelActions.ts::useControlPanelActions",
-      "file": "packages/control-panel/src/hooks/useControlPanelActions.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/hooks/useControlPanelActions.ts",
       "line_range": [
         13,
         96
@@ -2120,7 +2120,7 @@
     {
       "rank": 39,
       "symbol": "resize.stage-crew.ts::startResize",
-      "file": "packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
       "line_range": [
         41,
         79
@@ -2168,7 +2168,7 @@
     {
       "rank": 40,
       "symbol": "svg-export.ts::graphToSVG",
-      "file": "packages/digital-assets/src/svg-export.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/svg-export.ts",
       "line_range": [
         5,
         73
@@ -2224,7 +2224,7 @@
     {
       "rank": 41,
       "symbol": "CustomComponentList.tsx::CustomComponentList",
-      "file": "packages/library/src/ui/CustomComponentList.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/ui/CustomComponentList.tsx",
       "line_range": [
         30,
         168
@@ -2280,7 +2280,7 @@
     {
       "rank": 42,
       "symbol": "select.stage-crew.ts::showSelectionOverlay",
-      "file": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.stage-crew.ts",
       "line_range": [
         62,
         111
@@ -2336,7 +2336,7 @@
     {
       "rank": 43,
       "symbol": "render-svg.ts::renderScene",
-      "file": "packages/digital-assets/src/render-svg.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/render-svg.ts",
       "line_range": [
         6,
         65
@@ -2392,7 +2392,7 @@
     {
       "rank": 44,
       "symbol": "component-behavior-extractor.ts::ComponentBehaviorExtractor.extractEventSequences",
-      "file": "packages/library/src/telemetry/component-behavior-extractor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/telemetry/component-behavior-extractor.ts",
       "line_range": [
         450,
         514
@@ -2448,7 +2448,7 @@
     {
       "rank": 45,
       "symbol": "App.tsx::exportCsv",
-      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/App.tsx",
       "line_range": [
         244,
         269
@@ -2504,7 +2504,7 @@
     {
       "rank": 46,
       "symbol": "export.css.stage-crew.ts::collectCssClasses",
-      "file": "packages/canvas-component/src/symphonies/export/export.css.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/export/export.css.stage-crew.ts",
       "line_range": [
         6,
         73
@@ -2560,7 +2560,7 @@
     {
       "rank": 47,
       "symbol": "import.parse.pure.ts::parseUiFile",
-      "file": "packages/canvas-component/src/symphonies/import/import.parse.pure.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/import/import.parse.pure.ts",
       "line_range": [
         32,
         94
@@ -2616,7 +2616,7 @@
     {
       "rank": 48,
       "symbol": "update.stage-crew.ts::updateFromElement",
-      "file": "packages/control-panel/src/symphonies/update/update.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/symphonies/update/update.stage-crew.ts",
       "line_range": [
         9,
         125
@@ -2672,7 +2672,7 @@
     {
       "rank": 49,
       "symbol": "content-extractor.ts::extractElementContent",
-      "file": "packages/control-panel/src/utils/content-extractor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/utils/content-extractor.ts",
       "line_range": [
         7,
         104
@@ -2728,7 +2728,7 @@
     {
       "rank": 50,
       "symbol": "drag.preview.stage-crew.ts::renderTemplatePreview",
-      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
       "line_range": [
         51,
         92
@@ -2780,7 +2780,7 @@
     {
       "rank": 51,
       "symbol": "export.io.spec.ts::makeCtx",
-      "file": "packages/canvas-component/__tests__/export.io.spec.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/__tests__/export.io.spec.ts",
       "line_range": [
         5,
         53
@@ -2832,7 +2832,7 @@
     {
       "rank": 52,
       "symbol": "SvgTreeView.tsx::TreeNode",
-      "file": "packages/control-panel/src/components/field-renderers/SvgTreeView.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/components/field-renderers/SvgTreeView.tsx",
       "line_range": [
         41,
         161
@@ -2888,7 +2888,7 @@
     {
       "rank": 53,
       "symbol": "template-processor.ts::TemplateProcessor.resolveValue",
-      "file": "packages/digital-assets/src/template-processor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/template-processor.ts",
       "line_range": [
         258,
         317
@@ -2944,7 +2944,7 @@
     {
       "rank": 54,
       "symbol": "CallbackRegistry.ts::CallbackRegistry.rehydrateInPlace",
-      "file": "packages/musical-conductor/modules/communication/sequences/orchestration/CallbackRegistry.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/orchestration/CallbackRegistry.ts",
       "line_range": [
         96,
         203
@@ -3000,7 +3000,7 @@
     {
       "rank": 55,
       "symbol": "TimelineDataAdapter.ts::analyzerToTimelineData",
-      "file": "packages/telemetry-workbench/src/modules/TimelineDataAdapter.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/telemetry-workbench/src/modules/TimelineDataAdapter.ts",
       "line_range": [
         13,
         62
@@ -3055,8 +3055,56 @@
     },
     {
       "rank": 56,
+      "symbol": "select.overlay.line-advanced.stage-crew.ts::ensureAdvancedLineOverlayFor",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
+      "line_range": [
+        24,
+        64
+      ],
+      "metrics": {
+        "total_calls": 18,
+        "unique_called": 8,
+        "complexity_ratio": 0.44
+      },
+      "top_callees": [
+        {
+          "name": "round",
+          "count": 8
+        },
+        {
+          "name": "getBoundingClientRect",
+          "count": 2
+        },
+        {
+          "name": "recomputeLineSvg",
+          "count": 2
+        },
+        {
+          "name": "querySelector",
+          "count": 2
+        },
+        {
+          "name": "ensureAdvancedLineCss",
+          "count": 1
+        },
+        {
+          "name": "getCanvasOrThrow",
+          "count": 1
+        },
+        {
+          "name": "createOverlayStructure",
+          "count": 1
+        },
+        {
+          "name": "resolveEndpoints",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 57,
       "symbol": "CodeTextarea.tsx::extractFromFullSvg",
-      "file": "packages/control-panel/src/components/field-renderers/CodeTextarea.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/components/field-renderers/CodeTextarea.tsx",
       "line_range": [
         101,
         140
@@ -3110,9 +3158,9 @@
       ]
     },
     {
-      "rank": 57,
+      "rank": 58,
       "symbol": "boundary-enforcement.ts::enforceBoundaries",
-      "file": "packages/digital-assets/src/boundary-enforcement.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/boundary-enforcement.ts",
       "line_range": [
         178,
         246
@@ -3166,9 +3214,9 @@
       ]
     },
     {
-      "rank": 58,
+      "rank": 59,
       "symbol": "canvas-svg-extractor.ts::createCombinedStorybook",
-      "file": "packages/digital-assets/src/canvas-svg-extractor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/canvas-svg-extractor.ts",
       "line_range": [
         148,
         239
@@ -3222,9 +3270,9 @@
       ]
     },
     {
-      "rank": 59,
+      "rank": 60,
       "symbol": "StageCrew.ts::BeatTxn.applyOpsToDom",
-      "file": "packages/musical-conductor/modules/communication/sequences/stage/StageCrew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/stage/StageCrew.ts",
       "line_range": [
         88,
         151
@@ -3278,9 +3326,57 @@
       ]
     },
     {
-      "rank": 60,
+      "rank": 61,
+      "symbol": "select.overlay.helpers.ts::createOverlayStructure",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.overlay.helpers.ts",
+      "line_range": [
+        36,
+        63
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 8,
+        "complexity_ratio": 0.47
+      },
+      "top_callees": [
+        {
+          "name": "createElement",
+          "count": 5
+        },
+        {
+          "name": "appendChild",
+          "count": 5
+        },
+        {
+          "name": "querySelector",
+          "count": 2
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "from",
+          "count": 1
+        },
+        {
+          "name": "querySelectorAll",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "remove",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 62,
       "symbol": "rule-engine.ts::ComponentRuleEngine.extractContent",
-      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/temp-deps/rule-engine.ts",
       "line_range": [
         626,
         703
@@ -3334,9 +3430,9 @@
       ]
     },
     {
-      "rank": 61,
+      "rank": 63,
       "symbol": "CodeTextarea.tsx::prettyPrintXml",
-      "file": "packages/control-panel/src/components/field-renderers/CodeTextarea.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/components/field-renderers/CodeTextarea.tsx",
       "line_range": [
         49,
         80
@@ -3390,9 +3486,9 @@
       ]
     },
     {
-      "rank": 62,
+      "rank": 64,
       "symbol": "selection.stage-crew.ts::deriveSelectionModel",
-      "file": "packages/control-panel/src/symphonies/selection/selection.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/symphonies/selection/selection.stage-crew.ts",
       "line_range": [
         4,
         79
@@ -3446,9 +3542,9 @@
       ]
     },
     {
-      "rank": 63,
+      "rank": 65,
       "symbol": "generic-graph-generator.ts::GenericGraphGenerator.generateGraph",
-      "file": "packages/digital-assets/src/generic-graph-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/generic-graph-generator.ts",
       "line_range": [
         48,
         92
@@ -3502,9 +3598,9 @@
       ]
     },
     {
-      "rank": 64,
+      "rank": 66,
       "symbol": "render-svg.ts::emitFlow",
-      "file": "packages/digital-assets/src/render-svg.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/render-svg.ts",
       "line_range": [
         290,
         351
@@ -3550,9 +3646,9 @@
       ]
     },
     {
-      "rank": 65,
+      "rank": 67,
       "symbol": "sample-generator.ts::generateAllSamples",
-      "file": "packages/digital-assets/src/sample-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/sample-generator.ts",
       "line_range": [
         204,
         229
@@ -3606,9 +3702,9 @@
       ]
     },
     {
-      "rank": 66,
+      "rank": 68,
       "symbol": "HeaderThemeToggle.tsx::HeaderThemeToggle",
-      "file": "packages/header/src/ui/HeaderThemeToggle.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/header/src/ui/HeaderThemeToggle.tsx",
       "line_range": [
         23,
         80
@@ -3658,9 +3754,9 @@
       ]
     },
     {
-      "rank": 67,
+      "rank": 69,
       "symbol": "SPAValidator.ts::SPAValidator.createValidatedEmit",
-      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/SPAValidator.ts",
       "line_range": [
         89,
         157
@@ -3714,9 +3810,9 @@
       ]
     },
     {
-      "rank": 68,
+      "rank": 70,
       "symbol": "SPAValidator.ts::SPAValidator.createValidatedSubscribe",
-      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/SPAValidator.ts",
       "line_range": [
         162,
         234
@@ -3762,9 +3858,9 @@
       ]
     },
     {
-      "rank": 69,
+      "rank": 71,
       "symbol": "create.react.stage-crew.ts::compileReactCode",
-      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
       "line_range": [
         92,
         157
@@ -3818,9 +3914,9 @@
       ]
     },
     {
-      "rank": 70,
+      "rank": 72,
       "symbol": "resize.line.stage-crew.ts::updateLine",
-      "file": "packages/canvas-component/src/symphonies/resize-line/resize.line.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/resize-line/resize.line.stage-crew.ts",
       "line_range": [
         9,
         27
@@ -3874,9 +3970,9 @@
       ]
     },
     {
-      "rank": 71,
+      "rank": 73,
       "symbol": "svg-animation-utilities.ts::makeElementAppear",
-      "file": "packages/digital-assets/src/svg-animation-utilities.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/svg-animation-utilities.ts",
       "line_range": [
         85,
         140
@@ -3930,9 +4026,9 @@
       ]
     },
     {
-      "rank": 72,
+      "rank": 74,
       "symbol": "augment.line.stage-crew.ts::enhanceLine",
-      "file": "packages/canvas-component/src/symphonies/augment/augment.line.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/augment.line.stage-crew.ts",
       "line_range": [
         30,
         52
@@ -3982,9 +4078,9 @@
       ]
     },
     {
-      "rank": 73,
+      "rank": 75,
       "symbol": "canvas-storybook-demo.ts::processScene",
-      "file": "packages/digital-assets/src/canvas-storybook-demo.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/canvas-storybook-demo.ts",
       "line_range": [
         47,
         84
@@ -4030,9 +4126,9 @@
       ]
     },
     {
-      "rank": 74,
+      "rank": 76,
       "symbol": "combined-storybook-generator.ts::generateEnhancedSVG",
-      "file": "packages/digital-assets/src/combined-storybook-generator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/combined-storybook-generator.ts",
       "line_range": [
         189,
         358
@@ -4086,9 +4182,9 @@
       ]
     },
     {
-      "rank": 75,
+      "rank": 77,
       "symbol": "PluginManager.ts::PluginManager.registerCIAPlugins",
-      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginManager.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/plugins/PluginManager.ts",
       "line_range": [
         500,
         549
@@ -4142,9 +4238,9 @@
       ]
     },
     {
-      "rank": 76,
+      "rank": 78,
       "symbol": "PluginManager.ts::PluginManager.registerPluginsFromManifest",
-      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginManager.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/plugins/PluginManager.ts",
       "line_range": [
         555,
         617
@@ -4194,9 +4290,9 @@
       ]
     },
     {
-      "rank": 77,
+      "rank": 79,
       "symbol": "export.pure.ts::buildUiFileContent",
-      "file": "packages/canvas-component/src/symphonies/export/export.pure.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/export/export.pure.ts",
       "line_range": [
         3,
         92
@@ -4250,9 +4346,9 @@
       ]
     },
     {
-      "rank": 78,
+      "rank": 80,
       "symbol": "export.integration.basic.spec.ts::makeIntegrationCtx",
-      "file": "packages/canvas-component/__tests__/export.integration.basic.spec.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/__tests__/export.integration.basic.spec.ts",
       "line_range": [
         9,
         53
@@ -4298,9 +4394,9 @@
       ]
     },
     {
-      "rank": 79,
+      "rank": 81,
       "symbol": "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas",
-      "file": "packages/control-panel/src/services/schema-resolver.service.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/services/schema-resolver.service.ts",
       "line_range": [
         37,
         85
@@ -4346,9 +4442,9 @@
       ]
     },
     {
-      "rank": 80,
+      "rank": 82,
       "symbol": "svg-animation-utilities.ts::makeElementDisappear",
-      "file": "packages/digital-assets/src/svg-animation-utilities.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/svg-animation-utilities.ts",
       "line_range": [
         24,
         79
@@ -4402,9 +4498,9 @@
       ]
     },
     {
-      "rank": 81,
+      "rank": 83,
       "symbol": "SPAValidator.ts::SPAValidator.handleViolation",
-      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/SPAValidator.ts",
       "line_range": [
         541,
         569
@@ -4454,9 +4550,9 @@
       ]
     },
     {
-      "rank": 82,
+      "rank": 84,
       "symbol": "SequenceOrchestrator.ts::SequenceOrchestrator.processSequenceQueue",
-      "file": "packages/musical-conductor/modules/communication/sequences/orchestration/SequenceOrchestrator.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/orchestration/SequenceOrchestrator.ts",
       "line_range": [
         191,
         252
@@ -4510,9 +4606,9 @@
       ]
     },
     {
-      "rank": 83,
+      "rank": 85,
       "symbol": "create.react.stage-crew.ts::renderReact",
-      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
       "line_range": [
         11,
         86
@@ -4566,9 +4662,9 @@
       ]
     },
     {
-      "rank": 84,
+      "rank": 86,
       "symbol": "drag.stage-crew.ts::updatePosition",
-      "file": "packages/canvas-component/src/symphonies/drag/drag.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/drag/drag.stage-crew.ts",
       "line_range": [
         6,
         60
@@ -4618,9 +4714,9 @@
       ]
     },
     {
-      "rank": 85,
+      "rank": 87,
       "symbol": "ControlPanel.tsx::ControlPanel",
-      "file": "packages/control-panel/src/ui/ControlPanel.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/ui/ControlPanel.tsx",
       "line_range": [
         13,
         100
@@ -4674,9 +4770,9 @@
       ]
     },
     {
-      "rank": 86,
+      "rank": 88,
       "symbol": "canvas-svg-extractor.ts::extractIndividualScenes",
-      "file": "packages/digital-assets/src/canvas-svg-extractor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/canvas-svg-extractor.ts",
       "line_range": [
         99,
         146
@@ -4722,9 +4818,9 @@
       ]
     },
     {
-      "rank": 87,
+      "rank": 89,
       "symbol": "component-mapper.ts::computeTagFromJson",
-      "file": "packages/host-sdk/component-mapper.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/host-sdk/component-mapper.ts",
       "line_range": [
         110,
         146
@@ -4770,9 +4866,9 @@
       ]
     },
     {
-      "rank": 88,
+      "rank": 90,
       "symbol": "validation.utils.ts::validateComponentJson",
-      "file": "packages/library/src/utils/validation.utils.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/utils/validation.utils.ts",
       "line_range": [
         122,
         167
@@ -4826,9 +4922,9 @@
       ]
     },
     {
-      "rank": 89,
+      "rank": 91,
       "symbol": "export.discover.stage-crew.ts::discoverComponentsFromDom",
-      "file": "packages/canvas-component/src/symphonies/export/export.discover.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/export/export.discover.stage-crew.ts",
       "line_range": [
         1,
         50
@@ -4882,9 +4978,9 @@
       ]
     },
     {
-      "rank": 90,
+      "rank": 92,
       "symbol": "openai.service.ts::OpenAIService.parseComponentResponse",
-      "file": "packages/library/src/services/openai.service.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/services/openai.service.ts",
       "line_range": [
         184,
         224
@@ -4938,9 +5034,9 @@
       ]
     },
     {
-      "rank": 91,
+      "rank": 93,
       "symbol": "StrictModeManager.ts::StrictModeManager.isStrictModeDuplicate",
-      "file": "packages/musical-conductor/modules/communication/sequences/strictmode/StrictModeManager.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/strictmode/StrictModeManager.ts",
       "line_range": [
         96,
         132
@@ -4990,9 +5086,9 @@
       ]
     },
     {
-      "rank": 92,
+      "rank": 94,
       "symbol": "import.nodes.stage-crew.ts::applyHierarchyAndOrder",
-      "file": "packages/canvas-component/src/symphonies/import/import.nodes.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/import/import.nodes.stage-crew.ts",
       "line_range": [
         35,
         72
@@ -5042,9 +5138,9 @@
       ]
     },
     {
-      "rank": 93,
+      "rank": 95,
       "symbol": "select.stage-crew.ts::configureHandlesVisibility",
-      "file": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/select/select.stage-crew.ts",
       "line_range": [
         44,
         60
@@ -5098,9 +5194,9 @@
       ]
     },
     {
-      "rank": 94,
+      "rank": 96,
       "symbol": "TextInput.tsx::handleChange",
-      "file": "packages/control-panel/src/components/field-renderers/TextInput.tsx",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/components/field-renderers/TextInput.tsx",
       "line_range": [
         19,
         55
@@ -5146,9 +5242,9 @@
       ]
     },
     {
-      "rank": 95,
+      "rank": 97,
       "symbol": "useSchemaResolver.ts::useSchemaResolver",
-      "file": "packages/control-panel/src/hooks/useSchemaResolver.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/control-panel/src/hooks/useSchemaResolver.ts",
       "line_range": [
         30,
         76
@@ -5202,9 +5298,9 @@
       ]
     },
     {
-      "rank": 96,
+      "rank": 98,
       "symbol": "canvas-svg-extractor.ts::cleanSvgMarkup",
-      "file": "packages/digital-assets/src/canvas-svg-extractor.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/digital-assets/src/canvas-svg-extractor.ts",
       "line_range": [
         71,
         97
@@ -5254,9 +5350,9 @@
       ]
     },
     {
-      "rank": 97,
+      "rank": 99,
       "symbol": "CallbackRegistry.ts::CallbackRegistry.preserveInPlace",
-      "file": "packages/musical-conductor/modules/communication/sequences/orchestration/CallbackRegistry.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/musical-conductor/modules/communication/sequences/orchestration/CallbackRegistry.ts",
       "line_range": [
         48,
         93
@@ -5302,9 +5398,9 @@
       ]
     },
     {
-      "rank": 98,
+      "rank": 100,
       "symbol": "chat.utils.ts::getChatHistoryStats",
-      "file": "packages/library/src/utils/chat.utils.ts",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/utils/chat.utils.ts",
       "line_range": [
         166,
         202

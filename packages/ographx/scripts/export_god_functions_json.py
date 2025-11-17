@@ -5,7 +5,12 @@ Export god functions with all their calls/callees to a dedicated JSON file
 import json
 
 # Load analysis
-with open('packages/ographx/.ographx/artifacts/renderx-web/analysis/analysis.json') as f:
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# scripts -> ographx -> packages -> repo_root
+repo_root = os.path.dirname(os.path.dirname(os.path.dirname(script_dir)))
+analysis_path = os.path.join(repo_root, 'packages/ographx/.ographx/artifacts/renderx-web/analysis/analysis.json')
+with open(analysis_path) as f:
     analysis = json.load(f)
 
 # Extract god functions
@@ -46,7 +51,7 @@ for i, god in enumerate(sorted_funcs, 1):
     export['god_functions'].append(func_entry)
 
 # Write to file
-output_path = 'packages/ographx/.ographx/artifacts/renderx-web/god-functions.json'
+output_path = os.path.join(repo_root, 'packages/ographx/.ographx/artifacts/renderx-web/god-functions.json')
 with open(output_path, 'w') as f:
     json.dump(export, f, indent=2)
 

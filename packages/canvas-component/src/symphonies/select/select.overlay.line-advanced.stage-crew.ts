@@ -1,6 +1,7 @@
 import { getCanvasOrThrow } from "./select.overlay.dom.stage-crew";
 import { resolveInteraction, EventRouter } from "@renderx-plugins/host-sdk";
 import { recomputeLineSvg } from "../augment/line.recompute.stage-crew";
+import { createOverlayStructure, resolveEndpoints } from "./select.overlay.helpers";
 
 function ensureAdvancedLineCss() {
   if (typeof document === "undefined") return;
@@ -25,35 +26,7 @@ export function ensureAdvancedLineOverlayFor(
 ): HTMLDivElement {
   ensureAdvancedLineCss();
   const canvas = getCanvasOrThrow();
-  let ov = document.getElementById(
-    "rx-adv-line-overlay"
-  ) as HTMLDivElement | null;
-  if (!ov) {
-    ov = document.createElement("div");
-    ov.id = "rx-adv-line-overlay";
-    ov.className = "rx-adv-line-overlay";
-    const a = document.createElement("div");
-    a.className = "handle a";
-    const b = document.createElement("div");
-    b.className = "handle b";
-    ov.appendChild(a);
-    ov.appendChild(b);
-    canvas.appendChild(ov);
-  }
-  // Ensure only endpoint handles are present (cleanup legacy curve/rotate)
-  Array.from(ov.querySelectorAll(".handle.curve, .handle.rotate")).forEach(
-    (n) => n.remove()
-  );
-  if (!ov.querySelector(".handle.a")) {
-    const a = document.createElement("div");
-    a.className = "handle a";
-    ov.appendChild(a);
-  }
-  if (!ov.querySelector(".handle.b")) {
-    const b = document.createElement("div");
-    b.className = "handle b";
-    ov.appendChild(b);
-  }
+  const ov = createOverlayStructure(canvas);
 
   // Position overlay to match target's bounding box
   const r = target.getBoundingClientRect();
@@ -71,102 +44,20 @@ export function ensureAdvancedLineOverlayFor(
     } catch {}
 
     const svg = target as unknown as SVGSVGElement;
-    const vb = (svg.getAttribute("viewBox") || "0 0 100 100")
-      .split(/\s+/)
-      .map((v) => parseFloat(v));
-    const [minX, minY, vbW, vbH] = [
-      vb[0] || 0,
-      vb[1] || 0,
-      vb[2] || 100,
-      vb[3] || 100,
-    ];
+    try {
+      recomputeLineSvg(svg);
+    } catch {}
 
-    const line = svg.querySelector("line.segment") as SVGLineElement | null;
-    const path = svg.querySelector(
-      "path.segment-curve"
-    ) as SVGPathElement | null;
-
-    const toPx = (nx: number, ny: number) => ({
-      x: ((nx - minX) / vbW) * r.width,
-      y: ((ny - minY) / vbH) * r.height,
-    });
-
-    let pA = { x: 0, y: 0 };
-    let pB = { x: r.width, y: r.height };
-
-    if (line && line.style.display !== "none") {
-      const nx1 = parseFloat(line.getAttribute("x1") || "0");
-      const ny1 = parseFloat(line.getAttribute("y1") || "0");
-      const nx2 = parseFloat(line.getAttribute("x2") || String(100));
-      const ny2 = parseFloat(line.getAttribute("y2") || String(0));
-      pA = toPx(nx1, ny1);
-      pB = toPx(nx2, ny2);
-    } else if (path && path.style.display !== "none") {
-      // Use path sampling for accurate endpoints (handles curvature + rotation)
-      const total =
-        typeof path.getTotalLength === "function" ? path.getTotalLength() : 0;
-      if (total > 0 && typeof path.getPointAtLength === "function") {
-        const s = path.getPointAtLength(0);
-        const e = path.getPointAtLength(total);
-        pA = toPx(s.x, s.y);
-        pB = toPx(e.x, e.y);
-      }
-    } else {
-      // Fallback to CSS variables if available
-      const cs =
-        typeof window !== "undefined" ? getComputedStyle(target) : ({} as any);
-      const readVar = (name: string, fallback: string) => {
-        const inline = (target as HTMLElement).style.getPropertyValue(name);
-        const comp =
-          typeof cs.getPropertyValue === "function"
-            ? cs.getPropertyValue(name)
-            : "";
-        const val = inline || comp || fallback;
-        const n = parseFloat(String(val));
-        return Number.isFinite(n) ? n : parseFloat(fallback);
-      };
-      const ax = readVar("--x1", "0");
-      const ay = readVar("--y1", "0");
-      const bx = readVar("--x2", String(r.width));
-      const by = readVar("--y2", String(ay));
-      pA = { x: ax, y: ay };
-      pB = { x: bx, y: by };
-    }
-
-    // Apply rotation if present (rotate around midpoint)
-    const cs =
-      typeof window !== "undefined" ? getComputedStyle(target) : ({} as any);
-    const angleStr =
-      (target as HTMLElement).style.getPropertyValue("--angle") ||
-      (typeof cs.getPropertyValue === "function"
-        ? cs.getPropertyValue("--angle")
-        : "0");
-    const angle = parseFloat(angleStr || "0");
-    if (Number.isFinite(angle) && Math.abs(angle) > 0.0001) {
-      const rad = (angle * Math.PI) / 180;
-      const mx = (pA.x + pB.x) / 2;
-      const my = (pA.y + pB.y) / 2;
-      const rot = (p: { x: number; y: number }) => {
-        const dx = p.x - mx;
-        const dy = p.y - my;
-        const cos = Math.cos(rad);
-        const sin = Math.sin(rad);
-        return { x: mx + dx * cos - dy * sin, y: my + dx * sin + dy * cos };
-      };
-      pA = rot(pA);
-      pB = rot(pB);
-    }
-
-    const a = ov.querySelector(".handle.a") as HTMLDivElement;
-    const b = ov.querySelector(".handle.b") as HTMLDivElement;
-
+    const pts = resolveEndpoints(target);
+    const a = ov.querySelector(".handle.a") as HTMLDivElement | null;
+    const b = ov.querySelector(".handle.b") as HTMLDivElement | null;
     if (a) {
-      a.style.left = `${Math.round(pA.x - 5)}px`;
-      a.style.top = `${Math.round(pA.y - 5)}px`;
+      a.style.left = `${Math.round(pts.a.x - 5)}px`;
+      a.style.top = `${Math.round(pts.a.y - 5)}px`;
     }
     if (b) {
-      b.style.left = `${Math.round(pB.x - 5)}px`;
-      b.style.top = `${Math.round(pB.y - 5)}px`;
+      b.style.left = `${Math.round(pts.b.x - 5)}px`;
+      b.style.top = `${Math.round(pts.b.y - 5)}px`;
     }
   } catch {}
   return ov;
@@ -239,56 +130,17 @@ export function attachAdvancedLineManipHandlers(
         } catch {}
         // Reposition both handles based on actual SVG geometry to avoid drift
         try {
-          const vb = (svg.getAttribute("viewBox") || "0 0 100 100")
-            .split(/\s+/)
-            .map((v) => parseFloat(v));
-          const [minX, minY, vbW, vbH] = [
-            vb[0] || 0,
-            vb[1] || 0,
-            vb[2] || 100,
-            vb[3] || 100,
-          ];
-          const r = (target as HTMLElement).getBoundingClientRect();
-          const toPx = (nx: number, ny: number) => ({
-            x: ((nx - minX) / vbW) * r.width,
-            y: ((ny - minY) / vbH) * r.height,
-          });
-          const line = svg.querySelector(
-            "line.segment"
-          ) as SVGLineElement | null;
-          const path = svg.querySelector(
-            "path.segment-curve"
-          ) as SVGPathElement | null;
-          let pA = { x: 0, y: 0 };
-          let pB = { x: r.width, y: r.height };
-          if (line && line.style.display !== "none") {
-            const nx1 = parseFloat(line.getAttribute("x1") || "0");
-            const ny1 = parseFloat(line.getAttribute("y1") || "0");
-            const nx2 = parseFloat(line.getAttribute("x2") || "100");
-            const ny2 = parseFloat(line.getAttribute("y2") || "0");
-            pA = toPx(nx1, ny1);
-            pB = toPx(nx2, ny2);
-          } else if (path && path.style.display !== "none") {
-            const total =
-              typeof path.getTotalLength === "function"
-                ? path.getTotalLength()
-                : 0;
-            if (total > 0 && typeof path.getPointAtLength === "function") {
-              const s = path.getPointAtLength(0);
-              const e = path.getPointAtLength(total);
-              pA = toPx(s.x, s.y);
-              pB = toPx(e.x, e.y);
-            }
-          }
+          // Use shared resolver to compute endpoints (includes viewBox, path sampling, CSS fallback, rotation)
+          const pts = resolveEndpoints(target);
           const aEl = ov.querySelector(".handle.a") as HTMLDivElement | null;
           const bEl = ov.querySelector(".handle.b") as HTMLDivElement | null;
           if (aEl) {
-            aEl.style.left = `${Math.round(pA.x - 5)}px`;
-            aEl.style.top = `${Math.round(pA.y - 5)}px`;
+            aEl.style.left = `${Math.round(pts.a.x - 5)}px`;
+            aEl.style.top = `${Math.round(pts.a.y - 5)}px`;
           }
           if (bEl) {
-            bEl.style.left = `${Math.round(pB.x - 5)}px`;
-            bEl.style.top = `${Math.round(pB.y - 5)}px`;
+            bEl.style.left = `${Math.round(pts.b.x - 5)}px`;
+            bEl.style.top = `${Math.round(pts.b.y - 5)}px`;
           }
         } catch {
           const endpoint = ov.querySelector(
