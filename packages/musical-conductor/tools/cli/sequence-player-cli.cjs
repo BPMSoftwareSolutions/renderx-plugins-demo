@@ -146,6 +146,16 @@ switch (command) {
         process.exit(1);
       }
 
+      // Allow a convenience alias '-all' or '--all' to explicitly show all diagnostics
+      // (some users historically passed single-dash flags). If present, treat as no filters
+      // and enable verbose output so `event.data` is printed.
+      if (args.includes('-all') || args.includes('--all')) {
+        parsedArgs.verbose = true;
+        parsedArgs.topic = undefined;
+        parsedArgs.source = undefined;
+        parsedArgs.level = undefined;
+      }
+
       const filters = {};
       if (parsedArgs.topic && parsedArgs.topic !== true) filters.topic = parsedArgs.topic;
       if (parsedArgs.level && parsedArgs.level !== true) filters.level = parsedArgs.level;
