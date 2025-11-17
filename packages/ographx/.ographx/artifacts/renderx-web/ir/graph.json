@@ -636,6 +636,45 @@
       ]
     },
     {
+      "id": "line.recompute.stage-crew.ts::fmt",
+      "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
+      "kind": "function",
+      "name": "fmt",
+      "class_name": null,
+      "exported": false,
+      "params_contract": "fmtParams@0.1.0::nnumber",
+      "range": [
+        7,
+        9
+      ]
+    },
+    {
+      "id": "line.recompute.stage-crew.ts::toVbX",
+      "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
+      "kind": "function",
+      "name": "toVbX",
+      "class_name": null,
+      "exported": false,
+      "params_contract": "toVbXParams@0.1.0::pxnumber-wnumber",
+      "range": [
+        11,
+        13
+      ]
+    },
+    {
+      "id": "line.recompute.stage-crew.ts::toVbY",
+      "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
+      "kind": "function",
+      "name": "toVbY",
+      "class_name": null,
+      "exported": false,
+      "params_contract": "toVbYParams@0.1.0::pxnumber-hnumber",
+      "range": [
+        15,
+        17
+      ]
+    },
+    {
       "id": "line.recompute.stage-crew.ts::ensureLine",
       "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
       "kind": "function",
@@ -644,8 +683,8 @@
       "exported": false,
       "params_contract": "ensureLineParams@0.1.0::svgSVGSVGElement",
       "range": [
-        6,
-        15
+        19,
+        28
       ]
     },
     {
@@ -657,8 +696,8 @@
       "exported": false,
       "params_contract": "ensureCurveParams@0.1.0::svgSVGSVGElement",
       "range": [
-        17,
-        27
+        30,
+        40
       ]
     },
     {
@@ -668,10 +707,10 @@
       "name": "readCssNumber",
       "class_name": null,
       "exported": false,
-      "params_contract": "readCssNumberParams@0.1.0::elHTMLElement-namestring-fallbacknumber",
+      "params_contract": "readCssNumberParams@0.1.0::elHTMLElement-namestring-fallbacknumber-",
       "range": [
-        29,
-        47
+        42,
+        63
       ]
     },
     {
@@ -681,10 +720,10 @@
       "name": "readBooleanVar",
       "class_name": null,
       "exported": false,
-      "params_contract": "readBooleanVarParams@0.1.0::elHTMLElement-namestring",
+      "params_contract": "readBooleanVarParams@0.1.0::elHTMLElement-namestring-csCSSStyleDecla",
       "range": [
-        49,
-        61
+        65,
+        83
       ]
     },
     {
@@ -696,8 +735,8 @@
       "exported": false,
       "params_contract": "resolveSizeParams@0.1.0::svgSVGSVGElement",
       "range": [
-        63,
-        71
+        85,
+        93
       ]
     },
     {
@@ -709,8 +748,8 @@
       "exported": true,
       "params_contract": "recomputeLineSvgParams@0.1.0::svgSVGSVGElement",
       "range": [
-        73,
-        205
+        95,
+        217
       ]
     },
     {
@@ -15911,658 +15950,610 @@
       "line": 50
     },
     {
-      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "frm": "line.recompute.stage-crew.ts::fmt",
       "to": "",
-      "name": "querySelector",
-      "line": 7
+      "name": "toFixed",
+      "line": 8
     },
     {
-      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "frm": "line.recompute.stage-crew.ts::fmt",
       "to": "",
-      "name": "createElementNS",
-      "line": 9
+      "name": "replace",
+      "line": 8
     },
     {
-      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "frm": "line.recompute.stage-crew.ts::fmt",
       "to": "",
-      "name": "setAttribute",
-      "line": 10
+      "name": "replace",
+      "line": 8
     },
     {
-      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "frm": "line.recompute.stage-crew.ts::toVbX",
       "to": "",
-      "name": "setAttribute",
-      "line": 11
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::ensureLine",
-      "to": "",
-      "name": "appendChild",
+      "name": "Number",
       "line": 12
     },
     {
+      "frm": "line.recompute.stage-crew.ts::toVbX",
+      "to": "",
+      "name": "toFixed",
+      "line": 12
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::toVbX",
+      "to": "",
+      "name": "replace",
+      "line": 12
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::toVbX",
+      "to": "",
+      "name": "replace",
+      "line": 12
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::toVbY",
+      "to": "",
+      "name": "Number",
+      "line": 16
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::toVbY",
+      "to": "",
+      "name": "toFixed",
+      "line": 16
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::toVbY",
+      "to": "",
+      "name": "replace",
+      "line": 16
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::toVbY",
+      "to": "",
+      "name": "replace",
+      "line": 16
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "to": "",
+      "name": "querySelector",
+      "line": 20
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "to": "",
+      "name": "createElementNS",
+      "line": 22
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "to": "",
+      "name": "setAttribute",
+      "line": 23
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "to": "",
+      "name": "setAttribute",
+      "line": 24
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::ensureLine",
+      "to": "",
+      "name": "appendChild",
+      "line": 25
+    },
+    {
       "frm": "line.recompute.stage-crew.ts::ensureCurve",
       "to": "",
       "name": "querySelector",
-      "line": 18
+      "line": 31
     },
     {
       "frm": "line.recompute.stage-crew.ts::ensureCurve",
       "to": "",
       "name": "createElementNS",
-      "line": 20
+      "line": 33
     },
     {
       "frm": "line.recompute.stage-crew.ts::ensureCurve",
       "to": "",
       "name": "setAttribute",
-      "line": 21
+      "line": 34
     },
     {
       "frm": "line.recompute.stage-crew.ts::ensureCurve",
       "to": "",
       "name": "setAttribute",
-      "line": 22
+      "line": 35
     },
     {
       "frm": "line.recompute.stage-crew.ts::ensureCurve",
       "to": "",
       "name": "appendChild",
-      "line": 24
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::readCssNumber",
-      "to": "",
-      "name": "getPropertyValue",
-      "line": 35
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::readCssNumber",
-      "to": "",
-      "name": "parseFloat",
       "line": 37
     },
     {
       "frm": "line.recompute.stage-crew.ts::readCssNumber",
       "to": "",
-      "name": "isFinite",
-      "line": 38
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::readCssNumber",
-      "to": "",
-      "name": "getComputedStyle",
-      "line": 41
+      "name": "style",
+      "line": 48
     },
     {
       "frm": "line.recompute.stage-crew.ts::readCssNumber",
       "to": "",
       "name": "getPropertyValue",
-      "line": 42
+      "line": 49
     },
     {
       "frm": "line.recompute.stage-crew.ts::readCssNumber",
       "to": "",
       "name": "parseFloat",
-      "line": 43
+      "line": 51
     },
     {
       "frm": "line.recompute.stage-crew.ts::readCssNumber",
       "to": "",
       "name": "isFinite",
-      "line": 44
+      "line": 52
     },
     {
-      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
-      "to": "",
-      "name": "getPropertyValue",
-      "line": 50
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
-      "to": "",
-      "name": "trim",
-      "line": 50
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
-      "to": "",
-      "name": "toLowerCase",
-      "line": 50
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
+      "frm": "line.recompute.stage-crew.ts::readCssNumber",
       "to": "",
       "name": "getComputedStyle",
       "line": 55
     },
     {
+      "frm": "line.recompute.stage-crew.ts::readCssNumber",
+      "to": "",
+      "name": "getPropertyValue",
+      "line": 57
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readCssNumber",
+      "to": "",
+      "name": "parseFloat",
+      "line": 58
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readCssNumber",
+      "to": "",
+      "name": "isFinite",
+      "line": 59
+    },
+    {
       "frm": "line.recompute.stage-crew.ts::readBooleanVar",
       "to": "",
       "name": "getPropertyValue",
-      "line": 56
+      "line": 70
     },
     {
       "frm": "line.recompute.stage-crew.ts::readBooleanVar",
       "to": "",
       "name": "trim",
-      "line": 56
+      "line": 70
     },
     {
       "frm": "line.recompute.stage-crew.ts::readBooleanVar",
       "to": "",
       "name": "toLowerCase",
-      "line": 56
+      "line": 70
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
+      "to": "",
+      "name": "string",
+      "line": 73
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
+      "to": "",
+      "name": "getComputedStyle",
+      "line": 75
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
+      "to": "",
+      "name": "getPropertyValue",
+      "line": 77
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
+      "to": "",
+      "name": "trim",
+      "line": 77
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::readBooleanVar",
+      "to": "",
+      "name": "toLowerCase",
+      "line": 77
     },
     {
       "frm": "line.recompute.stage-crew.ts::resolveSize",
       "to": "",
       "name": "height",
-      "line": 64
+      "line": 86
     },
     {
       "frm": "line.recompute.stage-crew.ts::resolveSize",
       "to": "",
       "name": "parseFloat",
-      "line": 67
+      "line": 89
     },
     {
       "frm": "line.recompute.stage-crew.ts::resolveSize",
       "to": "",
       "name": "parseFloat",
-      "line": 69
+      "line": 91
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::ensureLine",
       "name": "ensureLine",
-      "line": 75
+      "line": 97
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::ensureCurve",
       "name": "ensureCurve",
-      "line": 76
+      "line": 98
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "getComputedStyle",
+      "line": 101
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::resolveSize",
       "name": "resolveSize",
-      "line": 78
+      "line": 103
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 81
+      "line": 106
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 82
+      "line": 107
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 83
+      "line": 108
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 84
+      "line": 109
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 87
+      "line": 112
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 88
+      "line": 113
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readBooleanVar",
       "name": "readBooleanVar",
-      "line": 89
+      "line": 114
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "line.recompute.stage-crew.ts::readCssNumber",
       "name": "readCssNumber",
-      "line": 90
+      "line": 115
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "Number",
-      "line": 93
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "toFixed",
-      "line": 95
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
-      "line": 96
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
-      "line": 97
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "Number",
-      "line": 100
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "toFixed",
-      "line": 102
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
-      "line": 103
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
-      "line": 104
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
+      "to": "line.recompute.stage-crew.ts::toVbX",
       "name": "toVbX",
-      "line": 107
+      "line": 117
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
+      "to": "line.recompute.stage-crew.ts::toVbY",
       "name": "toVbY",
-      "line": 108
+      "line": 118
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
+      "to": "line.recompute.stage-crew.ts::toVbX",
       "name": "toVbX",
-      "line": 109
+      "line": 119
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
+      "to": "line.recompute.stage-crew.ts::toVbY",
       "name": "toVbY",
-      "line": 110
+      "line": 120
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
+      "to": "line.recompute.stage-crew.ts::toVbX",
       "name": "toVbX",
-      "line": 111
+      "line": 121
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
+      "to": "line.recompute.stage-crew.ts::toVbY",
       "name": "toVbY",
-      "line": 112
+      "line": 122
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
       "name": "abs",
-      "line": 116
+      "line": 126
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
       "name": "setAttribute",
-      "line": 120
+      "line": 130
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
       "name": "rotate",
-      "line": 120
+      "line": 130
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
       "name": "removeAttribute",
-      "line": 122
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "line.recompute.stage-crew.ts::readCssNumber",
-      "name": "readCssNumber",
-      "line": 127
+      "line": 132
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "cos",
+      "name": "place",
       "line": 136
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "sin",
-      "line": 137
+      "name": "removeAttribute",
+      "line": 140
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "rotatePoint",
-      "line": 143
+      "name": "setAttribute",
+      "line": 141
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "rotatePoint",
-      "line": 144
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "rotatePoint",
+      "to": "line.recompute.stage-crew.ts::readCssNumber",
+      "name": "readCssNumber",
       "line": 146
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "min",
-      "line": 148
+      "name": "cos",
+      "line": 155
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "min",
-      "line": 149
+      "name": "sin",
+      "line": 156
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "max",
-      "line": 150
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "max",
-      "line": 151
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "max",
-      "line": 158
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "max",
-      "line": 159
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 160
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "toFixed",
+      "name": "rotatePoint",
       "line": 162
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "replace",
-      "line": 162
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
-      "line": 162
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "toFixed",
+      "name": "rotatePoint",
       "line": 163
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "replace",
-      "line": 164
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
+      "name": "rotatePoint",
       "line": 165
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "toFixed",
-      "line": 166
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "replace",
+      "name": "min",
       "line": 167
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "replace",
+      "name": "min",
       "line": 168
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "toFixed",
+      "name": "max",
       "line": 169
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "replace",
+      "name": "max",
       "line": 170
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "replace",
-      "line": 171
+      "name": "max",
+      "line": 177
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "max",
+      "line": 178
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "setAttribute",
+      "line": 179
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::fmt",
+      "name": "fmt",
+      "line": 181
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::fmt",
+      "name": "fmt",
+      "line": 181
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::fmt",
+      "name": "fmt",
+      "line": 181
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::fmt",
+      "name": "fmt",
+      "line": 181
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
       "name": "point",
-      "line": 175
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 177
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "line.recompute.stage-crew.ts::readBooleanVar",
-      "name": "readBooleanVar",
-      "line": 181
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "line.recompute.stage-crew.ts::readBooleanVar",
-      "name": "readBooleanVar",
-      "line": 182
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 183
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "url",
-      "line": 183
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "removeAttribute",
-      "line": 184
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
       "line": 185
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "url",
-      "line": 185
+      "name": "setAttribute",
+      "line": 187
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::readBooleanVar",
+      "name": "readBooleanVar",
+      "line": 191
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::readBooleanVar",
+      "name": "readBooleanVar",
+      "line": 192
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "removeAttribute",
-      "line": 186
+      "name": "setAttributes",
+      "line": 193
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "url",
+      "line": 194
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "url",
+      "line": 195
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
       "name": "setRotate",
-      "line": 187
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 190
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "String",
-      "line": 190
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 191
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "String",
-      "line": 191
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 192
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "String",
-      "line": 192
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "setAttribute",
-      "line": 193
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "String",
-      "line": 193
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "line.recompute.stage-crew.ts::readBooleanVar",
-      "name": "readBooleanVar",
       "line": 197
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "line.recompute.stage-crew.ts::readBooleanVar",
-      "name": "readBooleanVar",
-      "line": 198
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "setAttribute",
-      "line": 199
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "url",
-      "line": 199
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "removeAttribute",
+      "name": "setAttributes",
       "line": 200
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "setAttribute",
+      "name": "String",
       "line": 201
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "url",
-      "line": 201
-    },
-    {
-      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "to": "",
-      "name": "removeAttribute",
+      "name": "String",
       "line": 202
     },
     {
       "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
       "to": "",
-      "name": "setRotate",
+      "name": "String",
       "line": 203
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "String",
+      "line": 204
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::readBooleanVar",
+      "name": "readBooleanVar",
+      "line": 209
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "line.recompute.stage-crew.ts::readBooleanVar",
+      "name": "readBooleanVar",
+      "line": 210
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "setAttributes",
+      "line": 211
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "url",
+      "line": 212
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "url",
+      "line": 213
+    },
+    {
+      "frm": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "to": "",
+      "name": "setRotate",
+      "line": 215
     },
     {
       "frm": "copy.stage-crew.ts::getSelectedId",
@@ -49255,6 +49246,44 @@
       ]
     },
     {
+      "id": "fmtParams@0.1.0::nnumber",
+      "kind": "params",
+      "props": [
+        {
+          "name": "n",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "toVbXParams@0.1.0::pxnumber-wnumber",
+      "kind": "params",
+      "props": [
+        {
+          "name": "px",
+          "raw": "number"
+        },
+        {
+          "name": "w",
+          "raw": "number"
+        }
+      ]
+    },
+    {
+      "id": "toVbYParams@0.1.0::pxnumber-hnumber",
+      "kind": "params",
+      "props": [
+        {
+          "name": "px",
+          "raw": "number"
+        },
+        {
+          "name": "h",
+          "raw": "number"
+        }
+      ]
+    },
+    {
       "id": "ensureLineParams@0.1.0::svgSVGSVGElement",
       "kind": "params",
       "props": [
@@ -49275,7 +49304,7 @@
       ]
     },
     {
-      "id": "readCssNumberParams@0.1.0::elHTMLElement-namestring-fallbacknumber",
+      "id": "readCssNumberParams@0.1.0::elHTMLElement-namestring-fallbacknumber-",
       "kind": "params",
       "props": [
         {
@@ -49289,11 +49318,15 @@
         {
           "name": "fallback",
           "raw": "number"
+        },
+        {
+          "name": "cs",
+          "raw": "CSSStyleDeclaration | null"
         }
       ]
     },
     {
-      "id": "readBooleanVarParams@0.1.0::elHTMLElement-namestring",
+      "id": "readBooleanVarParams@0.1.0::elHTMLElement-namestring-csCSSStyleDecla",
       "kind": "params",
       "props": [
         {
@@ -49303,6 +49336,10 @@
         {
           "name": "name",
           "raw": "string"
+        },
+        {
+          "name": "cs",
+          "raw": "CSSStyleDeclaration | null"
         }
       ]
     },

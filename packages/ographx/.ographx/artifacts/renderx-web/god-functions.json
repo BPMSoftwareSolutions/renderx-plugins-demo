@@ -5,8 +5,8 @@
   "generated_at": "",
   "summary": {
     "total_god_functions": 100,
-    "total_calls_in_god_functions": 2541,
-    "total_unique_callees": 1400
+    "total_calls_in_god_functions": 2520,
+    "total_unique_callees": 1401
   },
   "god_functions": [
     {
@@ -67,62 +67,6 @@
     },
     {
       "rank": 2,
-      "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
-      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
-      "line_range": [
-        73,
-        205
-      ],
-      "metrics": {
-        "total_calls": 82,
-        "unique_called": 23,
-        "complexity_ratio": 0.28
-      },
-      "top_callees": [
-        {
-          "name": "replace",
-          "count": 12
-        },
-        {
-          "name": "setAttribute",
-          "count": 11
-        },
-        {
-          "name": "readCssNumber",
-          "count": 8
-        },
-        {
-          "name": "toFixed",
-          "count": 6
-        },
-        {
-          "name": "readBooleanVar",
-          "count": 5
-        },
-        {
-          "name": "removeAttribute",
-          "count": 5
-        },
-        {
-          "name": "max",
-          "count": 4
-        },
-        {
-          "name": "url",
-          "count": 4
-        },
-        {
-          "name": "String",
-          "count": 4
-        },
-        {
-          "name": "toVbX",
-          "count": 3
-        }
-      ]
-    },
-    {
-      "rank": 3,
       "symbol": "resize.stage-crew.ts::updateSize",
       "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
       "line_range": [
@@ -178,7 +122,7 @@
       ]
     },
     {
-      "rank": 4,
+      "rank": 3,
       "symbol": "ChatWindow.tsx::ChatWindow",
       "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/library/src/ui/ChatWindow.tsx",
       "line_range": [
@@ -230,6 +174,62 @@
         {
           "name": "getConversationContext",
           "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+      "line_range": [
+        95,
+        217
+      ],
+      "metrics": {
+        "total_calls": 61,
+        "unique_called": 24,
+        "complexity_ratio": 0.39
+      },
+      "top_callees": [
+        {
+          "name": "readCssNumber",
+          "count": 8
+        },
+        {
+          "name": "readBooleanVar",
+          "count": 5
+        },
+        {
+          "name": "setAttribute",
+          "count": 4
+        },
+        {
+          "name": "max",
+          "count": 4
+        },
+        {
+          "name": "fmt",
+          "count": 4
+        },
+        {
+          "name": "url",
+          "count": 4
+        },
+        {
+          "name": "String",
+          "count": 4
+        },
+        {
+          "name": "toVbX",
+          "count": 3
+        },
+        {
+          "name": "toVbY",
+          "count": 3
+        },
+        {
+          "name": "rotatePoint",
+          "count": 3
         }
       ]
     },

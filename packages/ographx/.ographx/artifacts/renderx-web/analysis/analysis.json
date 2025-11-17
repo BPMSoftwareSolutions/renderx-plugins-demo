@@ -3,12 +3,12 @@
   "generated_at": "",
   "statistics": {
     "files": 464,
-    "symbols": 1150,
-    "calls": 5618,
-    "contracts": 1090
+    "symbols": 1153,
+    "calls": 5610,
+    "contracts": 1093
   },
   "symbol_types": {
-    "function": 608,
+    "function": 611,
     "class": 60,
     "method": 482
   },
@@ -24,12 +24,15 @@
     "_clipboard.ts::getClipboardText": 2,
     "augment.line.stage-crew.ts::ensureLineMarkers": 15,
     "augment.line.stage-crew.ts::enhanceLine": 15,
+    "line.recompute.stage-crew.ts::fmt": 3,
+    "line.recompute.stage-crew.ts::toVbX": 4,
+    "line.recompute.stage-crew.ts::toVbY": 4,
     "line.recompute.stage-crew.ts::ensureLine": 5,
     "line.recompute.stage-crew.ts::ensureCurve": 5,
-    "line.recompute.stage-crew.ts::readCssNumber": 7,
-    "line.recompute.stage-crew.ts::readBooleanVar": 7,
+    "line.recompute.stage-crew.ts::readCssNumber": 8,
+    "line.recompute.stage-crew.ts::readBooleanVar": 8,
     "line.recompute.stage-crew.ts::resolveSize": 3,
-    "line.recompute.stage-crew.ts::recomputeLineSvg": 82,
+    "line.recompute.stage-crew.ts::recomputeLineSvg": 61,
     "copy.stage-crew.ts::getSelectedId": 1,
     "copy.stage-crew.ts::serializeElement": 9,
     "create.arrangement.ts::resolveTemplate": 4,
@@ -889,18 +892,18 @@
     "OperationFilter.tsx::OperationFilterPanel": 42
   },
   "complexity": {
-    "average_calls_per_symbol": 6.4279176201373,
+    "average_calls_per_symbol": 6.3968072976054735,
     "max_calls_per_symbol": 101,
     "min_calls_per_symbol": 1
   },
   "coverage": {
-    "symbols_with_calls": 874,
+    "symbols_with_calls": 877,
     "symbols_without_calls": 276
   },
   "architecture": {
     "summary": {
-      "symbols": 1117,
-      "calls": 5618
+      "symbols": 1120,
+      "calls": 5610
     },
     "coupling": {
       "CanvasDrop.ts::onDragStart": {
@@ -1033,11 +1036,41 @@
         "efferent": 3,
         "instability": 1.0
       },
+      "line.recompute.stage-crew.ts::fmt": {
+        "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+        "line_range": [
+          7,
+          9
+        ],
+        "afferent": 4,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "line.recompute.stage-crew.ts::toVbX": {
+        "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+        "line_range": [
+          11,
+          13
+        ],
+        "afferent": 3,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "line.recompute.stage-crew.ts::toVbY": {
+        "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+        "line_range": [
+          15,
+          17
+        ],
+        "afferent": 3,
+        "efferent": 0,
+        "instability": 0.0
+      },
       "line.recompute.stage-crew.ts::ensureLine": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
         "line_range": [
-          6,
-          15
+          19,
+          28
         ],
         "afferent": 1,
         "efferent": 0,
@@ -1046,8 +1079,8 @@
       "line.recompute.stage-crew.ts::ensureCurve": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
         "line_range": [
-          17,
-          27
+          30,
+          40
         ],
         "afferent": 1,
         "efferent": 0,
@@ -1056,8 +1089,8 @@
       "line.recompute.stage-crew.ts::readCssNumber": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
         "line_range": [
-          29,
-          47
+          42,
+          63
         ],
         "afferent": 8,
         "efferent": 0,
@@ -1066,8 +1099,8 @@
       "line.recompute.stage-crew.ts::readBooleanVar": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
         "line_range": [
-          49,
-          61
+          65,
+          83
         ],
         "afferent": 5,
         "efferent": 0,
@@ -1076,8 +1109,8 @@
       "line.recompute.stage-crew.ts::resolveSize": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
         "line_range": [
-          63,
-          71
+          85,
+          93
         ],
         "afferent": 1,
         "efferent": 0,
@@ -1086,12 +1119,12 @@
       "line.recompute.stage-crew.ts::recomputeLineSvg": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
         "line_range": [
-          73,
-          205
+          95,
+          217
         ],
         "afferent": 6,
-        "efferent": 16,
-        "instability": 0.727
+        "efferent": 26,
+        "instability": 0.812
       },
       "copy.stage-crew.ts::getSelectedId": {
         "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/copy/copy.stage-crew.ts",
@@ -12180,38 +12213,30 @@
           "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
           "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
           "line_range": [
-            73,
-            205
+            95,
+            217
           ],
-          "total_calls": 82,
-          "unique_called": 23,
+          "total_calls": 61,
+          "unique_called": 24,
           "top_callees": [
-            {
-              "name": "replace",
-              "count": 12
-            },
-            {
-              "name": "setAttribute",
-              "count": 11
-            },
             {
               "name": "readCssNumber",
               "count": 8
-            },
-            {
-              "name": "toFixed",
-              "count": 6
             },
             {
               "name": "readBooleanVar",
               "count": 5
             },
             {
-              "name": "removeAttribute",
-              "count": 5
+              "name": "setAttribute",
+              "count": 4
             },
             {
               "name": "max",
+              "count": 4
+            },
+            {
+              "name": "fmt",
               "count": 4
             },
             {
@@ -12224,6 +12249,14 @@
             },
             {
               "name": "toVbX",
+              "count": 3
+            },
+            {
+              "name": "toVbY",
+              "count": 3
+            },
+            {
+              "name": "rotatePoint",
               "count": 3
             }
           ]
@@ -17123,8 +17156,8 @@
           "symbol": "line.recompute.stage-crew.ts::readCssNumber",
           "file": "C:/source/repos/bpm/internal/renderx-plugins-demo/packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
           "line_range": [
-            29,
-            47
+            42,
+            63
           ],
           "fan_in": 8
         },
@@ -17383,7 +17416,7 @@
         },
         {
           "identifier": "setAttribute",
-          "count": 55
+          "count": 48
         },
         {
           "identifier": "appendChild",
@@ -17398,6 +17431,14 @@
           "count": 27
         },
         {
+          "identifier": "toFixed",
+          "count": 26
+        },
+        {
+          "identifier": "replace",
+          "count": 80
+        },
+        {
           "identifier": "getPropertyValue",
           "count": 28
         },
@@ -17407,7 +17448,7 @@
         },
         {
           "identifier": "getComputedStyle",
-          "count": 12
+          "count": 13
         },
         {
           "identifier": "trim",
@@ -17420,14 +17461,6 @@
         {
           "identifier": "readCssNumber",
           "count": 18
-        },
-        {
-          "identifier": "toFixed",
-          "count": 29
-        },
-        {
-          "identifier": "replace",
-          "count": 86
         },
         {
           "identifier": "url",
