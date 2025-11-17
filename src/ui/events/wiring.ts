@@ -20,36 +20,45 @@ export type UiEventDef = {
 /**
  * Wires UI events based on provided definitions. Returns a cleanup function.
  */
-const DEDUP_WINDOW_MS = 150; // Don't allow same topic twice within 150ms
-
 export function wireUiEvents(defs: UiEventDef[]): () => void {
   const disposers: Array<() => void> = [];
   const pending: UiEventDef[] = [];
 
   const getConductor = () => (window as any).RenderX?.conductor;
 
-  /**
-   * Deduplication tracker (per wiring instance): prevents the same topic from being
-   * published too frequently. Key: topic name, Value: timestamp of last successful publish.
-   */
-  const lastPublishTime: Record<string, number> = {};
+/**
+ * Deduplication tracker: prevents duplicate publishes from RAPID REPEATED FIRINGS of the same
+ * event handler (e.g., multiple mousemove events within a small window). NOT meant to prevent
+ * intentional user actions separated in time.
+ * 
+ * Key structure: `topic:eventId` (event ID ensures different user interactions are NOT blocked)
+ * Value: { timestamp, eventTarget } to detect if this is truly the same event firing or a new one.
+ */
+const lastEventPublished: Record<string, { timestamp: number; target: EventTarget }> = {};
 
-  /**
-   * Check if a topic should be published based on deduplication window.
-   * Returns true if enough time has passed since last publish.
-   */
-  const shouldPublish = (topic: string): boolean => {
-    const now = Date.now();
-    const lastTime = lastPublishTime[topic] ?? 0;
-    const timeSinceLastPublish = now - lastTime;
+/**
+ * Check if this specific event+topic combination should be published based on deduplication.
+ * Only blocks if:
+ * 1. Same topic published within 50ms (prevents rapid-fire repeated events from the same source)
+ * 2. From the SAME event handler invocation (same target)
+ */
+const shouldPublish = (topic: string, eventTarget: EventTarget): boolean => {
+  const now = Date.now();
+  const key = `${topic}`;
+  const last = lastEventPublished[key];
 
-    if (timeSinceLastPublish < DEDUP_WINDOW_MS) {
-      return false; // Skip: too soon after last publish
+  if (last) {
+    const timeSinceLastPublish = now - last.timestamp;
+    // Only block if BOTH time is very recent (50ms, not 150ms) AND it's from the same source
+    // Different targets = intentional different user interactions = should not be blocked
+    if (timeSinceLastPublish < 50 && last.target === eventTarget) {
+      return false; // Skip: same event source firing too fast
     }
+  }
 
-    lastPublishTime[topic] = now;
-    return true;
-  };
+  lastEventPublished[key] = { timestamp: now, target: eventTarget };
+  return true;
+};
 
   const tryAttach = (def: UiEventDef): boolean => {
     const conductor = getConductor();
@@ -96,10 +105,10 @@ export function wireUiEvents(defs: UiEventDef[]): () => void {
         const conductor = getConductor();
         if (!conductor) return;
 
-        // Check deduplication: skip if same topic published too recently
+        // Check deduplication: skip if same topic fired from same source too rapidly
         const topic = def.publish.topic;
-        if (!shouldPublish(topic)) {
-          return; // Duplicate publish within debounce window, skip
+        if (!shouldPublish(topic, e.target || targetEl)) {
+          return; // Duplicate: same event source firing too fast, skip
         }
 
         const payload = def.publish.payload ?? {};
