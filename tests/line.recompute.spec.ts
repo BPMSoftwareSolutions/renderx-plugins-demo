@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { recomputeLineSvg } from '../packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew';
 
+// Ensure this test file runs in the jsdom environment so `document`/`window` are available
+// @vitest-environment jsdom
+
 function createSvg(): SVGSVGElement {
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg') as unknown as SVGSVGElement;
