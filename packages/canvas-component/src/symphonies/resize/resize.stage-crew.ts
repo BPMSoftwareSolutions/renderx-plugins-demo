@@ -99,184 +99,185 @@ export const updateSize = (data: any, ctx?: any) => {
   if (!el) throw new Error(`Canvas component with id ${id} not found`);
 
   const cfg = getResizeConfig(el);
-  if (!cfg.enabled) {
-    const result = {
-      id,
-      left: startLeft,
-      top: startTop,
-      width: startWidth,
-      height: startHeight,
-    };
-    if (ctx && ctx.payload) {
-      ctx.payload.updatedLayout = {
-        x: result.left,
-        y: result.top,
-        width: result.width,
-        height: result.height,
-      };
-      ctx.payload.elementId = id;
-    }
-    return result;
-  }
-
   const canvasRect = getCanvasRect();
 
-  let left =
-    typeof startLeft === "number"
-      ? startLeft
-      : el.getBoundingClientRect().left - canvasRect.left;
-  let top =
-    typeof startTop === "number"
-      ? startTop
-      : el.getBoundingClientRect().top - canvasRect.top;
-  let width =
-    typeof startWidth === "number"
-      ? startWidth
-      : el.getBoundingClientRect().width;
-  let height =
-    typeof startHeight === "number"
-      ? startHeight
-      : el.getBoundingClientRect().height;
+  // ResizeCalculator encapsulates the geometry math for the resize operation
+  class ResizeCalculator {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    constructor() {
+      this.left =
+        typeof startLeft === "number"
+          ? startLeft
+          : el!.getBoundingClientRect().left - canvasRect.left;
+      this.top =
+        typeof startTop === "number"
+          ? startTop
+          : el!.getBoundingClientRect().top - canvasRect.top;
+      this.width =
+        typeof startWidth === "number"
+          ? startWidth
+          : el!.getBoundingClientRect().width;
+      this.height =
+        typeof startHeight === "number"
+          ? startHeight
+          : el!.getBoundingClientRect().height;
+    }
 
-  // Guard: if this invocation is not a move (e.g., start/end), don't recompute size
-  if (phase && phase !== "move") {
-    const result = {
-      id,
-      left: startLeft,
-      top: startTop,
-      width: startWidth,
-      height: startHeight,
-    };
-    if (ctx && ctx.payload) {
-      ctx.payload.updatedLayout = {
-        x: result.left,
-        y: result.top,
-        width: result.width,
-        height: result.height,
+    applyDeltas() {
+      // If resize is disabled, caller will handle early return
+      const _dx = Number(dx);
+      const _dy = Number(dy);
+      if (!Number.isFinite(_dx) || !Number.isFinite(_dy)) return false;
+      if (String(dir).includes("e")) this.width = clamp(startWidth + _dx, cfg.minW);
+      if (String(dir).includes("s")) this.height = clamp(startHeight + _dy, cfg.minH);
+      if (String(dir).includes("w")) {
+        this.width = clamp(startWidth - _dx, cfg.minW);
+        this.left = startLeft + _dx;
+        if (this.width <= cfg.minW) this.left = startLeft + (startWidth - cfg.minW);
+      }
+      if (String(dir).includes("n")) {
+        this.height = clamp(startHeight - _dy, cfg.minH);
+        this.top = startTop + _dy;
+        if (this.height <= cfg.minH) this.top = startTop + (startHeight - cfg.minH);
+      }
+      return true;
+    }
+
+    rounded() {
+      return {
+        rLeft: Math.round(this.left),
+        rTop: Math.round(this.top),
+        rWidth: Math.round(this.width),
+        rHeight: Math.round(this.height),
       };
-      ctx.payload.elementId = id;
     }
-    return result;
   }
 
-  const _dx = Number(dx);
-  const _dy = Number(dy);
-  if (!Number.isFinite(_dx) || !Number.isFinite(_dy)) {
-    // No deltas provided — ignore to avoid snap back
-    const result = {
-      id,
-      left: startLeft,
-      top: startTop,
-      width: startWidth,
-      height: startHeight,
-    };
-    if (ctx && ctx.payload) {
-      ctx.payload.updatedLayout = {
-        x: result.left,
-        y: result.top,
-        width: result.width,
-        height: result.height,
+  // StyleManager centralizes inline style reads/writes and comparisons
+  class StyleManager {
+    el: HTMLElement;
+    constructor(el: HTMLElement) {
+      this.el = el;
+    }
+    readCurrent() {
+      return {
+        currLeft: parseFloat(this.el.style.left || ""),
+        currTop: parseFloat(this.el.style.top || ""),
+        currWidth: parseFloat(this.el.style.width || ""),
+        currHeight: parseFloat(this.el.style.height || ""),
       };
-      ctx.payload.elementId = id;
     }
-    return result;
-  }
-
-  if (String(dir).includes("e")) width = clamp(startWidth + _dx, cfg.minW);
-  if (String(dir).includes("s")) height = clamp(startHeight + _dy, cfg.minH);
-  if (String(dir).includes("w")) {
-    width = clamp(startWidth - _dx, cfg.minW);
-    left = startLeft + _dx;
-    if (width <= cfg.minW) left = startLeft + (startWidth - cfg.minW);
-  }
-  if (String(dir).includes("n")) {
-    height = clamp(startHeight - _dy, cfg.minH);
-    top = startTop + _dy;
-    if (height <= cfg.minH) top = startTop + (startHeight - cfg.minH);
-  }
-
-  // Avoid writing inline styles if the rounded values are unchanged -
-  // this prevents needless layout mutations which can re-trigger
-  // resize/move handling and create feedback loops.
-  const rLeft = Math.round(left);
-  const rTop = Math.round(top);
-  const rWidth = Math.round(width);
-  const rHeight = Math.round(height);
-
-  const currLeft = parseFloat(el.style.left || "");
-  const currTop = parseFloat(el.style.top || "");
-  const currWidth = parseFloat(el.style.width || "");
-  const currHeight = parseFloat(el.style.height || "");
-
-  const stylesAreFinite =
-    Number.isFinite(currLeft) &&
-    Number.isFinite(currTop) &&
-    Number.isFinite(currWidth) &&
-    Number.isFinite(currHeight);
-
-  if (stylesAreFinite && currLeft === rLeft && currTop === rTop && currWidth === rWidth && currHeight === rHeight) {
-    // Nothing to change in inline styles. Still populate payload so
-    // callers see the current layout, then return early.
-    if (ctx && ctx.payload) {
-      ctx.payload.updatedLayout = { x: left, y: top, width, height };
-      ctx.payload.elementId = id;
+    isSame(rLeft: number, rTop: number, rWidth: number, rHeight: number) {
+      const { currLeft, currTop, currWidth, currHeight } = this.readCurrent();
+      const allFinite =
+        Number.isFinite(currLeft) &&
+        Number.isFinite(currTop) &&
+        Number.isFinite(currWidth) &&
+        Number.isFinite(currHeight);
+      return allFinite && currLeft === rLeft && currTop === rTop && currWidth === rWidth && currHeight === rHeight;
     }
-    return { id, left, top, width, height };
+    applyRounded(rLeft: number, rTop: number, rWidth: number, rHeight: number) {
+      this.el.style.position = "absolute";
+      this.el.style.left = `${rLeft}px`;
+      this.el.style.top = `${rTop}px`;
+      this.el.style.width = `${rWidth}px`;
+      this.el.style.height = `${rHeight}px`;
+    }
   }
 
-  el.style.position = "absolute";
-  el.style.left = `${rLeft}px`;
-  el.style.top = `${rTop}px`;
-  el.style.width = `${rWidth}px`;
-  el.style.height = `${rHeight}px`;
+  // LineScaler handles proportional endpoint scaling for rx-line elements
+  class LineScaler {
+    el: HTMLElement;
+    constructor(el: HTMLElement) {
+      this.el = el;
+    }
+    scaleIfNeeded(startWidth: number, startHeight: number, width: number, height: number) {
+      try {
+        if (!this.el.classList.contains("rx-line")) return;
+        const baseW =
+          parseFloat(this.el.dataset.lineBaseW || String(startWidth) || "0") || 0;
+        const baseH =
+          parseFloat(this.el.dataset.lineBaseH || String(startHeight) || "0") || 0;
+        if (baseW > 0 && baseH > 0) {
+          const sx = width / baseW;
+          const sy = height / baseH;
+          const bx1 = parseFloat(this.el.dataset.lineBaseX1 || "0") || 0;
+          const by1 = parseFloat(this.el.dataset.lineBaseY1 || "0") || 0;
+          const bx2 = parseFloat(this.el.dataset.lineBaseX2 || String(baseW)) || baseW;
+          const by2 = parseFloat(this.el.dataset.lineBaseY2 || String(by1)) || by1;
+          const bcx = parseFloat(this.el.dataset.lineBaseCx || String((bx1 + bx2) / 2));
+          const bcy = parseFloat(this.el.dataset.lineBaseCy || String((by1 + by2) / 2));
+          writeCssNumber(this.el, "--x1", bx1 * sx);
+          writeCssNumber(this.el, "--y1", by1 * sy);
+          writeCssNumber(this.el, "--x2", bx2 * sx);
+          writeCssNumber(this.el, "--y2", by2 * sy);
+          writeCssNumber(this.el, "--cx", bcx * sx);
+          writeCssNumber(this.el, "--cy", bcy * sx);
+        }
+      } catch {}
+    }
+  }
 
-  // Proportionally scale rx-line endpoints when the element is resized
-  try {
-    if (el.classList.contains("rx-line")) {
-      const baseW =
-        parseFloat(el.dataset.lineBaseW || String(startWidth) || "0") || 0;
-      const baseH =
-        parseFloat(el.dataset.lineBaseH || String(startHeight) || "0") || 0;
-      if (baseW > 0 && baseH > 0) {
-        const sx = width / baseW;
-        const sy = height / baseH;
-        const bx1 = parseFloat(el.dataset.lineBaseX1 || "0") || 0;
-        const by1 = parseFloat(el.dataset.lineBaseY1 || "0") || 0;
-        const bx2 = parseFloat(el.dataset.lineBaseX2 || String(baseW)) || baseW;
-        const by2 = parseFloat(el.dataset.lineBaseY2 || String(by1)) || by1;
-        const bcx = parseFloat(
-          el.dataset.lineBaseCx || String((bx1 + bx2) / 2)
-        );
-        const bcy = parseFloat(
-          el.dataset.lineBaseCy || String((by1 + by2) / 2)
-        );
-        writeCssNumber(el, "--x1", bx1 * sx);
-        writeCssNumber(el, "--y1", by1 * sy);
-        writeCssNumber(el, "--x2", bx2 * sx);
-        writeCssNumber(el, "--y2", by2 * sy);
-        writeCssNumber(el, "--cx", bcx * sx);
-        writeCssNumber(el, "--cy", bcy * sy);
+  // ResultBuilder centralizes payload mutation + return object
+  class ResultBuilder {
+    static setPayload(ctx: any, id: any, left: number, top: number, width: number, height: number) {
+      if (ctx && ctx.payload) {
+        ctx.payload.updatedLayout = { x: left, y: top, width, height };
+        ctx.payload.elementId = id;
       }
     }
-  } catch {}
+    static build(id: any, left: number, top: number, width: number, height: number) {
+      return { id, left, top, width, height };
+    }
+  }
 
-  const ov = document.getElementById(
-    "rx-selection-overlay"
-  ) as HTMLDivElement | null;
+  // Orchestration
+  if (!cfg.enabled) {
+    const result = ResultBuilder.build(id, startLeft, startTop, startWidth, startHeight);
+    ResultBuilder.setPayload(ctx, id, result.left, result.top, result.width, result.height);
+    return result;
+  }
+
+  const calc = new ResizeCalculator();
+  if (phase && phase !== "move") {
+    const result = ResultBuilder.build(id, startLeft, startTop, startWidth, startHeight);
+    ResultBuilder.setPayload(ctx, id, result.left, result.top, result.width, result.height);
+    return result;
+  }
+
+  const applied = calc.applyDeltas();
+  if (!applied) {
+    const result = ResultBuilder.build(id, startLeft, startTop, startWidth, startHeight);
+    ResultBuilder.setPayload(ctx, id, result.left, result.top, result.width, result.height);
+    return result;
+  }
+
+  const { rLeft, rTop, rWidth, rHeight } = calc.rounded();
+  const styles = new StyleManager(el);
+  if (styles.isSame(rLeft, rTop, rWidth, rHeight)) {
+    ResultBuilder.setPayload(ctx, id, calc.left, calc.top, calc.width, calc.height);
+    return ResultBuilder.build(id, calc.left, calc.top, calc.width, calc.height);
+  }
+
+  styles.applyRounded(rLeft, rTop, rWidth, rHeight);
+
+  const scaler = new LineScaler(el);
+  scaler.scaleIfNeeded(startWidth, startHeight, calc.width, calc.height);
+
+  const ov = document.getElementById("rx-selection-overlay") as HTMLDivElement | null;
   if (ov) applyOverlayRectForEl(ov, el);
 
   if (typeof onResize === "function") {
     try {
-      onResize({ id, left, top, width, height });
+      onResize({ id, left: calc.left, top: calc.top, width: calc.width, height: calc.height });
     } catch {}
   }
 
-  if (ctx && ctx.payload) {
-    ctx.payload.updatedLayout = { x: left, y: top, width, height };
-    ctx.payload.elementId = id;
-  }
-
-  return { id, left, top, width, height };
+  ResultBuilder.setPayload(ctx, id, calc.left, calc.top, calc.width, calc.height);
+  return ResultBuilder.build(id, calc.left, calc.top, calc.width, calc.height);
 };
 
 export const endResize = (data: any) => {
