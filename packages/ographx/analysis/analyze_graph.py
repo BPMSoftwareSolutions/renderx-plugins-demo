@@ -159,15 +159,22 @@ def _compute_coupling(nodes, out_edges, in_edges):
     return Ca, Ce, I
 
 
-def _detect_god_functions(nodes, call_names, threshold_calls=10, threshold_unique=8):
+def _detect_god_functions(nodes, call_names, symbol_map, threshold_calls=10, threshold_unique=8):
     suspects = []
     for n in nodes:
         names = call_names.get(n, [])
         total_calls = len(names)
         uniq_calls = len(set(names))
         if total_calls >= threshold_calls and uniq_calls >= threshold_unique:
+            sym_info = symbol_map.get(n, {})
             suspects.append(
-                {"symbol": n, "total_calls": total_calls, "unique_called": uniq_calls}
+                {
+                    "symbol": n,
+                    "file": sym_info.get("file"),
+                    "line_range": sym_info.get("range"),
+                    "total_calls": total_calls,
+                    "unique_called": uniq_calls
+                }
             )
     return suspects
 
@@ -181,25 +188,46 @@ def _detect_long_parameter_list(ir, threshold_params=6):
             props = contracts[pc].get("props", [])
             if len(props) >= threshold_params:
                 suspects.append(
-                    {"symbol": s.get("id"), "param_count": len(props), "contract": pc}
+                    {
+                        "symbol": s.get("id"),
+                        "file": s.get("file"),
+                        "line_range": s.get("range"),
+                        "param_count": len(props),
+                        "contract": pc
+                    }
                 )
     return suspects
 
 
-def _detect_shotgun_surgery(nodes, in_edges, threshold=8):
+def _detect_shotgun_surgery(nodes, in_edges, symbol_map, threshold=8):
     suspects = []
     for i, n in enumerate(nodes):
         fan_in = len(in_edges[i])
         if fan_in >= threshold:
-            suspects.append({"symbol": n, "fan_in": fan_in})
+            sym_info = symbol_map.get(n, {})
+            suspects.append({
+                "symbol": n,
+                "file": sym_info.get("file"),
+                "line_range": sym_info.get("range"),
+                "fan_in": fan_in
+            })
     return suspects
 
 
-def _detect_cycles(nodes, out_edges):
+def _detect_cycles(nodes, out_edges, symbol_map):
     cyc = []
     for comp in _tarjan_scc(out_edges):
         if len(comp) > 1:
-            cyc.append({"members": [nodes[i] for i in comp], "size": len(comp)})
+            cycle_nodes = [nodes[i] for i in comp]
+            cycle_with_paths = []
+            for node in cycle_nodes:
+                sym_info = symbol_map.get(node, {})
+                cycle_with_paths.append({
+                    "symbol": node,
+                    "file": sym_info.get("file"),
+                    "line_range": sym_info.get("range")
+                })
+            cyc.append({"members": cycle_with_paths, "size": len(comp)})
     return cyc
 
 
@@ -254,10 +282,26 @@ def _connascence_signals(ir, nodes, call_names, in_edges):
 
 def analyze_architecture_ir(ir: dict) -> dict:
     nodes, idx, out_edges, in_edges, call_names = _build_arch_graph(ir)
+
+    # Build symbol map for file path lookups
+    symbol_map = {}
+    for s in ir.get("symbols", []):
+        sid = s.get("id")
+        if sid:
+            symbol_map[sid] = {
+                "file": s.get("file"),
+                "range": s.get("range"),
+                "kind": s.get("kind"),
+                "name": s.get("name")
+            }
+
     Ca, Ce, I = _compute_coupling(nodes, out_edges, in_edges)
     coupling = {}
     for i, n in enumerate(nodes):
+        sym_info = symbol_map.get(n, {})
         coupling[n] = {
+            "file": sym_info.get("file"),
+            "line_range": sym_info.get("range"),
             "afferent": Ca[i],
             "efferent": Ce[i],
             "instability": round(I[i], 3),
@@ -267,10 +311,10 @@ def analyze_architecture_ir(ir: dict) -> dict:
         "summary": {"symbols": len(nodes), "calls": summary_calls},
         "coupling": coupling,
         "anti_patterns": {
-            "god_functions": _detect_god_functions(nodes, call_names),
+            "god_functions": _detect_god_functions(nodes, call_names, symbol_map),
             "long_parameter_list": _detect_long_parameter_list(ir),
-            "shotgun_surgery_risk": _detect_shotgun_surgery(nodes, in_edges),
-            "cycles": _detect_cycles(nodes, out_edges),
+            "shotgun_surgery_risk": _detect_shotgun_surgery(nodes, in_edges, symbol_map),
+            "cycles": _detect_cycles(nodes, out_edges, symbol_map),
         },
         "connascence": _connascence_signals(ir, nodes, call_names, in_edges),
     }

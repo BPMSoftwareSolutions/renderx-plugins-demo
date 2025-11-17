@@ -495,2516 +495,5031 @@
     },
     "coupling": {
       "CanvasDrop.ts::onDragStart": {
+        "file": "../../packages\\canvas\\src\\ui\\CanvasDrop.ts",
+        "line_range": [
+          37,
+          56
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CanvasDrop.ts::onDragMove": {
+        "file": "../../packages\\canvas\\src\\ui\\CanvasDrop.ts",
+        "line_range": [
+          58,
+          84
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CanvasDrop.ts::onDragEnd": {
+        "file": "../../packages\\canvas\\src\\ui\\CanvasDrop.ts",
+        "line_range": [
+          86,
+          125
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CanvasDrop.ts::onSelected": {
+        "file": "../../packages\\canvas\\src\\ui\\CanvasDrop.ts",
+        "line_range": [
+          127,
+          133
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CanvasHeader.tsx::CanvasHeader": {
+        "file": "../../packages\\canvas\\src\\ui\\CanvasHeader.tsx",
+        "line_range": [
+          9,
+          181
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CanvasPage.tsx::CanvasPage": {
+        "file": "../../packages\\canvas\\src\\ui\\CanvasPage.tsx",
+        "line_range": [
+          7,
+          29
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CanvasDrop.container-route.spec.ts::makeConductor": {
+        "file": "../../packages\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+        "line_range": [
+          27,
+          35
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "_clipboard.ts::setClipboardText": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\_clipboard.ts",
+        "line_range": [
+          26,
+          33
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "augment.line.stage-crew.ts::ensureLineMarkers": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\augment\\augment.line.stage-crew.ts",
+        "line_range": [
+          4,
+          28
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "augment.line.stage-crew.ts::enhanceLine": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\augment\\augment.line.stage-crew.ts",
+        "line_range": [
+          30,
+          52
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "line.recompute.stage-crew.ts::recomputeLineSvg": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
+        "line_range": [
+          73,
+          205
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "copy.stage-crew.ts::serializeElement": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+        "line_range": [
+          9,
+          48
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.arrangement.ts::resolveTemplate": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.arrangement.ts",
+        "line_range": [
+          1,
+          15
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "create.css.stage-crew.ts::injectCssFallback": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.css.stage-crew.ts",
+        "line_range": [
+          1,
+          15
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "create.css.stage-crew.ts::injectRawCss": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.css.stage-crew.ts",
+        "line_range": [
+          17,
+          26
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "create.dom.stage-crew.ts::applyClasses": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "line_range": [
+          22,
+          24
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.dom.stage-crew.ts::appendTo": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "line_range": [
+          33,
+          35
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.from-import.ts::transformImportToCreatePayload": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+        "line_range": [
+          4,
+          43
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "create.from-import.ts::attachStandardImportInteractions": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+        "line_range": [
+          46,
+          68
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.from-import.ts::transformClipboardToCreatePayload": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+        "line_range": [
+          82,
+          94
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "create.from-import.ts::toCreatePayloadFromData": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+        "line_range": [
+          97,
+          108
+        ],
         "afferent": 1,
         "efferent": 3,
         "instability": 0.75
       },
       "create.interactions.stage-crew.ts::handleMouseMove": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.interactions.stage-crew.ts",
+        "line_range": [
+          73,
+          86
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "create.interactions.stage-crew.ts::handleMouseUp": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.interactions.stage-crew.ts",
+        "line_range": [
+          88,
+          108
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "create.notify.ts::notifyUi": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.notify.ts",
+        "line_range": [
+          3,
+          17
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "create.react.stage-crew.ts::renderReact": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+        "line_range": [
+          11,
+          81
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "create.react.stage-crew.ts::cleanupReactRoot": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+        "line_range": [
+          157,
+          163
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.stage-crew.ts::createNode": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.stage-crew.ts",
+        "line_range": [
+          39,
+          164
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "delete.stage-crew.ts::hideOverlaysForId": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+        "line_range": [
+          22,
+          29
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "deselect.stage-crew.ts::hideOverlayById": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_range": [
+          3,
+          9
+        ],
         "afferent": 3,
         "efferent": 1,
         "instability": 0.25
       },
       "deselect.stage-crew.ts::hideAllOverlays": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "line_range": [
+          11,
+          18
+        ],
         "afferent": 1,
         "efferent": 3,
         "instability": 0.75
       },
       "drag.stage-crew.ts::updatePosition": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_range": [
+          6,
+          60
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "drag.stage-crew.ts::startDrag": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_range": [
+          62,
+          84
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "drag.stage-crew.ts::endDrag": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_range": [
+          86,
+          108
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "drag.stage-crew.ts::forwardToControlPanel": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "line_range": [
+          111,
+          114
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "export.css.stage-crew.ts::collectCssClasses": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.css.stage-crew.ts",
+        "line_range": [
+          6,
+          73
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.discover.stage-crew.ts::discoverComponentsFromDom": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.discover.stage-crew.ts",
+        "line_range": [
+          1,
+          50
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.gif.stage-crew.ts::lerp": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.gif.stage-crew.ts",
+        "line_range": [
+          209,
+          211
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.mp4-encoder.ts::BaseEncoder.constructor": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.mp4-encoder.ts",
+        "line_range": [
+          26,
+          26
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "export.mp4-encoder.ts::WebCodecsMP4Encoder.constructor": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.mp4-encoder.ts",
+        "line_range": [
+          53,
+          55
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "export.mp4-encoder.ts::MediaRecorderMP4Encoder.constructor": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.mp4-encoder.ts",
+        "line_range": [
+          59,
+          61
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "export.mp4.stage-crew.ts::lerp": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.mp4.stage-crew.ts",
+        "line_range": [
+          179,
+          181
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.pure.ts::buildUiFileContent": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.pure.ts",
+        "line_range": [
+          3,
+          92
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "export.stage-crew.ts::collectLayoutData": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.stage-crew.ts",
+        "line_range": [
+          15,
+          227
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "import.css.stage-crew.ts::injectCssClasses": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\import\\import.css.stage-crew.ts",
+        "line_range": [
+          3,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.nodes.stage-crew.ts::applyHierarchyAndOrder": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\import\\import.nodes.stage-crew.ts",
+        "line_range": [
+          35,
+          72
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.parse.pure.ts::parseUiFile": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\import\\import.parse.pure.ts",
+        "line_range": [
+          32,
+          94
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "line.manip.stage-crew.ts::updateCurve": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_range": [
+          20,
+          36
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "line.manip.stage-crew.ts::updateRotate": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_range": [
+          38,
+          42
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "line.manip.stage-crew.ts::startLineManip": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_range": [
+          44,
+          47
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "line.manip.stage-crew.ts::moveLineManip": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_range": [
+          49,
+          67
+        ],
         "afferent": 1,
         "efferent": 3,
         "instability": 0.75
       },
       "line.manip.stage-crew.ts::endLineManip": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+        "line_range": [
+          69,
+          71
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "paste.stage-crew.ts::_serializeElementFallback": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "line_range": [
+          11,
+          27
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.stage-crew.ts::clamp": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          6,
+          8
+        ],
         "afferent": 5,
         "efferent": 1,
         "instability": 0.167
       },
       "resize.stage-crew.ts::getResizeConfig": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          10,
+          20
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "resize.stage-crew.ts::readCssNumber": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          23,
+          35
+        ],
         "afferent": 7,
         "efferent": 1,
         "instability": 0.125
       },
       "resize.stage-crew.ts::writeCssNumber": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          37,
+          39
+        ],
         "afferent": 7,
         "efferent": 1,
         "instability": 0.125
       },
       "resize.stage-crew.ts::startResize": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          41,
+          79
+        ],
         "afferent": 0,
         "efferent": 6,
         "instability": 1.0
       },
       "resize.stage-crew.ts::updateSize": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          81,
+          251
+        ],
         "afferent": 0,
         "efferent": 11,
         "instability": 1.0
       },
       "resize.stage-crew.ts::endResize": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "line_range": [
+          253,
+          279
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "resize.line.stage-crew.ts::startLineResize": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "line_range": [
+          2,
+          7
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "resize.line.stage-crew.ts::updateLine": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "line_range": [
+          9,
+          27
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "resize.line.stage-crew.ts::endLineResize": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "line_range": [
+          29,
+          34
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.css.stage-crew.ts::ensureOverlayCss": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.css.stage-crew.ts",
+        "line_range": [
+          1,
+          25
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "select.overlay.dom.stage-crew.ts::getCanvasRect": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+        "line_range": [
+          35,
+          37
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "select.overlay.dom.stage-crew.ts::applyOverlayRectForEl": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+        "line_range": [
+          39,
+          79
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "select.overlay.line-advanced.stage-crew.ts::ensureAdvancedLineCss": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+        "line_range": [
+          5,
+          21
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "select.overlay.line-advanced.stage-crew.ts::readVar": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+        "line_range": [
+          118,
+          127
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.line-advanced.stage-crew.ts::rot": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+        "line_range": [
+          149,
+          155
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.line-advanced.stage-crew.ts::onMove": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+        "line_range": [
+          305,
+          310
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.line-advanced.stage-crew.ts::onUp": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+        "line_range": [
+          311,
+          315
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.line-resize.stage-crew.ts::ensureLineCss": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-resize.stage-crew.ts",
+        "line_range": [
+          4,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "select.overlay.line-resize.stage-crew.ts::readVar": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-resize.stage-crew.ts",
+        "line_range": [
+          51,
+          60
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-resize.stage-crew.ts",
+        "line_range": [
+          79,
+          174
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "select.overlay.resize.stage-crew.ts::getResizeConfig": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.resize.stage-crew.ts",
+        "line_range": [
+          9,
+          19
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "select.overlay.resize.stage-crew.ts::attachResizeHandlers": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.resize.stage-crew.ts",
+        "line_range": [
+          21,
+          122
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "select.stage-crew.ts::configureHandlesVisibility": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_range": [
+          44,
+          60
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "select.stage-crew.ts::showSelectionOverlay": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_range": [
+          62,
+          111
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "select.stage-crew.ts::hideSelectionOverlay": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_range": [
+          113,
+          118
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "select.stage-crew.ts::notifyUi": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "line_range": [
+          120,
+          135
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "update.stage-crew.ts::updateAttribute": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
+        "line_range": [
+          8,
+          37
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "update.stage-crew.ts::refreshControlPanel": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
+        "line_range": [
+          39,
+          75
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "update.svg-node.stage-crew.ts::refreshControlPanel": {
+        "file": "../../packages\\canvas-component\\src\\symphonies\\update\\update.svg-node.stage-crew.ts",
+        "line_range": [
+          110,
+          132
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-registry.store.ts::CssRegistryStore.constructor": {
+        "file": "../../packages\\control-panel\\src\\state\\css-registry.store.ts",
+        "line_range": [
+          29,
+          32
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "css-registry.store.ts::CssRegistryStore.if": {
+        "file": "../../packages\\control-panel\\src\\state\\css-registry.store.ts",
+        "line_range": [
+          214,
+          217
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "observer.store.ts::setSelectionObserver": {
+        "file": "../../packages\\control-panel\\src\\state\\observer.store.ts",
+        "line_range": [
+          29,
+          33
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "observer.store.ts::setClassesObserver": {
+        "file": "../../packages\\control-panel\\src\\state\\observer.store.ts",
+        "line_range": [
+          39,
+          43
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "observer.store.ts::setCssRegistryObserver": {
+        "file": "../../packages\\control-panel\\src\\state\\observer.store.ts",
+        "line_range": [
+          49,
+          53
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "observer.store.ts::clearAllObservers": {
+        "file": "../../packages\\control-panel\\src\\state\\observer.store.ts",
+        "line_range": [
+          60,
+          65
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "rule-engine.ts::setAllRulesConfig": {
+        "file": "../../packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "line_range": [
+          71,
+          73
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "rule-engine.ts::loadAllRulesFromWindow": {
+        "file": "../../packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "line_range": [
+          75,
+          83
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "rule-engine.ts::ComponentRuleEngine.applyUpdate": {
+        "file": "../../packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "line_range": [
+          486,
+          570
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "rule-engine.ts::ComponentRuleEngine.for": {
+        "file": "../../packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "line_range": [
+          635,
+          701
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "sanitizeHtml.ts::isDataImage": {
+        "file": "../../packages\\canvas-component\\src\\temp-deps\\sanitizeHtml.ts",
+        "line_range": [
+          59,
+          63
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.augment.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+        "line_range": [
+          15,
+          24
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.augment.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+        "line_range": [
+          26,
+          28
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.manip.handlers.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
+        "line_range": [
+          11,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.overlay.attach.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.overlay.attach.spec.ts",
+        "line_range": [
+          12,
+          21
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.overlay.drag.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
+        "line_range": [
+          11,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.recompute.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
+        "line_range": [
+          11,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.recompute.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
+        "line_range": [
+          22,
+          24
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.resize.scale.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
+        "line_range": [
+          7,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.resize.scale.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
+        "line_range": [
+          18,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.viewbox.autosize.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
+        "line_range": [
+          6,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "advanced-line.viewbox.autosize.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
+        "line_range": [
+          17,
+          19
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "container-child-overlay.spec.ts::makeContainerTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+        "line_range": [
+          15,
+          25
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "container-child-overlay.spec.ts::makeChildTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+        "line_range": [
+          27,
+          36
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "container-child-selection.spec.ts::makeContainerTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\container-child-selection.spec.ts",
+        "line_range": [
+          5,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "container-child-selection.spec.ts::makeChildTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\container-child-selection.spec.ts",
+        "line_range": [
+          17,
+          26
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "copy-paste.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
+        "line_range": [
+          24,
+          29
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "copy-paste.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
+        "line_range": [
+          31,
+          58
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "copy-paste.spec.ts::createButton": {
+        "file": "../../packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
+        "line_range": [
+          60,
+          74
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.container-append.spec.ts::makeContainerTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.container-append.spec.ts",
+        "line_range": [
+          5,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.container-append.spec.ts::makeChildTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.container-append.spec.ts",
+        "line_range": [
+          17,
+          26
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.dom.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.dom.spec.ts",
+        "line_range": [
+          5,
+          14
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.dom.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.dom.spec.ts",
+        "line_range": [
+          16,
+          18
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.io.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.io.spec.ts",
+        "line_range": [
+          5,
+          18
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.react.integration.spec.ts::makeReactComponentTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.react.integration.spec.ts",
+        "line_range": [
+          26,
+          36
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.react.integration.spec.ts::makeRegularComponentTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.react.integration.spec.ts",
+        "line_range": [
+          38,
+          46
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.react.integration.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.react.integration.spec.ts",
+        "line_range": [
+          48,
+          57
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.react.spec.ts::makeReactTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.react.spec.ts",
+        "line_range": [
+          27,
+          35
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.react.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.react.spec.ts",
+        "line_range": [
+          37,
+          49
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.svg.basic.spec.ts::makeSvgTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.svg.basic.spec.ts",
+        "line_range": [
+          5,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.svg.basic.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.svg.basic.spec.ts",
+        "line_range": [
+          18,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create.svg.markup.spec.ts::makeSvgTemplateWithMarkup": {
+        "file": "../../packages\\canvas-component\\__tests__\\create.svg.markup.spec.ts",
+        "line_range": [
+          5,
+          19
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "delete.spec.ts::ensureOverlays": {
+        "file": "../../packages\\canvas-component\\__tests__\\delete.spec.ts",
+        "line_range": [
+          21,
+          29
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "delete.spec.ts::ensureComponent": {
+        "file": "../../packages\\canvas-component\\__tests__\\delete.spec.ts",
+        "line_range": [
+          31,
+          37
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "deselection.spec.ts::ensureOverlays": {
+        "file": "../../packages\\canvas-component\\__tests__\\deselection.spec.ts",
+        "line_range": [
+          24,
+          32
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "drag.dom.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\drag.dom.spec.ts",
+        "line_range": [
+          5,
+          7
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "drag.overlay-hide.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+        "line_range": [
+          6,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "drag.overlay-hide.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+        "line_range": [
+          17,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "drag.transform.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\drag.transform.spec.ts",
+        "line_range": [
+          18,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export-import.content.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\export-import.content.spec.ts",
+        "line_range": [
+          60,
+          65
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export-import.content.spec.ts::makeExportCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export-import.content.spec.ts",
+        "line_range": [
+          67,
+          83
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export-import.content.spec.ts::makeImportCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export-import.content.spec.ts",
+        "line_range": [
+          85,
+          105
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.integration.basic.spec.ts::makeIntegrationCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.integration.basic.spec.ts",
+        "line_range": [
+          9,
+          53
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.integration.dom-errors.spec.ts::makeIntegrationCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.integration.dom-errors.spec.ts",
+        "line_range": [
+          8,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.integration.dom-scan.spec.ts::makeIntegrationCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.integration.dom-scan.spec.ts",
+        "line_range": [
+          7,
+          17
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.integration.structure.spec.ts::makeIntegrationCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.integration.structure.spec.ts",
+        "line_range": [
+          8,
+          23
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.io.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.io.spec.ts",
+        "line_range": [
+          5,
+          53
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.json-css.end-to-end.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.json-css.end-to-end.spec.ts",
+        "line_range": [
+          9,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.pure.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.pure.spec.ts",
+        "line_range": [
+          4,
+          38
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "export.stage-crew.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\export.stage-crew.spec.ts",
+        "line_range": [
+          5,
+          19
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.base-classes.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.base-classes.spec.ts",
+        "line_range": [
+          5,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.base-classes.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.base-classes.spec.ts",
+        "line_range": [
+          12,
+          33
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.instance-class.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.instance-class.spec.ts",
+        "line_range": [
+          25,
+          30
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.instance-class.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.instance-class.spec.ts",
+        "line_range": [
+          32,
+          67
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.integration.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.integration.spec.ts",
+        "line_range": [
+          53,
+          58
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.integration.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.integration.spec.ts",
+        "line_range": [
+          60,
+          88
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.nesting.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.nesting.spec.ts",
+        "line_range": [
+          25,
+          27
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.nesting.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.nesting.spec.ts",
+        "line_range": [
+          29,
+          59
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.selection.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.selection.spec.ts",
+        "line_range": [
+          30,
+          32
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.selection.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.selection.spec.ts",
+        "line_range": [
+          34,
+          61
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.variant-toggle.spec.ts::setupCanvas": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
+        "line_range": [
+          19,
+          24
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "import.variant-toggle.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
+        "line_range": [
+          26,
+          46
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "line.overlay-data-driven.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+        "line_range": [
+          7,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "line.overlay-data-driven.spec.ts::createLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+        "line_range": [
+          18,
+          28
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "line.svg.spec.ts::makeSvgLineTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\line.svg.spec.ts",
+        "line_range": [
+          6,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "line.svg.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\line.svg.spec.ts",
+        "line_range": [
+          18,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "package.register.spec.ts::createFakeConductor": {
+        "file": "../../packages\\canvas-component\\__tests__\\package.register.spec.ts",
+        "line_range": [
+          4,
+          13
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.dom.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+        "line_range": [
+          26,
+          35
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.dom.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+        "line_range": [
+          37,
+          39
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.dom.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+        "line_range": [
+          41,
+          44
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.overlay-align.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+        "line_range": [
+          7,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.overlay-align.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+        "line_range": [
+          18,
+          21
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.overlay-tools-config.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+        "line_range": [
+          7,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.play.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+        "line_range": [
+          25,
+          34
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.play.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+        "line_range": [
+          36,
+          39
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.plugin-route.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+        "line_range": [
+          6,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.plugin-route.spec.ts::dispatchMouse": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+        "line_range": [
+          17,
+          20
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "resize.svg.spec.ts::makeSvgTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\resize.svg.spec.ts",
+        "line_range": [
+          6,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "routing-declarations.spec.ts::simulateRouting": {
+        "file": "../../packages\\canvas-component\\__tests__\\routing-declarations.spec.ts",
+        "line_range": [
+          89,
+          95
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "select.overlay.css.spec.ts::makeTemplate": {
+        "file": "../../packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts",
+        "line_range": [
+          6,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "select.svg-node.overlay.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts",
+        "line_range": [
+          6,
+          8
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "svg-node-click-select.spec.ts::makeSvgTemplateWithNestedChildren": {
+        "file": "../../packages\\canvas-component\\__tests__\\svg-node-click-select.spec.ts",
+        "line_range": [
+          5,
+          26
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "svg-node-click-select.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\svg-node-click-select.spec.ts",
+        "line_range": [
+          28,
+          33
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "svg-node.update.spec.ts::makeSvgTemplateWithNestedChildren": {
+        "file": "../../packages\\canvas-component\\__tests__\\svg-node.update.spec.ts",
+        "line_range": [
+          9,
+          30
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "svg-node.update.spec.ts::makeCtx": {
+        "file": "../../packages\\canvas-component\\__tests__\\svg-node.update.spec.ts",
+        "line_range": [
+          32,
+          41
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "host-click-select.ts::setupHostClickToSelect": {
+        "file": "../../packages\\canvas-component\\__tests__\\helpers\\host-click-select.ts",
+        "line_range": [
+          4,
+          30
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "host-click-select.ts::setupProductionHostClickToSelect": {
+        "file": "../../packages\\canvas-component\\__tests__\\helpers\\host-click-select.ts",
+        "line_range": [
+          33,
+          72
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "host-click-select.ts::setupHostClickToSelectLegacy": {
+        "file": "../../packages\\canvas-component\\__tests__\\helpers\\host-click-select.ts",
+        "line_range": [
+          75,
+          89
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CheckboxInput.tsx::handleChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CheckboxInput.tsx",
+        "line_range": [
+          12,
+          18
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CodeTextarea.tsx::validateAndReport": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+        "line_range": [
+          29,
+          34
+        ],
         "afferent": 3,
         "efferent": 1,
         "instability": 0.25
       },
       "CodeTextarea.tsx::detectExtractCandidate": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+        "line_range": [
+          36,
+          39
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "CodeTextarea.tsx::handleChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+        "line_range": [
+          41,
+          47
+        ],
         "afferent": 0,
         "efferent": 2,
         "instability": 1.0
       },
       "CodeTextarea.tsx::handleFormat": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+        "line_range": [
+          82,
+          86
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CodeTextarea.tsx::handleImportClick": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+        "line_range": [
+          88,
+          90
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CodeTextarea.tsx::extractFromFullSvg": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+        "line_range": [
+          101,
+          140
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "ColorInput.tsx::handleTextChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\ColorInput.tsx",
+        "line_range": [
+          24,
+          40
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ColorInput.tsx::handleColorChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\ColorInput.tsx",
+        "line_range": [
+          42,
+          48
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "index.ts::registerFieldRenderer": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+        "line_range": [
+          38,
+          40
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "NumberInput.tsx::handleChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\NumberInput.tsx",
+        "line_range": [
+          19,
+          56
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SelectInput.tsx::handleChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\SelectInput.tsx",
+        "line_range": [
+          14,
+          27
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "TextInput.tsx::handleChange": {
+        "file": "../../packages\\control-panel\\src\\components\\field-renderers\\TextInput.tsx",
+        "line_range": [
+          19,
+          55
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CssEditorModal.tsx::handleContentChange": {
+        "file": "../../packages\\control-panel\\src\\components\\modals\\CssEditorModal.tsx",
+        "line_range": [
+          37,
+          41
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CssEditorModal.tsx::handleSave": {
+        "file": "../../packages\\control-panel\\src\\components\\modals\\CssEditorModal.tsx",
+        "line_range": [
+          43,
+          46
+        ],
         "afferent": 1,
         "efferent": 0,
         "instability": 0.0
       },
       "CssEditorModal.tsx::handleCancel": {
+        "file": "../../packages\\control-panel\\src\\components\\modals\\CssEditorModal.tsx",
+        "line_range": [
+          48,
+          58
+        ],
         "afferent": 1,
         "efferent": 0,
         "instability": 0.0
       },
       "CssEditorModal.tsx::handleKeyDown": {
+        "file": "../../packages\\control-panel\\src\\components\\modals\\CssEditorModal.tsx",
+        "line_range": [
+          60,
+          87
+        ],
         "afferent": 0,
         "efferent": 2,
         "instability": 1.0
       },
       "CssEditorModal.tsx::generateLineNumbers": {
+        "file": "../../packages\\control-panel\\src\\components\\modals\\CssEditorModal.tsx",
+        "line_range": [
+          89,
+          96
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::updateAvailableClasses": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          35,
+          37
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::handleSubmit": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          49,
+          54
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::handleEditClass": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          56,
+          73
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::handleCreateNewClass": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          75,
+          98
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::handleSaveClass": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          100,
+          118
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::handleCancelEdit": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          120,
+          124
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ClassManager.tsx::_handleDeleteClass": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\ClassManager.tsx",
+        "line_range": [
+          126,
+          145
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PropertyFieldRenderer.tsx::handleValidate": {
+        "file": "../../packages\\control-panel\\src\\components\\sections\\PropertyFieldRenderer.tsx",
+        "line_range": [
+          28,
+          35
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "useControlPanelSequences.ts::useControlPanelSequences": {
+        "file": "../../packages\\control-panel\\src\\hooks\\useControlPanelSequences.ts",
+        "line_range": [
+          17,
+          213
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useControlPanelState.ts::useControlPanelState": {
+        "file": "../../packages\\control-panel\\src\\hooks\\useControlPanelState.ts",
+        "line_range": [
+          11,
+          106
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useSchemaResolver.ts::useSchemaResolver": {
+        "file": "../../packages\\control-panel\\src\\hooks\\useSchemaResolver.ts",
+        "line_range": [
+          30,
+          76
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "schema-resolver.service.ts::SchemaResolverService.constructor": {
+        "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+        "line_range": [
+          21,
+          23
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "schema-resolver.service.ts::SchemaResolverService.registerComponentSchema": {
+        "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+        "line_range": [
+          28,
+          30
+        ],
         "afferent": 4,
         "efferent": 1,
         "instability": 0.2
       },
       "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas": {
+        "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+        "line_range": [
+          37,
+          85
+        ],
         "afferent": 1,
         "efferent": 4,
         "instability": 0.8
       },
       "schema-resolver.service.ts::SchemaResolverService.if": {
+        "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+        "line_range": [
+          427,
+          437
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "schema-resolver.service.ts::SchemaResolverService.switch": {
+        "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+        "line_range": [
+          548,
+          564
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "classes.stage-crew.ts::addClass": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
+        "line_range": [
+          3,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "classes.stage-crew.ts::removeClass": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
+        "line_range": [
+          17,
+          29
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-management.stage-crew.ts::createCssClass": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          6,
+          38
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-management.stage-crew.ts::updateCssClass": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          40,
+          71
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-management.stage-crew.ts::deleteCssClass": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          73,
+          110
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "css-management.stage-crew.ts::getCssClass": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          112,
+          139
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-management.stage-crew.ts::listCssClasses": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          141,
+          160
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-management.stage-crew.ts::removeClassFromAllElements": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          163,
+          183
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "css-management.stage-crew.ts::applyCssClassToElement": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          186,
+          215
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css-management.stage-crew.ts::removeCssClassFromElement": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "line_range": [
+          218,
+          247
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "selection.stage-crew.ts::deriveSelectionModel": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\selection\\selection.stage-crew.ts",
+        "line_range": [
+          4,
+          79
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::initConfig": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          96,
+          107
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::initResolver": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          109,
+          127
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::registerObservers": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          174,
+          185
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::notifyReady": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          187,
+          199
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::generateFields": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          205,
+          226
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::generateSections": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          228,
+          249
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "ui.stage-crew.ts::renderView": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          251,
+          265
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::prepareField": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          271,
+          291
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::dispatchField": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          293,
+          329
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::setDirty": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          331,
+          341
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::awaitRefresh": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          343,
+          353
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::validateField": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          359,
+          386
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "ui.stage-crew.ts::mergeErrors": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          388,
+          402
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::updateView": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          404,
+          415
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui.stage-crew.ts::toggleSection": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          421,
+          439
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "update.stage-crew.ts::updateFromElement": {
+        "file": "../../packages\\control-panel\\src\\symphonies\\update\\update.stage-crew.ts",
+        "line_range": [
+          9,
+          125
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ControlPanel.tsx::ControlPanel": {
+        "file": "../../packages\\control-panel\\src\\ui\\ControlPanel.tsx",
+        "line_range": [
+          13,
+          100
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "field.utils.ts::getNestedValue": {
+        "file": "../../packages\\control-panel\\src\\utils\\field.utils.ts",
+        "line_range": [
+          8,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "field.utils.ts::setNestedValue": {
+        "file": "../../packages\\control-panel\\src\\utils\\field.utils.ts",
+        "line_range": [
+          15,
+          23
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "attribute-editing.bidirectional.spec.ts::makeButtonTemplate": {
+        "file": "../../packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
+        "line_range": [
+          31,
+          40
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "attribute-editing.integration.spec.ts::makeButtonTemplate": {
+        "file": "../../packages\\control-panel\\__tests__\\attribute-editing.integration.spec.ts",
+        "line_range": [
+          12,
+          21
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "classes.editing.spec.ts::makeButtonTemplate": {
+        "file": "../../packages\\control-panel\\__tests__\\classes.editing.spec.ts",
+        "line_range": [
+          7,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "css.idempotency.spec.ts::makeCtx": {
+        "file": "../../packages\\control-panel\\__tests__\\css.idempotency.spec.ts",
+        "line_range": [
+          5,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "integration.end-to-end.spec.ts::makeButtonTemplate": {
+        "file": "../../packages\\control-panel\\__tests__\\integration.end-to-end.spec.ts",
+        "line_range": [
+          16,
+          25
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "live-updates.drag-resize.spec.ts::makeButtonTemplate": {
+        "file": "../../packages\\control-panel\\__tests__\\live-updates.drag-resize.spec.ts",
+        "line_range": [
+          8,
+          17
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "observer.store.spec.ts::sel": {
+        "file": "../../packages\\control-panel\\__tests__\\observer.store.spec.ts",
+        "line_range": [
+          16,
+          16
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "observer.store.spec.ts::cls": {
+        "file": "../../packages\\control-panel\\__tests__\\observer.store.spec.ts",
+        "line_range": [
+          17,
+          17
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "observer.store.spec.ts::css": {
+        "file": "../../packages\\control-panel\\__tests__\\observer.store.spec.ts",
+        "line_range": [
+          18,
+          18
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "schema-resolver.memo.spec.ts::makeSchema": {
+        "file": "../../packages\\control-panel\\__tests__\\schema-resolver.memo.spec.ts",
+        "line_range": [
+          14,
+          19
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "selection.sequence-model-and-notify.spec.ts::makeButtonTemplate": {
+        "file": "../../packages\\control-panel\\__tests__\\selection.sequence-model-and-notify.spec.ts",
+        "line_range": [
+          6,
+          15
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ui-init.batched.spec.ts::performanceNowShim": {
+        "file": "../../packages\\control-panel\\__tests__\\ui-init.batched.spec.ts",
+        "line_range": [
+          5,
+          12
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "animation-coordinator.ts::generateConnectionPaths": {
+        "file": "../../packages\\digital-assets\\src\\animation-coordinator.ts",
+        "line_range": [
+          167,
+          195
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "cinematic-renderer.ts::CinematicPresentation.constructor": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          251,
+          260
+        ],
         "afferent": 0,
         "efferent": 2,
         "instability": 1.0
       },
       "cinematic-renderer.ts::CinematicPresentation.initializeControls": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          262,
+          302
+        ],
         "afferent": 2,
         "efferent": 9,
         "instability": 0.818
       },
       "cinematic-renderer.ts::CinematicPresentation.startPresentation": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          304,
+          309
+        ],
         "afferent": 2,
         "efferent": 3,
         "instability": 0.6
       },
       "cinematic-renderer.ts::CinematicPresentation.showScene": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          311,
+          332
+        ],
         "afferent": 5,
         "efferent": 2,
         "instability": 0.286
       },
       "cinematic-renderer.ts::CinematicPresentation.scheduleNextScene": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          334,
+          345
+        ],
         "afferent": 5,
         "efferent": 2,
         "instability": 0.286
       },
       "cinematic-renderer.ts::CinematicPresentation.nextScene": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          347,
+          357
+        ],
         "afferent": 4,
         "efferent": 4,
         "instability": 0.5
       },
       "cinematic-renderer.ts::CinematicPresentation.previousScene": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          359,
+          362
+        ],
         "afferent": 3,
         "efferent": 2,
         "instability": 0.4
       },
       "cinematic-renderer.ts::CinematicPresentation.togglePlayPause": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          364,
+          371
+        ],
         "afferent": 3,
         "efferent": 3,
         "instability": 0.5
       },
       "cinematic-renderer.ts::CinematicPresentation.updatePlayPauseButton": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          373,
+          378
+        ],
         "afferent": 3,
         "efferent": 1,
         "instability": 0.25
       },
       "cinematic-renderer.ts::CinematicPresentation.restart": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          380,
+          388
+        ],
         "afferent": 3,
         "efferent": 3,
         "instability": 0.5
       },
       "cinematic-renderer.ts::CinematicPresentation.updateProgress": {
+        "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+        "line_range": [
+          390,
+          396
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "cli.ts::showHelp": {
+        "file": "../../packages\\digital-assets\\src\\cli.ts",
+        "line_range": [
+          10,
+          36
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "config-loader.ts::ConfigLoader.constructor": {
+        "file": "../../packages\\digital-assets\\src\\config-loader.ts",
+        "line_range": [
+          189,
+          191
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "config-loader.ts::ConfigLoader.if": {
+        "file": "../../packages\\digital-assets\\src\\config-loader.ts",
+        "line_range": [
+          289,
+          291
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "create-cinematic-presentation.ts::main": {
+        "file": "../../packages\\digital-assets\\src\\create-cinematic-presentation.ts",
+        "line_range": [
+          13,
+          73
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "create-mono-journey.ts::main": {
+        "file": "../../packages\\digital-assets\\src\\create-mono-journey.ts",
+        "line_range": [
+          19,
+          56
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "generate-mono-svg.ts::main": {
+        "file": "../../packages\\digital-assets\\src\\generate-mono-svg.ts",
+        "line_range": [
+          13,
+          59
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "generic-graph-generator.ts::GenericGraphGenerator.if": {
+        "file": "../../packages\\digital-assets\\src\\generic-graph-generator.ts",
+        "line_range": [
+          238,
+          240
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "generic-graph-generator.ts::GenericGraphGenerator.switch": {
+        "file": "../../packages\\digital-assets\\src\\generic-graph-generator.ts",
+        "line_range": [
+          209,
+          215
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "generic-graph-generator.ts::GenericGraphGenerator.for": {
+        "file": "../../packages\\digital-assets\\src\\generic-graph-generator.ts",
+        "line_range": [
+          355,
+          365
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "generic-scene-generator.ts::GenericSceneGenerator.if": {
+        "file": "../../packages\\digital-assets\\src\\generic-scene-generator.ts",
+        "line_range": [
+          245,
+          251
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "generic-scene-generator.ts::GenericSceneGenerator.for": {
+        "file": "../../packages\\digital-assets\\src\\generic-scene-generator.ts",
+        "line_range": [
+          193,
+          205
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "layout.ts::withPos": {
+        "file": "../../packages\\digital-assets\\src\\layout.ts",
+        "line_range": [
+          84,
+          86
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "render-svg.ts::centerOf": {
+        "file": "../../packages\\digital-assets\\src\\render-svg.ts",
+        "line_range": [
+          353,
+          353
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "render-svg.ts::styleAttr": {
+        "file": "../../packages\\digital-assets\\src\\render-svg.ts",
+        "line_range": [
+          355,
+          355
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "render-svg.ts::transformAttr": {
+        "file": "../../packages\\digital-assets\\src\\render-svg.ts",
+        "line_range": [
+          356,
+          356
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "render-svg.ts::camelToKebab": {
+        "file": "../../packages\\digital-assets\\src\\render-svg.ts",
+        "line_range": [
+          357,
+          357
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "sample-generator.ts::generateAllSamples": {
+        "file": "../../packages\\digital-assets\\src\\sample-generator.ts",
+        "line_range": [
+          204,
+          229
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "slide-01-generator.ts::generateSlide01Graphs": {
+        "file": "../../packages\\digital-assets\\src\\slide-01-generator.ts",
+        "line_range": [
+          17,
+          117
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "slide01-generator.ts::generateSlide01Scene": {
+        "file": "../../packages\\digital-assets\\src\\slide01-generator.ts",
+        "line_range": [
+          8,
+          115
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "svg-export.ts::escapeXml": {
+        "file": "../../packages\\digital-assets\\src\\svg-export.ts",
+        "line_range": [
+          75,
+          77
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "template-processor.ts::TemplateProcessor.for": {
+        "file": "../../packages\\digital-assets\\src\\template-processor.ts",
+        "line_range": [
+          237,
+          243
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "template-processor.ts::TemplateProcessor.if": {
+        "file": "../../packages\\digital-assets\\src\\template-processor.ts",
+        "line_range": [
+          266,
+          314
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ui.stage-crew.ts::safeSetStoredTheme": {
+        "file": "../../packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          13,
+          21
+        ],
         "afferent": 3,
         "efferent": 1,
         "instability": 0.25
       },
       "ui.stage-crew.ts::getCurrentTheme": {
+        "file": "../../packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          27,
+          58
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "ui.stage-crew.ts::toggleTheme": {
+        "file": "../../packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "line_range": [
+          60,
+          96
+        ],
         "afferent": 1,
         "efferent": 2,
         "instability": 0.667
       },
       "HeaderControls.tsx::HeaderControls": {
+        "file": "../../packages\\header\\src\\ui\\HeaderControls.tsx",
+        "line_range": [
+          4,
+          14
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "HeaderThemeToggle.tsx::HeaderThemeToggle": {
+        "file": "../../packages\\header\\src\\ui\\HeaderThemeToggle.tsx",
+        "line_range": [
+          23,
+          80
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "HeaderTitle.tsx::HeaderTitle": {
+        "file": "../../packages\\header\\src\\ui\\HeaderTitle.tsx",
+        "line_range": [
+          4,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "component-mapper.ts::loadConfigFromWindow": {
+        "file": "../../packages\\host-sdk\\component-mapper.ts",
+        "line_range": [
+          84,
+          92
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "component-mapper.ts::setConfig": {
+        "file": "../../packages\\host-sdk\\component-mapper.ts",
+        "line_range": [
+          94,
+          96
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "feature-flags.ts::getUsageLog": {
+        "file": "../../packages\\host-sdk\\core\\environment\\feature-flags.ts",
+        "line_range": [
+          45,
+          47
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "feature-flags.ts::setFlagOverride": {
+        "file": "../../packages\\host-sdk\\core\\environment\\feature-flags.ts",
+        "line_range": [
+          50,
+          52
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "feature-flags.ts::clearFlagOverrides": {
+        "file": "../../packages\\host-sdk\\core\\environment\\feature-flags.ts",
+        "line_range": [
+          54,
+          56
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "EventRouter.ts::throttle": {
+        "file": "../../packages\\host-sdk\\core\\events\\EventRouter.ts",
+        "line_range": [
+          12,
+          25
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "EventRouter.ts::debounce": {
+        "file": "../../packages\\host-sdk\\core\\events\\EventRouter.ts",
+        "line_range": [
+          27,
+          28
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "interactionManifest.ts::setInteractionManifestProvider": {
+        "file": "../../packages\\host-sdk\\core\\manifests\\interactionManifest.ts",
+        "line_range": [
+          14,
+          17
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "interactionManifest.ts::getInteractionManifestStats": {
+        "file": "../../packages\\host-sdk\\core\\manifests\\interactionManifest.ts",
+        "line_range": [
+          114,
+          117
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "topicsManifest.ts::setTopicsManifestProvider": {
+        "file": "../../packages\\host-sdk\\core\\manifests\\topicsManifest.ts",
+        "line_range": [
+          23,
+          26
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "topicsManifest.ts::__setTopics": {
+        "file": "../../packages\\host-sdk\\core\\manifests\\topicsManifest.ts",
+        "line_range": [
+          73,
+          76
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "topicsManifest.ts::getTopicsManifestStats": {
+        "file": "../../packages\\host-sdk\\core\\manifests\\topicsManifest.ts",
+        "line_range": [
+          78,
+          81
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "startupValidation.ts::setStartupStatsProvider": {
+        "file": "../../packages\\host-sdk\\core\\startup\\startupValidation.ts",
+        "line_range": [
+          10,
+          10
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "index.ts::mark": {
+        "file": "../../packages\\library-component\\src\\index.ts",
+        "line_range": [
+          65,
+          70
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "openai.service.ts::OpenAIService.constructor": {
+        "file": "../../packages\\library\\src\\services\\openai.service.ts",
+        "line_range": [
+          30,
+          35
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "openai.service.ts::OpenAIService.if": {
+        "file": "../../packages\\library\\src\\services\\openai.service.ts",
+        "line_range": [
+          261,
+          263
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "openai.service.ts::ChatError.constructor": {
+        "file": "../../packages\\library\\src\\services\\openai.service.ts",
+        "line_range": [
+          305,
+          310
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "rag-enrichment-telemetry.service.ts::RAGEnrichmentTelemetryService.if": {
+        "file": "../../packages\\library\\src\\services\\rag-enrichment-telemetry.service.ts",
+        "line_range": [
+          43,
+          49
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "rag-enrichment-telemetry.service.ts::RAGEnrichmentTelemetryService.for": {
+        "file": "../../packages\\library\\src\\services\\rag-enrichment-telemetry.service.ts",
+        "line_range": [
+          148,
+          166
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "rag-enrichment.service.ts::RAGEnrichmentService.if": {
+        "file": "../../packages\\library\\src\\services\\rag-enrichment.service.ts",
+        "line_range": [
+          254,
+          262
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "rag-enrichment.service.ts::RAGEnrichmentService.for": {
+        "file": "../../packages\\library\\src\\services\\rag-enrichment.service.ts",
+        "line_range": [
+          182,
+          186
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "load.symphony.ts::mapJsonComponentToTemplateCompat": {
+        "file": "../../packages\\library\\src\\symphonies\\load.symphony.ts",
+        "line_range": [
+          5,
+          16
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "component-behavior-extractor.ts::ComponentBehaviorExtractor.for": {
+        "file": "../../packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+        "line_range": [
+          300,
+          311
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ChatMessage.tsx::formatTimestamp": {
+        "file": "../../packages\\library\\src\\ui\\ChatMessage.tsx",
+        "line_range": [
+          20,
+          25
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ChatMessage.tsx::handleAddToLibrary": {
+        "file": "../../packages\\library\\src\\ui\\ChatMessage.tsx",
+        "line_range": [
+          42,
+          46
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ChatMessage.tsx::handleEditComponent": {
+        "file": "../../packages\\library\\src\\ui\\ChatMessage.tsx",
+        "line_range": [
+          48,
+          52
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ChatMessage.tsx::handleRegenerate": {
+        "file": "../../packages\\library\\src\\ui\\ChatMessage.tsx",
+        "line_range": [
+          54,
+          63
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ChatMessage.tsx::renderComponentPreview": {
+        "file": "../../packages\\library\\src\\ui\\ChatMessage.tsx",
+        "line_range": [
+          65,
+          148
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ChatWindow.tsx::ChatWindow": {
+        "file": "../../packages\\library\\src\\ui\\ChatWindow.tsx",
+        "line_range": [
+          20,
+          311
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "ConfigStatusUI.tsx::ConfigStatusUI": {
+        "file": "../../packages\\library\\src\\ui\\ConfigStatusUI.tsx",
+        "line_range": [
+          14,
+          126
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CustomComponentList.tsx::CustomComponentList": {
+        "file": "../../packages\\library\\src\\ui\\CustomComponentList.tsx",
+        "line_range": [
+          30,
+          168
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "CustomComponentUpload.tsx::CustomComponentUpload": {
+        "file": "../../packages\\library\\src\\ui\\CustomComponentUpload.tsx",
+        "line_range": [
+          28,
+          215
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "LibraryPanel.tsx::LibraryPanel": {
+        "file": "../../packages\\library\\src\\ui\\LibraryPanel.tsx",
+        "line_range": [
+          77,
+          248
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "LibraryPreview.tsx::handleDragStart": {
+        "file": "../../packages\\library\\src\\ui\\LibraryPreview.tsx",
+        "line_range": [
+          23,
+          43
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LibraryPanel.spec.tsx::nextTick": {
+        "file": "../../packages\\library\\__tests__\\LibraryPanel.spec.tsx",
+        "line_range": [
+          59,
+          61
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "storage.utils.spec.ts::localStorageMock": {
+        "file": "../../packages\\library\\__tests__\\storage.utils.spec.ts",
+        "line_range": [
+          11,
+          25
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "drag.preview.stage-crew.ts::ensurePayload": {
+        "file": "../../packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+        "line_range": [
+          7,
+          9
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "drag.preview.stage-crew.ts::applyTemplateStyles": {
+        "file": "../../packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+        "line_range": [
+          94,
+          110
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "register.spec.ts::createFakeConductor": {
+        "file": "../../packages\\library-component\\__tests__\\register.spec.ts",
+        "line_range": [
+          7,
+          19
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "DomainEventSystem.ts::DomainEventSystem.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\DomainEventSystem.ts",
+        "line_range": [
+          25,
+          27
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DomainEventSystem.ts::DomainEventSystem.emit": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\DomainEventSystem.ts",
+        "line_range": [
+          33,
+          46
+        ],
         "afferent": 2,
         "efferent": 2,
         "instability": 0.5
       },
       "EventBus.ts::EventBus.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+        "line_range": [
+          43,
+          72
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventBus.ts::EventBus.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+        "line_range": [
+          264,
+          266
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventBus.ts::ConductorEventBus.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+        "line_range": [
+          348,
+          364
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventBus.ts::ConductorEventBus.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+        "line_range": [
+          655,
+          667
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventBus.ts::ConductorEventBus.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+        "line_range": [
+          422,
+          450
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SPAValidator.ts::SPAValidator.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+        "line_range": [
+          42,
+          64
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SPAValidator.ts::SPAValidator.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+        "line_range": [
+          725,
+          728
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SPAValidator.ts::SPAValidator.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+        "line_range": [
+          685,
+          689
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "index.ts::getSequenceByName": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+        "line_range": [
+          111,
+          113
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "index.ts::getSequencesByCategory": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\index.ts",
+        "line_range": [
+          122,
+          124
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "MusicalConductor.ts::MusicalConductor.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+        "line_range": [
+          751,
+          763
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ConductorAPI.ts::ConductorAPI.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\api\\ConductorAPI.ts",
+        "line_range": [
+          242,
+          245
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ConductorCore.ts::ConductorCore.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+        "line_range": [
+          166,
+          168
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventSubscriptionManager.ts::EventSubscriptionManager.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\core\\EventSubscriptionManager.ts",
+        "line_range": [
+          17,
+          20
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventSubscriptionManager.ts::EventSubscriptionManager.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\core\\EventSubscriptionManager.ts",
+        "line_range": [
+          232,
+          238
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceRegistry.ts::SequenceRegistry.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\core\\SequenceRegistry.ts",
+        "line_range": [
+          16,
+          18
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceRegistry.ts::SequenceRegistry.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\core\\SequenceRegistry.ts",
+        "line_range": [
+          309,
+          313
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "BeatExecutor.ts::BeatExecutor.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\BeatExecutor.ts",
+        "line_range": [
+          262,
+          264
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "BeatExecutor.ts::BeatExecutor.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\BeatExecutor.ts",
+        "line_range": [
+          363,
+          378
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ExecutionQueue.ts::ExecutionQueue.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\ExecutionQueue.ts",
+        "line_range": [
+          265,
+          269
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "MovementExecutor.ts::MovementExecutor.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\MovementExecutor.ts",
+        "line_range": [
+          262,
+          264
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "MovementExecutor.ts::MovementExecutor.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\MovementExecutor.ts",
+        "line_range": [
+          76,
+          96
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "MovementExecutor.ts::MovementExecutor.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\MovementExecutor.ts",
+        "line_range": [
+          330,
+          345
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceExecutor.ts::SequenceExecutor.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\SequenceExecutor.ts",
+        "line_range": [
+          110,
+          124
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceExecutor.ts::SequenceExecutor.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\SequenceExecutor.ts",
+        "line_range": [
+          208,
+          229
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ConductorLogger.ts::ConductorLogger.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+        "line_range": [
+          28,
+          34
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ConductorLogger.ts::ConductorLogger.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+        "line_range": [
+          134,
+          139
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ConductorLogger.ts::ConductorLogger.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+        "line_range": [
+          206,
+          210
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ConductorLogger.ts::ConductorLogger.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\ConductorLogger.ts",
+        "line_range": [
+          211,
+          222
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DataBaton.ts::DataBaton.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DataBaton.ts",
+        "line_range": [
+          132,
+          134
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DataBaton.ts::DataBaton.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DataBaton.ts",
+        "line_range": [
+          86,
+          96
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DuplicationDetector.ts::DuplicationDetector.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+        "line_range": [
+          24,
+          31
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DuplicationDetector.ts::DuplicationDetector.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+        "line_range": [
+          167,
+          175
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DuplicationDetector.ts::DuplicationDetector.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+        "line_range": [
+          160,
+          164
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventLogger.ts::EventLogger.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\EventLogger.ts",
+        "line_range": [
+          426,
+          431
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PerformanceTracker.ts::PerformanceTracker.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\PerformanceTracker.ts",
+        "line_range": [
+          318,
+          326
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PerformanceTracker.ts::PerformanceTracker.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\PerformanceTracker.ts",
+        "line_range": [
+          426,
+          435
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StatisticsManager.ts::StatisticsManager.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\StatisticsManager.ts",
+        "line_range": [
+          11,
+          26
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StatisticsManager.ts::StatisticsManager.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\StatisticsManager.ts",
+        "line_range": [
+          230,
+          232
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CallbackRegistry.ts::CallbackRegistry.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\CallbackRegistry.ts",
+        "line_range": [
+          212,
+          215
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CallbackRegistry.ts::CallbackRegistry.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\CallbackRegistry.ts",
+        "line_range": [
+          220,
+          224
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventOrchestrator.ts::EventOrchestrator.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\EventOrchestrator.ts",
+        "line_range": [
+          34,
+          36
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventOrchestrator.ts::EventOrchestrator.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\EventOrchestrator.ts",
+        "line_range": [
+          180,
+          191
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "EventOrchestrator.ts::EventOrchestrator.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\EventOrchestrator.ts",
+        "line_range": [
+          281,
+          300
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceOrchestrator.ts::SequenceOrchestrator.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\SequenceOrchestrator.ts",
+        "line_range": [
+          473,
+          475
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginInterfaceFacade.ts::PluginInterfaceFacade.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginInterfaceFacade.ts",
+        "line_range": [
+          35,
+          38
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginInterfaceFacade.ts::PluginInterfaceFacade.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginInterfaceFacade.ts",
+        "line_range": [
+          241,
+          243
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginInterfaceFacade.ts::PluginInterfaceFacade.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginInterfaceFacade.ts",
+        "line_range": [
+          250,
+          260
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginLoader.ts::PluginLoader.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+        "line_range": [
+          392,
+          400
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginLoader.ts::PluginLoader.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+        "line_range": [
+          208,
+          237
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginManager.ts::PluginManager.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+        "line_range": [
+          699,
+          706
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginManager.ts::PluginManager.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+        "line_range": [
+          563,
+          616
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginManifestLoader.ts::PluginManifestLoader.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+        "line_range": [
+          297,
+          299
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginManifestLoader.ts::PluginManifestLoader.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+        "line_range": [
+          236,
+          244
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginValidator.ts::PluginValidator.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginValidator.ts",
+        "line_range": [
+          351,
+          353
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceConflictManager.ts::ResourceConflictManager.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceConflictManager.ts",
+        "line_range": [
+          260,
+          264
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceConflictResolver.ts::ResourceConflictResolver.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceConflictResolver.ts",
+        "line_range": [
+          17,
+          19
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceConflictResolver.ts::ResourceConflictResolver.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceConflictResolver.ts",
+        "line_range": [
+          249,
+          251
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceDelegator.ts::ResourceDelegator.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceDelegator.ts",
+        "line_range": [
+          43,
+          45
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceDelegator.ts::ResourceDelegator.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceDelegator.ts",
+        "line_range": [
+          327,
+          336
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceDelegator.ts::ResourceDelegator.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceDelegator.ts",
+        "line_range": [
+          339,
+          353
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceManager.ts::ResourceManager.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceManager.ts",
+        "line_range": [
+          20,
+          23
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceManager.ts::ResourceManager.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceManager.ts",
+        "line_range": [
+          196,
+          212
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceManager.ts::ResourceManager.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceManager.ts",
+        "line_range": [
+          217,
+          252
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceOwnershipTracker.ts::ResourceOwnershipTracker.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceOwnershipTracker.ts",
+        "line_range": [
+          264,
+          268
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ResourceOwnershipTracker.ts::ResourceOwnershipTracker.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\resources\\ResourceOwnershipTracker.ts",
+        "line_range": [
+          257,
+          262
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StageCrew.ts::BeatTxn.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\stage\\StageCrew.ts",
+        "line_range": [
+          172,
+          176
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StageCrew.ts::BeatTxn.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\stage\\StageCrew.ts",
+        "line_range": [
+          92,
+          143
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StageCrew.ts::StageCrew.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\stage\\StageCrew.ts",
+        "line_range": [
+          181,
+          181
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StageCrew.ts::StageCrew.beginBeat": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\stage\\StageCrew.ts",
+        "line_range": [
+          182,
+          184
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "StageCueLogger.ts::StageCueLogger.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\stage\\StageCueLogger.ts",
+        "line_range": [
+          8,
+          20
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StrictModeManager.ts::StrictModeManager.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+        "line_range": [
+          32,
+          34
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StrictModeManager.ts::StrictModeManager.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+        "line_range": [
+          305,
+          321
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "StrictModeManager.ts::StrictModeManager.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+        "line_range": [
+          180,
+          182
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceUtilities.ts::SequenceUtilities.switch": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\utilities\\SequenceUtilities.ts",
+        "line_range": [
+          53,
+          62
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceUtilities.ts::SequenceUtilities.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\utilities\\SequenceUtilities.ts",
+        "line_range": [
+          304,
+          311
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceUtilities.ts::SequenceUtilities.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\utilities\\SequenceUtilities.ts",
+        "line_range": [
+          336,
+          340
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceValidator.ts::SequenceValidator.constructor": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\validation\\SequenceValidator.ts",
+        "line_range": [
+          26,
+          28
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceValidator.ts::SequenceValidator.for": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\validation\\SequenceValidator.ts",
+        "line_range": [
+          53,
+          57
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceValidator.ts::SequenceValidator.if": {
+        "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\validation\\SequenceValidator.ts",
+        "line_range": [
+          236,
+          240
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "fake-plugin.ts::emitStageCue": {
+        "file": "../../packages\\musical-conductor\\tests\\plugins\\theme-management-plugin\\fake-plugin.ts",
+        "line_range": [
+          1,
+          4
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "demo.ts::DemoCLI.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\demo.ts",
+        "line_range": [
+          141,
+          144
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "demo.ts::DemoCLI.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\demo.ts",
+        "line_range": [
+          344,
+          347
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "knowledge-cli.ts::KnowledgeCLI.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+        "line_range": [
+          99,
+          110
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "knowledge-cli.ts::KnowledgeCLI.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+        "line_range": [
+          1165,
+          1170
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "knowledge-cli.ts::KnowledgeCLI.switch": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+        "line_range": [
+          1019,
+          1029
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "queue-demo.ts::QueueDemo.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+        "line_range": [
+          15,
+          18
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "queue-demo.ts::QueueDemo.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\queue-demo.ts",
+        "line_range": [
+          120,
+          126
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "shortcut-demo.ts::ShortcutDemoCLI.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+        "line_range": [
+          15,
+          19
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "shortcut-demo.ts::ShortcutDemoCLI.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+        "line_range": [
+          85,
+          189
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeExporter.ts::KnowledgeExporter.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+        "line_range": [
+          15,
+          17
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeExporter.ts::KnowledgeExporter.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+        "line_range": [
+          381,
+          388
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeImporter.ts::KnowledgeImporter.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+        "line_range": [
+          39,
+          41
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeImporter.ts::KnowledgeImporter.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+        "line_range": [
+          609,
+          616
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeImporter.ts::KnowledgeImporter.for": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+        "line_range": [
+          248,
+          267
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeMerger.ts::KnowledgeMerger.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\mergers\\KnowledgeMerger.ts",
+        "line_range": [
+          552,
+          559
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeMerger.ts::KnowledgeMerger.for": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\mergers\\KnowledgeMerger.ts",
+        "line_range": [
+          538,
+          546
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+        "line_range": [
+          76,
+          85
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+        "line_range": [
+          418,
+          420
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.for": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\queue\\KnowledgeTransferQueue.ts",
+        "line_range": [
+          375,
+          391
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ShortcutManager.ts::ShortcutManager.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+        "line_range": [
+          50,
+          54
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ShortcutManager.ts::ShortcutManager.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+        "line_range": [
+          585,
+          591
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ShortcutManager.ts::ShortcutManager.for": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+        "line_range": [
+          380,
+          438
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CLILogger.ts::CLILogger.constructor": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+        "line_range": [
+          22,
+          24
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "CLILogger.ts::CLILogger.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\utils\\CLILogger.ts",
+        "line_range": [
+          96,
+          98
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeValidator.ts::KnowledgeValidator.if": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\validators\\KnowledgeValidator.ts",
+        "line_range": [
+          524,
+          527
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "KnowledgeValidator.ts::KnowledgeValidator.for": {
+        "file": "../../packages\\musical-conductor\\tools\\cli\\validators\\KnowledgeValidator.ts",
+        "line_range": [
+          379,
+          386
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "App.tsx::App": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+        "line_range": [
+          13,
+          148
+        ],
         "afferent": 1,
         "efferent": 3,
         "instability": 0.75
       },
       "App.tsx::InteractionFlowView": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+        "line_range": [
+          151,
+          200
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "App.tsx::SequenceBeatsView": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+        "line_range": [
+          203,
+          242
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "App.tsx::exportCsv": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+        "line_range": [
+          244,
+          269
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "App.tsx::exportDiagnostics": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+        "line_range": [
+          271,
+          286
+        ],
         "afferent": 2,
         "efferent": 1,
         "instability": 0.333
       },
       "TimelineFlowVisualization.tsx::TimelineFlowVisualization": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\TimelineFlowVisualization.tsx",
+        "line_range": [
+          23,
+          120
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "OperationFilter.tsx::OperationFilterPanel": {
+        "file": "../../packages\\telemetry-workbench\\src\\modules\\telemetry\\OperationFilter.tsx",
+        "line_range": [
+          106,
+          216
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "PluginTreeExplorer.tsx::toggleNode": {
+        "file": "../../src/ui\\PluginTreeExplorer.tsx",
+        "line_range": [
+          156,
+          166
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginTreeExplorer.tsx::handleSelectNode": {
+        "file": "../../src/ui\\PluginTreeExplorer.tsx",
+        "line_range": [
+          170,
+          173
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "App.tsx::handleKeyDown": {
+        "file": "../../src/ui\\App\\App.tsx",
+        "line_range": [
+          26,
+          32
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DiagnosticsOverlay.tsx::handleEscape": {
+        "file": "../../src/ui\\diagnostics\\DiagnosticsOverlay.tsx",
+        "line_range": [
+          23,
+          27
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DiagnosticsOverlay.tsx::handleOverlayClick": {
+        "file": "../../src/ui\\diagnostics\\DiagnosticsOverlay.tsx",
+        "line_range": [
+          34,
+          38
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DiagnosticsPanel.tsx::exportLogs": {
+        "file": "../../src/ui\\diagnostics\\DiagnosticsPanel.tsx",
+        "line_range": [
+          200,
+          225
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DiagnosticsPanel.tsx::toggleExpanded": {
+        "file": "../../src/ui\\diagnostics\\DiagnosticsPanel.tsx",
+        "line_range": [
+          227,
+          237
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DiagnosticsPanel.tsx::handleMouseMove": {
+        "file": "../../src/ui\\diagnostics\\DiagnosticsPanel.tsx",
+        "line_range": [
+          410,
+          414
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "DiagnosticsPanel.tsx::handleMouseUp": {
+        "file": "../../src/ui\\diagnostics\\DiagnosticsPanel.tsx",
+        "line_range": [
+          416,
+          421
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogConverter.tsx::handleConvert": {
+        "file": "../../src/ui\\diagnostics\\components\\LogConverter\\LogConverter.tsx",
+        "line_range": [
+          23,
+          46
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogConverter.tsx::handleClear": {
+        "file": "../../src/ui\\diagnostics\\components\\LogConverter\\LogConverter.tsx",
+        "line_range": [
+          48,
+          53
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogConverter.tsx::handleCopyJson": {
+        "file": "../../src/ui\\diagnostics\\components\\LogConverter\\LogConverter.tsx",
+        "line_range": [
+          55,
+          57
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogConverter.tsx::handleDownloadJson": {
+        "file": "../../src/ui\\diagnostics\\components\\LogConverter\\LogConverter.tsx",
+        "line_range": [
+          59,
+          69
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogConverter.tsx::handleFileUpload": {
+        "file": "../../src/ui\\diagnostics\\components\\LogConverter\\LogConverter.tsx",
+        "line_range": [
+          71,
+          81
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ExecutionHistory.tsx::getStatusIcon": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\ExecutionHistory.tsx",
+        "line_range": [
+          40,
+          53
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ExecutionHistory.tsx::formatTimestamp": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\ExecutionHistory.tsx",
+        "line_range": [
+          55,
+          58
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "ExecutionHistory.tsx::formatDuration": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\ExecutionHistory.tsx",
+        "line_range": [
+          60,
+          63
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LiveExecutionMonitor.tsx::getStatusIcon": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LiveExecutionMonitor.tsx",
+        "line_range": [
+          173,
+          186
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LiveExecutionMonitor.tsx::getStatusColor": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LiveExecutionMonitor.tsx",
+        "line_range": [
+          188,
+          201
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LiveExecutionMonitor.tsx::calculateProgress": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LiveExecutionMonitor.tsx",
+        "line_range": [
+          61,
+          67
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LiveExecutionMonitor.tsx::calculateDuration": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LiveExecutionMonitor.tsx",
+        "line_range": [
+          69,
+          78
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogParser.tsx::handleParse": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LogParser.tsx",
+        "line_range": [
+          21,
+          26
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "LogParser.tsx::handleFileUpload": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LogParser.tsx",
+        "line_range": [
+          28,
+          162
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceList.tsx::togglePlugin": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequenceList.tsx",
+        "line_range": [
+          60,
+          70
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequencePlayer.tsx::handleExport": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequencePlayer.tsx",
+        "line_range": [
+          100,
+          114
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequencePlayer.tsx::handleTriggerSequence": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequencePlayer.tsx",
+        "line_range": [
+          117,
+          119
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequencePlayer.tsx::handleCancelTrigger": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequencePlayer.tsx",
+        "line_range": [
+          133,
+          135
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequencePlayer.tsx::handleSelectHistoryItem": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequencePlayer.tsx",
+        "line_range": [
+          137,
+          141
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceTimeline.tsx::getStatusIcon": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequenceTimeline.tsx",
+        "line_range": [
+          144,
+          155
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "SequenceTimeline.tsx::getStatusColor": {
+        "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\SequenceTimeline.tsx",
+        "line_range": [
+          97,
+          108
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "InspectionPanel.tsx::renderInspector": {
+        "file": "../../src/ui\\diagnostics\\components\\shared\\InspectionPanel.tsx",
+        "line_range": [
+          108,
+          235
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginInfoInspector.tsx::handleAction": {
+        "file": "../../src/ui\\diagnostics\\components\\shared\\PluginInfoInspector.tsx",
+        "line_range": [
+          25,
+          31
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PluginInfoInspector.tsx::getStatusColor": {
+        "file": "../../src/ui\\diagnostics\\components\\shared\\PluginInfoInspector.tsx",
+        "line_range": [
+          47,
+          60
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "useConductorIntrospection.ts::useConductorIntrospection": {
+        "file": "../../src/ui\\diagnostics\\hooks\\useConductorIntrospection.ts",
+        "line_range": [
+          21,
+          43
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useDiagnosticsLogs.ts::useDiagnosticsLogs": {
+        "file": "../../src/ui\\diagnostics\\hooks\\useDiagnosticsLogs.ts",
+        "line_range": [
+          19,
+          52
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useExecutionHistory.ts::useExecutionHistory": {
+        "file": "../../src/ui\\diagnostics\\hooks\\useExecutionHistory.ts",
+        "line_range": [
+          19,
+          129
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useLogParser.ts::useLogParser": {
+        "file": "../../src/ui\\diagnostics\\hooks\\useLogParser.ts",
+        "line_range": [
+          19,
+          198
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "usePerformanceMetrics.ts::usePerformanceMetrics": {
+        "file": "../../src/ui\\diagnostics\\hooks\\usePerformanceMetrics.ts",
+        "line_range": [
+          18,
+          54
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "usePluginLoadingStats.ts::usePluginLoadingStats": {
+        "file": "../../src/ui\\diagnostics\\hooks\\usePluginLoadingStats.ts",
+        "line_range": [
+          19,
+          53
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useSequenceExecution.ts::useSequenceExecution": {
+        "file": "../../src/ui\\diagnostics\\hooks\\useSequenceExecution.ts",
+        "line_range": [
+          17,
+          125
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "useSequenceList.ts::useSequenceList": {
+        "file": "../../src/ui\\diagnostics\\hooks\\useSequenceList.ts",
+        "line_range": [
+          17,
+          139
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "wiring.ts::off": {
+        "file": "../../src/ui\\events\\wiring.ts",
+        "line_range": [
+          79,
+          81
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "PanelSlot.tsx::__setPanelSlotManifestForTests": {
+        "file": "../../src/ui\\shared\\PanelSlot.tsx",
+        "line_range": [
+          63,
+          65
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "PanelSlot.tsx::PanelSlot": {
+        "file": "../../src/ui\\shared\\PanelSlot.tsx",
+        "line_range": [
+          105,
+          176
+        ],
         "afferent": 1,
         "efferent": 1,
         "instability": 0.5
       },
       "OperationFilter.tsx::handleStrategyChange": {
+        "file": "../../src/ui\\telemetry\\OperationFilter.tsx",
+        "line_range": [
+          197,
+          209
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "OperationFilter.tsx::handleSearchChange": {
+        "file": "../../src/ui\\telemetry\\OperationFilter.tsx",
+        "line_range": [
+          211,
+          223
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "OperationFilter.tsx::handleTypeToggle": {
+        "file": "../../src/ui\\telemetry\\OperationFilter.tsx",
+        "line_range": [
+          225,
+          243
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "OperationFilter.tsx::handleDurationChange": {
+        "file": "../../src/ui\\telemetry\\OperationFilter.tsx",
+        "line_range": [
+          245,
+          258
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "TelemetryPage.tsx::handleUseSampleData": {
+        "file": "../../src/ui\\telemetry\\TelemetryPage.tsx",
+        "line_range": [
+          82,
+          86
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "TelemetryPage.tsx::exportDiagnostics": {
+        "file": "../../src/ui\\telemetry\\TelemetryPage.tsx",
+        "line_range": [
+          88,
+          104
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "TimelineFlowVisualization.tsx::getEventColor": {
+        "file": "../../src/ui\\telemetry\\TimelineFlowVisualization.tsx",
+        "line_range": [
+          72,
+          87
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
       },
       "TimelineFlowVisualization.tsx::handleExport": {
+        "file": "../../src/ui\\telemetry\\TimelineFlowVisualization.tsx",
+        "line_range": [
+          157,
+          182
+        ],
         "afferent": 0,
         "efferent": 0,
         "instability": 0.0
@@ -3014,506 +5529,1011 @@
       "god_functions": [
         {
           "symbol": "CanvasHeader.tsx::CanvasHeader",
+          "file": "../../packages\\canvas\\src\\ui\\CanvasHeader.tsx",
+          "line_range": [
+            9,
+            181
+          ],
           "total_calls": 26,
           "unique_called": 16
         },
         {
           "symbol": "augment.line.stage-crew.ts::enhanceLine",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\augment\\augment.line.stage-crew.ts",
+          "line_range": [
+            30,
+            52
+          ],
           "total_calls": 16,
           "unique_called": 10
         },
         {
           "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
+          "line_range": [
+            73,
+            205
+          ],
           "total_calls": 83,
           "unique_called": 24
         },
         {
           "symbol": "copy.stage-crew.ts::serializeElement",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+          "line_range": [
+            9,
+            48
+          ],
           "total_calls": 10,
           "unique_called": 8
         },
         {
           "symbol": "create.react.stage-crew.ts::renderReact",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+          "line_range": [
+            11,
+            81
+          ],
           "total_calls": 12,
           "unique_called": 11
         },
         {
           "symbol": "create.stage-crew.ts::createNode",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\create\\create.stage-crew.ts",
+          "line_range": [
+            39,
+            164
+          ],
           "total_calls": 45,
           "unique_called": 31
         },
         {
           "symbol": "drag.stage-crew.ts::updatePosition",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+          "line_range": [
+            6,
+            60
+          ],
           "total_calls": 13,
           "unique_called": 9
         },
         {
           "symbol": "export.css.stage-crew.ts::collectCssClasses",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.css.stage-crew.ts",
+          "line_range": [
+            6,
+            73
+          ],
           "total_calls": 21,
           "unique_called": 19
         },
         {
           "symbol": "export.discover.stage-crew.ts::discoverComponentsFromDom",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.discover.stage-crew.ts",
+          "line_range": [
+            1,
+            50
+          ],
           "total_calls": 13,
           "unique_called": 12
         },
         {
           "symbol": "export.pure.ts::buildUiFileContent",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.pure.ts",
+          "line_range": [
+            3,
+            92
+          ],
           "total_calls": 14,
           "unique_called": 10
         },
         {
           "symbol": "export.stage-crew.ts::collectLayoutData",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\export\\export.stage-crew.ts",
+          "line_range": [
+            15,
+            227
+          ],
           "total_calls": 52,
           "unique_called": 29
         },
         {
           "symbol": "import.nodes.stage-crew.ts::applyHierarchyAndOrder",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\import\\import.nodes.stage-crew.ts",
+          "line_range": [
+            35,
+            72
+          ],
           "total_calls": 12,
           "unique_called": 10
         },
         {
           "symbol": "import.parse.pure.ts::parseUiFile",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\import\\import.parse.pure.ts",
+          "line_range": [
+            32,
+            94
+          ],
           "total_calls": 21,
           "unique_called": 12
         },
         {
           "symbol": "resize.stage-crew.ts::startResize",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+          "line_range": [
+            41,
+            79
+          ],
           "total_calls": 23,
           "unique_called": 8
         },
         {
           "symbol": "resize.stage-crew.ts::updateSize",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+          "line_range": [
+            81,
+            251
+          ],
           "total_calls": 55,
           "unique_called": 17
         },
         {
           "symbol": "resize.line.stage-crew.ts::updateLine",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+          "line_range": [
+            9,
+            27
+          ],
           "total_calls": 16,
           "unique_called": 10
         },
         {
           "symbol": "select.overlay.css.stage-crew.ts::ensureOverlayCss",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.css.stage-crew.ts",
+          "line_range": [
+            1,
+            25
+          ],
           "total_calls": 11,
           "unique_called": 8
         },
         {
           "symbol": "select.overlay.dom.stage-crew.ts::applyOverlayRectForEl",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+          "line_range": [
+            39,
+            79
+          ],
           "total_calls": 23,
           "unique_called": 8
         },
         {
           "symbol": "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-resize.stage-crew.ts",
+          "line_range": [
+            79,
+            174
+          ],
           "total_calls": 30,
           "unique_called": 19
         },
         {
           "symbol": "select.overlay.resize.stage-crew.ts::attachResizeHandlers",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.overlay.resize.stage-crew.ts",
+          "line_range": [
+            21,
+            122
+          ],
           "total_calls": 32,
           "unique_called": 22
         },
         {
           "symbol": "select.stage-crew.ts::configureHandlesVisibility",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+          "line_range": [
+            44,
+            60
+          ],
           "total_calls": 12,
           "unique_called": 12
         },
         {
           "symbol": "select.stage-crew.ts::showSelectionOverlay",
+          "file": "../../packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+          "line_range": [
+            62,
+            111
+          ],
           "total_calls": 22,
           "unique_called": 17
         },
         {
           "symbol": "rule-engine.ts::ComponentRuleEngine.applyUpdate",
+          "file": "../../packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+          "line_range": [
+            486,
+            570
+          ],
           "total_calls": 28,
           "unique_called": 20
         },
         {
           "symbol": "rule-engine.ts::ComponentRuleEngine.for",
+          "file": "../../packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+          "line_range": [
+            635,
+            701
+          ],
           "total_calls": 22,
           "unique_called": 13
         },
         {
           "symbol": "copy-paste.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
+          "line_range": [
+            31,
+            58
+          ],
           "total_calls": 17,
           "unique_called": 8
         },
         {
           "symbol": "export-import.content.spec.ts::makeImportCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\export-import.content.spec.ts",
+          "line_range": [
+            85,
+            105
+          ],
           "total_calls": 17,
           "unique_called": 8
         },
         {
           "symbol": "export.integration.basic.spec.ts::makeIntegrationCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\export.integration.basic.spec.ts",
+          "line_range": [
+            9,
+            53
+          ],
           "total_calls": 15,
           "unique_called": 9
         },
         {
           "symbol": "export.integration.dom-errors.spec.ts::makeIntegrationCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\export.integration.dom-errors.spec.ts",
+          "line_range": [
+            8,
+            20
+          ],
           "total_calls": 11,
           "unique_called": 8
         },
         {
           "symbol": "export.integration.structure.spec.ts::makeIntegrationCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\export.integration.structure.spec.ts",
+          "line_range": [
+            8,
+            23
+          ],
           "total_calls": 12,
           "unique_called": 8
         },
         {
           "symbol": "export.io.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\export.io.spec.ts",
+          "line_range": [
+            5,
+            53
+          ],
           "total_calls": 20,
           "unique_called": 10
         },
         {
           "symbol": "import.instance-class.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\import.instance-class.spec.ts",
+          "line_range": [
+            32,
+            67
+          ],
           "total_calls": 17,
           "unique_called": 8
         },
         {
           "symbol": "import.integration.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\import.integration.spec.ts",
+          "line_range": [
+            60,
+            88
+          ],
           "total_calls": 17,
           "unique_called": 8
         },
         {
           "symbol": "import.nesting.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\import.nesting.spec.ts",
+          "line_range": [
+            29,
+            59
+          ],
           "total_calls": 17,
           "unique_called": 8
         },
         {
           "symbol": "import.selection.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\import.selection.spec.ts",
+          "line_range": [
+            34,
+            61
+          ],
           "total_calls": 14,
           "unique_called": 8
         },
         {
           "symbol": "import.variant-toggle.spec.ts::makeCtx",
+          "file": "../../packages\\canvas-component\\__tests__\\import.variant-toggle.spec.ts",
+          "line_range": [
+            26,
+            46
+          ],
           "total_calls": 15,
           "unique_called": 8
         },
         {
           "symbol": "host-click-select.ts::setupProductionHostClickToSelect",
+          "file": "../../packages\\canvas-component\\__tests__\\helpers\\host-click-select.ts",
+          "line_range": [
+            33,
+            72
+          ],
           "total_calls": 10,
           "unique_called": 9
         },
         {
           "symbol": "CodeTextarea.tsx::extractFromFullSvg",
+          "file": "../../packages\\control-panel\\src\\components\\field-renderers\\CodeTextarea.tsx",
+          "line_range": [
+            101,
+            140
+          ],
           "total_calls": 19,
           "unique_called": 15
         },
         {
           "symbol": "TextInput.tsx::handleChange",
+          "file": "../../packages\\control-panel\\src\\components\\field-renderers\\TextInput.tsx",
+          "line_range": [
+            19,
+            55
+          ],
           "total_calls": 11,
           "unique_called": 8
         },
         {
           "symbol": "useControlPanelSequences.ts::useControlPanelSequences",
+          "file": "../../packages\\control-panel\\src\\hooks\\useControlPanelSequences.ts",
+          "line_range": [
+            17,
+            213
+          ],
           "total_calls": 31,
           "unique_called": 13
         },
         {
           "symbol": "useControlPanelState.ts::useControlPanelState",
+          "file": "../../packages\\control-panel\\src\\hooks\\useControlPanelState.ts",
+          "line_range": [
+            11,
+            106
+          ],
           "total_calls": 35,
           "unique_called": 21
         },
         {
           "symbol": "useSchemaResolver.ts::useSchemaResolver",
+          "file": "../../packages\\control-panel\\src\\hooks\\useSchemaResolver.ts",
+          "line_range": [
+            30,
+            76
+          ],
           "total_calls": 12,
           "unique_called": 11
         },
         {
           "symbol": "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas",
+          "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+          "line_range": [
+            37,
+            85
+          ],
           "total_calls": 15,
           "unique_called": 9
         },
         {
           "symbol": "schema-resolver.service.ts::SchemaResolverService.if",
+          "file": "../../packages\\control-panel\\src\\services\\schema-resolver.service.ts",
+          "line_range": [
+            427,
+            437
+          ],
           "total_calls": 45,
           "unique_called": 21
         },
         {
           "symbol": "selection.stage-crew.ts::deriveSelectionModel",
+          "file": "../../packages\\control-panel\\src\\symphonies\\selection\\selection.stage-crew.ts",
+          "line_range": [
+            4,
+            79
+          ],
           "total_calls": 18,
           "unique_called": 13
         },
         {
           "symbol": "update.stage-crew.ts::updateFromElement",
+          "file": "../../packages\\control-panel\\src\\symphonies\\update\\update.stage-crew.ts",
+          "line_range": [
+            9,
+            125
+          ],
           "total_calls": 21,
           "unique_called": 11
         },
         {
           "symbol": "ControlPanel.tsx::ControlPanel",
+          "file": "../../packages\\control-panel\\src\\ui\\ControlPanel.tsx",
+          "line_range": [
+            13,
+            100
+          ],
           "total_calls": 14,
           "unique_called": 14
         },
         {
           "symbol": "cinematic-renderer.ts::CinematicPresentation.initializeControls",
+          "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+          "line_range": [
+            262,
+            302
+          ],
           "total_calls": 19,
           "unique_called": 8
         },
         {
           "symbol": "create-cinematic-presentation.ts::main",
+          "file": "../../packages\\digital-assets\\src\\create-cinematic-presentation.ts",
+          "line_range": [
+            13,
+            73
+          ],
           "total_calls": 48,
           "unique_called": 12
         },
         {
           "symbol": "generate-mono-svg.ts::main",
+          "file": "../../packages\\digital-assets\\src\\generate-mono-svg.ts",
+          "line_range": [
+            13,
+            59
+          ],
           "total_calls": 33,
           "unique_called": 10
         },
         {
           "symbol": "generic-graph-generator.ts::GenericGraphGenerator.if",
+          "file": "../../packages\\digital-assets\\src\\generic-graph-generator.ts",
+          "line_range": [
+            238,
+            240
+          ],
           "total_calls": 19,
           "unique_called": 11
         },
         {
           "symbol": "generic-scene-generator.ts::GenericSceneGenerator.for",
+          "file": "../../packages\\digital-assets\\src\\generic-scene-generator.ts",
+          "line_range": [
+            193,
+            205
+          ],
           "total_calls": 18,
           "unique_called": 8
         },
         {
           "symbol": "sample-generator.ts::generateAllSamples",
+          "file": "../../packages\\digital-assets\\src\\sample-generator.ts",
+          "line_range": [
+            204,
+            229
+          ],
           "total_calls": 18,
           "unique_called": 15
         },
         {
           "symbol": "slide-01-generator.ts::generateSlide01Graphs",
+          "file": "../../packages\\digital-assets\\src\\slide-01-generator.ts",
+          "line_range": [
+            17,
+            117
+          ],
           "total_calls": 36,
           "unique_called": 22
         },
         {
           "symbol": "slide01-generator.ts::generateSlide01Scene",
+          "file": "../../packages\\digital-assets\\src\\slide01-generator.ts",
+          "line_range": [
+            8,
+            115
+          ],
           "total_calls": 47,
           "unique_called": 19
         },
         {
           "symbol": "template-processor.ts::TemplateProcessor.for",
+          "file": "../../packages\\digital-assets\\src\\template-processor.ts",
+          "line_range": [
+            237,
+            243
+          ],
           "total_calls": 18,
           "unique_called": 9
         },
         {
           "symbol": "template-processor.ts::TemplateProcessor.if",
+          "file": "../../packages\\digital-assets\\src\\template-processor.ts",
+          "line_range": [
+            266,
+            314
+          ],
           "total_calls": 38,
           "unique_called": 22
         },
         {
           "symbol": "HeaderThemeToggle.tsx::HeaderThemeToggle",
+          "file": "../../packages\\header\\src\\ui\\HeaderThemeToggle.tsx",
+          "line_range": [
+            23,
+            80
+          ],
           "total_calls": 18,
           "unique_called": 10
         },
         {
           "symbol": "component-behavior-extractor.ts::ComponentBehaviorExtractor.for",
+          "file": "../../packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+          "line_range": [
+            300,
+            311
+          ],
           "total_calls": 70,
           "unique_called": 23
         },
         {
           "symbol": "ChatWindow.tsx::ChatWindow",
+          "file": "../../packages\\library\\src\\ui\\ChatWindow.tsx",
+          "line_range": [
+            20,
+            311
+          ],
           "total_calls": 63,
           "unique_called": 31
         },
         {
           "symbol": "CustomComponentList.tsx::CustomComponentList",
+          "file": "../../packages\\library\\src\\ui\\CustomComponentList.tsx",
+          "line_range": [
+            30,
+            168
+          ],
           "total_calls": 23,
           "unique_called": 20
         },
         {
           "symbol": "CustomComponentUpload.tsx::CustomComponentUpload",
+          "file": "../../packages\\library\\src\\ui\\CustomComponentUpload.tsx",
+          "line_range": [
+            28,
+            215
+          ],
           "total_calls": 48,
           "unique_called": 26
         },
         {
           "symbol": "LibraryPanel.tsx::LibraryPanel",
+          "file": "../../packages\\library\\src\\ui\\LibraryPanel.tsx",
+          "line_range": [
+            77,
+            248
+          ],
           "total_calls": 39,
           "unique_called": 29
         },
         {
           "symbol": "EventBus.ts::ConductorEventBus.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\EventBus.ts",
+          "line_range": [
+            655,
+            667
+          ],
           "total_calls": 13,
           "unique_called": 10
         },
         {
           "symbol": "SPAValidator.ts::SPAValidator.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+          "line_range": [
+            725,
+            728
+          ],
           "total_calls": 45,
           "unique_called": 23
         },
         {
           "symbol": "SPAValidator.ts::SPAValidator.for",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\SPAValidator.ts",
+          "line_range": [
+            685,
+            689
+          ],
           "total_calls": 71,
           "unique_called": 16
         },
         {
           "symbol": "MusicalConductor.ts::MusicalConductor.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\MusicalConductor.ts",
+          "line_range": [
+            751,
+            763
+          ],
           "total_calls": 20,
           "unique_called": 13
         },
         {
           "symbol": "ConductorCore.ts::ConductorCore.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\core\\ConductorCore.ts",
+          "line_range": [
+            166,
+            168
+          ],
           "total_calls": 14,
           "unique_called": 11
         },
         {
           "symbol": "BeatExecutor.ts::BeatExecutor.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\BeatExecutor.ts",
+          "line_range": [
+            262,
+            264
+          ],
           "total_calls": 10,
           "unique_called": 8
         },
         {
           "symbol": "MovementExecutor.ts::MovementExecutor.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\execution\\MovementExecutor.ts",
+          "line_range": [
+            262,
+            264
+          ],
           "total_calls": 19,
           "unique_called": 12
         },
         {
           "symbol": "DuplicationDetector.ts::DuplicationDetector.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\monitoring\\DuplicationDetector.ts",
+          "line_range": [
+            167,
+            175
+          ],
           "total_calls": 12,
           "unique_called": 9
         },
         {
           "symbol": "CallbackRegistry.ts::CallbackRegistry.for",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\orchestration\\CallbackRegistry.ts",
+          "line_range": [
+            220,
+            224
+          ],
           "total_calls": 14,
           "unique_called": 10
         },
         {
           "symbol": "PluginLoader.ts::PluginLoader.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginLoader.ts",
+          "line_range": [
+            392,
+            400
+          ],
           "total_calls": 60,
           "unique_called": 22
         },
         {
           "symbol": "PluginManager.ts::PluginManager.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+          "line_range": [
+            699,
+            706
+          ],
           "total_calls": 20,
           "unique_called": 10
         },
         {
           "symbol": "PluginManager.ts::PluginManager.for",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManager.ts",
+          "line_range": [
+            563,
+            616
+          ],
           "total_calls": 55,
           "unique_called": 37
         },
         {
           "symbol": "PluginManifestLoader.ts::PluginManifestLoader.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginManifestLoader.ts",
+          "line_range": [
+            297,
+            299
+          ],
           "total_calls": 28,
           "unique_called": 18
         },
         {
           "symbol": "PluginValidator.ts::PluginValidator.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\plugins\\PluginValidator.ts",
+          "line_range": [
+            351,
+            353
+          ],
           "total_calls": 61,
           "unique_called": 12
         },
         {
           "symbol": "StageCrew.ts::BeatTxn.for",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\stage\\StageCrew.ts",
+          "line_range": [
+            92,
+            143
+          ],
           "total_calls": 15,
           "unique_called": 8
         },
         {
           "symbol": "StrictModeManager.ts::StrictModeManager.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\strictmode\\StrictModeManager.ts",
+          "line_range": [
+            305,
+            321
+          ],
           "total_calls": 11,
           "unique_called": 9
         },
         {
           "symbol": "SequenceValidator.ts::SequenceValidator.if",
+          "file": "../../packages\\musical-conductor\\modules\\communication\\sequences\\validation\\SequenceValidator.ts",
+          "line_range": [
+            236,
+            240
+          ],
           "total_calls": 24,
           "unique_called": 14
         },
         {
           "symbol": "demo.ts::DemoCLI.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\demo.ts",
+          "line_range": [
+            344,
+            347
+          ],
           "total_calls": 42,
           "unique_called": 8
         },
         {
           "symbol": "knowledge-cli.ts::KnowledgeCLI.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\knowledge-cli.ts",
+          "line_range": [
+            1165,
+            1170
+          ],
           "total_calls": 281,
           "unique_called": 71
         },
         {
           "symbol": "shortcut-demo.ts::ShortcutDemoCLI.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\shortcut-demo.ts",
+          "line_range": [
+            85,
+            189
+          ],
           "total_calls": 62,
           "unique_called": 15
         },
         {
           "symbol": "KnowledgeExporter.ts::KnowledgeExporter.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\exporters\\KnowledgeExporter.ts",
+          "line_range": [
+            381,
+            388
+          ],
           "total_calls": 44,
           "unique_called": 27
         },
         {
           "symbol": "KnowledgeImporter.ts::KnowledgeImporter.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\importers\\KnowledgeImporter.ts",
+          "line_range": [
+            609,
+            616
+          ],
           "total_calls": 28,
           "unique_called": 13
         },
         {
           "symbol": "KnowledgeMerger.ts::KnowledgeMerger.for",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\mergers\\KnowledgeMerger.ts",
+          "line_range": [
+            538,
+            546
+          ],
           "total_calls": 53,
           "unique_called": 14
         },
         {
           "symbol": "ShortcutManager.ts::ShortcutManager.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\shortcuts\\ShortcutManager.ts",
+          "line_range": [
+            585,
+            591
+          ],
           "total_calls": 31,
           "unique_called": 21
         },
         {
           "symbol": "KnowledgeValidator.ts::KnowledgeValidator.if",
+          "file": "../../packages\\musical-conductor\\tools\\cli\\validators\\KnowledgeValidator.ts",
+          "line_range": [
+            524,
+            527
+          ],
           "total_calls": 37,
           "unique_called": 12
         },
         {
           "symbol": "App.tsx::App",
+          "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+          "line_range": [
+            13,
+            148
+          ],
           "total_calls": 41,
           "unique_called": 29
         },
         {
           "symbol": "App.tsx::InteractionFlowView",
+          "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+          "line_range": [
+            151,
+            200
+          ],
           "total_calls": 28,
           "unique_called": 11
         },
         {
           "symbol": "App.tsx::exportCsv",
+          "file": "../../packages\\telemetry-workbench\\src\\modules\\App.tsx",
+          "line_range": [
+            244,
+            269
+          ],
           "total_calls": 22,
           "unique_called": 15
         },
         {
           "symbol": "TimelineFlowVisualization.tsx::TimelineFlowVisualization",
+          "file": "../../packages\\telemetry-workbench\\src\\modules\\TimelineFlowVisualization.tsx",
+          "line_range": [
+            23,
+            120
+          ],
           "total_calls": 33,
           "unique_called": 17
         },
         {
           "symbol": "OperationFilter.tsx::OperationFilterPanel",
+          "file": "../../packages\\telemetry-workbench\\src\\modules\\telemetry\\OperationFilter.tsx",
+          "line_range": [
+            106,
+            216
+          ],
           "total_calls": 43,
           "unique_called": 24
         },
         {
           "symbol": "DiagnosticsPanel.tsx::exportLogs",
+          "file": "../../src/ui\\diagnostics\\DiagnosticsPanel.tsx",
+          "line_range": [
+            200,
+            225
+          ],
           "total_calls": 12,
           "unique_called": 12
         },
         {
           "symbol": "LogConverter.tsx::handleConvert",
+          "file": "../../src/ui\\diagnostics\\components\\LogConverter\\LogConverter.tsx",
+          "line_range": [
+            23,
+            46
+          ],
           "total_calls": 11,
           "unique_called": 8
         },
         {
           "symbol": "LogParser.tsx::handleFileUpload",
+          "file": "../../src/ui\\diagnostics\\components\\SequencePlayer\\LogParser.tsx",
+          "line_range": [
+            28,
+            162
+          ],
           "total_calls": 25,
           "unique_called": 10
         },
         {
           "symbol": "useExecutionHistory.ts::useExecutionHistory",
+          "file": "../../src/ui\\diagnostics\\hooks\\useExecutionHistory.ts",
+          "line_range": [
+            19,
+            129
+          ],
           "total_calls": 35,
           "unique_called": 18
         },
         {
           "symbol": "useLogParser.ts::useLogParser",
+          "file": "../../src/ui\\diagnostics\\hooks\\useLogParser.ts",
+          "line_range": [
+            19,
+            198
+          ],
           "total_calls": 63,
           "unique_called": 19
         },
         {
           "symbol": "useSequenceExecution.ts::useSequenceExecution",
+          "file": "../../src/ui\\diagnostics\\hooks\\useSequenceExecution.ts",
+          "line_range": [
+            17,
+            125
+          ],
           "total_calls": 36,
           "unique_called": 15
         },
         {
           "symbol": "useSequenceList.ts::useSequenceList",
+          "file": "../../src/ui\\diagnostics\\hooks\\useSequenceList.ts",
+          "line_range": [
+            17,
+            139
+          ],
           "total_calls": 41,
           "unique_called": 23
         },
         {
           "symbol": "PanelSlot.tsx::PanelSlot",
+          "file": "../../src/ui\\shared\\PanelSlot.tsx",
+          "line_range": [
+            105,
+            176
+          ],
           "total_calls": 21,
           "unique_called": 17
         },
         {
           "symbol": "TimelineFlowVisualization.tsx::handleExport",
+          "file": "../../src/ui\\telemetry\\TimelineFlowVisualization.tsx",
+          "line_range": [
+            157,
+            182
+          ],
           "total_calls": 24,
           "unique_called": 12
         }
@@ -3523,8 +6543,22 @@
       "cycles": [
         {
           "members": [
-            "cinematic-renderer.ts::CinematicPresentation.nextScene",
-            "cinematic-renderer.ts::CinematicPresentation.scheduleNextScene"
+            {
+              "symbol": "cinematic-renderer.ts::CinematicPresentation.nextScene",
+              "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+              "line_range": [
+                347,
+                357
+              ]
+            },
+            {
+              "symbol": "cinematic-renderer.ts::CinematicPresentation.scheduleNextScene",
+              "file": "../../packages\\digital-assets\\src\\cinematic-renderer.ts",
+              "line_range": [
+                334,
+                345
+              ]
+            }
           ],
           "size": 2
         }
