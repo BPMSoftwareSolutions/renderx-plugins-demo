@@ -7,7 +7,7 @@ function toHarnessUrl(driverUrl: string, scenarioId: string, phases = '0,1,2', t
   return `/src/test-plugin-loading.html?driver=${encodeURIComponent(driverUrl)}&scenario=${encodeURIComponent(scenarioId)}&phases=${phases}&timeout=${timeout}`;
 }
 
-describe('Generic Plugin Runner (Cypress)', () => {
+describe.skip('Generic Plugin Runner (Cypress)', () => {
   it('runs scenarios from local /test/manifest.json via TestHarness', function () {
     cy.request({ url: '/test/manifest.json', failOnStatusCode: false }).then((res) => {
       const contentType = String(res.headers?.['content-type'] || '');

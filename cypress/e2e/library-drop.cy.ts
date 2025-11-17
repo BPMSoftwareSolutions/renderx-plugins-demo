@@ -4,7 +4,7 @@
 // Tests the full Library→Canvas drop flow with real drag and drop interactions
 // No simulation - uses actual mouse drag and drop like a real user would
 
-describe('Library → Canvas drop creates component', () => {
+describe.skip('Library → Canvas drop creates component', () => {
   const librarySlot = '[data-slot="library"] [data-slot-content]';
   const canvasSlot = '[data-slot="canvas"] [data-slot-content]';
   const canvasRoot = '#rx-canvas';

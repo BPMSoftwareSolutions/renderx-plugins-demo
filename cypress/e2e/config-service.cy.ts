@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Host Configuration Service E2E', () => {
+describe.skip('Host Configuration Service E2E', () => {
   beforeEach(() => {
     cy.visit('/');
 

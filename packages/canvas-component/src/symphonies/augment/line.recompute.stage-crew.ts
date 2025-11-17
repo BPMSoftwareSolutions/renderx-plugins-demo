@@ -29,33 +29,42 @@ function ensureCurve(svg: SVGSVGElement): SVGPathElement {
 function readCssNumber(
   el: HTMLElement,
   name: string,
-  fallback: number
+  fallback: number,
+  cs?: CSSStyleDeclaration | null
 ): number {
-  // Prefer inline style, fallback to computed style
+  // Prefer inline style, fallback to computed style (optionally provided)
   const inline = el.style.getPropertyValue(name);
   if (inline) {
     const n = parseFloat(inline);
     if (Number.isFinite(n)) return n;
   }
   try {
-    const cs = getComputedStyle(el);
-    const v = cs.getPropertyValue(name);
-    const n = parseFloat(v);
-    if (Number.isFinite(n)) return n;
+    const _cs = cs ?? (typeof window !== "undefined" ? getComputedStyle(el) : null);
+    if (_cs) {
+      const v = _cs.getPropertyValue(name);
+      const n = parseFloat(v);
+      if (Number.isFinite(n)) return n;
+    }
   } catch {}
   return fallback;
 }
 
-function readBooleanVar(el: HTMLElement, name: string): boolean {
+function readBooleanVar(
+  el: HTMLElement,
+  name: string,
+  cs?: CSSStyleDeclaration | null
+): boolean {
   const v = (el.style.getPropertyValue(name) || "").trim().toLowerCase();
   if (v === "1" || v === "true" || v === "yes") return true;
   if (v === "0" || v === "false" || v === "no") return false;
-  // Try computed style as string
+  // Try computed style as string (optionally provided)
   try {
-    const cs = getComputedStyle(el);
-    const c = (cs.getPropertyValue(name) || "").trim().toLowerCase();
-    if (c === "1" || c === "true" || c === "yes") return true;
-    if (c === "0" || c === "false" || c === "no") return false;
+    const _cs = cs ?? (typeof window !== "undefined" ? getComputedStyle(el) : null);
+    if (_cs) {
+      const c = (_cs.getPropertyValue(name) || "").trim().toLowerCase();
+      if (c === "1" || c === "true" || c === "yes") return true;
+      if (c === "0" || c === "false" || c === "no") return false;
+    }
   } catch {}
   return false;
 }
@@ -75,34 +84,27 @@ export function recomputeLineSvg(svg: SVGSVGElement) {
   const line = ensureLine(svg);
   const curve = ensureCurve(svg);
 
+  // Cache computed style for multiple reads
+  const cs = typeof window !== "undefined" ? getComputedStyle(host) : null;
+
   const { w, h } = resolveSize(svg);
 
   // Defaults: x1=0, y1=0, x2=w, y2=y1 to keep horizontal by default
-  const x1 = readCssNumber(host, "--x1", 0);
-  const y1 = readCssNumber(host, "--y1", 0);
-  const x2 = readCssNumber(host, "--x2", w);
-  const y2 = readCssNumber(host, "--y2", y1);
+  const x1 = readCssNumber(host, "--x1", 0, cs);
+  const y1 = readCssNumber(host, "--y1", 0, cs);
+  const x2 = readCssNumber(host, "--x2", w, cs);
+  const y2 = readCssNumber(host, "--y2", y1, cs);
 
   // Optional curvature and rotation
-  const cx = readCssNumber(host, "--cx", (x1 + x2) / 2);
-  const cy = readCssNumber(host, "--cy", (y1 + y2) / 2);
-  const curveOn = readBooleanVar(host, "--curve");
-  const angle = readCssNumber(host, "--angle", 0); // degrees
+  const cx = readCssNumber(host, "--cx", (x1 + x2) / 2, cs);
+  const cy = readCssNumber(host, "--cy", (y1 + y2) / 2, cs);
+  const curveOn = readBooleanVar(host, "--curve", cs);
+  const angle = readCssNumber(host, "--angle", 0, cs); // degrees
 
-  const toVbX = (px: number) =>
-    Number(
-      (w ? (px / w) * 100 : 0)
-        .toFixed(3)
-        .replace(/\.0+$/, "")
-        .replace(/\.$/, "")
-    );
-  const toVbY = (px: number) =>
-    Number(
-      (h ? (px / h) * 100 : 0)
-        .toFixed(3)
-        .replace(/\.0+$/, "")
-        .replace(/\.$/, "")
-    );
+  const fmt = (n: number) =>
+    n.toFixed(3).replace(/\.0+$/, "").replace(/\.$/, "");
+  const toVbX = (px: number) => Number((w ? (px / w) * 100 : 0).toFixed(3).replace(/\.0+$/, "").replace(/\.$/, ""));
+  const toVbY = (px: number) => Number((h ? (px / h) * 100 : 0).toFixed(3).replace(/\.0+$/, "").replace(/\.$/, ""));
 
   const nx1 = toVbX(x1);
   const ny1 = toVbY(y1);
@@ -120,6 +122,15 @@ export function recomputeLineSvg(svg: SVGSVGElement) {
       elt.setAttribute("transform", `rotate(${angle} ${mx} ${my})`);
     } else {
       elt.removeAttribute("transform");
+    }
+  };
+
+  // Helper to set or remove multiple attributes in one place (reduces repeated DOM calls)
+  const setAttributes = (elt: Element, attrs: Record<string, string | null>) => {
+    for (const k in attrs) {
+      const v = attrs[k];
+      if (v === null) elt.removeAttribute(k);
+      else elt.setAttribute(k, v);
     }
   };
 
@@ -159,16 +170,7 @@ export function recomputeLineSvg(svg: SVGSVGElement) {
   const vbH = Math.max(1, maxY - minY);
   svg.setAttribute(
     "viewBox",
-    `${minX.toFixed(3).replace(/\.0+$/, "").replace(/\.$/, "")} ${minY
-      .toFixed(3)
-      .replace(/\.0+$/, "")
-      .replace(/\.$/, "")} ${vbW
-      .toFixed(3)
-      .replace(/\.0+$/, "")
-      .replace(/\.$/, "")} ${vbH
-      .toFixed(3)
-      .replace(/\.0+$/, "")
-      .replace(/\.$/, "")}`
+    `${fmt(minX)} ${fmt(minY)} ${fmt(vbW)} ${fmt(vbH)}`
   );
 
   if (curveOn) {
@@ -178,28 +180,30 @@ export function recomputeLineSvg(svg: SVGSVGElement) {
     curve.style.display = "";
     line.style.display = "none";
     // Arrow toggles on curve path
-    const arrowStart = readBooleanVar(host, "--arrowStart");
-    const arrowEnd = readBooleanVar(host, "--arrowEnd");
-    if (arrowStart) curve.setAttribute("marker-start", "url(#rx-arrow-start)");
-    else curve.removeAttribute("marker-start");
-    if (arrowEnd) curve.setAttribute("marker-end", "url(#rx-arrow-end)");
-    else curve.removeAttribute("marker-end");
+    const arrowStart = readBooleanVar(host, "--arrowStart", cs);
+    const arrowEnd = readBooleanVar(host, "--arrowEnd", cs);
+    setAttributes(curve, {
+      "marker-start": arrowStart ? "url(#rx-arrow-start)" : null,
+      "marker-end": arrowEnd ? "url(#rx-arrow-end)" : null,
+    });
     setRotate(curve);
   } else {
     // Straight line
-    line.setAttribute("x1", String(nx1));
-    line.setAttribute("y1", String(ny1));
-    line.setAttribute("x2", String(nx2));
-    line.setAttribute("y2", String(ny2));
+    setAttributes(line, {
+      x1: String(nx1),
+      y1: String(ny1),
+      x2: String(nx2),
+      y2: String(ny2),
+    });
     curve.style.display = "none";
     line.style.display = "";
     // Arrow toggles on line
-    const arrowStart = readBooleanVar(host, "--arrowStart");
-    const arrowEnd = readBooleanVar(host, "--arrowEnd");
-    if (arrowStart) line.setAttribute("marker-start", "url(#rx-arrow-start)");
-    else line.removeAttribute("marker-start");
-    if (arrowEnd) line.setAttribute("marker-end", "url(#rx-arrow-end)");
-    else line.removeAttribute("marker-end");
+    const arrowStart = readBooleanVar(host, "--arrowStart", cs);
+    const arrowEnd = readBooleanVar(host, "--arrowEnd", cs);
+    setAttributes(line, {
+      "marker-start": arrowStart ? "url(#rx-arrow-start)" : null,
+      "marker-end": arrowEnd ? "url(#rx-arrow-end)" : null,
+    });
     setRotate(line);
   }
 }
