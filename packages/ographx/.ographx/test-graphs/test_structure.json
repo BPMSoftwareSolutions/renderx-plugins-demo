@@ -1,5 +1,6 @@
 {
   "unit": {
+    "Analysis": [],
     "Core Extraction": [
       {
         "name": "TestTypeScriptSymbolExtraction",
@@ -673,6 +674,13 @@
   },
   "total_tests": 118,
   "files": [
+    {
+      "path": "unit\\test_architecture_analysis.py",
+      "type": "unit",
+      "category": "Analysis",
+      "classes": [],
+      "total": 0
+    },
     {
       "path": "unit\\test_core_extraction.py",
       "type": "unit",

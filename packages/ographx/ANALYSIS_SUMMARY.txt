@@ -1,0 +1,133 @@
+================================================================================
+RENDERX-WEB ARCHITECTURE ANALYSIS - EXECUTIVE SUMMARY
+================================================================================
+
+CODEBASE METRICS
+  Files:        543
+  Symbols:      503 (unique, after deduplication)
+  Calls:        4,579
+  Contracts:    927
+
+================================================================================
+CRITICAL FINDING: REDUNDANCY IN IR EXTRACTION
+================================================================================
+
+ISSUE IDENTIFIED:
+  The TypeScript IR extractor creates 507 duplicate symbol entries (50% of all
+  symbols). This was causing god function detection to report 380 functions
+  when only 101 are actually problematic.
+
+  Root Cause: Methods named ".if" are being duplicated (likely a parser bug
+  with conditional blocks or property accessors).
+
+  Top Duplicated Symbols:
+    1. KnowledgeCLI.if              37 copies
+    2. PluginValidator.if           28 copies
+    3. SequenceRegistry.if          20 copies
+    4. KnowledgeValidator.if        19 copies
+    5. KnowledgeImporter.if         17 copies
+
+FIX APPLIED:
+  ✓ Analyzer now deduplicates symbols at source (_build_arch_graph)
+  ✓ God function count corrected: 380 → 101 unique
+  ✓ All tests passing
+
+================================================================================
+ARCHITECTURE ISSUES (DEDUPLICATED)
+================================================================================
+
+1. GOD FUNCTIONS (101 detected)
+   
+   Top 5:
+   ┌─────────────────────────────────────────────────────────────┐
+   │ 1. KnowledgeCLI.if                    281 calls, 71 unique  │
+   │    └─ Dominated by log() calls (131/281 = 46.6%)            │
+   │                                                              │
+   │ 2. recomputeLineSvg                    83 calls, 24 unique  │
+   │    └─ DOM manipulation (replace, setAttribute)              │
+   │                                                              │
+   │ 3. SPAValidator.for                    71 calls, 16 unique  │
+   │    └─ String validation (includes, test, match)             │
+   │                                                              │
+   │ 4. ComponentBehaviorExtractor.for      70 calls, 23 unique  │
+   │    └─ Regex and string processing                           │
+   │                                                              │
+   │ 5. ChatWindow (React)                  63 calls, 31 unique  │
+   │    └─ State management (setMessages, setError, etc)         │
+   └─────────────────────────────────────────────────────────────┘
+
+2. INSTABILITY MAP (Coupling Analysis)
+   
+   Most Unstable (I=1.0, no dependents):
+   ├─ resize.stage-crew.ts::startResize (0←|6→)
+   ├─ resize.stage-crew.ts::updateSize (0←|11→)
+   ├─ CodeTextarea.tsx::handleChange (0←|2→)
+   └─ CssEditorModal.tsx::handleKeyDown (0←|2→)
+   
+   Semi-Stable (I=0.6-0.8):
+   ├─ CinematicPresentation.initializeControls (2←|9→)
+   └─ SchemaResolverService.loadComponentSchemas (1←|4→)
+
+3. CYCLIC DEPENDENCIES (1 detected)
+   
+   ┌─────────────────────────────────────────┐
+   │ CinematicPresentation.nextScene         │
+   │              ↓                          │
+   │ CinematicPresentation.scheduleNextScene │
+   │              ↓ (closes loop)            │
+   └─────────────────────────────────────────┘
+   
+   Status: Low priority (2-node cycle, isolated)
+
+4. NAME CONNASCENCE (72 identifiers called 12+ times)
+   
+   Central Hub (called 50+ times):
+   ├─ log              362 calls (logging pervasive)
+   ├─ push             261 calls (array mutations)
+   ├─ String           123 calls (type conversions)
+   ├─ includes         113 calls (membership checks)
+   └─ fn                98 calls (callback patterns)
+
+================================================================================
+RECOMMENDATIONS (Priority Order)
+================================================================================
+
+1. FIX IR EXTRACTION BUG
+   Impact: Eliminates false positives in future analyses
+   Effort: Medium
+   Action: Debug TypeScript extractor's ".if" duplication
+
+2. REFACTOR KnowledgeCLI.if
+   Impact: Reduces largest god function by 281 calls
+   Effort: High
+   Action: Break into smaller, focused methods
+
+3. IMPLEMENT LOGGING FACADE
+   Impact: Reduces 362 direct log() calls
+   Effort: Medium
+   Action: Create abstraction layer for logging
+
+4. STABILIZE LEAF FUNCTIONS
+   Impact: Improves code reuse and testability
+   Effort: Low-Medium
+   Action: Make updateSize, startResize more reusable
+
+================================================================================
+GENERATED ARTIFACTS
+================================================================================
+
+Analysis Output:
+  packages/ographx/.ographx/artifacts/renderx-web/analysis/analysis.json
+
+Documentation:
+  packages/ographx/ARCHITECTURE_ANALYSIS_REPORT.md
+  packages/ographx/ANALYSIS_SUMMARY.txt (this file)
+
+Visualization Scripts:
+  packages/ographx/scripts/architecture_maps.py
+  packages/ographx/scripts/visualize_architecture.py
+  packages/ographx/scripts/god_function_map.py
+  packages/ographx/scripts/debug_redundancy.py
+
+================================================================================
+

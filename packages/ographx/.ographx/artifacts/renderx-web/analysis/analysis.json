@@ -8,18 +8,3854 @@
     "contracts": 927
   },
   "symbol_types": {
-    "unknown": 1010
+    "function": 367,
+    "method": 643
   },
   "call_distribution": {
-    "unknown": 4579
+    "CanvasDrop.ts::onDragStart": 4,
+    "CanvasDrop.ts::onDragMove": 4,
+    "CanvasDrop.ts::onDragEnd": 8,
+    "CanvasDrop.ts::onSelected": 1,
+    "CanvasHeader.tsx::CanvasHeader": 26,
+    "CanvasPage.tsx::CanvasPage": 4,
+    "CanvasDrop.container-route.spec.ts::makeConductor": 3,
+    "_clipboard.ts::setClipboardText": 4,
+    "augment.line.stage-crew.ts::ensureLineMarkers": 16,
+    "augment.line.stage-crew.ts::enhanceLine": 16,
+    "line.recompute.stage-crew.ts::recomputeLineSvg": 83,
+    "copy.stage-crew.ts::serializeElement": 10,
+    "create.arrangement.ts::resolveTemplate": 4,
+    "create.css.stage-crew.ts::injectCssFallback": 7,
+    "create.css.stage-crew.ts::injectRawCss": 3,
+    "create.dom.stage-crew.ts::applyClasses": 2,
+    "create.dom.stage-crew.ts::appendTo": 2,
+    "create.from-import.ts::transformImportToCreatePayload": 4,
+    "create.from-import.ts::attachStandardImportInteractions": 5,
+    "create.from-import.ts::transformClipboardToCreatePayload": 1,
+    "create.from-import.ts::toCreatePayloadFromData": 3,
+    "create.interactions.stage-crew.ts::handleMouseUp": 3,
+    "create.notify.ts::notifyUi": 2,
+    "create.react.stage-crew.ts::renderReact": 12,
+    "create.react.stage-crew.ts::cleanupReactRoot": 3,
+    "create.stage-crew.ts::createNode": 45,
+    "delete.stage-crew.ts::hideOverlaysForId": 5,
+    "deselect.stage-crew.ts::hideOverlayById": 2,
+    "deselect.stage-crew.ts::hideAllOverlays": 3,
+    "drag.stage-crew.ts::updatePosition": 13,
+    "drag.stage-crew.ts::startDrag": 1,
+    "export.css.stage-crew.ts::collectCssClasses": 21,
+    "export.discover.stage-crew.ts::discoverComponentsFromDom": 13,
+    "export.gif.stage-crew.ts::lerp": 1,
+    "export.mp4.stage-crew.ts::lerp": 1,
+    "export.pure.ts::buildUiFileContent": 14,
+    "export.stage-crew.ts::collectLayoutData": 52,
+    "import.css.stage-crew.ts::injectCssClasses": 4,
+    "import.nodes.stage-crew.ts::applyHierarchyAndOrder": 12,
+    "import.parse.pure.ts::parseUiFile": 21,
+    "line.manip.stage-crew.ts::updateCurve": 21,
+    "line.manip.stage-crew.ts::updateRotate": 5,
+    "line.manip.stage-crew.ts::startLineManip": 2,
+    "line.manip.stage-crew.ts::moveLineManip": 9,
+    "line.manip.stage-crew.ts::endLineManip": 2,
+    "paste.stage-crew.ts::_serializeElementFallback": 9,
+    "resize.stage-crew.ts::clamp": 1,
+    "resize.stage-crew.ts::getResizeConfig": 10,
+    "resize.stage-crew.ts::readCssNumber": 8,
+    "resize.stage-crew.ts::writeCssNumber": 4,
+    "resize.stage-crew.ts::startResize": 23,
+    "resize.stage-crew.ts::updateSize": 55,
+    "resize.stage-crew.ts::endResize": 5,
+    "resize.line.stage-crew.ts::startLineResize": 1,
+    "resize.line.stage-crew.ts::updateLine": 16,
+    "resize.line.stage-crew.ts::endLineResize": 1,
+    "select.overlay.css.stage-crew.ts::ensureOverlayCss": 11,
+    "select.overlay.dom.stage-crew.ts::getCanvasRect": 3,
+    "select.overlay.dom.stage-crew.ts::applyOverlayRectForEl": 23,
+    "select.overlay.line-advanced.stage-crew.ts::ensureAdvancedLineCss": 8,
+    "select.overlay.line-advanced.stage-crew.ts::readVar": 6,
+    "select.overlay.line-advanced.stage-crew.ts::rot": 2,
+    "select.overlay.line-advanced.stage-crew.ts::onMove": 1,
+    "select.overlay.line-advanced.stage-crew.ts::onUp": 3,
+    "select.overlay.line-resize.stage-crew.ts::ensureLineCss": 7,
+    "select.overlay.line-resize.stage-crew.ts::readVar": 6,
+    "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers": 30,
+    "select.overlay.resize.stage-crew.ts::getResizeConfig": 10,
+    "select.overlay.resize.stage-crew.ts::attachResizeHandlers": 32,
+    "select.stage-crew.ts::configureHandlesVisibility": 12,
+    "select.stage-crew.ts::showSelectionOverlay": 22,
+    "select.stage-crew.ts::hideSelectionOverlay": 2,
+    "select.stage-crew.ts::notifyUi": 4,
+    "update.stage-crew.ts::updateAttribute": 5,
+    "update.stage-crew.ts::refreshControlPanel": 5,
+    "update.svg-node.stage-crew.ts::refreshControlPanel": 2,
+    "css-registry.store.ts::CssRegistryStore.constructor": 4,
+    "css-registry.store.ts::CssRegistryStore.if": 8,
+    "observer.store.ts::setSelectionObserver": 3,
+    "observer.store.ts::setClassesObserver": 3,
+    "observer.store.ts::setCssRegistryObserver": 3,
+    "observer.store.ts::clearAllObservers": 3,
+    "rule-engine.ts::setAllRulesConfig": 1,
+    "rule-engine.ts::loadAllRulesFromWindow": 1,
+    "rule-engine.ts::ComponentRuleEngine.applyUpdate": 28,
+    "rule-engine.ts::ComponentRuleEngine.for": 22,
+    "sanitizeHtml.ts::isDataImage": 3,
+    "advanced-line.augment.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.augment.spec.ts::makeCtx": 1,
+    "advanced-line.manip.handlers.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.overlay.attach.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.overlay.drag.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.recompute.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.recompute.spec.ts::makeCtx": 1,
+    "advanced-line.resize.scale.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.resize.scale.spec.ts::makeCtx": 1,
+    "advanced-line.viewbox.autosize.spec.ts::makeSvgLineTemplate": 3,
+    "advanced-line.viewbox.autosize.spec.ts::makeCtx": 1,
+    "container-child-overlay.spec.ts::makeContainerTemplate": 1,
+    "container-child-overlay.spec.ts::makeChildTemplate": 1,
+    "container-child-selection.spec.ts::makeContainerTemplate": 1,
+    "container-child-selection.spec.ts::makeChildTemplate": 1,
+    "copy-paste.spec.ts::setupCanvas": 3,
+    "copy-paste.spec.ts::makeCtx": 17,
+    "copy-paste.spec.ts::createButton": 5,
+    "create.container-append.spec.ts::makeContainerTemplate": 1,
+    "create.container-append.spec.ts::makeChildTemplate": 1,
+    "create.dom.spec.ts::makeTemplate": 3,
+    "create.dom.spec.ts::makeCtx": 1,
+    "create.io.spec.ts::makeCtx": 5,
+    "create.react.integration.spec.ts::makeReactComponentTemplate": 2,
+    "create.react.integration.spec.ts::makeRegularComponentTemplate": 1,
+    "create.react.integration.spec.ts::makeCtx": 4,
+    "create.react.spec.ts::makeReactTemplate": 1,
+    "create.react.spec.ts::makeCtx": 3,
+    "create.svg.basic.spec.ts::makeSvgTemplate": 1,
+    "create.svg.basic.spec.ts::makeCtx": 1,
+    "create.svg.markup.spec.ts::makeSvgTemplateWithMarkup": 1,
+    "delete.spec.ts::ensureOverlays": 7,
+    "delete.spec.ts::ensureComponent": 3,
+    "deselection.spec.ts::ensureOverlays": 7,
+    "drag.dom.spec.ts::makeCtx": 1,
+    "drag.overlay-hide.spec.ts::makeTemplate": 1,
+    "drag.overlay-hide.spec.ts::dispatchMouse": 3,
+    "drag.transform.spec.ts::makeCtx": 1,
+    "export-import.content.spec.ts::setupCanvas": 3,
+    "export-import.content.spec.ts::makeExportCtx": 13,
+    "export-import.content.spec.ts::makeImportCtx": 17,
+    "export.integration.basic.spec.ts::makeIntegrationCtx": 15,
+    "export.integration.dom-errors.spec.ts::makeIntegrationCtx": 11,
+    "export.integration.dom-scan.spec.ts::makeIntegrationCtx": 5,
+    "export.integration.structure.spec.ts::makeIntegrationCtx": 12,
+    "export.io.spec.ts::makeCtx": 20,
+    "export.json-css.end-to-end.spec.ts::setupCanvas": 3,
+    "export.pure.spec.ts::makeCtx": 5,
+    "export.stage-crew.spec.ts::makeCtx": 4,
+    "import.base-classes.spec.ts::setupCanvas": 3,
+    "import.base-classes.spec.ts::makeCtx": 10,
+    "import.instance-class.spec.ts::setupCanvas": 3,
+    "import.instance-class.spec.ts::makeCtx": 17,
+    "import.integration.spec.ts::setupCanvas": 3,
+    "import.integration.spec.ts::makeCtx": 17,
+    "import.nesting.spec.ts::setupCanvas": 1,
+    "import.nesting.spec.ts::makeCtx": 17,
+    "import.selection.spec.ts::setupCanvas": 1,
+    "import.selection.spec.ts::makeCtx": 14,
+    "import.variant-toggle.spec.ts::setupCanvas": 3,
+    "import.variant-toggle.spec.ts::makeCtx": 15,
+    "line.overlay-data-driven.spec.ts::dispatchMouse": 3,
+    "line.overlay-data-driven.spec.ts::createLineTemplate": 1,
+    "line.svg.spec.ts::makeSvgLineTemplate": 3,
+    "line.svg.spec.ts::makeCtx": 1,
+    "package.register.spec.ts::createFakeConductor": 5,
+    "resize.dom.spec.ts::makeTemplate": 1,
+    "resize.dom.spec.ts::makeCtx": 1,
+    "resize.dom.spec.ts::dispatchMouse": 3,
+    "resize.overlay-align.spec.ts::makeTemplate": 1,
+    "resize.overlay-align.spec.ts::dispatchMouse": 3,
+    "resize.overlay-tools-config.spec.ts::dispatchMouse": 3,
+    "resize.play.spec.ts::makeTemplate": 1,
+    "resize.play.spec.ts::dispatchMouse": 3,
+    "resize.plugin-route.spec.ts::makeTemplate": 1,
+    "resize.plugin-route.spec.ts::dispatchMouse": 3,
+    "resize.svg.spec.ts::makeSvgTemplate": 1,
+    "routing-declarations.spec.ts::simulateRouting": 1,
+    "select.overlay.css.spec.ts::makeTemplate": 1,
+    "select.svg-node.overlay.spec.ts::makeCtx": 1,
+    "svg-node-click-select.spec.ts::makeSvgTemplateWithNestedChildren": 1,
+    "svg-node-click-select.spec.ts::makeCtx": 2,
+    "svg-node.update.spec.ts::makeSvgTemplateWithNestedChildren": 1,
+    "svg-node.update.spec.ts::makeCtx": 4,
+    "host-click-select.ts::setupHostClickToSelect": 8,
+    "host-click-select.ts::setupProductionHostClickToSelect": 10,
+    "host-click-select.ts::setupHostClickToSelectLegacy": 4,
+    "CheckboxInput.tsx::handleChange": 1,
+    "CodeTextarea.tsx::validateAndReport": 4,
+    "CodeTextarea.tsx::detectExtractCandidate": 3,
+    "CodeTextarea.tsx::handleChange": 4,
+    "CodeTextarea.tsx::handleFormat": 4,
+    "CodeTextarea.tsx::handleImportClick": 2,
+    "CodeTextarea.tsx::extractFromFullSvg": 19,
+    "ColorInput.tsx::handleTextChange": 8,
+    "ColorInput.tsx::handleColorChange": 3,
+    "index.ts::registerFieldRenderer": 1,
+    "NumberInput.tsx::handleChange": 11,
+    "SelectInput.tsx::handleChange": 3,
+    "TextInput.tsx::handleChange": 11,
+    "CssEditorModal.tsx::handleContentChange": 2,
+    "CssEditorModal.tsx::handleSave": 2,
+    "CssEditorModal.tsx::handleCancel": 3,
+    "CssEditorModal.tsx::handleKeyDown": 9,
+    "CssEditorModal.tsx::generateLineNumbers": 2,
+    "ClassManager.tsx::updateAvailableClasses": 2,
+    "ClassManager.tsx::handleSubmit": 1,
+    "ClassManager.tsx::handleEditClass": 7,
+    "ClassManager.tsx::handleCreateNewClass": 6,
+    "ClassManager.tsx::handleSaveClass": 8,
+    "ClassManager.tsx::handleCancelEdit": 3,
+    "ClassManager.tsx::_handleDeleteClass": 5,
+    "PropertyFieldRenderer.tsx::handleValidate": 2,
+    "useControlPanelSequences.ts::useControlPanelSequences": 31,
+    "useControlPanelState.ts::useControlPanelState": 35,
+    "useSchemaResolver.ts::useSchemaResolver": 12,
+    "schema-resolver.service.ts::SchemaResolverService.registerComponentSchema": 2,
+    "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas": 15,
+    "schema-resolver.service.ts::SchemaResolverService.if": 45,
+    "schema-resolver.service.ts::SchemaResolverService.switch": 5,
+    "classes.stage-crew.ts::addClass": 5,
+    "classes.stage-crew.ts::removeClass": 5,
+    "css-management.stage-crew.ts::createCssClass": 3,
+    "css-management.stage-crew.ts::updateCssClass": 3,
+    "css-management.stage-crew.ts::deleteCssClass": 5,
+    "css-management.stage-crew.ts::getCssClass": 3,
+    "css-management.stage-crew.ts::listCssClasses": 4,
+    "css-management.stage-crew.ts::removeClassFromAllElements": 4,
+    "css-management.stage-crew.ts::applyCssClassToElement": 5,
+    "css-management.stage-crew.ts::removeCssClassFromElement": 5,
+    "selection.stage-crew.ts::deriveSelectionModel": 18,
+    "ui.stage-crew.ts::initConfig": 2,
+    "ui.stage-crew.ts::initResolver": 3,
+    "ui.stage-crew.ts::registerObservers": 2,
+    "ui.stage-crew.ts::notifyReady": 3,
+    "ui.stage-crew.ts::generateFields": 3,
+    "ui.stage-crew.ts::generateSections": 3,
+    "ui.stage-crew.ts::renderView": 3,
+    "ui.stage-crew.ts::prepareField": 3,
+    "ui.stage-crew.ts::dispatchField": 5,
+    "ui.stage-crew.ts::setDirty": 3,
+    "ui.stage-crew.ts::awaitRefresh": 2,
+    "ui.stage-crew.ts::validateField": 4,
+    "ui.stage-crew.ts::mergeErrors": 2,
+    "ui.stage-crew.ts::updateView": 3,
+    "ui.stage-crew.ts::toggleSection": 3,
+    "update.stage-crew.ts::updateFromElement": 21,
+    "ControlPanel.tsx::ControlPanel": 14,
+    "field.utils.ts::getNestedValue": 3,
+    "field.utils.ts::setNestedValue": 4,
+    "attribute-editing.bidirectional.spec.ts::makeButtonTemplate": 1,
+    "attribute-editing.integration.spec.ts::makeButtonTemplate": 1,
+    "classes.editing.spec.ts::makeButtonTemplate": 1,
+    "css.idempotency.spec.ts::makeCtx": 4,
+    "integration.end-to-end.spec.ts::makeButtonTemplate": 3,
+    "live-updates.drag-resize.spec.ts::makeButtonTemplate": 1,
+    "schema-resolver.memo.spec.ts::makeSchema": 1,
+    "selection.sequence-model-and-notify.spec.ts::makeButtonTemplate": 3,
+    "ui-init.batched.spec.ts::performanceNowShim": 2,
+    "animation-coordinator.ts::generateConnectionPaths": 2,
+    "cinematic-renderer.ts::CinematicPresentation.constructor": 3,
+    "cinematic-renderer.ts::CinematicPresentation.initializeControls": 19,
+    "cinematic-renderer.ts::CinematicPresentation.startPresentation": 3,
+    "cinematic-renderer.ts::CinematicPresentation.showScene": 8,
+    "cinematic-renderer.ts::CinematicPresentation.scheduleNextScene": 3,
+    "cinematic-renderer.ts::CinematicPresentation.nextScene": 4,
+    "cinematic-renderer.ts::CinematicPresentation.previousScene": 2,
+    "cinematic-renderer.ts::CinematicPresentation.togglePlayPause": 3,
+    "cinematic-renderer.ts::CinematicPresentation.updatePlayPauseButton": 2,
+    "cinematic-renderer.ts::CinematicPresentation.restart": 4,
+    "cinematic-renderer.ts::CinematicPresentation.updateProgress": 2,
+    "cli.ts::showHelp": 26,
+    "config-loader.ts::ConfigLoader.constructor": 1,
+    "config-loader.ts::ConfigLoader.if": 15,
+    "create-cinematic-presentation.ts::main": 48,
+    "create-mono-journey.ts::main": 15,
+    "generate-mono-svg.ts::main": 33,
+    "generic-graph-generator.ts::GenericGraphGenerator.if": 19,
+    "generic-graph-generator.ts::GenericGraphGenerator.for": 11,
+    "generic-scene-generator.ts::GenericSceneGenerator.if": 9,
+    "generic-scene-generator.ts::GenericSceneGenerator.for": 18,
+    "layout.ts::withPos": 1,
+    "render-svg.ts::centerOf": 1,
+    "render-svg.ts::styleAttr": 5,
+    "render-svg.ts::transformAttr": 6,
+    "render-svg.ts::camelToKebab": 3,
+    "sample-generator.ts::generateAllSamples": 18,
+    "slide-01-generator.ts::generateSlide01Graphs": 36,
+    "slide01-generator.ts::generateSlide01Scene": 47,
+    "svg-export.ts::escapeXml": 2,
+    "template-processor.ts::TemplateProcessor.for": 18,
+    "template-processor.ts::TemplateProcessor.if": 38,
+    "ui.stage-crew.ts::safeSetStoredTheme": 2,
+    "ui.stage-crew.ts::getCurrentTheme": 8,
+    "ui.stage-crew.ts::toggleTheme": 9,
+    "HeaderControls.tsx::HeaderControls": 1,
+    "HeaderThemeToggle.tsx::HeaderThemeToggle": 18,
+    "HeaderTitle.tsx::HeaderTitle": 1,
+    "component-mapper.ts::loadConfigFromWindow": 1,
+    "component-mapper.ts::setConfig": 1,
+    "feature-flags.ts::getUsageLog": 1,
+    "feature-flags.ts::setFlagOverride": 2,
+    "feature-flags.ts::clearFlagOverrides": 2,
+    "EventRouter.ts::throttle": 5,
+    "EventRouter.ts::debounce": 3,
+    "interactionManifest.ts::setInteractionManifestProvider": 1,
+    "interactionManifest.ts::getInteractionManifestStats": 3,
+    "topicsManifest.ts::setTopicsManifestProvider": 1,
+    "topicsManifest.ts::__setTopics": 1,
+    "topicsManifest.ts::getTopicsManifestStats": 3,
+    "startupValidation.ts::setStartupStatsProvider": 1,
+    "index.ts::mark": 3,
+    "openai.service.ts::OpenAIService.constructor": 3,
+    "openai.service.ts::OpenAIService.if": 13,
+    "rag-enrichment-telemetry.service.ts::RAGEnrichmentTelemetryService.if": 1,
+    "rag-enrichment-telemetry.service.ts::RAGEnrichmentTelemetryService.for": 11,
+    "rag-enrichment.service.ts::RAGEnrichmentService.if": 7,
+    "rag-enrichment.service.ts::RAGEnrichmentService.for": 4,
+    "load.symphony.ts::mapJsonComponentToTemplateCompat": 2,
+    "component-behavior-extractor.ts::ComponentBehaviorExtractor.for": 70,
+    "ChatMessage.tsx::formatTimestamp": 2,
+    "ChatMessage.tsx::handleAddToLibrary": 1,
+    "ChatMessage.tsx::handleEditComponent": 1,
+    "ChatMessage.tsx::handleRegenerate": 5,
+    "ChatMessage.tsx::renderComponentPreview": 5,
+    "ChatWindow.tsx::ChatWindow": 63,
+    "ConfigStatusUI.tsx::ConfigStatusUI": 1,
+    "CustomComponentList.tsx::CustomComponentList": 23,
+    "CustomComponentUpload.tsx::CustomComponentUpload": 48,
+    "LibraryPanel.tsx::LibraryPanel": 39,
+    "LibraryPreview.tsx::handleDragStart": 2,
+    "LibraryPanel.spec.tsx::nextTick": 2,
+    "storage.utils.spec.ts::localStorageMock": 4,
+    "drag.preview.stage-crew.ts::ensurePayload": 3,
+    "drag.preview.stage-crew.ts::applyTemplateStyles": 9,
+    "register.spec.ts::createFakeConductor": 9,
+    "DomainEventSystem.ts::DomainEventSystem.emit": 5,
+    "EventBus.ts::EventBus.constructor": 8,
+    "EventBus.ts::EventBus.if": 10,
+    "EventBus.ts::ConductorEventBus.constructor": 5,
+    "EventBus.ts::ConductorEventBus.if": 13,
+    "EventBus.ts::ConductorEventBus.switch": 8,
+    "SPAValidator.ts::SPAValidator.constructor": 1,
+    "SPAValidator.ts::SPAValidator.if": 45,
+    "SPAValidator.ts::SPAValidator.for": 71,
+    "index.ts::getSequenceByName": 2,
+    "index.ts::getSequencesByCategory": 2,
+    "MusicalConductor.ts::MusicalConductor.if": 20,
+    "ConductorAPI.ts::ConductorAPI.if": 5,
+    "ConductorCore.ts::ConductorCore.if": 14,
+    "EventSubscriptionManager.ts::EventSubscriptionManager.if": 16,
+    "SequenceRegistry.ts::SequenceRegistry.if": 33,
+    "BeatExecutor.ts::BeatExecutor.if": 10,
+    "ExecutionQueue.ts::ExecutionQueue.if": 7,
+    "MovementExecutor.ts::MovementExecutor.if": 19,
+    "MovementExecutor.ts::MovementExecutor.for": 4,
+    "SequenceExecutor.ts::SequenceExecutor.for": 2,
+    "SequenceExecutor.ts::SequenceExecutor.if": 5,
+    "ConductorLogger.ts::ConductorLogger.for": 1,
+    "ConductorLogger.ts::ConductorLogger.switch": 13,
+    "ConductorLogger.ts::ConductorLogger.if": 1,
+    "DataBaton.ts::DataBaton.for": 7,
+    "DataBaton.ts::DataBaton.if": 2,
+    "DuplicationDetector.ts::DuplicationDetector.if": 12,
+    "DuplicationDetector.ts::DuplicationDetector.for": 2,
+    "EventLogger.ts::EventLogger.if": 18,
+    "PerformanceTracker.ts::PerformanceTracker.if": 5,
+    "PerformanceTracker.ts::PerformanceTracker.for": 6,
+    "StatisticsManager.ts::StatisticsManager.if": 10,
+    "CallbackRegistry.ts::CallbackRegistry.if": 11,
+    "CallbackRegistry.ts::CallbackRegistry.for": 14,
+    "EventOrchestrator.ts::EventOrchestrator.if": 6,
+    "EventOrchestrator.ts::EventOrchestrator.for": 6,
+    "SequenceOrchestrator.ts::SequenceOrchestrator.if": 11,
+    "PluginInterfaceFacade.ts::PluginInterfaceFacade.if": 7,
+    "PluginInterfaceFacade.ts::PluginInterfaceFacade.for": 3,
+    "PluginLoader.ts::PluginLoader.if": 60,
+    "PluginLoader.ts::PluginLoader.for": 5,
+    "PluginManager.ts::PluginManager.if": 20,
+    "PluginManager.ts::PluginManager.for": 55,
+    "PluginManifestLoader.ts::PluginManifestLoader.if": 28,
+    "PluginManifestLoader.ts::PluginManifestLoader.for": 3,
+    "PluginValidator.ts::PluginValidator.if": 61,
+    "ResourceConflictManager.ts::ResourceConflictManager.for": 2,
+    "ResourceDelegator.ts::ResourceDelegator.if": 4,
+    "ResourceDelegator.ts::ResourceDelegator.switch": 4,
+    "ResourceManager.ts::ResourceManager.constructor": 2,
+    "ResourceManager.ts::ResourceManager.if": 4,
+    "ResourceManager.ts::ResourceManager.switch": 3,
+    "ResourceOwnershipTracker.ts::ResourceOwnershipTracker.if": 7,
+    "ResourceOwnershipTracker.ts::ResourceOwnershipTracker.for": 4,
+    "StageCrew.ts::BeatTxn.if": 12,
+    "StageCrew.ts::BeatTxn.for": 15,
+    "StageCrew.ts::StageCrew.beginBeat": 2,
+    "StageCueLogger.ts::StageCueLogger.constructor": 10,
+    "StrictModeManager.ts::StrictModeManager.for": 4,
+    "StrictModeManager.ts::StrictModeManager.if": 11,
+    "SequenceUtilities.ts::SequenceUtilities.if": 11,
+    "SequenceUtilities.ts::SequenceUtilities.for": 1,
+    "SequenceValidator.ts::SequenceValidator.for": 1,
+    "SequenceValidator.ts::SequenceValidator.if": 24,
+    "fake-plugin.ts::emitStageCue": 2,
+    "demo.ts::DemoCLI.constructor": 2,
+    "demo.ts::DemoCLI.if": 42,
+    "knowledge-cli.ts::KnowledgeCLI.constructor": 9,
+    "knowledge-cli.ts::KnowledgeCLI.if": 281,
+    "queue-demo.ts::QueueDemo.constructor": 2,
+    "queue-demo.ts::QueueDemo.if": 3,
+    "shortcut-demo.ts::ShortcutDemoCLI.constructor": 3,
+    "shortcut-demo.ts::ShortcutDemoCLI.if": 62,
+    "KnowledgeExporter.ts::KnowledgeExporter.constructor": 1,
+    "KnowledgeExporter.ts::KnowledgeExporter.if": 44,
+    "KnowledgeImporter.ts::KnowledgeImporter.constructor": 1,
+    "KnowledgeImporter.ts::KnowledgeImporter.if": 28,
+    "KnowledgeImporter.ts::KnowledgeImporter.for": 3,
+    "KnowledgeMerger.ts::KnowledgeMerger.if": 4,
+    "KnowledgeMerger.ts::KnowledgeMerger.for": 53,
+    "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.constructor": 5,
+    "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.for": 1,
+    "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.if": 9,
+    "ShortcutManager.ts::ShortcutManager.constructor": 3,
+    "ShortcutManager.ts::ShortcutManager.if": 31,
+    "ShortcutManager.ts::ShortcutManager.for": 21,
+    "CLILogger.ts::CLILogger.if": 7,
+    "KnowledgeValidator.ts::KnowledgeValidator.if": 37,
+    "KnowledgeValidator.ts::KnowledgeValidator.for": 14,
+    "App.tsx::App": 41,
+    "App.tsx::InteractionFlowView": 28,
+    "App.tsx::SequenceBeatsView": 12,
+    "App.tsx::exportCsv": 22,
+    "App.tsx::exportDiagnostics": 9,
+    "TimelineFlowVisualization.tsx::TimelineFlowVisualization": 33,
+    "OperationFilter.tsx::OperationFilterPanel": 43,
+    "PluginTreeExplorer.tsx::toggleNode": 4,
+    "PluginTreeExplorer.tsx::handleSelectNode": 2,
+    "App.tsx::handleKeyDown": 2,
+    "DiagnosticsOverlay.tsx::handleEscape": 1,
+    "DiagnosticsOverlay.tsx::handleOverlayClick": 1,
+    "DiagnosticsPanel.tsx::exportLogs": 12,
+    "DiagnosticsPanel.tsx::toggleExpanded": 4,
+    "DiagnosticsPanel.tsx::handleMouseMove": 3,
+    "DiagnosticsPanel.tsx::handleMouseUp": 4,
+    "LogConverter.tsx::handleConvert": 11,
+    "LogConverter.tsx::handleClear": 4,
+    "LogConverter.tsx::handleCopyJson": 1,
+    "LogConverter.tsx::handleDownloadJson": 8,
+    "LogConverter.tsx::handleFileUpload": 3,
+    "ExecutionHistory.tsx::formatTimestamp": 2,
+    "ExecutionHistory.tsx::formatDuration": 1,
+    "LiveExecutionMonitor.tsx::calculateProgress": 1,
+    "LiveExecutionMonitor.tsx::calculateDuration": 7,
+    "LogParser.tsx::handleParse": 2,
+    "LogParser.tsx::handleFileUpload": 25,
+    "SequenceList.tsx::togglePlugin": 4,
+    "SequencePlayer.tsx::handleExport": 8,
+    "SequencePlayer.tsx::handleTriggerSequence": 1,
+    "SequencePlayer.tsx::handleCancelTrigger": 1,
+    "SequencePlayer.tsx::handleSelectHistoryItem": 1,
+    "InspectionPanel.tsx::renderInspector": 14,
+    "PluginInfoInspector.tsx::handleAction": 2,
+    "PluginInfoInspector.tsx::getStatusColor": 5,
+    "useConductorIntrospection.ts::useConductorIntrospection": 6,
+    "useDiagnosticsLogs.ts::useDiagnosticsLogs": 9,
+    "useExecutionHistory.ts::useExecutionHistory": 35,
+    "useLogParser.ts::useLogParser": 63,
+    "usePerformanceMetrics.ts::usePerformanceMetrics": 7,
+    "usePluginLoadingStats.ts::usePluginLoadingStats": 5,
+    "useSequenceExecution.ts::useSequenceExecution": 36,
+    "useSequenceList.ts::useSequenceList": 41,
+    "wiring.ts::off": 1,
+    "PanelSlot.tsx::__setPanelSlotManifestForTests": 2,
+    "PanelSlot.tsx::PanelSlot": 21,
+    "OperationFilter.tsx::handleStrategyChange": 3,
+    "OperationFilter.tsx::handleSearchChange": 3,
+    "OperationFilter.tsx::handleTypeToggle": 6,
+    "OperationFilter.tsx::handleDurationChange": 4,
+    "TelemetryPage.tsx::handleUseSampleData": 4,
+    "TelemetryPage.tsx::exportDiagnostics": 8,
+    "TimelineFlowVisualization.tsx::handleExport": 24
   },
   "complexity": {
-    "average_calls_per_symbol": 4579.0,
-    "max_calls_per_symbol": 4579,
-    "min_calls_per_symbol": 4579
+    "average_calls_per_symbol": 9.82618025751073,
+    "max_calls_per_symbol": 281,
+    "min_calls_per_symbol": 1
   },
   "coverage": {
-    "symbols_with_calls": 1,
-    "symbols_without_calls": 1009
+    "symbols_with_calls": 466,
+    "symbols_without_calls": 544
+  },
+  "architecture": {
+    "summary": {
+      "symbols": 503,
+      "calls": 4579
+    },
+    "coupling": {
+      "CanvasDrop.ts::onDragStart": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CanvasDrop.ts::onDragMove": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CanvasDrop.ts::onDragEnd": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CanvasDrop.ts::onSelected": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CanvasHeader.tsx::CanvasHeader": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CanvasPage.tsx::CanvasPage": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CanvasDrop.container-route.spec.ts::makeConductor": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "_clipboard.ts::setClipboardText": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "augment.line.stage-crew.ts::ensureLineMarkers": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "augment.line.stage-crew.ts::enhanceLine": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "line.recompute.stage-crew.ts::recomputeLineSvg": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "copy.stage-crew.ts::serializeElement": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.arrangement.ts::resolveTemplate": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "create.css.stage-crew.ts::injectCssFallback": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "create.css.stage-crew.ts::injectRawCss": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "create.dom.stage-crew.ts::applyClasses": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.dom.stage-crew.ts::appendTo": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.from-import.ts::transformImportToCreatePayload": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "create.from-import.ts::attachStandardImportInteractions": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.from-import.ts::transformClipboardToCreatePayload": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "create.from-import.ts::toCreatePayloadFromData": {
+        "afferent": 1,
+        "efferent": 3,
+        "instability": 0.75
+      },
+      "create.interactions.stage-crew.ts::handleMouseMove": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "create.interactions.stage-crew.ts::handleMouseUp": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "create.notify.ts::notifyUi": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "create.react.stage-crew.ts::renderReact": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "create.react.stage-crew.ts::cleanupReactRoot": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.stage-crew.ts::createNode": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "delete.stage-crew.ts::hideOverlaysForId": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "deselect.stage-crew.ts::hideOverlayById": {
+        "afferent": 3,
+        "efferent": 1,
+        "instability": 0.25
+      },
+      "deselect.stage-crew.ts::hideAllOverlays": {
+        "afferent": 1,
+        "efferent": 3,
+        "instability": 0.75
+      },
+      "drag.stage-crew.ts::updatePosition": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "drag.stage-crew.ts::startDrag": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "drag.stage-crew.ts::endDrag": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "drag.stage-crew.ts::forwardToControlPanel": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "export.css.stage-crew.ts::collectCssClasses": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.discover.stage-crew.ts::discoverComponentsFromDom": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.gif.stage-crew.ts::lerp": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.mp4-encoder.ts::BaseEncoder.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "export.mp4-encoder.ts::WebCodecsMP4Encoder.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "export.mp4-encoder.ts::MediaRecorderMP4Encoder.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "export.mp4.stage-crew.ts::lerp": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.pure.ts::buildUiFileContent": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "export.stage-crew.ts::collectLayoutData": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "import.css.stage-crew.ts::injectCssClasses": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.nodes.stage-crew.ts::applyHierarchyAndOrder": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.parse.pure.ts::parseUiFile": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "line.manip.stage-crew.ts::updateCurve": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "line.manip.stage-crew.ts::updateRotate": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "line.manip.stage-crew.ts::startLineManip": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "line.manip.stage-crew.ts::moveLineManip": {
+        "afferent": 1,
+        "efferent": 3,
+        "instability": 0.75
+      },
+      "line.manip.stage-crew.ts::endLineManip": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "paste.stage-crew.ts::_serializeElementFallback": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.stage-crew.ts::clamp": {
+        "afferent": 5,
+        "efferent": 1,
+        "instability": 0.167
+      },
+      "resize.stage-crew.ts::getResizeConfig": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "resize.stage-crew.ts::readCssNumber": {
+        "afferent": 7,
+        "efferent": 1,
+        "instability": 0.125
+      },
+      "resize.stage-crew.ts::writeCssNumber": {
+        "afferent": 7,
+        "efferent": 1,
+        "instability": 0.125
+      },
+      "resize.stage-crew.ts::startResize": {
+        "afferent": 0,
+        "efferent": 6,
+        "instability": 1.0
+      },
+      "resize.stage-crew.ts::updateSize": {
+        "afferent": 0,
+        "efferent": 11,
+        "instability": 1.0
+      },
+      "resize.stage-crew.ts::endResize": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "resize.line.stage-crew.ts::startLineResize": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "resize.line.stage-crew.ts::updateLine": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "resize.line.stage-crew.ts::endLineResize": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.css.stage-crew.ts::ensureOverlayCss": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "select.overlay.dom.stage-crew.ts::getCanvasRect": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "select.overlay.dom.stage-crew.ts::applyOverlayRectForEl": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "select.overlay.line-advanced.stage-crew.ts::ensureAdvancedLineCss": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "select.overlay.line-advanced.stage-crew.ts::readVar": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.line-advanced.stage-crew.ts::rot": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.line-advanced.stage-crew.ts::onMove": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.line-advanced.stage-crew.ts::onUp": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.line-resize.stage-crew.ts::ensureLineCss": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "select.overlay.line-resize.stage-crew.ts::readVar": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "select.overlay.resize.stage-crew.ts::getResizeConfig": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "select.overlay.resize.stage-crew.ts::attachResizeHandlers": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "select.stage-crew.ts::configureHandlesVisibility": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "select.stage-crew.ts::showSelectionOverlay": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "select.stage-crew.ts::hideSelectionOverlay": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "select.stage-crew.ts::notifyUi": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "update.stage-crew.ts::updateAttribute": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "update.stage-crew.ts::refreshControlPanel": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "update.svg-node.stage-crew.ts::refreshControlPanel": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-registry.store.ts::CssRegistryStore.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "css-registry.store.ts::CssRegistryStore.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "observer.store.ts::setSelectionObserver": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "observer.store.ts::setClassesObserver": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "observer.store.ts::setCssRegistryObserver": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "observer.store.ts::clearAllObservers": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "rule-engine.ts::setAllRulesConfig": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "rule-engine.ts::loadAllRulesFromWindow": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "rule-engine.ts::ComponentRuleEngine.applyUpdate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "rule-engine.ts::ComponentRuleEngine.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "sanitizeHtml.ts::isDataImage": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.augment.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.augment.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.manip.handlers.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.overlay.attach.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.overlay.drag.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.recompute.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.recompute.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.resize.scale.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.resize.scale.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.viewbox.autosize.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "advanced-line.viewbox.autosize.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "container-child-overlay.spec.ts::makeContainerTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "container-child-overlay.spec.ts::makeChildTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "container-child-selection.spec.ts::makeContainerTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "container-child-selection.spec.ts::makeChildTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "copy-paste.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "copy-paste.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "copy-paste.spec.ts::createButton": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.container-append.spec.ts::makeContainerTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.container-append.spec.ts::makeChildTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.dom.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.dom.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.io.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.react.integration.spec.ts::makeReactComponentTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.react.integration.spec.ts::makeRegularComponentTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.react.integration.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.react.spec.ts::makeReactTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.react.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.svg.basic.spec.ts::makeSvgTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.svg.basic.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create.svg.markup.spec.ts::makeSvgTemplateWithMarkup": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "delete.spec.ts::ensureOverlays": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "delete.spec.ts::ensureComponent": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "deselection.spec.ts::ensureOverlays": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "drag.dom.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "drag.overlay-hide.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "drag.overlay-hide.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "drag.transform.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export-import.content.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export-import.content.spec.ts::makeExportCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export-import.content.spec.ts::makeImportCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.integration.basic.spec.ts::makeIntegrationCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.integration.dom-errors.spec.ts::makeIntegrationCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.integration.dom-scan.spec.ts::makeIntegrationCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.integration.structure.spec.ts::makeIntegrationCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.io.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.json-css.end-to-end.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.pure.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "export.stage-crew.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.base-classes.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.base-classes.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.instance-class.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.instance-class.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.integration.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.integration.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.nesting.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.nesting.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.selection.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.selection.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.variant-toggle.spec.ts::setupCanvas": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "import.variant-toggle.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "line.overlay-data-driven.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "line.overlay-data-driven.spec.ts::createLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "line.svg.spec.ts::makeSvgLineTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "line.svg.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "package.register.spec.ts::createFakeConductor": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.dom.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.dom.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.dom.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.overlay-align.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.overlay-align.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.overlay-tools-config.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.play.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.play.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.plugin-route.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.plugin-route.spec.ts::dispatchMouse": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "resize.svg.spec.ts::makeSvgTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "routing-declarations.spec.ts::simulateRouting": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "select.overlay.css.spec.ts::makeTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "select.svg-node.overlay.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "svg-node-click-select.spec.ts::makeSvgTemplateWithNestedChildren": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "svg-node-click-select.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "svg-node.update.spec.ts::makeSvgTemplateWithNestedChildren": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "svg-node.update.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "host-click-select.ts::setupHostClickToSelect": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "host-click-select.ts::setupProductionHostClickToSelect": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "host-click-select.ts::setupHostClickToSelectLegacy": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CheckboxInput.tsx::handleChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CodeTextarea.tsx::validateAndReport": {
+        "afferent": 3,
+        "efferent": 1,
+        "instability": 0.25
+      },
+      "CodeTextarea.tsx::detectExtractCandidate": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "CodeTextarea.tsx::handleChange": {
+        "afferent": 0,
+        "efferent": 2,
+        "instability": 1.0
+      },
+      "CodeTextarea.tsx::handleFormat": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CodeTextarea.tsx::handleImportClick": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CodeTextarea.tsx::extractFromFullSvg": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "ColorInput.tsx::handleTextChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ColorInput.tsx::handleColorChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "index.ts::registerFieldRenderer": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "NumberInput.tsx::handleChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SelectInput.tsx::handleChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "TextInput.tsx::handleChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CssEditorModal.tsx::handleContentChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CssEditorModal.tsx::handleSave": {
+        "afferent": 1,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CssEditorModal.tsx::handleCancel": {
+        "afferent": 1,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CssEditorModal.tsx::handleKeyDown": {
+        "afferent": 0,
+        "efferent": 2,
+        "instability": 1.0
+      },
+      "CssEditorModal.tsx::generateLineNumbers": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::updateAvailableClasses": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::handleSubmit": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::handleEditClass": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::handleCreateNewClass": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::handleSaveClass": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::handleCancelEdit": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ClassManager.tsx::_handleDeleteClass": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PropertyFieldRenderer.tsx::handleValidate": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "useControlPanelSequences.ts::useControlPanelSequences": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useControlPanelState.ts::useControlPanelState": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useSchemaResolver.ts::useSchemaResolver": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "schema-resolver.service.ts::SchemaResolverService.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "schema-resolver.service.ts::SchemaResolverService.registerComponentSchema": {
+        "afferent": 4,
+        "efferent": 1,
+        "instability": 0.2
+      },
+      "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas": {
+        "afferent": 1,
+        "efferent": 4,
+        "instability": 0.8
+      },
+      "schema-resolver.service.ts::SchemaResolverService.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "schema-resolver.service.ts::SchemaResolverService.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "classes.stage-crew.ts::addClass": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "classes.stage-crew.ts::removeClass": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-management.stage-crew.ts::createCssClass": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-management.stage-crew.ts::updateCssClass": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-management.stage-crew.ts::deleteCssClass": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "css-management.stage-crew.ts::getCssClass": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-management.stage-crew.ts::listCssClasses": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-management.stage-crew.ts::removeClassFromAllElements": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "css-management.stage-crew.ts::applyCssClassToElement": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css-management.stage-crew.ts::removeCssClassFromElement": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "selection.stage-crew.ts::deriveSelectionModel": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::initConfig": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::initResolver": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::registerObservers": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::notifyReady": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::generateFields": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::generateSections": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::renderView": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::prepareField": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::dispatchField": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::setDirty": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::awaitRefresh": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::validateField": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::mergeErrors": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::updateView": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui.stage-crew.ts::toggleSection": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "update.stage-crew.ts::updateFromElement": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ControlPanel.tsx::ControlPanel": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "field.utils.ts::getNestedValue": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "field.utils.ts::setNestedValue": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "attribute-editing.bidirectional.spec.ts::makeButtonTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "attribute-editing.integration.spec.ts::makeButtonTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "classes.editing.spec.ts::makeButtonTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "css.idempotency.spec.ts::makeCtx": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "integration.end-to-end.spec.ts::makeButtonTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "live-updates.drag-resize.spec.ts::makeButtonTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "observer.store.spec.ts::sel": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "observer.store.spec.ts::cls": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "observer.store.spec.ts::css": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "schema-resolver.memo.spec.ts::makeSchema": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "selection.sequence-model-and-notify.spec.ts::makeButtonTemplate": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ui-init.batched.spec.ts::performanceNowShim": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "animation-coordinator.ts::generateConnectionPaths": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "cinematic-renderer.ts::CinematicPresentation.constructor": {
+        "afferent": 0,
+        "efferent": 2,
+        "instability": 1.0
+      },
+      "cinematic-renderer.ts::CinematicPresentation.initializeControls": {
+        "afferent": 2,
+        "efferent": 9,
+        "instability": 0.818
+      },
+      "cinematic-renderer.ts::CinematicPresentation.startPresentation": {
+        "afferent": 2,
+        "efferent": 3,
+        "instability": 0.6
+      },
+      "cinematic-renderer.ts::CinematicPresentation.showScene": {
+        "afferent": 5,
+        "efferent": 2,
+        "instability": 0.286
+      },
+      "cinematic-renderer.ts::CinematicPresentation.scheduleNextScene": {
+        "afferent": 5,
+        "efferent": 2,
+        "instability": 0.286
+      },
+      "cinematic-renderer.ts::CinematicPresentation.nextScene": {
+        "afferent": 4,
+        "efferent": 4,
+        "instability": 0.5
+      },
+      "cinematic-renderer.ts::CinematicPresentation.previousScene": {
+        "afferent": 3,
+        "efferent": 2,
+        "instability": 0.4
+      },
+      "cinematic-renderer.ts::CinematicPresentation.togglePlayPause": {
+        "afferent": 3,
+        "efferent": 3,
+        "instability": 0.5
+      },
+      "cinematic-renderer.ts::CinematicPresentation.updatePlayPauseButton": {
+        "afferent": 3,
+        "efferent": 1,
+        "instability": 0.25
+      },
+      "cinematic-renderer.ts::CinematicPresentation.restart": {
+        "afferent": 3,
+        "efferent": 3,
+        "instability": 0.5
+      },
+      "cinematic-renderer.ts::CinematicPresentation.updateProgress": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "cli.ts::showHelp": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "config-loader.ts::ConfigLoader.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "config-loader.ts::ConfigLoader.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "create-cinematic-presentation.ts::main": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "create-mono-journey.ts::main": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "generate-mono-svg.ts::main": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "generic-graph-generator.ts::GenericGraphGenerator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "generic-graph-generator.ts::GenericGraphGenerator.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "generic-graph-generator.ts::GenericGraphGenerator.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "generic-scene-generator.ts::GenericSceneGenerator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "generic-scene-generator.ts::GenericSceneGenerator.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "layout.ts::withPos": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "render-svg.ts::centerOf": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "render-svg.ts::styleAttr": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "render-svg.ts::transformAttr": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "render-svg.ts::camelToKebab": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "sample-generator.ts::generateAllSamples": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "slide-01-generator.ts::generateSlide01Graphs": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "slide01-generator.ts::generateSlide01Scene": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "svg-export.ts::escapeXml": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "template-processor.ts::TemplateProcessor.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "template-processor.ts::TemplateProcessor.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ui.stage-crew.ts::safeSetStoredTheme": {
+        "afferent": 3,
+        "efferent": 1,
+        "instability": 0.25
+      },
+      "ui.stage-crew.ts::getCurrentTheme": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "ui.stage-crew.ts::toggleTheme": {
+        "afferent": 1,
+        "efferent": 2,
+        "instability": 0.667
+      },
+      "HeaderControls.tsx::HeaderControls": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "HeaderThemeToggle.tsx::HeaderThemeToggle": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "HeaderTitle.tsx::HeaderTitle": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "component-mapper.ts::loadConfigFromWindow": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "component-mapper.ts::setConfig": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "feature-flags.ts::getUsageLog": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "feature-flags.ts::setFlagOverride": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "feature-flags.ts::clearFlagOverrides": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "EventRouter.ts::throttle": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "EventRouter.ts::debounce": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "interactionManifest.ts::setInteractionManifestProvider": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "interactionManifest.ts::getInteractionManifestStats": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "topicsManifest.ts::setTopicsManifestProvider": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "topicsManifest.ts::__setTopics": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "topicsManifest.ts::getTopicsManifestStats": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "startupValidation.ts::setStartupStatsProvider": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "index.ts::mark": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "openai.service.ts::OpenAIService.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "openai.service.ts::OpenAIService.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "openai.service.ts::ChatError.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "rag-enrichment-telemetry.service.ts::RAGEnrichmentTelemetryService.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "rag-enrichment-telemetry.service.ts::RAGEnrichmentTelemetryService.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "rag-enrichment.service.ts::RAGEnrichmentService.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "rag-enrichment.service.ts::RAGEnrichmentService.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "load.symphony.ts::mapJsonComponentToTemplateCompat": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "component-behavior-extractor.ts::ComponentBehaviorExtractor.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ChatMessage.tsx::formatTimestamp": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ChatMessage.tsx::handleAddToLibrary": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ChatMessage.tsx::handleEditComponent": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ChatMessage.tsx::handleRegenerate": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ChatMessage.tsx::renderComponentPreview": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ChatWindow.tsx::ChatWindow": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "ConfigStatusUI.tsx::ConfigStatusUI": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CustomComponentList.tsx::CustomComponentList": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "CustomComponentUpload.tsx::CustomComponentUpload": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "LibraryPanel.tsx::LibraryPanel": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "LibraryPreview.tsx::handleDragStart": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LibraryPanel.spec.tsx::nextTick": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "storage.utils.spec.ts::localStorageMock": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "drag.preview.stage-crew.ts::ensurePayload": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "drag.preview.stage-crew.ts::applyTemplateStyles": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "register.spec.ts::createFakeConductor": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "DomainEventSystem.ts::DomainEventSystem.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DomainEventSystem.ts::DomainEventSystem.emit": {
+        "afferent": 2,
+        "efferent": 2,
+        "instability": 0.5
+      },
+      "EventBus.ts::EventBus.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventBus.ts::EventBus.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventBus.ts::ConductorEventBus.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventBus.ts::ConductorEventBus.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventBus.ts::ConductorEventBus.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SPAValidator.ts::SPAValidator.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SPAValidator.ts::SPAValidator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SPAValidator.ts::SPAValidator.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "index.ts::getSequenceByName": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "index.ts::getSequencesByCategory": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "MusicalConductor.ts::MusicalConductor.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ConductorAPI.ts::ConductorAPI.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ConductorCore.ts::ConductorCore.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventSubscriptionManager.ts::EventSubscriptionManager.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventSubscriptionManager.ts::EventSubscriptionManager.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceRegistry.ts::SequenceRegistry.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceRegistry.ts::SequenceRegistry.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "BeatExecutor.ts::BeatExecutor.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "BeatExecutor.ts::BeatExecutor.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ExecutionQueue.ts::ExecutionQueue.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "MovementExecutor.ts::MovementExecutor.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "MovementExecutor.ts::MovementExecutor.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "MovementExecutor.ts::MovementExecutor.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceExecutor.ts::SequenceExecutor.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceExecutor.ts::SequenceExecutor.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ConductorLogger.ts::ConductorLogger.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ConductorLogger.ts::ConductorLogger.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ConductorLogger.ts::ConductorLogger.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ConductorLogger.ts::ConductorLogger.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DataBaton.ts::DataBaton.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DataBaton.ts::DataBaton.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DuplicationDetector.ts::DuplicationDetector.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DuplicationDetector.ts::DuplicationDetector.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DuplicationDetector.ts::DuplicationDetector.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventLogger.ts::EventLogger.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PerformanceTracker.ts::PerformanceTracker.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PerformanceTracker.ts::PerformanceTracker.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StatisticsManager.ts::StatisticsManager.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StatisticsManager.ts::StatisticsManager.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CallbackRegistry.ts::CallbackRegistry.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CallbackRegistry.ts::CallbackRegistry.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventOrchestrator.ts::EventOrchestrator.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventOrchestrator.ts::EventOrchestrator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "EventOrchestrator.ts::EventOrchestrator.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceOrchestrator.ts::SequenceOrchestrator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginInterfaceFacade.ts::PluginInterfaceFacade.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginInterfaceFacade.ts::PluginInterfaceFacade.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginInterfaceFacade.ts::PluginInterfaceFacade.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginLoader.ts::PluginLoader.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginLoader.ts::PluginLoader.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginManager.ts::PluginManager.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginManager.ts::PluginManager.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginManifestLoader.ts::PluginManifestLoader.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginManifestLoader.ts::PluginManifestLoader.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginValidator.ts::PluginValidator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceConflictManager.ts::ResourceConflictManager.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceConflictResolver.ts::ResourceConflictResolver.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceConflictResolver.ts::ResourceConflictResolver.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceDelegator.ts::ResourceDelegator.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceDelegator.ts::ResourceDelegator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceDelegator.ts::ResourceDelegator.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceManager.ts::ResourceManager.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceManager.ts::ResourceManager.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceManager.ts::ResourceManager.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceOwnershipTracker.ts::ResourceOwnershipTracker.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ResourceOwnershipTracker.ts::ResourceOwnershipTracker.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StageCrew.ts::BeatTxn.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StageCrew.ts::BeatTxn.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StageCrew.ts::StageCrew.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StageCrew.ts::StageCrew.beginBeat": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "StageCueLogger.ts::StageCueLogger.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StrictModeManager.ts::StrictModeManager.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StrictModeManager.ts::StrictModeManager.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "StrictModeManager.ts::StrictModeManager.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceUtilities.ts::SequenceUtilities.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceUtilities.ts::SequenceUtilities.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceUtilities.ts::SequenceUtilities.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceValidator.ts::SequenceValidator.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceValidator.ts::SequenceValidator.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceValidator.ts::SequenceValidator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "fake-plugin.ts::emitStageCue": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "demo.ts::DemoCLI.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "demo.ts::DemoCLI.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "knowledge-cli.ts::KnowledgeCLI.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "knowledge-cli.ts::KnowledgeCLI.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "knowledge-cli.ts::KnowledgeCLI.switch": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "queue-demo.ts::QueueDemo.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "queue-demo.ts::QueueDemo.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "shortcut-demo.ts::ShortcutDemoCLI.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "shortcut-demo.ts::ShortcutDemoCLI.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeExporter.ts::KnowledgeExporter.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeExporter.ts::KnowledgeExporter.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeImporter.ts::KnowledgeImporter.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeImporter.ts::KnowledgeImporter.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeImporter.ts::KnowledgeImporter.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeMerger.ts::KnowledgeMerger.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeMerger.ts::KnowledgeMerger.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeTransferQueue.ts::KnowledgeTransferQueue.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ShortcutManager.ts::ShortcutManager.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ShortcutManager.ts::ShortcutManager.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ShortcutManager.ts::ShortcutManager.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CLILogger.ts::CLILogger.constructor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "CLILogger.ts::CLILogger.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeValidator.ts::KnowledgeValidator.if": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "KnowledgeValidator.ts::KnowledgeValidator.for": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "App.tsx::App": {
+        "afferent": 1,
+        "efferent": 3,
+        "instability": 0.75
+      },
+      "App.tsx::InteractionFlowView": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "App.tsx::SequenceBeatsView": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "App.tsx::exportCsv": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "App.tsx::exportDiagnostics": {
+        "afferent": 2,
+        "efferent": 1,
+        "instability": 0.333
+      },
+      "TimelineFlowVisualization.tsx::TimelineFlowVisualization": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "OperationFilter.tsx::OperationFilterPanel": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "PluginTreeExplorer.tsx::toggleNode": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginTreeExplorer.tsx::handleSelectNode": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "App.tsx::handleKeyDown": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DiagnosticsOverlay.tsx::handleEscape": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DiagnosticsOverlay.tsx::handleOverlayClick": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DiagnosticsPanel.tsx::exportLogs": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DiagnosticsPanel.tsx::toggleExpanded": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DiagnosticsPanel.tsx::handleMouseMove": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "DiagnosticsPanel.tsx::handleMouseUp": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogConverter.tsx::handleConvert": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogConverter.tsx::handleClear": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogConverter.tsx::handleCopyJson": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogConverter.tsx::handleDownloadJson": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogConverter.tsx::handleFileUpload": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ExecutionHistory.tsx::getStatusIcon": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ExecutionHistory.tsx::formatTimestamp": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "ExecutionHistory.tsx::formatDuration": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LiveExecutionMonitor.tsx::getStatusIcon": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LiveExecutionMonitor.tsx::getStatusColor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LiveExecutionMonitor.tsx::calculateProgress": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LiveExecutionMonitor.tsx::calculateDuration": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogParser.tsx::handleParse": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "LogParser.tsx::handleFileUpload": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceList.tsx::togglePlugin": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequencePlayer.tsx::handleExport": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequencePlayer.tsx::handleTriggerSequence": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequencePlayer.tsx::handleCancelTrigger": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequencePlayer.tsx::handleSelectHistoryItem": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceTimeline.tsx::getStatusIcon": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "SequenceTimeline.tsx::getStatusColor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "InspectionPanel.tsx::renderInspector": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginInfoInspector.tsx::handleAction": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PluginInfoInspector.tsx::getStatusColor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "useConductorIntrospection.ts::useConductorIntrospection": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useDiagnosticsLogs.ts::useDiagnosticsLogs": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useExecutionHistory.ts::useExecutionHistory": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useLogParser.ts::useLogParser": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "usePerformanceMetrics.ts::usePerformanceMetrics": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "usePluginLoadingStats.ts::usePluginLoadingStats": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useSequenceExecution.ts::useSequenceExecution": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "useSequenceList.ts::useSequenceList": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "wiring.ts::off": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "PanelSlot.tsx::__setPanelSlotManifestForTests": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "PanelSlot.tsx::PanelSlot": {
+        "afferent": 1,
+        "efferent": 1,
+        "instability": 0.5
+      },
+      "OperationFilter.tsx::handleStrategyChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "OperationFilter.tsx::handleSearchChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "OperationFilter.tsx::handleTypeToggle": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "OperationFilter.tsx::handleDurationChange": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "TelemetryPage.tsx::handleUseSampleData": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "TelemetryPage.tsx::exportDiagnostics": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "TimelineFlowVisualization.tsx::getEventColor": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      },
+      "TimelineFlowVisualization.tsx::handleExport": {
+        "afferent": 0,
+        "efferent": 0,
+        "instability": 0.0
+      }
+    },
+    "anti_patterns": {
+      "god_functions": [
+        {
+          "symbol": "CanvasHeader.tsx::CanvasHeader",
+          "total_calls": 26,
+          "unique_called": 16
+        },
+        {
+          "symbol": "augment.line.stage-crew.ts::enhanceLine",
+          "total_calls": 16,
+          "unique_called": 10
+        },
+        {
+          "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
+          "total_calls": 83,
+          "unique_called": 24
+        },
+        {
+          "symbol": "copy.stage-crew.ts::serializeElement",
+          "total_calls": 10,
+          "unique_called": 8
+        },
+        {
+          "symbol": "create.react.stage-crew.ts::renderReact",
+          "total_calls": 12,
+          "unique_called": 11
+        },
+        {
+          "symbol": "create.stage-crew.ts::createNode",
+          "total_calls": 45,
+          "unique_called": 31
+        },
+        {
+          "symbol": "drag.stage-crew.ts::updatePosition",
+          "total_calls": 13,
+          "unique_called": 9
+        },
+        {
+          "symbol": "export.css.stage-crew.ts::collectCssClasses",
+          "total_calls": 21,
+          "unique_called": 19
+        },
+        {
+          "symbol": "export.discover.stage-crew.ts::discoverComponentsFromDom",
+          "total_calls": 13,
+          "unique_called": 12
+        },
+        {
+          "symbol": "export.pure.ts::buildUiFileContent",
+          "total_calls": 14,
+          "unique_called": 10
+        },
+        {
+          "symbol": "export.stage-crew.ts::collectLayoutData",
+          "total_calls": 52,
+          "unique_called": 29
+        },
+        {
+          "symbol": "import.nodes.stage-crew.ts::applyHierarchyAndOrder",
+          "total_calls": 12,
+          "unique_called": 10
+        },
+        {
+          "symbol": "import.parse.pure.ts::parseUiFile",
+          "total_calls": 21,
+          "unique_called": 12
+        },
+        {
+          "symbol": "resize.stage-crew.ts::startResize",
+          "total_calls": 23,
+          "unique_called": 8
+        },
+        {
+          "symbol": "resize.stage-crew.ts::updateSize",
+          "total_calls": 55,
+          "unique_called": 17
+        },
+        {
+          "symbol": "resize.line.stage-crew.ts::updateLine",
+          "total_calls": 16,
+          "unique_called": 10
+        },
+        {
+          "symbol": "select.overlay.css.stage-crew.ts::ensureOverlayCss",
+          "total_calls": 11,
+          "unique_called": 8
+        },
+        {
+          "symbol": "select.overlay.dom.stage-crew.ts::applyOverlayRectForEl",
+          "total_calls": 23,
+          "unique_called": 8
+        },
+        {
+          "symbol": "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers",
+          "total_calls": 30,
+          "unique_called": 19
+        },
+        {
+          "symbol": "select.overlay.resize.stage-crew.ts::attachResizeHandlers",
+          "total_calls": 32,
+          "unique_called": 22
+        },
+        {
+          "symbol": "select.stage-crew.ts::configureHandlesVisibility",
+          "total_calls": 12,
+          "unique_called": 12
+        },
+        {
+          "symbol": "select.stage-crew.ts::showSelectionOverlay",
+          "total_calls": 22,
+          "unique_called": 17
+        },
+        {
+          "symbol": "rule-engine.ts::ComponentRuleEngine.applyUpdate",
+          "total_calls": 28,
+          "unique_called": 20
+        },
+        {
+          "symbol": "rule-engine.ts::ComponentRuleEngine.for",
+          "total_calls": 22,
+          "unique_called": 13
+        },
+        {
+          "symbol": "copy-paste.spec.ts::makeCtx",
+          "total_calls": 17,
+          "unique_called": 8
+        },
+        {
+          "symbol": "export-import.content.spec.ts::makeImportCtx",
+          "total_calls": 17,
+          "unique_called": 8
+        },
+        {
+          "symbol": "export.integration.basic.spec.ts::makeIntegrationCtx",
+          "total_calls": 15,
+          "unique_called": 9
+        },
+        {
+          "symbol": "export.integration.dom-errors.spec.ts::makeIntegrationCtx",
+          "total_calls": 11,
+          "unique_called": 8
+        },
+        {
+          "symbol": "export.integration.structure.spec.ts::makeIntegrationCtx",
+          "total_calls": 12,
+          "unique_called": 8
+        },
+        {
+          "symbol": "export.io.spec.ts::makeCtx",
+          "total_calls": 20,
+          "unique_called": 10
+        },
+        {
+          "symbol": "import.instance-class.spec.ts::makeCtx",
+          "total_calls": 17,
+          "unique_called": 8
+        },
+        {
+          "symbol": "import.integration.spec.ts::makeCtx",
+          "total_calls": 17,
+          "unique_called": 8
+        },
+        {
+          "symbol": "import.nesting.spec.ts::makeCtx",
+          "total_calls": 17,
+          "unique_called": 8
+        },
+        {
+          "symbol": "import.selection.spec.ts::makeCtx",
+          "total_calls": 14,
+          "unique_called": 8
+        },
+        {
+          "symbol": "import.variant-toggle.spec.ts::makeCtx",
+          "total_calls": 15,
+          "unique_called": 8
+        },
+        {
+          "symbol": "host-click-select.ts::setupProductionHostClickToSelect",
+          "total_calls": 10,
+          "unique_called": 9
+        },
+        {
+          "symbol": "CodeTextarea.tsx::extractFromFullSvg",
+          "total_calls": 19,
+          "unique_called": 15
+        },
+        {
+          "symbol": "TextInput.tsx::handleChange",
+          "total_calls": 11,
+          "unique_called": 8
+        },
+        {
+          "symbol": "useControlPanelSequences.ts::useControlPanelSequences",
+          "total_calls": 31,
+          "unique_called": 13
+        },
+        {
+          "symbol": "useControlPanelState.ts::useControlPanelState",
+          "total_calls": 35,
+          "unique_called": 21
+        },
+        {
+          "symbol": "useSchemaResolver.ts::useSchemaResolver",
+          "total_calls": 12,
+          "unique_called": 11
+        },
+        {
+          "symbol": "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas",
+          "total_calls": 15,
+          "unique_called": 9
+        },
+        {
+          "symbol": "schema-resolver.service.ts::SchemaResolverService.if",
+          "total_calls": 45,
+          "unique_called": 21
+        },
+        {
+          "symbol": "selection.stage-crew.ts::deriveSelectionModel",
+          "total_calls": 18,
+          "unique_called": 13
+        },
+        {
+          "symbol": "update.stage-crew.ts::updateFromElement",
+          "total_calls": 21,
+          "unique_called": 11
+        },
+        {
+          "symbol": "ControlPanel.tsx::ControlPanel",
+          "total_calls": 14,
+          "unique_called": 14
+        },
+        {
+          "symbol": "cinematic-renderer.ts::CinematicPresentation.initializeControls",
+          "total_calls": 19,
+          "unique_called": 8
+        },
+        {
+          "symbol": "create-cinematic-presentation.ts::main",
+          "total_calls": 48,
+          "unique_called": 12
+        },
+        {
+          "symbol": "generate-mono-svg.ts::main",
+          "total_calls": 33,
+          "unique_called": 10
+        },
+        {
+          "symbol": "generic-graph-generator.ts::GenericGraphGenerator.if",
+          "total_calls": 19,
+          "unique_called": 11
+        },
+        {
+          "symbol": "generic-scene-generator.ts::GenericSceneGenerator.for",
+          "total_calls": 18,
+          "unique_called": 8
+        },
+        {
+          "symbol": "sample-generator.ts::generateAllSamples",
+          "total_calls": 18,
+          "unique_called": 15
+        },
+        {
+          "symbol": "slide-01-generator.ts::generateSlide01Graphs",
+          "total_calls": 36,
+          "unique_called": 22
+        },
+        {
+          "symbol": "slide01-generator.ts::generateSlide01Scene",
+          "total_calls": 47,
+          "unique_called": 19
+        },
+        {
+          "symbol": "template-processor.ts::TemplateProcessor.for",
+          "total_calls": 18,
+          "unique_called": 9
+        },
+        {
+          "symbol": "template-processor.ts::TemplateProcessor.if",
+          "total_calls": 38,
+          "unique_called": 22
+        },
+        {
+          "symbol": "HeaderThemeToggle.tsx::HeaderThemeToggle",
+          "total_calls": 18,
+          "unique_called": 10
+        },
+        {
+          "symbol": "component-behavior-extractor.ts::ComponentBehaviorExtractor.for",
+          "total_calls": 70,
+          "unique_called": 23
+        },
+        {
+          "symbol": "ChatWindow.tsx::ChatWindow",
+          "total_calls": 63,
+          "unique_called": 31
+        },
+        {
+          "symbol": "CustomComponentList.tsx::CustomComponentList",
+          "total_calls": 23,
+          "unique_called": 20
+        },
+        {
+          "symbol": "CustomComponentUpload.tsx::CustomComponentUpload",
+          "total_calls": 48,
+          "unique_called": 26
+        },
+        {
+          "symbol": "LibraryPanel.tsx::LibraryPanel",
+          "total_calls": 39,
+          "unique_called": 29
+        },
+        {
+          "symbol": "EventBus.ts::ConductorEventBus.if",
+          "total_calls": 13,
+          "unique_called": 10
+        },
+        {
+          "symbol": "SPAValidator.ts::SPAValidator.if",
+          "total_calls": 45,
+          "unique_called": 23
+        },
+        {
+          "symbol": "SPAValidator.ts::SPAValidator.for",
+          "total_calls": 71,
+          "unique_called": 16
+        },
+        {
+          "symbol": "MusicalConductor.ts::MusicalConductor.if",
+          "total_calls": 20,
+          "unique_called": 13
+        },
+        {
+          "symbol": "ConductorCore.ts::ConductorCore.if",
+          "total_calls": 14,
+          "unique_called": 11
+        },
+        {
+          "symbol": "BeatExecutor.ts::BeatExecutor.if",
+          "total_calls": 10,
+          "unique_called": 8
+        },
+        {
+          "symbol": "MovementExecutor.ts::MovementExecutor.if",
+          "total_calls": 19,
+          "unique_called": 12
+        },
+        {
+          "symbol": "DuplicationDetector.ts::DuplicationDetector.if",
+          "total_calls": 12,
+          "unique_called": 9
+        },
+        {
+          "symbol": "CallbackRegistry.ts::CallbackRegistry.for",
+          "total_calls": 14,
+          "unique_called": 10
+        },
+        {
+          "symbol": "PluginLoader.ts::PluginLoader.if",
+          "total_calls": 60,
+          "unique_called": 22
+        },
+        {
+          "symbol": "PluginManager.ts::PluginManager.if",
+          "total_calls": 20,
+          "unique_called": 10
+        },
+        {
+          "symbol": "PluginManager.ts::PluginManager.for",
+          "total_calls": 55,
+          "unique_called": 37
+        },
+        {
+          "symbol": "PluginManifestLoader.ts::PluginManifestLoader.if",
+          "total_calls": 28,
+          "unique_called": 18
+        },
+        {
+          "symbol": "PluginValidator.ts::PluginValidator.if",
+          "total_calls": 61,
+          "unique_called": 12
+        },
+        {
+          "symbol": "StageCrew.ts::BeatTxn.for",
+          "total_calls": 15,
+          "unique_called": 8
+        },
+        {
+          "symbol": "StrictModeManager.ts::StrictModeManager.if",
+          "total_calls": 11,
+          "unique_called": 9
+        },
+        {
+          "symbol": "SequenceValidator.ts::SequenceValidator.if",
+          "total_calls": 24,
+          "unique_called": 14
+        },
+        {
+          "symbol": "demo.ts::DemoCLI.if",
+          "total_calls": 42,
+          "unique_called": 8
+        },
+        {
+          "symbol": "knowledge-cli.ts::KnowledgeCLI.if",
+          "total_calls": 281,
+          "unique_called": 71
+        },
+        {
+          "symbol": "shortcut-demo.ts::ShortcutDemoCLI.if",
+          "total_calls": 62,
+          "unique_called": 15
+        },
+        {
+          "symbol": "KnowledgeExporter.ts::KnowledgeExporter.if",
+          "total_calls": 44,
+          "unique_called": 27
+        },
+        {
+          "symbol": "KnowledgeImporter.ts::KnowledgeImporter.if",
+          "total_calls": 28,
+          "unique_called": 13
+        },
+        {
+          "symbol": "KnowledgeMerger.ts::KnowledgeMerger.for",
+          "total_calls": 53,
+          "unique_called": 14
+        },
+        {
+          "symbol": "ShortcutManager.ts::ShortcutManager.if",
+          "total_calls": 31,
+          "unique_called": 21
+        },
+        {
+          "symbol": "KnowledgeValidator.ts::KnowledgeValidator.if",
+          "total_calls": 37,
+          "unique_called": 12
+        },
+        {
+          "symbol": "App.tsx::App",
+          "total_calls": 41,
+          "unique_called": 29
+        },
+        {
+          "symbol": "App.tsx::InteractionFlowView",
+          "total_calls": 28,
+          "unique_called": 11
+        },
+        {
+          "symbol": "App.tsx::exportCsv",
+          "total_calls": 22,
+          "unique_called": 15
+        },
+        {
+          "symbol": "TimelineFlowVisualization.tsx::TimelineFlowVisualization",
+          "total_calls": 33,
+          "unique_called": 17
+        },
+        {
+          "symbol": "OperationFilter.tsx::OperationFilterPanel",
+          "total_calls": 43,
+          "unique_called": 24
+        },
+        {
+          "symbol": "DiagnosticsPanel.tsx::exportLogs",
+          "total_calls": 12,
+          "unique_called": 12
+        },
+        {
+          "symbol": "LogConverter.tsx::handleConvert",
+          "total_calls": 11,
+          "unique_called": 8
+        },
+        {
+          "symbol": "LogParser.tsx::handleFileUpload",
+          "total_calls": 25,
+          "unique_called": 10
+        },
+        {
+          "symbol": "useExecutionHistory.ts::useExecutionHistory",
+          "total_calls": 35,
+          "unique_called": 18
+        },
+        {
+          "symbol": "useLogParser.ts::useLogParser",
+          "total_calls": 63,
+          "unique_called": 19
+        },
+        {
+          "symbol": "useSequenceExecution.ts::useSequenceExecution",
+          "total_calls": 36,
+          "unique_called": 15
+        },
+        {
+          "symbol": "useSequenceList.ts::useSequenceList",
+          "total_calls": 41,
+          "unique_called": 23
+        },
+        {
+          "symbol": "PanelSlot.tsx::PanelSlot",
+          "total_calls": 21,
+          "unique_called": 17
+        },
+        {
+          "symbol": "TimelineFlowVisualization.tsx::handleExport",
+          "total_calls": 24,
+          "unique_called": 12
+        }
+      ],
+      "long_parameter_list": [],
+      "shotgun_surgery_risk": [],
+      "cycles": [
+        {
+          "members": [
+            "cinematic-renderer.ts::CinematicPresentation.nextScene",
+            "cinematic-renderer.ts::CinematicPresentation.scheduleNextScene"
+          ],
+          "size": 2
+        }
+      ]
+    },
+    "connascence": {
+      "name": [
+        {
+          "identifier": "publish",
+          "count": 22
+        },
+        {
+          "identifier": "log",
+          "count": 362
+        },
+        {
+          "identifier": "resolveInteraction",
+          "count": 22
+        },
+        {
+          "identifier": "Error",
+          "count": 84
+        },
+        {
+          "identifier": "Number",
+          "count": 20
+        },
+        {
+          "identifier": "isFinite",
+          "count": 16
+        },
+        {
+          "identifier": "useState",
+          "count": 21
+        },
+        {
+          "identifier": "max",
+          "count": 23
+        },
+        {
+          "identifier": "async",
+          "count": 57
+        },
+        {
+          "identifier": "useEffect",
+          "count": 19
+        },
+        {
+          "identifier": "subscribe",
+          "count": 15
+        },
+        {
+          "identifier": "preventDefault",
+          "count": 13
+        },
+        {
+          "identifier": "play",
+          "count": 21
+        },
+        {
+          "identifier": "push",
+          "count": 261
+        },
+        {
+          "identifier": "String",
+          "count": 123
+        },
+        {
+          "identifier": "setAttribute",
+          "count": 42
+        },
+        {
+          "identifier": "appendChild",
+          "count": 31
+        },
+        {
+          "identifier": "getElementById",
+          "count": 50
+        },
+        {
+          "identifier": "getAttribute",
+          "count": 18
+        },
+        {
+          "identifier": "readCssNumber",
+          "count": 15
+        },
+        {
+          "identifier": "toFixed",
+          "count": 24
+        },
+        {
+          "identifier": "replace",
+          "count": 38
+        },
+        {
+          "identifier": "toLowerCase",
+          "count": 33
+        },
+        {
+          "identifier": "from",
+          "count": 44
+        },
+        {
+          "identifier": "filter",
+          "count": 35
+        },
+        {
+          "identifier": "test",
+          "count": 19
+        },
+        {
+          "identifier": "parseFloat",
+          "count": 57
+        },
+        {
+          "identifier": "slice",
+          "count": 25
+        },
+        {
+          "identifier": "createElement",
+          "count": 26
+        },
+        {
+          "identifier": "includes",
+          "count": 113
+        },
+        {
+          "identifier": "add",
+          "count": 23
+        },
+        {
+          "identifier": "isArray",
+          "count": 26
+        },
+        {
+          "identifier": "keys",
+          "count": 26
+        },
+        {
+          "identifier": "removeEventListener",
+          "count": 15
+        },
+        {
+          "identifier": "get",
+          "count": 20
+        },
+        {
+          "identifier": "set",
+          "count": 36
+        },
+        {
+          "identifier": "Set",
+          "count": 18
+        },
+        {
+          "identifier": "entries",
+          "count": 34
+        },
+        {
+          "identifier": "setProperty",
+          "count": 12
+        },
+        {
+          "identifier": "var",
+          "count": 36
+        },
+        {
+          "identifier": "find",
+          "count": 18
+        },
+        {
+          "identifier": "startsWith",
+          "count": 18
+        },
+        {
+          "identifier": "now",
+          "count": 44
+        },
+        {
+          "identifier": "forEach",
+          "count": 50
+        },
+        {
+          "identifier": "trim",
+          "count": 43
+        },
+        {
+          "identifier": "map",
+          "count": 53
+        },
+        {
+          "identifier": "Date",
+          "count": 34
+        },
+        {
+          "identifier": "toISOString",
+          "count": 21
+        },
+        {
+          "identifier": "getBoundingClientRect",
+          "count": 12
+        },
+        {
+          "identifier": "parseInt",
+          "count": 15
+        },
+        {
+          "identifier": "getPropertyValue",
+          "count": 18
+        },
+        {
+          "identifier": "has",
+          "count": 39
+        },
+        {
+          "identifier": "match",
+          "count": 21
+        },
+        {
+          "identifier": "round",
+          "count": 28
+        },
+        {
+          "identifier": "addEventListener",
+          "count": 15
+        },
+        {
+          "identifier": "fn",
+          "count": 98
+        },
+        {
+          "identifier": "split",
+          "count": 13
+        },
+        {
+          "identifier": "makeCtx",
+          "count": 27
+        },
+        {
+          "identifier": "warn",
+          "count": 27
+        },
+        {
+          "identifier": "error",
+          "count": 18
+        },
+        {
+          "identifier": "useCallback",
+          "count": 33
+        },
+        {
+          "identifier": "stringify",
+          "count": 41
+        },
+        {
+          "identifier": "resolve",
+          "count": 12
+        },
+        {
+          "identifier": "existsSync",
+          "count": 16
+        },
+        {
+          "identifier": "join",
+          "count": 51
+        },
+        {
+          "identifier": "writeFileSync",
+          "count": 16
+        },
+        {
+          "identifier": "setError",
+          "count": 33
+        },
+        {
+          "identifier": "emit",
+          "count": 29
+        },
+        {
+          "identifier": "__MC_LOG",
+          "count": 76
+        },
+        {
+          "identifier": "__MC_WARN",
+          "count": 37
+        },
+        {
+          "identifier": "__MC_ERROR",
+          "count": 16
+        },
+        {
+          "identifier": "import",
+          "count": 13
+        }
+      ],
+      "value": [
+        {
+          "contract": "safeSetStoredThemeParams@0.1.0::themelightordark",
+          "prop": "theme",
+          "raw": "\"light\" | \"dark\""
+        },
+        {
+          "contract": "getStatusIconParams@0.1.0::statussuccessorerrororrunningorpending",
+          "prop": "status",
+          "raw": "'success' | 'error' | 'running' | 'pending'"
+        },
+        {
+          "contract": "getStatusIconParams@0.1.0::statuspendingorrunningorsuccessorerror",
+          "prop": "status",
+          "raw": "'pending' | 'running' | 'success' | 'error'"
+        },
+        {
+          "contract": "getStatusColorParams@0.1.0::statuspendingorrunningorsuccessorerror",
+          "prop": "status",
+          "raw": "'pending' | 'running' | 'success' | 'error'"
+        },
+        {
+          "contract": "getStatusIconParams@0.1.0::statussuccessorerrororpending",
+          "prop": "status",
+          "raw": "'success' | 'error' | 'pending'"
+        },
+        {
+          "contract": "getStatusColorParams@0.1.0::statussuccessorerrororpending",
+          "prop": "status",
+          "raw": "'success' | 'error' | 'pending'"
+        }
+      ],
+      "position": [],
+      "algorithm": [],
+      "timing": []
+    }
   }
 }
