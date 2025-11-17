@@ -1,0 +1,5357 @@
+{
+  "version": "0.1.0",
+  "title": "God Functions Analysis",
+  "description": "Detailed analysis of god functions (functions with 10+ calls and 8+ unique callees)",
+  "generated_at": "",
+  "summary": {
+    "total_god_functions": 98,
+    "total_calls_in_god_functions": 2566,
+    "total_unique_callees": 1401
+  },
+  "god_functions": [
+    {
+      "rank": 1,
+      "symbol": "component-behavior-extractor.ts::ComponentBehaviorExtractor.extractPatterns",
+      "file": "packages/library/src/telemetry/component-behavior-extractor.ts",
+      "line_range": [
+        73,
+        128
+      ],
+      "metrics": {
+        "total_calls": 101,
+        "unique_called": 37,
+        "complexity_ratio": 0.37
+      },
+      "top_callees": [
+        {
+          "name": "match",
+          "count": 12
+        },
+        {
+          "name": "push",
+          "count": 10
+        },
+        {
+          "name": "trim",
+          "count": 9
+        },
+        {
+          "name": "includes",
+          "count": 7
+        },
+        {
+          "name": "filter",
+          "count": 5
+        },
+        {
+          "name": "values",
+          "count": 4
+        },
+        {
+          "name": "some",
+          "count": 4
+        },
+        {
+          "name": "ensureOp",
+          "count": 4
+        },
+        {
+          "name": "reduce",
+          "count": 3
+        },
+        {
+          "name": "titleFromSequenceId",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "symbol": "line.recompute.stage-crew.ts::recomputeLineSvg",
+      "file": "packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew.ts",
+      "line_range": [
+        73,
+        205
+      ],
+      "metrics": {
+        "total_calls": 82,
+        "unique_called": 23,
+        "complexity_ratio": 0.28
+      },
+      "top_callees": [
+        {
+          "name": "replace",
+          "count": 12
+        },
+        {
+          "name": "setAttribute",
+          "count": 11
+        },
+        {
+          "name": "readCssNumber",
+          "count": 8
+        },
+        {
+          "name": "toFixed",
+          "count": 6
+        },
+        {
+          "name": "readBooleanVar",
+          "count": 5
+        },
+        {
+          "name": "removeAttribute",
+          "count": 5
+        },
+        {
+          "name": "max",
+          "count": 4
+        },
+        {
+          "name": "url",
+          "count": 4
+        },
+        {
+          "name": "String",
+          "count": 4
+        },
+        {
+          "name": "toVbX",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "symbol": "select.overlay.line-advanced.stage-crew.ts::ensureAdvancedLineOverlayFor",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
+      "line_range": [
+        23,
+        173
+      ],
+      "metrics": {
+        "total_calls": 81,
+        "unique_called": 31,
+        "complexity_ratio": 0.38
+      },
+      "top_callees": [
+        {
+          "name": "round",
+          "count": 8
+        },
+        {
+          "name": "parseFloat",
+          "count": 8
+        },
+        {
+          "name": "querySelector",
+          "count": 6
+        },
+        {
+          "name": "createElement",
+          "count": 5
+        },
+        {
+          "name": "appendChild",
+          "count": 5
+        },
+        {
+          "name": "getAttribute",
+          "count": 5
+        },
+        {
+          "name": "String",
+          "count": 5
+        },
+        {
+          "name": "toPx",
+          "count": 4
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 4
+        },
+        {
+          "name": "readVar",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "symbol": "resize.stage-crew.ts::updateSize",
+      "file": "packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
+      "line_range": [
+        81,
+        280
+      ],
+      "metrics": {
+        "total_calls": 63,
+        "unique_called": 17,
+        "complexity_ratio": 0.27
+      },
+      "top_callees": [
+        {
+          "name": "parseFloat",
+          "count": 12
+        },
+        {
+          "name": "String",
+          "count": 11
+        },
+        {
+          "name": "isFinite",
+          "count": 6
+        },
+        {
+          "name": "writeCssNumber",
+          "count": 6
+        },
+        {
+          "name": "getBoundingClientRect",
+          "count": 4
+        },
+        {
+          "name": "includes",
+          "count": 4
+        },
+        {
+          "name": "clamp",
+          "count": 4
+        },
+        {
+          "name": "round",
+          "count": 4
+        },
+        {
+          "name": "Error",
+          "count": 2
+        },
+        {
+          "name": "getElementById",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "symbol": "ChatWindow.tsx::ChatWindow",
+      "file": "packages/library/src/ui/ChatWindow.tsx",
+      "line_range": [
+        20,
+        311
+      ],
+      "metrics": {
+        "total_calls": 62,
+        "unique_called": 30,
+        "complexity_ratio": 0.48
+      },
+      "top_callees": [
+        {
+          "name": "now",
+          "count": 8
+        },
+        {
+          "name": "setMessages",
+          "count": 7
+        },
+        {
+          "name": "useEffect",
+          "count": 5
+        },
+        {
+          "name": "setError",
+          "count": 5
+        },
+        {
+          "name": "setLoading",
+          "count": 4
+        },
+        {
+          "name": "useState",
+          "count": 3
+        },
+        {
+          "name": "async",
+          "count": 2
+        },
+        {
+          "name": "trim",
+          "count": 2
+        },
+        {
+          "name": "setInputValue",
+          "count": 2
+        },
+        {
+          "name": "getConversationContext",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "symbol": "cinematic-renderer.ts::generatePresentationJS",
+      "file": "packages/digital-assets/src/cinematic-renderer.ts",
+      "line_range": [
+        244,
+        404
+      ],
+      "metrics": {
+        "total_calls": 56,
+        "unique_called": 22,
+        "complexity_ratio": 0.39
+      },
+      "top_callees": [
+        {
+          "name": "addEventListener",
+          "count": 6
+        },
+        {
+          "name": "getElementById",
+          "count": 5
+        },
+        {
+          "name": "showScene",
+          "count": 5
+        },
+        {
+          "name": "scheduleNextScene",
+          "count": 5
+        },
+        {
+          "name": "nextScene",
+          "count": 4
+        },
+        {
+          "name": "togglePlayPause",
+          "count": 3
+        },
+        {
+          "name": "previousScene",
+          "count": 3
+        },
+        {
+          "name": "restart",
+          "count": 3
+        },
+        {
+          "name": "updatePlayPauseButton",
+          "count": 3
+        },
+        {
+          "name": "now",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "symbol": "select.overlay.line-advanced.stage-crew.ts::attachAdvancedLineManipHandlers",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-advanced.stage-crew.ts",
+      "line_range": [
+        175,
+        321
+      ],
+      "metrics": {
+        "total_calls": 55,
+        "unique_called": 24,
+        "complexity_ratio": 0.44
+      },
+      "top_callees": [
+        {
+          "name": "parseFloat",
+          "count": 7
+        },
+        {
+          "name": "round",
+          "count": 6
+        },
+        {
+          "name": "getAttribute",
+          "count": 5
+        },
+        {
+          "name": "querySelector",
+          "count": 5
+        },
+        {
+          "name": "toPx",
+          "count": 4
+        },
+        {
+          "name": "addEventListener",
+          "count": 3
+        },
+        {
+          "name": "call",
+          "count": 3
+        },
+        {
+          "name": "contains",
+          "count": 2
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 2
+        },
+        {
+          "name": "setProperty",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "symbol": "PluginLoader.ts::PluginLoader.loadPluginModule",
+      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginLoader.ts",
+      "line_range": [
+        16,
+        178
+      ],
+      "metrics": {
+        "total_calls": 54,
+        "unique_called": 23,
+        "complexity_ratio": 0.43
+      },
+      "top_callees": [
+        {
+          "name": "__MC_LOG",
+          "count": 12
+        },
+        {
+          "name": "import",
+          "count": 8
+        },
+        {
+          "name": "replace",
+          "count": 6
+        },
+        {
+          "name": "__MC_WARN",
+          "count": 5
+        },
+        {
+          "name": "set",
+          "count": 5
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "resolve",
+          "count": 1
+        },
+        {
+          "name": "cwd",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "symbol": "select.overlay.resize.stage-crew.ts::attachResizeHandlers",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.resize.stage-crew.ts",
+      "line_range": [
+        30,
+        221
+      ],
+      "metrics": {
+        "total_calls": 53,
+        "unique_called": 31,
+        "complexity_ratio": 0.58
+      },
+      "top_callees": [
+        {
+          "name": "includes",
+          "count": 5
+        },
+        {
+          "name": "readNumericPx",
+          "count": 4
+        },
+        {
+          "name": "clamp",
+          "count": 4
+        },
+        {
+          "name": "round",
+          "count": 4
+        },
+        {
+          "name": "call",
+          "count": 4
+        },
+        {
+          "name": "addEventListener",
+          "count": 3
+        },
+        {
+          "name": "Number",
+          "count": 2
+        },
+        {
+          "name": "isFinite",
+          "count": 2
+        },
+        {
+          "name": "cancelAnimationFrame",
+          "count": 2
+        },
+        {
+          "name": "removeEventListener",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "symbol": "export.stage-crew.ts::collectLayoutData",
+      "file": "packages/canvas-component/src/symphonies/export/export.stage-crew.ts",
+      "line_range": [
+        15,
+        227
+      ],
+      "metrics": {
+        "total_calls": 52,
+        "unique_called": 29,
+        "complexity_ratio": 0.56
+      },
+      "top_callees": [
+        {
+          "name": "parseInt",
+          "count": 8
+        },
+        {
+          "name": "round",
+          "count": 4
+        },
+        {
+          "name": "getElementById",
+          "count": 3
+        },
+        {
+          "name": "getBoundingClientRect",
+          "count": 3
+        },
+        {
+          "name": "getComputedStyle",
+          "count": 3
+        },
+        {
+          "name": "from",
+          "count": 3
+        },
+        {
+          "name": "push",
+          "count": 3
+        },
+        {
+          "name": "Set",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 2
+        },
+        {
+          "name": "extractElementContent",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "symbol": "create-cinematic-presentation.ts::main",
+      "file": "packages/digital-assets/src/create-cinematic-presentation.ts",
+      "line_range": [
+        13,
+        73
+      ],
+      "metrics": {
+        "total_calls": 47,
+        "unique_called": 11,
+        "complexity_ratio": 0.23
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 36
+        },
+        {
+          "name": "join",
+          "count": 2
+        },
+        {
+          "name": "readFileSync",
+          "count": 1
+        },
+        {
+          "name": "parse",
+          "count": 1
+        },
+        {
+          "name": "createCinematicPresentation",
+          "count": 1
+        },
+        {
+          "name": "saveCinematicPresentation",
+          "count": 1
+        },
+        {
+          "name": "transitions",
+          "count": 1
+        },
+        {
+          "name": "controls",
+          "count": 1
+        },
+        {
+          "name": "shortcuts",
+          "count": 1
+        },
+        {
+          "name": "error",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "symbol": "CustomComponentUpload.tsx::CustomComponentUpload",
+      "file": "packages/library/src/ui/CustomComponentUpload.tsx",
+      "line_range": [
+        28,
+        215
+      ],
+      "metrics": {
+        "total_calls": 47,
+        "unique_called": 25,
+        "complexity_ratio": 0.53
+      },
+      "top_callees": [
+        {
+          "name": "setError",
+          "count": 6
+        },
+        {
+          "name": "join",
+          "count": 4
+        },
+        {
+          "name": "preventDefault",
+          "count": 4
+        },
+        {
+          "name": "stopPropagation",
+          "count": 3
+        },
+        {
+          "name": "setDragOver",
+          "count": 3
+        },
+        {
+          "name": "useState",
+          "count": 2
+        },
+        {
+          "name": "setSuccess",
+          "count": 2
+        },
+        {
+          "name": "setLoading",
+          "count": 2
+        },
+        {
+          "name": "warn",
+          "count": 2
+        },
+        {
+          "name": "reject",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "symbol": "slide01-generator.ts::generateSlide01Scene",
+      "file": "packages/digital-assets/src/slide01-generator.ts",
+      "line_range": [
+        8,
+        115
+      ],
+      "metrics": {
+        "total_calls": 46,
+        "unique_called": 18,
+        "complexity_ratio": 0.39
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 17
+        },
+        {
+          "name": "join",
+          "count": 6
+        },
+        {
+          "name": "writeFileSync",
+          "count": 5
+        },
+        {
+          "name": "stringify",
+          "count": 3
+        },
+        {
+          "name": "renderScene",
+          "count": 2
+        },
+        {
+          "name": "cwd",
+          "count": 1
+        },
+        {
+          "name": "existsSync",
+          "count": 1
+        },
+        {
+          "name": "mkdirSync",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "symbol": "create.stage-crew.ts::createNode",
+      "file": "packages/canvas-component/src/symphonies/create/create.stage-crew.ts",
+      "line_range": [
+        39,
+        164
+      ],
+      "metrics": {
+        "total_calls": 45,
+        "unique_called": 31,
+        "complexity_ratio": 0.69
+      },
+      "top_callees": [
+        {
+          "name": "setAttribute",
+          "count": 11
+        },
+        {
+          "name": "String",
+          "count": 4
+        },
+        {
+          "name": "injectRawCss",
+          "count": 2
+        },
+        {
+          "name": "getCanvasOrThrow",
+          "count": 1
+        },
+        {
+          "name": "createElementWithId",
+          "count": 1
+        },
+        {
+          "name": "CSS",
+          "count": 1
+        },
+        {
+          "name": "push",
+          "count": 1
+        },
+        {
+          "name": "computeInstanceClass",
+          "count": 1
+        },
+        {
+          "name": "computeCssVarBlock",
+          "count": 1
+        },
+        {
+          "name": "computeInlineStyle",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "symbol": "SPAValidator.ts::SPAValidator.analyzeCallStack",
+      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "line_range": [
+        313,
+        450
+      ],
+      "metrics": {
+        "total_calls": 44,
+        "unique_called": 8,
+        "complexity_ratio": 0.18
+      },
+      "top_callees": [
+        {
+          "name": "includes",
+          "count": 35
+        },
+        {
+          "name": "match",
+          "count": 3
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "operations",
+          "count": 1
+        },
+        {
+          "name": "patterns",
+          "count": 1
+        },
+        {
+          "name": "mount",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "symbol": "OperationFilter.tsx::OperationFilterPanel",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/OperationFilter.tsx",
+      "line_range": [
+        106,
+        216
+      ],
+      "metrics": {
+        "total_calls": 42,
+        "unique_called": 23,
+        "complexity_ratio": 0.55
+      },
+      "top_callees": [
+        {
+          "name": "emitFilter",
+          "count": 4
+        },
+        {
+          "name": "from",
+          "count": 3
+        },
+        {
+          "name": "Set",
+          "count": 3
+        },
+        {
+          "name": "map",
+          "count": 3
+        },
+        {
+          "name": "add",
+          "count": 2
+        },
+        {
+          "name": "onFilterChange",
+          "count": 2
+        },
+        {
+          "name": "setActiveStrategy",
+          "count": 2
+        },
+        {
+          "name": "setSearchQuery",
+          "count": 2
+        },
+        {
+          "name": "has",
+          "count": 2
+        },
+        {
+          "name": "setSelectedTypes",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "symbol": "App.tsx::App",
+      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "line_range": [
+        13,
+        148
+      ],
+      "metrics": {
+        "total_calls": 40,
+        "unique_called": 28,
+        "complexity_ratio": 0.7
+      },
+      "top_callees": [
+        {
+          "name": "setError",
+          "count": 4
+        },
+        {
+          "name": "reduce",
+          "count": 3
+        },
+        {
+          "name": "String",
+          "count": 3
+        },
+        {
+          "name": "toFixed",
+          "count": 3
+        },
+        {
+          "name": "filter",
+          "count": 2
+        },
+        {
+          "name": "setTimeline",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 2
+        },
+        {
+          "name": "tabs",
+          "count": 1
+        },
+        {
+          "name": "applyEventFilter",
+          "count": 1
+        },
+        {
+          "name": "events",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "symbol": "LogAnalyzer.ts::parseRawLogFile",
+      "file": "packages/telemetry-workbench/src/modules/telemetry/LogAnalyzer.ts",
+      "line_range": [
+        6,
+        61
+      ],
+      "metrics": {
+        "total_calls": 39,
+        "unique_called": 16,
+        "complexity_ratio": 0.41
+      },
+      "top_callees": [
+        {
+          "name": "match",
+          "count": 7
+        },
+        {
+          "name": "includes",
+          "count": 6
+        },
+        {
+          "name": "Date",
+          "count": 5
+        },
+        {
+          "name": "push",
+          "count": 4
+        },
+        {
+          "name": "getTime",
+          "count": 4
+        },
+        {
+          "name": "trim",
+          "count": 2
+        },
+        {
+          "name": "replace",
+          "count": 2
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "symbol": "LibraryPanel.tsx::LibraryPanel",
+      "file": "packages/library/src/ui/LibraryPanel.tsx",
+      "line_range": [
+        77,
+        248
+      ],
+      "metrics": {
+        "total_calls": 38,
+        "unique_called": 28,
+        "complexity_ratio": 0.74
+      },
+      "top_callees": [
+        {
+          "name": "setRefreshKey",
+          "count": 3
+        },
+        {
+          "name": "setShowAIChat",
+          "count": 3
+        },
+        {
+          "name": "useState",
+          "count": 2
+        },
+        {
+          "name": "async",
+          "count": 2
+        },
+        {
+          "name": "setItems",
+          "count": 2
+        },
+        {
+          "name": "useEffect",
+          "count": 2
+        },
+        {
+          "name": "error",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 2
+        },
+        {
+          "name": "useConductor",
+          "count": 1
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "symbol": "select.overlay.line-resize.stage-crew.ts::ensureLineOverlayFor",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
+      "line_range": [
+        22,
+        77
+      ],
+      "metrics": {
+        "total_calls": 35,
+        "unique_called": 15,
+        "complexity_ratio": 0.43
+      },
+      "top_callees": [
+        {
+          "name": "round",
+          "count": 8
+        },
+        {
+          "name": "readVar",
+          "count": 4
+        },
+        {
+          "name": "createElement",
+          "count": 3
+        },
+        {
+          "name": "appendChild",
+          "count": 3
+        },
+        {
+          "name": "String",
+          "count": 3
+        },
+        {
+          "name": "getBoundingClientRect",
+          "count": 2
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 2
+        },
+        {
+          "name": "parseFloat",
+          "count": 2
+        },
+        {
+          "name": "querySelector",
+          "count": 2
+        },
+        {
+          "name": "ensureLineCss",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "symbol": "slide-01-generator.ts::generateSlide01Graphs",
+      "file": "packages/digital-assets/src/slide-01-generator.ts",
+      "line_range": [
+        17,
+        117
+      ],
+      "metrics": {
+        "total_calls": 35,
+        "unique_called": 21,
+        "complexity_ratio": 0.6
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 9
+        },
+        {
+          "name": "join",
+          "count": 4
+        },
+        {
+          "name": "writeFileSync",
+          "count": 3
+        },
+        {
+          "name": "stringify",
+          "count": 2
+        },
+        {
+          "name": "cwd",
+          "count": 1
+        },
+        {
+          "name": "existsSync",
+          "count": 1
+        },
+        {
+          "name": "mkdirSync",
+          "count": 1
+        },
+        {
+          "name": "createPluginPackageGraph",
+          "count": 1
+        },
+        {
+          "name": "createPluginManifestGraph",
+          "count": 1
+        },
+        {
+          "name": "createHandlersExportGraph",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 22,
+      "symbol": "useControlPanelState.ts::useControlPanelState",
+      "file": "packages/control-panel/src/hooks/useControlPanelState.ts",
+      "line_range": [
+        11,
+        106
+      ],
+      "metrics": {
+        "total_calls": 34,
+        "unique_called": 20,
+        "complexity_ratio": 0.59
+      },
+      "top_callees": [
+        {
+          "name": "dispatch",
+          "count": 5
+        },
+        {
+          "name": "log",
+          "count": 4
+        },
+        {
+          "name": "warn",
+          "count": 3
+        },
+        {
+          "name": "subscribe",
+          "count": 3
+        },
+        {
+          "name": "push",
+          "count": 3
+        },
+        {
+          "name": "subscribeWith",
+          "count": 2
+        },
+        {
+          "name": "useReducer",
+          "count": 1
+        },
+        {
+          "name": "useEffect",
+          "count": 1
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        },
+        {
+          "name": "ran",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 23,
+      "symbol": "generate-mono-svg.ts::main",
+      "file": "packages/digital-assets/src/generate-mono-svg.ts",
+      "line_range": [
+        13,
+        59
+      ],
+      "metrics": {
+        "total_calls": 32,
+        "unique_called": 9,
+        "complexity_ratio": 0.28
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 23
+        },
+        {
+          "name": "join",
+          "count": 2
+        },
+        {
+          "name": "readFileSync",
+          "count": 1
+        },
+        {
+          "name": "parse",
+          "count": 1
+        },
+        {
+          "name": "renderMonoGraph",
+          "count": 1
+        },
+        {
+          "name": "writeFileSync",
+          "count": 1
+        },
+        {
+          "name": "round",
+          "count": 1
+        },
+        {
+          "name": "error",
+          "count": 1
+        },
+        {
+          "name": "exit",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "symbol": "TimelineFlowVisualization.tsx::TimelineFlowVisualization",
+      "file": "packages/telemetry-workbench/src/modules/TimelineFlowVisualization.tsx",
+      "line_range": [
+        23,
+        120
+      ],
+      "metrics": {
+        "total_calls": 32,
+        "unique_called": 16,
+        "complexity_ratio": 0.5
+      },
+      "top_callees": [
+        {
+          "name": "max",
+          "count": 5
+        },
+        {
+          "name": "useState",
+          "count": 3
+        },
+        {
+          "name": "map",
+          "count": 3
+        },
+        {
+          "name": "toFixed",
+          "count": 3
+        },
+        {
+          "name": "setCurrentTime",
+          "count": 2
+        },
+        {
+          "name": "min",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "setIsPlaying",
+          "count": 2
+        },
+        {
+          "name": "setZoom",
+          "count": 2
+        },
+        {
+          "name": "setHoveredEvent",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "symbol": "css-registry.store.ts::CssRegistryStore.loadDefaultClasses",
+      "file": "packages/canvas-component/src/temp-deps/css-registry.store.ts",
+      "line_range": [
+        40,
+        111
+      ],
+      "metrics": {
+        "total_calls": 30,
+        "unique_called": 8,
+        "complexity_ratio": 0.27
+      },
+      "top_callees": [
+        {
+          "name": "var",
+          "count": 16
+        },
+        {
+          "name": "bezier",
+          "count": 2
+        },
+        {
+          "name": "rgba",
+          "count": 2
+        },
+        {
+          "name": "now",
+          "count": 2
+        },
+        {
+          "name": "forEach",
+          "count": 2
+        },
+        {
+          "name": "set",
+          "count": 2
+        },
+        {
+          "name": "updateStylesheet",
+          "count": 2
+        },
+        {
+          "name": "notifyObservers",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "rank": 26,
+      "symbol": "useControlPanelSequences.ts::useControlPanelSequences",
+      "file": "packages/control-panel/src/hooks/useControlPanelSequences.ts",
+      "line_range": [
+        17,
+        213
+      ],
+      "metrics": {
+        "total_calls": 30,
+        "unique_called": 12,
+        "complexity_ratio": 0.4
+      },
+      "top_callees": [
+        {
+          "name": "resolveInteraction",
+          "count": 6
+        },
+        {
+          "name": "play",
+          "count": 6
+        },
+        {
+          "name": "useCallback",
+          "count": 4
+        },
+        {
+          "name": "publish",
+          "count": 4
+        },
+        {
+          "name": "useEffect",
+          "count": 2
+        },
+        {
+          "name": "setIsInitialized",
+          "count": 2
+        },
+        {
+          "name": "useConductor",
+          "count": 1
+        },
+        {
+          "name": "useState",
+          "count": 1
+        },
+        {
+          "name": "mount",
+          "count": 1
+        },
+        {
+          "name": "async",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 27,
+      "symbol": "PluginManifestLoader.ts::PluginManifestLoader.loadManifest",
+      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginManifestLoader.ts",
+      "line_range": [
+        37,
+        112
+      ],
+      "metrics": {
+        "total_calls": 30,
+        "unique_called": 21,
+        "complexity_ratio": 0.7
+      },
+      "top_callees": [
+        {
+          "name": "__MC_LOG",
+          "count": 7
+        },
+        {
+          "name": "import",
+          "count": 2
+        },
+        {
+          "name": "validateManifest",
+          "count": 2
+        },
+        {
+          "name": "set",
+          "count": 2
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "Node",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "resolve",
+          "count": 1
+        },
+        {
+          "name": "cwd",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 28,
+      "symbol": "select.overlay.line-resize.stage-crew.ts::attachLineResizeHandlers",
+      "file": "packages/canvas-component/src/symphonies/select/select.overlay.line-resize.stage-crew.ts",
+      "line_range": [
+        79,
+        174
+      ],
+      "metrics": {
+        "total_calls": 29,
+        "unique_called": 18,
+        "complexity_ratio": 0.62
+      },
+      "top_callees": [
+        {
+          "name": "call",
+          "count": 4
+        },
+        {
+          "name": "addEventListener",
+          "count": 3
+        },
+        {
+          "name": "contains",
+          "count": 2
+        },
+        {
+          "name": "parseFloat",
+          "count": 2
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 2
+        },
+        {
+          "name": "round",
+          "count": 2
+        },
+        {
+          "name": "setProperty",
+          "count": 2
+        },
+        {
+          "name": "removeEventListener",
+          "count": 2
+        },
+        {
+          "name": "preventDefault",
+          "count": 1
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 29,
+      "symbol": "schema-resolver.service.ts::SchemaResolverService.generatePropertyFields",
+      "file": "packages/control-panel/src/services/schema-resolver.service.ts",
+      "line_range": [
+        90,
+        203
+      ],
+      "metrics": {
+        "total_calls": 29,
+        "unique_called": 23,
+        "complexity_ratio": 0.79
+      },
+      "top_callees": [
+        {
+          "name": "push",
+          "count": 6
+        },
+        {
+          "name": "formatLabel",
+          "count": 2
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "schema",
+          "count": 1
+        },
+        {
+          "name": "entries",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "mapSchemaTypeToFieldType",
+          "count": 1
+        },
+        {
+          "name": "inferPropertyPath",
+          "count": 1
+        },
+        {
+          "name": "inferSection",
+          "count": 1
+        },
+        {
+          "name": "generatePlaceholder",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 30,
+      "symbol": "mono-graph-generator.ts::renderMonoGraph",
+      "file": "packages/digital-assets/src/mono-graph-generator.ts",
+      "line_range": [
+        425,
+        574
+      ],
+      "metrics": {
+        "total_calls": 29,
+        "unique_called": 14,
+        "complexity_ratio": 0.48
+      },
+      "top_callees": [
+        {
+          "name": "forEach",
+          "count": 4
+        },
+        {
+          "name": "join",
+          "count": 4
+        },
+        {
+          "name": "add",
+          "count": 3
+        },
+        {
+          "name": "from",
+          "count": 3
+        },
+        {
+          "name": "map",
+          "count": 3
+        },
+        {
+          "name": "translate",
+          "count": 3
+        },
+        {
+          "name": "replace",
+          "count": 2
+        },
+        {
+          "name": "sprite",
+          "count": 1
+        },
+        {
+          "name": "createUnifiedBusSprite",
+          "count": 1
+        },
+        {
+          "name": "toUpperCase",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 31,
+      "symbol": "rule-engine.ts::ComponentRuleEngine.applyUpdate",
+      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "line_range": [
+        486,
+        570
+      ],
+      "metrics": {
+        "total_calls": 27,
+        "unique_called": 19,
+        "complexity_ratio": 0.7
+      },
+      "top_callees": [
+        {
+          "name": "String",
+          "count": 5
+        },
+        {
+          "name": "includes",
+          "count": 3
+        },
+        {
+          "name": "setAttribute",
+          "count": 2
+        },
+        {
+          "name": "replace",
+          "count": 2
+        },
+        {
+          "name": "getUpdateRulesFor",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        },
+        {
+          "name": "Number",
+          "count": 1
+        },
+        {
+          "name": "removeAttribute",
+          "count": 1
+        },
+        {
+          "name": "getComponentTypeFromClasses",
+          "count": 1
+        },
+        {
+          "name": "sanitizeHtml",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 32,
+      "symbol": "layout.ts::layered",
+      "file": "packages/digital-assets/src/layout.ts",
+      "line_range": [
+        42,
+        82
+      ],
+      "metrics": {
+        "total_calls": 27,
+        "unique_called": 10,
+        "complexity_ratio": 0.37
+      },
+      "top_callees": [
+        {
+          "name": "get",
+          "count": 9
+        },
+        {
+          "name": "set",
+          "count": 5
+        },
+        {
+          "name": "forEach",
+          "count": 3
+        },
+        {
+          "name": "filter",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "max",
+          "count": 1
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "indexOf",
+          "count": 1
+        },
+        {
+          "name": "withPos",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 33,
+      "symbol": "App.tsx::InteractionFlowView",
+      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "line_range": [
+        151,
+        200
+      ],
+      "metrics": {
+        "total_calls": 27,
+        "unique_called": 10,
+        "complexity_ratio": 0.37
+      },
+      "top_callees": [
+        {
+          "name": "scale",
+          "count": 6
+        },
+        {
+          "name": "max",
+          "count": 4
+        },
+        {
+          "name": "map",
+          "count": 4
+        },
+        {
+          "name": "filter",
+          "count": 3
+        },
+        {
+          "name": "toFixed",
+          "count": 3
+        },
+        {
+          "name": "includes",
+          "count": 2
+        },
+        {
+          "name": "rgba",
+          "count": 2
+        },
+        {
+          "name": "onSelect",
+          "count": 1
+        },
+        {
+          "name": "Date",
+          "count": 1
+        },
+        {
+          "name": "toISOString",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 34,
+      "symbol": "generic-scene-generator.ts::GenericSceneGenerator.generateScene",
+      "file": "packages/digital-assets/src/generic-scene-generator.ts",
+      "line_range": [
+        19,
+        80
+      ],
+      "metrics": {
+        "total_calls": 26,
+        "unique_called": 12,
+        "complexity_ratio": 0.46
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 13
+        },
+        {
+          "name": "join",
+          "count": 2
+        },
+        {
+          "name": "writeFileSync",
+          "count": 2
+        },
+        {
+          "name": "existsSync",
+          "count": 1
+        },
+        {
+          "name": "mkdirSync",
+          "count": 1
+        },
+        {
+          "name": "processTemplate",
+          "count": 1
+        },
+        {
+          "name": "renderScene",
+          "count": 1
+        },
+        {
+          "name": "stringify",
+          "count": 1
+        },
+        {
+          "name": "generateIndividualTiles",
+          "count": 1
+        },
+        {
+          "name": "createIndexFile",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 35,
+      "symbol": "CanvasHeader.tsx::CanvasHeader",
+      "file": "packages/canvas/src/ui/CanvasHeader.tsx",
+      "line_range": [
+        9,
+        181
+      ],
+      "metrics": {
+        "total_calls": 25,
+        "unique_called": 15,
+        "complexity_ratio": 0.6
+      },
+      "top_callees": [
+        {
+          "name": "async",
+          "count": 4
+        },
+        {
+          "name": "resolveInteraction",
+          "count": 3
+        },
+        {
+          "name": "handleModeChange",
+          "count": 3
+        },
+        {
+          "name": "useState",
+          "count": 2
+        },
+        {
+          "name": "setZoomLevel",
+          "count": 2
+        },
+        {
+          "name": "Boolean",
+          "count": 2
+        },
+        {
+          "name": "useConductor",
+          "count": 1
+        },
+        {
+          "name": "min",
+          "count": 1
+        },
+        {
+          "name": "max",
+          "count": 1
+        },
+        {
+          "name": "setActiveMode",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 36,
+      "symbol": "ChatMessage.tsx::ChatMessageComponent",
+      "file": "packages/library/src/ui/ChatMessage.tsx",
+      "line_range": [
+        10,
+        176
+      ],
+      "metrics": {
+        "total_calls": 25,
+        "unique_called": 21,
+        "complexity_ratio": 0.84
+      },
+      "top_callees": [
+        {
+          "name": "useState",
+          "count": 2
+        },
+        {
+          "name": "stringify",
+          "count": 2
+        },
+        {
+          "name": "setCopied",
+          "count": 2
+        },
+        {
+          "name": "setShowJSON",
+          "count": 2
+        },
+        {
+          "name": "Date",
+          "count": 1
+        },
+        {
+          "name": "toLocaleTimeString",
+          "count": 1
+        },
+        {
+          "name": "async",
+          "count": 1
+        },
+        {
+          "name": "writeText",
+          "count": 1
+        },
+        {
+          "name": "onCopyJSON",
+          "count": 1
+        },
+        {
+          "name": "error",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 37,
+      "symbol": "sanitizeHtml.ts::sanitizeHtml",
+      "file": "packages/canvas-component/src/temp-deps/sanitizeHtml.ts",
+      "line_range": [
+        65,
+        127
+      ],
+      "metrics": {
+        "total_calls": 24,
+        "unique_called": 17,
+        "complexity_ratio": 0.71
+      },
+      "top_callees": [
+        {
+          "name": "removeAttribute",
+          "count": 5
+        },
+        {
+          "name": "toLowerCase",
+          "count": 2
+        },
+        {
+          "name": "has",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "DOMParser",
+          "count": 1
+        },
+        {
+          "name": "parseFromString",
+          "count": 1
+        },
+        {
+          "name": "createTreeWalker",
+          "count": 1
+        },
+        {
+          "name": "nextNode",
+          "count": 1
+        },
+        {
+          "name": "content",
+          "count": 1
+        },
+        {
+          "name": "insertBefore",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 38,
+      "symbol": "useControlPanelActions.ts::useControlPanelActions",
+      "file": "packages/control-panel/src/hooks/useControlPanelActions.ts",
+      "line_range": [
+        13,
+        96
+      ],
+      "metrics": {
+        "total_calls": 24,
+        "unique_called": 13,
+        "complexity_ratio": 0.54
+      },
+      "top_callees": [
+        {
+          "name": "dispatch",
+          "count": 6
+        },
+        {
+          "name": "handleAction",
+          "count": 6
+        },
+        {
+          "name": "trim",
+          "count": 2
+        },
+        {
+          "name": "useConductor",
+          "count": 1
+        },
+        {
+          "name": "useControlPanelSequences",
+          "count": 1
+        },
+        {
+          "name": "useCallback",
+          "count": 1
+        },
+        {
+          "name": "publish",
+          "count": 1
+        },
+        {
+          "name": "warn",
+          "count": 1
+        },
+        {
+          "name": "resolveInteraction",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 39,
+      "symbol": "resize.stage-crew.ts::startResize",
+      "file": "packages/canvas-component/src/symphonies/resize/resize.stage-crew.ts",
+      "line_range": [
+        41,
+        79
+      ],
+      "metrics": {
+        "total_calls": 23,
+        "unique_called": 8,
+        "complexity_ratio": 0.35
+      },
+      "top_callees": [
+        {
+          "name": "String",
+          "count": 9
+        },
+        {
+          "name": "readCssNumber",
+          "count": 6
+        },
+        {
+          "name": "parseFloat",
+          "count": 3
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "contains",
+          "count": 1
+        },
+        {
+          "name": "getBoundingClientRect",
+          "count": 1
+        },
+        {
+          "name": "px",
+          "count": 1
+        },
+        {
+          "name": "onResizeStart",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 40,
+      "symbol": "svg-export.ts::graphToSVG",
+      "file": "packages/digital-assets/src/svg-export.ts",
+      "line_range": [
+        5,
+        73
+      ],
+      "metrics": {
+        "total_calls": 23,
+        "unique_called": 10,
+        "complexity_ratio": 0.43
+      },
+      "top_callees": [
+        {
+          "name": "map",
+          "count": 7
+        },
+        {
+          "name": "max",
+          "count": 4
+        },
+        {
+          "name": "get",
+          "count": 2
+        },
+        {
+          "name": "escapeXml",
+          "count": 2
+        },
+        {
+          "name": "join",
+          "count": 2
+        },
+        {
+          "name": "min",
+          "count": 2
+        },
+        {
+          "name": "layoutGraph",
+          "count": 1
+        },
+        {
+          "name": "Map",
+          "count": 1
+        },
+        {
+          "name": "url",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 41,
+      "symbol": "CustomComponentList.tsx::CustomComponentList",
+      "file": "packages/library/src/ui/CustomComponentList.tsx",
+      "line_range": [
+        30,
+        168
+      ],
+      "metrics": {
+        "total_calls": 22,
+        "unique_called": 19,
+        "complexity_ratio": 0.86
+      },
+      "top_callees": [
+        {
+          "name": "setRemovingId",
+          "count": 2
+        },
+        {
+          "name": "alert",
+          "count": 2
+        },
+        {
+          "name": "round",
+          "count": 2
+        },
+        {
+          "name": "getStorageInfo",
+          "count": 1
+        },
+        {
+          "name": "async",
+          "count": 1
+        },
+        {
+          "name": "confirm",
+          "count": 1
+        },
+        {
+          "name": "removeCustomComponent",
+          "count": 1
+        },
+        {
+          "name": "error",
+          "count": 1
+        },
+        {
+          "name": "Date",
+          "count": 1
+        },
+        {
+          "name": "toLocaleDateString",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 42,
+      "symbol": "select.stage-crew.ts::showSelectionOverlay",
+      "file": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts",
+      "line_range": [
+        62,
+        111
+      ],
+      "metrics": {
+        "total_calls": 21,
+        "unique_called": 16,
+        "complexity_ratio": 0.76
+      },
+      "top_callees": [
+        {
+          "name": "String",
+          "count": 3
+        },
+        {
+          "name": "getElementById",
+          "count": 2
+        },
+        {
+          "name": "toLowerCase",
+          "count": 2
+        },
+        {
+          "name": "contains",
+          "count": 2
+        },
+        {
+          "name": "deriveSelectedId",
+          "count": 1
+        },
+        {
+          "name": "getAttribute",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "isFlagEnabled",
+          "count": 1
+        },
+        {
+          "name": "useConductor",
+          "count": 1
+        },
+        {
+          "name": "ensureOverlay",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 43,
+      "symbol": "render-svg.ts::renderScene",
+      "file": "packages/digital-assets/src/render-svg.ts",
+      "line_range": [
+        6,
+        65
+      ],
+      "metrics": {
+        "total_calls": 21,
+        "unique_called": 13,
+        "complexity_ratio": 0.62
+      },
+      "top_callees": [
+        {
+          "name": "join",
+          "count": 5
+        },
+        {
+          "name": "map",
+          "count": 4
+        },
+        {
+          "name": "esc",
+          "count": 2
+        },
+        {
+          "name": "enforceBoundaries",
+          "count": 1
+        },
+        {
+          "name": "collectContainmentRequirements",
+          "count": 1
+        },
+        {
+          "name": "renderContainmentDefs",
+          "count": 1
+        },
+        {
+          "name": "flattenWithContainment",
+          "count": 1
+        },
+        {
+          "name": "sort",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "emitNodeWithContainment",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 44,
+      "symbol": "component-behavior-extractor.ts::ComponentBehaviorExtractor.extractEventSequences",
+      "file": "packages/library/src/telemetry/component-behavior-extractor.ts",
+      "line_range": [
+        450,
+        514
+      ],
+      "metrics": {
+        "total_calls": 21,
+        "unique_called": 14,
+        "complexity_ratio": 0.67
+      },
+      "top_callees": [
+        {
+          "name": "match",
+          "count": 5
+        },
+        {
+          "name": "parseInt",
+          "count": 3
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "Map",
+          "count": 1
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "inferSequenceName",
+          "count": 1
+        },
+        {
+          "name": "set",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 45,
+      "symbol": "App.tsx::exportCsv",
+      "file": "packages/telemetry-workbench/src/modules/App.tsx",
+      "line_range": [
+        244,
+        269
+      ],
+      "metrics": {
+        "total_calls": 21,
+        "unique_called": 14,
+        "complexity_ratio": 0.67
+      },
+      "top_callees": [
+        {
+          "name": "String",
+          "count": 4
+        },
+        {
+          "name": "Date",
+          "count": 2
+        },
+        {
+          "name": "toISOString",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 2
+        },
+        {
+          "name": "join",
+          "count": 2
+        },
+        {
+          "name": "parse",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "push",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "Blob",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 46,
+      "symbol": "export.css.stage-crew.ts::collectCssClasses",
+      "file": "packages/canvas-component/src/symphonies/export/export.css.stage-crew.ts",
+      "line_range": [
+        6,
+        73
+      ],
+      "metrics": {
+        "total_calls": 20,
+        "unique_called": 18,
+        "complexity_ratio": 0.9
+      },
+      "top_callees": [
+        {
+          "name": "from",
+          "count": 2
+        },
+        {
+          "name": "isArray",
+          "count": 2
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "querySelectorAll",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "toLowerCase",
+          "count": 1
+        },
+        {
+          "name": "push",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 47,
+      "symbol": "import.parse.pure.ts::parseUiFile",
+      "file": "packages/canvas-component/src/symphonies/import/import.parse.pure.ts",
+      "line_range": [
+        32,
+        94
+      ],
+      "metrics": {
+        "total_calls": 20,
+        "unique_called": 11,
+        "complexity_ratio": 0.55
+      },
+      "top_callees": [
+        {
+          "name": "Number",
+          "count": 5
+        },
+        {
+          "name": "isArray",
+          "count": 3
+        },
+        {
+          "name": "String",
+          "count": 3
+        },
+        {
+          "name": "Error",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "slice",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "from",
+          "count": 1
+        },
+        {
+          "name": "Set",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 48,
+      "symbol": "update.stage-crew.ts::updateFromElement",
+      "file": "packages/control-panel/src/symphonies/update/update.stage-crew.ts",
+      "line_range": [
+        9,
+        125
+      ],
+      "metrics": {
+        "total_calls": 20,
+        "unique_called": 10,
+        "complexity_ratio": 0.5
+      },
+      "top_callees": [
+        {
+          "name": "parseFloat",
+          "count": 10
+        },
+        {
+          "name": "from",
+          "count": 2
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "styles",
+          "count": 1
+        },
+        {
+          "name": "getComputedStyle",
+          "count": 1
+        },
+        {
+          "name": "extractElementContent",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 49,
+      "symbol": "content-extractor.ts::extractElementContent",
+      "file": "packages/control-panel/src/utils/content-extractor.ts",
+      "line_range": [
+        7,
+        104
+      ],
+      "metrics": {
+        "total_calls": 20,
+        "unique_called": 12,
+        "complexity_ratio": 0.6
+      },
+      "top_callees": [
+        {
+          "name": "extractClassVariant",
+          "count": 5
+        },
+        {
+          "name": "getAttribute",
+          "count": 3
+        },
+        {
+          "name": "toLowerCase",
+          "count": 2
+        },
+        {
+          "name": "trim",
+          "count": 2
+        },
+        {
+          "name": "inferTypeFromElement",
+          "count": 1
+        },
+        {
+          "name": "hasAttribute",
+          "count": 1
+        },
+        {
+          "name": "level",
+          "count": 1
+        },
+        {
+          "name": "from",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 50,
+      "symbol": "drag.preview.stage-crew.ts::renderTemplatePreview",
+      "file": "packages/library-component/src/symphonies/drag/drag.preview.stage-crew.ts",
+      "line_range": [
+        51,
+        92
+      ],
+      "metrics": {
+        "total_calls": 20,
+        "unique_called": 9,
+        "complexity_ratio": 0.45
+      },
+      "top_callees": [
+        {
+          "name": "setAttribute",
+          "count": 10
+        },
+        {
+          "name": "createElementNS",
+          "count": 2
+        },
+        {
+          "name": "appendChild",
+          "count": 2
+        },
+        {
+          "name": "String",
+          "count": 1
+        },
+        {
+          "name": "toLowerCase",
+          "count": 1
+        },
+        {
+          "name": "createElement",
+          "count": 1
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "add",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 51,
+      "symbol": "export.io.spec.ts::makeCtx",
+      "file": "packages/canvas-component/__tests__/export.io.spec.ts",
+      "line_range": [
+        5,
+        53
+      ],
+      "metrics": {
+        "total_calls": 19,
+        "unique_called": 9,
+        "complexity_ratio": 0.47
+      },
+      "top_callees": [
+        {
+          "name": "push",
+          "count": 5
+        },
+        {
+          "name": "async",
+          "count": 4
+        },
+        {
+          "name": "fn",
+          "count": 3
+        },
+        {
+          "name": "set",
+          "count": 2
+        },
+        {
+          "name": "Map",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "from",
+          "count": 1
+        },
+        {
+          "name": "keys",
+          "count": 1
+        },
+        {
+          "name": "entries",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 52,
+      "symbol": "SvgTreeView.tsx::TreeNode",
+      "file": "packages/control-panel/src/components/field-renderers/SvgTreeView.tsx",
+      "line_range": [
+        41,
+        161
+      ],
+      "metrics": {
+        "total_calls": 19,
+        "unique_called": 12,
+        "complexity_ratio": 0.63
+      },
+      "top_callees": [
+        {
+          "name": "join",
+          "count": 3
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "add",
+          "count": 2
+        },
+        {
+          "name": "stopPropagation",
+          "count": 2
+        },
+        {
+          "name": "setExpanded",
+          "count": 2
+        },
+        {
+          "name": "onSelect",
+          "count": 2
+        },
+        {
+          "name": "useState",
+          "count": 1
+        },
+        {
+          "name": "useMemo",
+          "count": 1
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "slice",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 53,
+      "symbol": "template-processor.ts::TemplateProcessor.resolveValue",
+      "file": "packages/digital-assets/src/template-processor.ts",
+      "line_range": [
+        258,
+        317
+      ],
+      "metrics": {
+        "total_calls": 19,
+        "unique_called": 15,
+        "complexity_ratio": 0.79
+      },
+      "top_callees": [
+        {
+          "name": "entries",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "validateParameterType",
+          "count": 2
+        },
+        {
+          "name": "isArray",
+          "count": 2
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "endsWith",
+          "count": 1
+        },
+        {
+          "name": "slice",
+          "count": 1
+        },
+        {
+          "name": "includes",
+          "count": 1
+        },
+        {
+          "name": "substituteParameters",
+          "count": 1
+        },
+        {
+          "name": "getTemplateExamples",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 54,
+      "symbol": "CallbackRegistry.ts::CallbackRegistry.rehydrateInPlace",
+      "file": "packages/musical-conductor/modules/communication/sequences/orchestration/CallbackRegistry.ts",
+      "line_range": [
+        96,
+        203
+      ],
+      "metrics": {
+        "total_calls": 19,
+        "unique_called": 11,
+        "complexity_ratio": 0.58
+      },
+      "top_callees": [
+        {
+          "name": "get",
+          "count": 3
+        },
+        {
+          "name": "visit",
+          "count": 3
+        },
+        {
+          "name": "pushBuf",
+          "count": 3
+        },
+        {
+          "name": "isArray",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "keys",
+          "count": 1
+        },
+        {
+          "name": "parseInt",
+          "count": 1
+        },
+        {
+          "name": "entries",
+          "count": 1
+        },
+        {
+          "name": "setByPath",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 55,
+      "symbol": "TimelineDataAdapter.ts::analyzerToTimelineData",
+      "file": "packages/telemetry-workbench/src/modules/TimelineDataAdapter.ts",
+      "line_range": [
+        13,
+        62
+      ],
+      "metrics": {
+        "total_calls": 19,
+        "unique_called": 11,
+        "complexity_ratio": 0.58
+      },
+      "top_callees": [
+        {
+          "name": "parse",
+          "count": 6
+        },
+        {
+          "name": "forEach",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "toFixed",
+          "count": 2
+        },
+        {
+          "name": "entries",
+          "count": 1
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        },
+        {
+          "name": "max",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "Block",
+          "count": 1
+        },
+        {
+          "name": "Gap",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 56,
+      "symbol": "CodeTextarea.tsx::extractFromFullSvg",
+      "file": "packages/control-panel/src/components/field-renderers/CodeTextarea.tsx",
+      "line_range": [
+        101,
+        140
+      ],
+      "metrics": {
+        "total_calls": 18,
+        "unique_called": 14,
+        "complexity_ratio": 0.78
+      },
+      "top_callees": [
+        {
+          "name": "handleFieldChange",
+          "count": 3
+        },
+        {
+          "name": "getAttribute",
+          "count": 2
+        },
+        {
+          "name": "replace",
+          "count": 2
+        },
+        {
+          "name": "DOMParser",
+          "count": 1
+        },
+        {
+          "name": "parseFromString",
+          "count": 1
+        },
+        {
+          "name": "querySelector",
+          "count": 1
+        },
+        {
+          "name": "Error",
+          "count": 1
+        },
+        {
+          "name": "XMLSerializer",
+          "count": 1
+        },
+        {
+          "name": "serializeToString",
+          "count": 1
+        },
+        {
+          "name": "onChange",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 57,
+      "symbol": "boundary-enforcement.ts::enforceBoundaries",
+      "file": "packages/digital-assets/src/boundary-enforcement.ts",
+      "line_range": [
+        178,
+        246
+      ],
+      "metrics": {
+        "total_calls": 18,
+        "unique_called": 10,
+        "complexity_ratio": 0.56
+      },
+      "top_callees": [
+        {
+          "name": "walkAndEnforce",
+          "count": 4
+        },
+        {
+          "name": "forEach",
+          "count": 4
+        },
+        {
+          "name": "snap",
+          "count": 2
+        },
+        {
+          "name": "filter",
+          "count": 2
+        },
+        {
+          "name": "getNodeRect",
+          "count": 1
+        },
+        {
+          "name": "applyBoundaryPolicy",
+          "count": 1
+        },
+        {
+          "name": "rectOfBoundary",
+          "count": 1
+        },
+        {
+          "name": "findContainingBoundary",
+          "count": 1
+        },
+        {
+          "name": "findNodeById",
+          "count": 1
+        },
+        {
+          "name": "validatePort",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 58,
+      "symbol": "canvas-svg-extractor.ts::createCombinedStorybook",
+      "file": "packages/digital-assets/src/canvas-svg-extractor.ts",
+      "line_range": [
+        148,
+        239
+      ],
+      "metrics": {
+        "total_calls": 18,
+        "unique_called": 15,
+        "complexity_ratio": 0.83
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 4
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "error",
+          "count": 1
+        },
+        {
+          "name": "dimensions",
+          "count": 1
+        },
+        {
+          "name": "ceil",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "floor",
+          "count": 1
+        },
+        {
+          "name": "at",
+          "count": 1
+        },
+        {
+          "name": "join",
+          "count": 1
+        },
+        {
+          "name": "readFileSync",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 59,
+      "symbol": "StageCrew.ts::BeatTxn.applyOpsToDom",
+      "file": "packages/musical-conductor/modules/communication/sequences/stage/StageCrew.ts",
+      "line_range": [
+        88,
+        151
+      ],
+      "metrics": {
+        "total_calls": 18,
+        "unique_called": 11,
+        "complexity_ratio": 0.61
+      },
+      "top_callees": [
+        {
+          "name": "querySelector",
+          "count": 6
+        },
+        {
+          "name": "add",
+          "count": 2
+        },
+        {
+          "name": "setAttribute",
+          "count": 2
+        },
+        {
+          "name": "remove",
+          "count": 1
+        },
+        {
+          "name": "createElement",
+          "count": 1
+        },
+        {
+          "name": "entries",
+          "count": 1
+        },
+        {
+          "name": "appendChild",
+          "count": 1
+        },
+        {
+          "name": "removeChild",
+          "count": 1
+        },
+        {
+          "name": "isDevEnv",
+          "count": 1
+        },
+        {
+          "name": "silence",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 60,
+      "symbol": "rule-engine.ts::ComponentRuleEngine.extractContent",
+      "file": "packages/canvas-component/src/temp-deps/rule-engine.ts",
+      "line_range": [
+        626,
+        703
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 11,
+        "complexity_ratio": 0.65
+      },
+      "top_callees": [
+        {
+          "name": "toLowerCase",
+          "count": 3
+        },
+        {
+          "name": "String",
+          "count": 2
+        },
+        {
+          "name": "trim",
+          "count": 2
+        },
+        {
+          "name": "slice",
+          "count": 2
+        },
+        {
+          "name": "includes",
+          "count": 2
+        },
+        {
+          "name": "getComponentTypeFromClasses",
+          "count": 1
+        },
+        {
+          "name": "getAttribute",
+          "count": 1
+        },
+        {
+          "name": "hasAttribute",
+          "count": 1
+        },
+        {
+          "name": "from",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 61,
+      "symbol": "CodeTextarea.tsx::prettyPrintXml",
+      "file": "packages/control-panel/src/components/field-renderers/CodeTextarea.tsx",
+      "line_range": [
+        49,
+        80
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 14,
+        "complexity_ratio": 0.82
+      },
+      "top_callees": [
+        {
+          "name": "replace",
+          "count": 3
+        },
+        {
+          "name": "test",
+          "count": 2
+        },
+        {
+          "name": "DOMParser",
+          "count": 1
+        },
+        {
+          "name": "parseFromString",
+          "count": 1
+        },
+        {
+          "name": "querySelector",
+          "count": 1
+        },
+        {
+          "name": "Error",
+          "count": 1
+        },
+        {
+          "name": "XMLSerializer",
+          "count": 1
+        },
+        {
+          "name": "serializeToString",
+          "count": 1
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 62,
+      "symbol": "selection.stage-crew.ts::deriveSelectionModel",
+      "file": "packages/control-panel/src/symphonies/selection/selection.stage-crew.ts",
+      "line_range": [
+        4,
+        79
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 12,
+        "complexity_ratio": 0.71
+      },
+      "top_callees": [
+        {
+          "name": "parseFloat",
+          "count": 4
+        },
+        {
+          "name": "from",
+          "count": 3
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "toLowerCase",
+          "count": 1
+        },
+        {
+          "name": "querySelector",
+          "count": 1
+        },
+        {
+          "name": "styles",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 63,
+      "symbol": "generic-graph-generator.ts::GenericGraphGenerator.generateGraph",
+      "file": "packages/digital-assets/src/generic-graph-generator.ts",
+      "line_range": [
+        48,
+        92
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 11,
+        "complexity_ratio": 0.65
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 5
+        },
+        {
+          "name": "join",
+          "count": 2
+        },
+        {
+          "name": "writeFileSync",
+          "count": 2
+        },
+        {
+          "name": "applyTheme",
+          "count": 1
+        },
+        {
+          "name": "applyLayout",
+          "count": 1
+        },
+        {
+          "name": "graphToSVG",
+          "count": 1
+        },
+        {
+          "name": "existsSync",
+          "count": 1
+        },
+        {
+          "name": "mkdirSync",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 64,
+      "symbol": "render-svg.ts::emitFlow",
+      "file": "packages/digital-assets/src/render-svg.ts",
+      "line_range": [
+        290,
+        351
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 8,
+        "complexity_ratio": 0.47
+      },
+      "top_callees": [
+        {
+          "name": "find",
+          "count": 5
+        },
+        {
+          "name": "esc",
+          "count": 3
+        },
+        {
+          "name": "getPortPosition",
+          "count": 2
+        },
+        {
+          "name": "centerOf",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "path",
+          "count": 1
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "join",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 65,
+      "symbol": "sample-generator.ts::generateAllSamples",
+      "file": "packages/digital-assets/src/sample-generator.ts",
+      "line_range": [
+        204,
+        229
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 14,
+        "complexity_ratio": 0.82
+      },
+      "top_callees": [
+        {
+          "name": "join",
+          "count": 3
+        },
+        {
+          "name": "writeFileSync",
+          "count": 2
+        },
+        {
+          "name": "cwd",
+          "count": 1
+        },
+        {
+          "name": "existsSync",
+          "count": 1
+        },
+        {
+          "name": "mkdirSync",
+          "count": 1
+        },
+        {
+          "name": "createMicroservicesGraph",
+          "count": 1
+        },
+        {
+          "name": "createDataPipelineGraph",
+          "count": 1
+        },
+        {
+          "name": "createNeuralNetworkGraph",
+          "count": 1
+        },
+        {
+          "name": "createSocialNetworkGraph",
+          "count": 1
+        },
+        {
+          "name": "createCICDGraph",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 66,
+      "symbol": "HeaderThemeToggle.tsx::HeaderThemeToggle",
+      "file": "packages/header/src/ui/HeaderThemeToggle.tsx",
+      "line_range": [
+        23,
+        80
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 9,
+        "complexity_ratio": 0.53
+      },
+      "top_callees": [
+        {
+          "name": "safeSetTheme",
+          "count": 5
+        },
+        {
+          "name": "useRef",
+          "count": 3
+        },
+        {
+          "name": "resolveInteraction",
+          "count": 2
+        },
+        {
+          "name": "play",
+          "count": 2
+        },
+        {
+          "name": "useConductor",
+          "count": 1
+        },
+        {
+          "name": "useEffect",
+          "count": 1
+        },
+        {
+          "name": "setThemeState",
+          "count": 1
+        },
+        {
+          "name": "useCallback",
+          "count": 1
+        },
+        {
+          "name": "async",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "symbol": "SPAValidator.ts::SPAValidator.createValidatedEmit",
+      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "line_range": [
+        89,
+        157
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 12,
+        "complexity_ratio": 0.71
+      },
+      "top_callees": [
+        {
+          "name": "call",
+          "count": 3
+        },
+        {
+          "name": "startsWith",
+          "count": 2
+        },
+        {
+          "name": "emit",
+          "count": 2
+        },
+        {
+          "name": "__MC_ERROR",
+          "count": 2
+        },
+        {
+          "name": "getInstance",
+          "count": 1
+        },
+        {
+          "name": "Error",
+          "count": 1
+        },
+        {
+          "name": "analyzeCallStack",
+          "count": 1
+        },
+        {
+          "name": "isPluginCall",
+          "count": 1
+        },
+        {
+          "name": "extractLocationFromStack",
+          "count": 1
+        },
+        {
+          "name": "createViolation",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 68,
+      "symbol": "SPAValidator.ts::SPAValidator.createValidatedSubscribe",
+      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "line_range": [
+        162,
+        234
+      ],
+      "metrics": {
+        "total_calls": 17,
+        "unique_called": 8,
+        "complexity_ratio": 0.47
+      },
+      "top_callees": [
+        {
+          "name": "subscribe",
+          "count": 5
+        },
+        {
+          "name": "Error",
+          "count": 2
+        },
+        {
+          "name": "call",
+          "count": 2
+        },
+        {
+          "name": "extractLocationFromStack",
+          "count": 2
+        },
+        {
+          "name": "createViolation",
+          "count": 2
+        },
+        {
+          "name": "handleViolation",
+          "count": 2
+        },
+        {
+          "name": "getInstance",
+          "count": 1
+        },
+        {
+          "name": "analyzeCallStack",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 69,
+      "symbol": "create.react.stage-crew.ts::compileReactCode",
+      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "line_range": [
+        92,
+        157
+      ],
+      "metrics": {
+        "total_calls": 16,
+        "unique_called": 11,
+        "complexity_ratio": 0.69
+      },
+      "top_callees": [
+        {
+          "name": "match",
+          "count": 3
+        },
+        {
+          "name": "eval",
+          "count": 3
+        },
+        {
+          "name": "createElement",
+          "count": 2
+        },
+        {
+          "name": "substring",
+          "count": 1
+        },
+        {
+          "name": "indexOf",
+          "count": 1
+        },
+        {
+          "name": "GeneratedComponent",
+          "count": 1
+        },
+        {
+          "name": "Function",
+          "count": 1
+        },
+        {
+          "name": "compiledFunction",
+          "count": 1
+        },
+        {
+          "name": "Error",
+          "count": 1
+        },
+        {
+          "name": "ErrorComponent",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 70,
+      "symbol": "resize.line.stage-crew.ts::updateLine",
+      "file": "packages/canvas-component/src/symphonies/resize-line/resize.line.stage-crew.ts",
+      "line_range": [
+        9,
+        27
+      ],
+      "metrics": {
+        "total_calls": 16,
+        "unique_called": 10,
+        "complexity_ratio": 0.62
+      },
+      "top_callees": [
+        {
+          "name": "Error",
+          "count": 2
+        },
+        {
+          "name": "parseFloat",
+          "count": 2
+        },
+        {
+          "name": "getPropertyValue",
+          "count": 2
+        },
+        {
+          "name": "round",
+          "count": 2
+        },
+        {
+          "name": "Number",
+          "count": 2
+        },
+        {
+          "name": "setProperty",
+          "count": 2
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        },
+        {
+          "name": "vars",
+          "count": 1
+        },
+        {
+          "name": "onLineResize",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 71,
+      "symbol": "svg-animation-utilities.ts::makeElementAppear",
+      "file": "packages/digital-assets/src/svg-animation-utilities.ts",
+      "line_range": [
+        85,
+        140
+      ],
+      "metrics": {
+        "total_calls": 16,
+        "unique_called": 10,
+        "complexity_ratio": 0.62
+      },
+      "top_callees": [
+        {
+          "name": "replace",
+          "count": 3
+        },
+        {
+          "name": "includes",
+          "count": 3
+        },
+        {
+          "name": "endsWith",
+          "count": 2
+        },
+        {
+          "name": "substring",
+          "count": 2
+        },
+        {
+          "name": "createElementPattern",
+          "count": 1
+        },
+        {
+          "name": "generateId",
+          "count": 1
+        },
+        {
+          "name": "createOpacityAnimation",
+          "count": 1
+        },
+        {
+          "name": "formatTrigger",
+          "count": 1
+        },
+        {
+          "name": "match",
+          "count": 1
+        },
+        {
+          "name": "lastIndexOf",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "symbol": "augment.line.stage-crew.ts::enhanceLine",
+      "file": "packages/canvas-component/src/symphonies/augment/augment.line.stage-crew.ts",
+      "line_range": [
+        30,
+        52
+      ],
+      "metrics": {
+        "total_calls": 15,
+        "unique_called": 9,
+        "complexity_ratio": 0.6
+      },
+      "top_callees": [
+        {
+          "name": "setAttribute",
+          "count": 4
+        },
+        {
+          "name": "getAttribute",
+          "count": 4
+        },
+        {
+          "name": "isFlagEnabled",
+          "count": 1
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        },
+        {
+          "name": "contains",
+          "count": 1
+        },
+        {
+          "name": "present",
+          "count": 1
+        },
+        {
+          "name": "defs",
+          "count": 1
+        },
+        {
+          "name": "ensureLineMarkers",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 73,
+      "symbol": "canvas-storybook-demo.ts::processScene",
+      "file": "packages/digital-assets/src/canvas-storybook-demo.ts",
+      "line_range": [
+        47,
+        84
+      ],
+      "metrics": {
+        "total_calls": 15,
+        "unique_called": 8,
+        "complexity_ratio": 0.53
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 4
+        },
+        {
+          "name": "now",
+          "count": 2
+        },
+        {
+          "name": "replace",
+          "count": 2
+        },
+        {
+          "name": "saveFile",
+          "count": 2
+        },
+        {
+          "name": "filter",
+          "count": 2
+        },
+        {
+          "name": "loadScene",
+          "count": 1
+        },
+        {
+          "name": "renderSceneWithDiagnostics",
+          "count": 1
+        },
+        {
+          "name": "stringify",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 74,
+      "symbol": "combined-storybook-generator.ts::generateEnhancedSVG",
+      "file": "packages/digital-assets/src/combined-storybook-generator.ts",
+      "line_range": [
+        189,
+        358
+      ],
+      "metrics": {
+        "total_calls": 15,
+        "unique_called": 11,
+        "complexity_ratio": 0.73
+      },
+      "top_callees": [
+        {
+          "name": "translate",
+          "count": 3
+        },
+        {
+          "name": "url",
+          "count": 2
+        },
+        {
+          "name": "forEach",
+          "count": 2
+        },
+        {
+          "name": "generateSceneTransitionCSS",
+          "count": 1
+        },
+        {
+          "name": "log",
+          "count": 1
+        },
+        {
+          "name": "at",
+          "count": 1
+        },
+        {
+          "name": "loadSceneConfig",
+          "count": 1
+        },
+        {
+          "name": "renderScene",
+          "count": 1
+        },
+        {
+          "name": "content",
+          "count": 1
+        },
+        {
+          "name": "match",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 75,
+      "symbol": "PluginManager.ts::PluginManager.registerCIAPlugins",
+      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginManager.ts",
+      "line_range": [
+        500,
+        549
+      ],
+      "metrics": {
+        "total_calls": 15,
+        "unique_called": 12,
+        "complexity_ratio": 0.8
+      },
+      "top_callees": [
+        {
+          "name": "__MC_LOG",
+          "count": 3
+        },
+        {
+          "name": "getMountedPluginIds",
+          "count": 2
+        },
+        {
+          "name": "loadManifest",
+          "count": 1
+        },
+        {
+          "name": "data",
+          "count": 1
+        },
+        {
+          "name": "registerPluginsFromManifest",
+          "count": 1
+        },
+        {
+          "name": "success",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "successfully",
+          "count": 1
+        },
+        {
+          "name": "mounted",
+          "count": 1
+        },
+        {
+          "name": "__MC_WARN",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 76,
+      "symbol": "PluginManager.ts::PluginManager.registerPluginsFromManifest",
+      "file": "packages/musical-conductor/modules/communication/sequences/plugins/PluginManager.ts",
+      "line_range": [
+        555,
+        617
+      ],
+      "metrics": {
+        "total_calls": 15,
+        "unique_called": 9,
+        "complexity_ratio": 0.6
+      },
+      "top_callees": [
+        {
+          "name": "__MC_LOG",
+          "count": 6
+        },
+        {
+          "name": "__MC_ERROR",
+          "count": 2
+        },
+        {
+          "name": "mounted",
+          "count": 1
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "loadPluginModule",
+          "count": 1
+        },
+        {
+          "name": "__MC_WARN",
+          "count": 1
+        },
+        {
+          "name": "exports",
+          "count": 1
+        },
+        {
+          "name": "id",
+          "count": 1
+        },
+        {
+          "name": "mount",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 77,
+      "symbol": "export.pure.ts::buildUiFileContent",
+      "file": "packages/canvas-component/src/symphonies/export/export.pure.ts",
+      "line_range": [
+        3,
+        92
+      ],
+      "metrics": {
+        "total_calls": 14,
+        "unique_called": 10,
+        "complexity_ratio": 0.71
+      },
+      "top_callees": [
+        {
+          "name": "keys",
+          "count": 2
+        },
+        {
+          "name": "fix",
+          "count": 2
+        },
+        {
+          "name": "Date",
+          "count": 2
+        },
+        {
+          "name": "toISOString",
+          "count": 2
+        },
+        {
+          "name": "Map",
+          "count": 1
+        },
+        {
+          "name": "set",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "getTagForType",
+          "count": 1
+        },
+        {
+          "name": "String",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 78,
+      "symbol": "export.integration.basic.spec.ts::makeIntegrationCtx",
+      "file": "packages/canvas-component/__tests__/export.integration.basic.spec.ts",
+      "line_range": [
+        9,
+        53
+      ],
+      "metrics": {
+        "total_calls": 14,
+        "unique_called": 8,
+        "complexity_ratio": 0.57
+      },
+      "top_callees": [
+        {
+          "name": "fn",
+          "count": 3
+        },
+        {
+          "name": "set",
+          "count": 2
+        },
+        {
+          "name": "async",
+          "count": 2
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "now",
+          "count": 2
+        },
+        {
+          "name": "Map",
+          "count": 1
+        },
+        {
+          "name": "rgba",
+          "count": 1
+        },
+        {
+          "name": "entries",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 79,
+      "symbol": "schema-resolver.service.ts::SchemaResolverService.loadComponentSchemas",
+      "file": "packages/control-panel/src/services/schema-resolver.service.ts",
+      "line_range": [
+        37,
+        85
+      ],
+      "metrics": {
+        "total_calls": 14,
+        "unique_called": 8,
+        "complexity_ratio": 0.57
+      },
+      "top_callees": [
+        {
+          "name": "registerComponentSchema",
+          "count": 3
+        },
+        {
+          "name": "set",
+          "count": 3
+        },
+        {
+          "name": "async",
+          "count": 2
+        },
+        {
+          "name": "get",
+          "count": 2
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "fetch",
+          "count": 1
+        },
+        {
+          "name": "json",
+          "count": 1
+        },
+        {
+          "name": "all",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 80,
+      "symbol": "svg-animation-utilities.ts::makeElementDisappear",
+      "file": "packages/digital-assets/src/svg-animation-utilities.ts",
+      "line_range": [
+        24,
+        79
+      ],
+      "metrics": {
+        "total_calls": 14,
+        "unique_called": 11,
+        "complexity_ratio": 0.79
+      },
+      "top_callees": [
+        {
+          "name": "formatTrigger",
+          "count": 2
+        },
+        {
+          "name": "includes",
+          "count": 2
+        },
+        {
+          "name": "match",
+          "count": 2
+        },
+        {
+          "name": "createElementPattern",
+          "count": 1
+        },
+        {
+          "name": "generateId",
+          "count": 1
+        },
+        {
+          "name": "createOpacityAnimation",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "stopElementAnimationInContent",
+          "count": 1
+        },
+        {
+          "name": "element",
+          "count": 1
+        },
+        {
+          "name": "endsWith",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 81,
+      "symbol": "SPAValidator.ts::SPAValidator.handleViolation",
+      "file": "packages/musical-conductor/modules/communication/SPAValidator.ts",
+      "line_range": [
+        541,
+        569
+      ],
+      "metrics": {
+        "total_calls": 14,
+        "unique_called": 9,
+        "complexity_ratio": 0.64
+      },
+      "top_callees": [
+        {
+          "name": "__MC_ERROR",
+          "count": 6
+        },
+        {
+          "name": "push",
+          "count": 1
+        },
+        {
+          "name": "toUpperCase",
+          "count": 1
+        },
+        {
+          "name": "toISOString",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "slice",
+          "count": 1
+        },
+        {
+          "name": "join",
+          "count": 1
+        },
+        {
+          "name": "Error",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 82,
+      "symbol": "SequenceOrchestrator.ts::SequenceOrchestrator.processSequenceQueue",
+      "file": "packages/musical-conductor/modules/communication/sequences/orchestration/SequenceOrchestrator.ts",
+      "line_range": [
+        191,
+        252
+      ],
+      "metrics": {
+        "total_calls": 14,
+        "unique_called": 11,
+        "complexity_ratio": 0.79
+      },
+      "top_callees": [
+        {
+          "name": "processSequenceQueue",
+          "count": 3
+        },
+        {
+          "name": "__MC_ERROR",
+          "count": 2
+        },
+        {
+          "name": "isEmpty",
+          "count": 1
+        },
+        {
+          "name": "isSequenceRunning",
+          "count": 1
+        },
+        {
+          "name": "dequeue",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        },
+        {
+          "name": "updateQueueWaitTime",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "recordSequenceDequeued",
+          "count": 1
+        },
+        {
+          "name": "recordSequenceExecution",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 83,
+      "symbol": "create.react.stage-crew.ts::renderReact",
+      "file": "packages/canvas-component/src/symphonies/create/create.react.stage-crew.ts",
+      "line_range": [
+        11,
+        86
+      ],
+      "metrics": {
+        "total_calls": 13,
+        "unique_called": 12,
+        "complexity_ratio": 0.92
+      },
+      "top_callees": [
+        {
+          "name": "getElementById",
+          "count": 2
+        },
+        {
+          "name": "Error",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "unmount",
+          "count": 1
+        },
+        {
+          "name": "compileReactCode",
+          "count": 1
+        },
+        {
+          "name": "createRoot",
+          "count": 1
+        },
+        {
+          "name": "createElement",
+          "count": 1
+        },
+        {
+          "name": "startTransition",
+          "count": 1
+        },
+        {
+          "name": "render",
+          "count": 1
+        },
+        {
+          "name": "set",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 84,
+      "symbol": "drag.stage-crew.ts::updatePosition",
+      "file": "packages/canvas-component/src/symphonies/drag/drag.stage-crew.ts",
+      "line_range": [
+        6,
+        60
+      ],
+      "metrics": {
+        "total_calls": 13,
+        "unique_called": 9,
+        "complexity_ratio": 0.69
+      },
+      "top_callees": [
+        {
+          "name": "Error",
+          "count": 2
+        },
+        {
+          "name": "setProperty",
+          "count": 2
+        },
+        {
+          "name": "var",
+          "count": 2
+        },
+        {
+          "name": "String",
+          "count": 2
+        },
+        {
+          "name": "DOM",
+          "count": 1
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "isFlagEnabled",
+          "count": 1
+        },
+        {
+          "name": "translate3d",
+          "count": 1
+        },
+        {
+          "name": "path",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 85,
+      "symbol": "ControlPanel.tsx::ControlPanel",
+      "file": "packages/control-panel/src/ui/ControlPanel.tsx",
+      "line_range": [
+        13,
+        100
+      ],
+      "metrics": {
+        "total_calls": 13,
+        "unique_called": 13,
+        "complexity_ratio": 1.0
+      },
+      "top_callees": [
+        {
+          "name": "useControlPanelState",
+          "count": 1
+        },
+        {
+          "name": "useSchemaResolver",
+          "count": 1
+        },
+        {
+          "name": "useControlPanelSequences",
+          "count": 1
+        },
+        {
+          "name": "useControlPanelActions",
+          "count": 1
+        },
+        {
+          "name": "useEffect",
+          "count": 1
+        },
+        {
+          "name": "triggerRender",
+          "count": 1
+        },
+        {
+          "name": "useMemo",
+          "count": 1
+        },
+        {
+          "name": "generatePropertyFields",
+          "count": 1
+        },
+        {
+          "name": "generateSections",
+          "count": 1
+        },
+        {
+          "name": "dispatch",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 86,
+      "symbol": "canvas-svg-extractor.ts::extractIndividualScenes",
+      "file": "packages/digital-assets/src/canvas-svg-extractor.ts",
+      "line_range": [
+        99,
+        146
+      ],
+      "metrics": {
+        "total_calls": 13,
+        "unique_called": 8,
+        "complexity_ratio": 0.62
+      },
+      "top_callees": [
+        {
+          "name": "log",
+          "count": 5
+        },
+        {
+          "name": "push",
+          "count": 2
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "extractSceneTitle",
+          "count": 1
+        },
+        {
+          "name": "at",
+          "count": 1
+        },
+        {
+          "name": "cleanSvgMarkup",
+          "count": 1
+        },
+        {
+          "name": "saveFile",
+          "count": 1
+        },
+        {
+          "name": "error",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 87,
+      "symbol": "component-mapper.ts::computeTagFromJson",
+      "file": "packages/host-sdk/component-mapper.ts",
+      "line_range": [
+        110,
+        146
+      ],
+      "metrics": {
+        "total_calls": 13,
+        "unique_called": 8,
+        "complexity_ratio": 0.62
+      },
+      "top_callees": [
+        {
+          "name": "getByPath",
+          "count": 3
+        },
+        {
+          "name": "trim",
+          "count": 3
+        },
+        {
+          "name": "String",
+          "count": 2
+        },
+        {
+          "name": "getConfig",
+          "count": 1
+        },
+        {
+          "name": "matchesWhen",
+          "count": 1
+        },
+        {
+          "name": "toLowerCase",
+          "count": 1
+        },
+        {
+          "name": "includes",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 88,
+      "symbol": "validation.utils.ts::validateComponentJson",
+      "file": "packages/library/src/utils/validation.utils.ts",
+      "line_range": [
+        122,
+        167
+      ],
+      "metrics": {
+        "total_calls": 13,
+        "unique_called": 10,
+        "complexity_ratio": 0.77
+      },
+      "top_callees": [
+        {
+          "name": "push",
+          "count": 4
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        },
+        {
+          "name": "validateMetadata",
+          "count": 1
+        },
+        {
+          "name": "validateUI",
+          "count": 1
+        },
+        {
+          "name": "properties",
+          "count": 1
+        },
+        {
+          "name": "keys",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "includes",
+          "count": 1
+        },
+        {
+          "name": "join",
+          "count": 1
+        },
+        {
+          "name": "normalizeComponent",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 89,
+      "symbol": "export.discover.stage-crew.ts::discoverComponentsFromDom",
+      "file": "packages/canvas-component/src/symphonies/export/export.discover.stage-crew.ts",
+      "line_range": [
+        1,
+        50
+      ],
+      "metrics": {
+        "total_calls": 12,
+        "unique_called": 11,
+        "complexity_ratio": 0.92
+      },
+      "top_callees": [
+        {
+          "name": "from",
+          "count": 2
+        },
+        {
+          "name": "getElementById",
+          "count": 1
+        },
+        {
+          "name": "querySelectorAll",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "toLowerCase",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "push",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 90,
+      "symbol": "openai.service.ts::OpenAIService.parseComponentResponse",
+      "file": "packages/library/src/services/openai.service.ts",
+      "line_range": [
+        184,
+        224
+      ],
+      "metrics": {
+        "total_calls": 12,
+        "unique_called": 10,
+        "complexity_ratio": 0.83
+      },
+      "top_callees": [
+        {
+          "name": "ChatError",
+          "count": 2
+        },
+        {
+          "name": "match",
+          "count": 2
+        },
+        {
+          "name": "response",
+          "count": 1
+        },
+        {
+          "name": "Error",
+          "count": 1
+        },
+        {
+          "name": "parse",
+          "count": 1
+        },
+        {
+          "name": "validateComponent",
+          "count": 1
+        },
+        {
+          "name": "explanation",
+          "count": 1
+        },
+        {
+          "name": "replace",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "generateSuggestions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 91,
+      "symbol": "StrictModeManager.ts::StrictModeManager.isStrictModeDuplicate",
+      "file": "packages/musical-conductor/modules/communication/sequences/strictmode/StrictModeManager.ts",
+      "line_range": [
+        96,
+        132
+      ],
+      "metrics": {
+        "total_calls": 12,
+        "unique_called": 9,
+        "complexity_ratio": 0.75
+      },
+      "top_callees": [
+        {
+          "name": "push",
+          "count": 4
+        },
+        {
+          "name": "stringify",
+          "count": 1
+        },
+        {
+          "name": "toLowerCase",
+          "count": 1
+        },
+        {
+          "name": "includes",
+          "count": 1
+        },
+        {
+          "name": "hasReactDevModeIndicators",
+          "count": 1
+        },
+        {
+          "name": "hasDoubleExecutionPatterns",
+          "count": 1
+        },
+        {
+          "name": "duplicates",
+          "count": 1
+        },
+        {
+          "name": "hasTimingBasedDuplicatePattern",
+          "count": 1
+        },
+        {
+          "name": "join",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 92,
+      "symbol": "import.nodes.stage-crew.ts::applyHierarchyAndOrder",
+      "file": "packages/canvas-component/src/symphonies/import/import.nodes.stage-crew.ts",
+      "line_range": [
+        35,
+        72
+      ],
+      "metrics": {
+        "total_calls": 11,
+        "unique_called": 9,
+        "complexity_ratio": 0.82
+      },
+      "top_callees": [
+        {
+          "name": "getElementById",
+          "count": 3
+        },
+        {
+          "name": "has",
+          "count": 1
+        },
+        {
+          "name": "set",
+          "count": 1
+        },
+        {
+          "name": "get",
+          "count": 1
+        },
+        {
+          "name": "push",
+          "count": 1
+        },
+        {
+          "name": "sort",
+          "count": 1
+        },
+        {
+          "name": "appendChild",
+          "count": 1
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        },
+        {
+          "name": "publish",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 93,
+      "symbol": "select.stage-crew.ts::configureHandlesVisibility",
+      "file": "packages/canvas-component/src/symphonies/select/select.stage-crew.ts",
+      "line_range": [
+        44,
+        60
+      ],
+      "metrics": {
+        "total_calls": 11,
+        "unique_called": 11,
+        "complexity_ratio": 1.0
+      },
+      "top_callees": [
+        {
+          "name": "getAttribute",
+          "count": 1
+        },
+        {
+          "name": "Set",
+          "count": 1
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "filter",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "from",
+          "count": 1
+        },
+        {
+          "name": "find",
+          "count": 1
+        },
+        {
+          "name": "includes",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 94,
+      "symbol": "TextInput.tsx::handleChange",
+      "file": "packages/control-panel/src/components/field-renderers/TextInput.tsx",
+      "line_range": [
+        19,
+        55
+      ],
+      "metrics": {
+        "total_calls": 11,
+        "unique_called": 8,
+        "complexity_ratio": 0.73
+      },
+      "top_callees": [
+        {
+          "name": "push",
+          "count": 4
+        },
+        {
+          "name": "setLocalValue",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "forEach",
+          "count": 1
+        },
+        {
+          "name": "RegExp",
+          "count": 1
+        },
+        {
+          "name": "test",
+          "count": 1
+        },
+        {
+          "name": "setErrors",
+          "count": 1
+        },
+        {
+          "name": "onChange",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 95,
+      "symbol": "useSchemaResolver.ts::useSchemaResolver",
+      "file": "packages/control-panel/src/hooks/useSchemaResolver.ts",
+      "line_range": [
+        30,
+        76
+      ],
+      "metrics": {
+        "total_calls": 11,
+        "unique_called": 10,
+        "complexity_ratio": 0.91
+      },
+      "top_callees": [
+        {
+          "name": "setIsLoading",
+          "count": 2
+        },
+        {
+          "name": "useState",
+          "count": 1
+        },
+        {
+          "name": "useEffect",
+          "count": 1
+        },
+        {
+          "name": "async",
+          "count": 1
+        },
+        {
+          "name": "loadConfig",
+          "count": 1
+        },
+        {
+          "name": "SchemaResolverService",
+          "count": 1
+        },
+        {
+          "name": "schemas",
+          "count": 1
+        },
+        {
+          "name": "loadComponentSchemas",
+          "count": 1
+        },
+        {
+          "name": "setResolver",
+          "count": 1
+        },
+        {
+          "name": "initResolver",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 96,
+      "symbol": "canvas-svg-extractor.ts::cleanSvgMarkup",
+      "file": "packages/digital-assets/src/canvas-svg-extractor.ts",
+      "line_range": [
+        71,
+        97
+      ],
+      "metrics": {
+        "total_calls": 11,
+        "unique_called": 9,
+        "complexity_ratio": 0.82
+      },
+      "top_callees": [
+        {
+          "name": "replace",
+          "count": 2
+        },
+        {
+          "name": "match",
+          "count": 2
+        },
+        {
+          "name": "startsWith",
+          "count": 1
+        },
+        {
+          "name": "split",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "repeat",
+          "count": 1
+        },
+        {
+          "name": "max",
+          "count": 1
+        },
+        {
+          "name": "trim",
+          "count": 1
+        },
+        {
+          "name": "join",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 97,
+      "symbol": "CallbackRegistry.ts::CallbackRegistry.preserveInPlace",
+      "file": "packages/musical-conductor/modules/communication/sequences/orchestration/CallbackRegistry.ts",
+      "line_range": [
+        48,
+        93
+      ],
+      "metrics": {
+        "total_calls": 11,
+        "unique_called": 8,
+        "complexity_ratio": 0.73
+      },
+      "top_callees": [
+        {
+          "name": "visit",
+          "count": 3
+        },
+        {
+          "name": "set",
+          "count": 2
+        },
+        {
+          "name": "ensureCorrelationId",
+          "count": 1
+        },
+        {
+          "name": "getOrCreateEntry",
+          "count": 1
+        },
+        {
+          "name": "isArray",
+          "count": 1
+        },
+        {
+          "name": "keys",
+          "count": 1
+        },
+        {
+          "name": "now",
+          "count": 1
+        },
+        {
+          "name": "purgeOldEntries",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "rank": 98,
+      "symbol": "chat.utils.ts::getChatHistoryStats",
+      "file": "packages/library/src/utils/chat.utils.ts",
+      "line_range": [
+        166,
+        202
+      ],
+      "metrics": {
+        "total_calls": 10,
+        "unique_called": 9,
+        "complexity_ratio": 0.9
+      },
+      "top_callees": [
+        {
+          "name": "getTime",
+          "count": 2
+        },
+        {
+          "name": "loadChatHistory",
+          "count": 1
+        },
+        {
+          "name": "reduce",
+          "count": 1
+        },
+        {
+          "name": "getItem",
+          "count": 1
+        },
+        {
+          "name": "round",
+          "count": 1
+        },
+        {
+          "name": "Blob",
+          "count": 1
+        },
+        {
+          "name": "map",
+          "count": 1
+        },
+        {
+          "name": "Date",
+          "count": 1
+        },
+        {
+          "name": "sort",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

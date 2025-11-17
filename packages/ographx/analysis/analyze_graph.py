@@ -167,13 +167,22 @@ def _detect_god_functions(nodes, call_names, symbol_map, threshold_calls=10, thr
         uniq_calls = len(set(names))
         if total_calls >= threshold_calls and uniq_calls >= threshold_unique:
             sym_info = symbol_map.get(n, {})
+
+            # Count frequency of each callee
+            callee_freq = Counter(names)
+            top_callees = callee_freq.most_common(10)
+
             suspects.append(
                 {
                     "symbol": n,
                     "file": sym_info.get("file"),
                     "line_range": sym_info.get("range"),
                     "total_calls": total_calls,
-                    "unique_called": uniq_calls
+                    "unique_called": uniq_calls,
+                    "top_callees": [
+                        {"name": callee, "count": count}
+                        for callee, count in top_callees
+                    ]
                 }
             )
     return suspects
@@ -283,13 +292,17 @@ def _connascence_signals(ir, nodes, call_names, in_edges):
 def analyze_architecture_ir(ir: dict) -> dict:
     nodes, idx, out_edges, in_edges, call_names = _build_arch_graph(ir)
 
-    # Build symbol map for file path lookups
+    # Build symbol map for file path lookups (use first occurrence of each symbol ID)
     symbol_map = {}
     for s in ir.get("symbols", []):
         sid = s.get("id")
-        if sid:
+        if sid and sid not in symbol_map:  # Only use first occurrence
+            # Normalize file paths to use forward slashes
+            file_path = s.get("file")
+            if file_path:
+                file_path = file_path.replace("\\", "/")
             symbol_map[sid] = {
-                "file": s.get("file"),
+                "file": file_path,
                 "range": s.get("range"),
                 "kind": s.get("kind"),
                 "name": s.get("name")

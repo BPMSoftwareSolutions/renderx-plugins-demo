@@ -42,7 +42,9 @@ CONST_FUNC_RE = re.compile(r'^(?:export\s+)?const\s+([A-Za-z_]\w*)\s*=\s*(?:asyn
 ARROW_PARAMS_RE = re.compile(r'^(?:export\s+)?const\s+([A-Za-z_]\w*)\s*=\s*\((.*?)\)\s*(?::\s*[^=]+)?=>\s*{')
 NAMED_FUNC_RE = re.compile(r'^(?:export\s+)?(?:var|let|const)\s+([A-Za-z_]\w*)\s*=\s*function\s*\((.*?)\)\s*(?::\s*[^({]+)?\s*{')
 CLASS_DECL_RE = re.compile(r'^(?:export\s+)?class\s+([A-Za-z_]\w*)\b')
-METHOD_RE = re.compile(r'^\s*(?:(?:public|private|protected|static|async)\s+)*([A-Za-z_]\w*)\s*\((.*?)\)\s*(?::\s*[^({]+)?\s*{')
+# METHOD_RE: Match class methods but exclude control flow keywords (if, for, while, etc.)
+# Uses negative lookahead to prevent matching 'if (', 'for (', 'while (', etc. as method names
+METHOD_RE = re.compile(r'^\s*(?:(?:public|private|protected|static|async)\s+)*(?!(?:if|for|while|switch|catch|return|typeof|new|delete|throw|function|class|constructor|super|await|yield|case|of|in|instanceof|else|do|try|finally|with|debugger|break|continue)\s*\()([A-Za-z_]\w*)\s*\((.*?)\)\s*(?::\s*[^({]+)?\s*{')
 EXPORT_RE = re.compile(r'^\s*export\s+')
 CALL_RE = re.compile(r'\b([A-Za-z_]\w*)\s*\(')
 IMPORT_RE = re.compile(r'^\s*import\s+(?:{[^}]*}|[A-Za-z_]\w*)\s+from\s+[\'"]([^\'"]+)[\'"]')

@@ -159,14 +159,53 @@ python analysis/show_sequences.py
 python analysis/show_rich_sequence.py
 ```
 
+## God Functions Analysis
+
+### Overview
+The Analysis Layer now includes comprehensive god function detection and analysis.
+
+### Files
+- **GOD_FUNCTIONS_INTERPRETATION_GUIDE.md** - How to interpret metrics
+- **GOD_FUNCTION_ANALYSIS.md** - Detailed example walkthrough
+- **../artifacts/renderx-web/god-functions.json** - All 98 god functions with metrics
+
+### Key Metrics
+- **total_calls**: Function calls made (work being done)
+- **unique_called**: Different functions called (coupling level)
+- **complexity_ratio**: unique_called / total_calls (repetition level)
+- **top_callees**: Most frequently called functions with counts
+
+### Example
+```json
+{
+  "rank": 3,
+  "symbol": "ensureAdvancedLineOverlayFor",
+  "metrics": {
+    "total_calls": 81,
+    "unique_called": 31,
+    "complexity_ratio": 0.38
+  },
+  "top_callees": [
+    {"name": "round", "count": 8},
+    {"name": "parseFloat", "count": 8}
+  ]
+}
+```
+
+### Refactoring Strategy
+1. Identify patterns in top_callees
+2. Extract concerns into separate classes
+3. Measure improvement with regenerated analysis
+4. Validate with tests
+
 ## Future Enhancements
 
-- [ ] JSON output for metrics
+- [ ] JSON output for metrics ✅ (god-functions.json)
 - [ ] Time-series metrics tracking
 - [ ] Anomaly detection
 - [ ] Performance profiling
 - [ ] Dependency analysis
-- [ ] Complexity scoring
+- [ ] Complexity scoring ✅ (complexity_ratio)
 - [ ] Health checks
 
 ## Related Files

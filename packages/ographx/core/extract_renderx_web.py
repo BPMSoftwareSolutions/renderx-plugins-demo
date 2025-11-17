@@ -14,6 +14,9 @@ def filter_files_for_codebase(root: str, exclude_dirs: list = None) -> list:
     """
     Walk the root directory and collect .ts/.tsx files,
     excluding specified directories.
+
+    Supports both simple directory names (e.g., 'node_modules') and
+    path patterns (e.g., 'musical-conductor/tools').
     """
     if exclude_dirs is None:
         exclude_dirs = ['node_modules', 'dist', '.git', '__pycache__']
@@ -21,12 +24,23 @@ def filter_files_for_codebase(root: str, exclude_dirs: list = None) -> list:
     files = []
     for dirpath, dirnames, filenames in os.walk(root):
         # Filter out excluded directories
-        dirnames[:] = [d for d in dirnames if d not in exclude_dirs]
+        # Support both simple names and path patterns
+        dirnames[:] = [
+            d for d in dirnames
+            if not any(
+                d == exc or
+                exc in dirpath.replace('\\', '/')
+                for exc in exclude_dirs
+            )
+        ]
 
         for fn in filenames:
             if fn.endswith(('.ts', '.tsx')) and not fn.endswith('.d.ts'):
                 full_path = os.path.join(dirpath, fn)
-                files.append(full_path)
+                # Check if file path matches any exclude pattern
+                normalized_path = full_path.replace('\\', '/')
+                if not any(exc in normalized_path for exc in exclude_dirs):
+                    files.append(full_path)
 
     return files
 
