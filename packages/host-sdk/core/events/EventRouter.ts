@@ -31,14 +31,53 @@ function debounce(fn: Function, ms: number) {
 const __publishStack: string[] = [];
 
 
+// Shallow sanitize diagnostics payload to avoid circular JSON structures (e.g. DOM / React Fiber)
+function sanitizeDiagnosticsPayload(payload: any): any {
+	if (payload === null || payload === undefined) return payload;
+	if (typeof payload !== 'object') return payload;
+	const seen = new WeakSet();
+	const BLOCKED_KEYS = new Set(['domEvent', 'nativeEvent', 'target', 'currentTarget', 'view', 'srcElement']);
+	const MAX_ARRAY_ITEMS = 10;
+
+	const sanitize = (val: any): any => {
+		if (val === null || val === undefined) return val;
+		const t = typeof val;
+		if (t === 'function') return '[Function]';
+		if (t !== 'object') return val;
+		if (val instanceof Date) return val.toISOString();
+		if (val instanceof HTMLElement) {
+			return { __element: val.tagName, id: val.id || null, class: val.className || '' };
+		}
+		if (seen.has(val)) return '[Circular]';
+		seen.add(val);
+		if (Array.isArray(val)) {
+			return val.slice(0, MAX_ARRAY_ITEMS).map(sanitize);
+		}
+		const out: any = {};
+		for (const k of Object.keys(val)) {
+			if (BLOCKED_KEYS.has(k)) continue;
+			try {
+				out[k] = sanitize(val[k]);
+			} catch {
+				out[k] = '[Unserializable]';
+			}
+		}
+		return out;
+	};
+	return sanitize(payload);
+}
+
 function emitHostDiagnosticFromEventRouter(event: { level: string; message: string; data?: any }) {
 	try {
 		const anyGlobal = globalThis as any;
 		const diagnostics = anyGlobal?.RenderX?.diagnostics;
 		if (diagnostics && typeof diagnostics.emitDiagnostic === 'function') {
+			const safeData = event.data ? { ...event.data, payload: sanitizeDiagnosticsPayload(event.data.payload) } : undefined;
 			diagnostics.emitDiagnostic({
 				source: 'EventRouter',
-				...event,
+				level: event.level,
+				message: event.message,
+				data: safeData,
 			});
 		}
 	} catch {}
@@ -110,7 +149,7 @@ export const EventRouter = {
 				message: `publish(${topic})`,
 				data: {
 					topic,
-					payload,
+					payload, // raw payload still routed; diagnostics layer will sanitize
 					routes: def.routes?.length || 0,
 					hasThrottle: !!(def.perf?.throttleMs),
 					hasDebounce: !!(def.perf?.debounceMs),

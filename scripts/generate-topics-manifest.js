@@ -49,9 +49,17 @@ async function readJsonSafe(path) {
 async function _readTopicCatalogs() {
   // Prefer root json-topics/, but also support json-components/json-topics/ for compatibility
   const dirs = [
+    // Primary (when --srcRoot passed e.g. catalog)
     join(srcRoot, "json-topics"),
     join(srcRoot, "json-components", "json-topics"),
   ];
+  // If running without --srcRoot (tests spawn with repo root) also attempt catalog/* fallbacks
+  if (srcRoot === rootDir) {
+    dirs.push(
+      join(rootDir, "catalog", "json-topics"),
+      join(rootDir, "catalog", "json-components", "json-topics"),
+    );
+  }
   const catalogs = [];
   for (const dir of dirs) {
     try {
