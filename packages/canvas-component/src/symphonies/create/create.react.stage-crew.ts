@@ -1,5 +1,6 @@
 import React, { startTransition } from "react";
 import { createRoot } from "react-dom/client";
+// (EventRouter publish removed for test determinism when no conductor)
 
 // Track React roots for cleanup
 const reactRoots = new Map<string, any>();
@@ -9,7 +10,7 @@ const reactRoots = new Map<string, any>();
  * Compiles user-provided React code and mounts it using React 19 createRoot.
  * Supports props injection and component communication via EventRouter.
  */
-export const renderReact = (data: any, ctx: any) => {
+export const renderReact = async (data: any, ctx: any) => {
   // Only process React components
   if (ctx.payload.kind !== "react") {
     return;
@@ -59,12 +60,16 @@ export const renderReact = (data: any, ctx: any) => {
     // Track the root for future cleanup
     reactRoots.set(nodeId, root);
 
-    // Publish componentMounted event
-    if (ctx.conductor) {
-      ctx.conductor.publish("react.component.mounted", {
-        componentId: nodeId,
-        timestamp: Date.now(),
-      });
+    // Publish componentMounted event (prefer direct conductor for test determinism)
+    if (ctx.conductor?.publish) {
+      try {
+        ctx.conductor.publish("react.component.mounted", {
+          componentId: nodeId,
+          timestamp: Date.now(),
+        });
+      } catch (e) {
+        ctx.logger?.warn?.("renderReact: publish(mounted) failed", e instanceof Error ? e.message : String(e));
+      }
     }
 
     // Update payload to indicate successful React rendering
@@ -94,13 +99,17 @@ export const renderReact = (data: any, ctx: any) => {
       `;
     }
 
-    // Publish componentError event
-    if (ctx.conductor) {
-      ctx.conductor.publish("react.component.error", {
-        componentId: nodeId,
-        error: errorMessage,
-        timestamp: Date.now(),
-      });
+    // Publish componentError event (prefer direct conductor)
+    if (ctx.conductor?.publish) {
+      try {
+        ctx.conductor.publish("react.component.error", {
+          componentId: nodeId,
+          error: errorMessage,
+          timestamp: Date.now(),
+        });
+      } catch (e) {
+        ctx.logger?.warn?.("renderReact: publish(error) failed", e instanceof Error ? e.message : String(e));
+      }
     }
 
     ctx.payload.reactError = errorMessage;

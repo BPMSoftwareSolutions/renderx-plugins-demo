@@ -12,6 +12,14 @@
     "canvas.component.select.svg-node.changed": {
       "visibility": "public",
       "notes": "Published when SVG node selection changes"
+    },
+    "react.component.mounted": {
+      "visibility": "public",
+      "notes": "Published when a React component is successfully mounted on the canvas"
+    },
+    "react.component.error": {
+      "visibility": "public",
+      "notes": "Published when a React component fails to compile or render"
     }
   }
 }

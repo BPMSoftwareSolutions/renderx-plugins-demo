@@ -8,7 +8,7 @@ function loadJson(p: string) {
   return JSON.parse(raw);
 }
 
-describe('No local json-topics merged', () => {
+describe('Local json-topics merge behavior', () => {
   const root = process.cwd();
   const script = path.join(root, 'scripts', 'generate-topics-manifest.js');
   const topicsPath = path.join(root, 'topics-manifest.json');
@@ -20,13 +20,13 @@ describe('No local json-topics merged', () => {
     }
   }, 60000);
 
-  it('excludes known local-only test topics', () => {
+  it('includes previously local-only test topics after merge', () => {
     const topicsJson = loadJson(topicsPath);
     const topics = topicsJson?.topics || {};
     const keys = Object.keys(topics);
-    // These come from catalog/json-components/json-topics/test.json and must NOT be present after removal
-    expect(keys).not.toContain('test.route');
-    expect(keys).not.toContain('test.notify');
+    // These come from catalog/json-components/json-topics/test.json and SHOULD be present now that local catalogs are merged
+    expect(keys).toContain('test.route');
+    expect(keys).toContain('test.notify');
   });
 });
 

@@ -79,15 +79,13 @@ async function main() {
     console.warn("[topics-manifest] failed to run sync-json-sequences:", e?.message || e);
   }
 
-  // Step 2: External-only topics. Ignore any local json-topics catalogs.
-  // const localCatalogs = await readTopicCatalogs();
+  // Step 2: Derive external topics plus merge any local json-topics catalogs (allows repo-specific additions
+  // like react.component.mounted / react.component.error without needing to publish an external package).
   const externalCatalog = await generateExternalTopicsCatalog();
+  const localCatalogs = await _readTopicCatalogs();
 
-  // All topics are now auto-generated from external packages with lifecycle topics
-  // No hard-coded synthesis needed - plugins drive their own topic definitions
-
-  // Use only the (augmented) external catalog
-  const allCatalogs = [externalCatalog];
+  // Merge order: external first (baseline), then local overrides/additions.
+  const allCatalogs = [externalCatalog, ...localCatalogs];
   const manifest = buildTopicsManifest(allCatalogs);
 
   const outRoot = join(srcRoot === rootDir ? rootDir : process.cwd(), "topics-manifest.json");
