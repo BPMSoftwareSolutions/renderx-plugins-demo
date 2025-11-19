@@ -1,0 +1,14 @@
+{
+  "plugin": "TestPlugin",
+  "topics": {
+    "test.route": {
+      "visibility": "public",
+      "notes": "Test topic for routing"
+    },
+    "test.notify": {
+      "visibility": "public",
+      "notes": "Test topic for notifications"
+    }
+  }
+}
+

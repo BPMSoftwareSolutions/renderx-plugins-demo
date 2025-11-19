@@ -19,7 +19,7 @@ vi.mock('react-dom/client', () => ({
 }));
 // Speed up tests by bypassing heavy Babel transform; return pre-transformed code
 vi.mock('@babel/standalone', () => ({
-  transform: vi.fn((code: string) => ({
+  transform: vi.fn((_code: string) => ({
     code: `export default function MockComponent(props){ return React.createElement('div', null, 'Mock JSX') }`,
   })),
 }));
