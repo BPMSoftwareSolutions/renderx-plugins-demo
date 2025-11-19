@@ -21,23 +21,84 @@ export function initCLIBridge() {
         if (message.type === 'play') {
           if (!conductor) {
             console.error('❌ Conductor not found');
+            if (import.meta.hot) {
+              import.meta.hot.send('conductor:cli-response', {
+                id: message.id,
+                type: 'play-result',
+                error: 'Conductor not found',
+                success: false
+              });
+            }
             return;
           }
 
           const { pluginId, sequenceId, context } = message;
           console.log(`🎵 Playing sequence: ${pluginId}/${sequenceId}`);
 
-          const result = await conductor.play(pluginId, sequenceId, context);
-          console.log('✅ Sequence completed:', result);
+          try {
+            const result = await conductor.play(pluginId, sequenceId, context);
+            console.log('✅ Sequence completed:', result);
 
-        } else if (message.type === 'list') {
+            // Send result back to CLI
+            if (import.meta.hot) {
+              import.meta.hot.send('conductor:cli-response', {
+                id: message.id,
+                type: 'play-result',
+                result,
+                success: true
+              });
+            }
+          } catch (error: any) {
+            console.error('❌ Sequence failed:', error);
+            if (import.meta.hot) {
+              import.meta.hot.send('conductor:cli-response', {
+                id: message.id,
+                type: 'play-result',
+                error: error.message,
+                success: false
+              });
+            }
+          }
+
+        } else if (message.type === 'list-sequences') {
           if (!conductor) {
             console.error('❌ Conductor not found');
+            if (import.meta.hot) {
+              import.meta.hot.send('conductor:cli-response', {
+                id: message.id,
+                type: 'sequences-list',
+                error: 'Conductor not found',
+                sequences: [],
+                success: false
+              });
+            }
             return;
           }
 
-          const sequences = conductor.getRegisteredSequences?.() || [];
-          console.log('📋 Registered sequences:', sequences);
+          try {
+            const sequences = conductor.getRegisteredSequences?.() || [];
+            console.log('📋 Registered sequences:', sequences);
+
+            if (import.meta.hot) {
+              import.meta.hot.send('conductor:cli-response', {
+                id: message.id,
+                type: 'sequences-list',
+                sequences,
+                success: true
+              });
+            }
+          } catch (error: any) {
+            console.error('❌ Failed to get sequences:', error);
+            if (import.meta.hot) {
+              import.meta.hot.send('conductor:cli-response', {
+                id: message.id,
+                type: 'sequences-list',
+                error: error.message,
+                sequences: [],
+                success: false
+              });
+            }
+          }
 
         } else if (message.type === 'eval') {
           // Execute JavaScript code in the browser and return the result

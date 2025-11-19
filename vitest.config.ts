@@ -35,6 +35,10 @@ export default defineConfig({
     environmentMatchGlobs: [
       ["packages/library/__tests__/**", "jsdom"],
       ["packages/control-panel/__tests__/**/*.tsx", "jsdom"],
+      ["tests/react-component-communication.spec.ts", "jsdom"],
+      ["tests/react-component-e2e.spec.ts", "jsdom"],
+      ["tests/react-component-theme-toggle.spec.ts", "jsdom"],
+      ["tests/react-component-theme-toggle-e2e.spec.ts", "jsdom"],
     ],
   },
   resolve: {

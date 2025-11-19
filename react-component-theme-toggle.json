@@ -1,0 +1,22 @@
+{
+  "component": {
+    "template": {
+      "tag": "div",
+      "classes": ["rx-comp", "rx-react"],
+      "render": {
+        "strategy": "react"
+      },
+      "content": {
+        "reactCode": "export default function ThemeToggle(props) {\n  const [isDarkMode, setIsDarkMode] = React.useState(false);\n  \n  const handleThemeToggle = () => {\n    const newMode = !isDarkMode;\n    setIsDarkMode(newMode);\n    if (window.RenderX && window.RenderX.publish) {\n      window.RenderX.publish('react.component.theme.toggled', { \n        isDarkMode: newMode,\n        theme: newMode ? 'dark' : 'light'\n      });\n    }\n  };\n  \n  const bgColor = isDarkMode ? '#1e1e1e' : '#ffffff';\n  const textColor = isDarkMode ? '#ffffff' : '#000000';\n  const borderColor = isDarkMode ? '#444444' : '#cccccc';\n  const buttonBg = isDarkMode ? '#333333' : '#f0f0f0';\n  const buttonHoverBg = isDarkMode ? '#444444' : '#e0e0e0';\n  const borderStyle = '2px solid ' + borderColor;\n  \n  return (\n    <div style={{\n      padding: '20px',\n      border: borderStyle,\n      borderRadius: '8px',\n      backgroundColor: bgColor,\n      color: textColor,\n      transition: 'all 0.3s ease',\n      fontFamily: 'Arial, sans-serif',\n      maxWidth: '400px'\n    }}>\n      <h2 style={{ margin: '0 0 16px 0' }}>🎨 Theme Toggle</h2>\n      <p style={{ margin: '0 0 12px 0', fontSize: '14px' }}>\n        Current Theme: <strong>{isDarkMode ? '🌙 Dark Mode' : '☀️ Light Mode'}</strong>\n      </p>\n      <button \n        onClick={handleThemeToggle}\n        style={{\n          padding: '12px 24px',\n          fontSize: '16px',\n          fontWeight: 'bold',\n          border: borderStyle,\n          borderRadius: '6px',\n          backgroundColor: buttonBg,\n          color: textColor,\n          cursor: 'pointer',\n          transition: 'background-color 0.2s ease',\n          width: '100%',\n          boxSizing: 'border-box'\n        }}\n        onMouseEnter={(e) => e.target.style.backgroundColor = buttonHoverBg}\n        onMouseLeave={(e) => e.target.style.backgroundColor = buttonBg}\n      >\n        {isDarkMode ? '☀️ Switch to Light Mode' : '🌙 Switch to Dark Mode'}\n      </button>\n      <div style={{\n        marginTop: '16px',\n        padding: '12px',\n        backgroundColor: isDarkMode ? '#2a2a2a' : '#f5f5f5',\n        borderRadius: '4px',\n        fontSize: '12px',\n        opacity: 0.8\n      }}>\n        <p style={{ margin: '0' }}>✨ Click the button to toggle between light and dark themes</p>\n        <p style={{ margin: '4px 0 0 0' }}>📡 Theme changes are published to the conductor</p>\n      </div>\n    </div>\n  );\n}",
+        "props": {
+          "initialTheme": "light"
+        }
+      }
+    }
+  },
+  "position": {
+    "x": 150,
+    "y": 150
+  }
+}
+

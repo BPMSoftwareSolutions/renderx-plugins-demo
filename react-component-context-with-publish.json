@@ -1,0 +1,22 @@
+{
+  "component": {
+    "template": {
+      "tag": "div",
+      "classes": ["rx-comp", "rx-react"],
+      "render": {
+        "strategy": "react"
+      },
+      "content": {
+        "reactCode": "export default function Counter(props) {\n  const [count, setCount] = React.useState(0);\n  \n  const handleIncrement = () => {\n    const newCount = count + 1;\n    setCount(newCount);\n    // Publish event back to conductor\n    if (window.RenderX && window.RenderX.publish) {\n      window.RenderX.publish('react.component.counter.incremented', { count: newCount });\n    }\n  };\n  \n  const handleReset = () => {\n    setCount(0);\n    // Publish event back to conductor\n    if (window.RenderX && window.RenderX.publish) {\n      window.RenderX.publish('react.component.counter.reset', { count: 0 });\n    }\n  };\n  \n  return (\n    <div style={{ padding: '16px', border: '1px solid #ccc', borderRadius: '4px' }}>\n      <h3>React Counter</h3>\n      <p>Count: {count}</p>\n      <button onClick={handleIncrement} style={{ padding: '8px 16px', marginRight: '8px' }}>\n        Increment\n      </button>\n      <button onClick={handleReset} style={{ padding: '8px 16px' }}>\n        Reset\n      </button>\n      <p style={{ marginTop: '12px', fontSize: '12px', color: '#666' }}>\n        Try clicking the buttons to test interactivity!\n      </p>\n    </div>\n  );\n}",
+        "props": {
+          "initialCount": 0
+        }
+      }
+    }
+  },
+  "position": {
+    "x": 100,
+    "y": 100
+  }
+}
+

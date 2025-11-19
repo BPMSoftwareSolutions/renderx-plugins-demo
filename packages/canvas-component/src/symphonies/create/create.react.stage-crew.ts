@@ -1,5 +1,6 @@
 import React, { startTransition } from "react";
 import { createRoot } from "react-dom/client";
+import { validateReactCode } from "./react-code-validator";
 // (EventRouter publish removed for test determinism when no conductor)
 
 // Track React roots for cleanup
@@ -43,6 +44,12 @@ export const renderReact = async (data: any, ctx: any) => {
     // Expose EventRouter to React components for inter-component communication
     if (ctx.conductor) {
       exposeEventRouterToReact(ctx.conductor);
+    }
+
+    // Validate React code before compilation
+    const validation = validateReactCode(reactCode);
+    if (!validation.valid) {
+      throw new Error(`React code validation failed:\n${validation.errors.join('\n')}`);
     }
 
     // Compile the React code with props injection

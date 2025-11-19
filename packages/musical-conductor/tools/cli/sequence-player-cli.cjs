@@ -33,14 +33,77 @@ switch (command) {
     break;
 
   case "list":
-    console.log("🎵 Available Sequences");
-    console.log("═══════════════════════════════════════════════════════════════");
-    console.log("ID                              Name                    Beats");
-    console.log("───────────────────────────────────────────────────────────────");
-    console.log("canvas-component-create         Canvas Component Create 6");
-    console.log("canvas-component-delete         Canvas Component Delete 4");
-    console.log("control-panel-ui-init           Control Panel UI Init   8");
-    console.log("library-drop-canvas-component   Library Drop Component  5");
+    // Query conductor for available sequences
+    (async function () {
+      const WebSocket = require('ws');
+      const ports = [5173, 5174, 5175, 5176, 5177];
+      let socket = null;
+
+      for (const port of ports) {
+        try {
+          socket = new WebSocket(`ws://localhost:${port}/conductor-ws`);
+          await new Promise((resolve, reject) => {
+            socket.once('open', resolve);
+            socket.once('error', reject);
+            setTimeout(() => reject(new Error('timeout')), 2000);
+          });
+          break;
+        } catch (err) {
+          socket = null;
+        }
+      }
+
+      if (!socket) {
+        console.error('❌ Could not connect to conductor on any port');
+        process.exit(1);
+      }
+
+      const commandId = `list-${Date.now()}`;
+      socket.send(JSON.stringify({
+        type: 'list-sequences',
+        id: commandId
+      }));
+
+      let responseReceived = false;
+      const timeout = setTimeout(() => {
+        if (!responseReceived) {
+          console.error('❌ Timeout waiting for sequence list (5s)');
+          process.exit(1);
+        }
+      }, 5000);
+
+      socket.on('message', (data) => {
+        try {
+          const msg = JSON.parse(data.toString());
+
+          if (msg.type === 'sequences-list' && msg.id === commandId) {
+            responseReceived = true;
+            clearTimeout(timeout);
+
+            console.log("🎵 Available Sequences");
+            console.log("═══════════════════════════════════════════════════════════════");
+            console.log("ID                              Name                    Beats");
+            console.log("───────────────────────────────────────────────────────────────");
+
+            if (msg.sequences && msg.sequences.length > 0) {
+              msg.sequences.forEach(seq => {
+                const id = seq.id.padEnd(30);
+                const name = (seq.name || seq.id).padEnd(23);
+                const beats = seq.beats || 0;
+                console.log(`${id} ${name} ${beats}`);
+              });
+            } else {
+              console.log("No sequences available");
+            }
+
+            socket.close();
+            process.exit(0);
+          }
+        } catch (e) {
+          // Ignore parse errors
+        }
+      });
+    })();
     break;
 
   case "play":
@@ -101,18 +164,51 @@ switch (command) {
         }
       }
 
+      const commandId = `cli-${Date.now()}`;
+      const startTime = Date.now();
+
       socket.send(JSON.stringify({
         type: 'play',
         pluginId,
         sequenceId: parsedArgs.sequence,
         context,
-        id: `cli-${Date.now()}`
+        id: commandId
       }));
+
+      let responseReceived = false;
+      const timeout = setTimeout(() => {
+        if (!responseReceived) {
+          console.error('❌ Timeout waiting for sequence response (30s)');
+          process.exit(1);
+        }
+      }, 30000);
 
       socket.on('message', (data) => {
         try {
           const msg = JSON.parse(data.toString());
-          console.log('WS RECV>', msg);
+
+          // Check if this is the response to our play command
+          if (msg.type === 'play-result' && msg.id === commandId) {
+            responseReceived = true;
+            clearTimeout(timeout);
+
+            const duration = Date.now() - startTime;
+            console.log(`\n✅ Sequence completed in ${duration}ms`);
+            console.log('Result:', JSON.stringify(msg.result, null, 2));
+
+            if (msg.success) {
+              console.log('Status: SUCCESS');
+              process.exit(0);
+            } else {
+              console.error('Status: FAILED');
+              console.error('Error:', msg.error);
+              process.exit(1);
+            }
+          } else if (msg.type === 'ack' && msg.id === commandId) {
+            console.log('✓ Command acknowledged by server');
+          } else {
+            console.log('WS RECV>', msg);
+          }
         } catch (e) {
           console.log('WS RAW>', data.toString());
         }
