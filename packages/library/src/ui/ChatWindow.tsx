@@ -25,8 +25,18 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const messageCounterRef = useRef<number>(0);
 
   const configStatus = openaiService.getConfigStatus();
+
+  /**
+   * Generate a unique message ID using timestamp and counter
+   * Ensures uniqueness even when messages are created in rapid succession
+   */
+  const generateMessageId = (prefix: string): string => {
+    messageCounterRef.current += 1;
+    return `${prefix}-${Date.now()}-${messageCounterRef.current}`;
+  };
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -99,7 +109,7 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
 
     // Add user message
     const userMessage: ChatMessage = {
-      id: `user-${Date.now()}`,
+      id: generateMessageId('user'),
       role: 'user',
       content: prompt,
       timestamp: Date.now()
@@ -117,7 +127,7 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
 
       // Add AI response
       const aiMessage: ChatMessage = {
-        id: `ai-${Date.now()}`,
+        id: generateMessageId('ai'),
         role: 'assistant',
         content: result.explanation,
         timestamp: Date.now(),
@@ -130,7 +140,7 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
       
       // Add error message
       const errorMessage: ChatMessage = {
-        id: `error-${Date.now()}`,
+        id: generateMessageId('error'),
         role: 'assistant',
         content: error.message || 'Sorry, I encountered an error while generating the component. Please try again.',
         timestamp: Date.now(),
@@ -167,7 +177,7 @@ export function ChatWindow({ isOpen, onClose, onComponentGenerated }: ChatWindow
       });
 
       const aiMessage: ChatMessage = {
-        id: `ai-regen-${Date.now()}`,
+        id: generateMessageId('ai-regenerated'),
         role: 'assistant',
         content: `Here's an improved version: ${result.explanation}`,
         timestamp: Date.now(),

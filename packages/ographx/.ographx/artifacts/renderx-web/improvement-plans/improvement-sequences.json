@@ -1,0 +1,695 @@
+{
+  "version": "1.0.0",
+  "generated": "2025-11-18T10:25:22.316796",
+  "description": "TDD/BDD improvement plan sequences for renderx-web",
+  "sequences": [
+    {
+      "id": "imp_master_plan",
+      "name": "Master Improvement Plan - Q1 2025",
+      "description": "Comprehensive plan to reduce complexity in top 5 bottleneck functions",
+      "category": "improvement",
+      "key": "C Major",
+      "tempo": 100,
+      "timeSignature": "4/4",
+      "metadata": {
+        "totalFunctions": 5,
+        "totalCurrentCalls": 343,
+        "totalTargetCalls": 193,
+        "estimatedImprovement": "~30%",
+        "created": "2025-11-18T10:25:22.315796",
+        "version": "1.0.0"
+      },
+      "movements": [
+        {
+          "id": "mov_1_planning",
+          "name": "Planning & Analysis",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "plan:analyze",
+              "title": "Analyze bottlenecks",
+              "description": "Identify top 5 functions by call count",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "plan:estimate",
+              "title": "Estimate improvements",
+              "description": "Calculate potential time savings",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "plan:prioritize",
+              "title": "Prioritize improvements",
+              "description": "Order by impact and effort",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_implementation",
+          "name": "Implementation",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "impl:extractPatterns",
+              "title": "Refactor extractPatterns",
+              "description": "Reduce from 101 to 50 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "impl:updateSize",
+              "title": "Optimize updateSize",
+              "description": "Reduce from 63 to 30 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "impl:ChatWindow",
+              "title": "Refactor ChatWindow",
+              "description": "Reduce from 62 to 35 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "impl:recomputeLineSvg",
+              "title": "Optimize recomputeLineSvg",
+              "description": "Reduce from 61 to 35 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 5,
+              "event": "impl:generatePresentationJS",
+              "title": "Refactor generatePresentationJS",
+              "description": "Reduce from 56 to 30 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_validation",
+          "name": "Validation & Testing",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:unit",
+              "title": "Run unit tests",
+              "description": "Assert all tests pass",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:integration",
+              "title": "Run integration tests",
+              "description": "Assert system works end-to-end",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:performance",
+              "title": "Performance testing",
+              "description": "Verify 20%+ improvement",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_4_deployment",
+          "name": "Deployment",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "deploy:staging",
+              "title": "Deploy to staging",
+              "description": "Verify staging deployment",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "deploy:production",
+              "title": "Deploy to production",
+              "description": "Verify production deployment",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imp_extractPatterns",
+      "name": "Refactor extractPatterns - Reduce Complexity",
+      "description": "Break down extractPatterns from 101 calls to 50 calls using function extraction",
+      "category": "improvement",
+      "key": "C Major",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "metadata": {
+        "targetFunction": "extractPatterns",
+        "currentCalls": 101,
+        "targetCalls": 50,
+        "estimatedImprovement": "50.5%",
+        "created": "2025-11-18T10:25:22.315796",
+        "version": "1.0.0"
+      },
+      "movements": [
+        {
+          "id": "mov_1_analysis",
+          "name": "Analysis & Baseline",
+          "description": "Analysis & Baseline phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:baseline",
+              "title": "Measure current performance",
+              "description": "Assert extractPatterns makes 101 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:profile",
+              "title": "Profile execution time",
+              "description": "Assert execution time < 1000ms",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:coverage",
+              "title": "Verify test coverage",
+              "description": "Assert coverage > 80%",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_refactoring",
+          "name": "Refactoring",
+          "description": "Refactoring phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "refactor:extract_pattern_detection",
+              "title": "Extract pattern detection logic",
+              "description": "Move pattern detection to separate function",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "refactor:extract_validation",
+              "title": "Extract validation logic",
+              "description": "Move validation to separate function",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "refactor:extract_transformation",
+              "title": "Extract transformation logic",
+              "description": "Move transformation to separate function",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "refactor:add_caching",
+              "title": "Add result caching",
+              "description": "Cache pattern detection results",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_validation",
+          "name": "Validation & Verification",
+          "description": "Validation & Verification phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:calls",
+              "title": "Verify call reduction",
+              "description": "Assert extractPatterns makes <= 50 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:performance",
+              "title": "Verify performance improvement",
+              "description": "Assert execution time improved by >= 20%",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:regression",
+              "title": "Run regression tests",
+              "description": "Assert all existing tests pass",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "test:integration",
+              "title": "Integration testing",
+              "description": "Assert component works in full system",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_4_deployment",
+          "name": "Deployment & Monitoring",
+          "description": "Deployment & Monitoring phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "deploy:staging",
+              "title": "Deploy to staging",
+              "description": "Verify staging deployment successful",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "monitor:metrics",
+              "title": "Monitor metrics",
+              "description": "Verify performance metrics in staging",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "deploy:production",
+              "title": "Deploy to production",
+              "description": "Verify production deployment successful",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "monitor:production",
+              "title": "Monitor production",
+              "description": "Verify metrics in production",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imp_updateSize",
+      "name": "Optimize updateSize - Reduce Complexity",
+      "description": "Break down updateSize from 63 calls to 30 calls using lazy evaluation",
+      "category": "improvement",
+      "key": "C Major",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "metadata": {
+        "targetFunction": "updateSize",
+        "currentCalls": 63,
+        "targetCalls": 30,
+        "estimatedImprovement": "52.4%",
+        "created": "2025-11-18T10:25:22.315796",
+        "version": "1.0.0"
+      },
+      "movements": [
+        {
+          "id": "mov_1_analysis",
+          "name": "Analysis & Baseline",
+          "description": "Analysis & Baseline phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:baseline",
+              "title": "Measure current performance",
+              "description": "Assert updateSize makes 63 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:profile",
+              "title": "Profile execution time",
+              "description": "Assert execution time < 1000ms",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:coverage",
+              "title": "Verify test coverage",
+              "description": "Assert coverage > 80%",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_refactoring",
+          "name": "Refactoring",
+          "description": "Refactoring phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "refactor:lazy_evaluation",
+              "title": "Implement lazy evaluation",
+              "description": "Only compute sizes when needed",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "refactor:extract_calculation",
+              "title": "Extract size calculation",
+              "description": "Move calculation to separate function",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "refactor:memoization",
+              "title": "Add memoization",
+              "description": "Cache size calculations",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_validation",
+          "name": "Validation & Verification",
+          "description": "Validation & Verification phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:calls",
+              "title": "Verify call reduction",
+              "description": "Assert updateSize makes <= 30 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:performance",
+              "title": "Verify performance improvement",
+              "description": "Assert execution time improved by >= 20%",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:regression",
+              "title": "Run regression tests",
+              "description": "Assert all existing tests pass",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "test:integration",
+              "title": "Integration testing",
+              "description": "Assert component works in full system",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_4_deployment",
+          "name": "Deployment & Monitoring",
+          "description": "Deployment & Monitoring phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "deploy:staging",
+              "title": "Deploy to staging",
+              "description": "Verify staging deployment successful",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "monitor:metrics",
+              "title": "Monitor metrics",
+              "description": "Verify performance metrics in staging",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "deploy:production",
+              "title": "Deploy to production",
+              "description": "Verify production deployment successful",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "monitor:production",
+              "title": "Monitor production",
+              "description": "Verify metrics in production",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "imp_ChatWindow",
+      "name": "Refactor ChatWindow - Reduce Complexity",
+      "description": "Break down ChatWindow from 62 calls to 35 calls using component extraction",
+      "category": "improvement",
+      "key": "C Major",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "metadata": {
+        "targetFunction": "ChatWindow",
+        "currentCalls": 62,
+        "targetCalls": 35,
+        "estimatedImprovement": "43.5%",
+        "created": "2025-11-18T10:25:22.315796",
+        "version": "1.0.0"
+      },
+      "movements": [
+        {
+          "id": "mov_1_analysis",
+          "name": "Analysis & Baseline",
+          "description": "Analysis & Baseline phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:baseline",
+              "title": "Measure current performance",
+              "description": "Assert ChatWindow makes 62 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:profile",
+              "title": "Profile execution time",
+              "description": "Assert execution time < 1000ms",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:coverage",
+              "title": "Verify test coverage",
+              "description": "Assert coverage > 80%",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_2_refactoring",
+          "name": "Refactoring",
+          "description": "Refactoring phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "refactor:extract_header",
+              "title": "Extract header component",
+              "description": "Move header rendering to separate component",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "refactor:extract_messages",
+              "title": "Extract messages component",
+              "description": "Move message rendering to separate component",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "refactor:extract_input",
+              "title": "Extract input component",
+              "description": "Move input handling to separate component",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_3_validation",
+          "name": "Validation & Verification",
+          "description": "Validation & Verification phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "test:calls",
+              "title": "Verify call reduction",
+              "description": "Assert ChatWindow makes <= 35 calls",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "test:performance",
+              "title": "Verify performance improvement",
+              "description": "Assert execution time improved by >= 20%",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "test:regression",
+              "title": "Run regression tests",
+              "description": "Assert all existing tests pass",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "test:integration",
+              "title": "Integration testing",
+              "description": "Assert component works in full system",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        },
+        {
+          "id": "mov_4_deployment",
+          "name": "Deployment & Monitoring",
+          "description": "Deployment & Monitoring phase of improvement",
+          "beats": [
+            {
+              "beat": 1,
+              "event": "deploy:staging",
+              "title": "Deploy to staging",
+              "description": "Verify staging deployment successful",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 2,
+              "event": "monitor:metrics",
+              "title": "Monitor metrics",
+              "description": "Verify performance metrics in staging",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 3,
+              "event": "deploy:production",
+              "title": "Deploy to production",
+              "description": "Verify production deployment successful",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            },
+            {
+              "beat": 4,
+              "event": "monitor:production",
+              "title": "Monitor production",
+              "description": "Verify metrics in production",
+              "dynamics": "mf",
+              "timing": "immediate",
+              "errorHandling": "abort-sequence"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
