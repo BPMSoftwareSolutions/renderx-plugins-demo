@@ -61,13 +61,11 @@ export function validateReactCode(code: string): ValidationResult {
 
   // Check for common JSX issues
   if (code.includes('<') && code.includes('>')) {
-    // Check for unclosed JSX tags
-    const jsxTagRegex = /<([A-Z][a-zA-Z0-9]*|[a-z]+)(?:\s[^>]*)?\s*\/?\s*>/g;
     const openTags = code.match(/<([A-Z][a-zA-Z0-9]*|[a-z]+)(?:\s[^>]*)?\s*(?<!\/)\s*>/g) || [];
     const closeTags = code.match(/<\/([A-Z][a-zA-Z0-9]*|[a-z]+)\s*>/g) || [];
-    
+
     if (openTags.length !== closeTags.length) {
-      warnings.push('Possible unclosed JSX tags detected');
+      errors.push('Unmatched JSX tags: possible unclosed or extra closing tags');
     }
   }
 

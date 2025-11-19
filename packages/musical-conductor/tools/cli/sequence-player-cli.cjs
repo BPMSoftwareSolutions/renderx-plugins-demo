@@ -165,34 +165,66 @@ switch (command) {
       }
 
       const commandId = `cli-${Date.now()}`;
-      const startTime = Date.now();
-
-      socket.send(JSON.stringify({
-        type: 'play',
-        pluginId,
-        sequenceId: parsedArgs.sequence,
-        context,
-        id: commandId
-      }));
-
+      const handshakeId = `eval-${Date.now()}`;
       let responseReceived = false;
-      const timeout = setTimeout(() => {
-        if (!responseReceived) {
-          console.error('❌ Timeout waiting for sequence response (30s)');
+      let playSent = false;
+      let sequenceTimeout = null;
+      let startTime = 0;
+
+      const hostReadyTimeout = setTimeout(() => {
+        if (!playSent) {
+          console.error('❌ No active browser host detected for conductor.');
+          console.error('   Make sure the app is open in a browser and fully loaded, then retry.');
           process.exit(1);
         }
-      }, 30000);
+      }, 5000);
+
+      function sendPlay() {
+        if (playSent) return;
+        playSent = true;
+        startTime = Date.now();
+        clearTimeout(hostReadyTimeout);
+        socket.send(JSON.stringify({
+          type: 'play',
+          pluginId,
+          sequenceId: parsedArgs.sequence,
+          context,
+          id: commandId
+        }));
+
+        sequenceTimeout = setTimeout(() => {
+          if (!responseReceived) {
+            console.error('❌ Timeout waiting for sequence response (30s)');
+            process.exit(1);
+          }
+        }, 30000);
+      }
 
       socket.on('message', (data) => {
         try {
           const msg = JSON.parse(data.toString());
 
+          // Handshake: ensure browser host + conductor are ready before sending play
+          if (msg.type === 'eval-result' && msg.id === handshakeId) {
+            if (!msg.success || !msg.result) {
+              clearTimeout(hostReadyTimeout);
+              console.error('❌ Browser host is connected but RenderX.conductor is not ready.');
+              console.error('   Wait for the app to finish initializing and try again.');
+              process.exit(1);
+            }
+            console.log('✓ Browser host and conductor are ready');
+            sendPlay();
+            return;
+          }
+
           // Check if this is the response to our play command
           if (msg.type === 'play-result' && msg.id === commandId) {
             responseReceived = true;
-            clearTimeout(timeout);
+            if (sequenceTimeout) {
+              clearTimeout(sequenceTimeout);
+            }
 
-            const duration = Date.now() - startTime;
+            const duration = startTime ? (Date.now() - startTime) : 0;
             console.log(`\n✅ Sequence completed in ${duration}ms`);
             console.log('Result:', JSON.stringify(msg.result, null, 2));
 
@@ -213,6 +245,13 @@ switch (command) {
           console.log('WS RAW>', data.toString());
         }
       });
+
+      // Kick off a small eval to verify the browser host is initialized
+      socket.send(JSON.stringify({
+        type: 'eval',
+        id: handshakeId,
+        code: "typeof window !== 'undefined' && !!(window.RenderX && window.RenderX.conductor && window.RenderX.conductor.play)",
+      }));
     })();
     break;
 
@@ -283,8 +322,13 @@ switch (command) {
               const level = (event.level || '').toUpperCase();
               const source = event.source || 'Unknown';
               const message = event.message || '';
+              const topic = (event.data && (event.data.topic || event.data.eventName)) || '';
               const prefix = `[${ts}] [${source}] ${level}`;
-              console.log(`${prefix} ${message}`);
+              if (topic) {
+                console.log(`${prefix} [${topic}] ${message}`);
+              } else {
+                console.log(`${prefix} ${message}`);
+              }
             }
             if (parsedArgs.verbose && event.data) {
               try {

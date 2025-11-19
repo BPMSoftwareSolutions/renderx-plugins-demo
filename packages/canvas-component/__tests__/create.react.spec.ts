@@ -19,7 +19,19 @@ vi.mock("react-dom/client", () => ({
   })),
 }));
 
+vi.mock("@babel/standalone", () => ({
+  // Return already-transformed, JSX-free code so compileReactCode can evaluate it
+  // without hitting a SyntaxError on "<". We still assert on the original
+  // source passed *into* transform in dedicated tests.
+  transform: vi.fn((code: string) => ({
+    code: `export default function MockComponent(props) {
+      return React.createElement("div", null, "Mock JSX");
+    }`,
+  })),
+}));
+
 import { renderReact, cleanupReactRoot } from "../src/symphonies/create/create.react.stage-crew";
+import * as Babel from "@babel/standalone";
 // import React from "react";
 import { createRoot } from "react-dom/client";
 
@@ -113,6 +125,27 @@ describe("renderReact handler", () => {
     expect(mockCreateRoot).toHaveBeenCalledWith(container);
     expect(mockRender).toHaveBeenCalled();
     expect(ctx.payload.reactRendered).toBe(true);
+  });
+
+  it("uses JSX transformer before evaluating React code", () => {
+    const container = document.createElement("div");
+    container.id = "rx-node-test123";
+    document.body.appendChild(container);
+
+    const ctx = makeCtx();
+    const template = makeReactTemplate(
+      "export default function Hello() { return <div>JSX Test</div>; }"
+    );
+    ctx.payload.template = template;
+
+    renderReact({}, ctx);
+
+    const standalone = Babel as any;
+    const transformMock = standalone.transform as any;
+    expect(transformMock).toHaveBeenCalled();
+    const [source, options] = transformMock.mock.calls[0];
+    expect(source).toContain("<div>JSX Test</div>");
+    expect(options.presets).toContain("react");
   });
 
   it("handles compilation errors gracefully", () => {

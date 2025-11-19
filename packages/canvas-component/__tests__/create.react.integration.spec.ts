@@ -19,6 +19,17 @@ vi.mock("react-dom/client", () => ({
   })),
 }));
 
+vi.mock("@babel/standalone", () => ({
+  // Return already-transformed, JSX-free code so compileReactCode can evaluate it
+  // without hitting a SyntaxError on "<". We still assert on the original
+  // source passed *into* transform in unit tests.
+  transform: vi.fn((code: string) => ({
+    code: `export default function MockComponent(props) {
+      return React.createElement("div", null, "Mock JSX");
+    }`,
+  })),
+}));
+
 import { handlers as createHandlers } from "../src/symphonies/create/create.symphony";
 import { createRoot } from "react-dom/client";
 

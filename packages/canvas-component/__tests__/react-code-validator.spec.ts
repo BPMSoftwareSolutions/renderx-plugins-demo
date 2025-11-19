@@ -107,6 +107,15 @@ describe('React Code Validator', () => {
       expect(result.valid).toBe(false);
       expect(result.errors.some(e => e.includes('Typo'))).toBe(true);
     });
+
+    it('should detect unclosed JSX tags as invalid', () => {
+      const code = `export default function Broken() {
+        return <div><span>Missing close</div>;
+      }`;
+      const result = validateReactCode(code);
+      expect(result.valid).toBe(false);
+      expect(result.errors.some(e => e.toLowerCase().includes('jsx'))).toBe(true);
+    });
   });
 
   describe('Invalid React Code - Empty/Invalid Input', () => {
