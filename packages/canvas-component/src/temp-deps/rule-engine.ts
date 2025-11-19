@@ -279,6 +279,32 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
         prop: "lineHeight",
       },
     ],
+    react: [
+      // Back-compat: legacy 'code' mapping (no-op for canvas updates)
+      { whenAttr: "code", action: "innerHtml" },
+      // Control Panel schema coverage: persist edited React code/props on the node
+      // Use data-* attributes to avoid side-effects during live canvas updates.
+      { whenAttr: "reactCode", action: "attr", attr: "data-react-code" },
+      { whenAttr: "props", action: "attr", attr: "data-react-props" },
+      // Generic style/content fallbacks (harmless for react container)
+      { whenAttr: "content", action: "textContent" },
+      { whenAttr: "color", action: "style", prop: "color" },
+      { whenAttr: "fontSize", action: "style", prop: "fontSize" },
+      { whenAttr: "lineHeight", action: "style", prop: "lineHeight" },
+    ],
+    react: [
+      // Back-compat: legacy 'code' mapping (no-op for canvas updates)
+      { whenAttr: "code", action: "innerHtml" },
+      // Control Panel schema coverage: persist edited React code/props on the node
+      // Use data-* attributes to avoid side-effects during live canvas updates.
+      { whenAttr: "reactCode", action: "attr", attr: "data-react-code" },
+      { whenAttr: "props", action: "attr", attr: "data-react-props" },
+      // Generic style/content fallbacks (harmless for react container)
+      { whenAttr: "content", action: "textContent" },
+      { whenAttr: "color", action: "style", prop: "color" },
+      { whenAttr: "fontSize", action: "style", prop: "fontSize" },
+      { whenAttr: "lineHeight", action: "style", prop: "lineHeight" },
+    ],
     html: [{ whenAttr: "markup", action: "innerHtml" }],
   },
 };

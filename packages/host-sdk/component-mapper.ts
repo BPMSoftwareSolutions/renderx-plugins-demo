@@ -27,6 +27,7 @@ const DEFAULT_CONFIG: MapperConfig = {
       { when: "metadata.type == 'line'", tag: "svg" },
       { when: "metadata.type == 'svg'", tag: "svg" },
       { when: "metadata.type == 'paragraph'", tag: "p" },
+      { when: "metadata.type == 'react'", tag: "div" },
       {
         when: "metadata.type == 'heading'",
         tagFrom: {

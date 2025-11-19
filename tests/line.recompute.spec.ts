@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { recomputeLineSvg } from '../packages/canvas-component/src/symphonies/augment/line.recompute.stage-crew';
 
 // Ensure this test file runs in the jsdom environment so `document`/`window` are available

@@ -281,26 +281,17 @@ const DEFAULT_UPDATE_RULES: UpdateRulesConfig = {
 			},
 		],
 			react: [
+				// Back-compat: legacy 'code' mapping (no-op for canvas updates)
 				{ whenAttr: 'code', action: 'innerHtml' },
-				{
-					whenAttr: 'content',
-					action: 'textContent',
-				},
-				{
-					whenAttr: 'color',
-					action: 'style',
-					prop: 'color',
-				},
-				{
-					whenAttr: 'fontSize',
-					action: 'style',
-					prop: 'fontSize',
-				},
-				{
-					whenAttr: 'lineHeight',
-					action: 'style',
-					prop: 'lineHeight',
-				},
+				// Control Panel schema coverage: persist edited React code/props on the node
+				// Use data-* attributes to avoid side-effects during live canvas updates.
+				{ whenAttr: 'reactCode', action: 'attr', attr: 'data-react-code' },
+				{ whenAttr: 'props', action: 'attr', attr: 'data-react-props' },
+				// Generic style/content fallbacks (harmless for react container)
+				{ whenAttr: 'content', action: 'textContent' },
+				{ whenAttr: 'color', action: 'style', prop: 'color' },
+				{ whenAttr: 'fontSize', action: 'style', prop: 'fontSize' },
+				{ whenAttr: 'lineHeight', action: 'style', prop: 'lineHeight' },
 			],
 
 		html: [{ whenAttr: 'markup', action: 'innerHtml' }],
@@ -481,7 +472,12 @@ const DEFAULT_EXTRACT_RULES: ExtractRulesConfig = {
 			{ get: 'style', prop: 'lineHeight', as: 'lineHeight' },
 		],
 			react: [
+				// Back-compat
 				{ get: 'innerHtml', as: 'code' },
+				// Bidirectional coverage for control panel properties
+				{ get: 'attr', attr: 'data-react-code', as: 'reactCode' },
+				{ get: 'attr', attr: 'data-react-props', as: 'props' },
+				// Generic style/content fallbacks
 				{ get: 'textContent', as: 'content' },
 				{ get: 'style', prop: 'color', as: 'color' },
 				{ get: 'style', prop: 'fontSize', as: 'fontSize' },

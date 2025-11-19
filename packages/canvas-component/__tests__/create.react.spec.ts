@@ -31,7 +31,7 @@ const mockUnmount = vi.fn();
 function makeReactTemplate(code: string) {
   return {
     render: { strategy: "react" },
-    react: { code },
+    content: { reactCode: code, props: {} },
     tag: "div",
     classes: ["rx-comp", "rx-react"],
     style: { width: 240, height: 120 },

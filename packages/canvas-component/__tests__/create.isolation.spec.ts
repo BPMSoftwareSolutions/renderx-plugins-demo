@@ -34,7 +34,7 @@ function makeCtx() {
   return {
     payload: {},
     io: { kv: { put: kvPut } },
-    conductor: {},
+    conductor: { publish: vi.fn() },
     logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
     _ops: kvOps,
   } as any;
@@ -54,7 +54,7 @@ function divTemplate() {
 function reactTemplate() {
   return {
     render: { strategy: 'react' },
-    react: { code: 'export default function Hello(){ return <div>Hi</div> }' },
+    content: { reactCode: 'export default function Hello(){ return <div>Hi</div> }', props: {} },
     tag: 'div',
     classes: ['rx-comp', 'rx-react'],
     dimensions: { width: 120, height: 60 },

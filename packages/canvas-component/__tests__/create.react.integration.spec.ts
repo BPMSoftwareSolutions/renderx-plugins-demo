@@ -30,8 +30,9 @@ const mockUnmount = vi.fn();
 function makeReactComponentTemplate() {
   return {
     render: { strategy: "react" },
-    react: {
-      code: "export default function Hello(){ return <div style={{padding:8}}>Hello React</div> }"
+    content: {
+      reactCode: "export default function Hello(){ return <div style={{padding:8}}>Hello React</div> }",
+      props: {}
     },
     tag: "div",
     classes: ["rx-comp", "rx-react"],
@@ -141,8 +142,8 @@ describe("React Component Integration Tests", () => {
     const ctx = makeCtx();
     const template = {
       render: { strategy: "react" },
-      react: {
-        code: `
+      content: {
+        reactCode: `
           export default function ComplexComponent() {
             return (
               <div style={{padding: '16px', border: '1px solid #ccc'}}>
@@ -152,7 +153,8 @@ describe("React Component Integration Tests", () => {
               </div>
             );
           }
-        `
+        `,
+        props: {}
       },
       tag: "div",
       classes: ["rx-comp", "rx-react"],
@@ -187,8 +189,9 @@ describe("React Component Integration Tests", () => {
     const ctx = makeCtx();
     const template = {
       render: { strategy: "react" },
-      react: {
-        code: "export default function Hello() { return <div>Hello</div>; }"
+      content: {
+        reactCode: "export default function Hello() { return <div>Hello</div>; }",
+        props: {}
       },
       tag: "div",
       classes: ["rx-comp", "rx-react"],

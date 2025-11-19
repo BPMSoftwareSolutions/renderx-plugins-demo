@@ -15,6 +15,7 @@ export type RuntimeTemplate = {
   dimensions?: { width?: number; height?: number };
   style?: Record<string, string>;
   content?: any;
+  render?: { strategy?: string };
 };
 
 export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
@@ -94,6 +95,8 @@ export function mapJsonComponentToTemplate(json: any): RuntimeTemplate {
         : {}),
     },
     ...(defaults && Object.keys(defaults).length ? { content: defaults } : {}),
+    // Pass render strategy if specified in integration config
+    ...(json?.integration?.render ? { render: json.integration.render } : {}),
     dimensions: { width: ci.defaultWidth, height: ci.defaultHeight },
     style: {
       ...(type === "image" && defaults?.objectFit

@@ -1,0 +1,6 @@
+{
+  "id": "rx-node-0q2i5d",
+  "attribute": "reactCode",
+  "value": "export default function HelloWorld() {\n  const [color, setColor] = React.useState('green');\n  return (\n    <div style={{ padding: '20px', textAlign: 'center' }}>\n      <h1 style={{ color }}>Hello World</h1>\n      <button onClick={() => setColor('orange')} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>\n        Change to Orange\n      </button>\n    </div>\n  );\n}"
+}
+
