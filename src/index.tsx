@@ -99,7 +99,18 @@ declare const __CONFIG_OPENAI_MODEL__: string | undefined;
           anyWindow.__RENDERX_DIAG_HMR_ATTACHED = true;
           addDiagnosticListener((event: any) => {
             try {
-              ((import.meta as any).hot as any).send('diagnostics:event', event);
+              let payload: any = event;
+              try {
+                JSON.stringify(payload);
+              } catch {
+                payload = {
+                  timestamp: event.timestamp,
+                  level: event.level,
+                  source: event.source,
+                  message: event.message,
+                };
+              }
+              ((import.meta as any).hot as any).send('diagnostics:event', payload);
             } catch {}
           });
         }

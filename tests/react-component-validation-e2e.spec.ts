@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { spawn } from 'child_process';
+import { spawn as _spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
 describe('React Component Validation E2E', () => {
   let conductorProcess: any;
-  let componentCreated = false;
+  let _componentCreated = false;
 
   beforeAll(async () => {
     // Wait for dev server to be ready
@@ -36,8 +36,8 @@ describe('React Component Validation E2E', () => {
     expect(reactCode).toContain('useState');
     expect(reactCode).toContain('handleThemeToggle');
     expect(reactCode).toContain('window.RenderX.publish');
-    
-    componentCreated = true;
+
+    _componentCreated = true;
   });
 
   it('should have valid React code syntax', async () => {

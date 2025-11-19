@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import React from 'react';
 
 describe('React Theme Toggle Component - E2E', () => {
   let mockConductor: any;

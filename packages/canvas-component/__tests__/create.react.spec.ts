@@ -23,7 +23,7 @@ vi.mock("@babel/standalone", () => ({
   // Return already-transformed, JSX-free code so compileReactCode can evaluate it
   // without hitting a SyntaxError on "<". We still assert on the original
   // source passed *into* transform in dedicated tests.
-  transform: vi.fn((code: string) => ({
+  transform: vi.fn((_code: string) => ({
     code: `export default function MockComponent(props) {
       return React.createElement("div", null, "Mock JSX");
     }`,

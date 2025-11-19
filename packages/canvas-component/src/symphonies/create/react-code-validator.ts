@@ -71,9 +71,8 @@ export function validateReactCode(code: string): ValidationResult {
 
   // Check for invalid arrow function syntax
   if (code.includes('=>')) {
-    const arrowFunctionRegex = /\([^)]*\)\s*=>\s*{/g;
     const invalidArrowRegex = /=>\s*(?!{|\(|[a-zA-Z_$])/g;
-    
+
     if (invalidArrowRegex.test(code)) {
       warnings.push('Possible invalid arrow function syntax');
     }

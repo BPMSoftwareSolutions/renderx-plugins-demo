@@ -17,6 +17,12 @@ vi.mock('react', () => ({
 vi.mock('react-dom/client', () => ({
   createRoot: vi.fn(() => ({ render: vi.fn(), unmount: vi.fn() })),
 }));
+// Speed up tests by bypassing heavy Babel transform; return pre-transformed code
+vi.mock('@babel/standalone', () => ({
+  transform: vi.fn((code: string) => ({
+    code: `export default function MockComponent(props){ return React.createElement('div', null, 'Mock JSX') }`,
+  })),
+}));
 
 import { handlers as createHandlers } from '../src/symphonies/create/create.symphony';
 import { createRoot } from 'react-dom/client';

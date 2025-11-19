@@ -16,15 +16,15 @@ describe('React Component E2E Communication', () => {
   beforeEach(() => {
     publishedEvents = [];
     mockConductor = {
-      publish: vi.fn((topic: string, data: any) => {
-        publishedEvents.push({ topic, data, timestamp: Date.now() });
+      publish: vi.fn((_topic: string, data: any) => {
+        publishedEvents.push({ topic: _topic, data, timestamp: Date.now() });
       }),
-      subscribe: vi.fn((topic: string, handler: any) => {
+      subscribe: vi.fn((_topic: string, _handler: any) => {
         // Mock subscription
       }),
-      play: vi.fn(async (pluginId: string, sequenceId: string, context: any) => {
+      play: vi.fn(async (_pluginId: string, _sequenceId: string, _context: any) => {
         // Simulate sequence execution
-        return `${sequenceId}-${Date.now()}`;
+        return `${_sequenceId}-${Date.now()}`;
       }),
     };
   });

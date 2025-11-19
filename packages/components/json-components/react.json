@@ -1,113 +1,153 @@
-{
-  "metadata": {
-    "type": "react",
-    "name": "React Component",
-    "version": "1.0.0",
-    "author": "RenderX Team",
-    "description": "Mount and run custom React code on the canvas with state management and inter-component communication",
-    "category": "advanced",
-    "tags": ["react", "dynamic", "interactive", "code", "jsx"]
-  },
-  "ui": {
-    "template": "<div class=\"rx-react-container\"></div>",
-    "styles": {
-      "css": ".rx-react-container { position: relative; background: #fafafa; border: 1px dashed #9ca3af; border-radius: 8px; padding: 8px; min-height: 100px; }",
-      "variables": {},
-      "library": {
-        "css": ".rx-lib .rx-react-container { background: #f5f7fb; border-color: #cbd5e1; width: 300px; height: 200px; }",
-        "variables": {}
-      }
-    },
-    "icon": { "mode": "emoji", "value": "⚛️", "position": "start" },
-    "tools": {
-      "drag": { "enabled": true },
-      "resize": {
-        "enabled": true,
-        "handles": ["e", "s", "se"],
-        "constraints": { "min": { "w": 150, "h": 100 } }
-      }
-    }
-  },
-  "integration": {
-    "render": {
-      "strategy": "react"
-    },
-    "properties": {
-      "schema": {
-        "reactCode": {
-          "type": "string",
-          "default": "export default function MyComponent() {\\n  return <div>Hello React!</div>;\\n}",
-          "description": "React component code (JSX)",
-          "required": true,
-          "ui": {
-            "control": "code",
-            "language": "javascript",
-            "rows": 12,
-            "placeholder": "export default function MyComponent() {\\n  return <div>Your JSX here</div>;\\n}"
-          }
-        },
-        "props": {
-          "type": "object",
-          "default": {},
-          "description": "Initial props to pass to the component",
-          "ui": { "control": "json" }
-        }
-      },
-      "defaultValues": {
-        "reactCode": "export default function MyComponent() {\\n  return <div>Hello React!</div>;\\n}",
-        "props": {}
-      }
-    },
-    "canvasIntegration": {
-      "resizable": true,
-      "draggable": true,
-      "selectable": true,
-      "defaultWidth": 400,
-      "defaultHeight": 300,
-      "minWidth": 150,
-      "minHeight": 100,
-      "allowChildElements": false
-    },
-    "events": {
-      "componentMounted": {
-        "description": "Fired when React component mounts",
-        "parameters": ["componentId", "timestamp"]
-      },
-      "componentError": {
-        "description": "Fired when React component encounters an error",
-        "parameters": ["componentId", "error", "errorInfo"]
-      },
-      "stateChanged": {
-        "description": "Fired when component state changes",
-        "parameters": ["componentId", "newState"]
-      }
-    }
-  },
-  "interactions": {
-    "canvas.component.create": {
-      "pluginId": "CanvasComponentPlugin",
-      "sequenceId": "canvas-component-create-symphony"
-    },
-    "canvas.component.select": {
-      "pluginId": "CanvasComponentSelectionPlugin",
-      "sequenceId": "canvas-component-select-symphony"
-    },
-    "canvas.component.drag.move": {
-      "pluginId": "CanvasComponentDragPlugin",
-      "sequenceId": "canvas-component-drag-symphony"
-    },
-    "canvas.component.resize.start": {
-      "pluginId": "CanvasComponentResizeStartPlugin",
-      "sequenceId": "canvas-component-resize-start-symphony"
-    },
-    "canvas.component.resize.move": {
-      "pluginId": "CanvasComponentResizeMovePlugin",
-      "sequenceId": "canvas-component-resize-move-symphony"
-    },
-    "canvas.component.resize.end": {
-      "pluginId": "CanvasComponentResizeEndPlugin",
-      "sequenceId": "canvas-component-resize-end-symphony"
-    }
-  }
-}
+﻿{
+    "metadata":  {
+                     "type":  "react",
+                     "name":  "React Component",
+                     "version":  "1.0.0",
+                     "author":  "RenderX Team",
+                     "description":  "Mount and run custom React code on the canvas with state management and inter-component communication",
+                     "category":  "advanced",
+                     "tags":  [
+                                  "react",
+                                  "dynamic",
+                                  "interactive",
+                                  "code",
+                                  "jsx"
+                              ]
+                 },
+    "ui":  {
+               "template":  "\u003cdiv class=\"rx-react-container\"\u003e\u003c/div\u003e",
+               "styles":  {
+                              "css":  ".rx-react-container { position: relative; background: #fafafa; border: 1px dashed #9ca3af; border-radius: 8px; padding: 8px; min-height: 100px; }",
+                              "variables":  {
 
+                                            },
+                              "library":  {
+                                              "css":  ".rx-lib .rx-react-container { background: #f5f7fb; border-color: #cbd5e1; width: 300px; height: 200px; }",
+                                              "variables":  {
+
+                                                            }
+                                          }
+                          },
+               "icon":  {
+                            "mode":  "emoji",
+                            "value":  "âš›ï¸",
+                            "position":  "start"
+                        },
+               "tools":  {
+                             "drag":  {
+                                          "enabled":  true
+                                      },
+                             "resize":  {
+                                            "enabled":  true,
+                                            "handles":  [
+                                                            "e",
+                                                            "s",
+                                                            "se"
+                                                        ],
+                                            "constraints":  {
+                                                                "min":  {
+                                                                            "h":  100,
+                                                                            "w":  150
+                                                                        }
+                                                            }
+                                        }
+                         }
+           },
+    "integration":  {
+                        "render":  {
+                                       "strategy":  "react"
+                                   },
+                        "properties":  {
+                                           "schema":  {
+                                                          "reactCode":  {
+                                                                            "type":  "string",
+                                                                            "default":  "export default function ThemeToggle(props) {\n  const [isDarkMode, setIsDarkMode] = React.useState(false);\n\n  const handleThemeToggle = () =\u003e {\n    const newMode = !isDarkMode;\n    setIsDarkMode(newMode);\n    if (window.RenderX \u0026\u0026 window.RenderX.publish) {\n      window.RenderX.publish(\u0027react.component.theme.toggled\u0027, {\n        isDarkMode: newMode,\n        theme: newMode ? \u0027dark\u0027 : \u0027light\u0027,\n      });\n    }\n  };\n\n  const bgColor = isDarkMode ? \u0027#1e1e1e\u0027 : \u0027#ffffff\u0027;\n  const textColor = isDarkMode ? \u0027#ffffff\u0027 : \u0027#000000\u0027;\n\n  return (\n    \u003cdiv style={{\n      padding: \u002720px\u0027,\n      borderRadius: \u00278px\u0027,\n      backgroundColor: bgColor,\n      color: textColor,\n      fontFamily: \u0027Arial, sans-serif\u0027,\n      maxWidth: \u0027400px\u0027,\n    }}\u003e\n      \u003ch2\u003eTheme Toggle\u003c/h2\u003e\n      \u003cp\u003e\n        Current Theme:{\u0027 \u0027}\n        \u003cstrong\u003e{isDarkMode ? \u0027Dark Mode\u0027 : \u0027Light Mode\u0027}\u003c/strong\u003e\n      \u003c/p\u003e\n      \u003cbutton onClick={handleThemeToggle}\u003e\n        {isDarkMode ? \u0027Switch to Light Mode\u0027 : \u0027Switch to Dark Mode\u0027}\n      \u003c/button\u003e\n    \u003c/div\u003e\n  );\n}",
+                                                                            "description":  "React component code (JSX)",
+                                                                            "required":  true,
+                                                                            "ui":  {
+                                                                                       "control":  "code",
+                                                                                       "language":  "javascript",
+                                                                                       "rows":  12,
+                                                                                       "placeholder":  "export default function MyComponent() {\n  return \u003cdiv\u003eYour JSX here\u003c/div\u003e;\n}"
+                                                                                   }
+                                                                        },
+                                                          "props":  {
+                                                                        "type":  "object",
+                                                                        "default":  {
+
+                                                                                    },
+                                                                        "description":  "Initial props to pass to the component",
+                                                                        "ui":  {
+                                                                                   "control":  "json"
+                                                                               }
+                                                                    }
+                                                      },
+                                           "defaultValues":  {
+                                                                 "reactCode":  "export default function ThemeToggle(props) {\n  const [isDarkMode, setIsDarkMode] = React.useState(false);\n\n  const handleThemeToggle = () =\u003e {\n    const newMode = !isDarkMode;\n    setIsDarkMode(newMode);\n    if (window.RenderX \u0026\u0026 window.RenderX.publish) {\n      window.RenderX.publish(\u0027react.component.theme.toggled\u0027, {\n        isDarkMode: newMode,\n        theme: newMode ? \u0027dark\u0027 : \u0027light\u0027,\n      });\n    }\n  };\n\n  const bgColor = isDarkMode ? \u0027#1e1e1e\u0027 : \u0027#ffffff\u0027;\n  const textColor = isDarkMode ? \u0027#ffffff\u0027 : \u0027#000000\u0027;\n\n  return (\n    \u003cdiv style={{\n      padding: \u002720px\u0027,\n      borderRadius: \u00278px\u0027,\n      backgroundColor: bgColor,\n      color: textColor,\n      fontFamily: \u0027Arial, sans-serif\u0027,\n      maxWidth: \u0027400px\u0027,\n    }}\u003e\n      \u003ch2\u003eTheme Toggle\u003c/h2\u003e\n      \u003cp\u003e\n        Current Theme:{\u0027 \u0027}\n        \u003cstrong\u003e{isDarkMode ? \u0027Dark Mode\u0027 : \u0027Light Mode\u0027}\u003c/strong\u003e\n      \u003c/p\u003e\n      \u003cbutton onClick={handleThemeToggle}\u003e\n        {isDarkMode ? \u0027Switch to Light Mode\u0027 : \u0027Switch to Dark Mode\u0027}\n      \u003c/button\u003e\n    \u003c/div\u003e\n  );\n}",
+                                                                 "props":  {
+
+                                                                           }
+                                                             }
+                                       },
+                        "canvasIntegration":  {
+                                                  "resizable":  true,
+                                                  "draggable":  true,
+                                                  "selectable":  true,
+                                                  "defaultWidth":  400,
+                                                  "defaultHeight":  300,
+                                                  "minWidth":  150,
+                                                  "minHeight":  100,
+                                                  "allowChildElements":  false
+                                              },
+                        "events":  {
+                                       "componentMounted":  {
+                                                                "description":  "Fired when React component mounts",
+                                                                "parameters":  [
+                                                                                   "componentId",
+                                                                                   "timestamp"
+                                                                               ]
+                                                            },
+                                       "componentError":  {
+                                                              "description":  "Fired when React component encounters an error",
+                                                              "parameters":  [
+                                                                                 "componentId",
+                                                                                 "error",
+                                                                                 "errorInfo"
+                                                                             ]
+                                                          },
+                                       "stateChanged":  {
+                                                            "description":  "Fired when component state changes",
+                                                            "parameters":  [
+                                                                               "componentId",
+                                                                               "newState"
+                                                                           ]
+                                                        }
+                                   }
+                    },
+    "interactions":  {
+                         "canvas.component.create":  {
+                                                         "pluginId":  "CanvasComponentPlugin",
+                                                         "sequenceId":  "canvas-component-create-symphony"
+                                                     },
+                         "canvas.component.select":  {
+                                                         "pluginId":  "CanvasComponentSelectionPlugin",
+                                                         "sequenceId":  "canvas-component-select-symphony"
+                                                     },
+                         "canvas.component.drag.move":  {
+                                                            "pluginId":  "CanvasComponentDragPlugin",
+                                                            "sequenceId":  "canvas-component-drag-symphony"
+                                                        },
+                         "canvas.component.resize.start":  {
+                                                               "pluginId":  "CanvasComponentResizeStartPlugin",
+                                                               "sequenceId":  "canvas-component-resize-start-symphony"
+                                                           },
+                         "canvas.component.resize.move":  {
+                                                              "pluginId":  "CanvasComponentResizeMovePlugin",
+                                                              "sequenceId":  "canvas-component-resize-move-symphony"
+                                                          },
+                         "canvas.component.resize.end":  {
+                                                             "pluginId":  "CanvasComponentResizeEndPlugin",
+                                                             "sequenceId":  "canvas-component-resize-end-symphony"
+                                                         }
+                     }
+}

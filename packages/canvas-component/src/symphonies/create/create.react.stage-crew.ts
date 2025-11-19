@@ -12,7 +12,7 @@ const reactRoots = new Map<string, any>();
  * Compiles user-provided React code and mounts it using React 19 createRoot.
  * Supports props injection and component communication via EventRouter.
  */
-export const renderReact = async (data: any, ctx: any) => {
+export const renderReact = async (_data: any, ctx: any) => {
   // Only process React components
   if (ctx.payload.kind !== "react") {
     return;

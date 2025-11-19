@@ -23,7 +23,8 @@ function loadJsonComponents(cwd) {
         const filePath = path.join(dir, file);
         try {
           const content = fs.readFileSync(filePath, "utf8");
-          const json = JSON.parse(content);
+          const safe = content.replace(/^\uFEFF/, "");
+          const json = JSON.parse(safe);
           components[componentType] = json;
         } catch (e) {
           // Skip malformed JSON files

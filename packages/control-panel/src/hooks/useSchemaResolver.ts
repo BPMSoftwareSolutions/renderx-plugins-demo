@@ -41,7 +41,7 @@ export function useSchemaResolver() {
         const config = await loadConfig();
         const schemaResolver = new SchemaResolverService(config);
 
-        // Load common component schemas (extended with heading/paragraph/image/svg)
+        // Load common component schemas (extended with heading/paragraph/image/svg/react)
         await schemaResolver.loadComponentSchemas([
           "button",
           "input",
@@ -52,6 +52,7 @@ export function useSchemaResolver() {
           "image",
           "svg",
           "html",
+          "react",
         ]);
 
         if (mounted) {
