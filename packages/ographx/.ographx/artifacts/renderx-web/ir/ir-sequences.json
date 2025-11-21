@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-21T15:20:54.691Z",
+    "generated": "2025-11-21T23:33:38.170Z",
     "phase": "Phase 2: IR Extraction",
     "sourceDirectories": [
       "packages/canvas/src/sequences/",
@@ -9,13 +9,14 @@
       "packages/control-panel/src/sequences/",
       "packages/header/src/sequences/",
       "packages/library/src/sequences/",
-      "packages/library-component/src/sequences/"
+      "packages/library-component/src/sequences/",
+      "packages/real-estate-analyzer/src/sequences/"
     ],
     "fileCount": 32
   },
   "summary": {
     "totalSequences": 0,
-    "totalPlugins": 7,
+    "totalPlugins": 8,
     "pluginsWithSequences": 0
   },
   "sequences": [],
@@ -26,6 +27,7 @@
     "control-panel": [],
     "header": [],
     "library": [],
-    "library-component": []
+    "library-component": [],
+    "real-estate-analyzer": []
   }
 }

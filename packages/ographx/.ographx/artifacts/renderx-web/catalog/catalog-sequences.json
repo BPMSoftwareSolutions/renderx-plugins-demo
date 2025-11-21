@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-21T20:03:07.992Z",
+    "generated": "2025-11-21T23:33:36.407Z",
     "phase": "Phase 1: Catalog Analysis",
     "sourceDirectories": [
       "packages/canvas/json-sequences/",
@@ -9,14 +9,15 @@
       "packages/control-panel/json-sequences/",
       "packages/header/json-sequences/",
       "packages/library/json-sequences/",
-      "packages/library-component/json-sequences/"
+      "packages/library-component/json-sequences/",
+      "packages/real-estate-analyzer/json-sequences/"
     ],
-    "fileCount": 53
+    "fileCount": 54
   },
   "summary": {
-    "totalSequences": 53,
-    "totalHandlers": 84,
-    "totalTopics": 94
+    "totalSequences": 54,
+    "totalHandlers": 87,
+    "totalTopics": 97
   },
   "sequences": [
     {
@@ -1426,10 +1427,46 @@
     },
     {
       "movements": []
+    },
+    {
+      "id": "real-estate-analyzer-search-symphony",
+      "pluginId": "RealEstateAnalyzerPlugin",
+      "name": "Real Estate Analyzer Search",
+      "movements": [
+        {
+          "id": "search",
+          "name": "Search",
+          "beatCount": 3,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "real.estate.analyzer.search",
+              "handler": "fetchPropertyData",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "real.estate.analyzer:analyze",
+              "handler": "analyze",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "real.estate.analyzer:format",
+              "handler": "format",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
     }
   ],
   "handlers": [
     "addClass",
+    "analyze",
     "applyHierarchyAndOrder",
     "awaitRefresh",
     "buildUiFileContent",
@@ -1456,6 +1493,8 @@
     "enhanceLine",
     "exportSvgToGif",
     "exportSvgToMp4",
+    "fetchPropertyData",
+    "format",
     "forwardToControlPanel",
     "generateFields",
     "generateSections",
@@ -1608,6 +1647,9 @@
     "library:component:drop",
     "library:components:load",
     "library:components:notify-ui",
-    "library:container:drop"
+    "library:container:drop",
+    "real.estate.analyzer.search",
+    "real.estate.analyzer:analyze",
+    "real.estate.analyzer:format"
   ]
 }

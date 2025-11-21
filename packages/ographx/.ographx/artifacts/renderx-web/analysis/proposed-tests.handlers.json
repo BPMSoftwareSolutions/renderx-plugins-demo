@@ -1,17 +1,48 @@
 {
-  "timestamp": "2025-11-21T20:04:08.847Z",
+  "timestamp": "2025-11-21T23:33:41.388Z",
   "summary": {
-    "totalHandlers": 98,
+    "totalHandlers": 129,
     "totalTestFiles": 1,
-    "totalTests": 196
+    "totalTests": 258
   },
-  "handlersCount": 98,
+  "handlersCount": 129,
   "testFiles": [
     {
       "path": "packages/unknown/__tests__/handlers.handlers.spec.ts",
       "plugin": "unknown",
       "testGroup": "handlers",
       "handlers": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -899,9 +930,257 @@
         {
           "type": "it",
           "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "undefined - happy path"
+        },
+        {
+          "type": "it",
+          "name": "undefined - edge case/error handling"
         }
       ],
-      "testCount": 196
+      "testCount": 258
     }
   ]
 }

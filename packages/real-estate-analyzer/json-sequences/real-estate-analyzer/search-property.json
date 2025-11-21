@@ -1,50 +1,36 @@
 {
-  "id": "search-property",
-  "name": "Search and Analyze Property",
+  "id": "real-estate-analyzer-search-symphony",
+  "pluginId": "RealEstateAnalyzerPlugin",
+  "name": "Real Estate Analyzer Search",
   "description": "Search for a property on Zillow and analyze its flipping potential",
   "movements": [
     {
-      "id": "fetch-property-data",
-      "name": "Fetch Property Data",
+      "id": "search",
+      "name": "Search",
       "beats": [
         {
-          "id": "get-3d-tour",
-          "name": "Get 3D Tour Data",
-          "type": "handler",
-          "handler": "fetchProperty3DTour",
-          "input": {
-            "propertyUrl": "$.propertyUrl"
-          }
-        }
-      ]
-    },
-    {
-      "id": "analyze-opportunity",
-      "name": "Analyze Opportunity",
-      "beats": [
+          "beat": 1,
+          "event": "real.estate.analyzer.search",
+          "handler": "fetchPropertyData",
+          "kind": "pure",
+          "dynamics": "mf",
+          "timing": "immediate"
+        },
         {
-          "id": "calculate-scores",
-          "name": "Calculate Opportunity Scores",
-          "type": "handler",
-          "handler": "analyzeProperty",
-          "input": {
-            "propertyData": "$.propertyData"
-          }
-        }
-      ]
-    },
-    {
-      "id": "return-results",
-      "name": "Return Results",
-      "beats": [
+          "beat": 2,
+          "event": "real.estate.analyzer:analyze",
+          "handler": "analyze",
+          "kind": "pure",
+          "dynamics": "mf",
+          "timing": "immediate"
+        },
         {
-          "id": "format-response",
-          "name": "Format Response",
-          "type": "handler",
-          "handler": "formatResults",
-          "input": {
-            "analysis": "$.analysis"
-          }
+          "beat": 3,
+          "event": "real.estate.analyzer:format",
+          "handler": "format",
+          "kind": "pure",
+          "dynamics": "mf",
+          "timing": "immediate"
         }
       ]
     }

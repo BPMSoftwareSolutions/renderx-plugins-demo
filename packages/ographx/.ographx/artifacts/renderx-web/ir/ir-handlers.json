@@ -1,24 +1,63 @@
 {
   "metadata": {
-    "generated": "2025-11-21T15:20:49.804Z",
+    "generated": "2025-11-21T23:33:37.615Z",
     "phase": "Phase 2: IR Extraction",
     "sourceDirectories": [
-      "packages/canvas/src/handlers/",
-      "packages/canvas-component/src/handlers/",
-      "packages/components/src/handlers/",
-      "packages/control-panel/src/handlers/",
-      "packages/header/src/handlers/",
-      "packages/library/src/handlers/",
-      "packages/library-component/src/handlers/"
+      "packages/canvas/src",
+      "packages/canvas-component/src",
+      "packages/components/src",
+      "packages/control-panel/src",
+      "packages/header/src",
+      "packages/library/src",
+      "packages/library-component/src",
+      "packages/real-estate-analyzer/src"
     ],
-    "fileCount": 86
+    "fileCount": 245
   },
   "summary": {
-    "totalHandlers": 135,
-    "totalPlugins": 7,
-    "pluginsWithHandlers": 4
+    "totalHandlers": 423,
+    "totalPlugins": 8,
+    "pluginsWithHandlers": 7
   },
   "handlers": [
+    {
+      "name": "register",
+      "plugin": "canvas",
+      "file": "\\packages\\canvas\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "conductor?: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "onDropForTest",
+      "plugin": "canvas",
+      "file": "\\packages\\canvas\\src\\ui\\CanvasDrop.ts",
+      "type": "function",
+      "parameters": [
+        "e: any",
+        "conductor: any",
+        "onCreated?: (n: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "CanvasHeader",
+      "plugin": "canvas",
+      "file": "\\packages\\canvas\\src\\ui\\CanvasHeader.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "CanvasPage",
+      "plugin": "canvas",
+      "file": "\\packages\\canvas\\src\\ui\\CanvasPage.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
     {
       "name": "enhanceLine",
       "plugin": "canvas-component",
@@ -298,6 +337,14 @@
       "parameters": [
         "conductor: any"
       ],
+      "isAsync": false
+    },
+    {
+      "name": "Name",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+      "type": "default-function",
+      "parameters": [],
       "isAsync": false
     },
     {
@@ -1056,6 +1103,1237 @@
       "isAsync": false
     },
     {
+      "name": "register",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "enhanceLine",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\augment\\augment.line.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "recomputeLineSvg",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "svg: SVGSVGElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "serializeSelectedComponent",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "_ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "copyToClipboard",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "notifyCopyComplete",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "_ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "resolveTemplate",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.arrangement.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "injectCssFallback",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.css.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "css: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "injectRawCss",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.css.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ctx: any",
+        "css: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getCanvasOrThrow",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "createElementWithId",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "tag: string",
+        "id: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "applyClasses",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "el: HTMLElement",
+        "classes: string[]"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "applyInlineStyle",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "el: HTMLElement",
+        "style: Record<string",
+        "string>"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "appendTo",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "parent: HTMLElement",
+        "child: HTMLElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "transformImportToCreatePayload",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+      "type": "function",
+      "parameters": [
+        "importComponent: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachStandardImportInteractions",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+      "type": "function",
+      "parameters": [
+        "payload: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "createFromImportRecord",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+      "type": "function",
+      "parameters": [
+        "importComponent: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "transformClipboardToCreatePayload",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+      "type": "function",
+      "parameters": [
+        "clipComponent: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "toCreatePayloadFromData",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
+      "type": "function",
+      "parameters": [
+        "input: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachSelection",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.interactions.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "el: HTMLElement",
+        "id: string",
+        "onSelected?: (info: { id: string }"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachDrag",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.interactions.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "el: HTMLElement",
+        "canvas: HTMLElement",
+        "id: string",
+        "cbs: DragCallbacks"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachSvgNodeClick",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.interactions.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "el: SVGSVGElement",
+        "id: string",
+        "conductor?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "registerInstance",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.io.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.notify.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "renderReact",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "cleanupReactRoot",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "nodeId: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "exposeEventRouterToReact",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "Name",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+      "type": "default-function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "createNode",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "computeInstanceClass",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.style.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "tag: string",
+        "id: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "computeCssVarBlock",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.style.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "vars: Record<string",
+        "string | number> | undefined"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "computeInlineStyle",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.style.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "tpl: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "validateReactCode",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\react-code-validator.ts",
+      "type": "function",
+      "parameters": [
+        "code: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "validateReactCodeOrThrow",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\react-code-validator.ts",
+      "type": "function",
+      "parameters": [
+        "code: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "publishDeleted",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "deleteComponent",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "routeDeleteRequest",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\delete\\delete.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "hideAllOverlays",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "deselectComponent",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "publishDeselectionChanged",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "publishSelectionsCleared",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "clearAllSelections",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "routeDeselectionRequest",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "updatePosition",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "startDrag",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "endDrag",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "forwardToControlPanel",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "_data?: any",
+        "_ctx?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "collectCssClasses",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.css.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "discoverComponentsFromDom",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.discover.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "downloadUiFile",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.download.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "exportSvgToGif",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.gif.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "queryAllComponents",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.io.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "createMP4Encoder",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.mp4-encoder.ts",
+      "type": "function",
+      "parameters": [
+        "opts: MP4EncoderOptions = {}"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "exportSvgToMp4",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.mp4.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "buildUiFileContent",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.pure.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "collectLayoutData",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "injectCssClasses",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\import\\import.css.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "openUiFile",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\import\\import.file.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "registerInstances",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\import\\import.io.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "createComponentsSequentially",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\import\\import.nodes.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "applyHierarchyAndOrder",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\import\\import.nodes.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "parseUiFile",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\import\\import.parse.pure.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "startLineManip",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "moveLineManip",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "endLineManip",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\line-advanced\\line.manip.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "readFromClipboard",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "_ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "deserializeComponentData",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "_ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "calculatePastePosition",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "_ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "createPastedComponent",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "notifyPasteComplete",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "_ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "startResize",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "updateSize",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any",
+        "ctx?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "endResize",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "startLineResize",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "updateLine",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "endLineResize",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+      "type": "arrow-function",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ensureOverlayCss",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.css.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "getCanvasOrThrow",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "ensureOverlay",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "getCanvasRect",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "applyOverlayRectForEl",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.dom.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ov: HTMLDivElement",
+        "el: HTMLElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "createOverlayStructure",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.helpers.ts",
+      "type": "function",
+      "parameters": [
+        "canvas: HTMLElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "resolveEndpoints",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.helpers.ts",
+      "type": "function",
+      "parameters": [
+        "target: HTMLElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ensureAdvancedLineOverlayFor",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "target: HTMLElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachAdvancedLineManipHandlers",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-advanced.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ov: HTMLDivElement",
+        "conductor?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ensureLineOverlayFor",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-resize.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "target: HTMLElement"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachLineResizeHandlers",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.line-resize.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ov: HTMLDivElement",
+        "conductor?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "attachResizeHandlers",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.overlay.resize.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ov: HTMLDivElement",
+        "conductor?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "routeSelectionRequest",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "showSelectionOverlay",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx?: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "hideSelectionOverlay",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "publishSelectionChanged",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "showSvgNodeOverlay",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.svg-node.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "_ctx?: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "updateAttribute",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "refreshControlPanel",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "updateSvgNodeAttribute",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\update\\update.svg-node.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx?: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "refreshControlPanel",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\update\\update.svg-node.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "setClipboardText",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\_clipboard.ts",
+      "type": "function",
+      "parameters": [
+        "text: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getClipboardText",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\_clipboard.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "initConductor",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": true
+    },
+    {
+      "name": "registerAllSequences",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: Conductor"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "loadJsonSequenceCatalogs",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: Conductor",
+        "pluginIds: string[]"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "setFlagOverride",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "type": "function",
+      "parameters": [
+        "flag: string",
+        "value: boolean"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "clearFlagOverrides",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "getFlagOverride",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "type": "function",
+      "parameters": [
+        "flag: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "isFlagEnabled",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "type": "function",
+      "parameters": [
+        "flag: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "setSelectionObserver",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [
+        "observer: SelectionObserver | null"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getSelectionObserver",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "setClassesObserver",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [
+        "observer: ClassesObserver | null"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getClassesObserver",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "setCssRegistryObserver",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [
+        "observer: CssRegistryObserver | null"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getCssRegistryObserver",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "clearAllObservers",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "setAllRulesConfig",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+      "type": "function",
+      "parameters": [
+        "cfg: AllRulesConfig"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "loadAllRulesFromWindow",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "getAllRulesConfig",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "sanitizeHtml",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\sanitizeHtml.ts",
+      "type": "function",
+      "parameters": [
+        "input: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "transform",
+      "plugin": "canvas-component",
+      "file": "\\packages\\canvas-component\\src\\types\\babel-standalone.d.ts",
+      "type": "function",
+      "parameters": [
+        "code: string",
+        "options?: {\n      presets?: (string | unknown"
+      ],
+      "isAsync": false
+    },
+    {
       "name": "addClass",
       "plugin": "control-panel",
       "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
@@ -1074,6 +2352,47 @@
       "parameters": [
         "data: any",
         "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "id && updatedClasses"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
       ],
       "isAsync": false
     },
@@ -1155,6 +2474,37 @@
       "isAsync": false
     },
     {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
+      ],
+      "isAsync": false
+    },
+    {
       "name": "deriveSelectionModel",
       "plugin": "control-panel",
       "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.stage-crew.ts",
@@ -1162,6 +2512,47 @@
       "parameters": [
         "data: any",
         "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "selectionModel"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
       ],
       "isAsync": false
     },
@@ -1364,6 +2755,737 @@
       "isAsync": false
     },
     {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "flagOn"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "registerFieldRenderer",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+      "type": "function",
+      "parameters": [
+        "type: string",
+        "component: FieldRenderer"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getFieldRenderer",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+      "type": "function",
+      "parameters": [
+        "type: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "EmptyState",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\components\\layout\\EmptyState.tsx",
+      "type": "arrow-function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "LoadingState",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\components\\layout\\LoadingState.tsx",
+      "type": "arrow-function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "PanelHeader",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\components\\layout\\PanelHeader.tsx",
+      "type": "arrow-function",
+      "parameters": [
+        "{ selectedElement }: { selectedElement: SelectedElement | null }"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "useControlPanelActions",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelActions.ts",
+      "type": "function",
+      "parameters": [
+        "selectedElement: SelectedElement | null",
+        "dispatch: React.Dispatch<ControlPanelAction>"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "useControlPanelSequences",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelSequences.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "useControlPanelState",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelState.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "useSchemaResolver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\hooks\\useSchemaResolver.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "register",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "_conductor?: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "controlPanelReducer",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\control-panel.reducer.ts",
+      "type": "function",
+      "parameters": [
+        "state: ControlPanelState",
+        "action: ControlPanelAction"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "setSelectionObserver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [
+        "observer: SelectionObserver | null"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getSelectionObserver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "setClassesObserver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [
+        "observer: ClassesObserver | null"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getClassesObserver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "setCssRegistryObserver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [
+        "observer: CssRegistryObserver | null"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getCssRegistryObserver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "clearAllObservers",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\state\\observer.store.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "addClass",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "removeClass",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "id && updatedClasses"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "createCssClass",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "updateCssClass",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "deleteCssClass",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getCssClass",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "listCssClasses",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "applyCssClassToElement",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "removeCssClassFromElement",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "deriveSelectionModel",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "selectionModel"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "initMovement",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "initConfig",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "initResolver",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "loadSchemas",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "registerObservers",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyReady",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "generateFields",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "generateSections",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "renderView",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "prepareField",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "dispatchField",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "setDirty",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "awaitRefresh",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "validateField",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "mergeErrors",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "updateView",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "toggleSection",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "updateFromElement",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "flagOn"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "EventRouter"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "catch",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "e"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ControlPanel",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\ui\\ControlPanel.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "extractElementContent",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\utils\\content-extractor.ts",
+      "type": "function",
+      "parameters": [
+        "element: HTMLElement",
+        "type?: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getNestedValue",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "type": "function",
+      "parameters": [
+        "obj: any",
+        "path: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "setNestedValue",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "type": "function",
+      "parameters": [
+        "obj: any",
+        "path: string",
+        "value: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "formatLabel",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "type": "function",
+      "parameters": [
+        "key: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "generatePlaceholder",
+      "plugin": "control-panel",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "type": "function",
+      "parameters": [
+        "key: string",
+        "type: string"
+      ],
+      "isAsync": false
+    },
+    {
       "name": "getCurrentTheme",
       "plugin": "header",
       "file": "\\packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
@@ -1386,6 +3508,583 @@
         "ctx: { payload: Record<string",
         "unknown>; logger?: { warn?: (message: string",
         "error: unknown"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "register",
+      "plugin": "header",
+      "file": "\\packages\\header\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "_conductor: unknown"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "getCurrentTheme",
+      "plugin": "header",
+      "file": "\\packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: unknown",
+        "ctx: { payload: Record<string",
+        "unknown>; logger?: { warn?: (message: string",
+        "error: unknown"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "toggleTheme",
+      "plugin": "header",
+      "file": "\\packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "data: { theme?: unknown }",
+        "ctx: { payload: Record<string",
+        "unknown>; logger?: { warn?: (message: string",
+        "error: unknown"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "HeaderControls",
+      "plugin": "header",
+      "file": "\\packages\\header\\src\\ui\\HeaderControls.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "HeaderThemeToggle",
+      "plugin": "header",
+      "file": "\\packages\\header\\src\\ui\\HeaderThemeToggle.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "HeaderTitle",
+      "plugin": "header",
+      "file": "\\packages\\header\\src\\ui\\HeaderTitle.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "loadComponents",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "inv && typeof inv.listComponents === \"function\""
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "typeof fetch === \"function\""
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "for",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "const f of files"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "res.ok"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "typeof data?.onComponentsLoaded === \"function\""
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "register",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "RAGEnrichmentService.if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\services\\rag-enrichment.service.ts",
+      "type": "class-method",
+      "parameters": [
+        "!libraryComponents || libraryComponents.length === 0"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "loadComponents",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "inv && typeof inv.listComponents === \"function\""
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "typeof fetch === \"function\""
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "for",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "const f of files"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "res.ok"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "typeof data?.onComponentsLoaded === \"function\""
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "notifyUi",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "_data: any",
+        "ctx: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ComponentBehaviorExtractor.for",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+      "type": "class-method",
+      "parameters": [
+        "const mapping of mappings"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ComponentBehaviorExtractor.for",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+      "type": "class-method",
+      "parameters": [
+        "const raw of lines"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ComponentBehaviorExtractor.if",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+      "type": "class-method",
+      "parameters": [
+        "m"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ChatMessageComponent",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\ChatMessage.tsx",
+      "type": "function",
+      "parameters": [
+        "{ \r\n  message",
+        "onAddToLibrary",
+        "onEditComponent",
+        "onCopyJSON",
+        "onRegenerateComponent \r\n}: ChatMessageProps"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ChatWindow",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\ChatWindow.tsx",
+      "type": "function",
+      "parameters": [
+        "{ isOpen",
+        "onClose",
+        "onComponentGenerated }: ChatWindowProps"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "ConfigStatusUI",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\ConfigStatusUI.tsx",
+      "type": "function",
+      "parameters": [
+        "{ status }: ConfigStatusUIProps"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "CustomComponentList",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\CustomComponentList.tsx",
+      "type": "function",
+      "parameters": [
+        "{ components",
+        "onComponentRemoved",
+        "onRemove }: CustomComponentListProps"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "CustomComponentUpload",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\CustomComponentUpload.tsx",
+      "type": "function",
+      "parameters": [
+        "{ onUpload",
+        "onComponentAdded }: CustomComponentUploadProps"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "registerCssForComponents",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\LibraryPanel.tsx",
+      "type": "function",
+      "parameters": [
+        "items: any[]",
+        "_conductor: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "LibraryPanel",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\LibraryPanel.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "LibraryPreview",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\LibraryPreview.tsx",
+      "type": "function",
+      "parameters": [
+        "{\r\n  component",
+        "conductor",
+        "}: {\r\n  component: any;\r\n  conductor: any;\r\n}"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "computePreviewModel",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\ui\\preview.model.ts",
+      "type": "function",
+      "parameters": [
+        "component: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "loadChatHistory",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "saveChatHistory",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "history: ChatHistory[]"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "createChatSession",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "messages: ChatMessage[] = []"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "addMessagesToCurrentSession",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "messages: ChatMessage[]"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getCurrentChatSession",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "startNewChatSession",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "deleteChatSession",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "sessionId: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "clearAllChatHistory",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "getChatHistoryStats",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "exportChatHistory",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "importChatHistory",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "jsonData: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getConversationContext",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "maxMessages: number = 6"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "cleanupChatHistory",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "type": "function",
+      "parameters": [
+        "maxSessions: number = MAX_HISTORY_SESSIONS"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "buildSystemPrompt",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\prompt.templates.ts",
+      "type": "function",
+      "parameters": [
+        "context?: PromptContext"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "getPromptTemplate",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\prompt.templates.ts",
+      "type": "function",
+      "parameters": [
+        "id: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "saveCustomComponent",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "type": "function",
+      "parameters": [
+        "component: any",
+        "originalFilename?: string"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "loadCustomComponents",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "removeCustomComponent",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "type": "function",
+      "parameters": [
+        "id: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "clearCustomComponents",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "getStorageInfo",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
+    },
+    {
+      "name": "validateComponentJson",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "type": "function",
+      "parameters": [
+        "component: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "normalizeComponent",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "type": "function",
+      "parameters": [
+        "component: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "validateAndParseJson",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "type": "function",
+      "parameters": [
+        "jsonString: string"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "validateFile",
+      "plugin": "library",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "type": "function",
+      "parameters": [
+        "file: File"
       ],
       "isAsync": false
     },
@@ -1471,10 +4170,275 @@
         "offsetY: number"
       ],
       "isAsync": false
+    },
+    {
+      "name": "onDragStart",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "dt?.setDragImage"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "publishCreateRequested",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drop.container.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "publishCreateRequested",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drop.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "register",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "ensurePayload",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "dt: DataTransfer | undefined",
+        "component: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "computeGhostSize",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "e: any",
+        "component: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "createGhostContainer",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "width: number",
+        "height: number"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "renderTemplatePreview",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ghost: HTMLElement",
+        "template: any",
+        "width: number",
+        "height: number"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "applyTemplateStyles",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "ghost: HTMLElement",
+        "template: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "computeCursorOffsets",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "e: any",
+        "targetEl: HTMLElement | null",
+        "width: number",
+        "height: number"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "installDragImage",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
+      "type": "function",
+      "parameters": [
+        "dt: DataTransfer",
+        "ghost: HTMLElement",
+        "offsetX: number",
+        "offsetY: number"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "onDragStart",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "if",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drag.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "dt?.setDragImage"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "publishCreateRequested",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drop.container.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "publishCreateRequested",
+      "plugin": "library-component",
+      "file": "\\packages\\library-component\\src\\symphonies\\drop.symphony.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: any",
+        "ctx: any"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "register",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+      "type": "function",
+      "parameters": [
+        "conductor: ConductorLike & { _runtimeMountedSeqIds?: Set<string> }"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "fetchPropertyData",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+      "type": "object-method",
+      "parameters": [
+        "data: { propertyUrl: string }",
+        "ctx: SequenceContext"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "catch",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+      "type": "object-method",
+      "parameters": [
+        "error"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "analyze",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+      "type": "object-method",
+      "parameters": [
+        "_data: Record<string",
+        "never>",
+        "ctx: SequenceContext"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "catch",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+      "type": "object-method",
+      "parameters": [
+        "error"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "format",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+      "type": "object-method",
+      "parameters": [
+        "_data: Record<string",
+        "never>",
+        "ctx: SequenceContext"
+      ],
+      "isAsync": true
+    },
+    {
+      "name": "ZillowService.if",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\services\\zillow.service.ts",
+      "type": "class-method",
+      "parameters": [
+        "!ZILLOW_API_KEY"
+      ],
+      "isAsync": false
+    },
+    {
+      "name": "OpportunityAnalyzer",
+      "plugin": "real-estate-analyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\ui\\OpportunityAnalyzer.tsx",
+      "type": "function",
+      "parameters": [],
+      "isAsync": false
     }
   ],
   "handlersByPlugin": {
-    "canvas": [],
+    "canvas": [
+      "register",
+      "onDropForTest",
+      "CanvasHeader",
+      "CanvasPage"
+    ],
     "canvas-component": [
       "enhanceLine",
       "recomputeLineSvg",
@@ -1502,6 +4466,7 @@
       "renderReact",
       "cleanupReactRoot",
       "exposeEventRouterToReact",
+      "Name",
       "createNode",
       "computeInstanceClass",
       "computeCssVarBlock",
@@ -1573,12 +4538,135 @@
       "updateSvgNodeAttribute",
       "refreshControlPanel",
       "setClipboardText",
-      "getClipboardText"
+      "getClipboardText",
+      "register",
+      "enhanceLine",
+      "recomputeLineSvg",
+      "serializeSelectedComponent",
+      "copyToClipboard",
+      "notifyCopyComplete",
+      "resolveTemplate",
+      "injectCssFallback",
+      "injectRawCss",
+      "getCanvasOrThrow",
+      "createElementWithId",
+      "applyClasses",
+      "applyInlineStyle",
+      "appendTo",
+      "transformImportToCreatePayload",
+      "attachStandardImportInteractions",
+      "createFromImportRecord",
+      "transformClipboardToCreatePayload",
+      "toCreatePayloadFromData",
+      "attachSelection",
+      "attachDrag",
+      "attachSvgNodeClick",
+      "registerInstance",
+      "notifyUi",
+      "renderReact",
+      "cleanupReactRoot",
+      "exposeEventRouterToReact",
+      "Name",
+      "createNode",
+      "computeInstanceClass",
+      "computeCssVarBlock",
+      "computeInlineStyle",
+      "validateReactCode",
+      "validateReactCodeOrThrow",
+      "publishDeleted",
+      "deleteComponent",
+      "routeDeleteRequest",
+      "hideAllOverlays",
+      "deselectComponent",
+      "publishDeselectionChanged",
+      "publishSelectionsCleared",
+      "clearAllSelections",
+      "routeDeselectionRequest",
+      "updatePosition",
+      "startDrag",
+      "endDrag",
+      "forwardToControlPanel",
+      "collectCssClasses",
+      "discoverComponentsFromDom",
+      "downloadUiFile",
+      "exportSvgToGif",
+      "queryAllComponents",
+      "createMP4Encoder",
+      "exportSvgToMp4",
+      "buildUiFileContent",
+      "collectLayoutData",
+      "injectCssClasses",
+      "openUiFile",
+      "registerInstances",
+      "createComponentsSequentially",
+      "applyHierarchyAndOrder",
+      "parseUiFile",
+      "startLineManip",
+      "moveLineManip",
+      "endLineManip",
+      "readFromClipboard",
+      "deserializeComponentData",
+      "calculatePastePosition",
+      "createPastedComponent",
+      "notifyPasteComplete",
+      "startResize",
+      "updateSize",
+      "endResize",
+      "startLineResize",
+      "updateLine",
+      "endLineResize",
+      "ensureOverlayCss",
+      "getCanvasOrThrow",
+      "ensureOverlay",
+      "getCanvasRect",
+      "applyOverlayRectForEl",
+      "createOverlayStructure",
+      "resolveEndpoints",
+      "ensureAdvancedLineOverlayFor",
+      "attachAdvancedLineManipHandlers",
+      "ensureLineOverlayFor",
+      "attachLineResizeHandlers",
+      "attachResizeHandlers",
+      "routeSelectionRequest",
+      "showSelectionOverlay",
+      "hideSelectionOverlay",
+      "notifyUi",
+      "publishSelectionChanged",
+      "showSvgNodeOverlay",
+      "updateAttribute",
+      "refreshControlPanel",
+      "updateSvgNodeAttribute",
+      "refreshControlPanel",
+      "setClipboardText",
+      "getClipboardText",
+      "initConductor",
+      "registerAllSequences",
+      "loadJsonSequenceCatalogs",
+      "setFlagOverride",
+      "clearFlagOverrides",
+      "getFlagOverride",
+      "isFlagEnabled",
+      "setSelectionObserver",
+      "getSelectionObserver",
+      "setClassesObserver",
+      "getClassesObserver",
+      "setCssRegistryObserver",
+      "getCssRegistryObserver",
+      "clearAllObservers",
+      "setAllRulesConfig",
+      "loadAllRulesFromWindow",
+      "getAllRulesConfig",
+      "sanitizeHtml",
+      "transform"
     ],
     "components": [],
     "control-panel": [
       "addClass",
       "removeClass",
+      "notifyUi",
+      "if",
+      "if",
+      "catch",
       "createCssClass",
       "updateCssClass",
       "deleteCssClass",
@@ -1586,7 +4674,14 @@
       "listCssClasses",
       "applyCssClassToElement",
       "removeCssClassFromElement",
+      "notifyUi",
+      "if",
+      "catch",
       "deriveSelectionModel",
+      "notifyUi",
+      "if",
+      "if",
+      "catch",
       "initMovement",
       "initConfig",
       "initResolver",
@@ -1604,13 +4699,143 @@
       "mergeErrors",
       "updateView",
       "toggleSection",
-      "updateFromElement"
+      "updateFromElement",
+      "notifyUi",
+      "if",
+      "if",
+      "catch",
+      "registerFieldRenderer",
+      "getFieldRenderer",
+      "EmptyState",
+      "LoadingState",
+      "PanelHeader",
+      "useControlPanelActions",
+      "useControlPanelSequences",
+      "useControlPanelState",
+      "useSchemaResolver",
+      "register",
+      "controlPanelReducer",
+      "setSelectionObserver",
+      "getSelectionObserver",
+      "setClassesObserver",
+      "getClassesObserver",
+      "setCssRegistryObserver",
+      "getCssRegistryObserver",
+      "clearAllObservers",
+      "addClass",
+      "removeClass",
+      "notifyUi",
+      "if",
+      "if",
+      "catch",
+      "createCssClass",
+      "updateCssClass",
+      "deleteCssClass",
+      "getCssClass",
+      "listCssClasses",
+      "applyCssClassToElement",
+      "removeCssClassFromElement",
+      "notifyUi",
+      "if",
+      "catch",
+      "deriveSelectionModel",
+      "notifyUi",
+      "if",
+      "if",
+      "catch",
+      "initMovement",
+      "initConfig",
+      "initResolver",
+      "loadSchemas",
+      "registerObservers",
+      "notifyReady",
+      "generateFields",
+      "generateSections",
+      "renderView",
+      "prepareField",
+      "dispatchField",
+      "setDirty",
+      "awaitRefresh",
+      "validateField",
+      "mergeErrors",
+      "updateView",
+      "toggleSection",
+      "updateFromElement",
+      "notifyUi",
+      "if",
+      "if",
+      "catch",
+      "ControlPanel",
+      "extractElementContent",
+      "getNestedValue",
+      "setNestedValue",
+      "formatLabel",
+      "generatePlaceholder"
     ],
     "header": [
       "getCurrentTheme",
-      "toggleTheme"
+      "toggleTheme",
+      "register",
+      "getCurrentTheme",
+      "toggleTheme",
+      "HeaderControls",
+      "HeaderThemeToggle",
+      "HeaderTitle"
     ],
-    "library": [],
+    "library": [
+      "loadComponents",
+      "if",
+      "if",
+      "for",
+      "if",
+      "if",
+      "notifyUi",
+      "register",
+      "RAGEnrichmentService.if",
+      "loadComponents",
+      "if",
+      "if",
+      "for",
+      "if",
+      "if",
+      "notifyUi",
+      "ComponentBehaviorExtractor.for",
+      "ComponentBehaviorExtractor.for",
+      "ComponentBehaviorExtractor.if",
+      "ChatMessageComponent",
+      "ChatWindow",
+      "ConfigStatusUI",
+      "CustomComponentList",
+      "CustomComponentUpload",
+      "registerCssForComponents",
+      "LibraryPanel",
+      "LibraryPreview",
+      "computePreviewModel",
+      "loadChatHistory",
+      "saveChatHistory",
+      "createChatSession",
+      "addMessagesToCurrentSession",
+      "getCurrentChatSession",
+      "startNewChatSession",
+      "deleteChatSession",
+      "clearAllChatHistory",
+      "getChatHistoryStats",
+      "exportChatHistory",
+      "importChatHistory",
+      "getConversationContext",
+      "cleanupChatHistory",
+      "buildSystemPrompt",
+      "getPromptTemplate",
+      "saveCustomComponent",
+      "loadCustomComponents",
+      "removeCustomComponent",
+      "clearCustomComponents",
+      "getStorageInfo",
+      "validateComponentJson",
+      "normalizeComponent",
+      "validateAndParseJson",
+      "validateFile"
+    ],
     "library-component": [
       "ensurePayload",
       "computeGhostSize",
@@ -1618,7 +4843,33 @@
       "renderTemplatePreview",
       "applyTemplateStyles",
       "computeCursorOffsets",
-      "installDragImage"
+      "installDragImage",
+      "onDragStart",
+      "if",
+      "publishCreateRequested",
+      "publishCreateRequested",
+      "register",
+      "ensurePayload",
+      "computeGhostSize",
+      "createGhostContainer",
+      "renderTemplatePreview",
+      "applyTemplateStyles",
+      "computeCursorOffsets",
+      "installDragImage",
+      "onDragStart",
+      "if",
+      "publishCreateRequested",
+      "publishCreateRequested"
+    ],
+    "real-estate-analyzer": [
+      "register",
+      "fetchPropertyData",
+      "catch",
+      "analyze",
+      "catch",
+      "format",
+      "ZillowService.if",
+      "OpportunityAnalyzer"
     ]
   }
 }

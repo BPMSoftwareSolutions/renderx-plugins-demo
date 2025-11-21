@@ -1,0 +1,2754 @@
+{
+  "metadata": {
+    "generated": "2025-11-21T23:33:40.092Z",
+    "phase": "External Interactions Audit",
+    "version": "1.0",
+    "sources": {
+      "catalogComponents": true,
+      "catalogSequences": true,
+      "catalogTopics": true,
+      "irHandlers": true,
+      "irSequences": true,
+      "irHandlerTests": true
+    }
+  },
+  "summary": {
+    "interactionEvents": 6,
+    "interactionEdges": 112,
+    "sequencesReferenced": 6,
+    "missingSequences": 1,
+    "missingHandlers": 0,
+    "missingTopics": 13,
+    "orphanTopics": 8,
+    "orphanHandlers": 210,
+    "pluginOwnershipMismatches": 0,
+    "handlerCoverageInEdges": 5,
+    "topicCoverageInEdges": 0
+  },
+  "edges": [
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "button",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "button",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "button",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "button",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "button",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "button",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "container",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "container",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "container",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "container",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "container",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "container",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "image",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "image",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "image",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "image",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "image",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "image",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "input",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "input",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "input",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "input",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "input",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "input",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "line",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "line",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "line",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "line",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "line",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "line",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 0,
+      "handler": "resolveTemplate",
+      "handlerExists": true,
+      "topic": "canvas:component:resolve-template",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 1,
+      "handler": "registerInstance",
+      "handlerExists": true,
+      "topic": "canvas:component:register-instance",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 3,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.io.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 2,
+      "handler": "createNode",
+      "handlerExists": true,
+      "topic": "canvas:component:create",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 3,
+      "handler": "renderReact",
+      "handlerExists": true,
+      "topic": "canvas:component:render-react",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 24,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\create.react.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\react-component.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 4,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:notify-ui",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.create",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentPlugin",
+      "sequenceId": "canvas-component-create-symphony",
+      "sequenceName": "Canvas Component Create",
+      "movementId": "create",
+      "movementName": "Create",
+      "beatIndex": 5,
+      "handler": "enhanceLine",
+      "handlerExists": true,
+      "topic": "canvas:component:augment:line",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 6,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "button",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "button",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "button",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "container",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "container",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "container",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "image",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "image",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "image",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "input",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "input",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "input",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "line",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "line",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "line",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 0,
+      "handler": "showSelectionOverlay",
+      "handlerExists": true,
+      "topic": "canvas:component:select",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 21,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\line.overlay-data-driven.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 1,
+      "handler": "notifyUi",
+      "handlerExists": true,
+      "topic": "canvas:component:select:notify",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.select",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "sequenceId": "canvas-component-select-symphony",
+      "sequenceName": "Canvas Component Select",
+      "movementId": "select",
+      "movementName": "Select",
+      "beatIndex": 2,
+      "handler": "publishSelectionChanged",
+      "handlerExists": true,
+      "topic": "canvas:component:selection:changed",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 7,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "button",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "container",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "image",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "input",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "line",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.drag.move",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentDragPlugin",
+      "sequenceId": "canvas-component-drag-symphony",
+      "sequenceName": null,
+      "movementId": null,
+      "movementName": null,
+      "beatIndex": null,
+      "handler": null,
+      "handlerExists": false,
+      "topic": null,
+      "topicExists": false,
+      "sequenceImplemented": false,
+      "pluginOwnershipValid": false,
+      "tests": {
+        "count": 0,
+        "files": []
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "button",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "container",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "image",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "input",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "line",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.start",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "sequenceId": "canvas-component-resize-start-symphony",
+      "sequenceName": "Canvas Component Resize Start",
+      "movementId": "resize-start",
+      "movementName": "Resize Start",
+      "beatIndex": 0,
+      "handler": "startResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:start",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "button",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "button",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "container",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "container",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "image",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "image",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "input",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "input",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "line",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "line",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 0,
+      "handler": "updateSize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:move",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.move",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "sequenceId": "canvas-component-resize-move-symphony",
+      "sequenceName": "Canvas Component Resize Move",
+      "movementId": "resize-move",
+      "movementName": "Resize Move",
+      "beatIndex": 1,
+      "handler": "forwardToControlPanel",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:forward",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 8,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "button",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "container",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "heading",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "image",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "input",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "line",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "paragraph",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    },
+    {
+      "componentEvent": "canvas.component.resize.end",
+      "componentType": "svg",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "sequenceId": "canvas-component-resize-end-symphony",
+      "sequenceName": "Canvas Component Resize End",
+      "movementId": "resize-end",
+      "movementName": "Resize End",
+      "beatIndex": 0,
+      "handler": "endResize",
+      "handlerExists": true,
+      "topic": "canvas:component:resize:end",
+      "topicExists": false,
+      "sequenceImplemented": true,
+      "pluginOwnershipValid": true,
+      "tests": {
+        "count": 5,
+        "files": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ]
+      }
+    }
+  ],
+  "gaps": {
+    "missingSequences": [
+      "canvas-component-drag-symphony"
+    ],
+    "missingHandlers": [],
+    "missingTopics": [
+      "canvas:component:augment:line",
+      "canvas:component:create",
+      "canvas:component:notify-ui",
+      "canvas:component:register-instance",
+      "canvas:component:render-react",
+      "canvas:component:resize:end",
+      "canvas:component:resize:forward",
+      "canvas:component:resize:move",
+      "canvas:component:resize:start",
+      "canvas:component:resolve-template",
+      "canvas:component:select",
+      "canvas:component:select:notify",
+      "canvas:component:selection:changed"
+    ],
+    "pluginOwnership": []
+  },
+  "orphans": {
+    "topics": [
+      "canvas.component.copied",
+      "canvas.component.pasted",
+      "canvas.component.select.svg-node.changed",
+      "control.panel.classes.updated",
+      "control.panel.css.registry.updated",
+      "control.panel.selection.updated",
+      "react.component.error",
+      "react.component.mounted"
+    ],
+    "handlers": [
+      "CanvasHeader",
+      "CanvasPage",
+      "ChatMessageComponent",
+      "ChatWindow",
+      "ComponentBehaviorExtractor.for",
+      "ComponentBehaviorExtractor.if",
+      "ConfigStatusUI",
+      "ControlPanel",
+      "CustomComponentList",
+      "CustomComponentUpload",
+      "EmptyState",
+      "HeaderControls",
+      "HeaderThemeToggle",
+      "HeaderTitle",
+      "LibraryPanel",
+      "LibraryPreview",
+      "LoadingState",
+      "Name",
+      "OpportunityAnalyzer",
+      "PanelHeader",
+      "RAGEnrichmentService.if",
+      "ZillowService.if",
+      "addClass",
+      "addMessagesToCurrentSession",
+      "analyze",
+      "appendTo",
+      "applyClasses",
+      "applyCssClassToElement",
+      "applyHierarchyAndOrder",
+      "applyInlineStyle",
+      "applyOverlayRectForEl",
+      "applyTemplateStyles",
+      "attachAdvancedLineManipHandlers",
+      "attachDrag",
+      "attachLineResizeHandlers",
+      "attachResizeHandlers",
+      "attachSelection",
+      "attachStandardImportInteractions",
+      "attachSvgNodeClick",
+      "awaitRefresh",
+      "buildSystemPrompt",
+      "buildUiFileContent",
+      "calculatePastePosition",
+      "catch",
+      "cleanupChatHistory",
+      "cleanupReactRoot",
+      "clearAllChatHistory",
+      "clearAllObservers",
+      "clearAllSelections",
+      "clearCustomComponents",
+      "clearFlagOverrides",
+      "collectCssClasses",
+      "collectLayoutData",
+      "computeCssVarBlock",
+      "computeCursorOffsets",
+      "computeGhostSize",
+      "computeInlineStyle",
+      "computeInstanceClass",
+      "computePreviewModel",
+      "controlPanelReducer",
+      "copyToClipboard",
+      "createChatSession",
+      "createComponentsSequentially",
+      "createCssClass",
+      "createElementWithId",
+      "createFromImportRecord",
+      "createGhostContainer",
+      "createMP4Encoder",
+      "createOverlayStructure",
+      "createPastedComponent",
+      "deleteChatSession",
+      "deleteComponent",
+      "deleteCssClass",
+      "deriveSelectionModel",
+      "deselectComponent",
+      "deserializeComponentData",
+      "discoverComponentsFromDom",
+      "dispatchField",
+      "downloadUiFile",
+      "endDrag",
+      "endLineManip",
+      "endLineResize",
+      "ensureAdvancedLineOverlayFor",
+      "ensureLineOverlayFor",
+      "ensureOverlay",
+      "ensureOverlayCss",
+      "ensurePayload",
+      "exportChatHistory",
+      "exportSvgToGif",
+      "exportSvgToMp4",
+      "exposeEventRouterToReact",
+      "extractElementContent",
+      "fetchPropertyData",
+      "for",
+      "format",
+      "formatLabel",
+      "generateFields",
+      "generatePlaceholder",
+      "generateSections",
+      "getAllRulesConfig",
+      "getCanvasOrThrow",
+      "getCanvasRect",
+      "getChatHistoryStats",
+      "getClassesObserver",
+      "getClipboardText",
+      "getConversationContext",
+      "getCssClass",
+      "getCssRegistryObserver",
+      "getCurrentChatSession",
+      "getCurrentTheme",
+      "getFieldRenderer",
+      "getFlagOverride",
+      "getNestedValue",
+      "getPromptTemplate",
+      "getSelectionObserver",
+      "getStorageInfo",
+      "hideAllOverlays",
+      "hideSelectionOverlay",
+      "if",
+      "importChatHistory",
+      "initConductor",
+      "initConfig",
+      "initMovement",
+      "initResolver",
+      "injectCssClasses",
+      "injectCssFallback",
+      "injectRawCss",
+      "installDragImage",
+      "isFlagEnabled",
+      "listCssClasses",
+      "loadAllRulesFromWindow",
+      "loadChatHistory",
+      "loadComponents",
+      "loadCustomComponents",
+      "loadJsonSequenceCatalogs",
+      "loadSchemas",
+      "mergeErrors",
+      "moveLineManip",
+      "normalizeComponent",
+      "notifyCopyComplete",
+      "notifyPasteComplete",
+      "notifyReady",
+      "onDragStart",
+      "onDropForTest",
+      "openUiFile",
+      "parseUiFile",
+      "prepareField",
+      "publishCreateRequested",
+      "publishDeleted",
+      "publishDeselectionChanged",
+      "publishSelectionsCleared",
+      "queryAllComponents",
+      "readFromClipboard",
+      "recomputeLineSvg",
+      "refreshControlPanel",
+      "register",
+      "registerAllSequences",
+      "registerCssForComponents",
+      "registerFieldRenderer",
+      "registerInstances",
+      "registerObservers",
+      "removeClass",
+      "removeCssClassFromElement",
+      "removeCustomComponent",
+      "renderTemplatePreview",
+      "renderView",
+      "resolveEndpoints",
+      "routeDeleteRequest",
+      "routeDeselectionRequest",
+      "routeSelectionRequest",
+      "sanitizeHtml",
+      "saveChatHistory",
+      "saveCustomComponent",
+      "serializeSelectedComponent",
+      "setAllRulesConfig",
+      "setClassesObserver",
+      "setClipboardText",
+      "setCssRegistryObserver",
+      "setDirty",
+      "setFlagOverride",
+      "setNestedValue",
+      "setSelectionObserver",
+      "showSvgNodeOverlay",
+      "startDrag",
+      "startLineManip",
+      "startLineResize",
+      "startNewChatSession",
+      "toCreatePayloadFromData",
+      "toggleSection",
+      "toggleTheme",
+      "transform",
+      "transformClipboardToCreatePayload",
+      "transformImportToCreatePayload",
+      "updateAttribute",
+      "updateCssClass",
+      "updateFromElement",
+      "updateLine",
+      "updatePosition",
+      "updateSvgNodeAttribute",
+      "updateView",
+      "useControlPanelActions",
+      "useControlPanelSequences",
+      "useControlPanelState",
+      "useSchemaResolver",
+      "validateAndParseJson",
+      "validateComponentJson",
+      "validateField",
+      "validateFile",
+      "validateReactCode",
+      "validateReactCodeOrThrow"
+    ]
+  },
+  "coverage": {
+    "handlerReferencedCount": 12,
+    "handlerTotal": 222,
+    "topicReferencedCount": 0,
+    "topicTotal": 8
+  }
+}

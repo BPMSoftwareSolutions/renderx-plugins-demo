@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-21T20:03:10.131Z",
+    "generated": "2025-11-21T23:33:36.976Z",
     "phase": "Phase 1: Catalog Analysis",
     "sourceDirectories": [
       "packages/canvas/json-topics/",
@@ -9,7 +9,8 @@
       "packages/control-panel/json-topics/",
       "packages/header/json-topics/",
       "packages/library/json-topics/",
-      "packages/library-component/json-topics/"
+      "packages/library-component/json-topics/",
+      "packages/real-estate-analyzer/json-topics/"
     ],
     "fileCount": 2
   },

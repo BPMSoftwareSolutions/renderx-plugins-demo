@@ -35,6 +35,8 @@
     "audit:comprehensive": "node scripts/generate-comprehensive-audit.js",
     "generate:proposed:tests": "node scripts/generate-proposed-tests.js",
     "audit:full": "npm run analyze:catalog:all && npm run extract:ir:all && npm run compare:catalog:vs:ir && npm run audit:comprehensive && npm run generate:proposed:tests",
+  "audit:external": "node scripts/generate-external-interactions-audit.js",
+  "audit:full:runner": "node scripts/run-full-audit.js",
     "generate:test:stubs": "node scripts/generate-test-stubs.js",
     "dev:artifacts": "node scripts/copy-artifacts-to-public.js && vite",
     "artifacts:build:integrity": "node scripts/build-artifacts.js --srcRoot=catalog --outDir=dist/artifacts --integrity",

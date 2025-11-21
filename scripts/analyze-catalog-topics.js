@@ -25,7 +25,8 @@ const PLUGIN_PACKAGES = [
   "packages/control-panel",
   "packages/header",
   "packages/library",
-  "packages/library-component"
+  "packages/library-component",
+  "packages/real-estate-analyzer"
 ];
 
 async function ensureDir(dir) {

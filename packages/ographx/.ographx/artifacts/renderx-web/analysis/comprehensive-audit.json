@@ -1,19 +1,27 @@
 {
   "metadata": {
-    "generated": "2025-11-21T15:41:57.025Z",
+    "generated": "2025-11-21T23:33:40.745Z",
     "phase": "Comprehensive Audit Report",
     "version": "1.0"
   },
   "summary": {
-    "totalTestFiles": 164,
-    "totalTests": 1080,
-    "totalHandlers": 135,
-    "handlersWithTests": 34,
-    "handlersWithoutTests": 98,
-    "testCoveragePercentage": 26,
-    "catalogHandlers": 84,
-    "missingHandlers": 3,
-    "extraHandlers": 51
+    "totalTestFiles": 171,
+    "totalTests": 1129,
+    "totalHandlers": 423,
+    "handlersWithTests": 93,
+    "handlersWithoutTests": 129,
+    "testCoveragePercentage": 42,
+    "catalogHandlers": 87,
+    "missingHandlers": 0,
+    "extraHandlers": 135,
+    "externalInteractionEdges": 112,
+    "externalMissingHandlers": 0,
+    "externalMissingSequences": 1,
+    "externalMissingTopics": 13,
+    "externalOrphanHandlers": 210,
+    "externalOrphanTopics": 8,
+    "externalHandlerEdgeCoverage": 5,
+    "externalTopicEdgeCoverage": 0
   },
   "testFiles": [
     {
@@ -522,6 +530,52 @@
       ]
     },
     {
+      "path": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 7,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component create.dom.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "getCanvasOrThrow - returns canvas element"
+        },
+        {
+          "type": "it",
+          "name": "getCanvasOrThrow - throws when canvas missing"
+        },
+        {
+          "type": "it",
+          "name": "createElementWithId - creates element with ID"
+        },
+        {
+          "type": "it",
+          "name": "applyClasses - applies class list"
+        },
+        {
+          "type": "it",
+          "name": "applyInlineStyle - sets style properties"
+        },
+        {
+          "type": "it",
+          "name": "appendTo - appends child to parent"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "getCanvasOrThrow",
+        "createElementWithId",
+        "applyClasses",
+        "applyInlineStyle",
+        "appendTo"
+      ]
+    },
+    {
       "path": "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
       "plugin": "canvas-component",
       "testCount": 5,
@@ -840,6 +894,71 @@
       ]
     },
     {
+      "path": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 11,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component deselect.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "hideAllOverlays - hides overlays if present"
+        },
+        {
+          "type": "it",
+          "name": "hideAllOverlays - safe when overlays are missing"
+        },
+        {
+          "type": "it",
+          "name": "deselectComponent - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "deselectComponent - no-op when id missing"
+        },
+        {
+          "type": "it",
+          "name": "publishDeselectionChanged - safe invocation with id"
+        },
+        {
+          "type": "it",
+          "name": "publishDeselectionChanged - safe invocation without id"
+        },
+        {
+          "type": "it",
+          "name": "publishSelectionsCleared - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "clearAllSelections - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "routeDeselectionRequest - executes with id"
+        },
+        {
+          "type": "it",
+          "name": "routeDeselectionRequest - executes without id"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "hideAllOverlays",
+        "deselectComponent",
+        "publishDeselectionChanged",
+        "publishSelectionsCleared",
+        "clearAllSelections",
+        "routeDeselectionRequest",
+        "createMockCtx",
+        "mockEventRouterPublish"
+      ]
+    },
+    {
       "path": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
       "plugin": "canvas-component",
       "testCount": 7,
@@ -933,6 +1052,56 @@
         "beforeEach",
         "handlers as createHandlers",
         "showSelectionOverlay"
+      ]
+    },
+    {
+      "path": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 8,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component drag.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "updatePosition - moves element based on delta"
+        },
+        {
+          "type": "it",
+          "name": "updatePosition - throws on missing id"
+        },
+        {
+          "type": "it",
+          "name": "startDrag - initializes drag state"
+        },
+        {
+          "type": "it",
+          "name": "startDrag - warns on missing id"
+        },
+        {
+          "type": "it",
+          "name": "endDrag - finalizes drag"
+        },
+        {
+          "type": "it",
+          "name": "endDrag - warns on missing id"
+        },
+        {
+          "type": "it",
+          "name": "forwardToControlPanel - returns true"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "updatePosition",
+        "startDrag",
+        "endDrag",
+        "forwardToControlPanel",
+        "createMockCtx"
       ]
     },
     {
@@ -1722,6 +1891,50 @@
       ]
     },
     {
+      "path": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 6,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component paste.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "readFromClipboard - parses clipboard into clipboardData"
+        },
+        {
+          "type": "it",
+          "name": "deserializeComponentData - uses provided clipboardText"
+        },
+        {
+          "type": "it",
+          "name": "calculatePastePosition - offsets by +20,+20"
+        },
+        {
+          "type": "it",
+          "name": "createPastedComponent - transforms and plays create sequence"
+        },
+        {
+          "type": "it",
+          "name": "notifyPasteComplete - no-op success"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "readFromClipboard",
+        "deserializeComponentData",
+        "calculatePastePosition",
+        "createPastedComponent",
+        "notifyPasteComplete",
+        "createMockCtx"
+      ]
+    },
+    {
       "path": "\\packages\\canvas-component\\__tests__\\react-code-validator.spec.ts",
       "plugin": "canvas-component",
       "testCount": 24,
@@ -1986,6 +2199,44 @@
       ]
     },
     {
+      "path": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component resize.line.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "startLineResize - calls optional callback harmlessly"
+        },
+        {
+          "type": "it",
+          "name": "updateLine - updates endpoints/length"
+        },
+        {
+          "type": "it",
+          "name": "updateLine - throws when id missing"
+        },
+        {
+          "type": "it",
+          "name": "endLineResize - invokes optional callback"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "startLineResize",
+        "updateLine",
+        "endLineResize",
+        "createMockCtx"
+      ]
+    },
+    {
       "path": "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
       "plugin": "canvas-component",
       "testCount": 1,
@@ -2074,6 +2325,43 @@
         "beforeEach",
         "handlers as createHandlers",
         "showSelectionOverlay"
+      ]
+    },
+    {
+      "path": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component resize.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "startResize - captures line base metrics (non-line harmless)"
+        },
+        {
+          "type": "it",
+          "name": "updateSize - applies size deltas and updates payload"
+        },
+        {
+          "type": "it",
+          "name": "updateSize - throws on missing id"
+        },
+        {
+          "type": "it",
+          "name": "endResize - executes without error"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "startResize",
+        "updateSize",
+        "endResize",
+        "createMockCtx"
       ]
     },
     {
@@ -2199,6 +2487,52 @@
         "beforeEach",
         "handlers as createHandlers",
         "showSelectionOverlay"
+      ]
+    },
+    {
+      "path": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 7,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component select.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "routeSelectionRequest - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "routeSelectionRequest - ignores missing id"
+        },
+        {
+          "type": "it",
+          "name": "hideSelectionOverlay - hides overlay"
+        },
+        {
+          "type": "it",
+          "name": "hideSelectionOverlay - safe when already hidden"
+        },
+        {
+          "type": "it",
+          "name": "publishSelectionChanged - safe invocation with id"
+        },
+        {
+          "type": "it",
+          "name": "publishSelectionChanged - safe invocation without id"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "routeSelectionRequest",
+        "hideSelectionOverlay",
+        "publishSelectionChanged",
+        "createMockCtx",
+        "mockEventRouterPublish"
       ]
     },
     {
@@ -6807,6 +7141,46 @@
   "handlerCoverage": {
     "withTests": [
       {
+        "name": "register",
+        "file": "\\packages\\canvas\\src\\index.ts",
+        "plugin": "canvas",
+        "testCount": 3,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\exports.spec.ts",
+          "\\packages\\library\\__tests__\\register.spec.ts",
+          "\\packages\\library-component\\__tests__\\register.spec.ts"
+        ],
+        "testNames": [
+          "@renderx-plugins/control-panel package exports",
+          "exports ControlPanel UI component",
+          "exports register() function (no-op allowed)",
+          "exports selection symphony handlers",
+          "register function",
+          "should call conductor.mount with correct sequence definition and handlers",
+          "should mark the sequence as mounted in conductor",
+          "should not call mount if conductor is null or undefined",
+          "should not call mount if conductor.mount is not available",
+          "renderx-plugin-library-component: register()",
+          "mounts the three library-component sequences exactly once with expected pluginIds",
+          "exposes json-sequences via renderx.sequences metadata",
+          "json-sequences catalog is loadable and contains expected sequences"
+        ]
+      },
+      {
+        "name": "onDropForTest",
+        "file": "\\packages\\canvas\\src\\ui\\CanvasDrop.ts",
+        "plugin": "canvas",
+        "testCount": 2,
+        "testFiles": [
+          "\\packages\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+          "\\packages\\canvas\\__tests__\\drop.spec.ts"
+        ],
+        "testNames": [
+          "CanvasDrop routes to library.container.drop when dropping onto a container",
+          "canvas drop triggers library-component drop sequence"
+        ]
+      },
+      {
         "name": "enhanceLine",
         "file": "\\packages\\canvas-component\\src\\symphonies\\augment\\augment.line.stage-crew.ts",
         "plugin": "canvas-component",
@@ -6850,6 +7224,96 @@
           "Advanced Line — dynamic viewBox autosize",
           "expands viewBox when endpoints extend beyond element bounds (no rotation)",
           "adds headroom when rotated so the line is never clipped"
+        ]
+      },
+      {
+        "name": "getCanvasOrThrow",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
+        "name": "createElementWithId",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
+        "name": "applyClasses",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
+        "name": "applyInlineStyle",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
+        "name": "appendTo",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
         ]
       },
       {
@@ -7087,6 +7551,214 @@
           "should warn about mixed React.createElement and JSX",
           "should throw on invalid code",
           "should not throw on valid code"
+        ]
+      },
+      {
+        "name": "hideAllOverlays",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "name": "deselectComponent",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "name": "publishDeselectionChanged",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "name": "publishSelectionsCleared",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "name": "clearAllSelections",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "name": "routeDeselectionRequest",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "name": "updatePosition",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      },
+      {
+        "name": "startDrag",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      },
+      {
+        "name": "endDrag",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      },
+      {
+        "name": "forwardToControlPanel",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
         ]
       },
       {
@@ -7412,16 +8084,205 @@
         ]
       },
       {
-        "name": "createPastedComponent",
+        "name": "readFromClipboard",
         "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
         "plugin": "canvas-component",
         "testCount": 1,
         "testFiles": [
-          "\\packages\\canvas-component\\__tests__\\paste.interactions.spec.ts"
+          "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
+        "name": "deserializeComponentData",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
+        "name": "calculatePastePosition",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
+        "name": "createPastedComponent",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 2,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\paste.interactions.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts"
         ],
         "testNames": [
           "paste interactions attach and publish drag events",
-          "attaches onDragMove to payload passed into canvas.component.create and publishes {id, position}"
+          "attaches onDragMove to payload passed into canvas.component.create and publishes {id, position}",
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
+        "name": "notifyPasteComplete",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
+        "name": "startResize",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      },
+      {
+        "name": "updateSize",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      },
+      {
+        "name": "endResize",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      },
+      {
+        "name": "startLineResize",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
+        "name": "updateLine",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
+        "name": "endLineResize",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
+        "name": "routeSelectionRequest",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       },
       {
@@ -7463,6 +8324,42 @@
           "selection overlay positions correctly for children inside container",
           "computes overlay rect from canvas origin when element is container-relative",
           "selection overlay CSS ensures box-sizing border-box for accurate alignment"
+        ]
+      },
+      {
+        "name": "hideSelectionOverlay",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
+        ]
+      },
+      {
+        "name": "publishSelectionChanged",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       },
       {
@@ -7513,6 +8410,211 @@
           "handles invalid paths gracefully",
           "handles refresh control panel function",
           "handles missing element ID in refresh gracefully"
+        ]
+      },
+      {
+        "name": "setFlagOverride",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+        "plugin": "canvas-component",
+        "testCount": 6,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.overlay.attach.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
+          "\\packages\\host-sdk\\tests\\feature-flags.spec.ts"
+        ],
+        "testNames": [
+          "Advanced Line augmentation (Phase 1)",
+          "Advanced Line handlers — moveLineManip",
+          "updates endpoint A and recomputes line geometry",
+          "Advanced Line overlay attaches on selection (flag ON)",
+          "Advanced Line overlay drag — cumulative delta causes runaway (expected failing)",
+          "Advanced Line recompute (Phase 2+3)",
+          "maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates",
+          "toggles marker-end via --arrowEnd CSS var",
+          "renders quadratic path when --curve=1 with --cx/--cy",
+          "applies rotate transform when --angle is set",
+          "Feature Flags",
+          "isFlagEnabled",
+          "getFlagMeta",
+          "getAllFlags",
+          "should return false for unknown flags",
+          "should respect test overrides",
+          "should delegate to host when available",
+          "should log usage",
+          "should return undefined for unknown flags",
+          "should return built-in flag meta",
+          "should delegate to host when available",
+          "should return built-in flags",
+          "should delegate to host when available"
+        ]
+      },
+      {
+        "name": "clearFlagOverrides",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+        "plugin": "canvas-component",
+        "testCount": 6,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.manip.handlers.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.overlay.attach.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.overlay.drag.spec.ts",
+          "\\packages\\canvas-component\\__tests__\\advanced-line.recompute.spec.ts",
+          "\\packages\\host-sdk\\tests\\feature-flags.spec.ts"
+        ],
+        "testNames": [
+          "Advanced Line augmentation (Phase 1)",
+          "Advanced Line handlers — moveLineManip",
+          "updates endpoint A and recomputes line geometry",
+          "Advanced Line overlay attaches on selection (flag ON)",
+          "Advanced Line overlay drag — cumulative delta causes runaway (expected failing)",
+          "Advanced Line recompute (Phase 2+3)",
+          "maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates",
+          "toggles marker-end via --arrowEnd CSS var",
+          "renders quadratic path when --curve=1 with --cx/--cy",
+          "applies rotate transform when --angle is set",
+          "Feature Flags",
+          "isFlagEnabled",
+          "getFlagMeta",
+          "getAllFlags",
+          "should return false for unknown flags",
+          "should respect test overrides",
+          "should delegate to host when available",
+          "should log usage",
+          "should return undefined for unknown flags",
+          "should return built-in flag meta",
+          "should delegate to host when available",
+          "should return built-in flags",
+          "should delegate to host when available"
+        ]
+      },
+      {
+        "name": "isFlagEnabled",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\host-sdk\\tests\\feature-flags.spec.ts"
+        ],
+        "testNames": [
+          "Feature Flags",
+          "isFlagEnabled",
+          "getFlagMeta",
+          "getAllFlags",
+          "should return false for unknown flags",
+          "should respect test overrides",
+          "should delegate to host when available",
+          "should log usage",
+          "should return undefined for unknown flags",
+          "should return built-in flag meta",
+          "should delegate to host when available",
+          "should return built-in flags",
+          "should delegate to host when available"
+        ]
+      },
+      {
+        "name": "setSelectionObserver",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 3,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
+          "\\packages\\control-panel\\__tests__\\attribute-editing.integration.spec.ts",
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "Control Panel bidirectional attribute editing",
+          "forwards content changes to Canvas component",
+          "forwards styling changes to Canvas component",
+          "forwards layout changes to Canvas component",
+          "Canvas component updates DOM when receiving attribute changes",
+          "updates trigger Control Panel refresh for bidirectional sync",
+          "Control Panel ↔ Canvas Component Integration",
+          "demonstrates full bidirectional attribute editing flow",
+          "handles multiple rapid attribute changes",
+          "gracefully handles invalid attribute updates",
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
+        ]
+      },
+      {
+        "name": "getSelectionObserver",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
+        ]
+      },
+      {
+        "name": "setClassesObserver",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
+        ]
+      },
+      {
+        "name": "getClassesObserver",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
+        ]
+      },
+      {
+        "name": "setCssRegistryObserver",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
+        ]
+      },
+      {
+        "name": "getCssRegistryObserver",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
+        ]
+      },
+      {
+        "name": "clearAllObservers",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\observer.store.spec.ts"
+        ],
+        "testNames": [
+          "observer.store idempotency",
+          "setters are idempotent and clearAll resets observers"
         ]
       },
       {
@@ -7581,6 +8683,21 @@
         ]
       },
       {
+        "name": "ControlPanel",
+        "file": "\\packages\\control-panel\\src\\ui\\ControlPanel.tsx",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\exports.spec.ts"
+        ],
+        "testNames": [
+          "@renderx-plugins/control-panel package exports",
+          "exports ControlPanel UI component",
+          "exports register() function (no-op allowed)",
+          "exports selection symphony handlers"
+        ]
+      },
+      {
         "name": "getCurrentTheme",
         "file": "\\packages\\header\\src\\symphonies\\ui\\ui.stage-crew.ts",
         "plugin": "header",
@@ -7609,9 +8726,775 @@
           "getCurrentTheme respects existing DOM attribute first",
           "toggleTheme flips and persists theme"
         ]
+      },
+      {
+        "name": "loadChatHistory",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "saveChatHistory",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "createChatSession",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "addMessagesToCurrentSession",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "getCurrentChatSession",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "deleteChatSession",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "clearAllChatHistory",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "getChatHistoryStats",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "getConversationContext",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\chat.utils.spec.ts"
+        ],
+        "testNames": [
+          "Chat Utils",
+          "loadChatHistory",
+          "saveChatHistory",
+          "createChatSession",
+          "addMessagesToCurrentSession",
+          "getCurrentChatSession",
+          "deleteChatSession",
+          "clearAllChatHistory",
+          "getChatHistoryStats",
+          "getConversationContext",
+          "should return empty array when no history exists",
+          "should load existing chat history",
+          "should handle corrupted localStorage data",
+          "should handle non-array data",
+          "should save chat history to localStorage",
+          "should limit number of sessions",
+          "should limit messages per session",
+          "should handle localStorage errors",
+          "should create a new chat session with default title",
+          "should create a chat session with messages and generated title",
+          "should truncate long titles",
+          "should create new session if none exists",
+          "should add messages to existing session",
+          "should update session title if still default",
+          "should return null when no sessions exist",
+          "should return the most recent session",
+          "should delete session by ID",
+          "should return false if session not found",
+          "should clear all chat history",
+          "should return stats for empty history",
+          "should calculate stats correctly",
+          "should return empty array when no current session",
+          "should return recent messages excluding errors"
+        ]
+      },
+      {
+        "name": "saveCustomComponent",
+        "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\storage.utils.spec.ts"
+        ],
+        "testNames": [
+          "storage.utils",
+          "saveCustomComponent",
+          "loadCustomComponents",
+          "removeCustomComponent",
+          "clearCustomComponents",
+          "getStorageInfo",
+          "should save a valid component successfully",
+          "should reject component without required metadata.type",
+          "should reject component without required metadata.name",
+          "should reject duplicate component types",
+          "should preserve existing category",
+          "should return empty array when no components stored",
+          "should return stored components",
+          "should handle corrupted localStorage data gracefully",
+          "should handle non-array data in localStorage",
+          "should remove existing component",
+          "should return false for non-existent component",
+          "should handle localStorage errors gracefully",
+          "should clear all components",
+          "should handle localStorage errors gracefully",
+          "should return correct storage info for empty storage",
+          "should return correct storage info with components"
+        ]
+      },
+      {
+        "name": "loadCustomComponents",
+        "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+        "plugin": "library",
+        "testCount": 3,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\handlers.loadComponents.spec.ts",
+          "\\packages\\library\\__tests__\\handlers.sequence-integration.spec.ts",
+          "\\packages\\library\\__tests__\\storage.utils.spec.ts"
+        ],
+        "testNames": [
+          "library.handlers",
+          "loadComponents uses Host SDK inventory when available and assigns payload components",
+          "loadComponents merges custom components with inventory components",
+          "loadComponents works with only custom components when no inventory",
+          "loadComponents handles empty custom components",
+          "notifyUi calls onComponentsLoaded from ctx.payload (not from data parameter)",
+          "library.handlers - Two-Beat Sequence Integration",
+          "REAL SCENARIO: callback flows from loadComponents beat to notifyUi beat via ctx.payload",
+          "REAL SCENARIO: callback is preserved in ctx.payload after loadComponents",
+          "storage.utils",
+          "saveCustomComponent",
+          "loadCustomComponents",
+          "removeCustomComponent",
+          "clearCustomComponents",
+          "getStorageInfo",
+          "should save a valid component successfully",
+          "should reject component without required metadata.type",
+          "should reject component without required metadata.name",
+          "should reject duplicate component types",
+          "should preserve existing category",
+          "should return empty array when no components stored",
+          "should return stored components",
+          "should handle corrupted localStorage data gracefully",
+          "should handle non-array data in localStorage",
+          "should remove existing component",
+          "should return false for non-existent component",
+          "should handle localStorage errors gracefully",
+          "should clear all components",
+          "should handle localStorage errors gracefully",
+          "should return correct storage info for empty storage",
+          "should return correct storage info with components"
+        ]
+      },
+      {
+        "name": "removeCustomComponent",
+        "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\storage.utils.spec.ts"
+        ],
+        "testNames": [
+          "storage.utils",
+          "saveCustomComponent",
+          "loadCustomComponents",
+          "removeCustomComponent",
+          "clearCustomComponents",
+          "getStorageInfo",
+          "should save a valid component successfully",
+          "should reject component without required metadata.type",
+          "should reject component without required metadata.name",
+          "should reject duplicate component types",
+          "should preserve existing category",
+          "should return empty array when no components stored",
+          "should return stored components",
+          "should handle corrupted localStorage data gracefully",
+          "should handle non-array data in localStorage",
+          "should remove existing component",
+          "should return false for non-existent component",
+          "should handle localStorage errors gracefully",
+          "should clear all components",
+          "should handle localStorage errors gracefully",
+          "should return correct storage info for empty storage",
+          "should return correct storage info with components"
+        ]
+      },
+      {
+        "name": "clearCustomComponents",
+        "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\storage.utils.spec.ts"
+        ],
+        "testNames": [
+          "storage.utils",
+          "saveCustomComponent",
+          "loadCustomComponents",
+          "removeCustomComponent",
+          "clearCustomComponents",
+          "getStorageInfo",
+          "should save a valid component successfully",
+          "should reject component without required metadata.type",
+          "should reject component without required metadata.name",
+          "should reject duplicate component types",
+          "should preserve existing category",
+          "should return empty array when no components stored",
+          "should return stored components",
+          "should handle corrupted localStorage data gracefully",
+          "should handle non-array data in localStorage",
+          "should remove existing component",
+          "should return false for non-existent component",
+          "should handle localStorage errors gracefully",
+          "should clear all components",
+          "should handle localStorage errors gracefully",
+          "should return correct storage info for empty storage",
+          "should return correct storage info with components"
+        ]
+      },
+      {
+        "name": "getStorageInfo",
+        "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\storage.utils.spec.ts"
+        ],
+        "testNames": [
+          "storage.utils",
+          "saveCustomComponent",
+          "loadCustomComponents",
+          "removeCustomComponent",
+          "clearCustomComponents",
+          "getStorageInfo",
+          "should save a valid component successfully",
+          "should reject component without required metadata.type",
+          "should reject component without required metadata.name",
+          "should reject duplicate component types",
+          "should preserve existing category",
+          "should return empty array when no components stored",
+          "should return stored components",
+          "should handle corrupted localStorage data gracefully",
+          "should handle non-array data in localStorage",
+          "should remove existing component",
+          "should return false for non-existent component",
+          "should handle localStorage errors gracefully",
+          "should clear all components",
+          "should handle localStorage errors gracefully",
+          "should return correct storage info for empty storage",
+          "should return correct storage info with components"
+        ]
+      },
+      {
+        "name": "validateComponentJson",
+        "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\validation.utils.spec.ts"
+        ],
+        "testNames": [
+          "validation.utils",
+          "validateComponentJson",
+          "normalizeComponent",
+          "validateAndParseJson",
+          "validateFile",
+          "should validate a correct component",
+          "should reject non-object input",
+          "should reject null input",
+          "should reject array input",
+          "should require metadata object",
+          "should require metadata.type",
+          "should require metadata.name",
+          "should validate metadata.type format",
+          "should accept valid metadata.type format",
+          "should require ui object",
+          "should require ui to have content",
+          "should accept ui with template object",
+          "should accept ui with template string (Handlebars)",
+          "should reject ui with invalid template type",
+          "should accept ui with styles",
+          "should accept real JSON component format with integration and interactions",
+          "should warn about unknown properties",
+          "should warn about non-custom category",
+          "should validate optional fields when present",
+          "should normalize a component with all fields",
+          "should set default category and description",
+          "should parse and validate valid JSON",
+          "should reject invalid JSON",
+          "should reject valid JSON with invalid component",
+          "should validate a correct JSON file",
+          "should reject non-JSON file extension",
+          "should reject files that are too large",
+          "should warn about unexpected MIME type",
+          "should accept text MIME type"
+        ]
+      },
+      {
+        "name": "normalizeComponent",
+        "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\validation.utils.spec.ts"
+        ],
+        "testNames": [
+          "validation.utils",
+          "validateComponentJson",
+          "normalizeComponent",
+          "validateAndParseJson",
+          "validateFile",
+          "should validate a correct component",
+          "should reject non-object input",
+          "should reject null input",
+          "should reject array input",
+          "should require metadata object",
+          "should require metadata.type",
+          "should require metadata.name",
+          "should validate metadata.type format",
+          "should accept valid metadata.type format",
+          "should require ui object",
+          "should require ui to have content",
+          "should accept ui with template object",
+          "should accept ui with template string (Handlebars)",
+          "should reject ui with invalid template type",
+          "should accept ui with styles",
+          "should accept real JSON component format with integration and interactions",
+          "should warn about unknown properties",
+          "should warn about non-custom category",
+          "should validate optional fields when present",
+          "should normalize a component with all fields",
+          "should set default category and description",
+          "should parse and validate valid JSON",
+          "should reject invalid JSON",
+          "should reject valid JSON with invalid component",
+          "should validate a correct JSON file",
+          "should reject non-JSON file extension",
+          "should reject files that are too large",
+          "should warn about unexpected MIME type",
+          "should accept text MIME type"
+        ]
+      },
+      {
+        "name": "validateAndParseJson",
+        "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\validation.utils.spec.ts"
+        ],
+        "testNames": [
+          "validation.utils",
+          "validateComponentJson",
+          "normalizeComponent",
+          "validateAndParseJson",
+          "validateFile",
+          "should validate a correct component",
+          "should reject non-object input",
+          "should reject null input",
+          "should reject array input",
+          "should require metadata object",
+          "should require metadata.type",
+          "should require metadata.name",
+          "should validate metadata.type format",
+          "should accept valid metadata.type format",
+          "should require ui object",
+          "should require ui to have content",
+          "should accept ui with template object",
+          "should accept ui with template string (Handlebars)",
+          "should reject ui with invalid template type",
+          "should accept ui with styles",
+          "should accept real JSON component format with integration and interactions",
+          "should warn about unknown properties",
+          "should warn about non-custom category",
+          "should validate optional fields when present",
+          "should normalize a component with all fields",
+          "should set default category and description",
+          "should parse and validate valid JSON",
+          "should reject invalid JSON",
+          "should reject valid JSON with invalid component",
+          "should validate a correct JSON file",
+          "should reject non-JSON file extension",
+          "should reject files that are too large",
+          "should warn about unexpected MIME type",
+          "should accept text MIME type"
+        ]
+      },
+      {
+        "name": "validateFile",
+        "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+        "plugin": "library",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\library\\__tests__\\validation.utils.spec.ts"
+        ],
+        "testNames": [
+          "validation.utils",
+          "validateComponentJson",
+          "normalizeComponent",
+          "validateAndParseJson",
+          "validateFile",
+          "should validate a correct component",
+          "should reject non-object input",
+          "should reject null input",
+          "should reject array input",
+          "should require metadata object",
+          "should require metadata.type",
+          "should require metadata.name",
+          "should validate metadata.type format",
+          "should accept valid metadata.type format",
+          "should require ui object",
+          "should require ui to have content",
+          "should accept ui with template object",
+          "should accept ui with template string (Handlebars)",
+          "should reject ui with invalid template type",
+          "should accept ui with styles",
+          "should accept real JSON component format with integration and interactions",
+          "should warn about unknown properties",
+          "should warn about non-custom category",
+          "should validate optional fields when present",
+          "should normalize a component with all fields",
+          "should set default category and description",
+          "should parse and validate valid JSON",
+          "should reject invalid JSON",
+          "should reject valid JSON with invalid component",
+          "should validate a correct JSON file",
+          "should reject non-JSON file extension",
+          "should reject files that are too large",
+          "should warn about unexpected MIME type",
+          "should accept text MIME type"
+        ]
       }
     ],
     "withoutTests": [
+      {
+        "name": "CanvasHeader",
+        "file": "\\packages\\canvas\\src\\ui\\CanvasHeader.tsx",
+        "plugin": "canvas",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "CanvasPage",
+        "file": "\\packages\\canvas\\src\\ui\\CanvasPage.tsx",
+        "plugin": "canvas",
+        "parameters": [],
+        "isAsync": false
+      },
       {
         "name": "serializeSelectedComponent",
         "file": "\\packages\\canvas-component\\src\\symphonies\\copy\\copy.stage-crew.ts",
@@ -7672,54 +9555,6 @@
         "isAsync": false
       },
       {
-        "name": "getCanvasOrThrow",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [],
-        "isAsync": false
-      },
-      {
-        "name": "createElementWithId",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "tag: string",
-          "id: string"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "applyClasses",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "el: HTMLElement",
-          "classes: string[]"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "applyInlineStyle",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "el: HTMLElement",
-          "style: Record<string",
-          "string>"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "appendTo",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.dom.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "parent: HTMLElement",
-          "child: HTMLElement"
-        ],
-        "isAsync": false
-      },
-      {
         "name": "createFromImportRecord",
         "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.from-import.ts",
         "plugin": "canvas-component",
@@ -7771,6 +9606,13 @@
           "data: any",
           "ctx: any"
         ],
+        "isAsync": false
+      },
+      {
+        "name": "Name",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+        "plugin": "canvas-component",
+        "parameters": [],
         "isAsync": false
       },
       {
@@ -7844,103 +9686,6 @@
         "isAsync": true
       },
       {
-        "name": "hideAllOverlays",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [],
-        "isAsync": false
-      },
-      {
-        "name": "deselectComponent",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "publishDeselectionChanged",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "publishSelectionsCleared",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "_data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "clearAllSelections",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "_data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "routeDeselectionRequest",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\deselect\\deselect.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "updatePosition",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "startDrag",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "endDrag",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "forwardToControlPanel",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\drag\\drag.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "_data?: any",
-          "_ctx?: any"
-        ],
-        "isAsync": false
-      },
-      {
         "name": "exportSvgToGif",
         "file": "\\packages\\canvas-component\\src\\symphonies\\export\\export.gif.stage-crew.ts",
         "plugin": "canvas-component",
@@ -7994,101 +9739,6 @@
         "plugin": "canvas-component",
         "parameters": [
           "_data: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "readFromClipboard",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "_data: any",
-          "_ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "deserializeComponentData",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "_ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "calculatePastePosition",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "_ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "notifyPasteComplete",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\paste\\paste.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "_data: any",
-          "_ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "startResize",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "updateSize",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx?: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "endResize",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\resize\\resize.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "startLineResize",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "updateLine",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "endLineResize",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\resize-line\\resize.line.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any"
         ],
         "isAsync": false
       },
@@ -8190,33 +9840,6 @@
         "isAsync": false
       },
       {
-        "name": "routeSelectionRequest",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "hideSelectionOverlay",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [],
-        "isAsync": false
-      },
-      {
-        "name": "publishSelectionChanged",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
         "name": "updateAttribute",
         "file": "\\packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
         "plugin": "canvas-component",
@@ -8243,6 +9866,83 @@
         "isAsync": false
       },
       {
+        "name": "initConductor",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+        "plugin": "canvas-component",
+        "parameters": [],
+        "isAsync": true
+      },
+      {
+        "name": "registerAllSequences",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+        "plugin": "canvas-component",
+        "parameters": [
+          "conductor: Conductor"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "loadJsonSequenceCatalogs",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+        "plugin": "canvas-component",
+        "parameters": [
+          "conductor: Conductor",
+          "pluginIds: string[]"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "getFlagOverride",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+        "plugin": "canvas-component",
+        "parameters": [
+          "flag: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "setAllRulesConfig",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "plugin": "canvas-component",
+        "parameters": [
+          "cfg: AllRulesConfig"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "loadAllRulesFromWindow",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "plugin": "canvas-component",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "getAllRulesConfig",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "plugin": "canvas-component",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "sanitizeHtml",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\sanitizeHtml.ts",
+        "plugin": "canvas-component",
+        "parameters": [
+          "input: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "transform",
+        "file": "\\packages\\canvas-component\\src\\types\\babel-standalone.d.ts",
+        "plugin": "canvas-component",
+        "parameters": [
+          "code: string",
+          "options?: {\n      presets?: (string | unknown"
+        ],
+        "isAsync": false
+      },
+      {
         "name": "addClass",
         "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
         "plugin": "control-panel",
@@ -8259,6 +9959,24 @@
         "parameters": [
           "data: any",
           "ctx: any"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "if",
+        "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "id && updatedClasses"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "catch",
+        "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "e"
         ],
         "isAsync": false
       },
@@ -8493,6 +10211,347 @@
         "isAsync": false
       },
       {
+        "name": "registerFieldRenderer",
+        "file": "\\packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "type: string",
+          "component: FieldRenderer"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "getFieldRenderer",
+        "file": "\\packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "type: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "EmptyState",
+        "file": "\\packages\\control-panel\\src\\components\\layout\\EmptyState.tsx",
+        "plugin": "control-panel",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "LoadingState",
+        "file": "\\packages\\control-panel\\src\\components\\layout\\LoadingState.tsx",
+        "plugin": "control-panel",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "PanelHeader",
+        "file": "\\packages\\control-panel\\src\\components\\layout\\PanelHeader.tsx",
+        "plugin": "control-panel",
+        "parameters": [
+          "{ selectedElement }: { selectedElement: SelectedElement | null }"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "useControlPanelActions",
+        "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelActions.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "selectedElement: SelectedElement | null",
+          "dispatch: React.Dispatch<ControlPanelAction>"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "useControlPanelSequences",
+        "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelSequences.ts",
+        "plugin": "control-panel",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "useControlPanelState",
+        "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelState.ts",
+        "plugin": "control-panel",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "useSchemaResolver",
+        "file": "\\packages\\control-panel\\src\\hooks\\useSchemaResolver.ts",
+        "plugin": "control-panel",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "controlPanelReducer",
+        "file": "\\packages\\control-panel\\src\\state\\control-panel.reducer.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "state: ControlPanelState",
+          "action: ControlPanelAction"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "extractElementContent",
+        "file": "\\packages\\control-panel\\src\\utils\\content-extractor.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "element: HTMLElement",
+          "type?: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "getNestedValue",
+        "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "obj: any",
+          "path: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "setNestedValue",
+        "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "obj: any",
+          "path: string",
+          "value: any"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "formatLabel",
+        "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "key: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "generatePlaceholder",
+        "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+        "plugin": "control-panel",
+        "parameters": [
+          "key: string",
+          "type: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "HeaderControls",
+        "file": "\\packages\\header\\src\\ui\\HeaderControls.tsx",
+        "plugin": "header",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "HeaderThemeToggle",
+        "file": "\\packages\\header\\src\\ui\\HeaderThemeToggle.tsx",
+        "plugin": "header",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "HeaderTitle",
+        "file": "\\packages\\header\\src\\ui\\HeaderTitle.tsx",
+        "plugin": "header",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "loadComponents",
+        "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+        "plugin": "library",
+        "parameters": [
+          "data: any",
+          "ctx: any"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "for",
+        "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+        "plugin": "library",
+        "parameters": [
+          "const f of files"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "RAGEnrichmentService.if",
+        "file": "\\packages\\library\\src\\services\\rag-enrichment.service.ts",
+        "plugin": "library",
+        "parameters": [
+          "!libraryComponents || libraryComponents.length === 0"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "ComponentBehaviorExtractor.for",
+        "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+        "plugin": "library",
+        "parameters": [
+          "const mapping of mappings"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "ComponentBehaviorExtractor.if",
+        "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+        "plugin": "library",
+        "parameters": [
+          "m"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "ChatMessageComponent",
+        "file": "\\packages\\library\\src\\ui\\ChatMessage.tsx",
+        "plugin": "library",
+        "parameters": [
+          "{ \r\n  message",
+          "onAddToLibrary",
+          "onEditComponent",
+          "onCopyJSON",
+          "onRegenerateComponent \r\n}: ChatMessageProps"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "ChatWindow",
+        "file": "\\packages\\library\\src\\ui\\ChatWindow.tsx",
+        "plugin": "library",
+        "parameters": [
+          "{ isOpen",
+          "onClose",
+          "onComponentGenerated }: ChatWindowProps"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "ConfigStatusUI",
+        "file": "\\packages\\library\\src\\ui\\ConfigStatusUI.tsx",
+        "plugin": "library",
+        "parameters": [
+          "{ status }: ConfigStatusUIProps"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "CustomComponentList",
+        "file": "\\packages\\library\\src\\ui\\CustomComponentList.tsx",
+        "plugin": "library",
+        "parameters": [
+          "{ components",
+          "onComponentRemoved",
+          "onRemove }: CustomComponentListProps"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "CustomComponentUpload",
+        "file": "\\packages\\library\\src\\ui\\CustomComponentUpload.tsx",
+        "plugin": "library",
+        "parameters": [
+          "{ onUpload",
+          "onComponentAdded }: CustomComponentUploadProps"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "registerCssForComponents",
+        "file": "\\packages\\library\\src\\ui\\LibraryPanel.tsx",
+        "plugin": "library",
+        "parameters": [
+          "items: any[]",
+          "_conductor: any"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "LibraryPanel",
+        "file": "\\packages\\library\\src\\ui\\LibraryPanel.tsx",
+        "plugin": "library",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "LibraryPreview",
+        "file": "\\packages\\library\\src\\ui\\LibraryPreview.tsx",
+        "plugin": "library",
+        "parameters": [
+          "{\r\n  component",
+          "conductor",
+          "}: {\r\n  component: any;\r\n  conductor: any;\r\n}"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "computePreviewModel",
+        "file": "\\packages\\library\\src\\ui\\preview.model.ts",
+        "plugin": "library",
+        "parameters": [
+          "component: any"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "startNewChatSession",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "exportChatHistory",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "parameters": [],
+        "isAsync": false
+      },
+      {
+        "name": "importChatHistory",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "parameters": [
+          "jsonData: string"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "cleanupChatHistory",
+        "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+        "plugin": "library",
+        "parameters": [
+          "maxSessions: number = MAX_HISTORY_SESSIONS"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "buildSystemPrompt",
+        "file": "\\packages\\library\\src\\utils\\prompt.templates.ts",
+        "plugin": "library",
+        "parameters": [
+          "context?: PromptContext"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "getPromptTemplate",
+        "file": "\\packages\\library\\src\\utils\\prompt.templates.ts",
+        "plugin": "library",
+        "parameters": [
+          "id: string"
+        ],
+        "isAsync": false
+      },
+      {
         "name": "ensurePayload",
         "file": "\\packages\\library-component\\src\\symphonies\\drag\\drag.preview.stage-crew.ts",
         "plugin": "library-component",
@@ -8567,10 +10626,98 @@
           "offsetY: number"
         ],
         "isAsync": false
+      },
+      {
+        "name": "onDragStart",
+        "file": "\\packages\\library-component\\src\\symphonies\\drag.symphony.ts",
+        "plugin": "library-component",
+        "parameters": [
+          "data: any"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "publishCreateRequested",
+        "file": "\\packages\\library-component\\src\\symphonies\\drop.container.symphony.ts",
+        "plugin": "library-component",
+        "parameters": [
+          "data: any",
+          "ctx: any"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "fetchPropertyData",
+        "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+        "plugin": "real-estate-analyzer",
+        "parameters": [
+          "data: { propertyUrl: string }",
+          "ctx: SequenceContext"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "analyze",
+        "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+        "plugin": "real-estate-analyzer",
+        "parameters": [
+          "_data: Record<string",
+          "never>",
+          "ctx: SequenceContext"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "format",
+        "file": "\\packages\\real-estate-analyzer\\src\\index.ts",
+        "plugin": "real-estate-analyzer",
+        "parameters": [
+          "_data: Record<string",
+          "never>",
+          "ctx: SequenceContext"
+        ],
+        "isAsync": true
+      },
+      {
+        "name": "ZillowService.if",
+        "file": "\\packages\\real-estate-analyzer\\src\\services\\zillow.service.ts",
+        "plugin": "real-estate-analyzer",
+        "parameters": [
+          "!ZILLOW_API_KEY"
+        ],
+        "isAsync": false
+      },
+      {
+        "name": "OpportunityAnalyzer",
+        "file": "\\packages\\real-estate-analyzer\\src\\ui\\OpportunityAnalyzer.tsx",
+        "plugin": "real-estate-analyzer",
+        "parameters": [],
+        "isAsync": false
       }
     ]
   },
   "pluginAnalysis": [
+    {
+      "name": "canvas",
+      "handlers": [
+        "register",
+        "onDropForTest",
+        "CanvasHeader",
+        "CanvasPage"
+      ],
+      "testFiles": [
+        "\\packages\\canvas\\__tests__\\allowed-imports.spec.ts",
+        "\\packages\\canvas\\__tests__\\CanvasDrop.container-route.spec.ts",
+        "\\packages\\canvas\\__tests__\\create-page.dom.spec.ts",
+        "\\packages\\canvas\\__tests__\\drop.spec.ts",
+        "\\packages\\canvas\\__tests__\\exports.spec.ts",
+        "\\packages\\canvas\\__tests__\\lint.guardrails.spec.ts",
+        "\\packages\\canvas\\__tests__\\ui.export.spec.ts"
+      ],
+      "totalTests": 14,
+      "handlersWithTests": 2,
+      "handlersWithoutTests": 2
+    },
     {
       "name": "canvas-component",
       "handlers": [
@@ -8600,6 +10747,7 @@
         "renderReact",
         "cleanupReactRoot",
         "exposeEventRouterToReact",
+        "Name",
         "createNode",
         "computeInstanceClass",
         "computeCssVarBlock",
@@ -8671,7 +10819,126 @@
         "updateSvgNodeAttribute",
         "refreshControlPanel",
         "setClipboardText",
-        "getClipboardText"
+        "getClipboardText",
+        "register",
+        "enhanceLine",
+        "recomputeLineSvg",
+        "serializeSelectedComponent",
+        "copyToClipboard",
+        "notifyCopyComplete",
+        "resolveTemplate",
+        "injectCssFallback",
+        "injectRawCss",
+        "getCanvasOrThrow",
+        "createElementWithId",
+        "applyClasses",
+        "applyInlineStyle",
+        "appendTo",
+        "transformImportToCreatePayload",
+        "attachStandardImportInteractions",
+        "createFromImportRecord",
+        "transformClipboardToCreatePayload",
+        "toCreatePayloadFromData",
+        "attachSelection",
+        "attachDrag",
+        "attachSvgNodeClick",
+        "registerInstance",
+        "notifyUi",
+        "renderReact",
+        "cleanupReactRoot",
+        "exposeEventRouterToReact",
+        "Name",
+        "createNode",
+        "computeInstanceClass",
+        "computeCssVarBlock",
+        "computeInlineStyle",
+        "validateReactCode",
+        "validateReactCodeOrThrow",
+        "publishDeleted",
+        "deleteComponent",
+        "routeDeleteRequest",
+        "hideAllOverlays",
+        "deselectComponent",
+        "publishDeselectionChanged",
+        "publishSelectionsCleared",
+        "clearAllSelections",
+        "routeDeselectionRequest",
+        "updatePosition",
+        "startDrag",
+        "endDrag",
+        "forwardToControlPanel",
+        "collectCssClasses",
+        "discoverComponentsFromDom",
+        "downloadUiFile",
+        "exportSvgToGif",
+        "queryAllComponents",
+        "createMP4Encoder",
+        "exportSvgToMp4",
+        "buildUiFileContent",
+        "collectLayoutData",
+        "injectCssClasses",
+        "openUiFile",
+        "registerInstances",
+        "createComponentsSequentially",
+        "applyHierarchyAndOrder",
+        "parseUiFile",
+        "startLineManip",
+        "moveLineManip",
+        "endLineManip",
+        "readFromClipboard",
+        "deserializeComponentData",
+        "calculatePastePosition",
+        "createPastedComponent",
+        "notifyPasteComplete",
+        "startResize",
+        "updateSize",
+        "endResize",
+        "startLineResize",
+        "updateLine",
+        "endLineResize",
+        "ensureOverlayCss",
+        "getCanvasOrThrow",
+        "ensureOverlay",
+        "getCanvasRect",
+        "applyOverlayRectForEl",
+        "createOverlayStructure",
+        "resolveEndpoints",
+        "ensureAdvancedLineOverlayFor",
+        "attachAdvancedLineManipHandlers",
+        "ensureLineOverlayFor",
+        "attachLineResizeHandlers",
+        "attachResizeHandlers",
+        "routeSelectionRequest",
+        "showSelectionOverlay",
+        "hideSelectionOverlay",
+        "notifyUi",
+        "publishSelectionChanged",
+        "showSvgNodeOverlay",
+        "updateAttribute",
+        "refreshControlPanel",
+        "updateSvgNodeAttribute",
+        "refreshControlPanel",
+        "setClipboardText",
+        "getClipboardText",
+        "initConductor",
+        "registerAllSequences",
+        "loadJsonSequenceCatalogs",
+        "setFlagOverride",
+        "clearFlagOverrides",
+        "getFlagOverride",
+        "isFlagEnabled",
+        "setSelectionObserver",
+        "getSelectionObserver",
+        "setClassesObserver",
+        "getClassesObserver",
+        "setCssRegistryObserver",
+        "getCssRegistryObserver",
+        "clearAllObservers",
+        "setAllRulesConfig",
+        "loadAllRulesFromWindow",
+        "getAllRulesConfig",
+        "sanitizeHtml",
+        "transform"
       ],
       "testFiles": [
         "\\packages\\canvas-component\\__tests__\\advanced-line.augment.spec.ts",
@@ -8688,6 +10955,7 @@
         "\\packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
         "\\packages\\canvas-component\\__tests__\\create.container-append.spec.ts",
         "\\packages\\canvas-component\\__tests__\\create.dom.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
         "\\packages\\canvas-component\\__tests__\\create.from-import.spec.ts",
         "\\packages\\canvas-component\\__tests__\\create.io.spec.ts",
@@ -8697,9 +10965,11 @@
         "\\packages\\canvas-component\\__tests__\\create.svg.basic.spec.ts",
         "\\packages\\canvas-component\\__tests__\\create.svg.markup.spec.ts",
         "\\packages\\canvas-component\\__tests__\\delete.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
         "\\packages\\canvas-component\\__tests__\\drag.dom.spec.ts",
         "\\packages\\canvas-component\\__tests__\\drag.overlay-hide.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\drag.transform.spec.ts",
         "\\packages\\canvas-component\\__tests__\\export-import.content.spec.ts",
         "\\packages\\canvas-component\\__tests__\\export.css.collection.fix.spec.ts",
@@ -8727,21 +10997,25 @@
         "\\packages\\canvas-component\\__tests__\\manifest.runtime.entry.spec.ts",
         "\\packages\\canvas-component\\__tests__\\package.register.spec.ts",
         "\\packages\\canvas-component\\__tests__\\paste.interactions.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\react-code-validator.spec.ts",
         "\\packages\\canvas-component\\__tests__\\react-component-export-import.spec.ts",
         "\\packages\\canvas-component\\__tests__\\react-component.spec.ts",
         "\\packages\\canvas-component\\__tests__\\registerAllSequences.idempotency.spec.ts",
         "\\packages\\canvas-component\\__tests__\\registerAllSequences.spec.ts",
         "\\packages\\canvas-component\\__tests__\\resize.dom.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
         "\\packages\\canvas-component\\__tests__\\resize.overlay-tools-config.spec.ts",
         "\\packages\\canvas-component\\__tests__\\resize.play.spec.ts",
         "\\packages\\canvas-component\\__tests__\\resize.plugin-route.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\resize.svg.spec.ts",
         "\\packages\\canvas-component\\__tests__\\routing-declarations.spec.ts",
         "\\packages\\canvas-component\\__tests__\\runtime.register.spec.ts",
         "\\packages\\canvas-component\\__tests__\\select.overlay-container.spec.ts",
         "\\packages\\canvas-component\\__tests__\\select.overlay.css.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
         "\\packages\\canvas-component\\__tests__\\select.svg-node.overlay.spec.ts",
         "\\packages\\canvas-component\\__tests__\\selection-id-derivation.spec.ts",
         "\\packages\\canvas-component\\__tests__\\selection-post-externalization.spec.ts",
@@ -8752,15 +11026,19 @@
         "\\packages\\canvas-component\\__tests__\\svg-node-click-select.spec.ts",
         "\\packages\\canvas-component\\__tests__\\svg-node.update.spec.ts"
       ],
-      "totalTests": 316,
-      "handlersWithTests": 30,
-      "handlersWithoutTests": 68
+      "totalTests": 365,
+      "handlersWithTests": 129,
+      "handlersWithoutTests": 89
     },
     {
       "name": "control-panel",
       "handlers": [
         "addClass",
         "removeClass",
+        "notifyUi",
+        "if",
+        "if",
+        "catch",
         "createCssClass",
         "updateCssClass",
         "deleteCssClass",
@@ -8768,7 +11046,14 @@
         "listCssClasses",
         "applyCssClassToElement",
         "removeCssClassFromElement",
+        "notifyUi",
+        "if",
+        "catch",
         "deriveSelectionModel",
+        "notifyUi",
+        "if",
+        "if",
+        "catch",
         "initMovement",
         "initConfig",
         "initResolver",
@@ -8786,7 +11071,78 @@
         "mergeErrors",
         "updateView",
         "toggleSection",
-        "updateFromElement"
+        "updateFromElement",
+        "notifyUi",
+        "if",
+        "if",
+        "catch",
+        "registerFieldRenderer",
+        "getFieldRenderer",
+        "EmptyState",
+        "LoadingState",
+        "PanelHeader",
+        "useControlPanelActions",
+        "useControlPanelSequences",
+        "useControlPanelState",
+        "useSchemaResolver",
+        "register",
+        "controlPanelReducer",
+        "setSelectionObserver",
+        "getSelectionObserver",
+        "setClassesObserver",
+        "getClassesObserver",
+        "setCssRegistryObserver",
+        "getCssRegistryObserver",
+        "clearAllObservers",
+        "addClass",
+        "removeClass",
+        "notifyUi",
+        "if",
+        "if",
+        "catch",
+        "createCssClass",
+        "updateCssClass",
+        "deleteCssClass",
+        "getCssClass",
+        "listCssClasses",
+        "applyCssClassToElement",
+        "removeCssClassFromElement",
+        "notifyUi",
+        "if",
+        "catch",
+        "deriveSelectionModel",
+        "notifyUi",
+        "if",
+        "if",
+        "catch",
+        "initMovement",
+        "initConfig",
+        "initResolver",
+        "loadSchemas",
+        "registerObservers",
+        "notifyReady",
+        "generateFields",
+        "generateSections",
+        "renderView",
+        "prepareField",
+        "dispatchField",
+        "setDirty",
+        "awaitRefresh",
+        "validateField",
+        "mergeErrors",
+        "updateView",
+        "toggleSection",
+        "updateFromElement",
+        "notifyUi",
+        "if",
+        "if",
+        "catch",
+        "ControlPanel",
+        "extractElementContent",
+        "getNestedValue",
+        "setNestedValue",
+        "formatLabel",
+        "generatePlaceholder"
       ],
       "testFiles": [
         "\\packages\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
@@ -8813,14 +11169,20 @@
         "\\packages\\control-panel\\__tests__\\ui-sequences.spec.ts"
       ],
       "totalTests": 120,
-      "handlersWithTests": 3,
-      "handlersWithoutTests": 25
+      "handlersWithTests": 15,
+      "handlersWithoutTests": 95
     },
     {
       "name": "header",
       "handlers": [
         "getCurrentTheme",
-        "toggleTheme"
+        "toggleTheme",
+        "register",
+        "getCurrentTheme",
+        "toggleTheme",
+        "HeaderControls",
+        "HeaderThemeToggle",
+        "HeaderTitle"
       ],
       "testFiles": [
         "\\packages\\header\\tests\\integration\\css-side-effects.spec.ts",
@@ -8828,8 +11190,81 @@
         "\\packages\\header\\tests\\unit\\symphonies\\ui.stage-crew.spec.ts"
       ],
       "totalTests": 8,
-      "handlersWithTests": 2,
-      "handlersWithoutTests": 0
+      "handlersWithTests": 5,
+      "handlersWithoutTests": 3
+    },
+    {
+      "name": "library",
+      "handlers": [
+        "loadComponents",
+        "if",
+        "if",
+        "for",
+        "if",
+        "if",
+        "notifyUi",
+        "register",
+        "RAGEnrichmentService.if",
+        "loadComponents",
+        "if",
+        "if",
+        "for",
+        "if",
+        "if",
+        "notifyUi",
+        "ComponentBehaviorExtractor.for",
+        "ComponentBehaviorExtractor.for",
+        "ComponentBehaviorExtractor.if",
+        "ChatMessageComponent",
+        "ChatWindow",
+        "ConfigStatusUI",
+        "CustomComponentList",
+        "CustomComponentUpload",
+        "registerCssForComponents",
+        "LibraryPanel",
+        "LibraryPreview",
+        "computePreviewModel",
+        "loadChatHistory",
+        "saveChatHistory",
+        "createChatSession",
+        "addMessagesToCurrentSession",
+        "getCurrentChatSession",
+        "startNewChatSession",
+        "deleteChatSession",
+        "clearAllChatHistory",
+        "getChatHistoryStats",
+        "exportChatHistory",
+        "importChatHistory",
+        "getConversationContext",
+        "cleanupChatHistory",
+        "buildSystemPrompt",
+        "getPromptTemplate",
+        "saveCustomComponent",
+        "loadCustomComponents",
+        "removeCustomComponent",
+        "clearCustomComponents",
+        "getStorageInfo",
+        "validateComponentJson",
+        "normalizeComponent",
+        "validateAndParseJson",
+        "validateFile"
+      ],
+      "testFiles": [
+        "\\packages\\library\\src\\services\\__tests__\\rag-enrichment-telemetry.service.test.ts",
+        "\\packages\\library\\__tests__\\chat.utils.spec.ts",
+        "\\packages\\library\\__tests__\\handlers.loadComponents.spec.ts",
+        "\\packages\\library\\__tests__\\handlers.sequence-integration.spec.ts",
+        "\\packages\\library\\__tests__\\manifest.exports.spec.ts",
+        "\\packages\\library\\__tests__\\openai.service.spec.ts",
+        "\\packages\\library\\__tests__\\rag-enrichment.service.spec.ts",
+        "\\packages\\library\\__tests__\\register.spec.ts",
+        "\\packages\\library\\__tests__\\storage.utils.spec.ts",
+        "\\packages\\library\\__tests__\\utils.spec.ts",
+        "\\packages\\library\\__tests__\\validation.utils.spec.ts"
+      ],
+      "totalTests": 148,
+      "handlersWithTests": 19,
+      "handlersWithoutTests": 33
     },
     {
       "name": "library-component",
@@ -8840,7 +11275,23 @@
         "renderTemplatePreview",
         "applyTemplateStyles",
         "computeCursorOffsets",
-        "installDragImage"
+        "installDragImage",
+        "onDragStart",
+        "if",
+        "publishCreateRequested",
+        "publishCreateRequested",
+        "register",
+        "ensurePayload",
+        "computeGhostSize",
+        "createGhostContainer",
+        "renderTemplatePreview",
+        "applyTemplateStyles",
+        "computeCursorOffsets",
+        "installDragImage",
+        "onDragStart",
+        "if",
+        "publishCreateRequested",
+        "publishCreateRequested"
       ],
       "testFiles": [
         "\\packages\\library-component\\__tests__\\handlers.drag.nodragimage.spec.ts",
@@ -8851,28 +11302,59 @@
         "\\packages\\library-component\\__tests__\\register.spec.ts"
       ],
       "totalTests": 19,
-      "handlersWithTests": 0,
+      "handlersWithTests": 1,
+      "handlersWithoutTests": 22
+    },
+    {
+      "name": "real-estate-analyzer",
+      "handlers": [
+        "register",
+        "fetchPropertyData",
+        "catch",
+        "analyze",
+        "catch",
+        "format",
+        "ZillowService.if",
+        "OpportunityAnalyzer"
+      ],
+      "testFiles": [
+        "\\packages\\real-estate-analyzer\\__tests__\\analysis.engine.spec.ts"
+      ],
+      "totalTests": 7,
+      "handlersWithTests": 1,
       "handlersWithoutTests": 7
     }
   ],
-  "missingHandlers": [
-    {
-      "name": "loadComponents",
-      "status": "MISSING_FROM_SOURCE",
-      "requiredBy": "catalog"
-    },
-    {
-      "name": "onDragStart",
-      "status": "MISSING_FROM_SOURCE",
-      "requiredBy": "catalog"
-    },
-    {
-      "name": "publishCreateRequested",
-      "status": "MISSING_FROM_SOURCE",
-      "requiredBy": "catalog"
-    }
-  ],
+  "missingHandlers": [],
   "extraHandlers": [
+    {
+      "name": "register",
+      "file": "\\packages\\canvas\\src\\index.ts",
+      "plugin": "canvas",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "onDropForTest",
+      "file": "\\packages\\canvas\\src\\ui\\CanvasDrop.ts",
+      "plugin": "canvas",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "CanvasHeader",
+      "file": "\\packages\\canvas\\src\\ui\\CanvasHeader.tsx",
+      "plugin": "canvas",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "CanvasPage",
+      "file": "\\packages\\canvas\\src\\ui\\CanvasPage.tsx",
+      "plugin": "canvas",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
     {
       "name": "recomputeLineSvg",
       "file": "\\packages\\canvas-component\\src\\symphonies\\augment\\line.recompute.stage-crew.ts",
@@ -8994,6 +11476,13 @@
     },
     {
       "name": "exposeEventRouterToReact",
+      "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "Name",
       "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
       "plugin": "canvas-component",
       "status": "NOT_IN_CATALOG",
@@ -9154,6 +11643,153 @@
       "likelyPurpose": "helper/utility"
     },
     {
+      "name": "initConductor",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "registerAllSequences",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "loadJsonSequenceCatalogs",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\conductor.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "setFlagOverride",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "clearFlagOverrides",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getFlagOverride",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "isFlagEnabled",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\feature-flags.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "setSelectionObserver",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getSelectionObserver",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "setClassesObserver",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getClassesObserver",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "setCssRegistryObserver",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getCssRegistryObserver",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "clearAllObservers",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\observer.store.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "setAllRulesConfig",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "loadAllRulesFromWindow",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getAllRulesConfig",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "sanitizeHtml",
+      "file": "\\packages\\canvas-component\\src\\temp-deps\\sanitizeHtml.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "transform",
+      "file": "\\packages\\canvas-component\\src\\types\\babel-standalone.d.ts",
+      "plugin": "canvas-component",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "if",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "catch",
+      "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.symphony.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
       "name": "getCssClass",
       "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
       "plugin": "control-panel",
@@ -9178,6 +11814,398 @@
       "name": "removeCssClassFromElement",
       "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
       "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "registerFieldRenderer",
+      "file": "\\packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getFieldRenderer",
+      "file": "\\packages\\control-panel\\src\\components\\field-renderers\\index.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "EmptyState",
+      "file": "\\packages\\control-panel\\src\\components\\layout\\EmptyState.tsx",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "LoadingState",
+      "file": "\\packages\\control-panel\\src\\components\\layout\\LoadingState.tsx",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "PanelHeader",
+      "file": "\\packages\\control-panel\\src\\components\\layout\\PanelHeader.tsx",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "useControlPanelActions",
+      "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelActions.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "useControlPanelSequences",
+      "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelSequences.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "useControlPanelState",
+      "file": "\\packages\\control-panel\\src\\hooks\\useControlPanelState.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "useSchemaResolver",
+      "file": "\\packages\\control-panel\\src\\hooks\\useSchemaResolver.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "controlPanelReducer",
+      "file": "\\packages\\control-panel\\src\\state\\control-panel.reducer.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "ControlPanel",
+      "file": "\\packages\\control-panel\\src\\ui\\ControlPanel.tsx",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "extractElementContent",
+      "file": "\\packages\\control-panel\\src\\utils\\content-extractor.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getNestedValue",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "setNestedValue",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "formatLabel",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "generatePlaceholder",
+      "file": "\\packages\\control-panel\\src\\utils\\field.utils.ts",
+      "plugin": "control-panel",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "HeaderControls",
+      "file": "\\packages\\header\\src\\ui\\HeaderControls.tsx",
+      "plugin": "header",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "HeaderThemeToggle",
+      "file": "\\packages\\header\\src\\ui\\HeaderThemeToggle.tsx",
+      "plugin": "header",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "HeaderTitle",
+      "file": "\\packages\\header\\src\\ui\\HeaderTitle.tsx",
+      "plugin": "header",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "for",
+      "file": "\\packages\\library\\src\\symphonies\\load.symphony.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "RAGEnrichmentService.if",
+      "file": "\\packages\\library\\src\\services\\rag-enrichment.service.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "ComponentBehaviorExtractor.for",
+      "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "ComponentBehaviorExtractor.if",
+      "file": "\\packages\\library\\src\\telemetry\\component-behavior-extractor.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "ChatMessageComponent",
+      "file": "\\packages\\library\\src\\ui\\ChatMessage.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "ChatWindow",
+      "file": "\\packages\\library\\src\\ui\\ChatWindow.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "ConfigStatusUI",
+      "file": "\\packages\\library\\src\\ui\\ConfigStatusUI.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "CustomComponentList",
+      "file": "\\packages\\library\\src\\ui\\CustomComponentList.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "CustomComponentUpload",
+      "file": "\\packages\\library\\src\\ui\\CustomComponentUpload.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "registerCssForComponents",
+      "file": "\\packages\\library\\src\\ui\\LibraryPanel.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "LibraryPanel",
+      "file": "\\packages\\library\\src\\ui\\LibraryPanel.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "LibraryPreview",
+      "file": "\\packages\\library\\src\\ui\\LibraryPreview.tsx",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "computePreviewModel",
+      "file": "\\packages\\library\\src\\ui\\preview.model.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "DOM/style manipulation"
+    },
+    {
+      "name": "loadChatHistory",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "saveChatHistory",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "createChatSession",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "addMessagesToCurrentSession",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getCurrentChatSession",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "startNewChatSession",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "deleteChatSession",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "clearAllChatHistory",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getChatHistoryStats",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "exportChatHistory",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "importChatHistory",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getConversationContext",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "cleanupChatHistory",
+      "file": "\\packages\\library\\src\\utils\\chat.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "React/rendering"
+    },
+    {
+      "name": "buildSystemPrompt",
+      "file": "\\packages\\library\\src\\utils\\prompt.templates.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getPromptTemplate",
+      "file": "\\packages\\library\\src\\utils\\prompt.templates.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "saveCustomComponent",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "loadCustomComponents",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "removeCustomComponent",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "clearCustomComponents",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "getStorageInfo",
+      "file": "\\packages\\library\\src\\utils\\storage.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "helper/utility"
+    },
+    {
+      "name": "validateComponentJson",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "normalizeComponent",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "validateAndParseJson",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "plugin": "library",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "validateFile",
+      "file": "\\packages\\library\\src\\utils\\validation.utils.ts",
+      "plugin": "library",
       "status": "NOT_IN_CATALOG",
       "likelyPurpose": "internal"
     },
@@ -9229,13 +12257,27 @@
       "plugin": "library-component",
       "status": "NOT_IN_CATALOG",
       "likelyPurpose": "internal"
+    },
+    {
+      "name": "ZillowService.if",
+      "file": "\\packages\\real-estate-analyzer\\src\\services\\zillow.service.ts",
+      "plugin": "real-estate-analyzer",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
+    },
+    {
+      "name": "OpportunityAnalyzer",
+      "file": "\\packages\\real-estate-analyzer\\src\\ui\\OpportunityAnalyzer.tsx",
+      "plugin": "real-estate-analyzer",
+      "status": "NOT_IN_CATALOG",
+      "likelyPurpose": "internal"
     }
   ],
   "catalogData": {
     "sequences": {
-      "totalSequences": 53,
-      "totalHandlers": 84,
-      "totalTopics": 94
+      "totalSequences": 54,
+      "totalHandlers": 87,
+      "totalTopics": 97
     },
     "topics": {
       "totalTopics": 8,
@@ -9258,6 +12300,19 @@
       "runtimePlugins": 6,
       "totalSlots": 6,
       "totalModules": 7
+    },
+    "externalInteractions": {
+      "interactionEvents": 6,
+      "interactionEdges": 112,
+      "sequencesReferenced": 6,
+      "missingSequences": 1,
+      "missingHandlers": 0,
+      "missingTopics": 13,
+      "orphanTopics": 8,
+      "orphanHandlers": 210,
+      "pluginOwnershipMismatches": 0,
+      "handlerCoverageInEdges": 5,
+      "topicCoverageInEdges": 0
     }
   }
 }

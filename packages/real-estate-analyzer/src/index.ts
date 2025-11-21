@@ -104,7 +104,7 @@ export async function register(conductor: ConductorLike & { _runtimeMountedSeqId
         id: 'search',
         name: 'Search',
         beats: [
-          { beat: 1, event: 'real.estate.analyzer:fetch', title: 'Fetch Property Data', dynamics: 'mf', handler: 'fetchPropertyData', timing: 'immediate', kind: 'pure' },
+          { beat: 1, event: 'real.estate.analyzer.search', title: 'Search Property', dynamics: 'mf', handler: 'fetchPropertyData', timing: 'immediate', kind: 'pure' },
           { beat: 2, event: 'real.estate.analyzer:analyze', title: 'Analyze Property', dynamics: 'mf', handler: 'analyze', timing: 'immediate', kind: 'pure' },
           { beat: 3, event: 'real.estate.analyzer:format', title: 'Format Results', dynamics: 'mf', handler: 'format', timing: 'immediate', kind: 'pure' },
         ],

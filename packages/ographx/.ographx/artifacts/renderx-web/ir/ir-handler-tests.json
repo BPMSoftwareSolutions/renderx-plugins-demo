@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-21T15:34:28.158Z",
+    "generated": "2025-11-21T23:33:38.882Z",
     "phase": "Phase 2: Handler Test Extraction",
     "sourceDirectories": [
       "packages/canvas/src/",
@@ -11,12 +11,12 @@
       "packages/library/src/",
       "packages/library-component/src/"
     ],
-    "fileCount": 165
+    "fileCount": 172
   },
   "summary": {
-    "totalTestFiles": 164,
-    "totalTests": 1080,
-    "handlersWithTests": 178,
+    "totalTestFiles": 171,
+    "totalTests": 1129,
+    "handlersWithTests": 208,
     "handlersWithoutTests": 0
   },
   "testFiles": [
@@ -526,6 +526,52 @@
       ]
     },
     {
+      "file": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 7,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component create.dom.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "getCanvasOrThrow - returns canvas element"
+        },
+        {
+          "type": "it",
+          "name": "getCanvasOrThrow - throws when canvas missing"
+        },
+        {
+          "type": "it",
+          "name": "createElementWithId - creates element with ID"
+        },
+        {
+          "type": "it",
+          "name": "applyClasses - applies class list"
+        },
+        {
+          "type": "it",
+          "name": "applyInlineStyle - sets style properties"
+        },
+        {
+          "type": "it",
+          "name": "appendTo - appends child to parent"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "getCanvasOrThrow",
+        "createElementWithId",
+        "applyClasses",
+        "applyInlineStyle",
+        "appendTo"
+      ]
+    },
+    {
       "file": "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
       "plugin": "canvas-component",
       "testCount": 5,
@@ -844,6 +890,71 @@
       ]
     },
     {
+      "file": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 11,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component deselect.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "hideAllOverlays - hides overlays if present"
+        },
+        {
+          "type": "it",
+          "name": "hideAllOverlays - safe when overlays are missing"
+        },
+        {
+          "type": "it",
+          "name": "deselectComponent - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "deselectComponent - no-op when id missing"
+        },
+        {
+          "type": "it",
+          "name": "publishDeselectionChanged - safe invocation with id"
+        },
+        {
+          "type": "it",
+          "name": "publishDeselectionChanged - safe invocation without id"
+        },
+        {
+          "type": "it",
+          "name": "publishSelectionsCleared - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "clearAllSelections - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "routeDeselectionRequest - executes with id"
+        },
+        {
+          "type": "it",
+          "name": "routeDeselectionRequest - executes without id"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "hideAllOverlays",
+        "deselectComponent",
+        "publishDeselectionChanged",
+        "publishSelectionsCleared",
+        "clearAllSelections",
+        "routeDeselectionRequest",
+        "createMockCtx",
+        "mockEventRouterPublish"
+      ]
+    },
+    {
       "file": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
       "plugin": "canvas-component",
       "testCount": 7,
@@ -937,6 +1048,56 @@
         "beforeEach",
         "handlers as createHandlers",
         "showSelectionOverlay"
+      ]
+    },
+    {
+      "file": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 8,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component drag.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "updatePosition - moves element based on delta"
+        },
+        {
+          "type": "it",
+          "name": "updatePosition - throws on missing id"
+        },
+        {
+          "type": "it",
+          "name": "startDrag - initializes drag state"
+        },
+        {
+          "type": "it",
+          "name": "startDrag - warns on missing id"
+        },
+        {
+          "type": "it",
+          "name": "endDrag - finalizes drag"
+        },
+        {
+          "type": "it",
+          "name": "endDrag - warns on missing id"
+        },
+        {
+          "type": "it",
+          "name": "forwardToControlPanel - returns true"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "updatePosition",
+        "startDrag",
+        "endDrag",
+        "forwardToControlPanel",
+        "createMockCtx"
       ]
     },
     {
@@ -1726,6 +1887,50 @@
       ]
     },
     {
+      "file": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 6,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component paste.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "readFromClipboard - parses clipboard into clipboardData"
+        },
+        {
+          "type": "it",
+          "name": "deserializeComponentData - uses provided clipboardText"
+        },
+        {
+          "type": "it",
+          "name": "calculatePastePosition - offsets by +20,+20"
+        },
+        {
+          "type": "it",
+          "name": "createPastedComponent - transforms and plays create sequence"
+        },
+        {
+          "type": "it",
+          "name": "notifyPasteComplete - no-op success"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "readFromClipboard",
+        "deserializeComponentData",
+        "calculatePastePosition",
+        "createPastedComponent",
+        "notifyPasteComplete",
+        "createMockCtx"
+      ]
+    },
+    {
       "file": "\\packages\\canvas-component\\__tests__\\react-code-validator.spec.ts",
       "plugin": "canvas-component",
       "testCount": 24,
@@ -1990,6 +2195,44 @@
       ]
     },
     {
+      "file": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component resize.line.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "startLineResize - calls optional callback harmlessly"
+        },
+        {
+          "type": "it",
+          "name": "updateLine - updates endpoints/length"
+        },
+        {
+          "type": "it",
+          "name": "updateLine - throws when id missing"
+        },
+        {
+          "type": "it",
+          "name": "endLineResize - invokes optional callback"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "startLineResize",
+        "updateLine",
+        "endLineResize",
+        "createMockCtx"
+      ]
+    },
+    {
       "file": "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
       "plugin": "canvas-component",
       "testCount": 1,
@@ -2078,6 +2321,43 @@
         "beforeEach",
         "handlers as createHandlers",
         "showSelectionOverlay"
+      ]
+    },
+    {
+      "file": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component resize.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "startResize - captures line base metrics (non-line harmless)"
+        },
+        {
+          "type": "it",
+          "name": "updateSize - applies size deltas and updates payload"
+        },
+        {
+          "type": "it",
+          "name": "updateSize - throws on missing id"
+        },
+        {
+          "type": "it",
+          "name": "endResize - executes without error"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "startResize",
+        "updateSize",
+        "endResize",
+        "createMockCtx"
       ]
     },
     {
@@ -2203,6 +2483,52 @@
         "beforeEach",
         "handlers as createHandlers",
         "showSelectionOverlay"
+      ]
+    },
+    {
+      "file": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 7,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component select.stage-crew handlers"
+        },
+        {
+          "type": "it",
+          "name": "routeSelectionRequest - executes without throwing"
+        },
+        {
+          "type": "it",
+          "name": "routeSelectionRequest - ignores missing id"
+        },
+        {
+          "type": "it",
+          "name": "hideSelectionOverlay - hides overlay"
+        },
+        {
+          "type": "it",
+          "name": "hideSelectionOverlay - safe when already hidden"
+        },
+        {
+          "type": "it",
+          "name": "publishSelectionChanged - safe invocation with id"
+        },
+        {
+          "type": "it",
+          "name": "publishSelectionChanged - safe invocation without id"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "routeSelectionRequest",
+        "hideSelectionOverlay",
+        "publishSelectionChanged",
+        "createMockCtx",
+        "mockEventRouterPublish"
       ]
     },
     {
@@ -6982,6 +7308,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -7082,6 +7421,23 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
         "testCount": 7,
         "testNames": [
@@ -7110,6 +7466,20 @@
         "testCount": 1,
         "testNames": [
           "canvas-component drag: overlay visibility (migrated)"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
         ]
       },
       {
@@ -7361,6 +7731,18 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\react-code-validator.spec.ts",
         "testCount": 24,
         "testNames": [
@@ -7441,6 +7823,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
         "testCount": 1,
         "testNames": [
@@ -7469,6 +7862,17 @@
         "testCount": 1,
         "testNames": [
           "canvas-component resize: plugin routing (migrated)"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
         ]
       },
       {
@@ -7513,6 +7917,19 @@
         "testCount": 1,
         "testNames": [
           "selection overlay CSS ensures box-sizing border-box for accurate alignment"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       },
       {
@@ -8598,6 +9015,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -8698,6 +9128,23 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
         "testCount": 7,
         "testNames": [
@@ -8726,6 +9173,20 @@
         "testCount": 1,
         "testNames": [
           "canvas-component drag: overlay visibility (migrated)"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
         ]
       },
       {
@@ -8977,6 +9438,18 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\react-code-validator.spec.ts",
         "testCount": 24,
         "testNames": [
@@ -9057,6 +9530,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
         "testCount": 1,
         "testNames": [
@@ -9085,6 +9569,17 @@
         "testCount": 1,
         "testNames": [
           "canvas-component resize: plugin routing (migrated)"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
         ]
       },
       {
@@ -9129,6 +9624,19 @@
         "testCount": 1,
         "testNames": [
           "selection overlay CSS ensures box-sizing border-box for accurate alignment"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       },
       {
@@ -10207,6 +10715,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -10307,6 +10828,23 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
         "testCount": 7,
         "testNames": [
@@ -10328,6 +10866,20 @@
           "throws error when element not found",
           "throws error when missing required data",
           "handles string position values"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
         ]
       },
       {
@@ -10579,6 +11131,18 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\react-code-validator.spec.ts",
         "testCount": 24,
         "testNames": [
@@ -10659,6 +11223,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
         "testCount": 1,
         "testNames": [
@@ -10680,6 +11255,17 @@
         "testCount": 1,
         "testNames": [
           "canvas-component resize via conductor.play"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
         ]
       },
       {
@@ -10724,6 +11310,19 @@
         "testCount": 1,
         "testNames": [
           "selection overlay CSS ensures box-sizing border-box for accurate alignment"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       },
       {
@@ -12031,6 +12630,18 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\react-component.spec.ts",
         "testCount": 10,
         "testNames": [
@@ -12053,6 +12664,17 @@
           "canvas-component resize (DOM-only)",
           "resizes the element via SE handle drag",
           "emits a single resize.move for repeated mousemove at same geometry"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
         ]
       },
       {
@@ -12720,6 +13342,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\create.isolation.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -12791,6 +13426,23 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
         "testCount": 7,
         "testNames": [
@@ -12819,6 +13471,20 @@
         "testCount": 1,
         "testNames": [
           "canvas-component drag: overlay visibility (migrated)"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
         ]
       },
       {
@@ -13020,6 +13686,18 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\react-component-export-import.spec.ts",
         "testCount": 4,
         "testNames": [
@@ -13055,6 +13733,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\resize.overlay-align.spec.ts",
         "testCount": 1,
         "testNames": [
@@ -13086,6 +13775,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\resize.svg.spec.ts",
         "testCount": 2,
         "testNames": [
@@ -13106,6 +13806,19 @@
         "testCount": 1,
         "testNames": [
           "selection overlay CSS ensures box-sizing border-box for accurate alignment"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       },
       {
@@ -15492,6 +16205,81 @@
         ]
       }
     ],
+    "getCanvasOrThrow": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      }
+    ],
+    "createElementWithId": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      }
+    ],
+    "applyClasses": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      }
+    ],
+    "applyInlineStyle": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      }
+    ],
+    "appendTo": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.dom.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component create.dom.stage-crew handlers",
+          "getCanvasOrThrow - returns canvas element",
+          "getCanvasOrThrow - throws when canvas missing",
+          "createElementWithId - creates element with ID",
+          "applyClasses - applies class list",
+          "applyInlineStyle - sets style properties",
+          "appendTo - appends child to parent"
+        ]
+      }
+    ],
     "toCreatePayloadFromData": [
       {
         "testFile": "\\packages\\canvas-component\\__tests__\\create.from-data.spec.ts",
@@ -15675,6 +16463,232 @@
         ]
       }
     ],
+    "hideAllOverlays": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      }
+    ],
+    "deselectComponent": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      }
+    ],
+    "publishDeselectionChanged": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      }
+    ],
+    "publishSelectionsCleared": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      }
+    ],
+    "clearAllSelections": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      }
+    ],
+    "routeDeselectionRequest": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      }
+    ],
+    "createMockCtx": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
+        ]
+      }
+    ],
+    "mockEventRouterPublish": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselect.stage-crew.handlers.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "canvas-component deselect.stage-crew handlers",
+          "hideAllOverlays - hides overlays if present",
+          "hideAllOverlays - safe when overlays are missing",
+          "deselectComponent - executes without throwing",
+          "deselectComponent - no-op when id missing",
+          "publishDeselectionChanged - safe invocation with id",
+          "publishDeselectionChanged - safe invocation without id",
+          "publishSelectionsCleared - executes without throwing",
+          "clearAllSelections - executes without throwing",
+          "routeDeselectionRequest - executes with id",
+          "routeDeselectionRequest - executes without id"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
+        ]
+      }
+    ],
     "handlers as deselectHandlers": [
       {
         "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
@@ -15687,6 +16701,70 @@
           "clearAllSelections hides both overlays and clears dataset.targetId then publishes cleared topic",
           "routeDeselectionRequest routes to deselect sequence when id is provided",
           "routeDeselectionRequest routes to deselect-all sequence when no id provided"
+        ]
+      }
+    ],
+    "updatePosition": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      }
+    ],
+    "startDrag": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      }
+    ],
+    "endDrag": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
+        ]
+      }
+    ],
+    "forwardToControlPanel": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\drag.stage-crew.handlers.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "canvas-component drag.stage-crew handlers",
+          "updatePosition - moves element based on delta",
+          "updatePosition - throws on missing id",
+          "startDrag - initializes drag state",
+          "startDrag - warns on missing id",
+          "endDrag - finalizes drag",
+          "endDrag - warns on missing id",
+          "forwardToControlPanel - returns true"
         ]
       }
     ],
@@ -16254,6 +17332,74 @@
           "paste interactions attach and publish drag events",
           "attaches onDragMove to payload passed into canvas.component.create and publishes {id, position}"
         ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      }
+    ],
+    "readFromClipboard": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      }
+    ],
+    "deserializeComponentData": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      }
+    ],
+    "calculatePastePosition": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
+      }
+    ],
+    "notifyPasteComplete": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.stage-crew.handlers.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "canvas-component paste.stage-crew handlers",
+          "readFromClipboard - parses clipboard into clipboardData",
+          "deserializeComponentData - uses provided clipboardText",
+          "calculatePastePosition - offsets by +20,+20",
+          "createPastedComponent - transforms and plays create sequence",
+          "notifyPasteComplete - no-op success"
+        ]
       }
     ],
     "validateReactCode": [
@@ -16335,6 +17481,129 @@
           "should allow React components to publish events",
           "should skip rendering if kind is not react",
           "should handle missing container gracefully"
+        ]
+      }
+    ],
+    "startLineResize": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      }
+    ],
+    "updateLine": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      }
+    ],
+    "endLineResize": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.line.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.line.stage-crew handlers",
+          "startLineResize - calls optional callback harmlessly",
+          "updateLine - updates endpoints/length",
+          "updateLine - throws when id missing",
+          "endLineResize - invokes optional callback"
+        ]
+      }
+    ],
+    "startResize": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      }
+    ],
+    "updateSize": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      }
+    ],
+    "endResize": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component resize.stage-crew handlers",
+          "startResize - captures line base metrics (non-line harmless)",
+          "updateSize - applies size deltas and updates payload",
+          "updateSize - throws on missing id",
+          "endResize - executes without error"
+        ]
+      }
+    ],
+    "routeSelectionRequest": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
+        ]
+      }
+    ],
+    "hideSelectionOverlay": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
+        ]
+      }
+    ],
+    "publishSelectionChanged": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
         ]
       }
     ],

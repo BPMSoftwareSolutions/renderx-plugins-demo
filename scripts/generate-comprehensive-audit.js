@@ -55,6 +55,7 @@ async function generateComprehensiveAudit() {
   const catalogManifest = await readJsonFile(join(artifactDir, "catalog", "catalog-manifest.json"));
   const catalogComponents = await readJsonFile(join(artifactDir, "catalog", "catalog-components.json"));
   const gaps = await readJsonFile(join(outputDir, "catalog-vs-ir-gaps.json"));
+  const externalInteractions = await readJsonFile(join(outputDir, "external-interactions-audit.json"));
 
   // Build comprehensive audit
   const audit = {
@@ -133,9 +134,21 @@ async function generateComprehensiveAudit() {
       sequences: catalogSeq.summary,
       topics: catalogTopics.summary,
       components: catalogComponents.summary,
-      plugins: catalogManifest.summary
+      plugins: catalogManifest.summary,
+      externalInteractions: externalInteractions ? externalInteractions.summary : null
     }
   };
+
+  if (externalInteractions) {
+    audit.summary.externalInteractionEdges = externalInteractions.summary.interactionEdges;
+    audit.summary.externalMissingHandlers = externalInteractions.summary.missingHandlers;
+    audit.summary.externalMissingSequences = externalInteractions.summary.missingSequences;
+    audit.summary.externalMissingTopics = externalInteractions.summary.missingTopics;
+    audit.summary.externalOrphanHandlers = externalInteractions.summary.orphanHandlers;
+    audit.summary.externalOrphanTopics = externalInteractions.summary.orphanTopics;
+    audit.summary.externalHandlerEdgeCoverage = externalInteractions.summary.handlerCoverageInEdges;
+    audit.summary.externalTopicEdgeCoverage = externalInteractions.summary.topicCoverageInEdges;
+  }
 
   await writeFile(outputFile, JSON.stringify(audit, null, 2));
   console.log(`\n✅ Comprehensive Audit Generated`);
