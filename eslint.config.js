@@ -101,6 +101,7 @@ export default [
       // Exclude Cypress E2E tests from linting
       "cypress/e2e/**",
       "scripts/codemods/**",
+      "scripts/**",
       "docs/**",
       // Ignore .NET build outputs and embedded frontend assets
       "src/RenderX.Shell.Avalonia/wwwroot/**",
