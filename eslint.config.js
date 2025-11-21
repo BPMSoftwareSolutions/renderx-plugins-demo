@@ -98,8 +98,9 @@ export default [
       "node_modules/**",
       ".vite/**",
       "coverage/**",
-      // Exclude Cypress E2E tests from linting
+      // Exclude Cypress E2E tests and support files from linting
       "cypress/e2e/**",
+      "cypress/support/**",
       "scripts/codemods/**",
       "scripts/**",
       "docs/**",
