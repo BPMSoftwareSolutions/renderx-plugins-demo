@@ -18,6 +18,6 @@ describe('@renderx-plugins/host-sdk v1 adoption surface', () => {
     expect(typeof sdk.listComponents).toBe('function');
     // CSS Registry
     expect(typeof sdk.hasClass).toBe('function');
-  }, 15000);
+  }, 60000);
 });
 

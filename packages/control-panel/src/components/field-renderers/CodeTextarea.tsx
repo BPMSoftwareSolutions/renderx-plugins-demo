@@ -20,7 +20,11 @@ export const CodeTextarea: React.FC<FieldRendererProps> = ({
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const rows = field.rendererProps?.rows ?? 8;
-  const placeholder = field.rendererProps?.placeholder ?? "Paste SVG markup…";
+  const language = field.rendererProps?.language ?? "text";
+  const placeholder = field.rendererProps?.placeholder ?? "Paste code here…";
+
+  // Determine if this is SVG-specific code
+  const isSvgCode = language === "xml" || language === "svg";
 
   React.useEffect(() => {
     setLocalValue(value || "");
@@ -34,8 +38,11 @@ export const CodeTextarea: React.FC<FieldRendererProps> = ({
   }
 
   function detectExtractCandidate(text: string) {
-    const hasSvgRoot = /^\s*<svg[\s>]/i.test(text || "");
-    setShowExtract(hasSvgRoot);
+    // Only show extract prompt for SVG code
+    if (isSvgCode) {
+      const hasSvgRoot = /^\s*<svg[\s>]/i.test(text || "");
+      setShowExtract(hasSvgRoot);
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -142,31 +149,35 @@ export const CodeTextarea: React.FC<FieldRendererProps> = ({
   return (
     <div className={`field-input code-textarea ${className}`}>
       <div className="code-toolbar">
-        <button
-          className="action-btn"
-          type="button"
-          onClick={handleImportClick}
-          disabled={disabled}
-          title="Import SVG file"
-        >
-          Import
-        </button>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".svg,image/svg+xml"
-          style={{ display: "none" }}
-          onChange={handleImportFile}
-        />
-        <button
-          className="action-btn"
-          type="button"
-          onClick={handleFormat}
-          disabled={disabled}
-          title="Format XML"
-        >
-          Format
-        </button>
+        {isSvgCode && (
+          <>
+            <button
+              className="action-btn"
+              type="button"
+              onClick={handleImportClick}
+              disabled={disabled}
+              title="Import SVG file"
+            >
+              Import
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".svg,image/svg+xml"
+              style={{ display: "none" }}
+              onChange={handleImportFile}
+            />
+            <button
+              className="action-btn"
+              type="button"
+              onClick={handleFormat}
+              disabled={disabled}
+              title="Format XML"
+            >
+              Format
+            </button>
+          </>
+        )}
         <button
           className="action-btn"
           type="button"

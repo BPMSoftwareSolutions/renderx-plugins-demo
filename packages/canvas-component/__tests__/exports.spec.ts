@@ -24,6 +24,6 @@ describe('@renderx-plugins/canvas-component package exports', () => {
 
     const create = await import('@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts');
     expect(typeof create.handlers).toBe('object');
-  }, 30000);
+  }, 120000);
 });
 

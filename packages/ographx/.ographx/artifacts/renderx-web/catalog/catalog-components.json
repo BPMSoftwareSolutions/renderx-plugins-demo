@@ -1,0 +1,683 @@
+{
+  "metadata": {
+    "generated": "2025-11-21T15:15:17.997Z",
+    "phase": "Phase 1: Catalog Analysis",
+    "sourceDirectories": [
+      "packages/canvas/json-components/",
+      "packages/canvas-component/json-components/",
+      "packages/components/json-components/",
+      "packages/control-panel/json-components/",
+      "packages/header/json-components/",
+      "packages/library/json-components/",
+      "packages/library-component/json-components/"
+    ],
+    "fileCount": 10
+  },
+  "summary": {
+    "totalComponents": 10,
+    "totalTypes": 10,
+    "totalInteractionEvents": 6,
+    "withCanvasIntegration": 9,
+    "withCss": 9,
+    "withCssLibrary": 9,
+    "withReactCode": 0
+  },
+  "components": [
+    {
+      "type": "button",
+      "name": "Button",
+      "description": "Interactive button component with click handling - JSON replacement for built-in button",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 4,
+      "events": 3,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "container",
+      "name": "Container",
+      "description": "Container that can hold child components and provides relative positioning context",
+      "category": "layout",
+      "version": "1.0.0",
+      "properties": 0,
+      "events": 0,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "description": "Heading component with multiple levels and typography controls - JSON replacement for built-in heading",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 5,
+      "events": 2,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "html",
+      "name": "HTML",
+      "description": "Rich HTML component for sanitized pasted markup blocks.",
+      "category": "basic",
+      "version": "1.0.1",
+      "properties": 1,
+      "events": 0,
+      "interactions": 0,
+      "interactionDetails": {},
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "description": "Image component with src, alt text, and aspect ratio controls - JSON replacement for built-in image",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 5,
+      "events": 3,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "unknown",
+      "name": "Unknown",
+      "description": "",
+      "category": "uncategorized",
+      "version": "1.0.0",
+      "properties": 0,
+      "events": 0,
+      "interactions": 0,
+      "interactionDetails": {},
+      "canvasIntegration": {
+        "resizable": false,
+        "draggable": false,
+        "selectable": false
+      },
+      "hasCss": false,
+      "hasCssLibrary": false,
+      "hasReactCode": false
+    },
+    {
+      "type": "input",
+      "name": "Input",
+      "description": "Text input component with validation and focus handling - JSON replacement for built-in input",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 6,
+      "events": 4,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "line",
+      "name": "Line",
+      "description": "Line component rendered via CSS variables controlling endpoints/angle/length",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 2,
+      "events": 0,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "description": "Paragraph component with rich text content and formatting options - JSON replacement for built-in paragraph",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 5,
+      "events": 2,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    },
+    {
+      "type": "svg",
+      "name": "SVG",
+      "description": "SVG container that can render complex diagrams via pasted markup (MVP)",
+      "category": "basic",
+      "version": "1.0.0",
+      "properties": 3,
+      "events": 0,
+      "interactions": 6,
+      "interactionDetails": {
+        "canvas.component.create": {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        },
+        "canvas.component.select": {
+          "pluginId": "CanvasComponentSelectionPlugin",
+          "sequenceId": "canvas-component-select-symphony"
+        },
+        "canvas.component.drag.move": {
+          "pluginId": "CanvasComponentDragPlugin",
+          "sequenceId": "canvas-component-drag-symphony"
+        },
+        "canvas.component.resize.start": {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        },
+        "canvas.component.resize.move": {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        },
+        "canvas.component.resize.end": {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      },
+      "canvasIntegration": {
+        "resizable": true,
+        "draggable": true,
+        "selectable": true
+      },
+      "hasCss": true,
+      "hasCssLibrary": true,
+      "hasReactCode": false
+    }
+  ],
+  "types": [
+    "button",
+    "container",
+    "heading",
+    "html",
+    "image",
+    "input",
+    "line",
+    "paragraph",
+    "svg",
+    "unknown"
+  ],
+  "interactionMap": {
+    "canvas.component.create": [
+      {
+        "component": "button",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "container",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "heading",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "image",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "input",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "line",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "paragraph",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      },
+      {
+        "component": "svg",
+        "pluginId": "CanvasComponentPlugin",
+        "sequenceId": "canvas-component-create-symphony"
+      }
+    ],
+    "canvas.component.select": [
+      {
+        "component": "button",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "container",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "heading",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "image",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "input",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "line",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "paragraph",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      },
+      {
+        "component": "svg",
+        "pluginId": "CanvasComponentSelectionPlugin",
+        "sequenceId": "canvas-component-select-symphony"
+      }
+    ],
+    "canvas.component.drag.move": [
+      {
+        "component": "button",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "container",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "heading",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "image",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "input",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "line",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "paragraph",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      },
+      {
+        "component": "svg",
+        "pluginId": "CanvasComponentDragPlugin",
+        "sequenceId": "canvas-component-drag-symphony"
+      }
+    ],
+    "canvas.component.resize.start": [
+      {
+        "component": "button",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "container",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "heading",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "image",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "input",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "line",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "paragraph",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      },
+      {
+        "component": "svg",
+        "pluginId": "CanvasComponentResizeStartPlugin",
+        "sequenceId": "canvas-component-resize-start-symphony"
+      }
+    ],
+    "canvas.component.resize.move": [
+      {
+        "component": "button",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "container",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "heading",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "image",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "input",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "line",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "paragraph",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      },
+      {
+        "component": "svg",
+        "pluginId": "CanvasComponentResizeMovePlugin",
+        "sequenceId": "canvas-component-resize-move-symphony"
+      }
+    ],
+    "canvas.component.resize.end": [
+      {
+        "component": "button",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "container",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "heading",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "image",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "input",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "line",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "paragraph",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      },
+      {
+        "component": "svg",
+        "pluginId": "CanvasComponentResizeEndPlugin",
+        "sequenceId": "canvas-component-resize-end-symphony"
+      }
+    ]
+  }
+}

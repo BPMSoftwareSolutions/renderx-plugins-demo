@@ -93,7 +93,23 @@ export class SchemaResolverService {
 
     const fields: PropertyField[] = [];
 
-    // (Debug logger removed – schema now preloaded for html)
+    // DEBUG: Log schema resolution for React components
+    if (componentType === "react") {
+      console.log(
+        `[SchemaResolver] Generating fields for React component`,
+        {
+          componentType,
+          schemaFound: !!schema,
+          schemaKeys: schema ? Object.keys(schema) : [],
+          integrationFound: !!schema?.integration,
+          propertiesFound: !!schema?.integration?.properties,
+          schemaPropertiesFound: !!schema?.integration?.properties?.schema,
+          schemaPropertyKeys: schema?.integration?.properties?.schema
+            ? Object.keys(schema.integration.properties.schema)
+            : [],
+        }
+      );
+    }
 
     // 1. Generate fields from component schema (if available)
     if (schema?.integration?.properties?.schema) {
@@ -125,7 +141,14 @@ export class SchemaResolverService {
           rendererProps: ui && Object.keys(ui).length ? { ...ui } : undefined,
         };
 
-        // (Removed legacy fallback & diagnostics – html schema now loaded explicitly)
+        // DEBUG: Log React code field generation
+        if (componentType === "react" && key === "reactCode") {
+          console.log(`[SchemaResolver] Generated reactCode field`, {
+            fieldType: field.type,
+            section: field.section,
+            rendererProps: field.rendererProps,
+          });
+        }
 
         if (propSchema.validation) {
           field.validation = propSchema.validation;
@@ -141,8 +164,6 @@ export class SchemaResolverService {
         }
 
         fields.push(field);
-
-        // (Removed debug instrumentation)
       });
     }
 

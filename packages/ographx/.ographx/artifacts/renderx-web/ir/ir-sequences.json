@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "generated": "2025-11-21T15:20:54.691Z",
+    "phase": "Phase 2: IR Extraction",
+    "sourceDirectories": [
+      "packages/canvas/src/sequences/",
+      "packages/canvas-component/src/sequences/",
+      "packages/components/src/sequences/",
+      "packages/control-panel/src/sequences/",
+      "packages/header/src/sequences/",
+      "packages/library/src/sequences/",
+      "packages/library-component/src/sequences/"
+    ],
+    "fileCount": 32
+  },
+  "summary": {
+    "totalSequences": 0,
+    "totalPlugins": 7,
+    "pluginsWithSequences": 0
+  },
+  "sequences": [],
+  "sequencesByPlugin": {
+    "canvas": [],
+    "canvas-component": [],
+    "components": [],
+    "control-panel": [],
+    "header": [],
+    "library": [],
+    "library-component": []
+  }
+}

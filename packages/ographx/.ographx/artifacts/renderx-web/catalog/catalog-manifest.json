@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "generated": "2025-11-21T15:10:15.826Z",
+    "phase": "Phase 1: Catalog Analysis",
+    "sourceFile": "catalog/json-plugins/plugin-manifest.json"
+  },
+  "summary": {
+    "totalPlugins": 9,
+    "uiPlugins": 7,
+    "runtimePlugins": 6,
+    "totalSlots": 6,
+    "totalModules": 7
+  },
+  "plugins": [
+    {
+      "id": "HeaderTitlePlugin",
+      "hasUI": true,
+      "hasRuntime": false,
+      "ui": {
+        "slot": "headerLeft",
+        "module": "@renderx-plugins/header",
+        "export": "HeaderTitle"
+      },
+      "runtime": null
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "hasUI": true,
+      "hasRuntime": false,
+      "ui": {
+        "slot": "headerCenter",
+        "module": "@renderx-plugins/header",
+        "export": "HeaderControls"
+      },
+      "runtime": null
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "hasUI": true,
+      "hasRuntime": false,
+      "ui": {
+        "slot": "headerRight",
+        "module": "@renderx-plugins/header",
+        "export": "HeaderThemeToggle"
+      },
+      "runtime": null
+    },
+    {
+      "id": "LibraryPlugin",
+      "hasUI": true,
+      "hasRuntime": true,
+      "ui": {
+        "slot": "library",
+        "module": "@renderx-plugins/library",
+        "export": "LibraryPanel"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/library",
+        "export": "register"
+      }
+    },
+    {
+      "id": "CanvasPlugin",
+      "hasUI": true,
+      "hasRuntime": true,
+      "ui": {
+        "slot": "canvas",
+        "module": "@renderx-plugins/canvas",
+        "export": "CanvasPage"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/canvas",
+        "export": "register"
+      }
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "hasUI": true,
+      "hasRuntime": true,
+      "ui": {
+        "slot": "controlPanel",
+        "module": "@renderx-plugins/control-panel",
+        "export": "ControlPanel"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/control-panel",
+        "export": "register"
+      }
+    },
+    {
+      "id": "LibraryComponentPlugin",
+      "hasUI": false,
+      "hasRuntime": true,
+      "ui": null,
+      "runtime": {
+        "module": "@renderx-plugins/library-component",
+        "export": "register"
+      }
+    },
+    {
+      "id": "CanvasComponentPlugin",
+      "hasUI": false,
+      "hasRuntime": true,
+      "ui": null,
+      "runtime": {
+        "module": "@renderx-plugins/canvas-component",
+        "export": "register"
+      }
+    },
+    {
+      "id": "RealEstateAnalyzerPlugin",
+      "hasUI": true,
+      "hasRuntime": true,
+      "ui": {
+        "slot": "library",
+        "module": "@renderx-plugins/real-estate-analyzer",
+        "export": "OpportunityAnalyzer"
+      },
+      "runtime": {
+        "module": "@renderx-plugins/real-estate-analyzer",
+        "export": "register"
+      }
+    }
+  ],
+  "uiPlugins": [
+    {
+      "id": "HeaderTitlePlugin",
+      "slot": "headerLeft",
+      "module": "@renderx-plugins/header",
+      "export": "HeaderTitle"
+    },
+    {
+      "id": "HeaderControlsPlugin",
+      "slot": "headerCenter",
+      "module": "@renderx-plugins/header",
+      "export": "HeaderControls"
+    },
+    {
+      "id": "HeaderThemePlugin",
+      "slot": "headerRight",
+      "module": "@renderx-plugins/header",
+      "export": "HeaderThemeToggle"
+    },
+    {
+      "id": "LibraryPlugin",
+      "slot": "library",
+      "module": "@renderx-plugins/library",
+      "export": "LibraryPanel"
+    },
+    {
+      "id": "CanvasPlugin",
+      "slot": "canvas",
+      "module": "@renderx-plugins/canvas",
+      "export": "CanvasPage"
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "slot": "controlPanel",
+      "module": "@renderx-plugins/control-panel",
+      "export": "ControlPanel"
+    },
+    {
+      "id": "RealEstateAnalyzerPlugin",
+      "slot": "library",
+      "module": "@renderx-plugins/real-estate-analyzer",
+      "export": "OpportunityAnalyzer"
+    }
+  ],
+  "runtimePlugins": [
+    {
+      "id": "LibraryPlugin",
+      "module": "@renderx-plugins/library",
+      "export": "register"
+    },
+    {
+      "id": "CanvasPlugin",
+      "module": "@renderx-plugins/canvas",
+      "export": "register"
+    },
+    {
+      "id": "ControlPanelPlugin",
+      "module": "@renderx-plugins/control-panel",
+      "export": "register"
+    },
+    {
+      "id": "LibraryComponentPlugin",
+      "module": "@renderx-plugins/library-component",
+      "export": "register"
+    },
+    {
+      "id": "CanvasComponentPlugin",
+      "module": "@renderx-plugins/canvas-component",
+      "export": "register"
+    },
+    {
+      "id": "RealEstateAnalyzerPlugin",
+      "module": "@renderx-plugins/real-estate-analyzer",
+      "export": "register"
+    }
+  ],
+  "slots": [
+    "canvas",
+    "controlPanel",
+    "headerCenter",
+    "headerLeft",
+    "headerRight",
+    "library"
+  ],
+  "modules": [
+    "@renderx-plugins/canvas",
+    "@renderx-plugins/canvas-component",
+    "@renderx-plugins/control-panel",
+    "@renderx-plugins/header",
+    "@renderx-plugins/library",
+    "@renderx-plugins/library-component",
+    "@renderx-plugins/real-estate-analyzer"
+  ]
+}

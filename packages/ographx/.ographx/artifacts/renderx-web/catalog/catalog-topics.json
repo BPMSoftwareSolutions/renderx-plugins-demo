@@ -1,0 +1,114 @@
+{
+  "metadata": {
+    "generated": "2025-11-21T15:10:13.649Z",
+    "phase": "Phase 1: Catalog Analysis",
+    "sourceDirectories": [
+      "packages/canvas/json-topics/",
+      "packages/canvas-component/json-topics/",
+      "packages/components/json-topics/",
+      "packages/control-panel/json-topics/",
+      "packages/header/json-topics/",
+      "packages/library/json-topics/",
+      "packages/library-component/json-topics/"
+    ],
+    "fileCount": 2
+  },
+  "summary": {
+    "totalTopics": 8,
+    "totalPlugins": 2,
+    "publicTopics": 8,
+    "privateTopics": 0
+  },
+  "topicsByPlugin": {
+    "CanvasComponentPlugin": {
+      "topics": {
+        "canvas.component.copied": {
+          "visibility": "public",
+          "notes": "Published when a component is copied to clipboard"
+        },
+        "canvas.component.pasted": {
+          "visibility": "public",
+          "notes": "Published when a component is pasted from clipboard"
+        },
+        "canvas.component.select.svg-node.changed": {
+          "visibility": "public",
+          "notes": "Published when SVG node selection changes"
+        },
+        "react.component.mounted": {
+          "visibility": "public",
+          "notes": "Published when a React component is successfully mounted on the canvas"
+        },
+        "react.component.error": {
+          "visibility": "public",
+          "notes": "Published when a React component fails to compile or render"
+        }
+      }
+    },
+    "ControlPanelPlugin": {
+      "topics": {
+        "control.panel.selection.updated": {
+          "visibility": "public",
+          "notes": "Published when control panel selection state is updated"
+        },
+        "control.panel.classes.updated": {
+          "visibility": "public",
+          "notes": "Published when CSS classes are updated for a component"
+        },
+        "control.panel.css.registry.updated": {
+          "visibility": "public",
+          "notes": "Published when the CSS registry is updated"
+        }
+      }
+    }
+  },
+  "allTopics": [
+    {
+      "name": "canvas.component.copied",
+      "plugin": "CanvasComponentPlugin",
+      "visibility": "public",
+      "notes": "Published when a component is copied to clipboard"
+    },
+    {
+      "name": "canvas.component.pasted",
+      "plugin": "CanvasComponentPlugin",
+      "visibility": "public",
+      "notes": "Published when a component is pasted from clipboard"
+    },
+    {
+      "name": "canvas.component.select.svg-node.changed",
+      "plugin": "CanvasComponentPlugin",
+      "visibility": "public",
+      "notes": "Published when SVG node selection changes"
+    },
+    {
+      "name": "control.panel.classes.updated",
+      "plugin": "ControlPanelPlugin",
+      "visibility": "public",
+      "notes": "Published when CSS classes are updated for a component"
+    },
+    {
+      "name": "control.panel.css.registry.updated",
+      "plugin": "ControlPanelPlugin",
+      "visibility": "public",
+      "notes": "Published when the CSS registry is updated"
+    },
+    {
+      "name": "control.panel.selection.updated",
+      "plugin": "ControlPanelPlugin",
+      "visibility": "public",
+      "notes": "Published when control panel selection state is updated"
+    },
+    {
+      "name": "react.component.error",
+      "plugin": "CanvasComponentPlugin",
+      "visibility": "public",
+      "notes": "Published when a React component fails to compile or render"
+    },
+    {
+      "name": "react.component.mounted",
+      "plugin": "CanvasComponentPlugin",
+      "visibility": "public",
+      "notes": "Published when a React component is successfully mounted on the canvas"
+    }
+  ]
+}

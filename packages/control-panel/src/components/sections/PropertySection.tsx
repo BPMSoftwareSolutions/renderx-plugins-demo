@@ -23,6 +23,17 @@ export const PropertySection: React.FC<PropertySectionProps> = ({
 }) => {
   const sectionFields = fields.filter(field => field.section === section.id);
 
+  // DEBUG: Log field filtering for React components
+  if (selectedElement.header.type === "react" && section.id === "content") {
+    console.log(`[PropertySection] Filtering fields for React/content section`, {
+      sectionId: section.id,
+      totalFields: fields.length,
+      allFieldKeys: fields.map(f => f.key),
+      filteredFieldKeys: sectionFields.map(f => f.key),
+      sectionFieldsCount: sectionFields.length,
+    });
+  }
+
   if (sectionFields.length === 0) return null;
 
   return (

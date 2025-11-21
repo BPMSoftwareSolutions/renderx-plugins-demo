@@ -24,6 +24,12 @@
     ".": {
       "import": "./dist/index.js"
     },
+    "./symphonies/create/create.symphony.ts": {
+      "import": "./dist/symphonies/create/create.symphony.js"
+    },
+    "./symphonies/resize/resize.start.symphony.ts": {
+      "import": "./dist/symphonies/resize/resize.start.symphony.js"
+    },
     "./symphonies/*.ts": {
       "import": "./dist/symphonies/*.js"
     },

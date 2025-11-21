@@ -143,6 +143,8 @@ export async function loadSchemas(data: any, ctx: any) {
       "paragraph",
       "image",
       "svg",
+      "react",
+      "html",
     ];
 
     // In test environment or when fetch is not available, just mark as loaded

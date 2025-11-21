@@ -1,0 +1,1613 @@
+{
+  "metadata": {
+    "generated": "2025-11-21T15:10:10.142Z",
+    "phase": "Phase 1: Catalog Analysis",
+    "sourceDirectories": [
+      "packages/canvas/json-sequences/",
+      "packages/canvas-component/json-sequences/",
+      "packages/components/json-sequences/",
+      "packages/control-panel/json-sequences/",
+      "packages/header/json-sequences/",
+      "packages/library/json-sequences/",
+      "packages/library-component/json-sequences/"
+    ],
+    "fileCount": 53
+  },
+  "summary": {
+    "totalSequences": 53,
+    "totalHandlers": 84,
+    "totalTopics": 94
+  },
+  "sequences": [
+    {
+      "id": "canvas-component-copy-symphony",
+      "pluginId": "CanvasComponentCopyPlugin",
+      "name": "Canvas Component Copy",
+      "movements": [
+        {
+          "id": "copy-to-clipboard",
+          "name": "Copy to Clipboard",
+          "beatCount": 3,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:copy:serialize",
+              "handler": "serializeSelectedComponent",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:copy:clipboard",
+              "handler": "copyToClipboard",
+              "kind": "io",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:copy:notify",
+              "handler": "notifyCopyComplete",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-create-symphony",
+      "pluginId": "CanvasComponentPlugin",
+      "name": "Canvas Component Create",
+      "movements": [
+        {
+          "id": "create",
+          "name": "Create",
+          "beatCount": 6,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resolve-template",
+              "handler": "resolveTemplate",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:register-instance",
+              "handler": "registerInstance",
+              "kind": "io",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:create",
+              "handler": "createNode",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:render-react",
+              "handler": "renderReact",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:notify-ui",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 6,
+              "event": "canvas:component:augment:line",
+              "handler": "enhanceLine",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-delete-symphony",
+      "pluginId": "CanvasComponentDeletePlugin",
+      "name": "Canvas Component Delete",
+      "movements": [
+        {
+          "id": "delete",
+          "name": "Delete",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:delete",
+              "handler": "deleteComponent",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:deleted",
+              "handler": "publishDeleted",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-delete-requested-symphony",
+      "pluginId": "CanvasComponentDeleteRequestPlugin",
+      "name": "Canvas Component Delete Requested",
+      "movements": [
+        {
+          "id": "route-delete",
+          "name": "Route Delete",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:delete:route",
+              "handler": "routeDeleteRequest",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-deselect-all-symphony",
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "name": "Canvas Component Deselect All",
+      "movements": [
+        {
+          "id": "deselect-all",
+          "name": "Deselect All",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:deselect:all",
+              "handler": "hideAllOverlays",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:selections:cleared",
+              "handler": "publishSelectionsCleared",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-deselect-symphony",
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "name": "Canvas Component Deselect",
+      "movements": [
+        {
+          "id": "deselect",
+          "name": "Deselect",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:deselect",
+              "handler": "deselectComponent",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:deselection:changed",
+              "handler": "publishDeselectionChanged",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-deselect-requested-symphony",
+      "pluginId": "CanvasComponentDeselectionRequestPlugin",
+      "name": "Canvas Component Deselect Requested",
+      "movements": [
+        {
+          "id": "route-deselection",
+          "name": "Route Deselection",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:deselect:route",
+              "handler": "routeDeselectionRequest",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-drag-end-symphony",
+      "pluginId": "CanvasComponentDragEndPlugin",
+      "name": "Canvas Component Drag End",
+      "movements": [
+        {
+          "id": "drag-end",
+          "name": "Drag End",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:drag:end",
+              "handler": "endDrag",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-drag-move-symphony",
+      "pluginId": "CanvasComponentDragMovePlugin",
+      "name": "Canvas Component Drag Move",
+      "movements": [
+        {
+          "id": "drag-move",
+          "name": "Drag Move",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:drag:move",
+              "handler": "updatePosition",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:drag:forward",
+              "handler": "forwardToControlPanel",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-drag-start-symphony",
+      "pluginId": "CanvasComponentDragStartPlugin",
+      "name": "Canvas Component Drag Start",
+      "movements": [
+        {
+          "id": "drag-start",
+          "name": "Drag Start",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:drag:start",
+              "handler": "startDrag",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-export-gif-symphony",
+      "pluginId": "CanvasComponentExportGifPlugin",
+      "name": "Canvas Component Export GIF",
+      "movements": [
+        {
+          "id": "export-gif",
+          "name": "Export GIF",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:export-gif:rasterize-and-encode",
+              "handler": "exportSvgToGif",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-export-mp4-symphony",
+      "pluginId": "CanvasComponentExportMp4Plugin",
+      "name": "Canvas Component Export MP4",
+      "movements": [
+        {
+          "id": "export-mp4",
+          "name": "Export MP4",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:export-mp4:rasterize-and-encode",
+              "handler": "exportSvgToMp4",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-export-symphony",
+      "pluginId": "CanvasComponentExportPlugin",
+      "name": "Canvas Component Export",
+      "movements": [
+        {
+          "id": "export",
+          "name": "Export",
+          "beatCount": 6,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:query-all",
+              "handler": "queryAllComponents",
+              "kind": "io",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:discover-components",
+              "handler": "discoverComponentsFromDom",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:collect-css",
+              "handler": "collectCssClasses",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:collect-layout",
+              "handler": "collectLayoutData",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:build-ui-file",
+              "handler": "buildUiFileContent",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:download-file",
+              "handler": "downloadUiFile",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-import-symphony",
+      "pluginId": "CanvasComponentImportPlugin",
+      "name": "Canvas Component Import",
+      "movements": [
+        {
+          "id": "import",
+          "name": "Import",
+          "beatCount": 5,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:ui:open",
+              "handler": "openUiFile",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:ui:parse",
+              "handler": "parseUiFile",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:css:inject",
+              "handler": "injectCssClasses",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:nodes:create",
+              "handler": "createComponentsSequentially",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:hierarchy:apply",
+              "handler": "applyHierarchyAndOrder",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "movements": []
+    },
+    {
+      "id": "canvas-line-manip-end-symphony",
+      "pluginId": "CanvasLineManipEndPlugin",
+      "name": "Canvas Line Manip End",
+      "movements": [
+        {
+          "id": "manip-line-end",
+          "name": "Manip Line End",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:manip:line:end",
+              "handler": "endLineManip",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-manip-move-symphony",
+      "pluginId": "CanvasLineManipMovePlugin",
+      "name": "Canvas Line Manip Move",
+      "movements": [
+        {
+          "id": "manip-line-move",
+          "name": "Manip Line Move",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:manip:line:move",
+              "handler": "moveLineManip",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-manip-start-symphony",
+      "pluginId": "CanvasLineManipStartPlugin",
+      "name": "Canvas Line Manip Start",
+      "movements": [
+        {
+          "id": "manip-line-start",
+          "name": "Manip Line Start",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:manip:line:start",
+              "handler": "startLineManip",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-paste-symphony",
+      "pluginId": "CanvasComponentPastePlugin",
+      "name": "Canvas Component Paste",
+      "movements": [
+        {
+          "id": "paste-from-clipboard",
+          "name": "Paste from Clipboard",
+          "beatCount": 5,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:paste:clipboard",
+              "handler": "readFromClipboard",
+              "kind": "io",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:paste:deserialize",
+              "handler": "deserializeComponentData",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:paste:position",
+              "handler": "calculatePastePosition",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "canvas:component:paste:create",
+              "handler": "createPastedComponent",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 5,
+              "event": "canvas:component:paste:notify",
+              "handler": "notifyPasteComplete",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-resize-end-symphony",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "name": "Canvas Component Resize End",
+      "movements": [
+        {
+          "id": "resize-end",
+          "name": "Resize End",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:end",
+              "handler": "endResize",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-resize-end-symphony",
+      "pluginId": "CanvasLineResizeEndPlugin",
+      "name": "Canvas Line Resize End",
+      "movements": [
+        {
+          "id": "resize-line-end",
+          "name": "Resize Line End",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:line:end",
+              "handler": "endLineResize",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-resize-move-symphony",
+      "pluginId": "CanvasLineResizeMovePlugin",
+      "name": "Canvas Line Resize Move",
+      "movements": [
+        {
+          "id": "resize-line-move",
+          "name": "Resize Line Move",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:line:move",
+              "handler": "updateLine",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-line-resize-start-symphony",
+      "pluginId": "CanvasLineResizeStartPlugin",
+      "name": "Canvas Line Resize Start",
+      "movements": [
+        {
+          "id": "resize-line-start",
+          "name": "Resize Line Start",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:line:start",
+              "handler": "startLineResize",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-resize-move-symphony",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "name": "Canvas Component Resize Move",
+      "movements": [
+        {
+          "id": "resize-move",
+          "name": "Resize Move",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:move",
+              "handler": "updateSize",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:resize:forward",
+              "handler": "forwardToControlPanel",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-resize-start-symphony",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "name": "Canvas Component Resize Start",
+      "movements": [
+        {
+          "id": "resize-start",
+          "name": "Resize Start",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:resize:start",
+              "handler": "startResize",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-select-symphony",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "name": "Canvas Component Select",
+      "movements": [
+        {
+          "id": "select",
+          "name": "Select",
+          "beatCount": 3,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:select",
+              "handler": "showSelectionOverlay",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:select:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:selection:changed",
+              "handler": "publishSelectionChanged",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-select-requested-symphony",
+      "pluginId": "CanvasComponentPlugin",
+      "name": "Canvas Component Select Requested",
+      "movements": [
+        {
+          "id": "route-selection",
+          "name": "Route Selection",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:select:route",
+              "handler": "routeSelectionRequest",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-select-svg-node-symphony",
+      "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+      "name": "Canvas Component Select SVG Node",
+      "movements": [
+        {
+          "id": "select-svg-node",
+          "name": "Select SVG Node",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:select:svg-node",
+              "handler": "showSvgNodeOverlay",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-update-symphony",
+      "pluginId": "CanvasComponentPlugin",
+      "name": "Canvas Component Update",
+      "movements": [
+        {
+          "id": "update",
+          "name": "Update",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:update:attribute",
+              "handler": "updateAttribute",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:update:refresh",
+              "handler": "refreshControlPanel",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-update-svg-node-symphony",
+      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+      "name": "Canvas Component Update SVG Node",
+      "movements": [
+        {
+          "id": "update-svg-node",
+          "name": "Update SVG Node Attribute",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:update:svg-node:attribute",
+              "handler": "updateSvgNodeAttribute",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:update:svg-node:refresh",
+              "handler": "refreshControlPanel",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-classes-add-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel Classes Add",
+      "movements": [
+        {
+          "id": "addClass",
+          "name": "Add Class",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:classes:add",
+              "handler": "addClass",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:classes:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-classes-remove-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel Classes Remove",
+      "movements": [
+        {
+          "id": "removeClass",
+          "name": "Remove Class",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:classes:remove",
+              "handler": "removeClass",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:classes:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-css-create-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel CSS Create",
+      "movements": [
+        {
+          "id": "createCssClass",
+          "name": "Create CSS Class",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:css:create",
+              "handler": "createCssClass",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:css:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-css-delete-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel CSS Delete",
+      "movements": [
+        {
+          "id": "deleteCssClass",
+          "name": "Delete CSS Class",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:css:delete",
+              "handler": "deleteCssClass",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:css:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-css-edit-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel CSS Edit",
+      "movements": [
+        {
+          "id": "updateCssClass",
+          "name": "Update CSS Class",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:css:update",
+              "handler": "updateCssClass",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:css:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "movements": []
+    },
+    {
+      "id": "control-panel-selection-show-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel Selection Show",
+      "movements": [
+        {
+          "id": "selection",
+          "name": "Selection",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:selection:derive",
+              "handler": "deriveSelectionModel",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:selection:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-ui-field-change-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel UI Field Change",
+      "movements": [
+        {
+          "id": "field-change",
+          "name": "Field Change",
+          "beatCount": 4,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:ui:field:prepare",
+              "handler": "prepareField",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:ui:field:dispatch",
+              "handler": "dispatchField",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "control:panel:ui:field:dirty",
+              "handler": "setDirty",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "control:panel:ui:field:await-refresh",
+              "handler": "awaitRefresh",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-ui-field-validate-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel UI Field Validate",
+      "movements": [
+        {
+          "id": "field-validate",
+          "name": "Field Validate",
+          "beatCount": 3,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:ui:field:validate",
+              "handler": "validateField",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:ui:errors:merge",
+              "handler": "mergeErrors",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "control:panel:ui:update",
+              "handler": "updateView",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-ui-init-batched-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel UI Init (Batched)",
+      "movements": [
+        {
+          "id": "init",
+          "name": "Init",
+          "beatCount": 6,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:ui:init:config",
+              "handler": "initConfig",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:ui:init:resolver",
+              "handler": "initResolver",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "control:panel:ui:init:schemas",
+              "handler": "loadSchemas",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "control:panel:ui:init:observers",
+              "handler": "registerObservers",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 5,
+              "event": "control:panel:ui:init:notify",
+              "handler": "notifyReady",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 6,
+              "event": "control:panel:ui:init:movement",
+              "handler": "initMovement",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-ui-init-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel UI Init",
+      "movements": [
+        {
+          "id": "init",
+          "name": "Init",
+          "beatCount": 6,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:ui:init:config",
+              "handler": "initConfig",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:ui:init:resolver",
+              "handler": "initResolver",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "control:panel:ui:init:schemas",
+              "handler": "loadSchemas",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 4,
+              "event": "control:panel:ui:init:observers",
+              "handler": "registerObservers",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 5,
+              "event": "control:panel:ui:init:notify",
+              "handler": "notifyReady",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 6,
+              "event": "control:panel:ui:init:movement",
+              "handler": "initMovement",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-ui-render-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel UI Render",
+      "movements": [
+        {
+          "id": "render",
+          "name": "Render",
+          "beatCount": 3,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:ui:fields:generate",
+              "handler": "generateFields",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:ui:sections:generate",
+              "handler": "generateSections",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "control:panel:ui:render",
+              "handler": "renderView",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-ui-section-toggle-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel UI Section Toggle",
+      "movements": [
+        {
+          "id": "section-toggle",
+          "name": "Section Toggle",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:ui:section:toggle",
+              "handler": "toggleSection",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control-panel-update-symphony",
+      "pluginId": "ControlPanelPlugin",
+      "name": "Control Panel Update",
+      "movements": [
+        {
+          "id": "update",
+          "name": "Update",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "control:panel:update:derive",
+              "handler": "updateFromElement",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "control:panel:update:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "movements": []
+    },
+    {
+      "id": "header-ui-theme-get-symphony",
+      "pluginId": "HeaderThemePlugin",
+      "name": "Header UI Theme Get",
+      "movements": [
+        {
+          "id": "get",
+          "name": "Get Current Theme",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "app:ui:theme:get",
+              "handler": "getCurrentTheme",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "app:ui:theme:notify",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "header-ui-theme-toggle-symphony",
+      "pluginId": "HeaderThemePlugin",
+      "name": "Header UI Theme Toggle",
+      "movements": [
+        {
+          "id": "toggle",
+          "name": "Toggle Theme",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "app:ui:theme:toggle",
+              "handler": "toggleTheme",
+              "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "movements": []
+    },
+    {
+      "id": "library-load-symphony",
+      "pluginId": "LibraryPlugin",
+      "name": "Library Load",
+      "movements": [
+        {
+          "id": "load",
+          "name": "Load",
+          "beatCount": 2,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "library:components:load",
+              "handler": "loadComponents",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "library:components:notify-ui",
+              "handler": "notifyUi",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "library-component-container-drop-symphony",
+      "pluginId": "LibraryComponentPlugin",
+      "name": "Library Component Container Drop",
+      "movements": [
+        {
+          "id": "drop",
+          "name": "Drop",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "library:container:drop",
+              "handler": "publishCreateRequested",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "library-component-drag-symphony",
+      "pluginId": "LibraryComponentPlugin",
+      "name": "Library Component Drag",
+      "movements": [
+        {
+          "id": "drag",
+          "name": "Drag",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "library.component.drag.start.requested",
+              "handler": "onDragStart",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "library-component-drop-symphony",
+      "pluginId": "LibraryComponentPlugin",
+      "name": "Library Component Drop",
+      "movements": [
+        {
+          "id": "drop",
+          "name": "Drop",
+          "beatCount": 1,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "library:component:drop",
+              "handler": "publishCreateRequested",
+              "kind": "pure",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "movements": []
+    }
+  ],
+  "handlers": [
+    "addClass",
+    "applyHierarchyAndOrder",
+    "awaitRefresh",
+    "buildUiFileContent",
+    "calculatePastePosition",
+    "collectCssClasses",
+    "collectLayoutData",
+    "copyToClipboard",
+    "createComponentsSequentially",
+    "createCssClass",
+    "createNode",
+    "createPastedComponent",
+    "deleteComponent",
+    "deleteCssClass",
+    "deriveSelectionModel",
+    "deselectComponent",
+    "deserializeComponentData",
+    "discoverComponentsFromDom",
+    "dispatchField",
+    "downloadUiFile",
+    "endDrag",
+    "endLineManip",
+    "endLineResize",
+    "endResize",
+    "enhanceLine",
+    "exportSvgToGif",
+    "exportSvgToMp4",
+    "forwardToControlPanel",
+    "generateFields",
+    "generateSections",
+    "getCurrentTheme",
+    "hideAllOverlays",
+    "initConfig",
+    "initMovement",
+    "initResolver",
+    "injectCssClasses",
+    "loadComponents",
+    "loadSchemas",
+    "mergeErrors",
+    "moveLineManip",
+    "notifyCopyComplete",
+    "notifyPasteComplete",
+    "notifyReady",
+    "notifyUi",
+    "onDragStart",
+    "openUiFile",
+    "parseUiFile",
+    "prepareField",
+    "publishCreateRequested",
+    "publishDeleted",
+    "publishDeselectionChanged",
+    "publishSelectionChanged",
+    "publishSelectionsCleared",
+    "queryAllComponents",
+    "readFromClipboard",
+    "refreshControlPanel",
+    "registerInstance",
+    "registerObservers",
+    "removeClass",
+    "renderReact",
+    "renderView",
+    "resolveTemplate",
+    "routeDeleteRequest",
+    "routeDeselectionRequest",
+    "routeSelectionRequest",
+    "serializeSelectedComponent",
+    "setDirty",
+    "showSelectionOverlay",
+    "showSvgNodeOverlay",
+    "startDrag",
+    "startLineManip",
+    "startLineResize",
+    "startResize",
+    "toggleSection",
+    "toggleTheme",
+    "updateAttribute",
+    "updateCssClass",
+    "updateFromElement",
+    "updateLine",
+    "updatePosition",
+    "updateSize",
+    "updateSvgNodeAttribute",
+    "updateView",
+    "validateField"
+  ],
+  "topics": [
+    "app:ui:theme:get",
+    "app:ui:theme:notify",
+    "app:ui:theme:toggle",
+    "canvas:component:augment:line",
+    "canvas:component:build-ui-file",
+    "canvas:component:collect-css",
+    "canvas:component:collect-layout",
+    "canvas:component:copy:clipboard",
+    "canvas:component:copy:notify",
+    "canvas:component:copy:serialize",
+    "canvas:component:create",
+    "canvas:component:css:inject",
+    "canvas:component:delete",
+    "canvas:component:delete:route",
+    "canvas:component:deleted",
+    "canvas:component:deselect",
+    "canvas:component:deselect:all",
+    "canvas:component:deselect:route",
+    "canvas:component:deselection:changed",
+    "canvas:component:discover-components",
+    "canvas:component:download-file",
+    "canvas:component:drag:end",
+    "canvas:component:drag:forward",
+    "canvas:component:drag:move",
+    "canvas:component:drag:start",
+    "canvas:component:export-gif:rasterize-and-encode",
+    "canvas:component:export-mp4:rasterize-and-encode",
+    "canvas:component:hierarchy:apply",
+    "canvas:component:manip:line:end",
+    "canvas:component:manip:line:move",
+    "canvas:component:manip:line:start",
+    "canvas:component:nodes:create",
+    "canvas:component:notify-ui",
+    "canvas:component:paste:clipboard",
+    "canvas:component:paste:create",
+    "canvas:component:paste:deserialize",
+    "canvas:component:paste:notify",
+    "canvas:component:paste:position",
+    "canvas:component:query-all",
+    "canvas:component:register-instance",
+    "canvas:component:render-react",
+    "canvas:component:resize:end",
+    "canvas:component:resize:forward",
+    "canvas:component:resize:line:end",
+    "canvas:component:resize:line:move",
+    "canvas:component:resize:line:start",
+    "canvas:component:resize:move",
+    "canvas:component:resize:start",
+    "canvas:component:resolve-template",
+    "canvas:component:select",
+    "canvas:component:select:notify",
+    "canvas:component:select:route",
+    "canvas:component:select:svg-node",
+    "canvas:component:selection:changed",
+    "canvas:component:selections:cleared",
+    "canvas:component:ui:open",
+    "canvas:component:ui:parse",
+    "canvas:component:update:attribute",
+    "canvas:component:update:refresh",
+    "canvas:component:update:svg-node:attribute",
+    "canvas:component:update:svg-node:refresh",
+    "control:panel:classes:add",
+    "control:panel:classes:notify",
+    "control:panel:classes:remove",
+    "control:panel:css:create",
+    "control:panel:css:delete",
+    "control:panel:css:notify",
+    "control:panel:css:update",
+    "control:panel:selection:derive",
+    "control:panel:selection:notify",
+    "control:panel:ui:errors:merge",
+    "control:panel:ui:field:await-refresh",
+    "control:panel:ui:field:dirty",
+    "control:panel:ui:field:dispatch",
+    "control:panel:ui:field:prepare",
+    "control:panel:ui:field:validate",
+    "control:panel:ui:fields:generate",
+    "control:panel:ui:init:config",
+    "control:panel:ui:init:movement",
+    "control:panel:ui:init:notify",
+    "control:panel:ui:init:observers",
+    "control:panel:ui:init:resolver",
+    "control:panel:ui:init:schemas",
+    "control:panel:ui:render",
+    "control:panel:ui:section:toggle",
+    "control:panel:ui:sections:generate",
+    "control:panel:ui:update",
+    "control:panel:update:derive",
+    "control:panel:update:notify",
+    "library.component.drag.start.requested",
+    "library:component:drop",
+    "library:components:load",
+    "library:components:notify-ui",
+    "library:container:drop"
+  ]
+}

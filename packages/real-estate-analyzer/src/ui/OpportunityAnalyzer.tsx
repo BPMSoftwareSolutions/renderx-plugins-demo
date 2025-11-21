@@ -22,12 +22,9 @@ export function OpportunityAnalyzer() {
     setError(null);
 
     try {
-      // Resolve interaction route instead of hardcoding plugin/sequence IDs (lint rule enforcement)
-      // Build interaction key dynamically to satisfy lint key validation without hardcoding literal in call
-      const SEARCH_KEY = ['library.real.estate.search'].join('');
-      const route = resolveInteraction(SEARCH_KEY);
+      const route = resolveInteraction('real.estate.analyzer.search');
       if (!route?.pluginId || !route?.sequenceId) {
-        throw new Error("Unknown interaction 'library.real.estate.search'");
+        throw new Error("Unknown interaction 'real.estate.analyzer.search'");
       }
       const result = await conductor.play(route.pluginId, route.sequenceId, { propertyUrl });
 

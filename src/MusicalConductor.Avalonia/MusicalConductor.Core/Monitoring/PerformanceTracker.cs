@@ -52,27 +52,7 @@ public class PerformanceTracker
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    /// <summary>
-    /// Start tracking a beat execution
-    /// </summary>
-    public string StartBeatTiming(string sequenceName, int beat)
-    {
-        var beatKey = $"{sequenceName}-{beat}";
-        var startTime = _stopwatch.ElapsedMilliseconds;
-        _beatStartTimes[beatKey] = startTime;
 
-        _logger.LogDebug(
-            "⏱️ PerformanceTracker: Started timing beat {Beat} for {SequenceName}",
-            beat,
-            sequenceName);
-
-        if (_logger.IsEnabled(LogLevel.Trace))
-        {
-            _logger.LogTrace("⏱️ PerformanceTracker: Beat timing details - BeatKey: {BeatKey}, StartTime: {StartTime}ms, TotalBeats: {TotalBeats}", beatKey, startTime, _beatStartTimes.Count);
-        }
-
-        return beatKey;
-    }
 
     /// <summary>
     /// End tracking a beat execution

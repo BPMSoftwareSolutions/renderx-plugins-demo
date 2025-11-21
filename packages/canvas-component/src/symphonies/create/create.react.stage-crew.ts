@@ -4,6 +4,16 @@ import * as Babel from "@babel/standalone";
 import { validateReactCode } from "./react-code-validator";
 // (EventRouter publish removed for test determinism when no conductor)
 
+// Instrumentation: Metrics collector for predictive modeling
+let metricsCollector: any = null;
+
+function getMetricsCollector() {
+  if (!metricsCollector && typeof window !== "undefined" && (window as any).__metricsCollector) {
+    metricsCollector = (window as any).__metricsCollector;
+  }
+  return metricsCollector;
+}
+
 // Track React roots for cleanup
 const reactRoots = new Map<string, any>();
 
@@ -13,6 +23,9 @@ const reactRoots = new Map<string, any>();
  * Supports props injection and component communication via EventRouter.
  */
 export const renderReact = async (_data: any, ctx: any) => {
+  // Instrumentation: Get metrics collector for predictive modeling
+  const collector = getMetricsCollector();
+
   // Only process React components
   if (ctx.payload.kind !== "react") {
     return;
@@ -47,17 +60,31 @@ export const renderReact = async (_data: any, ctx: any) => {
       exposeEventRouterToReact(ctx.conductor);
     }
 
+    // Instrumentation: Record validation timing
+    const validateStart = performance.now();
     // Validate React code before compilation
     const validation = validateReactCode(reactCode);
+    if (collector) {
+      collector.record_timing("metric:validate:duration", performance.now() - validateStart);
+    }
+
     if (!validation.valid) {
       throw new Error(`React code validation failed:\n${validation.errors.join('\n')}`);
     }
 
+    // Instrumentation: Record compile timing
+    const compileStart = performance.now();
     // Compile the React code with props injection
     const compiledComponent = compileReactCode(reactCode);
+    if (collector) {
+      collector.record_timing("metric:compile:duration", performance.now() - compileStart);
+    }
+
     const compilationError =
       (compiledComponent as any)?.__renderxCompilationError as string | undefined;
 
+    // Instrumentation: Record render timing
+    const renderStart = performance.now();
     // Create React root and render the component with props
     const root = createRoot(container);
     const element = React.createElement(compiledComponent, props);
@@ -66,6 +93,11 @@ export const renderReact = async (_data: any, ctx: any) => {
     startTransition(() => {
       root.render(element);
     });
+
+    if (collector) {
+      collector.record_timing("metric:render:duration", performance.now() - renderStart);
+      collector.record_event("publish:react.component.mounted", { componentId: nodeId, timestamp: new Date().toISOString() });
+    }
 
     // Track the root for future cleanup
     reactRoots.set(nodeId, root);
@@ -218,6 +250,9 @@ export const renderReact = async (_data: any, ctx: any) => {
  * Uses @babel/standalone to transform JSX before evaluation.
  */
 function compileReactCode(code: string): React.ComponentType {
+  // Instrumentation: Get metrics collector
+  const collector = getMetricsCollector();
+
   try {
     if (!code || typeof code !== "string") {
       throw new Error("React code must be a non-empty string");
@@ -226,12 +261,17 @@ function compileReactCode(code: string): React.ComponentType {
     // First, transform JSX (and modern syntax) to plain JS using Babel.
     let transformedCode = code;
     try {
+      const transformStart = performance.now();
       const result = (Babel as any).transform
         ? (Babel as any).transform(code, {
             presets: ["react"],
             filename: "react-dynamic-component.js",
           })
         : null;
+      if (collector) {
+        collector.record_timing("metric:babel.transform:duration", performance.now() - transformStart);
+      }
+
       if (result && typeof result.code === "string") {
         transformedCode = result.code;
       }
@@ -240,6 +280,9 @@ function compileReactCode(code: string): React.ComponentType {
         transformError instanceof Error
           ? transformError.message
           : String(transformError);
+      if (collector) {
+        collector.record_error("compileFailure", { reason: "babel_transform", message: msg });
+      }
       throw new Error(`JSX transformation failed: ${msg}`);
     }
 
@@ -306,6 +349,11 @@ function compileReactCode(code: string): React.ComponentType {
     return component;
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : String(error);
+
+    // Instrumentation: Record compilation error
+    if (collector) {
+      collector.record_error("compileFailure", { reason: "component_compilation", message: errorMsg });
+    }
 
     function ErrorComponent() {
       return React.createElement(

@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2025-11-20T16:24:39.285Z",
+    "message": {
+      "type": "ack",
+      "id": "trace-1763655879282"
+    }
+  },
+  {
+    "timestamp": "2025-11-20T16:24:39.487Z",
+    "message": {
+      "id": "trace-1763655879282",
+      "type": "play-result",
+      "result": "canvas-component-select-symphony-1763655879288-9jky0volt",
+      "success": true
+    }
+  }
+]

@@ -58,6 +58,15 @@
     {
       "id": "CanvasComponentPlugin",
       "runtime": { "module": "@renderx-plugins/canvas-component", "export": "register" }
+    },
+    {
+      "id": "RealEstateAnalyzerPlugin",
+      "ui": {
+        "slot": "library",
+        "module": "@renderx-plugins/real-estate-analyzer",
+        "export": "OpportunityAnalyzer"
+      },
+      "runtime": { "module": "@renderx-plugins/real-estate-analyzer", "export": "register" }
     }
   ]
 }

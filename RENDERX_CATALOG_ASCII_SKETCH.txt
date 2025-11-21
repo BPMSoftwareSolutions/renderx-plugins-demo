@@ -1,0 +1,209 @@
+================================================================================
+                    RENDERX CATALOG ARCHITECTURE
+================================================================================
+
+LAYER 1: SOURCE OF TRUTH (catalog/)
+================================================================================
+
+    catalog/
+    ├── json-sequences/              ← SYMPHONIES (orchestrated sequences)
+    │   ├── canvas-component/
+    │   │   ├── create.json          ← Create component sequence
+    │   │   ├── delete.json          ← Delete component sequence
+    │   │   └── update.json          ← Update component sequence
+    │   ├── control-panel/
+    │   │   ├── update-property.json ← Update property sequence
+    │   │   └── render-field.json    ← Render field sequence
+    │   ├── library/
+    │   │   ├── load-components.json ← Load library components
+    │   │   └── drag-start.json      ← Drag start sequence
+    │   └── ...
+    │
+    ├── json-topics/                 ← TOPIC DEFINITIONS (pub/sub)
+    │   ├── canvas.json              ← Canvas events
+    │   ├── control-panel.json       ← Control panel events
+    │   ├── library.json             ← Library events
+    │   └── ...
+    │
+    ├── json-plugins/
+    │   └── plugin-manifest.json     ← MASTER PLUGIN REGISTRY
+    │       {
+    │         "plugins": [
+    │           {
+    │             "id": "CanvasComponentPlugin",
+    │             "name": "Canvas Component",
+    │             "handlers": "packages/canvas-component/handlers.ts",
+    │             "sequences": "catalog/json-sequences/canvas-component/"
+    │           },
+    │           ...
+    │         ]
+    │       }
+    │
+    └── json-interactions/
+        └── interaction-manifest.json ← USER INTERACTION MAPPINGS
+            {
+              "interactions": [
+                {
+                  "event": "canvas.component.create",
+                  "sequence": "CanvasComponentPlugin.createComponent"
+                },
+                ...
+              ]
+            }
+
+
+LAYER 2: BUILD PIPELINE (npm run pre:manifests)
+================================================================================
+
+    Source Code (catalog/)
+         ↓
+    [Step 1-2: Validation & Preparation]
+         ↓
+    [Step 3: OgraphX IR Extraction]
+         ↓ graph.json (symbols, calls, contracts)
+         ↓
+    [Step 4: Sequence Generation from IR]
+         ↓ sequences.json (actual beats from code)
+         ↓
+    [Step 5: Enhanced Sequences]
+         ↓ enhanced.sequences.json (with metadata)
+         ↓
+    [Step 6-8: Manifest Merging & Generation]
+         ↓ plugin-manifest.json, interaction-manifest.json, topics.json
+         ↓
+    [Step 9-11: Diagrams, Analysis, Packaging]
+         ↓ *.mmd, *.svg, analysis.json
+         ↓
+    [Step 12: Copy to Public]
+         ↓
+    Generated Artifacts (.ographx/artifacts/ → public/artifacts/)
+
+
+LAYER 3: RUNTIME ARTIFACTS (public/artifacts/)
+================================================================================
+
+    public/artifacts/
+    ├── plugin-manifest.json         ← Loaded at startup
+    ├── interaction-manifest.json    ← Loaded at startup
+    ├── topics.json                  ← Loaded at startup
+    ├── sequences/
+    │   ├── sequences.json
+    │   ├── enhanced.sequences.json
+    │   └── ...
+    ├── diagrams/
+    │   ├── *.mmd
+    │   └── *.svg
+    ├── analysis/
+    │   └── analysis.json
+    └── ir/
+        └── graph.json
+
+
+LAYER 4: RUNTIME EXECUTION (Web/Desktop App)
+================================================================================
+
+    Application Startup
+         ↓
+    Load plugin-manifest.json
+         ↓ Discover all plugins
+    Load interaction-manifest.json
+         ↓ Map events to sequences
+    Load topics.json
+         ↓ Setup pub/sub
+    Initialize Musical Conductor
+         ↓
+    Ready for user interaction
+
+
+    User Action (e.g., click "Add Component")
+         ↓
+    UI emits event: canvas.component.create
+         ↓
+    Event Router looks up in interaction-manifest.json
+         ↓ Finds: CanvasComponentPlugin.createComponent
+    Load symphony from catalog/json-sequences/canvas-component/create.json
+         ↓
+    Musical Conductor plays symphony
+         ↓
+    For each beat:
+      - Call handler from plugin
+      - Publish events to topics
+      - Other plugins subscribe and react
+         ↓
+    Sequence completes
+         ↓
+    UI updates reflect changes
+
+
+DATA FLOW: FROM SOURCE TO RUNTIME
+================================================================================
+
+    catalog/json-sequences/canvas-component/create.json
+         ↓ (source of truth)
+    Build Pipeline extracts beats
+         ↓
+    .ographx/artifacts/renderx-web/sequences/enhanced.sequences.json
+         ↓ (generated artifact)
+    Copied to public/artifacts/
+         ↓
+    Loaded at runtime
+         ↓
+    Musical Conductor plays symphony
+         ↓
+    Handlers execute
+         ↓
+    Events published to topics
+         ↓
+    UI updates
+
+
+KEY PRINCIPLE: MANIFEST-DRIVEN ARCHITECTURE
+================================================================================
+
+    ┌─────────────────────────────────────────────────────────────┐
+    │ EVERYTHING IS DEFINED IN JSON MANIFESTS                     │
+    │                                                              │
+    │ - Plugins registered in plugin-manifest.json                │
+    │ - Interactions mapped in interaction-manifest.json          │
+    │ - Topics defined in topics.json                             │
+    │ - Sequences defined in catalog/json-sequences/              │
+    │                                                              │
+    │ NO HARDCODED PLUGIN LOADING                                 │
+    │ NO HARDCODED EVENT ROUTING                                  │
+    │ NO HARDCODED TOPIC DEFINITIONS                              │
+    │                                                              │
+    │ ALL BEHAVIOR IS DATA-DRIVEN                                 │
+    └─────────────────────────────────────────────────────────────┘
+
+
+SINGLE SOURCE OF TRUTH
+================================================================================
+
+    catalog/ is AUTHORITATIVE
+         ↓
+    Build Pipeline DERIVES artifacts
+         ↓
+    Runtime LOADS artifacts
+         ↓
+    Application EXECUTES based on artifacts
+         ↓
+    Changes to catalog flow through entire pipeline
+         ↓
+    No manual maintenance of generated files
+
+
+PLUGIN INTEGRATION EXAMPLE
+================================================================================
+
+    New Plugin: RealEstateAnalyzer
+         ↓
+    1. Create package: packages/real-estate-analyzer/
+    2. Add to plugin-manifest.json
+    3. Define sequences: catalog/json-sequences/real-estate-analyzer/
+    4. Define topics: catalog/json-topics/real-estate-analyzer.json
+    5. Map interactions: interaction-manifest.json
+    6. Run: npm run pre:manifests
+         ↓
+    Plugin automatically loaded at runtime
+    No changes to host application needed!
+

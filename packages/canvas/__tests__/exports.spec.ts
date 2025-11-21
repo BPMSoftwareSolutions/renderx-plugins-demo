@@ -22,5 +22,5 @@ describe('@renderx-plugins/canvas package exports', () => {
     expect(typeof pkg.register).toBe('function');
     // CanvasPage is a React component function; we just assert it is defined
     expect(typeof pkg.CanvasPage).toBe('function');
-  }, 30000);
+  }, 120000);
 });

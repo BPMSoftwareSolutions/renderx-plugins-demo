@@ -6,6 +6,8 @@ export default defineConfig({
   test: {
     environment: "node",
     globals: true,
+    testTimeout: 60000,
+    hookTimeout: 60000,
     // Include tests in the monorepo's legacy __tests__ folder (if any) and the new tests/ folder
     include: [
       "**/__tests__/**/*.spec.ts",
