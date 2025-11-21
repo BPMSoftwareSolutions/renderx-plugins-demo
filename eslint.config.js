@@ -74,6 +74,8 @@ export default [
       ".vite/**",
       ".venv/**",
       "coverage/**",
+      // Exclude Cypress E2E tests from linting
+      "cypress/e2e/**",
   "scripts/codemods/**",
   "scripts/**",
       "docs/**",
@@ -96,6 +98,8 @@ export default [
       "node_modules/**",
       ".vite/**",
       "coverage/**",
+      // Exclude Cypress E2E tests from linting
+      "cypress/e2e/**",
       "scripts/codemods/**",
       "docs/**",
       // Ignore .NET build outputs and embedded frontend assets
