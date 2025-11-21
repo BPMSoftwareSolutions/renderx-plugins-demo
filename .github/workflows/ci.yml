@@ -27,6 +27,8 @@ jobs:
         run: npm run artifacts:build:integrity
       - name: Precheck plugins and manifests
         run: npm run ci:precheck
+      - name: Generate manifests and artifacts
+        run: npm run pre:manifests
       - name: Lint
         run: npm run lint
       - name: Unit tests
