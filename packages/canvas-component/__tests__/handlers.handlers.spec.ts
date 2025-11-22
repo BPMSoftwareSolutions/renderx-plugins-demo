@@ -11,7 +11,30 @@ import { computeInstanceClass, computeCssVarBlock, computeInlineStyle } from '..
 import { ensureOverlayCss } from '../src/symphonies/select/select.overlay.css.stage-crew';
 import { ensureOverlay } from '../src/symphonies/select/select.overlay.dom.stage-crew';
 import { setClipboardText, getClipboardText } from '../src/symphonies/_clipboard';
+import { publishDeleted, deleteComponent, routeDeleteRequest } from '../src/symphonies/delete/delete.stage-crew';
+import { exportSvgToGif } from '../src/symphonies/export/export.gif.stage-crew';
+import { createMP4Encoder } from '../src/symphonies/export/export.mp4-encoder';
+import { exportSvgToMp4 } from '../src/symphonies/export/export.mp4.stage-crew';
+import { openUiFile } from '../src/symphonies/import/import.file.stage-crew';
+import { startLineManip, endLineManip, moveLineManip } from '../src/symphonies/line-advanced/line.manip.stage-crew';
+import { updateAttribute } from '../src/symphonies/update/update.stage-crew';
+import * as HostSdk from '@renderx-plugins/host-sdk';
 import { EventRouter } from '@renderx-plugins/host-sdk';
+// Mocks for gif.js to avoid long-running worker encoding in jsdom
+vi.mock('gif.js.optimized', () => ({
+  default: class FakeGIF {
+    frames: any[] = [];
+    callbacks: Record<string, Function> = {};
+    constructor() {}
+    addFrame(canvas: any, opts: any) { this.frames.push({ canvas, opts }); }
+    on(evt: string, cb: Function) { this.callbacks[evt] = cb; }
+    render() { setTimeout(() => {
+      const blob = new Blob(['fake'], { type: 'image/gif' });
+      this.callbacks['finished']?.(blob);
+    }, 0); }
+  }
+}));
+vi.mock('gif.js.optimized/dist/gif.worker.js?url', () => ({ default: 'worker.js' }));
 // host-sdk imported if future tests need interaction resolution
 // import { resolveInteraction } from '@renderx-plugins/host-sdk';
 function makeCtx() {
@@ -176,30 +199,6 @@ describe('canvas-component handlers handlers', () => {
     svg.dispatchEvent(new Event('click', { bubbles: true }));
     expect(spy).not.toHaveBeenCalled();
   });
-  it('notifyUi - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('notifyUi - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('Name - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('Name - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('createNode - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('createNode - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
   it('computeInstanceClass - strips rx-node- prefix', () => {
     expect(computeInstanceClass('div', 'rx-node-123')).toBe('rx-comp-div-123');
   });
@@ -229,77 +228,129 @@ describe('canvas-component handlers handlers', () => {
     expect(style.height).toBe('2rem');
     expect(style.left).toBeUndefined();
   });
-  it('publishDeleted - happy path', () => {
+  it('notifyUi - happy path', () => {
     // TODO: Implement test
     expect(true).toBe(true);
   });
-  it('publishDeleted - edge case/error handling', () => {
+  it('notifyUi - edge case/error handling', () => {
     // TODO: Implement test
     expect(true).toBe(true);
   });
-  it('deleteComponent - happy path', () => {
+  it('Name - happy path', () => {
     // TODO: Implement test
     expect(true).toBe(true);
   });
-  it('deleteComponent - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('publishDeleted - publishes canvas.component.deleted when id present', async () => {
+    const spy = vi.spyOn(EventRouter, 'publish');
+    // create element & overlay
+    const el = document.createElement('div'); el.id = 'rx-node-del'; document.body.appendChild(el);
+    const ov = document.createElement('div'); ov.id='rx-selection-overlay'; ov.dataset.targetId='rx-node-del'; document.body.appendChild(ov);
+    await publishDeleted({ id: 'rx-node-del' }, { conductor: {} });
+    expect(spy).toHaveBeenCalledWith('canvas.component.deleted', { id: 'rx-node-del' }, {});
   });
-  it('routeDeleteRequest - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('publishDeleted - no id (missing) does not publish', async () => {
+    const spy = vi.spyOn(EventRouter, 'publish');
+    await publishDeleted({}, { conductor: {} });
+    expect(spy).not.toHaveBeenCalled();
   });
-  it('routeDeleteRequest - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('deleteComponent - removes element and hides overlays then publishes', async () => {
+    const spy = vi.spyOn(EventRouter, 'publish');
+    const canvas = document.createElement('div'); canvas.id='rx-canvas'; document.body.appendChild(canvas);
+    const el = document.createElement('div'); el.id='rx-node-x'; canvas.appendChild(el);
+    const sel = document.createElement('div'); sel.id='rx-selection-overlay'; sel.dataset.targetId='rx-node-x'; sel.style.display='block'; document.body.appendChild(sel);
+    await deleteComponent({ id: 'rx-node-x' }, { conductor: {} });
+    expect(document.getElementById('rx-node-x')).toBeNull();
+    expect(sel.style.display).toBe('none');
+    expect(spy).toHaveBeenCalled();
   });
-  it('exportSvgToGif - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('deleteComponent - missing id does nothing', async () => {
+    const spy = vi.spyOn(EventRouter, 'publish');
+    await deleteComponent({}, { conductor: {} });
+    expect(spy).not.toHaveBeenCalled();
   });
-  it('exportSvgToGif - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('routeDeleteRequest - plays sequence when id provided', async () => {
+    const playSpy = vi.fn().mockResolvedValue(undefined);
+    const conductor = { play: playSpy };
+    vi.spyOn(HostSdk, 'resolveInteraction').mockReturnValue({ pluginId: 'canvas-component', sequenceId: 'delete-seq' } as any);
+    await routeDeleteRequest({ id: 'rx-node-z' }, { conductor });
+    expect(playSpy).toHaveBeenCalledWith('canvas-component', 'delete-seq', { id: 'rx-node-z' });
   });
-  it('createMP4Encoder - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('routeDeleteRequest - missing id does not play', async () => {
+    const playSpy = vi.fn();
+    const conductor = { play: playSpy };
+    await routeDeleteRequest({}, { conductor });
+    expect(playSpy).not.toHaveBeenCalled();
   });
-  it('createMP4Encoder - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('exportSvgToGif - sets error when not SVG or missing', async () => {
+    const ctx: any = { payload: {}, logger: { info:()=>{} } };
+    await exportSvgToGif({ targetId: 'nope' }, ctx);
+    expect(ctx.payload.error).toMatch(/not found/);
   });
-  it('exportSvgToMp4 - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('createMP4Encoder - returns encoder with callable methods', async () => {
+    const enc = await createMP4Encoder({ width: 10, height: 10, fps: 1 });
+    expect(enc.initialize).toBeDefined();
+    await enc.initialize();
+    enc.addFrame({});
+    const blob = await enc.finalize();
+    expect(blob.type).toMatch(/mp4/);
   });
-  it('exportSvgToMp4 - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('exportSvgToMp4 - errors when target missing', async () => {
+    const ctx: any = { payload: {}, logger: { info:()=>{}, error:()=>{} } };
+    await exportSvgToMp4({ targetId: 'missing' }, ctx);
+    expect(ctx.payload.error).toMatch(/not found/);
   });
-  it('openUiFile - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('exportSvgToMp4 - basic success with svg element (mocked 2D context)', async () => {
+    const ctx: any = { payload: {}, logger: { info:()=>{}, error:()=>{}, warn:()=>{} } };
+    (HTMLCanvasElement.prototype as any).getContext = vi.fn().mockReturnValue({ drawImage:()=>{}, clearRect:()=>{} });
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.id='svg-mp4'; document.body.appendChild(svg);
+    await exportSvgToMp4({ targetId: 'svg-mp4', options: { fps: 2, durationMs: 100 } }, ctx);
+    expect(ctx.payload.error).toBeUndefined();
   });
-  it('openUiFile - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)', async () => {
+    const ctx: any = { payload: {}, logger: { warn: vi.fn(), info:()=>{} } };
+    const realDoc = (globalThis as any).document;
+    (globalThis as any).document = undefined;
+    await openUiFile({}, ctx);
+    (globalThis as any).document = realDoc;
+    expect(ctx.logger.warn).toHaveBeenCalled();
   });
-  it('startLineManip - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('startLineManip - returns data unchanged', () => {
+    const data = { id: 'line1' };
+    expect(startLineManip(data)).toEqual(data);
   });
-  it('startLineManip - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('endLineManip - no-op returns undefined', () => {
+    expect(endLineManip({ id: 'line1' })).toBeUndefined();
   });
-  it('endLineManip - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('moveLineManip - endpoint a updates x1/y1', () => {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.id='line-m1'; document.body.appendChild(svg);
+    (svg as any).style.setProperty('--x1','0'); (svg as any).style.setProperty('--y1','0');
+    moveLineManip({ id: 'line-m1', handle: 'a', dx: 5, dy: -3 });
+    expect((svg as any).style.getPropertyValue('--x1')).toBe('5');
+    expect((svg as any).style.getPropertyValue('--y1')).toBe('-3');
   });
-  it('endLineManip - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('moveLineManip - curve handle sets --curve and updates control point', () => {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.id='line-m2'; document.body.appendChild(svg);
+    (svg as any).style.setProperty('--x1','0'); (svg as any).style.setProperty('--y1','0');
+    (svg as any).style.setProperty('--x2','10'); (svg as any).style.setProperty('--y2','0');
+    moveLineManip({ id: 'line-m2', handle: 'curve', dx: 2, dy: 4 });
+    expect((svg as any).style.getPropertyValue('--curve')).toBe('1');
+    expect((svg as any).style.getPropertyValue('--cx')).not.toBe('');
+    expect((svg as any).style.getPropertyValue('--cy')).not.toBe('');
+  });
+  it('updateAttribute - applies attribute via rule engine', () => {
+    const ctx: any = { payload: {}, logger: { warn:()=>{} } };
+    const el = document.createElement('div'); el.id='rx-node-up'; document.body.appendChild(el);
+    // Use attribute covered by rule engine (content -> textContent)
+    el.classList.add('rx-paragraph');
+    updateAttribute({ id: 'rx-node-up', attribute: 'content', value: 'Hello World' }, ctx);
+    expect(el.textContent).toBe('Hello World');
+    expect(ctx.payload.updatedAttribute.value).toBe('Hello World');
+  });
+  it('updateAttribute - missing id does nothing', () => {
+    const ctx: any = { payload: {}, logger: { warn: vi.fn() } };
+    updateAttribute({ attribute: 'x', value: 1 }, ctx);
+    expect(ctx.logger.warn).toHaveBeenCalled();
+    expect(ctx.payload.updatedAttribute).toBeUndefined();
   });
   it('ensureOverlayCss - injects style only once', () => {
     ensureOverlayCss();
