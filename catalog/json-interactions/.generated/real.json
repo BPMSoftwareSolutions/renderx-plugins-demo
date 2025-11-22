@@ -1,0 +1,9 @@
+{
+  "plugin": "RealEstateAnalyzerPlugin",
+  "routes": {
+    "real.estate.analyzer.search": {
+      "pluginId": "RealEstateAnalyzerPlugin",
+      "sequenceId": "real-estate-analyzer-search-symphony"
+    }
+  }
+}
