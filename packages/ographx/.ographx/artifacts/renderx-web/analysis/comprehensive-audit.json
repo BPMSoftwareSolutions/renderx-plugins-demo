@@ -1,28 +1,28 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:25:23.356Z",
+    "generated": "2025-11-22T16:47:32.061Z",
     "phase": "Comprehensive Audit Report",
     "version": "1.0",
     "note": "Extra handlers filtered to only include those defined in sequence files"
   },
   "summary": {
-    "totalTestFiles": 186,
-    "totalTests": 1425,
+    "totalTestFiles": 191,
+    "totalTests": 1453,
     "totalHandlers": 423,
-    "handlersWithTests": 146,
-    "handlersWithoutTests": 76,
-    "testCoveragePercentage": 66,
+    "handlersWithTests": 165,
+    "handlersWithoutTests": 57,
+    "testCoveragePercentage": 74,
     "catalogHandlers": 87,
     "missingHandlers": 0,
     "extraHandlers": 0,
     "internalImplementationHandlers": 135,
     "sequenceDefinedHandlers": 87,
-    "sequenceDefinedWithTests": 64,
-    "sequenceDefinedWithoutTests": 23,
-    "sequenceDefinedCoveragePercentage": 74,
-    "internalHandlersWithTests": 82,
-    "internalHandlersWithoutTests": 53,
-    "internalCoveragePercentage": 61,
+    "sequenceDefinedWithTests": 80,
+    "sequenceDefinedWithoutTests": 7,
+    "sequenceDefinedCoveragePercentage": 92,
+    "internalHandlersWithTests": 85,
+    "internalHandlersWithoutTests": 50,
+    "internalCoveragePercentage": 63,
     "externalInteractionEdges": 112,
     "externalMissingHandlers": 0,
     "externalMissingSequences": 1,
@@ -413,6 +413,71 @@
         "expect",
         "ESLint",
         "useConductor"
+      ]
+    },
+    {
+      "path": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 4,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component create.notify notifyUi handler (public API)"
+        },
+        {
+          "type": "it",
+          "name": "publishes canvas.component.created with id + correlationId when both present (createdNode path)"
+        },
+        {
+          "type": "it",
+          "name": "falls back to ctx.payload.id when createdNode missing"
+        },
+        {
+          "type": "it",
+          "name": "invokes legacy onComponentCreated callback if provided"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "notifyUi",
+        "EventRouter"
+      ]
+    },
+    {
+      "path": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 4,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component rule-engine config handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object"
+        },
+        {
+          "type": "it",
+          "name": "loadAllRulesFromWindow picks up window-provided configuration"
+        },
+        {
+          "type": "it",
+          "name": "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "setAllRulesConfig",
+        "loadAllRulesFromWindow",
+        "getAllRulesConfig"
       ]
     },
     {
@@ -3801,6 +3866,55 @@
       ]
     },
     {
+      "path": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 7,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel field lifecycle handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "generateFields populates fields array with layout/styling fields"
+        },
+        {
+          "type": "it",
+          "name": "generateSections returns default sections for button component"
+        },
+        {
+          "type": "it",
+          "name": "prepareField stores field change context in payload"
+        },
+        {
+          "type": "it",
+          "name": "dispatchField calls conductor.play with mapped sequence when prepared"
+        },
+        {
+          "type": "it",
+          "name": "validateField returns invalid for bad number value and valid for good value"
+        },
+        {
+          "type": "it",
+          "name": "mergeErrors marks errorsMerged after validation"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "initResolver",
+        "generateFields",
+        "generateSections",
+        "prepareField",
+        "dispatchField",
+        "validateField",
+        "mergeErrors"
+      ]
+    },
+    {
       "path": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
       "plugin": "control-panel",
       "testCount": 5,
@@ -3833,6 +3947,95 @@
         "vi",
         "beforeEach",
         "deriveSelectionModel"
+      ]
+    },
+    {
+      "path": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 8,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel state/update/refresh handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "setDirty marks isDirty with timestamp"
+        },
+        {
+          "type": "it",
+          "name": "awaitRefresh sets refreshAwaited flag"
+        },
+        {
+          "type": "it",
+          "name": "updateView sets viewUpdated and timestamp"
+        },
+        {
+          "type": "it",
+          "name": "toggleSection marks sectionToggled with provided id"
+        },
+        {
+          "type": "it",
+          "name": "toggleSection error path sets sectionToggled false and error"
+        },
+        {
+          "type": "it",
+          "name": "updateFromElement builds full selectionModel (non-drag) with classes"
+        },
+        {
+          "type": "it",
+          "name": "updateFromElement drag path uses forwarded position/size and minimal model"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "setDirty",
+        "awaitRefresh",
+        "updateView",
+        "toggleSection",
+        "updateFromElement"
+      ]
+    },
+    {
+      "path": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel UI bootstrap handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "initResolver initializes resolver and sets payload flags"
+        },
+        {
+          "type": "it",
+          "name": "loadSchemas sets schemasLoaded when resolver present (test env shortcut)"
+        },
+        {
+          "type": "it",
+          "name": "registerObservers marks observersRegistered"
+        },
+        {
+          "type": "it",
+          "name": "notifyReady sets uiReady and timestamp"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "initResolver",
+        "loadSchemas",
+        "registerObservers",
+        "notifyReady"
       ]
     },
     {
@@ -9801,6 +10004,21 @@
         ]
       },
       {
+        "name": "notifyUi",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.notify.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
         "name": "renderReact",
         "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
         "plugin": "canvas-component",
@@ -13048,6 +13266,51 @@
         ]
       },
       {
+        "name": "setAllRulesConfig",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
+        "name": "loadAllRulesFromWindow",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
+        "name": "getAllRulesConfig",
+        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
         "name": "sanitizeHtml",
         "file": "\\packages\\canvas-component\\src\\temp-deps\\sanitizeHtml.ts",
         "plugin": "canvas-component",
@@ -13337,6 +13600,281 @@
           "should support environment variable pattern",
           "should support runtime configuration updates",
           "should work with plugin SDK facade"
+        ]
+      },
+      {
+        "name": "initResolver",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 2,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+          "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation",
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      },
+      {
+        "name": "loadSchemas",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts"
+        ],
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      },
+      {
+        "name": "registerObservers",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts"
+        ],
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      },
+      {
+        "name": "notifyReady",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts"
+        ],
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      },
+      {
+        "name": "generateFields",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "name": "generateSections",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "name": "prepareField",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "name": "dispatchField",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "name": "setDirty",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
+        ],
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "name": "awaitRefresh",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
+        ],
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "name": "validateField",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "name": "mergeErrors",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts"
+        ],
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "name": "updateView",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
+        ],
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "name": "toggleSection",
+        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
+        ],
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "name": "updateFromElement",
+        "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts"
+        ],
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
         ]
       },
       {
@@ -14275,41 +14813,8 @@
         "isAsync": false
       },
       {
-        "name": "notifyUi",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.notify.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
         "name": "Name",
         "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.react.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [],
-        "isAsync": false
-      },
-      {
-        "name": "setAllRulesConfig",
-        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "cfg: AllRulesConfig"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "loadAllRulesFromWindow",
-        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
-        "plugin": "canvas-component",
-        "parameters": [],
-        "isAsync": false
-      },
-      {
-        "name": "getAllRulesConfig",
-        "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
         "plugin": "canvas-component",
         "parameters": [],
         "isAsync": false
@@ -14363,158 +14868,8 @@
         "isAsync": true
       },
       {
-        "name": "initResolver",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "loadSchemas",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": true
-      },
-      {
-        "name": "registerObservers",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "notifyReady",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "generateFields",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "generateSections",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
         "name": "renderView",
         "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "prepareField",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "dispatchField",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "setDirty",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "awaitRefresh",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "validateField",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "mergeErrors",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "updateView",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "toggleSection",
-        "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "updateFromElement",
-        "file": "\\packages\\control-panel\\src\\symphonies\\update\\update.stage-crew.ts",
         "plugin": "control-panel",
         "parameters": [
           "data: any",
@@ -15225,6 +15580,8 @@
         "\\packages\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
         "\\packages\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
         "\\packages\\canvas-component\\__tests__\\allowed-imports.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
         "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
         "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
         "\\packages\\canvas-component\\__tests__\\container-child-selection.spec.ts",
@@ -15308,9 +15665,9 @@
         "\\packages\\canvas-component\\__tests__\\svg-node-click-select.spec.ts",
         "\\packages\\canvas-component\\__tests__\\svg-node.update.spec.ts"
       ],
-      "totalTests": 479,
-      "handlersWithTests": 208,
-      "handlersWithoutTests": 10
+      "totalTests": 487,
+      "handlersWithTests": 215,
+      "handlersWithoutTests": 3
     },
     {
       "name": "control-panel",
@@ -15430,7 +15787,10 @@
         "\\packages\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
         "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
         "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
         "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
         "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "\\packages\\control-panel\\__tests__\\attribute-editing.integration.spec.ts",
         "\\packages\\control-panel\\__tests__\\bidirectional-sync.spec.ts",
@@ -15454,9 +15814,9 @@
         "\\packages\\control-panel\\__tests__\\ui-init.batched.spec.ts",
         "\\packages\\control-panel\\__tests__\\ui-sequences.spec.ts"
       ],
-      "totalTests": 222,
-      "handlersWithTests": 29,
-      "handlersWithoutTests": 81
+      "totalTests": 242,
+      "handlersWithTests": 67,
+      "handlersWithoutTests": 43
     },
     {
       "name": "header",
@@ -15551,8 +15911,8 @@
         "\\packages\\library\\__tests__\\validation.utils.spec.ts"
       ],
       "totalTests": 189,
-      "handlersWithTests": 21,
-      "handlersWithoutTests": 31
+      "handlersWithTests": 23,
+      "handlersWithoutTests": 29
     },
     {
       "name": "library-component",

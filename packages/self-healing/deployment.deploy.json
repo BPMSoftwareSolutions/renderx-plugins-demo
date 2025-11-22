@@ -1,0 +1,126 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-deployment-deploy-symphony",
+  "name": "Deploy Fix",
+  "description": "Create PR, auto-merge, and deploy fix to production",
+  "movements": [
+    {
+      "id": "deploy",
+      "name": "Deploy Fix",
+      "description": "Deploy validated fix to production",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:deployment:deploy:requested",
+          "title": "Deployment Requested",
+          "description": "User requests fix deployment",
+          "dynamics": "mf",
+          "handler": "deployRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:deployment:load:validation",
+          "title": "Load Validation Results",
+          "description": "Load validation results from database",
+          "dynamics": "mf",
+          "handler": "loadValidationResults",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:deployment:check:approval",
+          "title": "Check Approval",
+          "description": "Check if fix is approved for deployment",
+          "dynamics": "mf",
+          "handler": "checkApproval",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:deployment:create:branch",
+          "title": "Create Branch",
+          "description": "Create feature branch for fix",
+          "dynamics": "mf",
+          "handler": "createBranch",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:deployment:apply:changes",
+          "title": "Apply Changes",
+          "description": "Apply patch changes to branch",
+          "dynamics": "mf",
+          "handler": "applyChanges",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:deployment:create:pr",
+          "title": "Create Pull Request",
+          "description": "Create pull request with fix",
+          "dynamics": "mf",
+          "handler": "createPullRequest",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:deployment:run:ci",
+          "title": "Run CI Checks",
+          "description": "Run CI checks on pull request",
+          "dynamics": "mf",
+          "handler": "runCIChecks",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 8,
+          "event": "self-healing:deployment:auto:merge",
+          "title": "Auto-Merge PR",
+          "description": "Auto-merge PR if all checks pass",
+          "dynamics": "mf",
+          "handler": "autoMergePR",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 9,
+          "event": "self-healing:deployment:deploy:production",
+          "title": "Deploy to Production",
+          "description": "Deploy merged changes to production",
+          "dynamics": "mf",
+          "handler": "deployToProduction",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 10,
+          "event": "self-healing:deployment:verify:deployment",
+          "title": "Verify Deployment",
+          "description": "Verify deployment was successful",
+          "dynamics": "mf",
+          "handler": "verifyDeployment",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 11,
+          "event": "self-healing:deployment:deploy:completed",
+          "title": "Deployment Completed",
+          "description": "Notify that deployment is complete",
+          "dynamics": "mf",
+          "handler": "deployCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

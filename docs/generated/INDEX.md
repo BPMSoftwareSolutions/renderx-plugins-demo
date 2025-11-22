@@ -1,6 +1,6 @@
 # System Documentation Index
 
-**Generated**: 2025-11-22T16:25:28.165Z
+**Generated**: 2025-11-22T16:47:35.868Z
 
 ## 📊 System Overview
 
@@ -9,11 +9,11 @@
 | **Plugins** | 9 |
 | **Sequences** | 54 |
 | **Handlers** | 423 |
-| **Test Files** | 186 |
-| **Total Tests** | 1425 |
-| **Test Coverage** | 66% |
-| **Handlers with Tests** | 146 |
-| **Handlers without Tests** | 76 |
+| **Test Files** | 191 |
+| **Total Tests** | 1453 |
+| **Test Coverage** | 74% |
+| **Handlers with Tests** | 165 |
+| **Handlers without Tests** | 57 |
 
 ## 📚 Documentation Files
 
@@ -33,8 +33,8 @@ Orchestration sequences and their handler flows.
 
 ### 3. [TEST_SPECS.md](./TEST_SPECS.md)
 Complete test specifications organized by plugin.
-- 186 test files
-- 1425 test descriptions
+- 191 test files
+- 1453 test descriptions
 - Test organization by plugin and feature
 - **Use this to**: Find tests for a specific feature or plugin
 
@@ -53,7 +53,7 @@ Test coverage analysis by plugin.
 
 ### 6. [UNTESTED_HANDLERS.md](./UNTESTED_HANDLERS.md)
 Handlers that need test coverage.
-- 76 handlers without tests
+- 57 handlers without tests
 - Function signatures and parameters
 - Organized by plugin
 - **Use this to**: Find handlers that need tests
@@ -81,8 +81,8 @@ Handlers that need test coverage.
 ## 📈 Coverage Summary
 
 ### By Handler Type
-- **Sequence-Defined Handlers**: 87 (74% coverage)
-- **Internal Implementation**: 135 (61% coverage)
+- **Sequence-Defined Handlers**: 87 (92% coverage)
+- **Internal Implementation**: 135 (63% coverage)
 
 ### By Plugin
 See [PLUGIN_COVERAGE.md](./PLUGIN_COVERAGE.md) for detailed breakdown.
@@ -99,4 +99,4 @@ This documentation is **automatically generated** from:
 
 ---
 
-*Last updated: 2025-11-22T16:25:28.166Z*
+*Last updated: 2025-11-22T16:47:35.869Z*

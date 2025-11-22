@@ -1,0 +1,86 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-telemetry-parse-symphony",
+  "name": "Parse Production Telemetry",
+  "description": "Parse production logs and extract telemetry events for analysis",
+  "movements": [
+    {
+      "id": "parse",
+      "name": "Parse Telemetry",
+      "description": "Extract telemetry data from production logs",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:telemetry:parse:requested",
+          "title": "Parse Requested",
+          "description": "User requests telemetry parsing",
+          "dynamics": "mf",
+          "handler": "parseTelemetryRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:telemetry:load:logs",
+          "title": "Load Log Files",
+          "description": "Load production log files from .logs directory",
+          "dynamics": "mf",
+          "handler": "loadLogFiles",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:telemetry:extract:events",
+          "title": "Extract Events",
+          "description": "Extract beat-started, beat-completed, and error events",
+          "dynamics": "mf",
+          "handler": "extractTelemetryEvents",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:telemetry:normalize:data",
+          "title": "Normalize Data",
+          "description": "Normalize timestamps, handlers, and event types",
+          "dynamics": "mf",
+          "handler": "normalizeTelemetryData",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:telemetry:aggregate:metrics",
+          "title": "Aggregate Metrics",
+          "description": "Aggregate timing, frequency, and error metrics",
+          "dynamics": "mf",
+          "handler": "aggregateTelemetryMetrics",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:telemetry:store:database",
+          "title": "Store in Database",
+          "description": "Store parsed telemetry in database for analysis",
+          "dynamics": "mf",
+          "handler": "storeTelemetryDatabase",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:telemetry:parse:completed",
+          "title": "Parse Completed",
+          "description": "Notify that telemetry parsing is complete",
+          "dynamics": "mf",
+          "handler": "parseTelemetryCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

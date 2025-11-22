@@ -1,0 +1,106 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-fix-generate-symphony",
+  "name": "Generate Fix",
+  "description": "Generate code, test, and documentation fixes for anomalies",
+  "movements": [
+    {
+      "id": "generate",
+      "name": "Generate Fix",
+      "description": "Generate fixes for diagnosed issues",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:fix:generate:requested",
+          "title": "Generation Requested",
+          "description": "User requests fix generation",
+          "dynamics": "mf",
+          "handler": "generateFixRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:fix:load:diagnosis",
+          "title": "Load Diagnosis",
+          "description": "Load diagnosis results from database",
+          "dynamics": "mf",
+          "handler": "loadDiagnosis",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:fix:generate:code",
+          "title": "Generate Code Fix",
+          "description": "Generate optimized or corrected code",
+          "dynamics": "mf",
+          "handler": "generateCodeFix",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:fix:generate:test",
+          "title": "Generate Test Fix",
+          "description": "Generate test cases from production data",
+          "dynamics": "mf",
+          "handler": "generateTestFix",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:fix:generate:documentation",
+          "title": "Generate Documentation Fix",
+          "description": "Generate updated documentation",
+          "dynamics": "mf",
+          "handler": "generateDocumentationFix",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:fix:create:patch",
+          "title": "Create Patch",
+          "description": "Create unified patch file with all changes",
+          "dynamics": "mf",
+          "handler": "createPatch",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:fix:validate:syntax",
+          "title": "Validate Syntax",
+          "description": "Validate syntax of generated code",
+          "dynamics": "mf",
+          "handler": "validateSyntax",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 8,
+          "event": "self-healing:fix:store:patch",
+          "title": "Store Patch",
+          "description": "Store patch in database",
+          "dynamics": "mf",
+          "handler": "storePatch",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 9,
+          "event": "self-healing:fix:generate:completed",
+          "title": "Generation Completed",
+          "description": "Notify that fix generation is complete",
+          "dynamics": "mf",
+          "handler": "generateFixCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

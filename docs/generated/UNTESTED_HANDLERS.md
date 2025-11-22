@@ -1,18 +1,18 @@
 # Handlers Without Test Coverage
 
-**Generated**: 2025-11-22T16:25:28.186Z
+**Generated**: 2025-11-22T16:47:35.879Z
 
 ## Overview
 
-- **Total Untested Handlers**: 76
+- **Total Untested Handlers**: 57
 - **Total Handlers**: 423
-- **Coverage Gap**: 76 handlers need tests
+- **Coverage Gap**: 57 handlers need tests
 
 ## Priority: Sequence-Defined Handlers
 
 These are part of the public orchestration API and should be prioritized:
-- **Count**: 23
-- **Coverage**: 74%
+- **Count**: 7
+- **Coverage**: 92%
 
 ## Untested Handlers by Plugin
 
@@ -26,28 +26,10 @@ These are part of the public orchestration API and should be prioritized:
 - **File**: \packages\canvas\src\ui\CanvasPage.tsx
 - **Async**: No
 
-### canvas-component (6 handlers)
-
-#### notifyUi
-- **File**: \packages\canvas-component\src\symphonies\create\create.notify.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
+### canvas-component (2 handlers)
 
 #### Name
 - **File**: \packages\canvas-component\src\symphonies\create\create.react.stage-crew.ts
-- **Async**: No
-
-#### setAllRulesConfig
-- **File**: \packages\canvas-component\src\temp-deps\rule-engine.ts
-- **Parameters**: cfg: AllRulesConfig
-- **Async**: No
-
-#### loadAllRulesFromWindow
-- **File**: \packages\canvas-component\src\temp-deps\rule-engine.ts
-- **Async**: No
-
-#### getAllRulesConfig
-- **File**: \packages\canvas-component\src\temp-deps\rule-engine.ts
 - **Async**: No
 
 #### transform
@@ -56,7 +38,7 @@ These are part of the public orchestration API and should be prioritized:
       presets?: (string | unknown
 - **Async**: No
 
-### control-panel (35 handlers)
+### control-panel (20 handlers)
 
 #### if
 - **File**: \packages\control-panel\src\symphonies\classes\classes.symphony.ts
@@ -78,83 +60,8 @@ These are part of the public orchestration API and should be prioritized:
 - **Parameters**: data: any, ctx: any
 - **Async**: Yes
 
-#### initResolver
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### loadSchemas
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: Yes
-
-#### registerObservers
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### notifyReady
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### generateFields
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### generateSections
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
 #### renderView
 - **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### prepareField
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### dispatchField
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### setDirty
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### awaitRefresh
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### validateField
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### mergeErrors
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### updateView
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### toggleSection
-- **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-#### updateFromElement
-- **File**: \packages\control-panel\src\symphonies\update\update.stage-crew.ts
 - **Parameters**: data: any, ctx: any
 - **Async**: No
 

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:25:18.429Z",
+    "generated": "2025-11-22T16:47:28.224Z",
     "phase": "Phase 2: Handler Test Extraction",
     "sourceDirectories": [
       "packages/canvas/src/",
@@ -11,12 +11,12 @@
       "packages/library/src/",
       "packages/library-component/src/"
     ],
-    "fileCount": 187
+    "fileCount": 192
   },
   "summary": {
-    "totalTestFiles": 186,
-    "totalTests": 1425,
-    "handlersWithTests": 263,
+    "totalTestFiles": 191,
+    "totalTests": 1453,
+    "handlersWithTests": 282,
     "handlersWithoutTests": 0
   },
   "testFiles": [
@@ -400,6 +400,71 @@
         "expect",
         "ESLint",
         "useConductor"
+      ]
+    },
+    {
+      "file": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 4,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component create.notify notifyUi handler (public API)"
+        },
+        {
+          "type": "it",
+          "name": "publishes canvas.component.created with id + correlationId when both present (createdNode path)"
+        },
+        {
+          "type": "it",
+          "name": "falls back to ctx.payload.id when createdNode missing"
+        },
+        {
+          "type": "it",
+          "name": "invokes legacy onComponentCreated callback if provided"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "notifyUi",
+        "EventRouter"
+      ]
+    },
+    {
+      "file": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 4,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component rule-engine config handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object"
+        },
+        {
+          "type": "it",
+          "name": "loadAllRulesFromWindow picks up window-provided configuration"
+        },
+        {
+          "type": "it",
+          "name": "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "setAllRulesConfig",
+        "loadAllRulesFromWindow",
+        "getAllRulesConfig"
       ]
     },
     {
@@ -3788,6 +3853,55 @@
       ]
     },
     {
+      "file": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 7,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel field lifecycle handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "generateFields populates fields array with layout/styling fields"
+        },
+        {
+          "type": "it",
+          "name": "generateSections returns default sections for button component"
+        },
+        {
+          "type": "it",
+          "name": "prepareField stores field change context in payload"
+        },
+        {
+          "type": "it",
+          "name": "dispatchField calls conductor.play with mapped sequence when prepared"
+        },
+        {
+          "type": "it",
+          "name": "validateField returns invalid for bad number value and valid for good value"
+        },
+        {
+          "type": "it",
+          "name": "mergeErrors marks errorsMerged after validation"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "initResolver",
+        "generateFields",
+        "generateSections",
+        "prepareField",
+        "dispatchField",
+        "validateField",
+        "mergeErrors"
+      ]
+    },
+    {
       "file": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
       "plugin": "control-panel",
       "testCount": 5,
@@ -3820,6 +3934,95 @@
         "vi",
         "beforeEach",
         "deriveSelectionModel"
+      ]
+    },
+    {
+      "file": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 8,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel state/update/refresh handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "setDirty marks isDirty with timestamp"
+        },
+        {
+          "type": "it",
+          "name": "awaitRefresh sets refreshAwaited flag"
+        },
+        {
+          "type": "it",
+          "name": "updateView sets viewUpdated and timestamp"
+        },
+        {
+          "type": "it",
+          "name": "toggleSection marks sectionToggled with provided id"
+        },
+        {
+          "type": "it",
+          "name": "toggleSection error path sets sectionToggled false and error"
+        },
+        {
+          "type": "it",
+          "name": "updateFromElement builds full selectionModel (non-drag) with classes"
+        },
+        {
+          "type": "it",
+          "name": "updateFromElement drag path uses forwarded position/size and minimal model"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "setDirty",
+        "awaitRefresh",
+        "updateView",
+        "toggleSection",
+        "updateFromElement"
+      ]
+    },
+    {
+      "file": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel UI bootstrap handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "initResolver initializes resolver and sets payload flags"
+        },
+        {
+          "type": "it",
+          "name": "loadSchemas sets schemasLoaded when resolver present (test env shortcut)"
+        },
+        {
+          "type": "it",
+          "name": "registerObservers marks observersRegistered"
+        },
+        {
+          "type": "it",
+          "name": "notifyReady sets uiReady and timestamp"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "initResolver",
+        "loadSchemas",
+        "registerObservers",
+        "notifyReady"
       ]
     },
     {
@@ -8718,6 +8921,26 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -9726,6 +9949,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -9734,6 +9970,31 @@
           "returns null selectionModel when element not found",
           "derives model for element with rx-button class",
           "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
         ]
       },
       {
@@ -10811,6 +11072,26 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -11819,6 +12100,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -11827,6 +12121,31 @@
           "returns null selectionModel when element not found",
           "derives model for element with rx-button class",
           "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
         ]
       },
       {
@@ -12904,6 +13223,26 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -13891,6 +14230,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -13899,6 +14251,31 @@
           "returns null selectionModel when element not found",
           "derives model for element with rx-button class",
           "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
         ]
       },
       {
@@ -14974,6 +15351,26 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -15621,6 +16018,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -15629,6 +16039,31 @@
           "returns null selectionModel when element not found",
           "derives model for element with rx-button class",
           "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
         ]
       },
       {
@@ -16092,6 +16527,26 @@
           "Advanced Line — dynamic viewBox autosize",
           "expands viewBox when endpoints extend beyond element bounds (no rotation)",
           "adds headroom when rotated so the line is never clipped"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
         ]
       },
       {
@@ -16932,6 +17387,19 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
         "testCount": 5,
         "testNames": [
@@ -16940,6 +17408,31 @@
           "returns null selectionModel when element not found",
           "derives model for element with rx-button class",
           "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
         ]
       },
       {
@@ -18912,6 +19405,335 @@
         ]
       }
     ],
+    "notifyUi": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      }
+    ],
+    "EventRouter": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.create.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component create.notify notifyUi handler (public API)",
+          "publishes canvas.component.created with id + correlationId when both present (createdNode path)",
+          "falls back to ctx.payload.id when createdNode missing",
+          "invokes legacy onComponentCreated callback if provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
+        "testCount": 3,
+        "testNames": [
+          "canvas-component copy/paste",
+          "falls back to in-memory clipboard when system clipboard is empty",
+          "falls back to persisted clipboard when system clipboard is empty"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\create.isolation.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "Isolation harness — Canvas Component Create",
+          "creates a div under #rx-canvas, persists via kv.put, and publishes created event",
+          "creates svg rx-line with child <line.segment> and non-scaling stroke",
+          "renders React template via startTransition; on error shows inline error instead of throwing",
+          "optional: stress — N parallel harnesses remain stable (no flakes)"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\delete.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "Canvas component delete",
+          "publishes canvas.component.deleted when publishDeleted is called",
+          "removes element, hides overlays, and publishes topic when deleteComponent is called",
+          "routeDeleteRequest plays delete sequence with provided id",
+          "routeDeleteRequest derives id from overlay when not provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "Canvas component deselection",
+          "publishes canvas.component.deselection.changed when publishDeselectionChanged is called",
+          "publishes canvas.component.selections.cleared when publishSelectionsCleared is called",
+          "hides overlays targeting the ID when deselectComponent is called and publishes topic",
+          "clearAllSelections hides both overlays and clears dataset.targetId then publishes cleared topic",
+          "routeDeselectionRequest routes to deselect sequence when id is provided",
+          "routeDeselectionRequest routes to deselect-all sequence when no id provided"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\handlers.handlers.spec.ts",
+        "testCount": 84,
+        "testNames": [
+          "canvas-component handlers handlers",
+          "serializeSelectedComponent - returns clipboardData when element present",
+          "serializeSelectedComponent - empty result when no selection",
+          "copyToClipboard - writes to fallback clipboard memory",
+          "notifyCopyComplete - does not throw",
+          "resolveTemplate - populates ctx.payload fields",
+          "resolveTemplate - throws on missing template",
+          "injectCssFallback - injects style element once and appends css",
+          "injectRawCss - delegates to stageCrew then fallback if error",
+          "createFromImportRecord - invokes conductor play with transformed payload",
+          "attachSelection - calls onSelected on click",
+          "attachDrag - happy path (start/move/end callbacks)",
+          "attachDrag - ignores non-left button and no callbacks fired",
+          "attachSvgNodeClick - happy path publishes selection with derived path",
+          "attachSvgNodeClick - clicking root svg does nothing",
+          "computeInstanceClass - strips rx-node- prefix",
+          "computeInstanceClass - no prefix preserved as-is",
+          "computeCssVarBlock - renders vars with -- prefix",
+          "computeCssVarBlock - empty returns blank string",
+          "computeInlineStyle - merges template/style and position/dimensions",
+          "computeInlineStyle - handles non-numeric dimensions and missing position",
+          "notifyUi - happy path",
+          "notifyUi - edge case/error handling",
+          "Name - happy path",
+          "publishDeleted - publishes canvas.component.deleted when id present",
+          "publishDeleted - no id (missing) does not publish",
+          "deleteComponent - removes element and hides overlays then publishes",
+          "deleteComponent - missing id does nothing",
+          "routeDeleteRequest - plays sequence when id provided",
+          "routeDeleteRequest - missing id does not play",
+          "exportSvgToGif - sets error when not SVG or missing",
+          "createMP4Encoder - returns encoder with callable methods",
+          "exportSvgToMp4 - errors when target missing",
+          "exportSvgToMp4 - basic success with svg element (mocked 2D context)",
+          "openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)",
+          "startLineManip - returns data unchanged",
+          "endLineManip - no-op returns undefined",
+          "moveLineManip - endpoint a updates x1/y1",
+          "moveLineManip - curve handle sets --curve and updates control point",
+          "updateAttribute - applies attribute via rule engine",
+          "updateAttribute - missing id does nothing",
+          "ensureOverlayCss - injects style only once",
+          "ensureOverlay - creates overlay with 8 handles and reuses existing",
+          "ensureOverlay - throws when canvas missing",
+          "getCanvasRect - happy path",
+          "getCanvasRect - edge case/error handling",
+          "applyOverlayRectForEl - happy path",
+          "applyOverlayRectForEl - edge case/error handling",
+          "createOverlayStructure - happy path",
+          "createOverlayStructure - edge case/error handling",
+          "resolveEndpoints - happy path",
+          "resolveEndpoints - edge case/error handling",
+          "ensureAdvancedLineOverlayFor - happy path",
+          "ensureAdvancedLineOverlayFor - edge case/error handling",
+          "attachAdvancedLineManipHandlers - happy path",
+          "attachAdvancedLineManipHandlers - edge case/error handling",
+          "ensureLineOverlayFor - happy path",
+          "ensureLineOverlayFor - edge case/error handling",
+          "attachLineResizeHandlers - happy path",
+          "attachLineResizeHandlers - edge case/error handling",
+          "attachResizeHandlers - happy path",
+          "attachResizeHandlers - edge case/error handling",
+          "updateAttribute - happy path",
+          "updateAttribute - edge case/error handling",
+          "setClipboardText/getClipboardText - round trip stores and retrieves",
+          "setClipboardText - empty string yields empty retrieval",
+          "initConductor - happy path",
+          "initConductor - edge case/error handling",
+          "registerAllSequences - happy path",
+          "registerAllSequences - edge case/error handling",
+          "loadJsonSequenceCatalogs - happy path",
+          "loadJsonSequenceCatalogs - edge case/error handling",
+          "getFlagOverride - happy path",
+          "getFlagOverride - edge case/error handling",
+          "setAllRulesConfig - happy path",
+          "setAllRulesConfig - edge case/error handling",
+          "loadAllRulesFromWindow - happy path",
+          "loadAllRulesFromWindow - edge case/error handling",
+          "getAllRulesConfig - happy path",
+          "getAllRulesConfig - edge case/error handling",
+          "sanitizeHtml - happy path",
+          "sanitizeHtml - edge case/error handling",
+          "transform - happy path",
+          "transform - edge case/error handling"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
+        "testCount": 3,
+        "testNames": [
+          "attachStandardImportInteractions forwards drag positions",
+          "publishes drag.move with { id, position }",
+          "publishes drag.end with { id, position } mapped from finalPosition when present"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\paste.interactions.spec.ts",
+        "testCount": 2,
+        "testNames": [
+          "paste interactions attach and publish drag events",
+          "attaches onDragMove to payload passed into canvas.component.create and publishes {id, position}"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\selection-id-derivation.spec.ts",
+        "testCount": 20,
+        "testNames": [
+          "Selection ID derivation and baton flow",
+          "showSelectionOverlay ID derivation",
+          "notifyUi with baton fallback",
+          "publishSelectionChanged with baton",
+          "End-to-end selection flow",
+          "derives ID from data.id when present",
+          "derives ID from data.elementId when data.id is missing",
+          "derives ID from DOM target when data.id and data.elementId are missing",
+          "returns empty object when no ID can be derived",
+          "uses data.id when present",
+          "falls back to ctx.baton.id when data.id is missing",
+          "falls back to ctx.baton.elementId when data.id and baton.id are missing",
+          "falls back to ctx.baton.selectedId when other IDs are missing",
+          "does not call play when no ID is available",
+          "publishes topic with baton.id",
+          "publishes topic with baton.elementId when baton.id is missing",
+          "publishes topic with baton.selectedId when other IDs are missing",
+          "does not publish when no ID is available in baton",
+          "works for button component selection via DOM target",
+          "works for SVG component selection"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\selection-post-externalization.spec.ts",
+        "testCount": 18,
+        "testNames": [
+          "Selection after externalization - comprehensive tests",
+          "Non-SVG selection triggers both direct play and publish",
+          "SVG selection regression check",
+          "Conductor scenarios",
+          "Robust overlay dataset fallback",
+          "Edge cases and error handling",
+          "should handle button component selection end-to-end",
+          "should handle container component selection",
+          "should work when data.id is provided directly",
+          "should handle SVG component selection without breaking existing behavior",
+          "should use useConductor fallback for notifyUi when ctx.conductor is missing",
+          "should pass undefined conductor for publishSelectionChanged when ctx.conductor is missing",
+          "should handle EventRouter.publish with undefined conductor gracefully",
+          "should use overlay dataset as fallback when baton/data are empty",
+          "should prefer baton ID over overlay dataset when both are available",
+          "should handle missing overlay gracefully",
+          "should handle missing ID gracefully",
+          "should handle EventRouter.publish errors gracefully"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\selection-topic-first.spec.ts",
+        "testCount": 11,
+        "testNames": [
+          "Topic-first selection approach",
+          "Topic routing handler",
+          "Simplified handlers with guaranteed ID",
+          "Topic-first flow simulation",
+          "should route canvas.component.select.requested to selection sequence",
+          "should handle missing ID gracefully",
+          "should handle missing conductor gracefully",
+          "notifyUi should work with data.id from topic-first approach",
+          "publishSelectionChanged should work with data.id from topic-first approach",
+          "should fallback to baton.id if data.id is missing",
+          "should simulate complete topic-first selection flow"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "Canvas selection publishes selection.changed topic",
+          "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
+          "publishes selection.changed with elementId from baton when id is missing",
+          "publishes selection.changed with selectedId from baton when id and elementId are missing",
+          "does not publish when no id is available",
+          "handles missing conductor gracefully (matches SVG node pattern)",
+          "handles EventRouter.publish errors gracefully"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\selection.loop-regression.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "Selection routing loop regression",
+          "routeSelectionRequest should not re-route when _routed is true",
+          "routeSelectionRequest should not publish any request topics",
+          "publishSelectionChanged publishes selection.changed and not select.requested"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\eventrouter-communication.spec.ts",
+        "testCount": 6,
+        "testNames": [
+          "Control Panel EventRouter Communication",
+          "publishes control.panel.selection.updated events via EventRouter",
+          "publishes control.panel.classes.updated events via EventRouter",
+          "publishes control.panel.css.registry.updated events via EventRouter",
+          "allows multiple Control Panel components to listen for selection updates",
+          "enables Control Panel UI package to receive symphony events"
+        ]
+      },
+      {
+        "testFile": "\\packages\\library-component\\__tests__\\handlers.drop.container.spec.ts",
+        "testCount": 2,
+        "testNames": [
+          "library-component container drop handlers (package)",
+          "publishCreateRequested publishes canvas.component.create.requested with payload and ctx conductor"
+        ]
+      },
+      {
+        "testFile": "\\packages\\library-component\\__tests__\\handlers.drop.spec.ts",
+        "testCount": 2,
+        "testNames": [
+          "library-component drop handlers (package)",
+          "publishCreateRequested publishes canvas.component.create.requested with payload and ctx conductor"
+        ]
+      }
+    ],
+    "setAllRulesConfig": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      }
+    ],
+    "loadAllRulesFromWindow": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      }
+    ],
+    "getAllRulesConfig": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.rule-engine.config.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "canvas-component rule-engine config handlers (public API)",
+          "exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object",
+          "loadAllRulesFromWindow picks up window-provided configuration",
+          "getAllRulesConfig lazily loads from window when no cached config is set yet"
+        ]
+      }
+    ],
     "notifyUi as notifyUiSelection": [
       {
         "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
@@ -19442,277 +20264,6 @@
           "resolves control.panel.classes.add to ControlPanelPlugin",
           "resolves control.panel.classes.remove to ControlPanelPlugin",
           "resolves control.panel.update to ControlPanelPlugin"
-        ]
-      }
-    ],
-    "EventRouter": [
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\copy-paste.spec.ts",
-        "testCount": 3,
-        "testNames": [
-          "canvas-component copy/paste",
-          "falls back to in-memory clipboard when system clipboard is empty",
-          "falls back to persisted clipboard when system clipboard is empty"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\create.isolation.spec.ts",
-        "testCount": 5,
-        "testNames": [
-          "Isolation harness — Canvas Component Create",
-          "creates a div under #rx-canvas, persists via kv.put, and publishes created event",
-          "creates svg rx-line with child <line.segment> and non-scaling stroke",
-          "renders React template via startTransition; on error shows inline error instead of throwing",
-          "optional: stress — N parallel harnesses remain stable (no flakes)"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\delete.spec.ts",
-        "testCount": 5,
-        "testNames": [
-          "Canvas component delete",
-          "publishes canvas.component.deleted when publishDeleted is called",
-          "removes element, hides overlays, and publishes topic when deleteComponent is called",
-          "routeDeleteRequest plays delete sequence with provided id",
-          "routeDeleteRequest derives id from overlay when not provided"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\deselection.spec.ts",
-        "testCount": 7,
-        "testNames": [
-          "Canvas component deselection",
-          "publishes canvas.component.deselection.changed when publishDeselectionChanged is called",
-          "publishes canvas.component.selections.cleared when publishSelectionsCleared is called",
-          "hides overlays targeting the ID when deselectComponent is called and publishes topic",
-          "clearAllSelections hides both overlays and clears dataset.targetId then publishes cleared topic",
-          "routeDeselectionRequest routes to deselect sequence when id is provided",
-          "routeDeselectionRequest routes to deselect-all sequence when no id provided"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\handlers.handlers.spec.ts",
-        "testCount": 84,
-        "testNames": [
-          "canvas-component handlers handlers",
-          "serializeSelectedComponent - returns clipboardData when element present",
-          "serializeSelectedComponent - empty result when no selection",
-          "copyToClipboard - writes to fallback clipboard memory",
-          "notifyCopyComplete - does not throw",
-          "resolveTemplate - populates ctx.payload fields",
-          "resolveTemplate - throws on missing template",
-          "injectCssFallback - injects style element once and appends css",
-          "injectRawCss - delegates to stageCrew then fallback if error",
-          "createFromImportRecord - invokes conductor play with transformed payload",
-          "attachSelection - calls onSelected on click",
-          "attachDrag - happy path (start/move/end callbacks)",
-          "attachDrag - ignores non-left button and no callbacks fired",
-          "attachSvgNodeClick - happy path publishes selection with derived path",
-          "attachSvgNodeClick - clicking root svg does nothing",
-          "computeInstanceClass - strips rx-node- prefix",
-          "computeInstanceClass - no prefix preserved as-is",
-          "computeCssVarBlock - renders vars with -- prefix",
-          "computeCssVarBlock - empty returns blank string",
-          "computeInlineStyle - merges template/style and position/dimensions",
-          "computeInlineStyle - handles non-numeric dimensions and missing position",
-          "notifyUi - happy path",
-          "notifyUi - edge case/error handling",
-          "Name - happy path",
-          "publishDeleted - publishes canvas.component.deleted when id present",
-          "publishDeleted - no id (missing) does not publish",
-          "deleteComponent - removes element and hides overlays then publishes",
-          "deleteComponent - missing id does nothing",
-          "routeDeleteRequest - plays sequence when id provided",
-          "routeDeleteRequest - missing id does not play",
-          "exportSvgToGif - sets error when not SVG or missing",
-          "createMP4Encoder - returns encoder with callable methods",
-          "exportSvgToMp4 - errors when target missing",
-          "exportSvgToMp4 - basic success with svg element (mocked 2D context)",
-          "openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)",
-          "startLineManip - returns data unchanged",
-          "endLineManip - no-op returns undefined",
-          "moveLineManip - endpoint a updates x1/y1",
-          "moveLineManip - curve handle sets --curve and updates control point",
-          "updateAttribute - applies attribute via rule engine",
-          "updateAttribute - missing id does nothing",
-          "ensureOverlayCss - injects style only once",
-          "ensureOverlay - creates overlay with 8 handles and reuses existing",
-          "ensureOverlay - throws when canvas missing",
-          "getCanvasRect - happy path",
-          "getCanvasRect - edge case/error handling",
-          "applyOverlayRectForEl - happy path",
-          "applyOverlayRectForEl - edge case/error handling",
-          "createOverlayStructure - happy path",
-          "createOverlayStructure - edge case/error handling",
-          "resolveEndpoints - happy path",
-          "resolveEndpoints - edge case/error handling",
-          "ensureAdvancedLineOverlayFor - happy path",
-          "ensureAdvancedLineOverlayFor - edge case/error handling",
-          "attachAdvancedLineManipHandlers - happy path",
-          "attachAdvancedLineManipHandlers - edge case/error handling",
-          "ensureLineOverlayFor - happy path",
-          "ensureLineOverlayFor - edge case/error handling",
-          "attachLineResizeHandlers - happy path",
-          "attachLineResizeHandlers - edge case/error handling",
-          "attachResizeHandlers - happy path",
-          "attachResizeHandlers - edge case/error handling",
-          "updateAttribute - happy path",
-          "updateAttribute - edge case/error handling",
-          "setClipboardText/getClipboardText - round trip stores and retrieves",
-          "setClipboardText - empty string yields empty retrieval",
-          "initConductor - happy path",
-          "initConductor - edge case/error handling",
-          "registerAllSequences - happy path",
-          "registerAllSequences - edge case/error handling",
-          "loadJsonSequenceCatalogs - happy path",
-          "loadJsonSequenceCatalogs - edge case/error handling",
-          "getFlagOverride - happy path",
-          "getFlagOverride - edge case/error handling",
-          "setAllRulesConfig - happy path",
-          "setAllRulesConfig - edge case/error handling",
-          "loadAllRulesFromWindow - happy path",
-          "loadAllRulesFromWindow - edge case/error handling",
-          "getAllRulesConfig - happy path",
-          "getAllRulesConfig - edge case/error handling",
-          "sanitizeHtml - happy path",
-          "sanitizeHtml - edge case/error handling",
-          "transform - happy path",
-          "transform - edge case/error handling"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\import.interactions.drag-callbacks.spec.ts",
-        "testCount": 3,
-        "testNames": [
-          "attachStandardImportInteractions forwards drag positions",
-          "publishes drag.move with { id, position }",
-          "publishes drag.end with { id, position } mapped from finalPosition when present"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\paste.interactions.spec.ts",
-        "testCount": 2,
-        "testNames": [
-          "paste interactions attach and publish drag events",
-          "attaches onDragMove to payload passed into canvas.component.create and publishes {id, position}"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\selection-id-derivation.spec.ts",
-        "testCount": 20,
-        "testNames": [
-          "Selection ID derivation and baton flow",
-          "showSelectionOverlay ID derivation",
-          "notifyUi with baton fallback",
-          "publishSelectionChanged with baton",
-          "End-to-end selection flow",
-          "derives ID from data.id when present",
-          "derives ID from data.elementId when data.id is missing",
-          "derives ID from DOM target when data.id and data.elementId are missing",
-          "returns empty object when no ID can be derived",
-          "uses data.id when present",
-          "falls back to ctx.baton.id when data.id is missing",
-          "falls back to ctx.baton.elementId when data.id and baton.id are missing",
-          "falls back to ctx.baton.selectedId when other IDs are missing",
-          "does not call play when no ID is available",
-          "publishes topic with baton.id",
-          "publishes topic with baton.elementId when baton.id is missing",
-          "publishes topic with baton.selectedId when other IDs are missing",
-          "does not publish when no ID is available in baton",
-          "works for button component selection via DOM target",
-          "works for SVG component selection"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\selection-post-externalization.spec.ts",
-        "testCount": 18,
-        "testNames": [
-          "Selection after externalization - comprehensive tests",
-          "Non-SVG selection triggers both direct play and publish",
-          "SVG selection regression check",
-          "Conductor scenarios",
-          "Robust overlay dataset fallback",
-          "Edge cases and error handling",
-          "should handle button component selection end-to-end",
-          "should handle container component selection",
-          "should work when data.id is provided directly",
-          "should handle SVG component selection without breaking existing behavior",
-          "should use useConductor fallback for notifyUi when ctx.conductor is missing",
-          "should pass undefined conductor for publishSelectionChanged when ctx.conductor is missing",
-          "should handle EventRouter.publish with undefined conductor gracefully",
-          "should use overlay dataset as fallback when baton/data are empty",
-          "should prefer baton ID over overlay dataset when both are available",
-          "should handle missing overlay gracefully",
-          "should handle missing ID gracefully",
-          "should handle EventRouter.publish errors gracefully"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\selection-topic-first.spec.ts",
-        "testCount": 11,
-        "testNames": [
-          "Topic-first selection approach",
-          "Topic routing handler",
-          "Simplified handlers with guaranteed ID",
-          "Topic-first flow simulation",
-          "should route canvas.component.select.requested to selection sequence",
-          "should handle missing ID gracefully",
-          "should handle missing conductor gracefully",
-          "notifyUi should work with data.id from topic-first approach",
-          "publishSelectionChanged should work with data.id from topic-first approach",
-          "should fallback to baton.id if data.id is missing",
-          "should simulate complete topic-first selection flow"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\selection-topic-publishing.spec.ts",
-        "testCount": 7,
-        "testNames": [
-          "Canvas selection publishes selection.changed topic",
-          "publishes canvas.component.selection.changed when publishSelectionChanged handler is called",
-          "publishes selection.changed with elementId from baton when id is missing",
-          "publishes selection.changed with selectedId from baton when id and elementId are missing",
-          "does not publish when no id is available",
-          "handles missing conductor gracefully (matches SVG node pattern)",
-          "handles EventRouter.publish errors gracefully"
-        ]
-      },
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\selection.loop-regression.spec.ts",
-        "testCount": 4,
-        "testNames": [
-          "Selection routing loop regression",
-          "routeSelectionRequest should not re-route when _routed is true",
-          "routeSelectionRequest should not publish any request topics",
-          "publishSelectionChanged publishes selection.changed and not select.requested"
-        ]
-      },
-      {
-        "testFile": "\\packages\\control-panel\\__tests__\\eventrouter-communication.spec.ts",
-        "testCount": 6,
-        "testNames": [
-          "Control Panel EventRouter Communication",
-          "publishes control.panel.selection.updated events via EventRouter",
-          "publishes control.panel.classes.updated events via EventRouter",
-          "publishes control.panel.css.registry.updated events via EventRouter",
-          "allows multiple Control Panel components to listen for selection updates",
-          "enables Control Panel UI package to receive symphony events"
-        ]
-      },
-      {
-        "testFile": "\\packages\\library-component\\__tests__\\handlers.drop.container.spec.ts",
-        "testCount": 2,
-        "testNames": [
-          "library-component container drop handlers (package)",
-          "publishCreateRequested publishes canvas.component.create.requested with payload and ctx conductor"
-        ]
-      },
-      {
-        "testFile": "\\packages\\library-component\\__tests__\\handlers.drop.spec.ts",
-        "testCount": 2,
-        "testNames": [
-          "library-component drop handlers (package)",
-          "publishCreateRequested publishes canvas.component.create.requested with payload and ctx conductor"
         ]
       }
     ],
@@ -24178,6 +24729,122 @@
         ]
       }
     ],
+    "initResolver": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      }
+    ],
+    "generateFields": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      }
+    ],
+    "generateSections": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      }
+    ],
+    "prepareField": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      }
+    ],
+    "dispatchField": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      }
+    ],
+    "validateField": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      }
+    ],
+    "mergeErrors": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.fields.lifecycle.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "control-panel field lifecycle handlers (public API)",
+          "generateFields populates fields array with layout/styling fields",
+          "generateSections returns default sections for button component",
+          "prepareField stores field change context in payload",
+          "dispatchField calls conductor.play with mapped sequence when prepared",
+          "validateField returns invalid for bad number value and valid for good value",
+          "mergeErrors marks errorsMerged after validation"
+        ]
+      }
+    ],
     "deriveSelectionModel": [
       {
         "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
@@ -24188,6 +24855,125 @@
           "returns null selectionModel when element not found",
           "derives model for element with rx-button class",
           "falls back to container type for plain div without rx- classes"
+        ]
+      }
+    ],
+    "setDirty": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      }
+    ],
+    "awaitRefresh": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      }
+    ],
+    "updateView": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      }
+    ],
+    "toggleSection": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      }
+    ],
+    "updateFromElement": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.state.update.refresh.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel state/update/refresh handlers (public API)",
+          "setDirty marks isDirty with timestamp",
+          "awaitRefresh sets refreshAwaited flag",
+          "updateView sets viewUpdated and timestamp",
+          "toggleSection marks sectionToggled with provided id",
+          "toggleSection error path sets sectionToggled false and error",
+          "updateFromElement builds full selectionModel (non-drag) with classes",
+          "updateFromElement drag path uses forwarded position/size and minimal model"
+        ]
+      }
+    ],
+    "loadSchemas": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      }
+    ],
+    "registerObservers": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
+        ]
+      }
+    ],
+    "notifyReady": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.ui.bootstrap.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel UI bootstrap handlers (public API)",
+          "initResolver initializes resolver and sets payload flags",
+          "loadSchemas sets schemasLoaded when resolver present (test env shortcut)",
+          "registerObservers marks observersRegistered",
+          "notifyReady sets uiReady and timestamp"
         ]
       }
     ],

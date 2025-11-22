@@ -1,0 +1,126 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-diagnosis-analyze-symphony",
+  "name": "Analyze Root Cause",
+  "description": "Diagnose root cause of detected anomalies",
+  "movements": [
+    {
+      "id": "analyze",
+      "name": "Analyze Root Cause",
+      "description": "Analyze anomalies and diagnose root causes",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:diagnosis:analyze:requested",
+          "title": "Analysis Requested",
+          "description": "User requests root cause analysis",
+          "dynamics": "mf",
+          "handler": "analyzeRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:diagnosis:load:anomalies",
+          "title": "Load Anomalies",
+          "description": "Load detected anomalies from database",
+          "dynamics": "mf",
+          "handler": "loadAnomalies",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:diagnosis:load:codebase",
+          "title": "Load Codebase",
+          "description": "Load codebase information (handlers, sequences, tests)",
+          "dynamics": "mf",
+          "handler": "loadCodebaseInfo",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:diagnosis:analyze:performance",
+          "title": "Analyze Performance Issues",
+          "description": "Analyze root causes of performance anomalies",
+          "dynamics": "mf",
+          "handler": "analyzePerformanceIssues",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:diagnosis:analyze:behavioral",
+          "title": "Analyze Behavioral Issues",
+          "description": "Analyze root causes of behavioral anomalies",
+          "dynamics": "mf",
+          "handler": "analyzeBehavioralIssues",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:diagnosis:analyze:coverage",
+          "title": "Analyze Coverage Issues",
+          "description": "Analyze root causes of coverage gaps",
+          "dynamics": "mf",
+          "handler": "analyzeCoverageIssues",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:diagnosis:analyze:errors",
+          "title": "Analyze Error Issues",
+          "description": "Analyze root causes of error patterns",
+          "dynamics": "mf",
+          "handler": "analyzeErrorIssues",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 8,
+          "event": "self-healing:diagnosis:assess:impact",
+          "title": "Assess Impact",
+          "description": "Assess impact and severity of issues",
+          "dynamics": "mf",
+          "handler": "assessImpact",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 9,
+          "event": "self-healing:diagnosis:recommend:fixes",
+          "title": "Recommend Fixes",
+          "description": "Recommend fixes for each issue",
+          "dynamics": "mf",
+          "handler": "recommendFixes",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 10,
+          "event": "self-healing:diagnosis:store:diagnosis",
+          "title": "Store Diagnosis",
+          "description": "Store diagnosis results in database",
+          "dynamics": "mf",
+          "handler": "storeDiagnosis",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 11,
+          "event": "self-healing:diagnosis:analyze:completed",
+          "title": "Analysis Completed",
+          "description": "Notify that analysis is complete",
+          "dynamics": "mf",
+          "handler": "analyzeCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

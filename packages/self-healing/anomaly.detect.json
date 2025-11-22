@@ -1,0 +1,106 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-anomaly-detect-symphony",
+  "name": "Detect Anomalies",
+  "description": "Detect performance, behavioral, coverage, and error anomalies",
+  "movements": [
+    {
+      "id": "detect",
+      "name": "Detect Anomalies",
+      "description": "Analyze telemetry and detect anomalies",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:anomaly:detect:requested",
+          "title": "Detection Requested",
+          "description": "User requests anomaly detection",
+          "dynamics": "mf",
+          "handler": "detectAnomaliesRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:anomaly:load:telemetry",
+          "title": "Load Telemetry",
+          "description": "Load parsed telemetry from database",
+          "dynamics": "mf",
+          "handler": "loadTelemetryData",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:anomaly:detect:performance",
+          "title": "Detect Performance Anomalies",
+          "description": "Detect handlers exceeding performance thresholds",
+          "dynamics": "mf",
+          "handler": "detectPerformanceAnomalies",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:anomaly:detect:behavioral",
+          "title": "Detect Behavioral Anomalies",
+          "description": "Detect sequence execution order anomalies",
+          "dynamics": "mf",
+          "handler": "detectBehavioralAnomalies",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:anomaly:detect:coverage",
+          "title": "Detect Coverage Gaps",
+          "description": "Detect handlers without test coverage",
+          "dynamics": "mf",
+          "handler": "detectCoverageGaps",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:anomaly:detect:errors",
+          "title": "Detect Error Patterns",
+          "description": "Detect error patterns and failure modes",
+          "dynamics": "mf",
+          "handler": "detectErrorPatterns",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:anomaly:aggregate:results",
+          "title": "Aggregate Results",
+          "description": "Aggregate all detected anomalies",
+          "dynamics": "mf",
+          "handler": "aggregateAnomalyResults",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 8,
+          "event": "self-healing:anomaly:store:results",
+          "title": "Store Results",
+          "description": "Store detected anomalies in database",
+          "dynamics": "mf",
+          "handler": "storeAnomalyResults",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 9,
+          "event": "self-healing:anomaly:detect:completed",
+          "title": "Detection Completed",
+          "description": "Notify that anomaly detection is complete",
+          "dynamics": "mf",
+          "handler": "detectAnomaliesCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

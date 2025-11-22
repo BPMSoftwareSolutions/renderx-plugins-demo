@@ -1,11 +1,11 @@
 # Test Specifications
 
-**Generated**: 2025-11-22T16:25:28.175Z
+**Generated**: 2025-11-22T16:47:35.874Z
 
 ## Overview
 
-- **Test Files**: 186
-- **Total Tests**: 1425
+- **Test Files**: 191
+- **Total Tests**: 1453
 
 ## Test Files by Plugin
 
@@ -23,7 +23,7 @@
 - CanvasPage drop orchestration (no UI node rendering)
 - forwards to drop symphony and does not render React nodes directly
 
-### canvas-component (90 files)
+### canvas-component (92 files)
 
 #### \packages\canvas-component\__tests__\advanced-line.augment.spec.ts
 - Advanced Line augmentation (Phase 1)
@@ -35,7 +35,7 @@
 #### \packages\canvas-component\__tests__\advanced-line.overlay.attach.spec.ts
 - Advanced Line overlay attaches on selection (flag ON)
 
-### control-panel (26 files)
+### control-panel (29 files)
 
 #### \packages\control-panel\src\state\__tests__\css-registry.store.test.ts
 - CssRegistryStore

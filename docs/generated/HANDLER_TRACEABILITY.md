@@ -1,6 +1,6 @@
 # Handler → Test Traceability
 
-**Generated**: 2025-11-22T16:25:28.181Z
+**Generated**: 2025-11-22T16:47:35.876Z
 
 ## Handler Test Mapping
 
@@ -1051,6 +1051,15 @@
 - canvas-component create.io
 - persists node metadata to KV/cache
 - throws when IO is accessed in a pure beat (guard example)
+
+### notifyUi
+**File**: \packages\canvas-component\src\symphonies\create\create.notify.ts
+**Tests**: 1 files
+
+- canvas-component create.notify notifyUi handler (public API)
+- publishes canvas.component.created with id + correlationId when both present (createdNode path)
+- falls back to ctx.payload.id when createdNode missing
+- invokes legacy onComponentCreated callback if provided
 
 ### renderReact
 **File**: \packages\canvas-component\src\symphonies\create\create.react.stage-crew.ts
@@ -3709,6 +3718,33 @@
 - observer.store idempotency
 - setters are idempotent and clearAll resets observers
 
+### setAllRulesConfig
+**File**: \packages\canvas-component\src\temp-deps\rule-engine.ts
+**Tests**: 1 files
+
+- canvas-component rule-engine config handlers (public API)
+- exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object
+- loadAllRulesFromWindow picks up window-provided configuration
+- getAllRulesConfig lazily loads from window when no cached config is set yet
+
+### loadAllRulesFromWindow
+**File**: \packages\canvas-component\src\temp-deps\rule-engine.ts
+**Tests**: 1 files
+
+- canvas-component rule-engine config handlers (public API)
+- exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object
+- loadAllRulesFromWindow picks up window-provided configuration
+- getAllRulesConfig lazily loads from window when no cached config is set yet
+
+### getAllRulesConfig
+**File**: \packages\canvas-component\src\temp-deps\rule-engine.ts
+**Tests**: 1 files
+
+- canvas-component rule-engine config handlers (public API)
+- exports exist (sanity) and setAllRulesConfig followed by getAllRulesConfig returns the same config object
+- loadAllRulesFromWindow picks up window-provided configuration
+- getAllRulesConfig lazily loads from window when no cached config is set yet
+
 ### sanitizeHtml
 **File**: \packages\canvas-component\src\temp-deps\sanitizeHtml.ts
 **Tests**: 1 files
@@ -3933,6 +3969,190 @@
 - should support environment variable pattern
 - should support runtime configuration updates
 - should work with plugin SDK facade
+
+### initResolver
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 2 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+- control-panel UI bootstrap handlers (public API)
+- initResolver initializes resolver and sets payload flags
+- loadSchemas sets schemasLoaded when resolver present (test env shortcut)
+- registerObservers marks observersRegistered
+- notifyReady sets uiReady and timestamp
+
+### loadSchemas
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel UI bootstrap handlers (public API)
+- initResolver initializes resolver and sets payload flags
+- loadSchemas sets schemasLoaded when resolver present (test env shortcut)
+- registerObservers marks observersRegistered
+- notifyReady sets uiReady and timestamp
+
+### registerObservers
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel UI bootstrap handlers (public API)
+- initResolver initializes resolver and sets payload flags
+- loadSchemas sets schemasLoaded when resolver present (test env shortcut)
+- registerObservers marks observersRegistered
+- notifyReady sets uiReady and timestamp
+
+### notifyReady
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel UI bootstrap handlers (public API)
+- initResolver initializes resolver and sets payload flags
+- loadSchemas sets schemasLoaded when resolver present (test env shortcut)
+- registerObservers marks observersRegistered
+- notifyReady sets uiReady and timestamp
+
+### generateFields
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+
+### generateSections
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+
+### prepareField
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+
+### dispatchField
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+
+### setDirty
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel state/update/refresh handlers (public API)
+- setDirty marks isDirty with timestamp
+- awaitRefresh sets refreshAwaited flag
+- updateView sets viewUpdated and timestamp
+- toggleSection marks sectionToggled with provided id
+- toggleSection error path sets sectionToggled false and error
+- updateFromElement builds full selectionModel (non-drag) with classes
+- updateFromElement drag path uses forwarded position/size and minimal model
+
+### awaitRefresh
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel state/update/refresh handlers (public API)
+- setDirty marks isDirty with timestamp
+- awaitRefresh sets refreshAwaited flag
+- updateView sets viewUpdated and timestamp
+- toggleSection marks sectionToggled with provided id
+- toggleSection error path sets sectionToggled false and error
+- updateFromElement builds full selectionModel (non-drag) with classes
+- updateFromElement drag path uses forwarded position/size and minimal model
+
+### validateField
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+
+### mergeErrors
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel field lifecycle handlers (public API)
+- generateFields populates fields array with layout/styling fields
+- generateSections returns default sections for button component
+- prepareField stores field change context in payload
+- dispatchField calls conductor.play with mapped sequence when prepared
+- validateField returns invalid for bad number value and valid for good value
+- mergeErrors marks errorsMerged after validation
+
+### updateView
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel state/update/refresh handlers (public API)
+- setDirty marks isDirty with timestamp
+- awaitRefresh sets refreshAwaited flag
+- updateView sets viewUpdated and timestamp
+- toggleSection marks sectionToggled with provided id
+- toggleSection error path sets sectionToggled false and error
+- updateFromElement builds full selectionModel (non-drag) with classes
+- updateFromElement drag path uses forwarded position/size and minimal model
+
+### toggleSection
+**File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel state/update/refresh handlers (public API)
+- setDirty marks isDirty with timestamp
+- awaitRefresh sets refreshAwaited flag
+- updateView sets viewUpdated and timestamp
+- toggleSection marks sectionToggled with provided id
+- toggleSection error path sets sectionToggled false and error
+- updateFromElement builds full selectionModel (non-drag) with classes
+- updateFromElement drag path uses forwarded position/size and minimal model
+
+### updateFromElement
+**File**: \packages\control-panel\src\symphonies\update\update.stage-crew.ts
+**Tests**: 1 files
+
+- control-panel state/update/refresh handlers (public API)
+- setDirty marks isDirty with timestamp
+- awaitRefresh sets refreshAwaited flag
+- updateView sets viewUpdated and timestamp
+- toggleSection marks sectionToggled with provided id
+- toggleSection error path sets sectionToggled false and error
+- updateFromElement builds full selectionModel (non-drag) with classes
+- updateFromElement drag path uses forwarded position/size and minimal model
 
 ### ControlPanel
 **File**: \packages\control-panel\src\ui\ControlPanel.tsx

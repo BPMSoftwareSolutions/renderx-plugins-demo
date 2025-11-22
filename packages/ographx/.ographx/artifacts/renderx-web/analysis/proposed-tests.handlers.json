@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-22T16:25:25.786Z",
+  "timestamp": "2025-11-22T16:47:33.979Z",
   "summary": {
-    "totalHandlers": 76,
+    "totalHandlers": 57,
     "totalTestFiles": 7,
-    "totalTests": 152
+    "totalTests": 114
   },
-  "handlersCount": 76,
+  "handlersCount": 57,
   "testFiles": [
     {
       "path": "packages/canvas/__tests__/handlers.handlers.spec.ts",
@@ -44,25 +44,13 @@
       "plugin": "canvas-component",
       "testGroup": "handlers",
       "handlers": [
-        "notifyUi",
         "Name",
-        "setAllRulesConfig",
-        "loadAllRulesFromWindow",
-        "getAllRulesConfig",
         "transform"
       ],
       "tests": [
         {
           "type": "describe",
           "name": "canvas-component handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "notifyUi - happy path"
-        },
-        {
-          "type": "it",
-          "name": "notifyUi - edge case/error handling"
         },
         {
           "type": "it",
@@ -74,30 +62,6 @@
         },
         {
           "type": "it",
-          "name": "setAllRulesConfig - happy path"
-        },
-        {
-          "type": "it",
-          "name": "setAllRulesConfig - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "loadAllRulesFromWindow - happy path"
-        },
-        {
-          "type": "it",
-          "name": "loadAllRulesFromWindow - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "getAllRulesConfig - happy path"
-        },
-        {
-          "type": "it",
-          "name": "getAllRulesConfig - edge case/error handling"
-        },
-        {
-          "type": "it",
           "name": "transform - happy path"
         },
         {
@@ -105,7 +69,7 @@
           "name": "transform - edge case/error handling"
         }
       ],
-      "testCount": 12
+      "testCount": 4
     },
     {
       "path": "packages/control-panel/__tests__/handlers.handlers.spec.ts",
@@ -116,22 +80,7 @@
         "catch",
         "deleteCssClass",
         "initMovement",
-        "initResolver",
-        "loadSchemas",
-        "registerObservers",
-        "notifyReady",
-        "generateFields",
-        "generateSections",
         "renderView",
-        "prepareField",
-        "dispatchField",
-        "setDirty",
-        "awaitRefresh",
-        "validateField",
-        "mergeErrors",
-        "updateView",
-        "toggleSection",
-        "updateFromElement",
         "registerFieldRenderer",
         "getFieldRenderer",
         "EmptyState",
@@ -187,131 +136,11 @@
         },
         {
           "type": "it",
-          "name": "initResolver - happy path"
-        },
-        {
-          "type": "it",
-          "name": "initResolver - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "loadSchemas - happy path"
-        },
-        {
-          "type": "it",
-          "name": "loadSchemas - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "registerObservers - happy path"
-        },
-        {
-          "type": "it",
-          "name": "registerObservers - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "notifyReady - happy path"
-        },
-        {
-          "type": "it",
-          "name": "notifyReady - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "generateFields - happy path"
-        },
-        {
-          "type": "it",
-          "name": "generateFields - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "generateSections - happy path"
-        },
-        {
-          "type": "it",
-          "name": "generateSections - edge case/error handling"
-        },
-        {
-          "type": "it",
           "name": "renderView - happy path"
         },
         {
           "type": "it",
           "name": "renderView - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "prepareField - happy path"
-        },
-        {
-          "type": "it",
-          "name": "prepareField - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "dispatchField - happy path"
-        },
-        {
-          "type": "it",
-          "name": "dispatchField - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "setDirty - happy path"
-        },
-        {
-          "type": "it",
-          "name": "setDirty - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "awaitRefresh - happy path"
-        },
-        {
-          "type": "it",
-          "name": "awaitRefresh - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "validateField - happy path"
-        },
-        {
-          "type": "it",
-          "name": "validateField - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "mergeErrors - happy path"
-        },
-        {
-          "type": "it",
-          "name": "mergeErrors - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "updateView - happy path"
-        },
-        {
-          "type": "it",
-          "name": "updateView - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "toggleSection - happy path"
-        },
-        {
-          "type": "it",
-          "name": "toggleSection - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "updateFromElement - happy path"
-        },
-        {
-          "type": "it",
-          "name": "updateFromElement - edge case/error handling"
         },
         {
           "type": "it",
@@ -434,7 +263,7 @@
           "name": "generatePlaceholder - edge case/error handling"
         }
       ],
-      "testCount": 70
+      "testCount": 40
     },
     {
       "path": "packages/header/__tests__/handlers.handlers.spec.ts",

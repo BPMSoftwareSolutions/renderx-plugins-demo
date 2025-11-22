@@ -1,0 +1,116 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-learning-track-symphony",
+  "name": "Track Effectiveness",
+  "description": "Track fix effectiveness and update learning models",
+  "movements": [
+    {
+      "id": "track",
+      "name": "Track Effectiveness",
+      "description": "Track fix effectiveness and learn from results",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:learning:track:requested",
+          "title": "Tracking Requested",
+          "description": "User requests effectiveness tracking",
+          "dynamics": "mf",
+          "handler": "trackRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:learning:load:deployment",
+          "title": "Load Deployment Info",
+          "description": "Load deployment information from database",
+          "dynamics": "mf",
+          "handler": "loadDeploymentInfo",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:learning:collect:metrics",
+          "title": "Collect Metrics",
+          "description": "Collect post-deployment metrics from production",
+          "dynamics": "mf",
+          "handler": "collectPostDeploymentMetrics",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:learning:compare:metrics",
+          "title": "Compare Metrics",
+          "description": "Compare before and after metrics",
+          "dynamics": "mf",
+          "handler": "compareMetrics",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:learning:calculate:improvement",
+          "title": "Calculate Improvement",
+          "description": "Calculate improvement percentage and impact",
+          "dynamics": "mf",
+          "handler": "calculateImprovement",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:learning:assess:success",
+          "title": "Assess Success",
+          "description": "Assess if fix was successful",
+          "dynamics": "mf",
+          "handler": "assessSuccess",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:learning:update:models",
+          "title": "Update Models",
+          "description": "Update learning models with results",
+          "dynamics": "mf",
+          "handler": "updateLearningModels",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 8,
+          "event": "self-healing:learning:generate:insights",
+          "title": "Generate Insights",
+          "description": "Generate insights from fix effectiveness",
+          "dynamics": "mf",
+          "handler": "generateInsights",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 9,
+          "event": "self-healing:learning:store:effectiveness",
+          "title": "Store Effectiveness",
+          "description": "Store effectiveness data in database",
+          "dynamics": "mf",
+          "handler": "storeEffectiveness",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 10,
+          "event": "self-healing:learning:track:completed",
+          "title": "Tracking Completed",
+          "description": "Notify that tracking is complete",
+          "dynamics": "mf",
+          "handler": "trackCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+

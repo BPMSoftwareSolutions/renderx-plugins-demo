@@ -1,0 +1,116 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-validation-run-symphony",
+  "name": "Validate Fix",
+  "description": "Validate fix with tests, coverage, and performance checks",
+  "movements": [
+    {
+      "id": "validate",
+      "name": "Validate Fix",
+      "description": "Run validation checks on generated fix",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "self-healing:validation:run:requested",
+          "title": "Validation Requested",
+          "description": "User requests fix validation",
+          "dynamics": "mf",
+          "handler": "validateRequested",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "self-healing:validation:load:patch",
+          "title": "Load Patch",
+          "description": "Load patch from database",
+          "dynamics": "mf",
+          "handler": "loadPatch",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 3,
+          "event": "self-healing:validation:apply:patch",
+          "title": "Apply Patch",
+          "description": "Apply patch to temporary workspace",
+          "dynamics": "mf",
+          "handler": "applyPatch",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 4,
+          "event": "self-healing:validation:run:tests",
+          "title": "Run Tests",
+          "description": "Run all tests on patched code",
+          "dynamics": "mf",
+          "handler": "runTests",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 5,
+          "event": "self-healing:validation:check:coverage",
+          "title": "Check Coverage",
+          "description": "Check test coverage of patched code",
+          "dynamics": "mf",
+          "handler": "checkCoverage",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 6,
+          "event": "self-healing:validation:verify:performance",
+          "title": "Verify Performance",
+          "description": "Verify performance improvements",
+          "dynamics": "mf",
+          "handler": "verifyPerformance",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 7,
+          "event": "self-healing:validation:validate:documentation",
+          "title": "Validate Documentation",
+          "description": "Validate generated documentation",
+          "dynamics": "mf",
+          "handler": "validateDocumentation",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 8,
+          "event": "self-healing:validation:aggregate:results",
+          "title": "Aggregate Results",
+          "description": "Aggregate all validation results",
+          "dynamics": "mf",
+          "handler": "aggregateValidationResults",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 9,
+          "event": "self-healing:validation:store:results",
+          "title": "Store Results",
+          "description": "Store validation results in database",
+          "dynamics": "mf",
+          "handler": "storeValidationResults",
+          "timing": "async",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 10,
+          "event": "self-healing:validation:run:completed",
+          "title": "Validation Completed",
+          "description": "Notify that validation is complete",
+          "dynamics": "mf",
+          "handler": "validateCompleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}
+
