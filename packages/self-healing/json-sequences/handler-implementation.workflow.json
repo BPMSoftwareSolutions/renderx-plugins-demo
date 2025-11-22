@@ -89,6 +89,12 @@
           "action": "Run business BDD test",
           "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts",
           "expected_outcome": "Test fails (handler doesn't exist yet) - this is expected"
+        },
+        {
+          "step": 6,
+          "action": "Verify lint compliance",
+          "details": "Ensure all unused variables are prefixed with underscore (_ctx, _result, etc.) to comply with ESLint @typescript-eslint/no-unused-vars rule",
+          "expected_outcome": "No lint warnings in test file"
         }
       ],
       "business_bdd_spec": {
@@ -145,6 +151,12 @@
           "action": "Run unit tests",
           "details": "npm test -- __tests__/[sequence].spec.ts",
           "expected_outcome": "All tests fail (Red phase) - this is expected"
+        },
+        {
+          "step": 5,
+          "action": "Verify lint compliance",
+          "details": "Ensure all unused variables are prefixed with underscore (_ctx, _result, etc.) to comply with ESLint @typescript-eslint/no-unused-vars rule",
+          "expected_outcome": "No lint warnings in test file"
         }
       ],
       "business_bdd_spec": {
@@ -341,6 +353,11 @@
     "TDD-Driven: Red → Green → Refactor",
     "Clean Code: Pure functions, clear error handling, event publishing, type safety",
     "Quality: All tests pass, lint passes, code reviewed"
+  ],
+  "lint_requirements": [
+    "Prefix unused variables with underscore: _ctx, _result, _error (ESLint rule: @typescript-eslint/no-unused-vars requires /^_/u pattern)",
+    "All test files must follow this pattern to avoid lint warnings",
+    "Example: const _ctx = createTestContext(); // unused but required for test setup"
   ],
   "related_files": {
     "business_specs": "packages/self-healing/.generated/comprehensive-business-bdd-specifications.json",

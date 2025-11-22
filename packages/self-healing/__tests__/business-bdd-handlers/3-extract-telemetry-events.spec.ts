@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { extractTelemetryEvents } from '../../src/handlers/telemetry/extract.events';
+import { createEventBus } from '../support/eventBus';
 
 /**
  * Business BDD Test: extractTelemetryEvents
@@ -18,16 +20,14 @@ describe('Business BDD: extractTelemetryEvents', () => {
   let ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
+    const rawLogs = [
+      { path: 'app-01.log', content: 'beat-started handler=A time=10ms\nbeat-completed handler=A time=12ms' },
+      { path: 'app-02.log', content: 'beat-started handler=B time=30ms\nbeat-completed handler=B time=35ms' }
+    ];
     ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
+      handler: extractTelemetryEvents,
+      bus: createEventBus(),
+      input: rawLogs,
       output: null,
       error: null
     };
@@ -39,30 +39,25 @@ describe('Business BDD: extractTelemetryEvents', () => {
   });
 
   describe('Scenario: Extract beat execution events to understand handler performance', () => {
-    it('should achieve the desired business outcome', async () => {
+    it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      // - logs contain beat-started and beat-completed events
-      // - events have timestamps and durations
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      expect(ctx.input.length).toBe(2);
 
       // WHEN (Action - User/System Action)
       // - event extraction handler processes logs
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+      ctx.output = ctx.handler(ctx.input as any);
 
       // THEN (Expected Outcome - Business Value)
       // - all events should be extracted
       // - timing data should be preserved
       // - event types should be categorized
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      expect(ctx.output).toBeDefined();
+      expect(ctx.output.event).toBe('telemetry.extract.events');
+      expect(ctx.output.context.rawCount).toBe(2);
+      expect(Array.isArray(ctx.output.context.events)).toBe(true);
+      // Future: events categorized, bus publish simulated
+      ctx.bus.publish('telemetry.events.extracted', ctx.output.context.events);
+      expect(ctx.bus.count('telemetry.events.extracted')).toBe(1);
     });
   });
 });

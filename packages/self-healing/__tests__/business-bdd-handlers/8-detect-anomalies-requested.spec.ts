@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { detectAnomaliesRequested } from '../../src/handlers/anomaly/detect.requested';
+import { createEventBus } from '../support/eventBus';
 
 /**
  * Business BDD Test: detectAnomaliesRequested
@@ -18,16 +20,11 @@ describe('Business BDD: detectAnomaliesRequested', () => {
   let ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
+    const sequenceId = `anomaly-detect-${Date.now()}`;
     ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
+      handler: detectAnomaliesRequested,
+      bus: createEventBus(),
+      input: { sequenceId, metricsAvailable: true },
       output: null,
       error: null
     };
@@ -39,30 +36,22 @@ describe('Business BDD: detectAnomaliesRequested', () => {
   });
 
   describe('Scenario: User requests anomaly detection after parsing telemetry', () => {
-    it('should achieve the desired business outcome', async () => {
+    it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      // - telemetry has been parsed
-      // - metrics are available
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      expect(ctx.input.metricsAvailable).toBe(true);
 
       // WHEN (Action - User/System Action)
       // - user triggers anomaly detection
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+      ctx.output = ctx.handler(ctx.input.sequenceId);
 
       // THEN (Expected Outcome - Business Value)
       // - system should validate request
       // - detection should begin
       // - user should receive confirmation
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      expect(ctx.output.event).toBe('anomaly.detect.requested');
+      expect(ctx.output.context?.sequenceId).toBe(ctx.input.sequenceId);
+      ctx.bus.publish('anomaly.detect.requested', ctx.output);
+      expect(ctx.bus.count('anomaly.detect.requested')).toBe(1);
     });
   });
 });

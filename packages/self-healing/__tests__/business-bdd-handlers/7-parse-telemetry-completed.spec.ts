@@ -1,4 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { parseTelemetryCompleted } from '../../src/handlers/telemetry/parse.completed';
+import { aggregateTelemetryMetrics } from '../../src/handlers/telemetry/aggregate.metrics';
+import { createEventBus } from '../support/eventBus';
+import { TelemetryEvent } from '../../src/types';
 
 /**
  * Business BDD Test: parseTelemetryCompleted
@@ -18,16 +22,14 @@ describe('Business BDD: parseTelemetryCompleted', () => {
   let ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
+    const events: TelemetryEvent[] = [
+      { timestamp: new Date().toISOString(), handler: 'A', event: 'beat-completed' }
+    ];
+    const metricsEvt = aggregateTelemetryMetrics(events);
     ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
+      handler: parseTelemetryCompleted,
+      bus: createEventBus(),
+      input: { sequenceId: 'telemetry-seq-xyz', metrics: metricsEvt.context.metrics },
       output: null,
       error: null
     };
@@ -39,30 +41,22 @@ describe('Business BDD: parseTelemetryCompleted', () => {
   });
 
   describe('Scenario: Notify system that telemetry parsing is complete', () => {
-    it('should achieve the desired business outcome', async () => {
+    it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      // - all telemetry parsing steps completed
-      // - metrics stored successfully
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      expect(ctx.input.metrics.totalEvents).toBe(1);
 
       // WHEN (Action - User/System Action)
       // - completion handler executes
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+      ctx.output = ctx.handler(ctx.input.sequenceId, ctx.input.metrics);
 
       // THEN (Expected Outcome - Business Value)
       // - next sequence should be triggered
       // - user should be notified
       // - system should be ready for anomaly detection
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      expect(ctx.output.event).toBe('telemetry.parse.completed');
+      expect(ctx.output.context?.sequenceId).toBe('telemetry-seq-xyz');
+      ctx.bus.publish('telemetry.parse.completed', ctx.output);
+      expect(ctx.bus.count('telemetry.parse.completed')).toBe(1);
     });
   });
 });

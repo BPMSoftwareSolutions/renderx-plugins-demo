@@ -1,4 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { loadTelemetryData } from '../../src/handlers/anomaly/load.telemetry';
+import { createEventBus } from '../support/eventBus';
+import { TelemetryMetrics } from '../../src/types';
 
 /**
  * Business BDD Test: loadTelemetryData
@@ -18,16 +21,26 @@ describe('Business BDD: loadTelemetryData', () => {
   let ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-    ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
+    const baseline: TelemetryMetrics = {
+      handlers: {
+        A: { count: 100, avgTime: 100, p95Time: 150, p99Time: 180, errorRate: 0.01, lastSeen: new Date().toISOString() }
       },
-      input: {},
+      sequences: {},
+      timestamp: new Date().toISOString(),
+      totalEvents: 100
+    };
+    const current: TelemetryMetrics = {
+      handlers: {
+        A: { count: 120, avgTime: 140, p95Time: 200, p99Time: 240, errorRate: 0.02, lastSeen: new Date().toISOString() }
+      },
+      sequences: {},
+      timestamp: new Date().toISOString(),
+      totalEvents: 120
+    };
+    ctx = {
+      handler: loadTelemetryData,
+      bus: createEventBus(),
+      input: { current, baselines: baseline },
       output: null,
       error: null
     };
@@ -39,30 +52,24 @@ describe('Business BDD: loadTelemetryData', () => {
   });
 
   describe('Scenario: Load telemetry metrics to compare against baselines', () => {
-    it('should achieve the desired business outcome', async () => {
+    it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      // - metrics stored in database
-      // - historical baselines available
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      expect(ctx.input.baselines.totalEvents).toBe(100);
+      expect(ctx.input.current.totalEvents).toBe(120);
 
       // WHEN (Action - User/System Action)
       // - data loading handler executes
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+      ctx.output = ctx.handler(ctx.input.current, ctx.input.baselines);
 
       // THEN (Expected Outcome - Business Value)
       // - current metrics should be loaded
       // - baseline metrics should be retrieved
       // - comparison should be possible
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      expect(ctx.output.event).toBe('anomaly.load.telemetry');
+      expect(ctx.output.context.metrics.totalEvents).toBe(120);
+      expect(ctx.output.context.baselines.totalEvents).toBe(100);
+      ctx.bus.publish('anomaly.telemetry.loaded', ctx.output.context);
+      expect(ctx.bus.count('anomaly.telemetry.loaded')).toBe(1);
     });
   });
 });

@@ -1,4 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { storeTelemetryDatabase } from '../../src/handlers/telemetry/store.database';
+import { aggregateTelemetryMetrics } from '../../src/handlers/telemetry/aggregate.metrics';
+import { createEventBus } from '../support/eventBus';
+import { TelemetryEvent } from '../../src/types';
 
 /**
  * Business BDD Test: storeTelemetryDatabase
@@ -18,16 +22,15 @@ describe('Business BDD: storeTelemetryDatabase', () => {
   let ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
+    const events: TelemetryEvent[] = [
+      { timestamp: new Date().toISOString(), handler: 'A', event: 'beat-completed' },
+      { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed' }
+    ];
+    const agg = aggregateTelemetryMetrics(events);
     ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
+      handler: storeTelemetryDatabase,
+      bus: createEventBus(),
+      input: agg.context.metrics,
       output: null,
       error: null
     };
@@ -41,28 +44,20 @@ describe('Business BDD: storeTelemetryDatabase', () => {
   describe('Scenario: Store aggregated metrics for historical analysis', () => {
     it('should achieve the desired business outcome', async () => {
       // GIVEN (Preconditions - Business Context)
-      // - metrics are ready to store
-      // - database is available
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      expect(ctx.input.totalEvents).toBe(2);
 
       // WHEN (Action - User/System Action)
       // - storage handler persists metrics
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+      ctx.output = await ctx.handler(ctx.input);
 
       // THEN (Expected Outcome - Business Value)
       // - metrics should be stored
       // - data should be queryable
       // - storage should be confirmed
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      expect(ctx.output.event).toBe('telemetry.store.database');
+      expect(ctx.output.context.stored).toBe(true);
+      ctx.bus.publish('telemetry.metrics.stored', ctx.output.context.metrics);
+      expect(ctx.bus.count('telemetry.metrics.stored')).toBe(1);
     });
   });
 });
