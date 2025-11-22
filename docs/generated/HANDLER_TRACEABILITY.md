@@ -1,6 +1,6 @@
 # Handler → Test Traceability
 
-**Generated**: 2025-11-22T16:47:35.876Z
+**Generated**: 2025-11-22T17:06:31.313Z
 
 ## Handler Test Mapping
 

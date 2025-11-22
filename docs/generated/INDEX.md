@@ -1,13 +1,13 @@
 # System Documentation Index
 
-**Generated**: 2025-11-22T16:47:35.868Z
+**Generated**: 2025-11-22T17:06:31.306Z
 
 ## 📊 System Overview
 
 | Metric | Value |
 |--------|-------|
 | **Plugins** | 9 |
-| **Sequences** | 54 |
+| **Sequences** | 55 |
 | **Handlers** | 423 |
 | **Test Files** | 191 |
 | **Total Tests** | 1453 |
@@ -26,7 +26,7 @@ Complete handler specifications with test coverage details.
 
 ### 2. [SEQUENCE_FLOWS.md](./SEQUENCE_FLOWS.md)
 Orchestration sequences and their handler flows.
-- All 54 sequences documented
+- All 55 sequences documented
 - Handler beats and timing information
 - Event flow and handler kinds (pure, io, stage-crew)
 - **Use this to**: Understand how sequences orchestrate handlers
@@ -81,8 +81,8 @@ Handlers that need test coverage.
 ## 📈 Coverage Summary
 
 ### By Handler Type
-- **Sequence-Defined Handlers**: 87 (92% coverage)
-- **Internal Implementation**: 135 (63% coverage)
+- **Sequence-Defined Handlers**: 90 (92% coverage)
+- **Internal Implementation**: 132 (62% coverage)
 
 ### By Plugin
 See [PLUGIN_COVERAGE.md](./PLUGIN_COVERAGE.md) for detailed breakdown.
@@ -99,4 +99,4 @@ This documentation is **automatically generated** from:
 
 ---
 
-*Last updated: 2025-11-22T16:47:35.869Z*
+*Last updated: 2025-11-22T17:06:31.307Z*

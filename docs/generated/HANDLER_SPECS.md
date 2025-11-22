@@ -1,6 +1,6 @@
 # Handler Specifications & Test Coverage
 
-**Generated**: 2025-11-22T16:47:35.871Z
+**Generated**: 2025-11-22T17:06:31.308Z
 
 ## Overview
 

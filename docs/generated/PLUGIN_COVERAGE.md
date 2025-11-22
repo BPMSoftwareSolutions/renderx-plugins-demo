@@ -1,6 +1,6 @@
 # Plugin Coverage Analysis
 
-**Generated**: 2025-11-22T16:47:35.875Z
+**Generated**: 2025-11-22T17:06:31.312Z
 
 ## Coverage by Plugin
 

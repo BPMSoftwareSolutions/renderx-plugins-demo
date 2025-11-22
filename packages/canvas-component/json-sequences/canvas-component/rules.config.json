@@ -1,0 +1,40 @@
+{
+  "pluginId": "CanvasComponentPlugin",
+  "id": "canvas-component-rules-config-symphony",
+  "name": "Canvas Component Rules Config",
+  "movements": [
+    {
+      "id": "rulesConfig",
+      "name": "Rules Configuration",
+      "beats": [
+        {
+          "beat": 1,
+          "event": "canvas:component:rules:setAll",
+          "title": "Set All Rules Config",
+          "dynamics": "mf",
+          "handler": "setAllRulesConfig",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:rules:loadWindow",
+          "title": "Load Rules From Window",
+          "dynamics": "mf",
+          "handler": "loadAllRulesFromWindow",
+          "timing": "immediate",
+          "kind": "pure"
+        },
+        {
+          "beat": 3,
+          "event": "canvas:component:rules:getAll",
+          "title": "Get All Rules Config",
+          "dynamics": "mf",
+          "handler": "getAllRulesConfig",
+          "timing": "immediate",
+          "kind": "pure"
+        }
+      ]
+    }
+  ]
+}

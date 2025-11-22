@@ -5,11 +5,14 @@
  * - Scans all JSON files under public/json-sequences/ (and falls back to repo json-sequences/)
  * - For any file that declares a top-level `pluginId`, verifies that ID exists in the
  *   served plugin manifest (prefer the generated manifest; fall back to public/plugins)
+ * - Skips sequences from plugins marked as "development" or "alpha" status
  *
  * Rationale
  * - At runtime the thin host mounts sequences and plugin runtimes from served artifacts
  *   produced by plugins. If a sequence JSON references a pluginId not present in the
  *   served plugin-manifest, it cannot be mounted. Catch that at lint time.
+ * - Plugins in development should not be served; they're validated separately.
+ *   Use plugin manifest "status" field to mark readiness: "production" (default), "development", "alpha"
  */
 
 import fs from 'node:fs';
@@ -43,6 +46,8 @@ const rule = {
     try {
       const pluginIds = loadServedManifestPluginIds(cwd);
       const moduleToIds = loadManifestIdsByModule(cwd);
+      const pluginStatuses = loadPluginStatuses(cwd); // Load readiness status
+
       if ((!pluginIds || pluginIds.size === 0) && moduleToIds.size === 0) {
         // If there are served sequences but no manifest, report a single error; otherwise silently exit
         const servedDirs = getServedSequenceDirs(cwd);
@@ -63,6 +68,12 @@ const rule = {
             const json = JSON.parse(fs.readFileSync(abs, 'utf8'));
             const pluginId = typeof json?.pluginId === 'string' ? json.pluginId : null;
             if (!pluginId) continue;
+
+            // Skip sequences from plugins not ready for serving
+            const status = pluginStatuses.get(pluginId) || 'production';
+            if (status !== 'production') {
+              continue; // Skip development/alpha plugins
+            }
 
             // Determine the handlersPath (package) for this sequence via the sibling index.json
             const seqDir = path.dirname(abs);
@@ -145,6 +156,34 @@ function loadServedManifestPluginIds(cwd) {
     }
   }
   return new Set();
+}
+
+function loadPluginStatuses(cwd) {
+  // Load plugin readiness status from manifest
+  // status: "production" (default), "development", "alpha"
+  const map = new Map();
+  const candidates = [
+    path.join(cwd, 'catalog', 'json-plugins', '.generated', 'plugin-manifest.json'),
+    path.join(cwd, 'public', 'plugins', 'plugin-manifest.json'),
+    path.join(cwd, 'catalog', 'json-plugins', 'plugin-manifest.json'),
+  ];
+
+  for (const p of candidates) {
+    if (!fs.existsSync(p)) continue;
+    try {
+      const json = JSON.parse(fs.readFileSync(p, 'utf8'));
+      const plugins = Array.isArray(json?.plugins) ? json.plugins : [];
+      for (const plugin of plugins) {
+        const id = plugin?.id;
+        const status = plugin?.status || 'production'; // Default to production
+        if (id) map.set(id, status);
+      }
+      if (map.size > 0) return map;
+    } catch {
+      // try next
+    }
+  }
+  return map;
 }
 
 function getServedSequenceDirs(cwd) {

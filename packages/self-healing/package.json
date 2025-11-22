@@ -1,0 +1,58 @@
+{
+  "name": "@renderx-plugins/self-healing",
+  "version": "0.1.0-alpha.1",
+  "description": "Self-healing system plugin for RenderX - detects, diagnoses, fixes, and learns from production issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./handlers": {
+      "import": "./dist/handlers/index.js",
+      "types": "./dist/handlers/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "json-sequences",
+    "json-topics",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && tsup src/index.ts --format esm --dts",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --max-warnings 0",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@renderx-plugins/host-sdk": "workspace:*",
+    "@renderx-plugins/manifest-tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "eslint": "^8.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "keywords": [
+    "renderx",
+    "plugin",
+    "self-healing",
+    "telemetry",
+    "anomaly-detection",
+    "auto-fix"
+  ],
+  "author": "RenderX Team",
+  "license": "MIT"
+}
+

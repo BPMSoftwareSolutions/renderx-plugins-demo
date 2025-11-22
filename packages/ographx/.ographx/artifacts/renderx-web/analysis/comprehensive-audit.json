@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:47:32.061Z",
+    "generated": "2025-11-22T17:06:27.082Z",
     "phase": "Comprehensive Audit Report",
     "version": "1.0",
     "note": "Extra handlers filtered to only include those defined in sequence files"
@@ -12,17 +12,17 @@
     "handlersWithTests": 165,
     "handlersWithoutTests": 57,
     "testCoveragePercentage": 74,
-    "catalogHandlers": 87,
+    "catalogHandlers": 90,
     "missingHandlers": 0,
     "extraHandlers": 0,
-    "internalImplementationHandlers": 135,
-    "sequenceDefinedHandlers": 87,
-    "sequenceDefinedWithTests": 80,
+    "internalImplementationHandlers": 132,
+    "sequenceDefinedHandlers": 90,
+    "sequenceDefinedWithTests": 83,
     "sequenceDefinedWithoutTests": 7,
     "sequenceDefinedCoveragePercentage": 92,
-    "internalHandlersWithTests": 85,
+    "internalHandlersWithTests": 82,
     "internalHandlersWithoutTests": 50,
-    "internalCoveragePercentage": 63,
+    "internalCoveragePercentage": 62,
     "externalInteractionEdges": 112,
     "externalMissingHandlers": 0,
     "externalMissingSequences": 1,
@@ -15979,9 +15979,9 @@
   "extraHandlers": [],
   "catalogData": {
     "sequences": {
-      "totalSequences": 54,
-      "totalHandlers": 87,
-      "totalTopics": 97
+      "totalSequences": 55,
+      "totalHandlers": 90,
+      "totalTopics": 100
     },
     "topics": {
       "totalTopics": 8,

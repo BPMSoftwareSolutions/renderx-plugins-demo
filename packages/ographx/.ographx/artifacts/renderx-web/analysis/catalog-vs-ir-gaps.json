@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:47:30.132Z",
+    "generated": "2025-11-22T17:06:24.856Z",
     "phase": "Phase 3: Gap Analysis",
     "catalogDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\catalog",
     "irDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir"
   },
   "summary": {
-    "catalogSequences": 54,
+    "catalogSequences": 55,
     "irSequences": 0,
-    "catalogHandlers": 87,
+    "catalogHandlers": 90,
     "irHandlers": 423,
     "catalogTopics": 8,
     "catalogComponents": 10,
@@ -82,9 +82,6 @@
         "setCssRegistryObserver",
         "getCssRegistryObserver",
         "clearAllObservers",
-        "setAllRulesConfig",
-        "loadAllRulesFromWindow",
-        "getAllRulesConfig",
         "sanitizeHtml",
         "transform",
         "if",
@@ -160,7 +157,7 @@
         "OpportunityAnalyzer"
       ],
       "missingCount": 0,
-      "extraCount": 135
+      "extraCount": 132
     },
     "testCoverage": {
       "handlersWithTests": [
@@ -394,7 +391,7 @@
       "coveragePercentage": 74
     },
     "sequences": {
-      "catalogCount": 54,
+      "catalogCount": 55,
       "irCount": 0,
       "note": "Sequences are declarative (JSON), not in source code - this is expected"
     }

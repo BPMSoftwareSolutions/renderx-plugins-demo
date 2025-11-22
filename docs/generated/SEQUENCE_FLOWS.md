@@ -1,12 +1,12 @@
 # Sequence Flows & Orchestration
 
-**Generated**: 2025-11-22T16:47:35.873Z
+**Generated**: 2025-11-22T17:06:31.310Z
 
 ## Overview
 
-- **Total Sequences**: 54
-- **Total Handlers**: 87
-- **Total Topics**: 97
+- **Total Sequences**: 55
+- **Total Handlers**: 90
+- **Total Topics**: 100
 
 ## Sequences by Plugin
 
@@ -102,4 +102,4 @@
 - **Beat 1**: startDrag (stage-crew)
 
 
-... and 44 more sequences
+... and 45 more sequences

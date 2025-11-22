@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:47:13.607Z",
+    "generated": "2025-11-22T17:06:04.949Z",
     "phase": "Phase 1: Catalog Analysis",
     "sourceDirectories": [
       "packages/canvas/json-sequences/",
@@ -12,12 +12,12 @@
       "packages/library-component/json-sequences/",
       "packages/real-estate-analyzer/json-sequences/"
     ],
-    "fileCount": 54
+    "fileCount": 55
   },
   "summary": {
-    "totalSequences": 54,
-    "totalHandlers": 87,
-    "totalTopics": 97
+    "totalSequences": 55,
+    "totalHandlers": 90,
+    "totalTopics": 100
   },
   "sequences": [
     {
@@ -696,6 +696,41 @@
               "event": "canvas:component:resize:start",
               "handler": "startResize",
               "kind": "stage-crew",
+              "timing": "immediate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canvas-component-rules-config-symphony",
+      "pluginId": "CanvasComponentPlugin",
+      "name": "Canvas Component Rules Config",
+      "movements": [
+        {
+          "id": "rulesConfig",
+          "name": "Rules Configuration",
+          "beatCount": 3,
+          "beats": [
+            {
+              "beat": 1,
+              "event": "canvas:component:rules:setAll",
+              "handler": "setAllRulesConfig",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 2,
+              "event": "canvas:component:rules:loadWindow",
+              "handler": "loadAllRulesFromWindow",
+              "kind": "pure",
+              "timing": "immediate"
+            },
+            {
+              "beat": 3,
+              "event": "canvas:component:rules:getAll",
+              "handler": "getAllRulesConfig",
+              "kind": "pure",
               "timing": "immediate"
             }
           ]
@@ -1498,12 +1533,14 @@
     "forwardToControlPanel",
     "generateFields",
     "generateSections",
+    "getAllRulesConfig",
     "getCurrentTheme",
     "hideAllOverlays",
     "initConfig",
     "initMovement",
     "initResolver",
     "injectCssClasses",
+    "loadAllRulesFromWindow",
     "loadComponents",
     "loadSchemas",
     "mergeErrors",
@@ -1534,6 +1571,7 @@
     "routeDeselectionRequest",
     "routeSelectionRequest",
     "serializeSelectedComponent",
+    "setAllRulesConfig",
     "setDirty",
     "showSelectionOverlay",
     "showSvgNodeOverlay",
@@ -1603,6 +1641,9 @@
     "canvas:component:resize:move",
     "canvas:component:resize:start",
     "canvas:component:resolve-template",
+    "canvas:component:rules:getAll",
+    "canvas:component:rules:loadWindow",
+    "canvas:component:rules:setAll",
     "canvas:component:select",
     "canvas:component:select:notify",
     "canvas:component:select:route",
