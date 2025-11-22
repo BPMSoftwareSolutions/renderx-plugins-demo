@@ -13,11 +13,11 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  */
 
 describe('Feature: I want to safely deploy validated fixes to production', () => {
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
-    ctx = {
+    _ctx = {
       telemetry: {},
       anomalies: [],
       diagnosis: {},

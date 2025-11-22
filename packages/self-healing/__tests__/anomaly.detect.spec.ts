@@ -15,7 +15,7 @@ describe('Detect Anomalies (self-healing-anomaly-detect-symphony)', () => {
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    _ctx = {};
+    __ctx = {};
   });
 
   it('detectAnomaliesRequested - happy path', () => {

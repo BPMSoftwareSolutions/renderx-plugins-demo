@@ -19,7 +19,7 @@ describe('Business BDD: runUnitTests', () => {
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
-    ctx = {
+  ctx = {
       handler: null, // TODO: Import and assign handler
       mocks: {
         database: vi.fn(),

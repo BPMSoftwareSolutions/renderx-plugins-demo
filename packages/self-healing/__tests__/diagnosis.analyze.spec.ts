@@ -11,11 +11,11 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('Analyze Root Cause (self-healing-diagnosis-analyze-symphony)', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+    _ctx = {};
   });
 
   it('analyzeRequested - happy path', () => {

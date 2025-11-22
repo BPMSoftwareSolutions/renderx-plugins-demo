@@ -11,11 +11,11 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('Deploy Fix (self-healing-deployment-deploy-symphony)', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+    _ctx = {};
   });
 
   it('deployRequested - happy path', () => {

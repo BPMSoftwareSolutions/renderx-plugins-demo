@@ -24,7 +24,7 @@ describe('Business BDD: loadLogFiles', () => {
     const hours = ['00','01','02','03']; // simplifying vs 24 for speed
     const date = '2025-11-22';
     const paths = hours.map(h => `${base}/app-${date}-${h}.log`);
-    ctx = {
+  ctx = {
       handler: loadLogFiles,
       mocks: {
         fileSystem: vi.fn(),

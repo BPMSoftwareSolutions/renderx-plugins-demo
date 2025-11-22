@@ -11,11 +11,11 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('Generate Fix (self-healing-fix-generate-symphony)', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+    _ctx = {};
   });
 
   it('generateFixRequested - happy path', () => {

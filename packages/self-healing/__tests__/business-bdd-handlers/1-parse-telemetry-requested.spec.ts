@@ -23,7 +23,7 @@ describe('Business BDD: parseTelemetryRequested', () => {
     // Outage suspected: elevated latency on service 'api-gateway'
     const now = new Date();
     const sequenceId = `telemetry-parse-${now.toISOString()}`;
-    ctx = {
+  ctx = {
       handler: parseTelemetryRequested,
       mocks: {
         logger: vi.fn(),

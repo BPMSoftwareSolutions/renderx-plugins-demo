@@ -11,11 +11,11 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('Validate Fix (self-healing-validation-run-symphony)', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+    _ctx = {};
   });
 
   it('validateRequested - happy path', () => {
