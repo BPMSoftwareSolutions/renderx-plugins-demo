@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { parseTelemetryRequested } from '../../src/handlers/telemetry/parse.requested';
 
 /**
  * Business BDD Test: parseTelemetryRequested
@@ -18,16 +19,25 @@ describe('Business BDD: parseTelemetryRequested', () => {
   let ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
+    // GIVEN realistic production investigation context
+    // Outage suspected: elevated latency on service 'api-gateway'
+    const now = new Date();
+    const sequenceId = `telemetry-parse-${now.toISOString()}`;
     ctx = {
-      handler: null, // TODO: Import and assign handler
+      handler: parseTelemetryRequested,
       mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
         logger: vi.fn(),
         eventBus: vi.fn()
       },
-      input: {},
+      input: {
+        outageSuspected: true,
+        service: 'api-gateway',
+        logPaths: [
+          '/var/log/app/app-2025-11-21-23.log',
+          '/var/log/app/app-2025-11-22-00.log'
+        ],
+        sequenceId
+      },
       output: null,
       error: null
     };
@@ -39,30 +49,24 @@ describe('Business BDD: parseTelemetryRequested', () => {
   });
 
   describe('Scenario: User requests telemetry parsing to investigate recent outage', () => {
-    it('should achieve the desired business outcome', async () => {
-      // GIVEN (Preconditions - Business Context)
-      // - production logs are available
-      // - user suspects performance issue
+    it('should achieve the desired business outcome', () => {
+      // GIVEN production logs available & outage suspected (preconditions already in beforeEach)
+      expect(ctx.input.outageSuspected).toBe(true);
+      expect(ctx.input.logPaths.length).toBeGreaterThan(0);
 
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      // WHEN user triggers telemetry parsing
+      ctx.output = ctx.handler(ctx.input.sequenceId);
 
-      // WHEN (Action - User/System Action)
-      // - user triggers telemetry parsing
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
-
-      // THEN (Expected Outcome - Business Value)
-      // - system should validate request
-      // - parsing should begin immediately
-      // - user should receive confirmation
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      // THEN system validates request & returns confirmation event
+      expect(ctx.output).toBeDefined();
+      expect(ctx.output.event).toBe('telemetry.parse.requested');
+      expect(ctx.output.context?.sequenceId).toBe(ctx.input.sequenceId);
+      // Timestamp present & ISO format recognizable
+      expect(typeof ctx.output.timestamp).toBe('string');
+      // Business value: user can see parsing initiated (simulate event bus publish in future)
+      // For now ensure we can wrap event for bus dispatch later
+      const busEnvelope = { topic: 'telemetry.parse.requested', payload: ctx.output };
+      expect(busEnvelope.payload.context?.sequenceId).toBe(ctx.input.sequenceId);
     });
   });
 });

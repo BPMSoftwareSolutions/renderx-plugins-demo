@@ -1,14 +1,12 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { 
-  parseTelemetryRequested,
-  loadLogFiles,
-  extractTelemetryEvents,
-  normalizeTelemetryData,
-  aggregateTelemetryMetrics,
-  storeTelemetryDatabase,
-  parseTelemetryCompleted
-} from '../src/handlers';
-import { makeEvent, makeEvents } from './support/telemetryFactory';
+import { parseTelemetryRequested } from '../src/handlers/telemetry/parse.requested';
+import { loadLogFiles } from '../src/handlers/telemetry/load.logs';
+import { extractTelemetryEvents } from '../src/handlers/telemetry/extract.events';
+import { normalizeTelemetryData } from '../src/handlers/telemetry/normalize.data';
+import { aggregateTelemetryMetrics } from '../src/handlers/telemetry/aggregate.metrics';
+import { storeTelemetryDatabase } from '../src/handlers/telemetry/store.database';
+import { parseTelemetryCompleted } from '../src/handlers/telemetry/parse.completed';
+import { makeEvents } from './support/telemetryFactory';
 
 /**
  * Test suite for Parse Production Telemetry
