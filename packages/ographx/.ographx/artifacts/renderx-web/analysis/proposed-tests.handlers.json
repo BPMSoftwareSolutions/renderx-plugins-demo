@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-22T02:02:43.443Z",
+  "timestamp": "2025-11-22T15:54:14.647Z",
   "summary": {
-    "totalHandlers": 129,
+    "totalHandlers": 83,
     "totalTestFiles": 7,
-    "totalTests": 258
+    "totalTests": 166
   },
-  "handlersCount": 129,
+  "handlersCount": 83,
   "testFiles": [
     {
       "path": "packages/canvas/__tests__/handlers.handlers.spec.ts",
@@ -44,139 +44,18 @@
       "plugin": "canvas-component",
       "testGroup": "handlers",
       "handlers": [
-        "serializeSelectedComponent",
-        "copyToClipboard",
-        "notifyCopyComplete",
-        "resolveTemplate",
-        "injectCssFallback",
-        "injectRawCss",
-        "createFromImportRecord",
-        "attachSelection",
-        "attachDrag",
-        "attachSvgNodeClick",
         "notifyUi",
         "Name",
         "createNode",
-        "computeInstanceClass",
-        "computeCssVarBlock",
-        "computeInlineStyle",
-        "publishDeleted",
-        "deleteComponent",
-        "routeDeleteRequest",
-        "exportSvgToGif",
-        "createMP4Encoder",
-        "exportSvgToMp4",
-        "openUiFile",
-        "startLineManip",
-        "endLineManip",
-        "ensureOverlayCss",
-        "ensureOverlay",
-        "getCanvasRect",
-        "applyOverlayRectForEl",
-        "createOverlayStructure",
-        "resolveEndpoints",
-        "ensureAdvancedLineOverlayFor",
-        "attachAdvancedLineManipHandlers",
-        "ensureLineOverlayFor",
-        "attachLineResizeHandlers",
-        "attachResizeHandlers",
-        "updateAttribute",
-        "setClipboardText",
-        "getClipboardText",
-        "initConductor",
-        "registerAllSequences",
-        "loadJsonSequenceCatalogs",
-        "getFlagOverride",
         "setAllRulesConfig",
         "loadAllRulesFromWindow",
         "getAllRulesConfig",
-        "sanitizeHtml",
         "transform"
       ],
       "tests": [
         {
           "type": "describe",
           "name": "canvas-component handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "serializeSelectedComponent - happy path"
-        },
-        {
-          "type": "it",
-          "name": "serializeSelectedComponent - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "copyToClipboard - happy path"
-        },
-        {
-          "type": "it",
-          "name": "copyToClipboard - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "notifyCopyComplete - happy path"
-        },
-        {
-          "type": "it",
-          "name": "notifyCopyComplete - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "resolveTemplate - happy path"
-        },
-        {
-          "type": "it",
-          "name": "resolveTemplate - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "injectCssFallback - happy path"
-        },
-        {
-          "type": "it",
-          "name": "injectCssFallback - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "injectRawCss - happy path"
-        },
-        {
-          "type": "it",
-          "name": "injectRawCss - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "createFromImportRecord - happy path"
-        },
-        {
-          "type": "it",
-          "name": "createFromImportRecord - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "attachSelection - happy path"
-        },
-        {
-          "type": "it",
-          "name": "attachSelection - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "attachDrag - happy path"
-        },
-        {
-          "type": "it",
-          "name": "attachDrag - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "attachSvgNodeClick - happy path"
-        },
-        {
-          "type": "it",
-          "name": "attachSvgNodeClick - edge case/error handling"
         },
         {
           "type": "it",
@@ -204,246 +83,6 @@
         },
         {
           "type": "it",
-          "name": "computeInstanceClass - happy path"
-        },
-        {
-          "type": "it",
-          "name": "computeInstanceClass - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "computeCssVarBlock - happy path"
-        },
-        {
-          "type": "it",
-          "name": "computeCssVarBlock - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "computeInlineStyle - happy path"
-        },
-        {
-          "type": "it",
-          "name": "computeInlineStyle - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "publishDeleted - happy path"
-        },
-        {
-          "type": "it",
-          "name": "publishDeleted - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "deleteComponent - happy path"
-        },
-        {
-          "type": "it",
-          "name": "deleteComponent - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "routeDeleteRequest - happy path"
-        },
-        {
-          "type": "it",
-          "name": "routeDeleteRequest - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "exportSvgToGif - happy path"
-        },
-        {
-          "type": "it",
-          "name": "exportSvgToGif - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "createMP4Encoder - happy path"
-        },
-        {
-          "type": "it",
-          "name": "createMP4Encoder - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "exportSvgToMp4 - happy path"
-        },
-        {
-          "type": "it",
-          "name": "exportSvgToMp4 - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "openUiFile - happy path"
-        },
-        {
-          "type": "it",
-          "name": "openUiFile - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "startLineManip - happy path"
-        },
-        {
-          "type": "it",
-          "name": "startLineManip - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "endLineManip - happy path"
-        },
-        {
-          "type": "it",
-          "name": "endLineManip - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "ensureOverlayCss - happy path"
-        },
-        {
-          "type": "it",
-          "name": "ensureOverlayCss - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "ensureOverlay - happy path"
-        },
-        {
-          "type": "it",
-          "name": "ensureOverlay - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "getCanvasRect - happy path"
-        },
-        {
-          "type": "it",
-          "name": "getCanvasRect - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "applyOverlayRectForEl - happy path"
-        },
-        {
-          "type": "it",
-          "name": "applyOverlayRectForEl - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "createOverlayStructure - happy path"
-        },
-        {
-          "type": "it",
-          "name": "createOverlayStructure - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "resolveEndpoints - happy path"
-        },
-        {
-          "type": "it",
-          "name": "resolveEndpoints - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "ensureAdvancedLineOverlayFor - happy path"
-        },
-        {
-          "type": "it",
-          "name": "ensureAdvancedLineOverlayFor - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "attachAdvancedLineManipHandlers - happy path"
-        },
-        {
-          "type": "it",
-          "name": "attachAdvancedLineManipHandlers - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "ensureLineOverlayFor - happy path"
-        },
-        {
-          "type": "it",
-          "name": "ensureLineOverlayFor - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "attachLineResizeHandlers - happy path"
-        },
-        {
-          "type": "it",
-          "name": "attachLineResizeHandlers - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "attachResizeHandlers - happy path"
-        },
-        {
-          "type": "it",
-          "name": "attachResizeHandlers - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "updateAttribute - happy path"
-        },
-        {
-          "type": "it",
-          "name": "updateAttribute - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "setClipboardText - happy path"
-        },
-        {
-          "type": "it",
-          "name": "setClipboardText - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "getClipboardText - happy path"
-        },
-        {
-          "type": "it",
-          "name": "getClipboardText - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "initConductor - happy path"
-        },
-        {
-          "type": "it",
-          "name": "initConductor - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "registerAllSequences - happy path"
-        },
-        {
-          "type": "it",
-          "name": "registerAllSequences - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "loadJsonSequenceCatalogs - happy path"
-        },
-        {
-          "type": "it",
-          "name": "loadJsonSequenceCatalogs - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "getFlagOverride - happy path"
-        },
-        {
-          "type": "it",
-          "name": "getFlagOverride - edge case/error handling"
-        },
-        {
-          "type": "it",
           "name": "setAllRulesConfig - happy path"
         },
         {
@@ -468,14 +107,6 @@
         },
         {
           "type": "it",
-          "name": "sanitizeHtml - happy path"
-        },
-        {
-          "type": "it",
-          "name": "sanitizeHtml - edge case/error handling"
-        },
-        {
-          "type": "it",
           "name": "transform - happy path"
         },
         {
@@ -483,14 +114,13 @@
           "name": "transform - edge case/error handling"
         }
       ],
-      "testCount": 96
+      "testCount": 14
     },
     {
       "path": "packages/control-panel/__tests__/handlers.handlers.spec.ts",
       "plugin": "control-panel",
       "testGroup": "handlers",
       "handlers": [
-        "addClass",
         "removeClass",
         "if",
         "catch",
@@ -537,14 +167,6 @@
         {
           "type": "describe",
           "name": "control-panel handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "addClass - happy path"
-        },
-        {
-          "type": "it",
-          "name": "addClass - edge case/error handling"
         },
         {
           "type": "it",
@@ -875,14 +497,13 @@
           "name": "generatePlaceholder - edge case/error handling"
         }
       ],
-      "testCount": 84
+      "testCount": 82
     },
     {
       "path": "packages/header/__tests__/handlers.handlers.spec.ts",
       "plugin": "header",
       "testGroup": "handlers",
       "handlers": [
-        "HeaderControls",
         "HeaderThemeToggle",
         "HeaderTitle"
       ],
@@ -890,14 +511,6 @@
         {
           "type": "describe",
           "name": "header handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "HeaderControls - happy path"
-        },
-        {
-          "type": "it",
-          "name": "HeaderControls - edge case/error handling"
         },
         {
           "type": "it",
@@ -916,14 +529,13 @@
           "name": "HeaderTitle - edge case/error handling"
         }
       ],
-      "testCount": 6
+      "testCount": 4
     },
     {
       "path": "packages/library/__tests__/handlers.handlers.spec.ts",
       "plugin": "library",
       "testGroup": "handlers",
       "handlers": [
-        "loadComponents",
         "for",
         "RAGEnrichmentService.if",
         "ComponentBehaviorExtractor.for",
@@ -948,14 +560,6 @@
         {
           "type": "describe",
           "name": "library handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "loadComponents - happy path"
-        },
-        {
-          "type": "it",
-          "name": "loadComponents - edge case/error handling"
         },
         {
           "type": "it",
@@ -1110,14 +714,13 @@
           "name": "getPromptTemplate - edge case/error handling"
         }
       ],
-      "testCount": 40
+      "testCount": 38
     },
     {
       "path": "packages/library-component/__tests__/handlers.handlers.spec.ts",
       "plugin": "library-component",
       "testGroup": "handlers",
       "handlers": [
-        "ensurePayload",
         "computeGhostSize",
         "createGhostContainer",
         "renderTemplatePreview",
@@ -1131,14 +734,6 @@
         {
           "type": "describe",
           "name": "library-component handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "ensurePayload - happy path"
-        },
-        {
-          "type": "it",
-          "name": "ensurePayload - edge case/error handling"
         },
         {
           "type": "it",
@@ -1205,14 +800,13 @@
           "name": "publishCreateRequested - edge case/error handling"
         }
       ],
-      "testCount": 18
+      "testCount": 16
     },
     {
       "path": "packages/real-estate-analyzer/__tests__/handlers.handlers.spec.ts",
       "plugin": "real-estate-analyzer",
       "testGroup": "handlers",
       "handlers": [
-        "fetchPropertyData",
         "analyze",
         "format",
         "ZillowService.if",
@@ -1222,14 +816,6 @@
         {
           "type": "describe",
           "name": "real-estate-analyzer handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "fetchPropertyData - happy path"
-        },
-        {
-          "type": "it",
-          "name": "fetchPropertyData - edge case/error handling"
         },
         {
           "type": "it",
@@ -1264,7 +850,7 @@
           "name": "OpportunityAnalyzer - edge case/error handling"
         }
       ],
-      "testCount": 10
+      "testCount": 8
     }
   ]
 }

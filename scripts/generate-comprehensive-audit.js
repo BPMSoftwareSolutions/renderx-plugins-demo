@@ -57,14 +57,20 @@ async function generateComprehensiveAudit() {
   const gaps = await readJsonFile(join(outputDir, "catalog-vs-ir-gaps.json"));
   const externalInteractions = await readJsonFile(join(outputDir, "external-interactions-audit.json"));
 
+  // Extract handlers defined in sequence files (the "public" API)
+  const sequenceDefinedHandlers = extractHandlersFromSequences(catalogSeq);
+
   // Build comprehensive audit
+  const filteredExtraHandlers = gaps.gaps.handlers.extra.filter(name => sequenceDefinedHandlers.has(name));
+
   const audit = {
     metadata: {
       generated: new Date().toISOString(),
       phase: "Comprehensive Audit Report",
-      version: "1.0"
+      version: "1.0",
+      note: "Extra handlers filtered to only include those defined in sequence files"
     },
-    
+
     summary: {
       totalTestFiles: irTests.summary.totalTestFiles,
       totalTests: irTests.summary.totalTests,
@@ -74,7 +80,18 @@ async function generateComprehensiveAudit() {
       testCoveragePercentage: gaps.summary.testCoverage,
       catalogHandlers: gaps.summary.catalogHandlers,
       missingHandlers: gaps.gaps.handlers.missingCount,
-      extraHandlers: gaps.gaps.handlers.extraCount
+      extraHandlers: filteredExtraHandlers.length,
+      internalImplementationHandlers: gaps.gaps.handlers.extraCount - filteredExtraHandlers.length,
+
+      // Breakdown by handler type
+      sequenceDefinedHandlers: sequenceDefinedHandlers.size,
+      sequenceDefinedWithTests: calculateSequenceHandlersWithTests(gaps.gaps.testCoverage.handlersWithTests, sequenceDefinedHandlers),
+      sequenceDefinedWithoutTests: calculateSequenceHandlersWithoutTests(gaps.gaps.testCoverage.handlersWithoutTests, sequenceDefinedHandlers),
+      sequenceDefinedCoveragePercentage: calculateSequenceCoverage(gaps.gaps.testCoverage.handlersWithTests, gaps.gaps.testCoverage.handlersWithoutTests, sequenceDefinedHandlers),
+
+      internalHandlersWithTests: calculateInternalHandlersWithTests(gaps.gaps.testCoverage.handlersWithTests, sequenceDefinedHandlers),
+      internalHandlersWithoutTests: calculateInternalHandlersWithoutTests(gaps.gaps.testCoverage.handlersWithoutTests, sequenceDefinedHandlers),
+      internalCoveragePercentage: calculateInternalCoverage(gaps.gaps.testCoverage.handlersWithTests, gaps.gaps.testCoverage.handlersWithoutTests, sequenceDefinedHandlers)
     },
 
     testFiles: irTests.testFiles.map(tf => ({
@@ -119,16 +136,18 @@ async function generateComprehensiveAudit() {
       requiredBy: catalogSeq.handlers?.includes(name) ? "catalog" : "unknown"
     })),
 
-    extraHandlers: gaps.gaps.handlers.extra.map(name => {
-      const handler = irHandlers.handlers.find(h => h.name === name);
-      return {
-        name,
-        file: handler?.file,
-        plugin: handler?.plugin,
-        status: "NOT_IN_CATALOG",
-        likelyPurpose: classifyHandler(name)
-      };
-    }),
+    extraHandlers: gaps.gaps.handlers.extra
+      .filter(name => sequenceDefinedHandlers.has(name))
+      .map(name => {
+        const handler = irHandlers.handlers.find(h => h.name === name);
+        return {
+          name,
+          file: handler?.file,
+          plugin: handler?.plugin,
+          status: "NOT_IN_CATALOG",
+          likelyPurpose: classifyHandler(name)
+        };
+      }),
 
     catalogData: {
       sequences: catalogSeq.summary,
@@ -153,15 +172,21 @@ async function generateComprehensiveAudit() {
   await writeFile(outputFile, JSON.stringify(audit, null, 2));
   console.log(`\n✅ Comprehensive Audit Generated`);
   console.log(`📝 Output: ${outputFile.replace(rootDir, "")}`);
-  console.log(`\n📊 Audit Contents:`);
+  console.log(`\n📊 Overall Metrics:`);
   console.log(`   - Test Files: ${audit.summary.totalTestFiles}`);
   console.log(`   - Total Tests: ${audit.summary.totalTests}`);
-  console.log(`   - Handlers: ${audit.summary.totalHandlers}`);
-  console.log(`   - Coverage: ${audit.summary.testCoveragePercentage}%`);
-  console.log(`   - Handlers with Tests: ${audit.summary.handlersWithTests}`);
-  console.log(`   - Handlers without Tests: ${audit.summary.handlersWithoutTests}`);
-  console.log(`   - Missing Handlers: ${audit.summary.missingHandlers}`);
-  console.log(`   - Extra Handlers: ${audit.summary.extraHandlers}`);
+  console.log(`   - Total Handlers: ${audit.summary.totalHandlers}`);
+  console.log(`   - Overall Coverage: ${audit.summary.testCoveragePercentage}%`);
+  console.log(`\n📋 Sequence-Defined Handlers (Public API):`);
+  console.log(`   - Total: ${audit.summary.sequenceDefinedHandlers}`);
+  console.log(`   - With Tests: ${audit.summary.sequenceDefinedWithTests}`);
+  console.log(`   - Without Tests: ${audit.summary.sequenceDefinedWithoutTests}`);
+  console.log(`   - Coverage: ${audit.summary.sequenceDefinedCoveragePercentage}%`);
+  console.log(`\n🔧 Internal Implementation Handlers:`);
+  console.log(`   - Total: ${audit.summary.internalImplementationHandlers}`);
+  console.log(`   - With Tests: ${audit.summary.internalHandlersWithTests}`);
+  console.log(`   - Without Tests: ${audit.summary.internalHandlersWithoutTests}`);
+  console.log(`   - Coverage: ${audit.summary.internalCoveragePercentage}%`);
 }
 
 function buildPluginAnalysis(irHandlers, irTests, gaps) {
@@ -199,6 +224,58 @@ function buildPluginAnalysis(irHandlers, irTests, gaps) {
   });
 
   return Object.values(plugins);
+}
+
+function extractHandlersFromSequences(catalogSeq) {
+  const handlers = new Set();
+
+  if (!catalogSeq?.sequences) return handlers;
+
+  catalogSeq.sequences.forEach(seq => {
+    if (seq.movements) {
+      seq.movements.forEach(movement => {
+        if (movement.beats) {
+          movement.beats.forEach(beat => {
+            if (beat.handler) {
+              handlers.add(beat.handler);
+            }
+          });
+        }
+      });
+    }
+  });
+
+  return handlers;
+}
+
+function calculateSequenceHandlersWithTests(handlersWithTests, sequenceDefinedHandlers) {
+  return handlersWithTests.filter(h => sequenceDefinedHandlers.has(h)).length;
+}
+
+function calculateSequenceHandlersWithoutTests(handlersWithoutTests, sequenceDefinedHandlers) {
+  return handlersWithoutTests.filter(h => sequenceDefinedHandlers.has(h)).length;
+}
+
+function calculateSequenceCoverage(handlersWithTests, handlersWithoutTests, sequenceDefinedHandlers) {
+  const withTests = handlersWithTests.filter(h => sequenceDefinedHandlers.has(h)).length;
+  const withoutTests = handlersWithoutTests.filter(h => sequenceDefinedHandlers.has(h)).length;
+  const total = withTests + withoutTests;
+  return total > 0 ? Math.round((withTests / total) * 100) : 0;
+}
+
+function calculateInternalHandlersWithTests(handlersWithTests, sequenceDefinedHandlers) {
+  return handlersWithTests.filter(h => !sequenceDefinedHandlers.has(h)).length;
+}
+
+function calculateInternalHandlersWithoutTests(handlersWithoutTests, sequenceDefinedHandlers) {
+  return handlersWithoutTests.filter(h => !sequenceDefinedHandlers.has(h)).length;
+}
+
+function calculateInternalCoverage(handlersWithTests, handlersWithoutTests, sequenceDefinedHandlers) {
+  const withTests = handlersWithTests.filter(h => !sequenceDefinedHandlers.has(h)).length;
+  const withoutTests = handlersWithoutTests.filter(h => !sequenceDefinedHandlers.has(h)).length;
+  const total = withTests + withoutTests;
+  return total > 0 ? Math.round((withTests / total) * 100) : 0;
 }
 
 function classifyHandler(name) {
