@@ -1,25 +1,25 @@
 {
   "metadata": {
-    "generated": "2025-11-22T15:54:11.711Z",
+    "generated": "2025-11-22T16:04:13.901Z",
     "phase": "Comprehensive Audit Report",
     "version": "1.0",
     "note": "Extra handlers filtered to only include those defined in sequence files"
   },
   "summary": {
-    "totalTestFiles": 182,
-    "totalTests": 1403,
+    "totalTestFiles": 184,
+    "totalTests": 1412,
     "totalHandlers": 423,
-    "handlersWithTests": 139,
-    "handlersWithoutTests": 83,
-    "testCoveragePercentage": 63,
+    "handlersWithTests": 141,
+    "handlersWithoutTests": 81,
+    "testCoveragePercentage": 64,
     "catalogHandlers": 87,
     "missingHandlers": 0,
     "extraHandlers": 0,
     "internalImplementationHandlers": 135,
     "sequenceDefinedHandlers": 87,
-    "sequenceDefinedWithTests": 61,
-    "sequenceDefinedWithoutTests": 26,
-    "sequenceDefinedCoveragePercentage": 70,
+    "sequenceDefinedWithTests": 63,
+    "sequenceDefinedWithoutTests": 24,
+    "sequenceDefinedCoveragePercentage": 72,
     "internalHandlersWithTests": 78,
     "internalHandlersWithoutTests": 57,
     "internalCoveragePercentage": 58,
@@ -413,6 +413,44 @@
         "expect",
         "ESLint",
         "useConductor"
+      ]
+    },
+    {
+      "path": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component public API beats"
+        },
+        {
+          "type": "it",
+          "name": "notifyUi (selection) routes to control panel selection.show via conductor.play"
+        },
+        {
+          "type": "it",
+          "name": "routeSelectionRequest forwards to canvas.component.select with _routed flag"
+        },
+        {
+          "type": "it",
+          "name": "updateAttribute applies update via rule engine and stores payload"
+        },
+        {
+          "type": "it",
+          "name": "createNode creates element under #rx-canvas and populates createdNode payload"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "notifyUi as notifyUiSelection",
+        "routeSelectionRequest",
+        "updateAttribute",
+        "createNode"
       ]
     },
     {
@@ -3677,6 +3715,39 @@
         "beforeEach",
         "vi",
         "CssRegistryStore"
+      ]
+    },
+    {
+      "path": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 4,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel: classes add/remove + notifyUi"
+        },
+        {
+          "type": "it",
+          "name": "addClass adds class and populates payload"
+        },
+        {
+          "type": "it",
+          "name": "removeClass removes class and populates payload"
+        },
+        {
+          "type": "it",
+          "name": "notifyUi publishes control.panel.classes.updated when payload present"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "handlers as classesHandlers",
+        "addClass",
+        "removeClass"
       ]
     },
     {
@@ -9738,6 +9809,22 @@
         ]
       },
       {
+        "name": "createNode",
+        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.stage-crew.ts",
+        "plugin": "canvas-component",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts"
+        ],
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
         "name": "computeInstanceClass",
         "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.style.stage-crew.ts",
         "plugin": "canvas-component",
@@ -12132,11 +12219,17 @@
         "name": "routeSelectionRequest",
         "file": "\\packages\\canvas-component\\src\\symphonies\\select\\select.stage-crew.ts",
         "plugin": "canvas-component",
-        "testCount": 1,
+        "testCount": 2,
         "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts"
         ],
         "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload",
           "canvas-component select.stage-crew handlers",
           "routeSelectionRequest - executes without throwing",
           "routeSelectionRequest - ignores missing id",
@@ -12239,11 +12332,17 @@
         "name": "updateAttribute",
         "file": "\\packages\\canvas-component\\src\\symphonies\\update\\update.stage-crew.ts",
         "plugin": "canvas-component",
-        "testCount": 1,
+        "testCount": 2,
         "testFiles": [
+          "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
           "\\packages\\canvas-component\\__tests__\\handlers.handlers.spec.ts"
         ],
         "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload",
           "canvas-component handlers handlers",
           "serializeSelectedComponent - returns clipboardData when element present",
           "serializeSelectedComponent - empty result when no selection",
@@ -12886,11 +12985,16 @@
         "name": "addClass",
         "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
         "plugin": "control-panel",
-        "testCount": 1,
+        "testCount": 2,
         "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
           "\\packages\\control-panel\\__tests__\\handlers.handlers.spec.ts"
         ],
         "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present",
           "control-panel handlers handlers",
           "addClass - happy path",
           "addClass - edge case/error handling",
@@ -12976,6 +13080,21 @@
           "formatLabel - edge case/error handling",
           "generatePlaceholder - happy path",
           "generatePlaceholder - edge case/error handling"
+        ]
+      },
+      {
+        "name": "removeClass",
+        "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts"
+        ],
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
         ]
       },
       {
@@ -13996,16 +14115,6 @@
         "isAsync": false
       },
       {
-        "name": "createNode",
-        "file": "\\packages\\canvas-component\\src\\symphonies\\create\\create.stage-crew.ts",
-        "plugin": "canvas-component",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
         "name": "setAllRulesConfig",
         "file": "\\packages\\canvas-component\\src\\temp-deps\\rule-engine.ts",
         "plugin": "canvas-component",
@@ -14035,16 +14144,6 @@
         "parameters": [
           "code: string",
           "options?: {\n      presets?: (string | unknown"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "removeClass",
-        "file": "\\packages\\control-panel\\src\\symphonies\\classes\\classes.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
         ],
         "isAsync": false
       },
@@ -14999,6 +15098,7 @@
         "\\packages\\canvas-component\\__tests__\\advanced-line.resize.scale.spec.ts",
         "\\packages\\canvas-component\\__tests__\\advanced-line.viewbox.autosize.spec.ts",
         "\\packages\\canvas-component\\__tests__\\allowed-imports.spec.ts",
+        "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
         "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
         "\\packages\\canvas-component\\__tests__\\container-child-selection.spec.ts",
         "\\packages\\canvas-component\\__tests__\\copy-paste.sequences.schema.spec.ts",
@@ -15081,9 +15181,9 @@
         "\\packages\\canvas-component\\__tests__\\svg-node-click-select.spec.ts",
         "\\packages\\canvas-component\\__tests__\\svg-node.update.spec.ts"
       ],
-      "totalTests": 474,
-      "handlersWithTests": 206,
-      "handlersWithoutTests": 12
+      "totalTests": 479,
+      "handlersWithTests": 208,
+      "handlersWithoutTests": 10
     },
     {
       "name": "control-panel",
@@ -15201,6 +15301,7 @@
       ],
       "testFiles": [
         "\\packages\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
+        "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
         "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "\\packages\\control-panel\\__tests__\\attribute-editing.integration.spec.ts",
         "\\packages\\control-panel\\__tests__\\bidirectional-sync.spec.ts",
@@ -15224,9 +15325,9 @@
         "\\packages\\control-panel\\__tests__\\ui-init.batched.spec.ts",
         "\\packages\\control-panel\\__tests__\\ui-sequences.spec.ts"
       ],
-      "totalTests": 205,
-      "handlersWithTests": 17,
-      "handlersWithoutTests": 93
+      "totalTests": 209,
+      "handlersWithTests": 19,
+      "handlersWithoutTests": 91
     },
     {
       "name": "header",

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T15:54:05.917Z",
+    "generated": "2025-11-22T16:04:09.003Z",
     "phase": "Phase 2: Handler Test Extraction",
     "sourceDirectories": [
       "packages/canvas/src/",
@@ -11,12 +11,12 @@
       "packages/library/src/",
       "packages/library-component/src/"
     ],
-    "fileCount": 183
+    "fileCount": 185
   },
   "summary": {
-    "totalTestFiles": 182,
-    "totalTests": 1403,
-    "handlersWithTests": 254,
+    "totalTestFiles": 184,
+    "totalTests": 1412,
+    "handlersWithTests": 258,
     "handlersWithoutTests": 0
   },
   "testFiles": [
@@ -400,6 +400,44 @@
         "expect",
         "ESLint",
         "useConductor"
+      ]
+    },
+    {
+      "file": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+      "plugin": "canvas-component",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component public API beats"
+        },
+        {
+          "type": "it",
+          "name": "notifyUi (selection) routes to control panel selection.show via conductor.play"
+        },
+        {
+          "type": "it",
+          "name": "routeSelectionRequest forwards to canvas.component.select with _routed flag"
+        },
+        {
+          "type": "it",
+          "name": "updateAttribute applies update via rule engine and stores payload"
+        },
+        {
+          "type": "it",
+          "name": "createNode creates element under #rx-canvas and populates createdNode payload"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "notifyUi as notifyUiSelection",
+        "routeSelectionRequest",
+        "updateAttribute",
+        "createNode"
       ]
     },
     {
@@ -3664,6 +3702,39 @@
         "beforeEach",
         "vi",
         "CssRegistryStore"
+      ]
+    },
+    {
+      "file": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 4,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel: classes add/remove + notifyUi"
+        },
+        {
+          "type": "it",
+          "name": "addClass adds class and populates payload"
+        },
+        {
+          "type": "it",
+          "name": "removeClass removes class and populates payload"
+        },
+        {
+          "type": "it",
+          "name": "notifyUi publishes control.panel.classes.updated when payload present"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "handlers as classesHandlers",
+        "addClass",
+        "removeClass"
       ]
     },
     {
@@ -8562,6 +8633,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
         "testCount": 3,
         "testNames": [
@@ -9532,6 +9614,16 @@
           "should return true for existing classes",
           "should return false for non-existent classes",
           "should update when classes are modified"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
         ]
       },
       {
@@ -10609,6 +10701,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
         "testCount": 3,
         "testNames": [
@@ -11579,6 +11682,16 @@
           "should return true for existing classes",
           "should return false for non-existent classes",
           "should update when classes are modified"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
         ]
       },
       {
@@ -12656,6 +12769,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
         "testCount": 3,
         "testNames": [
@@ -13605,6 +13729,16 @@
           "should return true for existing classes",
           "should return false for non-existent classes",
           "should update when classes are modified"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
         ]
       },
       {
@@ -14680,6 +14814,17 @@
         ]
       },
       {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
         "testFile": "\\packages\\canvas-component\\__tests__\\container-child-overlay.spec.ts",
         "testCount": 3,
         "testNames": [
@@ -15292,6 +15437,16 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "testCount": 6,
         "testNames": [
@@ -15752,6 +15907,17 @@
           "Advanced Line — dynamic viewBox autosize",
           "expands viewBox when endpoints extend beyond element bounds (no rotation)",
           "adds headroom when rotated so the line is never clipped"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
         ]
       },
       {
@@ -16554,6 +16720,16 @@
           "should return true for existing classes",
           "should return false for non-existent classes",
           "should update when classes are modified"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
         ]
       },
       {
@@ -18523,6 +18699,161 @@
           "forwards resize updates to Control Panel with position and size",
           "Control Panel update sequence derives current position/size from DOM",
           "notifies UI observer with updated model during live updates"
+        ]
+      }
+    ],
+    "notifyUi as notifyUiSelection": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      }
+    ],
+    "routeSelectionRequest": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
+        "testCount": 7,
+        "testNames": [
+          "canvas-component select.stage-crew handlers",
+          "routeSelectionRequest - executes without throwing",
+          "routeSelectionRequest - ignores missing id",
+          "hideSelectionOverlay - hides overlay",
+          "hideSelectionOverlay - safe when already hidden",
+          "publishSelectionChanged - safe invocation with id",
+          "publishSelectionChanged - safe invocation without id"
+        ]
+      }
+    ],
+    "updateAttribute": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
+        ]
+      },
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\handlers.handlers.spec.ts",
+        "testCount": 84,
+        "testNames": [
+          "canvas-component handlers handlers",
+          "serializeSelectedComponent - returns clipboardData when element present",
+          "serializeSelectedComponent - empty result when no selection",
+          "copyToClipboard - writes to fallback clipboard memory",
+          "notifyCopyComplete - does not throw",
+          "resolveTemplate - populates ctx.payload fields",
+          "resolveTemplate - throws on missing template",
+          "injectCssFallback - injects style element once and appends css",
+          "injectRawCss - delegates to stageCrew then fallback if error",
+          "createFromImportRecord - invokes conductor play with transformed payload",
+          "attachSelection - calls onSelected on click",
+          "attachDrag - happy path (start/move/end callbacks)",
+          "attachDrag - ignores non-left button and no callbacks fired",
+          "attachSvgNodeClick - happy path publishes selection with derived path",
+          "attachSvgNodeClick - clicking root svg does nothing",
+          "computeInstanceClass - strips rx-node- prefix",
+          "computeInstanceClass - no prefix preserved as-is",
+          "computeCssVarBlock - renders vars with -- prefix",
+          "computeCssVarBlock - empty returns blank string",
+          "computeInlineStyle - merges template/style and position/dimensions",
+          "computeInlineStyle - handles non-numeric dimensions and missing position",
+          "notifyUi - happy path",
+          "notifyUi - edge case/error handling",
+          "Name - happy path",
+          "publishDeleted - publishes canvas.component.deleted when id present",
+          "publishDeleted - no id (missing) does not publish",
+          "deleteComponent - removes element and hides overlays then publishes",
+          "deleteComponent - missing id does nothing",
+          "routeDeleteRequest - plays sequence when id provided",
+          "routeDeleteRequest - missing id does not play",
+          "exportSvgToGif - sets error when not SVG or missing",
+          "createMP4Encoder - returns encoder with callable methods",
+          "exportSvgToMp4 - errors when target missing",
+          "exportSvgToMp4 - basic success with svg element (mocked 2D context)",
+          "openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)",
+          "startLineManip - returns data unchanged",
+          "endLineManip - no-op returns undefined",
+          "moveLineManip - endpoint a updates x1/y1",
+          "moveLineManip - curve handle sets --curve and updates control point",
+          "updateAttribute - applies attribute via rule engine",
+          "updateAttribute - missing id does nothing",
+          "ensureOverlayCss - injects style only once",
+          "ensureOverlay - creates overlay with 8 handles and reuses existing",
+          "ensureOverlay - throws when canvas missing",
+          "getCanvasRect - happy path",
+          "getCanvasRect - edge case/error handling",
+          "applyOverlayRectForEl - happy path",
+          "applyOverlayRectForEl - edge case/error handling",
+          "createOverlayStructure - happy path",
+          "createOverlayStructure - edge case/error handling",
+          "resolveEndpoints - happy path",
+          "resolveEndpoints - edge case/error handling",
+          "ensureAdvancedLineOverlayFor - happy path",
+          "ensureAdvancedLineOverlayFor - edge case/error handling",
+          "attachAdvancedLineManipHandlers - happy path",
+          "attachAdvancedLineManipHandlers - edge case/error handling",
+          "ensureLineOverlayFor - happy path",
+          "ensureLineOverlayFor - edge case/error handling",
+          "attachLineResizeHandlers - happy path",
+          "attachLineResizeHandlers - edge case/error handling",
+          "attachResizeHandlers - happy path",
+          "attachResizeHandlers - edge case/error handling",
+          "updateAttribute - happy path",
+          "updateAttribute - edge case/error handling",
+          "setClipboardText/getClipboardText - round trip stores and retrieves",
+          "setClipboardText - empty string yields empty retrieval",
+          "initConductor - happy path",
+          "initConductor - edge case/error handling",
+          "registerAllSequences - happy path",
+          "registerAllSequences - edge case/error handling",
+          "loadJsonSequenceCatalogs - happy path",
+          "loadJsonSequenceCatalogs - edge case/error handling",
+          "getFlagOverride - happy path",
+          "getFlagOverride - edge case/error handling",
+          "setAllRulesConfig - happy path",
+          "setAllRulesConfig - edge case/error handling",
+          "loadAllRulesFromWindow - happy path",
+          "loadAllRulesFromWindow - edge case/error handling",
+          "getAllRulesConfig - happy path",
+          "getAllRulesConfig - edge case/error handling",
+          "sanitizeHtml - happy path",
+          "sanitizeHtml - edge case/error handling",
+          "transform - happy path",
+          "transform - edge case/error handling"
+        ]
+      }
+    ],
+    "createNode": [
+      {
+        "testFile": "\\packages\\canvas-component\\__tests__\\api.canvas-component.selection.update.create.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "canvas-component public API beats",
+          "notifyUi (selection) routes to control panel selection.show via conductor.play",
+          "routeSelectionRequest forwards to canvas.component.select with _routed flag",
+          "updateAttribute applies update via rule engine and stores payload",
+          "createNode creates element under #rx-canvas and populates createdNode payload"
         ]
       }
     ],
@@ -22782,98 +23113,6 @@
         ]
       }
     ],
-    "updateAttribute": [
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\handlers.handlers.spec.ts",
-        "testCount": 84,
-        "testNames": [
-          "canvas-component handlers handlers",
-          "serializeSelectedComponent - returns clipboardData when element present",
-          "serializeSelectedComponent - empty result when no selection",
-          "copyToClipboard - writes to fallback clipboard memory",
-          "notifyCopyComplete - does not throw",
-          "resolveTemplate - populates ctx.payload fields",
-          "resolveTemplate - throws on missing template",
-          "injectCssFallback - injects style element once and appends css",
-          "injectRawCss - delegates to stageCrew then fallback if error",
-          "createFromImportRecord - invokes conductor play with transformed payload",
-          "attachSelection - calls onSelected on click",
-          "attachDrag - happy path (start/move/end callbacks)",
-          "attachDrag - ignores non-left button and no callbacks fired",
-          "attachSvgNodeClick - happy path publishes selection with derived path",
-          "attachSvgNodeClick - clicking root svg does nothing",
-          "computeInstanceClass - strips rx-node- prefix",
-          "computeInstanceClass - no prefix preserved as-is",
-          "computeCssVarBlock - renders vars with -- prefix",
-          "computeCssVarBlock - empty returns blank string",
-          "computeInlineStyle - merges template/style and position/dimensions",
-          "computeInlineStyle - handles non-numeric dimensions and missing position",
-          "notifyUi - happy path",
-          "notifyUi - edge case/error handling",
-          "Name - happy path",
-          "publishDeleted - publishes canvas.component.deleted when id present",
-          "publishDeleted - no id (missing) does not publish",
-          "deleteComponent - removes element and hides overlays then publishes",
-          "deleteComponent - missing id does nothing",
-          "routeDeleteRequest - plays sequence when id provided",
-          "routeDeleteRequest - missing id does not play",
-          "exportSvgToGif - sets error when not SVG or missing",
-          "createMP4Encoder - returns encoder with callable methods",
-          "exportSvgToMp4 - errors when target missing",
-          "exportSvgToMp4 - basic success with svg element (mocked 2D context)",
-          "openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)",
-          "startLineManip - returns data unchanged",
-          "endLineManip - no-op returns undefined",
-          "moveLineManip - endpoint a updates x1/y1",
-          "moveLineManip - curve handle sets --curve and updates control point",
-          "updateAttribute - applies attribute via rule engine",
-          "updateAttribute - missing id does nothing",
-          "ensureOverlayCss - injects style only once",
-          "ensureOverlay - creates overlay with 8 handles and reuses existing",
-          "ensureOverlay - throws when canvas missing",
-          "getCanvasRect - happy path",
-          "getCanvasRect - edge case/error handling",
-          "applyOverlayRectForEl - happy path",
-          "applyOverlayRectForEl - edge case/error handling",
-          "createOverlayStructure - happy path",
-          "createOverlayStructure - edge case/error handling",
-          "resolveEndpoints - happy path",
-          "resolveEndpoints - edge case/error handling",
-          "ensureAdvancedLineOverlayFor - happy path",
-          "ensureAdvancedLineOverlayFor - edge case/error handling",
-          "attachAdvancedLineManipHandlers - happy path",
-          "attachAdvancedLineManipHandlers - edge case/error handling",
-          "ensureLineOverlayFor - happy path",
-          "ensureLineOverlayFor - edge case/error handling",
-          "attachLineResizeHandlers - happy path",
-          "attachLineResizeHandlers - edge case/error handling",
-          "attachResizeHandlers - happy path",
-          "attachResizeHandlers - edge case/error handling",
-          "updateAttribute - happy path",
-          "updateAttribute - edge case/error handling",
-          "setClipboardText/getClipboardText - round trip stores and retrieves",
-          "setClipboardText - empty string yields empty retrieval",
-          "initConductor - happy path",
-          "initConductor - edge case/error handling",
-          "registerAllSequences - happy path",
-          "registerAllSequences - edge case/error handling",
-          "loadJsonSequenceCatalogs - happy path",
-          "loadJsonSequenceCatalogs - edge case/error handling",
-          "getFlagOverride - happy path",
-          "getFlagOverride - edge case/error handling",
-          "setAllRulesConfig - happy path",
-          "setAllRulesConfig - edge case/error handling",
-          "loadAllRulesFromWindow - happy path",
-          "loadAllRulesFromWindow - edge case/error handling",
-          "getAllRulesConfig - happy path",
-          "getAllRulesConfig - edge case/error handling",
-          "sanitizeHtml - happy path",
-          "sanitizeHtml - edge case/error handling",
-          "transform - happy path",
-          "transform - edge case/error handling"
-        ]
-      }
-    ],
     "setupHostClickToSelectLegacy": [
       {
         "testFile": "\\packages\\canvas-component\\__tests__\\host.harness.click-select.spec.ts",
@@ -23175,21 +23414,6 @@
           "updateSize - applies size deltas and updates payload",
           "updateSize - throws on missing id",
           "endResize - executes without error"
-        ]
-      }
-    ],
-    "routeSelectionRequest": [
-      {
-        "testFile": "\\packages\\canvas-component\\__tests__\\select.stage-crew.handlers.spec.ts",
-        "testCount": 7,
-        "testNames": [
-          "canvas-component select.stage-crew handlers",
-          "routeSelectionRequest - executes without throwing",
-          "routeSelectionRequest - ignores missing id",
-          "hideSelectionOverlay - hides overlay",
-          "hideSelectionOverlay - safe when already hidden",
-          "publishSelectionChanged - safe invocation with id",
-          "publishSelectionChanged - safe invocation without id"
         ]
       }
     ],
@@ -23553,6 +23777,133 @@
         ]
       }
     ],
+    "handlers as classesHandlers": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
+        ]
+      }
+    ],
+    "addClass": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\handlers.handlers.spec.ts",
+        "testCount": 85,
+        "testNames": [
+          "control-panel handlers handlers",
+          "addClass - happy path",
+          "addClass - edge case/error handling",
+          "removeClass - happy path",
+          "removeClass - edge case/error handling",
+          "if - happy path",
+          "if - edge case/error handling",
+          "catch - happy path",
+          "catch - edge case/error handling",
+          "deleteCssClass - happy path",
+          "deleteCssClass - edge case/error handling",
+          "getCssClass - happy path",
+          "getCssClass - edge case/error handling",
+          "listCssClasses - happy path",
+          "listCssClasses - edge case/error handling",
+          "applyCssClassToElement - happy path",
+          "applyCssClassToElement - edge case/error handling",
+          "removeCssClassFromElement - happy path",
+          "removeCssClassFromElement - edge case/error handling",
+          "deriveSelectionModel - happy path",
+          "deriveSelectionModel - edge case/error handling",
+          "initMovement - happy path",
+          "initMovement - edge case/error handling",
+          "initResolver - happy path",
+          "initResolver - edge case/error handling",
+          "loadSchemas - happy path",
+          "loadSchemas - edge case/error handling",
+          "registerObservers - happy path",
+          "registerObservers - edge case/error handling",
+          "notifyReady - happy path",
+          "notifyReady - edge case/error handling",
+          "generateFields - happy path",
+          "generateFields - edge case/error handling",
+          "generateSections - happy path",
+          "generateSections - edge case/error handling",
+          "renderView - happy path",
+          "renderView - edge case/error handling",
+          "prepareField - happy path",
+          "prepareField - edge case/error handling",
+          "dispatchField - happy path",
+          "dispatchField - edge case/error handling",
+          "setDirty - happy path",
+          "setDirty - edge case/error handling",
+          "awaitRefresh - happy path",
+          "awaitRefresh - edge case/error handling",
+          "validateField - happy path",
+          "validateField - edge case/error handling",
+          "mergeErrors - happy path",
+          "mergeErrors - edge case/error handling",
+          "updateView - happy path",
+          "updateView - edge case/error handling",
+          "toggleSection - happy path",
+          "toggleSection - edge case/error handling",
+          "updateFromElement - happy path",
+          "updateFromElement - edge case/error handling",
+          "registerFieldRenderer - happy path",
+          "registerFieldRenderer - edge case/error handling",
+          "getFieldRenderer - happy path",
+          "getFieldRenderer - edge case/error handling",
+          "EmptyState - happy path",
+          "EmptyState - edge case/error handling",
+          "LoadingState - happy path",
+          "LoadingState - edge case/error handling",
+          "PanelHeader - happy path",
+          "PanelHeader - edge case/error handling",
+          "useControlPanelActions - happy path",
+          "useControlPanelActions - edge case/error handling",
+          "useControlPanelSequences - happy path",
+          "useControlPanelSequences - edge case/error handling",
+          "useControlPanelState - happy path",
+          "useControlPanelState - edge case/error handling",
+          "useSchemaResolver - happy path",
+          "useSchemaResolver - edge case/error handling",
+          "controlPanelReducer - happy path",
+          "controlPanelReducer - edge case/error handling",
+          "extractElementContent - happy path",
+          "extractElementContent - edge case/error handling",
+          "getNestedValue - happy path",
+          "getNestedValue - edge case/error handling",
+          "setNestedValue - happy path",
+          "setNestedValue - edge case/error handling",
+          "formatLabel - happy path",
+          "formatLabel - edge case/error handling",
+          "generatePlaceholder - happy path",
+          "generatePlaceholder - edge case/error handling"
+        ]
+      }
+    ],
+    "removeClass": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "testCount": 4,
+        "testNames": [
+          "control-panel: classes add/remove + notifyUi",
+          "addClass adds class and populates payload",
+          "removeClass removes class and populates payload",
+          "notifyUi publishes control.panel.classes.updated when payload present"
+        ]
+      }
+    ],
     "setSelectionObserver": [
       {
         "testFile": "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
@@ -23744,99 +24095,6 @@
           "mounts the three library-component sequences exactly once with expected pluginIds",
           "exposes json-sequences via renderx.sequences metadata",
           "json-sequences catalog is loadable and contains expected sequences"
-        ]
-      }
-    ],
-    "addClass": [
-      {
-        "testFile": "\\packages\\control-panel\\__tests__\\handlers.handlers.spec.ts",
-        "testCount": 85,
-        "testNames": [
-          "control-panel handlers handlers",
-          "addClass - happy path",
-          "addClass - edge case/error handling",
-          "removeClass - happy path",
-          "removeClass - edge case/error handling",
-          "if - happy path",
-          "if - edge case/error handling",
-          "catch - happy path",
-          "catch - edge case/error handling",
-          "deleteCssClass - happy path",
-          "deleteCssClass - edge case/error handling",
-          "getCssClass - happy path",
-          "getCssClass - edge case/error handling",
-          "listCssClasses - happy path",
-          "listCssClasses - edge case/error handling",
-          "applyCssClassToElement - happy path",
-          "applyCssClassToElement - edge case/error handling",
-          "removeCssClassFromElement - happy path",
-          "removeCssClassFromElement - edge case/error handling",
-          "deriveSelectionModel - happy path",
-          "deriveSelectionModel - edge case/error handling",
-          "initMovement - happy path",
-          "initMovement - edge case/error handling",
-          "initResolver - happy path",
-          "initResolver - edge case/error handling",
-          "loadSchemas - happy path",
-          "loadSchemas - edge case/error handling",
-          "registerObservers - happy path",
-          "registerObservers - edge case/error handling",
-          "notifyReady - happy path",
-          "notifyReady - edge case/error handling",
-          "generateFields - happy path",
-          "generateFields - edge case/error handling",
-          "generateSections - happy path",
-          "generateSections - edge case/error handling",
-          "renderView - happy path",
-          "renderView - edge case/error handling",
-          "prepareField - happy path",
-          "prepareField - edge case/error handling",
-          "dispatchField - happy path",
-          "dispatchField - edge case/error handling",
-          "setDirty - happy path",
-          "setDirty - edge case/error handling",
-          "awaitRefresh - happy path",
-          "awaitRefresh - edge case/error handling",
-          "validateField - happy path",
-          "validateField - edge case/error handling",
-          "mergeErrors - happy path",
-          "mergeErrors - edge case/error handling",
-          "updateView - happy path",
-          "updateView - edge case/error handling",
-          "toggleSection - happy path",
-          "toggleSection - edge case/error handling",
-          "updateFromElement - happy path",
-          "updateFromElement - edge case/error handling",
-          "registerFieldRenderer - happy path",
-          "registerFieldRenderer - edge case/error handling",
-          "getFieldRenderer - happy path",
-          "getFieldRenderer - edge case/error handling",
-          "EmptyState - happy path",
-          "EmptyState - edge case/error handling",
-          "LoadingState - happy path",
-          "LoadingState - edge case/error handling",
-          "PanelHeader - happy path",
-          "PanelHeader - edge case/error handling",
-          "useControlPanelActions - happy path",
-          "useControlPanelActions - edge case/error handling",
-          "useControlPanelSequences - happy path",
-          "useControlPanelSequences - edge case/error handling",
-          "useControlPanelState - happy path",
-          "useControlPanelState - edge case/error handling",
-          "useSchemaResolver - happy path",
-          "useSchemaResolver - edge case/error handling",
-          "controlPanelReducer - happy path",
-          "controlPanelReducer - edge case/error handling",
-          "extractElementContent - happy path",
-          "extractElementContent - edge case/error handling",
-          "getNestedValue - happy path",
-          "getNestedValue - edge case/error handling",
-          "setNestedValue - happy path",
-          "setNestedValue - edge case/error handling",
-          "formatLabel - happy path",
-          "formatLabel - edge case/error handling",
-          "generatePlaceholder - happy path",
-          "generatePlaceholder - edge case/error handling"
         ]
       }
     ],

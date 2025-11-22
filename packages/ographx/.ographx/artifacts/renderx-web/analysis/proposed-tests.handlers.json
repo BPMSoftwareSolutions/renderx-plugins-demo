@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-22T15:54:14.647Z",
+  "timestamp": "2025-11-22T16:04:15.816Z",
   "summary": {
-    "totalHandlers": 83,
+    "totalHandlers": 81,
     "totalTestFiles": 7,
-    "totalTests": 166
+    "totalTests": 162
   },
-  "handlersCount": 83,
+  "handlersCount": 81,
   "testFiles": [
     {
       "path": "packages/canvas/__tests__/handlers.handlers.spec.ts",
@@ -46,7 +46,6 @@
       "handlers": [
         "notifyUi",
         "Name",
-        "createNode",
         "setAllRulesConfig",
         "loadAllRulesFromWindow",
         "getAllRulesConfig",
@@ -72,14 +71,6 @@
         {
           "type": "it",
           "name": "Name - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "createNode - happy path"
-        },
-        {
-          "type": "it",
-          "name": "createNode - edge case/error handling"
         },
         {
           "type": "it",
@@ -114,14 +105,13 @@
           "name": "transform - edge case/error handling"
         }
       ],
-      "testCount": 14
+      "testCount": 12
     },
     {
       "path": "packages/control-panel/__tests__/handlers.handlers.spec.ts",
       "plugin": "control-panel",
       "testGroup": "handlers",
       "handlers": [
-        "removeClass",
         "if",
         "catch",
         "deleteCssClass",
@@ -167,14 +157,6 @@
         {
           "type": "describe",
           "name": "control-panel handlers handlers"
-        },
-        {
-          "type": "it",
-          "name": "removeClass - happy path"
-        },
-        {
-          "type": "it",
-          "name": "removeClass - edge case/error handling"
         },
         {
           "type": "it",
@@ -497,7 +479,7 @@
           "name": "generatePlaceholder - edge case/error handling"
         }
       ],
-      "testCount": 82
+      "testCount": 80
     },
     {
       "path": "packages/header/__tests__/handlers.handlers.spec.ts",

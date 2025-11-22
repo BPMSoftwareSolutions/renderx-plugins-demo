@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T15:54:08.906Z",
+    "generated": "2025-11-22T16:04:11.621Z",
     "phase": "Phase 3: Gap Analysis",
     "catalogDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\catalog",
     "irDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir"
@@ -13,11 +13,11 @@
     "catalogTopics": 8,
     "catalogComponents": 10,
     "catalogPlugins": 9,
-    "testFiles": 182,
-    "totalTests": 1403,
-    "handlersWithTests": 139,
-    "handlersWithoutTests": 83,
-    "testCoverage": 63
+    "testFiles": 184,
+    "totalTests": 1412,
+    "handlersWithTests": 141,
+    "handlersWithoutTests": 81,
+    "testCoverage": 64
   },
   "gaps": {
     "handlers": {
@@ -191,6 +191,7 @@
         "renderReact",
         "cleanupReactRoot",
         "exposeEventRouterToReact",
+        "createNode",
         "computeInstanceClass",
         "computeCssVarBlock",
         "computeInlineStyle",
@@ -275,6 +276,7 @@
         "clearAllObservers",
         "sanitizeHtml",
         "addClass",
+        "removeClass",
         "createCssClass",
         "updateCssClass",
         "initConfig",
@@ -309,12 +311,10 @@
         "CanvasPage",
         "notifyUi",
         "Name",
-        "createNode",
         "setAllRulesConfig",
         "loadAllRulesFromWindow",
         "getAllRulesConfig",
         "transform",
-        "removeClass",
         "if",
         "catch",
         "deleteCssClass",
@@ -389,9 +389,9 @@
         "ZillowService.if",
         "OpportunityAnalyzer"
       ],
-      "withTestsCount": 139,
-      "withoutTestsCount": 83,
-      "coveragePercentage": 63
+      "withTestsCount": 141,
+      "withoutTestsCount": 81,
+      "coveragePercentage": 64
     },
     "sequences": {
       "catalogCount": 54,
