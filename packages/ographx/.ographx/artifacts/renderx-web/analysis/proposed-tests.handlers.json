@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-22T16:04:15.816Z",
+  "timestamp": "2025-11-22T16:25:25.786Z",
   "summary": {
-    "totalHandlers": 81,
+    "totalHandlers": 76,
     "totalTestFiles": 7,
-    "totalTests": 162
+    "totalTests": 152
   },
-  "handlersCount": 81,
+  "handlersCount": 76,
   "testFiles": [
     {
       "path": "packages/canvas/__tests__/handlers.handlers.spec.ts",
@@ -115,11 +115,6 @@
         "if",
         "catch",
         "deleteCssClass",
-        "getCssClass",
-        "listCssClasses",
-        "applyCssClassToElement",
-        "removeCssClassFromElement",
-        "deriveSelectionModel",
         "initMovement",
         "initResolver",
         "loadSchemas",
@@ -181,46 +176,6 @@
         {
           "type": "it",
           "name": "deleteCssClass - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "getCssClass - happy path"
-        },
-        {
-          "type": "it",
-          "name": "getCssClass - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "listCssClasses - happy path"
-        },
-        {
-          "type": "it",
-          "name": "listCssClasses - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "applyCssClassToElement - happy path"
-        },
-        {
-          "type": "it",
-          "name": "applyCssClassToElement - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "removeCssClassFromElement - happy path"
-        },
-        {
-          "type": "it",
-          "name": "removeCssClassFromElement - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "deriveSelectionModel - happy path"
-        },
-        {
-          "type": "it",
-          "name": "deriveSelectionModel - edge case/error handling"
         },
         {
           "type": "it",
@@ -479,7 +434,7 @@
           "name": "generatePlaceholder - edge case/error handling"
         }
       ],
-      "testCount": 80
+      "testCount": 70
     },
     {
       "path": "packages/header/__tests__/handlers.handlers.spec.ts",

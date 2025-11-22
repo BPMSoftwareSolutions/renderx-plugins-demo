@@ -1,15 +1,15 @@
 # Handler Specifications & Test Coverage
 
-**Generated**: 2025-11-22T16:15:17.510Z
+**Generated**: 2025-11-22T16:25:28.168Z
 
 ## Overview
 
 - **Total Handlers**: 423
-- **With Tests**: 141
-- **Without Tests**: 81
-- **Coverage**: 64%
+- **With Tests**: 146
+- **Without Tests**: 76
+- **Coverage**: 66%
 
-## Handlers WITH Test Coverage (141)
+## Handlers WITH Test Coverage (146)
 
 ### register
 - **File**: \packages\canvas\src\index.ts
@@ -1317,6 +1317,65 @@
   - createCssClass is idempotent: second create with same content is a success no-op
   - updateCssClass upserts when missing and no-ops when content unchanged
 
+### getCssClass
+- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
+- **Plugin**: control-panel
+- **Test Files**: 1
+- **Tests**:
+  - control-panel css-management retrieval/apply handlers (public API)
+  - getCssClass returns built-in class definition (rx-button)
+  - getCssClass sets error when class missing
+  - listCssClasses returns built-in classes collection
+  - applyCssClassToElement adds class to DOM element and sets payload success
+  - ... and 3 more
+
+### listCssClasses
+- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
+- **Plugin**: control-panel
+- **Test Files**: 1
+- **Tests**:
+  - control-panel css-management retrieval/apply handlers (public API)
+  - getCssClass returns built-in class definition (rx-button)
+  - getCssClass sets error when class missing
+  - listCssClasses returns built-in classes collection
+  - applyCssClassToElement adds class to DOM element and sets payload success
+  - ... and 3 more
+
+### applyCssClassToElement
+- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
+- **Plugin**: control-panel
+- **Test Files**: 1
+- **Tests**:
+  - control-panel css-management retrieval/apply handlers (public API)
+  - getCssClass returns built-in class definition (rx-button)
+  - getCssClass sets error when class missing
+  - listCssClasses returns built-in classes collection
+  - applyCssClassToElement adds class to DOM element and sets payload success
+  - ... and 3 more
+
+### removeCssClassFromElement
+- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
+- **Plugin**: control-panel
+- **Test Files**: 1
+- **Tests**:
+  - control-panel css-management retrieval/apply handlers (public API)
+  - getCssClass returns built-in class definition (rx-button)
+  - getCssClass sets error when class missing
+  - listCssClasses returns built-in classes collection
+  - applyCssClassToElement adds class to DOM element and sets payload success
+  - ... and 3 more
+
+### deriveSelectionModel
+- **File**: \packages\control-panel\src\symphonies\selection\selection.stage-crew.ts
+- **Plugin**: control-panel
+- **Test Files**: 1
+- **Tests**:
+  - control-panel selection deriveSelectionModel handler (public API)
+  - returns null selectionModel when id missing
+  - returns null selectionModel when element not found
+  - derives model for element with rx-button class
+  - falls back to container type for plain div without rx- classes
+
 ### initConfig
 - **File**: \packages\control-panel\src\symphonies\ui\ui.stage-crew.ts
 - **Plugin**: control-panel
@@ -1623,7 +1682,7 @@
   - analyze - edge case/error handling
   - ... and 6 more
 
-## Handlers WITHOUT Test Coverage (81)
+## Handlers WITHOUT Test Coverage (76)
 
 ### CanvasHeader
 - **File**: \packages\canvas\src\ui\CanvasHeader.tsx
@@ -1688,36 +1747,6 @@
 
 ### deleteCssClass
 - **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
-- **Plugin**: control-panel
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-### getCssClass
-- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
-- **Plugin**: control-panel
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-### listCssClasses
-- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
-- **Plugin**: control-panel
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-### applyCssClassToElement
-- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
-- **Plugin**: control-panel
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-### removeCssClassFromElement
-- **File**: \packages\control-panel\src\symphonies\css-management\css-management.stage-crew.ts
-- **Plugin**: control-panel
-- **Parameters**: data: any, ctx: any
-- **Async**: No
-
-### deriveSelectionModel
-- **File**: \packages\control-panel\src\symphonies\selection\selection.stage-crew.ts
 - **Plugin**: control-panel
 - **Parameters**: data: any, ctx: any
 - **Async**: No

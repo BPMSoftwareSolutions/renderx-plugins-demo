@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:04:11.621Z",
+    "generated": "2025-11-22T16:25:20.957Z",
     "phase": "Phase 3: Gap Analysis",
     "catalogDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\catalog",
     "irDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir"
@@ -13,11 +13,11 @@
     "catalogTopics": 8,
     "catalogComponents": 10,
     "catalogPlugins": 9,
-    "testFiles": 184,
-    "totalTests": 1412,
-    "handlersWithTests": 141,
-    "handlersWithoutTests": 81,
-    "testCoverage": 64
+    "testFiles": 186,
+    "totalTests": 1425,
+    "handlersWithTests": 146,
+    "handlersWithoutTests": 76,
+    "testCoverage": 66
   },
   "gaps": {
     "handlers": {
@@ -279,6 +279,11 @@
         "removeClass",
         "createCssClass",
         "updateCssClass",
+        "getCssClass",
+        "listCssClasses",
+        "applyCssClassToElement",
+        "removeCssClassFromElement",
+        "deriveSelectionModel",
         "initConfig",
         "ControlPanel",
         "getCurrentTheme",
@@ -318,11 +323,6 @@
         "if",
         "catch",
         "deleteCssClass",
-        "getCssClass",
-        "listCssClasses",
-        "applyCssClassToElement",
-        "removeCssClassFromElement",
-        "deriveSelectionModel",
         "initMovement",
         "initResolver",
         "loadSchemas",
@@ -389,9 +389,9 @@
         "ZillowService.if",
         "OpportunityAnalyzer"
       ],
-      "withTestsCount": 141,
-      "withoutTestsCount": 81,
-      "coveragePercentage": 64
+      "withTestsCount": 146,
+      "withoutTestsCount": 76,
+      "coveragePercentage": 66
     },
     "sequences": {
       "catalogCount": 54,

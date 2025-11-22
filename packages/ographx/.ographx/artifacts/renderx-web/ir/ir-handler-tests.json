@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:04:09.003Z",
+    "generated": "2025-11-22T16:25:18.429Z",
     "phase": "Phase 2: Handler Test Extraction",
     "sourceDirectories": [
       "packages/canvas/src/",
@@ -11,12 +11,12 @@
       "packages/library/src/",
       "packages/library-component/src/"
     ],
-    "fileCount": 185
+    "fileCount": 187
   },
   "summary": {
-    "totalTestFiles": 184,
-    "totalTests": 1412,
-    "handlersWithTests": 258,
+    "totalTestFiles": 186,
+    "totalTests": 1425,
+    "handlersWithTests": 263,
     "handlersWithoutTests": 0
   },
   "testFiles": [
@@ -3735,6 +3735,91 @@
         "handlers as classesHandlers",
         "addClass",
         "removeClass"
+      ]
+    },
+    {
+      "file": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 8,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel css-management retrieval/apply handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "getCssClass returns built-in class definition (rx-button)"
+        },
+        {
+          "type": "it",
+          "name": "getCssClass sets error when class missing"
+        },
+        {
+          "type": "it",
+          "name": "listCssClasses returns built-in classes collection"
+        },
+        {
+          "type": "it",
+          "name": "applyCssClassToElement adds class to DOM element and sets payload success"
+        },
+        {
+          "type": "it",
+          "name": "applyCssClassToElement sets error when element missing"
+        },
+        {
+          "type": "it",
+          "name": "removeCssClassFromElement removes existing class from DOM element"
+        },
+        {
+          "type": "it",
+          "name": "removeCssClassFromElement sets error when element missing"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "getCssClass",
+        "listCssClasses",
+        "applyCssClassToElement",
+        "removeCssClassFromElement"
+      ]
+    },
+    {
+      "file": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel selection deriveSelectionModel handler (public API)"
+        },
+        {
+          "type": "it",
+          "name": "returns null selectionModel when id missing"
+        },
+        {
+          "type": "it",
+          "name": "returns null selectionModel when element not found"
+        },
+        {
+          "type": "it",
+          "name": "derives model for element with rx-button class"
+        },
+        {
+          "type": "it",
+          "name": "falls back to container type for plain div without rx- classes"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "deriveSelectionModel"
       ]
     },
     {
@@ -9627,6 +9712,31 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "testCount": 6,
         "testNames": [
@@ -11695,6 +11805,31 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "testCount": 6,
         "testNames": [
@@ -13742,6 +13877,31 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "testCount": 6,
         "testNames": [
@@ -15447,6 +15607,31 @@
         ]
       },
       {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
         "testFile": "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "testCount": 6,
         "testNames": [
@@ -16730,6 +16915,31 @@
           "addClass adds class and populates payload",
           "removeClass removes class and populates payload",
           "notifyUi publishes control.panel.classes.updated when payload present"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
         ]
       },
       {
@@ -23901,6 +24111,83 @@
           "addClass adds class and populates payload",
           "removeClass removes class and populates payload",
           "notifyUi publishes control.panel.classes.updated when payload present"
+        ]
+      }
+    ],
+    "getCssClass": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      }
+    ],
+    "listCssClasses": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      }
+    ],
+    "applyCssClassToElement": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      }
+    ],
+    "removeCssClassFromElement": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "testCount": 8,
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      }
+    ],
+    "deriveSelectionModel": [
+      {
+        "testFile": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+        "testCount": 5,
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
         ]
       }
     ],

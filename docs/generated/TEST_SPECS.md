@@ -1,11 +1,11 @@
 # Test Specifications
 
-**Generated**: 2025-11-22T16:15:17.530Z
+**Generated**: 2025-11-22T16:25:28.175Z
 
 ## Overview
 
-- **Test Files**: 184
-- **Total Tests**: 1412
+- **Test Files**: 186
+- **Total Tests**: 1425
 
 ## Test Files by Plugin
 
@@ -35,7 +35,7 @@
 #### \packages\canvas-component\__tests__\advanced-line.overlay.attach.spec.ts
 - Advanced Line overlay attaches on selection (flag ON)
 
-### control-panel (24 files)
+### control-panel (26 files)
 
 #### \packages\control-panel\src\state\__tests__\css-registry.store.test.ts
 - CssRegistryStore
@@ -49,11 +49,11 @@
 - removeClass removes class and populates payload
 - ... and 1 more
 
-#### \packages\control-panel\__tests__\attribute-editing.bidirectional.spec.ts
-- Control Panel bidirectional attribute editing
-- forwards content changes to Canvas component
-- forwards styling changes to Canvas component
-- ... and 3 more
+#### \packages\control-panel\__tests__\api.control-panel.css-management.retrieval.apply.spec.ts
+- control-panel css-management retrieval/apply handlers (public API)
+- getCssClass returns built-in class definition (rx-button)
+- getCssClass sets error when class missing
+- ... and 5 more
 
 ### digital-assets (1 files)
 

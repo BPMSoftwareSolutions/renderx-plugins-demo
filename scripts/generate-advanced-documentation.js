@@ -396,6 +396,61 @@ function buildHandlerTraceabilityContent(audit) {
   return content;
 }
 
+// Generate Untested Handlers
+async function generateUntestHandlersDoc(docsDir, audit) {
+  const content = buildUntestHandlersContent(audit);
+  await writeFile(join(docsDir, "UNTESTED_HANDLERS.md"), content);
+  console.log("   ✓ Untested handlers");
+}
+
+function buildUntestHandlersContent(audit) {
+  const withoutTests = audit.handlerCoverage.withoutTests;
+
+  // Group by plugin
+  const byPlugin = {};
+  withoutTests.forEach(handler => {
+    if (!byPlugin[handler.plugin]) {
+      byPlugin[handler.plugin] = [];
+    }
+    byPlugin[handler.plugin].push(handler);
+  });
+
+  let content = `# Handlers Without Test Coverage
+
+**Generated**: ${new Date().toISOString()}
+
+## Overview
+
+- **Total Untested Handlers**: ${withoutTests.length}
+- **Total Handlers**: ${audit.summary.totalHandlers}
+- **Coverage Gap**: ${audit.summary.handlersWithoutTests} handlers need tests
+
+## Priority: Sequence-Defined Handlers
+
+These are part of the public orchestration API and should be prioritized:
+- **Count**: ${audit.summary.sequenceDefinedWithoutTests || 'N/A'}
+- **Coverage**: ${audit.summary.sequenceDefinedCoveragePercentage || 'N/A'}%
+
+## Untested Handlers by Plugin
+
+`;
+
+  Object.entries(byPlugin).sort().forEach(([plugin, handlers]) => {
+    content += `### ${plugin} (${handlers.length} handlers)\n\n`;
+
+    handlers.forEach(handler => {
+      content += `#### ${handler.name}\n`;
+      content += `- **File**: ${handler.file}\n`;
+      if (handler.parameters && handler.parameters.length > 0) {
+        content += `- **Parameters**: ${handler.parameters.join(", ")}\n`;
+      }
+      content += `- **Async**: ${handler.isAsync ? "Yes" : "No"}\n\n`;
+    });
+  });
+
+  return content;
+}
+
 generateAdvancedDocumentation().catch(err => {
   console.error("❌ Error:", err);
   process.exit(1);

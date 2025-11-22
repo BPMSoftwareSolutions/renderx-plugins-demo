@@ -1,6 +1,6 @@
 # Plugin Coverage Analysis
 
-**Generated**: 2025-11-22T16:15:17.534Z
+**Generated**: 2025-11-22T16:25:28.179Z
 
 ## Coverage by Plugin
 
@@ -8,7 +8,7 @@
 |--------|----------|-----------|---------------|----------|
 | canvas | 4 | 2 | 2 | 50% |
 | canvas-component | 218 | 208 | 10 | 95% |
-| control-panel | 110 | 19 | 91 | 17% |
+| control-panel | 110 | 29 | 81 | 26% |
 | header | 8 | 6 | 2 | 75% |
 | library | 52 | 21 | 31 | 40% |
 | library-component | 23 | 3 | 20 | 13% |

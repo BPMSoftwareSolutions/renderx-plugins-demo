@@ -1,28 +1,28 @@
 {
   "metadata": {
-    "generated": "2025-11-22T16:04:13.901Z",
+    "generated": "2025-11-22T16:25:23.356Z",
     "phase": "Comprehensive Audit Report",
     "version": "1.0",
     "note": "Extra handlers filtered to only include those defined in sequence files"
   },
   "summary": {
-    "totalTestFiles": 184,
-    "totalTests": 1412,
+    "totalTestFiles": 186,
+    "totalTests": 1425,
     "totalHandlers": 423,
-    "handlersWithTests": 141,
-    "handlersWithoutTests": 81,
-    "testCoveragePercentage": 64,
+    "handlersWithTests": 146,
+    "handlersWithoutTests": 76,
+    "testCoveragePercentage": 66,
     "catalogHandlers": 87,
     "missingHandlers": 0,
     "extraHandlers": 0,
     "internalImplementationHandlers": 135,
     "sequenceDefinedHandlers": 87,
-    "sequenceDefinedWithTests": 63,
-    "sequenceDefinedWithoutTests": 24,
-    "sequenceDefinedCoveragePercentage": 72,
-    "internalHandlersWithTests": 78,
-    "internalHandlersWithoutTests": 57,
-    "internalCoveragePercentage": 58,
+    "sequenceDefinedWithTests": 64,
+    "sequenceDefinedWithoutTests": 23,
+    "sequenceDefinedCoveragePercentage": 74,
+    "internalHandlersWithTests": 82,
+    "internalHandlersWithoutTests": 53,
+    "internalCoveragePercentage": 61,
     "externalInteractionEdges": 112,
     "externalMissingHandlers": 0,
     "externalMissingSequences": 1,
@@ -3748,6 +3748,91 @@
         "handlers as classesHandlers",
         "addClass",
         "removeClass"
+      ]
+    },
+    {
+      "path": "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 8,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel css-management retrieval/apply handlers (public API)"
+        },
+        {
+          "type": "it",
+          "name": "getCssClass returns built-in class definition (rx-button)"
+        },
+        {
+          "type": "it",
+          "name": "getCssClass sets error when class missing"
+        },
+        {
+          "type": "it",
+          "name": "listCssClasses returns built-in classes collection"
+        },
+        {
+          "type": "it",
+          "name": "applyCssClassToElement adds class to DOM element and sets payload success"
+        },
+        {
+          "type": "it",
+          "name": "applyCssClassToElement sets error when element missing"
+        },
+        {
+          "type": "it",
+          "name": "removeCssClassFromElement removes existing class from DOM element"
+        },
+        {
+          "type": "it",
+          "name": "removeCssClassFromElement sets error when element missing"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "beforeEach",
+        "vi",
+        "getCssClass",
+        "listCssClasses",
+        "applyCssClassToElement",
+        "removeCssClassFromElement"
+      ]
+    },
+    {
+      "path": "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
+      "plugin": "control-panel",
+      "testCount": 5,
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel selection deriveSelectionModel handler (public API)"
+        },
+        {
+          "type": "it",
+          "name": "returns null selectionModel when id missing"
+        },
+        {
+          "type": "it",
+          "name": "returns null selectionModel when element not found"
+        },
+        {
+          "type": "it",
+          "name": "derives model for element with rx-button class"
+        },
+        {
+          "type": "it",
+          "name": "falls back to container type for plain div without rx- classes"
+        }
+      ],
+      "handlerReferences": [
+        "describe",
+        "it",
+        "expect",
+        "vi",
+        "beforeEach",
+        "deriveSelectionModel"
       ]
     },
     {
@@ -13126,6 +13211,98 @@
         ]
       },
       {
+        "name": "getCssClass",
+        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts"
+        ],
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "name": "listCssClasses",
+        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts"
+        ],
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "name": "applyCssClassToElement",
+        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts"
+        ],
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "name": "removeCssClassFromElement",
+        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts"
+        ],
+        "testNames": [
+          "control-panel css-management retrieval/apply handlers (public API)",
+          "getCssClass returns built-in class definition (rx-button)",
+          "getCssClass sets error when class missing",
+          "listCssClasses returns built-in classes collection",
+          "applyCssClassToElement adds class to DOM element and sets payload success",
+          "applyCssClassToElement sets error when element missing",
+          "removeCssClassFromElement removes existing class from DOM element",
+          "removeCssClassFromElement sets error when element missing"
+        ]
+      },
+      {
+        "name": "deriveSelectionModel",
+        "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.stage-crew.ts",
+        "plugin": "control-panel",
+        "testCount": 1,
+        "testFiles": [
+          "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts"
+        ],
+        "testNames": [
+          "control-panel selection deriveSelectionModel handler (public API)",
+          "returns null selectionModel when id missing",
+          "returns null selectionModel when element not found",
+          "derives model for element with rx-button class",
+          "falls back to container type for plain div without rx- classes"
+        ]
+      },
+      {
         "name": "initConfig",
         "file": "\\packages\\control-panel\\src\\symphonies\\ui\\ui.stage-crew.ts",
         "plugin": "control-panel",
@@ -14168,56 +14345,6 @@
       {
         "name": "deleteCssClass",
         "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "getCssClass",
-        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "listCssClasses",
-        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "applyCssClassToElement",
-        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "removeCssClassFromElement",
-        "file": "\\packages\\control-panel\\src\\symphonies\\css-management\\css-management.stage-crew.ts",
-        "plugin": "control-panel",
-        "parameters": [
-          "data: any",
-          "ctx: any"
-        ],
-        "isAsync": false
-      },
-      {
-        "name": "deriveSelectionModel",
-        "file": "\\packages\\control-panel\\src\\symphonies\\selection\\selection.stage-crew.ts",
         "plugin": "control-panel",
         "parameters": [
           "data: any",
@@ -15302,6 +15429,8 @@
       "testFiles": [
         "\\packages\\control-panel\\src\\state\\__tests__\\css-registry.store.test.ts",
         "\\packages\\control-panel\\__tests__\\api.control-panel.classes.notify.spec.ts",
+        "\\packages\\control-panel\\__tests__\\api.control-panel.css-management.retrieval.apply.spec.ts",
+        "\\packages\\control-panel\\__tests__\\api.control-panel.selection.derive.spec.ts",
         "\\packages\\control-panel\\__tests__\\attribute-editing.bidirectional.spec.ts",
         "\\packages\\control-panel\\__tests__\\attribute-editing.integration.spec.ts",
         "\\packages\\control-panel\\__tests__\\bidirectional-sync.spec.ts",
@@ -15325,9 +15454,9 @@
         "\\packages\\control-panel\\__tests__\\ui-init.batched.spec.ts",
         "\\packages\\control-panel\\__tests__\\ui-sequences.spec.ts"
       ],
-      "totalTests": 209,
-      "handlersWithTests": 19,
-      "handlersWithoutTests": 91
+      "totalTests": 222,
+      "handlersWithTests": 29,
+      "handlersWithoutTests": 81
     },
     {
       "name": "header",
