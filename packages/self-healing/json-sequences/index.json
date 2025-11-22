@@ -1,0 +1,51 @@
+{
+  "pluginId": "SelfHealingPlugin",
+  "id": "self-healing-index",
+  "name": "Self-Healing System Index",
+  "description": "Index of all self-healing sequences and capabilities",
+  "sequences": [
+    {
+      "id": "self-healing:telemetry:parse",
+      "name": "Parse Production Telemetry",
+      "description": "Parse production logs and extract telemetry events",
+      "file": "telemetry.parse.json"
+    },
+    {
+      "id": "self-healing:anomaly:detect",
+      "name": "Detect Anomalies",
+      "description": "Detect performance, behavioral, coverage, and error anomalies",
+      "file": "anomaly.detect.json"
+    },
+    {
+      "id": "self-healing:diagnosis:analyze",
+      "name": "Analyze Root Cause",
+      "description": "Diagnose root cause of detected anomalies",
+      "file": "diagnosis.analyze.json"
+    },
+    {
+      "id": "self-healing:fix:generate",
+      "name": "Generate Fix",
+      "description": "Generate code, test, and documentation fixes",
+      "file": "fix.generate.json"
+    },
+    {
+      "id": "self-healing:validation:run",
+      "name": "Validate Fix",
+      "description": "Validate fix with tests, coverage, and performance checks",
+      "file": "validation.run.json"
+    },
+    {
+      "id": "self-healing:deployment:deploy",
+      "name": "Deploy Fix",
+      "description": "Create PR, auto-merge, and deploy fix",
+      "file": "deployment.deploy.json"
+    },
+    {
+      "id": "self-healing:learning:track",
+      "name": "Track Effectiveness",
+      "description": "Track fix effectiveness and update learning models",
+      "file": "learning.track.json"
+    }
+  ]
+}
+
