@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 // Plugin: control-panel
 // Handlers in scope: addClass, removeClass, if, catch, deleteCssClass, getCssClass, listCssClasses, applyCssClassToElement, removeCssClassFromElement, deriveSelectionModel, initMovement, initResolver, loadSchemas, registerObservers, notifyReady, generateFields, generateSections, renderView, prepareField, dispatchField, setDirty, awaitRefresh, validateField, mergeErrors, updateView, toggleSection, updateFromElement, registerFieldRenderer, getFieldRenderer, EmptyState, LoadingState, PanelHeader, useControlPanelActions, useControlPanelSequences, useControlPanelState, useSchemaResolver, controlPanelReducer, extractElementContent, getNestedValue, setNestedValue, formatLabel, generatePlaceholder
 // TODO: Import actual handler implementations from plugin symphony/source files as needed.
@@ -7,11 +7,11 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('control-panel handlers handlers', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+  _ctx = {};
   });
 
   it('addClass - happy path', () => {

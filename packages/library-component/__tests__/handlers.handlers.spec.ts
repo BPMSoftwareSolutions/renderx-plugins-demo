@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 // Plugin: library-component
 // Handlers in scope: ensurePayload, computeGhostSize, createGhostContainer, renderTemplatePreview, applyTemplateStyles, computeCursorOffsets, installDragImage, onDragStart, publishCreateRequested
 // TODO: Import actual handler implementations from plugin symphony/source files as needed.
@@ -7,11 +7,11 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('library-component handlers handlers', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+  _ctx = {};
   });
 
   it('ensurePayload - happy path', () => {

@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 // Plugin: header
 // Handlers in scope: HeaderControls, HeaderThemeToggle, HeaderTitle
 // TODO: Import actual handler implementations from plugin symphony/source files as needed.
@@ -7,11 +7,11 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('header handlers handlers', () => {
   // TODO: Set up test context and mocks
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+  _ctx = {};
   });
 
   it('HeaderControls - happy path', () => {

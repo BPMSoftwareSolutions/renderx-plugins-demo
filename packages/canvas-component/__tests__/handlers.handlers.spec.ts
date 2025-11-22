@@ -1,12 +1,17 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 // Plugin: canvas-component
 // Implementing real tests for next 8 handlers needing coverage
 import { serializeSelectedComponent, copyToClipboard, notifyCopyComplete } from '../src/symphonies/copy/copy.stage-crew';
 import { resolveTemplate } from '../src/symphonies/create/create.arrangement';
 import { injectCssFallback, injectRawCss } from '../src/symphonies/create/create.css.stage-crew';
 import { createFromImportRecord } from '../src/symphonies/create/create.from-import';
-import { attachSelection } from '../src/symphonies/create/create.interactions.stage-crew';
+import { attachSelection, attachDrag, attachSvgNodeClick } from '../src/symphonies/create/create.interactions.stage-crew';
+import { computeInstanceClass, computeCssVarBlock, computeInlineStyle } from '../src/symphonies/create/create.style.stage-crew';
+import { ensureOverlayCss } from '../src/symphonies/select/select.overlay.css.stage-crew';
+import { ensureOverlay } from '../src/symphonies/select/select.overlay.dom.stage-crew';
+import { setClipboardText, getClipboardText } from '../src/symphonies/_clipboard';
+import { EventRouter } from '@renderx-plugins/host-sdk';
 // host-sdk imported if future tests need interaction resolution
 // import { resolveInteraction } from '@renderx-plugins/host-sdk';
 function makeCtx() {
@@ -101,21 +106,75 @@ describe('canvas-component handlers handlers', () => {
     el.click();
     expect(called).toEqual({ id: 'abc123' });
   });
-  it('attachDrag - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('attachDrag - happy path (start/move/end callbacks)', () => {
+    const canvas = document.createElement('div');
+    canvas.id = 'rx-canvas';
+    document.body.appendChild(canvas);
+    const el = document.createElement('div');
+    canvas.appendChild(el);
+
+    // Stable bounding boxes
+    (el as any).getBoundingClientRect = () => ({ left: 10, top: 20, width: 40, height: 50, right: 50, bottom: 70 });
+    (canvas as any).getBoundingClientRect = () => ({ left: 0, top: 0, width: 800, height: 600, right: 800, bottom: 600 });
+
+    const events: any[] = [];
+    attachDrag(el, canvas, 'node-1', {
+      onDragStart: info => events.push(['start', info]),
+      onDragMove: info => events.push(['move', info]),
+      onDragEnd: info => events.push(['end', info])
+    });
+
+    // mousedown (left button)
+    el.dispatchEvent(new MouseEvent('mousedown', { clientX: 100, clientY: 120, button: 0, bubbles: true }));
+    // move
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 110, clientY: 140 })); // delta (10,20)
+    // end
+    document.dispatchEvent(new MouseEvent('mouseup', { clientX: 115, clientY: 150 })); // total delta (15,30)
+
+    const start = events.find(e => e[0] === 'start')[1];
+    const move = events.find(e => e[0] === 'move')[1];
+    const end = events.find(e => e[0] === 'end')[1];
+
+    expect(start.startPosition).toEqual({ x: 10, y: 20 });
+    expect(move.delta).toEqual({ x: 10, y: 20 });
+    expect(end.totalDelta).toEqual({ x: 15, y: 30 });
   });
-  it('attachDrag - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+
+  it('attachDrag - ignores non-left button and no callbacks fired', () => {
+    const canvas = document.createElement('div');
+    document.body.appendChild(canvas);
+    const el = document.createElement('div');
+    canvas.appendChild(el);
+    (el as any).getBoundingClientRect = () => ({ left: 0, top: 0, width: 10, height: 10, right: 10, bottom: 10 });
+    (canvas as any).getBoundingClientRect = () => ({ left: 0, top: 0, width: 10, height: 10, right: 10, bottom: 10 });
+    const events: any[] = [];
+    attachDrag(el, canvas, 'node-2', { onDragStart: i => events.push(i) });
+    el.dispatchEvent(new MouseEvent('mousedown', { clientX: 5, clientY: 5, button: 1, bubbles: true }));
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 8, clientY: 9 }));
+    expect(events.length).toBe(0);
   });
-  it('attachSvgNodeClick - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+
+  it('attachSvgNodeClick - happy path publishes selection with derived path', () => {
+    const spy = (EventRouter as any).publish ? (EventRouter as any).publish = vi.fn() : vi.spyOn(EventRouter, 'publish');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGSVGElement;
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    g.appendChild(rect); svg.appendChild(g); document.body.appendChild(svg);
+    attachSvgNodeClick(svg, 'node-9', { logger: { warn: () => {} } });
+    rect.dispatchEvent(new Event('click', { bubbles: true }));
+    expect(spy).toHaveBeenCalled();
+    const args = spy.mock.calls[0];
+    expect(args[0]).toBe('canvas.component.select.svg-node.requested');
+    expect(args[1]).toEqual({ id: 'node-9', path: '0/0' });
   });
-  it('attachSvgNodeClick - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+
+  it('attachSvgNodeClick - clicking root svg does nothing', () => {
+    const spy = (EventRouter as any).publish ? (EventRouter as any).publish = vi.fn() : vi.spyOn(EventRouter, 'publish');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGSVGElement;
+    document.body.appendChild(svg);
+    attachSvgNodeClick(svg, 'root', { logger: { warn: () => {} } });
+    svg.dispatchEvent(new Event('click', { bubbles: true }));
+    expect(spy).not.toHaveBeenCalled();
   });
   it('notifyUi - happy path', () => {
     // TODO: Implement test
@@ -141,29 +200,34 @@ describe('canvas-component handlers handlers', () => {
     // TODO: Implement test
     expect(true).toBe(true);
   });
-  it('computeInstanceClass - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('computeInstanceClass - strips rx-node- prefix', () => {
+    expect(computeInstanceClass('div', 'rx-node-123')).toBe('rx-comp-div-123');
   });
-  it('computeInstanceClass - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('computeInstanceClass - no prefix preserved as-is', () => {
+    expect(computeInstanceClass('span', 'abc')).toBe('rx-comp-span-abc');
   });
-  it('computeCssVarBlock - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('computeCssVarBlock - renders vars with -- prefix', () => {
+    const block = computeCssVarBlock({ primary: '#fff', gap: 4 });
+    expect(block).toMatch(/--primary: #fff;/);
+    expect(block).toMatch(/--gap: 4;/);
   });
-  it('computeCssVarBlock - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('computeCssVarBlock - empty returns blank string', () => {
+    expect(computeCssVarBlock(undefined)).toBe('');
   });
-  it('computeInlineStyle - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('computeInlineStyle - merges template/style and position/dimensions', () => {
+    const style = computeInlineStyle({ position: { x: 10, y: 20 } }, { style: { background: 'red', left: 'ignore' }, dimensions: { width: 100, height: 50 } });
+    expect(style.background).toBe('red');
+    expect(style.left).toBe('10px');
+    expect(style.top).toBe('20px');
+    expect(style.width).toBe('100px');
+    expect(style.height).toBe('50px');
   });
-  it('computeInlineStyle - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('computeInlineStyle - handles non-numeric dimensions and missing position', () => {
+    const style = computeInlineStyle({}, { style: { color: 'blue' }, dimensions: { width: '40%', height: '2rem' } });
+    expect(style.color).toBe('blue');
+    expect(style.width).toBe('40%');
+    expect(style.height).toBe('2rem');
+    expect(style.left).toBeUndefined();
   });
   it('publishDeleted - happy path', () => {
     // TODO: Implement test
@@ -237,21 +301,28 @@ describe('canvas-component handlers handlers', () => {
     // TODO: Implement test
     expect(true).toBe(true);
   });
-  it('ensureOverlayCss - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('ensureOverlayCss - injects style only once', () => {
+    ensureOverlayCss();
+    ensureOverlayCss();
+    const style = document.getElementById('rx-components-styles');
+    expect(style).toBeTruthy();
+    // Should include selection overlay rules
+    expect(style!.textContent).toMatch(/rx-selection-overlay/);
   });
-  it('ensureOverlayCss - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('ensureOverlay - creates overlay with 8 handles and reuses existing', () => {
+    const canvas = document.createElement('div');
+    canvas.id = 'rx-canvas';
+    document.body.appendChild(canvas);
+    const first = ensureOverlay();
+    const second = ensureOverlay();
+    expect(first).toBe(second);
+    expect(first.querySelectorAll('.rx-handle').length).toBe(8);
+    expect((first.style as CSSStyleDeclaration).boxSizing).toBe('border-box');
   });
-  it('ensureOverlay - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('ensureOverlay - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('ensureOverlay - throws when canvas missing', () => {
+    // remove canvas if present
+    document.getElementById('rx-canvas')?.remove();
+    expect(() => ensureOverlay()).toThrow(/#rx-canvas not found/);
   });
   it('getCanvasRect - happy path', () => {
     // TODO: Implement test
@@ -333,21 +404,13 @@ describe('canvas-component handlers handlers', () => {
     // TODO: Implement test
     expect(true).toBe(true);
   });
-  it('setClipboardText - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('setClipboardText/getClipboardText - round trip stores and retrieves', () => {
+    setClipboardText('hello');
+    expect(getClipboardText()).toBe('hello');
   });
-  it('setClipboardText - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('getClipboardText - happy path', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
-  });
-  it('getClipboardText - edge case/error handling', () => {
-    // TODO: Implement test
-    expect(true).toBe(true);
+  it('setClipboardText - empty string yields empty retrieval', () => {
+    setClipboardText('');
+    expect(getClipboardText()).toBe('');
   });
   it('initConductor - happy path', () => {
     // TODO: Implement test
