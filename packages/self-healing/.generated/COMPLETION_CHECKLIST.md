@@ -26,14 +26,16 @@
 - [x] FINAL_SUMMARY.md - Executive summary
 - [x] COMPLETION_CHECKLIST.md - This checklist
 
-### Generation Scripts Created
-- [x] generate-comprehensive-business-bdd-specs.js
-- [x] generate-handler-business-bdd-tests.js ✨ NEW
-- [x] generate-business-bdd-test-files.js
-- [x] generate-bdd-specifications.js
-- [x] generate-bdd-test-files.js
-- [x] generate-self-healing-tests.js
-- [x] generate-self-healing-test-stubs.js
+### Generation Scripts (Business-Focused Only)
+- [x] generate-comprehensive-business-bdd-specs.js - Generates business specs for all 67 handlers
+- [x] generate-handler-business-bdd-tests.js - Generates business BDD test files for all 67 handlers
+- [x] generate-business-bdd-test-files.js - Generates business BDD test files for 7 sequences
+
+**Deprecated & Removed**:
+- ❌ generate-self-healing-tests.js (non-business, removed)
+- ❌ generate-self-healing-test-stubs.js (non-business, removed)
+- ❌ generate-bdd-specifications.js (non-business, removed)
+- ❌ generate-bdd-test-files.js (non-business, removed)
 
 ### Quality Assurance
 - [x] Lint passes (no errors)
@@ -67,7 +69,8 @@
 | Unit Test Cases | 134 | ✅ |
 | Total Test Files | 88 | ✅ |
 | Documentation Files | 8 | ✅ |
-| Generation Scripts | 7 | ✅ |
+| Generation Scripts (Business-Only) | 3 | ✅ |
+| Deprecated Scripts Removed | 4 | ✅ |
 | Handler Coverage | 100% | ✅ |
 | Lint Status | Passing | ✅ |
 
