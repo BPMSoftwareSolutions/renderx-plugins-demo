@@ -1,0 +1,355 @@
+{
+  "name": "handler-implementation-workflow",
+  "title": "Handler Implementation Workflow - BDD → TDD → Done",
+  "description": "Complete workflow for implementing new handlers using Test-Driven Development driven by Business-Driven Development specifications",
+  "version": "1.0.0",
+  "type": "workflow",
+  "purpose": "Guide agents through implementing handlers using BDD→TDD→Done pattern",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Understand Business Requirements",
+      "duration": "5 minutes",
+      "description": "Read and understand the business BDD specification for the handler",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Locate business spec",
+          "details": "Open packages/self-healing/.generated/comprehensive-business-bdd-specifications.json",
+          "expected_outcome": "Found handler specification with business context"
+        },
+        {
+          "step": 2,
+          "action": "Read handler specification",
+          "details": "Find handler by name and review: name, sequence, businessValue, persona, scenarios",
+          "expected_outcome": "Understand what problem the handler solves and who uses it"
+        },
+        {
+          "step": 3,
+          "action": "Review realistic scenarios",
+          "details": "Read Given-When-Then scenarios for realistic business use cases",
+          "expected_outcome": "Understand expected business outcomes"
+        }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As an agent, I want to understand the business requirements so that I implement the handler correctly",
+        "persona": "Agent/Developer",
+        "scenarios": [
+          {
+            "title": "Agent reads business spec for parseTelemetryRequested",
+            "given": [
+              "comprehensive-business-bdd-specifications.json exists",
+              "handler specification includes business value and persona"
+            ],
+            "when": [
+              "agent reads the specification"
+            ],
+            "then": [
+              "agent understands business value",
+              "agent knows the persona",
+              "agent knows realistic scenarios",
+              "agent knows expected outcomes"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "name": "Implement Business BDD Test",
+      "duration": "15 minutes",
+      "description": "Implement the business BDD test with realistic scenarios",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Locate business BDD test file",
+          "details": "Open packages/self-healing/__tests__/business-bdd-handlers/[N]-[handler-name].spec.ts",
+          "expected_outcome": "Test file open with TODO comments"
+        },
+        {
+          "step": 2,
+          "action": "Replace GIVEN TODO",
+          "details": "Set up realistic production data matching the business scenario",
+          "expected_outcome": "Preconditions set up with realistic data"
+        },
+        {
+          "step": 3,
+          "action": "Replace WHEN TODO",
+          "details": "Execute the handler with the test context",
+          "expected_outcome": "Handler execution code in place"
+        },
+        {
+          "step": 4,
+          "action": "Replace THEN TODO",
+          "details": "Verify business outcomes (not just technical correctness)",
+          "expected_outcome": "Business outcome assertions in place"
+        },
+        {
+          "step": 5,
+          "action": "Run business BDD test",
+          "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts",
+          "expected_outcome": "Test fails (handler doesn't exist yet) - this is expected"
+        }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As an agent, I want to implement the business BDD test so that I verify business outcomes",
+        "persona": "Agent/Developer",
+        "scenarios": [
+          {
+            "title": "Agent implements business BDD test for parseTelemetryRequested",
+            "given": [
+              "business BDD test file exists with TODO comments",
+              "business spec defines realistic scenarios"
+            ],
+            "when": [
+              "agent replaces TODO comments with actual test code",
+              "agent sets up realistic production data",
+              "agent executes handler",
+              "agent verifies business outcomes"
+            ],
+            "then": [
+              "business BDD test is implemented",
+              "test fails (handler doesn't exist yet)",
+              "failure message is clear"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "phase": 3,
+      "name": "Implement Unit Tests (TDD - Red)",
+      "duration": "30 minutes",
+      "description": "Write failing unit tests (Red phase of TDD)",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Locate unit test file",
+          "details": "Open packages/self-healing/__tests__/[sequence].spec.ts",
+          "expected_outcome": "Unit test file open with test stubs"
+        },
+        {
+          "step": 2,
+          "action": "Implement happy path test",
+          "details": "Write test for normal successful execution",
+          "expected_outcome": "Happy path test implemented"
+        },
+        {
+          "step": 3,
+          "action": "Implement error handling test",
+          "details": "Write test for error conditions and edge cases",
+          "expected_outcome": "Error handling test implemented"
+        },
+        {
+          "step": 4,
+          "action": "Run unit tests",
+          "details": "npm test -- __tests__/[sequence].spec.ts",
+          "expected_outcome": "All tests fail (Red phase) - this is expected"
+        }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As an agent, I want to write failing unit tests so that I drive implementation with TDD",
+        "persona": "Agent/Developer",
+        "scenarios": [
+          {
+            "title": "Agent writes failing unit tests for parseTelemetryRequested",
+            "given": [
+              "unit test file exists with test stubs",
+              "handler doesn't exist yet"
+            ],
+            "when": [
+              "agent implements happy path test",
+              "agent implements error handling test",
+              "agent runs tests"
+            ],
+            "then": [
+              "all tests fail (Red phase)",
+              "failure messages are clear",
+              "tests are ready for implementation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "phase": 4,
+      "name": "Implement Handler (TDD - Green)",
+      "duration": "2-3 hours",
+      "description": "Implement handler to make tests pass (Green phase of TDD)",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Create handler file",
+          "details": "Create packages/self-healing/src/handlers/[sequence]/[handler-name].ts",
+          "expected_outcome": "Handler file created"
+        },
+        {
+          "step": 2,
+          "action": "Implement handler logic",
+          "details": "Implement: validate input, process, publish events, return results, handle errors",
+          "expected_outcome": "Handler logic implemented"
+        },
+        {
+          "step": 3,
+          "action": "Run unit tests",
+          "details": "npm test -- __tests__/[sequence].spec.ts",
+          "expected_outcome": "All tests pass (Green phase)"
+        },
+        {
+          "step": 4,
+          "action": "Refactor code",
+          "details": "Clean up code for readability, performance, error handling, type safety",
+          "expected_outcome": "Code refactored"
+        },
+        {
+          "step": 5,
+          "action": "Run unit tests again",
+          "details": "npm test -- __tests__/[sequence].spec.ts",
+          "expected_outcome": "All tests still pass (Refactor phase)"
+        }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As an agent, I want to implement the handler so that it makes tests pass",
+        "persona": "Agent/Developer",
+        "scenarios": [
+          {
+            "title": "Agent implements parseTelemetryRequested handler",
+            "given": [
+              "unit tests are failing",
+              "handler file doesn't exist"
+            ],
+            "when": [
+              "agent creates handler file",
+              "agent implements handler logic",
+              "agent runs tests",
+              "agent refactors code",
+              "agent runs tests again"
+            ],
+            "then": [
+              "all unit tests pass",
+              "code is clean and readable",
+              "handler is ready for verification"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "phase": 5,
+      "name": "Verify Business BDD Test",
+      "duration": "5 minutes",
+      "description": "Verify business BDD test passes with implemented handler",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Run business BDD test",
+          "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts",
+          "expected_outcome": "Business BDD test passes"
+        },
+        {
+          "step": 2,
+          "action": "Verify business outcomes",
+          "details": "Confirm business outcomes are achieved (not just technical correctness)",
+          "expected_outcome": "Business value is verified"
+        }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As an agent, I want to verify the business BDD test passes so that I confirm business value",
+        "persona": "Agent/Developer",
+        "scenarios": [
+          {
+            "title": "Agent verifies business BDD test passes",
+            "given": [
+              "handler is implemented",
+              "unit tests pass"
+            ],
+            "when": [
+              "agent runs business BDD test"
+            ],
+            "then": [
+              "business BDD test passes",
+              "business outcomes are verified",
+              "business value is achieved"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "phase": 6,
+      "name": "Verify All Tests & Lint",
+      "duration": "10 minutes",
+      "description": "Verify all tests pass and lint passes",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Run all tests",
+          "details": "npm test",
+          "expected_outcome": "All tests pass"
+        },
+        {
+          "step": 2,
+          "action": "Verify lint",
+          "details": "npm run lint",
+          "expected_outcome": "Lint passes (0 errors)"
+        },
+        {
+          "step": 3,
+          "action": "Code review",
+          "details": "Get code reviewed by team",
+          "expected_outcome": "Code approved"
+        }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As an agent, I want to verify all tests and lint pass so that code is ready for production",
+        "persona": "Agent/Developer",
+        "scenarios": [
+          {
+            "title": "Agent verifies all tests and lint pass",
+            "given": [
+              "handler is implemented",
+              "business BDD test passes",
+              "unit tests pass"
+            ],
+            "when": [
+              "agent runs all tests",
+              "agent verifies lint",
+              "agent gets code reviewed"
+            ],
+            "then": [
+              "all tests pass",
+              "lint passes",
+              "code is approved",
+              "handler is ready for production"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality_checklist": [
+    "Business BDD test passes",
+    "Unit tests pass (happy path + error handling)",
+    "All tests pass (npm test)",
+    "Lint passes (npm run lint)",
+    "Code is reviewed",
+    "Code is approved",
+    "Ready for production"
+  ],
+  "key_principles": [
+    "Business-First: Start with business BDD spec",
+    "TDD-Driven: Red → Green → Refactor",
+    "Clean Code: Pure functions, clear error handling, event publishing, type safety",
+    "Quality: All tests pass, lint passes, code reviewed"
+  ],
+  "related_files": {
+    "business_specs": "packages/self-healing/.generated/comprehensive-business-bdd-specifications.json",
+    "business_bdd_tests": "packages/self-healing/__tests__/business-bdd-handlers/",
+    "unit_tests": "packages/self-healing/__tests__/",
+    "handlers": "packages/self-healing/src/handlers/",
+    "types": "packages/self-healing/src/types/index.ts"
+  },
+  "time_estimate": "~5 hours per handler",
+  "status": "ready"
+}
+

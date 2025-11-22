@@ -1,6 +1,14 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-// TODO: Import handlers from @renderx-plugins/self-healing
-// import { parseTelemetryRequested, loadLogFiles, extractTelemetryEvents, normalizeTelemetryData, aggregateTelemetryMetrics, storeTelemetryDatabase, parseTelemetryCompleted } from '../src/handlers/index.js';
+import { 
+  parseTelemetryRequested,
+  loadLogFiles,
+  extractTelemetryEvents,
+  normalizeTelemetryData,
+  aggregateTelemetryMetrics,
+  storeTelemetryDatabase,
+  parseTelemetryCompleted
+} from '../src/handlers';
+import { makeEvent, makeEvents } from './support/telemetryFactory';
 
 /**
  * Test suite for Parse Production Telemetry
@@ -10,82 +18,78 @@ import { describe, it, expect, beforeEach } from 'vitest';
  */
 
 describe('Parse Production Telemetry (self-healing-telemetry-parse-symphony)', () => {
-  // TODO: Set up test context and mocks
-  let ctx: any;
-
   beforeEach(() => {
-    // TODO: Initialize context with required handlers and mocks
-    ctx = {};
+    // reset any shared state in future (none yet)
   });
 
   it('parseTelemetryRequested - happy path', () => {
-    // TODO: Implement test for parseTelemetryRequested (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const evt = parseTelemetryRequested('seq-123');
+    expect(evt.event).toBe('telemetry.parse.requested');
+    expect(evt.context?.sequenceId).toBe('seq-123');
+    expect(typeof evt.timestamp).toBe('string');
   });
-  it('parseTelemetryRequested - error handling', () => {
-    // TODO: Implement test for parseTelemetryRequested (pure)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+  it('parseTelemetryRequested - error handling (missing id)', () => {
+    expect(() => parseTelemetryRequested('')).toThrow(/sequenceId/);
   });
   it('loadLogFiles - happy path', () => {
-    // TODO: Implement test for loadLogFiles (stage-crew)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    return loadLogFiles(['app.log']).then(res => {
+      expect(res.event).toBe('telemetry.load.logs');
+      expect(res.context.files.length).toBe(1);
+      expect(res.context.paths[0]).toBe('app.log');
+    });
   });
   it('loadLogFiles - error handling', () => {
-    // TODO: Implement test for loadLogFiles (stage-crew)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+    // @ts-expect-error invalid
+    expect(loadLogFiles('not-an-array')).rejects.toThrow(/paths/);
   });
   it('extractTelemetryEvents - happy path', () => {
-    // TODO: Implement test for extractTelemetryEvents (stage-crew)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const res = extractTelemetryEvents([{ path: 'a.log', content: '' }]);
+    expect(res.event).toBe('telemetry.extract.events');
+    expect(res.context.rawCount).toBe(1);
+    expect(Array.isArray(res.context.events)).toBe(true);
   });
   it('extractTelemetryEvents - error handling', () => {
-    // TODO: Implement test for extractTelemetryEvents (stage-crew)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+    // @ts-expect-error invalid
+    expect(() => extractTelemetryEvents('bad')).toThrow(/rawLogs/);
   });
   it('normalizeTelemetryData - happy path', () => {
-    // TODO: Implement test for normalizeTelemetryData (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const res = normalizeTelemetryData([]);
+    expect(res.event).toBe('telemetry.normalize.data');
+    expect(res.context.normalized.length).toBe(0);
   });
   it('normalizeTelemetryData - error handling', () => {
-    // TODO: Implement test for normalizeTelemetryData (pure)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+    // @ts-expect-error invalid
+    expect(() => normalizeTelemetryData('oops')).toThrow(/events/);
   });
-  it('aggregateTelemetryMetrics - happy path', () => {
-    // TODO: Implement test for aggregateTelemetryMetrics (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+  it('aggregateTelemetryMetrics - happy path (empty events)', () => {
+    const res = aggregateTelemetryMetrics([] as any);
+    expect(res.context.metrics.totalEvents).toBe(0);
+    expect(res.context.metrics.handlers).toEqual({});
   });
-  it('aggregateTelemetryMetrics - error handling', () => {
-    // TODO: Implement test for aggregateTelemetryMetrics (pure)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+  it('aggregateTelemetryMetrics - with sample events', () => {
+    const events = makeEvents(3);
+    const res = aggregateTelemetryMetrics(events as any);
+    expect(res.context.metrics.totalEvents).toBe(3);
   });
   it('storeTelemetryDatabase - happy path', () => {
-    // TODO: Implement test for storeTelemetryDatabase (stage-crew)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const metricsEvt = aggregateTelemetryMetrics([] as any);
+    return storeTelemetryDatabase(metricsEvt.context.metrics).then(res => {
+      expect(res.context.stored).toBe(true);
+      expect(res.event).toBe('telemetry.store.database');
+    });
   });
   it('storeTelemetryDatabase - error handling', () => {
-    // TODO: Implement test for storeTelemetryDatabase (stage-crew)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+    // @ts-expect-error invalid
+    expect(storeTelemetryDatabase(null)).rejects.toThrow(/metrics/);
   });
   it('parseTelemetryCompleted - happy path', () => {
-    // TODO: Implement test for parseTelemetryCompleted (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const metricsEvt = aggregateTelemetryMetrics([] as any);
+    const completed = parseTelemetryCompleted('seq-123', metricsEvt.context.metrics);
+    expect(completed.event).toBe('telemetry.parse.completed');
+    expect(completed.context?.sequenceId).toBe('seq-123');
   });
-  it('parseTelemetryCompleted - error handling', () => {
-    // TODO: Implement test for parseTelemetryCompleted (pure)
-    // This test should verify error handling and edge cases
-    expect(true).toBe(true);
+  it('parseTelemetryCompleted - error handling (missing metrics)', () => {
+    // @ts-expect-error intentional
+    expect(() => parseTelemetryCompleted('seq-123')).toThrow(/metrics/);
   });
 });

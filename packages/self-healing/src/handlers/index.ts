@@ -14,13 +14,14 @@
  */
 
 // Telemetry Parsing Handlers
-export * from './telemetry/parse.requested.js';
-export * from './telemetry/load.logs.js';
-export * from './telemetry/extract.events.js';
-export * from './telemetry/normalize.data.js';
-export * from './telemetry/aggregate.metrics.js';
-export * from './telemetry/store.database.js';
-export * from './telemetry/parse.completed.js';
+// NOTE: Using extension-less paths so TypeScript resolves the .ts sources pre-build.
+export * from './telemetry/parse.requested';
+export * from './telemetry/load.logs';
+export * from './telemetry/extract.events';
+export * from './telemetry/normalize.data';
+export * from './telemetry/aggregate.metrics';
+export * from './telemetry/store.database';
+export * from './telemetry/parse.completed';
 
 // Anomaly Detection Handlers
 export * from './anomaly/detect.requested.js';
