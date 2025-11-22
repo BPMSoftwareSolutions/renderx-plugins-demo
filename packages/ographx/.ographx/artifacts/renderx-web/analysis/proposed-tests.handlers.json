@@ -1,1186 +1,1270 @@
 {
-  "timestamp": "2025-11-21T23:33:41.388Z",
+  "timestamp": "2025-11-22T02:02:43.443Z",
   "summary": {
     "totalHandlers": 129,
-    "totalTestFiles": 1,
+    "totalTestFiles": 7,
     "totalTests": 258
   },
   "handlersCount": 129,
   "testFiles": [
     {
-      "path": "packages/unknown/__tests__/handlers.handlers.spec.ts",
-      "plugin": "unknown",
+      "path": "packages/canvas/__tests__/handlers.handlers.spec.ts",
+      "plugin": "canvas",
       "testGroup": "handlers",
       "handlers": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "CanvasHeader",
+        "CanvasPage"
       ],
       "tests": [
         {
           "type": "describe",
-          "name": "unknown handlers handlers"
+          "name": "canvas handlers handlers"
         },
         {
           "type": "it",
-          "name": "undefined - happy path"
+          "name": "CanvasHeader - happy path"
         },
         {
           "type": "it",
-          "name": "undefined - edge case/error handling"
+          "name": "CanvasHeader - edge case/error handling"
         },
         {
           "type": "it",
-          "name": "undefined - happy path"
+          "name": "CanvasPage - happy path"
         },
         {
           "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
-        },
-        {
-          "type": "it",
-          "name": "undefined - happy path"
-        },
-        {
-          "type": "it",
-          "name": "undefined - edge case/error handling"
+          "name": "CanvasPage - edge case/error handling"
         }
       ],
-      "testCount": 258
+      "testCount": 4
+    },
+    {
+      "path": "packages/canvas-component/__tests__/handlers.handlers.spec.ts",
+      "plugin": "canvas-component",
+      "testGroup": "handlers",
+      "handlers": [
+        "serializeSelectedComponent",
+        "copyToClipboard",
+        "notifyCopyComplete",
+        "resolveTemplate",
+        "injectCssFallback",
+        "injectRawCss",
+        "createFromImportRecord",
+        "attachSelection",
+        "attachDrag",
+        "attachSvgNodeClick",
+        "notifyUi",
+        "Name",
+        "createNode",
+        "computeInstanceClass",
+        "computeCssVarBlock",
+        "computeInlineStyle",
+        "publishDeleted",
+        "deleteComponent",
+        "routeDeleteRequest",
+        "exportSvgToGif",
+        "createMP4Encoder",
+        "exportSvgToMp4",
+        "openUiFile",
+        "startLineManip",
+        "endLineManip",
+        "ensureOverlayCss",
+        "ensureOverlay",
+        "getCanvasRect",
+        "applyOverlayRectForEl",
+        "createOverlayStructure",
+        "resolveEndpoints",
+        "ensureAdvancedLineOverlayFor",
+        "attachAdvancedLineManipHandlers",
+        "ensureLineOverlayFor",
+        "attachLineResizeHandlers",
+        "attachResizeHandlers",
+        "updateAttribute",
+        "setClipboardText",
+        "getClipboardText",
+        "initConductor",
+        "registerAllSequences",
+        "loadJsonSequenceCatalogs",
+        "getFlagOverride",
+        "setAllRulesConfig",
+        "loadAllRulesFromWindow",
+        "getAllRulesConfig",
+        "sanitizeHtml",
+        "transform"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "canvas-component handlers handlers"
+        },
+        {
+          "type": "it",
+          "name": "serializeSelectedComponent - happy path"
+        },
+        {
+          "type": "it",
+          "name": "serializeSelectedComponent - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "copyToClipboard - happy path"
+        },
+        {
+          "type": "it",
+          "name": "copyToClipboard - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "notifyCopyComplete - happy path"
+        },
+        {
+          "type": "it",
+          "name": "notifyCopyComplete - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "resolveTemplate - happy path"
+        },
+        {
+          "type": "it",
+          "name": "resolveTemplate - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "injectCssFallback - happy path"
+        },
+        {
+          "type": "it",
+          "name": "injectCssFallback - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "injectRawCss - happy path"
+        },
+        {
+          "type": "it",
+          "name": "injectRawCss - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "createFromImportRecord - happy path"
+        },
+        {
+          "type": "it",
+          "name": "createFromImportRecord - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "attachSelection - happy path"
+        },
+        {
+          "type": "it",
+          "name": "attachSelection - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "attachDrag - happy path"
+        },
+        {
+          "type": "it",
+          "name": "attachDrag - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "attachSvgNodeClick - happy path"
+        },
+        {
+          "type": "it",
+          "name": "attachSvgNodeClick - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "notifyUi - happy path"
+        },
+        {
+          "type": "it",
+          "name": "notifyUi - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "Name - happy path"
+        },
+        {
+          "type": "it",
+          "name": "Name - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "createNode - happy path"
+        },
+        {
+          "type": "it",
+          "name": "createNode - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "computeInstanceClass - happy path"
+        },
+        {
+          "type": "it",
+          "name": "computeInstanceClass - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "computeCssVarBlock - happy path"
+        },
+        {
+          "type": "it",
+          "name": "computeCssVarBlock - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "computeInlineStyle - happy path"
+        },
+        {
+          "type": "it",
+          "name": "computeInlineStyle - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "publishDeleted - happy path"
+        },
+        {
+          "type": "it",
+          "name": "publishDeleted - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "deleteComponent - happy path"
+        },
+        {
+          "type": "it",
+          "name": "deleteComponent - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "routeDeleteRequest - happy path"
+        },
+        {
+          "type": "it",
+          "name": "routeDeleteRequest - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "exportSvgToGif - happy path"
+        },
+        {
+          "type": "it",
+          "name": "exportSvgToGif - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "createMP4Encoder - happy path"
+        },
+        {
+          "type": "it",
+          "name": "createMP4Encoder - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "exportSvgToMp4 - happy path"
+        },
+        {
+          "type": "it",
+          "name": "exportSvgToMp4 - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "openUiFile - happy path"
+        },
+        {
+          "type": "it",
+          "name": "openUiFile - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "startLineManip - happy path"
+        },
+        {
+          "type": "it",
+          "name": "startLineManip - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "endLineManip - happy path"
+        },
+        {
+          "type": "it",
+          "name": "endLineManip - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ensureOverlayCss - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ensureOverlayCss - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ensureOverlay - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ensureOverlay - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getCanvasRect - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getCanvasRect - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "applyOverlayRectForEl - happy path"
+        },
+        {
+          "type": "it",
+          "name": "applyOverlayRectForEl - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "createOverlayStructure - happy path"
+        },
+        {
+          "type": "it",
+          "name": "createOverlayStructure - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "resolveEndpoints - happy path"
+        },
+        {
+          "type": "it",
+          "name": "resolveEndpoints - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ensureAdvancedLineOverlayFor - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ensureAdvancedLineOverlayFor - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "attachAdvancedLineManipHandlers - happy path"
+        },
+        {
+          "type": "it",
+          "name": "attachAdvancedLineManipHandlers - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ensureLineOverlayFor - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ensureLineOverlayFor - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "attachLineResizeHandlers - happy path"
+        },
+        {
+          "type": "it",
+          "name": "attachLineResizeHandlers - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "attachResizeHandlers - happy path"
+        },
+        {
+          "type": "it",
+          "name": "attachResizeHandlers - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "updateAttribute - happy path"
+        },
+        {
+          "type": "it",
+          "name": "updateAttribute - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "setClipboardText - happy path"
+        },
+        {
+          "type": "it",
+          "name": "setClipboardText - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getClipboardText - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getClipboardText - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "initConductor - happy path"
+        },
+        {
+          "type": "it",
+          "name": "initConductor - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "registerAllSequences - happy path"
+        },
+        {
+          "type": "it",
+          "name": "registerAllSequences - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "loadJsonSequenceCatalogs - happy path"
+        },
+        {
+          "type": "it",
+          "name": "loadJsonSequenceCatalogs - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getFlagOverride - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getFlagOverride - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "setAllRulesConfig - happy path"
+        },
+        {
+          "type": "it",
+          "name": "setAllRulesConfig - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "loadAllRulesFromWindow - happy path"
+        },
+        {
+          "type": "it",
+          "name": "loadAllRulesFromWindow - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getAllRulesConfig - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getAllRulesConfig - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "sanitizeHtml - happy path"
+        },
+        {
+          "type": "it",
+          "name": "sanitizeHtml - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "transform - happy path"
+        },
+        {
+          "type": "it",
+          "name": "transform - edge case/error handling"
+        }
+      ],
+      "testCount": 96
+    },
+    {
+      "path": "packages/control-panel/__tests__/handlers.handlers.spec.ts",
+      "plugin": "control-panel",
+      "testGroup": "handlers",
+      "handlers": [
+        "addClass",
+        "removeClass",
+        "if",
+        "catch",
+        "deleteCssClass",
+        "getCssClass",
+        "listCssClasses",
+        "applyCssClassToElement",
+        "removeCssClassFromElement",
+        "deriveSelectionModel",
+        "initMovement",
+        "initResolver",
+        "loadSchemas",
+        "registerObservers",
+        "notifyReady",
+        "generateFields",
+        "generateSections",
+        "renderView",
+        "prepareField",
+        "dispatchField",
+        "setDirty",
+        "awaitRefresh",
+        "validateField",
+        "mergeErrors",
+        "updateView",
+        "toggleSection",
+        "updateFromElement",
+        "registerFieldRenderer",
+        "getFieldRenderer",
+        "EmptyState",
+        "LoadingState",
+        "PanelHeader",
+        "useControlPanelActions",
+        "useControlPanelSequences",
+        "useControlPanelState",
+        "useSchemaResolver",
+        "controlPanelReducer",
+        "extractElementContent",
+        "getNestedValue",
+        "setNestedValue",
+        "formatLabel",
+        "generatePlaceholder"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "control-panel handlers handlers"
+        },
+        {
+          "type": "it",
+          "name": "addClass - happy path"
+        },
+        {
+          "type": "it",
+          "name": "addClass - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "removeClass - happy path"
+        },
+        {
+          "type": "it",
+          "name": "removeClass - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "if - happy path"
+        },
+        {
+          "type": "it",
+          "name": "if - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "catch - happy path"
+        },
+        {
+          "type": "it",
+          "name": "catch - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "deleteCssClass - happy path"
+        },
+        {
+          "type": "it",
+          "name": "deleteCssClass - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getCssClass - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getCssClass - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "listCssClasses - happy path"
+        },
+        {
+          "type": "it",
+          "name": "listCssClasses - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "applyCssClassToElement - happy path"
+        },
+        {
+          "type": "it",
+          "name": "applyCssClassToElement - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "removeCssClassFromElement - happy path"
+        },
+        {
+          "type": "it",
+          "name": "removeCssClassFromElement - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "deriveSelectionModel - happy path"
+        },
+        {
+          "type": "it",
+          "name": "deriveSelectionModel - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "initMovement - happy path"
+        },
+        {
+          "type": "it",
+          "name": "initMovement - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "initResolver - happy path"
+        },
+        {
+          "type": "it",
+          "name": "initResolver - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "loadSchemas - happy path"
+        },
+        {
+          "type": "it",
+          "name": "loadSchemas - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "registerObservers - happy path"
+        },
+        {
+          "type": "it",
+          "name": "registerObservers - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "notifyReady - happy path"
+        },
+        {
+          "type": "it",
+          "name": "notifyReady - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "generateFields - happy path"
+        },
+        {
+          "type": "it",
+          "name": "generateFields - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "generateSections - happy path"
+        },
+        {
+          "type": "it",
+          "name": "generateSections - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "renderView - happy path"
+        },
+        {
+          "type": "it",
+          "name": "renderView - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "prepareField - happy path"
+        },
+        {
+          "type": "it",
+          "name": "prepareField - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "dispatchField - happy path"
+        },
+        {
+          "type": "it",
+          "name": "dispatchField - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "setDirty - happy path"
+        },
+        {
+          "type": "it",
+          "name": "setDirty - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "awaitRefresh - happy path"
+        },
+        {
+          "type": "it",
+          "name": "awaitRefresh - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "validateField - happy path"
+        },
+        {
+          "type": "it",
+          "name": "validateField - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "mergeErrors - happy path"
+        },
+        {
+          "type": "it",
+          "name": "mergeErrors - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "updateView - happy path"
+        },
+        {
+          "type": "it",
+          "name": "updateView - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "toggleSection - happy path"
+        },
+        {
+          "type": "it",
+          "name": "toggleSection - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "updateFromElement - happy path"
+        },
+        {
+          "type": "it",
+          "name": "updateFromElement - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "registerFieldRenderer - happy path"
+        },
+        {
+          "type": "it",
+          "name": "registerFieldRenderer - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getFieldRenderer - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getFieldRenderer - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "EmptyState - happy path"
+        },
+        {
+          "type": "it",
+          "name": "EmptyState - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "LoadingState - happy path"
+        },
+        {
+          "type": "it",
+          "name": "LoadingState - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "PanelHeader - happy path"
+        },
+        {
+          "type": "it",
+          "name": "PanelHeader - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "useControlPanelActions - happy path"
+        },
+        {
+          "type": "it",
+          "name": "useControlPanelActions - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "useControlPanelSequences - happy path"
+        },
+        {
+          "type": "it",
+          "name": "useControlPanelSequences - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "useControlPanelState - happy path"
+        },
+        {
+          "type": "it",
+          "name": "useControlPanelState - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "useSchemaResolver - happy path"
+        },
+        {
+          "type": "it",
+          "name": "useSchemaResolver - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "controlPanelReducer - happy path"
+        },
+        {
+          "type": "it",
+          "name": "controlPanelReducer - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "extractElementContent - happy path"
+        },
+        {
+          "type": "it",
+          "name": "extractElementContent - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getNestedValue - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getNestedValue - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "setNestedValue - happy path"
+        },
+        {
+          "type": "it",
+          "name": "setNestedValue - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "formatLabel - happy path"
+        },
+        {
+          "type": "it",
+          "name": "formatLabel - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "generatePlaceholder - happy path"
+        },
+        {
+          "type": "it",
+          "name": "generatePlaceholder - edge case/error handling"
+        }
+      ],
+      "testCount": 84
+    },
+    {
+      "path": "packages/header/__tests__/handlers.handlers.spec.ts",
+      "plugin": "header",
+      "testGroup": "handlers",
+      "handlers": [
+        "HeaderControls",
+        "HeaderThemeToggle",
+        "HeaderTitle"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "header handlers handlers"
+        },
+        {
+          "type": "it",
+          "name": "HeaderControls - happy path"
+        },
+        {
+          "type": "it",
+          "name": "HeaderControls - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "HeaderThemeToggle - happy path"
+        },
+        {
+          "type": "it",
+          "name": "HeaderThemeToggle - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "HeaderTitle - happy path"
+        },
+        {
+          "type": "it",
+          "name": "HeaderTitle - edge case/error handling"
+        }
+      ],
+      "testCount": 6
+    },
+    {
+      "path": "packages/library/__tests__/handlers.handlers.spec.ts",
+      "plugin": "library",
+      "testGroup": "handlers",
+      "handlers": [
+        "loadComponents",
+        "for",
+        "RAGEnrichmentService.if",
+        "ComponentBehaviorExtractor.for",
+        "ComponentBehaviorExtractor.if",
+        "ChatMessageComponent",
+        "ChatWindow",
+        "ConfigStatusUI",
+        "CustomComponentList",
+        "CustomComponentUpload",
+        "registerCssForComponents",
+        "LibraryPanel",
+        "LibraryPreview",
+        "computePreviewModel",
+        "startNewChatSession",
+        "exportChatHistory",
+        "importChatHistory",
+        "cleanupChatHistory",
+        "buildSystemPrompt",
+        "getPromptTemplate"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "library handlers handlers"
+        },
+        {
+          "type": "it",
+          "name": "loadComponents - happy path"
+        },
+        {
+          "type": "it",
+          "name": "loadComponents - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "for - happy path"
+        },
+        {
+          "type": "it",
+          "name": "for - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "RAGEnrichmentService.if - happy path"
+        },
+        {
+          "type": "it",
+          "name": "RAGEnrichmentService.if - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ComponentBehaviorExtractor.for - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ComponentBehaviorExtractor.for - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ComponentBehaviorExtractor.if - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ComponentBehaviorExtractor.if - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ChatMessageComponent - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ChatMessageComponent - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ChatWindow - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ChatWindow - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ConfigStatusUI - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ConfigStatusUI - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "CustomComponentList - happy path"
+        },
+        {
+          "type": "it",
+          "name": "CustomComponentList - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "CustomComponentUpload - happy path"
+        },
+        {
+          "type": "it",
+          "name": "CustomComponentUpload - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "registerCssForComponents - happy path"
+        },
+        {
+          "type": "it",
+          "name": "registerCssForComponents - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "LibraryPanel - happy path"
+        },
+        {
+          "type": "it",
+          "name": "LibraryPanel - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "LibraryPreview - happy path"
+        },
+        {
+          "type": "it",
+          "name": "LibraryPreview - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "computePreviewModel - happy path"
+        },
+        {
+          "type": "it",
+          "name": "computePreviewModel - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "startNewChatSession - happy path"
+        },
+        {
+          "type": "it",
+          "name": "startNewChatSession - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "exportChatHistory - happy path"
+        },
+        {
+          "type": "it",
+          "name": "exportChatHistory - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "importChatHistory - happy path"
+        },
+        {
+          "type": "it",
+          "name": "importChatHistory - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "cleanupChatHistory - happy path"
+        },
+        {
+          "type": "it",
+          "name": "cleanupChatHistory - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "buildSystemPrompt - happy path"
+        },
+        {
+          "type": "it",
+          "name": "buildSystemPrompt - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "getPromptTemplate - happy path"
+        },
+        {
+          "type": "it",
+          "name": "getPromptTemplate - edge case/error handling"
+        }
+      ],
+      "testCount": 40
+    },
+    {
+      "path": "packages/library-component/__tests__/handlers.handlers.spec.ts",
+      "plugin": "library-component",
+      "testGroup": "handlers",
+      "handlers": [
+        "ensurePayload",
+        "computeGhostSize",
+        "createGhostContainer",
+        "renderTemplatePreview",
+        "applyTemplateStyles",
+        "computeCursorOffsets",
+        "installDragImage",
+        "onDragStart",
+        "publishCreateRequested"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "library-component handlers handlers"
+        },
+        {
+          "type": "it",
+          "name": "ensurePayload - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ensurePayload - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "computeGhostSize - happy path"
+        },
+        {
+          "type": "it",
+          "name": "computeGhostSize - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "createGhostContainer - happy path"
+        },
+        {
+          "type": "it",
+          "name": "createGhostContainer - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "renderTemplatePreview - happy path"
+        },
+        {
+          "type": "it",
+          "name": "renderTemplatePreview - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "applyTemplateStyles - happy path"
+        },
+        {
+          "type": "it",
+          "name": "applyTemplateStyles - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "computeCursorOffsets - happy path"
+        },
+        {
+          "type": "it",
+          "name": "computeCursorOffsets - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "installDragImage - happy path"
+        },
+        {
+          "type": "it",
+          "name": "installDragImage - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "onDragStart - happy path"
+        },
+        {
+          "type": "it",
+          "name": "onDragStart - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "publishCreateRequested - happy path"
+        },
+        {
+          "type": "it",
+          "name": "publishCreateRequested - edge case/error handling"
+        }
+      ],
+      "testCount": 18
+    },
+    {
+      "path": "packages/real-estate-analyzer/__tests__/handlers.handlers.spec.ts",
+      "plugin": "real-estate-analyzer",
+      "testGroup": "handlers",
+      "handlers": [
+        "fetchPropertyData",
+        "analyze",
+        "format",
+        "ZillowService.if",
+        "OpportunityAnalyzer"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "real-estate-analyzer handlers handlers"
+        },
+        {
+          "type": "it",
+          "name": "fetchPropertyData - happy path"
+        },
+        {
+          "type": "it",
+          "name": "fetchPropertyData - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "analyze - happy path"
+        },
+        {
+          "type": "it",
+          "name": "analyze - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "format - happy path"
+        },
+        {
+          "type": "it",
+          "name": "format - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "ZillowService.if - happy path"
+        },
+        {
+          "type": "it",
+          "name": "ZillowService.if - edge case/error handling"
+        },
+        {
+          "type": "it",
+          "name": "OpportunityAnalyzer - happy path"
+        },
+        {
+          "type": "it",
+          "name": "OpportunityAnalyzer - edge case/error handling"
+        }
+      ],
+      "testCount": 10
     }
   ]
 }

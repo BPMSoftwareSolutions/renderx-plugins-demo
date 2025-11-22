@@ -39,6 +39,7 @@ async function generateProposedTests() {
   const artifactDir = join(rootDir, "packages", "ographx", ".ographx", "artifacts", "renderx-web");
   const outputDir = join(artifactDir, "analysis");
   const gapsFile = join(outputDir, "catalog-vs-ir-gaps.json");
+  const irHandlersFile = join(artifactDir, "ir", "ir-handlers.json");
   const outputFile = join(outputDir, "proposed-tests.handlers.json");
 
   await ensureDir(outputDir);
@@ -50,23 +51,34 @@ async function generateProposedTests() {
   }
 
   const handlersWithoutTests = gaps.gaps.testCoverage.handlersWithoutTests || [];
+
+  // Load IR handlers so we can map handler name -> plugin
+  const irHandlersJson = await readJsonFile(irHandlersFile);
+  const irHandlers = irHandlersJson?.handlers || [];
+  const handlerPluginMap = new Map();
+  for (const h of irHandlers) {
+    if (h?.name && h?.plugin && !handlerPluginMap.has(h.name)) {
+      handlerPluginMap.set(h.name, h.plugin);
+    }
+  }
   const testFiles = [];
   const pluginMap = {};
 
   // Group handlers by plugin and test file pattern
-  handlersWithoutTests.forEach(handler => {
-    const plugin = handler.plugin || "unknown";
-    const testGroup = handler.testGroup || "handlers";
+  handlersWithoutTests.forEach(handlerEntry => {
+    // Support both string entries and object entries (future-proof)
+    let handlerName = typeof handlerEntry === "string" ? handlerEntry : handlerEntry?.name;
+    if (!handlerName) return;
+    const plugin = typeof handlerEntry === "object" && handlerEntry?.plugin
+      ? handlerEntry.plugin
+      : handlerPluginMap.get(handlerName) || "unknown";
+    const testGroup = (typeof handlerEntry === "object" && handlerEntry?.testGroup) || "handlers";
     const key = `${plugin}:${testGroup}`;
 
     if (!pluginMap[key]) {
-      pluginMap[key] = {
-        plugin,
-        testGroup,
-        handlers: []
-      };
+      pluginMap[key] = { plugin, testGroup, handlers: [] };
     }
-    pluginMap[key].handlers.push(handler.name);
+    pluginMap[key].handlers.push(handlerName);
   });
 
   // Create test file entries
@@ -75,20 +87,10 @@ async function generateProposedTests() {
     const testPath = `packages/${group.plugin}/__tests__/${testFileName}`;
     
     const tests = [];
-    tests.push({
-      type: "describe",
-      name: `${group.plugin} ${group.testGroup} handlers`
-    });
-
-    group.handlers.forEach(handler => {
-      tests.push({
-        type: "it",
-        name: `${handler} - happy path`
-      });
-      tests.push({
-        type: "it",
-        name: `${handler} - edge case/error handling`
-      });
+    tests.push({ type: "describe", name: `${group.plugin} ${group.testGroup} handlers` });
+    group.handlers.forEach(handlerName => {
+      tests.push({ type: "it", name: `${handlerName} - happy path` });
+      tests.push({ type: "it", name: `${handlerName} - edge case/error handling` });
     });
 
     testFiles.push({
