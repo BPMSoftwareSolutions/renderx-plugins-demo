@@ -1,0 +1,981 @@
+{
+  "timestamp": "2025-11-22T17:17:09.221Z",
+  "plugin": "SelfHealingPlugin",
+  "summary": {
+    "totalSequences": 7,
+    "totalHandlers": 67,
+    "totalTestFiles": 7,
+    "totalTests": 134
+  },
+  "testFiles": [
+    {
+      "path": "packages/self-healing/__tests__/anomaly.detect.spec.ts",
+      "sequence": "self-healing-anomaly-detect-symphony",
+      "sequenceName": "Detect Anomalies",
+      "handlers": [
+        "detectAnomaliesRequested",
+        "loadTelemetryData",
+        "detectPerformanceAnomalies",
+        "detectBehavioralAnomalies",
+        "detectCoverageGaps",
+        "detectErrorPatterns",
+        "aggregateAnomalyResults",
+        "storeAnomalyResults",
+        "detectAnomaliesCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Detect Anomalies (self-healing-anomaly-detect-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "detectAnomaliesRequested - happy path",
+          "handler": "detectAnomaliesRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectAnomaliesRequested - error handling",
+          "handler": "detectAnomaliesRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadTelemetryData - happy path",
+          "handler": "loadTelemetryData",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadTelemetryData - error handling",
+          "handler": "loadTelemetryData",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "detectPerformanceAnomalies - happy path",
+          "handler": "detectPerformanceAnomalies",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectPerformanceAnomalies - error handling",
+          "handler": "detectPerformanceAnomalies",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectBehavioralAnomalies - happy path",
+          "handler": "detectBehavioralAnomalies",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectBehavioralAnomalies - error handling",
+          "handler": "detectBehavioralAnomalies",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectCoverageGaps - happy path",
+          "handler": "detectCoverageGaps",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectCoverageGaps - error handling",
+          "handler": "detectCoverageGaps",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectErrorPatterns - happy path",
+          "handler": "detectErrorPatterns",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectErrorPatterns - error handling",
+          "handler": "detectErrorPatterns",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "aggregateAnomalyResults - happy path",
+          "handler": "aggregateAnomalyResults",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "aggregateAnomalyResults - error handling",
+          "handler": "aggregateAnomalyResults",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "storeAnomalyResults - happy path",
+          "handler": "storeAnomalyResults",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "storeAnomalyResults - error handling",
+          "handler": "storeAnomalyResults",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "detectAnomaliesCompleted - happy path",
+          "handler": "detectAnomaliesCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "detectAnomaliesCompleted - error handling",
+          "handler": "detectAnomaliesCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 18
+    },
+    {
+      "path": "packages/self-healing/__tests__/deployment.deploy.spec.ts",
+      "sequence": "self-healing-deployment-deploy-symphony",
+      "sequenceName": "Deploy Fix",
+      "handlers": [
+        "deployRequested",
+        "loadValidationResults",
+        "checkApproval",
+        "createBranch",
+        "applyChanges",
+        "createPullRequest",
+        "runCIChecks",
+        "autoMergePR",
+        "deployToProduction",
+        "verifyDeployment",
+        "deployCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Deploy Fix (self-healing-deployment-deploy-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "deployRequested - happy path",
+          "handler": "deployRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "deployRequested - error handling",
+          "handler": "deployRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadValidationResults - happy path",
+          "handler": "loadValidationResults",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadValidationResults - error handling",
+          "handler": "loadValidationResults",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "checkApproval - happy path",
+          "handler": "checkApproval",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "checkApproval - error handling",
+          "handler": "checkApproval",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "createBranch - happy path",
+          "handler": "createBranch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "createBranch - error handling",
+          "handler": "createBranch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "applyChanges - happy path",
+          "handler": "applyChanges",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "applyChanges - error handling",
+          "handler": "applyChanges",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "createPullRequest - happy path",
+          "handler": "createPullRequest",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "createPullRequest - error handling",
+          "handler": "createPullRequest",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "runCIChecks - happy path",
+          "handler": "runCIChecks",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "runCIChecks - error handling",
+          "handler": "runCIChecks",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "autoMergePR - happy path",
+          "handler": "autoMergePR",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "autoMergePR - error handling",
+          "handler": "autoMergePR",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "deployToProduction - happy path",
+          "handler": "deployToProduction",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "deployToProduction - error handling",
+          "handler": "deployToProduction",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "verifyDeployment - happy path",
+          "handler": "verifyDeployment",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "verifyDeployment - error handling",
+          "handler": "verifyDeployment",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "deployCompleted - happy path",
+          "handler": "deployCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "deployCompleted - error handling",
+          "handler": "deployCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 22
+    },
+    {
+      "path": "packages/self-healing/__tests__/diagnosis.analyze.spec.ts",
+      "sequence": "self-healing-diagnosis-analyze-symphony",
+      "sequenceName": "Analyze Root Cause",
+      "handlers": [
+        "analyzeRequested",
+        "loadAnomalies",
+        "loadCodebaseInfo",
+        "analyzePerformanceIssues",
+        "analyzeBehavioralIssues",
+        "analyzeCoverageIssues",
+        "analyzeErrorIssues",
+        "assessImpact",
+        "recommendFixes",
+        "storeDiagnosis",
+        "analyzeCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Analyze Root Cause (self-healing-diagnosis-analyze-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "analyzeRequested - happy path",
+          "handler": "analyzeRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeRequested - error handling",
+          "handler": "analyzeRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadAnomalies - happy path",
+          "handler": "loadAnomalies",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadAnomalies - error handling",
+          "handler": "loadAnomalies",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadCodebaseInfo - happy path",
+          "handler": "loadCodebaseInfo",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadCodebaseInfo - error handling",
+          "handler": "loadCodebaseInfo",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "analyzePerformanceIssues - happy path",
+          "handler": "analyzePerformanceIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzePerformanceIssues - error handling",
+          "handler": "analyzePerformanceIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeBehavioralIssues - happy path",
+          "handler": "analyzeBehavioralIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeBehavioralIssues - error handling",
+          "handler": "analyzeBehavioralIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeCoverageIssues - happy path",
+          "handler": "analyzeCoverageIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeCoverageIssues - error handling",
+          "handler": "analyzeCoverageIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeErrorIssues - happy path",
+          "handler": "analyzeErrorIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeErrorIssues - error handling",
+          "handler": "analyzeErrorIssues",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "assessImpact - happy path",
+          "handler": "assessImpact",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "assessImpact - error handling",
+          "handler": "assessImpact",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "recommendFixes - happy path",
+          "handler": "recommendFixes",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "recommendFixes - error handling",
+          "handler": "recommendFixes",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "storeDiagnosis - happy path",
+          "handler": "storeDiagnosis",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "storeDiagnosis - error handling",
+          "handler": "storeDiagnosis",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "analyzeCompleted - happy path",
+          "handler": "analyzeCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "analyzeCompleted - error handling",
+          "handler": "analyzeCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 22
+    },
+    {
+      "path": "packages/self-healing/__tests__/fix.generate.spec.ts",
+      "sequence": "self-healing-fix-generate-symphony",
+      "sequenceName": "Generate Fix",
+      "handlers": [
+        "generateFixRequested",
+        "loadDiagnosis",
+        "generateCodeFix",
+        "generateTestFix",
+        "generateDocumentationFix",
+        "createPatch",
+        "validateSyntax",
+        "storePatch",
+        "generateFixCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Generate Fix (self-healing-fix-generate-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "generateFixRequested - happy path",
+          "handler": "generateFixRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateFixRequested - error handling",
+          "handler": "generateFixRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadDiagnosis - happy path",
+          "handler": "loadDiagnosis",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadDiagnosis - error handling",
+          "handler": "loadDiagnosis",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "generateCodeFix - happy path",
+          "handler": "generateCodeFix",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateCodeFix - error handling",
+          "handler": "generateCodeFix",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateTestFix - happy path",
+          "handler": "generateTestFix",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateTestFix - error handling",
+          "handler": "generateTestFix",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateDocumentationFix - happy path",
+          "handler": "generateDocumentationFix",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateDocumentationFix - error handling",
+          "handler": "generateDocumentationFix",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "createPatch - happy path",
+          "handler": "createPatch",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "createPatch - error handling",
+          "handler": "createPatch",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "validateSyntax - happy path",
+          "handler": "validateSyntax",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "validateSyntax - error handling",
+          "handler": "validateSyntax",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "storePatch - happy path",
+          "handler": "storePatch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "storePatch - error handling",
+          "handler": "storePatch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "generateFixCompleted - happy path",
+          "handler": "generateFixCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateFixCompleted - error handling",
+          "handler": "generateFixCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 18
+    },
+    {
+      "path": "packages/self-healing/__tests__/learning.track.spec.ts",
+      "sequence": "self-healing-learning-track-symphony",
+      "sequenceName": "Track Effectiveness",
+      "handlers": [
+        "trackRequested",
+        "loadDeploymentInfo",
+        "collectPostDeploymentMetrics",
+        "compareMetrics",
+        "calculateImprovement",
+        "assessSuccess",
+        "updateLearningModels",
+        "generateInsights",
+        "storeEffectiveness",
+        "trackCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Track Effectiveness (self-healing-learning-track-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "trackRequested - happy path",
+          "handler": "trackRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "trackRequested - error handling",
+          "handler": "trackRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadDeploymentInfo - happy path",
+          "handler": "loadDeploymentInfo",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadDeploymentInfo - error handling",
+          "handler": "loadDeploymentInfo",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "collectPostDeploymentMetrics - happy path",
+          "handler": "collectPostDeploymentMetrics",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "collectPostDeploymentMetrics - error handling",
+          "handler": "collectPostDeploymentMetrics",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "compareMetrics - happy path",
+          "handler": "compareMetrics",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "compareMetrics - error handling",
+          "handler": "compareMetrics",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "calculateImprovement - happy path",
+          "handler": "calculateImprovement",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "calculateImprovement - error handling",
+          "handler": "calculateImprovement",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "assessSuccess - happy path",
+          "handler": "assessSuccess",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "assessSuccess - error handling",
+          "handler": "assessSuccess",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "updateLearningModels - happy path",
+          "handler": "updateLearningModels",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "updateLearningModels - error handling",
+          "handler": "updateLearningModels",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateInsights - happy path",
+          "handler": "generateInsights",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "generateInsights - error handling",
+          "handler": "generateInsights",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "storeEffectiveness - happy path",
+          "handler": "storeEffectiveness",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "storeEffectiveness - error handling",
+          "handler": "storeEffectiveness",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "trackCompleted - happy path",
+          "handler": "trackCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "trackCompleted - error handling",
+          "handler": "trackCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 20
+    },
+    {
+      "path": "packages/self-healing/__tests__/telemetry.parse.spec.ts",
+      "sequence": "self-healing-telemetry-parse-symphony",
+      "sequenceName": "Parse Production Telemetry",
+      "handlers": [
+        "parseTelemetryRequested",
+        "loadLogFiles",
+        "extractTelemetryEvents",
+        "normalizeTelemetryData",
+        "aggregateTelemetryMetrics",
+        "storeTelemetryDatabase",
+        "parseTelemetryCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Parse Production Telemetry (self-healing-telemetry-parse-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "parseTelemetryRequested - happy path",
+          "handler": "parseTelemetryRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "parseTelemetryRequested - error handling",
+          "handler": "parseTelemetryRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadLogFiles - happy path",
+          "handler": "loadLogFiles",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadLogFiles - error handling",
+          "handler": "loadLogFiles",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "extractTelemetryEvents - happy path",
+          "handler": "extractTelemetryEvents",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "extractTelemetryEvents - error handling",
+          "handler": "extractTelemetryEvents",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "normalizeTelemetryData - happy path",
+          "handler": "normalizeTelemetryData",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "normalizeTelemetryData - error handling",
+          "handler": "normalizeTelemetryData",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "aggregateTelemetryMetrics - happy path",
+          "handler": "aggregateTelemetryMetrics",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "aggregateTelemetryMetrics - error handling",
+          "handler": "aggregateTelemetryMetrics",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "storeTelemetryDatabase - happy path",
+          "handler": "storeTelemetryDatabase",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "storeTelemetryDatabase - error handling",
+          "handler": "storeTelemetryDatabase",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "parseTelemetryCompleted - happy path",
+          "handler": "parseTelemetryCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "parseTelemetryCompleted - error handling",
+          "handler": "parseTelemetryCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 14
+    },
+    {
+      "path": "packages/self-healing/__tests__/validation.run.spec.ts",
+      "sequence": "self-healing-validation-run-symphony",
+      "sequenceName": "Validate Fix",
+      "handlers": [
+        "validateRequested",
+        "loadPatch",
+        "applyPatch",
+        "runTests",
+        "checkCoverage",
+        "verifyPerformance",
+        "validateDocumentation",
+        "aggregateValidationResults",
+        "storeValidationResults",
+        "validateCompleted"
+      ],
+      "tests": [
+        {
+          "type": "describe",
+          "name": "Validate Fix (self-healing-validation-run-symphony)"
+        },
+        {
+          "type": "it",
+          "name": "validateRequested - happy path",
+          "handler": "validateRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "validateRequested - error handling",
+          "handler": "validateRequested",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "loadPatch - happy path",
+          "handler": "loadPatch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "loadPatch - error handling",
+          "handler": "loadPatch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "applyPatch - happy path",
+          "handler": "applyPatch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "applyPatch - error handling",
+          "handler": "applyPatch",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "runTests - happy path",
+          "handler": "runTests",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "runTests - error handling",
+          "handler": "runTests",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "checkCoverage - happy path",
+          "handler": "checkCoverage",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "checkCoverage - error handling",
+          "handler": "checkCoverage",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "verifyPerformance - happy path",
+          "handler": "verifyPerformance",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "verifyPerformance - error handling",
+          "handler": "verifyPerformance",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "validateDocumentation - happy path",
+          "handler": "validateDocumentation",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "validateDocumentation - error handling",
+          "handler": "validateDocumentation",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "aggregateValidationResults - happy path",
+          "handler": "aggregateValidationResults",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "aggregateValidationResults - error handling",
+          "handler": "aggregateValidationResults",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "storeValidationResults - happy path",
+          "handler": "storeValidationResults",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "storeValidationResults - error handling",
+          "handler": "storeValidationResults",
+          "kind": "stage-crew"
+        },
+        {
+          "type": "it",
+          "name": "validateCompleted - happy path",
+          "handler": "validateCompleted",
+          "kind": "pure"
+        },
+        {
+          "type": "it",
+          "name": "validateCompleted - error handling",
+          "handler": "validateCompleted",
+          "kind": "pure"
+        }
+      ],
+      "testCount": 20
+    }
+  ]
+}
