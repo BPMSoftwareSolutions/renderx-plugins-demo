@@ -13,9 +13,10 @@
  * - Learning and optimization
  */
 
-export * from './handlers/index.js';
-export * from './types/index.js';
-export * from './plugin.js';
+// Re-export internal TypeScript sources (omit extensions so the declaration build includes them)
+export * from './handlers/index';
+export * from './types/index';
+export * from './plugin';
 
 // Re-export sequences for manifest registration
 export { default as telemetryParseSequence } from '../json-sequences/telemetry.parse.json';

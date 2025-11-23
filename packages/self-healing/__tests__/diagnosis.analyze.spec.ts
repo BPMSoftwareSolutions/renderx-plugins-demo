@@ -1,6 +1,5 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-// TODO: Import handlers from @renderx-plugins/self-healing
-// import { analyzeRequested, loadAnomalies, loadCodebaseInfo, analyzePerformanceIssues, analyzeBehavioralIssues, analyzeCoverageIssues, analyzeErrorIssues, assessImpact, recommendFixes, storeDiagnosis, analyzeCompleted } from '../src/handlers/index.js';
+import { describe, it, expect } from 'vitest';
+import { analyzeRequested, loadAnomalies, loadCodebaseInfo, analyzePerformanceIssues, storeDiagnosis, analyzeCompleted, runDiagnosisAnalyze } from '../src/handlers/index';
 
 /**
  * Test suite for Analyze Root Cause
@@ -9,29 +8,23 @@ import { describe, it, expect, beforeEach } from 'vitest';
  * Tests: 22
  */
 
-describe.skip('Analyze Root Cause (self-healing-diagnosis-analyze-symphony)', () => {
-  // TODO: Set up test context and mocks
-  let _ctx: any;
-
-  beforeEach(() => {
-    // TODO: Initialize context with required handlers and mocks
-    __ctx = {};
-  });
+describe('Analyze Root Cause (self-healing-diagnosis-analyze-symphony minimal slice)', () => {
 
   it('analyzeRequested - happy path', () => {
-    // TODO: Implement test for analyzeRequested (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const evt = analyzeRequested('diag-seq-1');
+    expect(evt.event).toBe('diagnosis.analyze.requested');
+    expect(evt.context?.sequenceId).toBe('diag-seq-1');
   });
   it('analyzeRequested - error handling', () => {
     // TODO: Implement test for analyzeRequested (pure)
     // This test should verify error handling and edge cases
     expect(true).toBe(true);
   });
-  it('loadAnomalies - happy path', () => {
-    // TODO: Implement test for loadAnomalies (stage-crew)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+  it('loadAnomalies - happy path (graceful missing)', () => {
+    const evt = loadAnomalies();
+    expect(evt.handler).toBe('loadAnomalies');
+    expect(Array.isArray(evt.context.anomalies)).toBe(true);
+    expect(evt.context.count).toBe(evt.context.anomalies.length);
   });
   it('loadAnomalies - error handling', () => {
     // TODO: Implement test for loadAnomalies (stage-crew)
@@ -39,19 +32,21 @@ describe.skip('Analyze Root Cause (self-healing-diagnosis-analyze-symphony)', ()
     expect(true).toBe(true);
   });
   it('loadCodebaseInfo - happy path', () => {
-    // TODO: Implement test for loadCodebaseInfo (stage-crew)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+    const evt = loadCodebaseInfo();
+    expect(evt.handler).toBe('loadCodebaseInfo');
+    expect(evt.context.tsFiles).toBeGreaterThanOrEqual(0);
   });
   it('loadCodebaseInfo - error handling', () => {
     // TODO: Implement test for loadCodebaseInfo (stage-crew)
     // This test should verify error handling and edge cases
     expect(true).toBe(true);
   });
-  it('analyzePerformanceIssues - happy path', () => {
-    // TODO: Implement test for analyzePerformanceIssues (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+  it('analyzePerformanceIssues - derives normalized severity', () => {
+    const perfAnomalies = [{ id: 'a1', type: 'performance', severity: 'medium', description: 'Latency spike', metrics: { latencyRatio: 3.4 }, detectedAt: new Date().toISOString(), confidence: 0.8 }];
+    // @ts-ignore minimal anomaly shape for test
+    const evt = analyzePerformanceIssues(perfAnomalies as any);
+    expect(evt.context.count).toBe(1);
+    expect(evt.context.issues[0].severity).toBe('high');
   });
   it('analyzePerformanceIssues - error handling', () => {
     // TODO: Implement test for analyzePerformanceIssues (pure)
@@ -108,20 +103,29 @@ describe.skip('Analyze Root Cause (self-healing-diagnosis-analyze-symphony)', ()
     // This test should verify error handling and edge cases
     expect(true).toBe(true);
   });
-  it('storeDiagnosis - happy path', () => {
-    // TODO: Implement test for storeDiagnosis (stage-crew)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+  it('storeDiagnosis - writes file and returns envelope', () => {
+    const slice = { performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }], generatedAt: new Date().toISOString(), sequenceId: 'diag-seq-1' };
+    // @ts-ignore partial PerformanceIssue
+    const evt = storeDiagnosis(slice as any);
+    expect(evt.context.stored).toBe(true);
+    expect(evt.context.filePath.endsWith('diagnosis-results.json')).toBe(true);
   });
   it('storeDiagnosis - error handling', () => {
     // TODO: Implement test for storeDiagnosis (stage-crew)
     // This test should verify error handling and edge cases
     expect(true).toBe(true);
   });
-  it('analyzeCompleted - happy path', () => {
-    // TODO: Implement test for analyzeCompleted (pure)
-    // This test should verify happy path behavior
-    expect(true).toBe(true);
+  it('analyzeCompleted - summarizes slice', () => {
+    const slice = { performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }], generatedAt: new Date().toISOString(), sequenceId: 'diag-seq-1' };
+    // @ts-ignore partial PerformanceIssue
+    const evt = analyzeCompleted('diag-seq-1', slice as any);
+    expect(evt.context.performanceIssueCount).toBe(1);
+  });
+  it('runDiagnosisAnalyze - end-to-end minimal slice', () => {
+    const summary = runDiagnosisAnalyze({ sequenceId: 'diag-seq-e2e' });
+    expect(summary.requested.context.sequenceId).toBe('diag-seq-e2e');
+    expect(summary.completed.context.performanceIssueCount).toBe(summary.slice.performanceIssues.length);
+    expect(summary.store.context.stored).toBe(true);
   });
   it('analyzeCompleted - error handling', () => {
     // TODO: Implement test for analyzeCompleted (pure)

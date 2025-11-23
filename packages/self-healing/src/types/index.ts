@@ -49,6 +49,21 @@ export interface Anomaly {
   confidence: number;
 }
 
+// Minimal structures used in early diagnosis slice
+export interface PerformanceIssue {
+  anomalyId: string;
+  handler?: string;
+  latencyRatio?: number;
+  severity: SeverityLevel;
+  description: string;
+}
+
+export interface DiagnosisSlice {
+  performanceIssues: PerformanceIssue[];
+  generatedAt: string;
+  sequenceId: string;
+}
+
 export interface Diagnosis {
   anomalyId: string;
   rootCauses: string[];

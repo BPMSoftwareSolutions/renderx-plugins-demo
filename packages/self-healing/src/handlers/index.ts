@@ -42,7 +42,19 @@ export * from './anomaly/run.anomaly.detect';
 // Diagnosis Handlers (incremental implementation)
 export * from './diagnosis/analyze.requested';
 export * from './diagnosis/load.anomalies';
+export * from './diagnosis/load.codebase.info';
+export * from './diagnosis/analyze.performance.issues';
+export * from './diagnosis/store.diagnosis';
+export * from './diagnosis/analyze.completed';
+export * from './diagnosis/run.diagnosis.analyze';
 // ... (to be added)
+// Baseline Establishment Handlers (minimal slice)
+export * from './baseline/collect.metrics';
+export * from './baseline/aggregate.metrics';
+export * from './baseline/establish.baseline';
+export * from './baseline/store.baseline';
+export * from './baseline/baseline.completed';
+export * from './baseline/run.baseline.establish';
 // Fix Generation Handlers - pending implementation
 // export * from './fix/generate.requested';
 // ... (to be added)

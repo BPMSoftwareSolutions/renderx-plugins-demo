@@ -1,4 +1,7 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
+import { storeDiagnosis } from '../../src/handlers/diagnosis/store.diagnosis';
+import * as fs from 'fs';
+import * as path from 'path';
 
 /**
  * Business BDD Test: storeDiagnosis
@@ -14,55 +17,17 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe.skip('Business BDD: storeDiagnosis', () => {
-  let _ctx: any;
-
-  beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-  _ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
-      output: null,
-      error: null
-    };
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-    ctx = null;
-  });
+describe('Business BDD: storeDiagnosis', () => {
 
   describe('Scenario: Store diagnosis results for fix generation', () => {
-    it('should achieve the desired business outcome', async () => {
-      // GIVEN (Preconditions - Business Context)
-      // - diagnoses have been aggregated
-      // - database is available
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
-
-      // WHEN (Action - User/System Action)
-      // - storage handler persists diagnoses
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
-
-      // THEN (Expected Outcome - Business Value)
-      // - diagnoses should be stored
-      // - data should be queryable
-      // - fix generation can proceed
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+    it('persists performance issues slice and exposes file path (Given aggregated slice, When store runs, Then fix generation can proceed)', () => {
+      const slice = { performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }], generatedAt: new Date().toISOString(), sequenceId: 'diag-seq-2' };
+      // @ts-ignore minimal shape
+      const evt = storeDiagnosis(slice as any);
+      expect(evt.context.stored).toBe(true);
+      expect(fs.existsSync(evt.context.filePath)).toBe(true);
+      const raw = JSON.parse(fs.readFileSync(evt.context.filePath, 'utf8'));
+      expect(raw.slice.performanceIssues.length).toBe(1);
     });
   });
 });

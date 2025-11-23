@@ -3,11 +3,11 @@
   "type": "Comprehensive Business BDD Specifications",
   "plugin": "SelfHealingPlugin",
   "description": "Business-focused BDD specifications for all handlers with realistic scenarios",
-  "timestamp": "2025-11-22T17:42:44.313Z",
+  "timestamp": "2025-11-23T14:25:00.000Z",
   "summary": {
-    "totalHandlers": 67,
-    "totalScenarios": 67,
-    "coverage": "67/67 handlers (100%)"
+  "totalHandlers": 72,
+  "totalScenarios": 72,
+  "coverage": "72/72 handlers (100%)"
   },
   "handlers": [
     {
@@ -1548,6 +1548,77 @@
             "user should be notified",
             "system should be ready for next issue"
           ]
+        }
+      ]
+    }
+    ,
+    {
+      "name": "baselineCollectMetrics",
+      "sequence": "baseline",
+      "businessValue": "Access aggregated telemetry for baseline creation",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Load existing telemetry metrics artifact to start baseline establishment",
+          "given": ["telemetry parsing sequence completed", ".generated/telemetry-metrics.json exists"],
+          "when": ["baseline collection handler executes"],
+          "then": ["artifact should be read", "presence should be confirmed", "metrics should be available for next step"]
+        }
+      ]
+    },
+    {
+      "name": "baselineAggregateMetrics",
+      "sequence": "baseline",
+      "businessValue": "Prepare raw metrics for baseline statistics",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Pass through metrics in minimal slice for baseline computation",
+          "given": ["metrics artifact loaded", "no refinement required in minimal slice"],
+          "when": ["aggregate metrics handler executes"],
+          "then": ["handlers map should be available", "total events should be exposed", "ready for establish step"]
+        }
+      ]
+    },
+    {
+      "name": "establishBaseline",
+      "sequence": "baseline",
+      "businessValue": "Derive initial latency & error baselines",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Compute p50, p95, errorRate and confidence per handler",
+          "given": ["aggregated handler metrics", "latency & error counts"],
+          "when": ["baseline establishment executes"],
+          "then": ["baseline statistics should be derived", "low confidence handlers flagged", "structure ready for persistence"]
+        }
+      ]
+    },
+    {
+      "name": "storeBaselineMetrics",
+      "sequence": "baseline",
+      "businessValue": "Persist baseline metrics for anomaly & SLO evaluation",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store baseline metrics JSON artifact",
+          "given": ["baseline statistics computed", "write access to .generated"],
+          "when": ["baseline storage handler executes"],
+          "then": ["baseline file should be written", "handler count recorded", "stored status reported"]
+        }
+      ]
+    },
+    {
+      "name": "baselineCompleted",
+      "sequence": "baseline",
+      "businessValue": "Signal completion of baseline establishment",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Emit completion event summarizing baseline establishment",
+          "given": ["baseline stored", "low confidence handlers list"],
+          "when": ["completion handler executes"],
+          "then": ["summary event should be emitted", "next anomaly detection sequence can consume baseline", "stakeholder can review confidence"]
         }
       ]
     }

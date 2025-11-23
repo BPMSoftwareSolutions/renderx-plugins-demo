@@ -1,0 +1,39 @@
+{
+  "name": "baseline-metrics-establish",
+  "title": "Baseline Metrics Establishment Sequence",
+  "description": "Generates initial baseline performance & reliability metrics from aggregated telemetry for anomaly & SLO evaluation.",
+  "version": "0.1.0",
+  "type": "sequence",
+  "steps": [
+    { "order": 1, "id": "baseline.collect.metrics", "description": "Load existing aggregated telemetry metrics artifact (.generated/telemetry-metrics.json)." },
+    { "order": 2, "id": "baseline.aggregate.metrics", "description": "Optionally refine raw metrics (pass-through in minimal slice)." },
+    { "order": 3, "id": "baseline.establish", "description": "Derive baseline statistics (p50, p95 latency, error rate, counts) and confidence levels." },
+    { "order": 4, "id": "baseline.store", "description": "Persist baseline to .generated/baseline-metrics.json with schema version & timestamp." },
+    { "order": 5, "id": "baseline.completed", "description": "Emit completion event summarizing handler baseline counts & any low-confidence entries." }
+  ],
+  "business_value": "Provides objective historical reference enabling anomaly detection, SLO evaluation, and performance regression prevention.",
+  "initial_constraints": [
+    "Requires telemetry parsing sequence executed first",
+    "Confidence low when sampleSize < 25 events per handler",
+    "Outlier filtering deferred to later slice"
+  ],
+  "outputs": {
+    "file": ".generated/baseline-metrics.json",
+    "event": "baseline.metrics.established",
+    "shape": {
+      "schemaVersion": "1.0",
+      "generatedAt": "ISO timestamp",
+      "handlers": {
+        "handlerName": {
+          "count": "number of invocations",
+          "avgTime": "mean latency ms",
+          "p50": "approximate median (simple derivation in minimal slice)",
+          "p95": "approximate 95th percentile (heuristic)",
+          "errorRate": "errors / count",
+          "confidence": "low|medium|high",
+          "sampleSize": "count"
+        }
+      }
+    }
+  }
+}

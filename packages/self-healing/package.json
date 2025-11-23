@@ -22,7 +22,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc && tsup src/index.ts --format esm --dts",
+  "build": "tsc && tsup src/index.ts --format esm",
     "dev": "tsc --watch",
     "test": "vitest run",
     "test:watch": "vitest",

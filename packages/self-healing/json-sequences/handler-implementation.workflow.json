@@ -2,7 +2,7 @@
   "name": "handler-implementation-workflow",
   "title": "Handler Implementation Workflow - BDD → TDD → Done",
   "description": "Complete workflow for implementing new handlers using Test-Driven Development driven by Business-Driven Development specifications",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "type": "workflow",
   "purpose": "Guide agents through implementing handlers using BDD→TDD→Done pattern",
   "phases": [
@@ -36,6 +36,12 @@
       "description": "Read and understand the business BDD specification for the handler",
       "steps": [
         {
+          "step": 0,
+          "action": "Verify or (re)generate business spec artifact",
+          "details": "Check existence & freshness of packages/self-healing/.generated/comprehensive-business-bdd-specifications.json; if missing or stale run: node scripts/generate-comprehensive-business-bdd-specs.js",
+          "expected_outcome": "Specification file present, up-to-date, validated before tests"
+        },
+        {
           "step": 1,
           "action": "Locate business spec",
           "details": "Open packages/self-healing/.generated/comprehensive-business-bdd-specifications.json",
@@ -58,6 +64,12 @@
         "user_story": "As an agent, I want to understand the business requirements so that I implement the handler correctly",
         "persona": "Agent/Developer",
         "scenarios": [
+          {
+            "title": "Product Owner verifies spec artifact before implementation",
+            "given": ["spec generation script exists", "no unit tests started yet"],
+            "when": ["artifact presence is checked", "script is run if missing"],
+            "then": ["spec file is available", "stakeholder confirms behavior design", "workflow can proceed to BDD test implementation"]
+          },
           {
             "title": "Agent reads business spec for parseTelemetryRequested",
             "given": [
@@ -387,8 +399,31 @@
     "Artifacts as proof",
     "Iterate based on business outcomes"
   ],
+  "service_objectives": {
+    "overview": "Service Level Objectives (SLOs) define clear performance and reliability targets; Service Level Indicators (SLIs) measure them; SLAs communicate external commitments.",
+    "business_values": [
+      { "value": "Evolvable Architecture", "description": "SLO-driven constraints surface scaling needs early enabling modular evolution." },
+      { "value": "Clear Objectives & Expectations", "description": "Quantified targets (e.g., latency_p95 <= 300ms) align stakeholders and engineering focus." },
+      { "value": "Consistent Documentation", "description": "Central SLO config JSON becomes single source-of-truth referenced in plugin & sequences." },
+      { "value": "Observability & Self-Healing", "description": "Automated breach detection feeds anomaly & diagnosis sequences to trigger remediation." },
+      { "value": "Continuous Improvement", "description": "Historical SLI trend + breach analytics fuel WSJF reprioritization and learning models." }
+    ],
+    "initial_slos": [
+      { "id": "latency_p95", "target": 300, "windowMinutes": 60, "comparison": "<=", "indicator": "request_latency_p95_ms" },
+      { "id": "error_rate", "target": 0.02, "windowMinutes": 60, "comparison": "<=", "indicator": "error_rate_ratio" },
+      { "id": "availability", "target": 0.999, "windowMinutes": 1440, "comparison": ">=", "indicator": "success_rate_ratio" },
+      { "id": "throughput", "target": 50, "windowMinutes": 5, "comparison": ">=", "indicator": "requests_per_second_avg" }
+    ],
+    "slice_demo_expectations": [
+      "Show current computed SLIs from telemetry artifacts",
+      "Display evaluation comparing each SLI vs target",
+      "Highlight any breaches as anomaly events",
+      "Explain business value mapping for each objective"
+    ]
+  },
   "definition_of_done": [
     "WSJF phase completed with decision artifact (WSJF_DECISIONS.md)",
+    "Business spec artifact verified or regenerated (Phase 1 step 0) before tests",
     "Business spec understood (Phase 1)",
     "Business BDD test implemented & passes (Phase 2 & 5)",
     "Unit tests Red→Green→Refactor cycle completed (Phase 3 & 4)",
