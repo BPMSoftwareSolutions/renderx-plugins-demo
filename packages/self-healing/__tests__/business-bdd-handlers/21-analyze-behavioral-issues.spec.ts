@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { analyzeBehavioralIssues } from '../../src/handlers/diagnosis/analyze.behavioral.issues';
 
 /**
  * Business BDD Test: analyzeBehavioralIssues
@@ -14,55 +15,48 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe.skip('Business BDD: analyzeBehavioralIssues', () => {
-  let _ctx: any;
+describe('Business BDD: analyzeBehavioralIssues', () => {
+  let _ctx: { handler: Function; anomalies: any[]; output: any; mocks: { logger: Function } };
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-  _ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
-      output: null,
-      error: null
+    _ctx = {
+      handler: analyzeBehavioralIssues,
+      mocks: { logger: vi.fn() },
+      anomalies: [
+        { id: 'a1', type: 'behavioral', severity: 'medium', description: 'out of order', metrics: { outOfOrder: true }, detectedAt: new Date().toISOString(), confidence: 0.8 },
+        { id: 'a2', type: 'behavioral', severity: 'low', description: 'missing handlers', metrics: { missingHandlers: ['hX','hY','hZ'] }, detectedAt: new Date().toISOString(), confidence: 0.7 }
+      ],
+      output: null
     };
   });
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
   });
 
-  describe('Scenario: Analyze behavioral anomalies to find sequence issues', () => {
-    it('should achieve the desired business outcome', async () => {
+  it('Scenario: Analyze behavioral anomalies to find sequence issues', () => {
       // GIVEN (Preconditions - Business Context)
       // - behavioral anomaly detected
       // - sequence execution is incorrect
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      expect(_ctx.anomalies.length).toBe(2);
 
       // WHEN (Action - User/System Action)
       // - behavioral analysis handler executes
 
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+    _ctx.output = _ctx.handler(_ctx.anomalies as any);
 
       // THEN (Expected Outcome - Business Value)
       // - sequence issue should be identified
       // - dependency problem should be found
       // - fix recommendation should be provided
 
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      // THEN
+      expect(_ctx.output).toBeDefined();
+      const issues: any[] = _ctx.output.context.issues;
+      expect(issues.length).toBe(2);
+      const missingEscalated = issues.find((i: any) => i.missingHandlers?.length === 3);
+      expect(missingEscalated?.severity).toBe('high'); // escalated due to 3 missing handlers
+      const outOfOrder = issues.find((i: any) => i.outOfOrder);
+      expect(outOfOrder?.severity).toMatch(/medium|high|critical/);
     });
-  });
 });

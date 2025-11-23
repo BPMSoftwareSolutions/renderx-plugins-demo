@@ -2,7 +2,7 @@
   "name": "handler-implementation-workflow",
   "title": "Handler Implementation Workflow - BDD → TDD → Done",
   "description": "Complete workflow for implementing new handlers using Test-Driven Development driven by Business-Driven Development specifications",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "type": "workflow",
   "purpose": "Guide agents through implementing handlers using BDD→TDD→Done pattern",
   "phases": [
@@ -19,13 +19,15 @@
         { "step": 5, "action": "Estimate Job Size (JS)", "details": "Relative effort (story points or t-shirt sizing mapped to numbers).", "expected_outcome": "JS score recorded" },
         { "step": 6, "action": "Compute WSJF", "details": "Formula: (BV + TC + RR/OE) / JS. Rank descending.", "expected_outcome": "Ranked list with WSJF scores" },
         { "step": 7, "action": "Select next handler slice", "details": "Pick top WSJF AND confirm feasibility for current iteration timeframe.", "expected_outcome": "Chosen handler documented" },
-        { "step": 8, "action": "Capture decision artifact", "details": "Append/Update WSJF table in DEMO_FEEDBACK.md or WSJF_DECISIONS.md.", "expected_outcome": "Persisted decision record" }
+        { "step": 8, "action": "Capture decision artifact", "details": "Append/Update WSJF table in DEMO_FEEDBACK.md or WSJF_DECISIONS.md.", "expected_outcome": "Persisted decision record" },
+        { "step": 9, "action": "Verify improvement item readiness", "details": "If selecting an improvement from .generated/spec-enforcement-improvement-backlog.json: confirm status=planned, priority≠low, acceptance criteria present, blockers absent, and spec enforcement script passes (node scripts/verify-bdd-spec.js). Record readiness or update backlog with blockers.", "expected_outcome": "Improvement item marked READY or backlog updated with reasons not ready" }
       ],
       "business_bdd_spec": {
         "user_story": "As a product stakeholder, I want high-value handlers implemented first so that we maximize ROI and agility.",
         "persona": "Stakeholder/Product Owner",
         "scenarios": [
-          { "title": "Stakeholder ranks backlog with WSJF", "given": ["list of candidate handlers", "agreed scoring scales"], "when": ["scores are estimated", "WSJF computed"], "then": ["highest WSJF selected", "decision documented", "iteration goal clarified"] }
+          { "title": "Stakeholder ranks backlog with WSJF", "given": ["list of candidate handlers", "agreed scoring scales"], "when": ["scores are estimated", "WSJF computed"], "then": ["highest WSJF selected", "decision documented", "iteration goal clarified"] },
+          { "title": "Team verifies improvement item readiness", "given": ["improvement backlog JSON exists", "candidate item has priority and acceptance"], "when": ["readiness criteria are evaluated", "spec enforcement passes"], "then": ["item marked READY", "or blockers documented", "decision artifact updated"] }
         ]
       }
     },

@@ -1,0 +1,137 @@
+{
+  "version": "2025-11-23",
+  "project": "SelfHealingPlugin",
+  "goal": "Deliver an end-to-end self-healing capability: telemetry → baseline → anomalies → diagnosis → SLO enforcement with rigorous BDD/TDD governance.",
+  "overarchingOutcomes": [
+    "Accurate baselines with adaptive rebase",
+    "Reliable anomaly + root cause signals",
+    "SLO breaches surfaced as first-class events",
+    "Actionable diagnosis recommendations",
+    "Automated spec enforcement & drift prevention"
+  ],
+  "definitions": {
+    "slice": "A vertical increment delivering business-visible behavior validated by a business BDD test and at least one artifact.",
+    "ready": [
+      "Business BDD spec updated (enforcement script passes)",
+      "Acceptance criteria captured (in backlog or sprint scope)",
+      "Dependencies identified (none blocking or mitigation listed)",
+      "Test stub(s) present or generated"
+    ],
+    "done": [
+      "Business BDD test passes",
+      "Unit tests (happy + 1 edge) pass",
+      "Spec enforcement script passes",
+      "Artifacts persisted (.generated/*.json as applicable)",
+      "Workflow step and backlog updated",
+      "No new lint errors",
+      "Demo checklist satisfied"
+    ]
+  },
+  "metrics": {
+    "velocityUnit": "validated slices per sprint",
+    "qualityGates": ["spec enforcement pass rate", "test pass %", "lint error count", "artifact freshness(h)"]
+  },
+  "sprints": [
+    {
+      "sprint": 1,
+      "name": "Diagnosis Completion & Foundations",
+      "durationDays": 14,
+      "theme": "Finish diagnosis stack and ensure solid enforcement & coverage base",
+      "scope": [
+        {"todoId": 2, "task": "Implement analyzeBehavioralIssues"},
+        {"todoId": 3, "task": "Implement analyzeCoverageIssues"},
+        {"todoId": 4, "task": "Implement analyzeErrorIssues"},
+        {"todoId": 5, "task": "Implement assessImpact"},
+        {"todoId": 6, "task": "Implement recommendFixes"},
+        {"todoId": 7, "task": "Add aggregateDiagnosis test"}
+      ],
+      "acceptanceCriteria": [
+        "All diagnosis handlers emit structured findings",
+        "Diagnosis artifact extended with behavioral/coverage/error/impact/recommendations",
+        "Business BDD scenarios for new handlers added to spec",
+        "Aggregate test demonstrates consolidated output",
+        "Spec enforcement still green"
+      ],
+      "risks": ["Handler logic scope creep", "Test data complexity"],
+      "mitigations": ["Use synthetic minimal telemetry fixtures", "Define severity scoring upfront"]
+    },
+    {
+      "sprint": 2,
+      "name": "Adaptive Baseline & Initial SLO Signals",
+      "durationDays": 14,
+      "theme": "Introduce baseline rebase and SLO configuration with raw SLI extraction",
+      "scope": [
+        {"todoId": 14, "task": "Implement rebaseBaseline handler"},
+        {"todoId": 8, "task": "Define SLO config JSON"},
+        {"todoId": 9, "task": "Compute SLIs from telemetry"}
+      ],
+      "acceptanceCriteria": [
+        "Rebase handler updates p50/p95 with exponential decay or rolling window",
+        "service_level.objectives.json committed with four core SLOs",
+        "SLI derivation produces latency_p95, error_rate, availability %, throughput",
+        "Business BDD tests for rebase + SLI extraction pass"
+      ],
+      "risks": ["Baseline drift algorithm tuning", "Insufficient telemetry variety"],
+      "mitigations": ["Start with alpha=0.2 exponential decay", "Add synthetic variance events"]
+    },
+    {
+      "sprint": 3,
+      "name": "SLO Breach Integration & Anomaly Fusion",
+      "durationDays": 14,
+      "theme": "Detect SLO breaches and fold them into anomaly pipeline for unified signaling",
+      "scope": [
+        {"todoId": 10, "task": "Implement evaluateSLO handler"},
+        {"todoId": 11, "task": "Integrate SLO into anomaly detection"},
+        {"todoId": 12, "task": "Add SLO tests"},
+        {"todoId": 13, "task": "Add SLO documentation"}
+      ],
+      "acceptanceCriteria": [
+        "SLO breach events emitted with severity classification",
+        "Anomaly sequence persists breach-inclusive artifact",
+        "BDD scenarios for at least one breach & one non-breach",
+        "SLO_SLI_PLAN.md documents taxonomy & flow"
+      ],
+      "risks": ["False positive breaches", "Test isolation for timing windows"],
+      "mitigations": ["Use tolerance bands (e.g. 5%)", "Window simulation utilities"]
+    },
+    {
+      "sprint": 4,
+      "name": "Governance & Enforcement Enhancements",
+      "durationDays": 14,
+      "theme": "Harden spec enforcement and produce actionable drift telemetry",
+      "scope": [
+        {"backlogId": "tighten-age-threshold", "task": "Reduce spec age threshold to 6h"},
+        {"backlogId": "version-alignment-check", "task": "Workflow version alignment validation"},
+        {"backlogId": "reverse-mapping-validation", "task": "Reverse mapping code existence check"},
+        {"backlogId": "regeneration-fallback", "task": "Auto-regenerate on first failure"},
+        {"backlogId": "detailed-drift-report", "task": "Generate drift report JSON"}
+      ],
+      "acceptanceCriteria": [
+        "Spec script enforces 6h age threshold",
+        "Version mismatch causes failure with rationale",
+        "Reverse mapping ensures no orphan spec entries",
+        "Fallback regeneration integrated and logged",
+        "Drift report artifact produced on failure"
+      ],
+      "risks": ["Overly strict failures blocking velocity", "Script performance on large codebase"],
+      "mitigations": ["Provide override env flags", "Cache handler name discovery"]
+    }
+  ],
+  "cadence": {
+    "standups": "Daily 10m focus on blockers & slice readiness",
+    "demo": "End of each sprint: run orchestrators + show new artifacts",
+    "retro": "Post-demo: identify improvement backlog additions",
+    "backlogReview": "Mid-sprint checkpoint for reprioritization"
+  },
+  "trackingArtifacts": [
+    "spec-enforcement-improvement-backlog.json",
+    "comprehensive-business-bdd-specifications.json",
+    "diagnosis-results.json",
+    "baseline-metrics.json",
+    "service_level.objectives.json"
+  ],
+  "reporting": {
+    "perSprint": ["Slices completed", "Spec enforcement failures count", "Average artifact age (h)", "Test coverage delta"],
+    "rollup": ["Mean latency improvement", "Breach detection accuracy", "Handler spec parity %"]
+  }
+}

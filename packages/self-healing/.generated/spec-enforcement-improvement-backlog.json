@@ -1,0 +1,101 @@
+{
+  "version": "2025-11-23",
+  "area": "Business BDD Spec Enforcement",
+  "description": "Backlog of near-term improvements to strengthen automatic enforcement of the comprehensive business BDD specification prior to tests.",
+  "workflowVersionRef": "handler-implementation.workflow.json@1.4.0",
+  "items": [
+    {
+      "id": "tighten-age-threshold",
+      "title": "Tighten spec age threshold & parameterize",
+      "details": "Reduce allowable spec artifact age from 24h to 6h (configurable via VERIFY_BDD_SPEC_MAX_AGE_HOURS env variable). Fail fast if exceeded.",
+      "motivation": "Ensure spec updates occur at least once per working half-day to reflect new handlers and scenarios.",
+      "acceptance": ["Default threshold set to 6h", "Env var overrides documented", "Script fails when age > threshold"],
+      "status": "planned",
+      "priority": "medium"
+    },
+    {
+      "id": "version-alignment-check",
+      "title": "Add workflow version alignment check",
+      "details": "Compare spec.version or summary.version with handler-implementation.workflow.json version; fail if mismatch (unless explicitly overridden).",
+      "motivation": "Keep spec synchronized with workflow evolution (phases, steps influencing scenarios).",
+      "acceptance": ["Workflow version fetched", "Spec version compared", "Mismatch triggers failure"],
+      "status": "planned",
+      "priority": "medium"
+    },
+    {
+      "id": "reverse-mapping-validation",
+      "title": "Validate every spec handler exists in code (reverse direction)",
+      "details": "Enumerate handler names declared in spec JSON and assert corresponding source handler or orchestrator exists (including anomaly, baseline, diagnosis sequences).",
+      "motivation": "Prevent drift where deprecated handlers remain documented but removed in code.",
+      "acceptance": ["All spec handlers resolved to file path", "Missing -> failure list", "Pass prints count parity"],
+      "status": "planned",
+      "priority": "high"
+    },
+    {
+      "id": "regeneration-fallback",
+      "title": "Auto-regenerate spec on initial failure then re-verify",
+      "details": "If file missing or stale, invoke generate script (generate-comprehensive-business-bdd-specs.js) once, then re-run validations; final failure only if second pass fails.",
+      "motivation": "Reduce friction; keep enforcement strict but self-healing.",
+      "acceptance": ["Fallback invoked only once", "Logs both attempts", "Second pass result reported"],
+      "status": "planned",
+      "priority": "high"
+    },
+    {
+      "id": "detailed-drift-report",
+      "title": "Produce structured drift report JSON on failure",
+      "details": "Emit .generated/spec-enforcement-failure-report.json summarizing missing handlers, obsolete spec entries, age, version mismatch, recommendations.",
+      "motivation": "Actionable diagnostics accelerate fix cycle.",
+      "acceptance": ["Report file created on failure", "Includes timestamp & categories", "Referenced by console output"],
+      "status": "planned",
+      "priority": "low"
+    }
+    ,
+    {
+      "id": "value-units-catalog",
+      "title": "Define value units & point weights",
+      "details": "Create value-units.json enumerating categories (Observability, RiskReduction, PerformanceAssurance, Governance) with point weights.",
+      "motivation": "Enable Planned Value (PV) quantification per slice.",
+      "acceptance": ["value-units.json committed", "At least 4 categories", "Weights documented"],
+      "status": "planned",
+      "priority": "medium"
+    },
+    {
+      "id": "pv-baseline-snapshot",
+      "title": "Capture initial baseline snapshot for AV comparison",
+      "details": "Generate self-healing-value-baseline.json recording current absence of diagnosis categories, SLO features, rebase, and governance enhancements.",
+      "motivation": "Establish baseline for Actual Value (AV) measurement.",
+      "acceptance": ["Baseline file created", "Timestamp included", "All metric fields present"],
+      "status": "planned",
+      "priority": "high"
+    },
+    {
+      "id": "pv-tracking-template",
+      "title": "Add progress tracking template for PV vs AV",
+      "details": "Create self-healing-progress.json with per-sprint sections: plannedPoints, earnedPoints (EV), valueVariance, VPI.",
+      "motivation": "Standardize PV/EV reporting across sprints.",
+      "acceptance": ["Template file committed", "Fields: sprint, plannedPoints, earnedPoints, VPI", "Ready for population"],
+      "status": "planned",
+      "priority": "medium"
+    },
+    {
+      "id": "numeric-acceptance-criteria",
+      "title": "Embed numeric thresholds in sprint acceptance criteria",
+      "details": "Augment sprint plan acceptance criteria with measurable targets (e.g., breach precision >=90%, recommendations coverage >=80%).",
+      "motivation": "Convert qualitative goals into quantifiable PV.",
+      "acceptance": ["Sprint plan updated", "Each criterion has numeric target", "Spec enforcement unaffected"],
+      "status": "planned",
+      "priority": "high"
+    },
+    {
+      "id": "variance-formulas",
+      "title": "Document EV, SV, VPI formulas",
+      "details": "Add section to sprint plan or separate ev-variance-metrics.md describing formulas and interpretation for Earned Value, Schedule Variance, Value Performance Index.",
+      "motivation": "Ensure transparent performance analysis methodology.",
+      "acceptance": ["Documentation file exists", "Examples with sample numbers", "Linked from sprint plan"],
+      "status": "planned",
+      "priority": "low"
+    }
+  ],
+  "nextReview": "2025-11-30",
+  "createdAt": "2025-11-23T00:00:00Z"
+}

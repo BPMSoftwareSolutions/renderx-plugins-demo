@@ -58,8 +58,56 @@ export interface PerformanceIssue {
   description: string;
 }
 
+export interface BehavioralIssue {
+  anomalyId: string;
+  handler?: string;
+  sequence?: string;
+  missingHandlers?: string[];
+  outOfOrder?: boolean;
+  severity: SeverityLevel;
+  description: string;
+}
+
+export interface CoverageIssue {
+  anomalyId: string;
+  handler?: string;
+  untestedPaths?: number;
+  coveragePercent?: number;
+  severity: SeverityLevel;
+  description: string;
+}
+
+export interface ErrorIssue {
+  anomalyId: string;
+  handler?: string;
+  errorRate?: number;
+  pattern?: string;
+  severity: SeverityLevel;
+  description: string;
+}
+
+export interface ImpactAssessment {
+  overallSeverity: SeverityLevel;
+  totals: {
+    performance: number;
+    behavioral: number;
+    coverage: number;
+    error: number;
+  };
+  highestLatencyRatio?: number;
+  highestErrorRate?: number;
+  affectedHandlers: number;
+  estimatedUsers: number;
+  rationale: string;
+}
+
 export interface DiagnosisSlice {
   performanceIssues: PerformanceIssue[];
+  behavioralIssues: BehavioralIssue[];
+  coverageIssues: CoverageIssue[];
+  errorIssues: ErrorIssue[];
+  impact?: ImpactAssessment;
+  recommendations?: FixRecommendation[];
   generatedAt: string;
   sequenceId: string;
 }

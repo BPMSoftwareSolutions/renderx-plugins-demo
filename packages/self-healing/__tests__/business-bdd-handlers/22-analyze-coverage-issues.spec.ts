@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { analyzeCoverageIssues } from '../../src/handlers/diagnosis/analyze.coverage.issues';
 
 /**
  * Business BDD Test: analyzeCoverageIssues
@@ -14,55 +15,47 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe.skip('Business BDD: analyzeCoverageIssues', () => {
+describe('Business BDD: analyzeCoverageIssues', () => {
   let _ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-  _ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
-      output: null,
-      error: null
+    _ctx = {
+      handler: analyzeCoverageIssues,
+      anomalies: [
+        { id: 'c1', type: 'coverage', severity: 'low', description: 'partial coverage', metrics: { coveragePercent: 70, untestedPaths: 4 }, detectedAt: new Date().toISOString(), confidence: 0.6 },
+        { id: 'c2', type: 'coverage', severity: 'medium', description: 'low coverage', metrics: { coveragePercent: 55, untestedPaths: 10 }, detectedAt: new Date().toISOString(), confidence: 0.7 },
+        { id: 'c3', type: 'coverage', severity: 'high', description: 'critical coverage gap', metrics: { coveragePercent: 35, untestedPaths: 20 }, detectedAt: new Date().toISOString(), confidence: 0.9 }
+      ],
+      output: null
     };
   });
 
-  afterEach(() => {
-    vi.clearAllMocks();
-    ctx = null;
-  });
+  afterEach(() => { vi.clearAllMocks(); });
 
-  describe('Scenario: Analyze coverage gaps to identify untested code', () => {
-    it('should achieve the desired business outcome', async () => {
+  it('Scenario: Analyze coverage gaps to identify untested code', () => {
       // GIVEN (Preconditions - Business Context)
       // - coverage gap detected
       // - handler is untested
 
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+  expect(_ctx.anomalies.length).toBe(3);
 
       // WHEN (Action - User/System Action)
       // - coverage analysis handler executes
 
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+  _ctx.output = _ctx.handler(_ctx.anomalies as any);
 
       // THEN (Expected Outcome - Business Value)
       // - untested code should be identified
       // - test recommendations should be provided
       // - risk should be assessed
 
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      expect(_ctx.output).toBeDefined();
+      const issues: any[] = _ctx.output.context.issues;
+      expect(issues.length).toBe(3);
+      const critical = issues.find((i: any) => i.coveragePercent < 40);
+      expect(critical?.severity).toBe('critical');
+      const mediumEscalated = issues.find((i: any) => i.coveragePercent < 75 && i.coveragePercent >= 55);
+      expect(mediumEscalated?.severity).toMatch(/medium|high|critical/);
     });
   });
 });

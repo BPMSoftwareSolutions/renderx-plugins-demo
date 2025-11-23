@@ -5,9 +5,9 @@
   "description": "Business-focused BDD specifications for all handlers with realistic scenarios",
   "timestamp": "2025-11-23T14:25:00.000Z",
   "summary": {
-  "totalHandlers": 72,
-  "totalScenarios": 72,
-  "coverage": "72/72 handlers (100%)"
+    "totalHandlers": 77,
+    "totalScenarios": 77,
+    "coverage": "77/77 handlers (100%)"
   },
   "handlers": [
     {
@@ -264,7 +264,7 @@
       ]
     },
     {
-      "name": "detectCoverageGaps",
+      "name": "detectCoverageAnomalies",
       "sequence": "anomaly",
       "businessValue": "Identify untested code paths",
       "persona": "Engineering Manager",
@@ -287,7 +287,7 @@
       ]
     },
     {
-      "name": "detectErrorPatterns",
+      "name": "detectErrorAnomalies",
       "sequence": "anomaly",
       "businessValue": "Identify recurring failures",
       "persona": "DevOps Engineer",
@@ -310,7 +310,7 @@
       ]
     },
     {
-      "name": "aggregateAnomalyResults",
+      "name": "aggregateAnomalies",
       "sequence": "anomaly",
       "businessValue": "Consolidate detected anomalies",
       "persona": "Platform Team",
@@ -333,7 +333,7 @@
       ]
     },
     {
-      "name": "storeAnomalyResults",
+      "name": "storeAnomalies",
       "sequence": "anomaly",
       "businessValue": "Persist anomalies for diagnosis",
       "persona": "Platform Team",
@@ -535,6 +535,51 @@
             "error root cause should be identified",
             "error type should be categorized",
             "fix recommendation should be provided"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assessImpact",
+      "sequence": "diagnosis",
+      "businessValue": "Summarize overall diagnosis severity for prioritization",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Aggregate issue severities into single impact classification",
+          "given": [
+            "multiple issue types detected",
+            "severity distribution available"
+          ],
+          "when": [
+            "impact assessment handler executes"
+          ],
+          "then": [
+            "overall severity assigned",
+            "estimated users impacted computed",
+            "rationale provided"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recommendFixes",
+      "sequence": "diagnosis",
+      "businessValue": "Provide actionable remediation steps to reduce time to recovery",
+      "persona": "Engineering Manager",
+      "scenarios": [
+        {
+          "title": "Generate prioritized fix recommendations",
+          "given": [
+            "diagnosis slice includes performance, behavioral, coverage, error issues"
+          ],
+          "when": [
+            "recommendations handler executes"
+          ],
+          "then": [
+            "recommendations list produced",
+            "each item has priority & effort",
+            "strategies mapped to issue type"
           ]
         }
       ]

@@ -9,13 +9,13 @@ function resolveDiagnosisPath(): string {
 }
 
 export function storeDiagnosis(slice: DiagnosisSlice): StoreDiagnosisResult {
-  if (!slice || !Array.isArray(slice.performanceIssues)) throw new Error('valid diagnosis slice required');
+  if (!slice || !Array.isArray(slice.performanceIssues) || !Array.isArray(slice.behavioralIssues) || !Array.isArray(slice.coverageIssues) || !Array.isArray(slice.errorIssues)) throw new Error('valid extended diagnosis slice required');
   const filePath = resolveDiagnosisPath();
   let stored = false; let error: string | undefined;
   try {
     const dir = path.dirname(filePath);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(filePath, JSON.stringify({ timestamp: new Date().toISOString(), slice }, null, 2), 'utf8');
+  fs.writeFileSync(filePath, JSON.stringify({ timestamp: new Date().toISOString(), slice }, null, 2), 'utf8');
     stored = true;
   } catch (err: any) {
     error = err?.message || 'diagnosis-persist-failed';

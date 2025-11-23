@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { analyzeErrorIssues } from '../../src/handlers/diagnosis/analyze.error.issues';
 
 /**
  * Business BDD Test: analyzeErrorIssues
@@ -14,55 +15,46 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe.skip('Business BDD: analyzeErrorIssues', () => {
+describe('Business BDD: analyzeErrorIssues', () => {
   let _ctx: any;
 
   beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-  _ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
-      output: null,
-      error: null
+    _ctx = {
+      handler: analyzeErrorIssues,
+      anomalies: [
+        { id: 'e1', type: 'error', severity: 'low', description: 'sporadic error', metrics: { errorRate: 0.05, pattern: 'E_SOCKET' }, detectedAt: new Date().toISOString(), confidence: 0.5 },
+        { id: 'e2', type: 'error', severity: 'medium', description: 'elevated error rate', metrics: { errorRate: 0.16, pattern: 'E_DB_TIMEOUT' }, detectedAt: new Date().toISOString(), confidence: 0.8 },
+        { id: 'e3', type: 'error', severity: 'high', description: 'critical error pattern', metrics: { errorRate: 0.30, pattern: 'E_MEM_LEAK' }, detectedAt: new Date().toISOString(), confidence: 0.9 }
+      ],
+      output: null
     };
   });
 
-  afterEach(() => {
-    vi.clearAllMocks();
-    ctx = null;
-  });
+  afterEach(() => { vi.clearAllMocks(); });
 
-  describe('Scenario: Analyze error patterns to find root cause', () => {
-    it('should achieve the desired business outcome', async () => {
+  it('Scenario: Analyze error patterns to find root cause', () => {
       // GIVEN (Preconditions - Business Context)
       // - error pattern detected
       // - handler fails repeatedly
 
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+  expect(_ctx.anomalies.length).toBe(3);
 
       // WHEN (Action - User/System Action)
       // - error analysis handler executes
 
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
+  _ctx.output = _ctx.handler(_ctx.anomalies as any);
 
       // THEN (Expected Outcome - Business Value)
       // - error root cause should be identified
       // - error type should be categorized
       // - fix recommendation should be provided
 
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
-    });
+      expect(_ctx.output).toBeDefined();
+      const issues: any[] = _ctx.output.context.issues;
+      expect(issues.length).toBe(3);
+      const critical = issues.find((i: any) => i.errorRate >= 0.25);
+      expect(critical?.severity).toBe('critical');
+      const high = issues.find((i: any) => i.errorRate >= 0.15 && i.errorRate < 0.25);
+      expect(high?.severity).toMatch(/high|critical/);
   });
 });
