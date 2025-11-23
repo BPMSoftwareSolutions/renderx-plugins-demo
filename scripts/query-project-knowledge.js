@@ -144,7 +144,10 @@ function formatPatternsResult(patterns) {
     result += `📌 ${pattern.name}\n`;
     result += `   Location: ${pattern.location}\n`;
     result += `   Purpose: ${pattern.description}\n`;
-    result += `   Applicable to: ${pattern.applicable_to.join(', ')}\n\n`;
+    if (pattern.applicable_to && Array.isArray(pattern.applicable_to)) {
+      result += `   Applicable to: ${pattern.applicable_to.join(', ')}\n`;
+    }
+    result += `\n`;
   });
 
   return result;
