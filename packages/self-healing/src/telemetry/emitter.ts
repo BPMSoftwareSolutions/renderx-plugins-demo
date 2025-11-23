@@ -3,6 +3,7 @@ import { BddTelemetryRecord } from './contract';
 import { computeShapeHash } from './hash';
 import { persistTelemetry } from './persistence';
 import { computeCoverageId } from './coverage-coupling';
+import { persistCoverageSegment } from './coverage-persistence';
 import { recordTelemetry } from './collector';
 
 interface ActiveFeatureContext {
@@ -69,6 +70,11 @@ export function endFeature(correlationId: string, status: 'ok' | 'warn' | 'error
     record.coverageId = computeCoverageId(record);
   } catch (e) {
     console.warn('[telemetry] coverageId generation failed:', (e as any)?.message || e);
+  }
+  try {
+    persistCoverageSegment(record);
+  } catch (e) {
+    console.warn('[telemetry] coverage persistence failed:', (e as any)?.message || e);
   }
   // Persist for history (best-effort; ignore errors to avoid test flakiness)
   try {

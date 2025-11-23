@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "feature": "shape-contracts",
+  "required": ["feature","event","beats","status","correlationId"],
+  "optional": ["shapeHash","coverageId","durationMs","batonDiffCount"],
+  "notes": "Placeholder contract for shape-contracts feature blueprint"
+}

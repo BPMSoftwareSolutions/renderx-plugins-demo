@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "feature": "shape-persistence",
+  "required": ["feature","event","beats","status","correlationId","shapeHash"],
+  "optional": ["coverageId","durationMs","batonDiffCount"],
+  "notes": "Initial persistence shape contract baseline"
+}

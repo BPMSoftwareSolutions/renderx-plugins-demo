@@ -35,6 +35,10 @@ function buildGreenAssertions(bp) {
     lines.push(`    const indexPath = path.join(process.cwd(), '.generated', 'telemetry', 'index.json');`);
     lines.push(`    expect(fs.existsSync(indexPath)).toBe(true);`);
   }
+  if (bp.acceptanceCriteria?.some(c => c.includes('Contract file present'))) {
+    lines.push(`    const contractPath = path.join(process.cwd(), 'contracts', '${bp.feature}.contract.json');`);
+    lines.push(`    expect(fs.existsSync(contractPath)).toBe(true);`);
+  }
   if (bp.acceptanceCriteria?.some(c => c.includes('Contains shapeHash'))) {
     lines.push(`    expect(record.shapeHash).toMatch(/[a-f0-9]{16,}/); // simplistic hash presence check`);
   }

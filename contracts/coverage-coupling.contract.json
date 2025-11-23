@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "feature": "coverage-coupling",
+  "required": ["feature","event","beats","status","correlationId","coverageId"],
+  "optional": ["shapeHash","durationMs","batonDiffCount"],
+  "notes": "Coverage coupling contract baseline"
+}

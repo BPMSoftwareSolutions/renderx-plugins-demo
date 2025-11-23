@@ -8,11 +8,13 @@
  */
 import fs from 'fs';
 import path from 'path';
+import { annotateShapeEvolution } from '../packages/self-healing/src/telemetry/annotation.js';
 
 const ROOT = process.cwd();
 const TELEMETRY_ROOT = path.join(ROOT, '.generated', 'telemetry');
 const INDEX_PATH = path.join(TELEMETRY_ROOT, 'index.json');
 const ANNOTATIONS_PATH = path.join(ROOT, 'shape-evolutions.json');
+const ALLOWLIST_PATH = path.join(ROOT, 'shape-evolutions-allowlist.json');
 
 function loadJson(p, fallback) {
   try { return JSON.parse(fs.readFileSync(p, 'utf-8')); } catch { return fallback; }
@@ -58,7 +60,9 @@ function main() {
     if (!latestHash || !prevHash) continue;
     if (latestHash !== prevHash) {
       const annotated = annotations.annotations.some(a => a.feature === feature && a.previousHash === prevHash && a.newHash === latestHash);
-      diffs.push({ feature, previousHash: prevHash, newHash: latestHash, annotated });
+      const allowlist = loadJson(ALLOWLIST_PATH, { allow: [] });
+  const allowed = allowlist.allow.some(a => a.feature === feature && a.previousHash === prevHash && a.newHash === latestHash && (!a.expiresAt || new Date(a.expiresAt).getTime() > Date.now()));
+      diffs.push({ feature, previousHash: prevHash, newHash: latestHash, annotated, allowed });
     }
   }
   if (annotate) {
@@ -71,14 +75,12 @@ function main() {
       console.error(`[shape-diff] No unannotated diff found for feature=${annotateFeature}`);
       process.exit(1);
     }
-    annotations.annotations.push({
-      feature: target.feature,
-      previousHash: target.previousHash,
-      newHash: target.newHash,
-      annotatedAt: new Date().toISOString(),
-      reason: reason || 'unspecified'
-    });
-    saveAnnotations(annotations);
+    const res = annotateShapeEvolution(target.feature, target.previousHash, target.newHash, reason || 'unspecified');
+    if (res.added) {
+      console.log(`[shape-diff] Annotation added for feature=${target.feature}`);
+    } else {
+      console.log(`[shape-diff] ${res.message}`);
+    }
     console.log(`[shape-diff] Annotation added for feature=${target.feature}`);
     return;
   }
@@ -86,7 +88,7 @@ function main() {
     console.log('[shape-diff] No shape hash changes detected.');
     return;
   }
-  const unannotated = diffs.filter(d => !d.annotated);
+  const unannotated = diffs.filter(d => !d.annotated && !d.allowed);
   if (unannotated.length) {
     const enforce = process.env.SHAPE_DIFF_ENFORCE !== '0';
     const msg = '[shape-diff] Unannotated shape changes detected:';

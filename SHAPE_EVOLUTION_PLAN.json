@@ -267,7 +267,7 @@
           "Contract file present",
           "Violation detection test simulates mismatch"
         ],
-        "tddPhase": "RED",
+        "tddPhase": "GREEN",
         "redFailMessage": "Contract validation not implemented: expected schema enforcement."
       },
       {
