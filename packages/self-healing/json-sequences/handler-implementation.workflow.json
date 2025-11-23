@@ -2,10 +2,33 @@
   "name": "handler-implementation-workflow",
   "title": "Handler Implementation Workflow - BDD → TDD → Done",
   "description": "Complete workflow for implementing new handlers using Test-Driven Development driven by Business-Driven Development specifications",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "type": "workflow",
   "purpose": "Guide agents through implementing handlers using BDD→TDD→Done pattern",
   "phases": [
+    {
+      "phase": 0,
+      "name": "WSJF Prioritization",
+      "duration": "5 minutes",
+      "description": "Apply Weighted Shortest Job First scoring to candidate handlers to select the next highest-value smallest slice.",
+      "steps": [
+        { "step": 1, "action": "List candidate handlers", "details": "Enumerate pending handlers (diagnosis, fix, validation, deploy, learning).", "expected_outcome": "Visible backlog subset for scoring" },
+        { "step": 2, "action": "Estimate Business Value (BV)", "details": "Relative 1-10 scale: user impact, revenue, stability.", "expected_outcome": "BV score recorded" },
+        { "step": 3, "action": "Estimate Time Criticality (TC)", "details": "Urgency due to deadlines, incidents, seasonal demand.", "expected_outcome": "TC score recorded" },
+        { "step": 4, "action": "Estimate Risk Reduction / Opportunity Enablement (RR/OE)", "details": "How much risk is retired or new capability unlocked.", "expected_outcome": "RR/OE score recorded" },
+        { "step": 5, "action": "Estimate Job Size (JS)", "details": "Relative effort (story points or t-shirt sizing mapped to numbers).", "expected_outcome": "JS score recorded" },
+        { "step": 6, "action": "Compute WSJF", "details": "Formula: (BV + TC + RR/OE) / JS. Rank descending.", "expected_outcome": "Ranked list with WSJF scores" },
+        { "step": 7, "action": "Select next handler slice", "details": "Pick top WSJF AND confirm feasibility for current iteration timeframe.", "expected_outcome": "Chosen handler documented" },
+        { "step": 8, "action": "Capture decision artifact", "details": "Append/Update WSJF table in DEMO_FEEDBACK.md or WSJF_DECISIONS.md.", "expected_outcome": "Persisted decision record" }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As a product stakeholder, I want high-value handlers implemented first so that we maximize ROI and agility.",
+        "persona": "Stakeholder/Product Owner",
+        "scenarios": [
+          { "title": "Stakeholder ranks backlog with WSJF", "given": ["list of candidate handlers", "agreed scoring scales"], "when": ["scores are estimated", "WSJF computed"], "then": ["highest WSJF selected", "decision documented", "iteration goal clarified"] }
+        ]
+      }
+    },
     {
       "phase": 1,
       "name": "Understand Business Requirements",
@@ -252,43 +275,39 @@
       "duration": "5 minutes",
       "description": "Verify business BDD test passes with implemented handler",
       "steps": [
-        {
-          "step": 1,
-          "action": "Run business BDD test",
-          "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts",
-          "expected_outcome": "Business BDD test passes"
-        },
-        {
-          "step": 2,
-          "action": "Verify business outcomes",
-          "details": "Confirm business outcomes are achieved (not just technical correctness)",
-          "expected_outcome": "Business value is verified"
-        }
+        { "step": 1, "action": "Run business BDD test", "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts", "expected_outcome": "Business BDD test passes" },
+        { "step": 2, "action": "Verify business outcomes", "details": "Confirm business outcomes are achieved (not just technical correctness)", "expected_outcome": "Business value is verified" }
       ],
       "business_bdd_spec": {
         "user_story": "As an agent, I want to verify the business BDD test passes so that I confirm business value",
         "persona": "Agent/Developer",
         "scenarios": [
-          {
-            "title": "Agent verifies business BDD test passes",
-            "given": [
-              "handler is implemented",
-              "unit tests pass"
-            ],
-            "when": [
-              "agent runs business BDD test"
-            ],
-            "then": [
-              "business BDD test passes",
-              "business outcomes are verified",
-              "business value is achieved"
-            ]
-          }
+          { "title": "Agent verifies business BDD test passes", "given": ["handler is implemented", "unit tests pass"], "when": ["agent runs business BDD test"], "then": ["business BDD test passes", "business outcomes are verified", "business value is achieved"] }
         ]
       }
     },
     {
       "phase": 6,
+      "name": "Live Demo & Feedback",
+      "duration": "10 minutes",
+      "description": "Demonstrate the implemented vertical slice (handler + tests + artifacts) to stakeholders for immediate feedback before expanding scope.",
+      "steps": [
+        { "step": 1, "action": "Run orchestrator(s)", "details": "Execute runTelemetryParsing, runAnomalyDetection (and runDiagnosisAnalyze when available) in a local script/REPL.", "expected_outcome": "Console output shows sequence events and summary objects." },
+        { "step": 2, "action": "Show generated artifacts", "details": "Open .generated/telemetry-metrics.json and anomalies.json (and diagnosis-results.json when present).", "expected_outcome": "Stakeholders see tangible outputs." },
+        { "step": 3, "action": "Narrate business value", "details": "Map outcomes to original business BDD scenarios.", "expected_outcome": "Business value confirmed." },
+        { "step": 4, "action": "Collect feedback", "details": "Capture improvement ideas & new edge cases.", "expected_outcome": "Feedback markdown note added (e.g., DEMO_FEEDBACK.md)." },
+        { "step": 5, "action": "Decide iteration adjustments", "details": "Prioritize next handler(s) or refinements.", "expected_outcome": "Updated backlog/todo list." }
+      ],
+      "business_bdd_spec": {
+        "user_story": "As a stakeholder, I want to see a live demo early so that I can provide feedback and ensure alignment.",
+        "persona": "Stakeholder/Product Owner",
+        "scenarios": [
+          { "title": "Stakeholder watches demo of new handler slice", "given": ["handlers implemented", "tests passing", "artifacts generated"], "when": ["agent runs orchestrator", "agent explains outputs"], "then": ["stakeholder understands value", "feedback captured", "next iteration clarified"] }
+        ]
+      }
+    },
+    {
+      "phase": 7,
       "name": "Verify All Tests & Lint",
       "duration": "10 minutes",
       "description": "Verify all tests pass and lint passes",
@@ -353,6 +372,20 @@
     "TDD-Driven: Red → Green → Refactor",
     "Clean Code: Pure functions, clear error handling, event publishing, type safety",
     "Quality: All tests pass, lint passes, code reviewed"
+  ],
+  "demo_checklist": [
+    "Run orchestrator scripts (telemetry, anomaly, diagnosis)",
+    "Show generated artifacts (.generated/*.json)",
+    "Map results to business scenarios",
+    "Capture stakeholder feedback",
+    "Update backlog before next implementation"
+  ],
+  "demo_principles": [
+    "Show value early",
+    "Feedback before scaling",
+    "Prefer small vertical slices",
+    "Artifacts as proof",
+    "Iterate based on business outcomes"
   ],
   "lint_requirements": [
     "Prefix unused variables with underscore: _ctx, _result, _error (ESLint rule: @typescript-eslint/no-unused-vars requires /^_/u pattern)",
