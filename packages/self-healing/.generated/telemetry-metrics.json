@@ -1,0 +1,41 @@
+{
+  "metrics": {
+    "handlers": {
+      "parseTelemetryRequested": {
+        "count": 1,
+        "avgTime": 12,
+        "p95Time": 12,
+        "p99Time": 12,
+        "errorRate": 0,
+        "lastSeen": "2025-11-23T03:00:30.532Z"
+      },
+      "loadLogFiles": {
+        "count": 1,
+        "avgTime": 5,
+        "p95Time": 5,
+        "p99Time": 5,
+        "errorRate": 0,
+        "lastSeen": "2025-11-23T03:00:30.532Z"
+      },
+      "extractTelemetryEvents": {
+        "count": 1,
+        "avgTime": 7,
+        "p95Time": 7,
+        "p99Time": 7,
+        "errorRate": 1,
+        "lastSeen": "2025-11-23T03:00:30.532Z"
+      },
+      "aggregateTelemetryMetrics": {
+        "count": 1,
+        "avgTime": 3,
+        "p95Time": 3,
+        "p99Time": 3,
+        "errorRate": 0,
+        "lastSeen": "2025-11-23T03:00:30.532Z"
+      }
+    },
+    "sequences": {},
+    "timestamp": "2025-11-23T03:00:30.537Z",
+    "totalEvents": 4
+  }
+}

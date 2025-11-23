@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated": "2025-11-22T17:06:10.099Z",
+    "generated": "2025-11-23T00:23:36.351Z",
     "phase": "Phase 1: Catalog Analysis",
     "sourceFile": "catalog/json-plugins/plugin-manifest.json"
   },
   "summary": {
-    "totalPlugins": 9,
+    "totalPlugins": 10,
     "uiPlugins": 7,
     "runtimePlugins": 6,
     "totalSlots": 6,
@@ -120,6 +120,13 @@
         "module": "@renderx-plugins/real-estate-analyzer",
         "export": "register"
       }
+    },
+    {
+      "id": "SelfHealingPlugin",
+      "hasUI": false,
+      "hasRuntime": false,
+      "ui": null,
+      "runtime": null
     }
   ],
   "uiPlugins": [

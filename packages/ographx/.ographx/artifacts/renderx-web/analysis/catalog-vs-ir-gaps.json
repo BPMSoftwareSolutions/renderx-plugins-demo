@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-22T17:06:24.856Z",
+    "generated": "2025-11-23T00:23:49.424Z",
     "phase": "Phase 3: Gap Analysis",
     "catalogDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\catalog",
     "irDir": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir"
@@ -12,9 +12,9 @@
     "irHandlers": 423,
     "catalogTopics": 8,
     "catalogComponents": 10,
-    "catalogPlugins": 9,
-    "testFiles": 191,
-    "totalTests": 1453,
+    "catalogPlugins": 10,
+    "testFiles": 272,
+    "totalTests": 1830,
     "handlersWithTests": 165,
     "handlersWithoutTests": 57,
     "testCoverage": 74

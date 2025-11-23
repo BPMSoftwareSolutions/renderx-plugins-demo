@@ -1,0 +1,33 @@
+{
+  "plugin": "SelfHealingPlugin",
+  "routes": {
+    "self.healing.anomaly.detect": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-anomaly-detect-symphony"
+    },
+    "self.healing.deployment.deploy": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-deployment-deploy-symphony"
+    },
+    "self.healing.diagnosis.analyze": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-diagnosis-analyze-symphony"
+    },
+    "self.healing.fix.generate": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-fix-generate-symphony"
+    },
+    "self.healing.learning.track": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-learning-track-symphony"
+    },
+    "self.healing.telemetry.parse": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-telemetry-parse-symphony"
+    },
+    "self.healing.validation.run": {
+      "pluginId": "SelfHealingPlugin",
+      "sequenceId": "self-healing-validation-run-symphony"
+    }
+  }
+}

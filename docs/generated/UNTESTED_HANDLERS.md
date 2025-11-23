@@ -1,6 +1,6 @@
 # Handlers Without Test Coverage
 
-**Generated**: 2025-11-22T17:06:31.315Z
+**Generated**: 2025-11-23T00:23:58.232Z
 
 ## Overview
 

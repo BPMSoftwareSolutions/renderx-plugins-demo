@@ -1,16 +1,16 @@
 # System Documentation Index
 
-**Generated**: 2025-11-22T17:06:31.306Z
+**Generated**: 2025-11-23T00:23:58.205Z
 
 ## 📊 System Overview
 
 | Metric | Value |
 |--------|-------|
-| **Plugins** | 9 |
+| **Plugins** | 10 |
 | **Sequences** | 55 |
 | **Handlers** | 423 |
-| **Test Files** | 191 |
-| **Total Tests** | 1453 |
+| **Test Files** | 272 |
+| **Total Tests** | 1830 |
 | **Test Coverage** | 74% |
 | **Handlers with Tests** | 165 |
 | **Handlers without Tests** | 57 |
@@ -33,8 +33,8 @@ Orchestration sequences and their handler flows.
 
 ### 3. [TEST_SPECS.md](./TEST_SPECS.md)
 Complete test specifications organized by plugin.
-- 191 test files
-- 1453 test descriptions
+- 272 test files
+- 1830 test descriptions
 - Test organization by plugin and feature
 - **Use this to**: Find tests for a specific feature or plugin
 
@@ -99,4 +99,4 @@ This documentation is **automatically generated** from:
 
 ---
 
-*Last updated: 2025-11-22T17:06:31.307Z*
+*Last updated: 2025-11-23T00:23:58.206Z*

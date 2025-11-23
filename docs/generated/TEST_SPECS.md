@@ -1,11 +1,11 @@
 # Test Specifications
 
-**Generated**: 2025-11-22T17:06:31.311Z
+**Generated**: 2025-11-23T00:23:58.219Z
 
 ## Overview
 
-- **Test Files**: 191
-- **Total Tests**: 1453
+- **Test Files**: 272
+- **Total Tests**: 1830
 
 ## Test Files by Plugin
 
@@ -166,4 +166,24 @@
 - fetchPropertyData - happy path
 - fetchPropertyData - edge case/error handling
 - ... and 8 more
+
+### self-healing (81 files)
+
+#### \packages\self-healing\__tests__\anomaly.detect.spec.ts
+- Detect Anomalies (self-healing-anomaly-detect-symphony)
+- detectAnomaliesRequested - happy path
+- detectAnomaliesRequested - error handling
+- ... and 16 more
+
+#### \packages\self-healing\__tests__\business-bdd\1-i-want-to-parse-production-logs-to-under.spec.ts
+- Feature: I want to parse production logs to understand system behavior
+- Scenario: Parse valid production logs
+- Scenario: Handle missing or corrupted logs gracefully
+- ... and 2 more
+
+#### \packages\self-healing\__tests__\business-bdd\2-i-want-to-automatically-detect-anomalies.spec.ts
+- Feature: I want to automatically detect anomalies in production
+- Scenario: Detect performance degradation
+- Scenario: Detect error rate spikes
+- ... and 2 more
 

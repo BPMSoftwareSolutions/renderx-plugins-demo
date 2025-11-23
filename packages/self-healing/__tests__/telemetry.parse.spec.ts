@@ -7,6 +7,10 @@ import { aggregateTelemetryMetrics } from '../src/handlers/telemetry/aggregate.m
 import { storeTelemetryDatabase } from '../src/handlers/telemetry/store.database';
 import { parseTelemetryCompleted } from '../src/handlers/telemetry/parse.completed';
 import { makeEvents } from './support/telemetryFactory';
+import { runTelemetryParsing } from '../src/handlers/telemetry/run.telemetry.parse';
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
 
 /**
  * Test suite for Parse Production Telemetry
@@ -89,5 +93,23 @@ describe('Parse Production Telemetry (self-healing-telemetry-parse-symphony)', (
   it('parseTelemetryCompleted - error handling (missing metrics)', () => {
     // @ts-expect-error intentional
     expect(() => parseTelemetryCompleted('seq-123')).toThrow(/metrics/);
+  });
+
+  it('runTelemetryParsing - integration (creates events & metrics)', async () => {
+    // Create ephemeral logs directory with sample log
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'telemetry-parse-'));
+    const sampleLog = [
+      `${new Date().toISOString()} INFO handler:parseTelemetryRequested duration=12ms starting parse`,
+      `${new Date().toISOString()} DEBUG handler:loadLogFiles duration=5ms loaded 1 files`,
+      `${new Date().toISOString()} ERROR handler:extractTelemetryEvents duration=7ms failure parsing line`,
+      `${new Date().toISOString()} INFO handler:aggregateTelemetryMetrics duration=3ms metrics built`
+    ].join('\n');
+    fs.writeFileSync(path.join(tmpDir, 'app.log'), sampleLog, 'utf8');
+    const summary = await runTelemetryParsing({ logsDir: tmpDir, sequenceId: 'seq-int' });
+    expect(summary.extract.context.events.length).toBeGreaterThan(0);
+    expect(summary.aggregate.context.metrics.totalEvents).toBe(summary.normalize.context.normalized.length);
+    const anyHandlerMetrics = Object.values(summary.aggregate.context.metrics.handlers)[0];
+    expect(anyHandlerMetrics).toBeTruthy();
+  expect(summary.completed.context?.sequenceId).toBe('seq-int');
   });
 });
