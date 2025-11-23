@@ -66,7 +66,7 @@
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
-  "posttest": "node scripts/enforce-bdd-telemetry.js || exit 1 && node scripts/generate-shape-history.js",
+  "posttest": "npm run fuse:slo:breaches && npm run compute:benefit:scores && node scripts/enforce-bdd-telemetry.js || exit 1 && node scripts/generate-shape-history.js && npm run demo:output:csv",
   "shape:history": "node scripts/generate-shape-history.js",
   "generate:bdd:plan": "node scripts/generate-bdd-specs-from-plan.js",
     "test:watch": "vitest --watch",
@@ -89,8 +89,12 @@
     "telemetry:build": "npm --prefix packages/telemetry-workbench run build",
     "rag:search": "python scripts/rag-search.py",
     "rag:analyze-telemetry": "python scripts/rag-telemetry-analyzer.py",
-    "governance": "node scripts/run-governance-checks.js"
-    ,"evaluate:slos": "node scripts/evaluate-slos.js"
+    "governance": "node scripts/run-governance-checks.js",
+    "fuse:slo:breaches": "node scripts/fuse-slo-breaches.js",
+    "compute:benefit:scores": "node scripts/compute-benefit-scores.js",
+    "demo:output:enhanced": "node scripts/demo-output-enhanced.js",
+    "demo:output:csv": "node scripts/demo-output-enhanced.js --csv",
+    "evaluate:slos": "node scripts/evaluate-slos.js"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",

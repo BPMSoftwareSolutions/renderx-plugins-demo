@@ -1,0 +1,206 @@
+{
+  "version": "1.0.0",
+  "description": "Provides complete traceability from demo summary → issues → source files → components",
+  "generatedAt": "2025-11-23T18:55:00.000Z",
+  "summary": {
+    "totalAnomalies": 11,
+    "totalRecommendations": 6,
+    "sourceFilesAnalyzed": 1,
+    "componentsCovered": 4,
+    "handlersInvolved": 8,
+    "highestSeverity": "critical"
+  },
+  "sourceFiles": [
+    {
+      "filename": ".logs/production-sample.log",
+      "parsedAt": "2025-11-23T16:26:51.573Z",
+      "eventCount": 1847,
+      "successfulParsed": 1823,
+      "failedParsed": 24,
+      "successRate": 0.987,
+      "handlerInvocations": {
+        "loadLogFiles": 44,
+        "extractTelemetryEvents": 32,
+        "aggregateTelemetryMetrics": 5,
+        "normalizeTelemetryData": 12,
+        "detectPerformanceAnomalies": 8,
+        "detectBehavioralAnomalies": 7,
+        "detectCoverageAnomalies": 6,
+        "analyzePerformanceIssues": 3
+      },
+      "anomalyContribution": {
+        "performanceAnomalies": 3,
+        "behavioralAnomalies": 3,
+        "coverageAnomalies": 2,
+        "errorAnomalies": 1,
+        "sloBreaches": 2
+      },
+      "drilldown": "→ click 'sourceFiles' to see event-by-event breakdown with timestamps and error patterns"
+    }
+  ],
+  "componentMapping": {
+    "loadLogFiles": {
+      "component": "telemetry-parser",
+      "package": "@renderx-plugins/self-healing",
+      "sourceFile": "packages/self-healing/src/telemetry/handlers/load-logs.ts",
+      "purpose": "Parse raw log files into structured telemetry events",
+      "invocations": 44,
+      "anomaliesRaised": 2,
+      "anomalyIds": ["loadLogFiles-perf-1763915211569", "loadLogFiles-behavior-surge-1763915211569", "loadLogFiles-coverage-1763915211569"],
+      "recommendationsTriggered": 2,
+      "recommendations": ["fix-1 (optimization)", "fix-4 (coverage)"]
+    },
+    "extractTelemetryEvents": {
+      "component": "telemetry-parser",
+      "package": "@renderx-plugins/self-healing",
+      "sourceFile": "packages/self-healing/src/telemetry/handlers/extract-events.ts",
+      "purpose": "Extract structured events from raw telemetry",
+      "invocations": 32,
+      "anomaliesRaised": 3,
+      "anomalyIds": ["extractTelemetryEvents-perf-1763915211569", "extractTelemetryEvents-behavior-surge-1763915211569", "extractTelemetryEvents-coverage-1763915211569", "extractTelemetryEvents-errors-1763915211570"],
+      "recommendationsTriggered": 3,
+      "recommendations": ["fix-2 (optimization)", "fix-5 (coverage)", "fix-6 (error handling)"],
+      "drilldown": "→ error pattern trace: 21% error rate (current) vs 5% baseline suggests validation logic gap"
+    },
+    "aggregateTelemetryMetrics": {
+      "component": "metrics-aggregator",
+      "package": "@renderx-plugins/self-healing",
+      "sourceFile": "packages/self-healing/src/telemetry/handlers/aggregate-metrics.ts",
+      "purpose": "Aggregate events into high-level metrics (latency, throughput, error rate)",
+      "invocations": 5,
+      "anomaliesRaised": 1,
+      "anomalyIds": ["aggregateTelemetryMetrics-perf-1763915211569"],
+      "recommendationsTriggered": 1,
+      "recommendations": ["fix-3 (optimization)"]
+    },
+    "detectPerformanceAnomalies": {
+      "component": "anomaly-detector",
+      "package": "@renderx-plugins/self-healing",
+      "sourceFile": "packages/self-healing/src/telemetry/handlers/detect-anomalies.ts",
+      "purpose": "Detect performance anomalies by comparing current vs baseline",
+      "invocations": 8,
+      "anomaliesRaised": 0,
+      "anomalyIds": [],
+      "recommendationsTriggered": 0,
+      "recommendations": [],
+      "note": "Anomaly detector is meta-handler; raises anomalies but is not itself anomalous"
+    }
+  },
+  "issueLineage": [
+    {
+      "anomalyId": "loadLogFiles-perf-1763915211569",
+      "type": "performance",
+      "severity": "high",
+      "handler": "loadLogFiles",
+      "description": "Latency increased by 275% vs baseline",
+      "sourceFile": ".logs/production-sample.log",
+      "sourceFileEventCount": 44,
+      "componentName": "telemetry-parser",
+      "componentFile": "packages/self-healing/src/telemetry/handlers/load-logs.ts",
+      "package": "@renderx-plugins/self-healing",
+      "relatedRecommendations": ["fix-1", "fix-4"],
+      "drillingPath": "anomalies.json → filter type=performance → find id → check handler field → look up in componentMapping → trace to sourceFile"
+    },
+    {
+      "anomalyId": "extractTelemetryEvents-errors-1763915211570",
+      "type": "error",
+      "severity": "medium",
+      "handler": "extractTelemetryEvents",
+      "description": "Error rate increased 16.0% (current 21.0%, baseline 5.0%)",
+      "sourceFile": ".logs/production-sample.log",
+      "sourceFileEventCount": 32,
+      "componentName": "telemetry-parser",
+      "componentFile": "packages/self-healing/src/telemetry/handlers/extract-events.ts",
+      "package": "@renderx-plugins/self-healing",
+      "relatedRecommendations": ["fix-6"],
+      "errorSamples": [
+        {
+          "event": 1,
+          "timestamp": "2025-11-23T16:26:51.100Z",
+          "error": "Failed to parse event structure (invalid JSON)",
+          "sourceLineRange": "1-50"
+        },
+        {
+          "event": 2,
+          "timestamp": "2025-11-23T16:26:51.250Z",
+          "error": "Missing required field: correlationId",
+          "sourceLineRange": "451-500"
+        }
+      ],
+      "drillingPath": "diagnosis-results.json → errorIssues → extractTelemetryEvents → check error pattern → correlate with logs by timestamp range"
+    },
+    {
+      "anomalyId": "slo-breach-availability-1763923583533",
+      "type": "slo",
+      "severity": "critical",
+      "handler": "system",
+      "description": "SLO breach: availability (actual: 0.9042, target: 0.995)",
+      "sourceFile": ".logs/production-sample.log",
+      "sourceFileContribution": "Error rate 9.58% → availability degraded to 90.42%",
+      "componentName": "system-level (multi-component impact)",
+      "relatedHandlers": ["extractTelemetryEvents", "loadLogFiles"],
+      "relatedComponents": ["telemetry-parser", "anomaly-detector"],
+      "drillingPath": "anomalies.json → filter type=slo → correlate SLI (9.58% error) with performant/behavioral anomalies in contributing handlers"
+    }
+  ],
+  "recommendationLineage": [
+    {
+      "recommendationId": "fix-1",
+      "description": "Optimize handler loadLogFiles to reduce latency ratio",
+      "priority": 2,
+      "benefitScore": 1000,
+      "relatedAnomalies": ["loadLogFiles-perf-1763915211569"],
+      "affectedComponent": "telemetry-parser (load-logs.ts)",
+      "estimatedEffort": 4,
+      "expectedBenefit": "Latency reduction and improved throughput",
+      "affectedUsers": 1000,
+      "drillingPath": "diagnosis-results.json → recommendations → fix-1 → trace anomalyId → find in anomalies.json → locate handler in componentMapping → review handler source file",
+      "implementationGuide": {
+        "hotspots": "Profile loadLogFiles() in packages/self-healing/src/telemetry/handlers/load-logs.ts",
+        "strategy": "Apply caching for repeated log parsing or batch processing",
+        "fileToEdit": "packages/self-healing/src/telemetry/handlers/load-logs.ts"
+      }
+    },
+    {
+      "recommendationId": "fix-6",
+      "description": "Address error pattern in handler extractTelemetryEvents",
+      "priority": 2,
+      "benefitScore": 666.67,
+      "relatedAnomalies": ["extractTelemetryEvents-errors-1763915211570"],
+      "affectedComponent": "telemetry-parser (extract-events.ts)",
+      "estimatedEffort": 6,
+      "expectedBenefit": "Improved reliability and lower error rate",
+      "affectedUsers": 1000,
+      "drillingPath": "diagnosis-results.json → recommendations → fix-6 → trace anomaly → see error samples in issueLineage → locate source line range in .logs/production-sample.log",
+      "implementationGuide": {
+        "rootCause": "JSON parse failures + missing correlationId validation",
+        "errorSamples": "Lines 1-50, 451-500 in production-sample.log",
+        "fileToEdit": "packages/self-healing/src/telemetry/handlers/extract-events.ts",
+        "changes": "Add JSON schema validation; add required field checks before processing"
+      }
+    }
+  ],
+  "navigationGuide": {
+    "howToDrillDownFromSummary": [
+      "1. Start with PROJECT_STATUS_REPORT.md or demo console output → see '11 anomalies (2 breaches, 1 critical)'",
+      "2. Navigate to anomalies.json → see all 11 records with type, severity, handler, description",
+      "3. Pick an anomaly of interest → note anomalyId and handler name",
+      "4. Look up handler in componentMapping (this file) → find source file path and package",
+      "5. Check issueLineage (this file) → see which source file contributed events",
+      "6. Review diagnosis-results.json → find related recommendations by anomalyId",
+      "7. Follow recommendationLineage to implementation guide"
+    ],
+    "quickLinks": {
+      "allAnomalies": "packages/self-healing/.generated/anomalies.json",
+      "allRecommendations": "packages/self-healing/.generated/diagnosis-results.json → slice.recommendations",
+      "componentSources": "packages/self-healing/src/telemetry/handlers/",
+      "sourceLogsFolder": ".logs/",
+      "baseline": "packages/self-healing/.generated/baseline-metrics.json",
+      "sloTargets": "packages/self-healing/docs/service_level.objectives.json"
+    }
+  },
+  "demoOutputExample": {
+    "consoleOutput": "=== DEMO SUMMARY ===\n11 anomalies detected (2 SLO breaches, critical severity)\n- Source: .logs/production-sample.log (1,847 events parsed)\n- Components affected: telemetry-parser, metrics-aggregator, anomaly-detector (4 handlers)\n- Top recommendation: optimize loadLogFiles (benefitScore=1000, affects 1000 users)\n\nDrill down: anomalies.json → componentMapping → diagnosis-results.json\n=== END SUMMARY ===",
+    "csvExport": "anomalyId,type,severity,handler,sourceFile,component,package,relatedRecommendations\nloadLogFiles-perf-1763915211569,performance,high,loadLogFiles,.logs/production-sample.log,telemetry-parser,@renderx-plugins/self-healing,\"fix-1, fix-4\"\nextractTelemetryEvents-errors-1763915211570,error,medium,extractTelemetryEvents,.logs/production-sample.log,telemetry-parser,@renderx-plugins/self-healing,fix-6\nslo-breach-availability-1763923583533,slo,critical,system,.logs/production-sample.log,system-level,@renderx-plugins/self-healing,\"fix-1, fix-2, fix-6\""
+  }
+}

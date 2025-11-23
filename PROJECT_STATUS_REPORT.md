@@ -1,6 +1,6 @@
 # Project Status Report
 
-Last Updated: 2025-11-23T17:30:00.000Z
+Last Updated: 2025-11-23T19:00:00.000Z
 
 ## Overview
 
@@ -9,14 +9,17 @@ Overall Progress: 100%
 Suggested Commit Message:
 
 ```
-feat(demo,sprint-3): enhance DEMO_PROCESS_SPEC with baseline/SLO evaluation steps + metricsOverlay; demo readiness checklist 80% complete
+feat(demo,sprint-3): add file traceability & component drill-down; demo now provides full anomaly → file → component → recommendation paths; demo readiness 98% complete (tasks #44-50, #52 done)
 ```
 
 Highlights:
-- Baseline establishment step 3 added to demo flow
-- SLO evaluation step 4 inserted before anomaly detection
-- Andon trigger added: SLO breach not in anomalies => abort (task #45 dependency)
-- futureExtensions updated: SLO fusion marked in-progress
+- SLO fusion script (fuse-slo-breaches.js) ingests 2 breaches with intelligent severity assignment
+- compute-benefit-scores.js ranks recommendations by ROI (highest = most impact for least effort)
+- severity mapping enables breach→anomaly→recommendation traceability
+- baseline metadata clarifies production-representative collection & confidence levels
+- demo-lineage.json provides complete traceability: summary → files → components → recommendations
+- demo-output-enhanced.js generates formatted console output + CSV export (demo-output-drill-down.csv)
+- Demo narrative complete: parse → baseline → SLO check → anomaly detection → diagnosis → ranked recommendations → drill-down to source files
 
 Current Sprint: sprint-4
 Completed Sprints: sprint-1, sprint-2, sprint-3

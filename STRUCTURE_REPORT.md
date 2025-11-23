@@ -34,10 +34,10 @@ Allowed top-level directories: packages, scripts, .generated, config, catalog, d
 
 ## Role Coverage
 
-- telemetry-core: 11 files
+- telemetry-core: 12 files
 - governance-script: 7 files
 - test-spec: 96 files
-- generated-artifact: 23 files
+- generated-artifact: 47 files
 
 ## Summary
 

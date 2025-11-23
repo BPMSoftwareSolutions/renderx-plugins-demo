@@ -1,0 +1,4 @@
+anomalyId,type,severity,handler,sourceFile,component,package,relatedRecommendations,drillingPath
+loadLogFiles-perf-1763915211569,performance,high,loadLogFiles,.logs/production-sample.log,telemetry-parser,@renderx-plugins/self-healing,"fix-1; fix-4","anomalies.json → filter type=performance → find id → check handler field → look up in componentMapping → trace to sourceFile""
+extractTelemetryEvents-errors-1763915211570,error,medium,extractTelemetryEvents,.logs/production-sample.log,telemetry-parser,@renderx-plugins/self-healing,"fix-6","diagnosis-results.json → errorIssues → extractTelemetryEvents → check error pattern → correlate with logs by timestamp range""
+slo-breach-availability-1763923583533,slo,critical,system,.logs/production-sample.log,system-level (multi-component impact),,"","anomalies.json → filter type=slo → correlate SLI (9.58% error) with performant/behavioral anomalies in contributing handlers""

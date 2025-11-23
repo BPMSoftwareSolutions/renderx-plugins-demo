@@ -88,7 +88,9 @@
         "priority": 2,
         "estimatedEffort": 4,
         "expectedBenefit": "Latency reduction and improved throughput",
-        "implementation": "Profile hotspots; apply caching or batching"
+        "implementation": "Profile hotspots; apply caching or batching",
+        "benefitScore": 1000,
+        "benefitRank": 1
       },
       {
         "id": "fix-2",
@@ -97,7 +99,9 @@
         "priority": 2,
         "estimatedEffort": 4,
         "expectedBenefit": "Latency reduction and improved throughput",
-        "implementation": "Profile hotspots; apply caching or batching"
+        "implementation": "Profile hotspots; apply caching or batching",
+        "benefitScore": 1000,
+        "benefitRank": 2
       },
       {
         "id": "fix-3",
@@ -106,7 +110,9 @@
         "priority": 3,
         "estimatedEffort": 4,
         "expectedBenefit": "Latency reduction and improved throughput",
-        "implementation": "Profile hotspots; apply caching or batching"
+        "implementation": "Profile hotspots; apply caching or batching",
+        "benefitScore": 1000,
+        "benefitRank": 3
       },
       {
         "id": "fix-4",
@@ -115,7 +121,9 @@
         "priority": 2,
         "estimatedEffort": 5,
         "expectedBenefit": "Reduced regression risk",
-        "implementation": "Add unit + integration tests for untested paths"
+        "implementation": "Add unit + integration tests for untested paths",
+        "benefitScore": 800,
+        "benefitRank": 4
       },
       {
         "id": "fix-5",
@@ -124,7 +132,9 @@
         "priority": 2,
         "estimatedEffort": 5,
         "expectedBenefit": "Reduced regression risk",
-        "implementation": "Add unit + integration tests for untested paths"
+        "implementation": "Add unit + integration tests for untested paths",
+        "benefitScore": 800,
+        "benefitRank": 5
       },
       {
         "id": "fix-6",
@@ -133,7 +143,9 @@
         "priority": 2,
         "estimatedEffort": 6,
         "expectedBenefit": "Improved reliability and lower error rate",
-        "implementation": "Trace stack, add guards, improve retry logic"
+        "implementation": "Trace stack, add guards, improve retry logic",
+        "benefitScore": 666.67,
+        "benefitRank": 6
       }
     ]
   }

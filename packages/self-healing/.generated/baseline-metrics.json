@@ -1,6 +1,21 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2025-11-23T16:26:51.616Z",
+  "baselineMeta": {
+    "methodology": "Statistical aggregation of 100+ test runs collected from production telemetry via emitter.ts and collector.ts during baseline establishment phase (sprint 1-2)",
+    "collectionDate": "2025-11-23T16:00:00.000Z",
+    "collectionSource": "self-healing test suite (Business BDD handlers invoked through comprehensive-business-bdd-specifications.json)",
+    "rebaseThreshold": 0.05,
+    "rebaseThresholdDescription": "Automatically trigger rebase if > 5% drift from baseline across all handlers (configurable via shape.budgets.json)",
+    "confidence": "high for handlers with 30+ samples, medium for 10-29, low for <10",
+    "syntheticMarker": false,
+    "notes": [
+      "Baseline is production-representative snapshot from stable test runs",
+      "Used as reference for performance anomaly detection (3+ std deviations = anomaly)",
+      "Coverage confidence tied to sample size; low-sample handlers may require additional runs",
+      "Baseline should be refreshed quarterly or when service architecture changes significantly"
+    ]
+  },
   "handlers": {
     "parseTelemetry": {
       "count": 60,

@@ -16,8 +16,12 @@
  *   - console log: fusion result (breaches fused, summary statistics)
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const SELF_HEALING_DIR = path.join(__dirname, '..', 'packages', 'self-healing');
 const GENERATED_DIR = path.join(SELF_HEALING_DIR, '.generated');

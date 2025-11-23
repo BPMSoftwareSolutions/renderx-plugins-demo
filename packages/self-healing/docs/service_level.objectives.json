@@ -9,15 +9,50 @@
     "throughput_min": 50,
     "availability": 0.995
   },
+  "breachSeverityMapping": {
+    "error_rate": {
+      "description": "Actual error rate vs target SLO",
+      "rules": [
+        {"condition": "actual/target > 3", "severity": "critical", "example": "9.58% / 5% = 1.92x => high severity"},
+        {"condition": "actual/target > 2", "severity": "high", "example": "7.5% / 5% = 1.5x => high severity"},
+        {"condition": "actual/target > 1", "severity": "medium", "example": "6% / 5% = 1.2x => medium"}
+      ]
+    },
+    "availability": {
+      "description": "Actual availability vs target SLO (measured as 1 - error_rate approximation)",
+      "rules": [
+        {"condition": "(target - actual) / target > 0.05", "severity": "critical", "example": "(0.995 - 0.9042) / 0.995 = 9.13% => critical"},
+        {"condition": "(target - actual) / target > 0.02", "severity": "high", "example": "(0.995 - 0.97) / 0.995 = 2% => high"},
+        {"condition": "(target - actual) / target > 0", "severity": "medium", "example": "Any gap below target"}
+      ]
+    },
+    "latency_p95_ms": {
+      "description": "Actual latency percentile vs target SLO",
+      "rules": [
+        {"condition": "actual/target > 5", "severity": "critical", "example": "1500ms / 300ms = 5x => critical"},
+        {"condition": "actual/target > 3", "severity": "high", "example": "900ms / 300ms = 3x => high"},
+        {"condition": "actual/target > 1", "severity": "medium", "example": "450ms / 300ms = 1.5x => medium"}
+      ]
+    },
+    "throughput_min": {
+      "description": "Minimum throughput (inverse metric: lower is worse)",
+      "rules": [
+        {"condition": "target/actual > 3", "severity": "critical", "example": "50 events / 10 events = 5x below => critical"},
+        {"condition": "target/actual > 2", "severity": "high", "example": "50 events / 20 events = 2.5x below => high"},
+        {"condition": "target/actual > 1", "severity": "medium", "example": "50 events / 40 events = 1.25x below => medium"}
+      ]
+    }
+  },
   "notes": [
     "Latency targets reference end-to-end handler execution durations.",
     "Error rate is weighted across handlers by invocation count.",
     "Throughput approximated as total events per run until time windowing implemented.",
-    "Availability approximated as 1 - weighted_error_rate (placeholder)."
+    "Availability approximated as 1 - weighted_error_rate (placeholder).",
+    "Breach severity mapping drives anomaly severity assignment in fuse-slo-breaches.js and diagnosis output."
   ],
   "future": {
     "windowing": "Introduce time buckets (1m/5m) for accurate throughput & availability",
     "sloBudget": "Add error budget / latency budget consumption tracking",
-    "breachSeverityMapping": "Map breach magnitude to anomaly severity levels"
+    "breachResponsePlans": "Define remediation workflows per severity level (critical vs high vs medium)"
   }
 }
