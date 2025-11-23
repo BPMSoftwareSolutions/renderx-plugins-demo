@@ -105,6 +105,16 @@
       "status": "completed",
       "priority": "high"
     }
+    ,
+    {
+      "id": "synthetic-telemetry-governance",
+      "title": "Govern synthetic telemetry with review process & verification",
+      "details": "Document review process (SYNTHETIC_TELEMETRY_REVIEW_PROCESS.md) and add verify-synthetic-telemetry.js to pretest (lenient by default, strict via env flags).",
+      "motivation": "Avoid data falsehood/contamination while enabling safe demos.",
+      "acceptance": ["Doc file exists", "Verification script integrated", "Env flags ALLOW_DEMO_SYNTHETIC / STRICT_SYNTHETIC_BLOCK documented"],
+      "status": "completed",
+      "priority": "high"
+    }
   ],
   "nextReview": "2025-11-30",
   "createdAt": "2025-11-23T00:00:00Z"

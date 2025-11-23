@@ -5,9 +5,9 @@
   "description": "Business-focused BDD specifications for all handlers with realistic scenarios",
   "timestamp": "2025-11-23T14:25:00.000Z",
   "summary": {
-    "totalHandlers": 77,
-    "totalScenarios": 77,
-    "coverage": "77/77 handlers (100%)"
+    "totalHandlers": 78,
+    "totalScenarios": 78,
+    "coverage": "78/78 handlers (100%)"
   },
   "handlers": [
     {
@@ -305,6 +305,29 @@
             "pattern should be identified",
             "root cause should be suggested",
             "severity should be assessed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "detectSloBreaches",
+      "sequence": "anomaly",
+      "businessValue": "Surface service-level objective breaches",
+      "persona": "Reliability Engineer",
+      "scenarios": [
+        {
+          "title": "Detect latency p95 and throughput breaches against SLO targets",
+          "given": [
+            "current weighted latency exceeds target",
+            "throughput below minimum SLO"
+          ],
+          "when": [
+            "SLO breach detection handler executes"
+          ],
+          "then": [
+            "breaches should be identified",
+            "anomalies should be emitted with severities",
+            "data should be persisted for diagnosis"
           ]
         }
       ]

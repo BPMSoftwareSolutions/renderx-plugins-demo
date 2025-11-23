@@ -5,6 +5,7 @@ import { detectBehavioralAnomalies } from './detect.behavioral';
 import { detectCoverageAnomalies } from './detect.coverage';
 import { detectErrorAnomalies } from './detect.errors';
 import { aggregateAnomalies } from './aggregate.anomalies';
+import { detectSloBreaches } from './detect.slo.breaches';
 import { storeAnomalies } from './store.anomalies';
 import { detectAnomaliesCompleted } from './detect.completed';
 import { TelemetryMetrics } from '../../types';
@@ -16,6 +17,7 @@ export interface RunAnomalyDetectionSummary {
   behavioral: ReturnType<typeof detectBehavioralAnomalies>;
   coverage: ReturnType<typeof detectCoverageAnomalies>;
   errors: ReturnType<typeof detectErrorAnomalies>;
+  slo: ReturnType<typeof detectSloBreaches>;
   aggregate: ReturnType<typeof aggregateAnomalies>;
   store: ReturnType<typeof storeAnomalies>;
   completed: ReturnType<typeof detectAnomaliesCompleted>;
@@ -38,8 +40,9 @@ export function runAnomalyDetection(options: RunAnomalyDetectionOptions): RunAno
   const behavioral = detectBehavioralAnomalies(load.context.metrics, load.context.baselines);
   const coverage = detectCoverageAnomalies(load.context.metrics, load.context.baselines);
   const errors = detectErrorAnomalies(load.context.metrics, load.context.baselines);
-  const aggregate = aggregateAnomalies(performance.context, behavioral.context, coverage.context, errors.context);
+  const slo = detectSloBreaches(load.context.metrics);
+  const aggregate = aggregateAnomalies(performance.context, behavioral.context, coverage.context, errors.context, slo.context);
   const store = storeAnomalies(aggregate.context.anomalies);
   const completed = detectAnomaliesCompleted(sequenceId, aggregate.context.anomalies);
-  return { requested, load, performance, behavioral, coverage, errors, aggregate, store, completed };
+  return { requested, load, performance, behavioral, coverage, errors, slo, aggregate, store, completed };
 }

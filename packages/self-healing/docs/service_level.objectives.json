@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "${DATE}",
+  "service": "self-healing-demo",
+  "objectives": {
+    "latency_p95_ms": 300,
+    "latency_p99_ms": 500,
+    "error_rate": 0.05,
+    "throughput_min": 50,
+    "availability": 0.995
+  },
+  "notes": [
+    "Latency targets reference end-to-end handler execution durations.",
+    "Error rate is weighted across handlers by invocation count.",
+    "Throughput approximated as total events per run until time windowing implemented.",
+    "Availability approximated as 1 - weighted_error_rate (placeholder)."
+  ],
+  "future": {
+    "windowing": "Introduce time buckets (1m/5m) for accurate throughput & availability",
+    "sloBudget": "Add error budget / latency budget consumption tracking",
+    "breachSeverityMapping": "Map breach magnitude to anomaly severity levels"
+  }
+}
