@@ -1,0 +1,24 @@
+{
+  "chainId": "chain-1763918339800",
+  "features": [
+    "multi-feature-correlation",
+    "shape-persistence"
+  ],
+  "runs": [
+    {
+      "feature": "multi-feature-correlation",
+      "file": "multi-feature-correlation\\run-1763918339793.json",
+      "shapeHash": "63cae1eee8b2459d"
+    },
+    {
+      "feature": "shape-persistence",
+      "file": "shape-persistence\\run-1763918339797.json",
+      "shapeHash": "405441aebdce3d50"
+    }
+  ],
+  "aggregated": {
+    "beats": 7,
+    "batonDiffCount": 0
+  },
+  "createdAt": "2025-11-23T17:18:59.801Z"
+}

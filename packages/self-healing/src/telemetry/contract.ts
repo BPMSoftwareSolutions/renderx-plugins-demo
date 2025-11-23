@@ -11,6 +11,9 @@ export interface BddTelemetryRecord {
   payload?: Record<string, any>; // opaque result or contextual data
   shapeHash?: string;         // stable hash representing normalized shape (added in Sprint 1)
   coverageId?: string;        // coverage segment identifier (Sprint 2 scaffold)
+  budgetStatus?: 'within' | 'breach'; // budget evaluation result (beats/duration/batonDiff)
+  domainMutations?: Record<string, number>; // domain mutation counts (mutation localization)
+  compositeChainId?: string; // correlation chain identifier for composite aggregation
 }
 
 export interface BddTelemetryContractPartial {

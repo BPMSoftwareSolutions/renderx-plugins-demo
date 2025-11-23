@@ -1,29 +1,33 @@
-import fs from 'fs';
-import path from 'path';
 import { describe, it, expect } from 'vitest';
-import { emitFeature } from '../../src/telemetry/emitter';
+import { startFeature, beat, endFeature } from '../../src/telemetry/emitter';
 import { installTelemetryMatcher } from '../../src/telemetry/matcher';
 import { clearTelemetry, getTelemetry } from '../../src/telemetry/collector';
+// Use CommonJS require for ESM script compatibility under Vitest transpilation
+const { buildComposite } = require('../../../../scripts/build-composite-shapes.js');
 
 installTelemetryMatcher();
 
-describe('Business BDD: multi-feature-correlation (auto-generated)', () => {
-  it('TDD RED: multi-feature-correlation scaffold', () => {
-    // This test intentionally fails until implementation satisfies GREEN criteria.
-    expect(() => { throw new Error('Composite correlation not implemented: expected aggregated composite shape.') }).toThrow();
-    // Force RED state (will flip to GREEN when acceptance criteria are implemented)
-    expect(true).toBe(false);
-  });
-  it('Scenario: Aggregate correlated telemetry chain into composite shape signature.', async () => {
+describe('Business BDD: multi-feature-correlation (auto-generated GREEN)', () => {
+  it('Scenario: Build composite from two feature telemetry records aggregating beats.', async () => {
     clearTelemetry();
-    const { record } = await emitFeature('multi-feature-correlation', 'multi-feature-correlation:executed', async () => ({ ok: true }));
-    // Governance: required fields
-    expect(record.feature).toBe('multi-feature-correlation');
-    expect(record.event).toBe('multi-feature-correlation:executed');
-    expect(record.correlationId).toMatch(/-/);
-    expect(record.beats).toBeGreaterThanOrEqual(2);
-    expect(getTelemetry().length).toBe(1);
-    expect(record).toHaveTelemetry({ feature: 'multi-feature-correlation', event: 'multi-feature-correlation:executed' });
-
+    // Emit first feature with manual beats
+    const c1 = startFeature('multi-feature-correlation', 'multi-feature-correlation:executed');
+    for (let i = 0; i < 4; i++) beat(c1);
+    const r1 = endFeature(c1, 'ok', { ok: true })!;
+    // Emit second existing feature to correlate (reuse shape-persistence)
+    const c2 = startFeature('shape-persistence', 'shape-persistence:executed');
+    for (let i = 0; i < 3; i++) beat(c2);
+    const r2 = endFeature(c2, 'ok', { ok: true })!;
+    expect(getTelemetry().length).toBe(2);
+    // Build composite
+    const chainId = `chain-${Date.now()}`;
+    const compositePath = buildComposite(chainId, ['multi-feature-correlation', 'shape-persistence']);
+    expect(compositePath).toMatch(/composites/);
+    const composite = JSON.parse(require('fs').readFileSync(compositePath, 'utf-8'));
+    expect(composite.chainId).toBe(chainId);
+    expect(composite.features).toContain('multi-feature-correlation');
+    expect(composite.features).toContain('shape-persistence');
+    const summedBeats = r1.beats + r2.beats;
+    expect(composite.aggregated.beats).toBe(summedBeats);
   });
 });

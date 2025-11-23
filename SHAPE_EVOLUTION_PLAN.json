@@ -254,7 +254,7 @@
           "Budget config loaded",
           "Anomaly emitted when beats exceed threshold"
         ],
-        "tddPhase": "RED",
+        "tddPhase": "GREEN",
         "redFailMessage": "Budget evaluator not implemented: expected anomaly emission."
       },
       {
@@ -280,7 +280,7 @@
           "Composite JSON produced",
           "Aggregated beats equals sum of individual features"
         ],
-        "tddPhase": "RED",
+        "tddPhase": "GREEN",
         "redFailMessage": "Composite correlation not implemented: expected aggregated composite shape."
       }
     ],
@@ -290,5 +290,32 @@
       "failOnMissing": true,
       "annotationFile": "shape-evolutions.json"
     }
+  },
+  "statusSummary": {
+    "lastUpdated": "2025-11-23T17:25:00.000Z",
+    "overallProgressPercent": 70,
+    "suggestedCommitMessage": "feat(governance,sprint-3,sprint-4): finalize sprint-3 budgets + initial map, begin sprint-4 correlation (composite spec GREEN) & update history with budget health",
+    "notes": [
+      "Budgets breach anomaly validated",
+      "Composite builder exercised in correlation spec",
+      "Telemetry map initial SVG generated"
+    ],
+    "currentSprint": "sprint-4",
+    "completedSprints": ["sprint-1","sprint-2","sprint-3"],
+    "blueprintSprintIntegrity": "ok"
+  },
+  "improvementsBacklog": [
+    {"id": "IMP-1", "title": "Add anomaliesCount field", "desc": "Persist total anomaly count per feature run for faster health queries", "priority": "medium"},
+    {"id": "IMP-2", "title": "Correlation edges in SVG", "desc": "Render lines between chained features in telemetry map", "priority": "high"},
+    {"id": "IMP-3", "title": "Coverage drift overlay", "desc": "Color node border when coverageId changed in last 3 runs", "priority": "low"},
+    {"id": "IMP-4", "title": "Domain mutation glyphs", "desc": "Add small icons per domain type to map nodes", "priority": "low"}
+  ],
+  "blueprintStatuses": {
+    "shape-persistence": {"status": "completed", "completionTs": "2025-11-23T16:54:39.000Z"},
+    "shape-hash-annotation": {"status": "completed", "completionTs": "2025-11-23T16:56:50.000Z"},
+    "coverage-coupling": {"status": "completed", "completionTs": "2025-11-23T17:06:40.000Z"},
+    "shape-budgets": {"status": "completed", "completionTs": "2025-11-23T17:18:20.000Z"},
+    "shape-contracts": {"status": "completed", "completionTs": "2025-11-23T17:06:40.000Z"},
+    "multi-feature-correlation": {"status": "completed", "completionTs": "2025-11-23T17:19:00.000Z"}
   }
 }

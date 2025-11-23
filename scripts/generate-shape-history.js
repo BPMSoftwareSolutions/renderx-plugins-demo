@@ -23,7 +23,7 @@ function main() {
     console.log('[shape-history] Written empty history.');
     return;
   }
-  const lines = ['# Shape History', '', `Last Updated: ${index.lastUpdated}`, '', '## Feature Runs', '', formatRow(['Feature','Runs','Latest Hash','Prev Hash','CoverageId','Annotated Last Diff','Earliest Timestamp','Annotations']), formatRow(['---','---','---','---','---','---','---','---'])];
+  const lines = ['# Shape History', '', `Last Updated: ${index.lastUpdated}`, '', '## Feature Runs', '', formatRow(['Feature','Runs','Latest Hash','Prev Hash','CoverageId','BudgetStatus','BreachCount','Annotated Last Diff','Earliest Timestamp','Annotations']), formatRow(['---','---','---','---','---','---','---','---','---','---'])];
   for (const [feature, entry] of Object.entries(index.features || {})) {
     const runs = entry.runs || [];
     const latest = runs[0];
@@ -39,6 +39,16 @@ function main() {
       annotatedLastDiff = 'same';
     }
     const earliestTs = runs.length ? runs[runs.length - 1].timestamp || 'n/a' : 'n/a';
+    // Derive budget status from latest full record
+    let budgetStatus = 'n/a';
+    let breachCount = 0;
+    for (const r of runs) {
+      try {
+        const full = JSON.parse(fs.readFileSync(path.join(TELEMETRY_ROOT, r.file), 'utf-8'));
+        if (r === latest && full.budgetStatus) budgetStatus = full.budgetStatus;
+        if (full.budgetStatus === 'breach') breachCount += 1;
+      } catch {/* ignore */}
+    }
     // Attempt to read latest coverage artifact (presence implies coupling)
     let coverageId = 'n/a';
     if (latest && latest.shapeHash) {
@@ -46,7 +56,7 @@ function main() {
       const covCandidate = (entry.runs[0].coverageId) || null;
       if (covCandidate) coverageId = covCandidate;
     }
-    lines.push(formatRow([feature, String(runs.length), latestShort, prevShort, coverageId, annotatedLastDiff, earliestTs, String(annotatedCount)]));
+    lines.push(formatRow([feature, String(runs.length), latestShort, prevShort, coverageId, budgetStatus, String(breachCount), annotatedLastDiff, earliestTs, String(annotatedCount)]));
   }
   // Recent annotations table
   if (evol.annotations.length) {

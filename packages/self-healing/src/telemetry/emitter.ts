@@ -4,6 +4,7 @@ import { computeShapeHash } from './hash';
 import { persistTelemetry } from './persistence';
 import { computeCoverageId } from './coverage-coupling';
 import { persistCoverageSegment } from './coverage-persistence';
+import { evaluateBudgets } from './budget-evaluator';
 import { recordTelemetry } from './collector';
 
 interface ActiveFeatureContext {
@@ -14,6 +15,7 @@ interface ActiveFeatureContext {
   correlationId: string;
   batonDiffCount: number;
   sequenceSignature?: string;
+  domains?: Record<string, number>; // for mutation localization
 }
 
 const active: Record<string, ActiveFeatureContext> = {};
@@ -42,6 +44,14 @@ export function registerBatonMutation(correlationId: string, count: number = 1) 
   if (ctx) ctx.batonDiffCount += count;
 }
 
+export function registerDomainMutation(correlationId: string, domain: string, count: number = 1) {
+  const ctx = active[correlationId];
+  if (ctx) {
+    if (!ctx.domains) ctx.domains = {};
+    ctx.domains[domain] = (ctx.domains[domain] || 0) + count;
+  }
+}
+
 export function endFeature(correlationId: string, status: 'ok' | 'warn' | 'error', payload?: Record<string, any>) {
   const ctx = active[correlationId];
   if (!ctx) return;
@@ -56,7 +66,8 @@ export function endFeature(correlationId: string, status: 'ok' | 'warn' | 'error
     durationMs,
     sequenceSignature: ctx.sequenceSignature,
     batonDiffCount: ctx.batonDiffCount,
-    payload
+    payload,
+    domainMutations: ctx.domains
   };
   // Attach shape hash (exclude volatile fields internally)
   try {
@@ -81,6 +92,11 @@ export function endFeature(correlationId: string, status: 'ok' | 'warn' | 'error
     persistTelemetry(record);
   } catch (e) {
     console.warn('[telemetry] persistence failed:', (e as any)?.message || e);
+  }
+  try {
+    evaluateBudgets(record);
+  } catch (e) {
+    console.warn('[telemetry] budget evaluation failed:', (e as any)?.message || e);
   }
   recordTelemetry(record);
   delete active[correlationId];

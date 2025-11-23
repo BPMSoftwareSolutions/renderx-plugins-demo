@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "features": {
+    "shape-budgets": { "beatsMax": 3, "durationMsMax": 1000, "batonDiffMax": 0 },
+    "shape-persistence": { "beatsMax": 4 },
+    "shape-hash-annotation": { "beatsMax": 4 },
+    "coverage-coupling": { "beatsMax": 4 }
+  }
+}
