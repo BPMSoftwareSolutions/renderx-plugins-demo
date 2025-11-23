@@ -8,12 +8,7 @@ import { clearTelemetry, getTelemetry } from '../../src/telemetry/collector';
 installTelemetryMatcher();
 
 describe('Business BDD: coverage-coupling (auto-generated)', () => {
-  it('TDD RED: coverage-coupling scaffold', () => {
-    // This test intentionally fails until implementation satisfies GREEN criteria.
-    expect(() => { throw new Error('Coverage coupling not implemented: expected coverageId generation.') }).toThrow();
-    // Force RED state (will flip to GREEN when acceptance criteria are implemented)
-    expect(true).toBe(false);
-  });
+
   it('Scenario: Attach coverageId representing touched lines/functions to telemetry.', async () => {
     clearTelemetry();
     const { record } = await emitFeature('coverage-coupling', 'coverage-coupling:executed', async () => ({ ok: true }));
@@ -24,6 +19,6 @@ describe('Business BDD: coverage-coupling (auto-generated)', () => {
     expect(record.beats).toBeGreaterThanOrEqual(2);
     expect(getTelemetry().length).toBe(1);
     expect(record).toHaveTelemetry({ feature: 'coverage-coupling', event: 'coverage-coupling:executed' });
-
+    expect(record.coverageId).toMatch(/[a-f0-9]{12,}/); // coverageId scaffold presence
   });
 });

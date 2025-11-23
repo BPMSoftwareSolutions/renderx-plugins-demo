@@ -23,13 +23,23 @@ function main() {
     console.log('[shape-history] Written empty history.');
     return;
   }
-  const lines = ['# Shape History', '', `Last Updated: ${index.lastUpdated}`, '', '## Feature Runs', '', formatRow(['Feature','Runs','Latest Short Hash','Annotated Changes']), formatRow(['---','---','---','---'])];
+  const lines = ['# Shape History', '', `Last Updated: ${index.lastUpdated}`, '', '## Feature Runs', '', formatRow(['Feature','Runs','Latest Hash','Prev Hash','Annotated Last Diff','Earliest Timestamp','Annotations']), formatRow(['---','---','---','---','---','---','---'])];
   for (const [feature, entry] of Object.entries(index.features || {})) {
     const runs = entry.runs || [];
     const latest = runs[0];
+    const prev = runs[1];
     const latestShort = latest?.shapeHash || 'n/a';
+    const prevShort = prev?.shapeHash || 'n/a';
     const annotatedCount = evol.annotations.filter(a => a.feature === feature).length;
-    lines.push(formatRow([feature, String(runs.length), latestShort, String(annotatedCount)]));
+    let annotatedLastDiff = 'n/a';
+    if (prev && latest && latestShort !== prevShort) {
+      const annotated = evol.annotations.some(a => a.feature === feature && a.previousHash?.startsWith(prevShort) && a.newHash?.startsWith(latestShort));
+      annotatedLastDiff = annotated ? 'yes' : 'no';
+    } else if (prev && latest) {
+      annotatedLastDiff = 'same';
+    }
+    const earliestTs = runs.length ? runs[runs.length - 1].timestamp || 'n/a' : 'n/a';
+    lines.push(formatRow([feature, String(runs.length), latestShort, prevShort, annotatedLastDiff, earliestTs, String(annotatedCount)]));
   }
   // Recent annotations table
   if (evol.annotations.length) {

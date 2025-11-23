@@ -241,7 +241,7 @@
           "coverageId present",
           "coverageId changes only when touched code changes"
         ],
-        "tddPhase": "RED",
+        "tddPhase": "GREEN",
         "redFailMessage": "Coverage coupling not implemented: expected coverageId generation."
       },
       {
