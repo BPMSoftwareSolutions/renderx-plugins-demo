@@ -9,6 +9,8 @@ export interface BddTelemetryRecord {
   sequenceSignature?: string; // optional signature (hash) of the execution path
   batonDiffCount?: number;    // count of state/baton mutations
   payload?: Record<string, any>; // opaque result or contextual data
+  shapeHash?: string;         // stable hash representing normalized shape (added in Sprint 1)
+  coverageId?: string;        // coverage segment identifier (Sprint 2 scaffold)
 }
 
 export interface BddTelemetryContractPartial {

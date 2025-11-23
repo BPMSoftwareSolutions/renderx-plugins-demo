@@ -1,5 +1,8 @@
 import { randomUUID } from 'crypto';
 import { BddTelemetryRecord } from './contract';
+import { computeShapeHash } from './hash';
+import { persistTelemetry } from './persistence';
+import { computeCoverageId } from './coverage-coupling';
 import { recordTelemetry } from './collector';
 
 interface ActiveFeatureContext {
@@ -54,6 +57,25 @@ export function endFeature(correlationId: string, status: 'ok' | 'warn' | 'error
     batonDiffCount: ctx.batonDiffCount,
     payload
   };
+  // Attach shape hash (exclude volatile fields internally)
+  try {
+    record.shapeHash = computeShapeHash(record);
+  } catch (e) {
+    // Non-fatal: hash failure should not block telemetry emission; surface warning for diagnosability
+    console.warn('[telemetry] shape hash failed:', (e as any)?.message || e);
+    record.shapeHash = 'hash_error';
+  }
+  try {
+    record.coverageId = computeCoverageId(record);
+  } catch (e) {
+    console.warn('[telemetry] coverageId generation failed:', (e as any)?.message || e);
+  }
+  // Persist for history (best-effort; ignore errors to avoid test flakiness)
+  try {
+    persistTelemetry(record);
+  } catch (e) {
+    console.warn('[telemetry] persistence failed:', (e as any)?.message || e);
+  }
   recordTelemetry(record);
   delete active[correlationId];
   return record;

@@ -214,7 +214,9 @@
           "Generates run-* telemetry file",
           "Updates index with retention (<=10 entries)",
           "Contains shapeHash field"
-        ]
+        ],
+  "tddPhase": "GREEN",
+  "redFailMessage": "Persistence not yet implemented: expected telemetry run-* file and index retention."
       },
       {
         "slug": "shape-hash-annotation",
@@ -225,7 +227,9 @@
         "acceptanceCriteria": [
           "shapeHash reproducible for identical runs",
           "Unannotated change triggers planned failure (simulated)"
-        ]
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Hash + annotation not implemented: expected stable shapeHash and annotation enforcement."
       },
       {
         "slug": "coverage-coupling",
@@ -236,7 +240,9 @@
         "acceptanceCriteria": [
           "coverageId present",
           "coverageId changes only when touched code changes"
-        ]
+        ],
+        "tddPhase": "RED",
+        "redFailMessage": "Coverage coupling not implemented: expected coverageId generation."
       },
       {
         "slug": "shape-budgets",
@@ -247,7 +253,9 @@
         "acceptanceCriteria": [
           "Budget config loaded",
           "Anomaly emitted when beats exceed threshold"
-        ]
+        ],
+        "tddPhase": "RED",
+        "redFailMessage": "Budget evaluator not implemented: expected anomaly emission."
       },
       {
         "slug": "shape-contracts",
@@ -258,7 +266,9 @@
         "acceptanceCriteria": [
           "Contract file present",
           "Violation detection test simulates mismatch"
-        ]
+        ],
+        "tddPhase": "RED",
+        "redFailMessage": "Contract validation not implemented: expected schema enforcement."
       },
       {
         "slug": "multi-feature-correlation",
@@ -269,7 +279,9 @@
         "acceptanceCriteria": [
           "Composite JSON produced",
           "Aggregated beats equals sum of individual features"
-        ]
+        ],
+        "tddPhase": "RED",
+        "redFailMessage": "Composite correlation not implemented: expected aggregated composite shape."
       }
     ],
     "governance": {

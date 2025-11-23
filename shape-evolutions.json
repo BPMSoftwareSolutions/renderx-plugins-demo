@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "annotations": [
+    {
+      "feature": "shape-persistence",
+      "previousHash": "f49ac7169739c7121728d15fcf613fe83ac0f9f89c3d882154457bc84067449f",
+      "newHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
+      "annotatedAt": "2025-11-23T16:54:39.684Z",
+      "reason": "Initial persistence baseline"
+    }
+  ]
+}
