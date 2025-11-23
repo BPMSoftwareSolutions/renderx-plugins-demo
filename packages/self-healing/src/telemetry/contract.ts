@@ -14,6 +14,7 @@ export interface BddTelemetryRecord {
   budgetStatus?: 'within' | 'breach'; // budget evaluation result (beats/duration/batonDiff)
   domainMutations?: Record<string, number>; // domain mutation counts (mutation localization)
   compositeChainId?: string; // correlation chain identifier for composite aggregation
+  anomaliesCount?: number; // number of anomalies associated with this feature run (filtered by correlationId)
 }
 
 export interface BddTelemetryContractPartial {

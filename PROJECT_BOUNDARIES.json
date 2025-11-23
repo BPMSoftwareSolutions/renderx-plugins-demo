@@ -1,0 +1,9 @@
+[
+  "packages",
+  "scripts",
+  ".generated",
+  "config",
+  "catalog",
+  "dist",
+  "public"
+]

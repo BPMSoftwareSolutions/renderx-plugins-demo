@@ -88,7 +88,8 @@
     "telemetry:dev": "npm --prefix packages/telemetry-workbench run dev",
     "telemetry:build": "npm --prefix packages/telemetry-workbench run build",
     "rag:search": "python scripts/rag-search.py",
-    "rag:analyze-telemetry": "python scripts/rag-telemetry-analyzer.py"
+    "rag:analyze-telemetry": "python scripts/rag-telemetry-analyzer.py",
+    "governance": "node scripts/run-governance-checks.js"
     ,"evaluate:slos": "node scripts/evaluate-slos.js"
   },
   "dependencies": {

@@ -17,7 +17,9 @@
   "resources": {
     "logDirectory": ".logs",
     "sampleLogHint": "Place one or more .log files (or copy existing production sample) into .logs/",
-    "baselineSnapshotOptional": "(future) baseline-metrics.json for SLO slice",
+    "baselineArtifact": ".generated/baseline-metrics.json (handler baselines: p50, p95, errorRate, confidence)",
+    "metricsOverlay": ".generated/slo-breaches.json and .generated/anomalies.json (SLO evaluation + anomaly records)",
+    "baselineSnapshotOptional": "(future) enhanced PV/AV baseline snapshots",
     "valueUnitsCatalogFuture": "value-units.json (PV scaffolding)"
   },
   "sequencesIncluded": ["telemetry-parse", "anomaly-detect", "diagnosis-analyze"],
@@ -52,19 +54,23 @@
   "steps": [
     {"order": 1, "action": "Populate .logs with sample log file(s)"},
     {"order": 2, "action": "Run pretest enforcement: npm run pretest (implicit via npm test)"},
-    {"order": 3, "action": "Execute demo script: node scripts/run-self-healing-demo.js --logsDir .logs"},
-    {"order": 4, "action": "Review console summary (issues, impact, recommendations)"},
-    {"order": 5, "action": "Capture screenshot / metrics for stakeholders"}
+    {"order": 3, "action": "Baseline Establishment: Run telemetry parser & aggregate handler latency/error baselines (p50, p95, confidence)"},
+    {"order": 4, "action": "SLO Evaluation: Compare SLIs (latency_p95, error_rate, throughput, availability) vs targets in service_level.objectives.json"},
+    {"order": 5, "action": "Anomaly Detection: Execute demo script node scripts/run-self-healing-demo.js --logsDir .logs; surfaces performance, behavioral, coverage, error anomalies"},
+    {"order": 6, "action": "Diagnosis Aggregation: Analyzes all anomalies, assesses impact, prioritizes recommendations by effort/benefit"},
+    {"order": 7, "action": "Review console summary: issues grouped by type/severity, SLO breaches flagged, recommendations ranked by priority"},
+    {"order": 8, "action": "Capture metrics: anomaly count by severity, SLO breach delta magnitude, handler coverage gaps, recommendation priority distribution"}
   ],
   "andonTriggers": [
     "Missing .logs directory or empty => abort with guidance",
     "verify-bdd-spec FAIL => abort demo",
     "verify-demo-spec FAIL => abort demo",
-    "No anomalies detected => highlight need for more representative log sample"
+    "No anomalies detected => highlight need for more representative log sample",
+    "SLO breach detected but not in anomalies.json => abort and trigger fusion (task #45)"
   ],
   "futureExtensions": [
-    "Integrate SLO breach events once SLO slice implemented",
-    "Add PV/AV delta overlay in demo output",
-    "Graphical timeline visualization"
+    "SLO breach → anomalies fusion (in-progress, task #45)",
+    "Coverage anomaly overlay with PV/AV delta visualization",
+    "Graphical timeline with severity-colored annotations"
   ]
 }

@@ -23,7 +23,7 @@ function main() {
     console.log('[shape-history] Written empty history.');
     return;
   }
-  const lines = ['# Shape History', '', `Last Updated: ${index.lastUpdated}`, '', '## Feature Runs', '', formatRow(['Feature','Runs','Latest Hash','Prev Hash','CoverageId','BudgetStatus','BreachCount','Annotated Last Diff','Earliest Timestamp','Annotations']), formatRow(['---','---','---','---','---','---','---','---','---','---'])];
+  const lines = ['# Shape History', '', `Last Updated: ${index.lastUpdated}`, '', '## Feature Runs', '', formatRow(['Feature','Runs','Latest Hash','Prev Hash','CoverageId','BudgetStatus','BreachCount','AnomaliesCount','Annotated Last Diff','Earliest Timestamp','Annotations']), formatRow(['---','---','---','---','---','---','---','---','---','---','---'])];
   for (const [feature, entry] of Object.entries(index.features || {})) {
     const runs = entry.runs || [];
     const latest = runs[0];
@@ -56,7 +56,15 @@ function main() {
       const covCandidate = (entry.runs[0].coverageId) || null;
       if (covCandidate) coverageId = covCandidate;
     }
-    lines.push(formatRow([feature, String(runs.length), latestShort, prevShort, coverageId, budgetStatus, String(breachCount), annotatedLastDiff, earliestTs, String(annotatedCount)]));
+    // Derive anomaliesCount from latest record file if present
+    let anomaliesCount = '0';
+    try {
+      if (latest) {
+        const fullLatest = JSON.parse(fs.readFileSync(path.join(TELEMETRY_ROOT, latest.file), 'utf-8'));
+        if (typeof fullLatest.anomaliesCount === 'number') anomaliesCount = String(fullLatest.anomaliesCount);
+      }
+    } catch { /* ignore */ }
+    lines.push(formatRow([feature, String(runs.length), latestShort, prevShort, coverageId, budgetStatus, String(breachCount), anomaliesCount, annotatedLastDiff, earliestTs, String(annotatedCount)]));
   }
   // Recent annotations table
   if (evol.annotations.length) {

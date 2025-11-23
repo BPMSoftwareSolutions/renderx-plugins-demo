@@ -7,6 +7,13 @@
       "newHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
       "annotatedAt": "2025-11-23T16:54:39.684Z",
       "reason": "Initial persistence baseline"
+    },
+    {
+      "feature": "shape-persistence",
+      "previousHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
+      "newHash": "405441aebdce3d50ccf75f0794ad55a14a543147651bc1140743ce877b8c97b0",
+      "annotatedAt": "2025-11-23T18:03:18.924Z",
+      "reason": "baseline alignment after governance scripts"
     }
   ]
 }

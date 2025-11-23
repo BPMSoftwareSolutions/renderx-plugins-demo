@@ -1,0 +1,18 @@
+{
+  "tags": {
+    "telemetry": ["packages/self-healing/src/telemetry/**"],
+    "governance-scripts": ["scripts/*diff*", "scripts/*history*", "scripts/*budget*", "scripts/generate-telemetry-map.js", "scripts/validate-plan-integrity.js"],
+    "specs": ["packages/self-healing/__tests__/**"],
+    "composite": ["scripts/build-composite-shapes.js"],
+    "domain-mutations": ["packages/self-healing/src/domain/**"],
+    "contracts": ["contracts/**"]
+  },
+  "allowedImports": {
+    "specs": ["specs", "telemetry", "governance-scripts", "composite"],
+    "governance-scripts": ["governance-scripts", "telemetry", "contracts"],
+    "telemetry": ["telemetry"],
+    "composite": ["composite", "telemetry"],
+    "domain-mutations": ["domain-mutations", "telemetry"],
+    "contracts": ["contracts"]
+  }
+}

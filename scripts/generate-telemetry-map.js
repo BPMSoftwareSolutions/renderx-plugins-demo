@@ -36,8 +36,9 @@ function main() {
     const runs = entry.runs.length;
     // Attempt to read budgetStatus from latest run file
     const latest = entry.runs[0];
-    let status = 'unknown';
-    let breachCount = 0;
+  let status = 'unknown';
+  let breachCount = 0;
+  let anomaliesCount = 0;
     try {
       const rec = JSON.parse(fs.readFileSync(path.join(ROOT, '.generated', 'telemetry', latest.file), 'utf-8'));
       status = rec.budgetStatus || 'unknown';
@@ -46,13 +47,14 @@ function main() {
         try {
           const rr = JSON.parse(fs.readFileSync(path.join(ROOT, '.generated', 'telemetry', r.file), 'utf-8'));
           if (rr.budgetStatus === 'breach') breachCount += 1;
+          if (typeof rr.anomaliesCount === 'number') anomaliesCount += rr.anomaliesCount;
         } catch {}
       }
     } catch {}
     const radius = 20 + Math.min(runs, 10);
     const color = colorForBudget(status);
     svg += `<circle cx="${x}" cy="${y}" r="${radius}" fill="${color}" stroke="#333" />`;
-    svg += `<text x="${x - radius}" y="${y + radius + 14}" fill="#000">${f} runs:${runs} breaches:${breachCount} status:${status}</text>`;
+  svg += `<text x="${x - radius}" y="${y + radius + 14}" fill="#000">${f} runs:${runs} breaches:${breachCount} anomalies:${anomaliesCount} status:${status}</text>`;
     x += 120;
   }
   svg += '</svg>';

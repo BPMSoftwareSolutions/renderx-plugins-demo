@@ -5,6 +5,7 @@ import { persistTelemetry } from './persistence';
 import { computeCoverageId } from './coverage-coupling';
 import { persistCoverageSegment } from './coverage-persistence';
 import { evaluateBudgets } from './budget-evaluator';
+import { getAnomalies } from './anomalies';
 import { recordTelemetry } from './collector';
 
 interface ActiveFeatureContext {
@@ -97,6 +98,13 @@ export function endFeature(correlationId: string, status: 'ok' | 'warn' | 'error
     evaluateBudgets(record);
   } catch (e) {
     console.warn('[telemetry] budget evaluation failed:', (e as any)?.message || e);
+  }
+  // Attach anomaliesCount (correlation-level + feature-level filter)
+  try {
+    const all = getAnomalies();
+    record.anomaliesCount = all.filter(a => a.feature === record.feature && a.correlationId === record.correlationId).length;
+  } catch (e) {
+    console.warn('[telemetry] anomaliesCount derivation failed:', (e as any)?.message || e);
   }
   recordTelemetry(record);
   delete active[correlationId];

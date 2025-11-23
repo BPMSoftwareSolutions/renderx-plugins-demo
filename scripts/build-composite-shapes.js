@@ -30,8 +30,10 @@ function buildComposite(chainId, features) {
     const fullPath = path.join(ROOT, '.generated', 'telemetry', latest.file);
     try {
       const rec = JSON.parse(fs.readFileSync(fullPath, 'utf-8'));
-      totalBeats += rec.beats || 0;
-      totalBaton += rec.batonDiffCount || 0;
+      const beats = (rec.beats ?? rec.record?.beats) || 0;
+      const baton = (rec.batonDiffCount ?? rec.record?.batonDiffCount) || 0;
+      totalBeats += beats;
+      totalBaton += baton;
     } catch { /* ignore */ }
   }
   ensureDir();

@@ -1,6 +1,6 @@
 # Project Status Report
 
-Last Updated: 2025-11-23T17:25:00.000Z
+Last Updated: 2025-11-23T17:30:00.000Z
 
 ## Overview
 
@@ -9,13 +9,14 @@ Overall Progress: 100%
 Suggested Commit Message:
 
 ```
-feat(governance,sprint-3,sprint-4): finalize sprint-3 budgets + initial map, begin sprint-4 correlation (composite spec GREEN) & update history with budget health
+feat(demo,sprint-3): enhance DEMO_PROCESS_SPEC with baseline/SLO evaluation steps + metricsOverlay; demo readiness checklist 80% complete
 ```
 
 Highlights:
-- Budgets breach anomaly validated
-- Composite builder exercised in correlation spec
-- Telemetry map initial SVG generated
+- Baseline establishment step 3 added to demo flow
+- SLO evaluation step 4 inserted before anomaly detection
+- Andon trigger added: SLO breach not in anomalies => abort (task #45 dependency)
+- futureExtensions updated: SLO fusion marked in-progress
 
 Current Sprint: sprint-4
 Completed Sprints: sprint-1, sprint-2, sprint-3
@@ -88,14 +89,17 @@ Sprint Integrity: ok
 
 ## Budget Breach & Anomaly Summary
 
-Total Features: 5
+Total Features: 8
 Features With Breaches: 0
 Total Breaches Across Runs: 0
 
 | Feature | Breach Runs |
 |---------|-------------|
 | shape-persistence | 0 |
+| detect-slo-breaches | 0 |
 | shape-hash-annotation | 0 |
+| login | 0 |
+| multi-feature-correlation | 0 |
+| coverage-coupling | 0 |
 | shape-contracts | 0 |
 | shape-budgets | 0 |
-| multi-feature-correlation | 0 |

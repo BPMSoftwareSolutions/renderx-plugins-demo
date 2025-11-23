@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "description": "Defines allowed and blocked paths for self-healing telemetry governance operations.",
+  "allowed": {
+    "read": [
+      "packages/self-healing/**",
+      "scripts/generate-*",
+      "scripts/validate-*",
+      "scripts/scope-guard.js",
+      "SHAPE_EVOLUTION_PLAN.json",
+      "shape-evolutions.json",
+      "shape.budgets.json",
+      "contracts/**",
+      ".generated/**",
+      "PROJECT_STATUS_REPORT.md",
+      "SHAPE_HISTORY.md"
+    ],
+    "write": [
+      "packages/self-healing/**",
+      "scripts/**",
+      ".generated/**",
+      "telemetry-map.svg",
+      "SHAPE_HISTORY.md",
+      "PROJECT_STATUS_REPORT.md",
+      "SHAPE_EVOLUTION_PLAN.json",
+      "contracts/**"
+    ]
+  },
+  "blocked": [
+    "index.html",
+    "log_analysis.py",
+    "log_analysis_new.py",
+    "docker-compose.yml",
+    "Dockerfile"
+  ],
+  "confirmationEnvVar": "ALLOW_OUT_OF_SCOPE",
+  "categories": {
+    "governance": ["packages/self-healing/**", "scripts/generate-*", "scripts/validate-*", ".generated/**"],
+    "reporting": ["scripts/generate-project-report.js", "PROJECT_STATUS_REPORT.md"],
+    "contracts": ["contracts/**", "scripts/validate-shape-contracts.js"]
+  }
+}

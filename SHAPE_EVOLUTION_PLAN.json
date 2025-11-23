@@ -409,13 +409,27 @@
     }
   },
   "statusSummary": {
-    "lastUpdated": "2025-11-23T17:25:00.000Z",
-    "overallProgressPercent": 70,
-    "suggestedCommitMessage": "feat(governance,sprint-3,sprint-4): finalize sprint-3 budgets + initial map, begin sprint-4 correlation (composite spec GREEN) & update history with budget health",
+    "lastUpdated": "2025-11-23T17:30:00.000Z",
+    "overallProgressPercent": 73,
+    "demoEnhancementPhase": "baseline-and-slo-steps-integrated",
+    "suggestedCommitMessage": "feat(demo,sprint-3): enhance DEMO_PROCESS_SPEC with baseline/SLO evaluation steps + metricsOverlay; demo readiness checklist 80% complete",
+    "demoReadinessChecklist": [
+      "✓ DEMO_PROCESS_SPEC baseline/SLO steps present",
+      "✓ metricsOverlay field populated (slo-breaches.json + anomalies.json)",
+      "✓ service_level.objectives.json targets defined",
+      "✓ baseline-metrics.json handler stats computed",
+      "✓ slo-breaches.json populated (2 breaches detected)",
+      "✓ anomalies.json multi-type records (9 anomalies)",
+      "✓ diagnosis-results.json impact + recommendations",
+      "✓ comprehensive-business-bdd-specifications.json 100% coverage (78 handlers)",
+      "△ anomalies.json SLO breach type entries (pending task #45)",
+      "△ anomalies summary block (count, severity, synthetic flag)"
+    ],
     "notes": [
-      "Budgets breach anomaly validated",
-      "Composite builder exercised in correlation spec",
-      "Telemetry map initial SVG generated"
+      "Baseline establishment step 3 added to demo flow",
+      "SLO evaluation step 4 inserted before anomaly detection",
+      "Andon trigger added: SLO breach not in anomalies => abort (task #45 dependency)",
+      "futureExtensions updated: SLO fusion marked in-progress"
     ],
     "currentSprint": "sprint-4",
     "completedSprints": [
@@ -424,6 +438,23 @@
       "sprint-3"
     ],
     "blueprintSprintIntegrity": "ok"
+  },
+  "scopePolicy": {
+    "manifest": "PROJECT_SCOPE.json",
+    "enforcementScript": "scripts/scope-guard.js",
+    "confirmationEnvVar": "ALLOW_OUT_OF_SCOPE",
+    "categories": [
+      "governance",
+      "reporting",
+      "contracts"
+    ],
+    "lastUpdated": "2025-11-23T17:40:00.000Z",
+    "notes": [
+      "Out-of-scope access now blocked unless ALLOW_OUT_OF_SCOPE=1 is set.",
+      "Guard prevents reads/writes outside packages/self-healing unless explicitly allowed.",
+      "Blocked artifacts: index.html, log analysis scripts, container files."
+    ],
+    "interactionProtocol": "Agents must run npm run governance before reading any non-self-healing file and must run node scripts/project-help.js explain <path> to justify out-of-scope access."
   },
   "improvementsBacklog": [
     {
