@@ -1,0 +1,331 @@
+#!/usr/bin/env node
+
+/**
+ * ============================================================================
+ * PRE-BUILD PIPELINE CHECK
+ * ============================================================================
+ * 
+ * Runs before npm run build to ensure pipeline integrity:
+ * 1. All specifications are locked (not modified)
+ * 2. Generated tests are auto-generated (not manually edited)
+ * 3. No drift detected in specifications
+ * 4. Checksums can be recomputed
+ * 
+ * Fails the build if any violations found, preventing deployment of
+ * inconsistent code.
+ * 
+ * Usage: npm run prebuild (automatic)
+ *        node scripts/pre-build-pipeline-check.js
+ * 
+ * ============================================================================
+ */
+
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+import { fileURLToPath } from 'url';
+import chalk from 'chalk';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.join(__dirname, '..');
+
+const colors = {
+  error: chalk.red,
+  warning: chalk.yellow,
+  success: chalk.green,
+  info: chalk.blue,
+  hint: chalk.cyan,
+  code: chalk.gray,
+};
+
+/**
+ * Compute SHA256 checksum of file content
+ */
+function computeChecksum(content) {
+  return crypto
+    .createHash('sha256')
+    .update(typeof content === 'string' ? content : JSON.stringify(content))
+    .digest('hex');
+}
+
+/**
+ * Load JSON file safely
+ */
+function loadJSON(filePath) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  } catch (err) {
+    return null;
+  }
+}
+
+/**
+ * Find all BDD specification files
+ */
+function findSpecFiles() {
+  const specDir = path.join(ROOT, 'packages');
+  const specs = [];
+
+  function walk(dir) {
+    try {
+      const files = fs.readdirSync(dir);
+      for (const file of files) {
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
+
+        if (stat.isDirectory()) {
+          walk(fullPath);
+        } else if (
+          file.includes('business-bdd-specifications') &&
+          file.endsWith('.json')
+        ) {
+          specs.push(fullPath);
+        }
+      }
+    } catch (err) {
+      // Skip unreadable directories
+    }
+  }
+
+  walk(specDir);
+  return specs;
+}
+
+/**
+ * Check if spec file is locked (immutable)
+ */
+function checkSpecIntegrity(specFile) {
+  const spec = loadJSON(specFile);
+  if (!spec) {
+    return {
+      valid: false,
+      error: `Cannot read spec file: ${specFile}`,
+    };
+  }
+
+  // Check if marked as locked
+  if (!spec.locked) {
+    return {
+      valid: false,
+      error: `Specification not marked as locked: ${specFile}
+      
+This means the file can be edited manually, which breaks the pipeline.
+Specifications must be immutable sources of truth.
+
+Fix: Add "locked": true to the specification JSON`,
+    };
+  }
+
+  // Check if immutable flag is set
+  if (!spec.immutable) {
+    return {
+      valid: false,
+      error: `Specification not marked as immutable: ${specFile}`,
+    };
+  }
+
+  return {
+    valid: true,
+    spec: spec,
+  };
+}
+
+/**
+ * Verify spec hasn't drifted from embedded checksum
+ */
+function checkSpecDrift(specFile) {
+  const content = fs.readFileSync(specFile, 'utf-8');
+  const spec = JSON.parse(content);
+  const embeddedChecksum = spec.checksum;
+
+  // Compute current checksum
+  const currentChecksum = computeChecksum(content);
+
+  if (
+    embeddedChecksum &&
+    embeddedChecksum !== 'will-be-computed-on-save' &&
+    embeddedChecksum !== currentChecksum
+  ) {
+    return {
+      drifted: true,
+      error: `Specification drift detected in ${path.basename(specFile)}
+      
+Previous checksum: ${embeddedChecksum}
+Current checksum:  ${currentChecksum}
+
+This means the specification was modified without regenerating tests.
+
+Fix: Choose one:
+  1. Regenerate tests from new spec:
+     npm run generate:<feature>:bdd-tests
+  
+  2. Revert spec to previous version:
+     git checkout ${specFile}
+     
+Then run: npm run verify:no-drift`,
+    };
+  }
+
+  return {
+    drifted: false,
+    checksum: currentChecksum,
+  };
+}
+
+/**
+ * Check if generated test files have correct checksum
+ */
+function checkGeneratedTestsIntegrity(specFile) {
+  const testDir = path.dirname(specFile)
+    .replace('.generated', '__tests__')
+    .replace('business-bdd-specifications.json', '');
+
+  if (!fs.existsSync(testDir)) {
+    return {
+      valid: true,
+      message: 'No generated test files found (ok if TBD)',
+    };
+  }
+
+  // Scan for spec files
+  try {
+    const files = fs.readdirSync(testDir);
+    const testFiles = files.filter((f) => f.endsWith('.spec.ts'));
+
+    // All test files should have generation marker
+    for (const testFile of testFiles) {
+      const content = fs.readFileSync(path.join(testDir, testFile), 'utf-8');
+
+      if (
+        !content.includes('AUTO-GENERATED FROM') &&
+        !content.includes('DO NOT EDIT THIS FILE MANUALLY')
+      ) {
+        return {
+          valid: false,
+          error: `Test file not marked as auto-generated: ${testFile}
+
+This suggests it was manually edited or not generated from spec.
+Generated files must have these markers:
+  • "AUTO-GENERATED FROM: <spec-file>"
+  • "DO NOT EDIT THIS FILE MANUALLY"
+
+Fix: Regenerate tests from spec:
+  npm run generate:<feature>:bdd-tests`,
+        };
+      }
+    }
+
+    return {
+      valid: true,
+      testCount: testFiles.length,
+    };
+  } catch (err) {
+    return {
+      valid: false,
+      error: `Error checking test directory: ${err.message}`,
+    };
+  }
+}
+
+/**
+ * Main check function
+ */
+async function runPreBuildCheck() {
+  console.log(colors.info('\n═'.repeat(80)));
+  console.log(colors.info('🔍 PRE-BUILD PIPELINE CHECK'));
+  console.log(colors.info('═'.repeat(80)) + '\n');
+
+  let hasErrors = false;
+  let checksRun = 0;
+  let checksPassed = 0;
+
+  // Find all spec files
+  const specFiles = findSpecFiles();
+
+  if (specFiles.length === 0) {
+    console.log(colors.warning('⚠️  No BDD specification files found'));
+    console.log(colors.code('    (This is ok if no features are using pipeline yet)\n'));
+  } else {
+    console.log(colors.code(`Found ${specFiles.length} specification files to check\n`));
+  }
+
+  // Check each spec file
+  for (const specFile of specFiles) {
+    const feature = path.basename(
+      path.dirname(specFile)
+    );
+    console.log(colors.info(`Checking: ${colors.code(feature)}`));
+
+    // Check 1: Spec integrity
+    checksRun++;
+    const integrityCheck = checkSpecIntegrity(specFile);
+    if (!integrityCheck.valid) {
+      hasErrors = true;
+      console.log(colors.error(`  ❌ Spec Integrity: ${integrityCheck.error}`));
+    } else {
+      checksPassed++;
+      console.log(colors.success('  ✅ Spec Integrity'));
+    }
+
+    // Check 2: Spec drift
+    checksRun++;
+    const driftCheck = checkSpecDrift(specFile);
+    if (driftCheck.drifted) {
+      hasErrors = true;
+      console.log(colors.error(`  ❌ Spec Drift: ${driftCheck.error}`));
+    } else {
+      checksPassed++;
+      console.log(
+        colors.success(
+          `  ✅ Spec Drift (checksum: ${driftCheck.checksum.slice(0, 16)}...)`
+        )
+      );
+    }
+
+    // Check 3: Generated tests integrity
+    checksRun++;
+    const testsCheck = checkGeneratedTestsIntegrity(specFile);
+    if (!testsCheck.valid) {
+      hasErrors = true;
+      console.log(colors.error(`  ❌ Generated Tests: ${testsCheck.error}`));
+    } else {
+      checksPassed++;
+      if (testsCheck.testCount) {
+        console.log(colors.success(`  ✅ Generated Tests (${testsCheck.testCount} files)`));
+      } else {
+        console.log(colors.success('  ✅ Generated Tests'));
+      }
+    }
+
+    console.log('');
+  }
+
+  // Summary
+  console.log(colors.info('═'.repeat(80)));
+  console.log(colors.info('PIPELINE CHECK SUMMARY'));
+  console.log(colors.info('═'.repeat(80)) + '\n');
+
+  console.log(`Checks run:   ${checksRun}`);
+  console.log(`Checks passed: ${checksPassed}`);
+  console.log(`Checks failed: ${checksRun - checksPassed}\n`);
+
+  if (hasErrors) {
+    console.log(colors.error('❌ PRE-BUILD CHECK FAILED'));
+    console.log(colors.error('Refusing to build with pipeline violations.\n'));
+    console.log(colors.hint('📚 Learn more about the pipeline:'));
+    console.log(colors.code('  • BDD_SPECS_QUICK_REFERENCE.md'));
+    console.log(colors.code('  • DEVELOPMENT_PIPELINE_TRACEABILITY.md'));
+    console.log(colors.code('  • PIPELINE_ENFORCEMENT_GUIDE.md\n'));
+    process.exit(1);
+  } else {
+    console.log(colors.success('✅ PRE-BUILD CHECK PASSED'));
+    console.log(colors.success('All pipeline requirements satisfied.\n'));
+    process.exit(0);
+  }
+}
+
+// Run check
+runPreBuildCheck().catch((err) => {
+  console.error(colors.error('Error during pre-build check:'), err);
+  process.exit(1);
+});
