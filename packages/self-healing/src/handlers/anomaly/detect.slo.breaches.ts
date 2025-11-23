@@ -14,7 +14,12 @@ export interface DetectSloBreachesResult extends TelemetryEvent {
 }
 
 function resolveSloConfigPath(): string {
-  return path.resolve(process.cwd(), 'packages', 'self-healing', 'docs', 'service_level.objectives.json');
+  // Support running tests from monorepo root or from the self-healing workspace directory.
+  const rootCandidate = path.resolve(process.cwd(), 'packages', 'self-healing', 'docs', 'service_level.objectives.json');
+  const localCandidate = path.resolve(process.cwd(), 'docs', 'service_level.objectives.json');
+  if (fs.existsSync(rootCandidate)) return rootCandidate;
+  if (fs.existsSync(localCandidate)) return localCandidate;
+  return rootCandidate; // default (will mark missing later)
 }
 
 function severityForBreach(key: string, actual: number, target: number): SeverityLevel {

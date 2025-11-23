@@ -1,0 +1,134 @@
+{
+  "timestamp": "2025-11-23T16:26:51.573Z",
+  "anomalies": [
+    {
+      "id": "loadLogFiles-perf-1763915211569",
+      "type": "performance",
+      "severity": "high",
+      "handler": "loadLogFiles",
+      "description": "Latency increased by 275% vs baseline",
+      "metrics": {
+        "current": 11,
+        "baseline": 4,
+        "ratio": 2.75
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 1
+    },
+    {
+      "id": "extractTelemetryEvents-perf-1763915211569",
+      "type": "performance",
+      "severity": "high",
+      "handler": "extractTelemetryEvents",
+      "description": "Latency increased by 240% vs baseline",
+      "metrics": {
+        "current": 12,
+        "baseline": 5,
+        "ratio": 2.4
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 1
+    },
+    {
+      "id": "aggregateTelemetryMetrics-perf-1763915211569",
+      "type": "performance",
+      "severity": "medium",
+      "handler": "aggregateTelemetryMetrics",
+      "description": "Latency increased by 167% vs baseline",
+      "metrics": {
+        "current": 5,
+        "baseline": 3,
+        "ratio": 1.6666666666666667
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 0.8333333333333334
+    },
+    {
+      "id": "normalizeTelemetryData-behavior-new-1763915211569",
+      "type": "behavioral",
+      "severity": "medium",
+      "handler": "normalizeTelemetryData",
+      "description": "Handler appeared with count=12 not present in baseline",
+      "metrics": {
+        "count": 12
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 0.6
+    },
+    {
+      "id": "loadLogFiles-behavior-surge-1763915211569",
+      "type": "behavioral",
+      "severity": "critical",
+      "handler": "loadLogFiles",
+      "description": "Invocation count surge 440% vs baseline (current=44, baseline=10)",
+      "metrics": {
+        "current": 44,
+        "baseline": 10,
+        "delta": 4.4
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 1
+    },
+    {
+      "id": "extractTelemetryEvents-behavior-surge-1763915211569",
+      "type": "behavioral",
+      "severity": "medium",
+      "handler": "extractTelemetryEvents",
+      "description": "Invocation count surge 178% vs baseline (current=32, baseline=18)",
+      "metrics": {
+        "current": 32,
+        "baseline": 18,
+        "delta": 1.7777777777777777
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 0.5925925925925926
+    },
+    {
+      "id": "loadLogFiles-coverage-1763915211569",
+      "type": "coverage",
+      "severity": "high",
+      "handler": "loadLogFiles",
+      "description": "Potential coverage gap: growth 340% with errorRate 7.0% (gapScore=0.41)",
+      "metrics": {
+        "currentCount": 44,
+        "baselineCount": 10,
+        "growth": 3.4,
+        "errorRate": 0.07,
+        "gapScore": 0.40800000000000003
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 0.6080000000000001
+    },
+    {
+      "id": "extractTelemetryEvents-coverage-1763915211569",
+      "type": "coverage",
+      "severity": "medium",
+      "handler": "extractTelemetryEvents",
+      "description": "Potential coverage gap: growth 78% with errorRate 21.0% (gapScore=0.20)",
+      "metrics": {
+        "currentCount": 32,
+        "baselineCount": 18,
+        "growth": 0.7777777777777778,
+        "errorRate": 0.21,
+        "gapScore": 0.20222222222222222
+      },
+      "detectedAt": "2025-11-23T16:26:51.569Z",
+      "confidence": 0.40222222222222226
+    },
+    {
+      "id": "extractTelemetryEvents-errors-1763915211570",
+      "type": "error",
+      "severity": "medium",
+      "handler": "extractTelemetryEvents",
+      "description": "Error rate increased 16.0% (current 21.0%, baseline 5.0%)",
+      "metrics": {
+        "currentErrorRate": 0.21,
+        "baselineErrorRate": 0.05,
+        "increase": 0.15999999999999998,
+        "ratio": 4.199999999999999
+      },
+      "detectedAt": "2025-11-23T16:26:51.570Z",
+      "confidence": 1
+    }
+  ]
+}

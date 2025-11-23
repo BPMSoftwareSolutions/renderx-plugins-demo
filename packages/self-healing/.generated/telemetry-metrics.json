@@ -1,25 +1,25 @@
 {
-  "metrics": {
-    "handlers": {
-      "A": {
-        "count": 1,
-        "avgTime": 0,
-        "p95Time": 0,
-        "p99Time": 0,
-        "errorRate": 0,
-        "lastSeen": "2025-11-23T16:06:55.174Z"
-      },
-      "B": {
-        "count": 1,
-        "avgTime": 0,
-        "p95Time": 0,
-        "p99Time": 0,
-        "errorRate": 0,
-        "lastSeen": "2025-11-23T16:06:55.175Z"
-      }
+  "totalEvents": 120,
+  "handlers": {
+    "parseTelemetry": {
+      "count": 60,
+      "avgTime": 42,
+      "errorRate": 0.01
     },
-    "sequences": {},
-    "timestamp": "2025-11-23T16:06:55.175Z",
-    "totalEvents": 2
+    "detectAnomalies": {
+      "count": 30,
+      "avgTime": 75,
+      "errorRate": 0.02
+    },
+    "diagnoseIssues": {
+      "count": 10,
+      "avgTime": 110,
+      "errorRate": 0
+    },
+    "newHandlerLowSample": {
+      "count": 4,
+      "avgTime": 95,
+      "errorRate": 0.05
+    }
   }
 }

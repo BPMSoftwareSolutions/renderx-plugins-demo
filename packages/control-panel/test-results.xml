@@ -1,19 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="78" failures="3" errors="0" time="1.853262">
-    <testsuite name="__tests__/attribute-editing.bidirectional.spec.ts" timestamp="2025-10-29T12:58:52.258Z" hostname="BPMHOMEOFFICE" tests="5" failures="0" errors="0" skipped="0" time="0.074045">
-        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; forwards content changes to Canvas component" time="0.033179">
+<testsuites name="vitest tests" tests="196" failures="3" errors="0" time="1.0734511">
+    <testsuite name="__tests__/api.control-panel.classes.notify.spec.ts" timestamp="2025-11-23T16:22:59.921Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.0206293">
+        <testcase classname="__tests__/api.control-panel.classes.notify.spec.ts" name="control-panel: classes add/remove + notifyUi &gt; addClass adds class and populates payload" time="0.0117544">
         </testcase>
-        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; forwards styling changes to Canvas component" time="0.0065953">
+        <testcase classname="__tests__/api.control-panel.classes.notify.spec.ts" name="control-panel: classes add/remove + notifyUi &gt; removeClass removes class and populates payload" time="0.0042949">
         </testcase>
-        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; forwards layout changes to Canvas component" time="0.004794">
-        </testcase>
-        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; Canvas component updates DOM when receiving attribute changes" time="0.0216309">
-        </testcase>
-        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; updates trigger Control Panel refresh for bidirectional sync" time="0.0049026">
+        <testcase classname="__tests__/api.control-panel.classes.notify.spec.ts" name="control-panel: classes add/remove + notifyUi &gt; notifyUi publishes control.panel.classes.updated when payload present" time="0.0023368">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/attribute-editing.integration.spec.ts" timestamp="2025-10-29T12:58:52.267Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.0851933">
-        <testcase classname="__tests__/attribute-editing.integration.spec.ts" name="Control Panel ↔ Canvas Component Integration &gt; demonstrates full bidirectional attribute editing flow" time="0.072697">
+    <testsuite name="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" timestamp="2025-11-23T16:22:59.929Z" hostname="BPMHOMEOFFICE" tests="7" failures="0" errors="0" skipped="0" time="0.0200118">
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; getCssClass returns built-in class definition (rx-button)" time="0.0045679">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; getCssClass sets error when class missing" time="0.0010138">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; listCssClasses returns built-in classes collection" time="0.0027207">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; applyCssClassToElement adds class to DOM element and sets payload success" time="0.0050278">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; applyCssClassToElement sets error when element missing" time="0.0018246">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; removeCssClassFromElement removes existing class from DOM element" time="0.0020693">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.css-management.retrieval.apply.spec.ts" name="control-panel css-management retrieval/apply handlers (public API) &gt; removeCssClassFromElement sets error when element missing" time="0.000987">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/api.control-panel.fields.lifecycle.spec.ts" timestamp="2025-11-23T16:22:59.931Z" hostname="BPMHOMEOFFICE" tests="6" failures="0" errors="0" skipped="0" time="0.0086536">
+        <testcase classname="__tests__/api.control-panel.fields.lifecycle.spec.ts" name="control-panel field lifecycle handlers (public API) &gt; generateFields populates fields array with layout/styling fields" time="0.0027683">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.fields.lifecycle.spec.ts" name="control-panel field lifecycle handlers (public API) &gt; generateSections returns default sections for button component" time="0.0007916">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.fields.lifecycle.spec.ts" name="control-panel field lifecycle handlers (public API) &gt; prepareField stores field change context in payload" time="0.0005979">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.fields.lifecycle.spec.ts" name="control-panel field lifecycle handlers (public API) &gt; dispatchField calls conductor.play with mapped sequence when prepared" time="0.0017862">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.fields.lifecycle.spec.ts" name="control-panel field lifecycle handlers (public API) &gt; validateField returns invalid for bad number value and valid for good value" time="0.0009353">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.fields.lifecycle.spec.ts" name="control-panel field lifecycle handlers (public API) &gt; mergeErrors marks errorsMerged after validation" time="0.0003644">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/api.control-panel.selection.derive.spec.ts" timestamp="2025-11-23T16:22:59.932Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.0984284">
+        <testcase classname="__tests__/api.control-panel.selection.derive.spec.ts" name="control-panel selection deriveSelectionModel handler (public API) &gt; returns null selectionModel when id missing" time="0.0062284">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.selection.derive.spec.ts" name="control-panel selection deriveSelectionModel handler (public API) &gt; returns null selectionModel when element not found" time="0.001626">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.selection.derive.spec.ts" name="control-panel selection deriveSelectionModel handler (public API) &gt; derives model for element with rx-button class" time="0.0755476">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.selection.derive.spec.ts" name="control-panel selection deriveSelectionModel handler (public API) &gt; falls back to container type for plain div without rx- classes" time="0.0125579">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/api.control-panel.state.update.refresh.spec.ts" timestamp="2025-11-23T16:22:59.933Z" hostname="BPMHOMEOFFICE" tests="7" failures="0" errors="0" skipped="0" time="0.0887202">
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; setDirty marks isDirty with timestamp" time="0.0068197">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; awaitRefresh sets refreshAwaited flag" time="0.001583">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; updateView sets viewUpdated and timestamp" time="0.0014583">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; toggleSection marks sectionToggled with provided id" time="0.0011701">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; toggleSection error path sets sectionToggled false and error" time="0.0009504">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; updateFromElement builds full selectionModel (non-drag) with classes" time="0.0674461">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.state.update.refresh.spec.ts" name="control-panel state/update/refresh handlers (public API) &gt; updateFromElement drag path uses forwarded position/size and minimal model" time="0.0070617">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/api.control-panel.ui.bootstrap.spec.ts" timestamp="2025-11-23T16:22:59.934Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.0066839">
+        <testcase classname="__tests__/api.control-panel.ui.bootstrap.spec.ts" name="control-panel UI bootstrap handlers (public API) &gt; initResolver initializes resolver and sets payload flags" time="0.0034256">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.ui.bootstrap.spec.ts" name="control-panel UI bootstrap handlers (public API) &gt; loadSchemas sets schemasLoaded when resolver present (test env shortcut)" time="0.0006033">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.ui.bootstrap.spec.ts" name="control-panel UI bootstrap handlers (public API) &gt; registerObservers marks observersRegistered" time="0.0007234">
+        </testcase>
+        <testcase classname="__tests__/api.control-panel.ui.bootstrap.spec.ts" name="control-panel UI bootstrap handlers (public API) &gt; notifyReady sets uiReady and timestamp" time="0.000454">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/attribute-editing.bidirectional.spec.ts" timestamp="2025-11-23T16:22:59.935Z" hostname="BPMHOMEOFFICE" tests="5" failures="0" errors="0" skipped="0" time="0.0292841">
+        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; forwards content changes to Canvas component" time="0.0112414">
+        </testcase>
+        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; forwards styling changes to Canvas component" time="0.0026478">
+        </testcase>
+        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; forwards layout changes to Canvas component" time="0.0023254">
+        </testcase>
+        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; Canvas component updates DOM when receiving attribute changes" time="0.009599">
+        </testcase>
+        <testcase classname="__tests__/attribute-editing.bidirectional.spec.ts" name="Control Panel bidirectional attribute editing &gt; updates trigger Control Panel refresh for bidirectional sync" time="0.0021126">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/attribute-editing.integration.spec.ts" timestamp="2025-11-23T16:22:59.936Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.0499555">
+        <testcase classname="__tests__/attribute-editing.integration.spec.ts" name="Control Panel ↔ Canvas Component Integration &gt; demonstrates full bidirectional attribute editing flow" time="0.0395852">
             <system-out>
 🎯 Testing content change...
 🎨 Testing styling changes...
@@ -24,126 +98,296 @@
 
             </system-out>
         </testcase>
-        <testcase classname="__tests__/attribute-editing.integration.spec.ts" name="Control Panel ↔ Canvas Component Integration &gt; handles multiple rapid attribute changes" time="0.0063136">
+        <testcase classname="__tests__/attribute-editing.integration.spec.ts" name="Control Panel ↔ Canvas Component Integration &gt; handles multiple rapid attribute changes" time="0.0042851">
         </testcase>
-        <testcase classname="__tests__/attribute-editing.integration.spec.ts" name="Control Panel ↔ Canvas Component Integration &gt; gracefully handles invalid attribute updates" time="0.0044021">
-        </testcase>
-    </testsuite>
-    <testsuite name="__tests__/bidirectional-sync.spec.ts" timestamp="2025-10-29T12:58:52.270Z" hostname="BPMHOMEOFFICE" tests="13" failures="0" errors="0" skipped="0" time="0.4926985">
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract correct variant when selecting element" time="0.2003959">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract updated variant after DOM class changes" time="0.0469985">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract correct size when selecting element" time="0.0229987">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract updated size after DOM class changes" time="0.0165036">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; heading component &gt; should extract correct level when selecting element" time="0.0274909">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; heading component &gt; should extract updated level after DOM class changes" time="0.0494326">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; image component &gt; should extract correct variant when selecting element" time="0.014899">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; image component &gt; should extract updated variant after DOM class changes" time="0.0075002">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; input component &gt; should extract correct variant when selecting element" time="0.016356">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; input component &gt; should extract updated variant after DOM class changes" time="0.0189046">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; paragraph component &gt; should extract correct variant when selecting element" time="0.0092733">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; paragraph component &gt; should extract updated variant after DOM class changes" time="0.0264852">
-        </testcase>
-        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; should preserve fast path for drag/resize operations" time="0.0210705">
+        <testcase classname="__tests__/attribute-editing.integration.spec.ts" name="Control Panel ↔ Canvas Component Integration &gt; gracefully handles invalid attribute updates" time="0.0042133">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/classes.editing.spec.ts" timestamp="2025-10-29T12:58:52.282Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.0943614">
-        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; adds CSS class to selected element via stage-crew" time="0.0488468">
+    <testsuite name="__tests__/bidirectional-sync.spec.ts" timestamp="2025-11-23T16:22:59.937Z" hostname="BPMHOMEOFFICE" tests="13" failures="0" errors="0" skipped="0" time="0.1735111">
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract correct variant when selecting element" time="0.0902609">
         </testcase>
-        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; removes CSS class from selected element via stage-crew" time="0.0136242">
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract updated variant after DOM class changes" time="0.0131553">
         </testcase>
-        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; publishes class changes via EventRouter" time="0.017253">
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract correct size when selecting element" time="0.0084913">
         </testcase>
-        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; handles missing element gracefully for class operations" time="0.0084279">
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; button component &gt; should extract updated size after DOM class changes" time="0.006049">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; heading component &gt; should extract correct level when selecting element" time="0.0094393">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; heading component &gt; should extract updated level after DOM class changes" time="0.0037324">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; image component &gt; should extract correct variant when selecting element" time="0.0056753">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; image component &gt; should extract updated variant after DOM class changes" time="0.0052227">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; input component &gt; should extract correct variant when selecting element" time="0.0092684">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; input component &gt; should extract updated variant after DOM class changes" time="0.0067497">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; paragraph component &gt; should extract correct variant when selecting element" time="0.0037101">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; paragraph component &gt; should extract updated variant after DOM class changes" time="0.0046362">
+        </testcase>
+        <testcase classname="__tests__/bidirectional-sync.spec.ts" name="Control Panel: Bidirectional Sync (Auto-generated Tests) &gt; should preserve fast path for drag/resize operations" time="0.0038205">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/css.idempotency.spec.ts" timestamp="2025-10-29T12:58:52.286Z" hostname="BPMHOMEOFFICE" tests="2" failures="0" errors="0" skipped="0" time="0.0148741">
-        <testcase classname="__tests__/css.idempotency.spec.ts" name="CSS registry idempotency &gt; createCssClass is idempotent: second create with same content is a success no-op" time="0.0086211">
+    <testsuite name="__tests__/classes.editing.spec.ts" timestamp="2025-11-23T16:22:59.939Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.0392806">
+        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; adds CSS class to selected element via stage-crew" time="0.0200632">
         </testcase>
-        <testcase classname="__tests__/css.idempotency.spec.ts" name="CSS registry idempotency &gt; updateCssClass upserts when missing and no-ops when content unchanged" time="0.0033148">
+        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; removes CSS class from selected element via stage-crew" time="0.005679">
+        </testcase>
+        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; publishes class changes via EventRouter" time="0.0059677">
+        </testcase>
+        <testcase classname="__tests__/classes.editing.spec.ts" name="Control Panel class editing sequences &gt; handles missing element gracefully for class operations" time="0.0049569">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/dark-mode-form-controls.spec.tsx" timestamp="2025-10-29T12:58:52.288Z" hostname="BPMHOMEOFFICE" tests="5" failures="0" errors="0" skipped="0" time="0.2176548">
-        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; property-input has correct CSS classes and attributes" time="0.1316591">
+    <testsuite name="__tests__/css.idempotency.spec.ts" timestamp="2025-11-23T16:22:59.940Z" hostname="BPMHOMEOFFICE" tests="2" failures="0" errors="0" skipped="0" time="0.0052266">
+        <testcase classname="__tests__/css.idempotency.spec.ts" name="CSS registry idempotency &gt; createCssClass is idempotent: second create with same content is a success no-op" time="0.0027911">
+        </testcase>
+        <testcase classname="__tests__/css.idempotency.spec.ts" name="CSS registry idempotency &gt; updateCssClass upserts when missing and no-ops when content unchanged" time="0.0011311">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/dark-mode-form-controls.spec.tsx" timestamp="2025-11-23T16:22:59.941Z" hostname="BPMHOMEOFFICE" tests="5" failures="0" errors="0" skipped="0" time="0.1003506">
+        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; property-input has correct CSS classes and attributes" time="0.0526392">
             <system-err>
 The current testing environment is not configured to support act(...)
 
             </system-err>
         </testcase>
-        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; property-select has correct CSS classes and options" time="0.0219602">
+        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; property-select has correct CSS classes and options" time="0.0188276">
             <system-err>
 The current testing environment is not configured to support act(...)
 
             </system-err>
         </testcase>
-        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; select options inherit dark theme styling" time="0.0148571">
+        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; select options inherit dark theme styling" time="0.0072856">
             <system-err>
 The current testing environment is not configured to support act(...)
 
             </system-err>
         </testcase>
-        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; property-checkbox label uses theme colors" time="0.0252352">
+        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; property-checkbox label uses theme colors" time="0.0099203">
             <system-err>
 The current testing environment is not configured to support act(...)
 
             </system-err>
         </testcase>
-        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; checkbox-text class uses theme colors" time="0.0218867">
+        <testcase classname="__tests__/dark-mode-form-controls.spec.tsx" name="Control Panel Dark Mode Form Controls &gt; checkbox-text class uses theme colors" time="0.0091905">
             <system-err>
 The current testing environment is not configured to support act(...)
 
             </system-err>
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/eventrouter-communication.spec.ts" timestamp="2025-10-29T12:58:52.298Z" hostname="BPMHOMEOFFICE" tests="5" failures="0" errors="0" skipped="0" time="0.1904225">
-        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; publishes control.panel.selection.updated events via EventRouter" time="0.030591">
+    <testsuite name="__tests__/eventrouter-communication.spec.ts" timestamp="2025-11-23T16:22:59.943Z" hostname="BPMHOMEOFFICE" tests="5" failures="0" errors="0" skipped="0" time="0.1514889">
+        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; publishes control.panel.selection.updated events via EventRouter" time="0.0266829">
         </testcase>
-        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; publishes control.panel.classes.updated events via EventRouter" time="0.0304446">
+        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; publishes control.panel.classes.updated events via EventRouter" time="0.030384">
         </testcase>
-        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; publishes control.panel.css.registry.updated events via EventRouter" time="0.0309932">
+        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; publishes control.panel.css.registry.updated events via EventRouter" time="0.0299717">
         </testcase>
-        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; allows multiple Control Panel components to listen for selection updates" time="0.0508426">
+        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; allows multiple Control Panel components to listen for selection updates" time="0.0307355">
         </testcase>
-        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; enables Control Panel UI package to receive symphony events" time="0.0448261">
-        </testcase>
-    </testsuite>
-    <testsuite name="__tests__/exports.spec.ts" timestamp="2025-10-29T12:58:52.302Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.0051272">
-        <testcase classname="__tests__/exports.spec.ts" name="@renderx-plugins/control-panel package exports &gt; exports ControlPanel UI component" time="0.0019875">
-        </testcase>
-        <testcase classname="__tests__/exports.spec.ts" name="@renderx-plugins/control-panel package exports &gt; exports register() function (no-op allowed)" time="0.0003449">
-        </testcase>
-        <testcase classname="__tests__/exports.spec.ts" name="@renderx-plugins/control-panel package exports &gt; exports selection symphony handlers" time="0.0008565">
+        <testcase classname="__tests__/eventrouter-communication.spec.ts" name="Control Panel EventRouter Communication &gt; enables Control Panel UI package to receive symphony events" time="0.0308552">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/heading-level-sync.spec.ts" timestamp="2025-10-29T12:58:52.305Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.2854351">
-        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should extract correct heading level when selecting a heading element" time="0.201962">
+    <testsuite name="__tests__/exports.spec.ts" timestamp="2025-11-23T16:22:59.944Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.0025793">
+        <testcase classname="__tests__/exports.spec.ts" name="@renderx-plugins/control-panel package exports &gt; exports ControlPanel UI component" time="0.001149">
         </testcase>
-        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should extract updated heading level after class change" time="0.0400406">
+        <testcase classname="__tests__/exports.spec.ts" name="@renderx-plugins/control-panel package exports &gt; exports register() function (no-op allowed)" time="0.0001363">
         </testcase>
-        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should handle heading level extraction from tagName when no class variant" time="0.0271389">
-        </testcase>
-        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should preserve fast path for drag/resize operations" time="0.013769">
+        <testcase classname="__tests__/exports.spec.ts" name="@renderx-plugins/control-panel package exports &gt; exports selection symphony handlers" time="0.0002536">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/html.code-editor.fallback.spec.ts" timestamp="2025-10-29T12:58:52.307Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0128125">
-        <testcase classname="__tests__/html.code-editor.fallback.spec.ts" name="HTML component markup field fallback &gt; forces code type even if ui.control missing (legacy cached schema)" time="0.0100318">
+    <testsuite name="__tests__/handlers.handlers.spec.ts" timestamp="2025-11-23T16:22:59.945Z" hostname="BPMHOMEOFFICE" tests="84" failures="0" errors="0" skipped="0" time="0.0188934">
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; addClass - happy path" time="0.00355">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; addClass - edge case/error handling" time="0.0004086">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; removeClass - happy path" time="0.0003442">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; removeClass - edge case/error handling" time="0.0004699">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; if - happy path" time="0.0004772">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; if - edge case/error handling" time="0.0004469">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; catch - happy path" time="0.0002602">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; catch - edge case/error handling" time="0.000215">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; deleteCssClass - happy path" time="0.000253">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; deleteCssClass - edge case/error handling" time="0.0002809">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; getCssClass - happy path" time="0.0001226">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; getCssClass - edge case/error handling" time="0.0001225">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; listCssClasses - happy path" time="0.0001151">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; listCssClasses - edge case/error handling" time="0.0004095">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; applyCssClassToElement - happy path" time="0.000167">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; applyCssClassToElement - edge case/error handling" time="0.0002253">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; removeCssClassFromElement - happy path" time="0.0001675">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; removeCssClassFromElement - edge case/error handling" time="0.0000943">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; deriveSelectionModel - happy path" time="0.000078">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; deriveSelectionModel - edge case/error handling" time="0.0001819">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; initMovement - happy path" time="0.0001598">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; initMovement - edge case/error handling" time="0.0001265">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; initResolver - happy path" time="0.0001938">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; initResolver - edge case/error handling" time="0.0000915">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; loadSchemas - happy path" time="0.0000789">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; loadSchemas - edge case/error handling" time="0.0000738">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; registerObservers - happy path" time="0.0000778">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; registerObservers - edge case/error handling" time="0.0000832">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; notifyReady - happy path" time="0.0000771">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; notifyReady - edge case/error handling" time="0.0000716">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; generateFields - happy path" time="0.0000731">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; generateFields - edge case/error handling" time="0.0000805">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; generateSections - happy path" time="0.0000782">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; generateSections - edge case/error handling" time="0.0000735">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; renderView - happy path" time="0.0000758">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; renderView - edge case/error handling" time="0.0001038">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; prepareField - happy path" time="0.0000776">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; prepareField - edge case/error handling" time="0.000072">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; dispatchField - happy path" time="0.0000739">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; dispatchField - edge case/error handling" time="0.0000743">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; setDirty - happy path" time="0.0001062">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; setDirty - edge case/error handling" time="0.0001411">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; awaitRefresh - happy path" time="0.000101">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; awaitRefresh - edge case/error handling" time="0.0001529">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; validateField - happy path" time="0.0001333">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; validateField - edge case/error handling" time="0.0001209">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; mergeErrors - happy path" time="0.0001075">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; mergeErrors - edge case/error handling" time="0.0001152">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; updateView - happy path" time="0.0001229">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; updateView - edge case/error handling" time="0.0001067">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; toggleSection - happy path" time="0.0000797">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; toggleSection - edge case/error handling" time="0.0000765">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; updateFromElement - happy path" time="0.0000702">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; updateFromElement - edge case/error handling" time="0.0001088">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; registerFieldRenderer - happy path" time="0.0001248">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; registerFieldRenderer - edge case/error handling" time="0.0001101">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; getFieldRenderer - happy path" time="0.0001337">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; getFieldRenderer - edge case/error handling" time="0.0003219">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; EmptyState - happy path" time="0.000334">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; EmptyState - edge case/error handling" time="0.0001812">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; LoadingState - happy path" time="0.0001">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; LoadingState - edge case/error handling" time="0.0000855">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; PanelHeader - happy path" time="0.0000752">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; PanelHeader - edge case/error handling" time="0.0000944">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useControlPanelActions - happy path" time="0.0000798">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useControlPanelActions - edge case/error handling" time="0.0000709">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useControlPanelSequences - happy path" time="0.0000686">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useControlPanelSequences - edge case/error handling" time="0.0000686">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useControlPanelState - happy path" time="0.000069">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useControlPanelState - edge case/error handling" time="0.0000695">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useSchemaResolver - happy path" time="0.0000707">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; useSchemaResolver - edge case/error handling" time="0.0000698">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; controlPanelReducer - happy path" time="0.000072">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; controlPanelReducer - edge case/error handling" time="0.0000726">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; extractElementContent - happy path" time="0.0000698">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; extractElementContent - edge case/error handling" time="0.0000697">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; getNestedValue - happy path" time="0.0000964">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; getNestedValue - edge case/error handling" time="0.0000721">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; setNestedValue - happy path" time="0.0000707">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; setNestedValue - edge case/error handling" time="0.0000687">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; formatLabel - happy path" time="0.0000711">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; formatLabel - edge case/error handling" time="0.0000699">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; generatePlaceholder - happy path" time="0.0000695">
+        </testcase>
+        <testcase classname="__tests__/handlers.handlers.spec.ts" name="control-panel handlers handlers &gt; generatePlaceholder - edge case/error handling" time="0.0000726">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/html.code-editor.mapping.spec.ts" timestamp="2025-10-29T12:58:52.309Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0120138">
-        <testcase classname="__tests__/html.code-editor.mapping.spec.ts" name="HTML component markup field &gt; uses code textarea renderer (type=code)" time="0.0078999">
+    <testsuite name="__tests__/heading-level-sync.spec.ts" timestamp="2025-11-23T16:22:59.955Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.109616">
+        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should extract correct heading level when selecting a heading element" time="0.0867342">
+        </testcase>
+        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should extract updated heading level after class change" time="0.0086959">
+        </testcase>
+        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should handle heading level extraction from tagName when no class variant" time="0.0052263">
+        </testcase>
+        <testcase classname="__tests__/heading-level-sync.spec.ts" name="Control Panel: Heading Level Sync (Issue #50) &gt; should preserve fast path for drag/resize operations" time="0.006498">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/integration.end-to-end.spec.ts" timestamp="2025-10-29T12:58:52.311Z" hostname="BPMHOMEOFFICE" tests="1" failures="1" errors="0" skipped="0" time="0">
+    <testsuite name="__tests__/html.code-editor.fallback.spec.ts" timestamp="2025-11-23T16:22:59.955Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0035849">
+        <testcase classname="__tests__/html.code-editor.fallback.spec.ts" name="HTML component markup field fallback &gt; forces code type even if ui.control missing (legacy cached schema)" time="0.0024751">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/html.code-editor.mapping.spec.ts" timestamp="2025-11-23T16:22:59.956Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0027903">
+        <testcase classname="__tests__/html.code-editor.mapping.spec.ts" name="HTML component markup field &gt; uses code textarea renderer (type=code)" time="0.0018112">
+        </testcase>
+    </testsuite>
+    <testsuite name="__tests__/integration.end-to-end.spec.ts" timestamp="2025-11-23T16:22:59.956Z" hostname="BPMHOMEOFFICE" tests="1" failures="1" errors="0" skipped="0" time="0">
         <testcase classname="__tests__/integration.end-to-end.spec.ts" name="__tests__/integration.end-to-end.spec.ts" time="0">
             <failure message="Failed to resolve import &quot;@renderx-plugins/canvas-component/symphonies/create/create.symphony&quot; from &quot;__tests__/integration.end-to-end.spec.ts&quot;. Does the file exist?" type="Error">
 Error: Failed to resolve import &quot;@renderx-plugins/canvas-component/symphonies/create/create.symphony&quot; from &quot;__tests__/integration.end-to-end.spec.ts&quot;. Does the file exist?
@@ -164,17 +408,17 @@ Error: Failed to resolve import &quot;@renderx-plugins/canvas-component/symphoni
             </failure>
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/interaction-routing.spec.ts" timestamp="2025-10-29T12:58:52.316Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.0201615">
-        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.selection.show to ControlPanelPlugin" time="0.0077737">
+    <testsuite name="__tests__/interaction-routing.spec.ts" timestamp="2025-11-23T16:22:59.958Z" hostname="BPMHOMEOFFICE" tests="4" failures="0" errors="0" skipped="0" time="0.0028444">
+        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.selection.show to ControlPanelPlugin" time="0.0012295">
         </testcase>
-        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.classes.add to ControlPanelPlugin" time="0.0005713">
+        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.classes.add to ControlPanelPlugin" time="0.0001608">
         </testcase>
-        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.classes.remove to ControlPanelPlugin" time="0.0010737">
+        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.classes.remove to ControlPanelPlugin" time="0.000186">
         </testcase>
-        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.update to ControlPanelPlugin" time="0.0046616">
+        <testcase classname="__tests__/interaction-routing.spec.ts" name="Control Panel interaction routing &gt; resolves control.panel.update to ControlPanelPlugin" time="0.000105">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/live-updates.drag-resize.spec.ts" timestamp="2025-10-29T12:58:52.319Z" hostname="BPMHOMEOFFICE" tests="1" failures="1" errors="0" skipped="0" time="0">
+    <testsuite name="__tests__/live-updates.drag-resize.spec.ts" timestamp="2025-11-23T16:22:59.959Z" hostname="BPMHOMEOFFICE" tests="1" failures="1" errors="0" skipped="0" time="0">
         <testcase classname="__tests__/live-updates.drag-resize.spec.ts" name="__tests__/live-updates.drag-resize.spec.ts" time="0">
             <failure message="Failed to resolve import &quot;@renderx-plugins/canvas-component/symphonies/create/create.symphony&quot; from &quot;__tests__/live-updates.drag-resize.spec.ts&quot;. Does the file exist?" type="Error">
 Error: Failed to resolve import &quot;@renderx-plugins/canvas-component/symphonies/create/create.symphony&quot; from &quot;__tests__/live-updates.drag-resize.spec.ts&quot;. Does the file exist?
@@ -195,7 +439,7 @@ Error: Failed to resolve import &quot;@renderx-plugins/canvas-component/symphoni
             </failure>
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/observer.store.spec.ts" timestamp="2025-10-29T12:58:52.323Z" hostname="BPMHOMEOFFICE" tests="1" failures="1" errors="0" skipped="0" time="0">
+    <testsuite name="__tests__/observer.store.spec.ts" timestamp="2025-11-23T16:22:59.960Z" hostname="BPMHOMEOFFICE" tests="1" failures="1" errors="0" skipped="0" time="0">
         <testcase classname="__tests__/observer.store.spec.ts" name="__tests__/observer.store.spec.ts" time="0">
             <failure message="Failed to resolve import &quot;@renderx-plugins/control-panel/observer.store&quot; from &quot;__tests__/observer.store.spec.ts&quot;. Does the file exist?" type="Error">
 Error: Failed to resolve import &quot;@renderx-plugins/control-panel/observer.store&quot; from &quot;__tests__/observer.store.spec.ts&quot;. Does the file exist?
@@ -217,66 +461,146 @@ Error: Failed to resolve import &quot;@renderx-plugins/control-panel/observer.st
             </failure>
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/schema-resolver.memo.spec.ts" timestamp="2025-10-29T12:58:52.327Z" hostname="BPMHOMEOFFICE" tests="2" failures="0" errors="0" skipped="0" time="0.0134817">
-        <testcase classname="__tests__/schema-resolver.memo.spec.ts" name="SchemaResolverService memoization &gt; dedupes schema fetches across multiple calls and instances" time="0.0083171">
+    <testsuite name="__tests__/react.code-editor.mapping.spec.ts" timestamp="2025-11-23T16:22:59.960Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.0111409">
+        <testcase classname="__tests__/react.code-editor.mapping.spec.ts" name="React component code editor mapping &gt; maps reactCode field to code editor with JavaScript language" time="0.0074447">
+            <system-out>
+[SchemaResolver] Generating fields for React component {
+  componentType: [32m&apos;react&apos;[39m,
+  schemaFound: [33mtrue[39m,
+  schemaKeys: [ [32m&apos;metadata&apos;[39m, [32m&apos;ui&apos;[39m, [32m&apos;integration&apos;[39m, [32m&apos;interactions&apos;[39m ],
+  integrationFound: [33mtrue[39m,
+  propertiesFound: [33mtrue[39m,
+  schemaPropertiesFound: [33mtrue[39m,
+  schemaPropertyKeys: [ [32m&apos;reactCode&apos;[39m, [32m&apos;props&apos;[39m ]
+}
+[SchemaResolver] Generated reactCode field {
+  fieldType: [32m&apos;code&apos;[39m,
+  section: [32m&apos;content&apos;[39m,
+  rendererProps: {
+    control: [32m&apos;code&apos;[39m,
+    language: [32m&apos;javascript&apos;[39m,
+    rows: [33m12[39m,
+    placeholder: [32m&apos;export default function MyComponent() {\n&apos;[39m +
+      [32m&apos;  return &lt;div&gt;Your JSX here&lt;/div&gt;;\n&apos;[39m +
+      [32m&apos;}&apos;[39m
+  }
+}
+
+            </system-out>
         </testcase>
-        <testcase classname="__tests__/schema-resolver.memo.spec.ts" name="SchemaResolverService memoization &gt; registers cached schemas into new instances without refetching" time="0.000724">
+        <testcase classname="__tests__/react.code-editor.mapping.spec.ts" name="React component code editor mapping &gt; renders code editor with 12 rows for React component" time="0.001382">
+            <system-out>
+[SchemaResolver] Generating fields for React component {
+  componentType: [32m&apos;react&apos;[39m,
+  schemaFound: [33mtrue[39m,
+  schemaKeys: [ [32m&apos;metadata&apos;[39m, [32m&apos;ui&apos;[39m, [32m&apos;integration&apos;[39m, [32m&apos;interactions&apos;[39m ],
+  integrationFound: [33mtrue[39m,
+  propertiesFound: [33mtrue[39m,
+  schemaPropertiesFound: [33mtrue[39m,
+  schemaPropertyKeys: [ [32m&apos;reactCode&apos;[39m, [32m&apos;props&apos;[39m ]
+}
+[SchemaResolver] Generated reactCode field {
+  fieldType: [32m&apos;code&apos;[39m,
+  section: [32m&apos;content&apos;[39m,
+  rendererProps: {
+    control: [32m&apos;code&apos;[39m,
+    language: [32m&apos;javascript&apos;[39m,
+    rows: [33m12[39m,
+    placeholder: [32m&apos;export default function MyComponent() {\n&apos;[39m +
+      [32m&apos;  return &lt;div&gt;Your JSX here&lt;/div&gt;;\n&apos;[39m +
+      [32m&apos;}&apos;[39m
+  }
+}
+
+            </system-out>
+        </testcase>
+        <testcase classname="__tests__/react.code-editor.mapping.spec.ts" name="React component code editor mapping &gt; includes placeholder text for React code editor" time="0.0011627">
+            <system-out>
+[SchemaResolver] Generating fields for React component {
+  componentType: [32m&apos;react&apos;[39m,
+  schemaFound: [33mtrue[39m,
+  schemaKeys: [ [32m&apos;metadata&apos;[39m, [32m&apos;ui&apos;[39m, [32m&apos;integration&apos;[39m, [32m&apos;interactions&apos;[39m ],
+  integrationFound: [33mtrue[39m,
+  propertiesFound: [33mtrue[39m,
+  schemaPropertiesFound: [33mtrue[39m,
+  schemaPropertyKeys: [ [32m&apos;reactCode&apos;[39m, [32m&apos;props&apos;[39m ]
+}
+[SchemaResolver] Generated reactCode field {
+  fieldType: [32m&apos;code&apos;[39m,
+  section: [32m&apos;content&apos;[39m,
+  rendererProps: {
+    control: [32m&apos;code&apos;[39m,
+    language: [32m&apos;javascript&apos;[39m,
+    rows: [33m12[39m,
+    placeholder: [32m&apos;export default function MyComponent() {\n&apos;[39m +
+      [32m&apos;  return &lt;div&gt;Your JSX here&lt;/div&gt;;\n&apos;[39m +
+      [32m&apos;}&apos;[39m
+  }
+}
+
+            </system-out>
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/selection.package-notify.observer.spec.ts" timestamp="2025-10-29T12:58:52.329Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0174327">
-        <testcase classname="__tests__/selection.package-notify.observer.spec.ts" name="Control Panel (package) selection notify -&gt; EventRouter &gt; publishes control.panel.selection.updated via EventRouter when notifyUi runs" time="0.0156934">
+    <testsuite name="__tests__/schema-resolver.memo.spec.ts" timestamp="2025-11-23T16:22:59.961Z" hostname="BPMHOMEOFFICE" tests="2" failures="0" errors="0" skipped="0" time="0.0040656">
+        <testcase classname="__tests__/schema-resolver.memo.spec.ts" name="SchemaResolverService memoization &gt; dedupes schema fetches across multiple calls and instances" time="0.0023153">
+        </testcase>
+        <testcase classname="__tests__/schema-resolver.memo.spec.ts" name="SchemaResolverService memoization &gt; registers cached schemas into new instances without refetching" time="0.0003221">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/selection.sequence-model-and-notify.spec.ts" timestamp="2025-10-29T12:58:52.330Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.2136212">
-        <testcase classname="__tests__/selection.sequence-model-and-notify.spec.ts" name="Control Panel selection sequence builds data-driven model &gt; derives selection model from DOM element and component JSON" time="0.1846297">
-        </testcase>
-        <testcase classname="__tests__/selection.sequence-model-and-notify.spec.ts" name="Control Panel selection sequence builds data-driven model &gt; publishes selection model via EventRouter" time="0.0151135">
-        </testcase>
-        <testcase classname="__tests__/selection.sequence-model-and-notify.spec.ts" name="Control Panel selection sequence builds data-driven model &gt; handles missing element gracefully" time="0.0065933">
+    <testsuite name="__tests__/selection.package-notify.observer.spec.ts" timestamp="2025-11-23T16:22:59.962Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0051337">
+        <testcase classname="__tests__/selection.package-notify.observer.spec.ts" name="Control Panel (package) selection notify -&gt; EventRouter &gt; publishes control.panel.selection.updated via EventRouter when notifyUi runs" time="0.0039054">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/svg.code-editor.mapping.spec.ts" timestamp="2025-10-29T12:58:52.334Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0189452">
-        <testcase classname="__tests__/svg.code-editor.mapping.spec.ts" name="SVG schema → code editor mapping &gt; maps ui.control = code to field.type = &apos;code&apos; and applies preserveAspectRatio enum presets" time="0.0160974">
+    <testsuite name="__tests__/selection.sequence-model-and-notify.spec.ts" timestamp="2025-11-23T16:22:59.962Z" hostname="BPMHOMEOFFICE" tests="3" failures="0" errors="0" skipped="0" time="0.099136">
+        <testcase classname="__tests__/selection.sequence-model-and-notify.spec.ts" name="Control Panel selection sequence builds data-driven model &gt; derives selection model from DOM element and component JSON" time="0.0862094">
+        </testcase>
+        <testcase classname="__tests__/selection.sequence-model-and-notify.spec.ts" name="Control Panel selection sequence builds data-driven model &gt; publishes selection model via EventRouter" time="0.0069079">
+        </testcase>
+        <testcase classname="__tests__/selection.sequence-model-and-notify.spec.ts" name="Control Panel selection sequence builds data-driven model &gt; handles missing element gracefully" time="0.0037336">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/ui-init.batched.spec.ts" timestamp="2025-10-29T12:58:52.336Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0499024">
-        <testcase classname="__tests__/ui-init.batched.spec.ts" name="Control Panel UI Init — batched iterator &gt; records sub-beat telemetry for the five init steps when run via iterator" time="0.039143">
+    <testsuite name="__tests__/svg.code-editor.mapping.spec.ts" timestamp="2025-11-23T16:22:59.963Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0042941">
+        <testcase classname="__tests__/svg.code-editor.mapping.spec.ts" name="SVG schema → code editor mapping &gt; maps ui.control = code to field.type = &apos;code&apos; and applies preserveAspectRatio enum presets" time="0.0032883">
         </testcase>
     </testsuite>
-    <testsuite name="__tests__/ui-sequences.spec.ts" timestamp="2025-10-29T12:58:52.337Z" hostname="BPMHOMEOFFICE" tests="17" failures="0" errors="0" skipped="0" time="0.0350791">
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; initConfig should mark config as loaded" time="0.0091673">
+    <testsuite name="__tests__/ui-init.batched.spec.ts" timestamp="2025-11-23T16:22:59.963Z" hostname="BPMHOMEOFFICE" tests="1" failures="0" errors="0" skipped="0" time="0.0053682">
+        <testcase classname="__tests__/ui-init.batched.spec.ts" name="Control Panel UI Init — batched iterator &gt; records sub-beat telemetry for the five init steps when run via iterator" time="0.004072">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; initResolver should create resolver instance" time="0.0032251">
+    </testsuite>
+    <testsuite name="__tests__/ui-sequences.spec.ts" timestamp="2025-11-23T16:22:59.963Z" hostname="BPMHOMEOFFICE" tests="17" failures="0" errors="0" skipped="0" time="0.0117797">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; initConfig should mark config as loaded" time="0.0030259">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; loadSchemas should mark schemas as loaded" time="0.0023795">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; initResolver should create resolver instance" time="0.0007788">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; registerObservers should mark observers as registered" time="0.0010913">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; loadSchemas should mark schemas as loaded" time="0.0006247">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; notifyReady should mark UI as ready" time="0.0013941">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; registerObservers should mark observers as registered" time="0.00035">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.render sequence handlers &gt; generateFields should generate empty fields when no resolver" time="0.0014047">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.init sequence handlers &gt; notifyReady should mark UI as ready" time="0.0004448">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.render sequence handlers &gt; generateSections should generate empty sections when no resolver" time="0.0006265">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.render sequence handlers &gt; generateFields should generate empty fields when no resolver" time="0.0008505">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.render sequence handlers &gt; renderView should mark view as rendered" time="0.0005675">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.render sequence handlers &gt; generateSections should generate empty sections when no resolver" time="0.0004239">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; prepareField should prepare field change data" time="0.0013292">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.render sequence handlers &gt; renderView should mark view as rendered" time="0.0003559">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; dispatchField should forward to canvas update" time="0.0020564">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; prepareField should prepare field change data" time="0.0006217">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; setDirty should mark UI as dirty" time="0.000716">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; dispatchField should forward to canvas update" time="0.0005301">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; awaitRefresh should mark refresh as awaited" time="0.0007163">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; setDirty should mark UI as dirty" time="0.0002714">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.validate sequence handlers &gt; validateField should validate field when no resolver" time="0.0018952">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.change sequence handlers &gt; awaitRefresh should mark refresh as awaited" time="0.0001889">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.validate sequence handlers &gt; mergeErrors should mark errors as merged" time="0.0010119">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.validate sequence handlers &gt; validateField should validate field when no resolver" time="0.0004314">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.validate sequence handlers &gt; updateView should mark view as updated" time="0.0011275">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.validate sequence handlers &gt; mergeErrors should mark errors as merged" time="0.0004287">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.section.toggle sequence handlers &gt; toggleSection should toggle section state" time="0.0009316">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.field.validate sequence handlers &gt; updateView should mark view as updated" time="0.0002609">
         </testcase>
-        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.section.toggle sequence handlers &gt; toggleSection should handle missing sectionId" time="0.0012218">
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.section.toggle sequence handlers &gt; toggleSection should toggle section state" time="0.000245">
+        </testcase>
+        <testcase classname="__tests__/ui-sequences.spec.ts" name="Control Panel UI Sequences &gt; ui.section.toggle sequence handlers &gt; toggleSection should handle missing sectionId" time="0.0003711">
         </testcase>
     </testsuite>
 </testsuites>

@@ -1,0 +1,140 @@
+{
+  "timestamp": "2025-11-23T16:27:04.859Z",
+  "slice": {
+    "performanceIssues": [
+      {
+        "anomalyId": "loadLogFiles-perf-1763915211569",
+        "handler": "loadLogFiles",
+        "severity": "high",
+        "description": "Latency increased by 275% vs baseline"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-perf-1763915211569",
+        "handler": "extractTelemetryEvents",
+        "severity": "high",
+        "description": "Latency increased by 240% vs baseline"
+      },
+      {
+        "anomalyId": "aggregateTelemetryMetrics-perf-1763915211569",
+        "handler": "aggregateTelemetryMetrics",
+        "severity": "medium",
+        "description": "Latency increased by 167% vs baseline"
+      }
+    ],
+    "behavioralIssues": [
+      {
+        "anomalyId": "normalizeTelemetryData-behavior-new-1763915211569",
+        "handler": "normalizeTelemetryData",
+        "outOfOrder": false,
+        "severity": "medium",
+        "description": "Handler appeared with count=12 not present in baseline"
+      },
+      {
+        "anomalyId": "loadLogFiles-behavior-surge-1763915211569",
+        "handler": "loadLogFiles",
+        "outOfOrder": false,
+        "severity": "critical",
+        "description": "Invocation count surge 440% vs baseline (current=44, baseline=10)"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-behavior-surge-1763915211569",
+        "handler": "extractTelemetryEvents",
+        "outOfOrder": false,
+        "severity": "medium",
+        "description": "Invocation count surge 178% vs baseline (current=32, baseline=18)"
+      }
+    ],
+    "coverageIssues": [
+      {
+        "anomalyId": "loadLogFiles-coverage-1763915211569",
+        "handler": "loadLogFiles",
+        "severity": "high",
+        "description": "Potential coverage gap: growth 340% with errorRate 7.0% (gapScore=0.41)"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-coverage-1763915211569",
+        "handler": "extractTelemetryEvents",
+        "severity": "medium",
+        "description": "Potential coverage gap: growth 78% with errorRate 21.0% (gapScore=0.20)"
+      }
+    ],
+    "errorIssues": [
+      {
+        "anomalyId": "extractTelemetryEvents-errors-1763915211570",
+        "handler": "extractTelemetryEvents",
+        "severity": "medium",
+        "description": "Error rate increased 16.0% (current 21.0%, baseline 5.0%)"
+      }
+    ],
+    "generatedAt": "2025-11-23T16:27:04.859Z",
+    "sequenceId": "diag-seq-e2e",
+    "impact": {
+      "overallSeverity": "critical",
+      "totals": {
+        "performance": 3,
+        "behavioral": 3,
+        "coverage": 2,
+        "error": 1
+      },
+      "affectedHandlers": 4,
+      "estimatedUsers": 1000,
+      "rationale": "Severity critical due to totals perf=3, beh=3, cov=2, err=1"
+    },
+    "recommendations": [
+      {
+        "id": "fix-1",
+        "type": "code",
+        "description": "Optimize handler loadLogFiles to reduce latency ratio unknown",
+        "priority": 2,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-2",
+        "type": "code",
+        "description": "Optimize handler extractTelemetryEvents to reduce latency ratio unknown",
+        "priority": 2,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-3",
+        "type": "code",
+        "description": "Optimize handler aggregateTelemetryMetrics to reduce latency ratio unknown",
+        "priority": 3,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-4",
+        "type": "test",
+        "description": "Increase coverage for handler loadLogFiles to >=80% (current unknown%)",
+        "priority": 2,
+        "estimatedEffort": 5,
+        "expectedBenefit": "Reduced regression risk",
+        "implementation": "Add unit + integration tests for untested paths"
+      },
+      {
+        "id": "fix-5",
+        "type": "test",
+        "description": "Increase coverage for handler extractTelemetryEvents to >=80% (current unknown%)",
+        "priority": 2,
+        "estimatedEffort": 5,
+        "expectedBenefit": "Reduced regression risk",
+        "implementation": "Add unit + integration tests for untested paths"
+      },
+      {
+        "id": "fix-6",
+        "type": "code",
+        "description": "Address error pattern unknown in handler extractTelemetryEvents",
+        "priority": 2,
+        "estimatedEffort": 6,
+        "expectedBenefit": "Improved reliability and lower error rate",
+        "implementation": "Trace stack, add guards, improve retry logic"
+      }
+    ]
+  }
+}

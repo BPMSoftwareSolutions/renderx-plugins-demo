@@ -64,6 +64,8 @@
     "lint:ui": "eslint plugins/**/ui",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
+  "posttest": "node scripts/enforce-bdd-telemetry.js || exit 1",
+  "generate:bdd:plan": "node scripts/generate-bdd-specs-from-plan.js",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
     "test:isolation": "vitest run packages/canvas-component/__tests__/create.isolation.spec.ts",

@@ -1,4 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { emitFeature } from '../../src/telemetry/emitter';
+import { installTelemetryMatcher } from '../../src/telemetry/matcher';
+import { clearTelemetry } from '../../src/telemetry/collector';
 import { detectSloBreaches } from '../../src/handlers/anomaly/detect.slo.breaches';
 import { createEventBus } from '../support/eventBus';
 import { TelemetryMetrics } from '../../src/types';
@@ -16,6 +19,8 @@ import { TelemetryMetrics } from '../../src/types';
  *
  * This test validates business outcome (breach detection & anomaly emission).
  */
+
+installTelemetryMatcher();
 
 describe('Business BDD: detectSloBreaches', () => {
   let ctx: any;
@@ -42,11 +47,13 @@ describe('Business BDD: detectSloBreaches', () => {
   afterEach(() => { vi.clearAllMocks(); ctx = null; });
 
   describe('Scenario: Emit anomalies for breached latency & throughput SLOs', () => {
-    it('should achieve the desired business outcome', () => {
+    it('should achieve the desired business outcome (with telemetry)', async () => {
       // GIVEN metrics below throughput target & above latency target
       expect(ctx.input.metrics.totalEvents).toBeLessThan(50);
-      // WHEN SLO breach detection executes
-      ctx.output = ctx.handler(ctx.input.metrics);
+      clearTelemetry();
+      // WHEN SLO breach detection executes wrapped in telemetry emission
+      const { record, result } = await emitFeature('detect-slo-breaches', 'slo:breach:detected', () => ctx.handler(ctx.input.metrics));
+      ctx.output = result;
       // THEN anomalies emitted for each breach
       expect(ctx.output.event).toBe('anomaly.detect.slo');
       const breaches = ctx.output.context.breaches;
@@ -60,6 +67,13 @@ describe('Business BDD: detectSloBreaches', () => {
       expect(throughputAnomaly).toBeDefined();
       ctx.bus.publish('anomaly.slo.breaches.detected', anomalies);
       expect(ctx.bus.count('anomaly.slo.breaches.detected')).toBe(1);
+      // Telemetry assertions
+      expect(record.feature).toBe('detect-slo-breaches');
+      expect(record.event).toBe('slo:breach:detected');
+      expect(record.beats).toBeGreaterThanOrEqual(2);
+      expect(record.status).toBe('ok');
+      expect(record.correlationId).toMatch(/-/);
+      expect(record).toHaveTelemetry({ feature: 'detect-slo-breaches', event: 'slo:breach:detected' });
     });
   });
 });
