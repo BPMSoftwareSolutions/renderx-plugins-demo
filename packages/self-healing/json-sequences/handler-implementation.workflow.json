@@ -387,6 +387,24 @@
     "Artifacts as proof",
     "Iterate based on business outcomes"
   ],
+  "definition_of_done": [
+    "WSJF phase completed with decision artifact (WSJF_DECISIONS.md)",
+    "Business spec understood (Phase 1)",
+    "Business BDD test implemented & passes (Phase 2 & 5)",
+    "Unit tests Red→Green→Refactor cycle completed (Phase 3 & 4)",
+    "Handler code merged & exported (index.ts)",
+    "Artifacts generated (.generated/*.json: metrics, anomalies, diagnosis)",
+    "Orchestrator slice runnable end-to-end (telemetry → anomaly → diagnosis)",
+    "Live demo executed & feedback captured (DEMO_FEEDBACK.md)",
+    "All tests pass (unit, business, integration)",
+    "Lint passes with zero errors/warnings",
+    "Build succeeds (npm run build)",
+    "Optional packaging tasks succeed (if version bump needed)",
+    "CI readiness: test & lint scripts definable for automation",
+    "Documentation/workflow file updated to reflect new handlers",
+    "No orphaned TODOs in implemented slice",
+    "Ready for next WSJF prioritization cycle"
+  ],
   "lint_requirements": [
     "Prefix unused variables with underscore: _ctx, _result, _error (ESLint rule: @typescript-eslint/no-unused-vars requires /^_/u pattern)",
     "All test files must follow this pattern to avoid lint warnings",

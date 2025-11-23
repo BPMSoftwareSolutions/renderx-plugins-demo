@@ -39,8 +39,9 @@ export * from './anomaly/run.anomaly.detect';
 
 // NOTE: Additional anomaly handlers (behavioral, coverage, errors, aggregate, store, completed)
 // are not yet implemented. They will be added here when their source files exist.
-// Diagnosis Handlers - pending implementation
-// export * from './diagnosis/analyze.requested';
+// Diagnosis Handlers (incremental implementation)
+export * from './diagnosis/analyze.requested';
+export * from './diagnosis/load.anomalies';
 // ... (to be added)
 // Fix Generation Handlers - pending implementation
 // export * from './fix/generate.requested';

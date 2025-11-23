@@ -1,4 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
+import { analyzeRequested } from '../../src/handlers/diagnosis/analyze.requested';
 
 /**
  * Business BDD Test: analyzeRequested
@@ -14,55 +15,25 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe.skip('Business BDD: analyzeRequested', () => {
-  let _ctx: any;
-
-  beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-  _ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
-      output: null,
-      error: null
-    };
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-    ctx = null;
-  });
+describe('Business BDD: analyzeRequested', () => {
 
   describe('Scenario: User requests root cause analysis of detected anomalies', () => {
-    it('should achieve the desired business outcome', async () => {
-      // GIVEN (Preconditions - Business Context)
-      // - anomalies have been detected
-      // - analysis is needed
+    it('initiates diagnosis with a valid envelope (Given anomalies detected, When user triggers diagnosis, Then analysis sequence begins)', () => {
+      // GIVEN anomalies previously detected (implicit - anomalies.json exists or will be loaded by later handlers)
+      const sequenceId = 'diagnosis-seq-1';
 
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
+      // WHEN user triggers root cause analysis
+      const evt = analyzeRequested(sequenceId);
 
-      // WHEN (Action - User/System Action)
-      // - user triggers diagnosis
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
-
-      // THEN (Expected Outcome - Business Value)
-      // - system should validate request
-      // - analysis should begin
-      // - user should receive confirmation
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+      // THEN system publishes initiation event enabling downstream load/analyze handlers
+      expect(evt).toBeDefined();
+      expect(typeof evt.timestamp).toBe('string');
+      expect(evt.handler).toBe('analyzeRequested');
+      expect(evt.event).toBe('diagnosis.analyze.requested');
+      expect(evt.context).toBeDefined();
+      expect(evt.context?.sequenceId).toBe(sequenceId);
+      // No error field expected in a successful initiation
+      expect((evt as any).error).toBeUndefined();
     });
   });
 });
