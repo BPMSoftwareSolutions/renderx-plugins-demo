@@ -29,7 +29,144 @@ Check out these supporting projects for more detail on the underlying architectu
 - **renderx-plugins** — core utilities, base interfaces, and manifest schema for RenderX-compatible plugins:
   https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md
 
-## 🚧 Active Refactoring Zones
+## � Telemetry Governance & Traceability System
+
+This repository includes a comprehensive **5-layer telemetry governance and traceability system** that provides complete visibility into component health, data transformations, and system architecture.
+
+### Quick Start for Agents & Developers
+
+**Find any project or workflow instantly:**
+```bash
+node scripts/query-project-knowledge.js "self-healing"
+node scripts/query-project-knowledge.js "sprint workflow"
+node scripts/query-project-knowledge.js "reusable patterns"
+```
+
+**Check component health status:**
+```bash
+jq '.components[]' .generated/sli-metrics.json
+```
+
+**Understand system architecture:**
+- Read: `COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md` (master index)
+- Read: `KNOWLEDGE_LAYERS_ARCHITECTURE.md` (5-layer integration)
+- Read: `PROJECT_KNOWLEDGE_QUERY_GUIDE.md` (how to query)
+
+### System Architecture (5 Layers)
+
+| Layer | File | Purpose | Status |
+|-------|------|---------|--------|
+| **1** | `global-traceability-map.json` | Architecture, components, pipelines | ✅ Complete |
+| **2** | `project-knowledge-map.json` | File locations, workflows, patterns | ✅ Complete |
+| **3** | `sli-metrics.json` | Real-time health, anomalies, metrics | ✅ Complete (Phase 2) |
+| **4** | `slo-targets.json`, `error-budgets.json` | SLO targets, error budgets | 🟡 Phase 3-4 Ready |
+| **5** | `sla-compliance-report.json` | Compliance monitoring, self-healing trigger | 🟡 Phase 5 Ready |
+
+### Key Features
+
+**Layer 1: Global Traceability Map**
+- 17 packages classified and mapped
+- 11-stage data transformation pipeline documented
+- Component health scores and anomaly tracking
+- Robotics deprecation plan
+- Dashboard architecture specification
+- Governance rules and best practices
+
+**Layer 2: Project Knowledge Map**
+- Intelligent query tool for discovering projects, workflows, and patterns
+- Self-healing project: 7 sequences, 67 handlers, reusable sprint workflow
+- OGraphX analysis tool integration
+- SLO dashboard package design
+- 4 reusable patterns for cross-project use
+
+**Layer 3: Telemetry & Health Status**
+- 5 components monitored with real SLI metrics
+- Canvas component: CRITICAL (health: 49.31, availability: 99.71%)
+- Host SDK: BEST (health: 56.08, availability: 99.90%)
+- 30 anomalies detected with 100% traceability to source code (exact line numbers)
+- Latency tracking (P50/P95/P99), error rates, availability percentages
+
+**Layer 4: SLO/SLI Targets & Budgets (Ready for Implementation)**
+- Phase 3: Define realistic SLO targets based on real production metrics
+- Phase 4: Calculate error budgets and track consumption
+
+**Layer 5: SLA Compliance & Self-Healing Trigger (Ready for Implementation)**
+- Phase 5: Real-time SLO adherence monitoring
+- Automatic triggering of self-healing on breach
+- Feedback loop: fixes → recalculated metrics → improvement visualization
+
+### For AI Agents & Automated Tools
+
+When working on this codebase, **always use the traceability system** to:
+
+1. **Understand the architecture** → Read `KNOWLEDGE_LAYERS_ARCHITECTURE.md`
+2. **Find project files** → Use `node scripts/query-project-knowledge.js "keyword"`
+3. **Check component health** → Query `.generated/sli-metrics.json`
+4. **Understand data flows** → Review `GLOBAL_DATA_PIPELINES.md`
+5. **Reference workflows** → Use sprint workflow from `IMPLEMENTATION_ROADMAP.md`
+6. **Apply patterns** → Discover patterns with query tool
+
+### Common Queries
+
+```bash
+# Find the self-healing system
+node scripts/query-project-knowledge.js "self-healing"
+# Returns: Location, file structure, 7 sequences, 67 handlers
+
+# Locate sprint workflow for implementing phases
+node scripts/query-project-knowledge.js "sprint workflow"
+# Returns: 7 phases, 14 weeks, handler distribution, reusable pattern
+
+# Discover reusable patterns
+node scripts/query-project-knowledge.js "reusable patterns"
+# Returns: Handler organization, JSON-first design, test parity, progressive phases
+
+# Find all project documentation
+node scripts/query-project-knowledge.js "ographx"
+node scripts/query-project-knowledge.js "dashboard"
+```
+
+### System Statistics
+
+- **17 packages** in active development
+- **30 anomalies** detected and tracked
+- **87 log files** analyzed (120,994 lines)
+- **82,366 events** traced with 100% lineage
+- **5 components** with continuous health monitoring
+- **25 SLI metrics** defined across components
+- **7 sequences** in self-healing system (67 handlers)
+- **8 phases** planned for SLO/SLI system (2 complete, 6 ready)
+
+### Implementation Status
+
+✅ **Complete:**
+- Phase 1: SLI Framework (25 metrics defined)
+- Phase 2: SLI Metrics (real production data)
+- Phase 3a: Global Architecture Mapping
+- Phase 3b: Project Knowledge Indexing
+
+🟡 **Ready to Implement:**
+- Phase 3c: SLO Definition Engine (Phase 3 script)
+- Phase 4: Error Budget Calculator (Phase 4 script)
+- Phase 5: SLA Compliance Tracker (Phase 5 script)
+- Phase 6: SLO/SLI Dashboard (React package)
+- Phase 7: Workflow Engine (state machine orchestration)
+- Phase 8: Documentation (comprehensive guides)
+
+### Essential Documentation
+
+For complete context, see:
+- `COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md` — Master index and quick reference
+- `KNOWLEDGE_LAYERS_ARCHITECTURE.md` — How all 5 layers integrate
+- `PROJECT_KNOWLEDGE_QUERY_GUIDE.md` — How to use the query system
+- `GLOBAL_COMPONENT_TOPOLOGY.md` — Package details and health
+- `GLOBAL_DATA_PIPELINES.md` — Data transformation flows
+- `.generated/project-knowledge-map.json` — Source JSON (queryable)
+- `.generated/global-traceability-map.json` — Source JSON (queryable)
+
+---
+
+## �🚧 Active Refactoring Zones
 
 Some parts of the codebase are under active refactoring for improved modularity, scalability, and maintainability. These zones have special markers and guidance for contributors.
 
