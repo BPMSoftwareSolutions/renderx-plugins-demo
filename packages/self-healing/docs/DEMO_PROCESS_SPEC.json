@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "iteration": "Sprint-1-Diagnosis",
+  "generatedAt": "${DATE}",
+  "objectives": [
+    "Show end-to-end flow: telemetry parse → anomaly detect → diagnosis aggregation → impact + recommendations",
+    "Demonstrate business BDD alignment (spec & active tests)",
+    "Surface actionable fix recommendations prioritization"
+  ],
+  "roles": ["Platform Engineer", "Reliability Engineer", "Product Owner"],
+  "environments": {
+    "hostOS": "Windows 10+",
+    "runtime": "Node.js >=20",
+    "shell": "PowerShell",
+    "requiredTools": ["git", "npm"]
+  },
+  "resources": {
+    "logDirectory": ".logs",
+    "sampleLogHint": "Place one or more .log files (or copy existing production sample) into .logs/",
+    "baselineSnapshotOptional": "(future) baseline-metrics.json for SLO slice",
+    "valueUnitsCatalogFuture": "value-units.json (PV scaffolding)"
+  },
+  "sequencesIncluded": ["telemetry-parse", "anomaly-detect", "diagnosis-analyze"],
+  "handlersHighlighted": [
+    "loadLogFiles",
+    "extractTelemetryEvents",
+    "aggregateTelemetryMetrics",
+    "detectPerformanceAnomalies",
+    "detectBehavioralAnomalies",
+    "detectCoverageAnomalies",
+    "detectErrorAnomalies",
+    "aggregateAnomalies",
+    "analyzePerformanceIssues",
+    "analyzeBehavioralIssues",
+    "analyzeCoverageIssues",
+    "analyzeErrorIssues",
+    "aggregateDiagnosis",
+    "assessImpact",
+    "recommendFixes",
+    "analyzeCompleted"
+  ],
+  "kpis": [
+    {"name": "Latency Spike Detection", "target": ">=1 performance issue surfaced"},
+    {"name": "Recommendation Coverage", "target": ">=1 recommendation per critical/high issue category"},
+    {"name": "Business Spec Compliance", "target": "verify-bdd-spec PASS"}
+  ],
+  "successCriteria": [
+    "Script run outputs aggregated diagnosis with highestSeverity",
+    "Recommendations list includes priority values (1=highest)",
+    "No skipped Business BDD tests in diagnosis scope"
+  ],
+  "steps": [
+    {"order": 1, "action": "Populate .logs with sample log file(s)"},
+    {"order": 2, "action": "Run pretest enforcement: npm run pretest (implicit via npm test)"},
+    {"order": 3, "action": "Execute demo script: node scripts/run-self-healing-demo.js --logsDir .logs"},
+    {"order": 4, "action": "Review console summary (issues, impact, recommendations)"},
+    {"order": 5, "action": "Capture screenshot / metrics for stakeholders"}
+  ],
+  "andonTriggers": [
+    "Missing .logs directory or empty => abort with guidance",
+    "verify-bdd-spec FAIL => abort demo",
+    "verify-demo-spec FAIL => abort demo",
+    "No anomalies detected => highlight need for more representative log sample"
+  ],
+  "futureExtensions": [
+    "Integrate SLO breach events once SLO slice implemented",
+    "Add PV/AV delta overlay in demo output",
+    "Graphical timeline visualization"
+  ]
+}

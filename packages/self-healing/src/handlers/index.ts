@@ -47,6 +47,7 @@ export * from './diagnosis/analyze.performance.issues';
 export * from './diagnosis/analyze.behavioral.issues';
 export * from './diagnosis/analyze.coverage.issues';
 export * from './diagnosis/analyze.error.issues';
+export * from './diagnosis/aggregate.diagnosis';
 export * from './diagnosis/assess.impact';
 export * from './diagnosis/recommend.fixes';
 export * from './diagnosis/store.diagnosis';

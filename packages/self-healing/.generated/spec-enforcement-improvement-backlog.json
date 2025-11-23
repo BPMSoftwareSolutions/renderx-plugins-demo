@@ -95,6 +95,16 @@
       "status": "planned",
       "priority": "low"
     }
+    ,
+    {
+      "id": "demo-spec-enforcement",
+      "title": "Enforce presence & validity of demo process spec",
+      "details": "Add verify-demo-spec.js to pretest ensuring DEMO_PROCESS_SPEC.json exists with objectives, resources, steps, Andon triggers.",
+      "motivation": "Prevent missing demo design artifacts and resource gaps before iteration demo.",
+      "acceptance": ["Script integrated into pretest", "Fails if spec missing or malformed", "Workflow docs reference demo enforcement"],
+      "status": "completed",
+      "priority": "high"
+    }
   ],
   "nextReview": "2025-11-30",
   "createdAt": "2025-11-23T00:00:00Z"

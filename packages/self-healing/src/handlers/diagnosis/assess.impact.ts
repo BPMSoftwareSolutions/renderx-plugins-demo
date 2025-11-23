@@ -24,7 +24,9 @@ export function assessImpact(slice: DiagnosisSlice): AssessImpactResult {
     ...slice.coverageIssues.map(i => i.severity),
     ...slice.errorIssues.map(i => i.severity)
   ];
-  const overallSeverity = allSeverities.reduce<SeverityLevel>('low', (acc, sev) => severityRank(sev) > severityRank(acc) ? sev : acc);
+  const overallSeverity = allSeverities.reduce<SeverityLevel>((acc: SeverityLevel, sev: SeverityLevel) =>
+    severityRank(sev) > severityRank(acc) ? sev : acc
+  , 'low');
   const highestLatencyRatio = slice.performanceIssues.reduce<number | undefined>((acc, i) => i.latencyRatio && (acc === undefined || i.latencyRatio > acc) ? i.latencyRatio : acc, undefined);
   const highestErrorRate = slice.errorIssues.reduce<number | undefined>((acc, i) => i.errorRate && (acc === undefined || i.errorRate > acc) ? i.errorRate : acc, undefined);
   const affectedHandlers = new Set([

@@ -1,6 +1,7 @@
 import { TelemetryEvent, TelemetryMetrics } from '../../types/index';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 
 export interface StoreDatabaseResult extends TelemetryEvent {
   context: {
@@ -12,8 +13,10 @@ export interface StoreDatabaseResult extends TelemetryEvent {
 }
 
 function resolveMetricsPath(): string {
-  // Store inside package .generated for easy inspection
-  return path.resolve(__dirname, '../../../.generated/telemetry-metrics.json');
+  // ESM safe __dirname resolution
+  const thisDir = path.dirname(fileURLToPath(import.meta.url));
+  const pkgRoot = path.resolve(thisDir, '../../../');
+  return path.join(pkgRoot, '.generated', 'telemetry-metrics.json');
 }
 
 /**

@@ -101,6 +101,38 @@ if (missing.length) {
   fail('Handler names missing from spec content', missing.slice(0, 20));
 }
 
+// Enhanced enforcement: ensure each discovered handler has a non-skipped Business BDD test
+const TESTS_ROOT = path.join('packages','self-healing','__tests__','business-bdd-handlers');
+function listTestFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter(f => f.endsWith('.spec.ts')).map(f => path.join(dir,f));
+}
+const testFiles = listTestFiles(TESTS_ROOT);
+const testContentMap = Object.fromEntries(testFiles.map(f => [f, fs.readFileSync(f,'utf8')]));
+const skippedHandlers = [];
+const untestedHandlers = [];
+// Enforce active Business BDD tests only for diagnosis-scope handlers (analyze/aggregate/assess/recommend)
+const enforcementScope = handlerNames.filter(h => /analyze|aggregateDiagnosis|assess|recommend/i.test(h));
+for (const h of enforcementScope) {
+  // Match pattern Business BDD: <handlerName>
+  const matchingFiles = Object.entries(testContentMap).filter(([file, content]) => content.includes(`Business BDD: ${h}`));
+  if (!matchingFiles.length) {
+    untestedHandlers.push(h);
+    continue;
+  }
+  // If any matching file has describe.skip for that handler, mark skipped
+  const isSkipped = matchingFiles.some(([file, content]) =>
+    content.includes(`describe.skip('Business BDD: ${h}`) || content.includes(`describe.skip("Business BDD: ${h}`)
+  );
+  if (isSkipped) skippedHandlers.push(h);
+}
+if (untestedHandlers.length) {
+  fail('Missing Business BDD test files for diagnosis-scope handlers', untestedHandlers.slice(0,20));
+}
+if (skippedHandlers.length) {
+  fail('Business BDD tests are skipped for diagnosis-scope handlers', skippedHandlers.slice(0,20));
+}
+
 // 6. Scenario count heuristic
 const totalScenariosSource = spec.totalScenarios !== undefined ? spec.totalScenarios : (spec.summary && spec.summary.totalScenarios);
 if (totalScenariosSource !== undefined) {
@@ -116,4 +148,5 @@ if (totalScenariosSource !== undefined) {
 console.log('[BDD-SPEC-ENFORCEMENT] PASS');
 console.log('Handlers discovered:', handlerNames.length);
 console.log('totalHandlers declared:', totalHandlersDeclared);
+console.log('All handlers have active (non-skipped) Business BDD tests');
 console.log('Spec age OK (<=' + MAX_AGE_HOURS + 'h)');

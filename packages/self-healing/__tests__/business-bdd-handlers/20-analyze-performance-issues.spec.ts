@@ -1,4 +1,6 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
+import { analyzePerformanceIssues } from '../../src/handlers/diagnosis/analyze.performance.issues';
+import { Anomaly } from '../../src/types';
 
 /**
  * Business BDD Test: analyzePerformanceIssues
@@ -14,55 +16,23 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe.skip('Business BDD: analyzePerformanceIssues', () => {
-  let _ctx: any;
-
-  beforeEach(() => {
-    // TODO: Initialize test context with realistic production data
-  _ctx = {
-      handler: null, // TODO: Import and assign handler
-      mocks: {
-        database: vi.fn(),
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: {},
-      output: null,
-      error: null
-    };
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-    ctx = null;
-  });
-
+describe('Business BDD: analyzePerformanceIssues', () => {
   describe('Scenario: Analyze performance anomalies to find root cause', () => {
-    it('should achieve the desired business outcome', async () => {
-      // GIVEN (Preconditions - Business Context)
-      // - performance anomaly detected
-      // - handler latency is high
-
-      // TODO: Set up preconditions
-      // ctx.input = { /* realistic production data */ };
-
-      // WHEN (Action - User/System Action)
-      // - performance analysis handler executes
-
-      // TODO: Execute handler
-      // ctx.output = await ctx.handler(ctx.input);
-
-      // THEN (Expected Outcome - Business Value)
-      // - root cause should be identified
-      // - affected code should be located
-      // - fix recommendation should be provided
-
-      // TODO: Verify business outcomes
-      // expect(ctx.output).toBeDefined();
-      // expect(ctx.mocks.eventBus).toHaveBeenCalled();
-      // Verify measurable business results
-      expect(true).toBe(true);
+    it('classifies latency spike severity and emits issue list', () => {
+      // GIVEN a performance anomaly with high latency ratio
+      const anomalies: Anomaly[] = [
+        {
+          id: 'perf1', type: 'performance', severity: 'low', handler: 'handlerA', description: 'latency spike',
+          metrics: { latencyRatio: 3.4 }, detectedAt: new Date().toISOString(), confidence: 0.91
+        }
+      ];
+      // WHEN performance analysis executes
+      const result = analyzePerformanceIssues(anomalies);
+      // THEN issue list produced with escalated severity & scoring metadata
+      expect(result.context.issues.length).toBe(1);
+      expect(result.context.issues[0].severity).toBe('high'); // escalated from low due to ratio >=3
+      expect(result.context.scoring).toMatch(/latency-ratio/);
+      expect(result.handler).toBe('analyzePerformanceIssues');
     });
   });
 });

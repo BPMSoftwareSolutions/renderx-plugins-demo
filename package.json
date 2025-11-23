@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:packages": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build && npm --prefix packages/header run build && npm --prefix packages/library run build && npm --prefix packages/library-component run build && npm --prefix packages/real-estate-analyzer run build",
+  "build:packages": "npm --prefix packages/components run build && npm --prefix packages/musical-conductor run build && npm --prefix packages/host-sdk run build && npm --prefix packages/manifest-tools run build && npm --prefix packages/canvas run build && npm --prefix packages/canvas-component run build && npm --prefix packages/control-panel run build && npm --prefix packages/header run build && npm --prefix packages/library run build && npm --prefix packages/library-component run build && npm --prefix packages/real-estate-analyzer run build && npm --prefix packages/self-healing run build",
     "build:host": "npm run pre:manifests && vite build",
     "build:all": "npm run build:packages && npm run build:host",
     "dev": "npm run pre:manifests && vite",
@@ -55,7 +55,7 @@
     "validate:public-api": "node scripts/validate-public-api.js",
     "preview": "vite preview",
     "pre:manifests": "npm run regenerate:ographx && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-json-interactions-from-plugins.js && node scripts/generate-interaction-manifest.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/generate-layout-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog && node scripts/sync-control-panel-config.js && node scripts/generate-versions-manifest.js",
-  "pretest": "node scripts/verify-bdd-spec.js && npm run regenerate:ographx:test-graph && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog",
+  "pretest": "node scripts/verify-bdd-spec.js && node scripts/verify-demo-spec.js && npm run regenerate:ographx:test-graph && node scripts/sync-json-sources.js --srcRoot=catalog && npm run sync:json-components && node scripts/sync-json-sequences.js --srcRoot=catalog && node scripts/generate-topics-manifest.js --srcRoot=catalog && node scripts/aggregate-plugins.js && node scripts/sync-plugins.js --srcRoot=catalog",
     "sync:json-components": "node scripts/sync-json-components.js --srcRoot=catalog",
     "export:gif": "node scripts/export-svg-to-gif.js",
     "export:server": "node scripts/export-server.js",

@@ -5,6 +5,7 @@ import { analyzePerformanceIssues } from './analyze.performance.issues';
 import { analyzeBehavioralIssues } from './analyze.behavioral.issues';
 import { analyzeCoverageIssues } from './analyze.coverage.issues';
 import { analyzeErrorIssues } from './analyze.error.issues';
+import { aggregateDiagnosis } from './aggregate.diagnosis';
 import { assessImpact } from './assess.impact';
 import { recommendFixes } from './recommend.fixes';
 import { storeDiagnosis } from './store.diagnosis';
@@ -19,6 +20,7 @@ export interface RunDiagnosisAnalyzeSummary {
   behavioral: ReturnType<typeof analyzeBehavioralIssues>;
   coverage: ReturnType<typeof analyzeCoverageIssues>;
   error: ReturnType<typeof analyzeErrorIssues>;
+  aggregated: ReturnType<typeof aggregateDiagnosis>;
   impact: ReturnType<typeof assessImpact>;
   recommendations: ReturnType<typeof recommendFixes>;
   store: ReturnType<typeof storeDiagnosis>;
@@ -45,13 +47,14 @@ export function runDiagnosisAnalyze(options: RunDiagnosisAnalyzeOptions = {}): R
     generatedAt: new Date().toISOString(),
     sequenceId
   };
+  const aggregated = aggregateDiagnosis(slice);
   const impact = assessImpact(slice);
   slice.impact = impact.context.impact;
   const recommendations = recommendFixes(slice);
   slice.recommendations = recommendations.context.recommendations;
   const store = storeDiagnosis(slice);
   const completed = analyzeCompleted(sequenceId, slice);
-  return { requested, anomalies, codebase, performance, behavioral, coverage, error, impact, recommendations, store, completed, slice };
+  return { requested, anomalies, codebase, performance, behavioral, coverage, error, aggregated, impact, recommendations, store, completed, slice };
 }
 
 export default runDiagnosisAnalyze;
