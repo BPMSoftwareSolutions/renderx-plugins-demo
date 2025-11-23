@@ -15,7 +15,7 @@ describe('Validate Fix (self-healing-validation-run-symphony)', () => {
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    _ctx = {};
+    __ctx = {};
   });
 
   it('validateRequested - happy path', () => {

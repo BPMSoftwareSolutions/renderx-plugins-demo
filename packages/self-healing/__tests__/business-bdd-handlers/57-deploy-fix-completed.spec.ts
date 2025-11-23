@@ -15,11 +15,11 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  */
 
 describe('Business BDD: deployFixCompleted', () => {
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
-  ctx = {
+  _ctx = {
       handler: null, // TODO: Import and assign handler
       mocks: {
         database: vi.fn(),

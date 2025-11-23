@@ -15,7 +15,7 @@ describe('Deploy Fix (self-healing-deployment-deploy-symphony)', () => {
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    _ctx = {};
+    __ctx = {};
   });
 
   it('deployRequested - happy path', () => {

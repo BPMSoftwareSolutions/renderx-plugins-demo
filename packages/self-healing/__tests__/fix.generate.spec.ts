@@ -15,7 +15,7 @@ describe('Generate Fix (self-healing-fix-generate-symphony)', () => {
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    _ctx = {};
+    __ctx = {};
   });
 
   it('generateFixRequested - happy path', () => {

@@ -1,5 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { loadLogFiles } from '../../src/handlers/telemetry/load.logs';
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
 
 /**
  * Business BDD Test: loadLogFiles
@@ -17,21 +20,23 @@ import { loadLogFiles } from '../../src/handlers/telemetry/load.logs';
 
 describe('Business BDD: loadLogFiles', () => {
   let ctx: any;
+  let tempDir: string;
 
   beforeEach(() => {
     // GIVEN: logs directory contains recent log slices for last 24h (sample subset for test)
-    const base = '/var/log/app';
-    const hours = ['00','01','02','03']; // simplifying vs 24 for speed
-    const date = '2025-11-22';
-    const paths = hours.map(h => `${base}/app-${date}-${h}.log`);
-  ctx = {
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bdd-load-logs-'));
+    const hours = ['00', '01', '02', '03']; // sample subset
+    const now = new Date();
+    const dateStr = now.toISOString().slice(0, 10); // YYYY-MM-DD
+    for (const h of hours) {
+      const filePath = path.join(tempDir, `app-${dateStr}-${h}.log`);
+      fs.writeFileSync(filePath, `${new Date().toISOString()} INFO handler:ingest duration=12ms slice=${h}\n`, 'utf8');
+    }
+    // Add a nonexistent path to simulate a corrupted/missing file scenario (will be skipped)
+    const missingPath = path.join(tempDir, 'missing.log');
+    ctx = {
       handler: loadLogFiles,
-      mocks: {
-        fileSystem: vi.fn(),
-        logger: vi.fn(),
-        eventBus: vi.fn()
-      },
-      input: { paths },
+      input: { paths: [tempDir, missingPath] },
       output: null,
       error: null
     };
@@ -39,32 +44,43 @@ describe('Business BDD: loadLogFiles', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
+    try {
+      // Cleanup temp directory
+      for (const f of fs.readdirSync(tempDir)) fs.unlinkSync(path.join(tempDir, f));
+      fs.rmdirSync(tempDir);
+    } catch {/* ignore */}
     ctx = null;
   });
 
   describe('Scenario: System successfully loads production logs from last 24 hours', () => {
-    it('should achieve the desired business outcome', async () => {
-      // GIVEN preconditions from beforeEach
-      expect(ctx.input.paths.length).toBeGreaterThan(0);
+    it('should load valid logs and skip corrupted ones, reporting progress', async () => {
+      // GIVEN preconditions: directory + missing file path
+      expect(ctx.input.paths.length).toBe(2);
 
       // WHEN log loading handler executes
       ctx.output = await ctx.handler(ctx.input.paths);
 
       // THEN business outcomes
-      expect(ctx.output).toBeDefined();
       expect(ctx.output.event).toBe('telemetry.load.logs');
-      // All requested paths represented
-      expect(ctx.output.context.paths).toEqual(ctx.input.paths);
-      expect(ctx.output.context.files.length).toBe(ctx.input.paths.length);
-      // Each file structure present
-      for (const f of ctx.output.context.files) {
-        expect(f).toHaveProperty('path');
-        expect(f).toHaveProperty('size');
-        expect(f).toHaveProperty('content');
+      const { discoveredCount, loadedCount, skippedCount, files } = ctx.output.context;
+      // Discovered includes all log files + missing path
+      expect(discoveredCount).toBe(files.length + skippedCount);
+      // Loaded count equals number of real files (4)
+      expect(loadedCount).toBe(4);
+      // Skipped count should be 1 (missing path)
+      expect(skippedCount).toBe(1);
+      // Validate file structures
+      const realFiles = files.filter((f: any) => !f.skipped);
+      expect(realFiles.length).toBe(4);
+      for (const f of realFiles) {
+        expect(f.size).toBeGreaterThan(0);
+        expect(f.content).toContain('INFO');
       }
-      // Ready for downstream parse: we can derive total loaded
-      const totalLoaded = ctx.output.context.files.length;
-      expect(totalLoaded).toBe(ctx.input.paths.length);
+      const skipped = files.find((f: any) => f.skipped);
+      expect(skipped).toBeTruthy();
+      expect(skipped.reason).toMatch(/read-error/);
+      // Ready for downstream parse
+      expect(loadedCount + skippedCount).toBe(discoveredCount);
     });
   });
 });

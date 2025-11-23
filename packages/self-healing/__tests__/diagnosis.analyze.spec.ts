@@ -15,7 +15,7 @@ describe('Analyze Root Cause (self-healing-diagnosis-analyze-symphony)', () => {
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    _ctx = {};
+    __ctx = {};
   });
 
   it('analyzeRequested - happy path', () => {

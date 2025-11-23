@@ -16,14 +16,14 @@ import { parseTelemetryRequested } from '../../src/handlers/telemetry/parse.requ
  */
 
 describe('Business BDD: parseTelemetryRequested', () => {
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // GIVEN realistic production investigation context
     // Outage suspected: elevated latency on service 'api-gateway'
     const now = new Date();
     const sequenceId = `telemetry-parse-${now.toISOString()}`;
-  ctx = {
+  _ctx = {
       handler: parseTelemetryRequested,
       mocks: {
         logger: vi.fn(),

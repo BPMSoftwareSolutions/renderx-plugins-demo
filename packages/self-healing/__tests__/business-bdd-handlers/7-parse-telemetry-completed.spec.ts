@@ -19,14 +19,14 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: parseTelemetryCompleted', () => {
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [
       { timestamp: new Date().toISOString(), handler: 'A', event: 'beat-completed' }
     ];
     const metricsEvt = aggregateTelemetryMetrics(events);
-  ctx = {
+  _ctx = {
       handler: parseTelemetryCompleted,
       bus: createEventBus(),
       input: { sequenceId: 'telemetry-seq-xyz', metrics: metricsEvt.context.metrics },

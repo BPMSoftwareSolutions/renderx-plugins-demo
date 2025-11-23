@@ -15,7 +15,7 @@ describe('Track Effectiveness (self-healing-learning-track-symphony)', () => {
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-    _ctx = {};
+    __ctx = {};
   });
 
   it('trackRequested - happy path', () => {

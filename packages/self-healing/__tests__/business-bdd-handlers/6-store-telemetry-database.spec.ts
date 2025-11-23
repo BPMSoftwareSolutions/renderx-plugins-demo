@@ -19,7 +19,7 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: storeTelemetryDatabase', () => {
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [
@@ -27,7 +27,7 @@ describe('Business BDD: storeTelemetryDatabase', () => {
       { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed' }
     ];
     const agg = aggregateTelemetryMetrics(events);
-  ctx = {
+  _ctx = {
       handler: storeTelemetryDatabase,
       bus: createEventBus(),
       input: agg.context.metrics,

@@ -13,11 +13,11 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  */
 
 describe('Feature: I want to understand root causes of production issues', () => {
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
-    ctx = {
+    _ctx = {
       telemetry: {},
       anomalies: [],
       diagnosis: {},
