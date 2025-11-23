@@ -18,7 +18,7 @@ import { TelemetryMetrics } from '../../src/types';
  */
 
 describe('Business BDD: loadTelemetryData', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const baseline: TelemetryMetrics = {
@@ -37,7 +37,7 @@ describe('Business BDD: loadTelemetryData', () => {
       timestamp: new Date().toISOString(),
       totalEvents: 120
     };
-    _ctx = {
+  ctx = {
       handler: loadTelemetryData,
       bus: createEventBus(),
       input: { current, baselines: baseline },

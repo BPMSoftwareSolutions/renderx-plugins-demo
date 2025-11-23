@@ -15,11 +15,11 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  */
 
 describe('Business BDD: detectErrorPatterns', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
-    _ctx = {
+  ctx = {
       handler: null, // TODO: Import and assign handler
       mocks: {
         database: vi.fn(),

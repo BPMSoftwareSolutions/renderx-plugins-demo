@@ -18,7 +18,7 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: aggregateTelemetryMetrics', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // Simulated latency events for handlers A, B
@@ -28,7 +28,7 @@ describe('Business BDD: aggregateTelemetryMetrics', () => {
       { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed', duration: 200 },
       { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed', duration: 250 }
     ];
-    _ctx = {
+  ctx = {
       handler: aggregateTelemetryMetrics,
       bus: createEventBus(),
       input: events,

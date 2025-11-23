@@ -20,7 +20,7 @@ jobs:
           node-version: 20
           cache: "npm"
       - name: Install dependencies (work around npm optional deps bug)
-        run: npm install --legacy-peer-deps
+        run: npm ci --legacy-peer-deps
       - name: Build workspace packages
         run: npm run build:packages
       - name: Build artifacts with integrity (sanity)
@@ -44,7 +44,7 @@ jobs:
           node-version: 20
           cache: "npm"
       - name: Install dependencies (work around npm optional deps bug)
-        run: npm install --legacy-peer-deps
+        run: npm ci --legacy-peer-deps
       - name: Cache Cypress binary
         uses: actions/cache@v4
         with:

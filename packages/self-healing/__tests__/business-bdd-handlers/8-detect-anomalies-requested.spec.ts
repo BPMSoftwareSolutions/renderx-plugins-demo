@@ -17,11 +17,11 @@ import { createEventBus } from '../support/eventBus';
  */
 
 describe('Business BDD: detectAnomaliesRequested', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const sequenceId = `anomaly-detect-${Date.now()}`;
-    _ctx = {
+  ctx = {
       handler: detectAnomaliesRequested,
       bus: createEventBus(),
       input: { sequenceId, metricsAvailable: true },
