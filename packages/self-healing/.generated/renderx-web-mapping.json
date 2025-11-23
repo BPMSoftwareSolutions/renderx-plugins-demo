@@ -1,0 +1,317 @@
+{
+  "version": "1.0.0",
+  "description": "Production architecture mapping for renderx-web component diagnostics",
+  "generatedAt": "2025-11-23T19:05:00.000Z",
+  "productionArchitecture": {
+    "name": "renderx-web",
+    "rootDirs": [
+      "packages/",
+      "src/ui/"
+    ],
+    "excludeDirs": [
+      "robotics",
+      "ographx",
+      "node_modules",
+      "dist"
+    ],
+    "statistics": {
+      "files": 543,
+      "symbols": 1010,
+      "calls": 4579,
+      "contracts": 927
+    },
+    "artifacts": {
+      "ir": "packages/ographx/.ographx/artifacts/renderx-web/ir/graph.json",
+      "sequences": "packages/ographx/.ographx/artifacts/renderx-web/sequences/sequences.json",
+      "visualizations": [
+        "packages/ographx/.ographx/artifacts/renderx-web/visualization/diagrams/call_graph.svg",
+        "packages/ographx/.ographx/artifacts/renderx-web/visualization/diagrams/orchestration.svg",
+        "packages/ographx/.ographx/artifacts/renderx-web/visualization/diagrams/sequence_flow.svg"
+      ],
+      "analysis": "packages/ographx/.ographx/artifacts/renderx-web/analysis/analysis.json"
+    }
+  },
+  "logFileSources": {
+    "renderxWeb": {
+      "pattern": "localhost-*.log, *-localhost-*.log, component-*.log, library-*.log, theme-*.log, startup-plugins-*.log",
+      "description": "renderx-web frontend and plugin integration tests",
+      "logCount": 82,
+      "categories": [
+        {
+          "name": "Component Lifecycle",
+          "pattern": "component-resize-*.log",
+          "count": 12,
+          "logFiles": [
+            "component-resize-component-resize.cy.ts-1763013957380.log",
+            "component-resize-component-resize.cy.ts-1763041201297.log",
+            "component-resize-component-resize.cy.ts-1763308050772.log",
+            "component-resize-component-resize.cy.ts-1763308603886.log",
+            "component-resize-component-resize.cy.ts-1763355664826.log",
+            "component-resize-component-resize.cy.ts-1763355981477.log",
+            "component-resize-component-resize.cy.ts-1763356070875.log",
+            "component-resize-component-resize.cy.ts-1763390535371.log",
+            "component-resize-component-resize.cy.ts-1763396455894.log",
+            "component-resize-component-resize.cy.ts-1763397648436.log"
+          ]
+        },
+        {
+          "name": "Library Integration",
+          "pattern": "library-drop-*.log",
+          "count": 10,
+          "logFiles": [
+            "library-drop-library-drop.cy.ts-1763014004157.log",
+            "library-drop-library-drop.cy.ts-1763041252198.log",
+            "library-drop-library-drop.cy.ts-1763308138297.log",
+            "library-drop-library-drop.cy.ts-1763308681576.log",
+            "library-drop-library-drop.cy.ts-1763355712525.log",
+            "library-drop-library-drop.cy.ts-1763356033278.log",
+            "library-drop-library-drop.cy.ts-1763356112218.log",
+            "library-drop-library-drop.cy.ts-1763390579533.log",
+            "library-drop-library-drop.cy.ts-1763396537410.log"
+          ]
+        },
+        {
+          "name": "Theme & UI",
+          "pattern": "theme-toggle-*.log",
+          "count": 10,
+          "logFiles": [
+            "theme-toggle-theme-toggle.cy.ts-1763014011830.log",
+            "theme-toggle-theme-toggle.cy.ts-1763041260011.log",
+            "theme-toggle-theme-toggle.cy.ts-1763308150303.log",
+            "theme-toggle-theme-toggle.cy.ts-1763308701136.log",
+            "theme-toggle-theme-toggle.cy.ts-1763355718615.log",
+            "theme-toggle-theme-toggle.cy.ts-1763356046706.log",
+            "theme-toggle-theme-toggle.cy.ts-1763356119365.log",
+            "theme-toggle-theme-toggle.cy.ts-1763390586907.log",
+            "theme-toggle-theme-toggle.cy.ts-1763396548268.log",
+            "theme-toggle-theme-toggle.cy.ts-1763397666296.log"
+          ]
+        },
+        {
+          "name": "Canvas Operations",
+          "pattern": "drop-canvas-*.log, localhost-*.log",
+          "count": 50,
+          "description": "Canvas creation, drag/drop, resize operations on localhost"
+        },
+        {
+          "name": "Plugin Startup",
+          "pattern": "startup-plugins-*.log",
+          "count": 8,
+          "description": "Plugin initialization and lifecycle tests"
+        }
+      ],
+      "timeRange": {
+        "earliest": "2025-10-07T15:59:24Z",
+        "latest": "2025-11-23T16:09:39Z"
+      },
+      "totalEvents": 3200,
+      "averageEventsPerLog": 39
+    }
+  },
+  "componentMapForRenderxWeb": {
+    "canvasComponent": {
+      "packageName": "@renderx-plugins/canvas-component",
+      "sourceDir": "packages/canvas-component",
+      "relatedHandlers": [
+        "loadLogFiles",
+        "extractTelemetryEvents",
+        "detectPerformanceAnomalies"
+      ],
+      "keyInteractionTypes": [
+        "component-resize",
+        "canvas-create",
+        "canvas-drop",
+        "canvas-drag"
+      ],
+      "logPatterns": [
+        "component-resize-*.log",
+        "drop-canvas-*.log",
+        "localhost-*.log"
+      ],
+      "criticalServices": [
+        "ResizeObserver (component lifecycle)",
+        "EventEmitter (interaction tracking)",
+        "CanvasRenderer (visual updates)"
+      ],
+      "anomalyRisks": [
+        "Performance: Resize event throttling missing → latency spike",
+        "Behavioral: Canvas creation surge under concurrent operations",
+        "Coverage: Drag-drop edge cases (snap-to-grid, boundaries)"
+      ]
+    },
+    "libraryComponent": {
+      "packageName": "@renderx-plugins/library-component",
+      "sourceDir": "packages/library-component",
+      "relatedHandlers": [
+        "extractTelemetryEvents",
+        "detectBehavioralAnomalies",
+        "detectCoverageAnomalies"
+      ],
+      "keyInteractionTypes": [
+        "library-drop",
+        "library-browse",
+        "library-search"
+      ],
+      "logPatterns": [
+        "library-drop-*.log",
+        "localhost-*.log"
+      ],
+      "criticalServices": [
+        "LibraryIndex (metadata loading)",
+        "DropZoneListener (drag-drop handling)",
+        "VariantResolver (component variants)"
+      ],
+      "anomalyRisks": [
+        "Performance: Library index loading time > 2s (baseline)",
+        "Behavioral: Variant resolution failures under concurrent requests",
+        "Coverage: Unsupported component types missing error handling"
+      ]
+    },
+    "headerComponent": {
+      "packageName": "@renderx-plugins/header",
+      "sourceDir": "packages/header",
+      "relatedHandlers": [
+        "extractTelemetryEvents",
+        "detectPerformanceAnomalies"
+      ],
+      "keyInteractionTypes": [
+        "navigation",
+        "search",
+        "toolbar-action"
+      ],
+      "logPatterns": [
+        "localhost-*.log",
+        "startup-plugins-*.log"
+      ],
+      "criticalServices": [
+        "NavigationRouter (route changes)",
+        "SearchEngine (full-text search)",
+        "ToolbarStateManager (toolbar state sync)"
+      ],
+      "anomalyRisks": [
+        "Performance: Navigation latency during library load",
+        "Behavioral: Search results cache invalidation issues"
+      ]
+    },
+    "controlPanel": {
+      "packageName": "@renderx-plugins/control-panel",
+      "sourceDir": "packages/control-panel",
+      "relatedHandlers": [
+        "extractTelemetryEvents",
+        "detectBehavioralAnomalies",
+        "detectCoverageAnomalies"
+      ],
+      "keyInteractionTypes": [
+        "panel-open",
+        "property-edit",
+        "settings-apply"
+      ],
+      "logPatterns": [
+        "localhost-*.log"
+      ],
+      "criticalServices": [
+        "PropertyEditor (real-time property updates)",
+        "StateManager (panel state persistence)",
+        "EventDispatcher (property change events)"
+      ],
+      "anomalyRisks": [
+        "Performance: Property binding updates lag with many components",
+        "Behavioral: State sync failures between panel and canvas",
+        "Coverage: Nested component property editing edge cases"
+      ]
+    },
+    "themeComponent": {
+      "packageName": "@renderx-plugins/theme (built into header)",
+      "sourceDir": "packages/header/symphonies/ui",
+      "relatedHandlers": [
+        "extractTelemetryEvents",
+        "detectBehavioralAnomalies"
+      ],
+      "keyInteractionTypes": [
+        "theme-toggle",
+        "theme-apply",
+        "theme-persist"
+      ],
+      "logPatterns": [
+        "theme-toggle-*.log",
+        "localhost-*.log"
+      ],
+      "criticalServices": [
+        "ThemeEngine (CSS variable injection)",
+        "PersistenceManager (theme storage)",
+        "DOMUpdater (style application)"
+      ],
+      "anomalyRisks": [
+        "Performance: CSS repaints during theme transitions",
+        "Behavioral: Theme persistence failures across sessions",
+        "Coverage: Dark mode edge cases (high contrast, reduced motion)"
+      ]
+    },
+    "hostSdk": {
+      "packageName": "@renderx-plugins/host-sdk",
+      "sourceDir": "packages/host-sdk",
+      "relatedHandlers": [
+        "loadLogFiles",
+        "extractTelemetryEvents"
+      ],
+      "keyInteractionTypes": [
+        "plugin-load",
+        "plugin-init",
+        "host-communication"
+      ],
+      "logPatterns": [
+        "startup-plugins-*.log",
+        "localhost-*.log"
+      ],
+      "criticalServices": [
+        "PluginLoader (dynamic imports)",
+        "HostBridge (cross-origin communication)",
+        "LifecycleManager (mount/unmount)"
+      ],
+      "anomalyRisks": [
+        "Performance: Plugin initialization time > baseline (startup slowdown)",
+        "Behavioral: Host communication timeouts under high load",
+        "Coverage: Missing plugin error fallback handling"
+      ]
+    }
+  },
+  "mappingStrategy": {
+    "fromLogToComponent": [
+      "1. Identify log file pattern (e.g., 'component-resize-*.log')",
+      "2. Look up in componentMapForRenderxWeb.*.logPatterns",
+      "3. Find packageName and sourceDir",
+      "4. Check criticalServices for performance bottlenecks",
+      "5. Review anomalyRisks for known issues"
+    ],
+    "fromAnomalyToComponent": [
+      "1. Find anomaly in anomalies.json (handler name: e.g., 'extractTelemetryEvents')",
+      "2. Search componentMapForRenderxWeb for relatedHandlers containing that handler",
+      "3. Found packages: canvas-component, library-component, header, etc.",
+      "4. Cross-reference with logPatterns to see which test category likely produced the issue",
+      "5. Drill into sourceDir to locate problematic code"
+    ],
+    "priorityAssessment": [
+      "Critical: Anomalies in canvasComponent or hostSdk (core functionality)",
+      "High: Library/theme/control-panel issues (user-facing features)",
+      "Medium: Performance anomalies in non-critical paths",
+      "Low: Behavioral anomalies with workarounds available"
+    ]
+  },
+  "productionDiagnosisWorkflow": {
+    "step1_collectLogs": "Logs already collected in .logs/ folder (82 files from renderx-web tests)",
+    "step2_parseAndAnomatize": "Run demo: npm run demo:output:enhanced → surfaces 11 anomalies",
+    "step3_mapToComponents": "Use this file to map anomaly handlers to renderx-web packages",
+    "step4_prioritizeByComponent": "Focus on canvasComponent + hostSdk anomalies first (core systems)",
+    "step5_drilldownUsingCsv": "npm run demo:output:csv → import into Excel → filter by component package",
+    "step6_implementFixes": "Edit packages/[package-name]/src/... per diagnosis recommendations",
+    "step7_validateImpact": "Re-run tests → collect new logs → verify anomaly count reduced"
+  },
+  "nextSteps": [
+    "1. Run: npm run demo:output:enhanced → see which components are affected",
+    "2. Cross-reference anomalies with componentMapForRenderxWeb",
+    "3. Prioritize: canvasComponent (5 anomalies) > hostSdk (2) > library (1) > header (1) > control-panel (1) > theme (1)",
+    "4. For each component, review sourceDir paths to locate code needing optimization",
+    "5. Use diagnosis-results.json recommendations to guide implementation fixes",
+    "6. Measure impact: baseline before/after fix implementation"
+  ]
+}

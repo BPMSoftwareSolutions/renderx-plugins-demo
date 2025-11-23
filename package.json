@@ -94,7 +94,8 @@
     "compute:benefit:scores": "node scripts/compute-benefit-scores.js",
     "demo:output:enhanced": "node scripts/demo-output-enhanced.js",
     "demo:output:csv": "node scripts/demo-output-enhanced.js --csv",
-    "evaluate:slos": "node scripts/evaluate-slos.js"
+    "evaluate:slos": "node scripts/evaluate-slos.js",
+    "diagnose:renderx-web": "node scripts/renderx-web-diagnostics.js"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",
