@@ -104,8 +104,14 @@ describe('Analyze Root Cause (self-healing-diagnosis-analyze-symphony minimal sl
     expect(true).toBe(true);
   });
   it('storeDiagnosis - writes file and returns envelope', () => {
-    const slice = { performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }], generatedAt: new Date().toISOString(), sequenceId: 'diag-seq-1' };
-    // @ts-ignore partial PerformanceIssue
+    const slice = {
+      performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }],
+      behavioralIssues: [],
+      coverageIssues: [],
+      errorIssues: [],
+      generatedAt: new Date().toISOString(),
+      sequenceId: 'diag-seq-1'
+    };
     const evt = storeDiagnosis(slice as any);
     expect(evt.context.stored).toBe(true);
     expect(evt.context.filePath.endsWith('diagnosis-results.json')).toBe(true);
@@ -116,10 +122,19 @@ describe('Analyze Root Cause (self-healing-diagnosis-analyze-symphony minimal sl
     expect(true).toBe(true);
   });
   it('analyzeCompleted - summarizes slice', () => {
-    const slice = { performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }], generatedAt: new Date().toISOString(), sequenceId: 'diag-seq-1' };
-    // @ts-ignore partial PerformanceIssue
+    const slice = {
+      performanceIssues: [{ anomalyId: 'a1', severity: 'high', description: 'Latency spike' }],
+      behavioralIssues: [],
+      coverageIssues: [],
+      errorIssues: [],
+      generatedAt: new Date().toISOString(),
+      sequenceId: 'diag-seq-1'
+    };
     const evt = analyzeCompleted('diag-seq-1', slice as any);
     expect(evt.context.performanceIssueCount).toBe(1);
+    expect(evt.context.behavioralIssueCount).toBe(0);
+    expect(evt.context.coverageIssueCount).toBe(0);
+    expect(evt.context.errorIssueCount).toBe(0);
   });
   it('runDiagnosisAnalyze - end-to-end minimal slice', () => {
     const summary = runDiagnosisAnalyze({ sequenceId: 'diag-seq-e2e' });

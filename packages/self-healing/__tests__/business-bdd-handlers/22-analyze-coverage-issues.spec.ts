@@ -57,5 +57,4 @@ describe('Business BDD: analyzeCoverageIssues', () => {
       const mediumEscalated = issues.find((i: any) => i.coveragePercent < 75 && i.coveragePercent >= 55);
       expect(mediumEscalated?.severity).toMatch(/medium|high|critical/);
     });
-  });
 });
