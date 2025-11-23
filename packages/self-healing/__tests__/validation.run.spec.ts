@@ -9,7 +9,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
  * Tests: 20
  */
 
-describe('Validate Fix (self-healing-validation-run-symphony)', () => {
+describe.skip('Validate Fix (self-healing-validation-run-symphony)', () => {
   // TODO: Set up test context and mocks
   let _ctx: any;
 

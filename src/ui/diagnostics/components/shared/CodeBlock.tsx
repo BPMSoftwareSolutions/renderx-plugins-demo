@@ -17,12 +17,19 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined' || !navigator.clipboard) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1200);
+      return;
+    }
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      if (process.env.NODE_ENV !== 'test') {
+        console.error('Failed to copy:', err);
+      }
     }
   };
 

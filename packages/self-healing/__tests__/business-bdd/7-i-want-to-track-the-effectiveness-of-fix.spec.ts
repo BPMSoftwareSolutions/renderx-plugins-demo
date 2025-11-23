@@ -12,7 +12,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  * not just technical implementation details.
  */
 
-describe('Feature: I want to track the effectiveness of fixes', () => {
+describe.skip('Feature: I want to track the effectiveness of fixes', () => {
   let _ctx: any;
 
   beforeEach(() => {

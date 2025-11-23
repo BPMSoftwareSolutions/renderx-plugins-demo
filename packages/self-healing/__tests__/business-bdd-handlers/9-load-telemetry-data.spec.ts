@@ -18,7 +18,7 @@ import { TelemetryMetrics } from '../../src/types';
  */
 
 describe('Business BDD: loadTelemetryData', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const baseline: TelemetryMetrics = {
@@ -37,7 +37,7 @@ describe('Business BDD: loadTelemetryData', () => {
       timestamp: new Date().toISOString(),
       totalEvents: 120
     };
-  _ctx = {
+  ctx = {
       handler: loadTelemetryData,
       bus: createEventBus(),
       input: { current, baselines: baseline },
@@ -48,14 +48,14 @@ describe('Business BDD: loadTelemetryData', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Load telemetry metrics to compare against baselines', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.baselines.totalEvents).toBe(100);
-      expect(ctx.input.current.totalEvents).toBe(120);
+  expect(ctx.input.baselines.totalEvents).toBe(100);
+  expect(ctx.input.current.totalEvents).toBe(120);
 
       // WHEN (Action - User/System Action)
       // - data loading handler executes

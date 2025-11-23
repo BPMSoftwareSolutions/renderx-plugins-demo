@@ -19,14 +19,14 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: parseTelemetryCompleted', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [
       { timestamp: new Date().toISOString(), handler: 'A', event: 'beat-completed' }
     ];
     const metricsEvt = aggregateTelemetryMetrics(events);
-  _ctx = {
+  ctx = {
       handler: parseTelemetryCompleted,
       bus: createEventBus(),
       input: { sequenceId: 'telemetry-seq-xyz', metrics: metricsEvt.context.metrics },
@@ -37,13 +37,13 @@ describe('Business BDD: parseTelemetryCompleted', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Notify system that telemetry parsing is complete', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.metrics.totalEvents).toBe(1);
+  expect(ctx.input.metrics.totalEvents).toBe(1);
 
       // WHEN (Action - User/System Action)
       // - completion handler executes

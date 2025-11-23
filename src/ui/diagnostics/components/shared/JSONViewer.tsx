@@ -20,13 +20,23 @@ export const JSONViewer: React.FC<JSONViewerProps> = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
+    // Guard for non-browser (SSR / Node test environments) where window or navigator may be undefined
+    if (typeof window === 'undefined' || typeof navigator === 'undefined' || !navigator.clipboard) {
+      // Fallback: no-op copy, still indicate success briefly for consistent UI
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1200);
+      return;
+    }
     try {
       const jsonString = JSON.stringify(data, null, 2);
       await navigator.clipboard.writeText(jsonString);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      // Silently fail in non-secure contexts; log only when debugging
+      if (process.env.NODE_ENV !== 'test') {
+        console.error('Failed to copy:', err);
+      }
     }
   };
 

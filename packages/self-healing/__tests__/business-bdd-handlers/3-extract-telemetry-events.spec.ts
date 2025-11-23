@@ -17,14 +17,14 @@ import { createEventBus } from '../support/eventBus';
  */
 
 describe('Business BDD: extractTelemetryEvents', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const rawLogs = [
       { path: 'app-01.log', content: 'beat-started handler=A time=10ms\nbeat-completed handler=A time=12ms' },
       { path: 'app-02.log', content: 'beat-started handler=B time=30ms\nbeat-completed handler=B time=35ms' }
     ];
-  _ctx = {
+  ctx = {
       handler: extractTelemetryEvents,
       bus: createEventBus(),
       input: rawLogs,
@@ -35,13 +35,13 @@ describe('Business BDD: extractTelemetryEvents', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Extract beat execution events to understand handler performance', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.length).toBe(2);
+  expect(ctx.input.length).toBe(2);
 
       // WHEN (Action - User/System Action)
       // - event extraction handler processes logs

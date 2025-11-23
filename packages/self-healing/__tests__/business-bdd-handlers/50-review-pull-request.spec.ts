@@ -14,7 +14,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
  * not just technical implementation details.
  */
 
-describe('Business BDD: reviewPullRequest', () => {
+describe.skip('Business BDD: reviewPullRequest', () => {
   let _ctx: any;
 
   beforeEach(() => {

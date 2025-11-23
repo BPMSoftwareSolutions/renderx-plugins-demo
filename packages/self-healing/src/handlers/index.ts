@@ -29,6 +29,13 @@ export * from './telemetry/run.telemetry.parse';
 export * from './anomaly/detect.requested';
 export * from './anomaly/load.telemetry';
 export * from './anomaly/detect.performance';
+export * from './anomaly/detect.behavioral';
+export * from './anomaly/detect.coverage';
+export * from './anomaly/detect.errors';
+export * from './anomaly/aggregate.anomalies';
+export * from './anomaly/store.anomalies';
+export * from './anomaly/detect.completed';
+export * from './anomaly/run.anomaly.detect';
 
 // NOTE: Additional anomaly handlers (behavioral, coverage, errors, aggregate, store, completed)
 // are not yet implemented. They will be added here when their source files exist.

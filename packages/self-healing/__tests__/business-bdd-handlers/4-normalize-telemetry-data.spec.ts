@@ -18,7 +18,7 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: normalizeTelemetryData', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [
@@ -26,7 +26,7 @@ describe('Business BDD: normalizeTelemetryData', () => {
       { timestamp: '2025-11-22T13:00:05Z', handler: 'A', event: 'beat-completed', context: { t: 5 } },
       { timestamp: 'Nov 22 2025 13:00:10', handler: 'B', event: 'beat-started', context: { t: 10 } }
     ];
-  _ctx = {
+  ctx = {
       handler: normalizeTelemetryData,
       bus: createEventBus(),
       input: events,
@@ -37,13 +37,13 @@ describe('Business BDD: normalizeTelemetryData', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Normalize timestamps across different log sources', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.length).toBe(3);
+  expect(ctx.input.length).toBe(3);
 
       // WHEN (Action - User/System Action)
       // - normalization handler processes events

@@ -19,7 +19,7 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: storeTelemetryDatabase', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [
@@ -27,7 +27,7 @@ describe('Business BDD: storeTelemetryDatabase', () => {
       { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed' }
     ];
     const agg = aggregateTelemetryMetrics(events);
-  _ctx = {
+  ctx = {
       handler: storeTelemetryDatabase,
       bus: createEventBus(),
       input: agg.context.metrics,
@@ -38,13 +38,13 @@ describe('Business BDD: storeTelemetryDatabase', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Store aggregated metrics for historical analysis', () => {
     it('should achieve the desired business outcome', async () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.totalEvents).toBe(2);
+  expect(ctx.input.totalEvents).toBe(2);
 
       // WHEN (Action - User/System Action)
       // - storage handler persists metrics

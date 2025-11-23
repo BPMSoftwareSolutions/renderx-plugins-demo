@@ -16,14 +16,14 @@ import { parseTelemetryRequested } from '../../src/handlers/telemetry/parse.requ
  */
 
 describe('Business BDD: parseTelemetryRequested', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // GIVEN realistic production investigation context
     // Outage suspected: elevated latency on service 'api-gateway'
     const now = new Date();
     const sequenceId = `telemetry-parse-${now.toISOString()}`;
-  _ctx = {
+  ctx = {
       handler: parseTelemetryRequested,
       mocks: {
         logger: vi.fn(),
@@ -45,14 +45,14 @@ describe('Business BDD: parseTelemetryRequested', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: User requests telemetry parsing to investigate recent outage', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN production logs available & outage suspected (preconditions already in beforeEach)
-      expect(ctx.input.outageSuspected).toBe(true);
-      expect(ctx.input.logPaths.length).toBeGreaterThan(0);
+  expect(ctx.input.outageSuspected).toBe(true);
+  expect(ctx.input.logPaths.length).toBeGreaterThan(0);
 
       // WHEN user triggers telemetry parsing
       ctx.output = ctx.handler(ctx.input.sequenceId);

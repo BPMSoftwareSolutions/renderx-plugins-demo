@@ -62,9 +62,9 @@ describe('Business BDD: loadLogFiles', () => {
 
       // THEN business outcomes
       expect(ctx.output.event).toBe('telemetry.load.logs');
-      const { discoveredCount, loadedCount, skippedCount, files } = ctx.output.context;
-      // Discovered includes all log files + missing path
-      expect(discoveredCount).toBe(files.length + skippedCount);
+  const { discoveredCount, loadedCount, skippedCount, files } = ctx.output.context;
+  // Discovered = real files + missing path (skipped)
+  expect(discoveredCount).toBe(loadedCount + skippedCount);
       // Loaded count equals number of real files (4)
       expect(loadedCount).toBe(4);
       // Skipped count should be 1 (missing path)

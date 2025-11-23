@@ -17,11 +17,11 @@ import { createEventBus } from '../support/eventBus';
  */
 
 describe('Business BDD: detectAnomaliesRequested', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const sequenceId = `anomaly-detect-${Date.now()}`;
-  _ctx = {
+  ctx = {
       handler: detectAnomaliesRequested,
       bus: createEventBus(),
       input: { sequenceId, metricsAvailable: true },
@@ -32,13 +32,13 @@ describe('Business BDD: detectAnomaliesRequested', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: User requests anomaly detection after parsing telemetry', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.metricsAvailable).toBe(true);
+  expect(ctx.input.metricsAvailable).toBe(true);
 
       // WHEN (Action - User/System Action)
       // - user triggers anomaly detection

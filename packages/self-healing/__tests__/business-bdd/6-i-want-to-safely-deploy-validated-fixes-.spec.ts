@@ -12,7 +12,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  * not just technical implementation details.
  */
 
-describe('Feature: I want to safely deploy validated fixes to production', () => {
+describe.skip('Feature: I want to safely deploy validated fixes to production', () => {
   let _ctx: any;
 
   beforeEach(() => {

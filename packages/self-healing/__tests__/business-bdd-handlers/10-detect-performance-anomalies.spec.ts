@@ -18,7 +18,7 @@ import { TelemetryMetrics } from '../../src/types';
  */
 
 describe('Business BDD: detectPerformanceAnomalies', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const baseline: TelemetryMetrics = {
@@ -39,7 +39,7 @@ describe('Business BDD: detectPerformanceAnomalies', () => {
       timestamp: new Date().toISOString(),
       totalEvents: 370
     };
-  _ctx = {
+  ctx = {
       handler: detectPerformanceAnomalies,
       bus: createEventBus(),
       input: { current, baselines: baseline },
@@ -50,14 +50,14 @@ describe('Business BDD: detectPerformanceAnomalies', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Detect when handler latency exceeds baseline by 2x', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.baselines.handlers.A.avgTime).toBe(100);
-      expect(ctx.input.current.handlers.A.avgTime).toBe(250);
+  expect(ctx.input.baselines.handlers.A.avgTime).toBe(100);
+  expect(ctx.input.current.handlers.A.avgTime).toBe(250);
 
       // WHEN (Action - User/System Action)
       // - performance anomaly detection executes

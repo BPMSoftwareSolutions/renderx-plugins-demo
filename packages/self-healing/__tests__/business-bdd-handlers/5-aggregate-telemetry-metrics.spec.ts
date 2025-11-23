@@ -18,7 +18,7 @@ import { TelemetryEvent } from '../../src/types';
  */
 
 describe('Business BDD: aggregateTelemetryMetrics', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // Simulated latency events for handlers A, B
@@ -28,7 +28,7 @@ describe('Business BDD: aggregateTelemetryMetrics', () => {
       { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed', duration: 200 },
       { timestamp: new Date().toISOString(), handler: 'B', event: 'beat-completed', duration: 250 }
     ];
-  _ctx = {
+  ctx = {
       handler: aggregateTelemetryMetrics,
       bus: createEventBus(),
       input: events,
@@ -39,13 +39,13 @@ describe('Business BDD: aggregateTelemetryMetrics', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+  ctx = null;
   });
 
   describe('Scenario: Calculate p95 and p99 latencies to identify performance issues', () => {
     it('should achieve the desired business outcome', () => {
       // GIVEN (Preconditions - Business Context)
-      expect(ctx.input.length).toBe(4);
+  expect(ctx.input.length).toBe(4);
 
       // WHEN (Action - User/System Action)
       // - metrics aggregation handler processes events

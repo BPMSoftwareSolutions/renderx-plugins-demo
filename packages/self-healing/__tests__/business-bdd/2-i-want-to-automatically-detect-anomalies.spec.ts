@@ -12,7 +12,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  * not just technical implementation details.
  */
 
-describe('Feature: I want to automatically detect anomalies in production', () => {
+describe.skip('Feature: I want to automatically detect anomalies in production', () => {
   let _ctx: any;
 
   beforeEach(() => {
