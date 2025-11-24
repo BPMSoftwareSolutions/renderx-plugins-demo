@@ -17,6 +17,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import crypto from 'crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -156,7 +157,6 @@ class ContextRemountingSystem {
   }
 
   hashString(str){
-    const crypto = require('crypto');
     return crypto.createHash('sha256').update(str).digest('hex');
   }
 

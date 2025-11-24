@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-24T05:15:00.000Z",
+  "sourceDocument": "SHAPE_EVOLUTION_PLAN.json",
+  "rootGoal": "Implement telemetry-driven Feature Shape governance across eight evolutionary capabilities.",
+  "northStar": {
+    "why": "Telemetry-driven Feature Shape governance",
+    "what": "Eight evolutionary capabilities from persistence to multi-feature correlation",
+    "how": "Incremental instrumentation with deterministic hashing and governance-as-code",
+    "when": "4 sprints (8 weeks) with fast feedback loops (<1 min local validation)",
+    "who": "RenderX agents, Valence orchestration, OgraphX analysis"
+  },
+  "principles": [
+    "Incremental instrumentation (no blocking refactors)",
+    "Deterministic hashing with explicit evolution annotation",
+    "Governance-as-code (budgets, contracts, evolutions, maps)",
+    "Fast feedback (<1 min local validation)",
+    "Composable telemetry layers (persistence → diffing → budgets → correlation)"
+  ],
+  "eightEvolutions": [
+    {
+      "id": 1,
+      "name": "Shape Persistence & History",
+      "sprint": "sprint-1",
+      "goal": "Persist per-spec telemetry with rolling history (N=10)"
+    },
+    {
+      "id": 2,
+      "name": "Shape Diffing",
+      "sprint": "sprint-1",
+      "goal": "Introduce stable shapeHash and evolution annotation flow"
+    },
+    {
+      "id": 3,
+      "name": "Confidence & Coverage Coupling",
+      "sprint": "sprint-2",
+      "goal": "Attach coverageId to telemetry records"
+    },
+    {
+      "id": 4,
+      "name": "Shape Budget / SLO Overlay",
+      "sprint": "sprint-3",
+      "goal": "Define and enforce shape budgets (beats, duration, batonDiff)"
+    },
+    {
+      "id": 5,
+      "name": "Visual Telemetry Map",
+      "sprint": "sprint-3",
+      "goal": "Generate SVG telemetry map with node health coloring"
+    },
+    {
+      "id": 6,
+      "name": "Versioned Shape Contracts",
+      "sprint": "sprint-4",
+      "goal": "Introduce versioned feature shape contracts"
+    },
+    {
+      "id": 7,
+      "name": "Mutation Localization",
+      "sprint": "sprint-4",
+      "goal": "Add domain mutation localization"
+    },
+    {
+      "id": 8,
+      "name": "Orchestrated Multi-Feature Correlation",
+      "sprint": "sprint-4",
+      "goal": "Build composite correlation artifacts across chained features"
+    }
+  ],
+  "governanceArtifacts": {
+    "required": [
+      "shape-evolutions.json",
+      "shape.budgets.json",
+      "feature-shape.contract.json",
+      "contract-changes.json"
+    ],
+    "telemetryFields": {
+      "required": ["feature", "event", "beats", "status", "correlationId", "shapeHash"],
+      "optional": ["coverageId", "domains", "budget", "composite"]
+    }
+  },
+  "metrics": {
+    "telemetryCoverage": "% of Business BDD specs emitting valid shape telemetry",
+    "shapeStability": "# of unannotated shape changes caught per sprint",
+    "budgetHealth": "% of features within defined budgets",
+    "correlationDepth": "Avg features per composite chain"
+  },
+  "contextBoundaries": {
+    "inScope": [
+      "packages/self-healing/__tests__/business-bdd-handlers",
+      "telemetry/*",
+      "scripts/shape-*.js",
+      "scripts/ci-shape-verify.js",
+      "scripts/generate-telemetry-map.js",
+      "scripts/build-composite-shapes.js",
+      "scripts/validate-shape-contracts.js",
+      ".generated/telemetry/*",
+      ".generated/coverage/*",
+      "composites/*"
+    ],
+    "outOfScope": [
+      "packages/*/demo/*",
+      "packages/*/examples/*",
+      "index.html",
+      "container files"
+    ],
+    "governanceEnforcement": "SHAPE_EVOLUTION_PLAN.json is source of truth"
+  },
+  "agentGuidance": {
+    "beforeAction": [
+      "Load this root-context.json",
+      "Verify current sprint alignment",
+      "Check governance artifact requirements",
+      "Confirm telemetry field compliance",
+      "Validate context boundaries"
+    ],
+    "duringAction": [
+      "Emit telemetry with required fields",
+      "Annotate shape changes in shape-evolutions.json",
+      "Persist telemetry to .generated/telemetry/",
+      "Run shape-diff-check.js before commit"
+    ],
+    "afterAction": [
+      "Verify telemetry persisted",
+      "Check budget compliance",
+      "Update shape-evolutions.json if needed",
+      "Generate telemetry map if in sprint-3+"
+    ]
+  },
+  "successCriteria": {
+    "sprint1": "Running test suite produces per-spec telemetry directories and index",
+    "sprint2": "CI fails on unannotated shape hash change",
+    "sprint3": "Budget breach triggers anomaly and node color change",
+    "sprint4": "Contract violations fail CI"
+  }
+}
+
