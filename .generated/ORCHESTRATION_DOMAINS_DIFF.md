@@ -1,6 +1,6 @@
 # Orchestration Domains Structural Diff
 
-Generated At: 2025-11-24T18:40:30.231Z
+Generated At: 2025-11-24T19:41:26.667Z
 
 ## Summary
 

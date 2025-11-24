@@ -8,4 +8,6 @@
 | 0 -> 1 | added | 60 | — | — |
 | 0 -> 1 | changed | 0 | — | — |
 | 0 -> 1 | canonicalStability | — | true | — |
+| 0 -> 1 | handlerCoveragePercent | — | 0 | — |
 | 1 -> 2 | canonicalStability | true | — | — |
+| 1 -> 2 | handlerCoveragePercent | 0 | — | — |

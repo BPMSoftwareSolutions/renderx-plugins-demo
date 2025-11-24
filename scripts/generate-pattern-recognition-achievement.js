@@ -1,13 +1,35 @@
-<!-- AUTO-GENERATED -->
+#!/usr/bin/env node
+
+/**
+ * Generate PATTERN_RECOGNITION_ACHIEVEMENT.md
+ * 
+ * Purpose: Documents the discovery and implementation of the JSON Authority pattern
+ * Input: orchestration-audit-system-project-plan.json (governanceDocumentation.framework.patternRecognition)
+ * Output: PATTERN_RECOGNITION_ACHIEVEMENT.md
+ */
+
+import * as fs from 'fs';
+import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const PLAN_PATH = path.join(__dirname, '../orchestration-audit-system-project-plan.json');
+const OUTPUT_PATH = path.join(__dirname, '../PATTERN_RECOGNITION_ACHIEVEMENT.md');
+
+function generatePatternRecognition() {
+  const plan = JSON.parse(fs.readFileSync(PLAN_PATH, 'utf-8'));
+  const recognition = plan.governanceDocumentation.framework.patternRecognition;
+
+  let md = `<!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.framework.patternRecognition) -->
-<!-- Generated: 2025-11-24T19:41:46.469Z -->
+<!-- Generated: ${new Date().toISOString()} -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Pattern Recognition Achievement: JSON Authority → Auto-Generated Markdown
 
-**Date**: 2025-01-09  
+**Date**: ${recognition.date}  
 **Achievement**: Architectural Pattern Recognition & Governance Codification  
-**Status**: ✅ COMPLETE
+**Status**: ✅ ${recognition.status.toUpperCase()}
 
 ---
 
@@ -17,17 +39,13 @@ You identified and articulated the **foundational architecture pattern** that go
 
 ### The Core Principle
 
-> **"JSON is Authority, Markdown is Reflection"**
+> **"${recognition.coreDiscovery}"**
 
-Not just a coding convention—it's a governance model that prevents documentation/architecture drift
+${recognition.whatWasDiscovered.description}
 
 #### Pattern Guarantees
 
-- Single Source of Truth: One JSON file per system
-- Deterministic Generation: Same JSON → Same markdown (every time)
-- No Manual Editing: Developers cannot hand-edit auto-generated docs
-- Automatic Sync: Every build regenerates all documentation
-- Drift Prevention: Impossible to have stale documentation
+${recognition.whatWasDiscovered.guarantees.map(g => `- ${g}`).join('\n')}
 
 ---
 
@@ -37,40 +55,31 @@ Not just a coding convention—it's a governance model that prevents documentati
 
 The pattern was already implemented in these systems:
 
-1. orchestration-domains.json → Auto-generated markdown
-2. Orchestration audit system → Auto-generated docs
-3. Sprint reports → Auto-generated from project plan
-4. Release notes → Auto-generated from project plan
-5. Compliance reports → Auto-generated from project plan
-6. Provenance index → Auto-generated from project plan
-7. Telemetry matrix → Auto-generated from JSON
+${recognition.preExistingImplementations.map((impl, idx) => `${idx + 1}. ${impl}`).join('\n')}
 
 **Lesson**: This pattern was discovered through examination of the context tree which explicitly stated the principle.
 
 ### What You Recognized
 
-Pattern already existed; needed codification as governance rules and extension to ALL documentation
+${recognition.recognition}
 
 ### What You Built
 
-4 manually-created documents → 4 auto-generated documents
+${recognition.telemetryDocConversion.before} → ${recognition.telemetryDocConversion.after}
 
 | Document | Status |
 |----------|--------|
-| DEMO_TELEMETRY_INSTRUMENTATION.md | ✅ Auto-Generated |
-| TELEMETRY_GOVERNANCE_QUICKSTART.md | ✅ Auto-Generated |
-| TELEMETRY_GOVERNANCE_VERIFICATION.md | ✅ Auto-Generated |
-| TELEMETRY_GOVERNANCE_COMPLETE.md | ✅ Auto-Generated |
+${recognition.telemetryDocConversion.documents.map(doc => `| ${doc} | ✅ Auto-Generated |`).join('\n')}
 
-**Result**: Zero documentation drift possible
+**Result**: ${recognition.telemetryDocConversion.result}
 
 ---
 
 ## The Governance Framework Built
 
 ### 1. JSON Authority Structure
-Extended `orchestration-audit-system-project-plan.json` with:
-```json
+Extended \`orchestration-audit-system-project-plan.json\` with:
+\`\`\`json
 {
   "governanceDocumentation": {
     "rules": [ /* 4 governance rules */ ],
@@ -78,18 +87,18 @@ Extended `orchestration-audit-system-project-plan.json` with:
     "framework": { /* authority for framework docs */ }
   }
 }
-```
+\`\`\`
 
 ### 2. Generation Scripts
 Multiple scripts that read JSON and produce markdown:
 - Scripts read from JSON authority
 - Format content as markdown
-- Add `<!-- AUTO-GENERATED -->` headers
-- Add `<!-- DO NOT EDIT -->` footers
+- Add \`<!-- AUTO-GENERATED -->\` headers
+- Add \`<!-- DO NOT EDIT -->\` footers
 - Log generation confirmations
 
 ### 3. Pipeline Integration
-Added to `pre:manifests` pipeline (runs on every `npm run build`):
+Added to \`pre:manifests\` pipeline (runs on every \`npm run build\`):
 - Step 41: Telemetry instrumentation
 - Step 42: Telemetry quickstart
 - Step 43: Telemetry verification
@@ -98,7 +107,7 @@ Added to `pre:manifests` pipeline (runs on every `npm run build`):
 - Step 46-48: Additional framework documents
 
 ### 4. npm Scripts
-Added to `package.json` for manual regeneration if needed
+Added to \`package.json\` for manual regeneration if needed
 
 ### 5. Governance Rules
 Codified 4 critical rules in governance framework:
@@ -119,13 +128,20 @@ Created enforcement mechanisms:
 
 **Critical Pattern Achievement**: This document itself demonstrates compliance:
 - ✅ Auto-generated from JSON authority
-- ✅ Marked with `<!-- AUTO-GENERATED -->` header
+- ✅ Marked with \`<!-- AUTO-GENERATED -->\` header
 - ✅ Cannot be manually edited without editing JSON source
 - ✅ Regenerated on every build (prevents stale documentation)
 - ✅ Impossible for this document to drift from governance rules
 
 ---
 
-**Achievement**: Drift Prevention: Impossible to have stale documentation for all documentation.
+**Achievement**: ${recognition.whatWasDiscovered.guarantees[4]} for all documentation.
 
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
+`;
+
+  fs.writeFileSync(OUTPUT_PATH, md, 'utf-8');
+  console.log(`✅ Generated: ${OUTPUT_PATH}`);
+}
+
+generatePatternRecognition();
