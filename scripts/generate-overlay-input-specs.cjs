@@ -35,13 +35,21 @@ function discoverAllPaths(baseDir) {
 function buildBddIndex(packagesDir) {
   const allPaths = discoverAllPaths(packagesDir);
   
-  // Patterns for BDD specs vs handlers
+  // Patterns for BDD specs (JSON and feature files)
   const specPatterns = [/business-bdd-specifications\.json$/i, /\.feature$/i];
-  const handlerPatterns = [/business-bdd-handlers/i, /__tests__[\\/]business-bdd[\\/]/i];
+  
+  // Handler patterns: files in business-bdd-handlers OR business-bdd directories
+  // but EXCLUDE spec JSON files (only match .ts, .js, .spec.ts handler files)
+  const handlerDirPatterns = [/business-bdd-handlers/i, /__tests__[\\/]business-bdd[\\/]/i];
+  const handlerFileExtensions = /\.(ts|js|spec\.ts|spec\.js)$/i;
   
   return {
     specCandidates: allPaths.filter(p => specPatterns.some(rx => rx.test(p))),
-    handlerCandidates: allPaths.filter(p => handlerPatterns.some(rx => rx.test(p)))
+    handlerCandidates: allPaths.filter(p => 
+      handlerDirPatterns.some(rx => rx.test(p)) && 
+      handlerFileExtensions.test(p) &&
+      !specPatterns.some(rx => rx.test(p)) // Exclude spec files
+    )
   };
 }
 

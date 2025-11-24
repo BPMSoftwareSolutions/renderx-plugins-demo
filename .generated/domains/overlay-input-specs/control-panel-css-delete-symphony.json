@@ -7,7 +7,9 @@
   "handlers": [],
   "topics": [],
   "tests": [],
-  "businessBddSpecs": [],
+  "businessBddSpecs": [
+    "packages/control-panel/__tests__/business-bdd/control-panel-business-bdd-specifications.json"
+  ],
   "businessBddHandlers": [],
   "featureSequences": [],
   "gaps": {
@@ -29,6 +31,6 @@
       "irSequences": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-sequences.json",
       "irHandlerTests": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handler-tests.json"
     },
-    "generatedAt": "2025-11-24T23:15:43.899Z"
+    "generatedAt": "2025-11-24T23:20:19.481Z"
   }
 }

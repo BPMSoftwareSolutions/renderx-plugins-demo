@@ -1,0 +1,50 @@
+{
+  "generated_at": "2025-11-24T23:19:49.781Z",
+  "filesCreated": 7,
+  "files": [
+    {
+      "package": "canvas-component",
+      "path": "packages\\canvas-component\\__tests__\\business-bdd\\canvas-component-business-bdd-specifications.json",
+      "domains": 24,
+      "scenarios": 94
+    },
+    {
+      "package": "catalog",
+      "path": "packages\\catalog\\__tests__\\business-bdd\\catalog-business-bdd-specifications.json",
+      "domains": 5,
+      "scenarios": 15
+    },
+    {
+      "package": "canvas-line",
+      "path": "packages\\canvas-line\\__tests__\\business-bdd\\canvas-line-business-bdd-specifications.json",
+      "domains": 6,
+      "scenarios": 18
+    },
+    {
+      "package": "control-panel",
+      "path": "packages\\control-panel\\__tests__\\business-bdd\\control-panel-business-bdd-specifications.json",
+      "domains": 13,
+      "scenarios": 39
+    },
+    {
+      "package": "header-ui",
+      "path": "packages\\header-ui\\__tests__\\business-bdd\\header-ui-business-bdd-specifications.json",
+      "domains": 2,
+      "scenarios": 6
+    },
+    {
+      "package": "library",
+      "path": "packages\\library\\__tests__\\business-bdd\\library-business-bdd-specifications.json",
+      "domains": 4,
+      "scenarios": 12
+    },
+    {
+      "package": "real-estate-analyzer",
+      "path": "packages\\real-estate-analyzer\\__tests__\\business-bdd\\real-estate-analyzer-business-bdd-specifications.json",
+      "domains": 1,
+      "scenarios": 3
+    }
+  ],
+  "totalDomainsCovered": 55,
+  "totalScenarios": 187
+}

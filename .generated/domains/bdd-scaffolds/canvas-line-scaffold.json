@@ -1,0 +1,66 @@
+{
+  "package": "canvas-line",
+  "suggestedPath": "packages/canvas-line/__tests__/business-bdd/",
+  "domains": [
+    {
+      "id": "canvas-line-manip-end-symphony",
+      "score": 0
+    },
+    {
+      "id": "canvas-line-manip-move-symphony",
+      "score": 0
+    },
+    {
+      "id": "canvas-line-manip-start-symphony",
+      "score": 0
+    }
+  ],
+  "template": {
+    "specFile": "canvas-line-business-bdd-specifications.json",
+    "structure": {
+      "version": "1.0.0",
+      "package": "canvas-line",
+      "domains": [
+        {
+          "domainId": "canvas-line-manip-end-symphony",
+          "scenarios": [
+            {
+              "id": "canvas-line-manip-end-symphony-happy-path",
+              "name": "canvas line manip end symphony happy path",
+              "given": "the system is in a valid state",
+              "when": "the canvas-line-manip-end operation is triggered",
+              "then": "the operation completes successfully",
+              "priority": "high"
+            }
+          ]
+        },
+        {
+          "domainId": "canvas-line-manip-move-symphony",
+          "scenarios": [
+            {
+              "id": "canvas-line-manip-move-symphony-happy-path",
+              "name": "canvas line manip move symphony happy path",
+              "given": "the system is in a valid state",
+              "when": "the canvas-line-manip-move operation is triggered",
+              "then": "the operation completes successfully",
+              "priority": "high"
+            }
+          ]
+        },
+        {
+          "domainId": "canvas-line-manip-start-symphony",
+          "scenarios": [
+            {
+              "id": "canvas-line-manip-start-symphony-happy-path",
+              "name": "canvas line manip start symphony happy path",
+              "given": "the system is in a valid state",
+              "when": "the canvas-line-manip-start operation is triggered",
+              "then": "the operation completes successfully",
+              "priority": "high"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

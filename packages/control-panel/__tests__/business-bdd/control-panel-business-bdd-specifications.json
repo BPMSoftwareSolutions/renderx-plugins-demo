@@ -1,0 +1,669 @@
+{
+  "$schema": "../../../.generated/schemas/business-bdd-spec-schema.json",
+  "version": "1.0.0",
+  "package": "control-panel",
+  "generated_at": "2025-11-24T23:19:49.774Z",
+  "generator": "generate-bdd-spec-scaffolds.cjs",
+  "domains": [
+    {
+      "domainId": "control-panel-classes-add-symphony",
+      "domainName": "Control Panel Classes Add",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-classes-add-happy-path",
+          "name": "Control Panel Classes Add completes successfully",
+          "given": "the system is initialized and ready for Control Panel Classes Add operations",
+          "when": "a valid Control Panel Classes Add request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-classes-add-error-recovery",
+          "name": "Control Panel Classes Add handles failures gracefully",
+          "given": "the Control Panel Classes Add operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-classes-add-telemetry",
+          "name": "Control Panel Classes Add records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel Classes Add",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-classes-remove-symphony",
+      "domainName": "Control Panel Classes Remove",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-classes-remove-happy-path",
+          "name": "Control Panel Classes Remove completes successfully",
+          "given": "the system is initialized and ready for Control Panel Classes Remove operations",
+          "when": "a valid Control Panel Classes Remove request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-classes-remove-error-recovery",
+          "name": "Control Panel Classes Remove handles failures gracefully",
+          "given": "the Control Panel Classes Remove operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-classes-remove-telemetry",
+          "name": "Control Panel Classes Remove records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel Classes Remove",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-css-create-symphony",
+      "domainName": "Control Panel CSS Create",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-css-create-happy-path",
+          "name": "Control Panel CSS Create completes successfully",
+          "given": "the system is initialized and ready for Control Panel CSS Create operations",
+          "when": "a valid Control Panel CSS Create request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-css-create-error-recovery",
+          "name": "Control Panel CSS Create handles failures gracefully",
+          "given": "the Control Panel CSS Create operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-css-create-telemetry",
+          "name": "Control Panel CSS Create records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel CSS Create",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-css-delete-symphony",
+      "domainName": "Control Panel CSS Delete",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-css-delete-happy-path",
+          "name": "Control Panel CSS Delete completes successfully",
+          "given": "the system is initialized and ready for Control Panel CSS Delete operations",
+          "when": "a valid Control Panel CSS Delete request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-css-delete-error-recovery",
+          "name": "Control Panel CSS Delete handles failures gracefully",
+          "given": "the Control Panel CSS Delete operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-css-delete-telemetry",
+          "name": "Control Panel CSS Delete records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel CSS Delete",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-css-edit-symphony",
+      "domainName": "Control Panel CSS Edit",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-css-edit-happy-path",
+          "name": "Control Panel CSS Edit completes successfully",
+          "given": "the system is initialized and ready for Control Panel CSS Edit operations",
+          "when": "a valid Control Panel CSS Edit request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-css-edit-error-recovery",
+          "name": "Control Panel CSS Edit handles failures gracefully",
+          "given": "the Control Panel CSS Edit operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-css-edit-telemetry",
+          "name": "Control Panel CSS Edit records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel CSS Edit",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-selection-show-symphony",
+      "domainName": "Control Panel Selection Show",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-selection-show-happy-path",
+          "name": "Control Panel Selection Show completes successfully",
+          "given": "the system is initialized and ready for Control Panel Selection Show operations",
+          "when": "a valid Control Panel Selection Show request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-selection-show-error-recovery",
+          "name": "Control Panel Selection Show handles failures gracefully",
+          "given": "the Control Panel Selection Show operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-selection-show-telemetry",
+          "name": "Control Panel Selection Show records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel Selection Show",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-ui-field-change-symphony",
+      "domainName": "Control Panel UI Field Change",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-ui-field-change-happy-path",
+          "name": "Control Panel UI Field Change completes successfully",
+          "given": "the system is initialized and ready for Control Panel UI Field Change operations",
+          "when": "a valid Control Panel UI Field Change request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-ui-field-change-error-recovery",
+          "name": "Control Panel UI Field Change handles failures gracefully",
+          "given": "the Control Panel UI Field Change operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-ui-field-change-telemetry",
+          "name": "Control Panel UI Field Change records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel UI Field Change",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-ui-field-validate-symphony",
+      "domainName": "Control Panel UI Field Validate",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-ui-field-validate-happy-path",
+          "name": "Control Panel UI Field Validate completes successfully",
+          "given": "the system is initialized and ready for Control Panel UI Field Validate operations",
+          "when": "a valid Control Panel UI Field Validate request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-ui-field-validate-error-recovery",
+          "name": "Control Panel UI Field Validate handles failures gracefully",
+          "given": "the Control Panel UI Field Validate operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-ui-field-validate-telemetry",
+          "name": "Control Panel UI Field Validate records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel UI Field Validate",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-ui-init-batched-symphony",
+      "domainName": "Control Panel UI Init (Batched)",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-ui-init-batched-happy-path",
+          "name": "Control Panel UI Init (Batched) completes successfully",
+          "given": "the system is initialized and ready for Control Panel UI Init (Batched) operations",
+          "when": "a valid Control Panel UI Init (Batched) request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-ui-init-batched-error-recovery",
+          "name": "Control Panel UI Init (Batched) handles failures gracefully",
+          "given": "the Control Panel UI Init (Batched) operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-ui-init-batched-telemetry",
+          "name": "Control Panel UI Init (Batched) records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel UI Init (Batched)",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-ui-init-symphony",
+      "domainName": "Control Panel UI Init",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-ui-init-happy-path",
+          "name": "Control Panel UI Init completes successfully",
+          "given": "the system is initialized and ready for Control Panel UI Init operations",
+          "when": "a valid Control Panel UI Init request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-ui-init-error-recovery",
+          "name": "Control Panel UI Init handles failures gracefully",
+          "given": "the Control Panel UI Init operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-ui-init-telemetry",
+          "name": "Control Panel UI Init records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel UI Init",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-ui-render-symphony",
+      "domainName": "Control Panel UI Render",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-ui-render-happy-path",
+          "name": "Control Panel UI Render completes successfully",
+          "given": "the system is initialized and ready for Control Panel UI Render operations",
+          "when": "a valid Control Panel UI Render request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-ui-render-error-recovery",
+          "name": "Control Panel UI Render handles failures gracefully",
+          "given": "the Control Panel UI Render operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-ui-render-telemetry",
+          "name": "Control Panel UI Render records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel UI Render",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-ui-section-toggle-symphony",
+      "domainName": "Control Panel UI Section Toggle",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-ui-section-toggle-happy-path",
+          "name": "Control Panel UI Section Toggle completes successfully",
+          "given": "the system is initialized and ready for Control Panel UI Section Toggle operations",
+          "when": "a valid Control Panel UI Section Toggle request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-ui-section-toggle-error-recovery",
+          "name": "Control Panel UI Section Toggle handles failures gracefully",
+          "given": "the Control Panel UI Section Toggle operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-ui-section-toggle-telemetry",
+          "name": "Control Panel UI Section Toggle records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel UI Section Toggle",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "control-panel-update-symphony",
+      "domainName": "Control Panel Update",
+      "category": "plugin",
+      "pluginId": "ControlPanelPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "control-panel-update-happy-path",
+          "name": "Control Panel Update completes successfully",
+          "given": "the system is initialized and ready for Control Panel Update operations",
+          "when": "a valid Control Panel Update request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "control-panel-update-error-recovery",
+          "name": "Control Panel Update handles failures gracefully",
+          "given": "the Control Panel Update operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "control-panel-update-telemetry",
+          "name": "Control Panel Update records telemetry metrics",
+          "given": "telemetry collection is enabled for Control Panel Update",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "totalDomains": 13,
+    "totalScenarios": 39,
+    "byPriority": {
+      "critical": 13,
+      "high": 13,
+      "medium": 13,
+      "low": 0
+    }
+  }
+}

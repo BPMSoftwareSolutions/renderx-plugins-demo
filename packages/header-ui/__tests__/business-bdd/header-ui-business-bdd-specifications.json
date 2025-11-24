@@ -1,0 +1,119 @@
+{
+  "$schema": "../../../.generated/schemas/business-bdd-spec-schema.json",
+  "version": "1.0.0",
+  "package": "header-ui",
+  "generated_at": "2025-11-24T23:19:49.776Z",
+  "generator": "generate-bdd-spec-scaffolds.cjs",
+  "domains": [
+    {
+      "domainId": "header-ui-theme-get-symphony",
+      "domainName": "Header UI Theme Get",
+      "category": "plugin",
+      "pluginId": "HeaderThemePlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "header-ui-theme-get-happy-path",
+          "name": "Header UI Theme Get completes successfully",
+          "given": "the system is initialized and ready for Header UI Theme Get operations",
+          "when": "a valid Header UI Theme Get request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "header-ui-theme-get-error-recovery",
+          "name": "Header UI Theme Get handles failures gracefully",
+          "given": "the Header UI Theme Get operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "header-ui-theme-get-telemetry",
+          "name": "Header UI Theme Get records telemetry metrics",
+          "given": "telemetry collection is enabled for Header UI Theme Get",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "header-ui-theme-toggle-symphony",
+      "domainName": "Header UI Theme Toggle",
+      "category": "plugin",
+      "pluginId": "HeaderThemePlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "header-ui-theme-toggle-happy-path",
+          "name": "Header UI Theme Toggle completes successfully",
+          "given": "the system is initialized and ready for Header UI Theme Toggle operations",
+          "when": "a valid Header UI Theme Toggle request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "header-ui-theme-toggle-error-recovery",
+          "name": "Header UI Theme Toggle handles failures gracefully",
+          "given": "the Header UI Theme Toggle operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "header-ui-theme-toggle-telemetry",
+          "name": "Header UI Theme Toggle records telemetry metrics",
+          "given": "telemetry collection is enabled for Header UI Theme Toggle",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "totalDomains": 2,
+    "totalScenarios": 6,
+    "byPriority": {
+      "critical": 2,
+      "high": 2,
+      "medium": 2,
+      "low": 0
+    }
+  }
+}

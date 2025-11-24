@@ -1,0 +1,66 @@
+{
+  "package": "canvas-component",
+  "suggestedPath": "packages/canvas-component/__tests__/business-bdd/",
+  "domains": [
+    {
+      "id": "canvas-component-create-symphony",
+      "score": 22.8
+    },
+    {
+      "id": "canvas-component-rules-config-symphony",
+      "score": 22.8
+    },
+    {
+      "id": "canvas-component-select-requested-symphony",
+      "score": 22.8
+    }
+  ],
+  "template": {
+    "specFile": "canvas-component-business-bdd-specifications.json",
+    "structure": {
+      "version": "1.0.0",
+      "package": "canvas-component",
+      "domains": [
+        {
+          "domainId": "canvas-component-create-symphony",
+          "scenarios": [
+            {
+              "id": "canvas-component-create-symphony-happy-path",
+              "name": "canvas component create symphony happy path",
+              "given": "the system is in a valid state",
+              "when": "the canvas-component-create operation is triggered",
+              "then": "the operation completes successfully",
+              "priority": "high"
+            }
+          ]
+        },
+        {
+          "domainId": "canvas-component-rules-config-symphony",
+          "scenarios": [
+            {
+              "id": "canvas-component-rules-config-symphony-happy-path",
+              "name": "canvas component rules config symphony happy path",
+              "given": "the system is in a valid state",
+              "when": "the canvas-component-rules-config operation is triggered",
+              "then": "the operation completes successfully",
+              "priority": "high"
+            }
+          ]
+        },
+        {
+          "domainId": "canvas-component-select-requested-symphony",
+          "scenarios": [
+            {
+              "id": "canvas-component-select-requested-symphony-happy-path",
+              "name": "canvas component select requested symphony happy path",
+              "given": "the system is in a valid state",
+              "when": "the canvas-component-select-requested operation is triggered",
+              "then": "the operation completes successfully",
+              "priority": "high"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

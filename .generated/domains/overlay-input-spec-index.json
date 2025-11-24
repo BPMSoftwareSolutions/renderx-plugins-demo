@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-11-24T23:15:43.883Z",
+  "generated_at": "2025-11-24T23:20:19.447Z",
   "specs": [
     {
       "domainId": "canvas-component-create-symphony",
       "handlers": 6,
       "topics": 6,
       "tests": 5,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 22.8,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-create-symphony.json"
@@ -16,7 +16,7 @@
       "handlers": 6,
       "topics": 6,
       "tests": 5,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 22.8,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-rules-config-symphony.json"
@@ -26,7 +26,7 @@
       "handlers": 6,
       "topics": 6,
       "tests": 5,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 22.8,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-select-requested-symphony.json"
@@ -36,7 +36,7 @@
       "handlers": 6,
       "topics": 6,
       "tests": 5,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 22.8,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-update-symphony.json"
@@ -46,7 +46,7 @@
       "handlers": 3,
       "topics": 3,
       "tests": 11,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 11.4,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-select-symphony.json"
@@ -56,7 +56,7 @@
       "handlers": 2,
       "topics": 2,
       "tests": 2,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 8.6,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-resize-move-symphony.json"
@@ -66,7 +66,7 @@
       "handlers": 1,
       "topics": 1,
       "tests": 1,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 4.3,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-resize-end-symphony.json"
@@ -76,7 +76,7 @@
       "handlers": 1,
       "topics": 1,
       "tests": 1,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 4.3,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-resize-start-symphony.json"
@@ -86,7 +86,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-copy-symphony.json"
@@ -96,7 +96,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-delete-symphony.json"
@@ -106,7 +106,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-delete-requested-symphony.json"
@@ -116,7 +116,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-deselect-all-symphony.json"
@@ -126,7 +126,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-deselect-symphony.json"
@@ -136,7 +136,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-deselect-requested-symphony.json"
@@ -146,7 +146,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-drag-end-symphony.json"
@@ -156,7 +156,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-drag-move-symphony.json"
@@ -166,7 +166,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-drag-start-symphony.json"
@@ -176,7 +176,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-export-gif-symphony.json"
@@ -186,7 +186,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-export-mp4-symphony.json"
@@ -196,7 +196,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-export-symphony.json"
@@ -206,7 +206,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-import-symphony.json"
@@ -216,7 +216,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\catalog-placeholder-1.json"
@@ -226,7 +226,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-manip-end-symphony.json"
@@ -236,7 +236,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-manip-move-symphony.json"
@@ -246,7 +246,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-manip-start-symphony.json"
@@ -256,7 +256,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-paste-symphony.json"
@@ -266,7 +266,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-resize-end-symphony.json"
@@ -276,7 +276,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-resize-move-symphony.json"
@@ -286,7 +286,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-resize-start-symphony.json"
@@ -296,7 +296,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-select-svg-node-symphony.json"
@@ -306,7 +306,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-update-svg-node-symphony.json"
@@ -316,7 +316,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-classes-add-symphony.json"
@@ -326,7 +326,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-classes-remove-symphony.json"
@@ -336,7 +336,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-css-create-symphony.json"
@@ -346,7 +346,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-css-delete-symphony.json"
@@ -356,7 +356,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-css-edit-symphony.json"
@@ -366,7 +366,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\catalog-placeholder-2.json"
@@ -376,7 +376,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-selection-show-symphony.json"
@@ -386,7 +386,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-ui-field-change-symphony.json"
@@ -396,7 +396,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-ui-field-validate-symphony.json"
@@ -406,7 +406,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-ui-init-batched-symphony.json"
@@ -416,7 +416,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-ui-init-symphony.json"
@@ -426,7 +426,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-ui-render-symphony.json"
@@ -436,7 +436,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-ui-section-toggle-symphony.json"
@@ -446,7 +446,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-update-symphony.json"
@@ -456,7 +456,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\catalog-placeholder-3.json"
@@ -466,7 +466,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\header-ui-theme-get-symphony.json"
@@ -476,7 +476,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\header-ui-theme-toggle-symphony.json"
@@ -486,7 +486,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\catalog-placeholder-4.json"
@@ -496,7 +496,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\library-load-symphony.json"
@@ -506,7 +506,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\library-component-container-drop-symphony.json"
@@ -516,7 +516,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\library-component-drag-symphony.json"
@@ -526,7 +526,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\library-component-drop-symphony.json"
@@ -536,7 +536,7 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\catalog-placeholder-5.json"
@@ -546,16 +546,16 @@
       "handlers": 0,
       "topics": 0,
       "tests": 0,
-      "businessBddSpecs": 0,
+      "businessBddSpecs": 1,
       "businessBddHandlers": 0,
       "priorityScore": 0,
       "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\real-estate-analyzer-search-symphony.json"
     }
   ],
   "bddSummary": {
-    "specsWithBddSpecs": 0,
+    "specsWithBddSpecs": 55,
     "specsWithBddHandlers": 0,
-    "totalBddSpecsRefs": 0,
+    "totalBddSpecsRefs": 55,
     "totalBddHandlersRefs": 0
   }
 }

@@ -1,0 +1,319 @@
+{
+  "$schema": "../../../.generated/schemas/business-bdd-spec-schema.json",
+  "version": "1.0.0",
+  "package": "canvas-line",
+  "generated_at": "2025-11-24T23:19:49.772Z",
+  "generator": "generate-bdd-spec-scaffolds.cjs",
+  "domains": [
+    {
+      "domainId": "canvas-line-manip-end-symphony",
+      "domainName": "Canvas Line Manip End",
+      "category": "plugin",
+      "pluginId": "CanvasLineManipEndPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "canvas-line-manip-end-happy-path",
+          "name": "Canvas Line Manip End completes successfully",
+          "given": "the system is initialized and ready for Canvas Line Manip End operations",
+          "when": "a valid Canvas Line Manip End request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "canvas-line-manip-end-error-recovery",
+          "name": "Canvas Line Manip End handles failures gracefully",
+          "given": "the Canvas Line Manip End operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "canvas-line-manip-end-telemetry",
+          "name": "Canvas Line Manip End records telemetry metrics",
+          "given": "telemetry collection is enabled for Canvas Line Manip End",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "canvas-line-manip-move-symphony",
+      "domainName": "Canvas Line Manip Move",
+      "category": "plugin",
+      "pluginId": "CanvasLineManipMovePlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "canvas-line-manip-move-happy-path",
+          "name": "Canvas Line Manip Move completes successfully",
+          "given": "the system is initialized and ready for Canvas Line Manip Move operations",
+          "when": "a valid Canvas Line Manip Move request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "canvas-line-manip-move-error-recovery",
+          "name": "Canvas Line Manip Move handles failures gracefully",
+          "given": "the Canvas Line Manip Move operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "canvas-line-manip-move-telemetry",
+          "name": "Canvas Line Manip Move records telemetry metrics",
+          "given": "telemetry collection is enabled for Canvas Line Manip Move",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "canvas-line-manip-start-symphony",
+      "domainName": "Canvas Line Manip Start",
+      "category": "plugin",
+      "pluginId": "CanvasLineManipStartPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "canvas-line-manip-start-happy-path",
+          "name": "Canvas Line Manip Start completes successfully",
+          "given": "the system is initialized and ready for Canvas Line Manip Start operations",
+          "when": "a valid Canvas Line Manip Start request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "canvas-line-manip-start-error-recovery",
+          "name": "Canvas Line Manip Start handles failures gracefully",
+          "given": "the Canvas Line Manip Start operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "canvas-line-manip-start-telemetry",
+          "name": "Canvas Line Manip Start records telemetry metrics",
+          "given": "telemetry collection is enabled for Canvas Line Manip Start",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "canvas-line-resize-end-symphony",
+      "domainName": "Canvas Line Resize End",
+      "category": "plugin",
+      "pluginId": "CanvasLineResizeEndPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "canvas-line-resize-end-happy-path",
+          "name": "Canvas Line Resize End completes successfully",
+          "given": "the system is initialized and ready for Canvas Line Resize End operations",
+          "when": "a valid Canvas Line Resize End request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "canvas-line-resize-end-error-recovery",
+          "name": "Canvas Line Resize End handles failures gracefully",
+          "given": "the Canvas Line Resize End operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "canvas-line-resize-end-telemetry",
+          "name": "Canvas Line Resize End records telemetry metrics",
+          "given": "telemetry collection is enabled for Canvas Line Resize End",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "canvas-line-resize-move-symphony",
+      "domainName": "Canvas Line Resize Move",
+      "category": "plugin",
+      "pluginId": "CanvasLineResizeMovePlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "canvas-line-resize-move-happy-path",
+          "name": "Canvas Line Resize Move completes successfully",
+          "given": "the system is initialized and ready for Canvas Line Resize Move operations",
+          "when": "a valid Canvas Line Resize Move request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "canvas-line-resize-move-error-recovery",
+          "name": "Canvas Line Resize Move handles failures gracefully",
+          "given": "the Canvas Line Resize Move operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "canvas-line-resize-move-telemetry",
+          "name": "Canvas Line Resize Move records telemetry metrics",
+          "given": "telemetry collection is enabled for Canvas Line Resize Move",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "domainId": "canvas-line-resize-start-symphony",
+      "domainName": "Canvas Line Resize Start",
+      "category": "plugin",
+      "pluginId": "CanvasLineResizeStartPlugin",
+      "priorityScore": 0,
+      "complexity": {
+        "handlerCount": 0,
+        "topicCount": 0,
+        "interactionEdges": 0
+      },
+      "scenarios": [
+        {
+          "id": "canvas-line-resize-start-happy-path",
+          "name": "Canvas Line Resize Start completes successfully",
+          "given": "the system is initialized and ready for Canvas Line Resize Start operations",
+          "when": "a valid Canvas Line Resize Start request is processed",
+          "then": "the operation completes without errors and emits success events",
+          "priority": "critical",
+          "tags": [
+            "happy-path",
+            "smoke"
+          ]
+        },
+        {
+          "id": "canvas-line-resize-start-error-recovery",
+          "name": "Canvas Line Resize Start handles failures gracefully",
+          "given": "the Canvas Line Resize Start operation is in progress",
+          "when": "an unexpected error occurs during execution",
+          "then": "the system logs the error, emits failure events, and maintains consistent state",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "resilience"
+          ]
+        },
+        {
+          "id": "canvas-line-resize-start-telemetry",
+          "name": "Canvas Line Resize Start records telemetry metrics",
+          "given": "telemetry collection is enabled for Canvas Line Resize Start",
+          "when": "the operation completes (success or failure)",
+          "then": "duration, success/failure counts, and relevant metadata are recorded",
+          "priority": "medium",
+          "tags": [
+            "telemetry",
+            "observability"
+          ]
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "totalDomains": 6,
+    "totalScenarios": 18,
+    "byPriority": {
+      "critical": 6,
+      "high": 6,
+      "medium": 6,
+      "low": 0
+    }
+  }
+}
