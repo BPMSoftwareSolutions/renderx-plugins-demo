@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED -->
 <!-- Source: orchestration-audit-system-project-plan.json (governanceDocumentation.telemetryGovernance.quickstart) -->
-<!-- Generated: 2025-11-24T19:41:42.869Z -->
+<!-- Generated: 2025-11-24T20:07:14.939Z -->
 <!-- DO NOT EDIT - Regenerate with: npm run build -->
 
 # Telemetry Governance Quickstart
