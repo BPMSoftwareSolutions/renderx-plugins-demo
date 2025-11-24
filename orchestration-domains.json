@@ -108,7 +108,7 @@
     {
       "id": "canvas-component-copy-symphony",
       "name": "Canvas Component Copy",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Copy",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -145,7 +145,7 @@
     {
       "id": "canvas-component-create-symphony",
       "name": "Canvas Component Create",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Create",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -185,7 +185,7 @@
     {
       "id": "canvas-component-delete-symphony",
       "name": "Canvas Component Delete",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Delete",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -221,7 +221,7 @@
     {
       "id": "canvas-component-delete-requested-symphony",
       "name": "Canvas Component Delete Requested",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Delete Requested",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -256,7 +256,7 @@
     {
       "id": "canvas-component-deselect-all-symphony",
       "name": "Canvas Component Deselect All",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Deselect All",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -292,7 +292,7 @@
     {
       "id": "canvas-component-deselect-symphony",
       "name": "Canvas Component Deselect",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Deselect",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -328,7 +328,7 @@
     {
       "id": "canvas-component-deselect-requested-symphony",
       "name": "Canvas Component Deselect Requested",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Deselect Requested",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -363,7 +363,7 @@
     {
       "id": "canvas-component-drag-end-symphony",
       "name": "Canvas Component Drag End",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Drag End",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -398,7 +398,7 @@
     {
       "id": "canvas-component-drag-move-symphony",
       "name": "Canvas Component Drag Move",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Drag Move",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -434,7 +434,7 @@
     {
       "id": "canvas-component-drag-start-symphony",
       "name": "Canvas Component Drag Start",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Drag Start",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -469,7 +469,7 @@
     {
       "id": "canvas-component-export-gif-symphony",
       "name": "Canvas Component Export GIF",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Export GIF",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -504,7 +504,7 @@
     {
       "id": "canvas-component-export-mp4-symphony",
       "name": "Canvas Component Export MP4",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Export MP4",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -539,7 +539,7 @@
     {
       "id": "canvas-component-export-symphony",
       "name": "Canvas Component Export",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Export",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -579,7 +579,7 @@
     {
       "id": "canvas-component-import-symphony",
       "name": "Canvas Component Import",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Import",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -618,7 +618,7 @@
     {
       "id": "catalog-placeholder-1",
       "name": "Catalog Placeholder 1",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Catalog Placeholder 1",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -645,7 +645,7 @@
     {
       "id": "canvas-line-manip-end-symphony",
       "name": "Canvas Line Manip End",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Line Manip End",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -680,7 +680,7 @@
     {
       "id": "canvas-line-manip-move-symphony",
       "name": "Canvas Line Manip Move",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Line Manip Move",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -715,7 +715,7 @@
     {
       "id": "canvas-line-manip-start-symphony",
       "name": "Canvas Line Manip Start",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Line Manip Start",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -750,7 +750,7 @@
     {
       "id": "canvas-component-paste-symphony",
       "name": "Canvas Component Paste",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Paste",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -789,7 +789,7 @@
     {
       "id": "canvas-component-resize-end-symphony",
       "name": "Canvas Component Resize End",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Resize End",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -824,7 +824,7 @@
     {
       "id": "canvas-line-resize-end-symphony",
       "name": "Canvas Line Resize End",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Line Resize End",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -859,7 +859,7 @@
     {
       "id": "canvas-line-resize-move-symphony",
       "name": "Canvas Line Resize Move",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Line Resize Move",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -894,7 +894,7 @@
     {
       "id": "canvas-line-resize-start-symphony",
       "name": "Canvas Line Resize Start",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Line Resize Start",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -929,7 +929,7 @@
     {
       "id": "canvas-component-resize-move-symphony",
       "name": "Canvas Component Resize Move",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Resize Move",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -965,7 +965,7 @@
     {
       "id": "canvas-component-resize-start-symphony",
       "name": "Canvas Component Resize Start",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Resize Start",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1000,7 +1000,7 @@
     {
       "id": "canvas-component-rules-config-symphony",
       "name": "Canvas Component Rules Config",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Rules Config",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1037,7 +1037,7 @@
     {
       "id": "canvas-component-select-symphony",
       "name": "Canvas Component Select",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Select",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1074,7 +1074,7 @@
     {
       "id": "canvas-component-select-requested-symphony",
       "name": "Canvas Component Select Requested",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Select Requested",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1109,7 +1109,7 @@
     {
       "id": "canvas-component-select-svg-node-symphony",
       "name": "Canvas Component Select SVG Node",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Select SVG Node",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1144,7 +1144,7 @@
     {
       "id": "canvas-component-update-symphony",
       "name": "Canvas Component Update",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Update",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1180,7 +1180,7 @@
     {
       "id": "canvas-component-update-svg-node-symphony",
       "name": "Canvas Component Update SVG Node",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Canvas Component Update SVG Node",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1216,7 +1216,7 @@
     {
       "id": "control-panel-classes-add-symphony",
       "name": "Control Panel Classes Add",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel Classes Add",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1252,7 +1252,7 @@
     {
       "id": "control-panel-classes-remove-symphony",
       "name": "Control Panel Classes Remove",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel Classes Remove",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1288,7 +1288,7 @@
     {
       "id": "control-panel-css-create-symphony",
       "name": "Control Panel CSS Create",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel CSS Create",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1324,7 +1324,7 @@
     {
       "id": "control-panel-css-delete-symphony",
       "name": "Control Panel CSS Delete",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel CSS Delete",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1360,7 +1360,7 @@
     {
       "id": "control-panel-css-edit-symphony",
       "name": "Control Panel CSS Edit",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel CSS Edit",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1396,7 +1396,7 @@
     {
       "id": "catalog-placeholder-2",
       "name": "Catalog Placeholder 2",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Catalog Placeholder 2",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1423,7 +1423,7 @@
     {
       "id": "control-panel-selection-show-symphony",
       "name": "Control Panel Selection Show",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel Selection Show",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1459,7 +1459,7 @@
     {
       "id": "control-panel-ui-field-change-symphony",
       "name": "Control Panel UI Field Change",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel UI Field Change",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1497,7 +1497,7 @@
     {
       "id": "control-panel-ui-field-validate-symphony",
       "name": "Control Panel UI Field Validate",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel UI Field Validate",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1534,7 +1534,7 @@
     {
       "id": "control-panel-ui-init-batched-symphony",
       "name": "Control Panel UI Init (Batched)",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel UI Init (Batched)",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1574,7 +1574,7 @@
     {
       "id": "control-panel-ui-init-symphony",
       "name": "Control Panel UI Init",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel UI Init",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1614,7 +1614,7 @@
     {
       "id": "control-panel-ui-render-symphony",
       "name": "Control Panel UI Render",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel UI Render",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1651,7 +1651,7 @@
     {
       "id": "control-panel-ui-section-toggle-symphony",
       "name": "Control Panel UI Section Toggle",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel UI Section Toggle",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1686,7 +1686,7 @@
     {
       "id": "control-panel-update-symphony",
       "name": "Control Panel Update",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Control Panel Update",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1722,7 +1722,7 @@
     {
       "id": "catalog-placeholder-3",
       "name": "Catalog Placeholder 3",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Catalog Placeholder 3",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1749,7 +1749,7 @@
     {
       "id": "header-ui-theme-get-symphony",
       "name": "Header UI Theme Get",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Header UI Theme Get",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1785,7 +1785,7 @@
     {
       "id": "header-ui-theme-toggle-symphony",
       "name": "Header UI Theme Toggle",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Header UI Theme Toggle",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1820,7 +1820,7 @@
     {
       "id": "catalog-placeholder-4",
       "name": "Catalog Placeholder 4",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Catalog Placeholder 4",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1847,7 +1847,7 @@
     {
       "id": "library-load-symphony",
       "name": "Library Load",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Library Load",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1883,7 +1883,7 @@
     {
       "id": "library-component-container-drop-symphony",
       "name": "Library Component Container Drop",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Library Component Container Drop",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1918,7 +1918,7 @@
     {
       "id": "library-component-drag-symphony",
       "name": "Library Component Drag",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Library Component Drag",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1953,7 +1953,7 @@
     {
       "id": "library-component-drop-symphony",
       "name": "Library Component Drop",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Library Component Drop",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -1988,7 +1988,7 @@
     {
       "id": "catalog-placeholder-5",
       "name": "Catalog Placeholder 5",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Catalog Placeholder 5",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -2015,7 +2015,7 @@
     {
       "id": "real-estate-analyzer-search-symphony",
       "name": "Real Estate Analyzer Search",
-      "emoji": "🔌",
+      "emoji": "\ud83d\udd0c",
       "description": "Plugin sequence: Real Estate Analyzer Search",
       "category": "plugin",
       "purpose": "Feature implementation",
@@ -2052,7 +2052,7 @@
     {
       "id": "cag-agent-workflow",
       "name": "CAG Agent Workflow - 8 Phase Sequence",
-      "emoji": "🎼",
+      "emoji": "\ud83c\udfbc",
       "description": "Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.",
       "category": "orchestration",
       "purpose": "System orchestration",
@@ -2090,7 +2090,7 @@
               "Check goal matches plan, no contradictions, goal achievable",
               "Check rules parseable, no conflicts, all phases covered",
               "Check artifacts reachable, no circular deps, canonical locations valid",
-              "Compute (verified_items / total_items) * 100, threshold ≥ 80%"
+              "Compute (verified_items / total_items) * 100, threshold \u2265 80%"
             ]
           },
           {
@@ -2162,7 +2162,7 @@
     {
       "id": "graphing-orchestration",
       "name": "graphing-orchestration",
-      "emoji": "🎼",
+      "emoji": "\ud83c\udfbc",
       "description": "Orchestration domain: graphing-orchestration",
       "category": "orchestration",
       "purpose": "System orchestration",
@@ -2190,7 +2190,7 @@
     {
       "id": "orchestration-audit-session",
       "name": "Orchestration Audit System Implementation Session",
-      "emoji": "🎼",
+      "emoji": "\ud83c\udfbc",
       "description": "Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams",
       "category": "orchestration",
       "purpose": "System orchestration",
@@ -2284,7 +2284,7 @@
     {
       "id": "self_sequences",
       "name": "self_sequences",
-      "emoji": "🎼",
+      "emoji": "\ud83c\udfbc",
       "description": "Orchestration domain: self_sequences",
       "category": "orchestration",
       "purpose": "System orchestration",
@@ -2309,5 +2309,13 @@
         "phases": []
       }
     }
-  ]
+  ],
+  "integrity": {
+    "hash": "09c75b40b206950f000809722e5bfc61a3219c4b7b366f890d4e1df981172b02",
+    "size": 45304,
+    "generatedAt": "2025-11-24T16:47:01.687082Z",
+    "domains": 59,
+    "schemaValidated": true,
+    "toolVersion": "1.0.0"
+  }
 }

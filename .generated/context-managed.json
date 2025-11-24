@@ -1,0 +1,20 @@
+{
+  "artifacts": {
+    "orchestration-domains": {
+      "file": "orchestration-domains.json",
+      "kind": "registry",
+      "primaryKey": "domains",
+      "lockField": "integrity"
+    },
+    "context-tree": {
+      "file": ".generated/context-tree-orchestration-audit-session.json",
+      "kind": "context",
+      "lockField": "integrity"
+    },
+    "context-index": {
+      "file": ".generated/CONTEXT_TREE_INDEX.json",
+      "kind": "index",
+      "lockField": "integrity"
+    }
+  }
+}
