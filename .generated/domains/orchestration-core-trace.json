@@ -1,0 +1,14 @@
+{
+  "domain_id": "orchestration-core",
+  "generated_at": "2025-11-24T22:15:37.126Z",
+  "lineage": [
+    "orchestration-core"
+  ],
+  "computed_lineage_hash": "d53a62a598822b6fe4e4a584587cddc05064001af3b2a928e8c8580560255cd6",
+  "stored_lineage_hash": "d53a62a598822b6fe4e4a584587cddc05064001af3b2a928e8c8580560255cd6",
+  "integrity_checksum": "23a07136c17044d8dbb8b2997809d8084952a52da179506d74cffc0a7851ebe8",
+  "cross_domain_links": [],
+  "validation": {
+    "lineage_hash_match": true
+  }
+}

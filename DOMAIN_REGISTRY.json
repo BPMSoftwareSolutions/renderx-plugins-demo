@@ -15,7 +15,7 @@
       "status": "active",
       "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
       "parent_refs": [],
-      "checksum": "",
+      "checksum": "23a07136c17044d8dbb8b2997809d8084952a52da179506d74cffc0a7851ebe8",
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Orchestration"
@@ -28,7 +28,7 @@
       "parent_refs": [
         "orchestration-core"
       ],
-      "checksum": "",
+      "checksum": "1a21fb4948de6052bf29fe0cd7753ea8c9de8f8d200f0d8265e05ee36b1b0974",
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Telemetry"

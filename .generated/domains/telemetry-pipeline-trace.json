@@ -1,0 +1,23 @@
+{
+  "domain_id": "telemetry-pipeline",
+  "generated_at": "2025-11-24T22:15:39.529Z",
+  "lineage": [
+    "telemetry-pipeline"
+  ],
+  "computed_lineage_hash": "d8382c7bb67c8bb8b2e393b4738304ebc5ae253adf2652f38335dcaedc794eb0",
+  "stored_lineage_hash": "d8382c7bb67c8bb8b2e393b4738304ebc5ae253adf2652f38335dcaedc794eb0",
+  "integrity_checksum": "1a21fb4948de6052bf29fe0cd7753ea8c9de8f8d200f0d8265e05ee36b1b0974",
+  "cross_domain_links": [
+    {
+      "link_id": "telemetry-ingests-orchestration-events",
+      "target_domain_id": "orchestration-core",
+      "relation_type": "depends_on",
+      "strength": "strong",
+      "rationale": "Telemetry pipeline requires orchestration event stream to operate.",
+      "version": "1.0.0"
+    }
+  ],
+  "validation": {
+    "lineage_hash_match": true
+  }
+}

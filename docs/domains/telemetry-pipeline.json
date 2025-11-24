@@ -4,12 +4,31 @@
   "title": "Telemetry Pipeline",
   "summary": "Workflow domain ingesting, normalizing, and forwarding orchestration + plugin telemetry to storage and analytics subsystems.",
   "root_context_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
-  "parent_context_refs": ["orchestration-core"],
-  "context_lineage": ["UNIFIED_GOVERNANCE_AUTHORITY", "orchestration-core", "telemetry-pipeline"],
+  "parent_context_refs": [
+    "orchestration-core"
+  ],
+  "context_lineage": [
+    "UNIFIED_GOVERNANCE_AUTHORITY",
+    "orchestration-core",
+    "telemetry-pipeline"
+  ],
   "bounded_context": {
-    "in_scope": ["Telemetry event ingestion", "Event normalization", "Pipeline buffering", "Dispatch to sinks"],
-    "out_of_scope": ["Analytics aggregation logic", "User-facing dashboards", "Historical archiving policy"],
-    "interfaces": ["orchestration-core", "storage-adapter", "analytics-engine"]
+    "in_scope": [
+      "Telemetry event ingestion",
+      "Event normalization",
+      "Pipeline buffering",
+      "Dispatch to sinks"
+    ],
+    "out_of_scope": [
+      "Analytics aggregation logic",
+      "User-facing dashboards",
+      "Historical archiving policy"
+    ],
+    "interfaces": [
+      "orchestration-core",
+      "storage-adapter",
+      "analytics-engine"
+    ]
   },
   "lifecycle": {
     "stage": "active",
@@ -18,7 +37,10 @@
   },
   "stability": {
     "score": 0.78,
-    "volatility_factors": ["New event schema versions", "Sink capacity changes"]
+    "volatility_factors": [
+      "New event schema versions",
+      "Sink capacity changes"
+    ]
   },
   "ownership": {
     "team": "Platform-Telemetry",
@@ -26,13 +48,27 @@
     "accountable_role": "Telemetry Lead"
   },
   "governance": {
-    "inherited_rules": ["JSON-first policy", "7-layer enforcement"],
-    "overrides": [{"key": "buffer_flush_interval_ms", "value": 5000}],
-    "non_overridable": ["core_principles"]
+    "inherited_rules": [
+      "JSON-first policy",
+      "7-layer enforcement"
+    ],
+    "overrides": [
+      {
+        "key": "buffer_flush_interval_ms",
+        "value": 5000
+      }
+    ],
+    "non_overridable": [
+      "core_principles"
+    ]
   },
   "artifacts": {
-    "json_sources": ["docs/domains/telemetry-pipeline.json"],
-    "generated_markdown": ["docs/domains/telemetry-pipeline.md"],
+    "json_sources": [
+      "docs/domains/telemetry-pipeline.json"
+    ],
+    "generated_markdown": [
+      "docs/domains/telemetry-pipeline.md"
+    ],
     "generated_code": [],
     "generated_tests": []
   },
@@ -47,16 +83,28 @@
     }
   ],
   "metrics": {
-    "kpis": ["End-to-end pipeline latency < 200ms", "Event loss < 0.01%"],
-    "leading_indicators": ["Queue depth", "Retry backlog"],
-    "quality_gates": ["Schema version compatibility verified", "No dropped high-priority events"]
+    "kpis": [
+      "End-to-end pipeline latency < 200ms",
+      "Event loss < 0.01%"
+    ],
+    "leading_indicators": [
+      "Queue depth",
+      "Retry backlog"
+    ],
+    "quality_gates": [
+      "Schema version compatibility verified",
+      "No dropped high-priority events"
+    ]
   },
-  "validation_rules": ["All events tagged with source domain_id", "Backpressure signals logged"],
+  "validation_rules": [
+    "All events tagged with source domain_id",
+    "Backpressure signals logged"
+  ],
   "decision_log_refs": [],
   "provenance": {
     "created_by": "platform-telemetry-init",
     "created_at": "2025-11-24T22:59:00Z",
-    "lineage_hash": "",
-    "integrity_checksum": ""
+    "lineage_hash": "d8382c7bb67c8bb8b2e393b4738304ebc5ae253adf2652f38335dcaedc794eb0",
+    "integrity_checksum": "1a21fb4948de6052bf29fe0cd7753ea8c9de8f8d200f0d8265e05ee36b1b0974"
   }
 }

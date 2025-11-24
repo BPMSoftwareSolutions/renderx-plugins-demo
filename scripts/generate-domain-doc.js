@@ -7,15 +7,15 @@
  *
  * Policy: JSON is authority, markdown is reflection. DO NOT EDIT GENERATED OUTPUTS.
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
 
 function loadJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
 function sha256(content) {
-  const crypto = require('crypto');
   return crypto.createHash('sha256').update(content).digest('hex');
 }
 
@@ -24,6 +24,7 @@ function ensureDir(dir) {
 }
 
 function expandLineage(domain, registry) {
+  // Retain expanded lineage for display purposes (parent_context_refs traversal if present)
   const lineage = [];
   const visited = new Set();
   function dfs(id) {
@@ -31,14 +32,16 @@ function expandLineage(domain, registry) {
     visited.add(id);
     const item = registry[id];
     if (!item) return;
-    if (item.parent_context_refs) {
-      item.parent_context_refs.forEach(dfs);
-    }
+    if (item.parent_context_refs) item.parent_context_refs.forEach(dfs);
     lineage.push(id);
   }
   if (domain.parent_context_refs) domain.parent_context_refs.forEach(dfs);
   lineage.push(domain.domain_id);
   return lineage;
+}
+
+function computeCanonicalLineageHash(domain) {
+  return sha256((domain.root_context_ref || '') + '|' + (domain.context_lineage || []).join('>') + '|' + domain.domain_id);
 }
 
 function main() {
@@ -57,11 +60,14 @@ function main() {
   }
 
   const lineage = expandLineage(domain, registry);
-  const lineageHash = sha256(lineage.join('::'));
-
-  // Verify stored lineage hash if present
-  if (domain.provenance && domain.provenance.lineage_hash && domain.provenance.lineage_hash !== lineageHash) {
-    console.warn(`⚠️ Lineage hash mismatch for ${domain.domain_id}. Expected ${domain.provenance.lineage_hash}, computed ${lineageHash}`);
+  const lineageHash = computeCanonicalLineageHash(domain);
+  const storedHash = domain.provenance && domain.provenance.lineage_hash;
+  if (!storedHash) {
+    console.warn(`⚠️ No stored lineage_hash for ${domain.domain_id}. (Will rely on enrichment script).`);
+  }
+  // Only warn if stored exists and differs from canonical algorithm (should not after alignment)
+  else if (storedHash !== lineageHash) {
+    console.warn(`⚠️ Lineage hash mismatch for ${domain.domain_id}. Stored=${storedHash} Canonical=${lineageHash}`);
   }
 
   // Generated markdown
