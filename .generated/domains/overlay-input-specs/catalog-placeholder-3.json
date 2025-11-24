@@ -7,27 +7,7 @@
   "topics": [],
   "tests": [],
   "businessBddSpecs": [],
-  "businessBddHandlers": [
-    "packages/self-healing/__tests__/business-bdd/3-i-want-to-understand-root-causes-of-prod.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/103-shape-budgets.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/13-detect-error-patterns.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/23-analyze-error-issues.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/3-extract-telemetry-events.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/30-generate-code-fix.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/31-generate-test-fix.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/32-generate-documentation-fix.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/33-create-patch.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/34-validate-syntax.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/35-store-patch.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/36-generate-fix-completed.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/37-validate-fix-requested.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/38-load-patch.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/39-apply-patch.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/43-validate-performance.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/53-validate-staging-deployment.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/63-generate-learning-report.spec.ts",
-    "packages/slo-dashboard/__tests__/business-bdd-handlers/03-compute-compliance.spec.ts"
-  ],
+  "businessBddHandlers": [],
   "featureSequences": [],
   "gaps": {
     "untestedHandlers": [],
@@ -48,6 +28,6 @@
       "irSequences": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-sequences.json",
       "irHandlerTests": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handler-tests.json"
     },
-    "generatedAt": "2025-11-24T23:14:10.864Z"
+    "generatedAt": "2025-11-24T23:15:43.903Z"
   }
 }

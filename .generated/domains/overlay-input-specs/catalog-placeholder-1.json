@@ -7,33 +7,7 @@
   "topics": [],
   "tests": [],
   "businessBddSpecs": [],
-  "businessBddHandlers": [
-    "packages/self-healing/__tests__/business-bdd/1-i-want-to-parse-production-logs-to-under.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/1-parse-telemetry-requested.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/10-detect-performance-anomalies.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/100-shape-persistence.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/101-shape-hash-annotation.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/102-coverage-coupling.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/103-shape-budgets.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/104-shape-contracts.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/105-multi-feature-correlation.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/11-detect-behavioral-anomalies.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/12-detect-coverage-gaps.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/13-detect-error-patterns.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/14-aggregate-anomaly-results.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/15-store-anomaly-results.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/16-detect-anomalies-completed.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/17-analyze-requested.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/18-load-anomalies.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/19-load-codebase-info.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/21-analyze-behavioral-issues.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/31-generate-test-fix.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/41-run-integration-tests.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/51-merge-pull-request.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/61-calculate-effectiveness.spec.ts",
-    "packages/self-healing/__tests__/business-bdd-handlers/71-detect-slo-breaches.spec.ts",
-    "packages/slo-dashboard/__tests__/business-bdd-handlers/01-load-budgets.spec.ts"
-  ],
+  "businessBddHandlers": [],
   "featureSequences": [],
   "gaps": {
     "untestedHandlers": [],
@@ -54,6 +28,6 @@
       "irSequences": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-sequences.json",
       "irHandlerTests": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handler-tests.json"
     },
-    "generatedAt": "2025-11-24T23:14:10.835Z"
+    "generatedAt": "2025-11-24T23:15:43.890Z"
   }
 }

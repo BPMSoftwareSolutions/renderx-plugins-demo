@@ -65,13 +65,39 @@ const EXPLICIT_BDD_HANDLERS = {
   ]
 };
 
-function matchBddSpecs(domainId, specCandidates) {
+// Map domain ID prefixes to their corresponding package names
+const DOMAIN_TO_PACKAGE = {
+  'canvas-component': 'canvas-component',
+  'canvas-line': 'canvas-line',
+  'control-panel': 'control-panel',
+  'library': 'library',
+  'header-ui': 'header-ui',
+  'catalog': 'catalog',
+  'real-estate-analyzer': 'real-estate-analyzer',
+  'self-healing': 'self-healing',
+  'slo-dashboard': 'slo-dashboard'
+};
+
+function getDomainPackage(domainId) {
+  // Try to match known prefixes (longest first for specificity)
+  const prefixes = Object.keys(DOMAIN_TO_PACKAGE).sort((a, b) => b.length - a.length);
+  for (const prefix of prefixes) {
+    if (domainId.startsWith(prefix)) {
+      return DOMAIN_TO_PACKAGE[prefix];
+    }
+  }
+  // Fallback: extract first two tokens as package guess
   const tokens = domainId.split('-').filter(t => t && t !== 'symphony');
-  const lowerTokens = tokens.map(t => t.toLowerCase());
-  const matches = specCandidates.filter(f => {
-    const lower = f.toLowerCase();
-    return lowerTokens.some(t => lower.includes(t));
-  });
+  return tokens.slice(0, 2).join('-');
+}
+
+function matchBddSpecs(domainId, specCandidates) {
+  const packageName = getDomainPackage(domainId);
+  const packagePattern = new RegExp(`packages[/\\\\]${packageName}[/\\\\]`, 'i');
+  
+  // Only match files within the domain's package
+  const matches = specCandidates.filter(f => packagePattern.test(f));
+  
   let results = matches.map(f => path.relative(process.cwd(), f).replace(/\\/g, '/'));
   if (EXPLICIT_BDD_SPECS[domainId]) {
     results = results.concat(EXPLICIT_BDD_SPECS[domainId]);
@@ -80,12 +106,12 @@ function matchBddSpecs(domainId, specCandidates) {
 }
 
 function matchBddHandlers(domainId, handlerCandidates) {
-  const tokens = domainId.split('-').filter(t => t && t !== 'symphony');
-  const lowerTokens = tokens.map(t => t.toLowerCase());
-  const matches = handlerCandidates.filter(f => {
-    const lower = f.toLowerCase();
-    return lowerTokens.some(t => lower.includes(t));
-  });
+  const packageName = getDomainPackage(domainId);
+  const packagePattern = new RegExp(`packages[/\\\\]${packageName}[/\\\\]`, 'i');
+  
+  // Only match files within the domain's package
+  const matches = handlerCandidates.filter(f => packagePattern.test(f));
+  
   let results = matches.map(f => path.relative(process.cwd(), f).replace(/\\/g, '/'));
   if (EXPLICIT_BDD_HANDLERS[domainId]) {
     results = results.concat(EXPLICIT_BDD_HANDLERS[domainId]);
