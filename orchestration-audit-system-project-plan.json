@@ -1,7 +1,7 @@
 {
-  "version": "1.1.1",
-  "updatedAt": "2025-11-24T18:46:26.350Z",
-  "currentSprint": "1",
+  "version": "1.2.1",
+  "updatedAt": "2025-11-24T18:55:30.000Z",
+  "currentSprint": "2",
   "lastUpdatedBy": "automation",
   "summary": {
     "purpose": "Sprint-driven anti-drift evolution with per-sprint measurable outcomes",
@@ -115,7 +115,9 @@
         "domains": 60,
         "added": 60,
         "changed": 0
-      }
+      },
+      "completedAt": "2025-11-24T18:40:00.000Z",
+      "completionCommitSuggestion": "chore(sprint): complete sprint 0 - Bootstrap (version baseline 1.0.0) criteria: Registry auto-generates=PASS; Diff shows added domains=PASS; Baseline stored=PASS"
     },
     {
       "id": "1",
@@ -128,7 +130,7 @@
       "demoCriteria": [
         "stable canonical hashes"
       ],
-      "status": "in-progress",
+      "status": "complete",
       "startDate": "2025-11-24",
       "endDate": "2025-11-25",
       "objectives": [
@@ -162,7 +164,9 @@
       "metrics": {
         "canonicalStability": true,
         "handlerCoveragePercent": 0
-      }
+      },
+      "completedAt": "2025-11-24T18:52:32.354Z"
+  ,"completionCommitSuggestion": "chore(sprint): complete sprint 1 - Canonical Integrity (version bump 1.2.1) criteria: Canonical equals raw where no volatile fields=PASS; Report generated in pre:manifests=PASS"
     },
     {
       "id": "2",

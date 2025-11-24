@@ -38,6 +38,7 @@ function render(plan){
     if(sprint.startDate) md += `Dates: ${sprint.startDate} → ${sprint.endDate || 'TBD'}\n`;
     if(sprint.velocityTarget) md += `Velocity Target: ${sprint.velocityTarget} | Actual: ${sprint.velocityActual ?? 'n/a'}\n`;
     if(sprint.metrics) md += 'Metrics: ' + Object.entries(sprint.metrics).map(([k,v])=>`${k}=${v}`).join(', ') + '\n';
+  if(sprint.completionCommitSuggestion) md += `Commit Suggestion: ${sprint.completionCommitSuggestion}\n`;
     if(sprint.objectives){ md += '\nObjectives:\n' + sprint.objectives.map(o=>`- ${o}`).join('\n') + '\n'; }
     if(sprint.acceptanceCriteria){ md += '\nAcceptance Criteria:\n' + sprint.acceptanceCriteria.map(a=>`- ${a}`).join('\n') + '\n'; }
     if(sprint.acceptanceCriteriaStatus){
