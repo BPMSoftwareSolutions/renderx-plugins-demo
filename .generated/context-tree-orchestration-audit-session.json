@@ -499,4 +499,46 @@
     "schemaValidated": false,
     "toolVersion": "1.0.0"
   }
+  ,
+  "projectPlan": {
+    "vision": "Continuously evolving anti-drift orchestration audit platform with demonstrable sprint value (diffs, hashes, provenance, compliance, telemetry).",
+    "principles": [
+      "JSON authority",
+      "Every change diffed",
+      "Demo readiness per sprint",
+      "Automated provenance",
+      "Integrity locking",
+      "BDD + TDD alignment"
+    ],
+    "sprints": [
+      {"id": "0", "name": "Bootstrap", "theme": "Registry & Diff Foundation", "deliverables": ["structural diff script","baseline snapshot","sequence integration"], "demoCriteria": ["diff report created","baseline stored"], "status": "complete"},
+      {"id": "1", "name": "Canonical Integrity", "theme": "False drift elimination", "deliverables": ["canonical hash function","raw vs canonical report"], "demoCriteria": ["stable canonical hashes"], "status": "planned"},
+      {"id": "2", "name": "Provenance & Compliance", "theme": "Doc + sequence validation", "deliverables": ["provenance index","compliance report"], "demoCriteria": ["all docs mapped","all sequences valid"], "status": "planned"},
+      {"id": "3", "name": "Release & Changelog Automation", "theme": "Stakeholder visibility", "deliverables": ["release notes generator","evolution changelog"], "demoCriteria": ["notes auto-generated"], "status": "planned"},
+      {"id": "4", "name": "BDD Alignment", "theme": "Business coverage", "deliverables": ["BDD spec stubs","domain coverage matrix"], "demoCriteria": ["≥90% domains mapped"], "status": "planned"},
+      {"id": "5", "name": "TDD Handler Flow", "theme": "Audit handler implementation", "deliverables": ["handler test harness","spec templates"], "demoCriteria": ["≥85% coverage"], "status": "planned"},
+      {"id": "6", "name": "Demo Dashboard", "theme": "Unified reporting", "deliverables": ["dashboard markdown"], "demoCriteria": ["all reports consolidated"], "status": "planned"},
+      {"id": "7", "name": "Telemetry Layer", "theme": "Performance baselines", "deliverables": ["timing baseline"], "demoCriteria": ["≥70% sequences timed"], "status": "planned"},
+      {"id": "8", "name": "Evolution Insights", "theme": "Impact scoring", "deliverables": ["semantic diff","impact scores"], "demoCriteria": ["scores generated"], "status": "planned"}
+    ],
+    "backlog": [
+      "canonical hash exclusion & report",
+      "provenance index generation",
+      "governance compliance report",
+      "sequence integrity lock snapshots",
+      "release notes generator",
+      "semantic metadata diff",
+      "telemetry performance baseline",
+      "impact scoring engine"
+    ],
+    "demoChecklist": [
+      "Structural diff generated if changes",
+      "Canonical hash report updated",
+      "Provenance index regenerated",
+      "Compliance report PASS",
+      "Release notes appended when structural change",
+      "BDD spec coverage threshold met",
+      "Handler tests passing & coverage ≥ target"
+    ]
+  }
 }
