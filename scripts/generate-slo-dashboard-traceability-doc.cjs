@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Auto-generates SLO_DASHBOARD_TRACEABILITY_PLAN.md from SLO_DASHBOARD_TRACEABILITY_PLAN.json
- * Governance: JSON-first. DO NOT manually edit the markdown output.
+ * DEPRECATED: Use scripts/generate-governance-docs.cjs instead.
+ * This script preserved for backward compatibility; will be removed after aggregator adoption.
  */
 
 const fs = require('fs');
@@ -85,10 +85,11 @@ function renderMarkdown(plan) {
 }
 
 function main() {
+  console.warn('DEPRECATION: Use scripts/generate-governance-docs.cjs instead of generate-slo-dashboard-traceability-doc.cjs');
   const plan = loadPlan();
   const md = renderMarkdown(plan);
   fs.writeFileSync(MD_PATH, md, 'utf8');
-  console.log('Generated markdown at', MD_PATH);
+  console.log('Generated markdown (deprecated path) at', MD_PATH);
 }
 
 main();

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "purpose": "Prevent drift introduced by automated agents by enforcing invariant creation patterns and mandatory authority references.",
+  "principles": [
+    "Agents must extend existing governance manifests rather than introduce parallel ones.",
+    "All new generator scripts require manifest entries before commit.",
+    "Markdown created by agents must embed source + hash or be flagged.",
+    "Bypass of validation must be explicit via env var and audited.",
+    "Agents must prefer additive JSON authorities over direct markdown edits.",
+    "All new automation must map to an enforcement layer or reuse an existing one."],
+  "invariants": {
+    "generator_script_pattern": "scripts/generate-*.{js,cjs,mjs}",
+    "validator_script_pattern": "scripts/validate-*.{js,cjs,mjs}",
+    "required_header_regex": "GOVERNANCE: AUTO-GENERATED",
+    "manifest_file": "docs/governance/generated-docs-manifest.json",
+    "policy_files": [
+      "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "docs/governance/PROJECT_SCOPE.json",
+      "docs/governance/AGENT_SELF_GOVERNANCE_POLICY.json"
+    ]
+  },
+  "bypass": {
+    "env": "ALLOW_AGENT_GOVERNANCE_BYPASS",
+    "audit_log": ".logs/agent-bypass.log",
+    "record_fields": ["timestamp","reason","user","changed_files"]
+  },
+  "validation_rules": [
+    {"id": "missing_manifest_entry", "severity": "error", "description": "Generator script without manifest entry"},
+    {"id": "unhashed_markdown", "severity": "error", "description": "Generated markdown missing hash header"},
+    {"id": "orphan_markdown", "severity": "warn", "description": "Manual markdown in governance folder without generation header"},
+    {"id": "duplicate_authority", "severity": "error", "description": "New authority JSON overlapping existing scope"}
+  ],
+  "enforcement": {
+    "build": ["validate-agent-behavior"],
+    "ci": ["validate-agent-behavior"],
+    "precommit": ["optional - repository does not yet have hook infra"]
+  }
+}
