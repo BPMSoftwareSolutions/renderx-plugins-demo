@@ -1,0 +1,4150 @@
+{
+  "version": "1.0.0",
+  "topics": {
+    "canvas.component.copied": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when a component is copied to clipboard"
+    },
+    "canvas.component.pasted": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when a component is pasted from clipboard"
+    },
+    "canvas.component.select.svg-node.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when SVG node selection changes"
+    },
+    "react.component.mounted": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when a React component is successfully mounted on the canvas"
+    },
+    "react.component.error": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when a React component fails to compile or render"
+    },
+    "control.panel.selection.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when control panel selection state is updated"
+    },
+    "control.panel.classes.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when CSS classes are updated for a component"
+    },
+    "control.panel.css.registry.updated": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Published when the CSS registry is updated"
+    },
+    "canvas.component.copy": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentCopyPlugin",
+          "sequenceId": "canvas-component-copy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/copy.json"
+    },
+    "canvas.component.copy.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.copy"
+    },
+    "canvas.component.copy.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.copy"
+    },
+    "canvas.component.copy.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.copy"
+    },
+    "canvas.component.create.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/create.json"
+    },
+    "canvas.component.create": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.create"
+    },
+    "canvas.component.create.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.create"
+    },
+    "canvas.component.create.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.create"
+    },
+    "canvas.component.create.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.create"
+    },
+    "canvas.component.created": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated notification topic for canvas.component.create"
+    },
+    "canvas.component.resolve-template": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:resolve-template\" in canvas-component/canvas-component/create.json"
+    },
+    "canvas.component.register-instance": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:register-instance\" in canvas-component/canvas-component/create.json"
+    },
+    "canvas.component.render-react": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:render-react\" in canvas-component/canvas-component/create.json"
+    },
+    "canvas.component.notify-ui": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:notify-ui\" in canvas-component/canvas-component/create.json"
+    },
+    "canvas.component.augment.line": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:augment:line\" in canvas-component/canvas-component/create.json"
+    },
+    "canvas.component.delete.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDeleteRequestPlugin",
+          "sequenceId": "canvas-component-delete-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/delete.requested.json"
+    },
+    "canvas.component.delete": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.delete"
+    },
+    "canvas.component.delete.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.delete"
+    },
+    "canvas.component.delete.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.delete"
+    },
+    "canvas.component.delete.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.delete"
+    },
+    "canvas.component.deleted": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:deleted\" in canvas-component/canvas-component/delete.json"
+    },
+    "canvas.component.delete.route": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:delete:route\" in canvas-component/canvas-component/delete.requested.json"
+    },
+    "canvas.component.deselect.all.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDeselectionPlugin",
+          "sequenceId": "canvas-component-deselect-all-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/deselect-all.json"
+    },
+    "canvas.component.deselect.all": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.deselect.all"
+    },
+    "canvas.component.deselect.all.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.deselect.all"
+    },
+    "canvas.component.deselect.all.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.deselect.all"
+    },
+    "canvas.component.deselect.all.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.deselect.all"
+    },
+    "canvas.component.deselect.all.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated operational topic (changed) for canvas.component.deselect.all"
+    },
+    "canvas.component.selections.cleared": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:selections:cleared\" in canvas-component/canvas-component/deselect-all.json"
+    },
+    "canvas.component.deselect.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDeselectionRequestPlugin",
+          "sequenceId": "canvas-component-deselect-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/deselect.requested.json"
+    },
+    "canvas.component.deselect": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.deselect"
+    },
+    "canvas.component.deselect.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.deselect"
+    },
+    "canvas.component.deselect.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.deselect"
+    },
+    "canvas.component.deselect.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.deselect"
+    },
+    "canvas.component.deselect.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated operational topic (changed) for canvas.component.deselect"
+    },
+    "canvas.component.deselection.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:deselection:changed\" in canvas-component/canvas-component/deselect.json"
+    },
+    "canvas.component.deselect.route": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:deselect:route\" in canvas-component/canvas-component/deselect.requested.json"
+    },
+    "canvas.component.drag.end": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragEndPlugin",
+          "sequenceId": "canvas-component-drag-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/drag.end.json"
+    },
+    "canvas.component.drag.end.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.drag.end"
+    },
+    "canvas.component.drag.end.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.drag.end"
+    },
+    "canvas.component.drag.end.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.drag.end"
+    },
+    "canvas.component.drag.end.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (end) for canvas.component.drag.end"
+    },
+    "canvas.component.drag.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragMovePlugin",
+          "sequenceId": "canvas-component-drag-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/drag.move.json"
+    },
+    "canvas.component.drag.move.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.drag.move"
+    },
+    "canvas.component.drag.move.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.drag.move"
+    },
+    "canvas.component.drag.move.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.drag.move"
+    },
+    "canvas.component.drag.move.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (end) for canvas.component.drag.move"
+    },
+    "canvas.component.drag.start": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentDragStartPlugin",
+          "sequenceId": "canvas-component-drag-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/drag.start.json"
+    },
+    "canvas.component.drag.start.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.drag.start"
+    },
+    "canvas.component.drag.start.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.drag.start"
+    },
+    "canvas.component.drag.start.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.drag.start"
+    },
+    "canvas.component.export.gif.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportGifPlugin",
+          "sequenceId": "canvas-component-export-gif-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/export-gif.json"
+    },
+    "canvas.component.export.gif": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.export.gif"
+    },
+    "canvas.component.export.gif.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.export.gif"
+    },
+    "canvas.component.export.gif.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.export.gif"
+    },
+    "canvas.component.export.gif.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.export.gif"
+    },
+    "canvas.component.export-gif.rasterize-and-encode": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportGifPlugin",
+          "sequenceId": "canvas-component-export-gif-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:export-gif:rasterize-and-encode\" in canvas-component/canvas-component/export-gif.json"
+    },
+    "canvas.component.export.mp4.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportMp4Plugin",
+          "sequenceId": "canvas-component-export-mp4-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/export-mp4.json"
+    },
+    "canvas.component.export.mp4": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.export.mp4"
+    },
+    "canvas.component.export.mp4.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.export.mp4"
+    },
+    "canvas.component.export.mp4.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.export.mp4"
+    },
+    "canvas.component.export.mp4.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.export.mp4"
+    },
+    "canvas.component.export-mp4.rasterize-and-encode": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportMp4Plugin",
+          "sequenceId": "canvas-component-export-mp4-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:export-mp4:rasterize-and-encode\" in canvas-component/canvas-component/export-mp4.json"
+    },
+    "canvas.component.export.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.export": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.export"
+    },
+    "canvas.component.export.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.export"
+    },
+    "canvas.component.export.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.export"
+    },
+    "canvas.component.export.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.export"
+    },
+    "canvas.component.query-all": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:query-all\" in canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.discover-components": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:discover-components\" in canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.collect-css": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:collect-css\" in canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.collect-layout": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:collect-layout\" in canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.build-ui-file": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:build-ui-file\" in canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.download-file": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentExportPlugin",
+          "sequenceId": "canvas-component-export-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:download-file\" in canvas-component/canvas-component/export.json"
+    },
+    "canvas.component.import.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/import.json"
+    },
+    "canvas.component.import": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.import"
+    },
+    "canvas.component.import.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.import"
+    },
+    "canvas.component.import.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.import"
+    },
+    "canvas.component.import.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.import"
+    },
+    "canvas.component.ui.open": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:ui:open\" in canvas-component/canvas-component/import.json"
+    },
+    "canvas.component.ui.parse": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:ui:parse\" in canvas-component/canvas-component/import.json"
+    },
+    "canvas.component.css.inject": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:css:inject\" in canvas-component/canvas-component/import.json"
+    },
+    "canvas.component.nodes.create": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:nodes:create\" in canvas-component/canvas-component/import.json"
+    },
+    "canvas.component.hierarchy.apply": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentImportPlugin",
+          "sequenceId": "canvas-component-import-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:hierarchy:apply\" in canvas-component/canvas-component/import.json"
+    },
+    "canvas.line.manip.end.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipEndPlugin",
+          "sequenceId": "canvas-line-manip-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/line.manip.end.json"
+    },
+    "canvas.line.manip.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.line.manip.end"
+    },
+    "canvas.line.manip.end.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.line.manip.end"
+    },
+    "canvas.line.manip.end.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.line.manip.end"
+    },
+    "canvas.line.manip.end.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.line.manip.end"
+    },
+    "canvas.component.manip.line.end": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipEndPlugin",
+          "sequenceId": "canvas-line-manip-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:manip:line:end\" in canvas-component/canvas-component/line.manip.end.json"
+    },
+    "canvas.line.manip.move.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipMovePlugin",
+          "sequenceId": "canvas-line-manip-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/line.manip.move.json"
+    },
+    "canvas.line.manip.move": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.line.manip.move"
+    },
+    "canvas.line.manip.move.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.line.manip.move"
+    },
+    "canvas.line.manip.move.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.line.manip.move"
+    },
+    "canvas.line.manip.move.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.line.manip.move"
+    },
+    "canvas.component.manip.line.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipMovePlugin",
+          "sequenceId": "canvas-line-manip-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:manip:line:move\" in canvas-component/canvas-component/line.manip.move.json"
+    },
+    "canvas.line.manip.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipStartPlugin",
+          "sequenceId": "canvas-line-manip-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/line.manip.start.json"
+    },
+    "canvas.line.manip.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.line.manip.start"
+    },
+    "canvas.line.manip.start.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.line.manip.start"
+    },
+    "canvas.line.manip.start.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.line.manip.start"
+    },
+    "canvas.line.manip.start.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.line.manip.start"
+    },
+    "canvas.component.manip.line.start": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineManipStartPlugin",
+          "sequenceId": "canvas-line-manip-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:manip:line:start\" in canvas-component/canvas-component/line.manip.start.json"
+    },
+    "canvas.component.paste": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPastePlugin",
+          "sequenceId": "canvas-component-paste-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/paste.json"
+    },
+    "canvas.component.paste.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.paste"
+    },
+    "canvas.component.paste.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.paste"
+    },
+    "canvas.component.paste.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.paste"
+    },
+    "canvas.component.resize.end.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeEndPlugin",
+          "sequenceId": "canvas-component-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/resize.end.json"
+    },
+    "canvas.component.resize.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.resize.end"
+    },
+    "canvas.component.resize.end.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.resize.end"
+    },
+    "canvas.component.resize.end.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.resize.end"
+    },
+    "canvas.component.resize.end.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.resize.end"
+    },
+    "canvas.line.resize.end.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeEndPlugin",
+          "sequenceId": "canvas-line-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/resize.line.end.json"
+    },
+    "canvas.line.resize.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.line.resize.end"
+    },
+    "canvas.line.resize.end.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.line.resize.end"
+    },
+    "canvas.line.resize.end.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.line.resize.end"
+    },
+    "canvas.line.resize.end.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.line.resize.end"
+    },
+    "canvas.component.resize.line.end": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeEndPlugin",
+          "sequenceId": "canvas-line-resize-end-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:resize:line:end\" in canvas-component/canvas-component/resize.line.end.json"
+    },
+    "canvas.line.resize.move.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeMovePlugin",
+          "sequenceId": "canvas-line-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/resize.line.move.json"
+    },
+    "canvas.line.resize.move": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.line.resize.move"
+    },
+    "canvas.line.resize.move.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.line.resize.move"
+    },
+    "canvas.line.resize.move.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.line.resize.move"
+    },
+    "canvas.line.resize.move.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.line.resize.move"
+    },
+    "canvas.component.resize.line.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeMovePlugin",
+          "sequenceId": "canvas-line-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:resize:line:move\" in canvas-component/canvas-component/resize.line.move.json"
+    },
+    "canvas.line.resize.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeStartPlugin",
+          "sequenceId": "canvas-line-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/resize.line.start.json"
+    },
+    "canvas.line.resize.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.line.resize.start"
+    },
+    "canvas.line.resize.start.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.line.resize.start"
+    },
+    "canvas.line.resize.start.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.line.resize.start"
+    },
+    "canvas.line.resize.start.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.line.resize.start"
+    },
+    "canvas.component.resize.line.start": {
+      "routes": [
+        {
+          "pluginId": "CanvasLineResizeStartPlugin",
+          "sequenceId": "canvas-line-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:resize:line:start\" in canvas-component/canvas-component/resize.line.start.json"
+    },
+    "canvas.component.resize.move": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeMovePlugin",
+          "sequenceId": "canvas-component-resize-move-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/resize.move.json"
+    },
+    "canvas.component.resize.move.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.resize.move"
+    },
+    "canvas.component.resize.move.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.resize.move"
+    },
+    "canvas.component.resize.move.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.resize.move"
+    },
+    "canvas.component.resize.start.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentResizeStartPlugin",
+          "sequenceId": "canvas-component-resize-start-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/resize.start.json"
+    },
+    "canvas.component.resize.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.resize.start"
+    },
+    "canvas.component.resize.start.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.resize.start"
+    },
+    "canvas.component.resize.start.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.resize.start"
+    },
+    "canvas.component.resize.start.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.resize.start"
+    },
+    "canvas.component.rules.config.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-rules-config-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/rules.config.json"
+    },
+    "canvas.component.rules.config": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.rules.config"
+    },
+    "canvas.component.rules.config.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.rules.config"
+    },
+    "canvas.component.rules.config.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.rules.config"
+    },
+    "canvas.component.rules.config.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.rules.config"
+    },
+    "canvas.component.rules.setAll": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:rules:setAll\" in canvas-component/canvas-component/rules.config.json"
+    },
+    "canvas.component.rules.loadWindow": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:rules:loadWindow\" in canvas-component/canvas-component/rules.config.json"
+    },
+    "canvas.component.rules.getAll": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:rules:getAll\" in canvas-component/canvas-component/rules.config.json"
+    },
+    "canvas.component.select.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-select-requested-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/select.requested.json"
+    },
+    "canvas.component.select": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.select"
+    },
+    "canvas.component.select.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.select"
+    },
+    "canvas.component.select.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.select"
+    },
+    "canvas.component.select.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.select"
+    },
+    "canvas.component.selection.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated operational topic (changed) for canvas.component.selection"
+    },
+    "canvas.component.select.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:select:notify\" in canvas-component/canvas-component/select.json"
+    },
+    "canvas.component.select.route": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:select:route\" in canvas-component/canvas-component/select.requested.json"
+    },
+    "canvas.component.select.svg.node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+          "sequenceId": "canvas-component-select-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/select.svg-node.json"
+    },
+    "canvas.component.select.svg.node": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.select.svg.node"
+    },
+    "canvas.component.select.svg.node.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.select.svg.node"
+    },
+    "canvas.component.select.svg.node.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.select.svg.node"
+    },
+    "canvas.component.select.svg.node.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.select.svg.node"
+    },
+    "canvas.component.selection.svg.node.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated operational topic (changed) for canvas.component.selection.svg.node"
+    },
+    "canvas.component.select.svg-node": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+          "sequenceId": "canvas-component-select-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:select:svg-node\" in canvas-component/canvas-component/select.svg-node.json"
+    },
+    "canvas.component.update.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/update.json"
+    },
+    "canvas.component.update": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.update"
+    },
+    "canvas.component.update.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.update"
+    },
+    "canvas.component.update.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.update"
+    },
+    "canvas.component.update.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.update"
+    },
+    "canvas.component.update.attribute": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentPlugin",
+          "sequenceId": "canvas-component-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:update:attribute\" in canvas-component/canvas-component/update.json"
+    },
+    "canvas.component.update.refresh": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:update:refresh\" in canvas-component/canvas-component/update.json"
+    },
+    "canvas.component.update.svg.node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+          "sequenceId": "canvas-component-update-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from canvas-component/canvas-component/update.svg-node.json"
+    },
+    "canvas.component.update.svg.node": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for canvas.component.update.svg.node"
+    },
+    "canvas.component.update.svg.node.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for canvas.component.update.svg.node"
+    },
+    "canvas.component.update.svg.node.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for canvas.component.update.svg.node"
+    },
+    "canvas.component.update.svg.node.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for canvas.component.update.svg.node"
+    },
+    "canvas.component.update.svg-node.attribute": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+          "sequenceId": "canvas-component-update-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:update:svg-node:attribute\" in canvas-component/canvas-component/update.svg-node.json"
+    },
+    "canvas.component.update.svg-node.refresh": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"canvas:component:update:svg-node:refresh\" in canvas-component/canvas-component/update.svg-node.json"
+    },
+    "control.panel.classes.add.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-classes-add-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/classes.add.json"
+    },
+    "control.panel.classes.add": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.classes.add"
+    },
+    "control.panel.classes.add.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.classes.add"
+    },
+    "control.panel.classes.add.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.classes.add"
+    },
+    "control.panel.classes.add.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.classes.add"
+    },
+    "control.panel.classes.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:classes:notify\" in control-panel/classes.add.json"
+    },
+    "control.panel.classes.remove.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-classes-remove-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/classes.remove.json"
+    },
+    "control.panel.classes.remove": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.classes.remove"
+    },
+    "control.panel.classes.remove.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.classes.remove"
+    },
+    "control.panel.classes.remove.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.classes.remove"
+    },
+    "control.panel.classes.remove.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.classes.remove"
+    },
+    "control.panel.css.create.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-create-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/css.create.json"
+    },
+    "control.panel.css.create": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.css.create"
+    },
+    "control.panel.css.create.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.css.create"
+    },
+    "control.panel.css.create.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.css.create"
+    },
+    "control.panel.css.create.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.css.create"
+    },
+    "control.panel.css.created": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated notification topic for control.panel.css.create"
+    },
+    "control.panel.css.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:css:notify\" in control-panel/css.create.json"
+    },
+    "control.panel.css.delete.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-delete-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/css.delete.json"
+    },
+    "control.panel.css.delete": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.css.delete"
+    },
+    "control.panel.css.delete.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.css.delete"
+    },
+    "control.panel.css.delete.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.css.delete"
+    },
+    "control.panel.css.delete.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.css.delete"
+    },
+    "control.panel.css.edit.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-edit-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/css.edit.json"
+    },
+    "control.panel.css.edit": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.css.edit"
+    },
+    "control.panel.css.edit.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.css.edit"
+    },
+    "control.panel.css.edit.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.css.edit"
+    },
+    "control.panel.css.edit.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.css.edit"
+    },
+    "control.panel.css.update": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-css-edit-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:css:update\" in control-panel/css.edit.json"
+    },
+    "control.panel.selection.show.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-show-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/selection.show.json"
+    },
+    "control.panel.selection.show": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.selection.show"
+    },
+    "control.panel.selection.show.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.selection.show"
+    },
+    "control.panel.selection.show.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.selection.show"
+    },
+    "control.panel.selection.show.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.selection.show"
+    },
+    "control.panel.selectionion.show.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated operational topic (changed) for control.panel.selectionion.show"
+    },
+    "control.panel.selection.derive": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-selection-show-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:selection:derive\" in control-panel/selection.show.json"
+    },
+    "control.panel.selection.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:selection:notify\" in control-panel/selection.show.json"
+    },
+    "control.panel.ui.field.change.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.change": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.ui.field.change"
+    },
+    "control.panel.ui.field.change.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.ui.field.change"
+    },
+    "control.panel.ui.field.change.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.ui.field.change"
+    },
+    "control.panel.ui.field.change.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.ui.field.change"
+    },
+    "control.panel.ui.field.prepare": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:field:prepare\" in control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.dispatch": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:field:dispatch\" in control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.dirty": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:field:dirty\" in control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.await-refresh": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-change-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:field:await-refresh\" in control-panel/ui.field.change.json"
+    },
+    "control.panel.ui.field.validate.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-validate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.field.validate.json"
+    },
+    "control.panel.ui.field.validate": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.ui.field.validate"
+    },
+    "control.panel.ui.field.validate.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.ui.field.validate"
+    },
+    "control.panel.ui.field.validate.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.ui.field.validate"
+    },
+    "control.panel.ui.field.validate.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.ui.field.validate"
+    },
+    "control.panel.ui.errors.merge": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-validate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:errors:merge\" in control-panel/ui.field.validate.json"
+    },
+    "control.panel.ui.update": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-field-validate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:update\" in control-panel/ui.field.validate.json"
+    },
+    "control.panel.ui.init.batched.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.batched": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.ui.init.batched"
+    },
+    "control.panel.ui.init.batched.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.ui.init.batched"
+    },
+    "control.panel.ui.init.batched.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.ui.init.batched"
+    },
+    "control.panel.ui.init.batched.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.ui.init.batched"
+    },
+    "control.panel.ui.init.config": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:init:config\" in control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.resolver": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:init:resolver\" in control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.schemas": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:init:schemas\" in control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.observers": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-batched-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:init:observers\" in control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:init:notify\" in control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.movement": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:init:movement\" in control-panel/ui.init.batched.json"
+    },
+    "control.panel.ui.init.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-init-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.init.json"
+    },
+    "control.panel.ui.init": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.ui.init"
+    },
+    "control.panel.ui.init.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.ui.init"
+    },
+    "control.panel.ui.init.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.ui.init"
+    },
+    "control.panel.ui.init.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.ui.init"
+    },
+    "control.panel.ui.render.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-render-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.render.json"
+    },
+    "control.panel.ui.render": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.ui.render"
+    },
+    "control.panel.ui.render.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.ui.render"
+    },
+    "control.panel.ui.render.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.ui.render"
+    },
+    "control.panel.ui.render.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.ui.render"
+    },
+    "control.panel.ui.fields.generate": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-render-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:fields:generate\" in control-panel/ui.render.json"
+    },
+    "control.panel.ui.sections.generate": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-render-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:ui:sections:generate\" in control-panel/ui.render.json"
+    },
+    "control.panel.ui.section.toggle.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-ui-section-toggle-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/ui.section.toggle.json"
+    },
+    "control.panel.ui.section.toggle": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.ui.section.toggle"
+    },
+    "control.panel.ui.section.toggle.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.ui.section.toggle"
+    },
+    "control.panel.ui.section.toggle.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.ui.section.toggle"
+    },
+    "control.panel.ui.section.toggle.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.ui.section.toggle"
+    },
+    "control.panel.update.requested": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from control-panel/update.json"
+    },
+    "control.panel.update": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for control.panel.update"
+    },
+    "control.panel.update.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for control.panel.update"
+    },
+    "control.panel.update.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for control.panel.update"
+    },
+    "control.panel.update.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for control.panel.update"
+    },
+    "control.panel.update.derive": {
+      "routes": [
+        {
+          "pluginId": "ControlPanelPlugin",
+          "sequenceId": "control-panel-update-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:update:derive\" in control-panel/update.json"
+    },
+    "control.panel.update.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"control:panel:update:notify\" in control-panel/update.json"
+    },
+    "app.ui.theme.get.requested": {
+      "routes": [
+        {
+          "pluginId": "HeaderThemePlugin",
+          "sequenceId": "header-ui-theme-get-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from header/header/ui.theme.get.json"
+    },
+    "app.ui.theme.get": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for app.ui.theme.get"
+    },
+    "app.ui.theme.get.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for app.ui.theme.get"
+    },
+    "app.ui.theme.get.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for app.ui.theme.get"
+    },
+    "app.ui.theme.get.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for app.ui.theme.get"
+    },
+    "app.ui.theme.notify": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"app:ui:theme:notify\" in header/header/ui.theme.get.json"
+    },
+    "app.ui.theme.toggle.requested": {
+      "routes": [
+        {
+          "pluginId": "HeaderThemePlugin",
+          "sequenceId": "header-ui-theme-toggle-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from header/header/ui.theme.toggle.json"
+    },
+    "app.ui.theme.toggle": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for app.ui.theme.toggle"
+    },
+    "app.ui.theme.toggle.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for app.ui.theme.toggle"
+    },
+    "app.ui.theme.toggle.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for app.ui.theme.toggle"
+    },
+    "app.ui.theme.toggle.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for app.ui.theme.toggle"
+    },
+    "library.load.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryPlugin",
+          "sequenceId": "library-load-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library/library/library-load.json"
+    },
+    "library.load": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for library.load"
+    },
+    "library.load.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for library.load"
+    },
+    "library.load.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for library.load"
+    },
+    "library.load.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for library.load"
+    },
+    "library.components.load": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"library:components:load\" in library/library/library-load.json"
+    },
+    "library.components.notify-ui": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"library:components:notify-ui\" in library/library/library-load.json"
+    },
+    "library.container.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-container-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library-component/library-component/container.drop.json"
+    },
+    "library.container.drop": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for library.container.drop"
+    },
+    "library.container.drop.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for library.container.drop"
+    },
+    "library.container.drop.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for library.container.drop"
+    },
+    "library.container.drop.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for library.container.drop"
+    },
+    "library.component.drag.start.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drag-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library-component/library-component/drag.json"
+    },
+    "library.component.drag.start": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for library.component.drag.start"
+    },
+    "library.component.drag.start.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for library.component.drag.start"
+    },
+    "library.component.drag.start.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for library.component.drag.start"
+    },
+    "library.component.drag.start.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for library.component.drag.start"
+    },
+    "library.component.drag.end": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (end) for library.component.drag"
+    },
+    "library.component.drop.requested": {
+      "routes": [
+        {
+          "pluginId": "LibraryComponentPlugin",
+          "sequenceId": "library-component-drop-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from library-component/library-component/drop.json"
+    },
+    "library.component.drop": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for library.component.drop"
+    },
+    "library.component.drop.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for library.component.drop"
+    },
+    "library.component.drop.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for library.component.drop"
+    },
+    "library.component.drop.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for library.component.drop"
+    },
+    "real.estate.analyzer.search.requested": {
+      "routes": [
+        {
+          "pluginId": "RealEstateAnalyzerPlugin",
+          "sequenceId": "real-estate-analyzer-search-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from real-estate-analyzer/real-estate-analyzer/search-property.json"
+    },
+    "real.estate.analyzer.search": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for real.estate.analyzer.search"
+    },
+    "real.estate.analyzer.search.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for real.estate.analyzer.search"
+    },
+    "real.estate.analyzer.search.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for real.estate.analyzer.search"
+    },
+    "real.estate.analyzer.search.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for real.estate.analyzer.search"
+    },
+    "real.estate.analyzer.analyze": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"real.estate.analyzer:analyze\" in real-estate-analyzer/real-estate-analyzer/search-property.json"
+    },
+    "real.estate.analyzer.format": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"real.estate.analyzer:format\" in real-estate-analyzer/real-estate-analyzer/search-property.json"
+    },
+    "self.healing.anomaly.detect.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-anomaly-detect-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/anomaly.detect.json"
+    },
+    "self.healing.anomaly.detect": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.anomaly.detect"
+    },
+    "self.healing.anomaly.detect.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.anomaly.detect"
+    },
+    "self.healing.anomaly.detect.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.anomaly.detect"
+    },
+    "self.healing.anomaly.detect.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.anomaly.detect"
+    },
+    "self-healing.anomaly.detect.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:detect:requested\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.load.telemetry": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-anomaly-detect-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:load:telemetry\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.detect.performance": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:detect:performance\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.detect.behavioral": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:detect:behavioral\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.detect.coverage": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:detect:coverage\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.detect.errors": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:detect:errors\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.aggregate.results": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:aggregate:results\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.store.results": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-anomaly-detect-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:store:results\" in self-healing/anomaly.detect.json"
+    },
+    "self-healing.anomaly.detect.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:anomaly:detect:completed\" in self-healing/anomaly.detect.json"
+    },
+    "self.healing.deployment.deploy.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/deployment.deploy.json"
+    },
+    "self.healing.deployment.deploy": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.deployment.deploy"
+    },
+    "self.healing.deployment.deploy.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.deployment.deploy"
+    },
+    "self.healing.deployment.deploy.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.deployment.deploy"
+    },
+    "self.healing.deployment.deploy.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.deployment.deploy"
+    },
+    "self-healing.deployment.deploy.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:deploy:requested\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.load.validation": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:load:validation\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.check.approval": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:check:approval\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.create.branch": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:create:branch\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.apply.changes": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:apply:changes\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.create.pr": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:create:pr\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.run.ci": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:run:ci\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.auto.merge": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:auto:merge\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.deploy.production": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:deploy:production\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.verify.deployment": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-deployment-deploy-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:verify:deployment\" in self-healing/deployment.deploy.json"
+    },
+    "self-healing.deployment.deploy.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:deployment:deploy:completed\" in self-healing/deployment.deploy.json"
+    },
+    "self.healing.diagnosis.analyze.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-diagnosis-analyze-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/diagnosis.analyze.json"
+    },
+    "self.healing.diagnosis.analyze": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.diagnosis.analyze"
+    },
+    "self.healing.diagnosis.analyze.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.diagnosis.analyze"
+    },
+    "self.healing.diagnosis.analyze.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.diagnosis.analyze"
+    },
+    "self.healing.diagnosis.analyze.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.diagnosis.analyze"
+    },
+    "self-healing.diagnosis.analyze.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:analyze:requested\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.load.anomalies": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-diagnosis-analyze-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:load:anomalies\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.load.codebase": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-diagnosis-analyze-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:load:codebase\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.analyze.performance": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:analyze:performance\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.analyze.behavioral": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:analyze:behavioral\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.analyze.coverage": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:analyze:coverage\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.analyze.errors": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:analyze:errors\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.assess.impact": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:assess:impact\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.recommend.fixes": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:recommend:fixes\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.store.diagnosis": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-diagnosis-analyze-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:store:diagnosis\" in self-healing/diagnosis.analyze.json"
+    },
+    "self-healing.diagnosis.analyze.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:diagnosis:analyze:completed\" in self-healing/diagnosis.analyze.json"
+    },
+    "self.healing.fix.generate.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-fix-generate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/fix.generate.json"
+    },
+    "self.healing.fix.generate": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.fix.generate"
+    },
+    "self.healing.fix.generate.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.fix.generate"
+    },
+    "self.healing.fix.generate.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.fix.generate"
+    },
+    "self.healing.fix.generate.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.fix.generate"
+    },
+    "self-healing.fix.generate.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:generate:requested\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.load.diagnosis": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-fix-generate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:load:diagnosis\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.generate.code": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:generate:code\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.generate.test": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:generate:test\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.generate.documentation": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:generate:documentation\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.create.patch": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:create:patch\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.validate.syntax": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:validate:syntax\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.store.patch": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-fix-generate-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:store:patch\" in self-healing/fix.generate.json"
+    },
+    "self-healing.fix.generate.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:fix:generate:completed\" in self-healing/fix.generate.json"
+    },
+    "self.healing.learning.track.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-learning-track-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/learning.track.json"
+    },
+    "self.healing.learning.track": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.learning.track"
+    },
+    "self.healing.learning.track.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.learning.track"
+    },
+    "self.healing.learning.track.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.learning.track"
+    },
+    "self.healing.learning.track.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.learning.track"
+    },
+    "self-healing.learning.track.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:track:requested\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.load.deployment": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-learning-track-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:load:deployment\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.collect.metrics": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-learning-track-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:collect:metrics\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.compare.metrics": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:compare:metrics\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.calculate.improvement": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:calculate:improvement\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.assess.success": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:assess:success\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.update.models": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:update:models\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.generate.insights": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:generate:insights\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.store.effectiveness": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-learning-track-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:store:effectiveness\" in self-healing/learning.track.json"
+    },
+    "self-healing.learning.track.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:learning:track:completed\" in self-healing/learning.track.json"
+    },
+    "self.healing.telemetry.parse.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-telemetry-parse-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/telemetry.parse.json"
+    },
+    "self.healing.telemetry.parse": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.telemetry.parse"
+    },
+    "self.healing.telemetry.parse.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.telemetry.parse"
+    },
+    "self.healing.telemetry.parse.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.telemetry.parse"
+    },
+    "self.healing.telemetry.parse.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.telemetry.parse"
+    },
+    "self-healing.telemetry.parse.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:parse:requested\" in self-healing/telemetry.parse.json"
+    },
+    "self-healing.telemetry.load.logs": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-telemetry-parse-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:load:logs\" in self-healing/telemetry.parse.json"
+    },
+    "self-healing.telemetry.extract.events": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-telemetry-parse-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:extract:events\" in self-healing/telemetry.parse.json"
+    },
+    "self-healing.telemetry.normalize.data": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:normalize:data\" in self-healing/telemetry.parse.json"
+    },
+    "self-healing.telemetry.aggregate.metrics": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:aggregate:metrics\" in self-healing/telemetry.parse.json"
+    },
+    "self-healing.telemetry.store.database": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-telemetry-parse-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:store:database\" in self-healing/telemetry.parse.json"
+    },
+    "self-healing.telemetry.parse.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:telemetry:parse:completed\" in self-healing/telemetry.parse.json"
+    },
+    "self.healing.validation.run.requested": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from self-healing/validation.run.json"
+    },
+    "self.healing.validation.run": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for self.healing.validation.run"
+    },
+    "self.healing.validation.run.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for self.healing.validation.run"
+    },
+    "self.healing.validation.run.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for self.healing.validation.run"
+    },
+    "self.healing.validation.run.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for self.healing.validation.run"
+    },
+    "self-healing.validation.run.requested": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:run:requested\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.load.patch": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:load:patch\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.apply.patch": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:apply:patch\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.run.tests": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:run:tests\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.check.coverage": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:check:coverage\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.verify.performance": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:verify:performance\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.validate.documentation": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:validate:documentation\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.aggregate.results": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:aggregate:results\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.store.results": {
+      "routes": [
+        {
+          "pluginId": "SelfHealingPlugin",
+          "sequenceId": "self-healing-validation-run-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:store:results\" in self-healing/validation.run.json"
+    },
+    "self-healing.validation.run.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from beat event \"self-healing:validation:run:completed\" in self-healing/validation.run.json"
+    },
+    "dashboard.export.report.requested": {
+      "routes": [
+        {
+          "pluginId": "slo-dashboard",
+          "sequenceId": "dashboard.export.report"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from slo-dashboard/dashboard.export.report.json"
+    },
+    "dashboard.export.report": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for dashboard.export.report"
+    },
+    "dashboard.export.report.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for dashboard.export.report"
+    },
+    "dashboard.export.report.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for dashboard.export.report"
+    },
+    "dashboard.export.report.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for dashboard.export.report"
+    },
+    "dashboard.load.requested": {
+      "routes": [
+        {
+          "pluginId": "slo-dashboard",
+          "sequenceId": "dashboard.load"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from slo-dashboard/dashboard.load.json"
+    },
+    "dashboard.load": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for dashboard.load"
+    },
+    "dashboard.load.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for dashboard.load"
+    },
+    "dashboard.load.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for dashboard.load"
+    },
+    "dashboard.load.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for dashboard.load"
+    },
+    "dashboard.refresh.metrics.requested": {
+      "routes": [
+        {
+          "pluginId": "slo-dashboard",
+          "sequenceId": "dashboard.refresh.metrics"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-derived from slo-dashboard/dashboard.refresh.metrics.json"
+    },
+    "dashboard.refresh.metrics": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated base topic for dashboard.refresh.metrics"
+    },
+    "dashboard.refresh.metrics.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (started) for dashboard.refresh.metrics"
+    },
+    "dashboard.refresh.metrics.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (completed) for dashboard.refresh.metrics"
+    },
+    "dashboard.refresh.metrics.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-generated lifecycle topic (failed) for dashboard.refresh.metrics"
+    },
+    "canvas.component.select.svg-node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+          "sequenceId": "canvas-component-select-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.select.svg.node.requested (auto-generated)"
+    },
+    "canvas.component.select.svg-node.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.select.svg.node.started (auto-generated)"
+    },
+    "canvas.component.select.svg-node.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.select.svg.node.completed (auto-generated)"
+    },
+    "canvas.component.select.svg-node.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.select.svg.node.failed (auto-generated)"
+    },
+    "canvas.component.selection.svg-node.changed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.selection.svg.node.changed (auto-generated)"
+    },
+    "canvas.component.update.svg-node.requested": {
+      "routes": [
+        {
+          "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+          "sequenceId": "canvas-component-update-svg-node-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.update.svg.node.requested (auto-generated)"
+    },
+    "canvas.component.update.svg-node": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.update.svg.node (auto-generated)"
+    },
+    "canvas.component.update.svg-node.started": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.update.svg.node.started (auto-generated)"
+    },
+    "canvas.component.update.svg-node.completed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.update.svg.node.completed (auto-generated)"
+    },
+    "canvas.component.update.svg-node.failed": {
+      "routes": [],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Legacy backward compatibility alias for canvas.component.update.svg.node.failed (auto-generated)"
+    },
+    "library.drop": {
+      "routes": [
+        {
+          "pluginId": "LibraryPlugin",
+          "sequenceId": "library-load-symphony"
+        }
+      ],
+      "payloadSchema": {
+        "type": "object"
+      },
+      "visibility": "public",
+      "notes": "Auto-inferred alias for library.load.requested (frontend expects library.drop)"
+    }
+  }
+}

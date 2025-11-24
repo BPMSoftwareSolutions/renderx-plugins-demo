@@ -1,0 +1,1613 @@
+{
+  "timestamp": "2025-11-24T20:22:33.492Z",
+  "mode": "execute",
+  "totalFiles": 242,
+  "relocated": 228,
+  "unchanged": 13,
+  "errors": 1,
+  "details": [
+    {
+      "filename": "7_LAYER_FILE_STRUCTURE_MAPPING.md",
+      "action": "moved",
+      "from": "7_LAYER_FILE_STRUCTURE_MAPPING.md",
+      "to": ".archived\\7_LAYER_FILE_STRUCTURE_MAPPING.md",
+      "status": "success"
+    },
+    {
+      "filename": "7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
+      "action": "moved",
+      "from": "7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
+      "to": ".archived\\7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "7_LAYER_PIPELINE_DOCUMENTATION_INDEX.md",
+      "action": "moved",
+      "from": "7_LAYER_PIPELINE_DOCUMENTATION_INDEX.md",
+      "to": ".archived\\7_LAYER_PIPELINE_DOCUMENTATION_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "7_LAYER_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "7_LAYER_QUICK_REFERENCE.md",
+      "to": ".archived\\7_LAYER_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "ADVANCED_DOCS_FINAL_SUMMARY.md",
+      "action": "moved",
+      "from": "ADVANCED_DOCS_FINAL_SUMMARY.md",
+      "to": ".archived\\ADVANCED_DOCS_FINAL_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "ADVANCED_DOCUMENTATION_ACHIEVEMENT.md",
+      "action": "moved",
+      "from": "ADVANCED_DOCUMENTATION_ACHIEVEMENT.md",
+      "to": ".archived\\ADVANCED_DOCUMENTATION_ACHIEVEMENT.md",
+      "status": "success"
+    },
+    {
+      "filename": "ANALYSIS_VALIDATION_REPORT.md",
+      "action": "moved",
+      "from": "ANALYSIS_VALIDATION_REPORT.md",
+      "to": ".archived\\ANALYSIS_VALIDATION_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "AUDIT_COMPLETION_REPORT.md",
+      "action": "moved",
+      "from": "AUDIT_COMPLETION_REPORT.md",
+      "to": ".archived\\AUDIT_COMPLETION_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "AUDIT_FILTERING_IMPLEMENTATION.md",
+      "action": "moved",
+      "from": "AUDIT_FILTERING_IMPLEMENTATION.md",
+      "to": ".archived\\AUDIT_FILTERING_IMPLEMENTATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "AUDIT_SYSTEM_COMPLETE.md",
+      "action": "moved",
+      "from": "AUDIT_SYSTEM_COMPLETE.md",
+      "to": ".archived\\AUDIT_SYSTEM_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "AUDIT_UPDATE_SUMMARY.md",
+      "action": "moved",
+      "from": "AUDIT_UPDATE_SUMMARY.md",
+      "to": ".archived\\AUDIT_UPDATE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "AUTOMATED_DOCUMENTATION_SUMMARY.md",
+      "action": "moved",
+      "from": "AUTOMATED_DOCUMENTATION_SUMMARY.md",
+      "to": ".archived\\AUTOMATED_DOCUMENTATION_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md",
+      "action": "moved",
+      "from": "BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md",
+      "to": ".archived\\BASELINE_ESTABLISHMENT_DEMO_RUN_2025-11-23.md",
+      "status": "success"
+    },
+    {
+      "filename": "BDD_SPECS_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "BDD_SPECS_QUICK_REFERENCE.md",
+      "to": ".archived\\BDD_SPECS_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "BDD_TELEMETRY_GOVERNANCE.md",
+      "action": "moved",
+      "from": "BDD_TELEMETRY_GOVERNANCE.md",
+      "to": ".archived\\BDD_TELEMETRY_GOVERNANCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "BUILD_PROCESS_SUMMARY.md",
+      "action": "moved",
+      "from": "BUILD_PROCESS_SUMMARY.md",
+      "to": ".archived\\BUILD_PROCESS_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "BUSINESS_BDD_SPECS_LOCATION.md",
+      "action": "moved",
+      "from": "BUSINESS_BDD_SPECS_LOCATION.md",
+      "to": ".archived\\BUSINESS_BDD_SPECS_LOCATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_COMPLETE_SYSTEM_SUMMARY.md",
+      "action": "moved",
+      "from": "CAG_COMPLETE_SYSTEM_SUMMARY.md",
+      "to": ".archived\\CAG_COMPLETE_SYSTEM_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_CONTEXT_TREE_MAPPER_COMPLETE.md",
+      "action": "moved",
+      "from": "CAG_CONTEXT_TREE_MAPPER_COMPLETE.md",
+      "to": ".archived\\CAG_CONTEXT_TREE_MAPPER_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_DELIVERY_COMPLETE.md",
+      "action": "moved",
+      "from": "CAG_DELIVERY_COMPLETE.md",
+      "to": ".archived\\CAG_DELIVERY_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_DOCUMENTATION_INTEGRATION.md",
+      "action": "moved",
+      "from": "CAG_DOCUMENTATION_INTEGRATION.md",
+      "to": ".archived\\CAG_DOCUMENTATION_INTEGRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_SYSTEM_ARCHITECTURE.md",
+      "action": "moved",
+      "from": "CAG_SYSTEM_ARCHITECTURE.md",
+      "to": ".archived\\CAG_SYSTEM_ARCHITECTURE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_SYSTEM_IMPLEMENTATION.md",
+      "action": "moved",
+      "from": "CAG_SYSTEM_IMPLEMENTATION.md",
+      "to": ".archived\\CAG_SYSTEM_IMPLEMENTATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "CAG_SYSTEM_INDEX.md",
+      "action": "moved",
+      "from": "CAG_SYSTEM_INDEX.md",
+      "to": ".archived\\CAG_SYSTEM_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_ANALYSIS_SUMMARY.md",
+      "action": "moved",
+      "from": "COMPLETE_ANALYSIS_SUMMARY.md",
+      "to": ".archived\\COMPLETE_ANALYSIS_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_ANSWER_SELF_HEALING_INTEGRATION.md",
+      "action": "moved",
+      "from": "COMPLETE_ANSWER_SELF_HEALING_INTEGRATION.md",
+      "to": ".archived\\COMPLETE_ANSWER_SELF_HEALING_INTEGRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_DELIVERY_SUMMARY.md",
+      "action": "moved",
+      "from": "COMPLETE_DELIVERY_SUMMARY.md",
+      "to": ".archived\\COMPLETE_DELIVERY_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md",
+      "action": "moved",
+      "from": "COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md",
+      "to": ".archived\\COMPLETE_KNOWLEDGE_SYSTEM_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_RAG_DISCOVERY_SYSTEM.md",
+      "action": "moved",
+      "from": "COMPLETE_RAG_DISCOVERY_SYSTEM.md",
+      "to": ".archived\\COMPLETE_RAG_DISCOVERY_SYSTEM.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_REMOVAL_SUMMARY.md",
+      "action": "moved",
+      "from": "COMPLETE_REMOVAL_SUMMARY.md",
+      "to": ".archived\\COMPLETE_REMOVAL_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_SYSTEM_DEMONSTRATION.md",
+      "action": "moved",
+      "from": "COMPLETE_SYSTEM_DEMONSTRATION.md",
+      "to": ".archived\\COMPLETE_SYSTEM_DEMONSTRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPLETE_SYSTEM_OVERVIEW.md",
+      "action": "moved",
+      "from": "COMPLETE_SYSTEM_OVERVIEW.md",
+      "to": ".archived\\COMPLETE_SYSTEM_OVERVIEW.md",
+      "status": "success"
+    },
+    {
+      "filename": "COMPREHENSIVE_AUDIT_CONTENTS.md",
+      "action": "moved",
+      "from": "COMPREHENSIVE_AUDIT_CONTENTS.md",
+      "to": ".archived\\COMPREHENSIVE_AUDIT_CONTENTS.md",
+      "status": "success"
+    },
+    {
+      "filename": "CONSOLE_LOGGING_COMPLETE.md",
+      "action": "moved",
+      "from": "CONSOLE_LOGGING_COMPLETE.md",
+      "to": ".archived\\CONSOLE_LOGGING_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CONSOLE_LOGGING_GUIDE.md",
+      "action": "moved",
+      "from": "CONSOLE_LOGGING_GUIDE.md",
+      "to": ".archived\\CONSOLE_LOGGING_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CONTEXT_REMOUNTING_INTEGRATION.md",
+      "action": "moved",
+      "from": "CONTEXT_REMOUNTING_INTEGRATION.md",
+      "to": ".archived\\CONTEXT_REMOUNTING_INTEGRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "CONTEXT_REMOUNTING_SYSTEM.md",
+      "action": "moved",
+      "from": "CONTEXT_REMOUNTING_SYSTEM.md",
+      "to": ".archived\\CONTEXT_REMOUNTING_SYSTEM.md",
+      "status": "success"
+    },
+    {
+      "filename": "CORRECTED_7_LAYER_PIPELINE.md",
+      "action": "moved",
+      "from": "CORRECTED_7_LAYER_PIPELINE.md",
+      "to": ".archived\\CORRECTED_7_LAYER_PIPELINE.md",
+      "status": "success"
+    },
+    {
+      "filename": "COVERAGE_METRICS_SUMMARY.md",
+      "action": "moved",
+      "from": "COVERAGE_METRICS_SUMMARY.md",
+      "to": ".archived\\COVERAGE_METRICS_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRITICAL_CORRECTION_COMPLETE_PIPELINE.md",
+      "action": "moved",
+      "from": "CRITICAL_CORRECTION_COMPLETE_PIPELINE.md",
+      "to": ".archived\\CRITICAL_CORRECTION_COMPLETE_PIPELINE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_COMPLETE_INDEX.md",
+      "action": "moved",
+      "from": "CRS_COMPLETE_INDEX.md",
+      "to": ".archived\\CRS_COMPLETE_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_DELIVERY_SUMMARY.md",
+      "action": "moved",
+      "from": "CRS_DELIVERY_SUMMARY.md",
+      "to": ".archived\\CRS_DELIVERY_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_EXECUTIVE_SUMMARY.md",
+      "action": "moved",
+      "from": "CRS_EXECUTIVE_SUMMARY.md",
+      "to": ".archived\\CRS_EXECUTIVE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_FINAL_SUMMARY.md",
+      "action": "moved",
+      "from": "CRS_FINAL_SUMMARY.md",
+      "to": ".archived\\CRS_FINAL_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_IMPLEMENTATION_COMPLETE.md",
+      "action": "moved",
+      "from": "CRS_IMPLEMENTATION_COMPLETE.md",
+      "to": ".archived\\CRS_IMPLEMENTATION_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_IMPLEMENTATION_VERIFIED.md",
+      "action": "moved",
+      "from": "CRS_IMPLEMENTATION_VERIFIED.md",
+      "to": ".archived\\CRS_IMPLEMENTATION_VERIFIED.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_INDEX.md",
+      "action": "moved",
+      "from": "CRS_INDEX.md",
+      "to": ".archived\\CRS_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_SUMMARY.md",
+      "action": "moved",
+      "from": "CRS_SUMMARY.md",
+      "to": ".archived\\CRS_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_SYSTEM_IN_ACTION.md",
+      "action": "moved",
+      "from": "CRS_SYSTEM_IN_ACTION.md",
+      "to": ".archived\\CRS_SYSTEM_IN_ACTION.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_TRACEABILITY_INTEGRATION.md",
+      "action": "moved",
+      "from": "CRS_TRACEABILITY_INTEGRATION.md",
+      "to": ".archived\\CRS_TRACEABILITY_INTEGRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "CRS_WHAT_WAS_BUILT.md",
+      "action": "moved",
+      "from": "CRS_WHAT_WAS_BUILT.md",
+      "to": ".archived\\CRS_WHAT_WAS_BUILT.md",
+      "status": "success"
+    },
+    {
+      "filename": "DASHBOARD_DEMO_GUIDE.md",
+      "action": "moved",
+      "from": "DASHBOARD_DEMO_GUIDE.md",
+      "to": ".archived\\DASHBOARD_DEMO_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DASHBOARD_RECOVERY_COMPLETE.md",
+      "action": "moved",
+      "from": "DASHBOARD_RECOVERY_COMPLETE.md",
+      "to": ".archived\\DASHBOARD_RECOVERY_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DASHBOARD_STRATEGIC_DECISION_MAP.md",
+      "action": "moved",
+      "from": "DASHBOARD_STRATEGIC_DECISION_MAP.md",
+      "to": ".archived\\DASHBOARD_STRATEGIC_DECISION_MAP.md",
+      "status": "success"
+    },
+    {
+      "filename": "DASHBOARD_STRATEGIC_LOCATION.md",
+      "action": "moved",
+      "from": "DASHBOARD_STRATEGIC_LOCATION.md",
+      "to": ".archived\\DASHBOARD_STRATEGIC_LOCATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "DASHBOARD_UX_AND_GOVERNANCE.md",
+      "action": "moved",
+      "from": "DASHBOARD_UX_AND_GOVERNANCE.md",
+      "to": ".archived\\DASHBOARD_UX_AND_GOVERNANCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DATA_TRACEABILITY_ARCHITECTURE.md",
+      "action": "moved",
+      "from": "DATA_TRACEABILITY_ARCHITECTURE.md",
+      "to": ".archived\\DATA_TRACEABILITY_ARCHITECTURE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DELIVERY_COMPLETE_ALL_DELIVERABLES.md",
+      "action": "moved",
+      "from": "DELIVERY_COMPLETE_ALL_DELIVERABLES.md",
+      "to": ".archived\\DELIVERY_COMPLETE_ALL_DELIVERABLES.md",
+      "status": "success"
+    },
+    {
+      "filename": "DELIVERY_VERIFICATION.md",
+      "action": "moved",
+      "from": "DELIVERY_VERIFICATION.md",
+      "to": ".archived\\DELIVERY_VERIFICATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "DEMO_INTERACTIVE_GUIDE.md",
+      "action": "moved",
+      "from": "DEMO_INTERACTIVE_GUIDE.md",
+      "to": ".archived\\DEMO_INTERACTIVE_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DEMO_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "DEMO_QUICK_REFERENCE.md",
+      "to": ".archived\\DEMO_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DEMO_RESULTS.md",
+      "action": "moved",
+      "from": "DEMO_RESULTS.md",
+      "to": ".archived\\DEMO_RESULTS.md",
+      "status": "success"
+    },
+    {
+      "filename": "DEMO_SLI_SLO_SLA_REPORT.md",
+      "action": "moved",
+      "from": "DEMO_SLI_SLO_SLA_REPORT.md",
+      "to": ".archived\\DEMO_SLI_SLO_SLA_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "DEMO_TRACEABILITY_GUIDE.md",
+      "action": "moved",
+      "from": "DEMO_TRACEABILITY_GUIDE.md",
+      "to": ".archived\\DEMO_TRACEABILITY_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "desktop_vs_web_log_parity_analysis.md",
+      "action": "moved",
+      "from": "desktop_vs_web_log_parity_analysis.md",
+      "to": ".archived\\desktop_vs_web_log_parity_analysis.md",
+      "status": "success"
+    },
+    {
+      "filename": "DEVELOPMENT_PIPELINE_TRACEABILITY.md",
+      "action": "moved",
+      "from": "DEVELOPMENT_PIPELINE_TRACEABILITY.md",
+      "to": ".archived\\DEVELOPMENT_PIPELINE_TRACEABILITY.md",
+      "status": "success"
+    },
+    {
+      "filename": "DIAGNOSIS_DEMO_RUN_2025-11-23.md",
+      "action": "moved",
+      "from": "DIAGNOSIS_DEMO_RUN_2025-11-23.md",
+      "to": ".archived\\DIAGNOSIS_DEMO_RUN_2025-11-23.md",
+      "status": "success"
+    },
+    {
+      "filename": "DISCOVERY_SYSTEM_INDEX.md",
+      "action": "moved",
+      "from": "DISCOVERY_SYSTEM_INDEX.md",
+      "to": ".archived\\DISCOVERY_SYSTEM_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_GENERATION_COMPLETE.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_GENERATION_COMPLETE.md",
+      "to": ".archived\\DOCUMENTATION_GENERATION_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_GENERATION_COMPLETE_SUMMARY.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_GENERATION_COMPLETE_SUMMARY.md",
+      "to": ".archived\\DOCUMENTATION_GENERATION_COMPLETE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_GOVERNANCE_COMPLETE.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_GOVERNANCE_COMPLETE.md",
+      "to": ".archived\\DOCUMENTATION_GOVERNANCE_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_GOVERNANCE_SYSTEM.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_GOVERNANCE_SYSTEM.md",
+      "to": ".archived\\DOCUMENTATION_GOVERNANCE_SYSTEM.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_INDEX.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_INDEX.md",
+      "to": ".archived\\DOCUMENTATION_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_POSSIBILITIES.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_POSSIBILITIES.md",
+      "to": ".archived\\DOCUMENTATION_POSSIBILITIES.md",
+      "status": "success"
+    },
+    {
+      "filename": "DOCUMENTATION_SUMMARY.md",
+      "action": "moved",
+      "from": "DOCUMENTATION_SUMMARY.md",
+      "to": ".archived\\DOCUMENTATION_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "ENFORCEMENT_DOCUMENTATION_INDEX.md",
+      "action": "moved",
+      "from": "ENFORCEMENT_DOCUMENTATION_INDEX.md",
+      "to": ".archived\\ENFORCEMENT_DOCUMENTATION_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "ENFORCEMENT_MASTER_INDEX.md",
+      "action": "moved",
+      "from": "ENFORCEMENT_MASTER_INDEX.md",
+      "to": ".archived\\ENFORCEMENT_MASTER_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "ENFORCEMENT_QUICK_START.md",
+      "action": "moved",
+      "from": "ENFORCEMENT_QUICK_START.md",
+      "to": ".archived\\ENFORCEMENT_QUICK_START.md",
+      "status": "success"
+    },
+    {
+      "filename": "ENFORCEMENT_SYSTEM_COMPLETE.md",
+      "action": "moved",
+      "from": "ENFORCEMENT_SYSTEM_COMPLETE.md",
+      "to": ".archived\\ENFORCEMENT_SYSTEM_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "ENFORCEMENT_VISUAL_OVERVIEW.md",
+      "action": "moved",
+      "from": "ENFORCEMENT_VISUAL_OVERVIEW.md",
+      "to": ".archived\\ENFORCEMENT_VISUAL_OVERVIEW.md",
+      "status": "success"
+    },
+    {
+      "filename": "ENHANCED_GAP_ANALYSIS_CRITICAL_ISSUES.md",
+      "action": "moved",
+      "from": "ENHANCED_GAP_ANALYSIS_CRITICAL_ISSUES.md",
+      "to": ".archived\\ENHANCED_GAP_ANALYSIS_CRITICAL_ISSUES.md",
+      "status": "success"
+    },
+    {
+      "filename": "EXECUTIVE_SUMMARY.md",
+      "action": "moved",
+      "from": "EXECUTIVE_SUMMARY.md",
+      "to": ".archived\\EXECUTIVE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "EXTRA_HANDLERS_ANALYSIS.md",
+      "action": "moved",
+      "from": "EXTRA_HANDLERS_ANALYSIS.md",
+      "to": ".archived\\EXTRA_HANDLERS_ANALYSIS.md",
+      "status": "success"
+    },
+    {
+      "filename": "FALSE_POSITIVE_ANALYSIS.md",
+      "action": "moved",
+      "from": "FALSE_POSITIVE_ANALYSIS.md",
+      "to": ".archived\\FALSE_POSITIVE_ANALYSIS.md",
+      "status": "success"
+    },
+    {
+      "filename": "FALSE_POSITIVE_ELIMINATION_COMPLETE.md",
+      "action": "moved",
+      "from": "FALSE_POSITIVE_ELIMINATION_COMPLETE.md",
+      "to": ".archived\\FALSE_POSITIVE_ELIMINATION_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "FINAL_ACHIEVEMENT_REPORT.md",
+      "action": "moved",
+      "from": "FINAL_ACHIEVEMENT_REPORT.md",
+      "to": ".archived\\FINAL_ACHIEVEMENT_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "FINAL_IMPLEMENTATION_SUMMARY.md",
+      "action": "moved",
+      "from": "FINAL_IMPLEMENTATION_SUMMARY.md",
+      "to": ".archived\\FINAL_IMPLEMENTATION_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "FINAL_REVIEW_SUMMARY.md",
+      "action": "moved",
+      "from": "FINAL_REVIEW_SUMMARY.md",
+      "to": ".archived\\FINAL_REVIEW_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "FINAL_SUMMARY.md",
+      "action": "moved",
+      "from": "FINAL_SUMMARY.md",
+      "to": ".archived\\FINAL_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md",
+      "action": "moved",
+      "from": "FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md",
+      "to": ".archived\\FINAL_SUMMARY_TECHNICAL_BDD_REMOVED.md",
+      "status": "success"
+    },
+    {
+      "filename": "FINDING_THE_BUG_WORKFLOW.md",
+      "action": "moved",
+      "from": "FINDING_THE_BUG_WORKFLOW.md",
+      "to": ".archived\\FINDING_THE_BUG_WORKFLOW.md",
+      "status": "success"
+    },
+    {
+      "filename": "GLOBAL_COMPONENT_TOPOLOGY.md",
+      "action": "moved",
+      "from": "GLOBAL_COMPONENT_TOPOLOGY.md",
+      "to": ".archived\\GLOBAL_COMPONENT_TOPOLOGY.md",
+      "status": "success"
+    },
+    {
+      "filename": "GLOBAL_DASHBOARD_ARCHITECTURE.md",
+      "action": "moved",
+      "from": "GLOBAL_DASHBOARD_ARCHITECTURE.md",
+      "to": ".archived\\GLOBAL_DASHBOARD_ARCHITECTURE.md",
+      "status": "success"
+    },
+    {
+      "filename": "GLOBAL_DATA_PIPELINES.md",
+      "action": "moved",
+      "from": "GLOBAL_DATA_PIPELINES.md",
+      "to": ".archived\\GLOBAL_DATA_PIPELINES.md",
+      "status": "success"
+    },
+    {
+      "filename": "GLOBAL_GOVERNANCE_RULES.md",
+      "action": "moved",
+      "from": "GLOBAL_GOVERNANCE_RULES.md",
+      "to": ".archived\\GLOBAL_GOVERNANCE_RULES.md",
+      "status": "success"
+    },
+    {
+      "filename": "GLOBAL_ROBOTICS_DEPRECATION.md",
+      "action": "moved",
+      "from": "GLOBAL_ROBOTICS_DEPRECATION.md",
+      "to": ".archived\\GLOBAL_ROBOTICS_DEPRECATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "GLOBAL_SLO_INTEGRATION.md",
+      "action": "moved",
+      "from": "GLOBAL_SLO_INTEGRATION.md",
+      "to": ".archived\\GLOBAL_SLO_INTEGRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_AS_ROOT_SYSTEM.md",
+      "action": "moved",
+      "from": "GOVERNANCE_AS_ROOT_SYSTEM.md",
+      "to": ".archived\\GOVERNANCE_AS_ROOT_SYSTEM.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_COMPLETE_VISION.md",
+      "action": "moved",
+      "from": "GOVERNANCE_COMPLETE_VISION.md",
+      "to": ".archived\\GOVERNANCE_COMPLETE_VISION.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_COMPLIANCE_PHASE_6.md",
+      "action": "moved",
+      "from": "GOVERNANCE_COMPLIANCE_PHASE_6.md",
+      "to": ".archived\\GOVERNANCE_COMPLIANCE_PHASE_6.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_DELIVERY_COMPLETE.md",
+      "action": "moved",
+      "from": "GOVERNANCE_DELIVERY_COMPLETE.md",
+      "to": ".archived\\GOVERNANCE_DELIVERY_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_ENFORCEMENT_COMPLETE.md",
+      "action": "moved",
+      "from": "GOVERNANCE_ENFORCEMENT_COMPLETE.md",
+      "to": ".archived\\GOVERNANCE_ENFORCEMENT_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_FINAL_ARTICULATION.md",
+      "action": "moved",
+      "from": "GOVERNANCE_FINAL_ARTICULATION.md",
+      "to": ".archived\\GOVERNANCE_FINAL_ARTICULATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_SYSTEM_COMPLETE.md",
+      "action": "moved",
+      "from": "GOVERNANCE_SYSTEM_COMPLETE.md",
+      "to": ".archived\\GOVERNANCE_SYSTEM_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_SYSTEM_INDEX.md",
+      "action": "moved",
+      "from": "GOVERNANCE_SYSTEM_INDEX.md",
+      "to": ".archived\\GOVERNANCE_SYSTEM_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "GOVERNANCE_UNIFIED_SYSTEM_SUMMARY.md",
+      "action": "moved",
+      "from": "GOVERNANCE_UNIFIED_SYSTEM_SUMMARY.md",
+      "to": ".archived\\GOVERNANCE_UNIFIED_SYSTEM_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "GRID_AND_ANALYZER_FIX_SUMMARY.md",
+      "action": "moved",
+      "from": "GRID_AND_ANALYZER_FIX_SUMMARY.md",
+      "to": ".archived\\GRID_AND_ANALYZER_FIX_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "HARNESS_IMPLEMENTATION_SUMMARY.md",
+      "action": "moved",
+      "from": "HARNESS_IMPLEMENTATION_SUMMARY.md",
+      "to": ".archived\\HARNESS_IMPLEMENTATION_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "IMPLEMENTATION_CHECKLIST_7_LAYER.md",
+      "action": "moved",
+      "from": "IMPLEMENTATION_CHECKLIST_7_LAYER.md",
+      "to": ".archived\\IMPLEMENTATION_CHECKLIST_7_LAYER.md",
+      "status": "success"
+    },
+    {
+      "filename": "IMPLEMENTATION_COMPLETE.md",
+      "action": "moved",
+      "from": "IMPLEMENTATION_COMPLETE.md",
+      "to": ".archived\\IMPLEMENTATION_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "INTERACTIVE_PLAYGROUND_COMPLETE.md",
+      "action": "moved",
+      "from": "INTERACTIVE_PLAYGROUND_COMPLETE.md",
+      "to": ".archived\\INTERACTIVE_PLAYGROUND_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "ISOLATION_HARNESS_SUMMARY.md",
+      "action": "moved",
+      "from": "ISOLATION_HARNESS_SUMMARY.md",
+      "to": ".archived\\ISOLATION_HARNESS_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "ISSUE_359_IMPLEMENTATION_STATUS.md",
+      "action": "moved",
+      "from": "ISSUE_359_IMPLEMENTATION_STATUS.md",
+      "to": ".archived\\ISSUE_359_IMPLEMENTATION_STATUS.md",
+      "status": "success"
+    },
+    {
+      "filename": "KNOWLEDGE_LAYERS_ARCHITECTURE.md",
+      "action": "moved",
+      "from": "KNOWLEDGE_LAYERS_ARCHITECTURE.md",
+      "to": ".archived\\KNOWLEDGE_LAYERS_ARCHITECTURE.md",
+      "status": "success"
+    },
+    {
+      "filename": "LIVE_DIAGNOSTICS_SETUP.md",
+      "action": "moved",
+      "from": "LIVE_DIAGNOSTICS_SETUP.md",
+      "to": ".archived\\LIVE_DIAGNOSTICS_SETUP.md",
+      "status": "success"
+    },
+    {
+      "filename": "MASTER_INDEX.md",
+      "action": "moved",
+      "from": "MASTER_INDEX.md",
+      "to": ".archived\\MASTER_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "NEW_AGENT_DISCOVERY_DEMO.md",
+      "action": "moved",
+      "from": "NEW_AGENT_DISCOVERY_DEMO.md",
+      "to": ".archived\\NEW_AGENT_DISCOVERY_DEMO.md",
+      "status": "success"
+    },
+    {
+      "filename": "OGRAPHX_CATALOG_FIRST_ANALYSIS.md",
+      "action": "moved",
+      "from": "OGRAPHX_CATALOG_FIRST_ANALYSIS.md",
+      "to": ".archived\\OGRAPHX_CATALOG_FIRST_ANALYSIS.md",
+      "status": "success"
+    },
+    {
+      "filename": "ORCHESTRATION_AUDIT_SYSTEM_PROJECT_PLAN.md",
+      "action": "moved",
+      "from": "ORCHESTRATION_AUDIT_SYSTEM_PROJECT_PLAN.md",
+      "to": ".archived\\ORCHESTRATION_AUDIT_SYSTEM_PROJECT_PLAN.md",
+      "status": "success"
+    },
+    {
+      "filename": "ORCHESTRATION_DOMAINS_DIFF_SPEC.md",
+      "action": "moved",
+      "from": "ORCHESTRATION_DOMAINS_DIFF_SPEC.md",
+      "to": ".archived\\ORCHESTRATION_DOMAINS_DIFF_SPEC.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASES_3D_4_COMPLETION_REPORT.md",
+      "action": "moved",
+      "from": "PHASES_3D_4_COMPLETION_REPORT.md",
+      "to": ".archived\\PHASES_3D_4_COMPLETION_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_2_3_ANALYSIS_COMPLETE.md",
+      "action": "moved",
+      "from": "PHASE_1_2_3_ANALYSIS_COMPLETE.md",
+      "to": ".archived\\PHASE_1_2_3_ANALYSIS_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_COMPLETE_SYSTEM_ANALYSIS.md",
+      "action": "moved",
+      "from": "PHASE_1_COMPLETE_SYSTEM_ANALYSIS.md",
+      "to": ".archived\\PHASE_1_COMPLETE_SYSTEM_ANALYSIS.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_IMPLEMENTATION_COMPLETE.md",
+      "action": "moved",
+      "from": "PHASE_1_IMPLEMENTATION_COMPLETE.md",
+      "to": ".archived\\PHASE_1_IMPLEMENTATION_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_INDEX.md",
+      "action": "moved",
+      "from": "PHASE_1_INDEX.md",
+      "to": ".archived\\PHASE_1_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "PHASE_1_QUICK_REFERENCE.md",
+      "to": ".archived\\PHASE_1_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_SUMMARY.md",
+      "action": "moved",
+      "from": "PHASE_1_SUMMARY.md",
+      "to": ".archived\\PHASE_1_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_TO_PHASE_2_MAPPING.md",
+      "action": "moved",
+      "from": "PHASE_1_TO_PHASE_2_MAPPING.md",
+      "to": ".archived\\PHASE_1_TO_PHASE_2_MAPPING.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_1_VS_PHASE_2_COMPARISON.md",
+      "action": "moved",
+      "from": "PHASE_1_VS_PHASE_2_COMPARISON.md",
+      "to": ".archived\\PHASE_1_VS_PHASE_2_COMPARISON.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_6_DASHBOARD_COMPLETION_REPORT.md",
+      "action": "moved",
+      "from": "PHASE_6_DASHBOARD_COMPLETION_REPORT.md",
+      "to": ".archived\\PHASE_6_DASHBOARD_COMPLETION_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "PHASE_6_DASHBOARD_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "PHASE_6_DASHBOARD_QUICK_REFERENCE.md",
+      "to": ".archived\\PHASE_6_DASHBOARD_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PIPELINE_ENFORCEMENT_GUIDE.md",
+      "action": "moved",
+      "from": "PIPELINE_ENFORCEMENT_GUIDE.md",
+      "to": ".archived\\PIPELINE_ENFORCEMENT_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PIPELINE_RECOVERY_PROCESS.md",
+      "action": "moved",
+      "from": "PIPELINE_RECOVERY_PROCESS.md",
+      "to": ".archived\\PIPELINE_RECOVERY_PROCESS.md",
+      "status": "success"
+    },
+    {
+      "filename": "PLAYGROUND_UPDATED.md",
+      "action": "moved",
+      "from": "PLAYGROUND_UPDATED.md",
+      "to": ".archived\\PLAYGROUND_UPDATED.md",
+      "status": "success"
+    },
+    {
+      "filename": "PRODUCTION_DIAGNOSTICS_COMPLETE_SUMMARY.md",
+      "action": "moved",
+      "from": "PRODUCTION_DIAGNOSTICS_COMPLETE_SUMMARY.md",
+      "to": ".archived\\PRODUCTION_DIAGNOSTICS_COMPLETE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "PRODUCTION_DIAGNOSTICS_README.md",
+      "action": "moved",
+      "from": "PRODUCTION_DIAGNOSTICS_README.md",
+      "to": ".archived\\PRODUCTION_DIAGNOSTICS_README.md",
+      "status": "success"
+    },
+    {
+      "filename": "PRODUCTION_DIAGNOSTICS_SYSTEM_INDEX.md",
+      "action": "moved",
+      "from": "PRODUCTION_DIAGNOSTICS_SYSTEM_INDEX.md",
+      "to": ".archived\\PRODUCTION_DIAGNOSTICS_SYSTEM_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "PRODUCTION_LOG_HARNESS_GUIDE.md",
+      "action": "moved",
+      "from": "PRODUCTION_LOG_HARNESS_GUIDE.md",
+      "to": ".archived\\PRODUCTION_LOG_HARNESS_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PROJECT_KNOWLEDGE_QUERY_GUIDE.md",
+      "action": "moved",
+      "from": "PROJECT_KNOWLEDGE_QUERY_GUIDE.md",
+      "to": ".archived\\PROJECT_KNOWLEDGE_QUERY_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "PROJECT_STATUS_APPROVED.md",
+      "action": "moved",
+      "from": "PROJECT_STATUS_APPROVED.md",
+      "to": ".archived\\PROJECT_STATUS_APPROVED.md",
+      "status": "success"
+    },
+    {
+      "filename": "PROJECT_STATUS_REPORT.md",
+      "action": "moved",
+      "from": "PROJECT_STATUS_REPORT.md",
+      "to": ".archived\\PROJECT_STATUS_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "QUESTION_ANSWERED.md",
+      "action": "moved",
+      "from": "QUESTION_ANSWERED.md",
+      "to": ".archived\\QUESTION_ANSWERED.md",
+      "status": "success"
+    },
+    {
+      "filename": "QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "QUICK_REFERENCE.md",
+      "to": ".archived\\QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "QUICK_START_CLI.md",
+      "action": "moved",
+      "from": "QUICK_START_CLI.md",
+      "to": ".archived\\QUICK_START_CLI.md",
+      "status": "success"
+    },
+    {
+      "filename": "QUICK_START_GUIDE.md",
+      "action": "moved",
+      "from": "QUICK_START_GUIDE.md",
+      "to": ".archived\\QUICK_START_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "RAG_ANSWERS_SIMPLE_QUESTIONS.md",
+      "action": "moved",
+      "from": "RAG_ANSWERS_SIMPLE_QUESTIONS.md",
+      "to": ".archived\\RAG_ANSWERS_SIMPLE_QUESTIONS.md",
+      "status": "success"
+    },
+    {
+      "filename": "RAG_DISCOVERY_QUERY_EXAMPLES.md",
+      "action": "moved",
+      "from": "RAG_DISCOVERY_QUERY_EXAMPLES.md",
+      "to": ".archived\\RAG_DISCOVERY_QUERY_EXAMPLES.md",
+      "status": "success"
+    },
+    {
+      "filename": "RAG_DISCOVERY_SYSTEM_SUMMARY.md",
+      "action": "moved",
+      "from": "RAG_DISCOVERY_SYSTEM_SUMMARY.md",
+      "to": ".archived\\RAG_DISCOVERY_SYSTEM_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "RAG_SYSTEM_GUIDE.md",
+      "action": "moved",
+      "from": "RAG_SYSTEM_GUIDE.md",
+      "to": ".archived\\RAG_SYSTEM_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "RAG_SYSTEM_REVIEW.md",
+      "action": "moved",
+      "from": "RAG_SYSTEM_REVIEW.md",
+      "to": ".archived\\RAG_SYSTEM_REVIEW.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_CODE_VALIDATION_SYSTEM.md",
+      "action": "moved",
+      "from": "REACT_CODE_VALIDATION_SYSTEM.md",
+      "to": ".archived\\REACT_CODE_VALIDATION_SYSTEM.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_COMPONENT_COMMUNICATION_LOG.md",
+      "action": "moved",
+      "from": "REACT_COMPONENT_COMMUNICATION_LOG.md",
+      "to": ".archived\\REACT_COMPONENT_COMMUNICATION_LOG.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_COMPONENT_COMMUNICATION_VERIFICATION.md",
+      "action": "moved",
+      "from": "REACT_COMPONENT_COMMUNICATION_VERIFICATION.md",
+      "to": ".archived\\REACT_COMPONENT_COMMUNICATION_VERIFICATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_COMPONENT_VALIDATION_VERIFICATION.md",
+      "action": "moved",
+      "from": "REACT_COMPONENT_VALIDATION_VERIFICATION.md",
+      "to": ".archived\\REACT_COMPONENT_VALIDATION_VERIFICATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_JSX_SUPPORT_VALIDATION.md",
+      "action": "moved",
+      "from": "REACT_JSX_SUPPORT_VALIDATION.md",
+      "to": ".archived\\REACT_JSX_SUPPORT_VALIDATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_THEME_TOGGLE_COMPONENT.md",
+      "action": "moved",
+      "from": "REACT_THEME_TOGGLE_COMPONENT.md",
+      "to": ".archived\\REACT_THEME_TOGGLE_COMPONENT.md",
+      "status": "success"
+    },
+    {
+      "filename": "REACT_VERIFICATION_REPORT.md",
+      "action": "moved",
+      "from": "REACT_VERIFICATION_REPORT.md",
+      "to": ".archived\\REACT_VERIFICATION_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "README_CRS.md",
+      "action": "moved",
+      "from": "README_CRS.md",
+      "to": ".archived\\README_CRS.md",
+      "status": "success"
+    },
+    {
+      "filename": "README_TRACEABILITY_COMPLETE.md",
+      "action": "moved",
+      "from": "README_TRACEABILITY_COMPLETE.md",
+      "to": ".archived\\README_TRACEABILITY_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "README_UPDATE_SUMMARY.md",
+      "action": "moved",
+      "from": "README_UPDATE_SUMMARY.md",
+      "to": ".archived\\README_UPDATE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_ANALYZER_COMPLETE.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_ANALYZER_COMPLETE.md",
+      "to": ".archived\\REAL_ESTATE_ANALYZER_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_ANALYZER_IMPLEMENTATION.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_ANALYZER_IMPLEMENTATION.md",
+      "to": ".archived\\REAL_ESTATE_ANALYZER_IMPLEMENTATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_ANALYZER_INDEX.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_ANALYZER_INDEX.md",
+      "to": ".archived\\REAL_ESTATE_ANALYZER_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_ANALYZER_SETUP.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_ANALYZER_SETUP.md",
+      "to": ".archived\\REAL_ESTATE_ANALYZER_SETUP.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_ARCHITECTURE.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_ARCHITECTURE.md",
+      "to": ".archived\\REAL_ESTATE_ARCHITECTURE.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_QUICK_START.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_QUICK_START.md",
+      "to": ".archived\\REAL_ESTATE_QUICK_START.md",
+      "status": "success"
+    },
+    {
+      "filename": "REAL_ESTATE_USER_JOURNEY.md",
+      "action": "moved",
+      "from": "REAL_ESTATE_USER_JOURNEY.md",
+      "to": ".archived\\REAL_ESTATE_USER_JOURNEY.md",
+      "status": "success"
+    },
+    {
+      "filename": "RENDERX_CATALOG_INTEGRATION.md",
+      "action": "moved",
+      "from": "RENDERX_CATALOG_INTEGRATION.md",
+      "to": ".archived\\RENDERX_CATALOG_INTEGRATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "RENDERX_WEB_DEMO_COMPLETE.md",
+      "action": "moved",
+      "from": "RENDERX_WEB_DEMO_COMPLETE.md",
+      "to": ".archived\\RENDERX_WEB_DEMO_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "RENDERX_WEB_DEMO_INDEX.md",
+      "action": "moved",
+      "from": "RENDERX_WEB_DEMO_INDEX.md",
+      "to": ".archived\\RENDERX_WEB_DEMO_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "RENDERX_WEB_DEMO_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "RENDERX_WEB_DEMO_QUICK_REFERENCE.md",
+      "to": ".archived\\RENDERX_WEB_DEMO_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "REVIEW_COMPLETE.md",
+      "action": "moved",
+      "from": "REVIEW_COMPLETE.md",
+      "to": ".archived\\REVIEW_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "REVIEW_INDEX.md",
+      "action": "moved",
+      "from": "REVIEW_INDEX.md",
+      "to": ".archived\\REVIEW_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "ROOT_CONTEXT_DELIVERY_SUMMARY.md",
+      "action": "moved",
+      "from": "ROOT_CONTEXT_DELIVERY_SUMMARY.md",
+      "to": ".archived\\ROOT_CONTEXT_DELIVERY_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "ROOT_CONTEXT_SYSTEM_COMPLETE.md",
+      "action": "moved",
+      "from": "ROOT_CONTEXT_SYSTEM_COMPLETE.md",
+      "to": ".archived\\ROOT_CONTEXT_SYSTEM_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SELF_HEALING_INTEGRATION_INSIGHT.md",
+      "action": "moved",
+      "from": "SELF_HEALING_INTEGRATION_INSIGHT.md",
+      "to": ".archived\\SELF_HEALING_INTEGRATION_INSIGHT.md",
+      "status": "success"
+    },
+    {
+      "filename": "SELF_HEALING_TEST_ARCHITECTURE.md",
+      "action": "moved",
+      "from": "SELF_HEALING_TEST_ARCHITECTURE.md",
+      "to": ".archived\\SELF_HEALING_TEST_ARCHITECTURE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_ANALYSIS_DELIVERY_SUMMARY.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_ANALYSIS_DELIVERY_SUMMARY.md",
+      "to": ".archived\\SEQUENCE_LOG_ANALYSIS_DELIVERY_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_EXAMPLES.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_EXAMPLES.md",
+      "to": ".archived\\SEQUENCE_LOG_EXAMPLES.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_GENERATOR_GUIDE.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_GENERATOR_GUIDE.md",
+      "to": ".archived\\SEQUENCE_LOG_GENERATOR_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_INDEX.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_INDEX.md",
+      "to": ".archived\\SEQUENCE_LOG_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_INTERPRETATION_GUIDE.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_INTERPRETATION_GUIDE.md",
+      "to": ".archived\\SEQUENCE_LOG_INTERPRETATION_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_QUICK_REFERENCE.md",
+      "to": ".archived\\SEQUENCE_LOG_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_LOG_TOOLKIT_README.md",
+      "action": "moved",
+      "from": "SEQUENCE_LOG_TOOLKIT_README.md",
+      "to": ".archived\\SEQUENCE_LOG_TOOLKIT_README.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_ORCHESTRATION_CORRECTION.md",
+      "action": "moved",
+      "from": "SEQUENCE_ORCHESTRATION_CORRECTION.md",
+      "to": ".archived\\SEQUENCE_ORCHESTRATION_CORRECTION.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_ORCHESTRATION_FINAL_SUMMARY.md",
+      "action": "moved",
+      "from": "SEQUENCE_ORCHESTRATION_FINAL_SUMMARY.md",
+      "to": ".archived\\SEQUENCE_ORCHESTRATION_FINAL_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "SEQUENCE_ORCHESTRATION_STANDARD.md",
+      "action": "moved",
+      "from": "SEQUENCE_ORCHESTRATION_STANDARD.md",
+      "to": ".archived\\SEQUENCE_ORCHESTRATION_STANDARD.md",
+      "status": "success"
+    },
+    {
+      "filename": "SESSION_8_DELIVERY_MANIFEST.md",
+      "action": "moved",
+      "from": "SESSION_8_DELIVERY_MANIFEST.md",
+      "to": ".archived\\SESSION_8_DELIVERY_MANIFEST.md",
+      "status": "success"
+    },
+    {
+      "filename": "SESSION_8_FINAL_SUMMARY.md",
+      "action": "moved",
+      "from": "SESSION_8_FINAL_SUMMARY.md",
+      "to": ".archived\\SESSION_8_FINAL_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "SESSION_8_INDEX.md",
+      "action": "moved",
+      "from": "SESSION_8_INDEX.md",
+      "to": ".archived\\SESSION_8_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "SESSION_COMPLETION_SUMMARY.md",
+      "action": "failed",
+      "from": "SESSION_COMPLETION_SUMMARY.md",
+      "error": "Source file not found",
+      "status": "error"
+    },
+    {
+      "filename": "SHAPE_BUDGETS.md",
+      "action": "moved",
+      "from": "SHAPE_BUDGETS.md",
+      "to": ".archived\\SHAPE_BUDGETS.md",
+      "status": "success"
+    },
+    {
+      "filename": "SHAPE_COMPLETE_ARCHITECTURE_OVERVIEW.md",
+      "action": "moved",
+      "from": "SHAPE_COMPLETE_ARCHITECTURE_OVERVIEW.md",
+      "to": ".archived\\SHAPE_COMPLETE_ARCHITECTURE_OVERVIEW.md",
+      "status": "success"
+    },
+    {
+      "filename": "SHAPE_CONTRACTS.md",
+      "action": "moved",
+      "from": "SHAPE_CONTRACTS.md",
+      "to": ".archived\\SHAPE_CONTRACTS.md",
+      "status": "success"
+    },
+    {
+      "filename": "SHAPE_DIFF_ENFORCEMENT.md",
+      "action": "moved",
+      "from": "SHAPE_DIFF_ENFORCEMENT.md",
+      "to": ".archived\\SHAPE_DIFF_ENFORCEMENT.md",
+      "status": "success"
+    },
+    {
+      "filename": "SHAPE_EVOLUTION.md",
+      "action": "moved",
+      "from": "SHAPE_EVOLUTION.md",
+      "to": ".archived\\SHAPE_EVOLUTION.md",
+      "status": "success"
+    },
+    {
+      "filename": "SHAPE_HISTORY.md",
+      "action": "moved",
+      "from": "SHAPE_HISTORY.md",
+      "to": ".archived\\SHAPE_HISTORY.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_DASHBOARD_COMPLIANCE_AUDIT.md",
+      "action": "moved",
+      "from": "SLO_DASHBOARD_COMPLIANCE_AUDIT.md",
+      "to": ".archived\\SLO_DASHBOARD_COMPLIANCE_AUDIT.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_SLI_SLA_DELIVERY_SUMMARY.md",
+      "action": "moved",
+      "from": "SLO_SLI_SLA_DELIVERY_SUMMARY.md",
+      "to": ".archived\\SLO_SLI_SLA_DELIVERY_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_SLI_SLA_IMPLEMENTATION_PLAN.md",
+      "action": "moved",
+      "from": "SLO_SLI_SLA_IMPLEMENTATION_PLAN.md",
+      "to": ".archived\\SLO_SLI_SLA_IMPLEMENTATION_PLAN.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_SLI_SLA_PHASE_1_2_COMPLETE.md",
+      "action": "moved",
+      "from": "SLO_SLI_SLA_PHASE_1_2_COMPLETE.md",
+      "to": ".archived\\SLO_SLI_SLA_PHASE_1_2_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_SLI_SLA_QUICK_REFERENCE.md",
+      "action": "moved",
+      "from": "SLO_SLI_SLA_QUICK_REFERENCE.md",
+      "to": ".archived\\SLO_SLI_SLA_QUICK_REFERENCE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_SLI_SLA_STATUS_UPDATE.md",
+      "action": "moved",
+      "from": "SLO_SLI_SLA_STATUS_UPDATE.md",
+      "to": ".archived\\SLO_SLI_SLA_STATUS_UPDATE.md",
+      "status": "success"
+    },
+    {
+      "filename": "SLO_SLI_SLA_STRATEGIC_ASSESSMENT.md",
+      "action": "moved",
+      "from": "SLO_SLI_SLA_STRATEGIC_ASSESSMENT.md",
+      "to": ".archived\\SLO_SLI_SLA_STRATEGIC_ASSESSMENT.md",
+      "status": "success"
+    },
+    {
+      "filename": "STRUCTURE_REPORT.md",
+      "action": "moved",
+      "from": "STRUCTURE_REPORT.md",
+      "to": ".archived\\STRUCTURE_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "SYSTEM_VERIFICATION_REPORT.md",
+      "action": "moved",
+      "from": "SYSTEM_VERIFICATION_REPORT.md",
+      "to": ".archived\\SYSTEM_VERIFICATION_REPORT.md",
+      "status": "success"
+    },
+    {
+      "filename": "TASK_COMPLETION_SUMMARY.md",
+      "action": "moved",
+      "from": "TASK_COMPLETION_SUMMARY.md",
+      "to": ".archived\\TASK_COMPLETION_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "TECHNICAL_BDD_REMOVAL_COMPLETE.md",
+      "action": "moved",
+      "from": "TECHNICAL_BDD_REMOVAL_COMPLETE.md",
+      "to": ".archived\\TECHNICAL_BDD_REMOVAL_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "TELEMETRY_INTEGRATION_COMPLETE.md",
+      "action": "moved",
+      "from": "TELEMETRY_INTEGRATION_COMPLETE.md",
+      "to": ".archived\\TELEMETRY_INTEGRATION_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "TELEMETRY_MAP_GUIDE.md",
+      "action": "moved",
+      "from": "TELEMETRY_MAP_GUIDE.md",
+      "to": ".archived\\TELEMETRY_MAP_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "TELEMETRY_TEST_MAPPER_GUIDE.md",
+      "action": "moved",
+      "from": "TELEMETRY_TEST_MAPPER_GUIDE.md",
+      "to": ".archived\\TELEMETRY_TEST_MAPPER_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "TEST_COVERAGE_BREAKDOWN.md",
+      "action": "moved",
+      "from": "TEST_COVERAGE_BREAKDOWN.md",
+      "to": ".archived\\TEST_COVERAGE_BREAKDOWN.md",
+      "status": "success"
+    },
+    {
+      "filename": "THEME_FIX_SUMMARY.md",
+      "action": "moved",
+      "from": "THEME_FIX_SUMMARY.md",
+      "to": ".archived\\THEME_FIX_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_BREAKTHROUGH.md",
+      "action": "moved",
+      "from": "TRACEABILITY_BREAKTHROUGH.md",
+      "to": ".archived\\TRACEABILITY_BREAKTHROUGH.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_COMPLETE.md",
+      "action": "moved",
+      "from": "TRACEABILITY_COMPLETE.md",
+      "to": ".archived\\TRACEABILITY_COMPLETE.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_DELIVERY_SUMMARY.md",
+      "action": "moved",
+      "from": "TRACEABILITY_DELIVERY_SUMMARY.md",
+      "to": ".archived\\TRACEABILITY_DELIVERY_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_INDEX.md",
+      "action": "moved",
+      "from": "TRACEABILITY_INDEX.md",
+      "to": ".archived\\TRACEABILITY_INDEX.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_PROOF.md",
+      "action": "moved",
+      "from": "TRACEABILITY_PROOF.md",
+      "to": ".archived\\TRACEABILITY_PROOF.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_SYSTEM_ALIGNMENT.md",
+      "action": "moved",
+      "from": "TRACEABILITY_SYSTEM_ALIGNMENT.md",
+      "to": ".archived\\TRACEABILITY_SYSTEM_ALIGNMENT.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_SYSTEM_SUMMARY.md",
+      "action": "moved",
+      "from": "TRACEABILITY_SYSTEM_SUMMARY.md",
+      "to": ".archived\\TRACEABILITY_SYSTEM_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "TRACEABILITY_WORKFLOW_GUIDE.md",
+      "action": "moved",
+      "from": "TRACEABILITY_WORKFLOW_GUIDE.md",
+      "to": ".archived\\TRACEABILITY_WORKFLOW_GUIDE.md",
+      "status": "success"
+    },
+    {
+      "filename": "UI_ELEMENT_COMPARISON_ANALYSIS.md",
+      "action": "moved",
+      "from": "UI_ELEMENT_COMPARISON_ANALYSIS.md",
+      "to": ".archived\\UI_ELEMENT_COMPARISON_ANALYSIS.md",
+      "status": "success"
+    },
+    {
+      "filename": "UNIFIED_GOVERNANCE_IMPLEMENTATION.md",
+      "action": "moved",
+      "from": "UNIFIED_GOVERNANCE_IMPLEMENTATION.md",
+      "to": ".archived\\UNIFIED_GOVERNANCE_IMPLEMENTATION.md",
+      "status": "success"
+    },
+    {
+      "filename": "USING_THE_RAG_SYSTEM.md",
+      "action": "moved",
+      "from": "USING_THE_RAG_SYSTEM.md",
+      "to": ".archived\\USING_THE_RAG_SYSTEM.md",
+      "status": "success"
+    },
+    {
+      "filename": "VALIDATION_ASSESSMENT_SUMMARY.md",
+      "action": "moved",
+      "from": "VALIDATION_ASSESSMENT_SUMMARY.md",
+      "to": ".archived\\VALIDATION_ASSESSMENT_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "VALIDATION_REPORT_COMPLETE_SUMMARY.md",
+      "action": "moved",
+      "from": "VALIDATION_REPORT_COMPLETE_SUMMARY.md",
+      "to": ".archived\\VALIDATION_REPORT_COMPLETE_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "VERIFICATION_SUMMARY.md",
+      "action": "moved",
+      "from": "VERIFICATION_SUMMARY.md",
+      "to": ".archived\\VERIFICATION_SUMMARY.md",
+      "status": "success"
+    },
+    {
+      "filename": "WHY_SEMANTIC_TRANSFORMATION_DIDNT_WORK.md",
+      "action": "moved",
+      "from": "WHY_SEMANTIC_TRANSFORMATION_DIDNT_WORK.md",
+      "to": ".archived\\WHY_SEMANTIC_TRANSFORMATION_DIDNT_WORK.md",
+      "status": "success"
+    },
+    {
+      "filename": "WORKFLOW_DEMO.md",
+      "action": "moved",
+      "from": "WORKFLOW_DEMO.md",
+      "to": ".archived\\WORKFLOW_DEMO.md",
+      "status": "success"
+    }
+  ]
+}

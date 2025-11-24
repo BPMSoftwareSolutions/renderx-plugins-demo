@@ -121,6 +121,8 @@
     "allocate:documents": "node scripts/allocate-documentation-files.js",
     "relocate:documents": "node scripts/relocate-documentation-files.js",
     "generate:domain:indexes": "node scripts/generate-domain-documentation-indexes.js",
+    "allocate:json-files": "node scripts/allocate-json-files.js",
+    "relocate:json-files": "node scripts/relocate-json-files.js",
     "evaluate:slos": "node scripts/evaluate-slos.js",
     "diagnose:renderx-web": "node scripts/renderx-web-diagnostics.js",
     "enforce:pipeline": "node scripts/enforce-delivery-pipeline.js",

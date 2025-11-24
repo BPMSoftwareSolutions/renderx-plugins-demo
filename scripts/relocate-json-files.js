@@ -1,17 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * Documentation File Relocator
+ * JSON File Relocator
  * 
- * Purpose: Execute file moves to properly organize documentation
- *          based on allocation report
+ * Purpose: Execute file moves to reorganize JSON files to proper locations
+ *          based on allocation manifest
  * 
- * Strategy:
- *   1. Read allocation manifest
- *   2. Execute moves (with preview mode option)
- *   3. Update documentation indexes
- *   4. Verify new structure
- *   5. Generate verification report
+ * Modes:
+ *   Preview: Shows what would be moved (default)
+ *   Execute: Actually moves files (--execute flag)
  */
 
 import * as fs from 'fs';
@@ -20,8 +17,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const ALLOCATION_MANIFEST_PATH = path.join(ROOT, '.generated/file-allocation-manifest.json');
-const RELOCATION_REPORT_PATH = path.join(ROOT, '.generated/file-relocation-report.json');
+const ALLOCATION_MANIFEST_PATH = path.join(ROOT, '.generated/json-allocation-manifest.json');
+const RELOCATION_REPORT_PATH = path.join(ROOT, '.generated/json-relocation-report.json');
 
 // Ensure directory exists
 function ensureDir(dirPath) {
@@ -33,7 +30,7 @@ function ensureDir(dirPath) {
 // Read allocation manifest
 function readAllocationManifest() {
   if (!fs.existsSync(ALLOCATION_MANIFEST_PATH)) {
-    throw new Error(`Allocation manifest not found. Run allocate first: npm run allocate:documents`);
+    throw new Error(`Allocation manifest not found. Run allocation first: npm run allocate:json-files`);
   }
   return JSON.parse(fs.readFileSync(ALLOCATION_MANIFEST_PATH, 'utf-8'));
 }
@@ -54,7 +51,7 @@ function moveFile(sourcePath, destPath) {
     if (fs.existsSync(destPath)) {
       const sourceContent = fs.readFileSync(sourcePath, 'utf-8');
       const destContent = fs.readFileSync(destPath, 'utf-8');
-      
+
       if (sourceContent === destContent) {
         // Same content, safe to delete source
         fs.unlinkSync(sourcePath);
@@ -82,7 +79,7 @@ function moveFile(sourcePath, destPath) {
 
 // Execute relocations
 function executeRelocations(previewOnly = true) {
-  console.log(`\n📂 Documentation File Relocation\n`);
+  console.log(`\n📂 JSON File Relocation\n`);
   console.log(`Mode: ${previewOnly ? '🔍 PREVIEW' : '⚠️  EXECUTE (MAKING CHANGES)'}\n`);
 
   const manifest = readAllocationManifest();
@@ -97,47 +94,42 @@ function executeRelocations(previewOnly = true) {
   };
 
   manifest.allocations.forEach((allocation, idx) => {
-    const sourcePath = path.join(ROOT, allocation.currentPath);
-    
-    // Skip if no path allocated or action is skip
-    if (!allocation.allocatedPath) {
+    // Skip if no move needed
+    if (allocation.action !== 'move') {
       results.unchanged++;
       return;
     }
-    
-    // Handle both 'move' and 'keep-in-archive' actions
-    const shouldMove = allocation.action.includes('move') || allocation.action === 'keep-in-archive';
-    if (!shouldMove) {
-      results.unchanged++;
-      return;
-    }
-    
-    const destPath = path.join(ROOT, allocation.allocatedPath, allocation.filename);
+
+    const sourcePath = path.join(ROOT, allocation.filename);
+    const destPath = path.join(ROOT, allocation.targetLocation, allocation.filename);
 
     // Show action
     console.log(`[${idx + 1}/${manifest.allocations.length}] ${allocation.filename}`);
-    console.log(`  From: ${allocation.currentPath}`);
+    console.log(`  From: ${allocation.sourceLocation}`);
     console.log(`  To: ${path.relative(ROOT, destPath)}`);
+    console.log(`  Type: ${allocation.classification}`);
 
     if (previewOnly) {
       console.log(`  Action: PREVIEW (no changes)\n`);
       results.details.push({
         filename: allocation.filename,
+        classification: allocation.classification,
         action: 'would-move',
-        from: allocation.currentPath,
+        from: allocation.sourceLocation,
         to: path.relative(ROOT, destPath),
         status: 'preview'
       });
     } else {
       const result = moveFile(sourcePath, destPath);
-      
+
       if (result.success) {
         console.log(`  ✅ ${result.message}\n`);
         results.relocated++;
         results.details.push({
           filename: allocation.filename,
+          classification: allocation.classification,
           action: result.action,
-          from: allocation.currentPath,
+          from: allocation.sourceLocation,
           to: path.relative(ROOT, destPath),
           status: 'success'
         });
@@ -146,8 +138,9 @@ function executeRelocations(previewOnly = true) {
         results.errors++;
         results.details.push({
           filename: allocation.filename,
+          classification: allocation.classification,
           action: 'failed',
-          from: allocation.currentPath,
+          from: allocation.sourceLocation,
           error: result.error,
           status: 'error'
         });
@@ -161,14 +154,20 @@ function executeRelocations(previewOnly = true) {
   if (!previewOnly) {
     console.log(`  Relocated: ${results.relocated}`);
   }
-  console.log(`  Unchanged: ${results.unchanged}`);
+  console.log(`  Unchanged (keep in root): ${results.unchanged}`);
   if (!previewOnly && results.errors > 0) {
     console.log(`  Errors: ${results.errors} ❌`);
   }
 
   // Save report
+  ensureDir(path.dirname(RELOCATION_REPORT_PATH));
   fs.writeFileSync(RELOCATION_REPORT_PATH, JSON.stringify(results, null, 2));
-  console.log(`\n✅ Report: ${RELOCATION_REPORT_PATH}\n`);
+  console.log(`\n✅ Report: ${path.relative(ROOT, RELOCATION_REPORT_PATH)}\n`);
+
+  if (previewOnly) {
+    console.log('💡 To execute these moves, run:');
+    console.log('   npm run relocate:json-files -- --execute\n');
+  }
 
   return results;
 }
@@ -179,13 +178,7 @@ const execute = args.includes('--execute') || args.includes('-x');
 const previewOnly = !execute;
 
 try {
-  const results = executeRelocations(previewOnly);
-
-  if (previewOnly) {
-    console.log('💡 To execute these moves, run:');
-    console.log('   npm run relocate:documents -- --execute\n');
-  }
-
+  executeRelocations(previewOnly);
   process.exit(0);
 } catch (err) {
   console.error('❌ Relocation error:', err.message);
