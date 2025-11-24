@@ -1,0 +1,146 @@
+{
+  "name": "slo-dashboard",
+  "description": "Business SLO Governance Dashboard presenting real‑time SLI metrics, error budget burn, projected compliance, and self‑healing impact for stakeholders.",
+  "version": "1.0.0",
+  "locked": true,
+  "immutable": true,
+  "checksum": "8be574217ca7cd92ce8cdd9006919f79d5e1937b5e7774f05d1138405b494bef",
+  "personas": [
+    { "id": "platform-owner", "goal": "Track aggregate reliability & prioritize remediation" },
+    { "id": "sre", "goal": "Detect emerging error budget breaches early" },
+    { "id": "product-manager", "goal": "Validate feature compliance vs. promised SLOs" }
+  ],
+  "businessObjectives": [
+    "Provide single pane of glass for reliability posture",
+    "Surface imminent error budget breach risk (next 24h)",
+    "Quantify self-healing contribution to regained availability",
+    "Enable exportable compliance evidence for audits",
+    "Support decisions on feature freeze vs. release continuation"
+  ],
+  "kpis": [
+    { "name": "overallCompliance", "target": ">= 99.5%", "window": "rolling 30d" },
+    { "name": "burnRateCriticalCount", "target": "0", "window": "24h projection" },
+    { "name": "autoHealSavingsMs", "target": ">= 5000ms/day", "window": "daily" }
+  ],
+  "nonFunctionalRequirements": [
+    "Dashboard initial load < 2s on p95",
+    "Export completes < 1s for <= 200 SLO entries",
+    "Color indicators have accessible text alternatives",
+    "Supports real-time refresh without losing user toggled panels"
+  ],
+  "businessRules": [
+    "sortedBudgets: sort SLOs by remaining error budget descending",
+    "getProgressColor: map compliance percentage to semantic status (green>=99.5, yellow>=98, red<98)",
+    "calculateProjection: compute projected end-of-window compliance using current burn rate",
+    "burnRate: classify burn rate (normal, elevated, critical) based on consumption/hour",
+    "overallCompliance: aggregate weighted compliance across all active SLOs",
+    "handleExport: produce signed JSON + CSV artifact with timestamp and hash",
+    "togglePanel: persist UI panel visibility across refresh",
+    "getHealthStatus: derive qualitative health label from avgScore & trend",
+    "serializeDashboardState: snapshot visible metrics, budgets, projection & filters",
+    "computeCompliance: recompute compliance after metrics refresh",
+    "triggerExportDownload: initiate user download with integrity banner"
+  ],
+  "edgeCases": [
+    "NoMetrics: show empty state guidance, compliance N/A instead of 0%",
+    "PartialData: exclude incomplete SLOs from overallCompliance calculation but flag count",
+    "ExportLarge: degrade gracefully when >200 SLOs (stream rows)",
+    "ProjectionNegative: handle zero or negative remaining budget gracefully (show breach now)",
+    "BurnRateSpike: highlight SLOs whose 1h burn > 2x 24h average"
+  ],
+  "scenarios": [
+    {
+      "title": "Initial load shows aggregate compliance & SLO list",
+      "given": "The dashboard is first loaded with valid metrics",
+      "when": "the system initializes",
+      "then": "overallCompliance, sortedBudgets (desc remaining), and burnRate classification are displayed"
+    },
+    {
+      "title": "Error budget sorting prioritizes most at-risk SLOs",
+      "given": "Multiple SLOs with varying remaining error budgets",
+      "when": "sortedBudgets is applied",
+      "then": "Entries appear ordered by remaining percentage descending"
+    },
+    {
+      "title": "Color coding reflects compliance tiers",
+      "given": "An SLO with 99.6% compliance",
+      "when": "getProgressColor evaluates the SLO",
+      "then": "It returns 'green' and an accessible label 'Healthy'"
+    },
+    {
+      "title": "Projection warns of imminent breach",
+      "given": "Current burn rate predicts remaining budget < threshold in < 24h",
+      "when": "calculateProjection runs",
+      "then": "The SLO is flagged with status 'breach-soon' and highlighted"
+    },
+    {
+      "title": "Overall compliance aggregates weighted scores",
+      "given": "Three SLOs with distinct weights & compliance",
+      "when": "overallCompliance is computed",
+      "then": "The displayed percentage equals the weighted mean within ±0.1%"
+    },
+    {
+      "title": "Refresh preserves panel visibility state",
+      "given": "User has toggled the detail panel open",
+      "when": "metrics refresh occurs",
+      "then": "The detail panel remains open and data updates without full layout reset"
+    },
+    {
+      "title": "Accessible labels accompany color indicators",
+      "given": "Color-coded compliance badges render",
+      "when": "assistive tech queries labels",
+      "then": "Each badge exposes a text alternative describing status"
+    },
+    {
+      "title": "Export produces signed CSV & JSON artifacts",
+      "given": "Valid metrics + budgets are loaded",
+      "when": "handleExport is invoked",
+      "then": "A CSV and JSON containing SLO id, compliance, burnRate, projection hash are prepared for download"
+    },
+    {
+      "title": "Empty state guidance when no metrics",
+      "given": "No SLO metrics are available",
+      "when": "dashboard loads",
+      "then": "An empty state message with retry & docs link is shown instead of 0% compliance"
+    },
+    {
+      "title": "Partial data excludes incomplete SLOs from aggregate",
+      "given": "Some SLOs lack recent metrics",
+      "when": "overallCompliance computes",
+      "then": "Incomplete SLOs are omitted from numerator & denominator and marked 'data-pending'"
+    },
+    {
+      "title": "Projection handles zero remaining budget",
+      "given": "Remaining error budget is 0",
+      "when": "calculateProjection executes",
+      "then": "Status 'breach-now' is shown with immediate remediation recommendation"
+    },
+    {
+      "title": "High burn rate spike detection",
+      "given": "An SLO's 1h burn > 2x its 24h average",
+      "when": "burnRate classification occurs",
+      "then": "SLO is tagged 'spike' and visually emphasized"
+    },
+    {
+      "title": "Self-healing impact reflected in compliance trend",
+      "given": "Recent auto-healing events improved availability",
+      "when": "getHealthStatus evaluates trend",
+      "then": "Status includes 'improving' label and delta metrics"
+    }
+  ],
+  "traceability": {
+    "sequences": [
+      "dashboard.load",
+      "dashboard.refresh.metrics",
+      "dashboard.export.report"
+    ],
+    "handlers": [
+      "loadBudgets",
+      "loadMetrics",
+      "computeCompliance",
+      "serializeDashboardState",
+      "triggerExportDownload"
+    ]
+  },
+  "lastUpdated": "2025-11-24T00:00:00.000Z"
+}

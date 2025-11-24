@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "generated": "2025-11-24T01:11:26.322Z",
+  "sources": [
+    {
+      "id": "global-traceability-map",
+      "path": ".generated/global-traceability-map.json",
+      "layer": "traceability",
+      "type": "architecture",
+      "hash": "83006a9ad2627d415bfb644385f98bd3fa6dd351b3c15ff10d1fef88de2e0197",
+      "lastModified": "2025-11-23T21:53:10.974Z",
+      "docs": [
+        {
+          "file": "docs\\generated\\HANDLER_REFERENCE.md",
+          "hash": "1256b063402c3665807d36e0bca87fbaddbd55c1427ec7ef5890b8422d2037ec",
+          "generated": "2025-11-24T00:57:04.759Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_SPECS.md",
+          "hash": "4e346eef194d907f22e29b2e9cc386a30637c358d070179c002c3234ff1093b4",
+          "generated": "2025-11-24T00:57:04.760Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_TRACEABILITY.md",
+          "hash": "b6eb6ace456d28aea45c1d485c8bdce834ee3f04bdb0735d2c9208009f9912de",
+          "generated": "2025-11-24T00:57:04.763Z"
+        },
+        {
+          "file": "docs\\generated\\INDEX.md",
+          "hash": "1d3fb4db9ec795070e5db13e282769ca0db4976ca03905f7f93630b48c5f8b76",
+          "generated": "2025-11-24T00:57:04.764Z"
+        },
+        {
+          "file": "docs\\generated\\ORCHESTRATION_GUIDE.md",
+          "hash": "641fb255eeb578a2dddb262ff12853ad7ba45bd8a9f67ad541f8e85529129bc7",
+          "generated": "2025-11-24T00:57:04.764Z"
+        },
+        {
+          "file": "docs\\generated\\PLUGIN_COVERAGE.md",
+          "hash": "cf7f2dd8081ea9f6fa7bb3baa1d9aac23a2f01fddb616eb56d43ab9dfc78b800",
+          "generated": "2025-11-24T00:57:04.765Z"
+        },
+        {
+          "file": "docs\\generated\\PLUGIN_GUIDE.md",
+          "hash": "5f54521000548104aeb71a9596dd20e9fc3d94e220edb535b4783b077d194519",
+          "generated": "2025-11-24T00:57:04.766Z"
+        },
+        {
+          "file": "docs\\generated\\SEQUENCE_FLOWS.md",
+          "hash": "e8c3ae36791852f5bd513367e5e7260a4c0d469a3888c34e2700915b0dff950f",
+          "generated": "2025-11-24T00:57:04.766Z"
+        },
+        {
+          "file": "docs\\generated\\SYSTEM_ARCHITECTURE.md",
+          "hash": "22e49f78e560126bda98038e26dec4957dfebb6fe223c1916be8c2180a0b0c1a",
+          "generated": "2025-11-24T00:57:04.767Z"
+        },
+        {
+          "file": "docs\\generated\\SYSTEM_OVERVIEW.md",
+          "hash": "5a5e3107f1d7226729ad483b38c5546dfa92ebe8db3632956f084452f11175dd",
+          "generated": "2025-11-24T00:57:04.768Z"
+        },
+        {
+          "file": "docs\\generated\\TEST_COVERAGE_GUIDE.md",
+          "hash": "342a0818eb4b1378714c398dcd64be2e84f30143ad6a4a37c153c0d3394e2dce",
+          "generated": "2025-11-24T00:57:04.769Z"
+        },
+        {
+          "file": "docs\\generated\\TEST_SPECS.md",
+          "hash": "9e29e5cad6f06e64ec1e9deafcf5e7a3312543f46fe63214524ebfc54adb2b18",
+          "generated": "2025-11-24T00:57:04.770Z"
+        },
+        {
+          "file": "docs\\generated\\UNTESTED_HANDLERS.md",
+          "hash": "11664cba7d5726ed062ee478f4dfd6d3bf9e60a17568960ee1e5c2456834250b",
+          "generated": "2025-11-24T00:57:04.771Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_REFERENCE.md",
+          "hash": "125aa65723fe8d9389661b34c884eeb82c63ff3214cb3c377bfc762801b80fc8",
+          "generated": "2025-11-24T00:58:37.086Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_SPECS.md",
+          "hash": "609e4c7b1e0e1e44dd94d12ce7ac3dcce7ee1f3a08958ecf73aae668b5a7df4b",
+          "generated": "2025-11-24T00:58:37.087Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_TRACEABILITY.md",
+          "hash": "943f9256288e33050f4d19c52f71d12ccd99f1ec59e167652f878e114c7ab235",
+          "generated": "2025-11-24T00:58:37.089Z"
+        },
+        {
+          "file": "docs\\generated\\INDEX.md",
+          "hash": "9a66ecd6d74b0c5d0e143f4541308bfd74878e774aec6343c85f1bbcf2b67f91",
+          "generated": "2025-11-24T00:58:37.089Z"
+        },
+        {
+          "file": "docs\\generated\\ORCHESTRATION_GUIDE.md",
+          "hash": "aaa396911b88af08387ccc30283ee78873b4fc280979452a8b115b5c38e77128",
+          "generated": "2025-11-24T00:58:37.090Z"
+        },
+        {
+          "file": "docs\\generated\\PLUGIN_COVERAGE.md",
+          "hash": "6189e01c2e0294940223d460a384d8e24f8696674f4bc278d7c10981c9665c61",
+          "generated": "2025-11-24T00:58:37.090Z"
+        },
+        {
+          "file": "docs\\generated\\PLUGIN_GUIDE.md",
+          "hash": "db6e4f6124820cbc1778044b299c28710af1290a00e47e129d8cf6fd33f3fb8d",
+          "generated": "2025-11-24T00:58:37.091Z"
+        },
+        {
+          "file": "docs\\generated\\SEQUENCE_FLOWS.md",
+          "hash": "b77a0db216fe9aed12574c8e69f978fc65bc6c58ee8643f148a86aec02cb25be",
+          "generated": "2025-11-24T00:58:37.091Z"
+        },
+        {
+          "file": "docs\\generated\\SYSTEM_ARCHITECTURE.md",
+          "hash": "d8b056ce65c80854478ab0473ee9dc7f112c47b19fb94518916d545d1e97fe94",
+          "generated": "2025-11-24T00:58:37.092Z"
+        },
+        {
+          "file": "docs\\generated\\SYSTEM_OVERVIEW.md",
+          "hash": "115de237c1005c4327197d04da16d28fe4b81ed53da61b1c8c7440fdcd076057",
+          "generated": "2025-11-24T00:58:37.092Z"
+        },
+        {
+          "file": "docs\\generated\\TEST_COVERAGE_GUIDE.md",
+          "hash": "0de1dbb9ca344e7be412f0f22940ee36f202abf24fece3937936879bb8ae46e2",
+          "generated": "2025-11-24T00:58:37.092Z"
+        },
+        {
+          "file": "docs\\generated\\TEST_SPECS.md",
+          "hash": "c409206ebd977573c060c2f648d8a235e91f5160310e307f81124c802427116d",
+          "generated": "2025-11-24T00:58:37.093Z"
+        },
+        {
+          "file": "docs\\generated\\UNTESTED_HANDLERS.md",
+          "hash": "e9be9cee97965a0ce5ecbecd9d8f30ac761bee4fc1effbdb8e73bea920f66f17",
+          "generated": "2025-11-24T00:58:37.093Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_REFERENCE.md",
+          "hash": "74bc19a48784e26676a9b082160866fca1edc8cfe058df17d7b481eade853963",
+          "generated": "2025-11-24T01:11:26.657Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_SPECS.md",
+          "hash": "43bb853f602d41a6191f7237e0a7f6e3130ccd0d888aa3afadb44ca82dec3558",
+          "generated": "2025-11-24T01:11:26.658Z"
+        },
+        {
+          "file": "docs\\generated\\HANDLER_TRACEABILITY.md",
+          "hash": "78a02cfdee8a3b35080202dff9e7a13ed72eb4f6007b76b37720a07da4705f2c",
+          "generated": "2025-11-24T01:11:26.660Z"
+        },
+        {
+          "file": "docs\\generated\\INDEX.md",
+          "hash": "3acac4c11e86fb33783cf6c8508c6048cb5e0db29efb0674de5a71d8045e327d",
+          "generated": "2025-11-24T01:11:26.660Z"
+        },
+        {
+          "file": "docs\\generated\\ORCHESTRATION_GUIDE.md",
+          "hash": "8bd1d2419dd4c8dcd54e9babac55424913a86115b515ea814a4457d09f4466b5",
+          "generated": "2025-11-24T01:11:26.661Z"
+        },
+        {
+          "file": "docs\\generated\\PLUGIN_COVERAGE.md",
+          "hash": "e845a18a221b312c9adfb7554702c63be0aae05d93ff736b6782528ddcdc4f2e",
+          "generated": "2025-11-24T01:11:26.661Z"
+        },
+        {
+          "file": "docs\\generated\\PLUGIN_GUIDE.md",
+          "hash": "27ad10e856cc0ceab42f2c165df4a68f6aca7f6b7a44792f0e432230e14e400c",
+          "generated": "2025-11-24T01:11:26.662Z"
+        },
+        {
+          "file": "docs\\generated\\SEQUENCE_FLOWS.md",
+          "hash": "f773ac373cce5459fd67dcf8d991ea91da5108f10a0240d0fe88a78a3427b31e",
+          "generated": "2025-11-24T01:11:26.662Z"
+        },
+        {
+          "file": "docs\\generated\\SYSTEM_ARCHITECTURE.md",
+          "hash": "86fa8dd0971b0932981d5f0773907646eff179c9d2c5025e82ed25a0d168caee",
+          "generated": "2025-11-24T01:11:26.663Z"
+        },
+        {
+          "file": "docs\\generated\\SYSTEM_OVERVIEW.md",
+          "hash": "50e5a7241bbc58bec6686a4af3124c19e25ad128ebf4acf136e92908dc893913",
+          "generated": "2025-11-24T01:11:26.663Z"
+        },
+        {
+          "file": "docs\\generated\\TEST_COVERAGE_GUIDE.md",
+          "hash": "31995a17c4581ad61e373755e899efd38e0c8ac6e6e017f430abaf82f20371e2",
+          "generated": "2025-11-24T01:11:26.664Z"
+        },
+        {
+          "file": "docs\\generated\\TEST_SPECS.md",
+          "hash": "1f2cfa5dbe96be484064dde02c09961c40823ba1ee867db34d0a67303b85a12c",
+          "generated": "2025-11-24T01:11:26.664Z"
+        },
+        {
+          "file": "docs\\generated\\UNTESTED_HANDLERS.md",
+          "hash": "f3a5fe4e0c86e053b89a076c2668665d8a0fed7d15212464b093bb501812ff76",
+          "generated": "2025-11-24T01:11:26.665Z"
+        }
+      ]
+    },
+    {
+      "id": "project-knowledge-map",
+      "path": ".generated/project-knowledge-map.json",
+      "layer": "knowledge",
+      "type": "index",
+      "hash": "95d7a6a74c12b8f7b21460c608bf29dbaf6e33a2e0b9c4f3fcea101be2ac567c",
+      "lastModified": "2025-11-23T21:53:17.145Z",
+      "docs": []
+    },
+    {
+      "id": "analysis",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/analysis/analysis.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "b56fd3808fa75741fb346a411b90183faddc35c837631916d3f48b5b547db058",
+      "lastModified": "2025-11-17T16:56:36.145Z",
+      "docs": []
+    },
+    {
+      "id": "catalog-vs-ir-gaps",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/analysis/catalog-vs-ir-gaps.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "a8943d80df9440d2d84aebc0743938e3de47f2e5c18454aac2aa8efde3a926ef",
+      "lastModified": "2025-11-23T00:23:49.430Z",
+      "docs": []
+    },
+    {
+      "id": "comprehensive-audit",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/analysis/comprehensive-audit.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "185d7f42a05f3b24495023f2d977b956d6c369ea437d86e48ee0dfdedb4f6b67",
+      "lastModified": "2025-11-23T00:23:52.102Z",
+      "docs": []
+    },
+    {
+      "id": "external-interactions-audit",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/analysis/external-interactions-audit.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "85c80c7651b2a814f35c204045bd4a0d84208cfc4fcf91d94805bbf0f54646be",
+      "lastModified": "2025-11-21T23:33:40.097Z",
+      "docs": []
+    },
+    {
+      "id": "proposed-tests.handlers",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/analysis/proposed-tests.handlers.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "df5c25d7325440975dc99e8aaf5b93e1e15fb8883b4fd58a3529e19936b5b72b",
+      "lastModified": "2025-11-23T00:23:55.018Z",
+      "docs": []
+    },
+    {
+      "id": "catalog-components",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/catalog/catalog-components.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "f34864d2b850125a75b7933ed36f3451bf2c8f14fff97c58f4d7ec332dd30c32",
+      "lastModified": "2025-11-23T00:23:38.503Z",
+      "docs": []
+    },
+    {
+      "id": "catalog-manifest",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/catalog/catalog-manifest.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "ad59b2a14593fc4bf3e788cc31114e7e06900277be655499bf759b5bc23677ae",
+      "lastModified": "2025-11-23T00:23:36.353Z",
+      "docs": []
+    },
+    {
+      "id": "catalog-sequences",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/catalog/catalog-sequences.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "5d7bbd729b2de8d5f1a321a48e13fe055d9693ea438bd242fe89ef1127a32dff",
+      "lastModified": "2025-11-23T00:23:31.800Z",
+      "docs": []
+    },
+    {
+      "id": "catalog-topics",
+      "path": "packages/ographx/.ographx/artifacts/renderx-web/catalog/catalog-topics.json",
+      "layer": null,
+      "type": "canonical",
+      "hash": "21f7417232f9e331e3516b431f8a19eebd4157b9cd381c51a872a35c77c5f348",
+      "lastModified": "2025-11-23T00:23:34.191Z",
+      "docs": []
+    },
+    {
+      "id": "slo-dashboard-business-specs",
+      "path": "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json",
+      "layer": "business-specs",
+      "type": "bdd-spec",
+      "hash": "f30ba5904c2030b8e2eb6b3947fc6288a26276ee41102aef43a31a7fa022b75d",
+      "lastModified": "2025-11-24T01:05:24.542Z",
+      "docs": []
+    },
+    {
+      "id": "slo-dashboard-sequences-index",
+      "path": "packages/slo-dashboard/json-sequences/index.json",
+      "layer": "sequences",
+      "type": "sequence-index",
+      "hash": "6188e6c3a4fdeca4a34499c3404b4587e7fd4e96df2a3aef022cd253c1a3f716",
+      "lastModified": "2025-11-24T00:55:19.787Z",
+      "docs": []
+    }
+  ]
+}

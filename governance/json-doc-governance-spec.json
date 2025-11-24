@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "generated": "${ISO_TIMESTAMP}",
+  "purpose": "Defines JSON-first documentation governance: canonical sources, provenance banners, hashing, and enforcement checkpoints.",
+  "canonicalSourcePatterns": [
+    "**/.generated/*-business-bdd-specifications.json",
+    "**/.generated/global-traceability-map.json",
+    "**/.generated/project-knowledge-map.json",
+    "**/.generated/sli-metrics.json",
+    "**/.generated/slo-targets.json",
+    "**/.generated/error-budgets.json",
+    "packages/ographx/.ographx/artifacts/renderx-web/catalog/*.json",
+    "packages/ographx/.ographx/artifacts/renderx-web/analysis/*.json"
+  ],
+  "nonCanonicalMarkdownPolicy": {
+    "description": "Markdown must be derivative only; manual edits to generated docs are forbidden.",
+    "allowedLegacyDirs": ["docs/legacy"],
+    "requiredBanner": true
+  },
+  "provenanceBanner": {
+    "template": "<!-- AUTO-GENERATED — DO NOT EDIT\nSources: {{sources}}\nSource-Hashes: {{sourceHashes}}\nDoc-Hash: {{docHash}}\nGenerated: {{generated}}\nRegenerate: npm run docs:generate:governed\n-->",
+    "hashAlgorithm": "sha256",
+    "docHashExcludes": ["provenance banner"]
+  },
+  "enforcementHooks": {
+    "preBuild": "scripts/pre-build-pipeline-check.js",
+    "governance": "scripts/run-governance-checks.js",
+    "pipeline": "scripts/enforce-delivery-pipeline.js"
+  },
+  "validationRules": [
+    {"id": "missing-banner", "severity": "fail", "description": "Generated Markdown missing provenance banner"},
+    {"id": "stale-source-hash", "severity": "fail", "description": "Source JSON hash changed without doc regeneration"},
+    {"id": "doc-hash-mismatch", "severity": "fail", "description": "Body content modified post-generation"},
+    {"id": "unindexed-canonical", "severity": "warn", "description": "Canonical JSON absent from knowledge index"}
+  ],
+  "nextSteps": [
+    "Integrate provenance verification into governance checks",
+    "Extend pipeline enforcement with optional documentation layer",
+    "Add RAG provenance filter to exclude non-banner markdown"
+  ]
+}

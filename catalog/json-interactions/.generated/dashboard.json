@@ -1,0 +1,17 @@
+{
+  "plugin": "slo-dashboard",
+  "routes": {
+    "dashboard.export.report": {
+      "pluginId": "slo-dashboard",
+      "sequenceId": "dashboard.export.report"
+    },
+    "dashboard.load": {
+      "pluginId": "slo-dashboard",
+      "sequenceId": "dashboard.load"
+    },
+    "dashboard.refresh.metrics": {
+      "pluginId": "slo-dashboard",
+      "sequenceId": "dashboard.refresh.metrics"
+    }
+  }
+}

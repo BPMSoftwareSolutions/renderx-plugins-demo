@@ -1,0 +1,9 @@
+{
+  "name": "slo-dashboard-sequences-index",
+  "version": 1,
+  "sequences": [
+    "dashboard.load",
+    "dashboard.refresh.metrics",
+    "dashboard.export.report"
+  ]
+}

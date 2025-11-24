@@ -11,7 +11,8 @@ const ROOT = process.cwd();
 const STEPS = [
   { name: 'structure-report', cmd: ['node', 'scripts/gen-structure-report.js'] },
   { name: 'import-policy', cmd: ['node', 'scripts/import-policy-check.js'] },
-  { name: 'plan-integrity', cmd: ['node', 'scripts/validate-plan-integrity.js'] }
+  { name: 'plan-integrity', cmd: ['node', 'scripts/validate-plan-integrity.js'] },
+  { name: 'doc-provenance', cmd: ['node', 'scripts/verify-doc-provenance.js'] }
 ];
 
 function runStep(step){

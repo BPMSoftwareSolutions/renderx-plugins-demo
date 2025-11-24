@@ -1,0 +1,14 @@
+{
+  "id": "dashboard.export.report",
+  "pluginId": "slo-dashboard",
+  "description": "Export current dashboard view to downloadable artifact",
+  "movements": [
+    {
+      "name": "export",
+      "beats": [
+        { "beat": 1, "handler": "serializeDashboardState", "kind": "pure" },
+        { "beat": 2, "handler": "triggerExportDownload", "kind": "io" }
+      ]
+    }
+  ]
+}

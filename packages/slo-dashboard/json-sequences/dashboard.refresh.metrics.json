@@ -1,0 +1,14 @@
+{
+  "id": "dashboard.refresh.metrics",
+  "pluginId": "slo-dashboard",
+  "description": "Refresh metrics and recompute compliance",
+  "movements": [
+    {
+      "name": "refresh",
+      "beats": [
+        { "beat": 1, "handler": "loadMetrics", "kind": "io" },
+        { "beat": 2, "handler": "computeCompliance", "kind": "pure" }
+      ]
+    }
+  ]
+}

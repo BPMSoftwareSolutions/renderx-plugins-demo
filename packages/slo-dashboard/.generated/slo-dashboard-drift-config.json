@@ -1,0 +1,23 @@
+{
+  "featureName": "slo-dashboard",
+  "enabled": true,
+  "checksums": {
+  "specifications": "8be574217ca7cd92ce8cdd9006919f79d5e1937b5e7774f05d1138405b494bef",
+  "tests": "3e79b7cf6ce0b8b59f44eee387fa367f16191ee27d5bdd3412e7f19b14f414c0",
+  "lastVerified": "2025-11-24T00:10:00.000Z"
+  },
+  "monitors": {
+    "specModification": {
+      "enabled": true,
+      "action": "ERROR"
+    },
+    "testModification": {
+      "enabled": true,
+      "action": "ERROR"
+    },
+    "implementationChange": {
+      "enabled": true,
+      "action": "WARNING"
+    }
+  }
+}
