@@ -25,7 +25,9 @@
       "domain_type": "workflow",
       "status": "active",
       "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
-      "parent_refs": ["orchestration-core"],
+      "parent_refs": [
+        "orchestration-core"
+      ],
       "checksum": "",
       "supersedes": [],
       "deprecated": false,
@@ -36,6 +38,6 @@
     "active_count": 2,
     "deprecated_count": 0,
     "retired_count": 0,
-    "last_validation": null
+    "last_validation": "2025-11-24T22:10:36.251Z"
   }
 }
