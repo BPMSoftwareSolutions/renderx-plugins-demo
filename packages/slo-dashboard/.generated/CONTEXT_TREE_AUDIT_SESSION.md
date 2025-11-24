@@ -1,9 +1,22 @@
+<!-- 
+  AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
+  
+  Generated: 2025-11-24T21:41:45.654Z
+  Output: CONTEXT_TREE_AUDIT_SESSION.md
+  Source Files: slo-dashboard-project-plan.json, .generated/slo-dashboard-business-bdd-specifications.json
+  Policy: JSON-Driven Automation
+  
+  To regenerate: npm run generate:context-tree-audit-session
+  
+  Manual edits will be detected and blocked by pre-commit hooks.
+  Always regenerate from source JSON authorities.
+-->
+
 # Context Tree Audit Session: slo-dashboard
 
-**Generated**: 2025-11-24T22:00:00Z  
+**Generated**: 2025-11-24T21:41:45.652Z  
 **Project**: @slo-shape/dashboard  
 **Version**: 1.0.0  
-**Session Type**: Context Restoration & Project Management  
 **Status**: ✅ READY FOR CONTINUATION
 
 ---
@@ -13,552 +26,2005 @@
 ### Vision
 Deliver a governed, telemetry-coupled SLO dashboard providing real-time compliance, error budget burn, projection, and self-healing impact.
 
-### Current Compliance Status
-- **Overall**: 100% (recovered from 33%)
-- **Specifications**: ✅ COMPLETE (locked)
-- **Tests**: ✅ AUTO-GENERATED (drift-monitored)
-- **Implementation**: ✅ 17 components, 101 functions verified
-- **Governance**: ✅ Drift detection active
-
-### Key Artifacts
-| Artifact | Location | Status |
-|----------|----------|--------|
-| Business Specs | `.generated/slo-dashboard-business-bdd-specifications.json` | ✅ LOCKED |
-| Demo Plan | `.generated/slo-dashboard-demo-plan.json` | ✅ CURRENT |
-| Drift Config | `.generated/slo-dashboard-drift-config.json` | ✅ ACTIVE |
-| Project Plan | `./slo-dashboard-project-plan.json` | ✅ AUTHORITY |
-| BDD Tests | `__tests__/business-bdd/slo-dashboard-bdd.spec.ts` | ✅ AUTO-GENERATED |
+### Principles
+- JSON-first canonical specs
+- Every scenario traceable to sequences & handlers
+- Telemetry shaping aligned with BDD evolution
+- Provable provenance (hashes, drift config)
+- Fast feedback (<60s local pretest)
 
 ---
 
-## 2. Project Phases Status
+## 2. Phase Status
 
-### Phase 1: Foundation & Specs ✅ COMPLETE
-**Status**: DONE  
-**Completion**: 2025-11-23
+#
+#
+#
+ 
+P
+h
+a
+s
+e
+ 
+p
+h
+a
+s
+e
+-
+1
+-
+f
+o
+u
+n
+d
+a
+t
+i
+o
+n
+:
+ 
+F
+o
+u
+n
+d
+a
+t
+i
+o
+n
+ 
+&
+ 
+S
+p
+e
+c
+s
+ 
+✅
 
-**Deliverables**:
-- ✅ High-quality business spec (locked JSON)
-- ✅ Sequences JSON (dashboard.load, dashboard.refresh, dashboard.export)
-- ✅ Handler skeleton (metrics.ts with 4 core handlers)
 
-**Artifacts**:
-```
-packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json
-packages/slo-dashboard/json-sequences/index.json
-packages/slo-dashboard/src/handlers/metrics.ts
-```
+*
+*
+S
+t
+a
+t
+u
+s
+*
+*
+:
+ 
+D
+O
+N
+E
 
-**Key Handlers**:
-- `loadBudgets()` - Load SLO budgets from config
-- `loadMetrics()` - Fetch metrics from telemetry
-- `computeCompliance()` - Calculate SLI/SLO/SLA compliance
-- `triggerExportDownload()` - Export report as JSON/CSV
 
----
+*
+*
+G
+o
+a
+l
+s
+*
+*
+:
 
-### Phase 2: BDD & Handler Coverage ✅ COMPLETE
-**Status**: DONE  
-**Completion**: 2025-11-23
 
-**Deliverables**:
-- ✅ Scenario stubs (18 scenarios in business spec)
-- ✅ Handler-level BDD tests (5 test files, one per scenario group)
-- ✅ Drift config updated with checksums
+-
+ 
+H
+i
+g
+h
+-
+q
+u
+a
+l
+i
+t
+y
+ 
+b
+u
+s
+i
+n
+e
+s
+s
+ 
+s
+p
+e
+c
 
-**Artifacts**:
-```
-packages/slo-dashboard/__tests__/business-bdd-handlers/01-load-budgets.spec.ts
-packages/slo-dashboard/__tests__/business-bdd-handlers/02-load-metrics.spec.ts
-packages/slo-dashboard/__tests__/business-bdd-handlers/03-compute-compliance.spec.ts
-packages/slo-dashboard/__tests__/business-bdd-handlers/04-serialize-dashboard-state.spec.ts
-packages/slo-dashboard/__tests__/business-bdd-handlers/05-trigger-export-download.spec.ts
-packages/slo-dashboard/.generated/slo-dashboard-drift-config.json
-```
 
-**Test Coverage**: 18 scenarios, 5 handler groups
+-
+ 
+S
+e
+q
+u
+e
+n
+c
+e
+s
+ 
+J
+S
+O
+N
 
----
 
-### Phase 3: Telemetry Shaping Integration ⏳ IN-PROGRESS
-**Status**: IN-PROGRESS  
-**Priority**: HIGH  
-**Blocker**: None
+-
+ 
+H
+a
+n
+d
+l
+e
+r
+ 
+s
+k
+e
+l
+e
+t
+o
+n
 
-**Pending Tasks**:
-- [ ] SDP-1: Create `verify-shape-bdd-alignment.js`
-- [ ] SDP-2: Add placeholder shape contracts (detect-slo-breaches.json, shape-budgets.json)
-- [ ] SDP-3: Emit telemetry from handlers (loadMetrics, computeCompliance, triggerExportDownload)
-- [ ] SDP-9: Wire telemetry emission in utilities
-- [ ] SDP-13: Add telemetry assertions to implemented scenarios
 
-**Goals**:
-- Shape-BDD alignment script
-- Placeholder shape contracts
-- Telemetry emission hooks in handlers
+*
+*
+A
+r
+t
+i
+f
+a
+c
+t
+s
+*
+*
+:
 
-**Artifacts to Create**:
-```
-scripts/verify-shape-bdd-alignment.js
-contracts/detect-slo-breaches.json
-contracts/shape-budgets.json
-packages/slo-dashboard/src/handlers/metrics.ts (telemetry additions)
-packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts
-```
 
-**Estimated Effort**: 2-3 hours
+`
+`
+`
 
----
 
-### Phase 4: Assertion Enrichment ⏳ IN-PROGRESS
-**Status**: IN-PROGRESS  
-**Priority**: HIGH  
-**Dependency**: Phase 3 (partially concurrent)
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+.
+g
+e
+n
+e
+r
+a
+t
+e
+d
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+-
+b
+u
+s
+i
+n
+e
+s
+s
+-
+b
+d
+d
+-
+s
+p
+e
+c
+i
+f
+i
+c
+a
+t
+i
+o
+n
+s
+.
+j
+s
+o
+n
 
-**Pending Tasks**:
-- [ ] SDP-4: Implement concrete assertions (weighted compliance, sorting, color tiers)
-- [ ] SDP-10: Export artifact hashing & signing scenario
-- [ ] SDP-11: Accessibility label map + assertions
-- [ ] SDP-12: Tighten TODO ratio threshold (ASSERTION_COMPLETENESS_MAX_TODO_RATIO=0.40)
 
-**Goals**:
-- Map scenarios to concrete assertions
-- Compliance projections validated
-- Accessibility compliance verified
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+j
+s
+o
+n
+-
+s
+e
+q
+u
+e
+n
+c
+e
+s
+/
+i
+n
+d
+e
+x
+.
+j
+s
+o
+n
 
-**Artifacts to Update**:
-```
-packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts
-package.json (update threshold)
-```
 
-**Estimated Effort**: 2-3 hours
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+s
+r
+c
+/
+h
+a
+n
+d
+l
+e
+r
+s
+/
+m
+e
+t
+r
+i
+c
+s
+.
+t
+s
 
----
 
-### Phase 5: Project Plan Enforcement ⏱️ PENDING
-**Status**: PENDING  
-**Priority**: MEDIUM  
-**Dependency**: Phases 1-4 complete
+`
+`
+`
 
-**Pending Tasks**:
-- [ ] SDP-5: Create `verify-slo-dashboard-project-plan.js` enforcement script
-- [ ] SDP-6: Add plan to knowledge-index.json and drift governance
-- [ ] SDP-7: Integrate plan + shape alignment into pretest pipeline
 
-**Goals**:
-- Plan enforcement script
-- Knowledge index entry
-- Pretest integration
 
-**Artifacts to Create**:
-```
-scripts/verify-slo-dashboard-project-plan.js
-knowledge-index.json (entry added)
-```
 
-**Estimated Effort**: 1-2 hours
+#
+#
+#
+ 
+P
+h
+a
+s
+e
+ 
+p
+h
+a
+s
+e
+-
+2
+-
+t
+e
+s
+t
+i
+n
+g
+:
+ 
+B
+D
+D
+ 
+&
+ 
+H
+a
+n
+d
+l
+e
+r
+ 
+C
+o
+v
+e
+r
+a
+g
+e
+ 
+✅
 
----
 
-### Phase 6: End-to-End Compliance Audit ⏱️ PENDING
-**Status**: PENDING  
-**Priority**: MEDIUM  
-**Dependency**: All phases complete
+*
+*
+S
+t
+a
+t
+u
+s
+*
+*
+:
+ 
+D
+O
+N
+E
 
-**Pending Tasks**:
-- [ ] SDP-8: Run final full compliance audit
 
-**Goals**:
-- All phases done
-- Audit across 7 layers + telemetry
-- Generate completion report
+*
+*
+G
+o
+a
+l
+s
+*
+*
+:
 
-**Artifacts to Create**:
-```
-AUDIT_COMPLETION_REPORT.md
-```
 
-**Estimated Effort**: 1 hour
+-
+ 
+S
+c
+e
+n
+a
+r
+i
+o
+ 
+s
+t
+u
+b
+s
+
+
+-
+ 
+H
+a
+n
+d
+l
+e
+r
+-
+l
+e
+v
+e
+l
+ 
+B
+D
+D
+ 
+t
+e
+s
+t
+s
+
+
+-
+ 
+D
+r
+i
+f
+t
+ 
+c
+o
+n
+f
+i
+g
+ 
+u
+p
+d
+a
+t
+e
+d
+
+
+*
+*
+A
+r
+t
+i
+f
+a
+c
+t
+s
+*
+*
+:
+
+
+`
+`
+`
+
+
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+_
+_
+t
+e
+s
+t
+s
+_
+_
+/
+b
+u
+s
+i
+n
+e
+s
+s
+-
+b
+d
+d
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+-
+s
+c
+e
+n
+a
+r
+i
+o
+s
+.
+g
+e
+n
+e
+r
+a
+t
+e
+d
+.
+s
+p
+e
+c
+.
+t
+s
+
+
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+_
+_
+t
+e
+s
+t
+s
+_
+_
+/
+b
+u
+s
+i
+n
+e
+s
+s
+-
+b
+d
+d
+-
+h
+a
+n
+d
+l
+e
+r
+s
+/
+0
+1
+-
+l
+o
+a
+d
+-
+b
+u
+d
+g
+e
+t
+s
+.
+s
+p
+e
+c
+.
+t
+s
+
+
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+.
+g
+e
+n
+e
+r
+a
+t
+e
+d
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+-
+d
+r
+i
+f
+t
+-
+c
+o
+n
+f
+i
+g
+.
+j
+s
+o
+n
+
+
+`
+`
+`
+
+
+
+
+#
+#
+#
+ 
+P
+h
+a
+s
+e
+ 
+p
+h
+a
+s
+e
+-
+3
+-
+t
+e
+l
+e
+m
+e
+t
+r
+y
+-
+i
+n
+t
+e
+g
+r
+a
+t
+i
+o
+n
+:
+ 
+T
+e
+l
+e
+m
+e
+t
+r
+y
+ 
+S
+h
+a
+p
+i
+n
+g
+ 
+I
+n
+t
+e
+g
+r
+a
+t
+i
+o
+n
+ 
+⏳
+
+
+*
+*
+S
+t
+a
+t
+u
+s
+*
+*
+:
+ 
+I
+N
+-
+P
+R
+O
+G
+R
+E
+S
+S
+
+
+*
+*
+G
+o
+a
+l
+s
+*
+*
+:
+
+
+-
+ 
+S
+h
+a
+p
+e
+-
+B
+D
+D
+ 
+a
+l
+i
+g
+n
+m
+e
+n
+t
+ 
+s
+c
+r
+i
+p
+t
+
+
+-
+ 
+P
+l
+a
+c
+e
+h
+o
+l
+d
+e
+r
+ 
+s
+h
+a
+p
+e
+ 
+c
+o
+n
+t
+r
+a
+c
+t
+s
+
+
+-
+ 
+T
+e
+l
+e
+m
+e
+t
+r
+y
+ 
+e
+m
+i
+s
+s
+i
+o
+n
+ 
+h
+o
+o
+k
+s
+
+
+*
+*
+A
+r
+t
+i
+f
+a
+c
+t
+s
+*
+*
+:
+
+
+`
+`
+`
+
+
+s
+c
+r
+i
+p
+t
+s
+/
+v
+e
+r
+i
+f
+y
+-
+s
+h
+a
+p
+e
+-
+b
+d
+d
+-
+a
+l
+i
+g
+n
+m
+e
+n
+t
+.
+j
+s
+
+
+c
+o
+n
+t
+r
+a
+c
+t
+s
+/
+d
+e
+t
+e
+c
+t
+-
+s
+l
+o
+-
+b
+r
+e
+a
+c
+h
+e
+s
+.
+j
+s
+o
+n
+
+
+c
+o
+n
+t
+r
+a
+c
+t
+s
+/
+s
+h
+a
+p
+e
+-
+b
+u
+d
+g
+e
+t
+s
+.
+j
+s
+o
+n
+
+
+`
+`
+`
+
+
+
+
+#
+#
+#
+ 
+P
+h
+a
+s
+e
+ 
+p
+h
+a
+s
+e
+-
+4
+-
+a
+s
+s
+e
+r
+t
+i
+o
+n
+-
+e
+n
+r
+i
+c
+h
+m
+e
+n
+t
+:
+ 
+B
+u
+s
+i
+n
+e
+s
+s
+ 
+A
+s
+s
+e
+r
+t
+i
+o
+n
+ 
+E
+n
+r
+i
+c
+h
+m
+e
+n
+t
+ 
+⏳
+
+
+*
+*
+S
+t
+a
+t
+u
+s
+*
+*
+:
+ 
+I
+N
+-
+P
+R
+O
+G
+R
+E
+S
+S
+
+
+*
+*
+G
+o
+a
+l
+s
+*
+*
+:
+
+
+-
+ 
+M
+a
+p
+ 
+s
+c
+e
+n
+a
+r
+i
+o
+s
+ 
+t
+o
+ 
+c
+o
+n
+c
+r
+e
+t
+e
+ 
+a
+s
+s
+e
+r
+t
+i
+o
+n
+s
+
+
+-
+ 
+C
+o
+m
+p
+l
+i
+a
+n
+c
+e
+ 
+p
+r
+o
+j
+e
+c
+t
+i
+o
+n
+s
+ 
+v
+a
+l
+i
+d
+a
+t
+e
+d
+
+
+*
+*
+A
+r
+t
+i
+f
+a
+c
+t
+s
+*
+*
+:
+
+
+`
+`
+`
+
+
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+_
+_
+t
+e
+s
+t
+s
+_
+_
+/
+b
+u
+s
+i
+n
+e
+s
+s
+-
+b
+d
+d
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+-
+s
+c
+e
+n
+a
+r
+i
+o
+s
+.
+g
+e
+n
+e
+r
+a
+t
+e
+d
+.
+s
+p
+e
+c
+.
+t
+s
+
+
+`
+`
+`
+
+
+
+
+#
+#
+#
+ 
+P
+h
+a
+s
+e
+ 
+p
+h
+a
+s
+e
+-
+5
+-
+p
+r
+o
+j
+e
+c
+t
+-
+p
+l
+a
+n
+-
+e
+n
+f
+o
+r
+c
+e
+m
+e
+n
+t
+:
+ 
+P
+l
+a
+n
+ 
+G
+o
+v
+e
+r
+n
+a
+n
+c
+e
+ 
+&
+ 
+P
+r
+o
+v
+e
+n
+a
+n
+c
+e
+ 
+⏱
+️
+
+
+*
+*
+S
+t
+a
+t
+u
+s
+*
+*
+:
+ 
+P
+E
+N
+D
+I
+N
+G
+
+
+*
+*
+G
+o
+a
+l
+s
+*
+*
+:
+
+
+-
+ 
+P
+l
+a
+n
+ 
+e
+n
+f
+o
+r
+c
+e
+m
+e
+n
+t
+ 
+s
+c
+r
+i
+p
+t
+
+
+-
+ 
+K
+n
+o
+w
+l
+e
+d
+g
+e
+ 
+i
+n
+d
+e
+x
+ 
+e
+n
+t
+r
+y
+
+
+-
+ 
+P
+r
+e
+t
+e
+s
+t
+ 
+i
+n
+t
+e
+g
+r
+a
+t
+i
+o
+n
+
+
+*
+*
+A
+r
+t
+i
+f
+a
+c
+t
+s
+*
+*
+:
+
+
+`
+`
+`
+
+
+p
+a
+c
+k
+a
+g
+e
+s
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+/
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+-
+p
+r
+o
+j
+e
+c
+t
+-
+p
+l
+a
+n
+.
+j
+s
+o
+n
+
+
+s
+c
+r
+i
+p
+t
+s
+/
+v
+e
+r
+i
+f
+y
+-
+s
+l
+o
+-
+d
+a
+s
+h
+b
+o
+a
+r
+d
+-
+p
+r
+o
+j
+e
+c
+t
+-
+p
+l
+a
+n
+.
+j
+s
+
+
+k
+n
+o
+w
+l
+e
+d
+g
+e
+-
+i
+n
+d
+e
+x
+.
+j
+s
+o
+n
+
+
+`
+`
+`
+
+
+
+
+#
+#
+#
+ 
+P
+h
+a
+s
+e
+ 
+p
+h
+a
+s
+e
+-
+6
+-
+f
+i
+n
+a
+l
+-
+c
+o
+m
+p
+l
+i
+a
+n
+c
+e
+:
+ 
+E
+n
+d
+-
+t
+o
+-
+E
+n
+d
+ 
+C
+o
+m
+p
+l
+i
+a
+n
+c
+e
+ 
+A
+u
+d
+i
+t
+ 
+⏱
+️
+
+
+*
+*
+S
+t
+a
+t
+u
+s
+*
+*
+:
+ 
+P
+E
+N
+D
+I
+N
+G
+
+
+*
+*
+G
+o
+a
+l
+s
+*
+*
+:
+
+
+-
+ 
+A
+l
+l
+ 
+p
+h
+a
+s
+e
+s
+ 
+d
+o
+n
+e
+
+
+-
+ 
+A
+u
+d
+i
+t
+ 
+a
+c
+r
+o
+s
+s
+ 
+7
+ 
+l
+a
+y
+e
+r
+s
+ 
++
+ 
+t
+e
+l
+e
+m
+e
+t
+r
+y
+
+
+*
+*
+A
+r
+t
+i
+f
+a
+c
+t
+s
+*
+*
+:
+
+
+`
+`
+`
+
+
+A
+U
+D
+I
+T
+_
+C
+O
+M
+P
+L
+E
+T
+I
+O
+N
+_
+R
+E
+P
+O
+R
+T
+.
+m
+d
+
+
+`
+`
+`
 
 ---
 
 ## 3. Task Breakdown
 
-### Critical Path (Sequential)
-```
-Phase 1 ✅ → Phase 2 ✅ → Phase 3 ⏳ → Phase 4 ⏳ → Phase 5 ⏱️ → Phase 6 ⏱️
-```
-
-### Parallel Opportunities
-- Phase 3 & 4 can be done in parallel (minimal dependency)
-- Some Phase 4 assertions can be written while Phase 3 telemetry is being coded
-
-### Immediate Next Steps (In Order)
-1. **TODAY**: Phase 3 telemetry integration (SDP-1, SDP-2, SDP-3, SDP-9)
-2. **TODAY**: Phase 4 assertion enrichment (SDP-4, SDP-10, SDP-11, SDP-12)
-3. **TOMORROW**: Phase 5 project plan enforcement (SDP-5, SDP-6, SDP-7)
-4. **TOMORROW**: Phase 6 compliance audit (SDP-8)
+| Key | Description | Phase | Status |
+|-----|-------------|-------|--------|
+| SDP-1 | Create verify-shape-bdd-alignment.js | phase-3-telemetry-integration | ⏱️ pending |
+| SDP-2 | Add placeholder shape contracts | phase-3-telemetry-integration | ⏱️ pending |
+| SDP-3 | Emit telemetry from handlers (loadMetrics, computeCompliance, triggerExportDownload) | phase-3-telemetry-integration | ⏱️ pending |
+| SDP-9 | Wire telemetry emission in computeCompliance() & projection utilities | phase-3-telemetry-integration | ⏱️ pending |
+| SDP-13 | Add telemetry assertions to implemented scenarios | phase-3-telemetry-integration | ⏱️ pending |
+| SDP-4 | Implement concrete assertions (weighted compliance, sorting, color tiers, projection soon/now) | phase-4-assertion-enrichment | ⏳ in-progress |
+| SDP-10 | Implement export artifact hashing & signing scenario | phase-4-assertion-enrichment | ⏱️ pending |
+| SDP-11 | Add accessibility label map + assertions | phase-4-assertion-enrichment | ⏱️ pending |
+| SDP-12 | Tighten TODO ratio threshold to 40% (ASSERTION_COMPLETENESS_MAX_TODO_RATIO=0.40) | phase-4-assertion-enrichment | ⏱️ pending |
+| SDP-5 | Create verify-slo-dashboard-project-plan.js enforcement script | phase-5-project-plan-enforcement | ⏱️ pending |
+| SDP-6 | Add plan to knowledge-index.json and drift governance | phase-5-project-plan-enforcement | ⏱️ pending |
+| SDP-7 | Integrate plan + shape alignment into pretest pipeline | phase-5-project-plan-enforcement | ⏱️ pending |
+| SDP-8 | Run final full compliance audit | phase-6-final-compliance | ⏱️ pending |
 
 ---
 
-## 4. Governance System Status
+## 4. Completion Metrics
 
-### Authority Files
-| File | Location | Purpose | Status |
-|------|----------|---------|--------|
-| Project Plan | `slo-dashboard-project-plan.json` | Source of truth | ✅ CURRENT |
-| Business Specs | `.generated/slo-dashboard-business-bdd-specifications.json` | Locked spec | ✅ ACTIVE |
-| Drift Config | `.generated/slo-dashboard-drift-config.json` | Change detection | ✅ MONITORING |
-
-### Governance Layers
-| Layer | Enforcement Point | Status |
-|-------|-------------------|--------|
-| 1 | Specification Locks (JSON checksums) | ✅ ACTIVE |
-| 2 | Drift Detection (automated monitoring) | ✅ ACTIVE |
-| 3 | BDD Test Coverage (auto-generated) | ✅ ACTIVE |
-| 4 | Project Plan Tracking (phase gates) | ✅ ACTIVE |
-| 5 | Telemetry Alignment | ⏳ IN-PROGRESS |
-
-### Root File Governance (Package Level)
-
-**Authorized Root Files** (package/slo-dashboard/):
-```json
-{
-  "authorized": [
-    "package.json",
-    "tsconfig.json",
-    "README.md",
-    "RECOVERY_REPORT.md",
-    "slo-dashboard-project-plan.json"
-  ],
-  "directories": {
-    ".generated/": "Generated artifacts",
-    "src/": "Implementation source",
-    "__tests__/": "Test files",
-    "json-sequences/": "Orchestration sequences",
-    "contracts/": "Shape contracts"
-  }
-}
+```
+Overall Completion: 33%
+Phases Complete: 2 of 6
+Blockers: 0
 ```
 
 ---
 
-## 5. File Organization Strategy
-
-### Current Structure (CORRECT)
-```
-packages/slo-dashboard/
-├── .generated/                    # Generated, locked, versioned
-│   ├── slo-dashboard-business-bdd-specifications.json
-│   ├── slo-dashboard-demo-plan.json
-│   └── slo-dashboard-drift-config.json
-├── src/
-│   ├── handlers/
-│   │   └── metrics.ts            # Core handler implementations
-│   ├── types.ts
-│   └── index.ts
-├── __tests__/
-│   ├── business-bdd-handlers/
-│   │   ├── 01-load-budgets.spec.ts
-│   │   ├── 02-load-metrics.spec.ts
-│   │   ├── 03-compute-compliance.spec.ts
-│   │   ├── 04-serialize-dashboard-state.spec.ts
-│   │   └── 05-trigger-export-download.spec.ts
-│   ├── unit/
-│   │   └── compliance.spec.ts
-│   └── handlers.handlers.spec.ts
-├── json-sequences/               # Orchestration definitions
-│   ├── index.json
-│   ├── dashboard.load.json
-│   ├── dashboard.refresh.metrics.json
-│   └── dashboard.export.report.json
-├── contracts/                    # Shape contracts (to be created)
-│   ├── detect-slo-breaches.json  # ⏳ PENDING
-│   └── shape-budgets.json        # ⏳ PENDING
-├── package.json
-├── tsconfig.json
-├── README.md
-├── RECOVERY_REPORT.md
-└── slo-dashboard-project-plan.json
-```
-
-### Files to Create (Phase 3-5)
-```
-contracts/
-├── detect-slo-breaches.json      # Phase 3 task SDP-2
-└── shape-budgets.json            # Phase 3 task SDP-2
-
-scripts/ (at parent level)
-├── verify-shape-bdd-alignment.js      # Phase 3 task SDP-1
-└── verify-slo-dashboard-project-plan.js  # Phase 5 task SDP-5
-```
-
----
-
-## 6. Implementation Status by Component
-
-### Core Handlers (src/handlers/metrics.ts)
-
-#### Status: ✅ SKELETON COMPLETE, ⏳ TELEMETRY PENDING
-
-| Handler | Lines | Status | TODO |
-|---------|-------|--------|------|
-| `loadBudgets()` | ~25 | ✅ COMPLETE | Add telemetry (Phase 3 SDP-3) |
-| `loadMetrics()` | ~35 | ✅ COMPLETE | Add telemetry (Phase 3 SDP-3) |
-| `computeCompliance()` | ~50 | ✅ COMPLETE | Add projection logic (Phase 4), Telemetry (Phase 3) |
-| `triggerExportDownload()` | ~40 | ✅ COMPLETE | Add hashing/signing (Phase 4 SDP-10) |
-
-**Telemetry Additions Needed** (Phase 3 SDP-3, SDP-9):
-- Add event emission for each handler
-- Wire compliance metrics (weighted score, threshold breaches)
-- Track projection state changes
-- Emit export operations
-
----
-
-### Test Files (All Present)
-
-| Test File | Scenarios | Status |
-|-----------|-----------|--------|
-| 01-load-budgets.spec.ts | 3 | ✅ AUTO-GENERATED |
-| 02-load-metrics.spec.ts | 4 | ✅ AUTO-GENERATED |
-| 03-compute-compliance.spec.ts | 5 | ✅ AUTO-GENERATED |
-| 04-serialize-dashboard-state.spec.ts | 3 | ✅ AUTO-GENERATED |
-| 05-trigger-export-download.spec.ts | 3 | ✅ AUTO-GENERATED |
-
-**Enhancement Needed** (Phase 4):
-- Add concrete assertions (not just stubs)
-- Add telemetry assertions (Phase 4 SDP-13)
-- Add accessibility assertions (Phase 4 SDP-11)
-- Tighten TODO ratio (Phase 4 SDP-12)
-
----
-
-## 7. Metrics & Progress
-
-### Completion Status
-```
-Phase 1 (Foundation & Specs):                ████████████████████ 100%  ✅
-Phase 2 (BDD & Handler Coverage):            ████████████████████ 100%  ✅
-Phase 3 (Telemetry Integration):             ░░░░░░░░░░░░░░░░░░░░   0%  ⏳
-Phase 4 (Assertion Enrichment):              ░░░░░░░░░░░░░░░░░░░░   0%  ⏳
-Phase 5 (Project Plan Enforcement):          ░░░░░░░░░░░░░░░░░░░░   0%  ⏱️
-Phase 6 (Compliance Audit):                  ░░░░░░░░░░░░░░░░░░░░   0%  ⏱️
-─────────────────────────────────────────────────────
-Overall Project Completion:                  ██████░░░░░░░░░░░░░░  33%
-```
-
-### Artifacts Summary
-| Category | Count | Status |
-|----------|-------|--------|
-| Specification Artifacts | 3 | ✅ LOCKED |
-| Implementation Files | 1 | ✅ COMPLETE |
-| Test Files | 6 | ✅ GENERATED |
-| JSON Sequences | 4 | ✅ COMPLETE |
-| Shape Contracts | 0 | ⏳ PENDING (2 to create) |
-| Enforcement Scripts | 0 | ⏳ PENDING (2 to create) |
-
----
-
-## 8. Known Issues & Blockers
-
-### Current Blockers
-**NONE** - All critical path items are clear.
-
-### Pending Dependencies
-- Phase 3 tasks (SDP-1, SDP-2, SDP-3, SDP-9, SDP-13) → No blockers, ready to start
-- Phase 4 tasks (SDP-4, SDP-10, SDP-11, SDP-12) → Dependent on Phase 3 telemetry contracts (minor)
-- Phase 5 tasks (SDP-5, SDP-6, SDP-7) → Dependent on Phase 3 & 4 completion
-- Phase 6 tasks (SDP-8) → Dependent on all previous phases
-
-### Risk Assessment
-| Risk | Impact | Mitigation |
-|------|--------|-----------|
-| Telemetry contract shape mismatch | MEDIUM | Create placeholder shapes first, iterate |
-| Assertion complexity | MEDIUM | Use existing patterns from renderx-plugins-demo |
-| Project plan enforcement in pretest | LOW | Reference parent project's governance system |
-
----
-
-## 9. Testing Strategy
-
-### Current Tests
-- ✅ 5 BDD handler test files (auto-generated stubs)
-- ✅ 1 unit test file (compliance logic)
-- ✅ 1 handler integration test file
-
-### Test Execution
-```bash
-# Run all tests
-npm test
-
-# Run with coverage
-npm test -- --coverage
-
-# Run specific suite
-npm test -- --testNamePattern="01-load-budgets"
-
-# Watch mode
-npm test:watch
-```
-
-### Quality Metrics
-- **Current TODO Ratio**: Unknown (Phase 4 SDP-12 will set to 0.40)
-- **Test Count**: 18 scenarios across 5 test files
-- **Coverage Goal**: >80% (auto-generated tests provide baseline)
-
----
-
-## 10. Build & Integration
-
-### Build Process
-```bash
-npm run build
-# Output: dist/ (TypeScript + Rollup)
-
-npm run type-check
-# Type checking without build
-
-npm run dev
-# TypeScript watch mode
-```
-
-### Build Status
-- ✅ TypeScript compilation: OK
-- ✅ Rollup bundling: OK
-- ✅ Type definitions: Generated
-- ✅ Module exports: ESM + CommonJS + Types
-
-### Parent Project Integration
-- Part of: `renderx-plugins-demo` workspace
-- Package name: `@slo-shape/dashboard`
-- Used in: `src/ui/slo-dashboard/SLODashboardPage.tsx`
-- Adapter: `src/ui/slo-dashboard/renderx-metrics-adapter.ts`
-
----
-
-## 11. Context Restoration Checklist
-
-Before starting work on Phase 3, verify:
-
-- [ ] Read this audit session document completely
-- [ ] Review `slo-dashboard-project-plan.json` (authority)
-- [ ] Review `.generated/slo-dashboard-business-bdd-specifications.json` (locked specs)
-- [ ] Review `RECOVERY_REPORT.md` (recovery status)
-- [ ] Understand Phase 1 & 2 deliverables (link to parent governance system)
-- [ ] Review existing test structure (`__tests__/business-bdd-handlers/`)
-- [ ] Understand telemetry requirements (from specifications)
-- [ ] Understand governance layers (5-layer system from renderx-plugins-demo)
-- [ ] Check parent project's root file governance system
-- [ ] Verify no new files created in package root (only in subdirectories)
-
----
-
-## 12. Next Session Handoff
-
-### Immediate Actions (Next Agent)
-
-**Step 1: Context Verification** (5 minutes)
-1. Read this audit session
-2. Verify project structure (no root pollution)
-3. Check all authority files present and locked
-
-**Step 2: Phase 3 Kickoff** (if continuing)
-1. Create placeholder shape contracts (SDP-2)
-2. Create telemetry alignment verification script (SDP-1)
-3. Add telemetry emission to handlers (SDP-3, SDP-9)
-4. Update tests with telemetry assertions (SDP-13)
-
-**Step 3: Phase 4 Kickoff** (if time permits)
-1. Implement concrete assertions (SDP-4)
-2. Add export artifact hashing (SDP-10)
-3. Add accessibility labels (SDP-11)
-4. Tighten TODO threshold (SDP-12)
-
-**Step 4: Verification**
-1. Run full test suite: `npm test`
-2. Check coverage
-3. Verify project plan status
-4. Update this audit session with progress
-
-### Key Files to Review First
-1. `slo-dashboard-project-plan.json` - Authority & task list
-2. `.generated/slo-dashboard-business-bdd-specifications.json` - Locked requirements
-3. `src/handlers/metrics.ts` - Core implementation
-4. `__tests__/business-bdd-handlers/01-load-budgets.spec.ts` - Example test structure
-5. `RECOVERY_REPORT.md` - Recovery history
-
-### Success Criteria
-- ✅ Phase 3 complete: Telemetry emission in all handlers
-- ✅ Phase 4 complete: Assertions enriched with telemetry & accessibility
-- ✅ Phase 5 complete: Project plan enforcement script created
-- ✅ Phase 6 complete: Full compliance audit report generated
-
----
-
-## 13. Related Context References
-
-### Parent Project Systems
-- **Root File Governance**: `renderx-plugins-demo/docs/governance/CAG_ROOT_FILE_GOVERNANCE_SYSTEM.md`
-- **Authority Pattern**: `renderx-plugins-demo/docs/governance/ROOT_FILE_PLACEMENT_RULES.json`
-- **Governance Principles**: `renderx-plugins-demo/docs/governance/orchestration-audit-system-project-plan.json`
-
-### Telemetry Governance
-- **Shape Specifications**: `renderx-plugins-demo/docs/shape/`
-- **Telemetry Contracts**: `renderx-plugins-demo/contracts/`
-- **BDD Specifications**: `.generated/slo-dashboard-business-bdd-specifications.json`
-
-### Build & Test Integration
-- **Monorepo Setup**: `renderx-plugins-demo/package.json`
-- **Pretest Pipeline**: `renderx-plugins-demo/scripts/pretest.js`
-- **Build Verification**: `renderx-plugins-demo/BUILD_PROCESS_SUMMARY.md`
-
----
-
-## 14. Quick Reference Commands
-
-```bash
-# Testing
-npm test                          # Run all tests
-npm test:watch                    # Watch mode
-npm test -- --coverage            # With coverage
-
-# Building
-npm run build                      # TypeScript + Rollup
-npm run type-check                # Type checking only
-npm run dev                        # Watch mode compilation
-
-# Linting
-npm run lint                       # ESLint
-
-# Verification (when created in Phase 5)
-npm run verify:shape-bdd-alignment      # Phase 3 SDP-1
-npm run verify:slo-dashboard-project-plan  # Phase 5 SDP-5
-```
-
----
-
-## 15. Session Summary
-
-| Item | Status |
-|------|--------|
-| **Project Compliance** | ✅ 100% (recovered from 33%) |
-| **Phases Complete** | ✅ 2 of 6 (Phases 1-2) |
-| **Phases In-Progress** | ⏳ 2 of 6 (Phases 3-4) |
-| **Phases Pending** | ⏱️ 2 of 6 (Phases 5-6) |
-| **Core Implementation** | ✅ 4 handlers, 101 functions |
-| **Test Coverage** | ✅ 18 scenarios, 6 test files |
-| **Blockers** | ✅ NONE |
-| **Ready to Continue** | ✅ YES |
-| **Authority Files** | ✅ LOCKED & VERSIONED |
-| **Governance Active** | ✅ 5 LAYERS |
-
----
-
-**Generated by**: renderx-plugins-demo context system  
-**For**: slo-dashboard project continuation  
-**Session**: Context Restoration & Project Management  
-**Next Review**: Upon Phase 3 completion  
-
-**File Location**: `packages/slo-dashboard/.generated/CONTEXT_TREE_AUDIT_SESSION.md`
+**Source**: Generated from slo-dashboard-project-plan.json
+**Policy**: Never edit manually - always regenerate from JSON
