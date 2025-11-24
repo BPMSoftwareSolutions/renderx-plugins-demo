@@ -1,0 +1,345 @@
+{
+  "numFailedTests": 0,
+  "numFailedTestSuites": 0,
+  "numPassedTests": 34,
+  "numPassedTestSuites": 6,
+  "numPendingTests": 5,
+  "numPendingTestSuites": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTotalTests": 39,
+  "numTotalTestSuites": 6,
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "unmatched": 0,
+    "updated": 0
+  },
+  "success": true,
+  "testResults": [
+    {
+      "name": "packages/web-components/src/canvas/__tests__/canvas.spec.ts",
+      "duration": 3245,
+      "numFailedTests": 0,
+      "numPassedTests": 8,
+      "numPendingTests": 1,
+      "numTodoTests": 0,
+      "assertionResults": [
+        {
+          "title": "should render canvas component",
+          "fullName": "Canvas Component should render canvas component",
+          "status": "passed",
+          "duration": 145,
+          "failureMessages": []
+        },
+        {
+          "title": "should update canvas dimensions on resize",
+          "fullName": "Canvas Component should update canvas dimensions on resize",
+          "status": "passed",
+          "duration": 234,
+          "failureMessages": [],
+          "emittedEvents": ["canvas:render:performance:throttle"]
+        },
+        {
+          "title": "should handle concurrent canvas creation",
+          "fullName": "Canvas Component should handle concurrent canvas creation",
+          "status": "passed",
+          "duration": 567,
+          "failureMessages": [],
+          "emittedEvents": ["canvas:concurrent:creation:race"]
+        },
+        {
+          "title": "should validate boundary coordinates",
+          "fullName": "Canvas Component should validate boundary coordinates",
+          "status": "passed",
+          "duration": 189,
+          "failureMessages": [],
+          "emittedEvents": ["canvas:boundary:validation:missing"]
+        },
+        {
+          "title": "should render with custom theme",
+          "fullName": "Canvas Component should render with custom theme",
+          "status": "passed",
+          "duration": 267,
+          "failureMessages": [],
+          "emittedEvents": ["theme:css:repaint:storm"]
+        },
+        {
+          "title": "should handle paint events efficiently",
+          "fullName": "Canvas Component should handle paint events efficiently",
+          "status": "pending",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "title": "should cache rendering results",
+          "fullName": "Canvas Component should cache rendering results",
+          "status": "passed",
+          "duration": 123,
+          "failureMessages": []
+        },
+        {
+          "title": "should emit resize complete event",
+          "fullName": "Canvas Component should emit resize complete event",
+          "status": "passed",
+          "duration": 89,
+          "failureMessages": []
+        }
+      ]
+    },
+    {
+      "name": "packages/web-components/src/control-panel/__tests__/control-panel.spec.ts",
+      "duration": 2156,
+      "numFailedTests": 0,
+      "numPassedTests": 6,
+      "numPendingTests": 1,
+      "numTodoTests": 0,
+      "assertionResults": [
+        {
+          "title": "should render control panel",
+          "fullName": "Control Panel should render control panel",
+          "status": "passed",
+          "duration": 178,
+          "failureMessages": [],
+          "emittedEvents": ["control:panel:ui:render"]
+        },
+        {
+          "title": "should handle property binding updates",
+          "fullName": "Control Panel should handle property binding updates",
+          "status": "passed",
+          "duration": 267,
+          "failureMessages": [],
+          "emittedEvents": ["control:panel:property:binding:lag"]
+        },
+        {
+          "title": "should validate state transitions",
+          "fullName": "Control Panel should validate state transitions",
+          "status": "passed",
+          "duration": 145,
+          "failureMessages": [],
+          "emittedEvents": ["control:panel:state:validation:missing"]
+        },
+        {
+          "title": "should sync state across instances",
+          "fullName": "Control Panel should sync state across instances",
+          "status": "passed",
+          "duration": 456,
+          "failureMessages": [],
+          "emittedEvents": ["control:panel:state:sync:race"]
+        },
+        {
+          "title": "should handle rapid property updates",
+          "fullName": "Control Panel should handle rapid property updates",
+          "status": "pending",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "title": "should persist state to local storage",
+          "fullName": "Control Panel should persist state to local storage",
+          "status": "passed",
+          "duration": 123,
+          "failureMessages": []
+        }
+      ]
+    },
+    {
+      "name": "packages/web-components/src/library/__tests__/library.spec.ts",
+      "duration": 2789,
+      "numFailedTests": 0,
+      "numPassedTests": 7,
+      "numPendingTests": 2,
+      "numTodoTests": 0,
+      "assertionResults": [
+        {
+          "title": "should load library components",
+          "fullName": "Library Component should load library components",
+          "status": "passed",
+          "duration": 234,
+          "failureMessages": [],
+          "emittedEvents": ["library:index:loading:blocking"]
+        },
+        {
+          "title": "should search library variants",
+          "fullName": "Library Component should search library variants",
+          "status": "passed",
+          "duration": 345,
+          "failureMessages": [],
+          "emittedEvents": ["library:search:cache:invalidation"]
+        },
+        {
+          "title": "should cache search results",
+          "fullName": "Library Component should cache search results",
+          "status": "passed",
+          "duration": 189,
+          "failureMessages": [],
+          "emittedEvents": ["library:search:cache:invalidation"]
+        },
+        {
+          "title": "should handle variant type checking",
+          "fullName": "Library Component should handle variant type checking",
+          "status": "passed",
+          "duration": 167,
+          "failureMessages": [],
+          "emittedEvents": ["library:type:checking:insufficient"]
+        },
+        {
+          "title": "should support variant composition",
+          "fullName": "Library Component should support variant composition",
+          "status": "pending",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "title": "should invalidate cache on variant update",
+          "fullName": "Library Component should invalidate cache on variant update",
+          "status": "pending",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "title": "should enforce type constraints",
+          "fullName": "Library Component should enforce type constraints",
+          "status": "passed",
+          "duration": 145,
+          "failureMessages": []
+        }
+      ]
+    },
+    {
+      "name": "packages/host-sdk/__tests__/host-sdk.spec.ts",
+      "duration": 4567,
+      "numFailedTests": 0,
+      "numPassedTests": 7,
+      "numPendingTests": 1,
+      "numTodoTests": 0,
+      "assertionResults": [
+        {
+          "title": "should initialize host SDK",
+          "fullName": "Host SDK should initialize host SDK",
+          "status": "passed",
+          "duration": 245,
+          "failureMessages": [],
+          "emittedEvents": ["host:sdk:plugin:init:serialization"]
+        },
+        {
+          "title": "should load plugins in parallel",
+          "fullName": "Host SDK should load plugins in parallel",
+          "status": "passed",
+          "duration": 1234,
+          "failureMessages": [],
+          "emittedEvents": ["host:sdk:plugin:init:serialization"]
+        },
+        {
+          "title": "should communicate with plugins",
+          "fullName": "Host SDK should communicate with plugins",
+          "status": "passed",
+          "duration": 567,
+          "failureMessages": [],
+          "emittedEvents": ["host:sdk:communication:timeout"]
+        },
+        {
+          "title": "should handle plugin communication timeout",
+          "fullName": "Host SDK should handle plugin communication timeout",
+          "status": "pending",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "title": "should manage plugin lifecycle",
+          "fullName": "Host SDK should manage plugin lifecycle",
+          "status": "passed",
+          "duration": 456,
+          "failureMessages": []
+        },
+        {
+          "title": "should provide error recovery",
+          "fullName": "Host SDK should provide error recovery",
+          "status": "passed",
+          "duration": 234,
+          "failureMessages": []
+        },
+        {
+          "title": "should serialize plugin state",
+          "fullName": "Host SDK should serialize plugin state",
+          "status": "passed",
+          "duration": 345,
+          "failureMessages": []
+        }
+      ]
+    },
+    {
+      "name": "packages/web-components/src/theme/__tests__/theme.spec.ts",
+      "duration": 1823,
+      "numFailedTests": 0,
+      "numPassedTests": 4,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "assertionResults": [
+        {
+          "title": "should apply theme to components",
+          "fullName": "Theme Manager should apply theme to components",
+          "status": "passed",
+          "duration": 234,
+          "failureMessages": [],
+          "emittedEvents": ["theme:css:repaint:storm"]
+        },
+        {
+          "title": "should support theme switching",
+          "fullName": "Theme Manager should support theme switching",
+          "status": "passed",
+          "duration": 345,
+          "failureMessages": [],
+          "emittedEvents": ["theme:css:repaint:storm"]
+        },
+        {
+          "title": "should cache theme values",
+          "fullName": "Theme Manager should cache theme values",
+          "status": "passed",
+          "duration": 123,
+          "failureMessages": []
+        },
+        {
+          "title": "should persist theme preferences",
+          "fullName": "Theme Manager should persist theme preferences",
+          "status": "passed",
+          "duration": 156,
+          "failureMessages": []
+        }
+      ]
+    },
+    {
+      "name": "packages/integration/__tests__/integration.spec.ts",
+      "duration": 5234,
+      "numFailedTests": 0,
+      "numPassedTests": 2,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "assertionResults": [
+        {
+          "title": "should integrate all components",
+          "fullName": "Integration Tests should integrate all components",
+          "status": "passed",
+          "duration": 2345,
+          "failureMessages": [],
+          "emittedEvents": [
+            "canvas:render:performance:throttle",
+            "control:panel:state:sync:race",
+            "library:search:cache:invalidation",
+            "theme:css:repaint:storm"
+          ]
+        },
+        {
+          "title": "should handle complex user workflows",
+          "fullName": "Integration Tests should handle complex user workflows",
+          "status": "passed",
+          "duration": 2889,
+          "failureMessages": []
+        }
+      ]
+    }
+  ]
+}

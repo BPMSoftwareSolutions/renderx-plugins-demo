@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2025-11-24T03:34:45.466Z",
+  "handlers": {
+    "parseTelemetry": {
+      "count": 60,
+      "avgTime": 42,
+      "p50": 38,
+      "p95": 67,
+      "errorRate": 0.01,
+      "confidence": "high",
+      "sampleSize": 60
+    },
+    "detectAnomalies": {
+      "count": 30,
+      "avgTime": 75,
+      "p50": 68,
+      "p95": 120,
+      "errorRate": 0.02,
+      "confidence": "medium",
+      "sampleSize": 30
+    },
+    "diagnoseIssues": {
+      "count": 10,
+      "avgTime": 110,
+      "p50": 99,
+      "p95": 176,
+      "errorRate": 0,
+      "confidence": "medium",
+      "sampleSize": 10
+    },
+    "newHandlerLowSample": {
+      "count": 4,
+      "avgTime": 95,
+      "p50": 86,
+      "p95": 152,
+      "errorRate": 0.05,
+      "confidence": "low",
+      "sampleSize": 4
+    }
+  }
+}

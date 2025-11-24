@@ -1,0 +1,64 @@
+{
+  "features": {
+    "shape-persistence": {
+      "runs": [
+        {
+          "file": "shape-persistence\\run-1763955262208.json",
+          "shapeHash": "405441aebdce3d50",
+          "timestamp": "2025-11-24T03:34:22.206Z"
+        },
+        {
+          "file": "shape-persistence\\run-1763955262197.json",
+          "shapeHash": "ff1df026a5f87b65",
+          "timestamp": "2025-11-24T03:34:22.191Z"
+        }
+      ]
+    },
+    "multi-feature-correlation": {
+      "runs": [
+        {
+          "file": "multi-feature-correlation\\run-1763955262201.json",
+          "shapeHash": "63cae1eee8b2459d",
+          "timestamp": "2025-11-24T03:34:22.195Z"
+        }
+      ]
+    },
+    "shape-hash-annotation": {
+      "runs": [
+        {
+          "file": "shape-hash-annotation\\run-1763955262207.json",
+          "shapeHash": "fba3b2ca6d79365b",
+          "timestamp": "2025-11-24T03:34:22.205Z"
+        }
+      ]
+    },
+    "coverage-coupling": {
+      "runs": [
+        {
+          "file": "coverage-coupling\\run-1763955262235.json",
+          "shapeHash": "b1fd7b3dda7a452c",
+          "timestamp": "2025-11-24T03:34:22.231Z"
+        }
+      ]
+    },
+    "shape-contracts": {
+      "runs": [
+        {
+          "file": "shape-contracts\\run-1763955262248.json",
+          "shapeHash": "9b521e3f30d360f5",
+          "timestamp": "2025-11-24T03:34:22.244Z"
+        }
+      ]
+    },
+    "detect-slo-breaches": {
+      "runs": [
+        {
+          "file": "detect-slo-breaches\\run-1763955269938.json",
+          "shapeHash": "2db7395afaa710ff",
+          "timestamp": "2025-11-24T03:34:29.935Z"
+        }
+      ]
+    }
+  },
+  "lastUpdated": "2025-11-24T03:34:29.942Z"
+}

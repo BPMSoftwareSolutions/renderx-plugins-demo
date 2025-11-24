@@ -1,0 +1,103 @@
+{
+  "totalEvents": 12,
+  "eventsWithLogMatches": 0,
+  "eventsWithoutMatches": 12,
+  "traces": [
+    {
+      "event": "canvas:render:performance:throttle",
+      "component": "canvas-component",
+      "severity": "critical",
+      "occurrences": 187,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "control:panel:state:sync:race",
+      "component": "control-panel",
+      "severity": "high",
+      "occurrences": 94,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "library:search:cache:invalidation",
+      "component": "library-component",
+      "severity": "high",
+      "occurrences": 76,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "host:sdk:plugin:init:serialization",
+      "component": "host-sdk",
+      "severity": "high",
+      "occurrences": 58,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "theme:css:repaint:storm",
+      "component": "theme",
+      "severity": "high",
+      "occurrences": 142,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "canvas:concurrent:creation:race",
+      "component": "canvas-component",
+      "severity": "critical",
+      "occurrences": 34,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "control:panel:property:binding:lag",
+      "component": "control-panel",
+      "severity": "medium",
+      "occurrences": 123,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "library:index:loading:blocking",
+      "component": "library-component",
+      "severity": "medium",
+      "occurrences": 89,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "host:sdk:communication:timeout",
+      "component": "host-sdk",
+      "severity": "high",
+      "occurrences": 41,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "canvas:boundary:validation:missing",
+      "component": "canvas-component",
+      "severity": "medium",
+      "occurrences": 67,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "control:panel:state:validation:missing",
+      "component": "control-panel",
+      "severity": "medium",
+      "occurrences": 52,
+      "foundInLogs": 0,
+      "logFiles": []
+    },
+    {
+      "event": "library:type:checking:insufficient",
+      "component": "library-component",
+      "severity": "low",
+      "occurrences": 31,
+      "foundInLogs": 0,
+      "logFiles": []
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "file": null,
+  "type": null,
+  "governance": {
+    "inKnowledgeIndex": false,
+    "governedBy": [
+      {
+        "source": "root-context.json",
+        "boundaries": {
+          "inScope": [
+            "packages/self-healing/__tests__/business-bdd-handlers",
+            "telemetry/*",
+            "scripts/shape-*.js",
+            "scripts/ci-shape-verify.js",
+            "scripts/generate-telemetry-map.js",
+            "scripts/build-composite-shapes.js",
+            "scripts/validate-shape-contracts.js",
+            ".generated/telemetry/*",
+            ".generated/coverage/*",
+            "composites/*"
+          ],
+          "outOfScope": [
+            "packages/*/demo/*",
+            "packages/*/examples/*",
+            "index.html",
+            "container files"
+          ],
+          "governanceEnforcement": "SHAPE_EVOLUTION_PLAN.json is source of truth"
+        }
+      }
+    ],
+    "evolutionPhase": null,
+    "telemetryRequired": false,
+    "contractsApply": [
+      {
+        "file": "coverage-coupling.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\coverage-coupling.contract.json"
+      },
+      {
+        "file": "detect-slo-breaches.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\detect-slo-breaches.contract.json"
+      },
+      {
+        "file": "detect-slo-breaches.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\detect-slo-breaches.json"
+      },
+      {
+        "file": "login.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\login.contract.json"
+      },
+      {
+        "file": "multi-feature-correlation.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\multi-feature-correlation.contract.json"
+      },
+      {
+        "file": "shape-budgets.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\shape-budgets.contract.json"
+      },
+      {
+        "file": "shape-budgets.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\shape-budgets.json"
+      },
+      {
+        "file": "shape-contracts.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\shape-contracts.contract.json"
+      },
+      {
+        "file": "shape-hash-annotation.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\shape-hash-annotation.contract.json"
+      },
+      {
+        "file": "shape-persistence.contract.json",
+        "path": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\contracts\\shape-persistence.contract.json"
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "type": "reference",
+      "target": "SHAPE_EVOLUTION_PLAN.json",
+      "path": ".sourceDocument"
+    },
+    {
+      "type": "reference",
+      "target": "shape-evolutions.json",
+      "path": ".governanceArtifacts.required.0"
+    },
+    {
+      "type": "reference",
+      "target": "shape.budgets.json",
+      "path": ".governanceArtifacts.required.1"
+    },
+    {
+      "type": "reference",
+      "target": "feature-shape.contract.json",
+      "path": ".governanceArtifacts.required.2"
+    },
+    {
+      "type": "reference",
+      "target": "contract-changes.json",
+      "path": ".governanceArtifacts.required.3"
+    },
+    {
+      "type": "reference",
+      "target": "scripts/shape-*.js",
+      "path": ".contextBoundaries.inScope.2"
+    },
+    {
+      "type": "reference",
+      "target": "scripts/ci-shape-verify.js",
+      "path": ".contextBoundaries.inScope.3"
+    },
+    {
+      "type": "reference",
+      "target": "scripts/generate-telemetry-map.js",
+      "path": ".contextBoundaries.inScope.4"
+    },
+    {
+      "type": "reference",
+      "target": "scripts/build-composite-shapes.js",
+      "path": ".contextBoundaries.inScope.5"
+    },
+    {
+      "type": "reference",
+      "target": "scripts/validate-shape-contracts.js",
+      "path": ".contextBoundaries.inScope.6"
+    },
+    {
+      "type": "reference",
+      "target": "Load this root-context.json",
+      "path": ".agentGuidance.beforeAction.0"
+    },
+    {
+      "type": "reference",
+      "target": "Annotate shape changes in shape-evolutions.json",
+      "path": ".agentGuidance.duringAction.1"
+    }
+  ],
+  "dependents": [],
+  "relatedArtifacts": [],
+  "contextLayers": {
+    "rootContext": {
+      "goal": "Implement telemetry-driven Feature Shape governance across eight evolutionary capabilities.",
+      "principles": 5,
+      "evolutions": 8
+    },
+    "subContext": {
+      "location": "root-context.json",
+      "category": "root",
+      "purpose": "utility"
+    },
+    "boundaries": {
+      "inScope": false,
+      "outOfScope": false,
+      "allowed": "NO"
+    },
+    "previousContext": {
+      "lastAction": "generate-code",
+      "lastAgent": "RenderX",
+      "coherenceScore": 100
+    }
+  },
+  "traceability": {}
+}

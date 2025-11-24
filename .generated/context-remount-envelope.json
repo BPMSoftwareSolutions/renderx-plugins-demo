@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-11-24T05:31:53.136Z",
+  "rootGoal": "Implement telemetry-driven Feature Shape governance across eight evolutionary capabilities.",
+  "currentSprint": "sprint-1",
+  "action": "implement-sprint-1",
+  "agentId": "unknown",
+  "principles": [
+    "Incremental instrumentation (no blocking refactors)",
+    "Deterministic hashing with explicit evolution annotation",
+    "Governance-as-code (budgets, contracts, evolutions, maps)",
+    "Fast feedback (<1 min local validation)",
+    "Composable telemetry layers (persistence → diffing → budgets → correlation)"
+  ],
+  "requiredTelemetryFields": [
+    "feature",
+    "event",
+    "beats",
+    "status",
+    "correlationId",
+    "shapeHash"
+  ],
+  "boundaries": {
+    "inScope": [
+      "packages/self-healing/__tests__/business-bdd-handlers",
+      "telemetry/*",
+      "scripts/shape-*.js",
+      "scripts/ci-shape-verify.js",
+      "scripts/generate-telemetry-map.js",
+      "scripts/build-composite-shapes.js",
+      "scripts/validate-shape-contracts.js",
+      ".generated/telemetry/*",
+      ".generated/coverage/*",
+      "composites/*"
+    ],
+    "outOfScope": [
+      "packages/*/demo/*",
+      "packages/*/examples/*",
+      "index.html",
+      "container files"
+    ],
+    "governanceEnforcement": "SHAPE_EVOLUTION_PLAN.json is source of truth"
+  },
+  "violations": [
+    "⚠️ Missing governance artifacts: feature-shape.contract.json, contract-changes.json"
+  ]
+}

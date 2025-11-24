@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-11-24T03:34:30.022Z",
+  "anomalies": [
+    {
+      "id": "loadLogFiles-perf-1763955270022",
+      "type": "performance",
+      "severity": "high",
+      "handler": "loadLogFiles",
+      "description": "Latency increased by 240% vs baseline",
+      "metrics": {
+        "current": 12,
+        "baseline": 5,
+        "ratio": 2.4
+      },
+      "detectedAt": "2025-11-24T03:34:30.022Z",
+      "confidence": 1
+    },
+    {
+      "id": "aggregateTelemetryMetrics-perf-1763955270022",
+      "type": "performance",
+      "severity": "low",
+      "handler": "aggregateTelemetryMetrics",
+      "description": "Latency increased by 133% vs baseline",
+      "metrics": {
+        "current": 4,
+        "baseline": 3,
+        "ratio": 1.3333333333333333
+      },
+      "detectedAt": "2025-11-24T03:34:30.022Z",
+      "confidence": 0.6666666666666666
+    },
+    {
+      "id": "extractTelemetryEvents-perf-1763955270022",
+      "type": "performance",
+      "severity": "high",
+      "handler": "extractTelemetryEvents",
+      "description": "Latency increased by 225% vs baseline",
+      "metrics": {
+        "current": 9,
+        "baseline": 4,
+        "ratio": 2.25
+      },
+      "detectedAt": "2025-11-24T03:34:30.022Z",
+      "confidence": 1
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-11-24T05:06:41.576Z",
+  "layers": {
+    "root": {
+      "description": "Governance as Root System",
+      "mvp": "Thin-client host with plugin architecture",
+      "mmf": "5-layer telemetry governance system",
+      "nonNegotiable": [
+        "100% traceability",
+        "Manifest-driven configuration",
+        "JSON-first design",
+        "Self-improving knowledge system"
+      ],
+      "sourceCount": 15,
+      "sourceSample": [
+        "global-traceability-map",
+        "project-knowledge-map",
+        "analysis",
+        "catalog-vs-ir-gaps",
+        "comprehensive-audit"
+      ],
+      "timestamp": "2025-11-24T05:06:41.578Z"
+    },
+    "sub": {
+      "description": "Verify CRS implementation",
+      "focus": "Verify CRS implementation",
+      "scope": "Current iteration only",
+      "timestamp": "2025-11-24T05:06:41.578Z"
+    },
+    "boundaries": {
+      "inScope": [
+        "scripts/*",
+        "src/handlers/*",
+        "scripts/agent-*.js"
+      ],
+      "outOfScope": [
+        "packages/*/demo/*",
+        "packages/*/examples/*",
+        "packages/self-healing/* (unless touched)",
+        ".ographx/* (unless involved)"
+      ],
+      "governance": {
+        "enabled": true,
+        "layers": [
+          "root",
+          "sub",
+          "boundaries",
+          "previous"
+        ],
+        "source": "knowledge-index.json",
+        "required": [
+          "version",
+          "sources"
+        ],
+        "failOnMissing": true,
+        "description": "Defines which contextual layers must be remounted before any autonomous agent action to prevent drift."
+      },
+      "timestamp": "2025-11-24T05:06:41.578Z"
+    },
+    "previous": {
+      "summary": "No previous context (first iteration)",
+      "lastModifiedFiles": [],
+      "pendingItems": [],
+      "timestamp": "2025-11-24T05:06:41.578Z"
+    }
+  },
+  "metadata": {
+    "agentId": "unknown",
+    "sessionId": "session-1763960801577-2blbcjht5",
+    "iterationNumber": 0,
+    "knowledgeIndexHash": "0e52f30ce4176ade0957bc94e2f899a2c2dff8f225f3063722fda7cff379dc2e"
+  }
+}

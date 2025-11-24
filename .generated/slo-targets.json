@@ -1,0 +1,263 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "generated": "2025-11-23T22:18:34.800Z",
+    "title": "RenderX SLO Targets - Phase 3d",
+    "description": "Realistic Service Level Objectives derived from production SLI metrics",
+    "input_source": ".generated/sli-metrics.json",
+    "generation_method": "7-phase sprint workflow",
+    "validation_count": 5,
+    "validation_warnings": 0
+  },
+  "slo_targets": {
+    "canvas-component": {
+      "name": "Canvas Component",
+      "targets": {
+        "availability": {
+          "percentage": 99,
+          "description": "99% uptime (1 nines)"
+        },
+        "latency": {
+          "p50": 15,
+          "p95": 80,
+          "p99": 240,
+          "unit": "milliseconds"
+        },
+        "error_rate": {
+          "percentage": 1.5,
+          "description": "1.5% error rate"
+        }
+      },
+      "derived_from": {
+        "current_availability": 99.712,
+        "current_p95_latency": 71.85,
+        "current_p99_latency": 215.04,
+        "current_error_rate": 1
+      },
+      "safety_margins": {
+        "availability_buffer": 0.05,
+        "latency_overhead": 1.1,
+        "error_rate_cushion": 1.5
+      },
+      "error_budget": {
+        "description": "Monthly error budget calculation",
+        "assumption_requests_per_day": 1000000,
+        "working_days_per_month": 20,
+        "calculation": {
+          "total_requests_per_month": 20000000,
+          "allowed_errors_percentage": 1,
+          "allowed_errors_count": 200000,
+          "allowed_errors_per_day": 10000
+        }
+      }
+    },
+    "control-panel": {
+      "name": "Control Panel",
+      "targets": {
+        "availability": {
+          "percentage": 99,
+          "description": "99% uptime (1 nines)"
+        },
+        "latency": {
+          "p50": 15,
+          "p95": 70,
+          "p99": 200,
+          "unit": "milliseconds"
+        },
+        "error_rate": {
+          "percentage": 1.5,
+          "description": "1.5% error rate"
+        }
+      },
+      "derived_from": {
+        "current_availability": 99.731,
+        "current_p95_latency": 58.38,
+        "current_p99_latency": 179.36,
+        "current_error_rate": 1
+      },
+      "safety_margins": {
+        "availability_buffer": 0.05,
+        "latency_overhead": 1.1,
+        "error_rate_cushion": 1.5
+      },
+      "error_budget": {
+        "description": "Monthly error budget calculation",
+        "assumption_requests_per_day": 1000000,
+        "working_days_per_month": 20,
+        "calculation": {
+          "total_requests_per_month": 20000000,
+          "allowed_errors_percentage": 1,
+          "allowed_errors_count": 200000,
+          "allowed_errors_per_day": 10000
+        }
+      }
+    },
+    "library-component": {
+      "name": "Library Component",
+      "targets": {
+        "availability": {
+          "percentage": 99,
+          "description": "99% uptime (1 nines)"
+        },
+        "latency": {
+          "p50": 20,
+          "p95": 100,
+          "p99": 290,
+          "unit": "milliseconds"
+        },
+        "error_rate": {
+          "percentage": 1.5,
+          "description": "1.5% error rate"
+        }
+      },
+      "derived_from": {
+        "current_availability": 99.804,
+        "current_p95_latency": 86.5,
+        "current_p99_latency": 260.65,
+        "current_error_rate": 1
+      },
+      "safety_margins": {
+        "availability_buffer": 0.05,
+        "latency_overhead": 1.1,
+        "error_rate_cushion": 1.5
+      },
+      "error_budget": {
+        "description": "Monthly error budget calculation",
+        "assumption_requests_per_day": 1000000,
+        "working_days_per_month": 20,
+        "calculation": {
+          "total_requests_per_month": 20000000,
+          "allowed_errors_percentage": 1,
+          "allowed_errors_count": 200000,
+          "allowed_errors_per_day": 10000
+        }
+      }
+    },
+    "host-sdk": {
+      "name": "Host Sdk",
+      "targets": {
+        "availability": {
+          "percentage": 99.9,
+          "description": "99.9% uptime (0.01 nines)"
+        },
+        "latency": {
+          "p50": 10,
+          "p95": 40,
+          "p99": 80,
+          "unit": "milliseconds"
+        },
+        "error_rate": {
+          "percentage": 1.485,
+          "description": "1.485% error rate"
+        }
+      },
+      "derived_from": {
+        "current_availability": 99.901,
+        "current_p95_latency": 27.76,
+        "current_p99_latency": 64.42,
+        "current_error_rate": 0.9900000000000001
+      },
+      "safety_margins": {
+        "availability_buffer": 0.05,
+        "latency_overhead": 1.1,
+        "error_rate_cushion": 1.5
+      },
+      "error_budget": {
+        "description": "Monthly error budget calculation",
+        "assumption_requests_per_day": 1000000,
+        "working_days_per_month": 20,
+        "calculation": {
+          "total_requests_per_month": 20000000,
+          "allowed_errors_percentage": 0.09999999999999432,
+          "allowed_errors_count": 19999,
+          "allowed_errors_per_day": 999
+        }
+      }
+    },
+    "theme": {
+      "name": "Theme",
+      "targets": {
+        "availability": {
+          "percentage": 99,
+          "description": "99% uptime (1 nines)"
+        },
+        "latency": {
+          "p50": 5,
+          "p95": 30,
+          "p99": 70,
+          "unit": "milliseconds"
+        },
+        "error_rate": {
+          "percentage": 1.5,
+          "description": "1.5% error rate"
+        }
+      },
+      "derived_from": {
+        "current_availability": 99.858,
+        "current_p95_latency": 26.2,
+        "current_p99_latency": 62.8,
+        "current_error_rate": 1
+      },
+      "safety_margins": {
+        "availability_buffer": 0.05,
+        "latency_overhead": 1.1,
+        "error_rate_cushion": 1.5
+      },
+      "error_budget": {
+        "description": "Monthly error budget calculation",
+        "assumption_requests_per_day": 1000000,
+        "working_days_per_month": 20,
+        "calculation": {
+          "total_requests_per_month": 20000000,
+          "allowed_errors_percentage": 1,
+          "allowed_errors_count": 200000,
+          "allowed_errors_per_day": 10000
+        }
+      }
+    }
+  },
+  "summary": {
+    "components_targeted": 5,
+    "total_error_budget_per_month": 819999,
+    "average_availability_target": "99.18"
+  },
+  "validation_results": [
+    {
+      "component": "Canvas Component",
+      "issue": "TARGET_ACHIEVABLE",
+      "message": "Target 99% is achievable from current 99.712%",
+      "severity": "info"
+    },
+    {
+      "component": "Control Panel",
+      "issue": "TARGET_ACHIEVABLE",
+      "message": "Target 99% is achievable from current 99.731%",
+      "severity": "info"
+    },
+    {
+      "component": "Library Component",
+      "issue": "TARGET_ACHIEVABLE",
+      "message": "Target 99% is achievable from current 99.804%",
+      "severity": "info"
+    },
+    {
+      "component": "Host Sdk",
+      "issue": "TARGET_ACHIEVABLE",
+      "message": "Target 99.9% is achievable from current 99.901%",
+      "severity": "info"
+    },
+    {
+      "component": "Theme",
+      "issue": "TARGET_ACHIEVABLE",
+      "message": "Target 99% is achievable from current 99.858%",
+      "severity": "info"
+    }
+  ],
+  "recommendations": [
+    "Review SLO targets monthly to ensure alignment with product goals",
+    "Use error budgets to prioritize feature work vs reliability improvements",
+    "Trigger self-healing when error budget consumption exceeds 10% per week",
+    "Adjust targets quarterly based on cost/benefit analysis",
+    "Communicate SLO targets to customers for SLA negotiation"
+  ]
+}

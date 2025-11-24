@@ -1,0 +1,578 @@
+{
+  "meta": {
+    "version": "2.0.0",
+    "generated": "2025-11-23T00:00:00Z",
+    "title": "RenderX Plugins - Project Knowledge Map",
+    "description": "Extends global-traceability-map.json with project-level intelligence: file locations, workflow implementations, reusable patterns, and cross-project references",
+    "purpose": "Enable queries: 'Find self-healing project files', 'Locate sprint workflow', 'Reference pattern globally'",
+    "pattern": "Global knowledge layer enabling intelligent project navigation and reuse discovery"
+  },
+
+  "project_registry": {
+    "description": "Central index of all projects with file locations, workflows, and patterns",
+    "projects": [
+      {
+        "id": "self-healing",
+        "name": "Self-Healing System",
+        "type": "plugin-system",
+        "path": "packages/self-healing",
+        "status": "active",
+        "category": "automation-engine",
+        "purpose": "Autonomous detection, diagnosis, fix generation, and deployment of production issues",
+        
+        "project_files": {
+          "root_files": [
+            {
+              "file": "README.md",
+              "purpose": "Plugin overview, features, architecture (7 sequences, 67 handlers)",
+              "size": "169 lines",
+              "queryable_by": ["overview", "features", "architecture", "sequences"]
+            },
+            {
+              "file": "IMPLEMENTATION_ROADMAP.md",
+              "purpose": "Complete roadmap with phase breakdown (Phase 1-7), timeline, and deliverables",
+              "size": "263 lines",
+              "queryable_by": ["roadmap", "phases", "timeline", "implementation"]
+            },
+            {
+              "file": "PACKAGE_CHECKLIST.md",
+              "purpose": "Deliverables checklist for plugin packaging",
+              "queryable_by": ["checklist", "deliverables"]
+            },
+            {
+              "file": "PACKAGE_REVIEW.md",
+              "purpose": "Quality assurance review criteria",
+              "queryable_by": ["review", "qa", "quality"]
+            },
+            {
+              "file": "READY_TO_IMPLEMENT.md",
+              "purpose": "Pre-implementation readiness checklist",
+              "queryable_by": ["readiness", "requirements", "pre-implementation"]
+            }
+          ],
+          
+          "source_structure": {
+            "handlers": {
+              "path": "src/handlers/",
+              "subdirectories": [
+                {
+                  "name": "telemetry",
+                  "handlers": 7,
+                  "purpose": "Parse production logs, extract events, normalize data",
+                  "files": ["extract-beats.ts", "extract-errors.ts", "normalize.ts"]
+                },
+                {
+                  "name": "anomaly",
+                  "handlers": 9,
+                  "purpose": "Detect performance, behavioral, coverage, and error anomalies",
+                  "files": ["detect-performance.ts", "detect-behavioral.ts", "detect-coverage.ts", "detect-errors.ts"]
+                },
+                {
+                  "name": "diagnosis",
+                  "handlers": 11,
+                  "purpose": "Root cause analysis for detected anomalies",
+                  "files": ["analyze-performance.ts", "analyze-behavioral.ts", "assess-impact.ts"]
+                },
+                {
+                  "name": "fix",
+                  "handlers": 9,
+                  "purpose": "Generate code fixes and test cases",
+                  "files": ["generate-code.ts", "generate-tests.ts", "generate-docs.ts"]
+                },
+                {
+                  "name": "validation",
+                  "handlers": 10,
+                  "purpose": "Validate fixes: run tests, check coverage, verify improvements",
+                  "files": ["run-tests.ts", "check-coverage.ts", "verify-performance.ts"]
+                },
+                {
+                  "name": "deployment",
+                  "handlers": 11,
+                  "purpose": "Deploy fixes: create branch, PR, CI checks, auto-merge",
+                  "files": ["create-branch.ts", "create-pr.ts", "run-ci.ts", "auto-merge.ts"]
+                }
+              ]
+            },
+            
+            "json_sequences": {
+              "path": "json-sequences/",
+              "purpose": "JSON definitions of all 7 core sequences",
+              "files": [
+                {
+                  "file": "telemetry.parse.json",
+                  "sequence": "telemetry.parse",
+                  "handlers": 7,
+                  "workflow": "Extract beats → Extract errors → Normalize → Aggregate"
+                },
+                {
+                  "file": "anomaly.detect.json",
+                  "sequence": "anomaly.detect",
+                  "handlers": 9,
+                  "workflow": "Performance detection → Behavioral detection → Coverage detection → Error detection"
+                },
+                {
+                  "file": "diagnosis.analyze.json",
+                  "sequence": "diagnosis.analyze",
+                  "handlers": 11,
+                  "workflow": "Performance analysis → Behavioral analysis → Coverage analysis → Error analysis → Impact assessment → Recommendation"
+                },
+                {
+                  "file": "fix.generate.json",
+                  "sequence": "fix.generate",
+                  "handlers": 9,
+                  "workflow": "Code generation → Test case generation → Documentation generation → Patch unification"
+                },
+                {
+                  "file": "validation.run.json",
+                  "sequence": "validation.run",
+                  "handlers": 10,
+                  "workflow": "Test execution → Coverage check → Performance verification → Documentation validation"
+                },
+                {
+                  "file": "deployment.deploy.json",
+                  "sequence": "deployment.deploy",
+                  "handlers": 11,
+                  "workflow": "Feature branch creation → PR creation → CI execution → Auto-merge → Production deployment"
+                },
+                {
+                  "file": "learning.track.json",
+                  "sequence": "learning.track",
+                  "handlers": 10,
+                  "workflow": "Post-deployment metrics collection → Before/after comparison → Improvement calculation → Model update → Insight generation"
+                }
+              ]
+            },
+
+            "tests": {
+              "path": "__tests__/",
+              "purpose": "Comprehensive test suite for all 7 sequences",
+              "structure": "One spec file per sequence",
+              "files": [
+                "telemetry.parse.spec.ts",
+                "anomaly.detect.spec.ts",
+                "diagnosis.analyze.spec.ts",
+                "fix.generate.spec.ts",
+                "validation.run.spec.ts",
+                "deployment.deploy.spec.ts",
+                "learning.track.spec.ts"
+              ]
+            }
+          }
+        },
+
+        "workflows": {
+          "description": "Reusable workflow patterns in self-healing project",
+          "sprint_workflow": {
+            "name": "Sprint-Based Implementation",
+            "location": "IMPLEMENTATION_ROADMAP.md",
+            "description": "7-phase sprint workflow used for implementing self-healing sequences",
+            "phases": [
+              {
+                "phase": 1,
+                "name": "Telemetry Parsing",
+                "duration": "Week 1-2",
+                "handlers": 7,
+                "tests": "25+",
+                "deliverables": ["Telemetry parser", "Event extraction", "Log normalization"]
+              },
+              {
+                "phase": 2,
+                "name": "Anomaly Detection",
+                "duration": "Week 3-4",
+                "handlers": 9,
+                "tests": "35+",
+                "deliverables": ["Anomaly detectors", "Pattern recognition", "Threshold calibration"]
+              },
+              {
+                "phase": 3,
+                "name": "Root Cause Diagnosis",
+                "duration": "Week 5-6",
+                "handlers": 11,
+                "tests": "40+",
+                "deliverables": ["Diagnosis analyzers", "Impact assessment", "Recommendations"]
+              },
+              {
+                "phase": 4,
+                "name": "Fix Generation",
+                "duration": "Week 7-8",
+                "handlers": 9,
+                "tests": "30+",
+                "deliverables": ["Code generators", "Test generators", "Documentation"]
+              },
+              {
+                "phase": 5,
+                "name": "Validation",
+                "duration": "Week 9-10",
+                "handlers": 10,
+                "tests": "45+",
+                "deliverables": ["Test runners", "Coverage checkers", "Performance validators"]
+              },
+              {
+                "phase": 6,
+                "name": "Deployment",
+                "duration": "Week 11-12",
+                "handlers": 11,
+                "tests": "40+",
+                "deliverables": ["PR automation", "CI integration", "Auto-merge logic"]
+              },
+              {
+                "phase": 7,
+                "name": "Learning",
+                "duration": "Week 13-14",
+                "handlers": 10,
+                "tests": "35+",
+                "deliverables": ["Metrics collection", "Comparison tools", "Model updates"]
+              }
+            ],
+            "reusable_for": [
+              "Any 7-phase sequential implementation",
+              "Progressive feature rollout",
+              "Phased system deployment",
+              "SLO/SLI system phases (similar structure)"
+            ],
+            "why_effective": [
+              "Clear phase boundaries with specific deliverables",
+              "Handler distribution (7-11 per phase) is sustainable",
+              "Test coverage increases per phase (25-45+ tests)",
+              "Dependencies flow naturally through phases",
+              "Each phase is independently verifiable"
+            ]
+          },
+
+          "sequence_implementation_pattern": {
+            "name": "Handler-to-JSON-to-Test Pattern",
+            "location": "src/handlers/*, json-sequences/*, __tests__/*",
+            "description": "Tri-part pattern: source handlers → JSON definitions → comprehensive tests",
+            "workflow": [
+              {
+                "step": 1,
+                "name": "Define Sequence in JSON",
+                "file": "json-sequences/[sequence-name].json",
+                "contains": ["handlers", "connections", "error-handling", "state", "metadata"]
+              },
+              {
+                "step": 2,
+                "name": "Implement Handlers",
+                "files": "src/handlers/[domain]/*.ts",
+                "contains": ["Business logic", "Type-safe processing", "Error handling"]
+              },
+              {
+                "step": 3,
+                "name": "Wire Handlers to Sequence",
+                "file": "src/handlers/index.ts",
+                "contains": ["Handler registration", "Sequence composition"]
+              },
+              {
+                "step": 4,
+                "name": "Write Comprehensive Tests",
+                "file": "__tests__/[sequence-name].spec.ts",
+                "contains": ["Unit tests per handler", "Integration tests", "Error scenarios", "Edge cases"]
+              }
+            ],
+            "reusable_for": [
+              "Any orchestration system (musical-conductor based)",
+              "SLO/SLI phase implementations",
+              "Dashboard components (JSON config → React → tests)"
+            ]
+          },
+
+          "anomaly_root_cause_flow": {
+            "name": "Anomaly → Root Cause → Fix → Validation Loop",
+            "location": "json-sequences/anomaly.detect.json through deployment.deploy.json",
+            "description": "Complete feedback loop for detecting and fixing issues",
+            "flow": [
+              {
+                "step": 1,
+                "sequence": "telemetry.parse",
+                "input": ".logs/ files",
+                "output": "Normalized telemetry events"
+              },
+              {
+                "step": 2,
+                "sequence": "anomaly.detect",
+                "input": "Telemetry events",
+                "output": "Anomalies with severity"
+              },
+              {
+                "step": 3,
+                "sequence": "diagnosis.analyze",
+                "input": "Anomalies + source context",
+                "output": "Root causes + recommendations"
+              },
+              {
+                "step": 4,
+                "sequence": "fix.generate",
+                "input": "Diagnoses + source files",
+                "output": "Code patches + test cases"
+              },
+              {
+                "step": 5,
+                "sequence": "validation.run",
+                "input": "Patched code",
+                "output": "Pass/fail + metrics"
+              },
+              {
+                "step": 6,
+                "sequence": "deployment.deploy",
+                "input": "Validated patches",
+                "output": "Production deployment"
+              },
+              {
+                "step": 7,
+                "sequence": "learning.track",
+                "input": "Post-deployment telemetry",
+                "output": "Metrics comparison + model updates",
+                "feedback_to": "Step 1 (improved detection)"
+              }
+            ],
+            "reusable_for": [
+              "SLO/SLA compliance loop (Phase 5 → self-healing)",
+              "Any continuous improvement system",
+              "Error detection → fix → validation → deployment"
+            ]
+          }
+        },
+
+        "patterns": {
+          "description": "Reusable patterns from self-healing for use in other projects",
+          
+          "pattern_handler_organization": {
+            "id": "handler-domain-organization",
+            "name": "Handler Organization by Domain",
+            "location": "src/handlers/",
+            "description": "Organize handlers into semantic domains (telemetry, anomaly, diagnosis, fix, validation, deployment, learning)",
+            "benefit": "Clear separation of concerns, easy to test, natural scaling",
+            "applicable_to": [
+              "Any plugin with 50+ handlers",
+              "Multi-phase systems",
+              "Event-driven architectures"
+            ]
+          },
+
+          "pattern_json_first_design": {
+            "id": "json-first-sequences",
+            "name": "JSON-First Sequence Design",
+            "location": "json-sequences/*.json",
+            "description": "Define sequence logic in JSON before implementing handlers; handlers are just JSON consumers",
+            "benefit": "Sequences can be visualized, shared, version-controlled separately from code",
+            "applicable_to": [
+              "Orchestration systems",
+              "Workflow engines",
+              "SLO/SLA phases"
+            ],
+            "example_use": "Use for Phase 3-5 SLO/SLI engine implementations"
+          },
+
+          "pattern_test_parity": {
+            "id": "test-parity",
+            "name": "Test Parity with Implementation",
+            "location": "__tests__/",
+            "description": "One spec file per sequence; 35-45+ tests per phase",
+            "benefit": "Easy to track test coverage; can run tests independently per phase",
+            "applicable_to": [
+              "Any plugin system",
+              "Multi-phase implementations"
+            ]
+          },
+
+          "pattern_progressive_enhancement": {
+            "id": "progressive-phases",
+            "name": "Progressive Phase Delivery",
+            "location": "IMPLEMENTATION_ROADMAP.md",
+            "description": "7 phases with 7-11 handlers each; each phase independently valuable",
+            "benefit": "Can ship after Phase 1; incrementally add phases without breaking Phase 1",
+            "applicable_to": [
+              "SLO/SLI system (8 phases planned)",
+              "Any large system needing staged delivery",
+              "Plugin ecosystems"
+            ]
+          }
+        }
+      },
+
+      {
+        "id": "ographx",
+        "name": "OGraphX Analysis Framework",
+        "type": "standalone-tool",
+        "path": "packages/ographx",
+        "status": "active",
+        "category": "analysis-tool",
+        "purpose": "Python-based code analysis: sequence flows, self-awareness artifacts, symbol extraction",
+        
+        "project_files": {
+          "root_files": [
+            {
+              "file": "README.md",
+              "purpose": "Overview of analysis framework",
+              "queryable_by": ["overview", "features"]
+            }
+          ],
+          "source_structure": {
+            "generators": {
+              "path": "generators/",
+              "purpose": "Python scripts for static code analysis"
+            },
+            "analysis": {
+              "path": "analysis/",
+              "purpose": "Analysis output consumers"
+            }
+          }
+        }
+      },
+
+      {
+        "id": "slo-dashboard",
+        "name": "SLO/SLI Dashboard",
+        "type": "react-package",
+        "path": "packages/slo-dashboard",
+        "status": "design-phase",
+        "category": "visualization",
+        "purpose": "Generic dashboard for visualizing SLI/SLO/SLA metrics and self-healing activity",
+        
+        "project_files": {
+          "planned_structure": {
+            "components": {
+              "path": "src/components/",
+              "files": [
+                "MetricsPanel.tsx",
+                "BudgetBurndown.tsx",
+                "ComplianceTracker.tsx",
+                "HealthScores.tsx",
+                "SelfHealingActivity.tsx"
+              ]
+            }
+          }
+        },
+
+        "workflows": {
+          "development_workflow": {
+            "name": "Generic → RenderX Integration Pattern",
+            "description": "Design as generic package, integrate with RenderX as secondary consumer",
+            "phases": [
+              {
+                "phase": 1,
+                "name": "Generic Package Development",
+                "work": "Build components with ANY data input (file, API, WebSocket)",
+                "location": "packages/slo-dashboard/"
+              },
+              {
+                "phase": 2,
+                "name": "RenderX Wrapper",
+                "work": "Create thin adapter for RenderX data formats",
+                "location": "src/ui/slo-dashboard/"
+              },
+              {
+                "phase": 3,
+                "name": "npm Publishing",
+                "work": "Publish as @slo-shape/dashboard",
+                "audience": "Any organization"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+
+  "cross_project_references": {
+    "description": "Connections between projects and reusable components",
+    
+    "self_healing_to_slo_system": {
+      "trigger": "Phase 5 (SLA Compliance Tracker)",
+      "when": "SLO breach detected",
+      "action": "Automatically invoke packages/self-healing/json-sequences/*",
+      "sequence": "telemetry.parse → anomaly.detect → diagnosis.analyze → fix.generate → validation.run → deployment.deploy → learning.track",
+      "feedback": "Recalculate Phase 2 metrics with fixed code"
+    },
+
+    "dashboard_to_self_healing": {
+      "source": "packages/slo-dashboard/src/components/SelfHealingActivity.tsx",
+      "consumes": "Self-healing logs + recalculated metrics from Phase 2",
+      "displays": "Recent fixes, deployment status, before/after improvement"
+    }
+  },
+
+  "query_resolution": {
+    "description": "How to answer common questions using this knowledge map",
+    
+    "query_examples": [
+      {
+        "question": "Where is the self-healing project?",
+        "query": "project_registry.projects[id=self-healing].path",
+        "answer": "packages/self-healing"
+      },
+      {
+        "question": "Where is the sprint workflow implementation?",
+        "query": "project_registry.projects[id=self-healing].workflows.sprint_workflow.location",
+        "answer": "IMPLEMENTATION_ROADMAP.md (7 phases with handler distribution)"
+      },
+      {
+        "question": "How are self-healing sequences defined?",
+        "query": "project_registry.projects[id=self-healing].project_files.source_structure.json_sequences",
+        "answer": "json-sequences/*.json files (7 sequences, 67 handlers total)"
+      },
+      {
+        "question": "What patterns can I reuse from self-healing in other projects?",
+        "query": "project_registry.projects[id=self-healing].patterns[].applicable_to",
+        "answer": [
+          "Handler organization by domain",
+          "JSON-first sequence design",
+          "Test parity (35-45+ tests per phase)",
+          "Progressive phase delivery"
+        ]
+      },
+      {
+        "question": "Where are the telemetry parsing handlers?",
+        "query": "project_registry.projects[id=self-healing].project_files.source_structure.handlers.subdirectories[name=telemetry]",
+        "answer": "src/handlers/telemetry/ (7 handlers: extract-beats, extract-errors, normalize, etc.)"
+      },
+      {
+        "question": "How do I find all test files?",
+        "query": "project_registry.projects[id=self-healing].project_files.source_structure.tests",
+        "answer": "__tests__/ directory with 7 spec files (one per sequence)"
+      },
+      {
+        "question": "What's the complete anomaly detection loop?",
+        "query": "project_registry.projects[id=self-healing].workflows.anomaly_root_cause_flow",
+        "answer": "7-step flow from telemetry parsing through learning feedback loop"
+      }
+    ]
+  },
+
+  "integration_points": {
+    "description": "How this knowledge system integrates with other traceability layers",
+    
+    "layers": [
+      {
+        "layer": 1,
+        "name": "Global Traceability Map",
+        "file": ".generated/global-traceability-map.json",
+        "focus": "Component topology, data pipelines, architectural role"
+      },
+      {
+        "layer": 2,
+        "name": "Project Knowledge Map",
+        "file": ".generated/project-knowledge-map.json",
+        "focus": "Project-level intelligence, file locations, workflows, patterns"
+      },
+      {
+        "layer": 3,
+        "name": "Telemetry & Health Status",
+        "file": ".generated/sli-metrics.json",
+        "focus": "Real-time component health, anomalies, performance"
+      },
+      {
+        "layer": 4,
+        "name": "SLO/SLI Targets & Budgets",
+        "file": ".generated/slo-targets.json, .generated/error-budgets.json",
+        "focus": "Target SLOs, error budgets, compliance thresholds"
+      },
+      {
+        "layer": 5,
+        "name": "Compliance & Triggering",
+        "file": ".generated/sla-compliance-report.json",
+        "focus": "SLA status, triggers for self-healing, feedback loop"
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "timestamp": "2025-11-24T03:34:59.006Z",
+  "slice": {
+    "performanceIssues": [
+      {
+        "anomalyId": "loadLogFiles-perf-1763955270022",
+        "handler": "loadLogFiles",
+        "severity": "high",
+        "description": "Latency increased by 240% vs baseline"
+      },
+      {
+        "anomalyId": "aggregateTelemetryMetrics-perf-1763955270022",
+        "handler": "aggregateTelemetryMetrics",
+        "severity": "low",
+        "description": "Latency increased by 133% vs baseline"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-perf-1763955270022",
+        "handler": "extractTelemetryEvents",
+        "severity": "high",
+        "description": "Latency increased by 225% vs baseline"
+      }
+    ],
+    "behavioralIssues": [],
+    "coverageIssues": [],
+    "errorIssues": [],
+    "generatedAt": "2025-11-24T03:34:59.005Z",
+    "sequenceId": "diag-seq-e2e",
+    "impact": {
+      "overallSeverity": "high",
+      "totals": {
+        "performance": 3,
+        "behavioral": 0,
+        "coverage": 0,
+        "error": 0
+      },
+      "affectedHandlers": 3,
+      "estimatedUsers": 500,
+      "rationale": "Severity high due to totals perf=3, beh=0, cov=0, err=0"
+    },
+    "recommendations": [
+      {
+        "id": "fix-1",
+        "type": "code",
+        "description": "Optimize handler loadLogFiles to reduce latency ratio unknown",
+        "priority": 2,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-2",
+        "type": "code",
+        "description": "Optimize handler aggregateTelemetryMetrics to reduce latency ratio unknown",
+        "priority": 3,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-3",
+        "type": "code",
+        "description": "Optimize handler extractTelemetryEvents to reduce latency ratio unknown",
+        "priority": 2,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      }
+    ]
+  }
+}

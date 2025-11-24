@@ -1,0 +1,611 @@
+{
+  "cli-drop-localhost-1763232728659.log": {
+    "size": 25956,
+    "lines": 229,
+    "hash": "57e3eaa669f0899c...",
+    "firstLine": "cli-bridge.ts:16 📨 Received CLI command: {type: 'play', pluginId: 'LibraryComponentPlugin', sequenceId: 'library-component-drop-symphony', context: {…}, id: 'cli-1763232715967'}",
+    "lastLine": ""
+  },
+  "component-resize-component-resize.cy.ts-1763013957380.log": {
+    "size": 254302,
+    "lines": 1781,
+    "hash": "e7ae3f0354af35e1...",
+    "firstLine": "[2025-11-13T06:05:51.274Z] LOG 2025-11-13T06:05:51.274Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763041201297.log": {
+    "size": 254684,
+    "lines": 1785,
+    "hash": "134783409e539ded...",
+    "firstLine": "[2025-11-13T13:39:54.540Z] LOG 2025-11-13T13:39:54.540Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": "[resize] initial width: 120, after: 159.84375, delta: 39.84375"
+  },
+  "component-resize-component-resize.cy.ts-1763308050772.log": {
+    "size": 323433,
+    "lines": 2238,
+    "hash": "2afebab1e1acc70d...",
+    "firstLine": "[2025-11-16T15:47:24.151Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763308603886.log": {
+    "size": 323454,
+    "lines": 2238,
+    "hash": "d5aefdaa0c5ea842...",
+    "firstLine": "[2025-11-16T15:56:35.873Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763355664826.log": {
+    "size": 323406,
+    "lines": 2238,
+    "hash": "ebd5bfa7916a5bf1...",
+    "firstLine": "[2025-11-17T05:00:59.276Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763355981477.log": {
+    "size": 323531,
+    "lines": 2238,
+    "hash": "10706a5f6861fad4...",
+    "firstLine": "[2025-11-17T05:06:15.813Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763356070875.log": {
+    "size": 389622,
+    "lines": 2594,
+    "hash": "c971ed8860c0448a...",
+    "firstLine": "[2025-11-17T05:07:43.987Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763390535371.log": {
+    "size": 389554,
+    "lines": 2594,
+    "hash": "00c0364ddcf67cb9...",
+    "firstLine": "[2025-11-17T14:42:07.266Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763396455894.log": {
+    "size": 323627,
+    "lines": 2238,
+    "hash": "d57f29b41d6be4f1...",
+    "firstLine": "[2025-11-17T16:20:47.568Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "component-resize-component-resize.cy.ts-1763397648436.log": {
+    "size": 323532,
+    "lines": 2238,
+    "hash": "f9c64ae66b93a7c8...",
+    "firstLine": "[2025-11-17T16:40:43.286Z] LOG 🎼 Initializing new conductor instance...",
+    "lastLine": "[resize] initial width: 120, after: 160, delta: 40"
+  },
+  "drop-canvas-component-create-delay-localhost-1763132417203.log": {
+    "size": 114294,
+    "lines": 1390,
+    "hash": "4448ab54619d4e28...",
+    "firstLine": " Fetching sequence Object",
+    "lastLine": ""
+  },
+  "drop-canvas-component-create-delay-localhost-1763156363510.log": {
+    "size": 183660,
+    "lines": 1626,
+    "hash": "41534c334a3d275e...",
+    "firstLine": "EventBus.ts:56 2025-11-14T21:40:00.551Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "drop-canvas-component-create-delay-localhost-1763156363511.log": {
+    "size": 31175,
+    "lines": 300,
+    "hash": "61daeb549647eabb...",
+    "firstLine": "EventRouter.ts:58 [EventRouter] Topic 'control.panel.ui.render.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "drop-create-delay-localhost-1763169652387.log": {
+    "size": 19222,
+    "lines": 185,
+    "hash": "359950c46de64f60...",
+    "firstLine": "EventRouter.ts:58 [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "drop-create-delay-localhost-1763170188940.log": {
+    "size": 16947,
+    "lines": 223,
+    "hash": "f70fc1fe54ca2e05...",
+    "firstLine": "EventRouter.ts:58 [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "library-drop-library-drop.cy.ts-1763014004157.log": {
+    "size": 273896,
+    "lines": 1991,
+    "hash": "b6577df8ade0efd4...",
+    "firstLine": "[2025-11-13T06:06:34.388Z] 2025-11-13T06:06:34.388Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": "[complete] ✅ Component drag and control panel integration verified"
+  },
+  "library-drop-library-drop.cy.ts-1763041252198.log": {
+    "size": 273276,
+    "lines": 1989,
+    "hash": "248757534570e73e...",
+    "firstLine": "[2025-11-13T13:40:42.555Z] 2025-11-13T13:40:42.555Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": "[complete] ✅ Component drag and control panel integration verified"
+  },
+  "library-drop-library-drop.cy.ts-1763308138297.log": {
+    "size": 300847,
+    "lines": 2143,
+    "hash": "f36c3fa331e3efb6...",
+    "firstLine": "[2025-11-16T15:48:33.776Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[selection] ✅ Selection overlay is displayed"
+  },
+  "library-drop-library-drop.cy.ts-1763308681576.log": {
+    "size": 300664,
+    "lines": 2143,
+    "hash": "f77093b5f468ad04...",
+    "firstLine": "[2025-11-16T15:57:39.086Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[selection] ✅ Selection overlay is displayed"
+  },
+  "library-drop-library-drop.cy.ts-1763355712525.log": {
+    "size": 300770,
+    "lines": 2143,
+    "hash": "979ed3aab9f306b1...",
+    "firstLine": "[2025-11-17T05:01:31.242Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[selection] ✅ Selection overlay is displayed"
+  },
+  "library-drop-library-drop.cy.ts-1763356033278.log": {
+    "size": 300753,
+    "lines": 2143,
+    "hash": "5039891c13b4bfb1...",
+    "firstLine": "[2025-11-17T05:06:52.046Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[selection] ✅ Selection overlay is displayed"
+  },
+  "library-drop-library-drop.cy.ts-1763356112218.log": {
+    "size": 410333,
+    "lines": 2834,
+    "hash": "f6feb4831374c11f...",
+    "firstLine": "[2025-11-17T05:08:23.018Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[complete] ✅ Component drag and control panel integration verified"
+  },
+  "library-drop-library-drop.cy.ts-1763390579533.log": {
+    "size": 410312,
+    "lines": 2834,
+    "hash": "9497ce7c2907417d...",
+    "firstLine": "[2025-11-17T14:42:50.386Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[complete] ✅ Component drag and control panel integration verified"
+  },
+  "library-drop-library-drop.cy.ts-1763396537410.log": {
+    "size": 300762,
+    "lines": 2143,
+    "hash": "9fdd64d8f3d669c8...",
+    "firstLine": "[2025-11-17T16:21:56.205Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[selection] ✅ Selection overlay is displayed"
+  },
+  "localhost-1762347999964.log": {
+    "size": 270841,
+    "lines": 3387,
+    "hash": "84a1cb30cde02a39...",
+    "firstLine": "EventBus.ts:329 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "localhost-1762795664660.log": {
+    "size": 161687,
+    "lines": 1425,
+    "hash": "9d37565674830290...",
+    "firstLine": "EventBus.ts:329 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "localhost-1762795904218.log": {
+    "size": 139383,
+    "lines": 1425,
+    "hash": "6beb240caf75b671...",
+    "firstLine": "EventBus.ts:329 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "localhost-1762795928203.log": {
+    "size": 197957,
+    "lines": 1959,
+    "hash": "1556e1ee4cfeb4b6...",
+    "firstLine": "EventBus.ts:329 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "localhost-1762809274834.log": {
+    "size": 159909,
+    "lines": 1612,
+    "hash": "0a031ad32746da6c...",
+    "firstLine": "EventBus.ts:329 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "localhost-1762867906291.log": {
+    "size": 339141,
+    "lines": 6146,
+    "hash": "2b0c279266cd5251...",
+    "firstLine": " 2025-11-11T13:30:17.687Z ✅ BeatExecutor: Beat 1 (canvas:component:deselect:all) completed in 27ms",
+    "lastLine": ""
+  },
+  "localhost-1763015552776.log": {
+    "size": 72623,
+    "lines": 976,
+    "hash": "0d9b0d0d0b06e068...",
+    "firstLine": " 2025-11-13T06:30:10.144Z 📡 EventBus: Subscribed to \"control:panel:update:notify\" (1 total subscribers) (plugin: ControlPanelPlugin:control-panel-update-symphony)",
+    "lastLine": ""
+  },
+  "localhost-1763016562923.log": {
+    "size": 75294,
+    "lines": 978,
+    "hash": "2c5d1353d886b0c5...",
+    "firstLine": " ✅ Mounted sequence from catalog: control-panel-ui-init-batched-symphony plugin: ControlPanelPlugin",
+    "lastLine": ""
+  },
+  "localhost-1763017364944.log": {
+    "size": 75541,
+    "lines": 978,
+    "hash": "3b37f02b19232711...",
+    "firstLine": " 2025-11-13T07:02:26.861Z 🎼 SequenceRegistry: Registered sequence \"Control Panel UI Section Toggle\" (id: control-panel-ui-section-toggle-symphony)",
+    "lastLine": ""
+  },
+  "localhost-1763039998976.log": {
+    "size": 76225,
+    "lines": 979,
+    "hash": "91725a14618869dc...",
+    "firstLine": "EventBus.ts:56 2025-11-13T13:19:31.632Z 📡 EventBus: Subscribed to \"control:panel:css:update\" (1 total subscribers) (plugin: ControlPanelPlugin:control-panel-css-edit-symphony)",
+    "lastLine": ""
+  },
+  "localhost-1763041026581.log": {
+    "size": 89329,
+    "lines": 1108,
+    "hash": "f0c9a8de03bd0c01...",
+    "firstLine": " Loaded JSON for Object",
+    "lastLine": ""
+  },
+  "localhost-1763065262897.log": {
+    "size": 133761,
+    "lines": 1676,
+    "hash": "934b041f402ec4ce...",
+    "firstLine": " 2025-11-13T20:20:22.663Z 🎼 SequenceOrchestrator: Sequence \"Library Load\" (id: library-load-symphony) queued successfully",
+    "lastLine": ""
+  },
+  "localhost-1763066101802.log": {
+    "size": 100805,
+    "lines": 1040,
+    "hash": "39e232cba8f42b00...",
+    "firstLine": "EventBus.ts:56 2025-11-13T20:29:59.080Z 🎵 Movement: Movement 1",
+    "lastLine": ""
+  },
+  "localhost-1763071713843.log": {
+    "size": 3663,
+    "lines": 47,
+    "hash": "cbf9ca34ad2c98b8...",
+    "firstLine": "IsolationHarnessPlayground.tsx:52 🎨 [Playground] Drag started: btn-1",
+    "lastLine": ""
+  },
+  "localhost-1763163204443.log": {
+    "size": 82494,
+    "lines": 950,
+    "hash": "f03d0f9c78881430...",
+    "firstLine": " 2025-11-14T23:31:49.892Z ✅ Completed in 23.70ms",
+    "lastLine": ""
+  },
+  "localhost-1763172753447.log": {
+    "size": 222712,
+    "lines": 1861,
+    "hash": "609fccebffd10806...",
+    "firstLine": "EventBus.ts:56 2025-11-15T02:06:11.649Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "localhost-1763223010818.log": {
+    "size": 25236,
+    "lines": 212,
+    "hash": "22263e177eec18ee...",
+    "firstLine": "EventLogger.ts:200 🎵 Movement Started: Drop (1 beats)",
+    "lastLine": ""
+  },
+  "localhost-1763223354812.log": {
+    "size": 34638,
+    "lines": 300,
+    "hash": "bc3d383bafb99538...",
+    "firstLine": "EventBus.ts:56 2025-11-15T16:15:47.939Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "localhost-1763224136471.log": {
+    "size": 33200,
+    "lines": 289,
+    "hash": "8b7c191f37a42b53...",
+    "firstLine": "EventBus.ts:56 2025-11-15T16:28:48.154Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "localhost-1763224422789.log": {
+    "size": 33494,
+    "lines": 289,
+    "hash": "c3379c1a57553c1c...",
+    "firstLine": "EventBus.ts:56 2025-11-15T16:38:20.986Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "localhost-1763231390550.log": {
+    "size": 25252,
+    "lines": 232,
+    "hash": "eb6c8d3b9965273a...",
+    "firstLine": "cli-bridge.ts:16 📨 Received CLI command: {type: 'play', pluginId: 'LibraryComponentPlugin', sequenceId: 'library-component-drop-symphony', context: {…}, id: 'cli-1763231299654'}",
+    "lastLine": ""
+  },
+  "localhost-1763232132631.log": {
+    "size": 30390,
+    "lines": 385,
+    "hash": "504632a1a7f3567d...",
+    "firstLine": " 📨 Received CLI command: {type: 'play', pluginId: 'LibraryComponentPlugin', sequenceId: 'library-component-drop-symphony', context: {…}, id: 'cli-1763232099828'}",
+    "lastLine": ""
+  },
+  "localhost-1763232293945.log": {
+    "size": 26868,
+    "lines": 229,
+    "hash": "cde3772a760cc806...",
+    "firstLine": "cli-bridge.ts:16 📨 Received CLI command: {type: 'play', pluginId: 'LibraryComponentPlugin', sequenceId: 'library-component-drop-symphony', context: {…}, id: 'cli-1763232261632'}",
+    "lastLine": ""
+  },
+  "localhost-1763233859151.log": {
+    "size": 93309,
+    "lines": 821,
+    "hash": "9019ffd97c82dc71...",
+    "firstLine": "EventBus.ts:56 2025-11-15T19:12:29.853Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "localhost-1763235506386.log": {
+    "size": 33683,
+    "lines": 293,
+    "hash": "9cc4c41033b0f9f8...",
+    "firstLine": "EventBus.ts:56 2025-11-15T19:40:52.568Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "localhost-1763235831776.log": {
+    "size": 33784,
+    "lines": 293,
+    "hash": "cc54f300f20f2eff...",
+    "firstLine": "EventBus.ts:56 2025-11-15T19:43:43.376Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "localhost-1763243965730.log": {
+    "size": 31880,
+    "lines": 272,
+    "hash": "428000fd2446d9e8...",
+    "firstLine": "EventBus.ts:56 2025-11-15T21:59:20.793Z 🎼 MusicalConductor.play ENTRY: pluginId=LibraryComponentPlugin, sequenceId=library-component-drop-symphony at 2025-11-15T21:59:20.793Z (perf=23444.10ms)",
+    "lastLine": ""
+  },
+  "localhost-1763244591095.log": {
+    "size": 104407,
+    "lines": 892,
+    "hash": "f1ae2eea001adf06...",
+    "firstLine": "EventBus.ts:56 2025-11-15T22:09:43.382Z [EventRouter.publish] CP1 ENTRY at 2025-11-15T22:09:43.382Z",
+    "lastLine": ""
+  },
+  "localhost-1763245163181.log": {
+    "size": 41048,
+    "lines": 346,
+    "hash": "a66793e59fc5cbc4...",
+    "firstLine": "EventBus.ts:56 2025-11-15T22:19:14.324Z [EventRouter.publish] CP1 ENTRY at 2025-11-15T22:19:14.324Z",
+    "lastLine": ""
+  },
+  "localhost-1763246118372.log": {
+    "size": 39069,
+    "lines": 340,
+    "hash": "b31e010173111211...",
+    "firstLine": "EventBus.ts:56 2025-11-15T22:35:09.860Z [EventRouter.publish] CP1 ENTRY at 2025-11-15T22:35:09.860Z",
+    "lastLine": ""
+  },
+  "localhost-1763301642568.log": {
+    "size": 817683,
+    "lines": 7807,
+    "hash": "232257dc4182636c...",
+    "firstLine": " Fetch status Object",
+    "lastLine": ""
+  },
+  "localhost-1763301655370.log": {
+    "size": 322770,
+    "lines": 2801,
+    "hash": "2a214f04fbca32c1...",
+    "firstLine": "runtime-loaders.ts:321 Fetch status Object",
+    "lastLine": ""
+  },
+  "localhost-1763302861689.log": {
+    "size": 40873,
+    "lines": 354,
+    "hash": "5469e44ced9cefe2...",
+    "firstLine": "EventBus.ts:56 2025-11-16T14:20:57.995Z [EventRouter.publish] CP1 ENTRY at 2025-11-16T14:20:57.995Z",
+    "lastLine": ""
+  },
+  "localhost-1763305108559.log": {
+    "size": 8927,
+    "lines": 77,
+    "hash": "508e0606b45db21b...",
+    "firstLine": "cli-bridge.ts:28 🎵 Playing sequence: CanvasComponentResizeMovePlugin/canvas-component-resize-move-symphony",
+    "lastLine": ""
+  },
+  "localhost-1763410979726.log": {
+    "size": 490966,
+    "lines": 7166,
+    "hash": "0979af13c114034f...",
+    "firstLine": "conductor.ts:26 🎼 Initializing new conductor instance...",
+    "lastLine": ""
+  },
+  "manual-drop-localhost-1763232787527.log": {
+    "size": 33018,
+    "lines": 289,
+    "hash": "01723663d112dc80...",
+    "firstLine": "EventBus.ts:56 2025-11-15T18:52:59.489Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "manual-drop-localhost-1763233405457.log": {
+    "size": 52141,
+    "lines": 462,
+    "hash": "e019e3e9e1cccc36...",
+    "firstLine": "EventBus.ts:56 2025-11-15T19:03:17.775Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "manual-drop-localhost-1763235950046.log": {
+    "size": 33689,
+    "lines": 293,
+    "hash": "cf1a5c7fe321c7ae...",
+    "firstLine": "EventBus.ts:56 2025-11-15T19:45:42.300Z [EventRouter] Topic 'library.component.drag.start.requested' definition: {routes: 1, hasThrottle: false, hasDebounce: false}",
+    "lastLine": ""
+  },
+  "manual-drop-localhost.log": {
+    "size": 27464,
+    "lines": 243,
+    "hash": "d2ed6e61edb0eabd...",
+    "firstLine": "EventBus.ts:56 2025-11-15T19:52:06.447Z 🎼 PluginInterfaceFacade.play(): LibraryComponentPlugin -> library-component-drop-symphony",
+    "lastLine": ""
+  },
+  "slow-timing-between-timestamps.log": {
+    "size": 28682,
+    "lines": 368,
+    "hash": "f8a0ffc32c6018f7...",
+    "firstLine": "2025-11-10T21:56:19.998Z 🎼 MusicalConductor.play: preserved 1 callback(s) for correlationId=mc-1762811779997-avzo8c\r",
+    "lastLine": "\t"
+  },
+  "startup-and-drop-create-delay-localhost-1763170296206.log": {
+    "size": 207539,
+    "lines": 1855,
+    "hash": "a5a9eb83eef98cf5...",
+    "firstLine": "EventBus.ts:56 2025-11-15T01:31:25.383Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  },
+  "startup-plugins-1763013944147.log": {
+    "size": 225,
+    "lines": 4,
+    "hash": "24a605adaecfbe9b...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+  },
+  "startup-plugins-1763041185332.log": {
+    "size": 225,
+    "lines": 4,
+    "hash": "24a605adaecfbe9b...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+  },
+  "startup-plugins-1763308037689.log": {
+    "size": 89,
+    "lines": 2,
+    "hash": "fd5dffa3948915cc...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763308585903.log": {
+    "size": 89,
+    "lines": 2,
+    "hash": "fd5dffa3948915cc...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763355653928.log": {
+    "size": 89,
+    "lines": 2,
+    "hash": "fd5dffa3948915cc...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763355970724.log": {
+    "size": 89,
+    "lines": 2,
+    "hash": "fd5dffa3948915cc...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763356057459.log": {
+    "size": 273,
+    "lines": 5,
+    "hash": "4cacaba40fe26ce6...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763390503670.log": {
+    "size": 273,
+    "lines": 5,
+    "hash": "4cacaba40fe26ce6...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763396431628.log": {
+    "size": 89,
+    "lines": 2,
+    "hash": "fd5dffa3948915cc...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "startup-plugins-1763397638826.log": {
+    "size": 89,
+    "lines": 2,
+    "hash": "fd5dffa3948915cc...",
+    "firstLine": "[LOG] 🧪 TEST: Console capture is working",
+    "lastLine": "[LOG] 🎼 Initializing new conductor instance..."
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763014011830.log": {
+    "size": 204957,
+    "lines": 1466,
+    "hash": "318cda7842eb8e7b...",
+    "firstLine": "[2025-11-13T06:06:48.293Z] 2025-11-13T06:06:48.293Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": "[2025-11-13T06:06:51.756Z] 2025-11-13T06:06:51.756Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 9ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763041260011.log": {
+    "size": 206140,
+    "lines": 1478,
+    "hash": "f5a28ddaa884f189...",
+    "firstLine": "[2025-11-13T13:40:56.419Z] 2025-11-13T13:40:56.419Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": "[2025-11-13T13:40:59.915Z] 2025-11-13T13:40:59.915Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 10ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763308150303.log": {
+    "size": 267538,
+    "lines": 1903,
+    "hash": "56f6f9dcb30f0682...",
+    "firstLine": "[2025-11-16T15:49:04.460Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-16T15:49:10.007Z] 2025-11-16T15:49:10.007Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 17ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763308701136.log": {
+    "size": 267435,
+    "lines": 1903,
+    "hash": "292c69e0e7324183...",
+    "firstLine": "[2025-11-16T15:58:09.616Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-16T15:58:20.531Z] 2025-11-16T15:58:20.531Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 27ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763355718615.log": {
+    "size": 267310,
+    "lines": 1903,
+    "hash": "fd3658a3b5e54cc0...",
+    "firstLine": "[2025-11-17T05:01:55.644Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-17T05:01:58.390Z] 2025-11-17T05:01:58.390Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 13ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763356046706.log": {
+    "size": 267539,
+    "lines": 1903,
+    "hash": "c99169d5796bb5f6...",
+    "firstLine": "[2025-11-17T05:07:16.805Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-17T05:07:26.178Z] 2025-11-17T05:07:26.178Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 43ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763356119365.log": {
+    "size": 267091,
+    "lines": 1900,
+    "hash": "5a3893c1443a3fa2...",
+    "firstLine": "[2025-11-17T05:08:36.414Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-17T05:08:39.150Z] 2025-11-17T05:08:39.150Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 12ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763390586907.log": {
+    "size": 266963,
+    "lines": 1900,
+    "hash": "09aec650af8b362e...",
+    "firstLine": "[2025-11-17T14:43:03.862Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-17T14:43:06.673Z] 2025-11-17T14:43:06.673Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 14ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763396548268.log": {
+    "size": 267526,
+    "lines": 1903,
+    "hash": "0581df932fc45c52...",
+    "firstLine": "[2025-11-17T16:22:22.488Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-17T16:22:27.904Z] 2025-11-17T16:22:27.904Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 21ms"
+  },
+  "theme-toggle-theme-toggle.cy.ts-1763397666296.log": {
+    "size": 267295,
+    "lines": 1903,
+    "hash": "2e56e3a974712375...",
+    "firstLine": "[2025-11-17T16:41:04.098Z] 🎼 Initializing new conductor instance...",
+    "lastLine": "[2025-11-17T16:41:06.125Z] 2025-11-17T16:41:06.125Z ✅ SequenceExecutor: Sequence \"Header UI Theme Toggle\" completed in 9ms"
+  },
+  "web-variant-localhost-1762811808902.log": {
+    "size": 239176,
+    "lines": 2849,
+    "hash": "aca7522090f04ca7...",
+    "firstLine": "EventBus.ts:56 2025-11-10T21:56:16.932Z 🎼 EventBus: Using internal conductor (legacy mode)",
+    "lastLine": ""
+  }
+}

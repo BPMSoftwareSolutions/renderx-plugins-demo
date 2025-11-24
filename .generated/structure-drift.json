@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2025-11-23T18:47:30.707Z",
+  "unexpected": [
+    "composites",
+    "contracts",
+    "coverage",
+    "cypress",
+    "data",
+    "docs",
+    "eslint-rules",
+    "examples",
+    "json-components",
+    "json-sequences",
+    "k8s",
+    "migration_tools",
+    "output",
+    "outputs",
+    "src",
+    "test-results",
+    "tests",
+    "tools"
+  ],
+  "empty": [
+    "k8s",
+    "tools"
+  ],
+  "roleCoverage": {
+    "telemetry-core": 12,
+    "governance-script": 7,
+    "test-spec": 96,
+    "generated-artifact": 47
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "version": "1.0.0",
+  "calculatedDate": "2025-11-23T20:36:11.568Z",
+  "period": "2025-11",
+  "description": "Real Service Level Indicator metrics calculated from production data",
+  "componentMetrics": {
+    "canvas-component": {
+      "component": "Canvas Component",
+      "componentKey": "canvas-component",
+      "metric_timestamp": "2025-11-23T20:36:11.576Z",
+      "latency": {
+        "p50_ms": 13.58,
+        "p95_ms": 71.85,
+        "p99_ms": 215.04,
+        "mean_ms": 96.67,
+        "status": "healthy"
+      },
+      "errorRate": {
+        "current_percent": 1,
+        "target_percent": 10,
+        "anomalyCount": 3,
+        "totalOccurrences": 288,
+        "criticalOccurrences": 221,
+        "errorContribution": {
+          "critical": "76.74",
+          "high": "0.00",
+          "medium": "23.26"
+        },
+        "status": "excellent"
+      },
+      "availability": {
+        "target_percent": 99.9,
+        "current_percent": 99.712,
+        "estimatedUptime_minutes": 43076,
+        "estimatedDowntime_minutes": 124,
+        "status": "at-risk"
+      },
+      "completeness": {
+        "target_percent": 99.95,
+        "current_percent": 98,
+        "successfulOperations": 285,
+        "failedOperations": 3,
+        "status": "acceptable"
+      },
+      "freshness": {
+        "target_seconds": 60,
+        "current_seconds": 56,
+        "dataAgeThreshold_minutes": 1,
+        "lastUpdate": "2025-11-23T20:36:11.577Z",
+        "status": "healthy"
+      },
+      "healthScore": 49.31,
+      "riskAssessment": {
+        "overallRisk": "CRITICAL",
+        "anomalyTrend": "improving",
+        "occurrenceTrend": "degrading",
+        "volatility": "high"
+      },
+      "metadata": {
+        "anomaliesAnalyzed": 3,
+        "totalOccurrencesAnalyzed": 288,
+        "calculationMethod": "Production data analysis from telemetry and logs",
+        "confidenceLevel": "95%",
+        "lastUpdated": "2025-11-23T20:36:11.577Z"
+      }
+    },
+    "control-panel": {
+      "component": "Control Panel",
+      "componentKey": "control-panel",
+      "metric_timestamp": "2025-11-23T20:36:11.577Z",
+      "latency": {
+        "p50_ms": 11.09,
+        "p95_ms": 58.38,
+        "p99_ms": 179.36,
+        "mean_ms": 77.33,
+        "status": "healthy"
+      },
+      "errorRate": {
+        "current_percent": 1,
+        "target_percent": 10,
+        "anomalyCount": 3,
+        "totalOccurrences": 269,
+        "criticalOccurrences": 0,
+        "errorContribution": {
+          "critical": "0.00",
+          "high": "34.94",
+          "medium": "65.06"
+        },
+        "status": "excellent"
+      },
+      "availability": {
+        "target_percent": 99.9,
+        "current_percent": 99.731,
+        "estimatedUptime_minutes": 43084,
+        "estimatedDowntime_minutes": 116,
+        "status": "at-risk"
+      },
+      "completeness": {
+        "target_percent": 99.95,
+        "current_percent": 98,
+        "successfulOperations": 266,
+        "failedOperations": 3,
+        "status": "acceptable"
+      },
+      "freshness": {
+        "target_seconds": 60,
+        "current_seconds": 54,
+        "dataAgeThreshold_minutes": 1,
+        "lastUpdate": "2025-11-23T20:36:11.577Z",
+        "status": "healthy"
+      },
+      "healthScore": 51.45,
+      "riskAssessment": {
+        "overallRisk": "MEDIUM",
+        "anomalyTrend": "stable",
+        "occurrenceTrend": "degrading",
+        "volatility": "medium"
+      },
+      "metadata": {
+        "anomaliesAnalyzed": 3,
+        "totalOccurrencesAnalyzed": 269,
+        "calculationMethod": "Production data analysis from telemetry and logs",
+        "confidenceLevel": "95%",
+        "lastUpdated": "2025-11-23T20:36:11.577Z"
+      }
+    },
+    "library-component": {
+      "component": "Library Component",
+      "componentKey": "library-component",
+      "metric_timestamp": "2025-11-23T20:36:11.577Z",
+      "latency": {
+        "p50_ms": 18.14,
+        "p95_ms": 86.5,
+        "p99_ms": 260.65,
+        "mean_ms": 115,
+        "status": "healthy"
+      },
+      "errorRate": {
+        "current_percent": 1,
+        "target_percent": 10,
+        "anomalyCount": 3,
+        "totalOccurrences": 196,
+        "criticalOccurrences": 0,
+        "errorContribution": {
+          "critical": "0.00",
+          "high": "38.78",
+          "medium": "45.41"
+        },
+        "status": "excellent"
+      },
+      "availability": {
+        "target_percent": 99.9,
+        "current_percent": 99.804,
+        "estimatedUptime_minutes": 43115,
+        "estimatedDowntime_minutes": 85,
+        "status": "at-risk"
+      },
+      "completeness": {
+        "target_percent": 99.95,
+        "current_percent": 98,
+        "successfulOperations": 194,
+        "failedOperations": 2,
+        "status": "acceptable"
+      },
+      "freshness": {
+        "target_seconds": 60,
+        "current_seconds": 48,
+        "dataAgeThreshold_minutes": 1,
+        "lastUpdate": "2025-11-23T20:36:11.577Z",
+        "status": "healthy"
+      },
+      "healthScore": 46.8,
+      "riskAssessment": {
+        "overallRisk": "MEDIUM",
+        "anomalyTrend": "degrading",
+        "occurrenceTrend": "improving",
+        "volatility": "medium"
+      },
+      "metadata": {
+        "anomaliesAnalyzed": 3,
+        "totalOccurrencesAnalyzed": 196,
+        "calculationMethod": "Production data analysis from telemetry and logs",
+        "confidenceLevel": "95%",
+        "lastUpdated": "2025-11-23T20:36:11.577Z"
+      }
+    },
+    "host-sdk": {
+      "component": "Host Sdk",
+      "componentKey": "host-sdk",
+      "metric_timestamp": "2025-11-23T20:36:11.577Z",
+      "latency": {
+        "p50_ms": 7.19,
+        "p95_ms": 27.76,
+        "p99_ms": 64.42,
+        "mean_ms": 32.33,
+        "status": "healthy"
+      },
+      "errorRate": {
+        "current_percent": 0.9900000000000001,
+        "target_percent": 10,
+        "anomalyCount": 2,
+        "totalOccurrences": 99,
+        "criticalOccurrences": 0,
+        "errorContribution": {
+          "critical": "0.00",
+          "high": "100.00",
+          "medium": "0.00"
+        },
+        "status": "excellent"
+      },
+      "availability": {
+        "target_percent": 99.9,
+        "current_percent": 99.901,
+        "estimatedUptime_minutes": 43157,
+        "estimatedDowntime_minutes": 43,
+        "status": "met"
+      },
+      "completeness": {
+        "target_percent": 99.95,
+        "current_percent": 98.02,
+        "successfulOperations": 98,
+        "failedOperations": 1,
+        "status": "acceptable"
+      },
+      "freshness": {
+        "target_seconds": 60,
+        "current_seconds": 39,
+        "dataAgeThreshold_minutes": 1,
+        "lastUpdate": "2025-11-23T20:36:11.577Z",
+        "status": "healthy"
+      },
+      "healthScore": 56.08,
+      "riskAssessment": {
+        "overallRisk": "MEDIUM",
+        "anomalyTrend": "improving",
+        "occurrenceTrend": "degrading",
+        "volatility": "low"
+      },
+      "metadata": {
+        "anomaliesAnalyzed": 2,
+        "totalOccurrencesAnalyzed": 99,
+        "calculationMethod": "Production data analysis from telemetry and logs",
+        "confidenceLevel": "95%",
+        "lastUpdated": "2025-11-23T20:36:11.577Z"
+      }
+    },
+    "theme": {
+      "component": "Theme",
+      "componentKey": "theme",
+      "metric_timestamp": "2025-11-23T20:36:11.577Z",
+      "latency": {
+        "p50_ms": 4.42,
+        "p95_ms": 26.2,
+        "p99_ms": 62.8,
+        "mean_ms": 30,
+        "status": "healthy"
+      },
+      "errorRate": {
+        "current_percent": 1,
+        "target_percent": 10,
+        "anomalyCount": 1,
+        "totalOccurrences": 142,
+        "criticalOccurrences": 0,
+        "errorContribution": {
+          "critical": "0.00",
+          "high": "100.00",
+          "medium": "0.00"
+        },
+        "status": "excellent"
+      },
+      "availability": {
+        "target_percent": 99.9,
+        "current_percent": 99.858,
+        "estimatedUptime_minutes": 43139,
+        "estimatedDowntime_minutes": 61,
+        "status": "at-risk"
+      },
+      "completeness": {
+        "target_percent": 99.95,
+        "current_percent": 98,
+        "successfulOperations": 141,
+        "failedOperations": 1,
+        "status": "acceptable"
+      },
+      "freshness": {
+        "target_seconds": 60,
+        "current_seconds": 43,
+        "dataAgeThreshold_minutes": 1,
+        "lastUpdate": "2025-11-23T20:36:11.577Z",
+        "status": "healthy"
+      },
+      "healthScore": 56.04,
+      "riskAssessment": {
+        "overallRisk": "MEDIUM",
+        "anomalyTrend": "degrading",
+        "occurrenceTrend": "improving",
+        "volatility": "low"
+      },
+      "metadata": {
+        "anomaliesAnalyzed": 1,
+        "totalOccurrencesAnalyzed": 142,
+        "calculationMethod": "Production data analysis from telemetry and logs",
+        "confidenceLevel": "95%",
+        "lastUpdated": "2025-11-23T20:36:11.577Z"
+      }
+    }
+  },
+  "checksum": "a35e3647aad4a752c0acbf2a2c5485315b2deac1d61bccccb10e7889b584019c",
+  "audit": {
+    "calculatedDate": "2025-11-23T20:36:11.579Z",
+    "calculatedBy": "SLIMetricsCalculator",
+    "version": "1.0.0",
+    "components": 5,
+    "period": "2025-11"
+  }
+}

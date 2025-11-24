@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-11-24T01:46:08.629Z",
+  "feature": "coverage-coupling",
+  "event": "coverage-coupling:executed",
+  "beats": 2,
+  "status": "ok",
+  "correlationId": "18bfce0b-3941-4657-8805-cce567675542",
+  "durationMs": 0,
+  "batonDiffCount": 0,
+  "payload": {
+    "result": {
+      "ok": true
+    }
+  },
+  "shapeHash": "b404ba431761f3409bd02f31c15d2381ec42cddbe215368c65e76d3696d60edc",
+  "coverageId": "d293bc9d57ede7100d97eedb"
+}
