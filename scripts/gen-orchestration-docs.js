@@ -118,7 +118,7 @@ const defaultSketches = {
 
 /**
  * Generate ASCII sketch for a domain
- * Data-driven from domain.sketch structure
+ * Data-driven from domain.sketch structure with full MusicalSequence architecture
  */
 function generateDomainSketch(domain) {
   if (!domain.sketch) return '';
@@ -127,21 +127,36 @@ function generateDomainSketch(domain) {
   const width = 57;
   let ascii = '';
 
+  // Defensive checks
+  const title = (sketch.title || domain.name || 'Domain').substring(0, width - 4);
+
   // Header
   ascii += `    ┌${'─'.repeat(width)}┐\n`;
-  ascii += `    │ ${domain.emoji} ${sketch.title.padEnd(width - 4)}│\n`;
+  ascii += `    │ ${domain.emoji} ${title.padEnd(width - 4)}│\n`;
   ascii += `    ├${'─'.repeat(width)}┤\n`;
   ascii += `    │${' '.repeat(width)}│\n`;
 
-  // Phases
+  // Add sequence metadata if available
+  if (sketch.sequence) {
+    const seq = sketch.sequence;
+    ascii += `    │  🎵 Sequence: ${(seq.id || 'unknown').substring(0, width - 16)}│\n`;
+    ascii += `    │  ├─ Tempo: ${(seq.tempo || 120)} BPM${' '.repeat(width - 24)}│\n`;
+    ascii += `    │  ├─ Key: ${(seq.key || 'C Major').substring(0, width - 16)}│\n`;
+    ascii += `    │  └─ Category: ${(seq.category || 'unknown').substring(0, width - 20)}│\n`;
+    ascii += `    │${' '.repeat(width)}│\n`;
+  }
+
+  // Phases (Movements)
   if (sketch.phases && Array.isArray(sketch.phases)) {
     sketch.phases.forEach((phase, idx) => {
-      ascii += `    │  ${phase.name.padEnd(width - 4)}│\n`;
+      const phaseName = (phase.name || 'Phase').substring(0, width - 4);
+      ascii += `    │  ${phaseName.padEnd(width - 4)}│\n`;
       if (phase.items && Array.isArray(phase.items)) {
         phase.items.forEach((item, itemIdx) => {
           const isLast = itemIdx === phase.items.length - 1;
           const prefix = isLast ? '  └─' : '  ├─';
-          ascii += `    │  ${prefix} ${item.padEnd(width - 9)}│\n`;
+          const itemStr = (String(item) || 'Item').substring(0, width - 9);
+          ascii += `    │  ${prefix} ${itemStr.padEnd(width - 9)}│\n`;
         });
       }
 
@@ -257,10 +272,14 @@ function generateUnifiedInterfaceDoc() {
   md += `| Field | Type | Required | Description |\n`;
   md += `|-------|------|----------|-------------|\n`;
 
-  orchestration.unifiedInterface.fields.forEach((field) => {
-    const required = field.required ? '✅' : '❌';
-    md += `| \`${field.name}\` | \`${field.type}\` | ${required} | ${field.description} |\n`;
-  });
+  if (orchestration.unifiedInterface.fields && Array.isArray(orchestration.unifiedInterface.fields)) {
+    orchestration.unifiedInterface.fields.forEach((field) => {
+      const required = field.required ? '✅' : '❌';
+      md += `| \`${field.name}\` | \`${field.type}\` | ${required} | ${field.description} |\n`;
+    });
+  } else {
+    md += `| (No fields defined) | | | |\n`;
+  }
 
   md += `\n---\n\n`;
   md += `## Categories\n\n`;

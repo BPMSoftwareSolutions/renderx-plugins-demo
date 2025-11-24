@@ -1,567 +1,2277 @@
 {
-  "version": "1.0.0",
   "metadata": {
-    "title": "Orchestration Domains Registry",
-    "description": "Single source of truth for all orchestration domains in the system",
-    "author": "RenderX System",
-    "created": "2025-11-24T03:00:00.000Z",
-    "lastUpdated": "2025-11-24T03:00:00.000Z"
+    "description": "Complete registry of all orchestration domains and plugin sequences",
+    "version": "1.0.0",
+    "generated": "2025-11-24T15:53:47.833Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
-    "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts",
-    "fields": [
-      { "name": "id", "type": "string", "required": true, "description": "Unique identifier" },
-      { "name": "name", "type": "string", "required": true, "description": "Human-readable name" },
-      { "name": "description", "type": "string", "required": true, "description": "Purpose and behavior" },
-      { "name": "key", "type": "string", "required": true, "description": "Musical key (organizational)" },
-      { "name": "tempo", "type": "number", "required": true, "description": "BPM (beats per minute)" },
-      { "name": "timeSignature", "type": "string", "required": false, "description": "Time signature" },
-      { "name": "category", "type": "SequenceCategory", "required": true, "description": "Sequence category" },
-      { "name": "movements", "type": "SequenceMovement[]", "required": true, "description": "Array of movements" },
-      { "name": "metadata", "type": "object", "required": false, "description": "Version, author, tags" }
-    ]
+    "source": "packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts"
   },
+  "executionFlow": [
+    {
+      "step": 1,
+      "name": "Load Context",
+      "description": "Load governance and context"
+    },
+    {
+      "step": 2,
+      "name": "Validate",
+      "description": "Validate inputs and state"
+    },
+    {
+      "step": 3,
+      "name": "Execute",
+      "description": "Execute movements and beats"
+    },
+    {
+      "step": 4,
+      "name": "Monitor",
+      "description": "Monitor execution and telemetry"
+    },
+    {
+      "step": 5,
+      "name": "Report",
+      "description": "Report results and metrics"
+    }
+  ],
+  "categories": [
+    {
+      "id": "plugin",
+      "name": "Plugin Sequences",
+      "description": "Feature-level sequences"
+    },
+    {
+      "id": "orchestration",
+      "name": "Orchestration Domains",
+      "description": "System-level sequences"
+    }
+  ],
+  "dynamics": [
+    {
+      "symbol": "pp",
+      "name": "Pianissimo",
+      "description": "Very soft"
+    },
+    {
+      "symbol": "p",
+      "name": "Piano",
+      "description": "Soft"
+    },
+    {
+      "symbol": "mp",
+      "name": "Mezzo-piano",
+      "description": "Medium soft"
+    },
+    {
+      "symbol": "mf",
+      "name": "Mezzo-forte",
+      "description": "Medium loud"
+    },
+    {
+      "symbol": "f",
+      "name": "Forte",
+      "description": "Loud"
+    },
+    {
+      "symbol": "ff",
+      "name": "Fortissimo",
+      "description": "Very loud"
+    }
+  ],
+  "timing": [
+    {
+      "id": "immediate",
+      "description": "Execute immediately"
+    },
+    {
+      "id": "deferred",
+      "description": "Execute after current phase"
+    },
+    {
+      "id": "async",
+      "description": "Execute asynchronously"
+    }
+  ],
   "domains": [
     {
-      "id": "cag-orchestration",
-      "name": "CAG Orchestration",
-      "emoji": "🎯",
-      "description": "Context-Augmented Generation agent workflow",
+      "id": "canvas-component-copy-symphony",
+      "name": "Canvas Component Copy",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Copy",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentCopyPlugin",
+      "movements": 1,
+      "beats": 3,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Copy",
+        "sequence": {
+          "id": "canvas-component-copy-symphony",
+          "name": "Canvas Component Copy",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Copy to Clipboard",
+            "items": [
+              "Serialize (pure)",
+              "Clipboard (io)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-create-symphony",
+      "name": "Canvas Component Create",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Create",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentPlugin",
+      "movements": 1,
+      "beats": 6,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Create",
+        "sequence": {
+          "id": "canvas-component-create-symphony",
+          "name": "Canvas Component Create",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Create",
+            "items": [
+              "Resolve-template (pure)",
+              "Register-instance (io)",
+              "Create (stage-crew)",
+              "Render-react (stage-crew)",
+              "Notify-ui (pure)",
+              "Line (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-delete-symphony",
+      "name": "Canvas Component Delete",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Delete",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDeletePlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Delete",
+        "sequence": {
+          "id": "canvas-component-delete-symphony",
+          "name": "Canvas Component Delete",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Delete",
+            "items": [
+              "Delete (stage-crew)",
+              "Deleted (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-delete-requested-symphony",
+      "name": "Canvas Component Delete Requested",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Delete Requested",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDeleteRequestPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Delete Requested",
+        "sequence": {
+          "id": "canvas-component-delete-requested-symphony",
+          "name": "Canvas Component Delete Requested",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Route Delete",
+            "items": [
+              "Route (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-deselect-all-symphony",
+      "name": "Canvas Component Deselect All",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Deselect All",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Deselect All",
+        "sequence": {
+          "id": "canvas-component-deselect-all-symphony",
+          "name": "Canvas Component Deselect All",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Deselect All",
+            "items": [
+              "All (stage-crew)",
+              "Cleared (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-deselect-symphony",
+      "name": "Canvas Component Deselect",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Deselect",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDeselectionPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Deselect",
+        "sequence": {
+          "id": "canvas-component-deselect-symphony",
+          "name": "Canvas Component Deselect",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Deselect",
+            "items": [
+              "Deselect (stage-crew)",
+              "Changed (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-deselect-requested-symphony",
+      "name": "Canvas Component Deselect Requested",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Deselect Requested",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDeselectionRequestPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Deselect Requested",
+        "sequence": {
+          "id": "canvas-component-deselect-requested-symphony",
+          "name": "Canvas Component Deselect Requested",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Route Deselection",
+            "items": [
+              "Route (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-drag-end-symphony",
+      "name": "Canvas Component Drag End",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Drag End",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDragEndPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Drag End",
+        "sequence": {
+          "id": "canvas-component-drag-end-symphony",
+          "name": "Canvas Component Drag End",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Drag End",
+            "items": [
+              "End (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-drag-move-symphony",
+      "name": "Canvas Component Drag Move",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Drag Move",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDragMovePlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Drag Move",
+        "sequence": {
+          "id": "canvas-component-drag-move-symphony",
+          "name": "Canvas Component Drag Move",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Drag Move",
+            "items": [
+              "Move (stage-crew)",
+              "Forward (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-drag-start-symphony",
+      "name": "Canvas Component Drag Start",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Drag Start",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentDragStartPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Drag Start",
+        "sequence": {
+          "id": "canvas-component-drag-start-symphony",
+          "name": "Canvas Component Drag Start",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Drag Start",
+            "items": [
+              "Start (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-export-gif-symphony",
+      "name": "Canvas Component Export GIF",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Export GIF",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentExportGifPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Export GIF",
+        "sequence": {
+          "id": "canvas-component-export-gif-symphony",
+          "name": "Canvas Component Export GIF",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Export GIF",
+            "items": [
+              "Rasterize-and-encode (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-export-mp4-symphony",
+      "name": "Canvas Component Export MP4",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Export MP4",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentExportMp4Plugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Export MP4",
+        "sequence": {
+          "id": "canvas-component-export-mp4-symphony",
+          "name": "Canvas Component Export MP4",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Export MP4",
+            "items": [
+              "Rasterize-and-encode (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-export-symphony",
+      "name": "Canvas Component Export",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Export",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentExportPlugin",
+      "movements": 1,
+      "beats": 6,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Export",
+        "sequence": {
+          "id": "canvas-component-export-symphony",
+          "name": "Canvas Component Export",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Export",
+            "items": [
+              "Query-all (io)",
+              "Discover-components (stage-crew)",
+              "Collect-css (stage-crew)",
+              "Collect-layout (stage-crew)",
+              "Build-ui-file (pure)",
+              "Download-file (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-import-symphony",
+      "name": "Canvas Component Import",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Import",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentImportPlugin",
+      "movements": 1,
+      "beats": 5,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Import",
+        "sequence": {
+          "id": "canvas-component-import-symphony",
+          "name": "Canvas Component Import",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Import",
+            "items": [
+              "Open (stage-crew)",
+              "Parse (pure)",
+              "Inject (stage-crew)",
+              "Create (stage-crew)",
+              "Apply (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "emoji": "🔌",
+      "description": "Plugin sequence: undefined",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "sequence": {
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "canvas-line-manip-end-symphony",
+      "name": "Canvas Line Manip End",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Line Manip End",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasLineManipEndPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Line Manip End",
+        "sequence": {
+          "id": "canvas-line-manip-end-symphony",
+          "name": "Canvas Line Manip End",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Manip Line End",
+            "items": [
+              "End (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-line-manip-move-symphony",
+      "name": "Canvas Line Manip Move",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Line Manip Move",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasLineManipMovePlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Line Manip Move",
+        "sequence": {
+          "id": "canvas-line-manip-move-symphony",
+          "name": "Canvas Line Manip Move",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Manip Line Move",
+            "items": [
+              "Move (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-line-manip-start-symphony",
+      "name": "Canvas Line Manip Start",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Line Manip Start",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasLineManipStartPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Line Manip Start",
+        "sequence": {
+          "id": "canvas-line-manip-start-symphony",
+          "name": "Canvas Line Manip Start",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Manip Line Start",
+            "items": [
+              "Start (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-paste-symphony",
+      "name": "Canvas Component Paste",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Paste",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentPastePlugin",
+      "movements": 1,
+      "beats": 5,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Paste",
+        "sequence": {
+          "id": "canvas-component-paste-symphony",
+          "name": "Canvas Component Paste",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Paste from Clipboard",
+            "items": [
+              "Clipboard (io)",
+              "Deserialize (pure)",
+              "Position (pure)",
+              "Create (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-resize-end-symphony",
+      "name": "Canvas Component Resize End",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Resize End",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentResizeEndPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Resize End",
+        "sequence": {
+          "id": "canvas-component-resize-end-symphony",
+          "name": "Canvas Component Resize End",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Resize End",
+            "items": [
+              "End (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-line-resize-end-symphony",
+      "name": "Canvas Line Resize End",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Line Resize End",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasLineResizeEndPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Line Resize End",
+        "sequence": {
+          "id": "canvas-line-resize-end-symphony",
+          "name": "Canvas Line Resize End",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Resize Line End",
+            "items": [
+              "End (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-line-resize-move-symphony",
+      "name": "Canvas Line Resize Move",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Line Resize Move",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasLineResizeMovePlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Line Resize Move",
+        "sequence": {
+          "id": "canvas-line-resize-move-symphony",
+          "name": "Canvas Line Resize Move",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Resize Line Move",
+            "items": [
+              "Move (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-line-resize-start-symphony",
+      "name": "Canvas Line Resize Start",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Line Resize Start",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasLineResizeStartPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Line Resize Start",
+        "sequence": {
+          "id": "canvas-line-resize-start-symphony",
+          "name": "Canvas Line Resize Start",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Resize Line Start",
+            "items": [
+              "Start (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-resize-move-symphony",
+      "name": "Canvas Component Resize Move",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Resize Move",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentResizeMovePlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Resize Move",
+        "sequence": {
+          "id": "canvas-component-resize-move-symphony",
+          "name": "Canvas Component Resize Move",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Resize Move",
+            "items": [
+              "Move (stage-crew)",
+              "Forward (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-resize-start-symphony",
+      "name": "Canvas Component Resize Start",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Resize Start",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentResizeStartPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Resize Start",
+        "sequence": {
+          "id": "canvas-component-resize-start-symphony",
+          "name": "Canvas Component Resize Start",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Resize Start",
+            "items": [
+              "Start (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-rules-config-symphony",
+      "name": "Canvas Component Rules Config",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Rules Config",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentPlugin",
+      "movements": 1,
+      "beats": 3,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Rules Config",
+        "sequence": {
+          "id": "canvas-component-rules-config-symphony",
+          "name": "Canvas Component Rules Config",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Rules Configuration",
+            "items": [
+              "Set All (pure)",
+              "Load Window (pure)",
+              "Get All (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-select-symphony",
+      "name": "Canvas Component Select",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Select",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentSelectionPlugin",
+      "movements": 1,
+      "beats": 3,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Select",
+        "sequence": {
+          "id": "canvas-component-select-symphony",
+          "name": "Canvas Component Select",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Select",
+            "items": [
+              "Select (stage-crew)",
+              "Notify (pure)",
+              "Changed (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-select-requested-symphony",
+      "name": "Canvas Component Select Requested",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Select Requested",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Select Requested",
+        "sequence": {
+          "id": "canvas-component-select-requested-symphony",
+          "name": "Canvas Component Select Requested",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Route Selection",
+            "items": [
+              "Route (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-select-svg-node-symphony",
+      "name": "Canvas Component Select SVG Node",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Select SVG Node",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentSvgNodeSelectionPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Select SVG Node",
+        "sequence": {
+          "id": "canvas-component-select-svg-node-symphony",
+          "name": "Canvas Component Select SVG Node",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Select SVG Node",
+            "items": [
+              "Svg-node (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-update-symphony",
+      "name": "Canvas Component Update",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Update",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Update",
+        "sequence": {
+          "id": "canvas-component-update-symphony",
+          "name": "Canvas Component Update",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Update",
+            "items": [
+              "Attribute (stage-crew)",
+              "Refresh (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "canvas-component-update-svg-node-symphony",
+      "name": "Canvas Component Update SVG Node",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Canvas Component Update SVG Node",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "CanvasComponentSvgNodeUpdatePlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Canvas Component Update SVG Node",
+        "sequence": {
+          "id": "canvas-component-update-svg-node-symphony",
+          "name": "Canvas Component Update SVG Node",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Update SVG Node Attribute",
+            "items": [
+              "Attribute (stage-crew)",
+              "Refresh (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-classes-add-symphony",
+      "name": "Control Panel Classes Add",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel Classes Add",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel Classes Add",
+        "sequence": {
+          "id": "control-panel-classes-add-symphony",
+          "name": "Control Panel Classes Add",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Add Class",
+            "items": [
+              "Add (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-classes-remove-symphony",
+      "name": "Control Panel Classes Remove",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel Classes Remove",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel Classes Remove",
+        "sequence": {
+          "id": "control-panel-classes-remove-symphony",
+          "name": "Control Panel Classes Remove",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Remove Class",
+            "items": [
+              "Remove (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-css-create-symphony",
+      "name": "Control Panel CSS Create",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel CSS Create",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel CSS Create",
+        "sequence": {
+          "id": "control-panel-css-create-symphony",
+          "name": "Control Panel CSS Create",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Create CSS Class",
+            "items": [
+              "Create (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-css-delete-symphony",
+      "name": "Control Panel CSS Delete",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel CSS Delete",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel CSS Delete",
+        "sequence": {
+          "id": "control-panel-css-delete-symphony",
+          "name": "Control Panel CSS Delete",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Delete CSS Class",
+            "items": [
+              "Delete (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-css-edit-symphony",
+      "name": "Control Panel CSS Edit",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel CSS Edit",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel CSS Edit",
+        "sequence": {
+          "id": "control-panel-css-edit-symphony",
+          "name": "Control Panel CSS Edit",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Update CSS Class",
+            "items": [
+              "Update (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "emoji": "🔌",
+      "description": "Plugin sequence: undefined",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "sequence": {
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "control-panel-selection-show-symphony",
+      "name": "Control Panel Selection Show",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel Selection Show",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel Selection Show",
+        "sequence": {
+          "id": "control-panel-selection-show-symphony",
+          "name": "Control Panel Selection Show",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Selection",
+            "items": [
+              "Derive (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-ui-field-change-symphony",
+      "name": "Control Panel UI Field Change",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel UI Field Change",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 4,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel UI Field Change",
+        "sequence": {
+          "id": "control-panel-ui-field-change-symphony",
+          "name": "Control Panel UI Field Change",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Field Change",
+            "items": [
+              "Prepare (stage-crew)",
+              "Dispatch (stage-crew)",
+              "Dirty (stage-crew)",
+              "Await-refresh (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-ui-field-validate-symphony",
+      "name": "Control Panel UI Field Validate",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel UI Field Validate",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 3,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel UI Field Validate",
+        "sequence": {
+          "id": "control-panel-ui-field-validate-symphony",
+          "name": "Control Panel UI Field Validate",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Field Validate",
+            "items": [
+              "Validate (stage-crew)",
+              "Merge (stage-crew)",
+              "Update (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-ui-init-batched-symphony",
+      "name": "Control Panel UI Init (Batched)",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel UI Init (Batched)",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 6,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel UI Init (Batched)",
+        "sequence": {
+          "id": "control-panel-ui-init-batched-symphony",
+          "name": "Control Panel UI Init (Batched)",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Init",
+            "items": [
+              "Config (stage-crew)",
+              "Resolver (stage-crew)",
+              "Schemas (stage-crew)",
+              "Observers (stage-crew)",
+              "Notify (pure)",
+              "Movement (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-ui-init-symphony",
+      "name": "Control Panel UI Init",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel UI Init",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 6,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel UI Init",
+        "sequence": {
+          "id": "control-panel-ui-init-symphony",
+          "name": "Control Panel UI Init",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Init",
+            "items": [
+              "Config (stage-crew)",
+              "Resolver (stage-crew)",
+              "Schemas (stage-crew)",
+              "Observers (stage-crew)",
+              "Notify (pure)",
+              "Movement (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-ui-render-symphony",
+      "name": "Control Panel UI Render",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel UI Render",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 3,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel UI Render",
+        "sequence": {
+          "id": "control-panel-ui-render-symphony",
+          "name": "Control Panel UI Render",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Render",
+            "items": [
+              "Generate (stage-crew)",
+              "Generate (stage-crew)",
+              "Render (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-ui-section-toggle-symphony",
+      "name": "Control Panel UI Section Toggle",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel UI Section Toggle",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel UI Section Toggle",
+        "sequence": {
+          "id": "control-panel-ui-section-toggle-symphony",
+          "name": "Control Panel UI Section Toggle",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Section Toggle",
+            "items": [
+              "Toggle (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-panel-update-symphony",
+      "name": "Control Panel Update",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Control Panel Update",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "ControlPanelPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Control Panel Update",
+        "sequence": {
+          "id": "control-panel-update-symphony",
+          "name": "Control Panel Update",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Update",
+            "items": [
+              "Derive (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "emoji": "🔌",
+      "description": "Plugin sequence: undefined",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "sequence": {
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "header-ui-theme-get-symphony",
+      "name": "Header UI Theme Get",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Header UI Theme Get",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "HeaderThemePlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Header UI Theme Get",
+        "sequence": {
+          "id": "header-ui-theme-get-symphony",
+          "name": "Header UI Theme Get",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Get Current Theme",
+            "items": [
+              "Get (stage-crew)",
+              "Notify (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "header-ui-theme-toggle-symphony",
+      "name": "Header UI Theme Toggle",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Header UI Theme Toggle",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "HeaderThemePlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Header UI Theme Toggle",
+        "sequence": {
+          "id": "header-ui-theme-toggle-symphony",
+          "name": "Header UI Theme Toggle",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Toggle Theme",
+            "items": [
+              "Toggle (stage-crew)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "emoji": "🔌",
+      "description": "Plugin sequence: undefined",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "sequence": {
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "library-load-symphony",
+      "name": "Library Load",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Library Load",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "LibraryPlugin",
+      "movements": 1,
+      "beats": 2,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Library Load",
+        "sequence": {
+          "id": "library-load-symphony",
+          "name": "Library Load",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Load",
+            "items": [
+              "Load (pure)",
+              "Notify-ui (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "library-component-container-drop-symphony",
+      "name": "Library Component Container Drop",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Library Component Container Drop",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "LibraryComponentPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Library Component Container Drop",
+        "sequence": {
+          "id": "library-component-container-drop-symphony",
+          "name": "Library Component Container Drop",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Drop",
+            "items": [
+              "Drop (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "library-component-drag-symphony",
+      "name": "Library Component Drag",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Library Component Drag",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "LibraryComponentPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Library Component Drag",
+        "sequence": {
+          "id": "library-component-drag-symphony",
+          "name": "Library Component Drag",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Drag",
+            "items": [
+              "Library.component.drag.start.requested (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "library-component-drop-symphony",
+      "name": "Library Component Drop",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Library Component Drop",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "LibraryComponentPlugin",
+      "movements": 1,
+      "beats": 1,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Library Component Drop",
+        "sequence": {
+          "id": "library-component-drop-symphony",
+          "name": "Library Component Drop",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Drop",
+            "items": [
+              "Drop (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "emoji": "🔌",
+      "description": "Plugin sequence: undefined",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "sequence": {
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "real-estate-analyzer-search-symphony",
+      "name": "Real Estate Analyzer Search",
+      "emoji": "🔌",
+      "description": "Plugin sequence: Real Estate Analyzer Search",
+      "category": "plugin",
+      "purpose": "Feature implementation",
+      "relatedDomains": [],
+      "status": "active",
+      "pluginId": "RealEstateAnalyzerPlugin",
+      "movements": 1,
+      "beats": 3,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Real Estate Analyzer Search",
+        "sequence": {
+          "id": "real-estate-analyzer-search-symphony",
+          "name": "Real Estate Analyzer Search",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "plugin"
+        },
+        "phases": [
+          {
+            "name": "Movement 1: Search",
+            "items": [
+              "Real.estate.analyzer.search (pure)",
+              "Analyze (pure)",
+              "Format (pure)"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cag-agent-workflow",
+      "name": "CAG Agent Workflow - 8 Phase Sequence",
+      "emoji": "🎼",
+      "description": "Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
       "sequenceFile": "packages/ographx/.ographx/sequences/cag-agent-workflow.json",
       "movements": 8,
       "beats": 41,
-      "category": "system",
-      "dynamics": ["mf", "f", "ff"],
-      "purpose": "Agent workflow within governance system",
-      "relatedDomains": ["governance-orchestration", "self-awareness-orchestration"],
-      "status": "active",
+      "tempo": 100,
+      "key": "C Major",
+      "timeSignature": "4/4",
       "sketch": {
-        "title": "CAG Agent Workflow (8 Phases)",
+        "title": "CAG Agent Workflow - 8 Phase Sequence",
+        "sequence": {
+          "id": "cag-agent-workflow",
+          "name": "CAG Agent Workflow - 8 Phase Sequence",
+          "tempo": 100,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
         "phases": [
           {
-            "name": "Context Loading",
-            "items": ["Load SHAPE_EVOLUTION_PLAN.json", "Load knowledge-index.json", "Load root-context.json"]
+            "name": "Movement 1: Phase 1: Context Loading",
+            "items": [
+              "Extract rules, evolution phases, governance contracts",
+              "Extract artifact registry and canonical locations",
+              "Extract root goal, principles, boundaries",
+              "Create context envelope, session ID, timestamp"
+            ]
           },
           {
-            "name": "Context Verification",
-            "items": ["Verify coherence ≥ 80%", "Check boundaries", "Validate contracts"]
+            "name": "Movement 2: Phase 2: Context Verification",
+            "items": [
+              "Check goal matches plan, no contradictions, goal achievable",
+              "Check rules parseable, no conflicts, all phases covered",
+              "Check artifacts reachable, no circular deps, canonical locations valid",
+              "Compute (verified_items / total_items) * 100, threshold ≥ 80%"
+            ]
           },
           {
-            "name": "Workload Analysis",
-            "items": ["Understand work requirements", "Map to sequence phases", "Identify dependencies"]
+            "name": "Movement 3: Phase 3: Workload Analysis",
+            "items": [
+              "Extract feature, scope, constraints from user request",
+              "Determine type (feature/fix/refactor/test/doc), scope, complexity",
+              "Check sprint/phase, in-scope for phase, aligns with plan",
+              "List files to modify, dependencies, tests to update",
+              "Extract feature, layer, phase",
+              "Define in-scope, out-of-scope, constraints"
+            ]
           },
           {
-            "name": "Context Tree Mapping",
-            "items": ["Extract file dependencies", "Map governance context", "Build context tree"]
+            "name": "Movement 4: Phase 4: Context Tree Mapping",
+            "items": [
+              "For each affected file: check exists, in repository, path canonical",
+              "Determine type, purpose, role for each file",
+              "Extract rules, contracts, phase, telemetry requirements",
+              "Extract imports, references, dependents",
+              "Map root context, sub-context, boundaries, previous context",
+              "Output .generated/context-tree-{filename}.json for each file",
+              "Combine all context trees, detect cross-file deps, verify no violations"
+            ]
           },
           {
-            "name": "Action Planning",
-            "items": ["Plan actions within context", "Verify alignment", "Prepare execution"]
+            "name": "Movement 5: Phase 5: Action Planning",
+            "items": [
+              "Load BDD specs, telemetry shapes, TDD tests, integration tests, context remounting",
+              "Combine governance core + context providers, assemble context envelope",
+              "Output .generated/cag-context.json with all context layers",
+              "Query docs matching workload, filter by role, load context blocks",
+              "Identify changes needed, sequence actions, verify boundaries, estimate impact",
+              "Check all in-scope, respects governance, aligns with goal, telemetry identified"
+            ]
           },
           {
-            "name": "Action Execution",
-            "items": ["Execute planned actions", "Track progress", "Handle errors"]
+            "name": "Movement 6: Phase 6: Action Execution",
+            "items": [
+              "Verify context coherent, boundaries unchanged, no conflicts",
+              "Modify code, tests, specs, configs; generate new artifacts",
+              "Verify syntactically valid, respects governance, no violations, dependencies updated",
+              "Log what changed, why, context used, timestamp, session ID"
+            ]
           },
           {
-            "name": "Telemetry Emission",
-            "items": ["Emit structured telemetry", "Record metrics", "Update audit trail"]
+            "name": "Movement 7: Phase 7: Telemetry Emission",
+            "items": [
+              "Collect what, why, how, when, who, context",
+              "Include root goal, feature, phase, changes, tests, verification",
+              "Write .generated/telemetry/{timestamp}.json with structured data",
+              "Check required fields present, matches plan, machine readable"
+            ]
           },
           {
-            "name": "Feedback Loop",
-            "items": ["Analyze results", "Update context", "Prepare next iteration"]
+            "name": "Movement 8: Phase 8: Feedback Loop",
+            "items": [
+              "Load cag-context.json and telemetry",
+              "Analyze success, alignment, governance compliance, telemetry",
+              "Record previous action, coherence, telemetry, lessons learned",
+              "Output .generated/cag-context-next.json with all updates",
+              "Check if JSON changed, regenerate docs if needed, verify up-to-date",
+              "Output .generated/cag-feedback.json with observations, updates, next steps"
+            ]
           }
         ]
       }
     },
     {
-      "id": "governance-orchestration",
-      "name": "Governance Orchestration",
-      "emoji": "📋",
-      "description": "Evolution phases and governance rules",
-      "sourceFile": "SHAPE_EVOLUTION_PLAN.json",
-      "category": "system",
-      "purpose": "Define what must be emitted, what can change",
-      "relatedDomains": ["cag-orchestration", "self-healing-orchestration"],
+      "id": "graphing-orchestration",
+      "name": "graphing-orchestration",
+      "emoji": "🎼",
+      "description": "Orchestration domain: graphing-orchestration",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
       "status": "active",
-      "sketch": {
-        "title": "Governance Orchestration (Evolution)",
-        "phases": [
-          {
-            "name": "Root Goal Definition",
-            "items": ["Define telemetry-driven feature shape governance"]
-          },
-          {
-            "name": "Evolution Phases",
-            "items": ["Phase 1: Foundation", "Phase 2: Integration", "Phase 3: Optimization", "Phase 4+: Advanced"]
-          },
-          {
-            "name": "Governance Rules",
-            "items": ["What must be emitted", "What can change", "Verification points", "Enforcement levels"]
-          },
-          {
-            "name": "Telemetry Requirements",
-            "items": ["Metrics to collect", "Aggregation rules", "Reporting format"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "self-healing-orchestration",
-      "name": "Self-Healing Orchestration",
-      "emoji": "🔧",
-      "description": "Detection → Analysis → Correction → Verification",
-      "sourceDirectory": "packages/self-healing/",
-      "movements": 4,
-      "category": "system",
-      "purpose": "Automatic system recovery",
-      "relatedDomains": ["governance-orchestration", "observability-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Self-Healing Orchestration (4 Phases)",
-        "phases": [
-          {
-            "name": "Detection Phase",
-            "items": ["Monitor system health", "Identify anomalies", "Trigger alerts"]
-          },
-          {
-            "name": "Analysis Phase",
-            "items": ["Diagnose root cause", "Assess severity", "Plan correction"]
-          },
-          {
-            "name": "Correction Phase",
-            "items": ["Apply fixes", "Validate changes", "Monitor impact"]
-          },
-          {
-            "name": "Verification Phase",
-            "items": ["Confirm health restored", "Update telemetry", "Document incident"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "feature-orchestration",
-      "name": "Feature Orchestration",
-      "emoji": "✨",
-      "description": "Feature lifecycle management",
-      "sourceDirectory": "packages/*/json-sequences/",
-      "category": "system",
-      "purpose": "Feature initialization, execution, cleanup",
-      "relatedDomains": ["renderx-orchestration", "plugin-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Feature Orchestration (Lifecycle)",
-        "phases": [
-          {
-            "name": "Feature Definition",
-            "items": ["ID & Name", "Description", "Requirements"]
-          },
-          {
-            "name": "Initialization",
-            "items": ["Load dependencies", "Setup state", "Register handlers"]
-          },
-          {
-            "name": "Execution",
-            "items": ["Run feature logic", "Handle events", "Update state"]
-          },
-          {
-            "name": "Cleanup",
-            "items": ["Unregister handlers", "Release resources", "Emit completion"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "continuous-delivery-orchestration",
-      "name": "Continuous Delivery Orchestration",
-      "emoji": "🚀",
-      "description": "Build → Test → Validate → Deploy",
-      "category": "system",
-      "purpose": "Automated delivery pipeline",
-      "relatedDomains": ["governance-orchestration", "observability-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Continuous Delivery Orchestration (CD)",
-        "phases": [
-          {
-            "name": "Build Phase",
-            "items": ["Compile code", "Run tests", "Generate artifacts"]
-          },
-          {
-            "name": "Quality Gate",
-            "items": ["Check coverage", "Lint code", "Verify security"]
-          },
-          {
-            "name": "Deployment",
-            "items": ["Stage deployment", "Run smoke tests", "Promote to production"]
-          },
-          {
-            "name": "Monitoring",
-            "items": ["Track metrics", "Monitor errors", "Trigger rollback if needed"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "self-awareness-orchestration",
-      "name": "Self-Awareness Orchestration",
-      "emoji": "🧠",
-      "description": "Observation → Analysis → Visualization → Feedback",
       "sequenceFile": "packages/ographx/.ographx/sequences/graphing-orchestration.json",
-      "category": "system",
-      "purpose": "System introspection and analysis",
-      "relatedDomains": ["cag-orchestration", "observability-orchestration"],
-      "status": "active",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
       "sketch": {
-        "title": "Self-Awareness Orchestration (Introspection)",
+        "title": "graphing-orchestration",
+        "sequence": {
+          "id": "graphing-orchestration",
+          "name": "graphing-orchestration",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": []
+      }
+    },
+    {
+      "id": "orchestration-audit-session",
+      "name": "Orchestration Audit System Implementation Session",
+      "emoji": "🎼",
+      "description": "Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
+      "status": "active",
+      "sequenceFile": "packages/ographx/.ographx/sequences/orchestration-audit-session.json",
+      "movements": 8,
+      "beats": 25,
+      "tempo": 120,
+      "key": "C",
+      "timeSignature": "4/4",
+      "sketch": {
+        "title": "Orchestration Audit System Implementation Session",
+        "sequence": {
+          "id": "orchestration-audit-session",
+          "name": "Orchestration Audit System Implementation Session",
+          "tempo": 120,
+          "key": "C",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
         "phases": [
           {
-            "name": "Observation Phase",
-            "items": ["Capture system state", "Record metrics", "Generate IR"]
+            "name": "Movement 1: Architecture Design",
+            "items": [
+              "Understand 16 orchestration domains and their relationships",
+              "Create unified schema for all domains with metadata",
+              "Document each domain with movements, beats, relationships"
+            ]
           },
           {
-            "name": "Analysis Phase",
-            "items": ["Parse IR", "Extract patterns", "Identify issues"]
+            "name": "Movement 2: JSON Source Creation",
+            "items": [
+              "Write comprehensive JSON registry with all 16 domains",
+              "Reference packages/musical-conductor SequenceTypes.ts",
+              "Document how domains connect and depend on each other"
+            ]
           },
           {
-            "name": "Visualization Phase",
-            "items": ["Generate diagrams", "Create timelines", "Build reports"]
+            "name": "Movement 3: Documentation Generation",
+            "items": [
+              "Script to generate markdown documentation from JSON",
+              "Create visual representations of each domain's workflow",
+              "Run script to produce 3 markdown files with sketches"
+            ]
           },
           {
-            "name": "Feedback Phase",
-            "items": ["Update context", "Adjust behavior", "Evolve system"]
+            "name": "Movement 4: Diagram Generation",
+            "items": [
+              "Script to generate Mermaid diagrams from JSON",
+              "Create unified system architecture diagram",
+              "Create domain relationship visualization"
+            ]
+          },
+          {
+            "name": "Movement 5: Audit System",
+            "items": [
+              "Script to validate entire orchestration system",
+              "Check domain definitions and required fields",
+              "Verify all referenced domains exist",
+              "Check all documentation and diagrams exist"
+            ]
+          },
+          {
+            "name": "Movement 6: Standards Alignment",
+            "items": [
+              "Verify all sequences use canonical interface",
+              "Remove manually-created markdown files",
+              "Mark all generated files with DO NOT EDIT headers"
+            ]
+          },
+          {
+            "name": "Movement 7: Verification",
+            "items": [
+              "Execute audit-orchestration.js to validate system",
+              "Check all markdown files with ASCII sketches",
+              "Check all Mermaid diagram files"
+            ]
+          },
+          {
+            "name": "Movement 8: Context Tree Creation",
+            "items": [
+              "Generate .generated/context-tree-orchestration-audit-session.json",
+              "Create this orchestration-audit-session.json sequence",
+              "Provide complete context for next agent to continue work"
+            ]
           }
         ]
       }
     },
     {
-      "id": "observability-orchestration",
-      "name": "Observability Orchestration",
-      "emoji": "📊",
-      "description": "Collection → Aggregation → Analysis → Reporting",
-      "category": "system",
-      "purpose": "System monitoring and metrics",
-      "relatedDomains": ["self-awareness-orchestration", "self-healing-orchestration"],
+      "id": "self_sequences",
+      "name": "self_sequences",
+      "emoji": "🎼",
+      "description": "Orchestration domain: self_sequences",
+      "category": "orchestration",
+      "purpose": "System orchestration",
+      "relatedDomains": [],
       "status": "active",
+      "sequenceFile": "packages/ographx/.ographx/sequences/self_sequences.json",
+      "movements": 0,
+      "beats": 0,
+      "tempo": 120,
+      "key": "C Major",
+      "timeSignature": "4/4",
       "sketch": {
-        "title": "Observability Orchestration (Monitoring)",
-        "phases": [
-          {
-            "name": "Collection",
-            "items": ["Logs", "Metrics", "Traces", "Events"]
-          },
-          {
-            "name": "Aggregation",
-            "items": ["Combine sources", "Normalize format", "Deduplicate"]
-          },
-          {
-            "name": "Analysis",
-            "items": ["Pattern detection", "Anomaly detection", "Correlation"]
-          },
-          {
-            "name": "Reporting",
-            "items": ["Dashboards", "Alerts", "Reports"]
-          }
-        ]
+        "title": "self_sequences",
+        "sequence": {
+          "id": "self_sequences",
+          "name": "self_sequences",
+          "tempo": 120,
+          "key": "C Major",
+          "timeSignature": "4/4",
+          "category": "orchestration"
+        },
+        "phases": []
       }
-    },
-    {
-      "id": "renderx-orchestration",
-      "name": "RenderX Orchestration",
-      "emoji": "🎨",
-      "description": "Canvas → Components → Library → Control Panel",
-      "sourceDirectory": "packages/*/json-sequences/",
-      "category": "component-ui",
-      "purpose": "UI orchestration and interaction",
-      "relatedDomains": ["feature-orchestration", "plugin-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "RenderX Orchestration (UI Layers)",
-        "phases": [
-          {
-            "name": "Header Layer",
-            "items": ["Logo", "Title", "Controls"]
-          },
-          {
-            "name": "Main Layout",
-            "items": ["Library Panel (Components)", "Canvas (Main Workspace)", "Drag & Drop"]
-          },
-          {
-            "name": "Control Panel",
-            "items": ["Properties", "Settings"]
-          },
-          {
-            "name": "Event Flow",
-            "items": ["User Action → Canvas", "Canvas → Control Panel", "Update UI"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "plugin-orchestration",
-      "name": "Plugin Orchestration",
-      "emoji": "🔌",
-      "description": "Plugin lifecycle management",
-      "sourceDirectory": "packages/{plugin}/json-sequences/{plugin}/",
-      "category": "system",
-      "purpose": "Plugin initialization and execution",
-      "relatedDomains": ["feature-orchestration", "renderx-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Plugin Orchestration (Extensibility)",
-        "phases": [
-          {
-            "name": "Plugin Discovery",
-            "items": ["Scan plugin directories", "Load manifests", "Register plugins"]
-          },
-          {
-            "name": "Plugin Initialization",
-            "items": ["Load dependencies", "Setup handlers", "Register sequences"]
-          },
-          {
-            "name": "Plugin Execution",
-            "items": ["Route events", "Execute handlers", "Emit results"]
-          },
-          {
-            "name": "Plugin Lifecycle",
-            "items": ["Monitor health", "Handle errors", "Cleanup on unload"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "data-flow-orchestration",
-      "name": "Data Flow Orchestration",
-      "emoji": "🔄",
-      "description": "Data ingestion → Processing → Output",
-      "category": "data-flow",
-      "purpose": "Data pipeline management",
-      "relatedDomains": ["integration-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Data Flow Orchestration (Pipeline)",
-        "phases": [
-          {
-            "name": "Ingestion",
-            "items": ["Extract raw data"]
-          },
-          {
-            "name": "Validation",
-            "items": ["Verify data quality"]
-          },
-          {
-            "name": "Processing",
-            "items": ["Transform & aggregate"]
-          },
-          {
-            "name": "Analysis",
-            "items": ["Extract insights"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "component-ui-orchestration",
-      "name": "Component UI Orchestration",
-      "emoji": "🖼️",
-      "description": "Component lifecycle and state management",
-      "category": "component-ui",
-      "purpose": "Component state management",
-      "relatedDomains": ["renderx-orchestration", "user-interaction-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Component UI Orchestration (Rendering)",
-        "phases": [
-          {
-            "name": "Component Definition",
-            "items": ["Load JSON schema", "Parse properties", "Validate structure"]
-          },
-          {
-            "name": "Component Mapping",
-            "items": ["Map to React/Vue/etc", "Apply CSS classes", "Setup event handlers"]
-          },
-          {
-            "name": "Component Rendering",
-            "items": ["Render to DOM", "Apply styles", "Attach listeners"]
-          },
-          {
-            "name": "Component Interaction",
-            "items": ["Handle user input", "Update state", "Emit events"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "canvas-operations-orchestration",
-      "name": "Canvas Operations Orchestration",
-      "emoji": "🎭",
-      "description": "Canvas manipulation and rendering",
-      "category": "canvas-operations",
-      "purpose": "Canvas state and rendering",
-      "relatedDomains": ["renderx-orchestration", "user-interaction-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Canvas Operations Orchestration (Drawing)",
-        "phases": [
-          {
-            "name": "Canvas Initialization",
-            "items": ["Create canvas element", "Setup context", "Initialize state"]
-          },
-          {
-            "name": "Component Placement",
-            "items": ["Calculate position", "Render component", "Update layout"]
-          },
-          {
-            "name": "Interaction Handling",
-            "items": ["Detect drag/drop", "Handle resize", "Update properties"]
-          },
-          {
-            "name": "Canvas Rendering",
-            "items": ["Redraw affected areas", "Update visual state", "Emit canvas events"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "user-interaction-orchestration",
-      "name": "User Interaction Orchestration",
-      "emoji": "👆",
-      "description": "User action handling and input processing",
-      "category": "user-interactions",
-      "purpose": "User input processing",
-      "relatedDomains": ["component-ui-orchestration", "canvas-operations-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "User Interaction Orchestration (Events)",
-        "phases": [
-          {
-            "name": "Event Capture",
-            "items": ["Listen for user actions", "Normalize events", "Queue events"]
-          },
-          {
-            "name": "Event Processing",
-            "items": ["Route to handlers", "Execute handlers", "Collect results"]
-          },
-          {
-            "name": "State Update",
-            "items": ["Update component state", "Update canvas state", "Update control panel"]
-          },
-          {
-            "name": "UI Refresh",
-            "items": ["Re-render affected components", "Update visual feedback", "Emit completion event"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "integration-orchestration",
-      "name": "Integration Orchestration",
-      "emoji": "🔗",
-      "description": "External service coordination",
-      "category": "integration",
-      "purpose": "External system coordination",
-      "relatedDomains": ["data-flow-orchestration", "observability-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Integration Orchestration (Connectivity)",
-        "phases": [
-          {
-            "name": "Service Discovery",
-            "items": ["Locate services", "Verify availability", "Load endpoints"]
-          },
-          {
-            "name": "Connection Establishment",
-            "items": ["Create connections", "Authenticate", "Setup protocols"]
-          },
-          {
-            "name": "Data Exchange",
-            "items": ["Send requests", "Receive responses", "Handle errors"]
-          },
-          {
-            "name": "Connection Management",
-            "items": ["Monitor health", "Retry on failure", "Cleanup connections"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "performance-orchestration",
-      "name": "Performance Orchestration",
-      "emoji": "⚡",
-      "description": "Performance testing and metrics collection",
-      "category": "performance",
-      "purpose": "Performance monitoring",
-      "relatedDomains": ["observability-orchestration"],
-      "status": "active",
-      "sketch": {
-        "title": "Performance Orchestration (Optimization)",
-        "phases": [
-          {
-            "name": "Profiling",
-            "items": ["Measure execution time", "Track memory usage", "Identify bottlenecks"]
-          },
-          {
-            "name": "Analysis",
-            "items": ["Compare baselines", "Detect regressions", "Prioritize optimizations"]
-          },
-          {
-            "name": "Optimization",
-            "items": ["Apply caching", "Parallelize work", "Reduce allocations"]
-          },
-          {
-            "name": "Validation",
-            "items": ["Measure improvements", "Verify correctness", "Update baselines"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "layout-orchestration",
-      "name": "Layout Orchestration",
-      "emoji": "📐",
-      "description": "Layout calculation and UI positioning",
-      "category": "layout",
-      "purpose": "UI layout management",
-      "relatedDomains": ["renderx-orchestration", "component-ui-orchestration"],
-      "status": "active"
     }
-  ],
-  "executionFlow": [
-    { "step": 1, "name": "Define Sequence", "description": "Create MusicalSequence with movements and beats" },
-    { "step": 2, "name": "Register with Conductor", "description": "Register sequence with MusicalConductor" },
-    { "step": 3, "name": "Execute Movements & Beats", "description": "Execute sequence movements and beats" },
-    { "step": 4, "name": "Trace & Log", "description": "Log beat-by-beat execution with complete lineage" },
-    { "step": 5, "name": "Visualize", "description": "Generate diagrams and execution timeline" },
-    { "step": 6, "name": "Rehydrate Context", "description": "Load context via CAG system" },
-    { "step": 7, "name": "Emit Telemetry", "description": "Emit structured telemetry from sequence" },
-    { "step": 8, "name": "Feedback Loop", "description": "Update sequences based on results" },
-    { "step": 9, "name": "Next Iteration", "description": "Evolved system with updated sequences" }
-  ],
-  "categories": [
-    { "id": "component-ui", "name": "Component UI", "description": "UI component interactions" },
-    { "id": "canvas-operations", "name": "Canvas Operations", "description": "Canvas manipulation" },
-    { "id": "data-flow", "name": "Data Flow", "description": "Data processing and flow" },
-    { "id": "system", "name": "System", "description": "System sequences" },
-    { "id": "system-events", "name": "System Events", "description": "System-level events" },
-    { "id": "user-interactions", "name": "User Interactions", "description": "User input handling" },
-    { "id": "integration", "name": "Integration", "description": "External integrations" },
-    { "id": "performance", "name": "Performance", "description": "Performance testing" },
-    { "id": "layout", "name": "Layout", "description": "Layout-related sequences" }
-  ],
-  "dynamics": [
-    { "symbol": "pp", "name": "pianissimo", "description": "Very soft - lowest priority" },
-    { "symbol": "p", "name": "piano", "description": "Soft - low priority" },
-    { "symbol": "mp", "name": "mezzo-piano", "description": "Medium soft - medium-low priority" },
-    { "symbol": "mf", "name": "mezzo-forte", "description": "Medium loud - medium priority" },
-    { "symbol": "f", "name": "forte", "description": "Loud - high priority" },
-    { "symbol": "ff", "name": "fortissimo", "description": "Very loud - highest priority" }
-  ],
-  "timing": [
-    { "id": "immediate", "description": "Execute immediately when beat is reached" },
-    { "id": "after-beat", "description": "Execute after dependencies complete" },
-    { "id": "delayed", "description": "Execute with intentional delay" },
-    { "id": "synchronized", "description": "Execute synchronized with other events" },
-    { "id": "on-beat", "description": "Execute exactly on the next musical beat" }
   ]
 }
-

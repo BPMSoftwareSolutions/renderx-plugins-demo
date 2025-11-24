@@ -1,802 +1,2152 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-24T14:23:33.236Z
+**Last Generated:** 2025-11-24T15:53:48.453Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
 
-Single source of truth for all orchestration domains in the system
+Complete registry of all orchestration domains and plugin sequences
 
 **Unified Interface:** `MusicalSequence`
 **Source:** `packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts`
 
 ---
 
-## The 16 Orchestration Domains
+## The 59 Orchestration Domains
 
-### 1. 🎯 CAG Orchestration
+### 1. 🔌 Canvas Component Copy
 
-**ID:** `cag-orchestration`
+**ID:** `canvas-component-copy-symphony`
 
-Context-Augmented Generation agent workflow
+Plugin sequence: Canvas Component Copy
 
 ```
-
     ┌─────────────────────────────────────────────────────────┐
-    │         🎯 CAG Agent Workflow (8 Phases)               │
+    │ 🔌 Canvas Component Copy                                │
     ├─────────────────────────────────────────────────────────┤
     │                                                         │
-    │  Phase 1: Context Loading                              │
-    │  ├─ Load SHAPE_EVOLUTION_PLAN.json                     │
-    │  ├─ Load knowledge-index.json                          │
-    │  └─ Load root-context.json                             │
+    │  🎵 Sequence: canvas-component-copy-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
     │                                                         │
-    │  Phase 2: Context Verification                         │
-    │  ├─ Verify coherence ≥ 80%                             │
-    │  ├─ Check boundaries                                   │
-    │  └─ Validate contracts                                 │
-    │                                                         │
-    │  Phase 3: Workload Analysis                            │
-    │  ├─ Understand work requirements                       │
-    │  ├─ Map to sequence phases                             │
-    │  └─ Identify dependencies                              │
-    │                                                         │
-    │  Phase 4: Context Tree Mapping                         │
-    │  ├─ Extract file dependencies                          │
-    │  ├─ Map governance context                             │
-    │  └─ Build context tree                                 │
-    │                                                         │
-    │  Phase 5: Action Planning                              │
-    │  ├─ Plan actions within context                        │
-    │  ├─ Verify alignment                                   │
-    │  └─ Prepare execution                                  │
-    │                                                         │
-    │  Phase 6: Action Execution                             │
-    │  ├─ Execute planned actions                            │
-    │  ├─ Track progress                                     │
-    │  └─ Handle errors                                      │
-    │                                                         │
-    │  Phase 7: Telemetry Emission                           │
-    │  ├─ Emit structured telemetry                          │
-    │  ├─ Record metrics                                     │
-    │  └─ Update audit trail                                 │
-    │                                                         │
-    │  Phase 8: Feedback Loop                                │
-    │  ├─ Analyze results                                    │
-    │  ├─ Update context                                     │
-    │  └─ Prepare next iteration                             │
+    │  Movement 1: Copy to Clipboard                        │
+    │    ├─ Serialize (pure)                                │
+    │    ├─ Clipboard (io)                                  │
+    │    └─ Notify (pure)                                   │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
-  
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 3
+
+**Status:** active
+
+---
+
+### 2. 🔌 Canvas Component Create
+
+**ID:** `canvas-component-create-symphony`
+
+Plugin sequence: Canvas Component Create
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Create                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-create-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Create                                   │
+    │    ├─ Resolve-template (pure)                         │
+    │    ├─ Register-instance (io)                          │
+    │    ├─ Create (stage-crew)                             │
+    │    ├─ Render-react (stage-crew)                       │
+    │    ├─ Notify-ui (pure)                                │
+    │    └─ Line (stage-crew)                               │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 6
+
+**Status:** active
+
+---
+
+### 3. 🔌 Canvas Component Delete
+
+**ID:** `canvas-component-delete-symphony`
+
+Plugin sequence: Canvas Component Delete
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Delete                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-delete-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Delete                                   │
+    │    ├─ Delete (stage-crew)                             │
+    │    └─ Deleted (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 4. 🔌 Canvas Component Delete Requested
+
+**ID:** `canvas-component-delete-requested-symphony`
+
+Plugin sequence: Canvas Component Delete Requested
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Delete Requested                    │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-delete-requested-symphon│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Route Delete                             │
+    │    └─ Route (pure)                                    │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 5. 🔌 Canvas Component Deselect All
+
+**ID:** `canvas-component-deselect-all-symphony`
+
+Plugin sequence: Canvas Component Deselect All
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Deselect All                        │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-deselect-all-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Deselect All                             │
+    │    ├─ All (stage-crew)                                │
+    │    └─ Cleared (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 6. 🔌 Canvas Component Deselect
+
+**ID:** `canvas-component-deselect-symphony`
+
+Plugin sequence: Canvas Component Deselect
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Deselect                            │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-deselect-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Deselect                                 │
+    │    ├─ Deselect (stage-crew)                           │
+    │    └─ Changed (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 7. 🔌 Canvas Component Deselect Requested
+
+**ID:** `canvas-component-deselect-requested-symphony`
+
+Plugin sequence: Canvas Component Deselect Requested
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Deselect Requested                  │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-deselect-requested-symph│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Route Deselection                        │
+    │    └─ Route (pure)                                    │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 8. 🔌 Canvas Component Drag End
+
+**ID:** `canvas-component-drag-end-symphony`
+
+Plugin sequence: Canvas Component Drag End
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Drag End                            │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-drag-end-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Drag End                                 │
+    │    └─ End (stage-crew)                                │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 9. 🔌 Canvas Component Drag Move
+
+**ID:** `canvas-component-drag-move-symphony`
+
+Plugin sequence: Canvas Component Drag Move
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Drag Move                           │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-drag-move-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Drag Move                                │
+    │    ├─ Move (stage-crew)                               │
+    │    └─ Forward (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 10. 🔌 Canvas Component Drag Start
+
+**ID:** `canvas-component-drag-start-symphony`
+
+Plugin sequence: Canvas Component Drag Start
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Drag Start                          │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-drag-start-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Drag Start                               │
+    │    └─ Start (stage-crew)                              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 11. 🔌 Canvas Component Export GIF
+
+**ID:** `canvas-component-export-gif-symphony`
+
+Plugin sequence: Canvas Component Export GIF
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Export GIF                          │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-export-gif-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Export GIF                               │
+    │    └─ Rasterize-and-encode (stage-crew)               │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 12. 🔌 Canvas Component Export MP4
+
+**ID:** `canvas-component-export-mp4-symphony`
+
+Plugin sequence: Canvas Component Export MP4
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Export MP4                          │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-export-mp4-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Export MP4                               │
+    │    └─ Rasterize-and-encode (stage-crew)               │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 13. 🔌 Canvas Component Export
+
+**ID:** `canvas-component-export-symphony`
+
+Plugin sequence: Canvas Component Export
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Export                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-export-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Export                                   │
+    │    ├─ Query-all (io)                                  │
+    │    ├─ Discover-components (stage-crew)                │
+    │    ├─ Collect-css (stage-crew)                        │
+    │    ├─ Collect-layout (stage-crew)                     │
+    │    ├─ Build-ui-file (pure)                            │
+    │    └─ Download-file (stage-crew)                      │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 6
+
+**Status:** active
+
+---
+
+### 14. 🔌 Canvas Component Import
+
+**ID:** `canvas-component-import-symphony`
+
+Plugin sequence: Canvas Component Import
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Import                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-import-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Import                                   │
+    │    ├─ Open (stage-crew)                               │
+    │    ├─ Parse (pure)                                    │
+    │    ├─ Inject (stage-crew)                             │
+    │    ├─ Create (stage-crew)                             │
+    │    └─ Apply (stage-crew)                              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 5
+
+**Status:** active
+
+---
+
+### 15. 🔌 undefined
+
+**ID:** `undefined`
+
+Plugin sequence: undefined
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Domain                                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: unknown│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Status:** active
+
+---
+
+### 16. 🔌 Canvas Line Manip End
+
+**ID:** `canvas-line-manip-end-symphony`
+
+Plugin sequence: Canvas Line Manip End
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Line Manip End                                │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-line-manip-end-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Manip Line End                           │
+    │    └─ End (stage-crew)                                │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 17. 🔌 Canvas Line Manip Move
+
+**ID:** `canvas-line-manip-move-symphony`
+
+Plugin sequence: Canvas Line Manip Move
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Line Manip Move                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-line-manip-move-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Manip Line Move                          │
+    │    └─ Move (stage-crew)                               │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 18. 🔌 Canvas Line Manip Start
+
+**ID:** `canvas-line-manip-start-symphony`
+
+Plugin sequence: Canvas Line Manip Start
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Line Manip Start                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-line-manip-start-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Manip Line Start                         │
+    │    └─ Start (stage-crew)                              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 19. 🔌 Canvas Component Paste
+
+**ID:** `canvas-component-paste-symphony`
+
+Plugin sequence: Canvas Component Paste
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Paste                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-paste-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Paste from Clipboard                     │
+    │    ├─ Clipboard (io)                                  │
+    │    ├─ Deserialize (pure)                              │
+    │    ├─ Position (pure)                                 │
+    │    ├─ Create (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 5
+
+**Status:** active
+
+---
+
+### 20. 🔌 Canvas Component Resize End
+
+**ID:** `canvas-component-resize-end-symphony`
+
+Plugin sequence: Canvas Component Resize End
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Resize End                          │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-resize-end-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Resize End                               │
+    │    └─ End (stage-crew)                                │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 21. 🔌 Canvas Line Resize End
+
+**ID:** `canvas-line-resize-end-symphony`
+
+Plugin sequence: Canvas Line Resize End
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Line Resize End                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-line-resize-end-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Resize Line End                          │
+    │    └─ End (stage-crew)                                │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 22. 🔌 Canvas Line Resize Move
+
+**ID:** `canvas-line-resize-move-symphony`
+
+Plugin sequence: Canvas Line Resize Move
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Line Resize Move                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-line-resize-move-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Resize Line Move                         │
+    │    └─ Move (stage-crew)                               │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 23. 🔌 Canvas Line Resize Start
+
+**ID:** `canvas-line-resize-start-symphony`
+
+Plugin sequence: Canvas Line Resize Start
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Line Resize Start                             │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-line-resize-start-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Resize Line Start                        │
+    │    └─ Start (stage-crew)                              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 24. 🔌 Canvas Component Resize Move
+
+**ID:** `canvas-component-resize-move-symphony`
+
+Plugin sequence: Canvas Component Resize Move
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Resize Move                         │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-resize-move-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Resize Move                              │
+    │    ├─ Move (stage-crew)                               │
+    │    └─ Forward (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 25. 🔌 Canvas Component Resize Start
+
+**ID:** `canvas-component-resize-start-symphony`
+
+Plugin sequence: Canvas Component Resize Start
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Resize Start                        │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-resize-start-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Resize Start                             │
+    │    └─ Start (stage-crew)                              │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 26. 🔌 Canvas Component Rules Config
+
+**ID:** `canvas-component-rules-config-symphony`
+
+Plugin sequence: Canvas Component Rules Config
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Rules Config                        │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-rules-config-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Rules Configuration                      │
+    │    ├─ Set All (pure)                                  │
+    │    ├─ Load Window (pure)                              │
+    │    └─ Get All (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 3
+
+**Status:** active
+
+---
+
+### 27. 🔌 Canvas Component Select
+
+**ID:** `canvas-component-select-symphony`
+
+Plugin sequence: Canvas Component Select
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Select                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-select-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Select                                   │
+    │    ├─ Select (stage-crew)                             │
+    │    ├─ Notify (pure)                                   │
+    │    └─ Changed (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 3
+
+**Status:** active
+
+---
+
+### 28. 🔌 Canvas Component Select Requested
+
+**ID:** `canvas-component-select-requested-symphony`
+
+Plugin sequence: Canvas Component Select Requested
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Select Requested                    │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-select-requested-symphon│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Route Selection                          │
+    │    └─ Route (pure)                                    │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 29. 🔌 Canvas Component Select SVG Node
+
+**ID:** `canvas-component-select-svg-node-symphony`
+
+Plugin sequence: Canvas Component Select SVG Node
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Select SVG Node                     │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-select-svg-node-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Select SVG Node                          │
+    │    └─ Svg-node (stage-crew)                           │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 30. 🔌 Canvas Component Update
+
+**ID:** `canvas-component-update-symphony`
+
+Plugin sequence: Canvas Component Update
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Update                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-update-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Update                                   │
+    │    ├─ Attribute (stage-crew)                          │
+    │    └─ Refresh (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 31. 🔌 Canvas Component Update SVG Node
+
+**ID:** `canvas-component-update-svg-node-symphony`
+
+Plugin sequence: Canvas Component Update SVG Node
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Canvas Component Update SVG Node                     │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: canvas-component-update-svg-node-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Update SVG Node Attribute                │
+    │    ├─ Attribute (stage-crew)                          │
+    │    └─ Refresh (pure)                                  │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 32. 🔌 Control Panel Classes Add
+
+**ID:** `control-panel-classes-add-symphony`
+
+Plugin sequence: Control Panel Classes Add
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel Classes Add                            │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-classes-add-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Add Class                                │
+    │    ├─ Add (stage-crew)                                │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 33. 🔌 Control Panel Classes Remove
+
+**ID:** `control-panel-classes-remove-symphony`
+
+Plugin sequence: Control Panel Classes Remove
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel Classes Remove                         │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-classes-remove-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Remove Class                             │
+    │    ├─ Remove (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 34. 🔌 Control Panel CSS Create
+
+**ID:** `control-panel-css-create-symphony`
+
+Plugin sequence: Control Panel CSS Create
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel CSS Create                             │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-css-create-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Create CSS Class                         │
+    │    ├─ Create (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 35. 🔌 Control Panel CSS Delete
+
+**ID:** `control-panel-css-delete-symphony`
+
+Plugin sequence: Control Panel CSS Delete
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel CSS Delete                             │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-css-delete-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Delete CSS Class                         │
+    │    ├─ Delete (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 36. 🔌 Control Panel CSS Edit
+
+**ID:** `control-panel-css-edit-symphony`
+
+Plugin sequence: Control Panel CSS Edit
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel CSS Edit                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-css-edit-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Update CSS Class                         │
+    │    ├─ Update (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 37. 🔌 undefined
+
+**ID:** `undefined`
+
+Plugin sequence: undefined
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Domain                                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: unknown│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Status:** active
+
+---
+
+### 38. 🔌 Control Panel Selection Show
+
+**ID:** `control-panel-selection-show-symphony`
+
+Plugin sequence: Control Panel Selection Show
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel Selection Show                         │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-selection-show-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Selection                                │
+    │    ├─ Derive (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 39. 🔌 Control Panel UI Field Change
+
+**ID:** `control-panel-ui-field-change-symphony`
+
+Plugin sequence: Control Panel UI Field Change
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel UI Field Change                        │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-ui-field-change-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Field Change                             │
+    │    ├─ Prepare (stage-crew)                            │
+    │    ├─ Dispatch (stage-crew)                           │
+    │    ├─ Dirty (stage-crew)                              │
+    │    └─ Await-refresh (stage-crew)                      │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 4
+
+**Status:** active
+
+---
+
+### 40. 🔌 Control Panel UI Field Validate
+
+**ID:** `control-panel-ui-field-validate-symphony`
+
+Plugin sequence: Control Panel UI Field Validate
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel UI Field Validate                      │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-ui-field-validate-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Field Validate                           │
+    │    ├─ Validate (stage-crew)                           │
+    │    ├─ Merge (stage-crew)                              │
+    │    └─ Update (stage-crew)                             │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 3
+
+**Status:** active
+
+---
+
+### 41. 🔌 Control Panel UI Init (Batched)
+
+**ID:** `control-panel-ui-init-batched-symphony`
+
+Plugin sequence: Control Panel UI Init (Batched)
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel UI Init (Batched)                      │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-ui-init-batched-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Init                                     │
+    │    ├─ Config (stage-crew)                             │
+    │    ├─ Resolver (stage-crew)                           │
+    │    ├─ Schemas (stage-crew)                            │
+    │    ├─ Observers (stage-crew)                          │
+    │    ├─ Notify (pure)                                   │
+    │    └─ Movement (pure)                                 │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 6
+
+**Status:** active
+
+---
+
+### 42. 🔌 Control Panel UI Init
+
+**ID:** `control-panel-ui-init-symphony`
+
+Plugin sequence: Control Panel UI Init
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel UI Init                                │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-ui-init-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Init                                     │
+    │    ├─ Config (stage-crew)                             │
+    │    ├─ Resolver (stage-crew)                           │
+    │    ├─ Schemas (stage-crew)                            │
+    │    ├─ Observers (stage-crew)                          │
+    │    ├─ Notify (pure)                                   │
+    │    └─ Movement (pure)                                 │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 6
+
+**Status:** active
+
+---
+
+### 43. 🔌 Control Panel UI Render
+
+**ID:** `control-panel-ui-render-symphony`
+
+Plugin sequence: Control Panel UI Render
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel UI Render                              │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-ui-render-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Render                                   │
+    │    ├─ Generate (stage-crew)                           │
+    │    ├─ Generate (stage-crew)                           │
+    │    └─ Render (stage-crew)                             │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 3
+
+**Status:** active
+
+---
+
+### 44. 🔌 Control Panel UI Section Toggle
+
+**ID:** `control-panel-ui-section-toggle-symphony`
+
+Plugin sequence: Control Panel UI Section Toggle
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel UI Section Toggle                      │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-ui-section-toggle-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Section Toggle                           │
+    │    └─ Toggle (stage-crew)                             │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 45. 🔌 Control Panel Update
+
+**ID:** `control-panel-update-symphony`
+
+Plugin sequence: Control Panel Update
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Control Panel Update                                 │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: control-panel-update-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Update                                   │
+    │    ├─ Derive (stage-crew)                             │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 46. 🔌 undefined
+
+**ID:** `undefined`
+
+Plugin sequence: undefined
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Domain                                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: unknown│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Status:** active
+
+---
+
+### 47. 🔌 Header UI Theme Get
+
+**ID:** `header-ui-theme-get-symphony`
+
+Plugin sequence: Header UI Theme Get
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Header UI Theme Get                                  │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: header-ui-theme-get-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Get Current Theme                        │
+    │    ├─ Get (stage-crew)                                │
+    │    └─ Notify (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 48. 🔌 Header UI Theme Toggle
+
+**ID:** `header-ui-theme-toggle-symphony`
+
+Plugin sequence: Header UI Theme Toggle
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Header UI Theme Toggle                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: header-ui-theme-toggle-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Toggle Theme                             │
+    │    └─ Toggle (stage-crew)                             │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 49. 🔌 undefined
+
+**ID:** `undefined`
+
+Plugin sequence: undefined
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Domain                                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: unknown│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Status:** active
+
+---
+
+### 50. 🔌 Library Load
+
+**ID:** `library-load-symphony`
+
+Plugin sequence: Library Load
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Library Load                                         │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: library-load-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Load                                     │
+    │    ├─ Load (pure)                                     │
+    │    └─ Notify-ui (pure)                                │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 2
+
+**Status:** active
+
+---
+
+### 51. 🔌 Library Component Container Drop
+
+**ID:** `library-component-container-drop-symphony`
+
+Plugin sequence: Library Component Container Drop
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Library Component Container Drop                     │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: library-component-container-drop-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Drop                                     │
+    │    └─ Drop (pure)                                     │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 52. 🔌 Library Component Drag
+
+**ID:** `library-component-drag-symphony`
+
+Plugin sequence: Library Component Drag
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Library Component Drag                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: library-component-drag-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Drag                                     │
+    │    └─ Library.component.drag.start.requested (pure)   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 53. 🔌 Library Component Drop
+
+**ID:** `library-component-drop-symphony`
+
+Plugin sequence: Library Component Drop
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Library Component Drop                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: library-component-drop-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Drop                                     │
+    │    └─ Drop (pure)                                     │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 1
+
+**Status:** active
+
+---
+
+### 54. 🔌 undefined
+
+**ID:** `undefined`
+
+Plugin sequence: undefined
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Domain                                               │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: unknown│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Status:** active
+
+---
+
+### 55. 🔌 Real Estate Analyzer Search
+
+**ID:** `real-estate-analyzer-search-symphony`
+
+Plugin sequence: Real Estate Analyzer Search
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🔌 Real Estate Analyzer Search                          │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: real-estate-analyzer-search-symphony│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: plugin│
+    │                                                         │
+    │  Movement 1: Search                                   │
+    │    ├─ Real.estate.analyzer.search (pure)              │
+    │    ├─ Analyze (pure)                                  │
+    │    └─ Format (pure)                                   │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Category:** `plugin`
+
+**Purpose:** Feature implementation
+
+**Movements:** 1
+
+**Beats:** 3
+
+**Status:** active
+
+---
+
+### 56. 🎼 CAG Agent Workflow - 8 Phase Sequence
+
+**ID:** `cag-agent-workflow`
+
+Complete workflow for an agent operating within the Context-Augmented Generation system. Captures complete context for every workload.
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 CAG Agent Workflow - 8 Phase Sequence                │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  🎵 Sequence: cag-agent-workflow│
+    │  ├─ Tempo: 100 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: orchestration│
+    │                                                         │
+    │  Movement 1: Phase 1: Context Loading                 │
+    │    ├─ Extract rules, evolution phases, governance cont│
+    │    ├─ Extract artifact registry and canonical location│
+    │    ├─ Extract root goal, principles, boundaries       │
+    │    └─ Create context envelope, session ID, timestamp  │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 2: Phase 2: Context Verification            │
+    │    ├─ Check goal matches plan, no contradictions, goal│
+    │    ├─ Check rules parseable, no conflicts, all phases │
+    │    ├─ Check artifacts reachable, no circular deps, can│
+    │    └─ Compute (verified_items / total_items) * 100, th│
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 3: Phase 3: Workload Analysis               │
+    │    ├─ Extract feature, scope, constraints from user re│
+    │    ├─ Determine type (feature/fix/refactor/test/doc), │
+    │    ├─ Check sprint/phase, in-scope for phase, aligns w│
+    │    ├─ List files to modify, dependencies, tests to upd│
+    │    ├─ Extract feature, layer, phase                   │
+    │    └─ Define in-scope, out-of-scope, constraints      │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 4: Phase 4: Context Tree Mapping            │
+    │    ├─ For each affected file: check exists, in reposit│
+    │    ├─ Determine type, purpose, role for each file     │
+    │    ├─ Extract rules, contracts, phase, telemetry requi│
+    │    ├─ Extract imports, references, dependents         │
+    │    ├─ Map root context, sub-context, boundaries, previ│
+    │    ├─ Output .generated/context-tree-{filename}.json f│
+    │    └─ Combine all context trees, detect cross-file dep│
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 5: Phase 5: Action Planning                 │
+    │    ├─ Load BDD specs, telemetry shapes, TDD tests, int│
+    │    ├─ Combine governance core + context providers, ass│
+    │    ├─ Output .generated/cag-context.json with all cont│
+    │    ├─ Query docs matching workload, filter by role, lo│
+    │    ├─ Identify changes needed, sequence actions, verif│
+    │    └─ Check all in-scope, respects governance, aligns │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 6: Phase 6: Action Execution                │
+    │    ├─ Verify context coherent, boundaries unchanged, n│
+    │    ├─ Modify code, tests, specs, configs; generate new│
+    │    ├─ Verify syntactically valid, respects governance,│
+    │    └─ Log what changed, why, context used, timestamp, │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 7: Phase 7: Telemetry Emission              │
+    │    ├─ Collect what, why, how, when, who, context      │
+    │    ├─ Include root goal, feature, phase, changes, test│
+    │    ├─ Write .generated/telemetry/{timestamp}.json with│
+    │    └─ Check required fields present, matches plan, mac│
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 8: Phase 8: Feedback Loop                   │
+    │    ├─ Load cag-context.json and telemetry             │
+    │    ├─ Analyze success, alignment, governance complianc│
+    │    ├─ Record previous action, coherence, telemetry, le│
+    │    ├─ Output .generated/cag-context-next.json with all│
+    │    ├─ Check if JSON changed, regenerate docs if needed│
+    │    └─ Output .generated/cag-feedback.json with observa│
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
 ```
 
 **Sequence File:** `packages/ographx/.ographx/sequences/cag-agent-workflow.json`
 
-**Category:** `system`
+**Category:** `orchestration`
 
-**Purpose:** Agent workflow within governance system
+**Purpose:** System orchestration
 
 **Movements:** 8
 
 **Beats:** 41
 
-**Dynamics:** mf, f, ff
-
-**Related Domains:** `governance-orchestration`, `self-awareness-orchestration`
-
 **Status:** active
 
 ---
 
-### 2. 📋 Governance Orchestration
+### 57. 🎼 graphing-orchestration
 
-**ID:** `governance-orchestration`
+**ID:** `graphing-orchestration`
 
-Evolution phases and governance rules
+Orchestration domain: graphing-orchestration
 
 ```
-
     ┌─────────────────────────────────────────────────────────┐
-    │      📋 Governance Orchestration (Evolution)            │
+    │ 🎼 graphing-orchestration                               │
     ├─────────────────────────────────────────────────────────┤
     │                                                         │
-    │  SHAPE_EVOLUTION_PLAN.json                             │
-    │  ├─ Root Goal                                          │
-    │  │  └─ Telemetry-driven Feature Shape Governance       │
-    │  │                                                     │
-    │  ├─ Evolution Phases                                   │
-    │  │  ├─ Phase 1: Foundation                             │
-    │  │  ├─ Phase 2: Integration                            │
-    │  │  ├─ Phase 3: Optimization                           │
-    │  │  └─ Phase 4+: Advanced                              │
-    │  │                                                     │
-    │  ├─ Governance Rules                                   │
-    │  │  ├─ What must be emitted                            │
-    │  │  ├─ What can change                                 │
-    │  │  ├─ Verification points                             │
-    │  │  └─ Enforcement levels                              │
-    │  │                                                     │
-    │  └─ Telemetry Requirements                             │
-    │     ├─ Metrics to collect                              │
-    │     ├─ Aggregation rules                               │
-    │     └─ Reporting format                                │
+    │  🎵 Sequence: graphing-orchestration│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: orchestration│
+    │                                                         │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Source File:** `SHAPE_EVOLUTION_PLAN.json`
-
-**Category:** `system`
-
-**Purpose:** Define what must be emitted, what can change
-
-**Related Domains:** `cag-orchestration`, `self-healing-orchestration`
-
-**Status:** active
-
----
-
-### 3. 🔧 Self-Healing Orchestration
-
-**ID:** `self-healing-orchestration`
-
-Detection → Analysis → Correction → Verification
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │    🔧 Self-Healing Orchestration (4 Phases)            │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Detection Phase                                       │
-    │  ├─ Monitor system health                              │
-    │  ├─ Identify anomalies                                 │
-    │  └─ Trigger alerts                                     │
-    │           │                                            │
-    │           ▼                                            │
-    │  Analysis Phase                                        │
-    │  ├─ Diagnose root cause                                │
-    │  ├─ Assess severity                                    │
-    │  └─ Plan correction                                    │
-    │           │                                            │
-    │           ▼                                            │
-    │  Correction Phase                                      │
-    │  ├─ Apply fixes                                        │
-    │  ├─ Validate changes                                   │
-    │  └─ Monitor impact                                     │
-    │           │                                            │
-    │           ▼                                            │
-    │  Verification Phase                                    │
-    │  ├─ Confirm health restored                            │
-    │  ├─ Update telemetry                                   │
-    │  └─ Document incident                                  │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Source Directory:** `packages/self-healing/`
-
-**Category:** `system`
-
-**Purpose:** Automatic system recovery
-
-**Movements:** 4
-
-**Related Domains:** `governance-orchestration`, `observability-orchestration`
-
-**Status:** active
-
----
-
-### 4. ✨ Feature Orchestration
-
-**ID:** `feature-orchestration`
-
-Feature lifecycle management
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │      ✨ Feature Orchestration (Lifecycle)              │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Feature Definition                                    │
-    │  ├─ ID & Name                                          │
-    │  ├─ Description                                        │
-    │  └─ Requirements                                       │
-    │           │                                            │
-    │           ▼                                            │
-    │  Initialization                                        │
-    │  ├─ Load dependencies                                  │
-    │  ├─ Setup state                                        │
-    │  └─ Register handlers                                  │
-    │           │                                            │
-    │           ▼                                            │
-    │  Execution                                             │
-    │  ├─ Run feature logic                                  │
-    │  ├─ Handle events                                      │
-    │  └─ Update state                                       │
-    │           │                                            │
-    │           ▼                                            │
-    │  Cleanup                                               │
-    │  ├─ Unregister handlers                                │
-    │  ├─ Release resources                                  │
-    │  └─ Emit completion                                    │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Source Directory:** `packages/*/json-sequences/`
-
-**Category:** `system`
-
-**Purpose:** Feature initialization, execution, cleanup
-
-**Related Domains:** `renderx-orchestration`, `plugin-orchestration`
-
-**Status:** active
-
----
-
-### 5. 🚀 Continuous Delivery Orchestration
-
-**ID:** `continuous-delivery-orchestration`
-
-Build → Test → Validate → Deploy
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │    🚀 Continuous Delivery Orchestration (CD)           │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Build Phase                                           │
-    │  ├─ Compile code                                       │
-    │  ├─ Run tests                                          │
-    │  └─ Generate artifacts                                 │
-    │       │                                                │
-    │       ▼                                                │
-    │  Quality Gate                                          │
-    │  ├─ Check coverage                                     │
-    │  ├─ Lint code                                          │
-    │  └─ Verify security                                    │
-    │       │                                                │
-    │       ▼                                                │
-    │  Deployment                                            │
-    │  ├─ Stage deployment                                   │
-    │  ├─ Run smoke tests                                    │
-    │  └─ Promote to production                              │
-    │       │                                                │
-    │       ▼                                                │
-    │  Monitoring                                            │
-    │  ├─ Track metrics                                      │
-    │  ├─ Monitor errors                                     │
-    │  └─ Trigger rollback if needed                         │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `system`
-
-**Purpose:** Automated delivery pipeline
-
-**Related Domains:** `governance-orchestration`, `observability-orchestration`
-
-**Status:** active
-
----
-
-### 6. 🧠 Self-Awareness Orchestration
-
-**ID:** `self-awareness-orchestration`
-
-Observation → Analysis → Visualization → Feedback
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │   🧠 Self-Awareness Orchestration (Introspection)      │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Observation Phase                                     │
-    │  ├─ Capture system state                               │
-    │  ├─ Record metrics                                     │
-    │  └─ Generate IR (Intermediate Representation)          │
-    │           │                                            │
-    │           ▼                                            │
-    │  Analysis Phase                                        │
-    │  ├─ Parse IR                                           │
-    │  ├─ Extract patterns                                   │
-    │  └─ Identify issues                                    │
-    │           │                                            │
-    │           ▼                                            │
-    │  Visualization Phase                                   │
-    │  ├─ Generate diagrams                                  │
-    │  ├─ Create timelines                                   │
-    │  └─ Build reports                                      │
-    │           │                                            │
-    │           ▼                                            │
-    │  Feedback Phase                                        │
-    │  ├─ Update context                                     │
-    │  ├─ Adjust behavior                                    │
-    │  └─ Evolve system                                      │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
 ```
 
 **Sequence File:** `packages/ographx/.ographx/sequences/graphing-orchestration.json`
 
-**Category:** `system`
+**Category:** `orchestration`
 
-**Purpose:** System introspection and analysis
-
-**Related Domains:** `cag-orchestration`, `observability-orchestration`
+**Purpose:** System orchestration
 
 **Status:** active
 
 ---
 
-### 7. 📊 Observability Orchestration
+### 58. 🎼 Orchestration Audit System Implementation Session
 
-**ID:** `observability-orchestration`
+**ID:** `orchestration-audit-session`
 
-Collection → Aggregation → Analysis → Reporting
+Complete workflow for building JSON-first orchestration audit system with auto-generated documentation and diagrams
 
 ```
-
     ┌─────────────────────────────────────────────────────────┐
-    │    📊 Observability Orchestration (Monitoring)         │
+    │ 🎼 Orchestration Audit System Implementation Session    │
     ├─────────────────────────────────────────────────────────┤
     │                                                         │
-    │  Collection                                            │
-    │  ├─ Logs                                               │
-    │  ├─ Metrics                                            │
-    │  ├─ Traces                                             │
-    │  └─ Events                                             │
-    │       │                                                │
-    │       ▼                                                │
-    │  Aggregation                                           │
-    │  ├─ Combine sources                                    │
-    │  ├─ Normalize format                                   │
-    │  └─ Deduplicate                                        │
-    │       │                                                │
-    │       ▼                                                │
-    │  Analysis                                              │
-    │  ├─ Pattern detection                                  │
-    │  ├─ Anomaly detection                                  │
-    │  └─ Correlation                                        │
-    │       │                                                │
-    │       ▼                                                │
-    │  Reporting                                             │
-    │  ├─ Dashboards                                         │
-    │  ├─ Alerts                                             │
-    │  └─ Reports                                            │
+    │  🎵 Sequence: orchestration-audit-session│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C│
+    │  └─ Category: orchestration│
+    │                                                         │
+    │  Movement 1: Architecture Design                      │
+    │    ├─ Understand 16 orchestration domains and their re│
+    │    ├─ Create unified schema for all domains with metad│
+    │    └─ Document each domain with movements, beats, rela│
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 2: JSON Source Creation                     │
+    │    ├─ Write comprehensive JSON registry with all 16 do│
+    │    ├─ Reference packages/musical-conductor SequenceTyp│
+    │    └─ Document how domains connect and depend on each │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 3: Documentation Generation                 │
+    │    ├─ Script to generate markdown documentation from J│
+    │    ├─ Create visual representations of each domain's w│
+    │    └─ Run script to produce 3 markdown files with sket│
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 4: Diagram Generation                       │
+    │    ├─ Script to generate Mermaid diagrams from JSON   │
+    │    ├─ Create unified system architecture diagram      │
+    │    └─ Create domain relationship visualization        │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 5: Audit System                             │
+    │    ├─ Script to validate entire orchestration system  │
+    │    ├─ Check domain definitions and required fields    │
+    │    ├─ Verify all referenced domains exist             │
+    │    └─ Check all documentation and diagrams exist      │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 6: Standards Alignment                      │
+    │    ├─ Verify all sequences use canonical interface    │
+    │    ├─ Remove manually-created markdown files          │
+    │    └─ Mark all generated files with DO NOT EDIT header│
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 7: Verification                             │
+    │    ├─ Execute audit-orchestration.js to validate syste│
+    │    ├─ Check all markdown files with ASCII sketches    │
+    │    └─ Check all Mermaid diagram files                 │
+    │           │                                           │
+    │           ▼                                           │
+    │  Movement 8: Context Tree Creation                    │
+    │    ├─ Generate .generated/context-tree-orchestration-a│
+    │    ├─ Create this orchestration-audit-session.json seq│
+    │    └─ Provide complete context for next agent to conti│
     │                                                         │
     └─────────────────────────────────────────────────────────┘
-  
 ```
 
-**Category:** `system`
+**Sequence File:** `packages/ographx/.ographx/sequences/orchestration-audit-session.json`
 
-**Purpose:** System monitoring and metrics
+**Category:** `orchestration`
 
-**Related Domains:** `self-awareness-orchestration`, `self-healing-orchestration`
+**Purpose:** System orchestration
+
+**Movements:** 8
+
+**Beats:** 25
 
 **Status:** active
 
 ---
 
-### 8. 🎨 RenderX Orchestration
+### 59. 🎼 self_sequences
 
-**ID:** `renderx-orchestration`
+**ID:** `self_sequences`
 
-Canvas → Components → Library → Control Panel
+Orchestration domain: self_sequences
 
 ```
-
     ┌─────────────────────────────────────────────────────────┐
-    │      🎨 RenderX Orchestration (UI Layers)              │
+    │ 🎼 self_sequences                                       │
     ├─────────────────────────────────────────────────────────┤
     │                                                         │
-    │  ┌─────────────────────────────────────────────────┐   │
-    │  │ Header (Logo, Title, Controls)                  │   │
-    │  └─────────────────────────────────────────────────┘   │
+    │  🎵 Sequence: self_sequences│
+    │  ├─ Tempo: 120 BPM                                 │
+    │  ├─ Key: C Major│
+    │  └─ Category: orchestration│
     │                                                         │
-    │  ┌──────────────────┬──────────────────────────────┐   │
-    │  │                  │                              │   │
-    │  │  Library Panel   │  Canvas (Main Workspace)    │   │
-    │  │  (Components)    │  (Drag & Drop)              │   │
-    │  │                  │                              │   │
-    │  │                  │                              │   │
-    │  └──────────────────┴──────────────────────────────┘   │
-    │                                                         │
-    │  ┌─────────────────────────────────────────────────┐   │
-    │  │ Control Panel (Properties, Settings)            │   │
-    │  └─────────────────────────────────────────────────┘   │
-    │                                                         │
-    │  Events Flow:                                          │
-    │  User Action → Canvas → Control Panel → Update         │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
-  
 ```
 
-**Source Directory:** `packages/*/json-sequences/`
+**Sequence File:** `packages/ographx/.ographx/sequences/self_sequences.json`
 
-**Category:** `component-ui`
+**Category:** `orchestration`
 
-**Purpose:** UI orchestration and interaction
-
-**Related Domains:** `feature-orchestration`, `plugin-orchestration`
-
-**Status:** active
-
----
-
-### 9. 🔌 Plugin Orchestration
-
-**ID:** `plugin-orchestration`
-
-Plugin lifecycle management
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │      🔌 Plugin Orchestration (Extensibility)           │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Plugin Discovery                                      │
-    │  ├─ Scan plugin directories                            │
-    │  ├─ Load manifests                                     │
-    │  └─ Register plugins                                   │
-    │       │                                                │
-    │       ▼                                                │
-    │  Plugin Initialization                                 │
-    │  ├─ Load dependencies                                  │
-    │  ├─ Setup handlers                                     │
-    │  └─ Register sequences                                 │
-    │       │                                                │
-    │       ▼                                                │
-    │  Plugin Execution                                      │
-    │  ├─ Route events                                       │
-    │  ├─ Execute handlers                                   │
-    │  └─ Emit results                                       │
-    │       │                                                │
-    │       ▼                                                │
-    │  Plugin Lifecycle                                      │
-    │  ├─ Monitor health                                     │
-    │  ├─ Handle errors                                      │
-    │  └─ Cleanup on unload                                  │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Source Directory:** `packages/{plugin}/json-sequences/{plugin}/`
-
-**Category:** `system`
-
-**Purpose:** Plugin initialization and execution
-
-**Related Domains:** `feature-orchestration`, `renderx-orchestration`
-
-**Status:** active
-
----
-
-### 10. 🔄 Data Flow Orchestration
-
-**ID:** `data-flow-orchestration`
-
-Data ingestion → Processing → Output
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │      🔄 Data Flow Orchestration (Pipeline)             │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Data Source                                           │
-    │       │                                                │
-    │       ▼                                                │
-    │  ┌──────────────┐                                      │
-    │  │  Ingestion   │  Extract raw data                    │
-    │  └──────────────┘                                      │
-    │       │                                                │
-    │       ▼                                                │
-    │  ┌──────────────┐                                      │
-    │  │ Validation   │  Verify data quality                 │
-    │  └──────────────┘                                      │
-    │       │                                                │
-    │       ▼                                                │
-    │  ┌──────────────┐                                      │
-    │  │ Processing   │  Transform & aggregate               │
-    │  └──────────────┘                                      │
-    │       │                                                │
-    │       ▼                                                │
-    │  ┌──────────────┐                                      │
-    │  │  Analysis    │  Extract insights                    │
-    │  └──────────────┘                                      │
-    │       │                                                │
-    │       ▼                                                │
-    │  Data Output                                           │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `data-flow`
-
-**Purpose:** Data pipeline management
-
-**Related Domains:** `integration-orchestration`
-
-**Status:** active
-
----
-
-### 11. 🖼️ Component UI Orchestration
-
-**ID:** `component-ui-orchestration`
-
-Component lifecycle and state management
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │    🎛️  Component UI Orchestration (Rendering)          │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Component Definition                                  │
-    │  ├─ Load JSON schema                                   │
-    │  ├─ Parse properties                                   │
-    │  └─ Validate structure                                 │
-    │       │                                                │
-    │       ▼                                                │
-    │  Component Mapping                                     │
-    │  ├─ Map to React/Vue/etc                               │
-    │  ├─ Apply CSS classes                                  │
-    │  └─ Setup event handlers                               │
-    │       │                                                │
-    │       ▼                                                │
-    │  Component Rendering                                   │
-    │  ├─ Render to DOM                                      │
-    │  ├─ Apply styles                                       │
-    │  └─ Attach listeners                                   │
-    │       │                                                │
-    │       ▼                                                │
-    │  Component Interaction                                 │
-    │  ├─ Handle user input                                  │
-    │  ├─ Update state                                       │
-    │  └─ Emit events                                        │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `component-ui`
-
-**Purpose:** Component state management
-
-**Related Domains:** `renderx-orchestration`, `user-interaction-orchestration`
-
-**Status:** active
-
----
-
-### 12. 🎭 Canvas Operations Orchestration
-
-**ID:** `canvas-operations-orchestration`
-
-Canvas manipulation and rendering
-
-**Category:** `canvas-operations`
-
-**Purpose:** Canvas state and rendering
-
-**Related Domains:** `renderx-orchestration`, `user-interaction-orchestration`
-
-**Status:** active
-
----
-
-### 13. 👆 User Interaction Orchestration
-
-**ID:** `user-interaction-orchestration`
-
-User action handling and input processing
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │   👆 User Interaction Orchestration (Events)           │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Event Capture                                         │
-    │  ├─ Listen for user actions                            │
-    │  ├─ Normalize events                                   │
-    │  └─ Queue events                                       │
-    │       │                                                │
-    │       ▼                                                │
-    │  Event Processing                                      │
-    │  ├─ Route to handlers                                  │
-    │  ├─ Execute handlers                                   │
-    │  └─ Collect results                                    │
-    │       │                                                │
-    │       ▼                                                │
-    │  State Update                                          │
-    │  ├─ Update component state                             │
-    │  ├─ Update canvas state                                │
-    │  └─ Update control panel                               │
-    │       │                                                │
-    │       ▼                                                │
-    │  UI Refresh                                            │
-    │  ├─ Re-render affected components                      │
-    │  ├─ Update visual feedback                             │
-    │  └─ Emit completion event                              │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `user-interactions`
-
-**Purpose:** User input processing
-
-**Related Domains:** `component-ui-orchestration`, `canvas-operations-orchestration`
-
-**Status:** active
-
----
-
-### 14. 🔗 Integration Orchestration
-
-**ID:** `integration-orchestration`
-
-External service coordination
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │    🔗 Integration Orchestration (Connectivity)         │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Service Discovery                                     │
-    │  ├─ Locate services                                    │
-    │  ├─ Verify availability                                │
-    │  └─ Load endpoints                                     │
-    │       │                                                │
-    │       ▼                                                │
-    │  Connection Establishment                              │
-    │  ├─ Create connections                                 │
-    │  ├─ Authenticate                                       │
-    │  └─ Setup protocols                                    │
-    │       │                                                │
-    │       ▼                                                │
-    │  Data Exchange                                         │
-    │  ├─ Send requests                                      │
-    │  ├─ Receive responses                                  │
-    │  └─ Handle errors                                      │
-    │       │                                                │
-    │       ▼                                                │
-    │  Connection Management                                 │
-    │  ├─ Monitor health                                     │
-    │  ├─ Retry on failure                                   │
-    │  └─ Cleanup connections                                │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `integration`
-
-**Purpose:** External system coordination
-
-**Related Domains:** `data-flow-orchestration`, `observability-orchestration`
-
-**Status:** active
-
----
-
-### 15. ⚡ Performance Orchestration
-
-**ID:** `performance-orchestration`
-
-Performance testing and metrics collection
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │    ⚡ Performance Orchestration (Optimization)         │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Profiling                                             │
-    │  ├─ Measure execution time                             │
-    │  ├─ Track memory usage                                 │
-    │  └─ Identify bottlenecks                               │
-    │       │                                                │
-    │       ▼                                                │
-    │  Analysis                                              │
-    │  ├─ Compare baselines                                  │
-    │  ├─ Detect regressions                                 │
-    │  └─ Prioritize optimizations                           │
-    │       │                                                │
-    │       ▼                                                │
-    │  Optimization                                          │
-    │  ├─ Apply caching                                      │
-    │  ├─ Parallelize work                                   │
-    │  └─ Reduce allocations                                 │
-    │       │                                                │
-    │       ▼                                                │
-    │  Validation                                            │
-    │  ├─ Measure improvements                               │
-    │  ├─ Verify correctness                                 │
-    │  └─ Update baselines                                   │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `performance`
-
-**Purpose:** Performance monitoring
-
-**Related Domains:** `observability-orchestration`
-
-**Status:** active
-
----
-
-### 16. 📐 Layout Orchestration
-
-**ID:** `layout-orchestration`
-
-Layout calculation and UI positioning
-
-```
-
-    ┌─────────────────────────────────────────────────────────┐
-    │      📐 Layout Orchestration (Positioning)             │
-    ├─────────────────────────────────────────────────────────┤
-    │                                                         │
-    │  Layout Definition                                     │
-    │  ├─ Load layout.json                                   │
-    │  ├─ Parse grid structure                               │
-    │  └─ Define areas                                       │
-    │       │                                                │
-    │       ▼                                                │
-    │  Slot Mapping                                          │
-    │  ├─ Map plugins to slots                               │
-    │  ├─ Load slot components                               │
-    │  └─ Setup slot handlers                                │
-    │       │                                                │
-    │       ▼                                                │
-    │  Layout Rendering                                      │
-    │  ├─ Calculate dimensions                               │
-    │  ├─ Position elements                                  │
-    │  └─ Apply constraints                                  │
-    │       │                                                │
-    │       ▼                                                │
-    │  Responsive Adjustment                                 │
-    │  ├─ Monitor viewport                                   │
-    │  ├─ Recalculate layout                                 │
-    │  └─ Update positions                                   │
-    │                                                         │
-    └─────────────────────────────────────────────────────────┘
-  
-```
-
-**Category:** `layout`
-
-**Purpose:** UI layout management
-
-**Related Domains:** `renderx-orchestration`, `component-ui-orchestration`
+**Purpose:** System orchestration
 
 **Status:** active
 
