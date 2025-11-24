@@ -90,6 +90,11 @@ function main(){
     console.warn('⚠️ DOMAIN_REGISTRY.json not found; run metadata not appended.');
   }
 
+    // Additional governance-aligned enhancements
+    run('Export domain link graph', 'node scripts/export-domain-link-graph.cjs');
+    run('Analyze domain volatility trend', 'node scripts/analyze-domain-volatility.cjs');
+    run('Compute domain risk assessment', 'node scripts/domain-risk-assessment.cjs');
+
   // Telemetry aggregation for orchestration-core
   const domainPath = path.resolve('docs','domains','orchestration-core.json');
   if(!fs.existsSync(domainPath)){ console.error('Missing orchestration-core domain JSON'); process.exit(1); }

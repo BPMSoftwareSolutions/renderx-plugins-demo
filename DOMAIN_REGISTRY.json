@@ -38,7 +38,7 @@
     "active_count": 2,
     "deprecated_count": 0,
     "retired_count": 0,
-    "last_validation": "2025-11-24T22:26:35.156Z",
+    "last_validation": "2025-11-24T22:29:29.037Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",
@@ -57,7 +57,44 @@
             "drift_verified": true
           }
         ]
+      },
+      {
+        "pipeline_id": "domain-demo-1764023368065-wiltj1",
+        "run_at": "2025-11-24T22:29:30.065Z",
+        "domains": [
+          {
+            "domain_id": "orchestration-core",
+            "lineage_hash": "d53a62a598822b6fe4e4a584587cddc05064001af3b2a928e8c8580560255cd6",
+            "integrity_checksum": "cc6785471d80179e9e78637bde4c56dc7437b1715c3fd42231c3ea425461d20d",
+            "drift_verified": true
+          },
+          {
+            "domain_id": "telemetry-pipeline",
+            "lineage_hash": "d8382c7bb67c8bb8b2e393b4738304ebc5ae253adf2652f38335dcaedc794eb0",
+            "integrity_checksum": "e6a0255eed67f47a0cc0ab0abe28f4518a7b976960b29a04feca67158051d0fe",
+            "drift_verified": true
+          }
+        ]
       }
-    ]
+    ],
+    "last_risk_assessment": {
+      "generated_at": "2025-11-24T22:29:31.522Z",
+      "assessments": [
+        {
+          "domain_id": "telemetry-pipeline",
+          "risk_score": 3.2,
+          "volatility_checksum_changes": 0,
+          "cross_domain_link_count": 1,
+          "stability_score": 0.78
+        },
+        {
+          "domain_id": "orchestration-core",
+          "risk_score": 1.5,
+          "volatility_checksum_changes": 0,
+          "cross_domain_link_count": 0,
+          "stability_score": 0.85
+        }
+      ]
+    }
   }
 }

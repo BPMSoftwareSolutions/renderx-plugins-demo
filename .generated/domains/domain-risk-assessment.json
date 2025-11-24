@@ -1,0 +1,19 @@
+{
+  "generated_at": "2025-11-24T22:29:31.521Z",
+  "assessments": [
+    {
+      "domain_id": "telemetry-pipeline",
+      "risk_score": 3.2,
+      "volatility_checksum_changes": 0,
+      "cross_domain_link_count": 1,
+      "stability_score": 0.78
+    },
+    {
+      "domain_id": "orchestration-core",
+      "risk_score": 1.5,
+      "volatility_checksum_changes": 0,
+      "cross_domain_link_count": 0,
+      "stability_score": 0.85
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2025-11-24T22:29:30.548Z",
+  "adjacency": {
+    "orchestration-core": [],
+    "telemetry-pipeline": [
+      {
+        "target": "orchestration-core",
+        "relation": "depends_on",
+        "strength": "strong"
+      }
+    ]
+  },
+  "reverse": {
+    "orchestration-core": [
+      {
+        "source": "telemetry-pipeline",
+        "relation": "depends_on",
+        "strength": "strong"
+      }
+    ],
+    "telemetry-pipeline": []
+  },
+  "parentGraph": {
+    "orchestration-core": [],
+    "telemetry-pipeline": [
+      "orchestration-core"
+    ]
+  }
+}

@@ -65,6 +65,12 @@ function validateDomain(domain, registry) {
       if (link.relation_type && !allowedRelations.includes(link.relation_type)) errors.push(`Invalid relation_type '${link.relation_type}' for link_id ${link.link_id}`);
     });
   }
+  // Orphan detection: parent_context_refs referencing domains not in registry
+  if (Array.isArray(domain.parent_context_refs)) {
+    domain.parent_context_refs.forEach(ref => {
+      if (!registry.domains[ref]) errors.push(`Parent context ref '${ref}' not found in registry (orphan reference).`);
+    });
+  }
   return { errors, warnings };
 }
 function main() {
@@ -81,6 +87,26 @@ function main() {
     const { errors, warnings } = validateDomain(domain, registry);
     totalErrors += errors.length; totalWarnings += warnings.length; report.push({ file, errors, warnings });
   });
+  // Cycle detection across parent_refs (registry-level)
+  const graph = {};
+  Object.keys(registry.domains).forEach(id => { graph[id] = (registry.domains[id].parent_refs || []).slice(); });
+  const visiting = new Set();
+  const visited = new Set();
+  const cycles = [];
+  function dfs(node, path) {
+    if (visiting.has(node)) { cycles.push([...path, node]); return; }
+    if (visited.has(node)) return;
+    visiting.add(node);
+    (graph[node]||[]).forEach(child => dfs(child, [...path, node]));
+    visiting.delete(node);
+    visited.add(node);
+  }
+  Object.keys(graph).forEach(n => dfs(n, []));
+  if (cycles.length) {
+    cycles.forEach(c => {
+      totalErrors++; report.push({ file:'<cycle-detection>', errors:[`Lineage cycle detected: ${c.join(' -> ')}`], warnings:[] });
+    });
+  }
   registry.meta.last_validation = new Date().toISOString();
   fs.writeFileSync('DOMAIN_REGISTRY.json', JSON.stringify(registry, null, 2));
   console.log('Domain Validation Report');

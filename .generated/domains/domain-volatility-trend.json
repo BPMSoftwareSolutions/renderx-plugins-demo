@@ -1,0 +1,17 @@
+{
+  "generated_at": "2025-11-24T22:29:31.031Z",
+  "trend": [
+    {
+      "domain_id": "orchestration-core",
+      "runs": 2,
+      "checksum_change_count": 0,
+      "lineage_change_count": 0
+    },
+    {
+      "domain_id": "telemetry-pipeline",
+      "runs": 2,
+      "checksum_change_count": 0,
+      "lineage_change_count": 0
+    }
+  ]
+}
