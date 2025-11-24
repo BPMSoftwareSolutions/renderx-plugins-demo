@@ -34,7 +34,10 @@ function main(){
     const lineageSource=(domain.root_context_ref||'')+'|'+(domain.context_lineage||[]).join('>')+'|'+domain.domain_id;
     const lineageHash=sha256(lineageSource);
     domain.provenance=lineageHash?{...domain.provenance,lineage_hash:lineageHash}:domain.provenance;
-    const integrityChecksum=sha256(deterministicSerialize(domain));
+    // Compute checksum excluding the integrity_checksum field itself to ensure stability
+    const domainForChecksum = JSON.parse(JSON.stringify(domain));
+    if(domainForChecksum.provenance) delete domainForChecksum.provenance.integrity_checksum;
+    const integrityChecksum=sha256(deterministicSerialize(domainForChecksum));
     domain.provenance.integrity_checksum=integrityChecksum;
     saveJSON(file,domain);
     if(registry.domains[domain.domain_id]){

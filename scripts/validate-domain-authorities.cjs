@@ -29,11 +29,11 @@ function findDomainFiles() {
   });
   return results;
 }
-function safeSerialize(obj) {
-  if (obj === null || typeof obj !== 'object') return JSON.stringify(obj);
-  if (Array.isArray(obj)) return '[' + obj.map(safeSerialize).join(',') + ']';
-  const keys = Object.keys(obj).sort();
-  return '{' + keys.map(k => JSON.stringify(k) + ':' + safeSerialize(obj[k])).join(',') + '}';
+function deterministicSerialize(obj){
+  if(obj===null||typeof obj!=='object') return JSON.stringify(obj);
+  if(Array.isArray(obj)) return '['+obj.map(deterministicSerialize).join(',')+']';
+  const keys=Object.keys(obj).sort();
+  return '{'+keys.map(k=>JSON.stringify(k)+':'+deterministicSerialize(obj[k])).join(',')+'}';
 }
 function validateDomain(domain, registry) {
   const errors = [];
@@ -45,7 +45,9 @@ function validateDomain(domain, registry) {
     if (computedLineageHash !== domain.provenance.lineage_hash) errors.push(`Lineage hash mismatch: stored=${domain.provenance.lineage_hash} computed=${computedLineageHash}`);
   } else warnings.push('No lineage_hash present (will be generated later).');
   if (domain.provenance && domain.provenance.integrity_checksum) {
-    const serialized = safeSerialize(domain);
+    const domainForChecksum = JSON.parse(JSON.stringify(domain));
+    if(domainForChecksum.provenance) delete domainForChecksum.provenance.integrity_checksum;
+    const serialized = deterministicSerialize(domainForChecksum);
     const computedChecksum = sha256(serialized);
     if (computedChecksum !== domain.provenance.integrity_checksum) errors.push(`Integrity checksum mismatch: stored=${domain.provenance.integrity_checksum} computed=${computedChecksum}`);
   } else warnings.push('No integrity_checksum present (will be added by generator).');

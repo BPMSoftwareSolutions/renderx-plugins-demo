@@ -63,5 +63,5 @@ Primary Contact: telemetry-owner@company.com
 
 ---
 Integrity
-Stored Integrity Checksum: 1a21fb4948de6052bf29fe0cd7753ea8c9de8f8d200f0d8265e05ee36b1b0974
+Stored Integrity Checksum: e6a0255eed67f47a0cc0ab0abe28f4518a7b976960b29a04feca67158051d0fe
 Computed Lineage Hash: d8382c7bb67c8bb8b2e393b4738304ebc5ae253adf2652f38335dcaedc794eb0

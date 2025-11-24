@@ -15,7 +15,7 @@
       "status": "active",
       "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
       "parent_refs": [],
-      "checksum": "23a07136c17044d8dbb8b2997809d8084952a52da179506d74cffc0a7851ebe8",
+      "checksum": "cc6785471d80179e9e78637bde4c56dc7437b1715c3fd42231c3ea425461d20d",
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Orchestration"
@@ -28,7 +28,7 @@
       "parent_refs": [
         "orchestration-core"
       ],
-      "checksum": "1a21fb4948de6052bf29fe0cd7753ea8c9de8f8d200f0d8265e05ee36b1b0974",
+      "checksum": "e6a0255eed67f47a0cc0ab0abe28f4518a7b976960b29a04feca67158051d0fe",
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Telemetry"
@@ -38,6 +38,6 @@
     "active_count": 2,
     "deprecated_count": 0,
     "retired_count": 0,
-    "last_validation": "2025-11-24T22:10:36.251Z"
+    "last_validation": "2025-11-24T22:22:35.734Z"
   }
 }
