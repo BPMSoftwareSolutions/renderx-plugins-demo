@@ -43,8 +43,18 @@
     "monitoring",
     "dashboard",
     "telemetry",
-    "observability"
+    "observability",
+    "renderx-plugin"
   ],
+  "renderx": {
+    "plugins": [
+      {
+        "id": "slo-dashboard",
+        "ui": { "slot": "dashboard", "module": "@slo-shape/dashboard", "export": "Dashboard" },
+        "runtime": { "module": "@slo-shape/dashboard", "export": "register" }
+      }
+    ]
+  },
   "author": "BPM Software Solutions",
   "license": "MIT"
 }

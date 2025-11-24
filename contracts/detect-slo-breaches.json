@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "feature": "slo-dashboard",
+  "contractType": "slo-breach-detection",
+  "description": "Defines required telemetry fields for detecting and classifying SLO breaches in dashboard flows. Handlers emitting compliance evaluation must populate these fields.",
+  "requiredTelemetryFields": [
+    "feature",
+    "event",
+    "beats",
+    "complianceScore",
+    "errorBudgetRemainingPct",
+    "breachSeverity",
+    "projectionWindowHrs"
+  ],
+  "classification": {
+    "severityMapping": {
+      "critical": {"thresholdPctRemaining": 5},
+      "high": {"thresholdPctRemaining": 15},
+      "moderate": {"thresholdPctRemaining": 30}
+    },
+    "defaultSeverity": "moderate"
+  },
+  "governance": {
+    "enforcedBy": "verify-shape-bdd-alignment.js",
+    "failOnMissing": true,
+    "hashStrategy": "sha256(serializedWithoutMeta)"
+  },
+  "meta": {
+    "created": "2025-11-24T00:00:00.000Z",
+    "immutable": false,
+    "notes": [
+      "Placeholder contract; values will tighten after baseline telemetry runs.",
+      "errorBudgetRemainingPct derived from initial SLO target vs observed breach counts."
+    ]
+  }
+}

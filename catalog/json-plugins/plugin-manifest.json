@@ -82,5 +82,16 @@
       "status": "development",
       "description": "Self-healing system plugin - in development, not yet ready for production serving"
     }
+    ,{
+      "id": "slo-dashboard",
+      "status": "development",
+      "description": "SLO governance & reliability dashboard",
+      "ui": {
+        "slot": "dashboard",
+        "module": "@slo-shape/dashboard",
+        "export": "Dashboard"
+      },
+      "runtime": { "module": "@slo-shape/dashboard", "export": "register" }
+    }
   ]
 }

@@ -314,6 +314,24 @@
       "hash": "6188e6c3a4fdeca4a34499c3404b4587e7fd4e96df2a3aef022cd253c1a3f716",
       "lastModified": "2025-11-24T00:55:19.787Z",
       "docs": []
+    },
+    {
+      "id": "slo-dashboard-project-plan",
+      "path": "packages/slo-dashboard/slo-dashboard-project-plan.json",
+      "layer": "planning",
+      "type": "project-plan",
+      "hash": "d23b92089f72a915e0b1c76dfbcc14e55875c0a9ae9bf4d4182fbc37b337df02",
+      "lastModified": "2025-11-24T01:20:00.000Z",
+      "docs": []
+    },
+    {
+      "id": "shape-evolution-plan",
+      "path": "SHAPE_EVOLUTION_PLAN.json",
+      "layer": "telemetry-shaping",
+      "type": "evolution-plan",
+      "hash": "474b1da29016d5111be403d084fb8da8976dff4ab3c6a3cf883a417b0f944acb",
+      "lastModified": "2025-11-24T01:20:00.000Z",
+      "docs": []
     }
   ]
 }

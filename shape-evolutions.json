@@ -14,6 +14,62 @@
       "newHash": "405441aebdce3d50ccf75f0794ad55a14a543147651bc1140743ce877b8c97b0",
       "annotatedAt": "2025-11-23T18:03:18.924Z",
       "reason": "baseline alignment after governance scripts"
+    },
+    {
+      "feature": "shape-persistence",
+      "previousHash": "405441aebdce3d50ccf75f0794ad55a14a543147651bc1140743ce877b8c97b0",
+      "newHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
+      "annotatedAt": "2025-11-24T01:22:00.000Z",
+      "reason": "beats normalization adjustment"
+    },
+    {
+      "feature": "shape-persistence",
+      "previousHash": "ff1df026a5f87b65",
+      "newHash": "405441aebdce3d50",
+      "annotatedAt": "2025-11-24T02:05:00.000Z",
+      "reason": "persistence shape short-hash alignment annotation"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "f524765b09e22ad76c24064764f80aa6a08ce6d1703b33e38d5b84f15ae5a7bf",
+      "newHash": "bc6f2bfdd059c740bf46cddd7c37feb7d631a8aea63c4fbdb9ada889a7ed29c4",
+      "annotatedAt": "2025-11-24T01:22:00.000Z",
+      "reason": "add breach classification payload fields"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "bc6f2bfdd059c740bf46cddd7c37feb7d631a8aea63c4fbdb9ada889a7ed29c4",
+      "newHash": "f524765b09e22ad76c24064764f80aa6a08ce6d1703b33e38d5b84f15ae5a7bf",
+      "annotatedAt": "2025-11-24T01:42:00.000Z",
+      "reason": "normalize breach mapping and revert classification for test stability"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "f524765b09e22ad7",
+      "newHash": "dc4c69bae2eec89f",
+      "annotatedAt": "2025-11-24T02:05:00.000Z",
+      "reason": "telemetry shape expansion (beats + projection fields) short-hash annotation"
+    },
+    {
+      "feature": "shape-budgets",
+      "previousHash": "4ab2c73d5183f633",
+      "newHash": "c27c381067c2e08f",
+      "annotatedAt": "2025-11-24T02:05:00.000Z",
+      "reason": "budget telemetry instrumentation (beats/duration diff) short-hash annotation"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "f524765b09e22ad76c24064764f80aa6a08ce6d1703b33e38d5b84f15ae5a7bf",
+      "newHash": "dc4c69bae2eec89f957192711a7e8266f8f62c061bfefc00a3310d182fc62ea9",
+      "annotatedAt": "2025-11-24T03:17:20.030Z",
+      "reason": "auto short-hash annotation"
+    },
+    {
+      "feature": "shape-budgets",
+      "previousHash": "4ab2c73d5183f633435c02cd7637ce59bc9e954c7d8e681ebb8e859c31d3f899",
+      "newHash": "c27c381067c2e08fdea5bc2d5a28b6bc31d18e3ddebd223d57cfec60e5e0aac5",
+      "annotatedAt": "2025-11-24T03:17:23.601Z",
+      "reason": "auto short-hash annotation"
     }
   ]
 }

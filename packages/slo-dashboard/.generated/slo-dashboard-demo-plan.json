@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2025-11-24T00:00:00.000Z",
+  "feature": "slo-dashboard",
+  "purpose": "Guided demo of the SLO dashboard showing compliance aggregation, error budget prioritization, projection warnings, and color/accessibility mapping.",
+  "demoObjectives": [
+    "Show weighted overall compliance calculation",
+    "Demonstrate error budget sorting (risk ordering)",
+    "Trigger projection breach-soon and breach-now states",
+    "Display color tier + accessible label mapping",
+    "Highlight path to export & telemetry instrumentation (placeholder)"
+  ],
+  "prerequisites": [
+    "Node & npm installed",
+    "Repository cloned",
+    "Dependencies installed (npm install)",
+    "Initial build succeeded (npm run build)"
+  ],
+  "setupSteps": [
+    "npm install",
+    "npm run build",
+    "npm run dev (host environment)"
+  ],
+  "executionScenarios": [
+    {
+      "id": "scenario-compliance-weighted",
+      "title": "Weighted Compliance",
+      "steps": [
+        "Open slo-dashboard view (UI placeholder)",
+        "Invoke computeCompliance() with sample SLO array (dev console)",
+        "Observe expected weighted mean vs manual calc"
+      ],
+      "expect": {
+        "weightedMeanWithinTolerance": 0.001,
+        "showsOverallComplianceBadge": true
+      }
+    },
+    {
+      "id": "scenario-error-budget-sorting",
+      "title": "Error Budget Sorting",
+      "steps": [
+        "Call sortByRemainingBudget() with tie on remaining% but different burnRate",
+        "Check ordering riskier first"
+      ],
+      "expect": {"tieBreakOnBurnRate": true}
+    },
+    {
+      "id": "scenario-projection-breach-soon",
+      "title": "Projection Breach Soon",
+      "steps": ["calculateProjectionStatus(18,1.2,24)"],
+      "expect": {"status": "breach-soon", "hoursToBreachLtHorizon": true}
+    },
+    {
+      "id": "scenario-projection-breach-now",
+      "title": "Projection Breach Now",
+      "steps": ["calculateProjectionStatus(0,0.5,24)"],
+      "expect": {"status": "breach-now", "hoursToBreach": 0}
+    },
+    {
+      "id": "scenario-color-accessibility",
+      "title": "Color + Accessibility",
+      "steps": ["getProgressColor(0.996)"],
+      "expect": {"color": "green", "label": "Healthy"}
+    }
+  ],
+  "telemetryPlanned": {
+    "pending": true,
+    "notes": ["Telemetry emission hooks not yet wired; demo uses domain utilities directly"],
+    "futureEvents": ["slo-dashboard:compute-compliance", "slo-dashboard:projection", "slo-dashboard:export"]
+  },
+  "successCriteria": {
+    "implementedScenarioCountMin": 5,
+    "todoRatioMax": 0.65,
+    "allDemoScenarioExpectationsPass": true
+  },
+  "commands": {
+    "runTargetedTests": "npm test -- --run packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts",
+    "openHandlers": "code packages/slo-dashboard/src/handlers/metrics.ts",
+    "domainUtilities": "code packages/slo-dashboard/src/domain/compliance.ts"
+  },
+  "manualValidation": {
+    "script": "node -e \"import('./packages/slo-dashboard/src/domain/compliance.ts').then(m=>{console.log('weighted',m.computeWeightedCompliance([{id:'a',weight:5,compliance:0.992},{id:'b',weight:3,compliance:0.975},{id:'c',weight:2,compliance:0.990}]))});\""
+  },
+  "nextInstrumentationSteps": [
+    "Add handler inputs for computeCompliance() to accept SLO array",
+    "Emit projection telemetry with hoursToBreach field",
+    "Implement export artifact hashing & signing scenario",
+    "Add accessibility label map snapshot test"
+  ],
+  "linkage": {
+    "projectPlan": "packages/slo-dashboard/slo-dashboard-project-plan.json",
+    "bddSpec": "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json"
+  },
+  "contentHash": "34496c7cd056323843031200775717792aae4ddc3ce26cb68dc3caf8f71faf8d",
+  "immutable": false
+}

@@ -1,0 +1,110 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-23T00:00:00.000Z",
+  "feature": "slo-dashboard",
+  "vision": "Deliver a governed, telemetry-coupled SLO dashboard providing real-time compliance, error budget burn, projection, and self-healing impact.",
+  "principles": [
+    "JSON-first canonical specs",
+    "Every scenario traceable to sequences & handlers",
+    "Telemetry shaping aligned with BDD evolution",
+    "Provable provenance (hashes, drift config)",
+    "Fast feedback (<60s local pretest)"
+  ],
+  "phases": [
+    {
+      "id": "phase-1-foundation",
+      "name": "Foundation & Specs",
+      "goals": ["High-quality business spec", "Sequences JSON", "Handler skeleton"],
+      "artifacts": [
+        "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json",
+        "packages/slo-dashboard/json-sequences/index.json",
+        "packages/slo-dashboard/src/handlers/metrics.ts"
+      ],
+      "status": "done"
+    },
+    {
+      "id": "phase-2-testing",
+      "name": "BDD & Handler Coverage",
+      "goals": ["Scenario stubs", "Handler-level BDD tests", "Drift config updated"],
+      "artifacts": [
+        "packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts",
+        "packages/slo-dashboard/__tests__/business-bdd-handlers/01-load-budgets.spec.ts",
+        "packages/slo-dashboard/.generated/slo-dashboard-drift-config.json"
+      ],
+      "status": "done"
+    },
+    {
+      "id": "phase-3-telemetry-integration",
+      "name": "Telemetry Shaping Integration",
+      "goals": ["Shape-BDD alignment script", "Placeholder shape contracts", "Telemetry emission hooks"],
+      "artifacts": [
+        "scripts/verify-shape-bdd-alignment.js",
+        "contracts/detect-slo-breaches.json",
+        "contracts/shape-budgets.json"
+      ],
+      "status": "in-progress"
+    },
+    {
+      "id": "phase-4-assertion-enrichment",
+      "name": "Business Assertion Enrichment",
+      "goals": ["Map scenarios to concrete assertions", "Compliance projections validated"],
+      "artifacts": [
+        "packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts"
+      ],
+      "status": "in-progress"
+    },
+    {
+      "id": "phase-5-project-plan-enforcement",
+      "name": "Plan Governance & Provenance",
+      "goals": ["Plan enforcement script", "Knowledge index entry", "Pretest integration"],
+      "artifacts": [
+        "packages/slo-dashboard/slo-dashboard-project-plan.json",
+        "scripts/verify-slo-dashboard-project-plan.js",
+        "knowledge-index.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "phase-6-final-compliance",
+      "name": "End-to-End Compliance Audit",
+      "goals": ["All phases done", "Audit across 7 layers + telemetry"],
+      "artifacts": ["AUDIT_COMPLETION_REPORT.md"],
+      "status": "pending"
+    }
+  ],
+  "tasks": [
+    {"key": "SDP-1", "phase": "phase-3-telemetry-integration", "desc": "Create verify-shape-bdd-alignment.js", "status": "pending", "artifact": "scripts/verify-shape-bdd-alignment.js"},
+    {"key": "SDP-2", "phase": "phase-3-telemetry-integration", "desc": "Add placeholder shape contracts", "status": "pending", "artifact": "contracts/shape-budgets.json"},
+    {"key": "SDP-3", "phase": "phase-3-telemetry-integration", "desc": "Emit telemetry from handlers (loadMetrics, computeCompliance, triggerExportDownload)", "status": "pending", "artifact": "packages/slo-dashboard/src/handlers/metrics.ts"},
+  {"key": "SDP-4", "phase": "phase-4-assertion-enrichment", "desc": "Implement concrete assertions (weighted compliance, sorting, color tiers, projection soon/now)", "status": "in-progress", "artifact": "packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts"},
+  {"key": "SDP-9", "phase": "phase-3-telemetry-integration", "desc": "Wire telemetry emission in computeCompliance() & projection utilities", "status": "pending", "artifact": "packages/slo-dashboard/src/handlers/metrics.ts"},
+  {"key": "SDP-10", "phase": "phase-4-assertion-enrichment", "desc": "Implement export artifact hashing & signing scenario", "status": "pending", "artifact": "packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts"},
+  {"key": "SDP-11", "phase": "phase-4-assertion-enrichment", "desc": "Add accessibility label map + assertions", "status": "pending", "artifact": "packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts"},
+  {"key": "SDP-12", "phase": "phase-4-assertion-enrichment", "desc": "Tighten TODO ratio threshold to 40% (ASSERTION_COMPLETENESS_MAX_TODO_RATIO=0.40)", "status": "pending", "artifact": "package.json"},
+  {"key": "SDP-13", "phase": "phase-3-telemetry-integration", "desc": "Add telemetry assertions to implemented scenarios", "status": "pending", "artifact": "packages/slo-dashboard/__tests__/business-bdd/slo-dashboard-scenarios.generated.spec.ts"},
+    {"key": "SDP-5", "phase": "phase-5-project-plan-enforcement", "desc": "Create verify-slo-dashboard-project-plan.js enforcement script", "status": "pending", "artifact": "scripts/verify-slo-dashboard-project-plan.js"},
+    {"key": "SDP-6", "phase": "phase-5-project-plan-enforcement", "desc": "Add plan to knowledge-index.json and drift governance", "status": "pending", "artifact": "knowledge-index.json"},
+    {"key": "SDP-7", "phase": "phase-5-project-plan-enforcement", "desc": "Integrate plan + shape alignment into pretest pipeline", "status": "pending", "artifact": "package.json"},
+    {"key": "SDP-8", "phase": "phase-6-final-compliance", "desc": "Run final full compliance audit", "status": "pending", "artifact": "AUDIT_COMPLETION_REPORT.md"}
+  ],
+  "enforcement": {
+    "scripts": ["verify-shape-bdd-alignment.js", "verify-slo-dashboard-project-plan.js"],
+    "pipeline": "pretest",
+    "failureMode": "ERROR"
+  },
+  "demoPlanArtifact": "packages/slo-dashboard/.generated/slo-dashboard-demo-plan.json",
+  "demoPlanArtifactHash": "34496c7cd056323843031200775717792aae4ddc3ce26cb68dc3caf8f71faf8d",
+  "nextSteps": [
+    "Wire telemetry emission for computeCompliance & projection",
+    "Export artifact hashing/signing implementation",
+    "Accessibility label map + snapshot",
+    "Reduce TODO ratio threshold to 40% after next 3 scenarios",
+    "Add telemetry assertions (feature events & payload fields)",
+    "Complete remaining scenarios: empty-state, partial-data, spike-detection, self-healing trend",
+    "Begin export CSV/JSON signing validation test"
+  ],
+  "contentHash": "820786ae30455f7be087342a9ce762f3b56732ce8505b89dcd9ef9114b2ce8fd",
+  "hash": "will-be-computed",
+  "locked": true,
+  "immutable": true
+}

@@ -37,6 +37,8 @@ function main() {
   }
 }
 
-if (require.main === module) {
+// ESM entrypoint execution
+const isDirectRun = process.argv[1] && process.argv[1].endsWith('enforce-bdd-telemetry.js');
+if (isDirectRun) {
   main();
 }

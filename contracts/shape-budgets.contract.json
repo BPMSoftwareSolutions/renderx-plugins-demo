@@ -1,0 +1,9 @@
+{
+  "feature": "shape-budgets",
+  "version": 1,
+  "required": ["feature","event","beats","status","shapeHash","payload"],
+  "optional": ["durationMs","correlationId","coverageId","budget","anomaly"],
+  "hashStrategy": "sha256(serializedWithoutMeta)",
+  "notes": ["Placeholder contract for budget evaluation"],
+  "meta": {"created": "2025-11-24T01:22:00.000Z"}
+}

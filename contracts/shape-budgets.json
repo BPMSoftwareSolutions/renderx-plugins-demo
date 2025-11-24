@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "feature": "slo-dashboard",
+  "contractType": "shape-budgets",
+  "description": "Defines soft and hard governance budgets for dashboard telemetry shapes (beats, durationMs, batonDiffCount).",
+  "budgets": {
+    "beats": {"soft": 50, "hard": 80},
+    "durationMs": {"soft": 250, "hard": 400},
+    "batonDiffCount": {"soft": 5, "hard": 10}
+  },
+  "evaluation": {
+    "softExceededAction": "warn",
+    "hardExceededAction": "anomaly:shape.degradation",
+    "budgetEvaluator": "telemetry/budget-evaluator.ts"
+  },
+  "governance": {
+    "enforcedBy": "scripts/shape-diff-check.js",
+    "failOnMissing": true,
+    "hashStrategy": "sha256(serializedWithoutMeta)"
+  },
+  "meta": {
+    "created": "2025-11-24T00:00:00.000Z",
+    "immutable": false,
+    "notes": [
+      "Initial budgets intentionally lenient; tighten after baseline runs",
+      "Hard breach should emit anomaly and color node in telemetry map"
+    ]
+  }
+}

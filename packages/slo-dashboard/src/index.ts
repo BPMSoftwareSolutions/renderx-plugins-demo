@@ -24,3 +24,8 @@ export { DataUpdater } from './services/dataUpdater';
 import './styles/variables.css';
 import './styles/dashboard.css';
 import './styles/metrics-panel.css';
+
+// Plugin runtime registration placeholder (for renderx aggregation)
+export function register() {
+  return { plugin: 'slo-dashboard', registered: true };
+}

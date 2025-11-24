@@ -1,0 +1,9 @@
+{
+  "feature": "detect-slo-breaches",
+  "version": 1,
+  "required": ["feature","event","beats","status","shapeHash","payload","anomalies"],
+  "optional": ["durationMs","correlationId","coverageId","errorBudgetRemainingPct"],
+  "hashStrategy": "sha256(serializedWithoutMeta)",
+  "notes": ["Placeholder contract; refine after baseline telemetry"],
+  "meta": {"created": "2025-11-24T01:22:00.000Z"}
+}
