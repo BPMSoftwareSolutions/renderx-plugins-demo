@@ -224,6 +224,7 @@ venv.bak/
 /derived-external-topics.json
 
 !/.generated
+!/.archived
 /catalog/json-interactions/.generated/app.json
 /catalog/json-interactions/.generated/canvas.json
 /catalog/json-interactions/.generated/control.json
