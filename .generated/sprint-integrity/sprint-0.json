@@ -1,0 +1,23 @@
+{
+  "sprint": "0",
+  "hash": "0b6d42345c2298ce8d004b44fd381c43a3e4b4cd884a4e54348a93c288fac667",
+  "generatedAt": "2025-11-24T18:24:02.252Z",
+  "fields": [
+    "id",
+    "name",
+    "theme",
+    "deliverables",
+    "demoCriteria",
+    "status",
+    "startDate",
+    "endDate",
+    "objectives",
+    "acceptanceCriteria",
+    "blockers",
+    "risks",
+    "velocityTarget",
+    "velocityActual",
+    "qualityGates",
+    "metrics"
+  ]
+}

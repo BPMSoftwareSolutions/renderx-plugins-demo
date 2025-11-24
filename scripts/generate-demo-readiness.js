@@ -35,8 +35,13 @@ function estimateBddCoverage(){
   return total? mapped/total : null;
 }
 
-// Handler test coverage placeholder
-function handlerCoverageStub(){return { percent: null, status: 'pending' };}
+// Handler test coverage integration
+const handlerCoverage = safeJson(GEN('.generated/handler-coverage.json'));
+function handlerCoverageValue(){
+  if(!handlerCoverage || handlerCoverage.percent==null) return { percent: null, status: 'pending' };
+  const target = 0.85; // threshold
+  return { percent: handlerCoverage.percent, status: handlerCoverage.percent>=target? 'PASS':'PENDING', target };
+}
 
 function statusBoolean(ok){return ok? 'PASS':'PENDING';}
 
@@ -49,7 +54,7 @@ const report = {
     complianceReport: !!compliance, // will be false now
     releaseNotes: releaseNotesExists,
     bddCoverage: estimateBddCoverage(),
-    handlerCoverage: handlerCoverageStub()
+  handlerCoverage: handlerCoverageValue()
   }
 };
 
@@ -61,7 +66,7 @@ const checklist = [
   { name: 'Compliance report PASS', status: compliance? 'PASS':'PENDING' },
   { name: 'Release notes appended when structural change', status: releaseNotesExists? 'PASS':'PENDING' },
   { name: 'BDD spec coverage threshold met', status: report.items.bddCoverage!==null && report.items.bddCoverage>=0.7? 'PASS':'PENDING' },
-  { name: 'Handler tests passing & coverage ≥ target', status: 'PENDING' }
+  { name: 'Handler tests passing & coverage ≥ target', status: report.items.handlerCoverage.status }
 ];
 report.checklist = checklist;
 
@@ -72,6 +77,6 @@ if(!fs.existsSync(path.dirname(OUT_JSON))) fs.mkdirSync(path.dirname(OUT_JSON),{
 if(!fs.existsSync(path.dirname(OUT_MD))) fs.mkdirSync(path.dirname(OUT_MD),{recursive:true});
 fs.writeFileSync(OUT_JSON, JSON.stringify(report,null,2));
 
-const md = `# Demo Readiness\n\n> Generated ${report.generatedAt}\n\n| Item | Status |\n|------|--------|\n${checklist.map(c=>`| ${c.name} | ${c.status} |`).join('\n')}\n\n**Readiness Score:** ${(report.readinessScore*100).toFixed(1)}%\n\nBDD Coverage (estimated): ${report.items.bddCoverage!==null? (report.items.bddCoverage*100).toFixed(1)+'%':'n/a'}\n\n`; 
+const md = `# Demo Readiness\n\n> Generated ${report.generatedAt}\n\n| Item | Status |\n|------|--------|\n${checklist.map(c=>`| ${c.name} | ${c.status} |`).join('\n')}\n\n**Readiness Score:** ${(report.readinessScore*100).toFixed(1)}%\n\nBDD Coverage (estimated): ${report.items.bddCoverage!==null? (report.items.bddCoverage*100).toFixed(1)+'%':'n/a'}\nHandler Coverage: ${report.items.handlerCoverage.percent!==null? (report.items.handlerCoverage.percent*100).toFixed(1)+'%':'n/a'} (target ${report.items.handlerCoverage.target? (report.items.handlerCoverage.target*100).toFixed(0)+'%':'85%'})\n\n`; 
 fs.writeFileSync(OUT_MD, md);
 console.log('[demo-readiness] Report written:', OUT_JSON);

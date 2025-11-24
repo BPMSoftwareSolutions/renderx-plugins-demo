@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-11-24T18:11:20.028Z",
+  "generatedAt": "2025-11-24T18:24:11.332Z",
   "items": {
     "structuralDiff": true,
     "canonicalHashReport": true,
@@ -39,7 +39,7 @@
     },
     {
       "name": "Handler tests passing & coverage ≥ target",
-      "status": "PENDING"
+      "status": "pending"
     }
   ],
   "readinessScore": 0.8571428571428571

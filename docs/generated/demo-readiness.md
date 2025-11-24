@@ -1,6 +1,6 @@
 # Demo Readiness
 
-> Generated 2025-11-24T18:11:20.028Z
+> Generated 2025-11-24T18:24:11.332Z
 
 | Item | Status |
 |------|--------|
@@ -10,9 +10,10 @@
 | Compliance report PASS | PASS |
 | Release notes appended when structural change | PASS |
 | BDD spec coverage threshold met | PASS |
-| Handler tests passing & coverage ≥ target | PENDING |
+| Handler tests passing & coverage ≥ target | pending |
 
 **Readiness Score:** 85.7%
 
 BDD Coverage (estimated): 100.0%
+Handler Coverage: n/a (target 85%)
 
