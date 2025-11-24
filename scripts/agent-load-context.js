@@ -37,6 +37,7 @@ class ContextRemountingSystem {
         iterationNumber: 0
       }
     };
+    this.knowledgeIndex = null;
   }
 
   generateSessionId() {
@@ -48,16 +49,14 @@ class ContextRemountingSystem {
    * The big why. Persistent identity of the work.
    */
   loadRootContext(rootDescription) {
+    const sources = this.getKnowledgeSources();
     this.envelope.layers.root = {
       description: rootDescription,
       mvp: "Thin-client host with plugin architecture",
       mmf: "5-layer telemetry governance system",
-      nonNegotiable: [
-        "100% traceability",
-        "Manifest-driven configuration",
-        "JSON-first design",
-        "Self-improving knowledge system"
-      ],
+      nonNegotiable: ["100% traceability","Manifest-driven configuration","JSON-first design","Self-improving knowledge system"],
+      sourceCount: sources.length,
+      sourceSample: sources.slice(0,5).map(s=>s.id),
       timestamp: new Date().toISOString()
     };
     return this;
@@ -94,6 +93,7 @@ class ContextRemountingSystem {
         "packages/self-healing/* (unless touched)",
         ".ographx/* (unless involved)"
       ],
+      governance: this.knowledgeIndex?.governance?.contextRemounting || null,
       timestamp: new Date().toISOString()
     };
     return this;
@@ -135,6 +135,29 @@ class ContextRemountingSystem {
    */
   getEnvelope() {
     return this.envelope;
+  }
+
+  /** Load knowledge-index.json if present */
+  loadKnowledgeIndex() {
+    const kiPath = path.join(ROOT, 'knowledge-index.json');
+    if(fs.existsSync(kiPath)){
+      try {
+        this.knowledgeIndex = JSON.parse(fs.readFileSync(kiPath,'utf-8'));
+        this.envelope.metadata.knowledgeIndexHash = this.hashString(JSON.stringify(this.knowledgeIndex));
+      } catch(err){
+        console.warn('⚠️ Failed parsing knowledge-index.json:', err.message);
+      }
+    }
+    return this;
+  }
+
+  getKnowledgeSources(){
+    return this.knowledgeIndex?.sources || [];
+  }
+
+  hashString(str){
+    const crypto = require('crypto');
+    return crypto.createHash('sha256').update(str).digest('hex');
   }
 
   /**
@@ -200,7 +223,8 @@ async function main() {
 
   const crs = new ContextRemountingSystem();
   
-  crs.loadRootContext(options.root || 'Telemetry governance system')
+  crs.loadKnowledgeIndex()
+    .loadRootContext(options.root || 'Telemetry governance system')
     .loadSubContext(options.sub || 'Current feature implementation')
     .loadBoundaries(options.boundaries)
     .loadPreviousContext(options.previous);

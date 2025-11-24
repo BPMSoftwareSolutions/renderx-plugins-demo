@@ -1,5 +1,15 @@
 {
   "version": 1,
+  "governance": {
+    "contextRemounting": {
+      "enabled": true,
+      "layers": ["root", "sub", "boundaries", "previous"],
+      "source": "knowledge-index.json",
+      "required": ["version", "sources"],
+      "failOnMissing": true,
+      "description": "Defines which contextual layers must be remounted before any autonomous agent action to prevent drift."
+    }
+  },
   "generated": "2025-11-24T01:11:26.322Z",
   "sources": [
     {
