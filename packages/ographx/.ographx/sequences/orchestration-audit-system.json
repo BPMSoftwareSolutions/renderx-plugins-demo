@@ -1,0 +1,98 @@
+{
+  "id": "orchestration-audit-system",
+  "name": "Orchestration Audit System Domain Sequence",
+  "description": "System-level evolution sequence capturing anti-drift governance workflow for the orchestration audit system itself (meta orchestration).",
+  "key": "G",
+  "tempo": 108,
+  "timeSignature": "4/4",
+  "category": "governance",
+  "metadata": {
+    "version": "1.0.0",
+    "author": "Augment Agent",
+    "created": "2025-11-24T18:05:00.000Z",
+    "tags": ["orchestration", "audit-system", "anti-drift", "governance", "context"],
+    "sessionRef": "orchestration-audit-system-2025-11-24"
+  },
+  "movements": [
+    {
+      "id": "phase-1-bootstrap",
+      "name": "Phase 1: Bootstrap JSON Authority",
+      "description": "Establish JSON-first authority for audit system artifacts.",
+      "beats": [
+        {"beat": 1, "event": "oas:phase1:identify-artifacts", "title": "Identify Core Artifacts", "description": "List registry, docs, diagrams, audit scripts", "dynamics": "mf", "timing": "immediate"},
+        {"beat": 2, "event": "oas:phase1:declare-authority", "title": "Declare JSON Authority", "description": "Mark JSON as canonical, docs as reflection", "dynamics": "f", "timing": "after-beat"},
+        {"beat": 3, "event": "oas:phase1:baseline-registry", "title": "Baseline Registry", "description": "Capture initial orchestration-domains.json state", "dynamics": "f", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-2-auto-generation",
+      "name": "Phase 2: Registry Auto-Generation",
+      "description": "Ensure registry is synthesized not hand-authored.",
+      "beats": [
+        {"beat": 4, "event": "oas:phase2:integrate-catalog", "title": "Integrate Catalog Source", "description": "Wire catalog-sequences.json as input", "dynamics": "mf", "timing": "immediate"},
+        {"beat": 5, "event": "oas:phase2:include-orchestration-sequences", "title": "Include Orchestration Sequences", "description": "Merge system-level sequence files", "dynamics": "mf", "timing": "after-beat"},
+        {"beat": 6, "event": "oas:phase2:generate-registry", "title": "Generate Registry", "description": "Run generator script for orchestration-domains.json", "dynamics": "f", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-3-musical-sequence",
+      "name": "Phase 3: MusicalSequence Enrichment",
+      "description": "Add full MusicalSequence hierarchy + beat descriptions.",
+      "beats": [
+        {"beat": 7, "event": "oas:phase3:add-sequence-metadata", "title": "Add Sequence Metadata", "description": "Inject tempo, key, timeSignature, category", "dynamics": "mf", "timing": "immediate"},
+        {"beat": 8, "event": "oas:phase3:generate-beat-descriptions", "title": "Generate Beat Descriptions", "description": "Derive human-readable beat names from events", "dynamics": "ff", "timing": "after-beat"},
+        {"beat": 9, "event": "oas:phase3:embed-hierarchy", "title": "Embed Full Hierarchy", "description": "Ensure movements + beats present for each sequence", "dynamics": "f", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-4-doc-reflection",
+      "name": "Phase 4: Documentation Reflection",
+      "description": "Regenerate reflective docs from JSON authority.",
+      "beats": [
+        {"beat": 10, "event": "oas:phase4:ascii-sketch-enhancement", "title": "Enhance ASCII Sketches", "description": "Align width, show sequence metadata header", "dynamics": "mf", "timing": "immediate"},
+        {"beat": 11, "event": "oas:phase4:generate-markdown", "title": "Generate Markdown Docs", "description": "Produce domains & execution flow docs", "dynamics": "f", "timing": "after-beat"},
+        {"beat": 12, "event": "oas:phase4:diagram-generation", "title": "Generate Diagrams", "description": "Produce Mermaid system + relationships diagrams", "dynamics": "mf", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-5-audit-validation",
+      "name": "Phase 5: Audit Validation",
+      "description": "Validate completeness & consistency via audit script.",
+      "beats": [
+        {"beat": 13, "event": "oas:phase5:run-audit", "title": "Run Audit", "description": "Execute audit-orchestration.js validator", "dynamics": "f", "timing": "immediate"},
+        {"beat": 14, "event": "oas:phase5:verify-unified-interface", "title": "Verify Unified Interface", "description": "Check MusicalSequence fields present", "dynamics": "mf", "timing": "after-beat"},
+        {"beat": 15, "event": "oas:phase5:cross-check-docs", "title": "Cross-Check Docs", "description": "Ensure docs reflect registry state", "dynamics": "mf", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-6-integrity-governance",
+      "name": "Phase 6: Integrity Governance",
+      "description": "Embed integrity locking & drift detection.",
+      "beats": [
+        {"beat": 16, "event": "oas:phase6:embed-integrity-blocks", "title": "Embed Integrity Blocks", "description": "Add hash metadata to JSON artifacts", "dynamics": "f", "timing": "immediate"},
+        {"beat": 17, "event": "oas:phase6:implement-cli", "title": "Implement Integrity CLI", "description": "Provide context_integrity.py operations", "dynamics": "mf", "timing": "after-beat"},
+        {"beat": 18, "event": "oas:phase6:initial-audit", "title": "Perform Initial Integrity Audit", "description": "Detect hash mismatch (expected pre-canonical)", "dynamics": "mf", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-7-context-session-docs",
+      "name": "Phase 7: Context Session Documentation",
+      "description": "Generate single consolidated context session document.",
+      "beats": [
+        {"beat": 19, "event": "oas:phase7:implement-session-generator", "title": "Implement Session Doc Generator", "description": "Add gen-context-session-docs script", "dynamics": "mf", "timing": "immediate"},
+        {"beat": 20, "event": "oas:phase7:emit-session-doc", "title": "Emit Session Context Markdown", "description": "Generate orchestration-audit-session-context.md", "dynamics": "f", "timing": "after-beat"},
+        {"beat": 21, "event": "oas:phase7:update-pipeline", "title": "Update Pipeline", "description": "Integrate generation into pre:manifests", "dynamics": "mf", "timing": "after-beat"}
+      ]
+    },
+    {
+      "id": "phase-8-canonical-refinement",
+      "name": "Phase 8: Canonical Hash Refinement",
+      "description": "Eliminate false drift by excluding integrity block from canonical hash.",
+      "beats": [
+        {"beat": 22, "event": "oas:phase8:design-canonical-exclusion", "title": "Design Canonical Exclusion", "description": "Specify hash field omission rules", "dynamics": "mf", "timing": "immediate"},
+        {"beat": 23, "event": "oas:phase8:implement-canonical-hash", "title": "Implement Canonical Hash", "description": "Compute hash ignoring integrity block", "dynamics": "ff", "timing": "after-beat"},
+        {"beat": 24, "event": "oas:phase8:verify-no-false-drift", "title": "Verify No False Drift", "description": "Run integrity audit expecting stable lock", "dynamics": "f", "timing": "after-beat"}
+      ]
+    }
+  ]
+}

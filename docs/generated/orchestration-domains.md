@@ -1,7 +1,7 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-24T16:30:37.277Z
+**Last Generated:** 2025-11-24T17:17:37.644Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
@@ -13,7 +13,7 @@ Complete registry of all orchestration domains and plugin sequences
 
 ---
 
-## The 59 Orchestration Domains
+## The 60 Orchestration Domains
 
 ### 1. 🔌 Canvas Component Copy
 
@@ -2136,7 +2136,94 @@ Complete workflow for building JSON-first orchestration audit system with auto-g
 
 ---
 
-### 59. 🎼 self_sequences
+### 59. 🎼 Orchestration Audit System Domain Sequence
+
+**ID:** `orchestration-audit-system`
+
+System-level evolution sequence capturing anti-drift governance workflow for the orchestration audit system itself (meta orchestration).
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 Orchestration Audit System Domain Sequence           │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: orchestration-audit-system                 │
+    │ ├─ Tempo: 108 BPM                                       │
+    │ ├─ Key: G                                               │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │ Movement 1: Phase 1: Bootstrap JSON Authority           │
+    │   ├─ List registry, docs, diagrams, audit scripts       │
+    │   ├─ Mark JSON as canonical, docs as reflection         │
+    │   └─ Capture initial orchestration-domains.json state   │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 2: Phase 2: Registry Auto-Generation           │
+    │   ├─ Wire catalog-sequences.json as input               │
+    │   ├─ Merge system-level sequence files                  │
+    │   └─ Run generator script for orchestration-domains.json│
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 3: Phase 3: MusicalSequence Enrichment         │
+    │   ├─ Inject tempo, key, timeSignature, category         │
+    │   ├─ Derive human-readable beat names from events       │
+    │   └─ Ensure movements + beats present for each sequence │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 4: Phase 4: Documentation Reflection           │
+    │   ├─ Align width, show sequence metadata header         │
+    │   ├─ Produce domains & execution flow docs              │
+    │   └─ Produce Mermaid system + relationships diagrams    │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 5: Phase 5: Audit Validation                   │
+    │   ├─ Execute audit-orchestration.js validator           │
+    │   ├─ Check MusicalSequence fields present               │
+    │   └─ Ensure docs reflect registry state                 │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 6: Phase 6: Integrity Governance               │
+    │   ├─ Add hash metadata to JSON artifacts                │
+    │   ├─ Provide context_integrity.py operations            │
+    │   └─ Detect hash mismatch (expected pre-canonical)      │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 7: Phase 7: Context Session Documentation      │
+    │   ├─ Add gen-context-session-docs script                │
+    │   ├─ Generate orchestration-audit-session-context.md    │
+    │   └─ Integrate generation into pre:manifests            │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 8: Phase 8: Canonical Hash Refinement          │
+    │   ├─ Specify hash field omission rules                  │
+    │   ├─ Compute hash ignoring integrity block              │
+    │   └─ Run integrity audit expecting stable lock          │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages/ographx/.ographx/sequences/orchestration-audit-system.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Movements:** 8
+
+**Beats:** 24
+
+**Status:** active
+
+---
+
+### 60. 🎼 self_sequences
 
 **ID:** `self_sequences`
 
