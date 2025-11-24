@@ -16,7 +16,7 @@
     "clean:all": "node scripts/clean-all-caches.js",
     "dev:clean": "npm run rebuild:mc && npm run clean:vite && npm run dev",
     "debug:sourcemaps": "node scripts/debug-sourcemaps.js",
-    "build": "npm run build:all && npm run regenerate:ographx",
+    "build": "npm run validate:domains && npm run build:all && npm run regenerate:ographx",
     "regenerate:ographx": "node scripts/run-python.js packages/ographx/generators/regenerate_all.py",
     "regenerate:ographx:test-graph": "node scripts/run-python.js packages/ographx/generators/generate_test_graph.py",
     "regenerate:ographx:sequences": "node scripts/run-python.js packages/ographx/generators/generate_self_sequences.py",
@@ -130,7 +130,10 @@
     "enforce:pipeline": "node scripts/enforce-delivery-pipeline.js",
     "verify:no-drift": "node scripts/pre-build-pipeline-check.js",
     "new:feature": "node scripts/interactive-bdd-wizard.js",
-    "recover:feature": "node scripts/auto-recovery.js"
+    "recover:feature": "node scripts/auto-recovery.js",
+    "validate:domains": "node scripts/validate-domain-authorities.js",
+    "ci:domains": "npm run validate:domains",
+    "prebuild:domains": "npm run validate:domains"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",

@@ -1,0 +1,41 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2025-11-24T22:55:00Z",
+  "description": "Global domain registration index. Each domain authority must be registered here for lineage, link resolution, and validation.",
+  "registry_principles": [
+    "Registry is append-only for active domains (mutations via lifecycle changes)",
+    "All domain_ids are globally unique",
+    "Lineage hashes are recomputed at validation time",
+    "Deprecation retains record but marks domain non-linkable unless migration"
+  ],
+  "domains": {
+    "orchestration-core": {
+      "domain_id": "orchestration-core",
+      "domain_type": "orchestration",
+      "status": "active",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [],
+      "checksum": "",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "Platform-Orchestration"
+    },
+    "telemetry-pipeline": {
+      "domain_id": "telemetry-pipeline",
+      "domain_type": "workflow",
+      "status": "active",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": ["orchestration-core"],
+      "checksum": "",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "Platform-Telemetry"
+    }
+  },
+  "meta": {
+    "active_count": 2,
+    "deprecated_count": 0,
+    "retired_count": 0,
+    "last_validation": null
+  }
+}

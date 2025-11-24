@@ -1,0 +1,110 @@
+{
+  "version": "0.1.0",
+  "purpose": "Canonical schema for all domain-level JSON authorities (processes, entities, workflows, policies, sprints, sessions, orchestration domains, CAG contexts).",
+  "principle": "Each domain JSON is an authoritative, bounded context document. Markdown reflections and derivative artifacts must be auto-generated.",
+  "schema": {
+    "domain_id": {"type": "string", "description": "Stable, kebab-case unique identifier (e.g. process-onboarding-flow)."},
+    "domain_type": {"type": "string", "enum": ["process","entity","workflow","policy","sprint","session","capability","service","artifact","orchestration","cag_context"], "description": "Classification for lifecycle & governance rules."},
+    "title": {"type": "string"},
+    "summary": {"type": "string"},
+    "root_context_ref": {"type": "string", "description": "Reference to highest ancestor authority (UNIFIED_GOVERNANCE_AUTHORITY.json or orchestration root)."},
+    "parent_context_refs": {"type": "array", "items": {"type": "string"}, "description": "Immediate upstream domain authorities."},
+    "context_lineage": {"type": "array", "items": {"type": "string"}, "description": "Ordered chain: root → ... → this domain."},
+    "bounded_context": {
+      "in_scope": {"type": "array", "items": {"type": "string"}},
+      "out_of_scope": {"type": "array", "items": {"type": "string"}},
+      "interfaces": {"type": "array", "items": {"type": "string"}, "description": "Declared interaction points with other domains."}
+    },
+    "lifecycle": {
+      "stage": {"type": "string", "enum": ["proposed","active","stable","deprecated","retired"]},
+      "introduced": {"type": "string"},
+      "last_review": {"type": "string"},
+      "next_review_due": {"type": "string"}
+    },
+    "stability": {"score": {"type": "number", "minimum": 0, "maximum": 1}, "volatility_factors": {"type": "array", "items": {"type": "string"}}},
+    "ownership": {
+      "team": {"type": "string"},
+      "primary_contact": {"type": "string"},
+      "accountable_role": {"type": "string"}
+    },
+    "governance": {
+      "inherited_rules": {"type": "array", "items": {"type": "string"}},
+      "overrides": {"type": "array", "items": {"type": "object"}},
+      "non_overridable": {"type": "array", "items": {"type": "string"}}
+    },
+    "artifacts": {
+      "json_sources": {"type": "array", "items": {"type": "string"}},
+      "generated_markdown": {"type": "array", "items": {"type": "string"}},
+      "generated_code": {"type": "array", "items": {"type": "string"}},
+      "generated_tests": {"type": "array", "items": {"type": "string"}}
+    },
+    "cross_domain_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "link_id": {"type": "string"},
+          "target_domain_id": {"type": "string"},
+          "relation_type": {"type": "string", "enum": ["depends_on","provides","extends","composes","implements","observes"]},
+          "strength": {"type": "string", "enum": ["weak","moderate","strong"]},
+          "rationale": {"type": "string"},
+          "version": {"type": "string"}
+        },
+        "required": ["link_id","target_domain_id","relation_type"]
+      }
+    },
+    "metrics": {
+      "kpis": {"type": "array", "items": {"type": "string"}},
+      "leading_indicators": {"type": "array", "items": {"type": "string"}},
+      "quality_gates": {"type": "array", "items": {"type": "string"}}
+    },
+    "validation_rules": {"type": "array", "items": {"type": "string"}},
+    "decision_log_refs": {"type": "array", "items": {"type": "string"}},
+    "provenance": {
+      "created_by": {"type": "string"},
+      "created_at": {"type": "string"},
+      "lineage_hash": {"type": "string", "description": "Deterministic hash of (root_context_ref + context_lineage + domain_id)."},
+      "integrity_checksum": {"type": "string", "description": "SHA256 of canonical serialized domain JSON."}
+    }
+  },
+  "creation_decision_logic": {
+    "when_to_create_new_domain_json": [
+      "A persisted workflow spans > 2 sprints and triggers cross-team coordination.",
+      "A process has automated enforcement rules or generators tied to it.",
+      "An entity model influences storage, API, and UI layers (cross-layer impact).",
+      "A policy introduces constraints requiring build-time or runtime validation."
+    ],
+    "do_not_create_if": [
+      "Ephemeral planning note (single session).",
+      "Ad-hoc experiment without governance impact.",
+      "One-off troubleshooting or transient incident (log belongs elsewhere)."
+    ],
+    "escalate_instead_of_create": [
+      "Overlapping domain discovered (potential duplication).",
+      "Boundary conflict between two active domains.",
+      "Lifecycle stage unclear or ownership missing."
+    ]
+  },
+  "inheritance_rules": {
+    "precedence_order": ["root_context_ref","parent_context_refs (ordered)","this domain"],
+    "override_policy": "Most specific domain may override inherited non-critical rules but MUST NOT override non_overridable from root governance.",
+    "propagation": "Changes in root propagate downward unless explicitly frozen at leaf domain with stability >=0.9.",
+    "lineage_verification": "Recompute lineage_hash and compare against stored value each generation cycle."
+  },
+  "linking_and_resolution": {
+    "registry": "DOMAIN_REGISTRY.json maintains authoritative listing of every domain authority file.",
+    "resolution_algorithm": "Depth-first lineage expansion using parent_context_refs; cycle detection via lineage_hash set membership.",
+    "link_validation": "Each cross_domain_links.target_domain_id must exist in registry and not be deprecated.",
+    "deprecation_flow": "Deprecated domains retain lineage but are excluded from new link creation unless relation_type = 'extends' for migration."
+  },
+  "generation_contract": {
+    "input": "A domain authority JSON matching this schema.",
+    "output_markdown": "docs/domains/[domain_id].md (auto-generated reflection with header).",
+    "output_trace": ".generated/domains/[domain_id]-trace.json (expanded lineage + integrity report).",
+    "header": "<!-- AUTO-GENERATED DOMAIN DOCUMENT - DO NOT EDIT MANUALLY -->",
+    "checksum_field": "provenance.integrity_checksum",
+    "must_include_sections": ["Summary","Bounded Context","Lineage","Governance Overrides","Cross-Domain Links","Lifecycle","Metrics"],
+    "optional_sections": ["Decision Log","Quality Gates","Ownership"],
+    "failure_modes": ["Missing integrity checksum","Invalid lineage hash","Unresolved cross-domain link","Unknown domain_type"]
+  }
+}

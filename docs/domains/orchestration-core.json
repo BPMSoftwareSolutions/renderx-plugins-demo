@@ -1,0 +1,53 @@
+{
+  "domain_id": "orchestration-core",
+  "domain_type": "orchestration",
+  "title": "Orchestration Core",
+  "summary": "Central orchestration domain coordinating sequence graphs, plugin lifecycle, and execution routing.",
+  "root_context_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+  "parent_context_refs": [],
+  "context_lineage": ["UNIFIED_GOVERNANCE_AUTHORITY", "orchestration-core"],
+  "bounded_context": {
+    "in_scope": ["Sequence graph resolution", "Plugin execution routing", "Lifecycle state transitions", "Orchestration telemetry hooks"],
+    "out_of_scope": ["UI rendering", "Business rule authoring", "Data persistence schema"],
+    "interfaces": ["telemetry-pipeline", "plugin-host", "sequence-catalog"]
+  },
+  "lifecycle": {
+    "stage": "active",
+    "introduced": "2025-09-01",
+    "last_review": "2025-11-15"
+  },
+  "stability": {
+    "score": 0.85,
+    "volatility_factors": ["New plugin types", "Sequence refactors"]
+  },
+  "ownership": {
+    "team": "Platform-Orchestration",
+    "primary_contact": "orchestration-lead@company.com",
+    "accountable_role": "Orchestration Architect"
+  },
+  "governance": {
+    "inherited_rules": ["JSON-first policy", "7-layer enforcement"],
+    "overrides": [],
+    "non_overridable": ["core_principles"]
+  },
+  "artifacts": {
+    "json_sources": ["docs/domains/orchestration-core.json"],
+    "generated_markdown": ["docs/domains/orchestration-core.md"],
+    "generated_code": [],
+    "generated_tests": []
+  },
+  "cross_domain_links": [],
+  "metrics": {
+    "kpis": ["Avg orchestration latency < 50ms", "Plugin activation success > 99%"],
+    "leading_indicators": ["Pending sequence graph mutations", "Telemetry pipeline lag"],
+    "quality_gates": ["All sequence handlers registered", "No orphaned plugin lifecycle events"]
+  },
+  "validation_rules": ["No direct DB writes", "All plugin state transitions audited"],
+  "decision_log_refs": [],
+  "provenance": {
+    "created_by": "system-migration",
+    "created_at": "2025-11-24T22:58:00Z",
+    "lineage_hash": "",
+    "integrity_checksum": ""
+  }
+}

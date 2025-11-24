@@ -399,4 +399,59 @@
   },
 
   "policy_statement_unified": "From this point forward, the renderx-plugins-demo repository operates under the UNIFIED governance framework combining root file placement (System A) and JSON-driven automation (System B). This file (UNIFIED_GOVERNANCE_AUTHORITY.json) is the authoritative master for all governance. No competing governance systems will be created. All packages and components inherit from this framework. All enforcement layers work together to prevent violations of both systems' rules."
+,
+  "domain_governance": {
+    "purpose": "Establish scalable, lineage-aware domain authorities for processes, workflows, entities, policies, sessions, and orchestration contexts.",
+    "schema_ref": "DOMAIN_AUTHORITY_SCHEMA.json",
+    "registry_ref": "DOMAIN_REGISTRY.json",
+    "creation_logic_ref": "DOMAIN_AUTHORITY_SCHEMA.json: creation_decision_logic",
+    "principles": [
+      "Domain JSON is the only authoritative representation of a bounded context.",
+      "Markdown reflections under docs/domains/ are auto-generated only.",
+      "All domain link resolution requires registration in DOMAIN_REGISTRY.json.",
+      "Lineage integrity enforced via deterministic lineage_hash recomputation.",
+      "Links to deprecated domains require explicit migration relation_type=extends."
+    ],
+    "required_sections_in_markdown": ["Summary","Bounded Context","Lineage","Governance Overrides","Cross-Domain Links","Lifecycle","Metrics"],
+    "validation_pipeline": {
+      "scripts": ["scripts/validate-domain-authorities.js"],
+      "ci_workflow": ".github/workflows/verify-domains.yml",
+      "build_integration": "npm run validate:domains executed pre-build",
+      "failure_conditions": [
+        "Schema missing required keys (domain_id, domain_type, provenance)",
+        "Lineage hash mismatch",
+        "Unresolved cross-domain link",
+        "Checksum mismatch",
+        "Link to deprecated domain without migration relation"
+      ],
+      "non_blocking": ["Missing integrity checksum (allowed until first generation)"]
+    },
+    "inheritance_and_lineage": {
+      "lineage_source": "root_context_ref + parent_context_refs + domain_id",
+      "override_policy": "Leaf domain may override non-critical inherited rules but cannot override core_principles or non_overridable governance keys.",
+      "propagation": "Root changes propagate unless domain stability score >=0.9 (frozen).",
+      "verification": "Lineage hash recomputed each validation pass and compared to stored value (if present)."
+    },
+    "creation_decision_summary": {
+      "create_when": [
+        "Workflow spans >2 sprints and crosses team boundaries",
+        "Process has enforcement or generation mechanics",
+        "Entity impacts multiple architectural layers",
+        "Policy introduces systemic constraints"
+      ],
+      "do_not_create_when": [
+        "Ephemeral single-session notes",
+        "One-off experiments without governance impact",
+        "Transient incident logs"
+      ],
+      "escalate_instead": ["Overlapping domain detected","Boundary conflict","Ownership unclear"]
+    },
+    "governance_alignment": {
+      "json_first": true,
+      "auto_generated_markdown_header": "<!-- AUTO-GENERATED DOMAIN DOCUMENT - DO NOT EDIT MANUALLY -->",
+      "enforcement_layers": [1,2,4,5,6],
+      "drift_prevention": "Manual docs/domains/*.md without JSON authority cause validation failure",
+      "registry_required": true
+    }
+  }
 }
