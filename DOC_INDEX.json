@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "generated": "2025-11-24T02:30:00.000Z",
+  "description": "Documentation Index - Single Source of Truth for all generated documentation",
+  "governance": {
+    "authority": "JSON is authority. Markdown is reflection.",
+    "rule": "All docs are generated from JSON. DO NOT EDIT generated markdown files.",
+    "enforcement": "CI fails if doc hash doesn't match source JSON hash"
+  },
+  "docs": [
+    {
+      "id": "cag-system-overview",
+      "title": "CAG System Overview",
+      "kind": "conceptual",
+      "role": "narrative-core",
+      "audience": ["architects", "agents", "developers"],
+      "description": "High-level explanation of Context-Augmented Generation and how it prevents drift",
+      "sourceJson": [
+        "SHAPE_EVOLUTION_PLAN.json",
+        "knowledge-index.json",
+        "root-context.json"
+      ],
+      "context": {
+        "rootGoalId": "telemetry-driven-feature-shape-governance",
+        "subContextIds": [
+          "governance-core",
+          "context-remounting",
+          "consciousness-loop"
+        ],
+        "boundaries": {
+          "inScopeTags": ["governance", "cag", "context", "consciousness"],
+          "outOfScopeTags": ["implementation-details", "demo-only", "internal-only"]
+        }
+      },
+      "generation": {
+        "templateId": "doc/cag-system-overview.mdx.hbs",
+        "lastGeneratedFromHash": "sha256:cag-system-architecture-v1",
+        "docHash": "sha256:cag-overview-md-v1",
+        "lastGenerated": "2025-11-24T02:30:00.000Z"
+      },
+      "sectionMap": [
+        {
+          "sectionId": "what-is-cag",
+          "jsonSource": "CAG_SYSTEM_ARCHITECTURE.md#what-is-cag",
+          "docAnchors": ["#what-is-cag", "#cag-definition"]
+        },
+        {
+          "sectionId": "cag-loop",
+          "jsonSource": "root-context.json#/contextLayers",
+          "docAnchors": ["#the-cag-loop", "#8-step-loop"]
+        }
+      ]
+    },
+    {
+      "id": "governance-overview",
+      "title": "Governance Overview",
+      "kind": "conceptual",
+      "role": "narrative-core",
+      "audience": ["architects", "agents"],
+      "description": "How governance is the root system that everything else expresses",
+      "sourceJson": [
+        "SHAPE_EVOLUTION_PLAN.json",
+        "knowledge-index.json"
+      ],
+      "context": {
+        "rootGoalId": "telemetry-driven-feature-shape-governance",
+        "subContextIds": [
+          "governance-core",
+          "governance-expressions",
+          "governance-validation"
+        ],
+        "boundaries": {
+          "inScopeTags": ["governance", "shape", "telemetry", "evolution"],
+          "outOfScopeTags": ["implementation-details", "demo-ui"]
+        }
+      },
+      "generation": {
+        "templateId": "doc/governance-overview.mdx.hbs",
+        "lastGeneratedFromHash": "sha256:shape-evolution-plan-v1",
+        "docHash": "sha256:governance-overview-md-v1",
+        "lastGenerated": "2025-11-24T02:30:00.000Z"
+      }
+    },
+    {
+      "id": "context-tree-mapper-guide",
+      "title": "Context Tree Mapper Guide",
+      "kind": "operational-guide",
+      "role": "agent-brief",
+      "audience": ["agents", "developers"],
+      "description": "How to map the context of any file in the repository",
+      "sourceJson": [
+        "root-context.json",
+        "knowledge-index.json"
+      ],
+      "context": {
+        "rootGoalId": "telemetry-driven-feature-shape-governance",
+        "subContextIds": [
+          "context-mapping",
+          "traceability",
+          "agent-guidance"
+        ],
+        "boundaries": {
+          "inScopeTags": ["context", "mapping", "traceability"],
+          "outOfScopeTags": ["implementation-details"]
+        }
+      },
+      "generation": {
+        "templateId": "doc/context-tree-mapper-guide.mdx.hbs",
+        "lastGeneratedFromHash": "sha256:cag-context-tree-mapper-v1",
+        "docHash": "sha256:context-tree-mapper-guide-md-v1",
+        "lastGenerated": "2025-11-24T02:30:00.000Z"
+      }
+    },
+    {
+      "id": "shape-evolution-spec",
+      "title": "Shape Evolution Specification",
+      "kind": "spec-view",
+      "role": "spec-view",
+      "audience": ["developers", "agents"],
+      "description": "Human-readable view of shape evolution contracts and requirements",
+      "sourceJson": [
+        "SHAPE_EVOLUTION_PLAN.json",
+        "shape-evolutions.json",
+        "shape.budgets.json"
+      ],
+      "context": {
+        "rootGoalId": "telemetry-driven-feature-shape-governance",
+        "subContextIds": [
+          "shape-persistence",
+          "shape-diffing",
+          "shape-budgets",
+          "shape-contracts"
+        ],
+        "boundaries": {
+          "inScopeTags": ["shape", "evolution", "contracts", "budgets"],
+          "outOfScopeTags": ["demo-only"]
+        }
+      },
+      "generation": {
+        "templateId": "doc/shape-evolution-spec.mdx.hbs",
+        "lastGeneratedFromHash": "sha256:shape-evolution-plan-v1",
+        "docHash": "sha256:shape-evolution-spec-md-v1",
+        "lastGenerated": "2025-11-24T02:30:00.000Z"
+      }
+    },
+    {
+      "id": "agent-governance-brief",
+      "title": "Agent Governance Brief",
+      "kind": "operational-guide",
+      "role": "agent-brief",
+      "audience": ["agents"],
+      "description": "Strict, executable instructions for agents operating within governance",
+      "sourceJson": [
+        "root-context.json",
+        "SHAPE_EVOLUTION_PLAN.json"
+      ],
+      "context": {
+        "rootGoalId": "telemetry-driven-feature-shape-governance",
+        "subContextIds": [
+          "agent-guidance",
+          "governance-rules",
+          "telemetry-requirements"
+        ],
+        "boundaries": {
+          "inScopeTags": ["governance", "agent", "rules", "telemetry"],
+          "outOfScopeTags": ["narrative", "examples", "demo"]
+        }
+      },
+      "generation": {
+        "templateId": "doc/agent-governance-brief.mdx.hbs",
+        "lastGeneratedFromHash": "sha256:root-context-v1",
+        "docHash": "sha256:agent-governance-brief-md-v1",
+        "lastGenerated": "2025-11-24T02:30:00.000Z",
+        "constraints": {
+          "maxLength": 500,
+          "style": "strict",
+          "machineReadable": true
+        }
+      }
+    },
+    {
+      "id": "cag-agent-workflow",
+      "title": "CAG Agent Workflow",
+      "kind": "operational-guide",
+      "role": "agent-brief",
+      "audience": ["agents", "developers"],
+      "description": "8-phase workflow for agents operating within the Context-Augmented Generation system",
+      "sourceJson": [
+        "packages/ographx/.ographx/sequences/cag-agent-workflow.json",
+        "root-context.json",
+        "SHAPE_EVOLUTION_PLAN.json"
+      ],
+      "context": {
+        "rootGoalId": "telemetry-driven-feature-shape-governance",
+        "subContextIds": [
+          "agent-workflow",
+          "context-remounting",
+          "verification-points",
+          "telemetry-emission"
+        ],
+        "boundaries": {
+          "inScopeTags": ["cag", "agent", "workflow", "orchestration", "governance"],
+          "outOfScopeTags": ["implementation-details", "demo-only"]
+        }
+      },
+      "generation": {
+        "templateId": "doc/cag-agent-workflow.mdx.hbs",
+        "lastGeneratedFromHash": "sha256:cag-agent-workflow-sequence-v1",
+        "docHash": "sha256:cag-agent-workflow-md-v1",
+        "lastGenerated": "2025-11-24T02:45:00.000Z"
+      },
+      "sectionMap": [
+        {
+          "sectionId": "overview",
+          "jsonSource": "packages/ographx/.ographx/sequences/cag-agent-workflow.json#/description",
+          "docAnchors": ["#overview"]
+        },
+        {
+          "sectionId": "8-phases",
+          "jsonSource": "packages/ographx/.ographx/sequences/cag-agent-workflow.json#/movements",
+          "docAnchors": ["#the-8-phases", "#phase-1-context-loading"]
+        },
+        {
+          "sectionId": "verification-points",
+          "jsonSource": "root-context.json#/verificationPoints",
+          "docAnchors": ["#verification-points"]
+        }
+      ]
+    }
+  ],
+  "docRoles": {
+    "narrative-core": {
+      "description": "High-level conceptual documentation",
+      "audience": ["architects", "agents"],
+      "style": "narrative",
+      "maxLength": null,
+      "examples": ["CAG System Overview", "Governance Overview"]
+    },
+    "operational-guide": {
+      "description": "How-to guides and operational procedures",
+      "audience": ["developers", "agents"],
+      "style": "procedural",
+      "maxLength": 2000,
+      "examples": ["Context Tree Mapper Guide"]
+    },
+    "spec-view": {
+      "description": "Human-readable view of specifications and contracts",
+      "audience": ["developers", "agents"],
+      "style": "structured",
+      "maxLength": 3000,
+      "examples": ["Shape Evolution Specification"]
+    },
+    "agent-brief": {
+      "description": "Strict, executable instructions for AI agents",
+      "audience": ["agents"],
+      "style": "strict",
+      "maxLength": 500,
+      "machineReadable": true,
+      "examples": ["Agent Governance Brief"]
+    }
+  },
+  "templates": {
+    "doc/cag-system-overview.mdx.hbs": {
+      "path": "docs/templates/cag-system-overview.mdx.hbs",
+      "role": "narrative-core",
+      "inputs": ["SHAPE_EVOLUTION_PLAN.json", "knowledge-index.json", "root-context.json"]
+    },
+    "doc/governance-overview.mdx.hbs": {
+      "path": "docs/templates/governance-overview.mdx.hbs",
+      "role": "narrative-core",
+      "inputs": ["SHAPE_EVOLUTION_PLAN.json", "knowledge-index.json"]
+    },
+    "doc/context-tree-mapper-guide.mdx.hbs": {
+      "path": "docs/templates/context-tree-mapper-guide.mdx.hbs",
+      "role": "agent-brief",
+      "inputs": ["root-context.json", "knowledge-index.json"]
+    },
+    "doc/shape-evolution-spec.mdx.hbs": {
+      "path": "docs/templates/shape-evolution-spec.mdx.hbs",
+      "role": "spec-view",
+      "inputs": ["SHAPE_EVOLUTION_PLAN.json", "shape-evolutions.json", "shape.budgets.json"]
+    },
+    "doc/agent-governance-brief.mdx.hbs": {
+      "path": "docs/templates/agent-governance-brief.mdx.hbs",
+      "role": "agent-brief",
+      "inputs": ["root-context.json", "SHAPE_EVOLUTION_PLAN.json"]
+    }
+  },
+  "governance": {
+    "rules": [
+      "All documentation is generated from JSON sources",
+      "DO NOT EDIT generated markdown files directly",
+      "Modify JSON sources and regenerate documentation",
+      "CI enforces hash matching between JSON and generated docs",
+      "Each doc must declare its role and audience",
+      "Each doc must map back to source JSON",
+      "Agent briefs must be machine-readable and strict"
+    ]
+  }
+}
+
