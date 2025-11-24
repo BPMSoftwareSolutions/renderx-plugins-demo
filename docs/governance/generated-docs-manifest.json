@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "generated": [
+    {
+      "id": "slo-traceability-plan-md",
+      "source": "docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.json",
+      "output": "docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.md",
+      "generator": "scripts/generate-governance-docs.cjs",
+      "hash_strategy": "sha256(json_source)",
+      "auto_generated_header": "<!-- GOVERNANCE: AUTO-GENERATED source=SLO_DASHBOARD_TRACEABILITY_PLAN.json -->"
+    }
+  ]
+}
