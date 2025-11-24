@@ -124,6 +124,7 @@
     "allocate:json-files": "node scripts/allocate-json-files.js",
     "relocate:json-files": "node scripts/relocate-json-files.js",
     "cleanup:final": "node scripts/cleanup-final.js",
+    "verify:root-cleanliness": "node scripts/verify-root-cleanliness.js",
     "evaluate:slos": "node scripts/evaluate-slos.js",
     "diagnose:renderx-web": "node scripts/renderx-web-diagnostics.js",
     "enforce:pipeline": "node scripts/enforce-delivery-pipeline.js",
