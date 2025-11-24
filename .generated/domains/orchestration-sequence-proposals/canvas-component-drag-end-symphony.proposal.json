@@ -1,0 +1,51 @@
+{
+  "proposalId": "canvas-component-drag-end-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "deferred",
+  "priorityScore": 0,
+  "sequenceType": "orchestration",
+  "featurePresence": false,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "exploration",
+      "name": "Exploration Scaffold",
+      "triggerTopic": "canvas-component-drag-end-symphony.requested",
+      "emits": [
+        "canvas-component-drag-end-symphony.completed"
+      ],
+      "handlers": [
+        "noopExploration"
+      ],
+      "notes": "No feature-level signals yet; minimal orchestration scaffold."
+    }
+  ],
+  "failure": {
+    "errorTopic": "canvas-component-drag-end-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "canvas-component-drag-end-symphony.total"
+    ],
+    "timers": [
+      "canvas-component-drag-end-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.576Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-drag-end-symphony.json",
+    "generationGroup": "deferred",
+    "reason": "Below threshold; scaffold for future evolution."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "proposalId": "canvas-component-update-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "ready",
+  "priorityScore": 22.8,
+  "sequenceType": "orchestration",
+  "featurePresence": true,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "intake",
+      "name": "Request Intake",
+      "triggerTopic": "canvas-component-update-symphony.requested",
+      "emits": [
+        "canvas-component-update-symphony.validated"
+      ],
+      "handlers": [
+        "validateIntent"
+      ]
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "triggerTopic": "canvas-component-update-symphony.validated",
+      "emits": [
+        "canvas-component-update-symphony.enriched"
+      ],
+      "handlers": [
+        "enrichIntent"
+      ]
+    },
+    {
+      "id": "commit",
+      "name": "Commit",
+      "triggerTopic": "canvas-component-update-symphony.enriched",
+      "emits": [
+        "canvas-component-update-symphony.committed"
+      ],
+      "handlers": [
+        "persistRecord",
+        "registerStructures"
+      ],
+      "atomic": true
+    },
+    {
+      "id": "activation",
+      "name": "Activation",
+      "triggerTopic": "canvas-component-update-symphony.committed",
+      "emits": [
+        "canvas-component-update-symphony.activated"
+      ],
+      "handlers": [
+        "emitActivationEvents",
+        "updateSelection"
+      ]
+    },
+    {
+      "id": "telemetry",
+      "name": "Telemetry & History",
+      "triggerTopic": "canvas-component-update-symphony.activated",
+      "emits": [
+        "canvas-component-update-symphony.completed"
+      ],
+      "handlers": [
+        "recordHistory",
+        "publishSummary"
+      ]
+    }
+  ],
+  "failure": {
+    "errorTopic": "canvas-component-update-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "canvas-component-update-symphony.total"
+    ],
+    "timers": [
+      "canvas-component-update-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.571Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-update-symphony.json",
+    "generationGroup": "ready",
+    "reason": "Meets priority threshold; orchestration absent."
+  }
+}

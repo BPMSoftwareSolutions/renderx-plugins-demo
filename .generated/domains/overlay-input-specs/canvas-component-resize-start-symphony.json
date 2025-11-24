@@ -1,0 +1,51 @@
+{
+  "domainId": "canvas-component-resize-start-symphony",
+  "domainName": "Canvas Component Resize Start",
+  "existingOverlayPresent": false,
+  "category": "plugin",
+  "pluginId": "CanvasComponentResizeStartPlugin",
+  "handlers": [
+    {
+      "name": "startResize",
+      "testCount": 0
+    }
+  ],
+  "topics": [
+    {
+      "name": "canvas:component:resize:start"
+    }
+  ],
+  "tests": [
+    {
+      "filePath": "\\packages\\canvas-component\\__tests__\\resize.stage-crew.handlers.spec.ts"
+    }
+  ],
+  "featureSequences": [
+    "canvas-component-resize-start-symphony"
+  ],
+  "gaps": {
+    "untestedHandlers": [
+      "startResize"
+    ],
+    "orphanTopics": [
+      "canvas:component:resize:start"
+    ],
+    "unsequencedHandlers": []
+  },
+  "complexity": {
+    "handlerCount": 1,
+    "topicCount": 1,
+    "interactionEdges": 8
+  },
+  "priorityScore": 4.3,
+  "provenance": {
+    "sources": {
+      "orchestrationDomains": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\docs\\governance\\orchestration-domains.json",
+      "externalInteractionsAudit": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\analysis\\external-interactions-audit.json",
+      "irHandlers": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handlers.json",
+      "irSequences": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-sequences.json",
+      "irHandlerTests": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handler-tests.json"
+    },
+    "generatedAt": "2025-11-24T22:34:22.607Z"
+  }
+}

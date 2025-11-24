@@ -1,0 +1,51 @@
+{
+  "proposalId": "control-panel-update-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "deferred",
+  "priorityScore": 0,
+  "sequenceType": "orchestration",
+  "featurePresence": false,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "exploration",
+      "name": "Exploration Scaffold",
+      "triggerTopic": "control-panel-update-symphony.requested",
+      "emits": [
+        "control-panel-update-symphony.completed"
+      ],
+      "handlers": [
+        "noopExploration"
+      ],
+      "notes": "No feature-level signals yet; minimal orchestration scaffold."
+    }
+  ],
+  "failure": {
+    "errorTopic": "control-panel-update-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "control-panel-update-symphony.total"
+    ],
+    "timers": [
+      "control-panel-update-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.589Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-update-symphony.json",
+    "generationGroup": "deferred",
+    "reason": "Below threshold; scaffold for future evolution."
+  }
+}

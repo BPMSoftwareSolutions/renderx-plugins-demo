@@ -1,0 +1,51 @@
+{
+  "proposalId": "header-ui-theme-toggle-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "deferred",
+  "priorityScore": 0,
+  "sequenceType": "orchestration",
+  "featurePresence": false,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "exploration",
+      "name": "Exploration Scaffold",
+      "triggerTopic": "header-ui-theme-toggle-symphony.requested",
+      "emits": [
+        "header-ui-theme-toggle-symphony.completed"
+      ],
+      "handlers": [
+        "noopExploration"
+      ],
+      "notes": "No feature-level signals yet; minimal orchestration scaffold."
+    }
+  ],
+  "failure": {
+    "errorTopic": "header-ui-theme-toggle-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "header-ui-theme-toggle-symphony.total"
+    ],
+    "timers": [
+      "header-ui-theme-toggle-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.590Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\header-ui-theme-toggle-symphony.json",
+    "generationGroup": "deferred",
+    "reason": "Below threshold; scaffold for future evolution."
+  }
+}

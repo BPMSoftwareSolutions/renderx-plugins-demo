@@ -1,0 +1,98 @@
+{
+  "proposalId": "canvas-component-resize-move-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "ready",
+  "priorityScore": 8.6,
+  "sequenceType": "orchestration",
+  "featurePresence": true,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "intake",
+      "name": "Request Intake",
+      "triggerTopic": "canvas-component-resize-move-symphony.requested",
+      "emits": [
+        "canvas-component-resize-move-symphony.validated"
+      ],
+      "handlers": [
+        "validateIntent"
+      ]
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "triggerTopic": "canvas-component-resize-move-symphony.validated",
+      "emits": [
+        "canvas-component-resize-move-symphony.enriched"
+      ],
+      "handlers": [
+        "enrichIntent"
+      ]
+    },
+    {
+      "id": "commit",
+      "name": "Commit",
+      "triggerTopic": "canvas-component-resize-move-symphony.enriched",
+      "emits": [
+        "canvas-component-resize-move-symphony.committed"
+      ],
+      "handlers": [
+        "persistRecord",
+        "registerStructures"
+      ],
+      "atomic": true
+    },
+    {
+      "id": "activation",
+      "name": "Activation",
+      "triggerTopic": "canvas-component-resize-move-symphony.committed",
+      "emits": [
+        "canvas-component-resize-move-symphony.activated"
+      ],
+      "handlers": [
+        "emitActivationEvents",
+        "updateSelection"
+      ]
+    },
+    {
+      "id": "telemetry",
+      "name": "Telemetry & History",
+      "triggerTopic": "canvas-component-resize-move-symphony.activated",
+      "emits": [
+        "canvas-component-resize-move-symphony.completed"
+      ],
+      "handlers": [
+        "recordHistory",
+        "publishSummary"
+      ]
+    }
+  ],
+  "failure": {
+    "errorTopic": "canvas-component-resize-move-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "canvas-component-resize-move-symphony.total"
+    ],
+    "timers": [
+      "canvas-component-resize-move-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.572Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-resize-move-symphony.json",
+    "generationGroup": "ready",
+    "reason": "Meets priority threshold; orchestration absent."
+  }
+}

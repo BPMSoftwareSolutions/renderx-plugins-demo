@@ -94,6 +94,9 @@ function main(){
     run('Export domain link graph', 'node scripts/export-domain-link-graph.cjs');
     run('Analyze domain volatility trend', 'node scripts/analyze-domain-volatility.cjs');
     run('Compute domain risk assessment', 'node scripts/domain-risk-assessment.cjs');
+    // Overlay discovery (non-invasive)
+    run('Generate overlay input specs', 'node scripts/generate-overlay-input-specs.cjs');
+    run('Detect missing domain overlays', 'node scripts/detect-missing-domain-overlays.cjs');
 
   // Telemetry aggregation for orchestration-core
   const domainPath = path.resolve('docs','domains','orchestration-core.json');

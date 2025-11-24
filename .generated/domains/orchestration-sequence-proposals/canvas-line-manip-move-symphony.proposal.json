@@ -1,0 +1,51 @@
+{
+  "proposalId": "canvas-line-manip-move-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "deferred",
+  "priorityScore": 0,
+  "sequenceType": "orchestration",
+  "featurePresence": false,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "exploration",
+      "name": "Exploration Scaffold",
+      "triggerTopic": "canvas-line-manip-move-symphony.requested",
+      "emits": [
+        "canvas-line-manip-move-symphony.completed"
+      ],
+      "handlers": [
+        "noopExploration"
+      ],
+      "notes": "No feature-level signals yet; minimal orchestration scaffold."
+    }
+  ],
+  "failure": {
+    "errorTopic": "canvas-line-manip-move-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "canvas-line-manip-move-symphony.total"
+    ],
+    "timers": [
+      "canvas-line-manip-move-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.580Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-line-manip-move-symphony.json",
+    "generationGroup": "deferred",
+    "reason": "Below threshold; scaffold for future evolution."
+  }
+}

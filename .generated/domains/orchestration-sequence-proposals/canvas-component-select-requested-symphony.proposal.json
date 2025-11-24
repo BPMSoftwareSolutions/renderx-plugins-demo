@@ -1,0 +1,98 @@
+{
+  "proposalId": "canvas-component-select-requested-symphony",
+  "layer": "orchestration",
+  "version": 1,
+  "status": "proposal",
+  "readiness": "ready",
+  "priorityScore": 22.8,
+  "sequenceType": "orchestration",
+  "featurePresence": true,
+  "existingOrchestrationSequence": false,
+  "businessBddFiles": [],
+  "correlation": {
+    "idStrategy": "uuid-v4"
+  },
+  "phases": [
+    {
+      "id": "intake",
+      "name": "Request Intake",
+      "triggerTopic": "canvas-component-select-requested-symphony.requested",
+      "emits": [
+        "canvas-component-select-requested-symphony.validated"
+      ],
+      "handlers": [
+        "validateIntent"
+      ]
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "triggerTopic": "canvas-component-select-requested-symphony.validated",
+      "emits": [
+        "canvas-component-select-requested-symphony.enriched"
+      ],
+      "handlers": [
+        "enrichIntent"
+      ]
+    },
+    {
+      "id": "commit",
+      "name": "Commit",
+      "triggerTopic": "canvas-component-select-requested-symphony.enriched",
+      "emits": [
+        "canvas-component-select-requested-symphony.committed"
+      ],
+      "handlers": [
+        "persistRecord",
+        "registerStructures"
+      ],
+      "atomic": true
+    },
+    {
+      "id": "activation",
+      "name": "Activation",
+      "triggerTopic": "canvas-component-select-requested-symphony.committed",
+      "emits": [
+        "canvas-component-select-requested-symphony.activated"
+      ],
+      "handlers": [
+        "emitActivationEvents",
+        "updateSelection"
+      ]
+    },
+    {
+      "id": "telemetry",
+      "name": "Telemetry & History",
+      "triggerTopic": "canvas-component-select-requested-symphony.activated",
+      "emits": [
+        "canvas-component-select-requested-symphony.completed"
+      ],
+      "handlers": [
+        "recordHistory",
+        "publishSummary"
+      ]
+    }
+  ],
+  "failure": {
+    "errorTopic": "canvas-component-select-requested-symphony.failed",
+    "compensationHandlers": [
+      "compensateAttempt"
+    ],
+    "emitOnAnyPhaseError": true
+  },
+  "telemetry": {
+    "counters": [
+      "canvas-component-select-requested-symphony.total"
+    ],
+    "timers": [
+      "canvas-component-select-requested-symphony.duration_ms"
+    ]
+  },
+  "proposalMeta": {
+    "generatedAt": "2025-11-24T22:58:29.571Z",
+    "sourceReport": ".generated/domains/missing-sequences-report.json",
+    "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-select-requested-symphony.json",
+    "generationGroup": "ready",
+    "reason": "Meets priority threshold; orchestration absent."
+  }
+}

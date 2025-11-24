@@ -1,0 +1,32 @@
+{
+  "domainId": "control-panel-ui-field-change-symphony",
+  "domainName": "Control Panel UI Field Change",
+  "existingOverlayPresent": false,
+  "category": "plugin",
+  "pluginId": "ControlPanelPlugin",
+  "handlers": [],
+  "topics": [],
+  "tests": [],
+  "featureSequences": [],
+  "gaps": {
+    "untestedHandlers": [],
+    "orphanTopics": [],
+    "unsequencedHandlers": []
+  },
+  "complexity": {
+    "handlerCount": 0,
+    "topicCount": 0,
+    "interactionEdges": 0
+  },
+  "priorityScore": 0,
+  "provenance": {
+    "sources": {
+      "orchestrationDomains": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\docs\\governance\\orchestration-domains.json",
+      "externalInteractionsAudit": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\analysis\\external-interactions-audit.json",
+      "irHandlers": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handlers.json",
+      "irSequences": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-sequences.json",
+      "irHandlerTests": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handler-tests.json"
+    },
+    "generatedAt": "2025-11-24T22:34:22.615Z"
+  }
+}
