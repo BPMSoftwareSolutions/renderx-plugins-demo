@@ -1,0 +1,400 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-24T22:00:00Z",
+  "policy": "JSON-DRIVEN AUTOMATION - All markdown documentation must be auto-generated from JSON authorities",
+  "principle": "Single source of truth is JSON; Markdown is reflection of JSON",
+  
+  "rationale": {
+    "whyJsonDriven": "JSON is machine-readable, versioned, and can be automatically validated",
+    "whyNoManualMarkdown": "Manual markdown creates drift, inconsistency, and maintenance burden",
+    "enforcementStrategy": "Pre-commit hook, pre-build check, and CI/CD validation prevent manual .md files"
+  },
+
+  "markdownGenerationRules": [
+    {
+      "id": "MG-001",
+      "markdownFile": "CONTEXT_TREE_AUDIT_SESSION.md",
+      "sourceOfTruth": "slo-dashboard-project-plan.json + .generated/slo-dashboard-business-bdd-specifications.json",
+      "generator": "generate-context-tree-audit.js",
+      "frequency": "On-demand (manual trigger or phase completion)",
+      "purpose": "Comprehensive project audit reflecting current phases, tasks, completion status",
+      "sections": [
+        "Project overview (from project-plan.json)",
+        "Phase status (from project-plan.json phases[])",
+        "Task breakdown (from project-plan.json tasks[])",
+        "Implementation status (from specifications.json + handlers)",
+        "Governance layers (from project-plan.json enforcement)"
+      ],
+      "violations": "MANUAL EDIT - Architecture violation if hand-edited",
+      "status": "⚠️ CURRENTLY MANUAL - Must convert to auto-generated"
+    },
+    {
+      "id": "MG-002",
+      "markdownFile": "SESSION_SUMMARY.md",
+      "sourceOfTruth": "slo-dashboard-project-plan.json + CONTEXT_TREE_AUDIT_SESSION.md (generated)",
+      "generator": "generate-session-summary.js",
+      "frequency": "After CONTEXT_TREE_AUDIT_SESSION.md generation",
+      "purpose": "Executive summary with key metrics and critical path",
+      "sections": [
+        "Overall completion (from project-plan.json)",
+        "Phase status (from project-plan.json)",
+        "Metrics dashboard (from project-plan.json + audit)",
+        "Critical path (from project-plan.json tasks with dependencies)"
+      ],
+      "violations": "MANUAL EDIT - Architecture violation if hand-edited",
+      "status": "⚠️ CURRENTLY MANUAL - Must convert to auto-generated"
+    },
+    {
+      "id": "MG-003",
+      "markdownFile": "NEXT_SESSION_HANDOFF.md",
+      "sourceOfTruth": "slo-dashboard-project-plan.json",
+      "generator": "generate-next-session-handoff.js",
+      "frequency": "After task updates or phase completion",
+      "purpose": "Step-by-step guide for continuation with current phase tasks",
+      "sections": [
+        "Quick start (from project-plan.json phases[current])",
+        "Phase tasks (from project-plan.json tasks[] matching current phase)",
+        "Implementation details (from task descriptions)",
+        "Verification steps (generated from task acceptance criteria)",
+        "Success criteria (from project-plan.json phase goals)"
+      ],
+      "violations": "MANUAL EDIT - Architecture violation if hand-edited",
+      "status": "⚠️ CURRENTLY MANUAL - Must convert to auto-generated"
+    },
+    {
+      "id": "MG-004",
+      "markdownFile": "README.md (.generated/ directory)",
+      "sourceOfTruth": "slo-dashboard-project-plan.json + CONTEXT_TREE_AUDIT_SESSION.md",
+      "generator": "generate-directory-readme.js",
+      "frequency": "On-demand (when structure changes)",
+      "purpose": "Navigation guide for .generated/ directory contents",
+      "sections": [
+        "File guide (auto-discovered from .generated/ directory)",
+        "Current project status (from project-plan.json)",
+        "Documentation map (from generated .md files)",
+        "Governance alignment (from project-plan.json enforcement)"
+      ],
+      "violations": "MANUAL EDIT - Architecture violation if hand-edited",
+      "status": "⚠️ CURRENTLY MANUAL - Must convert to auto-generated"
+    },
+    {
+      "id": "MG-005",
+      "markdownFile": "MASTER_INDEX.md",
+      "sourceOfTruth": "slo-dashboard-project-plan.json + all .generated/ files",
+      "generator": "generate-master-index.js",
+      "frequency": "After any .generated/ file changes",
+      "purpose": "Master navigation and reference for entire documentation set",
+      "sections": [
+        "Where to start (from current phase in project-plan.json)",
+        "Documentation map (auto-discovered)",
+        "Project status (from project-plan.json)",
+        "Critical path (from project-plan.json with time estimates)",
+        "Verification checklist (from phase requirements)"
+      ],
+      "violations": "MANUAL EDIT - Architecture violation if hand-edited",
+      "status": "⚠️ CURRENTLY MANUAL - Must convert to auto-generated"
+    },
+    {
+      "id": "MG-006",
+      "markdownFile": "CONTEXT_TREE_INDEX.json.md",
+      "sourceOfTruth": "CONTEXT_TREE_INDEX.json",
+      "generator": "NOT NEEDED - This is JSON, not markdown",
+      "frequency": "N/A",
+      "purpose": "Machine-readable context (JSON format, no markdown needed)",
+      "status": "✅ CORRECT - Keep as JSON authority file"
+    }
+  ],
+
+  "autoGenerationRules": {
+    "rule_1": {
+      "pattern": "*.md files in .generated/",
+      "rule": "ALL .md files in .generated/ MUST be auto-generated from JSON authorities",
+      "exceptions": "NONE - No manual markdown allowed in .generated/",
+      "enforcement": "Pre-build validation will DELETE any manually-created .md files"
+    },
+    "rule_2": {
+      "pattern": "*.md files at package root",
+      "rule": "README.md and RECOVERY_REPORT.md are authorized (human-created)",
+      "exceptions": "These are entry points and recovery documentation",
+      "enforcement": "Manual creation allowed only for authorized root .md files"
+    },
+    "rule_3": {
+      "pattern": "*.json files",
+      "rule": "ALL .json files are authorities (immutable, versioned)",
+      "exceptions": "NONE - .json files are never generated, only manually created/updated",
+      "enforcement": "JSON authorities gate all markdown generation"
+    }
+  },
+
+  "sourceOfTruthHierarchy": {
+    "level_1": {
+      "authority": "slo-dashboard-project-plan.json",
+      "scope": "Project phases, tasks, completion gates, phase status",
+      "immutability": "LOCKED - Changes require phase review",
+      "generatedFrom": "Project requirements and phase gates"
+    },
+    "level_2": {
+      "authority": ".generated/slo-dashboard-business-bdd-specifications.json",
+      "scope": "Business requirements, scenarios, implementation requirements",
+      "immutability": "LOCKED - Checksummed, cannot change without triggering drift",
+      "generatedFrom": "Reverse-engineered from working implementation"
+    },
+    "level_3": {
+      "authority": ".generated/slo-dashboard-drift-config.json",
+      "scope": "Artifact checksums for drift detection",
+      "immutability": "LOCKED - Auto-updated only when specs change",
+      "generatedFrom": "Hash computation from locked specs"
+    },
+    "level_4": {
+      "authority": "SLO_DASHBOARD_FILE_GOVERNANCE.json",
+      "scope": "File organization rules and structure",
+      "immutability": "LOCKED - Changes require governance review",
+      "generatedFrom": "Project architecture and allocation rules"
+    },
+    "level_5_derived": {
+      "markdown_files": "CONTEXT_TREE_AUDIT_SESSION.md, SESSION_SUMMARY.md, etc.",
+      "generated_from": "Combining all JSON authorities",
+      "immutability": "MUTABLE - Regenerated when source JSON changes",
+      "enforcement": "Always regenerate, never hand-edit"
+    }
+  },
+
+  "violationDetectionStrategy": {
+    "layer_1_fileSystemCheck": {
+      "name": "File System Scan",
+      "trigger": "Before build",
+      "check": "Scan .generated/ for .md files not in authorizedMarkdownFiles",
+      "action": "FAIL if unauthorized .md files found"
+    },
+    "layer_2_checksumVerification": {
+      "name": "Content Checksum",
+      "trigger": "Before build",
+      "check": "Compare .md file hash against known good auto-generated hash",
+      "action": "WARN if checksum mismatch detected (manual edit)"
+    },
+    "layer_3_contentAnalysis": {
+      "name": "Content Analysis",
+      "trigger": "Pre-commit hook",
+      "check": "Scan .md files for indicators of manual creation (timestamps, manual edits, inconsistencies)",
+      "action": "BLOCK commit if manual markdown detected"
+    },
+    "layer_4_cicdValidation": {
+      "name": "CI/CD Validation",
+      "trigger": "Before PR merge",
+      "check": "Regenerate all .md files and compare against committed versions",
+      "action": "BLOCK merge if committed .md files differ from auto-generated"
+    }
+  },
+
+  "implementationPhases": {
+    "phase_1_baseline": {
+      "name": "Establish Authority",
+      "timeline": "Immediate",
+      "tasks": [
+        "Create this MARKDOWN_GENERATION_AUTHORITY.json",
+        "Document current violations",
+        "Identify which .md files need generators"
+      ]
+    },
+    "phase_2_generators": {
+      "name": "Build Auto-Generation Scripts",
+      "timeline": "Next session",
+      "tasks": [
+        "Create generate-context-tree-audit.js",
+        "Create generate-session-summary.js",
+        "Create generate-next-session-handoff.js",
+        "Create generate-directory-readme.js",
+        "Create generate-master-index.js"
+      ]
+    },
+    "phase_3_enforcement": {
+      "name": "Build Enforcement Layer",
+      "timeline": "Next session",
+      "tasks": [
+        "Create verify-markdown-governance.js",
+        "Integrate into pretest pipeline",
+        "Add pre-commit hook validation",
+        "Add CI/CD validation"
+      ]
+    },
+    "phase_4_migration": {
+      "name": "Migrate Existing Markdown",
+      "timeline": "During next session",
+      "tasks": [
+        "Delete all manually-created .md files from .generated/",
+        "Run auto-generators to create new versions",
+        "Verify generated files match intent",
+        "Commit generated files with generator checksums"
+      ]
+    },
+    "phase_5_enforcement_active": {
+      "name": "Activate Enforcement",
+      "timeline": "End of next session",
+      "tasks": [
+        "Enable pre-commit hook blocking",
+        "Enable build-time validation",
+        "Enable CI/CD merge blocking",
+        "Document policy for next agents"
+      ]
+    }
+  },
+
+  "authorizedMarkdownFiles": {
+    ".generated/CONTEXT_TREE_AUDIT_SESSION.md": {
+      "mustBeGenerated": true,
+      "generator": "generate-context-tree-audit.js",
+      "sourceJson": "slo-dashboard-project-plan.json",
+      "currentStatus": "⚠️ VIOLATION - Manually created"
+    },
+    ".generated/SESSION_SUMMARY.md": {
+      "mustBeGenerated": true,
+      "generator": "generate-session-summary.js",
+      "sourceJson": "slo-dashboard-project-plan.json",
+      "currentStatus": "⚠️ VIOLATION - Manually created"
+    },
+    ".generated/NEXT_SESSION_HANDOFF.md": {
+      "mustBeGenerated": true,
+      "generator": "generate-next-session-handoff.js",
+      "sourceJson": "slo-dashboard-project-plan.json",
+      "currentStatus": "⚠️ VIOLATION - Manually created"
+    },
+    ".generated/README.md": {
+      "mustBeGenerated": true,
+      "generator": "generate-directory-readme.js",
+      "sourceJson": "slo-dashboard-project-plan.json",
+      "currentStatus": "⚠️ VIOLATION - Manually created"
+    },
+    ".generated/MASTER_INDEX.md": {
+      "mustBeGenerated": true,
+      "generator": "generate-master-index.js",
+      "sourceJson": "slo-dashboard-project-plan.json",
+      "currentStatus": "⚠️ VIOLATION - Manually created"
+    },
+    "README.md (package root)": {
+      "mustBeGenerated": false,
+      "reason": "Entry point documentation (authorized manual)",
+      "currentStatus": "✅ CORRECT - Manual allowed"
+    },
+    "RECOVERY_REPORT.md (package root)": {
+      "mustBeGenerated": false,
+      "reason": "Recovery history (authorized manual)",
+      "currentStatus": "✅ CORRECT - Manual allowed"
+    }
+  },
+
+  "currentViolations": {
+    "total": 5,
+    "details": [
+      {
+        "file": ".generated/CONTEXT_TREE_AUDIT_SESSION.md",
+        "violation": "MANUAL CREATION - Must be auto-generated from project-plan.json",
+        "severity": "HIGH",
+        "remediation": "Run generate-context-tree-audit.js"
+      },
+      {
+        "file": ".generated/SESSION_SUMMARY.md",
+        "violation": "MANUAL CREATION - Must be auto-generated from project-plan.json",
+        "severity": "HIGH",
+        "remediation": "Run generate-session-summary.js"
+      },
+      {
+        "file": ".generated/NEXT_SESSION_HANDOFF.md",
+        "violation": "MANUAL CREATION - Must be auto-generated from project-plan.json",
+        "severity": "HIGH",
+        "remediation": "Run generate-next-session-handoff.js"
+      },
+      {
+        "file": ".generated/README.md",
+        "violation": "MANUAL CREATION - Must be auto-generated from project-plan.json",
+        "severity": "HIGH",
+        "remediation": "Run generate-directory-readme.js"
+      },
+      {
+        "file": ".generated/MASTER_INDEX.md",
+        "violation": "MANUAL CREATION - Must be auto-generated from project-plan.json",
+        "severity": "HIGH",
+        "remediation": "Run generate-master-index.js"
+      }
+    ]
+  },
+
+  "enforcementPolicy": {
+    "noManualMarkdown": "NEVER create .md files manually in .generated/. Always use generators.",
+    "alwaysRegenerateBeforeBuild": "Before every npm run build, regenerate all .md files from JSON",
+    "preCommitBlock": "Pre-commit hook BLOCKS any .md file changes not from generators",
+    "buildTimeFail": "Build FAILS if .md files in .generated/ don't match auto-generated versions",
+    "cicdBlockMerge": "CI/CD BLOCKS PR merge if committed .md files differ from auto-generated"
+  },
+
+  "generatorInterface": {
+    "inputFormat": {
+      "sourceJsonFile": "Path to source .json authority",
+      "outputMarkdownFile": "Path where .md should be generated",
+      "metadata": {
+        "generatedAt": "ISO timestamp",
+        "generator": "Generator script name",
+        "sourceChecksum": "SHA256 of source JSON"
+      }
+    },
+    "outputFormat": {
+      "markdownFile": "Generated .md file",
+      "headerComment": "<!-- Auto-generated from [source-json] at [timestamp]. Do not edit manually. -->",
+      "metadata": {
+        "generatedAt": "ISO timestamp",
+        "sourceFile": "Original JSON authority",
+        "sourceChecksum": "SHA256 for drift detection"
+      }
+    }
+  },
+
+  "toolingRequirements": {
+    "generators": [
+      {
+        "name": "generate-context-tree-audit.js",
+        "input": "slo-dashboard-project-plan.json + .generated/slo-dashboard-business-bdd-specifications.json",
+        "output": ".generated/CONTEXT_TREE_AUDIT_SESSION.md",
+        "complexity": "HIGH (3000+ line document with multiple sections)"
+      },
+      {
+        "name": "generate-session-summary.js",
+        "input": "slo-dashboard-project-plan.json",
+        "output": ".generated/SESSION_SUMMARY.md",
+        "complexity": "MEDIUM"
+      },
+      {
+        "name": "generate-next-session-handoff.js",
+        "input": "slo-dashboard-project-plan.json",
+        "output": ".generated/NEXT_SESSION_HANDOFF.md",
+        "complexity": "HIGH (task-driven generation)"
+      },
+      {
+        "name": "generate-directory-readme.js",
+        "input": ".generated/ directory structure + slo-dashboard-project-plan.json",
+        "output": ".generated/README.md",
+        "complexity": "MEDIUM"
+      },
+      {
+        "name": "generate-master-index.js",
+        "input": "All .generated/ files + slo-dashboard-project-plan.json",
+        "output": ".generated/MASTER_INDEX.md",
+        "complexity": "MEDIUM"
+      }
+    ],
+    "validators": [
+      {
+        "name": "verify-markdown-governance.js",
+        "purpose": "Detect manual .md files or drift from auto-generated versions",
+        "integration": "Pre-commit hook, pre-build check, CI/CD validation"
+      }
+    ]
+  },
+
+  "rolloutStrategy": {
+    "immediate": "Document this policy (MARKDOWN_GENERATION_AUTHORITY.json)",
+    "nextSession": "Build generators and enforce automatically",
+    "enforcement": "No more manual .md files allowed in .generated/ directory",
+    "futurePolicy": "All documentation must be driven by JSON authorities"
+  },
+
+  "policyStatement": "From this point forward, NO markdown files will be manually created in the .generated/ directory. All .md documentation must be auto-generated from JSON authorities using dedicated generator scripts. Manual markdown creation is an ARCHITECTURE VIOLATION and will be prevented by automated enforcement layers."
+}

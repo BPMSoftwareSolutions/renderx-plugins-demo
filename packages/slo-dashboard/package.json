@@ -13,12 +13,20 @@
     }
   },
   "scripts": {
-    "build": "tsc && rollup -c",
+    "build": "npm run verify:markdown-governance && tsc && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src --ext .ts,.tsx",
     "type-check": "tsc --noEmit",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "generate:all": "node scripts/generate-markdown.js all",
+    "generate:context-tree-audit": "node scripts/generate-markdown.js context-tree-audit",
+    "generate:session-summary": "node scripts/generate-markdown.js session-summary",
+    "generate:next-session-handoff": "node scripts/generate-markdown.js next-session-handoff",
+    "generate:directory-readme": "node scripts/generate-markdown.js directory-readme",
+    "generate:master-index": "node scripts/generate-markdown.js master-index",
+    "verify:markdown-governance": "node scripts/verify-markdown-governance.js",
+    "verify:markdown-governance:fix": "node scripts/verify-markdown-governance.js --fix"
   },
   "dependencies": {
     "react": "^18.0.0",

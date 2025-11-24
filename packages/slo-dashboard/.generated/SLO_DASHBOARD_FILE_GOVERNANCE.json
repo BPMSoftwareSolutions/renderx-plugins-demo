@@ -1,0 +1,241 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-24T22:00:00Z",
+  "projectName": "slo-dashboard",
+  "projectPath": "packages/slo-dashboard/",
+  "purpose": "Authority file for slo-dashboard package file organization and governance",
+  "principle": "Files live in subdirectories by purpose; root contains only essentials",
+
+  "authorizedRootFiles": {
+    "package.json": {
+      "reason": "Package metadata and scripts (required by npm)",
+      "mutable": true,
+      "governance": "Version-controlled, reviewed in PRs"
+    },
+    "tsconfig.json": {
+      "reason": "TypeScript configuration (required by build)",
+      "mutable": false,
+      "governance": "Authority file for this package's type configuration"
+    },
+    "README.md": {
+      "reason": "Package documentation (human-readable, visible on npm)",
+      "mutable": true,
+      "governance": "Reviewed in PRs, reflects current state"
+    },
+    "RECOVERY_REPORT.md": {
+      "reason": "Recovery history from 33% to 100% compliance",
+      "mutable": false,
+      "governance": "Historical record, regenerated if recovery repeats"
+    },
+    "slo-dashboard-project-plan.json": {
+      "reason": "Project phases, tasks, phases gates (AUTHORITY)",
+      "mutable": true,
+      "governance": "Authority file; phase status gated by this document"
+    }
+  },
+
+  "authorizedDirectories": {
+    ".generated/": {
+      "purpose": "Generated and locked artifacts",
+      "mutable": false,
+      "contents": [
+        "slo-dashboard-business-bdd-specifications.json (LOCKED)",
+        "slo-dashboard-demo-plan.json",
+        "slo-dashboard-drift-config.json"
+      ],
+      "rule": "All .generated/ files are immutable; regenerate from authority if needed"
+    },
+    "src/": {
+      "purpose": "Source code implementation",
+      "mutable": true,
+      "contents": [
+        "handlers/ (core handler implementations)",
+        "types.ts (type definitions)",
+        "index.ts (package entry point)"
+      ],
+      "rule": "Implementation code lives here; add new features to subdirectories"
+    },
+    "__tests__/": {
+      "purpose": "Test files",
+      "mutable": true,
+      "contents": [
+        "business-bdd-handlers/ (BDD test suites, auto-generated)",
+        "unit/ (unit tests)",
+        "handlers.handlers.spec.ts (integration tests)"
+      ],
+      "rule": "Tests organized by type; business-bdd-handlers auto-generated from specs"
+    },
+    "json-sequences/": {
+      "purpose": "Orchestration sequence definitions",
+      "mutable": false,
+      "contents": [
+        "index.json (sequence catalog)",
+        "dashboard.load.json (load sequence)",
+        "dashboard.refresh.metrics.json (refresh sequence)",
+        "dashboard.export.report.json (export sequence)"
+      ],
+      "rule": "Sequences are orchestration definitions; immutable after creation"
+    },
+    "contracts/": {
+      "purpose": "Shape contracts (telemetry shapes)",
+      "mutable": false,
+      "contents": [
+        "detect-slo-breaches.json (breach detection shape)",
+        "shape-budgets.json (budget tracking shape)"
+      ],
+      "rule": "Contracts define telemetry shapes; immutable to ensure consistency"
+    }
+  },
+
+  "allocationRules": {
+    "rule_1": {
+      "name": "Generated Artifacts",
+      "pattern": "*.generated.*",
+      "location": ".generated/",
+      "reason": "All generated files (specs, plans, drift configs) must be versioned and locked"
+    },
+    "rule_2": {
+      "name": "Source Code",
+      "pattern": "*.ts (except types, index)",
+      "location": "src/",
+      "reason": "Implementation code belongs in src/ organized by feature"
+    },
+    "rule_3": {
+      "name": "Test Files",
+      "pattern": "*.spec.ts",
+      "location": "__tests__/ (organized by type)",
+      "reason": "Tests grouped by category: business-bdd-handlers/, unit/, integration"
+    },
+    "rule_4": {
+      "name": "Orchestration Sequences",
+      "pattern": "*.json (sequences)",
+      "location": "json-sequences/",
+      "reason": "Orchestration workflows defined as JSON sequences"
+    },
+    "rule_5": {
+      "name": "Telemetry Shape Contracts",
+      "pattern": "*.json (contracts)",
+      "location": "contracts/",
+      "reason": "Shape definitions for telemetry emission and consumption"
+    },
+    "rule_6": {
+      "name": "Type Definitions",
+      "pattern": "*.ts (types.ts, interfaces)",
+      "location": "src/types.ts or feature subdirectory",
+      "reason": "Centralized type definitions for consistency"
+    },
+    "rule_7": {
+      "name": "Package Metadata",
+      "pattern": "package.json, tsconfig.json",
+      "location": "Package root",
+      "reason": "Required by npm, TypeScript, and build tools"
+    },
+    "rule_8": {
+      "name": "Configuration & Documentation",
+      "pattern": "*.md, *.json (config)",
+      "location": "Root (authorized) or .generated/",
+      "reason": "Configuration and docs belong in root for visibility or .generated/ if derived"
+    }
+  },
+
+  "violationHandling": {
+    "detection": [
+      "Scanning root directory for files not in authorizedRootFiles",
+      "Checking file extensions (*.log, *.tmp, *.md, *.json not in authority)",
+      "Verifying no build artifacts escape to root"
+    ],
+    "prevention": [
+      "ESLint rule: no fs.writeFileSync() to root",
+      "Pre-commit hook: scan root for non-authorized files",
+      "Pre-build check: run verify-root-cleanliness.js"
+    ],
+    "remediation": [
+      "Move file to correct directory (see allocationRules)",
+      "Delete if temporary or build artifact",
+      "Update authority JSON if legitimate addition needed"
+    ],
+    "escalation": [
+      "For new file type needed at root: update this JSON + submit PR",
+      "For repeated violations: run npm run verify:root-cleanliness",
+      "For build artifact leaks: check build configuration"
+    ]
+  },
+
+  "exceptionProcess": {
+    "requestTemplate": {
+      "filePath": "package/slo-dashboard/file-name.ext",
+      "reason": "Why this file must live at root",
+      "alternative": "Why it can't live in existing directories",
+      "duration": "Temporary or permanent",
+      "reviewedBy": "Next PR reviewer"
+    },
+    "requirements": [
+      "Exception must be documented in this JSON",
+      "Exception must have explicit duration",
+      "Exception must be reviewed in PR",
+      "Exception expires after duration (must request renewal)"
+    ]
+  },
+
+  "currentExceptions": [],
+
+  "phases": {
+    "phase_1": {
+      "name": "Foundation & Specs",
+      "status": "COMPLETE",
+      "authorityFiles": [
+        ".generated/slo-dashboard-business-bdd-specifications.json"
+      ]
+    },
+    "phase_2": {
+      "name": "BDD & Handler Coverage",
+      "status": "COMPLETE",
+      "authorityFiles": [
+        ".generated/slo-dashboard-drift-config.json"
+      ]
+    },
+    "phase_3": {
+      "name": "Telemetry Shaping Integration",
+      "status": "IN-PROGRESS",
+      "newFiles": [
+        "contracts/detect-slo-breaches.json",
+        "contracts/shape-budgets.json"
+      ],
+      "modifiedFiles": [
+        "src/handlers/metrics.ts"
+      ]
+    },
+    "phase_4": {
+      "name": "Assertion Enrichment",
+      "status": "IN-PROGRESS",
+      "modifiedFiles": [
+        "__tests__/business-bdd-handlers/*.spec.ts"
+      ]
+    },
+    "phase_5": {
+      "name": "Project Plan Enforcement",
+      "status": "PENDING",
+      "newFiles": [
+        "scripts/verify-slo-dashboard-project-plan.js"
+      ]
+    },
+    "phase_6": {
+      "name": "End-to-End Compliance Audit",
+      "status": "PENDING",
+      "newFiles": [
+        ".generated/AUDIT_COMPLETION_REPORT.md"
+      ]
+    }
+  },
+
+  "parentProjectAlignment": {
+    "principle": "Follows renderx-plugins-demo governance patterns",
+    "authorityPattern": "docs/governance/ROOT_FILE_PLACEMENT_RULES.json (parent)",
+    "rootFileGovernance": "docs/governance/CAG_ROOT_FILE_GOVERNANCE_SYSTEM.md (parent, 5-layer system)",
+    "relatedContext": ".generated/CONTEXT_TREE_AUDIT_SESSION.md (this package)"
+  },
+
+  "lastUpdated": "2025-11-24T22:00:00Z",
+  "nextReviewScheduled": "Upon Phase 3 completion",
+  "maintainer": "slo-dashboard project team"
+}
