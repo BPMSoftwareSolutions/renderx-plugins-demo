@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updatedAt": "2025-11-24T18:15:00.000Z",
+  "version": "1.1.1",
+  "updatedAt": "2025-11-24T18:46:26.350Z",
   "currentSprint": "1",
   "lastUpdatedBy": "automation",
   "summary": {
@@ -23,11 +23,36 @@
   ],
   "sequencesLink": "packages/ographx/.ographx/sequences/",
   "domainSequences": [
-    {"id": "orchestration-audit-system", "bddSpec": "packages/orchestration/bdd/orchestration-audit-system.feature", "coverageTarget": 0.85, "sprintIntro": 0},
-    {"id": "orchestration-audit-session", "bddSpec": "packages/orchestration/bdd/orchestration-audit-session.feature", "coverageTarget": 0.80, "sprintIntro": 0},
-    {"id": "cag-agent-workflow", "bddSpec": "packages/cag/bdd/cag-agent-workflow.feature", "coverageTarget": 0.90, "sprintIntro": 4},
-    {"id": "graphing-orchestration", "bddSpec": "packages/orchestration/bdd/graphing-orchestration.feature", "coverageTarget": 0.75, "sprintIntro": 7},
-    {"id": "self_sequences", "bddSpec": "packages/orchestration/bdd/self-sequences.feature", "coverageTarget": 0.70, "sprintIntro": 7}
+    {
+      "id": "orchestration-audit-system",
+      "bddSpec": "packages/orchestration/bdd/orchestration-audit-system.feature",
+      "coverageTarget": 0.85,
+      "sprintIntro": 0
+    },
+    {
+      "id": "orchestration-audit-session",
+      "bddSpec": "packages/orchestration/bdd/orchestration-audit-session.feature",
+      "coverageTarget": 0.8,
+      "sprintIntro": 0
+    },
+    {
+      "id": "cag-agent-workflow",
+      "bddSpec": "packages/cag/bdd/cag-agent-workflow.feature",
+      "coverageTarget": 0.9,
+      "sprintIntro": 4
+    },
+    {
+      "id": "graphing-orchestration",
+      "bddSpec": "packages/orchestration/bdd/graphing-orchestration.feature",
+      "coverageTarget": 0.75,
+      "sprintIntro": 7
+    },
+    {
+      "id": "self_sequences",
+      "bddSpec": "packages/orchestration/bdd/self-sequences.feature",
+      "coverageTarget": 0.7,
+      "sprintIntro": 7
+    }
   ],
   "bddSpecs": {
     "root": "packages",
@@ -40,104 +65,263 @@
       "id": "0",
       "name": "Bootstrap",
       "theme": "Registry & Diff Foundation",
-      "deliverables": ["structural diff script", "baseline snapshot", "sequence integration"],
-      "demoCriteria": ["diff report created", "baseline stored"],
+      "deliverables": [
+        "structural diff script",
+        "baseline snapshot",
+        "sequence integration"
+      ],
+      "demoCriteria": [
+        "diff report created",
+        "baseline stored"
+      ],
       "status": "complete",
       "startDate": "2025-11-24",
       "endDate": "2025-11-24",
-      "objectives": ["Establish auto-generated registry", "Create structural diff capability", "Create baseline snapshot"],
-      "acceptanceCriteria": ["Registry auto-generates", "Diff shows added domains", "Baseline stored"],
+      "objectives": [
+        "Establish auto-generated registry",
+        "Create structural diff capability",
+        "Create baseline snapshot"
+      ],
+      "acceptanceCriteria": [
+        "Registry auto-generates",
+        "Diff shows added domains",
+        "Baseline stored"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Registry auto-generates",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Diff shows added domains",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Baseline stored",
+          "status": "PASS"
+        }
+      ],
       "blockers": [],
-      "risks": ["Initial diff all-added noise"],
+      "risks": [
+        "Initial diff all-added noise"
+      ],
       "velocityTarget": 3,
       "velocityActual": 3,
-      "qualityGates": {"compliance": "n/a", "hash": "raw-only"},
-      "metrics": {"domains": 60, "added": 60, "changed": 0}
+      "qualityGates": {
+        "compliance": "n/a",
+        "hash": "raw-only"
+      },
+      "metrics": {
+        "domains": 60,
+        "added": 60,
+        "changed": 0
+      }
     },
     {
       "id": "1",
       "name": "Canonical Integrity",
       "theme": "False drift elimination",
-      "deliverables": ["canonical hash function", "raw vs canonical report"],
-      "demoCriteria": ["stable canonical hashes"],
+      "deliverables": [
+        "canonical hash function",
+        "raw vs canonical report"
+      ],
+      "demoCriteria": [
+        "stable canonical hashes"
+      ],
       "status": "in-progress",
       "startDate": "2025-11-24",
       "endDate": "2025-11-25",
-      "objectives": ["Eliminate false drift", "Produce canonical vs raw hash report", "Integrate in pipeline"],
-      "acceptanceCriteria": ["Canonical equals raw where no volatile fields", "Report generated in pre:manifests"],
+      "objectives": [
+        "Eliminate false drift",
+        "Produce canonical vs raw hash report",
+        "Integrate in pipeline"
+      ],
+      "acceptanceCriteria": [
+        "Canonical equals raw where no volatile fields",
+        "Report generated in pre:manifests"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Canonical equals raw where no volatile fields",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Report generated in pre:manifests",
+          "status": "PASS"
+        }
+      ],
       "blockers": [],
-      "risks": ["Missed volatile keys cause instability"],
+      "risks": [
+        "Missed volatile keys cause instability"
+      ],
       "velocityTarget": 3,
       "velocityActual": 2,
-      "qualityGates": {"canonicalHashReport": "PASS"},
-      "metrics": {"canonicalStability": true}
+      "qualityGates": {
+        "canonicalHashReport": "PASS"
+      },
+      "metrics": {
+        "canonicalStability": true,
+        "handlerCoveragePercent": 0
+      }
     },
     {
       "id": "2",
       "name": "Provenance & Compliance",
       "theme": "Doc + sequence validation",
-      "deliverables": ["provenance index", "compliance report"],
-      "demoCriteria": ["all docs mapped", "all sequences valid"],
+      "deliverables": [
+        "provenance index",
+        "compliance report"
+      ],
+      "demoCriteria": [
+        "all docs mapped",
+        "all sequences valid"
+      ],
       "status": "planned",
-      "objectives": ["Detect stale docs", "Enforce domain sequence coverage"],
-      "acceptanceCriteria": ["Zero stale docs", "Coverage ratio >=0.8"],
+      "objectives": [
+        "Detect stale docs",
+        "Enforce domain sequence coverage"
+      ],
+      "acceptanceCriteria": [
+        "Zero stale docs",
+        "Coverage ratio >=0.8"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Zero stale docs",
+          "status": "PENDING"
+        },
+        {
+          "criteria": "Coverage ratio >=0.8",
+          "status": "PENDING"
+        }
+      ],
       "velocityTarget": 2,
-      "risks": ["Large doc set introduces false stale flags"],
+      "risks": [
+        "Large doc set introduces false stale flags"
+      ],
       "blockers": []
     },
     {
       "id": "3",
       "name": "Release & Changelog Automation",
       "theme": "Stakeholder visibility",
-      "deliverables": ["release notes generator", "evolution changelog"],
-      "demoCriteria": ["notes auto-generated"],
+      "deliverables": [
+        "release notes generator",
+        "evolution changelog"
+      ],
+      "demoCriteria": [
+        "notes auto-generated"
+      ],
       "status": "planned",
-      "objectives": ["Append release entries automatically"],
-      "acceptanceCriteria": ["Entry appended when diff changes"],
+      "objectives": [
+        "Append release entries automatically"
+      ],
+      "acceptanceCriteria": [
+        "Entry appended when diff changes"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Entry appended when diff changes",
+          "status": "PASS"
+        }
+      ],
       "velocityTarget": 2
     },
     {
       "id": "4",
       "name": "BDD Alignment",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "≥90% domains mapped",
+          "status": "PENDING"
+        }
+      ],
       "theme": "Business coverage",
-      "deliverables": ["BDD spec stubs", "domain coverage matrix"],
-      "demoCriteria": ["≥90% domains mapped"],
+      "deliverables": [
+        "BDD spec stubs",
+        "domain coverage matrix"
+      ],
+      "demoCriteria": [
+        "≥90% domains mapped"
+      ],
       "status": "planned",
       "velocityTarget": 3
     },
     {
       "id": "5",
       "name": "TDD Handler Flow",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "≥85% coverage",
+          "status": "PENDING"
+        }
+      ],
       "theme": "Audit handler implementation",
-      "deliverables": ["handler test harness", "spec templates"],
-      "demoCriteria": ["≥85% coverage"],
+      "deliverables": [
+        "handler test harness",
+        "spec templates"
+      ],
+      "demoCriteria": [
+        "≥85% coverage"
+      ],
       "status": "planned",
       "velocityTarget": 3
     },
     {
       "id": "6",
       "name": "Demo Dashboard",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "all reports consolidated",
+          "status": "PENDING"
+        }
+      ],
       "theme": "Unified reporting",
-      "deliverables": ["dashboard markdown"],
-      "demoCriteria": ["all reports consolidated"],
+      "deliverables": [
+        "dashboard markdown"
+      ],
+      "demoCriteria": [
+        "all reports consolidated"
+      ],
       "status": "planned",
       "velocityTarget": 2
     },
     {
       "id": "7",
       "name": "Telemetry Layer",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "≥70% sequences timed",
+          "status": "PENDING"
+        }
+      ],
       "theme": "Performance baselines",
-      "deliverables": ["timing baseline"],
-      "demoCriteria": ["≥70% sequences timed"],
+      "deliverables": [
+        "timing baseline"
+      ],
+      "demoCriteria": [
+        "≥70% sequences timed"
+      ],
       "status": "planned",
       "velocityTarget": 2
     },
     {
       "id": "8",
       "name": "Evolution Insights",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "scores generated",
+          "status": "PENDING"
+        }
+      ],
       "theme": "Impact scoring",
-      "deliverables": ["semantic diff", "impact scores"],
-      "demoCriteria": ["scores generated"],
+      "deliverables": [
+        "semantic diff",
+        "impact scores"
+      ],
+      "demoCriteria": [
+        "scores generated"
+      ],
       "status": "planned",
       "velocityTarget": 2
     }
@@ -159,7 +343,8 @@
   "linkRules": {
     "sequenceToBDD": "For each domainSequences entry: ensure bddSpec file exists; if missing generate stub.",
     "coverageTargetValidation": "Warn if coverageTarget < 0.7 or > 0.95.",
-    "sprintIntroOrdering": "Domain sequence sprintIntro must be <= sprint count - 1."},
+    "sprintIntroOrdering": "Domain sequence sprintIntro must be <= sprint count - 1."
+  },
   "integrity": {
     "hashStrategy": "Canonical hash excludes 'integrity' blocks and volatile timestamps",
     "planned": true

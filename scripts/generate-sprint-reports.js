@@ -40,6 +40,9 @@ function render(plan){
     if(sprint.metrics) md += 'Metrics: ' + Object.entries(sprint.metrics).map(([k,v])=>`${k}=${v}`).join(', ') + '\n';
     if(sprint.objectives){ md += '\nObjectives:\n' + sprint.objectives.map(o=>`- ${o}`).join('\n') + '\n'; }
     if(sprint.acceptanceCriteria){ md += '\nAcceptance Criteria:\n' + sprint.acceptanceCriteria.map(a=>`- ${a}`).join('\n') + '\n'; }
+    if(sprint.acceptanceCriteriaStatus){
+      md += '\nAcceptance Criteria Status:\n' + sprint.acceptanceCriteriaStatus.map(s=>`- ${s.criteria}: ${s.status}`).join('\n') + '\n';
+    }
     md += '\nDeliverables:\n' + (sprint.deliverables||[]).map(d=>`- ${d}`).join('\n') + '\n';
     if(sprint.risks){ md += '\nRisks:\n' + (sprint.risks.length? sprint.risks.map(r=>`- ${r}`).join('\n'):'- None') + '\n'; }
     if(sprint.blockers){ md += '\nBlockers:\n' + (sprint.blockers.length? sprint.blockers.map(b=>`- ${b}`).join('\n'):'- None') + '\n'; }

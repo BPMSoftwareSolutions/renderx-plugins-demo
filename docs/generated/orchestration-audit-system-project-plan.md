@@ -1,8 +1,8 @@
 # Orchestration Audit System Project Plan
 
 > DO NOT EDIT. Generated from JSON: orchestration-audit-system-project-plan.json
-> Generated At: 2025-11-24T18:00:46.114Z
-> JSON Version: 1.0.0
+> Generated At: 2025-11-24T18:40:32.152Z
+> JSON Version: 1.1.0
 
 ## Vision
 Continuously evolving anti-drift orchestration audit platform with demonstrable sprint value (diffs, canonical hashes, provenance, compliance, telemetry).
@@ -16,17 +16,17 @@ Continuously evolving anti-drift orchestration audit platform with demonstrable 
 - BDD + TDD alignment
 
 ## Sprints
-|Sprint|Theme                       |Deliverables                                                   |Demo Criteria                       |Status  |
-|------|----------------------------|---------------------------------------------------------------|------------------------------------|--------|
-|0     |Registry & Diff Foundation  |structural diff script, baseline snapshot, sequence integration|diff report created, baseline stored|complete|
-|1     |False drift elimination     |canonical hash function, raw vs canonical report               |stable canonical hashes             |planned |
-|2     |Doc + sequence validation   |provenance index, compliance report                            |all docs mapped, all sequences valid|planned |
-|3     |Stakeholder visibility      |release notes generator, evolution changelog                   |notes auto-generated                |planned |
-|4     |Business coverage           |BDD spec stubs, domain coverage matrix                         |≥90% domains mapped                 |planned |
-|5     |Audit handler implementation|handler test harness, spec templates                           |≥85% coverage                       |planned |
-|6     |Unified reporting           |dashboard markdown                                             |all reports consolidated            |planned |
-|7     |Performance baselines       |timing baseline                                                |≥70% sequences timed                |planned |
-|8     |Impact scoring              |semantic diff, impact scores                                   |scores generated                    |planned |
+|Sprint|Theme                       |Deliverables                                                   |Demo Criteria                       |Status     |
+|------|----------------------------|---------------------------------------------------------------|------------------------------------|-----------|
+|0     |Registry & Diff Foundation  |structural diff script, baseline snapshot, sequence integration|diff report created, baseline stored|complete   |
+|1     |False drift elimination     |canonical hash function, raw vs canonical report               |stable canonical hashes             |in-progress|
+|2     |Doc + sequence validation   |provenance index, compliance report                            |all docs mapped, all sequences valid|planned    |
+|3     |Stakeholder visibility      |release notes generator, evolution changelog                   |notes auto-generated                |planned    |
+|4     |Business coverage           |BDD spec stubs, domain coverage matrix                         |≥90% domains mapped                 |planned    |
+|5     |Audit handler implementation|handler test harness, spec templates                           |≥85% coverage                       |planned    |
+|6     |Unified reporting           |dashboard markdown                                             |all reports consolidated            |planned    |
+|7     |Performance baselines       |timing baseline                                                |≥70% sequences timed                |planned    |
+|8     |Impact scoring              |semantic diff, impact scores                                   |scores generated                    |planned    |
 
 ## Domain Sequences / BDD Mapping
 | Sequence ID | BDD Spec | Coverage Target | Sprint Intro |

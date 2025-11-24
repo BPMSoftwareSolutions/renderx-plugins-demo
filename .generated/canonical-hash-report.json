@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2025-11-24T18:02:20.399Z",
+  "generatedAt": "2025-11-24T18:40:34.454Z",
   "artifacts": [
     {
       "file": "orchestration-domains.json",
-      "rawHash": "ea9f11b1cb52521c60272a10a0ca25879d33bd04f2ba1c32197a292e5433f8a8",
-      "canonicalHash": "ea9f11b1cb52521c60272a10a0ca25879d33bd04f2ba1c32197a292e5433f8a8",
+      "rawHash": "e35066bbd189ed01e2caf7c2d81a980540cbf5ba5554408d4419185f1eaf8bb3",
+      "canonicalHash": "e35066bbd189ed01e2caf7c2d81a980540cbf5ba5554408d4419185f1eaf8bb3",
       "driftFalsePositive": false,
       "canonicalHashEqualsRaw": true,
       "removedKeys": [
@@ -35,8 +35,8 @@
     },
     {
       "file": "orchestration-audit-system-project-plan.json",
-      "rawHash": "84da3e356dbeea54982390259f75215a46b20dedab91998bad92c3a2d38eded3",
-      "canonicalHash": "35d0fc79a93d4e8000e8b0ea231ad2e14339552c316ff33975417303e9686bf4",
+      "rawHash": "e03dda59ec6a06a5dc9276470aabe8650996456151cbd85a9b3e54fb2ad6efa5",
+      "canonicalHash": "0538cc3d9efa3785008fb16c0293ab3a2050f05f8068c7c2ef899361ea6441e1",
       "driftFalsePositive": true,
       "canonicalHashEqualsRaw": false,
       "removedKeys": [
@@ -46,8 +46,8 @@
         "timestamp"
       ],
       "integrityPresent": true,
-      "sizeRaw": 3767,
-      "sizeCanonical": 3615
+      "sizeRaw": 6540,
+      "sizeCanonical": 6388
     }
   ]
 }

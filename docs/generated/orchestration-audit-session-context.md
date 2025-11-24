@@ -1,7 +1,7 @@
 # Orchestration Audit Session Context
 
 **Generated from:** `.generated/context-tree-orchestration-audit-session.json`
-**Last Generated:** 2025-11-24T17:03:45.924Z
+**Last Generated:** 2025-11-24T18:40:43.500Z
 **DO NOT EDIT — GENERATED**
 
 ## Session Overview
@@ -106,6 +106,7 @@ Orchestration Sequences:
 - cag-agent-workflow (8 movements, 41 beats)
 - graphing-orchestration (0 movements, 0 beats)
 - orchestration-audit-session (8 movements, 25 beats)
+- orchestration-audit-system (8 movements, 24 beats)
 - self_sequences (0 movements, 0 beats)
 
 ## Audit Results
