@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2025-11-24T19:17:55.119Z",
+  "rows": [
+    {
+      "sprint": "0",
+      "name": "Bootstrap",
+      "status": "complete",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": true,
+      "signatures": [
+        "bootstrap.registry.init",
+        "bootstrap.diff.generate",
+        "bootstrap.baseline.persist"
+      ],
+      "coveragePct": 0.75,
+      "notes": "Baseline artifacts established at initial system setup"
+    },
+    {
+      "sprint": "1",
+      "name": "Canonical Integrity",
+      "status": "complete",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": true,
+      "signatures": [
+        "canonical.hash.compute",
+        "canonical.hash.compare"
+      ],
+      "coveragePct": 0.5,
+      "notes": "Telemetry for hash computation and comparison established"
+    },
+    {
+      "sprint": "2",
+      "name": "Provenance & Compliance",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "Define telemetry signatures for provenance and compliance generation"
+    },
+    {
+      "sprint": "3",
+      "name": "Release & Changelog Automation",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "Telemetry for release note append events"
+    },
+    {
+      "sprint": "4",
+      "name": "BDD Alignment",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "BDD stub creation and coverage update telemetry"
+    },
+    {
+      "sprint": "5",
+      "name": "TDD Handler Flow",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "Handler test run and coverage publication telemetry"
+    },
+    {
+      "sprint": "6",
+      "name": "Demo Dashboard",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "Dashboard render and aggregation telemetry"
+    },
+    {
+      "sprint": "7",
+      "name": "Telemetry Layer",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "Sequence timing instrumentation telemetry"
+    },
+    {
+      "sprint": "8",
+      "name": "Evolution Insights",
+      "status": "planned",
+      "requiredShapes": [
+        "events",
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "baselineDefined": false,
+      "signatures": [],
+      "coveragePct": 0,
+      "notes": "Semantic diff and impact scoring telemetry"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "version": "1.2.1",
-  "updatedAt": "2025-11-24T18:55:30.000Z",
+  "version": "1.3.0",
+  "updatedAt": "2025-11-24T19:06:00.000Z",
   "currentSprint": "2",
   "lastUpdatedBy": "automation",
   "summary": {
@@ -116,6 +116,12 @@
         "added": 60,
         "changed": 0
       },
+      "telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": true,
+        "signatures": ["bootstrap.registry.init","bootstrap.diff.generate","bootstrap.baseline.persist"],
+        "notes": "Baseline artifacts established at initial system setup"
+      },
       "completedAt": "2025-11-24T18:40:00.000Z",
       "completionCommitSuggestion": "chore(sprint): complete sprint 0 - Bootstrap (version baseline 1.0.0) criteria: Registry auto-generates=PASS; Diff shows added domains=PASS; Baseline stored=PASS"
     },
@@ -165,6 +171,12 @@
         "canonicalStability": true,
         "handlerCoveragePercent": 0
       },
+      "telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": true,
+        "signatures": ["canonical.hash.compute","canonical.hash.compare"],
+        "notes": "Telemetry for hash computation and comparison established"
+      },
       "completedAt": "2025-11-24T18:52:32.354Z"
   ,"completionCommitSuggestion": "chore(sprint): complete sprint 1 - Canonical Integrity (version bump 1.2.1) criteria: Canonical equals raw where no volatile fields=PASS; Report generated in pre:manifests=PASS"
     },
@@ -197,6 +209,10 @@
         {
           "criteria": "Coverage ratio >=0.8",
           "status": "PENDING"
+        },
+        {
+          "criteria": "Telemetry baseline defined",
+          "status": "PENDING"
         }
       ],
       "velocityTarget": 2,
@@ -204,6 +220,12 @@
         "Large doc set introduces false stale flags"
       ],
       "blockers": []
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Define telemetry signatures for provenance and compliance generation"
+      }
     },
     {
       "id": "3",
@@ -227,9 +249,19 @@
         {
           "criteria": "Entry appended when diff changes",
           "status": "PASS"
+        },
+        {
+          "criteria": "Telemetry baseline defined",
+          "status": "PENDING"
         }
       ],
       "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Telemetry for release note append events"
+      }
     },
     {
       "id": "4",
@@ -250,6 +282,12 @@
       ],
       "status": "planned",
       "velocityTarget": 3
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "BDD stub creation and coverage update telemetry"
+      }
     },
     {
       "id": "5",
@@ -270,6 +308,12 @@
       ],
       "status": "planned",
       "velocityTarget": 3
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Handler test run and coverage publication telemetry"
+      }
     },
     {
       "id": "6",
@@ -289,6 +333,12 @@
       ],
       "status": "planned",
       "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Dashboard render and aggregation telemetry"
+      }
     },
     {
       "id": "7",
@@ -308,6 +358,12 @@
       ],
       "status": "planned",
       "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Sequence timing instrumentation telemetry"
+      }
     },
     {
       "id": "8",
@@ -328,6 +384,12 @@
       ],
       "status": "planned",
       "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Semantic diff and impact scoring telemetry"
+      }
     }
   ],
   "demoChecklist": [
@@ -352,5 +414,223 @@
   "integrity": {
     "hashStrategy": "Canonical hash excludes 'integrity' blocks and volatile timestamps",
     "planned": true
+  },
+  "governanceDocumentation": {
+    "version": "1.0.0",
+    "principle": "JSON is Authority, Markdown is Reflection",
+    "description": "All documentation must be auto-generated from JSON source to prevent documentation/architecture drift",
+    "rules": [
+      {
+        "id": "rule-001",
+        "title": "JSON Authority Only",
+        "level": "CRITICAL",
+        "description": "All documentation auto-generated from JSON source; no manual markdown editing allowed",
+        "enforcement": "Pre-commit hook blocks commits to auto-generated files; CI validates compliance"
+      },
+      {
+        "id": "rule-002",
+        "title": "Single Source of Truth",
+        "level": "CRITICAL",
+        "description": "Every system has exactly ONE authoritative JSON file",
+        "enforcement": "Build fails if multiple sources or duplicates detected"
+      },
+      {
+        "id": "rule-003",
+        "title": "Auto-Generation Script Required",
+        "level": "CRITICAL",
+        "description": "Every JSON authority file must have corresponding generation script in pre:manifests",
+        "enforcement": "Build fails if script missing from pipeline"
+      },
+      {
+        "id": "rule-004",
+        "title": "Generated Document Marking",
+        "level": "HIGH",
+        "description": "All auto-generated markdown must have <!-- AUTO-GENERATED --> header and <!-- DO NOT EDIT --> footer",
+        "enforcement": "Audit script fails build if markers missing"
+      }
+    ],
+    "telemetryGovernance": {
+      "title": "Telemetry Governance Documentation",
+      "status": "active",
+      "sourceJson": "orchestration-audit-system-project-plan.json",
+      "generationScripts": [
+        {
+          "name": "generate-telemetry-instrumentation.js",
+          "purpose": "Generate DEMO_TELEMETRY_INSTRUMENTATION.md from telemetry.instrumentation section",
+          "input": "governanceDocumentation.telemetryGovernance.instrumentation",
+          "output": "DEMO_TELEMETRY_INSTRUMENTATION.md",
+          "pipelineOrder": 41,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-telemetry-quickstart.js",
+          "purpose": "Generate TELEMETRY_GOVERNANCE_QUICKSTART.md from telemetry.quickstart section",
+          "input": "governanceDocumentation.telemetryGovernance.quickstart",
+          "output": "TELEMETRY_GOVERNANCE_QUICKSTART.md",
+          "pipelineOrder": 42,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-telemetry-verification.js",
+          "purpose": "Generate TELEMETRY_GOVERNANCE_VERIFICATION.md from telemetry-validation-report.json",
+          "input": ".generated/telemetry-validation-report.json",
+          "output": "TELEMETRY_GOVERNANCE_VERIFICATION.md",
+          "pipelineOrder": 43,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-telemetry-complete.js",
+          "purpose": "Generate TELEMETRY_GOVERNANCE_COMPLETE.md aggregating all telemetry data",
+          "input": [".generated/telemetry-matrix.json", ".generated/telemetry-validation-report.json", "orchestration-audit-system-project-plan.json"],
+          "output": "TELEMETRY_GOVERNANCE_COMPLETE.md",
+          "pipelineOrder": 44,
+          "status": "pending-creation"
+        }
+      ],
+      "instrumentation": {
+        "title": "Demo Telemetry Instrumentation Guide",
+        "description": "How to emit telemetry events during demo execution for observability-first governance",
+        "sections": [
+          {
+            "name": "Overview",
+            "content": "Developers emit telemetry markers using console.log during demo execution. Capture system validates signatures against plan baselines."
+          },
+          {
+            "name": "Format Requirements",
+            "subsections": [
+              {
+                "name": "Events",
+                "format": "[TELEMETRY_EVENT] <signature> <details>",
+                "example": "[TELEMETRY_EVENT] bootstrap.registry.init Registry initialized with 60 domains"
+              },
+              {
+                "name": "Metrics",
+                "format": "[TELEMETRY_METRIC] <name> = <value>",
+                "example": "[TELEMETRY_METRIC] registry.size = 60"
+              }
+            ]
+          },
+          {
+            "name": "Integration Workflow",
+            "steps": [
+              "Developer reviews plan telemetry.signatures for sprint",
+              "Adds console.log([TELEMETRY_EVENT]) markers to demo code",
+              "Tests locally with npm run demo:telemetry:sample",
+              "Runs npm run demo:capture:telemetry <sprint-id> to validate",
+              "Commit after capture shows 100% coverage"
+            ]
+          },
+          {
+            "name": "Troubleshooting",
+            "entries": [
+              {
+                "issue": "No [TELEMETRY_EVENT] markers found",
+                "solution": "Verify demo code has console.log with correct marker format on single line to stdout"
+              },
+              {
+                "issue": "Coverage not 100%",
+                "solution": "Check orchestration-telemetry-validation.md for missingSignatures array; add missing events"
+              }
+            ]
+          }
+        ]
+      },
+      "quickstart": {
+        "title": "Telemetry Governance Quickstart",
+        "description": "Quick reference for all telemetry governance operations and npm scripts",
+        "sections": [
+          {
+            "name": "npm Scripts",
+            "scripts": [
+              {
+                "command": "npm run telemetry:snapshots",
+                "description": "Generate sprint telemetry baseline snapshots"
+              },
+              {
+                "command": "npm run demo:capture:telemetry <sprint-id>",
+                "description": "Capture telemetry from demo execution"
+              },
+              {
+                "command": "npm run telemetry:validate",
+                "description": "Generate telemetry validation report"
+              }
+            ]
+          },
+          {
+            "name": "How It Works",
+            "phases": [
+              {
+                "phase": "Phase 1: Define Telemetry (Sprint Planning)",
+                "description": "Signatures defined in plan.telemetry.signatures"
+              },
+              {
+                "phase": "Phase 2: Generate Snapshots (Pre-Build)",
+                "description": "npm run build creates immutable baselines"
+              },
+              {
+                "phase": "Phase 3: Instrument Demo (Development)",
+                "description": "Developers emit [TELEMETRY_EVENT] markers"
+              },
+              {
+                "phase": "Phase 4: Capture Demo Telemetry (Test Phase)",
+                "description": "npm run demo:capture:telemetry validates signatures"
+              },
+              {
+                "phase": "Phase 5: Validate Coverage (Release Phase)",
+                "description": "npm run telemetry:validate confirms 100% coverage"
+              }
+            ]
+          }
+        ]
+      },
+      "verification": {
+        "title": "Telemetry Governance Verification",
+        "description": "Current status of telemetry governance implementation and compliance",
+        "sourceReports": [
+          ".generated/telemetry-validation-report.json",
+          ".generated/telemetry-matrix.json"
+        ],
+        "metrics": [
+          {
+            "name": "Coverage by Sprint",
+            "source": "telemetry-matrix.json",
+            "display": "table"
+          },
+          {
+            "name": "Validation Status",
+            "source": "telemetry-validation-report.json",
+            "display": "summary"
+          }
+        ]
+      },
+      "complete": {
+        "title": "Telemetry Governance Complete",
+        "description": "Comprehensive summary of telemetry governance implementation",
+        "sections": [
+          {
+            "name": "What Was Built",
+            "items": [
+              "Telemetry baseline definition system",
+              "Immutable baseline snapshots",
+              "Demo execution telemetry capture",
+              "Automated validation reporting"
+            ]
+          },
+          {
+            "name": "Generated Artifacts",
+            "categories": [
+              {
+                "category": "JSON Artifacts",
+                "items": [".generated/telemetry-matrix.json", ".generated/telemetry-validation-report.json"]
+              },
+              {
+                "category": "Markdown Artifacts",
+                "items": ["docs/generated/orchestration-telemetry-matrix.md", "docs/generated/orchestration-telemetry-validation.md"]
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 }

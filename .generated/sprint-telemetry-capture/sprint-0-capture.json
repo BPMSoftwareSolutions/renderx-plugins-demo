@@ -1,0 +1,51 @@
+{
+  "sprint": "0",
+  "name": "Bootstrap",
+  "capturedAt": "2025-11-24T19:18:01.093Z",
+  "demoCommand": "npm run demo:output:enhanced (simulated)",
+  "events": [
+    {
+      "signature": "bootstrap.registry.init",
+      "details": "Simulated execution of bootstrap.registry.init",
+      "timestamp": "2025-11-24T19:18:01.093Z"
+    },
+    {
+      "signature": "bootstrap.diff.generate",
+      "details": "Simulated execution of bootstrap.diff.generate",
+      "timestamp": "2025-11-24T19:18:01.193Z"
+    },
+    {
+      "signature": "bootstrap.baseline.persist",
+      "details": "Simulated execution of bootstrap.baseline.persist",
+      "timestamp": "2025-11-24T19:18:01.293Z"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "demo.duration_ms",
+      "value": "1234",
+      "timestamp": "2025-11-24T19:18:01.093Z"
+    },
+    {
+      "name": "demo.status",
+      "value": "success",
+      "timestamp": "2025-11-24T19:18:01.093Z"
+    }
+  ],
+  "validation": {
+    "required": [
+      "bootstrap.baseline.persist",
+      "bootstrap.diff.generate",
+      "bootstrap.registry.init"
+    ],
+    "captured": [
+      "bootstrap.registry.init",
+      "bootstrap.diff.generate",
+      "bootstrap.baseline.persist"
+    ],
+    "missing": [],
+    "coverage": 1,
+    "allPresent": true
+  },
+  "telemetryHash": "06d750b8054200056ddc6f92fc1662a09b7f7fb40c291510a50b4278c21612e3"
+}

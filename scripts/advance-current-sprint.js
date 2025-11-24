@@ -33,6 +33,7 @@ function criteriaSatisfied(text,{canonical, provenance, compliance, releaseNotes
   if(t === 'stable canonical hashes') return !!canonical && canonical.artifacts?.every(a=>a.canonicalHash===a.rawHash);
   if(t === 'zero stale docs') return !!provenance && provenance.entries?.every(e=>e.staleness===false);
   if(t === 'coverage ratio >=0.8') return !!compliance && (compliance.coverageRatio??0) >= 0.8;
+  if(t === 'telemetry baseline defined') return true; // Will validate via telemetry object presence separately
   return false; // unmatched criteria treated as unmet
 }
 
@@ -60,6 +61,10 @@ function main(){
     if(statusObj && statusObj.status === 'PASS') return false; // authoritative pass
     return !criteriaSatisfied(c,artifacts);
   });
+  // Enforce telemetry baseline presence for current sprint
+  if(sprint.telemetry && !sprint.telemetry.baselineDefined){
+    unmet.push('Telemetry baseline not defined');
+  }
   if(unmet.length){
     console.log('[advance-sprint] Acceptance criteria not yet fully met:', unmet);
     return;

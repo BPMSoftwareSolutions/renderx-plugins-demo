@@ -18,6 +18,7 @@ const PLAN = path.join(ROOT,'orchestration-audit-system-project-plan.json');
 const CANONICAL = path.join(ROOT,'.generated','canonical-hash-report.json');
 const NOTES = path.join(ROOT,'docs','generated','orchestration-release-notes.md');
 const SPRINT_INTEGRITY_DIR = path.join(ROOT,'.generated','sprint-integrity');
+const SPRINT_TELEMETRY_DIR = path.join(ROOT,'.generated','sprint-telemetry');
 
 function load(p){try{return JSON.parse(fs.readFileSync(p,'utf-8'));}catch{return null;}}
 function ensureDir(p){if(!fs.existsSync(p)) fs.mkdirSync(p,{recursive:true});}
@@ -80,7 +81,23 @@ if(fs.existsSync(SPRINT_INTEGRITY_DIR)){
 }
 const integrityBlock = integrityLines.length? ['- Sprint Integrity Hashes:', ...integrityLines].join('\n') : '- Sprint Integrity Hashes: none';
 
-const entry = `\n## Release ${ts}\n\n### Summary\n- Structural Diff: ${diffChange? 'CHANGE':'NO CHANGE'} (added=${diff?.summary.added||0}, removed=${diff?.summary.removed||0}, changed=${diff?.summary.changed||0})\n- Compliance Status: ${compliance? compliance.status:'n/a'}${complianceChanged? ' (changed)':''}\n- Plan Version: ${plan?.version||'n/a'}${planVersionChanged? ' (changed)':''}\n- Canonical Stability: ${canonicalStabilityAchieved? 'achieved':'pending'}\n\n### Details\n**Added Domains:** ${diff?.addedDomains?.length? diff.addedDomains.slice(0,10).join(', ')+(diff.addedDomains.length>10?' …':''):'None'}\n\n### Integrity\n- Canonical Hash Report Present: ${!!canonical}\n${integrityBlock}\n\n### Provenance\n- Index Present: ${fs.existsSync(path.join(ROOT,'.generated','provenance-index.json'))}\n\n### Demo Readiness (Snapshot)\n${(() => { try { const dr = JSON.parse(fs.readFileSync(path.join(ROOT,'.generated','demo-readiness.json'),'utf-8')); return `Readiness Score: ${(dr.readinessScore*100).toFixed(1)}%`; } catch { return 'Readiness Score: n/a'; } })()}\n\n*Automated entry. Do not edit.*\n`;
+// Collect telemetry baselines
+let telemetryLines = [];
+if(fs.existsSync(SPRINT_TELEMETRY_DIR)){
+  const files = fs.readdirSync(SPRINT_TELEMETRY_DIR).filter(f=>f.endsWith('.json'));
+  for(const f of files){
+    try{
+      const data = JSON.parse(fs.readFileSync(path.join(SPRINT_TELEMETRY_DIR,f),'utf-8'));
+      if(data && data.telemetryHash){
+        const baselineStatus = data.telemetry.baselineDefined? 'DEFINED':'PENDING';
+        telemetryLines.push(`  - Sprint ${data.sprint} (${baselineStatus}): ${data.telemetryHash}`);
+      }
+    }catch{ /* ignore */ }
+  }
+}
+const telemetryBlock = telemetryLines.length? ['- Telemetry Baselines:', ...telemetryLines].join('\n') : '- Telemetry Baselines: none';
+
+const entry = `\n## Release ${ts}\n\n### Summary\n- Structural Diff: ${diffChange? 'CHANGE':'NO CHANGE'} (added=${diff?.summary.added||0}, removed=${diff?.summary.removed||0}, changed=${diff?.summary.changed||0})\n- Compliance Status: ${compliance? compliance.status:'n/a'}${complianceChanged? ' (changed)':''}\n- Plan Version: ${plan?.version||'n/a'}${planVersionChanged? ' (changed)':''}\n- Canonical Stability: ${canonicalStabilityAchieved? 'achieved':'pending'}\n\n### Details\n**Added Domains:** ${diff?.addedDomains?.length? diff.addedDomains.slice(0,10).join(', ')+(diff.addedDomains.length>10?' …':''):'None'}\n\n### Integrity\n- Canonical Hash Report Present: ${!!canonical}\n${integrityBlock}\n\n### Telemetry\n${telemetryBlock}\n\n### Provenance\n- Index Present: ${fs.existsSync(path.join(ROOT,'.generated','provenance-index.json'))}\n\n### Demo Readiness (Snapshot)\n${(() => { try { const dr = JSON.parse(fs.readFileSync(path.join(ROOT,'.generated','demo-readiness.json'),'utf-8')); return `Readiness Score: ${(dr.readinessScore*100).toFixed(1)}%`; } catch { return 'Readiness Score: n/a'; } })()}\n\n*Automated entry. Do not edit.*\n`;
 
 if(!existing){
   existing = '# Orchestration Release Notes\n\n> DO NOT EDIT. Generated automatically from diff/compliance/plan/canonical reports.\n';

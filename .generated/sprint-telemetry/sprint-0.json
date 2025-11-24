@@ -1,0 +1,22 @@
+{
+  "sprint": "0",
+  "name": "Bootstrap",
+  "status": "complete",
+  "generatedAt": "2025-11-24T19:17:58.213Z",
+  "telemetryHash": "490d6362403feb3420c3629ed59e3a23d15fc1c6ad8bbd94e7efa9515a9ecd21",
+  "telemetry": {
+    "requiredShapes": [
+      "events",
+      "metrics",
+      "traces",
+      "logs"
+    ],
+    "baselineDefined": true,
+    "signatures": [
+      "bootstrap.registry.init",
+      "bootstrap.diff.generate",
+      "bootstrap.baseline.persist"
+    ],
+    "notes": "Baseline artifacts established at initial system setup"
+  }
+}

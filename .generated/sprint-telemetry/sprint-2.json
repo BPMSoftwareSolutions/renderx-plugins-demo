@@ -1,0 +1,18 @@
+{
+  "sprint": "2",
+  "name": "Provenance & Compliance",
+  "status": "planned",
+  "generatedAt": "2025-11-24T19:17:58.219Z",
+  "telemetryHash": "e0ec511b569280f1df1a8141987315f621b2404bd707c21a36a764e3e10099ec",
+  "telemetry": {
+    "requiredShapes": [
+      "events",
+      "metrics",
+      "traces",
+      "logs"
+    ],
+    "baselineDefined": false,
+    "signatures": [],
+    "notes": "Define telemetry signatures for provenance and compliance generation"
+  }
+}
