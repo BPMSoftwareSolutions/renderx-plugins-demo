@@ -1,7 +1,7 @@
 # 🎼 Unified MusicalSequence Interface
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-24T15:53:48.457Z
+**Last Generated:** 2025-11-24T16:27:07.832Z
 **DO NOT EDIT — GENERATED**
 
 ## Interface Definition
@@ -14,7 +14,15 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| (No fields defined) | | | |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
+| `undefined` | `undefined` | ❌ | undefined |
 
 ---
 

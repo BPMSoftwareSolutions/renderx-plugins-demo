@@ -124,53 +124,66 @@ function generateDomainSketch(domain) {
   if (!domain.sketch) return '';
 
   const sketch = domain.sketch;
-  const width = 57;
-  let ascii = '';
+  const INDENT = '    ';
+  const baseWidth = 57; // minimum inner width
+  const lines = [];
 
-  // Defensive checks
-  const title = (sketch.title || domain.name || 'Domain').substring(0, width - 4);
+  // Title (emoji + title)
+  const rawTitle = `${domain.emoji} ${sketch.title || domain.name || 'Domain'}`;
+  lines.push(rawTitle);
+  lines.push(''); // spacer line
 
-  // Header
-  ascii += `    ┌${'─'.repeat(width)}┐\n`;
-  ascii += `    │ ${domain.emoji} ${title.padEnd(width - 4)}│\n`;
-  ascii += `    ├${'─'.repeat(width)}┤\n`;
-  ascii += `    │${' '.repeat(width)}│\n`;
-
-  // Add sequence metadata if available
+  // Sequence metadata block
   if (sketch.sequence) {
     const seq = sketch.sequence;
-    ascii += `    │  🎵 Sequence: ${(seq.id || 'unknown').substring(0, width - 16)}│\n`;
-    ascii += `    │  ├─ Tempo: ${(seq.tempo || 120)} BPM${' '.repeat(width - 24)}│\n`;
-    ascii += `    │  ├─ Key: ${(seq.key || 'C Major').substring(0, width - 16)}│\n`;
-    ascii += `    │  └─ Category: ${(seq.category || 'unknown').substring(0, width - 20)}│\n`;
-    ascii += `    │${' '.repeat(width)}│\n`;
+    lines.push(`🎵 Sequence: ${seq.id || 'unknown'}`);
+    lines.push(`├─ Tempo: ${seq.tempo || 120} BPM`);
+    lines.push(`├─ Key: ${seq.key || 'C Major'}`);
+    lines.push(`└─ Category: ${seq.category || 'unknown'}`);
+    lines.push('');
   }
 
-  // Phases (Movements)
-  if (sketch.phases && Array.isArray(sketch.phases)) {
-    sketch.phases.forEach((phase, idx) => {
-      const phaseName = (phase.name || 'Phase').substring(0, width - 4);
-      ascii += `    │  ${phaseName.padEnd(width - 4)}│\n`;
-      if (phase.items && Array.isArray(phase.items)) {
-        phase.items.forEach((item, itemIdx) => {
-          const isLast = itemIdx === phase.items.length - 1;
-          const prefix = isLast ? '  └─' : '  ├─';
-          const itemStr = (String(item) || 'Item').substring(0, width - 9);
-          ascii += `    │  ${prefix} ${itemStr.padEnd(width - 9)}│\n`;
+  // Movements & Beats
+  if (Array.isArray(sketch.phases)) {
+    sketch.phases.forEach((phase, pIdx) => {
+      lines.push(`${phase.name || 'Movement'}`);
+      if (Array.isArray(phase.items)) {
+        phase.items.forEach((item, iIdx) => {
+          const connector = iIdx === phase.items.length - 1 ? '└─' : '├─';
+          lines.push(`  ${connector} ${String(item)}`);
         });
       }
-
-      // Add flow arrow between phases (except last)
-      if (idx < sketch.phases.length - 1) {
-        ascii += `    │           │${' '.repeat(width - 14)}│\n`;
-        ascii += `    │           ▼${' '.repeat(width - 14)}│\n`;
+      if (pIdx < sketch.phases.length - 1) {
+        // Flow indicator to next phase
+        lines.push('');
+        lines.push('          ▼');
+        lines.push('');
       }
     });
   }
 
-  ascii += `    │${' '.repeat(width)}│\n`;
-  ascii += `    └${'─'.repeat(width)}┘\n`;
+  lines.push(''); // final spacer
 
+  // Determine dynamic width (cap for readability)
+  const longest = lines.reduce((m, l) => Math.max(m, l.length), 0);
+  const innerWidth = Math.max(baseWidth, Math.min(90, longest));
+
+  const top = INDENT + '┌' + '─'.repeat(innerWidth) + '┐\n';
+  const bottom = INDENT + '└' + '─'.repeat(innerWidth) + '┘\n';
+  const divider = INDENT + '├' + '─'.repeat(innerWidth) + '┤\n';
+
+  let ascii = '';
+  ascii += top;
+  // Title line padded
+  ascii += INDENT + '│ ' + rawTitle.padEnd(innerWidth - 1) + '│\n';
+  ascii += divider;
+
+  // Render content lines uniformly padded
+  lines.slice(1).forEach(line => {
+    ascii += INDENT + '│ ' + line.padEnd(innerWidth - 1) + '│\n';
+  });
+
+  ascii += bottom;
   return ascii;
 }
 

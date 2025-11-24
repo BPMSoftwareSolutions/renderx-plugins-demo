@@ -54,6 +54,7 @@ async function generateOrchestrationDomains() {
   console.log('🔄 Generating orchestration-domains.json from audit catalog\n');
 
   const domains = [];
+  let placeholderCounter = 0;
 
   // Load audit catalog (55 plugin sequences)
   const catalogPath = path.join(
@@ -64,15 +65,28 @@ async function generateOrchestrationDomains() {
 
   // Add all plugin sequences from audit catalog
   catalog.sequences.forEach(seq => {
+    // Repair invalid entries lacking an id by generating placeholder identifiers
+    if (!seq.id) {
+      placeholderCounter += 1;
+      const generatedId = `catalog-placeholder-${placeholderCounter}`;
+      const generatedName = `Catalog Placeholder ${placeholderCounter}`;
+      console.warn(`⚠️  Repairing sequence with missing id -> ${generatedId}`);
+      seq.id = generatedId;
+      if (!seq.name) seq.name = generatedName;
+      if (!seq.movements) seq.movements = []; // ensure array
+    }
+
+    // Fallback sequence name to id when name is missing (prevents "undefined" names)
+    const sequenceName = seq.name || seq.id;
     const beats = seq.movements?.reduce((sum, m) => sum + (m.beatCount || 0), 0) || 0;
     const movements = seq.movements || [];
 
     // Generate complete MusicalSequence structure with sketch data
     const sketch = {
-      title: seq.name,
+      title: sequenceName,
       sequence: {
         id: seq.id,
-        name: seq.name,
+        name: sequenceName,
         tempo: seq.tempo || 120,
         key: seq.key || 'C Major',
         timeSignature: seq.timeSignature || '4/4',
@@ -86,9 +100,9 @@ async function generateOrchestrationDomains() {
 
     domains.push({
       id: seq.id,
-      name: seq.name,
+      name: sequenceName,
       emoji: '🔌',
-      description: `Plugin sequence: ${seq.name}`,
+      description: `Plugin sequence: ${sequenceName}`,
       category: 'plugin',
       purpose: 'Feature implementation',
       relatedDomains: [],
@@ -167,7 +181,18 @@ async function generateOrchestrationDomains() {
     },
     unifiedInterface: {
       name: 'MusicalSequence',
-      source: 'packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts'
+      source: 'packages/musical-conductor/modules/communication/sequences/SequenceTypes.ts',
+      fields: [
+        'id',
+        'name',
+        'description',
+        'key',
+        'tempo',
+        'timeSignature',
+        'category',
+        'movements',
+        'metadata'
+      ]
     },
     executionFlow: [
       { step: 1, name: 'Load Context', description: 'Load governance and context' },
