@@ -1,0 +1,167 @@
+{
+  "version": "1.1.0",
+  "updatedAt": "2025-11-24T18:15:00.000Z",
+  "currentSprint": "1",
+  "lastUpdatedBy": "automation",
+  "summary": {
+    "purpose": "Sprint-driven anti-drift evolution with per-sprint measurable outcomes",
+    "progressModel": "Completed sprints counted; future sprints locked until activation",
+    "metricGlossary": {
+      "velocity": "Completed deliverables / planned deliverables per sprint",
+      "coverage": "BDD mapped sequences / total sequences",
+      "readinessScore": "Checklist PASS items / total items"
+    }
+  },
+  "vision": "Continuously evolving anti-drift orchestration audit platform with demonstrable sprint value (diffs, canonical hashes, provenance, compliance, telemetry).",
+  "principles": [
+    "JSON authority",
+    "Every change diffed",
+    "Demo readiness per sprint",
+    "Automated provenance",
+    "Integrity locking",
+    "BDD + TDD alignment"
+  ],
+  "sequencesLink": "packages/ographx/.ographx/sequences/",
+  "domainSequences": [
+    {"id": "orchestration-audit-system", "bddSpec": "packages/orchestration/bdd/orchestration-audit-system.feature", "coverageTarget": 0.85, "sprintIntro": 0},
+    {"id": "orchestration-audit-session", "bddSpec": "packages/orchestration/bdd/orchestration-audit-session.feature", "coverageTarget": 0.80, "sprintIntro": 0},
+    {"id": "cag-agent-workflow", "bddSpec": "packages/cag/bdd/cag-agent-workflow.feature", "coverageTarget": 0.90, "sprintIntro": 4},
+    {"id": "graphing-orchestration", "bddSpec": "packages/orchestration/bdd/graphing-orchestration.feature", "coverageTarget": 0.75, "sprintIntro": 7},
+    {"id": "self_sequences", "bddSpec": "packages/orchestration/bdd/self-sequences.feature", "coverageTarget": 0.70, "sprintIntro": 7}
+  ],
+  "bddSpecs": {
+    "root": "packages",
+    "specPattern": "**/*.feature",
+    "statusTracking": true,
+    "linkageRule": "BDD feature filename must match domain sequence id (hyphens preserved)."
+  },
+  "sprints": [
+    {
+      "id": "0",
+      "name": "Bootstrap",
+      "theme": "Registry & Diff Foundation",
+      "deliverables": ["structural diff script", "baseline snapshot", "sequence integration"],
+      "demoCriteria": ["diff report created", "baseline stored"],
+      "status": "complete",
+      "startDate": "2025-11-24",
+      "endDate": "2025-11-24",
+      "objectives": ["Establish auto-generated registry", "Create structural diff capability", "Create baseline snapshot"],
+      "acceptanceCriteria": ["Registry auto-generates", "Diff shows added domains", "Baseline stored"],
+      "blockers": [],
+      "risks": ["Initial diff all-added noise"],
+      "velocityTarget": 3,
+      "velocityActual": 3,
+      "qualityGates": {"compliance": "n/a", "hash": "raw-only"},
+      "metrics": {"domains": 60, "added": 60, "changed": 0}
+    },
+    {
+      "id": "1",
+      "name": "Canonical Integrity",
+      "theme": "False drift elimination",
+      "deliverables": ["canonical hash function", "raw vs canonical report"],
+      "demoCriteria": ["stable canonical hashes"],
+      "status": "in-progress",
+      "startDate": "2025-11-24",
+      "endDate": "2025-11-25",
+      "objectives": ["Eliminate false drift", "Produce canonical vs raw hash report", "Integrate in pipeline"],
+      "acceptanceCriteria": ["Canonical equals raw where no volatile fields", "Report generated in pre:manifests"],
+      "blockers": [],
+      "risks": ["Missed volatile keys cause instability"],
+      "velocityTarget": 3,
+      "velocityActual": 2,
+      "qualityGates": {"canonicalHashReport": "PASS"},
+      "metrics": {"canonicalStability": true}
+    },
+    {
+      "id": "2",
+      "name": "Provenance & Compliance",
+      "theme": "Doc + sequence validation",
+      "deliverables": ["provenance index", "compliance report"],
+      "demoCriteria": ["all docs mapped", "all sequences valid"],
+      "status": "planned",
+      "objectives": ["Detect stale docs", "Enforce domain sequence coverage"],
+      "acceptanceCriteria": ["Zero stale docs", "Coverage ratio >=0.8"],
+      "velocityTarget": 2,
+      "risks": ["Large doc set introduces false stale flags"],
+      "blockers": []
+    },
+    {
+      "id": "3",
+      "name": "Release & Changelog Automation",
+      "theme": "Stakeholder visibility",
+      "deliverables": ["release notes generator", "evolution changelog"],
+      "demoCriteria": ["notes auto-generated"],
+      "status": "planned",
+      "objectives": ["Append release entries automatically"],
+      "acceptanceCriteria": ["Entry appended when diff changes"],
+      "velocityTarget": 2
+    },
+    {
+      "id": "4",
+      "name": "BDD Alignment",
+      "theme": "Business coverage",
+      "deliverables": ["BDD spec stubs", "domain coverage matrix"],
+      "demoCriteria": ["≥90% domains mapped"],
+      "status": "planned",
+      "velocityTarget": 3
+    },
+    {
+      "id": "5",
+      "name": "TDD Handler Flow",
+      "theme": "Audit handler implementation",
+      "deliverables": ["handler test harness", "spec templates"],
+      "demoCriteria": ["≥85% coverage"],
+      "status": "planned",
+      "velocityTarget": 3
+    },
+    {
+      "id": "6",
+      "name": "Demo Dashboard",
+      "theme": "Unified reporting",
+      "deliverables": ["dashboard markdown"],
+      "demoCriteria": ["all reports consolidated"],
+      "status": "planned",
+      "velocityTarget": 2
+    },
+    {
+      "id": "7",
+      "name": "Telemetry Layer",
+      "theme": "Performance baselines",
+      "deliverables": ["timing baseline"],
+      "demoCriteria": ["≥70% sequences timed"],
+      "status": "planned",
+      "velocityTarget": 2
+    },
+    {
+      "id": "8",
+      "name": "Evolution Insights",
+      "theme": "Impact scoring",
+      "deliverables": ["semantic diff", "impact scores"],
+      "demoCriteria": ["scores generated"],
+      "status": "planned",
+      "velocityTarget": 2
+    }
+  ],
+  "demoChecklist": [
+    "Structural diff generated if changes",
+    "Canonical hash report updated",
+    "Provenance index regenerated",
+    "Compliance report PASS",
+    "Release notes appended when structural change",
+    "BDD spec coverage threshold met",
+    "Handler tests passing & coverage ≥ target"
+  ],
+  "backlog": [
+    "semantic metadata diff",
+    "telemetry performance baseline",
+    "impact scoring engine"
+  ],
+  "linkRules": {
+    "sequenceToBDD": "For each domainSequences entry: ensure bddSpec file exists; if missing generate stub.",
+    "coverageTargetValidation": "Warn if coverageTarget < 0.7 or > 0.95.",
+    "sprintIntroOrdering": "Domain sequence sprintIntro must be <= sprint count - 1."},
+  "integrity": {
+    "hashStrategy": "Canonical hash excludes 'integrity' blocks and volatile timestamps",
+    "planned": true
+  }
+}
