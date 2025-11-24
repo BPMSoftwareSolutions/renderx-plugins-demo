@@ -97,6 +97,7 @@ function main(){
     // Overlay discovery (non-invasive)
     run('Generate overlay input specs', 'node scripts/generate-overlay-input-specs.cjs');
     run('Detect missing domain overlays', 'node scripts/detect-missing-domain-overlays.cjs');
+    run('Generate orchestration sequence proposals', 'node scripts/generate-orchestration-sequence-proposals.cjs');
 
   // Telemetry aggregation for orchestration-core
   const domainPath = path.resolve('docs','domains','orchestration-core.json');

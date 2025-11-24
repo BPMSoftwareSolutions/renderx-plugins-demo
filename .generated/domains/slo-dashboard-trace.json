@@ -1,0 +1,29 @@
+{
+  "domain_id": "slo-dashboard",
+  "generated_at": "2025-11-24T23:08:17.146Z",
+  "lineage": [
+    "slo-dashboard"
+  ],
+  "computed_lineage_hash": "f92e9bac029b314656c4dd1b6608eef9d0cb9659cc2bbd5c6f79a2386614bbd9",
+  "stored_lineage_hash": "f92e9bac029b314656c4dd1b6608eef9d0cb9659cc2bbd5c6f79a2386614bbd9",
+  "integrity_checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5",
+  "cross_domain_links": [
+    {
+      "link_id": "slo-dashboard-to-self-healing",
+      "target_domain_id": "self-healing",
+      "relation_type": "depends_on",
+      "strength": "strong",
+      "rationale": "SLO dashboard consumes breach data from self-healing capability."
+    },
+    {
+      "link_id": "slo-dashboard-to-orchestration-core",
+      "target_domain_id": "orchestration-core",
+      "relation_type": "extends",
+      "strength": "moderate",
+      "rationale": "Dashboard follows orchestration patterns for data flow."
+    }
+  ],
+  "validation": {
+    "lineage_hash_match": true
+  }
+}

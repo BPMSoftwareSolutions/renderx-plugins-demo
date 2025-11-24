@@ -8,7 +8,28 @@
   "sequenceType": "orchestration",
   "featurePresence": false,
   "existingOrchestrationSequence": false,
-  "businessBddFiles": [],
+  "businessBddSpecs": [],
+  "businessBddHandlers": [
+    "packages\\self-healing\\__tests__\\business-bdd\\4-i-want-to-automatically-generate-fixes-f.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\104-shape-contracts.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\14-aggregate-anomaly-results.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\24-aggregate-diagnosis.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\34-validate-syntax.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\4-normalize-telemetry-data.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\40-run-unit-tests.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\41-run-integration-tests.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\42-validate-coverage.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\43-validate-performance.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\44-aggregate-validation-results.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\45-store-validation-results.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\46-validate-fix-completed.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\47-deploy-fix-requested.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\48-create-pull-request.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\49-run-c-i-tests.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\54-deploy-to-production.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\64-store-learning-data.spec.ts",
+    "packages\\slo-dashboard\\__tests__\\business-bdd-handlers\\04-serialize-dashboard-state.spec.ts"
+  ],
   "correlation": {
     "idStrategy": "uuid-v4"
   },
@@ -42,7 +63,7 @@
     ]
   },
   "proposalMeta": {
-    "generatedAt": "2025-11-24T22:58:29.591Z",
+    "generatedAt": "2025-11-24T23:08:21.974Z",
     "sourceReport": ".generated/domains/missing-sequences-report.json",
     "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\catalog-placeholder-4.json",
     "generationGroup": "deferred",

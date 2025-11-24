@@ -1,6 +1,6 @@
 {
   "domain_id": "telemetry-pipeline",
-  "generated_at": "2025-11-24T22:29:30.054Z",
+  "generated_at": "2025-11-24T23:08:17.706Z",
   "lineage": [
     "telemetry-pipeline"
   ],

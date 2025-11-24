@@ -7,6 +7,17 @@
   "handlers": [],
   "topics": [],
   "tests": [],
+  "businessBddSpecs": [],
+  "businessBddHandlers": [
+    "packages/self-healing/__tests__/business-bdd/5-i-want-to-validate-fixes-before-deployin.spec.ts",
+    "packages/self-healing/__tests__/business-bdd/6-i-want-to-safely-deploy-validated-fixes-.spec.ts",
+    "packages/self-healing/__tests__/business-bdd-handlers/34-validate-syntax.spec.ts",
+    "packages/self-healing/__tests__/business-bdd-handlers/37-validate-fix-requested.spec.ts",
+    "packages/self-healing/__tests__/business-bdd-handlers/42-validate-coverage.spec.ts",
+    "packages/self-healing/__tests__/business-bdd-handlers/43-validate-performance.spec.ts",
+    "packages/self-healing/__tests__/business-bdd-handlers/46-validate-fix-completed.spec.ts",
+    "packages/self-healing/__tests__/business-bdd-handlers/53-validate-staging-deployment.spec.ts"
+  ],
   "featureSequences": [],
   "gaps": {
     "untestedHandlers": [],
@@ -27,6 +38,6 @@
       "irSequences": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-sequences.json",
       "irHandlerTests": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\ographx\\.ographx\\artifacts\\renderx-web\\ir\\ir-handler-tests.json"
     },
-    "generatedAt": "2025-11-24T22:34:22.615Z"
+    "generatedAt": "2025-11-24T23:14:10.859Z"
   }
 }

@@ -1,0 +1,126 @@
+{
+  "domain_id": "slo-dashboard",
+  "domain_type": "capability",
+  "title": "SLO Dashboard Capability Domain",
+  "summary": "Real-time visualization and management of Service Level Objectives, Indicators, and Agreements.",
+  "root_context_ref": "UNIFIED_GOVERNANCE_AUTHORITY.json",
+  "parent_context_refs": [
+    "orchestration-core"
+  ],
+  "context_lineage": [
+    "UNIFIED_GOVERNANCE_AUTHORITY.json",
+    "orchestration-core",
+    "slo-dashboard"
+  ],
+  "bounded_context": {
+    "in_scope": [
+      "SLO/SLI/SLA visualization",
+      "Breach threshold display",
+      "Dashboard project planning",
+      "Demo scenario generation"
+    ],
+    "out_of_scope": [
+      "Breach detection logic (handled by self-healing)",
+      "External alerting integrations"
+    ],
+    "interfaces": [
+      "self-healing",
+      "telemetry-pipeline",
+      "orchestration-core"
+    ]
+  },
+  "lifecycle": {
+    "stage": "active",
+    "introduced": "2025-10-15",
+    "last_review": "2025-11-24",
+    "next_review_due": "2025-12-24"
+  },
+  "stability": {
+    "score": 0.8,
+    "volatility_factors": [
+      "UI component updates",
+      "new SLO metric additions"
+    ]
+  },
+  "ownership": {
+    "team": "Platform Observability",
+    "primary_contact": "observability@example.com",
+    "accountable_role": "Observability Lead"
+  },
+  "governance": {
+    "inherited_rules": [
+      "JSON-first authority",
+      "Auto-generated markdown reflections"
+    ],
+    "overrides": [],
+    "non_overridable": [
+      "integrity_checksum validation",
+      "lineage_hash verification"
+    ]
+  },
+  "artifacts": {
+    "json_sources": [
+      "packages/slo-dashboard/slo-dashboard-project-plan.json",
+      "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json",
+      "packages/slo-dashboard/.generated/slo-dashboard-demo-plan.json"
+    ],
+    "generated_markdown": [
+      "docs/domains/slo-dashboard.md"
+    ],
+    "generated_code": [
+      "packages/slo-dashboard/src/"
+    ],
+    "generated_tests": [
+      "packages/slo-dashboard/__tests__/"
+    ],
+    "business_bdd_specs": [
+      "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json"
+    ],
+    "business_bdd_handlers": [
+      "packages/slo-dashboard/__tests__/business-bdd/"
+    ]
+  },
+  "cross_domain_links": [
+    {
+      "link_id": "slo-dashboard-to-self-healing",
+      "target_domain_id": "self-healing",
+      "relation_type": "depends_on",
+      "strength": "strong",
+      "rationale": "SLO dashboard consumes breach data from self-healing capability."
+    },
+    {
+      "link_id": "slo-dashboard-to-orchestration-core",
+      "target_domain_id": "orchestration-core",
+      "relation_type": "extends",
+      "strength": "moderate",
+      "rationale": "Dashboard follows orchestration patterns for data flow."
+    }
+  ],
+  "metrics": {
+    "kpis": [
+      "dashboard_load_time_p95",
+      "slo_data_freshness",
+      "visualization_accuracy"
+    ],
+    "leading_indicators": [
+      "api_call_latency",
+      "data_sync_frequency"
+    ],
+    "quality_gates": [
+      "all_bdd_specs_passing",
+      "no_stale_slo_data"
+    ]
+  },
+  "validation_rules": [
+    "business_bdd_specs must exist and be non-empty",
+    "business_bdd_handlers directory must contain at least one spec file",
+    "All dashboard scenarios must have BDD coverage"
+  ],
+  "decision_log_refs": [],
+  "provenance": {
+    "created_by": "Augment Agent",
+    "created_at": "2025-11-24T23:10:00.000Z",
+    "lineage_hash": "f92e9bac029b314656c4dd1b6608eef9d0cb9659cc2bbd5c6f79a2386614bbd9",
+    "integrity_checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5"
+  }
+}

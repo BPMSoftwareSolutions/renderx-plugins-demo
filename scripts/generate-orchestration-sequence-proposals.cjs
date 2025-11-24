@@ -27,7 +27,8 @@ function buildProposal(entry){
   }
 
   // Attach business BDD spec file paths (heuristic matching)
-  const businessBddFiles = entry.businessBddFiles || [];
+  const businessBddSpecs = entry.businessBddSpecs || [];
+  const businessBddHandlers = entry.businessBddHandlers || [];
 
   return {
     proposalId: entry.domainId,
@@ -39,7 +40,8 @@ function buildProposal(entry){
     sequenceType: 'orchestration',
     featurePresence: entry.hasFeatureSequence,
     existingOrchestrationSequence: entry.hasOrchestrationSequence,
-    businessBddFiles,
+    businessBddSpecs,
+    businessBddHandlers,
     correlation: { idStrategy: 'uuid-v4' },
     phases,
     failure: {
@@ -81,14 +83,27 @@ function main(){
     }
   }
   walk(path.resolve('packages'));
-  const bddCandidates = allPaths.filter(p=>/business-bdd|\.feature$|bdd\.spec\.ts$|bdd-specifications\.json$/i.test(p));
+
+  // Categorize into specs vs handlers based on path patterns
+  const specPatterns = [/business-bdd-specifications\.json$/i, /\.feature$/i];
+  const handlerPatterns = [/business-bdd-handlers/i, /__tests__[\\/]business-bdd[\\/]/i];
+  const bddSpecCandidates = allPaths.filter(p => specPatterns.some(rx => rx.test(p)));
+  const bddHandlerCandidates = allPaths.filter(p => handlerPatterns.some(rx => rx.test(p)));
 
   // Build a quick index: map domain tokens -> matching files
-  function matchBddFiles(domainId){
+  function matchBddSpecs(domainId){
     const tokens = domainId.split('-').filter(t=>t && t!=='symphony');
     const lowerTokens = tokens.map(t=>t.toLowerCase());
-    // Relax: any single token match qualifies; score by number of hits
-    const matches = bddCandidates.filter(f=>{
+    const matches = bddSpecCandidates.filter(f=>{
+      const lower = f.toLowerCase();
+      return lowerTokens.some(t=> lower.includes(t));
+    });
+    return matches.map(f=> path.relative(process.cwd(), f));
+  }
+  function matchBddHandlers(domainId){
+    const tokens = domainId.split('-').filter(t=>t && t!=='symphony');
+    const lowerTokens = tokens.map(t=>t.toLowerCase());
+    const matches = bddHandlerCandidates.filter(f=>{
       const lower = f.toLowerCase();
       return lowerTokens.some(t=> lower.includes(t));
     });
@@ -96,15 +111,21 @@ function main(){
   }
 
   // Explicit package-level mapping augmentation for known domains not token-compatible
-  const explicitBdd = {
+  const explicitBddSpecs = {
     'self-healing-symphony': [
-      'packages/self-healing/__tests__/business-bdd',
-      'packages/self-healing/__tests__/business-bdd-handlers',
       'packages/self-healing/.generated/comprehensive-business-bdd-specifications.json'
     ],
     'slo-dashboard-symphony': [
-      'packages/slo-dashboard/__tests__/business-bdd',
       'packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json'
+    ]
+  };
+  const explicitBddHandlers = {
+    'self-healing-symphony': [
+      'packages/self-healing/__tests__/business-bdd-handlers',
+      'packages/self-healing/__tests__/business-bdd'
+    ],
+    'slo-dashboard-symphony': [
+      'packages/slo-dashboard/__tests__/business-bdd'
     ]
   };
 
@@ -115,16 +136,29 @@ function main(){
   const skipped = [];
   for(const entry of report.missingSequences){
     if(existing.has(entry.domainId)) { skipped.push(entry.domainId); continue; }
-    let bddFiles = matchBddFiles(entry.domainId);
-    if(explicitBdd[entry.domainId]){
-      bddFiles = bddFiles.concat(explicitBdd[entry.domainId]);
+    let specs = matchBddSpecs(entry.domainId);
+    let handlers = matchBddHandlers(entry.domainId);
+    if(explicitBddSpecs[entry.domainId]){
+      specs = specs.concat(explicitBddSpecs[entry.domainId]);
+    }
+    if(explicitBddHandlers[entry.domainId]){
+      handlers = handlers.concat(explicitBddHandlers[entry.domainId]);
     }
     // Deduplicate & normalize paths
-    entry.businessBddFiles = Array.from(new Set(bddFiles));
+    entry.businessBddSpecs = Array.from(new Set(specs));
+    entry.businessBddHandlers = Array.from(new Set(handlers));
+    entry.businessBddFiles = entry.businessBddSpecs.concat(entry.businessBddHandlers);
     const proposal = buildProposal(entry);
     const outFile = path.join(proposalsDir, `${entry.domainId}.proposal.json`);
     fs.writeFileSync(outFile, JSON.stringify(proposal,null,2));
-    proposals.push({domainId: entry.domainId, file: outFile, readiness: entry.generationGroup, priorityScore: entry.priorityScore, businessBddFileCount: entry.businessBddFiles.length});
+    proposals.push({
+      domainId: entry.domainId,
+      file: outFile,
+      readiness: entry.generationGroup,
+      priorityScore: entry.priorityScore,
+      businessBddSpecsCount: entry.businessBddSpecs.length,
+      businessBddHandlersCount: entry.businessBddHandlers.length
+    });
   }
 
   const index = {
@@ -138,8 +172,10 @@ function main(){
     skipped,
     proposals,
     summary: {
-      proposals_with_bdd: proposals.filter(p=>p.businessBddFileCount>0).length,
-      total_bdd_file_refs: proposals.reduce((a,p)=>a+p.businessBddFileCount,0)
+      proposals_with_bdd_specs: proposals.filter(p=>p.businessBddSpecsCount>0).length,
+      proposals_with_bdd_handlers: proposals.filter(p=>p.businessBddHandlersCount>0).length,
+      total_bdd_specs_refs: proposals.reduce((a,p)=>a+p.businessBddSpecsCount,0),
+      total_bdd_handlers_refs: proposals.reduce((a,p)=>a+p.businessBddHandlersCount,0)
     }
   };
   fs.writeFileSync(path.join(proposalsDir,'proposals-index.json'), JSON.stringify(index,null,2));

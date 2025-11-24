@@ -8,7 +8,11 @@
   "sequenceType": "orchestration",
   "featurePresence": false,
   "existingOrchestrationSequence": false,
-  "businessBddFiles": [],
+  "businessBddSpecs": [],
+  "businessBddHandlers": [
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\103-shape-budgets.spec.ts",
+    "packages\\slo-dashboard\\__tests__\\business-bdd-handlers\\01-load-budgets.spec.ts"
+  ],
   "correlation": {
     "idStrategy": "uuid-v4"
   },
@@ -42,7 +46,7 @@
     ]
   },
   "proposalMeta": {
-    "generatedAt": "2025-11-24T22:58:29.590Z",
+    "generatedAt": "2025-11-24T23:08:21.973Z",
     "sourceReport": ".generated/domains/missing-sequences-report.json",
     "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\header-ui-theme-get-symphony.json",
     "generationGroup": "deferred",

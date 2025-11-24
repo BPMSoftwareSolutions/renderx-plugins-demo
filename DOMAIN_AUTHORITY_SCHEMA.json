@@ -36,7 +36,9 @@
       "json_sources": {"type": "array", "items": {"type": "string"}},
       "generated_markdown": {"type": "array", "items": {"type": "string"}},
       "generated_code": {"type": "array", "items": {"type": "string"}},
-      "generated_tests": {"type": "array", "items": {"type": "string"}}
+      "generated_tests": {"type": "array", "items": {"type": "string"}},
+      "business_bdd_specs": {"type": "array", "items": {"type": "string"}, "description": "Paths to business BDD specification JSON files (e.g., .generated/*-business-bdd-specifications.json)."},
+      "business_bdd_handlers": {"type": "array", "items": {"type": "string"}, "description": "Paths to business BDD handler test directories or files (e.g., __tests__/business-bdd-handlers/)."}
     },
     "cross_domain_links": {
       "type": "array",

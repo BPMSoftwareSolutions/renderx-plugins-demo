@@ -8,7 +8,11 @@
   "sequenceType": "orchestration",
   "featurePresence": false,
   "existingOrchestrationSequence": false,
-  "businessBddFiles": [],
+  "businessBddSpecs": [],
+  "businessBddHandlers": [
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\33-create-patch.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\48-create-pull-request.spec.ts"
+  ],
   "correlation": {
     "idStrategy": "uuid-v4"
   },
@@ -42,7 +46,7 @@
     ]
   },
   "proposalMeta": {
-    "generatedAt": "2025-11-24T22:58:29.585Z",
+    "generatedAt": "2025-11-24T23:08:21.967Z",
     "sourceReport": ".generated/domains/missing-sequences-report.json",
     "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\control-panel-css-create-symphony.json",
     "generationGroup": "deferred",

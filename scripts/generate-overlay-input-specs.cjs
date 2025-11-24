@@ -15,6 +15,84 @@ function ensureDir(d){if(!fs.existsSync(d)) fs.mkdirSync(d,{recursive:true});}
 
 function safeLoad(p){if(!fs.existsSync(p)) return null; try{return loadJSON(p);}catch{return null;}}
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Business BDD Discovery Functions
+// ─────────────────────────────────────────────────────────────────────────────
+function discoverAllPaths(baseDir) {
+  const allPaths = [];
+  function walk(dir) {
+    if (!fs.existsSync(dir)) return;
+    for (const item of fs.readdirSync(dir)) {
+      const full = path.join(dir, item);
+      const stat = fs.statSync(full);
+      if (stat.isDirectory()) walk(full); else allPaths.push(full);
+    }
+  }
+  walk(baseDir);
+  return allPaths;
+}
+
+function buildBddIndex(packagesDir) {
+  const allPaths = discoverAllPaths(packagesDir);
+  
+  // Patterns for BDD specs vs handlers
+  const specPatterns = [/business-bdd-specifications\.json$/i, /\.feature$/i];
+  const handlerPatterns = [/business-bdd-handlers/i, /__tests__[\\/]business-bdd[\\/]/i];
+  
+  return {
+    specCandidates: allPaths.filter(p => specPatterns.some(rx => rx.test(p))),
+    handlerCandidates: allPaths.filter(p => handlerPatterns.some(rx => rx.test(p)))
+  };
+}
+
+// Explicit package-level mapping for known domains not token-compatible
+const EXPLICIT_BDD_SPECS = {
+  'self-healing-symphony': [
+    'packages/self-healing/.generated/comprehensive-business-bdd-specifications.json'
+  ],
+  'slo-dashboard-symphony': [
+    'packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json'
+  ]
+};
+
+const EXPLICIT_BDD_HANDLERS = {
+  'self-healing-symphony': [
+    'packages/self-healing/__tests__/business-bdd-handlers',
+    'packages/self-healing/__tests__/business-bdd'
+  ],
+  'slo-dashboard-symphony': [
+    'packages/slo-dashboard/__tests__/business-bdd'
+  ]
+};
+
+function matchBddSpecs(domainId, specCandidates) {
+  const tokens = domainId.split('-').filter(t => t && t !== 'symphony');
+  const lowerTokens = tokens.map(t => t.toLowerCase());
+  const matches = specCandidates.filter(f => {
+    const lower = f.toLowerCase();
+    return lowerTokens.some(t => lower.includes(t));
+  });
+  let results = matches.map(f => path.relative(process.cwd(), f).replace(/\\/g, '/'));
+  if (EXPLICIT_BDD_SPECS[domainId]) {
+    results = results.concat(EXPLICIT_BDD_SPECS[domainId]);
+  }
+  return Array.from(new Set(results));
+}
+
+function matchBddHandlers(domainId, handlerCandidates) {
+  const tokens = domainId.split('-').filter(t => t && t !== 'symphony');
+  const lowerTokens = tokens.map(t => t.toLowerCase());
+  const matches = handlerCandidates.filter(f => {
+    const lower = f.toLowerCase();
+    return lowerTokens.some(t => lower.includes(t));
+  });
+  let results = matches.map(f => path.relative(process.cwd(), f).replace(/\\/g, '/'));
+  if (EXPLICIT_BDD_HANDLERS[domainId]) {
+    results = results.concat(EXPLICIT_BDD_HANDLERS[domainId]);
+  }
+  return Array.from(new Set(results));
+}
+
 function main(){
   const orchestrationDomainsPath = path.resolve('docs','governance','orchestration-domains.json');
   const externalAuditPath = path.resolve('packages','ographx','.ographx','artifacts','renderx-web','analysis','external-interactions-audit.json');
@@ -40,6 +118,11 @@ function main(){
 
   // Candidate plugin domains lacking overlay
   const candidateDomains = domains.filter(d=>d.category==='plugin');
+
+  // Build BDD file index for all packages
+  const packagesDir = path.resolve('packages');
+  const bddIndex = buildBddIndex(packagesDir);
+  console.log(`📚 BDD Discovery: ${bddIndex.specCandidates.length} spec files, ${bddIndex.handlerCandidates.length} handler files`);
 
   const outDir = path.resolve('.generated','domains','overlay-input-specs');
   ensureDir(outDir);
@@ -68,6 +151,10 @@ function main(){
     // Priority score (simple seed formula)
     const priorityScore = (untestedHandlers.length*2) + (orphanTopics.length*1.5) + (complexity.interactionEdges*0.1);
 
+    // Discover business BDD specs and handlers for this domain
+    const businessBddSpecs = matchBddSpecs(d.id, bddIndex.specCandidates);
+    const businessBddHandlers = matchBddHandlers(d.id, bddIndex.handlerCandidates);
+
     const spec = {
       domainId: d.id,
       domainName: d.name,
@@ -77,6 +164,8 @@ function main(){
       handlers,
       topics,
       tests,
+      businessBddSpecs,
+      businessBddHandlers,
       featureSequences: relatedEdges.reduce((acc,e)=>{ if(e.sequenceId) acc.add(e.sequenceId); return acc;}, new Set()),
       gaps: {
         untestedHandlers,
@@ -100,14 +189,33 @@ function main(){
     spec.featureSequences = Array.from(spec.featureSequences);
     const specPath = path.join(outDir, `${d.id}.json`);
     fs.writeFileSync(specPath, JSON.stringify(spec,null,2));
-    index.specs.push({ domainId: d.id, handlers: handlers.length, topics: topics.length, tests: tests.length, priorityScore: spec.priorityScore, specPath });
+    index.specs.push({ 
+      domainId: d.id, 
+      handlers: handlers.length, 
+      topics: topics.length, 
+      tests: tests.length, 
+      businessBddSpecs: businessBddSpecs.length,
+      businessBddHandlers: businessBddHandlers.length,
+      priorityScore: spec.priorityScore, 
+      specPath 
+    });
   });
 
   // Sort index by priorityScore descending
   index.specs.sort((a,b)=> b.priorityScore - a.priorityScore);
+
+  // Add BDD summary to index
+  index.bddSummary = {
+    specsWithBddSpecs: index.specs.filter(s => s.businessBddSpecs > 0).length,
+    specsWithBddHandlers: index.specs.filter(s => s.businessBddHandlers > 0).length,
+    totalBddSpecsRefs: index.specs.reduce((a, s) => a + s.businessBddSpecs, 0),
+    totalBddHandlersRefs: index.specs.reduce((a, s) => a + s.businessBddHandlers, 0)
+  };
+
   const indexPath = path.resolve('.generated','domains','overlay-input-spec-index.json');
   fs.writeFileSync(indexPath, JSON.stringify(index,null,2));
   console.log(`✅ Generated ${index.specs.length} overlay input specs.`);
+  console.log(`📋 BDD Coverage: ${index.bddSummary.specsWithBddSpecs} specs with BDD specs, ${index.bddSummary.specsWithBddHandlers} with BDD handlers`);
   console.log(`Index: ${indexPath}`);
 }
 main();

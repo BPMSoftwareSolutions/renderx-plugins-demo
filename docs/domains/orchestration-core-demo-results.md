@@ -1,8 +1,8 @@
 <!-- AUTO-GENERATED DEMO RESULTS: orchestration-core -->
 # Orchestration Core Demo Run
 
-Pipeline ID: domain-demo-1764023368065-wiltj1
-Run Timestamp: 2025-11-24T22:29:31.534Z
+Pipeline ID: domain-demo-1764025694622-b4fjq8
+Run Timestamp: 2025-11-24T23:08:21.995Z
 Domain ID: `orchestration-core`
 
 ## Integrity & Drift Verification

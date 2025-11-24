@@ -1,7 +1,31 @@
 {
-  "generated_at": "2025-11-24T22:29:30.548Z",
+  "generated_at": "2025-11-24T23:08:18.253Z",
   "adjacency": {
     "orchestration-core": [],
+    "self-healing": [
+      {
+        "target": "slo-dashboard",
+        "relation": "provides",
+        "strength": "strong"
+      },
+      {
+        "target": "orchestration-core",
+        "relation": "extends",
+        "strength": "strong"
+      }
+    ],
+    "slo-dashboard": [
+      {
+        "target": "self-healing",
+        "relation": "depends_on",
+        "strength": "strong"
+      },
+      {
+        "target": "orchestration-core",
+        "relation": "extends",
+        "strength": "moderate"
+      }
+    ],
     "telemetry-pipeline": [
       {
         "target": "orchestration-core",
@@ -13,8 +37,32 @@
   "reverse": {
     "orchestration-core": [
       {
+        "source": "self-healing",
+        "relation": "extends",
+        "strength": "strong"
+      },
+      {
+        "source": "slo-dashboard",
+        "relation": "extends",
+        "strength": "moderate"
+      },
+      {
         "source": "telemetry-pipeline",
         "relation": "depends_on",
+        "strength": "strong"
+      }
+    ],
+    "self-healing": [
+      {
+        "source": "slo-dashboard",
+        "relation": "depends_on",
+        "strength": "strong"
+      }
+    ],
+    "slo-dashboard": [
+      {
+        "source": "self-healing",
+        "relation": "provides",
         "strength": "strong"
       }
     ],
@@ -22,6 +70,12 @@
   },
   "parentGraph": {
     "orchestration-core": [],
+    "self-healing": [
+      "orchestration-core"
+    ],
+    "slo-dashboard": [
+      "orchestration-core"
+    ],
     "telemetry-pipeline": [
       "orchestration-core"
     ]

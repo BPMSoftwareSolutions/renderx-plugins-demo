@@ -8,7 +8,8 @@
   "sequenceType": "orchestration",
   "featurePresence": true,
   "existingOrchestrationSequence": false,
-  "businessBddFiles": [],
+  "businessBddSpecs": [],
+  "businessBddHandlers": [],
   "correlation": {
     "idStrategy": "uuid-v4"
   },
@@ -89,7 +90,7 @@
     ]
   },
   "proposalMeta": {
-    "generatedAt": "2025-11-24T22:58:29.573Z",
+    "generatedAt": "2025-11-24T23:08:21.952Z",
     "sourceReport": ".generated/domains/missing-sequences-report.json",
     "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\canvas-component-resize-start-symphony.json",
     "generationGroup": "ready",

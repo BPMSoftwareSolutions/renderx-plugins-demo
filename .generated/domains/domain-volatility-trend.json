@@ -1,15 +1,27 @@
 {
-  "generated_at": "2025-11-24T22:29:31.031Z",
+  "generated_at": "2025-11-24T23:08:18.767Z",
   "trend": [
     {
       "domain_id": "orchestration-core",
-      "runs": 2,
+      "runs": 3,
       "checksum_change_count": 0,
       "lineage_change_count": 0
     },
     {
       "domain_id": "telemetry-pipeline",
-      "runs": 2,
+      "runs": 3,
+      "checksum_change_count": 0,
+      "lineage_change_count": 0
+    },
+    {
+      "domain_id": "self-healing",
+      "runs": 1,
+      "checksum_change_count": 0,
+      "lineage_change_count": 0
+    },
+    {
+      "domain_id": "slo-dashboard",
+      "runs": 1,
       "checksum_change_count": 0,
       "lineage_change_count": 0
     }

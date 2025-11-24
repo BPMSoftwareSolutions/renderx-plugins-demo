@@ -8,7 +8,19 @@
   "sequenceType": "orchestration",
   "featurePresence": false,
   "existingOrchestrationSequence": false,
-  "businessBddFiles": [],
+  "businessBddSpecs": [],
+  "businessBddHandlers": [
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\18-load-anomalies.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\19-load-codebase-info.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\2-load-log-files.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\29-load-diagnosis.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\38-load-patch.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\59-load-deployment-metrics.spec.ts",
+    "packages\\self-healing\\__tests__\\business-bdd-handlers\\9-load-telemetry-data.spec.ts",
+    "packages\\slo-dashboard\\__tests__\\business-bdd-handlers\\01-load-budgets.spec.ts",
+    "packages\\slo-dashboard\\__tests__\\business-bdd-handlers\\02-load-metrics.spec.ts",
+    "packages\\slo-dashboard\\__tests__\\business-bdd-handlers\\05-trigger-export-download.spec.ts"
+  ],
   "correlation": {
     "idStrategy": "uuid-v4"
   },
@@ -42,7 +54,7 @@
     ]
   },
   "proposalMeta": {
-    "generatedAt": "2025-11-24T22:58:29.591Z",
+    "generatedAt": "2025-11-24T23:08:21.975Z",
     "sourceReport": ".generated/domains/missing-sequences-report.json",
     "specPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\domains\\overlay-input-specs\\library-load-symphony.json",
     "generationGroup": "deferred",

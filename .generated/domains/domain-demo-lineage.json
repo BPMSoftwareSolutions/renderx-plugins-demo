@@ -1,6 +1,6 @@
 {
-  "pipeline_id": "domain-demo-1764023368065-wiltj1",
-  "run_at": "2025-11-24T22:29:30.065Z",
+  "pipeline_id": "domain-demo-1764025694622-b4fjq8",
+  "run_at": "2025-11-24T23:08:17.718Z",
   "domains": [
     {
       "domain_id": "orchestration-core",
@@ -10,6 +10,24 @@
       "drift_verified": true,
       "reflection_path": "docs/domains/orchestration-core.md",
       "trace_path": ".generated/domains/orchestration-core-trace.json"
+    },
+    {
+      "domain_id": "self-healing",
+      "lineage_hash": "b72935b7ada7d1a9bb3d58914de28619ea3a40987b7d699be2b5e0b5c9f658a9",
+      "stored_integrity_checksum": "dcdfd92f0d8e1c4d4d0f450f7b645320064b72ae642d5591ad00ab40651d3f4a",
+      "recomputed_checksum": "dcdfd92f0d8e1c4d4d0f450f7b645320064b72ae642d5591ad00ab40651d3f4a",
+      "drift_verified": true,
+      "reflection_path": "docs/domains/self-healing.md",
+      "trace_path": ".generated/domains/self-healing-trace.json"
+    },
+    {
+      "domain_id": "slo-dashboard",
+      "lineage_hash": "f92e9bac029b314656c4dd1b6608eef9d0cb9659cc2bbd5c6f79a2386614bbd9",
+      "stored_integrity_checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5",
+      "recomputed_checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5",
+      "drift_verified": true,
+      "reflection_path": "docs/domains/slo-dashboard.md",
+      "trace_path": ".generated/domains/slo-dashboard-trace.json"
     },
     {
       "domain_id": "telemetry-pipeline",

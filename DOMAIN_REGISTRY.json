@@ -32,13 +32,39 @@
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Telemetry"
+    },
+    "self-healing": {
+      "domain_id": "self-healing",
+      "domain_type": "capability",
+      "status": "active",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "checksum": "dcdfd92f0d8e1c4d4d0f450f7b645320064b72ae642d5591ad00ab40651d3f4a",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "Platform-Reliability"
+    },
+    "slo-dashboard": {
+      "domain_id": "slo-dashboard",
+      "domain_type": "capability",
+      "status": "active",
+      "root_ref": "docs/governance/UNIFIED_GOVERNANCE_AUTHORITY.json",
+      "parent_refs": [
+        "orchestration-core"
+      ],
+      "checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5",
+      "supersedes": [],
+      "deprecated": false,
+      "ownership": "Platform-Observability"
     }
   },
   "meta": {
-    "active_count": 2,
+    "active_count": 4,
     "deprecated_count": 0,
     "retired_count": 0,
-    "last_validation": "2025-11-24T22:29:29.037Z",
+    "last_validation": "2025-11-24T23:08:15.610Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",
@@ -75,11 +101,55 @@
             "drift_verified": true
           }
         ]
+      },
+      {
+        "pipeline_id": "domain-demo-1764025694622-b4fjq8",
+        "run_at": "2025-11-24T23:08:17.718Z",
+        "domains": [
+          {
+            "domain_id": "orchestration-core",
+            "lineage_hash": "d53a62a598822b6fe4e4a584587cddc05064001af3b2a928e8c8580560255cd6",
+            "integrity_checksum": "cc6785471d80179e9e78637bde4c56dc7437b1715c3fd42231c3ea425461d20d",
+            "drift_verified": true
+          },
+          {
+            "domain_id": "self-healing",
+            "lineage_hash": "b72935b7ada7d1a9bb3d58914de28619ea3a40987b7d699be2b5e0b5c9f658a9",
+            "integrity_checksum": "dcdfd92f0d8e1c4d4d0f450f7b645320064b72ae642d5591ad00ab40651d3f4a",
+            "drift_verified": true
+          },
+          {
+            "domain_id": "slo-dashboard",
+            "lineage_hash": "f92e9bac029b314656c4dd1b6608eef9d0cb9659cc2bbd5c6f79a2386614bbd9",
+            "integrity_checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5",
+            "drift_verified": true
+          },
+          {
+            "domain_id": "telemetry-pipeline",
+            "lineage_hash": "d8382c7bb67c8bb8b2e393b4738304ebc5ae253adf2652f38335dcaedc794eb0",
+            "integrity_checksum": "e6a0255eed67f47a0cc0ab0abe28f4518a7b976960b29a04feca67158051d0fe",
+            "drift_verified": true
+          }
+        ]
       }
     ],
     "last_risk_assessment": {
-      "generated_at": "2025-11-24T22:29:31.522Z",
+      "generated_at": "2025-11-24T23:08:19.306Z",
       "assessments": [
+        {
+          "domain_id": "slo-dashboard",
+          "risk_score": 4,
+          "volatility_checksum_changes": 0,
+          "cross_domain_link_count": 2,
+          "stability_score": 0.8
+        },
+        {
+          "domain_id": "self-healing",
+          "risk_score": 3.5,
+          "volatility_checksum_changes": 0,
+          "cross_domain_link_count": 2,
+          "stability_score": 0.85
+        },
         {
           "domain_id": "telemetry-pipeline",
           "risk_score": 3.2,
