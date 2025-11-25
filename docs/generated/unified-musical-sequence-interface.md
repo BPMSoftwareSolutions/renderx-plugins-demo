@@ -1,7 +1,7 @@
 # 🎼 Unified MusicalSequence Interface
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-25T11:26:44.423Z
+**Last Generated:** 2025-11-25T15:22:37.333Z
 **DO NOT EDIT — GENERATED**
 
 ## Interface Definition

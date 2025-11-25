@@ -1,7 +1,7 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-25T11:26:44.418Z
+**Last Generated:** 2025-11-25T15:22:37.326Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
@@ -2269,6 +2269,57 @@ High-level orchestration flow governing score loading, execution, adaptive dynam
     │ ├─ Key: C Minor                                         │
     │ └─ Category: orchestration                              │
     │                                                         │
+    │ Movement 1: Movement 1: Initialization                  │
+    │   ├─ Load conductor configuration                       │
+    │   ├─ Register communication channels                    │
+    │   ├─ Allocate event bus                                 │
+    │   ├─ Bootstrap telemetry hooks                          │
+    │   └─ Create session envelope                            │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 2: Movement 2: Score Loading                   │
+    │   ├─ Resolve score index                                │
+    │   ├─ Fetch sequence definitions                         │
+    │   ├─ Validate structural signature                      │
+    │   ├─ Normalize movement metadata                        │
+    │   └─ Publish score loaded event                         │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 3: Movement 3: Session Start                   │
+    │   ├─ Initialize timeline                                │
+    │   ├─ Register performance metrics                       │
+    │   ├─ Activate dynamic evaluation                        │
+    │   ├─ Broadcast session start                            │
+    │   └─ Record provenance snapshot                         │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 4: Movement 4: Movement Execution              │
+    │   ├─ Iterate movements                                  │
+    │   ├─ Dispatch beat handlers                             │
+    │   ├─ Capture performance samples                        │
+    │   ├─ Apply scheduled dynamics                           │
+    │   └─ Accumulate execution log                           │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 5: Movement 5: Adaptive Adjustment             │
+    │   ├─ Evaluate tempo variance                            │
+    │   ├─ Apply dynamic level changes                        │
+    │   ├─ Rebalance resource usage                           │
+    │   ├─ Update execution state                             │
+    │   └─ Emit adjustment event                              │
+    │                                                         │
+    │           ▼                                             │
+    │                                                         │
+    │ Movement 6: Movement 6: Finalization                    │
+    │   ├─ Flush telemetry buffers                            │
+    │   ├─ Persist session summary                            │
+    │   ├─ Emit completion event                              │
+    │   ├─ Release orchestration resources                    │
+    │   └─ Publish integrity hash                             │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
 ```
@@ -2278,6 +2329,10 @@ High-level orchestration flow governing score loading, execution, adaptive dynam
 **Category:** `orchestration`
 
 **Purpose:** System orchestration
+
+**Movements:** 6
+
+**Beats:** 30
 
 **Status:** active
 

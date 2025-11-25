@@ -194,8 +194,9 @@ async function generateOrchestrationDomains() {
           try {
             const content = JSON.parse(fs.readFileSync(path.join(seqPath, file), 'utf-8'));
             const id = content.id || file.replace('.json', '');
-            const movements = content.movements || [];
-            const beats = movements.reduce((sum, m) => sum + (m.items?.length || 0), 0);
+            // Support both 'movements' and 'phases' field names for backwards compatibility
+            const movements = content.movements || content.phases || [];
+            const beats = movements.reduce((sum, m) => sum + (m.items?.length || m.beats?.length || 0), 0);
 
             // Skip if already added (avoid duplicates)
             if (domains.some(d => d.id === id)) return;
@@ -213,7 +214,7 @@ async function generateOrchestrationDomains() {
               },
               phases: movements.map((m, idx) => ({
                 name: `Movement ${idx + 1}: ${m.name || 'Unnamed'}`,
-                items: m.items || []
+                items: m.items || m.beats || []
               }))
             };
 

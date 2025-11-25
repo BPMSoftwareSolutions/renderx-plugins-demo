@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-11-25T11:26:40.921Z"
+    "generated": "2025-11-25T15:22:27.222Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -2412,8 +2412,8 @@
       "relatedDomains": [],
       "status": "active",
       "sequenceFile": "packages\\musical-conductor\\.ographx\\sequences\\musical-conductor-orchestration.json",
-      "movements": 0,
-      "beats": 0,
+      "movements": 6,
+      "beats": 30,
       "tempo": 112,
       "key": "C Minor",
       "timeSignature": "4/4",
@@ -2427,7 +2427,68 @@
           "timeSignature": "4/4",
           "category": "orchestration"
         },
-        "phases": []
+        "phases": [
+          {
+            "name": "Movement 1: Movement 1: Initialization",
+            "items": [
+              "Load conductor configuration",
+              "Register communication channels",
+              "Allocate event bus",
+              "Bootstrap telemetry hooks",
+              "Create session envelope"
+            ]
+          },
+          {
+            "name": "Movement 2: Movement 2: Score Loading",
+            "items": [
+              "Resolve score index",
+              "Fetch sequence definitions",
+              "Validate structural signature",
+              "Normalize movement metadata",
+              "Publish score loaded event"
+            ]
+          },
+          {
+            "name": "Movement 3: Movement 3: Session Start",
+            "items": [
+              "Initialize timeline",
+              "Register performance metrics",
+              "Activate dynamic evaluation",
+              "Broadcast session start",
+              "Record provenance snapshot"
+            ]
+          },
+          {
+            "name": "Movement 4: Movement 4: Movement Execution",
+            "items": [
+              "Iterate movements",
+              "Dispatch beat handlers",
+              "Capture performance samples",
+              "Apply scheduled dynamics",
+              "Accumulate execution log"
+            ]
+          },
+          {
+            "name": "Movement 5: Movement 5: Adaptive Adjustment",
+            "items": [
+              "Evaluate tempo variance",
+              "Apply dynamic level changes",
+              "Rebalance resource usage",
+              "Update execution state",
+              "Emit adjustment event"
+            ]
+          },
+          {
+            "name": "Movement 6: Movement 6: Finalization",
+            "items": [
+              "Flush telemetry buffers",
+              "Persist session summary",
+              "Emit completion event",
+              "Release orchestration resources",
+              "Publish integrity hash"
+            ]
+          }
+        ]
       }
     }
   ]
