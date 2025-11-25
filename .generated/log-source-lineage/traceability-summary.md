@@ -5,7 +5,7 @@
 ### Pipeline
 
 ```
-Original Logs (87 files)
+Original Logs (97 files)
     ↓ [Extract anomalies by component]
 Telemetry (12 events)
     ↓ [Group by severity and component]
@@ -20,8 +20,8 @@ Complete Lineage (Auditable & Reproducible)
 
 ### Source Verification
 
-- **Log Files Indexed:** 87/87
-- **Events Extracted:** 82366
+- **Log Files Indexed:** 97/97
+- **Events Extracted:** 82415
 - **Telemetry Events:** 12
 - **Component Coverage:** 0%
 

@@ -1072,6 +1072,174 @@
             ],
             "category": "telemetry-reporting"
           }
+        },
+        {
+          "id": "slo-evaluator",
+          "domain": "telemetry",
+          "description": "Evaluates SLIs against SLO targets producing slo-breaches.json.",
+          "file": "scripts/evaluate-slos.js",
+          "type": "node-esm",
+          "role": "slo-evaluator",
+          "commands": {
+            "npmScript": "evaluate:slos",
+            "direct": "node scripts/evaluate-slos.js"
+          },
+          "pipeline": {
+            "stage": "integration",
+            "order": 205,
+            "ciRequired": true
+          },
+            "artifacts": {
+              "inputs": [
+                "packages/self-healing/.generated/telemetry-metrics.json",
+                "packages/self-healing/docs/service_level.objectives.json"
+              ],
+              "outputs": [
+                "packages/self-healing/.generated/slo-breaches.json"
+              ]
+            },
+            "governance": {
+              "enforcedBy": [
+                "evaluate:slos",
+                "npm run build"
+              ],
+              "category": "telemetry-slo"
+            }
+        },
+        {
+          "id": "slo-breach-fuser",
+          "domain": "telemetry",
+          "description": "Fuses SLO breaches into anomalies.json for unified visualization.",
+          "file": "scripts/fuse-slo-breaches.js",
+          "type": "node-esm",
+          "role": "slo-fuser",
+          "commands": {
+            "npmScript": "fuse:slo:breaches",
+            "direct": "node scripts/fuse-slo-breaches.js"
+          },
+          "pipeline": {
+            "stage": "integration",
+            "order": 206,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "packages/self-healing/.generated/slo-breaches.json",
+              "packages/self-healing/.generated/anomalies.json"
+            ],
+            "outputs": [
+              "packages/self-healing/.generated/anomalies.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "fuse:slo:breaches",
+              "posttest"
+            ],
+            "category": "telemetry-slo"
+          }
+        },
+        {
+          "id": "renderx-web-diagnostics",
+          "domain": "telemetry",
+          "description": "Console diagnostics mapping anomalies to renderx-web production packages.",
+          "file": "scripts/renderx-web-diagnostics.js",
+          "type": "node-esm",
+          "role": "diagnostics-generator",
+          "commands": {
+            "npmScript": "diagnose:renderx-web",
+            "direct": "node scripts/renderx-web-diagnostics.js"
+          },
+          "pipeline": {
+            "stage": "integration",
+            "order": 207,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "packages/self-healing/.generated/anomalies.json",
+              "packages/self-healing/.generated/renderx-web-mapping.json"
+            ],
+            "outputs": []
+          },
+          "governance": {
+            "enforcedBy": [
+              "diagnose:renderx-web"
+            ],
+            "category": "telemetry-diagnostics"
+          }
+        },
+        {
+          "id": "renderx-web-demo-analysis",
+          "domain": "telemetry",
+          "description": "Produces end-to-end RenderX-Web telemetry ↔ tests traceability demo reports.",
+          "file": "scripts/demo-renderx-web-analysis.js",
+          "type": "node-esm",
+          "role": "traceability-demo",
+          "commands": {
+            "direct": "node scripts/demo-renderx-web-analysis.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              ".generated/renderx-web-telemetry.json",
+              ".generated/renderx-web-test-results.json"
+            ],
+            "outputs": [
+              ".generated/renderx-web-demo/executive-summary.md",
+              ".generated/renderx-web-demo/detailed-analysis.md",
+              ".generated/renderx-web-demo/implementation-roadmap.md",
+              ".generated/renderx-web-demo/event-test-mapping.json",
+              ".generated/renderx-web-demo/lineage-audit.json",
+              ".generated/renderx-web-demo/traceability-index.json",
+              ".generated/renderx-web-demo/verification-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "telemetry-traceability"
+          }
+        },
+        {
+          "id": "log-source-lineage-tracker",
+          "domain": "telemetry",
+          "description": "Generates log-source lineage and mapping reports from .logs and telemetry.",
+          "file": "scripts/trace-logs-to-telemetry.js",
+          "type": "node-esm",
+          "role": "traceability-generator",
+          "commands": {
+            "direct": "node scripts/trace-logs-to-telemetry.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              ".logs/*.log",
+              ".generated/renderx-web-telemetry.json"
+            ],
+            "outputs": [
+              ".generated/log-source-lineage/source-lineage.json",
+              ".generated/log-source-lineage/lineage-guide.md",
+              ".generated/log-source-lineage/component-lineage-breakdown.json",
+              ".generated/log-source-lineage/log-file-index.json",
+              ".generated/log-source-lineage/traceability-summary.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "telemetry-traceability"
+          }
         }
       ]
     },

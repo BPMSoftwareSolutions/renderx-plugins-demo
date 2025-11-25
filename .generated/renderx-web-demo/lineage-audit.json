@@ -1,11 +1,11 @@
 {
-  "pipelineId": "pipeline-1763928529786-qfvqeh",
-  "executionStarted": "2025-11-23T20:08:49.786Z",
+  "pipelineId": "pipeline-1764037383139-1dgdv9",
+  "executionStarted": "2025-11-25T02:23:03.139Z",
   "steps": [
     {
       "step": "load-telemetry",
       "status": "success",
-      "timestamp": "2025-11-23T20:08:49.793Z",
+      "timestamp": "2025-11-25T02:23:03.144Z",
       "sourceFile": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\renderx-web-telemetry.json",
       "sourceHash": "12f2a81ed573442d1546e4a27e0819bdadfd8ad3c97fe966e65d453285207fa6",
       "dataCount": 12
@@ -13,7 +13,7 @@
     {
       "step": "load-tests",
       "status": "success",
-      "timestamp": "2025-11-23T20:08:49.794Z",
+      "timestamp": "2025-11-25T02:23:03.145Z",
       "sourceFile": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\renderx-web-test-results.json",
       "sourceHash": "d7349eea2a0f0779166bc46d9586bc0d4c2f8c06e447f90f250e947557f145ba",
       "testCount": 39
@@ -21,7 +21,7 @@
     {
       "step": "map-telemetry-tests",
       "status": "success",
-      "timestamp": "2025-11-23T20:08:49.795Z",
+      "timestamp": "2025-11-25T02:23:03.146Z",
       "totalEvents": 12,
       "testedCount": 12,
       "untestedCount": 0,
@@ -30,7 +30,7 @@
     {
       "step": "analyze-gaps",
       "status": "success",
-      "timestamp": "2025-11-23T20:08:49.797Z",
+      "timestamp": "2025-11-25T02:23:03.146Z",
       "missingTests": 0,
       "redundantTests": 2,
       "recommendations": 2
@@ -38,7 +38,7 @@
     {
       "step": "generate-reports",
       "status": "success",
-      "timestamp": "2025-11-23T20:08:49.802Z",
+      "timestamp": "2025-11-25T02:23:03.148Z",
       "reports": [
         {
           "name": "executive-summary.md",
@@ -55,8 +55,8 @@
       ]
     }
   ],
-  "executionCompleted": "2025-11-23T20:08:49.802Z",
-  "duration": 16,
+  "executionCompleted": "2025-11-25T02:23:03.148Z",
+  "duration": 10,
   "sources": {
     "telemetry": {
       "file": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\.generated\\renderx-web-telemetry.json",

@@ -435,12 +435,29 @@
       },
       "detectedAt": "2025-11-25T01:39:00.534Z",
       "confidence": 0.95
+    },
+    {
+      "id": "slo-breach-throughput_min-1764037214214",
+      "type": "slo",
+      "severity": "critical",
+      "handler": "system",
+      "feature": "service-level-objective",
+      "correlationId": null,
+      "description": "SLO breach: throughput_min (actual: 2, target: 50)",
+      "metrics": {
+        "actual": 2,
+        "target": 50,
+        "diff": 48,
+        "percentage": "96.00%"
+      },
+      "detectedAt": "2025-11-25T02:20:14.214Z",
+      "confidence": 0.95
     }
   ],
   "summary": {
-    "count": 27,
+    "count": 28,
     "severityBreakdown": {
-      "critical": 4,
+      "critical": 5,
       "high": 6,
       "medium": 17,
       "low": 0
@@ -450,11 +467,11 @@
       "behavioral": 3,
       "coverage": 2,
       "error": 1,
-      "slo": 18
+      "slo": 19
     },
-    "breachesCovered": 18,
+    "breachesCovered": 19,
     "highestSeverity": "critical",
     "syntheticMarker": false,
-    "lastUpdated": "2025-11-25T01:39:00.534Z"
+    "lastUpdated": "2025-11-25T02:20:14.214Z"
   }
 }

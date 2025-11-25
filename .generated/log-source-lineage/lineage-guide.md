@@ -6,8 +6,11 @@ This guide shows the complete chain from original log files through telemetry ex
 
 ### Data Sources
 
-**Log Files (87 files):**
+**Log Files (97 files):**
 ```
+- app_startup.log (155 lines, ~25.7KB)
+- audit-output.log (99 lines, ~11.8KB)
+- build.log (440 lines, ~74.7KB)
 - cli-drop-localhost-1763232728659.log (229 lines, ~25.3KB)
 - component-resize-component-resize.cy.ts-1763013957380.log (1781 lines, ~248.3KB)
 - component-resize-component-resize.cy.ts-1763041201297.log (1785 lines, ~248.7KB)
@@ -19,11 +22,13 @@ This guide shows the complete chain from original log files through telemetry ex
 - component-resize-component-resize.cy.ts-1763390535371.log (2594 lines, ~380.4KB)
 - component-resize-component-resize.cy.ts-1763396455894.log (2238 lines, ~316.0KB)
 - component-resize-component-resize.cy.ts-1763397648436.log (2238 lines, ~315.9KB)
+- console_output.log (113 lines, ~15.3KB)
 - drop-canvas-component-create-delay-localhost-1763132417203.log (1390 lines, ~111.6KB)
 - drop-canvas-component-create-delay-localhost-1763156363510.log (1626 lines, ~179.4KB)
 - drop-canvas-component-create-delay-localhost-1763156363511.log (300 lines, ~30.4KB)
 - drop-create-delay-localhost-1763169652387.log (185 lines, ~18.8KB)
 - drop-create-delay-localhost-1763170188940.log (223 lines, ~16.5KB)
+- e2e_startup_test.log (158 lines, ~23.6KB)
 - library-drop-library-drop.cy.ts-1763014004157.log (1991 lines, ~267.5KB)
 - library-drop-library-drop.cy.ts-1763041252198.log (1989 lines, ~266.9KB)
 - library-drop-library-drop.cy.ts-1763308138297.log (2143 lines, ~293.8KB)
@@ -72,6 +77,8 @@ This guide shows the complete chain from original log files through telemetry ex
 - manual-drop-localhost-1763233405457.log (462 lines, ~50.9KB)
 - manual-drop-localhost-1763235950046.log (293 lines, ~32.9KB)
 - manual-drop-localhost.log (243 lines, ~26.8KB)
+- plugin_startup_output.log (184 lines, ~47.3KB)
+- REACT_COMPONENT_VERIFICATION_TRACE.log (399 lines, ~13.6KB)
 - slow-timing-between-timestamps.log (368 lines, ~28.0KB)
 - startup-and-drop-create-delay-localhost-1763170296206.log (1855 lines, ~202.7KB)
 - startup-plugins-1763013944147.log (4 lines, ~0.2KB)
@@ -84,6 +91,9 @@ This guide shows the complete chain from original log files through telemetry ex
 - startup-plugins-1763390503670.log (5 lines, ~0.3KB)
 - startup-plugins-1763396431628.log (2 lines, ~0.1KB)
 - startup-plugins-1763397638826.log (2 lines, ~0.1KB)
+- test-output.log (3238 lines, ~670.0KB)
+- test-run.log (3 lines, ~0.2KB)
+- test_output.log (297 lines, ~231.5KB)
 - theme-toggle-theme-toggle.cy.ts-1763014011830.log (1466 lines, ~200.2KB)
 - theme-toggle-theme-toggle.cy.ts-1763041260011.log (1478 lines, ~201.3KB)
 - theme-toggle-theme-toggle.cy.ts-1763308150303.log (1903 lines, ~261.3KB)
