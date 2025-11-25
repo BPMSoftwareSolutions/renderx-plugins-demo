@@ -1,17 +1,32 @@
 {
-  "generatedAt": "2025-11-25T00:55:16.177Z",
+  "generatedAt": "2025-11-25T21:26:46.693Z",
   "baselineExists": true,
-  "previousGeneratedAt": "2025-11-24T20:44:02.440Z",
+  "previousGeneratedAt": "2025-11-25T00:55:15.406Z",
   "summary": {
     "domainsTotalBefore": 60,
-    "domainsTotalAfter": 60,
-    "added": 0,
+    "domainsTotalAfter": 61,
+    "added": 1,
     "removed": 0,
     "changed": 0,
     "unchanged": 60
   },
-  "addedDomains": [],
+  "addedDomains": [
+    "musical-conductor-orchestration"
+  ],
   "removedDomains": [],
   "changedDomains": [],
-  "domainChanges": {}
+  "domainChanges": {
+    "musical-conductor-orchestration": {
+      "status": "added",
+      "after": {
+        "id": "musical-conductor-orchestration",
+        "movements": 6,
+        "beats": 30,
+        "tempo": 112,
+        "key": "C Minor",
+        "timeSignature": "4/4",
+        "category": "orchestration"
+      }
+    }
+  }
 }

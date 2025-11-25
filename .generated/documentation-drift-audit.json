@@ -1,14 +1,105 @@
 {
-  "auditDate": "2025-11-24T20:07:20.610Z",
+  "auditDate": "2025-11-25T21:20:34.744Z",
   "summary": {
-    "auto-generated": 55,
+    "auto-generated": 76,
     "manual": 0,
-    "orphaned": 1721
+    "orphaned": 1734
   },
   "driftRiskLevel": "CRITICAL",
   "driftCapableDocuments": [],
-  "orphanedDocumentsCount": 1721,
+  "orphanedDocumentsCount": 1734,
   "topOrphanedDocuments": [
+    {
+      "filename": "7_LAYER_FILE_STRUCTURE_MAPPING.md",
+      "filepath": ".archived\\7_LAYER_FILE_STRUCTURE_MAPPING.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 13832,
+      "creation_date": "2025-11-25T01:18:23.699Z",
+      "last_modified_date": "2025-11-25T01:18:23.699Z"
+    },
+    {
+      "filename": "7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
+      "filepath": ".archived\\7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 15020,
+      "creation_date": "2025-11-25T01:18:23.700Z",
+      "last_modified_date": "2025-11-25T01:18:23.700Z"
+    },
+    {
+      "filename": "7_LAYER_PIPELINE_DOCUMENTATION_INDEX.md",
+      "filepath": ".archived\\7_LAYER_PIPELINE_DOCUMENTATION_INDEX.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 11779,
+      "creation_date": "2025-11-25T01:18:23.701Z",
+      "last_modified_date": "2025-11-25T01:18:23.701Z"
+    },
+    {
+      "filename": "7_LAYER_QUICK_REFERENCE.md",
+      "filepath": ".archived\\7_LAYER_QUICK_REFERENCE.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 13389,
+      "creation_date": "2025-11-25T01:18:23.702Z",
+      "last_modified_date": "2025-11-25T01:18:23.702Z"
+    },
+    {
+      "filename": "ADVANCED_DOCS_FINAL_SUMMARY.md",
+      "filepath": ".archived\\ADVANCED_DOCS_FINAL_SUMMARY.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 2426,
+      "creation_date": "2025-11-25T01:18:23.702Z",
+      "last_modified_date": "2025-11-25T01:18:23.702Z"
+    },
+    {
+      "filename": "ADVANCED_DOCUMENTATION_ACHIEVEMENT.md",
+      "filepath": ".archived\\ADVANCED_DOCUMENTATION_ACHIEVEMENT.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 4621,
+      "creation_date": "2025-11-25T01:18:23.703Z",
+      "last_modified_date": "2025-11-25T01:18:23.703Z"
+    },
+    {
+      "filename": "ANALYSIS_VALIDATION_REPORT.md",
+      "filepath": ".archived\\ANALYSIS_VALIDATION_REPORT.md",
+      "domain": null,
+      "generation_type": "orphaned",
+      "source_json": null,
+      "auto_generated_marker": false,
+      "manually_maintained_marker": false,
+      "is_known_auto_gen": false,
+      "filesize_bytes": 2485,
+      "creation_date": "2025-11-25T01:18:23.703Z",
+      "last_modified_date": "2025-11-25T01:18:23.703Z"
+    },
     {
       "filename": "7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
       "filepath": ".archived\\api-reference\\7_LAYER_PIPELINE_COMPLETE_REFERENCE.md",
@@ -19,8 +110,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 15020,
-      "creation_date": "2025-11-24T19:58:01.947Z",
-      "last_modified_date": "2025-11-24T05:38:33.713Z"
+      "creation_date": "2025-11-25T01:18:23.861Z",
+      "last_modified_date": "2025-11-25T01:18:23.862Z"
     },
     {
       "filename": "7_LAYER_QUICK_REFERENCE.md",
@@ -32,8 +123,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 13389,
-      "creation_date": "2025-11-24T19:58:01.953Z",
-      "last_modified_date": "2025-11-24T05:38:39.023Z"
+      "creation_date": "2025-11-25T01:18:23.862Z",
+      "last_modified_date": "2025-11-25T01:18:23.862Z"
     },
     {
       "filename": "AI_FEATURE_QUICK_REFERENCE.md",
@@ -45,8 +136,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 9394,
-      "creation_date": "2025-11-24T19:58:03.480Z",
-      "last_modified_date": "2025-10-29T17:29:03.286Z"
+      "creation_date": "2025-11-25T01:18:23.863Z",
+      "last_modified_date": "2025-11-25T01:18:23.864Z"
     },
     {
       "filename": "BDD_SPECS_QUICK_REFERENCE.md",
@@ -58,8 +149,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 9393,
-      "creation_date": "2025-11-24T19:58:01.980Z",
-      "last_modified_date": "2025-11-23T23:21:59.924Z"
+      "creation_date": "2025-11-25T01:18:23.864Z",
+      "last_modified_date": "2025-11-25T01:18:23.864Z"
     },
     {
       "filename": "conductor-api.md",
@@ -71,8 +162,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 1833,
-      "creation_date": "2025-11-24T19:58:03.667Z",
-      "last_modified_date": "2025-10-28T16:11:16.186Z"
+      "creation_date": "2025-11-25T01:18:23.872Z",
+      "last_modified_date": "2025-11-25T01:18:23.872Z"
     },
     {
       "filename": "DEMO_QUICK_REFERENCE.md",
@@ -84,8 +175,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 5954,
-      "creation_date": "2025-11-24T19:58:02.126Z",
-      "last_modified_date": "2025-11-23T20:43:40.165Z"
+      "creation_date": "2025-11-25T01:18:23.865Z",
+      "last_modified_date": "2025-11-25T01:18:23.865Z"
     },
     {
       "filename": "HANDLER_REFERENCE.md",
@@ -96,9 +187,9 @@
       "auto_generated_marker": false,
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
-      "filesize_bytes": 4496,
-      "creation_date": "2025-11-24T19:58:02.577Z",
-      "last_modified_date": "2025-11-24T01:11:26.658Z"
+      "filesize_bytes": 4625,
+      "creation_date": "2025-11-25T01:18:23.866Z",
+      "last_modified_date": "2025-11-25T01:18:23.866Z"
     },
     {
       "filename": "PHASE_1_QUICK_REFERENCE.md",
@@ -109,9 +200,9 @@
       "auto_generated_marker": false,
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
-      "filesize_bytes": 3608,
-      "creation_date": "2025-11-24T19:58:04.049Z",
-      "last_modified_date": "2025-11-21T14:41:30.370Z"
+      "filesize_bytes": 3738,
+      "creation_date": "2025-11-25T01:18:23.867Z",
+      "last_modified_date": "2025-11-25T01:18:23.867Z"
     },
     {
       "filename": "PHASE_6_DASHBOARD_QUICK_REFERENCE.md",
@@ -123,8 +214,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 5394,
-      "creation_date": "2025-11-24T19:58:04.062Z",
-      "last_modified_date": "2025-11-23T23:21:46.422Z"
+      "creation_date": "2025-11-25T01:18:23.867Z",
+      "last_modified_date": "2025-11-25T01:18:23.867Z"
     },
     {
       "filename": "QUICK_REFERENCE.md",
@@ -136,8 +227,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 5760,
-      "creation_date": "2025-11-24T19:58:03.769Z",
-      "last_modified_date": "2025-11-12T22:04:45.551Z"
+      "creation_date": "2025-11-25T01:18:23.868Z",
+      "last_modified_date": "2025-11-25T01:18:23.868Z"
     },
     {
       "filename": "RENDERX_WEB_DEMO_QUICK_REFERENCE.md",
@@ -149,8 +240,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 9654,
-      "creation_date": "2025-11-24T19:58:04.177Z",
-      "last_modified_date": "2025-11-23T20:43:43.892Z"
+      "creation_date": "2025-11-25T01:18:23.868Z",
+      "last_modified_date": "2025-11-25T01:18:23.869Z"
     },
     {
       "filename": "SEQUENCE_LOG_QUICK_REFERENCE.md",
@@ -162,8 +253,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 6987,
-      "creation_date": "2025-11-24T19:58:04.214Z",
-      "last_modified_date": "2025-11-23T20:43:28.271Z"
+      "creation_date": "2025-11-25T01:18:23.869Z",
+      "last_modified_date": "2025-11-25T01:18:23.869Z"
     },
     {
       "filename": "SHELL_UPGRADE_QUICK_REFERENCE.md",
@@ -175,99 +266,8 @@
       "manually_maintained_marker": false,
       "is_known_auto_gen": false,
       "filesize_bytes": 5525,
-      "creation_date": "2025-11-24T19:58:02.858Z",
-      "last_modified_date": "2025-11-12T22:04:44.941Z"
-    },
-    {
-      "filename": "SLO_SLI_SLA_QUICK_REFERENCE.md",
-      "filepath": ".archived\\api-reference\\SLO_SLI_SLA_QUICK_REFERENCE.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 9007,
-      "creation_date": "2025-11-24T19:58:04.260Z",
-      "last_modified_date": "2025-11-23T20:43:55.549Z"
-    },
-    {
-      "filename": "Snapshot of StageCrew API surface.md",
-      "filepath": ".archived\\api-reference\\Snapshot of StageCrew API surface.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 7015,
-      "creation_date": "2025-11-24T19:58:02.869Z",
-      "last_modified_date": "2025-08-24T18:23:49.513Z"
-    },
-    {
-      "filename": "TECHNICAL_REFERENCE.md",
-      "filepath": ".archived\\api-reference\\TECHNICAL_REFERENCE.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 16294,
-      "creation_date": "2025-11-24T19:58:02.778Z",
-      "last_modified_date": "2025-11-12T22:04:45.003Z"
-    },
-    {
-      "filename": "0020-plugin-architecture-validation.md",
-      "filepath": ".archived\\architecture\\0020-plugin-architecture-validation.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 3765,
-      "creation_date": "2025-11-24T19:58:02.157Z",
-      "last_modified_date": "2025-11-12T22:04:44.982Z"
-    },
-    {
-      "filename": "ADR-0015-SHELL-THIN-HOST-ARCHITECTURE.md",
-      "filepath": ".archived\\architecture\\ADR-0015-SHELL-THIN-HOST-ARCHITECTURE.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 4933,
-      "creation_date": "2025-11-24T19:58:02.171Z",
-      "last_modified_date": "2025-11-12T22:04:44.983Z"
-    },
-    {
-      "filename": "adr.description.md",
-      "filepath": ".archived\\architecture\\adr.description.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 286,
-      "creation_date": "2025-11-24T19:58:02.503Z",
-      "last_modified_date": "2025-10-30T03:43:59.205Z"
-    },
-    {
-      "filename": "ADVANCED_LINE_COMPONENT_IMPLEMENTATION_PLAN.md",
-      "filepath": ".archived\\architecture\\ADVANCED_LINE_COMPONENT_IMPLEMENTATION_PLAN.md",
-      "domain": null,
-      "generation_type": "orphaned",
-      "source_json": null,
-      "auto_generated_marker": false,
-      "manually_maintained_marker": false,
-      "is_known_auto_gen": false,
-      "filesize_bytes": 8985,
-      "creation_date": "2025-11-24T19:58:02.375Z",
-      "last_modified_date": "2025-09-19T13:58:11.239Z"
+      "creation_date": "2025-11-25T01:18:23.870Z",
+      "last_modified_date": "2025-11-25T01:18:23.870Z"
     }
   ]
 }
