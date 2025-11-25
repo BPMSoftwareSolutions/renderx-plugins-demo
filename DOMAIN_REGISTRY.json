@@ -54,7 +54,7 @@
       "parent_refs": [
         "orchestration-core"
       ],
-      "checksum": "7850ac2c0089fd27f115a83348d90e412aaa39d59c442d4f5758b3dd2c82a0d5",
+      "checksum": "35c03f64b9f4980bb2b3a66e0738a8ec71f2ed20985cdde2d941c6bc69eb8ca8",
       "supersedes": [],
       "deprecated": false,
       "ownership": "Platform-Observability"
@@ -64,7 +64,7 @@
     "active_count": 4,
     "deprecated_count": 0,
     "retired_count": 0,
-    "last_validation": "2025-11-24T23:08:15.610Z",
+    "last_validation": "2025-11-25T00:53:48.058Z",
     "demo_runs": [
       {
         "pipeline_id": "domain-demo-1764023194127-zzfnzp",

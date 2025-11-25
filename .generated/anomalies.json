@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-11-24T03:34:30.022Z",
+  "timestamp": "2025-11-25T01:35:39.623Z",
   "anomalies": [
     {
-      "id": "loadLogFiles-perf-1763955270022",
+      "id": "loadLogFiles-perf-1764034539622",
       "type": "performance",
       "severity": "high",
       "handler": "loadLogFiles",
@@ -12,11 +12,11 @@
         "baseline": 5,
         "ratio": 2.4
       },
-      "detectedAt": "2025-11-24T03:34:30.022Z",
+      "detectedAt": "2025-11-25T01:35:39.622Z",
       "confidence": 1
     },
     {
-      "id": "aggregateTelemetryMetrics-perf-1763955270022",
+      "id": "aggregateTelemetryMetrics-perf-1764034539622",
       "type": "performance",
       "severity": "low",
       "handler": "aggregateTelemetryMetrics",
@@ -26,11 +26,11 @@
         "baseline": 3,
         "ratio": 1.3333333333333333
       },
-      "detectedAt": "2025-11-24T03:34:30.022Z",
+      "detectedAt": "2025-11-25T01:35:39.622Z",
       "confidence": 0.6666666666666666
     },
     {
-      "id": "extractTelemetryEvents-perf-1763955270022",
+      "id": "extractTelemetryEvents-perf-1764034539622",
       "type": "performance",
       "severity": "high",
       "handler": "extractTelemetryEvents",
@@ -40,7 +40,7 @@
         "baseline": 4,
         "ratio": 2.25
       },
-      "detectedAt": "2025-11-24T03:34:30.022Z",
+      "detectedAt": "2025-11-25T01:35:39.622Z",
       "confidence": 1
     }
   ]

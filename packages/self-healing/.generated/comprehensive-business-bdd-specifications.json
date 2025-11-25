@@ -3,101 +3,77 @@
   "type": "Comprehensive Business BDD Specifications",
   "plugin": "SelfHealingPlugin",
   "description": "Business-focused BDD specifications for all handlers with realistic scenarios",
-  "timestamp": "2025-11-23T14:25:00.000Z",
+  "timestamp": "2025-11-25T01:03:38.392Z",
   "summary": {
-    "totalHandlers": 78,
-    "totalScenarios": 78,
-    "coverage": "78/78 handlers (100%)"
+    "totalHandlers": 79,
+    "totalScenarios": 79,
+    "coverage": "79/79 handlers (100%)"
   },
   "handlers": [
     {
-      "name": "parseTelemetryRequested",
-      "sequence": "telemetry",
-      "businessValue": "Initiate production log analysis",
-      "persona": "DevOps Engineer",
+      "name": "aggregateAnomalies",
+      "sequence": "anomaly",
+      "businessValue": "Ensure aggregate anomalies keeps the anomaly stage actionable",
+      "persona": "Site Reliability Engineer",
       "scenarios": [
         {
-          "title": "User requests telemetry parsing to investigate recent outage",
+          "title": "Aggregate Anomalies safeguards anomaly insights",
           "given": [
-            "production logs are available",
-            "user suspects performance issue"
+            "anomaly telemetry is available",
+            "Aggregate Anomalies results must stay fresh for downstream automation"
           ],
           "when": [
-            "user triggers telemetry parsing"
+            "Aggregate Anomalies handler executes with the latest diagnostics"
           ],
           "then": [
-            "system should validate request",
-            "parsing should begin immediately",
-            "user should receive confirmation"
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Aggregate Anomalies"
           ]
         }
       ]
     },
     {
-      "name": "loadLogFiles",
-      "sequence": "telemetry",
-      "businessValue": "Access production execution data",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "System successfully loads production logs from last 24 hours",
-          "given": [
-            "logs directory contains 100+ log files",
-            "files span 24-hour period"
-          ],
-          "when": [
-            "log loading handler executes"
-          ],
-          "then": [
-            "all valid logs should be loaded",
-            "corrupted files should be skipped",
-            "system should report progress"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "extractTelemetryEvents",
-      "sequence": "telemetry",
-      "businessValue": "Parse execution events from logs",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "Extract beat execution events to understand handler performance",
-          "given": [
-            "logs contain beat-started and beat-completed events",
-            "events have timestamps and durations"
-          ],
-          "when": [
-            "event extraction handler processes logs"
-          ],
-          "then": [
-            "all events should be extracted",
-            "timing data should be preserved",
-            "event types should be categorized"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "normalizeTelemetryData",
-      "sequence": "telemetry",
-      "businessValue": "Standardize data for analysis",
+      "name": "aggregateAnomalyResults",
+      "sequence": "anomaly",
+      "businessValue": "Consolidate detected anomalies",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Normalize timestamps across different log sources",
+          "title": "Combine multiple anomalies into coherent report",
           "given": [
-            "logs from multiple services with different timestamp formats",
-            "timezone information varies"
+            "10+ anomalies detected",
+            "anomalies span multiple handlers"
           ],
           "when": [
-            "normalization handler processes events"
+            "aggregation handler processes anomalies"
           ],
           "then": [
-            "all timestamps should be ISO 8601",
-            "timezone should be consistent",
-            "data should be comparable"
+            "anomalies should be grouped",
+            "priorities should be assigned",
+            "report should be generated"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aggregateDiagnosis",
+      "sequence": "diagnosis",
+      "businessValue": "Consolidate diagnosis results",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Combine multiple diagnoses into coherent report",
+          "given": [
+            "multiple diagnoses completed",
+            "results span multiple issues"
+          ],
+          "when": [
+            "aggregation handler processes diagnoses"
+          ],
+          "then": [
+            "diagnoses should be grouped",
+            "priorities should be assigned",
+            "report should be generated"
           ]
         }
       ]
@@ -126,369 +102,24 @@
       ]
     },
     {
-      "name": "storeTelemetryDatabase",
-      "sequence": "telemetry",
-      "businessValue": "Persist metrics for analysis",
+      "name": "aggregateValidationResults",
+      "sequence": "validation",
+      "businessValue": "Consolidate validation results",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Store aggregated metrics for historical analysis",
+          "title": "Combine validation results into report",
           "given": [
-            "metrics are ready to store",
-            "database is available"
+            "all validations completed",
+            "results available"
           ],
           "when": [
-            "storage handler persists metrics"
+            "aggregation handler processes results"
           ],
           "then": [
-            "metrics should be stored",
-            "data should be queryable",
-            "storage should be confirmed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "parseTelemetryCompleted",
-      "sequence": "telemetry",
-      "businessValue": "Signal completion of telemetry parsing",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "Notify system that telemetry parsing is complete",
-          "given": [
-            "all telemetry parsing steps completed",
-            "metrics stored successfully"
-          ],
-          "when": [
-            "completion handler executes"
-          ],
-          "then": [
-            "next sequence should be triggered",
-            "user should be notified",
-            "system should be ready for anomaly detection"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectAnomaliesRequested",
-      "sequence": "anomaly",
-      "businessValue": "Initiate anomaly detection",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "User requests anomaly detection after parsing telemetry",
-          "given": [
-            "telemetry has been parsed",
-            "metrics are available"
-          ],
-          "when": [
-            "user triggers anomaly detection"
-          ],
-          "then": [
-            "system should validate request",
-            "detection should begin",
-            "user should receive confirmation"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "loadTelemetryData",
-      "sequence": "anomaly",
-      "businessValue": "Retrieve metrics for analysis",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Load telemetry metrics to compare against baselines",
-          "given": [
-            "metrics stored in database",
-            "historical baselines available"
-          ],
-          "when": [
-            "data loading handler executes"
-          ],
-          "then": [
-            "current metrics should be loaded",
-            "baseline metrics should be retrieved",
-            "comparison should be possible"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectPerformanceAnomalies",
-      "sequence": "anomaly",
-      "businessValue": "Identify performance degradation",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "Detect when handler latency exceeds baseline by 2x",
-          "given": [
-            "baseline p95 latency is 100ms",
-            "current p95 latency is 250ms"
-          ],
-          "when": [
-            "performance anomaly detection executes"
-          ],
-          "then": [
-            "anomaly should be detected",
-            "severity should be assessed",
-            "affected handlers should be identified"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectBehavioralAnomalies",
-      "sequence": "anomaly",
-      "businessValue": "Identify sequence execution issues",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Detect when sequence execution order is incorrect",
-          "given": [
-            "handler B executed before handler A",
-            "this violates expected sequence"
-          ],
-          "when": [
-            "behavioral anomaly detection executes"
-          ],
-          "then": [
-            "anomaly should be detected",
-            "sequence dependency should be identified",
-            "impact should be assessed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectCoverageAnomalies",
-      "sequence": "anomaly",
-      "businessValue": "Identify untested code paths",
-      "persona": "Engineering Manager",
-      "scenarios": [
-        {
-          "title": "Identify handlers that are never executed in production",
-          "given": [
-            "some handlers have zero executions",
-            "test coverage is incomplete"
-          ],
-          "when": [
-            "coverage gap detection executes"
-          ],
-          "then": [
-            "untested handlers should be identified",
-            "risk should be assessed",
-            "recommendations should be provided"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectErrorAnomalies",
-      "sequence": "anomaly",
-      "businessValue": "Identify recurring failures",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "Detect recurring error pattern in specific handler",
-          "given": [
-            "handler X fails 5% of the time",
-            "failures follow a pattern"
-          ],
-          "when": [
-            "error pattern detection executes"
-          ],
-          "then": [
-            "pattern should be identified",
-            "root cause should be suggested",
-            "severity should be assessed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectSloBreaches",
-      "sequence": "anomaly",
-      "businessValue": "Surface service-level objective breaches",
-      "persona": "Reliability Engineer",
-      "scenarios": [
-        {
-          "title": "Detect latency p95 and throughput breaches against SLO targets",
-          "given": [
-            "current weighted latency exceeds target",
-            "throughput below minimum SLO"
-          ],
-          "when": [
-            "SLO breach detection handler executes"
-          ],
-          "then": [
-            "breaches should be identified",
-            "anomalies should be emitted with severities",
-            "data should be persisted for diagnosis"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "aggregateAnomalies",
-      "sequence": "anomaly",
-      "businessValue": "Consolidate detected anomalies",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Combine multiple anomalies into coherent report",
-          "given": [
-            "10+ anomalies detected",
-            "anomalies span multiple handlers"
-          ],
-          "when": [
-            "aggregation handler processes anomalies"
-          ],
-          "then": [
-            "anomalies should be grouped",
-            "priorities should be assigned",
+            "results should be grouped",
+            "status should be clear",
             "report should be generated"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "storeAnomalies",
-      "sequence": "anomaly",
-      "businessValue": "Persist anomalies for diagnosis",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Store detected anomalies for root cause analysis",
-          "given": [
-            "anomalies have been aggregated",
-            "database is available"
-          ],
-          "when": [
-            "storage handler persists anomalies"
-          ],
-          "then": [
-            "anomalies should be stored",
-            "data should be queryable",
-            "diagnosis can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "detectAnomaliesCompleted",
-      "sequence": "anomaly",
-      "businessValue": "Signal completion of anomaly detection",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "Notify system that anomaly detection is complete",
-          "given": [
-            "all anomalies detected and stored",
-            "results are ready"
-          ],
-          "when": [
-            "completion handler executes"
-          ],
-          "then": [
-            "diagnosis sequence should be triggered",
-            "user should be notified",
-            "next steps should be clear"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "analyzeRequested",
-      "sequence": "diagnosis",
-      "businessValue": "Initiate root cause analysis",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "User requests root cause analysis of detected anomalies",
-          "given": [
-            "anomalies have been detected",
-            "analysis is needed"
-          ],
-          "when": [
-            "user triggers diagnosis"
-          ],
-          "then": [
-            "system should validate request",
-            "analysis should begin",
-            "user should receive confirmation"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "loadAnomalies",
-      "sequence": "diagnosis",
-      "businessValue": "Retrieve detected anomalies",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Load anomalies from database for analysis",
-          "given": [
-            "anomalies stored in database",
-            "multiple anomalies available"
-          ],
-          "when": [
-            "anomaly loading handler executes"
-          ],
-          "then": [
-            "all anomalies should be loaded",
-            "anomaly details should be complete",
-            "analysis can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "loadCodebaseInfo",
-      "sequence": "diagnosis",
-      "businessValue": "Access codebase structure",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Load codebase information to correlate with anomalies",
-          "given": [
-            "codebase is available",
-            "handler definitions are accessible"
-          ],
-          "when": [
-            "codebase loading handler executes"
-          ],
-          "then": [
-            "handler definitions should be loaded",
-            "sequence structure should be available",
-            "code analysis can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "analyzePerformanceIssues",
-      "sequence": "diagnosis",
-      "businessValue": "Diagnose performance problems",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Analyze performance anomalies to find root cause",
-          "given": [
-            "performance anomaly detected",
-            "handler latency is high"
-          ],
-          "when": [
-            "performance analysis handler executes"
-          ],
-          "then": [
-            "root cause should be identified",
-            "affected code should be located",
-            "fix recommendation should be provided"
           ]
         }
       ]
@@ -512,6 +143,29 @@
             "sequence issue should be identified",
             "dependency problem should be found",
             "fix recommendation should be provided"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "analyzeCompleted",
+      "sequence": "diagnosis",
+      "businessValue": "Signal completion of analysis",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Notify system that analysis is complete",
+          "given": [
+            "all diagnoses completed",
+            "recommendations generated"
+          ],
+          "when": [
+            "completion handler executes"
+          ],
+          "then": [
+            "fix generation sequence should be triggered",
+            "user should be notified",
+            "next steps should be clear"
           ]
         }
       ]
@@ -563,391 +217,47 @@
       ]
     },
     {
-      "name": "assessImpact",
+      "name": "analyzePerformanceIssues",
       "sequence": "diagnosis",
-      "businessValue": "Summarize overall diagnosis severity for prioritization",
+      "businessValue": "Diagnose performance problems",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Aggregate issue severities into single impact classification",
+          "title": "Analyze performance anomalies to find root cause",
           "given": [
-            "multiple issue types detected",
-            "severity distribution available"
+            "performance anomaly detected",
+            "handler latency is high"
           ],
           "when": [
-            "impact assessment handler executes"
+            "performance analysis handler executes"
           ],
           "then": [
-            "overall severity assigned",
-            "estimated users impacted computed",
-            "rationale provided"
+            "root cause should be identified",
+            "affected code should be located",
+            "fix recommendation should be provided"
           ]
         }
       ]
     },
     {
-      "name": "recommendFixes",
+      "name": "analyzeRequested",
       "sequence": "diagnosis",
-      "businessValue": "Provide actionable remediation steps to reduce time to recovery",
-      "persona": "Engineering Manager",
-      "scenarios": [
-        {
-          "title": "Generate prioritized fix recommendations",
-          "given": [
-            "diagnosis slice includes performance, behavioral, coverage, error issues"
-          ],
-          "when": [
-            "recommendations handler executes"
-          ],
-          "then": [
-            "recommendations list produced",
-            "each item has priority & effort",
-            "strategies mapped to issue type"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "aggregateDiagnosis",
-      "sequence": "diagnosis",
-      "businessValue": "Consolidate diagnosis results",
+      "businessValue": "Initiate root cause analysis",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Combine multiple diagnoses into coherent report",
+          "title": "User requests root cause analysis of detected anomalies",
           "given": [
-            "multiple diagnoses completed",
-            "results span multiple issues"
+            "anomalies have been detected",
+            "analysis is needed"
           ],
           "when": [
-            "aggregation handler processes diagnoses"
-          ],
-          "then": [
-            "diagnoses should be grouped",
-            "priorities should be assigned",
-            "report should be generated"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "storeDiagnosis",
-      "sequence": "diagnosis",
-      "businessValue": "Persist diagnosis results",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Store diagnosis results for fix generation",
-          "given": [
-            "diagnoses have been aggregated",
-            "database is available"
-          ],
-          "when": [
-            "storage handler persists diagnoses"
-          ],
-          "then": [
-            "diagnoses should be stored",
-            "data should be queryable",
-            "fix generation can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "generateFixRecommendations",
-      "sequence": "diagnosis",
-      "businessValue": "Generate fix recommendations",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Generate specific recommendations for fixing issues",
-          "given": [
-            "root causes identified",
-            "fix options available"
-          ],
-          "when": [
-            "recommendation generation handler executes"
-          ],
-          "then": [
-            "fix recommendations should be generated",
-            "effort estimates should be provided",
-            "risk assessment should be included"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "analyzeCompleted",
-      "sequence": "diagnosis",
-      "businessValue": "Signal completion of analysis",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Notify system that analysis is complete",
-          "given": [
-            "all diagnoses completed",
-            "recommendations generated"
-          ],
-          "when": [
-            "completion handler executes"
-          ],
-          "then": [
-            "fix generation sequence should be triggered",
-            "user should be notified",
-            "next steps should be clear"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "generateFixRequested",
-      "sequence": "fix",
-      "businessValue": "Initiate fix generation",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "User requests fix generation for diagnosed issues",
-          "given": [
-            "diagnosis completed",
-            "recommendations available"
-          ],
-          "when": [
-            "user triggers fix generation"
+            "user triggers diagnosis"
           ],
           "then": [
             "system should validate request",
-            "generation should begin",
+            "analysis should begin",
             "user should receive confirmation"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "loadDiagnosis",
-      "sequence": "fix",
-      "businessValue": "Retrieve diagnosis results",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Load diagnosis results to generate fixes",
-          "given": [
-            "diagnosis stored in database",
-            "recommendations available"
-          ],
-          "when": [
-            "diagnosis loading handler executes"
-          ],
-          "then": [
-            "diagnosis should be loaded",
-            "recommendations should be available",
-            "fix generation can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "generateCodeFix",
-      "sequence": "fix",
-      "businessValue": "Generate code changes",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Generate optimized or corrected code",
-          "given": [
-            "root cause identified",
-            "fix approach determined"
-          ],
-          "when": [
-            "code generation handler executes"
-          ],
-          "then": [
-            "code fix should be generated",
-            "syntax should be valid",
-            "changes should be minimal"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "generateTestFix",
-      "sequence": "fix",
-      "businessValue": "Generate test cases",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Generate test cases from production data",
-          "given": [
-            "issue reproduced in production",
-            "test data available"
-          ],
-          "when": [
-            "test generation handler executes"
-          ],
-          "then": [
-            "test cases should be generated",
-            "tests should cover issue",
-            "tests should pass with fix"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "generateDocumentationFix",
-      "sequence": "fix",
-      "businessValue": "Generate documentation updates",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Generate updated documentation",
-          "given": [
-            "code changes made",
-            "behavior changed"
-          ],
-          "when": [
-            "documentation generation handler executes"
-          ],
-          "then": [
-            "documentation should be updated",
-            "examples should be provided",
-            "changes should be documented"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "createPatch",
-      "sequence": "fix",
-      "businessValue": "Create unified patch",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Create unified patch file with all changes",
-          "given": [
-            "code, test, and doc fixes generated",
-            "all changes ready"
-          ],
-          "when": [
-            "patch creation handler executes"
-          ],
-          "then": [
-            "patch file should be created",
-            "patch should be valid",
-            "patch should be applicable"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "validateSyntax",
-      "sequence": "fix",
-      "businessValue": "Validate generated code",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Validate syntax of generated code",
-          "given": [
-            "code fix generated",
-            "syntax needs validation"
-          ],
-          "when": [
-            "syntax validation handler executes"
-          ],
-          "then": [
-            "syntax should be valid",
-            "no errors should be found",
-            "code should be compilable"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "storePatch",
-      "sequence": "fix",
-      "businessValue": "Persist patch for validation",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Store patch in database",
-          "given": [
-            "patch created and validated",
-            "database is available"
-          ],
-          "when": [
-            "storage handler persists patch"
-          ],
-          "then": [
-            "patch should be stored",
-            "data should be queryable",
-            "validation can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "generateFixCompleted",
-      "sequence": "fix",
-      "businessValue": "Signal completion of fix generation",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Notify system that fix generation is complete",
-          "given": [
-            "patch generated and stored",
-            "results are ready"
-          ],
-          "when": [
-            "completion handler executes"
-          ],
-          "then": [
-            "validation sequence should be triggered",
-            "user should be notified",
-            "next steps should be clear"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "validateFixRequested",
-      "sequence": "validation",
-      "businessValue": "Initiate fix validation",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "User requests validation of generated fix",
-          "given": [
-            "fix generated",
-            "patch available"
-          ],
-          "when": [
-            "user triggers validation"
-          ],
-          "then": [
-            "system should validate request",
-            "validation should begin",
-            "user should receive confirmation"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "loadPatch",
-      "sequence": "validation",
-      "businessValue": "Retrieve patch for validation",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Load patch from database for validation",
-          "given": [
-            "patch stored in database",
-            "validation needed"
-          ],
-          "when": [
-            "patch loading handler executes"
-          ],
-          "then": [
-            "patch should be loaded",
-            "patch content should be complete",
-            "validation can proceed"
           ]
         }
       ]
@@ -976,160 +286,225 @@
       ]
     },
     {
-      "name": "runUnitTests",
-      "sequence": "validation",
-      "businessValue": "Run unit tests",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Run unit tests to validate fix",
-          "given": [
-            "patch applied",
-            "tests available"
-          ],
-          "when": [
-            "unit test handler executes"
-          ],
-          "then": [
-            "tests should run",
-            "tests should pass",
-            "coverage should be adequate"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "runIntegrationTests",
-      "sequence": "validation",
-      "businessValue": "Run integration tests",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Run integration tests to validate fix",
-          "given": [
-            "unit tests passed",
-            "integration tests available"
-          ],
-          "when": [
-            "integration test handler executes"
-          ],
-          "then": [
-            "tests should run",
-            "tests should pass",
-            "system should work correctly"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "validateCoverage",
-      "sequence": "validation",
-      "businessValue": "Validate test coverage",
+      "name": "archiveFixData",
+      "sequence": "learning",
+      "businessValue": "Archive fix data",
       "persona": "Engineering Manager",
       "scenarios": [
         {
-          "title": "Validate that test coverage is adequate",
+          "title": "Archive fix data for historical reference",
           "given": [
-            "tests executed",
-            "coverage data available"
+            "learning completed",
+            "data stored"
           ],
           "when": [
-            "coverage validation handler executes"
+            "archival handler executes"
           ],
           "then": [
-            "coverage should be 80%+",
-            "critical code should be covered",
-            "report should be generated"
+            "data should be archived",
+            "data should be accessible",
+            "historical analysis can proceed"
           ]
         }
       ]
     },
     {
-      "name": "validatePerformance",
-      "sequence": "validation",
-      "businessValue": "Validate performance improvement",
+      "name": "assessImpact",
+      "sequence": "diagnosis",
+      "businessValue": "Ensure assess impact keeps the diagnosis stage actionable",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Validate that fix improves performance",
+          "title": "Assess Impact safeguards diagnosis insights",
           "given": [
-            "patch applied",
-            "performance tests available"
+            "diagnosis telemetry is available",
+            "Assess Impact results must stay fresh for downstream automation"
           ],
           "when": [
-            "performance validation handler executes"
+            "Assess Impact handler executes with the latest diagnostics"
           ],
           "then": [
-            "performance should improve",
-            "latency should decrease",
-            "metrics should be recorded"
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Assess Impact"
           ]
         }
       ]
     },
     {
-      "name": "aggregateValidationResults",
-      "sequence": "validation",
-      "businessValue": "Consolidate validation results",
-      "persona": "Platform Team",
+      "name": "baselineAggregateMetrics",
+      "sequence": "baseline",
+      "businessValue": "Ensure baseline aggregate metrics keeps the baseline stage actionable",
+      "persona": "Observability Analyst",
       "scenarios": [
         {
-          "title": "Combine validation results into report",
+          "title": "Baseline Aggregate Metrics safeguards baseline insights",
           "given": [
-            "all validations completed",
-            "results available"
+            "baseline telemetry is available",
+            "Baseline Aggregate Metrics results must stay fresh for downstream automation"
           ],
           "when": [
-            "aggregation handler processes results"
+            "Baseline Aggregate Metrics handler executes with the latest diagnostics"
           ],
           "then": [
-            "results should be grouped",
-            "status should be clear",
-            "report should be generated"
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Baseline Aggregate Metrics"
           ]
         }
       ]
     },
     {
-      "name": "storeValidationResults",
-      "sequence": "validation",
-      "businessValue": "Persist validation results",
-      "persona": "Platform Team",
+      "name": "baselineCollectMetrics",
+      "sequence": "baseline",
+      "businessValue": "Ensure baseline collect metrics keeps the baseline stage actionable",
+      "persona": "Observability Analyst",
       "scenarios": [
         {
-          "title": "Store validation results for deployment",
+          "title": "Baseline Collect Metrics safeguards baseline insights",
           "given": [
-            "validation completed",
-            "database is available"
+            "baseline telemetry is available",
+            "Baseline Collect Metrics results must stay fresh for downstream automation"
           ],
           "when": [
-            "storage handler persists results"
+            "Baseline Collect Metrics handler executes with the latest diagnostics"
           ],
           "then": [
-            "results should be stored",
-            "data should be queryable",
-            "deployment can proceed"
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Baseline Collect Metrics"
           ]
         }
       ]
     },
     {
-      "name": "validateFixCompleted",
-      "sequence": "validation",
-      "businessValue": "Signal completion of validation",
+      "name": "baselineCompleted",
+      "sequence": "baseline",
+      "businessValue": "Ensure baseline completed keeps the baseline stage actionable",
+      "persona": "Observability Analyst",
+      "scenarios": [
+        {
+          "title": "Baseline Completed safeguards baseline insights",
+          "given": [
+            "baseline telemetry is available",
+            "Baseline Completed results must stay fresh for downstream automation"
+          ],
+          "when": [
+            "Baseline Completed handler executes with the latest diagnostics"
+          ],
+          "then": [
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Baseline Completed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "calculateEffectiveness",
+      "sequence": "learning",
+      "businessValue": "Calculate fix effectiveness",
+      "persona": "Engineering Manager",
+      "scenarios": [
+        {
+          "title": "Calculate effectiveness of fix",
+          "given": [
+            "metrics compared",
+            "improvement calculated"
+          ],
+          "when": [
+            "effectiveness calculation handler executes"
+          ],
+          "then": [
+            "effectiveness should be calculated",
+            "ROI should be assessed",
+            "success should be determined"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compareMetrics",
+      "sequence": "learning",
+      "businessValue": "Compare before/after metrics",
+      "persona": "Engineering Manager",
+      "scenarios": [
+        {
+          "title": "Compare metrics before and after fix",
+          "given": [
+            "pre-fix metrics available",
+            "post-fix metrics available"
+          ],
+          "when": [
+            "comparison handler executes"
+          ],
+          "then": [
+            "metrics should be compared",
+            "improvement should be calculated",
+            "effectiveness should be assessed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "createPatch",
+      "sequence": "fix",
+      "businessValue": "Create unified patch",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Notify system that validation is complete",
+          "title": "Create unified patch file with all changes",
           "given": [
-            "all validations passed",
-            "results stored"
+            "code, test, and doc fixes generated",
+            "all changes ready"
+          ],
+          "when": [
+            "patch creation handler executes"
+          ],
+          "then": [
+            "patch file should be created",
+            "patch should be valid",
+            "patch should be applicable"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "createPullRequest",
+      "sequence": "deployment",
+      "businessValue": "Create pull request",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Create pull request with fix",
+          "given": [
+            "patch validated",
+            "repository available"
+          ],
+          "when": [
+            "PR creation handler executes"
+          ],
+          "then": [
+            "PR should be created",
+            "PR should contain fix",
+            "PR should be reviewable"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deployFixCompleted",
+      "sequence": "deployment",
+      "businessValue": "Signal completion of deployment",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Notify system that deployment is complete",
+          "given": [
+            "fix deployed to production",
+            "monitoring started"
           ],
           "when": [
             "completion handler executes"
           ],
           "then": [
-            "deployment sequence should be triggered",
+            "learning sequence should be triggered",
             "user should be notified",
             "next steps should be clear"
           ]
@@ -1160,93 +535,24 @@
       ]
     },
     {
-      "name": "createPullRequest",
+      "name": "deployToProduction",
       "sequence": "deployment",
-      "businessValue": "Create pull request",
+      "businessValue": "Deploy to production",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Create pull request with fix",
+          "title": "Deploy fix to production",
           "given": [
-            "patch validated",
-            "repository available"
+            "staging validated",
+            "production available"
           ],
           "when": [
-            "PR creation handler executes"
+            "production deployment handler executes"
           ],
           "then": [
-            "PR should be created",
-            "PR should contain fix",
-            "PR should be reviewable"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "runCITests",
-      "sequence": "deployment",
-      "businessValue": "Run CI tests",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Run CI tests on pull request",
-          "given": [
-            "PR created",
-            "CI pipeline available"
-          ],
-          "when": [
-            "CI test handler executes"
-          ],
-          "then": [
-            "tests should run",
-            "tests should pass",
-            "CI should approve"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "reviewPullRequest",
-      "sequence": "deployment",
-      "businessValue": "Review pull request",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Review pull request for quality",
-          "given": [
-            "PR created",
-            "CI tests passed"
-          ],
-          "when": [
-            "review handler executes"
-          ],
-          "then": [
-            "code should be reviewed",
-            "quality should be verified",
-            "approval should be given"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "mergePullRequest",
-      "sequence": "deployment",
-      "businessValue": "Merge pull request",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Merge pull request to main branch",
-          "given": [
-            "PR reviewed",
-            "approval given"
-          ],
-          "when": [
-            "merge handler executes"
-          ],
-          "then": [
-            "PR should be merged",
-            "code should be in main",
-            "deployment can proceed"
+            "fix should be deployed",
+            "production should be updated",
+            "monitoring should begin"
           ]
         }
       ]
@@ -1275,114 +581,22 @@
       ]
     },
     {
-      "name": "validateStagingDeployment",
-      "sequence": "deployment",
-      "businessValue": "Validate staging deployment",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Validate that fix works in staging",
-          "given": [
-            "fix deployed to staging",
-            "tests available"
-          ],
-          "when": [
-            "staging validation handler executes"
-          ],
-          "then": [
-            "fix should work",
-            "no new issues should appear",
-            "production deployment can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "deployToProduction",
-      "sequence": "deployment",
-      "businessValue": "Deploy to production",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Deploy fix to production",
-          "given": [
-            "staging validated",
-            "production available"
-          ],
-          "when": [
-            "production deployment handler executes"
-          ],
-          "then": [
-            "fix should be deployed",
-            "production should be updated",
-            "monitoring should begin"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "monitorDeployment",
-      "sequence": "deployment",
-      "businessValue": "Monitor deployment",
+      "name": "detectAnomaliesCompleted",
+      "sequence": "anomaly",
+      "businessValue": "Signal completion of anomaly detection",
       "persona": "DevOps Engineer",
       "scenarios": [
         {
-          "title": "Monitor production deployment for issues",
+          "title": "Notify system that anomaly detection is complete",
           "given": [
-            "fix deployed to production",
-            "monitoring available"
-          ],
-          "when": [
-            "monitoring handler executes"
-          ],
-          "then": [
-            "deployment should be monitored",
-            "metrics should be collected",
-            "issues should be detected"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "storeDeploymentInfo",
-      "sequence": "deployment",
-      "businessValue": "Persist deployment information",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Store deployment information",
-          "given": [
-            "deployment completed",
-            "database is available"
-          ],
-          "when": [
-            "storage handler persists info"
-          ],
-          "then": [
-            "deployment info should be stored",
-            "data should be queryable",
-            "learning can proceed"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "deployFixCompleted",
-      "sequence": "deployment",
-      "businessValue": "Signal completion of deployment",
-      "persona": "Platform Team",
-      "scenarios": [
-        {
-          "title": "Notify system that deployment is complete",
-          "given": [
-            "fix deployed to production",
-            "monitoring started"
+            "all anomalies detected and stored",
+            "results are ready"
           ],
           "when": [
             "completion handler executes"
           ],
           "then": [
-            "learning sequence should be triggered",
+            "diagnosis sequence should be triggered",
             "user should be notified",
             "next steps should be clear"
           ]
@@ -1390,116 +604,342 @@
       ]
     },
     {
-      "name": "trackEffectivenessRequested",
-      "sequence": "learning",
-      "businessValue": "Initiate effectiveness tracking",
-      "persona": "Engineering Manager",
+      "name": "detectAnomaliesRequested",
+      "sequence": "anomaly",
+      "businessValue": "Initiate anomaly detection",
+      "persona": "DevOps Engineer",
       "scenarios": [
         {
-          "title": "User requests tracking of fix effectiveness",
+          "title": "User requests anomaly detection after parsing telemetry",
           "given": [
-            "fix deployed",
-            "monitoring data available"
+            "telemetry has been parsed",
+            "metrics are available"
           ],
           "when": [
-            "user triggers effectiveness tracking"
+            "user triggers anomaly detection"
           ],
           "then": [
             "system should validate request",
-            "tracking should begin",
+            "detection should begin",
             "user should receive confirmation"
           ]
         }
       ]
     },
     {
-      "name": "loadDeploymentMetrics",
-      "sequence": "learning",
-      "businessValue": "Retrieve deployment metrics",
-      "persona": "Engineering Manager",
+      "name": "detectBehavioralAnomalies",
+      "sequence": "anomaly",
+      "businessValue": "Identify sequence execution issues",
+      "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Load metrics from deployed fix",
+          "title": "Detect when sequence execution order is incorrect",
           "given": [
-            "fix deployed",
-            "metrics collected"
+            "handler B executed before handler A",
+            "this violates expected sequence"
           ],
           "when": [
-            "metrics loading handler executes"
+            "behavioral anomaly detection executes"
           ],
           "then": [
-            "metrics should be loaded",
-            "baseline should be available",
-            "comparison can proceed"
+            "anomaly should be detected",
+            "sequence dependency should be identified",
+            "impact should be assessed"
           ]
         }
       ]
     },
     {
-      "name": "compareMetrics",
-      "sequence": "learning",
-      "businessValue": "Compare before/after metrics",
-      "persona": "Engineering Manager",
+      "name": "detectCoverageAnomalies",
+      "sequence": "anomaly",
+      "businessValue": "Ensure detect coverage anomalies keeps the anomaly stage actionable",
+      "persona": "Site Reliability Engineer",
       "scenarios": [
         {
-          "title": "Compare metrics before and after fix",
+          "title": "Detect Coverage Anomalies safeguards anomaly insights",
           "given": [
-            "pre-fix metrics available",
-            "post-fix metrics available"
+            "anomaly telemetry is available",
+            "Detect Coverage Anomalies results must stay fresh for downstream automation"
           ],
           "when": [
-            "comparison handler executes"
+            "Detect Coverage Anomalies handler executes with the latest diagnostics"
           ],
           "then": [
-            "metrics should be compared",
-            "improvement should be calculated",
-            "effectiveness should be assessed"
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Detect Coverage Anomalies"
           ]
         }
       ]
     },
     {
-      "name": "calculateEffectiveness",
-      "sequence": "learning",
-      "businessValue": "Calculate fix effectiveness",
+      "name": "detectCoverageGaps",
+      "sequence": "anomaly",
+      "businessValue": "Identify untested code paths",
       "persona": "Engineering Manager",
       "scenarios": [
         {
-          "title": "Calculate effectiveness of fix",
+          "title": "Identify handlers that are never executed in production",
           "given": [
-            "metrics compared",
-            "improvement calculated"
+            "some handlers have zero executions",
+            "test coverage is incomplete"
           ],
           "when": [
-            "effectiveness calculation handler executes"
+            "coverage gap detection executes"
           ],
           "then": [
-            "effectiveness should be calculated",
-            "ROI should be assessed",
-            "success should be determined"
+            "untested handlers should be identified",
+            "risk should be assessed",
+            "recommendations should be provided"
           ]
         }
       ]
     },
     {
-      "name": "updateLearningModel",
-      "sequence": "learning",
-      "businessValue": "Update learning models",
-      "persona": "Engineering Manager",
+      "name": "detectErrorAnomalies",
+      "sequence": "anomaly",
+      "businessValue": "Ensure detect error anomalies keeps the anomaly stage actionable",
+      "persona": "Site Reliability Engineer",
       "scenarios": [
         {
-          "title": "Update learning models with fix results",
+          "title": "Detect Error Anomalies safeguards anomaly insights",
           "given": [
-            "effectiveness calculated",
-            "learning data available"
+            "anomaly telemetry is available",
+            "Detect Error Anomalies results must stay fresh for downstream automation"
           ],
           "when": [
-            "model update handler executes"
+            "Detect Error Anomalies handler executes with the latest diagnostics"
           ],
           "then": [
-            "models should be updated",
-            "patterns should be learned",
-            "future fixes should improve"
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Detect Error Anomalies"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "detectErrorPatterns",
+      "sequence": "anomaly",
+      "businessValue": "Identify recurring failures",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Detect recurring error pattern in specific handler",
+          "given": [
+            "handler X fails 5% of the time",
+            "failures follow a pattern"
+          ],
+          "when": [
+            "error pattern detection executes"
+          ],
+          "then": [
+            "pattern should be identified",
+            "root cause should be suggested",
+            "severity should be assessed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "detectPerformanceAnomalies",
+      "sequence": "anomaly",
+      "businessValue": "Identify performance degradation",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Detect when handler latency exceeds baseline by 2x",
+          "given": [
+            "baseline p95 latency is 100ms",
+            "current p95 latency is 250ms"
+          ],
+          "when": [
+            "performance anomaly detection executes"
+          ],
+          "then": [
+            "anomaly should be detected",
+            "severity should be assessed",
+            "affected handlers should be identified"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "detectSloBreaches",
+      "sequence": "anomaly",
+      "businessValue": "Ensure detect slo breaches keeps the anomaly stage actionable",
+      "persona": "Site Reliability Engineer",
+      "scenarios": [
+        {
+          "title": "Detect Slo Breaches safeguards anomaly insights",
+          "given": [
+            "anomaly telemetry is available",
+            "Detect Slo Breaches results must stay fresh for downstream automation"
+          ],
+          "when": [
+            "Detect Slo Breaches handler executes with the latest diagnostics"
+          ],
+          "then": [
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Detect Slo Breaches"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "establishBaseline",
+      "sequence": "baseline",
+      "businessValue": "Ensure establish baseline keeps the baseline stage actionable",
+      "persona": "Observability Analyst",
+      "scenarios": [
+        {
+          "title": "Establish Baseline safeguards baseline insights",
+          "given": [
+            "baseline telemetry is available",
+            "Establish Baseline results must stay fresh for downstream automation"
+          ],
+          "when": [
+            "Establish Baseline handler executes with the latest diagnostics"
+          ],
+          "then": [
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Establish Baseline"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "extractTelemetryEvents",
+      "sequence": "telemetry",
+      "businessValue": "Parse execution events from logs",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Extract beat execution events to understand handler performance",
+          "given": [
+            "logs contain beat-started and beat-completed events",
+            "events have timestamps and durations"
+          ],
+          "when": [
+            "event extraction handler processes logs"
+          ],
+          "then": [
+            "all events should be extracted",
+            "timing data should be preserved",
+            "event types should be categorized"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generateCodeFix",
+      "sequence": "fix",
+      "businessValue": "Generate code changes",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Generate optimized or corrected code",
+          "given": [
+            "root cause identified",
+            "fix approach determined"
+          ],
+          "when": [
+            "code generation handler executes"
+          ],
+          "then": [
+            "code fix should be generated",
+            "syntax should be valid",
+            "changes should be minimal"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generateDocumentationFix",
+      "sequence": "fix",
+      "businessValue": "Generate documentation updates",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Generate updated documentation",
+          "given": [
+            "code changes made",
+            "behavior changed"
+          ],
+          "when": [
+            "documentation generation handler executes"
+          ],
+          "then": [
+            "documentation should be updated",
+            "examples should be provided",
+            "changes should be documented"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generateFixCompleted",
+      "sequence": "fix",
+      "businessValue": "Signal completion of fix generation",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Notify system that fix generation is complete",
+          "given": [
+            "patch generated and stored",
+            "results are ready"
+          ],
+          "when": [
+            "completion handler executes"
+          ],
+          "then": [
+            "validation sequence should be triggered",
+            "user should be notified",
+            "next steps should be clear"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generateFixRecommendations",
+      "sequence": "diagnosis",
+      "businessValue": "Generate fix recommendations",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Generate specific recommendations for fixing issues",
+          "given": [
+            "root causes identified",
+            "fix options available"
+          ],
+          "when": [
+            "recommendation generation handler executes"
+          ],
+          "then": [
+            "fix recommendations should be generated",
+            "effort estimates should be provided",
+            "risk assessment should be included"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generateFixRequested",
+      "sequence": "fix",
+      "businessValue": "Initiate fix generation",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "User requests fix generation for diagnosed issues",
+          "given": [
+            "diagnosis completed",
+            "recommendations available"
+          ],
+          "when": [
+            "user triggers fix generation"
+          ],
+          "then": [
+            "system should validate request",
+            "generation should begin",
+            "user should receive confirmation"
           ]
         }
       ]
@@ -1528,24 +968,254 @@
       ]
     },
     {
-      "name": "storeLearningData",
+      "name": "generateTestFix",
+      "sequence": "fix",
+      "businessValue": "Generate test cases",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Generate test cases from production data",
+          "given": [
+            "issue reproduced in production",
+            "test data available"
+          ],
+          "when": [
+            "test generation handler executes"
+          ],
+          "then": [
+            "test cases should be generated",
+            "tests should cover issue",
+            "tests should pass with fix"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadAnomalies",
+      "sequence": "diagnosis",
+      "businessValue": "Retrieve detected anomalies",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Load anomalies from database for analysis",
+          "given": [
+            "anomalies stored in database",
+            "multiple anomalies available"
+          ],
+          "when": [
+            "anomaly loading handler executes"
+          ],
+          "then": [
+            "all anomalies should be loaded",
+            "anomaly details should be complete",
+            "analysis can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadCodebaseInfo",
+      "sequence": "diagnosis",
+      "businessValue": "Access codebase structure",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Load codebase information to correlate with anomalies",
+          "given": [
+            "codebase is available",
+            "handler definitions are accessible"
+          ],
+          "when": [
+            "codebase loading handler executes"
+          ],
+          "then": [
+            "handler definitions should be loaded",
+            "sequence structure should be available",
+            "code analysis can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadDeploymentMetrics",
       "sequence": "learning",
-      "businessValue": "Persist learning data",
+      "businessValue": "Retrieve deployment metrics",
       "persona": "Engineering Manager",
       "scenarios": [
         {
-          "title": "Store learning data for future use",
+          "title": "Load metrics from deployed fix",
           "given": [
-            "learning completed",
-            "database is available"
+            "fix deployed",
+            "metrics collected"
           ],
           "when": [
-            "storage handler persists data"
+            "metrics loading handler executes"
           ],
           "then": [
-            "data should be stored",
-            "data should be queryable",
-            "future analysis can use data"
+            "metrics should be loaded",
+            "baseline should be available",
+            "comparison can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadDiagnosis",
+      "sequence": "fix",
+      "businessValue": "Retrieve diagnosis results",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Load diagnosis results to generate fixes",
+          "given": [
+            "diagnosis stored in database",
+            "recommendations available"
+          ],
+          "when": [
+            "diagnosis loading handler executes"
+          ],
+          "then": [
+            "diagnosis should be loaded",
+            "recommendations should be available",
+            "fix generation can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadLogFiles",
+      "sequence": "telemetry",
+      "businessValue": "Access production execution data",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "System successfully loads production logs from last 24 hours",
+          "given": [
+            "logs directory contains 100+ log files",
+            "files span 24-hour period"
+          ],
+          "when": [
+            "log loading handler executes"
+          ],
+          "then": [
+            "all valid logs should be loaded",
+            "corrupted files should be skipped",
+            "system should report progress"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadPatch",
+      "sequence": "validation",
+      "businessValue": "Retrieve patch for validation",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Load patch from database for validation",
+          "given": [
+            "patch stored in database",
+            "validation needed"
+          ],
+          "when": [
+            "patch loading handler executes"
+          ],
+          "then": [
+            "patch should be loaded",
+            "patch content should be complete",
+            "validation can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loadTelemetryData",
+      "sequence": "anomaly",
+      "businessValue": "Retrieve metrics for analysis",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Load telemetry metrics to compare against baselines",
+          "given": [
+            "metrics stored in database",
+            "historical baselines available"
+          ],
+          "when": [
+            "data loading handler executes"
+          ],
+          "then": [
+            "current metrics should be loaded",
+            "baseline metrics should be retrieved",
+            "comparison should be possible"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergePullRequest",
+      "sequence": "deployment",
+      "businessValue": "Merge pull request",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Merge pull request to main branch",
+          "given": [
+            "PR reviewed",
+            "approval given"
+          ],
+          "when": [
+            "merge handler executes"
+          ],
+          "then": [
+            "PR should be merged",
+            "code should be in main",
+            "deployment can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "monitorDeployment",
+      "sequence": "deployment",
+      "businessValue": "Monitor deployment",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Monitor production deployment for issues",
+          "given": [
+            "fix deployed to production",
+            "monitoring available"
+          ],
+          "when": [
+            "monitoring handler executes"
+          ],
+          "then": [
+            "deployment should be monitored",
+            "metrics should be collected",
+            "issues should be detected"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "normalizeTelemetryData",
+      "sequence": "telemetry",
+      "businessValue": "Standardize data for analysis",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Normalize timestamps across different log sources",
+          "given": [
+            "logs from multiple services with different timestamp formats",
+            "timezone information varies"
+          ],
+          "when": [
+            "normalization handler processes events"
+          ],
+          "then": [
+            "all timestamps should be ISO 8601",
+            "timezone should be consistent",
+            "data should be comparable"
           ]
         }
       ]
@@ -1574,24 +1244,366 @@
       ]
     },
     {
-      "name": "archiveFixData",
+      "name": "parseTelemetryCompleted",
+      "sequence": "telemetry",
+      "businessValue": "Signal completion of telemetry parsing",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "Notify system that telemetry parsing is complete",
+          "given": [
+            "all telemetry parsing steps completed",
+            "metrics stored successfully"
+          ],
+          "when": [
+            "completion handler executes"
+          ],
+          "then": [
+            "next sequence should be triggered",
+            "user should be notified",
+            "system should be ready for anomaly detection"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parseTelemetryRequested",
+      "sequence": "telemetry",
+      "businessValue": "Initiate production log analysis",
+      "persona": "DevOps Engineer",
+      "scenarios": [
+        {
+          "title": "User requests telemetry parsing to investigate recent outage",
+          "given": [
+            "production logs are available",
+            "user suspects performance issue"
+          ],
+          "when": [
+            "user triggers telemetry parsing"
+          ],
+          "then": [
+            "system should validate request",
+            "parsing should begin immediately",
+            "user should receive confirmation"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recommendFixes",
+      "sequence": "diagnosis",
+      "businessValue": "Ensure recommend fixes keeps the diagnosis stage actionable",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Recommend Fixes safeguards diagnosis insights",
+          "given": [
+            "diagnosis telemetry is available",
+            "Recommend Fixes results must stay fresh for downstream automation"
+          ],
+          "when": [
+            "Recommend Fixes handler executes with the latest diagnostics"
+          ],
+          "then": [
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Recommend Fixes"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reviewPullRequest",
+      "sequence": "deployment",
+      "businessValue": "Review pull request",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Review pull request for quality",
+          "given": [
+            "PR created",
+            "CI tests passed"
+          ],
+          "when": [
+            "review handler executes"
+          ],
+          "then": [
+            "code should be reviewed",
+            "quality should be verified",
+            "approval should be given"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "runCITests",
+      "sequence": "deployment",
+      "businessValue": "Run CI tests",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Run CI tests on pull request",
+          "given": [
+            "PR created",
+            "CI pipeline available"
+          ],
+          "when": [
+            "CI test handler executes"
+          ],
+          "then": [
+            "tests should run",
+            "tests should pass",
+            "CI should approve"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "runIntegrationTests",
+      "sequence": "validation",
+      "businessValue": "Run integration tests",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Run integration tests to validate fix",
+          "given": [
+            "unit tests passed",
+            "integration tests available"
+          ],
+          "when": [
+            "integration test handler executes"
+          ],
+          "then": [
+            "tests should run",
+            "tests should pass",
+            "system should work correctly"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "runUnitTests",
+      "sequence": "validation",
+      "businessValue": "Run unit tests",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Run unit tests to validate fix",
+          "given": [
+            "patch applied",
+            "tests available"
+          ],
+          "when": [
+            "unit test handler executes"
+          ],
+          "then": [
+            "tests should run",
+            "tests should pass",
+            "coverage should be adequate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeAnomalies",
+      "sequence": "anomaly",
+      "businessValue": "Ensure store anomalies keeps the anomaly stage actionable",
+      "persona": "Site Reliability Engineer",
+      "scenarios": [
+        {
+          "title": "Store Anomalies safeguards anomaly insights",
+          "given": [
+            "anomaly telemetry is available",
+            "Store Anomalies results must stay fresh for downstream automation"
+          ],
+          "when": [
+            "Store Anomalies handler executes with the latest diagnostics"
+          ],
+          "then": [
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Store Anomalies"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeAnomalyResults",
+      "sequence": "anomaly",
+      "businessValue": "Persist anomalies for diagnosis",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store detected anomalies for root cause analysis",
+          "given": [
+            "anomalies have been aggregated",
+            "database is available"
+          ],
+          "when": [
+            "storage handler persists anomalies"
+          ],
+          "then": [
+            "anomalies should be stored",
+            "data should be queryable",
+            "diagnosis can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeBaselineMetrics",
+      "sequence": "baseline",
+      "businessValue": "Ensure store baseline metrics keeps the baseline stage actionable",
+      "persona": "Observability Analyst",
+      "scenarios": [
+        {
+          "title": "Store Baseline Metrics safeguards baseline insights",
+          "given": [
+            "baseline telemetry is available",
+            "Store Baseline Metrics results must stay fresh for downstream automation"
+          ],
+          "when": [
+            "Store Baseline Metrics handler executes with the latest diagnostics"
+          ],
+          "then": [
+            "results are recorded in the comprehensive spec",
+            "next stage receives actionable context from Store Baseline Metrics"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeDeploymentInfo",
+      "sequence": "deployment",
+      "businessValue": "Persist deployment information",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store deployment information",
+          "given": [
+            "deployment completed",
+            "database is available"
+          ],
+          "when": [
+            "storage handler persists info"
+          ],
+          "then": [
+            "deployment info should be stored",
+            "data should be queryable",
+            "learning can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeDiagnosis",
+      "sequence": "diagnosis",
+      "businessValue": "Persist diagnosis results",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store diagnosis results for fix generation",
+          "given": [
+            "diagnoses have been aggregated",
+            "database is available"
+          ],
+          "when": [
+            "storage handler persists diagnoses"
+          ],
+          "then": [
+            "diagnoses should be stored",
+            "data should be queryable",
+            "fix generation can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeLearningData",
       "sequence": "learning",
-      "businessValue": "Archive fix data",
+      "businessValue": "Persist learning data",
       "persona": "Engineering Manager",
       "scenarios": [
         {
-          "title": "Archive fix data for historical reference",
+          "title": "Store learning data for future use",
           "given": [
             "learning completed",
-            "data stored"
+            "database is available"
           ],
           "when": [
-            "archival handler executes"
+            "storage handler persists data"
           ],
           "then": [
-            "data should be archived",
-            "data should be accessible",
-            "historical analysis can proceed"
+            "data should be stored",
+            "data should be queryable",
+            "future analysis can use data"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storePatch",
+      "sequence": "fix",
+      "businessValue": "Persist patch for validation",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store patch in database",
+          "given": [
+            "patch created and validated",
+            "database is available"
+          ],
+          "when": [
+            "storage handler persists patch"
+          ],
+          "then": [
+            "patch should be stored",
+            "data should be queryable",
+            "validation can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeTelemetryDatabase",
+      "sequence": "telemetry",
+      "businessValue": "Persist metrics for analysis",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store aggregated metrics for historical analysis",
+          "given": [
+            "metrics are ready to store",
+            "database is available"
+          ],
+          "when": [
+            "storage handler persists metrics"
+          ],
+          "then": [
+            "metrics should be stored",
+            "data should be queryable",
+            "storage should be confirmed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storeValidationResults",
+      "sequence": "validation",
+      "businessValue": "Persist validation results",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Store validation results for deployment",
+          "given": [
+            "validation completed",
+            "database is available"
+          ],
+          "when": [
+            "storage handler persists results"
+          ],
+          "then": [
+            "results should be stored",
+            "data should be queryable",
+            "deployment can proceed"
           ]
         }
       ]
@@ -1618,75 +1630,188 @@
           ]
         }
       ]
-    }
-    ,
+    },
     {
-      "name": "baselineCollectMetrics",
-      "sequence": "baseline",
-      "businessValue": "Access aggregated telemetry for baseline creation",
+      "name": "trackEffectivenessRequested",
+      "sequence": "learning",
+      "businessValue": "Initiate effectiveness tracking",
+      "persona": "Engineering Manager",
+      "scenarios": [
+        {
+          "title": "User requests tracking of fix effectiveness",
+          "given": [
+            "fix deployed",
+            "monitoring data available"
+          ],
+          "when": [
+            "user triggers effectiveness tracking"
+          ],
+          "then": [
+            "system should validate request",
+            "tracking should begin",
+            "user should receive confirmation"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "updateLearningModel",
+      "sequence": "learning",
+      "businessValue": "Update learning models",
+      "persona": "Engineering Manager",
+      "scenarios": [
+        {
+          "title": "Update learning models with fix results",
+          "given": [
+            "effectiveness calculated",
+            "learning data available"
+          ],
+          "when": [
+            "model update handler executes"
+          ],
+          "then": [
+            "models should be updated",
+            "patterns should be learned",
+            "future fixes should improve"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "validateCoverage",
+      "sequence": "validation",
+      "businessValue": "Validate test coverage",
+      "persona": "Engineering Manager",
+      "scenarios": [
+        {
+          "title": "Validate that test coverage is adequate",
+          "given": [
+            "tests executed",
+            "coverage data available"
+          ],
+          "when": [
+            "coverage validation handler executes"
+          ],
+          "then": [
+            "coverage should be 80%+",
+            "critical code should be covered",
+            "report should be generated"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "validateFixCompleted",
+      "sequence": "validation",
+      "businessValue": "Signal completion of validation",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Load existing telemetry metrics artifact to start baseline establishment",
-          "given": ["telemetry parsing sequence completed", ".generated/telemetry-metrics.json exists"],
-          "when": ["baseline collection handler executes"],
-          "then": ["artifact should be read", "presence should be confirmed", "metrics should be available for next step"]
+          "title": "Notify system that validation is complete",
+          "given": [
+            "all validations passed",
+            "results stored"
+          ],
+          "when": [
+            "completion handler executes"
+          ],
+          "then": [
+            "deployment sequence should be triggered",
+            "user should be notified",
+            "next steps should be clear"
+          ]
         }
       ]
     },
     {
-      "name": "baselineAggregateMetrics",
-      "sequence": "baseline",
-      "businessValue": "Prepare raw metrics for baseline statistics",
+      "name": "validateFixRequested",
+      "sequence": "validation",
+      "businessValue": "Initiate fix validation",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Pass through metrics in minimal slice for baseline computation",
-          "given": ["metrics artifact loaded", "no refinement required in minimal slice"],
-          "when": ["aggregate metrics handler executes"],
-          "then": ["handlers map should be available", "total events should be exposed", "ready for establish step"]
+          "title": "User requests validation of generated fix",
+          "given": [
+            "fix generated",
+            "patch available"
+          ],
+          "when": [
+            "user triggers validation"
+          ],
+          "then": [
+            "system should validate request",
+            "validation should begin",
+            "user should receive confirmation"
+          ]
         }
       ]
     },
     {
-      "name": "establishBaseline",
-      "sequence": "baseline",
-      "businessValue": "Derive initial latency & error baselines",
-      "persona": "DevOps Engineer",
-      "scenarios": [
-        {
-          "title": "Compute p50, p95, errorRate and confidence per handler",
-          "given": ["aggregated handler metrics", "latency & error counts"],
-          "when": ["baseline establishment executes"],
-          "then": ["baseline statistics should be derived", "low confidence handlers flagged", "structure ready for persistence"]
-        }
-      ]
-    },
-    {
-      "name": "storeBaselineMetrics",
-      "sequence": "baseline",
-      "businessValue": "Persist baseline metrics for anomaly & SLO evaluation",
+      "name": "validatePerformance",
+      "sequence": "validation",
+      "businessValue": "Validate performance improvement",
       "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Store baseline metrics JSON artifact",
-          "given": ["baseline statistics computed", "write access to .generated"],
-          "when": ["baseline storage handler executes"],
-          "then": ["baseline file should be written", "handler count recorded", "stored status reported"]
+          "title": "Validate that fix improves performance",
+          "given": [
+            "patch applied",
+            "performance tests available"
+          ],
+          "when": [
+            "performance validation handler executes"
+          ],
+          "then": [
+            "performance should improve",
+            "latency should decrease",
+            "metrics should be recorded"
+          ]
         }
       ]
     },
     {
-      "name": "baselineCompleted",
-      "sequence": "baseline",
-      "businessValue": "Signal completion of baseline establishment",
-      "persona": "DevOps Engineer",
+      "name": "validateStagingDeployment",
+      "sequence": "deployment",
+      "businessValue": "Validate staging deployment",
+      "persona": "Platform Team",
       "scenarios": [
         {
-          "title": "Emit completion event summarizing baseline establishment",
-          "given": ["baseline stored", "low confidence handlers list"],
-          "when": ["completion handler executes"],
-          "then": ["summary event should be emitted", "next anomaly detection sequence can consume baseline", "stakeholder can review confidence"]
+          "title": "Validate that fix works in staging",
+          "given": [
+            "fix deployed to staging",
+            "tests available"
+          ],
+          "when": [
+            "staging validation handler executes"
+          ],
+          "then": [
+            "fix should work",
+            "no new issues should appear",
+            "production deployment can proceed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "validateSyntax",
+      "sequence": "fix",
+      "businessValue": "Validate generated code",
+      "persona": "Platform Team",
+      "scenarios": [
+        {
+          "title": "Validate syntax of generated code",
+          "given": [
+            "code fix generated",
+            "syntax needs validation"
+          ],
+          "when": [
+            "syntax validation handler executes"
+          ],
+          "then": [
+            "syntax should be valid",
+            "no errors should be found",
+            "code should be compilable"
+          ]
         }
       ]
     }

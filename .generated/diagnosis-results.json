@@ -1,21 +1,21 @@
 {
-  "timestamp": "2025-11-24T03:34:59.006Z",
+  "timestamp": "2025-11-25T01:36:09.704Z",
   "slice": {
     "performanceIssues": [
       {
-        "anomalyId": "loadLogFiles-perf-1763955270022",
+        "anomalyId": "loadLogFiles-perf-1764034539622",
         "handler": "loadLogFiles",
         "severity": "high",
         "description": "Latency increased by 240% vs baseline"
       },
       {
-        "anomalyId": "aggregateTelemetryMetrics-perf-1763955270022",
+        "anomalyId": "aggregateTelemetryMetrics-perf-1764034539622",
         "handler": "aggregateTelemetryMetrics",
         "severity": "low",
         "description": "Latency increased by 133% vs baseline"
       },
       {
-        "anomalyId": "extractTelemetryEvents-perf-1763955270022",
+        "anomalyId": "extractTelemetryEvents-perf-1764034539622",
         "handler": "extractTelemetryEvents",
         "severity": "high",
         "description": "Latency increased by 225% vs baseline"
@@ -24,7 +24,7 @@
     "behavioralIssues": [],
     "coverageIssues": [],
     "errorIssues": [],
-    "generatedAt": "2025-11-24T03:34:59.005Z",
+    "generatedAt": "2025-11-25T01:36:09.703Z",
     "sequenceId": "diag-seq-e2e",
     "impact": {
       "overallSeverity": "high",

@@ -1,80 +1,52 @@
 # SLO Dashboard RenderX-Web Traceability Integration Plan
 
 Version: 1.0.0
-Generated: 2025-11-24
 
-<!-- AUTO-GENERATED: DO NOT EDIT DIRECTLY. Edit JSON plan and rerun scripts/generate-slo-dashboard-traceability-doc.cjs -->
-
-## Goal
-- Integrate production RenderX-Web telemetry, log lineage, test coverage, BDD specs, and shape evolution governance directly into SLO dashboard orchestration sequences and overlays.
-
-## Guiding Principles
-- JSON-first governance; reports derived, never manually edited.
-- Each sequence phase mapped to telemetry + BDD + shape artifacts.
-- Incremental vertical slices; evolve governance with each demo.
-- Stable correlation IDs (sequenceId, shapeHash, coverageId, lineageId).
-- Automatic drift detection (shape, coverage, manifest, BDD completeness).
-
-## Success Metrics
-| Metric | Target | Description |
-|--------|--------|-------------|
-| Phase Coverage % | 100% | All SLO phases have telemetry + tests + BDD mapping |
-| Unannotated Shape Diffs | 0 | All shape changes annotated pre-merge |
-| Telemetry→Test Mapping Ratio | ≥85% | Majority of production anomalies exercised by tests |
-| Drift Resolution Time | ≤5 min | Rapid annotation & regeneration cycle |
-| Overlay Proposal Promotion | 100% | All ready orchestration proposals promoted |
+<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.json hash=4e9f237ed44bb0bbaab22a8d35e8e7800f9545994d78f353276067eb88464c26 -->
 
 ## Sprint Breakdown
-### Sprint 1: Baseline Linkage & Sequence Hooks (1w)
+### Baseline Linkage & Sequence Hooks (undefined)
 Objectives:
-1. Load telemetry + lineage into SLO context.
-2. Map sequence phases → telemetry events.
-3. Generate integration manifest linking domain authority → sequence → telemetry → BDD.
-Deliverables: `generate-slo-traceability-manifest.cjs`, `docs/slo-dashboard-traceability-overview.md`, manifest JSON, patched domain authority.
-Acceptance: ≥3 phase-event links; authority validates; demo script outputs summary.
+1. Load existing RenderX-Web telemetry + lineage into SLO dashboard context
+2. Attach sequence phase → telemetry event mapping (activation, breach-detect, report-emission phases)
+3. Generate initial integration manifest linking domain authority → sequence → telemetry → BDD spec
+Deliverables: `scripts/generate-slo-traceability-manifest.cjs`, `docs/slo-dashboard-traceability-overview.md`, `Updated docs/domains/slo-dashboard.json integration block`, `.generated/slo-dashboard/traceability-manifest.json`
 
-### Sprint 2: Coverage & Shape Evolution Coupling (1w)
-Objectives: coverageId linking; shape diff enforcement; new annotations.
-Deliverables: coverage coupling module, extended manifest, new shape annotations.
-Acceptance: All mapped events carry coverageId; zero unannotated diffs.
+### Coverage & Shape Evolution Coupling (undefined)
+Objectives:
+1. Integrate coverageId into each mapped telemetry event
+2. Enforce shape-diff-check pre-manifest update
+3. Annotate new shape hashes triggered by SLO sequence events
+Deliverables: `telemetry/coverage-coupling.ts (implementation)`, `Extended traceability-manifest with coverageId fields`, `shape-evolutions.json new annotations for SLO features`
 
-### Sprint 3: Overlay Promotion & BDD Synchronization (1w)
-Objectives: promote proposals; enrich BDD spec with phase scenarios; build scenario→event cross index.
-Deliverables: promoted sequences; updated BDD spec; cross-index file.
-Acceptance: 100% proposal promotion; scenario for each phase.
+### Overlay Promotion & BDD Synchronization (undefined)
+Objectives:
+1. Promote ready orchestration sequence proposals tied to SLO events
+2. Ensure BDD specs reference all promoted sequence phases
+3. Add BDD scenario → telemetry event cross index
+Deliverables: `Promoted sequence JSON files (.ographx/sequences/*)`, `Updated slo-dashboard-business-bdd-specifications.json with phase scenarios`, `.generated/slo-dashboard/bdd-event-cross-index.json`
 
-### Sprint 4: Governance & Drift Enforcement (1w)
-Objectives: schema extension; multi-source drift guard; dashboard doc.
-Deliverables: updated schema; `validate-slo-integration.cjs`; governance dashboard markdown.
-Acceptance: Validation passes; simulated omission flagged; metrics visible.
+### Governance & Drift Enforcement (undefined)
+Objectives:
+1. Extend DOMAIN_AUTHORITY_SCHEMA with integration block
+2. Add automated drift guard for manifest vs sequence vs BDD vs shape
+3. Publish governance dashboard section
+Deliverables: `Updated DOMAIN_AUTHORITY_SCHEMA.json (integration spec)`, `scripts/validate-slo-integration.cjs`, `dashboard: governance-traceability.md`
 
-### Sprint 5: Correlation & Insights Expansion (1w)
-Objectives: multi-feature correlation (SLO + Self-Healing + Telemetry Pipeline); root-cause hints; CLI querying.
-Deliverables: correlation map; query CLI; insights doc.
-Acceptance: ≥3 cross-feature linkages; CLI returns phase-event-coverage chain.
+### Correlation & Insights Expansion (undefined)
+Objectives:
+1. Add multi-feature correlation (SLO + Self-Healing + Telemetry Pipeline)
+2. Provide anomaly root-cause hints (component lineage + coverage fingerprint)
+3. Expose REST/CLI to query traceability manifest
+Deliverables: `.generated/correlation/slo-self-healing-map.json`, `scripts/query-traceability-manifest.cjs`, `docs/slo-correlation-insights.md`
 
 ## Governance Hooks
-- Shape Plan: `docs/shape/SHAPE_EVOLUTION_PLAN.json`
-- Annotations: `docs/shape/shape-evolutions.json`
-- Domain Authority: `docs/domains/slo-dashboard.json`
-- BDD Spec: `packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json`
-- Sequence Root: `packages/ographx/.ographx/sequences/`
-- Telemetry Source: `.generated/renderx-web-telemetry.json`
-
-## Initial Commands (Sprint 1 Demo)
-```powershell
-node scripts/trace-logs-to-telemetry.js
-node scripts/trace-telemetry-to-logs.js
-node scripts/telemetry-test-mapper.js .generated/renderx-web-telemetry.json .generated/renderx-web-test-results.json --output=.generated/test-coverage-analysis
-node scripts/generate-slo-traceability-manifest.cjs   # (to be implemented)
-node scripts/verify-no-drift.js --check-only
-```
-
-## Next Implementation Steps
-1. Implement `generate-slo-traceability-manifest.cjs` (phase→event→coverage→shape).
-2. Add integration block to `DOMAIN_AUTHORITY_SCHEMA.json` (after review).
-3. Patch `slo-dashboard.json` with manifest refs.
-4. Demo baseline and capture metrics.
+- shapePlan: `docs/shape/SHAPE_EVOLUTION_PLAN.json`
+- annotations: `docs/shape/shape-evolutions.json`
+- domainAuthority: `docs/domains/slo-dashboard.json`
+- bddSpec: `packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json`
+- sequenceRoot: `packages/ographx/.ographx/sequences/`
+- telemetrySource: `.generated/renderx-web-telemetry.json`
 
 ---
-This markdown is generated. Update JSON and rerun script for changes.
+This markdown is generated. Update JSON and rerun generator for changes.

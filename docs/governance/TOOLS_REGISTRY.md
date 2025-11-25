@@ -1,7 +1,7 @@
 <!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/tools-registry.json -->
 # Tools Registry
 **Version:** 1.0.0  
-**Generated:** 2025-11-25T00:20:06.348Z
+**Generated:** 2025-11-25T00:53:50.092Z
 
 > DO NOT EDIT. Run `node scripts/generate-tools-registry-docs.js` after updating tools-registry.json.
 
@@ -12,7 +12,7 @@
 - **ographx** · Ographx Graph Authority · 6 tools
 - **orchestration** · Orchestration Systems · 5 tools
 - **self_healing** · Self-Healing & Pipeline Controls · 6 tools
-- **telemetry** · Telemetry Governance · 8 tools
+- **telemetry** · Telemetry Governance · 9 tools
 
 ---
 
@@ -138,5 +138,6 @@ Keeps telemetry instructions, verification, and analysis synchronized with JSON 
 | `telemetry-verification-generator` | `scripts/generate-telemetry-verification.js` | documentation-generator | npm run generate:telemetry:verification | pre:manifests | `docs/governance/TELEMETRY_GOVERNANCE_VERIFICATION.md` |
 | `telemetry-complete-generator` | `scripts/generate-telemetry-complete.js` | documentation-generator | npm run generate:telemetry:complete | pre:manifests | `docs/governance/TELEMETRY_GOVERNANCE_COMPLETE.md` |
 | `telemetry-matrix-generator` | `scripts/generate-telemetry-matrix.js` | telemetry-analysis | node scripts/generate-telemetry-matrix.js | pre:manifests | `docs/governance/TELEMETRY_MATRIX.md` |
+| `slo-dashboard-traceability-manifest` | `scripts/generate-slo-traceability-manifest.cjs` | traceability-generator | npm run generate:slo:traceability | integration | `.generated/slo-dashboard/traceability-manifest.json` |
 | `telemetry-filter-audit` | `scripts/telemetry_filter_audit.py` | telemetry-analysis | python scripts/telemetry_filter_audit.py <log> | manual | `outputs/telemetry/telemetry_filter_audit.md` |
 | `telemetry-rag-analyzer` | `scripts/rag-telemetry-analyzer.py` | telemetry-analysis | npm run rag:analyze-telemetry | manual | `outputs/telemetry/rag-telemetry-report.md` |

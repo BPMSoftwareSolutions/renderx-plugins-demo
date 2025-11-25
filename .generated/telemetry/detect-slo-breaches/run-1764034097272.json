@@ -1,0 +1,149 @@
+{
+  "timestamp": "2025-11-25T01:28:17.270Z",
+  "feature": "detect-slo-breaches",
+  "event": "slo:breach:detected",
+  "beats": 2,
+  "status": "ok",
+  "correlationId": "114c78a5-1c7d-4a0f-815a-2da7334f48be",
+  "durationMs": 4,
+  "batonDiffCount": 0,
+  "payload": {
+    "result": {
+      "timestamp": "2025-11-25T01:28:17.270Z",
+      "handler": "detectSloBreaches",
+      "event": "anomaly.detect.slo",
+      "context": {
+        "slis": {
+          "latency_p95_ms": 450,
+          "latency_p99_ms": 600,
+          "error_rate": 0.02,
+          "throughput_min": 20,
+          "availability": 0.98
+        },
+        "sloTargets": {
+          "latency_p95_ms": 300,
+          "latency_p99_ms": 500,
+          "error_rate": 0.05,
+          "throughput_min": 50,
+          "availability": 0.995
+        },
+        "breaches": [
+          {
+            "key": "latency_p95_ms",
+            "actual": 450,
+            "target": 300,
+            "diff": 150
+          },
+          {
+            "key": "latency_p99_ms",
+            "actual": 600,
+            "target": 500,
+            "diff": 100
+          },
+          {
+            "key": "throughput_min",
+            "actual": 20,
+            "target": 50,
+            "diff": -30
+          },
+          {
+            "key": "availability",
+            "actual": 0.98,
+            "target": 0.995,
+            "diff": -0.015000000000000013
+          }
+        ],
+        "anomalies": [
+          {
+            "id": "slo-breach-latency_p95_ms-1764034097268-0m4ne",
+            "type": "performance",
+            "severity": "high",
+            "description": "SLO breach: latency_p95_ms actual=450 target=300",
+            "metrics": {
+              "key": "latency_p95_ms",
+              "actual": 450,
+              "target": 300,
+              "diff": 150,
+              "slis": {
+                "latency_p95_ms": 450,
+                "latency_p99_ms": 600,
+                "error_rate": 0.02,
+                "throughput_min": 20,
+                "availability": 0.98
+              }
+            },
+            "detectedAt": "2025-11-25T01:28:17.268Z",
+            "confidence": 0.9
+          },
+          {
+            "id": "slo-breach-latency_p99_ms-1764034097268-hpyrx",
+            "type": "performance",
+            "severity": "medium",
+            "description": "SLO breach: latency_p99_ms actual=600 target=500",
+            "metrics": {
+              "key": "latency_p99_ms",
+              "actual": 600,
+              "target": 500,
+              "diff": 100,
+              "slis": {
+                "latency_p95_ms": 450,
+                "latency_p99_ms": 600,
+                "error_rate": 0.02,
+                "throughput_min": 20,
+                "availability": 0.98
+              }
+            },
+            "detectedAt": "2025-11-25T01:28:17.268Z",
+            "confidence": 0.9
+          },
+          {
+            "id": "slo-breach-throughput_min-1764034097268-youzl",
+            "type": "performance",
+            "severity": "high",
+            "description": "SLO breach: throughput_min actual=20 target=50",
+            "metrics": {
+              "key": "throughput_min",
+              "actual": 20,
+              "target": 50,
+              "diff": -30,
+              "slis": {
+                "latency_p95_ms": 450,
+                "latency_p99_ms": 600,
+                "error_rate": 0.02,
+                "throughput_min": 20,
+                "availability": 0.98
+              }
+            },
+            "detectedAt": "2025-11-25T01:28:17.268Z",
+            "confidence": 0.9
+          },
+          {
+            "id": "slo-breach-availability-1764034097268-n4un1",
+            "type": "error",
+            "severity": "high",
+            "description": "SLO breach: availability actual=0.98 target=0.995",
+            "metrics": {
+              "key": "availability",
+              "actual": 0.98,
+              "target": 0.995,
+              "diff": -0.015000000000000013,
+              "slis": {
+                "latency_p95_ms": 450,
+                "latency_p99_ms": 600,
+                "error_rate": 0.02,
+                "throughput_min": 20,
+                "availability": 0.98
+              }
+            },
+            "detectedAt": "2025-11-25T01:28:17.268Z",
+            "confidence": 0.9
+          }
+        ],
+        "configPath": "C:\\source\\repos\\bpm\\internal\\renderx-plugins-demo\\packages\\self-healing\\docs\\service_level.objectives.json",
+        "missingConfig": false
+      }
+    }
+  },
+  "shapeHash": "bc6f2bfdd059c740bf46cddd7c37feb7d631a8aea63c4fbdb9ada889a7ed29c4",
+  "coverageId": "339b8502e77bd6319094f926"
+}

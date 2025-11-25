@@ -3,6 +3,14 @@ import { spawn as _spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
+function resolveContextFile() {
+  const rootPath = path.join(process.cwd(), 'react-component-theme-toggle.json');
+  if (fs.existsSync(rootPath)) return rootPath;
+  const docsPath = path.join(process.cwd(), 'docs', 'react', 'react-component-theme-toggle.json');
+  if (fs.existsSync(docsPath)) return docsPath;
+  throw new Error('react-component-theme-toggle.json not found in root or docs/react/.');
+}
+
 describe('React Component Validation E2E', () => {
   let conductorProcess: any;
   let _componentCreated = false;
@@ -19,7 +27,7 @@ describe('React Component Validation E2E', () => {
   });
 
   it('should create theme toggle component with validation', async () => {
-    const contextFile = path.join(process.cwd(), 'react-component-theme-toggle.json');
+    const contextFile = resolveContextFile();
     
     // Verify context file exists
     expect(fs.existsSync(contextFile)).toBe(true);
@@ -41,7 +49,7 @@ describe('React Component Validation E2E', () => {
   });
 
   it('should have valid React code syntax', async () => {
-    const contextFile = path.join(process.cwd(), 'react-component-theme-toggle.json');
+    const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
     
@@ -60,7 +68,7 @@ describe('React Component Validation E2E', () => {
   });
 
   it('should have proper React component structure', async () => {
-    const contextFile = path.join(process.cwd(), 'react-component-theme-toggle.json');
+    const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
     
@@ -75,7 +83,7 @@ describe('React Component Validation E2E', () => {
   });
 
   it('should have proper styling and interactivity', async () => {
-    const contextFile = path.join(process.cwd(), 'react-component-theme-toggle.json');
+    const contextFile = resolveContextFile();
     const contextData = JSON.parse(fs.readFileSync(contextFile, 'utf-8'));
     const reactCode = contextData.component.content.reactCode;
     

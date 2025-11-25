@@ -1,0 +1,289 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-25T00:53:57.264Z",
+  "domain": "slo-dashboard",
+  "sources": {
+    "telemetry": ".generated/renderx-web-telemetry.json",
+    "tests": ".generated/renderx-web-test-results.json",
+    "bdd": "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json",
+    "shapeAnnotations": "docs/shape/shape-evolutions.json",
+    "sequencesRoot": "packages/slo-dashboard/json-sequences"
+  },
+  "phases": [
+    {
+      "phase_id": "dashboard.load",
+      "sequence_ref": "packages/slo-dashboard/json-sequences/dashboard.load.json",
+      "telemetry_events": [
+        {
+          "event": "canvas:render:performance:throttle",
+          "anomaly": {
+            "id": "anom-001",
+            "event": "canvas:render:performance:throttle",
+            "component": "canvas-component",
+            "severity": "critical",
+            "occurrences": 187,
+            "avgDuration": 425,
+            "description": "Canvas resize event fired 187 times without throttling, causing performance degradation",
+            "firstSeen": "2025-11-22T20:18:45Z",
+            "lastSeen": "2025-11-23T20:12:30Z",
+            "source": "component-canvas-2025-11-23.log:4521"
+          },
+          "status": "linked"
+        },
+        {
+          "event": "canvas:concurrent:creation:race",
+          "anomaly": {
+            "id": "anom-006",
+            "event": "canvas:concurrent:creation:race",
+            "component": "canvas-component",
+            "severity": "critical",
+            "occurrences": 34,
+            "avgDuration": 892,
+            "description": "Concurrent canvas instance creation without proper synchronization lock",
+            "firstSeen": "2025-11-23T08:12:44Z",
+            "lastSeen": "2025-11-23T19:33:22Z",
+            "source": "component-canvas-2025-11-23.log:7234"
+          },
+          "status": "linked"
+        }
+      ],
+      "tests": [
+        {
+          "testName": "Canvas Component should update canvas dimensions on resize",
+          "title": "should update canvas dimensions on resize",
+          "status": "passed",
+          "file": "packages/web-components/src/canvas/__tests__/canvas.spec.ts",
+          "duration": 234
+        },
+        {
+          "testName": "Integration Tests should integrate all components",
+          "title": "should integrate all components",
+          "status": "passed",
+          "file": "packages/integration/__tests__/integration.spec.ts",
+          "duration": 2345
+        },
+        {
+          "testName": "Canvas Component should handle concurrent canvas creation",
+          "title": "should handle concurrent canvas creation",
+          "status": "passed",
+          "file": "packages/web-components/src/canvas/__tests__/canvas.spec.ts",
+          "duration": 567
+        }
+      ],
+      "bdd_scenarios": [
+        {
+          "scenarioId": "scenario-1-initial-load-shows-aggregate-compliance-slo-list",
+          "title": "Initial load shows aggregate compliance & SLO list"
+        },
+        {
+          "scenarioId": "scenario-2-error-budget-sorting-prioritizes-most-at-risk-slos",
+          "title": "Error budget sorting prioritizes most at-risk SLOs"
+        },
+        {
+          "scenarioId": "scenario-3-color-coding-reflects-compliance-tiers",
+          "title": "Color coding reflects compliance tiers"
+        }
+      ],
+      "shape_hashes": [
+        {
+          "feature": "shape-budgets",
+          "hash": "c27c381067c2e08fdea5bc2d5a28b6bc31d18e3ddebd223d57cfec60e5e0aac5",
+          "annotatedAt": "2025-11-24T03:17:23.601Z",
+          "reason": "auto short-hash annotation"
+        }
+      ],
+      "coverage": {
+        "coverage_id": "9697b651630eea9dae6c3db167b4c6eac827d8aa3b6c82986584558f0d931bda",
+        "total_events": 2,
+        "covered_events": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "phase_id": "dashboard.refresh.metrics",
+      "sequence_ref": "packages/slo-dashboard/json-sequences/dashboard.refresh.metrics.json",
+      "telemetry_events": [
+        {
+          "event": "control:panel:state:sync:race",
+          "anomaly": {
+            "id": "anom-002",
+            "event": "control:panel:state:sync:race",
+            "component": "control-panel",
+            "severity": "high",
+            "occurrences": 94,
+            "avgDuration": 312,
+            "description": "Control panel state sync race condition during concurrent property updates",
+            "firstSeen": "2025-11-22T21:05:12Z",
+            "lastSeen": "2025-11-23T19:45:22Z",
+            "source": "localhost-0.0.0.0:3000-2025-11-23.log:8234"
+          },
+          "status": "linked"
+        },
+        {
+          "event": "control:panel:property:binding:lag",
+          "anomaly": {
+            "id": "anom-007",
+            "event": "control:panel:property:binding:lag",
+            "component": "control-panel",
+            "severity": "medium",
+            "occurrences": 123,
+            "avgDuration": 267,
+            "description": "Control panel property binding updates delayed by 200-400ms on complex models",
+            "firstSeen": "2025-11-22T20:30:11Z",
+            "lastSeen": "2025-11-23T20:12:08Z",
+            "source": "localhost-0.0.0.0:3000-2025-11-23.log:6789"
+          },
+          "status": "linked"
+        }
+      ],
+      "tests": [
+        {
+          "testName": "Control Panel should sync state across instances",
+          "title": "should sync state across instances",
+          "status": "passed",
+          "file": "packages/web-components/src/control-panel/__tests__/control-panel.spec.ts",
+          "duration": 456
+        },
+        {
+          "testName": "Integration Tests should integrate all components",
+          "title": "should integrate all components",
+          "status": "passed",
+          "file": "packages/integration/__tests__/integration.spec.ts",
+          "duration": 2345
+        },
+        {
+          "testName": "Control Panel should handle property binding updates",
+          "title": "should handle property binding updates",
+          "status": "passed",
+          "file": "packages/web-components/src/control-panel/__tests__/control-panel.spec.ts",
+          "duration": 267
+        }
+      ],
+      "bdd_scenarios": [
+        {
+          "scenarioId": "scenario-6-refresh-preserves-panel-visibility-state",
+          "title": "Refresh preserves panel visibility state"
+        },
+        {
+          "scenarioId": "scenario-4-projection-warns-of-imminent-breach",
+          "title": "Projection warns of imminent breach"
+        },
+        {
+          "scenarioId": "scenario-13-self-healing-impact-reflected-in-compliance-trend",
+          "title": "Self-healing impact reflected in compliance trend"
+        }
+      ],
+      "shape_hashes": [
+        {
+          "feature": "detect-slo-breaches",
+          "hash": "dc4c69bae2eec89f957192711a7e8266f8f62c061bfefc00a3310d182fc62ea9",
+          "annotatedAt": "2025-11-24T03:17:20.030Z",
+          "reason": "auto short-hash annotation"
+        }
+      ],
+      "coverage": {
+        "coverage_id": "0f39337606444b080757806b0aa4c1ae362d2054413375c4fbc5e945f40cee45",
+        "total_events": 2,
+        "covered_events": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "phase_id": "dashboard.export.report",
+      "sequence_ref": "packages/slo-dashboard/json-sequences/dashboard.export.report.json",
+      "telemetry_events": [
+        {
+          "event": "library:search:cache:invalidation",
+          "anomaly": {
+            "id": "anom-003",
+            "event": "library:search:cache:invalidation",
+            "component": "library-component",
+            "severity": "high",
+            "occurrences": 76,
+            "avgDuration": 245,
+            "description": "Library search cache not invalidating after variant resolution, causing stale results",
+            "firstSeen": "2025-11-22T22:10:33Z",
+            "lastSeen": "2025-11-23T20:00:15Z",
+            "source": "component-library-2025-11-23.log:5612"
+          },
+          "status": "linked"
+        },
+        {
+          "event": "host:sdk:communication:timeout",
+          "anomaly": {
+            "id": "anom-009",
+            "event": "host:sdk:communication:timeout",
+            "component": "host-sdk",
+            "severity": "high",
+            "occurrences": 41,
+            "avgDuration": 1200,
+            "description": "Host SDK communication timing out waiting for plugin responses (30s+ waits)",
+            "firstSeen": "2025-11-23T09:30:22Z",
+            "lastSeen": "2025-11-23T20:02:18Z",
+            "source": "host-sdk-2025-11-23.log:1456"
+          },
+          "status": "linked"
+        }
+      ],
+      "tests": [
+        {
+          "testName": "Library Component should search library variants",
+          "title": "should search library variants",
+          "status": "passed",
+          "file": "packages/web-components/src/library/__tests__/library.spec.ts",
+          "duration": 345
+        },
+        {
+          "testName": "Library Component should cache search results",
+          "title": "should cache search results",
+          "status": "passed",
+          "file": "packages/web-components/src/library/__tests__/library.spec.ts",
+          "duration": 189
+        },
+        {
+          "testName": "Integration Tests should integrate all components",
+          "title": "should integrate all components",
+          "status": "passed",
+          "file": "packages/integration/__tests__/integration.spec.ts",
+          "duration": 2345
+        },
+        {
+          "testName": "Host SDK should communicate with plugins",
+          "title": "should communicate with plugins",
+          "status": "passed",
+          "file": "packages/host-sdk/__tests__/host-sdk.spec.ts",
+          "duration": 567
+        }
+      ],
+      "bdd_scenarios": [
+        {
+          "scenarioId": "scenario-8-export-produces-signed-csv-json-artifacts",
+          "title": "Export produces signed CSV & JSON artifacts"
+        },
+        {
+          "scenarioId": "scenario-10-partial-data-excludes-incomplete-slos-from-aggregate",
+          "title": "Partial data excludes incomplete SLOs from aggregate"
+        }
+      ],
+      "shape_hashes": [
+        {
+          "feature": "shape-persistence",
+          "hash": "405441aebdce3d50",
+          "annotatedAt": "2025-11-24T02:05:00.000Z",
+          "reason": "persistence shape short-hash alignment annotation"
+        }
+      ],
+      "coverage": {
+        "coverage_id": "3e7b05225a816bfd0afa77662380369e1f392b59fc80df66d5c24541653be827",
+        "total_events": 2,
+        "covered_events": 2,
+        "status": "complete"
+      }
+    }
+  ],
+  "summary": {
+    "total_phases": 3,
+    "linked_phases": 3,
+    "status": "complete"
+  }
+}

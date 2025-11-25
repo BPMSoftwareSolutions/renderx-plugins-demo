@@ -3,12 +3,14 @@ import { BddTelemetryRecord } from './contract';
 
 // Stable serialization excluding volatile fields (timestamp, correlationId) and payload dynamic values depth >1.
 function normalizeForHash(rec: BddTelemetryRecord) {
+  const durationValue = typeof rec.durationMs === 'number' ? rec.durationMs : 0;
+  const durationBucket = durationValue < 5 ? 0 : Math.round(durationValue / 5) * 5;
   const subset: any = {
     feature: rec.feature,
     event: rec.event,
     beats: rec.beats,
     status: rec.status,
-    durationMs: rec.durationMs || 0,
+    durationMs: durationBucket,
     batonDiffCount: rec.batonDiffCount || 0,
     sequenceSignature: rec.sequenceSignature || '',
   };

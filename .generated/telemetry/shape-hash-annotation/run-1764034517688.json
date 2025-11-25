@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-11-25T01:35:17.684Z",
+  "feature": "shape-hash-annotation",
+  "event": "shape-hash-annotation:executed",
+  "beats": 2,
+  "status": "ok",
+  "correlationId": "71f0ac23-51e5-42c1-93d3-94c960df95f0",
+  "durationMs": 0,
+  "batonDiffCount": 0,
+  "payload": {
+    "result": {
+      "ok": true
+    }
+  },
+  "shapeHash": "fba3b2ca6d79365be84dc7de2670c322070d41ccdadfe8bc9644e030c45cdeed",
+  "coverageId": "adbfc97c71983b2a374eb960"
+}

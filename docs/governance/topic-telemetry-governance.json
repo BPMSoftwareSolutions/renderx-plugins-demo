@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "description": "Governs telemetry signature coverage for every topic interaction emitted by RenderX-Web plugins.",
+  "requiredStages": [
+    "plugin",
+    "json-sequences",
+    "pre:manifest:topics",
+    "interactions:JSON-component-interaction-integration",
+    "live-session-conductor-logs",
+    "telemetry-extraction"
+  ],
+  "logSources": [
+    {
+      "stage": "live-session-conductor-logs",
+      "path": "logs/live-session-conductor/*.log",
+      "detector": "telemetry-extraction",
+      "signatureTemplate": "[topic:${topic}]"
+    }
+  ],
+  "analysis": {
+    "tool": "scripts/analyze-logs.js",
+    "notes": "Telemetry extraction parses conductor logs for [topic:<name>] signatures so the SLO dashboard and self-healing agents can reconcile live interactions.",
+    "pipeline": "plugin -> json-sequences -> pre:manifest -> interactions -> JSON-component-interaction-integration -> live-session-conductor-logs -> telemetry-extraction"
+  }
+}

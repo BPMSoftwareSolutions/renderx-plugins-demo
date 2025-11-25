@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "annotations": [
+    {
+      "feature": "shape-persistence",
+      "previousHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
+      "newHash": "405441aebdce3d50ccf75f0794ad55a14a543147651bc1140743ce877b8c97b0",
+      "annotatedAt": "2025-11-25T01:16:26.241Z",
+      "reason": "Telemetry signature governance refresh"
+    },
+    {
+      "feature": "shape-persistence",
+      "previousHash": "405441aebdce3d50ccf75f0794ad55a14a543147651bc1140743ce877b8c97b0",
+      "newHash": "ff1df026a5f87b651d1b6e83e2a4f222cca665956e7762205ff17fac2d7b29ee",
+      "annotatedAt": "2025-11-25T01:34:11.314Z",
+      "reason": "Duration hash bucket adjustment"
+    },
+    {
+      "feature": "shape-hash-annotation",
+      "previousHash": "5c3695dc391cf5f74986a2d35eb5c2a3e6d664a510a3d5cd73d54eef7a4b4d1a",
+      "newHash": "fba3b2ca6d79365be84dc7de2670c322070d41ccdadfe8bc9644e030c45cdeed",
+      "annotatedAt": "2025-11-25T01:34:15.914Z",
+      "reason": "Duration hash bucket adjustment"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "db03619b15e9d9f219c0636b25e4a6b81ea63acb7a6626958673e52174569051",
+      "newHash": "bc6f2bfdd059c740bf46cddd7c37feb7d631a8aea63c4fbdb9ada889a7ed29c4",
+      "annotatedAt": "2025-11-25T01:34:19.855Z",
+      "reason": "Duration hash bucket adjustment"
+    },
+    {
+      "feature": "shape-contracts",
+      "previousHash": "9b521e3f30d360f59a04e20e5a943849c1e4fb14754c35a0ebdc58a904f023c0",
+      "newHash": "50479ecdb8a90025efb48acbb5ae18d7f28fa858767fea9da1e6aa763d968213",
+      "annotatedAt": "2025-11-25T01:34:23.519Z",
+      "reason": "Duration hash bucket adjustment"
+    }
+  ]
+}

@@ -98,6 +98,110 @@ const HANDLER_BUSINESS_CONTEXT = {
   'trackEffectivenessCompleted': { sequence: 'learning', businessValue: 'Signal completion of effectiveness tracking', persona: 'Engineering Manager', scenarios: [{ title: 'Notify system that effectiveness tracking is complete', given: ['learning completed', 'data archived'], when: ['completion handler executes'], then: ['cycle should be complete', 'user should be notified', 'system should be ready for next issue'] }] }
 };
 
+const PERSONA_BY_SEQUENCE = {
+  anomaly: 'Site Reliability Engineer',
+  baseline: 'Observability Analyst',
+  diagnosis: 'Platform Team',
+  fix: 'Platform Engineer',
+  validation: 'Quality Lead',
+  deployment: 'Release Manager',
+  learning: 'Engineering Manager',
+  telemetry: 'DevOps Engineer',
+  'self-healing': 'Operations Lead'
+};
+
+function discoverHandlerMetadata(root) {
+  const handlersDir = path.join(root, 'packages', 'self-healing', 'src', 'handlers');
+  const discovered = new Map();
+  if (!fs.existsSync(handlersDir)) return discovered;
+  const stack = [handlersDir];
+  while (stack.length) {
+    const current = stack.pop();
+    const entries = fs.readdirSync(current, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(fullPath);
+        continue;
+      }
+      if (!entry.isFile() || !entry.name.endsWith('.ts')) continue;
+      const content = fs.readFileSync(fullPath, 'utf8');
+      const regex = /handler:\s*['"]([^'"\n]+)['"]/g;
+      let match;
+      while ((match = regex.exec(content)) !== null) {
+        const handlerName = match[1];
+        if (!discovered.has(handlerName)) {
+          discovered.set(handlerName, {
+            file: path.relative(root, fullPath),
+            sequence: guessSequenceFromPath(fullPath)
+          });
+        }
+      }
+    }
+  }
+  return discovered;
+}
+
+function guessSequenceFromPath(filePath) {
+  const normalized = filePath.replace(/\\/g, '/').toLowerCase();
+  if (normalized.includes('/anomaly/')) return 'anomaly';
+  if (normalized.includes('/baseline/')) return 'baseline';
+  if (normalized.includes('/diagnosis/')) return 'diagnosis';
+  if (normalized.includes('/fix/')) return 'fix';
+  if (normalized.includes('/validation/')) return 'validation';
+  if (normalized.includes('/deployment/')) return 'deployment';
+  if (normalized.includes('/learning/')) return 'learning';
+  if (normalized.includes('/telemetry/')) return 'telemetry';
+  return 'self-healing';
+}
+
+function toTitleCase(value) {
+  return value
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/_/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/^./, char => char.toUpperCase())
+    .trim();
+}
+
+function fallbackContext(handlerName, meta) {
+  const sequence = meta?.sequence || 'self-healing';
+  const persona = PERSONA_BY_SEQUENCE[sequence] || 'Platform Team';
+  const title = toTitleCase(handlerName);
+  return {
+    sequence,
+    businessValue: `Ensure ${title.toLowerCase()} keeps the ${sequence} stage actionable`,
+    persona,
+    scenarios: [
+      {
+        title: `${title} safeguards ${sequence} insights`,
+        given: [
+          `${sequence} telemetry is available`,
+          `${title} results must stay fresh for downstream automation`
+        ],
+        when: [
+          `${title} handler executes with the latest diagnostics`
+        ],
+        then: [
+          'results are recorded in the comprehensive spec',
+          `next stage receives actionable context from ${title}`
+        ]
+      }
+    ]
+  };
+}
+
+function buildHandlerContextMap(root) {
+  const contexts = new Map(Object.entries(HANDLER_BUSINESS_CONTEXT));
+  const discovered = discoverHandlerMetadata(root);
+  for (const [handlerName, meta] of discovered.entries()) {
+    if (!contexts.has(handlerName)) {
+      contexts.set(handlerName, fallbackContext(handlerName, meta));
+    }
+  }
+  return contexts;
+}
+
 async function generateComprehensiveBusinessBddSpecs() {
   console.log('📖 Generating Comprehensive Business BDD Specifications');
   console.log('='.repeat(60));
@@ -109,10 +213,12 @@ async function generateComprehensiveBusinessBddSpecs() {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
+  const contextMap = buildHandlerContextMap(rootDir);
+  const orderedContexts = Array.from(contextMap.entries()).sort((a, b) => a[0].localeCompare(b[0]));
   const handlers = [];
   let totalScenarios = 0;
 
-  for (const [handlerName, context] of Object.entries(HANDLER_BUSINESS_CONTEXT)) {
+  for (const [handlerName, context] of orderedContexts) {
     const handler = {
       name: handlerName,
       sequence: context.sequence,
@@ -125,6 +231,8 @@ async function generateComprehensiveBusinessBddSpecs() {
     console.log(`✅ ${handlerName}: ${context.businessValue}`);
   }
 
+  const totalHandlers = handlers.length;
+  const coveragePercent = orderedContexts.length === 0 ? 0 : Math.round((totalHandlers / orderedContexts.length) * 100);
   const bdd = {
     version: '1.0.0',
     type: 'Comprehensive Business BDD Specifications',
@@ -132,16 +240,16 @@ async function generateComprehensiveBusinessBddSpecs() {
     description: 'Business-focused BDD specifications for all handlers with realistic scenarios',
     timestamp: new Date().toISOString(),
     summary: {
-      totalHandlers: handlers.length,
+      totalHandlers,
       totalScenarios,
-      coverage: `${handlers.length}/67 handlers (${Math.round(handlers.length/67*100)}%)`
+      coverage: `${totalHandlers}/${orderedContexts.length} handlers (${coveragePercent}%)`
     },
     handlers
   };
 
   fs.writeFileSync(outputFile, JSON.stringify(bdd, null, 2));
   console.log(`\n✅ Generated: ${outputFile}`);
-  console.log(`   🎯 Handlers: ${bdd.summary.totalHandlers}/67`);
+  console.log(`   🎯 Handlers: ${bdd.summary.totalHandlers}/${orderedContexts.length}`);
   console.log(`   📝 Scenarios: ${bdd.summary.totalScenarios}`);
   console.log(`   📊 Coverage: ${bdd.summary.coverage}`);
 }

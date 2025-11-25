@@ -1,12 +1,7 @@
-<!-- AUTO-GENERATED
-Doc-Hash: dff093b26ae14c5914d06037e7acbcda92c8ad6307743138f7d4d6577068e47a
-Regenerate: npm run generate:governance:docs
--->
-
 # 🎼 Unified MusicalSequence Interface
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-24T20:44:03.821Z
+**Last Generated:** 2025-11-25T00:55:16.938Z
 **DO NOT EDIT — GENERATED**
 
 ## Interface Definition

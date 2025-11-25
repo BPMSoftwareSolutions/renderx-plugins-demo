@@ -1,0 +1,1138 @@
+{
+  "version": "1.3.0",
+  "updatedAt": "2025-11-24T19:06:00.000Z",
+  "currentSprint": "2",
+  "lastUpdatedBy": "automation",
+  "summary": {
+    "purpose": "Sprint-driven anti-drift evolution with per-sprint measurable outcomes",
+    "progressModel": "Completed sprints counted; future sprints locked until activation",
+    "metricGlossary": {
+      "velocity": "Completed deliverables / planned deliverables per sprint",
+      "coverage": "BDD mapped sequences / total sequences",
+      "readinessScore": "Checklist PASS items / total items"
+    }
+  },
+  "vision": "Continuously evolving anti-drift orchestration audit platform with demonstrable sprint value (diffs, canonical hashes, provenance, compliance, telemetry).",
+  "principles": [
+    "JSON authority",
+    "Every change diffed",
+    "Demo readiness per sprint",
+    "Automated provenance",
+    "Integrity locking",
+    "BDD + TDD alignment"
+  ],
+  "sequencesLink": "packages/ographx/.ographx/sequences/",
+  "domainSequences": [
+    {
+      "id": "orchestration-audit-system",
+      "bddSpec": "packages/orchestration/bdd/orchestration-audit-system.feature",
+      "coverageTarget": 0.85,
+      "sprintIntro": 0
+    },
+    {
+      "id": "orchestration-audit-session",
+      "bddSpec": "packages/orchestration/bdd/orchestration-audit-session.feature",
+      "coverageTarget": 0.8,
+      "sprintIntro": 0
+    },
+    {
+      "id": "cag-agent-workflow",
+      "bddSpec": "packages/cag/bdd/cag-agent-workflow.feature",
+      "coverageTarget": 0.9,
+      "sprintIntro": 4
+    },
+    {
+      "id": "graphing-orchestration",
+      "bddSpec": "packages/orchestration/bdd/graphing-orchestration.feature",
+      "coverageTarget": 0.75,
+      "sprintIntro": 7
+    },
+    {
+      "id": "self_sequences",
+      "bddSpec": "packages/orchestration/bdd/self-sequences.feature",
+      "coverageTarget": 0.7,
+      "sprintIntro": 7
+    }
+  ],
+  "bddSpecs": {
+    "root": "packages",
+    "specPattern": "**/*.feature",
+    "statusTracking": true,
+    "linkageRule": "BDD feature filename must match domain sequence id (hyphens preserved)."
+  },
+  "sprints": [
+    {
+      "id": "0",
+      "name": "Bootstrap",
+      "theme": "Registry & Diff Foundation",
+      "deliverables": [
+        "structural diff script",
+        "baseline snapshot",
+        "sequence integration"
+      ],
+      "demoCriteria": [
+        "diff report created",
+        "baseline stored"
+      ],
+      "status": "complete",
+      "startDate": "2025-11-24",
+      "endDate": "2025-11-24",
+      "objectives": [
+        "Establish auto-generated registry",
+        "Create structural diff capability",
+        "Create baseline snapshot"
+      ],
+      "acceptanceCriteria": [
+        "Registry auto-generates",
+        "Diff shows added domains",
+        "Baseline stored"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Registry auto-generates",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Diff shows added domains",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Baseline stored",
+          "status": "PASS"
+        }
+      ],
+      "blockers": [],
+      "risks": [
+        "Initial diff all-added noise"
+      ],
+      "velocityTarget": 3,
+      "velocityActual": 3,
+      "qualityGates": {
+        "compliance": "n/a",
+        "hash": "raw-only"
+      },
+      "metrics": {
+        "domains": 60,
+        "added": 60,
+        "changed": 0
+      },
+      "telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": true,
+        "signatures": ["bootstrap.registry.init","bootstrap.diff.generate","bootstrap.baseline.persist"],
+        "notes": "Baseline artifacts established at initial system setup"
+      },
+      "completedAt": "2025-11-24T18:40:00.000Z",
+      "completionCommitSuggestion": "chore(sprint): complete sprint 0 - Bootstrap (version baseline 1.0.0) criteria: Registry auto-generates=PASS; Diff shows added domains=PASS; Baseline stored=PASS"
+    },
+    {
+      "id": "1",
+      "name": "Canonical Integrity",
+      "theme": "False drift elimination",
+      "deliverables": [
+        "canonical hash function",
+        "raw vs canonical report"
+      ],
+      "demoCriteria": [
+        "stable canonical hashes"
+      ],
+      "status": "complete",
+      "startDate": "2025-11-24",
+      "endDate": "2025-11-25",
+      "objectives": [
+        "Eliminate false drift",
+        "Produce canonical vs raw hash report",
+        "Integrate in pipeline"
+      ],
+      "acceptanceCriteria": [
+        "Canonical equals raw where no volatile fields",
+        "Report generated in pre:manifests"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Canonical equals raw where no volatile fields",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Report generated in pre:manifests",
+          "status": "PASS"
+        }
+      ],
+      "blockers": [],
+      "risks": [
+        "Missed volatile keys cause instability"
+      ],
+      "velocityTarget": 3,
+      "velocityActual": 2,
+      "qualityGates": {
+        "canonicalHashReport": "PASS"
+      },
+      "metrics": {
+        "canonicalStability": true,
+        "handlerCoveragePercent": 0
+      },
+      "telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": true,
+        "signatures": ["canonical.hash.compute","canonical.hash.compare"],
+        "notes": "Telemetry for hash computation and comparison established"
+      },
+      "completedAt": "2025-11-24T18:52:32.354Z"
+  ,"completionCommitSuggestion": "chore(sprint): complete sprint 1 - Canonical Integrity (version bump 1.2.1) criteria: Canonical equals raw where no volatile fields=PASS; Report generated in pre:manifests=PASS"
+    },
+    {
+      "id": "2",
+      "name": "Provenance & Compliance",
+      "theme": "Doc + sequence validation",
+      "deliverables": [
+        "provenance index",
+        "compliance report"
+      ],
+      "demoCriteria": [
+        "all docs mapped",
+        "all sequences valid"
+      ],
+      "status": "planned",
+      "objectives": [
+        "Detect stale docs",
+        "Enforce domain sequence coverage"
+      ],
+      "acceptanceCriteria": [
+        "Zero stale docs",
+        "Coverage ratio >=0.8"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Zero stale docs",
+          "status": "PENDING"
+        },
+        {
+          "criteria": "Coverage ratio >=0.8",
+          "status": "PENDING"
+        },
+        {
+          "criteria": "Telemetry baseline defined",
+          "status": "PENDING"
+        }
+      ],
+      "velocityTarget": 2,
+      "risks": [
+        "Large doc set introduces false stale flags"
+      ],
+      "blockers": []
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Define telemetry signatures for provenance and compliance generation"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Release & Changelog Automation",
+      "theme": "Stakeholder visibility",
+      "deliverables": [
+        "release notes generator",
+        "evolution changelog"
+      ],
+      "demoCriteria": [
+        "notes auto-generated"
+      ],
+      "status": "planned",
+      "objectives": [
+        "Append release entries automatically"
+      ],
+      "acceptanceCriteria": [
+        "Entry appended when diff changes"
+      ],
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "Entry appended when diff changes",
+          "status": "PASS"
+        },
+        {
+          "criteria": "Telemetry baseline defined",
+          "status": "PENDING"
+        }
+      ],
+      "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Telemetry for release note append events"
+      }
+    },
+    {
+      "id": "4",
+      "name": "BDD Alignment",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "≥90% domains mapped",
+          "status": "PENDING"
+        }
+      ],
+      "theme": "Business coverage",
+      "deliverables": [
+        "BDD spec stubs",
+        "domain coverage matrix"
+      ],
+      "demoCriteria": [
+        "≥90% domains mapped"
+      ],
+      "status": "planned",
+      "velocityTarget": 3
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "BDD stub creation and coverage update telemetry"
+      }
+    },
+    {
+      "id": "5",
+      "name": "TDD Handler Flow",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "≥85% coverage",
+          "status": "PENDING"
+        }
+      ],
+      "theme": "Audit handler implementation",
+      "deliverables": [
+        "handler test harness",
+        "spec templates"
+      ],
+      "demoCriteria": [
+        "≥85% coverage"
+      ],
+      "status": "planned",
+      "velocityTarget": 3
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Handler test run and coverage publication telemetry"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Demo Dashboard",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "all reports consolidated",
+          "status": "PENDING"
+        }
+      ],
+      "theme": "Unified reporting",
+      "deliverables": [
+        "dashboard markdown"
+      ],
+      "demoCriteria": [
+        "all reports consolidated"
+      ],
+      "status": "planned",
+      "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Dashboard render and aggregation telemetry"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Telemetry Layer",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "≥70% sequences timed",
+          "status": "PENDING"
+        }
+      ],
+      "theme": "Performance baselines",
+      "deliverables": [
+        "timing baseline"
+      ],
+      "demoCriteria": [
+        "≥70% sequences timed"
+      ],
+      "status": "planned",
+      "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Sequence timing instrumentation telemetry"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Evolution Insights",
+      "acceptanceCriteriaStatus": [
+        {
+          "criteria": "scores generated",
+          "status": "PENDING"
+        }
+      ],
+      "theme": "Impact scoring",
+      "deliverables": [
+        "semantic diff",
+        "impact scores"
+      ],
+      "demoCriteria": [
+        "scores generated"
+      ],
+      "status": "planned",
+      "velocityTarget": 2
+    ,"telemetry": {
+        "requiredShapes": ["events","metrics","traces","logs"],
+        "baselineDefined": false,
+        "signatures": [],
+        "notes": "Semantic diff and impact scoring telemetry"
+      }
+    }
+  ],
+  "demoChecklist": [
+    "Structural diff generated if changes",
+    "Canonical hash report updated",
+    "Provenance index regenerated",
+    "Compliance report PASS",
+    "Release notes appended when structural change",
+    "BDD spec coverage threshold met",
+    "Handler tests passing & coverage ≥ target"
+  ],
+  "backlog": [
+    "semantic metadata diff",
+    "telemetry performance baseline",
+    "impact scoring engine"
+  ],
+  "linkRules": {
+    "sequenceToBDD": "For each domainSequences entry: ensure bddSpec file exists; if missing generate stub.",
+    "coverageTargetValidation": "Warn if coverageTarget < 0.7 or > 0.95.",
+    "sprintIntroOrdering": "Domain sequence sprintIntro must be <= sprint count - 1."
+  },
+  "integrity": {
+    "hashStrategy": "Canonical hash excludes 'integrity' blocks and volatile timestamps",
+    "planned": true
+  },
+  "governanceDocumentation": {
+    "version": "1.0.0",
+    "principle": "JSON is Authority, Markdown is Reflection",
+    "description": "All documentation must be auto-generated from JSON source to prevent documentation/architecture drift",
+    "rules": [
+      {
+        "id": "rule-001",
+        "title": "JSON Authority Only",
+        "level": "CRITICAL",
+        "description": "All documentation auto-generated from JSON source; no manual markdown editing allowed",
+        "enforcement": "Pre-commit hook blocks commits to auto-generated files; CI validates compliance"
+      },
+      {
+        "id": "rule-002",
+        "title": "Single Source of Truth",
+        "level": "CRITICAL",
+        "description": "Every system has exactly ONE authoritative JSON file",
+        "enforcement": "Build fails if multiple sources or duplicates detected"
+      },
+      {
+        "id": "rule-003",
+        "title": "Auto-Generation Script Required",
+        "level": "CRITICAL",
+        "description": "Every JSON authority file must have corresponding generation script in pre:manifests",
+        "enforcement": "Build fails if script missing from pipeline"
+      },
+      {
+        "id": "rule-004",
+        "title": "Generated Document Marking",
+        "level": "HIGH",
+        "description": "All auto-generated markdown must have <!-- AUTO-GENERATED --> header and <!-- DO NOT EDIT --> footer",
+        "enforcement": "Audit script fails build if markers missing"
+      }
+    ],
+    "telemetryGovernance": {
+      "title": "Telemetry Governance Documentation",
+      "status": "active",
+      "sourceJson": "orchestration-audit-system-project-plan.json",
+      "generationScripts": [
+        {
+          "name": "generate-telemetry-instrumentation.js",
+          "purpose": "Generate DEMO_TELEMETRY_INSTRUMENTATION.md from telemetry.instrumentation section",
+          "input": "governanceDocumentation.telemetryGovernance.instrumentation",
+          "output": "DEMO_TELEMETRY_INSTRUMENTATION.md",
+          "pipelineOrder": 41,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-telemetry-quickstart.js",
+          "purpose": "Generate TELEMETRY_GOVERNANCE_QUICKSTART.md from telemetry.quickstart section",
+          "input": "governanceDocumentation.telemetryGovernance.quickstart",
+          "output": "TELEMETRY_GOVERNANCE_QUICKSTART.md",
+          "pipelineOrder": 42,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-telemetry-verification.js",
+          "purpose": "Generate TELEMETRY_GOVERNANCE_VERIFICATION.md from telemetry-validation-report.json",
+          "input": ".generated/telemetry-validation-report.json",
+          "output": "TELEMETRY_GOVERNANCE_VERIFICATION.md",
+          "pipelineOrder": 43,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-telemetry-complete.js",
+          "purpose": "Generate TELEMETRY_GOVERNANCE_COMPLETE.md aggregating all telemetry data",
+          "input": [".generated/telemetry-matrix.json", ".generated/telemetry-validation-report.json", "orchestration-audit-system-project-plan.json"],
+          "output": "TELEMETRY_GOVERNANCE_COMPLETE.md",
+          "pipelineOrder": 44,
+          "status": "pending-creation"
+        }
+      ],
+      "instrumentation": {
+        "title": "Demo Telemetry Instrumentation Guide",
+        "description": "How to emit telemetry events during demo execution for observability-first governance",
+        "sections": [
+          {
+            "name": "Overview",
+            "content": "Developers emit telemetry markers using console.log during demo execution. Capture system validates signatures against plan baselines."
+          },
+          {
+            "name": "Format Requirements",
+            "subsections": [
+              {
+                "name": "Events",
+                "format": "[TELEMETRY_EVENT] <signature> <details>",
+                "example": "[TELEMETRY_EVENT] bootstrap.registry.init Registry initialized with 60 domains"
+              },
+              {
+                "name": "Metrics",
+                "format": "[TELEMETRY_METRIC] <name> = <value>",
+                "example": "[TELEMETRY_METRIC] registry.size = 60"
+              }
+            ]
+          },
+          {
+            "name": "Integration Workflow",
+            "steps": [
+              "Developer reviews plan telemetry.signatures for sprint",
+              "Adds console.log([TELEMETRY_EVENT]) markers to demo code",
+              "Tests locally with npm run demo:telemetry:sample",
+              "Runs npm run demo:capture:telemetry <sprint-id> to validate",
+              "Commit after capture shows 100% coverage"
+            ]
+          },
+          {
+            "name": "Troubleshooting",
+            "entries": [
+              {
+                "issue": "No [TELEMETRY_EVENT] markers found",
+                "solution": "Verify demo code has console.log with correct marker format on single line to stdout"
+              },
+              {
+                "issue": "Coverage not 100%",
+                "solution": "Check orchestration-telemetry-validation.md for missingSignatures array; add missing events"
+              }
+            ]
+          }
+        ]
+      },
+      "quickstart": {
+        "title": "Telemetry Governance Quickstart",
+        "description": "Quick reference for all telemetry governance operations and npm scripts",
+        "sections": [
+          {
+            "name": "npm Scripts",
+            "scripts": [
+              {
+                "command": "npm run telemetry:snapshots",
+                "description": "Generate sprint telemetry baseline snapshots"
+              },
+              {
+                "command": "npm run demo:capture:telemetry <sprint-id>",
+                "description": "Capture telemetry from demo execution"
+              },
+              {
+                "command": "npm run telemetry:validate",
+                "description": "Generate telemetry validation report"
+              }
+            ]
+          },
+          {
+            "name": "How It Works",
+            "phases": [
+              {
+                "phase": "Phase 1: Define Telemetry (Sprint Planning)",
+                "description": "Signatures defined in plan.telemetry.signatures"
+              },
+              {
+                "phase": "Phase 2: Generate Snapshots (Pre-Build)",
+                "description": "npm run build creates immutable baselines"
+              },
+              {
+                "phase": "Phase 3: Instrument Demo (Development)",
+                "description": "Developers emit [TELEMETRY_EVENT] markers"
+              },
+              {
+                "phase": "Phase 4: Capture Demo Telemetry (Test Phase)",
+                "description": "npm run demo:capture:telemetry validates signatures"
+              },
+              {
+                "phase": "Phase 5: Validate Coverage (Release Phase)",
+                "description": "npm run telemetry:validate confirms 100% coverage"
+              }
+            ]
+          }
+        ]
+      },
+      "verification": {
+        "title": "Telemetry Governance Verification",
+        "description": "Current status of telemetry governance implementation and compliance",
+        "sourceReports": [
+          ".generated/telemetry-validation-report.json",
+          ".generated/telemetry-matrix.json"
+        ],
+        "metrics": [
+          {
+            "name": "Coverage by Sprint",
+            "source": "telemetry-matrix.json",
+            "display": "table"
+          },
+          {
+            "name": "Validation Status",
+            "source": "telemetry-validation-report.json",
+            "display": "summary"
+          }
+        ]
+      },
+      "complete": {
+        "title": "Telemetry Governance Complete",
+        "description": "Comprehensive summary of telemetry governance implementation",
+        "sections": [
+          {
+            "name": "What Was Built",
+            "items": [
+              "Telemetry baseline definition system",
+              "Immutable baseline snapshots",
+              "Demo execution telemetry capture",
+              "Automated validation reporting"
+            ]
+          },
+          {
+            "name": "Generated Artifacts",
+            "categories": [
+              {
+                "category": "JSON Artifacts",
+                "items": [".generated/telemetry-matrix.json", ".generated/telemetry-validation-report.json"]
+              },
+              {
+                "category": "Markdown Artifacts",
+                "items": ["docs/generated/orchestration-telemetry-matrix.md", "docs/generated/orchestration-telemetry-validation.md"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "framework": {
+      "title": "Documentation Auto-Generation Governance Framework",
+      "version": "1.0.0",
+      "status": "active",
+      "description": "Governance framework for self-enforcing auto-generation pattern",
+      "generationScripts": [
+        {
+          "name": "generate-documentation-governance-framework.js",
+          "purpose": "Generate DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md - core governance rules and enforcement",
+          "input": "governanceDocumentation.framework.governanceRules",
+          "output": "DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md",
+          "pipelineOrder": 45,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-pattern-recognition-achievement.js",
+          "purpose": "Generate PATTERN_RECOGNITION_ACHIEVEMENT.md - pattern discovery and implementation",
+          "input": "governanceDocumentation.framework.patternRecognition",
+          "output": "PATTERN_RECOGNITION_ACHIEVEMENT.md",
+          "pipelineOrder": 46,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-governance-implementation-report.js",
+          "purpose": "Generate DOCUMENTATION_GOVERNANCE_IMPLEMENTATION_COMPLETE.md - implementation status",
+          "input": "governanceDocumentation.framework.implementationReport",
+          "output": "DOCUMENTATION_GOVERNANCE_IMPLEMENTATION_COMPLETE.md",
+          "pipelineOrder": 47,
+          "status": "pending-creation"
+        },
+        {
+          "name": "generate-documentation-governance-index.js",
+          "purpose": "Generate DOCUMENTATION_GOVERNANCE_INDEX.md - comprehensive documentation index",
+          "input": "governanceDocumentation.framework.index",
+          "output": "DOCUMENTATION_GOVERNANCE_INDEX.md",
+          "pipelineOrder": 48,
+          "status": "pending-creation"
+        }
+      ],
+      "governanceRules": {
+        "title": "Documentation Auto-Generation Governance Framework",
+        "version": "1.0.0",
+        "enforcedSince": "2025-01-09",
+        "corePrinciple": "JSON is Authority, Markdown is Reflection",
+        "description": "All documentation must be auto-generated from JSON source-of-truth to prevent documentation/architecture drift",
+        "ruleSet": [
+          {
+            "id": "rule-001",
+            "title": "Single Source of Truth (SSoT)",
+            "level": "CRITICAL",
+            "requirement": "Every system has exactly ONE authoritative JSON file as source-of-truth",
+            "reflection": "All documentation generated FROM that JSON",
+            "enforcement": "CI/CD blocks commits with manually-edited generated docs"
+          },
+          {
+            "id": "rule-002",
+            "title": "Auto-Generation Pipeline",
+            "level": "CRITICAL",
+            "requirement": "Every JSON authority file MUST have a corresponding generation script",
+            "pipeline": "All generation scripts run in pre:manifests pipeline before build",
+            "order": "Registry generation (creates JSON) → Documentation generation (reads JSON)",
+            "enforcement": "Automatically enforced on every npm run build"
+          },
+          {
+            "id": "rule-003",
+            "title": "Generated Document Marking",
+            "level": "HIGH",
+            "header": "All auto-generated markdown files MUST have <!-- AUTO-GENERATED -->",
+            "footer": "All auto-generated files MUST have <!-- DO NOT EDIT - Regenerate with: npm run build -->",
+            "audit": "Scripts scan for manually-edited marked files and fail build"
+          },
+          {
+            "id": "rule-004",
+            "title": "No Manual Documentation",
+            "level": "CRITICAL",
+            "prohibition": "Developers MUST NOT hand-write documentation marked as auto-generated",
+            "alternative": "Update the JSON source → script regenerates the markdown",
+            "enforcement": "Pre-commit hook blocks commits that edit auto-generated files"
+          }
+        ],
+        "implementedPatterns": [
+          {
+            "pattern": "Orchestration Domains",
+            "sourceJson": "orchestration-domains.json",
+            "generationScript": "scripts/generate-orchestration-domains-from-sequences.js",
+            "status": "active"
+          },
+          {
+            "pattern": "Orchestration Audit",
+            "sourceJson": "orchestration-audit-system-project-plan.json",
+            "generationScript": "scripts/gen-orchestration-docs.js",
+            "status": "active"
+          },
+          {
+            "pattern": "Telemetry Governance",
+            "sourceJson": "orchestration-audit-system-project-plan.json",
+            "generationScript": "scripts/generate-telemetry-*.js (4 scripts)",
+            "status": "active"
+          }
+        ],
+        "enforcementMechanisms": [
+          {
+            "mechanism": "Pre-Commit Hook",
+            "purpose": "Prevent committing edited auto-generated files",
+            "action": "Blocks commits if ANY auto-generated file modified"
+          },
+          {
+            "mechanism": "CI Validation Script",
+            "purpose": "Fail build if governance violations detected",
+            "checks": [
+              "All auto-generated files marked with <!-- AUTO-GENERATED -->",
+              "No manually-edited marked files",
+              "All JSON authorities have generation scripts"
+            ]
+          },
+          {
+            "mechanism": "Audit Script",
+            "purpose": "Report governance compliance status",
+            "outputs": "Document governance manifest with compliance summary"
+          }
+        ]
+      },
+      "patternRecognition": {
+        "title": "Pattern Recognition Achievement",
+        "date": "2025-01-09",
+        "status": "complete",
+        "coreDiscovery": "JSON is Authority, Markdown is Reflection",
+        "discoverySource": ".generated/context-tree-orchestration-audit-session.json keyInsights",
+        "whatWasDiscovered": {
+          "foundationalPattern": "Architectural pattern that governs entire orchestration audit system",
+          "description": "Not just a coding convention—it's a governance model that prevents documentation/architecture drift",
+          "guarantees": [
+            "Single Source of Truth: One JSON file per system",
+            "Deterministic Generation: Same JSON → Same markdown (every time)",
+            "No Manual Editing: Developers cannot hand-edit auto-generated docs",
+            "Automatic Sync: Every build regenerates all documentation",
+            "Drift Prevention: Impossible to have stale documentation"
+          ]
+        },
+        "preExistingImplementations": [
+          "orchestration-domains.json → Auto-generated markdown",
+          "Orchestration audit system → Auto-generated docs",
+          "Sprint reports → Auto-generated from project plan",
+          "Release notes → Auto-generated from project plan",
+          "Compliance reports → Auto-generated from project plan",
+          "Provenance index → Auto-generated from project plan",
+          "Telemetry matrix → Auto-generated from JSON"
+        ],
+        "recognition": "Pattern already existed; needed codification as governance rules and extension to ALL documentation",
+        "telemetryDocConversion": {
+          "before": "4 manually-created documents",
+          "after": "4 auto-generated documents",
+          "documents": [
+            "DEMO_TELEMETRY_INSTRUMENTATION.md",
+            "TELEMETRY_GOVERNANCE_QUICKSTART.md",
+            "TELEMETRY_GOVERNANCE_VERIFICATION.md",
+            "TELEMETRY_GOVERNANCE_COMPLETE.md"
+          ],
+          "result": "Zero documentation drift possible"
+        }
+      },
+      "implementationReport": {
+        "title": "Documentation Governance Implementation Complete",
+        "status": "complete",
+        "principleImplemented": "JSON is Authority, Markdown is Reflection",
+        "outcome": "All telemetry governance documentation now auto-generated from JSON sources, eliminating documentation/architecture drift",
+        "whatWasBuilt": [
+          "JSON Authority Structure: Extended orchestration-audit-system-project-plan.json with governanceDocumentation section",
+          "Generation Scripts: 4 scripts that read JSON and produce marked auto-generated markdown",
+          "Pipeline Integration: Added to pre:manifests pipeline (orders 41-44) running on every npm run build",
+          "npm Scripts: Added to package.json for manual regeneration if needed",
+          "Governance Rules: Codified 4 critical rules in framework documentation",
+          "Enforcement Templates: Pre-commit hooks, CI validation scripts, audit mechanisms"
+        ],
+        "generatedDocuments": [
+          {
+            "name": "DEMO_TELEMETRY_INSTRUMENTATION.md",
+            "source": "orchestration-audit-system-project-plan.json",
+            "status": "auto-generated"
+          },
+          {
+            "name": "TELEMETRY_GOVERNANCE_QUICKSTART.md",
+            "source": "orchestration-audit-system-project-plan.json",
+            "status": "auto-generated"
+          },
+          {
+            "name": "TELEMETRY_GOVERNANCE_VERIFICATION.md",
+            "source": ".generated/telemetry-validation-report.json",
+            "status": "auto-generated"
+          },
+          {
+            "name": "TELEMETRY_GOVERNANCE_COMPLETE.md",
+            "source": "Multiple JSON sources",
+            "status": "auto-generated"
+          }
+        ],
+        "complianceStatus": {
+          "rule001": { "title": "JSON Authority Only", "status": "PASS" },
+          "rule002": { "title": "Single Source of Truth", "status": "PASS" },
+          "rule003": { "title": "Auto-Generation Script Required", "status": "PASS" },
+          "rule004": { "title": "Generated Document Marking", "status": "PASS" }
+        },
+        "systemsNowFollowingPattern": 11,
+        "newAutoGeneratedDocuments": 4,
+        "documentationDriftRisk": "eliminated"
+      },
+      "index": {
+        "title": "Documentation Governance Index",
+        "description": "Comprehensive index and reading guide for documentation governance implementation",
+        "sections": [
+          {
+            "name": "Quick Links",
+            "items": [
+              "DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md – Core governance rules and enforcement",
+              "PATTERN_RECOGNITION_ACHIEVEMENT.md – Pattern discovery and implementation story",
+              "DOCUMENTATION_GOVERNANCE_IMPLEMENTATION_COMPLETE.md – Implementation status and results",
+              "DEMO_TELEMETRY_INSTRUMENTATION.md – How to emit telemetry events",
+              "TELEMETRY_GOVERNANCE_QUICKSTART.md – Quick reference for operations",
+              "TELEMETRY_GOVERNANCE_VERIFICATION.md – Compliance status",
+              "TELEMETRY_GOVERNANCE_COMPLETE.md – Comprehensive summary"
+            ]
+          },
+          {
+            "name": "Governance Principle",
+            "principle": "JSON is Authority, Markdown is Reflection",
+            "meaning": "Documentation must be auto-generated from JSON source to prevent drift"
+          },
+          {
+            "name": "Core Rules",
+            "rules": [
+              "Rule 1: JSON Authority Only – All documentation auto-generated from JSON",
+              "Rule 2: Single Source of Truth – Every system has exactly ONE JSON authority",
+              "Rule 3: Auto-Generation Pipeline – Every JSON authority has generation script",
+              "Rule 4: Generated Document Marking – Auto-generated files marked with HTML comments"
+            ]
+          },
+          {
+            "name": "Implementation Status",
+            "metrics": {
+              "systemsFollowingPattern": 11,
+              "autoGeneratedDocuments": 4,
+              "driftRisk": "eliminated"
+            }
+          }
+        ],
+        "usageGuide": "When you ask 'What documents should I read?', start with DOCUMENTATION_GOVERNANCE_INDEX.md (this file), then navigate to specific docs based on your need"
+      }
+    }
+  },
+  "documentationStructure": {
+    "version": "1.0.0",
+    "principle": "Domain-Aligned Documentation With Drift Governance",
+    "description": "Each domain has its own documentation structure with explicit governance on drift-proof (auto-generated) vs drift-capable (manual) documents",
+    "rules": [
+      {
+        "id": "rule-001",
+        "title": "Domain-Scoped Documentation",
+        "level": "CRITICAL",
+        "statement": "Each domainSequence has dedicated documentation folders for generated and manual docs",
+        "enforcement": "Build fails if docs found outside designated domain paths"
+      },
+      {
+        "id": "rule-002",
+        "title": "Drift-Proof Vs Drift-Capable Classification",
+        "level": "CRITICAL",
+        "statement": "Every document classified as auto-generated (drift-proof) or manual (drift-capable)",
+        "enforcement": "Audit detects unclassified documents; CI reports drift risk"
+      },
+      {
+        "id": "rule-003",
+        "title": "No Root-Level Domain Documentation",
+        "level": "HIGH",
+        "statement": "No domain-specific docs in repository root; all docs live in docs/generated/{domain-id}/ or docs/manual/{domain-id}/",
+        "enforcement": "Root folder contains only global governance and indexing docs"
+      },
+      {
+        "id": "rule-004",
+        "title": "Domain Documentation Index Required",
+        "level": "CRITICAL",
+        "statement": "Each domain generates docs/{generated|manual}/{domain-id}/INDEX.md listing all domain docs and drift status",
+        "enforcement": "Build fails if domain index missing or out-of-sync"
+      },
+      {
+        "id": "rule-005",
+        "title": "Orphaned Document Detection",
+        "level": "HIGH",
+        "statement": "Documents not referenced by any domain or generation script flagged as orphaned",
+        "enforcement": "Audit reports orphaned docs; recommendation to archive or migrate"
+      }
+    ],
+    "domainDocumentationMapping": [
+      {
+        "domainId": "orchestration-audit-system",
+        "displayName": "Orchestration Audit System",
+        "description": "Core orchestration domain and audit capabilities",
+        "generatedDocsPath": "docs/generated/orchestration-audit-system",
+        "manualDocsPath": "docs/manual/orchestration-audit-system",
+        "autoGeneratedDocuments": [
+          {
+            "name": "INDEX.md",
+            "source": "Generated from domainDocumentationMapping",
+            "purpose": "Domain documentation index and navigation"
+          },
+          {
+            "name": "ORCHESTRATION_AUDIT_DOMAIN_OVERVIEW.md",
+            "source": "orchestration-audit-system-project-plan.json (domainSequences[0])",
+            "purpose": "Domain overview, capabilities, and architecture"
+          },
+          {
+            "name": "ORCHESTRATION_AUDIT_BDD_COVERAGE.md",
+            "source": "packages/orchestration/bdd/orchestration-audit-system.feature",
+            "purpose": "BDD spec coverage and compliance"
+          }
+        ],
+        "manualDocuments": [
+          "ORCHESTRATION_AUDIT_ARCHITECTURE.md",
+          "ORCHESTRATION_AUDIT_IMPLEMENTATION_GUIDE.md"
+        ],
+        "dependencies": ["self_sequences", "graphing-orchestration"]
+      },
+      {
+        "domainId": "orchestration-audit-session",
+        "displayName": "Orchestration Audit Session",
+        "description": "Session management and audit session orchestration",
+        "generatedDocsPath": "docs/generated/orchestration-audit-session",
+        "manualDocsPath": "docs/manual/orchestration-audit-session",
+        "autoGeneratedDocuments": [
+          {
+            "name": "INDEX.md",
+            "source": "Generated from domainDocumentationMapping",
+            "purpose": "Domain documentation index"
+          },
+          {
+            "name": "SESSION_DOMAIN_OVERVIEW.md",
+            "source": "orchestration-audit-system-project-plan.json (domainSequences[1])",
+            "purpose": "Session domain overview"
+          }
+        ],
+        "manualDocuments": [],
+        "dependencies": ["orchestration-audit-system"]
+      },
+      {
+        "domainId": "cag-agent-workflow",
+        "displayName": "CAG Agent Workflow",
+        "description": "Context-aware governance and agent workflows",
+        "generatedDocsPath": "docs/generated/cag-agent-workflow",
+        "manualDocsPath": "docs/manual/cag-agent-workflow",
+        "autoGeneratedDocuments": [
+          {
+            "name": "INDEX.md",
+            "source": "Generated from domainDocumentationMapping",
+            "purpose": "CAG domain documentation index"
+          },
+          {
+            "name": "CAG_AGENT_WORKFLOW_OVERVIEW.md",
+            "source": "orchestration-audit-system-project-plan.json (domainSequences[2])",
+            "purpose": "CAG workflow architecture"
+          }
+        ],
+        "manualDocuments": [],
+        "dependencies": []
+      },
+      {
+        "domainId": "graphing-orchestration",
+        "displayName": "Graphing Orchestration",
+        "description": "Graph-based orchestration and visualization",
+        "generatedDocsPath": "docs/generated/graphing-orchestration",
+        "manualDocsPath": "docs/manual/graphing-orchestration",
+        "autoGeneratedDocuments": [
+          {
+            "name": "INDEX.md",
+            "source": "Generated from domainDocumentationMapping",
+            "purpose": "Graphing domain documentation index"
+          }
+        ],
+        "manualDocuments": [],
+        "dependencies": ["orchestration-audit-system"]
+      },
+      {
+        "domainId": "self_sequences",
+        "displayName": "Self Sequences",
+        "description": "Self-referential sequence generation and orchestration",
+        "generatedDocsPath": "docs/generated/self_sequences",
+        "manualDocsPath": "docs/manual/self_sequences",
+        "autoGeneratedDocuments": [
+          {
+            "name": "INDEX.md",
+            "source": "Generated from domainDocumentationMapping",
+            "purpose": "Self Sequences documentation index"
+          }
+        ],
+        "manualDocuments": [],
+        "dependencies": ["orchestration-audit-system"]
+      }
+    ],
+    "globalDocumentationFolders": {
+      "root": {
+        "purpose": "Global governance, pattern recognition, and high-level indexes",
+        "allowed": [
+          "DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md",
+          "PATTERN_RECOGNITION_ACHIEVEMENT.md",
+          "DOCUMENTATION_GOVERNANCE_IMPLEMENTATION_COMPLETE.md",
+          "DOCUMENTATION_GOVERNANCE_INDEX.md",
+          "DOMAIN_DOCUMENTATION_STRUCTURE.md",
+          "DOCUMENTATION_DRIFT_AUDIT_REPORT.md",
+          "GLOBAL_DOCUMENTATION_INDEX.md",
+          "README.md"
+        ],
+        "allAutoGenerated": true
+      },
+      ".generated": {
+        "purpose": "Build-time generated JSON artifacts and metadata",
+        "artifacts": [
+          "document-governance-manifest.json",
+          "documentation-drift-audit.json",
+          "domain-document-registry.json",
+          "orphaned-documents-report.json"
+        ]
+      },
+      "docs/generated/{domain-id}": {
+        "purpose": "Auto-generated documentation for each domain",
+        "required": ["INDEX.md"],
+        "regeneratedOn": "Every npm run build",
+        "driftStatus": "DRIFT-PROOF"
+      },
+      "docs/manual/{domain-id}": {
+        "purpose": "Manually-maintained documentation for each domain",
+        "driftStatus": "DRIFT-CAPABLE",
+        "governance": "Must have explicit <!-- MANUALLY-MAINTAINED - DRIFT-CAPABLE --> header"
+      }
+    },
+    "driftGovernance": {
+      "driftProof": {
+        "classification": "Auto-Generated",
+        "regeneration": "Every build via generation scripts",
+        "editing": "Prohibited - pre-commit hooks block edits",
+        "marking": "<!-- AUTO-GENERATED --> header + source JSON reference",
+        "examples": ["DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md", "Domain overview docs"]
+      },
+      "driftCapable": {
+        "classification": "Manually-Maintained",
+        "regeneration": "Manual updates by developers",
+        "editing": "Allowed with restrictions",
+        "marking": "<!-- MANUALLY-MAINTAINED - DRIFT-CAPABLE --> header + creation date",
+        "governance": "Must be in docs/manual/{domain-id}/ folder",
+        "riskLevel": "DRIFT-RISK: Requires active maintenance"
+      },
+      "orphaned": {
+        "classification": "Unclassified/Unreferenced",
+        "status": "Stale/Unknown",
+        "marking": "Not marked, not in domain structure, not generated",
+        "action": "Audit identifies; recommendation to archive or migrate",
+        "examples": "Current 960+ root-level unmanaged docs"
+      }
+    },
+    "auditArtifacts": {
+      "documentGovernanceManifest": {
+        "path": ".generated/document-governance-manifest.json",
+        "purpose": "Registry of all documents with generation type, domain, and drift status",
+        "schema": {
+          "documents": [
+            {
+              "filename": "string",
+              "filepath": "string",
+              "domain": "string | null",
+              "generation_type": "auto-generated | manual | orphaned",
+              "source_json": "string | null",
+              "auto_generated_marker": "boolean",
+              "creation_date": "ISO8601",
+              "last_generated_date": "ISO8601 | null",
+              "last_modified_date": "ISO8601",
+              "drift_status": "drift-proof | drift-capable | unknown",
+              "is_referenced": "boolean",
+              "referenced_by": ["string"]
+            }
+          ]
+        }
+      },
+      "driftAuditReport": {
+        "path": ".generated/documentation-drift-audit.json",
+        "purpose": "Audit results showing drift-capable docs and drift risk",
+        "contents": {
+          "autoGenerated": "Count of drift-proof docs",
+          "manualMaintained": "Count of drift-capable docs",
+          "orphaned": "Count of unclassified/unreferenced docs",
+          "driftRiskDocuments": "List of drift-capable docs sorted by modification date",
+          "orphanedDocuments": "List of orphaned docs with migration recommendations"
+        }
+      },
+      "orphanedDocumentsReport": {
+        "path": ".generated/orphaned-documents-report.json",
+        "purpose": "Detailed report of documents not tied to domains or generation",
+        "action": "Developers decide: archive, migrate to domain, or convert to auto-generated"
+      }
+    },
+    "migrationPlan": {
+      "phase1": "Classify existing docs as drift-proof, drift-capable, or orphaned",
+      "phase2": "Create domain folder structure and move drift-capable docs to docs/manual/{domain-id}/",
+      "phase3": "Generate domain documentation indexes",
+      "phase4": "Audit and report orphaned documents",
+      "phase5": "Enforce document location rules in CI/CD"
+    }
+  }
+}

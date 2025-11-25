@@ -882,6 +882,106 @@
           }
         },
         {
+          "id": "slo-dashboard-traceability-manifest",
+          "domain": "telemetry",
+          "description": "Generates the SLO-dashboard traceability manifest linking telemetry, tests, BDD specs, and shape annotations.",
+          "file": "scripts/generate-slo-traceability-manifest.cjs",
+          "type": "node-cjs",
+          "role": "traceability-generator",
+          "commands": {
+            "npmScript": "generate:slo:traceability",
+            "direct": "node scripts/generate-slo-traceability-manifest.cjs"
+          },
+          "pipeline": {
+            "stage": "integration",
+            "order": 200,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              ".generated/renderx-web-telemetry.json",
+              ".generated/renderx-web-test-results.json",
+              "packages/slo-dashboard/.generated/slo-dashboard-business-bdd-specifications.json",
+              "docs/shape/shape-evolutions.json",
+              "packages/slo-dashboard/json-sequences/**/*.json"
+            ],
+            "outputs": [
+              ".generated/slo-dashboard/traceability-manifest.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:slo:traceability",
+              "npm run build"
+            ],
+            "category": "telemetry-traceability"
+          }
+        },
+        {
+          "id": "topic-telemetry-signature-generator",
+          "domain": "telemetry",
+          "description": "Derives telemetry signatures for every topic interaction so live session conductor logs can be inspected end-to-end.",
+          "file": "scripts/generate-topic-telemetry-signatures.cjs",
+          "type": "node-cjs",
+          "role": "telemetry-traceability",
+          "commands": {
+            "npmScript": "generate:topics:telemetry",
+            "direct": "node scripts/generate-topic-telemetry-signatures.cjs"
+          },
+          "pipeline": {
+            "stage": "integration",
+            "order": 210,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/manifests/topics-manifest.json",
+              "docs/governance/topic-telemetry-governance.json"
+            ],
+            "outputs": [
+              ".generated/topics/topic-telemetry-signatures.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:topics:telemetry",
+              "pre:manifests"
+            ],
+            "category": "telemetry-traceability"
+          }
+        },
+        {
+          "id": "topic-telemetry-signature-validator",
+          "domain": "telemetry",
+          "description": "Ensures each topic pipeline contains the mandated telemetry signature stages and log detection patterns.",
+          "file": "scripts/validate-topic-telemetry-signatures.cjs",
+          "type": "node-cjs",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "validate:topics:telemetry",
+            "direct": "node scripts/validate-topic-telemetry-signatures.cjs"
+          },
+          "pipeline": {
+            "stage": "integration",
+            "order": 211,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/manifests/topics-manifest.json",
+              ".generated/topics/topic-telemetry-signatures.json"
+            ],
+            "outputs": []
+          },
+          "governance": {
+            "enforcedBy": [
+              "validate:topics:telemetry",
+              "pretest"
+            ],
+            "category": "telemetry-traceability"
+          }
+        },
+        {
           "id": "telemetry-validation-report",
           "domain": "telemetry",
           "description": "Validates telemetry instrumentation and produces the governance validation report.",

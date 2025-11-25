@@ -4,7 +4,10 @@ import { BddTelemetryRecord } from './contract';
 import { recordAnomaly } from './anomalies';
 
 const ROOT = process.cwd();
-const CONFIG_PATH = path.join(ROOT, 'shape.budgets.json');
+const CONFIG_PATHS = [
+  path.join(ROOT, 'shape.budgets.json'),
+  path.join(ROOT, 'docs', 'shape', 'shape.budgets.json')
+];
 
 interface BudgetConfigEntry {
   beatsMax?: number;
@@ -16,9 +19,18 @@ interface BudgetConfig {
   features: Record<string, BudgetConfigEntry>;
 }
 
+function resolveConfigPath(): string | null {
+  for (const candidate of CONFIG_PATHS) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  return null;
+}
+
 function loadConfig(): BudgetConfig | null {
+  const configPath = resolveConfigPath();
+  if (!configPath) return null;
   try {
-    return JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8')) as BudgetConfig;
+    return JSON.parse(fs.readFileSync(configPath, 'utf-8')) as BudgetConfig;
   } catch {
     return null;
   }
@@ -45,5 +57,5 @@ export function evaluateBudgets(rec: BddTelemetryRecord) {
 }
 
 export function configExists(): boolean {
-  return fs.existsSync(CONFIG_PATH);
+  return resolveConfigPath() !== null;
 }

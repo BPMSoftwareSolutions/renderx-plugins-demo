@@ -67,6 +67,38 @@
       "created_at": {"type": "string"},
       "lineage_hash": {"type": "string", "description": "Deterministic hash of (root_context_ref + context_lineage + domain_id)."},
       "integrity_checksum": {"type": "string", "description": "SHA256 of canonical serialized domain JSON."}
+    },
+    "integration": {
+      "manifest_ref": {"type": "string", "description": "Path to generated traceability manifest for this domain."},
+      "generator_script": {"type": "string", "description": "Script responsible for manifest generation."},
+      "last_generated": {"type": "string", "description": "ISO timestamp of last manifest regeneration."},
+      "telemetry_sources": {"type": "array", "items": {"type": "string"}},
+      "test_sources": {"type": "array", "items": {"type": "string"}},
+      "shape_features": {"type": "array", "items": {"type": "string"}},
+      "phase_links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "phase_id": {"type": "string"},
+            "sequence_ref": {"type": "string"},
+            "telemetry_events": {"type": "array", "items": {"type": "string"}},
+            "coverage_status": {"type": "string", "enum": ["missing","partial","complete"]},
+            "coverage_id": {"type": "string"},
+            "bdd_scenarios": {"type": "array", "items": {"type": "string"}},
+            "shape_hashes": {"type": "array", "items": {"type": "string"}}
+          },
+          "required": ["phase_id","sequence_ref","telemetry_events","coverage_status"]
+        }
+      },
+      "coverage_summary": {
+        "type": "object",
+        "properties": {
+          "total_phases": {"type": "number"},
+          "linked_phases": {"type": "number"},
+          "status": {"type": "string", "enum": ["missing","partial","complete"]}
+        }
+      }
     }
   },
   "creation_decision_logic": {

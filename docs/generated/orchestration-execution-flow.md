@@ -1,12 +1,7 @@
-<!-- AUTO-GENERATED
-Doc-Hash: 66a6a956432a1f10c2c3d27ff916e27736d7ca5e37b6fddfa1e70f1cf733e4b9
-Regenerate: npm run generate:governance:docs
--->
-
 # 🎵 Orchestration Execution Flow
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-24T20:44:03.820Z
+**Last Generated:** 2025-11-25T00:55:16.937Z
 **DO NOT EDIT — GENERATED**
 
 ## Execution Flow
