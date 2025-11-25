@@ -1,7 +1,7 @@
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`
-**Last Generated:** 2025-11-25T00:55:16.930Z
+**Last Generated:** 2025-11-25T11:26:44.418Z
 **DO NOT EDIT — GENERATED**
 
 ## Overview
@@ -13,7 +13,7 @@ Complete registry of all orchestration domains and plugin sequences
 
 ---
 
-## The 60 Orchestration Domains
+## The 61 Orchestration Domains
 
 ### 1. 🔌 Canvas Component Copy
 
@@ -2244,6 +2244,36 @@ Orchestration domain: self_sequences
 ```
 
 **Sequence File:** `packages/ographx/.ographx/sequences/self_sequences.json`
+
+**Category:** `orchestration`
+
+**Purpose:** System orchestration
+
+**Status:** active
+
+---
+
+### 61. 🎼 Musical Conductor Orchestration Sequence
+
+**ID:** `musical-conductor-orchestration`
+
+High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.
+
+```
+    ┌─────────────────────────────────────────────────────────┐
+    │ 🎼 Musical Conductor Orchestration Sequence             │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │ 🎵 Sequence: musical-conductor-orchestration            │
+    │ ├─ Tempo: 112 BPM                                       │
+    │ ├─ Key: C Minor                                         │
+    │ └─ Category: orchestration                              │
+    │                                                         │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+```
+
+**Sequence File:** `packages\musical-conductor\.ographx\sequences\musical-conductor-orchestration.json`
 
 **Category:** `orchestration`
 

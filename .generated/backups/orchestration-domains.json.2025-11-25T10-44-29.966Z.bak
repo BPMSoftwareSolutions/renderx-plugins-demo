@@ -2,7 +2,7 @@
   "metadata": {
     "description": "Complete registry of all orchestration domains and plugin sequences",
     "version": "1.0.0",
-    "generated": "2025-11-25T11:26:40.921Z"
+    "generated": "2025-11-25T00:55:15.406Z"
   },
   "unifiedInterface": {
     "name": "MusicalSequence",
@@ -2396,34 +2396,6 @@
           "name": "self_sequences",
           "tempo": 120,
           "key": "C Major",
-          "timeSignature": "4/4",
-          "category": "orchestration"
-        },
-        "phases": []
-      }
-    },
-    {
-      "id": "musical-conductor-orchestration",
-      "name": "Musical Conductor Orchestration Sequence",
-      "emoji": "🎼",
-      "description": "High-level orchestration flow governing score loading, execution, adaptive dynamics, and session finalization for the musical-conductor subsystem.",
-      "category": "orchestration",
-      "purpose": "System orchestration",
-      "relatedDomains": [],
-      "status": "active",
-      "sequenceFile": "packages\\musical-conductor\\.ographx\\sequences\\musical-conductor-orchestration.json",
-      "movements": 0,
-      "beats": 0,
-      "tempo": 112,
-      "key": "C Minor",
-      "timeSignature": "4/4",
-      "sketch": {
-        "title": "Musical Conductor Orchestration Sequence",
-        "sequence": {
-          "id": "musical-conductor-orchestration",
-          "name": "Musical Conductor Orchestration Sequence",
-          "tempo": 112,
-          "key": "C Minor",
           "timeSignature": "4/4",
           "category": "orchestration"
         },

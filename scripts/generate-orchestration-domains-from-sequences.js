@@ -119,7 +119,7 @@ async function generateOrchestrationDomains() {
 
   console.log(`✅ Added ${catalog.sequences.length} plugin sequences from audit catalog`);
 
-  // Add orchestration domain sequences
+  // Add orchestration domain sequences from packages/ographx/.ographx/sequences/
   const orchestrationSeqDir = path.join(rootDir, 'packages/ographx/.ographx/sequences');
   if (fs.existsSync(orchestrationSeqDir)) {
     fs.readdirSync(orchestrationSeqDir)
@@ -172,6 +172,76 @@ async function generateOrchestrationDomains() {
         }
       });
   }
+
+  // Auto-detect orchestration sequences from all packages/*/ographx/sequences/ and packages/*/.ographx/sequences/
+  const packageDirs = fs.readdirSync(path.join(rootDir, 'packages')).filter(f => 
+    fs.statSync(path.join(rootDir, 'packages', f)).isDirectory()
+  );
+
+  packageDirs.forEach(pkgName => {
+    // Check both patterns: packages/{pkg}/ographx/sequences/ and packages/{pkg}/.ographx/sequences/
+    const seqPaths = [
+      path.join(rootDir, 'packages', pkgName, 'ographx', 'sequences'),
+      path.join(rootDir, 'packages', pkgName, '.ographx', 'sequences')
+    ];
+
+    seqPaths.forEach(seqPath => {
+      if (!fs.existsSync(seqPath)) return;
+
+      fs.readdirSync(seqPath)
+        .filter(f => f.endsWith('.json') && !f.includes('index.json'))
+        .forEach(file => {
+          try {
+            const content = JSON.parse(fs.readFileSync(path.join(seqPath, file), 'utf-8'));
+            const id = content.id || file.replace('.json', '');
+            const movements = content.movements || [];
+            const beats = movements.reduce((sum, m) => sum + (m.items?.length || 0), 0);
+
+            // Skip if already added (avoid duplicates)
+            if (domains.some(d => d.id === id)) return;
+
+            // Generate complete MusicalSequence structure with sketch data
+            const sketch = {
+              title: content.name || id,
+              sequence: {
+                id: id,
+                name: content.name || id,
+                tempo: content.tempo || 120,
+                key: content.key || 'C Major',
+                timeSignature: content.timeSignature || '4/4',
+                category: 'orchestration'
+              },
+              phases: movements.map((m, idx) => ({
+                name: `Movement ${idx + 1}: ${m.name || 'Unnamed'}`,
+                items: m.items || []
+              }))
+            };
+
+            domains.push({
+              id: id,
+              name: content.name || id,
+              emoji: '🎼',
+              description: content.description || `Orchestration domain: ${content.name || id}`,
+              category: 'orchestration',
+              purpose: 'System orchestration',
+              relatedDomains: content.relatedDomains || [],
+              status: content.status || 'active',
+              sequenceFile: path.relative(rootDir, path.join(seqPath, file)),
+              movements: movements.length,
+              beats: beats,
+              tempo: content.tempo || 120,
+              key: content.key || 'C Major',
+              timeSignature: content.timeSignature || '4/4',
+              sketch: sketch
+            });
+
+            console.log(`✅ Auto-detected: ${pkgName}/${file} - ${content.name || id} (${movements.length} movements, ${beats} beats)`);
+          } catch (err) {
+            console.warn(`⚠️  Could not parse ${seqPath}/${file}: ${err.message}`);
+          }
+        });
+    });
+  });
 
   const registry = {
     metadata: {
