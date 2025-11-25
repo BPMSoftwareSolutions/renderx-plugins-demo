@@ -86,6 +86,174 @@ function renderSloTraceabilityPlan(jsonPath){
   return lines.join('\n');
 }
 
+function renderBddPipelineAnalysis(jsonPath){
+  const doc = JSON.parse(fs.readFileSync(jsonPath,'utf8'));
+  const jsonSourceRel = path.relative(process.cwd(), jsonPath).replace(/\\/g,'/');
+  const hash = sha256(JSON.stringify(doc));
+  const lines=[];
+  
+  lines.push('# BDD Pipeline Architecture & Orchestration Integration');
+  lines.push('');
+  lines.push(`Version: ${doc.version}`);
+  lines.push(`Generated: ${doc.generatedAt}`);
+  lines.push('');
+  lines.push(`<!-- GOVERNANCE: AUTO-GENERATED source=${jsonSourceRel} hash=${hash} -->`);
+  lines.push('');
+  
+  // Program Overview
+  if(doc.program){
+    lines.push('## Program Overview');
+    lines.push(`**${doc.program.name}**`);
+    lines.push('');
+    lines.push(doc.program.goal);
+    lines.push('');
+    
+    if(doc.program.principles && doc.program.principles.length){
+      lines.push('### Principles');
+      doc.program.principles.forEach(p=> lines.push(`- ${p}`));
+      lines.push('');
+    }
+    
+    if(doc.program.successMetrics){
+      lines.push('### Success Metrics');
+      lines.push('| Metric | Target | Description |');
+      lines.push('|--------|--------|-------------|');
+      Object.entries(doc.program.successMetrics).forEach(([k,v])=> {
+        lines.push(`| ${k} | ${v.target} | ${v.description} |`);
+      });
+      lines.push('');
+    }
+  }
+  
+  // Architecture
+  if(doc.architecture && doc.architecture.layers){
+    lines.push('## Architecture');
+    lines.push('');
+    doc.architecture.layers.forEach(layer=>{
+      lines.push(`### Layer: ${layer.name}`);
+      lines.push(`*${layer.id}*`);
+      lines.push('');
+      if(layer.components && layer.components.length){
+        layer.components.forEach(comp=>{
+          lines.push(`- **${comp.name}**: ${comp.role}`);
+          if(comp.path) lines.push(`  - Path: \`${comp.path}\``);
+          if(comp.trigger) lines.push(`  - Trigger: \`${comp.trigger}\``);
+          if(comp.interface) lines.push(`  - Interface: \`${comp.interface}\``);
+        });
+      }
+      lines.push('');
+    });
+  }
+  
+  // Sprints
+  if(doc.sprints && doc.sprints.length){
+    lines.push('## Sprints');
+    lines.push('');
+    doc.sprints.forEach(sprint=>{
+      lines.push(`### Sprint ${sprint.id}: ${sprint.name}`);
+      lines.push(`**Status**: ${sprint.status} | **Duration**: ${sprint.durationWeeks}w`);
+      lines.push('');
+      if(sprint.objectives && sprint.objectives.length){
+        lines.push('**Objectives**:');
+        sprint.objectives.forEach(obj=> lines.push(`- ${obj}`));
+        lines.push('');
+      }
+      if(sprint.acceptanceCriteria && sprint.acceptanceCriteria.length){
+        lines.push('**Acceptance Criteria**:');
+        sprint.acceptanceCriteria.forEach(ac=> lines.push(`- ${ac}`));
+        lines.push('');
+      }
+    });
+  }
+  
+  // Key Insights
+  if(doc.keyInsights && doc.keyInsights.length){
+    lines.push('## Key Insights');
+    doc.keyInsights.forEach(insight=> lines.push(`- ${insight}`));
+    lines.push('');
+  }
+  
+  lines.push('---');
+  lines.push('This markdown is auto-generated from JSON. Do not edit directly.');
+  lines.push('');
+  
+  return lines.join('\n');
+}
+
+function renderBddPipelineVisualArchitecture(jsonPath){
+  const doc = JSON.parse(fs.readFileSync(jsonPath,'utf8'));
+  const jsonSourceRel = path.relative(process.cwd(), jsonPath).replace(/\\/g,'/');
+  const hash = sha256(JSON.stringify(doc));
+  const lines=[];
+  
+  lines.push('# BDD Pipeline Visual Architecture & Integration Patterns');
+  lines.push('');
+  lines.push(`Version: ${doc.version}`);
+  lines.push(`Generated: ${doc.generatedAt}`);
+  lines.push('');
+  lines.push(`<!-- GOVERNANCE: AUTO-GENERATED source=${jsonSourceRel} hash=${hash} -->`);
+  lines.push('');
+  
+  // Overview
+  if(doc.overview){
+    lines.push('## Overview');
+    lines.push(doc.overview.description);
+    lines.push('');
+    lines.push(`**Scope**: ${doc.overview.scope}`);
+    lines.push('');
+  }
+  
+  // Diagrams
+  if(doc.architectureDiagrams && doc.architectureDiagrams.length){
+    lines.push('## Architecture Diagrams');
+    lines.push('');
+    doc.architectureDiagrams.forEach(diagram=>{
+      lines.push(`### ${diagram.name}`);
+      lines.push(`*${diagram.description}*`);
+      lines.push('');
+      if(diagram.asciiDiagram){
+        lines.push('```');
+        lines.push(diagram.asciiDiagram);
+        lines.push('```');
+        lines.push('');
+      }
+    });
+  }
+  
+  // Integration Patterns
+  if(doc.integrationPatterns && doc.integrationPatterns.length){
+    lines.push('## Integration Patterns');
+    lines.push('');
+    doc.integrationPatterns.forEach(pattern=>{
+      lines.push(`### ${pattern.name}`);
+      lines.push(pattern.description);
+      lines.push('');
+      if(pattern.trigger) lines.push(`**Trigger**: \`${pattern.trigger}\``);
+      if(pattern.process && pattern.process.length){
+        lines.push('**Process**:');
+        pattern.process.forEach((step,i)=> lines.push(`${i+1}. ${step}`));
+      }
+      lines.push('');
+    });
+  }
+  
+  // Key Concepts
+  if(doc.keyTechnicalConcepts && doc.keyTechnicalConcepts.length){
+    lines.push('## Key Technical Concepts');
+    lines.push('');
+    doc.keyTechnicalConcepts.forEach(concept=>{
+      lines.push(`- **${concept.concept}**: ${concept.explanation}`);
+    });
+    lines.push('');
+  }
+  
+  lines.push('---');
+  lines.push('This markdown is auto-generated from JSON. Do not edit directly.');
+  lines.push('');
+  
+  return lines.join('\n');
+}
+
 function main(){
   const manifest = loadManifest();
   const results=[];
@@ -98,6 +266,10 @@ function main(){
     let rendered;
     if(entry.id === 'slo-traceability-plan-md'){
       rendered = renderSloTraceabilityPlan(srcPath);
+    } else if(entry.id === 'bdd-pipeline-analysis-md'){
+      rendered = renderBddPipelineAnalysis(srcPath);
+    } else if(entry.id === 'bdd-pipeline-visual-architecture-md'){
+      rendered = renderBddPipelineVisualArchitecture(srcPath);
     } else {
       console.warn('Unknown generator id:', entry.id); continue;
     }

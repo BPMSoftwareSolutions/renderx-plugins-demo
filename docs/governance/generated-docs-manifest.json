@@ -8,6 +8,22 @@
       "generator": "scripts/generate-governance-docs.cjs",
       "hash_strategy": "sha256(json_source)",
       "auto_generated_header": "<!-- GOVERNANCE: AUTO-GENERATED source=SLO_DASHBOARD_TRACEABILITY_PLAN.json -->"
+    },
+    {
+      "id": "bdd-pipeline-analysis-md",
+      "source": "docs/governance/bdd-pipeline-analysis.json",
+      "output": "docs/governance/BDD_PIPELINE_ANALYSIS.md",
+      "generator": "scripts/generate-governance-docs.cjs",
+      "hash_strategy": "sha256(json_source)",
+      "auto_generated_header": "<!-- GOVERNANCE: AUTO-GENERATED source=bdd-pipeline-analysis.json -->"
+    },
+    {
+      "id": "bdd-pipeline-visual-architecture-md",
+      "source": "docs/governance/bdd-pipeline-visual-architecture.json",
+      "output": "docs/governance/BDD_PIPELINE_VISUAL_ARCHITECTURE.md",
+      "generator": "scripts/generate-governance-docs.cjs",
+      "hash_strategy": "sha256(json_source)",
+      "auto_generated_header": "<!-- GOVERNANCE: AUTO-GENERATED source=bdd-pipeline-visual-architecture.json -->"
     }
   ]
 }
