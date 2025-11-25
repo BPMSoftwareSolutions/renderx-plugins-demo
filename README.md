@@ -29,6 +29,13 @@ Check out these supporting projects for more detail on the underlying architectu
 - **renderx-plugins** — core utilities, base interfaces, and manifest schema for RenderX-compatible plugins:
   https://github.com/BPMSoftwareSolutions/renderx-plugins/blob/main/README.md
 
+## Governance Tooling Registry
+
+- Source of truth lives in `docs/governance/tools-registry.json`; it is the JSON-first index of every cross-cutting governance, orchestration, telemetry, and auditing tool.
+- The markdown reflection `docs/governance/TOOLS_REGISTRY.md` is auto-generated via `npm run generate:governance:registry` (also executed by `npm run generate:governance:docs`).
+- Validation runs through `npm run validate:governance:registry` and is automatically wired into `npm run governance` so CI fails on drift or missing scripts.
+- Each tool record captures domain, pipeline stage, primary commands, and artifacts to keep `UNIFIED_GOVERNANCE_AUTHORITY.json` alignment transparent.
+
 ## � Telemetry Governance & Traceability System
 
 This repository includes a comprehensive **5-layer telemetry governance and traceability system** that provides complete visibility into component health, data transformations, and system architecture.

@@ -1,0 +1,1617 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-24T00:00:00.000Z",
+  "domains": {
+    "governance": {
+      "name": "Governance & Documentation",
+      "description": "Ensures JSON-first documentation, provenance, and drift-proof governance assets.",
+      "owningTeam": "Governance Systems Guild",
+      "tools": [
+        {
+          "id": "governance-docs-framework-generator",
+          "domain": "governance",
+          "description": "Generates the DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md framework from the orchestration audit plan.",
+          "file": "scripts/generate-documentation-governance-framework.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:governance:framework",
+            "direct": "node scripts/generate-documentation-governance-framework.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 110,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:governance:docs",
+              "validate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-docs-index-generator",
+          "domain": "governance",
+          "description": "Builds the DOCUMENTATION_GOVERNANCE_INDEX.md navigation guide.",
+          "file": "scripts/generate-documentation-governance-index.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:governance:index",
+            "direct": "node scripts/generate-documentation-governance-index.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 120,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/DOCUMENTATION_GOVERNANCE_INDEX.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:governance:docs",
+              "validate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-docs-implementation-report",
+          "domain": "governance",
+          "description": "Captures the implementation complete report for governance enforcement.",
+          "file": "scripts/generate-governance-implementation-report.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:governance:implementation",
+            "direct": "node scripts/generate-governance-implementation-report.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 130,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/DOCUMENTATION_GOVERNANCE_IMPLEMENTATION_COMPLETE.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:governance:docs",
+              "validate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-pattern-achievement",
+          "domain": "governance",
+          "description": "Documents the pattern recognition achievement file used as evidence of compliance.",
+          "file": "scripts/generate-pattern-recognition-achievement.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:governance:pattern",
+            "direct": "node scripts/generate-pattern-recognition-achievement.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 140,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/PATTERN_RECOGNITION_ACHIEVEMENT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:governance:docs",
+              "validate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-doc-drift-audit",
+          "domain": "governance",
+          "description": "Runs the documentation drift audit, producing manifest and risk reports.",
+          "file": "scripts/generate-document-drift-audit.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "audit:documentation:drift",
+            "direct": "node scripts/generate-document-drift-audit.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 10,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json",
+              "docs/**/*.md"
+            ],
+            "outputs": [
+              ".generated/documentation-drift-audit.json",
+              "docs/governance/DOCUMENTATION_DRIFT_AUDIT_REPORT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "validate:governance:docs",
+              "governance"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-doc-provenance-validator",
+          "domain": "governance",
+          "description": "Validates provenance markers so governed docs always include authority headers.",
+          "file": "scripts/verify-doc-provenance.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "docs:verify",
+            "direct": "node scripts/verify-doc-provenance.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 20,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/**/*.md"
+            ],
+            "outputs": [
+              ".generated/doc-provenance-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "governance",
+              "validate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-generated-docs-validator",
+          "domain": "governance",
+          "description": "Runs manifest-based validation to ensure governed markdown matches JSON authorities.",
+          "file": "scripts/validate-generated-docs.cjs",
+          "type": "node-cjs",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "validate:governance:docs",
+            "direct": "node scripts/validate-generated-docs.cjs"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 25,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/generated-docs-manifest.json",
+              "docs/**/*.md"
+            ],
+            "outputs": [
+              ".generated/governance-docs-validation.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "validate:governance:docs",
+              "governance"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-root-cleanliness-validator",
+          "domain": "governance",
+          "description": "Ensures the repo root contains no transient or violating artifacts before release.",
+          "file": "scripts/verify-root-cleanliness.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "verify:root-cleanliness",
+            "direct": "node scripts/verify-root-cleanliness.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 30,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "*"
+            ],
+            "outputs": []
+          },
+          "governance": {
+            "enforcedBy": [
+              "ci",
+              "validate:agent:behavior"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-docs-batch-generator",
+          "domain": "governance",
+          "description": "Aggregates governance manifest entries and regenerates every governed markdown artifact.",
+          "file": "scripts/generate-governance-docs.cjs",
+          "type": "node-cjs",
+          "role": "registry-generator",
+          "commands": {
+            "npmScript": "generate:governance:docs",
+            "direct": "node scripts/generate-governance-docs.cjs"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 40,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/generated-docs-manifest.json"
+            ],
+            "outputs": [
+              "docs/governance/*.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:governance:docs",
+              "validate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-tools-registry-generator",
+          "domain": "governance",
+          "description": "Generates the TOOLS_REGISTRY.md documentation from the JSON registry for transparency.",
+          "file": "scripts/generate-tools-registry-docs.js",
+          "type": "node-esm",
+          "role": "registry-generator",
+          "commands": {
+            "npmScript": "generate:governance:registry",
+            "direct": "node scripts/generate-tools-registry-docs.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 45,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/tools-registry.json"
+            ],
+            "outputs": [
+              "docs/governance/TOOLS_REGISTRY.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:governance:registry",
+              "generate:governance:docs"
+            ],
+            "category": "doc-governance"
+          }
+        },
+        {
+          "id": "governance-tools-registry-validator",
+          "domain": "governance",
+          "description": "Validates tool catalog coverage, file existence, and npm wiring to prevent drift.",
+          "file": "scripts/validate-tools-registry.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "validate:governance:registry",
+            "direct": "node scripts/validate-tools-registry.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 46,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/tools-registry.json",
+              "package.json"
+            ],
+            "outputs": []
+          },
+          "governance": {
+            "enforcedBy": [
+              "validate:governance:registry",
+              "governance"
+            ],
+            "category": "doc-governance"
+          }
+        }
+      ]
+    },
+    "orchestration": {
+      "name": "Orchestration Systems",
+      "description": "Transforms plugin catalogs into orchestration manifests, docs, and diagrams.",
+      "owningTeam": "Orchestration Patterns Group",
+      "tools": [
+        {
+          "id": "orchestration-domains-from-sequences",
+          "domain": "orchestration",
+          "description": "Reads catalog sequences and emits orchestration domain JSON manifests.",
+          "file": "scripts/generate-orchestration-domains-from-sequences.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "direct": "node scripts/generate-orchestration-domains-from-sequences.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 10,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/json-sequences/**/*.json"
+            ],
+            "outputs": [
+              "outputs/orchestration/domains.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "orchestration-docs-generator",
+          "domain": "orchestration",
+          "description": "Produces orchestration overview markdown from generated domain data.",
+          "file": "scripts/gen-orchestration-docs.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "direct": "node scripts/gen-orchestration-docs.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 20,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/orchestration/domains.json"
+            ],
+            "outputs": [
+              "docs/orchestration/ORCHESTRATION_OVERVIEW.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "orchestration-diagram-generator",
+          "domain": "orchestration",
+          "description": "Builds orchestration diagrams for visual verification of plugin flows.",
+          "file": "scripts/gen-orchestration-diagram.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "direct": "node scripts/gen-orchestration-diagram.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 30,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/json-components/**/*.json"
+            ],
+            "outputs": [
+              "docs/orchestration/ORCHESTRATION_DIAGRAM.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "orchestration-diff-generator",
+          "domain": "orchestration",
+          "description": "Generates textual diffs for orchestration changes between runs.",
+          "file": "scripts/gen-orchestration-diff.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:domains:diff",
+            "direct": "node scripts/gen-orchestration-diff.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 40,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/orchestration/domains.json",
+              "outputs/orchestration/domains.previous.json"
+            ],
+            "outputs": [
+              "docs/orchestration/ORCHESTRATION_DIFF.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "orchestration-audit",
+          "domain": "orchestration",
+          "description": "Audits orchestration plans for coverage, sequence gaps, and integrity warnings.",
+          "file": "scripts/audit-orchestration.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "direct": "node scripts/audit-orchestration.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 50,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/json-sequences/**/*.json",
+              "outputs/orchestration/domains.json"
+            ],
+            "outputs": [
+              "docs/orchestration/ORCHESTRATION_AUDIT_REPORT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "orchestration-registry"
+          }
+        }
+      ]
+    },
+    "ographx": {
+      "name": "Ographx Graph Authority",
+      "description": "Maintains model graphs and diagrams backing orchestration reasoning.",
+      "owningTeam": "Graph Intelligence Unit",
+      "tools": [
+        {
+          "id": "ographx-regenerate-all",
+          "domain": "ographx",
+          "description": "Regenerates the entire Ographx knowledge graph from authoritative manifests.",
+          "file": "packages/ographx/generators/regenerate_all.py",
+          "type": "python",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "regenerate:ographx",
+            "direct": "node scripts/run-python.js packages/ographx/generators/regenerate_all.py"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 5,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "outputs/ographx/graph.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests",
+              "regenerate:ographx"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "ographx-test-graph",
+          "domain": "ographx",
+          "description": "Builds a reduced Ographx graph used for regression testing instrumentation.",
+          "file": "packages/ographx/generators/generate_test_graph.py",
+          "type": "python",
+          "role": "self-healing",
+          "commands": {
+            "npmScript": "regenerate:ographx:test-graph",
+            "direct": "node scripts/run-python.js packages/ographx/generators/generate_test_graph.py"
+          },
+          "pipeline": {
+            "stage": "pretest",
+            "order": 10,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "outputs/ographx/test-graph.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pretest"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "ographx-self-sequences",
+          "domain": "ographx",
+          "description": "Generates sequence-focused graph data that powers orchestration manifests.",
+          "file": "packages/ographx/generators/generate_self_sequences.py",
+          "type": "python",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "regenerate:ographx:sequences",
+            "direct": "node scripts/run-python.js packages/ographx/generators/generate_self_sequences.py"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 8,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/json-sequences/**/*.json"
+            ],
+            "outputs": [
+              "outputs/ographx/self-sequences.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "regenerate:ographx:sequences",
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "ographx-sequence-flow-diagram",
+          "domain": "ographx",
+          "description": "Generates sequence flow diagrams for orchestration traces alongside the diagram suite.",
+          "file": "packages/ographx/generators/generate_sequence_flow.py",
+          "type": "python",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "regenerate:ographx:diagrams",
+            "direct": "node scripts/run-python.js packages/ographx/generators/generate_sequence_flow.py"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 16,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/ographx/graph.json"
+            ],
+            "outputs": [
+              "docs/orchestration/OGRAPHX_SEQUENCE_FLOW.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "regenerate:ographx",
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "ographx-analyze-graph",
+          "domain": "ographx",
+          "description": "Runs advanced analysis on the generated graph to flag structural anomalies.",
+          "file": "packages/ographx/analysis/analyze_self_graph.py",
+          "type": "python",
+          "role": "telemetry-analysis",
+          "commands": {
+            "npmScript": "regenerate:ographx:analysis",
+            "direct": "node scripts/run-python.js packages/ographx/analysis/analyze_self_graph.py"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 60,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/ographx/graph.json"
+            ],
+            "outputs": [
+              "outputs/ographx/graph-analysis.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "regenerate:ographx:analysis"
+            ],
+            "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "ographx-orchestration-diagram",
+          "domain": "ographx",
+          "description": "Generates orchestration diagrams rooted in Ographx data for visual audits.",
+          "file": "packages/ographx/generators/generate_orchestration_diagram.py",
+          "type": "python",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "regenerate:ographx:diagrams",
+            "direct": "node scripts/run-python.js packages/ographx/generators/generate_orchestration_diagram.py"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 15,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/ographx/graph.json"
+            ],
+            "outputs": [
+              "docs/orchestration/OGRAPHX_ORCHESTRATION_DIAGRAM.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "regenerate:ographx",
+              "pre:manifests"
+            ],
+            "category": "orchestration-registry"
+          }
+        }
+      ]
+    },
+    "telemetry": {
+      "name": "Telemetry Governance",
+      "description": "Keeps telemetry instructions, verification, and analysis synchronized with JSON sources.",
+      "owningTeam": "Telemetry Strike Team",
+      "tools": [
+        {
+          "id": "telemetry-instrumentation-generator",
+          "domain": "telemetry",
+          "description": "Produces DEMO_TELEMETRY_INSTRUMENTATION.md from telemetry manifests.",
+          "file": "scripts/generate-telemetry-instrumentation.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:telemetry:instrumentation",
+            "direct": "node scripts/generate-telemetry-instrumentation.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 150,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/DEMO_TELEMETRY_INSTRUMENTATION.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:telemetry:instrumentation",
+              "generate:governance:docs"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-quickstart-generator",
+          "domain": "telemetry",
+          "description": "Builds TELEMETRY_GOVERNANCE_QUICKSTART.md for operators.",
+          "file": "scripts/generate-telemetry-quickstart.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:telemetry:quickstart",
+            "direct": "node scripts/generate-telemetry-quickstart.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 151,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/TELEMETRY_GOVERNANCE_QUICKSTART.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:telemetry:quickstart",
+              "generate:governance:docs"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-verification-generator",
+          "domain": "telemetry",
+          "description": "Generates TELEMETRY_GOVERNANCE_VERIFICATION.md covering compliance status.",
+          "file": "scripts/generate-telemetry-verification.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:telemetry:verification",
+            "direct": "node scripts/generate-telemetry-verification.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 152,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/TELEMETRY_GOVERNANCE_VERIFICATION.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:telemetry:verification",
+              "generate:governance:docs"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-complete-generator",
+          "domain": "telemetry",
+          "description": "Produces TELEMETRY_GOVERNANCE_COMPLETE.md summarizing the telemetry program.",
+          "file": "scripts/generate-telemetry-complete.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:telemetry:complete",
+            "direct": "node scripts/generate-telemetry-complete.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 153,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/orchestration-audit-system-project-plan.json"
+            ],
+            "outputs": [
+              "docs/governance/TELEMETRY_GOVERNANCE_COMPLETE.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "generate:telemetry:complete",
+              "generate:governance:docs"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-matrix-generator",
+          "domain": "telemetry",
+          "description": "Builds telemetry matrices summarizing signal coverage across demos.",
+          "file": "scripts/generate-telemetry-matrix.js",
+          "type": "node-esm",
+          "role": "telemetry-analysis",
+          "commands": {
+            "direct": "node scripts/generate-telemetry-matrix.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 154,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "docs/governance/TELEMETRY_MATRIX.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-validation-report",
+          "domain": "telemetry",
+          "description": "Validates telemetry instrumentation and produces the governance validation report.",
+          "file": "scripts/generate-telemetry-validation-report.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "telemetry:validate",
+            "direct": "node scripts/generate-telemetry-validation-report.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 60,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/TELEMETRY_GOVERNANCE_VERIFICATION.md"
+            ],
+            "outputs": [
+              "docs/governance/TELEMETRY_GOVERNANCE_VALIDATION_REPORT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "telemetry:validate"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-filter-audit",
+          "domain": "telemetry",
+          "description": "Python audit that inspects telemetry diagnostic logs for signal propagation issues.",
+          "file": "scripts/telemetry_filter_audit.py",
+          "type": "python",
+          "role": "telemetry-analysis",
+          "commands": {
+            "direct": "python scripts/telemetry_filter_audit.py <log>"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "logs/telemetry/*.json"
+            ],
+            "outputs": [
+              "outputs/telemetry/telemetry_filter_audit.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "telemetry-reporting"
+          }
+        },
+        {
+          "id": "telemetry-rag-analyzer",
+          "domain": "telemetry",
+          "description": "Runs RAG telemetry analyzer to correlate instrumentation across the stack.",
+          "file": "scripts/rag-telemetry-analyzer.py",
+          "type": "python",
+          "role": "telemetry-analysis",
+          "commands": {
+            "npmScript": "rag:analyze-telemetry",
+            "direct": "python scripts/rag-telemetry-analyzer.py"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "logs/telemetry/*.json"
+            ],
+            "outputs": [
+              "outputs/telemetry/rag-telemetry-report.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "rag:analyze-telemetry"
+            ],
+            "category": "telemetry-reporting"
+          }
+        }
+      ]
+    },
+    "self_healing": {
+      "name": "Self-Healing & Pipeline Controls",
+      "description": "Protects delivery readiness with automated recovery and compliance checks.",
+      "owningTeam": "Reliability Engineering",
+      "tools": [
+        {
+          "id": "self-healing-auto-recovery",
+          "domain": "self_healing",
+          "description": "Runs the base auto recovery workflow",
+          "file": "scripts/auto-recovery.js",
+          "type": "node-esm",
+          "role": "self-healing",
+          "commands": {
+            "npmScript": "recover:feature",
+            "direct": "node scripts/auto-recovery.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "outputs/self-healing/recovery-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "recover:feature"
+            ],
+            "category": "self-healing"
+          }
+        },
+        {
+          "id": "self-healing-seven-layer",
+          "domain": "self_healing",
+          "description": "Executes the seven-layer recovery process for complex failures.",
+          "file": "scripts/auto-recovery-7-layer.js",
+          "type": "node-esm",
+          "role": "self-healing",
+          "commands": {
+            "direct": "node scripts/auto-recovery-7-layer.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "outputs/self-healing/7-layer-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "self-healing"
+          }
+        },
+        {
+          "id": "self-healing-pre-build-check",
+          "domain": "self_healing",
+          "description": "Ensures pipeline readiness before builds via pre-build compliance checks.",
+          "file": "scripts/pre-build-pipeline-check.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "verify:no-drift",
+            "direct": "node scripts/pre-build-pipeline-check.js"
+          },
+          "pipeline": {
+            "stage": "build",
+            "order": 5,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json",
+              "docs/**/*.md"
+            ],
+            "outputs": [
+              "outputs/self-healing/pre-build-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "verify:no-drift",
+              "governance"
+            ],
+            "category": "self-healing"
+          }
+        },
+        {
+          "id": "self-healing-enforce-pipeline",
+          "domain": "self_healing",
+          "description": "Enforces delivery pipeline guardrails and approvals.",
+          "file": "scripts/enforce-delivery-pipeline.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "enforce:pipeline",
+            "direct": "node scripts/enforce-delivery-pipeline.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 15,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/governance/*.md"
+            ],
+            "outputs": [
+              "outputs/self-healing/pipeline-enforcement.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "enforce:pipeline"
+            ],
+            "category": "self-healing"
+          }
+        },
+        {
+          "id": "self-healing-check-compliance",
+          "domain": "self_healing",
+          "description": "Checks pipeline compliance and best-practice coverage.",
+          "file": "scripts/check-pipeline-compliance.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "direct": "node scripts/check-pipeline-compliance.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 16,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/self-healing/pipeline-enforcement.json"
+            ],
+            "outputs": [
+              "outputs/self-healing/compliance-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "self-healing"
+          }
+        },
+        {
+          "id": "self-healing-pipeline-recovery",
+          "domain": "self_healing",
+          "description": "Runs the pipeline recovery workflow after enforcement failures.",
+          "file": "scripts/pipeline-recovery.js",
+          "type": "node-esm",
+          "role": "self-healing",
+          "commands": {
+            "direct": "node scripts/pipeline-recovery.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/self-healing/compliance-report.json"
+            ],
+            "outputs": [
+              "outputs/self-healing/pipeline-recovery.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "self-healing"
+          }
+        }
+      ]
+    },
+    "context_remounting": {
+      "name": "Context Remounting",
+      "description": "Maintains CAG algorithms and documentation for context remount sessions.",
+      "owningTeam": "Context Assurance Group",
+      "tools": [
+        {
+          "id": "context-remount-algorithm",
+          "domain": "context_remounting",
+          "description": "Runs the reference implementation of the context remount algorithm.",
+          "file": "scripts/context-remount-algorithm.js",
+          "type": "node-esm",
+          "role": "context-remounting",
+          "commands": {
+            "direct": "node scripts/context-remount-algorithm.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/json-components/**/*.json"
+            ],
+            "outputs": [
+              "outputs/context/context-remount-plan.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "context-remounting"
+          }
+        },
+        {
+          "id": "context-cag-engine",
+          "domain": "context_remounting",
+          "description": "Executes the CAG context engine flow to remount multi-level sessions.",
+          "file": "scripts/cag-context-engine.js",
+          "type": "node-esm",
+          "role": "context-remounting",
+          "commands": {
+            "direct": "node scripts/cag-context-engine.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/context/context-remount-plan.json"
+            ],
+            "outputs": [
+              "outputs/context/cag-engine-report.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "context-remounting"
+          }
+        },
+        {
+          "id": "context-cag-tree-mapper",
+          "domain": "context_remounting",
+          "description": "Generates the CAG tree map for visualizing remount nodes.",
+          "file": "scripts/cag-context-tree-mapper.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "direct": "node scripts/cag-context-tree-mapper.js"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/context/cag-engine-report.json"
+            ],
+            "outputs": [
+              "docs/context/CAG_CONTEXT_TREE.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "context-remounting"
+          }
+        },
+        {
+          "id": "context-session-docs",
+          "domain": "context_remounting",
+          "description": "Generates context session documentation for governance review.",
+          "file": "scripts/gen-context-session-docs.cjs",
+          "type": "node-cjs",
+          "role": "documentation-generator",
+          "commands": {
+            "npmScript": "generate:context:session",
+            "direct": "node scripts/gen-context-session-docs.cjs"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 70,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "docs/context/CONTEXT_SESSION_DOCS.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "context-remounting"
+          }
+        },
+        {
+          "id": "context-integrity-audit",
+          "domain": "context_remounting",
+          "description": "Python guardrail verifying context remount integrity vs. telemetry evidence.",
+          "file": "scripts/context_integrity.py",
+          "type": "python",
+          "role": "audit-validator",
+          "commands": {
+            "direct": "python scripts/context_integrity.py"
+          },
+          "pipeline": {
+            "stage": "manual",
+            "order": null,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/context/**/*.json"
+            ],
+            "outputs": [
+              "outputs/context/context-integrity-report.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "context-remounting"
+          }
+        }
+      ]
+    },
+    "auditing": {
+      "name": "Audit & Integrity",
+      "description": "Hashing, provenance, and compliance tooling for build artifacts and APIs.",
+      "owningTeam": "Audit & Integrity Office",
+      "tools": [
+        {
+          "id": "audit-comprehensive",
+          "domain": "auditing",
+          "description": "Runs the comprehensive governance audit pipeline.",
+          "file": "scripts/generate-comprehensive-audit.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "audit:comprehensive",
+            "direct": "node scripts/generate-comprehensive-audit.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 80,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json",
+              "docs/**/*.md"
+            ],
+            "outputs": [
+              "docs/governance/COMPREHENSIVE_AUDIT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "audit:comprehensive"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "audit-external-interactions",
+          "domain": "auditing",
+          "description": "Generates the external interactions audit covering data egress and integrations.",
+          "file": "scripts/generate-external-interactions-audit.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "audit:external",
+            "direct": "node scripts/generate-external-interactions-audit.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 81,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "catalog/**/*.json"
+            ],
+            "outputs": [
+              "docs/governance/EXTERNAL_INTERACTIONS_AUDIT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "audit:external"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "audit-compliance-report",
+          "domain": "auditing",
+          "description": "Builds the compliance report referenced by governance and CI.",
+          "file": "scripts/generate-compliance-report.js",
+          "type": "node-esm",
+          "role": "documentation-generator",
+          "commands": {
+            "direct": "node scripts/generate-compliance-report.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 160,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              ".generated/document-governance-manifest.json"
+            ],
+            "outputs": [
+              "docs/governance/COMPLIANCE_REPORT.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "audit-provenance-index",
+          "domain": "auditing",
+          "description": "Generates the provenance index used during manifest enforcement.",
+          "file": "scripts/generate-provenance-index.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "direct": "node scripts/generate-provenance-index.js"
+          },
+          "pipeline": {
+            "stage": "pre:manifests",
+            "order": 161,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "docs/**/*.md"
+            ],
+            "outputs": [
+              "docs/governance/PROVENANCE_INDEX.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "pre:manifests"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "artifacts-hash",
+          "domain": "auditing",
+          "description": "Hashes build artifacts for supply-chain integrity.",
+          "file": "scripts/hash-artifacts.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "artifacts:hash",
+            "direct": "node scripts/hash-artifacts.js dist/artifacts"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 90,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "dist/artifacts/**/*"
+            ],
+            "outputs": [
+              "dist/artifacts.hash.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "artifacts:ci"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "artifacts-validate",
+          "domain": "auditing",
+          "description": "Validates artifact manifests against expected hashes.",
+          "file": "scripts/validate-artifacts.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "artifacts:validate",
+            "direct": "node scripts/validate-artifacts.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 91,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "dist/artifacts/**/*",
+              "dist/artifacts.hash.json"
+            ],
+            "outputs": [
+              "outputs/audits/artifacts-validation.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "artifacts:ci"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "artifact-signature-verification",
+          "domain": "auditing",
+          "description": "Verifies artifact signature files for tamper detection.",
+          "file": "scripts/verify-artifact-signature.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "artifacts:verify:signature",
+            "direct": "node scripts/verify-artifact-signature.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 92,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "dist/artifacts/**/*",
+              "dist/artifacts.hash.json"
+            ],
+            "outputs": [
+              "outputs/audits/signature-verification.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "artifacts:ci"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "public-api-hash",
+          "domain": "auditing",
+          "description": "Hashes the public API surface for change tracking.",
+          "file": "scripts/hash-public-api.js",
+          "type": "node-esm",
+          "role": "integrity-governance",
+          "commands": {
+            "npmScript": "public-api:hash",
+            "direct": "node scripts/hash-public-api.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 93,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "packages/**/*.ts"
+            ],
+            "outputs": [
+              "outputs/audits/public-api.hash.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "public-api:hash",
+              "public-api:check"
+            ],
+            "category": "auditing"
+          }
+        },
+        {
+          "id": "public-api-validate",
+          "domain": "auditing",
+          "description": "Validates API hash files against expected baselines.",
+          "file": "scripts/validate-public-api.js",
+          "type": "node-esm",
+          "role": "audit-validator",
+          "commands": {
+            "npmScript": "validate:public-api",
+            "direct": "node scripts/validate-public-api.js"
+          },
+          "pipeline": {
+            "stage": "ci",
+            "order": 94,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "outputs/audits/public-api.hash.json"
+            ],
+            "outputs": [
+              "outputs/audits/public-api-validation.json"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "validate:public-api"
+            ],
+            "category": "auditing"
+          }
+        }
+      ]
+    }
+  }
+}
