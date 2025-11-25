@@ -267,7 +267,7 @@
         {
           "id": "governance-docs-batch-generator",
           "domain": "governance",
-          "description": "Aggregates governance manifest entries and regenerates every governed markdown artifact.",
+          "description": "Aggregates governance manifest entries and regenerates every governed markdown artifact including governance framework, SLO traceability, and BDD pipeline documentation.",
           "file": "scripts/generate-governance-docs.cjs",
           "type": "node-cjs",
           "role": "registry-generator",
@@ -282,10 +282,15 @@
           },
           "artifacts": {
             "inputs": [
-              "docs/governance/generated-docs-manifest.json"
+              "docs/governance/generated-docs-manifest.json",
+              "docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.json",
+              "docs/governance/bdd-pipeline-analysis.json",
+              "docs/governance/bdd-pipeline-visual-architecture.json"
             ],
             "outputs": [
-              "docs/governance/*.md"
+              "docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.md",
+              "docs/governance/BDD_PIPELINE_ANALYSIS.md",
+              "docs/governance/BDD_PIPELINE_VISUAL_ARCHITECTURE.md"
             ]
           },
           "governance": {
@@ -517,6 +522,70 @@
               "manual"
             ],
             "category": "orchestration-registry"
+          }
+        },
+        {
+          "id": "bdd-feature-stub-generator",
+          "domain": "orchestration",
+          "description": "Auto-generates BDD feature file scaffolds from orchestration domain registry with baseline scenarios.",
+          "file": "scripts/generate-bdd-feature-stubs.js",
+          "type": "node-esm",
+          "role": "specification-generator",
+          "commands": {
+            "npmScript": "generate:bdd:stubs",
+            "direct": "node scripts/generate-bdd-feature-stubs.js"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 51,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "orchestration-domains.json",
+              "packages/*/..ographx/sequences/*.json"
+            ],
+            "outputs": [
+              "packages/*/bdd/*.feature"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "bdd-specification"
+          }
+        },
+        {
+          "id": "bdd-interactive-wizard",
+          "domain": "orchestration",
+          "description": "Interactive CLI for enriching BDD feature file scenarios with movement/beat/event mappings from orchestration sequences.",
+          "file": "scripts/interactive-bdd-wizard.js",
+          "type": "node-esm",
+          "role": "specification-enricher",
+          "commands": {
+            "npmScript": "interactive:bdd:wizard",
+            "direct": "node scripts/interactive-bdd-wizard.js"
+          },
+          "pipeline": {
+            "stage": "development",
+            "order": 0,
+            "ciRequired": false
+          },
+          "artifacts": {
+            "inputs": [
+              "packages/*/bdd/*.feature",
+              "packages/*/..ographx/sequences/*.json"
+            ],
+            "outputs": [
+              "packages/*/bdd/*.feature"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "manual"
+            ],
+            "category": "bdd-specification"
           }
         }
       ]
