@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: d1415a63f001a94fc22492cab6a5849d11b1445bd96389b8ad141720014437dd
+Regenerate: npm run generate:governance:docs
+-->
+
 # Orchestration Sprint Reports
 
 > DO NOT EDIT. Generated from orchestration-audit-system-project-plan.json

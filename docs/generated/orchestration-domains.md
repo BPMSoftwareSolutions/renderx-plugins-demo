@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: bf7f2821505d4d70dcf0c27431f7905732951890fbd73a1c6d3927d7c4495f4f
+Regenerate: npm run generate:governance:docs
+-->
+
 # 🎼 Orchestration Domains
 
 **Generated from:** `orchestration-domains.json`

@@ -1,0 +1,437 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-23T00:00:00.000Z",
+  "overview": {
+    "goal": "Implement telemetry-driven Feature Shape governance across eight evolutionary capabilities.",
+    "principles": [
+      "Incremental instrumentation (no blocking refactors)",
+      "Deterministic hashing with explicit evolution annotation",
+      "Governance-as-code (budgets, contracts, evolutions, maps)",
+      "Fast feedback (<1 min local validation)",
+      "Composable telemetry layers (persistence → diffing → budgets → correlation)"
+    ],
+    "evolutions": [
+      "Shape Persistence & History",
+      "Shape Diffing",
+      "Confidence & Coverage Coupling",
+      "Shape Budget / SLO Overlay",
+      "Visual Telemetry Map",
+      "Versioned Shape Contracts",
+      "Mutation Localization",
+      "Orchestrated Multi-Feature Correlation"
+    ]
+  },
+  "sprints": [
+    {
+      "id": "sprint-1",
+      "name": "Foundations: Persistence + Hash + Demo Baseline",
+      "durationWeeks": 2,
+      "objectives": [
+        "Persist per-spec telemetry with rolling history (N=10)",
+        "Introduce stable shapeHash and evolution annotation flow",
+        "Integrate baseline shapes into existing demo artifacts"
+      ],
+      "deliverables": [
+        "telemetry/persistence.ts",
+        "telemetry/hash.ts",
+        "scripts/shape-diff-check.js",
+        ".generated/telemetry/<specName>/run-*.json",
+        ".generated/telemetry/index.json",
+        "shape-evolutions.json (annotation registry)",
+        "DEMO_SHAPE_HISTORY.md"
+      ],
+      "tasks": [
+        {
+          "key": "T1.1",
+          "desc": "Create persistence module writing normalized telemetry records per spec"
+        },
+        {
+          "key": "T1.2",
+          "desc": "Implement rolling retention (truncate >10 oldest records)"
+        },
+        {
+          "key": "T1.3",
+          "desc": "Define shape normalization (remove volatile timestamps for hashing)"
+        },
+        {
+          "key": "T1.4",
+          "desc": "Implement computeShapeHash(feature,event,beats,batonDiffCount,payloadKeys)"
+        },
+        {
+          "key": "T1.5",
+          "desc": "Add evolution annotation registry shape-evolutions.json"
+        },
+        {
+          "key": "T1.6",
+          "desc": "CLI script to compare new hash vs last persisted, enforce annotation"
+        },
+        {
+          "key": "T1.7",
+          "desc": "Instrument 3 existing Business BDD specs for persistence"
+        },
+        {
+          "key": "T1.8",
+          "desc": "Generate initial shape history markdown"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Running test suite produces per-spec telemetry directories and index",
+        "Unannotated shape change fails shape-diff-check script",
+        "History shows beats and duration deltas for at least 3 features"
+      ],
+      "risks": [
+        {
+          "risk": "Hash instability due to payload churn",
+          "mitigation": "Whitelist stable payload keys"
+        },
+        {
+          "risk": "Disk growth",
+          "mitigation": "Retention policy N=10"
+        }
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "sprint-2",
+      "name": "Enforcement + Coverage Coupling",
+      "durationWeeks": 2,
+      "objectives": [
+        "CI enforcement of annotated shape diffs",
+        "Attach coverageId to telemetry records",
+        "Enhance demo with coverage drift indicators"
+      ],
+      "deliverables": [
+        "scripts/ci-shape-verify.js",
+        "telemetry/coverage-coupling.ts",
+        ".generated/coverage/<coverageId>.json",
+        "Updated DEMO_SHAPE_HISTORY.md with coverageId"
+      ],
+      "tasks": [
+        {
+          "key": "T2.1",
+          "desc": "Integrate shape diff check into CI pipeline"
+        },
+        {
+          "key": "T2.2",
+          "desc": "Extract touched lines/functions from Vitest coverage map per correlationId"
+        },
+        {
+          "key": "T2.3",
+          "desc": "Generate deterministic coverageId hash"
+        },
+        {
+          "key": "T2.4",
+          "desc": "Persist coverage segment artifact"
+        },
+        {
+          "key": "T2.5",
+          "desc": "Update persistence to include coverageId"
+        },
+        {
+          "key": "T2.6",
+          "desc": "Demo enhancement with coverage drift table"
+        }
+      ],
+      "acceptanceCriteria": [
+        "CI fails on unannotated shape hash change",
+        "Each telemetry record now includes coverageId",
+        "Demo displays coverage diffs between last 3 runs"
+      ],
+      "risks": [
+        {
+          "risk": "Performance overhead capturing coverage per spec",
+          "mitigation": "Limit to changed files only"
+        }
+      ],
+      "dependencies": [
+        "sprint-1"
+      ]
+    },
+    {
+      "id": "sprint-3",
+      "name": "Budgets + Visual Telemetry Map",
+      "durationWeeks": 2,
+      "objectives": [
+        "Define and enforce shape budgets (beats,duration,batonDiff)",
+        "Emit degradation anomalies when budgets exceeded",
+        "Generate SVG telemetry map with node health coloring"
+      ],
+      "deliverables": [
+        "shape.budgets.json",
+        "telemetry/budget-evaluator.ts",
+        "scripts/generate-telemetry-map.js",
+        "telemetry-map.svg",
+        "Updated anomaly docs"
+      ],
+      "tasks": [
+        {
+          "key": "T3.1",
+          "desc": "Create budgets config and parser"
+        },
+        {
+          "key": "T3.2",
+          "desc": "Integrate evaluator in emitFeature endFeature path"
+        },
+        {
+          "key": "T3.3",
+          "desc": "Emit shape.degradation anomaly on breach"
+        },
+        {
+          "key": "T3.4",
+          "desc": "Aggregate telemetry indices for map generation"
+        },
+        {
+          "key": "T3.5",
+          "desc": "Render SVG nodes sized by run count, colored by budget status"
+        },
+        {
+          "key": "T3.6",
+          "desc": "Attach map to demo index.html with legend"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Budget breach triggers anomaly and node color change",
+        "Telemetry map generated locally and via CI artifact",
+        "Demo shows governance gaps (features lacking telemetry)"
+      ],
+      "risks": [
+        {
+          "risk": "Overly strict default budgets cause noise",
+          "mitigation": "Start lenient, tighten after baseline"
+        }
+      ],
+      "dependencies": [
+        "sprint-2"
+      ]
+    },
+    {
+      "id": "sprint-4",
+      "name": "Contracts, Domains & Correlated Composite Shapes",
+      "durationWeeks": 3,
+      "objectives": [
+        "Introduce versioned feature shape contracts",
+        "Add domain mutation localization",
+        "Build composite correlation artifacts across chained features",
+        "Finalize end-to-end demo narrative"
+      ],
+      "deliverables": [
+        "feature-shape.contract.json (per feature)",
+        "scripts/validate-shape-contracts.js",
+        "telemetry/domain-mutations.ts",
+        "scripts/build-composite-shapes.js",
+        "composites/<chainId>.json",
+        "DEMO_END_TO_END.md"
+      ],
+      "tasks": [
+        {
+          "key": "T4.1",
+          "desc": "Define contract schema + JSON Schema validator"
+        },
+        {
+          "key": "T4.2",
+          "desc": "CI enforcement of contract changes with approval registry"
+        },
+        {
+          "key": "T4.3",
+          "desc": "Domain mutation API and instrumentation in sample handlers"
+        },
+        {
+          "key": "T4.4",
+          "desc": "Correlation chain tracking across feature invocations"
+        },
+        {
+          "key": "T4.5",
+          "desc": "Composite shape aggregation and persistence"
+        },
+        {
+          "key": "T4.6",
+          "desc": "Finalize demo narrative and visuals"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Contract violations fail CI",
+        "Telemetry records include domain counts when mutations occur",
+        "Composite shape artifact produced for chained flow",
+        "Demo shows progression from single to composite governed shape"
+      ],
+      "risks": [
+        {
+          "risk": "Complex correlation chain edge cases",
+          "mitigation": "Start with linear chains, add branching later"
+        }
+      ],
+      "dependencies": [
+        "sprint-3"
+      ]
+    }
+  ],
+  "crossCutting": {
+    "tooling": [
+      "Reusable hashing util (sha256 stable serializer)",
+      "Annotation registry manager",
+      "Coverage segment extractor",
+      "Budget evaluator module",
+      "Contract schema validator"
+    ],
+    "documentation": [
+      "SHAPE_HISTORY.md",
+      "SHAPE_EVOLUTION.md",
+      "SHAPE_BUDGETS.md",
+      "SHAPE_CONTRACTS.md",
+      "TELEMETRY_MAP_GUIDE.md",
+      "DEMO_END_TO_END.md"
+    ],
+    "governanceArtifacts": [
+      "shape-evolutions.json",
+      "shape.budgets.json",
+      "feature-shape.contract.json",
+      "contract-changes.json"
+    ]
+  },
+  "ciIntegration": {
+    "preTest": [
+      "shape diff annotation check"
+    ],
+    "postTest": [
+      "telemetry persistence",
+      "budget evaluation",
+      "map generation (daily)"
+    ]
+  },
+  "metrics": {
+    "telemetryCoverage": "% of Business BDD specs emitting valid shape telemetry",
+    "shapeStability": "# of unannotated shape changes caught per sprint",
+    "budgetHealth": "% of features within defined budgets",
+    "correlationDepth": "Avg features per composite chain"
+  },
+  "specGeneration": {
+    "targetDirectory": "packages/self-healing/__tests__/business-bdd-handlers",
+    "namingPattern": "<index>-<slug>.spec.ts",
+    "startingIndex": 100,
+    "blueprints": [
+      {
+        "slug": "shape-persistence",
+        "feature": "shape-persistence",
+        "sprint": "sprint-1",
+        "handlerExpectation": "telemetry/persistence",
+        "description": "Persist telemetry records and verify rolling history maintenance.",
+        "acceptanceCriteria": [
+          "Generates run-* telemetry file",
+          "Updates index with retention (<=10 entries)",
+          "Contains shapeHash field"
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Persistence not yet implemented: expected telemetry run-* file and index retention."
+      },
+      {
+        "slug": "shape-hash-annotation",
+        "feature": "shape-hash-annotation",
+        "sprint": "sprint-1",
+        "handlerExpectation": "telemetry/hash",
+        "description": "Emit telemetry with stable hash and permit annotated evolution.",
+        "acceptanceCriteria": [
+          "shapeHash reproducible for identical runs",
+          "Unannotated change triggers planned failure (simulated)"
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Hash + annotation not implemented: expected stable shapeHash and annotation enforcement."
+      },
+      {
+        "slug": "coverage-coupling",
+        "feature": "coverage-coupling",
+        "sprint": "sprint-2",
+        "handlerExpectation": "telemetry/coverage-coupling",
+        "description": "Attach coverageId representing touched lines/functions to telemetry.",
+        "acceptanceCriteria": [
+          "coverageId present",
+          "coverageId changes only when touched code changes"
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Coverage coupling not implemented: expected coverageId generation."
+      },
+      {
+        "slug": "shape-budgets",
+        "feature": "shape-budgets",
+        "sprint": "sprint-3",
+        "handlerExpectation": "telemetry/budget-evaluator",
+        "description": "Detect budget breaches and emit degradation anomaly.",
+        "acceptanceCriteria": [
+          "Budget config loaded",
+          "Anomaly emitted when beats exceed threshold"
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Budget evaluator not implemented: expected anomaly emission."
+      },
+      {
+        "slug": "shape-contracts",
+        "feature": "shape-contracts",
+        "sprint": "sprint-4",
+        "handlerExpectation": "scripts/validate-shape-contracts",
+        "description": "Validate feature shape against versioned contract artifact.",
+        "acceptanceCriteria": [
+          "Contract file present",
+          "Violation detection test simulates mismatch"
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Contract validation not implemented: expected schema enforcement."
+      },
+      {
+        "slug": "multi-feature-correlation",
+        "feature": "multi-feature-correlation",
+        "sprint": "sprint-4",
+        "handlerExpectation": "scripts/build-composite-shapes",
+        "description": "Aggregate correlated telemetry chain into composite shape signature.",
+        "acceptanceCriteria": [
+          "Composite JSON produced",
+          "Aggregated beats equals sum of individual features"
+        ],
+        "tddPhase": "GREEN",
+        "redFailMessage": "Composite correlation not implemented: expected aggregated composite shape."
+      }
+    ],
+    "governance": {
+      "requiredFields": [
+        "feature",
+        "event",
+        "beats",
+        "status",
+        "correlationId",
+        "shapeHash"
+      ],
+      "validation": "Scripts ensure telemetry emissions match required fields and budgets before diffing."
+    }
+  },
+  "statusSummary": {
+    "currentSprint": "sprint-2",
+    "completedSprints": [
+      "sprint-1"
+    ],
+    "blueprintSprintIntegrity": "ok"
+  },
+  "blueprintStatuses": {
+    "shape-persistence": {
+      "status": "completed",
+      "owner": "telemetry-core"
+    },
+    "shape-hash-annotation": {
+      "status": "completed",
+      "owner": "telemetry-core"
+    },
+    "coverage-coupling": {
+      "status": "in-progress",
+      "owner": "telemetry-core"
+    },
+    "shape-budgets": {
+      "status": "pending",
+      "owner": "telemetry-core"
+    },
+    "shape-contracts": {
+      "status": "pending",
+      "owner": "telemetry-core"
+    },
+    "multi-feature-correlation": {
+      "status": "pending",
+      "owner": "telemetry-core"
+    }
+  }
+}

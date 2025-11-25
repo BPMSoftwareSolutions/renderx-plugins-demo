@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: f9ebda735d408b7988301e3d6d0f2035524687826d7da7af7a179afbfbe5c9ce
+Regenerate: npm run generate:governance:docs
+-->
+
 # Compliance Report
 
 > Generated 2025-11-24T20:07:05.609Z

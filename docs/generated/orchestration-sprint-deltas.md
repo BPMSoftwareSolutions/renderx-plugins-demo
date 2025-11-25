@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: 8379b70789ded4ecfb4c5091f7df4867ab56f17d067e9c15217130b79299e82f
+Regenerate: npm run generate:governance:docs
+-->
+
 # Sprint Deltas
 
 > DO NOT EDIT. Generated from plan metrics.

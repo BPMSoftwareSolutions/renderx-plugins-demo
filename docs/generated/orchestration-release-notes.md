@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: f73a72ffd6c92bd6f9e1ba2a16cefa9719349bce4a514d4b651bd6fd0a094821
+Regenerate: npm run generate:governance:docs
+-->
+
 # Orchestration Release Notes
 
 > DO NOT EDIT. Generated automatically from diff/compliance/plan/canonical reports.

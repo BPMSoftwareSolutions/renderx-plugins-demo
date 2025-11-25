@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-11-23T18:47:30.707Z",
+  "generatedAt": "2025-11-25T00:34:03.527Z",
   "unexpected": [
     "composites",
     "contracts",
@@ -9,6 +9,7 @@
     "docs",
     "eslint-rules",
     "examples",
+    "governance",
     "json-components",
     "json-sequences",
     "k8s",
@@ -26,8 +27,8 @@
   ],
   "roleCoverage": {
     "telemetry-core": 12,
-    "governance-script": 7,
+    "governance-script": 9,
     "test-spec": 96,
-    "generated-artifact": 47
+    "generated-artifact": 306
   }
 }

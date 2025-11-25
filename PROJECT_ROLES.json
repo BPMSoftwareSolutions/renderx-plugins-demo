@@ -1,0 +1,23 @@
+{
+  "roles": {
+    "telemetry-core": [
+      "packages/self-healing/src/telemetry/**"
+    ],
+    "governance-script": [
+      "scripts/*shape*",
+      "scripts/*budget*",
+      "scripts/generate-telemetry-map.js",
+      "scripts/generate-shape-history.js",
+      "scripts/validate-plan-integrity.js",
+      "scripts/run-governance-checks.js"
+    ],
+    "test-spec": [
+      "packages/self-healing/__tests__/**"
+    ],
+    "generated-artifact": [
+      ".generated/**",
+      "telemetry-map.svg",
+      "STRUCTURE_REPORT.md"
+    ]
+  }
+}

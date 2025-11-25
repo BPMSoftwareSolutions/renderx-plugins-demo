@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: 8c397e61880de1b32f1beac2a59d8cfae57eaf0fa81c71776bc382db95326449
+Regenerate: npm run generate:governance:docs
+-->
+
 # Telemetry Validation Report
 
 > DO NOT EDIT. Generated from sprint telemetry captures.

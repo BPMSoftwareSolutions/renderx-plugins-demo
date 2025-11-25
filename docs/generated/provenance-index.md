@@ -1,3 +1,8 @@
+<!-- AUTO-GENERATED
+Doc-Hash: fd7c85cff2b32a2fca1b8ae0af846a8f5a7e1136259fee2f9e77e737e3ffd964
+Regenerate: npm run generate:governance:docs
+-->
+
 # Provenance Index
 
 > DO NOT EDIT. Generated from sources
