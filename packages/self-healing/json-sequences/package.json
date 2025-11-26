@@ -31,8 +31,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@renderx-plugins/host-sdk": "workspace:*",
-    "@renderx-plugins/manifest-tools": "workspace:*"
+    "@renderx-plugins/host-sdk": "*",
+    "@renderx-plugins/manifest-tools": "*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
