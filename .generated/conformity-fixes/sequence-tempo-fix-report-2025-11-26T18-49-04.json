@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-11-26T18:49:04.107Z",
+  "type": "sequence-tempo-fix",
+  "description": "Sequence Tempo Field Addition Report",
+  "summary": {
+    "sequencesScanned": 26,
+    "sequencesNeedingTempo": 19,
+    "sequencesFixed": 19,
+    "sequencesFailed": 0,
+    "successRate": "100.0%"
+  },
+  "fixed": [
+    "real-estate-analyzer-search.json",
+    "symphonia-conformity-alignment-pipeline.json",
+    "symphony-report-pipeline.json",
+    "dashboard.export.report.json",
+    "dashboard.load.json",
+    "dashboard.refresh.metrics.json",
+    "classes.add.json",
+    "classes.remove.json",
+    "css.create.json",
+    "css.delete.json",
+    "css.edit.json",
+    "selection.show.json",
+    "ui.field.change.json",
+    "ui.field.validate.json",
+    "ui.init.batched.json",
+    "ui.init.json",
+    "ui.render.json",
+    "ui.section.toggle.json",
+    "update.json"
+  ],
+  "failed": []
+}

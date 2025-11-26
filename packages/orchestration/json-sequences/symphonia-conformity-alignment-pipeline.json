@@ -544,5 +544,7 @@
       "multi-phase"
     ],
     "documentation": "All documentation for this pipeline is auto-generated from this JSON authority file"
-  }
+  },
+  "tempo": 120,
+  "beats": 3
 }

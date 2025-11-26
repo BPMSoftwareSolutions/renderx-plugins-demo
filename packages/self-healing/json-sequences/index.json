@@ -46,6 +46,6 @@
       "description": "Track fix effectiveness and update learning models",
       "file": "learning.track.json"
     }
-  ]
+  ],
+  "tempo": 120
 }
-

@@ -57,5 +57,6 @@
     }
   },
   "id": "baseline.metrics.establish",
-  "beats": 0
+  "beats": 1,
+  "tempo": 120
 }

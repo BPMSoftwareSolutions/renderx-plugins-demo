@@ -1,76 +1,52 @@
 # Symphonia Remediation Plan
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T18:44:53.123Z -->
+<!-- Generated: 2025-11-26T18:51:24.880Z -->
 
 ## 🎯 Prioritized Violations
 
-### Priority 1: CRITICAL (4)
+### Priority 1: CRITICAL (0)
 
 Must be fixed before production deployment.
 
 
-#### 1. symphonia-conformity-alignment-pipeline
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: undefined)
-- **Effort**: Immediate
 
-#### 2. symphony-report-pipeline
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: undefined)
-- **Effort**: Immediate
-
-#### 3. baseline.metrics.establish
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: 0)
-- **Effort**: Immediate
-
-#### 4. handler-implementation.workflow
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: 0)
-- **Effort**: Immediate
-
-
-### Priority 2: MAJOR (47)
+### Priority 2: MAJOR (20)
 
 Should be addressed in next sprint.
 
-- **control-panel-classes-add-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-classes-remove-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-css-create-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-css-delete-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-css-edit-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-selection-show-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-ui-field-change-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-ui-field-validate-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-ui-init-batched-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-ui-init-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-ui-render-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-ui-section-toggle-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **control-panel-update-symphony**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **symphonia-conformity-alignment-pipeline**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
-- **symphony-report-pipeline**: Invalid tempo: undefined
-  → Set tempo between 60-240 (standard: 120)
+- **cag-agent-workflow.feature**: Only 1 scenarios (need >= 2)
+  → Add scenario for alternative path or edge case
+- **graphing-orchestration.feature**: Only 1 scenarios (need >= 2)
+  → Add scenario for alternative path or edge case
+- **orchestration-audit-session.feature**: Only 1 scenarios (need >= 2)
+  → Add scenario for alternative path or edge case
+- **orchestration-audit-system.feature**: Only 1 scenarios (need >= 2)
+  → Add scenario for alternative path or edge case
+- **self-sequences.feature**: Only 1 scenarios (need >= 2)
+  → Add scenario for alternative path or edge case
+- **CanvasDrop.container-route.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **drop.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **select.overlay.helpers.spec.ts**: Missing proper context setup
+  → Add beforeEach hook with handler, mocks, input, output, error initialization
+- **select.overlay.helpers.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **select.overlay.helpers.spec.ts**: Missing error handling test
+  → Add test for error scenarios and exception handling
+- **advanced-line.augment.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **advanced-line.overlay.attach.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **advanced-line.overlay.drag.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **container-child-selection.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
+- **drag.overlay-hide.spec.ts**: Missing test cases
+  → Add at least one happy path test with it() and expect()
 
-... and 32 more
+... and 5 more
 
 
 ## 📈 Success Criteria
@@ -83,4 +59,4 @@ Should be addressed in next sprint.
 
 ---
 
-Generated: 2025-11-26T18:44:53.123Z
+Generated: 2025-11-26T18:51:24.880Z

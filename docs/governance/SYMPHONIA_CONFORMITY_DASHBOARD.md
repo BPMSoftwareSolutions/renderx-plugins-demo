@@ -1,13 +1,13 @@
 # Symphonia Conformity Dashboard
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T18:44:53.123Z -->
+<!-- Generated: 2025-11-26T18:51:24.880Z -->
 
 ## 🎼 Overall Conformity Score
 
-**50/100**
+**70/100**
 
-🔴 POOR
+⚠️  GOOD
 
 ---
 
@@ -17,58 +17,38 @@
 |-----------|-------|-----------|------------|
 | Orchestration Domain Conformity | 100/100 | 61 | 0 |
 | Contract Schema Conformity | 100/100 | 8 | 0 |
-| Sequence Flow Conformity | 0/100 | 27 | 31 |
+| Sequence Flow Conformity | 100/100 | 27 | 0 |
 | BDD Specification Conformity | 50/100 | 8 | 5 |
 | Handler Specification Conformity | 0/100 | 263 | 15 |
 
 
-## 🚨 Critical Violations (4)
+## 🚨 Critical Violations (0)
+
+✅ No critical violations
 
 
-### symphonia-conformity-alignment-pipeline
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: undefined)
+## ⚠️  Major Violations (20)
 
-### symphony-report-pipeline
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: undefined)
+- **cag-agent-workflow.feature**: Only 1 scenarios (need >= 2)
+- **graphing-orchestration.feature**: Only 1 scenarios (need >= 2)
+- **orchestration-audit-session.feature**: Only 1 scenarios (need >= 2)
+- **orchestration-audit-system.feature**: Only 1 scenarios (need >= 2)
+- **self-sequences.feature**: Only 1 scenarios (need >= 2)
+- **CanvasDrop.container-route.spec.ts**: Missing test cases
+- **drop.spec.ts**: Missing test cases
+- **select.overlay.helpers.spec.ts**: Missing proper context setup
+- **select.overlay.helpers.spec.ts**: Missing test cases
+- **select.overlay.helpers.spec.ts**: Missing error handling test
 
-### baseline.metrics.establish
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: 0)
-
-### handler-implementation.workflow
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: 0)
-
-
-## ⚠️  Major Violations (47)
-
-- **control-panel-classes-add-symphony**: Invalid tempo: undefined
-- **control-panel-classes-remove-symphony**: Invalid tempo: undefined
-- **control-panel-css-create-symphony**: Invalid tempo: undefined
-- **control-panel-css-delete-symphony**: Invalid tempo: undefined
-- **control-panel-css-edit-symphony**: Invalid tempo: undefined
-- **control-panel-selection-show-symphony**: Invalid tempo: undefined
-- **control-panel-ui-field-change-symphony**: Invalid tempo: undefined
-- **control-panel-ui-field-validate-symphony**: Invalid tempo: undefined
-- **control-panel-ui-init-batched-symphony**: Invalid tempo: undefined
-- **control-panel-ui-init-symphony**: Invalid tempo: undefined
-
-... and 37 more
+... and 10 more
 
 
 ## 📋 Recommendations
 
-- 🚨 CRITICAL: Fix all CRITICAL violations before deployment
 - ⚠️  MAJOR: Address MAJOR violations in next sprint
-- 🔴 Poor conformity - immediate remediation required
+- ⚠️  Good conformity - focus on CRITICAL and MAJOR issues
 
 ---
 
-Generated: 2025-11-26T18:44:53.123Z
+Generated: 2025-11-26T18:51:24.880Z
 Total Artifacts Scanned: 367

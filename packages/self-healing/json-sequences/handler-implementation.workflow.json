@@ -654,5 +654,6 @@
   "time_estimate": "~5 hours per handler",
   "status": "ready",
   "id": "handler-implementation.workflow",
-  "beats": 0
+  "beats": 1,
+  "tempo": 120
 }

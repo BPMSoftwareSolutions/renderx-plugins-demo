@@ -20,5 +20,6 @@
     }
   ],
   "name": "Dashboard.export.report",
-  "beats": 2
+  "beats": 2,
+  "tempo": 120
 }
