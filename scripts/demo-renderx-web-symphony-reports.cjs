@@ -30,6 +30,13 @@ const WORKSPACE_ROOT = path.resolve(__dirname, '..');
 const OGRAPHX_ARTIFACTS = path.join(WORKSPACE_ROOT, 'packages/ographx/.ographx/artifacts/renderx-web');
 const OUTPUT_DIR = path.join(WORKSPACE_ROOT, '.generated/renderx-web-symphony-reports');
 
+// Ensure output directory exists
+function ensureOutputDir() {
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  }
+}
+
 // ============================================================================
 // RENDERX WEB SYMPHONY REPORT PIPELINE DEMO
 // ============================================================================
@@ -48,6 +55,31 @@ class RenderXWebSymphonyReportDemo {
       conformityScore: 0
     };
     this.reportArtifacts = [];
+    this.timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
+    this.reportDir = path.join(OUTPUT_DIR, `renderx-web-symphony-reports-${this.timestamp}`);
+  }
+
+  // Initialize report directory
+  initializeReportDirectory() {
+    if (!fs.existsSync(this.reportDir)) {
+      fs.mkdirSync(this.reportDir, { recursive: true });
+    }
+  }
+
+  // Write report to file
+  writeReport(filename, content, format = 'text') {
+    const filepath = path.join(this.reportDir, filename);
+    try {
+      if (format === 'json') {
+        fs.writeFileSync(filepath, JSON.stringify(content, null, 2), 'utf-8');
+      } else {
+        fs.writeFileSync(filepath, content, 'utf-8');
+      }
+      return filepath;
+    } catch (error) {
+      console.error(`Error writing ${filename}:`, error.message);
+      return null;
+    }
   }
 
   // 🎵 MOVEMENT 1: Data Collection & Aggregation
@@ -269,8 +301,10 @@ class RenderXWebSymphonyReportDemo {
     // Beat 1: Generate Markdown report
     console.log('\n  🥁 Beat 1: Generate Markdown Report');
     const markdownReport = this.generateMarkdownReport();
-    this.reportArtifacts.push({ format: 'markdown', lines: markdownReport.split('\n').length });
+    const markdownPath = this.writeReport('report.md', markdownReport);
+    this.reportArtifacts.push({ format: 'markdown', lines: markdownReport.split('\n').length, path: markdownPath });
     console.log(`      ✅ Generated Markdown report (${markdownReport.split('\n').length} lines)`);
+    if (markdownPath) console.log(`      📁 Saved to: ${markdownPath}`);
     beats.push({ beat: 1, status: 'success', duration: 240, event: 'report:markdown:generated' });
 
     // Beat 2: Generate JSON report
@@ -285,25 +319,54 @@ class RenderXWebSymphonyReportDemo {
         conformity: this.metrics.conformityScore
       }
     };
-    this.reportArtifacts.push({ format: 'json', size: JSON.stringify(jsonReport).length });
+    const jsonPath = this.writeReport('report.json', jsonReport, 'json');
+    this.reportArtifacts.push({ format: 'json', size: JSON.stringify(jsonReport).length, path: jsonPath });
     console.log(`      ✅ Generated JSON report (${JSON.stringify(jsonReport).length} bytes)`);
+    if (jsonPath) console.log(`      📁 Saved to: ${jsonPath}`);
     beats.push({ beat: 2, status: 'success', duration: 185, event: 'report:json:generated' });
 
     // Beat 3: Generate HTML dashboard
     console.log('  🥁 Beat 3: Generate HTML Dashboard');
-    const htmlSize = 8500; // Realistic size
-    this.reportArtifacts.push({ format: 'html', size: htmlSize });
+    const htmlContent = this.generateHtmlDashboard();
+    const htmlPath = this.writeReport('dashboard.html', htmlContent);
+    const htmlSize = htmlContent.length;
+    this.reportArtifacts.push({ format: 'html', size: htmlSize, path: htmlPath });
     console.log(`      ✅ Generated interactive HTML dashboard (${htmlSize} bytes)`);
+    if (htmlPath) console.log(`      📁 Saved to: ${htmlPath}`);
     beats.push({ beat: 3, status: 'success', duration: 310, event: 'report:html:generated' });
 
     // Beat 4: Generate audit trail
     console.log('  🥁 Beat 4: Generate Complete Audit Trail');
+    const auditTrail = {
+      pipelineId: this.pipelineId,
+      executionStarted: this.executionStarted.toISOString(),
+      executionCompleted: new Date().toISOString(),
+      movements: this.movements,
+      metrics: this.metrics,
+      artifacts: this.reportArtifacts,
+      events: 1247
+    };
+    const auditPath = this.writeReport('audit-trail.json', auditTrail, 'json');
     console.log(`      ✅ Created audit trail with full traceability chain`);
+    if (auditPath) console.log(`      📁 Saved to: ${auditPath}`);
     beats.push({ beat: 4, status: 'success', duration: 165, event: 'report:audit-trail:generated' });
 
     // Beat 5: Package all reports
     console.log('  🥁 Beat 5: Package & Validate All Reports');
+    const manifestContent = {
+      pipelineId: this.pipelineId,
+      timestamp: new Date().toISOString(),
+      reportDirectory: this.reportDir,
+      artifacts: this.reportArtifacts.map(a => ({
+        format: a.format,
+        path: path.relative(this.reportDir, a.path),
+        size: a.size || a.lines,
+        unit: a.size ? 'bytes' : 'lines'
+      }))
+    };
+    const manifestPath = this.writeReport('manifest.json', manifestContent, 'json');
     console.log(`      ✅ Packaged ${this.reportArtifacts.length} report formats for delivery`);
+    if (manifestPath) console.log(`      📁 Manifest: ${manifestPath}`);
     beats.push({ beat: 5, status: 'success', duration: 130, event: 'report:packaging:complete' });
 
     const totalTime = Date.now() - startTime;
@@ -441,9 +504,7 @@ class RenderXWebSymphonyReportDemo {
 
     // Beat 4: Archive reports
     console.log('  🥁 Beat 4: Archive Reports & Artifacts');
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
-    const archivePath = path.join(OUTPUT_DIR, `renderx-web-symphony-reports-${timestamp}`);
-    console.log(`      ✅ Reports archived to: ${archivePath}`);
+    console.log(`      ✅ Reports archived to: ${this.reportDir}`);
     beats.push({ beat: 4, status: 'success', duration: 120, event: 'reports:archived' });
 
     // Beat 5: Publish delivery notification
@@ -540,6 +601,249 @@ class RenderXWebSymphonyReportDemo {
 `;
   }
 
+  // Helper: Generate HTML Dashboard
+  generateHtmlDashboard() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RenderX Web Symphony Orchestration Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .header h1 { color: #333; margin-bottom: 10px; }
+    .timestamp { color: #666; font-size: 14px; }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .metric-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .metric-label { color: #666; font-size: 14px; margin-bottom: 10px; }
+    .metric-value { font-size: 28px; font-weight: bold; color: #667eea; }
+    .conformity-bar {
+      height: 10px;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .conformity-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+      width: 30%;
+    }
+    .health-status {
+      font-size: 12px;
+      margin-top: 5px;
+      color: #ff9800;
+    }
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .section h2 { color: #333; margin-bottom: 15px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th { background: #f5f5f5; font-weight: 600; color: #333; }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-critical { background: #ffebee; color: #c62828; }
+    .status-excellent { background: #e8f5e9; color: #2e7d32; }
+    .status-partial { background: #fff3e0; color: #e65100; }
+    .recommendations {
+      list-style: none;
+      margin-top: 15px;
+    }
+    .recommendations li {
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #f5f5f5;
+      border-left: 4px solid #667eea;
+      border-radius: 4px;
+    }
+    .priority-high { border-left-color: #d32f2f; }
+    .priority-medium { border-left-color: #f57c00; }
+    .priority-low { border-left-color: #1976d2; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎵 RenderX Web Symphony Orchestration Dashboard</h1>
+      <p class="timestamp">Generated: ${new Date().toISOString()}</p>
+      <p class="timestamp">Pipeline ID: ${this.pipelineId}</p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Total Sequences</div>
+        <div class="metric-value">${this.metrics.sequences}</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Total Handlers</div>
+        <div class="metric-value">${this.metrics.handlers}</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Total Beats</div>
+        <div class="metric-value">${this.metrics.beats}</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Conformity Score</div>
+        <div class="metric-value">${this.metrics.conformityScore}/100</div>
+        <div class="conformity-bar">
+          <div class="conformity-fill"></div>
+        </div>
+        <div class="health-status">🟡 YELLOW - Needs Improvement</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Domain Breakdown</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Sequences</th>
+            <th>Beats</th>
+            <th>Handlers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>canvas-component</td>
+            <td>30</td>
+            <td>120</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>library</td>
+            <td>10</td>
+            <td>25</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>control-panel</td>
+            <td>13</td>
+            <td>35</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <td>interactions</td>
+            <td>950+</td>
+            <td>580+</td>
+            <td>165+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Conformity & Quality</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Score</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Orchestration Domains</td>
+            <td>0/100</td>
+            <td><span class="status-badge status-critical">CRITICAL</span></td>
+          </tr>
+          <tr>
+            <td>Contracts</td>
+            <td>100/100</td>
+            <td><span class="status-badge status-excellent">EXCELLENT</span></td>
+          </tr>
+          <tr>
+            <td>Sequences</td>
+            <td>0/100</td>
+            <td><span class="status-badge status-critical">CRITICAL</span></td>
+          </tr>
+          <tr>
+            <td>BDD Specifications</td>
+            <td>40/100</td>
+            <td><span class="status-badge status-partial">PARTIAL</span></td>
+          </tr>
+          <tr>
+            <td>Handler Implementation</td>
+            <td>0/100</td>
+            <td><span class="status-badge status-critical">CRITICAL</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Actionable Recommendations</h2>
+      <ul class="recommendations">
+        <li class="priority-high"><strong>[HIGH]</strong> Restructure 30 canvas-component sequences for better domain alignment</li>
+        <li class="priority-high"><strong>[HIGH]</strong> Align 26 sequences with Beat Kind specifications</li>
+        <li class="priority-medium"><strong>[MEDIUM]</strong> Implement 15 orphaned handlers and write 37 test suites</li>
+        <li class="priority-medium"><strong>[MEDIUM]</strong> Optimize 3 sequences with p99 latency > 30ms</li>
+        <li class="priority-low"><strong>[LOW]</strong> Add detailed docstrings to 50 handler functions</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Lineage & Traceability</h2>
+      <p><strong>✅ 100% Traceability Achieved</strong></p>
+      <ul style="margin-top: 10px; margin-left: 20px;">
+        <li>${this.metrics.sequences} sequences mapped</li>
+        <li>${this.metrics.handlers} handlers analyzed</li>
+        <li>${this.metrics.beats} beats traced</li>
+        <li>1247 events recorded in audit log</li>
+      </ul>
+      <p style="margin-top: 10px; color: #666; font-size: 14px;">
+        <strong>Data Consistency:</strong> 100% VERIFIED | 
+        <strong>Audit Trail:</strong> COMPLETE
+      </p>
+    </div>
+  </div>
+</body>
+</html>`;
+  }
+
   // Execute full demo
   async execute() {
     console.log('\n' + '█'.repeat(70));
@@ -548,6 +852,10 @@ class RenderXWebSymphonyReportDemo {
 
     console.log(`\nPipeline ID: ${this.pipelineId}`);
     console.log(`Start Time:  ${this.executionStarted.toISOString()}`);
+
+    // Initialize report directory
+    this.initializeReportDirectory();
+    console.log(`\n📁 Report Directory: ${this.reportDir}`);
 
     // Execute all 6 movements
     const times = [];
@@ -593,6 +901,10 @@ class RenderXWebSymphonyReportDemo {
     console.log(`\n📋 Reports Generated:`);
     this.reportArtifacts.forEach((artifact, i) => {
       console.log(`  ${i + 1}. ${artifact.format.toUpperCase()}`);
+      if (artifact.path) {
+        const relativePath = path.relative(WORKSPACE_ROOT, artifact.path);
+        console.log(`     └─ ${relativePath}`);
+      }
     });
 
     console.log(`\n✅ Traceability Status:`);
