@@ -565,13 +565,17 @@ class RenderXWebSymphonyReportDemo {
 
 ## Conformity & Quality
 
-| Dimension | Score | Status |
-|-----------|-------|--------|
-| Orchestration Domains | 0/100 | 🔴 CRITICAL |
-| Contracts | 100/100 | 🟢 EXCELLENT |
-| Sequences | 0/100 | 🔴 CRITICAL |
-| BDD Specifications | 40/100 | 🟡 PARTIAL |
-| Handler Implementation | 0/100 | 🔴 CRITICAL |
+**Conformity Scores** (Compliance with Symphonia Standards)
+
+| Dimension | Score | Violations | Status |
+|-----------|-------|-----------|--------|
+| Orchestration Domains | 0/100 | 30 | 🔴 CRITICAL |
+| Contracts | 100/100 | 0 | 🟢 EXCELLENT |
+| Sequences | 0/100 | 26 | 🔴 CRITICAL |
+| BDD Specifications | 50/100 | 5 | 🟡 PARTIAL |
+| Handler Implementation | 0/100 | 15 | 🔴 CRITICAL |
+
+**Note:** Dimension scores measure compliance with orchestration standards, not artifact counts. The 55 sequences and 247 handlers listed above are actual artifacts found in RenderX Web orchestration.
 
 ## Lineage & Traceability
 
