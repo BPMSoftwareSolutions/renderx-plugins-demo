@@ -44,7 +44,7 @@ describe("Canvas component deselection", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -157,4 +157,5 @@ describe("Canvas component deselection", () => {
     );
   });
 });
+
 

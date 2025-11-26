@@ -15,7 +15,7 @@ describe("React Component Rendering", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -153,4 +153,5 @@ describe("React Component Rendering", () => {
     );
   });
 });
+
 

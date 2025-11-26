@@ -22,7 +22,7 @@ describe("SVG schema → code editor mapping", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -62,4 +62,5 @@ describe("SVG schema → code editor mapping", () => {
     expect(labels).toContain("xMidYMid slice");
   });
 });
+
 

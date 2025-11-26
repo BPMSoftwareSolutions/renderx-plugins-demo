@@ -31,7 +31,7 @@ describe("canvas-component export.stage-crew", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -186,4 +186,5 @@ describe("canvas-component export.stage-crew", () => {
     });
   });
 });
+
 

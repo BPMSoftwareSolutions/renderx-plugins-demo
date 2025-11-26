@@ -44,7 +44,7 @@ describe('line overlay + resize handlers', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -138,3 +138,4 @@ describe('line overlay + resize handlers', () => {
     expect(bTop).toBeCloseTo(y2 - 5, 0);
   });
 });
+

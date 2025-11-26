@@ -51,6 +51,7 @@ export function getCurrentTheme(data: unknown, ctx: { payload: Record<string, un
     ctx.payload.currentTheme = currentTheme;
     return { theme: currentTheme };
   } catch (e) {
+    if (!ctx.payload) ctx.payload = {};
     ctx.logger?.warn?.("getCurrentTheme failed", e);
     ctx.payload.currentTheme = "dark";
     return { theme: "dark" };

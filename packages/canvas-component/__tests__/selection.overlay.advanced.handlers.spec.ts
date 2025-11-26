@@ -63,7 +63,7 @@ describe('advanced selection/overlay handlers batch', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -200,3 +200,4 @@ describe('advanced selection/overlay handlers batch', () => {
     expect(Object.keys(conductor.handlers)).toContain('library-handler');
   });
 });
+

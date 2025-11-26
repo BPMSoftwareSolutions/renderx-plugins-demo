@@ -16,7 +16,7 @@ describe("plugin-manifest runtime entry: @renderx-plugins/canvas-component", () 
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -37,4 +37,5 @@ describe("plugin-manifest runtime entry: @renderx-plugins/canvas-component", () 
     expect(entry.runtime?.export).toBe("register");
   });
 });
+
 

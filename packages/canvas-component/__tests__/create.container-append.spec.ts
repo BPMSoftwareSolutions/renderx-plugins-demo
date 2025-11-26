@@ -26,9 +26,9 @@ function makeChildTemplate() {
 }
 
 describe("create: appends under container when containerId provided", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -44,7 +44,7 @@ describe("create: appends under container when containerId provided", () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';

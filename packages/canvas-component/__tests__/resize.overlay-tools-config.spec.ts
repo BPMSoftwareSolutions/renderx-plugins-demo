@@ -22,7 +22,8 @@ describe("resize overlay driven by template tools config", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -35,7 +36,6 @@ describe("resize overlay driven by template tools config", () => {
   });
 
   it("shows only handles listed in data-resize-handles", () => {
-    const _ctx: any = { payload: {} };
     const template = {
       tag: "div",
       text: "",

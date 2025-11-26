@@ -3,6 +3,8 @@ import { extractElementContent } from "../../utils/content-extractor";
 
 export function deriveSelectionModel(data: any, ctx: any) {
   const { id } = data || {};
+  if (!ctx.payload) ctx.payload = {};
+  
   if (!id) {
     ctx.payload.selectionModel = null;
     return;

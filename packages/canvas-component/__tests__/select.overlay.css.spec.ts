@@ -27,7 +27,7 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -40,7 +40,7 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
   });
 
   it("sets overlay to border-box so its border doesn't expand beyond element bounds", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);
@@ -54,4 +54,5 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
     expect(overlay.style.boxSizing).toBe("border-box");
   });
 });
+
 

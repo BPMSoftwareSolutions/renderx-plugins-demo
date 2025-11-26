@@ -25,7 +25,7 @@ describe("Selection after externalization - comprehensive tests", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -352,3 +352,4 @@ describe("Selection after externalization - comprehensive tests", () => {
     });
   });
 });
+

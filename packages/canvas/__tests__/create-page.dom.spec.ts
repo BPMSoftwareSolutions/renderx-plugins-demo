@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 
 // Mock host SDK to make this package-level test self-contained
 vi.mock("@renderx-plugins/host-sdk", () => {
@@ -27,7 +27,7 @@ vi.mock("@renderx-plugins/host-sdk", () => {
 describe("CanvasPage drop orchestration (no UI node rendering)", () => {
   let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -43,7 +43,7 @@ describe("CanvasPage drop orchestration (no UI node rendering)", () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas"></div>';

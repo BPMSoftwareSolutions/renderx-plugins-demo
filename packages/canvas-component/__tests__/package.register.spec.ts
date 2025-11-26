@@ -25,7 +25,7 @@ describe('@renderx-plugins/canvas-component: package surface + register()', () =
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -47,4 +47,5 @@ describe('@renderx-plugins/canvas-component: package surface + register()', () =
     expect((c as any)._canvasComponentRegistered).toBe(true);
   });
 });
+
 

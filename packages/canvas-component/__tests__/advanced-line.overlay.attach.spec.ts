@@ -33,7 +33,7 @@ describe("Advanced Line overlay attaches on selection (flag ON)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -49,7 +49,7 @@ describe("Advanced Line overlay attaches on selection (flag ON)", () => {
   it.skip("creates #rx-adv-line-overlay and binds dataset targetId", () => {
     // TODO(#139 follow-up): Gate relies on host-sdk isFlagEnabled and rx-line on target;
     // jsdom quirks may prevent overlay creation via showSelectionOverlay in this harness.
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -73,4 +73,5 @@ describe("Advanced Line overlay attaches on selection (flag ON)", () => {
     clearFlagOverrides();
   });
 });
+
 

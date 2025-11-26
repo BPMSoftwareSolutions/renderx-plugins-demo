@@ -50,7 +50,7 @@ describe("canvas-component export.pure", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -239,4 +239,5 @@ describe("canvas-component export.pure", () => {
     });
   });
 });
+
 

@@ -41,7 +41,7 @@ describe("Selection routing loop regression", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -95,4 +95,5 @@ describe("Selection routing loop regression", () => {
     );
   });
 });
+
 

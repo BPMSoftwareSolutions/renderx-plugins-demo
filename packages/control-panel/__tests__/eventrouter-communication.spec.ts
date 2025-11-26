@@ -44,7 +44,7 @@ describe('Control Panel EventRouter Communication', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -194,4 +194,5 @@ describe('Control Panel EventRouter Communication', () => {
     expect(uiReceivedUpdate?.header?.id).toBe(id);
   });
 });
+
 

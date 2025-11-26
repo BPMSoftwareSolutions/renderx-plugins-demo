@@ -26,7 +26,8 @@ describe("library.handlers", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -145,7 +146,8 @@ describe("library.handlers", () => {
     const spy = vi.fn();
     // In real sequence flow, callback is in ctx.payload (preserved from loadComponents beat)
     // and data parameter is a different object without the callback
-    const _ctx: any = { payload: { components: payloadList, onComponentsLoaded: spy } };
+    ctx.payload = { components: payloadList, onComponentsLoaded: spy };
+    
     handlers.notifyUi({}, ctx); // Empty data - callback is in ctx.payload
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(payloadList);

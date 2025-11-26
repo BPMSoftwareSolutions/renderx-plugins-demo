@@ -19,7 +19,7 @@ function makeSvgLineTemplate() {
   } as any;
 }
 
-describe("Advanced Line handlers — moveLineManip", () => {
+describe("Advanced Line handlers â€” moveLineManip", () => {
   let ctx: any;
   beforeEach(() => {
     ctx = {
@@ -32,7 +32,7 @@ describe("Advanced Line handlers — moveLineManip", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -47,7 +47,7 @@ describe("Advanced Line handlers — moveLineManip", () => {
   });
 
   it("updates endpoint A and recomputes line geometry", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -70,9 +70,9 @@ describe("Advanced Line handlers — moveLineManip", () => {
     expect(line).toBeTruthy();
     const x1Init = Number(line!.getAttribute("x1"));
     const y1Init = Number(line!.getAttribute("y1"));
-    expect(x1Init).toBeGreaterThanOrEqual(8.2); // 10/120 * 100 ≈ 8.333
+    expect(x1Init).toBeGreaterThanOrEqual(8.2); // 10/120 * 100 â‰ˆ 8.333
     expect(x1Init).toBeLessThanOrEqual(8.4);
-    expect(y1Init).toBeGreaterThanOrEqual(16.6); // 10/60 * 100 ≈ 16.667
+    expect(y1Init).toBeGreaterThanOrEqual(16.6); // 10/60 * 100 â‰ˆ 16.667
     expect(y1Init).toBeLessThanOrEqual(16.8);
 
     // Move A by (+10,+10)
@@ -85,10 +85,11 @@ describe("Advanced Line handlers — moveLineManip", () => {
     const y1 = Number(line2!.getAttribute("y1"));
     expect(x1).toBeGreaterThanOrEqual(16.5);
     expect(x1).toBeLessThanOrEqual(16.8);
-    expect(y1).toBeGreaterThanOrEqual(33.2); // 20/60*100 ≈ 33.333
+    expect(y1).toBeGreaterThanOrEqual(33.2); // 20/60*100 â‰ˆ 33.333
     expect(y1).toBeLessThanOrEqual(33.5);
 
     clearFlagOverrides();
   });
 });
+
 

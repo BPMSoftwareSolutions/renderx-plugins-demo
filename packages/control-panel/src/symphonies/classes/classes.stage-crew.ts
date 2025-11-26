@@ -10,6 +10,7 @@ export function addClass(data: any, ctx: any) {
   element.classList.add(className);
   
   // Store updated classes in payload for UI notification
+  if (!ctx.payload) ctx.payload = {};
   ctx.payload.id = id;
   ctx.payload.updatedClasses = Array.from(element.classList);
 }
@@ -24,6 +25,7 @@ export function removeClass(data: any, ctx: any) {
   element.classList.remove(className);
   
   // Store updated classes in payload for UI notification
+  if (!ctx.payload) ctx.payload = {};
   ctx.payload.id = id;
   ctx.payload.updatedClasses = Array.from(element.classList);
 }

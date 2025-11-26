@@ -17,7 +17,7 @@ describe("@renderx-plugins/canvas-component: ESLint guardrails", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -42,4 +42,5 @@ describe("@renderx-plugins/canvas-component: ESLint guardrails", () => {
     expect(messages.some((m) => /no-restricted-imports/.test(String(m.ruleId)))).toBe(true);
   }, 30000);
 });
+
 

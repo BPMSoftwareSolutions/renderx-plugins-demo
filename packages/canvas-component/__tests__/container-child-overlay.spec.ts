@@ -36,9 +36,9 @@ function makeChildTemplate() {
 }
 
 describe("Container child overlay positioning issues (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -54,7 +54,7 @@ describe("Container child overlay positioning issues (migrated)", () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas" style="position:relative"></div>';

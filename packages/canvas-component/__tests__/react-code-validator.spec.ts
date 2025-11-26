@@ -14,7 +14,7 @@ describe('React Code Validator', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -182,4 +182,5 @@ describe('React Code Validator', () => {
     });
   });
 });
+
 

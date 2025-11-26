@@ -28,7 +28,7 @@ describe("SVG component resize behavior", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -41,7 +41,7 @@ describe("SVG component resize behavior", () => {
   });
 
   it("resizes outer dimensions while content preserves stroke thickness via CSS", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeSvgTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -78,4 +78,5 @@ describe("SVG component resize behavior", () => {
     expect(svg.getAttribute("preserveAspectRatio")).toBe("xMidYMid meet");
   });
 });
+
 

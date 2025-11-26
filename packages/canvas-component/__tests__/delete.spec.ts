@@ -49,7 +49,7 @@ describe("Canvas component delete", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -130,4 +130,5 @@ describe("Canvas component delete", () => {
     );
   });
 });
+
 

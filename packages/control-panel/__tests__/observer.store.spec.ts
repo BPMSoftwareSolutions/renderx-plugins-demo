@@ -22,7 +22,7 @@ describe("observer.store idempotency", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -55,4 +55,5 @@ describe("observer.store idempotency", () => {
     expect(getCssRegistryObserver()).toBeNull();
   });
 });
+
 

@@ -24,7 +24,7 @@ describe("attachStandardImportInteractions forwards drag positions", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -69,4 +69,5 @@ describe("attachStandardImportInteractions forwards drag positions", () => {
     );
   });
 });
+
 

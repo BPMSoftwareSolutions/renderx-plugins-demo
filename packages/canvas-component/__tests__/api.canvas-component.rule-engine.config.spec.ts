@@ -22,9 +22,9 @@ function makeConfig(): AllRulesConfig {
 }
 
 describe('canvas-component rule-engine config handlers (public API)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -34,13 +34,13 @@ describe('canvas-component rule-engine config handlers (public API)', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     // Clear any global RenderX componentRules to avoid cross-test pollution
@@ -94,3 +94,4 @@ describe('canvas-component rule-engine config handlers (public API)', () => {
     }
   });
 });
+

@@ -30,7 +30,8 @@ describe("canvas-component create beat (DOM-only)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -44,7 +45,6 @@ describe("canvas-component create beat (DOM-only)", () => {
   });
 
   it("creates a single element under #rx-canvas with text, position and dimensions", () => {
-    const _ctx: any = makeCtx();
     const template = makeTemplate();
 
     handlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -69,4 +69,5 @@ describe("canvas-component create beat (DOM-only)", () => {
     expect(styleTag).toBeTruthy();
   });
 });
+
 

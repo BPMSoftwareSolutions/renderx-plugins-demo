@@ -25,7 +25,7 @@ describe("Selection ID derivation and baton flow", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -314,3 +314,4 @@ describe("Selection ID derivation and baton flow", () => {
     });
   });
 });
+

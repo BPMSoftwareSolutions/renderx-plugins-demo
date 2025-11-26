@@ -1,6 +1,8 @@
 export const resolveTemplate = (data: any, ctx: any) => {
   const tpl = data?.component?.template;
   if (!tpl) throw new Error("Missing component template.");
+  
+  if (!ctx.payload) ctx.payload = {};
   ctx.payload.template = tpl;
 
   // Support ID override for import scenarios

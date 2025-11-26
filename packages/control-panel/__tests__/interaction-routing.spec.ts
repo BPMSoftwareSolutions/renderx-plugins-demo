@@ -14,7 +14,7 @@ describe("Control Panel interaction routing", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -46,4 +46,5 @@ describe("Control Panel interaction routing", () => {
     expect(route.sequenceId).toBe("control-panel-update-symphony");
   });
 });
+
 

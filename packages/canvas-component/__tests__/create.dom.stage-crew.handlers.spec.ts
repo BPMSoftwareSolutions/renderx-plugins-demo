@@ -1,11 +1,11 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { getCanvasOrThrow, createElementWithId, applyClasses, applyInlineStyle, appendTo } from '../src/symphonies/create/create.dom.stage-crew';
 
 describe('canvas-component create.dom.stage-crew handlers', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -15,13 +15,13 @@ describe('canvas-component create.dom.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas"></div>';
@@ -57,3 +57,4 @@ describe('canvas-component create.dom.stage-crew handlers', () => {
     expect(parent.contains(child)).toBe(true);
   });
 });
+

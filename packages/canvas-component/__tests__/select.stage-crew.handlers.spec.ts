@@ -15,7 +15,7 @@ describe('canvas-component select.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -61,3 +61,4 @@ describe('canvas-component select.stage-crew handlers', () => {
     expect(true).toBe(true);
   });
 });
+

@@ -32,7 +32,7 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -46,7 +46,7 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
 
   it.skip("hides overlay while dragging and restores visibility on drag end (drop)", () => {
     // Kept as skipped to drive future implementation
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);
@@ -61,4 +61,5 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
     dispatchMouse(document, "mouseup", { clientX: 80, clientY: 90 });
   });
 });
+
 

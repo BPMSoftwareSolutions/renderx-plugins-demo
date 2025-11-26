@@ -31,7 +31,7 @@ describe("SVG component (markup)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -44,7 +44,7 @@ describe("SVG component (markup)", () => {
   });
 
   it("applies svgMarkup as innerHTML on the <svg>", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeSvgTemplateWithMarkup();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -59,4 +59,5 @@ describe("SVG component (markup)", () => {
     expect(html).toContain("<rect");
   });
 });
+
 

@@ -2,12 +2,12 @@
 // Added minimal placeholder suite to prevent Vitest "No test suite found" failure.
 // Real handler tests live in canvas-component and other focused spec files.
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
 describe('canvas handlers placeholder', () => {
   let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -23,7 +23,7 @@ describe('canvas handlers placeholder', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
 	it('placeholder passes', () => {
 		expect(true).toBe(true);

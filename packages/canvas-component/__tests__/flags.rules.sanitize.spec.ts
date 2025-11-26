@@ -22,7 +22,7 @@ describe('feature-flags getFlagOverride', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -75,3 +75,4 @@ describe('sanitizeHtml', () => {
     expect(clean).toMatch(/https:\/\/example.com/);
   });
 });
+

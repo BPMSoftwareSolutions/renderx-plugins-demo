@@ -16,8 +16,8 @@
       "avgTime": 110,
       "errorRate": 0
     },
-    "lowSampleHandler": {
-      "count": 5,
+    "newHandlerLowSample": {
+      "count": 4,
       "avgTime": 95,
       "errorRate": 0.05
     }

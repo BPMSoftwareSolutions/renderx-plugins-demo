@@ -57,6 +57,7 @@ export const handlers = {
       // Leave list empty on error
     }
 
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.components = Array.isArray(list) ? list : [];
     // Preserve callback in payload for notifyUi beat to access
     if (typeof data?.onComponentsLoaded === "function") {
@@ -66,6 +67,7 @@ export const handlers = {
   },
   notifyUi(_data: any, ctx: any) {
     // Access callback from ctx.payload (preserved from loadComponents beat)
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.onComponentsLoaded?.(ctx.payload.components);
   },
 };

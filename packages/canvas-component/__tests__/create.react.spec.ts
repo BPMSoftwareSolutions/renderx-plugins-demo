@@ -77,7 +77,7 @@ describe("renderReact handler", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -295,3 +295,4 @@ describe("cleanupReactRoot", () => {
     expect(mockUnmount).not.toHaveBeenCalled();
   });
 });
+

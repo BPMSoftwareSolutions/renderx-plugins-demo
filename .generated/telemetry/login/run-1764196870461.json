@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-11-26T22:41:10.456Z",
+  "feature": "login",
+  "event": "login:completed",
+  "beats": 2,
+  "status": "ok",
+  "correlationId": "1fb9fdc2-5d98-4dd1-9d3a-2086959e24d2",
+  "durationMs": 1,
+  "sequenceSignature": "abc123",
+  "batonDiffCount": 0,
+  "payload": {
+    "result": {
+      "userId": "u1"
+    }
+  },
+  "shapeHash": "bdf81f04c5cc5a5c725aa3b5cb9930a1417c561f61c3ba6d9716c75baf566f4f",
+  "coverageId": "94e03bfd3f99367b7d5a32e9"
+}

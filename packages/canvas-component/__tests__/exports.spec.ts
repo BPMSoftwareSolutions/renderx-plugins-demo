@@ -13,7 +13,7 @@ describe('@renderx-plugins/canvas-component package exports', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -46,4 +46,5 @@ describe('@renderx-plugins/canvas-component package exports', () => {
     expect(typeof create.handlers).toBe('object');
   }, 120000);
 });
+
 

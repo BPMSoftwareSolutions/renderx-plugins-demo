@@ -24,10 +24,9 @@ describe('canvas-component drag.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any; // underscore to satisfy lint unused rule
   beforeEach(() => {
     document.body.innerHTML = '<div id="comp-1" class="rx-comp" style="position:absolute"></div>';
-    _ctx = createMockCtx();
+    ctx = createMockCtx();
   });
 
   it('updatePosition - moves element based on delta', () => {

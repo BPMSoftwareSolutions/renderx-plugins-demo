@@ -15,7 +15,8 @@ describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () =
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -34,22 +35,20 @@ describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () =
   });
 
   it("collects CSS from components with template.classRefs (current export format)", () => {
-    const _ctx: any = {
-      payload: {
-        components: [
-          {
-            id: "rx-node-vd8esh",
-            type: "button",
-            template: {
-              tag: "button",
-              classRefs: ["rx-comp", "rx-button", "rx-comp-button-vd8esh"],
-              style: {}
-            }
+    ctx.payload = {
+      components: [
+        {
+          id: "rx-node-vd8esh",
+          type: "button",
+          template: {
+            tag: "button",
+            classRefs: ["rx-comp", "rx-button", "rx-comp-button-vd8esh"],
+            style: {}
           }
-        ]
-      },
-      logger: { info: () => {}, error: () => {} }
+        }
+      ]
     };
+    ctx.logger = { info: () => {}, error: () => {} };
 
     collectCssClasses({}, ctx);
 
@@ -60,19 +59,17 @@ describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () =
   });
 
   it("still supports legacy components with classes property", () => {
-    const _ctx: any = {
-      payload: {
-        components: [
-          {
-            id: "legacy-comp",
-            type: "button",
-            classes: ["rx-comp", "rx-button"],
-            style: {}
-          }
-        ]
-      },
-      logger: { info: () => {}, error: () => {} }
+    ctx.payload = {
+      components: [
+        {
+          id: "legacy-comp",
+          type: "button",
+          classes: ["rx-comp", "rx-button"],
+          style: {}
+        }
+      ]
     };
+    ctx.logger = { info: () => {}, error: () => {} };
 
     collectCssClasses({}, ctx);
 
@@ -81,4 +78,5 @@ describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () =
     expect(ctx.payload.cssClassCount).toBeGreaterThan(0);
   });
 });
+
 

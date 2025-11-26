@@ -17,7 +17,7 @@ describe("registerAllSequences idempotency (canvas-component)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -40,4 +40,5 @@ describe("registerAllSequences idempotency (canvas-component)", () => {
     expect(new Set(secondIds).size).toBe(firstIds.length);
   });
 });
+
 

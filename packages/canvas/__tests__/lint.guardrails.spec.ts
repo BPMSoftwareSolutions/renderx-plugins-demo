@@ -5,7 +5,7 @@ import { ESLint } from "eslint";
 const cwd = path.resolve(__dirname, "..");
 
 describe("@renderx-plugins/canvas: ESLint guardrails", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

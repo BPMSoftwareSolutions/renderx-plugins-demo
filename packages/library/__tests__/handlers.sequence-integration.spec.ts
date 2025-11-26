@@ -25,7 +25,8 @@ describe("library.handlers - Two-Beat Sequence Integration", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 

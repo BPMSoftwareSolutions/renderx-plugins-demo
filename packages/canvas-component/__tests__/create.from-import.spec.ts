@@ -15,7 +15,7 @@ describe("transformImportToCreatePayload", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -67,4 +67,5 @@ describe("transformImportToCreatePayload", () => {
     expect(out.component?.template?.dimensions).toBeUndefined();
   });
 });
+
 

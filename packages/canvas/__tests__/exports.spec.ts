@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
 // NOTE: Temporary tolerance for the private prerelease where the published package
 // is a thin re-export that doesn't resolve in node_modules context.
@@ -7,7 +7,7 @@ import { describe, it, expect } from 'vitest';
 describe('@renderx-plugins/canvas package exports', () => {
   let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -23,7 +23,7 @@ describe('@renderx-plugins/canvas package exports', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   it('exposes CanvasPage and register()', async () => {
     let pkg: any;

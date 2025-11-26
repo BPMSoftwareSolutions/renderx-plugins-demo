@@ -52,7 +52,7 @@ describe("HTML component markup field", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -79,4 +79,5 @@ describe("HTML component markup field", () => {
     expect(markupField?.rendererProps?.rows).toBe(8);
   });
 });
+
 

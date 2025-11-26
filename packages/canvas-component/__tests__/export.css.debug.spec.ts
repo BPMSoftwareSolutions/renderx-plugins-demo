@@ -15,7 +15,7 @@ describe("Debug CSS collection in export (migrated)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -32,24 +32,22 @@ describe("Debug CSS collection in export (migrated)", () => {
   });
 
   it("debugs why cssClasses is not empty in export when classRefs provided", () => {
-    const _ctx: any = {
-      payload: {
-        components: [
-          {
-            id: "rx-node-et5orq",
-            type: "button",
-            template: {
-              tag: "button",
-              classRefs: ["rx-comp", "rx-button", "rx-comp-button-et5orq"],
-              style: {}
-            }
+    ctx.payload = {
+      components: [
+        {
+          id: "rx-node-et5orq",
+          type: "button",
+          template: {
+            tag: "button",
+            classRefs: ["rx-comp", "rx-button", "rx-comp-button-et5orq"],
+            style: {}
           }
-        ]
-      },
-      logger: {
-        info: (msg: string) => console.log("INFO:", msg),
-        error: (msg: string) => console.log("ERROR:", msg)
-      }
+        }
+      ]
+    };
+    ctx.logger = {
+      info: (msg: string) => console.log("INFO:", msg),
+      error: (msg: string) => console.log("ERROR:", msg)
     };
 
     collectCssClasses({}, ctx);
@@ -57,4 +55,5 @@ describe("Debug CSS collection in export (migrated)", () => {
     expect(Object.keys(ctx.payload.cssClasses || {}).length).toBeGreaterThan(0);
   });
 });
+
 

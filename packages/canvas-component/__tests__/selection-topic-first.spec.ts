@@ -41,7 +41,7 @@ describe("Topic-first selection approach", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -205,3 +205,4 @@ describe("Topic-first selection approach", () => {
     });
   });
 });
+

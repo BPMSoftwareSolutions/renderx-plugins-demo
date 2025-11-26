@@ -1,13 +1,13 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import path from "node:path";
 import { ESLint } from "eslint";
 
 const cwd = path.resolve(__dirname, "..");
 
 describe("@renderx-plugins/canvas-component: allowed-imports rule", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -17,13 +17,13 @@ describe("@renderx-plugins/canvas-component: allowed-imports rule", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   it("allows relative and approved bare imports", async () => {
     const eslint = new ESLint({ cwd });
@@ -54,4 +54,5 @@ describe("@renderx-plugins/canvas-component: allowed-imports rule", () => {
     expect(messages.some((m) => String(m.ruleId) === "allowed-imports/only-allowed")).toBe(true);
   }, 30000);
 });
+
 

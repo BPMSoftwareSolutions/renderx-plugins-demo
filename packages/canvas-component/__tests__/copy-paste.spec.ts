@@ -74,9 +74,9 @@ function createButton(ctx: any, id = "btn-1", position = { x: 30, y: 40 }) {
 }
 
 describe("canvas-component copy/paste", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -92,7 +92,7 @@ describe("canvas-component copy/paste", () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     setupCanvas();

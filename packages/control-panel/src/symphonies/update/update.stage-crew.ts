@@ -8,6 +8,8 @@ const lastTypeById: Record<string, string> = {};
 
 export function updateFromElement(data: any, ctx: any) {
   const { id, source } = data || {};
+  if (!ctx.payload) ctx.payload = {};
+  
   if (!id) {
     ctx.payload.selectionModel = null;
     return;

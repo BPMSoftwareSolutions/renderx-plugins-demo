@@ -192,3 +192,4 @@ describe("canvas-component resize (DOM-only)", () => {
   });
 });
 
+

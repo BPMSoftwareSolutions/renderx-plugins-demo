@@ -47,7 +47,7 @@ describe("React component code editor mapping", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -135,4 +135,5 @@ describe("React component code editor mapping", () => {
     expect(reactCodeField?.rendererProps?.placeholder).toBeTruthy();
   });
 });
+
 

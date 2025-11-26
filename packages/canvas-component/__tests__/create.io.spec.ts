@@ -14,7 +14,7 @@ describe("canvas-component create.io", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -58,4 +58,5 @@ describe("canvas-component create.io", () => {
     expect(() => (ctx as any).io.kv.put("k", "v")).toThrow();
   });
 });
+
 

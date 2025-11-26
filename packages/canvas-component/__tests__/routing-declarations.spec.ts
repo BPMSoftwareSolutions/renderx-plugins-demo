@@ -16,7 +16,7 @@ describe("Routing declarations for drag and resize.move sequences", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -148,3 +148,4 @@ describe("Routing declarations for drag and resize.move sequences", () => {
     expect(dragEndJson.movements[0].beats[0].handler).toBe("endDrag");
   });
 });
+

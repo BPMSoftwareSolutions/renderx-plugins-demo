@@ -21,9 +21,9 @@ function makeCtx() {
 }
 
 describe('canvas-component create.notify notifyUi handler (public API)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -39,7 +39,7 @@ describe('canvas-component create.notify notifyUi handler (public API)', () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   beforeEach(() => {
     // Reset spy calls between tests to avoid cross-test pollution

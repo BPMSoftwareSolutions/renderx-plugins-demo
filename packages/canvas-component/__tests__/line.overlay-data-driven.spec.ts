@@ -22,7 +22,7 @@ describe("line component overlay is data-driven and uses standard resize when co
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -48,7 +48,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   }
 
   it("uses box overlay when no data-overlay=line is set (ignores class heuristics)", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = createLineTemplate({
       "data-resize-enabled": "true",
       "data-resize-handles": "se,e,s",
@@ -72,7 +72,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   });
 
   it("resizes a line component via standard SE handle when enabled & handles provided", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = createLineTemplate({
       "data-resize-enabled": "true",
       "data-resize-handles": "se,e,s",
@@ -121,7 +121,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   });
 
   it("ignores data-overlay=line and still uses standard overlay", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = createLineTemplate({ "data-overlay": "line" });
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -141,4 +141,5 @@ describe("line component overlay is data-driven and uses standard resize when co
     expect(lineOverlay).toBeNull();
   });
 });
+
 

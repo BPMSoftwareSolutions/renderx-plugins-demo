@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import * as pkg from '../src/index';
 
 describe('@renderx-plugins/canvas: UI export + register()', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

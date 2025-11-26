@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import path from "node:path";
 import { ESLint } from "eslint";
 
@@ -7,7 +7,7 @@ const cwd = path.resolve(__dirname, "..");
 describe("@renderx-plugins/canvas: allowed-imports rule", () => {
   let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -23,7 +23,7 @@ describe("@renderx-plugins/canvas: allowed-imports rule", () => {
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   it("allows relative and approved bare imports", async () => {
     const eslint = new ESLint({ cwd });

@@ -33,7 +33,7 @@ describe('canvas-component paste.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -82,3 +82,4 @@ describe('canvas-component paste.stage-crew handlers', () => {
     await expect(notifyPasteComplete({}, {})).resolves.toBeUndefined();
   });
 });
+

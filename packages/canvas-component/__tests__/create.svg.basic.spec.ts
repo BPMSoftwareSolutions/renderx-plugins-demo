@@ -32,7 +32,8 @@ describe("SVG component (basic)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -45,7 +46,6 @@ describe("SVG component (basic)", () => {
   });
 
   it("creates an <svg.rx-svg> with non-scaling-stroke CSS and default attributes", () => {
-    const _ctx: any = makeCtx();
     const template = makeSvgTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

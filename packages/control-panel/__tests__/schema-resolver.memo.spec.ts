@@ -31,7 +31,7 @@ describe("SchemaResolverService memoization", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -97,4 +97,5 @@ describe("SchemaResolverService memoization", () => {
     expect(containerCalls).toBe(1);
   });
 });
+
 

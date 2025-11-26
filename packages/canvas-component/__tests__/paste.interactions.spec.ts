@@ -25,7 +25,7 @@ describe("paste interactions attach and publish drag events", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -66,4 +66,5 @@ describe("paste interactions attach and publish drag events", () => {
     );
   });
 });
+
 

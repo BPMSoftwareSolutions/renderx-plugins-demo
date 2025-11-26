@@ -18,7 +18,7 @@ describe('control-panel handlers handlers', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -27,11 +27,10 @@ describe('control-panel handlers handlers', () => {
     ctx = null;
   });
   // TODO: Set up test context and mocks
-  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-  _ctx = {};
+    ctx = {};
   });
 
   it('addClass - happy path', () => {
@@ -371,3 +370,4 @@ describe('control-panel handlers handlers', () => {
     expect(true).toBe(true);
   });
 });
+

@@ -37,7 +37,7 @@ describe("Canvas selection forwards to Control Panel (package)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -71,4 +71,5 @@ describe("Canvas selection forwards to Control Panel (package)", () => {
     }).not.toThrow();
   });
 });
+
 

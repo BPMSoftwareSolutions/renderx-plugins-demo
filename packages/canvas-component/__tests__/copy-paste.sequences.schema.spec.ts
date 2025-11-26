@@ -1,15 +1,15 @@
 /* @vitest-environment jsdom */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 type Beat = { dynamics?: string } & Record<string, unknown>;
 
 describe('copy/paste sequences schema (canvas-component)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -19,13 +19,13 @@ describe('copy/paste sequences schema (canvas-component)', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   const root = join(__dirname, '..', 'json-sequences', 'canvas-component');
   const files = [
@@ -45,4 +45,5 @@ describe('copy/paste sequences schema (canvas-component)', () => {
     }
   });
 });
+
 

@@ -32,7 +32,7 @@ describe("Host-like click-to-select harness forwards to canvas.component.select"
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -66,4 +66,5 @@ describe("Host-like click-to-select harness forwards to canvas.component.select"
     );
   });
 });
+
 

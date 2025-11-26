@@ -1,11 +1,11 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { toCreatePayloadFromData, transformClipboardToCreatePayload } from "../src/symphonies/create/create.from-import";
 
 describe("toCreatePayloadFromData (clipboard shape)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
-    ctx = {
+    _ctx = {
       handler: null, // TODO: Import handler
       mocks: {
         database: vi.fn(),
@@ -15,13 +15,13 @@ describe("toCreatePayloadFromData (clipboard shape)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
   afterEach(() => {
     vi.clearAllMocks();
-    ctx = null;
+    _ctx = null;
   });
   it("builds create payload from clipboard-shaped component without preserving id", () => {
     const clip = {
@@ -58,4 +58,5 @@ describe("transformClipboardToCreatePayload", () => {
     expect(out.position).toEqual({ x: 50, y: 75 });
   });
 });
+
 

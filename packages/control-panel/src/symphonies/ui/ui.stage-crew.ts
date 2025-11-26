@@ -82,6 +82,7 @@ export async function initMovement(data: any, ctx: any) {
       }
     }
     // Attach telemetry and log total duration
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.uiInitTelemetry = { subBeats: telemetry };
     const total = telemetry.reduce((s, b) => s + b.dur, 0);
     ctx.logger?.info?.(`UI Init (batched) — ${Math.round(total)}ms`, {
@@ -97,9 +98,11 @@ export function initConfig(data: any, ctx: any) {
   try {
     // Load control panel configuration
     // This would typically load from a config file or service
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.configLoaded = true;
     ctx.logger?.info?.("Control Panel config initialized");
   } catch (error) {
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.configLoaded = false;
     ctx.payload.error = String(error);
     ctx.logger?.error?.("Failed to initialize config:", error);
@@ -116,10 +119,12 @@ export function initResolver(data: any, ctx: any) {
     uiState.config = config;
     uiState.resolver = resolver;
 
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.resolver = resolver;
     ctx.payload.resolverInitialized = true;
     ctx.logger?.info?.("Schema resolver initialized");
   } catch (error) {
+    if (!ctx.payload) ctx.payload = {};
     ctx.payload.resolverInitialized = false;
     ctx.payload.error = String(error);
     ctx.logger?.error?.("Failed to initialize resolver:", error);

@@ -15,7 +15,7 @@ describe("Control Panel (package) selection notify -> EventRouter", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -72,4 +72,5 @@ describe("Control Panel (package) selection notify -> EventRouter", () => {
     );
   });
 });
+
 

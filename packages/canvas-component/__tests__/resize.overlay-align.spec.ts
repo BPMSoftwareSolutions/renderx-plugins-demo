@@ -33,7 +33,7 @@ describe("selection overlay remains aligned with component after resize (conduct
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -47,7 +47,7 @@ describe("selection overlay remains aligned with component after resize (conduct
   });
 
   it("keeps overlay aligned with element's width/height after dragging SE handle", () => {
-    const _ctx: any = { payload: {} };
+    ctx.payload = {} };
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);
@@ -90,4 +90,5 @@ describe("selection overlay remains aligned with component after resize (conduct
     expect(overlay.style.top).toBe(el.style.top);
   });
 });
+
 

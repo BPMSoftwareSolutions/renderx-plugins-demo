@@ -36,7 +36,7 @@ describe("Canvas selection publishes selection.changed topic", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -132,3 +132,4 @@ describe("Canvas selection publishes selection.changed topic", () => {
     }).not.toThrow();
   });
 });
+

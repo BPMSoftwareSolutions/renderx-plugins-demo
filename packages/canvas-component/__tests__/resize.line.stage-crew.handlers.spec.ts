@@ -16,7 +16,7 @@ describe('canvas-component resize.line.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -24,10 +24,9 @@ describe('canvas-component resize.line.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any; // underscore to satisfy lint unused rule
   beforeEach(() => {
     document.body.innerHTML = '<div id="comp-line" class="rx-line" style="--x1:0;--y1:0;--x2:10;--y2:10"></div>';
-    _ctx = createMockCtx();
+    ctx = createMockCtx();
   });
 
   it('startLineResize - calls optional callback harmlessly', () => {
@@ -48,3 +47,4 @@ describe('canvas-component resize.line.stage-crew handlers', () => {
     expect(cb).toHaveBeenCalled();
   });
 });
+

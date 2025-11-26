@@ -52,7 +52,7 @@ describe("HTML component markup field fallback", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -80,4 +80,5 @@ describe("HTML component markup field fallback", () => {
     expect(markupField?.rendererProps?.rows).toBe(8);
   });
 });
+
 

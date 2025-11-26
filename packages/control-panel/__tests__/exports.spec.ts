@@ -16,7 +16,7 @@ describe('@renderx-plugins/control-panel package exports', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,`n      payload: {}
     };
   });
 
@@ -38,4 +38,5 @@ describe('@renderx-plugins/control-panel package exports', () => {
     expect(typeof selectionHandlers.notifyUi).toBe('function');
   });
 });
+
 
