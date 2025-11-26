@@ -19,7 +19,7 @@ function makeCtx() {
 }
 
 describe("Advanced Line — dynamic viewBox autosize", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("Advanced Line — dynamic viewBox autosize", () => {
   });
 
   it("expands viewBox when endpoints extend beyond element bounds (no rotation)", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 0, y: 0 } } as any, ctx);
@@ -72,7 +72,7 @@ describe("Advanced Line — dynamic viewBox autosize", () => {
   });
 
   it("adds headroom when rotated so the line is never clipped", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 0, y: 0 } } as any, ctx);

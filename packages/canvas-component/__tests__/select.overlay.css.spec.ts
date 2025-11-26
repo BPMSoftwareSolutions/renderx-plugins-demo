@@ -15,7 +15,7 @@ function makeTemplate() {
 }
 
 describe("selection overlay CSS ensures box-sizing border-box for accurate alignment", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -40,7 +40,7 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
   });
 
   it("sets overlay to border-box so its border doesn't expand beyond element bounds", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);

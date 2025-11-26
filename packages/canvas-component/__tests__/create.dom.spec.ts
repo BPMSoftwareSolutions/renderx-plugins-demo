@@ -18,7 +18,7 @@ function makeCtx() {
 }
 
 describe("canvas-component create beat (DOM-only)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -44,7 +44,7 @@ describe("canvas-component create beat (DOM-only)", () => {
   });
 
   it("creates a single element under #rx-canvas with text, position and dimensions", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeTemplate();
 
     handlers.resolveTemplate({ component: { template } } as any, ctx);

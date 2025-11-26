@@ -19,7 +19,7 @@ function makeSvgTemplateWithMarkup() {
 }
 
 describe("SVG component (markup)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -44,7 +44,7 @@ describe("SVG component (markup)", () => {
   });
 
   it("applies svgMarkup as innerHTML on the <svg>", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeSvgTemplateWithMarkup();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

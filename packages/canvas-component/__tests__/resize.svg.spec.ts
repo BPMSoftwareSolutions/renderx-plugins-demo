@@ -16,7 +16,7 @@ function makeSvgTemplate() {
 }
 
 describe("SVG component resize behavior", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -41,7 +41,7 @@ describe("SVG component resize behavior", () => {
   });
 
   it("resizes outer dimensions while content preserves stroke thickness via CSS", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeSvgTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

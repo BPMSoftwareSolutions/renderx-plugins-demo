@@ -7,7 +7,7 @@ import { getAnomalies, clearAnomalies } from '../../src/telemetry/anomalies';
 installTelemetryMatcher();
 
 describe('Business BDD: shape-budgets (auto-generated GREEN)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

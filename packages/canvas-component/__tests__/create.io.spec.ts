@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { registerInstance } from "@renderx-plugins/canvas-component/symphonies/create/create.io.ts";
 
 describe("canvas-component create.io", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -38,14 +38,14 @@ describe("canvas-component create.io", () => {
   }
 
   it("persists node metadata to KV/cache", async () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     await registerInstance({}, ctx);
     const names = ctx._ops.map((x: any[]) => x[0]);
     expect(names).toContain("kv.put");
   });
 
   it("throws when IO is accessed in a pure beat (guard example)", () => {
-    const ctx: any = {
+    const _ctx: any = {
       io: new Proxy(
         {},
         {

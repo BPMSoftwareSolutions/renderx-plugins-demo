@@ -20,7 +20,7 @@ function makeCtx() {
 }
 
 describe("SVG Line component", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("SVG Line component", () => {
   });
 
   it("creates an <svg> with a child <line.segment> that uses CSS vars and non-scaling stroke", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -67,7 +67,7 @@ describe("SVG Line component", () => {
   });
 
   it("resizes via stage-crew updateSize and keeps element dimensions updated", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

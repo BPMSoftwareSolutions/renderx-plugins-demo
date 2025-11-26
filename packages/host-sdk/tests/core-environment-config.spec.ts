@@ -7,7 +7,7 @@ import {
 } from '../core/environment/config';
 
 describe('Core Environment Config', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

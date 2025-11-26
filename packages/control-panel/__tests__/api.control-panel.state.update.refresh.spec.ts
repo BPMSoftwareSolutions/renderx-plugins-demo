@@ -8,7 +8,7 @@ function makeCtx() {
 }
 
 describe('control-panel state/update/refresh handlers (public API)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -20,7 +20,7 @@ import * as path from 'path';
  */
 
 describe('Parse Production Telemetry (self-healing-telemetry-parse-symphony)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -20,7 +20,7 @@ function dispatchMouse(el: Element | Document, type: string, opts: any) {
 }
 
 describe("canvas-component drag: overlay visibility (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -46,7 +46,7 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
 
   it.skip("hides overlay while dragging and restores visibility on drag end (drop)", () => {
     // Kept as skipped to drive future implementation
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);

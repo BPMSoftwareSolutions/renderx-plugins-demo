@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { getCurrentTheme, toggleTheme } from "@src/symphonies/ui/ui.stage-crew";
 
 describe("ui.stage-crew handlers", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -31,7 +31,7 @@ describe("ui.stage-crew handlers", () => {
   });
 
   it("getCurrentTheme applies DOM attribute and persists", () => {
-    const ctx: { payload: Record<string, unknown> } = { payload: {} };
+    const _ctx: { payload: Record<string, unknown> } = { payload: {} };
 
     // No theme preset -> defaults to dark, sets DOM and storage
     const res = getCurrentTheme({}, ctx);
@@ -42,7 +42,7 @@ describe("ui.stage-crew handlers", () => {
   });
 
   it("getCurrentTheme respects existing DOM attribute first", () => {
-    const ctx: { payload: Record<string, unknown> } = { payload: {} };
+    const _ctx: { payload: Record<string, unknown> } = { payload: {} };
     document.documentElement.setAttribute("data-theme", "light");
 
     const res = getCurrentTheme({}, ctx);
@@ -51,7 +51,7 @@ describe("ui.stage-crew handlers", () => {
   });
 
   it("toggleTheme flips and persists theme", async () => {
-    const ctx: { payload: Record<string, unknown> } = { payload: {} };
+    const _ctx: { payload: Record<string, unknown> } = { payload: {} };
     document.documentElement.setAttribute("data-theme", "light");
 
     const res1 = toggleTheme({ theme: "dark" }, ctx);

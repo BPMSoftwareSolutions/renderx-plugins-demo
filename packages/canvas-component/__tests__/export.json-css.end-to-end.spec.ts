@@ -15,7 +15,7 @@ function setupCanvas() {
 }
 
 describe("Export includes JSON component CSS end-to-end (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -51,7 +51,7 @@ describe("Export includes JSON component CSS end-to-end (migrated)", () => {
     expect(buttonClass?.content || "").toContain(".rx-button--primary");
 
     // 3. Run export flow
-    const ctx: any = { payload: {}, io: { kv: { getAll: async () => [
+    const _ctx: any = { payload: {}, io: { kv: { getAll: async () => [
       { id: "rx-node-1", type: "button", classes: ["rx-comp", "rx-button"], style: {}, createdAt: Date.now() }
     ] } }, logger: { info: () => {}, warn: () => {}, error: () => {} } };
 

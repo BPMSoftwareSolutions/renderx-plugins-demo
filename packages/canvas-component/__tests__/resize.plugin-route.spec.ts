@@ -20,7 +20,7 @@ function dispatchMouse(el: Element | Document, type: string, opts: any) {
 }
 
 describe("canvas-component resize: plugin routing (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("canvas-component resize: plugin routing (migrated)", () => {
   });
 
   it.skip("routes to CanvasComponentResize{Start,Move,End}Plugin during handle drag (known gap)", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);

@@ -11,7 +11,7 @@ import {
 import type { ComponentSummary, Component } from '../types';
 
 describe('Inventory API', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

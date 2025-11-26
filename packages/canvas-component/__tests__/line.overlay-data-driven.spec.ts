@@ -10,7 +10,7 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 }
 
 describe("line component overlay is data-driven and uses standard resize when configured", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -48,7 +48,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   }
 
   it("uses box overlay when no data-overlay=line is set (ignores class heuristics)", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = createLineTemplate({
       "data-resize-enabled": "true",
       "data-resize-handles": "se,e,s",
@@ -72,7 +72,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   });
 
   it("resizes a line component via standard SE handle when enabled & handles provided", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = createLineTemplate({
       "data-resize-enabled": "true",
       "data-resize-handles": "se,e,s",
@@ -121,7 +121,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   });
 
   it("ignores data-overlay=line and still uses standard overlay", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = createLineTemplate({ "data-overlay": "line" });
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

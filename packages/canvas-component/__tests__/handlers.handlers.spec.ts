@@ -55,7 +55,7 @@ function makeCtx() {
 // Example: import { serializeSelectedComponent } from '@renderx-plugins/canvas-component/src/...';
 
 describe('canvas-component handlers handlers', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -302,7 +302,7 @@ describe('canvas-component handlers handlers', () => {
     expect(playSpy).not.toHaveBeenCalled();
   });
   it('exportSvgToGif - sets error when not SVG or missing', async () => {
-    const ctx: any = { payload: {}, logger: { info:()=>{} } };
+    const _ctx: any = { payload: {}, logger: { info:()=>{} } };
     await exportSvgToGif({ targetId: 'nope' }, ctx);
     expect(ctx.payload.error).toMatch(/not found/);
   });
@@ -315,19 +315,19 @@ describe('canvas-component handlers handlers', () => {
     expect(blob.type).toMatch(/mp4/);
   });
   it('exportSvgToMp4 - errors when target missing', async () => {
-    const ctx: any = { payload: {}, logger: { info:()=>{}, error:()=>{} } };
+    const _ctx: any = { payload: {}, logger: { info:()=>{}, error:()=>{} } };
     await exportSvgToMp4({ targetId: 'missing' }, ctx);
     expect(ctx.payload.error).toMatch(/not found/);
   });
   it('exportSvgToMp4 - basic success with svg element (mocked 2D context)', async () => {
-    const ctx: any = { payload: {}, logger: { info:()=>{}, error:()=>{}, warn:()=>{} } };
+    const _ctx: any = { payload: {}, logger: { info:()=>{}, error:()=>{}, warn:()=>{} } };
     (HTMLCanvasElement.prototype as any).getContext = vi.fn().mockReturnValue({ drawImage:()=>{}, clearRect:()=>{} });
     const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.id='svg-mp4'; document.body.appendChild(svg);
     await exportSvgToMp4({ targetId: 'svg-mp4', options: { fps: 2, durationMs: 100 } }, ctx);
     expect(ctx.payload.error).toBeUndefined();
   });
   it('openUiFile - non-browser environment sets warning (simulated by temporarily redefining document)', async () => {
-    const ctx: any = { payload: {}, logger: { warn: vi.fn(), info:()=>{} } };
+    const _ctx: any = { payload: {}, logger: { warn: vi.fn(), info:()=>{} } };
     const realDoc = (globalThis as any).document;
     (globalThis as any).document = undefined;
     await openUiFile({}, ctx);
@@ -358,7 +358,7 @@ describe('canvas-component handlers handlers', () => {
     expect((svg as any).style.getPropertyValue('--cy')).not.toBe('');
   });
   it('updateAttribute - applies attribute via rule engine', () => {
-    const ctx: any = { payload: {}, logger: { warn:()=>{} } };
+    const _ctx: any = { payload: {}, logger: { warn:()=>{} } };
     const el = document.createElement('div'); el.id='rx-node-up'; document.body.appendChild(el);
     // Use attribute covered by rule engine (content -> textContent)
     el.classList.add('rx-paragraph');
@@ -367,7 +367,7 @@ describe('canvas-component handlers handlers', () => {
     expect(ctx.payload.updatedAttribute.value).toBe('Hello World');
   });
   it('updateAttribute - missing id does nothing', () => {
-    const ctx: any = { payload: {}, logger: { warn: vi.fn() } };
+    const _ctx: any = { payload: {}, logger: { warn: vi.fn() } };
     updateAttribute({ attribute: 'x', value: 1 }, ctx);
     expect(ctx.logger.warn).toHaveBeenCalled();
     expect(ctx.payload.updatedAttribute).toBeUndefined();

@@ -13,7 +13,7 @@ function createFakeConductor() {
 }
 
 describe('@renderx-plugins/canvas-component: package surface + register()', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

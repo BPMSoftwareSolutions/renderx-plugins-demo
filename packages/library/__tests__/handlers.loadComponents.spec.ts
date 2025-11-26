@@ -14,7 +14,7 @@ declare global {
 }
 
 describe("library.handlers", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -48,7 +48,7 @@ describe("library.handlers", () => {
         return sample;
       },
     };
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const res = await handlers.loadComponents({}, ctx);
     expect(res).toMatchObject({ count: 1 });
     expect(Array.isArray(ctx.payload.components)).toBe(true);
@@ -78,7 +78,7 @@ describe("library.handlers", () => {
       },
     };
 
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const res = await handlers.loadComponents({}, ctx);
 
     expect(res).toMatchObject({ count: 2 });
@@ -108,7 +108,7 @@ describe("library.handlers", () => {
     const originalFetch = global.fetch;
     delete (global as any).fetch;
 
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const res = await handlers.loadComponents({}, ctx);
 
     // Restore fetch
@@ -133,7 +133,7 @@ describe("library.handlers", () => {
       },
     };
 
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const res = await handlers.loadComponents({}, ctx);
 
     expect(res).toMatchObject({ count: 1 });
@@ -145,7 +145,7 @@ describe("library.handlers", () => {
     const spy = vi.fn();
     // In real sequence flow, callback is in ctx.payload (preserved from loadComponents beat)
     // and data parameter is a different object without the callback
-    const ctx: any = { payload: { components: payloadList, onComponentsLoaded: spy } };
+    const _ctx: any = { payload: { components: payloadList, onComponentsLoaded: spy } };
     handlers.notifyUi({}, ctx); // Empty data - callback is in ctx.payload
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(payloadList);

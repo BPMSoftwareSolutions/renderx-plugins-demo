@@ -6,7 +6,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 // Example: import { fetchPropertyData } from '@renderx-plugins/real-estate-analyzer/src/...';
 
 describe('real-estate-analyzer handlers handlers', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

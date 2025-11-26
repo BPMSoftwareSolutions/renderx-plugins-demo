@@ -33,7 +33,7 @@ function makeCtx() {
 }
 
 describe("import.parse adds default base classes", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

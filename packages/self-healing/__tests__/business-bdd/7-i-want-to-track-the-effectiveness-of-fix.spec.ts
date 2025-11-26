@@ -33,7 +33,7 @@ describe.skip('Feature: I want to track the effectiveness of fixes', () => {
   });
 
   describe('Scenario: Measure improvement after fix deployment', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

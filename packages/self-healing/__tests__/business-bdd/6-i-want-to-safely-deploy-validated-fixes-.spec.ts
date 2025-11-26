@@ -33,7 +33,7 @@ describe.skip('Feature: I want to safely deploy validated fixes to production', 
   });
 
   describe('Scenario: Deploy fix through CI/CD pipeline', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

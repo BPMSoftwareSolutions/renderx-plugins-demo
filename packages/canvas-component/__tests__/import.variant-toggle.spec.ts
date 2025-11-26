@@ -46,7 +46,7 @@ function makeCtx() {
 }
 
 describe("import variant toggle applies via rule engine", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

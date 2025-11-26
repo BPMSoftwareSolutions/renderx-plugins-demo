@@ -33,7 +33,7 @@ describe.skip('Feature: I want to validate fixes before deploying to production'
   });
 
   describe('Scenario: Validate fix passes all tests', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

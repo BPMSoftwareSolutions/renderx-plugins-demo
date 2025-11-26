@@ -8,7 +8,7 @@ function makeCtx() {
 }
 
 describe("SVG sub-node selection overlay (TDD)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -34,7 +34,7 @@ describe("SVG sub-node selection overlay (TDD)", () => {
   });
 
   it("positions overlay over the target sub-element given a child-index path (e.g., '0/1/0')", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template: any = {
       tag: "svg",
       text: "",

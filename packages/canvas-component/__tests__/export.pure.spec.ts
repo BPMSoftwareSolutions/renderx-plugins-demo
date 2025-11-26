@@ -38,7 +38,7 @@ function makeCtx() {
 }
 
 describe("canvas-component export.pure", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

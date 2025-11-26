@@ -4,7 +4,7 @@ import { ControlPanel, register } from '@renderx-plugins/control-panel';
 import { handlers as selectionHandlers } from '@renderx-plugins/control-panel/symphonies/selection/selection.symphony';
 
 describe('@renderx-plugins/control-panel package exports', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

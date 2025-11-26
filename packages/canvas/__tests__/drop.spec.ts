@@ -25,7 +25,7 @@ vi.mock("@renderx-plugins/host-sdk", async (orig) => {
 import { onDropForTest } from "../src/ui/CanvasDrop";
 
 describe("canvas drop triggers library-component drop sequence", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

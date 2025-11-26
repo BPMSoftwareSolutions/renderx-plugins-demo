@@ -11,7 +11,7 @@ import {
 import type { CssClassDef } from '../types';
 
 describe('CSS Registry API', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

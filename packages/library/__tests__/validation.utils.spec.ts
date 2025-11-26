@@ -7,7 +7,7 @@ import {
 } from "../src/utils/validation.utils";
 
 describe("validation.utils", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -16,7 +16,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel class editing sequences", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -43,7 +43,7 @@ describe("Control Panel class editing sequences", () => {
 
   it("adds CSS class to selected element via stage-crew", () => {
     // Arrange: create a canvas element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -70,7 +70,7 @@ describe("Control Panel class editing sequences", () => {
 
   it("removes CSS class from selected element via stage-crew", () => {
     // Arrange: create element with existing class
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);

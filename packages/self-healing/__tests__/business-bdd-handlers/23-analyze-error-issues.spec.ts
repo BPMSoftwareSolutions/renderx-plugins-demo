@@ -16,7 +16,7 @@ import { analyzeErrorIssues } from '../../src/handlers/diagnosis/analyze.error.i
  */
 
 describe('Business BDD: analyzeErrorIssues', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

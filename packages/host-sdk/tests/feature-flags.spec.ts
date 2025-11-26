@@ -9,7 +9,7 @@ import {
 } from '../feature-flags';
 
 describe('Feature Flags', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

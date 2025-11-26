@@ -4,7 +4,7 @@ import { loadMetrics } from '../../src/handlers/metrics';
 
 // Sequence mapping: dashboard.load (beat 2), dashboard.refresh.metrics (beat 1)
 describe('Business BDD Handler: loadMetrics', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

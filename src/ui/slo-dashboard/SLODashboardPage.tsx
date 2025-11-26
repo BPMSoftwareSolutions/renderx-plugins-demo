@@ -14,7 +14,6 @@ import type {
   SLAComplianceData,
   SelfHealingActivityData,
 } from '@slo-shape/dashboard';
-import RenderXMetricsAdapter from './renderx-metrics-adapter';
 
 interface SLODashboardPageProps {
   /** Theme for the dashboard */

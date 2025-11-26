@@ -1,7 +1,7 @@
 import { getConfigValue, hasConfigValue } from '../config';
 
 describe('Config API', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

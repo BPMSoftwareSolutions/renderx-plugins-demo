@@ -4,7 +4,7 @@ import { handlers as createHandlers } from "@renderx-plugins/canvas-component/sy
 import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
 
 describe("selection overlay positions correctly for children inside container", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

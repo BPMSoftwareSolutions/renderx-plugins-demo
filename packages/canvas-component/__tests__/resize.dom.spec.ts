@@ -51,7 +51,7 @@ function dispatchMouse(el: Element | Document, type: string, opts: any) {
 }
 
 describe("canvas-component resize (DOM-only)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -76,7 +76,7 @@ describe("canvas-component resize (DOM-only)", () => {
   });
 
   it("resizes the element via SE handle drag", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeTemplate();
 
     handlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -125,7 +125,7 @@ describe("canvas-component resize (DOM-only)", () => {
   });
 
   it("emits a single resize.move for repeated mousemove at same geometry", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeTemplate();
 
     handlers.resolveTemplate({ component: { template } } as any, ctx);

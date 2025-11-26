@@ -32,7 +32,7 @@ const selectedElement = {
 } as any;
 
 describe('control-panel field lifecycle handlers (public API)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

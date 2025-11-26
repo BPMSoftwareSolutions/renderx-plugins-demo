@@ -25,7 +25,7 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
 import { handlers as selectHandlers } from "../src/symphonies/select/select.stage-crew.ts";
 
 describe("Canvas selection forwards to Control Panel (package)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

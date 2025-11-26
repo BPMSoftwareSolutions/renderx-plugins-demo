@@ -40,7 +40,7 @@ const baseConfig: ControlPanelConfig = {
 };
 
 describe("HTML component markup field", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

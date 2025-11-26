@@ -25,7 +25,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel Integration - End to End", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

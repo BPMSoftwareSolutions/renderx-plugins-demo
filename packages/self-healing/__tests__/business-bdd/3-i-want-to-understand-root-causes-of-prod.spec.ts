@@ -33,7 +33,7 @@ describe.skip('Feature: I want to understand root causes of production issues', 
   });
 
   describe('Scenario: Diagnose performance issue with code analysis', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

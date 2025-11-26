@@ -29,7 +29,7 @@ import { handlers as selectHandlers } from "../src/symphonies/select/select.stag
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
 describe("Topic-first selection approach", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

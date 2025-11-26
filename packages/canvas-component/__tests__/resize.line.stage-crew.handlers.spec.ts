@@ -4,7 +4,7 @@ import { startLineResize, updateLine, endLineResize } from '../src/symphonies/re
 import { createMockCtx } from './helpers/context';
 
 describe('canvas-component resize.line.stage-crew handlers', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

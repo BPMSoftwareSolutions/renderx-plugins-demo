@@ -20,7 +20,7 @@ function makeCtx() {
 }
 
 describe("Advanced Line — endpoints scale with resize", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("Advanced Line — endpoints scale with resize", () => {
   });
 
   it("proportionally scales --x1/--y1/--x2/--y2 when resizing the element", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     // Create element

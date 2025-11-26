@@ -10,7 +10,7 @@ import { loadBudgets, loadMetrics, computeCompliance, serializeDashboardState, t
 //  dashboard.export.report: serializeDashboardState -> triggerExportDownload
 
 describe('slo-dashboard handlers handlers', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -21,7 +21,7 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 }
 
 describe("selection overlay remains aligned with component after resize (conductor)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -47,7 +47,7 @@ describe("selection overlay remains aligned with component after resize (conduct
   });
 
   it("keeps overlay aligned with element's width/height after dragging SE handle", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);

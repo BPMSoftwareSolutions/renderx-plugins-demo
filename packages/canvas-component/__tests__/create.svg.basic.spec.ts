@@ -20,7 +20,7 @@ function makeCtx() {
 }
 
 describe("SVG component (basic)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("SVG component (basic)", () => {
   });
 
   it("creates an <svg.rx-svg> with non-scaling-stroke CSS and default attributes", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

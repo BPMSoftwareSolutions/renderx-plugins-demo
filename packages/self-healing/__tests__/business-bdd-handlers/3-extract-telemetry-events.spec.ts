@@ -36,7 +36,7 @@ describe('Business BDD: extractTelemetryEvents', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     const rawLogs = [

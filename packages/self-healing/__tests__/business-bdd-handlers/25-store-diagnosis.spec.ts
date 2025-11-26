@@ -17,7 +17,7 @@ import * as fs from 'fs';
  */
 
 describe('Business BDD: storeDiagnosis', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -21,7 +21,7 @@ function makeSvgLineTemplate() {
 }
 
 describe("Advanced Line overlay attaches on selection (flag ON)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -49,7 +49,7 @@ describe("Advanced Line overlay attaches on selection (flag ON)", () => {
   it.skip("creates #rx-adv-line-overlay and binds dataset targetId", () => {
     // TODO(#139 follow-up): Gate relies on host-sdk isFlagEnabled and rx-line on target;
     // jsdom quirks may prevent overlay creation via showSelectionOverlay in this harness.
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

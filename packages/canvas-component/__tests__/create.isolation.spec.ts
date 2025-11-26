@@ -78,7 +78,7 @@ function svgLineTemplate() {
 }
 
 describe('Isolation harness — Canvas Component Create', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

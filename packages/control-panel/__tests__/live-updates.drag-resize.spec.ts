@@ -17,7 +17,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel live updates during drag/resize", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("Control Panel live updates during drag/resize", () => {
 
   it("forwards drag position updates to Control Panel", () => {
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -80,7 +80,7 @@ describe("Control Panel live updates during drag/resize", () => {
 
   it("forwards resize updates to Control Panel with position and size", async () => {
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -127,7 +127,7 @@ describe("Control Panel live updates during drag/resize", () => {
 
   it("Control Panel update sequence derives current position/size from DOM", () => {
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);

@@ -4,7 +4,7 @@ import { handlers as updateHandlers } from "../src/symphonies/update/update.symp
 import { handlers as selectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel: Bidirectional Sync (Auto-generated Tests)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

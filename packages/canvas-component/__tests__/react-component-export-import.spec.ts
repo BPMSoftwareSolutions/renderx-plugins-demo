@@ -4,7 +4,7 @@ import { buildUiFileContent } from "../src/symphonies/export/export.pure";
 import { parseUiFile } from "../src/symphonies/import/import.parse.pure";
 
 describe("React Component Export/Import", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

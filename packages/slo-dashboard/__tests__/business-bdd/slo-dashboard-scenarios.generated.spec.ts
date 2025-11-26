@@ -13,7 +13,7 @@ import { getTelemetryBuffer } from '../../src/telemetry/emitter';
 import { ACCESSIBILITY_LABELS } from '../../src/domain/accessibility';
 
 describe('SLO Dashboard Business Scenarios', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

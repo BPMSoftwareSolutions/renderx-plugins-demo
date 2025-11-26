@@ -88,7 +88,7 @@ function makeCtx() {
 }
 
 describe("canvas-component import integration (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

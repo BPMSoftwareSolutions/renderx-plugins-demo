@@ -13,7 +13,7 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
 }));
 
 describe("Selection after externalization - comprehensive tests", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

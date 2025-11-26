@@ -22,6 +22,9 @@ function loadManifestKeys(context) {
       raw = fs.readFileSync(publicManifest, "utf8");
     else raw = fs.readFileSync(rootManifest, "utf8");
 
+    // Cache buster: add timestamp to force fresh reads in dev environments
+    delete require.cache[require.resolve(rootManifest)];
+
     const json = JSON.parse(raw);
     const routes = json?.routes || {};
     return new Set(Object.keys(routes));

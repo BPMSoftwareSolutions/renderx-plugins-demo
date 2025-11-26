@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { groupComponentsByCategory, getCategoryDisplayName, varsToStyle, pickDataAttrs } from "../src/utils/library.utils.js";
 
 describe("library.utils", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

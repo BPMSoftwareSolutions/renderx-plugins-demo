@@ -166,7 +166,11 @@
     "pipeline:delivery:integration": "node scripts/execute-safe-pipeline.cjs integration",
     "pipeline:delivery:deployment": "node scripts/execute-safe-pipeline.cjs deployment",
     "pipeline:delivery:release": "node scripts/execute-safe-pipeline.cjs release",
-    "pipeline:delivery:report": "node scripts/generate-delivery-pipeline-report.cjs"
+    "pipeline:delivery:report": "node scripts/generate-delivery-pipeline-report.cjs",
+    "lint:quality-gate": "node scripts/lint-quality-gate.cjs",
+    "lint:quality-gate:baseline": "node scripts/lint-quality-gate.cjs --create-baseline",
+    "lint:quality-gate:report": "node scripts/generate-lint-quality-report.cjs",
+    "lint:fix:safe": "eslint . --fix && npm run lint:quality-gate"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",

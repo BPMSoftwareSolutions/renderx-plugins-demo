@@ -12,7 +12,7 @@ function performanceNowShim() {
 }
 
 describe("Control Panel UI Init — batched iterator", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -38,7 +38,7 @@ describe("Control Panel UI Init — batched iterator", () => {
 
   it("records sub-beat telemetry for the five init steps when run via iterator", async () => {
     const logger = { info: vi.fn(), warn: vi.fn(), error: vi.fn() };
-    const ctx: any = { payload: {}, logger, conductor: { play: vi.fn() } };
+    const _ctx: any = { payload: {}, logger, conductor: { play: vi.fn() } };
 
     // Run the iterator handler directly
     await uiHandlers.initMovement({ componentTypes: ["button", "input"] }, ctx);

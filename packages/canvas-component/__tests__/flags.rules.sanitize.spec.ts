@@ -10,7 +10,7 @@ import * as RuleEngine from '../src/temp-deps/rule-engine';
 import { sanitizeHtml } from '../src/temp-deps/sanitizeHtml';
 
 describe('feature-flags getFlagOverride', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

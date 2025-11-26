@@ -4,7 +4,7 @@ import { updatePosition, startDrag, endDrag, forwardToControlPanel } from '../sr
 import { createMockCtx } from './helpers/context.ts';
 
 describe('canvas-component drag.stage-crew handlers', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

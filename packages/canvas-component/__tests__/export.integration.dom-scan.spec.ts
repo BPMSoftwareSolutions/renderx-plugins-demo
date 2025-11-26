@@ -17,7 +17,7 @@ function makeIntegrationCtx() {
 }
 
 describe("canvas-component export integration (DOM scan fallback)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

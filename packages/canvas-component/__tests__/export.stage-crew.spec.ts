@@ -19,7 +19,7 @@ function makeCtx() {
 }
 
 describe("canvas-component export.stage-crew", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

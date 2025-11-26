@@ -19,7 +19,7 @@ function makeSchema(type: string) {
 }
 
 describe("SchemaResolverService memoization", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

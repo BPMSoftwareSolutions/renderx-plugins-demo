@@ -10,7 +10,7 @@ beforeEach(() => {
 });
 
 describe('control-panel: classes add/remove + notifyUi', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -39,7 +39,7 @@ describe('control-panel: classes add/remove + notifyUi', () => {
     const el = document.createElement('div');
     el.id = 'c1';
     document.body.appendChild(el);
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     addClass({ id: 'c1', className: 'active' }, ctx);
     expect(el.classList.contains('active')).toBe(true);
     expect(ctx.payload).toMatchObject({ id: 'c1' });
@@ -51,7 +51,7 @@ describe('control-panel: classes add/remove + notifyUi', () => {
     el.id = 'c2';
     el.className = 'active';
     document.body.appendChild(el);
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     removeClass({ id: 'c2', className: 'active' }, ctx);
     expect(el.classList.contains('active')).toBe(false);
     expect(ctx.payload).toMatchObject({ id: 'c2' });
@@ -59,7 +59,7 @@ describe('control-panel: classes add/remove + notifyUi', () => {
   });
 
   it('notifyUi publishes control.panel.classes.updated when payload present', () => {
-    const ctx: any = { payload: { id: 'c3', updatedClasses: ['a','b'] }, logger: { info: vi.fn(), warn: vi.fn() } };
+    const _ctx: any = { payload: { id: 'c3', updatedClasses: ['a','b'] }, logger: { info: vi.fn(), warn: vi.fn() } };
     classesHandlers.notifyUi({}, ctx);
     const calls = (globalThis as any).RenderX.EventRouter.publish.mock.calls;
     expect(calls.length).toBe(1);

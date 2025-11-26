@@ -24,7 +24,7 @@ function makeCtx() {
 }
 
 describe("Advanced Line recompute (Phase 2+3)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -51,7 +51,7 @@ describe("Advanced Line recompute (Phase 2+3)", () => {
   });
 
   it("maps CSS vars to line x1/y1/x2/y2 in viewBox coordinates", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -89,7 +89,7 @@ describe("Advanced Line recompute (Phase 2+3)", () => {
   });
 
   it("toggles marker-end via --arrowEnd CSS var", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -117,7 +117,7 @@ describe("Advanced Line recompute (Phase 2+3)", () => {
   });
 
   it("renders quadratic path when --curve=1 with --cx/--cy", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -144,7 +144,7 @@ describe("Advanced Line recompute (Phase 2+3)", () => {
   });
 
   it("applies rotate transform when --angle is set", () => {
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

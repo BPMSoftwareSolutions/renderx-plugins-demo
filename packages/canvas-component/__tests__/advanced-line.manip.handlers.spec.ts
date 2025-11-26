@@ -20,7 +20,7 @@ function makeSvgLineTemplate() {
 }
 
 describe("Advanced Line handlers — moveLineManip", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -47,7 +47,7 @@ describe("Advanced Line handlers — moveLineManip", () => {
   });
 
   it("updates endpoint A and recomputes line geometry", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

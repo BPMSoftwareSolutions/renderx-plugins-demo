@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { transformImportToCreatePayload } from "../src/symphonies/create/create.from-import";
 
 describe("transformImportToCreatePayload", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

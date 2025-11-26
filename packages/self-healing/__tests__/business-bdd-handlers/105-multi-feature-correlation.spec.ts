@@ -8,7 +8,7 @@ const { buildComposite } = require('../../../../scripts/build-composite-shapes.j
 installTelemetryMatcher();
 
 describe('Business BDD: multi-feature-correlation (auto-generated GREEN)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest';
 // TODO(#129): Remove the try/catch once @renderx-plugins/canvas publishes a proper dist with exports.
 
 describe('@renderx-plugins/canvas package exports', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

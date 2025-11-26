@@ -7,7 +7,7 @@ function makeCtx() {
 }
 
 describe('control-panel selection deriveSelectionModel handler (public API)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

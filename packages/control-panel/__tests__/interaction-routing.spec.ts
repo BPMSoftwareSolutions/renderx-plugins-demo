@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { resolveInteraction } from "@renderx-plugins/host-sdk";
 
 describe("Control Panel interaction routing", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

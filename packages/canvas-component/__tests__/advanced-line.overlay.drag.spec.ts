@@ -25,7 +25,7 @@ function makeSvgLineTemplate() {
 // should be exactly (+10,+10) relative to the initial position, not (+14,+14).
 
 describe("Advanced Line overlay drag — cumulative delta causes runaway (expected failing)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -52,7 +52,7 @@ describe("Advanced Line overlay drag — cumulative delta causes runaway (expect
   });
 
   it.fails("dragging endpoint A twice with cumulative deltas should not over-accumulate", async () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

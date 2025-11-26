@@ -26,7 +26,7 @@ function makeChildTemplate() {
 }
 
 describe("Container child selection and drag issues (migrated; known failing expectations)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

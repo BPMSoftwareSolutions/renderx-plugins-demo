@@ -13,7 +13,7 @@ declare global {
 }
 
 describe("library.handlers - Two-Beat Sequence Integration", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -52,7 +52,7 @@ describe("library.handlers - Two-Beat Sequence Integration", () => {
     };
 
     // Simulate the two-beat sequence flow with shared ctx.payload
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const callbackSpy = vi.fn();
 
     // BEAT 1: loadComponents
@@ -86,7 +86,7 @@ describe("library.handlers - Two-Beat Sequence Integration", () => {
       },
     };
 
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const callbackSpy = vi.fn();
 
     // Beat 1: loadComponents should preserve callback in ctx.payload

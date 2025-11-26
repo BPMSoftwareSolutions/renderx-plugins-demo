@@ -5,7 +5,7 @@ import { describe, it, expect } from "vitest";
 // When moved to the standalone repo, this will become `import '@renderx-plugins/header'`
 
 describe("CSS side-effects (dist build)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

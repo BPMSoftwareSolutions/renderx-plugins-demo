@@ -28,7 +28,7 @@ function makeCtx() {
 }
 
 describe("Advanced Line augmentation (Phase 1)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -59,7 +59,7 @@ describe("Advanced Line augmentation (Phase 1)", () => {
   it.skip("adds defs with markers exactly once (idempotent)", () => {
     // TODO(#139 follow-up): In jsdom, instanceof SVGSVGElement check may differ across realms;
     // revisit enhanceLine guard or test harness to assert marker defs reliably.
-    const ctx: any = makeCtx();
+    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

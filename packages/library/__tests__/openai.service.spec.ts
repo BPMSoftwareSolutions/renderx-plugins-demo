@@ -18,7 +18,7 @@ global.fetch = vi.fn();
 import { getConfigValue, hasConfigValue } from '@renderx-plugins/host-sdk';
 
 describe('OpenAIService', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

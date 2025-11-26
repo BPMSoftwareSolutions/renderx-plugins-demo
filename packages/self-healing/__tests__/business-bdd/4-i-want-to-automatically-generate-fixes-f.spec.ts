@@ -33,7 +33,7 @@ describe.skip('Feature: I want to automatically generate fixes for identified is
   });
 
   describe('Scenario: Generate code fix for performance issue', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

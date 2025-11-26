@@ -35,7 +35,7 @@ function makeConductor() {
 }
 
 describe("CanvasDrop routes to library.container.drop when dropping onto a container", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

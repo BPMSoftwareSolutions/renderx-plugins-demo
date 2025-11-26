@@ -37,7 +37,7 @@ describe('Business BDD: loadTelemetryData', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     const baseline: TelemetryMetrics = {

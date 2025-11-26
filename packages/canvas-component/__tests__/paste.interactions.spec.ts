@@ -13,7 +13,7 @@ import { EventRouter } from "@renderx-plugins/host-sdk";
 import { createPastedComponent } from "../src/symphonies/paste/paste.stage-crew";
 
 describe("paste interactions attach and publish drag events", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -45,7 +45,7 @@ describe("paste interactions attach and publish drag events", () => {
 
     let capturedPayload: any = null;
     const conductor = { play: vi.fn((_p, _s, payload) => { capturedPayload = payload; }) };
-    const ctx: any = { conductor, logger: { info: vi.fn(), warn: vi.fn() } };
+    const _ctx: any = { conductor, logger: { info: vi.fn(), warn: vi.fn() } };
 
     // Act: call paste creation
     await createPastedComponent({ clipboardData: { component: clipboardComponent }, newPosition: { x: 10, y: 20 } }, ctx);

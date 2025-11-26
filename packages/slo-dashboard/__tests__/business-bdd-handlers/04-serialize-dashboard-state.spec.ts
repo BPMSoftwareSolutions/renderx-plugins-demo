@@ -4,7 +4,7 @@ import { serializeDashboardState } from '../../src/handlers/metrics';
 
 // Sequence mapping: dashboard.export.report (beat 1)
 describe('Business BDD Handler: serializeDashboardState', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

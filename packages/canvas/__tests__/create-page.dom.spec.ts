@@ -25,7 +25,7 @@ vi.mock("@renderx-plugins/host-sdk", () => {
 // This ensures Canvas UI does not render nodes; stage-crew/DOM handler is responsible
 
 describe("CanvasPage drop orchestration (no UI node rendering)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -21,7 +21,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel ↔ Canvas Component Integration", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -49,7 +49,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
 
   it("demonstrates full bidirectional attribute editing flow", () => {
     // 1. Create a Canvas component
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -174,7 +174,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
 
   it("handles multiple rapid attribute changes", () => {
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -210,7 +210,7 @@ describe("Control Panel ↔ Canvas Component Integration", () => {
 
   it("gracefully handles invalid attribute updates", () => {
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);

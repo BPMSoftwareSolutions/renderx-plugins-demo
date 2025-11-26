@@ -3,7 +3,7 @@ import { RAGEnrichmentService } from '../src/services/rag-enrichment.service';
 import { ComponentJSON } from '../src/services/openai.types';
 
 describe('RAGEnrichmentService', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

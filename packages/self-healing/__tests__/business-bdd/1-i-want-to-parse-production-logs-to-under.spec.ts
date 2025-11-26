@@ -33,7 +33,7 @@ describe.skip('Feature: I want to parse production logs to understand system beh
   });
 
   describe('Scenario: Parse valid production logs', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -40,7 +40,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel bidirectional attribute editing", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -70,7 +70,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     setSelectionObserver(selectionObserver);
 
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
     
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -111,7 +111,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     setSelectionObserver(selectionObserver);
 
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
     
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -152,7 +152,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     setSelectionObserver(selectionObserver);
 
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
     
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -190,7 +190,7 @@ describe("Control Panel bidirectional attribute editing", () => {
 
   it("Canvas component updates DOM when receiving attribute changes", () => {
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -237,7 +237,7 @@ describe("Control Panel bidirectional attribute editing", () => {
     setSelectionObserver(observerMock);
 
     // Create element
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);

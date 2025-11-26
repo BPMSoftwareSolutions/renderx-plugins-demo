@@ -6,7 +6,7 @@ import { describe, it, expect } from 'vitest';
 import { loadBudgets, loadMetrics, computeCompliance } from '../../src/handlers/metrics';
 
 describe('slo-dashboard business BDD (smoke)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

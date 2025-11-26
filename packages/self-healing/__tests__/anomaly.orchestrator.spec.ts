@@ -28,7 +28,7 @@ function metricsPair(): { current: TelemetryMetrics; baseline: TelemetryMetrics 
 }
 
 describe('runAnomalyDetection orchestration', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

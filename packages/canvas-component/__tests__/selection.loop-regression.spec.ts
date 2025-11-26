@@ -29,7 +29,7 @@ import { handlers as selectHandlers } from "../src/symphonies/select/select.stag
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
 describe("Selection routing loop regression", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

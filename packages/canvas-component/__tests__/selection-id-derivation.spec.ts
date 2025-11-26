@@ -13,7 +13,7 @@ vi.mock("@renderx-plugins/host-sdk", () => ({
 }));
 
 describe("Selection ID derivation and baton flow", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -12,7 +12,7 @@ import { EventRouter } from "@renderx-plugins/host-sdk";
 import { attachStandardImportInteractions } from "../src/symphonies/create/create.from-import";
 
 describe("attachStandardImportInteractions forwards drag positions", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -38,7 +38,7 @@ describe("attachStandardImportInteractions forwards drag positions", () => {
 
   it("publishes drag.move with { id, position }", async () => {
     const payload: any = {};
-    const ctx: any = { conductor: {} };
+    const _ctx: any = { conductor: {} };
     attachStandardImportInteractions(payload, ctx);
 
     const id = "rx-node-abc";
@@ -55,7 +55,7 @@ describe("attachStandardImportInteractions forwards drag positions", () => {
 
   it("publishes drag.end with { id, position } mapped from finalPosition when present", async () => {
     const payload: any = {};
-    const ctx: any = { conductor: {} };
+    const _ctx: any = { conductor: {} };
     attachStandardImportInteractions(payload, ctx);
 
     const id = "rx-node-xyz";

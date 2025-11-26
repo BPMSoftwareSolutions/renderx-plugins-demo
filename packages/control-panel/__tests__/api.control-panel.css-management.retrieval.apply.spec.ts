@@ -18,7 +18,7 @@ function makeCtx() {
 }
 
 describe('control-panel css-management retrieval/apply handlers (public API)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

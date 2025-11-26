@@ -23,7 +23,7 @@ describe('canvas-component resize.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-canvas"></div><div id="rx-selection-overlay"></div><div id="comp-1" style="position:absolute;left:0px;top:0px;width:100px;height:50px"></div>';
     ctx = createMockCtx();

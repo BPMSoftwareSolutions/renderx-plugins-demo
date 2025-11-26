@@ -17,7 +17,7 @@ import { Anomaly } from '../../src/types';
  */
 
 describe('Business BDD: analyzePerformanceIssues', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

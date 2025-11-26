@@ -13,7 +13,7 @@
   "key": "C Major",
   "timeSignature": "4/4",
   "category": "orchestration",
-  "beats": 4,
+  "beats": 17,
   "governance": {
     "policies": [
       "All pipeline stages must maintain visibility score ≥ 0.7 (70%)",
@@ -205,6 +205,15 @@
       "framework": "SAFe Release on Demand",
       "activity": "Learn (16)",
       "relatedActivities": ["Lean Startup Thinking", "Value Stream Mapping", "Relentless Improvement"]
+    },
+    {
+      "id": "lint-quality-gate",
+      "name": "Enforce Lint Quality Gate",
+      "description": "Detect, categorize, and remediate linting issues; enforce quality standards and prevent regressions",
+      "type": "integration",
+      "framework": "SAFe Continuous Integration",
+      "activity": "Quality Assurance (4.5)",
+      "relatedActivities": ["Static Analysis", "Code Quality", "Automated Inspection", "Quality Gates", "Linting", "Code Standards"]
     }
   ],
   "movements": [
@@ -286,7 +295,7 @@
       "purpose": "Ensure every code commit integrates cleanly and passes comprehensive automated tests before production consideration",
       "visibility": 0.90,
       "consistency": 0.88,
-      "beats": 4,
+      "beats": 5,
       "sequence": [
         {
           "beat": 1,
@@ -347,6 +356,23 @@
             "Approval gate passed for production"
           ],
           "timing": "Per-story or per-sprint"
+        },
+        {
+          "beat": 5,
+          "id": "quality-gate",
+          "name": "Enforce Quality Gate",
+          "description": "Run lint quality gate, detect code quality issues, auto-fix where possible, prevent regressions",
+          "key_activity": "Quality Assurance (4.5)",
+          "handlers": ["lint-quality-gate"],
+          "success_criteria": [
+            "Lint quality gate executed",
+            "0 lint errors (critical violations)",
+            "Warnings < 150 or within baseline",
+            "Trend analysis shows improvement or stable",
+            "All auto-fixable issues resolved",
+            "Recommendations reviewed and prioritized"
+          ],
+          "timing": "Per-commit or per-build"
         }
       ]
     },

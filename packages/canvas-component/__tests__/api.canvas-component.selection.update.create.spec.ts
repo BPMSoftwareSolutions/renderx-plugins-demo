@@ -40,7 +40,7 @@ function getConductor() {
 }
 
 describe('canvas-component public API beats', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -66,7 +66,7 @@ describe('canvas-component public API beats', () => {
   });
 
   it('notifyUi (selection) routes to control panel selection.show via conductor.play', () => {
-    const ctx: any = { conductor: getConductor(), baton: {}, payload: {} };
+    const _ctx: any = { conductor: getConductor(), baton: {}, payload: {} };
     notifyUiSelection({ id: 'n1' }, ctx);
     const calls = getConductor().play.mock.calls;
     expect(calls.length).toBeGreaterThan(0);
@@ -76,7 +76,7 @@ describe('canvas-component public API beats', () => {
   });
 
   it('routeSelectionRequest forwards to canvas.component.select with _routed flag', async () => {
-    const ctx: any = { conductor: getConductor(), logger: { warn: vi.fn() } };
+    const _ctx: any = { conductor: getConductor(), logger: { warn: vi.fn() } };
     await routeSelectionRequest({ id: 'n2' }, ctx);
     const calls = getConductor().play.mock.calls;
     expect(calls.length).toBe(1);
@@ -91,14 +91,14 @@ describe('canvas-component public API beats', () => {
     el.id = 'n3';
     document.body.appendChild(el);
 
-    const ctx: any = { payload: {}, conductor: getConductor(), logger: { warn: vi.fn() } };
+    const _ctx: any = { payload: {}, conductor: getConductor(), logger: { warn: vi.fn() } };
     updateAttribute({ id: 'n3', attribute: 'width', value: '100px' }, ctx);
     expect(ctx.payload.updatedAttribute).toEqual({ id: 'n3', attribute: 'width', value: '100px' });
     expect(ctx.payload.elementId).toBe('n3');
   });
 
   it('createNode creates element under #rx-canvas and populates createdNode payload', () => {
-    const ctx: any = { payload: { template: { tag: 'div', text: 'Hello', classes: ['foo'] }, nodeId: 'n4' } };
+    const _ctx: any = { payload: { template: { tag: 'div', text: 'Hello', classes: ['foo'] }, nodeId: 'n4' } };
     createNode({ position: { x: 10, y: 20 } }, ctx);
     const created = ctx.payload.createdNode;
     expect(created?.id).toBe('n4');

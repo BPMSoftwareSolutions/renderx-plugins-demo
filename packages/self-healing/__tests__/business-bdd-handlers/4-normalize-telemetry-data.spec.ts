@@ -37,7 +37,7 @@ describe('Business BDD: normalizeTelemetryData', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [

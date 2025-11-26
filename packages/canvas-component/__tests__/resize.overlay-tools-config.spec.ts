@@ -10,7 +10,7 @@ function dispatchMouse(el: Element | Document, type: string, opts: any) {
 }
 
 describe("resize overlay driven by template tools config", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -35,7 +35,7 @@ describe("resize overlay driven by template tools config", () => {
   });
 
   it("shows only handles listed in data-resize-handles", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = {
       tag: "div",
       text: "",
@@ -79,7 +79,7 @@ describe("resize overlay driven by template tools config", () => {
   });
 
   it("enforces min width/height constraints from data attributes during resize", async () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = {
       tag: "div",
       text: "",
@@ -133,7 +133,7 @@ describe("resize overlay driven by template tools config", () => {
   });
 
   it("disables resizing entirely when data-resize-enabled is false", () => {
-    const ctx: any = { payload: {} };
+    const _ctx: any = { payload: {} };
     const template = {
       tag: "div",
       text: "",

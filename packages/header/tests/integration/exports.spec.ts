@@ -5,7 +5,7 @@ import { describe, it, expect } from "vitest";
 import * as pkg from "../../src/index";
 
 describe("package exports (source)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

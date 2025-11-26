@@ -36,7 +36,7 @@ describe('Business BDD: detectAnomaliesRequested', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
+  let _ctx: any;
 
   beforeEach(() => {
     const sequenceId = `anomaly-detect-${Date.now()}`;

@@ -3,7 +3,7 @@ import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/
 import { cssRegistry } from "../src/temp-deps/css-registry.store.ts";
 
 describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -34,7 +34,7 @@ describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () =
   });
 
   it("collects CSS from components with template.classRefs (current export format)", () => {
-    const ctx: any = {
+    const _ctx: any = {
       payload: {
         components: [
           {
@@ -60,7 +60,7 @@ describe("CSS collection fix for classRefs vs classes mismatch (migrated)", () =
   });
 
   it("still supports legacy components with classes property", () => {
-    const ctx: any = {
+    const _ctx: any = {
       payload: {
         components: [
           {

@@ -19,7 +19,7 @@ vi.mock('gif.js.optimized', () => ({
 vi.mock('gif.js.optimized/dist/gif.worker.js?url', () => ({ default: 'worker.js' }));
 
 describe('exportSvgToGif isolated', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -40,7 +40,7 @@ describe('exportSvgToGif isolated', () => {
     ctx = null;
   });
   it('success minimal export triggers download without error', async () => {
-    const ctx: any = { payload: {}, logger: { info: vi.fn(), error: vi.fn(), warn: vi.fn() } };
+    const _ctx: any = { payload: {}, logger: { info: vi.fn(), error: vi.fn(), warn: vi.fn() } };
     // Mock canvas context
     (HTMLCanvasElement.prototype as any).getContext = vi.fn().mockReturnValue({
       drawImage: () => {},
@@ -75,7 +75,7 @@ describe('exportSvgToGif isolated', () => {
   });
 
   it('sets error when 2D context unavailable', async () => {
-    const ctx: any = { payload: {}, logger: { info: vi.fn(), error: vi.fn(), warn: vi.fn() } };
+    const _ctx: any = { payload: {}, logger: { info: vi.fn(), error: vi.fn(), warn: vi.fn() } };
     // Force getContext to return null
     (HTMLCanvasElement.prototype as any).getContext = vi.fn().mockReturnValue(null);
     const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');

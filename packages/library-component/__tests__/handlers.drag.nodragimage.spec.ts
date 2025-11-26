@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { handlers } from '../src/symphonies/drag.symphony';
 
 describe('library-component drag handlers (no drag image support, package)', () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

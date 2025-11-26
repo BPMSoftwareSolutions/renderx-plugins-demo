@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { handlers as packageSelectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel (package) selection notify -> EventRouter", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -55,7 +55,7 @@ describe("Control Panel (package) selection notify -> EventRouter", () => {
       classes: ["rx-comp", "rx-button"],
     };
 
-    const ctx: any = {
+    const _ctx: any = {
       payload: { selectionModel },
       logger: {
         info: vi.fn(),

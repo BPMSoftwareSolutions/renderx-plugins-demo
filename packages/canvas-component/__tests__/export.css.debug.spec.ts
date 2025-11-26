@@ -3,7 +3,7 @@ import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/
 import { cssRegistry } from "../src/temp-deps/css-registry.store.ts";
 
 describe("Debug CSS collection in export (migrated)", () => {
-  let ctx: any;
+  let _ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -32,7 +32,7 @@ describe("Debug CSS collection in export (migrated)", () => {
   });
 
   it("debugs why cssClasses is not empty in export when classRefs provided", () => {
-    const ctx: any = {
+    const _ctx: any = {
       payload: {
         components: [
           {
