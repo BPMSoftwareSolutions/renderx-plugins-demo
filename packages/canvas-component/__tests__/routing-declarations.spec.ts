@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
@@ -16,7 +16,8 @@ describe("Routing declarations for drag and resize.move sequences", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

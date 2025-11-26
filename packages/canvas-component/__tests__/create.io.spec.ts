@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+﻿import { describe, it, expect } from "vitest";
 import { registerInstance } from "@renderx-plugins/canvas-component/symphonies/create/create.io.ts";
 
 describe("canvas-component create.io", () => {
@@ -14,7 +14,8 @@ describe("canvas-component create.io", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

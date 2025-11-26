@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock host SDK with spy for EventRouter.publish
@@ -25,7 +25,8 @@ describe("paste interactions attach and publish drag events", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

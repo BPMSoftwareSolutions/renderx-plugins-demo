@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from 'vitest';
 import { updatePosition, startDrag, endDrag, forwardToControlPanel } from '../src/symphonies/drag/drag.stage-crew';
 import { createMockCtx } from './helpers/context.ts';

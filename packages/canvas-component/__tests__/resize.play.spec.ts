@@ -1,4 +1,4 @@
-import { vi } from "vitest";
+﻿import { vi } from "vitest";
 vi.mock("@renderx-plugins/host-sdk", async (orig) => {
   const actual = await (orig as any).importActual?.("@renderx-plugins/host-sdk");
   return {

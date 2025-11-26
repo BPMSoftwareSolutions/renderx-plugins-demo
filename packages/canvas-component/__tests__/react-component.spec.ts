@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { renderReact, cleanupReactRoot, exposeEventRouterToReact } from "../src/symphonies/create/create.react.stage-crew";
 
@@ -15,7 +15,8 @@ describe("React Component Rendering", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

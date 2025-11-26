@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 
 describe('@renderx-plugins/canvas-component package exports', () => {
   let ctx: any;
@@ -13,7 +13,8 @@ describe('@renderx-plugins/canvas-component package exports', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

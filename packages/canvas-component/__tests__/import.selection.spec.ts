@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
 // Mock host SDK routing and conductor for package-level tests

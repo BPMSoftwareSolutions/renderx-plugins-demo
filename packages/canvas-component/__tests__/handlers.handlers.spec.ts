@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 // Plugin: canvas-component
 // Implementing real tests for next 8 handlers needing coverage

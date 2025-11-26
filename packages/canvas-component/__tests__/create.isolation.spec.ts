@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 // Stub EventRouter early so handlers pick up the mock

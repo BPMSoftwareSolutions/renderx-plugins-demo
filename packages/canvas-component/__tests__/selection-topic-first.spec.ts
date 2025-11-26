@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock host SDK
@@ -41,7 +41,8 @@ describe("Topic-first selection approach", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

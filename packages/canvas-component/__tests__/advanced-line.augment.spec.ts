@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 // Ensure lineAdvanced flag path is honored in package by mocking host-sdk flag check
 vi.mock("@renderx-plugins/host-sdk", () => ({

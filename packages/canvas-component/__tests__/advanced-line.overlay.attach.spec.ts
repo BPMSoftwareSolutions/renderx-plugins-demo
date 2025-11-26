@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 // Force-enable advanced line code paths for this test
 vi.mock("@renderx-plugins/host-sdk", () => ({
@@ -50,7 +50,7 @@ payload: {}
   it.skip("creates #rx-adv-line-overlay and binds dataset targetId", () => {
     // TODO(#139 follow-up): Gate relies on host-sdk isFlagEnabled and rx-line on target;
     // jsdom quirks may prevent overlay creation via showSelectionOverlay in this harness.
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

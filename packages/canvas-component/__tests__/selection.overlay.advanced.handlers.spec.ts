@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { getCanvasRect, applyOverlayRectForEl, ensureOverlay } from '../src/symphonies/select/select.overlay.dom.stage-crew';
 import { createOverlayStructure, resolveEndpoints } from '../src/symphonies/select/select.overlay.helpers';
@@ -63,7 +63,8 @@ describe('advanced selection/overlay handlers batch', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

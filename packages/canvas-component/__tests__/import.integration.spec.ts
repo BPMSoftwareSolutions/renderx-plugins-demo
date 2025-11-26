@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 vi.mock("@renderx-plugins/host-sdk", () => ({
   resolveInteraction: (key: string) => {

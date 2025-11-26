@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from 'vitest';
 import { hideAllOverlays, deselectComponent, publishDeselectionChanged, publishSelectionsCleared, clearAllSelections, routeDeselectionRequest } from '../src/symphonies/deselect/deselect.stage-crew';
 import { createMockCtx, mockEventRouterPublish } from './helpers/context.ts';
@@ -15,7 +15,8 @@ describe('canvas-component deselect.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

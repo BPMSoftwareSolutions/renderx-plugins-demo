@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+﻿import { describe, it, expect, vi } from 'vitest';
 import * as pkg from '../src/index';
 
 function createFakeConductor() {
@@ -25,7 +25,8 @@ describe('@renderx-plugins/canvas-component: package surface + register()', () =
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

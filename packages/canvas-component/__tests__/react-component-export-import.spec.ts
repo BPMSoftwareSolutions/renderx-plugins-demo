@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { buildUiFileContent } from "../src/symphonies/export/export.pure";
 import { parseUiFile } from "../src/symphonies/import/import.parse.pure";

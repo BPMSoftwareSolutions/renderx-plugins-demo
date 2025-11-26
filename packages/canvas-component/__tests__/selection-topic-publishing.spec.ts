@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock host SDK with spy for EventRouter.publish
@@ -36,7 +36,8 @@ describe("Canvas selection publishes selection.changed topic", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

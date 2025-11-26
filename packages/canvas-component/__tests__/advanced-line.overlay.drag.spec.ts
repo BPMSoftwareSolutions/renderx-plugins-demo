@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { handlers as selectHandlers } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
@@ -53,7 +53,7 @@ payload: {}
   });
 
   it.fails("dragging endpoint A twice with cumulative deltas should not over-accumulate", async () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

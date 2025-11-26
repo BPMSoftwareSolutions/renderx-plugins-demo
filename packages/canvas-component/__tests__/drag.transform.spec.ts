@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 // Mutable mock flag with setter so the mocked module reads latest value
 vi.mock("@renderx-plugins/host-sdk", () => {

@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { queryAllComponents } from "@renderx-plugins/canvas-component/symphonies/export/export.io.ts";
 

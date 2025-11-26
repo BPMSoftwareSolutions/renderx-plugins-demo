@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from 'vitest';
 import { routeSelectionRequest, hideSelectionOverlay, publishSelectionChanged } from '../src/symphonies/select/select.stage-crew';
 import { createMockCtx, mockEventRouterPublish } from './helpers/context.ts';
@@ -15,7 +15,8 @@ describe('canvas-component select.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

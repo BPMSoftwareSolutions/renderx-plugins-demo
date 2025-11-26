@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock host SDK with spies for EventRouter.publish and resolveInteraction
@@ -44,7 +44,8 @@ describe("Canvas component deselection", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

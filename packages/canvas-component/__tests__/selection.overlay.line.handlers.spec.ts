@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ensureLineOverlayFor, attachLineResizeHandlers } from '../src/symphonies/select/select.overlay.line-resize.stage-crew';
 
@@ -44,7 +44,8 @@ describe('line overlay + resize handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

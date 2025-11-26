@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from 'vitest';
 import { startResize, updateSize, endResize } from '../src/symphonies/resize/resize.stage-crew';
 import { createMockCtx } from './helpers/context.ts';
@@ -15,7 +15,8 @@ describe('canvas-component resize.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

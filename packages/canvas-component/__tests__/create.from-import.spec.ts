@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect } from "vitest";
 import { transformImportToCreatePayload } from "../src/symphonies/create/create.from-import";
 
@@ -15,7 +15,8 @@ describe("transformImportToCreatePayload", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.stage-crew.ts";
@@ -28,7 +28,8 @@ describe("SVG component resize behavior", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
@@ -41,7 +42,7 @@ describe("SVG component resize behavior", () => {
   });
 
   it("resizes outer dimensions while content preserves stroke thickness via CSS", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeSvgTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

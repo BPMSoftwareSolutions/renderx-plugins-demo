@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi } from "vitest";
 
 // Force fallback path inside select.symphony by making EventRouter.publish throw
@@ -37,7 +37,8 @@ describe("Canvas selection forwards to Control Panel (package)", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 

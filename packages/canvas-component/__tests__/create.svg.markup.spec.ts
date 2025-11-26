@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 
@@ -31,7 +31,8 @@ describe("SVG component (markup)", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
@@ -44,7 +45,7 @@ describe("SVG component (markup)", () => {
   });
 
   it("applies svgMarkup as innerHTML on the <svg>", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeSvgTemplateWithMarkup();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

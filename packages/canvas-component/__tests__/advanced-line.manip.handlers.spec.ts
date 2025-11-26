@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { moveLineManip } from "@renderx-plugins/canvas-component/symphonies/line-advanced/line.manip.stage-crew.ts";
@@ -48,7 +48,7 @@ describe("Advanced Line handlers â€” moveLineManip", () => {
   });
 
   it("updates endpoint A and recomputes line geometry", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

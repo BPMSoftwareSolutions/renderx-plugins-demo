@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 // Mock host-sdk resolveInteraction to avoid real host dependencies
@@ -33,7 +33,8 @@ describe('canvas-component paste.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

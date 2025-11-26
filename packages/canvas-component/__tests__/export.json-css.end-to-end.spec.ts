@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { queryAllComponents } from "@renderx-plugins/canvas-component/symphonies/export/export.io.ts";
 import { collectCssClasses } from "@renderx-plugins/canvas-component/symphonies/export/export.css.stage-crew.ts";
@@ -27,7 +27,8 @@ describe("Export includes JSON component CSS end-to-end (migrated)", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

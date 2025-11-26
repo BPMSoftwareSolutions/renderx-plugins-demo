@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
@@ -27,7 +27,8 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
@@ -40,7 +41,7 @@ describe("selection overlay CSS ensures box-sizing border-box for accurate align
   });
 
   it("sets overlay to border-box so its border doesn't expand beyond element bounds", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);

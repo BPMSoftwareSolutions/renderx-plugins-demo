@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 // Mock Host SDK for conductor, resolver, and EventRouter

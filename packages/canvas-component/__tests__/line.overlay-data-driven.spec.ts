@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
@@ -22,7 +22,8 @@ describe("line component overlay is data-driven and uses standard resize when co
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
@@ -48,7 +49,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   }
 
   it("uses box overlay when no data-overlay=line is set (ignores class heuristics)", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = createLineTemplate({
       "data-resize-enabled": "true",
       "data-resize-handles": "se,e,s",
@@ -72,7 +73,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   });
 
   it("resizes a line component via standard SE handle when enabled & handles provided", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = createLineTemplate({
       "data-resize-enabled": "true",
       "data-resize-handles": "se,e,s",
@@ -121,7 +122,7 @@ describe("line component overlay is data-driven and uses standard resize when co
   });
 
   it("ignores data-overlay=line and still uses standard overlay", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = createLineTemplate({ "data-overlay": "line" });
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

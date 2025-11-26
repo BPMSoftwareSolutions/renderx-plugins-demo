@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+﻿import { describe, it, expect, vi } from "vitest";
 import { buildUiFileContent } from "@renderx-plugins/canvas-component/symphonies/export/export.pure.ts";
 
 function makeCtx() {
@@ -50,7 +50,8 @@ describe("canvas-component export.pure", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

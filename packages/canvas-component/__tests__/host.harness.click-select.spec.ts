@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 
 vi.mock("@renderx-plugins/host-sdk", () => ({
@@ -32,7 +32,8 @@ describe("Host-like click-to-select harness forwards to canvas.component.select"
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

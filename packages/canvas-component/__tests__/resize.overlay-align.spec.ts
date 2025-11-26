@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
@@ -33,7 +33,8 @@ describe("selection overlay remains aligned with component after resize (conduct
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
@@ -47,7 +48,7 @@ describe("selection overlay remains aligned with component after resize (conduct
   });
 
   it("keeps overlay aligned with element's width/height after dragging SE handle", () => {
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);

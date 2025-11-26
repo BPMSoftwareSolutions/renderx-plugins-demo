@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { getCanvasOrThrow, createElementWithId, applyClasses, applyInlineStyle, appendTo } from '../src/symphonies/create/create.dom.stage-crew';
 
@@ -15,7 +15,8 @@ describe('canvas-component create.dom.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

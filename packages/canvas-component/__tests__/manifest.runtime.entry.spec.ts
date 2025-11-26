@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+﻿import { describe, it, expect } from "vitest";
 
 // Verify plugin-manifest includes a runtime entry for @renderx-plugins/canvas-component
 // Path is relative to this package test to the repo public/ directory
@@ -16,7 +16,8 @@ describe("plugin-manifest runtime entry: @renderx-plugins/canvas-component", () 
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { startLineResize, updateLine, endLineResize } from '../src/symphonies/resize-line/resize.line.stage-crew';
 import { createMockCtx } from './helpers/context';
@@ -16,7 +16,8 @@ describe('canvas-component resize.line.stage-crew handlers', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

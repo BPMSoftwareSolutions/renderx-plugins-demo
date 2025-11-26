@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { showSelectionOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.stage-crew.ts";
@@ -32,7 +32,8 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
@@ -46,7 +47,7 @@ describe("canvas-component drag: overlay visibility (migrated)", () => {
 
   it.skip("hides overlay while dragging and restores visibility on drag end (drop)", () => {
     // Kept as skipped to drive future implementation
-    ctx.payload = {} };
+    ctx.payload = {};
     const template = makeTemplate();
     createHandlers.resolveTemplate({ component: { template } }, ctx);
     createHandlers.createNode({ position: { x: 10, y: 20 } }, ctx);

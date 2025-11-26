@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+﻿import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { JSDOM } from "jsdom";
 import { EventRouter, useConductor } from "@renderx-plugins/host-sdk";
 import { handlers as selectHandlers } from "../src/symphonies/select/select.stage-crew";
@@ -25,7 +25,8 @@ describe("Selection after externalization - comprehensive tests", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

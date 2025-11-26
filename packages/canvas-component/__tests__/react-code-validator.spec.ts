@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import { validateReactCode, validateReactCodeOrThrow } from '../src/symphonies/create/react-code-validator';
 
 describe('React Code Validator', () => {
@@ -14,7 +14,8 @@ describe('React Code Validator', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

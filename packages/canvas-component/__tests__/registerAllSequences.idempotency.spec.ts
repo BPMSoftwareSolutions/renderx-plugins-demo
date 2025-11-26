@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 
 import { describe, it, expect } from "vitest";
 
@@ -17,7 +17,8 @@ describe("registerAllSequences idempotency (canvas-component)", () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 

@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { AllRulesConfig } from '../src/temp-deps/rule-engine';
 // Static imports to allow handler test extraction to map these public API handlers

@@ -1,4 +1,4 @@
-/* @vitest-environment jsdom */
+﻿/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { setFlagOverride, clearFlagOverrides, getFlagOverride } from '../src/temp-deps/feature-flags';
@@ -22,7 +22,8 @@ describe('feature-flags getFlagOverride', () => {
       },
       input: {},
       output: null,
-      error: null,`n      payload: {}
+      error: null,
+      payload: {}
     };
   });
 
