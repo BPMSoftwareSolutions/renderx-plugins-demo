@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-26T14:55:37.604Z",
+  "timestamp": "2025-11-26T15:14:58.615Z",
   "version": "1.0.0",
   "dimensions": {
     "orchestration-domains": {
@@ -230,25 +230,11 @@
       "artifactsScanned": 25,
       "violations": [
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-classes-add-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-classes-add-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-classes-remove-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -258,25 +244,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-css-create-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-css-create-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-css-delete-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -286,25 +258,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-css-edit-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-css-edit-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-selection-show-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -314,25 +272,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-ui-field-change-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-ui-field-change-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-ui-field-validate-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -342,25 +286,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-ui-init-batched-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-ui-init-batched-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-ui-init-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -370,25 +300,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-ui-render-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-ui-render-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-ui-section-toggle-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -398,25 +314,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "control-panel-update-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "control-panel-update-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-anomaly-detect-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -427,13 +329,6 @@
         },
         {
           "level": "CRITICAL",
-          "rule": "sequence-id-required",
-          "artifact": "baseline.metrics.establish",
-          "message": "Missing sequence ID",
-          "remediation": "Set id: \"baseline.metrics.establish\""
-        },
-        {
-          "level": "CRITICAL",
           "rule": "sequence-beats-positive",
           "artifact": "baseline.metrics.establish",
           "message": "Invalid beat count",
@@ -445,13 +340,6 @@
           "artifact": "baseline.metrics.establish",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-deployment-deploy-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -461,25 +349,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-diagnosis-analyze-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "self-healing-diagnosis-analyze-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-fix-generate-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -490,13 +364,6 @@
         },
         {
           "level": "CRITICAL",
-          "rule": "sequence-id-required",
-          "artifact": "handler-implementation.workflow",
-          "message": "Missing sequence ID",
-          "remediation": "Set id: \"handler-implementation.workflow\""
-        },
-        {
-          "level": "CRITICAL",
           "rule": "sequence-beats-positive",
           "artifact": "handler-implementation.workflow",
           "message": "Invalid beat count",
@@ -508,13 +375,6 @@
           "artifact": "handler-implementation.workflow",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-learning-track-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -524,25 +384,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-telemetry-parse-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "self-healing-telemetry-parse-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "self-healing-validation-run-symphony",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -552,20 +398,6 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-name-required",
-          "artifact": "dashboard.export.report",
-          "message": "Missing or short sequence name",
-          "remediation": "Set name: \"dashboard export report\""
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "dashboard.export.report",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "dashboard.export.report",
@@ -573,39 +405,11 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-name-required",
-          "artifact": "dashboard.load",
-          "message": "Missing or short sequence name",
-          "remediation": "Set name: \"dashboard load\""
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "dashboard.load",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "dashboard.load",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-name-required",
-          "artifact": "dashboard.refresh.metrics",
-          "message": "Missing or short sequence name",
-          "remediation": "Set name: \"dashboard refresh metrics\""
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "dashboard.refresh.metrics",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -834,111 +638,6 @@
       {
         "level": "CRITICAL",
         "rule": "sequence-beats-positive",
-        "artifact": "control-panel-classes-add-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-classes-remove-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-css-create-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-css-delete-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-css-edit-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-selection-show-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-ui-field-change-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-ui-field-validate-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-ui-init-batched-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-ui-init-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-ui-render-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-ui-section-toggle-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "control-panel-update-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "self-healing-anomaly-detect-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-id-required",
-        "artifact": "baseline.metrics.establish",
-        "message": "Missing sequence ID",
-        "remediation": "Set id: \"baseline.metrics.establish\""
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
         "artifact": "baseline.metrics.establish",
         "message": "Invalid beat count",
         "remediation": "Set beats to handler item count (current: undefined)"
@@ -946,98 +645,7 @@
       {
         "level": "CRITICAL",
         "rule": "sequence-beats-positive",
-        "artifact": "self-healing-deployment-deploy-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "self-healing-diagnosis-analyze-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "self-healing-fix-generate-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-id-required",
         "artifact": "handler-implementation.workflow",
-        "message": "Missing sequence ID",
-        "remediation": "Set id: \"handler-implementation.workflow\""
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "handler-implementation.workflow",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "self-healing-learning-track-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "self-healing-telemetry-parse-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "self-healing-validation-run-symphony",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-name-required",
-        "artifact": "dashboard.export.report",
-        "message": "Missing or short sequence name",
-        "remediation": "Set name: \"dashboard export report\""
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "dashboard.export.report",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-name-required",
-        "artifact": "dashboard.load",
-        "message": "Missing or short sequence name",
-        "remediation": "Set name: \"dashboard load\""
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "dashboard.load",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-name-required",
-        "artifact": "dashboard.refresh.metrics",
-        "message": "Missing or short sequence name",
-        "remediation": "Set name: \"dashboard refresh metrics\""
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "dashboard.refresh.metrics",
         "message": "Invalid beat count",
         "remediation": "Set beats to handler item count (current: undefined)"
       },

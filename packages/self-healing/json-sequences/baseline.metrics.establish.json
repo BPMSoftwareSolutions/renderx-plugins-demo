@@ -5,11 +5,31 @@
   "version": "0.1.0",
   "type": "sequence",
   "steps": [
-    { "order": 1, "id": "baseline.collect.metrics", "description": "Load existing aggregated telemetry metrics artifact (.generated/telemetry-metrics.json)." },
-    { "order": 2, "id": "baseline.aggregate.metrics", "description": "Optionally refine raw metrics (pass-through in minimal slice)." },
-    { "order": 3, "id": "baseline.establish", "description": "Derive baseline statistics (p50, p95 latency, error rate, counts) and confidence levels." },
-    { "order": 4, "id": "baseline.store", "description": "Persist baseline to .generated/baseline-metrics.json with schema version & timestamp." },
-    { "order": 5, "id": "baseline.completed", "description": "Emit completion event summarizing handler baseline counts & any low-confidence entries." }
+    {
+      "order": 1,
+      "id": "baseline.collect.metrics",
+      "description": "Load existing aggregated telemetry metrics artifact (.generated/telemetry-metrics.json)."
+    },
+    {
+      "order": 2,
+      "id": "baseline.aggregate.metrics",
+      "description": "Optionally refine raw metrics (pass-through in minimal slice)."
+    },
+    {
+      "order": 3,
+      "id": "baseline.establish",
+      "description": "Derive baseline statistics (p50, p95 latency, error rate, counts) and confidence levels."
+    },
+    {
+      "order": 4,
+      "id": "baseline.store",
+      "description": "Persist baseline to .generated/baseline-metrics.json with schema version & timestamp."
+    },
+    {
+      "order": 5,
+      "id": "baseline.completed",
+      "description": "Emit completion event summarizing handler baseline counts & any low-confidence entries."
+    }
   ],
   "business_value": "Provides objective historical reference enabling anomaly detection, SLO evaluation, and performance regression prevention.",
   "initial_constraints": [
@@ -35,5 +55,6 @@
         }
       }
     }
-  }
+  },
+  "id": "baseline.metrics.establish"
 }

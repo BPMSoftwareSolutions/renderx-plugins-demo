@@ -7,10 +7,26 @@
       "id": "delete",
       "name": "Delete",
       "beats": [
-        { "beat": 1, "event": "canvas:component:delete", "title": "Delete Component", "dynamics": "mf", "handler": "deleteComponent", "timing": "immediate", "kind": "stage-crew" },
-        { "beat": 2, "event": "canvas:component:deleted", "title": "Publish Deleted", "dynamics": "mf", "handler": "publishDeleted", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "canvas:component:delete",
+          "title": "Delete Component",
+          "dynamics": "mf",
+          "handler": "deleteComponent",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        },
+        {
+          "beat": 2,
+          "event": "canvas:component:deleted",
+          "title": "Publish Deleted",
+          "dynamics": "mf",
+          "handler": "publishDeleted",
+          "timing": "immediate",
+          "kind": "pure"
+        }
       ]
     }
-  ]
+  ],
+  "beats": 2
 }
-

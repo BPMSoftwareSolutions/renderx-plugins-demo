@@ -7,9 +7,17 @@
       "id": "drag",
       "name": "Drag",
       "beats": [
-        { "beat": 1, "event": "library.component.drag.start.requested", "title": "Start Drag", "dynamics": "mf", "handler": "onDragStart", "timing": "immediate", "kind": "pure" }
+        {
+          "beat": 1,
+          "event": "library.component.drag.start.requested",
+          "title": "Start Drag",
+          "dynamics": "mf",
+          "handler": "onDragStart",
+          "timing": "immediate",
+          "kind": "pure"
+        }
       ]
     }
-  ]
+  ],
+  "beats": 1
 }
-

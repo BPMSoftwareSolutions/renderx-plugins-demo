@@ -6,9 +6,19 @@
     {
       "name": "refresh",
       "beats": [
-        { "beat": 1, "handler": "loadMetrics", "kind": "io" },
-        { "beat": 2, "handler": "computeCompliance", "kind": "pure" }
+        {
+          "beat": 1,
+          "handler": "loadMetrics",
+          "kind": "io"
+        },
+        {
+          "beat": 2,
+          "handler": "computeCompliance",
+          "kind": "pure"
+        }
       ]
     }
-  ]
+  ],
+  "name": "Dashboard.refresh.metrics",
+  "beats": 2
 }

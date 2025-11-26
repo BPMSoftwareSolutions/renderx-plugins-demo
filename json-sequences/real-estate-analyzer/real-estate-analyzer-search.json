@@ -7,10 +7,32 @@
       "id": "search",
       "name": "Search",
       "beats": [
-        { "beat": 1, "event": "real.estate.analyzer.search", "handler": "fetchPropertyData", "kind": "pure", "dynamics": "mf", "timing": "immediate" },
-        { "beat": 2, "event": "real.estate.analyzer:analyze", "handler": "analyze", "kind": "pure", "dynamics": "mf", "timing": "immediate" },
-        { "beat": 3, "event": "real.estate.analyzer:format", "handler": "format", "kind": "pure", "dynamics": "mf", "timing": "immediate" }
+        {
+          "beat": 1,
+          "event": "real.estate.analyzer.search",
+          "handler": "fetchPropertyData",
+          "kind": "pure",
+          "dynamics": "mf",
+          "timing": "immediate"
+        },
+        {
+          "beat": 2,
+          "event": "real.estate.analyzer:analyze",
+          "handler": "analyze",
+          "kind": "pure",
+          "dynamics": "mf",
+          "timing": "immediate"
+        },
+        {
+          "beat": 3,
+          "event": "real.estate.analyzer:format",
+          "handler": "format",
+          "kind": "pure",
+          "dynamics": "mf",
+          "timing": "immediate"
+        }
       ]
     }
-  ]
+  ],
+  "beats": 3
 }

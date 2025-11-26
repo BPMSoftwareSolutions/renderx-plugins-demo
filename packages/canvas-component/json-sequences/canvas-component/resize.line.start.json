@@ -7,9 +7,17 @@
       "id": "resize-line-start",
       "name": "Resize Line Start",
       "beats": [
-        { "beat": 1, "event": "canvas:component:resize:line:start", "title": "Line Resize Start", "dynamics": "mf", "handler": "startLineResize", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:resize:line:start",
+          "title": "Line Resize Start",
+          "dynamics": "mf",
+          "handler": "startLineResize",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
       ]
     }
-  ]
+  ],
+  "beats": 1
 }
-

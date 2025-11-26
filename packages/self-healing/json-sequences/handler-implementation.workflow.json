@@ -12,22 +12,97 @@
       "duration": "5 minutes",
       "description": "Apply Weighted Shortest Job First scoring to candidate handlers to select the next highest-value smallest slice.",
       "steps": [
-        { "step": 1, "action": "List candidate handlers", "details": "Enumerate pending handlers (diagnosis, fix, validation, deploy, learning).", "expected_outcome": "Visible backlog subset for scoring" },
-        { "step": 2, "action": "Estimate Business Value (BV)", "details": "Relative 1-10 scale: user impact, revenue, stability.", "expected_outcome": "BV score recorded" },
-        { "step": 3, "action": "Estimate Time Criticality (TC)", "details": "Urgency due to deadlines, incidents, seasonal demand.", "expected_outcome": "TC score recorded" },
-        { "step": 4, "action": "Estimate Risk Reduction / Opportunity Enablement (RR/OE)", "details": "How much risk is retired or new capability unlocked.", "expected_outcome": "RR/OE score recorded" },
-        { "step": 5, "action": "Estimate Job Size (JS)", "details": "Relative effort (story points or t-shirt sizing mapped to numbers).", "expected_outcome": "JS score recorded" },
-        { "step": 6, "action": "Compute WSJF", "details": "Formula: (BV + TC + RR/OE) / JS. Rank descending.", "expected_outcome": "Ranked list with WSJF scores" },
-        { "step": 7, "action": "Select next handler slice", "details": "Pick top WSJF AND confirm feasibility for current iteration timeframe.", "expected_outcome": "Chosen handler documented" },
-        { "step": 8, "action": "Capture decision artifact", "details": "Append/Update WSJF table in DEMO_FEEDBACK.md or WSJF_DECISIONS.md.", "expected_outcome": "Persisted decision record" },
-        { "step": 9, "action": "Verify improvement item readiness", "details": "If selecting an improvement from .generated/spec-enforcement-improvement-backlog.json: confirm status=planned, priority≠low, acceptance criteria present, blockers absent, and spec enforcement script passes (node scripts/verify-bdd-spec.js). Record readiness or update backlog with blockers.", "expected_outcome": "Improvement item marked READY or backlog updated with reasons not ready" }
+        {
+          "step": 1,
+          "action": "List candidate handlers",
+          "details": "Enumerate pending handlers (diagnosis, fix, validation, deploy, learning).",
+          "expected_outcome": "Visible backlog subset for scoring"
+        },
+        {
+          "step": 2,
+          "action": "Estimate Business Value (BV)",
+          "details": "Relative 1-10 scale: user impact, revenue, stability.",
+          "expected_outcome": "BV score recorded"
+        },
+        {
+          "step": 3,
+          "action": "Estimate Time Criticality (TC)",
+          "details": "Urgency due to deadlines, incidents, seasonal demand.",
+          "expected_outcome": "TC score recorded"
+        },
+        {
+          "step": 4,
+          "action": "Estimate Risk Reduction / Opportunity Enablement (RR/OE)",
+          "details": "How much risk is retired or new capability unlocked.",
+          "expected_outcome": "RR/OE score recorded"
+        },
+        {
+          "step": 5,
+          "action": "Estimate Job Size (JS)",
+          "details": "Relative effort (story points or t-shirt sizing mapped to numbers).",
+          "expected_outcome": "JS score recorded"
+        },
+        {
+          "step": 6,
+          "action": "Compute WSJF",
+          "details": "Formula: (BV + TC + RR/OE) / JS. Rank descending.",
+          "expected_outcome": "Ranked list with WSJF scores"
+        },
+        {
+          "step": 7,
+          "action": "Select next handler slice",
+          "details": "Pick top WSJF AND confirm feasibility for current iteration timeframe.",
+          "expected_outcome": "Chosen handler documented"
+        },
+        {
+          "step": 8,
+          "action": "Capture decision artifact",
+          "details": "Append/Update WSJF table in DEMO_FEEDBACK.md or WSJF_DECISIONS.md.",
+          "expected_outcome": "Persisted decision record"
+        },
+        {
+          "step": 9,
+          "action": "Verify improvement item readiness",
+          "details": "If selecting an improvement from .generated/spec-enforcement-improvement-backlog.json: confirm status=planned, priority≠low, acceptance criteria present, blockers absent, and spec enforcement script passes (node scripts/verify-bdd-spec.js). Record readiness or update backlog with blockers.",
+          "expected_outcome": "Improvement item marked READY or backlog updated with reasons not ready"
+        }
       ],
       "business_bdd_spec": {
         "user_story": "As a product stakeholder, I want high-value handlers implemented first so that we maximize ROI and agility.",
         "persona": "Stakeholder/Product Owner",
         "scenarios": [
-          { "title": "Stakeholder ranks backlog with WSJF", "given": ["list of candidate handlers", "agreed scoring scales"], "when": ["scores are estimated", "WSJF computed"], "then": ["highest WSJF selected", "decision documented", "iteration goal clarified"] },
-          { "title": "Team verifies improvement item readiness", "given": ["improvement backlog JSON exists", "candidate item has priority and acceptance"], "when": ["readiness criteria are evaluated", "spec enforcement passes"], "then": ["item marked READY", "or blockers documented", "decision artifact updated"] }
+          {
+            "title": "Stakeholder ranks backlog with WSJF",
+            "given": [
+              "list of candidate handlers",
+              "agreed scoring scales"
+            ],
+            "when": [
+              "scores are estimated",
+              "WSJF computed"
+            ],
+            "then": [
+              "highest WSJF selected",
+              "decision documented",
+              "iteration goal clarified"
+            ]
+          },
+          {
+            "title": "Team verifies improvement item readiness",
+            "given": [
+              "improvement backlog JSON exists",
+              "candidate item has priority and acceptance"
+            ],
+            "when": [
+              "readiness criteria are evaluated",
+              "spec enforcement passes"
+            ],
+            "then": [
+              "item marked READY",
+              "or blockers documented",
+              "decision artifact updated"
+            ]
+          }
         ]
       }
     },
@@ -68,9 +143,19 @@
         "scenarios": [
           {
             "title": "Product Owner verifies spec artifact before implementation",
-            "given": ["spec generation script exists", "no unit tests started yet"],
-            "when": ["artifact presence is checked", "script is run if missing"],
-            "then": ["spec file is available", "stakeholder confirms behavior design", "workflow can proceed to BDD test implementation"]
+            "given": [
+              "spec generation script exists",
+              "no unit tests started yet"
+            ],
+            "when": [
+              "artifact presence is checked",
+              "script is run if missing"
+            ],
+            "then": [
+              "spec file is available",
+              "stakeholder confirms behavior design",
+              "workflow can proceed to BDD test implementation"
+            ]
           },
           {
             "title": "Agent reads business spec for parseTelemetryRequested",
@@ -289,14 +374,38 @@
       "duration": "5 minutes",
       "description": "Verify business BDD test passes with implemented handler",
       "steps": [
-        { "step": 1, "action": "Run business BDD test", "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts", "expected_outcome": "Business BDD test passes" },
-        { "step": 2, "action": "Verify business outcomes", "details": "Confirm business outcomes are achieved (not just technical correctness)", "expected_outcome": "Business value is verified" }
+        {
+          "step": 1,
+          "action": "Run business BDD test",
+          "details": "npm test -- __tests__/business-bdd-handlers/[N]-[handler-name].spec.ts",
+          "expected_outcome": "Business BDD test passes"
+        },
+        {
+          "step": 2,
+          "action": "Verify business outcomes",
+          "details": "Confirm business outcomes are achieved (not just technical correctness)",
+          "expected_outcome": "Business value is verified"
+        }
       ],
       "business_bdd_spec": {
         "user_story": "As an agent, I want to verify the business BDD test passes so that I confirm business value",
         "persona": "Agent/Developer",
         "scenarios": [
-          { "title": "Agent verifies business BDD test passes", "given": ["handler is implemented", "unit tests pass"], "when": ["agent runs business BDD test"], "then": ["business BDD test passes", "business outcomes are verified", "business value is achieved"] }
+          {
+            "title": "Agent verifies business BDD test passes",
+            "given": [
+              "handler is implemented",
+              "unit tests pass"
+            ],
+            "when": [
+              "agent runs business BDD test"
+            ],
+            "then": [
+              "business BDD test passes",
+              "business outcomes are verified",
+              "business value is achieved"
+            ]
+          }
         ]
       }
     },
@@ -306,17 +415,58 @@
       "duration": "10 minutes",
       "description": "Demonstrate the implemented vertical slice (handler + tests + artifacts) to stakeholders for immediate feedback before expanding scope.",
       "steps": [
-        { "step": 1, "action": "Run orchestrator(s)", "details": "Execute runTelemetryParsing, runAnomalyDetection (and runDiagnosisAnalyze when available) in a local script/REPL.", "expected_outcome": "Console output shows sequence events and summary objects." },
-        { "step": 2, "action": "Show generated artifacts", "details": "Open .generated/telemetry-metrics.json and anomalies.json (and diagnosis-results.json when present).", "expected_outcome": "Stakeholders see tangible outputs." },
-        { "step": 3, "action": "Narrate business value", "details": "Map outcomes to original business BDD scenarios.", "expected_outcome": "Business value confirmed." },
-        { "step": 4, "action": "Collect feedback", "details": "Capture improvement ideas & new edge cases.", "expected_outcome": "Feedback markdown note added (e.g., DEMO_FEEDBACK.md)." },
-        { "step": 5, "action": "Decide iteration adjustments", "details": "Prioritize next handler(s) or refinements.", "expected_outcome": "Updated backlog/todo list." }
+        {
+          "step": 1,
+          "action": "Run orchestrator(s)",
+          "details": "Execute runTelemetryParsing, runAnomalyDetection (and runDiagnosisAnalyze when available) in a local script/REPL.",
+          "expected_outcome": "Console output shows sequence events and summary objects."
+        },
+        {
+          "step": 2,
+          "action": "Show generated artifacts",
+          "details": "Open .generated/telemetry-metrics.json and anomalies.json (and diagnosis-results.json when present).",
+          "expected_outcome": "Stakeholders see tangible outputs."
+        },
+        {
+          "step": 3,
+          "action": "Narrate business value",
+          "details": "Map outcomes to original business BDD scenarios.",
+          "expected_outcome": "Business value confirmed."
+        },
+        {
+          "step": 4,
+          "action": "Collect feedback",
+          "details": "Capture improvement ideas & new edge cases.",
+          "expected_outcome": "Feedback markdown note added (e.g., DEMO_FEEDBACK.md)."
+        },
+        {
+          "step": 5,
+          "action": "Decide iteration adjustments",
+          "details": "Prioritize next handler(s) or refinements.",
+          "expected_outcome": "Updated backlog/todo list."
+        }
       ],
       "business_bdd_spec": {
         "user_story": "As a stakeholder, I want to see a live demo early so that I can provide feedback and ensure alignment.",
         "persona": "Stakeholder/Product Owner",
         "scenarios": [
-          { "title": "Stakeholder watches demo of new handler slice", "given": ["handlers implemented", "tests passing", "artifacts generated"], "when": ["agent runs orchestrator", "agent explains outputs"], "then": ["stakeholder understands value", "feedback captured", "next iteration clarified"] }
+          {
+            "title": "Stakeholder watches demo of new handler slice",
+            "given": [
+              "handlers implemented",
+              "tests passing",
+              "artifacts generated"
+            ],
+            "when": [
+              "agent runs orchestrator",
+              "agent explains outputs"
+            ],
+            "then": [
+              "stakeholder understands value",
+              "feedback captured",
+              "next iteration clarified"
+            ]
+          }
         ]
       }
     },
@@ -404,17 +554,56 @@
   "service_objectives": {
     "overview": "Service Level Objectives (SLOs) define clear performance and reliability targets; Service Level Indicators (SLIs) measure them; SLAs communicate external commitments.",
     "business_values": [
-      { "value": "Evolvable Architecture", "description": "SLO-driven constraints surface scaling needs early enabling modular evolution." },
-      { "value": "Clear Objectives & Expectations", "description": "Quantified targets (e.g., latency_p95 <= 300ms) align stakeholders and engineering focus." },
-      { "value": "Consistent Documentation", "description": "Central SLO config JSON becomes single source-of-truth referenced in plugin & sequences." },
-      { "value": "Observability & Self-Healing", "description": "Automated breach detection feeds anomaly & diagnosis sequences to trigger remediation." },
-      { "value": "Continuous Improvement", "description": "Historical SLI trend + breach analytics fuel WSJF reprioritization and learning models." }
+      {
+        "value": "Evolvable Architecture",
+        "description": "SLO-driven constraints surface scaling needs early enabling modular evolution."
+      },
+      {
+        "value": "Clear Objectives & Expectations",
+        "description": "Quantified targets (e.g., latency_p95 <= 300ms) align stakeholders and engineering focus."
+      },
+      {
+        "value": "Consistent Documentation",
+        "description": "Central SLO config JSON becomes single source-of-truth referenced in plugin & sequences."
+      },
+      {
+        "value": "Observability & Self-Healing",
+        "description": "Automated breach detection feeds anomaly & diagnosis sequences to trigger remediation."
+      },
+      {
+        "value": "Continuous Improvement",
+        "description": "Historical SLI trend + breach analytics fuel WSJF reprioritization and learning models."
+      }
     ],
     "initial_slos": [
-      { "id": "latency_p95", "target": 300, "windowMinutes": 60, "comparison": "<=", "indicator": "request_latency_p95_ms" },
-      { "id": "error_rate", "target": 0.02, "windowMinutes": 60, "comparison": "<=", "indicator": "error_rate_ratio" },
-      { "id": "availability", "target": 0.999, "windowMinutes": 1440, "comparison": ">=", "indicator": "success_rate_ratio" },
-      { "id": "throughput", "target": 50, "windowMinutes": 5, "comparison": ">=", "indicator": "requests_per_second_avg" }
+      {
+        "id": "latency_p95",
+        "target": 300,
+        "windowMinutes": 60,
+        "comparison": "<=",
+        "indicator": "request_latency_p95_ms"
+      },
+      {
+        "id": "error_rate",
+        "target": 0.02,
+        "windowMinutes": 60,
+        "comparison": "<=",
+        "indicator": "error_rate_ratio"
+      },
+      {
+        "id": "availability",
+        "target": 0.999,
+        "windowMinutes": 1440,
+        "comparison": ">=",
+        "indicator": "success_rate_ratio"
+      },
+      {
+        "id": "throughput",
+        "target": 50,
+        "windowMinutes": 5,
+        "comparison": ">=",
+        "indicator": "requests_per_second_avg"
+      }
     ],
     "slice_demo_expectations": [
       "Show current computed SLIs from telemetry artifacts",
@@ -455,6 +644,6 @@
     "types": "packages/self-healing/src/types/index.ts"
   },
   "time_estimate": "~5 hours per handler",
-  "status": "ready"
+  "status": "ready",
+  "id": "handler-implementation.workflow"
 }
-

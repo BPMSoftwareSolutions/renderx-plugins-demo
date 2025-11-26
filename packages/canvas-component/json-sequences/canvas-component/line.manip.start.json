@@ -7,9 +7,17 @@
       "id": "manip-line-start",
       "name": "Manip Line Start",
       "beats": [
-        { "beat": 1, "event": "canvas:component:manip:line:start", "title": "Line Manip Start", "dynamics": "mf", "handler": "startLineManip", "timing": "immediate", "kind": "stage-crew" }
+        {
+          "beat": 1,
+          "event": "canvas:component:manip:line:start",
+          "title": "Line Manip Start",
+          "dynamics": "mf",
+          "handler": "startLineManip",
+          "timing": "immediate",
+          "kind": "stage-crew"
+        }
       ]
     }
-  ]
+  ],
+  "beats": 1
 }
-

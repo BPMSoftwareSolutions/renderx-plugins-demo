@@ -6,10 +6,24 @@
     {
       "name": "initialize",
       "beats": [
-        { "beat": 1, "handler": "loadBudgets", "kind": "io" },
-        { "beat": 2, "handler": "loadMetrics", "kind": "io" },
-        { "beat": 3, "handler": "computeCompliance", "kind": "pure" }
+        {
+          "beat": 1,
+          "handler": "loadBudgets",
+          "kind": "io"
+        },
+        {
+          "beat": 2,
+          "handler": "loadMetrics",
+          "kind": "io"
+        },
+        {
+          "beat": 3,
+          "handler": "computeCompliance",
+          "kind": "pure"
+        }
       ]
     }
-  ]
+  ],
+  "name": "Dashboard.load",
+  "beats": 3
 }
