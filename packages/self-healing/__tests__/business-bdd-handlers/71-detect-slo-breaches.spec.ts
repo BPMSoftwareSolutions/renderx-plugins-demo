@@ -42,7 +42,7 @@ describe('Business BDD: detectSloBreaches', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // Craft metrics that breach latency p95 & throughput targets (from service_level.objectives.json)

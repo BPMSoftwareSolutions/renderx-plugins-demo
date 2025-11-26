@@ -6,7 +6,7 @@ import { clearTelemetry, getTelemetry } from '../../src/telemetry/collector';
 installTelemetryMatcher();
 
 describe('Business BDD: coverage-coupling (auto-generated)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

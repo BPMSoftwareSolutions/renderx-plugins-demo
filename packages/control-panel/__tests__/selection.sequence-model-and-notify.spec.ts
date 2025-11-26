@@ -15,7 +15,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel selection sequence builds data-driven model", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

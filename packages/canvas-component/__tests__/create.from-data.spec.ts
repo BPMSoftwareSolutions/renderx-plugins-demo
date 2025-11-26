@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { toCreatePayloadFromData, transformClipboardToCreatePayload } from "../src/symphonies/create/create.from-import";
 
 describe("toCreatePayloadFromData (clipboard shape)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -51,7 +51,7 @@ function dispatchMouse(el: Element | Document, type: string, opts: any) {
 }
 
 describe("canvas-component resize (DOM-only)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

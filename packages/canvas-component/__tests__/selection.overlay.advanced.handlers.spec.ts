@@ -51,7 +51,7 @@ function makeLineSvg(id: string) {
 }
 
 describe('advanced selection/overlay handlers batch', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -4,7 +4,7 @@ import { handlers as updateHandlers } from "../src/symphonies/update/update.symp
 import { handlers as selectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel: Heading Level Sync (Issue #50)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

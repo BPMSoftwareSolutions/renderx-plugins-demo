@@ -21,7 +21,7 @@ function createSyntheticTelemetryMetrics(root: string) {
 }
 
 describe('Baseline Establishment Minimal Slice', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -2,7 +2,7 @@
 
 Version: 1.0.0
 
-<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.json hash=4e9f237ed44bb0bbaab22a8d35e8e7800f9545994d78f353276067eb88464c26 -->
+<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.json hash=4ef092bc039f22be51deeac48605a79e94d2cdfa8a47e426460f48b3be20d370 -->
 
 ## Sprint Breakdown
 ### Baseline Linkage & Sequence Hooks (undefined)

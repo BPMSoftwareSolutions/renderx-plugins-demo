@@ -16,7 +16,7 @@ import { analyzeCoverageIssues } from '../../src/handlers/diagnosis/analyze.cove
  */
 
 describe('Business BDD: analyzeCoverageIssues', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -36,7 +36,7 @@ describe('Business BDD: analyzeCoverageIssues', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     _ctx = {

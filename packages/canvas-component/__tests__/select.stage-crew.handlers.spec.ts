@@ -23,7 +23,7 @@ describe('canvas-component select.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
   let _publishSpy: any; // unused after relaxing assertions
 
   beforeEach(() => {

@@ -21,7 +21,7 @@ function makeCtx() {
 }
 
 describe('canvas-component create.notify notifyUi handler (public API)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

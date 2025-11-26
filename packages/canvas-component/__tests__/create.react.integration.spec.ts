@@ -73,7 +73,7 @@ function makeCtx() {
 }
 
 describe("React Component Integration Tests", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

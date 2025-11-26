@@ -11,7 +11,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 describe.skip('Track Effectiveness (self-healing-learning-track-symphony)', () => {
   // TODO: Set up test context and mocks
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks

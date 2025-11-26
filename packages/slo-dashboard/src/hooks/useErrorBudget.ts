@@ -57,6 +57,8 @@ export function useErrorBudget(
       const interval = setInterval(refresh, refreshIntervalMs);
       return () => clearInterval(interval);
     }
+    // Return undefined cleanup (no cleanup needed if no interval)
+    return undefined;
   }, [refresh, autoRefresh, refreshIntervalMs, sourceUrl]);
 
   return {

@@ -41,7 +41,7 @@ function makeCtx() {
 }
 
 describe("SVG node update functionality", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

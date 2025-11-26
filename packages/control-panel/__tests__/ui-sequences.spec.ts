@@ -20,7 +20,7 @@ vi.mock("@renderx-plugins/host-sdk", async () => {
 });
 
 describe("Control Panel UI Sequences", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

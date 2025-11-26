@@ -16,7 +16,7 @@ import { parseTelemetryRequested } from '../../src/handlers/telemetry/parse.requ
  */
 
 describe('Business BDD: parseTelemetryRequested', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // GIVEN realistic production investigation context

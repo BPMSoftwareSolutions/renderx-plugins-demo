@@ -3,7 +3,7 @@ import { AnalysisEngine } from '../src/services/analysis.engine';
 import type { PropertyData } from '../src/services/zillow.service';
 
 describe('AnalysisEngine', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

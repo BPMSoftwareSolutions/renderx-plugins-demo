@@ -36,7 +36,7 @@ function makeChildTemplate() {
 }
 
 describe("Container child overlay positioning issues (migrated)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -4,7 +4,7 @@ import { startLineResize, updateLine, endLineResize } from '../src/symphonies/re
 import { createMockCtx } from './helpers/context';
 
 describe('canvas-component resize.line.stage-crew handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -24,7 +24,7 @@ describe('canvas-component resize.line.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any; // underscore to satisfy lint unused rule
+  let ctx: any; // underscore to satisfy lint unused rule
   beforeEach(() => {
     document.body.innerHTML = '<div id="comp-line" class="rx-line" style="--x1:0;--y1:0;--x2:10;--y2:10"></div>';
     _ctx = createMockCtx();

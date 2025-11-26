@@ -55,7 +55,7 @@ function makeCtx() {
 // Example: import { serializeSelectedComponent } from '@renderx-plugins/canvas-component/src/...';
 
 describe('canvas-component handlers handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

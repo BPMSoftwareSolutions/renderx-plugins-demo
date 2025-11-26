@@ -18,7 +18,7 @@ function makeCtx() {
 }
 
 describe("canvas-component create beat (DOM-only)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

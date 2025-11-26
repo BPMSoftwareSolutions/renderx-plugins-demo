@@ -23,7 +23,7 @@ function makeIntegrationCtx() {
 }
 
 describe("canvas-component export integration (structure)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

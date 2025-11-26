@@ -21,7 +21,7 @@ import { readFromClipboard, deserializeComponentData, calculatePastePosition, cr
 import { createMockCtx } from './helpers/context';
 
 describe('canvas-component paste.stage-crew handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

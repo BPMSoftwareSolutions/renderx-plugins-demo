@@ -16,7 +16,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel class editing sequences", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

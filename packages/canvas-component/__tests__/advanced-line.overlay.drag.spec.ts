@@ -25,7 +25,7 @@ function makeSvgLineTemplate() {
 // should be exactly (+10,+10) relative to the initial position, not (+14,+14).
 
 describe("Advanced Line overlay drag — cumulative delta causes runaway (expected failing)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

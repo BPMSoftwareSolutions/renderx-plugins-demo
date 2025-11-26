@@ -37,7 +37,7 @@ function ensureComponent(id: string) {
 }
 
 describe("Canvas component delete", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

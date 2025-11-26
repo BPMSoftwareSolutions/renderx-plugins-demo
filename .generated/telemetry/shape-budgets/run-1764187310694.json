@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-11-26T20:01:50.690Z",
+  "feature": "shape-budgets",
+  "event": "shape-budgets:executed",
+  "beats": 5,
+  "status": "ok",
+  "correlationId": "37084a0e-e7a7-4046-9a74-776572b12e3f",
+  "durationMs": 0,
+  "batonDiffCount": 0,
+  "payload": {
+    "ok": true
+  },
+  "domainMutations": {
+    "cache": 1,
+    "db": 1
+  },
+  "shapeHash": "4ab2c73d5183f633435c02cd7637ce59bc9e954c7d8e681ebb8e859c31d3f899",
+  "coverageId": "ba415cb1a27e6aefaf45df6c"
+}

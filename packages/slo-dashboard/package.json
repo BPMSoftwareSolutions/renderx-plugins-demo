@@ -13,9 +13,9 @@
     }
   },
   "scripts": {
-    "build": "npm run verify:markdown-governance && tsc && rollup -c",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "build": "npm run verify:markdown-governance && tsc && tsup src/index.ts src/ui/SLODashboardPage.tsx src/hooks/useErrorBudget.ts --format esm --sourcemap --injectStyle --external react,react-dom,@renderx-plugins/host-sdk --out-dir dist",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
     "lint": "eslint src --ext .ts,.tsx",
     "type-check": "tsc --noEmit",
     "dev": "tsc --watch",
@@ -41,7 +41,7 @@
     "@types/react-dom": "^18.0.10",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
-    "rollup": "^3.10.0",
+    "tsup": "^6.7.0",
     "typescript": "^4.9.4"
   },
   "keywords": [

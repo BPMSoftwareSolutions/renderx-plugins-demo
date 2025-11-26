@@ -10,7 +10,7 @@ function makeCtx() {
 }
 
 describe("CSS registry idempotency", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

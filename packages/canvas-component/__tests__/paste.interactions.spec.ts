@@ -13,7 +13,7 @@ import { EventRouter } from "@renderx-plugins/host-sdk";
 import { createPastedComponent } from "../src/symphonies/paste/paste.stage-crew";
 
 describe("paste interactions attach and publish drag events", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

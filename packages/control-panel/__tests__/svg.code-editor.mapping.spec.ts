@@ -10,7 +10,7 @@ function loadJson<T = any>(p: string): T {
 }
 
 describe("SVG schema → code editor mapping", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

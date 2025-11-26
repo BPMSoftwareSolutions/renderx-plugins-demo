@@ -12,7 +12,7 @@ import { EventRouter } from "@renderx-plugins/host-sdk";
 import { attachStandardImportInteractions } from "../src/symphonies/create/create.from-import";
 
 describe("attachStandardImportInteractions forwards drag positions", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

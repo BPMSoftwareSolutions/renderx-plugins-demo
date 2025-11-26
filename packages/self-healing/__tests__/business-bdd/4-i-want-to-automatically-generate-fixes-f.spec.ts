@@ -13,7 +13,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  */
 
 describe.skip('Feature: I want to automatically generate fixes for identified issues', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
@@ -33,7 +33,7 @@ describe.skip('Feature: I want to automatically generate fixes for identified is
   });
 
   describe('Scenario: Generate code fix for performance issue', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

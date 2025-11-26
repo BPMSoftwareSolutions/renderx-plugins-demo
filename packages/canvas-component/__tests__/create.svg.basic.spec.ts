@@ -20,7 +20,7 @@ function makeCtx() {
 }
 
 describe("SVG component (basic)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

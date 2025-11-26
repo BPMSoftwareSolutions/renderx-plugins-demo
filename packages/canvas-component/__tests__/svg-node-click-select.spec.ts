@@ -33,7 +33,7 @@ function makeCtx() {
 }
 
 describe("SVG sub-node click-to-select functionality", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

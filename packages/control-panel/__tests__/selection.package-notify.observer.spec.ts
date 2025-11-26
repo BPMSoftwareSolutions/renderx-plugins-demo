@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { handlers as packageSelectionHandlers } from "../src/symphonies/selection/selection.symphony";
 
 describe("Control Panel (package) selection notify -> EventRouter", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

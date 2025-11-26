@@ -17,7 +17,7 @@ import { DiagnosisSlice } from '../../src/types';
  */
 
 describe('Business BDD: aggregateDiagnosis', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

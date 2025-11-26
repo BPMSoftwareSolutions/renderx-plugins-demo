@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 // Plugin: slo-dashboard
 // Handlers in scope: loadBudgets, loadMetrics, computeCompliance, serializeDashboardState, triggerExportDownload
 import { loadBudgets, loadMetrics, computeCompliance, serializeDashboardState, triggerExportDownload } from '../src/handlers/metrics';
@@ -10,7 +10,7 @@ import { loadBudgets, loadMetrics, computeCompliance, serializeDashboardState, t
 //  dashboard.export.report: serializeDashboardState -> triggerExportDownload
 
 describe('slo-dashboard handlers handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

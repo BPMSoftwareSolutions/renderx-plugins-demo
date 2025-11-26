@@ -4,7 +4,7 @@ import { computeCompliance } from '../../src/handlers/metrics';
 
 // Sequence mapping: dashboard.load (beat 3), dashboard.refresh.metrics (beat 2)
 describe('Business BDD Handler: computeCompliance', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

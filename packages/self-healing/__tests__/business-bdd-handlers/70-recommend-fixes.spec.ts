@@ -7,7 +7,7 @@ import { recommendFixes } from '../../src/handlers/diagnosis/recommend.fixes';
  */
 
 describe('Business BDD: recommendFixes', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

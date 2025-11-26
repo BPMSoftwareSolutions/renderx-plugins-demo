@@ -43,7 +43,7 @@ function makeBaselineAndCurrent(): { baseline: TelemetryMetrics; current: Teleme
 }
 
 describe('Detect Anomalies (self-healing-anomaly-detect-symphony)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

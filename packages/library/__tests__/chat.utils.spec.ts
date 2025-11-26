@@ -25,7 +25,7 @@ const localStorageMock = {
 };
 
 describe('Chat Utils', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

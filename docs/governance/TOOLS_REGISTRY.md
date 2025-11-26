@@ -1,18 +1,18 @@
 <!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/tools-registry.json -->
 # Tools Registry
 **Version:** 1.0.0  
-**Generated:** 2025-11-25T00:53:50.092Z
+**Generated:** 2025-11-26T19:42:58.247Z
 
 > DO NOT EDIT. Run `node scripts/generate-tools-registry-docs.js` after updating tools-registry.json.
 
 ## Domain Overview
 - **auditing** · Audit & Integrity · 9 tools
 - **context_remounting** · Context Remounting · 5 tools
-- **governance** · Governance & Documentation · 11 tools
+- **governance** · Governance & Documentation · 12 tools
 - **ographx** · Ographx Graph Authority · 6 tools
-- **orchestration** · Orchestration Systems · 5 tools
+- **orchestration** · Orchestration Systems · 7 tools
 - **self_healing** · Self-Healing & Pipeline Controls · 6 tools
-- **telemetry** · Telemetry Governance · 9 tools
+- **telemetry** · Telemetry Governance · 16 tools
 
 ---
 
@@ -64,9 +64,10 @@ Ensures JSON-first documentation, provenance, and drift-proof governance assets.
 | `governance-doc-provenance-validator` | `scripts/verify-doc-provenance.js` | audit-validator | npm run docs:verify | governance | `.generated/doc-provenance-report.json` |
 | `governance-generated-docs-validator` | `scripts/validate-generated-docs.cjs` | audit-validator | npm run validate:governance:docs | governance | `.generated/governance-docs-validation.json` |
 | `governance-root-cleanliness-validator` | `scripts/verify-root-cleanliness.js` | integrity-governance | npm run verify:root-cleanliness | ci | — |
-| `governance-docs-batch-generator` | `scripts/generate-governance-docs.cjs` | registry-generator | npm run generate:governance:docs | governance | `docs/governance/*.md` |
+| `governance-docs-batch-generator` | `scripts/generate-governance-docs.cjs` | registry-generator | npm run generate:governance:docs | governance | `docs/governance/SLO_DASHBOARD_TRACEABILITY_PLAN.md`<br>`docs/governance/BDD_PIPELINE_ANALYSIS.md`<br>`docs/governance/BDD_PIPELINE_VISUAL_ARCHITECTURE.md` |
 | `governance-tools-registry-generator` | `scripts/generate-tools-registry-docs.js` | registry-generator | npm run generate:governance:registry | governance | `docs/governance/TOOLS_REGISTRY.md` |
 | `governance-tools-registry-validator` | `scripts/validate-tools-registry.js` | audit-validator | npm run validate:governance:registry | governance | — |
+| `symphonia-auditing-system` | `scripts/audit-symphonia-conformity.cjs` | conformity-auditor | npm run audit:symphonia:conformity | governance | `docs/governance/symphonia-audit-report.json`<br>`docs/governance/SYMPHONIA_CONFORMITY_DASHBOARD.md`<br>`docs/governance/SYMPHONIA_REMEDIATION_PLAN.md` |
 | `governance-docs-framework-generator` | `scripts/generate-documentation-governance-framework.js` | documentation-generator | npm run generate:governance:framework | pre:manifests | `docs/governance/DOCUMENTATION_AUTO_GENERATION_GOVERNANCE.md` |
 | `governance-docs-index-generator` | `scripts/generate-documentation-governance-index.js` | documentation-generator | npm run generate:governance:index | pre:manifests | `docs/governance/DOCUMENTATION_GOVERNANCE_INDEX.md` |
 | `governance-docs-implementation-report` | `scripts/generate-governance-implementation-report.js` | documentation-generator | npm run generate:governance:implementation | pre:manifests | `docs/governance/DOCUMENTATION_GOVERNANCE_IMPLEMENTATION_COMPLETE.md` |
@@ -99,11 +100,13 @@ Transforms plugin catalogs into orchestration manifests, docs, and diagrams.
 
 | ID | File | Role | Primary Command | Pipeline Stage | Primary Outputs |
 | --- | --- | --- | --- | --- | --- |
+| `bdd-interactive-wizard` | `scripts/interactive-bdd-wizard.js` | specification-enricher | npm run interactive:bdd:wizard | development | `packages/*/bdd/*.feature` |
 | `orchestration-domains-from-sequences` | `scripts/generate-orchestration-domains-from-sequences.js` | documentation-generator | node scripts/generate-orchestration-domains-from-sequences.js | pre:manifests | `outputs/orchestration/domains.json` |
 | `orchestration-docs-generator` | `scripts/gen-orchestration-docs.js` | documentation-generator | node scripts/gen-orchestration-docs.js | pre:manifests | `docs/orchestration/ORCHESTRATION_OVERVIEW.md` |
 | `orchestration-diagram-generator` | `scripts/gen-orchestration-diagram.js` | documentation-generator | node scripts/gen-orchestration-diagram.js | pre:manifests | `docs/orchestration/ORCHESTRATION_DIAGRAM.md` |
 | `orchestration-diff-generator` | `scripts/gen-orchestration-diff.js` | documentation-generator | npm run generate:domains:diff | pre:manifests | `docs/orchestration/ORCHESTRATION_DIFF.md` |
 | `orchestration-audit` | `scripts/audit-orchestration.js` | audit-validator | node scripts/audit-orchestration.js | governance | `docs/orchestration/ORCHESTRATION_AUDIT_REPORT.md` |
+| `bdd-feature-stub-generator` | `scripts/generate-bdd-feature-stubs.js` | specification-generator | npm run generate:bdd:stubs | governance | `packages/*/bdd/*.feature` |
 
 ---
 
@@ -139,5 +142,12 @@ Keeps telemetry instructions, verification, and analysis synchronized with JSON 
 | `telemetry-complete-generator` | `scripts/generate-telemetry-complete.js` | documentation-generator | npm run generate:telemetry:complete | pre:manifests | `docs/governance/TELEMETRY_GOVERNANCE_COMPLETE.md` |
 | `telemetry-matrix-generator` | `scripts/generate-telemetry-matrix.js` | telemetry-analysis | node scripts/generate-telemetry-matrix.js | pre:manifests | `docs/governance/TELEMETRY_MATRIX.md` |
 | `slo-dashboard-traceability-manifest` | `scripts/generate-slo-traceability-manifest.cjs` | traceability-generator | npm run generate:slo:traceability | integration | `.generated/slo-dashboard/traceability-manifest.json` |
+| `slo-evaluator` | `scripts/evaluate-slos.js` | slo-evaluator | npm run evaluate:slos | integration | `packages/self-healing/.generated/slo-breaches.json` |
+| `slo-breach-fuser` | `scripts/fuse-slo-breaches.js` | slo-fuser | npm run fuse:slo:breaches | integration | `packages/self-healing/.generated/anomalies.json` |
+| `renderx-web-diagnostics` | `scripts/renderx-web-diagnostics.js` | diagnostics-generator | npm run diagnose:renderx-web | integration | — |
+| `topic-telemetry-signature-generator` | `scripts/generate-topic-telemetry-signatures.cjs` | telemetry-traceability | npm run generate:topics:telemetry | integration | `.generated/topics/topic-telemetry-signatures.json` |
+| `topic-telemetry-signature-validator` | `scripts/validate-topic-telemetry-signatures.cjs` | audit-validator | npm run validate:topics:telemetry | integration | — |
+| `log-source-lineage-tracker` | `scripts/trace-logs-to-telemetry.js` | traceability-generator | node scripts/trace-logs-to-telemetry.js | manual | `.generated/log-source-lineage/source-lineage.json`<br>`.generated/log-source-lineage/lineage-guide.md`<br>`.generated/log-source-lineage/component-lineage-breakdown.json`<br>`.generated/log-source-lineage/log-file-index.json`<br>`.generated/log-source-lineage/traceability-summary.md` |
+| `renderx-web-demo-analysis` | `scripts/demo-renderx-web-analysis.js` | traceability-demo | node scripts/demo-renderx-web-analysis.js | manual | `.generated/renderx-web-demo/executive-summary.md`<br>`.generated/renderx-web-demo/detailed-analysis.md`<br>`.generated/renderx-web-demo/implementation-roadmap.md`<br>`.generated/renderx-web-demo/event-test-mapping.json`<br>`.generated/renderx-web-demo/lineage-audit.json`<br>`.generated/renderx-web-demo/traceability-index.json`<br>`.generated/renderx-web-demo/verification-report.json` |
 | `telemetry-filter-audit` | `scripts/telemetry_filter_audit.py` | telemetry-analysis | python scripts/telemetry_filter_audit.py <log> | manual | `outputs/telemetry/telemetry_filter_audit.md` |
 | `telemetry-rag-analyzer` | `scripts/rag-telemetry-analyzer.py` | telemetry-analysis | npm run rag:analyze-telemetry | manual | `outputs/telemetry/rag-telemetry-report.md` |

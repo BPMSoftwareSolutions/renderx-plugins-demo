@@ -13,7 +13,7 @@ declare global {
 }
 
 describe("library.handlers - Two-Beat Sequence Integration", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

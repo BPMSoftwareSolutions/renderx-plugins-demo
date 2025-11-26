@@ -37,7 +37,7 @@ describe('Business BDD: detectPerformanceAnomalies', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const baseline: TelemetryMetrics = {

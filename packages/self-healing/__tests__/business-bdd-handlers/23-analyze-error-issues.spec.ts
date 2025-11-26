@@ -16,7 +16,7 @@ import { analyzeErrorIssues } from '../../src/handlers/diagnosis/analyze.error.i
  */
 
 describe('Business BDD: analyzeErrorIssues', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -36,7 +36,7 @@ describe('Business BDD: analyzeErrorIssues', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     _ctx = {

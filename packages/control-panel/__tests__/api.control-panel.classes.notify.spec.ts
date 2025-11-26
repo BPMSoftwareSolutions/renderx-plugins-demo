@@ -10,7 +10,7 @@ beforeEach(() => {
 });
 
 describe('control-panel: classes add/remove + notifyUi', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

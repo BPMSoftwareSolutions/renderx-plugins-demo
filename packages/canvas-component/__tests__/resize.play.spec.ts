@@ -39,7 +39,7 @@ function dispatchMouse(el: Element | Document, type: string, opts: any) {
 }
 
 describe("canvas-component resize via conductor.play", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

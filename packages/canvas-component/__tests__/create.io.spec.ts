@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { registerInstance } from "@renderx-plugins/canvas-component/symphonies/create/create.io.ts";
 
 describe("canvas-component create.io", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

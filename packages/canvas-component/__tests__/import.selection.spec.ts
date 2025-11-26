@@ -61,7 +61,7 @@ function makeCtx() {
 }
 
 describe("canvas-component import: selection forwarding", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

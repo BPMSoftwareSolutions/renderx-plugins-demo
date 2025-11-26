@@ -35,6 +35,27 @@
       "newHash": "50479ecdb8a90025efb48acbb5ae18d7f28fa858767fea9da1e6aa763d968213",
       "annotatedAt": "2025-11-25T01:34:23.519Z",
       "reason": "Duration hash bucket adjustment"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "bc6f2bfdd059c740bf46cddd7c37feb7d631a8aea63c4fbdb9ada889a7ed29c4",
+      "newHash": "9ed7a97139a4d3a932b8feea8ed2abdf26ea4df58e230773f014d4e86e530f5f",
+      "annotatedAt": "2025-11-26T19:51:49.398Z",
+      "reason": "Shape evolution during sprint"
+    },
+    {
+      "feature": "shape-contracts",
+      "previousHash": "50479ecdb8a90025efb48acbb5ae18d7f28fa858767fea9da1e6aa763d968213",
+      "newHash": "9b521e3f30d360f59a04e20e5a943849c1e4fb14754c35a0ebdc58a904f023c0",
+      "annotatedAt": "2025-11-26T19:51:52.713Z",
+      "reason": "Shape evolution during sprint"
+    },
+    {
+      "feature": "detect-slo-breaches",
+      "previousHash": "9ed7a97139a4d3a932b8feea8ed2abdf26ea4df58e230773f014d4e86e530f5f",
+      "newHash": "2db7395afaa710ff019431757eae32c8144474569f45d3b89c4e0923608b4e67",
+      "annotatedAt": "2025-11-26T20:14:37.241Z",
+      "reason": "Shape evolution during testing"
     }
   ]
 }

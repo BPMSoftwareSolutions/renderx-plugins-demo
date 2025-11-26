@@ -38,7 +38,7 @@ describe('Business BDD: parseTelemetryCompleted', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     const events: TelemetryEvent[] = [

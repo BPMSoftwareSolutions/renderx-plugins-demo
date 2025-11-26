@@ -6,7 +6,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 // Example: import { loadComponents } from '@renderx-plugins/library/src/...';
 
 describe('library handlers handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -27,7 +27,7 @@ describe('library handlers handlers', () => {
     ctx = null;
   });
   // TODO: Set up test context and mocks
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks

@@ -17,7 +17,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel live updates during drag/resize", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

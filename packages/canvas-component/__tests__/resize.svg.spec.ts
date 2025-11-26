@@ -16,7 +16,7 @@ function makeSvgTemplate() {
 }
 
 describe("SVG component resize behavior", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

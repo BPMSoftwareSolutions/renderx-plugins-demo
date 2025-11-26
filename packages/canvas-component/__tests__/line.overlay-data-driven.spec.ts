@@ -10,7 +10,7 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 }
 
 describe("line component overlay is data-driven and uses standard resize when configured", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

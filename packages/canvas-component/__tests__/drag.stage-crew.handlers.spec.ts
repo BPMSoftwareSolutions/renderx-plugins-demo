@@ -4,7 +4,7 @@ import { updatePosition, startDrag, endDrag, forwardToControlPanel } from '../sr
 import { createMockCtx } from './helpers/context.ts';
 
 describe('canvas-component drag.stage-crew handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
@@ -24,7 +24,7 @@ describe('canvas-component drag.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any; // underscore to satisfy lint unused rule
+  let ctx: any; // underscore to satisfy lint unused rule
   beforeEach(() => {
     document.body.innerHTML = '<div id="comp-1" class="rx-comp" style="position:absolute"></div>';
     _ctx = createMockCtx();

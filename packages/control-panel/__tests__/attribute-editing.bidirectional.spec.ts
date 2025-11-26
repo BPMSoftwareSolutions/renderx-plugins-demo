@@ -40,7 +40,7 @@ function makeButtonTemplate() {
 }
 
 describe("Control Panel bidirectional attribute editing", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

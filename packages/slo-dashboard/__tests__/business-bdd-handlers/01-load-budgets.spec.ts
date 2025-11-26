@@ -4,7 +4,7 @@ import { loadBudgets } from '../../src/handlers/metrics';
 
 // Sequence mapping: dashboard.load (beat 1: loadBudgets)
 describe('Business BDD Handler: loadBudgets', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

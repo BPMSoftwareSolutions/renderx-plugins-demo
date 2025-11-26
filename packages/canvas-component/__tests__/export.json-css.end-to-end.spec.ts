@@ -15,7 +15,7 @@ function setupCanvas() {
 }
 
 describe("Export includes JSON component CSS end-to-end (migrated)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

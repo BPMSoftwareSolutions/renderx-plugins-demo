@@ -21,7 +21,7 @@ const minimalConfig = {
 } as any;
 
 describe('control-panel UI bootstrap handlers (public API)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -32,7 +32,7 @@ vi.mock("@renderx-plugins/host-sdk", () => {
 import { EventRouter } from "@renderx-plugins/host-sdk";
 
 describe('Control Panel EventRouter Communication', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

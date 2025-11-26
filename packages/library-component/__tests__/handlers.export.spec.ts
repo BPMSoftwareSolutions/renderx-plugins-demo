@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
 describe('handlers export', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

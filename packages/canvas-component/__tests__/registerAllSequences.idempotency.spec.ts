@@ -5,7 +5,7 @@ import { describe, it, expect } from "vitest";
 // Verifies registerAllSequences can be called multiple times without duplicating mounts
 
 describe("registerAllSequences idempotency (canvas-component)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

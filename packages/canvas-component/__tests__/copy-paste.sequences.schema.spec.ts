@@ -7,7 +7,7 @@ import { join } from 'node:path';
 type Beat = { dynamics?: string } & Record<string, unknown>;
 
 describe('copy/paste sequences schema (canvas-component)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

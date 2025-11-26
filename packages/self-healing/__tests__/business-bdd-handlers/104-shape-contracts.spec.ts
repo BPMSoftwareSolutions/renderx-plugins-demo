@@ -8,7 +8,7 @@ import { clearTelemetry, getTelemetry } from '../../src/telemetry/collector';
 installTelemetryMatcher();
 
 describe('Business BDD: shape-contracts (auto-generated)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

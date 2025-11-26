@@ -38,7 +38,7 @@ describe('Business BDD: loadLogFiles', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
   let tempDir: string;
 
   beforeEach(() => {

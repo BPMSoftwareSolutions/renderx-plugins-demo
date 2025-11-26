@@ -11,7 +11,7 @@ vi.mock('@renderx-plugins/host-sdk', () => {
 });
 
 describe('library-component container drop handlers (package)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

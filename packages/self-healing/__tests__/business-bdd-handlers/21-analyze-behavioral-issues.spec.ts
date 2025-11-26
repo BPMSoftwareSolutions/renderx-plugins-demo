@@ -16,7 +16,7 @@ import { analyzeBehavioralIssues } from '../../src/handlers/diagnosis/analyze.be
  */
 
 describe('Business BDD: analyzeBehavioralIssues', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

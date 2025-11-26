@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { validateReactCode, validateReactCodeOrThrow } from '../src/symphonies/create/react-code-validator';
 
 describe('React Code Validator', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

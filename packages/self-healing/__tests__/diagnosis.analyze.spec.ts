@@ -9,7 +9,7 @@ import { analyzeRequested, loadAnomalies, loadCodebaseInfo, analyzePerformanceIs
  */
 
 describe('Analyze Root Cause (self-healing-diagnosis-analyze-symphony minimal slice)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

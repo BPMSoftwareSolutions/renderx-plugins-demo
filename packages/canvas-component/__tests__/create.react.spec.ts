@@ -65,7 +65,7 @@ function makeCtx(kind = "react", nodeId = "rx-node-test123") {
 }
 
 describe("renderReact handler", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

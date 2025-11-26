@@ -23,7 +23,7 @@ describe('canvas-component deselect.stage-crew handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
   let _publishSpy: any;
   beforeEach(() => {
     document.body.innerHTML = '<div id="rx-selection-overlay" data-target-id="comp-1" style="display:block"></div><div id="rx-adv-line-overlay" data-target-id="comp-1" style="display:block"></div><div id="comp-1" class="rx-comp"></div>';

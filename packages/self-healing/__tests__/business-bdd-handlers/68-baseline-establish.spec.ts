@@ -20,7 +20,7 @@ import baselineCompleted from '../../src/handlers/baseline/baseline.completed';
  */
 
 describe('Business BDD: baseline establishment sequence', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

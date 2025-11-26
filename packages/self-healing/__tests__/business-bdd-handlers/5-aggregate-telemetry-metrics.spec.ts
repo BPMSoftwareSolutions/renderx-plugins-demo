@@ -37,7 +37,7 @@ describe('Business BDD: aggregateTelemetryMetrics', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // Simulated latency events for handlers A, B

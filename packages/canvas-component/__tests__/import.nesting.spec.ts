@@ -59,7 +59,7 @@ function makeCtx() {
 }
 
 describe("canvas-component import: nested structures", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

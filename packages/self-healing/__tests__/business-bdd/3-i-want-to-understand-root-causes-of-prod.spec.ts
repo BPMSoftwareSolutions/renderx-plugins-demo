@@ -13,7 +13,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
  */
 
 describe.skip('Feature: I want to understand root causes of production issues', () => {
-  let _ctx: any;
+  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize test context with realistic production data
@@ -33,7 +33,7 @@ describe.skip('Feature: I want to understand root causes of production issues', 
   });
 
   describe('Scenario: Diagnose performance issue with code analysis', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

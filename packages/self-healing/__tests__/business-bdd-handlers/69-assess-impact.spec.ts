@@ -7,7 +7,7 @@ import { assessImpact } from '../../src/handlers/diagnosis/assess.impact';
  */
 
 describe('Business BDD: assessImpact', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

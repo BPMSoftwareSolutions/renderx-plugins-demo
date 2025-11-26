@@ -3,7 +3,7 @@
 Version: 1.0.0
 Generated: 2025-11-25T00:00:00.000Z
 
-<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/bdd-pipeline-analysis.json hash=658949bf7abfe98e2691ff76fd426eae061282cb388477923c436752006ebe37 -->
+<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/bdd-pipeline-analysis.json hash=38b25fc459b41bf916189c3ed41b2e459bfe26430f16955ae51decd300b20731 -->
 
 ## Program Overview
 **BDD Pipeline Architecture & Orchestration Integration**

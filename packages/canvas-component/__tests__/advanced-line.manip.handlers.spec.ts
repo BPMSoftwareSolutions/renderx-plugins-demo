@@ -20,7 +20,7 @@ function makeSvgLineTemplate() {
 }
 
 describe("Advanced Line handlers — moveLineManip", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

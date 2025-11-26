@@ -10,7 +10,7 @@ import {
 } from "@renderx-plugins/control-panel/observer.store";
 
 describe("observer.store idempotency", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -15,7 +15,7 @@ function makeTemplate() {
 }
 
 describe("selection overlay CSS ensures box-sizing border-box for accurate alignment", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

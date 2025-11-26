@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 // Path is relative to this package test to the repo public/ directory
 
 describe("plugin-manifest runtime entry: @renderx-plugins/canvas-component", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

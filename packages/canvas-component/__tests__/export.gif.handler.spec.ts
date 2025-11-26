@@ -19,7 +19,7 @@ vi.mock('gif.js.optimized', () => ({
 vi.mock('gif.js.optimized/dist/gif.worker.js?url', () => ({ default: 'worker.js' }));
 
 describe('exportSvgToGif isolated', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

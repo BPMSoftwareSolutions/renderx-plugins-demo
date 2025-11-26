@@ -8,7 +8,7 @@ function makeCtx() {
 }
 
 describe("SVG sub-node selection overlay (TDD)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

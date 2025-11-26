@@ -35,7 +35,7 @@ interface SelectedElement {
 }
 
 describe("React component code editor mapping", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -67,7 +67,7 @@ function makeCtx() {
 }
 
 describe("import flow injects instance class on DOM elements", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

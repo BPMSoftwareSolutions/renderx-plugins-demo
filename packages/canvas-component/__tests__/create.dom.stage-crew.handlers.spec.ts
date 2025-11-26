@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { getCanvasOrThrow, createElementWithId, applyClasses, applyInlineStyle, appendTo } from '../src/symphonies/create/create.dom.stage-crew';
 
 describe('canvas-component create.dom.stage-crew handlers', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

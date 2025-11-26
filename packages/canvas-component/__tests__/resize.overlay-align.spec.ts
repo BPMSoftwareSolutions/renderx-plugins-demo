@@ -21,7 +21,7 @@ function dispatchMouse(el: Element, type: string, opts: any) {
 }
 
 describe("selection overlay remains aligned with component after resize (conductor)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

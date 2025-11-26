@@ -3,7 +3,7 @@
 Version: 1.0.0
 Generated: 2025-11-25T00:00:00.000Z
 
-<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/bdd-pipeline-visual-architecture.json hash=bd70fb3d0285d235f6936d10b3424135e9e0d2fbc2b76d99450756f2974aef42 -->
+<!-- GOVERNANCE: AUTO-GENERATED source=docs/governance/bdd-pipeline-visual-architecture.json hash=cad512c4ea1b5225cbc3d90793342db302ca7c5dced1964db154ee839aa129de -->
 
 ## Overview
 Architectural patterns and visual representations of BDD pipeline integration with orchestration governance framework. Captures layer interactions, data flows, and governance enforcement points.

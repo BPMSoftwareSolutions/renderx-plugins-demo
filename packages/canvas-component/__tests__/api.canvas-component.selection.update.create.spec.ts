@@ -40,7 +40,7 @@ function getConductor() {
 }
 
 describe('canvas-component public API beats', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

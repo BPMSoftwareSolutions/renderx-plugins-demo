@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { computeCompliance } from '../../src/handlers/metrics';
 
 describe('computeCompliance', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

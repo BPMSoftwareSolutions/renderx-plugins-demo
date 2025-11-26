@@ -18,7 +18,7 @@ import * as path from 'path';
  */
 
 describe('Business BDD: loadAnomalies', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

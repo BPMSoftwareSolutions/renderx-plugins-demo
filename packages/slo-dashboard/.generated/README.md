@@ -1,7 +1,7 @@
 <!-- 
   AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
   
-  Generated: 2025-11-24T21:41:45.660Z
+  Generated: 2025-11-26T19:37:14.347Z
   Output: README.md
   Source Files: slo-dashboard-project-plan.json
   Policy: JSON-Driven Automation
@@ -14,7 +14,7 @@
 
 # SLO Dashboard - Generated Documentation
 
-**Generated**: 2025-11-24T21:41:45.660Z
+**Generated**: 2025-11-26T19:37:14.347Z
 
 ## Files in This Directory
 
@@ -22,10 +22,10 @@
 |------|---------|
 | CONTEXT_TREE_AUDIT_SESSION.md | Complete project audit |
 | CONTEXT_TREE_INDEX.json | Generated artifact |
-| JSON_DRIVEN_AUTOMATION_POLICY.md | Generated artifact |
 | MARKDOWN_GENERATION_AUTHORITY.json | Auto-generation policy |
-| MARKDOWN_GOVERNANCE_REPORT.md | Governance violations report |
+| MASTER_INDEX.md | Master documentation index |
 | NEXT_SESSION_HANDOFF.md | Next steps guide |
+| README.md | This file |
 | SESSION_SUMMARY.md | Executive summary |
 | SLO_DASHBOARD_FILE_GOVERNANCE.json | Generated artifact |
 | slo-dashboard-business-bdd-specifications.json | Requirements (LOCKED) |

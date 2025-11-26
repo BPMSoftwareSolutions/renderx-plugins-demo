@@ -26,7 +26,7 @@ function makeChildTemplate() {
 }
 
 describe("create: appends under container when containerId provided", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

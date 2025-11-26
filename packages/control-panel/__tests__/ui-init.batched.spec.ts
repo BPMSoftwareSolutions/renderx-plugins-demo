@@ -12,7 +12,7 @@ function performanceNowShim() {
 }
 
 describe("Control Panel UI Init — batched iterator", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

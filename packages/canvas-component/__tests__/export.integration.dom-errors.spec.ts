@@ -20,7 +20,7 @@ function makeIntegrationCtx() {
 }
 
 describe("canvas-component export integration (DOM errors)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -20,7 +20,7 @@ function makeCtx() {
 }
 
 describe("Advanced Line — endpoints scale with resize", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

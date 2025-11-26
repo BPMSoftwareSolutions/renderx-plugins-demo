@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { renderReact, cleanupReactRoot, exposeEventRouterToReact } from "../src/symphonies/create/create.react.stage-crew";
 
 describe("React Component Rendering", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

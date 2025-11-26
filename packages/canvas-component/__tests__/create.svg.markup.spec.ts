@@ -19,7 +19,7 @@ function makeSvgTemplateWithMarkup() {
 }
 
 describe("SVG component (markup)", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

@@ -22,7 +22,7 @@ function makeConfig(): AllRulesConfig {
 }
 
 describe('canvas-component rule-engine config handlers (public API)', () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler

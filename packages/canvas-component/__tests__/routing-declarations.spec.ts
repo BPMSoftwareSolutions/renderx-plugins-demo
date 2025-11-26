@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 describe("Routing declarations for drag and resize.move sequences", () => {
-  let _ctx: any;
+  let ctx: any;
   beforeEach(() => {
     ctx = {
       handler: null, // TODO: Import handler
