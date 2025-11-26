@@ -143,8 +143,9 @@
     "recover:feature": "node scripts/auto-recovery.js",
     "validate:domains": "node scripts/validate-domain-authorities.cjs",
     "ci:domains": "npm run validate:domains",
-    "prebuild:domains": "npm run validate:domains"
-    ,"json:crud": "node scripts/manage-json-authority.js"
+    "prebuild:domains": "npm run validate:domains",
+    "audit:symphonia:conformity": "node scripts/audit-symphonia-conformity.cjs",
+    "json:crud": "node scripts/manage-json-authority.js"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",

@@ -363,6 +363,51 @@
             ],
             "category": "doc-governance"
           }
+        },
+        {
+          "id": "symphonia-auditing-system",
+          "domain": "governance",
+          "description": "Symphonia Pipeline conformity auditing system that validates orchestration domains, contracts, sequences, BDD specs, and handler specs for governance compliance.",
+          "file": "scripts/audit-symphonia-conformity.cjs",
+          "type": "node-cjs",
+          "role": "conformity-auditor",
+          "commands": {
+            "npmScript": "audit:symphonia:conformity",
+            "direct": "node scripts/audit-symphonia-conformity.cjs"
+          },
+          "pipeline": {
+            "stage": "governance",
+            "order": 50,
+            "ciRequired": true
+          },
+          "artifacts": {
+            "inputs": [
+              "orchestration-domains.json",
+              "contracts/*.contract.json",
+              "packages/*/json-sequences/**/*.json",
+              "packages/*/bdd/**/*.feature",
+              "packages/*/__tests__/**/*.spec.ts"
+            ],
+            "outputs": [
+              "docs/governance/symphonia-audit-report.json",
+              "docs/governance/SYMPHONIA_CONFORMITY_DASHBOARD.md",
+              "docs/governance/SYMPHONIA_REMEDIATION_PLAN.md"
+            ]
+          },
+          "governance": {
+            "enforcedBy": [
+              "audit:symphonia:conformity",
+              "governance:enforce"
+            ],
+            "category": "conformity-audit",
+            "conformityDimensions": [
+              "orchestration-domains",
+              "contracts",
+              "sequences",
+              "bdd-specs",
+              "handler-specs"
+            ]
+          }
         }
       ]
     },
