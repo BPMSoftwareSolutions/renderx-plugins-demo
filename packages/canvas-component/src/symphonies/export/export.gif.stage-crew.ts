@@ -26,6 +26,9 @@ async function makeGifEncoder(
 
 export async function exportSvgToGif(data: any, ctx: any) {
   try {
+    // Ensure ctx.payload is initialized for beat communication
+    if (!ctx.payload) ctx.payload = {};
+
     if (typeof document === "undefined") {
       ctx.payload.error = "Browser environment required for GIF export";
       return;
