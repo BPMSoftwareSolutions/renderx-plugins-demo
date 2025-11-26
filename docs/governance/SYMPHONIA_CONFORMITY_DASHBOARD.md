@@ -1,11 +1,11 @@
 # Symphonia Conformity Dashboard
 
 <!-- AUTO-GENERATED: Symphonia Auditing System -->
-<!-- Generated: 2025-11-26T15:14:58.615Z -->
+<!-- Generated: 2025-11-26T15:35:44.313Z -->
 
 ## 🎼 Overall Conformity Score
 
-**20/100**
+**30/100**
 
 🔴 POOR
 
@@ -17,63 +17,14 @@
 |-----------|-------|-----------|------------|
 | Orchestration Domain Conformity | 0/100 | 61 | 30 |
 | Contract Schema Conformity | 100/100 | 8 | 0 |
-| Sequence Flow Conformity | 0/100 | 25 | 27 |
-| BDD Specification Conformity | 0/100 | 7 | 13 |
+| Sequence Flow Conformity | 0/100 | 25 | 25 |
+| BDD Specification Conformity | 50/100 | 7 | 5 |
 | Handler Specification Conformity | 0/100 | 263 | 15 |
 
 
-## 🚨 Critical Violations (10)
+## 🚨 Critical Violations (0)
 
-
-### baseline.metrics.establish
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: undefined)
-
-### handler-implementation.workflow
-- **Rule**: sequence-beats-positive
-- **Issue**: Invalid beat count
-- **Remediation**: Set beats to handler item count (current: undefined)
-
-### cag-agent-workflow.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
-
-### graphing-orchestration.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
-
-### musical-conductor-orchestration.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
-
-### orchestration-audit-session.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
-
-### orchestration-audit-system.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
-
-### self-sequences.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
-
-### AGENT_HANDLER_IMPLEMENTATION_WORKFLOW.feature
-- **Rule**: user-story-present
-- **Issue**: Missing user story format
-- **Remediation**: Add: In order to ... As a ... I want ...
-
-### AGENT_HANDLER_IMPLEMENTATION_WORKFLOW.feature
-- **Rule**: scenarios-complete
-- **Issue**: 1 scenarios missing Given-When-Then
-- **Remediation**: Ensure all scenarios have complete Given-When-Then structure
+✅ No critical violations
 
 
 ## ⚠️  Major Violations (75)
@@ -94,11 +45,10 @@
 
 ## 📋 Recommendations
 
-- 🚨 CRITICAL: Fix all CRITICAL violations before deployment
 - ⚠️  MAJOR: Address MAJOR violations in next sprint
 - 🔴 Poor conformity - immediate remediation required
 
 ---
 
-Generated: 2025-11-26T15:14:58.615Z
+Generated: 2025-11-26T15:35:44.313Z
 Total Artifacts Scanned: 364

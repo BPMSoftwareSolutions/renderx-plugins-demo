@@ -56,5 +56,6 @@
       }
     }
   },
-  "id": "baseline.metrics.establish"
+  "id": "baseline.metrics.establish",
+  "beats": 5
 }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-26T15:14:58.615Z",
+  "timestamp": "2025-11-26T15:35:44.313Z",
   "version": "1.0.0",
   "dimensions": {
     "orchestration-domains": {
@@ -328,13 +328,6 @@
           "remediation": "Set tempo between 60-240 (standard: 120)"
         },
         {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "baseline.metrics.establish",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
-        },
-        {
           "level": "MAJOR",
           "rule": "sequence-tempo-valid",
           "artifact": "baseline.metrics.establish",
@@ -361,13 +354,6 @@
           "artifact": "self-healing-fix-generate-symphony",
           "message": "Invalid tempo: undefined",
           "remediation": "Set tempo between 60-240 (standard: 120)"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "sequence-beats-positive",
-          "artifact": "handler-implementation.workflow",
-          "message": "Invalid beat count",
-          "remediation": "Set beats to handler item count (current: undefined)"
         },
         {
           "level": "MAJOR",
@@ -426,25 +412,11 @@
       "artifactsScanned": 7,
       "violations": [
         {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "cag-agent-workflow.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-        },
-        {
           "level": "MAJOR",
           "rule": "scenario-count-minimum",
           "artifact": "cag-agent-workflow.feature",
           "message": "Only 1 scenarios (need >= 2)",
           "remediation": "Add scenario for alternative path or edge case"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "graphing-orchestration.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
         },
         {
           "level": "MAJOR",
@@ -454,32 +426,11 @@
           "remediation": "Add scenario for alternative path or edge case"
         },
         {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "musical-conductor-orchestration.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "orchestration-audit-session.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-        },
-        {
           "level": "MAJOR",
           "rule": "scenario-count-minimum",
           "artifact": "orchestration-audit-session.feature",
           "message": "Only 1 scenarios (need >= 2)",
           "remediation": "Add scenario for alternative path or edge case"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "orchestration-audit-system.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
         },
         {
           "level": "MAJOR",
@@ -489,35 +440,14 @@
           "remediation": "Add scenario for alternative path or edge case"
         },
         {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "self-sequences.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-        },
-        {
           "level": "MAJOR",
           "rule": "scenario-count-minimum",
           "artifact": "self-sequences.feature",
           "message": "Only 1 scenarios (need >= 2)",
           "remediation": "Add scenario for alternative path or edge case"
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "user-story-present",
-          "artifact": "AGENT_HANDLER_IMPLEMENTATION_WORKFLOW.feature",
-          "message": "Missing user story format",
-          "remediation": "Add: In order to ... As a ... I want ..."
-        },
-        {
-          "level": "CRITICAL",
-          "rule": "scenarios-complete",
-          "artifact": "AGENT_HANDLER_IMPLEMENTATION_WORKFLOW.feature",
-          "message": "1 scenarios missing Given-When-Then",
-          "remediation": "Ensure all scenarios have complete Given-When-Then structure"
         }
       ],
-      "score": 0
+      "score": 50
     },
     "handler-specs": {
       "name": "Handler Specification Conformity",
@@ -634,78 +564,7 @@
   },
   "totalArtifacts": 364,
   "violations": {
-    "CRITICAL": [
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "baseline.metrics.establish",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "sequence-beats-positive",
-        "artifact": "handler-implementation.workflow",
-        "message": "Invalid beat count",
-        "remediation": "Set beats to handler item count (current: undefined)"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "cag-agent-workflow.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "graphing-orchestration.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "musical-conductor-orchestration.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "orchestration-audit-session.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "orchestration-audit-system.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "self-sequences.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "user-story-present",
-        "artifact": "AGENT_HANDLER_IMPLEMENTATION_WORKFLOW.feature",
-        "message": "Missing user story format",
-        "remediation": "Add: In order to ... As a ... I want ..."
-      },
-      {
-        "level": "CRITICAL",
-        "rule": "scenarios-complete",
-        "artifact": "AGENT_HANDLER_IMPLEMENTATION_WORKFLOW.feature",
-        "message": "1 scenarios missing Given-When-Then",
-        "remediation": "Ensure all scenarios have complete Given-When-Then structure"
-      }
-    ],
+    "CRITICAL": [],
     "MAJOR": [
       {
         "level": "MAJOR",
@@ -1235,9 +1094,8 @@
     ],
     "MINOR": []
   },
-  "conformityScore": 20,
+  "conformityScore": 30,
   "recommendations": [
-    "🚨 CRITICAL: Fix all CRITICAL violations before deployment",
     "⚠️  MAJOR: Address MAJOR violations in next sprint",
     "🔴 Poor conformity - immediate remediation required"
   ],
