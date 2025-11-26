@@ -145,7 +145,17 @@
     "ci:domains": "npm run validate:domains",
     "prebuild:domains": "npm run validate:domains",
     "audit:symphonia:conformity": "node scripts/audit-symphonia-conformity.cjs",
-    "json:crud": "node scripts/manage-json-authority.js"
+    "json:crud": "node scripts/manage-json-authority.js",
+    "pipeline:conformity:execute": "node scripts/execute-symphonia-pipeline.cjs packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json",
+    "pipeline:conformity:phase-1": "node scripts/execute-symphonia-pipeline.cjs packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json --phase=1",
+    "pipeline:conformity:phase-2": "node scripts/execute-symphonia-pipeline.cjs packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json --phase=2",
+    "pipeline:conformity:phase-3": "node scripts/execute-symphonia-pipeline.cjs packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json --phase=3",
+    "pipeline:conformity:dry-run": "node scripts/execute-symphonia-pipeline.cjs packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json --dry-run",
+    "generate:pipeline:docs": "node scripts/generate-pipeline-docs.cjs",
+    "fix:conformity:phase-1": "node scripts/fix-phase-1-orchestration-alignment.cjs",
+    "fix:conformity:phase-2": "node scripts/fix-phase-2-sequence-alignment.cjs",
+    "fix:conformity:phase-3": "node scripts/fix-phase-3-handler-alignment.cjs",
+    "fix:conformity:all": "npm run fix:conformity:phase-1 && npm run fix:conformity:phase-2 && npm run fix:conformity:phase-3"
   },
   "dependencies": {
     "@renderx-plugins/canvas": "workspace:*",

@@ -1,0 +1,547 @@
+{
+  "id": "symphonia-conformity-alignment-pipeline",
+  "sequenceId": "symphonia-conformity-alignment-pipeline",
+  "name": "symphonia conformity alignment pipeline",
+  "packageName": "orchestration",
+  "title": "Symphonia Conformity Alignment Pipeline",
+  "description": "Three-movement orchestration for automated detection and remediation of orchestration architecture violations across domain definitions, sequences, and handlers.",
+  "purpose": "Detect and intelligently remediate 60+ conformity violation patterns through automated three-phase alignment fixing with rollback capabilities.",
+  "trigger": "On-demand via npm script or event-driven from governance audit system",
+  "kind": "governance",
+  "beats": 19,
+  "status": "active",
+  "governance": {
+    "policies": [
+      "All violations must be categorized by severity (CRITICAL, MAJOR, MINOR, INFO)",
+      "Remediation must be atomic per phase with rollback capability",
+      "Every fix operation must create a snapshot before execution",
+      "All changes must be tracked in Git with phase metadata",
+      "Compliance reports must be generated after each phase"
+    ],
+    "metrics": [
+      "Total violations detected",
+      "Violations by severity level",
+      "Violations by category (Orchestration, Sequence, Handler, Governance, Dependency)",
+      "Remediation success rate",
+      "Average time to fix per violation",
+      "Compliance score before and after"
+    ]
+  },
+  "events": [
+    "conformity:audit:initiated",
+    "conformity:violations:detected",
+    "phase-1:alignment:initiated",
+    "phase-1:orchestration:fixed",
+    "phase-1:domain:aligned",
+    "phase-1:alignment:complete",
+    "phase-2:alignment:initiated",
+    "phase-2:sequence:fixed",
+    "phase-2:beats:aligned",
+    "phase-2:alignment:complete",
+    "phase-3:alignment:initiated",
+    "phase-3:handlers:fixed",
+    "phase-3:bdd:aligned",
+    "phase-3:alignment:complete",
+    "conformity:remediation:complete",
+    "conformity:rollback:initiated",
+    "conformity:rollback:complete",
+    "conformity:report:generated"
+  ],
+  "movements": [
+    {
+      "movement": 1,
+      "name": "Domain & Orchestration Alignment",
+      "description": "Detect and fix domain definition misalignments, orchestration manifest inconsistencies, and governance policy violations",
+      "kind": "remediation",
+      "beats": 6,
+      "violationCategories": [
+        "ORCHESTRATION_VIOLATION",
+        "GOVERNANCE_VIOLATION"
+      ],
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Create Pre-Fix Snapshot",
+          "description": "Capture current state of all domain and orchestration artifacts before any modifications",
+          "event": "phase-1:snapshot:created",
+          "handler": "createPreFixSnapshot",
+          "kind": "safety",
+          "timing": "< 500ms",
+          "critical": true
+        },
+        {
+          "beat": 2,
+          "title": "Scan for Orchestration Files",
+          "description": "Locate and inventory all domain definitions, orchestration manifests, and governance configurations",
+          "event": "phase-1:scan:complete",
+          "handler": "scanOrchestrationFiles",
+          "kind": "discovery",
+          "timing": "< 1s",
+          "input": {
+            "patterns": [
+              "packages/*/domains/**/*.json",
+              "packages/orchestration/domains/**/*.json",
+              "docs/governance/*.json"
+            ]
+          }
+        },
+        {
+          "beat": 3,
+          "title": "Analyze Domain Conformity",
+          "description": "Validate domain structure, relationships, dependencies, and governance policy compliance",
+          "event": "phase-1:analysis:complete",
+          "handler": "analyzeDomainConformity",
+          "kind": "analysis",
+          "timing": "< 2s",
+          "violations": [
+            "Missing domain definitions",
+            "Orphaned domain references",
+            "Circular domain dependencies",
+            "Domain namespace conflicts",
+            "Missing orchestration manifests",
+            "Orchestration manifest inconsistencies",
+            "Invalid domain relationships",
+            "Authority boundary violations",
+            "Governance policy violations",
+            "Registry update failures",
+            "Missing domain metadata",
+            "Invalid domain configurations",
+            "Conflicting domain rules",
+            "Domain inheritance issues",
+            "Registry state mismatches"
+          ]
+        },
+        {
+          "beat": 4,
+          "title": "Apply Domain Fixes",
+          "description": "Automatically repair detected domain and orchestration issues",
+          "event": "phase-1:fixes:applied",
+          "handler": "fixDomainAlignment",
+          "kind": "remediation",
+          "timing": "< 3s",
+          "automationRate": 0.95,
+          "rollbackCapable": true
+        },
+        {
+          "beat": 5,
+          "title": "Validate Orchestration Manifest",
+          "description": "Verify that all orchestration manifests are complete, consistent, and properly registered",
+          "event": "phase-1:validation:complete",
+          "handler": "validateOrchestrationManifest",
+          "kind": "validation",
+          "timing": "< 1s",
+          "checks": [
+            "All domain definitions registered",
+            "No orphaned references",
+            "Manifest hash consistency",
+            "Governance policy compliance"
+          ]
+        },
+        {
+          "beat": 6,
+          "title": "Generate Phase 1 Report",
+          "description": "Create detailed conformity report with before/after comparison and recommendations",
+          "event": "phase-1:alignment:complete",
+          "handler": "generatePhase1Report",
+          "kind": "reporting",
+          "timing": "< 500ms",
+          "reportIncludes": [
+            "Total items analyzed",
+            "Items with issues",
+            "Items fixed",
+            "Success rate",
+            "Detailed violation listings",
+            "Before/after comparisons",
+            "Remediation recommendations"
+          ]
+        }
+      ]
+    },
+    {
+      "movement": 2,
+      "name": "Sequence Beat Alignment",
+      "description": "Detect and fix sequence beat count misalignments, movement/phase definition mismatches, and sequence structure validation failures",
+      "kind": "remediation",
+      "beats": 6,
+      "violationCategories": [
+        "SEQUENCE_VIOLATION"
+      ],
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Create Pre-Fix Snapshot",
+          "description": "Capture current state of all sequence definitions and beat structures before any modifications",
+          "event": "phase-2:snapshot:created",
+          "handler": "createPreFixSnapshot",
+          "kind": "safety",
+          "timing": "< 500ms",
+          "critical": true
+        },
+        {
+          "beat": 2,
+          "title": "Scan for Sequence Files",
+          "description": "Locate and inventory all sequence definitions, movements, phases, and beat arrays",
+          "event": "phase-2:scan:complete",
+          "handler": "scanSequenceFiles",
+          "kind": "discovery",
+          "timing": "< 1s",
+          "input": {
+            "patterns": [
+              "packages/*/json-sequences/**/*.json",
+              "packages/orchestration/json-sequences/**/*.json",
+              "packages/ographx/.ographx/sequences/**/*.json"
+            ]
+          }
+        },
+        {
+          "beat": 3,
+          "title": "Analyze Sequence Beat Alignment",
+          "description": "Calculate actual beat counts from movements/phases and compare against declared values",
+          "event": "phase-2:analysis:complete",
+          "handler": "analyzeSequenceAlignment",
+          "kind": "analysis",
+          "timing": "< 2s",
+          "violations": [
+            "Beat count mismatches (declared vs. actual)",
+            "Movement definitions not matching beat arrays",
+            "Phase structure inconsistencies",
+            "Invalid beat arrays",
+            "Missing sequence metadata",
+            "Sequence validation failures",
+            "Beat type inconsistencies",
+            "Movement boundary violations",
+            "Sequence dependency failures",
+            "Invalid sequence references",
+            "Duplicate beat identifiers",
+            "Missing sequence handlers",
+            "Sequence configuration errors",
+            "Beat array size mismatches",
+            "Invalid sequence transitions"
+          ]
+        },
+        {
+          "beat": 4,
+          "title": "Apply Sequence Fixes",
+          "description": "Automatically repair detected sequence beat count misalignments and structure issues",
+          "event": "phase-2:fixes:applied",
+          "handler": "fixSequenceAlignment",
+          "kind": "remediation",
+          "timing": "< 3s",
+          "automationRate": 0.98,
+          "rollbackCapable": true,
+          "fixStrategy": "Recalculate actual beats from movements and update declared beat count"
+        },
+        {
+          "beat": 5,
+          "title": "Validate Sequence Integrity",
+          "description": "Verify that all sequences have correct beat counts, proper structure, and valid references",
+          "event": "phase-2:validation:complete",
+          "handler": "validateSequenceIntegrity",
+          "kind": "validation",
+          "timing": "< 1s",
+          "checks": [
+            "Beat counts match movement definitions",
+            "All beat arrays are valid",
+            "No duplicate identifiers",
+            "All sequence dependencies resolved",
+            "Movement boundaries respected"
+          ]
+        },
+        {
+          "beat": 6,
+          "title": "Generate Phase 2 Report",
+          "description": "Create detailed sequence alignment report with beat count verification and recommendations",
+          "event": "phase-2:alignment:complete",
+          "handler": "generatePhase2Report",
+          "kind": "reporting",
+          "timing": "< 500ms",
+          "reportIncludes": [
+            "Total sequences analyzed",
+            "Sequences with beat mismatches",
+            "Sequences fixed",
+            "Success rate",
+            "Beat count corrections applied",
+            "Before/after comparisons",
+            "Validation results"
+          ]
+        }
+      ]
+    },
+    {
+      "movement": 3,
+      "name": "Handler & BDD Specs Alignment",
+      "description": "Detect and fix handler implementation misalignments, BDD specification inconsistencies, and step definition violations",
+      "kind": "remediation",
+      "beats": 7,
+      "violationCategories": [
+        "HANDLER_VIOLATION"
+      ],
+      "steps": [
+        {
+          "beat": 1,
+          "title": "Create Pre-Fix Snapshot",
+          "description": "Capture current state of all handler implementations and BDD specifications before any modifications",
+          "event": "phase-3:snapshot:created",
+          "handler": "createPreFixSnapshot",
+          "kind": "safety",
+          "timing": "< 500ms",
+          "critical": true
+        },
+        {
+          "beat": 2,
+          "title": "Scan for Handler Files",
+          "description": "Locate and inventory all handler implementations and their configurations",
+          "event": "phase-3:handlers:scanned",
+          "handler": "scanHandlerFiles",
+          "kind": "discovery",
+          "timing": "< 1s",
+          "input": {
+            "patterns": [
+              "packages/*/handlers/**/*.json",
+              "packages/orchestration/handlers/**/*.json",
+              "packages/ographx/.ographx/handlers/**/*.json"
+            ]
+          }
+        },
+        {
+          "beat": 3,
+          "title": "Scan for BDD Spec Files",
+          "description": "Locate and inventory all BDD feature specifications and step definitions",
+          "event": "phase-3:specs:scanned",
+          "handler": "scanBddSpecFiles",
+          "kind": "discovery",
+          "timing": "< 1s",
+          "input": {
+            "patterns": [
+              "packages/*/specs/**/*.feature",
+              "packages/orchestration/specs/**/*.feature",
+              "cypress/e2e/**/*.feature"
+            ]
+          }
+        },
+        {
+          "beat": 4,
+          "title": "Analyze Handler Conformity",
+          "description": "Validate handler structure, required methods, beat type support, and BDD spec alignment",
+          "event": "phase-3:analysis:complete",
+          "handler": "analyzeHandlerConformity",
+          "kind": "analysis",
+          "timing": "< 2s",
+          "violations": [
+            "Missing handler implementations",
+            "Handler method mismatches",
+            "Invalid beat type handlers",
+            "Handler initialization failures",
+            "Missing BDD step definitions",
+            "BDD spec/handler mismatches",
+            "Invalid handler configurations",
+            "Handler dependency failures",
+            "Missing handler interfaces",
+            "Handler state corruption",
+            "Invalid handler references",
+            "Step definition naming issues",
+            "Handler chain breaks",
+            "Missing handler metadata",
+            "Invalid handler responses"
+          ]
+        },
+        {
+          "beat": 5,
+          "title": "Apply Handler Fixes",
+          "description": "Automatically repair detected handler and BDD specification issues",
+          "event": "phase-3:fixes:applied",
+          "handler": "fixHandlerConformity",
+          "kind": "remediation",
+          "timing": "< 3s",
+          "automationRate": 0.92,
+          "rollbackCapable": true,
+          "fixStrategy": "Regenerate handler stubs and update BDD specs with correct method names"
+        },
+        {
+          "beat": 6,
+          "title": "Validate Handler Interfaces",
+          "description": "Verify that all handlers implement required methods and support expected beat types",
+          "event": "phase-3:validation:complete",
+          "handler": "validateHandlerInterfaces",
+          "kind": "validation",
+          "timing": "< 1.5s",
+          "checks": [
+            "All required methods present",
+            "Supported beat types defined",
+            "BDD specs match handler signatures",
+            "Step definitions properly named",
+            "Handler dependencies resolved"
+          ]
+        },
+        {
+          "beat": 7,
+          "title": "Generate Phase 3 Report",
+          "description": "Create detailed handler alignment report with implementation verification and recommendations",
+          "event": "phase-3:alignment:complete",
+          "handler": "generatePhase3Report",
+          "kind": "reporting",
+          "timing": "< 500ms",
+          "reportIncludes": [
+            "Total handlers analyzed",
+            "Handlers with issues",
+            "Handlers fixed",
+            "Success rate",
+            "Method implementations verified",
+            "BDD spec alignments",
+            "Before/after comparisons"
+          ]
+        }
+      ]
+    }
+  ],
+  "handlers": {
+    "createPreFixSnapshot": {
+      "script": "scripts/symphonia-snapshot-manager.cjs",
+      "method": "createSnapshot",
+      "timeout": 500,
+      "retries": 1
+    },
+    "scanOrchestrationFiles": {
+      "script": "scripts/fix-phase-1-orchestration-alignment.cjs",
+      "method": "findOrchestrationFiles",
+      "timeout": 1000,
+      "retries": 2
+    },
+    "analyzeDomainConformity": {
+      "script": "scripts/fix-phase-1-orchestration-alignment.cjs",
+      "method": "analyzeDomainConformity",
+      "timeout": 2000,
+      "retries": 1
+    },
+    "fixDomainAlignment": {
+      "script": "scripts/fix-phase-1-orchestration-alignment.cjs",
+      "method": "fixDomainAlignment",
+      "timeout": 3000,
+      "retries": 0,
+      "rollbackCapable": true
+    },
+    "validateOrchestrationManifest": {
+      "script": "scripts/fix-phase-1-orchestration-alignment.cjs",
+      "method": "validateOrchestrationManifest",
+      "timeout": 1000,
+      "retries": 2
+    },
+    "generatePhase1Report": {
+      "script": "scripts/fix-phase-1-orchestration-alignment.cjs",
+      "method": "generateReport",
+      "timeout": 500,
+      "retries": 1
+    },
+    "scanSequenceFiles": {
+      "script": "scripts/fix-phase-2-sequence-alignment.cjs",
+      "method": "findSequenceFiles",
+      "timeout": 1000,
+      "retries": 2
+    },
+    "analyzeSequenceAlignment": {
+      "script": "scripts/fix-phase-2-sequence-alignment.cjs",
+      "method": "analyzeAndFixSequence",
+      "timeout": 2000,
+      "retries": 1
+    },
+    "fixSequenceAlignment": {
+      "script": "scripts/fix-phase-2-sequence-alignment.cjs",
+      "method": "fixSequenceAlignment",
+      "timeout": 3000,
+      "retries": 0,
+      "rollbackCapable": true
+    },
+    "validateSequenceIntegrity": {
+      "script": "scripts/fix-phase-2-sequence-alignment.cjs",
+      "method": "validateSequenceIntegrity",
+      "timeout": 1000,
+      "retries": 2
+    },
+    "generatePhase2Report": {
+      "script": "scripts/fix-phase-2-sequence-alignment.cjs",
+      "method": "generateReport",
+      "timeout": 500,
+      "retries": 1
+    },
+    "scanHandlerFiles": {
+      "script": "scripts/fix-phase-3-handler-alignment.cjs",
+      "method": "findHandlerFiles",
+      "timeout": 1000,
+      "retries": 2
+    },
+    "scanBddSpecFiles": {
+      "script": "scripts/fix-phase-3-handler-alignment.cjs",
+      "method": "findBddSpecFiles",
+      "timeout": 1000,
+      "retries": 2
+    },
+    "analyzeHandlerConformity": {
+      "script": "scripts/fix-phase-3-handler-alignment.cjs",
+      "method": "analyzeHandlerConformity",
+      "timeout": 2000,
+      "retries": 1
+    },
+    "fixHandlerConformity": {
+      "script": "scripts/fix-phase-3-handler-alignment.cjs",
+      "method": "fixHandlerConformity",
+      "timeout": 3000,
+      "retries": 0,
+      "rollbackCapable": true
+    },
+    "validateHandlerInterfaces": {
+      "script": "scripts/fix-phase-3-handler-alignment.cjs",
+      "method": "validateHandlerInterfaces",
+      "timeout": 1500,
+      "retries": 2
+    },
+    "generatePhase3Report": {
+      "script": "scripts/fix-phase-3-handler-alignment.cjs",
+      "method": "generateReport",
+      "timeout": 500,
+      "retries": 1
+    }
+  },
+  "rollbackStrategy": {
+    "enabled": true,
+    "snapshotBefore": true,
+    "atomic": true,
+    "rollbackOn": [
+      "HANDLER_TIMEOUT",
+      "VALIDATION_FAILED",
+      "GIT_COMMIT_FAILED"
+    ]
+  },
+  "completionCriteria": {
+    "phase1": {
+      "description": "All domain and orchestration artifacts aligned",
+      "metrics": [
+        "domain_alignment_score >= 0.95",
+        "orchestration_manifest_consistency == 1.0",
+        "governance_policy_violations == 0"
+      ]
+    },
+    "phase2": {
+      "description": "All sequence beat counts validated and aligned",
+      "metrics": [
+        "sequence_beat_alignment_score >= 0.98",
+        "beat_count_mismatches == 0",
+        "sequence_validation_passed == true"
+      ]
+    },
+    "phase3": {
+      "description": "All handlers and BDD specs aligned and compliant",
+      "metrics": [
+        "handler_compliance_score >= 0.92",
+        "bdd_spec_alignment_score >= 0.95",
+        "missing_handler_methods == 0"
+      ]
+    }
+  },
+  "metadata": {
+    "version": "2.0",
+    "lastUpdated": "2025-11-26",
+    "author": "Symphonia Governance System",
+    "tags": ["governance", "conformity", "automated-remediation", "multi-phase"],
+    "documentation": "All documentation for this pipeline is auto-generated from this JSON authority file"
+  }
+}

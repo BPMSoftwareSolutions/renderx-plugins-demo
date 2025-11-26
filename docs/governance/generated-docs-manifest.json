@@ -24,6 +24,17 @@
       "generator": "scripts/generate-governance-docs.cjs",
       "hash_strategy": "sha256(json_source)",
       "auto_generated_header": "<!-- GOVERNANCE: AUTO-GENERATED source=bdd-pipeline-visual-architecture.json -->"
+    },
+    {
+      "id": "symphonia-conformity-alignment-pipeline-md",
+      "source": "packages/orchestration/json-sequences/symphonia-conformity-alignment-pipeline.json",
+      "output": "docs/generated/symphonia-conformity-alignment-pipeline.md",
+      "generator": "scripts/generate-pipeline-docs.cjs",
+      "hash_strategy": "sha256(json_source)",
+      "hash": "6537e6c3db164d296994d93bfb55913eb0d96757dbdff99ed7be98db3255075a",
+      "auto_generated_header": "<!-- AUTO-GENERATED: symphonia-conformity-alignment-pipeline.json -->",
+      "kind": "pipeline",
+      "purpose": "Orchestration for automated conformity violation detection and remediation"
     }
   ]
 }
