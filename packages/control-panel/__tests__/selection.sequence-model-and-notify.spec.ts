@@ -27,7 +27,8 @@ describe("Control Panel selection sequence builds data-driven model", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -42,7 +43,6 @@ describe("Control Panel selection sequence builds data-driven model", () => {
 
   it("derives selection model from DOM element and component JSON", () => {
     // Arrange: create a canvas element using existing create handlers
-    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -84,12 +84,10 @@ describe("Control Panel selection sequence builds data-driven model", () => {
       styling: { "bg-color": "#007acc", "text-color": "#ffffff" },
     };
 
-    const _ctx: any = {
-      payload: { selectionModel },
-      logger: {
-        info: vi.fn(),
-        warn: vi.fn(),
-      },
+    ctx.payload = { selectionModel };
+    ctx.logger = {
+      info: vi.fn(),
+      warn: vi.fn(),
     };
 
     // Act: notify UI
@@ -106,8 +104,6 @@ describe("Control Panel selection sequence builds data-driven model", () => {
   });
 
   it("handles missing element gracefully", () => {
-    const _ctx: any = { payload: {} };
-
     // Act: try to derive model for non-existent element
     expect(() => {
       controlPanelHandlers.deriveSelectionModel({ id: "non-existent" }, ctx);

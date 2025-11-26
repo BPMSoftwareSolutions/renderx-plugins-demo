@@ -56,12 +56,10 @@ payload: {}
       classes: ["rx-comp", "rx-button"],
     };
 
-    const _ctx: any = {
-      payload: { selectionModel },
-      logger: {
-        info: vi.fn(),
-        warn: vi.fn(),
-      },
+    ctx.payload = { selectionModel };
+    ctx.logger = {
+      info: vi.fn(),
+      warn: vi.fn(),
     };
 
     packageSelectionHandlers.notifyUi({}, ctx);

@@ -36,10 +36,9 @@ describe('Business BDD: analyzeErrorIssues', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
 
   beforeEach(() => {
-    _ctx = {
+    ctx = {
       handler: analyzeErrorIssues,
       anomalies: [
         { id: 'e1', type: 'error', severity: 'low', description: 'sporadic error', metrics: { errorRate: 0.05, pattern: 'E_SOCKET' }, detectedAt: new Date().toISOString(), confidence: 0.5 },
@@ -57,20 +56,20 @@ describe('Business BDD: analyzeErrorIssues', () => {
       // - error pattern detected
       // - handler fails repeatedly
 
-  expect(_ctx.anomalies.length).toBe(3);
+  expect(ctx.anomalies.length).toBe(3);
 
       // WHEN (Action - User/System Action)
       // - error analysis handler executes
 
-  _ctx.output = _ctx.handler(_ctx.anomalies as any);
+  ctx.output = ctx.handler(ctx.anomalies as any);
 
       // THEN (Expected Outcome - Business Value)
       // - error root cause should be identified
       // - error type should be categorized
       // - fix recommendation should be provided
 
-      expect(_ctx.output).toBeDefined();
-      const issues: any[] = _ctx.output.context.issues;
+      expect(ctx.output).toBeDefined();
+      const issues: any[] = ctx.output.context.issues;
       expect(issues.length).toBe(3);
       const critical = issues.find((i: any) => i.errorRate >= 0.25);
       expect(critical?.severity).toBe('critical');

@@ -22,7 +22,8 @@ describe('control-panel: classes add/remove + notifyUi', () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -59,7 +60,8 @@ describe('control-panel: classes add/remove + notifyUi', () => {
   });
 
   it('notifyUi publishes control.panel.classes.updated when payload present', () => {
-    const _ctx: any = { payload: { id: 'c3', updatedClasses: ['a','b'] }, logger: { info: vi.fn(), warn: vi.fn() } };
+    ctx.payload = { id: 'c3', updatedClasses: ['a','b'] };
+    ctx.logger = { info: vi.fn(), warn: vi.fn() };
     classesHandlers.notifyUi({}, ctx);
     const calls = (globalThis as any).RenderX.EventRouter.publish.mock.calls;
     expect(calls.length).toBe(1);

@@ -1,4 +1,4 @@
-﻿/* @vitest-environment jsdom */
+/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony";
 import { showSvgNodeOverlay } from "@renderx-plugins/canvas-component/symphonies/select/select.svg-node.stage-crew";
@@ -20,7 +20,8 @@ describe("SVG sub-node selection overlay (TDD)", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 

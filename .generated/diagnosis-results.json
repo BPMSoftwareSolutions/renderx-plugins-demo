@@ -1,17 +1,168 @@
 {
-  "timestamp": "2025-11-26T23:16:47.155Z",
+  "timestamp": "2025-11-26T23:47:04.437Z",
   "slice": {
     "performanceIssues": [
       {
-        "anomalyId": "a1",
+        "anomalyId": "loadLogFiles-perf-1764200658735",
+        "handler": "loadLogFiles",
         "severity": "high",
-        "description": "Latency spike"
+        "description": "Latency increased by 275% vs baseline"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-perf-1764200658736",
+        "handler": "extractTelemetryEvents",
+        "severity": "high",
+        "description": "Latency increased by 240% vs baseline"
+      },
+      {
+        "anomalyId": "aggregateTelemetryMetrics-perf-1764200658736",
+        "handler": "aggregateTelemetryMetrics",
+        "severity": "medium",
+        "description": "Latency increased by 167% vs baseline"
       }
     ],
-    "behavioralIssues": [],
-    "coverageIssues": [],
-    "errorIssues": [],
-    "generatedAt": "2025-11-26T23:16:47.153Z",
-    "sequenceId": "diag-seq-2"
+    "behavioralIssues": [
+      {
+        "anomalyId": "normalizeTelemetryData-behavior-new-1764200658736",
+        "handler": "normalizeTelemetryData",
+        "outOfOrder": false,
+        "severity": "medium",
+        "description": "Handler appeared with count=12 not present in baseline"
+      },
+      {
+        "anomalyId": "loadLogFiles-behavior-surge-1764200658736",
+        "handler": "loadLogFiles",
+        "outOfOrder": false,
+        "severity": "critical",
+        "description": "Invocation count surge 440% vs baseline (current=44, baseline=10)"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-behavior-surge-1764200658736",
+        "handler": "extractTelemetryEvents",
+        "outOfOrder": false,
+        "severity": "medium",
+        "description": "Invocation count surge 178% vs baseline (current=32, baseline=18)"
+      }
+    ],
+    "coverageIssues": [
+      {
+        "anomalyId": "loadLogFiles-coverage-1764200658737",
+        "handler": "loadLogFiles",
+        "severity": "high",
+        "description": "Potential coverage gap: growth 340% with errorRate 7.0% (gapScore=0.41)"
+      },
+      {
+        "anomalyId": "extractTelemetryEvents-coverage-1764200658737",
+        "handler": "extractTelemetryEvents",
+        "severity": "medium",
+        "description": "Potential coverage gap: growth 78% with errorRate 21.0% (gapScore=0.20)"
+      }
+    ],
+    "errorIssues": [
+      {
+        "anomalyId": "extractTelemetryEvents-errors-1764200658737",
+        "handler": "extractTelemetryEvents",
+        "severity": "medium",
+        "description": "Error rate increased 16.0% (current 21.0%, baseline 5.0%)"
+      },
+      {
+        "anomalyId": "slo-breach-error_rate-1764200658742-lz4h9",
+        "severity": "high",
+        "description": "SLO breach: error_rate actual=0.0958 target=0.05"
+      },
+      {
+        "anomalyId": "slo-breach-availability-1764200658743-y226u",
+        "severity": "critical",
+        "description": "SLO breach: availability actual=0.9042 target=0.995"
+      }
+    ],
+    "generatedAt": "2025-11-26T23:47:04.434Z",
+    "sequenceId": "diag-seq-e2e",
+    "impact": {
+      "overallSeverity": "critical",
+      "totals": {
+        "performance": 3,
+        "behavioral": 3,
+        "coverage": 2,
+        "error": 3
+      },
+      "affectedHandlers": 4,
+      "estimatedUsers": 1000,
+      "rationale": "Severity critical due to totals perf=3, beh=3, cov=2, err=3"
+    },
+    "recommendations": [
+      {
+        "id": "fix-1",
+        "type": "code",
+        "description": "Optimize handler loadLogFiles to reduce latency ratio unknown",
+        "priority": 2,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-2",
+        "type": "code",
+        "description": "Optimize handler extractTelemetryEvents to reduce latency ratio unknown",
+        "priority": 2,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-3",
+        "type": "code",
+        "description": "Optimize handler aggregateTelemetryMetrics to reduce latency ratio unknown",
+        "priority": 3,
+        "estimatedEffort": 4,
+        "expectedBenefit": "Latency reduction and improved throughput",
+        "implementation": "Profile hotspots; apply caching or batching"
+      },
+      {
+        "id": "fix-4",
+        "type": "test",
+        "description": "Increase coverage for handler loadLogFiles to >=80% (current unknown%)",
+        "priority": 2,
+        "estimatedEffort": 5,
+        "expectedBenefit": "Reduced regression risk",
+        "implementation": "Add unit + integration tests for untested paths"
+      },
+      {
+        "id": "fix-5",
+        "type": "test",
+        "description": "Increase coverage for handler extractTelemetryEvents to >=80% (current unknown%)",
+        "priority": 2,
+        "estimatedEffort": 5,
+        "expectedBenefit": "Reduced regression risk",
+        "implementation": "Add unit + integration tests for untested paths"
+      },
+      {
+        "id": "fix-6",
+        "type": "code",
+        "description": "Address error pattern unknown in handler extractTelemetryEvents",
+        "priority": 2,
+        "estimatedEffort": 6,
+        "expectedBenefit": "Improved reliability and lower error rate",
+        "implementation": "Trace stack, add guards, improve retry logic"
+      },
+      {
+        "id": "fix-7",
+        "type": "code",
+        "description": "Address error pattern unknown in handler undefined",
+        "priority": 2,
+        "estimatedEffort": 6,
+        "expectedBenefit": "Improved reliability and lower error rate",
+        "implementation": "Trace stack, add guards, improve retry logic"
+      },
+      {
+        "id": "fix-8",
+        "type": "code",
+        "description": "Address error pattern unknown in handler undefined",
+        "priority": 1,
+        "estimatedEffort": 6,
+        "expectedBenefit": "Improved reliability and lower error rate",
+        "implementation": "Trace stack, add guards, improve retry logic"
+      }
+    ]
   }
 }

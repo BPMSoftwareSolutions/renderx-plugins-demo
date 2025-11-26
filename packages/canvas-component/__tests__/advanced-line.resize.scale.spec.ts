@@ -1,4 +1,4 @@
-﻿/* @vitest-environment jsdom */
+/* @vitest-environment jsdom */
 import { describe, it, expect, beforeEach } from "vitest";
 import { handlers as createHandlers } from "@renderx-plugins/canvas-component/symphonies/create/create.symphony.ts";
 import { handlers as resizeHandlers } from "@renderx-plugins/canvas-component/symphonies/resize/resize.symphony.ts";
@@ -19,7 +19,7 @@ function makeCtx() {
   return { payload: {} } as any;
 }
 
-describe("Advanced Line — endpoints scale with resize", () => {
+describe("Advanced Line � endpoints scale with resize", () => {
   let ctx: any;
   beforeEach(() => {
     ctx = {
@@ -32,7 +32,8 @@ describe("Advanced Line — endpoints scale with resize", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 

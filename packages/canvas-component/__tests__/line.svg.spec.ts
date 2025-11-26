@@ -32,7 +32,8 @@ describe("SVG Line component", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -45,7 +46,6 @@ describe("SVG Line component", () => {
   });
 
   it("creates an <svg> with a child <line.segment> that uses CSS vars and non-scaling stroke", () => {
-    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
@@ -67,7 +67,6 @@ describe("SVG Line component", () => {
   });
 
   it("resizes via stage-crew updateSize and keeps element dimensions updated", () => {
-    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
 
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);

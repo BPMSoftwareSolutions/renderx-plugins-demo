@@ -31,7 +31,8 @@ describe("Advanced Line — dynamic viewBox autosize", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -45,7 +46,6 @@ describe("Advanced Line — dynamic viewBox autosize", () => {
   });
 
   it("expands viewBox when endpoints extend beyond element bounds (no rotation)", () => {
-    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 0, y: 0 } } as any, ctx);
@@ -72,7 +72,6 @@ describe("Advanced Line — dynamic viewBox autosize", () => {
   });
 
   it("adds headroom when rotated so the line is never clipped", () => {
-    const _ctx: any = makeCtx();
     const template = makeSvgLineTemplate();
     createHandlers.resolveTemplate({ component: { template } } as any, ctx);
     createHandlers.createNode({ position: { x: 0, y: 0 } } as any, ctx);

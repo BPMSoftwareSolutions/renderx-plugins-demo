@@ -40,6 +40,9 @@ describe("canvas-component create.io", () => {
 
   it("persists node metadata to KV/cache", async () => {
     const _ctx: any = makeCtx();
+    ctx.payload = _ctx.payload;
+    ctx.io = _ctx.io;
+    ctx._ops = _ctx._ops;
     await registerInstance({}, ctx);
     const names = ctx._ops.map((x: any[]) => x[0]);
     expect(names).toContain("kv.put");

@@ -52,9 +52,11 @@ describe("Export includes JSON component CSS end-to-end (migrated)", () => {
     expect(buttonClass?.content || "").toContain(".rx-button--primary");
 
     // 3. Run export flow
-    ctx.payload = {}, io: { kv: { getAll: async () => [
+    ctx.payload = {};
+    ctx.io = { kv: { getAll: async () => [
       { id: "rx-node-1", type: "button", classes: ["rx-comp", "rx-button"], style: {}, createdAt: Date.now() }
-    ] } }, logger: { info: () => {}, warn: () => {}, error: () => {} } };
+    ] } };
+    ctx.logger = { info: () => {}, warn: () => {}, error: () => {} };
 
     await queryAllComponents({}, ctx);
     expect(ctx.payload.components).toHaveLength(1);

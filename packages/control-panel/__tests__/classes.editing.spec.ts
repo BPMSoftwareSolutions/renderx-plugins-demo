@@ -28,7 +28,8 @@ describe("Control Panel class editing sequences", () => {
       },
       input: {},
       output: null,
-      error: null
+      error: null,
+      payload: {}
     };
   });
 
@@ -43,7 +44,6 @@ describe("Control Panel class editing sequences", () => {
 
   it("adds CSS class to selected element via stage-crew", () => {
     // Arrange: create a canvas element
-    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);
@@ -70,7 +70,6 @@ describe("Control Panel class editing sequences", () => {
 
   it("removes CSS class from selected element via stage-crew", () => {
     // Arrange: create element with existing class
-    const _ctx: any = { payload: {} };
     const template = makeButtonTemplate();
 
     createHandlers.resolveTemplate({ component: { template } }, ctx);

@@ -302,7 +302,8 @@ describe('canvas-component handlers handlers', () => {
     expect(playSpy).not.toHaveBeenCalled();
   });
   it('exportSvgToGif - sets error when not SVG or missing', async () => {
-    ctx.payload = {}, logger: { info:()=>{} } };
+    ctx.payload = {};
+    ctx.logger = { info:()=>{} };
     await exportSvgToGif({ targetId: 'nope' }, ctx);
     expect(ctx.payload.error).toMatch(/not found/);
   });
@@ -315,12 +316,14 @@ describe('canvas-component handlers handlers', () => {
     expect(blob.type).toMatch(/mp4/);
   });
   it('exportSvgToMp4 - errors when target missing', async () => {
-    ctx.payload = {}, logger: { info:()=>{}, error:()=>{} } };
+    ctx.payload = {};
+    ctx.logger = { info:()=>{}, error:()=>{} };
     await exportSvgToMp4({ targetId: 'missing' }, ctx);
     expect(ctx.payload.error).toMatch(/not found/);
   });
   it('exportSvgToMp4 - basic success with svg element (mocked 2D context)', async () => {
-    ctx.payload = {}, logger: { info:()=>{}, error:()=>{}, warn:()=>{} } };
+    ctx.payload = {};
+    ctx.logger = { info:()=>{}, error:()=>{}, warn:()=>{} };
     (HTMLCanvasElement.prototype as any).getContext = vi.fn().mockReturnValue({ drawImage:()=>{}, clearRect:()=>{} });
     const svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.id='svg-mp4'; document.body.appendChild(svg);
     await exportSvgToMp4({ targetId: 'svg-mp4', options: { fps: 2, durationMs: 100 } }, ctx);

@@ -45,8 +45,8 @@ describe("paste interactions attach and publish drag events", () => {
     };
 
     let capturedPayload: any = null;
-    const conductor = { play: vi.fn((_p, _s, payload) => { capturedPayload = payload; }) };
-    const _ctx: any = { conductor, logger: { info: vi.fn(), warn: vi.fn() } };
+    ctx.conductor = { play: vi.fn((_p, _s, payload) => { capturedPayload = payload; }) };
+    ctx.logger = { info: vi.fn(), warn: vi.fn() };
 
     // Act: call paste creation
     await createPastedComponent({ clipboardData: { component: clipboardComponent }, newPosition: { x: 10, y: 20 } }, ctx);

@@ -26,12 +26,9 @@ describe('library-component handlers handlers', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  // TODO: Set up test context and mocks
-  let ctx: any;
 
   beforeEach(() => {
     // TODO: Initialize context with required handlers and mocks
-  _ctx = {};
   });
 
   it('ensurePayload - happy path', () => {

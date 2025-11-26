@@ -36,10 +36,9 @@ describe('Business BDD: analyzeCoverageIssues', () => {
     vi.clearAllMocks();
     ctx = null;
   });
-  let ctx: any;
 
   beforeEach(() => {
-    _ctx = {
+    ctx = {
       handler: analyzeCoverageIssues,
       anomalies: [
         { id: 'c1', type: 'coverage', severity: 'low', description: 'partial coverage', metrics: { coveragePercent: 70, untestedPaths: 4 }, detectedAt: new Date().toISOString(), confidence: 0.6 },
@@ -57,20 +56,20 @@ describe('Business BDD: analyzeCoverageIssues', () => {
       // - coverage gap detected
       // - handler is untested
 
-  expect(_ctx.anomalies.length).toBe(3);
+  expect(ctx.anomalies.length).toBe(3);
 
       // WHEN (Action - User/System Action)
       // - coverage analysis handler executes
 
-  _ctx.output = _ctx.handler(_ctx.anomalies as any);
+  ctx.output = ctx.handler(ctx.anomalies as any);
 
       // THEN (Expected Outcome - Business Value)
       // - untested code should be identified
       // - test recommendations should be provided
       // - risk should be assessed
 
-      expect(_ctx.output).toBeDefined();
-      const issues: any[] = _ctx.output.context.issues;
+      expect(ctx.output).toBeDefined();
+      const issues: any[] = ctx.output.context.issues;
       expect(issues.length).toBe(3);
       const critical = issues.find((i: any) => i.coveragePercent < 40);
       expect(critical?.severity).toBe('critical');
